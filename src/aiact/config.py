@@ -29,6 +29,10 @@ class Settings(BaseSettings):
     # Policy / reproducibility.
     act_version_date: date = date(2024, 7, 12)
     policy_spec_path: str = "./data/policy/spec.yaml"
+    # Literal article text, fetched by scripts/fetch_articles.py. The SINGLE store of enacted
+    # wording: rules cite a provision, the loader resolves the text from here. Never duplicated
+    # into the spec.
+    policy_articles_path: str = "./data/policy/articles"
 
 
 def get_settings() -> Settings:

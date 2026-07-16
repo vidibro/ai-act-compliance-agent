@@ -1,0 +1,180 @@
+# Coverage ledger — Regulation (EU) 2024/1689, act version 2024-07-12.
+#
+# WHY THIS FILE EXISTS
+# Every article in data/policy/articles/2024-07-12/ must be accounted for: either it is CITED by a
+# rule in spec.yaml (in scope), or it is listed here with a reason (out of scope). A test enforces
+# the partition. Nothing may be merely unexamined.
+#
+# The point is what happens on a NEW ACT VERSION. A newly added article would be neither cited nor
+# listed here — the coverage test fails, and CI blocks until a human rules on it. The guarantee is
+# not "we automatically detect new obligations"; it is "a new obligation cannot pass unnoticed".
+# For a compliance tool a false PASS is the worst outcome, and silently ignoring an article the
+# legislator added is exactly how one happens.
+#
+# v0.1 SCOPE: obligations of the PROVIDER of a HIGH-RISK AI system in the EMPLOYMENT area
+# (Annex III(4)). Other actor roles (deployer, importer, distributor, authorised representative),
+# other Annex III areas, and the general-purpose AI model regime are deliberately excluded — and
+# each exclusion is recorded below rather than assumed.
+#
+# Authoring this ledger already paid for itself: it surfaced Art. 72 and Art. 73 as genuine
+# provider obligations for high-risk systems that the initial ruleset had simply missed.
+
+act_version_date: 2024-07-12
+
+out_of_scope:
+  # --- Chapter I — General provisions ---------------------------------------------------------
+  1: Declaratory statement of the Regulation's subject matter. Creates no obligation.
+  2: >-
+    Scope. Determines whether the Regulation applies at all; consumed by the classification graph
+    (ClassificationState.in_eu_scope / is_excluded), not a provider obligation checkable against
+    documentation.
+  3: >-
+    Definitions. Feeds classification (Art. 3(1) is_ai_system, Art. 3(3) actor_role). Definitional,
+    creates no standalone duty.
+  4: >-
+    AI literacy. A real obligation on providers, but about staff competence rather than the system,
+    and it is not evidenced in a system's technical documentation. Deferred beyond v0.1.
+  5: >-
+    Prohibited AI practices. Evaluated by the classification graph BEFORE high-risk
+    (ClassificationState.prohibited_practices); a prohibited system never reaches an obligation
+    check, so this is a risk-tier gate rather than a provider rule.
+  7: Empowers the Commission to amend Annex III. Institutional, no provider duty.
+  8: >-
+    Chapeau to Chapter III Section 2: high-risk systems shall comply with Art. 9-15. Already
+    modelled rule-by-rule as AIA-HR-A09..A15; a rule here would double-count every finding.
+
+  # --- Chapter III Section 3 — obligations of other actors -------------------------------------
+  16: >-
+    Umbrella list of provider obligations that cross-references Art. 17-21, 43, 47-49, each of
+    which is modelled individually. Modelling it too would double-count every finding.
+  22: Obligation of the authorised representative — a different actor role. v0.1 covers provider only.
+  23: Obligation of the importer — a different actor role.
+  24: Obligation of the distributor — a different actor role.
+  25: >-
+    Allocates responsibilities along the value chain (when a distributor/importer/deployer becomes
+    a provider). Relevant to ROLE ASSIGNMENT, not a documentation-checkable provider duty in v0.1.
+  26: Obligation of the deployer — explicitly out of scope for v0.1 per the project brief.
+  27: Fundamental rights impact assessment — a duty of specific deployers, not the provider.
+
+  # --- Chapter III Section 4 — notifying authorities and notified bodies -----------------------
+  # For Annex III(4) employment the conformity route is internal control (Art. 43(2)), which
+  # involves no notified body at all — so this whole section is doubly out of scope.
+  28: Duty of Member States to designate notifying authorities.
+  29: Duty of conformity assessment bodies seeking notification.
+  30: Notification procedure — Member State and Commission duties.
+  31: Requirements on notified bodies.
+  32: Presumption of conformity for notified bodies. Declaratory.
+  33: Duty of notified bodies regarding subsidiaries and subcontracting.
+  34: Operational duties of notified bodies.
+  35: Commission duty to assign identification numbers and publish lists.
+  36: Member State duty regarding changes to notifications.
+  37: Commission procedure to challenge a notified body's competence.
+  38: Commission duty to coordinate notified bodies.
+  39: Rules for conformity assessment bodies of third countries.
+
+  # --- Chapter III Section 5 — standards, conformity, certificates, registration ---------------
+  40: >-
+    Harmonised standards. Confers a presumption of conformity if applied; an option, not a duty.
+  41: Commission power to adopt common specifications. Institutional.
+  42: Presumption of conformity for certain requirements. Declaratory, no duty.
+  44: >-
+    Certificates issued by notified bodies. Annex III(4) uses internal control (Art. 43(2)) with no
+    notified body, so no certificate arises.
+  45: Information duties of notified bodies.
+  46: >-
+    Derogation from the conformity assessment procedure — an exceptional authorisation by a market
+    surveillance authority, not a standing provider duty.
+
+  # --- Chapter IV — transparency ---------------------------------------------------------------
+  50: >-
+    Transparency obligations for certain AI systems. Applies INDEPENDENTLY of the risk tier and is
+    modelled in the classification graph (ClassificationState.transparency_triggers). TODO: promote
+    to rules when transparency scope is implemented — it can apply to a minimal-risk use case such
+    as job-ad generation.
+
+  # --- Chapter V — general-purpose AI models ---------------------------------------------------
+  51: General-purpose AI model regime — a separate track from high-risk. Out of v0.1 scope.
+  52: GPAI model classification procedure. Out of v0.1 scope.
+  53: Obligations of providers of GPAI models. Out of v0.1 scope.
+  54: Authorised representatives of GPAI model providers. Out of v0.1 scope.
+  55: Obligations of providers of GPAI models with systemic risk. Out of v0.1 scope.
+  56: Codes of practice for GPAI. Out of v0.1 scope.
+
+  # --- Chapter VI — measures in support of innovation ------------------------------------------
+  57: Member State duty to establish AI regulatory sandboxes.
+  58: Commission/Member State arrangements for sandboxes.
+  59: Conditional permission to further process personal data in a sandbox. A permission, not a duty.
+  60: >-
+    Testing in real-world conditions — an optional route with its own conditions, not a standing
+    duty for a system placed on the market.
+  61: Informed consent — applies only where real-world testing is undertaken.
+  62: Member State and Commission support duties toward SMEs.
+  63: >-
+    Derogations for microenterprises — modifies how other obligations are met rather than creating
+    one.
+
+  # --- Chapter VII — governance ----------------------------------------------------------------
+  64: Establishes the AI Office. Institutional.
+  65: Establishes the European Artificial Intelligence Board. Institutional.
+  66: Tasks of the Board. Institutional.
+  67: Advisory forum. Institutional.
+  68: Scientific panel of independent experts. Institutional.
+  69: Member State access to the pool of experts. Institutional.
+  70: Member State duty to designate national competent authorities. Institutional.
+
+  # --- Chapter VIII — EU database --------------------------------------------------------------
+  71: >-
+    Commission duty to establish and operate the EU database. The PROVIDER's duty to register in it
+    is Art. 49, which is in scope as AIA-PO-A49.
+
+  # --- Chapter IX — post-market monitoring, market surveillance --------------------------------
+  # NOTE: Art. 72 and 73 from this chapter ARE in scope (AIA-PO-A72, AIA-PO-A73).
+  74: Market surveillance authority powers and duties. Not a provider duty.
+  75: Mutual assistance and control of general-purpose AI systems. Authority duties.
+  76: Authority supervision of real-world testing.
+  77: Powers of authorities protecting fundamental rights.
+  78: Confidentiality duties of authorities.
+  79: National procedure for AI systems presenting a risk — an authority-led procedure.
+  80: >-
+    Authority procedure for systems the provider classified as not-high-risk under Annex III. The
+    provider-side duty it enforces is Art. 6(4), in scope as AIA-NHR-A06-4.
+  81: Union safeguard procedure. Institutional.
+  82: Authority procedure for compliant systems that nonetheless present a risk.
+  83: Authority procedure for formal non-compliance.
+  84: Union AI testing support structures. Institutional.
+  85: Right of any person to lodge a complaint. A right, not a provider duty.
+  86: Right to explanation of individual decision-making — a duty of the DEPLOYER toward the person.
+  87: Reporting of infringements and whistleblower protection. Not a provider system duty.
+  88: Commission enforcement of GPAI provider obligations. Out of v0.1 scope.
+  89: Commission monitoring actions for GPAI. Out of v0.1 scope.
+  90: Scientific panel alerts of systemic risk. Out of v0.1 scope.
+  91: Commission power to request documentation from GPAI providers. Out of v0.1 scope.
+  92: Commission power to evaluate GPAI models. Out of v0.1 scope.
+  93: Commission power to request measures from GPAI providers. Out of v0.1 scope.
+  94: Procedural rights of GPAI economic operators. Out of v0.1 scope.
+
+  # --- Chapter X-XII — codes of conduct, delegation, penalties, final provisions ---------------
+  95: Codes of conduct for VOLUNTARY application. Not binding; creates no compliance gap.
+  96: Commission guidelines on implementation. Interpretive aid, not a duty.
+  97: Exercise of the delegation. Institutional.
+  98: Committee procedure. Institutional.
+  99: Member State duty to lay down penalties. A consequence of non-compliance, not an obligation.
+  100: Administrative fines on Union institutions. Consequence, not an obligation.
+  101: Fines for GPAI model providers. Consequence, and out of v0.1 scope.
+  102: Amendment to Regulation (EC) No 300/2008 — amends another instrument.
+  103: Amendment to Regulation (EU) No 167/2013 — amends another instrument.
+  104: Amendment to Regulation (EU) No 168/2013 — amends another instrument.
+  105: Amendment to Directive 2014/90/EU — amends another instrument.
+  106: Amendment to Directive (EU) 2016/797 — amends another instrument.
+  107: Amendment to Regulation (EU) 2018/858 — amends another instrument.
+  108: Amendments to Regulation (EU) 2018/1139 — amends another instrument.
+  109: Amendment to Regulation (EU) 2019/2144 — amends another instrument.
+  110: Amendment to Directive (EU) 2020/1828 — amends another instrument.
+  111: >-
+    Transitional regime for systems already on the market. Affects WHETHER obligations bite for a
+    legacy system; a scoping/temporal question, not a checkable duty. Revisit if the tool is asked
+    to assess legacy systems.
+  112: Commission duty to evaluate and review the Regulation. Institutional.
+  113: >-
+    Entry into force and application dates. Drives each rule's effective_date (2026-08-02 for
+    Annex III high-risk obligations) rather than being a rule itself.

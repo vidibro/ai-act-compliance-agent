@@ -1,0 +1,381 @@
+# AI Act policy specification — v0.3, EMPLOYMENT high-risk scope (Annex III(4)).
+#
+# THIS FILE CONTAINS NO LEGAL TEXT. The enacted wording lives in exactly one place —
+# data/policy/articles/*.md — written verbatim from EUR-Lex Formex XML by
+# scripts/fetch_articles.py. A rule here only CITES a provision; src/aiact/policy_loader.py
+# resolves source.article (+ source.paragraph) to the literal text and fills `requirement` at load
+# time. Hand-writing `requirement` is rejected by the loader. This is deliberate: a paraphrased
+# requirement is unverifiable, and a compliance tool must not rest on one.
+#
+# So each rule carries only:
+#   source            — WHICH provision (the pointer; resolves to the literal text)
+#   applies_to_*      — WHEN the rule activates (risk class / actor role)
+#   check_type        — HOW it must be verified
+#   evidence_expected — NON-LEGAL, plain-language description of what would satisfy it. This is
+#                       our own interpretive text and the query used for vector retrieval over the
+#                       document under review. Interpretation belongs here, never in requirement.
+#   document_verifiable — whether it can be seen in a system's technical documentation at all
+#
+# Two families:
+#   AIA-HR-*  Chapter III Section 2 (Art. 9-15) — requirements the system must meet.
+#             Visible in technical documentation -> document_verifiable: true.
+#   AIA-PO-*  Chapter III Section 3 (Art. 16+) + conformity/registration — provider PROCESS
+#             obligations. NOT visible in a system's technical documentation
+#             -> document_verifiable: false -> reported as "confirm separately", never as gaps.
+#
+# High-risk obligations for Annex III systems apply from 2026-08-02 (Art. 113). That applicability
+# date is carried in each rule's effective_date; status stays "active" (adopted, in force).
+
+spec_version: "0.4.0"
+act_version_date: 2024-07-12
+source_note: >-
+  Rule structure and scope selection derived from the EC AI Act Compliance Checker, Chapter III
+  (requirements for high-risk AI systems and obligations of providers). Legal wording is NOT stored
+  here: it is resolved at load time from data/policy/articles/, which is generated verbatim from
+  the EUR-Lex Formex v4 XML of Regulation (EU) 2024/1689 (CELEX 32024R1689) by
+  scripts/fetch_articles.py. Re-run that script to refresh against a new Act version.
+
+rules:
+  # ------------------------------------------------------------------------------------------
+  # Art. 9-15 — requirements for high-risk AI systems (document-verifiable).
+  # ------------------------------------------------------------------------------------------
+  - rule_id: AIA-HR-A09
+    source:
+      instrument: "Regulation (EU) 2024/1689"
+      article: 9 # whole article: the risk management system, all 10 paragraphs
+      act_version_date: 2024-07-12
+    applies_to_risk_class: [high_risk]
+    applies_to_role: [provider]
+    obligation_status: mandatory
+    check_type: substance
+    evidence_expected: >-
+      A described risk management process covering identification and analysis of known and
+      reasonably foreseeable risks to health, safety and fundamental rights, estimation under
+      reasonably foreseeable misuse, evaluation against post-market monitoring data, and adoption
+      of targeted mitigation measures — not a one-line assertion that "risks are managed".
+    document_verifiable: true
+    effective_date: 2026-08-02
+    status: active
+
+  - rule_id: AIA-HR-A10
+    source:
+      instrument: "Regulation (EU) 2024/1689"
+      article: 10 # whole article: data and data governance
+      act_version_date: 2024-07-12
+    applies_to_risk_class: [high_risk]
+    applies_to_role: [provider]
+    obligation_status: mandatory
+    check_type: substance
+    evidence_expected: >-
+      Described data governance practices: design choices, provenance and collection of data,
+      examination for possible biases and mitigation, identification of relevant data gaps, and
+      relevance to the intended purpose. A generic "responsible AI" statement with no
+      data-governance substance is INADEQUATE, not a pass.
+    document_verifiable: true
+    effective_date: 2026-08-02
+    status: active
+
+  - rule_id: AIA-HR-A11
+    source:
+      instrument: "Regulation (EU) 2024/1689"
+      article: 11
+      paragraph: 1 # the drawing-up obligation + the Annex IV minimum element list
+      annex: "IV"
+      act_version_date: 2024-07-12
+    applies_to_risk_class: [high_risk]
+    applies_to_role: [provider]
+    obligation_status: mandatory
+    check_type: completeness
+    evidence_expected: >-
+      Coverage of the Annex IV element list: general description of the system, its development
+      process, monitoring/functioning/control, performance metrics, risk-management, and changes
+      over the lifecycle. Missing elements are gaps in an otherwise-present documentation set.
+    document_verifiable: true
+    effective_date: 2026-08-02
+    status: active
+
+  - rule_id: AIA-HR-A12
+    source:
+      instrument: "Regulation (EU) 2024/1689"
+      article: 12
+      paragraph: 1 # the logging capability itself
+      act_version_date: 2024-07-12
+    applies_to_risk_class: [high_risk]
+    applies_to_role: [provider]
+    obligation_status: mandatory
+    check_type: presence
+    evidence_expected: >-
+      A description that the system records events/logs automatically over its lifetime. Existence
+      of the logging capability, described, is sufficient for this rule.
+    document_verifiable: true
+    effective_date: 2026-08-02
+    status: active
+
+  - rule_id: AIA-HR-A13
+    source:
+      instrument: "Regulation (EU) 2024/1689"
+      article: 13 # whole article: transparency + the Art. 13(3) instructions-for-use contents
+      act_version_date: 2024-07-12
+    applies_to_risk_class: [high_risk]
+    applies_to_role: [provider]
+    obligation_status: mandatory
+    check_type: substance
+    evidence_expected: >-
+      Instructions for use accompanying the system, covering the provider's identity, the system's
+      characteristics, capabilities and limitations of performance, and the human-oversight
+      measures. Substance, not a claim that "the system is transparent".
+    document_verifiable: true
+    effective_date: 2026-08-02
+    status: active
+
+  - rule_id: AIA-HR-A14
+    source:
+      instrument: "Regulation (EU) 2024/1689"
+      article: 14 # whole article: oversight measures, incl. the (a)-(e) capabilities in para 4
+      act_version_date: 2024-07-12
+    applies_to_risk_class: [high_risk]
+    applies_to_role: [provider]
+    obligation_status: mandatory
+    check_type: substance
+    evidence_expected: >-
+      Described oversight measures: the human-machine interface tools provided, the ability of an
+      operator to intervene in or stop the system, and the competencies expected of the overseer.
+      "We ensure human oversight" with nothing further is INADEQUATE.
+    document_verifiable: true
+    effective_date: 2026-08-02
+    status: active
+
+  - rule_id: AIA-HR-A15
+    source:
+      instrument: "Regulation (EU) 2024/1689"
+      article: 15 # whole article: accuracy, robustness and cybersecurity
+      act_version_date: 2024-07-12
+    applies_to_risk_class: [high_risk]
+    applies_to_role: [provider]
+    obligation_status: mandatory
+    check_type: metrics
+    evidence_expected: >-
+      Declared accuracy levels and relevant accuracy metrics, robustness measures (e.g. against
+      errors, faults or adversarial conditions), and cybersecurity measures. A claim of "high
+      accuracy" with no numbers is INADEQUATE, not a pass.
+    document_verifiable: true
+    effective_date: 2026-08-02
+    status: active
+
+  # ------------------------------------------------------------------------------------------
+  # Art. 16+ — provider PROCESS obligations (NOT document-verifiable -> confirm separately).
+  # ------------------------------------------------------------------------------------------
+  - rule_id: AIA-PO-A17
+    source:
+      instrument: "Regulation (EU) 2024/1689"
+      article: 17
+      paragraph: 1 # the QMS obligation + its (a)-(m) required aspects
+      act_version_date: 2024-07-12
+    applies_to_risk_class: [high_risk]
+    applies_to_role: [provider]
+    obligation_status: mandatory
+    check_type: presence
+    evidence_expected: >-
+      Evidence of an organisational quality management system. This is a process obligation about
+      the provider organisation, not a property of the system's technical documentation — confirm
+      separately.
+    document_verifiable: false
+    effective_date: 2026-08-02
+    status: active
+
+  - rule_id: AIA-PO-A18
+    source:
+      instrument: "Regulation (EU) 2024/1689"
+      article: 18
+      paragraph: 1 # the 10-year retention duty + the (a)-(e) documents it covers
+      act_version_date: 2024-07-12
+    applies_to_risk_class: [high_risk]
+    applies_to_role: [provider]
+    obligation_status: mandatory
+    check_type: presence
+    evidence_expected: >-
+      A document-retention process at the provider. Not observable from the system's technical
+      documentation — confirm separately.
+    document_verifiable: false
+    effective_date: 2026-08-02
+    status: active
+
+  - rule_id: AIA-PO-A19
+    source:
+      instrument: "Regulation (EU) 2024/1689"
+      article: 19
+      paragraph: 1
+      act_version_date: 2024-07-12
+    applies_to_risk_class: [high_risk]
+    applies_to_role: [provider]
+    obligation_status: mandatory
+    check_type: presence
+    evidence_expected: >-
+      A log-retention process at the provider. Distinct from Art. 12 (the system's capability to
+      generate logs, which IS document-verifiable) — confirm separately.
+    document_verifiable: false
+    effective_date: 2026-08-02
+    status: active
+
+  - rule_id: AIA-PO-A20
+    source:
+      instrument: "Regulation (EU) 2024/1689"
+      article: 20
+      paragraph: 1
+      act_version_date: 2024-07-12
+    applies_to_risk_class: [high_risk]
+    applies_to_role: [provider]
+    obligation_status: mandatory
+    check_type: presence
+    evidence_expected: >-
+      A corrective-action and notification procedure. A post-market process obligation, not visible
+      in the technical documentation — confirm separately.
+    document_verifiable: false
+    effective_date: 2026-08-02
+    status: active
+
+  - rule_id: AIA-PO-A21
+    source:
+      instrument: "Regulation (EU) 2024/1689"
+      article: 21
+      paragraph: 1
+      act_version_date: 2024-07-12
+    applies_to_risk_class: [high_risk]
+    applies_to_role: [provider]
+    obligation_status: mandatory
+    check_type: presence
+    evidence_expected: >-
+      A duty to cooperate with authorities on request. A relational process obligation, not a
+      property of the documentation — confirm separately.
+    document_verifiable: false
+    effective_date: 2026-08-02
+    status: active
+
+  - rule_id: AIA-PO-A43
+    source:
+      instrument: "Regulation (EU) 2024/1689"
+      article: 43
+      paragraph: 2 # employment is Annex III point 4 -> internal control (Annex VI), NOT para 1
+      annex: "VI"
+      act_version_date: 2024-07-12
+    applies_to_risk_class: [high_risk]
+    applies_to_role: [provider]
+    obligation_status: mandatory
+    check_type: presence
+    evidence_expected: >-
+      Evidence that the internal-control conformity assessment (Annex VI) was carried out. A
+      procedural act preceding market placement, not observable from the technical documentation
+      alone — confirm separately.
+    document_verifiable: false
+    effective_date: 2026-08-02
+    status: active
+
+  - rule_id: AIA-PO-A47
+    source:
+      instrument: "Regulation (EU) 2024/1689"
+      article: 47
+      paragraph: 1
+      act_version_date: 2024-07-12
+    applies_to_risk_class: [high_risk]
+    applies_to_role: [provider]
+    obligation_status: mandatory
+    check_type: presence
+    evidence_expected: >-
+      An EU declaration of conformity as an administrative artefact. Not part of the system's
+      technical documentation — confirm separately.
+    document_verifiable: false
+    effective_date: 2026-08-02
+    status: active
+
+  - rule_id: AIA-PO-A48
+    source:
+      instrument: "Regulation (EU) 2024/1689"
+      article: 48
+      paragraph: 3 # the operative "affixed visibly, legibly and indelibly" duty
+      act_version_date: 2024-07-12
+    applies_to_risk_class: [high_risk]
+    applies_to_role: [provider]
+    obligation_status: mandatory
+    check_type: presence
+    evidence_expected: >-
+      Affixing of the CE marking. A physical/administrative act, not a property of the technical
+      documentation content — confirm separately.
+    document_verifiable: false
+    effective_date: 2026-08-02
+    status: active
+
+  - rule_id: AIA-PO-A49
+    source:
+      instrument: "Regulation (EU) 2024/1689"
+      article: 49
+      paragraph: 1 # employment is Annex III point 4, so the point-2 exception does not apply
+      annex: "III"
+      act_version_date: 2024-07-12
+    applies_to_risk_class: [high_risk]
+    applies_to_role: [provider]
+    obligation_status: mandatory
+    check_type: presence
+    evidence_expected: >-
+      Registration in the EU database. An external act against a registry, not observable from the
+      technical documentation — confirm separately.
+    document_verifiable: false
+    effective_date: 2026-08-02
+    status: active
+
+  - rule_id: AIA-PO-A72
+    source:
+      instrument: "Regulation (EU) 2024/1689"
+      article: 72
+      paragraph: 1 # establish and document a post-market monitoring system
+      act_version_date: 2024-07-12
+    applies_to_risk_class: [high_risk]
+    applies_to_role: [provider]
+    obligation_status: mandatory
+    check_type: presence
+    evidence_expected: >-
+      An operating post-market monitoring system at the provider. The duty is to run the system;
+      that is an operational process, not a property of the documentation — confirm separately.
+      (The presence of the post-market monitoring PLAN inside the technical documentation is a
+      different question, already covered by Annex IV via AIA-HR-A11.)
+    document_verifiable: false
+    effective_date: 2026-08-02
+    status: active
+
+  - rule_id: AIA-PO-A73
+    source:
+      instrument: "Regulation (EU) 2024/1689"
+      article: 73
+      paragraph: 1 # report serious incidents to market surveillance authorities
+      act_version_date: 2024-07-12
+    applies_to_risk_class: [high_risk]
+    applies_to_role: [provider]
+    obligation_status: mandatory
+    check_type: presence
+    evidence_expected: >-
+      A serious-incident reporting procedure toward market surveillance authorities. A relational
+      post-market obligation, not visible in the technical documentation — confirm separately.
+    document_verifiable: false
+    effective_date: 2026-08-02
+    status: active
+
+  # ------------------------------------------------------------------------------------------
+  # Art. 6(4) — obligation attaching to NOT-HIGH-RISK (derogated) Annex III systems.
+  # Shows that risk-class filtering is real: this rule never applies to a high_risk use case.
+  # ------------------------------------------------------------------------------------------
+  - rule_id: AIA-NHR-A06-4
+    source:
+      instrument: "Regulation (EU) 2024/1689"
+      article: 6
+      paragraph: 4 # document the not-high-risk assessment + register under Art. 49(2)
+      act_version_date: 2024-07-12
+    applies_to_risk_class: [not_high_risk]
+    applies_to_role: [provider]
+    obligation_status: mandatory
+    check_type: substance
+    evidence_expected: >-
+      A documented not-high-risk assessment: which Art. 6(3) derogation condition is relied upon and
+      why the system does not pose a significant risk. The reasoning IS expected in the
+      documentation, hence document-verifiable.
+    document_verifiable: true
+    effective_date: 2026-08-02
+    status: active

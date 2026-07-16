@@ -26,6 +26,8 @@ class LegalSource(BaseModel):
     annex: str | None = None  # "III", "IV"
     annex_point: str | None = None  # "4(a)"
     act_version_date: date  # pinned snapshot — REQUIRED for reproducibility
+    url: str | None = None  # canonical location of the cited provision — lets a future
+    # rule-refresh tool re-fetch the verbatim text and diff it against a new Act version
 
 
 class PolicyRule(BaseModel):
