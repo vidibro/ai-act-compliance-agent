@@ -14,9 +14,18 @@
 #   present_but_inadequate-> section reduced to an empty assertion         -> expect INADEQUATE
 #   distractor            -> plausible but non-responsive marketing text   -> expect GAP
 #   untouched             -> nothing degraded (the pristine document)      -> expect PASS
+#
+# split: `dev` cases may be tuned against (judge prompts, thresholds); `test` cases are HELD OUT
+# and are the only ones whose score may be reported. A case's split defaults to `default_split`
+# below, or `test` if unset (a case is never tuned-against by accident).
+#
+# FOR NOW: every case is `dev`. The held-out `test` set is intentionally EMPTY — it will be authored
+# later as fresh, never-inspected documents, so the reported number stays honest. This commit is the
+# structure only.
 
 reference: hr-candidate-scoring.md
 system_id: hr-candidate-scoring
+default_split: dev  # all current cases are dev; test set to be authored later (held out)
 
 cases:
   # --- Art. 9 — risk management ---------------------------------------------------------------

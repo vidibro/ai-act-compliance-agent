@@ -94,6 +94,7 @@ def main() -> None:
 
     plan = yaml.safe_load((args.golden_dir / "ablations.yaml").read_text(encoding="utf-8"))
     ref_path = args.golden_dir / "reference" / plan["reference"]
+    default_split = plan.get("default_split", "test")
     template, sections = parse_reference(ref_path.read_text(encoding="utf-8"))
     print(f"Reference: {ref_path}  ({len(sections)} tagged rule sections)")
 
@@ -142,6 +143,7 @@ def main() -> None:
         if rule_id:
             expected[rule_id] = verdict
 
+        split = entry.get("split", default_split)
         cases.append(
             GoldenCase(
                 case_id=case_id,
@@ -151,10 +153,11 @@ def main() -> None:
                 ablated_rule_id=rule_id,
                 ablation=ablation,
                 difficulty=difficulty,
+                split=split,
                 expected=expected,
             )
         )
-        print(f"  + {case_id:45} {rule_id or '-':14} -> {verdict.value}")
+        print(f"  + {case_id:45} {rule_id or '-':14} [{split:4}] -> {verdict.value}")
 
     golden = GoldenSet(
         system_id=plan["system_id"],
@@ -165,8 +168,12 @@ def main() -> None:
     )
     out = args.golden_dir / "golden_set.json"
     out.write_text(json.dumps(golden.model_dump(mode="json"), indent=2) + "\n", encoding="utf-8")
-    print(f"\n{len(cases)} cases -> {out}")
+    n_dev = sum(c.split == "dev" for c in cases)
+    n_test = sum(c.split == "test" for c in cases)
+    print(f"\n{len(cases)} cases -> {out}   (dev={n_dev}, test={n_test})")
     print(f"{len(cases) * len(applicable)} rule-level judgements to score.")
+    if n_test == 0:
+        print("NOTE: held-out test split is empty — no reportable score yet, by design.")
 
 
 if __name__ == "__main__":

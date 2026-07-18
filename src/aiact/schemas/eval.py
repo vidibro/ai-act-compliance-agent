@@ -14,10 +14,17 @@ misses.
 from __future__ import annotations
 
 from enum import StrEnum
+from typing import Literal
 
 from pydantic import BaseModel, model_validator
 
 from aiact.schemas.enums import Verdict
+
+# dev  = cases you may tune against (prompts, thresholds).
+# test = HELD OUT. Never tuned against; the only split whose score you are allowed to report.
+# Default is "test": a new case is protected from tuning until deliberately opted into dev, so you
+# cannot silently overfit to it.
+Split = Literal["dev", "test"]
 
 
 class AblationType(StrEnum):
@@ -72,6 +79,7 @@ class GoldenCase(BaseModel):
     ablated_rule_id: str | None  # None for the pristine (untouched) case
     ablation: AblationType
     difficulty: Difficulty
+    split: Split = "test"  # dev = tunable; test = held out, the only reportable score
     expected: dict[str, Verdict]  # rule_id -> expected verdict, for ALL applicable rules
 
     @model_validator(mode="after")
@@ -98,3 +106,9 @@ class GoldenSet(BaseModel):
     act_version_date: str
     spec_version: str
     cases: list[GoldenCase]
+
+    def for_split(self, split: Split | Literal["all"]) -> list[GoldenCase]:
+        """Cases in one split. Tune against `dev`; report only `test`."""
+        if split == "all":
+            return list(self.cases)
+        return [c for c in self.cases if c.split == split]

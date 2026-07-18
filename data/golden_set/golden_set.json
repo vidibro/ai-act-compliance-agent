@@ -12,6 +12,7 @@
       "ablated_rule_id": "AIA-HR-A09",
       "ablation": "removed",
       "difficulty": "obvious",
+      "split": "dev",
       "expected": {
         "AIA-HR-A09": "gap",
         "AIA-HR-A10": "pass",
@@ -30,6 +31,7 @@
       "ablated_rule_id": "AIA-HR-A09",
       "ablation": "present_but_inadequate",
       "difficulty": "buried",
+      "split": "dev",
       "expected": {
         "AIA-HR-A09": "inadequate",
         "AIA-HR-A10": "pass",
@@ -48,6 +50,7 @@
       "ablated_rule_id": "AIA-HR-A09",
       "ablation": "distractor",
       "difficulty": "buried",
+      "split": "dev",
       "expected": {
         "AIA-HR-A09": "gap",
         "AIA-HR-A10": "pass",
@@ -66,6 +69,7 @@
       "ablated_rule_id": "AIA-HR-A10",
       "ablation": "removed",
       "difficulty": "obvious",
+      "split": "dev",
       "expected": {
         "AIA-HR-A09": "pass",
         "AIA-HR-A10": "gap",
@@ -84,6 +88,7 @@
       "ablated_rule_id": "AIA-HR-A10",
       "ablation": "present_but_inadequate",
       "difficulty": "buried",
+      "split": "dev",
       "expected": {
         "AIA-HR-A09": "pass",
         "AIA-HR-A10": "inadequate",
@@ -102,6 +107,7 @@
       "ablated_rule_id": "AIA-HR-A10",
       "ablation": "distractor",
       "difficulty": "buried",
+      "split": "dev",
       "expected": {
         "AIA-HR-A09": "pass",
         "AIA-HR-A10": "gap",
@@ -120,6 +126,7 @@
       "ablated_rule_id": "AIA-HR-A11",
       "ablation": "removed",
       "difficulty": "obvious",
+      "split": "dev",
       "expected": {
         "AIA-HR-A09": "pass",
         "AIA-HR-A10": "pass",
@@ -138,6 +145,7 @@
       "ablated_rule_id": "AIA-HR-A11",
       "ablation": "present_but_inadequate",
       "difficulty": "buried",
+      "split": "dev",
       "expected": {
         "AIA-HR-A09": "pass",
         "AIA-HR-A10": "pass",
@@ -156,6 +164,7 @@
       "ablated_rule_id": "AIA-HR-A12",
       "ablation": "removed",
       "difficulty": "obvious",
+      "split": "dev",
       "expected": {
         "AIA-HR-A09": "pass",
         "AIA-HR-A10": "pass",
@@ -174,6 +183,7 @@
       "ablated_rule_id": "AIA-HR-A12",
       "ablation": "present_but_inadequate",
       "difficulty": "ambiguous",
+      "split": "dev",
       "expected": {
         "AIA-HR-A09": "pass",
         "AIA-HR-A10": "pass",
@@ -192,6 +202,7 @@
       "ablated_rule_id": "AIA-HR-A13",
       "ablation": "removed",
       "difficulty": "obvious",
+      "split": "dev",
       "expected": {
         "AIA-HR-A09": "pass",
         "AIA-HR-A10": "pass",
@@ -210,6 +221,7 @@
       "ablated_rule_id": "AIA-HR-A13",
       "ablation": "present_but_inadequate",
       "difficulty": "buried",
+      "split": "dev",
       "expected": {
         "AIA-HR-A09": "pass",
         "AIA-HR-A10": "pass",
@@ -228,6 +240,7 @@
       "ablated_rule_id": "AIA-HR-A14",
       "ablation": "removed",
       "difficulty": "obvious",
+      "split": "dev",
       "expected": {
         "AIA-HR-A09": "pass",
         "AIA-HR-A10": "pass",
@@ -246,6 +259,7 @@
       "ablated_rule_id": "AIA-HR-A14",
       "ablation": "present_but_inadequate",
       "difficulty": "buried",
+      "split": "dev",
       "expected": {
         "AIA-HR-A09": "pass",
         "AIA-HR-A10": "pass",
@@ -264,6 +278,7 @@
       "ablated_rule_id": "AIA-HR-A14",
       "ablation": "distractor",
       "difficulty": "buried",
+      "split": "dev",
       "expected": {
         "AIA-HR-A09": "pass",
         "AIA-HR-A10": "pass",
@@ -282,6 +297,7 @@
       "ablated_rule_id": "AIA-HR-A15",
       "ablation": "removed",
       "difficulty": "obvious",
+      "split": "dev",
       "expected": {
         "AIA-HR-A09": "pass",
         "AIA-HR-A10": "pass",
@@ -300,6 +316,7 @@
       "ablated_rule_id": "AIA-HR-A15",
       "ablation": "present_but_inadequate",
       "difficulty": "buried",
+      "split": "dev",
       "expected": {
         "AIA-HR-A09": "pass",
         "AIA-HR-A10": "pass",
@@ -318,6 +335,7 @@
       "ablated_rule_id": "AIA-HR-A15",
       "ablation": "distractor",
       "difficulty": "buried",
+      "split": "dev",
       "expected": {
         "AIA-HR-A09": "pass",
         "AIA-HR-A10": "pass",
@@ -336,6 +354,7 @@
       "ablated_rule_id": null,
       "ablation": "untouched",
       "difficulty": "obvious",
+      "split": "dev",
       "expected": {
         "AIA-HR-A09": "pass",
         "AIA-HR-A10": "pass",

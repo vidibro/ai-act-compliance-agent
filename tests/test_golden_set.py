@@ -134,6 +134,7 @@ def test_ablated_rule_must_carry_an_expectation():
             ablated_rule_id="AIA-HR-A14",
             ablation=AblationType.REMOVED,
             difficulty="obvious",
+            split="dev",
             expected={"AIA-HR-A09": Verdict.PASS},
         )
 
@@ -148,8 +149,28 @@ def test_untouched_case_cannot_name_an_ablated_rule():
             ablated_rule_id="AIA-HR-A14",
             ablation=AblationType.UNTOUCHED,
             difficulty="obvious",
+            split="dev",
             expected={"AIA-HR-A14": Verdict.PASS},
         )
+
+
+def test_split_field_defaults_to_test_when_unset():
+    """A hand-built case with no split is HELD OUT by default — never tuned against by accident."""
+    c = GoldenCase(
+        case_id="x", system_id="s", document_path="p", raw_text="t",
+        ablated_rule_id=None, ablation=AblationType.UNTOUCHED, difficulty="obvious",
+        expected={},
+    )
+    assert c.split == "test"
+
+
+def test_every_current_case_is_dev_and_test_is_empty(golden: GoldenSet):
+    """Current structure: all cases are dev; the held-out test split is intentionally empty and
+    will be authored later. When that changes, this test should be updated deliberately."""
+    assert {c.split for c in golden.cases} == {"dev"}
+    assert golden.for_split("test") == []
+    assert len(golden.for_split("dev")) == len(golden.cases)
+    assert len(golden.for_split("all")) == len(golden.cases)
 
 
 # --- The baseline's failure is the project's thesis, so we pin it as a regression test ----------

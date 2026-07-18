@@ -40,18 +40,43 @@ def main() -> None:
     ap.add_argument("--golden", type=Path, default=Path("data/golden_set/golden_set.json"))
     ap.add_argument("--spec", type=Path, default=Path("data/policy/spec.yaml"))
     ap.add_argument("--articles-root", type=Path, default=None)
+    ap.add_argument(
+        "--split",
+        choices=["dev", "test", "all"],
+        default="dev",
+        help="which split to score. Tune on `dev`; only `test` is a reportable number.",
+    )
     args = ap.parse_args()
 
     spec = load_policy_spec(args.spec, args.articles_root)
     golden = GoldenSet.model_validate(json.loads(args.golden.read_text(encoding="utf-8")))
+    cases = golden.for_split(args.split)
+    n_dev = sum(c.split == "dev" for c in golden.cases)
+    n_test = sum(c.split == "test" for c in golden.cases)
     print(
-        f"golden set: {len(golden.cases)} cases | act {golden.act_version_date} | "
-        f"spec {golden.spec_version}"
+        f"golden set: {len(golden.cases)} cases (dev={n_dev}, test={n_test}) | "
+        f"act {golden.act_version_date} | spec {golden.spec_version}"
     )
+    print(f"scoring split={args.split}: {len(cases)} cases")
+    if not cases:
+        print(f"\nNo cases in split={args.split!r}. Nothing to score.")
+        if args.split == "test":
+            print("The held-out test split is empty by design — author it before quoting a score.")
+        return
 
+    scored = GoldenSet(
+        system_id=golden.system_id,
+        reference_path=golden.reference_path,
+        act_version_date=golden.act_version_date,
+        spec_version=golden.spec_version,
+        cases=cases,
+    )
     checker = KeywordBaseline(article_titles(spec, args.articles_root))
-    results = run(checker, golden, spec)
-    print(report(checker.name, results))
+    results = run(checker, scored, spec)
+    label = f"{checker.name}  [split={args.split}]"
+    print(report(label, results))
+    if args.split != "test":
+        print("\n(reminder: this is not a reportable score — only split=test is.)")
 
 
 if __name__ == "__main__":
