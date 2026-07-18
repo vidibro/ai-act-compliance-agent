@@ -1,0 +1,178 @@
+# Ablation plan — how the reference document is degraded to produce test cases.
+#
+# Ground truth here is EXACT, not judged: we know precisely what was removed, hollowed out, or
+# swapped for marketing text, so the expected verdict follows by construction.
+#
+# One case = one rule degraded, everything else left intact. That gives every case two signals at
+# once:
+#   - does the checker CATCH the degraded rule?          (expected verdict below)
+#   - does it leave the other 6 rules alone?             (expected PASS — the false-positive test)
+# A checker that flags everything is useless, so untouched rules matter as much as ablated ones.
+#
+# ablation types (see schemas/enums.py AblationType):
+#   removed               -> section deleted outright                      -> expect GAP
+#   present_but_inadequate-> section reduced to an empty assertion         -> expect INADEQUATE
+#   distractor            -> plausible but non-responsive marketing text   -> expect GAP
+#   untouched             -> nothing degraded (the pristine document)      -> expect PASS
+
+reference: hr-candidate-scoring.md
+system_id: hr-candidate-scoring
+
+cases:
+  # --- Art. 9 — risk management ---------------------------------------------------------------
+  - rule_id: AIA-HR-A09
+    ablation: removed
+    difficulty: obvious
+
+  - rule_id: AIA-HR-A09
+    ablation: present_but_inadequate
+    difficulty: buried
+    replacement: |
+      ## 2. Risk management system
+
+      Northwind operates a comprehensive risk management system for TalentRank. Risks are
+      identified, assessed and mitigated on an ongoing basis throughout the product lifecycle,
+      in line with industry best practice. Our Responsible AI board oversees this process.
+
+  - rule_id: AIA-HR-A09
+    ablation: distractor
+    difficulty: buried
+    replacement: |
+      ## 2. Our commitment to responsible AI
+
+      At Northwind, trustworthy AI is at the heart of everything we build. Our values —
+      fairness, accountability and transparency — guide every product decision. We are proud
+      signatories of three industry AI ethics charters, and our leadership team is committed to
+      advancing the responsible use of artificial intelligence across the recruitment sector.
+      We believe AI should empower people, never replace human judgement.
+
+  # --- Art. 10 — data and data governance -----------------------------------------------------
+  - rule_id: AIA-HR-A10
+    ablation: removed
+    difficulty: obvious
+
+  - rule_id: AIA-HR-A10
+    ablation: present_but_inadequate
+    difficulty: buried
+    replacement: |
+      ## 3. Data and data governance
+
+      TalentRank is trained on a large, high-quality dataset of historical applications. We apply
+      appropriate data governance practices and our data sets are relevant and representative for
+      the intended purpose. Data quality is a priority for our engineering team.
+
+  - rule_id: AIA-HR-A10
+    ablation: distractor
+    difficulty: buried
+    replacement: |
+      ## 3. Data security and privacy
+
+      All candidate data is encrypted in transit with TLS 1.3 and at rest with AES-256. We are
+      ISO 27001 certified and fully GDPR compliant. Data is stored in EU data centres in Frankfurt
+      and Dublin, and we maintain a data processing agreement with every client. Candidates may
+      exercise their data subject rights through our privacy portal at any time.
+
+  # --- Art. 11 — technical documentation (Annex IV completeness) ------------------------------
+  - rule_id: AIA-HR-A11
+    ablation: removed
+    difficulty: obvious
+
+  - rule_id: AIA-HR-A11
+    ablation: present_but_inadequate
+    difficulty: buried
+    replacement: |
+      ## 4. Technical documentation
+
+      Full technical documentation for TalentRank has been drawn up in accordance with the
+      applicable requirements and is kept up to date. It is available to national competent
+      authorities on request.
+
+  # --- Art. 12 — record-keeping / logging -----------------------------------------------------
+  - rule_id: AIA-HR-A12
+    ablation: removed
+    difficulty: obvious
+
+  - rule_id: AIA-HR-A12
+    ablation: present_but_inadequate
+    difficulty: ambiguous
+    # NOTE: Art. 12 is a PRESENCE check — existence of the logging capability, described, is
+    # enough. So a bare assertion that logging exists is arguably a PASS, not INADEQUATE. This
+    # case is deliberately marked `ambiguous`: it probes whether the checker respects check_type
+    # instead of applying substance scrutiny everywhere. Expected verdict is overridden below.
+    expect: pass
+    replacement: |
+      ## 6. Record-keeping and logging
+
+      The system automatically records events (logs) over its lifetime. Logging is enabled by
+      default and cannot be disabled by the deployer.
+
+  # --- Art. 13 — transparency / instructions for use ------------------------------------------
+  - rule_id: AIA-HR-A13
+    ablation: removed
+    difficulty: obvious
+
+  - rule_id: AIA-HR-A13
+    ablation: present_but_inadequate
+    difficulty: buried
+    replacement: |
+      ## 9. Transparency and instructions for use
+
+      TalentRank is designed to be transparent. Deployers receive full instructions for use with
+      the system, enabling them to interpret the output and use it appropriately. Our
+      documentation is clear, comprehensive and accessible.
+
+  # --- Art. 14 — human oversight (the canonical case from the brief) --------------------------
+  - rule_id: AIA-HR-A14
+    ablation: removed
+    difficulty: obvious
+
+  - rule_id: AIA-HR-A14
+    ablation: present_but_inadequate
+    difficulty: buried
+    replacement: |
+      ## 7. Human oversight
+
+      We ensure appropriate human oversight of TalentRank. A human is always in the loop, and
+      recruiters remain in control of all hiring decisions at every stage of the process.
+
+  - rule_id: AIA-HR-A14
+    ablation: distractor
+    difficulty: buried
+    replacement: |
+      ## 7. Working with your team
+
+      TalentRank is built to fit seamlessly into your recruiters' daily workflow. The intuitive
+      console is designed with usability in mind, and onboarding takes less than an hour. Our
+      customer success team runs quarterly business reviews with every client to make sure your
+      team gets the most out of the platform.
+
+  # --- Art. 15 — accuracy, robustness, cybersecurity (METRICS check) --------------------------
+  - rule_id: AIA-HR-A15
+    ablation: removed
+    difficulty: obvious
+
+  - rule_id: AIA-HR-A15
+    ablation: present_but_inadequate
+    difficulty: buried
+    # The canonical metrics failure: confident claims, zero numbers.
+    replacement: |
+      ## 8. Accuracy, robustness and cybersecurity
+
+      TalentRank achieves high accuracy and is robust across a wide range of real-world
+      conditions. The system performs consistently throughout its lifecycle. We take security
+      seriously and follow industry-standard practices to protect the model and its data.
+
+  - rule_id: AIA-HR-A15
+    ablation: distractor
+    difficulty: buried
+    replacement: |
+      ## 8. Performance and reliability
+
+      TalentRank is deployed on a highly available architecture with a 99.95% uptime SLA. Median
+      scoring latency is 120 ms and p99 latency is under 400 ms. The service auto-scales to handle
+      peak hiring seasons, and we maintain a public status page with real-time availability.
+
+  # --- The pristine document — measures FALSE POSITIVES ---------------------------------------
+  - rule_id: null
+    ablation: untouched
+    difficulty: obvious

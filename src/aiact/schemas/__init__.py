@@ -11,31 +11,33 @@ from aiact.schemas.classification import (
     UseCaseClassification,
 )
 from aiact.schemas.enums import (
-    AblationType,
     ActorRole,
     AnnexIIIArea,
     CheckType,
     DerogationCondition,
-    Difficulty,
     ObligationStatus,
     RiskClass,
     Verdict,
 )
+from aiact.schemas.eval import AblationType, Difficulty, GoldenCase, GoldenSet
 from aiact.schemas.policy import LegalSource, PolicyRule, PolicySpec
 from aiact.schemas.report import DISCLAIMER, ComplianceReport, Finding, ReportSummary
 from aiact.schemas.system import DocumentChunk, SystemUnderReview
 
 __all__ = [
-    # enums
-    "AblationType",
+    # enums — the Regulation's own semantics
     "ActorRole",
     "AnnexIIIArea",
     "CheckType",
     "DerogationCondition",
-    "Difficulty",
     "ObligationStatus",
     "RiskClass",
     "Verdict",
+    # eval — our harness's vocabulary, NOT part of the Regulation
+    "AblationType",
+    "Difficulty",
+    "GoldenCase",
+    "GoldenSet",
     # policy
     "LegalSource",
     "PolicyRule",
