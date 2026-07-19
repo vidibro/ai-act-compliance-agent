@@ -31,7 +31,10 @@ def article_titles(spec, articles_root: Path | None) -> dict[str, str]:
     titles: dict[str, str] = {}
     for rule in spec.rules:
         path = art_dir / f"article-{rule.source.article:03d}.md"
-        titles[rule.rule_id] = _TITLE.search(path.read_text(encoding="utf-8")).group(1).strip()
+        m = _TITLE.search(path.read_text(encoding="utf-8"))
+        if m is None:
+            raise ValueError(f"{path} has no title in its front matter")
+        titles[rule.rule_id] = m.group(1).strip()
     return titles
 
 

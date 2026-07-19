@@ -100,8 +100,10 @@ def report(checker_name: str, results: list[Result]) -> str:
         f"correct: {_pct(len(intact) - len(fp), len(intact))}"
     )
     if fp:
-        for r in sorted({(x.rule_id, x.expected.value, x.got.value) for x in fp}):
-            lines.append(f"    ! {r[0]}: expected {r[1]}, got {r[2]}")
+        for rule_id, expected, got in sorted(
+            {(x.rule_id, x.expected.value, x.got.value) for x in fp}
+        ):
+            lines.append(f"    ! {rule_id}: expected {expected}, got {got}")
 
     # --- The headline the project actually cares about ---
     inadequate_cases = [r for r in results if r.expected == Verdict.INADEQUATE]

@@ -208,7 +208,8 @@ def _labeled(el: ET.Element, indent: int, label: str, skip: set[str]) -> list[st
 
 def render_article(art: ET.Element) -> tuple[int, str, str]:
     """Return (article_number, title, literal_body_text) for one ARTICLE element."""
-    number_text = _inline(art.find("TI.ART"))  # e.g. "Article 9"
+    ti = art.find("TI.ART")
+    number_text = _inline(ti) if ti is not None else ""  # e.g. "Article 9"
     m = re.search(r"(\d+)", number_text)
     number = int(m.group(1)) if m else 0
     sti = art.find("STI.ART")

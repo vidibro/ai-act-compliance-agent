@@ -20,6 +20,7 @@ dependencies = [
 dev = [
     "pytest>=8.2",
     "ruff>=0.5",
+    "mypy>=1.10",
 ]
 eval = [
     "ragas>=0.1",
@@ -43,3 +44,32 @@ select = ["E", "F", "I", "UP", "B", "W"]
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 pythonpath = ["src"]
+
+[tool.mypy]
+# Type-checks our code — including Protocol conformance (that e.g. ScriptedBrain and LLMBrain
+# actually satisfy NodeBrain, signatures and all). This is the PHP-`implements`-style guarantee,
+# enforced at check time rather than at runtime.
+python_version = "3.11"
+files = ["src", "scripts"]
+mypy_path = "src"
+plugins = ["pydantic.mypy"]
+# Third-party libs without type stubs — don't fail on their internals.
+ignore_missing_imports = true
+warn_unused_ignores = true
+warn_redundant_casts = true
+check_untyped_defs = true
+
+[[tool.mypy.overrides]]
+# Heavy third-party libs: don't follow into them (some ship stubs using newer-than-3.11 syntax,
+# e.g. numpy's PEP 695 `type` statements). We only want to type-check OUR code, treating these as
+# opaque. This is scope control, not laziness — their internals aren't our contract.
+module = [
+    "langgraph.*",
+    "litellm.*",
+    "langfuse.*",
+    "chromadb.*",
+    "numpy.*",
+    "ragas.*",
+]
+follow_imports = "skip"
+ignore_missing_imports = true
