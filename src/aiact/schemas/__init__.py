@@ -1,13 +1,16 @@
 """Pydantic v2 schemas — the contract between all future components.
 
 A verdict may never exist without its evidence and its legal source: LegalSource is a required,
-default-less field on NodeAnswer and Finding, so an uncited assessment cannot be constructed.
+default-less field on ClassificationAnswer and Finding, so an uncited assessment cannot be
+constructed.
 """
 
 from aiact.schemas.classification import (
+    ClassificationAnswer,
+    ClassificationEvidence,
+    ClassificationQuestion,
     ClassificationResult,
     ClassificationState,
-    NodeAnswer,
     UseCaseClassification,
 )
 from aiact.schemas.enums import (
@@ -57,7 +60,9 @@ __all__ = [
     # classification
     "ClassificationResult",
     "ClassificationState",
-    "NodeAnswer",
+    "ClassificationAnswer",
+    "ClassificationEvidence",
+    "ClassificationQuestion",
     "UseCaseClassification",
     # report
     "DISCLAIMER",

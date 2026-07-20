@@ -8,9 +8,10 @@ exemptions — so profiling must be evaluated on its own, before exemptions are 
 
 from __future__ import annotations
 
+from dataclasses import dataclass
 from typing import Any, Literal
 
-from pydantic import BaseModel, model_validator
+from pydantic import BaseModel, field_validator, model_validator
 
 from aiact.schemas.enums import AnnexIIIArea, RiskClass
 from aiact.schemas.policy import LegalSource
@@ -18,8 +19,44 @@ from aiact.schemas.system import SystemUnderReview
 
 Confidence = Literal["high", "medium", "low"]
 
+EVIDENCE_QUOTE_MAX = 300  # force citing a pinpoint excerpt, not dumping a section
 
-class NodeAnswer(BaseModel):
+
+def _check_quote_length(v: str | None) -> str | None:
+    if v is not None and len(v) > EVIDENCE_QUOTE_MAX:
+        raise ValueError(
+            f"evidence_quote must be under {EVIDENCE_QUOTE_MAX} chars "
+            f"(got {len(v)}) — cite a pinpoint excerpt, do not dump a section."
+        )
+    return v
+
+
+@dataclass(frozen=True)
+class ClassificationQuestion:
+    """One question the cascade asks, with the provision it rests on and the shape of a valid
+    answer — the INPUT half of the contract whose output half is ClassificationAnswer.
+
+    Named for what it IS (a legal question) rather than where it happens to be used: the graph
+    binds one of these to each node, but nothing about the question is graph-specific. `node_id` is
+    the only graph coupling — the key the cascade looks it up by, and what an answer carries back.
+
+    A plain frozen dataclass, not a BaseModel: it is authored in code as a literal constant
+    (see graph/classify.py QUESTIONS), never parsed from user input, so there is nothing to
+    validate at a trust boundary."""
+
+    node_id: str
+    source: LegalSource
+    text: str  # the question itself, put to a brain verbatim
+    answer_type: str  # "bool" | "annex_area" | "derogation" — the shape a valid answer takes
+    context: str = ""
+    """The VERBATIM enacted text of the cited provision, for the brain to reason against.
+
+    Empty by default so the deterministic path needs no file IO; `load_questions()` fills it from
+    the article/annex store. A model must never answer "which Annex III area is this?" from its own
+    memory of the Annex — the same rule that governs the obligation `requirement` fields."""
+
+
+class ClassificationAnswer(BaseModel):
     """Every classification decision must be evidence-backed and citable.
 
     `source` is required and has no default: an uncited node answer cannot be constructed."""
@@ -30,6 +67,40 @@ class NodeAnswer(BaseModel):
     evidence_chunk_id: str | None = None
     confidence: Confidence
     source: LegalSource
+    node_id: str | None = None  # which cascade question produced this (see graph/classify.py)
+
+    _quote_length = field_validator("evidence_quote")(_check_quote_length)
+
+
+class ClassificationEvidence(BaseModel):
+    """WHY a use case landed in its risk class, in the two halves that make a verdict auditable:
+    the PROVISION that applies, and the WORDS IN THE DOCUMENTATION that made it apply.
+
+    `triggered_by` used to be a bare list of LegalSource — it said which article drove the verdict
+    but not what in the submitted documentation triggered it, so a reader could not check the
+    reasoning against the source text. That is the whole point of the tool, so the evidence travels
+    with the citation rather than being dropped on the way out of the cascade.
+
+    `source` is required and has no default, for the same reason it is on ClassificationAnswer."""
+
+    source: LegalSource
+    node_id: str | None = None  # the cascade question that produced it ("profiling", ...)
+    evidence_quote: str | None = None  # verbatim span of the DOCUMENTATION (not of the law)
+    evidence_chunk_id: str | None = None
+    reasoning: str | None = None  # the node's own one-line justification
+
+    _quote_length = field_validator("evidence_quote")(_check_quote_length)
+
+    @classmethod
+    def from_answer(cls, answer: ClassificationAnswer) -> ClassificationEvidence:
+        """Carry a node's answer through to the verdict without losing its evidence."""
+        return cls(
+            source=answer.source,
+            node_id=answer.node_id,
+            evidence_quote=answer.evidence_quote,
+            evidence_chunk_id=answer.evidence_chunk_id,
+            reasoning=answer.reasoning,
+        )
 
 
 class UseCaseClassification(BaseModel):
@@ -51,12 +122,12 @@ class UseCaseClassification(BaseModel):
     description: str  # what the system does in this use case
     annex_iii_area: AnnexIIIArea | None = None
     annex_iii_use_case: LegalSource | None = None  # e.g. Annex III(4)(a)
-    performs_profiling: NodeAnswer | None = None  # OUR SPLIT NODE. Art. 6(3) carve-back.
+    performs_profiling: ClassificationAnswer | None = None  # OUR SPLIT NODE. Art. 6(3) carve-back.
     # Decided per use case. If true -> high_risk, and derogation is not even considered.
-    derogation: NodeAnswer | None = None  # Art. 6(3)(a)-(d). Only evaluated when
+    derogation: ClassificationAnswer | None = None  # Art. 6(3)(a)-(d). Only evaluated when
     # performs_profiling is false.
     risk_class: RiskClass
-    triggered_by: list[LegalSource]  # which articles/annex points drove this verdict
+    triggered_by: list[ClassificationEvidence]  # which provisions drove it, and on what evidence
     reasoning: str
     confidence: Confidence
 
@@ -84,14 +155,14 @@ class ClassificationState(BaseModel):
     what it does in each individual use case."""
 
     system: SystemUnderReview
-    is_ai_system: NodeAnswer | None = None  # Art. 3(1)
-    actor_role: NodeAnswer | None = None  # Art. 3(3)
-    in_eu_scope: NodeAnswer | None = None  # Art. 2
-    is_excluded: NodeAnswer | None = None  # Art. 2
-    prohibited_practices: NodeAnswer | None = None  # Art. 5  <- checked BEFORE high-risk
-    is_safety_component: NodeAnswer | None = None  # Art. 6(1), Annex I
-    annex_iii_areas: NodeAnswer | None = None  # Art. 6(2), Annex III
-    transparency_triggers: NodeAnswer | None = None  # Art. 50 — checked independently of
+    is_ai_system: ClassificationAnswer | None = None  # Art. 3(1)
+    actor_role: ClassificationAnswer | None = None  # Art. 3(3)
+    in_eu_scope: ClassificationAnswer | None = None  # Art. 2
+    is_excluded: ClassificationAnswer | None = None  # Art. 2
+    prohibited_practices: ClassificationAnswer | None = None  # Art. 5  <- checked BEFORE high-risk
+    is_safety_component: ClassificationAnswer | None = None  # Art. 6(1), Annex I
+    annex_iii_areas: ClassificationAnswer | None = None  # Art. 6(2), Annex III
+    transparency_triggers: ClassificationAnswer | None = None  # Art. 50 — checked independently of
     # the risk class; can apply to a minimal-risk system and a high-risk one alike
     use_cases: list[UseCaseClassification] = []  # the per-use-case work happens here
 
@@ -102,5 +173,10 @@ class ClassificationResult(BaseModel):
     use_cases: list[UseCaseClassification]
     overall_risk_class: RiskClass  # the most high-risk class across all use cases
     reasoning: str  # why this overall class, and which use case drove it
-    triggered_by: list[LegalSource]
+    triggered_by: list[ClassificationEvidence]
     confidence: Confidence
+    transparency: ClassificationAnswer | None = None
+    """Art. 50 — a SEPARATE AXIS from the risk tier, deliberately not folded into it. A minimal-risk
+    text generator and a high-risk chatbot can both owe transparency, and a high-risk system may owe
+    none. It is therefore answered for every classification and reported beside the risk class —
+    never as an input to it."""

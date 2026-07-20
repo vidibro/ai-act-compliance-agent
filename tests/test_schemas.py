@@ -16,13 +16,14 @@ from aiact.schemas import (
     ActorRole,
     AnnexIIIArea,
     CheckType,
+    ClassificationAnswer,
+    ClassificationEvidence,
     ClassificationResult,
     ClassificationState,
     ComplianceReport,
     DocumentChunk,
     Finding,
     LegalSource,
-    NodeAnswer,
     ObligationStatus,
     PolicyRule,
     PolicySpec,
@@ -45,7 +46,7 @@ def a_source(**overrides) -> LegalSource:
     return LegalSource(**kwargs)
 
 
-def a_node(value, **overrides) -> NodeAnswer:
+def a_node(value, **overrides) -> ClassificationAnswer:
     kwargs = dict(
         value=value,
         reasoning="decisive fact located in the documentation",
@@ -53,7 +54,16 @@ def a_node(value, **overrides) -> NodeAnswer:
         source=a_source(),
     )
     kwargs.update(overrides)
-    return NodeAnswer(**kwargs)
+    return ClassificationAnswer(**kwargs)
+
+
+def an_evidence(**overrides) -> ClassificationEvidence:
+    """A triggering provision PLUS the documentation span that triggered it. `**overrides` go to
+    the LegalSource, since that is what a test usually varies."""
+    return ClassificationEvidence(
+        source=a_source(**overrides),
+        evidence_quote="the system ranks candidates by predicted job fit",
+    )
 
 
 def a_use_case(**overrides) -> UseCaseClassification:
@@ -62,7 +72,7 @@ def a_use_case(**overrides) -> UseCaseClassification:
         description="extracts structured fields from CVs",
         annex_iii_area=AnnexIIIArea.EMPLOYMENT,
         risk_class=RiskClass.NOT_HIGH_RISK,
-        triggered_by=[a_source(annex="III", annex_point="4(a)")],
+        triggered_by=[an_evidence(annex="III", annex_point="4(a)")],
         reasoning="field extraction only; derogation (a) applies",
         confidence="high",
     )
@@ -120,7 +130,7 @@ def test_policy_rule_and_spec_valid():
 
 def test_node_answer_requires_source():
     with pytest.raises(ValidationError):
-        NodeAnswer(value=True, reasoning="x", confidence="high")  # no source
+        ClassificationAnswer(value=True, reasoning="x", confidence="high")  # no source
 
 
 def test_classification_state_valid():
@@ -229,7 +239,7 @@ def _multi_use_case_report(policy_spec: PolicySpec) -> ComplianceReport:
         description="drafts job advert text",
         annex_iii_area=None,
         risk_class=RiskClass.MINIMAL,
-        triggered_by=[a_source(article=50)],
+        triggered_by=[an_evidence(article=50)],
         reasoning="outside Annex III; Art. 50 transparency applies independently",
     )
 
@@ -237,7 +247,7 @@ def _multi_use_case_report(policy_spec: PolicySpec) -> ComplianceReport:
         use_cases=[parser, scorer, generator],
         overall_risk_class=RiskClass.HIGH_RISK,  # most severe across use cases
         reasoning="candidate_scoring performs profiling; drives the overall class to high_risk",
-        triggered_by=[a_source(article=6, paragraph=3)],
+        triggered_by=[an_evidence(article=6, paragraph=3)],
         confidence="high",
     )
 
@@ -307,7 +317,7 @@ def test_report_rejects_finding_with_unknown_use_case():
         use_cases=[a_use_case(use_case_id="cv_parsing")],
         overall_risk_class=RiskClass.NOT_HIGH_RISK,
         reasoning="single use case",
-        triggered_by=[a_source()],
+        triggered_by=[an_evidence()],
         confidence="high",
     )
     with pytest.raises(ValidationError, match="unknown use_case_id"):
@@ -347,7 +357,7 @@ def test_report_rejects_finding_with_unknown_rule_id():
         use_cases=[a_use_case(use_case_id="cv_parsing")],
         overall_risk_class=RiskClass.NOT_HIGH_RISK,
         reasoning="single use case",
-        triggered_by=[a_source()],
+        triggered_by=[an_evidence()],
         confidence="high",
     )
     with pytest.raises(ValidationError, match="not present in the loaded PolicySpec"):

@@ -1,11 +1,14 @@
 # Roadmap ↔ Repo Alignment
 
 _Audit date: 2026-07-17. Updated 2026-07-18 (dev/held-out split landed; rule count + article-store
-notes reconciled). Compares [ROADMAP.md](ROADMAP.md) against what is actually in the tree._
+notes reconciled) and 2026-07-20 (M3 built; annexes ingested; evidence carried into verdicts; M7
+deferred). Compares [ROADMAP.md](ROADMAP.md) against what is actually in the tree._
 
-**Verified this run (2026-07-18):** `pytest` → 53 passed; `python scripts/run_eval.py` → runs on
-the `dev` split (19 cases, 133 rule-level judgements), prints the CATCH / FALSE-POSITIVE /
-INADEQUATE scorecard; `--split test` correctly reports the held-out split is empty by design.
+**Verified this run (2026-07-20):** `make check` → ruff clean, mypy clean (23 files), `pytest` → 83
+passed; `python scripts/classify.py --demo` → the flip, deterministically, no API key;
+`python scripts/run_eval.py` → runs on the `dev` split (19 cases, 133 rule-level judgements),
+prints the CATCH / FALSE-POSITIVE / INADEQUATE scorecard; `--split test` correctly reports the
+held-out split is empty by design.
 
 ## Milestone status
 
@@ -14,10 +17,11 @@ INADEQUATE scorecard; `--split test` correctly reports the held-out split is emp
 | **M0 — Schemas** | ✅ Done | `enums.py`, `policy.py`, `system.py`, `classification.py`, `report.py`, `eval.py`. Profiling carve-back enforced by validator (`classification.py:64` `_enforce_profiling_carve_back`). Eval-only enums (`AblationType`, `Difficulty`) moved out of `enums.py` into `eval.py`. |
 | **M1 — Golden-set** | 🟡 Half | Layer 2 fully built + dev/test split architecture in place. Layer 1 + the 3 required cases still missing. See below. |
 | **M2 — Policy spec** | ✅ Done (ahead) | `data/policy/spec.yaml` = **19 rules** (v0.4.0); `policy_loader.py` resolves `requirement` verbatim from the **version-scoped** article store `data/policy/articles/2024-07-12/` (all 113 articles ingested by `fetch_articles.py`); paraphrase rejected; a literal-substring test guarantees no drift. Coverage ledger `scope-2024-07-12.yaml` classifies all 113 articles (in-scope vs out-of-scope-with-reason); a test blocks any unclassified article. |
-| **M3 — Classification graph** | ❌ Not started | `src/aiact/graph/` is empty (`.gitkeep` only). No LangGraph nodes, no Langfuse wiring. Schema exists, but nothing runs the cascade. |
+| **M3 — Classification graph** | 🟡 Built, single-use-case | `graph/` = `brain.py` (contract), `classify.py` (cascade), `scripted_brain.py`, `llm_brain.py`. All 6 Layer-1 cases route correctly; **the flip flips** deterministically. Questions anchored in verbatim article + Annex text (`load_questions()`). Verdicts carry `ClassificationEvidence` (provision + documentation quote). **Not done:** Langfuse wiring; no LLM run scored yet (needs API key); emits exactly ONE use case per run — see M7. |
 | **M4 — Gap-analysis checker (RAG)** | ❌ Not started | `src/aiact/tools/` empty. No Chroma ingest/retrieval. Only the keyword strawman exists. |
 | **M5 — Eval (numbers)** | 🟡 Harness done, no agent | `eval/runner.py` + `run_eval.py` produce the CATCH / FALSE-POSITIVE / INADEQUATE breakdown, now split-aware (`--split dev/test/all`). Only checker is `baseline.py` (strawman). No classification-accuracy eval, no cost reporting. |
 | **M6 — Packaging** | ❌ Stub | `README.md` is ~18 lines (honest scaffold note + disclaimer). No FastAPI, no diagram, no demo, no trace shown. |
+| **M7 — Multi-use-case decomposition** | ⏸ Deferred by decision | The cascade is per-use-case, but `GraphState` carries one `description`, so `ClassificationResult.use_cases` always has length 1. Deliberately parked until M6 ships: it needs its own eval layer (ground truth = the *split*), which the current one-description-one-class golden set cannot provide. |
 
 ## The gap that matters most
 
@@ -92,5 +96,9 @@ Two of the eval's own columns are still thin: `distractor` cases exist for only 
    practices) before labelling the prohibited case.
 3. ~~Commit the dev/held-out split~~ — **DONE (structure)**; still needs real held-out `test` data
    authored to hit the roadmap's ~5/15 ratio.
-4. Then start **M3 (LangGraph classification)** — it's the biggest unstarted block and gates the
-   demo, the trace, and any classification eval numbers.
+4. ~~Then start **M3 (LangGraph classification)**~~ — **DONE (single-use-case).** Remaining M3 work
+   is Langfuse wiring and one scored LLM run against Layer 1.
+5. **M4 (Chroma gap-analysis checker)** is now the biggest unstarted block, and it works fine on
+   single-use-case input — which is exactly why **M7 (multi-use-case decomposition) stays parked**.
+   Do not let it jump the queue: it is the least verifiable judgement in the pipeline and cannot be
+   scored until a decomposition golden set exists.

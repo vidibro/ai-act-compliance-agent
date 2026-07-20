@@ -12,7 +12,7 @@ from datetime import date, datetime
 
 from pydantic import BaseModel, ValidationInfo, field_validator, model_validator
 
-from aiact.schemas.classification import ClassificationResult, Confidence
+from aiact.schemas.classification import EVIDENCE_QUOTE_MAX, ClassificationResult, Confidence
 from aiact.schemas.enums import Verdict
 from aiact.schemas.policy import LegalSource, PolicySpec
 
@@ -24,9 +24,6 @@ DISCLAIMER = (
     "and findings may be incomplete or incorrect. You should consult a qualified legal "
     "professional before relying on any part of this report."
 )
-
-_EVIDENCE_QUOTE_MAX = 300  # force citing a pinpoint excerpt, not dumping a section
-
 
 class Finding(BaseModel):
     """The verdict on one PolicyRule for one use case.
@@ -47,9 +44,9 @@ class Finding(BaseModel):
     @field_validator("evidence_quote")
     @classmethod
     def _evidence_quote_is_a_quote(cls, v: str | None) -> str | None:
-        if v is not None and len(v) > _EVIDENCE_QUOTE_MAX:
+        if v is not None and len(v) > EVIDENCE_QUOTE_MAX:
             raise ValueError(
-                f"evidence_quote must be under {_EVIDENCE_QUOTE_MAX} chars "
+                f"evidence_quote must be under {EVIDENCE_QUOTE_MAX} chars "
                 f"(got {len(v)}) — cite a pinpoint excerpt, do not dump a section."
             )
         return v
