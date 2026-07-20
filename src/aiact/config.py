@@ -33,6 +33,8 @@ class Settings(BaseSettings):
     # wording: rules cite a provision, the loader resolves the text from here. Never duplicated
     # into the spec.
     policy_articles_path: str = "./data/policy/articles"
+    # Verbatim annex text (Annex III = the high-risk areas, Annex IV = the Art. 11 checklist).
+    policy_annexes_path: str = "./data/policy/annexes"
 
 
 def get_settings() -> Settings:

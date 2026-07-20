@@ -9,15 +9,19 @@ source: EUR-Lex Formex v4 XML (fmx4), Publications Office of the EU
 source_url: http://publications.europa.eu/resource/oj/L_202401689.ENG.fmx4
 authentic_pdf: http://publications.europa.eu/resource/oj/L_202401689.ENG.pdfa2a
 act_version_date: 2024-07-12
-retrieved_at: 2026-07-16
-sha256: 647a80839621eafddb2494b8807f82b9d754c1725e29bf632a45cfdc31f1d585
+retrieved_at: 2026-07-20
+sha256: 835bc953ec6435c04c66c4b4ca6580935c7aa493dfadb95d7e05e6aefa4c9774
 ---
 
 Article 41
 Common specifications
 
 1. The Commission may adopt, implementing acts establishing common specifications for the requirements set out in Section 2 of this Chapter or, as applicable, for the obligations set out in Sections 2 and 3 of Chapter V where the following conditions have been fulfilled:
-        (a) the Commission has requested, pursuant to Article 10(1) of Regulation (EU) No 1025/2012, one or more European standardisation organisations to draft a harmonised standard for the requirements set out in Section 2 of this Chapter, or, as applicable, for the obligations set out in Sections 2 and 3 of Chapter V, and: (i)the request has not been accepted by any of the European standardisation organisations; or(ii)the harmonised standards addressing that request are not delivered within the deadline set in accordance with Article 10(1) of Regulation (EU) No 1025/2012; or(iii)the relevant harmonised standards insufficiently address fundamental rights concerns; or(iv)the harmonised standards do not comply with the request; and
+        (a) the Commission has requested, pursuant to Article 10(1) of Regulation (EU) No 1025/2012, one or more European standardisation organisations to draft a harmonised standard for the requirements set out in Section 2 of this Chapter, or, as applicable, for the obligations set out in Sections 2 and 3 of Chapter V, and:
+                (i) the request has not been accepted by any of the European standardisation organisations; or
+                (ii) the harmonised standards addressing that request are not delivered within the deadline set in accordance with Article 10(1) of Regulation (EU) No 1025/2012; or
+                (iii) the relevant harmonised standards insufficiently address fundamental rights concerns; or
+                (iv) the harmonised standards do not comply with the request; and
         (b) no reference to harmonised standards covering the requirements referred to in Section 2 of this Chapter or, as applicable, the obligations referred to in Sections 2 and 3 of Chapter V has been published in the Official Journal of the European Union in accordance with Regulation (EU) No 1025/2012, and no such reference is expected to be published within a reasonable period.
     When drafting the common specifications, the Commission shall consult the advisory forum referred to in Article 67.
     The implementing acts referred to in the first subparagraph of this paragraph shall be adopted in accordance with the examination procedure referred to in Article 98(2).

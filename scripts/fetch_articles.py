@@ -72,6 +72,7 @@ ELI = "http://data.europa.eu/eli/reg/2024/1689/oj"
 
 DEFAULT_VERSION_DATE = "2024-07-12"
 DEFAULT_OUT_ROOT = Path("data/policy/articles")
+DEFAULT_ANNEX_ROOT = Path("data/policy/annexes")
 
 
 class ActVersion(NamedTuple):
@@ -157,7 +158,10 @@ def _split(el: ET.Element, skip: set[str]) -> tuple[list[str], list[ET.Element]]
             if child.tail and child.tail.strip():
                 parts.append(child.tail.strip())
             continue
-        if child.tag in _BLOCK:
+        # A child is a block if it IS one, or if it merely wraps one. Annexes nest
+        # <P><LIST>…</LIST></P>, so treating a wrapper as inline would flatten a whole
+        # lettered list onto a single line and destroy the numbering.
+        if child.tag in _BLOCK or child.find("LIST") is not None or child.find("PARAG") is not None:
             blocks.append(child)
         else:
             t = _inline(child)
@@ -225,6 +229,33 @@ def render_article(art: ET.Element) -> tuple[int, str, str]:
     return number, title, "\n".join(lines).rstrip() + "\n"
 
 
+def render_annex(annex: ET.Element) -> tuple[str, str, str]:
+    """Return (roman_numeral, title, literal_body_text) for one ANNEX element.
+
+    Annexes matter as much as articles: Annex III IS the list of high-risk areas the classification
+    cascade asks about, and Annex IV is the technical-documentation checklist Art. 11 points at.
+    Leaving them out would mean the graph reasons about Annex III from a model's memory rather than
+    from the enacted text — the exact thing the article store exists to prevent.
+    """
+    title_el = annex.find("TITLE")
+    ti = title_el.find("TI") if title_el is not None else None
+    heading = _inline(ti) if ti is not None else ""  # "ANNEX III"
+    m = re.search(r"ANNEX\s+([IVXL]+)", heading)
+    roman = m.group(1) if m else ""
+    sti = title_el.find("STI") if title_el is not None else None
+    title = _inline(sti) if sti is not None else ""
+
+    lines = [heading]
+    if title:
+        lines.append(title)
+    lines.append("")
+    contents = annex.find("CONTENTS")
+    if contents is not None:
+        for child in contents:
+            lines += _render(child, 0)
+    return roman, title, "\n".join(lines).rstrip() + "\n"
+
+
 # --- Fetch / parse ------------------------------------------------------------------------------
 def download_zip(url: str) -> bytes:
     req = urllib.request.Request(url, headers={"User-Agent": "aiact-compliance-agent/0.1"})
@@ -261,6 +292,25 @@ def parse_articles(body_xml: bytes) -> dict[int, tuple[str, str]]:
         if number:
             articles[number] = (title, text)
     return articles
+
+
+def parse_annexes(zip_bytes: bytes) -> dict[str, tuple[str, str]]:
+    """roman numeral -> (title, literal text). Each annex is its own Formex part, root <ANNEX>."""
+    annexes: dict[str, tuple[str, str]] = {}
+    with zipfile.ZipFile(io.BytesIO(zip_bytes)) as zf:
+        for name in sorted(zf.namelist()):
+            if not name.endswith(".fmx.xml"):
+                continue
+            try:
+                root = ET.fromstring(zf.read(name))
+            except ET.ParseError:
+                continue
+            if root.tag != "ANNEX":
+                continue
+            roman, title, text = render_annex(root)
+            if roman:
+                annexes[roman] = (title, text)
+    return annexes
 
 
 # --- Write (deterministic: skip unchanged) ------------------------------------------------------
@@ -303,6 +353,33 @@ def write_article(
     return True
 
 
+def write_annex(
+    path: Path, roman: str, title: str, body: str, version_date: str, version: ActVersion
+) -> bool:
+    """Same contract as write_article: only writes when the legal text actually changed."""
+    body_sha = hashlib.sha256(body.encode("utf-8")).hexdigest()
+    if existing_sha(path) == body_sha:
+        return False
+    front = (
+        "---\n"
+        f"instrument: {INSTRUMENT}\n"
+        f"celex: {CELEX}\n"
+        f"eli: {ELI}\n"
+        f"language: {LANGUAGE}\n"
+        f"annex: {roman}\n"
+        f"title: {title}\n"
+        "source: EUR-Lex Formex v4 XML (fmx4), Publications Office of the EU\n"
+        f"source_url: {version.resource_url}\n"
+        f"authentic_pdf: {version.pdf_url}\n"
+        f"act_version_date: {version_date}\n"
+        f"retrieved_at: {date.today().isoformat()}\n"
+        f"sha256: {body_sha}\n"
+        "---\n\n"
+    )
+    path.write_text(front + body, encoding="utf-8")
+    return True
+
+
 def main() -> None:
     ap = argparse.ArgumentParser(description="Fetch literal AI Act article text into the repo.")
     ap.add_argument(
@@ -317,6 +394,12 @@ def main() -> None:
         help="article store root; articles are written to <root>/<version-date>/",
     )
     ap.add_argument("--articles", default="all", help='"all" or comma list, e.g. "6,9,14,43"')
+    ap.add_argument(
+        "--annex-root",
+        type=Path,
+        default=DEFAULT_ANNEX_ROOT,
+        help="annex store root; annexes are written to <root>/<version-date>/",
+    )
     ap.add_argument("--cache", type=Path, help="path to a local Formex zip to read/write")
     args = ap.parse_args()
 
@@ -361,8 +444,26 @@ def main() -> None:
             written += 1
         else:
             skipped += 1
-    print(f"\nWrote to {out_dir}")
-    print(f"Done. written={written} skipped(unchanged)={skipped} missing={missing}")
+    print(f"\nWrote articles to {out_dir}")
+    print(f"  articles: written={written} skipped(unchanged)={skipped} missing={missing}")
+
+    # --- annexes ---------------------------------------------------------------------------
+    # Annex III is the list of high-risk areas the classification cascade asks about, and Annex IV
+    # is the checklist Art. 11 points at. They are law, not appendix — stored on the same terms as
+    # the articles so nothing is reasoned about from memory.
+    annexes = parse_annexes(zip_bytes)
+    annex_dir = args.annex_root / args.version_date
+    annex_dir.mkdir(parents=True, exist_ok=True)
+    a_written = a_skipped = 0
+    for roman in annexes:
+        title, body = annexes[roman]
+        path = annex_dir / f"annex-{roman}.md"
+        if write_annex(path, roman, title, body, args.version_date, version):
+            a_written += 1
+        else:
+            a_skipped += 1
+    print(f"Wrote annexes to {annex_dir}")
+    print(f"  annexes:  {len(annexes)} parsed, written={a_written} skipped(unchanged)={a_skipped}")
 
 
 if __name__ == "__main__":

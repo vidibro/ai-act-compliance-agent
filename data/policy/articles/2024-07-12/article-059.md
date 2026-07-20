@@ -9,15 +9,20 @@ source: EUR-Lex Formex v4 XML (fmx4), Publications Office of the EU
 source_url: http://publications.europa.eu/resource/oj/L_202401689.ENG.fmx4
 authentic_pdf: http://publications.europa.eu/resource/oj/L_202401689.ENG.pdfa2a
 act_version_date: 2024-07-12
-retrieved_at: 2026-07-16
-sha256: 3f5aa0c628f50426c9b508fe1e1c2999debfb8004e33ce6c5b09805f20f6f1a9
+retrieved_at: 2026-07-20
+sha256: a4a7a0317a11f4cf12b8df594653dbfb26acb29136a440fb44e52dfc416e7787
 ---
 
 Article 59
 Further processing of personal data for developing certain AI systems in the public interest in the AI regulatory sandbox
 
 1. In the AI regulatory sandbox, personal data lawfully collected for other purposes may be processed solely for the purpose of developing, training and testing certain AI systems in the sandbox when all of the following conditions are met:
-        (a) AI systems shall be developed for safeguarding substantial public interest by a public authority or another natural or legal person and in one or more of the following areas: (i)public safety and public health, including disease detection, diagnosis prevention, control and treatment and improvement of health care systems;(ii)a high level of protection and improvement of the quality of the environment, protection of biodiversity, protection against pollution, green transition measures, climate change mitigation and adaptation measures;(iii)energy sustainability;(iv)safety and resilience of transport systems and mobility, critical infrastructure and networks;(v)efficiency and quality of public administration and public services;
+        (a) AI systems shall be developed for safeguarding substantial public interest by a public authority or another natural or legal person and in one or more of the following areas:
+                (i) public safety and public health, including disease detection, diagnosis prevention, control and treatment and improvement of health care systems;
+                (ii) a high level of protection and improvement of the quality of the environment, protection of biodiversity, protection against pollution, green transition measures, climate change mitigation and adaptation measures;
+                (iii) energy sustainability;
+                (iv) safety and resilience of transport systems and mobility, critical infrastructure and networks;
+                (v) efficiency and quality of public administration and public services;
         (b) the data processed are necessary for complying with one or more of the requirements referred to in Chapter III, Section 2 where those requirements cannot effectively be fulfilled by processing anonymised, synthetic or other non-personal data;
         (c) there are effective monitoring mechanisms to identify if any high risks to the rights and freedoms of the data subjects, as referred to in Article 35 of Regulation (EU) 2016/679 and in Article 39 of Regulation (EU) 2018/1725, may arise during the sandbox experimentation, as well as response mechanisms to promptly mitigate those risks and, where necessary, stop the processing;
         (d) any personal data to be processed in the context of the sandbox are in a functionally separate, isolated and protected data processing environment under the control of the prospective provider and only authorised persons have access to those data;

@@ -9,8 +9,8 @@ source: EUR-Lex Formex v4 XML (fmx4), Publications Office of the EU
 source_url: http://publications.europa.eu/resource/oj/L_202401689.ENG.fmx4
 authentic_pdf: http://publications.europa.eu/resource/oj/L_202401689.ENG.pdfa2a
 act_version_date: 2024-07-12
-retrieved_at: 2026-07-16
-sha256: 25649d688a70ff1fbd7f2e32d990346d2da13419f35a4d13f00dd5078e2ab6af
+retrieved_at: 2026-07-20
+sha256: 187187bb1508aa6f9156a6d53a2f7ec4cb3f2252688a1246a60c29325b04ff19
 ---
 
 Article 66
@@ -21,7 +21,14 @@ The Board shall advise and assist the Commission and the Member States in order 
     (b) collect and share technical and regulatory expertise and best practices among Member States;
     (c) provide advice on the implementation of this Regulation, in particular as regards the enforcement of rules on general-purpose AI models;
     (d) contribute to the harmonisation of administrative practices in the Member States, including in relation to the derogation from the conformity assessment procedures referred to in Article 46, the functioning of AI regulatory sandboxes, and testing in real world conditions referred to in Articles 57, 59 and 60;
-    (e) at the request of the Commission or on its own initiative, issue recommendations and written opinions on any relevant matters related to the implementation of this Regulation and to its consistent and effective application, including: (i)on the development and application of codes of conduct and codes of practice pursuant to this Regulation, as well as of the Commission’s guidelines;(ii)the evaluation and review of this Regulation pursuant to Article 112, including as regards the serious incident reports referred to in Article 73, and the functioning of the EU database referred to in Article 71, the preparation of the delegated or implementing acts, and as regards possible alignments of this Regulation with the Union harmonisation legislation listed in Annex I;(iii)on technical specifications or existing standards regarding the requirements set out in Chapter III, Section 2;(iv)on the use of harmonised standards or common specifications referred to in Articles 40 and 41;(v)trends, such as European global competitiveness in AI, the uptake of AI in the Union, and the development of digital skills;(vi)trends on the evolving typology of AI value chains, in particular on the resulting implications in terms of accountability;(vii)on the potential need for amendment to Annex III in accordance with Article 7, and on the potential need for possible revision of Article 5 pursuant to Article 112, taking into account relevant available evidence and the latest developments in technology;
+    (e) at the request of the Commission or on its own initiative, issue recommendations and written opinions on any relevant matters related to the implementation of this Regulation and to its consistent and effective application, including:
+            (i) on the development and application of codes of conduct and codes of practice pursuant to this Regulation, as well as of the Commission’s guidelines;
+            (ii) the evaluation and review of this Regulation pursuant to Article 112, including as regards the serious incident reports referred to in Article 73, and the functioning of the EU database referred to in Article 71, the preparation of the delegated or implementing acts, and as regards possible alignments of this Regulation with the Union harmonisation legislation listed in Annex I;
+            (iii) on technical specifications or existing standards regarding the requirements set out in Chapter III, Section 2;
+            (iv) on the use of harmonised standards or common specifications referred to in Articles 40 and 41;
+            (v) trends, such as European global competitiveness in AI, the uptake of AI in the Union, and the development of digital skills;
+            (vi) trends on the evolving typology of AI value chains, in particular on the resulting implications in terms of accountability;
+            (vii) on the potential need for amendment to Annex III in accordance with Article 7, and on the potential need for possible revision of Article 5 pursuant to Article 112, taking into account relevant available evidence and the latest developments in technology;
     (f) support the Commission in promoting AI literacy, public awareness and understanding of the benefits, risks, safeguards and rights and obligations in relation to the use of AI systems;
     (g) facilitate the development of common criteria and a shared understanding among market operators and competent authorities of the relevant concepts provided for in this Regulation, including by contributing to the development of benchmarks;
     (h) cooperate, as appropriate, with other Union institutions, bodies, offices and agencies, as well as relevant Union expert groups and networks, in particular in the fields of product safety, cybersecurity, competition, digital and media services, financial services, consumer protection, data and fundamental rights protection;

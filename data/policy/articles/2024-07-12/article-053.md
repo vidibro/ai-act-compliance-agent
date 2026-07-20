@@ -9,8 +9,8 @@ source: EUR-Lex Formex v4 XML (fmx4), Publications Office of the EU
 source_url: http://publications.europa.eu/resource/oj/L_202401689.ENG.fmx4
 authentic_pdf: http://publications.europa.eu/resource/oj/L_202401689.ENG.pdfa2a
 act_version_date: 2024-07-12
-retrieved_at: 2026-07-16
-sha256: 6b6bed388034034e326874b57406ba74598588eb53188f7890e9282d6ff54a4d
+retrieved_at: 2026-07-20
+sha256: 6f0c6c88711c2a83dd1b7a3046f15874e44d45ce8f4f0019a17f452f63eb346b
 ---
 
 Article 53
@@ -18,7 +18,9 @@ Obligations for providers of general-purpose AI models
 
 1. Providers of general-purpose AI models shall:
         (a) draw up and keep up-to-date the technical documentation of the model, including its training and testing process and the results of its evaluation, which shall contain, at a minimum, the information set out in Annex XI for the purpose of providing it, upon request, to the AI Office and the national competent authorities;
-        (b) draw up, keep up-to-date and make available information and documentation to providers of AI systems who intend to integrate the general-purpose AI model into their AI systems. Without prejudice to the need to observe and protect intellectual property rights and confidential business information or trade secrets in accordance with Union and national law, the information and documentation shall: (i)enable providers of AI systems to have a good understanding of the capabilities and limitations of the general-purpose AI model and to comply with their obligations pursuant to this Regulation; and(ii)contain, at a minimum, the elements set out in Annex XII;
+        (b) draw up, keep up-to-date and make available information and documentation to providers of AI systems who intend to integrate the general-purpose AI model into their AI systems. Without prejudice to the need to observe and protect intellectual property rights and confidential business information or trade secrets in accordance with Union and national law, the information and documentation shall:
+                (i) enable providers of AI systems to have a good understanding of the capabilities and limitations of the general-purpose AI model and to comply with their obligations pursuant to this Regulation; and
+                (ii) contain, at a minimum, the elements set out in Annex XII;
         (c) put in place a policy to comply with Union law on copyright and related rights, and in particular to identify and comply with, including through state-of-the-art technologies, a reservation of rights expressed pursuant to Article 4(3) of Directive (EU) 2019/790;
         (d) draw up and make publicly available a sufficiently detailed summary about the content used for training of the general-purpose AI model, according to a template provided by the AI Office.
 2. The obligations set out in paragraph 1, points (a) and (b), shall not apply to providers of AI models that are released under a free and open-source licence that allows for the access, usage, modification, and distribution of the model, and whose parameters, including the weights, the information on the model architecture, and the information on model usage, are made publicly available. This exception shall not apply to general-purpose AI models with systemic risks.

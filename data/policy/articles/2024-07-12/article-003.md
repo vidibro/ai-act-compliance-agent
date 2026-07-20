@@ -9,8 +9,8 @@ source: EUR-Lex Formex v4 XML (fmx4), Publications Office of the EU
 source_url: http://publications.europa.eu/resource/oj/L_202401689.ENG.fmx4
 authentic_pdf: http://publications.europa.eu/resource/oj/L_202401689.ENG.pdfa2a
 act_version_date: 2024-07-12
-retrieved_at: 2026-07-16
-sha256: c2bb1f5bae18cffa52930c01361a797b3472e646c52d3d0f30dac05516032b43
+retrieved_at: 2026-07-20
+sha256: cf18315263d0baa671bd020c64032be3eeb01c6cd47897c07829bdaa963fe19e
 ---
 
 Article 3
@@ -61,11 +61,17 @@ For the purposes of this Regulation, the following definitions apply:
     (42) ‘real-time remote biometric identification system’ means a remote biometric identification system, whereby the capturing of biometric data, the comparison and the identification all occur without a significant delay, comprising not only instant identification, but also limited short delays in order to avoid circumvention;
     (43) ‘post-remote biometric identification system’ means a remote biometric identification system other than a real-time remote biometric identification system;
     (44) ‘publicly accessible space’ means any publicly or privately owned physical place accessible to an undetermined number of natural persons, regardless of whether certain conditions for access may apply, and regardless of the potential capacity restrictions;
-    (45) ‘law enforcement authority’ means: (a)any public authority competent for the prevention, investigation, detection or prosecution of criminal offences or the execution of criminal penalties, including the safeguarding against and the prevention of threats to public security; or(b)any other body or entity entrusted by Member State law to exercise public authority and public powers for the purposes of the prevention, investigation, detection or prosecution of criminal offences or the execution of criminal penalties, including the safeguarding against and the prevention of threats to public security;
+    (45) ‘law enforcement authority’ means:
+            (a) any public authority competent for the prevention, investigation, detection or prosecution of criminal offences or the execution of criminal penalties, including the safeguarding against and the prevention of threats to public security; or
+            (b) any other body or entity entrusted by Member State law to exercise public authority and public powers for the purposes of the prevention, investigation, detection or prosecution of criminal offences or the execution of criminal penalties, including the safeguarding against and the prevention of threats to public security;
     (46) ‘law enforcement’ means activities carried out by law enforcement authorities or on their behalf for the prevention, investigation, detection or prosecution of criminal offences or the execution of criminal penalties, including safeguarding against and preventing threats to public security;
     (47) ‘AI Office’ means the Commission’s function of contributing to the implementation, monitoring and supervision of AI systems and general-purpose AI models, and AI governance, provided for in Commission Decision of 24 January 2024; references in this Regulation to the AI Office shall be construed as references to the Commission;
     (48) ‘national competent authority’ means a notifying authority or a market surveillance authority; as regards AI systems put into service or used by Union institutions, agencies, offices and bodies, references to national competent authorities or market surveillance authorities in this Regulation shall be construed as references to the European Data Protection Supervisor;
-    (49) ‘serious incident’ means an incident or malfunctioning of an AI system that directly or indirectly leads to any of the following: (a)the death of a person, or serious harm to a person’s health;(b)a serious and irreversible disruption of the management or operation of critical infrastructure;(c)the infringement of obligations under Union law intended to protect fundamental rights;(d)serious harm to property or the environment;
+    (49) ‘serious incident’ means an incident or malfunctioning of an AI system that directly or indirectly leads to any of the following:
+            (a) the death of a person, or serious harm to a person’s health;
+            (b) a serious and irreversible disruption of the management or operation of critical infrastructure;
+            (c) the infringement of obligations under Union law intended to protect fundamental rights;
+            (d) serious harm to property or the environment;
     (50) ‘personal data’ means personal data as defined in Article 4, point (1), of Regulation (EU) 2016/679;
     (51) ‘non-personal data’ means data other than personal data as defined in Article 4, point (1), of Regulation (EU) 2016/679;
     (52) ‘profiling’ means profiling as defined in Article 4, point (4), of Regulation (EU) 2016/679;
@@ -77,7 +83,12 @@ For the purposes of this Regulation, the following definitions apply:
     (58) ‘subject’, for the purpose of real-world testing, means a natural person who participates in testing in real-world conditions;
     (59) ‘informed consent’ means a subject’s freely given, specific, unambiguous and voluntary expression of his or her willingness to participate in a particular testing in real-world conditions, after having been informed of all aspects of the testing that are relevant to the subject’s decision to participate;
     (60) ‘deep fake’ means AI-generated or manipulated image, audio or video content that resembles existing persons, objects, places, entities or events and would falsely appear to a person to be authentic or truthful;
-    (61) ‘widespread infringement’ means any act or omission contrary to Union law protecting the interest of individuals, which: (a)has harmed or is likely to harm the collective interests of individuals residing in at least two Member States other than the Member State in which:(i)the act or omission originated or took place;(ii)the provider concerned, or, where applicable, its authorised representative is located or established; or(iii)the deployer is established, when the infringement is committed by the deployer;(b)has caused, causes or is likely to cause harm to the collective interests of individuals and has common features, including the same unlawful practice or the same interest being infringed, and is occurring concurrently, committed by the same operator, in at least three Member States;
+    (61) ‘widespread infringement’ means any act or omission contrary to Union law protecting the interest of individuals, which:
+            (a) has harmed or is likely to harm the collective interests of individuals residing in at least two Member States other than the Member State in which:
+                    (i) the act or omission originated or took place;
+                    (ii) the provider concerned, or, where applicable, its authorised representative is located or established; or
+                    (iii) the deployer is established, when the infringement is committed by the deployer;
+            (b) has caused, causes or is likely to cause harm to the collective interests of individuals and has common features, including the same unlawful practice or the same interest being infringed, and is occurring concurrently, committed by the same operator, in at least three Member States;
     (62) ‘critical infrastructure’ means critical infrastructure as defined in Article 2, point (4), of Directive (EU) 2022/2557;
     (63) ‘general-purpose AI model’ means an AI model, including where such an AI model is trained with a large amount of data using self-supervision at scale, that displays significant generality and is capable of competently performing a wide range of distinct tasks regardless of the way the model is placed on the market and that can be integrated into a variety of downstream systems or applications, except AI models that are used for research, development or prototyping activities before they are placed on the market;
     (64) ‘high-impact capabilities’ means capabilities that match or exceed the capabilities recorded in the most advanced general-purpose AI models;

@@ -9,8 +9,8 @@ source: EUR-Lex Formex v4 XML (fmx4), Publications Office of the EU
 source_url: http://publications.europa.eu/resource/oj/L_202401689.ENG.fmx4
 authentic_pdf: http://publications.europa.eu/resource/oj/L_202401689.ENG.pdfa2a
 act_version_date: 2024-07-12
-retrieved_at: 2026-07-16
-sha256: e0cf56a0c8c5928921c840ab02cbc2ad19a35d30333971e5c4ee9ba54d4498d5
+retrieved_at: 2026-07-20
+sha256: 2e86c4f8397df65b931f56bacc362307ea072b8b6f972c427ca231a8a81b4bbb
 ---
 
 Article 68
@@ -23,7 +23,12 @@ Scientific panel of independent experts
         (c) an ability to carry out activities diligently, accurately and objectively.
     The Commission, in consultation with the Board, shall determine the number of experts on the panel in accordance with the required needs and shall ensure fair gender and geographical representation.
 3. The scientific panel shall advise and support the AI Office, in particular with regard to the following tasks:
-        (a) supporting the implementation and enforcement of this Regulation as regards general-purpose AI models and systems, in particular by: (i)alerting the AI Office of possible systemic risks at Union level of general-purpose AI models, in accordance with Article 90;(ii)contributing to the development of tools and methodologies for evaluating capabilities of general-purpose AI models and systems, including through benchmarks;(iii)providing advice on the classification of general-purpose AI models with systemic risk;(iv)providing advice on the classification of various general-purpose AI models and systems;(v)contributing to the development of tools and templates;
+        (a) supporting the implementation and enforcement of this Regulation as regards general-purpose AI models and systems, in particular by:
+                (i) alerting the AI Office of possible systemic risks at Union level of general-purpose AI models, in accordance with Article 90;
+                (ii) contributing to the development of tools and methodologies for evaluating capabilities of general-purpose AI models and systems, including through benchmarks;
+                (iii) providing advice on the classification of general-purpose AI models with systemic risk;
+                (iv) providing advice on the classification of various general-purpose AI models and systems;
+                (v) contributing to the development of tools and templates;
         (b) supporting the work of market surveillance authorities, at their request;
         (c) supporting cross-border market surveillance activities as referred to in Article 74(11), without prejudice to the powers of market surveillance authorities;
         (d) supporting the AI Office in carrying out its duties in the context of the Union safeguard procedure pursuant to Article 81.

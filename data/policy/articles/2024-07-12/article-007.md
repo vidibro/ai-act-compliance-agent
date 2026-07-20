@@ -9,8 +9,8 @@ source: EUR-Lex Formex v4 XML (fmx4), Publications Office of the EU
 source_url: http://publications.europa.eu/resource/oj/L_202401689.ENG.fmx4
 authentic_pdf: http://publications.europa.eu/resource/oj/L_202401689.ENG.pdfa2a
 act_version_date: 2024-07-12
-retrieved_at: 2026-07-16
-sha256: 07c47ae3fddf8641a9d3fcf0796c3a453d9b946fd451a129021cdf718acda092
+retrieved_at: 2026-07-20
+sha256: a2a00aadd1a80344705b4f90f1549737a839f9e3bd7bab5b53ea37e0cde3b4f3
 ---
 
 Article 7
@@ -30,7 +30,9 @@ Amendments to Annex III
         (h) the extent to which there is an imbalance of power, or the persons who are potentially harmed or suffer an adverse impact are in a vulnerable position in relation to the deployer of an AI system, in particular due to status, authority, knowledge, economic or social circumstances, or age;
         (i) the extent to which the outcome produced involving an AI system is easily corrigible or reversible, taking into account the technical solutions available to correct or reverse it, whereby outcomes having an adverse impact on health, safety or fundamental rights, shall not be considered to be easily corrigible or reversible;
         (j) the magnitude and likelihood of benefit of the deployment of the AI system for individuals, groups, or society at large, including possible improvements in product safety;
-        (k) the extent to which existing Union law provides for: (i)effective measures of redress in relation to the risks posed by an AI system, with the exclusion of claims for damages;(ii)effective measures to prevent or substantially minimise those risks.
+        (k) the extent to which existing Union law provides for:
+                (i) effective measures of redress in relation to the risks posed by an AI system, with the exclusion of claims for damages;
+                (ii) effective measures to prevent or substantially minimise those risks.
 3. The Commission is empowered to adopt delegated acts in accordance with Article 97 to amend the list in Annex III by removing high-risk AI systems where both of the following conditions are fulfilled:
         (a) the high-risk AI system concerned no longer poses any significant risks to fundamental rights, health or safety, taking into account the criteria listed in paragraph 2;
         (b) the deletion does not decrease the overall level of protection of health, safety and fundamental rights under Union law.
