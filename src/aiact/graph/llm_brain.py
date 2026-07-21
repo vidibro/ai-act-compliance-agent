@@ -21,6 +21,7 @@ keeps 'the model choice is config, not code' actually true rather than aspiratio
 from __future__ import annotations
 
 import json
+import re
 from typing import TYPE_CHECKING, Any
 
 from aiact.config import get_settings
@@ -31,6 +32,7 @@ from aiact.schemas.classification import (
     Confidence,
 )
 from aiact.schemas.enums import AnnexIIIArea, DerogationCondition
+from aiact.usage import Usage
 
 if TYPE_CHECKING:
     from aiact.graph.brain import ClassificationBrain
@@ -56,6 +58,19 @@ def _answer_instructions(answer_type: str) -> str:
         conds = ", ".join(d.value for d in DerogationCondition)
         return f'set "value" to one of [{conds}] or null if no derogation applies'
     raise ValueError(f"unknown answer_type {answer_type!r}")
+
+
+# Models very often wrap JSON in a markdown fence, even when told to reply with JSON and nothing
+# else, and even with response_format={"type": "json_object"} set — that flag is advisory rather
+# than enforced on several providers. json.loads then fails at char 0 on the backtick. Stripping
+# the fence is provider-agnostic: it costs nothing where the reply is already bare JSON, and it is
+# the difference between an answer and an abstention where it is not.
+_FENCED_JSON = re.compile(r"^\s*```(?:json)?\s*(.*?)\s*```\s*$", re.DOTALL)
+
+
+def _unfence(raw: str) -> str:
+    match = _FENCED_JSON.match(raw)
+    return match.group(1) if match else raw
 
 
 class Unanswerable(Exception):
@@ -118,6 +133,9 @@ class LLMBrain:
     name: str = "llm"
     model: str
     profile: ProviderProfile
+    usage: Usage
+    """Running token/cost tally for this brain's whole run. Cost compounds across repeated eval
+    runs, so it is measured rather than argued about — see usage.py."""
 
     def __init__(
         self,
@@ -130,6 +148,7 @@ class LLMBrain:
         # No sampling/thinking/caching parameters are named in this class — the provider seam owns
         # them, because every one of them is vendor-specific (see providers.py).
         self.profile = profile or profile_for(self.model, effort or settings.llm_effort)
+        self.usage = Usage()
 
     def _abstain(self, question: ClassificationQuestion, why: str) -> ClassificationAnswer:
         """No usable answer -> answer with LOW confidence, which the cascade routes to
@@ -188,6 +207,8 @@ class LLMBrain:
             response_format={"type": "json_object"},
             **self.profile.completion_kwargs,
         )
+        self.usage.record(response)  # counted even if we abstain below: a wasted call still costs
+
         # `choices` is a list because the API can return n independent completions; we never pass
         # n, so there is exactly one. `content` is None (not "") when the model produced no text at
         # all — a cut-off generation, a refusal, a tool call. That is an ABSENCE of an answer, and
@@ -196,7 +217,7 @@ class LLMBrain:
         if not raw or not raw.strip():
             return self._abstain(question, "the model returned an empty completion")
         try:
-            data = json.loads(raw)
+            data = json.loads(_unfence(raw))
         except json.JSONDecodeError as exc:
             return self._abstain(question, f"the model's reply was not valid JSON: {exc}")
         if not isinstance(data, dict):

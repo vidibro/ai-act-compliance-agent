@@ -152,3 +152,30 @@ def test_abstention_routes_the_cascade_to_needs_review(stub_litellm):
     stub_litellm("not json at all")
     result = classify("some ambiguous system", LLMBrain(model="stub/model"), "amb")
     assert result.overall_risk_class == RiskClass.NEEDS_REVIEW
+
+
+# --- markdown-fenced JSON -----------------------------------------------------------------------
+@pytest.mark.parametrize(
+    "content",
+    [
+        '{"value": true, "confidence": "high"}',
+        '```json\n{"value": true, "confidence": "high"}\n```',
+        '```\n{"value": true, "confidence": "high"}\n```',
+        '   ```json\n{"value": true, "confidence": "high"}\n```   ',
+    ],
+)
+def test_fenced_json_is_still_an_answer(stub_litellm, content):
+    """OBSERVED IN A REAL RUN: every one of 36 calls abstained because the model wrapped its JSON
+    in a ```json fence, so json.loads failed at char 0. response_format={"type": "json_object"} is
+    advisory on some providers, not enforced — so the fence must be handled on our side."""
+    stub_litellm(content)
+    answer = LLMBrain(model="stub/model").decide(a_question(), "a system")
+    assert answer.value is True
+    assert answer.confidence == "high"
+
+
+def test_a_fence_around_garbage_still_abstains(stub_litellm):
+    """Unfencing must not turn an unreadable reply into a confident one."""
+    stub_litellm("```json\nnot actually json\n```")
+    answer = LLMBrain(model="stub/model").decide(a_question(), "a system")
+    assert answer.confidence == "low"

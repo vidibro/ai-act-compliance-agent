@@ -23,6 +23,7 @@ from aiact.eval.classification_cases import load_classification_cases  # noqa: E
 from aiact.graph import ScriptedBrain, classify  # noqa: E402
 from aiact.graph.classify import load_questions  # noqa: E402
 from aiact.schemas.enums import AnnexIIIArea, DerogationCondition  # noqa: E402
+from aiact.usage import PRICES_AS_OF  # noqa: E402
 
 
 def _print(result) -> None:
@@ -90,6 +91,11 @@ def run_golden() -> None:
             f"expected {case.expected_risk_class.value:14} got {got.value}"
         )
     print(f"\nclassification accuracy: {correct}/{len(cases.cases)}")
+    print(f"run cost           : {brain.usage.summary(brain.model)}")
+    per_case = brain.usage.estimated_cost_usd(brain.model)
+    if per_case is not None and cases.cases:
+        print(f"per case           : ~${per_case / len(cases.cases):.4f}")
+    print(f"(prices as of {PRICES_AS_OF}; estimated — see src/aiact/usage.py)")
 
 
 def main() -> None:

@@ -16,6 +16,12 @@ Putting any of that directly in LLMBrain would hardcode one vendor's request sha
 whose whole point is that the model is config, not code. So it lives here, keyed by model, and the
 brain just splats whatever it is handed.
 
+THE TRAP THIS MODULE EXISTS FOR: LiteLLM DOES normalise `reasoning_effort` across OpenAI, Gemini
+and Mistral — but for Anthropic it translates it into `thinking={"type": "enabled",
+"budget_tokens": N}`, which is exactly the shape Anthropic's current models REJECT with a 400. So
+the one parameter that looks portable is the one that must never be used uniformly. Anthropic gets
+`thinking={"type": "adaptive"}` written out explicitly; everyone else gets `reasoning_effort`.
+
 `verified` is deliberate: a profile is only True once its parameter shape has been checked against
 that provider's current documentation. An unverified profile is the conservative fallback — plain
 `temperature`, no caching, no reasoning parameters — which works everywhere and wastes money
@@ -28,7 +34,7 @@ from dataclasses import dataclass, field
 from typing import Any
 
 # Anthropic models on the adaptive-thinking request surface: sampling parameters removed,
-# reasoning depth via thinking + effort. Verified against Anthropic's model documentation.
+# reasoning depth via thinking + effort.
 _ANTHROPIC_ADAPTIVE = (
     "claude-opus-4-8",
     "claude-opus-4-7",
@@ -37,11 +43,31 @@ _ANTHROPIC_ADAPTIVE = (
     "claude-mythos-5",
 )
 
-# Anthropic's minimum cacheable prefix, in tokens. Below it a cache_control marker is silently
-# ignored — no error, just no cache. 4096 is the Opus 4.8 figure; it is the largest in the family,
-# so using it for the whole group under-caches rather than mis-caches.
-_ANTHROPIC_CACHE_MIN_TOKENS = 4096
-_ANTHROPIC_LEGACY_CACHE_MIN_TOKENS = 2048
+# OpenAI's reasoning family rejects temperature/top_p the same way Anthropic's does; depth is
+# `reasoning_effort`. (The gpt-4.x family still accepts temperature — hence the split.)
+_OPENAI_REASONING = ("gpt-5", "o1", "o3", "o4")
+
+# Anthropic's minimum cacheable prefix, in TOKENS. Below it a cache_control marker is silently
+# ignored — no error, no cache, no signal. Per-model because the family spans 1024-4096 and
+# guessing high means silently losing a cache we could have had.
+_ANTHROPIC_CACHE_MIN = {
+    "claude-opus-4-8": 4096,
+    "claude-opus-4-7": 4096,
+    "claude-opus-4-6": 4096,
+    "claude-opus-4-5": 4096,
+    "claude-haiku-4-5": 4096,
+    "claude-fable-5": 2048,
+    "claude-sonnet-4-6": 2048,
+    "claude-sonnet-4-5": 1024,
+}
+_ANTHROPIC_CACHE_MIN_DEFAULT = 4096  # conservative for an unlisted Claude model
+
+
+def _anthropic_cache_min(name: str) -> int:
+    for prefix, minimum in _ANTHROPIC_CACHE_MIN.items():
+        if name.startswith(prefix):
+            return minimum
+    return _ANTHROPIC_CACHE_MIN_DEFAULT
 
 
 @dataclass(frozen=True)
@@ -80,7 +106,8 @@ def estimate_tokens(text: str) -> int:
 
 def profile_for(model: str, effort: str = "high") -> ProviderProfile:
     """Resolve the request shape for a LiteLLM model string (e.g. 'anthropic/claude-opus-4-8')."""
-    name = model.split("/")[-1]
+    provider, _, bare = model.rpartition("/")
+    name = bare
 
     if any(name.startswith(prefix) for prefix in _ANTHROPIC_ADAPTIVE):
         return ProviderProfile(
@@ -90,7 +117,7 @@ def profile_for(model: str, effort: str = "high") -> ProviderProfile:
                 "output_config": {"effort": effort},
             },
             supports_cache_control=True,
-            cache_min_tokens=_ANTHROPIC_CACHE_MIN_TOKENS,
+            cache_min_tokens=_anthropic_cache_min(name),
             verified=True,
             notes=(
                 "temperature/top_p/top_k are REJECTED (400) — deliberately absent. Thinking is off "
@@ -104,9 +131,63 @@ def profile_for(model: str, effort: str = "high") -> ProviderProfile:
             profile_id="anthropic-legacy",
             completion_kwargs={"temperature": 0.0},
             supports_cache_control=True,
-            cache_min_tokens=_ANTHROPIC_LEGACY_CACHE_MIN_TOKENS,
+            cache_min_tokens=_anthropic_cache_min(name),
             verified=True,
-            notes="Accepts temperature; no adaptive-thinking parameter.",
+            notes=(
+                "Accepts temperature; has no adaptive-thinking or effort parameter (Haiku 4.5 and "
+                "Sonnet 4.5 error on effort). Do NOT reach for reasoning_effort here — see below."
+            ),
+        )
+
+    if provider == "openai" and any(name.startswith(p) for p in _OPENAI_REASONING):
+        return ProviderProfile(
+            profile_id="openai-reasoning",
+            completion_kwargs={"reasoning_effort": effort},
+            supports_cache_control=False,
+            verified=True,
+            notes=(
+                "temperature/top_p are rejected on the reasoning family whenever reasoning is "
+                "active — same trap as Anthropic's, different error text. Depth is "
+                "`reasoning_effort`. Prompt caching is AUTOMATIC with no control surface, so there "
+                "is no breakpoint to place: our stable-prefix-first prompt layout still helps it, "
+                "we just cannot mark it."
+            ),
+        )
+
+    if provider == "openai":
+        return ProviderProfile(
+            profile_id="openai-classic",
+            completion_kwargs={"temperature": 0.0},
+            supports_cache_control=False,
+            verified=True,
+            notes="The gpt-4.x family still accepts sampling parameters and has no reasoning knob.",
+        )
+
+    if provider in ("gemini", "vertex_ai"):
+        return ProviderProfile(
+            profile_id="google-gemini",
+            completion_kwargs={"reasoning_effort": effort},
+            supports_cache_control=False,
+            verified=True,
+            notes=(
+                "LiteLLM maps reasoning_effort onto Gemini's thinking_level. temperature is "
+                "deliberately omitted: Gemini 3 is tuned around its default and lowering it is "
+                "documented as counter-productive. Caching exists but as a SEPARATE explicit API, "
+                "not an inline marker — nothing to place here."
+            ),
+        )
+
+    if provider == "mistral":
+        return ProviderProfile(
+            profile_id="mistral",
+            completion_kwargs={"temperature": 0.0},
+            supports_cache_control=False,
+            verified=True,
+            notes=(
+                "Accepts temperature. Reasoning depth applies only to the reasoning-tuned models "
+                "(Magistral), not to Large/Medium — so it is not sent here. EU-hosted: the reason "
+                "this vendor is on the list at all for an EU-regulation compliance tool."
+            ),
         )
 
     return ProviderProfile(

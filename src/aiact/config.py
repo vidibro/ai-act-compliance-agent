@@ -23,7 +23,7 @@ class Settings(BaseSettings):
     # LLM provider (LiteLLM routes by this model string). The request SHAPE for whatever this
     # names is resolved at call time by aiact.providers — vendors disagree on sampling, reasoning
     # depth, and caching, so none of it is hardcoded in the brain.
-    llm_model: str = "anthropic/claude-opus-4-8"
+    llm_model: str = "anthropic/claude-haiku-4-5"
     # Reasoning depth, for providers that expose it. Ignored by profiles that have no such knob.
     llm_effort: str = "high"
 
