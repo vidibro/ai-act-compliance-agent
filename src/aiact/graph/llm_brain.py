@@ -11,14 +11,20 @@ what the eval measures.
 
 Requires an API key for the configured model; importing this module does not (litellm is imported
 lazily), so the deterministic ScriptedBrain path stays dependency-light.
+
+This class names NO vendor-specific request parameters. Sampling, reasoning depth, and prompt
+caching all differ per provider — and Anthropic's current models reject `temperature` outright —
+so their shapes live behind the provider seam (providers.py) and are splatted in. That is what
+keeps 'the model choice is config, not code' actually true rather than aspirational.
 """
 
 from __future__ import annotations
 
 import json
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, Any
 
 from aiact.config import get_settings
+from aiact.providers import ProviderProfile, profile_for
 from aiact.schemas.classification import (
     ClassificationAnswer,
     ClassificationQuestion,
@@ -111,11 +117,19 @@ class LLMBrain:
 
     name: str = "llm"
     model: str
-    temperature: float
+    profile: ProviderProfile
 
-    def __init__(self, model: str | None = None, temperature: float = 0.0) -> None:
-        self.model = model or get_settings().llm_model
-        self.temperature = temperature
+    def __init__(
+        self,
+        model: str | None = None,
+        effort: str | None = None,
+        profile: ProviderProfile | None = None,
+    ) -> None:
+        settings = get_settings()
+        self.model = model or settings.llm_model
+        # No sampling/thinking/caching parameters are named in this class — the provider seam owns
+        # them, because every one of them is vendor-specific (see providers.py).
+        self.profile = profile or profile_for(self.model, effort or settings.llm_effort)
 
     def _abstain(self, question: ClassificationQuestion, why: str) -> ClassificationAnswer:
         """No usable answer -> answer with LOW confidence, which the cascade routes to
@@ -129,33 +143,50 @@ class LLMBrain:
             node_id=question.node_id,
         )
 
-    def decide(self, question: ClassificationQuestion, description: str) -> ClassificationAnswer:
-        import litellm  # lazy: only needed when actually classifying with a model
+    def _user_content(self, question: ClassificationQuestion, description: str) -> Any:
+        """Build the user turn, split at the CACHE BOUNDARY.
 
-        context = (
+        The verbatim enacted text is identical for every use case we classify at a given node —
+        Annex III does not change between candidates — so it is the stable prefix, and the question
+        plus the description are the volatile suffix. Caching is a prefix match, so the stable half
+        must come first and carry the breakpoint; anything volatile ahead of it would invalidate
+        the whole thing.
+
+        Returns a plain string where the provider has no cache-marker surface, so the unverified
+        path stays maximally portable."""
+        law = (
             f"Enacted text you must answer against (verbatim):\n"
             f'"""\n{question.context}\n"""\n\n'
             if question.context
             else ""
         )
-        prompt = (
-            f"{context}"
+        task = (
             f"Question: {question.text}\n\n"
             f"Use-case description:\n\"\"\"\n{description}\n\"\"\"\n\n"
             f"Answer as JSON with keys: value ({_answer_instructions(question.answer_type)}), "
             f'"reasoning" (one sentence), "evidence_quote" (the span of the DESCRIPTION that '
             f"drove your answer, copied exactly, under {_EVIDENCE_MAX_LENGTH} characters — never a "
-            f'quote of the law, and null only if nothing in the description supports it), '
+            f"quote of the law, and null only if nothing in the description supports it), "
             f'"confidence" (one of "high", "medium", "low").'
         )
+        if not self.profile.caches(law):
+            return law + task
+        return [
+            {"type": "text", "text": law, "cache_control": {"type": "ephemeral"}},
+            {"type": "text", "text": task},
+        ]
+
+    def decide(self, question: ClassificationQuestion, description: str) -> ClassificationAnswer:
+        import litellm  # lazy: only needed when actually classifying with a model
+
         response = litellm.completion(
             model=self.model,
-            temperature=self.temperature,
             messages=[
                 {"role": "system", "content": _SYSTEM_PROMPT},
-                {"role": "user", "content": prompt},
+                {"role": "user", "content": self._user_content(question, description)},
             ],
             response_format={"type": "json_object"},
+            **self.profile.completion_kwargs,
         )
         # `choices` is a list because the API can return n independent completions; we never pass
         # n, so there is exactly one. `content` is None (not "") when the model produced no text at
