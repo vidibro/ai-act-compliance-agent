@@ -91,17 +91,31 @@ class ProviderProfile:
     notes: str = ""
 
     def caches(self, text: str) -> bool:
-        """Whether marking `text` as a cache breakpoint would actually do anything."""
-        return self.supports_cache_control and estimate_tokens(text) >= self.cache_min_tokens
+        """Whether to mark `text` as a cache breakpoint.
+
+        Deliberately does NOT gate on cache_min_tokens. A marker on a too-short prefix is silently
+        ignored at zero cost — no error, no write, no charge — whereas skipping a marker that WOULD
+        have qualified silently loses the saving. The asymmetry says: always try where the provider
+        supports it, and let the usage counters report what actually happened. `cache_min_tokens`
+        is kept for diagnosis, not for gating; an estimate is not a good enough reason to opt out
+        of a saving (ours was wrong by 19% and cost us exactly that)."""
+        return self.supports_cache_control and bool(text)
+
+
+# MEASURED against this corpus, not assumed: 17,589 chars of Article 3 came back as 3,800 prompt
+# tokens from Anthropic. The earlier 4.0 guess over-counted by ~19% — enough to convince us a
+# prefix cleared a 4096-token minimum when it did not, so every cache marker we emitted was
+# silently ignored. Statutory text compresses well (heavy repeated boilerplate), the opposite of
+# the intuition that dense numbering tokenises badly.
+_CHARS_PER_TOKEN = 4.75
 
 
 def estimate_tokens(text: str) -> int:
-    """Rough token estimate — 4 chars per token.
+    """Rough token estimate, for DIAGNOSTICS only — never for billing or context budgets.
 
-    Only used to decide whether a prefix clears a provider's cache minimum, where being wrong
-    costs a missed cache rather than a wrong answer. Do not use it for billing or context budgets;
-    count tokens with the provider's own endpoint for that."""
-    return len(text) // 4
+    Real counts come from the provider's own usage block; use those. This exists so we can say
+    "your prefix is around N tokens and this model needs M" when caching silently does nothing."""
+    return int(len(text) / _CHARS_PER_TOKEN)
 
 
 def profile_for(model: str, effort: str = "high") -> ProviderProfile:

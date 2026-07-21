@@ -198,16 +198,18 @@ class LLMBrain:
     def decide(self, question: ClassificationQuestion, description: str) -> ClassificationAnswer:
         import litellm  # lazy: only needed when actually classifying with a model
 
+        user_content = self._user_content(question, description)
         response = litellm.completion(
             model=self.model,
             messages=[
                 {"role": "system", "content": _SYSTEM_PROMPT},
-                {"role": "user", "content": self._user_content(question, description)},
+                {"role": "user", "content": user_content},
             ],
             response_format={"type": "json_object"},
             **self.profile.completion_kwargs,
         )
-        self.usage.record(response)  # counted even if we abstain below: a wasted call still costs
+        # counted even if we abstain below: a wasted call still costs
+        self.usage.record(response, cache_marked=isinstance(user_content, list))
 
         # `choices` is a list because the API can return n independent completions; we never pass
         # n, so there is exactly one. `content` is None (not "") when the model produced no text at

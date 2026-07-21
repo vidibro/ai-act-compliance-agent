@@ -112,10 +112,13 @@ def test_long_verbatim_context_is_marked_as_the_cache_prefix(capture):
     assert "a system" in content[1]["text"]
 
 
-def test_short_context_is_not_marked(capture):
-    """Below the provider's minimum a marker is silently ignored — do not pretend otherwise."""
+def test_we_always_try_to_cache_where_the_provider_supports_it(capture):
+    """We do NOT gate on an estimated token count. A marker on a too-short prefix is silently
+    ignored at zero cost; skipping one that WOULD have qualified silently loses the saving. We
+    guessed wrong by 19% once and lost every cache in a run to it — so try, and let the usage
+    counters report what actually happened."""
     LLMBrain(model="anthropic/claude-opus-4-8").decide(a_question("Article 3(1)."), "a system")
-    assert isinstance(capture["messages"][1]["content"], str)
+    assert isinstance(capture["messages"][1]["content"], list)
 
 
 def test_providers_without_a_cache_surface_get_a_plain_string(capture):
@@ -132,8 +135,10 @@ def test_profile_can_be_injected_for_a_provider_we_have_not_profiled(capture):
     assert "temperature" not in capture
 
 
-def test_token_estimate_is_only_used_for_the_cache_threshold():
-    assert estimate_tokens("x" * 4000) == 1000
+def test_token_estimate_matches_the_measured_ratio():
+    """4.75 chars/token, measured against the article store — 17,589 chars of Article 3 came back
+    as 3,800 real prompt tokens. The old 4.0 guess over-counted by ~19%."""
+    assert estimate_tokens("x" * 4750) == 1000
 
 
 # --- cross-vendor profiles ----------------------------------------------------------------------
@@ -259,3 +264,53 @@ def test_missing_usage_block_is_counted_not_ignored(monkeypatch):
     brain.decide(a_question(), "a system")
     assert brain.usage.unpriced_calls == 1
     assert "reported no usage" in brain.usage.summary(brain.model)
+
+
+def test_a_cache_marker_that_was_ignored_is_reported(monkeypatch):
+    """THE BUG THIS GUARDS. We marked a prefix, the provider silently ignored it because the prefix
+    was under its minimum, and the run reported a clean-looking cost with no hint anything was
+    wrong. Reads alone could not distinguish this from "written but not yet read"."""
+    from aiact.usage import Usage
+
+    ignored = Usage(calls=6, input_tokens=20_000, output_tokens=500, cache_marked_calls=6)
+    assert ignored.cache_was_ignored is True
+    assert "IGNORED" in ignored.summary("anthropic/claude-haiku-4-5")
+
+    working = Usage(
+        calls=6,
+        input_tokens=20_000,
+        output_tokens=500,
+        cache_marked_calls=6,
+        cached_input_tokens=15_000,
+        cache_creation_tokens=3_000,
+    )
+    assert working.cache_was_ignored is False
+    assert "IGNORED" not in working.summary("anthropic/claude-haiku-4-5")
+    assert "cache 15,000 read / 3,000 written" in working.summary("anthropic/claude-haiku-4-5")
+
+
+def test_cache_writes_are_billed_at_a_premium():
+    """A run that only ever WRITES the cache costs more than not caching — 1.25x on Anthropic.
+    Hiding that would make a broken cache look free."""
+    from aiact.usage import Usage
+
+    model = "anthropic/claude-haiku-4-5"
+    plain = Usage(calls=1, input_tokens=1_000_000)
+    writing = Usage(calls=1, input_tokens=1_000_000, cache_creation_tokens=1_000_000)
+    assert plain.estimated_cost_usd(model) == pytest.approx(1.00)
+    assert writing.estimated_cost_usd(model) == pytest.approx(1.25)
+
+
+def test_cache_marking_is_reported_through_the_brain(monkeypatch):
+    def completion(**kwargs):
+        message = types.SimpleNamespace(content='{"value": true, "confidence": "high"}')
+        usage = types.SimpleNamespace(prompt_tokens=3800, completion_tokens=20)
+        return types.SimpleNamespace(
+            choices=[types.SimpleNamespace(message=message)], usage=usage
+        )
+
+    monkeypatch.setitem(sys.modules, "litellm", types.SimpleNamespace(completion=completion))
+    brain = LLMBrain(model="anthropic/claude-haiku-4-5")
+    brain.decide(a_question("ANNEX III " * 4000), "a system")
+    assert brain.usage.cache_marked_calls == 1
+    assert brain.usage.cache_was_ignored is True, "provider reported no cache activity"

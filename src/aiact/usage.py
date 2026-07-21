@@ -23,6 +23,7 @@ from typing import Any
 PRICES_AS_OF = "2026-07-21"
 
 _MTOK = 1_000_000
+_CACHE_WRITE_MULTIPLIER = 1.25  # Anthropic charges a premium to write the cache
 
 
 @dataclass(frozen=True)
@@ -74,14 +75,24 @@ class Usage:
     input_tokens: int = 0
     output_tokens: int = 0
     cached_input_tokens: int = 0
+    cache_creation_tokens: int = 0
+    """Tokens WRITTEN to cache. Tracked separately from reads because without it, "written but
+    never read" and "never cached at all" look identical — which is exactly how a silently-ignored
+    cache marker hid from us for a whole run."""
+
+    cache_marked_calls: int = 0
+    """Calls where we asked for caching. If this is non-zero and both counters above are zero, the
+    provider ignored the marker — say so instead of reporting a clean-looking run."""
+
     unpriced_calls: int = 0
     """Responses that carried no usage block — counted so a partial tally
     cannot pass itself off as a complete one."""
 
-    def record(self, response: Any) -> None:
+    def record(self, response: Any, cache_marked: bool = False) -> None:
         """Pull whatever the provider reported off a LiteLLM response. Defensive throughout:
         a missing usage block must not crash a classification run."""
         self.calls += 1
+        self.cache_marked_calls += int(cache_marked)
         usage = getattr(response, "usage", None)
         if usage is None:
             self.unpriced_calls += 1
@@ -89,6 +100,14 @@ class Usage:
         self.input_tokens += int(getattr(usage, "prompt_tokens", 0) or 0)
         self.output_tokens += int(getattr(usage, "completion_tokens", 0) or 0)
         self.cached_input_tokens += _cached_tokens(usage)
+        self.cache_creation_tokens += _cache_creation_tokens(usage)
+
+    @property
+    def cache_was_ignored(self) -> bool:
+        """We asked for caching on every marked call and the provider never wrote or read a byte."""
+        return bool(self.cache_marked_calls) and not (
+            self.cached_input_tokens or self.cache_creation_tokens
+        )
 
     def estimated_cost_usd(self, model: str) -> float | None:
         """None means we have no price on file — report that, never a silent zero."""
@@ -96,9 +115,13 @@ class Usage:
         if price is None:
             return None
         cached = self.cached_input_tokens if price.cached_input_per_mtok is not None else 0
-        full_price_input = max(self.input_tokens - cached, 0)
+        written = self.cache_creation_tokens
+        full_price_input = max(self.input_tokens - cached - written, 0)
         cost = full_price_input / _MTOK * price.input_per_mtok
         cost += self.output_tokens / _MTOK * price.output_per_mtok
+        # Cache WRITES are charged at a premium (1.25x input on Anthropic), so a run that only ever
+        # writes is more expensive than not caching at all. Counting it keeps that visible.
+        cost += written / _MTOK * price.input_per_mtok * _CACHE_WRITE_MULTIPLIER
         if cached:
             assert price.cached_input_per_mtok is not None
             cost += cached / _MTOK * price.cached_input_per_mtok
@@ -107,14 +130,36 @@ class Usage:
     def summary(self, model: str) -> str:
         cost = self.estimated_cost_usd(model)
         money = f"~${cost:.4f}" if cost is not None else "cost unknown (no price on file)"
-        cached = f", {self.cached_input_tokens:,} cached" if self.cached_input_tokens else ""
+        cached = ""
+        if self.cached_input_tokens or self.cache_creation_tokens:
+            cached = (
+                f", cache {self.cached_input_tokens:,} read / "
+                f"{self.cache_creation_tokens:,} written"
+            )
         missing = (
             f", {self.unpriced_calls} call(s) reported no usage" if self.unpriced_calls else ""
         )
-        return (
+        line = (
             f"{money} estimated — {self.calls} calls, "
             f"{self.input_tokens:,} in{cached} / {self.output_tokens:,} out tokens{missing}"
         )
+        if self.cache_was_ignored:
+            line += (
+                f"\n  ! cache marker sent on {self.cache_marked_calls} call(s) and IGNORED — "
+                f"prefix is below this model's minimum cacheable size. No saving is being made."
+            )
+        return line
+
+
+def _cache_creation_tokens(usage: Any) -> int:
+    """Cached-prefix WRITES. Spelled differently again by provider."""
+    direct = getattr(usage, "cache_creation_input_tokens", None)
+    if direct:
+        return int(direct)
+    details = getattr(usage, "prompt_tokens_details", None)
+    if details is not None:
+        return int(getattr(details, "cache_creation_tokens", 0) or 0)
+    return 0
 
 
 def _cached_tokens(usage: Any) -> int:
