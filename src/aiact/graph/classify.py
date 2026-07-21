@@ -88,8 +88,19 @@ QUESTIONS: dict[str, ClassificationQuestion] = {
     "annex_iii": ClassificationQuestion(
         "annex_iii",
         _src(6, 2, annex="III"),
+        # SCOPE ONLY — deliberately, on legal grounds. Art. 6(2) puts a system inside an Annex III
+        # area; Art. 6(3) then takes it out "by derogation". They are sequential, and this node is
+        # the first one. Left unqualified, the question invites both judgements at once — and
+        # because Art. 6(3) sits in the same supplied Article 6 text, a model reads on and answers
+        # "no area" for a system that IS in scope but has a narrow role. That collapses
+        # not_high_risk (Art. 6(4) documentation and registration still owed) into minimal (nothing
+        # owed), and it skips the derogation node entirely so the reason is never recorded.
         "Which Annex III high-risk area, if any, does this use case fall within (Article 6(2))? "
-        "Answer the area, or none if it falls within no Annex III area.",
+        "Decide SCOPE ONLY: does the described purpose match one of the Annex III area "
+        "descriptions? Do NOT consider whether the system's role is narrow, procedural, "
+        "preparatory, or merely assistive — Article 6(3) exemptions are assessed separately at a "
+        "later step, and a system can fall within an Annex III area and still be exempt there. "
+        "Answer the area, or none only if the purpose matches no Annex III area at all.",
         "annex_area",
     ),
     "profiling": ClassificationQuestion(
