@@ -45,6 +45,7 @@ from pydantic import BaseModel
 
 from aiact.config import get_settings
 from aiact.graph.brain import ClassificationBrain
+from aiact.guidance import load_snippet
 from aiact.schemas.classification import (
     ClassificationAnswer,
     ClassificationEvidence,
@@ -54,7 +55,7 @@ from aiact.schemas.classification import (
     UseCaseClassification,
 )
 from aiact.schemas.enums import RiskClass
-from aiact.schemas.policy import LegalSource
+from aiact.schemas.policy import GuidanceSource, LegalSource
 
 _ACT_DATE = date(2024, 7, 12)
 
@@ -141,6 +142,17 @@ _QUESTION_CONTEXT: dict[str, tuple[tuple[int, ...], tuple[str, ...]]] = {
     "transparency": ((50,), ()),  # Art. 50
 }
 
+# NON-BINDING Commission guidance to supply per question, by snippet ref (data/policy/guidance/).
+# Only for questions the ENACTED TEXT leaves open: Art. 5(1)(f) prohibits emotion recognition "in
+# the workplace" but never says whether hiring counts — so a model reading Art. 5 alone can only
+# guess. The Commission's reading is supplied here (labelled non-binding), the same anti-memory
+# discipline as _QUESTION_CONTEXT, one level up. A verdict reached with it says it rested on
+# interpretation, not law. (Coarse for now: attached to the whole `prohibited` node; the snippet is
+# only relevant to its Art. 5(1)(f) sub-question, harmless where it is not.)
+_QUESTION_GUIDANCE: dict[str, tuple[str, ...]] = {
+    "prohibited": ("C-2025-5052/workplace-covers-recruitment",),
+}
+
 
 def _provision_text(path: Path) -> str:
     """Read a stored article/annex file, stripping its YAML front matter."""
@@ -153,8 +165,10 @@ def load_questions(
     version: str | date | None = None,
     articles_root: str | Path | None = None,
     annexes_root: str | Path | None = None,
+    guidance_root: str | Path | None = None,
 ) -> dict[str, ClassificationQuestion]:
-    """QUESTIONS with each `context` filled from the verbatim article/annex store.
+    """QUESTIONS with each `context` filled from the verbatim article/annex store, and
+    `guidance_context` filled from the guidance store where the enacted text leaves a question open.
 
     Use this for any brain that actually reads the law (LLMBrain). The bare QUESTIONS constant is
     left context-free so the deterministic ScriptedBrain path needs no file IO.
@@ -185,7 +199,21 @@ def load_questions(
                     f"python scripts/fetch_articles.py --version-date {v_str}"
                 )
             chunks.append(_provision_text(p))
-        resolved[node_id] = replace(question, context="\n\n".join(chunks))
+
+        # Non-binding guidance, where the enacted text leaves the question open.
+        g_chunks: list[str] = []
+        g_sources: list[GuidanceSource] = []
+        for ref in _QUESTION_GUIDANCE.get(node_id, ()):
+            snippet = load_snippet(ref, guidance_root)
+            g_chunks.append(f"[{snippet.document}, {snippet.locator}]\n{snippet.body}")
+            g_sources.append(snippet.to_source())
+
+        resolved[node_id] = replace(
+            question,
+            context="\n\n".join(chunks),
+            guidance_context="\n\n".join(g_chunks),
+            guidance_sources=tuple(g_sources),
+        )
     return resolved
 
 
@@ -323,7 +351,17 @@ def build_graph(
     asked = questions if questions is not None else QUESTIONS
 
     def _ask(node_id: str, description: str) -> ClassificationAnswer:
-        return brain.decide(asked[node_id], description)
+        question = asked[node_id]
+        answer = brain.decide(question, description)
+        # Record the non-binding guidance that was in context for this node onto the answer, so it
+        # travels to the verdict. Done HERE, in the graph, not in each brain: it is bookkeeping
+        # about what the question carried, not part of answering — so every brain gets it for free
+        # and none needs to know guidance exists.
+        if question.guidance_sources and not answer.guidance_sources:
+            return answer.model_copy(
+                update={"guidance_sources": list(question.guidance_sources)}
+            )
+        return answer
 
     def node_is_ai(state: GraphState) -> dict[str, Any]:
         return {"is_ai_system": _ask("is_ai", state.description)}

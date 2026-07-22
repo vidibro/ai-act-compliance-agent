@@ -43,6 +43,11 @@ def _print(result) -> None:
         print(f"    {cite} [{e.node_id or '?'}]")
         # the point of the whole change: WHICH words in the documentation drove this
         print(f"      quote: {e.evidence_quote or '(none supplied)'}")
+    if result.rests_on_guidance:
+        print("  ⚠ rests partly on NON-BINDING Commission interpretation:")
+        for g in result.guidance_sources:
+            print(f"    {g.reference}, {g.locator} [{g.snippet_ref}]")
+        print("    (non-binding; the Court of Justice of the EU is the authoritative interpreter)")
 
 
 def demo() -> None:

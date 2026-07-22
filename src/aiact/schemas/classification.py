@@ -14,7 +14,7 @@ from typing import Any, Literal
 from pydantic import BaseModel, field_validator, model_validator
 
 from aiact.schemas.enums import AnnexIIIArea, RiskClass
-from aiact.schemas.policy import LegalSource
+from aiact.schemas.policy import GuidanceSource, LegalSource
 from aiact.schemas.system import SystemUnderReview
 
 Confidence = Literal["high", "medium", "low"]
@@ -55,6 +55,17 @@ class ClassificationQuestion:
     the article/annex store. A model must never answer "which Annex III area is this?" from its own
     memory of the Annex — the same rule that governs the obligation `requirement` fields."""
 
+    guidance_context: str = ""
+    """VERBATIM Commission guidance for this question — the SAME anti-memory rule as `context`, one
+    level up. Where the enacted text leaves a question open (e.g. does Art. 5(1)(f) 'workplace'
+    cover hiring?), a model answering from `context` alone can only GUESS; the answer isn't in the
+    Act. So the authoritative interpretation is supplied here, labelled non-binding, rather than
+    left to the model's memory. Filled by `load_questions()`; empty where no guidance applies."""
+
+    guidance_sources: tuple[GuidanceSource, ...] = ()
+    """Citations for whatever is in `guidance_context`, carried onto the answer so a verdict reached
+    with guidance in context can say so. Non-binding by construction (see GuidanceSource)."""
+
 
 class ClassificationAnswer(BaseModel):
     """Every classification decision must be evidence-backed and citable.
@@ -68,6 +79,8 @@ class ClassificationAnswer(BaseModel):
     confidence: Confidence
     source: LegalSource
     node_id: str | None = None  # which cascade question produced this (see graph/classify.py)
+    guidance_sources: list[GuidanceSource] = []  # non-binding guidance that was in context for
+    # this node — present so the verdict can record it rested on Commission interpretation, not law
 
     _quote_length = field_validator("evidence_quote")(_check_quote_length)
 
@@ -88,18 +101,22 @@ class ClassificationEvidence(BaseModel):
     evidence_quote: str | None = None  # verbatim span of the DOCUMENTATION (not of the law)
     evidence_chunk_id: str | None = None
     reasoning: str | None = None  # the node's own one-line justification
+    guidance: list[GuidanceSource] = []  # NON-BINDING Commission interpretation this rested on,
+    # kept distinct from `source` (enacted law) so a reader can tell the two apart
 
     _quote_length = field_validator("evidence_quote")(_check_quote_length)
 
     @classmethod
     def from_answer(cls, answer: ClassificationAnswer) -> ClassificationEvidence:
-        """Carry a node's answer through to the verdict without losing its evidence."""
+        """Carry a node's answer through to the verdict without losing its evidence — including any
+        non-binding guidance that was in context when the answer was reached."""
         return cls(
             source=answer.source,
             node_id=answer.node_id,
             evidence_quote=answer.evidence_quote,
             evidence_chunk_id=answer.evidence_chunk_id,
             reasoning=answer.reasoning,
+            guidance=list(answer.guidance_sources),
         )
 
 
@@ -180,3 +197,20 @@ class ClassificationResult(BaseModel):
     text generator and a high-risk chatbot can both owe transparency, and a high-risk system may owe
     none. It is therefore answered for every classification and reported beside the risk class —
     never as an input to it."""
+
+    @property
+    def guidance_sources(self) -> list[GuidanceSource]:
+        """Every non-binding guidance citation any verdict here rested on, de-duplicated by
+        snippet_ref. A report reader uses this to see whether the classification leaned on
+        Commission interpretation rather than enacted law alone."""
+        seen: dict[str, GuidanceSource] = {}
+        for evidence in self.triggered_by:
+            for g in evidence.guidance:
+                seen.setdefault(g.snippet_ref, g)
+        return list(seen.values())
+
+    @property
+    def rests_on_guidance(self) -> bool:
+        """True when the verdict leaned on non-binding Commission interpretation — the signal a
+        report must surface, because such a verdict is weaker than one resting on enacted law."""
+        return bool(self.guidance_sources)

@@ -30,7 +30,7 @@ from aiact.schemas.eval import (
     GoldenCase,
     GoldenSet,
 )
-from aiact.schemas.policy import LegalSource, PolicyRule, PolicySpec
+from aiact.schemas.policy import GuidanceSource, LegalSource, PolicyRule, PolicySpec
 from aiact.schemas.report import DISCLAIMER, ComplianceReport, Finding, ReportSummary
 from aiact.schemas.system import DocumentChunk, SystemUnderReview
 
@@ -51,6 +51,7 @@ __all__ = [
     "ClassificationCase",
     "ClassificationGoldenSet",
     # policy
+    "GuidanceSource",
     "LegalSource",
     "PolicyRule",
     "PolicySpec",

@@ -42,9 +42,12 @@ _EVIDENCE_MAX_LENGTH = 300
 _SYSTEM_PROMPT = (
     "You are a careful EU AI Act classification assistant. You answer ONE narrow question about "
     "a described AI use case, based only on the description. You never decide the overall risk "
-    "class. Answer ONLY from the enacted text supplied and the description — never from memory of "
-    "the law. If the description does not let you answer confidently, say so with low confidence — "
-    "abstaining is better than guessing. Reply with a single JSON object and nothing else."
+    "class. Answer ONLY from the enacted text supplied, any Commission guidance supplied, and the "
+    "description — never from memory of the law. Commission guidance is NON-BINDING "
+    "interpretation: rely on it where the enacted text leaves the question open, but do not treat "
+    "it as the law itself. If the description does not let you answer confidently, say so with low "
+    "confidence — abstaining is better than guessing. Reply with a single JSON object and nothing "
+    "else."
 )
 
 
@@ -179,6 +182,17 @@ class LLMBrain:
             if question.context
             else ""
         )
+        # Guidance sits in the STABLE prefix beside the enacted text — it too is identical for every
+        # use case at this node — and is clearly separated and labelled non-binding, so the model
+        # can lean on it where the Act is silent without mistaking it for the law.
+        guidance = (
+            f"Commission guidance (NON-BINDING interpretation — rely on it where the enacted text "
+            f"leaves the question open, but it is not the law itself):\n"
+            f'"""\n{question.guidance_context}\n"""\n\n'
+            if question.guidance_context
+            else ""
+        )
+        stable = law + guidance
         task = (
             f"Question: {question.text}\n\n"
             f"Use-case description:\n\"\"\"\n{description}\n\"\"\"\n\n"
@@ -188,10 +202,10 @@ class LLMBrain:
             f"quote of the law, and null only if nothing in the description supports it), "
             f'"confidence" (one of "high", "medium", "low").'
         )
-        if not self.profile.caches(law):
-            return law + task
+        if not self.profile.caches(stable):
+            return stable + task
         return [
-            {"type": "text", "text": law, "cache_control": {"type": "ephemeral"}},
+            {"type": "text", "text": stable, "cache_control": {"type": "ephemeral"}},
             {"type": "text", "text": task},
         ]
 

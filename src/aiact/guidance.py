@@ -18,11 +18,18 @@ import re
 from dataclasses import dataclass
 from pathlib import Path
 
+from aiact.schemas.policy import GuidanceSource
+
 DEFAULT_GUIDANCE_ROOT = Path("data/policy/guidance")
 
 _FRONT_SHA = re.compile(r"^sha256:\s*([0-9a-f]{64})\s*$", re.M)
 _FRONT_BINDING = re.compile(r"^binding:\s*(true|false)\s*$", re.M)
-_FRONT_LOCATOR = re.compile(r"^locator:\s*(.+?)\s*$", re.M)
+
+
+def _front(field: str, raw: str) -> str:
+    """First value of a simple ``field: value`` front-matter line (empty string if absent)."""
+    m = re.search(rf"^{field}:\s*(.+?)\s*$", raw, re.M)
+    return m.group(1).strip() if m else ""
 
 
 @dataclass(frozen=True)
@@ -34,6 +41,21 @@ class GuidanceSnippet:
     body: str
     binding: bool
     locator: str
+    document: str  # "C(2025) 5052 final"
+    issuer: str  # "European Commission"
+    topic: str
+    source_url: str
+
+    def to_source(self) -> GuidanceSource:
+        """The citation form carried by a verdict — distinct from LegalSource (enacted law)."""
+        return GuidanceSource(
+            issuer=self.issuer or "European Commission",
+            reference=self.document,
+            snippet_ref=self.ref,
+            locator=self.locator,
+            topic=self.topic,
+            url=self.source_url or None,
+        )
 
 
 def snippet_path(ref: str, root: str | Path | None = None) -> Path:
@@ -75,11 +97,14 @@ def load_snippet(ref: str, root: str | Path | None = None) -> GuidanceSnippet:
         )
 
     binding_m = _FRONT_BINDING.search(raw)
-    locator_m = _FRONT_LOCATOR.search(raw)
     return GuidanceSnippet(
         ref=ref,
         path=path,
         body=body,
         binding=bool(binding_m and binding_m.group(1) == "true"),
-        locator=locator_m.group(1) if locator_m else "",
+        locator=_front("locator", raw),
+        document=_front("document", raw),
+        issuer=_front("issuer", raw),
+        topic=_front("topic", raw),
+        source_url=_front("source_url", raw),
     )
