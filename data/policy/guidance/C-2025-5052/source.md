@@ -20,9 +20,9 @@ retrieved_at: 2026-07-22
 
 The authoritative document is `source.pdf` (sha256 above). This store does NOT parse or reproduce
 the full 100+ pages: PDF text extraction is lossy and extractor-dependent, so a machine transcription
-could not be trusted as verbatim law. Instead, `excerpts/` holds the specific passages we rely on,
+could not be trusted as verbatim law. Instead, `snippets/` holds the specific passages we rely on,
 each quoted by hand and checked against its cited PDF page.
 
 These are the Commission's **non-binding** interpretation of Article 5 (`binding: false`). The Court
-of Justice of the EU is the only authoritative interpreter. Any verdict that rests on an excerpt here
+of Justice of the EU is the only authoritative interpreter. Any verdict that rests on a snippet here
 must say it rests on Commission interpretation, not on enacted law.

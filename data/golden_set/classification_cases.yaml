@@ -68,26 +68,34 @@ cases:
     difficulty: obvious
     notes: >-
       Deliberately an EMPLOYEE-monitoring case (unambiguously 'workplace'), kept distinct from the
-      contested hiring reading in emotion_screening_candidates.
+      recruitment-stage reading in emotion_screening_candidates (both now prohibited, but that one
+      relies on Commission guidance to reach the hiring stage; this one does not).
 
-  # --- AMBIGUOUS -> NEEDS_REVIEW (the roadmap's unresolved 'is hiring a workplace?' question) --
+  # --- PROHIBITED (was ambiguous; resolved by Commission guidance C(2025) 5052, para 254) --------
   - case_id: emotion_screening_candidates
     description: >-
       A recruitment tool that analyses facial expressions and vocal tone in candidates' recorded
       video interviews to infer emotional signals such as 'enthusiasm' and 'confidence', surfacing
       them to recruiters alongside the application.
-    expected_risk_class: needs_review
-    expected_prohibited: false
+    expected_risk_class: prohibited
+    expected_prohibited: true
+    guidance_refs:
+      - C-2025-5052/workplace-covers-recruitment
     decisive_fact: >-
       Art. 5(1)(f) prohibits emotion inference 'in the areas of workplace and education
-      institutions'. Whether a pre-employment hiring context is a 'workplace' is genuinely
-      contestable and unresolved (pending Commission guidance). The honest verdict is to abstain,
-      not to guess a prohibition.
-    difficulty: ambiguous
+      institutions'. The Commission Guidelines on prohibited practices (C(2025) 5052 final, para
+      254) read 'workplace' broadly to cover the selection/hiring stage, and give emotion
+      recognition during recruitment as a prohibited example — so this is PROHIBITED, not
+      needs_review. NOTE: this label rests on the Commission's NON-BINDING interpretation (see
+      guidance_refs); the CJEU is the ultimate authority. Was 'ambiguous' before the guidance
+      resolved the hiring-context question.
+    difficulty: obvious
     notes: >-
-      OPEN QUESTION flagged in the roadmap. If hiring counts as 'workplace' -> prohibited; if not,
-      it is an Annex III(4) emotion-recognition system and likely high_risk. NEEDS_REVIEW is the
-      correct answer until the scope is settled — a false PASS/verdict here is exactly the danger.
+      RESOLVED (was the roadmap's 'is hiring a workplace?' open question). Commission guidance
+      C(2025) 5052 final para 254 settles it: 'workplace' covers the selection/hiring stage, so this
+      is prohibited. Kept as a case precisely because the resolution rests on NON-BINDING guidance,
+      not the bare Article 5 text — the label carries a guidance_ref to make that dependence
+      explicit and auditable.
 
   # --- TRANSPARENCY (Art. 50 applies even to a minimal-risk use) ------------------------------
   - case_id: job_ad_generation

@@ -146,6 +146,9 @@ class ClassificationCase(BaseModel):
     difficulty: Difficulty
     split: Split = "test"
     flips_from: str | None = None  # sibling case this one differs from by ~one sentence
+    guidance_refs: list[str] = []  # Commission-guidance snippets backing this label —
+    # "<doc-ref>/<slug>" ids into data/policy/guidance/. NON-BINDING interpretation, not law; used
+    # where the enacted text alone leaves the label contestable. Resolved at load time (loader).
     notes: str | None = None
 
     @model_validator(mode="after")

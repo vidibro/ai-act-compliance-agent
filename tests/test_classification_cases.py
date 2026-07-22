@@ -65,30 +65,42 @@ def test_flip_pair_shares_almost_all_text(cases):
     assert overlap > 0.55, f"flip pair should share most words (Jaccard={overlap:.2f})"
 
 
-def test_all_risk_classes_are_represented(cases):
-    """The set should exercise every outcome, including the NEEDS_REVIEW escape hatch."""
+def test_decidable_risk_classes_are_represented(cases):
+    """The set exercises every DECIDABLE outcome.
+
+    NEEDS_REVIEW is deliberately absent: the one ambiguous case (emotion_screening_candidates) was
+    resolved to `prohibited` once Commission guidance C(2025) 5052 settled the hiring-context
+    question. The abstention PATH is still covered by the graph routing tests (low confidence ->
+    needs_review), but Layer 1 now lacks a genuinely-ambiguous GROUND-TRUTH case. That is a known
+    gap — a fresh ambiguous case should be authored to restore needs_review coverage here (see
+    ROADMAP)."""
     present = {c.expected_risk_class for c in cases.cases}
     for rc in (
         RiskClass.PROHIBITED,
         RiskClass.HIGH_RISK,
         RiskClass.NOT_HIGH_RISK,
         RiskClass.MINIMAL,
-        RiskClass.NEEDS_REVIEW,
     ):
         assert rc in present, f"no case exercises {rc}"
 
 
-def test_prohibited_case_is_clean_and_ambiguous_case_abstains(cases):
-    """The roadmap's open 'is hiring a workplace?' question is handled honestly: a clean workplace
-    case is prohibited; the contested hiring case abstains rather than guessing."""
+def test_both_emotion_cases_are_prohibited_one_via_guidance(cases):
+    """Both emotion-recognition cases are prohibited, but by different routes — and the one that
+    relies on non-binding Commission interpretation says so with a guidance_ref."""
     c = _by_id(cases)
-    assert c["emotion_monitoring_employees"].expected_risk_class == RiskClass.PROHIBITED
-    assert c["emotion_monitoring_employees"].expected_prohibited is True
 
-    ambiguous = c["emotion_screening_candidates"]
-    assert ambiguous.expected_risk_class == RiskClass.NEEDS_REVIEW
-    assert ambiguous.expected_prohibited is False
-    assert ambiguous.difficulty.value == "ambiguous"
+    # Employee monitoring: prohibited on the bare Article 5 text — no guidance needed.
+    workplace = c["emotion_monitoring_employees"]
+    assert workplace.expected_risk_class == RiskClass.PROHIBITED
+    assert workplace.expected_prohibited is True
+    assert workplace.guidance_refs == []
+
+    # Recruitment: prohibited only because guidance reads 'workplace' to cover hiring — so the label
+    # must carry the (non-binding) basis it rests on.
+    recruitment = c["emotion_screening_candidates"]
+    assert recruitment.expected_risk_class == RiskClass.PROHIBITED
+    assert recruitment.expected_prohibited is True
+    assert recruitment.guidance_refs == ["C-2025-5052/workplace-covers-recruitment"]
 
 
 def test_transparency_obligation_can_attach_to_minimal_risk(cases):

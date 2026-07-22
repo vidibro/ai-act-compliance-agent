@@ -19,7 +19,7 @@ So the trust model is explicit:
 | artifact | trust | role |
 |---|---|---|
 | `<doc>/source.pdf` | **authoritative, byte-exact** (sha256 in `source.md`) | the anchor everything traces to |
-| `<doc>/excerpts/*.md` | **hand-verified** (quoted by a person, checked against the cited page) | the citable unit |
+| `<doc>/snippets/*.md` | **hand-verified** (quoted by a person, checked against the cited page) | the citable unit |
 
 We deliberately do **not** store a machine-extracted full text. We only need specific passages, and
 each is lifted by hand and page-referenced so it stays checkable.
@@ -31,21 +31,21 @@ guidance/
   <doc-ref>/            one directory per guidance document, e.g. C-2025-5052/
     source.pdf          the authoritative binary
     source.md           document metadata + sha256 of the PDF + non-binding caveat
-    excerpts/
+    snippets/
       <slug>.md         one verbatim passage: quote + locator (paragraph/page) + source URL
 ```
 
-## Excerpts are reusable across domains
+## Snippets are reusable across domains
 
-An excerpt is an ID'd interpretive fact (`<doc-ref>/<slug>`), not a per-case note. Recruitment is
+A snippet is an ID'd interpretive fact (`<doc-ref>/<slug>`), not a per-case note. Recruitment is
 one of eight Annex III high-risk areas; the same guidance — and, once adopted, the high-risk
 classification guidelines under Art. 6 — will inform cases and rules across the other areas too. A
-golden case, a `PolicyRule`, or a classification question cites an excerpt by ID; many may cite the
+golden case, a `PolicyRule`, or a classification question cites a snippet by ID; many may cite the
 same one. Add a passage when a second thing needs it, not before.
 
 ## Provenance / honesty rules
 
-- Every excerpt carries `binding: false`. A verdict that rests on an excerpt must say it rests on
+- Every snippet carries `binding: false`. A verdict that rests on a snippet must say it rests on
   **Commission interpretation**, not on enacted law.
 - Guidance documents get re-issued (this one was: `C(2025) 884 final` draft-approval →
   `C(2025) 5052 final` finalised). `source.md` records which version, and the PDF sha detects silent
