@@ -1,0 +1,208 @@
+# Ablation plan — HELD-OUT (`test`) split, generated from the SECOND reference document.
+#
+# Companion to ablations.yaml (the `dev` split, generated from hr-candidate-scoring.md). Same
+# recipe, different document: PathFinder internal mobility, Annex III point 4(b).
+#
+# WHY THIS EXISTS AS A SEPARATE FILE AND A SEPARATE OUTPUT
+# --------------------------------------------------------
+# What a gap checker overfits is not the answer key — that is exact by construction, we know what
+# was deleted — but the PROSE of the document it was tuned against: heading style, vocabulary,
+# section order, register. So the held-out unit is the DOCUMENT, and more ablations of
+# hr-candidate-scoring.md would not be held out in any meaningful sense.
+#
+# Physical separation is deliberate: separate manifest, separate cases directory, separate
+# golden_set_heldout.json. Loading the dev set cannot pull these cases in by accident.
+#
+# THE DISCIPLINE
+# --------------
+#   - Authored BEFORE any M4 code existed. No retrieval behaviour had been observed, so none of it
+#     could have shaped these cases. That is what makes them genuinely held out.
+#   - Do not tune prompts, chunking, thresholds or judge criteria against these numbers. Not once.
+#   - Run at reporting time and record the date and the git sha alongside the score.
+#   - If you do tune against it, it is dev now — permanently. Say so and author a new one.
+#
+# DISTRIBUTION MATCHES DEV EXACTLY: same 19 cases, same ablation type per rule, same difficulty
+# labels, same deliberate `expect: pass` probe on Art. 12. A held-out set is meant to estimate
+# performance on unseen cases from the SAME population — making it harder would produce a
+# pessimistic number that measures nothing, making it easier would flatter.
+#
+# ablation types (see schemas/enums.py AblationType):
+#   removed               -> section deleted outright                      -> expect GAP
+#   present_but_inadequate-> section reduced to an empty assertion         -> expect INADEQUATE
+#   distractor            -> plausible but non-responsive marketing text   -> expect GAP
+#   untouched             -> nothing degraded (the pristine document)      -> expect PASS
+
+reference: internal-mobility.md
+system_id: internal-mobility
+default_split: test  # every case here is HELD OUT — the reportable split
+
+cases:
+  # --- Art. 9 — risk management ---------------------------------------------------------------
+  - rule_id: AIA-HR-A09
+    ablation: removed
+    difficulty: obvious
+
+  - rule_id: AIA-HR-A09
+    ablation: present_but_inadequate
+    difficulty: buried
+    replacement: |
+      ## Part C — Risk management
+
+      Meridian maintains a risk management system for PathFinder covering the full product
+      lifecycle. Risks are identified, evaluated and mitigated on a continuous basis, and the
+      Product Risk Council reviews the process regularly. Our approach follows recognised
+      industry frameworks for trustworthy AI.
+
+  - rule_id: AIA-HR-A09
+    ablation: distractor
+    difficulty: buried
+    replacement: |
+      ## Part C — Our people-first philosophy
+
+      Meridian was founded on the belief that every employee deserves a fair shot at their next
+      role. Careers are not spreadsheets, and no algorithm should ever tell someone what they are
+      worth. That conviction shapes how we build. Our founders came from HR, not from adtech, and
+      we have turned down business that would have used our technology to rank people out of
+      opportunities. We publish an annual Workforce Fairness Report and sit on two European
+      advisory boards on the future of work.
+
+  # --- Art. 10 — data and data governance -----------------------------------------------------
+  - rule_id: AIA-HR-A10
+    ablation: removed
+    difficulty: obvious
+
+  - rule_id: AIA-HR-A10
+    ablation: present_but_inadequate
+    difficulty: buried
+    replacement: |
+      ## Part B — Data foundation
+
+      PathFinder is trained on a large and carefully curated set of internal mobility records from
+      our client base. We apply appropriate data governance throughout, and our training data is
+      relevant, representative and suitable for the intended purpose. Data quality is reviewed by
+      our data engineering team on an ongoing basis.
+
+  - rule_id: AIA-HR-A10
+    ablation: distractor
+    difficulty: buried
+    replacement: |
+      ## Part B — Data protection and residency
+
+      All employee data is encrypted in transit with TLS 1.3 and at rest with AES-256. Meridian is
+      ISO 27001 and ISO 27701 certified and holds a SOC 2 Type II report. Data is processed
+      exclusively in EU regions (Frankfurt, Amsterdam) and never leaves the EEA. We execute a
+      DPA with every client, maintain records of processing under Article 30 GDPR, and support
+      data subject access, rectification and erasure requests through a self-service portal.
+      Retention is configurable per tenant, and sub-processors are listed publicly.
+
+  # --- Art. 11 — technical documentation (Annex IV completeness) ------------------------------
+  - rule_id: AIA-HR-A11
+    ablation: removed
+    difficulty: obvious
+
+  - rule_id: AIA-HR-A11
+    ablation: present_but_inadequate
+    difficulty: buried
+    replacement: |
+      ## Part H — Technical documentation index (Annex IV)
+
+      Technical documentation for PathFinder has been drawn up in accordance with the applicable
+      requirements of the Regulation and is kept up to date at each release. It is retained under
+      Meridian's records procedure and made available to national competent authorities on
+      reasoned request.
+
+  # --- Art. 12 — record-keeping / logging -----------------------------------------------------
+  - rule_id: AIA-HR-A12
+    ablation: removed
+    difficulty: obvious
+
+  - rule_id: AIA-HR-A12
+    ablation: present_but_inadequate
+    difficulty: ambiguous
+    # Mirrors the dev set's Art. 12 probe. Art. 12 is a PRESENCE check — the logging capability,
+    # described, is enough — so a bare assertion is arguably a PASS. Tests whether the checker
+    # respects check_type instead of applying substance scrutiny everywhere. Verdict overridden.
+    expect: pass
+    replacement: |
+      ## Part F — Event records
+
+      PathFinder automatically records events over the lifetime of the system. Recording is on by
+      default and cannot be switched off by the deployer.
+
+  # --- Art. 13 — transparency / instructions for use ------------------------------------------
+  - rule_id: AIA-HR-A13
+    ablation: removed
+    difficulty: obvious
+
+  - rule_id: AIA-HR-A13
+    ablation: present_but_inadequate
+    difficulty: buried
+    replacement: |
+      ## Part G — Instructions for use
+
+      PathFinder is designed to be transparent to the organisations that use it. Deployers are
+      given complete instructions for use, so that they can interpret the system's output and
+      apply it appropriately in their talent processes. Our documentation is clear, thorough and
+      written for a non-technical audience.
+
+  # --- Art. 14 — human oversight --------------------------------------------------------------
+  - rule_id: AIA-HR-A14
+    ablation: removed
+    difficulty: obvious
+
+  - rule_id: AIA-HR-A14
+    ablation: present_but_inadequate
+    difficulty: buried
+    replacement: |
+      ## Part E — Oversight by managers and panels
+
+      Human oversight is central to how PathFinder works. A human is always in the loop: line
+      managers and talent review panels remain fully in control of every mobility and promotion
+      decision, and PathFinder only ever advises. No recommendation is ever applied automatically.
+
+  - rule_id: AIA-HR-A14
+    ablation: distractor
+    difficulty: buried
+    replacement: |
+      ## Part E — Working with your panels
+
+      PathFinder slots into the talent review cycle your organisation already runs. The panel view
+      was designed with input from more than forty HR leaders and takes under thirty minutes to
+      learn. Single sign-on, calendar integration and a Teams app mean panels can prepare in the
+      tools they already use. Every client is assigned a named customer success manager who runs a
+      readiness workshop before the first cycle and a retrospective after it.
+
+  # --- Art. 15 — accuracy, robustness, cybersecurity (METRICS check) --------------------------
+  - rule_id: AIA-HR-A15
+    ablation: removed
+    difficulty: obvious
+
+  - rule_id: AIA-HR-A15
+    ablation: present_but_inadequate
+    difficulty: buried
+    # The canonical metrics failure: confident claims, zero numbers.
+    replacement: |
+      ## Part D — Performance, resilience and security
+
+      PathFinder delivers strong and consistent recommendation quality across job families, and
+      its readiness bands are well calibrated. The system is resilient to incomplete and changing
+      employee data and performs reliably throughout its lifecycle. Security is engineered in at
+      every layer, following industry best practice for model and data protection.
+
+  - rule_id: AIA-HR-A15
+    ablation: distractor
+    difficulty: buried
+    replacement: |
+      ## Part D — Platform performance and availability
+
+      PathFinder runs on a multi-region active-active architecture with a contractual 99.95%
+      monthly uptime SLA. Median panel-view load time is 340 ms and p99 is under 1.2 s; a full
+      tenant recommendation refresh for 50,000 employees completes in under nine minutes. The
+      platform auto-scales through the annual talent review peak, when request volume rises around
+      twelvefold, and we publish real-time availability and incident history on a public status
+      page.
+
+  # --- The pristine document — measures FALSE POSITIVES ---------------------------------------
+  - rule_id: null
+    ablation: untouched
+    difficulty: obvious

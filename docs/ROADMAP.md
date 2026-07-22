@@ -38,11 +38,28 @@ Pydantic v2 contracts: enums, policy, system, classification (per-use-case), rep
 
 ### M1 — Golden-set (DATA — the real blocker, do before eval tuning) 🟡 Layer 2 done, Layer 1 short
 
-**Status:** Layer 2 is **complete** — `data/golden_set/reference/hr-candidate-scoring.md` + `ablations.yaml`
-manifest + **19 case documents** covering `removed` / `present_but_inadequate` / `distractor` across
-AIA-HR-A09…A15, plus the `pristine__untouched.md` false-positive control. M4 is unblocked by data.
-Layer 1 has **6 of ≥15** cases. **Both layers' held-out `test` split is empty by design** — no reported
-number is honest until it exists.
+**Status:** Layer 2 is **complete, dev AND held-out** — two reference documents, 38 case documents:
+
+| | reference | manifest | output | cases | split |
+|---|---|---|---|---|---|
+| dev | `hr-candidate-scoring.md` (Annex III 4(a), recruitment) | `ablations.yaml` | `golden_set.json` | 19 | `dev` — tunable |
+| held-out | `internal-mobility.md` (Annex III 4(b), promotion) | `ablations-heldout.yaml` | `golden_set_heldout.json` | 19 | `test` — reportable |
+
+**The held-out unit is the DOCUMENT, not the answer key.** Layer 2 ground truth is exact by
+construction — we know what we deleted — so what a checker actually overfits is one document's
+prose: heading style, vocabulary, section order, register. More ablations of the same reference
+would not be held out in any meaningful sense. Hence a second, deliberately dissimilar system
+(employees/line managers/readiness bands, precision@5 and calibration rather than NDCG, lettered
+parts in a different order), with a test asserting the two share no vendor, system or section
+vocabulary. Distribution is mirrored exactly — same 19 cases, same ablation and difficulty mix —
+because a held-out set estimates performance on unseen cases from the *same* population; making it
+harder would produce a pessimistic number that measures nothing.
+
+**Authored before any M4 code existed**, which is what makes it genuinely held out: no retrieval
+behaviour had been observed and so none could have shaped it. Run once, at reporting time; record
+the date and git sha with the number. If it is ever tuned against, it is dev permanently.
+
+Layer 1 has **6 of ≥15** cases and its held-out split is still **empty**.
 
 Two layers:
 
@@ -56,11 +73,26 @@ Two layers:
 - **The prohibited case:** AI video-interview scoring facial expression / tone → likely prohibited (Art. 5, emotion recognition in the workplace), not high-risk. See open question below on whether "workplace" covers the hiring stage.
 - **The transparency case:** job-ad generator → `minimal` risk BUT Art. 50 applies (generates synthetic text). Proves Art. 50 is evaluated independently of the risk class.
 
-**DoD:** ≥15 classification cases incl. the three required cases above ❌ (6/15 — the three required cases all exist); ≥1 reference doc + ablation script producing a manifest ✅; dev/held-out split committed 🟡 (the *mechanism* is committed and defaults safely to `test`; the held-out set itself is empty).
+**DoD:** ≥15 classification cases incl. the three required cases above ❌ (6/15 — the three required cases all exist); ≥1 reference doc + ablation script producing a manifest ✅; dev/held-out split committed 🟡 (Layer 2 ✅ both halves; Layer 1 held-out still empty).
 
 **Outstanding Layer 1 work:** ~9 more cases, of which at least one must be a genuinely-ambiguous
 `needs_review` ground truth (see the side-effect note below), and the rest should be authored as
 *never-inspected* held-out cases rather than more dev cases.
+
+**Agreed sourcing strategy (2026-07-22): synthetic held-out first, real cases later.** Author the
+held-out splits synthetically, develop against dev, and only once the synthetic held-out number is
+satisfactory add real-world sourced cases. Rationale: for Layer 2 synthetic is the *only* option —
+exact ablation ground truth requires authoring the document — and for Layer 1 it unblocks progress
+without waiting on sourcing and anonymisation.
+
+> ⚠️ **What a synthetic held-out number does and does not prove.** It proves the prompts were not
+> memorised against the dev cases — a real and worthwhile claim. It does **not** prove the system
+> works on real documents, because dev and test share an author, a register and an idea of what
+> "buried" looks like; real vendor prose is messier, hedged, internally inconsistent, and silent in
+> places no synthetic document is. Report it as "held-out synthetic", never as real-world accuracy.
+> Mitigation agreed: pull **2–3 real anonymised descriptions in early as a distribution smoke-check**
+> (not scored, not part of any split) so any synthetic-vs-real gap is discovered while it can still
+> be acted on — rather than after the synthetic set is exhausted and burned.
 
 #### ✅ Resolved — "workplace" (Art. 5 emotion recognition) DOES cover hiring
 

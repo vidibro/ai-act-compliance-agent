@@ -1,14 +1,20 @@
 #!/usr/bin/env python3
 """Generate the golden set: degrade the reference document in known ways, emit exact ground truth.
 
-    python scripts/make_golden_set.py
+    python scripts/make_golden_set.py                            # dev split
+    python scripts/make_golden_set.py --plan ablations-heldout.yaml   # HELD-OUT split
 
 Reads:
     data/golden_set/reference/<reference>.md   — complete, compliant, sections tagged by rule_id
-    data/golden_set/ablations.yaml             — which rule to degrade, how, expected verdict
+    data/golden_set/<plan>.yaml                — which rule to degrade, how, expected verdict
 Writes:
-    data/golden_set/cases/<case_id>.md         — the document a checker will see (tags stripped)
-    data/golden_set/golden_set.json            — GoldenSet: every case + expected verdict per rule
+    data/golden_set/cases[-suffix]/<case_id>.md      — the document a checker sees (tags stripped)
+    data/golden_set/golden_set[_suffix].json         — GoldenSet: cases + expected verdict per rule
+
+ONE PLAN = ONE REFERENCE DOCUMENT = ONE OUTPUT FILE. That is why the held-out split is a separate
+plan rather than more entries here: what a checker overfits is the PROSE of the document it was
+tuned against, so the unit that has to be held out is the document. Separate outputs also mean the
+dev set cannot pull held-out cases in by accident — see ablations-heldout.yaml.
 
 Why generate rather than hand-write variants: ground truth is then EXACT. We know precisely which
 section was removed / hollowed out / swapped for marketing copy, so the expected verdict follows by
@@ -90,9 +96,19 @@ def main() -> None:
     ap = argparse.ArgumentParser(description="Generate the golden set from the reference document.")
     ap.add_argument("--golden-dir", type=Path, default=GOLDEN_DIR)
     ap.add_argument("--spec", type=Path, default=SPEC_PATH)
+    ap.add_argument(
+        "--plan",
+        default="ablations.yaml",
+        help="ablation plan inside --golden-dir (default: ablations.yaml, the dev split). "
+        "Output paths are derived from the plan name, so ablations-heldout.yaml writes "
+        "cases-heldout/ and golden_set_heldout.json.",
+    )
     args = ap.parse_args()
 
-    plan = yaml.safe_load((args.golden_dir / "ablations.yaml").read_text(encoding="utf-8"))
+    plan = yaml.safe_load((args.golden_dir / args.plan).read_text(encoding="utf-8"))
+    # "ablations.yaml" -> "", "ablations-heldout.yaml" -> "-heldout". One plan, one reference
+    # document, one output file — keeping GoldenSet's "all cases from ONE reference" invariant true.
+    variant = Path(args.plan).stem.removeprefix("ablations")
     ref_path = args.golden_dir / "reference" / plan["reference"]
     default_split = plan.get("default_split", "test")
     template, sections = parse_reference(ref_path.read_text(encoding="utf-8"))
@@ -110,7 +126,7 @@ def main() -> None:
         sys.exit(f"Reference document has no section for applicable rule(s): {sorted(missing)}")
     print(f"Applicable document-verifiable rules: {len(applicable)} -> {', '.join(applicable)}")
 
-    cases_dir = args.golden_dir / "cases"
+    cases_dir = args.golden_dir / f"cases{variant}"
     cases_dir.mkdir(parents=True, exist_ok=True)
     for stale in cases_dir.glob("*.md"):
         stale.unlink()
@@ -166,14 +182,16 @@ def main() -> None:
         spec_version=spec.spec_version,
         cases=cases,
     )
-    out = args.golden_dir / "golden_set.json"
+    out = args.golden_dir / f"golden_set{variant.replace('-', '_')}.json"
     out.write_text(json.dumps(golden.model_dump(mode="json"), indent=2) + "\n", encoding="utf-8")
     n_dev = sum(c.split == "dev" for c in cases)
     n_test = sum(c.split == "test" for c in cases)
     print(f"\n{len(cases)} cases -> {out}   (dev={n_dev}, test={n_test})")
     print(f"{len(cases) * len(applicable)} rule-level judgements to score.")
     if n_test == 0:
-        print("NOTE: held-out test split is empty — no reportable score yet, by design.")
+        print("NOTE: this plan is all dev — tunable. The held-out split lives in its own plan.")
+    if n_dev == 0:
+        print("NOTE: HELD OUT. Do not tune against these. Run once; record the date and git sha.")
 
 
 if __name__ == "__main__":

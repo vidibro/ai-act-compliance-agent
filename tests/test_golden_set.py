@@ -20,15 +20,35 @@ from aiact.schemas.eval import AblationType, GoldenCase, GoldenSet
 
 ROOT = Path(__file__).resolve().parents[1]
 GOLDEN_JSON = ROOT / "data" / "golden_set" / "golden_set.json"
+HELDOUT_JSON = ROOT / "data" / "golden_set" / "golden_set_heldout.json"
 SPEC_PATH = ROOT / "data" / "policy" / "spec.yaml"
 ARTICLES_ROOT = ROOT / "data" / "policy" / "articles"
 
 
+def _load(path: Path) -> GoldenSet:
+    if not path.is_file():
+        pytest.skip(f"{path.name} not generated; run scripts/make_golden_set.py")
+    return GoldenSet.model_validate(json.loads(path.read_text(encoding="utf-8")))
+
+
 @pytest.fixture(scope="module")
 def golden() -> GoldenSet:
-    if not GOLDEN_JSON.is_file():
-        pytest.skip("golden set not generated; run scripts/make_golden_set.py")
-    return GoldenSet.model_validate(json.loads(GOLDEN_JSON.read_text(encoding="utf-8")))
+    """The DEV set — hr-candidate-scoring, tunable."""
+    return _load(GOLDEN_JSON)
+
+
+@pytest.fixture(scope="module")
+def heldout() -> GoldenSet:
+    """The HELD-OUT set — internal-mobility. Never tuned against; the only reportable score."""
+    return _load(HELDOUT_JSON)
+
+
+@pytest.fixture(scope="module", params=["dev", "heldout"])
+def any_golden(request) -> GoldenSet:
+    """Both sets. Every structural invariant below is a property of the RULER, not of one document,
+    so it must hold for the held-out set too — otherwise the half we actually report is the
+    untested half."""
+    return _load(GOLDEN_JSON if request.param == "dev" else HELDOUT_JSON)
 
 
 @pytest.fixture(scope="module")
@@ -43,25 +63,25 @@ def test_golden_set_loads(golden: GoldenSet):
     assert len(ids) == len(set(ids)), "case_ids must be unique"
 
 
-def test_every_case_expects_all_applicable_rules(golden: GoldenSet, spec):
+def test_every_case_expects_all_applicable_rules(any_golden: GoldenSet, spec):
     """A case scores every applicable rule, so each one measures both catching and false alarms."""
     applicable = {
         r.rule_id
         for r in spec.rules
         if r.document_verifiable and any(c.value == "high_risk" for c in r.applies_to_risk_class)
     }
-    for case in golden.cases:
+    for case in any_golden.cases:
         assert set(case.expected) == applicable, f"{case.case_id} does not score every rule"
 
 
-def test_expected_verdict_matches_ablation_type(golden: GoldenSet):
+def test_expected_verdict_matches_ablation_type(any_golden: GoldenSet):
     """Ground truth must follow from what was degraded — that is what makes it exact."""
     implied = {
         AblationType.REMOVED: Verdict.GAP,
         AblationType.PRESENT_BUT_INADEQUATE: Verdict.INADEQUATE,
         AblationType.DISTRACTOR: Verdict.GAP,
     }
-    for case in golden.cases:
+    for case in any_golden.cases:
         if case.ablated_rule_id is None:
             continue
         got = case.expected[case.ablated_rule_id]
@@ -73,24 +93,24 @@ def test_expected_verdict_matches_ablation_type(golden: GoldenSet):
         assert got == implied[case.ablation], f"{case.case_id} expects {got}"
 
 
-def test_untouched_rules_expect_pass(golden: GoldenSet):
-    for case in golden.cases:
+def test_untouched_rules_expect_pass(any_golden: GoldenSet):
+    for case in any_golden.cases:
         for rule_id, verdict in case.expected.items():
             if rule_id != case.ablated_rule_id:
                 assert verdict == Verdict.PASS, f"{case.case_id}/{rule_id} should be untouched"
 
 
-def test_pristine_case_is_all_pass(golden: GoldenSet):
+def test_pristine_case_is_all_pass(any_golden: GoldenSet):
     """Measures false positives: a checker that flags anything here is crying wolf."""
-    pristine = next(c for c in golden.cases if c.ablation == AblationType.UNTOUCHED)
+    pristine = next(c for c in any_golden.cases if c.ablation == AblationType.UNTOUCHED)
     assert pristine.ablated_rule_id is None
     assert set(pristine.expected.values()) == {Verdict.PASS}
 
 
-def test_rule_tags_never_leak_into_case_documents(golden: GoldenSet):
+def test_rule_tags_never_leak_into_case_documents(any_golden: GoldenSet):
     """The <!-- rule: ... --> tags are authoring metadata. If they reached the checker it could
     find the answer key in the input."""
-    for case in golden.cases:
+    for case in any_golden.cases:
         assert "<!-- rule:" not in case.raw_text, f"{case.case_id} leaks rule tags"
         assert "<!--" not in case.raw_text, f"{case.case_id} leaks an HTML comment"
 
@@ -117,8 +137,8 @@ def test_inadequate_case_keeps_the_topic_but_drops_the_substance(golden: GoldenS
         assert substance not in case.raw_text, f"{substance!r} should have been hollowed out"
 
 
-def test_case_documents_on_disk_match_the_manifest(golden: GoldenSet):
-    for case in golden.cases:
+def test_case_documents_on_disk_match_the_manifest(any_golden: GoldenSet):
+    for case in any_golden.cases:
         path = ROOT / case.document_path
         assert path.is_file(), f"{case.case_id}: {path} missing"
         assert path.read_text(encoding="utf-8") == case.raw_text
@@ -164,13 +184,64 @@ def test_split_field_defaults_to_test_when_unset():
     assert c.split == "test"
 
 
-def test_every_current_case_is_dev_and_test_is_empty(golden: GoldenSet):
-    """Current structure: all cases are dev; the held-out test split is intentionally empty and
-    will be authored later. When that changes, this test should be updated deliberately."""
+# --- the dev / held-out separation --------------------------------------------------------------
+def test_dev_set_is_entirely_dev(golden: GoldenSet):
+    """The tunable half. Every case here may be looked at, iterated on, and tuned against."""
     assert {c.split for c in golden.cases} == {"dev"}
     assert golden.for_split("test") == []
-    assert len(golden.for_split("dev")) == len(golden.cases)
     assert len(golden.for_split("all")) == len(golden.cases)
+
+
+def test_heldout_set_is_entirely_held_out(heldout: GoldenSet):
+    """The reportable half. A single `dev` case leaking in here would make the reported number
+    partly a memorised one."""
+    assert heldout.system_id == "internal-mobility"
+    assert {c.split for c in heldout.cases} == {"test"}
+    assert heldout.for_split("dev") == []
+
+
+def test_heldout_matches_the_dev_distribution(golden: GoldenSet, heldout: GoldenSet):
+    """A held-out set estimates performance on UNSEEN cases from the SAME population. Making it
+    harder yields a pessimistic number that measures nothing; making it easier flatters. So the
+    ablation mix, the difficulty mix and the deliberate Art. 12 probe are mirrored exactly."""
+
+    def shape(g: GoldenSet):
+        # `or ""` because the pristine case's ablated_rule_id is None, which will not sort against
+        # a str; enum .value for a stable, readable comparison.
+        return sorted(
+            (c.ablated_rule_id or "", c.ablation.value, c.difficulty.value) for c in g.cases
+        )
+
+    assert shape(heldout) == shape(golden)
+    assert len(heldout.cases) == len(golden.cases)
+
+
+def test_the_two_sets_are_genuinely_different_documents(golden: GoldenSet, heldout: GoldenSet):
+    """What a gap checker overfits is the PROSE — headings, vocabulary, register — not the answer
+    key, which is exact by construction. So re-ablating the same document would not be held out at
+    all. These must share no system, no vendor and no section vocabulary."""
+    dev_text = " ".join(c.raw_text for c in golden.cases)
+    held_text = " ".join(c.raw_text for c in heldout.cases)
+
+    for dev_only in ("TalentRank", "Northwind", "requisition", "recruiter", "NDCG"):
+        assert dev_only in dev_text
+        assert dev_only not in held_text, f"{dev_only!r} leaked into the held-out documents"
+    for held_only in ("PathFinder", "Meridian", "readiness band", "line manager", "precision@5"):
+        assert held_only in held_text
+        assert held_only not in dev_text, f"{held_only!r} leaked into the dev documents"
+
+    # Different Annex III sub-point, so the subject matter differs and not just the nouns.
+    assert "4(a)" in dev_text and "4(b)" in held_text
+
+
+def test_heldout_inadequate_case_keeps_the_topic_but_drops_the_substance(heldout: GoldenSet):
+    """The dev set's headline property, re-asserted on the document we actually report from."""
+    case = next(c for c in heldout.cases if c.case_id == "AIA-HR-A14__present_but_inadequate")
+    assert "human oversight" in case.raw_text.lower()  # topic survives -> keyword checker passes it
+    # Terms unique to Part E. "alphabetically" is NOT usable — it legitimately recurs in Part A,
+    # which is itself the lesson: topic words are worthless as evidence of an obligation being met.
+    for substance in ("administration console", "3-hour PathFinder module", "equal visual weight"):
+        assert substance not in case.raw_text, f"{substance!r} should have been hollowed out"
 
 
 # --- The baseline's failure is the project's thesis, so we pin it as a regression test ----------
@@ -183,12 +254,12 @@ def test_keywords_are_derived_from_article_titles_not_hand_tuned():
     }
 
 
-def test_keyword_baseline_cannot_detect_inadequate(golden: GoldenSet, spec):
+def test_keyword_baseline_cannot_detect_inadequate(any_golden: GoldenSet, spec):
     """THE HEADLINE. A word-matching checker never emits INADEQUATE — it is structurally blind to
     the distinction this project exists to make. If a future checker makes this test fail, that is
     progress, not a regression."""
     titles = {r.rule_id: "Human oversight" for r in spec.rules}
     titles.update({r.rule_id: r.rule_id for r in spec.rules})
     checker = KeywordBaseline({r.rule_id: "placeholder title" for r in spec.rules})
-    results = run(checker, golden, spec)
+    results = run(checker, any_golden, spec)
     assert all(r.got != Verdict.INADEQUATE for r in results)
