@@ -18,14 +18,16 @@
 - Positioning: the official checker asks the user the classifying questions; this agent reads the document and answers them itself, with citations — and catches the case where a provider genuinely misclassifies (e.g. a parser that quietly scores candidates → profiling).
 - Framing: draft compliance checklist for expert review. NOT legal advice. Keep the Commission-style disclaimer everywhere.
 
-## ⚠️ Open question — sequencing (resolve before sinking more hours)
+## ✅ Resolved — sequencing (the "evals before the agent" worry)
 
-Notes say I'm already working on evals. Two readings:
+The original worry was evals with nothing to evaluate. Settled the right way round: the golden-set
+exists for **both** layers, and the Layer 1 classifier runs against it end-to-end and produces a real
+number (5/6, see M3). Data landed before code, per death-mode #1 below.
 
-- **Legit:** building the eval harness ahead of the agent, so the moment the checker runs there are numbers. Fine — as long as the golden-set exists to run against.
-- **Risk:** evals without a working classifier/checker to evaluate = measuring nothing yet.
-
-Rule of thumb: eval harness + golden-set = good to build early. Eval tuning (chasing scores) is pointless until the agent produces outputs. If the golden-set isn't built yet, that's the actual blocker — build it before the harness. See M1.
+The live sequencing risk is now a different one: **the held-out `test` split is empty in both layers**,
+so every number so far is a *dev* number and may not be reported as anything else. Authoring held-out
+cases is what converts "it works" into a publishable metric — and it must happen before any prompt
+tuning against Layer 2.
 
 ## Milestones
 
@@ -34,7 +36,13 @@ Rule of thumb: eval harness + golden-set = good to build early. Eval tuning (cha
 Pydantic v2 contracts: enums, policy, system, classification (per-use-case), report. Citation structurally unavoidable; carve-back enforced by validator.
 **DoD:** all models construct; validators reject invalid cases; multi-use-case test (parser + scorer + job-ad generator → 3 risk classes) passes; ruff clean.
 
-### M1 — Golden-set (DATA — the real blocker, do before eval tuning)
+### M1 — Golden-set (DATA — the real blocker, do before eval tuning) 🟡 Layer 2 done, Layer 1 short
+
+**Status:** Layer 2 is **complete** — `data/golden_set/reference/hr-candidate-scoring.md` + `ablations.yaml`
+manifest + **19 case documents** covering `removed` / `present_but_inadequate` / `distractor` across
+AIA-HR-A09…A15, plus the `pristine__untouched.md` false-positive control. M4 is unblocked by data.
+Layer 1 has **6 of ≥15** cases. **Both layers' held-out `test` split is empty by design** — no reported
+number is honest until it exists.
 
 Two layers:
 
@@ -48,7 +56,11 @@ Two layers:
 - **The prohibited case:** AI video-interview scoring facial expression / tone → likely prohibited (Art. 5, emotion recognition in the workplace), not high-risk. See open question below on whether "workplace" covers the hiring stage.
 - **The transparency case:** job-ad generator → `minimal` risk BUT Art. 50 applies (generates synthetic text). Proves Art. 50 is evaluated independently of the risk class.
 
-**DoD:** ≥15 classification cases incl. the three required cases above; ≥1 reference doc + ablation script producing a manifest; dev/held-out split committed.
+**DoD:** ≥15 classification cases incl. the three required cases above ❌ (6/15 — the three required cases all exist); ≥1 reference doc + ablation script producing a manifest ✅; dev/held-out split committed 🟡 (the *mechanism* is committed and defaults safely to `test`; the held-out set itself is empty).
+
+**Outstanding Layer 1 work:** ~9 more cases, of which at least one must be a genuinely-ambiguous
+`needs_review` ground truth (see the side-effect note below), and the rest should be authored as
+*never-inspected* held-out cases rather than more dev cases.
 
 #### ✅ Resolved — "workplace" (Art. 5 emotion recognition) DOES cover hiring
 
@@ -65,9 +77,20 @@ The `job_ad_generation` case turns on whether Annex III 4(a) — high-risk syste
 The 18 high-risk obligations from the EC checker, in the `PolicyRule` schema. Honest `document_verifiable` flags (Art. 16–21/43/47–49 = process obligations, not doc-checkable). Most of these obligations (Art. 9–15, 16–21) apply to **every** Annex III high-risk system regardless of area, so the spec largely generalises as-is. A few rules encode **employment-specific** choices that a second area would need to revisit — e.g. `AIA-PO-A43` picks the internal-control route (Annex VI, because employment is Annex III point 4) and `AIA-PO-A49` disapplies the point-2 registration exception. Area-specific derogation/conformity paths get split out when the second vertical lands.
 **DoD:** `data/policy/*.yaml` loads and validates against `PolicySpec`.
 
-### M3 — Classification graph (LangGraph)
+### M3 — Classification graph (LangGraph) 🟡 built and scoring; Langfuse NOT wired
 
 Nodes reproduce the EC flow; profiling split out; per-use-case resolution. Each node returns a `ClassificationAnswer` with evidence + `LegalSource`. Wire Langfuse from the first node.
+
+**Built beyond the original sketch** (none of this was in the plan; record it so M6 can show it):
+
+- **Evidence trail** — `ClassificationEvidence` carries `evidence_quote`: *which words in the documentation* drove each node's answer, not just which article was cited.
+- **Provider seam** (`providers.py`) — every vendor-specific request parameter lives behind `ProviderProfile`, so "the model choice is config, not code" is true rather than aspirational. Profiles for Anthropic (adaptive/legacy), OpenAI (reasoning/classic), Gemini, Mistral. Guards the cross-vendor trap where LiteLLM translates `reasoning_effort` into a `thinking=` block that current Anthropic models reject with 400.
+- **Cost instrumentation** (`usage.py`) — token/cost tally per run, printed by the golden runner. Unpriced models report "cost unknown", never a silent $0. Cache writes tracked separately from reads, and an ignored cache marker is reported rather than hidden.
+- **Non-binding guidance layer** (`guidance.py` + `data/policy/guidance/`) — verbatim Commission passages, sha256-integrity-checked, supplied to the node where the enacted text leaves a question open, labelled NON-BINDING in the prompt, and surfaced in the verdict via `result.rests_on_guidance`. `GuidanceSource` is structurally unable to be `binding: true` — enacted law is cited with `LegalSource` and the two are never merged.
+
+**Baseline measured (2026-07-22)** — Layer 1 dev set, `claude-haiku-4-5`, questions anchored in verbatim article/Annex text: **5/6**, ~$0.084 per run (~$0.014 per case). The one miss is `job_ad_generation`, the deliberately-deferred contested label below. Prompt caching is currently INERT: the stable prefix (~2.7k tokens) sits under Haiku 4.5's 4,096-token minimum, so the marker is sent and ignored — the runner says so out loud.
+
+**⚠️ Remaining DoD gap: Langfuse is not wired.** It is a declared dependency and a line in `config.py`'s docstring, nothing more. No node emits a trace. This is the last item standing between M3 and ✅, and M6's DoD ("a trace is shown") depends on it.
 
 Art. 50 is NOT a node on the main branch. Transparency is checked independently of the risk class — a minimal-risk generator and a high-risk chatbot can both trigger it. Implement it as a separate check that always runs, not as a step in the risk cascade. Easy to get wrong because it doesn't sit on the main path.
 
@@ -76,9 +99,11 @@ Order matters: prohibited (Art. 5) is evaluated BEFORE high-risk. A prohibited s
 
 **Scope taken: ONE use case per run.** `GraphState` carries a single `description` + `use_case_id`, so `assemble` always emits `use_cases=[one]`. This is a deliberate cut, not an oversight — see M7 below. Everything through M6 is built on single-use-case input.
 
-### M4 — Gap-analysis checker (RAG)
+### M4 — Gap-analysis checker (RAG) ⬅️ NEXT — data is ready, nothing built
 
 Chroma ingest + retrieval as a TOOL the agent calls per active rule. Verdict per rule: pass / gap / inadequate / not_applicable. This is where `inadequate` vs `gap` earns its keep.
+
+**Status: not started.** Chroma is a dependency and a `chroma_path` setting; `src/aiact/tools/` is empty. But the Layer 2 ablation corpus it eats is fully authored (19 cases + manifest + reference doc), so this is the biggest block of unstarted work with no data blocker in front of it.
 **DoD:** Layer-2 ablation docs run → findings with citations; `untouched` requirements come back `pass` (false-positive control).
 
 ### M5 — Eval (numbers)
@@ -133,5 +158,6 @@ What changes:
 ## Provenance / legal hygiene
 
 - Pin `act_version_date` everywhere. Check EUR-Lex for a consolidated (Omnibus) version; record `amended_by` if found. Currently pinned: `act_version_date: 2024-07-12` (OJ publication date of the original text; verbatim article store lives in `data/policy/articles/2024-07-12/`).
+- **Enacted law and Commission interpretation are stored and cited separately, and never merged.** `data/policy/articles|annexes/` hold verbatim enacted text cited with `LegalSource`; `data/policy/guidance/` holds verbatim passages from Commission Communications cited with `GuidanceSource` (`binding: false`, structurally enforced by a validator). Each guidance snippet records its document sha256 and its own body sha256, so a drifted or dangling citation fails at load rather than degrading silently. Any verdict that leaned on interpretation reports `rests_on_guidance` and names the CJEU as the authoritative interpreter. Currently one snippet: `C-2025-5052/workplace-covers-recruitment`.
 - Vendor names never sit next to a legal verdict in the public repo. Classify anonymised function descriptions; keep vendor→archetype mapping private.
 - Ground truth is an engineer's reading of the law, cross-checked against the Commission's own Guidelines/checker where possible. Say so. Don't oversell it as a benchmark.
