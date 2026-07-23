@@ -20,6 +20,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 
 from aiact.eval.classification_cases import load_classification_cases  # noqa: E402
+from aiact.eval.classification_score import score_case, score_run  # noqa: E402
 from aiact.graph import ScriptedBrain, classify  # noqa: E402
 from aiact.graph.classify import load_questions  # noqa: E402
 from aiact.schemas.enums import AnnexIIIArea, DerogationCondition  # noqa: E402
@@ -43,6 +44,10 @@ def _print(result) -> None:
         print(f"    {cite} [{e.node_id or '?'}]")
         # the point of the whole change: WHICH words in the documentation drove this
         print(f"      quote: {e.evidence_quote or '(none supplied)'}")
+    # Art. 50 sits BESIDE the tier, never inside it — a minimal-risk generator can owe it and a
+    # high-risk scorer can owe none.
+    if result.transparency is not None:
+        print(f"  art. 50    : {result.transparency.value} [{result.transparency.confidence}]")
     if result.rests_on_guidance:
         print("  ⚠ rests partly on NON-BINDING Commission interpretation:")
         for g in result.guidance_sources:
@@ -84,18 +89,24 @@ def run_golden() -> None:
     anchored = load_questions()
     print(f"Classifying {len(cases.cases)} Layer 1 cases with model={brain.model}")
     print("questions anchored in verbatim article + Annex III text\n")
-    correct = 0
+    pairs = []
     for case in cases.cases:
         result = classify(case.description, brain, case.case_id, questions=anchored)
-        got = result.overall_risk_class
-        ok = got == case.expected_risk_class
-        correct += ok
-        mark = "OK  " if ok else "MISS"
+        pairs.append((case, result))
+        score = score_case(case, result)
+        # Art. 50 is reported per case beside the class, not folded into it — a run can get every
+        # tier right while owing the wrong transparency duty on all of them.
+        art50 = "  art50 " + ("OK  " if score.transparency_correct else "MISS")
+        art50 += f" exp {str(case.expected_transparency_obligation):5} got {score.got_transparency}"
+        mark = "OK  " if score.class_correct else "MISS"
         print(
             f"  {mark} {case.case_id:30} "
-            f"expected {case.expected_risk_class.value:14} got {got.value}"
+            f"expected {case.expected_risk_class.value:14} got {result.overall_risk_class.value:14}"
+            f"{art50}"
         )
-    print(f"\nclassification accuracy: {correct}/{len(cases.cases)}")
+    print()
+    for line in score_run(pairs).lines():
+        print(line)
     print(f"run cost           : {brain.usage.summary(brain.model)}")
     per_case = brain.usage.estimated_cost_usd(brain.model)
     if per_case is not None and cases.cases:
