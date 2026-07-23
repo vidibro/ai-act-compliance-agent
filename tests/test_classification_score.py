@@ -32,6 +32,9 @@ def case(case_id: str, risk: RiskClass, transparency: bool) -> ClassificationCas
         description="a description",
         expected_risk_class=risk,
         expected_transparency_obligation=transparency,
+        # The schema compels a basis whenever the obligation is claimed — see
+        # ClassificationCase._answer_key_is_legally_consistent. A fixture is not exempt.
+        transparency_basis="Art. 50(2): generates synthetic text." if transparency else "",
         decisive_fact="the fact that fixes the class",
         difficulty="obvious",
     )

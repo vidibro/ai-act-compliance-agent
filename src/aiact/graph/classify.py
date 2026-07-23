@@ -122,8 +122,16 @@ QUESTIONS: dict[str, ClassificationQuestion] = {
     "transparency": ClassificationQuestion(
         "transparency",
         _src(50),
-        "Do Article 50 transparency obligations apply — for example, the system generates "
-        "synthetic content or interacts directly with natural persons?",
+        # The examples span all FOUR paragraphs on purpose. They previously named only (1) and (2),
+        # silently omitting emotion recognition and deep fakes — half the article, and the half that
+        # covers this project's own prohibited cases. The full text is supplied as context either
+        # way, so the model could reach 50(3) regardless; an example list that stops at the
+        # provider paragraphs still tilts it, and Art. 50 binds providers AND deployers.
+        "Do Article 50 transparency obligations apply to this system — under any paragraph, and "
+        "whether the duty falls on the provider or the deployer? For example: it interacts "
+        "directly with natural persons (50(1)); it generates synthetic audio, image, video or "
+        "text (50(2)); it is an emotion recognition or biometric categorisation system (50(3)); "
+        "it produces deep fakes or public-interest text (50(4)).",
         "bool",
     ),
 }

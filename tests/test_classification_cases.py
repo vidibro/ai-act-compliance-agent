@@ -115,6 +115,52 @@ def test_every_case_states_a_decisive_fact(cases):
         assert len(c.decisive_fact.strip()) > 20, f"{c.case_id} has no real decisive_fact"
 
 
+# --- Art. 50: the axis that was wrong for months because nothing scored it ----------------------
+def test_emotion_recognition_systems_owe_art_50_transparency(cases):
+    """Art. 50(3) binds deployers of an EMOTION RECOGNITION SYSTEM to inform those exposed. It
+    attaches to the system type and has only a law-enforcement carve-out — the Art. 5 prohibition
+    does not disapply it. Both labels said `false` until 2026-07-22; the model said `true` and had
+    the better textual argument."""
+    c = _by_id(cases)
+    for case_id in ("emotion_monitoring_employees", "emotion_screening_candidates"):
+        case = c[case_id]
+        assert case.expected_prohibited is True
+        assert case.expected_transparency_obligation is True, f"{case_id}: Art. 50(3) attaches"
+        assert "50(3)" in case.transparency_basis
+
+
+def test_the_flip_changes_the_tier_and_leaves_art_50_alone(cases):
+    """The two axes are independent, and the flip pair is where that is provable: one added
+    sentence moves not_high_risk -> high_risk while Art. 50 stays false on both."""
+    c = _by_id(cases)
+    before, after = c["cv_parsing_fields"], c["cv_parsing_plus_scoring"]
+    assert before.expected_risk_class != after.expected_risk_class
+    assert before.expected_transparency_obligation is False
+    assert after.expected_transparency_obligation is False
+
+
+def test_every_case_argues_its_art_50_label_either_way(cases):
+    """Stricter than the schema, which only compels a basis when the obligation is TRUE. The labels
+    that were wrong were all `false` — a default nobody had to defend. In the committed answer key
+    every case defends its Art. 50 position, whichever way it lands."""
+    for c in cases.cases:
+        basis = c.transparency_basis.strip()
+        assert len(basis) > 20, f"{c.case_id} asserts an Art. 50 label without argument"
+        assert "50(" in basis, f"{c.case_id} names no Art. 50 paragraph"
+
+
+def test_a_true_art_50_label_cannot_be_asserted_without_a_basis():
+    with pytest.raises(ValueError, match="transparency_basis is empty"):
+        ClassificationCase(
+            case_id="bare",
+            description="d",
+            expected_risk_class=RiskClass.MINIMAL,
+            expected_transparency_obligation=True,
+            decisive_fact="a fact long enough to pass",
+            difficulty="obvious",
+        )
+
+
 def test_current_cases_are_all_dev(cases):
     """Mirrors the Layer 2 decision: current cases are dev; held-out test authored later."""
     assert {c.split for c in cases.cases} == {"dev"}

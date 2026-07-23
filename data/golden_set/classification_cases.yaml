@@ -30,6 +30,12 @@ cases:
     expected_annex_iii_area: employment
     expected_performs_profiling: false
     expected_derogation: narrow_procedural_task
+    expected_transparency_obligation: false
+    transparency_basis: >-
+      None of Art. 50's four paragraphs attach. It reads uploaded documents and writes fields to a
+      database — it does not interact directly with candidates (50(1); the recruiter consumes the
+      output), generates no synthetic content (50(2)), is not an emotion recognition or biometric
+      categorisation system (50(3)), and produces no deep fake or public-interest text (50(4)).
     decisive_fact: >-
       Extraction of fields only, with no evaluation of the person — a narrow procedural task under
       Art. 6(3)(a). Falls within Annex III(4) employment but the derogation applies.
@@ -46,6 +52,11 @@ cases:
     expected_risk_class: high_risk
     expected_annex_iii_area: employment
     expected_performs_profiling: true
+    expected_transparency_obligation: false
+    transparency_basis: >-
+      Unchanged from cv_parsing_fields — scoring and ranking are neither direct interaction (50(1))
+      nor content generation (50(2)). Deliberate: the added sentence flips the RISK TIER and must
+      leave Art. 50 alone, which is the point of keeping the two axes separate.
     decisive_fact: >-
       The added scoring/ranking sentence makes the system evaluate natural persons — profiling
       under Art. 6(3). Notwithstanding any procedural-task derogation, profiling forces high_risk.
@@ -62,6 +73,13 @@ cases:
       per-employee 'engagement' scores to managers.
     expected_risk_class: prohibited
     expected_prohibited: true
+    expected_transparency_obligation: true  # CORRECTED 2026-07-22 (was false) — see basis
+    transparency_basis: >-
+      Art. 50(3): "Deployers of an emotion recognition system ... shall inform the natural persons
+      exposed thereto of the operation of the system." This IS an emotion recognition system, so
+      50(3) attaches by its own terms. The Art. 5 prohibition does not disapply it: Art. 50(3)'s
+      only carve-out is for law-enforcement use, and Art. 5(1)(f) itself excepts medical and safety
+      purposes — under which such a system may be lawfully deployed and 50(3) squarely bites.
     decisive_fact: >-
       Inference of emotions of natural persons in the workplace — an Art. 5(1)(f) prohibited
       practice. Evaluated BEFORE high-risk classification; it never reaches Art. 6.
@@ -79,6 +97,12 @@ cases:
       them to recruiters alongside the application.
     expected_risk_class: prohibited
     expected_prohibited: true
+    expected_transparency_obligation: true  # CORRECTED 2026-07-22 (was false) — see basis
+    transparency_basis: >-
+      Art. 50(3), as for emotion_monitoring_employees — it is an emotion recognition system and the
+      paragraph attaches to that system type regardless of the Art. 5 verdict. Arguably Art. 50(1)
+      as well, since candidates respond to the system in a recorded interview; 50(3) alone is
+      enough and is the cleaner basis.
     guidance_refs:
       - C-2025-5052/workplace-covers-recruitment
     decisive_fact: >-
@@ -107,6 +131,12 @@ cases:
     expected_annex_iii_area: null
     expected_performs_profiling: false
     expected_transparency_obligation: true
+    transparency_basis: >-
+      Art. 50(2): providers of AI systems generating synthetic text must mark the output in a
+      machine-readable format as artificially generated. The 50(2) carve-out for systems performing
+      "an assistive function for standard editing" does not apply — it drafts the advert, it does
+      not merely edit the user's text. The recruiter's review before publication is relevant to the
+      editorial-control exception in 50(4), which concerns public-interest text and is not in play.
     decisive_fact: >-
       Content generation that evaluates no natural person — outside Annex III, so minimal risk. But
       Art. 50 transparency (AI-generated content) applies INDEPENDENTLY of the risk tier.
@@ -122,6 +152,15 @@ cases:
       stated calendar availability, and sends the confirmed invitations. It does not assess,
       rank, or make any recommendation about candidates.
     expected_risk_class: minimal
+    expected_transparency_obligation: false
+    transparency_basis: >-
+      Art. 50(1) does not attach: the tool matches STATED availability and emits invitations: it is
+      not intended to interact directly with candidates as an interlocutor, and 50(1) excepts what
+      is obvious to a reasonably observant person in any event. Nothing is generated (50(2)), no
+      emotions inferred (50(3)), no deep fake (50(4)). NOTE THE CONTRAST with the real-world
+      scheduling page in data/golden_set/smoke/interview-coordination.md, which converses with
+      candidates over SMS and WhatsApp — there Art. 50(1) is a much stronger fit. The label is for
+      THIS description, and the difference between the two is exactly a fact a card must state.
     expected_annex_iii_area: null
     expected_performs_profiling: false
     decisive_fact: >-

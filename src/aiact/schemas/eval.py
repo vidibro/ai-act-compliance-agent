@@ -140,7 +140,23 @@ class ClassificationCase(BaseModel):
     expected_annex_iii_area: AnnexIIIArea | None = None  # Art. 6(2), Annex III
     expected_performs_profiling: bool | None = None  # Art. 6(3) carve-back
     expected_derogation: DerogationCondition | None = None  # Art. 6(3)(a)-(d)
-    expected_transparency_obligation: bool = False  # Art. 50 — applies regardless of risk tier
+    expected_transparency_obligation: bool = False
+    """Art. 50 — applies regardless of the risk tier.
+
+    SCOPE, because the field was silent on it and that silence was a real bug (three labels were
+    wrong for months and the runner never scored them): TRUE means **any** Art. 50 obligation
+    attaches to this system, whether it falls on the provider or on the deployer. Art. 50 is titled
+    "Transparency obligations for providers AND deployers" and the paragraphs split by role —
+    (1) direct interaction and (2) marking synthetic output bind the PROVIDER; (3) emotion
+    recognition / biometric categorisation and (4) deep fakes bind the DEPLOYER. A provider report
+    that stayed silent about a duty its deployers will certainly owe would be less useful, not more
+    rigorous, so both count — and `transparency_basis` records which paragraph, so the label stays
+    arguable instead of asserted."""
+
+    transparency_basis: str = ""
+    """WHICH Art. 50 paragraph attaches, and why. Mandatory whenever the obligation is TRUE (see the
+    validator). Same discipline as LegalSource on a verdict: an answer key that cannot show its
+    working is how a wrong label survives — this one did, until the smoke check tripped over it."""
 
     decisive_fact: str  # the single fact that fixes the class (what a reader must catch)
     difficulty: Difficulty
@@ -154,6 +170,15 @@ class ClassificationCase(BaseModel):
     @model_validator(mode="after")
     def _answer_key_is_legally_consistent(self) -> ClassificationCase:
         rc = self.expected_risk_class
+
+        # Art. 50 — a claimed transparency obligation must name the paragraph it rests on. Not
+        # bureaucracy: the labels this replaces were plain booleans with no recorded argument, and
+        # two of them were simply wrong (Art. 50(3) expressly covers emotion recognition systems).
+        if self.expected_transparency_obligation and not self.transparency_basis.strip():
+            raise ValueError(
+                f"{self.case_id}: expected_transparency_obligation=True but transparency_basis is "
+                f"empty. Name the Art. 50 paragraph and why it attaches."
+            )
 
         # Art. 5 — prohibition and the PROHIBITED class are the same fact, stated two ways.
         if self.expected_prohibited != (rc == RiskClass.PROHIBITED):

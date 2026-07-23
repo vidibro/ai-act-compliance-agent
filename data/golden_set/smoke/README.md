@@ -103,11 +103,15 @@ scored: `ClassificationCase.expected_transparency_obligation` was in the answer 
 `run_golden()` compared **only** `expected_risk_class`. An entire ground-truth field was authored
 and never checked. Now fixed — `src/aiact/eval/classification_score.py`.
 
-**With scoring in place the axis reads 3/6, and the misses are ANSWER-KEY disputes, not obviously
-model errors** (see ROADMAP M3). My first read here — "this looks like over-triggering" — was too
-quick: Art. 50(3) expressly names emotion recognition systems, so `true` on the two emotion cases
-has direct textual support and it is the answer key's `false` that lacks a recorded argument. The
-node also correctly answered `false` on both CV cases, so it is not indiscriminately saying yes.
+**With scoring in place the axis read 3/6 — and the misses turned out to be ANSWER-KEY errors, not
+model errors.** My first read here ("this looks like over-triggering") was too quick: Art. 50(3)
+expressly names emotion recognition systems, so `true` on the two emotion cases had direct textual
+support while the key's `false` had no recorded argument at all. The key was corrected on
+2026-07-22 (see ROADMAP M3) and the axis now reads 6/6.
+
+So this smoke check found a real defect twice over: an axis that was never scored, and then two
+wrong labels inside it. Neither was reachable from the golden set, because the golden set was the
+thing that was wrong.
 
 **Verdict: the synthetic set is realistic enough to keep tuning against, with two gaps worth
 closing.** Points 1 and 3 are cheap to fix and should shape the Layer 1 held-out cases when they are

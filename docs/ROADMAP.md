@@ -36,10 +36,11 @@ out of the tail because it is blocked by nothing — it depends on the cascade (
 or M5. Ordered so that the ruler is fixed before anything is measured against it, and ground truth
 is authored before the code it judges:
 
-1. **Fix the Art. 50 answer key** (M3 TODO). Free, no API calls, and everything downstream is
-   measured against it. `expected_transparency_obligation` is probably wrong on the two emotion
-   cases — Art. 50(3) expressly names emotion recognition systems. Record the argument either way;
-   an unargued label is what got us here.
+1. ~~**Fix the Art. 50 answer key**~~ ✅ **done 2026-07-22.** Root cause was the field's silence on
+   role, not the labels; two flipped to `true` on Art. 50(3), every case now records a
+   `transparency_basis` naming its paragraph, and a validator compels one whenever the obligation
+   is claimed. Dev score 3/6 → 6/6 — see the caveat in M3 about how much of that is the model
+   improving versus the key conceding.
 2. **Author the insufficient-input case** (M1 TODO + M8). Ground truth *before* the fix it tests —
    the project's own rule. Expect it to FAIL against today's cascade; that is the point. Restores
    Layer 1's missing `needs_review` coverage as a side effect.
@@ -163,13 +164,19 @@ Nodes reproduce the EC flow; profiling split out; per-use-case resolution. Each 
 **Baseline measured (2026-07-22)** — Layer 1 dev set, `claude-haiku-4-5`, questions anchored in verbatim article/Annex text. **Two axes, reported separately and never averaged** (`src/aiact/eval/classification_score.py`):
 
 - **risk class 5/6** — the miss is `job_ad_generation`, the deliberately-deferred contested label below.
-- **Art. 50 3/6** — 3 false-positive, 0 false-negative, 0 abstained.
+- **Art. 50 6/6** — 0 false-positive, 0 false-negative, 0 abstained (was 3/6 before the answer key was corrected on 2026-07-22; see below for what that number does and does not prove).
 
 ~$0.084 per run (~$0.014 per case). Prompt caching is currently INERT: the stable prefix (~2.7k tokens) sits under Haiku 4.5's 4,096-token minimum, so the marker is sent and ignored — the runner says so out loud.
 
 > ⚠️ **The Art. 50 axis was never scored until now.** `expected_transparency_obligation` had been in the answer key since the golden set was authored; the runner compared only `expected_risk_class`. So the Art. 50 node ran on every case from M3 onward and was never once checked. Found by the real-world smoke check, not by the eval — which is itself the argument for having run it.
 >
-> **TODO — review the Art. 50 ground truth before touching the node.** All three misses are the model saying `true` where the key says `false`, and on at least two the model has the better textual argument: **Art. 50(3) expressly covers emotion recognition systems**, so `true` on `emotion_monitoring_employees` and `emotion_screening_candidates` is defensible and the key's `false` has no recorded reasoning. (A possible defence of the key: Art. 50(3) binds the *deployer*, this spec scopes provider obligations, and a prohibited system cannot lawfully be deployed at all — but that argument is nowhere in the case notes, and ground truth without a recorded argument is exactly what the golden set exists to prevent.) The third, `interview_scheduler`, turns on whether sending candidates invitations is "interacting directly" under Art. 50(1) — genuinely arguable. The node is **not** indiscriminately answering yes: it correctly returned `false` on both CV cases.
+> ✅ **Art. 50 answer key reviewed and corrected (2026-07-22).** Root cause was not the labels but the FIELD: Art. 50 is titled "Transparency obligations for providers AND deployers" and its paragraphs split by role — (1) direct interaction and (2) marking synthetic output bind the provider, (3) emotion recognition and (4) deep fakes bind the deployer — while `expected_transparency_obligation` said nothing about which it meant. Nobody had decided, so no label could be right or wrong. Now defined as *any* Art. 50 duty on either role, and every case carries a `transparency_basis` naming its paragraph, enforced by a validator whenever the obligation is claimed.
+>
+> Two labels changed, both `false` → `true`: `emotion_monitoring_employees` and `emotion_screening_candidates`, on Art. 50(3), which attaches to the *system type* and carves out only law-enforcement use. The Art. 5 prohibition does not disapply it — and Art. 5(1)(f) itself excepts medical and safety purposes, under which such a system is lawfully deployable and 50(3) squarely bites. `interview_scheduler` stays `false`: matching stated availability and emitting invitations is not being "intended to interact directly" under 50(1). Worth noting its real-world sibling in `data/golden_set/smoke/` converses over SMS and WhatsApp and would plausibly go the other way — the difference between the two is exactly the kind of fact a system card must state (M8).
+>
+> The node question was also widened: its examples named only paragraphs (1) and (2), omitting emotion recognition and deep fakes — half the article, and the half covering this project's own prohibited cases.
+>
+> ⚠️ **What 6/6 does NOT prove.** Two of the three "fixes" were the answer key moving to where the model already was — the model had said `true` on both emotion cases before anything changed, so that is us conceding, not the model improving. The only genuinely new behaviour is `interview_scheduler` flipping `true` → `false` after the question was widened. And the prompt was changed while looking at dev results, which is what dev is for, but means this is a *dev* number in the fullest sense. The real test is the held-out Layer 1 split, which does not exist yet.
 
 **⚠️ Remaining DoD gap: Langfuse is not wired.** It is a declared dependency and a line in `config.py`'s docstring, nothing more. No node emits a trace. This is the last item standing between M3 and ✅, and M6's DoD ("a trace is shown") depends on it.
 
