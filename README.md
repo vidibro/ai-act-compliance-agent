@@ -13,6 +13,30 @@ Two jobs, in order:
    `pass` / `gap` / `inadequate`. Telling a real `gap` from an `inadequate` (the requirement is
    mentioned but with no substance) is the capability this project is built and measured around.
 
+## If you don't have documentation yet
+
+The agent reads what you give it, so a thin input produces a thin report. The two jobs above need
+**two different documents**, and it is worth not confusing them:
+
+**1. To be classified — a system card.** This is what you write *before* you know your risk class,
+and the Regulation does not template it. State plainly, in the Act's own terms: the **intended
+purpose**; what the system does **to a person** (extracts fields? evaluates or ranks them? infers
+emotions? allocates tasks?); whether you are **provider or deployer** (Art. 3(3)–(4)); and whether it
+**generates content or interacts with people directly** (Art. 50). Describe *function, not benefit*,
+write one section **per intended purpose** rather than per product, and say what the system does
+**not** do — the Art. 6(3) derogations turn on absence. Those are the facts the cascade below
+actually decides on. *(A fill-in template is planned — see M8 in `docs/ROADMAP.md`.)*
+
+**2. To be checked against obligations — a technical file.** Here you need no guide from us, because
+the Act contains one: [**Annex IV**](data/policy/annexes/2024-07-12/annex-IV.md) is its own minimum
+element list for the technical documentation of a **high-risk** system — general description,
+development process, monitoring and control, performance metrics, risk management, lifecycle changes,
+standards applied, and a copy of the EU declaration of conformity (Art. 47, contents fixed by
+Annex V). `data/golden_set/reference/` holds two complete worked examples.
+
+Note the order: Annex IV applies *once you already know you are high-risk*, so it presupposes step 1
+and cannot help you with it.
+
 ## Status
 
 Built: the Pydantic v2 schema layer; a policy spec whose legal wording is resolved verbatim from

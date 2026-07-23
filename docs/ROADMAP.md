@@ -29,6 +29,35 @@ so every number so far is a *dev* number and may not be reported as anything els
 cases is what converts "it works" into a publishable metric — and it must happen before any prompt
 tuning against Layer 2.
 
+## ▶ Current focus (decided 2026-07-22) — finish CLASSIFICATION to eval numbers, then start M4
+
+Depth-first, per the north star: one job taken all the way beats two half-built ones. M8 is promoted
+out of the tail because it is blocked by nothing — it depends on the cascade (M3, built), not on M4
+or M5. Ordered so that the ruler is fixed before anything is measured against it, and ground truth
+is authored before the code it judges:
+
+1. **Fix the Art. 50 answer key** (M3 TODO). Free, no API calls, and everything downstream is
+   measured against it. `expected_transparency_obligation` is probably wrong on the two emotion
+   cases — Art. 50(3) expressly names emotion recognition systems. Record the argument either way;
+   an unargued label is what got us here.
+2. **Author the insufficient-input case** (M1 TODO + M8). Ground truth *before* the fix it tests —
+   the project's own rule. Expect it to FAIL against today's cascade; that is the point. Restores
+   Layer 1's missing `needs_review` coverage as a side effect.
+3. **Silence ≠ derogation** (M8). Make the derogation node distinguish "the text asserts the system
+   does not evaluate people" from "the text is silent", and route silence to needs_review. Verify
+   against (2).
+4. **Report the missing fact** (M8). Surface *which* node abstained and *which* article needs it,
+   instead of collapsing to `needs_review`. The `node_id` is already on the answer and thrown away.
+5. **The system-card guide** (M8). Cheap once 1–4 settle what a valid description must contain.
+6. **Layer 1 held-out cases** (M1). Authored last, because the guide's section list is the checklist
+   of what they must vary. Synthetic first, per the agreed sourcing strategy.
+7. **Langfuse** (M3's last open DoD item) — before M4 starts, so the retrieval layer is observable
+   from its first chunk rather than instrumented afterwards.
+
+Then **M4**. Its Layer 2 data is already complete (dev + held-out), so nothing in this block blocks
+it — but note M4 is the largest unstarted piece of the deliverable, so this block must stay tight
+rather than expand to fill the time.
+
 ## Milestones
 
 ### M0 — Schemas ✅ (in progress / done)
@@ -108,6 +137,8 @@ without waiting on sourcing and anonymisation.
 The prohibited-practice ban on emotion recognition covers "workplace and education". Question was: does a recruitment / pre-employment interview count as "workplace"? **Resolved yes**, per the **Commission Guidelines on prohibited AI practices, C(2025) 5052 final (29 July 2025)** — "workplace" is to be interpreted broadly and expressly covers recruitment and hiring; the Guidelines give video-interview emotion analysis as a prohibited example. So `emotion_screening_candidates` is `prohibited`, not `needs_review`. (Note the version: C(2025) 5052 final, 29 Jul 2025, is the *finalised* guidelines — it supersedes C(2025) 884 final, 4 Feb 2025, which was only the *approval of the draft content*. Cite 5052.) The label carries a `guidance_refs` id into the new guidance store (`data/policy/guidance/`), which records the verbatim passage; a loader check makes a dangling or drifted citation fail.
 
 > ⚠️ **Side effect — Layer 1 lost its only `needs_review` ground-truth case.** Resolving this label to `prohibited` means no classification case now exercises NEEDS_REVIEW. The abstention *path* is still covered by the graph routing tests (low confidence → needs_review), but a genuinely-ambiguous *ground-truth* case should be authored to restore coverage. **TODO: add one new ambiguous Layer 1 case.**
+>
+> **A cheaper source for it than legal ambiguity: INSUFFICIENT INPUT.** A description that simply never states whether the system evaluates people is unclassifiable without guessing, and `needs_review` is the correct answer — no contested legal question required to author it. This is the same case M8 needs to prove that silence does not buy a derogation, so one case serves both. Note the current cascade would likely *fail* it today (see M8): the smoke check's silent scheduling page returned a derogation at high confidence.
 
 #### ⏸ Deferred — is drafting a job advert "placing targeted job advertisements" (Annex III 4(a), high-risk)?
 
@@ -149,7 +180,7 @@ Order matters: prohibited (Art. 5) is evaluated BEFORE high-risk. A prohibited s
 
 **Scope taken: ONE use case per run.** `GraphState` carries a single `description` + `use_case_id`, so `assemble` always emits `use_cases=[one]`. This is a deliberate cut, not an oversight — see M7 below. Everything through M6 is built on single-use-case input.
 
-### M4 — Gap-analysis checker (RAG) ⬅️ NEXT — data is ready, nothing built
+### M4 — Gap-analysis checker (RAG) — data ready, starts after the classification block (see top)
 
 Chroma ingest + retrieval as a TOOL the agent calls per active rule. Verdict per rule: pass / gap / inadequate / not_applicable. This is where `inadequate` vs `gap` earns its keep.
 
@@ -192,6 +223,81 @@ What changes:
 
 **Why it needs its own eval layer, and why that's the real cost:** the split is the hardest judgement in the pipeline and the least verifiable — "is this one purpose or three?" has no crisp answer in the enacted text, and a wrong split silently changes every downstream verdict. The current Layer 1 golden set is one-description-one-expected-class and **cannot measure it at all**. M7 requires cases whose ground truth is the *decomposition* (multi-function product doc → expected set of use cases), scored on set agreement, before any of its output can be trusted.
 **DoD:** a multi-function reference doc yields ≥2 use cases with different risk classes; decomposition eval reports set agreement against hand-authored ground truth; obligations are raised only against the high-risk use case.
+
+### M8 — System-card guide for CLASSIFICATION input ⬅️ PROMOTED to current focus (see top)
+
+*Numbered M8 by when it was written down, not by when it runs. It is blocked by nothing: it depends
+on the cascade (M3, built), not on M4 or M5. Sequenced at the top of this file.*
+
+**The problem.** The agent reads what it is given. Users without documentation hand over a product
+page, and the smoke check (`data/golden_set/smoke/`) showed exactly what that costs: real marketing
+prose classified `not_high_risk` where the equivalent tidy description classified `minimal`, because
+marketing copy states benefits and buries function. The fix is better input, not more tuning.
+
+**Scope: the classification half only.** This is the system card a user writes *before* they know
+their tier — the input to the Art. 5 / Art. 6 cascade. It is NOT a technical-documentation guide:
+Annex IV already is one, it is authoritative, and the README points at it directly (see below).
+The two are separate artefacts answering separate questions, and conflating them once already cost
+this milestone a wrongful deletion.
+
+**Why the Act cannot supply this one.** Annex IV presupposes a high-risk classification and so
+describes the file you owe *after* the question is settled. Nothing in the Regulation templates the
+description you need *to settle it*. The nearest authority is the Commission's own AI Act Compliance
+Checker, which asks the user these questions directly — and answering them from a document instead
+is this project's whole positioning.
+
+**Content: the facts the cascade actually turns on,** one section per node, each citing its article.
+
+| the card must state | node | source |
+|---|---|---|
+| that it is an AI system, and its **intended purpose** | `is_ai` | Art. 3(1) |
+| whether it infers **emotions**, scrapes faces, scores social behaviour, manipulates | `prohibited` | Art. 5 |
+| the **Annex III area** it operates in, if any | `annex_iii` | Art. 6(2), Annex III |
+| whether it **evaluates or ranks natural persons** — the single most decisive fact | `profiling` | Art. 6(3) |
+| whether it only performs a narrow procedural task / improves prior human work / detects patterns / is preparatory | `derogation` | Art. 6(3)(a)–(d) |
+| whether it **generates content or interacts with people directly** | `transparency` | Art. 50 |
+| whether the author is **provider or deployer** | scope | Art. 3(3), Art. 3(4) |
+
+Plus the framing rules that make a card classifiable at all: describe **function, not benefit**;
+state what the system does **to a person**; one section **per intended purpose** rather than per
+product (which also seeds M7); and say what it does **not** do, since derogations turn on absence.
+
+> ⚠️ **OMISSION IS THE RISK, not gaming.** A card written to satisfy the classifier is fine —
+> describing your system accurately is the goal, not a loophole. The hazard runs the other way: a
+> user who omits the ranking sentence gets a comfortable `not_high_risk`. The guide must say plainly
+> that an omission changes the report, not the legal position, and that the flip case exists
+> precisely because that sentence is the one providers leave out.
+
+**The guide should not only be a document — the agent should say what is missing.** A vendor cannot
+be expected to know in advance what makes a description valid; the tool already knows, per node.
+`_abstain()` returns a low-confidence answer carrying its `node_id`, so *which* question went
+unanswered is available today and is merely collapsed into `needs_review`. Surfacing it turns the
+guide into a loop: *"You did not state whether the system ranks or scores candidates. Art. 6(3)
+cannot be decided without it — add it and re-run."* Cheap, and far more likely to be acted on than a
+document read up front.
+
+> ⚠️ **Silence is not evidence of absence — and the cascade currently treats it as such.** A
+> description that never mentions ranking may mean the system does not rank, or that the vendor did
+> not say. For the Art. 6(3) derogations the difference is decisive: "narrow procedural task"
+> requires positive evidence that the system does not evaluate people. **Live, not theoretical** —
+> in the smoke check, `interview-coordination` (a marketing page that never addresses evaluation)
+> returned `narrow_procedural_task` → `not_high_risk` at *high* confidence. Possibly right about
+> that product, but reached from a document that never spoke to the question. Fix candidates: have
+> the derogation node distinguish "the text asserts the system does not evaluate" from "the text is
+> silent", and route silence to a request for information rather than to a derogation. Needs a
+> golden-set case whose ground truth is *insufficient input* — a class Layer 1 does not yet have.
+
+**Sequencing.** Depends only on the cascade (M3, built) — not on M4 or M5. Could ship alongside M6
+packaging, where it doubles as documentation of what the agent actually reads. Worth doing before
+authoring the Layer 1 held-out cases, since the card's sections are a checklist of what those cases
+must vary.
+
+**DoD:** `docs/system-card-guide.md` with a fill-in template, every ask citing its article; a card
+written from it for one of the smoke-check systems classifies to the same tier as the full product
+page, with higher confidence; the report names the specific fact and article a low-confidence node
+was missing, rather than only saying `needs_review`; a silent description does not yield a
+derogation; the omission warning stated explicitly; framing kept as draft-for-expert-review, not
+legal advice.
 
 ## Backlog (post-v0.1, only after M6 ships)
 
