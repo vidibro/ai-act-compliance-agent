@@ -258,6 +258,60 @@ def _get_answers(state: GraphState) -> list[ClassificationAnswer]:
     return [a for a in answers if a is not None]
 
 
+# What each node needed the DESCRIPTION to state, phrased for the person who has to go and write it.
+# NOT the question text: that is addressed to a model reading the enacted provision beside it, and
+# lands as jargon on an author ("does this use case perform profiling?").
+_WHAT_THE_NODE_NEEDED: dict[str, str] = {
+    "is_ai": "whether this is an AI system — does it infer its outputs, or follow rules a person wrote",
+    "prohibited": "whether it infers emotions, categorises people biometrically, or scores social behaviour",
+    "annex_iii": "what the system is actually used for",
+    "profiling": "whether it evaluates, scores or ranks people — and on what",
+    "derogation": "whether it only performs a narrow procedural task, improves prior human work, "
+    "detects decision patterns, or prepares an assessment",
+    "transparency": "whether it generates content or interacts with people directly",
+}
+
+
+def _cite(source: LegalSource) -> str:
+    cite = f"Art. {source.article}"
+    if source.paragraph:
+        cite += f"({source.paragraph})"
+    return cite
+
+
+def _why_it_could_not_decide(abstentions: list[ClassificationAnswer]) -> str:
+    """Name the MISSING FACT and the article that needed it, instead of 'a node abstained'.
+
+    An answer of 'needs review' that does not say what was missing gives the reader nothing to act
+    on — they cannot tell whether to edit their documentation, and if so what to add. The node_id
+    and the citation were already on the answer and were being discarded here.
+
+    Split by cause: a silent document is the user's to fix, an unreadable model reply is not, and
+    telling someone to rewrite adequate documentation would be worse than saying nothing."""
+    silent = [a for a in abstentions if a.abstained_because == "description_silent"]
+    broken = [a for a in abstentions if a.abstained_because != "description_silent"]
+
+    parts: list[str] = []
+    if silent:
+        missing = "; ".join(
+            f"{_WHAT_THE_NODE_NEEDED.get(a.node_id or '', 'the fact this question turns on')} "
+            f"({_cite(a.source)})"
+            for a in silent
+        )
+        parts.append(
+            f"The description does not state: {missing}. Add it and re-run — the answer cannot be "
+            f"inferred from what is there, and guessing it would decide the risk class on a fact "
+            f"the documentation never supplied."
+        )
+    if broken:
+        nodes = ", ".join(f"{a.node_id} ({_cite(a.source)})" for a in broken)
+        parts.append(
+            f"No usable answer was returned for: {nodes}. This is a failure of the run, not of the "
+            f"documentation — re-running may resolve it."
+        )
+    return " ".join(parts) or "A classification node abstained; escalate to a human reviewer."
+
+
 def decide_risk_class(state: GraphState) -> tuple[RiskClass, str, list[ClassificationEvidence]]:
     """Derive the risk class from whatever nodes were answered. Order encodes the cascade:
     abstention first, then prohibition, then the Annex III / profiling / derogation logic.
@@ -270,7 +324,7 @@ def decide_risk_class(state: GraphState) -> tuple[RiskClass, str, list[Classific
     if low_confidence:
         return (
             RiskClass.NEEDS_REVIEW,
-            "A classification node abstained (low confidence); escalate to a human reviewer.",
+            _why_it_could_not_decide(low_confidence),
             [evidence(a) for a in low_confidence],
         )
     if state.is_ai_system and state.is_ai_system.value is not True:
@@ -365,7 +419,11 @@ def build_graph(
         # travels to the verdict. Done HERE, in the graph, not in each brain: it is bookkeeping
         # about what the question carried, not part of answering — so every brain gets it for free
         # and none needs to know guidance exists.
-        if question.guidance_sources and not answer.guidance_sources:
+        # ...but NOT onto an abstention. A node that declined did not rest on the guidance — it
+        # rested on nothing — and `rests_on_guidance` would then warn a reader that a verdict leaned
+        # on Commission interpretation when no verdict was reached at all.
+        declined = answer.abstained_because is not None
+        if question.guidance_sources and not answer.guidance_sources and not declined:
             return answer.model_copy(
                 update={"guidance_sources": list(question.guidance_sources)}
             )

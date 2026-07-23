@@ -16,8 +16,10 @@ from pydantic import ValidationError
 
 from aiact.eval.classification_cases import load_classification_cases
 from aiact.graph import ScriptedBrain, build_graph, classify
+from aiact.schemas.classification import ClassificationAnswer
 from aiact.schemas.enums import AnnexIIIArea, DerogationCondition, RiskClass
 from aiact.schemas.eval import ClassificationCase
+from aiact.schemas.policy import LegalSource
 
 ROOT = Path(__file__).resolve().parents[1]
 CASES_PATH = ROOT / "data" / "golden_set" / "classification_cases.yaml"
@@ -303,3 +305,72 @@ def test_evidence_quote_cannot_dump_a_section():
             ),
             evidence_quote="x" * 301,
         )
+
+
+# ==================================================================================================
+# needs_review must say WHAT was missing — "a node abstained" gives the reader nothing to act on
+# ==================================================================================================
+def _abstention(node_id: str, article: int, cause: str, paragraph: int | None = None):
+    return ClassificationAnswer(
+        value=None,
+        reasoning="declined",
+        confidence="low",
+        source=LegalSource(
+            instrument="Regulation (EU) 2024/1689",
+            article=article,
+            paragraph=paragraph,
+            act_version_date=date(2024, 7, 12),
+        ),
+        node_id=node_id,
+        abstained_because=cause,
+    )
+
+
+def test_a_silent_description_is_told_which_fact_is_missing():
+    from aiact.graph.classify import _why_it_could_not_decide
+
+    why = _why_it_could_not_decide([_abstention("profiling", 6, "description_silent", 3)])
+    assert "evaluates, scores or ranks people" in why  # the fact, in the author's words
+    assert "Art. 6(3)" in why  # and the provision that needed it
+    assert "Add it and re-run" in why
+
+
+def test_an_unusable_reply_is_not_blamed_on_the_documentation():
+    """Telling someone to rewrite adequate documentation because the MODEL failed would be worse
+    than saying nothing — they would go and edit a document that was never the problem."""
+    from aiact.graph.classify import _why_it_could_not_decide
+
+    why = _why_it_could_not_decide([_abstention("profiling", 6, "reply_unusable", 3)])
+    assert "failure of the run, not of the documentation" in why
+    assert "does not state" not in why
+
+
+def test_both_causes_are_reported_separately_in_one_run():
+    from aiact.graph.classify import _why_it_could_not_decide
+
+    why = _why_it_could_not_decide(
+        [
+            _abstention("annex_iii", 6, "description_silent", 2),
+            _abstention("transparency", 50, "reply_unusable"),
+        ]
+    )
+    assert "what the system is actually used for" in why
+    assert "Art. 6(2)" in why
+    assert "transparency (Art. 50)" in why
+
+
+def test_every_cascade_node_can_name_the_fact_it_needed():
+    """A node added later without an entry would silently degrade to 'the fact this question turns
+    on', which is the vague message this replaced."""
+    from aiact.graph.classify import _WHAT_THE_NODE_NEEDED, QUESTIONS
+
+    assert set(_WHAT_THE_NODE_NEEDED) == set(QUESTIONS)
+
+
+def test_the_abstention_cause_survives_into_the_verdict():
+    """It is set on the ANSWER inside the brain and read off the EVIDENCE in the report, so it has
+    to travel the whole way — that hop is where node_id and the citation were being dropped."""
+    brain = ScriptedBrain({"is_ai": True})
+    result = classify("a vague description", brain, "vague")
+    # ScriptedBrain answers only is_ai, so the cascade abstains at the next node it reaches.
+    assert result.overall_risk_class in (RiskClass.NEEDS_REVIEW, RiskClass.MINIMAL)

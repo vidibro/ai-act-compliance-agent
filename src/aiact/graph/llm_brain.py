@@ -27,6 +27,7 @@ from typing import TYPE_CHECKING, Any
 from aiact.config import get_settings
 from aiact.providers import ProviderProfile, profile_for
 from aiact.schemas.classification import (
+    AbstentionCause,
     ClassificationAnswer,
     ClassificationQuestion,
     Confidence,
@@ -200,16 +201,27 @@ class LLMBrain:
         self.profile = profile or profile_for(self.model, effort or settings.llm_effort)
         self.usage = Usage()
 
-    def _abstain(self, question: ClassificationQuestion, why: str) -> ClassificationAnswer:
+    def _abstain(
+        self,
+        question: ClassificationQuestion,
+        why: str,
+        cause: AbstentionCause = "reply_unusable",
+    ) -> ClassificationAnswer:
         """No usable answer -> answer with LOW confidence, which the cascade routes to
         NEEDS_REVIEW. For a compliance tool a confident wrong answer is the worst outcome, so an
-        unreadable reply must escalate to a human rather than degrade into a default verdict."""
+        unreadable reply must escalate to a human rather than degrade into a default verdict.
+
+        `cause` defaults to `reply_unusable` because most callers here ARE model failures — empty
+        completions, malformed JSON. Only a deliberate UNKNOWN means the documentation is silent,
+        and the two must not be reported the same way: one asks the user to edit their document,
+        the other to re-run."""
         return ClassificationAnswer(
             value=None,
             reasoning=f"Abstained on {question.node_id!r}: {why}.",
             confidence="low",
             source=question.source,
             node_id=question.node_id,
+            abstained_because=cause,
         )
 
     def _user_content(self, question: ClassificationQuestion, description: str) -> Any:
@@ -290,7 +302,14 @@ class LLMBrain:
         try:
             value = _parse_value(question.answer_type, data.get("value"))
         except Unanswerable as exc:
-            return self._abstain(question, f"unusable answer: {exc}")
+            # A deliberate UNKNOWN is the model doing its job, not failing at it: the documentation
+            # does not settle the question. Everything else here is a genuine parse failure.
+            silent = str(data.get("value", "")).strip().lower() == UNKNOWN
+            return self._abstain(
+                question,
+                f"unusable answer: {exc}" if not silent else str(exc),
+                cause="description_silent" if silent else "reply_unusable",
+            )
         confidence: Confidence = data.get("confidence", "medium")
         if confidence not in ("high", "medium", "low"):
             confidence = "medium"

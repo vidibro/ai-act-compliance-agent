@@ -42,6 +42,11 @@ def _print(result) -> None:
         if e.source.annex:
             cite += f", Annex {e.source.annex}"
         print(f"    {cite} [{e.node_id or '?'}]")
+        if e.abstained_because == "description_silent":
+            # Not a finding about the system — a finding about the DOCUMENT. Says what to add.
+            print("      ! the description does not answer this; supply the fact and re-run")
+        elif e.abstained_because == "reply_unusable":
+            print("      ! no usable answer returned — a run failure, not a documentation gap")
         # the point of the whole change: WHICH words in the documentation drove this
         print(f"      quote: {e.evidence_quote or '(none supplied)'}")
     # Art. 50 sits BESIDE the tier, never inside it — a minimal-risk generator can owe it and a

@@ -19,6 +19,16 @@ from aiact.schemas.system import SystemUnderReview
 
 Confidence = Literal["high", "medium", "low"]
 
+AbstentionCause = Literal["description_silent", "reply_unusable"]
+"""WHY a node declined — the two causes need different things from the reader, so a report that
+merges them sends people to fix the wrong thing.
+
+- `description_silent` — the documentation does not contain the fact. The user must supply it; the
+  report should name which fact and which article needs it. Re-running unchanged will not help.
+- `reply_unusable` — the model returned something unreadable (empty, malformed, unparseable). The
+  documentation may be perfectly adequate. Re-running may well fix it, and telling the user to edit
+  their document would be wrong."""
+
 EVIDENCE_QUOTE_MAX = 300  # force citing a pinpoint excerpt, not dumping a section
 
 
@@ -79,6 +89,7 @@ class ClassificationAnswer(BaseModel):
     confidence: Confidence
     source: LegalSource
     node_id: str | None = None  # which cascade question produced this (see graph/classify.py)
+    abstained_because: AbstentionCause | None = None  # set only when the node declined to answer
     guidance_sources: list[GuidanceSource] = []  # non-binding guidance that was in context for
     # this node — present so the verdict can record it rested on Commission interpretation, not law
 
@@ -101,6 +112,8 @@ class ClassificationEvidence(BaseModel):
     evidence_quote: str | None = None  # verbatim span of the DOCUMENTATION (not of the law)
     evidence_chunk_id: str | None = None
     reasoning: str | None = None  # the node's own one-line justification
+    abstained_because: AbstentionCause | None = None  # travels through so the report can say
+    # WHICH fact the documentation was missing, rather than only that something was inconclusive
     guidance: list[GuidanceSource] = []  # NON-BINDING Commission interpretation this rested on,
     # kept distinct from `source` (enacted law) so a reader can tell the two apart
 
@@ -116,6 +129,7 @@ class ClassificationEvidence(BaseModel):
             evidence_quote=answer.evidence_quote,
             evidence_chunk_id=answer.evidence_chunk_id,
             reasoning=answer.reasoning,
+            abstained_because=answer.abstained_because,
             guidance=list(answer.guidance_sources),
         )
 
