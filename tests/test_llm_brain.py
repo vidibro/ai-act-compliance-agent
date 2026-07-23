@@ -179,3 +179,59 @@ def test_a_fence_around_garbage_still_abstains(stub_litellm):
     stub_litellm("```json\nnot actually json\n```")
     answer = LLMBrain(model="stub/model").decide(a_question(), "a system")
     assert answer.confidence == "low"
+
+
+# ==================================================================================================
+# "the description does not say" — a THIRD state, distinct from both a verdict and a parse failure
+# ==================================================================================================
+def test_unknown_is_not_confused_with_the_none_verdict():
+    """The whole reason UNKNOWN needs its own token: at annex_iii `null` already means "within no
+    Annex III area" and at derogation "no derogation applies" — real verdicts with real
+    consequences. "The text does not say" is a third thing and must not collapse into either."""
+    assert _parse_value("annex_area", None) is None  # a verdict: no Annex III area
+    assert _parse_value("derogation", None) is None  # a verdict: no derogation applies
+    for answer_type in ("bool", "annex_area", "derogation"):
+        with pytest.raises(Unanswerable):
+            _parse_value(answer_type, "unknown")
+
+
+@pytest.mark.parametrize("raw", ["unknown", "UNKNOWN", " Unknown "])
+def test_unknown_is_accepted_however_it_is_cased(raw):
+    with pytest.raises(Unanswerable):
+        _parse_value("bool", raw)
+
+
+def test_unknown_abstains_rather_than_answering(stub_litellm):
+    """End to end: the model declines, the brain returns a low-confidence answer with no value —
+    which the cascade routes to NEEDS_REVIEW rather than to a tier."""
+    stub_litellm('{"value": "unknown", "reasoning": "the text never says", "confidence": "low"}')
+    answer = LLMBrain(model="anthropic/claude-opus-4-8").decide(a_question(), "a vague description")
+    assert answer.value is None
+    assert answer.confidence == "low"
+    assert answer.source is not None, "an abstention is still cited"
+
+
+def test_every_question_type_is_offered_a_way_to_decline():
+    """A question that permits only true or false INSTRUCTS the model to pick one, and it will —
+    from what the text implies rather than what it states. That is how a system silent on what its
+    ranking model optimises drew "evaluates and scores candidates" at high confidence."""
+    from aiact.graph.llm_brain import _answer_instructions
+
+    for answer_type in ("bool", "annex_area", "derogation"):
+        assert "unknown" in _answer_instructions(answer_type), answer_type
+
+
+def test_the_prompt_forbids_reading_silence_as_denial():
+    from aiact.graph.llm_brain import _SYSTEM_PROMPT
+
+    assert "SILENCE IS NOT AN ANSWER" in _SYSTEM_PROMPT
+    assert "not a description of a system that does not" in _SYSTEM_PROMPT
+    # ...but reading plain language for its plain meaning is still required. Without this the rule
+    # over-fires: demanding the fact appear in the QUESTION's terms cost cv_parsing_fields its
+    # Annex III area ("applicant-tracking", "CVs" state a recruitment use in different words).
+    assert "ordinary meaning" in _SYSTEM_PROMPT
+    assert "does not address the point at all" in _SYSTEM_PROMPT
+    # ...and the escape hatch is for missing FACTS, not for hard LAW — the same line the golden set
+    # draws between difficulty `insufficient` and `ambiguous`. Without it the brain declined Art. 50
+    # on descriptions that state the facts and leave only the legal conclusion arguable.
+    assert "MISSING FACTS, not about difficult law" in _SYSTEM_PROMPT

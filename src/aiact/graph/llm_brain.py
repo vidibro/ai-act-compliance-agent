@@ -39,27 +39,67 @@ if TYPE_CHECKING:
 
 _EVIDENCE_MAX_LENGTH = 300
 
+# The literal a model sends when the DESCRIPTION does not settle the question. Needed as a separate
+# token because `null` is already taken: at annex_iii it means "within no Annex III area" and at
+# derogation "no derogation applies" — both real verdicts with real legal consequences. "The text
+# does not say" is a third thing, and collapsing it into either is how silence becomes a finding.
+UNKNOWN = "unknown"
+
+
 _SYSTEM_PROMPT = (
     "You are a careful EU AI Act classification assistant. You answer ONE narrow question about "
     "a described AI use case, based only on the description. You never decide the overall risk "
     "class. Answer ONLY from the enacted text supplied, any Commission guidance supplied, and the "
     "description — never from memory of the law. Commission guidance is NON-BINDING "
     "interpretation: rely on it where the enacted text leaves the question open, but do not treat "
-    "it as the law itself. If the description does not let you answer confidently, say so with low "
-    "confidence — abstaining is better than guessing. Reply with a single JSON object and nothing "
-    "else."
+    "it as the law itself. "
+    # The rule that matters is about STATED vs IMPLIED, not about confidence. "Answer confidently or
+    # say you are unsure" leaves the model free to treat an inference as a fact and then be sure of
+    # it — which is what happened: "an ML component determines queue order" became "evaluates and
+    # scores candidates". Tying the answer to a quotable span makes the test mechanical.
+    "SILENCE IS NOT AN ANSWER. Answer from what the description states — in whatever words it "
+    "uses; a fact can be stated plainly without repeating the terms of the question, and you "
+    "should read ordinary language for its ordinary meaning. But do not supply a fact the text "
+    f'never gives. Return "{UNKNOWN}" with low confidence when the description does not address '
+    "the point at all, so that answering either way would mean assuming something it never says. "
+    "In particular do not read an absent statement as a denial: a description that never mentions "
+    "scoring is not a description of a system that does not score. "
+    # The distinction the golden set draws between `insufficient` and `ambiguous` difficulty, given
+    # to the model directly. Without it the escape hatch swallows every hard legal call: Art. 50
+    # descriptions state the facts ("sends the invitations") and leave the CONCLUSION arguable, and
+    # the brain was declining those as though the text were silent.
+    f'"{UNKNOWN}" is about MISSING FACTS, not about difficult law. Where the description supplies '
+    "the facts but the legal conclusion is genuinely arguable, give your best reading and lower "
+    "your confidence — that is a judgement, and making it is your job. Declining is a useful "
+    "answer; a confident wrong one is the worst outcome. "
+    "Reply with a single JSON object and nothing else."
 )
 
 
 def _answer_instructions(answer_type: str) -> str:
+    """What the model may put in "value" — INCLUDING the option to decline.
+
+    Every branch offers a way out, because omitting one is not neutral: a question that permits only
+    true or false instructs the model to pick one, and it will, from whatever the text implies
+    rather than what it states. That is exactly how `ats_workflow_unspecified` — silent on what its
+    ranking model optimises — drew "evaluates and scores candidates" at high confidence."""
     if answer_type == "bool":
-        return 'set "value" to true or false'
+        return (
+            f'set "value" to true or false, or "{UNKNOWN}" if the description does not state the '
+            f"facts needed to answer"
+        )
     if answer_type == "annex_area":
         areas = ", ".join(a.value for a in AnnexIIIArea)
-        return f'set "value" to one of [{areas}] or null if it falls within no Annex III area'
+        return (
+            f'set "value" to one of [{areas}]; null if it falls within no Annex III area; or '
+            f'"{UNKNOWN}" if the description does not say what the system is used for'
+        )
     if answer_type == "derogation":
         conds = ", ".join(d.value for d in DerogationCondition)
-        return f'set "value" to one of [{conds}] or null if no derogation applies'
+        return (
+            f'set "value" to one of [{conds}]; null if no derogation applies; or "{UNKNOWN}" if '
+            f"the description does not establish that any condition is met"
+        )
     raise ValueError(f"unknown answer_type {answer_type!r}")
 
 
@@ -111,7 +151,14 @@ def _parse_value(answer_type: str, value: object) -> object:
     `None` here is a REAL ANSWER, not missing data: at the annex_iii node it means 'no Annex III
     area' (-> minimal risk), at derogation it means 'no derogation applies' (-> high risk). So the
     several ways a model writes 'nothing here' normalise to None, while anything UNRECOGNISED
-    raises rather than being quietly folded into one of those verdicts."""
+    raises rather than being quietly folded into one of those verdicts.
+
+    `UNKNOWN` is the THIRD state and is checked first: 'the description does not say'. It is not a
+    verdict and must never become one — silence is not evidence of absence, and a derogation
+    inferred from silence hands a provider an exemption they never claimed (Art. 6(3) puts the
+    burden on establishing the condition; Art. 6(4) requires it documented)."""
+    if isinstance(value, str) and value.strip().lower() == UNKNOWN:
+        raise Unanswerable("the description does not state the facts needed to answer")
     if answer_type == "bool":
         return _parse_bool(value)
     if value is None or (isinstance(value, str) and value.strip().lower() in ("none", "null", "")):
@@ -199,7 +246,8 @@ class LLMBrain:
             f"Answer as JSON with keys: value ({_answer_instructions(question.answer_type)}), "
             f'"reasoning" (one sentence), "evidence_quote" (the span of the DESCRIPTION that '
             f"drove your answer, copied exactly, under {_EVIDENCE_MAX_LENGTH} characters — never a "
-            f"quote of the law, and null only if nothing in the description supports it), "
+            f"quote of the law; if the description does not address the point at all, that is the "
+            f'case for "{UNKNOWN}" rather than a quote that merely sounds related), '
             f'"confidence" (one of "high", "medium", "low").'
         )
         if not self.profile.caches(stable):

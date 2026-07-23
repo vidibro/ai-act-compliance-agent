@@ -13,7 +13,7 @@ import pytest
 
 from aiact.eval.classification_cases import load_classification_cases
 from aiact.schemas.enums import AnnexIIIArea, DerogationCondition, RiskClass
-from aiact.schemas.eval import ClassificationCase
+from aiact.schemas.eval import ClassificationCase, Difficulty
 
 ROOT = Path(__file__).resolve().parents[1]
 CASES_PATH = ROOT / "data" / "golden_set" / "classification_cases.yaml"
@@ -65,22 +65,15 @@ def test_flip_pair_shares_almost_all_text(cases):
     assert overlap > 0.55, f"flip pair should share most words (Jaccard={overlap:.2f})"
 
 
-def test_decidable_risk_classes_are_represented(cases):
-    """The set exercises every DECIDABLE outcome.
+def test_all_risk_classes_are_represented(cases):
+    """Every outcome the cascade can produce, NEEDS_REVIEW included.
 
-    NEEDS_REVIEW is deliberately absent: the one ambiguous case (emotion_screening_candidates) was
+    That last one was missing for a while: the only ambiguous case (emotion_screening_candidates)
     resolved to `prohibited` once Commission guidance C(2025) 5052 settled the hiring-context
-    question. The abstention PATH is still covered by the graph routing tests (low confidence ->
-    needs_review), but Layer 1 now lacks a genuinely-ambiguous GROUND-TRUTH case. That is a known
-    gap — a fresh ambiguous case should be authored to restore needs_review coverage here (see
-    ROADMAP)."""
+    question, and nothing replaced it. `ats_workflow_unspecified` restores it from the other
+    direction — not contested law, but a description that never supplies the decisive fact."""
     present = {c.expected_risk_class for c in cases.cases}
-    for rc in (
-        RiskClass.PROHIBITED,
-        RiskClass.HIGH_RISK,
-        RiskClass.NOT_HIGH_RISK,
-        RiskClass.MINIMAL,
-    ):
+    for rc in RiskClass:
         assert rc in present, f"no case exercises {rc}"
 
 
@@ -147,6 +140,47 @@ def test_every_case_argues_its_art_50_label_either_way(cases):
         basis = c.transparency_basis.strip()
         assert len(basis) > 20, f"{c.case_id} asserts an Art. 50 label without argument"
         assert "50(" in basis, f"{c.case_id} names no Art. 50 paragraph"
+
+
+# --- needs_review via INSUFFICIENT INPUT --------------------------------------------------------
+def test_needs_review_coverage_exists_again(cases):
+    """Lost when emotion_screening_candidates resolved to prohibited. Restored WITHOUT needing a
+    contested legal question: here the law is clear and the description is silent."""
+    review = [c for c in cases.cases if c.expected_risk_class == RiskClass.NEEDS_REVIEW]
+    assert review, "no case exercises NEEDS_REVIEW ground truth"
+
+
+def test_the_insufficient_case_pins_nothing_it_cannot_know(cases):
+    """The decisive sub-answers must be null, not `false`. Recording `performs_profiling: false`
+    would assert the system does not evaluate people — which is precisely the inference from
+    silence this case exists to forbid."""
+    c = _by_id(cases)["ats_workflow_unspecified"]
+    assert c.expected_risk_class == RiskClass.NEEDS_REVIEW
+    assert c.difficulty == Difficulty.INSUFFICIENT
+    assert c.expected_performs_profiling is None
+    assert c.expected_derogation is None, "a derogation inferred from silence is unsupported"
+
+
+def test_the_insufficient_case_is_silent_not_negative(cases):
+    """Its whole value is the ABSENCE of the decisive fact. If the description ever states that the
+    system does not evaluate candidates, it stops being undecidable and becomes interview_scheduler
+    — that one sentence is the entire difference between the two cases."""
+    c = _by_id(cases)
+    undecidable = c["ats_workflow_unspecified"].description.lower()
+    for negation in ("does not assess", "does not rank", "does not evaluate", "no evaluation"):
+        assert negation not in undecidable, f"{negation!r} would make this case decidable"
+    for claim in ("score", "ranks", "fit", "predict"):
+        assert claim not in undecidable, f"{claim!r} would make this case decidable the other way"
+    # the sibling it must NOT collapse into does state it
+    assert "does not assess" in c["interview_scheduler"].description.lower()
+
+
+def test_insufficient_is_not_the_same_band_as_ambiguous(cases):
+    """`ambiguous` is contested LAW; `insufficient` is missing INPUT. Averaging them would make
+    per-difficulty reporting meaningless, which is the only reason the band exists."""
+    assert Difficulty.INSUFFICIENT != Difficulty.AMBIGUOUS
+    by_band = {c.case_id: c.difficulty for c in cases.cases}
+    assert by_band["ats_workflow_unspecified"] == Difficulty.INSUFFICIENT
 
 
 def test_a_true_art_50_label_cannot_be_asserted_without_a_basis():

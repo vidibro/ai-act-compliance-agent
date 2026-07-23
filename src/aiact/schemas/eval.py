@@ -74,6 +74,16 @@ class Difficulty(StrEnum):
     """Genuinely contestable — reasonable experts could disagree. Reported separately;
     NEEDS_REVIEW is an acceptable answer here."""
 
+    INSUFFICIENT = "insufficient"
+    """The decisive fact is ABSENT. The law is clear and the experts would agree — the DESCRIPTION
+    simply never says. Deliberately not folded into `ambiguous`: that band is about contested law,
+    this one is about missing input, and averaging them would make both unreadable.
+
+    NEEDS_REVIEW is the only correct answer here, and it is the band where a confident verdict is
+    worst: silence is not evidence of absence, so reading 'the text never mentions ranking' as 'the
+    system does not rank' hands a provider a derogation they never claimed and cannot support
+    (Art. 6(3) puts the burden on establishing the condition; Art. 6(4) requires it documented)."""
+
 
 class GoldenCase(BaseModel):
     """One synthetic document plus the verdict every applicable rule should receive."""

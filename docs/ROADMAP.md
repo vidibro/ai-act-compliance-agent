@@ -41,12 +41,25 @@ is authored before the code it judges:
    `transparency_basis` naming its paragraph, and a validator compels one whenever the obligation
    is claimed. Dev score 3/6 → 6/6 — see the caveat in M3 about how much of that is the model
    improving versus the key conceding.
-2. **Author the insufficient-input case** (M1 TODO + M8). Ground truth *before* the fix it tests —
-   the project's own rule. Expect it to FAIL against today's cascade; that is the point. Restores
-   Layer 1's missing `needs_review` coverage as a side effect.
-3. **Silence ≠ derogation** (M8). Make the derogation node distinguish "the text asserts the system
-   does not evaluate people" from "the text is silent", and route silence to needs_review. Verify
-   against (2).
+2. ~~**Author the insufficient-input case**~~ ✅ **done 2026-07-22** — `ats_workflow_unspecified`,
+   plus a new `Difficulty.INSUFFICIENT` band (missing INPUT, kept apart from `ambiguous`, which is
+   contested LAW). Restores Layer 1's `needs_review` coverage; all five risk classes now appear.
+   **Fails against today's cascade as intended**, and instructively: the first draft left AI-ness
+   unstated too and died at `is_ai` ("executes explicit instructions", HIGH confidence) — right
+   disease, wrong node, and two unknowns at once. Re-drafted so exactly one fact is missing, it now
+   fails at `profiling`: the model reads "an ML component determines queue order" as "evaluates and
+   scores candidates", a fact the text does not contain, and answers `high_risk` at HIGH confidence.
+   Note the direction flipped between drafts (`minimal`, then `high_risk`) — **which way it guesses
+   is arbitrary; that it guesses confidently from silence is the defect.**
+3. ~~**Silence ≠ inference**~~ ✅ **done 2026-07-22.** Root cause was smaller than the prompt: a bool
+   question INSTRUCTED the model to "set value to true or false" — no third option — so it obeyed and
+   picked one from what the text implied. Added an explicit `UNKNOWN` token (separate from `null`,
+   which at annex_iii/derogation is already a real verdict) and offered it on every answer type.
+   **Risk class 5/7 → 7/7, Art. 50 7/7 → 6/7.** Two over-correction rounds, both worth recording:
+   demanding the fact appear in the QUESTION's terms cost `cv_parsing_fields` its Annex III area
+   ("applicant-tracking", "CVs" state a recruitment use in other words); and the hatch then
+   swallowed hard legal calls until told that `UNKNOWN` is about MISSING FACTS, not difficult law —
+   the same line the golden set draws between `insufficient` and `ambiguous` difficulty.
 4. **Report the missing fact** (M8). Surface *which* node abstained and *which* article needs it,
    instead of collapsing to `needs_review`. The `node_id` is already on the answer and thrown away.
 5. **The system-card guide** (M8). Cheap once 1–4 settle what a valid description must contain.
@@ -89,7 +102,8 @@ harder would produce a pessimistic number that measures nothing.
 behaviour had been observed and so none could have shaped it. Run once, at reporting time; record
 the date and git sha with the number. If it is ever tuned against, it is dev permanently.
 
-Layer 1 has **6 of ≥15** cases and its held-out split is still **empty**.
+Layer 1 has **7 of ≥15** cases and its held-out split is still **empty**. All five risk classes are
+now represented, including `needs_review` via `ats_workflow_unspecified` (difficulty `insufficient`).
 
 Two layers:
 
@@ -139,7 +153,7 @@ The prohibited-practice ban on emotion recognition covers "workplace and educati
 
 > ⚠️ **Side effect — Layer 1 lost its only `needs_review` ground-truth case.** Resolving this label to `prohibited` means no classification case now exercises NEEDS_REVIEW. The abstention *path* is still covered by the graph routing tests (low confidence → needs_review), but a genuinely-ambiguous *ground-truth* case should be authored to restore coverage. **TODO: add one new ambiguous Layer 1 case.**
 >
-> **A cheaper source for it than legal ambiguity: INSUFFICIENT INPUT.** A description that simply never states whether the system evaluates people is unclassifiable without guessing, and `needs_review` is the correct answer — no contested legal question required to author it. This is the same case M8 needs to prove that silence does not buy a derogation, so one case serves both. Note the current cascade would likely *fail* it today (see M8): the smoke check's silent scheduling page returned a derogation at high confidence.
+> ✅ **RESTORED 2026-07-22 via INSUFFICIENT INPUT, not legal ambiguity.** `ats_workflow_unspecified`: unambiguously an AI system, unambiguously used in recruitment, and silent on the one thing that decides the tier — what its ranking model orders on. Submission time evaluates nobody (Art. 6(3)(a) derogation → not_high_risk); predicted fit evaluates persons (profiling carve-back → high_risk). The text chooses neither, so `needs_review` is correct and no contested legal question was needed to author it. New `Difficulty.INSUFFICIENT` band keeps it apart from `ambiguous` (contested law), since averaging the two would make both bands unreadable. As predicted the cascade fails it — see the current-focus list.
 
 #### ⏸ Deferred — is drafting a job advert "placing targeted job advertisements" (Annex III 4(a), high-risk)?
 
@@ -163,8 +177,21 @@ Nodes reproduce the EC flow; profiling split out; per-use-case resolution. Each 
 
 **Baseline measured (2026-07-22)** — Layer 1 dev set, `claude-haiku-4-5`, questions anchored in verbatim article/Annex text. **Two axes, reported separately and never averaged** (`src/aiact/eval/classification_score.py`):
 
-- **risk class 5/6** — the miss is `job_ad_generation`, the deliberately-deferred contested label below.
-- **Art. 50 6/6** — 0 false-positive, 0 false-negative, 0 abstained (was 3/6 before the answer key was corrected on 2026-07-22; see below for what that number does and does not prove).
+- **risk class 7/7** — including `job_ad_generation`, the deferred contested label, which the abstention work incidentally fixed. Was 5/7.
+- **Art. 50 6/7** — 0 false-positive, 0 false-negative, 1 abstained. Was 3/7 before the answer key was corrected, 7/7 briefly, then 5/7 while the abstention rule over-fired.
+
+> ⚠️ **TREAT 7/7 AS A CEILING ARTEFACT, NOT A RESULT.** The dev set is SEVEN cases and the prompt was
+> revised three times against it in one sitting, each time after reading which cases failed. That is
+> what dev is for and none of it was cheating — but a number produced that way measures the prompt's
+> fit to seven known descriptions, not the classifier's ability. **No Layer 1 held-out set exists**,
+> so there is currently no honest number to report at all. Authoring one (current-focus item 6) is
+> what would make any of this publishable; until then this figure belongs in a lab notebook.
+>
+> The single Art. 50 abstention is on `ats_workflow_unspecified`, whose ML component is deliberately
+> unspecified — so "cannot tell whether Art. 50 attaches" is arguably the *correct* read and the
+> `false` label the arguable one. Deliberately NOT flipped: moving the target to wherever the model
+> lands is the failure mode already recorded above for the emotion cases, and doing it twice would
+> make the answer key a record of model behaviour rather than of the law.
 
 ~$0.084 per run (~$0.014 per case). Prompt caching is currently INERT: the stable prefix (~2.7k tokens) sits under Haiku 4.5's 4,096-token minimum, so the marker is sent and ignored — the runner says so out loud.
 
