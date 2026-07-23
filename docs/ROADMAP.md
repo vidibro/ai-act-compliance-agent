@@ -93,6 +93,15 @@ without waiting on sourcing and anonymisation.
 > Mitigation agreed: pull **2–3 real anonymised descriptions in early as a distribution smoke-check**
 > (not scored, not part of any split) so any synthetic-vs-real gap is discovered while it can still
 > be acted on — rather than after the synthetic set is exhausted and burned.
+>
+> ✅ **Done (2026-07-22): `data/golden_set/smoke/`** — three anonymised real vendor descriptions
+> (screening-and-ranking, video-interview-analysis, interview-coordination). Verdict: the synthetic
+> set is realistic enough to keep tuning against, with **two gaps to close when Layer 1 held-out
+> cases are authored** — (a) real pages prominently promise **human oversight, which is legally
+> irrelevant to the class** (Annex III 4(a) and Art. 5(1)(f) apply regardless of who signs off) but
+> reads exculpatory: a *distractor claim* our Layer 1 cases barely contain; (b) real minimal-risk
+> pages carry **cross-sell noise from adjacent high-risk products**, a false-positive trap the
+> synthetic set does not exercise. Full findings in that directory's README.
 
 #### ✅ Resolved — "workplace" (Art. 5 emotion recognition) DOES cover hiring
 
@@ -120,7 +129,16 @@ Nodes reproduce the EC flow; profiling split out; per-use-case resolution. Each 
 - **Cost instrumentation** (`usage.py`) — token/cost tally per run, printed by the golden runner. Unpriced models report "cost unknown", never a silent $0. Cache writes tracked separately from reads, and an ignored cache marker is reported rather than hidden.
 - **Non-binding guidance layer** (`guidance.py` + `data/policy/guidance/`) — verbatim Commission passages, sha256-integrity-checked, supplied to the node where the enacted text leaves a question open, labelled NON-BINDING in the prompt, and surfaced in the verdict via `result.rests_on_guidance`. `GuidanceSource` is structurally unable to be `binding: true` — enacted law is cited with `LegalSource` and the two are never merged.
 
-**Baseline measured (2026-07-22)** — Layer 1 dev set, `claude-haiku-4-5`, questions anchored in verbatim article/Annex text: **5/6**, ~$0.084 per run (~$0.014 per case). The one miss is `job_ad_generation`, the deliberately-deferred contested label below. Prompt caching is currently INERT: the stable prefix (~2.7k tokens) sits under Haiku 4.5's 4,096-token minimum, so the marker is sent and ignored — the runner says so out loud.
+**Baseline measured (2026-07-22)** — Layer 1 dev set, `claude-haiku-4-5`, questions anchored in verbatim article/Annex text. **Two axes, reported separately and never averaged** (`src/aiact/eval/classification_score.py`):
+
+- **risk class 5/6** — the miss is `job_ad_generation`, the deliberately-deferred contested label below.
+- **Art. 50 3/6** — 3 false-positive, 0 false-negative, 0 abstained.
+
+~$0.084 per run (~$0.014 per case). Prompt caching is currently INERT: the stable prefix (~2.7k tokens) sits under Haiku 4.5's 4,096-token minimum, so the marker is sent and ignored — the runner says so out loud.
+
+> ⚠️ **The Art. 50 axis was never scored until now.** `expected_transparency_obligation` had been in the answer key since the golden set was authored; the runner compared only `expected_risk_class`. So the Art. 50 node ran on every case from M3 onward and was never once checked. Found by the real-world smoke check, not by the eval — which is itself the argument for having run it.
+>
+> **TODO — review the Art. 50 ground truth before touching the node.** All three misses are the model saying `true` where the key says `false`, and on at least two the model has the better textual argument: **Art. 50(3) expressly covers emotion recognition systems**, so `true` on `emotion_monitoring_employees` and `emotion_screening_candidates` is defensible and the key's `false` has no recorded reasoning. (A possible defence of the key: Art. 50(3) binds the *deployer*, this spec scopes provider obligations, and a prohibited system cannot lawfully be deployed at all — but that argument is nowhere in the case notes, and ground truth without a recorded argument is exactly what the golden set exists to prevent.) The third, `interview_scheduler`, turns on whether sending candidates invitations is "interacting directly" under Art. 50(1) — genuinely arguable. The node is **not** indiscriminately answering yes: it correctly returned `false` on both CV cases.
 
 **⚠️ Remaining DoD gap: Langfuse is not wired.** It is a declared dependency and a line in `config.py`'s docstring, nothing more. No node emits a trace. This is the last item standing between M3 and ✅, and M6's DoD ("a trace is shown") depends on it.
 
