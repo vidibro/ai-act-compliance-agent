@@ -262,8 +262,10 @@ def _get_answers(state: GraphState) -> list[ClassificationAnswer]:
 # NOT the question text: that is addressed to a model reading the enacted provision beside it, and
 # lands as jargon on an author ("does this use case perform profiling?").
 _WHAT_THE_NODE_NEEDED: dict[str, str] = {
-    "is_ai": "whether this is an AI system — does it infer its outputs, or follow rules a person wrote",
-    "prohibited": "whether it infers emotions, categorises people biometrically, or scores social behaviour",
+    "is_ai": "whether this is an AI system — does it infer its outputs, or follow rules a person "
+    "wrote",
+    "prohibited": "whether it infers emotions, categorises people biometrically, or scores social "
+    "behaviour",
     "annex_iii": "what the system is actually used for",
     "profiling": "whether it evaluates, scores or ranks people — and on what",
     "derogation": "whether it only performs a narrow procedural task, improves prior human work, "

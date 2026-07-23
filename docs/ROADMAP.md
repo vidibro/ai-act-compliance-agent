@@ -60,8 +60,22 @@ is authored before the code it judges:
    ("applicant-tracking", "CVs" state a recruitment use in other words); and the hatch then
    swallowed hard legal calls until told that `UNKNOWN` is about MISSING FACTS, not difficult law —
    the same line the golden set draws between `insufficient` and `ambiguous` difficulty.
-4. **Report the missing fact** (M8). Surface *which* node abstained and *which* article needs it,
-   instead of collapsing to `needs_review`. The `node_id` is already on the answer and thrown away.
+4. ~~**Report the missing fact**~~ ✅ **done 2026-07-22.** `needs_review` now names the missing fact
+   and the article that needed it, in the AUTHOR's words rather than the model's ("whether it
+   evaluates, scores or ranks people — and on what (Art. 6(3))"), via `_WHAT_THE_NODE_NEEDED` — a
+   test pins that every cascade node has an entry. New `AbstentionCause` keeps the two causes apart:
+   `description_silent` (the user must supply the fact; re-running unchanged will not help) versus
+   `reply_unusable` (a run failure — the documentation may be fine, and telling someone to rewrite
+   adequate documentation would be worse than saying nothing). Also fixed a bug found while
+   testing: an abstention was reporting that it "rests on non-binding Commission guidance" when it
+   had rested on nothing — guidance now attaches only to answers that actually answered.
+
+   > ⚠️ **Watch: over-abstention at `prohibited`.** On one live run the vague ATS case declined
+   > there, on the ground that the description never states whether it infers emotions. Literally
+   > true — and almost no description ever says "we do not infer emotions", so if that reasoning
+   > generalises the tool abstains on nearly everything. Not happening yet (dev is 7/7), but the
+   > distinction to make if it does: a description that never RAISES a capability is not silent
+   > about it, whereas one that names an unspecified component (as this case does deliberately) is.
 5. **The system-card guide** (M8). Cheap once 1–4 settle what a valid description must contain.
 6. **Layer 1 held-out cases** (M1). Authored last, because the guide's section list is the checklist
    of what they must vary. Synthetic first, per the agreed sourcing strategy.
