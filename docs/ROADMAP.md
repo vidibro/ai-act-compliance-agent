@@ -13,7 +13,7 @@
 - **Not CSRD, not M&A.** These are *other regulations/domains entirely* (sustainability reporting; deal due-diligence), outside the AI Act. Multi-area coverage *within* the AI Act is the goal; hopping to a different body of law is the scope creep the project guards against. See "Two ways projects like this die".
 - Stack: Python 3.11+, Pydantic v2, LangGraph, Chroma (local), LiteLLM, Langfuse, Ragas + LLM-as-judge, FastAPI. `uv` / `ruff` / `pytest`.
 - Classification graph reproduces the official EC Compliance Checker flow, with ONE deliberate deviation: profiling is a separate node evaluated before derogations (Art. 6(3) carve-back applies notwithstanding the exemptions).
-- Ruleset is derived from the official EC checker output (18 high-risk obligations) — not hand-invented, not LLM-generated. rule-compiler is NOT needed for v0.1.
+- Ruleset is derived from the official EC checker output — not hand-invented, not LLM-generated. rule-compiler is NOT needed for v0.1. (Started at 18; the Art. 1–113 coverage ledger surfaced **Art. 72 and 73** as provider obligations the initial pass had missed, so `spec.yaml` v0.4.0 carries **19** rules.)
 - Risk is decided per use case, not per system (Commission multi-sector rule).
 - Positioning: the official checker asks the user the classifying questions; this agent reads the document and answers them itself, with citations — and catches the case where a provider genuinely misclassifies (e.g. a parser that quietly scores candidates → profiling).
 - Framing: draft compliance checklist for expert review. NOT legal advice. Keep the Commission-style disclaimer everywhere.
@@ -76,7 +76,18 @@ is authored before the code it judges:
    > generalises the tool abstains on nearly everything. Not happening yet (dev is 7/7), but the
    > distinction to make if it does: a description that never RAISES a capability is not silent
    > about it, whereas one that names an unspecified component (as this case does deliberately) is.
-5. **The system-card guide** (M8). Cheap once 1–4 settle what a valid description must contain.
+5. ~~**The system-card guide**~~ ✅ **done 2026-07-22** — `docs/system-card-guide.md`, one section
+   per cascade question, each citing its provision, plus a fill-in template and a pre-submit
+   checklist. Leads with the omission warning (an undocumented capability changes the report, not
+   the legal position) and the three framing rules: function not benefit, one section per intended
+   purpose, and say what the system does NOT do — since the Art. 6(3) exemptions turn on absence.
+   Worked example folded into the guide as an appendix, rewriting the smoke set's real vendor page
+   to the template. **Verified:** the card's scoring section classifies `high_risk` [high, no
+   abstentions] exactly as the raw product page does. The DoD's "with higher confidence" is not
+   measurable — the page was already `high`; the honest claim is parity, not improvement.
+   Incidental confirmation of framing rule 2: the card's extraction section classifies
+   `not_high_risk` (Art. 6(3)(a), profiling false) where the page collapsed the whole product into
+   one `high_risk` verdict — two purposes, two tiers, which is what M7 will automate.
 6. **Layer 1 held-out cases** (M1). Authored last, because the guide's section list is the checklist
    of what they must vary. Synthetic first, per the agreed sourcing strategy.
 7. **Langfuse** (M3's last open DoD item) — before M4 starts, so the retrieval layer is observable
@@ -175,7 +186,7 @@ The `job_ad_generation` case turns on whether Annex III 4(a) — high-risk syste
 
 ### M2 — Policy spec (YAML)
 
-The 18 high-risk obligations from the EC checker, in the `PolicyRule` schema. Honest `document_verifiable` flags (Art. 16–21/43/47–49 = process obligations, not doc-checkable). Most of these obligations (Art. 9–15, 16–21) apply to **every** Annex III high-risk system regardless of area, so the spec largely generalises as-is. A few rules encode **employment-specific** choices that a second area would need to revisit — e.g. `AIA-PO-A43` picks the internal-control route (Annex VI, because employment is Annex III point 4) and `AIA-PO-A49` disapplies the point-2 registration exception. Area-specific derogation/conformity paths get split out when the second vertical lands.
+The high-risk obligations from the EC checker — **19 rules**, `spec.yaml` v0.4.0 — in the `PolicyRule` schema. IDs split cleanly: `AIA-HR-*` (document-verifiable, Art. 9–15), `AIA-PO-*` (process, `document_verifiable: false`), and one `AIA-NHR-A06-4`. Legal wording is resolved VERBATIM from the version-scoped article store at load time, never hand-written in the spec, and a literal-substring test blocks paraphrase drift. Honest `document_verifiable` flags (Art. 16–21/43/47–49 = process obligations, not doc-checkable). Most of these obligations (Art. 9–15, 16–21) apply to **every** Annex III high-risk system regardless of area, so the spec largely generalises as-is. A few rules encode **employment-specific** choices that a second area would need to revisit — e.g. `AIA-PO-A43` picks the internal-control route (Annex VI, because employment is Annex III point 4) and `AIA-PO-A49` disapplies the point-2 registration exception. Area-specific derogation/conformity paths get split out when the second vertical lands.
 **DoD:** `data/policy/*.yaml` loads and validates against `PolicySpec`.
 
 ### M3 — Classification graph (LangGraph) 🟡 built and scoring; Langfuse NOT wired
@@ -240,6 +251,10 @@ Chroma ingest + retrieval as a TOOL the agent calls per active rule. Verdict per
 - Classification: accuracy by `difficulty`; citation accuracy; reasoning-step accuracy.
 - Gap: recall, precision, false-positive rate on `untouched`, accuracy by ablation type.
 - Expect (and report) the curve: strong on `removed`, drop on `present_but_inadequate`, bigger drop on `distractor`. The curve IS the interview story.
+
+**Strawman baseline already measured** (`python scripts/run_eval.py`, keyword matcher, Layer 2 dev, no API): overall **88.0%** — and that number is exactly why the breakdown is mandatory. Behind it: **INADEQUATE detection 0/6**, zero INADEQUATE verdicts emitted at all, catch rates 14.3% / 14.3% / 0.0% on removed / inadequate / distractor, and 100% clean on the 115 intact judgements. A checker that cannot make the project's central distinction still scores 88% on the aggregate. Keep this as the contrast the real numbers are reported against; a test pins the 0-INADEQUATE property so a future checker beating it registers as progress.
+
+> ⚠️ **The distractor column is thin.** `distractor` cases exist for only **4 of 7** rules (A09, A10, A14, A15) — A11, A12 and A13 have none. The roadmap's headline curve (strong on `removed`, weaker on `present_but_inadequate`, weakest on `distractor`) is therefore partial at its most interesting end. Fill before reporting the curve.
 
 **DoD:** one command produces the metrics table; cost per full run reported (LiteLLM).
 
