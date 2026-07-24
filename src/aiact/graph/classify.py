@@ -97,11 +97,23 @@ QUESTIONS: dict[str, ClassificationQuestion] = {
         # not_high_risk (Art. 6(4) documentation and registration still owed) into minimal (nothing
         # owed), and it skips the derogation node entirely so the reason is never recorded.
         "Which Annex III high-risk area, if any, does this use case fall within (Article 6(2))? "
-        "Decide SCOPE ONLY: does the described purpose match one of the Annex III area "
-        "descriptions? Do NOT consider whether the system's role is narrow, procedural, "
-        "preparatory, or merely assistive — Article 6(3) exemptions are assessed separately at a "
-        "later step, and a system can fall within an Annex III area and still be exempt there. "
-        "Answer the area, or none only if the purpose matches no Annex III area at all.",
+        "Decide SCOPE ONLY, by whether the described PURPOSE is part of a listed function — two "
+        "tests, both taken from the text:\n"
+        "(i) IN scope if the purpose SUBSTANTIVELY acts on the person or their application within "
+        "a listed function, INCLUDING where the system only prepares, extracts, organises or "
+        "de-duplicates that material. For employment the listed functions are the recruitment or "
+        "selection process (Annex III(4)(a)) and the named workforce decisions — promotion, "
+        "termination, task allocation, performance evaluation (4(b)). A tool that processes job "
+        "applications is used FOR recruitment even if it only parses or de-duplicates them. Do NOT "
+        "exclude a system because its own role is narrow, procedural, preparatory or merely "
+        "assistive: that narrowness is an Article 6(3) exemption assessed at a LATER step, not a "
+        "reason to place it outside the area now.\n"
+        "(ii) OUT of scope if the purpose does not act on the person or their application at all — "
+        "either general workplace administration (leave and holiday tracking, payroll, IT "
+        "provisioning, facilities for already-employed staff) OR surrounding logistics that handle "
+        "calendars, rooms or reminders rather than the candidate or their application (e.g. "
+        "scheduling interview slots) — even though it plainly operates in that setting.\n"
+        "Answer the area, or none only if the purpose serves no listed function at all.",
         "annex_area",
     ),
     "profiling": ClassificationQuestion(

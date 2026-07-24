@@ -219,3 +219,61 @@ cases:
       Right disease, wrong node — and it made the case test two unknowns at once. The
       machine-learning sentence was added so exactly one fact is missing. Keep it that way: a case
       that is vague about everything measures nothing in particular.
+
+  # --- THE ANNEX III BOUNDARY: recruitment/named-decision phase vs adjacent admin -------------
+  # Added 2026-07-22 after the held-out run showed the annex_iii node cannot reliably tell a
+  # recruitment-phase tool from post-hire administrative tooling. These teach the distinction on
+  # the DEV side; the held-out cases that exposed it are left untouched. The line is the Act's own:
+  # Annex III(4)(a) is recruitment/selection, (4)(b) is named workforce DECISIONS (promotion,
+  # termination, task allocation, performance) — admin around already-hired staff that makes none
+  # of those is outside Annex III entirely.
+  - case_id: leave_balance_tracker
+    description: >-
+      A tool for HR teams that tracks employees' paid-leave and holiday balances, records leave
+      requests, and routes each request to the employee's manager for approval. It calculates
+      accruals and remaining balances and sends reminders about unused leave. It makes no decision
+      itself and does not assess, score or rank anyone.
+    expected_risk_class: minimal
+    expected_annex_iii_area: null
+    expected_performs_profiling: false
+    expected_transparency_obligation: false
+    transparency_basis: >-
+      Art. 50 does not attach: it tracks balances and routes requests — no direct interaction as an
+      interlocutor (50(1)), no synthetic content (50(2)), no emotion or biometric inference (50(3)),
+      no deep fake (50(4)).
+    decisive_fact: >-
+      Post-hire leave administration for already-employed staff. Not recruitment or selection
+      (Annex III(4)(a)), and it makes none of the (4)(b) decisions — the manager approves, not the
+      tool, and leave is not a term/promotion/termination/task/performance decision. Outside
+      Annex III entirely, so minimal — being used inside an HR department does not put it in scope.
+    difficulty: buried
+    notes: >-
+      Teaches: administrative tooling around employed staff is OUTSIDE Annex III, even though it is
+      unmistakably 'HR'. The trap is broad-sector matching ('it's about employees') over the
+      specific listed uses.
+
+  - case_id: candidate_dedupe_prep
+    description: >-
+      A recruitment tool that gathers job applications arriving from several job boards and the
+      careers site, detects when the same candidate has applied more than once, and merges the
+      duplicate application records into one before a recruiter reviews the pile. It performs no
+      scoring, ranking or evaluation of candidates.
+    expected_risk_class: not_high_risk
+    expected_annex_iii_area: employment
+    expected_performs_profiling: false
+    expected_derogation: narrow_procedural_task
+    expected_transparency_obligation: false
+    transparency_basis: >-
+      Art. 50 does not attach: de-duplicating and merging application records is not direct
+      interaction (50(1)), generates no synthetic content (50(2)), infers no emotion (50(3)) and
+      produces no deep fake (50(4)).
+    decisive_fact: >-
+      Processes job applications DURING recruitment, so it is within Annex III(4)(a) — but it only
+      de-duplicates and merges records, a narrow procedural task under Art. 6(3)(a) with no
+      evaluation of the person, so not_high_risk (Art. 6(4) documentation still owed). Contrast
+      leave_balance_tracker: same 'HR' setting, but this one is in the recruitment phase and so IS
+      in scope before the derogation carves it back.
+    difficulty: buried
+    notes: >-
+      Teaches: a recruitment-phase preparatory tool is INSIDE Annex III (then exempt), NOT minimal.
+      The not_high_risk/minimal line matters — not_high_risk still owes Art. 6(4).
