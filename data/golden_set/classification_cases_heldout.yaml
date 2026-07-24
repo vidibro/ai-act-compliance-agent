@@ -1,0 +1,246 @@
+# Layer 1 — classification golden set, HELD-OUT (`test`) split.
+#
+# Companion to classification_cases.yaml (the `dev` split). Same schema, same invariants; the only
+# difference is discipline: these were authored BLIND — labelled from the enacted text, never by
+# running the classifier on them. That is the whole value. The dev set was iterated against three
+# times while tuning the prompt; a number from it measures fit to seven known descriptions. These
+# exist to produce the first number that measures the classifier instead.
+#
+# THE RULES (mirror the Layer 2 held-out discipline):
+#   - Do not tune prompts, thresholds or wording against these. Not once.
+#   - Run at reporting time, record the date and git sha with the number.
+#   - Expect a LOWER score than dev's 7/7. That is not a regression — it is the honest number
+#     appearing for the first time. If it matches dev exactly, be suspicious.
+#   - If ever tuned against, they are dev permanently. Say so and author fresh ones.
+#
+# DISTRIBUTION mirrors dev (all five risk classes) and deliberately bakes in the two traps the
+# real-world smoke check found that the dev set does not exercise:
+#   - h_scoring_with_oversight_theatre — a high-risk system that loudly promises human oversight
+#     (legally irrelevant to the tier; a DISTRACTOR that must not pull it down).
+#   - h_onboarding_logistics_crosssell — a minimal system carrying cross-sell noise for a separate
+#     high-risk product (must not pull it UP — a false-positive trap).
+#
+# Prose is deliberately unlike the dev cases: different systems, vendors, vocabulary and structure.
+
+act_version_date: 2024-07-12
+default_split: test
+
+cases:
+  # --- HIGH_RISK, with the human-oversight distractor (smoke-check trap #1) --------------------
+  - case_id: h_scoring_with_oversight_theatre
+    description: >-
+      A talent-acquisition module that assigns every applicant a suitability score against the
+      vacancy and orders the candidate list by that score for recruiters. The product literature
+      states repeatedly that a human recruiter always makes the final decision, that the tool is
+      "decision-support only", and that "the human stays in control at every step".
+    expected_risk_class: high_risk
+    expected_annex_iii_area: employment
+    expected_performs_profiling: true
+    expected_transparency_obligation: false
+    transparency_basis: >-
+      None of Art. 50's paragraphs attach: scoring and ranking applicants is neither direct
+      interaction (50(1)) nor content generation (50(2)); it is not emotion recognition or
+      biometric categorisation (50(3)); it produces no deep fake (50(4)).
+    decisive_fact: >-
+      Assigns suitability scores and ranks applicants — evaluation of natural persons, i.e.
+      profiling under Art. 6(3). The carve-back forces high_risk notwithstanding any derogation.
+      The repeated human-oversight assurance is LEGALLY IRRELEVANT to the tier: Annex III(4)(a)
+      applies whether or not a human signs off. It is a distractor, and must not lower the class.
+    difficulty: obvious
+    notes: >-
+      Smoke-check trap #1. The real vendor page in data/golden_set/smoke/ carries this exact
+      reassurance; the dev set does not, so this is the first case to test that the classifier does
+      not treat 'a human decides' as a downgrade.
+
+  # --- MINIMAL, with adjacent-product cross-sell noise (smoke-check trap #2) -------------------
+  - case_id: h_onboarding_logistics_crosssell
+    description: >-
+      A new-hire onboarding tool that collects signed documents, schedules orientation sessions,
+      tracks completion of mandatory training, and sends reminders with a per-employee checklist.
+      The vendor's site also advertises, in a "you may also like" panel, a separate AI screening
+      product that scores and ranks job applicants.
+    expected_risk_class: minimal
+    expected_annex_iii_area: null
+    expected_performs_profiling: false
+    expected_transparency_obligation: false
+    transparency_basis: >-
+      Art. 50 does not attach: it collects documents and sends reminders — no direct interaction as
+      an interlocutor (50(1)), a checklist is not synthetic content (50(2)), no emotion or biometric
+      inference (50(3)), no deep fake (50(4)). The advertised screening product is a DIFFERENT
+      system and is not the subject of this classification.
+    decisive_fact: >-
+      Purely administrative onboarding logistics — collecting documents, scheduling, tracking
+      completion. No evaluation of natural persons and no Annex III(4) function, so minimal. The
+      cross-sell mention of a separate scoring product belongs to another system and must not raise
+      this one.
+    difficulty: buried
+    notes: >-
+      Smoke-check trap #2 (false-positive). A genuinely minimal system whose page contains
+      high-risk-sounding text belonging to a different product.
+
+  # --- NOT_HIGH_RISK via derogation (b) — improves a completed human activity ------------------
+  - case_id: h_interview_note_polisher
+    description: >-
+      A writing assistant that takes the free-text interview notes a hiring manager has already
+      written and improves their grammar, clarity and structure before they are filed. It adds no
+      assessment, score or recommendation of its own; it only rewrites what the manager wrote.
+    expected_risk_class: not_high_risk
+    expected_annex_iii_area: employment
+    expected_performs_profiling: false
+    expected_derogation: improves_completed_human_activity
+    expected_transparency_obligation: false
+    transparency_basis: >-
+      Art. 50(2) does not attach despite the rewriting: its carve-out covers systems performing "an
+      assistive function for standard editing" that do not substantially alter the input or its
+      semantics — grammar and clarity polishing of the manager's own text is exactly that. No
+      interaction (50(1)), no emotion (50(3)), no deep fake (50(4)).
+    decisive_fact: >-
+      Improves the write-up of a completed human assessment without adding judgement of its own —
+      Art. 6(3)(b) derogation. Within Annex III(4) but exempt, so not_high_risk (Art. 6(4)
+      documentation still owed).
+    difficulty: obvious
+    notes: >-
+      Deliberate contrast with dev job_ad_generation: that GENERATES text (Art. 50(2) applies);
+      this only EDITS a person's text (Art. 50(2) carve-out), so transparency is false here.
+
+  # --- NOT_HIGH_RISK via derogation (d) — preparatory task ------------------------------------
+  - case_id: h_application_file_indexer
+    description: >-
+      A tool that receives incoming job applications, converts attachments to PDF, runs OCR, and
+      indexes them by requisition so a recruiter can search them. It performs no scoring, ranking
+      or evaluation of candidates; it prepares the files for the recruiter's own review.
+    expected_risk_class: not_high_risk
+    expected_annex_iii_area: employment
+    expected_performs_profiling: false
+    expected_derogation: preparatory_task
+    expected_transparency_obligation: false
+    transparency_basis: >-
+      Art. 50 does not attach: file conversion, OCR and indexing is not direct interaction (50(1)),
+      generates no synthetic content (50(2)), infers no emotion (50(3)), produces no deep fake
+      (50(4)).
+    decisive_fact: >-
+      Converts, OCRs and indexes applications to prepare them for the recruiter's own assessment —
+      a preparatory task under Art. 6(3)(d), with no evaluation of the person. Within Annex III(4)
+      but exempt, so not_high_risk.
+    difficulty: obvious
+
+  # --- PROHIBITED — Art. 5(1)(g) biometric categorisation (a DIFFERENT ground from the emotion cases)
+  - case_id: h_photo_ethnicity_sorting
+    description: >-
+      A recruitment screening system that analyses the photographs submitted with applications to
+      sort candidates into groups by inferred ethnicity and gender, which recruiters are told they
+      can use to "balance the shortlist".
+    expected_risk_class: prohibited
+    expected_prohibited: true
+    expected_transparency_obligation: true
+    transparency_basis: >-
+      Art. 50(3): it is a biometric categorisation system, so deployers must inform the persons
+      exposed. As with the emotion cases, 50(3) attaches to the system type and its only carve-out
+      is law-enforcement use — the Art. 5 prohibition does not disapply it.
+    decisive_fact: >-
+      Infers ethnicity — a protected characteristic — from photographs by biometric categorisation.
+      Prohibited under Art. 5(1)(g). Evaluated before high-risk classification; it never reaches
+      Art. 6.
+    difficulty: obvious
+    notes: >-
+      A second prohibited GROUND, distinct from the dev emotion cases (Art. 5(1)(f)). Tests that the
+      prohibited node is not narrowly keyed to emotion recognition.
+
+  # --- NEEDS_REVIEW via INSUFFICIENT INPUT — the missing fact is the DOMAIN (annex_iii node) ---
+  - case_id: h_people_analytics_unstated_domain
+    description: >-
+      A people-analytics platform that builds a predictive score for each individual in a client's
+      database and ranks them by it. The documentation describes the modelling in detail but never
+      states who the individuals are or what decision the score supports — it is sold to "HR, sales
+      and customer-success teams alike".
+    expected_risk_class: needs_review
+    expected_annex_iii_area: null
+    expected_performs_profiling: null
+    expected_derogation: null
+    expected_transparency_obligation: false
+    transparency_basis: >-
+      Determinable even though the tier is not: it scores records with no direct interaction (50(1)),
+      no content generation (50(2)), no stated emotion inference (50(3)) and no deep fake (50(4)),
+      so Art. 50 does not attach regardless of who the individuals are.
+    decisive_fact: >-
+      THE DECISIVE FACT IS ABSENT, and it is the DOMAIN. The platform plainly evaluates individuals,
+      but whether they are employees or candidates (Annex III(4) → high_risk via the profiling
+      carve-back) or customers and sales leads (outside Annex III → minimal) is never stated, and
+      the vendor sells it for both. Opposite tiers with nothing to choose between them, so
+      needs_review.
+    difficulty: insufficient
+    notes: >-
+      Second insufficient case. The missing fact sits at the annex_iii node (what the scored people
+      are), whereas ats_workflow_unspecified in the dev set is silent at the profiling node (what
+      the model ranks on). expected_performs_profiling is null because the tier is undecidable — the
+      schema would otherwise force high_risk from a true here.
+
+  # --- MINIMAL — clean out-of-scope anchor (a workplace tool that is not about employment) -----
+  - case_id: h_meeting_room_optimizer
+    description: >-
+      An AI tool that optimises the allocation of meeting rooms and desks across an office,
+      predicting demand per time-slot and suggesting bookings to facilities staff. It concerns
+      rooms and equipment, not any decision about people's employment.
+    expected_risk_class: minimal
+    expected_annex_iii_area: null
+    expected_performs_profiling: false
+    expected_transparency_obligation: false
+    transparency_basis: >-
+      Art. 50 does not attach: it allocates rooms, does not interact with any affected person
+      (50(1)), generates no content (50(2)), infers no emotion (50(3)), produces no deep fake
+      (50(4)).
+    decisive_fact: >-
+      Allocates rooms and desks, not people — no evaluation of natural persons and outside every
+      Annex III area, so minimal. Being deployed inside a workplace does not make a facilities tool
+      an employment high-risk system.
+    difficulty: obvious
+    notes: >-
+      False-positive anchor: "in an office" is HR-adjacent noise; the function is facilities, not
+      employment decisions.
+
+  # --- MINIMAL but Art. 50(1) transparency applies — direct interaction ------------------------
+  - case_id: h_candidate_faq_chatbot
+    description: >-
+      A chatbot on a careers site that answers applicants' questions about roles, benefits and the
+      hiring timeline in natural-language conversation. It does not assess, score or rank
+      applicants, and it neither makes nor influences any hiring decision.
+    expected_risk_class: minimal
+    expected_annex_iii_area: null
+    expected_performs_profiling: false
+    expected_transparency_obligation: true
+    transparency_basis: >-
+      Art. 50(1): the system interacts directly with natural persons (applicants) in conversation,
+      so they must be informed they are dealing with an AI system unless that is obvious. Applies
+      independently of the minimal risk tier.
+    decisive_fact: >-
+      Converses with applicants but performs no evaluation and informs no hiring decision — outside
+      Annex III(4), so minimal. BUT Art. 50(1) transparency applies because it interacts directly
+      with people, independent of the tier.
+    difficulty: obvious
+    notes: >-
+      Mirrors dev job_ad_generation (minimal + Art. 50) but via a DIFFERENT paragraph — 50(1) direct
+      interaction rather than 50(2) content generation.
+
+  # --- HIGH_RISK with the decisive fact BURIED in a benign analytics description ---------------
+  - case_id: h_attrition_scoring_buried
+    description: >-
+      A workforce-analytics dashboard that visualises headcount, turnover trends and team
+      composition for HR leadership. Deep in the feature list, among charts and exports, it notes
+      that the platform also computes an individual "attrition-risk score" for each employee and
+      flags those judged most likely to leave.
+    expected_risk_class: high_risk
+    expected_annex_iii_area: employment
+    expected_performs_profiling: true
+    expected_transparency_obligation: false
+    transparency_basis: >-
+      Art. 50 does not attach: dashboards and per-employee scores are not direct interaction
+      (50(1)), generate no synthetic content (50(2)), infer no emotion (50(3)) and produce no deep
+      fake (50(4)).
+    decisive_fact: >-
+      Buried among dashboard features, it scores individual employees for attrition risk —
+      evaluation of natural persons, i.e. profiling under Art. 6(3) → high_risk notwithstanding any
+      derogation. The analytics framing is the distractor; the scoring sentence is decisive.
+    difficulty: buried
+    notes: >-
+      The flip pattern applied to employee monitoring (Annex III(4)(b)) rather than recruitment —
+      one decisive sentence inside a mostly-benign dashboard description.

@@ -88,8 +88,15 @@ is authored before the code it judges:
    Incidental confirmation of framing rule 2: the card's extraction section classifies
    `not_high_risk` (Art. 6(3)(a), profiling false) where the page collapsed the whole product into
    one `high_risk` verdict — two purposes, two tiers, which is what M7 will automate.
-6. **Layer 1 held-out cases** (M1). Authored last, because the guide's section list is the checklist
-   of what they must vary. Synthetic first, per the agreed sourcing strategy.
+6. ~~**Layer 1 held-out cases**~~ ✅ **authored 2026-07-22** — `classification_cases_heldout.yaml`,
+   9 cases, `split: test`, authored BLIND (labelled from the enacted text, classifier never run on
+   them). All five risk classes; two second-of-their-kind grounds (Art. 5(1)(g) biometric
+   categorisation; insufficient-input at the annex_iii node, not profiling); and the two traps the
+   smoke check found that dev lacks — a high-risk case that loudly promises human oversight, a
+   minimal case carrying cross-sell noise. Integrity pinned by `test_classification_cases_heldout.py`
+   (no classifier run — that would leak it). **The reporting run is still pending**: run once against
+   a frozen commit, record the date and git sha, and EXPECT a lower number than dev's 7/7 — that is
+   the honest figure appearing for the first time, not a regression.
 7. **Langfuse** (M3's last open DoD item) — before M4 starts, so the retrieval layer is observable
    from its first chunk rather than instrumented afterwards.
 
@@ -127,7 +134,7 @@ harder would produce a pessimistic number that measures nothing.
 behaviour had been observed and so none could have shaped it. Run once, at reporting time; record
 the date and git sha with the number. If it is ever tuned against, it is dev permanently.
 
-Layer 1 has **7 of ≥15** cases and its held-out split is still **empty**. All five risk classes are
+Layer 1 has **7 dev + 9 held-out = 16 cases** (≥15 met). Held-out authored blind; reporting run pending. All five risk classes are
 now represented, including `needs_review` via `ats_workflow_unspecified` (difficulty `insufficient`).
 
 Two layers:
@@ -202,7 +209,7 @@ Nodes reproduce the EC flow; profiling split out; per-use-case resolution. Each 
 
 **Baseline measured (2026-07-22)** — Layer 1 dev set, `claude-haiku-4-5`, questions anchored in verbatim article/Annex text. **Two axes, reported separately and never averaged** (`src/aiact/eval/classification_score.py`):
 
-- **risk class 7/7** — including `job_ad_generation`, the deferred contested label, which the abstention work incidentally fixed. Was 5/7.
+- **risk class 7/7 (DEV)** — including `job_ad_generation`, the deferred contested label, which the abstention work incidentally fixed. Was 5/7.
 - **Art. 50 6/7** — 0 false-positive, 0 false-negative, 1 abstained. Was 3/7 before the answer key was corrected, 7/7 briefly, then 5/7 while the abstention rule over-fired.
 
 > ⚠️ **TREAT 7/7 AS A CEILING ARTEFACT, NOT A RESULT.** The dev set is SEVEN cases and the prompt was
