@@ -10,7 +10,10 @@ dependencies = [
     "langgraph>=0.2",
     "chromadb>=0.5",
     "litellm>=1.40",
-    "langfuse>=2.40",
+    # Pinned to the v2 line: LiteLLM's built-in "langfuse" success-callback targets the v2 SDK
+    # shape (langfuse.version.__version__), which the v3/v4 rewrite removed — with 4.x installed the
+    # callback raises `module 'langfuse' has no attribute 'version'` on the first traced call.
+    "langfuse>=2.60,<3",
     "fastapi>=0.111",
     "uvicorn[standard]>=0.30",
     "pyyaml>=6.0",

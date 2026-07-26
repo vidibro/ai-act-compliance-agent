@@ -24,6 +24,7 @@ from aiact.eval.classification_score import score_case, score_run  # noqa: E402
 from aiact.graph import ScriptedBrain, classify  # noqa: E402
 from aiact.graph.classify import load_questions  # noqa: E402
 from aiact.schemas.enums import AnnexIIIArea, DerogationCondition  # noqa: E402
+from aiact.tracing import enable_tracing  # noqa: E402
 from aiact.usage import PRICES_AS_OF  # noqa: E402
 
 
@@ -92,7 +93,9 @@ def run_golden() -> None:
     cases = load_classification_cases()
     brain = LLMBrain()
     anchored = load_questions()
+    traced = enable_tracing()
     print(f"Classifying {len(cases.cases)} Layer 1 cases with model={brain.model}")
+    print(f"Langfuse tracing: {'ON' if traced else 'off (no keys) — traces not recorded'}")
     print("questions anchored in verbatim article + Annex III text\n")
     pairs = []
     for case in cases.cases:
@@ -120,6 +123,15 @@ def run_golden() -> None:
 
 
 def main() -> None:
+    # Load .env into the process environment at the CLI boundary, BEFORE anything reads it. LiteLLM
+    # loads .env on import, but that is lazy (first model call) — too late for enable_tracing(),
+    # which checks the Langfuse keys up front. Doing it here makes the order deterministic for both
+    # provider auth and tracing. Kept out of the library/tracing module on purpose: that stays pure
+    # so its no-op tests are not at the mercy of a developer's real .env.
+    from dotenv import load_dotenv
+
+    load_dotenv()
+
     ap = argparse.ArgumentParser(description="Classify a use case through the M3 graph.")
     g = ap.add_mutually_exclusive_group(required=True)
     g.add_argument("--demo", action="store_true", help="deterministic flip demo, no API key")

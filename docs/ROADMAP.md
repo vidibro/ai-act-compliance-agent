@@ -123,8 +123,32 @@ candidate or application; scheduling and room-booking do not.
 > was authored to catch exactly this, and re-running after every dev change spends its honesty. Defer
 > to a genuine milestone (end of the classification block), and expect it still won't be a clean 9/9.
 
-7. **Langfuse** (M3's last open DoD item) — before M4 starts, so the retrieval layer is observable
-   from its first chunk rather than instrumented afterwards.
+7. ~~**Langfuse**~~ 🟡 **plumbing done 2026-07-22; visible trace needs your keys.** `src/aiact/tracing.py`
+   wires LiteLLM's Langfuse callback: one trace per `classify()` run, each node's LLM call a span
+   under it tagged by `node_id` — the decision path. STRICT no-op without keys (never imports
+   langfuse, no network, run is byte-identical), verified by `test_tracing.py` and a manual check.
+   `enable_tracing()` gates on BOTH keys being non-empty; the golden runner prints ON/off. **What
+   remains is yours:** set `LANGFUSE_PUBLIC_KEY`/`SECRET_KEY` (see `.env.example`), run
+   `scripts/classify.py --golden`, confirm one trace per case with node spans, and capture the
+   screenshot the M3/M6 DoD wants. M4's retrieval is now born observable, which was the reason to
+   wire this before it.
+
+   **Decision (2026-07-22): Langfuse Cloud, free tier — not self-hosted.** The trace data is
+   anonymised function descriptions and legal classifications (the repo rule already keeps vendor
+   names out), so shipping it to a third party is low-stakes, and Cloud is two keys vs a Docker +
+   Postgres stack for one screenshot. `LANGFUSE_HOST` already points at `cloud.langfuse.com`. Free
+   tier is ~50k trace-events/month against ~40 calls per golden run — effectively $0; verify the
+   current limit on their site at signup. Langfuse only OBSERVES: it adds no model cost, and the
+   ~$0.13/run Anthropic spend in `usage.py` is unchanged whether tracing is on or off. Self-hosting
+   stays a known option for confidential data or fully-offline runs (a fair interview point), not
+   needed here.
+
+8. **Verify the article/annex store's sha256 at load** (security hardening). Each article and annex
+   file already carries a `sha256` in its front matter, and guidance snippets are already verified
+   this way (`guidance.py`) — but the enacted-law store is currently trusted without a load-time
+   hash check (`policy_loader.py`). Extend the same verification to it, so tampered or drifted law
+   text raises instead of silently feeding the model a wrong provision. Small, self-contained, no
+   API cost. Then move SECURITY.md's "enacted-law store" note from an honest caveat to a done item.
 
 Then **M4**. Its Layer 2 data is already complete (dev + held-out), so nothing in this block blocks
 it — but note M4 is the largest unstarted piece of the deliverable, so this block must stay tight
@@ -401,6 +425,36 @@ page, with higher confidence; the report names the specific fact and article a l
 was missing, rather than only saying `needs_review`; a silent description does not yield a
 derogation; the omission warning stated explicitly; framing kept as draft-for-expert-review, not
 legal advice.
+
+### M9 — BYOK deployment (needs M6's FastAPI layer first)
+
+Make the deployed product **bring-your-own-key (BYOK)**: each caller supplies their own LLM key so
+they pay for their own inference and the operator never holds their credential.
+
+> `SECURITY.md` **already exists** at the repo root (written 2026-07-22). It documents the current
+> CLI/library posture — prompt-injection threat model first, secret handling, data flow, non-goals —
+> and marks the BYOK controls below as **Planned**. When BYOK lands, move those items from Planned to
+> current and add the test that proves the key never leaks.
+
+**BYOK — per-request keys, not one operator key.** Today keys come from the environment (a single
+operator identity: LiteLLM reads e.g. `ANTHROPIC_API_KEY`, and `get_settings()` reads the rest). For
+a real product each caller supplies their own LLM key, so they pay for their own inference and the
+operator never holds their credential. Shape:
+
+- The FastAPI request carries the caller's key (Authorization header / a per-request field); it is
+  injected into the LiteLLM call as `api_key=` **per request** and never persisted, never written to
+  Chroma, never logged, never placed in Langfuse metadata (the trace metadata is an explicit
+  allow-list today — `trace_id`, `node_id`, tags — which already keeps keys out; a test should pin
+  that it never widens to carry a secret).
+- `get_settings()` is `@lru_cache`-friendly for config but MUST NOT cache a secret across requests —
+  keys live on the request, not on a process-global Settings. This is the one place the current
+  env-based model has to change.
+- Optional BYO Langfuse and BYO vector store per tenant, same principle, later.
+- Redaction: keys scrubbed from error messages and stack traces before they leave the process.
+
+**DoD:** a BYOK request path where the caller's key is used for that request and provably not
+persisted or logged — a test asserts the key never appears in trace metadata, logs, or the vector
+store; the corresponding `SECURITY.md` items moved from **Planned** to current.
 
 ## Backlog (post-v0.1, only after M6 ships)
 

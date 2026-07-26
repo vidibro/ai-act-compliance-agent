@@ -33,6 +33,7 @@ from aiact.schemas.classification import (
     Confidence,
 )
 from aiact.schemas.enums import AnnexIIIArea, DerogationCondition
+from aiact.tracing import current_metadata
 from aiact.usage import Usage
 
 if TYPE_CHECKING:
@@ -273,6 +274,9 @@ class LLMBrain:
         import litellm  # lazy: only needed when actually classifying with a model
 
         user_content = self._user_content(question, description)
+        # Trace metadata is present only when Langfuse keys are configured AND we are inside a
+        # classify() trace scope; otherwise None, and the call is identical to an untraced one.
+        metadata = current_metadata(question.node_id)
         response = litellm.completion(
             model=self.model,
             messages=[
@@ -280,6 +284,7 @@ class LLMBrain:
                 {"role": "user", "content": user_content},
             ],
             response_format={"type": "json_object"},
+            **({"metadata": metadata} if metadata else {}),
             **self.profile.completion_kwargs,
         )
         # counted even if we abstain below: a wasted call still costs

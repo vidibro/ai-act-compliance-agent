@@ -56,6 +56,7 @@ from aiact.schemas.classification import (
 )
 from aiact.schemas.enums import RiskClass
 from aiact.schemas.policy import GuidanceSource, LegalSource
+from aiact.tracing import trace_run
 
 _ACT_DATE = date(2024, 7, 12)
 
@@ -526,7 +527,11 @@ def classify(
 ) -> ClassificationResult:
     """Run the cascade on one use-case description and return its ClassificationResult."""
     compiled_graph = build_graph(brain, questions)
-    out = compiled_graph.invoke(GraphState(description=description, use_case_id=use_case_id))
+    # One trace per run, grouping each node's LLM call as a span — the decision path, made visible
+    # in Langfuse. A strict no-op without keys (and for the deterministic ScriptedBrain, which makes
+    # no LLM calls to trace); see aiact.tracing.
+    with trace_run(f"classify:{use_case_id}", session_id=use_case_id):
+        out = compiled_graph.invoke(GraphState(description=description, use_case_id=use_case_id))
     result = out["result"] if isinstance(out, dict) else out.result
     if result is None:
         raise RuntimeError("classification graph produced no result")
