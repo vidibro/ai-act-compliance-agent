@@ -310,8 +310,80 @@ Order matters: prohibited (Art. 5) is evaluated BEFORE high-risk. A prohibited s
 
 Chroma ingest + retrieval as a TOOL the agent calls per active rule. Verdict per rule: pass / gap / inadequate / not_applicable. This is where `inadequate` vs `gap` earns its keep.
 
-**Status: not started.** Chroma is a dependency and a `chroma_path` setting; `src/aiact/tools/` is empty. But the Layer 2 ablation corpus it eats is fully authored (19 cases + manifest + reference doc), so this is the biggest block of unstarted work with no data blocker in front of it.
+**Status: retrieval built, judge not started.**
+
+Done — `src/aiact/retrieval/` (chunking + Chroma) and `src/aiact/tools/evidence.py` (the per-rule tool), 25 tests:
+- **Heading-aware chunking** with exact source offsets, so a verdict can cite `Part E — … [chars N-M]` and have it resolve. A chunk never straddles two sections — evidence for Art. 14 must not arrive carrying half of Art. 15's.
+- **One Chroma collection per document, named by the document's sha256.** Cross-document leakage is unreachable rather than merely unlikely (crediting a provider with another file's evidence is the worst bug this project could ship), and re-indexing unchanged text is free, so the eval re-runs without re-embedding.
+- **Local embeddings** (Chroma's bundled all-MiniLM-L6-v2 ONNX). Chosen so the eval stays offline, free and reproducible, and so searching a document never ships it to a third party; `embedding_function` is a parameter, so it is a choice not a constraint.
+- **In-memory by default — the tool keeps no copy of the document it checks.** Indexing a 22k-character file costs ~300 ms against LLM calls that cost seconds, so persistence buys nothing worth keeping a provider's confidential technical file for. Persistence is opt-in for the eval (whose corpus is already committed here), `drop()` cleans up, and a test asserts the default writes nothing to disk. SECURITY.md's retention claim rests on that test.
+- **The tool refuses non-document-verifiable rules.** Art. 17-21/43/47-49/72-73 are process obligations of the provider organisation; searching a technical file for them returns four unrelated paragraphs and hands a checker every chance to talk itself into PASS.
+- Retrieval query is `evidence_expected`, not `requirement` — legislative register embeds badly against product prose. The spec's retrieval hint, finally used for retrieval.
+
+Pinned in the tests because everything downstream depends on it: **a vector search always returns k results.** There is no "nothing found", so retrieval can never conclude GAP on its own — only a judge reading the passages can. That is precisely why GAP-vs-INADEQUATE has to be a model judgement.
+
+**Measured on dev (2026-07-27), ad hoc — reproduce by indexing the pristine case document and calling `find_evidence` per rule; the numbers below are the record.** Retrieval routes correctly: the top hit is the right section for **7 of 7** document-verifiable rules on the pristine document. Dev only — the held-out document's lettered layout has deliberately NOT been run, so "nothing keys on section position" is still a design claim, not a measurement.
+
+Then the number that matters. Top-hit cosine distance, pristine vs each ablation:
+
+| rule | pristine | removed | inadequate | distractor |
+|---|---|---|---|---|
+| A09 | 1.072 | 1.142 | **1.067** | 1.142 |
+| A10 | 1.302 | 1.433 | **0.982** | 1.352 |
+| A11 | 0.963 | 1.013 | 1.013 | — |
+| A12 | 1.074 | 1.528 | **0.956** | — |
+| A13 | 1.309 | 1.326 | 1.326 | — |
+| A14 | 0.905 | 1.245 | **1.067** | 1.245 |
+| A15 | 1.019 | 1.059 | **0.942** | 1.059 |
+
+`removed` moves distance the right way every time, but by as little as 0.05 (A13, A15) — nowhere near a usable threshold. And on `present_but_inadequate` distance goes the WRONG way in 5 of 7: the hollow assertion scores *closer* to the requirement than the real section it replaced. That is not a defect, it is what similarity measures — "we ensure human oversight" restates the obligation, while the compliant section is full of stop controls and training modules, i.e. specifics that no abstract statement of the requirement resembles.
+
+**So similarity is anti-correlated with compliance on exactly the class the project exists to detect.** Any threshold on distance would rank empty assurances above genuine evidence — the strawman's failure mode with better maths. It settles a design question rather than raising one: distance is context for a judge, never a verdict, and the checker must read the passages. Report this table next to the keyword baseline's 0-of-6; together they are the argument for the architecture.
+
+Next: the judge — per-rule verdict from (enacted text + retrieved evidence), then wire it as a `Checker` into the existing runner so it scores against the strawman's 88.0% / 0-of-6 INADEQUATE.
+
 **DoD:** Layer-2 ablation docs run → findings with citations; `untouched` requirements come back `pass` (false-positive control).
+
+#### M4b — Non-English documentation (DECIDED: do it; sequenced after the judge works)
+
+**The Act is a 24-language instrument.** A German provider's technical file is written in German, and a compliance tool that answers "translate it first" has inverted its own purpose. English-only was considered and **rejected as a product answer**, not deferred for lack of interest.
+
+**Measured 2026-07-27, the current stack is English-only in practice:**
+
+| setup | correct top hit | distances |
+|---|---|---|
+| EN document, EN query | **7 / 7** | 0.9 – 1.3 |
+| DE document, EN query (what we have) | **3 / 7** | 1.4 – 1.8 |
+| DE document, DE query | 4 / 4 | — (only 8 chunks; encouraging, not proven) |
+
+At 1.4–1.8 the model is guessing, and two of the three hits look like cognate luck (*Dokumentation*, *Cybersicherheit*). The cause is the tokenizer: 30,522 English wordpieces, so `aufsicht`, `überwachung`, `nadzór`, `точность` are all out-of-vocabulary and shatter into meaningless fragments. Cyrillic and Greek are worse.
+
+**The fix is a one-argument swap** — `paraphrase-multilingual-MiniLM-L12-v2` or `multilingual-e5-base`, which place a sentence and its translation at the same point, so the English `evidence_expected` hints keep working unchanged against a German document. `embedding_function` is already a parameter; the seam exists.
+
+**Why it is sequenced after the judge, not before:** the golden set is entirely English, so swapping now produces a number nothing can verify — and multilingual models typically trade a little English accuracy for coverage, so the swap could quietly degrade the measured 7/7 with no way to notice. Needs a translated ablation set first (one reference document translated, same ablations — ground truth stays exact by construction).
+
+Two things beyond retrieval that come with it, listed so they are not discovered late:
+- **The judge must read the source language, and evidence quotes must stay in it.** Citing a translated sentence in a compliance report points at wording that is not in the provider's file — the same failure the sha256 check exists to prevent, arriving by a different route.
+- **The article store is ENG Formex only.** Fine while the model reads both, but it means a German report cites English law text. Decide deliberately. EUR-Lex publishes all 24 language versions and each is equally authentic, so the text is available — but `fetch_articles.py` is not ready for it: `LANGUAGE = "ENG"` is a module constant and `ENG` is hardcoded into the resource URLs (lines 70, 103-106). Making it a real argument is a small job, and the store is already version-scoped by directory, so a language axis would sit alongside that naturally.
+
+#### M4c — Overlap for UNSTRUCTURED documents (conditional, decide against the judge's numbers)
+
+Chunking currently uses **no overlap**, and the reason was: a heading is a boundary the author deliberately placed, so there is nothing arbitrary to repair — while duplicated text would corrupt evidence counting (a judge reading k=4 passages that are really two-and-a-half reads repetition as corroboration) and make offsets ambiguous (one quote, two locators).
+
+**That reasoning only holds for structured input.** Both reference documents have headings; a real provider's file may be a wall of text. Measured 2026-07-27 on a synthetic unstructured document (no headings, no paragraph breaks):
+
+| input | chunks | all fit window | offsets exact | mid-sentence cuts |
+|---|---|---|---|---|
+| wall of text, 3.9k chars | 7 | ✅ | ✅ | none |
+| headings + huge paragraphs, 7.9k | 14 | ✅ | ✅ | none |
+
+Nothing breaks — the sentence splitter already handles it, since a document that IS one paragraph is just the extreme case of an over-long one. But quality degrades in two specific ways: `heading_path` is empty, so chunks carry no context into their vector; and chunks **mix obligations**, because nothing marks where one topic ends. Retrieval scored 5/6 on that document, and several hits were luck — the "correct" chunk also contained two unrelated obligations.
+
+With no authored boundaries the cuts ARE arbitrary, which is precisely the situation overlap exists for. So the decision should be **conditional on structure**, not global: no overlap when headings are present, overlap when they are not. That also confines the duplication cost to the case that needs it.
+
+**Do not add it on principle — add it on evidence.** The signal to watch is false INADEQUATE verdicts on unstructured documents whose content is actually complete: that is the fingerprint of an argument split across two chunks, where the judge sees a process with its measures missing. If the judge's eval shows it, add conditional overlap; if it does not, the duplication is not worth paying for.
+
+Related: M8's system-card guide already tells users what structure to supply for CLASSIFICATION. The same argument extends to gap analysis — a technical file with headings is checked better, and saying so in the guide is fairer than silently penalising unstructured input.
 
 ### M5 — Eval (numbers)
 

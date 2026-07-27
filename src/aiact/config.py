@@ -27,7 +27,7 @@ class Settings(BaseSettings):
     # Reasoning depth, for providers that expose it. Ignored by profiles that have no such knob.
     llm_effort: str = "high"
 
-    # Vector store (Chroma, local). Wired up next session.
+    # Vector store (Chroma, local). Retrieval indexes the document being CHECKED, not the law.
     chroma_path: str = "./chroma"
 
     # Policy / reproducibility.

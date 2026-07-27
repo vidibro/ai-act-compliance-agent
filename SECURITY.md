@@ -7,9 +7,19 @@ throughout.
 
 **What exists today:** a Python library and CLI. You run classification locally; the only data that
 leaves your machine goes to the LLM provider you configure (via LiteLLM) and, if you opt in with
-keys, to Langfuse. There is **no server, no multi-tenant deployment, and no stored user data** yet —
+keys, to Langfuse. There is **no server, no multi-tenant deployment, and no stored user data** —
 the FastAPI layer and the bring-your-own-key (BYOK) model are roadmap items (M6, M9), and the
 deployment-specific controls below are labelled **Planned** accordingly.
+
+**Retention: the tool keeps no copy of the document you check.** Gap analysis indexes the document
+in a local vector store to find candidate evidence per obligation; that index is **in-memory by
+default and never written to disk** (`aiact.retrieval.store`), so it dies with the process. This is
+a deliberate default rather than an accident of implementation — re-indexing a 22k-character
+document costs about 300 ms, which does not buy keeping someone's confidential technical file
+around. Persistence exists (`persistent_client()`) and is used only by the eval, whose corpus is
+already committed to this repo; `DocumentIndex.drop()` deletes an index a caller chose to keep.
+Pinned by `test_the_default_index_writes_nothing_to_disk`. Embeddings are computed locally
+(all-MiniLM-L6-v2), so searching the document does not ship it to a third party either.
 
 ## Reporting a vulnerability
 
@@ -103,7 +113,9 @@ trusting operator.
   work; treat whatever you send as disclosed to that provider under their terms.
 - **To Langfuse (only if you set keys):** the same request/response plus the trace metadata above,
   for observability. Off by default.
-- **Nowhere else.** No telemetry, no analytics, no third-party calls beyond those two.
+- **Nowhere else.** No telemetry, no analytics, no third-party calls beyond those two. In
+  particular, retrieval is entirely local: embeddings are computed on this machine by a bundled
+  ONNX model, so the document is never sent anywhere to be indexed or searched.
 
 **Data sensitivity is a design control, not just hygiene.** The project rule that **no vendor name
 sits next to a legal verdict** — descriptions are anonymised function descriptions — is a security
