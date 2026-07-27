@@ -47,11 +47,16 @@ can do is small and bounded, and here is why, cross-referenced to the code:
   node unsure routes to `needs_review` (see the abstention handling in `llm_brain.py` and
   `classify.py`), which surfaces to a human rather than defaulting to a verdict.
 
-- **The ground truth the model reasons against is integrity-checked.** Commission-guidance snippets
-  are resolved with a sha256 verification of the exact quoted span at load time — a snippet whose
-  body has drifted from its recorded hash raises rather than being used (`load_snippet` in
-  `src/aiact/guidance.py`). This is tamper-evidence on the non-binding interpretation a verdict may
-  rest on.
+- **The ground truth the model reasons against is integrity-checked, on every load.** Both stores
+  are tamper-evident by the same rule: the **enacted law** (all 113 articles and the annexes) is
+  verified against the sha256 written when it was fetched from the Official Journal
+  (`verify_integrity` in `src/aiact/policy_loader.py`, applied both when resolving a rule's
+  requirement and — more importantly — in `_provision_text`, the path that puts law text directly
+  into the prompt); and **Commission-guidance snippets** are verified the same way over their exact
+  quoted span (`load_snippet` in `src/aiact/guidance.py`). A file that has drifted from its recorded
+  hash raises rather than being used, so altered legal text cannot silently reach the model or be
+  cited by a verdict. A missing hash is also refused — deleting the line does not bypass the check.
+  Covered by `tests/test_law_integrity.py` and `tests/test_guidance.py`.
 
 **Residual risk, stated plainly.** Injected text *can* still bias a single sub-answer — no prompt
 makes an LLM perfectly robust. That is precisely why low confidence routes to `needs_review`, why
@@ -59,11 +64,11 @@ every verdict carries its evidence quote and citation for a human to check, and 
 framed throughout as a **draft checklist for expert review, not a decision** (the disclaimer in
 `src/aiact/schemas/report.py` is attached to every report and must stay there).
 
-> Note on the enacted-law store. Article and annex texts carry a `sha256` in their front matter as a
-> provenance record, and the policy loader resolves rule wording verbatim from that store with a
-> test guaranteeing no paraphrase drift. Load-time hash *verification* is currently implemented for
-> guidance snippets only; extending the same check to the article/annex store is a small, worthwhile
-> hardening item and is noted here honestly rather than overclaimed.
+> Note on the enacted-law store. Verification is byte-exact and deliberately unforgiving: the store
+> is machine-generated from the Official Journal and reproducible with one command
+> (`scripts/fetch_articles.py`), so ANY local divergence — including a stray whitespace edit — means
+> the file is no longer the fetched text and is refused. The hash covers the file body as written by
+> the fetch script, which is what keeps the generator and the loader agreeing on the same bytes.
 
 ## Secret handling
 

@@ -15,6 +15,7 @@ Official Journal with one command.
 
 from __future__ import annotations
 
+import hashlib
 import re
 from collections import Counter
 from datetime import date
@@ -29,6 +30,36 @@ from aiact.schemas.policy import PolicySpec
 _FRONT_MATTER = re.compile(r"\A---\n(.*?)\n---\n+", re.S)
 _PARAGRAPH_START = re.compile(r"^(\d+)\.\s+", re.M)
 _FRONT_FIELD = re.compile(r"^(\w+):\s*(.*)$", re.M)
+
+
+def verify_integrity(path: Path, raw: str, front: dict[str, str], body: str) -> None:
+    """Fail loudly if a stored provision no longer matches the sha256 it was written with.
+
+    The enacted text is the ground truth every verdict is reasoned against and cited to, so silent
+    corruption here is the worst failure mode in the project: a hand-edited or mangled article would
+    be fed to the model as if it were the Official Journal, and the citation on the resulting
+    verdict would point at wording that is not the law. Cheap, so it is checked on every load.
+
+    The covered span is the whole body after the front matter — the same bytes
+    `scripts/fetch_articles.py` hashed when it wrote the file (`front + body`, sha of `body`). It
+    therefore INCLUDES the "Article N / title" heading that `_read_article` strips for its own use;
+    hashing what the generator hashed, not what the caller happens to want, is what makes the two
+    sides agree.
+    """
+    declared = front.get("sha256")
+    if not declared:
+        raise ValueError(
+            f"{path} has no sha256 in its front matter — regenerate it with "
+            f"scripts/fetch_articles.py. Unverifiable legal text is not usable."
+        )
+    actual = hashlib.sha256(body.encode("utf-8")).hexdigest()
+    if actual != declared:
+        raise ValueError(
+            f"{path} does not match its stored sha256 (declared {declared[:12]}…, "
+            f"got {actual[:12]}…). The stored enacted text has been altered since it was fetched "
+            f"from the Official Journal. Do not classify against it — restore the file or re-run "
+            f"scripts/fetch_articles.py."
+        )
 
 
 def _read_article(articles_dir: Path, article: int) -> tuple[str, dict[str, str]]:
@@ -49,7 +80,9 @@ def _read_article(articles_dir: Path, article: int) -> tuple[str, dict[str, str]
         raise ValueError(f"{path} is missing YAML front matter — regenerate it.")
     front = dict(_FRONT_FIELD.findall(m.group(1)))
     body = raw[m.end() :]
-    # body = "Article N\n<title>\n\n<provisions>"; drop the heading block.
+    verify_integrity(path, raw, front, body)
+    # body = "Article N\n<title>\n\n<provisions>"; drop the heading block. Note the hash above
+    # covers the FULL body including that heading — the generator's span, not this function's.
     _, _, provisions = body.partition("\n\n")
     return provisions.strip("\n"), front
 

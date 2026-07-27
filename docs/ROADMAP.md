@@ -143,12 +143,15 @@ candidate or application; scheduling and room-booking do not.
    stays a known option for confidential data or fully-offline runs (a fair interview point), not
    needed here.
 
-8. **Verify the article/annex store's sha256 at load** (security hardening). Each article and annex
-   file already carries a `sha256` in its front matter, and guidance snippets are already verified
-   this way (`guidance.py`) — but the enacted-law store is currently trusted without a load-time
-   hash check (`policy_loader.py`). Extend the same verification to it, so tampered or drifted law
-   text raises instead of silently feeding the model a wrong provision. Small, self-contained, no
-   API cost. Then move SECURITY.md's "enacted-law store" note from an honest caveat to a done item.
+8. ~~**Verify the article/annex store's sha256 at load**~~ ✅ **done 2026-07-26.** `verify_integrity`
+   in `policy_loader.py`, applied at BOTH read paths: `_read_article` (resolving a rule's
+   requirement) and — the one that matters more — `_provision_text` in `classify.py`, which puts law
+   text straight into the prompt and previously had no check at all. All 126 stored files verify;
+   tampering, a whitespace-only edit, or deleting the `sha256:` line each raise
+   (`tests/test_law_integrity.py`, 7 tests). The covered span was derived from the generator, not
+   guessed: `fetch_articles.py` writes `front + body` and hashes `body`, so the check hashes the
+   full body INCLUDING the "Article N / title" heading that `_read_article` strips for its own use.
+   SECURITY.md's caveat is now a done item.
 
 Then **M4**. Its Layer 2 data is already complete (dev + held-out), so nothing in this block blocks
 it — but note M4 is the largest unstarted piece of the deliverable, so this block must stay tight
