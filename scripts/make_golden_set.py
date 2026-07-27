@@ -52,7 +52,7 @@ _SECTION = re.compile(
     r"<!--\s*rule:\s*(?P<rule>[A-Za-z0-9\-]+)\s*-->\n(?P<body>.*?)\n<!--\s*/rule\s*-->\n",
     re.S,
 )
-_LEADING_COMMENT = re.compile(r"\A<!--.*?-->\n+", re.S)
+_LEADING_COMMENT = re.compile(r"\A<!--.*?^-->\n+", re.S | re.M)
 
 # Expected verdict implied by each ablation type. A case may override via `expect:`.
 _EXPECTED: dict[AblationType, Verdict] = {

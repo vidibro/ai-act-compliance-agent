@@ -113,6 +113,13 @@ def test_rule_tags_never_leak_into_case_documents(any_golden: GoldenSet):
     for case in any_golden.cases:
         assert "<!-- rule:" not in case.raw_text, f"{case.case_id} leaks rule tags"
         assert "<!--" not in case.raw_text, f"{case.case_id} leaks an HTML comment"
+        assert "-->" not in case.raw_text, f"{case.case_id} leaks a comment close"
+        assert "never reach the agent" not in case.raw_text, (
+            f"{case.case_id} leaks the reference document's authoring commentary"
+        )
+        assert case.raw_text.lstrip().startswith("#"), (
+            f"{case.case_id} does not start at the document title — something precedes it"
+        )
 
 
 def test_removed_case_actually_drops_the_section(golden: GoldenSet):

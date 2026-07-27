@@ -1,9 +1,3 @@
-The tags are stripped from generated case documents; they never reach the agent.
-
-Written to be realistic, not ideal: it reads like a real vendor's technical file, with concrete
-figures and named measures, because a checker that only passes on perfect prose is useless.
--->
-
 # TalentRank Candidate Scoring — Technical Documentation
 
 **Provider:** Northwind Analytics B.V., Amsterdam, Netherlands

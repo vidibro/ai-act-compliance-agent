@@ -1,6 +1,3 @@
-The tags are stripped from generated case documents; they never reach the agent.
--->
-
 # PathFinder Internal Mobility — Provider Technical File
 
 | | |
