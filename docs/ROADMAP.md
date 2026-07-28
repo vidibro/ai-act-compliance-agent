@@ -361,6 +361,32 @@ The headline is the first row: the distinction the project exists to make, which
 
 **Cost note:** the cache marker is sent and ignored on every call; the stable prefix is below Haiku's 4,096-token minimum. Real, but small next to the win from fixing k.
 
+#### Model / effort sweep — dev, 2026-07-28, 133 judgements per run
+
+Run through a LiteLLM proxy (`litellm_proxy/…`), so the sweep cost nothing; the dollar column is list price, because a free key during development hides a cost the caller pays under BYOK.
+
+| checker | INADEQUATE | false pos | `removed` | `distractor` | overall | **$/run** | out tok |
+|---|---|---|---|---|---|---|---|
+| strawman (keywords) | 0/6 | 100% | 14.3% | 0% | 88.0% | **$0** | — |
+| Haiku 4.5 *(no reasoning knob)* | **6/6** | 81.7% | 42.9% | 50% | 79.7% | $0.61 | 47k |
+| Gemini 2.5 Pro, effort=high | 4/6 | 88.7% | **85.7%** | 50% | 86.5% | $3.63 | 320k |
+| Gemini 2.5 Pro, **effort=low** | 5/6 | **95.7%** | 71.4% | 50% | **92.5%** | $1.77 | 134k |
+| Gemini 2.5 Flash, effort=high | 1/6 | 66.1% | 57.1% | **75%** | 63.9% | $1.04 | 375k |
+| Gemini 2.5 Flash, **effort=low** | 4/6 | 93.9% | 57.1% | 25% | 88.7% | $0.43 | 131k |
+| **Gemini 2.5 Flash, effort=disable** | 5/6 | **98.3%** | 57.1% | 25% | **93.2%** | **$0.16** | **24k** |
+
+**The transferable finding: LOW reasoning effort beats HIGH on every model tested, and costs half.** Flash went 1/6 → 4/6 on INADEQUATE and 66% → 94% on false positives; Pro went 4/6 → 5/6 and 88.7% → 95.7%. Both roughly halved their output bill, and reasoning tokens bill as output — at effort=high one call measured 2,388 reasoning tokens against 163 tokens of actual JSON.
+
+Why it should have been predictable: the judge's task is bounded — read ten passages, apply one rubric, emit one of four tokens. Extended deliberation gives a model room to talk itself out of "this is hollow" and into "well, something is here". Corroborated from the other direction by Haiku, which has no effort knob at all, does no explicit reasoning, and holds the best INADEQUATE score in the table.
+
+**The effect is monotonic all the way to zero**, and the last row is the recommendation: **Gemini 2.5 Flash with thinking DISABLED — cheapest tested AND best overall AND cleanest false-positive record** (1 wrong judgement in 115). It beats Pro-at-high-effort on every axis except `removed`, for **1/22nd the cost**.
+
+Note the trap it exposes: on Gemini, OMITTING `reasoning_effort` is not the same as disabling it. Measured on one call — omit: 2,215 reasoning tokens; `low`: 843; `disable`: 0. Gemini 2.5 thinks by default and generously, where Anthropic's Haiku has nothing to think with. So "no reasoning parameter" means opposite things per vendor, which is precisely the class of thing `providers.py` exists to record — and `disable` is NOT a portable effort level (Anthropic has nothing to disable, OpenAI's reasoning family cannot be turned off).
+
+**Caveat on the comparison:** every row ran a prompt iterated against HAIKU, so Haiku's 6/6 INADEQUATE is partly home advantage and the cheap cells are being judged on someone else's homework. Tuning for Flash-disable is the next move, not buying the expensive model.
+
+**Still open:** effort is ONE global setting shared by classifier and judge (`AIACT_LLM_EFFORT`). The judge demonstrably wants it off; the classifier has never been measured either way and its numbers were all taken on Haiku, which has no such knob. Split before pinning either in config.
+
 **DoD:** Layer-2 ablation docs run → findings with citations; `untouched` requirements come back `pass` (false-positive control).
 
 #### M4b — Non-English documentation (DECIDED: do it; sequenced after the judge works)
