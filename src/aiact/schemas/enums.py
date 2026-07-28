@@ -77,7 +77,21 @@ class Verdict(StrEnum):
     more — no measures, no interface, no ability to intervene, no operator competence.
     A keyword-matching checker returns PASS here. A checker that reads the requirement returns
     INADEQUATE. Distinguishing GAP from INADEQUATE is the core capability being built and
-    measured — do not collapse them."""
+    measured — do not collapse them.
+
+    THE BOUNDARY, settled 2026-07-28 because the eval kept landing on it. The deciding question is
+    not how much text is present, it is WHAT THE PROVIDER MUST DO NEXT:
+
+      GAP        -> "write this."      The content does not exist anywhere in the document.
+      INADEQUATE -> "strengthen this." The content exists and falls short.
+
+    So a CROSS-REFERENCE TO A SECTION THAT DOES NOT EXIST is a GAP, not an INADEQUATE. A file
+    saying "the oversight measures are described in §7" when there is no §7 has mentioned the
+    obligation and documented nothing; the work still to be done is writing it from scratch. The
+    sentence is a pointer, not evidence, and its presence changes nothing a provider must do.
+
+    Recorded here rather than argued case by case, because this was the answer key's most-hit
+    boundary and it had no stated reason behind it."""
 
     NOT_APPLICABLE = "not_applicable"
     """The rule is not activated for this system's risk class / role / use case."""

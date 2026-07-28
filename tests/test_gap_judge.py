@@ -1,0 +1,294 @@
+"""LLMJudge — turning a model's reply into a verdict, and refusing to invent one.
+
+No network and no API key: `litellm` is stubbed and retrieval is stubbed, so these test OUR handling
+of a reply. Whether the model judges WELL is an eval question with a score, not a test question with
+an assertion — that lives in M5.
+
+The theme, as in test_llm_brain.py: an unusable answer must become NEEDS_REVIEW, never a substantive
+verdict. Here the stakes are sharper in one direction — every default other than NEEDS_REVIEW is
+either a false accusation against a provider (GAP) or a false clearance (PASS).
+"""
+
+from __future__ import annotations
+
+import json
+import sys
+import types
+from datetime import date
+
+import pytest
+
+from aiact.gap.judge import UNSURE, Judgement, LLMJudge, _unfence, outline
+from aiact.retrieval.chunking import Chunk
+from aiact.retrieval.store import Hit
+from aiact.schemas.enums import ActorRole, CheckType, ObligationStatus, RiskClass, Verdict
+from aiact.schemas.policy import LegalSource, PolicyRule
+
+DOCUMENT = "# Doc\n\n## Human oversight\n\nA panel reviews every recommendation.\n"
+
+
+def a_rule(
+    rule_id: str = "AIA-HR-A14",
+    check_type: CheckType = CheckType.SUBSTANCE,
+    document_verifiable: bool = True,
+) -> PolicyRule:
+    return PolicyRule(
+        rule_id=rule_id,
+        requirement="High-risk AI systems shall be designed such that they can be overseen.",
+        source=LegalSource(
+            instrument="Regulation (EU) 2024/1689",
+            article=14,
+            act_version_date=date(2024, 7, 12),
+        ),
+        applies_to_risk_class=[RiskClass.HIGH_RISK],
+        applies_to_role=[ActorRole.PROVIDER],
+        obligation_status=ObligationStatus.MANDATORY,
+        check_type=check_type,
+        evidence_expected="Described oversight measures: interface tools, ability to intervene.",
+        document_verifiable=document_verifiable,
+        status="active",
+    )
+
+
+def a_hit(chunk_id: str = "c001", body: str = "A panel reviews every recommendation.") -> Hit:
+    return Hit(
+        chunk=Chunk(
+            chunk_id=chunk_id,
+            body=body,
+            heading_path="Doc > Human oversight",
+            char_start=0,
+            char_end=len(body),
+        ),
+        distance=0.9,
+    )
+
+
+def a_fake_index(*hits: Hit) -> types.SimpleNamespace:
+    """Stands in for a DocumentIndex: only `.chunks` is read (for the outline)."""
+    return types.SimpleNamespace(chunks={h.chunk.chunk_id: h.chunk for h in (hits or (a_hit(),))})
+
+
+@pytest.fixture
+def judge(monkeypatch):
+    """An LLMJudge whose retrieval is stubbed, so tests never embed anything."""
+    j = LLMJudge(model="stub/model")
+    monkeypatch.setattr("aiact.gap.judge.find_evidence", lambda index, rule, k: [a_hit()])
+    monkeypatch.setattr(LLMJudge, "index_for", lambda self, document: a_fake_index())
+    return j
+
+
+@pytest.fixture
+def reply(monkeypatch):
+    """Install a fake `litellm` returning a chosen completion body."""
+
+    def _install(content: str | None):
+        message = types.SimpleNamespace(content=content)
+        response = types.SimpleNamespace(choices=[types.SimpleNamespace(message=message)])
+        monkeypatch.setitem(
+            sys.modules, "litellm", types.SimpleNamespace(completion=lambda **kw: response)
+        )
+
+    return _install
+
+
+def _json(**fields) -> str:
+    base = {
+        "verdict": "pass",
+        "reasoning": "The panel review is described.",
+        "evidence_quote": "A panel reviews every recommendation.",
+        "evidence_chunk_id": "c001",
+        "confidence": "high",
+    }
+    return json.dumps({**base, **fields})
+
+
+# --- the three verdicts round-trip --------------------------------------------------------------
+@pytest.mark.parametrize(
+    ("token", "expected"),
+    [("pass", Verdict.PASS), ("gap", Verdict.GAP), ("inadequate", Verdict.INADEQUATE)],
+)
+def test_each_verdict_is_parsed(judge, reply, token, expected):
+    reply(_json(verdict=token, reasoning="stated"))
+    assert judge.judge(a_rule(), DOCUMENT).verdict == expected
+
+
+def test_a_pass_carries_its_evidence(judge, reply):
+    """A verdict without evidence is an opinion. PASS especially: it clears a provider."""
+    reply(_json())
+    result = judge.judge(a_rule(), DOCUMENT)
+    assert result.evidence_quote == "A panel reviews every recommendation."
+    assert result.evidence_chunk_id == "c001"
+    assert result.confidence == "high"
+
+
+# --- refusing to guess ---------------------------------------------------------------------------
+@pytest.mark.parametrize(
+    "content",
+    [None, "", "   ", "not json at all", "[1, 2, 3]"],
+    ids=["none", "empty", "blank", "prose", "json-but-not-object"],
+)
+def test_an_unusable_reply_becomes_needs_review(judge, reply, content):
+    """Our own failure must never be reported as the provider's. A malformed completion says
+    nothing about their documentation, so defaulting to GAP would manufacture an accusation and
+    defaulting to PASS would manufacture a clearance."""
+    reply(content)
+    assert judge.judge(a_rule(), DOCUMENT).verdict == Verdict.NEEDS_REVIEW
+
+
+def test_an_unknown_verdict_token_becomes_needs_review(judge, reply):
+    reply(_json(verdict="probably fine"))
+    result = judge.judge(a_rule(), DOCUMENT)
+    assert result.verdict == Verdict.NEEDS_REVIEW
+    assert "not a verdict" in result.reasoning
+
+
+def test_the_unsure_token_becomes_needs_review(judge, reply):
+    """Distinct from a parse failure: the model read the excerpts and declined. That is the model
+    doing its job — 'I cannot tell' is not 'the documentation is missing this'."""
+    reply(_json(verdict=UNSURE, reasoning="the excerpts contradict each other"))
+    result = judge.judge(a_rule(), DOCUMENT)
+    assert result.verdict == Verdict.NEEDS_REVIEW
+    assert "contradict" in result.reasoning
+
+
+@pytest.mark.parametrize("token", ["gap", "inadequate"])
+def test_an_accusation_without_reasoning_is_refused(judge, reply, token):
+    """GAP and INADEQUATE are accusations; Finding's own validator refuses an unreasoned one.
+    Catching it here keeps the failure a NEEDS_REVIEW instead of an exception mid-run."""
+    reply(_json(verdict=token, reasoning="   "))
+    assert judge.judge(a_rule(), DOCUMENT).verdict == Verdict.NEEDS_REVIEW
+
+
+def test_a_bracketed_or_multiple_id_is_still_read(judge, reply):
+    """THE BUG THIS GUARDS, seen on the first live run: the model answered
+    `"[c020], [c023], [c021]"` — bracketed, and three of them. A strict equality check dropped the
+    locator entirely, which is half the value of a finding. Be lenient about form."""
+    reply(_json(evidence_chunk_id="[c001], [c007]"))
+    assert judge.judge(a_rule(), DOCUMENT).evidence_chunk_id == "c001"
+
+
+def test_a_wrong_chunk_id_is_corrected_from_the_quote(judge, reply):
+    """The model is good at judging text and merely adequate at remembering which box it came
+    from. Whichever excerpt actually contains the quote is the honest locator."""
+    reply(_json(evidence_chunk_id="c999"))
+    assert judge.judge(a_rule(), DOCUMENT).evidence_chunk_id == "c001"
+
+
+def test_an_unresolvable_locator_is_dropped(judge, reply):
+    """When neither the reported id nor the quote can be placed, emit nothing. A locator that does
+    not resolve is worse than no locator — it looks checkable and is not."""
+    reply(_json(evidence_chunk_id="c999", evidence_quote="text that appears in no excerpt"))
+    assert judge.judge(a_rule(), DOCUMENT).evidence_chunk_id is None
+
+
+def test_an_over_long_quote_is_truncated(judge, reply):
+    reply(_json(evidence_quote="x" * 5000))
+    quote = judge.judge(a_rule(), DOCUMENT).evidence_quote
+    assert quote is not None and len(quote) <= 300
+
+
+def test_a_bad_confidence_value_falls_back_to_medium(judge, reply):
+    reply(_json(confidence="extremely"))
+    assert judge.judge(a_rule(), DOCUMENT).confidence == "medium"
+
+
+# --- rules the documentation cannot answer -------------------------------------------------------
+def test_a_process_obligation_is_not_applicable_and_costs_no_call(monkeypatch):
+    """Art. 17's quality management system is not visible in a technical file. Judging it would
+    mean retrieving four unrelated paragraphs and inviting a false PASS — so it never reaches the
+    model at all. If it did, the stub-free litellm import here would blow up."""
+    j = LLMJudge(model="stub/model")
+    rule = a_rule("AIA-PO-A17", check_type=CheckType.PRESENCE, document_verifiable=False)
+    result = j.judge(rule, DOCUMENT)
+    assert result.verdict == Verdict.NOT_APPLICABLE
+    assert result.hits == ()
+
+
+# --- the prompt carries what the rule says it needs ----------------------------------------------
+def test_the_prompt_states_the_check_type_rubric(judge):
+    """CheckType exists so a PRESENCE obligation is not judged by a SUBSTANCE rubric. Art. 12 is
+    satisfied by a described capability; demanding metrics there invents a finding."""
+    presence = judge._user_content(a_rule(check_type=CheckType.PRESENCE), (a_hit(),))
+    substance = judge._user_content(a_rule(check_type=CheckType.SUBSTANCE), (a_hit(),))
+    assert "PRESENCE check" in str(presence)
+    assert "SUBSTANCE check" in str(substance)
+    assert "Do not demand metrics" in str(presence)
+
+
+def test_the_prompt_warns_that_rank_is_not_evidence(judge):
+    """The measured trap: a hollow restatement of an obligation scores CLOSER to it than the real
+    section does, in 5 of 7 dev cases. A judge that reads rank as relevance inherits that error."""
+    prompt = str(judge._user_content(a_rule(), (a_hit(),)))
+    assert "rank is not evidence" in prompt
+    assert "may be unrelated" in prompt
+
+
+def test_the_prompt_carries_the_enacted_text_verbatim(judge):
+    rule = a_rule()
+    assert rule.requirement in str(judge._user_content(rule, (a_hit(),)))
+
+
+# --- the Checker protocol ------------------------------------------------------------------------
+def test_check_returns_only_a_verdict(judge, reply):
+    """`check` is the eval runner's interface, so the judge can be scored against the keyword
+    baseline before any graph exists."""
+    reply(_json(verdict="inadequate", reasoning="asserted, not evidenced"))
+    assert judge.check(a_rule(), DOCUMENT) == Verdict.INADEQUATE
+
+
+def test_the_index_is_built_once_per_document(monkeypatch, reply):
+    """The eval asks 7 rules of each document. Re-embedding per question would be 133 indexings
+    instead of 19, for identical results."""
+    built: list[str] = []
+    monkeypatch.setattr(
+        "aiact.gap.judge.DocumentIndex",
+        types.SimpleNamespace(build=lambda text: built.append(text) or a_fake_index()),
+    )
+    monkeypatch.setattr("aiact.gap.judge.find_evidence", lambda index, rule, k: [a_hit()])
+    reply(_json())
+    j = LLMJudge(model="stub/model")
+    for _ in range(5):
+        j.judge(a_rule(), DOCUMENT)
+    j.judge(a_rule(), DOCUMENT + "\n\nedited")
+    assert len(built) == 2, "one index per distinct document, not per question"
+
+
+# --- misc ----------------------------------------------------------------------------------------
+def test_a_fenced_reply_is_unwrapped():
+    """`response_format=json_object` is advisory on several providers; json.loads then dies on the
+    first backtick."""
+    assert json.loads(_unfence('```json\n{"verdict": "pass"}\n```')) == {"verdict": "pass"}
+
+
+def test_judgement_defaults_to_no_hits():
+    j = Judgement(Verdict.PASS, "fine", None, None, "high")
+    assert j.hits == ()
+
+
+def test_the_prompt_lists_every_section_of_the_document(judge):
+    """THE FIX FOR THE GAP FAILURES. Shown only excerpts, the judge cannot tell "not retrieved"
+    from "not present", so it hedged every absence into INADEQUATE — its own reasoning said as much
+    ("the excerpts do not contain the actual description, only a pointer to it"). Nine of eleven
+    GAP cases failed that way, two of them all the way to PASS.
+
+    With the outline it can follow a cross-reference the way a reviewer does: a file claiming
+    "oversight measures are described in §7" when no §7 exists is pointing at nothing."""
+    hits = (a_hit("c001"), a_hit("c002", "Logging is described in section 6."))
+    index = a_fake_index(*hits)
+    prompt = str(judge._user_content(a_rule(), hits, outline(index)))
+    assert "Complete list of sections in this document" in prompt
+    assert "Doc > Human oversight" in prompt
+    assert "points at a section that is NOT in the list above" in prompt
+
+
+def test_the_outline_is_ordered_and_deduplicated():
+    """Several chunks share a section; the reader needs a table of contents, not a tally."""
+    index = a_fake_index(
+        a_hit("c001"),
+        a_hit("c002"),  # same heading_path as c001
+        Hit(
+            chunk=Chunk("c003", "Metrics.", "Doc > Accuracy", 0, 8),
+            distance=1.0,
+        ),
+    )
+    assert outline(index) == ("Doc > Human oversight", "Doc > Accuracy")

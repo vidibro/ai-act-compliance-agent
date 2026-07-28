@@ -34,7 +34,7 @@ validated on. Both are analysed as foreseeable misuse and mitigated: the API ref
 outside validated families, and no auto-reject endpoint is exposed.
 
 **Post-market monitoring input.** Risk estimates are re-evaluated against field data from the
-post-market monitoring system (see §8): monthly selection-rate monitoring per protected group,
+post-market monitoring system (see §10): monthly selection-rate monitoring per protected group,
 recruiter override rates, and reported incidents feed the next risk review.
 
 **Adopted measures.** (a) Proxy features removed at feature-selection stage and re-tested; (b)
@@ -43,8 +43,8 @@ only with sub-score explanations to counter automation bias; (d) recruiter train
 supplied to deployers under Art. 13.
 
 **Residual risk.** Residual adverse-impact risk after mitigation is judged acceptable: measured
-selection-rate ratio 0.94 (see §7), with per-release re-testing. Residual automation-bias risk is
-carried and addressed through oversight measures in §6.
+selection-rate ratio 0.94 (see §8), with per-release re-testing. Residual automation-bias risk is
+carried and addressed through oversight measures in §7.
 ## 3. Data and data governance
 
 TalentRank is trained on a large, high-quality dataset of historical applications. We apply
@@ -59,9 +59,9 @@ before placing on the market and kept up to date at each release.
   versions).
 - **Detailed description of elements and development process** — §5 (architecture, training
   methodology), Annex A (model card, feature list).
-- **Monitoring, functioning and control** — §6 (oversight), §7 (performance), §8 (post-market
+- **Monitoring, functioning and control** — §7 (oversight), §8 (performance), §10 (post-market
   monitoring plan), including known limitations and expected input data.
-- **Performance metrics** — §7, with accuracy, robustness and fairness figures per requisition
+- **Performance metrics** — §8, with accuracy, robustness and fairness figures per requisition
   family.
 - **Risk management system** — §2.
 - **Changes over the lifecycle** — Annex B (change log, retraining triggers, versioning policy).

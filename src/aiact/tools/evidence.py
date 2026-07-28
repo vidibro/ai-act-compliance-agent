@@ -23,12 +23,25 @@ from __future__ import annotations
 from aiact.retrieval.store import DocumentIndex, Hit
 from aiact.schemas.policy import PolicyRule
 
-DEFAULT_K = 4
+DEFAULT_K = 10
 """How many passages to put in front of the judge.
 
-Not tuned — chosen because the corpus answers most obligations in one or two sections, and a couple
-of spare slots let the judge see that the runners-up are unrelated. That last part matters: seeing
-weak neighbours is evidence of absence in a way that a single confident-looking top hit is not.
+**k is a function of chunk size, and forgetting that cost a whole eval run.** It was 4, chosen when
+chunks were capped at 1200 characters — four passages then covered ~32% of a technical file, enough
+to see a section whole. Moving to a 128-token budget cut the average chunk to ~330 characters, so
+the same k=4 showed **10%** of the document, usually a single section fragment. Nothing announced
+this: the chunking change was measured on how much text got EMBEDDED, and silently changed how much
+text got JUDGED.
+
+The damage was specific and predictable in hindsight. A judge shown the opening of a risk-management
+section but not the mitigation measures three chunks later sees a process with nothing behind it —
+and correctly, on that evidence, calls it INADEQUATE. False findings against compliant
+documentation: on the pristine (fully compliant) dev document, k=4 passed **3 of 7** obligations.
+At k=10 it passes **7 of 7**, for ~15% more tokens. k=14 adds cost and changes nothing.
+
+So 10 restores the evidence volume k=4 used to provide (~25% of the document), and the general rule
+is what to remember: **shrink the chunk, raise k, or the judge starves.** Tuned on dev; the held-out
+set has not been run.
 """
 
 

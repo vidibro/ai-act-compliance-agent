@@ -59,9 +59,9 @@ before placing on the market and kept up to date at each release.
   versions).
 - **Detailed description of elements and development process** — §5 (architecture, training
   methodology), Annex A (model card, feature list).
-- **Monitoring, functioning and control** — §6 (oversight), §7 (performance), §8 (post-market
+- **Monitoring, functioning and control** — §7 (oversight), §8 (performance), §10 (post-market
   monitoring plan), including known limitations and expected input data.
-- **Performance metrics** — §7, with accuracy, robustness and fairness figures per requisition
+- **Performance metrics** — §8, with accuracy, robustness and fairness figures per requisition
   family.
 - **Risk management system** — §2.
 - **Changes over the lifecycle** — Annex B (change log, retraining triggers, versioning policy).

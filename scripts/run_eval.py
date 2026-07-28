@@ -3,8 +3,14 @@
 
     python scripts/run_eval.py
 
-Today the only checker is the keyword baseline — the strawman. Its scorecard is the target the
-real agent has to beat, and the shape of its failure is the project's thesis stated as data.
+Two checkers:
+
+    python scripts/run_eval.py                  # keyword baseline — the strawman, free and offline
+    python scripts/run_eval.py --checker judge   # the LLM judge — COSTS MONEY, one call per rule
+
+The baseline's scorecard is the target the real agent has to beat, and the shape of its failure is
+the project's thesis stated as data: 88.0% overall, 0 of 6 on INADEQUATE. Always read the judge's
+number against that breakdown, never against the aggregate alone.
 """
 
 from __future__ import annotations
@@ -17,10 +23,14 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 
+from dotenv import load_dotenv  # noqa: E402
+
 from aiact.eval.baseline import KeywordBaseline  # noqa: E402
-from aiact.eval.runner import report, run  # noqa: E402
+from aiact.eval.runner import Checker, report, run  # noqa: E402
+from aiact.gap.judge import LLMJudge  # noqa: E402
 from aiact.policy_loader import articles_dir_for, load_policy_spec  # noqa: E402
 from aiact.schemas.eval import GoldenSet  # noqa: E402
+from aiact.tracing import trace_run  # noqa: E402
 
 _TITLE = re.compile(r"^title:\s*(.*)$", re.M)
 
@@ -43,6 +53,14 @@ def main() -> None:
     ap.add_argument("--golden", type=Path, default=Path("data/golden_set/golden_set.json"))
     ap.add_argument("--spec", type=Path, default=Path("data/policy/spec.yaml"))
     ap.add_argument("--articles-root", type=Path, default=None)
+    ap.add_argument(
+        "--checker",
+        choices=["baseline", "judge"],
+        default="baseline",
+        help="`baseline` is the free keyword strawman. `judge` runs the LLM checker: one API call "
+        "per (case, rule), so a full dev run is ~133 calls and costs real money.",
+    )
+    ap.add_argument("--model", default=None, help="override the judge's model (LiteLLM string)")
     ap.add_argument(
         "--split",
         choices=["dev", "test", "all"],
@@ -74,10 +92,20 @@ def main() -> None:
         spec_version=golden.spec_version,
         cases=cases,
     )
-    checker = KeywordBaseline(article_titles(spec, args.articles_root))
-    results = run(checker, scored, spec)
+    if args.checker == "judge":
+        load_dotenv()  # the CLI boundary owns .env; the library stays free of it
+        checker: Checker = LLMJudge(model=args.model)
+        print(f"checker: {checker.name} ({checker.model}) — {len(cases) * 7} calls, be patient\n")
+    else:
+        checker = KeywordBaseline(article_titles(spec, args.articles_root))
+
+    with trace_run(f"gap-eval:{args.checker}", session_id=golden.system_id):
+        results = run(checker, scored, spec)
+
     label = f"{checker.name}  [split={args.split}]"
     print(report(label, results))
+    if isinstance(checker, LLMJudge):
+        print(f"\n{checker.usage.summary(checker.model)}")
     if args.split != "test":
         print("\n(reminder: this is not a reportable score — only split=test is.)")
 

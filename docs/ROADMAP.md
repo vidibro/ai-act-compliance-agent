@@ -340,7 +340,26 @@ Then the number that matters. Top-hit cosine distance, pristine vs each ablation
 
 **So similarity is anti-correlated with compliance on exactly the class the project exists to detect.** Any threshold on distance would rank empty assurances above genuine evidence — the strawman's failure mode with better maths. It settles a design question rather than raising one: distance is context for a judge, never a verdict, and the checker must read the passages. Report this table next to the keyword baseline's 0-of-6; together they are the argument for the architecture.
 
-Next: the judge — per-rule verdict from (enacted text + retrieved evidence), then wire it as a `Checker` into the existing runner so it scores against the strawman's 88.0% / 0-of-6 INADEQUATE.
+**The judge is built** (`src/aiact/gap/judge.py`, 26 tests) and wired into the runner as a `Checker`: `python scripts/run_eval.py --checker judge`. Per-rule rubrics come from `CheckType`, so a PRESENCE obligation is not judged by a SUBSTANCE standard — which is what the Art. 12 `expect: pass` probe exists to catch.
+
+**Dev, 2026-07-27, Haiku 4.5, k=10 — 133 judgements, $0.48:**
+
+| | strawman | judge |
+|---|---|---|
+| **INADEQUATE detection** | **0 / 6** | **6 / 6** |
+| `present_but_inadequate` | 14.3% | **100%** |
+| false positives (115 intact) | 100% | **100%** |
+| `removed` | 14.3% | 14.3% |
+| `distractor` | 0% | 25% |
+| overall | 88.0% | 93.2% |
+
+The headline is the first row: the distinction the project exists to make, which word-matching cannot make at all, is made 6 times out of 6 — **without** paying for it in false alarms. That combination is the claim; either half alone is cheap.
+
+**`k` is a function of chunk size, and forgetting that cost a full run.** The first attempt scored **45.1%** — worse than the strawman — emitting INADEQUATE 79 times in 133. Not bad judgement: starvation. `k=4` was chosen when chunks were 1200 characters and showed ~32% of a file; the 128-token budget cut the average chunk to ~330 characters, so the same k showed **10%**. A judge shown a risk section's opening but not its mitigations three chunks later sees a process with nothing behind it and correctly calls it hollow. On the pristine compliant document, k=4 passed 3/7; k=10 passes 7/7 for 15% more tokens. **The chunking change was measured on what got EMBEDDED and silently changed what got JUDGED** — exactly the false-positive mechanism predicted in M4c, arriving from the direction nobody was watching.
+
+**Remaining weakness: GAP.** `removed` 1/7 and `distractor` 1/4, unchanged by k (identical at k=4 and k=10, so this is not an evidence-volume problem). Both fail as `gap → inadequate` and, worse, `gap → pass`. The likely cause is the corpus doing what the roadmap already warned it does: a realistic technical file cross-references itself, so deleting §7 leaves "oversight measures are described in §7" standing elsewhere, and a pointer to nothing reads as an empty assertion rather than an absence. `gap → pass` is the dangerous one — a false clearance — and is what to attack next.
+
+**Cost note:** the cache marker is sent and ignored on every call; the stable prefix is below Haiku's 4,096-token minimum. Real, but small next to the win from fixing k.
 
 **DoD:** Layer-2 ablation docs run → findings with citations; `untouched` requirements come back `pass` (false-positive control).
 

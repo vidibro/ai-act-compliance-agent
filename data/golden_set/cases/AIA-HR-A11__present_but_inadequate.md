@@ -34,7 +34,7 @@ validated on. Both are analysed as foreseeable misuse and mitigated: the API ref
 outside validated families, and no auto-reject endpoint is exposed.
 
 **Post-market monitoring input.** Risk estimates are re-evaluated against field data from the
-post-market monitoring system (see §8): monthly selection-rate monitoring per protected group,
+post-market monitoring system (see §10): monthly selection-rate monitoring per protected group,
 recruiter override rates, and reported incidents feed the next risk review.
 
 **Adopted measures.** (a) Proxy features removed at feature-selection stage and re-tested; (b)
@@ -43,8 +43,8 @@ only with sub-score explanations to counter automation bias; (d) recruiter train
 supplied to deployers under Art. 13.
 
 **Residual risk.** Residual adverse-impact risk after mitigation is judged acceptable: measured
-selection-rate ratio 0.94 (see §7), with per-release re-testing. Residual automation-bias risk is
-carried and addressed through oversight measures in §6.
+selection-rate ratio 0.94 (see §8), with per-release re-testing. Residual automation-bias risk is
+carried and addressed through oversight measures in §7.
 ## 3. Data and data governance
 
 **Design choices.** Training data comprises 412,000 historical application–outcome pairs from 38
