@@ -17,7 +17,8 @@ Use these figures to compare runs and catch order-of-magnitude surprises, not to
 
 from __future__ import annotations
 
-from dataclasses import dataclass
+import threading
+from dataclasses import dataclass, field
 from typing import Any
 
 PRICES_AS_OF = "2026-07-21"
@@ -52,6 +53,9 @@ PRICES: dict[str, ModelPrice] = {
     "gemini-3.1-pro": ModelPrice(2.00, 12.00, note="rises to $4/$18 above 200K context"),
     "gemini-3.5-flash": ModelPrice(1.50, 9.00),
     "gemini-3-flash": ModelPrice(0.50, 3.00),
+    "gemini-2.5-pro": ModelPrice(1.25, 10.00, 0.31, note="$2.50/$15 above 200K context"),
+    "gemini-2.5-flash": ModelPrice(0.30, 2.50, 0.075),
+    "gemini-2.5-flash-lite": ModelPrice(0.10, 0.40, 0.025),
     # Mistral
     "mistral-large-3": ModelPrice(0.50, 1.50),
     "mistral-medium-3": ModelPrice(0.40, 2.00),
@@ -88,9 +92,18 @@ class Usage:
     """Responses that carried no usage block — counted so a partial tally
     cannot pass itself off as a complete one."""
 
+    _lock: Any = field(default_factory=threading.Lock, repr=False, compare=False)
+    """The eval runs judgements on a thread pool and every one of them lands here. `+=` on an int
+    is read-modify-write, so without this the token counts quietly under-report — and a cost figure
+    that is wrong in the cheap direction is worse than none."""
+
     def record(self, response: Any, cache_marked: bool = False) -> None:
         """Pull whatever the provider reported off a LiteLLM response. Defensive throughout:
         a missing usage block must not crash a classification run."""
+        with self._lock:
+            self._record(response, cache_marked)
+
+    def _record(self, response: Any, cache_marked: bool = False) -> None:
         self.calls += 1
         self.cache_marked_calls += int(cache_marked)
         usage = getattr(response, "usage", None)
