@@ -62,6 +62,13 @@ def main() -> None:
     )
     ap.add_argument("--model", default=None, help="override the judge's model (LiteLLM string)")
     ap.add_argument(
+        "--workers",
+        type=int,
+        default=8,
+        help="concurrent judgements (LLM checker only). The calls are independent; running them "
+        "one at a time turned a 5-minute job into 35.",
+    )
+    ap.add_argument(
         "--split",
         choices=["dev", "test", "all"],
         default="dev",
@@ -99,8 +106,9 @@ def main() -> None:
     else:
         checker = KeywordBaseline(article_titles(spec, args.articles_root))
 
+    workers = args.workers if args.checker == "judge" else 1
     with trace_run(f"gap-eval:{args.checker}", session_id=golden.system_id):
-        results = run(checker, scored, spec)
+        results = run(checker, scored, spec, max_workers=workers, progress=args.checker == "judge")
 
     label = f"{checker.name}  [split={args.split}]"
     print(report(label, results))

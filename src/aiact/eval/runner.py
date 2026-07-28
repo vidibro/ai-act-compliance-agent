@@ -17,7 +17,9 @@ one without the breakdown.
 
 from __future__ import annotations
 
+import sys
 from collections import defaultdict
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from typing import Protocol
 
 from aiact.schemas.enums import Verdict
@@ -49,16 +51,68 @@ class Result:
         return self.case.ablation
 
 
-def run(checker: Checker, golden: GoldenSet, spec: PolicySpec) -> list[Result]:
+def run(
+    checker: Checker,
+    golden: GoldenSet,
+    spec: PolicySpec,
+    max_workers: int = 1,
+    progress: bool = False,
+) -> list[Result]:
+    """Score `checker` over every (case, rule) pair.
+
+    `max_workers` > 1 runs the judgements concurrently. They are independent by construction — one
+    rule against one document, no shared state and no ordering — so the only thing sequencing buys
+    is a slow run: 133 LLM calls at ~15s each is over half an hour of doing nothing in particular.
+    Threads (not processes) because the work is entirely waiting on HTTP.
+
+    Results are re-sorted into the input order afterwards, so a concurrent run and a sequential run
+    produce the same list. A scorecard that depended on scheduling would be indefensible.
+
+    `progress` writes to stderr, not stdout: a long run with no output is indistinguishable from a
+    hung one, and that ambiguity cost half an hour of watching nothing happen.
+    """
     rules = {r.rule_id: r for r in spec.rules}
-    results: list[Result] = []
-    for case in golden.cases:
-        for rule_id, expected in case.expected.items():
-            got = checker.check(rules[rule_id], case.raw_text)
-            results.append(
-                Result(case, rule_id, expected, got, is_ablated=rule_id == case.ablated_rule_id)
-            )
-    return results
+    jobs = [
+        (index, case, rule_id, expected)
+        for index, (case, rule_id, expected) in enumerate(
+            (case, rule_id, expected)
+            for case in golden.cases
+            for rule_id, expected in case.expected.items()
+        )
+    ]
+
+    done = 0
+
+    def judge_one(job: tuple[int, GoldenCase, str, Verdict]) -> tuple[int, Result]:
+        index, case, rule_id, expected = job
+        got = checker.check(rules[rule_id], case.raw_text)
+        ablated = rule_id == case.ablated_rule_id
+        return index, Result(case, rule_id, expected, got, is_ablated=ablated)
+
+    def tick(result: Result) -> None:
+        nonlocal done
+        done += 1
+        if progress:
+            mark = "." if result.correct else "x"
+            end = f" {done}/{len(jobs)}\n" if done % 40 == 0 or done == len(jobs) else ""
+            print(f"{mark}{end}", end="", file=sys.stderr, flush=True)
+
+    if max_workers <= 1:
+        collected = []
+        for job in jobs:
+            index, result = judge_one(job)
+            tick(result)
+            collected.append((index, result))
+    else:
+        with ThreadPoolExecutor(max_workers=max_workers) as pool:
+            futures = [pool.submit(judge_one, job) for job in jobs]
+            collected = []
+            for future in as_completed(futures):
+                index, result = future.result()
+                tick(result)
+                collected.append((index, result))
+
+    return [result for _, result in sorted(collected, key=lambda pair: pair[0])]
 
 
 def _pct(n: int, d: int) -> str:
