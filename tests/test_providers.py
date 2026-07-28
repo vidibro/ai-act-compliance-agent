@@ -314,3 +314,71 @@ def test_cache_marking_is_reported_through_the_brain(monkeypatch):
     brain.decide(a_question("ANNEX III " * 4000), "a system")
     assert brain.usage.cache_marked_calls == 1
     assert brain.usage.cache_was_ignored is True, "provider reported no cache activity"
+
+
+# ==================================================================================================
+# Reasoning depth: the portable "off", and the per-job split
+# ==================================================================================================
+def test_no_thinking_is_translated_per_vendor_never_passed_through():
+    """MEASURED best setting for the judge is "no thinking" — and it is the least portable value
+    there is. Gemini spells it `disable`; Anthropic's adaptive models have no off switch and want
+    `thinking` omitted entirely; OpenAI's reasoning family cannot be disabled at all. Passing the
+    literal through would 400 on one vendor and silently mean nothing on another."""
+    from aiact.providers import NO_THINKING, profile_for
+
+    gemini = profile_for("litellm_proxy/gemini-2.5-flash", NO_THINKING)
+    assert gemini.completion_kwargs["reasoning_effort"] == "disable"
+
+    # Anthropic adaptive: absence IS off, so the whole thinking block goes.
+    adaptive = profile_for("anthropic/claude-sonnet-5", NO_THINKING)
+    assert "thinking" not in adaptive.completion_kwargs
+    assert "output_config" not in adaptive.completion_kwargs
+
+    # OpenAI reasoning: cannot be turned off; clamp to the nearest honest value rather than error.
+    openai = profile_for("openai/gpt-5.6-sol", NO_THINKING)
+    assert openai.completion_kwargs["reasoning_effort"] == "low"
+
+    # No profile may ever emit the portable token itself.
+    for model in (
+        "litellm_proxy/gemini-2.5-flash",
+        "anthropic/claude-sonnet-5",
+        "anthropic/claude-haiku-4-5",
+        "openai/gpt-5.6-sol",
+        "mistral/mistral-large-3",
+    ):
+        assert NO_THINKING not in str(profile_for(model, NO_THINKING).completion_kwargs)
+
+
+def test_a_gateway_prefix_does_not_hide_the_vendor():
+    """Routing through a LiteLLM proxy replaces the vendor in the model string. Without seeing
+    through it, `litellm_proxy/gemini-2.5-flash` resolves to the UNVERIFIED generic profile: the
+    call still succeeds, just without the vendor's parameters, and nothing says so."""
+    from aiact.providers import profile_for, vendor_behind
+
+    assert vendor_behind("litellm_proxy/gemini-2.5-flash") == ("gemini", "gemini-2.5-flash")
+    direct = profile_for("gemini/gemini-2.5-flash", "low")
+    proxied = profile_for("litellm_proxy/gemini-2.5-flash", "low")
+    assert proxied.profile_id == direct.profile_id
+    assert proxied.completion_kwargs == direct.completion_kwargs
+    assert proxied.verified, "a proxied model must not fall back to the unverified profile"
+
+
+def test_effort_is_per_job_with_a_shared_fallback(monkeypatch):
+    """The two jobs measured in opposite directions: the judge is best with reasoning OFF (5/6 vs
+    1/6 on INADEQUATE, and cheaper), while the classifier has never been measured across levels.
+    One shared setting would force a guess on whichever job was not being tuned."""
+    from aiact.config import Settings
+
+    # Settings reads the developer's real .env FILE, not just the process environment, so
+    # monkeypatch.delenv is not enough — `_env_file=None` is what actually isolates this. Without
+    # it the test passes or fails depending on whose machine it runs on.
+    for key in ("AIACT_LLM_EFFORT", "AIACT_JUDGE_EFFORT", "AIACT_CLASSIFY_EFFORT"):
+        monkeypatch.delenv(key, raising=False)
+
+    shared = Settings(_env_file=None, llm_effort="high")
+    assert shared.effort_for("judge") == "high"
+    assert shared.effort_for("classify") == "high"
+
+    split = Settings(_env_file=None, llm_effort="high", judge_effort="none")
+    assert split.effort_for("judge") == "none"
+    assert split.effort_for("classify") == "high", "overriding one job must not move the other"

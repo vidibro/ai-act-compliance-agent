@@ -8,7 +8,9 @@ Only what the schema layer and near-future layers need is declared here; provide
 from __future__ import annotations
 
 from datetime import date
+from typing import Literal
 
+from pydantic import AliasChoices, Field
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
@@ -25,7 +27,26 @@ class Settings(BaseSettings):
     # depth, and caching, so none of it is hardcoded in the brain.
     llm_model: str = "anthropic/claude-haiku-4-5"
     # Reasoning depth, for providers that expose it. Ignored by profiles that have no such knob.
-    llm_effort: str = "high"
+    #
+    # Portable vocabulary: "high" | "medium" | "low" | "none". Each provider profile translates it
+    # into that vendor's own shape — "none" is NOT passed through as a literal, because it means
+    # different things per vendor and is impossible on some (see providers.py).
+    llm_effort: str = "none"
+
+    # Per-job overrides, because the two jobs measured in opposite directions.
+    classify_effort: str | None = None
+    judge_effort: str | None = None
+
+    def effort_for(self, job: Literal["classify", "judge"]) -> str:
+        """Reasoning depth for one job, falling back to the shared default."""
+        override = self.classify_effort if job == "classify" else self.judge_effort
+        return override or self.llm_effort
+
+    # Optional LiteLLM PROXY in front of the provider. Empty = talk to the vendor directly.
+    llm_api_base: str = Field(
+        default="",
+        validation_alias=AliasChoices("AIACT_LLM_API_BASE", "LITELLM_PROXY_URL"),
+    )
 
     # Vector store (Chroma, local). Retrieval indexes the document being CHECKED, not the law.
     chroma_path: str = "./chroma"

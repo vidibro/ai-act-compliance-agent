@@ -25,7 +25,7 @@ import re
 from typing import TYPE_CHECKING, Any
 
 from aiact.config import get_settings
-from aiact.providers import ProviderProfile, profile_for
+from aiact.providers import ProviderProfile, gateway_kwargs, profile_for
 from aiact.schemas.classification import (
     AbstentionCause,
     ClassificationAnswer,
@@ -199,7 +199,7 @@ class LLMBrain:
         self.model = model or settings.llm_model
         # No sampling/thinking/caching parameters are named in this class — the provider seam owns
         # them, because every one of them is vendor-specific (see providers.py).
-        self.profile = profile or profile_for(self.model, effort or settings.llm_effort)
+        self.profile = profile or profile_for(self.model, effort or settings.effort_for("classify"))
         self.usage = Usage()
 
     def _abstain(
@@ -285,6 +285,7 @@ class LLMBrain:
             ],
             response_format={"type": "json_object"},
             **({"metadata": metadata} if metadata else {}),
+            **gateway_kwargs(),
             **self.profile.completion_kwargs,
         )
         # counted even if we abstain below: a wasted call still costs

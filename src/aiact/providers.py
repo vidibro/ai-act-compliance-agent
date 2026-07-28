@@ -30,6 +30,7 @@ nowhere it would break. Fill one in when you have checked it, not when you assum
 
 from __future__ import annotations
 
+import os
 from dataclasses import dataclass, field
 from typing import Any
 
@@ -118,18 +119,78 @@ def estimate_tokens(text: str) -> int:
     return int(len(text) / _CHARS_PER_TOKEN)
 
 
+# Prefixes that name a GATEWAY rather than a vendor. Routing through a LiteLLM proxy replaces the
+# vendor in the model string, so `litellm_proxy/gemini-2.5-flash` would resolve to the unverified
+# generic profile — the request would still succeed, just without Gemini's reasoning parameter, and
+# nothing would say so. A silent downgrade is exactly what this module exists to prevent, so the
+# gateway prefix is stripped and the vendor inferred from the model name behind it.
+_GATEWAYS = ("litellm_proxy", "openai_like", "custom_openai")
+
+# The portable value for "do not think at all". It must NEVER be passed to a provider verbatim:
+#   - Gemini spells it `reasoning_effort="disable"` (thinking_budget=0);
+#   - Anthropic's adaptive models have no "off" switch in `output_config` — you omit `thinking`;
+#   - Anthropic's legacy models and Mistral have no knob at all, so it is already off;
+#   - OpenAI's reasoning family CANNOT be turned off — the nearest honest thing is "low".
+# Callers ask for NO_THINKING and each profile answers in its own dialect. That translation is the
+# entire reason this module exists, and it matters here because the measured best setting for the
+# judge is "off" — a value that would 400 on one vendor and silently mean nothing on another.
+NO_THINKING = "none"
+
+# Model-name prefix -> vendor, for resolving through a gateway. Only needed where the branches
+# below key on the PROVIDER; `claude-` is already matched by name alone.
+_VENDOR_BY_NAME = (
+    ("gemini", "gemini"),
+    ("gpt-", "openai"),
+    ("o1", "openai"),
+    ("o3", "openai"),
+    ("o4", "openai"),
+    ("mistral", "mistral"),
+    ("magistral", "mistral"),
+)
+
+
+def gateway_kwargs() -> dict[str, str]:
+    """`api_base`/`api_key` for the configured LiteLLM proxy — {} when talking to a vendor direct.
+
+    The key is read from the environment on EVERY call and never stored on Settings. Settings is a
+    long-lived, cacheable object; a secret on it outlives the request that needed it, leaks into
+    any repr of the config, and is the exact thing SECURITY.md promises BYOK will not do. Cheap to
+    honour now, expensive to retrofit later.
+    """
+    from aiact.config import get_settings
+
+    base = get_settings().llm_api_base
+    if not base:
+        return {}
+    key = os.environ.get("LITELLM_PROXY_API_KEY", "")
+    return {"api_base": base.rstrip("/"), **({"api_key": key} if key else {})}
+
+
+def vendor_behind(model: str) -> tuple[str, str]:
+    """Split a LiteLLM model string into (vendor, bare name), seeing through a gateway prefix."""
+    provider, _, name = model.rpartition("/")
+    if provider in _GATEWAYS:
+        provider = next((v for p, v in _VENDOR_BY_NAME if name.startswith(p)), "")
+    return provider, name
+
+
 def profile_for(model: str, effort: str = "high") -> ProviderProfile:
-    """Resolve the request shape for a LiteLLM model string (e.g. 'anthropic/claude-opus-4-8')."""
-    provider, _, bare = model.rpartition("/")
-    name = bare
+    """Resolve the request shape for a LiteLLM model string (e.g. 'anthropic/claude-opus-4-8').
+
+    A gateway prefix is transparent here: `litellm_proxy/gemini-2.5-flash` gets Gemini's profile,
+    because what the request must LOOK like is decided by the model at the far end, not by the hop
+    in front of it.
+    """
+    provider, name = vendor_behind(model)
 
     if any(name.startswith(prefix) for prefix in _ANTHROPIC_ADAPTIVE):
         return ProviderProfile(
             profile_id="anthropic-adaptive",
-            completion_kwargs={
-                "thinking": {"type": "adaptive"},
-                "output_config": {"effort": effort},
-            },
+            completion_kwargs=(
+                {}
+                if effort == NO_THINKING
+                else {"thinking": {"type": "adaptive"}, "output_config": {"effort": effort}}
+            ),
             supports_cache_control=True,
             cache_min_tokens=_anthropic_cache_min(name),
             verified=True,
@@ -156,7 +217,9 @@ def profile_for(model: str, effort: str = "high") -> ProviderProfile:
     if provider == "openai" and any(name.startswith(p) for p in _OPENAI_REASONING):
         return ProviderProfile(
             profile_id="openai-reasoning",
-            completion_kwargs={"reasoning_effort": effort},
+            # There is no "off" on this family; "low" is the nearest honest translation. Clamping
+            # rather than passing NO_THINKING through, which would be a 400.
+            completion_kwargs={"reasoning_effort": "low" if effort == NO_THINKING else effort},
             supports_cache_control=False,
             verified=True,
             notes=(
@@ -178,16 +241,22 @@ def profile_for(model: str, effort: str = "high") -> ProviderProfile:
         )
 
     if provider in ("gemini", "vertex_ai"):
+        tuned_default_temp = name.startswith("gemini-3")
         return ProviderProfile(
-            profile_id="google-gemini",
-            completion_kwargs={"reasoning_effort": effort},
+            profile_id="google-gemini" if tuned_default_temp else "google-gemini-2",
+            completion_kwargs={
+                "reasoning_effort": "disable" if effort == NO_THINKING else effort,
+                **({} if tuned_default_temp else {"temperature": 0.0}),
+            },
             supports_cache_control=False,
             verified=True,
             notes=(
                 "LiteLLM maps reasoning_effort onto Gemini's thinking_level. temperature is "
-                "deliberately omitted: Gemini 3 is tuned around its default and lowering it is "
-                "documented as counter-productive. Caching exists but as a SEPARATE explicit API, "
-                "not an inline marker — nothing to place here."
+                "omitted for Gemini 3 only, which is tuned around its default and where lowering "
+                "it is documented as counter-productive; 2.x gets temperature=0 because an eval "
+                "needs a repeatable answer. Caching is IMPLICIT (observed: 7,888 cached prompt "
+                "tokens through a proxy with no marker sent) — there is no inline breakpoint to "
+                "place, which is why supports_cache_control stays False."
             ),
         )
 

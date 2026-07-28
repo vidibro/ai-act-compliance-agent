@@ -32,11 +32,12 @@ from __future__ import annotations
 
 import json
 import re
+import threading
 from dataclasses import dataclass
 from typing import Any
 
 from aiact.config import get_settings
-from aiact.providers import ProviderProfile, profile_for
+from aiact.providers import ProviderProfile, gateway_kwargs, profile_for
 from aiact.retrieval.store import DocumentIndex, Hit, document_id
 from aiact.schemas.classification import Confidence
 from aiact.schemas.enums import CheckType, Verdict
@@ -207,19 +208,24 @@ class LLMJudge:
     ) -> None:
         settings = get_settings()
         self.model = model or settings.llm_model
-        self.profile = profile or profile_for(self.model, effort or settings.llm_effort)
+        self.profile = profile or profile_for(self.model, effort or settings.effort_for("judge"))
         self.k = k
         self.usage = Usage()
         # One index per document, keyed by content hash. The eval asks 7 rules of each of 19
         # documents; without this, every question would re-embed the whole file — 133 indexings
         # instead of 19, for identical results.
         self._indexes: dict[str, DocumentIndex] = {}
+        # The eval runs judgements concurrently, and several threads reach the same document at
+        # once. Without the lock they each build an index for it — 19 wasted embeddings and a
+        # torn dict — so the FIRST thread builds and the rest wait for it.
+        self._index_lock = threading.Lock()
 
     def index_for(self, document: str) -> DocumentIndex:
         doc_id = document_id(document)
-        if doc_id not in self._indexes:
-            self._indexes[doc_id] = DocumentIndex.build(document)
-        return self._indexes[doc_id]
+        with self._index_lock:
+            if doc_id not in self._indexes:
+                self._indexes[doc_id] = DocumentIndex.build(document)
+            return self._indexes[doc_id]
 
     def _user_content(
         self, rule: PolicyRule, hits: tuple[Hit, ...], outline: tuple[str, ...] = ()
@@ -317,6 +323,7 @@ class LLMJudge:
             response_format={"type": "json_object"},
             num_retries=_NUM_RETRIES,
             **({"metadata": metadata} if metadata else {}),
+            **gateway_kwargs(),
             **self.profile.completion_kwargs,
         )
         self.usage.record(response, cache_marked=isinstance(user_content, list))
