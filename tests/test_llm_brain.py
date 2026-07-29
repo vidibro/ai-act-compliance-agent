@@ -50,7 +50,7 @@ def stub_litellm(monkeypatch):
 # --- the string-"false" trap -------------------------------------------------------------------
 @pytest.mark.parametrize("raw", [False, "false", "False", " FALSE ", "no", "n", "0", 0])
 def test_falsey_answers_are_read_as_false(raw):
-    """THE BUG THIS GUARDS. bool("false") is True in Python, because every non-empty string is
+    """bool("false") is True in Python, because every non-empty string is
     truthy. At the profiling node that inverts the answer and routes the use case to high_risk via
     the Art. 6(3) carve-back — confidently, and wrongly."""
     assert _parse_bool(raw) is False
@@ -105,8 +105,8 @@ def test_unknown_enum_values_abstain_instead_of_crashing(answer_type, raw):
 # --- unusable replies escalate ------------------------------------------------------------------
 @pytest.mark.parametrize("content", [None, "", "   "])
 def test_empty_completion_abstains(stub_litellm, content):
-    """`content` is None when the model produced no text (cut off, refusal, tool call). It used to
-    fall back to "{}", which read as value=None — a real verdict at two of the nodes."""
+    """`content` is None when the model produced no text (cut off, refusal, tool call). It must
+    not fall through to value=None, which is a real verdict at two of the nodes."""
     stub_litellm(content)
     answer = LLMBrain(model="stub/model").decide(a_question("annex_iii", "annex_area"), "a system")
     assert answer.confidence == "low"

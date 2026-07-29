@@ -160,9 +160,8 @@ def test_an_accusation_without_reasoning_is_refused(judge, reply, token):
 
 
 def test_a_bracketed_or_multiple_id_is_still_read(judge, reply):
-    """THE BUG THIS GUARDS, seen on the first live run: the model answered
-    `"[c020], [c023], [c021]"` — bracketed, and three of them. A strict equality check dropped the
-    locator entirely, which is half the value of a finding. Be lenient about form."""
+    """Models answer with bracketed or multiple ids (`"[c020], [c023]"`). A strict equality check
+    would drop the locator, which is half the value of a finding."""
     reply(_json(evidence_chunk_id="[c001], [c007]"))
     assert judge.judge(a_rule(), DOCUMENT).evidence_chunk_id == "c001"
 

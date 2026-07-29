@@ -55,7 +55,7 @@ def capture(monkeypatch):
     ["anthropic/claude-opus-4-8", "anthropic/claude-sonnet-5", "claude-opus-4-7"],
 )
 def test_current_anthropic_models_never_receive_temperature(model, capture):
-    """THE 400 THIS GUARDS. temperature/top_p/top_k are rejected outright by these models — one
+    """temperature/top_p/top_k are rejected outright by these models — one
     stray parameter fails every call in the run."""
     LLMBrain(model=model).decide(a_question(), "a system")
     assert "temperature" not in capture
@@ -267,7 +267,7 @@ def test_missing_usage_block_is_counted_not_ignored(monkeypatch):
 
 
 def test_a_cache_marker_that_was_ignored_is_reported(monkeypatch):
-    """THE BUG THIS GUARDS. We marked a prefix, the provider silently ignored it because the prefix
+    """A marked prefix the provider silently ignores because the prefix
     was under its minimum, and the run reported a clean-looking cost with no hint anything was
     wrong. Reads alone could not distinguish this from "written but not yet read"."""
     from aiact.usage import Usage

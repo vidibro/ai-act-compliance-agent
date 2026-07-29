@@ -100,10 +100,9 @@ class ClassificationEvidence(BaseModel):
     """WHY a use case landed in its risk class, in the two halves that make a verdict auditable:
     the PROVISION that applies, and the WORDS IN THE DOCUMENTATION that made it apply.
 
-    `triggered_by` used to be a bare list of LegalSource — it said which article drove the verdict
-    but not what in the submitted documentation triggered it, so a reader could not check the
-    reasoning against the source text. That is the whole point of the tool, so the evidence travels
-    with the citation rather than being dropped on the way out of the cascade.
+    `triggered_by` pairs each citation with the words that triggered it. A bare list of provisions
+    would say which article drove the verdict but not what in the documentation made it apply,
+    leaving a reader unable to check the reasoning against the source text.
 
     `source` is required and has no default, for the same reason it is on ClassificationAnswer."""
 

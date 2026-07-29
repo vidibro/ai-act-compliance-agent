@@ -1,9 +1,8 @@
 """The judge: decide whether a document satisfies ONE obligation, from retrieved evidence.
 
-This is where the project's central claim is cashed out. A keyword baseline scores 88.0% overall and
-**0 of 6** on INADEQUATE — it cannot make the distinction at all, because matching words cannot tell
-"we ensure human oversight" from three paragraphs of actual oversight measures. The judge exists to
-make that distinction, and the eval exists to say by how much.
+Decides PASS / GAP / INADEQUATE for one obligation. The GAP-vs-INADEQUATE distinction is the
+capability the project is built around: word matching cannot tell "we ensure human oversight" from
+three paragraphs of actual oversight measures.
 
 Shape, mirroring `graph/llm_brain.py`: one narrow question, one small structured answer, parsed and
 constrained. The model is asked ONLY "does this excerpt satisfy this requirement?" — never which
@@ -17,11 +16,9 @@ Three things this file refuses to do, each learned rather than assumed:
     with a confident-looking rank. So the excerpts arrive labelled as SEARCH RESULTS that may be
     irrelevant, and the model is told to say so.
 
-  - **Trust proximity.** Measured on the dev corpus: a hollowed-out section scores CLOSER to the
-    requirement than the compliant section it replaced, in 5 of 7 cases. An empty restatement of an
-    obligation genuinely resembles that obligation more than a page of specifics does. Similarity
-    is therefore anti-correlated with compliance on exactly the class we care about, and the prompt
-    says so outright.
+  - **Trust proximity.** A hollow restatement of an obligation resembles that obligation more
+    closely than a page of specifics does, so similarity is anti-correlated with compliance on
+    exactly the class that matters. The prompt says so outright.
 
   - **Guess when the evidence is thin.** An unreadable or unsure answer becomes NEEDS_REVIEW. For a
     compliance tool a false PASS is the most expensive error available: it tells a provider they are
@@ -280,10 +277,8 @@ class LLMJudge:
             f'"""\n{excerpts}\n"""\n\n'
             f'Answer as JSON with keys: "verdict" (one of "pass", "gap", "inadequate", '
             f'"{UNSURE}"), "reasoning" (one sentence naming what is present or missing), '
-            # A quote is only worth carrying if a human can find it again. Asking for ONE
-            # contiguous span from ONE excerpt is not fussiness: the first live run returned a
-            # quote stitched together from three excerpts with "..." between them, which reads as
-            # verbatim evidence and matches nothing in the document.
+            # One contiguous span from ONE excerpt: a quote stitched across excerpts reads as
+            # verbatim evidence while matching nothing in the document.
             f'"evidence_quote" (ONE contiguous span copied exactly from a SINGLE excerpt, under '
             f"{_EVIDENCE_MAX_LENGTH} characters — not a stitched-together summary, never a quote "
             f"of the enacted text, and null if nothing in the excerpts is responsive), "
@@ -411,14 +406,12 @@ def _resolve_chunk_id(
 
     Two passes, in this order:
 
-      1. Believe the model if what it reported names a real excerpt. Parsing is lenient about FORM
-         because the first live run answered `"[c020], [c023], [c021]"` — bracketed, and three of
-         them. The information was there and a strict equality check threw it away; the locator is
-         half the value of a finding, so it is worth reading what the model meant.
+      1. Believe a reported id that names a real excerpt. Parsing is lenient about FORM, since
+         models answer with brackets and lists (`"[c020], [c023]"`) and a strict equality check
+         would throw away a locator that is half the value of a finding.
 
-      2. Otherwise LOCATE the quote. Whichever excerpt actually contains it is the honest answer,
-         and it beats the model's own bookkeeping — the model is good at judging text and merely
-         adequate at remembering which box it came from.
+      2. Otherwise LOCATE the quote: whichever excerpt contains it. Models judge text well and
+         track which box it came from only adequately.
 
     Returns None when neither works. A locator that does not resolve is worse than no locator: it
     looks checkable and is not.

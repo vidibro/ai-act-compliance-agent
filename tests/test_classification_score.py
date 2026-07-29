@@ -72,7 +72,7 @@ def result(risk: RiskClass, transparency: bool | None, *, answered: bool = True)
 
 # --- the two axes are scored independently ------------------------------------------------------
 def test_right_class_wrong_art50_is_only_half_right():
-    """THE BUG THIS MODULE EXISTS FOR. Before, this run scored 1/1 and looked perfect."""
+    """A run wrong on the Art. 50 axis must not score as perfect."""
     s = score_case(case("c", RiskClass.HIGH_RISK, False), result(RiskClass.HIGH_RISK, True))
     assert s.class_correct is True
     assert s.transparency_correct is False

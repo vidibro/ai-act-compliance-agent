@@ -153,9 +153,8 @@ class ClassificationCase(BaseModel):
     expected_transparency_obligation: bool = False
     """Art. 50 — applies regardless of the risk tier.
 
-    SCOPE, because the field was silent on it and that silence was a real bug (three labels were
-    wrong for months and the runner never scored them): TRUE means **any** Art. 50 obligation
-    attaches to this system, whether it falls on the provider or on the deployer. Art. 50 is titled
+    SCOPE: TRUE means **any** Art. 50 obligation attaches to this system, whether it falls on the
+    provider or on the deployer. Art. 50 is titled
     "Transparency obligations for providers AND deployers" and the paragraphs split by role —
     (1) direct interaction and (2) marking synthetic output bind the PROVIDER; (3) emotion
     recognition / biometric categorisation and (4) deep fakes bind the DEPLOYER. A provider report

@@ -100,10 +100,9 @@ def test_every_chunk_fits_the_embedding_window(path: Path):
     """The whole reason the budget is counted in tokens rather than characters.
 
     all-MiniLM-L6-v2 truncates at 128 tokens, configured in its own tokenizer.json. Text past that
-    is dropped when the vector is computed — silently: no error, and the chunk simply cannot be
-    found by whatever its tail said. The history: a 1200-character cap embedded 23% of chunks whole,
-    500 reached 79%, and no character constant could do better, because chars-per-token swings from
-    2.16 to 10.9 across this corpus. Counting tokens is the only way this assertion can say EVERY.
+    is dropped when the vector is computed, silently, so the chunk cannot be found by whatever its
+    tail said. Chars-per-token swings from 2.16 to 10.9 across this corpus, which is why no
+    character cap can make this assertion say EVERY.
     """
     count, exact = default_token_counter()
     if not exact:
@@ -146,9 +145,8 @@ def test_a_custom_counter_is_honoured():
 
 
 def test_an_overlong_paragraph_is_split_between_sentences():
-    """Paragraphs were once indivisible. That stopped being defensible at a 128-token window: an
-    indivisible dense paragraph is not slightly over budget, it is mostly invisible to search.
-    Sentences still may not be cut — a verdict quoting half a sentence is its own failure."""
+    """An indivisible dense paragraph is mostly invisible to search, so it must be split — but
+    never mid-sentence: a verdict quoting half a sentence is its own failure."""
     long_para = " ".join(f"Sentence number {i} states a concrete measure." for i in range(40))
     text = f"# Doc\n\n## Section\n\n{long_para}\n"
     chunks = chunk_document(text)

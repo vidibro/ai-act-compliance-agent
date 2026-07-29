@@ -83,8 +83,7 @@ def default_token_counter() -> tuple[TokenCounter, bool]:
     refuses elsewhere.
 
     Truncation and padding are switched off: both are fixed at 128 in the shipped config, so leaving
-    them on makes every string measure exactly 128 tokens and the budget becomes meaningless. That
-    is not hypothetical — it silently corrupted the first measurement taken here.
+    them on makes every string measure exactly 128 tokens and the budget meaningless.
     """
     try:
         from tokenizers import Tokenizer

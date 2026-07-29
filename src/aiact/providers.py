@@ -16,11 +16,11 @@ Putting any of that directly in LLMBrain would hardcode one vendor's request sha
 whose whole point is that the model is config, not code. So it lives here, keyed by model, and the
 brain just splats whatever it is handed.
 
-THE TRAP THIS MODULE EXISTS FOR: LiteLLM DOES normalise `reasoning_effort` across OpenAI, Gemini
-and Mistral — but for Anthropic it translates it into `thinking={"type": "enabled",
-"budget_tokens": N}`, which is exactly the shape Anthropic's current models REJECT with a 400. So
-the one parameter that looks portable is the one that must never be used uniformly. Anthropic gets
-`thinking={"type": "adaptive"}` written out explicitly; everyone else gets `reasoning_effort`.
+The parameter that looks most portable is the one that must never be sent uniformly: LiteLLM does
+normalise `reasoning_effort` across OpenAI, Gemini and Mistral, but for Anthropic it translates to
+`thinking={"type": "enabled", "budget_tokens": N}` — the shape Anthropic's current models reject
+with a 400. Anthropic gets `thinking={"type": "adaptive"}` explicitly; everyone else gets
+`reasoning_effort`.
 
 `verified` is deliberate: a profile is only True once its parameter shape has been checked against
 that provider's current documentation. An unverified profile is the conservative fallback — plain
@@ -98,16 +98,14 @@ class ProviderProfile:
         ignored at zero cost — no error, no write, no charge — whereas skipping a marker that WOULD
         have qualified silently loses the saving. The asymmetry says: always try where the provider
         supports it, and let the usage counters report what actually happened. `cache_min_tokens`
-        is kept for diagnosis, not for gating; an estimate is not a good enough reason to opt out
-        of a saving (ours was wrong by 19% and cost us exactly that)."""
+        is kept for diagnosis, not for gating: an estimate is not a good enough reason to opt out
+        of a saving."""
         return self.supports_cache_control and bool(text)
 
 
-# MEASURED against this corpus, not assumed: 17,589 chars of Article 3 came back as 3,800 prompt
-# tokens from Anthropic. The earlier 4.0 guess over-counted by ~19% — enough to convince us a
-# prefix cleared a 4096-token minimum when it did not, so every cache marker we emitted was
-# silently ignored. Statutory text compresses well (heavy repeated boilerplate), the opposite of
-# the intuition that dense numbering tokenises badly.
+# Measured against this corpus rather than assumed. Statutory text compresses well — heavy repeated
+# boilerplate — the opposite of the intuition that dense numbering tokenises badly. An over-estimate
+# here reads as clearing a provider's cache minimum when it does not, so caching silently stops.
 _CHARS_PER_TOKEN = 4.75
 
 
@@ -119,21 +117,17 @@ def estimate_tokens(text: str) -> int:
     return int(len(text) / _CHARS_PER_TOKEN)
 
 
-# Prefixes that name a GATEWAY rather than a vendor. Routing through a LiteLLM proxy replaces the
-# vendor in the model string, so `litellm_proxy/gemini-2.5-flash` would resolve to the unverified
-# generic profile — the request would still succeed, just without Gemini's reasoning parameter, and
-# nothing would say so. A silent downgrade is exactly what this module exists to prevent, so the
-# gateway prefix is stripped and the vendor inferred from the model name behind it.
+# Prefixes naming a GATEWAY rather than a vendor. A proxy replaces the vendor in the model string,
+# so the prefix is stripped and the vendor inferred from the name behind it — otherwise a proxied
+# model resolves to the generic profile and loses its parameters with no error.
 _GATEWAYS = ("litellm_proxy", "openai_like", "custom_openai")
 
-# The portable value for "do not think at all". It must NEVER be passed to a provider verbatim:
+# The portable value for "do not think at all". NEVER passed to a provider verbatim — it would 400
+# on one vendor and mean nothing on another:
 #   - Gemini spells it `reasoning_effort="disable"` (thinking_budget=0);
-#   - Anthropic's adaptive models have no "off" switch in `output_config` — you omit `thinking`;
-#   - Anthropic's legacy models and Mistral have no knob at all, so it is already off;
-#   - OpenAI's reasoning family CANNOT be turned off — the nearest honest thing is "low".
-# Callers ask for NO_THINKING and each profile answers in its own dialect. That translation is the
-# entire reason this module exists, and it matters here because the measured best setting for the
-# judge is "off" — a value that would 400 on one vendor and silently mean nothing on another.
+#   - Anthropic's adaptive models have no off switch in `output_config` — omit `thinking`;
+#   - Anthropic's legacy models and Mistral have no knob, so it is already off;
+#   - OpenAI's reasoning family cannot be turned off; the nearest honest value is "low".
 NO_THINKING = "none"
 
 # Model-name prefix -> vendor, for resolving through a gateway. Only needed where the branches
@@ -152,10 +146,8 @@ _VENDOR_BY_NAME = (
 def gateway_kwargs() -> dict[str, str]:
     """`api_base`/`api_key` for the configured LiteLLM proxy — {} when talking to a vendor direct.
 
-    The key is read from the environment on EVERY call and never stored on Settings. Settings is a
-    long-lived, cacheable object; a secret on it outlives the request that needed it, leaks into
-    any repr of the config, and is the exact thing SECURITY.md promises BYOK will not do. Cheap to
-    honour now, expensive to retrofit later.
+    The key is read from the environment on every call and never stored on Settings: a secret on a
+    long-lived config object outlives the request that needed it and leaks into any repr of it.
     """
     from aiact.config import get_settings
 
@@ -254,9 +246,8 @@ def profile_for(model: str, effort: str = "high") -> ProviderProfile:
                 "LiteLLM maps reasoning_effort onto Gemini's thinking_level. temperature is "
                 "omitted for Gemini 3 only, which is tuned around its default and where lowering "
                 "it is documented as counter-productive; 2.x gets temperature=0 because an eval "
-                "needs a repeatable answer. Caching is IMPLICIT (observed: 7,888 cached prompt "
-                "tokens through a proxy with no marker sent) — there is no inline breakpoint to "
-                "place, which is why supports_cache_control stays False."
+                "needs a repeatable answer. Caching is IMPLICIT — no inline breakpoint to place, "
+                "which is why supports_cache_control stays False."
             ),
         )
 

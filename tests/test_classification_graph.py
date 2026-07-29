@@ -170,7 +170,7 @@ def test_build_graph_is_compilable():
 
 # --- Art. 50 transparency: a SEPARATE AXIS, not a step in the cascade -------------------------
 def test_transparency_is_checked_for_a_high_risk_use_case():
-    """The bug this guards: transparency used to sit on the minimal-risk branch only, so a
+    """Transparency must not sit on the minimal-risk branch only, or a
     high-risk system was never asked about Art. 50. It applies independently of the tier."""
     brain = ScriptedBrain(
         {

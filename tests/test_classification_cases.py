@@ -108,7 +108,7 @@ def test_every_case_states_a_decisive_fact(cases):
         assert len(c.decisive_fact.strip()) > 20, f"{c.case_id} has no real decisive_fact"
 
 
-# --- Art. 50: the axis that was wrong for months because nothing scored it ----------------------
+# --- Art. 50 ------------------------------------------------------------------------------------
 def test_emotion_recognition_systems_owe_art_50_transparency(cases):
     """Art. 50(3) binds deployers of an EMOTION RECOGNITION SYSTEM to inform those exposed. It
     attaches to the system type and has only a law-enforcement carve-out — the Art. 5 prohibition

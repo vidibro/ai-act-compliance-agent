@@ -57,7 +57,7 @@ _SYSTEM_PROMPT = (
     "it as the law itself. "
     # The rule that matters is about STATED vs IMPLIED, not about confidence. "Answer confidently or
     # say you are unsure" leaves the model free to treat an inference as a fact and then be sure of
-    # it — which is what happened: "an ML component determines queue order" became "evaluates and
+    # it: "an ML component determines queue order" reads as "evaluates and
     # scores candidates". Tying the answer to a quotable span makes the test mechanical.
     "SILENCE IS NOT AN ANSWER. Answer from what the description states — in whatever words it "
     "uses; a fact can be stated plainly without repeating the terms of the question, and you "

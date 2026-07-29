@@ -1,10 +1,7 @@
-"""Token usage and cost — measured, not estimated in a conversation.
+"""Token usage and cost.
 
-An eval harness exists to be run repeatedly, so per-run cost is the number that compounds: a Layer 1
-run is cents, fifty tuning runs across five models is real money, and M4's Layer 2 (19 documents x
-19 rules) is an order of magnitude larger again. Cost per report is also a product number, not just
-a development annoyance. LiteLLM hands back `usage` on every response; throwing it away is what
-turns "is this expensive?" into an argument instead of a fact.
+Per-run cost is the number that compounds across a repeatedly-run eval, and it is a product number
+too: under BYOK the caller pays per report. LiteLLM returns `usage` on every response.
 
 Everything here is labelled ESTIMATED and means it:
   - Prices are transcribed from vendor pricing pages on the date below. They drift. A model with no
@@ -80,9 +77,8 @@ class Usage:
     output_tokens: int = 0
     cached_input_tokens: int = 0
     cache_creation_tokens: int = 0
-    """Tokens WRITTEN to cache. Tracked separately from reads because without it, "written but
-    never read" and "never cached at all" look identical — which is exactly how a silently-ignored
-    cache marker hid from us for a whole run."""
+    """Tokens WRITTEN to cache. Tracked separately from reads: without it, "written but never
+    read" and "never cached at all" look identical."""
 
     cache_marked_calls: int = 0
     """Calls where we asked for caching. If this is non-zero and both counters above are zero, the
@@ -93,9 +89,8 @@ class Usage:
     cannot pass itself off as a complete one."""
 
     _lock: Any = field(default_factory=threading.Lock, repr=False, compare=False)
-    """The eval runs judgements on a thread pool and every one of them lands here. `+=` on an int
-    is read-modify-write, so without this the token counts quietly under-report — and a cost figure
-    that is wrong in the cheap direction is worse than none."""
+    """The eval judges on a thread pool and every worker lands here; `+=` on an int is
+    read-modify-write, so the counts would under-report without it."""
 
     def record(self, response: Any, cache_marked: bool = False) -> None:
         """Pull whatever the provider reported off a LiteLLM response. Defensive throughout:
