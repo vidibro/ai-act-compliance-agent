@@ -29,8 +29,16 @@ from functools import lru_cache
 from math import ceil
 from pathlib import Path
 
-# A markdown ATX heading: leading #s, then the title. The corpus uses no setext headings.
+# A markdown ATX heading: leading #s, then the title.
 _HEADING = re.compile(r"^(#{1,6})\s+(.*?)\s*$")
+
+# A SETEXT heading underline: `===` (level 1) or `---` (level 2) under the title text. Without it a
+# document written this way yields no sections at all — empty heading paths, no outline, nothing for
+# cross-references to resolve against.
+#
+# `---` is also a horizontal rule. A setext title must therefore be an ISOLATED line, preceded by a
+# blank line, so a `---` following the last line of a paragraph stays a rule.
+_SETEXT = re.compile(r"^(=+|-+)\s*$")
 
 # Sentence end: .!? followed by whitespace. Split AFTER the punctuation so quotes stay whole.
 # Deliberately crude — this only ever runs on paragraphs already too long to embed, where the cost
@@ -40,32 +48,19 @@ _SENTENCE_END = re.compile(r"(?<=[.!?])\s+")
 # Zero-width position just after a newline — the fallback boundary for content with no sentences.
 _LINE_END = re.compile(r"(?<=\n)")
 
-# The budget is measured in TOKENS, because the constraint is a token limit.
+# The budget is in TOKENS because the constraint is a token limit: all-MiniLM-L6-v2 truncates at 128
+# (set in its own tokenizer.json, not the 512 its `max_position_embeddings` suggests). Text past the
+# limit is dropped when the vector is computed, so the chunk cannot be found by whatever its tail
+# said — silently, with no error.
 #
-# all-MiniLM-L6-v2 truncates at 128 tokens — not the 512 its `max_position_embeddings` suggests, and
-# not the 256 often quoted for this family. The limit lives in the model's own tokenizer.json
-# (`truncation.max_length: 128`), which is what actually runs. Text past it is dropped when the
-# vector is computed: no error, no warning, just a chunk that cannot be found by whatever its tail
-# said.
-#
-# A CHARACTER cap cannot express that limit. Measured across the corpus, chars-per-token ranges from
-# 2.16 (dense tables) to 10.9 (short list lines), against ~4.3 for ordinary prose — so any character
-# constant is wrong by up to 5x depending on what a chunk happens to contain. The history is in the
-# numbers: MAX_CHARS=1200 embedded only 23% of chunks whole, 500 got to 79%, and the curve then
-# flatlined at ~81% however low it went, because what remained was token-dense text no character
-# rule could see. Counting tokens removes the guesswork instead of retuning it.
-#
-# It also removes the need to retune when the embedding model changes (M4b, multilingual): German
-# out-of-vocabulary words shatter into many wordpieces, so chars-per-token collapses and any cap
-# tuned on English prose would silently over-run the window again.
+# A character cap cannot express this. Chars-per-token across the corpus runs 2.16 (dense tables) to
+# 10.9 (short list lines) against ~4.3 for prose, so any character constant is wrong by up to 5x
+# depending on content — and would need retuning for every embedding model and language.
 MAX_TOKENS = 128
 
-# Fallback when the model's tokenizer is not on disk (fresh clone, CI without the 79 MB download).
-#
-# Deliberately pessimistic: 2.5 sits near the DENSE end of the observed 2.16-10.9 range, so the
-# estimate over-counts prose and splits earlier than needed. That asymmetry is the point — an
-# undersized chunk costs a little context, an oversized one is silently truncated and partly
-# unsearchable. Guess in the direction whose failure is visible.
+# Fallback when the model's tokenizer is not on disk (fresh clone, CI without the download).
+# Deliberately pessimistic — near the dense end of the observed range — so it over-counts prose and
+# splits early: an undersized chunk costs a little context, an oversized one is silently truncated.
 FALLBACK_CHARS_PER_TOKEN = 2.5
 
 
@@ -139,6 +134,7 @@ def _paragraphs(text: str) -> list[_Paragraph]:
     lines: list[str] = []
     start = end = 0
     offset = 0
+    skip_underline = False
 
     def close() -> None:
         nonlocal lines
@@ -153,9 +149,27 @@ def _paragraphs(text: str) -> list[_Paragraph]:
             )
             lines = []
 
-    for raw in text.splitlines(keepends=True):
+    raw_lines = text.splitlines(keepends=True)
+    for position, raw in enumerate(raw_lines):
         line_start, offset = offset, offset + len(raw)
         line = raw.rstrip("\n")
+
+        # Setext: this line is the title, the next underlines it. Isolated titles only.
+        if line.strip() and not lines and position + 1 < len(raw_lines):
+            underline = _SETEXT.match(raw_lines[position + 1].rstrip("\n"))
+            if underline and len(underline.group(1)) >= 3:
+                close()
+                level = 1 if underline.group(1).startswith("=") else 2
+                while stack and stack[-1][0] >= level:
+                    stack.pop()
+                stack.append((level, line.strip()))
+                skip_underline = True
+                continue
+
+        if skip_underline:
+            skip_underline = False
+            if _SETEXT.match(line):
+                continue
 
         if heading := _HEADING.match(line):
             close()
@@ -191,18 +205,12 @@ def _slice(para: _Paragraph, begin: int, end: int) -> _Paragraph:
 def _split_to_fit(para: _Paragraph, fits: Callable[[str], bool]) -> list[_Paragraph]:
     """Break a paragraph that exceeds the budget into pieces that fit.
 
-    Paragraphs used to be indivisible on the grounds that an over-budget chunk beats a severed
-    sentence. That held only while "over budget" meant a little wasted prompt space; once the real
-    embedding window turned out to be 128 tokens, an indivisible dense paragraph was not slightly
-    over — it was mostly invisible to search. Cutting BETWEEN sentences keeps every quotable unit
-    whole and every sentence findable, which beats preserving a paragraph nobody can retrieve.
+    Cuts fall BETWEEN sentences, so every quotable unit stays whole and every sentence stays
+    findable.
 
-    Sentences first, then LINES for whatever still does not fit. The line pass exists for markdown
-    tables — the metrics tables in both reference documents are one paragraph of 150-200 tokens with
-    no sentence-ending punctuation anywhere, so the sentence pass cannot touch them. A table row is
-    its own record, which makes the line boundary the honest unit there. It is second because in
-    prose a line break is a soft wrap sitting mid-sentence, and cutting on it would break the
-    guarantee the sentence pass exists to keep.
+    Sentences first, then LINES for whatever still does not fit — markdown tables are one paragraph
+    with no sentence-ending punctuation, and a table row is its own record. Lines come second
+    because in prose a line break is a soft wrap sitting mid-sentence.
     """
     if fits(para.body):
         return [para]
@@ -220,8 +228,8 @@ def _split_on(
     """Greedily pack `para` into pieces cut at `boundary`, keeping offsets true to the source.
 
     Cuts are taken by INDEX into the original body, never by splitting and rejoining: a paragraph
-    carries its own newlines, and reassembling it with spaces rewrites the text while the offsets go
-    on claiming otherwise. The offset test caught exactly that.
+    carries its own newlines, and reassembling it with spaces would rewrite the text while the
+    offsets went on claiming otherwise.
     """
     bounds = [0, *(m.start() for m in boundary.finditer(para.body)), len(para.body)]
     if len(bounds) <= 2:

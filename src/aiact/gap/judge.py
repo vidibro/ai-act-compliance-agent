@@ -43,23 +43,17 @@ from aiact.schemas.classification import Confidence
 from aiact.schemas.enums import CheckType, Verdict
 from aiact.schemas.policy import PolicyRule
 from aiact.tools.evidence import DEFAULT_K, find_evidence
+from aiact.tools.references import Reference, resolve_all
 from aiact.tracing import current_metadata
 from aiact.usage import Usage
 
 _EVIDENCE_MAX_LENGTH = 300
 
-# Transient API failures are retried, with backoff, by LiteLLM.
+# Transient API failures are retried, with backoff, by LiteLLM. A full eval run is 133 calls, so a
+# 429 or gateway 5xx along the way is likely, and one failure would otherwise lose the whole run.
 #
-# A full dev run is 133 sequential calls, so the chance that none of them hits a 429 or a gateway
-# 5xx is not high — and one such failure used to abort the run and lose every judgement before it.
-# (Observed: a Cloudflare 520 from api.anthropic.com, flagged retryable, mid-diagnostic.)
-#
-# Note what is deliberately NOT done: a failed call must not degrade into NEEDS_REVIEW. That would
-# let an infrastructure blip enter the scorecard as if the judge had abstained on the evidence,
-# quietly corrupting the number the whole project is judged by. A crashed run is honest and
-# repeatable; a wrong number is neither. So retries first, and if they are exhausted, the exception
-# propagates. Same distinction the classifier draws between `description_silent` and
-# `reply_unusable`: whose fault it is changes what the reader should do.
+# Exhausted retries PROPAGATE rather than degrading into NEEDS_REVIEW: an infrastructure failure
+# entering the scorecard as an abstention would corrupt the number silently.
 _NUM_RETRIES = 3
 
 # The literal for "the excerpts do not let me rule". Kept distinct from every substantive verdict
@@ -79,8 +73,8 @@ _SYSTEM_PROMPT = (
     "and the excerpts supplied — never from memory of the law, never from what a system like this "
     "usually does. You do not decide which obligations apply; that is already settled. "
     #
-    # The three verdicts, written so the boundaries are decidable rather than evocative. GAP vs
-    # INADEQUATE is the distinction the whole project is measured on, so it gets the most words.
+    # GAP vs INADEQUATE is the distinction the project is measured on, so the boundary is stated as
+    # a decidable test rather than a description.
     "\n\nYour verdict is exactly one of:\n"
     '- "pass": the excerpts contain substantive evidence that satisfies the requirement.\n'
     '- "inadequate": the excerpts DO address this requirement, but with no substance — an '
@@ -91,35 +85,25 @@ _SYSTEM_PROMPT = (
     "ethics or trustworthiness that never engage this obligation.\n"
     f'- "{UNSURE}": the excerpts are ambiguous or contradictory and you cannot honestly rule.\n'
     #
-    # The line between INADEQUATE and GAP, stated as a test rather than a vibe, because the golden
-    # set separates them by construction and a checker that blurs them scores as if it read nothing.
-    # The boundary is defined by the ACTION the finding implies, not by how much text is present.
-    # Stated the other way round, judges hedged every absence into "inadequate": a sentence claiming
-    # the content exists elsewhere reads like an attempt, so almost nothing was ever a gap.
+    # Keyed to the ACTION the finding implies, not to how much text is present: phrased any other
+    # way, models hedge every absence into "inadequate" and almost nothing is ever a gap.
     "\nThe test between them is what the provider must DO next:\n"
     '- "gap" means WRITE THIS — the content does not exist anywhere in the document.\n'
     '- "inadequate" means STRENGTHEN THIS — the content exists and falls short.\n'
     '\nSo "Our human oversight measures are appropriate to the risk" is inadequate: it is about '
     'oversight, it exists, and it needs strengthening. "We are proud signatories of three AI '
     'ethics charters" is a gap: it is not about oversight at all.\n'
-    #
-    # The qualification matters as much as the rule. Stated absolutely ("a pointer is not
-    # content"), this penalised LEGITIMATE cross-references and produced false findings against
-    # compliant documentation — a technical file that says "metrics are in §8", where §8 exists and
-    # holds them, is correctly drafted. The judge sees only excerpts, so it must not read "not
-    # retrieved" as "not written".
-    '\nCross-references need care. "The oversight measures are described in §7" is a GAP when the '
-    "section list contains no §7 — a pointer to nothing is not content, and the work to be done is "
-    "writing it from scratch. But when the referenced section DOES exist in the list, the pointer "
-    "is legitimate drafting: the content is in the document even if it is not among your excerpts, "
-    "and you must not hold its absence from the excerpts against the provider. Check the list "
-    "before judging a reference."
+    "\nCross-references are resolved for you and reported as facts. If a reference is marked DOES "
+    'NOT EXIST, it is a pointer to nothing: "the oversight measures are described in §7" with no '
+    "§7 is a GAP, and the work to be done is writing that section from scratch. If it is marked "
+    "EXISTS, the pointer is legitimate drafting — the content is in the document even when it is "
+    "not among your excerpts, and you must not hold that against the provider. Do not second-guess "
+    "either marking from the excerpts alone."
 )
 
-# What "satisfying" means per check type. This is why `CheckType` exists on a rule: an obligation to
-# DESCRIBE a capability and an obligation to REPORT FIGURES fail in different ways, and one rubric
-# for both would either excuse missing numbers or invent gaps where a description is all the law
-# asks for. The Art. 12 case in the golden set exists precisely to catch a judge that over-demands.
+# What "satisfying" means per check type. An obligation to DESCRIBE a capability and one to REPORT
+# FIGURES fail differently; a single rubric would either excuse missing numbers or demand depth the
+# article never asks for.
 _RUBRIC: dict[CheckType, str] = {
     CheckType.PRESENCE: (
         "This is a PRESENCE check: the requirement is satisfied once the documentation states that "
@@ -132,19 +116,10 @@ _RUBRIC: dict[CheckType, str] = {
         "behind it, is inadequate."
     ),
     CheckType.METRICS: (
-        # "Figures must be present" was not enough, and the failure was a false PASS — the most
-        # expensive error this tool can make. With Art. 15's own section deleted, the judge found a
-        # selection-rate ratio of 0.94 in the risk section and confidence intervals in the
-        # transparency section, and cleared the document. Those are FAIRNESS figures; Art. 15 asks
-        # about accuracy and robustness. A number near the topic is not a number about the topic.
         "This is a METRICS check: concrete figures must be present, AND they must measure the "
         "property this article asks about. Figures that quantify something else — a fairness or "
         "selection-rate ratio where the article asks for accuracy — are not evidence for this "
         "obligation, however precise they look. Ask what each number MEASURES before crediting it. "
-        # The counterweight, added after the first version cried wolf on compliant documentation:
-        # it rejected NDCG@10 as "ranking quality, not accuracy" and demanded thresholds and
-        # justifications Art. 15 never asks for. "Is this number the right KIND" is the question;
-        # "is this number good enough" is the provider's judgement, not ours.
         "But do not go the other way: the standard metric of the system's own task IS its accuracy "
         "metric, and you must not demand targets, thresholds or justifications the article does "
         "not require. Declared figures for the right property are a pass even if you would have "
@@ -205,19 +180,19 @@ class LLMJudge:
         effort: str | None = None,
         profile: ProviderProfile | None = None,
         k: int = DEFAULT_K,
+        reference_content: bool = True,
     ) -> None:
         settings = get_settings()
         self.model = model or settings.llm_model
         self.profile = profile or profile_for(self.model, effort or settings.effort_for("judge"))
         self.k = k
+        # Whether a resolved cross-reference brings its section's text along, or only the fact that
+        # it exists. Existence settles GAP; the content is what lets "metrics are in §8" reach PASS.
+        self.reference_content = reference_content
         self.usage = Usage()
-        # One index per document, keyed by content hash. The eval asks 7 rules of each of 19
-        # documents; without this, every question would re-embed the whole file — 133 indexings
-        # instead of 19, for identical results.
+        # One index per document: every rule asked of the same file reuses it rather than
+        # re-embedding. The lock matters because the eval judges concurrently.
         self._indexes: dict[str, DocumentIndex] = {}
-        # The eval runs judgements concurrently, and several threads reach the same document at
-        # once. Without the lock they each build an index for it — 19 wasted embeddings and a
-        # torn dict — so the FIRST thread builds and the rest wait for it.
         self._index_lock = threading.Lock()
 
     def index_for(self, document: str) -> DocumentIndex:
@@ -228,7 +203,11 @@ class LLMJudge:
             return self._indexes[doc_id]
 
     def _user_content(
-        self, rule: PolicyRule, hits: tuple[Hit, ...], outline: tuple[str, ...] = ()
+        self,
+        rule: PolicyRule,
+        hits: tuple[Hit, ...],
+        outline: tuple[str, ...] = (),
+        references: tuple[Reference, ...] = (),
     ) -> Any:
         """Build the user turn, stable half first (see llm_brain._user_content for why).
 
@@ -251,18 +230,42 @@ class LLMJudge:
             f"[{hit.chunk.chunk_id}] (section: {hit.chunk.heading_path})\n{hit.chunk.body}"
             for hit in hits
         )
-        # The document's full section list. Cheap (a few dozen headings) and it closes the single
-        # biggest hole in the judge's view: shown only excerpts, it cannot tell "not retrieved" from
-        # "not present", so it hedges every absence into INADEQUATE. Its own reasoning said so —
-        # "the excerpts do not contain the actual description, only a pointer to it".
-        #
-        # With the outline it can do what a human reviewer does: follow the cross-reference. A file
-        # that says "oversight measures are described in §7" while the outline has no §7 is not
-        # addressing the obligation, it is pointing at nothing.
+        # The document's full section list, so the judge can tell "not retrieved" from "not present"
+        # instead of hedging every absence into INADEQUATE.
         contents = "\n".join(f"- {section}" for section in outline)
+        followed = ""
+        if references:
+            lines = []
+            for ref in references:
+                if ref.resolves:
+                    lines.append(f"- {ref.token} EXISTS -> {ref.section}")
+                else:
+                    lines.append(f"- {ref.token} DOES NOT EXIST in this document")
+            # A referenced section the excerpts did not already include. Capped at two: enough to
+            # settle a pointer without pulling the document back in.
+            seen = {hit.chunk.heading_path for hit in hits}
+            extra = (
+                [r for r in references if r.resolves and r.chunks and r.section not in seen][:2]
+                if self.reference_content
+                else []
+            )
+            bodies = "".join(
+                f"\n\nContent of {r.token} ({r.section}):\n"
+                + "\n\n".join(c.body for c in r.chunks)
+                for r in extra
+            )
+            followed = (
+                "Cross-references appearing in the excerpts, resolved against the document "
+                "for you — these are FACTS, not inferences:\n"
+                + "\n".join(lines)
+                + bodies
+                + "\n\n"
+            )
+
         task = (
             f"Complete list of sections in this document — nothing else exists in it:\n"
             f"{contents}\n\n"
+            f"{followed}"
             f"The excerpts below are what a search for THIS obligation returned across ALL of "
             f"those sections. So if the substance were anywhere in the document, it would be here: "
             f"treat its absence from the excerpts as absence from the document. And if an excerpt "
@@ -312,7 +315,10 @@ class LLMJudge:
 
         index = self.index_for(document)
         hits = tuple(find_evidence(index, rule, k=self.k))
-        user_content = self._user_content(rule, hits, outline(index))
+        # From the EXCERPTS only: the judge can reason about pointers it was shown, not others.
+        seen_text = "\n".join(hit.chunk.body for hit in hits)
+        refs = tuple(resolve_all(index, seen_text, document))
+        user_content = self._user_content(rule, hits, outline(index), refs)
         metadata = current_metadata(rule.rule_id)
         response = litellm.completion(
             model=self.model,

@@ -34,6 +34,7 @@ weak a match actually was.
 from __future__ import annotations
 
 import hashlib
+import re
 from dataclasses import dataclass
 from pathlib import Path
 from typing import TYPE_CHECKING, Any
@@ -67,9 +68,25 @@ def document_id(text: str) -> str:
     return hashlib.sha256(text.encode("utf-8")).hexdigest()
 
 
-def _collection_name(doc_id: str) -> str:
-    # Chroma requires 3-512 chars from [a-zA-Z0-9._-], starting and ending alphanumeric.
-    return f"doc-{doc_id[:32]}"
+def _embedder_tag(embedding_function: Any) -> str:
+    """Short, filesystem-safe identity for whichever embedder built an index."""
+    if embedding_function is None:
+        return "default"
+    name = getattr(embedding_function, "name", None)
+    raw = name() if callable(name) else type(embedding_function).__name__
+    return re.sub(r"[^a-zA-Z0-9]", "", str(raw))[:24] or "custom"
+
+
+def _collection_name(doc_id: str, embedding_function: Any = None) -> str:
+    """Content hash AND embedder identity.
+
+    Vectors from two models are not comparable, so an index built by one is meaningless to another
+    even when the document is identical — keying on text alone would serve stale vectors after a
+    model swap.
+
+    Chroma requires 3-512 chars from [a-zA-Z0-9._-], starting and ending alphanumeric.
+    """
+    return f"doc-{doc_id[:32]}-{_embedder_tag(embedding_function)}"
 
 
 def ephemeral_client() -> ClientAPI:
@@ -108,6 +125,12 @@ class DocumentIndex:
         self._collection = collection
         self._client = client
 
+    @property
+    def collection_name(self) -> str:
+        """The Chroma collection backing this index. Exposed so callers never rebuild the name
+        themselves: it encodes both the content hash and the embedder."""
+        return str(self._collection.name)
+
     @classmethod
     def build(
         cls,
@@ -129,7 +152,7 @@ class DocumentIndex:
             raise ValueError("Refusing to index an empty document — nothing to retrieve against.")
 
         chroma = client if client is not None else ephemeral_client()
-        kwargs: dict[str, Any] = {"name": _collection_name(doc_id)}
+        kwargs: dict[str, Any] = {"name": _collection_name(doc_id, embedding_function)}
         if embedding_function is not None:
             kwargs["embedding_function"] = embedding_function
         collection = chroma.get_or_create_collection(**kwargs)
@@ -159,7 +182,7 @@ class DocumentIndex:
         only cleanup path for a caller that opted into persistence. Without it, "we store nothing"
         would be true only until someone passed a persistent client.
         """
-        self._client.delete_collection(_collection_name(self.doc_id))
+        self._client.delete_collection(self._collection.name)
 
     def search(self, query: str, k: int = 4) -> list[Hit]:
         """The k passages closest to `query`, nearest first.

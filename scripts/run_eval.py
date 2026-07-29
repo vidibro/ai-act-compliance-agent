@@ -62,6 +62,12 @@ def main() -> None:
     )
     ap.add_argument("--model", default=None, help="override the judge's model (LiteLLM string)")
     ap.add_argument(
+        "--no-reference-content",
+        action="store_true",
+        help="resolved cross-references report only that a section EXISTS, without pulling its "
+        "text into the prompt. Cheaper; tests whether the content injection earns its tokens.",
+    )
+    ap.add_argument(
         "--workers",
         type=int,
         default=8,
@@ -101,7 +107,9 @@ def main() -> None:
     )
     if args.checker == "judge":
         load_dotenv()  # the CLI boundary owns .env; the library stays free of it
-        checker: Checker = LLMJudge(model=args.model)
+        checker: Checker = LLMJudge(
+            model=args.model, reference_content=not args.no_reference_content
+        )
         print(f"checker: {checker.name} ({checker.model}) — {len(cases) * 7} calls, be patient\n")
     else:
         checker = KeywordBaseline(article_titles(spec, args.articles_root))

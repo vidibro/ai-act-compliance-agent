@@ -140,10 +140,10 @@ def test_search_always_returns_results_even_when_the_topic_is_absent(client):
 def test_indexing_the_same_document_twice_reuses_the_collection(client):
     """The eval re-runs constantly; re-embedding an unchanged document each time is pure waste."""
     first = _index(DOC_A, client)
-    before = client.get_collection(f"doc-{first.doc_id[:32]}").count()
+    before = client.get_collection(first.collection_name).count()
     second = _index(DOC_A, client)
     assert second.doc_id == first.doc_id
-    assert client.get_collection(f"doc-{second.doc_id[:32]}").count() == before
+    assert client.get_collection(second.collection_name).count() == before
 
 
 def test_a_changed_document_gets_a_different_index(client):
@@ -183,7 +183,7 @@ def test_a_persisted_index_can_be_dropped(tmp_path):
 
     chroma = persistent_client(tmp_path / "chroma")
     index = DocumentIndex.build(DOC_A, client=chroma, embedding_function=StubEmbedding())
-    name = f"doc-{index.doc_id[:32]}"
+    name = index.collection_name
     assert name in [c.name for c in chroma.list_collections()]
     index.drop()
     assert name not in [c.name for c in chroma.list_collections()]
@@ -204,7 +204,7 @@ def test_every_chunk_of_a_real_document_is_indexed(client):
     text = DEV_DOC.read_text(encoding="utf-8")
     index = _index(text, client)
     assert len(index.chunks) == len(chunk_document(text))
-    assert client.get_collection(f"doc-{index.doc_id[:32]}").count() == len(index.chunks)
+    assert client.get_collection(index.collection_name).count() == len(index.chunks)
 
 
 # ==================================================================================================
@@ -238,3 +238,19 @@ def test_find_evidence_returns_passages_for_a_document_verifiable_rule(client, s
     hits = find_evidence(index, rule, k=3)
     assert len(hits) == 3
     assert all(h.chunk.chunk_id in index.chunks for h in hits)
+
+
+def test_a_different_embedder_gets_a_different_index(client):
+    """Vectors from two models are not comparable, so an index built by one is meaningless to
+    another however identical the document is. Keying on the document hash alone would serve stale
+    vectors after an embedding-model swap."""
+    stub = DocumentIndex.build(DOC_A, client=client, embedding_function=StubEmbedding())
+
+    class OtherStub(StubEmbedding):
+        @staticmethod
+        def name() -> str:
+            return "other"
+
+    other = DocumentIndex.build(DOC_A, client=client, embedding_function=OtherStub())
+    assert other.doc_id == stub.doc_id, "same document"
+    assert other.collection_name != stub.collection_name, "but not the same index"
