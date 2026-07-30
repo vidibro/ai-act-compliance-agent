@@ -48,9 +48,32 @@ set (classification + obligation-checking) with exact, generated ground truth; t
 Chroma retrieval and Langfuse tracing. Both jobs run against real models and are measured — see
 `docs/ROADMAP.md` for the numbers.
 
-Not built yet: **the two graphs are not composed.** Each runs on its own, and the seam between
-them is typed (gap analysis takes a classification as input), but nothing yet calls one and feeds
-the other. That orchestrator and the FastAPI layer are M6.
+The two graphs are composed — one document in, one report out:
+
+```bash
+python scripts/review.py data/golden_set/reference/hr-candidate-scoring.md
+```
+
+Not built yet: the FastAPI layer (M6).
+
+## The review, end to end
+
+`review()` classifies the document, then checks it against the obligations that classification
+activates. It owns exactly one decision — **whether the obligation check should run at all** —
+because that is a legal question rather than a property of either graph:
+
+- **`prohibited` stops here.** Chapter III describes how a *permitted* high-risk system must be
+  built and documented. Reporting documentation gaps against a banned practice would imply it may
+  ship once the paperwork is fixed. It may not.
+- **`needs_review` stops here** too: which obligations apply is not yet known, and findings from a
+  guessed risk class are findings a provider might act on without owing them.
+- **Everything else proceeds** — including `not_high_risk`, which still owes Art. 6(4): a provider
+  claiming a derogation must document that assessment and register it. A "high-risk only" gate
+  would look right and silently drop a real obligation.
+
+When the check is skipped, the report says so in a `scope_note`. An empty findings list otherwise
+reads as a clean bill of health, which for a prohibited practice is the most dangerous output this
+tool could produce.
 
 ## How classification works
 
@@ -117,8 +140,8 @@ Given a classified system, the second graph asks whether the documentation actua
 obligation that classification activates. Same division of labour as the cascade: **code owns what
 applies and what a verdict means, the model answers one bounded question at a time.**
 
-It takes a classification as an argument rather than producing one — today you supply that
-yourself; wiring the cascade's output into it is M6.
+It takes a classification as an argument rather than producing one — `review()` supplies the
+cascade's output, and the two layers never import each other.
 
 Three steps, in a line. Boxes are the three graph nodes; rounded shapes are the data passing
 between them.

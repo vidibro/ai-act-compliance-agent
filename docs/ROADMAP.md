@@ -470,15 +470,15 @@ Related: M8's system-card guide already tells users what structure to supply for
 
 README (problem → architecture diagram → eval numbers up top → use cases), 2-min demo (the flip-test: one sentence flips not_high_risk → high_risk), clean commit history, FastAPI endpoint (document in → structured report out).
 
-> **First job here: compose the two graphs.** `classify()` and `analyse()` both work and are both measured, but nothing calls them in sequence — the pipeline exists as two halves with a typed seam (`ClassificationResult`) and no caller.
+> ~~**First job here: compose the two graphs.**~~ ✅ **done 2026-07-30** — `src/aiact/pipeline.py`, `review()`, plus `scripts/review.py` and 7 tests. One document in, classified, then checked against whatever obligations that classification activates. Verified live on both paths: the compliant reference document classifies `high_risk` via the Art. 6(3) carve-back and passes 7/7 with 11 process obligations listed separately; a prohibited practice stops at the gate.
 >
-> **One document in.** Both halves already take a single string, and the composed entry point does the same: the user submits their documentation once, it is classified, and the same text is checked against whatever obligations that classification activates. Documentation quality is a quality-of-answer problem, not an input-format problem — a thin document yields a thin report, and M8's guide is where that is addressed.
+> **The gate is NOT "high risk only" — that was the plan and it was wrong.** `AIA-NHR-A06-4` applies to `not_high_risk`: a provider claiming an Art. 6(3) derogation must document that assessment and register under Art. 49(2). Gating on high-risk would have silently dropped a real obligation, and a test now pins that a `not_high_risk` classification still reaches it. What the gate actually stops is `prohibited` (Chapter III describes how a PERMITTED system must be built; checking documentation against it implies the system may ship once the paperwork is fixed) and `needs_review` (which obligations apply is not yet known). `minimal` is not gated at all — no rule attaches to it, so the obligation layer runs and correctly finds nothing owed.
 >
-> The two real decisions:
-> - **Gating.** Chapter III attaches to high-risk use cases only. No high-risk use case → no gap analysis, and the report must SAY so rather than return an empty finding list that reads like a clean bill of health. `prohibited` is its own answer and must not fall through to obligation-checking.
-> - **Per use case.** `analyse()` already selects per use case; the orchestrator passes the whole `ClassificationResult` through, never a collapsed overall class.
+> **`ComplianceReport.scope_note`** was added for this: an empty `findings` list reads as a clean bill of health, so whenever the pipeline reaches that state deliberately the report says why in the report itself.
 >
-> Do this before the FastAPI layer, so the endpoint wraps a working pipeline instead of defining one.
+> **`review()` opens no trace of its own.** Both layers already open one, and an outer `trace_run` would mint a trace id the inner ones immediately replace — an empty parent with its children elsewhere. They group by SESSION, which is why `system_id` is threaded into both.
+>
+> Left for the FastAPI layer: `tests/test_pipeline.py` is the check neither eval can make — Layer 1 stops at the risk class, Layer 2 is handed the correct classification, so a misclassification propagating into an empty report is only reachable at the seam.
 
 Make the harness engineering visible. The observability/trace layer, the per-rule tool calls, the provider abstraction — these are engineering, not plumbing to hide. Show a Langfuse trace in the README. (Personal angle worth surfacing in interviews: prior experience running LiteLLM as a proxy with header rewriting, and MCP work — most candidates only use these as an SDK. That's harness engineering; name it.)
 
