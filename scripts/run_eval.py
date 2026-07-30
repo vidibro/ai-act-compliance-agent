@@ -107,10 +107,11 @@ def main() -> None:
     )
     if args.checker == "judge":
         load_dotenv()  # the CLI boundary owns .env; the library stays free of it
-        checker: Checker = LLMJudge(
-            model=args.model, reference_content=not args.no_reference_content
-        )
-        print(f"checker: {checker.name} ({checker.model}) — {len(cases) * 7} calls, be patient\n")
+        # Named before it is widened to Checker: `model` belongs to the LLM judge, not to every
+        # checker — a keyword baseline calls no model and should not have to claim one.
+        judge = LLMJudge(model=args.model, reference_content=not args.no_reference_content)
+        print(f"checker: {judge.name} ({judge.model}) — {len(cases) * 7} calls, be patient\n")
+        checker: Checker = judge
     else:
         checker = KeywordBaseline(article_titles(spec, args.articles_root))
 
