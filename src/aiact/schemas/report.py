@@ -84,6 +84,10 @@ class ComplianceReport(BaseModel):
     findings: list[Finding]
     not_document_verifiable: list[str]  # rule_ids to confirm separately — NOT gaps
     summary: ReportSummary
+    scope_note: str | None = None
+    """Why the obligation check covered what it did — set whenever `findings` is empty for a reason
+    a reader would otherwise have to infer. An empty findings list reads as a clean bill of health,
+    and for a prohibited practice or an out-of-scope system that reading is dangerously wrong."""
     disclaimer: str = DISCLAIMER
 
     @model_validator(mode="after")
