@@ -10,7 +10,6 @@ from aiact.schemas.classification import (
     ClassificationEvidence,
     ClassificationQuestion,
     ClassificationResult,
-    ClassificationState,
     UseCaseClassification,
 )
 from aiact.schemas.enums import (
@@ -60,7 +59,6 @@ __all__ = [
     "SystemUnderReview",
     # classification
     "ClassificationResult",
-    "ClassificationState",
     "ClassificationAnswer",
     "ClassificationEvidence",
     "ClassificationQuestion",

@@ -19,7 +19,6 @@ from aiact.schemas import (
     ClassificationAnswer,
     ClassificationEvidence,
     ClassificationResult,
-    ClassificationState,
     ComplianceReport,
     DocumentChunk,
     Finding,
@@ -131,18 +130,6 @@ def test_policy_rule_and_spec_valid():
 def test_node_answer_requires_source():
     with pytest.raises(ValidationError):
         ClassificationAnswer(value=True, reasoning="x", confidence="high")  # no source
-
-
-def test_classification_state_valid():
-    system = SystemUnderReview(
-        system_id="sys-1", source_type="synthetic", raw_text="text"
-    )
-    state = ClassificationState(
-        system=system,
-        is_ai_system=a_node(True, source=a_source(article=3, paragraph=1)),
-        use_cases=[a_use_case()],
-    )
-    assert state.use_cases[0].use_case_id == "cv_parsing"
 
 
 # --------------------------------------------------------------------------------------

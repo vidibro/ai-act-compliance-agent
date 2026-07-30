@@ -15,7 +15,6 @@ from pydantic import BaseModel, field_validator, model_validator
 
 from aiact.schemas.enums import AnnexIIIArea, RiskClass
 from aiact.schemas.policy import GuidanceSource, LegalSource
-from aiact.schemas.system import SystemUnderReview
 
 Confidence = Literal["high", "medium", "low"]
 
@@ -178,23 +177,6 @@ class UseCaseClassification(BaseModel):
                     f"so risk_class must be high_risk (got {self.risk_class})."
                 )
         return self
-
-
-class ClassificationState(BaseModel):
-    """System-level checks. These apply to the system as a whole, before we look at
-    what it does in each individual use case."""
-
-    system: SystemUnderReview
-    is_ai_system: ClassificationAnswer | None = None  # Art. 3(1)
-    actor_role: ClassificationAnswer | None = None  # Art. 3(3)
-    in_eu_scope: ClassificationAnswer | None = None  # Art. 2
-    is_excluded: ClassificationAnswer | None = None  # Art. 2
-    prohibited_practices: ClassificationAnswer | None = None  # Art. 5  <- checked BEFORE high-risk
-    is_safety_component: ClassificationAnswer | None = None  # Art. 6(1), Annex I
-    annex_iii_areas: ClassificationAnswer | None = None  # Art. 6(2), Annex III
-    transparency_triggers: ClassificationAnswer | None = None  # Art. 50 — checked independently of
-    # the risk class; can apply to a minimal-risk system and a high-risk one alike
-    use_cases: list[UseCaseClassification] = []  # the per-use-case work happens here
 
 
 class ClassificationResult(BaseModel):
