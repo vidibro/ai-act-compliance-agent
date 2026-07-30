@@ -18,7 +18,7 @@ from datetime import date
 
 import pytest
 
-from aiact.gap.judge import UNSURE, Judgement, LLMJudge, _unfence, outline
+from aiact.gap.judge import UNSURE, Judgement, LLMJudge, outline
 from aiact.retrieval.chunking import Chunk
 from aiact.retrieval.store import Hit
 from aiact.schemas.enums import ActorRole, CheckType, ObligationStatus, RiskClass, Verdict
@@ -253,12 +253,6 @@ def test_the_index_is_built_once_per_document(monkeypatch, reply):
 
 
 # --- misc ----------------------------------------------------------------------------------------
-def test_a_fenced_reply_is_unwrapped():
-    """`response_format=json_object` is advisory on several providers; json.loads then dies on the
-    first backtick."""
-    assert json.loads(_unfence('```json\n{"verdict": "pass"}\n```')) == {"verdict": "pass"}
-
-
 def test_judgement_defaults_to_no_hits():
     j = Judgement(Verdict.PASS, "fine", None, None, "high")
     assert j.hits == ()

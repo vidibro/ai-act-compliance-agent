@@ -21,10 +21,10 @@ keeps 'the model choice is config, not code' actually true rather than aspiratio
 from __future__ import annotations
 
 import json
-import re
 from typing import TYPE_CHECKING, Any
 
 from aiact.config import get_settings
+from aiact.llm import unfence
 from aiact.providers import ProviderProfile, gateway_kwargs, profile_for
 from aiact.schemas.classification import (
     AbstentionCause,
@@ -103,19 +103,6 @@ def _answer_instructions(answer_type: str) -> str:
             f"the description does not establish that any condition is met"
         )
     raise ValueError(f"unknown answer_type {answer_type!r}")
-
-
-# Models very often wrap JSON in a markdown fence, even when told to reply with JSON and nothing
-# else, and even with response_format={"type": "json_object"} set — that flag is advisory rather
-# than enforced on several providers. json.loads then fails at char 0 on the backtick. Stripping
-# the fence is provider-agnostic: it costs nothing where the reply is already bare JSON, and it is
-# the difference between an answer and an abstention where it is not.
-_FENCED_JSON = re.compile(r"^\s*```(?:json)?\s*(.*?)\s*```\s*$", re.DOTALL)
-
-
-def _unfence(raw: str) -> str:
-    match = _FENCED_JSON.match(raw)
-    return match.group(1) if match else raw
 
 
 class Unanswerable(Exception):
@@ -299,7 +286,7 @@ class LLMBrain:
         if not raw or not raw.strip():
             return self._abstain(question, "the model returned an empty completion")
         try:
-            data = json.loads(_unfence(raw))
+            data = json.loads(unfence(raw))
         except json.JSONDecodeError as exc:
             return self._abstain(question, f"the model's reply was not valid JSON: {exc}")
         if not isinstance(data, dict):

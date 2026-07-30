@@ -34,6 +34,7 @@ from dataclasses import dataclass
 from typing import Any
 
 from aiact.config import get_settings
+from aiact.llm import unfence
 from aiact.providers import ProviderProfile, gateway_kwargs, profile_for
 from aiact.retrieval.store import DocumentIndex, Hit, document_id
 from aiact.schemas.classification import Confidence
@@ -247,16 +248,12 @@ class LLMJudge:
                 else []
             )
             bodies = "".join(
-                f"\n\nContent of {r.token} ({r.section}):\n"
-                + "\n\n".join(c.body for c in r.chunks)
+                f"\n\nContent of {r.token} ({r.section}):\n" + "\n\n".join(c.body for c in r.chunks)
                 for r in extra
             )
             followed = (
                 "Cross-references appearing in the excerpts, resolved against the document "
-                "for you — these are FACTS, not inferences:\n"
-                + "\n".join(lines)
-                + bodies
-                + "\n\n"
+                "for you — these are FACTS, not inferences:\n" + "\n".join(lines) + bodies + "\n\n"
             )
 
         task = (
@@ -333,7 +330,7 @@ class LLMJudge:
         if not raw or not raw.strip():
             return _unsure(f"{rule.rule_id}: the model returned an empty completion.", hits)
         try:
-            data = json.loads(_unfence(raw))
+            data = json.loads(unfence(raw))
         except json.JSONDecodeError as exc:
             return _unsure(f"{rule.rule_id}: the model's reply was not valid JSON: {exc}.", hits)
         if not isinstance(data, dict):
@@ -399,9 +396,7 @@ def outline(index: DocumentIndex) -> tuple[str, ...]:
     return tuple(seen)
 
 
-def _resolve_chunk_id(
-    reported: object, quote: str | None, hits: tuple[Hit, ...]
-) -> str | None:
+def _resolve_chunk_id(reported: object, quote: str | None, hits: tuple[Hit, ...]) -> str | None:
     """Work out which excerpt the quote came from, tolerantly but never by invention.
 
     Two passes, in this order:
@@ -427,13 +422,3 @@ def _resolve_chunk_id(
             if needle and needle in " ".join(hit.chunk.body.split()):
                 return hit.chunk.chunk_id
     return None
-
-
-def _unfence(raw: str) -> str:
-    """Strip a ```json fence. `response_format=json_object` is advisory on several providers, and
-    json.loads then fails at character 0 on the backtick."""
-    text = raw.strip()
-    if not text.startswith("```"):
-        return text
-    body = text.split("\n", 1)[1] if "\n" in text else ""
-    return body.rsplit("```", 1)[0].strip()
