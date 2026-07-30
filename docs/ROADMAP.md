@@ -306,11 +306,11 @@ Order matters: prohibited (Art. 5) is evaluated BEFORE high-risk. A prohibited s
 
 **Scope taken: ONE use case per run.** `GraphState` carries a single `description` + `use_case_id`, so `assemble` always emits `use_cases=[one]`. This is a deliberate cut, not an oversight — see M7 below. Everything through M6 is built on single-use-case input.
 
-### M4 — Gap-analysis checker (RAG) — data ready, starts after the classification block (see top)
+### M4 — Gap-analysis checker (RAG) ✅ DoD met — retrieval, judge and graph built and measured
 
 Chroma ingest + retrieval as a TOOL the agent calls per active rule. Verdict per rule: pass / gap / inadequate / not_applicable. This is where `inadequate` vs `gap` earns its keep.
 
-**Status: retrieval built, judge not started.**
+**Status: DoD met. Retrieval, judge and graph built; the distractor column and the reference tool's keep/drop remain open.**
 
 Done — `src/aiact/retrieval/` (chunking + Chroma) and `src/aiact/tools/evidence.py` (the per-rule tool), 25 tests:
 - **Heading-aware chunking** with exact source offsets, so a verdict can cite `Part E — … [chars N-M]` and have it resolve. A chunk never straddles two sections — evidence for Art. 14 must not arrive carrying half of Art. 15's.
@@ -385,9 +385,33 @@ Note the trap it exposes: on Gemini, OMITTING `reasoning_effort` is not the same
 
 **Caveat on the comparison:** every row ran a prompt iterated against HAIKU, so Haiku's 6/6 INADEQUATE is partly home advantage and the cheap cells are being judged on someone else's homework. Tuning for Flash-disable is the next move, not buying the expensive model.
 
-**Still open:** effort is ONE global setting shared by classifier and judge (`AIACT_LLM_EFFORT`). The judge demonstrably wants it off; the classifier has never been measured either way and its numbers were all taken on Haiku, which has no such knob. Split before pinning either in config.
+**Settled:** effort is now three settings — `AIACT_LLM_EFFORT` (default) plus a `CLASSIFY` and a `JUDGE` override, all pinned to `none`. The classifier was then measured on Flash with thinking disabled: **9/9 risk class, 9/9 Art. 50, zero abstentions, $0.0045/case** — so both layers run the cheapest configuration tested, and the knobs exist for the next model swap.
 
-**DoD:** Layer-2 ablation docs run → findings with citations; `untouched` requirements come back `pass` (false-positive control).
+#### The graph
+
+`src/aiact/gap/graph.py` — three nodes, one of which uses a model:
+
+    select_rules      which obligations apply, per use case      — pure data (gap/rules.py)
+    check_compliance  does the documentation satisfy each one    — one LLM call per rule, concurrent
+    assemble_report   findings, outstanding confirmations, counts — pure data
+
+Selection is deterministic on purpose: activation is a property of the ruleset (`applies_to_risk_class`, `applies_to_role`, `status`), not a judgement. Only whether the documentation SATISFIES an active rule is a judgement. Same split as the classification cascade, for the same reason.
+
+Three things the design pins, each because the alternative is a wrong report rather than a slow one:
+- **Selection runs per USE CASE, not per system.** A product whose CV parsing is `not_high_risk` and whose candidate scoring is `high_risk` owes Chapter III on the scoring use case alone, assessed against that intended purpose — so the results are kept apart and the summary tallies both ways.
+- **Non-document-verifiable rules are reported, never judged.** They land in `not_document_verifiable` as outstanding confirmations. Omitting them would read as full coverage of the Chapter III duties, which it is not; judging them would hand the checker four unrelated paragraphs and every chance to talk itself into PASS.
+- **`NOT_APPLICABLE` is counted in neither `total_applicable` nor any verdict bucket.** A rule that never activated is not a check that passed.
+
+Judgements share no state, so they run on a thread pool (`DEFAULT_WORKERS = 8`); `pool.map` preserves input order, so findings come back in rule order regardless of scheduling — a report whose contents depended on thread timing would not be defensible.
+
+**DoD: ✅ met.** Layer-2 ablation docs run end to end → findings with citations; `untouched` requirements come back `pass` (98.3% false-positive control, 1 wrong judgement in 115). A throwaway script driving `classify()` and then `analyse()` by hand cost **$0.016** on a full document and reported `AIA-HR-A14` as a gap *because* its cross-reference resolved to nothing.
+
+**The two graphs are NOT composed.** `analyse()` takes a `ClassificationResult` as an argument, and nothing in `src/` produces one and passes it on — only tests and that throwaway script call it. The seam is designed and typed; the caller does not exist. See M6.
+
+**Still open in M4:**
+1. **The distractor column is 4 cases.** One flip moves it 25 points, so it is not yet a measurement. Fill A11, A12 and A13.
+2. **Does the cross-reference tool earn its place?** With it 91.0% / 95.7%; without it 93.2% / 98.3%. It is correct and it settles the GAP ambiguity deterministically, but it has not paid for itself. Decide on more cases, not on principle.
+3. **Held-out has never been run** for Layer 2, and Layer 1 is owed a re-measure after the Annex III boundary fix and the model switch.
 
 #### M4b — Non-English documentation (DECIDED: do it; sequenced after the judge works)
 
@@ -446,7 +470,22 @@ Related: M8's system-card guide already tells users what structure to supply for
 
 README (problem → architecture diagram → eval numbers up top → use cases), 2-min demo (the flip-test: one sentence flips not_high_risk → high_risk), clean commit history, FastAPI endpoint (document in → structured report out).
 
+> **First job here: compose the two graphs.** `classify()` and `analyse()` both work and are both measured, but nothing calls them in sequence — the pipeline exists as two halves with a typed seam (`ClassificationResult`) and no caller.
+>
+> **One document in.** Both halves already take a single string, and the composed entry point does the same: the user submits their documentation once, it is classified, and the same text is checked against whatever obligations that classification activates. Documentation quality is a quality-of-answer problem, not an input-format problem — a thin document yields a thin report, and M8's guide is where that is addressed.
+>
+> The two real decisions:
+> - **Gating.** Chapter III attaches to high-risk use cases only. No high-risk use case → no gap analysis, and the report must SAY so rather than return an empty finding list that reads like a clean bill of health. `prohibited` is its own answer and must not fall through to obligation-checking.
+> - **Per use case.** `analyse()` already selects per use case; the orchestrator passes the whole `ClassificationResult` through, never a collapsed overall class.
+>
+> Do this before the FastAPI layer, so the endpoint wraps a working pipeline instead of defining one.
+
 Make the harness engineering visible. The observability/trace layer, the per-rule tool calls, the provider abstraction — these are engineering, not plumbing to hide. Show a Langfuse trace in the README. (Personal angle worth surfacing in interviews: prior experience running LiteLLM as a proxy with header rewriting, and MCP work — most candidates only use these as an SDK. That's harness engineering; name it.)
+
+> **Decide `SystemUnderReview` and `DocumentChunk` here.** Both are exported from `schemas/` and referenced by nothing in `src/` — only by `test_schemas.py` and one docstring. They are anticipatory rather than dead: `SystemUnderReview` is the plausible request type for this endpoint. The endpoint settles it. If it takes raw text plus a `system_id` (what `gap.graph.analyse` already takes), both should be deleted — `DocumentChunk` is in any case superseded by `retrieval.Chunk`, which is what actually carries chunks at runtime. A schema nothing produces or consumes advertises a contract that does not exist. `ClassificationState` was removed for exactly this reason; these two were left only because M6 might still claim them.
+>
+> Also fix `ComplianceReport`'s docstring while there — it says "for one SystemUnderReview", which stopped being true when `analyse()` took a `system_id` and a document instead.
+
 **DoD:** a stranger understands it in 2 min; `git clone` + README → runs; a trace is shown.
 
 ### M7 — Multi-use-case decomposition (deferred; do NOT start before M6 ships)
@@ -466,7 +505,8 @@ What changes:
 - The cascade itself: **nothing.** It is already per-use-case and brain-agnostic.
 - `classify()` becomes a loop; the most-severe-wins aggregation moves into its own function with its own deterministic test — that rule is legal logic, not plumbing.
 - **Art. 50 goes per use case.** It is asked once per cascade run, so N runs produce N answers for a field currently typed as a single `ClassificationAnswer | None`. The job-ad generator owes transparency; the scorer may not.
-- `ClassificationState.use_cases` already exists as the holding pen.
+- `ClassificationResult.use_cases` is already a list, and `analyse()` already selects obligations per use case — so the downstream half of this is built. What is missing is upstream: something that produces more than one entry in that list.
+- **Scope the EVIDENCE per use case, not just the rules.** `node_check_compliance` builds jobs carrying a `use_case_id`, then judges every one of them against the WHOLE document. Harmless while `classify()` yields exactly one use case — the document IS that use case's document — and a false clearance the moment it yields two: retrieval for the scoring use case's Art. 14 check can return the oversight paragraph written about the CV parser, and the scorer is credited with a control it does not have. **Cross-use-case evidence leakage** — the same class of bug as cross-document leakage, which per-document Chroma collections already make unreachable; this one is not yet closed. Deliberately deferred rather than missed: scoping evidence to a use case requires knowing which passages belong to it, which IS the decomposition problem, so it cannot be solved before the split works. Cheap to add then — `judge(rule, document)` gains a `use_case` argument, one call site. The `Checker` protocol stays as it is; the Layer-2 eval is per-rule-per-document by construction and has no use cases.
 
 **Why it needs its own eval layer, and why that's the real cost:** the split is the hardest judgement in the pipeline and the least verifiable — "is this one purpose or three?" has no crisp answer in the enacted text, and a wrong split silently changes every downstream verdict. The current Layer 1 golden set is one-description-one-expected-class and **cannot measure it at all**. M7 requires cases whose ground truth is the *decomposition* (multi-function product doc → expected set of use cases), scored on set agreement, before any of its output can be trusted.
 **DoD:** a multi-function reference doc yields ≥2 use cases with different risk classes; decomposition eval reports set agreement against hand-authored ground truth; obligations are raised only against the high-risk use case.
