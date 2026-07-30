@@ -12,7 +12,7 @@ from datetime import date
 
 import pytest
 
-from aiact.graph.llm_brain import LLMBrain
+from aiact.classify.llm_brain import LLMBrain
 from aiact.providers import ProviderProfile, estimate_tokens, profile_for
 from aiact.schemas.classification import ClassificationQuestion
 from aiact.schemas.policy import LegalSource
@@ -213,9 +213,7 @@ def test_usage_is_recorded_even_when_the_answer_is_unusable(monkeypatch):
     def completion(**kwargs):
         message = types.SimpleNamespace(content="not json at all")
         usage = types.SimpleNamespace(prompt_tokens=3000, completion_tokens=100)
-        return types.SimpleNamespace(
-            choices=[types.SimpleNamespace(message=message)], usage=usage
-        )
+        return types.SimpleNamespace(choices=[types.SimpleNamespace(message=message)], usage=usage)
 
     monkeypatch.setitem(sys.modules, "litellm", types.SimpleNamespace(completion=completion))
     brain = LLMBrain(model="anthropic/claude-haiku-4-5")
@@ -305,9 +303,7 @@ def test_cache_marking_is_reported_through_the_brain(monkeypatch):
     def completion(**kwargs):
         message = types.SimpleNamespace(content='{"value": true, "confidence": "high"}')
         usage = types.SimpleNamespace(prompt_tokens=3800, completion_tokens=20)
-        return types.SimpleNamespace(
-            choices=[types.SimpleNamespace(message=message)], usage=usage
-        )
+        return types.SimpleNamespace(choices=[types.SimpleNamespace(message=message)], usage=usage)
 
     monkeypatch.setitem(sys.modules, "litellm", types.SimpleNamespace(completion=completion))
     brain = LLMBrain(model="anthropic/claude-haiku-4-5")

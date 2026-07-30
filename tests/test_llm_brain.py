@@ -14,7 +14,7 @@ from datetime import date
 
 import pytest
 
-from aiact.graph.llm_brain import LLMBrain, Unanswerable, _parse_bool, _parse_value
+from aiact.classify.llm_brain import LLMBrain, Unanswerable, _parse_bool, _parse_value
 from aiact.schemas.classification import ClassificationQuestion
 from aiact.schemas.enums import AnnexIIIArea, DerogationCondition
 from aiact.schemas.policy import LegalSource
@@ -146,7 +146,7 @@ def test_every_abstention_is_still_cited(stub_litellm):
 def test_abstention_routes_the_cascade_to_needs_review(stub_litellm):
     """The point of all the above: a low-confidence answer must escalate to a human, not produce
     a tier."""
-    from aiact.graph import classify
+    from aiact.classify import classify
     from aiact.schemas.enums import RiskClass
 
     stub_litellm("not json at all")
@@ -215,14 +215,14 @@ def test_every_question_type_is_offered_a_way_to_decline():
     """A question that permits only true or false INSTRUCTS the model to pick one, and it will —
     from what the text implies rather than what it states. That is how a system silent on what its
     ranking model optimises drew "evaluates and scores candidates" at high confidence."""
-    from aiact.graph.llm_brain import _answer_instructions
+    from aiact.classify.llm_brain import _answer_instructions
 
     for answer_type in ("bool", "annex_area", "derogation"):
         assert "unknown" in _answer_instructions(answer_type), answer_type
 
 
 def test_the_prompt_forbids_reading_silence_as_denial():
-    from aiact.graph.llm_brain import _SYSTEM_PROMPT
+    from aiact.classify.llm_brain import _SYSTEM_PROMPT
 
     assert "SILENCE IS NOT AN ANSWER" in _SYSTEM_PROMPT
     assert "not a description of a system that does not" in _SYSTEM_PROMPT

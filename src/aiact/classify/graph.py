@@ -43,8 +43,8 @@ from typing import Any
 from langgraph.graph import END, START, StateGraph
 from pydantic import BaseModel
 
+from aiact.classify.brain import ClassificationBrain
 from aiact.config import get_settings
-from aiact.graph.brain import ClassificationBrain
 from aiact.guidance import load_snippet
 from aiact.policy_loader import _FRONT_FIELD, _FRONT_MATTER, verify_integrity
 from aiact.schemas.classification import (
@@ -450,9 +450,7 @@ def build_graph(
         # on Commission interpretation when no verdict was reached at all.
         declined = answer.abstained_because is not None
         if question.guidance_sources and not answer.guidance_sources and not declined:
-            return answer.model_copy(
-                update={"guidance_sources": list(question.guidance_sources)}
-            )
+            return answer.model_copy(update={"guidance_sources": list(question.guidance_sources)})
         return answer
 
     def node_is_ai(state: GraphState) -> dict[str, Any]:

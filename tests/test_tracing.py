@@ -63,7 +63,7 @@ def test_trace_context_does_not_leak_after_the_scope():
 def test_a_classify_run_without_keys_makes_no_llm_metadata(monkeypatch):
     """End to end through the deterministic path: a full classify() run with no keys never produces
     trace metadata, so the LLM call (when there is one) is identical to the untraced call."""
-    from aiact.graph import ScriptedBrain, classify
+    from aiact.classify import ScriptedBrain, classify
 
     seen: list[dict | None] = []
 

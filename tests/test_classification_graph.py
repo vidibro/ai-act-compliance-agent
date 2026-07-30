@@ -14,8 +14,8 @@ from pathlib import Path
 import pytest
 from pydantic import ValidationError
 
+from aiact.classify import ScriptedBrain, build_graph, classify
 from aiact.eval.classification_cases import load_classification_cases
-from aiact.graph import ScriptedBrain, build_graph, classify
 from aiact.schemas.classification import ClassificationAnswer
 from aiact.schemas.enums import AnnexIIIArea, DerogationCondition, RiskClass
 from aiact.schemas.eval import ClassificationCase
@@ -177,8 +177,8 @@ def test_transparency_is_checked_for_a_high_risk_use_case():
             "is_ai": True,
             "prohibited": False,
             "annex_iii": AnnexIIIArea.EMPLOYMENT,
-            "profiling": True,        # -> high_risk
-            "transparency": True,     # ...and it ALSO interacts with people
+            "profiling": True,  # -> high_risk
+            "transparency": True,  # ...and it ALSO interacts with people
         }
     )
     result = classify("an AI chatbot that interviews and scores candidates", brain, "chatbot")
@@ -215,7 +215,7 @@ def test_transparency_never_influences_the_risk_class():
     )
     result = classify("scorer that also chats", brain, "s")
     assert result.overall_risk_class == RiskClass.HIGH_RISK  # unaffected
-    assert result.confidence == "high"                       # unaffected
+    assert result.confidence == "high"  # unaffected
     # the uncertainty is reported on its own axis, not spread to the risk verdict
     assert result.transparency.confidence == "low"
 
@@ -225,7 +225,7 @@ def test_load_questions_anchors_every_question_in_stored_text():
     """The classification questions are anchored the same way obligation `requirement` fields are.
     Asking "which Annex III area is this?" without supplying Annex III would be exactly the
     unanchored guessing the article store exists to prevent."""
-    from aiact.graph.classify import QUESTIONS, load_questions
+    from aiact.classify.graph import QUESTIONS, load_questions
 
     anchored = load_questions(
         "2024-07-12", ROOT / "data" / "policy" / "articles", ROOT / "data" / "policy" / "annexes"
@@ -237,7 +237,7 @@ def test_load_questions_anchors_every_question_in_stored_text():
 
 def test_annex_iii_question_contains_the_actual_annex_iii():
     """The decisive one: the area list itself must be in the prompt, verbatim."""
-    from aiact.graph.classify import load_questions
+    from aiact.classify.graph import load_questions
 
     q = load_questions(
         "2024-07-12", ROOT / "data" / "policy" / "articles", ROOT / "data" / "policy" / "annexes"
@@ -250,7 +250,7 @@ def test_annex_iii_question_contains_the_actual_annex_iii():
 def test_bare_questions_stay_context_free():
     """The deterministic ScriptedBrain path must need no file IO — that is what keeps the routing
     tests and the demo runnable with nothing but the repo."""
-    from aiact.graph.classify import QUESTIONS
+    from aiact.classify.graph import QUESTIONS
 
     assert all(q.context == "" for q in QUESTIONS.values())
 
@@ -327,7 +327,7 @@ def _abstention(node_id: str, article: int, cause: str, paragraph: int | None = 
 
 
 def test_a_silent_description_is_told_which_fact_is_missing():
-    from aiact.graph.classify import _why_it_could_not_decide
+    from aiact.classify.graph import _why_it_could_not_decide
 
     why = _why_it_could_not_decide([_abstention("profiling", 6, "description_silent", 3)])
     assert "evaluates, scores or ranks people" in why  # the fact, in the author's words
@@ -338,7 +338,7 @@ def test_a_silent_description_is_told_which_fact_is_missing():
 def test_an_unusable_reply_is_not_blamed_on_the_documentation():
     """Telling someone to rewrite adequate documentation because the MODEL failed would be worse
     than saying nothing — they would go and edit a document that was never the problem."""
-    from aiact.graph.classify import _why_it_could_not_decide
+    from aiact.classify.graph import _why_it_could_not_decide
 
     why = _why_it_could_not_decide([_abstention("profiling", 6, "reply_unusable", 3)])
     assert "failure of the run, not of the documentation" in why
@@ -346,7 +346,7 @@ def test_an_unusable_reply_is_not_blamed_on_the_documentation():
 
 
 def test_both_causes_are_reported_separately_in_one_run():
-    from aiact.graph.classify import _why_it_could_not_decide
+    from aiact.classify.graph import _why_it_could_not_decide
 
     why = _why_it_could_not_decide(
         [
@@ -362,7 +362,7 @@ def test_both_causes_are_reported_separately_in_one_run():
 def test_every_cascade_node_can_name_the_fact_it_needed():
     """A node added later without an entry would silently degrade to 'the fact this question turns
     on', which is the vague message this replaced."""
-    from aiact.graph.classify import _WHAT_THE_NODE_NEEDED, QUESTIONS
+    from aiact.classify.graph import _WHAT_THE_NODE_NEEDED, QUESTIONS
 
     assert set(_WHAT_THE_NODE_NEEDED) == set(QUESTIONS)
 

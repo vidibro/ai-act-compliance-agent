@@ -15,8 +15,8 @@ from pathlib import Path
 import pytest
 from pydantic import ValidationError
 
-from aiact.graph.classify import classify, load_questions
-from aiact.graph.scripted_brain import ScriptedBrain
+from aiact.classify.graph import classify, load_questions
+from aiact.classify.scripted_brain import ScriptedBrain
 from aiact.schemas.enums import RiskClass
 from aiact.schemas.policy import GuidanceSource
 
@@ -70,7 +70,7 @@ def test_guidance_is_attached_to_the_prohibited_node_only():
 
 def test_bare_questions_carry_no_guidance():
     """The deterministic path stays file-IO-free: the bare QUESTIONS constant has no guidance."""
-    from aiact.graph.classify import QUESTIONS
+    from aiact.classify.graph import QUESTIONS
 
     assert all(q.guidance_context == "" for q in QUESTIONS.values())
     assert all(q.guidance_sources == () for q in QUESTIONS.values())
@@ -121,20 +121,20 @@ def test_guidance_is_deduplicated_in_the_result():
 
 # --- the LLM prompt actually contains the guidance ----------------------------------------------
 def test_the_llm_prompt_includes_labelled_non_binding_guidance():
-    from aiact.graph.llm_brain import LLMBrain
+    from aiact.classify.llm_brain import LLMBrain
 
     q = anchored()["prohibited"]
     content = LLMBrain(model="anthropic/claude-opus-4-8")._user_content(q, "a use case")
     text = content if isinstance(content, str) else " ".join(p["text"] for p in content)
     assert "NON-BINDING" in text
     assert "candidates during the selection and hiring process" in text  # the guidance passage
-    assert 'Enacted text' in text  # kept distinct from the law
+    assert "Enacted text" in text  # kept distinct from the law
 
 
 def test_an_abstention_does_not_claim_to_rest_on_guidance():
     """A node that declined rested on nothing. Attaching the guidance anyway made the report warn
     that a verdict leaned on non-binding Commission interpretation when no verdict was reached."""
-    from aiact.graph.brain import ClassificationBrain  # noqa: F401
+    from aiact.classify.brain import ClassificationBrain  # noqa: F401
     from aiact.schemas.classification import ClassificationAnswer
 
     class Declining:
@@ -143,12 +143,19 @@ def test_an_abstention_does_not_claim_to_rest_on_guidance():
         def decide(self, question, description):
             if question.node_id == "is_ai":
                 return ClassificationAnswer(
-                    value=True, reasoning="yes", confidence="high", source=question.source,
+                    value=True,
+                    reasoning="yes",
+                    confidence="high",
+                    source=question.source,
                     node_id="is_ai",
                 )
             return ClassificationAnswer(
-                value=None, reasoning="declined", confidence="low", source=question.source,
-                node_id=question.node_id, abstained_because="description_silent",
+                value=None,
+                reasoning="declined",
+                confidence="low",
+                source=question.source,
+                node_id=question.node_id,
+                abstained_because="description_silent",
             )
 
     result = classify("a vague description", Declining(), "vague", questions=anchored())

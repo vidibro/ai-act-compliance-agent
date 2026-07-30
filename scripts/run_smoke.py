@@ -21,8 +21,8 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 
-from aiact.graph.classify import classify, load_questions  # noqa: E402
-from aiact.graph.llm_brain import LLMBrain  # noqa: E402
+from aiact.classify.graph import classify, load_questions  # noqa: E402
+from aiact.classify.llm_brain import LLMBrain  # noqa: E402
 
 SMOKE = Path(__file__).resolve().parents[1] / "data" / "golden_set" / "smoke"
 

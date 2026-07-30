@@ -17,7 +17,7 @@ from pathlib import Path
 
 import pytest
 
-from aiact.graph.classify import _provision_text
+from aiact.classify.graph import _provision_text
 from aiact.policy_loader import _read_article, verify_integrity
 
 ROOT = Path(__file__).resolve().parents[1]

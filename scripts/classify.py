@@ -1,14 +1,14 @@
 #!/usr/bin/env python3
 """Classify a use-case description through the M3 graph.
 
-    # deterministic scripted demo — the flip, no API key needed:
-    python scripts/classify.py --demo
+# deterministic scripted demo — the flip, no API key needed:
+python scripts/classify.py --demo
 
-    # real classification with the configured LLM (needs an API key):
-    python scripts/classify.py --text "A tool that scores and ranks job applicants by fit."
+# real classification with the configured LLM (needs an API key):
+python scripts/classify.py --text "A tool that scores and ranks job applicants by fit."
 
-    # run the whole Layer 1 golden set through the LLM and score classification accuracy:
-    python scripts/classify.py --golden
+# run the whole Layer 1 golden set through the LLM and score classification accuracy:
+python scripts/classify.py --golden
 """
 
 from __future__ import annotations
@@ -19,10 +19,10 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 
+from aiact.classify import ScriptedBrain, classify  # noqa: E402
+from aiact.classify.graph import load_questions  # noqa: E402
 from aiact.eval.classification_cases import load_classification_cases  # noqa: E402
 from aiact.eval.classification_score import score_case, score_run  # noqa: E402
-from aiact.graph import ScriptedBrain, classify  # noqa: E402
-from aiact.graph.classify import load_questions  # noqa: E402
 from aiact.schemas.enums import AnnexIIIArea, DerogationCondition  # noqa: E402
 from aiact.tracing import enable_tracing  # noqa: E402
 from aiact.usage import PRICES_AS_OF  # noqa: E402
@@ -88,7 +88,7 @@ def demo() -> None:
 
 
 def run_golden() -> None:
-    from aiact.graph.llm_brain import LLMBrain
+    from aiact.classify.llm_brain import LLMBrain
 
     cases = load_classification_cases()
     brain = LLMBrain()
@@ -144,7 +144,7 @@ def main() -> None:
     elif args.golden:
         run_golden()
     else:
-        from aiact.graph.llm_brain import LLMBrain
+        from aiact.classify.llm_brain import LLMBrain
 
         print(f"\nDescription: {args.text}\n")
         _print(classify(args.text, LLMBrain(), questions=load_questions()))

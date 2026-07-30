@@ -37,7 +37,7 @@ from aiact.tracing import current_metadata
 from aiact.usage import Usage
 
 if TYPE_CHECKING:
-    from aiact.graph.brain import ClassificationBrain
+    from aiact.classify.brain import ClassificationBrain
 
 _EVIDENCE_MAX_LENGTH = 300
 

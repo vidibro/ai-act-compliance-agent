@@ -18,7 +18,7 @@ from typing import TYPE_CHECKING, Any
 from aiact.schemas.classification import ClassificationAnswer, ClassificationQuestion
 
 if TYPE_CHECKING:
-    from aiact.graph.brain import ClassificationBrain
+    from aiact.classify.brain import ClassificationBrain
 
 
 class ScriptedBrain:
