@@ -97,6 +97,13 @@ is authored before the code it judges:
    (no classifier run — that would leak it). **The reporting run is still pending**: run once against
    a frozen commit, record the date and git sha, and EXPECT a lower number than dev's 7/7 — that is
    the honest figure appearing for the first time, not a regression.
+7. ⛔ **BLOCKED — the held-out reporting run must wait for M4d.** The 2026-07-30 coverage audit found
+   two missing cascade doors that change risk classes: **Annex I safety components (Art. 6(1)) are
+   classified `minimal`** — a false clearance — and **Art. 2 applicability is never asked at all**.
+   Running held-out against today's cascade produces a headline number measured on a classifier with
+   two known holes, which then has to be discarded and re-run. Land M4d-1 and M4d-2 first, with
+   golden-set cases for each, THEN report held-out once against a frozen commit.
+
 ### The Annex III scope boundary (dev-side fix, 2026-07-22)
 
 The held-out run's two risk misses both sat on the *minimal vs not_high_risk* line — is a
@@ -453,6 +460,100 @@ With no authored boundaries the cuts ARE arbitrary, which is precisely the situa
 **Do not add it on principle — add it on evidence.** The signal to watch is false INADEQUATE verdicts on unstructured documents whose content is actually complete: that is the fingerprint of an argument split across two chunks, where the judge sees a process with its measures missing. If the judge's eval shows it, add conditional overlap; if it does not, the duplication is not worth paying for.
 
 Related: M8's system-card guide already tells users what structure to supply for CLASSIFICATION. The same argument extends to gap analysis — a technical file with headings is checked better, and saying so in the guide is fairer than silently penalising unstructured input.
+
+### M4d — SCOPE GAPS: what the Act says that the implementation does not ⬅️ BLOCKS the Layer 1 held-out run
+
+Found 2026-07-30 by auditing the cascade's six questions and the 19 spec rules against the coverage ledger and the enacted text. The ledger itself is sound — all 113 articles are partitioned and a test enforces it — but **it justifies three exclusions by pointing at machinery that does not exist**, and the schema documents a high-risk route the graph never takes.
+
+These are not backlog items. Findings 1 and 2 change risk classes, so **the Layer 1 held-out run must not happen until they land** — otherwise the headline number is measured against a cascade with two missing doors, and has to be thrown away and re-run.
+
+**Order:** 1 + 2 together (both are missing cascade nodes, both need golden-set cases) → 4 (list-only ships without ground truth) → 3 → 5, 6.
+
+Ordered below by what a wrong answer costs a user.
+
+Triggered by noticing Art. 50 is answered and then never checked. Audited the cascade's six questions and the 19 spec rules against the coverage ledger and the enacted text. The ledger itself is sound — all 113 articles are partitioned and a test enforces it — but **it justifies three exclusions by pointing at machinery that does not exist**, and the schema documents a high-risk route the graph never takes.
+
+Ordered by what a wrong answer costs a user.
+
+#### M4d-1 — Annex I safety components are classified `minimal` — a FALSE CLEARANCE 🔴
+
+`RiskClass.HIGH_RISK` says it plainly: *"Either an Annex I safety component, or an Annex III use case…"*. The cascade only ever asks the second. `decide_risk_class` routes `in_annex_iii.value is None` straight to `MINIMAL`, so an AI safety component of a machine, a medical device, a lift or a toy — high-risk under **Art. 6(1)** — is told it owes nothing.
+
+This is the worst failure mode the project has: not a missed gap inside a report, but a high-risk system handed a clean bill of health. Everything else in this audit over-reports; this one under-reports.
+
+`data/policy/annexes/2024-07-12/annex-I.md` is already in the repo and read by nothing. The fix is a node before `annex_iii`, and a second route into `high_risk` that skips the Art. 6(3) derogation logic entirely — the derogations are Art. 6(3), which qualifies Art. 6(2), and they do not reach Art. 6(1) systems at all.
+
+#### M4d-2 — Art. 2 applicability is never asked 🔴
+
+The ledger excludes Art. 2 because it is *"consumed by the classification graph (`ClassificationState.in_eu_scope` / `is_excluded`)"*. **No such node exists, and `ClassificationState` was a stranded model deleted on 2026-07-29** — referenced by nothing in `src/` even before that. So the justification was never true.
+
+Consequence: the tool classifies systems the Regulation does not govern. No territorial-scope question (Art. 2(1)), and none of the exclusions — national security and defence (2(3)), pure scientific R&D (2(6)), purely personal non-professional use (2(10)). A defence contractor gets a full Chapter III gap report for a system explicitly carved out.
+
+Fails safe in direction (over-reporting, not under), but tells users they owe duties they do not.
+
+#### M4d-3 — Art. 50 is detected and then dropped 🟠
+
+The cascade answers *"does Art. 50 apply?"* into `ClassificationResult.transparency`. **Zero spec rules cite Art. 50**, so the documentation is never checked against it. Every other obligation we detect, we verify; this one we announce and abandon. The ledger already carries the TODO.
+
+The applicability question stays in classification — it is a property of the system, like "is it in Annex III?", and `assemble` is where it belongs because every path reaches it. What is missing is the CHECK. Four things make it more than a spec addition:
+
+- **`select()` keys on `risk_class`, and Art. 50 is deliberately not a risk class.** A minimal generator and a high-risk chatbot can both owe it, so `applies_to_risk_class` cannot express these rules. Selection needs a second axis — `applies_when: transparency` or similar.
+- **The paragraphs split by role.** 50(1) and 50(2) bind the provider, 50(3) and 50(4) the deployer. A provider-only run must report the deployer paragraphs as out of assessment rather than silently swallowing them.
+- **It survives `prohibited`**, which the pipeline currently gates out before the gap layer runs.
+- **Its own application date** under Art. 113 — see finding 5.
+
+Text is already resolved at `articles/2024-07-12/article-050.md`.
+
+#### M4d-4 — Only the PROVIDER role exists; the other four are absent 🟠
+
+`review()` takes `role: ActorRole = ActorRole.PROVIDER`, no node ever asks, and all 19 rules are `[provider]`. Deployer, importer, distributor and authorised representative are modelled in `ActorRole` and covered by nothing.
+
+**Decided 2026-07-30: report every role, judge only the ones held.** The first instinct was to stay provider-only, on the grounds that duties a user does not hold are noise. Measuring it killed that objection.
+
+**The noise barely exists.** The provider set is 19 rules from ~19 articles. Every other role is **ONE article**:
+
+| role | article | duties | evidenced in a document? |
+|---|---|---|---|
+| authorised representative | 22 | 3 | **none** — appoint by mandate, perform mandated tasks, terminate on breach |
+| importer | 23 | 7 | **~1** — the rest is verify, label, storage, keep 10 years, inform, cooperate |
+| distributor | 24 | 6 | **~1** — verify CE marking, storage, corrective action, cooperate |
+| deployer | 26 (+27 FRIA) | 12 (+5) | **~6** — the only role with real documentary substance |
+
+The JUDGED list grows 7 → ~14, and only when the deployer role is held. Three of the four roles are almost entirely process obligations that the existing `document_verifiable: false` path already routes to *confirm separately* — no LLM call, no verdict, no false gap. Cost per run stays under $0.05.
+
+**Why it is worth doing, not merely cheap.** Users do not know which roles they hold, and the Act's drafting is what confuses them:
+
+- **Art. 26(7)** — a deployer who is an employer must inform workers' representatives BEFORE putting a high-risk system into service at the workplace. That is Annex III(4), this project's exact scope, and a provider-only report omits it entirely. The HR team reading our output is usually the deployer.
+- **Art. 25(1)** — a distributor, importer or deployer **BECOMES a provider** by putting its name or trademark on the system, substantially modifying it, or changing its intended purpose to a high-risk one. A company white-labelling a vendor tool has silently taken on all 19 provider obligations. The ledger excludes Art. 25 as "relevant to ROLE ASSIGNMENT, not a documentation-checkable duty" — correct about the duty, silent about the assignment.
+
+So a report covering every role is a decision aid, not padding: it is what a reader needs in order to decide whether to take a role on or delegate it.
+
+**Shape:**
+1. **Judge** the roles held — verdicts, evidence, citations, exactly as now.
+2. **List** every other role's obligations — citations, no verdicts, zero LLM calls, under a heading that makes the conditional explicit ("if you also act as deployer, you would owe…"). An unheld role must never produce a GAP.
+3. **A role-assignment section** on Art. 25's triggers — do you put your name on it, modify it, change its purpose? Three questions that move a reader from deployer to provider.
+
+**Cost:** ~36 rules across 6 articles (22–27), all already resolved verbatim in the repo. `Finding` needs a `role` axis; `select()` already filters on `applies_to_role`, so selection is unchanged. Six ledger entries flip in-scope.
+
+**The real cost is the golden set, not the rules.** Layer 2's ground truth is ablations of a PROVIDER's technical file. Deployer duties cannot be evidenced there — they need deployment records, a FRIA, logs, evidence that instructions were followed. That is a new corpus authored from scratch, and until it exists the deployer rules are unmeasured. **Ship the LIST for all roles first** (no ground truth needed, since nothing is judged), and gate JUDGING a role on having cases for it.
+
+#### M4d-5 — Nothing is in force yet, and no report says so 🟠
+
+All 19 rules carry `effective_date: 2026-08-02` (Art. 113) and `status: active`. Today's reports raise gaps against obligations that bind nobody yet, and `ActiveRules.postponed` is permanently empty because no rule uses `status: postponed` — the spec deliberately carries the date instead.
+
+Three options, cheapest first: state the date once at report level (all 19 share it); carry it per rule in the report; or compare `effective_date` against the generation date and route not-yet-effective rules into `postponed`, which would finally give that bucket a purpose. The third changes verdicts, so it needs its own test.
+
+#### M4d-6 — The ledger cites a class that no longer exists 🟡
+
+Arts. 2, 5 and 50 all justify themselves by reference to `ClassificationState`. It is gone. Art. 5's reasoning survives the edit (the `prohibited` node is real); Arts. 2 and 50 do not, per findings 2 and 3. Rewrite all three against what the code actually does — a ledger whose reasons are stale is worse than none, because the coverage test still passes and the file still reads as an audit.
+
+#### Checked and genuinely fine
+
+- **The 19 rules against Chapter III** — Art. 9-15 and the Art. 16+ provider obligations are modelled individually, with Art. 8 and Art. 16 correctly excluded as chapeaux that would double-count.
+- **Art. 72/73** — in scope, and the ledger notes they were found *by* writing the ledger.
+- **Art. 6(4)** — modelled as `AIA-NHR-A06-4`, and the pipeline gate was written around it.
+- **Other Annex III areas** — the enum models all eight; Art. 9-15 apply to every high-risk system regardless of area, so employment scope constrains the golden set, not the ruleset.
+- **GPAI (Ch. V), other actor roles, notified bodies, sandboxes, institutional and amending articles** — all excluded with reasons that hold.
 
 ### M5 — Eval (numbers)
 
