@@ -28,6 +28,11 @@ BLOCKED = [
     ("test_classification_graph", "asserts expected routing per case"),
     ("test_classification_cases", "asserts properties of the answer key"),
     ("test_pipeline", "worked gate examples"),
+    ("test_guidance_in_classification", "asserts the class the model reaches per case"),
+    ("test_llm_brain", "worked question-and-answer examples"),
+    ("aiact/classify", "the classifier itself — cascade order and question wording"),
+    ("llm_brain", "the question prompts the model is actually given"),
+    ("classification_score", "how accuracy is measured, and against what"),
     (".jsonl", "session transcripts"),
     ("scratchpad", "prior working notes"),
 ]
@@ -35,6 +40,10 @@ BLOCKED = [
 READ_TOOLS = {"Read", "Grep", "Glob", "NotebookRead"}
 # A shell can read a file too. Catch the obvious readers rather than trying to parse shell.
 SHELL_READERS = re.compile(r"\b(cat|head|tail|less|more|bat|sed|awk|grep|rg|strings|open)\b")
+
+# History reads every blocked file at once, and the path never appears in the command — `git log -p`
+# alone would carry the whole roadmap. So these are refused outright rather than needle-matched.
+GIT_HISTORY = re.compile(r"\bgit\s+(log|show|diff|blame)\b")
 
 
 def offending(text: str) -> tuple[str, str] | None:
@@ -57,6 +66,14 @@ def main() -> int:
         haystack = " ".join(str(v) for v in args.values())
     elif tool == "Bash":
         command = str(args.get("command", ""))
+        if GIT_HISTORY.search(command):
+            print(
+                "BLOCKED: this session is authoring HELD-OUT cases and must stay blind.\n"
+                "Git history carries every blocked file, so it is refused as a whole.\n"
+                "Work from the enacted text and the source documents only.",
+                file=sys.stderr,
+            )
+            return 2
         haystack = command if SHELL_READERS.search(command) else ""
     else:
         return 0
