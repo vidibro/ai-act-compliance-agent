@@ -244,3 +244,379 @@ cases:
     notes: >-
       The flip pattern applied to employee monitoring (Annex III(4)(b)) rather than recruitment —
       one decisive sentence inside a mostly-benign dashboard description.
+
+  # ================================================================================================
+  # BATCH 2 — Art. 6(1) / Annex I. Authored from six FDA 510(k) summaries for AI-enabled medical
+  # devices, paraphrased. Same blind discipline as batch 1; the classifier was never run on them.
+  #
+  # WHY THIS BATCH EXISTS. Batch 1 and the dev set are all Annex III (employment). Nothing exercised
+  # Art. 6(1) — the OTHER door to high_risk, and a conjunction, which is a different shape of
+  # question: not "which listed area is this?" but "is this AI a safety component of, or itself, a
+  # product under Annex I, AND does that product need a notified body?".
+  #
+  # THE STRUCTURAL FACT ABOUT THE SOURCES. A 510(k) is a US filing. It never states an EU conformity
+  # route, so Art. 6(1)(b) is systematically absent from every one of these documents. Where (a) is
+  # met, that leaves the tier undecidable and needs_review is the only honest key — four of the six
+  # land there. This is not a quirk of authoring; it is what real provider documentation for a
+  # third-country medical device looks like, and it is worth measuring. The alternative — reading
+  # "Class II" on an FDA form as an MDR risk class, or supplying the MDR classification rules from
+  # memory — would invent the missing fact and hand a provider a conclusion it never claimed.
+  #
+  # WHAT IS PINNED. Where condition (a) IS established, the case sets expected_annex_i_product and
+  # leaves expected_third_party_assessment null. That is deliberate: per the schema it pins only
+  # half the test, which is exactly the half these documents support.
+  # ================================================================================================
+
+  # --- NEEDS_REVIEW — Art. 6(1)(b) absent AND the Annex III(5)(d) reading contested -------------
+  - case_id: h_lvo_triage_notification
+    description: >-
+      A radiology workflow tool that runs on head CT-angiography studies as they arrive, using a
+      deep-learning model to flag series it suspects contain a large vessel occlusion and to push a
+      pop-up notification to the radiologist's worklist desktop. The notification carries the patient
+      name, accession number and the pathology, plus a small compressed black-and-white preview
+      labelled not for diagnostic use. The vendor states the tool does not alter the original image,
+      adds no markings to it, does not remove cases from the standard first-in-first-out reading
+      queue, and runs in parallel with routine interpretation, which remains the default for every
+      case; users may switch notifications off for particular pathologies or imaging centres, and
+      doing so does not change the order in which notifications appear. Notified clinicians remain
+      responsible for reviewing the full study to the usual standard, and results are meant to be
+      weighed together with other patient information and the reader's own professional judgement to
+      assist triage and prioritisation of images. Scope is adult head CTA at 0.5 to 1.0 mm slices
+      from 64-slice or better scanners, excluding technically inadequate scans. In a retrospective
+      blinded study of 383 cases across three US sites, sensitivity was 88.8% and specificity 87.2%,
+      and mean time from a study arriving to a notification going out was 3.8 minutes. The
+      radiologist who receives a notification then contacts a neurologist, neuro-interventionalist or
+      other clinician able to treat stroke patients. Cleared as a Class II radiological
+      computer-aided triage and notification software device.
+    expected_risk_class: needs_review
+    expected_annex_i_product: medical_devices
+    expected_third_party_assessment: null
+    expected_annex_iii_area: null
+    expected_performs_profiling: null
+    expected_derogation: null
+    expected_transparency_obligation: false
+    transparency_basis: >-
+      Determinable even though the tier is not. Art. 50(1) does not attach: a worklist pop-up is not
+      a system intended to interact directly with a natural person as an interlocutor, and in any
+      event that it is software is obvious to the radiologist using it. Art. 50(2) does not attach:
+      the preview is a compressed copy of the captured scan, not synthetic content, and the
+      description says the original image is not altered. No emotion inference or biometric
+      categorisation (50(3)) — the model detects a vascular occlusion, it assigns no person to a
+      category on the basis of biometric data. No deep fake (50(4)).
+    decisive_fact: >-
+      The tier cannot be fixed from this description, on two independent grounds. Condition (a) is
+      plausibly met — software with a medical purpose, so a product covered by Regulation (EU)
+      2017/745 at Annex I(A)(11) — but Art. 6(1) is a CONJUNCTION and the description never says
+      whether that product must undergo third-party conformity assessment, so (b) is unresolved.
+      Separately, whether flagging suspected stroke studies for earlier reading is an "emergency
+      healthcare patient triage system" within Annex III(5)(d) is genuinely arguable: it establishes
+      reading priority in an acute setting, yet the description states it does not reorder the
+      standard queue and runs alongside routine interpretation. Two open doors, neither closable from
+      the text, so needs_review.
+    difficulty: ambiguous
+    split: test
+    notes: >-
+      Both honest options from the brief are in play here and the case takes NEITHER cleanly: the
+      Art. 6(1)(b) gap is a missing-input problem (insufficient), the Annex III(5)(d) question is a
+      contested-law problem (ambiguous). Banded as `ambiguous` because the contested reading is the
+      distinctive thing to measure — a classifier that silently resolves Annex III(5)(d) either way
+      is asserting more than the text supports. The heavy "human stays responsible" language is a
+      distractor: it bears on Art. 6(3), which derogates from Art. 6(2) only and cannot reach a
+      system whose Art. 6(1) status is the open question.
+
+  # --- NEEDS_REVIEW — Art. 6(1)(a) met on the "itself a product" limb, (b) absent ---------------
+  - case_id: h_autonomous_retinopathy_screening
+    description: >-
+      An autonomous screening system that analyses colour fundus photographs to decide whether a
+      patient has more than mild diabetic retinopathy, indicated for use by healthcare providers on
+      adults with diagnosed diabetes who have not previously been diagnosed with retinopathy. Two
+      images per eye are captured on one specified fundus camera by an operator whom on-screen
+      prompts walk through acquisition one image at a time; the images travel to the vendor's
+      servers, where an analysis component judges exam quality and the presence or absence of the
+      condition and returns one of three results to the client software: refer to an eye care
+      professional, rescreen in twelve months, or image quality insufficient. Nothing beyond the
+      fundus images is needed to perform the analysis. This submission is a version update that
+      replaces the image-quality classifier and makes the analysis faster, and it adds a green tick
+      or red cross on the submission feedback screen plus clearer wording when repeated attempts
+      still fail on quality. A retrospective study on data from 850 evaluable participants gave
+      sensitivity of about 88% and specificity of about 90% on final-submission images, with about
+      95% of participants receiving a result at all. The filing also describes hazard analysis,
+      cybersecurity controls covering confidentiality, integrity, availability, denial of service and
+      malware, and a protocol governing which future algorithm changes would require a fresh
+      submission. Regulated as a Class II retinal diagnostic software device.
+    expected_risk_class: needs_review
+    expected_annex_i_product: medical_devices
+    expected_third_party_assessment: null
+    expected_annex_iii_area: null
+    expected_performs_profiling: null
+    expected_derogation: null
+    expected_transparency_obligation: false
+    transparency_basis: >-
+      Art. 50(1) does not attach: the stated user is a healthcare provider operating a GUI, not a
+      natural person interacting with the system as an interlocutor, and the description says nothing
+      about the patient being addressed by the system at all. No synthetic content is generated
+      (50(2)) and no deep fake (50(4)). Art. 50(3) is the arguable one and the answer is no: the
+      system's purpose is to detect a disease from an eye image, not to assign natural persons to
+      categories on the basis of biometric data within Art. 3(40) — see notes, this is the most
+      contestable label in the batch.
+    decisive_fact: >-
+      The AI system is ITSELF the product — autonomous software whose output is a referral decision
+      about a patient — so Art. 6(1)(a) is met on its second limb, via Regulation (EU) 2017/745 at
+      Annex I(A)(11). What the description never states is Art. 6(1)(b): whether that product is
+      required to undergo third-party conformity assessment under that legislation. Art. 6(1) is a
+      conjunction, and the system falls outside every Annex III area, so with (b) absent there is no
+      other route to a tier. needs_review.
+    difficulty: insufficient
+    split: test
+    notes: >-
+      Recorded as insufficient rather than reasoned to a class: the second option in the brief. The
+      absent fact is Art. 6(1)(b) and it is structurally absent — a 510(k) cannot contain it.
+      Deliberate contrast with h_cardiac_mapping_autocontour, which is missing the SAME fact but
+      meets (a) on the OTHER limb (safety component, not itself a product); a classifier that
+      collapses the two limbs will look identical on both and should not.
+      CONTESTABLE, recorded rather than hidden: Art. 3(34) defines biometric data without the GDPR's
+      unique-identification qualifier, and Art. 3(40) defines a biometric categorisation system as
+      one assigning persons to categories on the basis of biometric data, with no sensitivity
+      qualifier. A retinal image sorted into "referable disease / not" is not obviously outside that
+      wording. The label here reads Art. 50(3) purpose-bound and in the light of Annex III(1), which
+      frames biometrics as identification, categorisation by protected attribute, and emotion — none
+      of which is what a disease detector does. A reviewer could disagree.
+
+  # --- MINIMAL — an AI component of an Annex I product that is NOT a safety component -----------
+  - case_id: h_fundus_camera_onh_montage
+    description: >-
+      A high-resolution ophthalmic camera for in-vivo imaging of the eye, indicated to capture,
+      display, annotate and store images that aid clinicians in diagnosing and monitoring conditions
+      of the retina, ocular surface and visible adnexa, and to help visualise retinal and choroidal
+      vascular structures in angiography. Imaging modes include true colour, fundus autofluorescence
+      with green or blue excitation, fluorescein angiography, indocyanine green angiography and
+      simultaneous FA plus ICGA, in stereo, widefield, ultra-widefield and montage fields of view; a
+      single capture yields a 90-degree image and two are merged automatically into a 135-degree
+      ultra-widefield view. The instrument uses slit-scanning broad-line fundus imaging with red,
+      green and blue LEDs plus a near-infrared laser diode for live preview, 12-megapixel monochrome
+      sensors, a chin and forehead rest, a joystick, and a 22-inch external display, and it exports
+      through DICOM, PACS, network drives and USB. Intended users are listed as opticians, ophthalmic
+      photographers, optometrists, ophthalmologists, medical assistants and clinical researchers. A
+      deep-learning algorithm detects the optic nerve head so that the ultra-widefield montage no
+      longer depends on the patient fixating accurately: the software locates the optic nerve and
+      works out from the captured images where the patient was gazing at the moment of capture. Other
+      additions in this version are simultaneous FA and ICGA capture, an angiography movie mode,
+      manual placement of ETDRS grids over the pictures to help identify a grading level, an ICGA
+      boost mode, and an eight-picture side-by-side view. A live infrared preview lets the technician
+      confirm image quality and check for lid and lash obstructions before imaging, so fewer
+      recaptures are needed. The filing reports biocompatibility testing on patient-contacting
+      accessories, laser, electrical and electromagnetic compatibility results against a list of
+      standards, bench testing, software verification and validation, and a clinical assessment in
+      which three independent graders found the angiography image quality clinically acceptable.
+      Regulated as a Class II ophthalmic camera.
+    expected_risk_class: minimal
+    expected_annex_i_product: null
+    expected_annex_iii_area: null
+    expected_performs_profiling: false
+    expected_derogation: null
+    expected_transparency_obligation: false
+    transparency_basis: >-
+      Art. 50 does not attach: a camera operated by a technician is not a system interacting directly
+      with a natural person as an interlocutor (50(1)); merging captured photographs generates no
+      synthetic audio, image, video or text content (50(2)); locating an anatomical landmark to align
+      an image infers no emotion and assigns no person to a category (50(3)); no deep fake (50(4)).
+    decisive_fact: >-
+      The only AI in a long optics-and-safety filing is an optic-nerve-head detector whose job is to
+      work out where the patient was looking so the montage can be assembled without accurate
+      fixation. That is an image-assembly function: it fulfils no safety function for the camera, and
+      the description gives no basis for saying its malfunction endangers health or safety
+      (Art. 3(14)) — the clinician still diagnoses from the images, and the technician checks quality
+      on live preview before capture. So Art. 6(1)(a) fails on the safety-component limb, the AI is
+      not itself the product, and no Annex III area covers ophthalmic imaging: minimal.
+    difficulty: buried
+    split: test
+    notes: >-
+      Reasoned to a class the document supports — the first option in the brief — rather than parked
+      at needs_review, because here condition (a) fails and Art. 6(1)(b) never has to be reached.
+      That is the point of the case: the systematically-absent (b) only matters once (a) is met, and
+      a classifier should not raise it here.
+      Buried by construction: one AI sentence inside pages of LEDs, filters, humidity ranges and
+      sterilisation standards. Two ways to get it wrong — miss the AI entirely, or treat "Class II
+      medical device with a deep-learning algorithm" as sufficient for Art. 6(1) without asking
+      whether the component is a SAFETY component.
+      CONTESTABLE: a mis-assembled ultra-widefield montage could in principle conceal pathology,
+      which is a route to arguing the second limb of Art. 3(14). The description does not support it
+      — no hazard of that kind is stated — but a reviewer could reach for it.
+
+  # --- NEEDS_REVIEW — Art. 6(1)(a) met on the SAFETY-COMPONENT limb, (b) absent -----------------
+  - case_id: h_cardiac_mapping_autocontour
+    description: >-
+      A catheter-based cardiac mapping system used during electrophysiology procedures, which
+      acquires a navigation catheter's location together with intracardiac ECG signals and renders
+      three-dimensional anatomical and electro-anatomical maps of the heart; it gives the operator
+      information about the heart's electrical activity and about where the catheter is during the
+      procedure. Any patient eligible for a conventional electrophysiology procedure may be treated
+      with it. Location comes from magnetic sensor technology and an advanced catheter location
+      technology, and the system ships as a patient interface unit, a workstation with a graphical
+      interface, wide-screen monitors, intracardiac in and out ports, a power supply, a patch
+      connection box and cables, a pedal, a location pad and a signal-processing unit; the hardware
+      is unchanged from the previous version. This version retires the legacy fast-anatomical-mapping
+      module, replacing it with one that maps the left atrium, the left ventricle and their
+      substructures automatically from ultrasound, to cut manual contouring: its locked AI algorithms
+      automatically identify cardiac structures overlaid on the intracardiac echo images, create
+      two-dimensional contours of those structures, and build a three-dimensional shell used as the
+      baseline for reconstructing the two chambers. A second new module uses a locked AI algorithm to
+      generate a left-atrial shell when mapping with one particular catheter, and the acquired volume
+      can be refined further with the platform's existing mapping tools. Training and validation data
+      covered a representative range of chamber volumes, geographical locations, ultrasound scanners,
+      scanner settings and catheters, and were drawn from CT scans and from prior cases on the same
+      platform. Post-market user feedback and complaints will be monitored routinely under the
+      manufacturer's quality system, and an authorised change-control plan permits retraining the
+      models on additional datasets, model optimisation, more anatomical structures, further input
+      devices, extra map colouring and display of information imported from an external device,
+      without a new submission. Unit, design, functional and retrospective validation testing on
+      recorded historical procedures all passed, and animal testing under simulated clinical
+      conditions met its protocol. Regulated as a Class II programmable diagnostic computer.
+    expected_risk_class: needs_review
+    expected_annex_i_product: medical_devices
+    expected_third_party_assessment: null
+    expected_annex_iii_area: null
+    expected_performs_profiling: null
+    expected_derogation: null
+    expected_transparency_obligation: false
+    transparency_basis: >-
+      Art. 50 does not attach: an operator reading a map during a procedure is not interacting with
+      the system as an interlocutor and knows it is software (50(1)); maps reconstructed from measured
+      ultrasound and electrical signals are not synthetic content (50(2)); no emotion inference or
+      biometric categorisation (50(3)); no deep fake (50(4)).
+    decisive_fact: >-
+      The AI builds the anatomical map the operator navigates a catheter by inside a beating heart —
+      it identifies the cardiac structures on the echo images and creates the 3D shell used as the
+      baseline for chamber reconstruction — so it is a safety component of a product covered by
+      Regulation (EU) 2017/745 (Annex I(A)(11)): its failure or malfunctioning endangers the health
+      and safety of persons within Art. 3(14), which is condition (a). Art. 6(1)(b) is the missing
+      half — the description never says whether that product requires third-party conformity
+      assessment — and no Annex III area covers cardiac procedures, so there is no second route.
+      needs_review.
+    difficulty: insufficient
+    split: test
+    notes: >-
+      Recorded as insufficient, per the brief's second option. Pairs with
+      h_autonomous_retinopathy_screening: same absent fact, other limb of condition (a). Also carries
+      a live Art. 43(4) / Art. 3(23) hook that this batch does not key — an authorised plan to retrain
+      the models post-market — deliberately left in the description as realistic noise for a
+      classification-only case.
+
+  # --- MINIMAL — the description itself rules out the safety function (clean negative) ----------
+  - case_id: h_pap_comfort_setting_recommender
+    description: >-
+      An optional machine-learning software accessory for positive airway pressure therapy devices
+      that recommends comfort settings — ramp, expiratory pressure relief and its level, and an
+      automatic response setting — to help patients settle in during onboarding and early therapy
+      adaptation. It is indicated for healthcare professionals and patients, in a home or clinical
+      environment. From patient-specific input data it produces a short list of predefined
+      configuration options, all within the connected device's already-cleared configuration limits,
+      which the patient or the healthcare provider can review, accept, disregard or adjust further
+      according to personal preference or clinical guidance. It does not adjust device settings by
+      itself, does not modify prescribed therapy parameters, does not create new settings, does not
+      alter configuration limits, and does not deliver or control therapy; it is reached through an
+      application programming interface and has no user interface or end-user access of its own. The
+      manufacturer states that it identified no hazard and no critical task that would plausibly
+      injure or otherwise harm a patient, so usability and human-factors testing were not
+      required, and that no clinical study was needed because model performance was characterised on
+      retrospective de-identified data representative of the intended population. Retrospective
+      comparison against default configurations showed more nightly usage and more days of use while
+      residual apnoea-hypopnoea index and mask leak stayed comparable. An authorised change-control
+      plan allows performance and data-drift updates and infrastructure updates, evaluated against
+      predefined metrics; it permits no continuously learning algorithms, and every model change is
+      trained, tuned and locked before release. It is filed under the same Class II noncontinuous
+      ventilator product code as the companion patient app it is compared against.
+    expected_risk_class: minimal
+    expected_annex_i_product: null
+    expected_annex_iii_area: null
+    expected_performs_profiling: null
+    expected_derogation: null
+    expected_transparency_obligation: false
+    transparency_basis: >-
+      Art. 50(1) does not attach and the description says why in terms: the software has no user
+      interface or end-user access and is reached only through an API, so it is not a system intended
+      to interact directly with natural persons. A list of predefined configuration options is not
+      synthetic audio, image, video or text content (50(2)); no emotion inference or biometric
+      categorisation (50(3)); no deep fake (50(4)).
+    decisive_fact: >-
+      The recommendations are optional and non-therapeutic, stay inside the connected device's
+      already-cleared configuration limits, change no setting and no prescribed parameter, and the
+      description states that no hazard or critical task reasonably likely to cause injury was
+      identified. On those facts the software fulfils no safety function for the therapy device and
+      its malfunction does not endanger health or safety, so it is not a safety component within
+      Art. 3(14) and Art. 6(1)(a) is not met. It is outside every Annex III area. Minimal.
+    difficulty: obvious
+    split: test
+    notes: >-
+      Reasoned to a supported class (the brief's first option). The batch's clean false-positive
+      anchor, and the only one whose negative is stated rather than inferred.
+      The distractor is the product code: this thing is filed as a "noncontinuous ventilator", which
+      names the host device family, not a safety role for the accessory. A classifier that reads
+      "ventilator" and reaches for Annex I(A)(11) is keyword-matching. expected_performs_profiling is
+      null, not false: individualised recommendations from patient-specific data are arguably
+      profiling, but the question decides nothing here — the Art. 6(3) carve-back derogates from
+      Art. 6(2) and cannot reach a system outside Annex III.
+
+  # --- NEEDS_REVIEW — safety component BURIED in a table, and (b) absent ------------------------
+  - case_id: h_prostate_resection_plan_landmarks
+    description: >-
+      A robotic system indicated for resecting and removing prostatic tissue from men who have lower
+      urinary tract symptoms caused by benign prostatic hyperplasia. It comprises a tower with
+      touchscreen surgeon and support-staff monitors, system software and an embedded operating
+      system, a motorpack, handpiece and probe arms and a foot pedal; a reusable biplane transrectal
+      ultrasound probe that supplies the imaging for the procedure; and a single-use sterile handpiece
+      with an integrated digital scope, passed endoscopically through the urethra to visualise, resect
+      and remove prostatic tissue with a waterjet. The intended user is a urologist supported by
+      operating-room staff, trained and familiar with endoscopic BPH surgery such as TURP and with
+      recognising and managing its complications, and also trained in transrectal ultrasound imaging.
+      During the planning step an optional AI feature can be toggled on: in the transverse view at the
+      angle-and-depth step it supplies the handpiece nozzle position and the prostate capsule
+      boundary, and at the profile-landmark step in the sagittal view it places the four landmarks —
+      treatment start, bladder neck, mid-prostate and treatment end — which the surgeon may then
+      adjust as needed. This version carries an updated model for that same landmark identification.
+      Physician authorisation can now be enabled either on the surgeon monitor or by pressing a button
+      on the motorpack, where previously it was only on the surgeon monitor. The default orientation
+      of the verumontanum protection zone cannot be modified in the transverse plane, while its length
+      can be modified in the sagittal plane. The tower is provided non-sterile and does not contact
+      the patient; the probe is now validated for 71 reprocessing cycles rather than 25 and two
+      further reprocessing methods are documented; the handpiece shelf life goes from six to
+      twenty-four months. Software allows the Wi-Fi cloud connection to be enabled or disabled and
+      users may choose a disconnected system. Design validation used simulated-use and cadaver
+      testing, and the filing tabulates passing results against standards for robotically assisted
+      surgical equipment basic safety, endoscopic equipment, usability and human factors,
+      electromagnetic compatibility, sterilisation, biocompatibility, packaging and transit,
+      cybersecurity, and good machine learning practice. Regulated as a Class II fluid jet system for
+      prostate tissue removal.
+    expected_risk_class: needs_review
+    expected_annex_i_product: medical_devices
+    expected_third_party_assessment: null
+    expected_annex_iii_area: null
+    expected_performs_profiling: null
+    expected_derogation: null
+    expected_transparency_obligation: false
+    transparency_basis: >-
+      Art. 50 does not attach: a surgeon operating a touchscreen during a procedure is not
+      interacting with the system as an interlocutor (50(1)); placing landmarks on captured
+      ultrasound images generates no synthetic content (50(2)); no emotion inference or biometric
+      categorisation (50(3)); no deep fake (50(4)).
+    decisive_fact: >-
+      In one row of a comparison table, the optional AI places the prostate capsule boundary and the
+      four profile landmarks — treatment start, bladder neck, mid-prostate, treatment end — that
+      define where a waterjet resects tissue inside the prostate. That is a safety component of a
+      product covered by Regulation (EU) 2017/745 (Annex I(A)(11)): malfunctioning landmark placement
+      endangers health and safety within Art. 3(14), and the surgeon's ability to adjust the
+      landmarks does not change the tier any more than human sign-off does under Art. 6. Art. 6(1)(b)
+      — whether the product requires third-party conformity assessment — is never stated, and no
+      Annex III area covers surgical resection. needs_review.
+    difficulty: insufficient
+    split: test
+    notes: >-
+      Recorded as insufficient, per the brief's second option, but it doubles as the batch's hardest
+      LOCATE problem: the AI appears once, inside a table row, in a filing otherwise about
+      sterilisation cycles, shelf life and packaging. Banded `insufficient` because that is the band
+      the expected answer belongs to — needs_review is the only correct answer where the decisive
+      fact is absent — and a classifier that never finds the AI at all will also say needs_review,
+      for the wrong reason. Read this one's decisive_fact, not just its label, when scoring.
+      Contrast with h_pap_comfort_setting_recommender: both are optional AI features a human can
+      override inside a medical device, and they land differently, because one places the resection
+      plan and the other suggests a comfort setting.

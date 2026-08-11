@@ -1,0 +1,77 @@
+# Provenance for the Annex I held-out cases (batch 2 of classification_cases_heldout.yaml).
+#
+# WHY THE DOCUMENTS ARE NOT HERE
+# These are FDA 510(k) summaries: manufacturer-authored text that a regulator publishes. Public to
+# read is not public to redistribute, so the repo keeps the HASH rather than the bytes — the same
+# bargain data/policy/articles/ strikes with EUR-Lex, minus the part we are not entitled to store.
+# Anyone can fetch the original from `url` and verify it is byte-identical to what the cases were
+# written from. That is the property that matters; carrying 8.9 MB of third-party PDFs is not.
+#
+# The case DESCRIPTIONS are paraphrases, not extracts. No sentence is copied across.
+#
+# TO VERIFY
+#   curl -o K192383.pdf <url>        # browser may be required: FDA blocks automated fetching
+#   shasum -a 256 K192383.pdf        # must equal `sha256` below
+#
+# NOTE ON THE SOURCES, which shaped four of the six answer keys: a 510(k) is a US filing and never
+# states an EU conformity assessment route. Art. 6(1)(b) is therefore structurally absent from
+# every document here, which is why those cases expect `needs_review` — see the DECIDED note in
+# docs/ROADMAP.md under M4d-1.
+
+retrieved_at: 2026-07-30
+url_pattern: https://www.accessdata.fda.gov/cdrh_docs/pdf{YY}/{SUBMISSION}.pdf
+
+sources:
+  - case_id: h_lvo_triage_notification
+    submission: K192383
+    device: BriefCase
+    applicant: Aidoc Medical, Ltd.
+    decision_date: 2019-12-20
+    url: https://www.accessdata.fda.gov/cdrh_docs/pdf19/K192383.pdf
+    sha256: b4d86fdd1935d4b82fe124c6ce15dca1178de90d52aa13da5b7aabd63b2cf110
+    bytes: 1326088
+
+  - case_id: h_autonomous_retinopathy_screening
+    submission: K213037
+    device: IDx-DR v2.3
+    applicant: Digital Diagnostics Inc.
+    decision_date: 2022-06-17
+    url: https://www.accessdata.fda.gov/cdrh_docs/pdf21/K213037.pdf
+    sha256: 620f074d28bb36b346fcd82dc231c0a263b24ed0376087be29c5354ea00bfcc7
+    bytes: 519898
+
+  - case_id: h_fundus_camera_onh_montage
+    submission: K243878
+    device: CLARUS (700)
+    applicant: Carl Zeiss Meditec, Inc.
+    decision_date: 2025-03-19
+    url: https://www.accessdata.fda.gov/cdrh_docs/pdf24/K243878.pdf
+    sha256: 903e79443c825c148b01d6c1ad0a9560893aac1cf0dfcfe71b4376780203a758
+    bytes: 476436
+
+  - case_id: h_prostate_resection_plan_landmarks
+    submission: K251082
+    device: HYDROS Robotic System (HY1000); HYDROS Handpiece (HH1000)
+    applicant: Procept BioRobotics
+    decision_date: 2025-10-10
+    url: https://www.accessdata.fda.gov/cdrh_docs/pdf25/K251082.pdf
+    sha256: 0797fae3e0c4828d5f3da3ab2ad3c19fac56973c028802aad40db617f8c11ae6
+    bytes: 3421193
+
+  - case_id: h_pap_comfort_setting_recommender
+    submission: K251657
+    device: Personalized Therapy Comfort Settings (PTCS)
+    applicant: ResMed Corp
+    decision_date: 2025-12-05
+    url: https://www.accessdata.fda.gov/cdrh_docs/pdf25/K251657.pdf
+    sha256: 40959b926f552742d9add82a5f517591ecd1169fc09cd42d093418b620542f7b
+    bytes: 2620681
+
+  - case_id: h_cardiac_mapping_autocontour
+    submission: K252972
+    device: CARTO 3 EP Navigation System V8.4
+    applicant: Biosense Webster, Inc.
+    decision_date: 2026-02-20
+    url: https://www.accessdata.fda.gov/cdrh_docs/pdf25/K252972.pdf
+    sha256: efe3e8e91c13c9217207feb85a8f52534fdea9383ef7815985ceb50549be49cd
+    bytes: 493986
