@@ -152,6 +152,13 @@ class ClassificationCase(BaseModel):
 
     # The "why" — the decisive sub-answers a correct classifier should also produce. Optional so a
     # case only pins what actually decides it.
+    expected_scope_exclusion: str = ""
+    """Art. 2 — WHICH paragraph puts this system outside the Regulation, and why. Mandatory whenever
+    the class is OUT_OF_SCOPE, and forbidden otherwise (see the validator). Same discipline as
+    `transparency_basis`: an exclusion that cannot name its paragraph is an assertion, and the
+    exclusions are narrow enough ("exclusively" military, "sole purpose" of research) that the
+    paragraph is where the argument actually lives."""
+
     expected_prohibited: bool = False  # Art. 5
     expected_annex_i_product: AnnexIProduct | None = None
     """Art. 6(1)(a) — the product family whose safety component this system is, or None."""
@@ -200,6 +207,30 @@ class ClassificationCase(BaseModel):
             raise ValueError(
                 f"{self.case_id}: expected_transparency_obligation=True but transparency_basis is "
                 f"empty. Name the Art. 50 paragraph and why it attaches."
+            )
+
+        # Art. 2 — an exclusion must name the paragraph it rests on, and nothing else may claim one.
+        # The classes are ordered in law before the risk tiers: a system the Regulation does not
+        # govern has no tier, so OUT_OF_SCOPE cannot carry Art. 6 sub-answers either.
+        if rc == RiskClass.OUT_OF_SCOPE:
+            if not self.expected_scope_exclusion.strip():
+                raise ValueError(
+                    f"{self.case_id}: expected_risk_class=out_of_scope but "
+                    f"expected_scope_exclusion is empty. Name the Art. 2 paragraph and why it "
+                    f"applies."
+                )
+            if (
+                self.expected_annex_iii_area is not None
+                or self.expected_annex_i_product is not None
+            ):
+                raise ValueError(
+                    f"{self.case_id}: Art. 6 classifies systems the Regulation governs. A system "
+                    f"excluded by Art. 2 is never reached by it."
+                )
+        elif self.expected_scope_exclusion.strip():
+            raise ValueError(
+                f"{self.case_id}: expected_scope_exclusion is set but expected_risk_class={rc}. "
+                f"An Art. 2 exclusion means the Regulation does not apply at all."
             )
 
         # Art. 5 — prohibition and the PROHIBITED class are the same fact, stated two ways.

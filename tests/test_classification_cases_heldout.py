@@ -31,7 +31,7 @@ def test_loads_and_is_entirely_held_out():
     assert {c.split for c in cases} == {"test"}, "a dev case here would poison the reported number"
 
 
-def test_all_five_risk_classes_are_present():
+def test_every_risk_class_is_present():
     present = {c.expected_risk_class for c in _heldout().cases}
     for rc in RiskClass:
         assert rc in present, f"held-out set does not exercise {rc}"

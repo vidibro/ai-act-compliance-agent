@@ -29,6 +29,17 @@ class RiskClass(StrEnum):
     """Outside Annex III entirely. No risk-tier obligations. Art. 4 (AI literacy) still applies,
     and Art. 50 transparency may apply independently of the risk tier."""
 
+    OUT_OF_SCOPE = "out_of_scope"
+    """Art. 2. The Regulation does not govern this system at all — military, defence or national
+    security use (2(3)), scientific research and development (2(6)), pre-market research and
+    testing (2(8)), purely personal non-professional use (2(10)), or a free and open-source release
+    that is not high-risk and falls under neither Art. 5 nor Art. 50 (2(12)).
+
+    NOT the same as `minimal`, and the difference is the whole point of the class: a minimal-risk
+    system is inside the Regulation and still owes Art. 4 AI literacy, with Art. 50 possibly
+    attaching. An out-of-scope system owes nothing under this Regulation. Collapsing the two tells
+    a defence contractor they hold duties the legislator expressly withheld."""
+
     NEEDS_REVIEW = "needs_review"
     """Not a legal category — an engineering escape hatch. The agent could not reach a
     defensible verdict from the documentation. Preferable to a confident wrong answer;
