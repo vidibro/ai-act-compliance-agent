@@ -1,29 +1,42 @@
-# Provenance for the Annex I held-out cases (batch 2 of classification_cases_heldout.yaml).
+# Provenance for the held-out classification cases that were written from real documents
+# (batches 2 and 3 of classification_cases_heldout.yaml).
 #
 # WHY THE DOCUMENTS ARE NOT HERE
-# These are FDA 510(k) summaries: manufacturer-authored text that a regulator publishes. Public to
-# read is not public to redistribute, so the repo keeps the HASH rather than the bytes — the same
-# bargain data/policy/articles/ strikes with EUR-Lex, minus the part we are not entitled to store.
-# Anyone can fetch the original from `url` and verify it is byte-identical to what the cases were
-# written from. That is the property that matters; carrying 8.9 MB of third-party PDFs is not.
+# They are third-party material: manufacturer-authored regulatory filings, tender notices, project
+# records, model cards, a user manual and a press release. Public to read is not public to
+# redistribute, so the repo keeps the HASH rather than the bytes — the same bargain
+# data/policy/articles/ strikes with EUR-Lex, minus the part we are not entitled to store. Anyone
+# can fetch the original from `url` and verify it is byte-identical to what the case was written
+# from. That is the property that matters; carrying the megabytes is not.
 #
 # The case DESCRIPTIONS are paraphrases, not extracts. No sentence is copied across.
 #
 # TO VERIFY
-#   curl -o K192383.pdf <url>        # browser may be required: FDA blocks automated fetching
-#   shasum -a 256 K192383.pdf        # must equal `sha256` below
+#   curl -L -o doc <url>       # some hosts block automated fetching; a browser may be required
+#   shasum -a 256 doc          # must equal `sha256` below
+#   wc -c doc                  # must equal `bytes` below
 #
-# NOTE ON THE SOURCES, which shaped four of the six answer keys: a 510(k) is a US filing and never
-# states an EU conformity assessment route. Art. 6(1)(b) is therefore structurally absent from
-# every document here, which is why those cases expect `needs_review` — see the DECIDED note in
-# docs/ROADMAP.md under M4d-1.
+# `source_id` IS A GENERAL IDENTIFIER, not a filing number. It was one until batch 3, whose sources
+# are not filings and have no such number. The property kept is the one that earns its place: every
+# part of the identifier appears in the URL, so the citation and the fetchable document cannot drift
+# apart. Scheme prefixes name the register — TED, CORDIS, HF (repo@revision), BSH, DJI — and an
+# unprefixed value is an FDA 510(k) number, as batch 2 wrote them.
+#
+# BATCH 2 (Annex I) — a 510(k) is a US filing and never states an EU conformity assessment route.
+# Art. 6(1)(b) is therefore structurally absent from every document there, which is why four of
+# those cases expect `needs_review` — see the DECIDED note in docs/ROADMAP.md under M4d-1.
+#
+# BATCH 3 (Art. 2 scope) — these were chosen for describing a real system in enough detail, before
+# reading the law on them. TED notice PDFs and the CORDIS `?format=json` records were both checked
+# for byte-stability across repeated fetches; Hugging Face URLs are pinned to a commit revision, so
+# `main` moving does not invalidate the hash.
 
-retrieved_at: 2026-07-30
-url_pattern: https://www.accessdata.fda.gov/cdrh_docs/pdf{YY}/{SUBMISSION}.pdf
+retrieved_at: 2026-08-11
 
 sources:
+  # --- Batch 2 — FDA 510(k) summaries. https://www.accessdata.fda.gov/cdrh_docs/pdf{YY}/{ID}.pdf --
   - case_id: h_lvo_triage_notification
-    submission: K192383
+    source_id: K192383
     device: BriefCase
     applicant: Aidoc Medical, Ltd.
     decision_date: 2019-12-20
@@ -32,7 +45,7 @@ sources:
     bytes: 1326088
 
   - case_id: h_autonomous_retinopathy_screening
-    submission: K213037
+    source_id: K213037
     device: IDx-DR v2.3
     applicant: Digital Diagnostics Inc.
     decision_date: 2022-06-17
@@ -41,7 +54,7 @@ sources:
     bytes: 519898
 
   - case_id: h_fundus_camera_onh_montage
-    submission: K243878
+    source_id: K243878
     device: CLARUS (700)
     applicant: Carl Zeiss Meditec, Inc.
     decision_date: 2025-03-19
@@ -50,7 +63,7 @@ sources:
     bytes: 476436
 
   - case_id: h_prostate_resection_plan_landmarks
-    submission: K251082
+    source_id: K251082
     device: HYDROS Robotic System (HY1000); HYDROS Handpiece (HH1000)
     applicant: Procept BioRobotics
     decision_date: 2025-10-10
@@ -59,7 +72,7 @@ sources:
     bytes: 3421193
 
   - case_id: h_pap_comfort_setting_recommender
-    submission: K251657
+    source_id: K251657
     device: Personalized Therapy Comfort Settings (PTCS)
     applicant: ResMed Corp
     decision_date: 2025-12-05
@@ -68,10 +81,92 @@ sources:
     bytes: 2620681
 
   - case_id: h_cardiac_mapping_autocontour
-    submission: K252972
+    source_id: K252972
     device: CARTO 3 EP Navigation System V8.4
     applicant: Biosense Webster, Inc.
     decision_date: 2026-02-20
     url: https://www.accessdata.fda.gov/cdrh_docs/pdf25/K252972.pdf
     sha256: efe3e8e91c13c9217207feb85a8f52534fdea9383ef7815985ceb50549be49cd
     bytes: 493986
+
+  # --- Batch 3 — Art. 2 scope -------------------------------------------------------------------
+  - case_id: h_mil_uas_gnss_denied_navigation
+    source_id: TED:506411-2024
+    device: Enablers for Safe Integration of Military Air Capabilities in the European Sky, Lot 1
+    applicant: European Defence Agency
+    decision_date: 2024-08-23
+    url: https://ted.europa.eu/en/notice/506411-2024/pdf
+    sha256: 03755fe7187ec727d5d352c44cee9fd701c1f6c3113d1199bc03b8a34b7423ac
+    bytes: 256373
+
+  - case_id: h_customs_osint_analysis_tools
+    source_id: TED:845712-2025
+    device: Digital forensics tools & Open Source Intelligence tools
+    applicant: Finnish Customs and the Finnish Border Guard
+    decision_date: 2025-12-19
+    url: https://ted.europa.eu/en/notice/845712-2025/pdf
+    sha256: 0277f7ed4b4c333686bbde0f6574560e30e06c2437546f6824bd6cd719676178
+    bytes: 190674
+
+  - case_id: h_star_formation_ml_classifier
+    source_id: CORDIS:101004141
+    device: NEMESIS — Novel Evolutionary Model for the Early stages of Stars with Intelligent Systems
+    applicant: Horizon 2020 project record
+    decision_date: 2021-04-01
+    url: https://cordis.europa.eu/project/id/101004141?format=json
+    sha256: 78fe8da8b1bfb1c348094e15c7a54ef70d7e0023ffe617ddefe85766bd4f21ce
+    bytes: 57338
+
+  - case_id: h_grid_operator_assistant_research
+    source_id: CORDIS:101119527
+    device: AI4REALNET — AI for REAL-world NETwork operation
+    applicant: Horizon Europe project record
+    decision_date: 2023-06-29
+    url: https://cordis.europa.eu/project/id/101119527?format=json
+    sha256: 49a67cdc56f46fd07b5ebb76106d7e238c4547bb011027c60f74494df49b3673
+    bytes: 87411
+
+  - case_id: h_pool_drowning_detection_rollout
+    source_id: CORDIS:854423
+    device: LYNXIGHT — Deep vision learning for swimmer safety and analytics
+    applicant: Lynxight Ltd, Haifa (H2020 SME instrument project record)
+    decision_date: 2019-02-01
+    url: https://cordis.europa.eu/project/id/854423?format=json
+    sha256: f5d86c1271e54ae7c257b71a0fe127253f50ff7794904b5fe586f842b7d8a967
+    bytes: 15776
+
+  - case_id: h_open_licence_demand_forecaster
+    source_id: HF:ibm-granite/granite-timeseries-ttm-r2@d6a79570cac0f33d526601cd3a0fc7c80a8f9a2f
+    device: Granite-TimeSeries-TTM-R2 model card
+    applicant: IBM Research
+    decision_date: 2025-08-14
+    url: https://huggingface.co/ibm-granite/granite-timeseries-ttm-r2/raw/d6a79570cac0f33d526601cd3a0fc7c80a8f9a2f/README.md
+    sha256: e20234ff1a9eec054fd643d5ef7a4683857c8b24c7b00b466a9f55b6e22728ff
+    bytes: 18233
+
+  - case_id: h_open_licence_tts_voices
+    source_id: HF:hexgrad/Kokoro-82M@f3ff3571791e39611d31c381e3a41a3af07b4987
+    device: Kokoro-82M model card
+    applicant: hexgrad
+    decision_date: 2025-04-10
+    url: https://huggingface.co/hexgrad/Kokoro-82M/raw/f3ff3571791e39611d31c381e3a41a3af07b4987/README.md
+    sha256: 91dcabced89db6f109b8786642f50402d3ee87450e8189589b6f85520e7f4d78
+    bytes: 6348
+
+  - case_id: h_household_oven_bake_predictor
+    source_id: BSH:MCDOC03265677_002
+    device: Series 8 built-in oven with PerfectBake plus / PerfectRoast plus and Home Connect
+    applicant: BSH Hausgeräte GmbH (Bosch press release)
+    decision_date: 2019-09-01
+    url: https://media3.bosch-home.com/Documents/MCDOC03265677_002_Oven_with_AI.pdf
+    sha256: 50cd1e3bc78a3ab5809a4b1badb05ea38e382482f06ed89a414e0492983ac514
+    bytes: 173156
+
+  - case_id: h_consumer_drone_subject_tracking
+    source_id: DJI:DJI_Neo_User_Manual_v1.2_en_us
+    device: DJI Neo user manual v1.2
+    applicant: DJI
+    decision_date: 2024-11-06
+    url: https://dl.djicdn.com/downloads/neo/20241106/DJI_Neo_User_Manual_v1.2_en_us.pdf
+    sha256: 29a66812cf9c1ece1618a7373295b95fee5954ed332b2d48300664a490a254c9
+    bytes: 10379935
