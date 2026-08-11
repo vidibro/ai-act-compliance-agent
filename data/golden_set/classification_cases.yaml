@@ -406,3 +406,137 @@ cases:
       the false-positive control for the annex_i node, matching the role leave_balance_tracker
       plays for annex_iii. Note it is deliberately NOT the Annex III(4) workforce-management case:
       shift allocation is scheduling logistics, not a decision about a person.
+
+  - case_id: defence_drone_swarm_coordination
+    description: >-
+      An AI system procured by a national ministry of defence to coordinate formations of
+      reconnaissance drones on military operations. It assigns search patterns across the formation,
+      re-tasks aircraft when one is lost, and relays imagery to a command post. It is fielded only by
+      the armed forces and is not offered on any civil market.
+    expected_risk_class: out_of_scope
+    expected_scope_exclusion: >-
+      Art. 2(3), second subparagraph. The system is put into service exclusively for military and
+      defence purposes, and the subparagraph applies regardless of the type of entity carrying out
+      those activities.
+    expected_annex_iii_area: null
+    expected_transparency_obligation: false
+    transparency_basis: >-
+      Not reached: a system the Regulation does not govern owes nothing under Art. 50. On the facts
+      none of it attaches either — coordinating aircraft is no direct interaction with a natural
+      person (50(1)), generates no synthetic content (50(2)), infers no emotion and categorises
+      nobody biometrically (50(3)), and produces no deep fake (50(4)).
+    decisive_fact: >-
+      The purpose of use is military, so Art. 2 withholds the Regulation entirely and no risk tier
+      is ever reached. The word carrying the weight is "exclusively" — nothing here points at a
+      civil use of this system.
+    difficulty: obvious
+    split: dev
+    notes: >-
+      The clean dev anchor for out_of_scope, and the tuning counterpart to the held-out Art. 2
+      batch. Deliberately unambiguous: a classifier that cannot exclude this one is not reading
+      Art. 2 at all. Pairs with border_surveillance_drone_analytics.
+
+  - case_id: border_surveillance_drone_analytics
+    description: >-
+      An AI system procured by a national border police force to analyse the video feed from
+      surveillance drones patrolling a land border. It detects groups of people crossing outside
+      authorised points and alerts officers, who decide whether to intercept. The contract is awarded
+      under the national law implementing the EU directive on procurement in the fields of defence
+      and security, and the ministry describes the deployment as protecting national frontiers.
+    expected_risk_class: high_risk
+    expected_annex_iii_area: migration
+    expected_transparency_obligation: false
+    transparency_basis: >-
+      Art. 50 does not attach: detecting crossings and alerting officers is no direct interaction
+      with the people observed (50(1)), generates no synthetic content (50(2)), produces no deep fake
+      (50(4)), and detecting that people are present assigns nobody to a category on the basis of
+      biometric data (50(3)).
+    decisive_fact: >-
+      Border policing is law enforcement, not defence. Art. 2(3) turns on the purpose of USE, so
+      buying under defence-and-security procurement law settles which tendering rules apply and
+      nothing about scope; "protecting national frontiers" is border control, which Annex III(7)
+      lists in its own right. In scope, and high-risk by the Annex III door.
+    difficulty: buried
+    split: dev
+    flips_from: defence_drone_swarm_coordination
+    notes: >-
+      The near neighbour for Art. 2(3), and the more useful half of the pair: same aircraft, same
+      ministry-adjacent buyer, same defence-flavoured vocabulary, opposite side of the exclusion.
+      A classifier that grants the exclusion on the words "defence" or "national" fails here, and
+      fails silently — it clears a system the Regulation makes high-risk.
+
+  - case_id: third_country_mla_lead_ranking_with_safeguards
+    description: >-
+      A national police agency of a non-EU country runs an AI tool that ranks incoming case referrals
+      by how likely each is to yield a prosecutable lead. It draws on records shared with it by
+      several EU Member States under a judicial cooperation agreement between that country and the
+      Union, and its rankings are sent back to the requesting Member State's investigators. The
+      agreement's published text records that the Commission has assessed the country's data
+      protection regime and found that it provides adequate safeguards for the fundamental rights and
+      freedoms of the individuals whose data is exchanged, and it binds the agency to those
+      safeguards for every system processing data received under it.
+    expected_risk_class: out_of_scope
+    expected_scope_exclusion: >-
+      Art. 2(4). A third-country public authority that would otherwise be caught by Art. 2(1)(c) —
+      its output is used in the Union — is outside the Regulation where it uses AI systems in the
+      framework of an agreement for law enforcement and judicial cooperation with the Union, provided
+      that country affords adequate safeguards for fundamental rights and freedoms. The document
+      supplies both halves: the cooperation framework, and the safeguards finding.
+    expected_annex_iii_area: null
+    expected_transparency_obligation: false
+    transparency_basis: >-
+      Not reached: a body the Regulation does not govern owes nothing under Art. 50. On the facts
+      none of it attaches either — ranking case referrals for investigators is no direct interaction
+      with the people concerned (50(1)), generates no synthetic content (50(2)), infers no emotion and
+      categorises nobody biometrically (50(3)), and produces no deep fake (50(4)).
+    decisive_fact: >-
+      The SAFEGUARDS FINDING is stated. Art. 2(4) is the only exclusion in the Article whose
+      condition is about a country rather than about the system, and it is written as a proviso — so
+      the exclusion stands or falls on whether that finding is established. Here the agreement records
+      it, so the exclusion applies and no risk tier is reached, even though ranking prosecutable leads
+      would otherwise sit squarely in the Annex III(6) law-enforcement area.
+    difficulty: obvious
+    split: dev
+    notes: >-
+      The only case in either file keyed to Art. 2(4), and it is dev rather than held out on purpose:
+      no real system description states a safeguards finding, so a held-out case would mean inventing
+      the decisive fact — which the held-out brief forbids. Recorded in the roadmap so the gap stays
+      visible.
+      Pairs with third_country_mla_lead_ranking_unstated, which is the half that actually matters.
+
+  - case_id: third_country_mla_lead_ranking_unstated
+    description: >-
+      A national police agency of a non-EU country runs an AI tool that ranks incoming case referrals
+      by how likely each is to yield a prosecutable lead. It draws on records shared with it by
+      several EU Member States under a judicial cooperation agreement between that country and the
+      Union, and its rankings are sent back to the requesting Member State's investigators. The
+      agency's own service description sets out the ranking model, its training data and its review
+      cycle, and states that the tool is used only for referrals arriving through the cooperation
+      channel. It says nothing about the data protection regime of the country it operates in.
+    expected_risk_class: needs_review
+    expected_annex_iii_area: null
+    expected_transparency_obligation: false
+    transparency_basis: >-
+      Undeterminable along with the tier, and recorded as false only because nothing in the
+      description supports an obligation: ranking referrals for investigators is no direct interaction
+      with the people concerned (50(1)), generates no synthetic content (50(2)), infers no emotion and
+      categorises nobody biometrically (50(3)), and produces no deep fake (50(4)). Silence, not a
+      finding.
+    difficulty: insufficient
+    split: dev
+    flips_from: third_country_mla_lead_ranking_with_safeguards
+    decisive_fact: >-
+      The safeguards finding is ABSENT. Art. 2(4) excludes a third-country authority only "provided
+      that" the country affords adequate safeguards for fundamental rights and freedoms, and no
+      document describing a SYSTEM establishes that — it is settled in the cooperation agreement and
+      in the Commission's assessment, not in a service description. Silence is not evidence that the
+      condition is met, so the exclusion cannot be granted; nor can it be refused, because nothing
+      says the safeguards are missing either. Scope is undecided, so the tier is never reached.
+    notes: >-
+      The load-bearing half of the pair, and the reason 2(4) is treated the way it is. Art. 2(4)
+      shares its shape with Art. 6(1)(b): a condition the tool must READ and must never DERIVE, since
+      deriving it means ruling on a country's data protection regime from a description of a piece of
+      software. The same discipline the roadmap records under M4d-1 for sectoral conformity routes.
+      The failure this case measures is granting the exclusion on the words "cooperation agreement" —
+      which would clear an Annex III(6) law-enforcement system outright, the worst direction to be
+      wrong in. Answering high_risk instead is the safe error and still wrong: scope comes first.
