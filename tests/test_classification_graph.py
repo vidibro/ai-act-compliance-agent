@@ -36,6 +36,8 @@ def _brain_from_case(case: ClassificationCase) -> ScriptedBrain:
     answers = {
         "is_ai": True,  # every Layer 1 case is an AI system
         "prohibited": case.expected_prohibited,
+        "annex_i": case.expected_annex_i_product,
+        "third_party_assessment": case.expected_third_party_assessment,
         "annex_iii": case.expected_annex_iii_area,
         "profiling": case.expected_performs_profiling,
         "derogation": case.expected_derogation,

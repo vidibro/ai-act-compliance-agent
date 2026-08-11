@@ -277,3 +277,132 @@ cases:
     notes: >-
       Teaches: a recruitment-phase preparatory tool is INSIDE Annex III (then exempt), NOT minimal.
       The not_high_risk/minimal line matters — not_high_risk still owes Art. 6(4).
+
+  # --- Art. 6(1): the OTHER door into high-risk (Annex I) ----------------------------------------
+  # None of these are in any Annex III area. Before the annex_i node existed the cascade answered
+  # "no area" and exited to minimal — telling a surgical robot it owed nothing. Every case here
+  # would have scored WRONG then, which is the point of adding them.
+  - case_id: surgical_robot_dose_control
+    description: >-
+      An AI dose-control module embedded in a robotic surgical system. It computes and limits the
+      energy delivered by the cutting instrument in real time, and halts the actuator when tissue
+      impedance leaves the safe envelope. It ships as part of the robot, which is a class IIb
+      medical device CE-marked under Regulation (EU) 2017/745 following notified-body assessment.
+    expected_risk_class: high_risk
+    expected_annex_i_product: medical_devices
+    expected_third_party_assessment: true
+    expected_transparency_obligation: false
+    transparency_basis: >-
+      Art. 50 does not attach: the module drives an actuator inside a surgical robot. It does not
+      interact directly with a natural person (50(1)), generates no synthetic content (50(2)),
+      infers no emotion and categorises nobody biometrically (50(3)), and produces no deep fake
+      or public-interest text (50(4)).
+    decisive_fact: >-
+      A safety component of a class IIb medical device, which requires notified-body conformity
+      assessment — both limbs of Art. 6(1) are met, so high_risk. It appears in NO Annex III area:
+      an Annex III-only cascade answers "no area" and exits to minimal, which is a false clearance.
+    difficulty: obvious
+    split: dev
+    notes: >-
+      Teaches: Art. 6 has TWO doors. Annex III asks what the AI is used FOR; Annex I asks what it
+      is PART OF. A classifier that only knows the second door clears this system entirely.
+
+  - case_id: vehicle_emergency_braking
+    description: >-
+      An AI perception component in an automatic emergency braking system for passenger cars. It
+      detects pedestrians and cyclists in the vehicle's path and triggers braking without driver
+      input. It is type-approved as part of the vehicle under Regulation (EU) 2018/858.
+    expected_risk_class: high_risk
+    expected_annex_i_product: motor_vehicles
+    expected_third_party_assessment: true
+    expected_transparency_obligation: false
+    transparency_basis: >-
+      Art. 50 does not attach: it actuates brakes from sensor input. No direct interaction with a
+      person (50(1)), no synthetic content (50(2)), no emotion inference or biometric
+      categorisation (50(3)), no deep fake (50(4)).
+    decisive_fact: >-
+      High-risk under Art. 6(1) via Annex I SECTION B. The class is the same as the surgical robot,
+      but what follows is not: Art. 2(2) means only Art. 6(1), 102-109 and 112 apply, so Chapter III
+      does NOT. Classifying it high_risk and then raising Art. 9-15 would be a false accusation.
+    difficulty: obvious
+    split: dev
+    notes: >-
+      Teaches the Section A / Section B split. The risk CLASS is not sufficient to decide what is
+      owed — see AnnexIProduct.chapter_iii_applies and the Art. 2(2) branch in gap/rules.select.
+
+  - case_id: drill_press_wear_monitor
+    description: >-
+      An AI vibration-monitoring feature in a benchtop drill press. It models bearing wear from
+      spindle vibration and shows the operator a maintenance reminder when a service is due. The
+      drill press is standard machinery under Directive 2006/42/EC; it is not listed in Annex IV of
+      that Directive, so the manufacturer self-certifies with an internal-control assessment.
+    expected_risk_class: minimal
+    expected_annex_i_product: machinery
+    expected_third_party_assessment: false
+    expected_annex_iii_area: null
+    expected_transparency_obligation: false
+    transparency_basis: >-
+      Art. 50 does not attach: a maintenance reminder is not direct interaction of the kind
+      50(1) addresses, and none of 50(2)-(4) apply.
+    decisive_fact: >-
+      Limb (a) of Art. 6(1) is met and limb (b) is NOT — the machinery self-certifies, with no
+      notified body. Art. 6(1) is a conjunction, so it is not high-risk by that door; and it falls
+      within no Annex III area either, so minimal.
+    difficulty: buried
+    split: dev
+    flips_from: drill_press_in_annex_iv
+    notes: >-
+      The negative case for condition (b). A classifier that treats "is it an Annex I product?" as
+      sufficient marks this high_risk and demands Chapter III of a bench drill.
+
+  - case_id: drill_press_in_annex_iv
+    description: >-
+      An AI vibration-monitoring feature in an industrial woodworking saw. It models blade and
+      bearing wear from spindle vibration and shows the operator a maintenance reminder when a
+      service is due. The saw is a portable hand-fed circular saw listed in Annex IV of Directive
+      2006/42/EC, so its conformity is assessed by a notified body before it may be placed on the
+      market.
+    expected_risk_class: high_risk
+    expected_annex_i_product: machinery
+    expected_third_party_assessment: true
+    expected_transparency_obligation: false
+    transparency_basis: >-
+      Art. 50 does not attach: a maintenance reminder shown to the machine operator is not the
+      direct interaction 50(1) addresses, it generates no synthetic content (50(2)), infers no
+      emotion and categorises nobody biometrically (50(3)), and produces no deep fake (50(4)).
+    decisive_fact: >-
+      Same AI feature, same product family, opposite class — because THIS machine is listed in
+      Annex IV of the Machinery Directive and so requires notified-body assessment, satisfying
+      Art. 6(1)(b). The flip is one fact about the PRODUCT, not about the AI.
+    difficulty: buried
+    split: dev
+    flips_from: drill_press_wear_monitor
+    notes: >-
+      The Annex I flip, and the mirror of cv_parsing_plus_scoring. There the flip is a sentence
+      about what the AI does; here the AI is identical and the flip is the host product's
+      conformity route. Both are one-fact flips a keyword classifier cannot see.
+
+  - case_id: theatre_and_shift_scheduler
+    description: >-
+      An AI tool used by a hospital to schedule operating-theatre slots and allocate staff shifts.
+      It optimises room utilisation against expected procedure durations, proposes rotas, and sends
+      calendar reminders to clinical teams. It does not connect to, control, or exchange data with
+      any medical device.
+    expected_risk_class: minimal
+    expected_annex_i_product: null
+    expected_annex_iii_area: null
+    expected_transparency_obligation: false
+    transparency_basis: >-
+      Art. 50 does not attach: proposing rotas and sending reminders is not direct interaction of
+      the kind 50(1) addresses, and 50(2)-(4) do not apply.
+    decisive_fact: >-
+      Medical SETTING, but not a safety component of any product — it touches no device, and its
+      failure delays a list rather than endangering a patient mid-procedure. Outside Annex I, and
+      no Annex III area either, so minimal.
+    difficulty: buried
+    split: dev
+    notes: >-
+      The Annex I distractor. Dense medical vocabulary next to a purely administrative function —
+      the false-positive control for the annex_i node, matching the role leave_balance_tracker
+      plays for annex_iii. Note it is deliberately NOT the Annex III(4) workforce-management case:
+      shift allocation is scheduling logistics, not a decision about a person.

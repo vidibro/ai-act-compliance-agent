@@ -24,7 +24,13 @@ from typing import Literal
 
 from pydantic import BaseModel, model_validator
 
-from aiact.schemas.enums import AnnexIIIArea, DerogationCondition, RiskClass, Verdict
+from aiact.schemas.enums import (
+    AnnexIIIArea,
+    AnnexIProduct,
+    DerogationCondition,
+    RiskClass,
+    Verdict,
+)
 
 # dev  = cases you may tune against (prompts, thresholds).
 # test = HELD OUT. Never tuned against; the only split whose score you are allowed to report.
@@ -147,6 +153,13 @@ class ClassificationCase(BaseModel):
     # The "why" — the decisive sub-answers a correct classifier should also produce. Optional so a
     # case only pins what actually decides it.
     expected_prohibited: bool = False  # Art. 5
+    expected_annex_i_product: AnnexIProduct | None = None
+    """Art. 6(1)(a) — the product family whose safety component this system is, or None."""
+
+    expected_third_party_assessment: bool | None = None
+    """Art. 6(1)(b) — whether that product needs a notified body. Art. 6(1) is a CONJUNCTION, so a
+    case that sets the product without this pins only half the test."""
+
     expected_annex_iii_area: AnnexIIIArea | None = None  # Art. 6(2), Annex III
     expected_performs_profiling: bool | None = None  # Art. 6(3) carve-back
     expected_derogation: DerogationCondition | None = None  # Art. 6(3)(a)-(d)
@@ -208,6 +221,28 @@ class ClassificationCase(BaseModel):
                 raise ValueError(
                     f"{self.case_id}: performs_profiling is true, so no derogation can apply."
                 )
+
+        # Art. 6(1) — both conditions met is high_risk by the OTHER door, and the Art. 6(3)
+        # derogations cannot reach it: they derogate from paragraph 2 alone.
+        if self.expected_annex_i_product is not None and self.expected_third_party_assessment:
+            if rc != RiskClass.HIGH_RISK:
+                raise ValueError(
+                    f"{self.case_id}: an Annex I product requiring third-party conformity "
+                    f"assessment is high-risk under Art. 6(1) (got {rc})."
+                )
+            if self.expected_derogation is not None:
+                raise ValueError(
+                    f"{self.case_id}: Art. 6(3) derogates from Art. 6(2) only; it cannot apply to "
+                    f"a system that is high-risk under Art. 6(1)."
+                )
+        if (
+            self.expected_third_party_assessment is not None
+            and self.expected_annex_i_product is None
+        ):
+            raise ValueError(
+                f"{self.case_id}: expected_third_party_assessment is set but no Annex I product "
+                f"is — condition (b) is only reached when (a) is met."
+            )
 
         # A derogation is the REASON a use case escapes high-risk — so it implies not_high_risk.
         if self.expected_derogation is not None and rc != RiskClass.NOT_HIGH_RISK:
