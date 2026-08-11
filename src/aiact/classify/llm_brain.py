@@ -32,7 +32,7 @@ from aiact.schemas.classification import (
     ClassificationQuestion,
     Confidence,
 )
-from aiact.schemas.enums import AnnexIIIArea, DerogationCondition
+from aiact.schemas.enums import AnnexIIIArea, AnnexIProduct, DerogationCondition
 from aiact.tracing import current_metadata
 from aiact.usage import Usage
 
@@ -96,6 +96,13 @@ def _answer_instructions(answer_type: str) -> str:
             f'set "value" to one of [{areas}]; null if it falls within no Annex III area; or '
             f'"{UNKNOWN}" if the description does not say what the system is used for'
         )
+    if answer_type == "annex_i_product":
+        products = ", ".join(p.value for p in AnnexIProduct)
+        return (
+            f'set "value" to one of [{products}]; null if the system is not a safety component '
+            f"of, or itself, a product covered by Annex I; or \"{UNKNOWN}\" if the description "
+            f"does not say what product the system is part of"
+        )
     if answer_type == "derogation":
         conds = ", ".join(d.value for d in DerogationCondition)
         return (
@@ -157,6 +164,11 @@ def _parse_value(answer_type: str, value: object) -> object:
             return AnnexIIIArea(str(value).strip().lower())
         except ValueError as exc:
             raise Unanswerable(f"{value!r} is not an Annex III area") from exc
+    if answer_type == "annex_i_product":
+        try:
+            return AnnexIProduct(str(value).strip().lower())
+        except ValueError as exc:
+            raise Unanswerable(f"{value!r} is not an Annex I product family") from exc
     if answer_type == "derogation":
         try:
             return DerogationCondition(str(value).strip().lower())

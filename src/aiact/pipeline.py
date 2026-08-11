@@ -40,6 +40,19 @@ _NEEDS_REVIEW_NOTE = (
 )
 
 
+def _section_b_note(products: list[str]) -> str:
+    """A Section B system is high-risk and owes no Chapter III. Both halves have to be said, or the
+    empty findings list reads as a clean bill of health rather than a scope limit."""
+    return (
+        f"High-risk under Art. 6(1), but Chapter III was NOT checked: this system is a safety "
+        f"component of a product covered by Annex I Section B ({', '.join(products)}). Under "
+        f"Art. 2(2) only Art. 6(1), Arts. 102-109 and Art. 112 of this Regulation apply to such a "
+        f"system — the requirements of Art. 9-15 and the provider obligations of Art. 16 onward do "
+        f"not. Its safety duties come from that sectoral legislation instead, which is outside "
+        f"this tool's scope."
+    )
+
+
 def _empty_report(
     system_id: str,
     spec: PolicySpec,
@@ -97,7 +110,7 @@ def review(
     if overall == RiskClass.NEEDS_REVIEW:
         return _empty_report(system_id, spec, classification, _NEEDS_REVIEW_NOTE)
 
-    return analyse(
+    report = analyse(
         document,
         classification,
         spec,
@@ -106,3 +119,17 @@ def review(
         role=role,
         max_workers=max_workers,
     )
+
+    # Art. 2(2). `select` already withholds Chapter III from a Section B use case, so the findings
+    # are correct — but silently correct. Without this the report shows high_risk beside an empty
+    # findings list, which reads as a clean bill of health rather than a limit on what was checked.
+    section_b = sorted(
+        {
+            uc.annex_i_product.value
+            for uc in classification.use_cases
+            if uc.annex_i_product is not None and not uc.annex_i_product.chapter_iii_applies
+        }
+    )
+    if section_b:
+        return report.model_copy(update={"scope_note": _section_b_note(section_b)})
+    return report

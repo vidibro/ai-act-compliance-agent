@@ -13,7 +13,7 @@ from typing import Any, Literal
 
 from pydantic import BaseModel, field_validator, model_validator
 
-from aiact.schemas.enums import AnnexIIIArea, RiskClass
+from aiact.schemas.enums import AnnexIIIArea, AnnexIProduct, RiskClass
 from aiact.schemas.policy import GuidanceSource, LegalSource
 
 Confidence = Literal["high", "medium", "low"]
@@ -149,6 +149,12 @@ class UseCaseClassification(BaseModel):
 
     use_case_id: str  # "cv_parsing", "candidate_scoring"
     description: str  # what the system does in this use case
+    annex_i_product: AnnexIProduct | None = None
+    """Art. 6(1)(a). Set only when the use case is high-risk by the Annex I route. Carried because
+    Art. 2(2) makes the SECTION decide what is owed: a Section B product (vehicles, aviation, rail,
+    marine) is high-risk and yet Chapter III does not apply to it. Selecting obligations from the
+    risk class alone would raise Art. 9-15 against a system the Act exempts."""
+
     annex_iii_area: AnnexIIIArea | None = None
     annex_iii_use_case: LegalSource | None = None  # e.g. Annex III(4)(a)
     performs_profiling: ClassificationAnswer | None = None  # OUR SPLIT NODE. Art. 6(3) carve-back.

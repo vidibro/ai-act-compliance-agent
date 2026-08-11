@@ -6,12 +6,28 @@ Order (Commission's, with our deliberate split of profiling before derogation):
       │ AI
     prohibited ─Art.5 yes──────────────────────────────────────► PROHIBITED
       │ no
+    annex_i ─no Annex I product─┐                     Art. 6(1), door ONE
+      │ safety component of one │
+    third_party_assessment ─yes─┼─────────────────────────────► HIGH_RISK
+      │ no (self-assessed)      │
+      └──────────────────────►──┘
+                                ▼
     annex_iii ─not in Annex III───────────────────────────────► minimal
-      │ in Annex III
+      │ in Annex III                                  Art. 6(2), door TWO
     profiling ─Art.6(3) yes────────────────────────────────────► HIGH_RISK   (carve-back)
       │ no
     derogation ─Art.6(3)(a-d) applies──────────────────────────► NOT_HIGH_RISK
                 └─ none ──────────────────────────────────────► HIGH_RISK
+
+TWO independent doors into high-risk. Art. 6(1) is a CONJUNCTION — the system is a safety
+component of (or is) a product under Annex I, AND that product needs third-party conformity
+assessment. Failing the second condition is not an exit: a self-assessed product can still be
+high-risk under Annex III, so the cascade falls through rather than concluding. The Art. 6(3)
+derogations never reach a 6(1) system — they derogate from paragraph 2 alone.
+
+Art. 2(2) then limits what a 6(1) system OWES: for products under Annex I Section B (vehicles,
+aviation, rail, marine) only Art. 6(1), 102-109 and 112 apply, so Chapter III does not. That is
+carried on AnnexIProduct.chapter_iii_applies and consumed when obligations are selected.
 
 Art. 50 transparency is NOT on this path. It is a separate axis — a minimal-risk generator and a
 high-risk chatbot can both owe it — so `assemble` asks it unconditionally and reports it beside the
@@ -55,7 +71,7 @@ from aiact.schemas.classification import (
     Confidence,
     UseCaseClassification,
 )
-from aiact.schemas.enums import RiskClass
+from aiact.schemas.enums import AnnexIProduct, RiskClass
 from aiact.schemas.policy import GuidanceSource, LegalSource
 from aiact.tracing import trace_run
 
@@ -86,6 +102,45 @@ QUESTIONS: dict[str, ClassificationQuestion] = {
         _src(5),
         "Is the described system a prohibited practice under Article 5 (for example, inferring "
         "emotions of natural persons in the workplace)?",
+        "bool",
+    ),
+    "annex_i": ClassificationQuestion(
+        "annex_i",
+        _src(6, 1, annex="I"),
+        # Art. 6(1) is the OTHER door into high-risk, and it is asked before Annex III because the
+        # two routes are independent: an Annex I safety component is high-risk whatever Annex III
+        # says, and the Art. 6(3) derogations cannot reach it — they derogate from 6(2) alone.
+        # This node decides condition (a) only; condition (b) is the next node.
+        "Is this AI system intended to be used as a SAFETY COMPONENT of a product, or is it "
+        "itself a product, covered by one of the Union harmonisation instruments listed in "
+        "Annex I (Article 6(1)(a))? Answer which product family, or none.\n"
+        "A safety component is one whose failure endangers health or safety — braking, pressure "
+        "or dose control, collision avoidance, structural monitoring. Software that merely runs "
+        "alongside such a product, or handles its scheduling, billing, diagnostics reporting or "
+        "fleet analytics, is NOT a safety component.\n"
+        "Answer none if the system is not embedded in, or sold as, a regulated physical product.",
+        "annex_i_product",
+    ),
+    "third_party_assessment": ClassificationQuestion(
+        "third_party_assessment",
+        _src(6, 1, annex="I"),
+        # Art. 6(1) is a CONJUNCTION: (a) AND (b). Most Annex I regimes let a manufacturer
+        # self-assess for lower-risk classes, so treating (a) alone as sufficient would classify
+        # self-certified products high-risk and demand Chapter III of systems that do not owe it.
+        #
+        # READ ONLY, NEVER DERIVE. Condition (b) turns on the SECTORAL instrument — the risk class
+        # rules of the medical devices, machinery or vehicle regime, none of which are in this
+        # Regulation and none of which this tool carries. Deriving the answer would mean applying
+        # a body of law the tool has no text for, to a domain it cannot check itself, and emitting
+        # a confident tier off the back of it. So the question is deliberately narrowed to what the
+        # document SAYS, and silence routes to needs_review with a note naming the specialist.
+        "Does the description STATE how the product's conformity is assessed under that Annex I "
+        "legislation (Article 6(1)(b))? Answer true only if it says a THIRD PARTY assesses it — a "
+        "notified body, a named certificate, an EU type-examination. Answer false only if it says "
+        "the manufacturer self-assesses, self-certifies, or uses internal control.\n"
+        "Do NOT infer the answer from the kind of product, its risk class, or what such products "
+        "usually require. If the description does not state the conformity route, say so: that is "
+        "a question for a specialist in that sector's rules, not something to deduce here.",
         "bool",
     ),
     "annex_iii": ClassificationQuestion(
@@ -156,6 +211,10 @@ QUESTIONS: dict[str, ClassificationQuestion] = {
 _QUESTION_CONTEXT: dict[str, tuple[tuple[int, ...], tuple[str, ...]]] = {
     "is_ai": ((3,), ()),  # Art. 3 — the 'AI system' definition
     "prohibited": ((5,), ()),  # Art. 5 — the prohibited practices
+    "annex_i": ((6,), ("I",)),  # Art. 6(1) + the Annex I legislation list itself
+    # Art. 2 as well: 2(2) is what makes the Section A/B split matter, and the model is
+    # judging which instrument covers the product.
+    "third_party_assessment": ((2, 6), ("I",)),
     "annex_iii": ((6,), ("III",)),  # Art. 6(2) + the Annex III area list itself
     "profiling": ((6,), ()),  # Art. 6(3) — the carve-back
     "derogation": ((6,), ()),  # Art. 6(3)(a)-(d)
@@ -254,6 +313,8 @@ class GraphState(BaseModel):
     use_case_id: str = "use_case"
     is_ai_system: ClassificationAnswer | None = None
     prohibited: ClassificationAnswer | None = None
+    in_annex_i: ClassificationAnswer | None = None
+    third_party_assessment: ClassificationAnswer | None = None
     in_annex_iii: ClassificationAnswer | None = None
     performs_profiling: ClassificationAnswer | None = None
     derogation: ClassificationAnswer | None = None
@@ -275,6 +336,8 @@ def _get_answers(state: GraphState) -> list[ClassificationAnswer]:
     answers = [
         state.is_ai_system,
         state.prohibited,
+        state.in_annex_i,
+        state.third_party_assessment,
         state.in_annex_iii,
         state.performs_profiling,
         state.derogation,
@@ -290,6 +353,12 @@ _WHAT_THE_NODE_NEEDED: dict[str, str] = {
     "wrote",
     "prohibited": "whether it infers emotions, categorises people biometrically, or scores social "
     "behaviour",
+    "annex_i": "whether the system is a safety component of a regulated physical product — "
+    "a machine, a lift, a medical device, a vehicle",
+    # Short by design: when this node abstains, `_handover` follows and names the instrument
+    # and who answers, so anything more here is said twice.
+    "third_party_assessment": "how the product's conformity is assessed — by a notified body, or "
+    "by the manufacturer alone",
     "annex_iii": "what the system is actually used for",
     "profiling": "whether it evaluates, scores or ranks people — and on what",
     "derogation": "whether it only performs a narrow procedural task, improves prior human work, "
@@ -305,7 +374,38 @@ def _cite(source: LegalSource) -> str:
     return cite
 
 
-def _why_it_could_not_decide(abstentions: list[ClassificationAnswer]) -> str:
+def _handover(product: AnnexIProduct) -> str:
+    """The Art. 6(1)(b) question named, with whose question it is — and that the silence is itself
+    a finding.
+
+    This tool declines condition (b) by design: it turns on the sectoral instrument, not on this
+    Regulation (see the `third_party_assessment` question). Declining is only useful if the reader
+    is told what is unresolved and who resolves it; "consult a specialist" is not an action.
+
+    The closing sentence makes the silence a finding rather than an apology. A file for such a
+    product is expected to record its conformity route — Annex IV puts the EU declaration of
+    conformity in the technical documentation and Annex V fixes its contents down to the notified
+    body's identification number, while the sectoral legislation demands the same independently.
+    The omission is therefore a documentation shortcoming in its own right, and reporting only
+    "the tool could not decide" puts the failure on the wrong side of the exchange."""
+    return (
+        f"UNRESOLVED — Art. 6(1)(b), conformity assessment route. This system is a safety "
+        f"component of, or is itself, a product covered by {product.legislation}, so whether it is "
+        f"high-risk turns on whether that product needs a third-party conformity assessment. That "
+        f"is decided by the legislation above, not by the AI Act, and this tool does not apply it. "
+        f"Ask {product.who_decides_conformity}. If the answer is yes, this system is high-risk "
+        f"under Art. 6(1); if no, re-run and it will be assessed against Annex III instead. "
+        f"Note that documentation for a product under this legislation is normally expected to "
+        f"record its conformity route — the CE marking, the notified body's identification number, "
+        f"or the EU declaration of conformity (Annex IV(9), contents fixed by Annex V). Its "
+        f"absence here is worth fixing whichever way this classification resolves."
+    )
+
+
+def _why_it_could_not_decide(
+    abstentions: list[ClassificationAnswer],
+    annex_i_product: AnnexIProduct | None = None,
+) -> str:
     """Name the MISSING FACT and the article that needed it, instead of 'a node abstained'.
 
     An answer of 'needs review' that does not say what was missing gives the reader nothing to act
@@ -335,6 +435,10 @@ def _why_it_could_not_decide(abstentions: list[ClassificationAnswer]) -> str:
             f"No usable answer was returned for: {nodes}. This is a failure of the run, not of the "
             f"documentation — re-running may resolve it."
         )
+    if annex_i_product is not None and any(
+        a.node_id == "third_party_assessment" for a in abstentions
+    ):
+        parts.append(_handover(annex_i_product))
     return " ".join(parts) or "A classification node abstained; escalate to a human reviewer."
 
 
@@ -350,7 +454,10 @@ def decide_risk_class(state: GraphState) -> tuple[RiskClass, str, list[Classific
     if low_confidence:
         return (
             RiskClass.NEEDS_REVIEW,
-            _why_it_could_not_decide(low_confidence),
+            _why_it_could_not_decide(
+                low_confidence,
+                state.in_annex_i.value if state.in_annex_i else None,
+            ),
             [evidence(a) for a in low_confidence],
         )
     if state.is_ai_system and state.is_ai_system.value is not True:
@@ -364,6 +471,23 @@ def decide_risk_class(state: GraphState) -> tuple[RiskClass, str, list[Classific
             RiskClass.PROHIBITED,
             "Prohibited practice under Art. 5; evaluated before high-risk classification.",
             [evidence(state.prohibited)],
+        )
+    if (
+        state.in_annex_i
+        and state.in_annex_i.value is not None
+        and state.third_party_assessment
+        and state.third_party_assessment.value is True
+    ):
+        # Art. 6(1) is the FIRST door into high-risk and it is independent of Annex III: both
+        # conditions met means high-risk whatever Art. 6(2) would have said, and the Art. 6(3)
+        # derogations never apply — they derogate from paragraph 2 alone.
+        product = state.in_annex_i.value
+        section = f"Annex I Section {product.section}"
+        return (
+            RiskClass.HIGH_RISK,
+            f"Safety component of a product covered by {section} ({product.value}) that requires "
+            f"third-party conformity assessment; high-risk under Art. 6(1).",
+            [evidence(a) for a in (state.in_annex_i, state.third_party_assessment) if a],
         )
     if state.in_annex_iii and state.in_annex_iii.value is None:
         return (
@@ -412,7 +536,24 @@ def _route_is_ai(state: GraphState) -> str:
 
 def _route_prohibited(state: GraphState) -> str:
     a = state.prohibited
-    return "assemble" if a is None or _is_low_confidence(a) or a.value is True else "annex_iii"
+    return "assemble" if a is None or _is_low_confidence(a) or a.value is True else "annex_i"
+
+
+def _route_annex_i(state: GraphState) -> str:
+    """No Annex I product means Art. 6(1) cannot apply; go straight to the Annex III route."""
+    a = state.in_annex_i
+    if a is None or _is_low_confidence(a):
+        return "assemble"
+    return "annex_iii" if a.value is None else "third_party_assessment"
+
+
+def _route_third_party(state: GraphState) -> str:
+    """Art. 6(1) needs BOTH conditions. Failing (b) is not an exit — a self-assessed product can
+    still be high-risk under Annex III, so the cascade continues rather than concluding."""
+    a = state.third_party_assessment
+    if a is None or _is_low_confidence(a):
+        return "assemble"
+    return "assemble" if a.value is True else "annex_iii"
 
 
 def _route_annex(state: GraphState) -> str:
@@ -465,6 +606,12 @@ def build_graph(
     def node_profiling(state: GraphState) -> dict[str, Any]:
         return {"performs_profiling": _ask("profiling", state.description)}
 
+    def node_annex_i(state: GraphState) -> dict[str, Any]:
+        return {"in_annex_i": _ask("annex_i", state.description)}
+
+    def node_third_party(state: GraphState) -> dict[str, Any]:
+        return {"third_party_assessment": _ask("third_party_assessment", state.description)}
+
     def node_derogation(state: GraphState) -> dict[str, Any]:
         return {"derogation": _ask("derogation", state.description)}
 
@@ -482,6 +629,7 @@ def build_graph(
         use_case = UseCaseClassification(
             use_case_id=state.use_case_id,
             description=state.description,
+            annex_i_product=state.in_annex_i.value if state.in_annex_i else None,
             annex_iii_area=state.in_annex_iii.value if state.in_annex_iii else None,
             performs_profiling=state.performs_profiling,
             derogation=state.derogation,
@@ -503,6 +651,8 @@ def build_graph(
     g = StateGraph(GraphState)
     g.add_node("is_ai", node_is_ai)
     g.add_node("prohibited", node_prohibited)
+    g.add_node("annex_i", node_annex_i)
+    g.add_node("third_party_assessment", node_third_party)
     g.add_node("annex_iii", node_annex)
     g.add_node("profiling", node_profiling)
     g.add_node("derogation", node_derogation)
@@ -513,7 +663,21 @@ def build_graph(
         "is_ai", _route_is_ai, {"prohibited": "prohibited", "assemble": "assemble"}
     )
     g.add_conditional_edges(
-        "prohibited", _route_prohibited, {"annex_iii": "annex_iii", "assemble": "assemble"}
+        "prohibited", _route_prohibited, {"annex_i": "annex_i", "assemble": "assemble"}
+    )
+    g.add_conditional_edges(
+        "annex_i",
+        _route_annex_i,
+        {
+            "third_party_assessment": "third_party_assessment",
+            "annex_iii": "annex_iii",
+            "assemble": "assemble",
+        },
+    )
+    g.add_conditional_edges(
+        "third_party_assessment",
+        _route_third_party,
+        {"annex_iii": "annex_iii", "assemble": "assemble"},
     )
     g.add_conditional_edges(
         "annex_iii",

@@ -144,6 +144,177 @@ class AnnexIIIArea(StrEnum):
     JUSTICE_DEMOCRACY = "justice_democracy"  # Annex III(8)
 
 
+class AnnexIProduct(StrEnum):
+    """Art. 6(1), Annex I. The twenty Union harmonisation instruments, named by the product they
+    govern rather than by directive number — a system card says "surgical robot", never
+    "Regulation (EU) 2017/745".
+
+    The SECTION a value belongs to decides which obligations follow, so it is carried in the enum
+    rather than looked up: see `section` and `chapter_iii_applies`."""
+
+    # --- Section A — New Legislative Framework. Chapter III applies in full. ---
+    MACHINERY = "machinery"  # Annex I(A)(1) — Directive 2006/42/EC
+    TOYS = "toys"  # Annex I(A)(2) — Directive 2009/48/EC
+    RECREATIONAL_CRAFT = "recreational_craft"  # Annex I(A)(3) — Directive 2013/53/EU
+    LIFTS = "lifts"  # Annex I(A)(4) — Directive 2014/33/EU
+    EXPLOSIVE_ATMOSPHERES = "explosive_atmospheres"  # Annex I(A)(5) — Directive 2014/34/EU
+    RADIO_EQUIPMENT = "radio_equipment"  # Annex I(A)(6) — Directive 2014/53/EU
+    PRESSURE_EQUIPMENT = "pressure_equipment"  # Annex I(A)(7) — Directive 2014/68/EU
+    CABLEWAYS = "cableways"  # Annex I(A)(8) — Regulation (EU) 2016/424
+    PERSONAL_PROTECTIVE_EQUIPMENT = "personal_protective_equipment"  # Annex I(A)(9) — 2016/425
+    GAS_APPLIANCES = "gas_appliances"  # Annex I(A)(10) — Regulation (EU) 2016/426
+    MEDICAL_DEVICES = "medical_devices"  # Annex I(A)(11) — Regulation (EU) 2017/745
+    IVD_MEDICAL_DEVICES = "ivd_medical_devices"  # Annex I(A)(12) — Regulation (EU) 2017/746
+
+    # --- Section B — other harmonisation legislation. Art. 2(2) LIMITS what applies. ---
+    CIVIL_AVIATION_SECURITY = "civil_aviation_security"  # Annex I(B)(13) — Reg (EC) 300/2008
+    TWO_THREE_WHEEL_VEHICLES = "two_three_wheel_vehicles"  # Annex I(B)(14) — Reg (EU) 168/2013
+    AGRICULTURAL_VEHICLES = "agricultural_vehicles"  # Annex I(B)(15) — Reg (EU) 167/2013
+    MARINE_EQUIPMENT = "marine_equipment"  # Annex I(B)(16) — Directive 2014/90/EU
+    RAIL_INTEROPERABILITY = "rail_interoperability"  # Annex I(B)(17) — Directive (EU) 2016/797
+    MOTOR_VEHICLES = "motor_vehicles"  # Annex I(B)(18) — Regulation (EU) 2018/858
+    VEHICLE_GENERAL_SAFETY = "vehicle_general_safety"  # Annex I(B)(19) — Reg (EU) 2019/2144
+    CIVIL_AVIATION_UAS = "civil_aviation_uas"  # Annex I(B)(20) — Reg (EU) 2018/1139
+
+    @property
+    def section(self) -> str:
+        """ "A" or "B" — which half of Annex I lists this instrument."""
+        return "B" if self in _ANNEX_I_SECTION_B else "A"
+
+    @property
+    def legislation(self) -> str:
+        """The Union instrument this product is covered by, as Annex I cites it."""
+        return _ANNEX_I_LEGISLATION[self]
+
+    @property
+    def who_decides_conformity(self) -> str:
+        """Who can answer Art. 6(1)(b) for this product — the question this tool declines.
+
+        Named rather than left to the reader: "consult a specialist" is not actionable, and the
+        specialist differs by sector. The route is set by the instrument above, which this tool
+        does not carry, so this is a handover and should read like one."""
+        return _ANNEX_I_CONFORMITY_ROUTE[self]
+
+    @property
+    def chapter_iii_applies(self) -> bool:
+        """Art. 2(2): for a Section B product classified high-risk under Art. 6(1), ONLY Art. 6(1),
+        Arts. 102-109 and Art. 112 apply. Chapter III does not — so an aircraft or motor-vehicle
+        system is high-risk AND owes none of Art. 9-15. Raising them anyway would accuse a
+        provider of gaps the Regulation does not put on them."""
+        return self.section == "A"
+
+
+_ANNEX_I_SECTION_B = frozenset(
+    {
+        AnnexIProduct.CIVIL_AVIATION_SECURITY,
+        AnnexIProduct.TWO_THREE_WHEEL_VEHICLES,
+        AnnexIProduct.AGRICULTURAL_VEHICLES,
+        AnnexIProduct.MARINE_EQUIPMENT,
+        AnnexIProduct.RAIL_INTEROPERABILITY,
+        AnnexIProduct.MOTOR_VEHICLES,
+        AnnexIProduct.VEHICLE_GENERAL_SAFETY,
+        AnnexIProduct.CIVIL_AVIATION_UAS,
+    }
+)
+
+
+# Annex I cites each instrument in full; these are the short forms a report can carry. Every
+# product is listed with no default, so an act version that amends Annex I fails on a missing
+# key instead of reporting a product with no instrument behind it.
+_ANNEX_I_LEGISLATION: dict[AnnexIProduct, str] = {
+    AnnexIProduct.MACHINERY: "Directive 2006/42/EC (machinery)",
+    AnnexIProduct.TOYS: "Directive 2009/48/EC (safety of toys)",
+    AnnexIProduct.RECREATIONAL_CRAFT: "Directive 2013/53/EU (recreational craft)",
+    AnnexIProduct.LIFTS: "Directive 2014/33/EU (lifts and safety components for lifts)",
+    AnnexIProduct.EXPLOSIVE_ATMOSPHERES: "Directive 2014/34/EU (ATEX equipment)",
+    AnnexIProduct.RADIO_EQUIPMENT: "Directive 2014/53/EU (radio equipment)",
+    AnnexIProduct.PRESSURE_EQUIPMENT: "Directive 2014/68/EU (pressure equipment)",
+    AnnexIProduct.CABLEWAYS: "Regulation (EU) 2016/424 (cableway installations)",
+    AnnexIProduct.PERSONAL_PROTECTIVE_EQUIPMENT: (
+        "Regulation (EU) 2016/425 (personal protective equipment)"
+    ),
+    AnnexIProduct.GAS_APPLIANCES: "Regulation (EU) 2016/426 (appliances burning gaseous fuels)",
+    AnnexIProduct.MEDICAL_DEVICES: "Regulation (EU) 2017/745 (medical devices)",
+    AnnexIProduct.IVD_MEDICAL_DEVICES: (
+        "Regulation (EU) 2017/746 (in vitro diagnostic medical devices)"
+    ),
+    AnnexIProduct.CIVIL_AVIATION_SECURITY: (
+        "Regulation (EC) No 300/2008 (civil aviation security)"
+    ),
+    AnnexIProduct.TWO_THREE_WHEEL_VEHICLES: (
+        "Regulation (EU) No 168/2013 (two- or three-wheel vehicles and quadricycles)"
+    ),
+    AnnexIProduct.AGRICULTURAL_VEHICLES: (
+        "Regulation (EU) No 167/2013 (agricultural and forestry vehicles)"
+    ),
+    AnnexIProduct.MARINE_EQUIPMENT: "Directive 2014/90/EU (marine equipment)",
+    AnnexIProduct.RAIL_INTEROPERABILITY: "Directive (EU) 2016/797 (rail interoperability)",
+    AnnexIProduct.MOTOR_VEHICLES: "Regulation (EU) 2018/858 (approval of motor vehicles)",
+    AnnexIProduct.VEHICLE_GENERAL_SAFETY: "Regulation (EU) 2019/2144 (vehicle general safety)",
+    AnnexIProduct.CIVIL_AVIATION_UAS: (
+        "Regulation (EU) 2018/1139 (civil aviation, unmanned aircraft)"
+    ),
+}
+
+_NOTIFIED_BODY = (
+    "the notified body designated under that legislation, or the regulatory-affairs lead who "
+    "holds the product's conformity assessment file"
+)
+_TYPE_APPROVAL = (
+    "the type-approval authority or technical service that approved the vehicle, or the "
+    "homologation lead who holds its approval file"
+)
+# Who settles Art. 6(1)(b) per sector. NOT legal advice and not a route this tool applies —
+# it is the handover, so a parked question names its owner instead of stopping at "ask a
+# specialist". Every product is listed with no default: a default would hand a newly added
+# Annex I instrument a plausible-sounding wrong answer — "ask the notified body" is right for
+# most Section A products and wrong for every transport one — and the report would state it
+# confidently. A missing key raises instead.
+_ANNEX_I_CONFORMITY_ROUTE: dict[AnnexIProduct, str] = {
+    # Section A — notified-body regimes.
+    AnnexIProduct.TOYS: _NOTIFIED_BODY,
+    AnnexIProduct.RECREATIONAL_CRAFT: _NOTIFIED_BODY,
+    AnnexIProduct.LIFTS: _NOTIFIED_BODY,
+    AnnexIProduct.EXPLOSIVE_ATMOSPHERES: _NOTIFIED_BODY,
+    AnnexIProduct.RADIO_EQUIPMENT: _NOTIFIED_BODY,
+    AnnexIProduct.PRESSURE_EQUIPMENT: _NOTIFIED_BODY,
+    AnnexIProduct.CABLEWAYS: _NOTIFIED_BODY,
+    AnnexIProduct.PERSONAL_PROTECTIVE_EQUIPMENT: _NOTIFIED_BODY,
+    AnnexIProduct.GAS_APPLIANCES: _NOTIFIED_BODY,
+    AnnexIProduct.MACHINERY: (
+        "the notified body, or the engineer who can say whether this machine is listed in "
+        "Annex IV of the Machinery Directive — listed machines need one, others self-certify"
+    ),
+    AnnexIProduct.MEDICAL_DEVICES: (
+        "the notified body designated under the MDR, or the regulatory-affairs lead who holds "
+        "the device's risk class (Annex VIII) and conformity assessment route"
+    ),
+    AnnexIProduct.IVD_MEDICAL_DEVICES: (
+        "the notified body designated under the IVDR, or the regulatory-affairs lead who holds "
+        "the device's risk class and conformity assessment route"
+    ),
+    # Section B — type-approval and sector-authority regimes.
+    AnnexIProduct.TWO_THREE_WHEEL_VEHICLES: _TYPE_APPROVAL,
+    AnnexIProduct.AGRICULTURAL_VEHICLES: _TYPE_APPROVAL,
+    AnnexIProduct.MOTOR_VEHICLES: _TYPE_APPROVAL,
+    AnnexIProduct.VEHICLE_GENERAL_SAFETY: _TYPE_APPROVAL,
+    AnnexIProduct.CIVIL_AVIATION_SECURITY: (
+        "the national civil aviation security authority, or EASA where the equipment falls "
+        "under its remit"
+    ),
+    AnnexIProduct.CIVIL_AVIATION_UAS: (
+        "EASA, or the design-organisation lead who holds the aircraft's certification basis"
+    ),
+    AnnexIProduct.RAIL_INTEROPERABILITY: (
+        "the notified body for the interoperability constituent, or the national safety "
+        "authority that authorised the subsystem"
+    ),
+    AnnexIProduct.MARINE_EQUIPMENT: (
+        "the notified body under the Marine Equipment Directive, or the flag-state administration"
+    ),
+}
+
+
 class DerogationCondition(StrEnum):
     """Art. 6(3)(a)-(d). An Annex III system escapes high-risk classification if it poses no
     significant risk of harm — including by not materially influencing the outcome of decision

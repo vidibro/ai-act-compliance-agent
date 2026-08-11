@@ -40,7 +40,18 @@ class ActiveRules:
 
 
 def select(spec: PolicySpec, use_case: UseCaseClassification, role: ActorRole) -> ActiveRules:
-    """The obligations `role` owes for this use case, under its risk class."""
+    """The obligations `role` owes for this use case, under its risk class.
+
+    Risk class is not on its own sufficient. **Art. 2(2)**: where a system is high-risk under
+    Art. 6(1) because it is a safety component of a product listed in Annex I **Section B** —
+    vehicles, aviation, rail, marine — only Art. 6(1), Arts. 102-109 and Art. 112 apply. Chapter III
+    does not. Such a system is genuinely high-risk and genuinely owes none of Art. 9-15, so
+    selecting on the tier alone would raise every one of them against a provider the Regulation
+    exempts.
+    """
+    if use_case.annex_i_product is not None and not use_case.annex_i_product.chapter_iii_applies:
+        return ActiveRules(use_case_id=use_case.use_case_id)
+
     active = [
         rule
         for rule in spec.rules
