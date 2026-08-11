@@ -89,15 +89,21 @@ flowchart TD
     AI -->|no| MIN1([minimal]):::ok
     AI -->|yes| PROH{"Is the practice itself banned?<br/>Art. 5"}
     PROH -->|yes, banned| BAN([prohibited]):::ban
-    PROH -->|no| ANNEX{"Is it used in a listed high-stakes area?<br/>Annex III, Art. 6(2)"}
+    PROH -->|no| ANNEXI{"Is it a safety part of a regulated<br/>physical product?<br/>Annex I, Art. 6(1)(a)"}
+    ANNEXI -->|yes| TPA{"Does that product need an<br/>outside body to certify it?<br/>Art. 6(1)(b)"}
+    TPA -->|yes| HIGH([high risk]):::high
+    TPA -->|"no — self-certified"| ANNEX
+    ANNEXI -->|no| ANNEX{"Is it used in a listed high-stakes area?<br/>Annex III, Art. 6(2)"}
     ANNEX -->|no| MIN2([minimal]):::ok
     ANNEX -->|yes| PROF{"Does it score, rank or judge people?<br/>Art. 6(3)"}
-    PROF -->|"yes — it profiles people"| HIGH([high risk]):::high
+    PROF -->|"yes — it profiles people"| HIGH
     PROF -->|no| DER{"Is its role only a narrow one?<br/>Art. 6(3)(a-d)"}
     DER -->|"no — it does the real deciding"| HIGH
     DER -->|"yes — narrow role only"| NHR([not high risk]):::mid
     AI -.->|low confidence| NR([needs review]):::rev
     PROH -.-> NR
+    ANNEXI -.-> NR
+    TPA -.-> NR
     ANNEX -.-> NR
     PROF -.-> NR
     DER -.-> NR
@@ -109,6 +115,12 @@ flowchart TD
     classDef rev fill:#fdf3de,stroke:#d9a521
 ```
 
+- **Two doors into high risk, not one.** Art. 6(1) catches AI *inside a regulated physical
+  product* — a braking controller, a dose limiter in a surgical robot. Art. 6(2) catches AI used
+  *for a listed purpose* — hiring, credit, policing. A surgical robot appears nowhere in Annex III,
+  so a cascade that asks only the second question tells it that it owes nothing. Art. 6(1) also
+  needs **both** its conditions: failing the certification test is not an exit, because a
+  self-certified product can still be high-risk by the other door.
 - **The spine** (following the "keep going" answers) is the path through the checks; each solid
   branch is an exit to a risk class.
 - **The flip** lives at the *"Does it score, rank or judge people?"* node. Answering *yes* exits straight to
@@ -205,3 +217,11 @@ It does not constitute legal advice, and it does not represent the assessment or
 of the European Commission or any other authority. Its classifications and findings may be
 incomplete or incorrect. Consult a qualified legal professional before relying on any part of its
 output._
+
+_Some questions the Regulation asks cannot be answered from the Regulation alone. Where an AI system
+is part of a regulated product — a medical device, machinery, a vehicle, and the other categories
+listed in Annex I — its risk class depends on rules in that product's own legislation, which this
+tool does not apply. Those questions need a specialist in that sector, not only a lawyer. This tool
+does not attempt them: it reports what the documentation states, says when the answer is missing,
+and leaves the question open rather than guessing. **An open question is unfinished work, not a
+clean result.**_

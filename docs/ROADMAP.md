@@ -475,13 +475,39 @@ Triggered by noticing Art. 50 is answered and then never checked. Audited the ca
 
 Ordered by what a wrong answer costs a user.
 
-#### M4d-1 — Annex I safety components are classified `minimal` — a FALSE CLEARANCE 🔴
+#### M4d-1 — Annex I safety components ✅ DONE 2026-07-30
 
-`RiskClass.HIGH_RISK` says it plainly: *"Either an Annex I safety component, or an Annex III use case…"*. The cascade only ever asks the second. `decide_risk_class` routes `in_annex_iii.value is None` straight to `MINIMAL`, so an AI safety component of a machine, a medical device, a lift or a toy — high-risk under **Art. 6(1)** — is told it owes nothing.
+**Was:** `RiskClass.HIGH_RISK` said it plainly — *"Either an Annex I safety component, or an Annex III use case…"* — and the cascade only ever asked the second. `decide_risk_class` routed `in_annex_iii.value is None` straight to `MINIMAL`, so an AI safety component of a machine, a lift, a surgical robot or a car was told it owed nothing. A false clearance: not a missed gap inside a report, but a high-risk system handed a clean bill of health.
 
-This is the worst failure mode the project has: not a missed gap inside a report, but a high-risk system handed a clean bill of health. Everything else in this audit over-reports; this one under-reports.
+**Built:** two nodes between `prohibited` and `annex_iii`, `AnnexIProduct` (all 20 instruments), `UseCaseClassification.annex_i_product`, and the Art. 2(2) exclusion in `select`. 10 tests in `tests/test_annex_i.py`.
 
-`data/policy/annexes/2024-07-12/annex-I.md` is already in the repo and read by nothing. The fix is a node before `annex_iii`, and a second route into `high_risk` that skips the Art. 6(3) derogation logic entirely — the derogations are Art. 6(3), which qualifies Art. 6(2), and they do not reach Art. 6(1) systems at all.
+Three things the enacted text forced, each of which a simpler implementation gets wrong:
+
+1. **Art. 6(1) is a CONJUNCTION.** (a) safety component of an Annex I product AND (b) that product needs THIRD-PARTY conformity assessment. Most Annex I regimes let a manufacturer self-assess the lower risk classes, so treating (a) alone as sufficient would classify self-certified products high-risk.
+2. **Failing (b) is not an exit.** A self-assessed Annex I product can still be high-risk under Annex III, so the cascade falls THROUGH to the Annex III route rather than concluding `minimal`. Treating it as an exit would re-create the original bug one branch over.
+3. **Art. 2(2) is the trap.** For an Art. 6(1) system whose product sits in Annex I **Section B** — vehicles, aviation, rail, marine — only Art. 6(1), Arts. 102-109 and Art. 112 apply. **Chapter III does not.** Such a system is genuinely high-risk and genuinely owes none of Art. 9-15; routing it to `high_risk` without more would raise 18 obligations the Act withholds, trading a false clearance for a false accusation. The section is carried on `AnnexIProduct.chapter_iii_applies`, `select()` returns nothing for Section B, and `review()` sets a `scope_note` — because high_risk beside an empty findings list is the most misreadable output this tool can produce.
+
+**Measured live, 2026-07-30, Flash + thinking disabled, 4 cases, $0.0218 (~$0.0055/case):** surgical robot → high_risk via `medical_devices` (Section A); vehicle braking → high_risk via `motor_vehicles` (Section B, no Chapter III); self-certified drill press → minimal (both conditions required, fell through correctly); theatre-and-shift scheduler → `annex_i=None`, the distractor that sits in a medical setting without being a safety component. **4/4, all at high confidence.** Per-case classification cost rose from $0.0045 to $0.0055 — the two extra nodes, ~22%.
+
+**Golden-set cases added, and the dev set re-run: 14/14 risk class, 14/14 Art. 50, zero abstentions, $0.0801 (~$0.0057/case).** Five new cases in `classification_cases.yaml` (dev, 9 → 14), and `ClassificationCase` gained `expected_annex_i_product` / `expected_third_party_assessment` with a validator enforcing the same Art. 6(1) invariants the cascade obeys — both limbs met is high_risk, and no Art. 6(3) derogation may coexist with it.
+
+The five, and what each is for:
+- `surgical_robot_dose_control` — Section A, both limbs. **The regression case**: in no Annex III area, so the old cascade cleared it.
+- `vehicle_emergency_braking` — Section B. Same risk class, different consequence (Art. 2(2), no Chapter III).
+- `drill_press_wear_monitor` ⇄ `drill_press_in_annex_iv` — **the Annex I FLIP, and a new kind**. Identical AI feature, opposite class, and the deciding fact is about the HOST PRODUCT's conformity route (Annex IV of the Machinery Directive → notified body) rather than about the AI at all. The project's existing flip (`cv_parsing_plus_scoring`) turns on one sentence about what the AI does; this one turns on one sentence about what it is bolted to. Flash got both, live.
+- `theatre_and_shift_scheduler` — the false-positive control: dense medical vocabulary, purely administrative function, correctly `annex_i=None`. Plays the role for `annex_i` that `leave_balance_tracker` plays for `annex_iii`.
+
+Per-case cost across the whole dev set rose $0.0045 → $0.0057 (+27%): two extra nodes, and they run on every case.
+
+**Held-out authored blind, 2026-07-30.** Six cases, from six real FDA 510(k) summaries, written by a session that could not read this file, the dev cases, or the tests — enforced by a `PreToolUse` hook, not a promise (`.claude/hooks/heldout-guard.py`, kept disabled; re-enable only for another authoring run). Source PDFs live in gitignored `work/` and are paraphrased, never committed: manufacturer-authored text published by a regulator is public, not public domain.
+
+That session marked four of the six `needs_review` rather than guess, because a US filing cannot state an EU conformity route. **That judgement is now the tool's design** — see the DECIDED note below. Its labels stand unedited.
+
+**DECIDED 2026-07-30: read condition (b), never derive it.** Adjudicating those four sent us into MDR Annex VIII Rule 11 and MDCG 2025-6, whose Table 1 maps MDR class → Art. 6(1)(b). Applying it would have turned all four into `high_risk` and closed the coverage gap for free. **Rejected.** Art. 6(1)(b) turns on the SECTORAL instrument — twenty of them — and answering it means applying a body of law this tool holds no text for, in a domain neither author nor reviewer can check. A confident tier derived that way is exactly the false accusation the Section B branch exists to prevent, arriving by a different route.
+
+So the `third_party_assessment` node asks only what the DOCUMENT states, and is explicitly told not to infer from product type or risk class. Silence routes to `needs_review` with a note naming the sector specialist. The disclaimer says so too, in `ComplianceReport.DISCLAIMER` and the README footer: *an open question is unfinished work, not a clean result*.
+
+What this costs, stated plainly: **the Annex I route can only ever reach `high_risk` on a document that states its conformity route.** The five dev cases do (14/14 live, re-measured after the prompt narrowed), and a real EU technical file normally does — a CE marking and notified-body number is standard content. A US filing does not, which is why four held-out cases sit at `needs_review` by design rather than by failure.
 
 #### M4d-2 — Art. 2 applicability is never asked 🔴
 
@@ -735,3 +761,17 @@ store; the corresponding `SECURITY.md` items moved from **Planned** to current.
 - **Enacted law and Commission interpretation are stored and cited separately, and never merged.** `data/policy/articles|annexes/` hold verbatim enacted text cited with `LegalSource`; `data/policy/guidance/` holds verbatim passages from Commission Communications cited with `GuidanceSource` (`binding: false`, structurally enforced by a validator). Each guidance snippet records its document sha256 and its own body sha256, so a drifted or dangling citation fails at load rather than degrading silently. Any verdict that leaned on interpretation reports `rests_on_guidance` and names the CJEU as the authoritative interpreter. Currently one snippet: `C-2025-5052/workplace-covers-recruitment`.
 - Vendor names never sit next to a legal verdict in the public repo. Classify anonymised function descriptions; keep vendor→archetype mapping private.
 - Ground truth is an engineer's reading of the law, cross-checked against the Commission's own Guidelines/checker where possible. Say so. Don't oversell it as a benchmark.
+
+## Not this project — sectoral classification ("go deep")
+
+Rejected on 2026-07-30 and recorded so the reasoning survives, because it will look tempting again.
+
+**The idea.** Art. 6(1)(b) asks whether a product needs third-party conformity assessment. That is answerable — for medical devices, MDR Annex VIII Rule 11 gives the class from the intended purpose, and MDCG 2025-6 Table 1 maps class → yes/no. Encode the equivalent for each Annex I instrument and the tool could resolve the Annex I route end to end instead of handing it back.
+
+**Why not.** Three reasons, in order of weight:
+
+1. **Nobody here can check it.** The AI Act work is verifiable by a careful reader against text this repo resolves verbatim. MDR Rule 11 classification is a specialist judgement, and a wrong class silently flips the risk tier. The project would be shipping confident answers in a field it cannot audit — the precise failure it was built to avoid.
+2. **It is twenty instruments, not one.** Medical devices are the tractable one. Machinery Annex IV, ATEX categories, PED tables, vehicle type-approval, marine equipment — each is its own body of rules, and stopping after the easy one produces a tool that is authoritative about medical AI and silently wrong about lifts.
+3. **It is a different product.** Answering "what class is my device under MDR" is a regulatory-affairs tool. Answering "what does the AI Act require of me" is this one. Users of the first already have specialists; users of the second mostly do not.
+
+**If it is ever built,** the shape is clear and it should be a separate deliverable with its own eval and its own reviewer: per-instrument classification rules as guidance (not law — MDCG documents are explicitly non-binding, so `data/policy/guidance/` and `rests_on_guidance`, never `articles/`), a sectoral eval set labelled by someone qualified in that sector, and a report that names which instrument and which rule decided the class. ~~The useful middle step, far cheaper than the whole thing: when the tool parks a question, say WHICH rule is unresolved and WHICH specialist answers it.~~ **Built 2026-07-30** — `AnnexIProduct.legislation` and `.who_decides_conformity`, surfaced by `_handover` in the classification reasoning. A parked Art. 6(1)(b) now names the instrument (`Regulation (EU) 2017/745`), the specialist (the MDR notified body, or the regulatory-affairs lead holding the Annex VIII class), and what each answer would mean. Per sector, because the right answer differs: a vehicle is type-approved, a machine self-certifies unless listed in Annex IV of the Machinery Directive, an unmanned aircraft goes to EASA. Three tests pin it, including one that every one of the 20 products has both fields — a product with neither would abstain into silence.
