@@ -499,7 +499,7 @@ The five, and what each is for:
 
 Per-case cost across the whole dev set rose $0.0045 → $0.0057 (+27%): two extra nodes, and they run on every case.
 
-**Held-out authored blind, 2026-07-30.** Six cases, from six real FDA 510(k) summaries, written by a session that could not read this file, the dev cases, or the tests — enforced by a `PreToolUse` hook, not a promise (`.claude/hooks/heldout-guard.py`, kept disabled; re-enable only for another authoring run). Source PDFs live in gitignored `work/` and are paraphrased, never committed: manufacturer-authored text published by a regulator is public, not public domain.
+**Held-out authored blind, 2026-07-30.** Six cases, from six real FDA 510(k) summaries, written by a session that could not read this file, the dev cases, or the tests — enforced by a `PreToolUse` hook, not a promise (`.claude/hooks/heldout-guard.py`, kept disabled; re-enable only for another authoring run). Source PDFs are paraphrased and never committed — manufacturer-authored text published by a regulator is public, not public domain — so the repo keeps the hash rather than the bytes, in `data/golden_set/heldout_sources.yaml`.
 
 That session marked four of the six `needs_review` rather than guess, because a US filing cannot state an EU conformity route. **That judgement is now the tool's design** — see the DECIDED note below. Its labels stand unedited.
 
@@ -509,13 +509,56 @@ So the `third_party_assessment` node asks only what the DOCUMENT states, and is 
 
 What this costs, stated plainly: **the Annex I route can only ever reach `high_risk` on a document that states its conformity route.** The five dev cases do (14/14 live, re-measured after the prompt narrowed), and a real EU technical file normally does — a CE marking and notified-body number is standard content. A US filing does not, which is why four held-out cases sit at `needs_review` by design rather than by failure.
 
-#### M4d-2 — Art. 2 applicability is never asked 🔴
+#### M4d-2 — Art. 2 applicability is never asked 🟡 cases landed 2026-08-11, node not built
 
 The ledger excludes Art. 2 because it is *"consumed by the classification graph (`ClassificationState.in_eu_scope` / `is_excluded`)"*. **No such node exists, and `ClassificationState` was a stranded model deleted on 2026-07-29** — referenced by nothing in `src/` even before that. So the justification was never true.
 
-Consequence: the tool classifies systems the Regulation does not govern. No territorial-scope question (Art. 2(1)), and none of the exclusions — national security and defence (2(3)), pure scientific R&D (2(6)), purely personal non-professional use (2(10)). A defence contractor gets a full Chapter III gap report for a system explicitly carved out.
+Consequence: the tool classifies systems the Regulation does not govern. No territorial-scope question (Art. 2(1)), and none of the exclusions — national security and defence (2(3)), pure scientific R&D (2(6)), pre-market research and development (2(8)), purely personal non-professional use (2(10)), free and open-source release (2(12)). A defence contractor gets a full Chapter III gap report for a system explicitly carved out.
 
 Fails safe in direction (over-reporting, not under), but tells users they owe duties they do not.
+
+**Cases were written BEFORE the node, deliberately.** Nothing in the code consulted Art. 2 when they were authored, which is the one moment a held-out batch can be genuinely blind: there was no behaviour to observe. Cases written after watching a node fail are cases shaped by that failure. The order is the method, not a scheduling accident, and `docs/heldout-brief.md` states it. The authoring session was additionally told which gap it was covering, that every exclusion in the Article is qualified and so needs a near neighbour, and where to look for documents — TED, CORDIS, model-card and vendor-documentation registers — without being handed any particular one.
+
+**`RiskClass.OUT_OF_SCOPE` exists, and it is not `MINIMAL`.** The distinction is the whole point of the class: a minimal-risk system is inside the Regulation and still owes Art. 4 AI literacy, with Art. 50 possibly attaching; an excluded system owes nothing at all. `ClassificationCase.expected_scope_exclusion` forces a case to name the paragraph it rests on, and the validator refuses an out-of-scope case that also carries Art. 6 sub-answers — Art. 6 classifies systems the Regulation governs, so it is never reached.
+
+**Held out: nine cases, authored blind 2026-08-11** from nine public documents — two TED procurement notices, three CORDIS project records, two Hugging Face model cards, a consumer user manual and a manufacturer press release. Five exclusions, each paired with a NEAR NEIGHBOUR that reads like it and is not it, because every exclusion in the Article is qualified — *exclusively*, *sole purpose*, *purely*, *prior to*, and 2(12)'s Art. 5/50 carve-back. The pairs are where the measurement is: a classifier that grants an exclusion on a keyword is worse than one that never grants any.
+
+| Paragraph | Excluded | Near neighbour, in scope |
+| --- | --- | --- |
+| 2(3) military / defence / national security | EDA tender, UAS navigation in GNSS-denied airspace | customs + border-guard OSINT tools — bought under defence-and-security procurement law, and the exclusion turns on purpose of USE |
+| 2(6) sole purpose of scientific R&D | CORDIS astrophysics classifier — no product, no customer, no natural person | — |
+| 2(8) prior to placing on the market | CORDIS grid/rail/ATM operator project, validated only in simulators | pool drowning detection — an EU research grant, but paying customers already |
+| 2(10) purely personal non-professional use | domestic oven bake-time predictor, answered for the household deployer | consumer camera drone — same everyday framing, answered for the provider |
+| 2(12) free and open-source licence | Apache-2.0 time-series forecaster | Apache-2.0 text-to-speech — Art. 50(2) carve-back lifts the exclusion |
+
+The 2(12) pair is the batch's flip, and it is a **new kind**: it flips on SCOPE rather than on tier. Same licence, same shape of publication, one excluded outright and one governed, separated only by whether the output is synthetic content Art. 50(2) requires to be marked.
+
+The 2(10) pair carries the other thing Art. 2(1) is organised around — the exclusion attaches to a DEPLOYER, not to a system. The oven's manufacturer keeps every provider obligation it has; only the person baking is lifted out.
+
+**Art. 2(4) has no held-out case, and will not get one.** Third-country public authorities and international organisations acting under law-enforcement or judicial cooperation agreements. The authoring session found no source document describing such a system without supplying the cooperation framework itself, and recorded the gap rather than inventing one.
+
+That refusal was right, and the reason generalises. **2(4) is the only exclusion in the Article whose condition is about a COUNTRY rather than about the system** — it applies *"provided that"* the third country affords adequate safeguards for fundamental rights and freedoms. No system description states that; it is settled in the agreement and in the Commission's assessment. So 2(4) has the same shape as Art. 6(1)(b): **a condition to read, never to derive.** Deriving it means ruling on a country's data protection regime from a description of a piece of software — the same false-confidence trap the DECIDED note under M4d-1 rejects for sectoral conformity routes.
+
+Covered instead by two DEV cases, where inventing the framework is legitimate: `third_country_mla_lead_ranking_with_safeguards` (the agreement records the adequacy finding → `out_of_scope`) and `third_country_mla_lead_ranking_unstated` (it does not → `needs_review`). The second is the load-bearing one. The failure it measures is granting the exclusion on the words "cooperation agreement", which would clear an Annex III(6) law-enforcement system outright.
+
+**Dev set: 14 → 18.** Two Art. 2(3) cases (`defence_drone_swarm_coordination` ⇄ `border_surveillance_drone_analytics` — same aircraft, same defence-flavoured vocabulary, opposite sides, because border policing is law enforcement and not defence) plus the two 2(4) cases above.
+
+**The manifest was widened.** `submission: K######` became `source_id`, a general identifier with a scheme prefix (`TED:`, `CORDIS:`, `HF:repo@revision`, `BSH:`, `DJI:`); an unprefixed value is still a 510(k) number. The property that earned its place survives — every part of the identifier must appear in the URL, so citation and document cannot drift apart. `test_the_documents_are_not_committed` now hashes tracked files against the manifest instead of globbing `K######.pdf`, which only ever caught one source type. Byte-stability was checked before hashing: TED PDFs and CORDIS `?format=json` reproduce exactly across fetches (CORDIS HTML does not), and Hugging Face URLs are pinned to a commit.
+
+**Two contestable labels, recorded rather than hidden.** `h_pool_drowning_detection_rollout` — sorting swimmers into distressed or not, from video of how they move, sits close to Art. 3(40) biometric categorisation, since Art. 3(34) counts behavioural characteristics as biometric data. Art. 50(3) is read purpose-bound in the light of Annex III(1), consistently with `h_autonomous_retinopathy_screening`; if a reviewer disagrees, transparency flips to true. And both 2(12) cases read the released package — weights, inference library, model-selection helper — as an AI SYSTEM, where a reviewer could say bare weights are a model question instead. It cuts the same way for both, so the flip survives either reading.
+
+**What remains: build the node.** The specification is a failing test, not a paragraph. `test_graph_reproduces_every_layer1_case` runs the cascade off each case's own sub-answers, so it is deterministic and model-independent, and it currently names exactly two cases:
+
+```
+defence_drone_swarm_coordination                 got minimal  want out_of_scope
+third_country_mla_lead_ranking_with_safeguards   got minimal  want out_of_scope
+```
+
+`minimal` is the answer a cascade with no Art. 2 door gives a defence system. Three things the build has to get right, each visible in the cases above:
+
+1. **Scope is asked FIRST**, before Art. 5. A system the Regulation does not govern is not a prohibited practice either.
+2. **`select()` must return nothing for `OUT_OF_SCOPE`**, the way it already does for Annex I Section B — and for the stronger reason. Section B systems owe Arts. 102-109; these owe nothing.
+3. **Abstention must be for the right reason.** `third_country_mla_lead_ranking_unstated` passes today, but by accident: the stub brain abstains on everything and lands on `needs_review` by default, not because scope is undecided. The same false pass the authoring session flagged on `h_customs_osint_analysis_tools`. Once the node exists, check WHY it abstained, not just the label.
 
 #### M4d-3 — Art. 50 is detected and then dropped 🟠
 
