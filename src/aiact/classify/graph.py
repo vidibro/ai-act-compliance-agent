@@ -121,10 +121,20 @@ QUESTIONS: dict[str, ClassificationQuestion] = {
         # PURPOSE, a research GRANT is not a research PURPOSE, a CONSUMER product is not a personal
         # DEPLOYER. Granting an exclusion on a keyword clears a system the Regulation governs,
         # which is the worst direction to be wrong in.
+        #
+        # The 2(3) bullet carries an extra argument because "national security" is the widest of
+        # those words and the only one that collides with a listed high-risk area. It is answered
+        # structurally, from Annex III(6) and III(7) — a reading of 2(3) that swallows policing or
+        # border management would leave both entries with nothing to cover, so it cannot be right.
         "Does Article 2 withhold this Regulation from the described system? Answer which "
         "paragraph, or none. Each is written narrowly, and the qualifier decides it:\n"
         "- 2(3) EXCLUSIVELY for military, defence or national security purposes. Turns on what the "
-        "system is USED for, not on who bought it or under which procurement rules.\n"
+        "system is USED for, not on who bought it or under which procurement rules. NATIONAL "
+        "SECURITY IS NOT A SYNONYM FOR POLICING, public safety or border management: Annex III(6) "
+        "lists law enforcement and Annex III(7) lists migration, asylum and border control "
+        "management as HIGH-RISK areas, so reading ordinary policing or border work as national "
+        "security would empty both of those entries. Protecting a national frontier is border "
+        "control.\n"
         "- 2(4) a third-country public authority or international organisation, under a law "
         "enforcement or judicial cooperation agreement with the Union. See the caution below.\n"
         "- 2(6) developed and put into service for the SOLE purpose of scientific research and "
