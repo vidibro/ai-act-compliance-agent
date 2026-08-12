@@ -9,6 +9,9 @@ python scripts/classify.py --text "A tool that scores and ranks job applicants b
 
 # run the whole Layer 1 golden set through the LLM and score classification accuracy:
 python scripts/classify.py --golden
+
+# the same, against the HELD-OUT split — the reportable number, and running it spends the set:
+python scripts/classify.py --golden --cases data/golden_set/classification_cases_heldout.yaml
 """
 
 from __future__ import annotations
@@ -87,14 +90,45 @@ def demo() -> None:
     print("\n=> the flip: not_high_risk -> high_risk, via the Art. 6(3) profiling carve-back.\n")
 
 
-def run_golden() -> None:
+def _held_out_banner() -> None:
+    """Stamp the commit, and say out loud what a held-out run costs.
+
+    A held-out score is only worth reporting if it can be tied to the code that produced it and to
+    a set nobody has tuned against. Neither is checkable after the fact from a number in a
+    document, so both are printed here: the commit, and whether the tree was clean at the time.
+    A dirty tree does not stop the run — it means the result is not reproducible, which is the
+    reader's problem to know about rather than the script's to prevent.
+    """
+    import subprocess
+
+    def git(*args: str) -> str:
+        return subprocess.run(
+            ["git", *args], capture_output=True, text=True, check=False
+        ).stdout.strip()
+
+    commit = git("rev-parse", "--short", "HEAD") or "unknown"
+    dirty = " ** WORKING TREE DIRTY — result is not reproducible **"
+    state = dirty if git("status", "-s") else " (clean)"
+    print("=" * 96)
+    print("HELD-OUT SET. This is the reportable number, and running it spends the set:")
+    print("  - do not edit a case because it failed. That is the tuning this split exists to stop.")
+    print("  - fix the CODE or the PROMPT, or record the disagreement, and re-run sparingly.")
+    print(f"  commit: {commit}{state}")
+    print("=" * 96)
+
+
+def run_golden(cases_path: Path | None = None) -> None:
     from aiact.classify.llm_brain import LLMBrain
 
-    cases = load_classification_cases()
+    cases = load_classification_cases(cases_path)
     brain = LLMBrain()
     anchored = load_questions()
     traced = enable_tracing()
-    print(f"Classifying {len(cases.cases)} Layer 1 cases with model={brain.model}")
+    where = cases_path or "data/golden_set/classification_cases.yaml (dev)"
+    if any(c.split == "test" for c in cases.cases):
+        _held_out_banner()
+    print(f"Classifying {len(cases.cases)} Layer 1 cases from {where}")
+    print(f"model={brain.model}")
     print(f"Langfuse tracing: {'ON' if traced else 'off (no keys) — traces not recorded'}")
     print("questions anchored in verbatim article + Annex III text\n")
     pairs = []
@@ -137,12 +171,20 @@ def main() -> None:
     g.add_argument("--demo", action="store_true", help="deterministic flip demo, no API key")
     g.add_argument("--text", help="classify this description with the configured LLM")
     g.add_argument("--golden", action="store_true", help="run the Layer 1 golden set with the LLM")
+    ap.add_argument(
+        "--cases",
+        type=Path,
+        default=None,
+        help="which case file --golden runs. Defaults to the DEV set, which is the tunable one. "
+        "Point it at classification_cases_heldout.yaml to measure — and read the warning that "
+        "prints before doing so.",
+    )
     args = ap.parse_args()
 
     if args.demo:
         demo()
     elif args.golden:
-        run_golden()
+        run_golden(args.cases)
     else:
         from aiact.classify.llm_brain import LLMBrain
 
