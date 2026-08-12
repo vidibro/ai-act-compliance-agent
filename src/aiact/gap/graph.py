@@ -24,7 +24,7 @@ from langgraph.graph import END, START, StateGraph
 from pydantic import BaseModel, ConfigDict, Field
 
 from aiact.gap.judge import LLMJudge
-from aiact.gap.rules import ActiveRules, select
+from aiact.gap.rules import ActiveRules, select_rules
 from aiact.schemas.classification import ClassificationResult
 from aiact.schemas.enums import ActorRole, Verdict
 from aiact.schemas.policy import PolicyRule, PolicySpec
@@ -81,7 +81,7 @@ def build_graph(
     """Compile the gap-analysis graph for one ruleset and one judge."""
 
     def node_select_rules(state: ComplianceCheckState) -> dict:
-        return {"active": [select(spec, uc, role) for uc in state.classification.use_cases]}
+        return {"active": [select_rules(spec, uc, role) for uc in state.classification.use_cases]}
 
     def node_check_compliance(state: ComplianceCheckState) -> dict:
         # Each job is judged against the whole document. Sound while a classification carries one

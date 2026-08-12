@@ -39,7 +39,7 @@ class ActiveRules:
         return self.document_verifiable + self.not_document_verifiable + self.postponed
 
 
-def select(spec: PolicySpec, use_case: UseCaseClassification, role: ActorRole) -> ActiveRules:
+def select_rules(spec: PolicySpec, use_case: UseCaseClassification, role: ActorRole) -> ActiveRules:
     """The obligations `role` owes for this use case, under its risk class.
 
     Risk class is not on its own sufficient. **Art. 2(2)**: where a system is high-risk under

@@ -11,7 +11,7 @@ from datetime import date
 import pytest
 
 from aiact.gap.graph import analyse
-from aiact.gap.rules import select
+from aiact.gap.rules import select_rules
 from aiact.policy_loader import load_policy_spec
 from aiact.schemas.classification import (
     ClassificationEvidence,
@@ -84,8 +84,8 @@ class StubJudge:
 
 # --- what activates ------------------------------------------------------------------------------
 def test_only_the_rules_for_this_risk_class_activate(spec):
-    high = select(spec, a_use_case("scoring", RiskClass.HIGH_RISK), ActorRole.PROVIDER)
-    minimal = select(spec, a_use_case("chat", RiskClass.MINIMAL), ActorRole.PROVIDER)
+    high = select_rules(spec, a_use_case("scoring", RiskClass.HIGH_RISK), ActorRole.PROVIDER)
+    minimal = select_rules(spec, a_use_case("chat", RiskClass.MINIMAL), ActorRole.PROVIDER)
     assert high.document_verifiable, "a high-risk use case owes Chapter III"
     assert not minimal.all_rules, "a minimal-risk use case owes none of these obligations"
 

@@ -18,7 +18,7 @@ import pytest
 
 from aiact.classify import ScriptedBrain, classify
 from aiact.gap.judge import Judgement
-from aiact.gap.rules import select
+from aiact.gap.rules import select_rules
 from aiact.pipeline import review
 from aiact.policy_loader import load_policy_spec
 from aiact.schemas.classification import (
@@ -166,14 +166,14 @@ def test_annex_i_splits_into_exactly_the_act_s_two_sections():
 
 def test_section_a_owes_the_full_chapter_iii(spec):
     uc = a_use_case(AnnexIProduct.MEDICAL_DEVICES)
-    assert select(spec, uc, ActorRole.PROVIDER).all_rules, "Section A owes Art. 9-15"
+    assert select_rules(spec, uc, ActorRole.PROVIDER).all_rules, "Section A owes Art. 9-15"
 
 
 def test_section_b_owes_nothing_under_this_regulation(spec):
     """Art. 2(2): for a Section B product only Art. 6(1), 102-109 and 112 apply. Its safety duties
     come from the sectoral legislation instead."""
     uc = a_use_case(AnnexIProduct.MOTOR_VEHICLES)
-    assert select(spec, uc, ActorRole.PROVIDER).all_rules == ()
+    assert select_rules(spec, uc, ActorRole.PROVIDER).all_rules == ()
 
 
 def test_a_section_b_report_says_why_it_is_empty(spec):
