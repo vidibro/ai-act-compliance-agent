@@ -18,7 +18,7 @@ from aiact.classify.scripted_brain import ScriptedBrain
 from aiact.gap.judge import Judgement
 from aiact.pipeline import review
 from aiact.policy_loader import load_policy_spec
-from aiact.schemas.enums import AnnexIIIArea, RiskClass, Verdict
+from aiact.schemas.enums import AnnexIIIArea, RiskClass, ScopeExclusion, Verdict
 
 DOCUMENT = "# System card\n\n## Human oversight\n\nA panel reviews every recommendation.\n"
 
@@ -136,3 +136,38 @@ def test_a_minimal_system_owes_nothing_and_that_is_not_an_error(spec):
     report = review(DOCUMENT, spec, a_brain(prohibited=False, annex_iii=None), judge=StubJudge())
     assert report.classification.overall_risk_class == RiskClass.MINIMAL
     assert report.summary.total_applicable == 0
+
+
+# --- Art. 2: nothing is owed, and the report has to say which kind of nothing ---------------------
+def test_an_out_of_scope_system_is_never_checked(spec):
+    """Art. 2 withholds the Regulation entirely, so there is no obligation to check against. The
+    judge must not be called at all — running it would produce findings for duties that do not
+    exist."""
+    judge = StubJudge()
+    report = review(
+        DOCUMENT,
+        spec,
+        a_brain(prohibited=False, scope=ScopeExclusion.MILITARY_DEFENCE_NATIONAL_SECURITY),
+        judge=judge,
+        system_id="defence",
+    )
+    assert report.classification.overall_risk_class == RiskClass.OUT_OF_SCOPE
+    assert not report.findings
+    assert judge.calls == []
+
+
+def test_the_out_of_scope_note_distinguishes_itself_from_minimal(spec):
+    """An empty findings list is the same output a clean bill of health produces, so the note is
+    the only thing telling the two apart — and `minimal` is the neighbour it will be confused with.
+    A minimal system is INSIDE the Regulation and still owes Art. 4; this one owes nothing."""
+    report = review(
+        DOCUMENT,
+        spec,
+        a_brain(prohibited=False, scope=ScopeExclusion.SCIENTIFIC_RESEARCH),
+        judge=StubJudge(),
+        system_id="research",
+    )
+    note = report.scope_note or ""
+    assert "Art. 2" in note
+    assert "minimal" in note, "the note must name the tier it is not"
+    assert "Art. 4" in note, "and what a minimal system would still owe"

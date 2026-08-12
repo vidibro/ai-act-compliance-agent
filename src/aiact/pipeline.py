@@ -33,6 +33,14 @@ _PROHIBITED_NOTE = (
     "against it would imply the system may be placed on the market once the paperwork is fixed. "
     "It may not. Withdraw the practice."
 )
+_OUT_OF_SCOPE_NOTE = (
+    "No obligation check was run, and none is owed: Art. 2 withholds this Regulation from the "
+    "system entirely. This is not a low risk tier — a minimal-risk system is still governed and "
+    "owes Art. 4 AI literacy, with Art. 50 possibly attaching, whereas an excluded one owes "
+    "nothing under this Regulation at all. Other law may well still apply; this tool reads only "
+    "Regulation (EU) 2024/1689. Every Art. 2 exclusion is narrow, so check the classification's "
+    "stated reason against your own facts before relying on it."
+)
 _NEEDS_REVIEW_NOTE = (
     "No obligation check was run: the classification is unresolved, so which obligations apply is "
     "not yet known. Checking against a guessed risk class would produce findings a provider could "
@@ -105,6 +113,8 @@ def review(
     # register it — and `select` already resolves that per risk class. Gating on high_risk
     # would silently drop a real obligation.
     overall = classification.overall_risk_class
+    if overall == RiskClass.OUT_OF_SCOPE:
+        return _empty_report(system_id, spec, classification, _OUT_OF_SCOPE_NOTE)
     if overall == RiskClass.PROHIBITED:
         return _empty_report(system_id, spec, classification, _PROHIBITED_NOTE)
     if overall == RiskClass.NEEDS_REVIEW:

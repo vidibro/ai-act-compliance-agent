@@ -14,7 +14,7 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 
 from aiact.schemas.classification import UseCaseClassification
-from aiact.schemas.enums import ActorRole
+from aiact.schemas.enums import ActorRole, RiskClass
 from aiact.schemas.policy import PolicyRule, PolicySpec
 
 
@@ -42,6 +42,11 @@ class ActiveRules:
 def select_rules(spec: PolicySpec, use_case: UseCaseClassification, role: ActorRole) -> ActiveRules:
     """The obligations `role` owes for this use case, under its risk class.
 
+    **Art. 2** comes first, and it is the stronger case. Where the Regulation does not govern the
+    system at all — military use, sole-purpose research, pre-market development, a natural person's
+    own use, a free and open-source release — there are no obligations to select, not a reduced set.
+    Distinct from the Section B limit below, where the system IS governed and owes Arts. 102-109.
+
     Risk class is not on its own sufficient. **Art. 2(2)**: where a system is high-risk under
     Art. 6(1) because it is a safety component of a product listed in Annex I **Section B** —
     vehicles, aviation, rail, marine — only Art. 6(1), Arts. 102-109 and Art. 112 apply. Chapter III
@@ -49,6 +54,14 @@ def select_rules(spec: PolicySpec, use_case: UseCaseClassification, role: ActorR
     selecting on the tier alone would raise every one of them against a provider the Regulation
     exempts.
     """
+    # Redundant against today's spec, and kept deliberately: no rule lists OUT_OF_SCOPE among its
+    # risk classes, so the filter below would empty the set anyway. That is a property of the
+    # current 19 rules rather than of the law, and the day a rule is written with a wider
+    # `applies_to_risk_class` this is what stops it attaching to a system the Regulation does not
+    # govern. Stated here because a silent emptiness cannot be told apart from an intended one.
+    if use_case.risk_class == RiskClass.OUT_OF_SCOPE:
+        return ActiveRules(use_case_id=use_case.use_case_id)
+
     if use_case.annex_i_product is not None and not use_case.annex_i_product.chapter_iii_applies:
         return ActiveRules(use_case_id=use_case.use_case_id)
 
