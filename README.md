@@ -7,8 +7,10 @@ provider obligations — every verdict carrying a citation to the source article
 
 Two jobs, in order:
 
-1. **Classify** — what risk class is a use case? `prohibited` / `high_risk` / `not_high_risk` /
-   `minimal` (or `needs_review` when the law is genuinely unsettled).
+1. **Classify** — first, does the Regulation govern this system at all (Art. 2)? If it does, what
+   risk class is the use case? `prohibited` / `high_risk` / `not_high_risk` / `minimal` — or
+   `out_of_scope` where the Act is withheld, and `needs_review` where the law is genuinely
+   unsettled.
 2. **Check** — for a high-risk system, does the documentation satisfy each obligation?
    `pass` / `gap` / `inadequate`. Telling a real `gap` from an `inadequate` (the requirement is
    mentioned but with no substance) is the capability this project is built and measured around.
@@ -62,6 +64,8 @@ Not built yet: the FastAPI layer (M6).
 activates. It owns exactly one decision — **whether the obligation check should run at all** —
 because that is a legal question rather than a property of either graph:
 
+- **`out_of_scope` stops here**, and owes nothing: there are no obligations to check against, so
+  running the check would produce findings for duties that do not exist.
 - **`prohibited` stops here.** Chapter III describes how a *permitted* high-risk system must be
   built and documented. Reporting documentation gaps against a banned practice would imply it may
   ship once the paperwork is fixed. It may not.
@@ -79,7 +83,8 @@ tool could produce.
 
 The classifier is a LangGraph cascade that mirrors the European Commission's AI Act Compliance
 Checker. Each node asks one narrow, checkable question about the use case; the graph — not the
-model — owns the legal routing. Prohibited practices (Art. 5) are decided *before* high-risk, and
+model — owns the legal routing. Order is itself legal reasoning: whether the Act applies at all
+(Art. 2) is settled *before* the ban check, prohibited practices (Art. 5) *before* high-risk, and
 profiling (Art. 6(3)) is a separate node evaluated *before* any derogation, because the Regulation
 makes profiling high-risk *notwithstanding* the derogations.
 
@@ -87,7 +92,9 @@ makes profiling high-risk *notwithstanding* the derogations.
 flowchart TD
     START([use-case description]) --> AI{"Is it an AI system at all?<br/>Art. 3(1)"}
     AI -->|no| MIN1([minimal]):::ok
-    AI -->|yes| PROH{"Is the practice itself banned?<br/>Art. 5"}
+    AI -->|yes| SCOPE{"Does this law apply to the system at all?<br/>Art. 2"}
+    SCOPE -->|"no — military, research-only,<br/>pre-market, or a person's own use"| OOS([out of scope]):::oos
+    SCOPE -->|yes| PROH{"Is the practice itself banned?<br/>Art. 5"}
     PROH -->|yes, banned| BAN([prohibited]):::ban
     PROH -->|no| ANNEXI{"Is it a safety part of a regulated<br/>physical product?<br/>Annex I, Art. 6(1)(a)"}
     ANNEXI -->|yes| TPA{"Does that product need an<br/>outside body to certify it?<br/>Art. 6(1)(b)"}
@@ -101,6 +108,7 @@ flowchart TD
     DER -->|"no — it does the real deciding"| HIGH
     DER -->|"yes — narrow role only"| NHR([not high risk]):::mid
     AI -.->|low confidence| NR([needs review]):::rev
+    SCOPE -.-> NR
     PROH -.-> NR
     ANNEXI -.-> NR
     TPA -.-> NR
@@ -108,6 +116,7 @@ flowchart TD
     PROF -.-> NR
     DER -.-> NR
 
+    classDef oos fill:#eceef1,stroke:#7a828c
     classDef ban fill:#fbe4e4,stroke:#c23b3b
     classDef high fill:#fbeadf,stroke:#d9683a
     classDef mid fill:#e2f2f0,stroke:#2f9e93
@@ -115,6 +124,17 @@ flowchart TD
     classDef rev fill:#fdf3de,stroke:#d9a521
 ```
 
+- **The first question is whether the law applies at all.** Art. 2 withholds the Regulation from
+  systems used only for military or defence purposes, built only to do science, still in
+  development before sale, or used by a private person in their own life. This is asked *before*
+  the ban check, because Art. 5 is part of this Regulation and cannot reach a system it does not
+  govern. **`out of scope` is not a low risk class**: a `minimal` system is inside the Act and
+  still owes Art. 4 AI literacy, while an excluded one owes nothing at all. Every exclusion is
+  written narrowly — *exclusively* military, *sole* purpose of research, *purely* personal — so
+  buying under defence procurement rules, holding a research grant, or selling to consumers does
+  not by itself get you out. One exclusion is left open at this point and settled at the end: a
+  free and open-source release (Art. 2(12)) is excluded *unless* it turns out high-risk, banned,
+  or subject to Art. 50, which are exactly the questions the rest of the cascade answers.
 - **Two doors into high risk, not one.** Art. 6(1) catches AI *inside a regulated physical
   product* — a braking controller, a dose limiter in a surgical robot. Art. 6(2) catches AI used
   *for a listed purpose* — hiring, credit, policing. A surgical robot appears nowhere in Annex III,

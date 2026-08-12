@@ -97,12 +97,14 @@ is authored before the code it judges:
    (no classifier run — that would leak it). **The reporting run is still pending**: run once against
    a frozen commit, record the date and git sha, and EXPECT a lower number than dev's 7/7 — that is
    the honest figure appearing for the first time, not a regression.
-7. ⛔ **BLOCKED — the held-out reporting run must wait for M4d.** The 2026-07-30 coverage audit found
-   two missing cascade doors that change risk classes: **Annex I safety components (Art. 6(1)) are
-   classified `minimal`** — a false clearance — and **Art. 2 applicability is never asked at all**.
-   Running held-out against today's cascade produces a headline number measured on a classifier with
-   two known holes, which then has to be discarded and re-run. Land M4d-1 and M4d-2 first, with
-   golden-set cases for each, THEN report held-out once against a frozen commit.
+7. 🟢 **UNBLOCKED 2026-08-11 — the held-out reporting run can now happen.** It was held back because
+   the 2026-07-30 coverage audit found two missing cascade doors that change risk classes: **Annex I
+   safety components (Art. 6(1)) classified `minimal`** — a false clearance — and **Art. 2
+   applicability never asked at all**. Reporting against a cascade with two known holes produces a
+   headline number that has to be discarded and re-run. Both doors have now landed (M4d-1, M4d-2)
+   with golden-set cases for each. Report held-out ONCE, against a frozen commit — and note that the
+   Art. 2 node has never been run against a model, so this run is its first measurement as well as
+   the headline.
 
 ### The Annex III scope boundary (dev-side fix, 2026-07-22)
 
@@ -467,7 +469,9 @@ Found 2026-07-30 by auditing the cascade's six questions and the 19 spec rules a
 
 These are not backlog items. Findings 1 and 2 change risk classes, so **the Layer 1 held-out run must not happen until they land** — otherwise the headline number is measured against a cascade with two missing doors, and has to be thrown away and re-run.
 
-**Order:** 1 + 2 together (both are missing cascade nodes, both need golden-set cases) → 4 (list-only ships without ground truth) → 3 → 5, 6.
+**Order:** 1 + 2 together (both are missing cascade nodes, both need golden-set cases) → 4 (list-only ships without ground truth) → 3 → 5, 6. **7 follows 4**, not because it is less urgent than 3 or 5 but because Art. 2(1) is written per role, so the role question has to be settled first or the build is guessing.
+
+1 and 2 are done. 7 was found afterwards, on 2026-08-11, and is listed with the rest below.
 
 Ordered below by what a wrong answer costs a user.
 
@@ -485,7 +489,7 @@ Three things the enacted text forced, each of which a simpler implementation get
 
 1. **Art. 6(1) is a CONJUNCTION.** (a) safety component of an Annex I product AND (b) that product needs THIRD-PARTY conformity assessment. Most Annex I regimes let a manufacturer self-assess the lower risk classes, so treating (a) alone as sufficient would classify self-certified products high-risk.
 2. **Failing (b) is not an exit.** A self-assessed Annex I product can still be high-risk under Annex III, so the cascade falls THROUGH to the Annex III route rather than concluding `minimal`. Treating it as an exit would re-create the original bug one branch over.
-3. **Art. 2(2) is the trap.** For an Art. 6(1) system whose product sits in Annex I **Section B** — vehicles, aviation, rail, marine — only Art. 6(1), Arts. 102-109 and Art. 112 apply. **Chapter III does not.** Such a system is genuinely high-risk and genuinely owes none of Art. 9-15; routing it to `high_risk` without more would raise 18 obligations the Act withholds, trading a false clearance for a false accusation. The section is carried on `AnnexIProduct.chapter_iii_applies`, `select()` returns nothing for Section B, and `review()` sets a `scope_note` — because high_risk beside an empty findings list is the most misreadable output this tool can produce.
+3. **Art. 2(2) is the trap.** For an Art. 6(1) system whose product sits in Annex I **Section B** — vehicles, aviation, rail, marine — only Art. 6(1), Arts. 102-109 and Art. 112 apply. **Chapter III does not.** Such a system is genuinely high-risk and genuinely owes none of Art. 9-15; routing it to `high_risk` without more would raise 18 obligations the Act withholds, trading a false clearance for a false accusation. The section is carried on `AnnexIProduct.chapter_iii_applies`, `select_rules()` returns nothing for Section B, and `review()` sets a `scope_note` — because high_risk beside an empty findings list is the most misreadable output this tool can produce.
 
 **Measured live, 2026-07-30, Flash + thinking disabled, 4 cases, $0.0218 (~$0.0055/case):** surgical robot → high_risk via `medical_devices` (Section A); vehicle braking → high_risk via `motor_vehicles` (Section B, no Chapter III); self-certified drill press → minimal (both conditions required, fell through correctly); theatre-and-shift scheduler → `annex_i=None`, the distractor that sits in a medical setting without being a safety component. **4/4, all at high confidence.** Per-case classification cost rose from $0.0045 to $0.0055 — the two extra nodes, ~22%.
 
@@ -509,17 +513,17 @@ So the `third_party_assessment` node asks only what the DOCUMENT states, and is 
 
 What this costs, stated plainly: **the Annex I route can only ever reach `high_risk` on a document that states its conformity route.** The five dev cases do (14/14 live, re-measured after the prompt narrowed), and a real EU technical file normally does — a CE marking and notified-body number is standard content. A US filing does not, which is why four held-out cases sit at `needs_review` by design rather than by failure.
 
-#### M4d-2 — Art. 2 applicability is never asked 🟡 cases landed 2026-08-11, node not built
+#### M4d-2 — Art. 2 applicability ✅ BUILT 2026-08-11, not yet measured live
 
-The ledger excludes Art. 2 because it is *"consumed by the classification graph (`ClassificationState.in_eu_scope` / `is_excluded`)"*. **No such node exists, and `ClassificationState` was a stranded model deleted on 2026-07-29** — referenced by nothing in `src/` even before that. So the justification was never true.
+**Was:** the ledger excluded Art. 2 because it is *"consumed by the classification graph (`ClassificationState.in_eu_scope` / `is_excluded`)"*. **No such node exists, and `ClassificationState` was a stranded model deleted on 2026-07-29** — referenced by nothing in `src/` even before that. So the justification was never true.
 
-Consequence: the tool classifies systems the Regulation does not govern. No territorial-scope question (Art. 2(1)), and none of the exclusions — national security and defence (2(3)), pure scientific R&D (2(6)), pre-market research and development (2(8)), purely personal non-professional use (2(10)), free and open-source release (2(12)). A defence contractor gets a full Chapter III gap report for a system explicitly carved out.
+Consequence: the tool classified systems the Regulation does not govern. No scope question at all, and none of the exclusions — military, defence and national security (2(3)), third-country law-enforcement cooperation (2(4)), sole-purpose scientific R&D (2(6)), pre-market research and development (2(8)), purely personal non-professional use (2(10)), free and open-source release (2(12)). A defence contractor got a full Chapter III gap report for a system explicitly carved out.
 
-Fails safe in direction (over-reporting, not under), but tells users they owe duties they do not.
+It failed safe in direction — over-reporting, not under — but told users they owed duties they did not. `ClassificationCase.expected_scope_exclusion` now names the paragraph, and the validator refuses an out-of-scope case that also carries Art. 6 sub-answers, because Art. 6 classifies systems the Regulation governs and never reaches one it does not.
 
 **Cases were written BEFORE the node, deliberately.** Nothing in the code consulted Art. 2 when they were authored, which is the one moment a held-out batch can be genuinely blind: there was no behaviour to observe. Cases written after watching a node fail are cases shaped by that failure. The order is the method, not a scheduling accident, and `docs/heldout-brief.md` states it. The authoring session was additionally told which gap it was covering, that every exclusion in the Article is qualified and so needs a near neighbour, and where to look for documents — TED, CORDIS, model-card and vendor-documentation registers — without being handed any particular one.
 
-**`RiskClass.OUT_OF_SCOPE` exists, and it is not `MINIMAL`.** The distinction is the whole point of the class: a minimal-risk system is inside the Regulation and still owes Art. 4 AI literacy, with Art. 50 possibly attaching; an excluded system owes nothing at all. `ClassificationCase.expected_scope_exclusion` forces a case to name the paragraph it rests on, and the validator refuses an out-of-scope case that also carries Art. 6 sub-answers — Art. 6 classifies systems the Regulation governs, so it is never reached.
+**`OUT_OF_SCOPE` is not `MINIMAL`,** and that distinction is the whole point of the class: a minimal-risk system is inside the Regulation and still owes Art. 4 AI literacy, with Art. 50 possibly attaching; an excluded system owes nothing at all. Collapsing the two would tell a defence contractor they hold duties the legislator expressly withheld.
 
 **Held out: nine cases, authored blind 2026-08-11** from nine public documents — two TED procurement notices, three CORDIS project records, two Hugging Face model cards, a consumer user manual and a manufacturer press release. Five exclusions, each paired with a NEAR NEIGHBOUR that reads like it and is not it, because every exclusion in the Article is qualified — *exclusively*, *sole purpose*, *purely*, *prior to*, and 2(12)'s Art. 5/50 carve-back. The pairs are where the measurement is: a classifier that grants an exclusion on a keyword is worse than one that never grants any.
 
@@ -547,18 +551,27 @@ Covered instead by two DEV cases, where inventing the framework is legitimate: `
 
 **Two contestable labels, recorded rather than hidden.** `h_pool_drowning_detection_rollout` — sorting swimmers into distressed or not, from video of how they move, sits close to Art. 3(40) biometric categorisation, since Art. 3(34) counts behavioural characteristics as biometric data. Art. 50(3) is read purpose-bound in the light of Annex III(1), consistently with `h_autonomous_retinopathy_screening`; if a reviewer disagrees, transparency flips to true. And both 2(12) cases read the released package — weights, inference library, model-selection helper — as an AI SYSTEM, where a reviewer could say bare weights are a model question instead. It cuts the same way for both, so the flip survives either reading.
 
-**What remains: build the node.** The specification is a failing test, not a paragraph. `test_graph_reproduces_every_layer1_case` runs the cascade off each case's own sub-answers, so it is deterministic and model-independent, and it currently names exactly two cases:
+**Built:** one node, `scope`, between `is_ai` and `prohibited`; `ScopeExclusion` (six paragraphs, each carrying its citation); `RiskClass.OUT_OF_SCOPE`; the `OUT_OF_SCOPE` branch in `select_rules()`; and the pipeline gate with its own note. 29 tests in `tests/test_scope.py` and `tests/test_pipeline.py`. **All 42 golden cases route correctly under the deterministic brain — 18/18 dev, 24/24 held out** — and `test_graph_reproduces_every_layer1_case`, which specified this work by failing, passes.
 
-```
-defence_drone_swarm_coordination                 got minimal  want out_of_scope
-third_country_mla_lead_ranking_with_safeguards   got minimal  want out_of_scope
-```
+The specification WAS a failing test rather than a paragraph, which is what authoring the cases first buys: the build had a target it could not quietly redefine.
 
-`minimal` is the answer a cascade with no Art. 2 door gives a defence system. Three things the build has to get right, each visible in the cases above:
+Three things the enacted text forced:
 
-1. **Scope is asked FIRST**, before Art. 5. A system the Regulation does not govern is not a prohibited practice either.
-2. **`select()` must return nothing for `OUT_OF_SCOPE`**, the way it already does for Annex I Section B — and for the stronger reason. Section B systems owe Arts. 102-109; these owe nothing.
-3. **Abstention must be for the right reason.** `third_country_mla_lead_ranking_unstated` passes today, but by accident: the stub brain abstains on everything and lands on `needs_review` by default, not because scope is undecided. The same false pass the authoring session flagged on `h_customs_osint_analysis_tools`. Once the node exists, check WHY it abstained, not just the label.
+1. **Scope is decided BEFORE Art. 5 and before both Art. 6 doors.** Those are provisions OF this Regulation and cannot reach a system it does not govern. Asked after `is_ai` only because Art. 2 speaks throughout of AI systems — and a non-AI system stays `minimal`, not `out_of_scope`, because Art. 3(1) and Art. 2 fail for different reasons.
+2. **`select_rules()` returns nothing at all for `OUT_OF_SCOPE`** — the stronger version of the Section B branch beside it. A Section B system IS governed and owes Arts. 102-109; an excluded one owes nothing. `ComplianceReport.scope_note` says which kind of nothing, because an empty findings list is otherwise the same output a clean bill of health produces.
+3. **An exclusion is granted only on a NAMED paragraph.** `_scope_exclusion` narrows by TYPE, not truthiness: a bare false, an unparsed string, anything unclear leaves the system in scope. Over-inclusion is recoverable; a silent clearance is not. Caught by a pre-existing test double in `test_annex_i.py` that answers `false` for every node it does not know — which is exactly the input this rule exists for.
+
+**DECIDED: Art. 2(12) falls through the cascade rather than being judged at the scope node.** It is the one exclusion whose condition is not a fact about the system in isolation — it is lifted where the release is high-risk, an Art. 5 practice, or subject to Art. 50. The alternative was to give the scope node its own copies of Arts. 5 and 50 and have it judge them there. **Rejected**: that is the same judgement made twice in two places, which can disagree, and it costs two more articles of context on every classification for a question the cascade already answers. So an open-source answer routes onward and `decide_risk_class` resolves it at the end, against real answers. One judgement, one place to be wrong.
+
+`NEEDS_REVIEW` is deliberately not among the tiers the exclusion survives: an unresolved cascade has not established that the exceptions are absent, and granting it anyway reads silence as evidence.
+
+**Cost, unmeasured.** One more LLM call per classification, carrying Art. 2 and Art. 3. Art. 3 is already loaded for `is_ai`, so the marginal context is one article. M4d-1's two nodes cost +27% per case; this should be less, but it is a guess until measured — see the open item below.
+
+**Still open:**
+- **No live run.** Deterministic routing is proven; nothing yet shows an LLM can read Art. 2 off real prose. The nine held-out cases exist precisely to answer that, and the reporting run below is now unblocked.
+- **`third_country_mla_lead_ranking_unstated` passes for the wrong reason.** The stub brain abstains on everything and lands on `needs_review` by default, not because scope is undecided. The same false pass the authoring session flagged on `h_customs_osint_analysis_tools`. A live run is what distinguishes them; until then the label is right and the route is unverified.
+- `UseCaseClassification` does not carry the exclusion as a field, only in the reasoning and the evidence's `node_id`. Nothing consumes it yet — `select_rules()` keys on the risk class — so adding one would be speculative. Revisit if a report needs to render the paragraph.
+- **This covers Art. 2's exclusions, not the whole Article.** Art. 2(1) — whether the Regulation reaches the system at all — is still never asked, and is a different shape of question. Tracked as M4d-7.
 
 #### M4d-3 — Art. 50 is detected and then dropped 🟠
 
@@ -566,7 +579,7 @@ The cascade answers *"does Art. 50 apply?"* into `ClassificationResult.transpare
 
 The applicability question stays in classification — it is a property of the system, like "is it in Annex III?", and `assemble` is where it belongs because every path reaches it. What is missing is the CHECK. Four things make it more than a spec addition:
 
-- **`select()` keys on `risk_class`, and Art. 50 is deliberately not a risk class.** A minimal generator and a high-risk chatbot can both owe it, so `applies_to_risk_class` cannot express these rules. Selection needs a second axis — `applies_when: transparency` or similar.
+- **`select_rules()` keys on `risk_class`, and Art. 50 is deliberately not a risk class.** A minimal generator and a high-risk chatbot can both owe it, so `applies_to_risk_class` cannot express these rules. Selection needs a second axis — `applies_when: transparency` or similar.
 - **The paragraphs split by role.** 50(1) and 50(2) bind the provider, 50(3) and 50(4) the deployer. A provider-only run must report the deployer paragraphs as out of assessment rather than silently swallowing them.
 - **It survives `prohibited`**, which the pipeline currently gates out before the gap layer runs.
 - **Its own application date** under Art. 113 — see finding 5.
@@ -602,7 +615,7 @@ So a report covering every role is a decision aid, not padding: it is what a rea
 2. **List** every other role's obligations — citations, no verdicts, zero LLM calls, under a heading that makes the conditional explicit ("if you also act as deployer, you would owe…"). An unheld role must never produce a GAP.
 3. **A role-assignment section** on Art. 25's triggers — do you put your name on it, modify it, change its purpose? Three questions that move a reader from deployer to provider.
 
-**Cost:** ~36 rules across 6 articles (22–27), all already resolved verbatim in the repo. `Finding` needs a `role` axis; `select()` already filters on `applies_to_role`, so selection is unchanged. Six ledger entries flip in-scope.
+**Cost:** ~36 rules across 6 articles (22–27), all already resolved verbatim in the repo. `Finding` needs a `role` axis; `select_rules()` already filters on `applies_to_role`, so selection is unchanged. Six ledger entries flip in-scope.
 
 **The real cost is the golden set, not the rules.** Layer 2's ground truth is ablations of a PROVIDER's technical file. Deployer duties cannot be evidenced there — they need deployment records, a FRIA, logs, evidence that instructions were followed. That is a new corpus authored from scratch, and until it exists the deployer rules are unmeasured. **Ship the LIST for all roles first** (no ground truth needed, since nothing is judged), and gate JUDGING a role on having cases for it.
 
@@ -612,9 +625,29 @@ All 19 rules carry `effective_date: 2026-08-02` (Art. 113) and `status: active`.
 
 Three options, cheapest first: state the date once at report level (all 19 share it); carry it per rule in the report; or compare `effective_date` against the generation date and route not-yet-effective rules into `postponed`, which would finally give that bucket a purpose. The third changes verdicts, so it needs its own test.
 
-#### M4d-6 — The ledger cites a class that no longer exists 🟡
+#### M4d-7 — Art. 2(1) territorial reach is never asked 🟠
 
-Arts. 2, 5 and 50 all justify themselves by reference to `ClassificationState`. It is gone. Art. 5's reasoning survives the edit (the `prohibited` node is real); Arts. 2 and 50 do not, per findings 2 and 3. Rewrite all three against what the code actually does — a ledger whose reasons are stale is worse than none, because the coverage test still passes and the file still reads as an audit.
+Found 2026-08-11, while reviewing M4d-2. Not part of M4d-2, whose work is finished — a separate question that the 2026-07-30 audit and the M4d-2 build both missed.
+
+**Art. 2(1) is the ENTRY condition, and the scope node asks only about EXITS.** The node answers "is this system excluded?" — military, research, pre-market, personal, open-source. Those are exceptions: the Regulation applies, and is then withheld. Paragraph 1 is the reverse and is prior to all of them. It reaches providers placing systems on the **Union** market, deployers **located in** the Union, third-country actors whose **output is used in** the Union, and importers, distributors, product manufacturers and authorised representatives. Answering "no exclusion applies" does not answer "does the Regulation reach you at all", and only one of those two is asked.
+
+Consequence: the tool assumes the Act applies to everyone. A US tool sold only to US customers, whose output never lands in the Union, gets a full report of EU obligations it does not owe.
+
+Fails **safe** — over-reporting, never a false clearance — which is why this is 🟠 and not 🔴.
+
+**Why it cannot be a seventh `ScopeExclusion` member.** The enum encodes paragraphs that WITHHOLD the Regulation, and every member's value is a citation for a withholding. Territorial reach is the opposite shape: its absence is not an exclusion, it is the Regulation never arriving. Modelling it as an exclusion would make `Art. 2(1)` read as a carve-out in every report that cited it. It needs its own answer — most likely a `bool` node before `scope`, since an out-of-reach system is not excluded by anything, it is simply not addressed.
+
+**One awkwardness to settle first, not during the build.** Art. 2(1) is written per ROLE — (a) binds providers, (b) deployers, (c) third-country actors by where the output is used. A document that never says which role it is written from cannot answer it, so this interacts directly with M4d-4 (report every role, judge only the ones held). Deciding the role question first would probably make this one small; doing them in the other order means guessing.
+
+**No held-out coverage, and the batch cannot be reused.** `h_pool_drowning_detection_rollout` touches Art. 2(1) only from the far side — a non-EU provider that IS still bound, which tests that the tool does not wrongly grant territorial relief, not that it would ever recognise a system genuinely out of reach. Cases must be authored before the node, same discipline as M4d-2, and real documents that state where a system is sold are easy to find.
+
+#### M4d-6 — The ledger cites a class that no longer exists 🟡 two of three fixed 2026-08-11
+
+Arts. 2, 5 and 50 all justified themselves by reference to `ClassificationState`. It is gone. A ledger whose reasons are stale is worse than none, because the coverage test still passes and the file still reads as an audit.
+
+**Arts. 2 and 5 rewritten** against what the code actually does: Art. 2 now cites the `scope` node, `ScopeExclusion` and `RiskClass.OUT_OF_SCOPE`, and separately records that Art. 2(2) is consumed by `AnnexIProduct.chapter_iii_applies` and the Section B branch of `select_rules()`. Art. 5's reasoning always survived the edit — the `prohibited` node is real — and now names it rather than the deleted class.
+
+**Art. 50 remains stale**, and cannot be fixed by rewording: the justification claims it is modelled in the classification graph, and while the `transparency` node does answer it, nothing then CHECKS the documentation against it. That is M4d-3, and the ledger entry should be corrected in the same change rather than made to read plausibly first.
 
 #### Checked and genuinely fine
 

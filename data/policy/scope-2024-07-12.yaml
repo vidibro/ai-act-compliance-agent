@@ -25,9 +25,11 @@ out_of_scope:
   # --- Chapter I — General provisions ---------------------------------------------------------
   1: Declaratory statement of the Regulation's subject matter. Creates no obligation.
   2: >-
-    Scope. Determines whether the Regulation applies at all; consumed by the classification graph
-    (ClassificationState.in_eu_scope / is_excluded), not a provider obligation checkable against
-    documentation.
+    Scope. Determines whether the Regulation applies at all, so it is a gate rather than a provider
+    obligation checkable against documentation. Consumed by the classification cascade's `scope`
+    node, which answers it into ScopeExclusion and RiskClass.OUT_OF_SCOPE; Art. 2(2) is consumed
+    separately, by AnnexIProduct.chapter_iii_applies and the Section B branch of
+    gap.rules.select_rules.
   3: >-
     Definitions. Feeds classification (Art. 3(1) is_ai_system, Art. 3(3) actor_role). Definitional,
     creates no standalone duty.
@@ -35,9 +37,9 @@ out_of_scope:
     AI literacy. A real obligation on providers, but about staff competence rather than the system,
     and it is not evidenced in a system's technical documentation. Deferred beyond v0.1.
   5: >-
-    Prohibited AI practices. Evaluated by the classification graph BEFORE high-risk
-    (ClassificationState.prohibited_practices); a prohibited system never reaches an obligation
-    check, so this is a risk-tier gate rather than a provider rule.
+    Prohibited AI practices. Evaluated by the classification cascade's `prohibited` node, before
+    high-risk and after Art. 2; a prohibited system never reaches an obligation check, so this is a
+    risk-tier gate rather than a provider rule.
   7: Empowers the Commission to amend Annex III. Institutional, no provider duty.
   8: >-
     Chapeau to Chapter III Section 2: high-risk systems shall comply with Art. 9-15. Already
