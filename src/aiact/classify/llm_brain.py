@@ -32,7 +32,7 @@ from aiact.schemas.classification import (
     ClassificationQuestion,
     Confidence,
 )
-from aiact.schemas.enums import AnnexIIIArea, AnnexIProduct, DerogationCondition
+from aiact.schemas.enums import AnnexIIIArea, AnnexIProduct, DerogationCondition, ScopeExclusion
 from aiact.tracing import current_metadata
 from aiact.usage import Usage
 
@@ -109,6 +109,13 @@ def _answer_instructions(answer_type: str) -> str:
             f'set "value" to one of [{conds}]; null if no derogation applies; or "{UNKNOWN}" if '
             f"the description does not establish that any condition is met"
         )
+    if answer_type == "scope_exclusion":
+        exclusions = ", ".join(e.value for e in ScopeExclusion)
+        return (
+            f'set "value" to one of [{exclusions}]; null if no Article 2 exclusion applies and the '
+            f'Regulation governs the system; or "{UNKNOWN}" if the description does not state the '
+            f"facts the exclusion turns on"
+        )
     raise ValueError(f"unknown answer_type {answer_type!r}")
 
 
@@ -174,6 +181,11 @@ def _parse_value(answer_type: str, value: object) -> object:
             return DerogationCondition(str(value).strip().lower())
         except ValueError as exc:
             raise Unanswerable(f"{value!r} is not an Art. 6(3) derogation") from exc
+    if answer_type == "scope_exclusion":
+        try:
+            return ScopeExclusion(str(value).strip().lower())
+        except ValueError as exc:
+            raise Unanswerable(f"{value!r} is not an Art. 2 exclusion") from exc
     raise ValueError(f"unknown answer_type {answer_type!r}")
 
 

@@ -35,6 +35,7 @@ def _brain_from_case(case: ClassificationCase) -> ScriptedBrain:
     reading the text is the LLMBrain's job, tested separately."""
     answers = {
         "is_ai": True,  # every Layer 1 case is an AI system
+        "scope": case.expected_scope_exclusion,
         "prohibited": case.expected_prohibited,
         "annex_i": case.expected_annex_i_product,
         "third_party_assessment": case.expected_third_party_assessment,

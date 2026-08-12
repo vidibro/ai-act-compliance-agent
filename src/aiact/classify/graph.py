@@ -4,6 +4,8 @@ Order (Commission's, with our deliberate split of profiling before derogation):
 
     is_ai ─not AI─────────────────────────────────────────────► minimal
       │ AI
+    scope ─Art.2(3),(4),(6),(8),(10)───────────────────────────► OUT_OF_SCOPE
+      │ none ── or Art.2(12), which falls through (see below)
     prohibited ─Art.5 yes──────────────────────────────────────► PROHIBITED
       │ no
     annex_i ─no Annex I product─┐                     Art. 6(1), door ONE
@@ -18,6 +20,16 @@ Order (Commission's, with our deliberate split of profiling before derogation):
       │ no
     derogation ─Art.6(3)(a-d) applies──────────────────────────► NOT_HIGH_RISK
                 └─ none ──────────────────────────────────────► HIGH_RISK
+
+Art. 2 comes FIRST because it is prior to everything else: a system the Regulation does not govern
+is not a prohibited practice and has no risk tier. Asked after `is_ai` only because Art. 2 speaks
+throughout of AI systems. OUT_OF_SCOPE is not a low tier — `minimal` means governed and owing
+Art. 4, this means owing nothing at all — so `select_rules()` returns no obligations for it.
+
+Art. 2(12), free and open-source, is the one exclusion that cannot be settled there. It is lifted
+where the release is high-risk, an Art. 5 practice, or subject to Art. 50 — the very questions the
+rest of the cascade answers. So that answer falls THROUGH and `decide_risk_class` resolves it at
+the end, against real answers rather than a second copy of Arts. 5 and 50 judged by the scope node.
 
 TWO independent doors into high-risk. Art. 6(1) is a CONJUNCTION — the system is a safety
 component of (or is) a product under Annex I, AND that product needs third-party conformity
@@ -71,7 +83,7 @@ from aiact.schemas.classification import (
     Confidence,
     UseCaseClassification,
 )
-from aiact.schemas.enums import AnnexIProduct, RiskClass
+from aiact.schemas.enums import AnnexIProduct, RiskClass, ScopeExclusion
 from aiact.schemas.policy import GuidanceSource, LegalSource
 from aiact.tracing import trace_run
 
@@ -96,6 +108,44 @@ QUESTIONS: dict[str, ClassificationQuestion] = {
         _src(3, 1),
         "Is the described system an 'AI system' within the meaning of Article 3(1)?",
         "bool",
+    ),
+    "scope": ClassificationQuestion(
+        "scope",
+        _src(2),
+        # Asked before Art. 5, because a system the Regulation does not govern is not a prohibited
+        # practice either — Art. 5 is a provision OF this Regulation. Asked after `is_ai` because
+        # Art. 2 speaks throughout of AI systems.
+        #
+        # The qualifiers are the question. Every exclusion here is written narrowly, so each has a
+        # near neighbour that reads like it and is not it: defence PROCUREMENT is not a defence
+        # PURPOSE, a research GRANT is not a research PURPOSE, a CONSUMER product is not a personal
+        # DEPLOYER. Granting an exclusion on a keyword clears a system the Regulation governs,
+        # which is the worst direction to be wrong in.
+        "Does Article 2 withhold this Regulation from the described system? Answer which "
+        "paragraph, or none. Each is written narrowly, and the qualifier decides it:\n"
+        "- 2(3) EXCLUSIVELY for military, defence or national security purposes. Turns on what the "
+        "system is USED for, not on who bought it or under which procurement rules.\n"
+        "- 2(4) a third-country public authority or international organisation, under a law "
+        "enforcement or judicial cooperation agreement with the Union. See the caution below.\n"
+        "- 2(6) developed and put into service for the SOLE purpose of scientific research and "
+        "development — science as the end, not a stage before a product.\n"
+        "- 2(8) research, testing or development PRIOR to being placed on the market or put into "
+        "service. Not available once the system is sold, supplied or in operational use, and not "
+        "available for testing in real-world conditions.\n"
+        "- 2(10) the deployer is a natural person using it in a PURELY personal, non-professional "
+        "activity. This lifts that person's obligations only; the provider keeps all of theirs, so "
+        "answer none when the description is written from the provider's side.\n"
+        "- 2(12) released under a free and open-source licence. Answer this whenever the licence "
+        "is free and open-source; whether the paragraph's exceptions take it back is decided "
+        "later in this assessment, not by you.\n"
+        "Answer none if no paragraph fits. That is the ordinary answer: the Regulation applying is "
+        "the rule and these are the exceptions.\n"
+        "CAUTION on 2(4): it applies only if the third country affords adequate safeguards for "
+        "fundamental rights and freedoms. That is a finding about a COUNTRY, not about the system, "
+        "so answer 2(4) only if the description STATES that such a finding exists. If it describes "
+        "a cooperation framework without it, say the description does not state the facts needed — "
+        "do not infer it from the existence of an agreement.",
+        "scope_exclusion",
     ),
     "prohibited": ClassificationQuestion(
         "prohibited",
@@ -210,6 +260,10 @@ QUESTIONS: dict[str, ClassificationQuestion] = {
 # guessing this project exists to avoid.
 _QUESTION_CONTEXT: dict[str, tuple[tuple[int, ...], tuple[str, ...]]] = {
     "is_ai": ((3,), ()),  # Art. 3 — the 'AI system' definition
+    # Art. 3 too: the exclusions lean on defined terms the Article does not restate — 'placing on
+    # the market' (3(9)-(10)) for 2(8), 'deployer' (3(4)) for 2(10), and 'testing in real-world
+    # conditions' (3(57)), which is what stops 2(8) covering a live pilot.
+    "scope": ((2, 3), ()),
     "prohibited": ((5,), ()),  # Art. 5 — the prohibited practices
     "annex_i": ((6,), ("I",)),  # Art. 6(1) + the Annex I legislation list itself
     # Art. 2 as well: 2(2) is what makes the Section A/B split matter, and the model is
@@ -312,6 +366,7 @@ class GraphState(BaseModel):
     description: str
     use_case_id: str = "use_case"
     is_ai_system: ClassificationAnswer | None = None
+    scope_exclusion: ClassificationAnswer | None = None
     prohibited: ClassificationAnswer | None = None
     in_annex_i: ClassificationAnswer | None = None
     third_party_assessment: ClassificationAnswer | None = None
@@ -335,6 +390,7 @@ def _get_answers(state: GraphState) -> list[ClassificationAnswer]:
     to needs_review, and an Art. 50 finding would look like it influenced the tier. It does not."""
     answers = [
         state.is_ai_system,
+        state.scope_exclusion,
         state.prohibited,
         state.in_annex_i,
         state.third_party_assessment,
@@ -351,6 +407,8 @@ def _get_answers(state: GraphState) -> list[ClassificationAnswer]:
 _WHAT_THE_NODE_NEEDED: dict[str, str] = {
     "is_ai": "whether this is an AI system — does it infer its outputs, or follow rules a person "
     "wrote",
+    "scope": "who uses the system and what for — whether it is military, purely research, "
+    "pre-market, or a private person's own use",
     "prohibited": "whether it infers emotions, categorises people biometrically, or scores social "
     "behaviour",
     "annex_i": "whether the system is a safety component of a regulated physical product — "
@@ -442,9 +500,36 @@ def _why_it_could_not_decide(
     return " ".join(parts) or "A classification node abstained; escalate to a human reviewer."
 
 
-def decide_risk_class(state: GraphState) -> tuple[RiskClass, str, list[ClassificationEvidence]]:
+def _scope_exclusion(state: GraphState) -> ScopeExclusion | None:
+    """The Art. 2 exclusion this system is under, or None for the ordinary case where it is not.
+
+    Narrowed by TYPE, not by truthiness: only a named paragraph is an exclusion, because only a
+    named paragraph can be cited. Anything else a brain puts here — a bare false, an unrecognised
+    string — means it has not named one, and the safe reading of "not named" is that the Regulation
+    applies. Over-inclusion, never a silent clearance."""
+    a = state.scope_exclusion
+    return a.value if a is not None and isinstance(a.value, ScopeExclusion) else None
+
+
+def _scope_evidence(
+    answer: ClassificationAnswer, exclusion: ScopeExclusion
+) -> ClassificationEvidence:
+    """Evidence for an Art. 2 verdict, pinpointed to the PARAGRAPH that decided it.
+
+    One node answers all six exclusions, so its question is registered against Article 2 as a whole
+    and its `source` carries no paragraph. Which paragraph applies is not known until the answer is
+    in — so it is stamped on here. Without this the prose says "Art. 2(3)" while the structured
+    citation says only "Art. 2", and a consumer reading the citation rather than the text gets a
+    less precise answer than the tool actually holds."""
+    evidence = ClassificationEvidence.from_answer(answer)
+    pinpointed = evidence.source.model_copy(update={"paragraph": exclusion.paragraph})
+    return evidence.model_copy(update={"source": pinpointed})
+
+
+def _decide_tier(state: GraphState) -> tuple[RiskClass, str, list[ClassificationEvidence]]:
     """Derive the risk class from whatever nodes were answered. Order encodes the cascade:
-    abstention first, then prohibition, then the Annex III / profiling / derogation logic.
+    abstention first, then Art. 2 scope, then prohibition, then the Annex III / profiling /
+    derogation logic.
 
     Returns EVIDENCE, not bare citations: the deciding node's answer travels out whole, so the
     verdict names both the provision and the words in the documentation that triggered it."""
@@ -465,6 +550,21 @@ def decide_risk_class(state: GraphState) -> tuple[RiskClass, str, list[Classific
             RiskClass.MINIMAL,
             "Not an AI system within Art. 3(1); outside the Regulation's risk tiers.",
             [evidence(state.is_ai_system)],
+        )
+    excluded = _scope_exclusion(state)
+    # Art. 2(12) is settled at the END of the cascade, below: its exceptions name high-risk, Art. 5
+    # and Art. 50, all of which the remaining nodes decide. Every other exclusion is unconditional
+    # on the facts of the system and concludes here.
+    if excluded is not None and excluded is not ScopeExclusion.FREE_OPEN_SOURCE:
+        return (
+            RiskClass.OUT_OF_SCOPE,
+            f"Art. 2({excluded.paragraph}) withholds this Regulation from the system; no risk tier "
+            f"is reached and nothing under this Regulation is owed.",
+            (
+                [_scope_evidence(state.scope_exclusion, excluded)]
+                if state.scope_exclusion
+                else []
+            ),
         )
     if state.prohibited and state.prohibited.value is True:
         return (
@@ -525,13 +625,67 @@ def decide_risk_class(state: GraphState) -> tuple[RiskClass, str, list[Classific
     )
 
 
+# The Art. 2(12) exceptions, as risk classes. A free and open-source release is excluded UNLESS it
+# is placed on the market or put into service AS a high-risk system, or as one falling under Art. 5
+# or Art. 50 — so these two tiers, and only these two, leave the exclusion standing. NOT_HIGH_RISK
+# is deliberately among them: Art. 6(3) means the system is not high-risk, which is what the
+# paragraph asks. NEEDS_REVIEW is deliberately not: an unresolved cascade cannot establish that the
+# exceptions are absent, and silence is not evidence of absence.
+_OPEN_SOURCE_SURVIVES = frozenset({RiskClass.MINIMAL, RiskClass.NOT_HIGH_RISK})
+
+
+def decide_risk_class(
+    state: GraphState, transparency: ClassificationAnswer | None = None
+) -> tuple[RiskClass, str, list[ClassificationEvidence]]:
+    """The tier, with the Art. 2(12) carve-back settled last.
+
+    Art. 2(12) is the one exclusion whose condition is not a fact about the system in isolation: it
+    is lifted where the release is high-risk, an Art. 5 practice, or subject to Art. 50. Those are
+    the very questions the rest of the cascade answers, so the open-source answer falls THROUGH the
+    cascade and is resolved here, against real answers, rather than being judged a second time by
+    the scope node against a second copy of Arts. 5 and 50. One judgement, one place to be wrong.
+
+    `transparency` is passed in because `assemble` answers it beside this call. It is not an input
+    to the tier — it is read for this carve-back alone."""
+    outcome = _decide_tier(state)
+    answer = state.scope_exclusion
+    if answer is None or _scope_exclusion(state) is not ScopeExclusion.FREE_OPEN_SOURCE:
+        return outcome
+
+    risk_class, _, _ = outcome
+    owes_transparency = transparency is not None and transparency.value is True
+    if risk_class not in _OPEN_SOURCE_SURVIVES or owes_transparency:
+        return outcome
+
+    return (
+        RiskClass.OUT_OF_SCOPE,
+        "Released under a free and open-source licence and Art. 2(12) applies: it is not placed on "
+        "the market as a high-risk system, is no Art. 5 practice, and owes no Art. 50 obligation. "
+        "Nothing under this Regulation is owed.",
+        [_scope_evidence(answer, ScopeExclusion.FREE_OPEN_SOURCE)],
+    )
+
+
 # --- routing ------------------------------------------------------------------------------------
 # Each routing function runs right after its node, so `a` is set — but we guard `a is None`
 # anyway: it satisfies the type checker and defensively routes an impossible missing answer to
 # `assemble` (which yields needs_review) rather than crashing.
 def _route_is_ai(state: GraphState) -> str:
     a = state.is_ai_system
-    return "assemble" if a is None or _is_low_confidence(a) or a.value is not True else "prohibited"
+    return "assemble" if a is None or _is_low_confidence(a) or a.value is not True else "scope"
+
+
+def _route_scope(state: GraphState) -> str:
+    """An Art. 2 exclusion ends the assessment — except Art. 2(12), which cannot be settled until
+    the cascade has answered the questions its own exceptions name (high-risk, Art. 5, Art. 50).
+    So an open-source answer continues, and `decide_risk_class` resolves it at the end."""
+    a = state.scope_exclusion
+    if a is None or _is_low_confidence(a):
+        return "assemble"
+    excluded = _scope_exclusion(state)
+    if excluded is None or excluded is ScopeExclusion.FREE_OPEN_SOURCE:
+        return "prohibited"
+    return "assemble"
 
 
 def _route_prohibited(state: GraphState) -> str:
@@ -597,6 +751,9 @@ def build_graph(
     def node_is_ai(state: GraphState) -> dict[str, Any]:
         return {"is_ai_system": _ask("is_ai", state.description)}
 
+    def node_scope(state: GraphState) -> dict[str, Any]:
+        return {"scope_exclusion": _ask("scope", state.description)}
+
     def node_prohibited(state: GraphState) -> dict[str, Any]:
         return {"prohibited": _ask("prohibited", state.description)}
 
@@ -622,7 +779,7 @@ def build_graph(
         # never routes anything. It is an output beside the risk class, not an input to it.
         transparency = _ask("transparency", state.description)
 
-        risk_class, reasoning, triggered = decide_risk_class(state)
+        risk_class, reasoning, triggered_by = decide_risk_class(state, transparency)
         confidence: Confidence = (
             "low" if any(a.confidence == "low" for a in _get_answers(state)) else "high"
         )
@@ -634,7 +791,7 @@ def build_graph(
             performs_profiling=state.performs_profiling,
             derogation=state.derogation,
             risk_class=risk_class,
-            triggered_by=triggered,
+            triggered_by=triggered_by,
             reasoning=reasoning,
             confidence=confidence,
         )
@@ -642,7 +799,7 @@ def build_graph(
             use_cases=[use_case],
             overall_risk_class=risk_class,
             reasoning=reasoning,
-            triggered_by=triggered,
+            triggered_by=triggered_by,
             confidence=confidence,
             transparency=transparency,
         )
@@ -650,6 +807,7 @@ def build_graph(
 
     g = StateGraph(GraphState)
     g.add_node("is_ai", node_is_ai)
+    g.add_node("scope", node_scope)
     g.add_node("prohibited", node_prohibited)
     g.add_node("annex_i", node_annex_i)
     g.add_node("third_party_assessment", node_third_party)
@@ -659,8 +817,9 @@ def build_graph(
     g.add_node("assemble", node_assemble)
 
     g.add_edge(START, "is_ai")
+    g.add_conditional_edges("is_ai", _route_is_ai, {"scope": "scope", "assemble": "assemble"})
     g.add_conditional_edges(
-        "is_ai", _route_is_ai, {"prohibited": "prohibited", "assemble": "assemble"}
+        "scope", _route_scope, {"prohibited": "prohibited", "assemble": "assemble"}
     )
     g.add_conditional_edges(
         "prohibited", _route_prohibited, {"annex_i": "annex_i", "assemble": "assemble"}
