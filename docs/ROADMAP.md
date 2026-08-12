@@ -513,7 +513,7 @@ So the `third_party_assessment` node asks only what the DOCUMENT states, and is 
 
 What this costs, stated plainly: **the Annex I route can only ever reach `high_risk` on a document that states its conformity route.** The five dev cases do (14/14 live, re-measured after the prompt narrowed), and a real EU technical file normally does — a CE marking and notified-body number is standard content. A US filing does not, which is why four held-out cases sit at `needs_review` by design rather than by failure.
 
-#### M4d-2 — Art. 2 applicability ✅ BUILT 2026-08-11, not yet measured live
+#### M4d-2 — Art. 2 applicability ✅ DONE 2026-08-11 (dev measured; held-out pending)
 
 **Was:** the ledger excluded Art. 2 because it is *"consumed by the classification graph (`ClassificationState.in_eu_scope` / `is_excluded`)"*. **No such node exists, and `ClassificationState` was a stranded model deleted on 2026-07-29** — referenced by nothing in `src/` even before that. So the justification was never true.
 
@@ -567,9 +567,18 @@ Three things the enacted text forced:
 
 **Cost, unmeasured.** One more LLM call per classification, carrying Art. 2 and Art. 3. Art. 3 is already loaded for `is_ai`, so the marginal context is one article. M4d-1's two nodes cost +27% per case; this should be less, but it is a guess until measured — see the open item below.
 
+**Measured live, 2026-08-11, Flash, 18 dev cases, $0.1195 (~$0.0066/case, 100 calls): 18/18 risk class, 18/18 Art. 50.** Per-case cost rose $0.0057 → $0.0066, +16% — one extra node, and Art. 3 was already loaded for `is_ai`, so the marginal context is one article.
+
+**The first run was 17/18, and the miss was the case written to catch it.** `border_surveillance_drone_analytics` — a border police force, bought under defence-and-security procurement law — was granted the Art. 2(3) exclusion at HIGH confidence, on the words *protecting national frontiers* read as national security. Exactly the false clearance the near-neighbour pairs exist to expose, and in the worst direction: an Annex III(7) system cleared outright.
+
+**Fixed structurally, not by patching the case.** The question's 2(3) bullet now argues from Annex III: point 6 lists law enforcement and point 7 lists migration, asylum and border control management as HIGH-RISK areas, so a reading of "national security" that swallows policing or border work would leave both entries with nothing to cover and cannot be right. Verified against the stored Annex III text before it was written into the prompt. Re-run: 18/18, no regression on the other 17.
+
+That is the general lesson for this node. "National security" is the widest of the words Art. 2 uses and the only one that collides with a listed high-risk area — so it is the one that needs an argument rather than a definition.
+
+**The 2(4) abstention was verified to happen for the right reason.** `third_country_mla_lead_ranking_unstated` reaches `needs_review` from the SCOPE node with `abstained_because=description_silent`, not by a default further down — the false pass flagged when the deterministic suite could not tell them apart. Its sibling with the safeguards finding stated answers `third_country_law_enforcement_cooperation` at high confidence and cites the finding. Read, not derived, as designed.
+
 **Still open:**
-- **No live run.** Deterministic routing is proven; nothing yet shows an LLM can read Art. 2 off real prose. The nine held-out cases exist precisely to answer that, and the reporting run below is now unblocked.
-- **`third_country_mla_lead_ranking_unstated` passes for the wrong reason.** The stub brain abstains on everything and lands on `needs_review` by default, not because scope is undecided. The same false pass the authoring session flagged on `h_customs_osint_analysis_tools`. A live run is what distinguishes them; until then the label is right and the route is unverified.
+- **Held out has not been run.** The dev set is tunable and this node was tuned against it, so 18/18 is not a reportable number. The nine held-out Art. 2 cases are what measure it, and that run is the headline — see the unblocked item at the top of M4.
 - `UseCaseClassification` does not carry the exclusion as a field, only in the reasoning and the evidence's `node_id`. Nothing consumes it yet — `select_rules()` keys on the risk class — so adding one would be speculative. Revisit if a report needs to render the paragraph.
 - **This covers Art. 2's exclusions, not the whole Article.** Art. 2(1) — whether the Regulation reaches the system at all — is still never asked, and is a different shape of question. Tracked as M4d-7.
 
