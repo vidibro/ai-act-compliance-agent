@@ -414,7 +414,8 @@ cases:
       re-tasks aircraft when one is lost, and relays imagery to a command post. It is fielded only by
       the armed forces and is not offered on any civil market.
     expected_risk_class: out_of_scope
-    expected_scope_exclusion: >-
+    expected_scope_exclusion: military_defence_national_security
+    scope_exclusion_basis: >-
       Art. 2(3), second subparagraph. The system is put into service exclusively for military and
       defence purposes, and the subparagraph applies regardless of the type of entity carrying out
       those activities.
@@ -476,7 +477,8 @@ cases:
       freedoms of the individuals whose data is exchanged, and it binds the agency to those
       safeguards for every system processing data received under it.
     expected_risk_class: out_of_scope
-    expected_scope_exclusion: >-
+    expected_scope_exclusion: third_country_law_enforcement_cooperation
+    scope_exclusion_basis: >-
       Art. 2(4). A third-country public authority that would otherwise be caught by Art. 2(1)(c) —
       its output is used in the Union — is outside the Regulation where it uses AI systems in the
       framework of an agreement for law enforcement and judicial cooperation with the Union, provided

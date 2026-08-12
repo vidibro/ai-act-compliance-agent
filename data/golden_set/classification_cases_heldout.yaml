@@ -672,7 +672,8 @@ cases:
       contractors, SMEs in unmanned aircraft technology, sensors and AI, research institutions and
       flight test centres. Estimated value of the cluster is EUR 2.9 million.
     expected_risk_class: out_of_scope
-    expected_scope_exclusion: >-
+    expected_scope_exclusion: military_defence_national_security
+    scope_exclusion_basis: >-
       Art. 2(3), second subparagraph. The system is put into service exclusively for military and
       defence purposes: it is navigation for military tactical unmanned aircraft, procured by a
       defence agency under military research and technology, to give armed forces assured airspace
@@ -774,7 +775,8 @@ cases:
       long-standing questions about how stars and their planets form, and to open a path towards
       data-intensive science in modern astrophysics.
     expected_risk_class: out_of_scope
-    expected_scope_exclusion: >-
+    expected_scope_exclusion: scientific_research
+    scope_exclusion_basis: >-
       Art. 2(6). The machine-learning system is specifically developed and put into service for the
       sole purpose of scientific research and development — analysing astronomical survey data to
       settle a question about star formation. Science is the end here, not a stage before something
@@ -822,7 +824,8 @@ cases:
       acceptance; and human-in-the-loop decision making for co-learning between AI and people, taking
       account of model uncertainty, operator cognitive load and trust.
     expected_risk_class: out_of_scope
-    expected_scope_exclusion: >-
+    expected_scope_exclusion: pre_market_development
+    scope_exclusion_basis: >-
       Art. 2(8). This is a research, testing and development activity regarding AI systems prior to
       their being placed on the market or put into service: algorithms are developed and validated in
       open-source digital environments that emulate the physical systems. The last sentence of 2(8)
@@ -933,7 +936,8 @@ cases:
       that it was produced as an open-source project rather than as a company product, and that it
       makes no assertion about quality or security and will not maintain the code going forward.
     expected_risk_class: out_of_scope
-    expected_scope_exclusion: >-
+    expected_scope_exclusion: free_open_source
+    scope_exclusion_basis: >-
       Art. 2(12). Released under a free and open-source licence, and none of the three carve-backs
       applies: it is not put into service as a high-risk system, it is no Art. 5 practice, and no
       Art. 50 paragraph reaches a numeric point forecast.
@@ -1036,7 +1040,8 @@ cases:
       individual user has chosen and the dish selected. Much of the material is promotional, quoting a
       managing director on customer-centred technology and a new era for home appliances.
     expected_risk_class: out_of_scope
-    expected_scope_exclusion: >-
+    expected_scope_exclusion: personal_non_professional
+    scope_exclusion_basis: >-
       Art. 2(10). The Regulation does not apply to the obligations of deployers who are natural
       persons using AI systems in the course of a purely personal non-professional activity, and
       baking for one's own household in one's own kitchen is that activity. The paragraph is narrow

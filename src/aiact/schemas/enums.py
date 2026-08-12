@@ -46,6 +46,82 @@ class RiskClass(StrEnum):
     surfaced to a human reviewer."""
 
 
+class ScopeExclusion(StrEnum):
+    """Art. 2. WHICH paragraph withholds the Regulation from a system.
+
+    Recorded rather than reduced to a boolean, for the reason `transparency_basis` exists: an
+    exclusion that cannot name its paragraph is an assertion. Every one of these is written
+    narrowly — "exclusively", "sole purpose", "purely", "prior to" — so for each there is a near
+    neighbour that reads like it and is not it, and the paragraph is where that argument lives.
+
+    Art. 2(2) is deliberately absent. It is not an exclusion but a LIMIT on what an Art. 6(1)
+    Section B system owes, and it is carried on `AnnexIProduct.chapter_iii_applies`."""
+
+    MILITARY_DEFENCE_NATIONAL_SECURITY = "military_defence_national_security"
+    """Art. 2(3). Placed on the market, put into service or used EXCLUSIVELY for military, defence
+    or national security purposes — regardless of the type of entity carrying out the activity, so
+    a civilian body or a commercial vendor is equally covered. Turns on the purpose of USE: buying
+    under defence-and-security procurement law settles which tendering rules apply and nothing
+    about scope."""
+
+    THIRD_COUNTRY_LAW_ENFORCEMENT_COOPERATION = "third_country_law_enforcement_cooperation"
+    """Art. 2(4). A third-country public authority or an international organisation using AI in the
+    framework of law enforcement or judicial cooperation with the Union or a Member State.
+
+    THE ODD ONE OUT, and it is treated differently in the cascade. The paragraph applies only
+    "provided that" the third country affords adequate safeguards for fundamental rights and
+    freedoms — a condition about a COUNTRY, not about the system. No system description settles it;
+    it is settled in the cooperation agreement and the Commission's assessment. So this exclusion is
+    READ, never DERIVED, exactly as Art. 6(1)(b) is."""
+
+    SCIENTIFIC_RESEARCH = "scientific_research"
+    """Art. 2(6). Specifically developed and put into service for the SOLE purpose of scientific
+    research and development. Science is the end, not a stage before something else — which is what
+    separates it from 2(8)."""
+
+    PRE_MARKET_DEVELOPMENT = "pre_market_development"
+    """Art. 2(8). Research, testing or development activity PRIOR to being placed on the market or
+    put into service. The paragraph's own last sentence excepts testing in real-world conditions,
+    which Art. 3(57) defines as outside a laboratory or otherwise simulated environment."""
+
+    PERSONAL_NON_PROFESSIONAL = "personal_non_professional"
+    """Art. 2(10). The obligations of DEPLOYERS who are natural persons using AI in the course of a
+    purely personal non-professional activity.
+
+    Narrower than it looks, and the only exclusion attaching to an actor rather than to a system:
+    it lifts the deployer's obligations and leaves the provider's untouched. A consumer product is
+    not thereby outside the Regulation."""
+
+    FREE_OPEN_SOURCE = "free_open_source"
+    """Art. 2(12). Released under a free and open-source licence — UNLESS placed on the market or
+    put into service as a high-risk system, or as one falling under Art. 5 or Art. 50. The
+    carve-back is why this exclusion cannot be granted from the licence alone: it depends on the
+    Art. 5 and Art. 50 answers, so those are decided first."""
+
+    @property
+    def paragraph(self) -> int:
+        """The Art. 2 paragraph, for citation."""
+        return _SCOPE_EXCLUSION_PARAGRAPH[self]
+
+    @property
+    def must_be_stated(self) -> bool:
+        """True where the deciding condition is NOT a fact about the system, so no description can
+        establish it and the tool must never infer it. Art. 2(4) alone: see its docstring."""
+        return self is ScopeExclusion.THIRD_COUNTRY_LAW_ENFORCEMENT_COOPERATION
+
+
+# No default, and every member listed. A dict.get() fallback would give a newly added exclusion a
+# plausible wrong citation; a missing key raises instead.
+_SCOPE_EXCLUSION_PARAGRAPH: dict[ScopeExclusion, int] = {
+    ScopeExclusion.MILITARY_DEFENCE_NATIONAL_SECURITY: 3,
+    ScopeExclusion.THIRD_COUNTRY_LAW_ENFORCEMENT_COOPERATION: 4,
+    ScopeExclusion.SCIENTIFIC_RESEARCH: 6,
+    ScopeExclusion.PRE_MARKET_DEVELOPMENT: 8,
+    ScopeExclusion.PERSONAL_NON_PROFESSIONAL: 10,
+    ScopeExclusion.FREE_OPEN_SOURCE: 12,
+}
+
+
 class ActorRole(StrEnum):
     """Art. 2(1), Art. 3. Obligations attach to the ROLE, not to the organisation.
     One organisation may hold several roles and must be assessed separately for each."""

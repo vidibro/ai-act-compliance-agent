@@ -29,6 +29,7 @@ from aiact.schemas.enums import (
     AnnexIProduct,
     DerogationCondition,
     RiskClass,
+    ScopeExclusion,
     Verdict,
 )
 
@@ -152,12 +153,15 @@ class ClassificationCase(BaseModel):
 
     # The "why" — the decisive sub-answers a correct classifier should also produce. Optional so a
     # case only pins what actually decides it.
-    expected_scope_exclusion: str = ""
-    """Art. 2 — WHICH paragraph puts this system outside the Regulation, and why. Mandatory whenever
-    the class is OUT_OF_SCOPE, and forbidden otherwise (see the validator). Same discipline as
-    `transparency_basis`: an exclusion that cannot name its paragraph is an assertion, and the
-    exclusions are narrow enough ("exclusively" military, "sole purpose" of research) that the
-    paragraph is where the argument actually lives."""
+    expected_scope_exclusion: ScopeExclusion | None = None
+    """Art. 2 — WHICH paragraph puts this system outside the Regulation. Set exactly when the class
+    is OUT_OF_SCOPE (see the validator)."""
+
+    scope_exclusion_basis: str = ""
+    """WHY that paragraph applies. Mandatory whenever an exclusion is set, same pairing as
+    `expected_transparency_obligation` / `transparency_basis`: an exclusion that cannot show its
+    working is how a wrong label survives. The exclusions are narrow enough — "exclusively"
+    military, "sole purpose" of research, "purely" personal — that the argument is the answer."""
 
     expected_prohibited: bool = False  # Art. 5
     expected_annex_i_product: AnnexIProduct | None = None
@@ -212,12 +216,17 @@ class ClassificationCase(BaseModel):
         # Art. 2 — an exclusion must name the paragraph it rests on, and nothing else may claim one.
         # The classes are ordered in law before the risk tiers: a system the Regulation does not
         # govern has no tier, so OUT_OF_SCOPE cannot carry Art. 6 sub-answers either.
-        if rc == RiskClass.OUT_OF_SCOPE:
-            if not self.expected_scope_exclusion.strip():
+        if (self.expected_scope_exclusion is not None) != (rc == RiskClass.OUT_OF_SCOPE):
+            raise ValueError(
+                f"{self.case_id}: expected_scope_exclusion={self.expected_scope_exclusion} but "
+                f"expected_risk_class={rc}. An Art. 2 exclusion and the OUT_OF_SCOPE class are the "
+                f"same fact stated two ways — the Regulation does not apply at all."
+            )
+        if self.expected_scope_exclusion is not None:
+            if not self.scope_exclusion_basis.strip():
                 raise ValueError(
-                    f"{self.case_id}: expected_risk_class=out_of_scope but "
-                    f"expected_scope_exclusion is empty. Name the Art. 2 paragraph and why it "
-                    f"applies."
+                    f"{self.case_id}: an Art. 2 exclusion is claimed but scope_exclusion_basis is "
+                    f"empty. Say why that paragraph applies."
                 )
             if (
                 self.expected_annex_iii_area is not None
@@ -227,11 +236,6 @@ class ClassificationCase(BaseModel):
                     f"{self.case_id}: Art. 6 classifies systems the Regulation governs. A system "
                     f"excluded by Art. 2 is never reached by it."
                 )
-        elif self.expected_scope_exclusion.strip():
-            raise ValueError(
-                f"{self.case_id}: expected_scope_exclusion is set but expected_risk_class={rc}. "
-                f"An Art. 2 exclusion means the Regulation does not apply at all."
-            )
 
         # Art. 5 — prohibition and the PROHIBITED class are the same fact, stated two ways.
         if self.expected_prohibited != (rc == RiskClass.PROHIBITED):
