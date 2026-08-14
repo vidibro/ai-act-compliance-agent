@@ -40,7 +40,7 @@ from dataclasses import dataclass
 from typing import Any
 
 from aiact.config import get_settings
-from aiact.llm import unfence, verbatim
+from aiact.llm import flatten, unfence, verbatim
 from aiact.providers import ProviderProfile, gateway_kwargs, profile_for
 from aiact.retrieval.store import DocumentIndex, Hit, document_id
 from aiact.schemas.classification import Confidence
@@ -152,8 +152,20 @@ class Judgement:
     was shown — a wrong verdict on the right passage and a wrong verdict on the wrong passage are
     different bugs, and only this tells them apart."""
 
+    prompt: str = ""
+    """The COMPLETE user turn this verdict came from — enacted text, rubric, document outline,
+    resolved cross-references and excerpts, exactly as sent.
 
-def _unsure(why: str, hits: tuple[Hit, ...] = ()) -> Judgement:
+    The same rationale as `hits`, extended to the whole input. `hits` records the excerpts alone;
+    anything grading this verdict against what the judge was shown needs all of it, including the
+    cross-reference facts the judge is TOLD rather than asked to infer. Recorded here so no caller
+    has to rebuild it, which would go stale the moment `_user_content` changes.
+
+    In memory only. `Finding` is what leaves this process, and it does not carry this — a provider's
+    confidential technical file has no business being copied into a report twice."""
+
+
+def _unsure(why: str, hits: tuple[Hit, ...] = (), prompt: str = "") -> Judgement:
     """No usable verdict -> NEEDS_REVIEW at low confidence.
 
     Never GAP. An unreadable reply says nothing about the provider's documentation, and defaulting
@@ -166,6 +178,7 @@ def _unsure(why: str, hits: tuple[Hit, ...] = ()) -> Judgement:
         evidence_chunk_id=None,
         confidence="low",
         hits=hits,
+        prompt=prompt,
     )
 
 
@@ -317,6 +330,8 @@ class LLMJudge:
         seen_text = "\n".join(hit.chunk.body for hit in hits)
         refs = tuple(resolve_all(index, seen_text, document))
         user_content = self._user_content(rule, hits, outline(index), refs)
+        # Kept as sent, not rebuilt later: see Judgement.prompt.
+        prompt = flatten(user_content)
         metadata = current_metadata(rule.rule_id)
         response = litellm.completion(
             model=self.model,
@@ -334,20 +349,27 @@ class LLMJudge:
 
         raw = response.choices[0].message.content
         if not raw or not raw.strip():
-            return _unsure(f"{rule.rule_id}: the model returned an empty completion.", hits)
+            return _unsure(f"{rule.rule_id}: the model returned an empty completion.", hits, prompt)
         try:
             data = json.loads(unfence(raw))
         except json.JSONDecodeError as exc:
-            return _unsure(f"{rule.rule_id}: the model's reply was not valid JSON: {exc}.", hits)
+            return _unsure(
+                f"{rule.rule_id}: the model's reply was not valid JSON: {exc}.", hits, prompt
+            )
         if not isinstance(data, dict):
             return _unsure(
-                f"{rule.rule_id}: expected a JSON object, got {type(data).__name__}.", hits
+                f"{rule.rule_id}: expected a JSON object, got {type(data).__name__}.", hits, prompt
             )
 
-        return self._to_judgement(rule, data, hits, document)
+        return self._to_judgement(rule, data, hits, document, prompt)
 
     def _to_judgement(
-        self, rule: PolicyRule, data: dict[str, Any], hits: tuple[Hit, ...], document: str
+        self,
+        rule: PolicyRule,
+        data: dict[str, Any],
+        hits: tuple[Hit, ...],
+        document: str,
+        prompt: str = "",
     ) -> Judgement:
         token = str(data.get("verdict", "")).strip().lower()
         if token == UNSURE:
@@ -387,6 +409,7 @@ class LLMJudge:
             evidence_chunk_id=chunk_id,
             confidence=confidence,
             hits=hits,
+            prompt=prompt,
         )
 
     def check(self, rule: PolicyRule, document: str) -> Verdict:

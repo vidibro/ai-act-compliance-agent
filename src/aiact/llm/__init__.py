@@ -8,7 +8,8 @@ What does NOT belong here: prompts, rubrics, schemas, or anything that knows wha
 an obligation is. This module handles the transport, not the question.
 """
 
+from aiact.llm.content import flatten
 from aiact.llm.json_reply import unfence
 from aiact.llm.quotes import verbatim
 
-__all__ = ["unfence", "verbatim"]
+__all__ = ["flatten", "unfence", "verbatim"]

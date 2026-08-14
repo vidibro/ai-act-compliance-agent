@@ -290,6 +290,26 @@ def test_the_index_is_built_once_per_document(monkeypatch, reply):
 
 
 # --- misc ----------------------------------------------------------------------------------------
+def test_a_judgement_records_the_prompt_it_came_from(judge, reply):
+    """Kept as SENT, so anything grading this verdict against what it was shown reads the real
+    thing. The three assertions are the three parts a caller rebuilding it would have to know
+    about — and the resolved cross-references, which the judge is TOLD as facts, are a fourth."""
+    reply(_json())
+    prompt = judge.judge(a_rule(), DOCUMENT).prompt
+    assert "A panel reviews every recommendation." in prompt  # the excerpt
+    assert "High-risk AI systems shall be designed" in prompt  # the enacted text
+    assert "Doc > Human oversight" in prompt  # the outline
+
+
+def test_an_abstention_records_the_prompt_too(judge, reply):
+    """A NEEDS_REVIEW is the case most worth being able to reconstruct: something went wrong, and
+    the prompt is the evidence for what."""
+    reply("not json at all")
+    result = judge.judge(a_rule(), DOCUMENT)
+    assert result.verdict == Verdict.NEEDS_REVIEW
+    assert "A panel reviews every recommendation." in result.prompt
+
+
 def test_judgement_defaults_to_no_hits():
     j = Judgement(Verdict.PASS, "fine", None, None, "high")
     assert j.hits == ()
