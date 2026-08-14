@@ -360,21 +360,36 @@ def test_a_gateway_prefix_does_not_hide_the_vendor():
 
 
 def test_effort_is_per_job_with_a_shared_fallback(monkeypatch):
-    """The two jobs measured in opposite directions: the judge is best with reasoning OFF (5/6 vs
+    """The jobs measured in opposite directions: the judge is best with reasoning OFF (5/6 vs
     1/6 on INADEQUATE, and cheaper), while the classifier has never been measured across levels.
-    One shared setting would force a guess on whichever job was not being tuned."""
+    One shared setting would force a guess on whichever job was not being tuned. `grade` is a third
+    job for the same reason — it reads a sentence rather than answering a question, and there is no
+    ground to assume the depth that suits one suits the other."""
     from aiact.config import Settings
 
     # Settings reads the developer's real .env FILE, not just the process environment, so
     # monkeypatch.delenv is not enough — `_env_file=None` is what actually isolates this. Without
     # it the test passes or fails depending on whose machine it runs on.
-    for key in ("AIACT_LLM_EFFORT", "AIACT_JUDGE_EFFORT", "AIACT_CLASSIFY_EFFORT"):
+    for key in (
+        "AIACT_LLM_EFFORT",
+        "AIACT_JUDGE_EFFORT",
+        "AIACT_CLASSIFY_EFFORT",
+        "AIACT_GRADER_EFFORT",
+    ):
         monkeypatch.delenv(key, raising=False)
 
     shared = Settings(_env_file=None, llm_effort="high")
     assert shared.effort_for("judge") == "high"
     assert shared.effort_for("classify") == "high"
+    assert shared.effort_for("grade") == "high"
 
     split = Settings(_env_file=None, llm_effort="high", judge_effort="none")
     assert split.effort_for("judge") == "none"
     assert split.effort_for("classify") == "high", "overriding one job must not move the other"
+    assert split.effort_for("grade") == "high"
+
+    # "none" is a VALUE in this vocabulary, not an absence, and it is a truthy string — so an
+    # override set to it must win rather than falling through to the shared default.
+    graded = Settings(_env_file=None, llm_effort="high", grader_effort="none")
+    assert graded.effort_for("grade") == "none"
+    assert graded.effort_for("judge") == "high"

@@ -162,23 +162,6 @@ def test_a_configured_grader_model_wins(monkeypatch):
     assert grader.grades_itself is False
 
 
-def test_grading_effort_falls_back_to_the_shared_default(monkeypatch):
-    """Same shape as classify and judge: a per-job knob, redundant until the model changes.
-
-    `_env_file=None` and the cleared variables keep this reading its own inputs. Settings otherwise
-    loads the developer's real .env, where a set `AIACT_GRADER_EFFORT` is an override like any
-    other — "none" is a value in this vocabulary, not an absence — and the fallback never runs."""
-    from aiact.config import Settings
-
-    for var in ("AIACT_LLM_EFFORT", "AIACT_GRADER_EFFORT"):
-        monkeypatch.delenv(var, raising=False)
-    assert Settings(_env_file=None, llm_effort="low").effort_for("grade") == "low"
-    assert (
-        Settings(_env_file=None, llm_effort="low", grader_effort="high").effort_for("grade")
-        == "high"
-    )
-
-
 # --- the scorecard -------------------------------------------------------------------------------
 def test_the_report_keeps_ungraded_out_of_the_percentage():
     """A grader failure must not move the number in either direction. 1 of 2 GRADED is 50%, not
