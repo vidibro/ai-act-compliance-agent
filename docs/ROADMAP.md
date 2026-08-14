@@ -97,17 +97,17 @@ is authored before the code it judges:
    categorisation; insufficient-input at the annex_iii node, not profiling); and the two traps the
    smoke check found that dev lacks — a high-risk case that loudly promises human oversight, a
    minimal case carrying cross-sell noise. Integrity pinned by `test_classification_cases_heldout.py`
-   (no classifier run — that would leak it). **The reporting run is still pending**: run once against
-   a frozen commit, record the date and git sha, and EXPECT a lower number than dev's 7/7 — that is
-   the honest figure appearing for the first time, not a regression.
-7. 🟢 **UNBLOCKED 2026-08-11 — the held-out reporting run can now happen.** It was held back because
-   the 2026-07-30 coverage audit found two missing cascade doors that change risk classes: **Annex I
-   safety components (Art. 6(1)) classified `minimal`** — a false clearance — and **Art. 2
-   applicability never asked at all**. Reporting against a cascade with two known holes produces a
-   headline number that has to be discarded and re-run. Both doors have now landed (M4d-1, M4d-2)
-   with golden-set cases for each. Report held-out ONCE, against a frozen commit — and note that the
-   Art. 2 node has never been run against a model, so this run is its first measurement as well as
-   the headline.
+   (no classifier run — that would leak it). Two further batches were authored blind later: Annex I
+   (6 cases, 2026-07-30) and Art. 2 (9 cases, 2026-08-11), for 24 in all.
+7. ✅ **DONE 2026-08-14 — the held-out reporting run: 15/24 at `6608c5b`.** Expecting a number below
+   dev's was right, and the aggregate turned out to be the least interesting part: split by batch it
+   is Art. 2 **8/9**, Annex I **2/6**, original **5/9**. See **THE HELD-OUT RESULT** under M5 for what
+   each column means and what it found. It had been held back because the 2026-07-30 coverage audit
+   found two missing cascade doors that change risk classes — **Annex I safety components (Art. 6(1))
+   classified `minimal`**, a false clearance, and **Art. 2 applicability never asked at all** — and
+   reporting against a cascade with two known holes produces a number that has to be thrown away.
+   Both landed (M4d-1, M4d-2) before the run. **The set is now spent**; the next number needs fresh
+   cases.
 
 ### The Annex III scope boundary (dev-side fix, 2026-07-22)
 
@@ -199,7 +199,7 @@ harder would produce a pessimistic number that measures nothing.
 behaviour had been observed and so none could have shaped it. Run once, at reporting time; record
 the date and git sha with the number. If it is ever tuned against, it is dev permanently.
 
-Layer 1 has **9 dev + 9 held-out = 18 cases** (≥15 met). Held-out authored blind; measured once at git `85ea48d` (7/9), then dev-side work below addressed the boundary it exposed — a re-measure is owed, sparingly. All five risk classes are
+Layer 1 has **18 dev + 24 held-out = 42 cases** (≥15 met). Held-out authored blind in three batches; batch 1 measured at git `85ea48d` (7/9), then dev-side work below addressed the boundary it exposed, and the whole set was measured at `6608c5b` — see **the held-out result** under M5. All risk classes are
 now represented, including `needs_review` via `ats_workflow_unspecified` (difficulty `insufficient`).
 
 Two layers:
@@ -214,7 +214,7 @@ Two layers:
 - **The prohibited case:** AI video-interview scoring facial expression / tone → likely prohibited (Art. 5, emotion recognition in the workplace), not high-risk. See open question below on whether "workplace" covers the hiring stage.
 - **The transparency case:** job-ad generator → `minimal` risk BUT Art. 50 applies (generates synthetic text). Proves Art. 50 is evaluated independently of the risk class.
 
-**DoD:** ≥15 classification cases incl. the three required cases above ❌ (6/15 — the three required cases all exist); ≥1 reference doc + ablation script producing a manifest ✅; dev/held-out split committed 🟡 (Layer 2 ✅ both halves; Layer 1 held-out still empty).
+**DoD:** ≥15 classification cases incl. the three required cases above ✅ (42 — the three required cases all exist); ≥1 reference doc + ablation script producing a manifest ✅; dev/held-out split committed ✅ (Layer 2 both halves; Layer 1 18 dev + 24 held-out).
 
 **Outstanding Layer 1 work:** ~9 more cases, of which at least one must be a genuinely-ambiguous
 `needs_review` ground truth (see the side-effect note below), and the rest should be authored as
@@ -261,7 +261,7 @@ The `job_ad_generation` case turns on whether Annex III 4(a) — high-risk syste
 The high-risk obligations from the EC checker — **19 rules**, `spec.yaml` v0.4.0 — in the `PolicyRule` schema. IDs split cleanly: `AIA-HR-*` (document-verifiable, Art. 9–15), `AIA-PO-*` (process, `document_verifiable: false`), and one `AIA-NHR-A06-4`. Legal wording is resolved VERBATIM from the version-scoped article store at load time, never hand-written in the spec, and a literal-substring test blocks paraphrase drift. Honest `document_verifiable` flags (Art. 16–21/43/47–49 = process obligations, not doc-checkable). Most of these obligations (Art. 9–15, 16–21) apply to **every** Annex III high-risk system regardless of area, so the spec largely generalises as-is. A few rules encode **employment-specific** choices that a second area would need to revisit — e.g. `AIA-PO-A43` picks the internal-control route (Annex VI, because employment is Annex III point 4) and `AIA-PO-A49` disapplies the point-2 registration exception. Area-specific derogation/conformity paths get split out when the second vertical lands.
 **DoD:** `data/policy/*.yaml` loads and validates against `PolicySpec`.
 
-### M3 — Classification graph (LangGraph) 🟡 built and scoring; Langfuse NOT wired
+### M3 — Classification graph (LangGraph) ✅ built, traced and measured on both splits
 
 Nodes reproduce the EC flow; profiling split out; per-use-case resolution. Each node returns a `ClassificationAnswer` with evidence + `LegalSource`. Wire Langfuse from the first node.
 
@@ -466,7 +466,7 @@ With no authored boundaries the cuts ARE arbitrary, which is precisely the situa
 
 Related: M8's system-card guide already tells users what structure to supply for CLASSIFICATION. The same argument extends to gap analysis — a technical file with headings is checked better, and saying so in the guide is fairer than silently penalising unstructured input.
 
-### M4d — SCOPE GAPS: what the Act says that the implementation does not ⬅️ BLOCKS the Layer 1 held-out run
+### M4d — SCOPE GAPS: what the Act says that the implementation does not
 
 Found 2026-07-30 by auditing the cascade's six questions and the 19 spec rules against the coverage ledger and the enacted text. The ledger itself is sound — all 113 articles are partitioned and a test enforces it — but **it justifies three exclusions by pointing at machinery that does not exist**, and the schema documents a high-risk route the graph never takes.
 
@@ -680,6 +680,55 @@ Arts. 2, 5 and 50 all justified themselves by reference to `ClassificationState`
 > ⚠️ **The distractor column is thin.** `distractor` cases exist for only **4 of 7** rules (A09, A10, A14, A15) — A11, A12 and A13 have none. The roadmap's headline curve (strong on `removed`, weaker on `present_but_inadequate`, weakest on `distractor`) is therefore partial at its most interesting end. Fill before reporting the curve.
 
 **DoD:** one command produces the metrics table; cost per full run reported (LiteLLM).
+
+#### THE HELD-OUT RESULT — Layer 1, measured once at `6608c5b`, 2026-08-14
+
+**15/24 risk class (62.5%). Art. 50 19/24. $0.1493, 117 calls, Flash.** The set is now SPENT: any fix from here needs fresh cases before another number means anything.
+
+The aggregate is not the finding. Split by batch, because the three have different histories and different worth:
+
+| batch | cases | score | status |
+|---|---|---|---|
+| 3 — Art. 2 (M4d-2) | 9 | **8/9** | blind, never seen |
+| 2 — Annex I (M4d-1) | 6 | **2/6** | blind, never seen |
+| 1 — original | 9 | **5/9** | seen once at `85ea48d` (7/9), tuned against indirectly since |
+
+**Batch 3 holds up, and that is the answer to the question it was written for.** No policing-or-border confusion at all, so the Annex III(6)/(7) argument added after the dev miss GENERALISED rather than fitting `border_surveillance_drone_analytics`. All five exclusions landed; both open-source cases split correctly, the exclusion standing for the forecaster and lifted for the TTS model by Art. 50(2). One miss — `h_consumer_drone_subject_tracking`, expected `minimal`, got `out_of_scope`: a consumer product read as a personal-use deployer. A FALSE CLEARANCE, the direction that matters, and the prompt already carries a sentence against exactly it (*"answer none when the description is written from the provider's side"*). Not enough.
+
+**Batch 2 is the real defect, and it is a defect in the design's own terms.** Four misses:
+
+| case | expected | got |
+|---|---|---|
+| `h_lvo_triage_notification` | needs_review | **high_risk** |
+| `h_autonomous_retinopathy_screening` | needs_review | **high_risk** |
+| `h_fundus_camera_onh_montage` | minimal | needs_review |
+| `h_pap_comfort_setting_recommender` | minimal | needs_review |
+
+The first two are the serious ones. A 510(k) never states an EU conformity route, so Art. 6(1)(b) is structurally unanswerable from those documents — which is exactly why the blind author keyed them `needs_review`, and exactly what the **DECIDED: read condition (b), never derive it** note under M4d-1 exists to enforce. The node derived it anyway, confidently. The rule was written down, the prompt says *"Do NOT infer the answer from the kind of product, its risk class, or what such products usually require"*, and the model inferred it. The other two fail the opposite way — over-abstention — so the same node is wrong in both directions.
+
+**Batch 1: 5/9 against 7/9**, but the model and effort settings changed between the two runs, so it is not a clean comparison. Worth naming anyway: `h_photo_ethnicity_sorting` went **prohibited → high_risk**, downgrading a banned practice to one that may ship once the paperwork is fixed.
+
+**Art. 50: 19/24, and 3 of the 5 misses are a SCORECARD artifact.** All three are abstentions on `out_of_scope` cases, where nothing under Art. 50 is owed because the Regulation does not apply — scoring transparency there measures nothing. The 2 genuine misses are false positives (`h_interview_note_polisher`, `h_consumer_drone_subject_tracking`). Fix the scorer, not the model: an out-of-scope case should not carry a transparency column at all.
+
+**What was deliberately NOT done:** no case edited, no prompt changed, no key revised. The legitimate moves are to accept and record (this entry), to fix the code or prompt and author fresh cases before re-measuring, or to argue a key wrong FROM THE TEXT — never from the model having disagreed.
+
+#### M5-a — Per-node metrics: which QUESTION is weak, not which case 🔴 next
+
+Today's number is end-to-end: one risk class per case, pass or fail. It cannot say which of the eight cascade questions produced the failure, so a 2/6 batch tells you the Annex I route is broken and nothing about where. The diagnosis above was reached by reading cases by hand, which does not scale and will not survive the next batch.
+
+**Score each NODE, not just the terminal.** Per node: asked / pinned / correct / **wrong** / **abstained** — with the last two kept apart, because they are different defects with different fixes. Batch 2 is the argument for the split: the same `third_party_assessment` node answered confidently-wrong twice and over-abstained twice, and one aggregate would hide that it fails in both directions at once.
+
+Two things make it more than a loop over the cases:
+
+- **The result does not carry the answers.** `ClassificationResult.triggered_by` holds only the DECIDING nodes; the ones that merely routed are gone. `_Recording` in `scripts/run_grounding.py` already solves this — wrapping the brain is the only place every question the cascade actually asked passes through. Second use for the same tool.
+- **`None` means two things in the answer key, and a third in practice.** For the enum fields it is both "the answer is none" and "this case does not pin this node"; `model_fields_set` separates those, since Pydantic records whether the YAML wrote the field. But authors ALSO wrote explicit `null` to mean "never reached" (an `out_of_scope` case has `expected_annex_iii_area: null` because the cascade stops before Annex III). So the rule needs both halves: **score node N on case C iff the run asked N, AND C explicitly wrote the field.** The first condition is what drops never-reached nodes and makes the denominator mean anything.
+
+Two findings fall straight out of the pin counts, before any code is written:
+
+- **`is_ai` is measured by nothing.** No case in either split carries a key for it; every case assumes an AI system. A `false` there sends a system to `minimal` and skips the entire cascade, and it is the one node with no ground truth at all.
+- **`third_party_assessment` — the node that failed today — is pinned by 4 cases per split.** The thinnest column is the one that broke.
+
+**Order:** build it, run on dev (~$0.12, no contamination concern) to check it reports something sensible, then one re-run on held-out (~$0.15 — already spent, so it costs no information).
 
 #### Reasoning grounding — the second number, for the half that has no key
 
