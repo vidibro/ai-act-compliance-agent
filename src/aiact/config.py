@@ -37,10 +37,21 @@ class Settings(BaseSettings):
     classify_effort: str | None = None
     judge_effort: str | None = None
 
-    def effort_for(self, job: Literal["classify", "judge"]) -> str:
+    def effort_for(self, job: Literal["classify", "judge", "grade"]) -> str:
         """Reasoning depth for one job, falling back to the shared default."""
-        override = self.classify_effort if job == "classify" else self.judge_effort
+        override = {
+            "classify": self.classify_effort,
+            "judge": self.judge_effort,
+            "grade": self.grader_effort,
+        }[job]
         return override or self.llm_effort
+
+    grader_model: str = ""
+    grader_effort: str | None = None
+
+    def model_for_grading(self) -> str:
+        """The grader's model, falling back to the shared default."""
+        return self.grader_model or self.llm_model
 
     # Optional LiteLLM PROXY in front of the provider. Empty = talk to the vendor directly.
     llm_api_base: str = Field(

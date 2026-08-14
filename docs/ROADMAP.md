@@ -681,6 +681,35 @@ Arts. 2, 5 and 50 all justified themselves by reference to `ClassificationState`
 
 **DoD:** one command produces the metrics table; cost per full run reported (LiteLLM).
 
+#### Reasoning grounding — the second number, for the half that has no key
+
+`src/aiact/eval/grounding.py`, `python scripts/run_grounding.py --layer classify|gap`. The scorecards score ANSWERS, which are closed questions with exact keys. The one-sentence `reasoning` beside each answer is an OPEN question — a hundred wordings are equally right, no key can exist — so nothing measured it, and a right answer reached by misreading scored exactly like one reached from evidence. This grades that sentence the only way an open output can be graded: **against the SOURCE the answer was reached from, never against an expected sentence.** Kept out of the answer path entirely — it is a model's opinion, which is what the scorecard proper refuses to be.
+
+**Measured on dev (2026-08-14), `gemini-2.5-flash` grading `gemini-2.5-flash`.**
+
+- **Layer 1: 98 of 98 supported (100.0%)**, grader cost ~$0.092 on top of the ~$0.12 run.
+- **Layer 2: 132 of 133 supported (99.2%)**, grader cost ~$0.117 on top of the ~$0.19 run.
+
+> **Read the process before the numbers, because the process is the finding.** Four rounds were run before these. Every single unsupported claim in the first three was the GRADER's fault, not the model's — and each time it looked like a real defect, with a plausible mechanism attached:
+>
+> | round | what the grader was given | result | what the findings actually were |
+> |---|---|---|---|
+> | 1 | the material only | 71.4% / — | **28 of 28** were true statements of law, absent from a document that was never going to contain them |
+> | 2 | material, plus "ignore legal claims" | 92.9% / 88.0% | the exclusion leaked; a further tuning pass went *backwards* (→88.8%, inside run-to-run variance) |
+> | 3 | material + enacted text | 99.0% / 95.5% | the QUESTION text was still missing — a node quoting its own instructions scored as invention |
+> | 4 | **the prompt itself, as sent** | **100.0% / 99.2%** | — |
+>
+> Two findings were written up here as structural before being retracted: an `AIA-HR-A11` cluster (9 of 16, "covers all required elements of Annex IV" — read as a completeness check answered from `k` excerpts) and `border_surveillance_drone_analytics/scope` ("listed in Annex III(7)" — read as the model answering from memory of the Act, against the anti-memory rule the article store exists to enforce). Both dissolved once the grader saw what the model saw. The Annex III(7) sentence is in the scope QUESTION, written into `graph.py` deliberately by the "National security is not border control" commit; the model was quoting its instructions.
+>
+> **The lesson is the design rule at the top of `grounding.py`: never rebuild the prompt, carry it.** A hand-assembled "what the model saw" is wrong by whatever you forgot, it fails by INVENTING findings rather than missing them, and it goes stale the moment either prompt changes. `Judgement.prompt` and `LLMBrain._user_content` now supply it directly.
+
+**How to read 100.0% / 99.2%.** Two things are unresolved and both push the same way:
+
+- **The grader marks its own work.** `ReasoningGrader` defaults to `settings.llm_model`, so this is `gemini-2.5-flash` grading `gemini-2.5-flash` — shared blind spots, and self-preference. A near-perfect self-grade is exactly what that bias predicts, so these are a FLOOR on the defect rate, not a measurement of it. Grading with a different family is the next change and is cheap: the calls are short.
+- **This metric has variance the verdict scorecard does not.** `expected == got` returns the same number every run; this one does not, and its size is unmeasured. The single Layer 2 finding (`AIA-HR-A15__removed/AIA-HR-A11`) is n=1 and nothing should be built on it.
+
+Its honest value today is as a **regression guard** — it would catch a prompt change that let either model start reasoning past its source — not as a discovery tool. It has found nothing about the system yet. It found a great deal about itself.
+
 ### M6 — Packaging (this is a deliverable, not an afterthought)
 
 README (problem → architecture diagram → eval numbers up top → use cases), 2-min demo (the flip-test: one sentence flips not_high_risk → high_risk), clean commit history, FastAPI endpoint (document in → structured report out).
