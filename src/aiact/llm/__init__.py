@@ -9,5 +9,6 @@ an obligation is. This module handles the transport, not the question.
 """
 
 from aiact.llm.json_reply import unfence
+from aiact.llm.quotes import verbatim
 
-__all__ = ["unfence"]
+__all__ = ["unfence", "verbatim"]

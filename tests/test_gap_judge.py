@@ -175,15 +175,52 @@ def test_a_wrong_chunk_id_is_corrected_from_the_quote(judge, reply):
 
 def test_an_unresolvable_locator_is_dropped(judge, reply):
     """When neither the reported id nor the quote can be placed, emit nothing. A locator that does
-    not resolve is worse than no locator — it looks checkable and is not."""
-    reply(_json(evidence_chunk_id="c999", evidence_quote="text that appears in no excerpt"))
-    assert judge.judge(a_rule(), DOCUMENT).evidence_chunk_id is None
+    not resolve is worse than no locator — it looks checkable and is not.
+
+    The quote here is REAL but from a section the search did not return, so the locator is the only
+    thing failing to resolve."""
+    document = DOCUMENT + "\n## Logging\n\nAudit logs are retained for six months.\n"
+    reply(_json(evidence_chunk_id="c999", evidence_quote="Audit logs are retained for six months."))
+    assert judge.judge(a_rule(), document).evidence_chunk_id is None
 
 
 def test_an_over_long_quote_is_truncated(judge, reply):
-    reply(_json(evidence_quote="x" * 5000))
-    quote = judge.judge(a_rule(), DOCUMENT).evidence_quote
+    """Long but REAL: an invented span is dropped before truncation is ever reached, so measuring
+    truncation needs a quote the document actually contains."""
+    passage = "A panel reviews every recommendation. " * 20
+    reply(_json(evidence_quote=passage))
+    quote = judge.judge(a_rule(), f"## Human oversight\n\n{passage}\n").evidence_quote
     assert quote is not None and len(quote) <= 300
+
+
+# --- the quote has to be a quote -----------------------------------------------------------------
+def test_a_quote_that_is_not_in_the_document_is_dropped(judge, reply):
+    """An invented span must never be presented as a citation: it sends a reviewer looking for text
+    that does not exist, and on a PASS it is a clearance backed by nothing.
+
+    The VERDICT survives. Dev measurement found bad quotes to be citation-formatting slips on
+    correct answers, so throwing the judgement away with the quote would cost right answers and
+    catch nothing."""
+    reply(_json(evidence_quote="A qualified reviewer signs off on every automated decision."))
+    result = judge.judge(a_rule(), DOCUMENT)
+    assert result.verdict == Verdict.PASS
+    assert result.evidence_quote is None
+
+
+def test_a_paraphrase_is_not_a_quote(judge, reply):
+    """The realistic version of the same failure: on-topic, faithful in substance, and not what the
+    document says. Nothing about it looks wrong without the source in hand."""
+    reply(_json(evidence_quote="Every recommendation is reviewed by a panel."))
+    assert judge.judge(a_rule(), DOCUMENT).evidence_quote is None
+
+
+def test_a_dropped_quote_keeps_a_locator_the_model_reported(judge, reply):
+    """The excerpt id is a separate claim from the quote, and checkable against the hits on its
+    own. Losing an unverifiable quote should not also lose the pointer to what the judge read."""
+    reply(_json(evidence_quote="not in the document", evidence_chunk_id="c001"))
+    result = judge.judge(a_rule(), DOCUMENT)
+    assert result.evidence_quote is None
+    assert result.evidence_chunk_id == "c001"
 
 
 def test_a_bad_confidence_value_falls_back_to_medium(judge, reply):

@@ -221,6 +221,45 @@ def test_every_question_type_is_offered_a_way_to_decline():
         assert "unknown" in _answer_instructions(answer_type), answer_type
 
 
+# --- the quote has to be a quote ------------------------------------------------------------------
+def test_a_quote_from_the_description_is_kept(stub_litellm):
+    stub_litellm(
+        '{"value": true, "reasoning": "it ranks", "confidence": "high",'
+        ' "evidence_quote": "ranks candidates by fit"}'
+    )
+    answer = LLMBrain(model="stub/model").decide(
+        a_question(), "The system parses CVs and ranks candidates by fit against the role."
+    )
+    assert answer.evidence_quote == "ranks candidates by fit"
+
+
+def test_a_quote_that_is_not_in_the_description_is_dropped(stub_litellm):
+    """The classifier's quote is the one line telling a user WHY their system was called high-risk.
+    A paraphrase there points at a sentence they never wrote, and the fact it names — scoring — is
+    exactly the fact that decides the class.
+
+    The ANSWER stands. Measured on dev: the model invented nothing in 98 answers, and every quote
+    this check rejected was a formatting slip on a correct answer."""
+    stub_litellm(
+        '{"value": true, "reasoning": "it scores", "confidence": "high",'
+        ' "evidence_quote": "the system scores each candidate"}'
+    )
+    answer = LLMBrain(model="stub/model").decide(
+        a_question(), "The system parses CVs and ranks candidates by fit against the role."
+    )
+    assert answer.value is True
+    assert answer.evidence_quote is None
+
+
+def test_an_answer_with_no_quote_is_still_an_answer(stub_litellm):
+    """Measured on dev, this never happens — every substantive answer cited a span. Pinned anyway:
+    the schema permits a null quote, so the parse path has to have a defined behaviour."""
+    stub_litellm('{"value": false, "reasoning": "purely procedural", "confidence": "high"}')
+    answer = LLMBrain(model="stub/model").decide(a_question(), "extracts fields from a CV")
+    assert answer.value is False
+    assert answer.evidence_quote is None
+
+
 def test_the_prompt_forbids_reading_silence_as_denial():
     from aiact.classify.llm_brain import _SYSTEM_PROMPT
 

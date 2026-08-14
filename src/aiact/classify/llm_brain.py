@@ -24,7 +24,7 @@ import json
 from typing import TYPE_CHECKING, Any
 
 from aiact.config import get_settings
-from aiact.llm import unfence
+from aiact.llm import unfence, verbatim
 from aiact.providers import ProviderProfile, gateway_kwargs, profile_for
 from aiact.schemas.classification import (
     AbstentionCause,
@@ -330,11 +330,12 @@ class LLMBrain:
         confidence: Confidence = data.get("confidence", "medium")
         if confidence not in ("high", "medium", "low"):
             confidence = "medium"
-        quote = data.get("evidence_quote")
-        if isinstance(quote, str):
+        # The quote must be a real span of the description. A model that paraphrases the decisive
+        # sentence produces something that reads as a citation and matches nothing in the input the
+        # user gave us; the answer stands, the unverifiable span does not.
+        quote = verbatim(data.get("evidence_quote"), description)
+        if quote is not None:
             quote = quote[:_EVIDENCE_MAX_LENGTH]
-        else:
-            quote = None
 
         return ClassificationAnswer(
             value=value,

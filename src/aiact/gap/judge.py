@@ -9,7 +9,7 @@ constrained. The model is asked ONLY "does this excerpt satisfy this requirement
 rules apply, never the risk class, never what to do about it. Rule selection is data
 (`applies_to_risk_class`, `document_verifiable`), and the verdict vocabulary is a fixed enum.
 
-Three things this file refuses to do, each learned rather than assumed:
+Four things this file refuses to do, each learned rather than assumed:
 
   - **Treat retrieval rank as evidence.** A vector search always returns k results; there is no
     "nothing found". The top hit in a document that says nothing about Art. 14 is still the top hit,
@@ -23,6 +23,12 @@ Three things this file refuses to do, each learned rather than assumed:
   - **Guess when the evidence is thin.** An unreadable or unsure answer becomes NEEDS_REVIEW. For a
     compliance tool a false PASS is the most expensive error available: it tells a provider they are
     covered when they are not.
+
+  - **Publish a quote it cannot find.** The `evidence_quote` is checked against the document
+    (`llm/quotes.py`) and dropped when it is not there. A paraphrase presented as a citation sends
+    a reviewer looking for text that does not exist. The VERDICT survives — it was reached from
+    real excerpts, and dev measurement found bad quotes to be citation-formatting slips on correct
+    answers rather than a symptom of a model that was not reading.
 """
 
 from __future__ import annotations
@@ -34,7 +40,7 @@ from dataclasses import dataclass
 from typing import Any
 
 from aiact.config import get_settings
-from aiact.llm import unfence
+from aiact.llm import unfence, verbatim
 from aiact.providers import ProviderProfile, gateway_kwargs, profile_for
 from aiact.retrieval.store import DocumentIndex, Hit, document_id
 from aiact.schemas.classification import Confidence
@@ -338,10 +344,10 @@ class LLMJudge:
                 f"{rule.rule_id}: expected a JSON object, got {type(data).__name__}.", hits
             )
 
-        return self._to_judgement(rule, data, hits)
+        return self._to_judgement(rule, data, hits, document)
 
     def _to_judgement(
-        self, rule: PolicyRule, data: dict[str, Any], hits: tuple[Hit, ...]
+        self, rule: PolicyRule, data: dict[str, Any], hits: tuple[Hit, ...], document: str
     ) -> Judgement:
         token = str(data.get("verdict", "")).strip().lower()
         if token == UNSURE:
@@ -358,8 +364,12 @@ class LLMJudge:
         if confidence not in ("high", "medium", "low"):
             confidence = "medium"
 
-        quote = data.get("evidence_quote")
-        quote = quote[:_EVIDENCE_MAX_LENGTH] if isinstance(quote, str) and quote.strip() else None
+        # Checked against the whole document, not just the excerpts: a legitimate quote can come
+        # from a cross-referenced section pulled in beside them, and either way the claim being
+        # verified is that this text is in the provider's documentation.
+        quote = verbatim(data.get("evidence_quote"), document)
+        if quote is not None:
+            quote = quote[:_EVIDENCE_MAX_LENGTH]
         chunk_id = _resolve_chunk_id(data.get("evidence_chunk_id"), quote, hits)
 
         reasoning = str(data.get("reasoning", "")).strip()
