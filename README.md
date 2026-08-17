@@ -100,7 +100,7 @@ flowchart TD
     ANNEXI -->|yes| TPA{"Does that product need an<br/>outside body to certify it?<br/>Art. 6(1)(b)"}
     TPA -->|yes| HIGH([high risk]):::high
     TPA -->|"no — self-certified"| ANNEX
-    ANNEXI -->|no| ANNEX{"Is it used in a listed high-stakes area?<br/>Annex III, Art. 6(2)"}
+    ANNEXI -->|no| ANNEX{"Is it used in a listed high-risk area?<br/>Annex III, Art. 6(2)"}
     ANNEX -->|no| MIN2([minimal]):::ok
     ANNEX -->|yes| PROF{"Does it score, rank or judge people?<br/>Art. 6(3)"}
     PROF -->|"yes — it profiles people"| HIGH

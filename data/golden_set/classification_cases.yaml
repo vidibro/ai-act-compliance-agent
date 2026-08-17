@@ -27,6 +27,7 @@ cases:
       normalises dates and job titles. It does not score, rank, or otherwise evaluate candidates;
       recruiters review the extracted fields themselves.
     expected_risk_class: not_high_risk
+    expected_annex_i_product: null
     expected_annex_iii_area: employment
     expected_performs_profiling: false
     expected_derogation: narrow_procedural_task
@@ -50,6 +51,7 @@ cases:
       normalises dates and job titles. It also computes a fit score from 0 to 100 for each
       candidate against the role and ranks applicants by that score for the recruiter's shortlist.
     expected_risk_class: high_risk
+    expected_annex_i_product: null
     expected_annex_iii_area: employment
     expected_performs_profiling: true
     expected_transparency_obligation: false
@@ -128,6 +130,7 @@ cases:
       recruiter reviews and edits the draft before it is published. The tool does not read, score,
       or evaluate any candidate.
     expected_risk_class: minimal
+    expected_annex_i_product: null
     expected_annex_iii_area: null
     expected_performs_profiling: false
     expected_transparency_obligation: true
@@ -161,6 +164,7 @@ cases:
       scheduling page in data/golden_set/smoke/interview-coordination.md, which converses with
       candidates over SMS and WhatsApp — there Art. 50(1) is a much stronger fit. The label is for
       THIS description, and the difference between the two is exactly a fact a card must state.
+    expected_annex_i_product: null
     expected_annex_iii_area: null
     expected_performs_profiling: false
     decisive_fact: >-
@@ -234,6 +238,7 @@ cases:
       accruals and remaining balances and sends reminders about unused leave. It makes no decision
       itself and does not assess, score or rank anyone.
     expected_risk_class: minimal
+    expected_annex_i_product: null
     expected_annex_iii_area: null
     expected_performs_profiling: false
     expected_transparency_obligation: false
@@ -259,6 +264,7 @@ cases:
       duplicate application records into one before a recruiter reviews the pile. It performs no
       scoring, ranking or evaluation of candidates.
     expected_risk_class: not_high_risk
+    expected_annex_i_product: null
     expected_annex_iii_area: employment
     expected_performs_profiling: false
     expected_derogation: narrow_procedural_task
@@ -445,7 +451,10 @@ cases:
       under the national law implementing the EU directive on procurement in the fields of defence
       and security, and the ministry describes the deployment as protecting national frontiers.
     expected_risk_class: high_risk
+    expected_annex_i_product: null
     expected_annex_iii_area: migration
+    expected_performs_profiling: false
+    expected_derogation: null
     expected_transparency_obligation: false
     transparency_basis: >-
       Art. 50 does not attach: detecting crossings and alerting officers is no direct interaction

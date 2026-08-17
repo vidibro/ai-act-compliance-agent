@@ -26,6 +26,7 @@ from aiact.classify import ScriptedBrain, classify  # noqa: E402
 from aiact.classify.graph import load_questions  # noqa: E402
 from aiact.eval.classification_cases import load_classification_cases  # noqa: E402
 from aiact.eval.classification_score import score_case, score_run  # noqa: E402
+from aiact.eval.node_score import score_node_run  # noqa: E402
 from aiact.schemas.enums import AnnexIIIArea, DerogationCondition  # noqa: E402
 from aiact.tracing import enable_tracing  # noqa: E402
 from aiact.usage import PRICES_AS_OF  # noqa: E402
@@ -149,6 +150,11 @@ def run_golden(cases_path: Path | None = None) -> None:
     print()
     for line in score_run(pairs).lines():
         print(line)
+    # The per-node table follows the two headline axes rather than replacing them: it says WHICH
+    # question was weak, which the terminal class cannot.
+    for line in score_node_run(pairs).lines():
+        print(line)
+    print()
     print(f"run cost           : {brain.usage.summary(brain.model)}")
     per_case = brain.usage.estimated_cost_usd(brain.model)
     if per_case is not None and cases.cases:

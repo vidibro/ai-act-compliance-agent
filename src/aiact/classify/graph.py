@@ -108,6 +108,7 @@ QUESTIONS: dict[str, ClassificationQuestion] = {
         _src(3, 1),
         "Is the described system an 'AI system' within the meaning of Article 3(1)?",
         "bool",
+        label="Is it an AI system at all?",
     ),
     "scope": ClassificationQuestion(
         "scope",
@@ -156,6 +157,7 @@ QUESTIONS: dict[str, ClassificationQuestion] = {
         "a cooperation framework without it, say the description does not state the facts needed — "
         "do not infer it from the existence of an agreement.",
         "scope_exclusion",
+        label="Does this Regulation apply to the system at all?",
     ),
     "prohibited": ClassificationQuestion(
         "prohibited",
@@ -163,6 +165,7 @@ QUESTIONS: dict[str, ClassificationQuestion] = {
         "Is the described system a prohibited practice under Article 5 (for example, inferring "
         "emotions of natural persons in the workplace)?",
         "bool",
+        label="Is the practice itself banned?",
     ),
     "annex_i": ClassificationQuestion(
         "annex_i",
@@ -180,6 +183,7 @@ QUESTIONS: dict[str, ClassificationQuestion] = {
         "fleet analytics, is NOT a safety component.\n"
         "Answer none if the system is not embedded in, or sold as, a regulated physical product.",
         "annex_i_product",
+        label="Is it a safety component of a regulated physical product?",
     ),
     "third_party_assessment": ClassificationQuestion(
         "third_party_assessment",
@@ -202,6 +206,7 @@ QUESTIONS: dict[str, ClassificationQuestion] = {
         "usually require. If the description does not state the conformity route, say so: that is "
         "a question for a specialist in that sector's rules, not something to deduce here.",
         "bool",
+        label="Does that product need an outside body to certify it?",
     ),
     "annex_iii": ClassificationQuestion(
         "annex_iii",
@@ -232,6 +237,7 @@ QUESTIONS: dict[str, ClassificationQuestion] = {
         "scheduling interview slots) — even though it plainly operates in that setting.\n"
         "Answer the area, or none only if the purpose serves no listed function at all.",
         "annex_area",
+        label="Is it used in a listed high-risk area?",
     ),
     "profiling": ClassificationQuestion(
         "profiling",
@@ -239,6 +245,7 @@ QUESTIONS: dict[str, ClassificationQuestion] = {
         "Does this use case perform profiling of natural persons (Article 6(3))? Profiling means "
         "evaluating or scoring a person, as opposed to a purely procedural task.",
         "bool",
+        label="Does it score, rank or judge people?",
     ),
     "derogation": ClassificationQuestion(
         "derogation",
@@ -247,6 +254,7 @@ QUESTIONS: dict[str, ClassificationQuestion] = {
         "completed human activity; detects decision patterns; or a preparatory task? Answer which, "
         "or none.",
         "derogation",
+        label="Is its role only a narrow one?",
     ),
     "transparency": ClassificationQuestion(
         "transparency",
@@ -260,6 +268,7 @@ QUESTIONS: dict[str, ClassificationQuestion] = {
         "text (50(2)); it is an emotion recognition or biometric categorisation system (50(3)); "
         "it produces deep fakes or public-interest text (50(4)).",
         "bool",
+        label="Must users be told they are dealing with AI?",
     ),
 }
 
@@ -389,6 +398,29 @@ class GraphState(BaseModel):
 
 def _is_low_confidence(a: ClassificationAnswer | None) -> bool:
     return a is not None and a.confidence == "low"
+
+
+def _every_answer(state: GraphState) -> list[ClassificationAnswer]:
+    """Every answer the cascade produced, in the order it asked them.
+
+    The state fields ARE the cascade order, so listing them is the record of what was asked: a node
+    the run never reached is None and drops out, which is what separates "answered no" from "never
+    put" — two things a reader must not confuse.
+
+    Unlike `_get_answers` this INCLUDES transparency, because the purpose is different: that one
+    feeds the confidence rule and must exclude Art. 50, this one is the audit trail."""
+    ordered = [
+        state.is_ai_system,
+        state.scope_exclusion,
+        state.prohibited,
+        state.in_annex_i,
+        state.third_party_assessment,
+        state.in_annex_iii,
+        state.performs_profiling,
+        state.derogation,
+        state.transparency,
+    ]
+    return [a for a in ordered if a is not None]
 
 
 def _get_answers(state: GraphState) -> list[ClassificationAnswer]:
@@ -812,6 +844,9 @@ def build_graph(
             triggered_by=triggered_by,
             confidence=confidence,
             transparency=transparency,
+            # `transparency` is answered in this node, so it is not on the state yet — passed in
+            # explicitly rather than read back, the same reason decide_risk_class takes it.
+            answers=[*_every_answer(state), transparency],
         )
         return {"result": result, "transparency": transparency}
 

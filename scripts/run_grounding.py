@@ -38,26 +38,6 @@ from aiact.schemas.eval import GoldenSet  # noqa: E402
 from aiact.tracing import trace_run  # noqa: E402
 
 
-class _Recording:
-    """A brain that answers exactly as its inner one does, and keeps every answer.
-
-    `ClassificationResult` carries only the answers that ended up mattering — the deciding nodes in
-    `triggered_by`, plus profiling and derogation on the use case. Grading only those would skip
-    the nodes that routed the cascade without being cited, which is most of them. Wrapping the
-    brain is the only place every question the cascade actually asked passes through.
-    """
-
-    def __init__(self, inner: LLMBrain) -> None:
-        self.inner = inner
-        self.name = inner.name
-        self.asked: list = []  # (question, answer) — the question is half of what the node saw
-
-    def decide(self, question, description):
-        answer = self.inner.decide(question, description)
-        self.asked.append((question, answer))
-        return answer
-
-
 def grade_classification(grader: ReasoningGrader, split: str, cases_path: Path) -> list[Grounding]:
     """Every cascade answer, against the prompt that produced it.
 
@@ -71,11 +51,13 @@ def grade_classification(grader: ReasoningGrader, split: str, cases_path: Path) 
 
     results: list[Grounding] = []
     for case in cases:
-        brain = _Recording(inner)
-        classify(case.description, brain, case.case_id, questions=questions)
-        for question, answer in brain.asked:
+        result = classify(case.description, inner, case.case_id, questions=questions)
+        for answer in result.answers:
             if answer.abstained_because is not None:
                 continue
+            # `load_questions()` is deterministic and this is the same dict the run was given, so
+            # looking the question up by `node_id` yields the object the node was actually handed.
+            question = questions[answer.node_id or ""]
             # The BUILDER, called with the arguments this run used — never a rebuild of its output.
             # It carries the question text as well as the law and the description, and questions
             # cite provisions of their own (`scope` names Annex III(6) and (7)).

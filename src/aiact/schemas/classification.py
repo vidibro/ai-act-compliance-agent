@@ -57,6 +57,9 @@ class ClassificationQuestion:
     source: LegalSource
     text: str  # the question itself, put to a brain verbatim
     answer_type: str  # "bool" | "annex_area" | "derogation" — the shape a valid answer takes
+
+    label: str = ""
+    """The same question in one plain line, for a human reading a report."""
     context: str = ""
     """The VERBATIM enacted text of the cited provision, for the brain to reason against.
 
@@ -193,6 +196,15 @@ class ClassificationResult(BaseModel):
     reasoning: str  # why this overall class, and which use case drove it
     triggered_by: list[ClassificationEvidence]
     confidence: Confidence
+
+    answers: list[ClassificationAnswer] = []
+    """EVERY question the cascade asked, in the order it asked them — not only the deciding ones.
+
+    `triggered_by` is the subset that fixed the class, and on its own it loses most of the
+    assessment: a use case can be cleared under Art. 2, cleared under Art. 5 and ruled out of
+    Annex I, and a result carrying only the Annex III and profiling answers shows none of that
+    work. Which questions were PUT is also the only way to tell a node that answered "no" from one
+    the cascade never reached, and those mean entirely different things to a reader."""
     transparency: ClassificationAnswer | None = None
     """Art. 50 — a SEPARATE AXIS from the risk tier, deliberately not folded into it. A minimal-risk
     text generator and a high-risk chatbot can both owe transparency, and a high-risk system may owe
