@@ -23,7 +23,9 @@ report. The two jobs above ask different things of that document, and it is wort
 **1. What gets you classified.** State plainly, in the Act's own terms: the **intended purpose**;
 what the system does **to a person** (extracts fields? evaluates or ranks them? infers emotions?
 allocates tasks?); whether you are **provider or deployer** (Art. 3(3)–(4)); and whether it
-**generates content or interacts with people directly** (Art. 50). Describe *function, not benefit*,
+**generates content or interacts with people directly** (Art. 50) — and, if you deploy rather than
+build it, say so, because Art. 50 splits its duties between the two roles. Describe *function, not
+benefit*,
 write one section **per intended purpose** rather than per product, and say what the system does
 **not** do — the Art. 6(3) derogations turn on absence. Say too **who relies on the output**:
 whether a person reviews every case regardless, or whether the system's answer settles some of them
@@ -171,6 +173,13 @@ flowchart TD
   changes legal class. A CV parser that only extracts fields is `not_high_risk`; add "…and ranks
   candidates by fit" and it becomes `high_risk`. That one-sentence flip is the project's headline,
   and a keyword classifier cannot see it — both descriptions share almost all their words.
+- **Art. 50 runs beside the tier, not inside it,** and it answers with a LIST. The five duties are
+  cumulative — an avatar that chats and generates video owes 50(1), 50(2) and 50(4) at once — and
+  they split by role: **(1) and (2) bind the provider**, **(3) and (4) bind the deployer**. They are
+  different duties, owed by different parties, discharged in different documents, so the report
+  groups them by who owes them rather than listing "Art. 50 applies". A minimal-risk generator and
+  a high-risk chatbot can both owe them, and a high-risk system may owe none — which is why this
+  question is asked on every path and never routes anything.
 - **`needs review`** (dashed) is the abstain path: any node that answers with low confidence bails
   out here rather than guessing. For a compliance tool a confident wrong answer is the worst
   outcome, so abstaining beats guessing.

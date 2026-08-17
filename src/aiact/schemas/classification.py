@@ -13,7 +13,7 @@ from typing import Any, Literal
 
 from pydantic import BaseModel, field_validator, model_validator
 
-from aiact.schemas.enums import AnnexIIIArea, AnnexIProduct, RiskClass
+from aiact.schemas.enums import ActorRole, AnnexIIIArea, AnnexIProduct, RiskClass, TransparencyDuty
 from aiact.schemas.policy import GuidanceSource, LegalSource
 
 Confidence = Literal["high", "medium", "low"]
@@ -239,6 +239,27 @@ class ClassificationResult(BaseModel):
     text generator and a high-risk chatbot can both owe transparency, and a high-risk system may owe
     none. It is therefore answered for every classification and reported beside the risk class —
     never as an input to it."""
+
+    @property
+    def transparency_duties(self) -> list[TransparencyDuty]:
+        """The Art. 50 duties this system owes, in paragraph order. Empty where none attach."""
+        value = self.transparency.value if self.transparency is not None else None
+        duties = [d for d in value if isinstance(d, TransparencyDuty)] if value else []
+        return sorted(duties, key=lambda d: (d.paragraph, d.value))
+
+    @property
+    def transparency_duties_by_role(self) -> dict[ActorRole, list[TransparencyDuty]]:
+        """The same duties split by WHO owes them — the shape a report renders from.
+
+        Art. 50(1) and (2) bind the provider, (3) and (4) the deployer, and the split is not
+        cosmetic: they are discharged in different documents by different parties. A report listing
+        them as one block hands a provider duties it cannot discharge and leaves the deployer's
+        unattributed. Roles with no duty are absent rather than present-and-empty, so a caller
+        iterating this never renders an empty heading."""
+        by_role: dict[ActorRole, list[TransparencyDuty]] = {}
+        for duty in self.transparency_duties:
+            by_role.setdefault(duty.owed_by, []).append(duty)
+        return by_role
 
     @property
     def guidance_sources(self) -> list[GuidanceSource]:

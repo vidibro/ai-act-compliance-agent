@@ -13,10 +13,12 @@ import pytest
 
 from aiact.eval.classification_cases import load_classification_cases
 from aiact.schemas.enums import (
+    ActorRole,
     AnnexIIIArea,
     DerogationCondition,
     ProhibitedPractice,
     RiskClass,
+    TransparencyDuty,
 )
 from aiact.schemas.eval import ClassificationCase, Difficulty
 
@@ -108,6 +110,22 @@ def test_transparency_obligation_can_attach_to_minimal_risk(cases):
     assert ad.expected_transparency_obligation is True
 
 
+def test_a_renamed_pin_is_rejected_rather_than_dropped(cases):
+    """`extra="forbid"`. A misspelled or renamed key would otherwise be ignored, leaving the YAML
+    reading as though a node were pinned while it silently went unmeasured — the exact blindness
+    per-node scoring exists to surface."""
+    with pytest.raises(ValueError, match="expected_transparancy_duties"):
+        ClassificationCase(
+            case_id="typo",
+            expected_is_ai_system=True,
+            description="d",
+            expected_risk_class=RiskClass.MINIMAL,
+            expected_transparancy_duties=[],  # note the typo
+            decisive_fact="a fact long enough to pass",
+            difficulty="obvious",
+        )
+
+
 def test_every_case_states_a_decisive_fact(cases):
     for c in cases.cases:
         assert len(c.decisive_fact.strip()) > 20, f"{c.case_id} has no real decisive_fact"
@@ -123,8 +141,12 @@ def test_emotion_recognition_systems_owe_art_50_transparency(cases):
     for case_id in ("emotion_monitoring_employees", "emotion_screening_candidates"):
         case = c[case_id]
         assert case.expected_prohibited is True
-        assert case.expected_transparency_obligation is True, f"{case_id}: Art. 50(3) attaches"
+        assert case.expected_transparency_duties == [
+            TransparencyDuty.EMOTION_OR_BIOMETRIC_CATEGORISATION
+        ], f"{case_id}: Art. 50(3) attaches"
         assert "50(3)" in case.transparency_basis
+        # And it is the DEPLOYER's duty, not the provider's — the half a boolean could not carry.
+        assert case.expected_transparency_duties[0].owed_by == ActorRole.DEPLOYER
 
 
 def test_the_flip_changes_the_tier_and_leaves_art_50_alone(cases):
@@ -195,7 +217,7 @@ def test_a_true_art_50_label_cannot_be_asserted_without_a_basis():
             expected_is_ai_system=True,
             description="d",
             expected_risk_class=RiskClass.MINIMAL,
-            expected_transparency_obligation=True,
+            expected_transparency_duties=[TransparencyDuty.DIRECT_INTERACTION],
             decisive_fact="a fact long enough to pass",
             difficulty="obvious",
         )

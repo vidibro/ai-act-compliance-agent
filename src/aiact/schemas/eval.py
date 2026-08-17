@@ -22,7 +22,7 @@ from __future__ import annotations
 from enum import StrEnum
 from typing import Literal
 
-from pydantic import BaseModel, model_validator
+from pydantic import BaseModel, ConfigDict, field_validator, model_validator
 
 from aiact.schemas.enums import (
     AnnexIIIArea,
@@ -31,6 +31,7 @@ from aiact.schemas.enums import (
     ProhibitedPractice,
     RiskClass,
     ScopeExclusion,
+    TransparencyDuty,
     Verdict,
 )
 
@@ -148,6 +149,12 @@ class ClassificationCase(BaseModel):
     validators below re-enforce the same legal invariants the real classifier must obey
     (classification.py), so the ground truth cannot quietly contradict the law it measures."""
 
+    # An unknown key is a REJECTED case, not an ignored one. The default would silently drop a
+    # misspelled or renamed pin, and a pin that is dropped is a node that goes unmeasured while the
+    # YAML still reads as though it were checked — the exact failure the per-node scoring exists to
+    # surface.
+    model_config = ConfigDict(extra="forbid")
+
     case_id: str  # "cv_parsing_plus_scoring"
     description: str  # the use-case description the classifier reads — the input
     expected_risk_class: RiskClass
@@ -211,22 +218,37 @@ class ClassificationCase(BaseModel):
     fills for Art. 6(1). A `true` here is the interesting label: it is a use case that satisfies a
     condition under (a)-(d) and is high-risk anyway, which is the shape of case a set can most
     easily end up with none of."""
-    expected_transparency_obligation: bool = False
-    """Art. 50 — applies regardless of the risk tier.
+    expected_transparency_duties: list[TransparencyDuty] = []
+    """Art. 50 — EVERY duty that attaches, whoever owes it. Applies regardless of the risk tier.
 
-    SCOPE: TRUE means **any** Art. 50 obligation attaches to this system, whether it falls on the
-    provider or on the deployer. Art. 50 is titled
-    "Transparency obligations for providers AND deployers" and the paragraphs split by role —
-    (1) direct interaction and (2) marking synthetic output bind the PROVIDER; (3) emotion
-    recognition / biometric categorisation and (4) deep fakes bind the DEPLOYER. A provider report
-    that stayed silent about a duty its deployers will certainly owe would be less useful, not more
-    rigorous, so both count — and `transparency_basis` records which paragraph, so the label stays
-    arguable instead of asserted."""
+    A list because the duties are cumulative: a system that drafts published copy and talks to
+    people owes 50(1) and 50(2), and a key holding one flag cannot say a run found only half of
+    them. BOTH ROLES COUNT — (1) and (2) bind the provider, (3) and (4) the deployer. A key that
+    recorded only the provider's would mark a correct deployer-side finding wrong, and a report
+    silent about a duty its deployers certainly owe is less useful, not more rigorous.
+
+    Empty is the ordinary answer and is a real one: no Art. 50 duty attaches."""
+
+    @field_validator("expected_transparency_duties")
+    @classmethod
+    def _canonical_duty_order(cls, v: list[TransparencyDuty]) -> list[TransparencyDuty]:
+        """Paragraph order, de-duplicated — the same order `_parse_duties` produces. The key and
+        the run are compared as lists, so an author writing them in another order would score a
+        correct answer wrong."""
+        return sorted(dict.fromkeys(v), key=lambda d: (d.paragraph, d.value))
+
+    @property
+    def expected_transparency_obligation(self) -> bool:
+        """Art. 50 — whether ANY duty attaches, derived rather than stored so it cannot disagree
+        with the list above."""
+        return bool(self.expected_transparency_duties)
 
     transparency_basis: str = ""
-    """WHICH Art. 50 paragraph attaches, and why. Mandatory whenever the obligation is TRUE (see the
-    validator). Same discipline as LegalSource on a verdict: an answer key that cannot show its
-    working is how a wrong label survives unnoticed."""
+    """WHY those paragraphs attach — or why none does. Compelled by the validator whenever a duty
+    is claimed, and by the golden-set tests in BOTH directions: "no Art. 50 duty" is a claim about
+    five paragraphs at once, and the labels that were wrong were wrong in that direction. Same
+    discipline as LegalSource on a verdict — a key that cannot show its working is how a wrong
+    label survives unnoticed."""
 
     expected_abstains_at: str | None = None
     """WHICH cascade node the description runs out at. Set exactly when the class is NEEDS_REVIEW.
@@ -254,13 +276,15 @@ class ClassificationCase(BaseModel):
     def _answer_key_is_legally_consistent(self) -> ClassificationCase:
         rc = self.expected_risk_class
 
-        # Art. 50 — a claimed transparency obligation must name the paragraph it rests on. Not
-        # bureaucracy: the labels this replaces were plain booleans with no recorded argument, and
-        # two of them were simply wrong (Art. 50(3) expressly covers emotion recognition systems).
-        if self.expected_transparency_obligation and not self.transparency_basis.strip():
+        # Art. 50 — a claimed duty must name the paragraph it rests on. Not bureaucracy: the
+        # labels this replaces were plain booleans with no recorded argument, and two of them were
+        # simply wrong (Art. 50(3) expressly covers emotion recognition systems). The shipped answer
+        # key argues the NEGATIVE too, which is stricter than this — enforced over the set itself
+        # rather than here, so a synthetic test fixture need not carry the essay.
+        if self.expected_transparency_duties and not self.transparency_basis.strip():
             raise ValueError(
-                f"{self.case_id}: expected_transparency_obligation=True but transparency_basis is "
-                f"empty. Name the Art. 50 paragraph and why it attaches."
+                f"{self.case_id}: Art. 50 duties are claimed but transparency_basis is empty. Name "
+                f"the paragraphs and why they attach."
             )
 
         # Art. 2 — an exclusion must name the paragraph it rests on, and nothing else may claim one.

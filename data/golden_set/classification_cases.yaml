@@ -40,7 +40,7 @@ cases:
     expected_performs_profiling: false
     expected_derogation: narrow_procedural_task
     expected_poses_significant_risk: false
-    expected_transparency_obligation: false
+    expected_transparency_duties: []
     transparency_basis: >-
       None of Art. 50's four paragraphs attach. It reads uploaded documents and writes fields to a
       database — it does not interact directly with candidates (50(1); the recruiter consumes the
@@ -64,7 +64,7 @@ cases:
     expected_annex_i_product: null
     expected_annex_iii_area: employment
     expected_performs_profiling: true
-    expected_transparency_obligation: false
+    expected_transparency_duties: []
     transparency_basis: >-
       Unchanged from cv_parsing_fields — scoring and ranking are neither direct interaction (50(1))
       nor content generation (50(2)). Deliberate: the added sentence flips the RISK TIER and must
@@ -86,7 +86,7 @@ cases:
     expected_risk_class: prohibited
     expected_is_ai_system: true
     expected_prohibited_practice: emotion_inference_workplace_education
-    expected_transparency_obligation: true  # CORRECTED 2026-07-22 (was false) — see basis
+    expected_transparency_duties: [emotion_or_biometric_categorisation]
     transparency_basis: >-
       Art. 50(3): "Deployers of an emotion recognition system ... shall inform the natural persons
       exposed thereto of the operation of the system." This IS an emotion recognition system, so
@@ -111,7 +111,7 @@ cases:
     expected_risk_class: prohibited
     expected_is_ai_system: true
     expected_prohibited_practice: emotion_inference_workplace_education
-    expected_transparency_obligation: true  # CORRECTED 2026-07-22 (was false) — see basis
+    expected_transparency_duties: [emotion_or_biometric_categorisation]
     transparency_basis: >-
       Art. 50(3), as for emotion_monitoring_employees — it is an emotion recognition system and the
       paragraph attaches to that system type regardless of the Art. 5 verdict. Arguably Art. 50(1)
@@ -145,7 +145,7 @@ cases:
     expected_is_ai_system: true
     expected_annex_i_product: null
     expected_annex_iii_area: null
-    expected_transparency_obligation: true
+    expected_transparency_duties: [synthetic_content_marking]
     transparency_basis: >-
       Art. 50(2): providers of AI systems generating synthetic text must mark the output in a
       machine-readable format as artificially generated. The 50(2) carve-out for systems performing
@@ -168,7 +168,7 @@ cases:
       rank, or make any recommendation about candidates.
     expected_risk_class: minimal
     expected_is_ai_system: true
-    expected_transparency_obligation: false
+    expected_transparency_duties: []
     transparency_basis: >-
       Art. 50(1) does not attach: the tool matches STATED availability and emits invitations: it is
       not intended to interact directly with candidates as an interlocutor, and 50(1) excepts what
@@ -207,7 +207,7 @@ cases:
     expected_annex_i_product: null
     expected_annex_iii_area: employment
     expected_performs_profiling: null   # NOT "no" — genuinely unknowable from this text
-    expected_transparency_obligation: false
+    expected_transparency_duties: []
     transparency_basis: >-
       Determinable even though the tier is not, which is deliberate — the case should turn on ONE
       missing fact, not on everything being vague. Status emails are drafted by the recruiter, not
@@ -255,7 +255,7 @@ cases:
     expected_is_ai_system: true
     expected_annex_i_product: null
     expected_annex_iii_area: null
-    expected_transparency_obligation: false
+    expected_transparency_duties: []
     transparency_basis: >-
       Art. 50 does not attach: it tracks balances and routes requests — no direct interaction as an
       interlocutor (50(1)), no synthetic content (50(2)), no emotion or biometric inference (50(3)),
@@ -284,7 +284,7 @@ cases:
     expected_performs_profiling: false
     expected_derogation: narrow_procedural_task
     expected_poses_significant_risk: false
-    expected_transparency_obligation: false
+    expected_transparency_duties: []
     transparency_basis: >-
       Art. 50 does not attach: de-duplicating and merging application records is not direct
       interaction (50(1)), generates no synthetic content (50(2)), infers no emotion (50(3)) and
@@ -315,7 +315,7 @@ cases:
     expected_performs_profiling: false
     expected_derogation: narrow_procedural_task
     expected_poses_significant_risk: true
-    expected_transparency_obligation: false
+    expected_transparency_duties: []
     transparency_basis: >-
       Art. 50 does not attach: reading one field and issuing a form letter is not direct
       interaction with the candidate in the 50(1) sense, generates no synthetic content (50(2)),
@@ -345,7 +345,7 @@ cases:
     expected_is_ai_system: true
     expected_annex_i_product: medical_devices
     expected_third_party_assessment: true
-    expected_transparency_obligation: false
+    expected_transparency_duties: []
     transparency_basis: >-
       Art. 50 does not attach: the module drives an actuator inside a surgical robot. It does not
       interact directly with a natural person (50(1)), generates no synthetic content (50(2)),
@@ -370,7 +370,7 @@ cases:
     expected_is_ai_system: true
     expected_annex_i_product: motor_vehicles
     expected_third_party_assessment: true
-    expected_transparency_obligation: false
+    expected_transparency_duties: []
     transparency_basis: >-
       Art. 50 does not attach: it actuates brakes from sensor input. No direct interaction with a
       person (50(1)), no synthetic content (50(2)), no emotion inference or biometric
@@ -396,7 +396,7 @@ cases:
     expected_annex_i_product: machinery
     expected_third_party_assessment: false
     expected_annex_iii_area: null
-    expected_transparency_obligation: false
+    expected_transparency_duties: []
     transparency_basis: >-
       Art. 50 does not attach: a maintenance reminder is not direct interaction of the kind
       50(1) addresses, and none of 50(2)-(4) apply.
@@ -422,7 +422,7 @@ cases:
     expected_is_ai_system: true
     expected_annex_i_product: machinery
     expected_third_party_assessment: true
-    expected_transparency_obligation: false
+    expected_transparency_duties: []
     transparency_basis: >-
       Art. 50 does not attach: a maintenance reminder shown to the machine operator is not the
       direct interaction 50(1) addresses, it generates no synthetic content (50(2)), infers no
@@ -449,7 +449,7 @@ cases:
     expected_is_ai_system: true
     expected_annex_i_product: null
     expected_annex_iii_area: null
-    expected_transparency_obligation: false
+    expected_transparency_duties: []
     transparency_basis: >-
       Art. 50 does not attach: proposing rotas and sending reminders is not direct interaction of
       the kind 50(1) addresses, and 50(2)-(4) do not apply.
@@ -478,7 +478,7 @@ cases:
       Art. 2(3), second subparagraph. The system is put into service exclusively for military and
       defence purposes, and the subparagraph applies regardless of the type of entity carrying out
       those activities.
-    expected_transparency_obligation: false
+    expected_transparency_duties: []
     transparency_basis: >-
       Not reached: a system the Regulation does not govern owes nothing under Art. 50. On the facts
       none of it attaches either — coordinating aircraft is no direct interaction with a natural
@@ -508,7 +508,7 @@ cases:
     expected_annex_iii_area: migration
     expected_performs_profiling: false
     expected_derogation: null
-    expected_transparency_obligation: false
+    expected_transparency_duties: []
     transparency_basis: >-
       Art. 50 does not attach: detecting crossings and alerting officers is no direct interaction
       with the people observed (50(1)), generates no synthetic content (50(2)), produces no deep fake
@@ -547,7 +547,7 @@ cases:
       framework of an agreement for law enforcement and judicial cooperation with the Union, provided
       that country affords adequate safeguards for fundamental rights and freedoms. The document
       supplies both halves: the cooperation framework, and the safeguards finding.
-    expected_transparency_obligation: false
+    expected_transparency_duties: []
     transparency_basis: >-
       Not reached: a body the Regulation does not govern owes nothing under Art. 50. On the facts
       none of it attaches either — ranking case referrals for investigators is no direct interaction
@@ -580,7 +580,7 @@ cases:
     expected_risk_class: needs_review
     expected_abstains_at: scope
     expected_is_ai_system: true
-    expected_transparency_obligation: false
+    expected_transparency_duties: []
     transparency_basis: >-
       Undeterminable along with the tier, and recorded as false only because nothing in the
       description supports an obligation: ranking referrals for investigators is no direct interaction
@@ -635,7 +635,7 @@ cases:
     expected_annex_i_product: null
     expected_annex_iii_area: employment
     expected_performs_profiling: true
-    expected_transparency_obligation: false
+    expected_transparency_duties: []
     transparency_basis: >-
       None of Art. 50's paragraphs attach: scoring and ranking applicants is neither direct
       interaction (50(1)) nor content generation (50(2)); it is not emotion recognition or
@@ -662,7 +662,7 @@ cases:
     expected_is_ai_system: true
     expected_annex_i_product: null
     expected_annex_iii_area: null
-    expected_transparency_obligation: false
+    expected_transparency_duties: []
     transparency_basis: >-
       Art. 50 does not attach: it collects documents and sends reminders — no direct interaction as
       an interlocutor (50(1)), a checklist is not synthetic content (50(2)), no emotion or biometric
@@ -691,7 +691,7 @@ cases:
     expected_performs_profiling: false
     expected_derogation: improves_completed_human_activity
     expected_poses_significant_risk: false
-    expected_transparency_obligation: false
+    expected_transparency_duties: []
     transparency_basis: >-
       Art. 50(2) does not attach despite the rewriting: its carve-out covers systems performing "an
       assistive function for standard editing" that do not substantially alter the input or its
@@ -719,7 +719,7 @@ cases:
     expected_performs_profiling: false
     expected_derogation: preparatory_task
     expected_poses_significant_risk: false
-    expected_transparency_obligation: false
+    expected_transparency_duties: []
     transparency_basis: >-
       Art. 50 does not attach: file conversion, OCR and indexing is not direct interaction (50(1)),
       generates no synthetic content (50(2)), infers no emotion (50(3)), produces no deep fake
@@ -739,7 +739,7 @@ cases:
     expected_risk_class: prohibited
     expected_is_ai_system: true
     expected_prohibited_practice: biometric_categorisation_sensitive
-    expected_transparency_obligation: true
+    expected_transparency_duties: [emotion_or_biometric_categorisation]
     transparency_basis: >-
       Art. 50(3): it is a biometric categorisation system, so deployers must inform the persons
       exposed. As with the emotion cases, 50(3) attaches to the system type and its only carve-out
@@ -765,7 +765,7 @@ cases:
     expected_is_ai_system: true
     expected_annex_i_product: null
     expected_annex_iii_area: null
-    expected_transparency_obligation: false
+    expected_transparency_duties: []
     transparency_basis: >-
       Determinable even though the tier is not: it scores records with no direct interaction (50(1)),
       no content generation (50(2)), no stated emotion inference (50(3)) and no deep fake (50(4)),
@@ -793,7 +793,7 @@ cases:
     expected_is_ai_system: true
     expected_annex_i_product: null
     expected_annex_iii_area: null
-    expected_transparency_obligation: false
+    expected_transparency_duties: []
     transparency_basis: >-
       Art. 50 does not attach: it allocates rooms, does not interact with any affected person
       (50(1)), generates no content (50(2)), infers no emotion (50(3)), produces no deep fake
@@ -817,7 +817,7 @@ cases:
     expected_is_ai_system: true
     expected_annex_i_product: null
     expected_annex_iii_area: null
-    expected_transparency_obligation: true
+    expected_transparency_duties: [direct_interaction]
     transparency_basis: >-
       Art. 50(1): the system interacts directly with natural persons (applicants) in conversation,
       so they must be informed they are dealing with an AI system unless that is obvious. Applies
@@ -843,7 +843,7 @@ cases:
     expected_annex_i_product: null
     expected_annex_iii_area: employment
     expected_performs_profiling: true
-    expected_transparency_obligation: false
+    expected_transparency_duties: []
     transparency_basis: >-
       Art. 50 does not attach: dashboards and per-employee scores are not direct interaction
       (50(1)), generate no synthetic content (50(2)), infer no emotion (50(3)) and produce no deep
@@ -905,7 +905,7 @@ cases:
     expected_is_ai_system: true
     expected_annex_i_product: medical_devices
     expected_third_party_assessment: null
-    expected_transparency_obligation: false
+    expected_transparency_duties: []
     transparency_basis: >-
       Determinable even though the tier is not. Art. 50(1) does not attach: a worklist pop-up is not
       a system intended to interact directly with a natural person as an interlocutor, and in any
@@ -959,7 +959,7 @@ cases:
     expected_is_ai_system: true
     expected_annex_i_product: medical_devices
     expected_third_party_assessment: null
-    expected_transparency_obligation: false
+    expected_transparency_duties: []
     transparency_basis: >-
       Art. 50(1) does not attach: the stated user is a healthcare provider operating a GUI, not a
       natural person interacting with the system as an interlocutor, and the description says nothing
@@ -1021,7 +1021,7 @@ cases:
     expected_is_ai_system: true
     expected_annex_i_product: null
     expected_annex_iii_area: null
-    expected_transparency_obligation: false
+    expected_transparency_duties: []
     transparency_basis: >-
       Art. 50 does not attach: a camera operated by a technician is not a system interacting directly
       with a natural person as an interlocutor (50(1)); merging captured photographs generates no
@@ -1083,7 +1083,7 @@ cases:
     expected_is_ai_system: true
     expected_annex_i_product: medical_devices
     expected_third_party_assessment: null
-    expected_transparency_obligation: false
+    expected_transparency_duties: []
     transparency_basis: >-
       Art. 50 does not attach: an operator reading a map during a procedure is not interacting with
       the system as an interlocutor and knows it is software (50(1)); maps reconstructed from measured
@@ -1134,7 +1134,7 @@ cases:
     expected_is_ai_system: true
     expected_annex_i_product: null
     expected_annex_iii_area: null
-    expected_transparency_obligation: false
+    expected_transparency_duties: []
     transparency_basis: >-
       Art. 50(1) does not attach and the description says why in terms: the software has no user
       interface or end-user access and is reached only through an API, so it is not a system intended
@@ -1194,7 +1194,7 @@ cases:
     expected_is_ai_system: true
     expected_annex_i_product: medical_devices
     expected_third_party_assessment: null
-    expected_transparency_obligation: false
+    expected_transparency_duties: []
     transparency_basis: >-
       Art. 50 does not attach: a surgeon operating a touchscreen during a procedure is not
       interacting with the system as an interlocutor (50(1)); placing landmarks on captured
@@ -1280,7 +1280,7 @@ cases:
       defence agency under military research and technology, to give armed forces assured airspace
       access. The subparagraph is unconditional as to the entity carrying out the activity, so the
       buyer being an EU body changes nothing.
-    expected_transparency_obligation: false
+    expected_transparency_duties: []
     transparency_basis: >-
       Not reached. Art. 50 is a provision of this Regulation, and a system excluded by Art. 2 owes
       nothing under it. On the facts it would not attach anyway: navigating an aircraft is not direct
@@ -1328,7 +1328,7 @@ cases:
     expected_is_ai_system: true
     expected_annex_i_product: null
     expected_annex_iii_area: null
-    expected_transparency_obligation: false
+    expected_transparency_duties: []
     transparency_basis: >-
       Undeterminable along with the tier, and recorded as false only because nothing in the notice
       supports an obligation: it describes licences for analysis software, with no statement that
@@ -1379,7 +1379,7 @@ cases:
       sole purpose of scientific research and development — analysing astronomical survey data to
       settle a question about star formation. Science is the end here, not a stage before something
       else, which is what makes 2(6) the fitting paragraph rather than 2(8).
-    expected_transparency_obligation: false
+    expected_transparency_duties: []
     transparency_basis: >-
       Not reached, the Regulation not applying. On the facts none of Art. 50 attaches: the system
       classifies images of stellar objects, so there is no natural person to interact with (50(1)),
@@ -1426,7 +1426,7 @@ cases:
       open-source digital environments that emulate the physical systems. The last sentence of 2(8)
       does not bite, because simulated environments are the opposite of testing in real-world
       conditions as Art. 3(57) defines it.
-    expected_transparency_obligation: false
+    expected_transparency_duties: []
     transparency_basis: >-
       Not reached. On the facts nothing in Art. 50 attaches either: an operator decision-support
       algorithm is not a system intended to interact with a natural person as an interlocutor
@@ -1473,7 +1473,7 @@ cases:
     expected_is_ai_system: true
     expected_annex_i_product: null
     expected_annex_iii_area: null
-    expected_transparency_obligation: false
+    expected_transparency_duties: []
     transparency_basis: >-
       Art. 50 does not attach. A pool camera analysing swimmers is not a system intended to interact
       directly with natural persons as an interlocutor (50(1)); it generates no synthetic audio,
@@ -1534,7 +1534,7 @@ cases:
       Art. 50 paragraph reaches a numeric point forecast.
     expected_annex_i_product: null
     expected_annex_iii_area: null
-    expected_transparency_obligation: false
+    expected_transparency_duties: []
     transparency_basis: >-
       Decided on the merits, because Art. 2(12) depends on the answer rather than the other way
       round. No paragraph attaches: a forecasting model exposed through a Python library is not
@@ -1583,7 +1583,7 @@ cases:
     expected_is_ai_system: true
     expected_annex_i_product: null
     expected_annex_iii_area: null
-    expected_transparency_obligation: true
+    expected_transparency_duties: [synthetic_content_marking]
     transparency_basis: >-
       Art. 50(2): the provider of an AI system generating synthetic audio content must ensure the
       outputs are marked in a machine-readable format and detectable as artificially generated. Every
@@ -1636,7 +1636,7 @@ cases:
       baking for one's own household in one's own kitchen is that activity. The paragraph is narrow
       on its face: it lifts the DEPLOYER's obligations, and only where the deployer is a natural
       person and the activity is purely personal.
-    expected_transparency_obligation: false
+    expected_transparency_duties: []
     transparency_basis: >-
       Not owed by this deployer, the Regulation not applying to them. The deployer-facing paragraphs
       are the ones that could have: 50(3) needs emotion recognition or biometric categorisation, and a
@@ -1680,7 +1680,7 @@ cases:
     expected_is_ai_system: true
     expected_annex_i_product: null
     expected_annex_iii_area: null
-    expected_transparency_obligation: false
+    expected_transparency_duties: []
     transparency_basis: >-
       Art. 50 does not attach. The aircraft is not a system intended to interact directly with a
       natural person as an interlocutor, and in any event that a drone hovering in front of someone

@@ -17,7 +17,7 @@ from aiact.schemas.classification import (
     ClassificationResult,
     UseCaseClassification,
 )
-from aiact.schemas.enums import RiskClass
+from aiact.schemas.enums import RiskClass, TransparencyDuty
 from aiact.schemas.eval import ClassificationCase
 from aiact.schemas.policy import LegalSource
 
@@ -32,8 +32,10 @@ def case(case_id: str, risk: RiskClass, transparency: bool) -> ClassificationCas
         expected_is_ai_system=True,
         description="a description",
         expected_risk_class=risk,
-        expected_transparency_obligation=transparency,
-        # The schema compels a basis whenever the obligation is claimed — see
+        expected_transparency_duties=(
+            [TransparencyDuty.SYNTHETIC_CONTENT_MARKING] if transparency else []
+        ),
+        # The schema compels a basis whenever a duty is claimed — see
         # ClassificationCase._answer_key_is_legally_consistent. A fixture is not exempt.
         transparency_basis="Art. 50(2): generates synthetic text." if transparency else "",
         decisive_fact="the fact that fixes the class",
@@ -42,9 +44,18 @@ def case(case_id: str, risk: RiskClass, transparency: bool) -> ClassificationCas
 
 
 def result(risk: RiskClass, transparency: bool | None, *, answered: bool = True):
+    """`transparency` is the COARSE claim this axis scores: True means some duty was found, False
+    means none, and None means the node produced no usable answer at all."""
+    value = (
+        None
+        if transparency is None
+        else [TransparencyDuty.SYNTHETIC_CONTENT_MARKING]
+        if transparency
+        else []
+    )
     answer = (
         ClassificationAnswer(
-            value=transparency,
+            value=value,
             reasoning="r",
             confidence="high" if answered else "low",
             source=ART50,

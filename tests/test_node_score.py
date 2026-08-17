@@ -169,7 +169,7 @@ def test_asked_counts_come_from_the_run_not_the_answer_key():
     """`triggered_by` keeps only the DECIDING nodes; `answers` is what makes the routing ones
     visible, and the asked/pinned gap is itself the finding — a node asked 24 times and pinned 4 is
     thinly measured, however well it scores."""
-    case = a_case(expected_annex_iii_area=None, expected_transparency_obligation=False)
+    case = a_case(expected_annex_iii_area=None, expected_transparency_duties=[])
     brain = ScriptedBrain({"is_ai": True, "prohibited": None, "annex_iii": None})
     result = classify(case.description, brain, case.case_id)
 

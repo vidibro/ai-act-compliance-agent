@@ -220,6 +220,82 @@ class ActorRole(StrEnum):
     """Places a product on the market together with an AI system, under its own name."""
 
 
+class TransparencyDuty(StrEnum):
+    """Art. 50. WHICH transparency duty attaches, and therefore ON WHOM.
+
+    A LIST, not a flag, and this is the point of the type: Art. 50 holds five separate duties and
+    one system can owe several at once — a chatbot that drafts published copy owes 50(1) and 50(2)
+    to its provider and 50(4) to its deployer. A single boolean says "Art. 50 applies" and leaves
+    the reader to work out which duty, whose it is, and what to write.
+
+    THE ROLE IS THE HALF A BOOLEAN LOSES. Paragraphs (1) and (2) bind the PROVIDER — build the
+    system so it announces itself, mark its output machine-readably. Paragraphs (3) and (4) bind the
+    DEPLOYER — tell the people exposed, disclose the deep fake. They are different duties, owed by
+    different parties, discharged in different documents. A provider handed "Art. 50 applies" for a
+    duty that is in fact their deployer's cannot act on it, and a report that never says so leaves
+    the deployer's duty unnamed.
+
+    Every paragraph is disapplied for law-enforcement use authorised by law, and (1), (2) and (4)
+    carry further carve-outs of their own — see the members."""
+
+    DIRECT_INTERACTION = "direct_interaction"
+    """50(1), PROVIDER. Systems intended to interact directly with natural persons must be built so
+    those persons are informed they are dealing with an AI system — unless that is obvious to a
+    reasonably well-informed, observant and circumspect person."""
+
+    SYNTHETIC_CONTENT_MARKING = "synthetic_content_marking"
+    """50(2), PROVIDER. Systems generating synthetic audio, image, video or text must mark their
+    outputs in a machine-readable format, detectable as artificially generated or manipulated. Does
+    NOT apply where the system performs an assistive function for standard editing, or does not
+    substantially alter the deployer's input data or its semantics."""
+
+    EMOTION_OR_BIOMETRIC_CATEGORISATION = "emotion_or_biometric_categorisation"
+    """50(3), DEPLOYER. Deployers of an emotion recognition or biometric categorisation system must
+    inform the persons exposed to it. Attaches to the SYSTEM TYPE, so it can stand beside an Art. 5
+    prohibition: Art. 5(1)(f) itself excepts medical and safety uses, under which such a system is
+    lawfully deployed and this duty squarely bites."""
+
+    DEEP_FAKE_DISCLOSURE = "deep_fake_disclosure"
+    """50(4), first subparagraph, DEPLOYER. Deployers of a system generating or manipulating image,
+    audio or video constituting a deep fake must disclose that it is artificially generated. For an
+    evidently artistic, creative, satirical or fictional work the duty is reduced to disclosing the
+    existence of such content in a way that does not hamper its enjoyment."""
+
+    PUBLIC_INTEREST_TEXT_DISCLOSURE = "public_interest_text_disclosure"
+    """50(4), second subparagraph, DEPLOYER. Deployers publishing AI-generated text to inform the
+    public on matters of public interest must disclose it. Does NOT apply where the content has
+    undergone human review or editorial control and a person holds editorial responsibility."""
+
+    @property
+    def paragraph(self) -> int:
+        """The Art. 50 paragraph, for citation."""
+        return _TRANSPARENCY_PARAGRAPH[self]
+
+    @property
+    def owed_by(self) -> ActorRole:
+        """WHO owes this duty. Art. 50 splits by role, and the split is not cosmetic: a provider
+        cannot discharge a deployer's duty and vice versa."""
+        return _TRANSPARENCY_ROLE[self]
+
+
+# No default, and every member listed, for the reason given at _SCOPE_EXCLUSION_PARAGRAPH.
+_TRANSPARENCY_PARAGRAPH: dict[TransparencyDuty, int] = {
+    TransparencyDuty.DIRECT_INTERACTION: 1,
+    TransparencyDuty.SYNTHETIC_CONTENT_MARKING: 2,
+    TransparencyDuty.EMOTION_OR_BIOMETRIC_CATEGORISATION: 3,
+    TransparencyDuty.DEEP_FAKE_DISCLOSURE: 4,
+    TransparencyDuty.PUBLIC_INTEREST_TEXT_DISCLOSURE: 4,
+}
+
+_TRANSPARENCY_ROLE: dict[TransparencyDuty, ActorRole] = {
+    TransparencyDuty.DIRECT_INTERACTION: ActorRole.PROVIDER,
+    TransparencyDuty.SYNTHETIC_CONTENT_MARKING: ActorRole.PROVIDER,
+    TransparencyDuty.EMOTION_OR_BIOMETRIC_CATEGORISATION: ActorRole.DEPLOYER,
+    TransparencyDuty.DEEP_FAKE_DISCLOSURE: ActorRole.DEPLOYER,
+    TransparencyDuty.PUBLIC_INTEREST_TEXT_DISCLOSURE: ActorRole.DEPLOYER,
+}
+
+
 class Verdict(StrEnum):
     """Outcome of checking ONE PolicyRule against the system's documentation."""
 

@@ -18,7 +18,14 @@ from aiact.classify import ScriptedBrain, build_graph, classify
 from aiact.classify.graph import route_for
 from aiact.eval.classification_cases import load_classification_cases
 from aiact.schemas.classification import ClassificationAnswer
-from aiact.schemas.enums import AnnexIIIArea, DerogationCondition, ProhibitedPractice, RiskClass
+from aiact.schemas.enums import (
+    ActorRole,
+    AnnexIIIArea,
+    DerogationCondition,
+    ProhibitedPractice,
+    RiskClass,
+    TransparencyDuty,
+)
 from aiact.schemas.eval import ClassificationCase
 from aiact.schemas.policy import LegalSource
 
@@ -44,7 +51,7 @@ def _brain_from_case(case: ClassificationCase) -> ScriptedBrain:
         "profiling": case.expected_performs_profiling,
         "derogation": case.expected_derogation,
         "significant_risk": case.expected_poses_significant_risk,
-        "transparency": case.expected_transparency_obligation,
+        "transparency": case.expected_transparency_duties,
     }
     # A needs_review case models genuine legal ambiguity — here, at the Art. 5 prohibition question.
     low_confidence = (
@@ -288,13 +295,13 @@ def test_transparency_is_checked_for_a_high_risk_use_case():
             "prohibited": None,
             "annex_iii": AnnexIIIArea.EMPLOYMENT,
             "profiling": True,  # -> high_risk
-            "transparency": True,  # ...and it ALSO interacts with people
+            "transparency": [TransparencyDuty.DIRECT_INTERACTION],  # ...and it ALSO talks to people
         }
     )
     result = classify("an AI chatbot that interviews and scores candidates", brain, "chatbot")
     assert result.overall_risk_class == RiskClass.HIGH_RISK
     assert result.transparency is not None, "Art. 50 must be asked even for a high-risk system"
-    assert result.transparency.value is True
+    assert result.transparency.value == [TransparencyDuty.DIRECT_INTERACTION]
     assert result.transparency.source.article == 50
 
 
@@ -304,14 +311,69 @@ def test_transparency_is_checked_on_every_path():
         "prohibited": {
             "is_ai": True,
             "prohibited": ProhibitedPractice.SOCIAL_SCORING,
-            "transparency": False,
+            "transparency": [],
         },
-        "minimal": {"is_ai": True, "prohibited": None, "annex_iii": None, "transparency": True},
-        "not_ai": {"is_ai": False, "transparency": False},
+        "minimal": {
+            "is_ai": True,
+            "prohibited": None,
+            "annex_iii": None,
+            "transparency": [TransparencyDuty.SYNTHETIC_CONTENT_MARKING],
+        },
+        "not_ai": {"is_ai": False, "transparency": []},
     }
     for name, answers in paths.items():
         result = classify("x", ScriptedBrain(answers), name)
         assert result.transparency is not None, f"{name}: Art. 50 was not asked"
+
+
+def test_art_50_duties_are_cumulative_and_split_by_role():
+    """One system can owe several duties at once, and they are not all its own: 50(1) and 50(2)
+    bind the provider, 50(3) and 50(4) the deployer. A report grouping them into one block hands
+    a provider duties it cannot discharge and leaves the deployer's unattributed."""
+    brain = ScriptedBrain(
+        {
+            "is_ai": True,
+            "prohibited": None,
+            "annex_iii": None,
+            "transparency": [
+                TransparencyDuty.DIRECT_INTERACTION,  # 50(1), provider
+                TransparencyDuty.SYNTHETIC_CONTENT_MARKING,  # 50(2), provider
+                TransparencyDuty.DEEP_FAKE_DISCLOSURE,  # 50(4), deployer
+            ],
+        }
+    )
+    result = classify("an avatar that chats and generates video", brain, "avatar")
+    by_role = result.transparency_duties_by_role
+    assert by_role[ActorRole.PROVIDER] == [
+        TransparencyDuty.DIRECT_INTERACTION,
+        TransparencyDuty.SYNTHETIC_CONTENT_MARKING,
+    ]
+    assert by_role[ActorRole.DEPLOYER] == [TransparencyDuty.DEEP_FAKE_DISCLOSURE]
+
+
+def test_a_system_owing_nothing_under_art_50_lists_no_role():
+    """An empty answer is a real one. Roles with no duty are absent rather than present-and-empty,
+    so a report iterating this never renders a heading with nothing under it."""
+    brain = ScriptedBrain(
+        {"is_ai": True, "prohibited": None, "annex_iii": None, "transparency": []}
+    )
+    result = classify("a batch job that reformats CSVs", brain, "csv")
+    assert result.transparency_duties == []
+    assert result.transparency_duties_by_role == {}
+
+
+def test_every_transparency_duty_knows_its_paragraph_and_its_role():
+    """Art. 50 runs (1) to (4), with (4) carrying two duties. Each must name its own paragraph and
+    the party that owes it — a duty attributed to the wrong role is worse than an unattributed one.
+    """
+    assert [d.paragraph for d in TransparencyDuty] == [1, 2, 3, 4, 4]
+    assert [d.owed_by for d in TransparencyDuty] == [
+        ActorRole.PROVIDER,
+        ActorRole.PROVIDER,
+        ActorRole.DEPLOYER,
+        ActorRole.DEPLOYER,
+        ActorRole.DEPLOYER,
+    ]
 
 
 def test_transparency_never_influences_the_risk_class():
@@ -323,7 +385,7 @@ def test_transparency_never_influences_the_risk_class():
             "prohibited": None,
             "annex_iii": AnnexIIIArea.EMPLOYMENT,
             "profiling": True,
-            "transparency": True,
+            "transparency": [TransparencyDuty.DIRECT_INTERACTION],
         },
         low_confidence=frozenset({"transparency"}),
     )

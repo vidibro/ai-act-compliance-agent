@@ -49,15 +49,26 @@ class CaseScore:
 
 def score_case(case: ClassificationCase, result: ClassificationResult) -> CaseScore:
     answer = result.transparency
-    # `value` is bool | None: None is an abstention here, NOT "no obligation". The Art. 50 question
-    # is a bool question, so anything non-bool that reaches this point is treated as no answer.
-    got = answer.value if answer is not None else None
+    # This axis is DELIBERATELY coarse: "does any Art. 50 duty attach", not which. Its
+    # false-positive / false-negative split only means something for a yes-or-no claim, and WHICH
+    # duty is measured exactly by the per-node scorer (node_score.py) against the same run.
+    #
+    # An empty list is a real answer — "no duty attaches" — so it must not be confused with an
+    # abstention. `None` here means no answer, and it is established by the abstention signals and
+    # by the value not being a list at all: this node answers with a list of duties, so anything
+    # else reaching here is an absence of an answer rather than a considered "none".
+    answered = (
+        answer is not None
+        and answer.abstained_because is None
+        and answer.confidence != "low"
+        and isinstance(answer.value, list)
+    )
     return CaseScore(
         case_id=case.case_id,
         expected_class=case.expected_risk_class,
         got_class=result.overall_risk_class,
         expected_transparency=case.expected_transparency_obligation,
-        got_transparency=got if isinstance(got, bool) else None,
+        got_transparency=bool(answer.value) if answered and answer is not None else None,
     )
 
 

@@ -38,6 +38,7 @@ from aiact.schemas.enums import (
     DerogationCondition,
     ProhibitedPractice,
     ScopeExclusion,
+    TransparencyDuty,
 )
 from aiact.tracing import current_metadata
 from aiact.usage import Usage
@@ -115,6 +116,13 @@ def _answer_instructions(answer_type: str) -> str:
             f'set "value" to one of [{conds}]; null if no derogation applies; or "{UNKNOWN}" if '
             f"the description does not establish that any condition is met"
         )
+    if answer_type == "transparency_duties":
+        duties = ", ".join(d.value for d in TransparencyDuty)
+        return (
+            f'set "value" to a LIST containing every duty that applies, drawn from [{duties}]; '
+            f'an empty list if no Article 50 duty attaches; or "{UNKNOWN}" if the description does '
+            f"not state what the system generates or who it interacts with"
+        )
     if answer_type == "prohibited_practice":
         practices = ", ".join(p.value for p in ProhibitedPractice)
         return (
@@ -161,6 +169,31 @@ def _parse_bool(value: object) -> bool:
     raise Unanswerable(f"cannot read {value!r} as true or false")
 
 
+def _parse_duties(value: object) -> list[TransparencyDuty]:
+    """Read the Art. 50 answer as a list of duties.
+
+    An EMPTY LIST is a real verdict — "no Art. 50 duty attaches" — so `null` and the several ways a
+    model writes "nothing here" normalise to it, exactly as they normalise to None elsewhere. A bare
+    string is accepted as a one-element list, because a model asked for every duty that applies and
+    finding one often sends just that one. Anything unrecognised raises rather than being dropped:
+    silently discarding a duty the model named would under-report an obligation, and the empty list
+    it fell into is indistinguishable from a considered "none"."""
+    if value is None or (isinstance(value, str) and value.strip().lower() in ("none", "null", "")):
+        return []
+    items = value if isinstance(value, list) else [value]
+    duties: list[TransparencyDuty] = []
+    for item in items:
+        try:
+            duty = TransparencyDuty(str(item).strip().lower())
+        except ValueError as exc:
+            raise Unanswerable(f"{item!r} is not an Art. 50 transparency duty") from exc
+        if duty not in duties:  # a model listing the same duty twice has still named it once
+            duties.append(duty)
+    # Sorted into paragraph order, so two runs naming the same duties compare equal whatever order
+    # the model happened to list them in. Without this the answer key would have to guess an order.
+    return sorted(duties, key=lambda d: (d.paragraph, d.value))
+
+
 def _parse_value(answer_type: str, value: object) -> object:
     """Turn the model's raw JSON value into the typed value the schema expects.
 
@@ -177,6 +210,8 @@ def _parse_value(answer_type: str, value: object) -> object:
         raise Unanswerable("the description does not state the facts needed to answer")
     if answer_type == "bool":
         return _parse_bool(value)
+    if answer_type == "transparency_duties":
+        return _parse_duties(value)
     if value is None or (isinstance(value, str) and value.strip().lower() in ("none", "null", "")):
         return None
     if answer_type == "annex_area":

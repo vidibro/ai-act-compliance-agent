@@ -344,13 +344,30 @@ QUESTIONS: dict[str, ClassificationQuestion] = {
         # The examples span all four Art. 50 paragraphs: (1) and (2) bind the provider, (3) and (4)
         # the deployer. An example list stopping at the provider paragraphs tilts the answer even
         # though the full text is supplied as context, and omits this project's own emotion cases.
-        "Do Article 50 transparency obligations apply to this system — under any paragraph, and "
-        "whether the duty falls on the provider or the deployer? For example: it interacts "
-        "directly with natural persons (50(1)); it generates synthetic audio, image, video or "
-        "text (50(2)); it is an emotion recognition or biometric categorisation system (50(3)); "
-        "it produces deep fakes or public-interest text (50(4)).",
-        "bool",
-        label="Must users be told they are dealing with AI?",
+        "Which Article 50 transparency duties attach to this system? Answer EVERY one that "
+        "applies — they are cumulative, and one system can owe several — or an empty list if none "
+        "does. Answer regardless of the risk tier: Art. 50 is independent of it.\n"
+        "- direct_interaction (50(1), the PROVIDER's duty): the system is intended to interact "
+        "directly with natural persons. Not owed where that is obvious to a reasonably "
+        "well-informed person.\n"
+        "- synthetic_content_marking (50(2), the PROVIDER's duty): it generates synthetic audio, "
+        "image, video or text, which must be marked machine-readably. NOT owed where the system "
+        "performs an assistive function for standard editing, or does not substantially alter the "
+        "deployer's input data or its semantics — polishing a person's own text is that carve-out; "
+        "drafting the text is not.\n"
+        "- emotion_or_biometric_categorisation (50(3), the DEPLOYER's duty): it is an emotion "
+        "recognition or biometric categorisation system. Attaches to the system TYPE, so answer it "
+        "even where the practice is also prohibited under Art. 5.\n"
+        "- deep_fake_disclosure (50(4), the DEPLOYER's duty): it generates or manipulates image, "
+        "audio or video constituting a deep fake.\n"
+        "- public_interest_text_disclosure (50(4), the DEPLOYER's duty): it generates text "
+        "published to inform the public on matters of public interest. NOT owed where the content "
+        "undergoes human review or editorial control with a person holding editorial "
+        "responsibility.\n"
+        "Every duty is disapplied where the system is authorised by law to detect, prevent, "
+        "investigate or prosecute criminal offences.",
+        "transparency_duties",
+        label="Must people be told they are dealing with AI?",
     ),
 }
 
@@ -553,7 +570,9 @@ _WHAT_THE_NODE_NEEDED: dict[str, str] = {
     "detects decision patterns, or prepares an assessment",
     "significant_risk": "how the system's output is used in the decision about the person — "
     "whether anyone relies on it, or it only prepares material judged elsewhere",
-    "transparency": "whether it generates content or interacts with people directly",
+    "transparency": "whether it generates content, interacts with people directly, or infers "
+    "emotions — and who operates it, since Art. 50 splits its duties between the provider and the "
+    "deployer",
 }
 
 
@@ -830,7 +849,10 @@ def decide_risk_class(
         return outcome
 
     risk_class, _, _ = outcome
-    owes_transparency = transparency is not None and transparency.value is True
+    # Any duty lifts the exclusion. Art. 2(12) asks whether the system "falls under Art. 50", not
+    # whose duty it is — a deployer-side duty under 50(3) takes the release out of the exclusion
+    # exactly as a provider-side one under 50(1) does.
+    owes_transparency = transparency is not None and bool(transparency.value)
     if risk_class not in _OPEN_SOURCE_SURVIVES or owes_transparency:
         return outcome
 
