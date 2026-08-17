@@ -85,7 +85,7 @@ cases:
       per-employee 'engagement' scores to managers.
     expected_risk_class: prohibited
     expected_is_ai_system: true
-    expected_prohibited: true
+    expected_prohibited_practice: emotion_inference_workplace_education
     expected_transparency_obligation: true  # CORRECTED 2026-07-22 (was false) — see basis
     transparency_basis: >-
       Art. 50(3): "Deployers of an emotion recognition system ... shall inform the natural persons
@@ -110,7 +110,7 @@ cases:
       them to recruiters alongside the application.
     expected_risk_class: prohibited
     expected_is_ai_system: true
-    expected_prohibited: true
+    expected_prohibited_practice: emotion_inference_workplace_education
     expected_transparency_obligation: true  # CORRECTED 2026-07-22 (was false) — see basis
     transparency_basis: >-
       Art. 50(3), as for emotion_monitoring_employees — it is an emotion recognition system and the
@@ -738,7 +738,7 @@ cases:
       can use to "balance the shortlist".
     expected_risk_class: prohibited
     expected_is_ai_system: true
-    expected_prohibited: true
+    expected_prohibited_practice: biometric_categorisation_sensitive
     expected_transparency_obligation: true
     transparency_basis: >-
       Art. 50(3): it is a biometric categorisation system, so deployers must inform the persons

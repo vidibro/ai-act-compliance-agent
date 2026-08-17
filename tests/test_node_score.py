@@ -31,7 +31,7 @@ from aiact.eval.node_score import (
     score_nodes,
 )
 from aiact.schemas.classification import ClassificationAnswer
-from aiact.schemas.enums import AnnexIIIArea, RiskClass, ScopeExclusion
+from aiact.schemas.enums import AnnexIIIArea, ProhibitedPractice, RiskClass, ScopeExclusion
 from aiact.schemas.eval import ClassificationCase, Difficulty
 from aiact.schemas.policy import LegalSource
 
@@ -170,7 +170,7 @@ def test_asked_counts_come_from_the_run_not_the_answer_key():
     visible, and the asked/pinned gap is itself the finding — a node asked 24 times and pinned 4 is
     thinly measured, however well it scores."""
     case = a_case(expected_annex_iii_area=None, expected_transparency_obligation=False)
-    brain = ScriptedBrain({"is_ai": True, "prohibited": False, "annex_iii": None})
+    brain = ScriptedBrain({"is_ai": True, "prohibited": None, "annex_iii": None})
     result = classify(case.description, brain, case.case_id)
 
     run = score_node_run([(case, result)])
@@ -194,7 +194,7 @@ def test_the_table_reports_a_keyless_node_as_a_blank_row(monkeypatch):
     key would otherwise vanish from the table rather than announce itself."""
     monkeypatch.setitem(NODE_KEYS, "annex_iii", None)
     case = a_case(expected_annex_iii_area=None)
-    brain = ScriptedBrain({"is_ai": True, "prohibited": False, "annex_iii": None})
+    brain = ScriptedBrain({"is_ai": True, "prohibited": None, "annex_iii": None})
     result = classify(case.description, brain, case.case_id)
 
     text = "\n".join(score_node_run([(case, result)]).lines())
@@ -231,12 +231,12 @@ def test_prohibited_and_scope_are_scored_without_being_written_in_the_yaml():
     OUT_OF_SCOPE. A fact the key already settles needs no second statement, and requiring one would
     leave two nodes near-unmeasured for no gain."""
     case = a_case()  # pins nothing at all
-    assert "expected_prohibited" not in case.model_fields_set
+    assert "expected_prohibited_practice" not in case.model_fields_set
     assert "expected_scope_exclusion" not in case.model_fields_set
 
     scores = score_nodes(
         case,
-        [an_answer_at("prohibited", False), an_answer_at("scope", None)],
+        [an_answer_at("prohibited", None), an_answer_at("scope", None)],
     )
     assert {s.node_id: s.outcome for s in scores} == {"prohibited": "correct", "scope": "correct"}
 
@@ -270,7 +270,7 @@ def test_a_balanced_column_is_not_flagged():
         a_case(
             case_id=f"banned{i}",
             expected_risk_class=RiskClass.PROHIBITED,
-            expected_prohibited=True,
+            expected_prohibited_practice=ProhibitedPractice.SOCIAL_SCORING,
         )
         for i in range(3)
     ]
@@ -278,7 +278,7 @@ def test_a_balanced_column_is_not_flagged():
         s
         for c in mixed
         for s in score_nodes(
-            c, [an_answer_at("prohibited", c.expected_risk_class == RiskClass.PROHIBITED)]
+            c, [an_answer_at("prohibited", c.expected_prohibited_practice)]
         )
     ]
     run = NodeRunScore(scores=scores, asked=Counter({"prohibited": len(mixed)}))

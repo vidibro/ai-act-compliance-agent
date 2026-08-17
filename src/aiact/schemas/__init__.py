@@ -18,6 +18,7 @@ from aiact.schemas.enums import (
     CheckType,
     DerogationCondition,
     ObligationStatus,
+    ProhibitedPractice,
     RiskClass,
     Verdict,
 )
@@ -39,6 +40,7 @@ __all__ = [
     "AnnexIIIArea",
     "CheckType",
     "DerogationCondition",
+    "ProhibitedPractice",
     "ObligationStatus",
     "RiskClass",
     "Verdict",

@@ -18,7 +18,7 @@ from aiact.classify import ScriptedBrain, build_graph, classify
 from aiact.classify.graph import route_for
 from aiact.eval.classification_cases import load_classification_cases
 from aiact.schemas.classification import ClassificationAnswer
-from aiact.schemas.enums import AnnexIIIArea, DerogationCondition, RiskClass
+from aiact.schemas.enums import AnnexIIIArea, DerogationCondition, ProhibitedPractice, RiskClass
 from aiact.schemas.eval import ClassificationCase
 from aiact.schemas.policy import LegalSource
 
@@ -37,7 +37,7 @@ def _brain_from_case(case: ClassificationCase) -> ScriptedBrain:
     answers = {
         "is_ai": True,  # every Layer 1 case is an AI system
         "scope": case.expected_scope_exclusion,
-        "prohibited": case.expected_prohibited,
+        "prohibited": case.expected_prohibited_practice,
         "annex_i": case.expected_annex_i_product,
         "third_party_assessment": case.expected_third_party_assessment,
         "annex_iii": case.expected_annex_iii_area,
@@ -88,12 +88,42 @@ def test_the_flip_flips_through_the_graph(cases):
 
 def test_prohibited_short_circuits_before_profiling():
     """Art. 5 is checked before high-risk: a prohibited case never even asks about profiling."""
-    brain = ScriptedBrain({"is_ai": True, "prohibited": True})
+    brain = ScriptedBrain({"is_ai": True, "prohibited": ProhibitedPractice.SOCIAL_SCORING})
     result = classify("emotion recognition of employees", brain, "emo")
     assert result.overall_risk_class == RiskClass.PROHIBITED
     uc = result.use_cases[0]
     assert uc.performs_profiling is None  # the profiling node was never reached
     assert uc.derogation is None
+
+
+def test_the_ban_names_the_point_it_rests_on():
+    """A prohibition is the heaviest verdict this tool emits — the provider may not ship at all.
+    "Art. 5" alone gives them nothing to check it against, so the point is in the reasoning and the
+    citation is pinpointed to Art. 5(1) rather than left at the Article."""
+    brain = ScriptedBrain(
+        {"is_ai": True, "prohibited": ProhibitedPractice.EMOTION_INFERENCE_WORKPLACE_EDUCATION}
+    )
+    result = classify("infers employee emotions from webcam", brain, "emo")
+    assert result.overall_risk_class == RiskClass.PROHIBITED
+    assert "Art. 5(1)(f)" in result.reasoning
+    assert [e.source.paragraph for e in result.triggered_by] == [1]
+
+
+def test_a_ban_that_cannot_cite_its_point_is_not_reported_as_a_ban():
+    """A brain answering "prohibited" without naming a point has claimed something it cannot
+    support. Both directions of guess are wrong here — inventing a point, and clearing a system
+    that was called banned — so the cascade declines instead."""
+    brain = ScriptedBrain({"is_ai": True, "prohibited": True})
+    result = classify("something troubling", brain, "x")
+    assert result.overall_risk_class == RiskClass.NEEDS_REVIEW
+    assert "no point of Art. 5(1) was named" in result.reasoning
+
+
+def test_every_prohibited_practice_can_cite_itself():
+    """Art. 5(1) runs (a) to (h) and each member must map to its own letter — a duplicate or a
+    missing key would cite a ban under a letter belonging to another one."""
+    points = [p.point for p in ProhibitedPractice]
+    assert points == list("abcdefgh")
 
 
 def test_not_an_ai_system_is_minimal():
@@ -105,7 +135,7 @@ def test_not_an_ai_system_is_minimal():
 def test_low_confidence_anywhere_yields_needs_review():
     """Abstaining beats guessing: a low-confidence answer routes to NEEDS_REVIEW."""
     brain = ScriptedBrain(
-        {"is_ai": True, "prohibited": False}, low_confidence=frozenset({"prohibited"})
+        {"is_ai": True, "prohibited": None}, low_confidence=frozenset({"prohibited"})
     )
     result = classify("genuinely ambiguous case", brain, "amb")
     assert result.overall_risk_class == RiskClass.NEEDS_REVIEW
@@ -117,7 +147,7 @@ def test_annex_iii_no_derogation_is_high_risk():
     brain = ScriptedBrain(
         {
             "is_ai": True,
-            "prohibited": False,
+            "prohibited": None,
             "annex_iii": AnnexIIIArea.EMPLOYMENT,
             "profiling": False,
             "derogation": None,
@@ -131,7 +161,7 @@ def _derogation_brain(poses_significant_risk: bool | None) -> ScriptedBrain:
     return ScriptedBrain(
         {
             "is_ai": True,
-            "prohibited": False,
+            "prohibited": None,
             "annex_iii": AnnexIIIArea.EMPLOYMENT,
             "profiling": False,
             "derogation": DerogationCondition.NARROW_PROCEDURAL_TASK,
@@ -158,7 +188,7 @@ def test_the_chapeau_is_not_asked_when_no_condition_is_met():
     brain = ScriptedBrain(
         {
             "is_ai": True,
-            "prohibited": False,
+            "prohibited": None,
             "annex_iii": AnnexIIIArea.EMPLOYMENT,
             "profiling": False,
             "derogation": None,
@@ -183,7 +213,7 @@ def test_route_for_walks_through_the_chapeau():
         {
             "is_ai": True,
             "scope": None,
-            "prohibited": False,
+            "prohibited": None,
             "annex_i": None,
             "annex_iii": AnnexIIIArea.EMPLOYMENT,
             "profiling": False,
@@ -198,7 +228,7 @@ def test_every_verdict_is_cited():
     brain = ScriptedBrain(
         {
             "is_ai": True,
-            "prohibited": False,
+            "prohibited": None,
             "annex_iii": AnnexIIIArea.EMPLOYMENT,
             "profiling": False,
             "derogation": DerogationCondition.NARROW_PROCEDURAL_TASK,
@@ -217,7 +247,7 @@ def test_assemble_result_passes_use_case_validator():
     brain = ScriptedBrain(
         {
             "is_ai": True,
-            "prohibited": False,
+            "prohibited": None,
             "annex_iii": AnnexIIIArea.EMPLOYMENT,
             "profiling": True,
         }
@@ -255,7 +285,7 @@ def test_transparency_is_checked_for_a_high_risk_use_case():
     brain = ScriptedBrain(
         {
             "is_ai": True,
-            "prohibited": False,
+            "prohibited": None,
             "annex_iii": AnnexIIIArea.EMPLOYMENT,
             "profiling": True,  # -> high_risk
             "transparency": True,  # ...and it ALSO interacts with people
@@ -271,8 +301,12 @@ def test_transparency_is_checked_for_a_high_risk_use_case():
 def test_transparency_is_checked_on_every_path():
     """Prohibited, minimal, needs_review — every terminal still answers Art. 50."""
     paths = {
-        "prohibited": {"is_ai": True, "prohibited": True, "transparency": False},
-        "minimal": {"is_ai": True, "prohibited": False, "annex_iii": None, "transparency": True},
+        "prohibited": {
+            "is_ai": True,
+            "prohibited": ProhibitedPractice.SOCIAL_SCORING,
+            "transparency": False,
+        },
+        "minimal": {"is_ai": True, "prohibited": None, "annex_iii": None, "transparency": True},
         "not_ai": {"is_ai": False, "transparency": False},
     }
     for name, answers in paths.items():
@@ -286,7 +320,7 @@ def test_transparency_never_influences_the_risk_class():
     brain = ScriptedBrain(
         {
             "is_ai": True,
-            "prohibited": False,
+            "prohibited": None,
             "annex_iii": AnnexIIIArea.EMPLOYMENT,
             "profiling": True,
             "transparency": True,
@@ -352,7 +386,7 @@ def test_verdict_carries_the_documentation_evidence_not_just_a_citation():
     brain = QuotingBrain(
         {
             "is_ai": True,
-            "prohibited": False,
+            "prohibited": None,
             "annex_iii": AnnexIIIArea.EMPLOYMENT,
             "profiling": True,
         }

@@ -32,6 +32,7 @@ from aiact.schemas.enums import (
     ActorRole,
     AnnexIIIArea,
     AnnexIProduct,
+    ProhibitedPractice,
     RiskClass,
     Verdict,
 )
@@ -77,7 +78,7 @@ class StubJudge:
 
 
 def brain(**answers) -> ScriptedBrain:
-    return ScriptedBrain({"is_ai": True, "prohibited": False, **answers})
+    return ScriptedBrain({"is_ai": True, "prohibited": None, **answers})
 
 
 # --- Annex I is a real route into high-risk -------------------------------------------------------
@@ -145,7 +146,7 @@ def test_a_prohibited_practice_still_outranks_annex_i():
         ScriptedBrain(
             {
                 "is_ai": True,
-                "prohibited": True,
+                "prohibited": ProhibitedPractice.SOCIAL_SCORING,
                 "annex_i": AnnexIProduct.MEDICAL_DEVICES,
                 "third_party_assessment": True,
             }
@@ -225,8 +226,12 @@ def a_silent_doc_brain(product: AnnexIProduct):
                     abstained_because="description_silent",
                     **common,
                 )
+            # Every other node answers "nothing here": True only for is_ai, and None elsewhere.
+            # `prohibited` in particular must be None rather than False — it answers with an
+            # Art. 5(1) point, and a bare false is a value it cannot cite, which the cascade
+            # rightly refuses to read as a clearance.
             return ClassificationAnswer(
-                value=question.node_id == "is_ai", confidence="high", **common
+                value=True if question.node_id == "is_ai" else None, confidence="high", **common
             )
 
     return SilentOnConformity()

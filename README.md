@@ -97,8 +97,8 @@ flowchart TD
     AI -->|no| MIN1([minimal]):::ok
     AI -->|yes| SCOPE{"Does this law apply to the system at all?<br/>Art. 2"}
     SCOPE -->|"no — military, research-only,<br/>pre-market, or a person's own use"| OOS([out of scope]):::oos
-    SCOPE -->|yes| PROH{"Is the practice itself banned?<br/>Art. 5"}
-    PROH -->|yes, banned| BAN([prohibited]):::ban
+    SCOPE -->|yes| PROH{"Is the practice itself banned?<br/>Art. 5(1)(a)-(h)"}
+    PROH -->|"yes — a named point bans it"| BAN([prohibited]):::ban
     PROH -->|no| ANNEXI{"Is it a safety part of a regulated<br/>physical product?<br/>Annex I, Art. 6(1)(a)"}
     ANNEXI -->|yes| TPA{"Does that product need an<br/>outside body to certify it?<br/>Art. 6(1)(b)"}
     TPA -->|yes| HIGH([high risk]):::high
@@ -141,6 +141,14 @@ flowchart TD
   not by itself get you out. One exclusion is left open at this point and settled at the end: a
   free and open-source release (Art. 2(12)) is excluded *unless* it turns out high-risk, banned,
   or subject to Art. 50, which are exactly the questions the rest of the cascade answers.
+- **A ban must name the point that bans it.** Art. 5(1) prohibits eight specific practices, and
+  the node answers *which* — not merely *whether*. This is the only class that tells a provider
+  their system may not ship at all, and "Art. 5" alone gives them nothing to check the claim
+  against. Naming the point also forces the exception into view: (d) does not reach a system
+  supporting a human assessment already grounded in objective facts, (f) not medical or safety
+  uses, (g) not the labelling of lawfully acquired datasets, and (h) is lifted for three named
+  law-enforcement objectives. A verdict that cannot cite its point is reported as `needs review`,
+  never as a ban and never as a clearance.
 - **Two doors into high risk, not one.** Art. 6(1) catches AI *inside a regulated physical
   product* — a braking controller, a dose limiter in a surgical robot. Art. 6(2) catches AI used
   *for a listed purpose* — hiring, credit, policing. A surgical robot appears nowhere in Annex III,

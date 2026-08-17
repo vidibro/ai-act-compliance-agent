@@ -757,6 +757,7 @@ Layer 1 has no held-out split. There is nothing to report a Layer 1 number again
 
 - **`is_ai = false`** — a rules engine, a lookup table, a fixed-formula calculator. Art. 3(1) turns on INFERENCE, nothing tests that line, and a wrong answer there clears any system in the world.
 - **Art. 6(3) conditions (b), (c) and (d)** — three of the four derogations are never expected anywhere.
+- **Art. 5(1) points (a)–(e) and (h)** — the set expects only (f) emotion inference and (g) biometric categorisation. Six of the eight prohibitions are never exercised, and the node now answers WHICH point rather than a bare boolean, so that blindness is newly measurable.
 - **Minority answers** for `scope`, `prohibited`, `annex_i` and `transparency`: more exclusions, more banned practices, more Annex I products, more Art. 50 triggers.
 - **`third_party_assessment`** on documents that DO state a conformity route — an EU technical file rather than a US filing, so the node can be measured reaching `high_risk` and not only abstaining.
 
@@ -865,7 +866,7 @@ is this project's whole positioning.
 | the card must state | node | source |
 |---|---|---|
 | that it is an AI system, and its **intended purpose** | `is_ai` | Art. 3(1) |
-| whether it infers **emotions**, scrapes faces, scores social behaviour, manipulates | `prohibited` | Art. 5 |
+| whether it infers **emotions**, scrapes faces, scores social behaviour, manipulates — and whether an Art. 5 exception applies (medical or safety use, a lawfully acquired dataset, a human assessment on objective facts) | `prohibited` | Art. 5(1)(a)–(h) |
 | the **Annex III area** it operates in, if any | `annex_iii` | Art. 6(2), Annex III |
 | whether it **evaluates or ranks natural persons** — the single most decisive fact | `profiling` | Art. 6(3) |
 | whether it only performs a narrow procedural task / improves prior human work / detects patterns / is preparatory | `derogation` | Art. 6(3)(a)–(d) |

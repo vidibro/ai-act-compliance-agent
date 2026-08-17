@@ -93,7 +93,13 @@ from aiact.schemas.classification import (
     Confidence,
     UseCaseClassification,
 )
-from aiact.schemas.enums import AnnexIProduct, DerogationCondition, RiskClass, ScopeExclusion
+from aiact.schemas.enums import (
+    AnnexIProduct,
+    DerogationCondition,
+    ProhibitedPractice,
+    RiskClass,
+    ScopeExclusion,
+)
 from aiact.schemas.policy import GuidanceSource, LegalSource
 from aiact.tracing import trace_run
 
@@ -172,9 +178,37 @@ QUESTIONS: dict[str, ClassificationQuestion] = {
     "prohibited": ClassificationQuestion(
         "prohibited",
         _src(5),
-        "Is the described system a prohibited practice under Article 5 (for example, inferring "
-        "emotions of natural persons in the workplace)?",
-        "bool",
+        # Answered as a POINT, not a boolean. This is the only class that tells a provider their
+        # system may not ship at all, and a verdict citing Art. 5 as a whole cannot be checked or
+        # argued with. Naming the point also forces the exception into view: every one of (d), (f),
+        # (g) and (h) carries a carve-out, and a model asked only "is this banned?" never reaches
+        # them.
+        "Which point of Article 5(1) prohibits the described system, if any? Answer the point, or "
+        "none. Each is narrow, and the qualifier decides it:\n"
+        "- (a) subliminal, purposefully manipulative or deceptive techniques that materially "
+        "distort behaviour and cause significant harm. Ordinary persuasion, advertising and "
+        "recommendation are not this.\n"
+        "- (b) exploits vulnerabilities of age, disability, or a specific social or economic "
+        "situation, so as to distort behaviour and cause significant harm.\n"
+        "- (c) social scoring: evaluating persons over time on social behaviour or personal "
+        "characteristics, where the score leads to detrimental treatment that is out of context or "
+        "disproportionate. Scoring within one context on relevant data — credit from financial "
+        "history, insurance from claims — is not this.\n"
+        "- (d) predicting the risk of a person COMMITTING a criminal offence based SOLELY on "
+        "profiling or personality traits. Does NOT cover a system supporting a human assessment "
+        "already based on objective and verifiable facts linked to criminal activity.\n"
+        "- (e) creating or expanding facial recognition databases by UNTARGETED scraping of facial "
+        "images from the internet or CCTV.\n"
+        "- (f) inferring emotions of a natural person in the workplace or in education "
+        "institutions, EXCEPT for medical or safety reasons.\n"
+        "- (g) biometric categorisation deducing race, political opinions, trade union membership, "
+        "religious or philosophical beliefs, sex life or sexual orientation. Does NOT cover "
+        "labelling or filtering of lawfully acquired biometric datasets.\n"
+        "- (h) 'real-time' remote biometric identification in publicly accessible spaces for law "
+        "enforcement. Post-hoc identification on already-recorded material is not 'real-time'.\n"
+        "Answer none if no point fits. That is the ordinary answer: Art. 5 bans eight specific "
+        "practices, not everything that reads as sensitive or intrusive.",
+        "prohibited_practice",
         label="Is the practice itself banned?",
     ),
     "annex_i": ClassificationQuestion(
@@ -503,8 +537,10 @@ _WHAT_THE_NODE_NEEDED: dict[str, str] = {
     "wrote",
     "scope": "who uses the system and what for — whether it is military, purely research, "
     "pre-market, or a private person's own use",
-    "prohibited": "whether it infers emotions, categorises people biometrically, or scores social "
-    "behaviour",
+    "prohibited": "whether it infers emotions, categorises people biometrically, scores social "
+    "behaviour, or predicts who will commit an offence — and, where it does, whether an Art. 5 "
+    "exception applies (medical or safety use, a lawfully acquired dataset, a human assessment on "
+    "objective facts)",
     "annex_i": "whether the system is a safety component of a regulated physical product — "
     "a machine, a lift, a medical device, a vehicle",
     # Short by design: when this node abstains, `_handover` follows and names the instrument
@@ -672,11 +708,29 @@ def _decide_tier(state: GraphState) -> tuple[RiskClass, str, list[Classification
                 else []
             ),
         )
-    if state.prohibited and state.prohibited.value is True:
+    if state.prohibited is not None and state.prohibited.value is not None:
+        practice = state.prohibited.value
+        if not isinstance(practice, ProhibitedPractice):
+            # A ban this tool cannot cite is one a provider cannot check or contest, and the class
+            # carries the heaviest consequence there is. Declining beats both directions of guess:
+            # naming a point nobody chose, and clearing a system that was called prohibited.
+            return (
+                RiskClass.NEEDS_REVIEW,
+                "Art. 5 was answered as engaged, but no point of Art. 5(1) was named. A "
+                "prohibition that cannot cite its point cannot be reported as one; escalate to a "
+                "human reviewer.",
+                [evidence(state.prohibited)],
+            )
+        pinpointed = ClassificationEvidence.from_answer(state.prohibited)
+        pinpointed = pinpointed.model_copy(
+            update={"source": pinpointed.source.model_copy(update={"paragraph": 1})}
+        )
         return (
             RiskClass.PROHIBITED,
-            "Prohibited practice under Art. 5; evaluated before high-risk classification.",
-            [evidence(state.prohibited)],
+            f"Prohibited practice under Art. 5(1)({practice.point}); evaluated before high-risk "
+            f"classification. The system may not be placed on the market, put into service or "
+            f"used at all.",
+            [pinpointed],
         )
     if (
         state.in_annex_i
@@ -812,8 +866,13 @@ def _route_scope(state: GraphState) -> str:
 
 
 def _route_prohibited(state: GraphState) -> str:
+    """Any answer other than a clean `none` ends the cascade. A named point is a prohibition; an
+    unrecognised value is a brain claiming one it cannot cite, which `_decide_tier` turns into
+    needs_review rather than into either a ban or a clearance."""
     a = state.prohibited
-    return "assemble" if a is None or _is_low_confidence(a) or a.value is True else "annex_i"
+    if a is None or _is_low_confidence(a):
+        return "assemble"
+    return "annex_i" if a.value is None else "assemble"
 
 
 def _route_annex_i(state: GraphState) -> str:

@@ -11,6 +11,7 @@ from __future__ import annotations
 import pytest
 
 from aiact import tracing
+from aiact.schemas.enums import ProhibitedPractice
 
 
 @pytest.fixture(autouse=True)
@@ -72,5 +73,5 @@ def test_a_classify_run_without_keys_makes_no_llm_metadata(monkeypatch):
             seen.append(tracing.current_metadata(question.node_id))
             return super().decide(question, description)
 
-    classify("x", Probe({"is_ai": True, "prohibited": True}), "case-x")
+    classify("x", Probe({"is_ai": True, "prohibited": ProhibitedPractice.SOCIAL_SCORING}), "case-x")
     assert seen and all(m is None for m in seen)

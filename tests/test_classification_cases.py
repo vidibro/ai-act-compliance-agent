@@ -12,7 +12,12 @@ from pathlib import Path
 import pytest
 
 from aiact.eval.classification_cases import load_classification_cases
-from aiact.schemas.enums import AnnexIIIArea, DerogationCondition, RiskClass
+from aiact.schemas.enums import (
+    AnnexIIIArea,
+    DerogationCondition,
+    ProhibitedPractice,
+    RiskClass,
+)
 from aiact.schemas.eval import ClassificationCase, Difficulty
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -231,14 +236,14 @@ def test_profiling_true_forbids_derogation():
 
 
 def test_prohibited_flag_must_match_class():
-    with pytest.raises(ValueError, match="PROHIBITED class"):
+    with pytest.raises(ValueError, match="exactly when the class is PROHIBITED"):
         ClassificationCase(
             case_id="bad",
             expected_is_ai_system=True,
             description="d",
             expected_risk_class=RiskClass.HIGH_RISK,
-            expected_prohibited=True,
-            decisive_fact="prohibited flag but high_risk class",
+            expected_prohibited_practice=ProhibitedPractice.SOCIAL_SCORING,
+            decisive_fact="a named Art. 5 point but a high_risk class",
             difficulty="obvious",
         )
 

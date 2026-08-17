@@ -70,7 +70,7 @@ def demo() -> None:
     parser = ScriptedBrain(
         {
             "is_ai": True,
-            "prohibited": False,
+            "prohibited": None,
             "annex_iii": AnnexIIIArea.EMPLOYMENT,
             "profiling": False,
             "derogation": DerogationCondition.NARROW_PROCEDURAL_TASK,
@@ -79,7 +79,7 @@ def demo() -> None:
     scorer = ScriptedBrain(
         {
             "is_ai": True,
-            "prohibited": False,
+            "prohibited": None,
             "annex_iii": AnnexIIIArea.EMPLOYMENT,
             "profiling": True,
         }

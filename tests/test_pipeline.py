@@ -18,7 +18,7 @@ from aiact.classify.scripted_brain import ScriptedBrain
 from aiact.gap.judge import Judgement
 from aiact.pipeline import review
 from aiact.policy_loader import load_policy_spec
-from aiact.schemas.enums import AnnexIIIArea, RiskClass, ScopeExclusion, Verdict
+from aiact.schemas.enums import AnnexIIIArea, ProhibitedPractice, RiskClass, ScopeExclusion, Verdict
 
 DOCUMENT = "# System card\n\n## Human oversight\n\nA panel reviews every recommendation.\n"
 
@@ -53,7 +53,7 @@ def a_brain(**answers) -> ScriptedBrain:
 
 def high_risk_brain() -> ScriptedBrain:
     """Annex III area plus profiling — the Art. 6(3) carve-back, so high_risk with no derogation."""
-    return a_brain(prohibited=False, annex_iii=AnnexIIIArea.EMPLOYMENT, profiling=True)
+    return a_brain(prohibited=None, annex_iii=AnnexIIIArea.EMPLOYMENT, profiling=True)
 
 
 # --- the happy path -------------------------------------------------------------------------------
@@ -80,7 +80,8 @@ def test_a_prohibited_practice_is_never_checked_against_chapter_iii(spec):
     """Art. 5 bans the practice outright. Reporting documentation gaps against it would imply the
     system may ship once the paperwork is fixed."""
     judge = StubJudge()
-    report = review(DOCUMENT, spec, a_brain(prohibited=True), judge=judge, system_id="sys-1")
+    brain = a_brain(prohibited=ProhibitedPractice.SOCIAL_SCORING)
+    report = review(DOCUMENT, spec, brain, judge=judge, system_id="sys-1")
 
     assert report.classification.overall_risk_class == RiskClass.PROHIBITED
     assert judge.calls == [], "the judge must not run on a prohibited practice"
@@ -104,7 +105,7 @@ def test_an_empty_report_always_explains_itself(spec):
     """THE POINT OF THIS FILE. `findings == []` reads as 'nothing wrong'. Whenever the pipeline
     reaches that state deliberately, the report must say why in the report itself."""
     for brain in (
-        a_brain(prohibited=True),
+        a_brain(prohibited=ProhibitedPractice.SOCIAL_SCORING),
         ScriptedBrain({"is_ai": True}, low_confidence=frozenset({"prohibited"})),
     ):
         report = review(DOCUMENT, spec, brain, judge=StubJudge(), system_id="sys-1")
@@ -117,7 +118,7 @@ def test_a_not_high_risk_use_case_still_owes_article_6_4(spec):
     """The gate is not 'high risk only'. A provider claiming an Art. 6(3) derogation must still
     document that assessment and register it — gating on high_risk would drop a real obligation."""
     brain = a_brain(
-        prohibited=False,
+        prohibited=None,
         annex_iii=AnnexIIIArea.EMPLOYMENT,
         profiling=False,
         derogation="narrow_procedural_task",
@@ -134,7 +135,7 @@ def test_a_not_high_risk_use_case_still_owes_article_6_4(spec):
 def test_a_minimal_system_owes_nothing_and_that_is_not_an_error(spec):
     """No rule attaches to `minimal`, so an empty report here is the correct answer rather than a
     skipped check — the obligation layer ran and found nothing owed."""
-    report = review(DOCUMENT, spec, a_brain(prohibited=False, annex_iii=None), judge=StubJudge())
+    report = review(DOCUMENT, spec, a_brain(prohibited=None, annex_iii=None), judge=StubJudge())
     assert report.classification.overall_risk_class == RiskClass.MINIMAL
     assert report.summary.total_applicable == 0
 
@@ -148,7 +149,7 @@ def test_an_out_of_scope_system_is_never_checked(spec):
     report = review(
         DOCUMENT,
         spec,
-        a_brain(prohibited=False, scope=ScopeExclusion.MILITARY_DEFENCE_NATIONAL_SECURITY),
+        a_brain(prohibited=None, scope=ScopeExclusion.MILITARY_DEFENCE_NATIONAL_SECURITY),
         judge=judge,
         system_id="defence",
     )
@@ -164,7 +165,7 @@ def test_the_out_of_scope_note_distinguishes_itself_from_minimal(spec):
     report = review(
         DOCUMENT,
         spec,
-        a_brain(prohibited=False, scope=ScopeExclusion.SCIENTIFIC_RESEARCH),
+        a_brain(prohibited=None, scope=ScopeExclusion.SCIENTIFIC_RESEARCH),
         judge=StubJudge(),
         system_id="research",
     )

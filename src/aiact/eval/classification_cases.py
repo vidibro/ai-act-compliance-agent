@@ -78,8 +78,9 @@ def _check_pins_match_the_route(case: ClassificationCase, path: Path) -> None:
                              can hide behind cases that never measured it.
 
     The route is walked with the cascade's own `_route_*` functions, so the expectation cannot
-    drift from the graph. Two fields are exempt from the second half: `expected_prohibited` and
-    `expected_scope_exclusion` are fixed by the risk class, so a case need not restate them.
+    drift from the graph. Two fields are exempt from the second half:
+    `expected_prohibited_practice` and `expected_scope_exclusion` are fixed by the risk class, so a
+    case need not restate them.
     """
     answers: dict[str, object] = {}
     for node_id, field in NODE_KEYS.items():

@@ -122,6 +122,77 @@ _SCOPE_EXCLUSION_PARAGRAPH: dict[ScopeExclusion, int] = {
 }
 
 
+class ProhibitedPractice(StrEnum):
+    """Art. 5(1). WHICH point bans the practice.
+
+    It matters most here — this is the only class that tells a provider their system may not ship
+    at all, and "Art. 5" alone gives them nothing to check the claim against, nor to argue with.
+
+    Every point carries an exception or a qualifier, and several of them are where the real
+    argument lives: (d) does not reach a system supporting a human assessment already grounded in
+    objective facts, (f) does not reach medical or safety uses, (g) does not reach the labelling of
+    lawfully acquired datasets, and (h) is lifted for three named law-enforcement objectives. A bare
+    `true` cannot say which of those was considered."""
+
+    SUBLIMINAL_MANIPULATION = "subliminal_manipulation"
+    """5(1)(a). Subliminal, purposefully manipulative or deceptive techniques that materially
+    distort behaviour by impairing informed decision-making, causing significant harm."""
+
+    EXPLOITING_VULNERABILITIES = "exploiting_vulnerabilities"
+    """5(1)(b). Exploits vulnerabilities due to age, disability, or a specific social or economic
+    situation, materially distorting behaviour so as to cause significant harm."""
+
+    SOCIAL_SCORING = "social_scoring"
+    """5(1)(c). Evaluating or classifying persons over time on social behaviour or personal
+    characteristics, where the social score leads to detrimental treatment that is either
+    out-of-context (i) or disproportionate to the behaviour (ii)."""
+
+    CRIMINAL_OFFENCE_PREDICTION = "criminal_offence_prediction"
+    """5(1)(d). Predicting the risk of a person committing a criminal offence based SOLELY on
+    profiling or personality traits. Expressly does not cover systems supporting a human assessment
+    already based on objective and verifiable facts linked to criminal activity."""
+
+    FACIAL_IMAGE_SCRAPING = "facial_image_scraping"
+    """5(1)(e). Creating or expanding facial recognition databases by untargeted scraping of facial
+    images from the internet or CCTV footage."""
+
+    EMOTION_INFERENCE_WORKPLACE_EDUCATION = "emotion_inference_workplace_education"
+    """5(1)(f). Inferring emotions of a natural person in the workplace or in education
+    institutions, except for medical or safety reasons. Whether "workplace" reaches recruitment is
+    not settled by the text — see the Commission guidance in data/policy/guidance/."""
+
+    BIOMETRIC_CATEGORISATION_SENSITIVE = "biometric_categorisation_sensitive"
+    """5(1)(g). Biometric categorisation deducing race, political opinions, trade union membership,
+    religious or philosophical beliefs, sex life or sexual orientation. Does not cover labelling or
+    filtering of lawfully acquired biometric datasets."""
+
+    REALTIME_REMOTE_BIOMETRIC_IDENTIFICATION = "realtime_remote_biometric_identification"
+    """5(1)(h). 'Real-time' remote biometric identification in publicly accessible spaces for law
+    enforcement, unless strictly necessary for one of three named objectives — targeted search for
+    victims or missing persons, an imminent threat to life or of terrorist attack, or locating a
+    suspect for an Annex II offence. Where an objective applies, Arts. 5(2)-(3) still require a
+    fundamental rights impact assessment, registration, and prior judicial authorisation."""
+
+    @property
+    def point(self) -> str:
+        """The Art. 5(1) point, for citation — same discipline as `ScopeExclusion.paragraph`."""
+        return _PROHIBITED_POINT[self]
+
+
+# No default, and every member listed, for the reason given at _SCOPE_EXCLUSION_PARAGRAPH: a member
+# added without its point would be cited under a letter belonging to another prohibition.
+_PROHIBITED_POINT: dict[ProhibitedPractice, str] = {
+    ProhibitedPractice.SUBLIMINAL_MANIPULATION: "a",
+    ProhibitedPractice.EXPLOITING_VULNERABILITIES: "b",
+    ProhibitedPractice.SOCIAL_SCORING: "c",
+    ProhibitedPractice.CRIMINAL_OFFENCE_PREDICTION: "d",
+    ProhibitedPractice.FACIAL_IMAGE_SCRAPING: "e",
+    ProhibitedPractice.EMOTION_INFERENCE_WORKPLACE_EDUCATION: "f",
+    ProhibitedPractice.BIOMETRIC_CATEGORISATION_SENSITIVE: "g",
+    ProhibitedPractice.REALTIME_REMOTE_BIOMETRIC_IDENTIFICATION: "h",
+}
+
+
 class ActorRole(StrEnum):
     """Art. 2(1), Art. 3. Obligations attach to the ROLE, not to the organisation.
     One organisation may hold several roles and must be assessed separately for each."""

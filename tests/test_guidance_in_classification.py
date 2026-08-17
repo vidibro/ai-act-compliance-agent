@@ -17,7 +17,7 @@ from pydantic import ValidationError
 
 from aiact.classify.graph import classify, load_questions
 from aiact.classify.scripted_brain import ScriptedBrain
-from aiact.schemas.enums import RiskClass
+from aiact.schemas.enums import ProhibitedPractice, RiskClass
 from aiact.schemas.policy import GuidanceSource
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -78,7 +78,7 @@ def test_bare_questions_carry_no_guidance():
 
 # --- the verdict records it rested on non-binding interpretation --------------------------------
 def test_a_prohibited_verdict_carries_the_guidance_it_rested_on():
-    brain = ScriptedBrain({"is_ai": True, "prohibited": True})
+    brain = ScriptedBrain({"is_ai": True, "prohibited": ProhibitedPractice.SOCIAL_SCORING})
     result = classify("emotion recognition in recruitment", brain, "rec", questions=anchored())
 
     assert result.overall_risk_class == RiskClass.PROHIBITED
@@ -95,7 +95,10 @@ def test_guidance_flows_without_an_llm():
     """The attach happens in the GRAPH, not the brain — so even the scripted path carries it, and
     no brain needs to know guidance exists."""
     result = classify(
-        "x", ScriptedBrain({"is_ai": True, "prohibited": True}), "x", questions=anchored()
+        "x",
+        ScriptedBrain({"is_ai": True, "prohibited": ProhibitedPractice.SOCIAL_SCORING}),
+        "x",
+        questions=anchored(),
     )
     assert result.rests_on_guidance is True
 
@@ -113,7 +116,10 @@ def test_a_verdict_decided_without_the_guidance_node_does_not_cite_it():
 
 def test_guidance_is_deduplicated_in_the_result():
     result = classify(
-        "x", ScriptedBrain({"is_ai": True, "prohibited": True}), "x", questions=anchored()
+        "x",
+        ScriptedBrain({"is_ai": True, "prohibited": ProhibitedPractice.SOCIAL_SCORING}),
+        "x",
+        questions=anchored(),
     )
     refs = [g.snippet_ref for g in result.guidance_sources]
     assert refs == list(dict.fromkeys(refs)), "no duplicate guidance citations"

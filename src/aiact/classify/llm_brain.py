@@ -32,7 +32,13 @@ from aiact.schemas.classification import (
     ClassificationQuestion,
     Confidence,
 )
-from aiact.schemas.enums import AnnexIIIArea, AnnexIProduct, DerogationCondition, ScopeExclusion
+from aiact.schemas.enums import (
+    AnnexIIIArea,
+    AnnexIProduct,
+    DerogationCondition,
+    ProhibitedPractice,
+    ScopeExclusion,
+)
 from aiact.tracing import current_metadata
 from aiact.usage import Usage
 
@@ -109,6 +115,13 @@ def _answer_instructions(answer_type: str) -> str:
             f'set "value" to one of [{conds}]; null if no derogation applies; or "{UNKNOWN}" if '
             f"the description does not establish that any condition is met"
         )
+    if answer_type == "prohibited_practice":
+        practices = ", ".join(p.value for p in ProhibitedPractice)
+        return (
+            f'set "value" to one of [{practices}]; null if no Article 5(1) point prohibits the '
+            f'system; or "{UNKNOWN}" if the description does not state the facts the prohibition '
+            f"or its exception turns on"
+        )
     if answer_type == "scope_exclusion":
         exclusions = ", ".join(e.value for e in ScopeExclusion)
         return (
@@ -181,6 +194,11 @@ def _parse_value(answer_type: str, value: object) -> object:
             return DerogationCondition(str(value).strip().lower())
         except ValueError as exc:
             raise Unanswerable(f"{value!r} is not an Art. 6(3) derogation") from exc
+    if answer_type == "prohibited_practice":
+        try:
+            return ProhibitedPractice(str(value).strip().lower())
+        except ValueError as exc:
+            raise Unanswerable(f"{value!r} is not an Art. 5(1) prohibited practice") from exc
     if answer_type == "scope_exclusion":
         try:
             return ScopeExclusion(str(value).strip().lower())

@@ -28,6 +28,7 @@ from aiact.schemas.enums import (
     AnnexIIIArea,
     AnnexIProduct,
     DerogationCondition,
+    ProhibitedPractice,
     RiskClass,
     ScopeExclusion,
     Verdict,
@@ -177,7 +178,19 @@ class ClassificationCase(BaseModel):
     working is how a wrong label survives. The exclusions are narrow enough — "exclusively"
     military, "sole purpose" of research, "purely" personal — that the argument is the answer."""
 
-    expected_prohibited: bool = False  # Art. 5
+    expected_prohibited_practice: ProhibitedPractice | None = None
+    """Art. 5(1) — WHICH point bans the practice. Set exactly when the class is PROHIBITED.
+
+    WHETHER a case is prohibited is fixed by its class, so only the point carries information — and
+    it is the half a bare boolean lost. Two cases can both be prohibited for entirely different
+    reasons, and a key that cannot tell them apart cannot catch a run that reached the right class
+    by the wrong prohibition."""
+
+    @property
+    def expected_prohibited(self) -> bool:
+        """Art. 5 — whether the practice is banned at all, derived rather than stored so it cannot
+        disagree with the point above."""
+        return self.expected_prohibited_practice is not None
     expected_annex_i_product: AnnexIProduct | None = None
     """Art. 6(1)(a) — the product family whose safety component this system is, or None."""
 
@@ -283,11 +296,15 @@ class ClassificationCase(BaseModel):
                 f"the node the description cannot answer."
             )
 
-        # Art. 5 — prohibition and the PROHIBITED class are the same fact, stated two ways.
-        if self.expected_prohibited != (rc == RiskClass.PROHIBITED):
+        # Art. 5 — a named point and the PROHIBITED class are the same fact, stated two ways. The
+        # point is required rather than optional for the reason the Art. 2 basis is: this class
+        # tells a provider their system may not ship, and a key asserting that without naming the
+        # ban it rests on cannot be checked against the Article.
+        if (self.expected_prohibited_practice is not None) != (rc == RiskClass.PROHIBITED):
             raise ValueError(
-                f"{self.case_id}: expected_prohibited={self.expected_prohibited} but "
-                f"expected_risk_class={rc}. A prohibited practice is exactly the PROHIBITED class."
+                f"{self.case_id}: expected_prohibited_practice="
+                f"{self.expected_prohibited_practice} but expected_risk_class={rc}. Name the "
+                f"Art. 5(1) point exactly when the class is PROHIBITED."
             )
 
         # Art. 6(3) profiling carve-back — mirror of classification.py: profiling => high_risk,

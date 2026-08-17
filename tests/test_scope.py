@@ -27,6 +27,7 @@ from aiact.schemas.enums import (
     ActorRole,
     AnnexIIIArea,
     AnnexIProduct,
+    ProhibitedPractice,
     RiskClass,
     ScopeExclusion,
 )
@@ -38,7 +39,7 @@ ARTICLE_2 = ROOT / "data" / "policy" / "articles" / "2024-07-12" / "article-002.
 def brain(**answers) -> ScriptedBrain:
     """Every case is an AI system and no case is prohibited unless it says so — those two are
     upstream of scope and would otherwise short-circuit what is being measured."""
-    return ScriptedBrain({"is_ai": True, "prohibited": False, **answers})
+    return ScriptedBrain({"is_ai": True, "prohibited": None, **answers})
 
 
 # --- the exclusions themselves --------------------------------------------------------------------
@@ -77,7 +78,10 @@ def test_scope_outranks_the_art_5_prohibition():
     prohibited practice under it — however much the conduct would otherwise qualify."""
     result = classify(
         "x",
-        brain(scope=ScopeExclusion.MILITARY_DEFENCE_NATIONAL_SECURITY, prohibited=True),
+        brain(
+            scope=ScopeExclusion.MILITARY_DEFENCE_NATIONAL_SECURITY,
+            prohibited=ProhibitedPractice.SOCIAL_SCORING,
+        ),
         "uc",
     )
     assert result.overall_risk_class == RiskClass.OUT_OF_SCOPE
@@ -131,7 +135,7 @@ def test_an_art_50_obligation_lifts_the_open_source_exclusion():
 def test_a_prohibited_open_source_release_stays_prohibited():
     result = classify(
         "x",
-        brain(scope=ScopeExclusion.FREE_OPEN_SOURCE, prohibited=True),
+        brain(scope=ScopeExclusion.FREE_OPEN_SOURCE, prohibited=ProhibitedPractice.SOCIAL_SCORING),
         "uc",
     )
     assert result.overall_risk_class == RiskClass.PROHIBITED
@@ -157,7 +161,7 @@ def test_an_unresolved_open_source_release_is_not_excluded():
     result = classify(
         "x",
         ScriptedBrain(
-            {"is_ai": True, "prohibited": False, "scope": ScopeExclusion.FREE_OPEN_SOURCE},
+            {"is_ai": True, "prohibited": None, "scope": ScopeExclusion.FREE_OPEN_SOURCE},
             frozenset({"annex_iii"}),
         ),
         "uc",
