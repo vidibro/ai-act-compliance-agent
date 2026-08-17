@@ -91,14 +91,16 @@ is authored before the code it judges:
    Incidental confirmation of framing rule 2: the card's extraction section classifies
    `not_high_risk` (Art. 6(3)(a), profiling false) where the page collapsed the whole product into
    one `high_risk` verdict — two purposes, two tiers, which is what M7 will automate.
-6. ~~**Layer 1 held-out cases**~~ ✅ **authored 2026-07-22** — `classification_cases_heldout.yaml`,
-   9 cases, `split: test`, authored BLIND (labelled from the enacted text, classifier never run on
-   them). All five risk classes; two second-of-their-kind grounds (Art. 5(1)(g) biometric
-   categorisation; insufficient-input at the annex_iii node, not profiling); and the two traps the
-   smoke check found that dev lacks — a high-risk case that loudly promises human oversight, a
-   minimal case carrying cross-sell noise. Integrity pinned by `test_classification_cases_heldout.py`
+6. ~~**Layer 1 held-out cases**~~ ✅ **authored 2026-07-22**, ⚠️ **SPENT and folded into dev
+   2026-08-15** — 9 cases, `split: test`, authored BLIND (labelled from the enacted text, classifier
+   never run on them). All five risk classes; two second-of-their-kind grounds (Art. 5(1)(g)
+   biometric categorisation; insufficient-input at the annex_iii node, not profiling); and the two
+   traps the smoke check found that dev lacks — a high-risk case that loudly promises human
+   oversight, a minimal case carrying cross-sell noise. Integrity pinned by `test_blind_batches.py`
    (no classifier run — that would leak it). Two further batches were authored blind later: Annex I
-   (6 cases, 2026-07-30) and Art. 2 (9 cases, 2026-08-11), for 24 in all.
+   (6 cases, 2026-07-30) and Art. 2 (9 cases, 2026-08-11), for 24 in all. **All 24 now live in
+   `classification_cases.yaml` as dev** — see the SPENT note under M5. Layer 1 has no held-out split
+   until a fresh one is authored; Layer 2's is untouched.
 7. ✅ **DONE 2026-08-14 — the held-out reporting run: 15/24 at `6608c5b`.** Expecting a number below
    dev's was right, and the aggregate turned out to be the least interesting part: split by batch it
    is Art. 2 **8/9**, Annex I **2/6**, original **5/9**. See **THE HELD-OUT RESULT** under M5 for what
@@ -685,6 +687,10 @@ Arts. 2, 5 and 50 all justified themselves by reference to `ClassificationState`
 
 **15/24 risk class (62.5%). Art. 50 19/24. $0.1493, 117 calls, Flash.** The set is now SPENT: any fix from here needs fresh cases before another number means anything.
 
+> **SPENT, AND MOVED — 2026-08-15.** All 24 cases now live in `classification_cases.yaml` as `dev`. Every failure below was read and diagnosed, so the set was no longer blind whatever the file was called, and leaving the label on it invited someone to quote a number from it as if it were. Three things follow. The figure above **stands as a historical measurement at `6608c5b`** and is not reproducible after this date. Layer 1 has **no held-out split** until a fresh one is authored. And the labels **stay as written** — moving a case to dev makes it tunable, not rewritable; a label is revised only by an argument from the enacted text, never because a model disagreed with it.
+>
+> The gain is that dev goes 18 → 42 and the pin cleanup below stopped being a contamination question. The cost is that there is nothing to report against until the new set exists.
+
 The aggregate is not the finding. Split by batch, because the three have different histories and different worth:
 
 | batch | cases | score | status |
@@ -712,23 +718,51 @@ The first two are the serious ones. A 510(k) never states an EU conformity route
 
 **What was deliberately NOT done:** no case edited, no prompt changed, no key revised. The legitimate moves are to accept and record (this entry), to fix the code or prompt and author fresh cases before re-measuring, or to argue a key wrong FROM THE TEXT — never from the model having disagreed.
 
-#### M5-a — Per-node metrics: which QUESTION is weak, not which case 🔴 next
+#### M5-a — Per-node metrics: which QUESTION is weak, not which case ✅ BUILT 2026-08-15
 
-Today's number is end-to-end: one risk class per case, pass or fail. It cannot say which of the eight cascade questions produced the failure, so a 2/6 batch tells you the Annex I route is broken and nothing about where. The diagnosis above was reached by reading cases by hand, which does not scale and will not survive the next batch.
+**Was:** the number was end-to-end — one risk class per case, pass or fail. It could not say which of the nine cascade questions produced the failure, so a 2/6 batch said the Annex I route was broken and nothing about where. The diagnosis above was reached by reading cases by hand, which does not scale.
 
-**Score each NODE, not just the terminal.** Per node: asked / pinned / correct / **wrong** / **abstained** — with the last two kept apart, because they are different defects with different fixes. Batch 2 is the argument for the split: the same `third_party_assessment` node answered confidently-wrong twice and over-abstained twice, and one aggregate would hide that it fails in both directions at once.
+**Built:** `src/aiact/eval/node_score.py`, printed by `scripts/classify.py --golden` after the two headline axes. Per node: asked / pinned / correct / **wrong** / **abstained**, with the last two kept apart because they are different defects needing different fixes and one node can produce both. It costs nothing extra — the answers already pass through a normal run.
 
-Two things make it more than a loop over the cases:
+**It found a defect on a run that scored 18/18.** `candidate_dedupe_prep` answered derogation **(d) preparatory task** where the key says **(a) narrow procedural task**. Any derogation routes to `not_high_risk`, so the case passed and the aggregate was perfect. Right answer, wrong reasoning, invisible to every number that existed before.
 
-- **The result does not carry the answers.** `ClassificationResult.triggered_by` holds only the DECIDING nodes; the ones that merely routed are gone. `_Recording` in `scripts/run_grounding.py` already solves this — wrapping the brain is the only place every question the cascade actually asked passes through. Second use for the same tool.
-- **`None` means two things in the answer key, and a third in practice.** For the enum fields it is both "the answer is none" and "this case does not pin this node"; `model_fields_set` separates those, since Pydantic records whether the YAML wrote the field. But authors ALSO wrote explicit `null` to mean "never reached" (an `out_of_scope` case has `expected_annex_iii_area: null` because the cascade stops before Annex III). So the rule needs both halves: **score node N on case C iff the run asked N, AND C explicitly wrote the field.** The first condition is what drops never-reached nodes and makes the denominator mean anything.
+**DECIDED: the answers ride on the RESULT, not on an eval-only wrapper.** The first build wrapped the brain to record what was asked. Rejected on review, and rightly: `GraphState` already held every answer and `assemble` was discarding most of them. `ClassificationResult.answers` now carries all of them in production too, both evals read from it, and `run_grounding.py`'s private recorder was deleted rather than shared. Net effect: one file fewer, and the report gains the audit trail — the Art. 2 and Art. 5 clearances a reader most wants were previously thrown away, since `triggered_by` keeps only the deciding nodes.
 
-Two findings fall straight out of the pin counts, before any code is written:
+**`ClassificationQuestion.label`** carries the plain-language form of each question, for reports. Not `text`, which is addressed to a model and full of instructions that mean nothing to a reader.
 
-- **`is_ai` is measured by nothing.** No case in either split carries a key for it; every case assumes an AI system. A `false` there sends a system to `minimal` and skips the entire cascade, and it is the one node with no ground truth at all.
-- **`third_party_assessment` — the node that failed today — is pinned by 4 cases per split.** The thinnest column is the one that broke.
+**The scoring rule needs BOTH halves — asked AND pinned** — because each alone fails in the opposite direction. Without ASKED, an `out_of_scope` case is marked wrong on Annex III, a question nobody put to it. Without PINNED, every unpinned node scores as though it had been. Both are tested explicitly.
 
-**Order:** build it, run on dev (~$0.12, no contamination concern) to check it reports something sensible, then one re-run on held-out (~$0.15 — already spent, so it costs no information).
+**A PIN IS AN ASSERTION ABOUT THE ROUTE, not just about an answer.** Writing a field means "this question is expected to be asked, and this is the expected answer"; omitting it means "the cascade is not expected to reach it". `route_for()` in `classify/graph.py` walks the cascade's OWN `_route_*` functions — never a second copy of the rules — and the loader requires each case to pin exactly the on-route nodes. So a routing bug is now a load-time failure rather than something the scorer silently skips, which matters: a wrong route is how the Annex I hole survived, with cases scored on the nodes that ran and never on the nodes that should have.
+
+`NEEDS_REVIEW` cases are **exempt**, and that is a gap in the answer key rather than a concession. Such a case abstains at one node and stops, so its route is as checkable as any other — but nothing records WHICH node. The obvious inference, that the first unpinned node is the abstention point, breaks on the two fields the risk class fills in: a case abstaining at `scope` is indistinguishable from one answering "no exclusion applies". Expressing it needs an `expected_abstains_at` field, which would also let a run be checked for abstaining in the RIGHT place — today a model that ducks the wrong question still passes. **Open decision.**
+
+**Cleanup this forced, 2026-08-15:** 9 pins added to close asked-but-unpinned gaps, then 11 more added and 27 stray lines removed across the merged set. Every stray line asserted a verdict for a question its case never reaches.
+
+**What the table says now, over 42 cases** — and the remaining problems are all in the golden set, not the scorer:
+
+| | |
+|---|---|
+| `is_ai` | **no key at all.** 42 asked, 0 pinned. A `false` there routes straight to `minimal` and skips the whole cascade — the one node with no ground truth, printed as a blank row every run so it cannot be forgotten. |
+| `scope` 35/42, `prohibited` 33/36, `annex_i` 21/25, `transparency` 36/42 | **base-rate dominated.** A constant reply scores each of those. Merging the blind batches doubled the volume and made the skew WORSE, because the added cases were mostly majority-class. |
+| `third_party_assessment` 4, `derogation` 5 | **thin.** |
+| derogation conditions | **1 of 4 exercised.** The node can return four Art. 6(3) conditions; the set only ever expects `narrow_procedural_task`. The (d)-for-(a) miss above is exactly what that blindness hides. |
+
+That is the brief for the next held-out set: **minority answers, not more cases.**
+
+#### M5-b — A fresh held-out split, authored to a coverage brief 🔴 next
+
+Layer 1 has no held-out split. There is nothing to report a Layer 1 number against until this exists, so it blocks every future measurement of the classifier.
+
+**What is different this time: the coverage is specified in advance.** The last three batches were shaped by whichever documents turned up, which is why the set ended up with two `high_risk` cases and none at all for `is_ai`. Choosing targets before authoring is not contamination — only the LABELS must be reached blind, and the table above says exactly where the set is blind to its own failures:
+
+- **`is_ai = false`** — a rules engine, a lookup table, a fixed-formula calculator. Art. 3(1) turns on INFERENCE, nothing tests that line, and a wrong answer there clears any system in the world.
+- **Art. 6(3) conditions (b), (c) and (d)** — three of the four derogations are never expected anywhere.
+- **Minority answers** for `scope`, `prohibited`, `annex_i` and `transparency`: more exclusions, more banned practices, more Annex I products, more Art. 50 triggers.
+- **`third_party_assessment`** on documents that DO state a conformity route — an EU technical file rather than a US filing, so the node can be measured reaching `high_risk` and not only abstaining.
+
+The method is unchanged and already written down: `docs/heldout-brief.md`, with `.claude/hooks/heldout-guard.py` armed. Cases go in a NEW file carrying `default_split: test`; every tool keys on that field, not on the filename.
+
+**Also add `expected_is_ai_system` first** — the field does not exist, so `is_ai` cases cannot be expressed at all. Required rather than defaulted, so no case can omit it by accident. The 42 existing cases all answer `true`, which is why that column alone would score 42/42 and prove nothing without the negatives above.
 
 #### Reasoning grounding — the second number, for the half that has no key
 

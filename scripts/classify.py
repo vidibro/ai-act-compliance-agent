@@ -10,8 +10,8 @@ python scripts/classify.py --text "A tool that scores and ranks job applicants b
 # run the whole Layer 1 golden set through the LLM and score classification accuracy:
 python scripts/classify.py --golden
 
-# the same, against the HELD-OUT split — the reportable number, and running it spends the set:
-python scripts/classify.py --golden --cases data/golden_set/classification_cases_heldout.yaml
+# the same, against a HELD-OUT split — the reportable number, and running it spends the set:
+python scripts/classify.py --golden --cases data/golden_set/<held-out file>.yaml
 """
 
 from __future__ import annotations
@@ -182,8 +182,8 @@ def main() -> None:
         type=Path,
         default=None,
         help="which case file --golden runs. Defaults to the DEV set, which is the tunable one. "
-        "Point it at classification_cases_heldout.yaml to measure — and read the warning that "
-        "prints before doing so.",
+        "Point it at a held-out file to measure — and read the warning that prints before "
+        "doing so. Detection is on the file's `default_split`, not its name.",
     )
     args = ap.parse_args()
 

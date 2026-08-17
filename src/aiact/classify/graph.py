@@ -896,6 +896,66 @@ def build_graph(
     return g.compile()
 
 
+_ROUTERS = {
+    "is_ai": _route_is_ai,
+    "scope": _route_scope,
+    "prohibited": _route_prohibited,
+    "annex_i": _route_annex_i,
+    "third_party_assessment": _route_third_party,
+    "annex_iii": _route_annex,
+    "profiling": _route_profiling,
+}
+_STATE_FIELD = {
+    "is_ai": "is_ai_system",
+    "scope": "scope_exclusion",
+    "prohibited": "prohibited",
+    "annex_i": "in_annex_i",
+    "third_party_assessment": "third_party_assessment",
+    "annex_iii": "in_annex_iii",
+    "profiling": "performs_profiling",
+    "derogation": "derogation",
+}
+
+
+def route_for(answers: dict[str, Any]) -> list[str]:
+    """Which nodes the cascade reaches if every question is answered as `answers` says.
+
+    Walks the SAME `_route_*` functions the compiled graph uses, over a state built from those
+    answers — never a second copy of the routing rules. A separate implementation would drift from
+    the cascade silently, and it is the cascade's exits that carry the legal argument (Art. 6(1)
+    failing condition (b) falls through to Annex III rather than concluding).
+
+    `answers` maps node_id to the VALUE that node would report; a node absent from it is treated as
+    unanswered, which ends the walk there. `transparency` is never in the result: it is asked in
+    `assemble`, off this path, on every route.
+
+    Used by the golden-set loader to check that a case pins exactly the nodes its own answers would
+    reach — see `aiact.eval.classification_cases`."""
+    state = GraphState(description="")
+    for node_id, value in answers.items():
+        field = _STATE_FIELD.get(node_id)
+        if field is not None:
+            setattr(
+                state,
+                field,
+                ClassificationAnswer(
+                    value=value, reasoning="", confidence="high", source=_src(6), node_id=node_id
+                ),
+            )
+
+    reached: list[str] = []
+    node = "is_ai"
+    while node not in ("assemble", "derogation"):
+        reached.append(node)
+        router = _ROUTERS.get(node)
+        if router is None:
+            break
+        node = router(state)
+    if node == "derogation":
+        reached.append("derogation")
+    return reached
+
+
 def classify(
     description: str,
     brain: ClassificationBrain,

@@ -34,7 +34,9 @@ redistribute. Paraphrase into your own words; do not copy sentences across.
 
 ## What to produce
 
-Append cases to `data/golden_set/classification_cases_heldout.yaml`. For each source document:
+Write cases to a NEW file under `data/golden_set/`, carrying `default_split: test`. It is the
+`default_split` — not the filename — that marks a set held out, and every tool reads it from there.
+For each source document:
 
 1. **Write the `description`** — what a classifier will read, in your own words. Aim for the
    register of the existing held-out cases: what the system does, what it acts on, who is in the

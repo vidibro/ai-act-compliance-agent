@@ -25,7 +25,7 @@ from aiact.eval.classification_cases import load_classification_cases
 
 ROOT = Path(__file__).resolve().parents[1]
 MANIFEST = ROOT / "data" / "golden_set" / "heldout_sources.yaml"
-HELDOUT = ROOT / "data" / "golden_set" / "classification_cases_heldout.yaml"
+CASES = ROOT / "data" / "golden_set" / "classification_cases.yaml"
 
 _SHA256 = re.compile(r"\A[0-9a-f]{64}\Z")
 _SOURCE_ID = re.compile(r"\A\S+\Z")
@@ -49,7 +49,7 @@ def sources():
 
 def test_every_cited_case_exists(sources):
     """A manifest entry for a case that was renamed or dropped points at nothing."""
-    known = {c.case_id for c in load_classification_cases(HELDOUT).cases}
+    known = {c.case_id for c in load_classification_cases(CASES).cases}
     cited = {s["case_id"] for s in sources}
     assert cited <= known, f"manifest cites unknown cases: {sorted(cited - known)}"
 
