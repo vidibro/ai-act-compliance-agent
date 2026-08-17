@@ -164,6 +164,14 @@ class UseCaseClassification(BaseModel):
     # Decided per use case. If true -> high_risk, and derogation is not even considered.
     derogation: ClassificationAnswer | None = None  # Art. 6(3)(a)-(d). Only evaluated when
     # performs_profiling is false.
+    poses_significant_risk: ClassificationAnswer | None = None
+    """Art. 6(3), first subparagraph. The OTHER half of the derogation test, and the half that is
+    easy to lose: the paragraph exempts a system only where it poses no significant risk of harm —
+    "including by not materially influencing the outcome of decision making" — AND a condition under
+    (a)-(d) is met. Recorded separately from `derogation` because a use case can satisfy a condition
+    and still be high-risk, and a report that showed only the condition would make that verdict
+    look like an error."""
+
     risk_class: RiskClass
     triggered_by: list[ClassificationEvidence]  # which provisions drove it, and on what evidence
     reasoning: str
@@ -185,6 +193,27 @@ class UseCaseClassification(BaseModel):
                     f"UseCaseClassification {self.use_case_id!r}: performs_profiling is true, "
                     f"so risk_class must be high_risk (got {self.risk_class})."
                 )
+        return self
+
+    @model_validator(mode="after")
+    def _enforce_derogation_conjunction(self) -> UseCaseClassification:
+        """Art. 6(3) exempts on BOTH limbs or on neither: a condition under (a)-(d) AND no
+        significant risk of harm. Encoded here for the same reason the carve-back above is — the
+        cascade could route this wrong, and a wrong NOT_HIGH_RISK is the direction that costs a
+        provider the whole of Chapter III."""
+        if self.risk_class != RiskClass.NOT_HIGH_RISK:
+            return self
+        if self.derogation is None or self.derogation.value is None:
+            raise ValueError(
+                f"UseCaseClassification {self.use_case_id!r}: not_high_risk is reached only by "
+                f"Art. 6(3), so a condition under (a)-(d) must be named."
+            )
+        if self.poses_significant_risk is None or self.poses_significant_risk.value is not False:
+            raise ValueError(
+                f"UseCaseClassification {self.use_case_id!r}: an Art. 6(3)(a)-(d) condition is "
+                f"met, but the paragraph also requires that the system pose no significant risk "
+                f"of harm. That must be answered false, not left open."
+            )
         return self
 
 

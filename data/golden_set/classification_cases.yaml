@@ -39,6 +39,7 @@ cases:
     expected_annex_iii_area: employment
     expected_performs_profiling: false
     expected_derogation: narrow_procedural_task
+    expected_poses_significant_risk: false
     expected_transparency_obligation: false
     transparency_basis: >-
       None of Art. 50's four paragraphs attach. It reads uploaded documents and writes fields to a
@@ -282,6 +283,7 @@ cases:
     expected_annex_iii_area: employment
     expected_performs_profiling: false
     expected_derogation: narrow_procedural_task
+    expected_poses_significant_risk: false
     expected_transparency_obligation: false
     transparency_basis: >-
       Art. 50 does not attach: de-duplicating and merging application records is not direct
@@ -297,6 +299,37 @@ cases:
     notes: >-
       Teaches: a recruitment-phase preparatory tool is INSIDE Annex III (then exempt), NOT minimal.
       The not_high_risk/minimal line matters — not_high_risk still owes Art. 6(4).
+
+  # --- Art. 6(3) is a CONJUNCTION: a condition under (a)-(d) is not enough on its own ------------
+  - case_id: licence_knockout_filter
+    description: >-
+      A recruitment screening step that reads one field from each application — whether the
+      candidate holds the professional licence the role requires — and automatically rejects
+      applications where the field is absent, sending the standard rejection letter. It applies a
+      single fixed rule and produces no score, ranking or assessment of any kind. Only the
+      applications it passes are placed in the recruiter's review queue.
+    expected_risk_class: high_risk
+    expected_is_ai_system: true
+    expected_annex_i_product: null
+    expected_annex_iii_area: employment
+    expected_performs_profiling: false
+    expected_derogation: narrow_procedural_task
+    expected_poses_significant_risk: true
+    expected_transparency_obligation: false
+    transparency_basis: >-
+      Art. 50 does not attach: reading one field and issuing a form letter is not direct
+      interaction with the candidate in the 50(1) sense, generates no synthetic content (50(2)),
+      infers no emotion (50(3)) and produces no deep fake (50(4)).
+    decisive_fact: >-
+      The Art. 6(3)(a) condition IS met — one field, one fixed rule, no evaluation of the person —
+      but the first subparagraph is not: rejected candidates never reach a recruiter, so the system
+      materially influences the outcome of decision making and poses a significant risk to their
+      fundamental rights. Both limbs are required, so it stays high_risk.
+    difficulty: obvious
+    notes: >-
+      The reason Art. 6(3) is split across two nodes. Answering only "is its role narrow?" clears
+      this system; the paragraph's own opening words are what keep it high-risk. Contrast
+      cv_parsing_fields and candidate_dedupe_prep, where a recruiter still sees every candidate.
 
   # --- Art. 6(1): the OTHER door into high-risk (Annex I) ----------------------------------------
   # None of these are in any Annex III area. Before the annex_i node existed the cascade answered
@@ -657,6 +690,7 @@ cases:
     expected_annex_iii_area: employment
     expected_performs_profiling: false
     expected_derogation: improves_completed_human_activity
+    expected_poses_significant_risk: false
     expected_transparency_obligation: false
     transparency_basis: >-
       Art. 50(2) does not attach despite the rewriting: its carve-out covers systems performing "an
@@ -684,6 +718,7 @@ cases:
     expected_annex_iii_area: employment
     expected_performs_profiling: false
     expected_derogation: preparatory_task
+    expected_poses_significant_risk: false
     expected_transparency_obligation: false
     transparency_basis: >-
       Art. 50 does not attach: file conversion, OCR and indexing is not direct interaction (50(1)),

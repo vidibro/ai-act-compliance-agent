@@ -188,6 +188,16 @@ class ClassificationCase(BaseModel):
     expected_annex_iii_area: AnnexIIIArea | None = None  # Art. 6(2), Annex III
     expected_performs_profiling: bool | None = None  # Art. 6(3) carve-back
     expected_derogation: DerogationCondition | None = None  # Art. 6(3)(a)-(d)
+
+    expected_poses_significant_risk: bool | None = None
+    """Art. 6(3), first subparagraph — does the system pose a significant risk of harm, including
+    by materially influencing the outcome of decision making?
+
+    The other half of a conjunction whose first half is `expected_derogation`, and a case naming a
+    condition without this pins only half the test — the same gap `expected_third_party_assessment`
+    fills for Art. 6(1). A `true` here is the interesting label: it is a use case that satisfies a
+    condition under (a)-(d) and is high-risk anyway, which is the shape of case a set can most
+    easily end up with none of."""
     expected_transparency_obligation: bool = False
     """Art. 50 — applies regardless of the risk tier.
 
@@ -315,11 +325,33 @@ class ClassificationCase(BaseModel):
                 f"is — condition (b) is only reached when (a) is met."
             )
 
-        # A derogation is the REASON a use case escapes high-risk — so it implies not_high_risk.
-        if self.expected_derogation is not None and rc != RiskClass.NOT_HIGH_RISK:
+        # Art. 6(3) exempts on BOTH limbs — a condition under (a)-(d) AND no significant risk of
+        # harm — so a condition alone does not settle the class. Which way it lands is exactly what
+        # the other limb decides, and the two `expected_poses_significant_risk` values are two
+        # different cases: a `false` is the ordinary derogation, a `true` is a system that meets a
+        # condition and is high-risk regardless.
+        if self.expected_derogation is not None:
+            if self.expected_poses_significant_risk is None:
+                raise ValueError(
+                    f"{self.case_id}: a derogation condition is named but "
+                    f"expected_poses_significant_risk is not set. Art. 6(3) is a conjunction — the "
+                    f"condition alone does not exempt anything."
+                )
+            expected = (
+                RiskClass.HIGH_RISK
+                if self.expected_poses_significant_risk
+                else RiskClass.NOT_HIGH_RISK
+            )
+            if rc != expected:
+                raise ValueError(
+                    f"{self.case_id}: an Art. 6(3)(a)-(d) condition is met and "
+                    f"expected_poses_significant_risk={self.expected_poses_significant_risk}, so "
+                    f"expected_risk_class must be {expected} (got {rc})."
+                )
+        elif self.expected_poses_significant_risk is not None:
             raise ValueError(
-                f"{self.case_id}: a derogation applies, so expected_risk_class must be "
-                f"not_high_risk (got {rc})."
+                f"{self.case_id}: expected_poses_significant_risk is set but no derogation "
+                f"condition is — the chapeau is only reached once one of (a)-(d) is met."
             )
         return self
 

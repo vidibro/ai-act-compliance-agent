@@ -18,8 +18,10 @@ Order (Commission's, with our deliberate split of profiling before derogation):
       │ in Annex III                                  Art. 6(2), door TWO
     profiling ─Art.6(3) yes────────────────────────────────────► HIGH_RISK   (carve-back)
       │ no
-    derogation ─Art.6(3)(a-d) applies──────────────────────────► NOT_HIGH_RISK
-                └─ none ──────────────────────────────────────► HIGH_RISK
+    derogation ─no condition (a)-(d)───────────────────────────► HIGH_RISK
+      │ a condition is met
+    significant_risk ─poses one─────────────────────────────────► HIGH_RISK
+                      └─ does not ──────────────────────────────► NOT_HIGH_RISK
 
 Art. 2 comes FIRST because it is prior to everything else: a system the Regulation does not govern
 is not a prohibited practice and has no risk tier. Asked after `is_ai` only because Art. 2 speaks
@@ -36,6 +38,14 @@ component of (or is) a product under Annex I, AND that product needs third-party
 assessment. Failing the second condition is not an exit: a self-assessed product can still be
 high-risk under Annex III, so the cascade falls through rather than concluding. The Art. 6(3)
 derogations never reach a 6(1) system — they derogate from paragraph 2 alone.
+
+Art. 6(3) is a CONJUNCTION TOO, and gets the same treatment: the paragraph exempts a system where
+it "does not pose a significant risk of harm ... including by not materially influencing the
+outcome of decision making", and the second subparagraph then adds that this "shall apply where any
+of the following conditions is fulfilled". So `derogation` decides (a)-(d) and `significant_risk`
+decides the chapeau, one limb each. Asked in that order because it is the order the text builds
+them in — (a)-(d) is the gate that lets the first subparagraph operate at all — and because a
+system with no condition never needs the second question.
 
 Art. 2(2) then limits what a 6(1) system OWES: for products under Annex I Section B (vehicles,
 aviation, rail, marine) only Art. 6(1), 102-109 and 112 apply, so Chapter III does not. That is
@@ -83,7 +93,7 @@ from aiact.schemas.classification import (
     Confidence,
     UseCaseClassification,
 )
-from aiact.schemas.enums import AnnexIProduct, RiskClass, ScopeExclusion
+from aiact.schemas.enums import AnnexIProduct, DerogationCondition, RiskClass, ScopeExclusion
 from aiact.schemas.policy import GuidanceSource, LegalSource
 from aiact.tracing import trace_run
 
@@ -250,11 +260,49 @@ QUESTIONS: dict[str, ClassificationQuestion] = {
     "derogation": ClassificationQuestion(
         "derogation",
         _src(6, 3),
+        # The SECOND subparagraph only. The chapeau is the `significant_risk` node — see there for
+        # why the paragraph is split in two.
         "Does an Article 6(3)(a)-(d) derogation apply — narrow procedural task; improves a "
         "completed human activity; detects decision patterns; or a preparatory task? Answer which, "
         "or none.",
         "derogation",
         label="Is its role only a narrow one?",
+    ),
+    "significant_risk": ClassificationQuestion(
+        "significant_risk",
+        _src(6, 3),
+        # Art. 6(3)'s FIRST subparagraph, and the other half of a conjunction whose second half is
+        # the `derogation` node. The paragraph exempts a system where it does not pose a significant
+        # risk of harm AND one of (a)-(d) is met; a node asking only the conditions would clear a
+        # system that performs a narrow procedural task and still decides the outcome.
+        #
+        # The structural argument is here for the same reason it is in the scope node: without it a
+        # model answers from the area rather than from the system. Every system reaching this
+        # question is in an Annex III area — they are listed there because that setting is risky —
+        # so a reading that infers the risk from the listing makes Art. 6(3) unreachable in every
+        # case, which cannot be what a paragraph written to be applied means.
+        #
+        # The test is narrowed to the one the paragraph itself names: whether the output materially
+        # influences the outcome of decision making. That is a fact the description can state, and
+        # is what keeps this from being an open-ended judgement about harm in the abstract.
+        "Article 6(3) exempts an Annex III system from high-risk classification only where BOTH "
+        "halves hold: it does not pose a significant risk of harm to the health, safety or "
+        "fundamental rights of natural persons — INCLUDING by not materially influencing the "
+        "outcome of decision making — AND one of the conditions (a)-(d) is met. The condition is "
+        "already established. Answer the first half: does this system pose such a risk?\n"
+        "Every system reaching this question is already within an Annex III area, so being listed "
+        "there cannot itself be the answer — that reading would leave Art. 6(3) unable to exempt "
+        "anything. Judge the system's OWN contribution to the decision taken about the person:\n"
+        "- true if its output is relied on, weighted, scored or ranked in reaching that decision, "
+        "or if it filters, orders or flags people so that some are treated differently before a "
+        "human considers them.\n"
+        "- false if a person reaches the same decision on the same material whether or not the "
+        "system ran — it reformats, transcribes, routes, de-duplicates or summarises, and the "
+        "substantive judgement is made elsewhere on the underlying evidence.\n"
+        "If the description does not say how the output is used in the decision, say so. Do not "
+        "assume either way: whether anyone relies on it is the whole question.",
+        "bool",
+        label="Could it still materially affect the decision?",
     ),
     "transparency": ClassificationQuestion(
         "transparency",
@@ -291,6 +339,7 @@ _QUESTION_CONTEXT: dict[str, tuple[tuple[int, ...], tuple[str, ...]]] = {
     "annex_iii": ((6,), ("III",)),  # Art. 6(2) + the Annex III area list itself
     "profiling": ((6,), ()),  # Art. 6(3) — the carve-back
     "derogation": ((6,), ()),  # Art. 6(3)(a)-(d)
+    "significant_risk": ((6,), ()),  # Art. 6(3) first subparagraph
     "transparency": ((50,), ()),  # Art. 50
 }
 
@@ -392,6 +441,7 @@ class GraphState(BaseModel):
     in_annex_iii: ClassificationAnswer | None = None
     performs_profiling: ClassificationAnswer | None = None
     derogation: ClassificationAnswer | None = None
+    poses_significant_risk: ClassificationAnswer | None = None
     transparency: ClassificationAnswer | None = None
     result: ClassificationResult | None = None
 
@@ -418,6 +468,7 @@ def _every_answer(state: GraphState) -> list[ClassificationAnswer]:
         state.in_annex_iii,
         state.performs_profiling,
         state.derogation,
+        state.poses_significant_risk,
         state.transparency,
     ]
     return [a for a in ordered if a is not None]
@@ -439,6 +490,7 @@ def _get_answers(state: GraphState) -> list[ClassificationAnswer]:
         state.in_annex_iii,
         state.performs_profiling,
         state.derogation,
+        state.poses_significant_risk,
     ]
     return [a for a in answers if a is not None]
 
@@ -463,6 +515,8 @@ _WHAT_THE_NODE_NEEDED: dict[str, str] = {
     "profiling": "whether it evaluates, scores or ranks people — and on what",
     "derogation": "whether it only performs a narrow procedural task, improves prior human work, "
     "detects decision patterns, or prepares an assessment",
+    "significant_risk": "how the system's output is used in the decision about the person — "
+    "whether anyone relies on it, or it only prepares material judged elsewhere",
     "transparency": "whether it generates content or interacts with people directly",
 }
 
@@ -568,6 +622,16 @@ def _scope_evidence(
     return evidence.model_copy(update={"source": pinpointed})
 
 
+def _condition_letter(state: GraphState) -> str:
+    """The Art. 6(3) point the derogation node named, for the citation in a verdict.
+
+    Narrowed by TYPE for the same reason `_scope_exclusion` is: only a recognised condition can be
+    cited by letter, and anything else a brain puts there has not named one. Falls back to
+    "a)-(d" so the sentence still reads as a citation of the subparagraph as a whole."""
+    a = state.derogation
+    return a.value.letter if a is not None and isinstance(a.value, DerogationCondition) else "a)-(d"
+
+
 def _decide_tier(state: GraphState) -> tuple[RiskClass, str, list[ClassificationEvidence]]:
     """Derive the risk class from whatever nodes were answered. Order encodes the cascade:
     abstention first, then Art. 2 scope, then prohibition, then the Annex III / profiling /
@@ -648,18 +712,35 @@ def _decide_tier(state: GraphState) -> tuple[RiskClass, str, list[Classification
             [evidence(a) for a in triggers if a is not None],
         )
     if state.derogation is not None:
-        if state.derogation.value is not None:
+        if state.derogation.value is None:
+            return (
+                RiskClass.HIGH_RISK,
+                "Within an Annex III area and no Art. 6(3)(a)-(d) condition is met; high-risk.",
+                [evidence(state.in_annex_iii)] if state.in_annex_iii else [],
+            )
+        # Both limbs of Art. 6(3) now, and only the pair exempts. A condition alone does not: the
+        # paragraph opens by requiring that the system pose no significant risk of harm, and the
+        # conditions are what let that opening apply. So the exemption is granted on an explicit
+        # `false` and on nothing else — a missing answer falls to the terminal below rather than
+        # clearing a system by silence.
+        risk = state.poses_significant_risk
+        if risk is not None and risk.value is True:
+            return (
+                RiskClass.HIGH_RISK,
+                f"Within an Annex III area and an Art. 6(3)({_condition_letter(state)}) condition "
+                f"is met, but the system still poses a significant risk of harm — it materially "
+                f"influences the outcome of decision making, so the derogation does not apply; "
+                f"high-risk.",
+                [evidence(a) for a in (state.in_annex_iii, risk) if a is not None],
+            )
+        if risk is not None and risk.value is False:
             return (
                 RiskClass.NOT_HIGH_RISK,
-                "Within an Annex III area, but an Art. 6(3) derogation applies; not high-risk. "
+                "Within an Annex III area, but an Art. 6(3) derogation applies: a condition under "
+                "(a)-(d) is met and the system poses no significant risk of harm. Not high-risk. "
                 "Art. 6(4) documentation still a must.",
-                [evidence(state.derogation)],
+                [evidence(a) for a in (state.derogation, risk) if a is not None],
             )
-        return (
-            RiskClass.HIGH_RISK,
-            "Within an Annex III area with no applicable Art. 6(3) derogation; high-risk.",
-            [evidence(state.in_annex_iii)] if state.in_annex_iii else [],
-        )
     return (
         RiskClass.NEEDS_REVIEW,
         "The cascade did not reach a defensible terminal; escalate to a human reviewer.",
@@ -764,6 +845,16 @@ def _route_profiling(state: GraphState) -> str:
     return "assemble" if a is None or _is_low_confidence(a) or a.value is True else "derogation"
 
 
+def _route_derogation(state: GraphState) -> str:
+    """Art. 6(3) needs BOTH limbs, so a condition under (a)-(d) opens the second question rather
+    than concluding. No condition ends it: the first subparagraph cannot apply at all, and the
+    system is high-risk however small a risk it poses."""
+    a = state.derogation
+    if a is None or _is_low_confidence(a) or a.value is None:
+        return "assemble"
+    return "significant_risk"
+
+
 def build_graph(
     brain: ClassificationBrain,
     questions: dict[str, ClassificationQuestion] | None = None,
@@ -814,6 +905,9 @@ def build_graph(
     def node_derogation(state: GraphState) -> dict[str, Any]:
         return {"derogation": _ask("derogation", state.description)}
 
+    def node_significant_risk(state: GraphState) -> dict[str, Any]:
+        return {"poses_significant_risk": _ask("significant_risk", state.description)}
+
     def node_assemble(state: GraphState) -> dict[str, Any]:
         # Art. 50 runs HERE, unconditionally. Every path through the cascade reaches `assemble`,
         # so asking it here — and nowhere else — is what makes transparency independent of the
@@ -832,6 +926,7 @@ def build_graph(
             annex_iii_area=state.in_annex_iii.value if state.in_annex_iii else None,
             performs_profiling=state.performs_profiling,
             derogation=state.derogation,
+            poses_significant_risk=state.poses_significant_risk,
             risk_class=risk_class,
             triggered_by=triggered_by,
             reasoning=reasoning,
@@ -859,6 +954,7 @@ def build_graph(
     g.add_node("annex_iii", node_annex)
     g.add_node("profiling", node_profiling)
     g.add_node("derogation", node_derogation)
+    g.add_node("significant_risk", node_significant_risk)
     g.add_node("assemble", node_assemble)
 
     g.add_edge(START, "is_ai")
@@ -891,7 +987,12 @@ def build_graph(
     g.add_conditional_edges(
         "profiling", _route_profiling, {"derogation": "derogation", "assemble": "assemble"}
     )
-    g.add_edge("derogation", "assemble")
+    g.add_conditional_edges(
+        "derogation",
+        _route_derogation,
+        {"significant_risk": "significant_risk", "assemble": "assemble"},
+    )
+    g.add_edge("significant_risk", "assemble")
     g.add_edge("assemble", END)
     return g.compile()
 
@@ -904,6 +1005,7 @@ _ROUTERS = {
     "third_party_assessment": _route_third_party,
     "annex_iii": _route_annex,
     "profiling": _route_profiling,
+    "derogation": _route_derogation,
 }
 _STATE_FIELD = {
     "is_ai": "is_ai_system",
@@ -914,6 +1016,7 @@ _STATE_FIELD = {
     "annex_iii": "in_annex_iii",
     "profiling": "performs_profiling",
     "derogation": "derogation",
+    "significant_risk": "poses_significant_risk",
 }
 
 
@@ -945,14 +1048,14 @@ def route_for(answers: dict[str, Any]) -> list[str]:
 
     reached: list[str] = []
     node = "is_ai"
-    while node not in ("assemble", "derogation"):
+    while node != "assemble":
         reached.append(node)
         router = _ROUTERS.get(node)
+        # A node with no router runs straight into `assemble` — it is the end of the walk, and is
+        # included because it was reached. `significant_risk` is the only one today.
         if router is None:
             break
         node = router(state)
-    if node == "derogation":
-        reached.append("derogation")
     return reached
 
 

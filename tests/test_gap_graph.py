@@ -14,11 +14,12 @@ from aiact.gap.graph import analyse
 from aiact.gap.rules import select_rules
 from aiact.policy_loader import load_policy_spec
 from aiact.schemas.classification import (
+    ClassificationAnswer,
     ClassificationEvidence,
     ClassificationResult,
     UseCaseClassification,
 )
-from aiact.schemas.enums import ActorRole, RiskClass, Verdict
+from aiact.schemas.enums import ActorRole, DerogationCondition, RiskClass, Verdict
 from aiact.schemas.policy import LegalSource
 
 DOCUMENT = "# Doc\n\n## Human oversight\n\nA panel reviews every recommendation.\n"
@@ -33,10 +34,20 @@ def a_use_case(use_case_id: str, risk_class: RiskClass) -> UseCaseClassification
     source = LegalSource(
         instrument="Regulation (EU) 2024/1689", article=6, act_version_date=date(2024, 7, 12)
     )
+    def an_answer(value):
+        return ClassificationAnswer(
+            value=value, reasoning="fixture", confidence="high", source=source
+        )
+
+    # Art. 6(3) exempts only on both limbs, so a not_high_risk use case cannot be constructed
+    # without them — see UseCaseClassification._enforce_derogation_conjunction.
+    derogated = risk_class == RiskClass.NOT_HIGH_RISK
     return UseCaseClassification(
         use_case_id=use_case_id,
         description="a system",
         risk_class=risk_class,
+        derogation=an_answer(DerogationCondition.NARROW_PROCEDURAL_TASK) if derogated else None,
+        poses_significant_risk=an_answer(False) if derogated else None,
         reasoning="fixture",
         confidence="high",
         triggered_by=[

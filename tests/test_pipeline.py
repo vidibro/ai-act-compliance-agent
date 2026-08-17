@@ -121,6 +121,7 @@ def test_a_not_high_risk_use_case_still_owes_article_6_4(spec):
         annex_iii=AnnexIIIArea.EMPLOYMENT,
         profiling=False,
         derogation="narrow_procedural_task",
+        significant_risk=False,
     )
     judge = StubJudge()
     report = review(DOCUMENT, spec, brain, judge=judge, system_id="sys-1")

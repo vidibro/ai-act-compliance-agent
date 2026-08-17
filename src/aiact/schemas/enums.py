@@ -424,3 +424,19 @@ class DerogationCondition(StrEnum):
 
     PREPARATORY_TASK = "preparatory_task"
     """(d) performs a preparatory task to an assessment relevant to an Annex III use case."""
+
+    @property
+    def letter(self) -> str:
+        """The Art. 6(3) point, for citation — same discipline as `ScopeExclusion.paragraph`."""
+        return _DEROGATION_LETTER[self]
+
+
+# No default, and every member listed, for the reason given at _SCOPE_EXCLUSION_PARAGRAPH: Art. 6(6)
+# and 6(7) empower the Commission to add and delete these conditions, so a new member is expected
+# and must raise rather than be cited under a letter that belongs to another condition.
+_DEROGATION_LETTER: dict[DerogationCondition, str] = {
+    DerogationCondition.NARROW_PROCEDURAL_TASK: "a",
+    DerogationCondition.IMPROVES_COMPLETED_HUMAN_ACTIVITY: "b",
+    DerogationCondition.DETECTS_DECISION_PATTERNS: "c",
+    DerogationCondition.PREPARATORY_TASK: "d",
+}

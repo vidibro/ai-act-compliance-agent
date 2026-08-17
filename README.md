@@ -25,8 +25,11 @@ what the system does **to a person** (extracts fields? evaluates or ranks them? 
 allocates tasks?); whether you are **provider or deployer** (Art. 3(3)–(4)); and whether it
 **generates content or interacts with people directly** (Art. 50). Describe *function, not benefit*,
 write one section **per intended purpose** rather than per product, and say what the system does
-**not** do — the Art. 6(3) derogations turn on absence. Those are the facts the cascade below
-actually decides on. The Regulation does not template this part.
+**not** do — the Art. 6(3) derogations turn on absence. Say too **who relies on the output**:
+whether a person reviews every case regardless, or whether the system's answer settles some of them
+on its own. Art. 6(3) exempts a narrow role only where it does not materially influence the
+outcome, so that one fact decides the tier. Those are the facts the cascade below actually decides
+on. The Regulation does not template this part.
 *(A fill-in template is planned — see M8 in `docs/ROADMAP.md`.)*
 
 **2. What gets checked against obligations.** Here you need no guide from us, because the Act
@@ -105,8 +108,10 @@ flowchart TD
     ANNEX -->|yes| PROF{"Does it score, rank or judge people?<br/>Art. 6(3)"}
     PROF -->|"yes — it profiles people"| HIGH
     PROF -->|no| DER{"Is its role only a narrow one?<br/>Art. 6(3)(a-d)"}
-    DER -->|"no — it does the real deciding"| HIGH
-    DER -->|"yes — narrow role only"| NHR([not high risk]):::mid
+    DER -->|"no — none of (a)-(d) fits"| HIGH
+    DER -->|"yes — narrow role only"| SIG{"Could it still materially affect<br/>the decision?<br/>Art. 6(3), first subparagraph"}
+    SIG -->|"yes — it does the real deciding"| HIGH
+    SIG -->|"no — a person decides anyway"| NHR([not high risk]):::mid
     AI -.->|low confidence| NR([needs review]):::rev
     SCOPE -.-> NR
     PROH -.-> NR
@@ -115,6 +120,7 @@ flowchart TD
     ANNEX -.-> NR
     PROF -.-> NR
     DER -.-> NR
+    SIG -.-> NR
 
     classDef oos fill:#eceef1,stroke:#7a828c
     classDef ban fill:#fbe4e4,stroke:#c23b3b
@@ -141,11 +147,18 @@ flowchart TD
   so a cascade that asks only the second question tells it that it owes nothing. Art. 6(1) also
   needs **both** its conditions: failing the certification test is not an exit, because a
   self-certified product can still be high-risk by the other door.
+- **Escaping high risk also takes two answers, not one.** Art. 6(3) exempts a listed system only
+  where its role is narrow *and* it poses no significant risk of harm — "including by not
+  materially influencing the outcome of decision making". Both, or neither. A screening step that
+  applies one fixed rule has a narrow role by any reading, but if it auto-rejects people who then
+  never reach a human, it decides the outcome and stays `high risk`. So the cascade asks the narrow
+  role first (nothing else matters without it) and then asks who actually relies on the output.
 - **The spine** (following the "keep going" answers) is the path through the checks; each solid
   branch is an exit to a risk class.
 - **The flip** lives at the *"Does it score, rank or judge people?"* node. Answering *yes* exits straight to
   `high risk` — the narrow-role question is never even asked (the Art. 6(3) carve-back). Answering
-  *no* drops to the narrow-role question, where a derogation exits to `not high risk`. So the
+  *no* drops to the narrow-role question, where a derogation that clears both limbs exits to
+  `not high risk`. So the
   *same* use case, with one added sentence that turns field-extraction into candidate-scoring,
   changes legal class. A CV parser that only extracts fields is `not_high_risk`; add "…and ranks
   candidates by fit" and it becomes `high_risk`. That one-sentence flip is the project's headline,

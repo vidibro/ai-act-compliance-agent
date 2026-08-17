@@ -15,7 +15,7 @@
 - **No RAG-metric library (Ragas and kin).** Those score free-form answers with an LLM because there is no exact key to compare against. Here there is one: every eval case resolves to a fixed label, and Layer 2's label is fixed by construction — the case is built by degrading a known-good document in one known way. Scoring is `expected == got`. Swapping an exact comparison for a paid, non-deterministic approximation of it would be a downgrade, and the numbers this project reports (catch rate per ablation type, false positives on untouched rules) are not metrics such a library has. Its one good idea is faithfulness — grading an output against the SOURCE rather than against an expected answer, which is the only thing you can check when no key exists. That idea is worth having; the library is not the way to get it. Applied to the `evidence_quote`, it is a substring check rather than a model call — `llm/quotes.py`.
 
 **Measured on Layer 1 dev (2026-08-14), 18 cases / 100 node answers, `gemini-2.5-flash`, ~$0.12.** Every substantive answer cited a span — **silent: 0 of 98** — so the prompt's "tie the answer to a quotable span" rule holds on every node, bools and enums included. **The model invented nothing.** The check first rejected 6 quotes (6.1%); 4 were ellipsis-marked elisions of real text, which is ordinary citation practice and was the check's bug, not the model's. Handling the ellipsis took it to **2 of 98 (2.0%)**, both unmarked stitches — real sentences joined without marking the cut — and both attached to CORRECT answers (18/18 on the class axis, before and after). So a bad quote is DROPPED and the answer stands: escalating it to an abstention would have discarded right answers to catch nothing.
-- Classification graph reproduces the official EC Compliance Checker flow, with ONE deliberate deviation: profiling is a separate node evaluated before derogations (Art. 6(3) carve-back applies notwithstanding the exemptions).
+- Classification graph reproduces the official EC Compliance Checker flow, with TWO deliberate deviations, both splitting a node the checker merges: profiling is evaluated before derogations (the Art. 6(3) carve-back applies notwithstanding the exemptions), and Art. 6(3)'s own conjunction is split — `derogation` decides conditions (a)-(d), `significant_risk` decides the chapeau, and only both together exempt.
 - Ruleset is derived from the official EC checker output — not hand-invented, not LLM-generated. rule-compiler is NOT needed for v0.1. (Started at 18; the Art. 1–113 coverage ledger surfaced **Art. 72 and 73** as provider obligations the initial pass had missed, so `spec.yaml` v0.4.0 carries **19** rules.)
 - Risk is decided per use case, not per system (Commission multi-sector rule).
 - Positioning: the official checker asks the user the classifying questions; this agent reads the document and answers them itself, with citations — and catches the case where a provider genuinely misclassifies (e.g. a parser that quietly scores candidates → profiling).
@@ -869,12 +869,14 @@ is this project's whole positioning.
 | the **Annex III area** it operates in, if any | `annex_iii` | Art. 6(2), Annex III |
 | whether it **evaluates or ranks natural persons** — the single most decisive fact | `profiling` | Art. 6(3) |
 | whether it only performs a narrow procedural task / improves prior human work / detects patterns / is preparatory | `derogation` | Art. 6(3)(a)–(d) |
+| **who relies on the output** — whether a person reviews every case regardless, or the system settles some alone | `significant_risk` | Art. 6(3), first subparagraph |
 | whether it **generates content or interacts with people directly** | `transparency` | Art. 50 |
 | whether the author is **provider or deployer** | scope | Art. 3(3), Art. 3(4) |
 
 Plus the framing rules that make a card classifiable at all: describe **function, not benefit**;
 state what the system does **to a person**; one section **per intended purpose** rather than per
-product (which also seeds M7); and say what it does **not** do, since derogations turn on absence.
+product (which also seeds M7); and say what it does **not** do, since derogations turn on absence
+— including who acts on its output, since a narrow role exempts nothing if it decides the outcome.
 
 > ⚠️ **OMISSION IS THE RISK, not gaming.** A card written to satisfy the classifier is fine —
 > describing your system accurately is the goal, not a loophole. The hazard runs the other way: a

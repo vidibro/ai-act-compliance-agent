@@ -64,6 +64,7 @@ NODE_KEYS: dict[str, str | None] = {
     "annex_iii": "expected_annex_iii_area",
     "profiling": "expected_performs_profiling",
     "derogation": "expected_derogation",
+    "significant_risk": "expected_poses_significant_risk",
     "transparency": "expected_transparency_obligation",
 }
 

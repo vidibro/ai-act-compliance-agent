@@ -20,6 +20,7 @@ from aiact.schemas import (
     ClassificationEvidence,
     ClassificationResult,
     ComplianceReport,
+    DerogationCondition,
     DocumentChunk,
     Finding,
     LegalSource,
@@ -70,6 +71,9 @@ def a_use_case(**overrides) -> UseCaseClassification:
         use_case_id="cv_parsing",
         description="extracts structured fields from CVs",
         annex_iii_area=AnnexIIIArea.EMPLOYMENT,
+        # Art. 6(3) exempts on both limbs, so a not_high_risk use case must carry both to construct.
+        derogation=a_node(DerogationCondition.NARROW_PROCEDURAL_TASK),
+        poses_significant_risk=a_node(False),
         risk_class=RiskClass.NOT_HIGH_RISK,
         triggered_by=[an_evidence(annex="III", annex_point="4(a)")],
         reasoning="field extraction only; derogation (a) applies",
@@ -158,10 +162,13 @@ def test_profiling_carve_back_forbids_derogation():
 
 
 def test_profiling_carve_back_forces_high_risk():
+    # derogation cleared explicitly so the carve-back is what raises: the builder supplies one by
+    # default, and profiling-with-a-derogation trips a different validator first.
     with pytest.raises(ValidationError, match="must be high_risk"):
         a_use_case(
             use_case_id="candidate_scoring",
             performs_profiling=a_node(True),
+            derogation=None,
             risk_class=RiskClass.NOT_HIGH_RISK,
         )
 

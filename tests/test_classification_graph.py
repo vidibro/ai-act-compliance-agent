@@ -15,6 +15,7 @@ import pytest
 from pydantic import ValidationError
 
 from aiact.classify import ScriptedBrain, build_graph, classify
+from aiact.classify.graph import route_for
 from aiact.eval.classification_cases import load_classification_cases
 from aiact.schemas.classification import ClassificationAnswer
 from aiact.schemas.enums import AnnexIIIArea, DerogationCondition, RiskClass
@@ -42,6 +43,7 @@ def _brain_from_case(case: ClassificationCase) -> ScriptedBrain:
         "annex_iii": case.expected_annex_iii_area,
         "profiling": case.expected_performs_profiling,
         "derogation": case.expected_derogation,
+        "significant_risk": case.expected_poses_significant_risk,
         "transparency": case.expected_transparency_obligation,
     }
     # A needs_review case models genuine legal ambiguity — here, at the Art. 5 prohibition question.
@@ -125,6 +127,72 @@ def test_annex_iii_no_derogation_is_high_risk():
     assert result.overall_risk_class == RiskClass.HIGH_RISK
 
 
+def _derogation_brain(poses_significant_risk: bool | None) -> ScriptedBrain:
+    return ScriptedBrain(
+        {
+            "is_ai": True,
+            "prohibited": False,
+            "annex_iii": AnnexIIIArea.EMPLOYMENT,
+            "profiling": False,
+            "derogation": DerogationCondition.NARROW_PROCEDURAL_TASK,
+            "significant_risk": poses_significant_risk,
+        }
+    )
+
+
+def test_a_derogation_condition_alone_does_not_exempt():
+    """Art. 6(3) is a CONJUNCTION. A system meeting condition (a) is exempt only where it ALSO
+    poses no significant risk of harm — so the same condition lands on two different tiers, and
+    only the chapeau separates them. Asking (a)-(d) alone would clear both."""
+    exempt = classify("narrow task, nobody relies on it", _derogation_brain(False), "p")
+    assert exempt.overall_risk_class == RiskClass.NOT_HIGH_RISK
+
+    decides = classify("narrow task that auto-rejects", _derogation_brain(True), "p")
+    assert decides.overall_risk_class == RiskClass.HIGH_RISK
+    assert "materially influences" in decides.reasoning
+
+
+def test_the_chapeau_is_not_asked_when_no_condition_is_met():
+    """No condition under (a)-(d) means the first subparagraph cannot apply at all, so the second
+    question is never put — it could not change the answer."""
+    brain = ScriptedBrain(
+        {
+            "is_ai": True,
+            "prohibited": False,
+            "annex_iii": AnnexIIIArea.EMPLOYMENT,
+            "profiling": False,
+            "derogation": None,
+        }
+    )
+    result = classify("annex III use case, no derogation", brain, "hr")
+    assert result.overall_risk_class == RiskClass.HIGH_RISK
+    assert "significant_risk" not in [a.node_id for a in result.answers]
+
+
+def test_an_unanswered_chapeau_does_not_exempt():
+    """Silence must not clear a system. A derogation condition with no answer on the other limb
+    reaches no defensible terminal, so the cascade declines rather than granting the exemption."""
+    result = classify("narrow task, use unstated", _derogation_brain(None), "p")
+    assert result.overall_risk_class == RiskClass.NEEDS_REVIEW
+
+
+def test_route_for_walks_through_the_chapeau():
+    """The loader's route check must know the second limb is reached — otherwise a case pinning it
+    would be told to delete the line."""
+    reached = route_for(
+        {
+            "is_ai": True,
+            "scope": None,
+            "prohibited": False,
+            "annex_i": None,
+            "annex_iii": AnnexIIIArea.EMPLOYMENT,
+            "profiling": False,
+            "derogation": DerogationCondition.NARROW_PROCEDURAL_TASK,
+        }
+    )
+    assert reached[-2:] == ["derogation", "significant_risk"]
+
+
 def test_every_verdict_is_cited():
     """No risk verdict without a legal source — the same rule the schemas enforce."""
     brain = ScriptedBrain(
@@ -134,6 +202,7 @@ def test_every_verdict_is_cited():
             "annex_iii": AnnexIIIArea.EMPLOYMENT,
             "profiling": False,
             "derogation": DerogationCondition.NARROW_PROCEDURAL_TASK,
+            "significant_risk": False,
         }
     )
     result = classify("cv parser", brain, "p")
@@ -164,7 +233,15 @@ def test_build_graph_is_compilable():
     """The graph compiles and exposes the expected nodes."""
     compiled = build_graph(ScriptedBrain({"is_ai": True}))
     node_names = set(compiled.get_graph().nodes)
-    expected = ("is_ai", "prohibited", "annex_iii", "profiling", "derogation", "assemble")
+    expected = (
+        "is_ai",
+        "prohibited",
+        "annex_iii",
+        "profiling",
+        "derogation",
+        "significant_risk",
+        "assemble",
+    )
     for n in expected:
         assert n in node_names
     # Art. 50 is NOT a node: it is asked inside `assemble`, off the risk cascade entirely.

@@ -251,9 +251,53 @@ def test_derogation_implies_not_high_risk():
             description="d",
             expected_risk_class=RiskClass.MINIMAL,
             expected_derogation=DerogationCondition.PREPARATORY_TASK,
+            expected_poses_significant_risk=False,
             decisive_fact="derogation but labelled minimal",
             difficulty="obvious",
         )
+
+
+def _derogation_case(**overrides) -> ClassificationCase:
+    kwargs = dict(
+        case_id="bad",
+        expected_is_ai_system=True,
+        description="d",
+        expected_risk_class=RiskClass.NOT_HIGH_RISK,
+        expected_derogation=DerogationCondition.NARROW_PROCEDURAL_TASK,
+        expected_poses_significant_risk=False,
+        decisive_fact="narrow procedural task nobody relies on",
+        difficulty="obvious",
+    )
+    kwargs.update(overrides)
+    return ClassificationCase(**kwargs)
+
+
+def test_a_derogation_case_must_answer_both_limbs():
+    """Art. 6(3) exempts on a condition AND no significant risk of harm. A case naming only the
+    condition pins half the test, and the half it omits is the one that decides the tier."""
+    with pytest.raises(ValueError, match="conjunction"):
+        _derogation_case(expected_poses_significant_risk=None)
+
+
+def test_the_chapeau_answer_decides_which_tier_the_case_claims():
+    """The SAME condition lands on two tiers. Both pairings must be constructible, and each must
+    force its own class — otherwise the key could assert a condition exempts on its own."""
+    assert _derogation_case().expected_risk_class == RiskClass.NOT_HIGH_RISK
+    assert (
+        _derogation_case(
+            expected_poses_significant_risk=True, expected_risk_class=RiskClass.HIGH_RISK
+        ).expected_risk_class
+        == RiskClass.HIGH_RISK
+    )
+    with pytest.raises(ValueError, match="must be high_risk"):
+        _derogation_case(expected_poses_significant_risk=True)
+
+
+def test_the_chapeau_is_not_pinnable_without_a_condition():
+    """It is only reached once one of (a)-(d) is met, so an answer to it alone describes a
+    question the cascade never puts."""
+    with pytest.raises(ValueError, match="only reached once one of"):
+        _derogation_case(expected_derogation=None, expected_risk_class=RiskClass.HIGH_RISK)
 
 
 def test_dangling_flips_from_is_rejected(tmp_path):
