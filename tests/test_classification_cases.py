@@ -187,6 +187,7 @@ def test_a_true_art_50_label_cannot_be_asserted_without_a_basis():
     with pytest.raises(ValueError, match="transparency_basis is empty"):
         ClassificationCase(
             case_id="bare",
+            expected_is_ai_system=True,
             description="d",
             expected_risk_class=RiskClass.MINIMAL,
             expected_transparency_obligation=True,
@@ -206,6 +207,7 @@ def test_profiling_true_forces_high_risk():
     with pytest.raises(ValueError, match="carve-back forces high_risk"):
         ClassificationCase(
             case_id="bad",
+            expected_is_ai_system=True,
             description="d",
             expected_risk_class=RiskClass.NOT_HIGH_RISK,
             expected_performs_profiling=True,
@@ -218,6 +220,7 @@ def test_profiling_true_forbids_derogation():
     with pytest.raises(ValueError, match="no derogation can apply"):
         ClassificationCase(
             case_id="bad",
+            expected_is_ai_system=True,
             description="d",
             expected_risk_class=RiskClass.HIGH_RISK,
             expected_performs_profiling=True,
@@ -231,6 +234,7 @@ def test_prohibited_flag_must_match_class():
     with pytest.raises(ValueError, match="PROHIBITED class"):
         ClassificationCase(
             case_id="bad",
+            expected_is_ai_system=True,
             description="d",
             expected_risk_class=RiskClass.HIGH_RISK,
             expected_prohibited=True,
@@ -243,6 +247,7 @@ def test_derogation_implies_not_high_risk():
     with pytest.raises(ValueError, match="must be\\s+not_high_risk"):
         ClassificationCase(
             case_id="bad",
+            expected_is_ai_system=True,
             description="d",
             expected_risk_class=RiskClass.MINIMAL,
             expected_derogation=DerogationCondition.PREPARATORY_TASK,
@@ -260,6 +265,7 @@ def test_dangling_flips_from_is_rejected(tmp_path):
         "  - case_id: only\n"
         "    description: d\n"
         "    expected_risk_class: minimal\n"
+        "    expected_is_ai_system: true\n"
         "    decisive_fact: a lonely case pointing nowhere in particular\n"
         "    difficulty: obvious\n"
         "    flips_from: does_not_exist\n",

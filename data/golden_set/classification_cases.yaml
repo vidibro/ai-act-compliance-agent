@@ -34,6 +34,7 @@ cases:
       normalises dates and job titles. It does not score, rank, or otherwise evaluate candidates;
       recruiters review the extracted fields themselves.
     expected_risk_class: not_high_risk
+    expected_is_ai_system: true
     expected_annex_i_product: null
     expected_annex_iii_area: employment
     expected_performs_profiling: false
@@ -58,6 +59,7 @@ cases:
       normalises dates and job titles. It also computes a fit score from 0 to 100 for each
       candidate against the role and ranks applicants by that score for the recruiter's shortlist.
     expected_risk_class: high_risk
+    expected_is_ai_system: true
     expected_annex_i_product: null
     expected_annex_iii_area: employment
     expected_performs_profiling: true
@@ -81,6 +83,7 @@ cases:
       their working day to infer emotional states — stress, engagement, frustration — and reports
       per-employee 'engagement' scores to managers.
     expected_risk_class: prohibited
+    expected_is_ai_system: true
     expected_prohibited: true
     expected_transparency_obligation: true  # CORRECTED 2026-07-22 (was false) — see basis
     transparency_basis: >-
@@ -105,6 +108,7 @@ cases:
       video interviews to infer emotional signals such as 'enthusiasm' and 'confidence', surfacing
       them to recruiters alongside the application.
     expected_risk_class: prohibited
+    expected_is_ai_system: true
     expected_prohibited: true
     expected_transparency_obligation: true  # CORRECTED 2026-07-22 (was false) — see basis
     transparency_basis: >-
@@ -137,6 +141,7 @@ cases:
       recruiter reviews and edits the draft before it is published. The tool does not read, score,
       or evaluate any candidate.
     expected_risk_class: minimal
+    expected_is_ai_system: true
     expected_annex_i_product: null
     expected_annex_iii_area: null
     expected_transparency_obligation: true
@@ -161,6 +166,7 @@ cases:
       stated calendar availability, and sends the confirmed invitations. It does not assess,
       rank, or make any recommendation about candidates.
     expected_risk_class: minimal
+    expected_is_ai_system: true
     expected_transparency_obligation: false
     transparency_basis: >-
       Art. 50(1) does not attach: the tool matches STATED availability and emits invitations: it is
@@ -195,6 +201,7 @@ cases:
       produces weekly funnel reports for HR leadership. It integrates with the customer's HRIS,
       calendar and job-board accounts.
     expected_risk_class: needs_review
+    expected_is_ai_system: true
     expected_annex_i_product: null
     expected_annex_iii_area: employment
     expected_performs_profiling: null   # NOT "no" — genuinely unknowable from this text
@@ -244,6 +251,7 @@ cases:
       accruals and remaining balances and sends reminders about unused leave. It makes no decision
       itself and does not assess, score or rank anyone.
     expected_risk_class: minimal
+    expected_is_ai_system: true
     expected_annex_i_product: null
     expected_annex_iii_area: null
     expected_transparency_obligation: false
@@ -269,6 +277,7 @@ cases:
       duplicate application records into one before a recruiter reviews the pile. It performs no
       scoring, ranking or evaluation of candidates.
     expected_risk_class: not_high_risk
+    expected_is_ai_system: true
     expected_annex_i_product: null
     expected_annex_iii_area: employment
     expected_performs_profiling: false
@@ -300,6 +309,7 @@ cases:
       impedance leaves the safe envelope. It ships as part of the robot, which is a class IIb
       medical device CE-marked under Regulation (EU) 2017/745 following notified-body assessment.
     expected_risk_class: high_risk
+    expected_is_ai_system: true
     expected_annex_i_product: medical_devices
     expected_third_party_assessment: true
     expected_transparency_obligation: false
@@ -324,6 +334,7 @@ cases:
       detects pedestrians and cyclists in the vehicle's path and triggers braking without driver
       input. It is type-approved as part of the vehicle under Regulation (EU) 2018/858.
     expected_risk_class: high_risk
+    expected_is_ai_system: true
     expected_annex_i_product: motor_vehicles
     expected_third_party_assessment: true
     expected_transparency_obligation: false
@@ -348,6 +359,7 @@ cases:
       drill press is standard machinery under Directive 2006/42/EC; it is not listed in Annex IV of
       that Directive, so the manufacturer self-certifies with an internal-control assessment.
     expected_risk_class: minimal
+    expected_is_ai_system: true
     expected_annex_i_product: machinery
     expected_third_party_assessment: false
     expected_annex_iii_area: null
@@ -374,6 +386,7 @@ cases:
       2006/42/EC, so its conformity is assessed by a notified body before it may be placed on the
       market.
     expected_risk_class: high_risk
+    expected_is_ai_system: true
     expected_annex_i_product: machinery
     expected_third_party_assessment: true
     expected_transparency_obligation: false
@@ -400,6 +413,7 @@ cases:
       calendar reminders to clinical teams. It does not connect to, control, or exchange data with
       any medical device.
     expected_risk_class: minimal
+    expected_is_ai_system: true
     expected_annex_i_product: null
     expected_annex_iii_area: null
     expected_transparency_obligation: false
@@ -425,6 +439,7 @@ cases:
       re-tasks aircraft when one is lost, and relays imagery to a command post. It is fielded only by
       the armed forces and is not offered on any civil market.
     expected_risk_class: out_of_scope
+    expected_is_ai_system: true
     expected_scope_exclusion: military_defence_national_security
     scope_exclusion_basis: >-
       Art. 2(3), second subparagraph. The system is put into service exclusively for military and
@@ -455,6 +470,7 @@ cases:
       under the national law implementing the EU directive on procurement in the fields of defence
       and security, and the ministry describes the deployment as protecting national frontiers.
     expected_risk_class: high_risk
+    expected_is_ai_system: true
     expected_annex_i_product: null
     expected_annex_iii_area: migration
     expected_performs_profiling: false
@@ -490,6 +506,7 @@ cases:
       freedoms of the individuals whose data is exchanged, and it binds the agency to those
       safeguards for every system processing data received under it.
     expected_risk_class: out_of_scope
+    expected_is_ai_system: true
     expected_scope_exclusion: third_country_law_enforcement_cooperation
     scope_exclusion_basis: >-
       Art. 2(4). A third-country public authority that would otherwise be caught by Art. 2(1)(c) —
@@ -528,6 +545,7 @@ cases:
       cycle, and states that the tool is used only for referrals arriving through the cooperation
       channel. It says nothing about the data protection regime of the country it operates in.
     expected_risk_class: needs_review
+    expected_is_ai_system: true
     expected_annex_i_product: null
     expected_annex_iii_area: null
     expected_transparency_obligation: false
@@ -581,6 +599,7 @@ cases:
       states repeatedly that a human recruiter always makes the final decision, that the tool is
       "decision-support only", and that "the human stays in control at every step".
     expected_risk_class: high_risk
+    expected_is_ai_system: true
     expected_annex_i_product: null
     expected_annex_iii_area: employment
     expected_performs_profiling: true
@@ -608,6 +627,7 @@ cases:
       The vendor's site also advertises, in a "you may also like" panel, a separate AI screening
       product that scores and ranks job applicants.
     expected_risk_class: minimal
+    expected_is_ai_system: true
     expected_annex_i_product: null
     expected_annex_iii_area: null
     expected_transparency_obligation: false
@@ -633,6 +653,7 @@ cases:
       written and improves their grammar, clarity and structure before they are filed. It adds no
       assessment, score or recommendation of its own; it only rewrites what the manager wrote.
     expected_risk_class: not_high_risk
+    expected_is_ai_system: true
     expected_annex_i_product: null
     expected_annex_iii_area: employment
     expected_performs_profiling: false
@@ -659,6 +680,7 @@ cases:
       indexes them by requisition so a recruiter can search them. It performs no scoring, ranking
       or evaluation of candidates; it prepares the files for the recruiter's own review.
     expected_risk_class: not_high_risk
+    expected_is_ai_system: true
     expected_annex_i_product: null
     expected_annex_iii_area: employment
     expected_performs_profiling: false
@@ -681,6 +703,7 @@ cases:
       sort candidates into groups by inferred ethnicity and gender, which recruiters are told they
       can use to "balance the shortlist".
     expected_risk_class: prohibited
+    expected_is_ai_system: true
     expected_prohibited: true
     expected_transparency_obligation: true
     transparency_basis: >-
@@ -704,6 +727,7 @@ cases:
       states who the individuals are or what decision the score supports — it is sold to "HR, sales
       and customer-success teams alike".
     expected_risk_class: needs_review
+    expected_is_ai_system: true
     expected_annex_iii_area: null
     expected_performs_profiling: null
     expected_derogation: null
@@ -732,6 +756,7 @@ cases:
       predicting demand per time-slot and suggesting bookings to facilities staff. It concerns
       rooms and equipment, not any decision about people's employment.
     expected_risk_class: minimal
+    expected_is_ai_system: true
     expected_annex_i_product: null
     expected_annex_iii_area: null
     expected_transparency_obligation: false
@@ -755,6 +780,7 @@ cases:
       hiring timeline in natural-language conversation. It does not assess, score or rank
       applicants, and it neither makes nor influences any hiring decision.
     expected_risk_class: minimal
+    expected_is_ai_system: true
     expected_annex_i_product: null
     expected_annex_iii_area: null
     expected_transparency_obligation: true
@@ -779,6 +805,7 @@ cases:
       that the platform also computes an individual "attrition-risk score" for each employee and
       flags those judged most likely to leave.
     expected_risk_class: high_risk
+    expected_is_ai_system: true
     expected_annex_i_product: null
     expected_annex_iii_area: employment
     expected_performs_profiling: true
@@ -840,6 +867,7 @@ cases:
       other clinician able to treat stroke patients. Cleared as a Class II radiological
       computer-aided triage and notification software device.
     expected_risk_class: needs_review
+    expected_is_ai_system: true
     expected_annex_i_product: medical_devices
     expected_third_party_assessment: null
     expected_annex_iii_area: null
@@ -895,6 +923,7 @@ cases:
       malware, and a protocol governing which future algorithm changes would require a fresh
       submission. Regulated as a Class II retinal diagnostic software device.
     expected_risk_class: needs_review
+    expected_is_ai_system: true
     expected_annex_i_product: medical_devices
     expected_third_party_assessment: null
     expected_annex_iii_area: null
@@ -959,6 +988,7 @@ cases:
       which three independent graders found the angiography image quality clinically acceptable.
       Regulated as a Class II ophthalmic camera.
     expected_risk_class: minimal
+    expected_is_ai_system: true
     expected_annex_i_product: null
     expected_annex_iii_area: null
     expected_transparency_obligation: false
@@ -1019,6 +1049,7 @@ cases:
       recorded historical procedures all passed, and animal testing under simulated clinical
       conditions met its protocol. Regulated as a Class II programmable diagnostic computer.
     expected_risk_class: needs_review
+    expected_is_ai_system: true
     expected_annex_i_product: medical_devices
     expected_third_party_assessment: null
     expected_annex_iii_area: null
@@ -1072,6 +1103,7 @@ cases:
       trained, tuned and locked before release. It is filed under the same Class II noncontinuous
       ventilator product code as the companion patient app it is compared against.
     expected_risk_class: minimal
+    expected_is_ai_system: true
     expected_annex_i_product: null
     expected_annex_iii_area: null
     expected_transparency_obligation: false
@@ -1130,6 +1162,7 @@ cases:
       cybersecurity, and good machine learning practice. Regulated as a Class II fluid jet system for
       prostate tissue removal.
     expected_risk_class: needs_review
+    expected_is_ai_system: true
     expected_annex_i_product: medical_devices
     expected_third_party_assessment: null
     expected_annex_iii_area: null
@@ -1213,6 +1246,7 @@ cases:
       contractors, SMEs in unmanned aircraft technology, sensors and AI, research institutions and
       flight test centres. Estimated value of the cluster is EUR 2.9 million.
     expected_risk_class: out_of_scope
+    expected_is_ai_system: true
     expected_scope_exclusion: military_defence_national_security
     scope_exclusion_basis: >-
       Art. 2(3), second subparagraph. The system is put into service exclusively for military and
@@ -1264,6 +1298,7 @@ cases:
       what the software does — what it takes as input, what it infers, about whom, or what it puts
       out.
     expected_risk_class: needs_review
+    expected_is_ai_system: true
     expected_annex_iii_area: null
     expected_performs_profiling: null
     expected_derogation: null
@@ -1311,6 +1346,7 @@ cases:
       long-standing questions about how stars and their planets form, and to open a path towards
       data-intensive science in modern astrophysics.
     expected_risk_class: out_of_scope
+    expected_is_ai_system: true
     expected_scope_exclusion: scientific_research
     scope_exclusion_basis: >-
       Art. 2(6). The machine-learning system is specifically developed and put into service for the
@@ -1356,6 +1392,7 @@ cases:
       acceptance; and human-in-the-loop decision making for co-learning between AI and people, taking
       account of model uncertainty, operator cognitive load and trust.
     expected_risk_class: out_of_scope
+    expected_is_ai_system: true
     expected_scope_exclusion: pre_market_development
     scope_exclusion_basis: >-
       Art. 2(8). This is a research, testing and development activity regarding AI systems prior to
@@ -1407,6 +1444,7 @@ cases:
       received a small EU innovation grant for small enterprises, ran for six months, and had a total
       cost of about EUR 71 000.
     expected_risk_class: minimal
+    expected_is_ai_system: true
     expected_annex_i_product: null
     expected_annex_iii_area: null
     expected_transparency_obligation: false
@@ -1462,6 +1500,7 @@ cases:
       that it was produced as an open-source project rather than as a company product, and that it
       makes no assertion about quality or security and will not maintain the code going forward.
     expected_risk_class: out_of_scope
+    expected_is_ai_system: true
     expected_scope_exclusion: free_open_source
     scope_exclusion_basis: >-
       Art. 2(12). Released under a free and open-source licence, and none of the three carve-backs
@@ -1515,6 +1554,7 @@ cases:
       grades and arena evaluations are linked from the card, along with a warning that several
       lookalike websites carrying the model's name are unaffiliated and probably scams.
     expected_risk_class: minimal
+    expected_is_ai_system: true
     expected_annex_i_product: null
     expected_annex_iii_area: null
     expected_transparency_obligation: true
@@ -1562,6 +1602,7 @@ cases:
       individual user has chosen and the dish selected. Much of the material is promotional, quoting a
       managing director on customer-centred technology and a new era for home appliances.
     expected_risk_class: out_of_scope
+    expected_is_ai_system: true
     expected_scope_exclusion: personal_non_professional
     scope_exclusion_basis: >-
       Art. 2(10). The Regulation does not apply to the obligations of deployers who are natural
@@ -1610,6 +1651,7 @@ cases:
       privacy law when using the automatic filming modes. Ceiling is thirty metres and range fifty
       metres under palm control, and top horizontal speed in follow mode is eight metres a second.
     expected_risk_class: minimal
+    expected_is_ai_system: true
     expected_annex_i_product: null
     expected_annex_iii_area: null
     expected_transparency_obligation: false

@@ -10,9 +10,9 @@ directions:
   without PINNED  `None` in the answer key means both "the answer is none" and "this case does not
                   fix this node", and every unpinned node scores as though it had been.
 
-Two fields are exempt from PINNED because the risk class already fixes them, and one node is exempt
-from scoring because no case can pin it at all. Both exemptions are asserted here rather than left
-to the reader of the table.
+Three fields are exempt from PINNED — two the risk class already fixes, and one that is required
+so every case carries it. The exemptions are asserted here rather than left to the reader of the
+table.
 """
 
 from __future__ import annotations
@@ -46,6 +46,7 @@ def a_case(**overrides) -> ClassificationCase:
         case_id="c",
         description="x",
         expected_risk_class=RiskClass.MINIMAL,
+        expected_is_ai_system=True,
         decisive_fact="f",
         difficulty=Difficulty.OBVIOUS,
     )
@@ -150,10 +151,12 @@ def test_every_cascade_node_has_an_entry():
     assert set(QUESTIONS) == set(NODE_KEYS)
 
 
-def test_is_ai_is_recorded_as_having_no_key():
-    """Not an oversight to be tidied away: no case in either split carries ground truth for it, a
-    false answer there skips the entire cascade, and the blank row is what keeps that visible."""
-    assert NODE_KEYS["is_ai"] is None
+def test_is_ai_is_keyed_and_required():
+    """The one sub-answer with no default. It is asked first on every case and a `false` routes
+    straight to `minimal`, skipping Art. 2, Art. 5 and both Art. 6 doors — so a case that omits it
+    must fail loudly rather than quietly assert `true` on something nobody checked."""
+    assert NODE_KEYS["is_ai"] == "expected_is_ai_system"
+    assert ClassificationCase.model_fields["expected_is_ai_system"].is_required()
 
 
 @pytest.mark.parametrize("node_id,field", [(k, v) for k, v in NODE_KEYS.items() if v])
@@ -171,23 +174,32 @@ def test_asked_counts_come_from_the_run_not_the_answer_key():
     result = classify(case.description, brain, case.case_id)
 
     run = score_node_run([(case, result)])
-    # Asked covers everything the cascade put, including the node no case can pin.
+    # Asked covers everything the cascade put.
     assert run.asked["is_ai"] == 1
     assert run.asked["scope"] == 1
     assert run.asked["annex_iii"] == 1
-    # Scored covers what the YAML pinned, PLUS what the risk class settles on its own.
-    assert {s.node_id for s in run.scores} == {"scope", "prohibited", "annex_iii", "transparency"}
-    assert "is_ai" not in {s.node_id for s in run.scores}
+    # Scored covers what the YAML pinned, PLUS what every case carries whether it names it or not.
+    assert {s.node_id for s in run.scores} == {
+        "is_ai",
+        "scope",
+        "prohibited",
+        "annex_iii",
+        "transparency",
+    }
 
 
-def test_the_table_reports_a_no_key_node_as_a_blank_row():
+def test_the_table_reports_a_keyless_node_as_a_blank_row(monkeypatch):
+    """Every node currently has a key, so this is exercised against a synthetic gap. The row is
+    kept because the failure it guards is silence: a node added to the cascade and never given a
+    key would otherwise vanish from the table rather than announce itself."""
+    monkeypatch.setitem(NODE_KEYS, "annex_iii", None)
     case = a_case(expected_annex_iii_area=None)
     brain = ScriptedBrain({"is_ai": True, "prohibited": False, "annex_iii": None})
     result = classify(case.description, brain, case.case_id)
 
     text = "\n".join(score_node_run([(case, result)]).lines())
     assert "NO KEY — unmeasured" in text
-    assert "is_ai" in text
+    assert "annex_iii" in text
 
 
 def test_an_abstention_on_a_needs_review_case_is_marked_as_intended():

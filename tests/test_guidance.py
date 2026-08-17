@@ -78,6 +78,7 @@ def test_a_dangling_guidance_ref_fails_the_loader(tmp_path):
         "  - case_id: x\n"
         "    description: y\n"
         "    expected_risk_class: prohibited\n"
+        "    expected_is_ai_system: true\n"
         "    expected_prohibited: true\n"
         "    guidance_refs: [C-2025-5052/nope]\n"
         "    decisive_fact: z\n"

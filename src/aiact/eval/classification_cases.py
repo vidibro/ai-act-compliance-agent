@@ -81,10 +81,7 @@ def _check_pins_match_the_route(case: ClassificationCase, path: Path) -> None:
     drift from the graph. Two fields are exempt from the second half: `expected_prohibited` and
     `expected_scope_exclusion` are fixed by the risk class, so a case need not restate them.
     """
-    # `is_ai` has no field in the answer key, so the walk is seeded with the assumption every
-    # Layer 1 case makes: the described system IS an AI system. A case that describes something
-    # outside Art. 3(1) cannot be expressed here at all — the gap `NODE_KEYS` reports as NO KEY.
-    answers: dict[str, object] = {"is_ai": True}
+    answers: dict[str, object] = {}
     for node_id, field in NODE_KEYS.items():
         if field is None:
             continue

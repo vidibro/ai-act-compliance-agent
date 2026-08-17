@@ -36,10 +36,8 @@ answers "not prohibited" is right 23 times out of 24. The table prints the posit
 beside each row and flags any column a constant answer would carry, because that number measures
 the base rate rather than the node.
 
-`is_ai` has no key in `ClassificationCase` and so can never be scored here. That is a finding about
-the golden set, not a limitation of this module: a false answer there routes straight to `minimal`
-and skips the whole cascade, and it is the one node with no ground truth at all. Reported as a
-blank row rather than omitted, so the gap stays visible.
+A node with no key at all is reported as a blank row rather than omitted, so that gap stays visible
+on every run instead of being inferred from an absence.
 """
 
 from __future__ import annotations
@@ -58,7 +56,7 @@ Outcome = Literal["correct", "wrong", "abstained"]
 # Every cascade node appears, so a newly added one must be given a key or an explicit None here
 # rather than silently going unmeasured — the failure this whole module exists to make visible.
 NODE_KEYS: dict[str, str | None] = {
-    "is_ai": None,  # no key in the answer key — see the module docstring
+    "is_ai": "expected_is_ai_system",
     "scope": "expected_scope_exclusion",
     "prohibited": "expected_prohibited",
     "annex_i": "expected_annex_i_product",
@@ -69,15 +67,20 @@ NODE_KEYS: dict[str, str | None] = {
     "transparency": "expected_transparency_obligation",
 }
 
-# Fields whose value is FIXED BY THE RISK CLASS, so every case pins them whether or not the YAML
-# says so. `ClassificationCase`'s validator enforces both as strict equivalences — prohibited is
-# true exactly when the class is PROHIBITED, an Art. 2 exclusion is set exactly when the class is
-# OUT_OF_SCOPE — and a fact the answer key already fixes needs no second statement.
+# Fields every case carries whether or not its YAML names them, so the `model_fields_set` test does
+# not apply. Two reasons, and both make the field a fact about the case rather than a choice:
 #
-# The `model_fields_set` rule these bypass exists for the ENUM fields, where `None` is ambiguous
-# between "the answer is none" and "unpinned". Here there is no ambiguity to resolve: `False` and
-# `None` are the answers for every case the invariant does not make positive.
-DERIVED_FROM_CLASS = frozenset({"expected_prohibited", "expected_scope_exclusion"})
+#   FIXED BY THE RISK CLASS   `ClassificationCase`'s validator enforces strict equivalences —
+#                             prohibited is true exactly when the class is PROHIBITED, an Art. 2
+#                             exclusion is set exactly when the class is OUT_OF_SCOPE. A fact the
+#                             answer key already settles needs no second statement.
+#   REQUIRED                  `expected_is_ai_system` has no default, so it is always written.
+#
+# The rule they bypass exists for the ENUM fields, where `None` is ambiguous between "the answer is
+# none" and "unpinned". Here there is nothing to disambiguate.
+DERIVED_FROM_CLASS = frozenset(
+    {"expected_prohibited", "expected_scope_exclusion", "expected_is_ai_system"}
+)
 
 _SKEW_WARNING_AT = 0.8
 """Share of one expected answer above which a column is flagged as base-rate-dominated.

@@ -29,6 +29,7 @@ ART50 = LegalSource(
 def case(case_id: str, risk: RiskClass, transparency: bool) -> ClassificationCase:
     return ClassificationCase(
         case_id=case_id,
+        expected_is_ai_system=True,
         description="a description",
         expected_risk_class=risk,
         expected_transparency_obligation=transparency,

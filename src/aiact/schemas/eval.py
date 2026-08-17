@@ -151,6 +151,20 @@ class ClassificationCase(BaseModel):
     description: str  # the use-case description the classifier reads — the input
     expected_risk_class: RiskClass
 
+    expected_is_ai_system: bool
+    """Art. 3(1) — is the described system an AI system at all? REQUIRED, and the only sub-answer
+    that is.
+
+    Every other field is optional because a case pins only what decides it. This one is asked on
+    every case, first, and a `false` routes straight to `minimal` and skips the entire cascade —
+    Art. 2, Art. 5 and both Art. 6 doors are never reached. One wrong answer here clears any system
+    there is, which is why it may not be left to a default: omitting it must fail loudly rather
+    than quietly assert `true` on a case nobody checked.
+
+    Art. 3(1) turns on INFERENCE — a machine-based system that infers, from its input, how to
+    generate outputs. Software that applies rules a person wrote is outside it however
+    sophisticated, so a set where every case answers `true` measures nothing about this node."""
+
     # The "why" — the decisive sub-answers a correct classifier should also produce. Optional so a
     # case only pins what actually decides it.
     expected_scope_exclusion: ScopeExclusion | None = None
