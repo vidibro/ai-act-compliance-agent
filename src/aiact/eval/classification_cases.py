@@ -88,18 +88,36 @@ def _check_pins_match_the_route(case: ClassificationCase, path: Path) -> None:
         if field in DERIVED_FROM_CLASS or field in case.model_fields_set:
             answers[node_id] = getattr(case, field)
 
-    # NEEDS_REVIEW cases are exempt, and the reason is a gap in the answer key rather than a
-    # concession. Such a case abstains at ONE node and stops there, so its route is as checkable as
-    # any other — but nothing records WHICH node, and it cannot be inferred. The obvious rule, that
-    # the first unpinned node is the abstention point, breaks on the two fields DERIVED_FROM_CLASS
-    # fills in: a case abstaining at `scope` is indistinguishable from one that answered "no
-    # exclusion applies", because the class fixes that value either way. Expressing it needs a field
-    # naming the node; until there is one, checking these cases would enforce a route the key cannot
-    # state. Tracked in docs/ROADMAP.md.
-    if case.expected_risk_class == RiskClass.NEEDS_REVIEW:
-        return
-
     walked = route_for(answers)
+
+    # A NEEDS_REVIEW case is checked against the node it abstains at, not a terminal: it stops
+    # there, so `expected_abstains_at` names the node and the pins are checked around it. The node
+    # cannot be inferred as "the first unpinned one", because the fields DERIVED_FROM_CLASS fills in
+    # make a case abstaining at `scope` look exactly like one answering "no exclusion applies".
+    if case.expected_risk_class == RiskClass.NEEDS_REVIEW:
+        node = case.expected_abstains_at
+        if node not in walked:
+            raise ValueError(
+                f"{case.case_id} in {path}: expected_abstains_at={node!r}, but the cascade never "
+                f"reaches that node on this case. It runs {' -> '.join(walked)}."
+            )
+        # Against the CASCADE ORDER, not the walked route: an unpinned abstention node halts the
+        # walk, so nothing is ever "after" it there. NODE_KEYS is declared in cascade order, which
+        # is what makes the index comparison meaningful. `transparency` is exempt — `assemble` asks
+        # it on every route, abstention or not.
+        order = [n for n in NODE_KEYS if n != "transparency"]
+        past = [
+            n
+            for n in order[order.index(str(node)) + 1 :]
+            if (f := NODE_KEYS.get(n)) and f in case.model_fields_set
+        ]
+        if past:
+            fields = ", ".join(str(NODE_KEYS[n]) for n in past)
+            raise ValueError(
+                f"{case.case_id} in {path}: abstains at `{node}`, so the cascade stops there — but "
+                f"it pins {fields}, stating answers for questions never put. Remove them."
+            )
+        return
 
     # A missing answer HALTS the walk, so everything past it is unknown rather than unreachable.
     # Reporting the downstream nodes too would tell the author to delete lines that are correct —

@@ -273,3 +273,76 @@ def test_dangling_flips_from_is_rejected(tmp_path):
     )
     with pytest.raises(ValueError, match="names no case"):
         load_classification_cases(bad)
+
+
+# --- where a case gives up ------------------------------------------------------------------
+def _case_yaml(tmp_path, body: str):
+    p = tmp_path / "c.yaml"
+    p.write_text(
+        "act_version_date: 2024-07-12\ndefault_split: dev\ncases:\n" + body, encoding="utf-8"
+    )
+    return p
+
+
+def test_needs_review_requires_an_abstention_point(tmp_path):
+    """The class says a run should decline; it does not say WHERE, and the two are different
+    claims. Without the node, a model that ducks a question it could have answered still lands on
+    the right label and nothing can tell the difference."""
+    bad = _case_yaml(
+        tmp_path,
+        "  - case_id: x\n"
+        "    description: d\n"
+        "    expected_risk_class: needs_review\n"
+        "    expected_is_ai_system: true\n"
+        "    decisive_fact: the description never says what it ranks on\n"
+        "    difficulty: insufficient\n",
+    )
+    with pytest.raises(ValueError, match="expected_abstains_at"):
+        load_classification_cases(bad)
+
+
+def test_an_abstention_point_off_the_route_is_rejected(tmp_path):
+    """Naming a node the cascade never reaches describes a run that cannot happen."""
+    bad = _case_yaml(
+        tmp_path,
+        "  - case_id: x\n"
+        "    description: d\n"
+        "    expected_risk_class: needs_review\n"
+        "    expected_is_ai_system: true\n"
+        "    expected_abstains_at: derogation\n"
+        "    expected_annex_i_product: null\n"
+        "    expected_annex_iii_area: null\n"
+        "    decisive_fact: no Annex III area, so profiling and derogation are never asked\n"
+        "    difficulty: insufficient\n",
+    )
+    with pytest.raises(ValueError, match="never reaches that node"):
+        load_classification_cases(bad)
+
+
+def test_pins_past_the_abstention_point_are_rejected(tmp_path):
+    """Once a node abstains the cascade stops, so every question after it is never put. Pinning one
+    states an answer for a question nobody asked."""
+    bad = _case_yaml(
+        tmp_path,
+        "  - case_id: x\n"
+        "    description: d\n"
+        "    expected_risk_class: needs_review\n"
+        "    expected_is_ai_system: true\n"
+        "    expected_abstains_at: annex_iii\n"
+        "    expected_annex_i_product: null\n"
+        "    expected_performs_profiling: false\n"
+        "    decisive_fact: the domain is never stated\n"
+        "    difficulty: insufficient\n",
+    )
+    with pytest.raises(ValueError, match="questions never put"):
+        load_classification_cases(bad)
+
+
+def test_every_needs_review_case_names_where_it_gives_up(cases):
+    """And the node it names is one the cascade actually has."""
+    from aiact.eval.node_score import NODE_KEYS
+
+    review = [c for c in cases.cases if c.expected_risk_class == RiskClass.NEEDS_REVIEW]
+    assert review
+    for c in review:
+        assert c.expected_abstains_at in NODE_KEYS, c.case_id

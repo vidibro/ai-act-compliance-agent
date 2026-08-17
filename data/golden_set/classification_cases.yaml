@@ -201,11 +201,11 @@ cases:
       produces weekly funnel reports for HR leadership. It integrates with the customer's HRIS,
       calendar and job-board accounts.
     expected_risk_class: needs_review
+    expected_abstains_at: profiling
     expected_is_ai_system: true
     expected_annex_i_product: null
     expected_annex_iii_area: employment
     expected_performs_profiling: null   # NOT "no" — genuinely unknowable from this text
-    expected_derogation: null           # cannot be established, so cannot be claimed
     expected_transparency_obligation: false
     transparency_basis: >-
       Determinable even though the tier is not, which is deliberate — the case should turn on ONE
@@ -545,9 +545,8 @@ cases:
       cycle, and states that the tool is used only for referrals arriving through the cooperation
       channel. It says nothing about the data protection regime of the country it operates in.
     expected_risk_class: needs_review
+    expected_abstains_at: scope
     expected_is_ai_system: true
-    expected_annex_i_product: null
-    expected_annex_iii_area: null
     expected_transparency_obligation: false
     transparency_basis: >-
       Undeterminable along with the tier, and recorded as false only because nothing in the
@@ -727,10 +726,10 @@ cases:
       states who the individuals are or what decision the score supports — it is sold to "HR, sales
       and customer-success teams alike".
     expected_risk_class: needs_review
+    expected_abstains_at: annex_iii
     expected_is_ai_system: true
+    expected_annex_i_product: null
     expected_annex_iii_area: null
-    expected_performs_profiling: null
-    expected_derogation: null
     expected_transparency_obligation: false
     transparency_basis: >-
       Determinable even though the tier is not: it scores records with no direct interaction (50(1)),
@@ -867,12 +866,10 @@ cases:
       other clinician able to treat stroke patients. Cleared as a Class II radiological
       computer-aided triage and notification software device.
     expected_risk_class: needs_review
+    expected_abstains_at: third_party_assessment
     expected_is_ai_system: true
     expected_annex_i_product: medical_devices
     expected_third_party_assessment: null
-    expected_annex_iii_area: null
-    expected_performs_profiling: null
-    expected_derogation: null
     expected_transparency_obligation: false
     transparency_basis: >-
       Determinable even though the tier is not. Art. 50(1) does not attach: a worklist pop-up is not
@@ -923,12 +920,10 @@ cases:
       malware, and a protocol governing which future algorithm changes would require a fresh
       submission. Regulated as a Class II retinal diagnostic software device.
     expected_risk_class: needs_review
+    expected_abstains_at: third_party_assessment
     expected_is_ai_system: true
     expected_annex_i_product: medical_devices
     expected_third_party_assessment: null
-    expected_annex_iii_area: null
-    expected_performs_profiling: null
-    expected_derogation: null
     expected_transparency_obligation: false
     transparency_basis: >-
       Art. 50(1) does not attach: the stated user is a healthcare provider operating a GUI, not a
@@ -1049,12 +1044,10 @@ cases:
       recorded historical procedures all passed, and animal testing under simulated clinical
       conditions met its protocol. Regulated as a Class II programmable diagnostic computer.
     expected_risk_class: needs_review
+    expected_abstains_at: third_party_assessment
     expected_is_ai_system: true
     expected_annex_i_product: medical_devices
     expected_third_party_assessment: null
-    expected_annex_iii_area: null
-    expected_performs_profiling: null
-    expected_derogation: null
     expected_transparency_obligation: false
     transparency_basis: >-
       Art. 50 does not attach: an operator reading a map during a procedure is not interacting with
@@ -1162,12 +1155,10 @@ cases:
       cybersecurity, and good machine learning practice. Regulated as a Class II fluid jet system for
       prostate tissue removal.
     expected_risk_class: needs_review
+    expected_abstains_at: third_party_assessment
     expected_is_ai_system: true
     expected_annex_i_product: medical_devices
     expected_third_party_assessment: null
-    expected_annex_iii_area: null
-    expected_performs_profiling: null
-    expected_derogation: null
     expected_transparency_obligation: false
     transparency_basis: >-
       Art. 50 does not attach: a surgeon operating a touchscreen during a procedure is not
@@ -1298,10 +1289,10 @@ cases:
       what the software does — what it takes as input, what it infers, about whom, or what it puts
       out.
     expected_risk_class: needs_review
+    expected_abstains_at: annex_iii
     expected_is_ai_system: true
+    expected_annex_i_product: null
     expected_annex_iii_area: null
-    expected_performs_profiling: null
-    expected_derogation: null
     expected_transparency_obligation: false
     transparency_basis: >-
       Undeterminable along with the tier, and recorded as false only because nothing in the notice

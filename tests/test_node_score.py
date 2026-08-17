@@ -207,6 +207,7 @@ def test_an_abstention_on_a_needs_review_case_is_marked_as_intended():
     answerable question would report the tool working as a defect."""
     case = a_case(
         expected_risk_class=RiskClass.NEEDS_REVIEW,
+        expected_abstains_at="profiling",
         expected_performs_profiling=None,
     )
     scores = score_nodes(case, [an_answer_at("profiling", None, "low", "description_silent")])

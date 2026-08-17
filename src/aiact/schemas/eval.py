@@ -203,7 +203,20 @@ class ClassificationCase(BaseModel):
     transparency_basis: str = ""
     """WHICH Art. 50 paragraph attaches, and why. Mandatory whenever the obligation is TRUE (see the
     validator). Same discipline as LegalSource on a verdict: an answer key that cannot show its
-    working is how a wrong label survives — this one did, until the smoke check tripped over it."""
+    working is how a wrong label survives unnoticed."""
+
+    expected_abstains_at: str | None = None
+    """WHICH cascade node the description runs out at. Set exactly when the class is NEEDS_REVIEW.
+
+    That class says a run should decline; without this it does not say WHERE, and the two are not
+    the same claim. A model that ducks a question it could have answered, and then happens to reach
+    `needs_review`, is not doing what the case tests — it lands on the right label by the wrong
+    route, and nothing could tell the difference.
+
+    It also fixes what the case may pin. Once a node abstains the cascade stops, so every question
+    after it is never put and must carry no expected answer; the loader enforces that against the
+    graph's own routing. Held as a node_id rather than an article because the abstention is a fact
+    about the RUN — which question went unanswered — not about the law."""
 
     decisive_fact: str  # the single fact that fixes the class (what a reader must catch)
     difficulty: Difficulty
@@ -250,6 +263,15 @@ class ClassificationCase(BaseModel):
                     f"{self.case_id}: Art. 6 classifies systems the Regulation governs. A system "
                     f"excluded by Art. 2 is never reached by it."
                 )
+
+        # NEEDS_REVIEW and an abstention point are the same claim stated two ways: the class says a
+        # run should decline, this says where. Neither is usable without the other.
+        if (self.expected_abstains_at is not None) != (rc == RiskClass.NEEDS_REVIEW):
+            raise ValueError(
+                f"{self.case_id}: expected_abstains_at={self.expected_abstains_at!r} but "
+                f"expected_risk_class={rc}. Set it exactly when the class is needs_review — name "
+                f"the node the description cannot answer."
+            )
 
         # Art. 5 — prohibition and the PROHIBITED class are the same fact, stated two ways.
         if self.expected_prohibited != (rc == RiskClass.PROHIBITED):
