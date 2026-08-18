@@ -4,6 +4,8 @@ Order (Commission's, with our deliberate split of profiling before derogation):
 
     is_ai ─not AI─────────────────────────────────────────────► minimal
       │ AI
+    territorial ─Art.2(1) reaches it nowhere───────────────────► OUT_OF_SCOPE
+      │ a limb applies, or territory unaddressed
     scope ─Art.2(3),(4),(6),(8),(10)───────────────────────────► OUT_OF_SCOPE
       │ none ── or Art.2(12), which falls through (see below)
     prohibited ─Art.5 yes──────────────────────────────────────► PROHIBITED
@@ -25,8 +27,20 @@ Order (Commission's, with our deliberate split of profiling before derogation):
 
 Art. 2 comes FIRST because it is prior to everything else: a system the Regulation does not govern
 is not a prohibited practice and has no risk tier. Asked after `is_ai` only because Art. 2 speaks
-throughout of AI systems. OUT_OF_SCOPE is not a low tier — `minimal` means governed and owing
-Art. 4, this means owing nothing at all — so `select_rules()` returns no obligations for it.
+throughout of AI systems. It is TWO questions, in the order the Article puts them. Art. 2(1) is the
+POSITIVE limb — does the Regulation reach this actor at all — and paragraphs (3)-(12) are exclusions
+carved OUT of a Regulation already assumed to apply, so `territorial` is asked before `scope`. A
+system Art. 2(1) never reached is not "excluded"; it was outside from the start, and its citation
+says 2(1) rather than borrowing an exclusion's paragraph.
+
+Both scope nodes clear a system only on an EXPLICIT finding. `territorial` needs `outside_union`
+and `scope` needs a named paragraph; an unanswered or unrecognised value leaves the Regulation
+applying in both. Over-inclusion is recoverable, a silent clearance is not — and territory is where
+that matters most, because almost no document mentions it and `not_addressed` is the ordinary
+answer.
+
+OUT_OF_SCOPE is not a low tier — `minimal` means governed and owing Art. 4, this means owing
+nothing at all — so `select_rules()` returns no obligations for it.
 
 Art. 2(12), free and open-source, is the one exclusion that cannot be settled there. It is lifted
 where the release is high-risk, an Art. 5 practice, or subject to Art. 50 — the very questions the
@@ -99,6 +113,7 @@ from aiact.schemas.enums import (
     ProhibitedPractice,
     RiskClass,
     ScopeExclusion,
+    TerritorialLink,
 )
 from aiact.schemas.policy import GuidanceSource, LegalSource
 from aiact.tracing import trace_run
@@ -125,6 +140,41 @@ QUESTIONS: dict[str, ClassificationQuestion] = {
         "Is the described system an 'AI system' within the meaning of Article 3(1)?",
         "bool",
         label="Is it an AI system at all?",
+    ),
+    "territorial": ClassificationQuestion(
+        "territorial",
+        _src(2, 1),
+        # Art. 2(1) is the POSITIVE limb, and it is asked before the exclusions because it is prior
+        # to them: paragraphs (3)-(12) carve OUT of a Regulation that already applies. A system with
+        # no Union connection is not "excluded" — it was never reached.
+        #
+        # THE DEFAULT IS THAT IT APPLIES. Real documentation almost never states territory, so a
+        # node that abstained on silence would make needs_review the answer for nearly every
+        # document, and one that guessed a limb would invent the finding. `not_addressed` records
+        # what actually happened and lets the assessment continue — over-inclusion, never a silent
+        # clearance, the same rule `_scope_exclusion` follows.
+        "Which limb of Article 2(1) brings this system within this Regulation's reach?\n"
+        "- eu_placing_or_service (2(1)(a)): a provider places it on the market or puts it into "
+        "service IN THE UNION. Where the provider is established does not matter — a third-country "
+        "provider selling into the Union is squarely within this limb.\n"
+        "- eu_deployer (2(1)(b)): the deployer is established or located in the Union.\n"
+        "- third_country_output_used_in_union (2(1)(c)): provider and deployer are both "
+        "outside the Union, but the OUTPUT the system produces is used in the Union.\n"
+        "- eu_supply_chain (2(1)(d)-(f)): an importer, distributor, product manufacturer "
+        "placing the system with its own product, or an authorised representative of a non-Union "
+        "provider.\n"
+        "- affected_persons_in_union (2(1)(g)): the people the system is used on are in the "
+        "Union.\n"
+        "- not_addressed: THE ORDINARY ANSWER. The description says nothing about territory, "
+        "markets or where the system is sold, used or its output consumed. Give this rather than "
+        "choosing a limb the text does not support — most documentation simply never says.\n"
+        "- outside_union: give this ONLY where the description POSITIVELY establishes that the "
+        "system reaches the Union nowhere — not placed or serviced here, no deployer here, its "
+        "output not used here, and the people it is used on not here. A system described for one "
+        "non-Union market does not qualify unless the text rules the Union out; saying where a "
+        "company is based, or naming a home market, settles nothing on its own.",
+        "territorial_link",
+        label="Is it sold, used, or its output relied on in the EU?",
     ),
     "scope": ClassificationQuestion(
         "scope",
@@ -381,6 +431,7 @@ _QUESTION_CONTEXT: dict[str, tuple[tuple[int, ...], tuple[str, ...]]] = {
     # Art. 3 too: the exclusions lean on defined terms the Article does not restate — 'placing on
     # the market' (3(9)-(10)) for 2(8), 'deployer' (3(4)) for 2(10), and 'testing in real-world
     # conditions' (3(57)), which is what stops 2(8) covering a live pilot.
+    "territorial": ((2,), ()),  # Art. 2(1) — the positive limb
     "scope": ((2, 3), ()),
     "prohibited": ((5,), ()),  # Art. 5 — the prohibited practices
     "annex_i": ((6,), ("I",)),  # Art. 6(1) + the Annex I legislation list itself
@@ -485,6 +536,7 @@ class GraphState(BaseModel):
     description: str
     use_case_id: str = "use_case"
     is_ai_system: ClassificationAnswer | None = None
+    territorial_link: ClassificationAnswer | None = None
     scope_exclusion: ClassificationAnswer | None = None
     prohibited: ClassificationAnswer | None = None
     in_annex_i: ClassificationAnswer | None = None
@@ -512,6 +564,7 @@ def _every_answer(state: GraphState) -> list[ClassificationAnswer]:
     feeds the confidence rule and must exclude Art. 50, this one is the audit trail."""
     ordered = [
         state.is_ai_system,
+        state.territorial_link,
         state.scope_exclusion,
         state.prohibited,
         state.in_annex_i,
@@ -534,6 +587,7 @@ def _get_answers(state: GraphState) -> list[ClassificationAnswer]:
     to needs_review, and an Art. 50 finding would look like it influenced the tier. It does not."""
     answers = [
         state.is_ai_system,
+        state.territorial_link,
         state.scope_exclusion,
         state.prohibited,
         state.in_annex_i,
@@ -552,6 +606,8 @@ def _get_answers(state: GraphState) -> list[ClassificationAnswer]:
 _WHAT_THE_NODE_NEEDED: dict[str, str] = {
     "is_ai": "whether this is an AI system — does it infer its outputs, or follow rules a person "
     "wrote",
+    "territorial": "where the system is placed, used, or its output consumed — whether any of "
+    "that touches the Union",
     "scope": "who uses the system and what for — whether it is military, purely research, "
     "pre-market, or a private person's own use",
     "prohibited": "whether it infers emotions, categorises people biometrically, scores social "
@@ -687,6 +743,21 @@ def _condition_letter(state: GraphState) -> str:
     return a.value.letter if a is not None and isinstance(a.value, DerogationCondition) else "a)-(d"
 
 
+def _rules_out_the_union(state: GraphState) -> bool:
+    """Whether Art. 2(1) was answered as reaching the system nowhere.
+
+    Narrowed by TYPE, exactly as `_scope_exclusion` is, and for the same reason: only the explicit
+    `OUTSIDE_UNION` member clears a system. A missing answer, a bare `None`, an unrecognised string
+    — anything that is not that finding leaves the Regulation applying. Over-inclusion is
+    recoverable; a silent clearance is not."""
+    a = state.territorial_link
+    return (
+        a is not None
+        and isinstance(a.value, TerritorialLink)
+        and a.value.rules_out_the_union
+    )
+
+
 def _decide_tier(state: GraphState) -> tuple[RiskClass, str, list[ClassificationEvidence]]:
     """Derive the risk class from whatever nodes were answered. Order encodes the cascade:
     abstention first, then Art. 2 scope, then prohibition, then the Annex III / profiling /
@@ -711,6 +782,20 @@ def _decide_tier(state: GraphState) -> tuple[RiskClass, str, list[Classification
             RiskClass.MINIMAL,
             "Not an AI system within Art. 3(1); outside the Regulation's risk tiers.",
             [evidence(state.is_ai_system)],
+        )
+    # Art. 2(1) before every exclusion: paragraphs (3)-(12) carve out of a Regulation that already
+    # applies, so a system it never reached is not "excluded" — it was outside from the start, and
+    # the citation must say 2(1) rather than borrow an exclusion's paragraph.
+    if _rules_out_the_union(state):
+        return (
+            RiskClass.OUT_OF_SCOPE,
+            "Art. 2(1) does not reach this system: it is not placed on the market or put into "
+            "service in the Union, has no deployer here, its output is not used here, and the "
+            "persons it is used on are not here. The Regulation never applies, so no exclusion is "
+            "needed and nothing under it is owed.",
+            # `_rules_out_the_union` is true only when the answer exists, so the guard is for the
+            # type checker rather than for a reachable state.
+            [evidence(state.territorial_link)] if state.territorial_link else [],
         )
     excluded = _scope_exclusion(state)
     # Art. 2(12) is settled at the END of the cascade, below: its exceptions name high-risk, Art. 5
@@ -871,7 +956,19 @@ def decide_risk_class(
 # `assemble` (which yields needs_review) rather than crashing.
 def _route_is_ai(state: GraphState) -> str:
     a = state.is_ai_system
-    return "assemble" if a is None or _is_low_confidence(a) or a.value is not True else "scope"
+    return (
+        "assemble" if a is None or _is_low_confidence(a) or a.value is not True else "territorial"
+    )
+
+
+def _route_territorial(state: GraphState) -> str:
+    """Art. 2(1) reaches the system, or it does not. Only an explicit `outside_union` finding ends
+    the assessment; every other answer — a named limb, or the record that territory went
+    unaddressed — continues it, and so does an unrecognised one."""
+    a = state.territorial_link
+    if a is None or _is_low_confidence(a):
+        return "assemble"
+    return "assemble" if _rules_out_the_union(state) else "scope"
 
 
 def _route_scope(state: GraphState) -> str:
@@ -965,6 +1062,9 @@ def build_graph(
     def node_is_ai(state: GraphState) -> dict[str, Any]:
         return {"is_ai_system": _ask("is_ai", state.description)}
 
+    def node_territorial(state: GraphState) -> dict[str, Any]:
+        return {"territorial_link": _ask("territorial", state.description)}
+
     def node_scope(state: GraphState) -> dict[str, Any]:
         return {"scope_exclusion": _ask("scope", state.description)}
 
@@ -1028,6 +1128,7 @@ def build_graph(
 
     g = StateGraph(GraphState)
     g.add_node("is_ai", node_is_ai)
+    g.add_node("territorial", node_territorial)
     g.add_node("scope", node_scope)
     g.add_node("prohibited", node_prohibited)
     g.add_node("annex_i", node_annex_i)
@@ -1039,7 +1140,12 @@ def build_graph(
     g.add_node("assemble", node_assemble)
 
     g.add_edge(START, "is_ai")
-    g.add_conditional_edges("is_ai", _route_is_ai, {"scope": "scope", "assemble": "assemble"})
+    g.add_conditional_edges(
+        "is_ai", _route_is_ai, {"territorial": "territorial", "assemble": "assemble"}
+    )
+    g.add_conditional_edges(
+        "territorial", _route_territorial, {"scope": "scope", "assemble": "assemble"}
+    )
     g.add_conditional_edges(
         "scope", _route_scope, {"prohibited": "prohibited", "assemble": "assemble"}
     )
@@ -1080,6 +1186,7 @@ def build_graph(
 
 _ROUTERS = {
     "is_ai": _route_is_ai,
+    "territorial": _route_territorial,
     "scope": _route_scope,
     "prohibited": _route_prohibited,
     "annex_i": _route_annex_i,
@@ -1090,6 +1197,7 @@ _ROUTERS = {
 }
 _STATE_FIELD = {
     "is_ai": "is_ai_system",
+    "territorial": "territorial_link",
     "scope": "scope_exclusion",
     "prohibited": "prohibited",
     "annex_i": "in_annex_i",

@@ -19,6 +19,7 @@ from aiact.schemas.enums import (
     ProhibitedPractice,
     RiskClass,
     ScopeExclusion,
+    TerritorialLink,
     TransparencyDuty,
 )
 from aiact.schemas.eval import ClassificationCase, Difficulty
@@ -411,9 +412,32 @@ def test_art_2_12_may_name_its_paragraph_and_still_be_governed():
     )
 
 
-def test_out_of_scope_must_name_the_paragraph_that_excludes_it():
-    with pytest.raises(ValueError, match="names no Art. 2 paragraph"):
+def test_out_of_scope_must_say_which_of_the_two_routes_put_it_there():
+    """OUT_OF_SCOPE is reached two ways and they are different findings: an exclusion carved out
+    of a Regulation that applies, or Art. 2(1) never reaching the system. A case must name one."""
+    with pytest.raises(ValueError, match="names neither an Art. 2 exclusion"):
         _scope_case(expected_scope_exclusion=None, scope_exclusion_basis="")
+
+
+def test_a_system_the_regulation_never_reaches_needs_no_exclusion():
+    """Art. 2(1) failing is not an exclusion — nothing was carved out — so such a case names no
+    paragraph of (3)-(12), and may not claim one."""
+    outside = _scope_case(
+        expected_scope_exclusion=None,
+        scope_exclusion_basis="",
+        expected_territorial_link=TerritorialLink.OUTSIDE_UNION,
+    )
+    assert outside.expected_risk_class == RiskClass.OUT_OF_SCOPE
+
+    with pytest.raises(ValueError, match="cannot also be excluded"):
+        _scope_case(expected_territorial_link=TerritorialLink.OUTSIDE_UNION)
+    with pytest.raises(ValueError, match="has no tier"):
+        _scope_case(
+            expected_risk_class=RiskClass.MINIMAL,
+            expected_scope_exclusion=None,
+            scope_exclusion_basis="",
+            expected_territorial_link=TerritorialLink.OUTSIDE_UNION,
+        )
 
 
 def test_a_concluding_exclusion_cannot_carry_art_6_answers():

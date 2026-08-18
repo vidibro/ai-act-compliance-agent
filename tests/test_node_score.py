@@ -176,11 +176,13 @@ def test_asked_counts_come_from_the_run_not_the_answer_key():
     run = score_node_run([(case, result)])
     # Asked covers everything the cascade put.
     assert run.asked["is_ai"] == 1
+    assert run.asked["territorial"] == 1
     assert run.asked["scope"] == 1
     assert run.asked["annex_iii"] == 1
     # Scored covers what the YAML pinned, PLUS what every case carries whether it names it or not.
     assert {s.node_id for s in run.scores} == {
         "is_ai",
+        "territorial",
         "scope",
         "prohibited",
         "annex_iii",

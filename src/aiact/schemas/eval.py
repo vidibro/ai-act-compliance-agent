@@ -31,6 +31,7 @@ from aiact.schemas.enums import (
     ProhibitedPractice,
     RiskClass,
     ScopeExclusion,
+    TerritorialLink,
     TransparencyDuty,
     Verdict,
 )
@@ -191,6 +192,18 @@ class ClassificationCase(BaseModel):
     It is also where a contestable label declares itself: a case whose argument cannot be written
     plainly is a case whose label is not yet settled."""
 
+    expected_territorial_link: TerritorialLink | None = TerritorialLink.NOT_ADDRESSED
+    """Art. 2(1) — WHICH limb brings the system within the Regulation's reach, or None where the
+    description positively establishes that none does.
+
+    Defaults to NOT_ADDRESSED rather than to a limb, because that is what almost every real
+    document supports: silence about territory is not evidence of a European market, and a key that
+    asserted one would be inventing the same fact it forbids the classifier to invent. A case only
+    names a limb where its text actually says so.
+
+    `None` is the interesting label — a system the Regulation never reaches, which is OUT_OF_SCOPE
+    without any exclusion applying."""
+
     # The "why" — the decisive sub-answers a correct classifier should also produce. Optional so a
     # case only pins what actually decides it.
     expected_scope_exclusion: ScopeExclusion | None = None
@@ -316,10 +329,29 @@ class ClassificationCase(BaseModel):
         # the graph actually takes.
         excluded = self.expected_scope_exclusion
         falls_through = excluded is ScopeExclusion.FREE_OPEN_SOURCE
-        if rc == RiskClass.OUT_OF_SCOPE and excluded is None:
+        # OUT_OF_SCOPE has TWO routes, and they are different findings. Art. 2(1) never reaching
+        # the system is not an exclusion — nothing was carved out, the Regulation simply does not
+        # extend there — so such a case names no paragraph of (3)-(12) and must not be made to.
+        outside_union = (
+            self.expected_territorial_link is not None
+            and self.expected_territorial_link.rules_out_the_union
+        )
+        if rc == RiskClass.OUT_OF_SCOPE and excluded is None and not outside_union:
             raise ValueError(
-                f"{self.case_id}: expected_risk_class=out_of_scope names no Art. 2 paragraph. The "
-                f"class IS the exclusion — say which one withholds the Regulation."
+                f"{self.case_id}: expected_risk_class=out_of_scope names neither an Art. 2 "
+                f"exclusion nor a failure of Art. 2(1) to reach the system. Say which puts it "
+                f"outside."
+            )
+        if outside_union and rc != RiskClass.OUT_OF_SCOPE:
+            raise ValueError(
+                f"{self.case_id}: expected_territorial_link=outside_union but "
+                f"expected_risk_class={rc}. A system the Regulation never reaches has no tier."
+            )
+        if outside_union and excluded is not None:
+            raise ValueError(
+                f"{self.case_id}: a system Art. 2(1) never reaches cannot also be excluded by "
+                f"Art. 2({excluded.paragraph}) — an exclusion carves out of a Regulation that "
+                f"applies."
             )
         if excluded is not None and not falls_through and rc != RiskClass.OUT_OF_SCOPE:
             raise ValueError(

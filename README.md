@@ -25,8 +25,9 @@ report. The two jobs above ask different things of that document, and it is wort
 what the system does **to a person** (extracts fields? evaluates or ranks them? infers emotions?
 allocates tasks?); whether you are **provider or deployer** (Art. 3(3)–(4)); and whether it
 **generates content or interacts with people directly** (Art. 50) — and, if you deploy rather than
-build it, say so, because Art. 50 splits its duties between the two roles. Describe *function, not
-benefit*,
+build it, say so, because Art. 50 splits its duties between the two roles. Say **where it is sold,
+used, or its output acted on** — Art. 2(1) reaches a third-country provider whose output is used in
+the Union, so "we are not a European company" settles nothing. Describe *function, not benefit*,
 write one section **per intended purpose** rather than per product, and say what the system does
 **not** do — the Art. 6(3) derogations turn on absence. Say too **who relies on the output**:
 whether a person reviews every case regardless, or whether the system's answer settles some of them
@@ -98,7 +99,9 @@ makes profiling high-risk *notwithstanding* the derogations.
 flowchart TD
     START([use-case description]) --> AI{"Is it an AI system at all?<br/>Art. 3(1)"}
     AI -->|no| MIN1([minimal]):::ok
-    AI -->|yes| SCOPE{"Does this law apply to the system at all?<br/>Art. 2"}
+    AI -->|yes| TERR{"Is it sold, used, or its output<br/>relied on in the EU?<br/>Art. 2(1)"}
+    TERR -->|"no — it is placed, used and<br/>consumed entirely outside the EU"| OOS
+    TERR -->|"yes, or the document<br/>never says"| SCOPE{"Does this law apply to the system at all?<br/>Art. 2(3)-(12)"}
     SCOPE -->|"no — military, research-only,<br/>pre-market, or a person's own use"| OOS([out of scope]):::oos
     SCOPE -->|yes| PROH{"Is the practice itself banned?<br/>Art. 5(1)(a)-(h)"}
     PROH -->|"yes — a named point bans it"| BAN([prohibited]):::ban
@@ -116,6 +119,7 @@ flowchart TD
     SIG -->|"yes — it does the real deciding"| HIGH
     SIG -->|"no — a person decides anyway"| NHR([not high risk]):::mid
     AI -.->|low confidence| NR([needs review]):::rev
+    TERR -.-> NR
     SCOPE -.-> NR
     PROH -.-> NR
     ANNEXI -.-> NR
@@ -133,7 +137,14 @@ flowchart TD
     classDef rev fill:#fdf3de,stroke:#d9a521
 ```
 
-- **The first question is whether the law applies at all.** Art. 2 withholds the Regulation from
+- **Scope is two questions, not one.** Art. 2(1) is the *positive* limb — does the Regulation
+  reach this actor at all: a system placed on the EU market, an EU deployer, or a third-country
+  provider whose **output is used in the Union**. "We're a US company" answers none of that. Only
+  a document that positively rules out every limb takes a system out here; almost no document
+  mentions territory, so silence continues the assessment rather than stopping it. A system Art.
+  2(1) never reached is not *excluded* — nothing was carved out — so its citation says 2(1) rather
+  than borrowing an exclusion's paragraph.
+- **Then the exclusions.** Art. 2(3)–(12) withhold the Regulation from
   systems used only for military or defence purposes, built only to do science, still in
   development before sale, or used by a private person in their own life. This is asked *before*
   the ban check, because Art. 5 is part of this Regulation and cannot reach a system it does not

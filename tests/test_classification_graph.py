@@ -24,6 +24,7 @@ from aiact.schemas.enums import (
     DerogationCondition,
     ProhibitedPractice,
     RiskClass,
+    TerritorialLink,
     TransparencyDuty,
 )
 from aiact.schemas.eval import ClassificationCase
@@ -43,6 +44,7 @@ def _brain_from_case(case: ClassificationCase) -> ScriptedBrain:
     reading the text is the LLMBrain's job, tested separately."""
     answers = {
         "is_ai": True,  # every Layer 1 case is an AI system
+        "territorial": case.expected_territorial_link,
         "scope": case.expected_scope_exclusion,
         "prohibited": case.expected_prohibited_practice,
         "annex_i": case.expected_annex_i_product,
@@ -133,6 +135,57 @@ def test_every_prohibited_practice_can_cite_itself():
     assert points == list("abcdefgh")
 
 
+def test_a_system_the_regulation_never_reaches_is_out_of_scope():
+    """Art. 2(1) is the POSITIVE limb and it is asked before every exclusion. Without it a system
+    placed nowhere in the Union, whose output is never used here, comes back with a full risk tier
+    and a list of duties nobody owes."""
+    brain = ScriptedBrain(
+        {"is_ai": True, "territorial": TerritorialLink.OUTSIDE_UNION, "transparency": []}
+    )
+    result = classify("US-only tenant screening", brain, "us")
+    assert result.overall_risk_class == RiskClass.OUT_OF_SCOPE
+    assert "Art. 2(1)" in result.reasoning
+    # NOT an exclusion: nothing was carved out, so no paragraph of (3)-(12) is cited.
+    assert result.use_cases[0].annex_iii_area is None
+
+
+def test_only_an_explicit_finding_clears_a_system_on_territory():
+    """The polarity that matters. Everywhere else in this cascade `None` is the SAFE answer — no
+    exclusion, no area, no ban. Here the unsafe reading is the one that clears a system entirely,
+    so it must be stated to be reached: an unanswered or unrecognised value leaves the Regulation
+    applying, exactly as `_scope_exclusion` does."""
+    for value in (None, "somewhere else", True):
+        brain = ScriptedBrain(
+            {
+                "is_ai": True,
+                "territorial": value,
+                "prohibited": None,
+                "annex_iii": AnnexIIIArea.EMPLOYMENT,
+                "profiling": True,
+                "transparency": [],
+            }
+        )
+        result = classify("scores candidates", brain, "x")
+        assert result.overall_risk_class == RiskClass.HIGH_RISK, (
+            f"territorial={value!r} must not clear a system — only an explicit outside_union does"
+        )
+
+
+def test_silence_about_territory_does_not_stop_the_assessment():
+    """`not_addressed` is the ordinary answer, because real documentation almost never mentions
+    territory. Abstaining on it would make needs_review the verdict for nearly every document."""
+    brain = ScriptedBrain(
+        {
+            "is_ai": True,
+            "territorial": TerritorialLink.NOT_ADDRESSED,
+            "prohibited": None,
+            "annex_iii": None,
+            "transparency": [],
+        }
+    )
+    assert classify("a tool", brain, "x").overall_risk_class == RiskClass.MINIMAL
+
+
 def test_not_an_ai_system_is_minimal():
     brain = ScriptedBrain({"is_ai": False})
     result = classify("a plain SQL report with no model", brain, "sql")
@@ -219,6 +272,7 @@ def test_route_for_walks_through_the_chapeau():
     reached = route_for(
         {
             "is_ai": True,
+            "territorial": TerritorialLink.NOT_ADDRESSED,
             "scope": None,
             "prohibited": None,
             "annex_i": None,

@@ -331,6 +331,77 @@ cases:
       Teaches: a recruitment-phase preparatory tool is INSIDE Annex III (then exempt), NOT minimal.
       The not_high_risk/minimal line matters — not_high_risk still owes Art. 6(4).
 
+  # --- Art. 2(1): the POSITIVE limb of scope, prior to every exclusion -------------------------
+  # Paragraphs (3)-(12) carve OUT of a Regulation assumed to apply; (1) is what makes it apply.
+  # Without a case on each side, the node is answered `not_addressed` on every case and measures
+  # nothing — while a system the Act never reaches comes back with a full tier and a duty list.
+  - case_id: us_only_tenant_screening
+    description: >-
+      A tenant-screening service operated by a company incorporated in Delaware and hosted entirely
+      in United States regions. It scores rental applicants for a landlord's letting decision. The
+      terms of service state that the service is offered solely to landlords holding property in the
+      United States, that applications may be submitted only for properties located there, and that
+      the company neither markets nor makes the service available in the European Union or the
+      European Economic Area and blocks sign-ups from those territories. No output is returned to,
+      or acted on by, anyone outside the United States.
+    expected_risk_class: out_of_scope
+    expected_is_ai_system: true
+    is_ai_basis: >-
+      Infers a suitability score for each applicant from their application and credit history — a
+      prediction about a person, not a lookup.
+    expected_territorial_link: outside_union
+    expected_transparency_duties: []
+    transparency_basis: >-
+      Art. 50 is not reached at all: it binds providers and deployers the Regulation applies to,
+      and Art. 2(1) does not extend to this one. Were it reached, none of its paragraphs would
+      attach — the applicant never converses with it (50(1)), it generates no synthetic content
+      (50(2)), infers no emotion or biometric category (50(3)) and produces no deep fake (50(4)).
+    decisive_fact: >-
+      Art. 2(1) does not reach it. The text positively rules out every limb: not placed on the
+      market or put into service in the Union (a), no deployer here (b), no output used here (c),
+      no Union supply chain (d)-(f), and the applicants are not in the Union (g). It is NOT an
+      Art. 2 exclusion — nothing is carved out of a Regulation that never extended there — and it
+      would otherwise be high-risk under Annex III(5)(b), which is exactly why the question must be
+      asked before the tier is computed.
+    difficulty: obvious
+    notes: >-
+      Teaches that scope has a positive limb. Every exclusion case in this set answers "the
+      Regulation applies, but paragraph N withholds it"; this one answers "it was never engaged".
+      The tier it would otherwise carry is deliberately a serious one.
+
+  - case_id: us_built_screening_used_in_ireland
+    description: >-
+      The same tenant-screening service, operated by the same Delaware company from the same United
+      States infrastructure, with no European office, staff or subsidiary. A letting agency in
+      Dublin subscribes to it and submits applications for apartments in Ireland; the score comes
+      back and the agency uses it to decide which applicants to offer a viewing.
+    expected_risk_class: high_risk
+    expected_is_ai_system: true
+    is_ai_basis: >-
+      Infers a suitability score for each applicant, as its sibling does — the computation is
+      identical and only the territory differs.
+    expected_territorial_link: third_country_output_used_in_union
+    expected_annex_i_product: null
+    expected_annex_iii_area: essential_services
+    expected_performs_profiling: true
+    expected_transparency_duties: []
+    transparency_basis: >-
+      Art. 50 does not attach: the applicant never interacts with the system (50(1)), it generates
+      no synthetic content (50(2)), infers no emotion or biometric category (50(3)) and produces no
+      deep fake (50(4)). The agency, not the system, speaks to the applicant.
+    decisive_fact: >-
+      Art. 2(1)(c) reaches it: provider and deployer are outside the Union on the provider's side,
+      but the OUTPUT is used in the Union by the Dublin agency. Having no European presence settles
+      nothing. It then classifies normally — evaluating applicants for access to housing is
+      Annex III(5), and scoring persons is profiling, so the Art. 6(3) carve-back makes it
+      high-risk.
+    difficulty: obvious
+    flips_from: us_only_tenant_screening
+    notes: >-
+      The flip for Art. 2(1), and it flips on territory alone: the same company, the same code, the
+      same score. out_of_scope becomes high_risk because a customer in Dublin uses the output. The
+      trap is "we are a US company" read as an answer.
+
   # --- Art. 3(1): the FIRST question, and the one a set of all-`true` cases never asks -----------
   # Three cases straddling the inference line. Without them `is_ai` is answered the same way on
   # every case, so a model replying "yes, an AI system" unconditionally scores full marks on the

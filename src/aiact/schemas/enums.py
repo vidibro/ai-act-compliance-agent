@@ -122,6 +122,72 @@ _SCOPE_EXCLUSION_PARAGRAPH: dict[ScopeExclusion, int] = {
 }
 
 
+class TerritorialLink(StrEnum):
+    """Art. 2(1). WHICH limb brings the system within the Regulation's reach — or that none does.
+
+    THE POSITIVE LIMB of Art. 2, and the one the cascade was missing. Paragraphs (3) to (12) are
+    exclusions carved OUT of a Regulation assumed to apply; (1) is what makes it apply in the first
+    place. Without this a system placed only outside the Union, whose output is never used here,
+    comes back with a full risk tier and a list of duties nobody owes.
+
+    THE DEFAULT IS THAT IT APPLIES, and `NOT_ADDRESSED` is how that is recorded honestly. Most
+    documentation never mentions territory at all, so abstaining on silence would send nearly every
+    case to needs_review, while picking a limb the text does not support would fabricate a finding.
+    The member says exactly what happened — no limb was ruled out — and the assessment proceeds.
+    Only `None`, an affirmative statement that the system reaches the Union nowhere, takes a system
+    out. Over-inclusion, never a silent clearance: the same rule `_scope_exclusion` follows."""
+
+    EU_PLACING_OR_SERVICE = "eu_placing_or_service"
+    """2(1)(a). A provider placing the system on the market or putting it into service in the
+    Union — irrespective of whether that provider is established inside the Union or in a third
+    country. Establishment is not the test; where the system is placed is."""
+
+    EU_DEPLOYER = "eu_deployer"
+    """2(1)(b). A deployer whose place of establishment is, or who is located, within the Union."""
+
+    THIRD_COUNTRY_OUTPUT_USED_IN_UNION = "third_country_output_used_in_union"
+    """2(1)(c). A provider or deployer established in a third country where the OUTPUT the system
+    produces is used in the Union. The reach that catches a system built and run entirely
+    elsewhere, and the reason 'we do not operate in Europe' settles nothing on its own."""
+
+    EU_SUPPLY_CHAIN = "eu_supply_chain"
+    """2(1)(d)-(f). Importers and distributors, product manufacturers placing an AI system on the
+    market with their product under their own name, and authorised representatives of providers not
+    established in the Union. Grouped because they share one question — is this party putting the
+    system onto the Union market — and each has its own obligations elsewhere."""
+
+    AFFECTED_PERSONS_IN_UNION = "affected_persons_in_union"
+    """2(1)(g). Affected persons located in the Union. Listed as a limb of reach rather than as a
+    duty-holder: it is who the Regulation protects, not who it binds."""
+
+    OUTSIDE_UNION = "outside_union"
+    """NOT a limb — the finding that NO limb applies: the description positively establishes the
+    system is not placed or put into service in the Union, has no deployer here, its output is not
+    used here, and the persons it is used on are not here. The Regulation never applies.
+
+    An explicit member rather than `None`, deliberately. `None` is what a brain returns when it has
+    not answered, and everywhere else in this cascade that collapses to the SAFE reading — no
+    exclusion, no Annex III area, no ban. Here the unsafe reading is the one that clears a system
+    entirely, so it must be stated to be reached. Over-inclusion, never a silent clearance."""
+
+    NOT_ADDRESSED = "not_addressed"
+    """NOT a limb of the Article — a record that the description never addressed territory, so no
+    limb was ruled out and the Regulation is presumed to apply.
+
+    Kept as an answer rather than an abstention because the alternative is worse in both
+    directions: declining would make needs_review the answer for almost every real document, and
+    naming a limb would assert a fact the text never gave. A reader who needs certainty can see
+    that this is what the tool found, and supply the missing sentence."""
+
+    @property
+    def rules_out_the_union(self) -> bool:
+        """Whether this answer puts the system beyond the Regulation's reach.
+
+        True for `OUTSIDE_UNION` alone. Every other member either names a limb that brings the
+        system in or records that the question went unanswered, and both continue the assessment."""
+        return self is TerritorialLink.OUTSIDE_UNION
+
+
 class ProhibitedPractice(StrEnum):
     """Art. 5(1). WHICH point bans the practice.
 

@@ -57,6 +57,7 @@ Outcome = Literal["correct", "wrong", "abstained"]
 # rather than silently going unmeasured — the failure this whole module exists to make visible.
 NODE_KEYS: dict[str, str | None] = {
     "is_ai": "expected_is_ai_system",
+    "territorial": "expected_territorial_link",
     "scope": "expected_scope_exclusion",
     "prohibited": "expected_prohibited_practice",
     "annex_i": "expected_annex_i_product",
@@ -85,7 +86,12 @@ NODE_KEYS: dict[str, str | None] = {
 # The rule they bypass exists for the ENUM fields, where `None` is ambiguous between "the answer is
 # none" and "unpinned". Here there is nothing to disambiguate.
 DERIVED_FROM_CLASS = frozenset(
-    {"expected_prohibited_practice", "expected_scope_exclusion", "expected_is_ai_system"}
+    {
+        "expected_prohibited_practice",
+        "expected_scope_exclusion",
+        "expected_is_ai_system",
+        "expected_territorial_link",
+    }
 )
 
 _SKEW_WARNING_AT = 0.8
