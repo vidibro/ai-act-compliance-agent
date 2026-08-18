@@ -18,7 +18,14 @@ from aiact.classify.scripted_brain import ScriptedBrain
 from aiact.gap.judge import Judgement
 from aiact.pipeline import review
 from aiact.policy_loader import load_policy_spec
-from aiact.schemas.enums import AnnexIIIArea, ProhibitedPractice, RiskClass, ScopeExclusion, Verdict
+from aiact.schemas.enums import (
+    ActorRole,
+    AnnexIIIArea,
+    ProhibitedPractice,
+    RiskClass,
+    ScopeExclusion,
+    Verdict,
+)
 
 DOCUMENT = "# System card\n\n## Human oversight\n\nA panel reviews every recommendation.\n"
 
@@ -128,16 +135,58 @@ def test_a_not_high_risk_use_case_still_owes_article_6_4(spec):
     report = review(DOCUMENT, spec, brain, judge=judge, system_id="sys-1")
 
     assert report.classification.overall_risk_class == RiskClass.NOT_HIGH_RISK
-    checked = set(judge.calls) | set(report.not_document_verifiable)
+    outstanding = {r for ids in report.not_document_verifiable.values() for r in ids}
+    checked = set(judge.calls) | outstanding
     assert "AIA-NHR-A06-4" in checked, "Art. 6(4) must survive a not_high_risk classification"
 
 
-def test_a_minimal_system_owes_nothing_and_that_is_not_an_error(spec):
-    """No rule attaches to `minimal`, so an empty report here is the correct answer rather than a
-    skipped check — the obligation layer ran and found nothing owed."""
+def test_a_minimal_system_still_owes_article_4(spec):
+    """`minimal` means governed and lightly burdened, NOT ungoverned. Art. 4 binds providers and
+    deployers of every AI system at every tier the Regulation reaches, so an empty report here
+    would make `minimal` indistinguishable from `out_of_scope` — the collapse that tells a
+    defence contractor they hold duties the legislator withheld, in reverse."""
     report = review(DOCUMENT, spec, a_brain(prohibited=None, annex_iii=None), judge=StubJudge())
     assert report.classification.overall_risk_class == RiskClass.MINIMAL
+    # Nothing to JUDGE — Art. 4 is an organisational measure, not a property of the system.
     assert report.summary.total_applicable == 0
+    assert report.not_document_verifiable[ActorRole.PROVIDER] == ["AIA-ALL-A04"]
+    assert report.not_document_verifiable[ActorRole.DEPLOYER] == ["AIA-ALL-A04"]
+
+
+def test_an_out_of_scope_system_owes_nothing_at_all(spec):
+    """The contrast that gives the test above its meaning: an Art. 2 exclusion withholds the whole
+    Regulation, Art. 4 included."""
+    report = review(
+        DOCUMENT,
+        spec,
+        a_brain(prohibited=None, scope=ScopeExclusion.MILITARY_DEFENCE_NATIONAL_SECURITY),
+        judge=StubJudge(),
+    )
+    assert report.classification.overall_risk_class == RiskClass.OUT_OF_SCOPE
+    assert report.not_document_verifiable == {}
+
+
+def test_the_report_covers_both_duty_holders(spec):
+    """Obligations attach to the ROLE, so one system produces two obligation sets. A report naming
+    only the provider's is not narrower — it is misleading, because that provider's customers owe
+    Arts. 26-27 on the same system and nothing else tells them so."""
+    judge = StubJudge()
+    report = review(DOCUMENT, spec, high_risk_brain(), judge=judge, system_id="sys-1")
+
+    assert report.classification.overall_risk_class == RiskClass.HIGH_RISK
+    outstanding = report.not_document_verifiable
+    assert "AIA-PO-A17" in outstanding[ActorRole.PROVIDER]
+    assert outstanding[ActorRole.DEPLOYER] == [
+        "AIA-ALL-A04",
+        "AIA-DP-A26",
+        "AIA-DP-A27",
+        "AIA-DP-A86",
+    ]
+    # Every judged finding says whose duty it is, so the two sets never merge in a reader's eye.
+    assert {f.role for f in report.findings} == {ActorRole.PROVIDER}
+    assert (report.summary.per_role or {})[ActorRole.PROVIDER].total_applicable == len(
+        report.findings
+    )
 
 
 # --- Art. 2: nothing is owed, and the report has to say which kind of nothing ---------------------

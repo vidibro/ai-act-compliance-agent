@@ -57,7 +57,16 @@ def _print(result) -> None:
     # Art. 50 sits BESIDE the tier, never inside it — a minimal-risk generator can owe it and a
     # high-risk scorer can owe none.
     if result.transparency is not None:
-        print(f"  art. 50    : {result.transparency.value} [{result.transparency.confidence}]")
+        duties = result.transparency_duties_by_role
+        owed = (
+            "; ".join(
+                f"{role.value}: "
+                + ", ".join(f"Art. 50({d.paragraph}) {d.value}" for d in ds)
+                for role, ds in duties.items()
+            )
+            or "no duty attaches"
+        )
+        print(f"  art. 50    : {owed} [{result.transparency.confidence}]")
     if result.rests_on_guidance:
         print("  ⚠ rests partly on NON-BINDING Commission interpretation:")
         for g in result.guidance_sources:
@@ -74,6 +83,9 @@ def demo() -> None:
             "annex_iii": AnnexIIIArea.EMPLOYMENT,
             "profiling": False,
             "derogation": DerogationCondition.NARROW_PROCEDURAL_TASK,
+            # Art. 6(3) exempts on BOTH limbs: a narrow role AND no significant risk of harm.
+            "significant_risk": False,
+            "transparency": [],
         }
     )
     scorer = ScriptedBrain(
@@ -82,6 +94,7 @@ def demo() -> None:
             "prohibited": None,
             "annex_iii": AnnexIIIArea.EMPLOYMENT,
             "profiling": True,
+            "transparency": [],
         }
     )
     print("\nCV parser (extracts fields only):")

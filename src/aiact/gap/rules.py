@@ -23,6 +23,14 @@ class ActiveRules:
     """The obligations one use case must answer for, split by how they can be checked."""
 
     use_case_id: str
+    role: ActorRole
+    """WHOSE obligations these are. REQUIRED, with no default: a default would attribute an
+    unattributed set to the provider, which is the one wrong answer that reads as plausible.
+
+    Selection runs once per role and the results are kept apart. Art. 4 binds both, Arts. 9-21 the
+    provider, Arts. 26-27 the deployer, and a report that merged them would hand each party duties
+    it cannot discharge."""
+
     document_verifiable: tuple[PolicyRule, ...] = ()
     """Checkable against the technical documentation. These reach the judge."""
 
@@ -37,6 +45,20 @@ class ActiveRules:
     @property
     def all_rules(self) -> tuple[PolicyRule, ...]:
         return self.document_verifiable + self.not_document_verifiable + self.postponed
+
+
+def roles_with_rules(spec: PolicySpec) -> list[ActorRole]:
+    """Every role the spec actually carries rules for, in `ActorRole` declaration order.
+
+    DERIVED, never listed by hand. A hand-written list is a second place to keep in sync, and the
+    failure it produces is silent: a role added to `spec.yaml` but missing from the list would never
+    be selected for, so its rules would sit in the spec looking covered while activating for nobody.
+    That is the failure the coverage ledger exists to prevent, one layer down — and the ledger now
+    covers roles too: every `ActorRole` either has rules here or is listed in `scope-<version>.yaml`
+    with a reason, enforced by a test. So a role missing from this list is a CI failure, never a
+    silent omission from a report."""
+    named = {role for rule in spec.rules for role in rule.applies_to_role}
+    return [role for role in ActorRole if role in named]
 
 
 def select_rules(spec: PolicySpec, use_case: UseCaseClassification, role: ActorRole) -> ActiveRules:
@@ -60,10 +82,13 @@ def select_rules(spec: PolicySpec, use_case: UseCaseClassification, role: ActorR
     # `applies_to_risk_class` this is what stops it attaching to a system the Regulation does not
     # govern. Stated here because a silent emptiness cannot be told apart from an intended one.
     if use_case.risk_class == RiskClass.OUT_OF_SCOPE:
-        return ActiveRules(use_case_id=use_case.use_case_id)
+        return ActiveRules(use_case_id=use_case.use_case_id, role=role)
 
+    # Art. 2(2) is exhaustive — "only Article 6(1), Articles 102 to 109 and Article 112 apply" — so
+    # this withholds Art. 4 from a Section B system as surely as it withholds Chapter III, and from
+    # the deployer as surely as from the provider.
     if use_case.annex_i_product is not None and not use_case.annex_i_product.chapter_iii_applies:
-        return ActiveRules(use_case_id=use_case.use_case_id)
+        return ActiveRules(use_case_id=use_case.use_case_id, role=role)
 
     active = [
         rule
@@ -74,6 +99,7 @@ def select_rules(spec: PolicySpec, use_case: UseCaseClassification, role: ActorR
     ]
     return ActiveRules(
         use_case_id=use_case.use_case_id,
+        role=role,
         document_verifiable=tuple(
             r for r in active if r.status == "active" and r.document_verifiable
         ),

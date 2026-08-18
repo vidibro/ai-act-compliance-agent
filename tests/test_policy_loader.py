@@ -15,6 +15,7 @@ from pathlib import Path
 import pytest
 import yaml
 
+from aiact.gap.rules import roles_with_rules
 from aiact.policy_loader import load_policy_spec, resolve_requirement
 from aiact.schemas.enums import ActorRole, CheckType, ObligationStatus, RiskClass
 
@@ -33,9 +34,11 @@ def _spec():
 
 def test_shipped_spec_loads():
     spec = _spec()
-    assert spec.spec_version == "0.4.0"
+    assert spec.spec_version == "0.7.0"
     assert spec.act_version_date == ACT_DATE
-    assert len(spec.rules) == 19  # 7 Art.9-15 + 11 provider obligations + 1 Art.6(4)
+    # 7 Art.9-15 + 11 provider obligations + 1 Art.6(4) + Art.4 (provider AND deployer)
+    # + 3 deployer (Arts. 26-27, 86) + 3 supply-chain (Arts. 22-24)
+    assert len(spec.rules) == 26
 
 
 def test_article_store_is_version_scoped():
@@ -68,6 +71,34 @@ def test_every_article_is_classified_in_scope_or_out():
 
     phantom = (cited | out_of_scope) - in_store
     assert not phantom, f"classified articles that do not exist in the store: {sorted(phantom)}"
+
+
+def test_every_role_is_classified_in_scope_or_out():
+    """THE SAME COVERAGE GUARANTEE, over ActorRole. A role either has rules or is listed in the
+    ledger with a reason; a role that is neither fails here. That is what stops a duty-holder
+    silently vanishing from every report — an omitted role reads as a role that owes nothing, and
+    no role the Act names owes nothing."""
+    spec = _spec()
+    ledger = yaml.safe_load(SCOPE_PATH.read_text(encoding="utf-8"))
+    covered = set(roles_with_rules(spec))
+    excluded = {ActorRole(r) for r in ledger["roles_out_of_scope"]}
+
+    overlap = covered & excluded
+    assert not overlap, f"roles both given rules and marked out of scope: {sorted(overlap)}"
+
+    unclassified = set(ActorRole) - covered - excluded
+    assert not unclassified, (
+        f"Roles in ActorRole that neither have rules nor appear in {SCOPE_PATH.name}: "
+        f"{sorted(unclassified)}. Rule on them before shipping."
+    )
+
+
+def test_roles_out_of_scope_entries_have_reasons():
+    ledger = yaml.safe_load(SCOPE_PATH.read_text(encoding="utf-8"))
+    for role, reason in ledger["roles_out_of_scope"].items():
+        assert isinstance(reason, str) and len(reason.strip()) > 15, (
+            f"Role {role} is dismissed without a real reason"
+        )
 
 
 def test_out_of_scope_entries_have_reasons():
@@ -180,11 +211,29 @@ def test_high_risk_requirements_are_document_verifiable():
     assert all(r.document_verifiable for r in reqs)
 
 
-def test_all_rules_are_mandatory_provider_rules_in_v01():
+def test_every_rule_is_mandatory_and_names_a_duty_holder():
+    """`recommended` rules are reported but never counted as gaps, so a spec of only mandatory ones
+    keeps the tally meaningful. Each must also name at least one role: an obligation nobody owes
+    would activate for nobody and sit in the spec looking covered."""
     spec = _spec()
     for r in spec.rules:
         assert r.obligation_status == ObligationStatus.MANDATORY
-        assert ActorRole.PROVIDER in r.applies_to_role
+        assert r.applies_to_role, f"{r.rule_id} names no duty-holder"
+
+
+def test_both_duty_holders_are_covered():
+    """Obligations attach to the ROLE. A spec carrying only provider rules cannot produce a
+    deployer section, and a report that silently omits one is misleading rather than narrower."""
+    spec = _spec()
+    by_role = {
+        role: [r.rule_id for r in spec.rules if role in r.applies_to_role]
+        for role in (ActorRole.PROVIDER, ActorRole.DEPLOYER)
+    }
+    assert "AIA-DP-A26" in by_role[ActorRole.DEPLOYER]
+    assert "AIA-DP-A27" in by_role[ActorRole.DEPLOYER]
+    # Art. 4 binds both — the only rule here that does.
+    assert "AIA-ALL-A04" in by_role[ActorRole.PROVIDER]
+    assert "AIA-ALL-A04" in by_role[ActorRole.DEPLOYER]
 
 
 def test_substance_rules_are_document_verifiable():

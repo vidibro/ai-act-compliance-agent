@@ -13,7 +13,7 @@ from datetime import date, datetime
 from pydantic import BaseModel, ValidationInfo, field_validator, model_validator
 
 from aiact.schemas.classification import EVIDENCE_QUOTE_MAX, ClassificationResult, Confidence
-from aiact.schemas.enums import Verdict
+from aiact.schemas.enums import ActorRole, Verdict
 from aiact.schemas.policy import LegalSource, PolicySpec
 
 # Modelled on the European Commission's own wording for their AI Act Compliance Checker, with a
@@ -32,7 +32,14 @@ DISCLAIMER = (
     "legislation, which this tool does not apply. Those questions need a specialist in that "
     "sector, not only a lawyer. This tool does not attempt them: it reports what the "
     "documentation states, says when the answer is missing, and leaves the question open rather "
-    "than guessing. An open question is unfinished work, not a clean result."
+    "than guessing. An open question is unfinished work, not a clean result.\n\n"
+    "This report assesses the roles the documentation describes. It does not decide whether you "
+    "have BECOME the provider of a system someone else built: under Article 25 a distributor, "
+    "importer, deployer or other third party takes on the provider's obligations where it puts its "
+    "name on a high-risk system, substantially modifies one, or changes the intended purpose of a "
+    "system so that it becomes high-risk — and under Article 25(3) a product manufacturer placing "
+    "an AI system on the market with its product is the provider of it. If any of that describes "
+    "you, read this report's provider section as yours."
 )
 
 class Finding(BaseModel):
@@ -44,6 +51,16 @@ class Finding(BaseModel):
 
     rule_id: str  # references PolicyRule.rule_id in the loaded PolicySpec
     use_case_id: str  # which use case activated this rule
+    role: ActorRole
+    """WHOSE obligation this is. REQUIRED, with no default, for the same reason `citation` has
+    none: a finding that cannot say whose duty it is would quietly become the provider's, and a
+    deployer duty mis-attributed that way is worse than one left out — the provider cannot
+    discharge it and will not know that.
+
+    Art. 4 binds both roles, so the same rule can produce a finding for each — different duties
+    held by different parties, and a report that could not tell them apart would report one of
+    them twice and neither correctly."""
+
     verdict: Verdict
     evidence_quote: str | None = None
     evidence_chunk_id: str | None = None
@@ -81,6 +98,9 @@ class ReportSummary(BaseModel):
     inadequate: int
     needs_review: int
     per_use_case: dict[str, ReportSummary] | None = None  # counts broken down per use case
+    per_role: dict[ActorRole, ReportSummary] | None = None
+    """Counts broken down per duty-holder. A provider reading a combined total cannot tell which
+    part of it is theirs to fix, and the deployer's half is not theirs to fix at all."""
 
 
 class ComplianceReport(BaseModel):
@@ -92,7 +112,12 @@ class ComplianceReport(BaseModel):
     generated_at: datetime
     classification: ClassificationResult
     findings: list[Finding]
-    not_document_verifiable: list[str]  # rule_ids to confirm separately — NOT gaps
+    not_document_verifiable: dict[ActorRole, list[str]] = {}
+    """Rule ids to confirm separately, keyed by WHO owes them — NOT gaps.
+
+    Grouped by role because that is the only way the list is actionable: a provider cannot confirm
+    that a deployer informed its workers under Art. 26(7).
+    Roles owing nothing are absent rather than present-and-empty."""
     summary: ReportSummary
     scope_note: str | None = None
     """Why the obligation check covered what it did — set whenever `findings` is empty for a reason
@@ -125,7 +150,7 @@ class ComplianceReport(BaseModel):
                         f"Finding references rule_id {finding.rule_id!r} not present in the "
                         f"loaded PolicySpec (spec_version={spec.spec_version})."
                     )
-            for rule_id in self.not_document_verifiable:
+            for rule_id in [r for ids in self.not_document_verifiable.values() for r in ids]:
                 if rule_id not in known_rules:
                     raise ValueError(
                         f"not_document_verifiable references rule_id {rule_id!r} not present "

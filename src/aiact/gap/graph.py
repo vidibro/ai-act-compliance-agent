@@ -24,7 +24,7 @@ from langgraph.graph import END, START, StateGraph
 from pydantic import BaseModel, ConfigDict, Field
 
 from aiact.gap.judge import LLMJudge
-from aiact.gap.rules import ActiveRules, select_rules
+from aiact.gap.rules import ActiveRules, roles_with_rules, select_rules
 from aiact.schemas.classification import ClassificationResult
 from aiact.schemas.enums import ActorRole, Verdict
 from aiact.schemas.policy import PolicyRule, PolicySpec
@@ -68,40 +68,63 @@ def _summarise(findings: list[Finding]) -> ReportSummary:
         use_case_id: count_verdicts([f for f in findings if f.use_case_id == use_case_id])
         for use_case_id in dict.fromkeys(f.use_case_id for f in findings)
     }
+    # Split by duty-holder too. A provider reading one combined total cannot tell which part is
+    # theirs to fix, and the deployer's part is not theirs to fix at all.
+    per_role = {
+        role: count_verdicts([f for f in findings if f.role == role])
+        for role in dict.fromkeys(f.role for f in findings)
+    }
     overall = count_verdicts(findings)
-    return overall.model_copy(update={"per_use_case": per_use_case or None})
+    return overall.model_copy(
+        update={"per_use_case": per_use_case or None, "per_role": per_role or None}
+    )
 
 
 def build_graph(
     spec: PolicySpec,
     judge: LLMJudge,
-    role: ActorRole = ActorRole.PROVIDER,
     max_workers: int = DEFAULT_WORKERS,
 ):
-    """Compile the gap-analysis graph for one ruleset and one judge."""
+    """Compile the gap-analysis graph for one ruleset and one judge.
+
+    EVERY duty-holder the spec covers, with no way to narrow it. Obligations attach to the role,
+    and the tool's job is to report all of them: a provider's customers owe Arts. 26-27 on the same
+    system, and nothing else will tell them so. The roles come from the spec rather than from a
+    constant, so adding a rule for a new role is enough to make it appear."""
+    roles = roles_with_rules(spec)
 
     def node_select_rules(state: ComplianceCheckState) -> dict:
-        return {"active": [select_rules(spec, uc, role) for uc in state.classification.use_cases]}
+        # Once per (use case, role). Selection is per use case because Art. 6 classifies per
+        # intended purpose, and per role because the Regulation attaches duties to the role rather
+        # than to the organisation — one party can hold several, and each is assessed separately.
+        return {
+            "active": [
+                select_rules(spec, uc, role)
+                for uc in state.classification.use_cases
+                for role in roles
+            ]
+        }
 
     def node_check_compliance(state: ComplianceCheckState) -> dict:
         # Each job is judged against the whole document. Sound while a classification carries one
         # use case; with several, evidence written about one intended purpose can be credited to
         # another. Scoping it requires knowing which passages belong to which use case — the
         # decomposition problem, tracked in M7.
-        jobs: list[tuple[str, PolicyRule]] = [
-            (active.use_case_id, rule)
+        jobs: list[tuple[str, ActorRole, PolicyRule]] = [
+            (active.use_case_id, active.role, rule)
             for active in state.active
             for rule in active.document_verifiable
         ]
         if not jobs:
             return {"findings": []}
 
-        def judge_one(job: tuple[str, PolicyRule]) -> Finding:
-            use_case_id, rule = job
+        def judge_one(job: tuple[str, ActorRole, PolicyRule]) -> Finding:
+            use_case_id, role, rule = job
             judgement = judge.judge(rule, state.document)
             return Finding(
                 rule_id=rule.rule_id,
                 use_case_id=use_case_id,
+                role=role,
                 verdict=judgement.verdict,
                 evidence_quote=judgement.evidence_quote,
                 evidence_chunk_id=judgement.evidence_chunk_id,
@@ -118,13 +141,13 @@ def build_graph(
     def node_assemble_report(state: ComplianceCheckState) -> dict:
         # Reported, never judged: applicable obligations a technical file cannot evidence. Omitting
         # them would read as full coverage of the Chapter III duties, which it is not.
-        outstanding = sorted(
-            {
-                rule.rule_id
-                for active in state.active
-                for rule in active.not_document_verifiable + active.postponed
-            }
-        )
+        outstanding: dict[ActorRole, list[str]] = {}
+        for active in state.active:
+            for rule in active.not_document_verifiable + active.postponed:
+                ids = outstanding.setdefault(active.role, [])
+                if rule.rule_id not in ids:
+                    ids.append(rule.rule_id)
+        outstanding = {role: sorted(ids) for role, ids in outstanding.items() if ids}
         return {
             "report": ComplianceReport(
                 system_id=state.system_id,
@@ -155,11 +178,10 @@ def analyse(
     spec: PolicySpec,
     judge: LLMJudge | None = None,
     system_id: str = "system",
-    role: ActorRole = ActorRole.PROVIDER,
     max_workers: int = DEFAULT_WORKERS,
 ) -> ComplianceReport:
     """Check one system's documentation against every obligation its classification activates."""
-    graph = build_graph(spec, judge or LLMJudge(), role, max_workers)
+    graph = build_graph(spec, judge or LLMJudge(), max_workers)
     with trace_run(f"gap:{system_id}", session_id=system_id):
         out = graph.invoke(
             ComplianceCheckState(

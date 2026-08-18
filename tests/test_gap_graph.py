@@ -11,7 +11,7 @@ from datetime import date
 import pytest
 
 from aiact.gap.graph import analyse
-from aiact.gap.rules import select_rules
+from aiact.gap.rules import roles_with_rules, select_rules
 from aiact.policy_loader import load_policy_spec
 from aiact.schemas.classification import (
     ClassificationAnswer,
@@ -98,7 +98,33 @@ def test_only_the_rules_for_this_risk_class_activate(spec):
     high = select_rules(spec, a_use_case("scoring", RiskClass.HIGH_RISK), ActorRole.PROVIDER)
     minimal = select_rules(spec, a_use_case("chat", RiskClass.MINIMAL), ActorRole.PROVIDER)
     assert high.document_verifiable, "a high-risk use case owes Chapter III"
-    assert not minimal.all_rules, "a minimal-risk use case owes none of these obligations"
+    assert not minimal.document_verifiable, "a minimal-risk use case owes no Chapter III"
+    # But NOT nothing at all: Art. 4 binds every tier the Regulation governs, and an empty set here
+    # would make `minimal` indistinguishable from `out_of_scope` — the collapse the class exists to
+    # prevent.
+    assert [r.rule_id for r in minimal.all_rules] == ["AIA-ALL-A04"]
+
+
+def test_an_out_of_scope_use_case_owes_nothing_at_all(spec):
+    """The contrast that gives `minimal` its meaning. A minimal system is inside the Regulation and
+    owes Art. 4; an excluded one owes nothing under this Regulation, Art. 4 included."""
+    out = select_rules(spec, a_use_case("military", RiskClass.OUT_OF_SCOPE), ActorRole.PROVIDER)
+    assert out.all_rules == ()
+
+
+def test_each_role_gets_its_own_obligations(spec):
+    """Duties attach to the role. The provider owes Chapter III, the deployer owes Arts. 26-27, and
+    Art. 4 lands on both — so the same use case yields two different sets."""
+    scoring = a_use_case("scoring", RiskClass.HIGH_RISK)
+    provider = select_rules(spec, scoring, ActorRole.PROVIDER)
+    deployer = select_rules(spec, scoring, ActorRole.DEPLOYER)
+    assert provider.role == ActorRole.PROVIDER and deployer.role == ActorRole.DEPLOYER
+
+    provider_ids = {r.rule_id for r in provider.all_rules}
+    deployer_ids = {r.rule_id for r in deployer.all_rules}
+    assert "AIA-HR-A14" in provider_ids and "AIA-HR-A14" not in deployer_ids
+    assert deployer_ids == {"AIA-ALL-A04", "AIA-DP-A26", "AIA-DP-A27", "AIA-DP-A86"}
+    assert provider_ids & deployer_ids == {"AIA-ALL-A04"}
 
 
 def test_selection_is_per_use_case(spec):
@@ -134,9 +160,18 @@ def test_process_obligations_are_reported_but_never_judged(spec):
         judge=judge,  # type: ignore[arg-type]
         max_workers=1,
     )
-    assert "AIA-PO-A17" in report.not_document_verifiable
+    outstanding = report.not_document_verifiable
+    assert "AIA-PO-A17" in outstanding[ActorRole.PROVIDER]
     assert "AIA-PO-A17" not in judge.asked
-    assert not set(report.not_document_verifiable) & {f.rule_id for f in report.findings}
+    # Grouped by who owes them: a provider cannot confirm that a deployer informed its workers.
+    assert outstanding[ActorRole.DEPLOYER] == [
+        "AIA-ALL-A04",
+        "AIA-DP-A26",
+        "AIA-DP-A27",
+        "AIA-DP-A86",
+    ]
+    flat = {r for ids in outstanding.values() for r in ids}
+    assert not flat & {f.rule_id for f in report.findings}
 
 
 # --- the report ----------------------------------------------------------------------------------
@@ -213,3 +248,51 @@ def test_concurrent_and_sequential_runs_agree(spec):
     one = analyse(DOCUMENT, classification, spec, judge=StubJudge(), max_workers=1)  # type: ignore[arg-type]
     many = analyse(DOCUMENT, classification, spec, judge=StubJudge(), max_workers=8)  # type: ignore[arg-type]
     assert [f.rule_id for f in one.findings] == [f.rule_id for f in many.findings]
+
+
+# --- which duty-holders a report covers -----------------------------------------------------------
+def test_the_covered_roles_come_from_the_spec(spec):
+    """DERIVED, not listed by hand. A hand-written list is a second place to keep in sync, and the
+    failure is silent: a rule added for a new role would never be selected for, so it would sit in
+    the spec looking covered while activating for nobody."""
+    assert roles_with_rules(spec) == [
+        ActorRole.PROVIDER,
+        ActorRole.DEPLOYER,
+        ActorRole.IMPORTER,
+        ActorRole.DISTRIBUTOR,
+        ActorRole.AUTHORISED_REPRESENTATIVE,
+    ]
+
+
+def test_the_supply_chain_roles_each_owe_their_own_article(spec):
+    """Arts. 22-24 are duties of the representative, importer and distributor themselves — not a
+    weaker echo of the provider's. Each role must select its own rule and nobody else's."""
+    scoring = a_use_case("scoring", RiskClass.HIGH_RISK)
+    owed = {
+        role: {r.rule_id for r in select_rules(spec, scoring, role).all_rules}
+        for role in (ActorRole.IMPORTER, ActorRole.DISTRIBUTOR, ActorRole.AUTHORISED_REPRESENTATIVE)
+    }
+    assert owed[ActorRole.IMPORTER] == {"AIA-IM-A23"}
+    assert owed[ActorRole.DISTRIBUTOR] == {"AIA-DI-A24"}
+    assert owed[ActorRole.AUTHORISED_REPRESENTATIVE] == {"AIA-AR-A22"}
+
+
+def test_the_report_lists_every_role_the_act_binds(spec):
+    """The whole point of the change: one run, every duty-holder. Reaching the report matters, not
+    just the helper — silence there is what a reader takes for a clean bill of health."""
+    report = analyse(
+        DOCUMENT,
+        a_classification(a_use_case("scoring", RiskClass.HIGH_RISK)),
+        spec,
+        judge=StubJudge(),  # type: ignore[arg-type]
+        max_workers=1,
+    )
+    outstanding = report.not_document_verifiable
+    assert "AIA-IM-A23" in outstanding[ActorRole.IMPORTER]
+    assert "AIA-DI-A24" in outstanding[ActorRole.DISTRIBUTOR]
+    assert "AIA-AR-A22" in outstanding[ActorRole.AUTHORISED_REPRESENTATIVE]
+    assert "AIA-DP-A26" in outstanding[ActorRole.DEPLOYER]
+    assert "AIA-PO-A17" in outstanding[ActorRole.PROVIDER]
+    # Every role the ruleset covers appears; which roles those are is settled by the coverage
+    # ledger before shipping, not narrated in the report — see test_policy_loader.
+    assert set(outstanding) == set(roles_with_rules(spec))

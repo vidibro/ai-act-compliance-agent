@@ -23,7 +23,7 @@ from aiact.classify.graph import classify, load_questions
 from aiact.gap.graph import DEFAULT_WORKERS, analyse
 from aiact.gap.judge import LLMJudge
 from aiact.schemas.classification import ClassificationQuestion, ClassificationResult
-from aiact.schemas.enums import ActorRole, RiskClass
+from aiact.schemas.enums import RiskClass
 from aiact.schemas.policy import PolicySpec
 from aiact.schemas.report import ComplianceReport, ReportSummary
 
@@ -75,7 +75,7 @@ def _empty_report(
         generated_at=datetime.now(UTC),
         classification=classification,
         findings=[],
-        not_document_verifiable=[],
+        not_document_verifiable={},
         summary=ReportSummary(
             total_applicable=0, passed=0, gaps=0, inadequate=0, needs_review=0
         ),
@@ -89,7 +89,6 @@ def review(
     brain: ClassificationBrain,
     judge: LLMJudge | None = None,
     system_id: str = "system",
-    role: ActorRole = ActorRole.PROVIDER,
     questions: dict[str, ClassificationQuestion] | None = None,
     max_workers: int = DEFAULT_WORKERS,
 ) -> ComplianceReport:
@@ -126,7 +125,6 @@ def review(
         spec,
         judge=judge,
         system_id=system_id,
-        role=role,
         max_workers=max_workers,
     )
 

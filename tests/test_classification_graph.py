@@ -550,3 +550,23 @@ def test_the_abstention_cause_survives_into_the_verdict():
     result = classify("a vague description", brain, "vague")
     # ScriptedBrain answers only is_ai, so the cascade abstains at the next node it reaches.
     assert result.overall_risk_class in (RiskClass.NEEDS_REVIEW, RiskClass.MINIMAL)
+
+
+def test_the_demo_script_still_shows_the_flip(capsys):
+    """The demo is the project's front door — `python scripts/classify.py --demo`, no API key. Its
+    ScriptedBrain answers are a hand-written table, so a new cascade node silently turns the flip
+    into two `needs_review` lines and every test still passes. Run it here so that cannot happen."""
+    import importlib.util
+
+    spec = importlib.util.spec_from_file_location(
+        "classify_script", ROOT / "scripts" / "classify.py"
+    )
+    assert spec is not None and spec.loader is not None
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    module.demo()
+
+    out = capsys.readouterr().out
+    assert "risk class : not_high_risk" in out, "the parser half of the flip no longer lands"
+    assert "risk class : high_risk" in out, "the scorer half of the flip no longer lands"
+    assert "needs_review" not in out, "a cascade node the demo does not answer has broken it"

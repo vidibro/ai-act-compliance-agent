@@ -190,6 +190,7 @@ def test_finding_gap_requires_reasoning():
         Finding(
             rule_id="AIA-HR-A14",
             use_case_id="candidate_scoring",
+            role=ActorRole.PROVIDER,
             verdict=Verdict.GAP,
             reasoning="   ",
             citation=a_source(article=14),
@@ -202,6 +203,7 @@ def test_finding_evidence_quote_length_capped():
         Finding(
             rule_id="AIA-HR-A14",
             use_case_id="candidate_scoring",
+            role=ActorRole.PROVIDER,
             verdict=Verdict.PASS,
             evidence_quote="x" * 301,
             reasoning="ok",
@@ -248,6 +250,7 @@ def _multi_use_case_report(policy_spec: PolicySpec) -> ComplianceReport:
     finding = Finding(
         rule_id="AIA-HR-A14",
         use_case_id="candidate_scoring",
+        role=ActorRole.PROVIDER,
         verdict=Verdict.INADEQUATE,
         evidence_quote="We ensure appropriate human oversight of the system.",
         reasoning="asserts oversight but names no measures, interface, or intervention ability",
@@ -263,7 +266,7 @@ def _multi_use_case_report(policy_spec: PolicySpec) -> ComplianceReport:
             generated_at=datetime(2026, 7, 13, 12, 0, tzinfo=UTC),
             classification=classification,
             findings=[finding],
-            not_document_verifiable=[],
+            not_document_verifiable={},
             summary=ReportSummary(
                 total_applicable=1, passed=0, gaps=0, inadequate=1, needs_review=0
             ),
@@ -302,6 +305,7 @@ def test_report_rejects_finding_with_unknown_use_case():
     bad_finding = Finding(
         rule_id="AIA-HR-A14",
         use_case_id="does_not_exist",
+        role=ActorRole.PROVIDER,
         verdict=Verdict.PASS,
         reasoning="ok",
         citation=a_source(article=14),
@@ -323,7 +327,7 @@ def test_report_rejects_finding_with_unknown_use_case():
                 generated_at=datetime(2026, 7, 13, tzinfo=UTC),
                 classification=classification,
                 findings=[bad_finding],
-                not_document_verifiable=[],
+                not_document_verifiable={},
                 summary=ReportSummary(
                     total_applicable=1, passed=1, gaps=0, inadequate=0, needs_review=0
                 ),
@@ -342,6 +346,7 @@ def test_report_rejects_finding_with_unknown_rule_id():
     finding = Finding(
         rule_id="AIA-HR-A99",  # not in the spec
         use_case_id="cv_parsing",
+        role=ActorRole.PROVIDER,
         verdict=Verdict.PASS,
         reasoning="ok",
         citation=a_source(article=14),
@@ -363,7 +368,7 @@ def test_report_rejects_finding_with_unknown_rule_id():
                 generated_at=datetime(2026, 7, 13, tzinfo=UTC),
                 classification=classification,
                 findings=[finding],
-                not_document_verifiable=[],
+                not_document_verifiable={},
                 summary=ReportSummary(
                     total_applicable=1, passed=1, gaps=0, inadequate=0, needs_review=0
                 ),

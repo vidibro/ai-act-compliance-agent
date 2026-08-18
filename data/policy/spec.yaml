@@ -1,4 +1,4 @@
-# AI Act policy specification — v0.4, EMPLOYMENT high-risk scope (Annex III(4)).
+# AI Act policy specification — v0.7, EMPLOYMENT high-risk scope (Annex III(4)).
 #
 # THIS FILE CONTAINS NO LEGAL TEXT. The enacted wording lives in exactly one place —
 # data/policy/articles/*.md — written verbatim from EUR-Lex Formex XML by
@@ -22,11 +22,16 @@
 #   AIA-PO-*  Chapter III Section 3 (Art. 16+) + conformity/registration — provider PROCESS
 #             obligations. NOT visible in a system's technical documentation
 #             -> document_verifiable: false -> reported as "confirm separately", never as gaps.
+#   AIA-DP-*  DEPLOYER obligations (Art. 26-27). A different duty-holder, not a different topic:
+#             the party operating the system owes these, and no provider file can evidence them.
+#   AIA-AR-*  AUTHORISED REPRESENTATIVE (Art. 22), AIA-IM-* IMPORTER (Art. 23), AIA-DI-*
+#             DISTRIBUTOR (Art. 24) — the supply-chain roles, each with duties of its own.
+#   AIA-ALL-* Obligations binding BOTH provider and deployer at every governed tier — Art. 4 today.
 #
 # High-risk obligations for Annex III systems apply from 2026-08-02 (Art. 113). That applicability
 # date is carried in each rule's effective_date; status stays "active" (adopted, in force).
 
-spec_version: "0.4.0"
+spec_version: "0.7.0"
 act_version_date: 2024-07-12
 source_note: >-
   Rule structure and scope selection derived from the EC AI Act Compliance Checker, Chapter III
@@ -377,5 +382,186 @@ rules:
       why the system does not pose a significant risk. The reasoning IS expected in the
       documentation, hence document-verifiable.
     document_verifiable: true
+    effective_date: 2026-08-02
+    status: active
+
+  # ------------------------------------------------------------------------------------------
+  # Art. 4 — AI LITERACY. The only obligation here that binds BOTH roles and EVERY tier the
+  # Regulation governs. Its absence was a real hole: `RiskClass.MINIMAL` says a minimal system is
+  # inside the Act and still owes Art. 4, but with no rule carrying it `select_rules` returned an
+  # empty set for minimal — indistinguishable from out_of_scope, which is the exact collapse the
+  # OUT_OF_SCOPE docstring calls the whole point of the class.
+  #
+  # Not listed for `prohibited`: the review gate stops there, and a report telling a provider to
+  # train staff on a system that may not be operated at all would be absurd.
+  # ------------------------------------------------------------------------------------------
+  - rule_id: AIA-ALL-A04
+    source:
+      instrument: "Regulation (EU) 2024/1689"
+      article: 4
+      act_version_date: 2024-07-12
+    applies_to_risk_class: [high_risk, not_high_risk, minimal]
+    applies_to_role: [provider, deployer]
+    obligation_status: mandatory
+    check_type: presence
+    evidence_expected: >-
+      Measures taken to ensure a sufficient level of AI literacy among staff and others operating
+      the system on the organisation's behalf — training, briefing or competence requirements,
+      pitched to their technical knowledge and to the context the system is used in, and to the
+      persons it is used on. An organisational measure, not a property of the system.
+    document_verifiable: false
+    # Chapter I, so Art. 113(a): in application since 2 February 2025 — earlier than every other
+    # rule here, and already owed today.
+    effective_date: 2025-02-02
+    status: active
+
+  # ------------------------------------------------------------------------------------------
+  # Art. 26-27 — DEPLOYER obligations for high-risk systems. A distinct duty-holder: the party
+  # that operates the system, not the one that built it. Reported so a provider's report names
+  # what its customers will owe, and so a deployer reading it is not told only the provider's half.
+  # ------------------------------------------------------------------------------------------
+  - rule_id: AIA-DP-A26
+    source:
+      instrument: "Regulation (EU) 2024/1689"
+      article: 26
+      act_version_date: 2024-07-12
+    applies_to_risk_class: [high_risk]
+    applies_to_role: [deployer]
+    obligation_status: mandatory
+    check_type: presence
+    evidence_expected: >-
+      The deployer's own operating measures: using the system per the instructions for use,
+      assigning human oversight to competent and adequately supported people, controlling input
+      data relevance where the deployer supplies it, monitoring operation and reporting risks and
+      serious incidents to the provider, retaining logs for at least six months, and — where the
+      deployer is an employer — informing workers and their representatives before use at the
+      workplace. Held by the operating organisation, so a provider's technical file cannot evidence
+      it.
+    document_verifiable: false
+    effective_date: 2026-08-02
+    status: active
+
+  - rule_id: AIA-DP-A27
+    source:
+      instrument: "Regulation (EU) 2024/1689"
+      article: 27
+      paragraph: 1 # the assessment duty and its (a)-(f) required contents
+      act_version_date: 2024-07-12
+    applies_to_risk_class: [high_risk]
+    applies_to_role: [deployer]
+    obligation_status: mandatory
+    check_type: presence
+    evidence_expected: >-
+      A fundamental rights impact assessment carried out BEFORE first use, covering the deployer's
+      processes, the period and frequency of use, the categories of persons affected, the specific
+      risks of harm to them, the human oversight measures, and what happens if those risks
+      materialise. CONDITIONAL, and the condition is not one this tool can settle: Art. 27(1) binds
+      only deployers that are bodies governed by public law or private entities providing public
+      services, plus deployers of Annex III(5)(b) and (c) systems, and it never reaches Annex
+      III(2). Reported as a confirmation to make, not as a duty asserted.
+    document_verifiable: false
+    effective_date: 2026-08-02
+    status: active
+
+  # ------------------------------------------------------------------------------------------
+  # Arts. 22-24 — the SUPPLY-CHAIN roles. Not a lesser tier of duty: an importer that places a
+  # non-conforming system on the market breaches Art. 23 in its own right, whatever the provider
+  # did. Carried here so no role the Act binds is missing from a report — an omitted role reads as
+  # a clearance, and for these three that reading is simply false.
+  #
+  # All three are verification and record-keeping duties discharged by the party itself, so no
+  # provider's technical file can evidence them: document_verifiable is false throughout, and they
+  # are reported as confirmations to make rather than as gaps.
+  # ------------------------------------------------------------------------------------------
+  - rule_id: AIA-AR-A22
+    source:
+      instrument: "Regulation (EU) 2024/1689"
+      article: 22
+      act_version_date: 2024-07-12
+    applies_to_risk_class: [high_risk]
+    applies_to_role: [authorised_representative]
+    obligation_status: mandatory
+    check_type: presence
+    evidence_expected: >-
+      A written mandate from a third-country provider, and evidence the representative performs it:
+      verifying that the EU declaration of conformity (Art. 47) and the technical documentation
+      (Art. 11) exist and that a conformity assessment was carried out; keeping the provider's
+      contact details and that documentation available to authorities for 10 years after placing on
+      the market; supplying it on reasoned request; cooperating on risk-mitigation action; and
+      meeting the Art. 49(1) registration duty where it falls to the representative. Also the duty
+      to TERMINATE the mandate, and tell the market surveillance authority, where the representative
+      has reason to consider the provider in breach.
+    document_verifiable: false
+    effective_date: 2026-08-02
+    status: active
+
+  - rule_id: AIA-IM-A23
+    source:
+      instrument: "Regulation (EU) 2024/1689"
+      article: 23
+      act_version_date: 2024-07-12
+    applies_to_risk_class: [high_risk]
+    applies_to_role: [importer]
+    obligation_status: mandatory
+    check_type: presence
+    evidence_expected: >-
+      Pre-market verification by the importer that the provider carried out the Art. 43 conformity
+      assessment, drew up Art. 11 / Annex IV technical documentation, affixed the CE marking with
+      the EU declaration of conformity and instructions for use, and appointed an authorised
+      representative under Art. 22(1). Plus the importer's own name and contact address on the
+      system, its packaging or accompanying documentation; storage and transport conditions that do
+      not jeopardise conformity; a 10-year copy of the notified body certificate, instructions for
+      use and declaration of conformity; and cooperation with authorities on reasoned request. A
+      system it has reason to consider non-conforming or falsified must NOT be placed on the market.
+    document_verifiable: false
+    effective_date: 2026-08-02
+    status: active
+
+  - rule_id: AIA-DI-A24
+    source:
+      instrument: "Regulation (EU) 2024/1689"
+      article: 24
+      act_version_date: 2024-07-12
+    applies_to_risk_class: [high_risk]
+    applies_to_role: [distributor]
+    obligation_status: mandatory
+    check_type: presence
+    evidence_expected: >-
+      Verification, before making the system available, that it bears the CE marking and carries the
+      EU declaration of conformity and instructions for use, and that the provider and importer met
+      their own obligations. Plus storage and transport conditions that do not jeopardise
+      conformity; corrective action where the distributor has reason to consider a system it has
+      already supplied non-conforming; and information and cooperation on reasoned request. A
+      system it has reason to consider non-conforming must NOT be made available.
+    document_verifiable: false
+    effective_date: 2026-08-02
+    status: active
+
+  # ------------------------------------------------------------------------------------------
+  # Art. 86 — the DEPLOYER's duty to explain a decision to the person it was taken about. Held
+  # out while this tool modelled providers only, on the reasoning that it runs toward the affected
+  # person rather than toward an authority. That reasoning stopped applying the moment deployer
+  # obligations came in scope: it is a duty of a role this report now covers.
+  # ------------------------------------------------------------------------------------------
+  - rule_id: AIA-DP-A86
+    source:
+      instrument: "Regulation (EU) 2024/1689"
+      article: 86
+      paragraph: 1 # the right, and the deployer duty that answers it
+      act_version_date: 2024-07-12
+    applies_to_risk_class: [high_risk]
+    applies_to_role: [deployer]
+    obligation_status: mandatory
+    check_type: presence
+    evidence_expected: >-
+      A route by which a person subject to a decision taken on the basis of the system's output can
+      obtain clear and meaningful explanations of the system's role in that decision-making and of
+      the main elements of the decision — who they ask, what they get, and in what form. Owed where
+      the decision produces legal effects or similarly significantly affects the person adversely
+      in their health, safety or fundamental rights. Two limits this tool cannot gate on: it does
+      not reach Annex III point 2 (critical infrastructure), and it yields where Union or national
+      law provides an exception. Discharged in operation by the deployer, so no provider file can
+      evidence it.
+    document_verifiable: false
     effective_date: 2026-08-02
     status: active

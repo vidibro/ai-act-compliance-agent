@@ -11,15 +11,33 @@
 # For a compliance tool a false PASS is the worst outcome, and silently ignoring an article the
 # legislator added is exactly how one happens.
 #
-# v0.1 SCOPE: obligations of the PROVIDER of a HIGH-RISK AI system in the EMPLOYMENT area
-# (Annex III(4)). Other actor roles (deployer, importer, distributor, authorised representative),
-# other Annex III areas, and the general-purpose AI model regime are deliberately excluded — and
-# each exclusion is recorded below rather than assumed.
+# SCOPE: obligations of every role the Act binds — provider, deployer, importer, distributor and
+# authorised representative — for a HIGH-RISK AI system in the EMPLOYMENT area (Annex III(4)), plus
+# Art. 4, which binds provider and deployer at every governed tier. Other Annex III areas and the
+# general-purpose AI model regime are deliberately excluded, and each exclusion is recorded below
+# rather than assumed.
 #
 # Authoring this ledger already paid for itself: it surfaced Art. 72 and Art. 73 as genuine
 # provider obligations for high-risk systems that the initial ruleset had simply missed.
 
 act_version_date: 2024-07-12
+
+# --- ROLES ----------------------------------------------------------------------------------
+# Same partition as the articles below, over ActorRole: a role either has rules in spec.yaml or is
+# listed here with a reason. A test enforces it, so a role added to the enum — or one that loses
+# its last rule — fails CI instead of quietly disappearing from every report.
+#
+# Kept HERE rather than reported at runtime. Which roles this tool covers is a fact about the
+# ruleset, settled before shipping; narrating it to a reader in every report would push a
+# development-time gap into their output.
+roles_out_of_scope:
+  product_manufacturer: >-
+    Art. 25(3) gives the product manufacturer no duty set of its own — where a high-risk AI system
+    is placed on the market with their product under their name, it makes them THE PROVIDER, owing
+    Art. 16 whole. So there is no ruleset to write: what is missing is a classification step that
+    asks whether the reader has become the provider (Art. 25(1)(a)-(c) and 25(3)). Until that
+    exists, the tool assumes the roles the document describes — a limit recorded in the report's
+    disclaimer rather than modelled as an empty obligation set.
 
 out_of_scope:
   # --- Chapter I — General provisions ---------------------------------------------------------
@@ -33,9 +51,6 @@ out_of_scope:
   3: >-
     Definitions. Feeds classification (Art. 3(1) is_ai_system, Art. 3(3) actor_role). Definitional,
     creates no standalone duty.
-  4: >-
-    AI literacy. A real obligation on providers, but about staff competence rather than the system,
-    and it is not evidenced in a system's technical documentation. Deferred beyond v0.1.
   5: >-
     Prohibited AI practices. Evaluated by the classification cascade's `prohibited` node, before
     high-risk and after Art. 2; a prohibited system never reaches an obligation check, so this is a
@@ -49,14 +64,9 @@ out_of_scope:
   16: >-
     Umbrella list of provider obligations that cross-references Art. 17-21, 43, 47-49, each of
     which is modelled individually. Modelling it too would double-count every finding.
-  22: Obligation of the authorised representative — a different actor role. v0.1 covers provider only.
-  23: Obligation of the importer — a different actor role.
-  24: Obligation of the distributor — a different actor role.
   25: >-
     Allocates responsibilities along the value chain (when a distributor/importer/deployer becomes
     a provider). Relevant to ROLE ASSIGNMENT, not a documentation-checkable provider duty in v0.1.
-  26: Obligation of the deployer — explicitly out of scope for v0.1 per the project brief.
-  27: Fundamental rights impact assessment — a duty of specific deployers, not the provider.
 
   # --- Chapter III Section 4 — notifying authorities and notified bodies -----------------------
   # For Annex III(4) employment the conformity route is internal control (Art. 43(2)), which
@@ -89,10 +99,12 @@ out_of_scope:
 
   # --- Chapter IV — transparency ---------------------------------------------------------------
   50: >-
-    Transparency obligations for certain AI systems. Applies INDEPENDENTLY of the risk tier and is
-    modelled in the classification graph (ClassificationState.transparency_triggers). TODO: promote
-    to rules when transparency scope is implemented — it can apply to a minimal-risk use case such
-    as job-ad generation.
+    Transparency obligations for certain AI systems. Applies INDEPENDENTLY of the risk tier, so it
+    is answered by the classification graph's `transparency` node into
+    ClassificationResult.transparency_duties — a list of TransparencyDuty, each carrying the
+    paragraph and the role that owes it. Not yet promoted to rules: doing so needs rule activation
+    to gate on a duty rather than on a risk class, since 50(1) can attach to a minimal-risk use case
+    such as job-ad generation while 50(3) attaches to the deployer of a prohibited one.
 
   # --- Chapter V — general-purpose AI models ---------------------------------------------------
   51: General-purpose AI model regime — a separate track from high-risk. Out of v0.1 scope.
@@ -145,7 +157,6 @@ out_of_scope:
   83: Authority procedure for formal non-compliance.
   84: Union AI testing support structures. Institutional.
   85: Right of any person to lodge a complaint. A right, not a provider duty.
-  86: Right to explanation of individual decision-making — a duty of the DEPLOYER toward the person.
   87: Reporting of infringements and whistleblower protection. Not a provider system duty.
   88: Commission enforcement of GPAI provider obligations. Out of v0.1 scope.
   89: Commission monitoring actions for GPAI. Out of v0.1 scope.

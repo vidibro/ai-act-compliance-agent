@@ -3,7 +3,8 @@
 Ingests documentation about an AI system (technical documentation, system card, or vendor
 product description) and produces a structured compliance report: it classifies the system's risk
 level under Regulation (EU) 2024/1689 and, for high-risk systems, checks the documentation against
-provider obligations — every verdict carrying a citation to the source article.
+the obligations it owes — for the provider and the deployer alike, every verdict carrying a
+citation to the source article.
 
 Two jobs, in order:
 
@@ -233,6 +234,29 @@ flowchart TD
   `not_high_risk` and whose candidate scoring is `high_risk` owes Chapter III on the scoring use
   case alone, assessed against *that* intended purpose — so selection runs per use case and the
   results are kept apart.
+- **And per role, not per organisation.** The Regulation attaches duties to the ROLE, and the
+  report covers **every role it binds** — provider (Chapter III, Arts. 16–21), deployer
+  (Arts. 26–27 and 86), authorised representative (Art. 22), importer (Art. 23), distributor
+  (Art. 24),
+  with **Art. 4 (AI literacy) binding provider and deployer alike**. One organisation may hold
+  several roles and is assessed separately for each. Selection runs once per *(use case, role)*
+  pair, every finding records whose duty it is, and the report is grouped by duty-holder — a
+  provider cannot confirm that a deployer informed its workers under Art. 26(7), and a flat list
+  invites them to try. There is no switch to narrow it: reporting one role's half is not a narrower
+  report, it is a misleading one.
+- **No role can go missing.** The covered roles are derived from the ruleset, never listed by
+  hand, and the coverage ledger partitions `ActorRole` the same way it partitions the articles:
+  a role either has rules or is listed with a reason, and a test enforces it. So a role added to
+  the enum, or one that loses its last rule, fails CI rather than quietly disappearing from every
+  report — an omitted role reads as a role that owes nothing, and no role the Act names owes
+  nothing. One is listed out today: the **product manufacturer**, and not by oversight — Art. 25(3)
+  gives it no duty set of its own, it makes it *the provider* owing Art. 16 whole. That is a
+  classification step this tool does not yet take, and the disclaimer says so.
+- **`minimal` is not `out_of_scope`, and Art. 4 is what proves it.** A minimal-risk system is
+  inside the Regulation: both its provider and its deployer owe AI literacy measures, in force
+  since 2 February 2025. An excluded system owes nothing at all. If the obligation layer returned
+  an empty set for both, the distinction the classifier works so hard to draw would vanish at the
+  last step.
 - **Not everything is checkable in a document.** A quality management system, a registration in
   the EU database, a duty to cooperate — these apply, but no document can evidence them.
   They are reported as *outstanding confirmations*, never judged and never counted as gaps.
