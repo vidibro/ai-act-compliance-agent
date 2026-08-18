@@ -18,6 +18,7 @@ from aiact.schemas.enums import (
     DerogationCondition,
     ProhibitedPractice,
     RiskClass,
+    ScopeExclusion,
     TransparencyDuty,
 )
 from aiact.schemas.eval import ClassificationCase, Difficulty
@@ -129,6 +130,43 @@ def test_a_renamed_pin_is_rejected_rather_than_dropped(cases):
 def test_every_case_states_a_decisive_fact(cases):
     for c in cases.cases:
         assert len(c.decisive_fact.strip()) > 20, f"{c.case_id} has no real decisive_fact"
+
+
+# --- Art. 3(1) ------------------------------------------------------------------------------------
+def test_every_case_argues_whether_it_is_an_ai_system(cases):
+    """Stricter than the schema, and for the reason the Art. 50 twin exists: this label was a
+    default nobody had to defend. Every case said `true`, the column read "every expected answer
+    identical — unmeasured" on every run, and when rule-based systems were finally examined two
+    labels were wrong. A basis makes the claim checkable at authoring time."""
+    for c in cases.cases:
+        basis = c.is_ai_basis.strip()
+        assert len(basis) > 20, f"{c.case_id} asserts an Art. 3(1) label without argument"
+        assert "infer" in basis.lower(), (
+            f"{c.case_id}: Art. 3(1) turns on INFERENCE, so the basis must speak to it — "
+            f"sophistication is not the test"
+        )
+
+
+def test_the_is_ai_column_is_not_answerable_by_a_constant(cases):
+    """`is_ai` is the FIRST node and a `false` routes straight to minimal, skipping Art. 2, Art. 5
+    and both Art. 6 doors. A set that only ever expects `true` cannot tell a working node from one
+    that always agrees — on the node where a wrong answer clears any system there is."""
+    labels = [c.expected_is_ai_system for c in cases.cases]
+    assert any(labels) and not all(labels), "the set must exercise both answers"
+
+
+def test_both_sides_of_the_inference_line_are_traps(cases):
+    """Cheap `false` cases would teach the wrong rule — that plain-looking software is not AI. The
+    set carries the mirror pair: a rule engine deep inside recruitment that infers nothing, and a
+    spreadsheet add-in that fits a model."""
+    c = _by_id(cases)
+    rules_engine = c["panel_conflict_rule_checker"]
+    assert rules_engine.expected_is_ai_system is False
+    assert rules_engine.expected_risk_class == RiskClass.MINIMAL
+
+    looks_humble = c["absence_pattern_spreadsheet_addin"]
+    assert looks_humble.expected_is_ai_system is True
+    assert looks_humble.expected_risk_class == RiskClass.HIGH_RISK
 
 
 # --- Art. 50 ------------------------------------------------------------------------------------
@@ -325,6 +363,64 @@ def test_the_chapeau_is_not_pinnable_without_a_condition():
     question the cascade never puts."""
     with pytest.raises(ValueError, match="only reached once one of"):
         _derogation_case(expected_derogation=None, expected_risk_class=RiskClass.HIGH_RISK)
+
+
+def _scope_case(**overrides) -> ClassificationCase:
+    kwargs = dict(
+        case_id="s",
+        expected_is_ai_system=True,
+        description="d",
+        expected_risk_class=RiskClass.OUT_OF_SCOPE,
+        expected_scope_exclusion=ScopeExclusion.SCIENTIFIC_RESEARCH,
+        scope_exclusion_basis="Art. 2(6): built for the sole purpose of research.",
+        decisive_fact="sole purpose scientific research",
+        difficulty="obvious",
+    )
+    kwargs.update(overrides)
+    return ClassificationCase(**kwargs)
+
+
+def test_an_ordinary_exclusion_and_the_class_are_the_same_fact():
+    """Every Art. 2 exclusion but one is unconditional on the facts of the system, so naming it and
+    naming OUT_OF_SCOPE are two ways of saying the same thing."""
+    assert _scope_case().expected_risk_class == RiskClass.OUT_OF_SCOPE
+    with pytest.raises(ValueError, match="same fact stated two ways"):
+        _scope_case(expected_risk_class=RiskClass.MINIMAL)
+
+
+def test_art_2_12_may_name_its_paragraph_and_still_be_governed():
+    """THE EXCEPTION, and the graph is built around it. A free and open-source answer FALLS THROUGH
+    the cascade, because Art. 2(12)'s carve-back names high-risk, Art. 5 and Art. 50 — the very
+    questions the remaining nodes answer. So such a case legitimately ends at `minimal` while the
+    scope node answered `free_open_source`, and a key that could not say so would mark a correct
+    run wrong for describing the route the graph actually takes."""
+    case = _scope_case(
+        expected_risk_class=RiskClass.MINIMAL,
+        expected_scope_exclusion=ScopeExclusion.FREE_OPEN_SOURCE,
+        scope_exclusion_basis="Art. 2(12): Apache 2.0, lifted because Art. 50(2) attaches.",
+        expected_transparency_duties=[TransparencyDuty.SYNTHETIC_CONTENT_MARKING],
+        transparency_basis="Art. 50(2): every output is synthetic audio.",
+    )
+    assert case.expected_scope_exclusion is ScopeExclusion.FREE_OPEN_SOURCE
+    # And because it falls through, it both may and must pin the Art. 6 answers on the way past.
+    assert _scope_case(
+        expected_risk_class=RiskClass.MINIMAL,
+        expected_scope_exclusion=ScopeExclusion.FREE_OPEN_SOURCE,
+        scope_exclusion_basis="Art. 2(12): permissively licensed, and no carve-back applies.",
+        expected_annex_iii_area=None,
+    )
+
+
+def test_out_of_scope_must_name_the_paragraph_that_excludes_it():
+    with pytest.raises(ValueError, match="names no Art. 2 paragraph"):
+        _scope_case(expected_scope_exclusion=None, scope_exclusion_basis="")
+
+
+def test_a_concluding_exclusion_cannot_carry_art_6_answers():
+    """Art. 6 classifies systems the Regulation governs, so an excluded one never reaches it —
+    unless the exclusion is the one that falls through."""
+    with pytest.raises(ValueError, match="never reached by it"):
+        _scope_case(expected_annex_iii_area=AnnexIIIArea.EMPLOYMENT)
 
 
 def test_dangling_flips_from_is_rejected(tmp_path):

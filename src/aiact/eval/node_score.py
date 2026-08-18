@@ -71,10 +71,15 @@ NODE_KEYS: dict[str, str | None] = {
 # Fields every case carries whether or not its YAML names them, so the `model_fields_set` test does
 # not apply. Two reasons, and both make the field a fact about the case rather than a choice:
 #
-#   FIXED BY THE RISK CLASS   `ClassificationCase`'s validator enforces strict equivalences —
-#                             prohibited is true exactly when the class is PROHIBITED, an Art. 2
-#                             exclusion is set exactly when the class is OUT_OF_SCOPE. A fact the
-#                             answer key already settles needs no second statement.
+#   FIXED BY THE RISK CLASS   `ClassificationCase`'s validator ties these to the class — an Art. 5
+#                             point is named exactly when the class is PROHIBITED, and an Art. 2
+#                             exclusion exactly when it is OUT_OF_SCOPE. A fact the answer key
+#                             already settles needs no second statement.
+#                             ONE EXCEPTION, and it is why these fields are exempt rather than
+#                             required: Art. 2(12) falls THROUGH the cascade, so a free and
+#                             open-source case can answer `scope` and still end at `minimal`. Such a
+#                             case writes the field explicitly; every other case leaves it unwritten
+#                             and is scored against `None`, which is what its class already says.
 #   REQUIRED                  `expected_is_ai_system` has no default, so it is always written.
 #
 # The rule they bypass exists for the ENUM fields, where `None` is ambiguous between "the answer is

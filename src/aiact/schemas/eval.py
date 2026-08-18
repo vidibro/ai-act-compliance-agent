@@ -173,6 +173,24 @@ class ClassificationCase(BaseModel):
     generate outputs. Software that applies rules a person wrote is outside it however
     sophisticated, so a set where every case answers `true` measures nothing about this node."""
 
+    is_ai_basis: str = ""
+    """WHY the system is, or is not, an AI system — what it INFERS, and from what input.
+
+    The same discipline as `transparency_basis` and `scope_exclusion_basis`, applied to the node
+    that most needed it. Every case in this set said `true` for months; the column printed "every
+    expected answer identical — unmeasured" on every run, and when rule-based systems were finally
+    examined two labels turned out to be wrong. Nobody had written down why any case was an AI
+    system, so there was nothing to check the label against — a default nobody had to defend, which
+    is how the Art. 50 booleans went wrong too.
+
+    Art. 3(1) turns on INFERENCE: a machine-based system that infers, from the input it receives,
+    how to generate its outputs. Software that executes rules a person wrote is outside it however
+    elaborate, so the basis must name the inference rather than the sophistication. Compelled over
+    the shipped set by a test rather than by this schema, so a synthetic fixture need not carry it.
+
+    It is also where a contestable label declares itself: a case whose argument cannot be written
+    plainly is a case whose label is not yet settled."""
+
     # The "why" — the decisive sub-answers a correct classifier should also produce. Optional so a
     # case only pins what actually decides it.
     expected_scope_exclusion: ScopeExclusion | None = None
@@ -290,19 +308,34 @@ class ClassificationCase(BaseModel):
         # Art. 2 — an exclusion must name the paragraph it rests on, and nothing else may claim one.
         # The classes are ordered in law before the risk tiers: a system the Regulation does not
         # govern has no tier, so OUT_OF_SCOPE cannot carry Art. 6 sub-answers either.
-        if (self.expected_scope_exclusion is not None) != (rc == RiskClass.OUT_OF_SCOPE):
+        # Art. 2(12) IS THE EXCEPTION, and the cascade is built around it: a free and open-source
+        # answer FALLS THROUGH, because the paragraph's own carve-back names high-risk, Art. 5 and
+        # Art. 50 — the questions the rest of the cascade answers. So such a case legitimately ends
+        # at `minimal` or `not_high_risk` while the scope node still answered `free_open_source`,
+        # and requiring the equivalence below of it would forbid the key from describing a route
+        # the graph actually takes.
+        excluded = self.expected_scope_exclusion
+        falls_through = excluded is ScopeExclusion.FREE_OPEN_SOURCE
+        if rc == RiskClass.OUT_OF_SCOPE and excluded is None:
             raise ValueError(
-                f"{self.case_id}: expected_scope_exclusion={self.expected_scope_exclusion} but "
-                f"expected_risk_class={rc}. An Art. 2 exclusion and the OUT_OF_SCOPE class are the "
-                f"same fact stated two ways — the Regulation does not apply at all."
+                f"{self.case_id}: expected_risk_class=out_of_scope names no Art. 2 paragraph. The "
+                f"class IS the exclusion — say which one withholds the Regulation."
             )
-        if self.expected_scope_exclusion is not None:
+        if excluded is not None and not falls_through and rc != RiskClass.OUT_OF_SCOPE:
+            raise ValueError(
+                f"{self.case_id}: expected_scope_exclusion={excluded} but expected_risk_class={rc}."
+                f" Every exclusion except Art. 2(12) is unconditional on the facts of the system, "
+                f"so it and the OUT_OF_SCOPE class are the same fact stated two ways."
+            )
+        if excluded is not None:
             if not self.scope_exclusion_basis.strip():
                 raise ValueError(
                     f"{self.case_id}: an Art. 2 exclusion is claimed but scope_exclusion_basis is "
                     f"empty. Say why that paragraph applies."
                 )
-            if (
+            # Only where the exclusion CONCLUDES. Art. 2(12) does not: its case runs the whole
+            # cascade, so it both may and must pin the Art. 6 answers on the way through.
+            if not falls_through and (
                 self.expected_annex_iii_area is not None
                 or self.expected_annex_i_product is not None
             ):
