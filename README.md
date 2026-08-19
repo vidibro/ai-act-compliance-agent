@@ -245,21 +245,23 @@ applies and what a verdict means, the model answers one bounded question at a ti
 It takes a classification as an argument rather than producing one — `review()` supplies the
 cascade's output, and the two layers never import each other.
 
-Three steps, in a line. Boxes are the three graph nodes; rounded shapes are the data passing
-between them.
+Four steps, in a line. Boxes are the graph nodes; rounded shapes are the data passing between them.
 
 ```mermaid
 flowchart TD
-    IN([your documentation<br/>+ its risk class]):::data --> SEL
+    IN([your documentation<br/>+ its risk class]):::data --> A25
 
-    SEL["<b>1. select_rules</b> — no AI<br/>Look up every rule this risk class<br/>and this role has to follow"]:::code
-    SEL --> CAN([rules a document<br/>can answer]):::data
+    A25{"<b>1. provider_role</b> — high-risk only<br/>Art. 25: did someone else place this system<br/>on the market, and have you become<br/>its provider since?"}:::model
+    A25 --> SEL
+
+    SEL["<b>2. select_rules</b> — no AI<br/>For each use case, for EVERY role the Act binds —<br/>provider, deployer, importer, distributor,<br/>authorised representative — look up the rules<br/>this risk class puts on them"]:::code
+    SEL --> CAN([rules a document<br/>can answer,<br/>per use case × role]):::data
     SEL --> CANT([rules it cannot —<br/>company processes,<br/>rules not in force yet]):::data
 
-    CAN --> JUD["<b>2. check_compliance</b> — one AI call per rule<br/>For each rule: search the document,<br/>read the passages that come back,<br/>decide whether it is really covered"]:::model
+    CAN --> JUD["<b>3. check_compliance</b> — one AI call per rule and role<br/>For each rule: search the document,<br/>read the passages that come back,<br/>decide whether it is really covered"]:::model
     JUD --> V([one answer per rule:<br/>covered · missing ·<br/>there but too thin · unsure]):::data
 
-    V --> ASM["<b>3. assemble_report</b> — no AI<br/>Count the answers, and list the rules<br/>nobody could check"]:::code
+    V --> ASM["<b>4. assemble_report</b> — no AI<br/>Count the answers, group them by who owes<br/>them, and list the rules nobody could check"]:::code
     CANT --> ASM
     ASM --> OUT([compliance report]):::ok
 
@@ -288,9 +290,24 @@ flowchart TD
   a role either has rules or is listed with a reason, and a test enforces it. So a role added to
   the enum, or one that loses its last rule, fails CI rather than quietly disappearing from every
   report — an omitted role reads as a role that owes nothing, and no role the Act names owes
-  nothing. One is listed out today: the **product manufacturer**, and not by oversight — Art. 25(3)
-  gives it no duty set of its own, it makes it *the provider* owing Art. 16 whole. That is a
-  classification step this tool does not yet take, and the disclaimer says so.
+  nothing. One is listed out, and not by oversight: the **product manufacturer**. Art. 25(3) gives
+  it no duty set of its own — it makes it *the provider*, owing Art. 16 whole — so writing rules for
+  it would state as a separate obligation set the very thing the Article says is the provider's. It
+  is reached by the Art. 25 step below instead, which answers with the provider ruleset this spec
+  already holds.
+- **And the roles can change hands, which is the first thing this graph asks.** Where the system is
+  high-risk, Art. 25 makes a distributor, importer or deployer **the provider** — owing Art. 16
+  whole, not a share of it — if it puts its name on a high-risk system someone else placed on the
+  market, substantially modifies one (Art. 3(23): outside the supplier's conformity assessment, not
+  merely "customised"), or changes the intended purpose of an ordinary system so that it becomes
+  high-risk. Art. 25(3) does the same to a product manufacturer shipping bought-in AI inside its own
+  product. A company that white-labels a vendor's hiring tool reads a report listing the provider's
+  duties beside the deployer's, assumes the short column is theirs, and is wrong about both.
+  Art. 25(2) is the half worth acting on: the party you bought from stops being the provider and
+  owes you the information and technical access to do the conformity assessment.
+  This is a question about the READER, not the system, which is why it is here and not in the
+  cascade — it consumes the risk class and changes nothing about it. Asked only at high risk,
+  because that is the only system Art. 25 reallocates the provider of.
 - **`minimal` is not `out_of_scope`, and Art. 4 is what proves it.** A minimal-risk system is
   inside the Regulation: both its provider and its deployer owe AI literacy measures, in force
   since 2 February 2025. An excluded system owes nothing at all. If the obligation layer returned

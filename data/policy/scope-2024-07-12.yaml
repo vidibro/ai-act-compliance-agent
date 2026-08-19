@@ -34,10 +34,11 @@ roles_out_of_scope:
   product_manufacturer: >-
     Art. 25(3) gives the product manufacturer no duty set of its own — where a high-risk AI system
     is placed on the market with their product under their name, it makes them THE PROVIDER, owing
-    Art. 16 whole. So there is no ruleset to write: what is missing is a classification step that
-    asks whether the reader has become the provider (Art. 25(1)(a)-(c) and 25(3)). Until that
-    exists, the tool assumes the roles the document describes — a limit recorded in the report's
-    disclaimer rather than modelled as an empty obligation set.
+    Art. 16 whole. So there is no ruleset to write, and writing one would be wrong: it would state
+    as a separate obligation set the very thing the Article says is the provider's. The role is
+    reached instead by the gap graph's `provider_role` node (src/aiact/gap/roles.py), which asks at
+    high risk whether Art. 25(1)(a)-(c) or 25(3) has moved the provider's duties onto the reader,
+    and answers with the provider ruleset this spec already holds.
 
 out_of_scope:
   # --- Chapter I — General provisions ---------------------------------------------------------
@@ -65,8 +66,14 @@ out_of_scope:
     Umbrella list of provider obligations that cross-references Art. 17-21, 43, 47-49, each of
     which is modelled individually. Modelling it too would double-count every finding.
   25: >-
-    Allocates responsibilities along the value chain (when a distributor/importer/deployer becomes
-    a provider). Relevant to ROLE ASSIGNMENT, not a documentation-checkable provider duty in v0.1.
+    Allocates responsibilities along the value chain. Paragraphs (1) to (3) assign the PROVIDER
+    ROLE rather than create a duty of their own — the reallocated party owes Art. 16, which is
+    already modelled rule by rule — so they are consumed by the gap graph's `provider_role` node
+    and reported as whose the provider findings are, not as a rule.
+    Art. 25(4)'s written-agreement duty between a provider and its component suppliers is a
+    genuine obligation and is not modelled: it is discharged in a contract with a third party, not
+    in the technical documentation this tool reads, so a document check could only ever report
+    "not found" — see docs/ROADMAP.md.
 
   # --- Chapter III Section 4 — notifying authorities and notified bodies -----------------------
   # For Annex III(4) employment the conformity route is internal control (Art. 43(2)), which
