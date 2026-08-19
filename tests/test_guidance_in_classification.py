@@ -140,22 +140,22 @@ def test_the_llm_prompt_includes_labelled_non_binding_guidance():
 def test_an_abstention_does_not_claim_to_rest_on_guidance():
     """A node that declined rested on nothing. Attaching the guidance anyway made the report warn
     that a verdict leaned on non-binding Commission interpretation when no verdict was reached."""
-    from aiact.classify.brain import ClassificationBrain  # noqa: F401
-    from aiact.schemas.classification import ClassificationAnswer
+    from aiact.brain import Brain  # noqa: F401
+    from aiact.schemas.question import Answer
 
     class Declining:
         name = "declining"
 
         def decide(self, question, description):
             if question.node_id == "is_ai":
-                return ClassificationAnswer(
+                return Answer(
                     value=True,
                     reasoning="yes",
                     confidence="high",
                     source=question.source,
                     node_id="is_ai",
                 )
-            return ClassificationAnswer(
+            return Answer(
                 value=None,
                 reasoning="declined",
                 confidence="low",

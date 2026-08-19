@@ -26,12 +26,6 @@ from typing import TYPE_CHECKING, Any
 from aiact.config import get_settings
 from aiact.llm import unfence, verbatim
 from aiact.providers import ProviderProfile, gateway_kwargs, profile_for
-from aiact.schemas.classification import (
-    AbstentionCause,
-    ClassificationAnswer,
-    ClassificationQuestion,
-    Confidence,
-)
 from aiact.schemas.enums import (
     AnnexIIIArea,
     AnnexIProduct,
@@ -42,11 +36,12 @@ from aiact.schemas.enums import (
     TerritorialLink,
     TransparencyDuty,
 )
+from aiact.schemas.question import AbstentionCause, Answer, Confidence, Question
 from aiact.tracing import current_metadata
 from aiact.usage import Usage
 
 if TYPE_CHECKING:
-    from aiact.classify.brain import ClassificationBrain
+    from aiact.brain import Brain
 
 _EVIDENCE_MAX_LENGTH = 300
 
@@ -270,7 +265,7 @@ def _parse_value(answer_type: str, value: object) -> object:
 
 class LLMBrain:
     """Answers one question with a single LiteLLM completion, parsed into a
-    ClassificationAnswer."""
+    Answer."""
 
     name: str = "llm"
     model: str
@@ -294,10 +289,10 @@ class LLMBrain:
 
     def _abstain(
         self,
-        question: ClassificationQuestion,
+        question: Question,
         why: str,
         cause: AbstentionCause = "reply_unusable",
-    ) -> ClassificationAnswer:
+    ) -> Answer:
         """No usable answer -> answer with LOW confidence, which the cascade routes to
         NEEDS_REVIEW. For a compliance tool a confident wrong answer is the worst outcome, so an
         unreadable reply must escalate to a human rather than degrade into a default verdict.
@@ -306,7 +301,7 @@ class LLMBrain:
         completions, malformed JSON. Only a deliberate UNKNOWN means the documentation is silent,
         and the two must not be reported the same way: one asks the user to edit their document,
         the other to re-run."""
-        return ClassificationAnswer(
+        return Answer(
             value=None,
             reasoning=f"Abstained on {question.node_id!r}: {why}.",
             confidence="low",
@@ -315,7 +310,7 @@ class LLMBrain:
             abstained_because=cause,
         )
 
-    def _user_content(self, question: ClassificationQuestion, description: str) -> Any:
+    def _user_content(self, question: Question, description: str) -> Any:
         """Build the user turn, split at the CACHE BOUNDARY.
 
         The verbatim enacted text is identical for every use case we classify at a given node —
@@ -360,7 +355,7 @@ class LLMBrain:
             {"type": "text", "text": task},
         ]
 
-    def decide(self, question: ClassificationQuestion, description: str) -> ClassificationAnswer:
+    def decide(self, question: Question, description: str) -> Answer:
         import litellm  # lazy: only needed when actually classifying with a model
 
         user_content = self._user_content(question, description)
@@ -416,7 +411,7 @@ class LLMBrain:
         if quote is not None:
             quote = quote[:_EVIDENCE_MAX_LENGTH]
 
-        return ClassificationAnswer(
+        return Answer(
             value=value,
             reasoning=(
                 str(data.get("reasoning", "")).strip()
@@ -430,5 +425,5 @@ class LLMBrain:
 
 
 if TYPE_CHECKING:
-    # Compile-time proof that LLMBrain satisfies the ClassificationBrain protocol (see brain.py).
-    _llm_conforms: ClassificationBrain = LLMBrain()
+    # Compile-time proof that LLMBrain satisfies the Brain protocol (see brain.py).
+    _llm_conforms: Brain = LLMBrain()

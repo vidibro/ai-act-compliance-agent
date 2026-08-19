@@ -312,7 +312,7 @@ flowchart TD
 
 ## Development
 
-One command runs the full gate — lint, type-check (including `ClassificationBrain` protocol
+One command runs the full gate — lint, type-check (including `Brain` protocol
 conformance),
 and tests:
 

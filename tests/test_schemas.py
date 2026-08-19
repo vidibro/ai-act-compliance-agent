@@ -15,8 +15,8 @@ from pydantic import ValidationError
 from aiact.schemas import (
     ActorRole,
     AnnexIIIArea,
+    Answer,
     CheckType,
-    ClassificationAnswer,
     ClassificationEvidence,
     ClassificationResult,
     ComplianceReport,
@@ -46,7 +46,7 @@ def a_source(**overrides) -> LegalSource:
     return LegalSource(**kwargs)
 
 
-def a_node(value, **overrides) -> ClassificationAnswer:
+def a_node(value, **overrides) -> Answer:
     kwargs = dict(
         value=value,
         reasoning="decisive fact located in the documentation",
@@ -54,7 +54,7 @@ def a_node(value, **overrides) -> ClassificationAnswer:
         source=a_source(),
     )
     kwargs.update(overrides)
-    return ClassificationAnswer(**kwargs)
+    return Answer(**kwargs)
 
 
 def an_evidence(**overrides) -> ClassificationEvidence:
@@ -133,7 +133,7 @@ def test_policy_rule_and_spec_valid():
 
 def test_node_answer_requires_source():
     with pytest.raises(ValidationError):
-        ClassificationAnswer(value=True, reasoning="x", confidence="high")  # no source
+        Answer(value=True, reasoning="x", confidence="high")  # no source
 
 
 # --------------------------------------------------------------------------------------

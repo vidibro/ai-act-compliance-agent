@@ -30,10 +30,10 @@ from aiact.eval.node_score import (
     score_node_run,
     score_nodes,
 )
-from aiact.schemas.classification import ClassificationAnswer
 from aiact.schemas.enums import AnnexIIIArea, ProhibitedPractice, RiskClass, ScopeExclusion
 from aiact.schemas.eval import ClassificationCase, Difficulty
 from aiact.schemas.policy import LegalSource
+from aiact.schemas.question import Answer
 
 SOURCE = LegalSource(
     instrument="Regulation (EU) 2024/1689", article=6, act_version_date=date(2024, 7, 12)
@@ -53,8 +53,8 @@ def a_case(**overrides) -> ClassificationCase:
     return ClassificationCase(**{**base, **overrides})
 
 
-def an_answer(value, confidence="high", abstained=None) -> ClassificationAnswer:
-    return ClassificationAnswer(
+def an_answer(value, confidence="high", abstained=None) -> Answer:
+    return Answer(
         value=value,
         reasoning="r",
         confidence=confidence,
@@ -63,10 +63,10 @@ def an_answer(value, confidence="high", abstained=None) -> ClassificationAnswer:
     )
 
 
-def an_answer_at(node_id: str, value, confidence="high", abstained=None) -> ClassificationAnswer:
+def an_answer_at(node_id: str, value, confidence="high", abstained=None) -> Answer:
     """An answer tagged with the node that produced it — which is the only link back to the
     question now that nothing records the questions separately."""
-    return ClassificationAnswer(
+    return Answer(
         value=value,
         reasoning="r",
         confidence=confidence,

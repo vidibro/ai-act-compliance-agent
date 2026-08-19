@@ -15,13 +15,13 @@ from datetime import date
 import pytest
 
 from aiact.classify.llm_brain import LLMBrain, Unanswerable, _parse_bool, _parse_value
-from aiact.schemas.classification import ClassificationQuestion
 from aiact.schemas.enums import AnnexIIIArea, DerogationCondition
 from aiact.schemas.policy import LegalSource
+from aiact.schemas.question import Question
 
 
-def a_question(node_id: str = "profiling", answer_type: str = "bool") -> ClassificationQuestion:
-    return ClassificationQuestion(
+def a_question(node_id: str = "profiling", answer_type: str = "bool") -> Question:
+    return Question(
         node_id=node_id,
         source=LegalSource(
             instrument="Regulation (EU) 2024/1689",

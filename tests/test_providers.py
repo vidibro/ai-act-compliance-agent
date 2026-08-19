@@ -14,12 +14,12 @@ import pytest
 
 from aiact.classify.llm_brain import LLMBrain
 from aiact.providers import ProviderProfile, estimate_tokens, profile_for
-from aiact.schemas.classification import ClassificationQuestion
 from aiact.schemas.policy import LegalSource
+from aiact.schemas.question import Question
 
 
-def a_question(context: str = "") -> ClassificationQuestion:
-    return ClassificationQuestion(
+def a_question(context: str = "") -> Question:
+    return Question(
         node_id="annex_iii",
         source=LegalSource(
             instrument="Regulation (EU) 2024/1689",

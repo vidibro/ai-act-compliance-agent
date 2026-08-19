@@ -17,7 +17,6 @@ from pydantic import ValidationError
 from aiact.classify import ScriptedBrain, build_graph, classify
 from aiact.classify.graph import route_for
 from aiact.eval.classification_cases import load_classification_cases
-from aiact.schemas.classification import ClassificationAnswer
 from aiact.schemas.enums import (
     ActorRole,
     AnnexIIIArea,
@@ -31,6 +30,7 @@ from aiact.schemas.enums import (
 )
 from aiact.schemas.eval import ClassificationCase
 from aiact.schemas.policy import LegalSource
+from aiact.schemas.question import Answer
 
 ROOT = Path(__file__).resolve().parents[1]
 CASES_PATH = ROOT / "data" / "golden_set" / "classification_cases.yaml"
@@ -634,7 +634,7 @@ def test_evidence_quote_cannot_dump_a_section():
 # needs_review must say WHAT was missing — "a node abstained" gives the reader nothing to act on
 # ==================================================================================================
 def _abstention(node_id: str, article: int, cause: str, paragraph: int | None = None):
-    return ClassificationAnswer(
+    return Answer(
         value=None,
         reasoning="declined",
         confidence="low",

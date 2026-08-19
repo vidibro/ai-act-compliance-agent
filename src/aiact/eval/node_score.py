@@ -46,9 +46,10 @@ from collections import Counter
 from dataclasses import dataclass
 from typing import Any, Literal
 
-from aiact.schemas.classification import ClassificationAnswer, ClassificationResult
+from aiact.schemas.classification import ClassificationResult
 from aiact.schemas.enums import RiskClass
 from aiact.schemas.eval import ClassificationCase
+from aiact.schemas.question import Answer
 
 Outcome = Literal["correct", "wrong", "abstained"]
 
@@ -126,7 +127,7 @@ class NodeScore:
         return f"{self.case_id}/{self.node_id}"
 
 
-def _abstained(answer: ClassificationAnswer) -> bool:
+def _abstained(answer: Answer) -> bool:
     """A node declined rather than answered.
 
     Two signals, because two brains produce them differently: `LLMBrain` sets `abstained_because`,
@@ -136,7 +137,7 @@ def _abstained(answer: ClassificationAnswer) -> bool:
     return answer.abstained_because is not None or answer.confidence == "low"
 
 
-def score_nodes(case: ClassificationCase, answers: list[ClassificationAnswer]) -> list[NodeScore]:
+def score_nodes(case: ClassificationCase, answers: list[Answer]) -> list[NodeScore]:
     """The scoreable nodes for one case: asked by the run, and pinned by the case."""
     scores: list[NodeScore] = []
     for answer in answers:

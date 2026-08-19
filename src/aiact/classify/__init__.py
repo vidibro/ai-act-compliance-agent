@@ -3,11 +3,11 @@ class, with an injectable brain.
 
 Layer one of two. The gap layer (`aiact.gap`) is its counterpart; neither imports the other, and
 what they genuinely share — model-call plumbing, provider profiles, usage, tracing — lives outside
-both. The brains are NOT shared: `ClassificationBrain` answers a `ClassificationQuestion`, which is
+both. The brains are NOT shared: `Brain` answers a `Question`, which is
 a question only this layer asks.
 
 Module layout:
-    brain.py           the CONTRACT — the ClassificationBrain protocol, and nothing else. Depends
+    brain.py           the CONTRACT — the Brain protocol, and nothing else. Depends
                        on neither the cascade nor any implementation. The question/answer shapes it
                        refers to live in schemas.classification.
     graph.py           the CASCADE — QUESTIONS (which questions, in what order), routing, assemble.
@@ -19,7 +19,7 @@ deterministic ScriptedBrain route should stay usable without it. Import it expli
     from aiact.classify.llm_brain import LLMBrain
 """
 
-from aiact.classify.brain import ClassificationBrain
+from aiact.brain import Brain
 from aiact.classify.graph import (
     QUESTIONS,
     GraphState,
@@ -28,12 +28,12 @@ from aiact.classify.graph import (
     decide_risk_class,
 )
 from aiact.classify.scripted_brain import ScriptedBrain
-from aiact.schemas.classification import ClassificationQuestion
+from aiact.schemas.question import Question
 
 __all__ = [
     # contract
-    "ClassificationBrain",
-    "ClassificationQuestion",
+    "Brain",
+    "Question",
     # cascade
     "QUESTIONS",
     "GraphState",

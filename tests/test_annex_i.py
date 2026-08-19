@@ -21,11 +21,7 @@ from aiact.gap.judge import Judgement
 from aiact.gap.rules import select_rules
 from aiact.pipeline import review
 from aiact.policy_loader import load_policy_spec
-from aiact.schemas.classification import (
-    ClassificationAnswer,
-    ClassificationEvidence,
-    UseCaseClassification,
-)
+from aiact.schemas.classification import ClassificationEvidence, UseCaseClassification
 from aiact.schemas.enums import (
     _ANNEX_I_CONFORMITY_ROUTE,
     _ANNEX_I_LEGISLATION,
@@ -37,6 +33,7 @@ from aiact.schemas.enums import (
     Verdict,
 )
 from aiact.schemas.policy import LegalSource
+from aiact.schemas.question import Answer
 
 DOCUMENT = "# Doc\n\n## Safety\n\nThe controller halts the actuator on fault.\n"
 
@@ -218,9 +215,9 @@ def a_silent_doc_brain(product: AnnexIProduct):
         def decide(self, question, description):
             common = {"source": question.source, "node_id": question.node_id, "reasoning": "r"}
             if question.node_id == "annex_i":
-                return ClassificationAnswer(value=product, confidence="high", **common)
+                return Answer(value=product, confidence="high", **common)
             if question.node_id == "third_party_assessment":
-                return ClassificationAnswer(
+                return Answer(
                     value=None,
                     confidence="low",
                     abstained_because="description_silent",
@@ -230,7 +227,7 @@ def a_silent_doc_brain(product: AnnexIProduct):
             # `prohibited` in particular must be None rather than False — it answers with an
             # Art. 5(1) point, and a bare false is a value it cannot cite, which the cascade
             # rightly refuses to read as a clearance.
-            return ClassificationAnswer(
+            return Answer(
                 value=True if question.node_id == "is_ai" else None, confidence="high", **common
             )
 

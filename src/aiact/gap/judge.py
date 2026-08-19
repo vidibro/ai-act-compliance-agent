@@ -43,9 +43,9 @@ from aiact.config import get_settings
 from aiact.llm import flatten, unfence, verbatim
 from aiact.providers import ProviderProfile, gateway_kwargs, profile_for
 from aiact.retrieval.store import DocumentIndex, Hit, document_id
-from aiact.schemas.classification import Confidence
 from aiact.schemas.enums import CheckType, Verdict
 from aiact.schemas.policy import PolicyRule
+from aiact.schemas.question import Confidence
 from aiact.tools.evidence import DEFAULT_K, find_evidence
 from aiact.tools.references import Reference, resolve_all
 from aiact.tracing import current_metadata

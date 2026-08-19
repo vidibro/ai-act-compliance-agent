@@ -12,14 +12,11 @@ from __future__ import annotations
 import pytest
 
 from aiact.eval.classification_score import score_case, score_run
-from aiact.schemas.classification import (
-    ClassificationAnswer,
-    ClassificationResult,
-    UseCaseClassification,
-)
+from aiact.schemas.classification import ClassificationResult, UseCaseClassification
 from aiact.schemas.enums import RiskClass, TransparencyDuty
 from aiact.schemas.eval import ClassificationCase
 from aiact.schemas.policy import LegalSource
+from aiact.schemas.question import Answer
 
 ART50 = LegalSource(
     instrument="Regulation (EU) 2024/1689", article=50, act_version_date="2024-07-12"
@@ -54,7 +51,7 @@ def result(risk: RiskClass, transparency: bool | None, *, answered: bool = True)
         else []
     )
     answer = (
-        ClassificationAnswer(
+        Answer(
             value=value,
             reasoning="r",
             confidence="high" if answered else "low",

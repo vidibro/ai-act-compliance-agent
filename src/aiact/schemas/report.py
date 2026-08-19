@@ -12,9 +12,10 @@ from datetime import date, datetime
 
 from pydantic import BaseModel, ValidationInfo, field_validator, model_validator
 
-from aiact.schemas.classification import EVIDENCE_QUOTE_MAX, ClassificationResult, Confidence
+from aiact.schemas.classification import ClassificationResult
 from aiact.schemas.enums import ActorRole, Verdict
 from aiact.schemas.policy import LegalSource, PolicySpec
+from aiact.schemas.question import EVIDENCE_QUOTE_MAX, Confidence
 
 # Modelled on the European Commission's own wording for their AI Act Compliance Checker, with a
 # second paragraph this tool owes its own users: Art. 6(1) settles a system's risk class by

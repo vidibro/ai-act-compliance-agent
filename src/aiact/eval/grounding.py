@@ -22,7 +22,7 @@ therefore hand over exactly what they sent:
 
   LAYER 2  `Judgement.prompt` — recorded at the point of sending.
   LAYER 1  `LLMBrain._user_content(question, description)` — the builder itself, called with the
-           arguments the run used. Nothing is added to `ClassificationAnswer`: it is serialised
+           arguments the run used. Nothing is added to `Answer`: it is serialised
            into the report, and a use-case description does not belong in there twice.
 
 Deliberately NOT a runtime check. This grades a run after the fact, costs one extra call per

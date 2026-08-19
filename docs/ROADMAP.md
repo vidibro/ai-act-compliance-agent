@@ -265,7 +265,7 @@ The high-risk obligations from the EC checker — **26 rules**, `spec.yaml` v0.7
 
 ### M3 — Classification graph (LangGraph) ✅ built, traced and measured on both splits
 
-Nodes reproduce the EC flow; profiling split out; per-use-case resolution. Each node returns a `ClassificationAnswer` with evidence + `LegalSource`. Wire Langfuse from the first node.
+Nodes reproduce the EC flow; profiling split out; per-use-case resolution. Each node returns a `Answer` with evidence + `LegalSource`. Wire Langfuse from the first node.
 
 **Built beyond the original sketch** (none of this was in the plan; record it so M6 can show it):
 
@@ -761,7 +761,7 @@ The first two are the serious ones. A 510(k) never states an EU conformity route
 
 **DECIDED: the answers ride on the RESULT, not on an eval-only wrapper.** The first build wrapped the brain to record what was asked. Rejected on review, and rightly: `GraphState` already held every answer and `assemble` was discarding most of them. `ClassificationResult.answers` now carries all of them in production too, both evals read from it, and `run_grounding.py`'s private recorder was deleted rather than shared. Net effect: one file fewer, and the report gains the audit trail — the Art. 2 and Art. 5 clearances a reader most wants were previously thrown away, since `triggered_by` keeps only the deciding nodes.
 
-**`ClassificationQuestion.label`** carries the plain-language form of each question, for reports. Not `text`, which is addressed to a model and full of instructions that mean nothing to a reader.
+**`Question.label`** carries the plain-language form of each question, for reports. Not `text`, which is addressed to a model and full of instructions that mean nothing to a reader.
 
 **The scoring rule needs BOTH halves — asked AND pinned** — because each alone fails in the opposite direction. Without ASKED, an `out_of_scope` case is marked wrong on Annex III, a question nobody put to it. Without PINNED, every unpinned node scores as though it had been. Both are tested explicitly.
 
@@ -866,7 +866,7 @@ Shape:
 What changes:
 - The cascade itself: **nothing.** It is already per-use-case and brain-agnostic.
 - `classify()` becomes a loop; the most-severe-wins aggregation moves into its own function with its own deterministic test — that rule is legal logic, not plumbing.
-- **Art. 50 goes per use case.** It is asked once per cascade run, so N runs produce N answers for a field currently typed as a single `ClassificationAnswer | None`. The job-ad generator owes transparency; the scorer may not.
+- **Art. 50 goes per use case.** It is asked once per cascade run, so N runs produce N answers for a field currently typed as a single `Answer | None`. The job-ad generator owes transparency; the scorer may not.
 - `ClassificationResult.use_cases` is already a list, and `analyse()` already selects obligations per use case — so the downstream half of this is built. What is missing is upstream: something that produces more than one entry in that list.
 - **Scope the EVIDENCE per use case, not just the rules.** `node_check_compliance` builds jobs carrying a `use_case_id`, then judges every one of them against the WHOLE document. Harmless while `classify()` yields exactly one use case — the document IS that use case's document — and a false clearance the moment it yields two: retrieval for the scoring use case's Art. 14 check can return the oversight paragraph written about the CV parser, and the scorer is credited with a control it does not have. **Cross-use-case evidence leakage** — the same class of bug as cross-document leakage, which per-document Chroma collections already make unreachable; this one is not yet closed. Deliberately deferred rather than missed: scoping evidence to a use case requires knowing which passages belong to it, which IS the decomposition problem, so it cannot be solved before the split works. Cheap to add then — `judge(rule, document)` gains a `use_case` argument, one call site. The `Checker` protocol stays as it is; the Layer-2 eval is per-rule-per-document by construction and has no use cases.
 

@@ -14,13 +14,13 @@ from aiact.gap.graph import analyse
 from aiact.gap.rules import roles_with_rules, select_rules
 from aiact.policy_loader import load_policy_spec
 from aiact.schemas.classification import (
-    ClassificationAnswer,
     ClassificationEvidence,
     ClassificationResult,
     UseCaseClassification,
 )
 from aiact.schemas.enums import ActorRole, DerogationCondition, RiskClass, Verdict
 from aiact.schemas.policy import LegalSource
+from aiact.schemas.question import Answer
 
 DOCUMENT = "# Doc\n\n## Human oversight\n\nA panel reviews every recommendation.\n"
 
@@ -35,7 +35,7 @@ def a_use_case(use_case_id: str, risk_class: RiskClass) -> UseCaseClassification
         instrument="Regulation (EU) 2024/1689", article=6, act_version_date=date(2024, 7, 12)
     )
     def an_answer(value):
-        return ClassificationAnswer(
+        return Answer(
             value=value, reasoning="fixture", confidence="high", source=source
         )
 

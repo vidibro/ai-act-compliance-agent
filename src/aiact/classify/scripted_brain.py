@@ -15,10 +15,10 @@ from __future__ import annotations
 
 from typing import TYPE_CHECKING, Any
 
-from aiact.schemas.classification import ClassificationAnswer, ClassificationQuestion
+from aiact.schemas.question import Answer, Question
 
 if TYPE_CHECKING:
-    from aiact.classify.brain import ClassificationBrain
+    from aiact.brain import Brain
 
 
 class ScriptedBrain:
@@ -36,8 +36,8 @@ class ScriptedBrain:
         self.answers = answers
         self.low_confidence = low_confidence
 
-    def decide(self, question: ClassificationQuestion, description: str) -> ClassificationAnswer:
-        return ClassificationAnswer(
+    def decide(self, question: Question, description: str) -> Answer:
+        return Answer(
             value=self.answers.get(question.node_id),
             reasoning=f"scripted answer for node {question.node_id!r}",
             confidence="low" if question.node_id in self.low_confidence else "high",
@@ -47,6 +47,6 @@ class ScriptedBrain:
 
 
 if TYPE_CHECKING:
-    # Compile-time proof that ScriptedBrain satisfies the ClassificationBrain protocol —
+    # Compile-time proof that ScriptedBrain satisfies the Brain protocol —
     # name AND signature. mypy errors here if `decide`'s shape ever drifts.
-    _scripted_conforms: ClassificationBrain = ScriptedBrain({})
+    _scripted_conforms: Brain = ScriptedBrain({})

@@ -18,13 +18,14 @@ from __future__ import annotations
 
 from datetime import UTC, datetime
 
-from aiact.classify.brain import ClassificationBrain
+from aiact.brain import Brain
 from aiact.classify.graph import classify, load_questions
 from aiact.gap.graph import DEFAULT_WORKERS, analyse
 from aiact.gap.judge import LLMJudge
-from aiact.schemas.classification import ClassificationQuestion, ClassificationResult
+from aiact.schemas.classification import ClassificationResult
 from aiact.schemas.enums import RiskClass
 from aiact.schemas.policy import PolicySpec
+from aiact.schemas.question import Question
 from aiact.schemas.report import ComplianceReport, ReportSummary
 
 _PROHIBITED_NOTE = (
@@ -93,10 +94,10 @@ def _empty_report(
 def review(
     document: str,
     spec: PolicySpec,
-    brain: ClassificationBrain,
+    brain: Brain,
     judge: LLMJudge | None = None,
     system_id: str = "system",
-    questions: dict[str, ClassificationQuestion] | None = None,
+    questions: dict[str, Question] | None = None,
     max_workers: int = DEFAULT_WORKERS,
 ) -> ComplianceReport:
     """Classify `document`, then check it against the obligations that classification activates.

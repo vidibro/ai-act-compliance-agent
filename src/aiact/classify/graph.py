@@ -109,16 +109,13 @@ from typing import Any
 from langgraph.graph import END, START, StateGraph
 from pydantic import BaseModel
 
-from aiact.classify.brain import ClassificationBrain
+from aiact.brain import Brain
 from aiact.config import get_settings
 from aiact.guidance import load_snippet
 from aiact.policy_loader import _FRONT_FIELD, _FRONT_MATTER, verify_integrity
 from aiact.schemas.classification import (
-    ClassificationAnswer,
     ClassificationEvidence,
-    ClassificationQuestion,
     ClassificationResult,
-    Confidence,
     UseCaseClassification,
 )
 from aiact.schemas.enums import (
@@ -131,6 +128,7 @@ from aiact.schemas.enums import (
     TerritorialLink,
 )
 from aiact.schemas.policy import GuidanceSource, LegalSource
+from aiact.schemas.question import Answer, Confidence, Question
 from aiact.tracing import trace_run
 
 _ACT_DATE = date(2024, 7, 12)
@@ -148,15 +146,15 @@ def _src(article: int, paragraph: int | None = None, annex: str | None = None) -
 
 # The cascade's questions, in the order the Commission's checker asks them (prohibited BEFORE
 # high-risk; profiling as our separate node before derogation — see classification.py).
-QUESTIONS: dict[str, ClassificationQuestion] = {
-    "is_ai": ClassificationQuestion(
+QUESTIONS: dict[str, Question] = {
+    "is_ai": Question(
         "is_ai",
         _src(3, 1),
         "Is the described system an 'AI system' within the meaning of Article 3(1)?",
         "bool",
         label="Is it an AI system at all?",
     ),
-    "territorial": ClassificationQuestion(
+    "territorial": Question(
         "territorial",
         _src(2, 1),
         # Art. 2(1) is the POSITIVE limb, and it is asked before the exclusions because it is prior
@@ -191,7 +189,7 @@ QUESTIONS: dict[str, ClassificationQuestion] = {
         "territorial_link",
         label="Is it sold, used, or its output relied on in the EU?",
     ),
-    "scope": ClassificationQuestion(
+    "scope": Question(
         "scope",
         _src(2),
         # Asked before Art. 5, because a system the Regulation does not govern is not a prohibited
@@ -240,7 +238,7 @@ QUESTIONS: dict[str, ClassificationQuestion] = {
         "scope_exclusion",
         label="Does this Regulation apply to the system at all?",
     ),
-    "gpai_model": ClassificationQuestion(
+    "gpai_model": Question(
         "gpai_model",
         _src(3, 63),
         # THE MODEL/SYSTEM LINE IS THE WHOLE DIFFICULTY. Art. 3(66) makes a general-purpose AI
@@ -271,7 +269,7 @@ QUESTIONS: dict[str, ClassificationQuestion] = {
         "gpai_status",
         label="Is this a general-purpose AI model rather than a system?",
     ),
-    "prohibited": ClassificationQuestion(
+    "prohibited": Question(
         "prohibited",
         _src(5),
         # Answered as a POINT, not a boolean. This is the only class that tells a provider their
@@ -307,7 +305,7 @@ QUESTIONS: dict[str, ClassificationQuestion] = {
         "prohibited_practice",
         label="Is the practice itself banned?",
     ),
-    "annex_i": ClassificationQuestion(
+    "annex_i": Question(
         "annex_i",
         _src(6, 1, annex="I"),
         # Art. 6(1) is the OTHER door into high-risk, and it is asked before Annex III because the
@@ -325,7 +323,7 @@ QUESTIONS: dict[str, ClassificationQuestion] = {
         "annex_i_product",
         label="Is it a safety component of a regulated physical product?",
     ),
-    "third_party_assessment": ClassificationQuestion(
+    "third_party_assessment": Question(
         "third_party_assessment",
         _src(6, 1, annex="I"),
         # Art. 6(1) is a CONJUNCTION: (a) AND (b). Most Annex I regimes let a manufacturer
@@ -348,7 +346,7 @@ QUESTIONS: dict[str, ClassificationQuestion] = {
         "bool",
         label="Does that product need an outside body to certify it?",
     ),
-    "annex_iii": ClassificationQuestion(
+    "annex_iii": Question(
         "annex_iii",
         _src(6, 2, annex="III"),
         # SCOPE ONLY — deliberately, on legal grounds. Art. 6(2) puts a system inside an Annex III
@@ -379,7 +377,7 @@ QUESTIONS: dict[str, ClassificationQuestion] = {
         "annex_area",
         label="Is it used in a listed high-risk area?",
     ),
-    "profiling": ClassificationQuestion(
+    "profiling": Question(
         "profiling",
         _src(6, 3),
         "Does this use case perform profiling of natural persons (Article 6(3))? Profiling means "
@@ -387,7 +385,7 @@ QUESTIONS: dict[str, ClassificationQuestion] = {
         "bool",
         label="Does it score, rank or judge people?",
     ),
-    "derogation": ClassificationQuestion(
+    "derogation": Question(
         "derogation",
         _src(6, 3),
         # The SECOND subparagraph only. The chapeau is the `significant_risk` node — see there for
@@ -398,7 +396,7 @@ QUESTIONS: dict[str, ClassificationQuestion] = {
         "derogation",
         label="Is its role only a narrow one?",
     ),
-    "significant_risk": ClassificationQuestion(
+    "significant_risk": Question(
         "significant_risk",
         _src(6, 3),
         # Art. 6(3)'s FIRST subparagraph, and the other half of a conjunction whose second half is
@@ -434,7 +432,7 @@ QUESTIONS: dict[str, ClassificationQuestion] = {
         "bool",
         label="Could it still materially affect the decision?",
     ),
-    "transparency": ClassificationQuestion(
+    "transparency": Question(
         "transparency",
         _src(50),
         # The examples span all four Art. 50 paragraphs: (1) and (2) bind the provider, (3) and (4)
@@ -528,7 +526,7 @@ def load_questions(
     articles_root: str | Path | None = None,
     annexes_root: str | Path | None = None,
     guidance_root: str | Path | None = None,
-) -> dict[str, ClassificationQuestion]:
+) -> dict[str, Question]:
     """QUESTIONS with each `context` filled from the verbatim article/annex store, and
     `guidance_context` filled from the guidance store where the enacted text leaves a question open.
 
@@ -541,7 +539,7 @@ def load_questions(
     art_dir = Path(articles_root or settings.policy_articles_path) / v_str
     ann_dir = Path(annexes_root or settings.policy_annexes_path) / v_str
 
-    resolved: dict[str, ClassificationQuestion] = {}
+    resolved: dict[str, Question] = {}
     for node_id, question in QUESTIONS.items():
         articles, annexes = _QUESTION_CONTEXT.get(node_id, ((), ()))
         chunks: list[str] = []
@@ -582,26 +580,26 @@ def load_questions(
 class GraphState(BaseModel):
     description: str
     use_case_id: str = "use_case"
-    is_ai_system: ClassificationAnswer | None = None
-    territorial_link: ClassificationAnswer | None = None
-    scope_exclusion: ClassificationAnswer | None = None
-    gpai_model: ClassificationAnswer | None = None
-    prohibited: ClassificationAnswer | None = None
-    in_annex_i: ClassificationAnswer | None = None
-    third_party_assessment: ClassificationAnswer | None = None
-    in_annex_iii: ClassificationAnswer | None = None
-    performs_profiling: ClassificationAnswer | None = None
-    derogation: ClassificationAnswer | None = None
-    poses_significant_risk: ClassificationAnswer | None = None
-    transparency: ClassificationAnswer | None = None
+    is_ai_system: Answer | None = None
+    territorial_link: Answer | None = None
+    scope_exclusion: Answer | None = None
+    gpai_model: Answer | None = None
+    prohibited: Answer | None = None
+    in_annex_i: Answer | None = None
+    third_party_assessment: Answer | None = None
+    in_annex_iii: Answer | None = None
+    performs_profiling: Answer | None = None
+    derogation: Answer | None = None
+    poses_significant_risk: Answer | None = None
+    transparency: Answer | None = None
     result: ClassificationResult | None = None
 
 
-def _is_low_confidence(a: ClassificationAnswer | None) -> bool:
+def _is_low_confidence(a: Answer | None) -> bool:
     return a is not None and a.confidence == "low"
 
 
-def _every_answer(state: GraphState) -> list[ClassificationAnswer]:
+def _every_answer(state: GraphState) -> list[Answer]:
     """Every answer the cascade produced, in the order it asked them.
 
     The state fields ARE the cascade order, so listing them is the record of what was asked: a node
@@ -627,7 +625,7 @@ def _every_answer(state: GraphState) -> list[ClassificationAnswer]:
     return [a for a in ordered if a is not None]
 
 
-def _get_answers(state: GraphState) -> list[ClassificationAnswer]:
+def _get_answers(state: GraphState) -> list[Answer]:
     """The answers that determine the RISK CLASS.
 
     `transparency` is deliberately absent. Art. 50 is a separate axis, not a step in the risk
@@ -720,7 +718,7 @@ def _handover(product: AnnexIProduct) -> str:
 
 
 def _why_it_could_not_decide(
-    abstentions: list[ClassificationAnswer],
+    abstentions: list[Answer],
     annex_i_product: AnnexIProduct | None = None,
 ) -> str:
     """Name the MISSING FACT and the article that needed it, instead of 'a node abstained'.
@@ -771,7 +769,7 @@ def _scope_exclusion(state: GraphState) -> ScopeExclusion | None:
 
 
 def _scope_evidence(
-    answer: ClassificationAnswer, exclusion: ScopeExclusion
+    answer: Answer, exclusion: ScopeExclusion
 ) -> ClassificationEvidence:
     """Evidence for an Art. 2 verdict, pinpointed to the PARAGRAPH that decided it.
 
@@ -1080,7 +1078,7 @@ _OPEN_SOURCE_SURVIVES = frozenset({RiskClass.MINIMAL, RiskClass.NOT_HIGH_RISK})
 
 
 def decide_risk_class(
-    state: GraphState, transparency: ClassificationAnswer | None = None
+    state: GraphState, transparency: Answer | None = None
 ) -> tuple[RiskClass, str, list[ClassificationEvidence]]:
     """The tier, with the Art. 2(12) carve-back settled last.
 
@@ -1232,8 +1230,8 @@ def _route_derogation(state: GraphState) -> str:
 
 
 def build_graph(
-    brain: ClassificationBrain,
-    questions: dict[str, ClassificationQuestion] | None = None,
+    brain: Brain,
+    questions: dict[str, Question] | None = None,
 ):
     """Compile the cascade around a given brain.
 
@@ -1242,7 +1240,7 @@ def build_graph(
     should do."""
     asked = questions if questions is not None else QUESTIONS
 
-    def _ask(node_id: str, description: str) -> ClassificationAnswer:
+    def _ask(node_id: str, description: str) -> Answer:
         question = asked[node_id]
         answer = brain.decide(question, description)
         # Record the non-binding guidance that was in context for this node onto the answer, so it
@@ -1437,7 +1435,7 @@ def route_for(answers: dict[str, Any]) -> list[str]:
             setattr(
                 state,
                 field,
-                ClassificationAnswer(
+                Answer(
                     value=value, reasoning="", confidence="high", source=_src(6), node_id=node_id
                 ),
             )
@@ -1457,9 +1455,9 @@ def route_for(answers: dict[str, Any]) -> list[str]:
 
 def classify(
     description: str,
-    brain: ClassificationBrain,
+    brain: Brain,
     use_case_id: str = "use_case",
-    questions: dict[str, ClassificationQuestion] | None = None,
+    questions: dict[str, Question] | None = None,
 ) -> ClassificationResult:
     """Run the cascade on one use-case description and return its ClassificationResult."""
     compiled_graph = build_graph(brain, questions)
