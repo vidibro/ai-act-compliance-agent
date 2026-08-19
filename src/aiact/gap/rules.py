@@ -1,8 +1,14 @@
 """Which obligations apply to a classified use case.
 
 Deterministic and model-free: activation is a property of the ruleset (`applies_to_risk_class`,
-`applies_to_role`, `status`), not a judgement. Only whether the documentation SATISFIES an active
-rule is a judgement, and that is the judge's job.
+`applies_to_role`, `applies_to_route`, `applies_to_annex_iii_area`, `status`), not a judgement.
+Only whether the documentation SATISFIES an active rule is a judgement, and that is the judge's job.
+
+WHICH DOOR AND WHICH AREA are conditions, not decoration. Most obligations bind every high-risk
+system alike, but a few name law that only reaches part of them — Art. 43 sends an Annex III point 1
+system to a notified body, points 2 to 8 to internal control, and an Annex I system to its own
+sectoral procedure. A rule that could not state that condition had to assume one area and cite its
+law at every system, which is a confident wrong citation rather than a missing one.
 
 Obligations attach per USE CASE, not per system. A product whose CV parsing is not_high_risk and
 whose candidate scoring is high_risk owes Chapter III on the scoring use case alone, assessed
@@ -14,7 +20,7 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 
 from aiact.schemas.classification import UseCaseClassification
-from aiact.schemas.enums import ActorRole, RiskClass
+from aiact.schemas.enums import ActorRole, HighRiskRoute, RiskClass
 from aiact.schemas.policy import PolicyRule, PolicySpec
 
 
@@ -61,6 +67,35 @@ def roles_with_rules(spec: PolicySpec) -> list[ActorRole]:
     return [role for role in ActorRole if role in named]
 
 
+def _route_of(use_case: UseCaseClassification) -> HighRiskRoute | None:
+    """WHICH of Art. 6's doors this use case came through, or None where neither did.
+
+    Annex I is checked FIRST because it is checked first in law: Art. 6(1) is an independent route
+    and Art. 6(3) cannot derogate from it, so a system that is a certified safety component is an
+    Annex I system whatever Annex III would have said about its purpose."""
+    if use_case.annex_i_product is not None:
+        return HighRiskRoute.ANNEX_I
+    if use_case.annex_iii_area is not None:
+        return HighRiskRoute.ANNEX_III
+    return None
+
+
+def _route_matches(rule: PolicyRule, use_case: UseCaseClassification) -> bool:
+    """A rule with no route condition fires whichever door was used — the ordinary case."""
+    return rule.applies_to_route is None or rule.applies_to_route is _route_of(use_case)
+
+
+def _area_matches(rule: PolicyRule, use_case: UseCaseClassification) -> bool:
+    """A rule that names Annex III areas fires only inside them.
+
+    A use case with NO area — an Annex I system, or one whose area the run never established —
+    matches no list, which is the safe direction: naming areas is how a rule says the law it cites
+    is area-specific, and firing it outside them is what put Art. 43(2) on a biometrics system."""
+    if not rule.applies_to_annex_iii_area:
+        return True
+    return use_case.annex_iii_area in rule.applies_to_annex_iii_area
+
+
 def select_rules(spec: PolicySpec, use_case: UseCaseClassification, role: ActorRole) -> ActiveRules:
     """The obligations `role` owes for this use case, under its risk class.
 
@@ -98,6 +133,8 @@ def select_rules(spec: PolicySpec, use_case: UseCaseClassification, role: ActorR
         for rule in spec.rules
         if use_case.risk_class in rule.applies_to_risk_class
         and role in rule.applies_to_role
+        and _route_matches(rule, use_case)
+        and _area_matches(rule, use_case)
         and rule.status != "amended"
     ]
     return ActiveRules(

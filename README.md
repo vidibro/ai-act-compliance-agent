@@ -275,6 +275,15 @@ flowchart TD
   `not_high_risk` and whose candidate scoring is `high_risk` owes Chapter III on the scoring use
   case alone, assessed against *that* intended purpose — so selection runs per use case and the
   results are kept apart.
+- **And some of them attach per *area*, which is the difference between a citation and the right
+  citation.** Art. 43 does not say one thing about conformity assessment: an Annex III point 1
+  (biometrics) system may need a **notified body** (43(1)), points 2 to 8 self-assess under
+  Annex VI (43(2)), and an Annex I product follows its **own sectoral act** instead (43(3)). Three
+  mutually exclusive branches, so a rule carries `applies_to_annex_iii_area` and `applies_to_route`
+  beside risk class and role. Both default to *no condition*, because most obligations — Arts. 9–15,
+  16–21 — genuinely bind every high-risk system alike. A test asserts every high-risk system owes
+  exactly one Art. 43 rule: two would be contradictory law, none reads in a report as *no conformity
+  assessment required*.
 - **And per role, not per organisation.** The Regulation attaches duties to the ROLE, and the
   report covers **every role it binds** — provider (Chapter III, Arts. 16–21), deployer
   (Arts. 26–27 and 86), authorised representative (Art. 22), importer (Art. 23), distributor

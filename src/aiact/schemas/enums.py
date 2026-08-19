@@ -572,6 +572,23 @@ class AnnexIIIArea(StrEnum):
     JUSTICE_DEMOCRACY = "justice_democracy"  # Annex III(8)
 
 
+class HighRiskRoute(StrEnum):
+    """WHICH of Art. 6's two doors made a use case high-risk.
+
+    Not a tier and not a property of a rule's subject matter — a condition on when a rule fires.
+    Most obligations do not care which door was used: Arts. 9-15 and 17-21 bind every high-risk
+    system alike. A few care completely, and Art. 43 is the clearest: conformity assessment is
+    43(1) or 43(2) for an Annex III system depending on the area, and 43(3) — the sectoral act's
+    own procedure, not this Regulation's — for an Annex I one. One rule cannot hold all three, and
+    a rule that names no route would cite the wrong law to two systems out of three."""
+
+    ANNEX_I = "annex_i"
+    """Art. 6(1). A safety component of, or itself, a product covered by an Annex I instrument."""
+
+    ANNEX_III = "annex_iii"
+    """Art. 6(2). Used in one of the areas Annex III lists."""
+
+
 class AnnexIProduct(StrEnum):
     """Art. 6(1), Annex I. The twenty Union harmonisation instruments, named by the product they
     govern rather than by directive number — a system card says "surgical robot", never

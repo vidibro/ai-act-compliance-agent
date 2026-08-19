@@ -1,4 +1,4 @@
-# AI Act policy specification — v0.7, EMPLOYMENT high-risk scope (Annex III(4)).
+# AI Act policy specification — v0.8, high-risk scope.
 #
 # THIS FILE CONTAINS NO LEGAL TEXT. The enacted wording lives in exactly one place —
 # data/policy/articles/*.md — written verbatim from EUR-Lex Formex XML by
@@ -9,7 +9,8 @@
 #
 # So each rule carries only:
 #   source            — WHICH provision (the pointer; resolves to the literal text)
-#   applies_to_*      — WHEN the rule activates (risk class / actor role)
+#   applies_to_*      — WHEN the rule activates (risk class, actor role, and where the law is
+#                       area-specific, which Art. 6 route and which Annex III areas)
 #   check_type        — HOW it must be verified
 #   evidence_expected — NON-LEGAL, plain-language description of what would satisfy it. This is
 #                       our own interpretive text and the query used for vector retrieval over the
@@ -31,7 +32,7 @@
 # High-risk obligations for Annex III systems apply from 2026-08-02 (Art. 113). That applicability
 # date is carried in each rule's effective_date; status stays "active" (adopted, in force).
 
-spec_version: "0.7.0"
+spec_version: "0.8.0"
 act_version_date: 2024-07-12
 source_note: >-
   Rule structure and scope selection derived from the EC AI Act Compliance Checker, Chapter III
@@ -256,21 +257,86 @@ rules:
     effective_date: 2026-08-02
     status: active
 
-  - rule_id: AIA-PO-A43
+  # Art. 43 splits THREE WAYS and the split is by route and area, not by anything a single rule
+  # could express. Until `applies_to_annex_iii_area` existed, the spec carried 43(2) alone with a
+  # comment saying "employment is Annex III point 4", and fired it at biometrics and at Annex I
+  # systems too — citing the wrong paragraph and the wrong Annex, confidently, to two systems out
+  # of three. The comment was the condition; now the condition is the condition.
+  - rule_id: AIA-PO-A43-1
     source:
       instrument: "Regulation (EU) 2024/1689"
       article: 43
-      paragraph: 2 # employment is Annex III point 4 -> internal control (Annex VI), NOT para 1
+      paragraph: 1
+      act_version_date: 2024-07-12
+    applies_to_risk_class: [high_risk]
+    applies_to_role: [provider]
+    applies_to_annex_iii_area: [biometrics]
+    obligation_status: mandatory
+    check_type: presence
+    # No `annex` on the source: paragraph 1 offers a CHOICE between Annex VI and Annex VII where
+    # harmonised standards were applied, and compels Annex VII where they were not. Naming one
+    # would assert the branch the paragraph leaves open.
+    evidence_expected: >-
+      Evidence of the conformity assessment route taken for an Annex III point 1 (biometrics)
+      system. Unlike every other Annex III area this one can require a NOTIFIED BODY: internal
+      control (Annex VI) is available only where harmonised standards or common specifications were
+      applied, and Annex VII is compulsory otherwise. Which applies turns on the standards the
+      provider used, so the route and the standards relied on both have to be stated. A procedural
+      act preceding market placement — confirm separately.
+    document_verifiable: false
+    effective_date: 2026-08-02
+    status: active
+
+  - rule_id: AIA-PO-A43-2
+    source:
+      instrument: "Regulation (EU) 2024/1689"
+      article: 43
+      paragraph: 2
       annex: "VI"
       act_version_date: 2024-07-12
     applies_to_risk_class: [high_risk]
     applies_to_role: [provider]
+    # Annex III points 2 to 8 — every listed area except biometrics.
+    applies_to_annex_iii_area:
+      [
+        critical_infrastructure,
+        education,
+        employment,
+        essential_services,
+        law_enforcement,
+        migration,
+        justice_democracy,
+      ]
     obligation_status: mandatory
     check_type: presence
     evidence_expected: >-
-      Evidence that the internal-control conformity assessment (Annex VI) was carried out. A
-      procedural act preceding market placement, not observable from the technical documentation
-      alone — confirm separately.
+      Evidence that the internal-control conformity assessment (Annex VI) was carried out. No
+      notified body is involved for these areas — the paragraph says so in terms. A procedural act
+      preceding market placement, not observable from the technical documentation alone — confirm
+      separately.
+    document_verifiable: false
+    effective_date: 2026-08-02
+    status: active
+
+  - rule_id: AIA-PO-A43-3
+    source:
+      instrument: "Regulation (EU) 2024/1689"
+      article: 43
+      paragraph: 3
+      act_version_date: 2024-07-12
+    applies_to_risk_class: [high_risk]
+    applies_to_role: [provider]
+    applies_to_route: annex_i
+    obligation_status: mandatory
+    check_type: presence
+    evidence_expected: >-
+      Evidence that the conformity assessment required by the product's OWN Union harmonisation
+      legislation was carried out, with the Chapter III Section 2 requirements assessed as part of
+      it. This Regulation does not supply the procedure here — the sectoral act does — so what is
+      expected is that act's assessment, plus confirmation that the Section 2 requirements were
+      inside its scope. Only Annex I Section A systems reach this rule; a Section B one owes no
+      Chapter III at all under Art. 2(2) and is withheld earlier. A procedural act preceding market
+      placement — confirm separately.
     document_verifiable: false
     effective_date: 2026-08-02
     status: active
@@ -313,16 +379,63 @@ rules:
     source:
       instrument: "Regulation (EU) 2024/1689"
       article: 49
-      paragraph: 1 # employment is Annex III point 4, so the point-2 exception does not apply
+      paragraph: 1
       annex: "III"
       act_version_date: 2024-07-12
     applies_to_risk_class: [high_risk]
     applies_to_role: [provider]
+    # 49(1) reaches systems "listed in Annex III, with the EXCEPTION of point 2" — so critical
+    # infrastructure owes no registration, and an Annex I system is not reached at all. Both used to
+    # be raised anyway, on a rule written for employment and gated only on the tier.
+    applies_to_annex_iii_area:
+      [
+        biometrics,
+        education,
+        employment,
+        essential_services,
+        law_enforcement,
+        migration,
+        justice_democracy,
+      ]
     obligation_status: mandatory
     check_type: presence
     evidence_expected: >-
       Registration in the EU database. An external act against a registry, not observable from the
       technical documentation — confirm separately.
+    document_verifiable: false
+    effective_date: 2026-08-02
+    status: active
+
+  - rule_id: AIA-PO-A49-4
+    source:
+      instrument: "Regulation (EU) 2024/1689"
+      article: 49
+      paragraph: 4
+      annex: "VIII"
+      act_version_date: 2024-07-12
+    applies_to_risk_class: [high_risk]
+    applies_to_role: [provider]
+    # NOT a second registration — the same one, lodged somewhere else and carrying less. It stands
+    # beside AIA-PO-A49 rather than replacing it.
+    #
+    # UNDER-INCLUSIVE, deliberately. Art. 49(4) reaches Annex III points 1, 6 and 7 "in the areas of
+    # law enforcement, migration, asylum and border control management". Points 6 and 7 ARE those
+    # areas, so they are named here. Point 1 is biometrics, which qualifies only when used FOR law
+    # enforcement — and `AnnexIIIArea` records the listed area, not the sector a system is deployed
+    # in, so nothing in this ruleset can tell a police face-matching system from a workplace
+    # sign-in one. Naming `biometrics` here would send every biometric provider to the non-public
+    # section, which is a wrong instruction rather than a cautious one. The gap is recorded in
+    # `evidence_expected` so a biometrics provider is told to check it themselves.
+    applies_to_annex_iii_area: [law_enforcement, migration]
+    obligation_status: mandatory
+    check_type: presence
+    evidence_expected: >-
+      Confirmation that the Art. 49 registration was made in the SECURE NON-PUBLIC section of the EU
+      database, carrying only the reduced set of Annex VIII fields this paragraph lists. An external
+      act against a registry — confirm separately. Note also that this paragraph reaches Annex III
+      point 1 (biometrics) systems used for law enforcement, migration, asylum or border control;
+      this ruleset classifies by listed AREA and not by sector of use, so a biometric system
+      deployed in those sectors must check this obligation for itself.
     document_verifiable: false
     effective_date: 2026-08-02
     status: active

@@ -12,7 +12,14 @@ from typing import Literal
 
 from pydantic import BaseModel, field_validator, model_validator
 
-from aiact.schemas.enums import ActorRole, CheckType, ObligationStatus, RiskClass
+from aiact.schemas.enums import (
+    ActorRole,
+    AnnexIIIArea,
+    CheckType,
+    HighRiskRoute,
+    ObligationStatus,
+    RiskClass,
+)
 
 
 class LegalSource(BaseModel):
@@ -66,6 +73,24 @@ class PolicyRule(BaseModel):
     source: LegalSource
     applies_to_risk_class: list[RiskClass]
     applies_to_role: list[ActorRole]
+
+    applies_to_route: HighRiskRoute | None = None
+    """WHICH of Art. 6's two doors this rule needs the use case to have come through, or None for
+    the ordinary case where it does not care.
+
+    None means NO CONDITION, not "neither" — Arts. 9-15 and 17-21 bind every high-risk system
+    whichever door it came through, and that is most of the ruleset. Art. 43 is why the field
+    exists: 43(3) governs an Annex I system and 43(1)-(2) an Annex III one, so a single rule would
+    have to cite one of them at both."""
+
+    applies_to_annex_iii_area: list[AnnexIIIArea] = []
+    """WHICH Annex III areas this rule fires for. Empty is the ordinary case: no area condition.
+
+    A non-empty list is a condition on the AREA and therefore also on the route — an Annex I system
+    has no Annex III area, so it can never match one. Art. 43 again: 43(1) reaches Annex III point 1
+    alone and 43(2) points 2 to 8, and until this field existed the spec carried 43(2) with the
+    comment "employment is Annex III point 4" and fired it at biometrics too. A condition written in
+    a comment is not a condition."""
     obligation_status: ObligationStatus
     check_type: CheckType
     evidence_expected: str  # what in the documentation would satisfy this
@@ -75,6 +100,21 @@ class PolicyRule(BaseModel):
     # "postponed": adopted but not yet applicable (e.g. Annex III obligations whose
     # application date was pushed back). Regulatory movement lives in DATA, not in code.
     amended_by: str | None = None
+
+    @model_validator(mode="after")
+    def _area_and_route_agree(self) -> PolicyRule:
+        """Naming Annex III areas already fixes the route, so a rule may not also claim Annex I.
+
+        Not pedantry: such a rule could never fire — an Annex I use case carries no Annex III area —
+        and a rule that never fires is indistinguishable in a report from an obligation nobody
+        owes."""
+        if self.applies_to_annex_iii_area and self.applies_to_route is HighRiskRoute.ANNEX_I:
+            raise ValueError(
+                f"PolicyRule {self.rule_id!r}: applies_to_annex_iii_area names areas but "
+                f"applies_to_route is annex_i. An Annex I use case has no Annex III area, so this "
+                f"rule could never activate."
+            )
+        return self
 
     @model_validator(mode="after")
     def _warn_substance_but_not_document_verifiable(self) -> PolicyRule:

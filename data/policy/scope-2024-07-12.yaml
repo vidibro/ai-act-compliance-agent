@@ -12,10 +12,17 @@
 # legislator added is exactly how one happens.
 #
 # SCOPE: obligations of every role the Act binds — provider, deployer, importer, distributor and
-# authorised representative — for a HIGH-RISK AI system in the EMPLOYMENT area (Annex III(4)), plus
-# Art. 4, which binds provider and deployer at every governed tier. Other Annex III areas and the
-# general-purpose AI model regime are deliberately excluded, and each exclusion is recorded below
-# rather than assumed.
+# authorised representative — for a HIGH-RISK AI system, plus Art. 4, which binds provider and
+# deployer at every governed tier. The general-purpose AI model regime is deliberately excluded,
+# and each exclusion is recorded below rather than assumed.
+#
+# The ruleset was authored against the EMPLOYMENT area (Annex III(4)) and most of it generalises
+# untouched: Arts. 9-15 and 16-21 bind every high-risk system whatever the area. Where the law is
+# area-specific it is now SAID so — `applies_to_annex_iii_area` and `applies_to_route` on the rule
+# — rather than assumed. Art. 43 is the case that forced it: conformity assessment is 43(1) for
+# Annex III point 1, 43(2) for points 2 to 8, and 43(3) for an Annex I product. A reason in this
+# file that rests on "employment does X" is therefore suspect, and two of them were wrong until the
+# split landed.
 #
 # Authoring this ledger already paid for itself: it surfaced Art. 72 and Art. 73 as genuine
 # provider obligations for high-risk systems that the initial ruleset had simply missed.
@@ -76,8 +83,11 @@ out_of_scope:
     "not found" — see docs/ROADMAP.md.
 
   # --- Chapter III Section 4 — notifying authorities and notified bodies -----------------------
-  # For Annex III(4) employment the conformity route is internal control (Art. 43(2)), which
-  # involves no notified body at all — so this whole section is doubly out of scope.
+  # Duties of MEMBER STATES, notifying authorities and notified bodies — none of the roles this
+  # tool reports for. That holds whatever the area, which is the point: the reason used to be
+  # "employment self-assesses, so no notified body is ever involved", and Art. 43(1) makes that
+  # false for Annex III point 1. A provider whose biometric system goes the Annex VII route deals
+  # with a notified body; the duties in this section are still the body's, not theirs.
   28: Duty of Member States to designate notifying authorities.
   29: Duty of conformity assessment bodies seeking notification.
   30: Notification procedure — Member State and Commission duties.
@@ -97,8 +107,10 @@ out_of_scope:
   41: Commission power to adopt common specifications. Institutional.
   42: Presumption of conformity for certain requirements. Declaratory, no duty.
   44: >-
-    Certificates issued by notified bodies. Annex III(4) uses internal control (Art. 43(2)) with no
-    notified body, so no certificate arises.
+    Certificates issued by notified bodies — their contents, validity, renewal, suspension and
+    withdrawal. Duties of the BODY that issues them, not of the provider that holds one. A provider
+    on the Annex VII route (Art. 43(1)) will hold such a certificate, and this article still says
+    nothing about what they must do with it.
   45: Information duties of notified bodies.
   46: >-
     Derogation from the conformity assessment procedure — an exceptional authorisation by a market
