@@ -6,9 +6,10 @@ default-less field on Answer and Finding, so an uncited assessment cannot be con
 Module layout, in dependency order:
     enums.py           the Regulation's own vocabulary — risk classes, roles, the points of Art. 5.
     policy.py          LegalSource, and the rules a document is checked against.
-    question.py        one narrow legal question and its answer, and nothing about a risk class.
-    classification.py  what those answers add up to — evidence, a use case, a risk class.
-    report.py          findings against the rules, and whose duty each one is.
+    question.py        one narrow legal question and its answer. Shared by BOTH askers: the
+                       classification cascade and the gap layer's Art. 25 role question.
+    classification.py  what the cascade adds up to — evidence, a use case, a risk class.
+    report.py          what the gap layer adds up to — findings, and whose they are.
     system.py          the document under review.
     eval.py            EVAL ONLY, and not part of the Regulation.
 """
@@ -66,11 +67,12 @@ __all__ = [
     # system
     "DocumentChunk",
     "SystemUnderReview",
+    # the question/answer contract, shared by both askers
+    "Question",
+    "Answer",
     # classification
     "ClassificationResult",
-    "Answer",
     "ClassificationEvidence",
-    "Question",
     "UseCaseClassification",
     # report
     "DISCLAIMER",

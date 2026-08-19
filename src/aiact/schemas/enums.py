@@ -411,6 +411,85 @@ _TRANSPARENCY_ROLE: dict[TransparencyDuty, ActorRole] = {
 }
 
 
+class ProviderReallocation(StrEnum):
+    """Art. 25. WHICH circumstance has made the reader the PROVIDER of a system someone else built.
+
+    A question about ROLE, not about risk — and the only one in the cascade that is. Everything else
+    the cascade decides is what the system IS; this decides whose obligations the report's provider
+    section holds. Getting it wrong is quiet in a way a tier error is not: a company that
+    white-labels a vendor's high-risk tool reads a report listing the provider's nineteen duties
+    beside the deployer's three, assumes the short column is theirs, and is wrong about all
+    twenty-two.
+
+    ONLY REACHED AT HIGH RISK. Every limb of Art. 25(1) speaks of "a high-risk AI system", and
+    25(3) of "high-risk AI systems that are safety components". A system that is not high-risk
+    cannot have a provider reallocated by this Article, so the question is not put.
+
+    ONE VALUE, not a list, unlike TransparencyDuty. Art. 50 holds five duties that are discharged
+    differently and by different parties, so which ones attach carries information. Here every limb
+    has the SAME consequence — you are the provider and owe Art. 16 whole — so naming the clearest
+    trigger cites the finding without changing it. Two limbs applying at once is under-citation, not
+    a wrong answer.
+
+    Art. 25(2) is the other half and is not a member here: where any of these applies, the INITIAL
+    provider stops being the provider of that system, and must hand over what the new one needs.
+    That is a statement about the other party, so it belongs in the verdict's prose rather than in
+    a value describing the reader."""
+
+    NAME_OR_TRADEMARK = "name_or_trademark"
+    """25(1)(a). Puts its own name or trademark on a high-risk system already placed on the market
+    or put into service — white-labelling. Expressly "without prejudice to contractual arrangements
+    stipulating that the obligations are otherwise allocated", so a contract can move the duties
+    between the parties but cannot decide this classification."""
+
+    SUBSTANTIAL_MODIFICATION = "substantial_modification"
+    """25(1)(b). Makes a substantial modification to a high-risk system already on the market, such
+    that it REMAINS high-risk under Art. 6. 'Substantial modification' is defined at Art. 3(23): a
+    change not foreseen in the provider's initial conformity assessment, which affects compliance
+    with Chapter III Section 2 or modifies the assessed intended purpose. Ordinary configuration,
+    tuning within the documented envelope, and updates the provider planned for are not it."""
+
+    INTENDED_PURPOSE_CHANGE = "intended_purpose_change"
+    """25(1)(c). Changes the intended purpose of a system — INCLUDING a general-purpose AI system —
+    that was not classified as high-risk, so that it becomes high-risk under Art. 6. The limb that
+    catches an ordinary tool put to a listed use: a summariser aimed at job applications is a
+    recruitment system, and whoever aimed it there is its provider."""
+
+    PRODUCT_MANUFACTURER = "product_manufacturer"
+    """25(3). The system is a safety component of a product covered by Annex I Section A, and is
+    placed on the market with that product under the manufacturer's name or trademark (25(3)(a)) or
+    put into service under it afterwards (25(3)(b)). The manufacturer is then the provider.
+
+    This is why ActorRole.PRODUCT_MANUFACTURER carries no ruleset of its own: Art. 25(3) gives it
+    the provider's, whole."""
+
+    @property
+    def paragraph(self) -> int:
+        """The Art. 25 paragraph, for citation."""
+        return _REALLOCATION_CITE[self][0]
+
+    @property
+    def point(self) -> str | None:
+        """The point within that paragraph, where the limb names one. `None` for 25(3), which
+        reallocates on either of its own points and does not need to choose between them."""
+        return _REALLOCATION_CITE[self][1]
+
+    @property
+    def citation(self) -> str:
+        """The provision, written out — "Art. 25(1)(a)", "Art. 25(3)"."""
+        point = self.point
+        return f"Art. 25({self.paragraph})" + (f"({point})" if point else "")
+
+
+# No default, and every member listed, for the reason given at _SCOPE_EXCLUSION_PARAGRAPH.
+_REALLOCATION_CITE: dict[ProviderReallocation, tuple[int, str | None]] = {
+    ProviderReallocation.NAME_OR_TRADEMARK: (1, "a"),
+    ProviderReallocation.SUBSTANTIAL_MODIFICATION: (1, "b"),
+    ProviderReallocation.INTENDED_PURPOSE_CHANGE: (1, "c"),
+    ProviderReallocation.PRODUCT_MANUFACTURER: (3, None),
+}
+
+
 class Verdict(StrEnum):
     """Outcome of checking ONE PolicyRule against the system's documentation."""
 

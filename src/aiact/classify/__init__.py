@@ -2,14 +2,13 @@
 class, with an injectable brain.
 
 Layer one of two. The gap layer (`aiact.gap`) is its counterpart; neither imports the other, and
-what they genuinely share — model-call plumbing, provider profiles, usage, tracing — lives outside
-both. The brains are NOT shared: `Brain` answers a `Question`, which is
-a question only this layer asks.
+what they genuinely share lives outside both — model-call plumbing, provider profiles, usage,
+tracing, the question-anchoring in `aiact.anchoring`, and the brain CONTRACT in `aiact.brain`. That
+last one moved up when the gap layer gained a question of its own (Art. 25, who the reader is): a
+brain answers one narrow legal question about a document, which is not specific to this layer. The
+brain IMPLEMENTATIONS still live here, and the gap layer is handed one rather than building it.
 
 Module layout:
-    brain.py           the CONTRACT — the Brain protocol, and nothing else. Depends
-                       on neither the cascade nor any implementation. The question/answer shapes it
-                       refers to live in schemas.classification.
     graph.py           the CASCADE — QUESTIONS (which questions, in what order), routing, assemble.
     scripted_brain.py  a brain that answers from a preset table (deterministic; proves routing).
     llm_brain.py       a brain that reads the description via LiteLLM (imported lazily).

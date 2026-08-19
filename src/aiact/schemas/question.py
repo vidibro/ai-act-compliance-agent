@@ -1,12 +1,15 @@
 """The QUESTION/ANSWER contract — one narrow legal question, put to a brain, answered from a
 document against verbatim law.
 
-Kept apart from `classification.py`, and named for what it IS rather than for the layer that
-happens to ask it. Nothing in this pair knows about risk classes, rules or reports: a question
-carries the enacted text it must be answered against (`context`) and the provision it rests on
-(`source`), and an answer carries evidence from the document, a confidence, and — when the
-description simply does not say — a reason for declining instead of a verdict. That is the whole
-of what makes an answer trustworthy, and none of it is specific to classifying a system.
+Shared by both askers, which is why it is not in `classification.py`. The classification cascade
+asks what a system IS; the gap layer asks Art. 25 — who the READER is. Neither owns this shape, and
+naming it after one of them was the same category error as putting the Art. 25 node in the cascade.
+
+Nothing here knows about risk classes, rules or reports. What makes an answer trustworthy lives
+entirely in this pair: the question carries the enacted text it must be answered against
+(`context`) and the provision it rests on (`source`), and the answer carries evidence from the
+document, a confidence, and — when the description simply does not say — a reason for declining
+instead of a verdict.
 """
 
 from __future__ import annotations
@@ -47,13 +50,14 @@ class Question:
     """One question the cascade asks, with the provision it rests on and the shape of a valid
     answer — the INPUT half of the contract whose output half is Answer.
 
-    Named for what it IS (a legal question) rather than where it happens to be used: the graph
-    binds one of these to each node, but nothing about the question is graph-specific. `node_id` is
-    the only graph coupling — the key the cascade looks it up by, and what an answer carries back.
+    Named for what it IS (a legal question) rather than where it happens to be used. Both askers
+    bind one of these to each node — the classification cascade and the gap layer's Art. 25
+    question alike — and nothing about the shape is specific to either. `node_id` is the only
+    coupling: the key an asker looks it up by, and what an answer carries back.
 
-    A plain frozen dataclass, not a BaseModel: it is authored in code as a literal constant
-    (see graph/classify.py QUESTIONS), never parsed from user input, so there is nothing to
-    validate at a trust boundary."""
+    A plain frozen dataclass, not a BaseModel: it is authored in code as a literal constant (see
+    the QUESTIONS tables in classify/graph.py and gap/roles.py), never parsed from user input, so
+    there is nothing to validate at a trust boundary."""
 
     node_id: str
     source: LegalSource
@@ -65,9 +69,10 @@ class Question:
     context: str = ""
     """The VERBATIM enacted text of the cited provision, for the brain to reason against.
 
-    Empty by default so the deterministic path needs no file IO; `load_questions()` fills it from
-    the article/annex store. A model must never answer "which Annex III area is this?" from its own
-    memory of the Annex — the same rule that governs the obligation `requirement` fields."""
+    Empty by default so the deterministic path needs no file IO; each asker's `load_questions()`
+    fills it from the article/annex store, via `aiact.anchoring`. A model must never answer "which
+    Annex III area is this?" from its own memory of the Annex — the same rule that governs the
+    obligation `requirement` fields."""
 
     guidance_context: str = ""
     """VERBATIM Commission guidance for this question — the SAME anti-memory rule as `context`, one
@@ -82,9 +87,9 @@ class Question:
 
 
 class Answer(BaseModel):
-    """Every classification decision must be evidence-backed and citable.
+    """Every decision a brain makes must be evidence-backed and citable.
 
-    `source` is required and has no default: an uncited node answer cannot be constructed."""
+    `source` is required and has no default: an uncited answer cannot be constructed."""
 
     value: Any  # narrow per node at the call site (bool, list[AnnexIIIArea], ...)
     reasoning: str
@@ -92,7 +97,7 @@ class Answer(BaseModel):
     evidence_chunk_id: str | None = None
     confidence: Confidence
     source: LegalSource
-    node_id: str | None = None  # which cascade question produced this (see graph/classify.py)
+    node_id: str | None = None  # which question produced this — the key in an asker's QUESTIONS
     abstained_because: AbstentionCause | None = None  # set only when the node declined to answer
     guidance_sources: list[GuidanceSource] = []  # non-binding guidance that was in context for
     # this node — present so the verdict can record it rested on Commission interpretation, not law

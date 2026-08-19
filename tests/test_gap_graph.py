@@ -7,9 +7,12 @@ which are reported without being judged, and whether the tally can be read at fa
 from __future__ import annotations
 
 from datetime import date
+from pathlib import Path
 
 import pytest
 
+from aiact.classify import ScriptedBrain
+from aiact.gap import roles
 from aiact.gap.graph import analyse
 from aiact.gap.rules import roles_with_rules, select_rules
 from aiact.policy_loader import load_policy_spec
@@ -18,10 +21,17 @@ from aiact.schemas.classification import (
     ClassificationResult,
     UseCaseClassification,
 )
-from aiact.schemas.enums import ActorRole, DerogationCondition, RiskClass, Verdict
+from aiact.schemas.enums import (
+    ActorRole,
+    DerogationCondition,
+    ProviderReallocation,
+    RiskClass,
+    Verdict,
+)
 from aiact.schemas.policy import LegalSource
 from aiact.schemas.question import Answer
 
+ROOT = Path(__file__).resolve().parents[1]
 DOCUMENT = "# Doc\n\n## Human oversight\n\nA panel reviews every recommendation.\n"
 
 
@@ -137,6 +147,7 @@ def test_selection_is_per_use_case(spec):
             a_use_case("scoring", RiskClass.HIGH_RISK),
         ),
         spec,
+        brain=ScriptedBrain({}),
         judge=StubJudge(),  # type: ignore[arg-type]
         max_workers=1,
     )
@@ -157,6 +168,7 @@ def test_process_obligations_are_reported_but_never_judged(spec):
         DOCUMENT,
         a_classification(a_use_case("scoring", RiskClass.HIGH_RISK)),
         spec,
+        brain=ScriptedBrain({}),
         judge=judge,  # type: ignore[arg-type]
         max_workers=1,
     )
@@ -180,6 +192,7 @@ def test_the_report_is_assembled_and_validates(spec):
         DOCUMENT,
         a_classification(a_use_case("scoring", RiskClass.HIGH_RISK)),
         spec,
+        brain=ScriptedBrain({}),
         judge=StubJudge(),  # type: ignore[arg-type]
         system_id="talentrank",
         max_workers=1,
@@ -205,6 +218,7 @@ def test_the_tally_counts_each_verdict_in_its_own_bucket(spec, verdict, field):
         DOCUMENT,
         a_classification(a_use_case("scoring", RiskClass.HIGH_RISK)),
         spec,
+        brain=ScriptedBrain({}),
         judge=StubJudge(verdict),  # type: ignore[arg-type]
         max_workers=1,
     )
@@ -219,6 +233,7 @@ def test_not_applicable_is_counted_as_neither_applicable_nor_passed(spec):
         DOCUMENT,
         a_classification(a_use_case("scoring", RiskClass.HIGH_RISK)),
         spec,
+        brain=ScriptedBrain({}),
         judge=StubJudge(Verdict.NOT_APPLICABLE),  # type: ignore[arg-type]
         max_workers=1,
     )
@@ -235,6 +250,7 @@ def test_the_summary_breaks_down_per_use_case(spec):
             a_use_case("scoring", RiskClass.HIGH_RISK),
         ),
         spec,
+        brain=ScriptedBrain({}),
         judge=StubJudge(),  # type: ignore[arg-type]
         max_workers=1,
     )
@@ -245,8 +261,22 @@ def test_the_summary_breaks_down_per_use_case(spec):
 def test_concurrent_and_sequential_runs_agree(spec):
     """A report whose contents depended on thread scheduling would not be defensible."""
     classification = a_classification(a_use_case("scoring", RiskClass.HIGH_RISK))
-    one = analyse(DOCUMENT, classification, spec, judge=StubJudge(), max_workers=1)  # type: ignore[arg-type]
-    many = analyse(DOCUMENT, classification, spec, judge=StubJudge(), max_workers=8)  # type: ignore[arg-type]
+    one = analyse(
+        DOCUMENT,
+        classification,
+        spec,
+        brain=ScriptedBrain({}),
+        judge=StubJudge(),  # type: ignore[arg-type]
+        max_workers=1,
+    )
+    many = analyse(
+        DOCUMENT,
+        classification,
+        spec,
+        brain=ScriptedBrain({}),
+        judge=StubJudge(),  # type: ignore[arg-type]
+        max_workers=8,
+    )
     assert [f.rule_id for f in one.findings] == [f.rule_id for f in many.findings]
 
 
@@ -284,6 +314,7 @@ def test_the_report_lists_every_role_the_act_binds(spec):
         DOCUMENT,
         a_classification(a_use_case("scoring", RiskClass.HIGH_RISK)),
         spec,
+        brain=ScriptedBrain({}),
         judge=StubJudge(),  # type: ignore[arg-type]
         max_workers=1,
     )
@@ -296,3 +327,109 @@ def test_the_report_lists_every_role_the_act_binds(spec):
     # Every role the ruleset covers appears; which roles those are is settled by the coverage
     # ledger before shipping, not narrated in the report — see test_policy_loader.
     assert set(outstanding) == set(roles_with_rules(spec))
+
+
+# --- Art. 25 — the one question about WHO rather than WHAT ---------------------------------------
+def _report(spec, risk_class, answer=None, low_confidence=frozenset()):
+    return analyse(
+        DOCUMENT,
+        a_classification(a_use_case("scoring", risk_class)),
+        spec,
+        brain=ScriptedBrain({roles.NODE_ID: answer}, low_confidence),
+        judge=StubJudge(),  # type: ignore[arg-type]
+        max_workers=1,
+    )
+
+
+@pytest.mark.parametrize("limb", list(ProviderReallocation))
+def test_art_25_names_who_the_provider_is(spec, limb):
+    """Every limb reallocates the provider, and the report says which and what it costs."""
+    report = _report(spec, RiskClass.HIGH_RISK, limb)
+
+    assert report.becomes_provider is limb
+    note = report.provider_reallocation_note
+    assert note is not None
+    assert limb.citation in note
+    assert "YOU ARE THE PROVIDER" in note
+
+
+def test_art_25_never_changes_what_is_owed(spec):
+    """It assigns a ROLE. The obligations were settled by the classification, and a report whose
+    findings moved with this answer would mean the tier had been decided from who was reading."""
+    without = _report(spec, RiskClass.HIGH_RISK, None)
+    with_limb = _report(spec, RiskClass.HIGH_RISK, ProviderReallocation.NAME_OR_TRADEMARK)
+
+    assert [f.rule_id for f in without.findings] == [f.rule_id for f in with_limb.findings]
+    assert without.summary == with_limb.summary
+
+
+def test_art_25_is_not_put_below_high_risk(spec):
+    """Every limb of Art. 25(1) speaks of "a high-risk AI system", and 25(3) of a high-risk safety
+    component. Nothing else has a provider for this Article to reallocate, so asking could only
+    produce a finding the Article cannot support. `None` records that it was never put — which is
+    not the same as an answer clearing the reader."""
+    report = _report(spec, RiskClass.NOT_HIGH_RISK, ProviderReallocation.NAME_OR_TRADEMARK)
+
+    assert report.provider_reallocation is None
+    assert report.becomes_provider is None
+    assert report.provider_reallocation_note is None
+
+
+def test_no_reallocation_leaves_the_roles_as_the_document_describes_them(spec):
+    """`None` is a real answer and the ordinary one: nobody's role changed hands. It must read as
+    that rather than as a finding, so no note is rendered — but the question WAS put, and the
+    report keeps that distinct from never having asked."""
+    report = _report(spec, RiskClass.HIGH_RISK, None)
+
+    assert report.provider_reallocation is not None
+    assert report.becomes_provider is None
+    assert report.provider_reallocation_note is None
+
+
+def test_a_reallocation_that_cannot_be_cited_is_not_reported_as_one(spec):
+    """Narrowing by TYPE, not by truthiness — the same discipline the cascade's own helpers follow.
+    A brain putting an unrecognised value here has named no limb, and a reallocation nobody can
+    cite is one the reader cannot check or contest."""
+    report = _report(spec, RiskClass.HIGH_RISK, "we rebadged it")
+
+    assert report.becomes_provider is None
+    assert report.provider_reallocation_note is None
+
+
+def test_the_reallocation_note_tells_the_reader_to_ask_the_initial_provider(spec):
+    """Art. 25(2) is the half that is invisible from the value alone: the party that placed the
+    system on the market stops being its provider and owes the new one cooperation and technical
+    access. A note omitting it names a burden and withholds the remedy."""
+    note = _report(
+        spec, RiskClass.HIGH_RISK, ProviderReallocation.SUBSTANTIAL_MODIFICATION
+    ).provider_reallocation_note
+
+    assert note is not None
+    assert "Art. 25(2)" in note
+    assert "no longer its provider" in note
+
+
+def test_an_art_25_abstention_does_not_touch_the_findings(spec):
+    """A run that cannot tell who the provider is has still checked the documentation. The
+    obligations of both roles are listed either way, so declining here costs a reader nothing
+    beyond the answer itself."""
+    report = _report(
+        spec, RiskClass.HIGH_RISK, None, low_confidence=frozenset({roles.NODE_ID})
+    )
+
+    assert report.findings
+    assert report.provider_reallocation is not None
+    assert report.provider_reallocation.confidence == "low"
+    assert report.becomes_provider is None
+
+
+def test_the_art_25_question_is_anchored_in_the_articles_it_turns_on():
+    """Limb (b) turns on the Art. 3(23) definition of 'substantial modification', and Art. 16 is
+    what the reallocation costs. Neither may be answered from a model's memory."""
+    q = roles.load_questions(
+        "2024-07-12", ROOT / "data" / "policy" / "articles", ROOT / "data" / "policy" / "annexes"
+    )[roles.NODE_ID]
+
+    assert "‘substantial modification’ means" in q.context  # Art. 3(23)
+    assert "shall be considered to be a provider of a high-risk AI system" in q.context  # 25(1)
+    assert "Providers of high-risk AI systems shall" in q.context  # Art. 16

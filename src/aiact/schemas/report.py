@@ -13,9 +13,9 @@ from datetime import date, datetime
 from pydantic import BaseModel, ValidationInfo, field_validator, model_validator
 
 from aiact.schemas.classification import ClassificationResult
-from aiact.schemas.enums import ActorRole, Verdict
+from aiact.schemas.enums import ActorRole, ProviderReallocation, Verdict
 from aiact.schemas.policy import LegalSource, PolicySpec
-from aiact.schemas.question import EVIDENCE_QUOTE_MAX, Confidence
+from aiact.schemas.question import EVIDENCE_QUOTE_MAX, Answer, Confidence
 
 # Modelled on the European Commission's own wording for their AI Act Compliance Checker, with a
 # second paragraph this tool owes its own users: Art. 6(1) settles a system's risk class by
@@ -34,13 +34,16 @@ DISCLAIMER = (
     "sector, not only a lawyer. This tool does not attempt them: it reports what the "
     "documentation states, says when the answer is missing, and leaves the question open rather "
     "than guessing. An open question is unfinished work, not a clean result.\n\n"
-    "This report assesses the roles the documentation describes. It does not decide whether you "
-    "have BECOME the provider of a system someone else built: under Article 25 a distributor, "
-    "importer, deployer or other third party takes on the provider's obligations where it puts its "
-    "name on a high-risk system, substantially modifies one, or changes the intended purpose of a "
-    "system so that it becomes high-risk — and under Article 25(3) a product manufacturer placing "
-    "an AI system on the market with its product is the provider of it. If any of that describes "
-    "you, read this report's provider section as yours."
+    "Where a system is high-risk, this report asks whether you have BECOME its provider under "
+    "Article 25 — a distributor, importer, deployer or other third party takes on the provider's "
+    "obligations where it puts its name on a high-risk system, substantially modifies one, or "
+    "changes the intended purpose of a system so that it becomes high-risk, and under Article "
+    "25(3) a product manufacturer placing an AI system on the market with its product is the "
+    "provider of it. That question is answered from what the documentation states about who "
+    "placed the system on the market and what you do to it. Documentation written from a single "
+    "party's point of view often shows neither, so silence here is not a finding that Article 25 "
+    "leaves you alone. If any of those circumstances describes you, read this report's provider "
+    "section as yours whatever it says."
 )
 
 class Finding(BaseModel):
@@ -119,12 +122,63 @@ class ComplianceReport(BaseModel):
     Grouped by role because that is the only way the list is actionable: a provider cannot confirm
     that a deployer informed its workers under Art. 26(7).
     Roles owing nothing are absent rather than present-and-empty."""
+    provider_reallocation: Answer | None = None
+    """Art. 25 — whether the reader has BECOME the provider of a system someone else built.
+
+    A statement about WHOSE the findings above are, which is why it sits on the report rather than
+    on the classification: the tier is a fact about the system, this is a fact about the reader.
+    `None` means the question was not put — Art. 25 reallocates the provider of a high-risk system
+    and of nothing else — which is not the same as an answer of "nobody was reallocated"."""
+
     summary: ReportSummary
     scope_note: str | None = None
     """Why the obligation check covered what it did — set whenever `findings` is empty for a reason
     a reader would otherwise have to infer. An empty findings list reads as a clean bill of health,
     and for a prohibited practice or an out-of-scope system that reading is dangerously wrong."""
     disclaimer: str = DISCLAIMER
+
+    @property
+    def becomes_provider(self) -> ProviderReallocation | None:
+        """The Art. 25 limb that made the reader the provider, or None.
+
+        Narrowed by TYPE for the reason the cascade's own helpers are: only a recognised member is
+        a finding that can be cited, and a reallocation nobody can cite is one the reader cannot
+        check or contest."""
+        answer = self.provider_reallocation
+        value = answer.value if answer is not None else None
+        return value if isinstance(value, ProviderReallocation) else None
+
+    @property
+    def provider_reallocation_note(self) -> str | None:
+        """What an Art. 25 finding MEANS for the reader, or None where nothing was reallocated.
+
+        Rendered here rather than left to the caller because the finding is useless as a bare enum
+        value: "substantial_modification" beside a list of obligations does not tell anyone that
+        the long column is now theirs. The note says which limb, what it costs, and — Art. 25(2) —
+        that the party they bought from has stopped being the provider and owes them cooperation.
+        That last half is the actionable one, and it is invisible from the value alone."""
+        limb = self.becomes_provider
+        if limb is None:
+            return None
+        if limb is ProviderReallocation.PRODUCT_MANUFACTURER:
+            return (
+                f"YOU ARE THE PROVIDER ({limb.citation}). This high-risk AI system is a safety "
+                f"component of a product covered by Annex I Section A and is placed on the market "
+                f"or put into service under your name or trademark, so Art. 25(3) makes the "
+                f"product manufacturer the provider of it and subjects you to Art. 16 whole. Read "
+                f"the provider obligations in this report as yours, not the AI supplier's."
+            )
+        return (
+            f"YOU ARE THE PROVIDER ({limb.citation}). Art. 25(1) makes a distributor, importer, "
+            f"deployer or other third party the provider of a high-risk AI system in this "
+            f"circumstance, subject to the obligations of Art. 16 — the whole provider set, not a "
+            f"share of it. Read the provider obligations in this report as yours. Art. 25(2) is "
+            f"the other half: the party that originally placed this system on the market is no "
+            f"longer its provider, and must cooperate with you and supply the information, "
+            f"technical access and assistance you need — in particular for the conformity "
+            f"assessment. Ask them for it. That duty does not apply where they clearly specified "
+            f"the system was not to be turned into a high-risk one."
+        )
 
     @model_validator(mode="after")
     def _findings_reference_real_targets(self, info: ValidationInfo) -> ComplianceReport:

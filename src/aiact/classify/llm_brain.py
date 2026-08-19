@@ -32,6 +32,7 @@ from aiact.schemas.enums import (
     DerogationCondition,
     GpaiStatus,
     ProhibitedPractice,
+    ProviderReallocation,
     ScopeExclusion,
     TerritorialLink,
     TransparencyDuty,
@@ -140,6 +141,19 @@ def _answer_instructions(answer_type: str) -> str:
             f'set "value" to one of [{practices}]; null if no Article 5(1) point prohibits the '
             f'system; or "{UNKNOWN}" if the description does not state the facts the prohibition '
             f"or its exception turns on"
+        )
+    if answer_type == "provider_reallocation":
+        limbs = ", ".join(r.value for r in ProviderReallocation)
+        # No UNKNOWN branch, and this is the one question where that is right. Art. 25 reallocates a
+        # role only on a positive circumstance; a document that says nothing about who placed the
+        # system on the market has not shown one, and `null` records exactly that. An abstention
+        # here would put almost every real document into needs_review over a question whose ordinary
+        # answer is "nothing happened" — and unlike a scope exclusion, that answer costs nothing:
+        # the report still lists both roles' obligations.
+        return (
+            f'set "value" to one of [{limbs}]; or null where the document does not show the '
+            f"reader taking on a system someone else placed on the market — which is the ordinary "
+            f"answer, and a real one"
         )
     if answer_type == "scope_exclusion":
         exclusions = ", ".join(e.value for e in ScopeExclusion)
@@ -260,6 +274,11 @@ def _parse_value(answer_type: str, value: object) -> object:
             return ScopeExclusion(str(value).strip().lower())
         except ValueError as exc:
             raise Unanswerable(f"{value!r} is not an Art. 2 exclusion") from exc
+    if answer_type == "provider_reallocation":
+        try:
+            return ProviderReallocation(str(value).strip().lower())
+        except ValueError as exc:
+            raise Unanswerable(f"{value!r} is not an Art. 25 circumstance") from exc
     raise ValueError(f"unknown answer_type {answer_type!r}")
 
 

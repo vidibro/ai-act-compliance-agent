@@ -83,6 +83,19 @@ Art. 50 transparency is NOT on this path. It is a separate axis — a minimal-ri
 high-risk chatbot can both owe it — so `assemble` asks it unconditionally and reports it beside the
 risk class. It never routes anything and never affects the tier.
 
+Art. 25 is NOT HERE, and the line it sits on the far side of is what this cascade is for. Every
+question above decides what the SYSTEM is, and the answer is a risk class. Art. 25 decides who the
+READER is — whether they have become the provider of a system someone else placed on the market —
+which changes whose obligations are owed and nothing about the tier. So it lives in the gap layer,
+with the rest of the role logic (gap/roles.py).
+
+Art. 50 stays, and the difference is worth stating because the two look alike from a distance:
+transparency does not set a tier either, but the tier READS it. Art. 2(12) lifts the free and
+open-source exclusion where the release "falls under Art. 50", so the same permissive licence lands
+on OUT_OF_SCOPE or on `minimal` depending on this answer. A question the tier consumes belongs to
+the cascade whether or not it has a branch of its own; Art. 25 consumes the tier instead, and
+nothing reads it back.
+
 Any node answering with LOW confidence routes straight to `assemble`, which yields NEEDS_REVIEW —
 abstaining beats guessing. The flip lives in this routing: the SAME sub-answers, with profiling
 true vs false, land on high_risk vs not_high_risk. The graph is brain-agnostic (see brain.py), so
@@ -101,7 +114,6 @@ cascade needs no change to support it: it is already per-use-case, and would sim
 
 from __future__ import annotations
 
-from dataclasses import replace
 from datetime import date
 from pathlib import Path
 from typing import Any
@@ -109,10 +121,8 @@ from typing import Any
 from langgraph.graph import END, START, StateGraph
 from pydantic import BaseModel
 
+from aiact.anchoring import anchor_questions
 from aiact.brain import Brain
-from aiact.config import get_settings
-from aiact.guidance import load_snippet
-from aiact.policy_loader import _FRONT_FIELD, _FRONT_MATTER, verify_integrity
 from aiact.schemas.classification import (
     ClassificationEvidence,
     ClassificationResult,
@@ -127,7 +137,7 @@ from aiact.schemas.enums import (
     ScopeExclusion,
     TerritorialLink,
 )
-from aiact.schemas.policy import GuidanceSource, LegalSource
+from aiact.schemas.policy import LegalSource
 from aiact.schemas.question import Answer, Confidence, Question
 from aiact.tracing import trace_run
 
@@ -502,25 +512,6 @@ _QUESTION_GUIDANCE: dict[str, tuple[str, ...]] = {
 }
 
 
-def _provision_text(path: Path) -> str:
-    """Read a stored article/annex file, verify its integrity, and strip the YAML front matter.
-
-    This text goes STRAIGHT INTO THE PROMPT as "the enacted text you must answer against", so it is
-    the single most important place to check that the stored law is the law: a tampered or corrupted
-    file here would be presented to the model as the Official Journal, and the verdict's citation
-    would point at wording that was never enacted. Verified on every load — see
-    `policy_loader.verify_integrity` and SECURITY.md.
-    """
-    raw = path.read_text(encoding="utf-8")
-    match = _FRONT_MATTER.match(raw)
-    if match is None:
-        raise ValueError(f"{path} is missing YAML front matter — regenerate it.")
-    front = dict(_FRONT_FIELD.findall(match.group(1)))
-    body = raw[match.end() :]
-    verify_integrity(path, raw, front, body)
-    return body.strip()
-
-
 def load_questions(
     version: str | date | None = None,
     articles_root: str | Path | None = None,
@@ -532,49 +523,20 @@ def load_questions(
 
     Use this for any brain that actually reads the law (LLMBrain). The bare QUESTIONS constant is
     left context-free so the deterministic ScriptedBrain path needs no file IO.
+
+    The loading itself lives in `aiact.anchoring`, shared with the gap layer's own Art. 25 question:
+    both layers put questions to a brain, neither may import the other, and a second copy of the
+    integrity check that guards the article store is the last thing this project should carry.
     """
-    settings = get_settings()
-    v = version or settings.act_version_date
-    v_str = v.isoformat() if isinstance(v, date) else str(v)
-    art_dir = Path(articles_root or settings.policy_articles_path) / v_str
-    ann_dir = Path(annexes_root or settings.policy_annexes_path) / v_str
-
-    resolved: dict[str, Question] = {}
-    for node_id, question in QUESTIONS.items():
-        articles, annexes = _QUESTION_CONTEXT.get(node_id, ((), ()))
-        chunks: list[str] = []
-        for n in articles:
-            p = art_dir / f"article-{n:03d}.md"
-            if not p.is_file():
-                raise FileNotFoundError(
-                    f"{node_id}: no stored text for Article {n} at {p}. Run: "
-                    f"python scripts/fetch_articles.py --version-date {v_str}"
-                )
-            chunks.append(_provision_text(p))
-        for roman in annexes:
-            p = ann_dir / f"annex-{roman}.md"
-            if not p.is_file():
-                raise FileNotFoundError(
-                    f"{node_id}: no stored text for Annex {roman} at {p}. Run: "
-                    f"python scripts/fetch_articles.py --version-date {v_str}"
-                )
-            chunks.append(_provision_text(p))
-
-        # Non-binding guidance, where the enacted text leaves the question open.
-        g_chunks: list[str] = []
-        g_sources: list[GuidanceSource] = []
-        for ref in _QUESTION_GUIDANCE.get(node_id, ()):
-            snippet = load_snippet(ref, guidance_root)
-            g_chunks.append(f"[{snippet.document}, {snippet.locator}]\n{snippet.body}")
-            g_sources.append(snippet.to_source())
-
-        resolved[node_id] = replace(
-            question,
-            context="\n\n".join(chunks),
-            guidance_context="\n\n".join(g_chunks),
-            guidance_sources=tuple(g_sources),
-        )
-    return resolved
+    return anchor_questions(
+        QUESTIONS,
+        _QUESTION_CONTEXT,
+        _QUESTION_GUIDANCE,
+        version=version,
+        articles_root=articles_root,
+        annexes_root=annexes_root,
+        guidance_root=guidance_root,
+    )
 
 
 class GraphState(BaseModel):

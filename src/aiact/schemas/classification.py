@@ -2,8 +2,8 @@
 
 What the cascade's answers ADD UP TO: which provision drove a verdict, what one use case is, and
 the risk class for the system. The answers themselves are `schemas.question`, which lives apart
-because nothing about a Question or an Answer is specific to classification — naming that shape
-after this layer would say it was.
+because the gap layer asks questions too — nothing about a Question or an Answer is specific to
+classification, and naming that shape after this layer would say it was.
 
 One deliberate deviation from the Commission's checker: it merges the profiling carve-back into
 a single answer option ("None of the above / performs profiling"). We split it into two
@@ -15,7 +15,13 @@ from __future__ import annotations
 
 from pydantic import BaseModel, field_validator, model_validator
 
-from aiact.schemas.enums import ActorRole, AnnexIIIArea, AnnexIProduct, RiskClass, TransparencyDuty
+from aiact.schemas.enums import (
+    ActorRole,
+    AnnexIIIArea,
+    AnnexIProduct,
+    RiskClass,
+    TransparencyDuty,
+)
 from aiact.schemas.policy import GuidanceSource, LegalSource
 from aiact.schemas.question import (
     AbstentionCause,

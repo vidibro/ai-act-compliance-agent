@@ -17,7 +17,7 @@ from pathlib import Path
 
 import pytest
 
-from aiact.classify.graph import _provision_text
+from aiact.anchoring import provision_text
 from aiact.policy_loader import _read_article, verify_integrity
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -69,7 +69,7 @@ def test_a_tampered_annex_is_refused_on_the_prompt_path(tmp_path):
     path.write_text(tampered, encoding="utf-8")
 
     with pytest.raises(ValueError, match="does not match its stored sha256"):
-        _provision_text(path)
+        provision_text(path)
 
 
 def test_a_file_with_no_hash_is_refused(tmp_path):
@@ -105,7 +105,7 @@ def test_the_untampered_store_still_loads(tmp_path):
     provisions, front = _read_article(ARTICLES, 6)
     assert "high-risk" in provisions
     assert front["sha256"]
-    assert _provision_text(ANNEXES / "annex-III.md").startswith("ANNEX III")
+    assert provision_text(ANNEXES / "annex-III.md").startswith("ANNEX III")
 
 
 def test_verify_integrity_accepts_a_matching_body():

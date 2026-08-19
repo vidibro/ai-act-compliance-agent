@@ -7,6 +7,8 @@
 The two layers are built to be independent and stay that way: neither imports the other, and this
 module is the only place that knows both. It owns exactly one decision — whether the obligation
 check should run at all — because that is a legal question rather than a property of either graph.
+It also hands the gap layer the BRAIN, which that layer needs for its Art. 25 role question and
+cannot build for itself without importing an implementation from the classification layer.
 
 ONE DOCUMENT. Both layers read the same text. The classification cascade wants the intended
 purpose and what the system does to a person; the judge wants the Annex IV technical content. A
@@ -20,6 +22,7 @@ from datetime import UTC, datetime
 
 from aiact.brain import Brain
 from aiact.classify.graph import classify, load_questions
+from aiact.gap import roles as role_questions
 from aiact.gap.graph import DEFAULT_WORKERS, analyse
 from aiact.gap.judge import LLMJudge
 from aiact.schemas.classification import ClassificationResult
@@ -135,13 +138,18 @@ def review(
             system_id, spec, classification, classification.reasoning + " " + _GPAI_NOTE
         )
 
+    # The same brain both layers use. The gap layer needs one for the Art. 25 role question and
+    # cannot build its own without importing a classification brain — so this module, the only one
+    # that knows both layers, hands it over.
     report = analyse(
         document,
         classification,
         spec,
+        brain=brain,
         judge=judge,
         system_id=system_id,
         max_workers=max_workers,
+        questions=role_questions.load_questions(),
     )
 
     # Art. 2(2). `select` already withholds Chapter III from a Section B use case, so the findings

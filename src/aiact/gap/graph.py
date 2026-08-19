@@ -1,10 +1,17 @@
 """The gap-analysis graph: a classified system plus its documentation in, a ComplianceReport out.
 
-Three nodes, and only one of them uses a model:
+Four nodes, and two of them use a model:
 
+    provider_role     has Art. 25 moved the provider's duties onto  — one LLM call, high-risk only
+                      the reader (gap/roles.py)
     select_rules      which obligations apply, per use case      — pure data (gap/rules.py)
     check_compliance  does the documentation satisfy each one    — one LLM call per rule
     assemble_report   findings, outstanding confirmations, counts — pure data
+
+`provider_role` runs FIRST because it is about who the reader is, and everything after it is about
+what that reader owes. It changes no selection today — the report lists every role's obligations
+either way — but the ordering is where a future gate on Art. 25 would go, and putting a
+role question after the rules were chosen would read as an afterthought about the answer.
 
 The split is the same one the classification cascade makes: code owns what applies and what the
 verdict means, the model answers one bounded question at a time. Nothing here decides that a rule
@@ -23,11 +30,14 @@ from datetime import UTC, datetime
 from langgraph.graph import END, START, StateGraph
 from pydantic import BaseModel, ConfigDict, Field
 
+from aiact.brain import Brain
+from aiact.gap import roles as role_questions
 from aiact.gap.judge import LLMJudge
 from aiact.gap.rules import ActiveRules, roles_with_rules, select_rules
 from aiact.schemas.classification import ClassificationResult
 from aiact.schemas.enums import ActorRole, Verdict
 from aiact.schemas.policy import PolicyRule, PolicySpec
+from aiact.schemas.question import Answer, Question
 from aiact.schemas.report import ComplianceReport, Finding, ReportSummary
 from aiact.tracing import trace_run
 
@@ -42,6 +52,7 @@ class ComplianceCheckState(BaseModel):
     system_id: str
     document: str
     classification: ClassificationResult
+    provider_reallocation: Answer | None = None
     active: list[ActiveRules] = Field(default_factory=list)
     findings: list[Finding] = Field(default_factory=list)
     report: ComplianceReport | None = None
@@ -83,7 +94,9 @@ def _summarise(findings: list[Finding]) -> ReportSummary:
 def build_graph(
     spec: PolicySpec,
     judge: LLMJudge,
+    brain: Brain,
     max_workers: int = DEFAULT_WORKERS,
+    questions: dict[str, Question] | None = None,
 ):
     """Compile the gap-analysis graph for one ruleset and one judge.
 
@@ -92,6 +105,15 @@ def build_graph(
     system, and nothing else will tell them so. The roles come from the spec rather than from a
     constant, so adding a rule for a new role is enough to make it appear."""
     roles = roles_with_rules(spec)
+    asked = questions if questions is not None else role_questions.QUESTIONS
+
+    def node_provider_role(state: ComplianceCheckState) -> dict:
+        # Art. 25, and only where the tier makes it answerable — the gate is in gap/roles.py, so
+        # that the eval harness which measures this answer applies the same one.
+        answer = role_questions.ask(
+            brain, state.document, state.classification.overall_risk_class, asked
+        )
+        return {"provider_reallocation": answer} if answer is not None else {}
 
     def node_select_rules(state: ComplianceCheckState) -> dict:
         # Once per (use case, role). Selection is per use case because Art. 6 classifies per
@@ -157,15 +179,18 @@ def build_graph(
                 classification=state.classification,
                 findings=state.findings,
                 not_document_verifiable=outstanding,
+                provider_reallocation=state.provider_reallocation,
                 summary=_summarise(state.findings),
             )
         }
 
     g = StateGraph(ComplianceCheckState)
+    g.add_node("provider_role", node_provider_role)
     g.add_node("select_rules", node_select_rules)
     g.add_node("check_compliance", node_check_compliance)
     g.add_node("assemble_report", node_assemble_report)
-    g.add_edge(START, "select_rules")
+    g.add_edge(START, "provider_role")
+    g.add_edge("provider_role", "select_rules")
     g.add_edge("select_rules", "check_compliance")
     g.add_edge("check_compliance", "assemble_report")
     g.add_edge("assemble_report", END)
@@ -176,12 +201,23 @@ def analyse(
     document: str,
     classification: ClassificationResult,
     spec: PolicySpec,
+    brain: Brain,
     judge: LLMJudge | None = None,
     system_id: str = "system",
     max_workers: int = DEFAULT_WORKERS,
+    questions: dict[str, Question] | None = None,
 ) -> ComplianceReport:
-    """Check one system's documentation against every obligation its classification activates."""
-    graph = build_graph(spec, judge or LLMJudge(), max_workers)
+    """Check one system's documentation against every obligation its classification activates.
+
+    `brain` answers the Art. 25 role question, and is REQUIRED with no default — unlike `judge`,
+    which this layer owns and can therefore build for itself. A brain is an implementation from the
+    other layer, so defaulting to one would mean this module importing it, which is exactly the
+    dependency the two layers are built to avoid. The caller composing both supplies it
+    (see pipeline.review).
+
+    `questions` defaults to the context-free constant; pass `gap.roles.load_questions()` to anchor
+    the question in the verbatim Articles, which any real review should do."""
+    graph = build_graph(spec, judge or LLMJudge(), brain, max_workers, questions)
     with trace_run(f"gap:{system_id}", session_id=system_id):
         out = graph.invoke(
             ComplianceCheckState(
