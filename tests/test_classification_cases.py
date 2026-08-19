@@ -17,6 +17,7 @@ from aiact.schemas.enums import (
     AnnexIIIArea,
     DerogationCondition,
     ProhibitedPractice,
+    ProviderReallocation,
     RiskClass,
     ScopeExclusion,
     TerritorialLink,
@@ -537,3 +538,79 @@ def test_every_needs_review_case_names_where_it_gives_up(cases):
     assert review
     for c in review:
         assert c.expected_abstains_at in NODE_KEYS, c.case_id
+
+
+# --- Art. 25 — the answer key's own role question ------------------------------------------------
+def test_a_reallocation_can_only_be_claimed_by_a_high_risk_case():
+    """Art. 25(1) reallocates the provider of "a high-risk AI system" and 25(3) of a high-risk
+    safety component. A case labelling any other class with a limb asserts something the Article
+    cannot support — and would pin a node the run never puts."""
+    with pytest.raises(ValueError, match="of nothing else"):
+        ClassificationCase(
+            case_id="bad",
+            expected_is_ai_system=True,
+            description="d",
+            expected_risk_class=RiskClass.MINIMAL,
+            expected_provider_reallocation=ProviderReallocation.NAME_OR_TRADEMARK,
+            provider_reallocation_basis="rebadged, but the system is not high-risk",
+            decisive_fact="a reallocation claimed on a minimal-risk system",
+            difficulty="obvious",
+        )
+
+
+def test_a_reallocation_must_show_its_working():
+    """Same pairing as `scope_exclusion_basis`. Limb (b) is why: Art. 3(23) defines 'substantial
+    modification' narrowly, and a label pinned on the word "customised" tests the wrong thing."""
+    with pytest.raises(ValueError, match="provider_reallocation_basis is empty"):
+        ClassificationCase(
+            case_id="bad",
+            expected_is_ai_system=True,
+            description="d",
+            expected_risk_class=RiskClass.HIGH_RISK,
+            expected_annex_iii_area=AnnexIIIArea.EMPLOYMENT,
+            expected_performs_profiling=True,
+            expected_provider_reallocation=ProviderReallocation.SUBSTANTIAL_MODIFICATION,
+            decisive_fact="a reallocation with no argument behind it",
+            difficulty="obvious",
+        )
+
+
+def test_a_high_risk_case_must_pin_art_25(tmp_path):
+    """The node is gated on the CLASS, not on the route, so the loader's reached-but-unpinned check
+    has to know that. A high-risk case leaving it out leaves a question the run WILL ask with
+    nothing to check it against."""
+    bad = _case_yaml(
+        tmp_path,
+        "  - case_id: unpinned\n"
+        "    description: d\n"
+        "    expected_risk_class: high_risk\n"
+        "    expected_is_ai_system: true\n"
+        "    expected_annex_i_product: null\n"
+        "    expected_annex_iii_area: employment\n"
+        "    expected_performs_profiling: true\n"
+        "    expected_transparency_duties: []\n"
+        "    decisive_fact: high risk by profiling, silent on who the provider is\n"
+        "    difficulty: obvious\n",
+    )
+    with pytest.raises(ValueError, match="provider_reallocation.*is not set"):
+        load_classification_cases(bad)
+
+
+def test_art_25_is_measured_in_both_directions(cases):
+    """A column whose every expected answer is None measures the base rate, not the node — and this
+    node's failure mode IS silence, so the positive cases are the ones that measure anything."""
+    high_risk = [c for c in cases.cases if c.expected_risk_class == RiskClass.HIGH_RISK]
+    claimed = {c.expected_provider_reallocation for c in high_risk}
+    assert None in claimed, "no case exercises the ordinary answer"
+    assert set(ProviderReallocation) <= claimed, "every Art. 25 limb needs a case"
+
+
+def test_every_art_25_limb_can_cite_itself():
+    """A limb added without its citation would be reported under a paragraph belonging to another
+    one — the same failure `_PROHIBITED_POINT` guards against."""
+    assert [r.citation for r in ProviderReallocation] == [
+        "Art. 25(1)(a)",
+        "Art. 25(1)(b)",
+        "Art. 25(1)(c)",
+        "Art. 25(3)",
+    ]

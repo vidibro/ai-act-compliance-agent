@@ -27,6 +27,7 @@ from aiact.classify.graph import load_questions  # noqa: E402
 from aiact.eval.classification_cases import load_classification_cases  # noqa: E402
 from aiact.eval.classification_score import score_case, score_run  # noqa: E402
 from aiact.eval.node_score import score_node_run  # noqa: E402
+from aiact.gap import roles as role_questions  # noqa: E402
 from aiact.schemas.enums import AnnexIIIArea, DerogationCondition  # noqa: E402
 from aiact.tracing import enable_tracing  # noqa: E402
 from aiact.usage import PRICES_AS_OF  # noqa: E402
@@ -145,10 +146,20 @@ def run_golden(cases_path: Path | None = None) -> None:
     print(f"model={brain.model}")
     print(f"Langfuse tracing: {'ON' if traced else 'off (no keys) — traces not recorded'}")
     print("questions anchored in verbatim article + Annex III text\n")
+    role_qs = role_questions.load_questions()
     pairs = []
+    node_pairs = []
     for case in cases.cases:
         result = classify(case.description, brain, case.case_id, questions=anchored)
         pairs.append((case, result))
+        # Art. 25 is asked by the GAP layer, not the cascade, so its answer is not on `result`.
+        # It is still measured here: the answer key is a fact about the case, and running the whole
+        # pipeline just to reach one question would pay for a full document review per case. The
+        # gate is `gap.roles.ask`'s own, so this asks exactly what a real review would.
+        art25 = role_questions.ask(
+            brain, case.description, result.overall_risk_class, role_qs
+        )
+        node_pairs.append((case, [*result.answers, *([art25] if art25 else [])]))
         score = score_case(case, result)
         # Art. 50 is reported per case beside the class, not folded into it — a run can get every
         # tier right while owing the wrong transparency duty on all of them.
@@ -165,7 +176,7 @@ def run_golden(cases_path: Path | None = None) -> None:
         print(line)
     # The per-node table follows the two headline axes rather than replacing them: it says WHICH
     # question was weak, which the terminal class cannot.
-    for line in score_node_run(pairs).lines():
+    for line in score_node_run(node_pairs).lines():
         print(line)
     print()
     print(f"run cost           : {brain.usage.summary(brain.model)}")

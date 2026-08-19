@@ -70,6 +70,7 @@ cases:
     expected_annex_i_product: null
     expected_annex_iii_area: employment
     expected_performs_profiling: true
+    expected_provider_reallocation: null
     expected_transparency_duties: []
     transparency_basis: >-
       Unchanged from cv_parsing_fields — scoring and ranking are neither direct interaction (50(1))
@@ -422,6 +423,7 @@ cases:
     expected_annex_i_product: null
     expected_annex_iii_area: employment
     expected_performs_profiling: true
+    expected_provider_reallocation: null
     expected_transparency_duties: []
     transparency_basis: >-
       Art. 50 does not attach: the candidate never converses with it (50(1)), the fit score is not
@@ -494,6 +496,7 @@ cases:
     expected_annex_i_product: null
     expected_annex_iii_area: essential_services
     expected_performs_profiling: true
+    expected_provider_reallocation: null
     expected_transparency_duties: []
     transparency_basis: >-
       Art. 50 does not attach: the applicant never interacts with the system (50(1)), it generates
@@ -593,6 +596,7 @@ cases:
     expected_annex_i_product: null
     expected_annex_iii_area: employment
     expected_performs_profiling: true
+    expected_provider_reallocation: null
     expected_transparency_duties: []
     transparency_basis: >-
       Art. 50 does not attach: it writes a number into a spreadsheet column — no direct interaction
@@ -629,6 +633,7 @@ cases:
     expected_performs_profiling: false
     expected_derogation: narrow_procedural_task
     expected_poses_significant_risk: true
+    expected_provider_reallocation: null
     expected_transparency_duties: []
     transparency_basis: >-
       Art. 50 does not attach: reading one field and issuing a form letter is not direct
@@ -667,6 +672,7 @@ cases:
       than applying a fixed cut-off a person set.
     expected_annex_i_product: medical_devices
     expected_third_party_assessment: true
+    expected_provider_reallocation: null
     expected_transparency_duties: []
     transparency_basis: >-
       Art. 50 does not attach: the module drives an actuator inside a surgical robot. It does not
@@ -695,6 +701,7 @@ cases:
       is inference by definition; no rule enumerates what a pedestrian looks like.
     expected_annex_i_product: motor_vehicles
     expected_third_party_assessment: true
+    expected_provider_reallocation: null
     expected_transparency_duties: []
     transparency_basis: >-
       Art. 50 does not attach: it actuates brakes from sensor input. No direct interaction with a
@@ -752,6 +759,7 @@ cases:
       Infers blade and bearing wear from spindle vibration, as its benchtop sibling does.
     expected_annex_i_product: machinery
     expected_third_party_assessment: true
+    expected_provider_reallocation: null
     expected_transparency_duties: []
     transparency_basis: >-
       Art. 50 does not attach: a maintenance reminder shown to the machine operator is not the
@@ -847,6 +855,7 @@ cases:
     expected_annex_iii_area: migration
     expected_performs_profiling: false
     expected_derogation: null
+    expected_provider_reallocation: null
     expected_transparency_duties: []
     transparency_basis: >-
       Art. 50 does not attach: detecting crossings and alerting officers is no direct interaction
@@ -983,6 +992,7 @@ cases:
     expected_annex_i_product: null
     expected_annex_iii_area: employment
     expected_performs_profiling: true
+    expected_provider_reallocation: null
     expected_transparency_duties: []
     transparency_basis: >-
       None of Art. 50's paragraphs attach: scoring and ranking applicants is neither direct
@@ -1218,6 +1228,7 @@ cases:
     expected_annex_i_product: null
     expected_annex_iii_area: employment
     expected_performs_profiling: true
+    expected_provider_reallocation: null
     expected_transparency_duties: []
     transparency_basis: >-
       Art. 50 does not attach: dashboards and per-employee scores are not direct interaction
@@ -2140,3 +2151,171 @@ cases:
       it is the rare case where the negative is written down rather than inferred.
       The drone is also radio equipment under Directive 2014/53/EU at Annex I(A)(6); the same
       safety-component answer disposes of that route.
+
+  # --- ART. 25 — the role changes hands ---------------------------------------------------------
+  # Four cases for the one question in this cascade that is about WHO rather than WHAT. Each is
+  # high-risk by a route the set already covers, so nothing here tests the tier: what they test is
+  # whether the run notices that the organisation writing the document did not build the system.
+  # That failure is silent — a reallocation missed costs nothing until a deployer reads Art. 16 as
+  # somebody else's problem — so the positive labels are the whole point of the column. Every other
+  # high-risk case in this set answers null, and a node measured only against those measures the
+  # base rate.
+  - case_id: rebadged_screening_platform
+    description: >-
+      A staffing agency's own-brand candidate screening service. The agency licenses a screening
+      platform from a software vendor that already sells it to other recruiters, applies its own
+      logo, product name and terms of service, and offers it to client companies as the agency's
+      product. Client recruiters upload vacancies and applications; the platform scores each
+      applicant's fit against the vacancy and returns a ranked shortlist. The agency changes
+      nothing in how the scoring works and does not retrain it.
+    expected_risk_class: high_risk
+    expected_is_ai_system: true
+    is_ai_basis: >-
+      Infers a fit score for each applicant from their application against the vacancy — the score
+      is predicted, not read off a rule the agency wrote.
+    expected_annex_i_product: null
+    expected_annex_iii_area: employment
+    expected_performs_profiling: true
+    expected_transparency_duties: []
+    transparency_basis: >-
+      Art. 50 does not attach. Scoring and ranking applicants is neither direct interaction with a
+      natural person (50(1)) nor generation of synthetic content (50(2)); no emotion is inferred and
+      nobody is categorised biometrically (50(3)); and there is no deep fake or published
+      public-interest text (50(4)).
+    expected_provider_reallocation: name_or_trademark
+    provider_reallocation_basis: >-
+      Art. 25(1)(a) squarely: the vendor placed the platform on the market, and the agency puts its
+      own name and trademark on it. The Article says so "without prejudice to contractual
+      arrangements stipulating that the obligations are otherwise allocated", so the licence terms
+      between them do not change the classification — the agency is the provider and owes Art. 16.
+    decisive_fact: >-
+      Someone else placed the system on the market and the agency sells it under its own brand.
+      That is Art. 25(1)(a), and it moves the whole provider obligation set onto the agency.
+    difficulty: obvious
+    notes: >-
+      The clean anchor for the node. Deliberately says the agency changes NOTHING about the
+      scoring — limb (a) needs no modification at all, and a reading that looks for one would miss
+      the commonest way a company becomes a provider without noticing.
+
+  - case_id: retrained_promotion_ranker
+    description: >-
+      An internal promotion-ranking tool at a logistics company. The company bought a workforce
+      analytics product from a vendor, who supplies it with a documented intended purpose and a
+      conformity assessment covering the model as shipped. The company's data team then retrained
+      the ranking model on ten years of its own promotion records and added new input features the
+      vendor's product never used — shift-swap frequency and internal message volume — so that the
+      tool now ranks employees for promotion on a different basis from the one the vendor assessed.
+      It continues to rank named employees for promotion decisions.
+    expected_risk_class: high_risk
+    expected_is_ai_system: true
+    is_ai_basis: >-
+      Infers a promotion ranking for each employee from their work history and the added
+      behavioural features; the retraining is what fixes the weights, not a person.
+    expected_annex_i_product: null
+    expected_annex_iii_area: employment
+    expected_performs_profiling: true
+    expected_transparency_duties: []
+    transparency_basis: >-
+      Art. 50 does not attach: ranking employees is not direct interaction (50(1)), generates no
+      synthetic content (50(2)), infers no emotion and categorises nobody biometrically (50(3)),
+      and produces no deep fake or public-interest text (50(4)). Message VOLUME is a count, not
+      content, so nothing here reads what employees wrote.
+    expected_provider_reallocation: substantial_modification
+    provider_reallocation_basis: >-
+      Art. 25(1)(b) on the Art. 3(23) definition, which is what makes this a substantial
+      modification rather than a configuration: the retraining and the new input features were not
+      foreseen or planned in the vendor's initial conformity assessment, and they change the basis
+      on which the assessed intended purpose is carried out. The tool remains high-risk under
+      Art. 6 — still ranking employees for promotion, Annex III(4)(b) — which is limb (b)'s own
+      condition.
+    decisive_fact: >-
+      The company retrained the model on its own data and added features the vendor never assessed.
+      Art. 3(23) makes that a substantial modification, and Art. 25(1)(b) makes the company the
+      provider of the modified system.
+    difficulty: obvious
+    notes: >-
+      Tests the limb most easily over-fired. The description states the two things Art. 3(23)
+      actually requires — outside the initial conformity assessment, and affecting the assessed
+      purpose — rather than relying on the word "customised", which is what a keyword reading would
+      latch onto and which describes ordinary permitted configuration.
+
+  - case_id: summariser_pointed_at_applications
+    description: >-
+      An HR team's use of a general-purpose document assistant. The team subscribes to a commercial
+      SaaS tool sold for summarising and comparing business documents of any kind — contracts,
+      reports, meeting notes — and not sold or assessed for any hiring purpose. The team has
+      configured it with their own prompt templates so that it now reads each job application,
+      rates the candidate against the role on a five-point scale, and orders the applications by
+      that rating for the hiring manager's review. Nothing in the vendor's product was changed;
+      the team supplies the instructions.
+    expected_risk_class: high_risk
+    expected_is_ai_system: true
+    is_ai_basis: >-
+      Infers a rating for each candidate from the application text against the role. The team wrote
+      the instructions, not the mapping from application to rating — that is the model's.
+    expected_annex_i_product: null
+    expected_annex_iii_area: employment
+    expected_performs_profiling: true
+    expected_transparency_duties: []
+    transparency_basis: >-
+      Art. 50 does not attach on this use. The tool is not held out as an interlocutor to the
+      candidates, who never see it (50(1)); the ratings and ordering it produces go to the hiring
+      manager as an internal assessment rather than as synthetic content put out into the world
+      (50(2)); no emotion is inferred and nobody is categorised biometrically (50(3)); and there is
+      no deep fake or text published to inform the public (50(4)).
+    expected_provider_reallocation: intended_purpose_change
+    provider_reallocation_basis: >-
+      Art. 25(1)(c): the vendor's tool was placed on the market for general document work and was
+      not classified as high-risk, and the HR team has changed its intended purpose so that it now
+      falls within Annex III(4)(a) and is high-risk under Art. 6. The limb names this case in terms
+      — it reaches a system "which has not been classified as high-risk and has already been placed
+      on the market". That no code was changed is beside the point; limb (c) is about purpose.
+    decisive_fact: >-
+      Aiming a general document tool at job applications is a change of intended purpose that makes
+      it high-risk, so Art. 25(1)(c) makes the HR team its provider — of a system they only
+      subscribed to.
+    difficulty: buried
+    notes: >-
+      Two traps, and they pull opposite ways. The GPAI one: a general-purpose SaaS assistant is
+      still an AI SYSTEM under Art. 3(66), and routing it to Chapter V would exempt the exact
+      product Annex III(4) exists for. The Art. 25 one: "we only wrote prompts" reads as
+      configuration, which is right for limb (b) and wrong here — (c) turns on the purpose, not on
+      the code.
+
+  - case_id: pump_maker_bundles_dosing_module
+    description: >-
+      An infusion pump manufacturer's dose-limiting module. The manufacturer licenses an AI dose
+      control component from a specialist supplier and integrates it into its own infusion pump.
+      The component predicts the patient's response to the infusion rate from sensor readings and
+      caps delivery when a hazardous rate is predicted. The pump is placed on the market as a
+      class IIb medical device under Regulation (EU) 2017/745, CE-marked following notified-body
+      conformity assessment, and carries the pump manufacturer's name and trademark. The AI
+      supplier is not named on the product.
+    expected_risk_class: high_risk
+    expected_is_ai_system: true
+    is_ai_basis: >-
+      Infers the patient's predicted response to the infusion rate from sensor readings and derives
+      the delivery cap from that prediction, rather than applying a fixed limit a clinician set.
+    expected_annex_i_product: medical_devices
+    expected_third_party_assessment: true
+    expected_transparency_duties: []
+    transparency_basis: >-
+      Art. 50 does not attach: the module caps a pump's delivery rate. It does not interact directly
+      with a natural person (50(1)), generates no synthetic content (50(2)), infers no emotion and
+      categorises nobody biometrically (50(3)), and produces no deep fake or public-interest text
+      (50(4)).
+    expected_provider_reallocation: product_manufacturer
+    provider_reallocation_basis: >-
+      Art. 25(3)(a): the AI system is a safety component of a product covered by Annex I Section A
+      — Regulation (EU) 2017/745 — and it is placed on the market together with that product under
+      the pump manufacturer's own name and trademark. The manufacturer is therefore the provider of
+      the AI system and owes Art. 16, and the component supplier is not.
+    difficulty: obvious
+    decisive_fact: >-
+      The AI is bought in, but the pump ships under the manufacturer's name. Art. 25(3) makes the
+      product manufacturer the provider of the AI system itself — the role ActorRole lists as
+      having no rules of its own precisely because this Article hands it the provider's.
+    notes: >-
+      The only case that reaches Art. 25 by the Annex I door rather than Annex III, and the one that
+      justifies leaving product_manufacturer out of the ruleset: it needs no rules because 25(3)
+      gives it the provider's whole.

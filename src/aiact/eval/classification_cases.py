@@ -104,9 +104,10 @@ def _check_pins_match_the_route(case: ClassificationCase, path: Path) -> None:
             )
         # Against the CASCADE ORDER, not the walked route: an unpinned abstention node halts the
         # walk, so nothing is ever "after" it there. NODE_KEYS is declared in cascade order, which
-        # is what makes the index comparison meaningful. `transparency` is exempt — `assemble` asks
-        # it on every route, abstention or not.
-        order = [n for n in NODE_KEYS if n != "transparency"]
+        # is what makes the index comparison meaningful. Two entries are off that order and exempt:
+        # `transparency`, which `assemble` asks on every route including this one, and
+        # `provider_reallocation`, which a different graph asks and never on an abstaining case.
+        order = [n for n in NODE_KEYS if n not in ("transparency", "provider_reallocation")]
         past = [
             n
             for n in order[order.index(str(node)) + 1 :]
@@ -134,6 +135,13 @@ def _check_pins_match_the_route(case: ClassificationCase, path: Path) -> None:
     # `transparency` is asked in `assemble`, which every route reaches, so it is off the walk and
     # always expected — Art. 50 is a separate axis from the tier and is answered for every system.
     reached = set(walked) | {"transparency"}
+    # `provider_reallocation` is not on this route at all — the GAP layer asks it (gap/roles.py),
+    # because Art. 25 decides who the reader is rather than what the system is. It is still pinned
+    # here, and still scored: the answer key is a fact about the case, not about which graph asks.
+    # Gated on the CLASS, because that is the gate `gap.roles.ask` applies — Art. 25 reallocates the
+    # provider of a high-risk system and of nothing else.
+    if case.expected_risk_class == RiskClass.HIGH_RISK:
+        reached.add("provider_reallocation")
     problems: list[str] = []
     for node_id, field in NODE_KEYS.items():
         if field is None or field in DERIVED_FROM_CLASS:

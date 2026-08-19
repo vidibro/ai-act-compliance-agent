@@ -143,12 +143,17 @@ def test_low_confidence_counts_as_abstention_even_with_a_value():
 
 
 # --- the mapping ----------------------------------------------------------------------------------
-def test_every_cascade_node_has_an_entry():
+def test_every_question_the_tool_puts_has_an_entry():
     """A newly added node must be given a key or an explicit None, rather than going silently
-    unmeasured — the failure this module exists to make visible."""
-    from aiact.classify.graph import QUESTIONS
+    unmeasured — the failure this module exists to make visible.
 
-    assert set(QUESTIONS) == set(NODE_KEYS)
+    BOTH askers, because there are now two: the classification cascade asks what the system is, and
+    the gap layer asks Art. 25 — who the reader is. A question measured by neither is the same gap
+    whichever graph put it."""
+    from aiact.classify.graph import QUESTIONS
+    from aiact.gap import roles
+
+    assert set(QUESTIONS) | set(roles.QUESTIONS) == set(NODE_KEYS)
 
 
 def test_is_ai_is_keyed_and_required():
@@ -173,7 +178,7 @@ def test_asked_counts_come_from_the_run_not_the_answer_key():
     brain = ScriptedBrain({"is_ai": True, "prohibited": None, "annex_iii": None})
     result = classify(case.description, brain, case.case_id)
 
-    run = score_node_run([(case, result)])
+    run = score_node_run([(case, result.answers)])
     # Asked covers everything the cascade put.
     assert run.asked["is_ai"] == 1
     assert run.asked["territorial"] == 1
@@ -201,7 +206,7 @@ def test_the_table_reports_a_keyless_node_as_a_blank_row(monkeypatch):
     brain = ScriptedBrain({"is_ai": True, "prohibited": None, "annex_iii": None})
     result = classify(case.description, brain, case.case_id)
 
-    text = "\n".join(score_node_run([(case, result)]).lines())
+    text = "\n".join(score_node_run([(case, result.answers)]).lines())
     assert "NO KEY — unmeasured" in text
     assert "annex_iii" in text
 

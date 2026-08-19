@@ -30,6 +30,7 @@ from aiact.schemas.enums import (
     DerogationCondition,
     GpaiStatus,
     ProhibitedPractice,
+    ProviderReallocation,
     RiskClass,
     ScopeExclusion,
     TerritorialLink,
@@ -298,6 +299,28 @@ class ClassificationCase(BaseModel):
     discipline as LegalSource on a verdict — a key that cannot show its working is how a wrong
     label survives unnoticed."""
 
+    expected_provider_reallocation: ProviderReallocation | None = None
+    """Art. 25 — WHICH circumstance has made the reader the provider of a system someone else
+    placed on the market, or None where the roles are as the document describes them.
+
+    Pinned only on HIGH_RISK cases, because that is the only class where the question is put: every
+    limb of Art. 25(1) speaks of "a high-risk AI system". `None` is the ordinary answer and a real
+    one — it says the report's provider section belongs to whoever the document already calls the
+    provider.
+
+    The positive labels are what make the column worth having. A set whose every case answers None
+    measures the base rate, and this node's failure mode is silence: it costs nothing to miss, right
+    up until a deployer who rebadged a vendor's tool reads Art. 16 as somebody else's problem."""
+
+    provider_reallocation_basis: str = ""
+    """WHY that limb applies. Same pairing as `scope_exclusion_basis` and `transparency_basis`, and
+    compelled by the validator whenever a limb is claimed.
+
+    Limb (b) is why the argument is needed rather than nice: Art. 3(23) defines 'substantial
+    modification' as a change NOT foreseen in the initial conformity assessment which affects
+    Chapter III Section 2 compliance or the assessed intended purpose. A case labelled
+    substantial_modification on the strength of the word "customised" is testing the wrong thing."""
+
     expected_abstains_at: str | None = None
     """WHICH cascade node the description runs out at. Set exactly when the class is NEEDS_REVIEW.
 
@@ -334,6 +357,24 @@ class ClassificationCase(BaseModel):
                 f"{self.case_id}: Art. 50 duties are claimed but transparency_basis is empty. Name "
                 f"the paragraphs and why they attach."
             )
+
+        # Art. 25 — a reallocation must name the limb it rests on, and only a high-risk case may
+        # claim one. Both halves matter: Art. 25(1) reallocates the provider of "a high-risk AI
+        # system" and 25(3) of a high-risk safety component, so a case labelling any other class
+        # with a limb is asserting something the Article cannot support.
+        if self.expected_provider_reallocation is not None:
+            if rc != RiskClass.HIGH_RISK:
+                raise ValueError(
+                    f"{self.case_id}: expected_provider_reallocation="
+                    f"{self.expected_provider_reallocation} but expected_risk_class={rc}. Art. 25 "
+                    f"reallocates the provider of a HIGH-RISK system and of nothing else."
+                )
+            if not self.provider_reallocation_basis.strip():
+                raise ValueError(
+                    f"{self.case_id}: an Art. 25 limb is claimed but provider_reallocation_basis "
+                    f"is empty. Name who placed the system on the market and what the reader did "
+                    f"to it."
+                )
 
         # Art. 2 — an exclusion must name the paragraph it rests on, and nothing else may claim one.
         # The classes are ordered in law before the risk tiers: a system the Regulation does not

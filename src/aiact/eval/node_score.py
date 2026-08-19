@@ -46,7 +46,6 @@ from collections import Counter
 from dataclasses import dataclass
 from typing import Any, Literal
 
-from aiact.schemas.classification import ClassificationResult
 from aiact.schemas.enums import RiskClass
 from aiact.schemas.eval import ClassificationCase
 from aiact.schemas.question import Answer
@@ -54,8 +53,10 @@ from aiact.schemas.question import Answer
 Outcome = Literal["correct", "wrong", "abstained"]
 
 # node_id -> the ClassificationCase field holding its expected answer. None where no key exists.
-# Every cascade node appears, so a newly added one must be given a key or an explicit None here
-# rather than silently going unmeasured — the failure this whole module exists to make visible.
+# EVERY question the tool puts appears, from both askers — the classification cascade and the gap
+# layer's Art. 25 role question — so a newly added one must be given a key or an explicit None here
+# rather than silently going unmeasured, the failure this whole module exists to make visible. The
+# answer key does not care which graph asks: it is a fact about the case.
 NODE_KEYS: dict[str, str | None] = {
     "is_ai": "expected_is_ai_system",
     "territorial": "expected_territorial_link",
@@ -69,6 +70,7 @@ NODE_KEYS: dict[str, str | None] = {
     "derogation": "expected_derogation",
     "significant_risk": "expected_poses_significant_risk",
     "transparency": "expected_transparency_duties",
+    "provider_reallocation": "expected_provider_reallocation",
 }
 
 # Fields every case carries whether or not its YAML names them, so the `model_fields_set` test does
@@ -248,11 +250,17 @@ class NodeRunScore:
 
 
 def score_node_run(
-    pairs: list[tuple[ClassificationCase, ClassificationResult]],
+    pairs: list[tuple[ClassificationCase, list[Answer]]],
 ) -> NodeRunScore:
+    """Score a whole run, given each case and EVERY answer the tool produced for it.
+
+    Takes the answers rather than the ClassificationResult because they no longer all come from one
+    place: the cascade's are on `result.answers`, and Art. 25 is answered by the gap layer. The
+    caller assembles the list, which is also what keeps this module from having to know which graph
+    asked what."""
     scores: list[NodeScore] = []
     asked: Counter[str] = Counter()
-    for case, result in pairs:
-        scores.extend(score_nodes(case, result.answers))
-        asked.update(a.node_id or "?" for a in result.answers)
+    for case, answers in pairs:
+        scores.extend(score_nodes(case, answers))
+        asked.update(a.node_id or "?" for a in answers)
     return NodeRunScore(scores=scores, asked=asked)
