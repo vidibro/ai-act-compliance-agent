@@ -21,9 +21,11 @@ from aiact.policy_loader import load_policy_spec
 from aiact.schemas.enums import (
     ActorRole,
     AnnexIIIArea,
+    GpaiStatus,
     ProhibitedPractice,
     RiskClass,
     ScopeExclusion,
+    TerritorialLink,
     Verdict,
 )
 
@@ -222,3 +224,22 @@ def test_the_out_of_scope_note_distinguishes_itself_from_minimal(spec):
     assert "Art. 2" in note
     assert "minimal" in note, "the note must name the tier it is not"
     assert "Art. 4" in note, "and what a minimal system would still owe"
+
+
+def test_a_gpai_model_is_not_checked_but_is_not_cleared_either(spec):
+    """The distinction that matters. `out_of_scope` owes nothing; a general-purpose AI model owes
+    plenty — just under Chapter V, which this ruleset does not carry. An empty findings list with
+    no note would read as a clean bill of health for a provider who owes Art. 53 today."""
+    brain = a_brain(
+        territorial=TerritorialLink.NOT_ADDRESSED,
+        scope=None,
+        gpai_model=GpaiStatus.GENERAL_PURPOSE_MODEL,
+    )
+    report = review(DOCUMENT, spec, brain, judge=StubJudge(), system_id="model")
+
+    assert report.classification.overall_risk_class == RiskClass.GPAI_MODEL
+    assert report.findings == []
+    assert report.not_document_verifiable == {}
+    assert report.scope_note and "NOT ASSESSED, not compliant" in report.scope_note
+    # The handover travels with it, so the reader is told what DOES govern.
+    assert "Art. 53" in report.scope_note and "Chapter V" in report.scope_note

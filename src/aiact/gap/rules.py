@@ -81,7 +81,10 @@ def select_rules(spec: PolicySpec, use_case: UseCaseClassification, role: ActorR
     # current 19 rules rather than of the law, and the day a rule is written with a wider
     # `applies_to_risk_class` this is what stops it attaching to a system the Regulation does not
     # govern. Stated here because a silent emptiness cannot be told apart from an intended one.
-    if use_case.risk_class == RiskClass.OUT_OF_SCOPE:
+    # OUT_OF_SCOPE owes nothing; GPAI_MODEL owes plenty, but under Chapter V, which this ruleset
+    # does not carry. Selecting Art. 6-track rules for a model would raise Chapter III duties
+    # against a provider the Act never puts them on — and would hide the ones it does.
+    if use_case.risk_class in (RiskClass.OUT_OF_SCOPE, RiskClass.GPAI_MODEL):
         return ActiveRules(use_case_id=use_case.use_case_id, role=role)
 
     # Art. 2(2) is exhaustive — "only Article 6(1), Articles 102 to 109 and Article 112 apply" — so

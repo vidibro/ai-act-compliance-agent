@@ -59,6 +59,7 @@ NODE_KEYS: dict[str, str | None] = {
     "is_ai": "expected_is_ai_system",
     "territorial": "expected_territorial_link",
     "scope": "expected_scope_exclusion",
+    "gpai_model": "expected_gpai_status",
     "prohibited": "expected_prohibited_practice",
     "annex_i": "expected_annex_i_product",
     "third_party_assessment": "expected_third_party_assessment",
@@ -91,6 +92,7 @@ DERIVED_FROM_CLASS = frozenset(
         "expected_scope_exclusion",
         "expected_is_ai_system",
         "expected_territorial_link",
+        "expected_gpai_status",
     }
 )
 

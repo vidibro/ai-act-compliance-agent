@@ -107,12 +107,27 @@ out_of_scope:
     such as job-ad generation while 50(3) attaches to the deployer of a prohibited one.
 
   # --- Chapter V — general-purpose AI models ---------------------------------------------------
-  51: General-purpose AI model regime — a separate track from high-risk. Out of v0.1 scope.
-  52: GPAI model classification procedure. Out of v0.1 scope.
-  53: Obligations of providers of GPAI models. Out of v0.1 scope.
-  54: Authorised representatives of GPAI model providers. Out of v0.1 scope.
-  55: Obligations of providers of GPAI models with systemic risk. Out of v0.1 scope.
-  56: Codes of practice for GPAI. Out of v0.1 scope.
+  # Chapter V is a SEPARATE TRACK, not a lesser one, and it has applied since 2 August 2025 —
+  # earlier than every rule in spec.yaml. The classification cascade DETECTS a general-purpose AI
+  # model (Art. 3(63)) and hands over to these articles by name; what is missing is the ruleset to
+  # check documentation against them. Tracked as M4d-8, deliberately deferred: see the roadmap for
+  # why the systemic-risk step should wait for the Art. 52(6) list to be published.
+  51: >-
+    Classification of GPAI models as carrying systemic risk. Answered against the Art. 52(6) list
+    once the Commission publishes it; the 10(^25) FLOP presumption is not derivable from a model
+    card. Handed over, not checked (M4d-8).
+  52: >-
+    Notification procedure, and the Commission's duty under 52(6) to publish a list of GPAI models
+    with systemic risk. Cited in the GPAI handover text so a reader knows the list is authoritative
+    and, at the time of writing, not published.
+  53: >-
+    Obligations of GPAI model providers — Annex XI documentation, information to downstream
+    providers, copyright policy, training-content summary. Named in the handover; no rules yet
+    (M4d-8).
+  54: Authorised representatives of GPAI model providers. Chapter V ruleset not built (M4d-8).
+  55: >-
+    Obligations for GPAI models with systemic risk. Named in the handover; no rules yet (M4d-8).
+  56: Codes of practice for GPAI. Voluntary instrument; a signature is evidence, not a duty.
 
   # --- Chapter VI — measures in support of innovation ------------------------------------------
   57: Member State duty to establish AI regulatory sandboxes.

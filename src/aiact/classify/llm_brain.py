@@ -36,6 +36,7 @@ from aiact.schemas.enums import (
     AnnexIIIArea,
     AnnexIProduct,
     DerogationCondition,
+    GpaiStatus,
     ProhibitedPractice,
     ScopeExclusion,
     TerritorialLink,
@@ -131,6 +132,12 @@ def _answer_instructions(answer_type: str) -> str:
             f"nothing about territory, which is the ordinary case; or null ONLY where the text "
             f"positively establishes the system reaches the Union nowhere. Do NOT return "
             f'"{UNKNOWN}" here: silence is exactly what "not_addressed" records'
+        )
+    if answer_type == "gpai_status":
+        statuses = ", ".join(s.value for s in GpaiStatus)
+        return (
+            f'set "value" to one of [{statuses}]; or "{UNKNOWN}" if the description does not say '
+            f"enough about what the thing is, or about whether it has been released, to choose"
         )
     if answer_type == "prohibited_practice":
         practices = ", ".join(p.value for p in ProhibitedPractice)
@@ -243,6 +250,11 @@ def _parse_value(answer_type: str, value: object) -> object:
             return TerritorialLink(str(value).strip().lower())
         except ValueError as exc:
             raise Unanswerable(f"{value!r} is not an Art. 2(1) limb") from exc
+    if answer_type == "gpai_status":
+        try:
+            return GpaiStatus(str(value).strip().lower())
+        except ValueError as exc:
+            raise Unanswerable(f"{value!r} is not an Art. 3(63) status") from exc
     if answer_type == "prohibited_practice":
         try:
             return ProhibitedPractice(str(value).strip().lower())

@@ -331,6 +331,116 @@ cases:
       Teaches: a recruitment-phase preparatory tool is INSIDE Annex III (then exempt), NOT minimal.
       The not_high_risk/minimal line matters — not_high_risk still owes Art. 6(4).
 
+  # --- Chapter V: a general-purpose AI model is not on the Art. 6 track at all ------------------
+  # A pair, because the danger is symmetric. Miss the model and a foundation-model provider is told
+  # `minimal` while owing Art. 53 today; route out too eagerly and every product running on a large
+  # model escapes the tier logic that correctly applies to it.
+  - case_id: open_weight_frontier_model_card
+    description: >-
+      A model card for an open-weight large language model published by a research lab. It gives the
+      parameter count, the training corpus and token budget, the context window, benchmark results
+      across reasoning, coding, mathematics, summarisation, translation and question answering, the
+      licence terms, and instructions for running inference and for fine-tuning on a downstream
+      task. The lab describes it as a base model intended to be adapted and embedded into whatever
+      applications others wish to build, and states that it is released for general use rather than
+      for any particular purpose.
+    expected_risk_class: gpai_model
+    expected_is_ai_system: true
+    is_ai_basis: >-
+      Infers its outputs from the input it receives — that is what a language model does. Art. 3(1)
+      is met, which is why the cascade reaches the Art. 3(63) question rather than exiting earlier.
+    expected_gpai_status: general_purpose_model
+    expected_transparency_duties: []
+    transparency_basis: >-
+      Art. 50 is not answered for the MODEL. Its paragraphs bind providers and deployers of AI
+      SYSTEMS — 50(1) direct interaction, 50(2) marking synthetic output, 50(3) emotion or biometric
+      systems, 50(4) deep fakes — and a base model has no interaction, no deployer and no output in
+      use until someone builds a system on it. The Art. 50(2) marking duty will fall on whoever
+      does.
+    decisive_fact: >-
+      Significant generality across distinct tasks, integrable into a variety of downstream
+      applications, described as a base model with no intended purpose of its own — Art. 3(63). Art.
+      6 does not classify it and it has no risk tier; Chapter V governs, and Art. 53 is owed already
+      (Chapter V has applied since 2 August 2025). The old cascade answered `minimal` here, which
+      told the provider it owed almost nothing.
+    difficulty: obvious
+    notes: >-
+      The reason RiskClass.GPAI_MODEL exists. This tool does not assess Chapter V; the verdict is a
+      handover naming Arts. 53 and 55 and the Art. 52(6) list.
+
+  - case_id: pre_market_frontier_model_in_training
+    description: >-
+      An internal research write-up from an AI lab on a large language model still in training. It
+      records the architecture, the corpus, the compute budget and the evaluation harness, and
+      reports interim benchmark results across reasoning, coding, translation and summarisation. The
+      lab states that the model is a research artefact, that it has not been released, licensed or
+      made available to anyone outside the team, and that a decision on whether to publish weights
+      or offer it through an API has not yet been taken.
+    expected_risk_class: gpai_model
+    expected_is_ai_system: true
+    is_ai_basis: >-
+      Infers its outputs from its input — a language model does nothing else. Art. 3(1) is met.
+    expected_gpai_status: general_purpose_model_pre_market
+    expected_scope_exclusion: pre_market_development
+    scope_exclusion_basis: >-
+      Art. 2(8): research and development activity prior to being placed on the market or put into
+      service. It has not been released, licensed or made available to anyone outside the team. The
+      paragraph's own limit does not bite either — there is no testing in real-world conditions
+      (Art. 3(57)).
+    expected_transparency_duties: []
+    transparency_basis: >-
+      Art. 50 is not reached: its paragraphs bind providers and deployers of AI SYSTEMS placed on
+      the market — 50(1) direct interaction, 50(2) marking synthetic output, 50(3) emotion or
+      biometric systems, 50(4) deep fakes — and this model has no deployer and no output in use.
+    decisive_fact: >-
+      TWO temporary exclusions at once, and neither is a clearance. Art. 3(63) puts a model in
+      research or prototyping outside the definition until it is placed on the market, and Art. 2(8)
+      excludes the development activity itself. So nothing is owed today — but both end on the day
+      it ships, and Chapter V has been in application since 2 August 2025, so Arts. 53 and 55 attach
+      immediately with no transition to prepare in. Reporting only "out of scope" would be true this
+      morning and misleading by the time anyone acted on it.
+    difficulty: buried
+    notes: >-
+      The case that forced Art. 2(8) to fall through instead of concluding. Before this, a
+      pre-market frontier model exited at `scope` and was told it owed nothing, with no mention that
+      it was a general-purpose model or that Chapter V was waiting. The exclusion is a DEADLINE.
+
+  - case_id: llm_backed_cv_screener
+    description: >-
+      A recruitment product that screens applications for a vacancy. It sends each CV and the job
+      description to a large general-purpose language model through an API, prompts it to judge how
+      well the candidate fits, and turns the reply into a fit score that orders the shortlist the
+      recruiter works from. The vendor's documentation is largely about which foundation model is
+      used, its context window and its benchmark scores.
+    expected_risk_class: high_risk
+    expected_is_ai_system: true
+    is_ai_basis: >-
+      Infers a fit judgement for each candidate from their CV and the vacancy text. That the
+      inference happens inside a third party's model changes who trained it, not whether this
+      system infers.
+    expected_gpai_status: ai_system
+    expected_annex_i_product: null
+    expected_annex_iii_area: employment
+    expected_performs_profiling: true
+    expected_transparency_duties: []
+    transparency_basis: >-
+      Art. 50 does not attach: the candidate never converses with it (50(1)), the fit score is not
+      synthetic content published as such (50(2)), it infers no emotion or biometric category
+      (50(3)) and produces no deep fake (50(4)).
+    decisive_fact: >-
+      It RUNS ON a general-purpose model but is not one: it has an intended purpose, users and a
+      decision it feeds, so Art. 3(66) makes it an ordinary AI system. It evaluates candidates
+      during recruitment — Annex III(4)(a) — and scores persons, so the Art. 6(3) carve-back makes
+      it high_risk. Documentation written mostly about the underlying model must not move it onto
+      the Chapter V track.
+    difficulty: buried
+    flips_from: open_weight_frontier_model_card
+    notes: >-
+      The guard on the GPAI node. Routing out everything that talks about a foundation model would
+      exempt exactly the products the tier logic exists for — and this document talks about little
+      else. The pair differs on one thing: whether there is an intended purpose and a person it is
+      used on.
+
   # --- Art. 2(1): the POSITIVE limb of scope, prior to every exclusion -------------------------
   # Paragraphs (3)-(12) carve OUT of a Regulation assumed to apply; (1) is what makes it apply.
   # Without a case on each side, the node is answered `not_addressed` on every case and measures

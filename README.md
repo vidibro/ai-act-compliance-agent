@@ -10,8 +10,9 @@ Two jobs, in order:
 
 1. **Classify** — first, does the Regulation govern this system at all (Art. 2)? If it does, what
    risk class is the use case? `prohibited` / `high_risk` / `not_high_risk` / `minimal` — or
-   `out_of_scope` where the Act is withheld, and `needs_review` where the law is genuinely
-   unsettled.
+   `out_of_scope` where the Act is withheld, `gpai_model` where the thing described is a
+   general-purpose AI model governed by Chapter V rather than by the risk tiers, and
+   `needs_review` where the law is genuinely unsettled.
 2. **Check** — for a high-risk system, does the documentation satisfy each obligation?
    `pass` / `gap` / `inadequate`. Telling a real `gap` from an `inadequate` (the requirement is
    mentioned but with no substance) is the capability this project is built and measured around.
@@ -76,6 +77,10 @@ because that is a legal question rather than a property of either graph:
 - **`prohibited` stops here.** Chapter III describes how a *permitted* high-risk system must be
   built and documented. Reporting documentation gaps against a banned practice would imply it may
   ship once the paperwork is fixed. It may not.
+- **`gpai_model` stops here — but owing plenty.** Chapter V governs a general-purpose AI model, and
+  this ruleset models the Art. 6 track. Unlike `out_of_scope`, the provider is *not* unburdened: the
+  note says **not assessed, not compliant** and the classification's reasoning names Arts. 53 and 55
+  and the Art. 52(6) list.
 - **`needs_review` stops here** too: which obligations apply is not yet known, and findings from a
   guessed risk class are findings a provider might act on without owing them.
 - **Everything else proceeds** — including `not_high_risk`, which still owes Art. 6(4): a provider
@@ -103,7 +108,9 @@ flowchart TD
     TERR -->|"no — it is placed, used and<br/>consumed entirely outside the EU"| OOS
     TERR -->|"yes, or the document<br/>never says"| SCOPE{"Does this law apply to the system at all?<br/>Art. 2(3)-(12)"}
     SCOPE -->|"no — military, research-only,<br/>pre-market, or a person's own use"| OOS([out of scope]):::oos
-    SCOPE -->|yes| PROH{"Is the practice itself banned?<br/>Art. 5(1)(a)-(h)"}
+    SCOPE -->|yes| GPAI{"Is this a general-purpose MODEL,<br/>or a system?<br/>Art. 3(63)"}
+    GPAI -->|"a model — placed, or not yet"| GP([general-purpose AI model<br/>Chapter V, not assessed here]):::gpai
+    GPAI -->|"a system, incl. one built<br/>on such a model"| PROH{"Is the practice itself banned?<br/>Art. 5(1)(a)-(h)"}
     PROH -->|"yes — a named point bans it"| BAN([prohibited]):::ban
     PROH -->|no| ANNEXI{"Is it a safety part of a regulated<br/>physical product?<br/>Annex I, Art. 6(1)(a)"}
     ANNEXI -->|yes| TPA{"Does that product need an<br/>outside body to certify it?<br/>Art. 6(1)(b)"}
@@ -121,6 +128,7 @@ flowchart TD
     AI -.->|low confidence| NR([needs review]):::rev
     TERR -.-> NR
     SCOPE -.-> NR
+    GPAI -.-> NR
     PROH -.-> NR
     ANNEXI -.-> NR
     TPA -.-> NR
@@ -129,6 +137,7 @@ flowchart TD
     DER -.-> NR
     SIG -.-> NR
 
+    classDef gpai fill:#efeaf7,stroke:#7a63a8
     classDef oos fill:#eceef1,stroke:#7a828c
     classDef ban fill:#fbe4e4,stroke:#c23b3b
     classDef high fill:#fbeadf,stroke:#d9683a
@@ -155,6 +164,25 @@ flowchart TD
   not by itself get you out. One exclusion is left open at this point and settled at the end: a
   free and open-source release (Art. 2(12)) is excluded *unless* it turns out high-risk, banned,
   or subject to Art. 50, which are exactly the questions the rest of the cascade answers.
+- **A general-purpose model is not on this track at all.** Art. 6 classifies AI *systems*. A
+  **general-purpose AI model** (Art. 3(63) — significant generality, a wide range of distinct tasks,
+  integrable downstream) has no risk tier: Chapter V governs it, and its provider owes Art. 53
+  documentation, downstream information, a copyright policy and a public training-data summary —
+  plus Art. 55 where the model carries systemic risk. **Those duties have applied since 2 August
+  2025**, earlier than every high-risk obligation this tool checks. So the cascade detects the model
+  and *hands over*, naming the articles and the Art. 52(6) list the Commission must publish; it does
+  not assess Chapter V. An empty findings list there means **not assessed, not compliant**.
+  The guard matters as much: Art. 3(66) makes a system *built on* such a model an ordinary AI
+  system, so an LLM-backed hiring tool is still Annex III(4) high-risk. The question tests
+  **generality**, not size — a single-purpose pre-trained model is not GPAI however large.
+- **A model still in development gets a deadline, not a clearance.** Art. 3(63) excludes models in
+  research or prototyping until they are placed on the market, and Art. 2(8) excludes the
+  development activity itself. Both are *temporal*. So the cascade does not stop at the exclusion:
+  Art. 2(8) falls through to the Art. 3(63) question, and a pre-market general-purpose model is
+  reported **as a model**, with Arts. 53 and 55 listed in full and the note that they attach the day
+  it ships — with no transition period, since Chapter V has applied since August 2025. Reporting
+  "outside scope, nothing owed" would be true this morning and misleading by the time anyone acted
+  on it.
 - **A ban must name the point that bans it.** Art. 5(1) prohibits eight specific practices, and
   the node answers *which* — not merely *whether*. This is the only class that tells a provider
   their system may not ship at all, and "Art. 5" alone gives them nothing to check the claim

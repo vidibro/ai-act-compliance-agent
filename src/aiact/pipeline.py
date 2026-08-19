@@ -61,6 +61,13 @@ def _section_b_note(products: list[str]) -> str:
     )
 
 
+_GPAI_NOTE = (
+    "No obligation check was run: this ruleset models the Art. 6 risk-tier track, and a "
+    "general-purpose AI model is governed by Chapter V instead. An empty findings list here means "
+    "NOT ASSESSED, not compliant — see docs/ROADMAP.md (M4d-8) for the Chapter V ruleset."
+)
+
+
 def _empty_report(
     system_id: str,
     spec: PolicySpec,
@@ -118,6 +125,14 @@ def review(
         return _empty_report(system_id, spec, classification, _PROHIBITED_NOTE)
     if overall == RiskClass.NEEDS_REVIEW:
         return _empty_report(system_id, spec, classification, _NEEDS_REVIEW_NOTE)
+    # A general-purpose AI model is not on the Art. 6 track at all, so there is nothing here to
+    # check it against — but unlike out_of_scope it is NOT unburdened, and the note has to say so
+    # or an empty findings list reads as a clean bill of health for a provider who owes Art. 53
+    # today. The classification's own reasoning carries the full handover.
+    if overall == RiskClass.GPAI_MODEL:
+        return _empty_report(
+            system_id, spec, classification, classification.reasoning + " " + _GPAI_NOTE
+        )
 
     report = analyse(
         document,

@@ -22,8 +22,10 @@ from aiact.schemas.enums import (
     ActorRole,
     AnnexIIIArea,
     DerogationCondition,
+    GpaiStatus,
     ProhibitedPractice,
     RiskClass,
+    ScopeExclusion,
     TerritorialLink,
     TransparencyDuty,
 )
@@ -46,6 +48,7 @@ def _brain_from_case(case: ClassificationCase) -> ScriptedBrain:
         "is_ai": True,  # every Layer 1 case is an AI system
         "territorial": case.expected_territorial_link,
         "scope": case.expected_scope_exclusion,
+        "gpai_model": case.expected_gpai_status,
         "prohibited": case.expected_prohibited_practice,
         "annex_i": case.expected_annex_i_product,
         "third_party_assessment": case.expected_third_party_assessment,
@@ -133,6 +136,95 @@ def test_every_prohibited_practice_can_cite_itself():
     missing key would cite a ban under a letter belonging to another one."""
     points = [p.point for p in ProhibitedPractice]
     assert points == list("abcdefgh")
+
+
+def test_a_general_purpose_model_leaves_the_risk_cascade():
+    """Art. 6 does not classify a GPAI model, so asking which Annex III area it falls into is a
+    category error and answering `minimal` because it falls into none is a false clearance. The
+    verdict is a handover naming the regime that does govern it."""
+    brain = ScriptedBrain(
+        {
+            "is_ai": True,
+            "territorial": TerritorialLink.NOT_ADDRESSED,
+            "scope": None,
+            "gpai_model": GpaiStatus.GENERAL_PURPOSE_MODEL,
+            "transparency": [],
+        }
+    )
+    result = classify("an open-weight base model", brain, "m")
+    assert result.overall_risk_class == RiskClass.GPAI_MODEL
+    uc = result.use_cases[0]
+    assert uc.annex_iii_area is None and uc.performs_profiling is None
+
+    # The handover has to be actionable, and has to say when. Chapter V is in force NOW.
+    for expected in ("Art. 3(63)", "Art. 53", "Art. 55", "Art. 52(6)", "2 August 2025", "10^25"):
+        assert expected in result.reasoning, f"the handover must name {expected}"
+
+
+def test_a_pre_market_model_is_named_and_dated_not_cleared():
+    """The exclusion is a DEADLINE. Art. 3(63) and Art. 2(8) both put a model in development outside
+    the Regulation TODAY, and both end on the day it ships — with Chapter V already in application
+    since 2 August 2025, so there is no transition period to prepare in. Reporting only "out of
+    scope, nothing owed" would be true this morning and misleading by the time anyone acted on it.
+    """
+    brain = ScriptedBrain(
+        {
+            "is_ai": True,
+            "territorial": TerritorialLink.NOT_ADDRESSED,
+            "scope": ScopeExclusion.PRE_MARKET_DEVELOPMENT,
+            "gpai_model": GpaiStatus.GENERAL_PURPOSE_MODEL_PRE_MARKET,
+            "transparency": [],
+        }
+    )
+    result = classify("a frontier model still in training", brain, "pre")
+    assert result.overall_risk_class == RiskClass.GPAI_MODEL
+    assert "NOT YET been placed on the market" in result.reasoning
+    assert "DEADLINE, NOT A CLEARANCE" in result.reasoning
+    # The duties are still listed in full — the whole point of not stopping at the exclusion.
+    for expected in ("Art. 53", "Art. 55", "Annex XI", "2 August 2025"):
+        assert expected in result.reasoning, f"a pre-market model must still be told of {expected}"
+
+
+def test_art_2_8_falls_through_to_the_model_question_and_no_further():
+    """Art. 2(8) is asked past for ONE question — what is being built — because a general-purpose
+    model needs its duties named. Once the answer is "an AI system" the exclusion concludes, rather
+    than computing a tier for a system the Regulation does not currently govern."""
+    brain = ScriptedBrain(
+        {
+            "is_ai": True,
+            "territorial": TerritorialLink.NOT_ADDRESSED,
+            "scope": ScopeExclusion.PRE_MARKET_DEVELOPMENT,
+            "gpai_model": GpaiStatus.AI_SYSTEM,
+            "transparency": [],
+        }
+    )
+    result = classify("a hiring tool still in development", brain, "dev")
+    assert result.overall_risk_class == RiskClass.OUT_OF_SCOPE
+    assert "deadline, not a clearance" in result.reasoning
+    assert "REAL-WORLD CONDITIONS" in result.reasoning
+    # It stopped at the model question — the Art. 6 track was never run.
+    asked = [a.node_id for a in result.answers]
+    assert "gpai_model" in asked and "annex_iii" not in asked
+
+
+def test_a_system_built_on_a_general_purpose_model_is_still_classified():
+    """THE GUARD. Art. 3(66) makes a system based on a general-purpose model an ordinary AI system.
+    Routing out everything that runs on a foundation model would exempt exactly the products the
+    tier logic exists for."""
+    brain = ScriptedBrain(
+        {
+            "is_ai": True,
+            "territorial": TerritorialLink.NOT_ADDRESSED,
+            "scope": None,
+            "gpai_model": GpaiStatus.AI_SYSTEM,
+            "prohibited": None,
+            "annex_iii": AnnexIIIArea.EMPLOYMENT,
+            "profiling": True,
+            "transparency": [],
+        }
+    )
+    result = classify("an LLM-backed CV screener", brain, "s")
+    assert result.overall_risk_class == RiskClass.HIGH_RISK
 
 
 def test_a_system_the_regulation_never_reaches_is_out_of_scope():
@@ -274,6 +366,7 @@ def test_route_for_walks_through_the_chapeau():
             "is_ai": True,
             "territorial": TerritorialLink.NOT_ADDRESSED,
             "scope": None,
+            "gpai_model": GpaiStatus.AI_SYSTEM,
             "prohibited": None,
             "annex_i": None,
             "annex_iii": AnnexIIIArea.EMPLOYMENT,

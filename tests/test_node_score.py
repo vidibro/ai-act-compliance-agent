@@ -178,12 +178,14 @@ def test_asked_counts_come_from_the_run_not_the_answer_key():
     assert run.asked["is_ai"] == 1
     assert run.asked["territorial"] == 1
     assert run.asked["scope"] == 1
+    assert run.asked["gpai_model"] == 1
     assert run.asked["annex_iii"] == 1
     # Scored covers what the YAML pinned, PLUS what every case carries whether it names it or not.
     assert {s.node_id for s in run.scores} == {
         "is_ai",
         "territorial",
         "scope",
+        "gpai_model",
         "prohibited",
         "annex_iii",
         "transparency",

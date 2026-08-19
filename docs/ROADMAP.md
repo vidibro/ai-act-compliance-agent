@@ -639,7 +639,11 @@ All 19 rules carry `effective_date: 2026-08-02` (Art. 113) and `status: active`.
 
 Three options, cheapest first: state the date once at report level (all 19 share it); carry it per rule in the report; or compare `effective_date` against the generation date and route not-yet-effective rules into `postponed`, which would finally give that bucket a purpose. The third changes verdicts, so it needs its own test.
 
-#### M4d-7 — Art. 2(1) territorial reach is never asked 🟠
+#### M4d-7 — Art. 2(1) territorial reach is never asked ✅ BUILT 2026-08-19 (`c853340`)
+
+> Built as a `territorial` node between `is_ai` and `scope`, answering a `TerritorialLink` enum that names WHICH limb of 2(1) reaches the system. The design notes below were right about the shape and wrong about one thing: a bare `bool` would not do, because `not_addressed` had to be a distinct answer from "no limb applies". Almost no document mentions territory, so abstaining on silence would have made `needs_review` the verdict for nearly every real document — `not_addressed` records that honestly and continues. The polarity took two attempts: clearing on `None` made every unanswered node clear its system, so only an explicit `OUTSIDE_UNION` does. Two cases flip on territory alone (`us_only_tenant_screening` / `us_built_screening_used_in_ireland`).
+
+<details><summary>original finding</summary>
 
 Found 2026-08-11, while reviewing M4d-2. Not part of M4d-2, whose work is finished — a separate question that the 2026-07-30 audit and the M4d-2 build both missed.
 
@@ -654,6 +658,35 @@ Fails **safe** — over-reporting, never a false clearance — which is why this
 **One awkwardness to settle first, not during the build.** Art. 2(1) is written per ROLE — (a) binds providers, (b) deployers, (c) third-country actors by where the output is used. A document that never says which role it is written from cannot answer it, so this interacts directly with M4d-4 (report every role, judge only the ones held). Deciding the role question first would probably make this one small; doing them in the other order means guessing.
 
 **No held-out coverage, and the batch cannot be reused.** `h_pool_drowning_detection_rollout` touches Art. 2(1) only from the far side — a non-EU provider that IS still bound, which tests that the tool does not wrongly grant territorial relief, not that it would ever recognise a system genuinely out of reach. Cases must be authored before the node, same discipline as M4d-2, and real documents that state where a system is sold are easy to find.
+
+</details>
+
+#### M4d-8 — Chapter V: general-purpose AI models are DETECTED but not assessed 🟠
+
+Half built 2026-08-19. The classification half is done; the obligation half is not, deliberately.
+
+**What was wrong.** The cascade began at Art. 3(1) and ended at Art. 6, so a foundation-model card answered "yes it's AI", found no Annex III area, and came back **`minimal`** — a false clearance for a provider owing Chapter V. Not an abstention: a wrong answer, in the one direction this project treats as unacceptable.
+
+**What is built (option A, the handover).** A `gpai_model` node after `scope` — after, because Arts. 2(6) and 2(8) say "AI systems or AI models" in terms, so a research-only or pre-market model is excluded before the question is worth putting, and Art. 3(63) carries the same carve-out itself. A `true` exits to the new `RiskClass.GPAI_MODEL`, which is **not a risk tier** and says so: it is a handover naming Art. 53, Art. 55, the Art. 51(2) 10^25 FLOP presumption, the Art. 52 notification duty, and the fact Chapter V has applied since **2 August 2025** — earlier than every high-risk rule in `spec.yaml`. `select_rules` returns nothing for it and `review()` stops with a note saying **NOT ASSESSED, not compliant**.
+
+**A PRE-MARKET model is a third answer, not a `no`.** The first cut answered a bool and told the model to say "false" for a model in development, since Art. 3(63) excludes those in terms. That reintroduced the bug it was fixing: a frontier model still in training would fall back into the risk cascade and report `minimal`, and worse, `scope` usually caught it at Art. 2(8) first and exited to `out_of_scope` before the GPAI question was ever asked. Either way a lab building a frontier model was told it owed nothing, with no mention of what attaches on the day it ships — and Chapter V has no transition period. So `GpaiStatus` has three values, and **Art. 2(8) now FALLS THROUGH** (exactly one node, to the Art. 3(63) question) the way Art. 2(12) does. A pre-market model lands on `GPAI_MODEL` with its duties named and dated; a pre-market *system* concludes at `out_of_scope` with the exclusion's temporal limit spelled out, including that Art. 2(8) does not cover testing in real-world conditions.
+
+**The guard matters as much as the feature.** Art. 3(66) makes a system built ON a general-purpose model an ordinary AI system. Routing out everything that mentions a foundation model would exempt exactly the products the tier logic exists for, so the node tests **generality** (Art. 3(63): significant generality, a wide range of distinct tasks, integrable downstream) rather than size or reuse. A single-purpose pre-trained model — text-to-speech, demand forecasting — is not GPAI however large, which is why `h_open_licence_tts_voices` and `h_open_licence_demand_forecaster` stay where they are. `open_weight_frontier_model_card` and `llm_backed_cv_screener` are the pair that pins the line.
+
+**What is NOT built (option B, the Chapter V ruleset).** A second regime beside the risk cascade:
+
+- `AIA-GP-*` rules for Art. 53 — Annex XI technical documentation, information to downstream providers, a copyright policy, a public training-content summary
+- `AIA-GP-*` rules for Art. 55 where systemic risk applies — model evaluation, adversarial testing, serious-incident reporting to the AI Office, cybersecurity
+- a duty-holder for the GPAI model provider, and its entry in the coverage ledger's role partition
+- an Art. 51 systemic-risk classification step
+
+**Wait for the Commission's list before building the systemic-risk step.** Art. 52(6) requires the Commission to publish and maintain a list of general-purpose AI models with systemic risk. **As of 2026-08-19 that list does not appear to be published** — the Commission's GPAI guidance and Q&A pages do not link one, and the closest public artefact is the [GPAI Code of Practice](https://digital-strategy.ec.europa.eu/en/policies/contents-code-gpai) signatory roster, which names companies rather than models.
+
+That list is the authoritative answer, and the alternatives are poor. Training FLOPs are almost never in a model card, so a node computing the 10^25 threshold would abstain on nearly every document; estimating it from parameter counts would be deriving a regulatory finding from a guess, which is exactly what the Art. 6(1)(b) `third_party_assessment` node refuses to do. **When the list is published, read it** — that turns a question the tool cannot answer into a lookup it can. Until then the systemic-risk step should only READ a stated claim (a notification, a Code of Practice signature, a declared threshold) and abstain otherwise.
+
+The handover text already tells the reader the list is required, is authoritative, and appears not to exist yet — so someone who checks and finds nothing knows that is expected rather than assuming they searched badly.
+
+**Not urgent despite Chapter V being in force**, for one reason only: the golden set has two GPAI cases and both are classification cases. Building an unmeasured ruleset for a regime nobody has asked this tool to check would repeat the mistake M5-a exists to prevent.
 
 #### M4d-6 — The ledger cites a class that no longer exists 🟡 two of three fixed 2026-08-11
 

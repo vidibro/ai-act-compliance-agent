@@ -8,6 +8,8 @@ Order (Commission's, with our deliberate split of profiling before derogation):
       │ a limb applies, or territory unaddressed
     scope ─Art.2(3),(4),(6),(8),(10)───────────────────────────► OUT_OF_SCOPE
       │ none ── or Art.2(12), which falls through (see below)
+    gpai_model ─Art.3(63) a general-purpose MODEL, placed or not► GPAI_MODEL (Chapter V handover)
+      │ an AI system — including one built ON such a model
     prohibited ─Art.5 yes──────────────────────────────────────► PROHIBITED
       │ no
     annex_i ─no Annex I product─┐                     Art. 6(1), door ONE
@@ -65,6 +67,18 @@ Art. 2(2) then limits what a 6(1) system OWES: for products under Annex I Sectio
 aviation, rail, marine) only Art. 6(1), 102-109 and 112 apply, so Chapter III does not. That is
 carried on AnnexIProduct.chapter_iii_applies and consumed when obligations are selected.
 
+Art. 2(8) FALLS THROUGH TOO, for a different reason from Art. 2(12): it is temporal. A model in
+development is excluded today and governed the day it ships, so exiting at `scope` would report
+"nothing owed" to the one reader still able to prepare. It falls through exactly one node — the
+Art. 3(63) question, which settles WHAT is being built — and then concludes either way.
+
+A GENERAL-PURPOSE AI MODEL leaves the cascade entirely. Art. 6 does not classify it — Chapter V
+does — so `GPAI_MODEL` is a handover rather than a tier, and it is asked after `scope` because
+Arts. 2(6) and 2(8) exclude models as well as systems in terms. The line that matters is Art. 3(66):
+a SYSTEM built on a general-purpose model is an ordinary AI system and classifies normally, so the
+question tests generality rather than size. Routing out everything running on a foundation model
+would exempt exactly the products the tier logic exists for.
+
 Art. 50 transparency is NOT on this path. It is a separate axis — a minimal-risk generator and a
 high-risk chatbot can both owe it — so `assemble` asks it unconditionally and reports it beside the
 risk class. It never routes anything and never affects the tier.
@@ -110,6 +124,7 @@ from aiact.schemas.classification import (
 from aiact.schemas.enums import (
     AnnexIProduct,
     DerogationCondition,
+    GpaiStatus,
     ProhibitedPractice,
     RiskClass,
     ScopeExclusion,
@@ -224,6 +239,37 @@ QUESTIONS: dict[str, ClassificationQuestion] = {
         "do not infer it from the existence of an agreement.",
         "scope_exclusion",
         label="Does this Regulation apply to the system at all?",
+    ),
+    "gpai_model": ClassificationQuestion(
+        "gpai_model",
+        _src(3, 63),
+        # THE MODEL/SYSTEM LINE IS THE WHOLE DIFFICULTY. Art. 3(66) makes a general-purpose AI
+        # SYSTEM an ordinary AI system, so a hiring tool running on a foundation model is still
+        # Annex III(4) high-risk. Routing out everything that mentions a large model would exempt
+        # exactly the products the tier logic exists for.
+        #
+        # PRE-MARKET IS ITS OWN ANSWER, not a `no`. Art. 3(63) excludes models in research,
+        # development or prototyping before placing — a TEMPORAL exclusion. Folding it into "not a
+        # model" would drop a frontier model back into the risk cascade and report `minimal`, which
+        # reads as a clearance of duties that switch on the day it ships.
+        "What does this description describe, on the line Article 3, point (63) draws?\n"
+        "- general_purpose_model: a model that displays SIGNIFICANT GENERALITY, competently "
+        "performs a WIDE RANGE OF DISTINCT TASKS, and can be integrated into a VARIETY of "
+        "downstream systems — and that has been placed on the market or put into service. The "
+        "subject of the description is the MODEL itself: its weights, training, evaluations, "
+        "licence, context length, how to run or fine-tune it.\n"
+        "- general_purpose_model_pre_market: the same model, but still in research, development "
+        "or prototyping and NOT YET placed on the market or put into service. Say this rather than "
+        "'not a model' — the Art. 3(63) exclusion is about timing, not about what the thing is.\n"
+        "- ai_system: anything else. Answer this where the description has an intended purpose, "
+        "users, or a decision it feeds — that is an AI system even where it plainly runs on a "
+        "general-purpose model underneath (Art. 3(66)). A chatbot, a coding assistant or a "
+        "document summariser built on a foundation model is a SYSTEM. Answer it too for a model "
+        "doing ONE thing — text-to-speech, demand forecasting, image segmentation, transcription — "
+        "is not general however large or widely reused. Generality is the test that decides most "
+        "cases.",
+        "gpai_status",
+        label="Is this a general-purpose AI model rather than a system?",
     ),
     "prohibited": ClassificationQuestion(
         "prohibited",
@@ -433,6 +479,7 @@ _QUESTION_CONTEXT: dict[str, tuple[tuple[int, ...], tuple[str, ...]]] = {
     # conditions' (3(57)), which is what stops 2(8) covering a live pilot.
     "territorial": ((2,), ()),  # Art. 2(1) — the positive limb
     "scope": ((2, 3), ()),
+    "gpai_model": ((3, 51, 53), ()),  # Art. 3(63) definition + the Chapter V regime it hands to
     "prohibited": ((5,), ()),  # Art. 5 — the prohibited practices
     "annex_i": ((6,), ("I",)),  # Art. 6(1) + the Annex I legislation list itself
     # Art. 2 as well: 2(2) is what makes the Section A/B split matter, and the model is
@@ -538,6 +585,7 @@ class GraphState(BaseModel):
     is_ai_system: ClassificationAnswer | None = None
     territorial_link: ClassificationAnswer | None = None
     scope_exclusion: ClassificationAnswer | None = None
+    gpai_model: ClassificationAnswer | None = None
     prohibited: ClassificationAnswer | None = None
     in_annex_i: ClassificationAnswer | None = None
     third_party_assessment: ClassificationAnswer | None = None
@@ -566,6 +614,7 @@ def _every_answer(state: GraphState) -> list[ClassificationAnswer]:
         state.is_ai_system,
         state.territorial_link,
         state.scope_exclusion,
+        state.gpai_model,
         state.prohibited,
         state.in_annex_i,
         state.third_party_assessment,
@@ -589,6 +638,7 @@ def _get_answers(state: GraphState) -> list[ClassificationAnswer]:
         state.is_ai_system,
         state.territorial_link,
         state.scope_exclusion,
+        state.gpai_model,
         state.prohibited,
         state.in_annex_i,
         state.third_party_assessment,
@@ -610,6 +660,8 @@ _WHAT_THE_NODE_NEEDED: dict[str, str] = {
     "that touches the Union",
     "scope": "who uses the system and what for — whether it is military, purely research, "
     "pre-market, or a private person's own use",
+    "gpai_model": "whether the document describes a model or a product built with one — and, if a "
+    "model, whether it is general enough to serve a wide range of distinct tasks",
     "prohibited": "whether it infers emotions, categorises people biometrically, scores social "
     "behaviour, or predicts who will commit an offence — and, where it does, whether an Art. 5 "
     "exception applies (medical or safety use, a lawfully acquired dataset, a human assessment on "
@@ -743,6 +795,83 @@ def _condition_letter(state: GraphState) -> str:
     return a.value.letter if a is not None and isinstance(a.value, DerogationCondition) else "a)-(d"
 
 
+# What a GPAI verdict SAYS. A handover, in the same shape as `_handover` for Art. 6(1)(b): name the
+# regime, say plainly that this tool does not apply it, and point the reader at what to read. The
+# alternative was `minimal`, which told a foundation-model provider they owed almost nothing.
+#
+# The dates are load-bearing. Chapter V has applied since 2 August 2025 (Art. 113(b)), which makes
+# these the only obligations in this tool's field of view that are in force TODAY — every high-risk
+# rule waits until 2 August 2026. A reader who takes "not assessed here" as "not urgent" would have
+# it exactly backwards.
+#
+# The Art. 52(6) list is named because it is the one authoritative answer to the systemic-risk
+# question, and because it is not yet findable — a reader who checks and finds nothing should know
+# that is expected rather than assume they looked in the wrong place. See docs/ROADMAP.md (M4d-8).
+# The Chapter V duties, named once. Shared by both model answers because they are the SAME duties —
+# only the date they bite on differs.
+_GPAI_DUTIES = (
+    "Its provider owes Art. 53 — technical documentation to the minimum of Annex XI, information "
+    "to downstream providers who build on the model, a policy to comply with Union copyright law, "
+    "and a publicly available summary of the training content. Where the model carries SYSTEMIC "
+    "RISK, Art. 55 adds model evaluation, adversarial testing, serious-incident reporting to the "
+    "AI Office and cybersecurity protection. Systemic risk is presumed above 10^25 cumulative "
+    "training FLOP (Art. 51(2)), and Art. 52 requires the provider to notify the Commission within "
+    "two weeks of meeting or foreseeing that threshold. Art. 52(6) requires the Commission to "
+    "publish and maintain a list of general-purpose AI models with systemic risk; that list is the "
+    "authoritative answer, and at the time of writing it does not appear to be published, so its "
+    "absence is not evidence that a model is unlisted. "
+    "This verdict is about the MODEL only. A system built on a general-purpose model is an "
+    "ordinary AI system (Art. 3(66)) and should be submitted separately — it may well be high-risk."
+)
+
+# What a GPAI verdict SAYS. A handover, in the same shape as `_handover` for Art. 6(1)(b): name the
+# regime, say plainly that this tool does not apply it, and point the reader at what to read. The
+# alternative was `minimal`, which told a foundation-model provider they owed almost nothing.
+#
+# The dates are load-bearing in BOTH branches, for opposite reasons. Chapter V has applied since
+# 2 August 2025 (Art. 113(b)), so a placed model's duties are the only ones in this tool's field of
+# view that are live TODAY — every high-risk rule waits until 2 August 2026. And a PRE-MARKET model
+# is excluded by Art. 3(63) and Art. 2(8) only until it ships, which is a deadline rather than a
+# clearance. Reporting the second as "outside scope" full stop would be true this morning and
+# misleading by the time anyone acted on it.
+_GPAI_PLACED = (
+    "This describes a GENERAL-PURPOSE AI MODEL (Art. 3(63)), not an AI system. Article 6 does not "
+    "classify it and it has no risk tier: it is governed instead by Chapter V, which this tool "
+    f"does not assess. {_GPAI_DUTIES} "
+    "NOTE THE DATE: Chapter V has applied since 2 August 2025 (Art. 113(b)), earlier than the "
+    "high-risk obligations this tool does model, which apply from 2 August 2026. These duties are "
+    "live now."
+)
+
+_GPAI_PRE_MARKET = (
+    "This describes a GENERAL-PURPOSE AI MODEL (Art. 3(63)) that has NOT YET been placed on the "
+    "market. Article 6 does not classify it and it has no risk tier. Art. 3(63) excludes models "
+    "used for research, development or prototyping before they are placed on the market, and "
+    "Art. 2(8) excludes the development activity itself — so nothing is owed under this Regulation "
+    "TODAY. "
+    "THAT IS A DEADLINE, NOT A CLEARANCE. Both exclusions end the moment the model is placed on "
+    "the market or put into service, and Chapter V has been in application since 2 August 2025 "
+    "(Art. 113(b)) — so the duties below attach on the day it ships, with no transition period to "
+    f"prepare in. They are worth building toward now rather than discovering then. {_GPAI_DUTIES} "
+    "Note also Art. 2(8)'s own limit: testing in REAL-WORLD CONDITIONS is not covered by that "
+    "exclusion, so a live pilot may already have taken this outside it."
+)
+
+
+def _gpai_status(state: GraphState) -> GpaiStatus | None:
+    """The Art. 3(63) answer, narrowed by TYPE for the reason `_scope_exclusion` is: only a
+    recognised member is a finding, and an unrecognised one must not divert a system off the risk
+    cascade on the strength of a value nobody can cite."""
+    a = state.gpai_model
+    return a.value if a is not None and isinstance(a.value, GpaiStatus) else None
+
+
+def _gpai_handover(status: GpaiStatus) -> str:
+    if status is GpaiStatus.GENERAL_PURPOSE_MODEL_PRE_MARKET:
+        return _GPAI_PRE_MARKET
+    return _GPAI_PLACED
+
+
 def _rules_out_the_union(state: GraphState) -> bool:
     """Whether Art. 2(1) was answered as reaching the system nowhere.
 
@@ -798,14 +927,49 @@ def _decide_tier(state: GraphState) -> tuple[RiskClass, str, list[Classification
             [evidence(state.territorial_link)] if state.territorial_link else [],
         )
     excluded = _scope_exclusion(state)
-    # Art. 2(12) is settled at the END of the cascade, below: its exceptions name high-risk, Art. 5
-    # and Art. 50, all of which the remaining nodes decide. Every other exclusion is unconditional
-    # on the facts of the system and concludes here.
-    if excluded is not None and excluded is not ScopeExclusion.FREE_OPEN_SOURCE:
+    # WHAT it is, before whether it is excluded. A general-purpose model still in development is
+    # excluded by Art. 2(8) AND outside Art. 3(63) — both temporarily — and reporting only the
+    # exclusion would tell the one reader who most needs Chapter V that nothing is owed. So the
+    # Art. 3(63) answer is read first and the handover carries the date instead.
+    gpai = _gpai_status(state)
+    if gpai is not None and gpai.is_a_model:
+        pre_market = (
+            gpai is GpaiStatus.GENERAL_PURPOSE_MODEL_PRE_MARKET
+            or excluded is ScopeExclusion.PRE_MARKET_DEVELOPMENT
+        )
+        status = GpaiStatus.GENERAL_PURPOSE_MODEL_PRE_MARKET if pre_market else gpai
+        # `_gpai_status` returns a member only when the answer exists; the guard is for the
+        # type checker rather than for a reachable state.
+        return (
+            RiskClass.GPAI_MODEL,
+            _gpai_handover(status),
+            [evidence(state.gpai_model)] if state.gpai_model else [],
+        )
+    # Art. 2(12) and Art. 2(8) are settled at the END: see _FALL_THROUGH_EXCLUSIONS. Art. 2(12)
+    # because its carve-back names questions the cascade has yet to answer, Art. 2(8) because it is
+    # temporal and the reader needs to know what attaches on placing. Every other exclusion is
+    # unconditional on the facts of the system and concludes here.
+    if excluded is not None and excluded not in _FALL_THROUGH_EXCLUSIONS:
         return (
             RiskClass.OUT_OF_SCOPE,
             f"Art. 2({excluded.paragraph}) withholds this Regulation from the system; no risk tier "
             f"is reached and nothing under this Regulation is owed.",
+            (
+                [_scope_evidence(state.scope_exclusion, excluded)]
+                if state.scope_exclusion
+                else []
+            ),
+        )
+    if excluded is ScopeExclusion.PRE_MARKET_DEVELOPMENT:
+        return (
+            RiskClass.OUT_OF_SCOPE,
+            "Art. 2(8) withholds this Regulation from research, testing and development activity "
+            "before the system is placed on the market or put into service, so nothing is owed "
+            "TODAY. That is a deadline, not a clearance: the exclusion ends on placing, and the "
+            "obligations that then attach depend on the risk class the system will carry — which "
+            "this assessment has not computed, because the exclusion applies now. Re-run it as the "
+            "system it will be sold as. Note too that Art. 2(8) does not cover testing in "
+            "REAL-WORLD CONDITIONS (Art. 3(57)), so a live pilot may already be outside it.",
             (
                 [_scope_evidence(state.scope_exclusion, excluded)]
                 if state.scope_exclusion
@@ -979,9 +1143,43 @@ def _route_scope(state: GraphState) -> str:
     if a is None or _is_low_confidence(a):
         return "assemble"
     excluded = _scope_exclusion(state)
-    if excluded is None or excluded is ScopeExclusion.FREE_OPEN_SOURCE:
-        return "prohibited"
+    if excluded is None or excluded in _FALL_THROUGH_EXCLUSIONS:
+        return "gpai_model"
     return "assemble"
+
+
+def _route_gpai(state: GraphState) -> str:
+    """A general-purpose AI model leaves the risk cascade entirely: Art. 6 does not classify it, so
+    every question after this one is a category error for it. Anything else — including a system
+    built ON such a model, which Art. 3(66) makes an ordinary AI system — carries on."""
+    a = state.gpai_model
+    if a is None or _is_low_confidence(a):
+        return "assemble"
+    status = _gpai_status(state)
+    if status is not None and status.is_a_model:
+        return "assemble"
+    # Art. 2(8) fell through to THIS question and no further. It is asked because a pre-market
+    # general-purpose model needs its Chapter V duties named and dated rather than an exclusion;
+    # once the answer is "an AI system", the exclusion concludes and running the Art. 6 track would
+    # compute a tier for a system the Regulation does not currently govern.
+    if _scope_exclusion(state) is ScopeExclusion.PRE_MARKET_DEVELOPMENT:
+        return "assemble"
+    return "prohibited"
+
+
+_FALL_THROUGH_EXCLUSIONS = frozenset(
+    {ScopeExclusion.FREE_OPEN_SOURCE, ScopeExclusion.PRE_MARKET_DEVELOPMENT}
+)
+"""Exclusions that do NOT conclude the assessment, for two different reasons.
+
+Art. 2(12) falls through because its own carve-back names high-risk, Art. 5 and Art. 50 — questions
+the rest of the cascade answers, so the exclusion cannot be settled until they are.
+
+Art. 2(8) falls through because it is TEMPORAL. A model still in development is excluded today and
+governed the day it ships, and the reader who most needs to know what Chapter V will demand is
+exactly the one still building. Exiting here would report "outside scope, nothing owed" and stop,
+which is true this morning and misleading by the time anyone acts on it. So the cascade carries on
+to the Art. 3(63) question and finds out WHAT is being built before saying anything."""
 
 
 def _route_prohibited(state: GraphState) -> str:
@@ -1068,6 +1266,9 @@ def build_graph(
     def node_scope(state: GraphState) -> dict[str, Any]:
         return {"scope_exclusion": _ask("scope", state.description)}
 
+    def node_gpai(state: GraphState) -> dict[str, Any]:
+        return {"gpai_model": _ask("gpai_model", state.description)}
+
     def node_prohibited(state: GraphState) -> dict[str, Any]:
         return {"prohibited": _ask("prohibited", state.description)}
 
@@ -1130,6 +1331,7 @@ def build_graph(
     g.add_node("is_ai", node_is_ai)
     g.add_node("territorial", node_territorial)
     g.add_node("scope", node_scope)
+    g.add_node("gpai_model", node_gpai)
     g.add_node("prohibited", node_prohibited)
     g.add_node("annex_i", node_annex_i)
     g.add_node("third_party_assessment", node_third_party)
@@ -1147,7 +1349,10 @@ def build_graph(
         "territorial", _route_territorial, {"scope": "scope", "assemble": "assemble"}
     )
     g.add_conditional_edges(
-        "scope", _route_scope, {"prohibited": "prohibited", "assemble": "assemble"}
+        "scope", _route_scope, {"gpai_model": "gpai_model", "assemble": "assemble"}
+    )
+    g.add_conditional_edges(
+        "gpai_model", _route_gpai, {"prohibited": "prohibited", "assemble": "assemble"}
     )
     g.add_conditional_edges(
         "prohibited", _route_prohibited, {"annex_i": "annex_i", "assemble": "assemble"}
@@ -1188,6 +1393,7 @@ _ROUTERS = {
     "is_ai": _route_is_ai,
     "territorial": _route_territorial,
     "scope": _route_scope,
+    "gpai_model": _route_gpai,
     "prohibited": _route_prohibited,
     "annex_i": _route_annex_i,
     "third_party_assessment": _route_third_party,
@@ -1199,6 +1405,7 @@ _STATE_FIELD = {
     "is_ai": "is_ai_system",
     "territorial": "territorial_link",
     "scope": "scope_exclusion",
+    "gpai_model": "gpai_model",
     "prohibited": "prohibited",
     "annex_i": "in_annex_i",
     "third_party_assessment": "third_party_assessment",

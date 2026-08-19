@@ -40,6 +40,21 @@ class RiskClass(StrEnum):
     attaching. An out-of-scope system owes nothing under this Regulation. Collapsing the two tells
     a defence contractor they hold duties the legislator expressly withheld."""
 
+    GPAI_MODEL = "gpai_model"
+    """Art. 3(63) + Chapter V. NOT A RISK TIER, and that is the point of having it.
+
+    A general-purpose AI model is not classified by Art. 6 at all. It is regulated on a separate
+    track — Art. 53 technical documentation, information to downstream providers, a copyright policy
+    and a public training-data summary; Art. 55 more besides where it carries systemic risk. Asking
+    which Annex III area a foundation model falls into is a category error, and answering `minimal`
+    because it falls into none is a false clearance of a provider who owes Chapter V today.
+
+    This class is a HANDOVER, in the same spirit as the Art. 6(1)(b) conformity handover: it names
+    the regime that governs, says this tool does not apply it, and points the reader at what to
+    read. It is emitted only for the MODEL. A system BUILT on a general-purpose model is an ordinary
+    AI system (Art. 3(66)) and classifies through the cascade normally — an LLM-backed hiring tool
+    is still Annex III(4) high-risk."""
+
     NEEDS_REVIEW = "needs_review"
     """Not a legal category — an engineering escape hatch. The agent could not reach a
     defensible verdict from the documentation. Preferable to a confident wrong answer;
@@ -186,6 +201,40 @@ class TerritorialLink(StrEnum):
         True for `OUTSIDE_UNION` alone. Every other member either names a limb that brings the
         system in or records that the question went unanswered, and both continue the assessment."""
         return self is TerritorialLink.OUTSIDE_UNION
+
+
+class GpaiStatus(StrEnum):
+    """Art. 3(63). WHAT the document describes, on the model/system line — and, for a model,
+    whether it has been placed on the market yet.
+
+    THREE VALUES, NOT A BOOLEAN, and the third is the point. Art. 3(63) excludes "AI models that are
+    used for research, development or prototyping activities before they are placed on the market",
+    so a pre-market model is not yet a GPAI model in the Article's sense. Answering that with a bare
+    `false` would drop it back into the risk cascade and report `minimal` — telling a lab building a
+    frontier model that it owes almost nothing, when what is true is that it owes Chapter V the day
+    it ships. The exclusion is TEMPORAL, and a verdict that cannot express "not yet" turns a
+    deadline into a clearance."""
+
+    AI_SYSTEM = "ai_system"
+    """Not a general-purpose model: an AI system, INCLUDING one built on such a model. Art. 3(66)
+    makes a general-purpose AI system an ordinary AI system, so a chatbot or a hiring tool running
+    on a foundation model classifies through the risk cascade normally."""
+
+    GENERAL_PURPOSE_MODEL = "general_purpose_model"
+    """A general-purpose AI model that has been placed on the market or put into service. Chapter V
+    governs it now — Art. 53 throughout, Art. 55 where it carries systemic risk."""
+
+    GENERAL_PURPOSE_MODEL_PRE_MARKET = "general_purpose_model_pre_market"
+    """A general-purpose AI model still in research, development or prototyping, not yet placed on
+    the market. Art. 3(63) puts it outside the definition FOR NOW, and Art. 2(8) excludes the
+    development activity itself — but neither is a permanent state. Reported as a model with its
+    obligations named and dated, so the reader learns what attaches on the day it ships rather than
+    reading an exclusion as a clean bill of health."""
+
+    @property
+    def is_a_model(self) -> bool:
+        """Whether the document describes a MODEL rather than a system — placed or not."""
+        return self is not GpaiStatus.AI_SYSTEM
 
 
 class ProhibitedPractice(StrEnum):

@@ -28,6 +28,7 @@ from aiact.schemas.enums import (
     AnnexIIIArea,
     AnnexIProduct,
     DerogationCondition,
+    GpaiStatus,
     ProhibitedPractice,
     RiskClass,
     ScopeExclusion,
@@ -204,6 +205,22 @@ class ClassificationCase(BaseModel):
     `None` is the interesting label — a system the Regulation never reaches, which is OUT_OF_SCOPE
     without any exclusion applying."""
 
+    expected_gpai_status: GpaiStatus = GpaiStatus.AI_SYSTEM
+    """Art. 3(63) — a MODEL or a system, and if a model, whether it has been placed on the market.
+
+    Set to a model value exactly when the class is GPAI_MODEL (see the validator). Defaults to
+    AI_SYSTEM because that is what almost every case is: a system, INCLUDING systems built on a
+    general-purpose model, which Art. 3(66) leaves in the ordinary cascade.
+
+    The pre-market value is the one worth having. A model still in development is excluded by
+    Art. 3(63) and Art. 2(8) alike, and a key that could only say "not a model" would score a run
+    correct for reporting nothing owed — which is true today and wrong the day it ships."""
+
+    @property
+    def expected_gpai_model(self) -> bool:
+        """Whether the described thing is a general-purpose model at all, placed or not."""
+        return self.expected_gpai_status.is_a_model
+
     # The "why" — the decisive sub-answers a correct classifier should also produce. Optional so a
     # case only pins what actually decides it.
     expected_scope_exclusion: ScopeExclusion | None = None
@@ -328,7 +345,14 @@ class ClassificationCase(BaseModel):
         # and requiring the equivalence below of it would forbid the key from describing a route
         # the graph actually takes.
         excluded = self.expected_scope_exclusion
-        falls_through = excluded is ScopeExclusion.FREE_OPEN_SOURCE
+        # Art. 2(8) joins Art. 2(12) in falling through, for a different reason: it is TEMPORAL.
+        # A pre-market general-purpose model is excluded today and governed by Chapter V the day it
+        # ships, so the cascade asks Art. 3(63) before concluding and such a case lands on
+        # GPAI_MODEL rather than OUT_OF_SCOPE. Both remain legitimate outcomes for the paragraph.
+        falls_through = excluded in (
+            ScopeExclusion.FREE_OPEN_SOURCE,
+            ScopeExclusion.PRE_MARKET_DEVELOPMENT,
+        )
         # OUT_OF_SCOPE has TWO routes, and they are different findings. Art. 2(1) never reaching
         # the system is not an exclusion — nothing was carved out, the Regulation simply does not
         # extend there — so such a case names no paragraph of (3)-(12) and must not be made to.
@@ -352,6 +376,16 @@ class ClassificationCase(BaseModel):
                 f"{self.case_id}: a system Art. 2(1) never reaches cannot also be excluded by "
                 f"Art. 2({excluded.paragraph}) — an exclusion carves out of a Regulation that "
                 f"applies."
+            )
+        if (
+            excluded is ScopeExclusion.PRE_MARKET_DEVELOPMENT
+            and rc not in (RiskClass.OUT_OF_SCOPE, RiskClass.GPAI_MODEL)
+        ):
+            raise ValueError(
+                f"{self.case_id}: expected_scope_exclusion=pre_market_development but "
+                f"expected_risk_class={rc}. Art. 2(8) reaches exactly two outcomes — out_of_scope, "
+                f"or gpai_model where what is being developed is a general-purpose model whose "
+                f"Chapter V duties attach on placing."
             )
         if excluded is not None and not falls_through and rc != RiskClass.OUT_OF_SCOPE:
             raise ValueError(
@@ -383,6 +417,24 @@ class ClassificationCase(BaseModel):
                 f"{self.case_id}: expected_abstains_at={self.expected_abstains_at!r} but "
                 f"expected_risk_class={rc}. Set it exactly when the class is needs_review — name "
                 f"the node the description cannot answer."
+            )
+
+        # Art. 3(63) — a general-purpose AI model and the GPAI_MODEL class are the same fact stated
+        # two ways. Art. 6 does not classify such a model, so it can carry no Art. 6 sub-answer.
+        if self.expected_gpai_model != (rc == RiskClass.GPAI_MODEL):
+            raise ValueError(
+                f"{self.case_id}: expected_gpai_status={self.expected_gpai_status} but "
+                f"expected_risk_class={rc}. A general-purpose AI model is exactly the GPAI_MODEL "
+                f"class — Chapter V governs it and Art. 6 never reaches it, and that holds for a "
+                f"pre-market model too: it is reported as a model with its duties dated, not as an "
+                f"exclusion."
+            )
+        if self.expected_gpai_model and (
+            self.expected_annex_iii_area is not None or self.expected_annex_i_product is not None
+        ):
+            raise ValueError(
+                f"{self.case_id}: Art. 6 classifies AI systems. A general-purpose AI model is not "
+                f"one, so it carries no Annex I or Annex III answer."
             )
 
         # Art. 5 — a named point and the PROHIBITED class are the same fact, stated two ways. The
