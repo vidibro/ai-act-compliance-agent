@@ -638,6 +638,27 @@ class DeployerType(StrEnum):
             return None
         return self is not DeployerType.NEITHER
 
+    @property
+    def caught_by_article_49_3(self) -> bool | None:
+        """Whether Art. 49(3)'s deployer registration reaches this deployer — `None` where the
+        description does not settle it.
+
+        NARROWER THAN ART. 27, on the same fact, and that is why it is a property of its own rather
+        than a second use of `caught_by_article_27`. Art. 27 reaches bodies governed by public law
+        AND private entities providing public services; Art. 49(3) reaches "public authorities,
+        Union institutions, bodies, offices or agencies or persons acting on their behalf". A
+        private entity providing public services is private — a hospital company running a state
+        contract is not a public authority — so it answers True to one Article and False to the
+        other. Collapsing the two would give a public-service provider a registration duty the
+        Article does not put on it.
+
+        The `False` is narrower than it looks, and the caller has to say so: "persons acting on
+        their behalf" can reach a private organisation operating a system FOR a public authority,
+        which is a relationship no description of the organisation's own type establishes."""
+        if self is DeployerType.NOT_STATED:
+            return None
+        return self is DeployerType.PUBLIC_BODY
+
 
 class HighRiskRoute(StrEnum):
     """WHICH of Art. 6's two doors made a use case high-risk.

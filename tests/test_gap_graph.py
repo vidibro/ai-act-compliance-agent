@@ -144,7 +144,13 @@ def test_each_role_gets_its_own_obligations(spec):
     provider_ids = {r.rule_id for r in provider.all_rules}
     deployer_ids = {r.rule_id for r in deployer.all_rules}
     assert "AIA-HR-A14" in provider_ids and "AIA-HR-A14" not in deployer_ids
-    assert deployer_ids == {"AIA-ALL-A04", "AIA-DP-A26", "AIA-DP-A27", "AIA-DP-A86"}
+    assert deployer_ids == {
+        "AIA-ALL-A04",
+        "AIA-DP-A26",
+        "AIA-DP-A27",
+        "AIA-DP-A49-3",
+        "AIA-DP-A86",
+    }
     assert provider_ids & deployer_ids == {"AIA-ALL-A04"}
 
 
@@ -191,6 +197,7 @@ def test_process_obligations_are_reported_but_never_judged(spec):
         "AIA-ALL-A04",
         "AIA-DP-A26",
         "AIA-DP-A27",
+        "AIA-DP-A49-3",
         "AIA-DP-A86",
     ]
     flat = {r for ids in outstanding.values() for r in ids}
@@ -534,3 +541,52 @@ def test_the_deployer_question_is_anchored_in_article_27():
 
     assert "bodies governed by public law" in q.context  # Art. 27(1)
     assert "‘deployer’ means" in q.context  # Art. 3(4)
+
+
+# --- Art. 49(3) — the same fact, a narrower duty -----------------------------------------------
+@pytest.mark.parametrize(
+    "kind,art_27,art_49_3",
+    [
+        (DeployerType.PUBLIC_BODY, True, True),
+        (DeployerType.PUBLIC_SERVICE_PROVIDER, True, False),
+        (DeployerType.NEITHER, False, False),
+        (DeployerType.NOT_STATED, None, None),
+    ],
+)
+def test_article_49_3_is_narrower_than_article_27_on_the_same_answer(kind, art_27, art_49_3):
+    """One fact about the deployer, two duties, and they DIVERGE — a private entity providing
+    public services owes the fundamental rights impact assessment and not the registration.
+    Art. 27 reaches it for what it does; Art. 49(3) reaches public authorities for what they are.
+    Collapsing the two would hand a hospital company a registration duty the Article withholds."""
+    assert kind.caught_by_article_27 is art_27
+    assert kind.caught_by_article_49_3 is art_49_3
+
+
+def test_the_report_answers_both_duties_that_turn_on_the_deployer(spec):
+    """A reader told only about Art. 27 would reasonably carry the answer across to Art. 49(3), and
+    for one of the four values that inference is wrong."""
+    for kind in DeployerType:
+        note = _deployer_report(spec, RiskClass.HIGH_RISK, kind).deployer_type_note
+        assert note is not None
+        assert "Art. 27" in note and "Art. 49(3)" in note
+
+
+def test_the_public_service_provider_is_told_the_two_answers_differ(spec):
+    """The one value where the duties part company, so the one the note has to be explicit for."""
+    note = _deployer_report(
+        spec, RiskClass.HIGH_RISK, DeployerType.PUBLIC_SERVICE_PROVIDER
+    ).deployer_type_note
+
+    assert note is not None
+    assert "Art. 27(1) reaches" in note
+    assert "Art. 49(3) is narrower and does not reach it" in note
+    # Never a clean "you are exempt": the acting-on-behalf limb is left open.
+    assert "acting on a public authority's behalf" in note
+
+
+def test_deployer_registration_is_never_withheld_from_the_report(spec):
+    """Same discipline as Art. 27: the rule stays listed under the deployer whatever the answer.
+    The condition narrows the duty-holder, not the report."""
+    for kind in DeployerType:
+        report = _deployer_report(spec, RiskClass.HIGH_RISK, kind)
+        assert "AIA-DP-A49-3" in report.not_document_verifiable[ActorRole.DEPLOYER]

@@ -224,10 +224,22 @@ usually knows the answer for its customer base even though it is not the deploye
 municipalities" and "sold to private recruiters" lead to different obligations, and saying which
 resolves the question for everyone reading.
 
-**The tool reads this line if you write it.** Say nothing and the report records the condition as
+**One line, two duties — and they do not answer alike.** **Art. 49(3)** also turns on this fact:
+before putting a high-risk Annex III system into use, a **public authority** deploying it must
+register itself, select the system and register its use in the EU database. That is a *separate*
+entry from the provider's registration under Art. 49(1), which does not discharge it.
+
+Art. 49(3) is the narrower of the two. Art. 27 reaches bodies governed by public law **and** private
+entities providing public services; Art. 49(3) reaches public authorities, Union bodies, and persons
+acting on their behalf. So a private company running a state healthcare contract owes the impact
+assessment and, on that basis alone, not the registration — though it can still be caught as a
+person acting on the authority's behalf, which is a fact about the contract rather than the company.
+Worth saying either way if you know it.
+
+**The tool reads this line if you write it.** Say nothing and the report records both conditions as
 unresolved — which is honest, and useless. Name the kind of organisation and the report says whether
-Art. 27 reaches it. Saying nothing is never read as "commercial, so nothing owed": silence clears
-no duty here.
+each Article reaches it. Saying nothing is never read as "commercial, so nothing owed": silence
+clears no duty here.
 
 *An existing GDPR data protection impact assessment does not discharge this. Art. 27(4) makes the
 fundamental rights assessment complement it.*
@@ -255,7 +267,8 @@ than guess; an unknown party is not the same as no party.>
   packaging, say so.>
 - **Deployed by:** <who uses it under their own authority — a named customer, or the kind of
   organisation it is sold to. For each: body governed by public law | private entity providing
-  public services | neither (Art. 27)>
+  public services | neither (Art. 27, Art. 49(3)). If a private organisation operates the system
+  on a public authority's behalf, say so — that is a separate limb of Art. 49(3).>
 - **Importer / distributor / authorised representative:** <where a non-EU provider is involved>
 - **Changed after placing?** <Does any later party put its name on it, modify it beyond what the
   original conformity assessment foresaw, or aim it at a new purpose? If so, who and what — that
@@ -311,7 +324,7 @@ If it interacts: how is the person told they are dealing with an AI system?>
       the new provider and the initial provider are two different organisations, and each owes
       something (Art. 25(1) and 25(2))
 - [ ] The deploying organisations are described by kind — public body, private provider of public
-      services, or neither (Art. 27)
+      services, or neither. Two duties turn on it and they differ (Art. 27, Art. 49(3))
 
 If the tool still returns **needs review**, it will name the fact it was missing and the article that
 needed it. Add that fact and run it again.

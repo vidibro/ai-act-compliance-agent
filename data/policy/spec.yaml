@@ -41,7 +41,9 @@
 #   AIA-TR-* TRANSPARENCY (Art. 50). The one family that does not gate on a risk class: it gates
 #             on the DUTY the classification found, because Art. 50 cuts across the tiers. Split by
 #             role like the Article — (1)(2) provider, (3)(4) deployer.
-#   AIA-ALL-* Obligations binding BOTH provider and deployer at every governed tier — Art. 4 today.
+#   AIA-ALL-* Obligations binding BOTH provider and deployer — Art. 4 at every governed tier, and
+#             Art. 49(4), which sends the registrations of BOTH parties to the database's secure
+#             non-public section.
 #
 # High-risk obligations for Annex III systems apply from 2026-08-02 (Art. 113). That applicability
 # date is carried in each rule's effective_date; status stays "active" (adopted, in force).
@@ -493,7 +495,7 @@ rules:
     effective_date: 2026-08-02
     status: active
 
-  - rule_id: AIA-PO-A49-4
+  - rule_id: AIA-ALL-A49-4
     source:
       instrument: "Regulation (EU) 2024/1689"
       article: 49
@@ -501,9 +503,13 @@ rules:
       annex: "VIII"
       act_version_date: 2024-07-12
     applies_to_risk_class: [high_risk]
-    applies_to_role: [provider]
+    applies_to_role: [provider, deployer]
     # NOT a second registration — the same one, lodged somewhere else and carrying less. It stands
-    # beside AIA-PO-A49 rather than replacing it.
+    # beside AIA-PO-A49 and AIA-DP-A49-3 rather than replacing either.
+    #
+    # BINDS BOTH ROLES, because paragraph 4 governs "the registration referred to in paragraphs 1,
+    # 2 and 3" — the deployer's own entry under 49(3) goes to the secure section on the same terms
+    # as the provider's. Hence AIA-ALL-, not AIA-PO-.
     #
     # UNDER-INCLUSIVE, deliberately. Art. 49(4) reaches Annex III points 1, 6 and 7 "in the areas of
     # law enforcement, migration, asylum and border control management". Points 6 and 7 ARE those
@@ -523,6 +529,53 @@ rules:
       point 1 (biometrics) systems used for law enforcement, migration, asylum or border control;
       this ruleset classifies by listed AREA and not by sector of use, so a biometric system
       deployed in those sectors must check this obligation for itself.
+    document_verifiable: false
+    effective_date: 2026-08-02
+    status: active
+
+  # Art. 49(3) — the DEPLOYER's own registration. Not the provider's duty seen from another angle:
+  # a separate entry, made by a different party, in the same database. Art. 49(1) registers the
+  # provider and the system before it is placed on the market; 49(3) registers the deploying
+  # authority, the system it selected, and the fact of its use — so a system can be fully
+  # registered by its provider and still leave its deployer in breach.
+  - rule_id: AIA-DP-A49-3
+    source:
+      instrument: "Regulation (EU) 2024/1689"
+      article: 49
+      paragraph: 3
+      annex: "III"
+      act_version_date: 2024-07-12
+    applies_to_risk_class: [high_risk]
+    applies_to_role: [deployer]
+    # The same Annex III exception as 49(1): "with the exception of ... point 2 of Annex III", so
+    # critical infrastructure is out, and an Annex I system is never reached.
+    applies_to_annex_iii_area:
+      [
+        biometrics,
+        education,
+        employment,
+        essential_services,
+        law_enforcement,
+        migration,
+        justice_democracy,
+      ]
+    # NARROWER than Art. 27's condition, on the same fact about the organisation. Art. 27 reaches
+    # private entities providing public services; this paragraph does not — they are private. See
+    # DeployerType.caught_by_article_49_3.
+    activation_condition: >-
+      Art. 49(3) binds deployers that are public authorities, Union institutions, bodies, offices or
+      agencies, or persons acting on their behalf. It does not reach private deployers, and — unlike
+      Art. 27(1) — a private entity providing public services is not caught by being one, though it
+      may still be caught as a person acting on a public authority's behalf. Which is a fact about
+      the deploying organisation and its arrangements, not about the system.
+    obligation_status: mandatory
+    check_type: presence
+    evidence_expected: >-
+      The deployer's own registration in the EU database under Art. 71: registering itself,
+      selecting the system, and registering its use. Distinct from the provider's registration
+      under Art. 49(1) — a system its provider registered correctly is still unregistered as to its
+      use. Owed before the system is put into service or used, and an external act against a
+      registry rather than a property of the documentation — confirm separately.
     document_verifiable: false
     effective_date: 2026-08-02
     status: active

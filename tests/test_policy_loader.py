@@ -37,12 +37,12 @@ def test_shipped_spec_loads():
     assert spec.spec_version == "0.8.0"
     assert spec.act_version_date == ACT_DATE
     # 7 Art.9-15 + 16 provider obligations + 1 Art.6(4) + Art.4 (provider AND deployer)
-    # + 3 deployer (Arts. 26-27, 86) + 3 supply-chain (Arts. 22-24) + 1 initial provider
+    # + 4 deployer (Arts. 26-27, 49(3), 86) + 3 supply-chain (Arts. 22-24) + 1 initial provider
     # (Art. 25(2)). Art. 43 is three rules and Art. 49 two, because both send different systems to
     # different law — see applies_to_route and applies_to_annex_iii_area. Art. 16 is three, one per
     # point that cross-references nothing. Plus 4 Art. 50 transparency rules, the only ones that
     # gate on a duty instead of a tier.
-    assert len(spec.rules) == 37
+    assert len(spec.rules) == 38
 
 
 def test_article_store_is_version_scoped():

@@ -134,10 +134,10 @@ def test_law_enforcement_registers_in_the_non_public_section(spec):
     """Art. 49(4) does not replace the registration — it says where it goes and how little it
     carries. Both rules fire, and only in the areas the paragraph names."""
     police = _rule_ids(spec, a_use_case(area=AnnexIIIArea.LAW_ENFORCEMENT))
-    assert {"AIA-PO-A49", "AIA-PO-A49-4"} <= police
+    assert {"AIA-PO-A49", "AIA-ALL-A49-4"} <= police
 
     hiring = _rule_ids(spec, a_use_case(area=AnnexIIIArea.EMPLOYMENT))
-    assert "AIA-PO-A49-4" not in hiring
+    assert "AIA-ALL-A49-4" not in hiring
 
 
 # --- the mechanism itself -------------------------------------------------------------------------
@@ -437,3 +437,43 @@ def test_a_transparency_rule_filed_under_the_wrong_role_is_rejected():
             applies_to_transparency_duty=[TransparencyDuty.EMOTION_OR_BIOMETRIC_CATEGORISATION],
             applies_to_role=[ActorRole.PROVIDER],
         )
+
+
+# --- Art. 49(3) — the deployer registers too ---------------------------------------------------
+def test_the_deployer_owes_its_own_registration(spec):
+    """Two entries in one database, made by two parties. A provider that registered correctly under
+    49(1) has not registered its deployer's USE, so a report showing only the provider's duty
+    leaves a public authority believing it is covered."""
+    provider = _rule_ids(spec, a_use_case(area=AnnexIIIArea.EMPLOYMENT), ActorRole.PROVIDER)
+    deployer = _rule_ids(spec, a_use_case(area=AnnexIIIArea.EMPLOYMENT), ActorRole.DEPLOYER)
+
+    assert "AIA-PO-A49" in provider and "AIA-PO-A49" not in deployer
+    assert "AIA-DP-A49-3" in deployer and "AIA-DP-A49-3" not in provider
+
+
+def test_deployer_registration_carries_the_same_annex_iii_exception(spec):
+    """49(3) excepts point 2 in the same words as 49(1) — 'with the exception of ... point 2 of
+    Annex III' — and reaches no Annex I system at all."""
+    critical = _rule_ids(
+        spec, a_use_case(area=AnnexIIIArea.CRITICAL_INFRASTRUCTURE), ActorRole.DEPLOYER
+    )
+    annex_i = _rule_ids(spec, a_use_case(product=AnnexIProduct.MEDICAL_DEVICES), ActorRole.DEPLOYER)
+
+    assert "AIA-DP-A49-3" not in critical
+    assert "AIA-DP-A49-3" not in annex_i
+
+
+def test_the_secure_section_covers_the_deployer_registration_too(spec):
+    """Art. 49(4) governs 'the registration referred to in paragraphs 1, 2 and 3' — so a public
+    authority deploying a law-enforcement system registers in the secure non-public section on the
+    same terms as the provider. A rule bound to the provider alone would tell only half the parties
+    where their entry goes."""
+    police_deployer = _rule_ids(
+        spec, a_use_case(area=AnnexIIIArea.LAW_ENFORCEMENT), ActorRole.DEPLOYER
+    )
+    police_provider = _rule_ids(
+        spec, a_use_case(area=AnnexIIIArea.LAW_ENFORCEMENT), ActorRole.PROVIDER
+    )
+
+    assert "AIA-ALL-A49-4" in police_deployer
+    assert "AIA-ALL-A49-4" in police_provider

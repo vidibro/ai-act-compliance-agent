@@ -160,6 +160,49 @@ class ComplianceReport(BaseModel):
 
     @property
     def deployer_type_note(self) -> str | None:
+        """What the answer settles, or None where nothing was asked.
+
+        TWO duties turn on this one fact and they do not answer alike, which is why the note is
+        composed rather than written once. Art. 27 reaches bodies governed by public law AND private
+        entities providing public services; Art. 49(3) reaches public authorities and Union bodies
+        only. A private entity providing public services owes the impact assessment and not the
+        registration, and a reader who was told about one would reasonably assume the other."""
+        art_27 = self._article_27_note()
+        if art_27 is None:
+            return None
+        return f"{art_27} {self._article_49_3_note()}"
+
+    def _article_49_3_note(self) -> str:
+        """What the answer settles about Art. 49(3)'s deployer registration.
+
+        The `False` branch is narrower than a bare "does not reach you", and says so: "persons
+        acting on their behalf" can catch a private organisation running a system FOR a public
+        authority, and no description of the organisation's own type establishes that relationship.
+        """
+        kind = self.deployer_organisation
+        caught = kind.caught_by_article_49_3 if kind is not None else None
+        if caught is True:
+            return (
+                "Art. 49(3) reaches it too: a public authority must register ITSELF, select the "
+                "system and register its use in the EU database before putting the system into "
+                "service — a separate entry from the provider's registration under Art. 49(1), "
+                "which does not discharge it."
+            )
+        if caught is False:
+            return (
+                "Art. 49(3) is narrower and does not reach it on that basis: deployer registration "
+                "binds public authorities and Union bodies, and a private entity is not one by "
+                "providing public services. It can still be caught as a person acting on a public "
+                "authority's behalf — a fact about the arrangement rather than the organisation, "
+                "which nothing here establishes."
+            )
+        return (
+            "The same silence leaves Art. 49(3) unresolved, and it is a narrower question: "
+            "deployer registration binds public authorities, Union bodies, and persons acting on "
+            "their behalf."
+        )
+
+    def _article_27_note(self) -> str | None:
         """What the answer settles about Art. 27's organisation limb, or None where nothing was
         asked. Three outcomes, and the third is not the second: a document that does not say is not
         a document describing a private commercial deployer."""
