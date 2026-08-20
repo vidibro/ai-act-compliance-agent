@@ -6,11 +6,17 @@ unchanged produces byte-identical files (a file is only rewritten when its legal
 Source of truth
 ---------------
 The authoritative, structured manifestation on EUR-Lex / the EU Publications Office: the
-**Formex v4 XML** of the Official Journal document (CELEX 32024R1689, English expression). Formex
-marks every article, numbered paragraph and lettered point as its own element, so extraction is
-deterministic — no HTML scraping, no LLM in the path, no paraphrase. This is the mechanism that
-lets us trust the `requirement` fields in data/policy/spec.yaml: they can be checked, word for
-word, against the files this script writes.
+**Formex v4 XML**, either of the Official Journal document (CELEX 32024R1689) or of a CONSOLIDATED
+version (CELEX 02024R1689-<date>), English expression. Formex marks every article, numbered
+paragraph and lettered point as its own element, so extraction is deterministic — no HTML scraping,
+no LLM in the path, no paraphrase. This is the mechanism that lets us trust the `requirement` fields
+in data/policy/spec.yaml: they can be checked, word for word, against the files this script writes.
+
+The two manifestations are laid out differently and this script reads both: an OJ act ships one
+Formex part per document (`*.fmx.xml`, annexes with root `<ANNEX>`), a consolidated act ships a
+single `CL*.xml` whose annexes are `<CONS.ANNEX>` elements inside it. A consolidation also carries
+LETTERED articles inserted by the amending act (4a, 60a, 75a…), which is why an article id here is
+a string: reading "Article 4a" as the number 4 does not fail, it overwrites Article 4.
 
 Why not PDF/HTML: the PDF is the legally authentic form but needs lossy layout extraction; the
 legacy HTML is class-soup that mixes recitals with articles. Formex carries the same authentic
@@ -33,13 +39,13 @@ Two things then have to happen, and neither may be silent:
     out of scope with a reason). The coverage test fails until a human rules on it.
   - every rule whose cited text CHANGED must be reviewed and marked `status: amended`.
 
-TODO (deferred — see the "3" item in the version-refresh design):
+TODO — a second version now EXISTS (2026-07-27), so these are no longer hypothetical:
   - scripts/diff_versions.py  --from A --to B : articles added / removed / text-changed, and which
     rules each change touches.
   - scripts/migrate_spec.py   --from A --to B : carry over rules whose cited text is byte-identical;
     mark rules whose text moved as status=amended + amended_by; list new articles as untriaged.
-  Only worth building once a second version actually exists; until then the coverage test plus
-  `git status` cover the same ground manually.
+  The 2026-07-27 refresh was triaged by hand (36 articles changed, 6 added, Annexes I and VIII
+  changed, Annex XIV added). That was tractable once; it is the argument for building these.
 
 Usage
 -----
@@ -82,6 +88,10 @@ class ActVersion(NamedTuple):
     resource_url: str
     pdf_url: str
     description: str
+    celex: str = CELEX
+    """The CELEX of THIS version. A consolidation has its own — `02024R1689-20260727`, not the
+    original `32024R1689` — and recording the original against consolidated text would point a
+    reader at a document that does not contain the words above it."""
 
 
 # Registry of retrievable versions, keyed by act_version_date.
@@ -105,6 +115,20 @@ VERSIONS: dict[str, ActVersion] = {
         resource_url="http://publications.europa.eu/resource/oj/L_202401689.ENG.fmx4",
         pdf_url="http://publications.europa.eu/resource/oj/L_202401689.ENG.pdfa2a",
         description="Original Official Journal publication (OJ L, 2024/1689, 12.7.2024)",
+    ),
+    "2026-07-27": ActVersion(
+        zip_url=(
+            "http://publications.europa.eu/resource/celex/"
+            "02024R1689-20260727.ENG.fmx4."
+            "CONSLEG_02024R1689-20260727_0010010_ENG.fmx4.zip"
+        ),
+        resource_url="http://publications.europa.eu/resource/celex/02024R1689-20260727.ENG.fmx4",
+        pdf_url="https://eur-lex.europa.eu/legal-content/EN/TXT/PDF/?uri=CELEX:02024R1689-20260727",
+        description=(
+            "Consolidated text as amended by Regulation (EU) 2026/1744 of 8 July 2026 "
+            "(Digital Omnibus on AI), applicable from 27 July 2026"
+        ),
+        celex="02024R1689-20260727",
     ),
 }
 
@@ -180,7 +204,11 @@ def _render(el: ET.Element, indent: int) -> list[str]:
             lines += _render(item, indent)
         return lines
     if el.tag == "ITEM":
-        holder = el.find("NP") or el
+        # `is not None`, never `or`: an <NP> that holds only attributes or an empty <NO.P> is
+        # FALSY as an Element, so `el.find("NP") or el` silently falls back to the ITEM and loses
+        # the point's label. Element truthiness is also deprecated and will raise in future Python.
+        np = el.find("NP")
+        holder = np if np is not None else el
         no = holder.find("NO.P")
         label = _inline(no) if no is not None else ""
         return _labeled(holder, indent, label, {"NO.P"})
@@ -210,12 +238,24 @@ def _labeled(el: ET.Element, indent: int, label: str, skip: set[str]) -> list[st
     return lines
 
 
-def render_article(art: ET.Element) -> tuple[int, str, str]:
-    """Return (article_number, title, literal_body_text) for one ARTICLE element."""
+def article_sort_key(article_id: str) -> tuple[int, str]:
+    """Order "4" before "4a" before "5" — the Act's own order, which plain string sort loses."""
+    m = re.match(r"(\d+)([a-z]*)", article_id)
+    return (int(m.group(1)), m.group(2)) if m else (0, article_id)
+
+
+def render_article(art: ET.Element) -> tuple[str, str, str]:
+    """Return (article_id, title, literal_body_text) for one ARTICLE element.
+
+    The id is a STRING because an amending act inserts lettered articles — Regulation (EU)
+    2026/1744 added Articles 4a, 60a and 75a to 75d. Matching `(\\d+)` alone reads "Article 4a" as
+    4, and in a dict keyed by number that does not fail, it OVERWRITES Article 4 with the text of a
+    different provision. A silently wrong article is the worst output this script has.
+    """
     ti = art.find("TI.ART")
-    number_text = _inline(ti) if ti is not None else ""  # e.g. "Article 9"
-    m = re.search(r"(\d+)", number_text)
-    number = int(m.group(1)) if m else 0
+    number_text = _inline(ti) if ti is not None else ""  # e.g. "Article 9", "Article 4a"
+    m = re.search(r"(\d+[a-z]?)", number_text)
+    number = m.group(1) if m else ""
     sti = art.find("STI.ART")
     title = _inline(sti) if sti is not None else ""
     lines = [number_text]
@@ -266,10 +306,13 @@ def download_zip(url: str) -> bytes:
 def pick_body_xml(zip_bytes: bytes) -> bytes:
     """From the Formex zip, return the doc part containing the enacting articles (the member with
     the most ARTICLE elements)."""
+    # `.xml`, not `.fmx.xml`: an OJ act ships one part per document (`*.fmx.xml`), a CONSOLIDATED
+    # act ships the whole thing as a single `CL*.xml`. Picking the member with the most ARTICLE
+    # elements works for both, so the two layouts need no branch beyond this.
     best: tuple[int, bytes] = (-1, b"")
     with zipfile.ZipFile(io.BytesIO(zip_bytes)) as zf:
         for name in zf.namelist():
-            if not name.endswith(".fmx.xml"):
+            if not name.endswith(".xml"):
                 continue
             data = zf.read(name)
             try:
@@ -284,32 +327,41 @@ def pick_body_xml(zip_bytes: bytes) -> bytes:
     return best[1]
 
 
-def parse_articles(body_xml: bytes) -> dict[int, tuple[str, str]]:
+def parse_articles(body_xml: bytes) -> dict[str, tuple[str, str]]:
     root = ET.fromstring(body_xml)
-    articles: dict[int, tuple[str, str]] = {}
+    articles: dict[str, tuple[str, str]] = {}
     for art in root.findall(".//ARTICLE"):
         number, title, text = render_article(art)
-        if number:
-            articles[number] = (title, text)
+        if not number:
+            continue
+        if number in articles:
+            sys.exit(f"Two ARTICLE elements both parsed as Article {number} — refusing to guess.")
+        articles[number] = (title, text)
     return articles
 
 
 def parse_annexes(zip_bytes: bytes) -> dict[str, tuple[str, str]]:
-    """roman numeral -> (title, literal text). Each annex is its own Formex part, root <ANNEX>."""
+    """roman numeral -> (title, literal text).
+
+    TWO LAYOUTS, because the two manifestations differ. In an OJ act each annex is its own Formex
+    part with root <ANNEX>; in a CONSOLIDATED act every annex is a <CONS.ANNEX> element inside the
+    single body document. Missing the second would drop all fourteen annexes silently — including
+    Annex III, which the whole classification cascade reads.
+    """
     annexes: dict[str, tuple[str, str]] = {}
     with zipfile.ZipFile(io.BytesIO(zip_bytes)) as zf:
         for name in sorted(zf.namelist()):
-            if not name.endswith(".fmx.xml"):
+            if not name.endswith(".xml"):
                 continue
             try:
                 root = ET.fromstring(zf.read(name))
             except ET.ParseError:
                 continue
-            if root.tag != "ANNEX":
-                continue
-            roman, title, text = render_annex(root)
-            if roman:
-                annexes[roman] = (title, text)
+            elements = [root] if root.tag == "ANNEX" else list(root.iter("CONS.ANNEX"))
+            for el in elements:
+                roman, title, text = render_annex(el)
+                if roman:
+                    annexes[roman] = (title, text)
     return annexes
 
 
@@ -325,7 +377,7 @@ def existing_sha(path: Path) -> str | None:
 
 
 def write_article(
-    path: Path, number: int, title: str, body: str, version_date: str, version: ActVersion
+    path: Path, number: str, title: str, body: str, version_date: str, version: ActVersion
 ) -> bool:
     """Write the article file. Returns True if written, False if unchanged (skipped).
     retrieved_at reflects the last time the TEXT changed, not the last run, so re-running on an
@@ -336,7 +388,7 @@ def write_article(
     front = (
         "---\n"
         f"instrument: {INSTRUMENT}\n"
-        f"celex: {CELEX}\n"
+        f"celex: {version.celex}\n"
         f"eli: {ELI}\n"
         f"language: {LANGUAGE}\n"
         f"article: {number}\n"
@@ -363,7 +415,7 @@ def write_annex(
     front = (
         "---\n"
         f"instrument: {INSTRUMENT}\n"
-        f"celex: {CELEX}\n"
+        f"celex: {version.celex}\n"
         f"eli: {ELI}\n"
         f"language: {LANGUAGE}\n"
         f"annex: {roman}\n"
@@ -426,9 +478,9 @@ def main() -> None:
     print(f"Parsed {len(articles)} articles from Formex.")
 
     if args.articles == "all":
-        wanted = sorted(articles)
+        wanted = sorted(articles, key=article_sort_key)
     else:
-        wanted = [int(x) for x in args.articles.split(",") if x.strip()]
+        wanted = [x.strip() for x in args.articles.split(",") if x.strip()]
 
     out_dir = args.out_root / args.version_date
     out_dir.mkdir(parents=True, exist_ok=True)
@@ -439,7 +491,11 @@ def main() -> None:
             missing += 1
             continue
         title, body = articles[n]
-        path = out_dir / f"article-{n:03d}.md"
+        # "9" -> article-009.md, "4a" -> article-004a.md. Zero-padding the numeric part keeps the
+        # directory in the Act's own order, and the suffix keeps 4a distinct from 4 on disk as well
+        # as in memory.
+        num, suffix = re.match(r"(\d+)([a-z]*)", n).groups()
+        path = out_dir / f"article-{int(num):03d}{suffix}.md"
         if write_article(path, n, title, body, args.version_date, version):
             written += 1
         else:

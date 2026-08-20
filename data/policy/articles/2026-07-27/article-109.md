@@ -1,0 +1,20 @@
+---
+instrument: Regulation (EU) 2024/1689
+celex: 02024R1689-20260727
+eli: http://data.europa.eu/eli/reg/2024/1689/oj
+language: ENG
+article: 109
+title: Amendment to Regulation (EU) 2019/2144
+source: EUR-Lex Formex v4 XML (fmx4), Publications Office of the EU
+source_url: http://publications.europa.eu/resource/celex/02024R1689-20260727.ENG.fmx4
+authentic_pdf: https://eur-lex.europa.eu/legal-content/EN/TXT/PDF/?uri=CELEX:02024R1689-20260727
+act_version_date: 2026-07-27
+retrieved_at: 2026-08-20
+sha256: 9f1ab403a0f7dbf4230beb7cd7cd837202a27329323928fa3f3b0da0fa84e76b
+---
+
+Article 109
+Amendment to Regulation (EU) 2019/2144
+
+In Article 11 of Regulation (EU) 2019/2144, the following paragraph is added:
+        ‘3. When adopting the implementing acts pursuant to paragraph 2, concerning artificial intelligence systems which are safety components within the meaning of Regulation (EU) 2024/1689 of the European Parliament and of the Council Regulation (EU) 2024/1689 of the European Parliament and of the Council of 13 June 2024 laying down harmonised rules on artificial intelligence and amending Regulations (EC) No 300/2008, (EU) No 167/2013, (EU) No 168/2013, (EU) 2018/858, (EU) 2018/1139 and (EU) 2019/2144 and Directives 2014/90/EU, (EU) 2016/797 and (EU) 2020/1828 (Artificial Intelligence Act) (OJ L, 2024/1689, 12.7.2024, ELI: http://data.europa.eu/eli/reg/2024/1689/oj).’., the requirements set out in Chapter III, Section 2, of that Regulation shall be taken into account.

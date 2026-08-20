@@ -52,6 +52,44 @@ def test_article_store_is_version_scoped():
     assert not list(ARTICLES_ROOT.glob("article-*.md")), "articles must not sit at the store root"
 
 
+# A fetched version that no ledger covers, listed with the reason it is not covered yet. Same
+# discipline as the coverage ledger one level up: the store may hold a version the ruleset has not
+# migrated to, but never silently.
+UNTRIAGED_VERSIONS = {
+    "2026-07-27": (
+        "Consolidated text as amended by Regulation (EU) 2026/1744 (Digital Omnibus on AI), "
+        "applicable 27 July 2026. Fetched so the diff against 2024-07-12 is reviewable in the "
+        "repo; the ruleset still cites 2024-07-12 and MUST NOT be repointed until each changed "
+        "article is triaged. 36 articles changed, 6 inserted (4a, 60a, 75a-75d), Annexes I and "
+        "VIII changed, Annex XIV added."
+    )
+}
+
+
+def test_every_fetched_version_is_covered_or_declared_untriaged():
+    """A version in the store either has a coverage ledger or is named above with a reason.
+
+    Fetching is not adopting. The store is version-scoped precisely so a newer text can sit beside
+    the pinned one while its changes are reviewed — but an untriaged store looks exactly like a
+    current one from the outside, and a reader who assumed the newer directory was in force would
+    be reading law the ruleset never checked against."""
+    fetched = {p.name for p in ARTICLES_ROOT.iterdir() if p.is_dir()}
+    covered = {
+        p.name.removeprefix("scope-").removesuffix(".yaml")
+        for p in SPEC_PATH.parent.glob("scope-*.yaml")
+    }
+
+    overlap = covered & set(UNTRIAGED_VERSIONS)
+    assert not overlap, f"versions both given a ledger and declared untriaged: {sorted(overlap)}"
+
+    unclassified = fetched - covered - set(UNTRIAGED_VERSIONS)
+    assert not unclassified, (
+        f"Article-store versions with no coverage ledger and no untriaged entry: "
+        f"{sorted(unclassified)}. Triage them or declare them."
+    )
+    assert VERSION in covered, "the version the spec pins must have a ledger"
+
+
 def test_every_article_is_classified_in_scope_or_out():
     """THE COVERAGE GUARANTEE. Every article is either cited by a rule or explicitly out of scope.
     A new article in a future Act version is neither -> this fails -> a human must rule on it.
