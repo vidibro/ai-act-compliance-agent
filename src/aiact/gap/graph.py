@@ -38,9 +38,9 @@ from aiact.gap import roles as role_questions
 from aiact.gap.judge import LLMJudge
 from aiact.gap.rules import ActiveRules, roles_with_rules, select_rules
 from aiact.schemas.classification import ClassificationResult
-from aiact.schemas.enums import ActorRole, Verdict
+from aiact.schemas.enums import ActorRole, ProviderReallocation, Verdict
 from aiact.schemas.policy import PolicyRule, PolicySpec
-from aiact.schemas.question import Answer, Question
+from aiact.schemas.question import Answer, Question, narrow
 from aiact.schemas.report import ComplianceReport, Finding, ReportSummary
 from aiact.tracing import trace_run
 
@@ -129,9 +129,17 @@ def build_graph(
         # Once per (use case, role). Selection is per use case because Art. 6 classifies per
         # intended purpose, and per role because the Regulation attaches duties to the role rather
         # than to the organisation — one party can hold several, and each is assessed separately.
+        #
+        # The Art. 25 answer comes in HERE, and it is the only thing `roles` supplies that selection
+        # acts on. It adds one obligation and never removes any: Art. 25(2)'s cooperation duty has
+        # no holder until the provider role has moved, so `AIA-IP-A25-2` appears exactly when it
+        # did. The deployer-type answer is deliberately NOT passed — it resolves a condition on a
+        # duty that exists either way, and gating on it would withhold an obligation the Act
+        # creates.
+        moved = narrow(state.provider_reallocation, ProviderReallocation)
         return {
             "active": [
-                select_rules(spec, uc, role)
+                select_rules(spec, uc, role, reallocation=moved)
                 for uc in state.classification.use_cases
                 for role in roles
             ]

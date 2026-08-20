@@ -91,6 +91,23 @@ class PolicyRule(BaseModel):
     alone and 43(2) points 2 to 8, and until this field existed the spec carried 43(2) with the
     comment "employment is Annex III point 4" and fired it at biometrics too. A condition written in
     a comment is not a condition."""
+    requires_provider_reallocation: bool = False
+    """Whether this rule activates ONLY where Art. 25 has moved the provider role to another party.
+
+    `False` is no condition, and is every rule but one. `True` says the obligation does not exist
+    until a reallocation has actually occurred — Art. 25(2)'s cooperation duty binds the party that
+    placed the system on the market and then stopped being its provider, and there is no such party
+    unless Art. 25(1) or 25(3) fired.
+
+    This is the one activation condition answered by a QUESTION rather than by the classification:
+    `gap.roles` asks it, and `select_rules` takes the answer. Withholding here is right where
+    withholding elsewhere was not — Art. 27 is a duty that exists and may or may not reach a given
+    deployer, whereas this one does not exist at all until the role moves. Asserting it on every
+    high-risk system would invent a party and give it homework.
+
+    A run where the question ABSTAINED leaves this unselected, and the report carries the
+    unresolved Art. 25 answer so the silence is visible rather than implied."""
+
     activation_condition: str | None = None
     """WHICH members of the role owe this, where the Act binds only some of them — stated plainly,
     in terms of the organisations concerned rather than of whoever is reading.

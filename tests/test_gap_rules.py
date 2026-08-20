@@ -23,6 +23,7 @@ from aiact.schemas.enums import (
     AnnexIIIArea,
     AnnexIProduct,
     HighRiskRoute,
+    ProviderReallocation,
     RiskClass,
 )
 from aiact.schemas.policy import LegalSource, PolicyRule
@@ -215,10 +216,81 @@ def test_a_narrowed_duty_is_selected_exactly_like_an_unnarrowed_one(spec):
     narrowed = [r for r in spec.rules if r.activation_condition is not None]
     assert narrowed, "the mechanism is unused — Art. 27 should carry it"
     for rule in narrowed:
+        # Art. 25(2) is the one rule whose activation IS gated, and not by this field: its duty has
+        # no holder until the provider role moves (`requires_provider_reallocation`). Supplying a
+        # reallocation isolates what is under test — that stating a condition never withholds.
+        moved = (
+            ProviderReallocation.NAME_OR_TRADEMARK
+            if rule.requires_provider_reallocation
+            else None
+        )
         for role in rule.applies_to_role:
             for area in rule.applies_to_annex_iii_area or list(AnnexIIIArea):
-                active = select_rules(spec, a_use_case(area=area), role)
+                active = select_rules(spec, a_use_case(area=area), role, reallocation=moved)
                 assert rule.rule_id in {r.rule_id for r in active.all_rules}, (
                     f"{rule.rule_id} states a condition and was withheld for {role}/{area} — "
                     f"a condition is reported beside a duty, never used to drop it"
                 )
+
+
+# --- Art. 25(2) — the duty that outlives the provider role ---------------------------------------
+def test_the_initial_provider_owes_nothing_until_the_role_moves(spec):
+    """Art. 25(2) binds the party that placed the system on the market and then stopped being its
+    provider. Where no reallocation occurred there is no such party — the provider IS the initial
+    provider — so asserting the duty would invent an organisation and give it homework."""
+    active = select_rules(
+        spec, a_use_case(area=AnnexIIIArea.EMPLOYMENT), ActorRole.INITIAL_PROVIDER
+    )
+    assert active.all_rules == ()
+
+
+@pytest.mark.parametrize("limb", list(ProviderReallocation))
+def test_a_reallocation_creates_the_cooperation_duty(spec, limb):
+    """Every limb of Art. 25 produces a new provider, and therefore an initial provider that owes
+    Art. 25(2): supply the information, technical access and assistance the new one needs, in
+    particular for the conformity assessment."""
+    active = select_rules(
+        spec,
+        a_use_case(area=AnnexIIIArea.EMPLOYMENT),
+        ActorRole.INITIAL_PROVIDER,
+        reallocation=limb,
+    )
+    assert {r.rule_id for r in active.all_rules} == {"AIA-IP-A25-2"}
+    assert active.not_document_verifiable, "a relational duty between two organisations"
+
+
+def test_the_cooperation_duty_is_not_the_current_provider_s(spec):
+    """The direction is the whole point. Art. 25(2) binds the party that has STOPPED being the
+    provider; attaching it to `provider` would put it on the organisation that just took the role
+    on — the exact mis-attribution `Finding.role` exists to prevent."""
+    provider = select_rules(
+        spec,
+        a_use_case(area=AnnexIIIArea.EMPLOYMENT),
+        ActorRole.PROVIDER,
+        reallocation=ProviderReallocation.NAME_OR_TRADEMARK,
+    )
+    assert "AIA-IP-A25-2" not in {r.rule_id for r in provider.all_rules}
+
+
+def test_a_reallocation_adds_an_obligation_and_removes_none(spec):
+    """The Art. 25 answer is the one thing `roles` feeds into selection, and it may only ADD. A
+    report whose provider obligations shrank because a role moved would be reporting less law than
+    the Act contains."""
+    use_case = a_use_case(area=AnnexIIIArea.EMPLOYMENT)
+    for role in (ActorRole.PROVIDER, ActorRole.DEPLOYER):
+        without = {r.rule_id for r in select_rules(spec, use_case, role).all_rules}
+        with_move = {
+            r.rule_id
+            for r in select_rules(
+                spec, use_case, role, reallocation=ProviderReallocation.SUBSTANTIAL_MODIFICATION
+            ).all_rules
+        }
+        assert without == with_move
+
+
+def test_only_one_rule_is_gated_on_the_reallocation(spec):
+    """A condition answered by a QUESTION rather than by the classification is the exception, and
+    should stay one: every other rule must activate from the classification alone, or a run whose
+    Art. 25 question failed would silently under-report."""
+    gated = {r.rule_id for r in spec.rules if r.requires_provider_reallocation}
+    assert gated == {"AIA-IP-A25-2"}

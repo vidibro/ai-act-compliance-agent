@@ -298,6 +298,7 @@ def test_the_covered_roles_come_from_the_spec(spec):
     the spec looking covered while activating for nobody."""
     assert roles_with_rules(spec) == [
         ActorRole.PROVIDER,
+        ActorRole.INITIAL_PROVIDER,
         ActorRole.DEPLOYER,
         ActorRole.IMPORTER,
         ActorRole.DISTRIBUTOR,
@@ -335,9 +336,11 @@ def test_the_report_lists_every_role_the_act_binds(spec):
     assert "AIA-AR-A22" in outstanding[ActorRole.AUTHORISED_REPRESENTATIVE]
     assert "AIA-DP-A26" in outstanding[ActorRole.DEPLOYER]
     assert "AIA-PO-A17" in outstanding[ActorRole.PROVIDER]
-    # Every role the ruleset covers appears; which roles those are is settled by the coverage
-    # ledger before shipping, not narrated in the report — see test_policy_loader.
-    assert set(outstanding) == set(roles_with_rules(spec))
+    # Every role the ruleset covers appears — except `initial_provider`, and its absence is the
+    # finding rather than an omission: Art. 25(2) has no holder unless the provider role moved, and
+    # here it did not. Which roles the ruleset covers is settled by the coverage ledger before
+    # shipping, not narrated in the report — see test_policy_loader.
+    assert set(outstanding) == set(roles_with_rules(spec)) - {ActorRole.INITIAL_PROVIDER}
 
 
 # --- Art. 25 — the one question about WHO rather than WHAT ---------------------------------------

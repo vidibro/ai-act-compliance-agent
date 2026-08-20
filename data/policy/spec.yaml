@@ -32,6 +32,9 @@
 #             -> document_verifiable: false -> reported as "confirm separately", never as gaps.
 #   AIA-DP-*  DEPLOYER obligations (Art. 26-27). A different duty-holder, not a different topic:
 #             the party operating the system owes these, and no provider file can evidence them.
+#   AIA-IP-*  INITIAL PROVIDER (Art. 25(2)) — the party that placed the system on the market and
+#             then stopped being its provider when Art. 25 moved the role. One rule, owed only
+#             where a reallocation actually occurred.
 #   AIA-AR-*  AUTHORISED REPRESENTATIVE (Art. 22), AIA-IM-* IMPORTER (Art. 23), AIA-DI-*
 #             DISTRIBUTOR (Art. 24) — the supply-chain roles, each with duties of its own.
 #   AIA-ALL-* Obligations binding BOTH provider and deployer at every governed tier — Art. 4 today.
@@ -604,6 +607,51 @@ rules:
       surveillance authority. Where a data protection impact assessment under Art. 35 GDPR already
       meets part of this, Art. 27(4) makes the fundamental rights assessment COMPLEMENT it rather
       than replace it — an existing DPIA is not on its own an answer here.
+    document_verifiable: false
+    effective_date: 2026-08-02
+    status: active
+
+  # ------------------------------------------------------------------------------------------
+  # Art. 25(2) — the duty that survives losing the provider role, and the only rule in this spec
+  # whose activation is answered by a QUESTION rather than by the classification.
+  #
+  # Art. 25 does three different things and only one of them is a rule. Paragraphs (1) and (3)
+  # ASSIGN the provider role — the party they catch owes Art. 16, which is modelled rule by rule
+  # already, so a rule here would double-count. Paragraph (2) is different: it says the initial
+  # provider "shall no longer be considered to be a provider of that specific AI system", and then
+  # imposes a duty on it anyway. That duty has no holder until the role has moved, which is why the
+  # rule carries `requires_provider_reallocation` and the gap graph's `roles` node feeds
+  # `select_rules`.
+  #
+  # Paragraph (4)'s written-agreement duty between a high-risk provider and its component suppliers
+  # is NOT modelled: it is discharged in a contract with a third party, not in the technical
+  # documentation this tool reads, so a document check could only ever report "not found".
+  # ------------------------------------------------------------------------------------------
+  - rule_id: AIA-IP-A25-2
+    source:
+      instrument: "Regulation (EU) 2024/1689"
+      article: 25
+      paragraph: 2
+      act_version_date: 2024-07-12
+    applies_to_risk_class: [high_risk]
+    applies_to_role: [initial_provider]
+    requires_provider_reallocation: true
+    obligation_status: mandatory
+    check_type: presence
+    activation_condition: >-
+      Owed only where Art. 25(1) or 25(3) has actually moved the provider role — there is no initial
+      provider distinct from the provider until it does. It also falls away entirely where the
+      initial provider CLEARLY SPECIFIED that its AI system was not to be changed into a high-risk
+      one: the paragraph's own last sentence disapplies it, and that is a fact about the supply
+      terms rather than about the system, so no technical documentation settles it.
+    evidence_expected: >-
+      Evidence that the party which originally placed this system on the market is cooperating with
+      the new provider: the information, the reasonably expected technical access, and the other
+      assistance needed to fulfil the obligations of this Regulation — in particular for the
+      conformity assessment of the high-risk system. A relational duty between two organisations,
+      discharged in correspondence and supply terms rather than in a technical file — confirm
+      separately. Note the direction: this binds the party that has STOPPED being the provider, and
+      the provider obligations elsewhere in this report are the new provider's.
     document_verifiable: false
     effective_date: 2026-08-02
     status: active

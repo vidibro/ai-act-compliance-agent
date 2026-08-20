@@ -15,7 +15,7 @@ instead of a verdict.
 from __future__ import annotations
 
 from dataclasses import dataclass
-from typing import Any, Literal
+from typing import Any, Literal, TypeVar
 
 from pydantic import BaseModel, field_validator
 
@@ -103,3 +103,18 @@ class Answer(BaseModel):
     # this node — present so the verdict can record it rested on Commission interpretation, not law
 
     _quote_length = field_validator("evidence_quote")(_check_quote_length)
+
+
+_T = TypeVar("_T")
+
+
+def narrow(answer: Answer | None, kind: type[_T]) -> _T | None:
+    """The answer's value, but only if it is the type the caller can act on.
+
+    Narrowing by TYPE rather than by truthiness, which is a rule this codebase applies everywhere a
+    brain's answer drives a decision: a value nobody recognises is not a finding, and a finding that
+    cannot be cited must not change what a report says. `None` covers all three of "not asked",
+    "answered nothing" and "answered something unusable" — the caller that needs to tell those apart
+    reads the Answer itself, which is why this returns the value and not a verdict."""
+    value = answer.value if answer is not None else None
+    return value if isinstance(value, kind) else None

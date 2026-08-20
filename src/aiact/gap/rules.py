@@ -4,7 +4,8 @@ Deterministic and model-free: activation is a property of the ruleset (`applies_
 `applies_to_role`, `applies_to_route`, `applies_to_annex_iii_area`, `status`), not a judgement.
 Only whether the documentation SATISFIES an active rule is a judgement, and that is the judge's job.
 
-WHICH DOOR AND WHICH AREA are conditions, not decoration. Most obligations bind every high-risk
+WHICH DOOR, WHICH AREA and — for one rule — WHETHER THE PROVIDER ROLE MOVED are conditions, not
+decoration. Most obligations bind every high-risk
 system alike, but a few name law that only reaches part of them — Art. 43 sends an Annex III point 1
 system to a notified body, points 2 to 8 to internal control, and an Annex I system to its own
 sectoral procedure. A rule that could not state that condition had to assume one area and cite its
@@ -20,7 +21,7 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 
 from aiact.schemas.classification import UseCaseClassification
-from aiact.schemas.enums import ActorRole, HighRiskRoute, RiskClass
+from aiact.schemas.enums import ActorRole, HighRiskRoute, ProviderReallocation, RiskClass
 from aiact.schemas.policy import PolicyRule, PolicySpec
 
 
@@ -96,8 +97,20 @@ def _area_matches(rule: PolicyRule, use_case: UseCaseClassification) -> bool:
     return use_case.annex_iii_area in rule.applies_to_annex_iii_area
 
 
-def select_rules(spec: PolicySpec, use_case: UseCaseClassification, role: ActorRole) -> ActiveRules:
+def select_rules(
+    spec: PolicySpec,
+    use_case: UseCaseClassification,
+    role: ActorRole,
+    reallocation: ProviderReallocation | None = None,
+) -> ActiveRules:
     """The obligations `role` owes for this use case, under its risk class.
+
+    `reallocation` is the Art. 25 answer, and the ONE input here that is not a property of the
+    classification. It exists because Art. 25(2) creates a duty that has no holder until the
+    provider role has actually moved: the party that placed the system on the market and then
+    stopped being its provider owes the new one cooperation and technical access. `None` — nothing
+    moved, or the question went unanswered — leaves that rule unselected, because a duty asserted
+    against a party the facts do not produce is an invented obligation rather than a cautious one.
 
     **Art. 2** comes first, and it is the stronger case. Where the Regulation does not govern the
     system at all — military use, sole-purpose research, pre-market development, a natural person's
@@ -135,8 +148,15 @@ def select_rules(spec: PolicySpec, use_case: UseCaseClassification, role: ActorR
         and role in rule.applies_to_role
         and _route_matches(rule, use_case)
         and _area_matches(rule, use_case)
+        and (reallocation is not None or not rule.requires_provider_reallocation)
         and rule.status != "amended"
     ]
+    # A rule carrying an `activation_condition` is NOT withheld here. The Act narrows some duties
+    # to part of a role — Art. 27 binds deployers that are public bodies or private providers of
+    # public services — and that narrowing is reported BESIDE the obligation, on the rule itself,
+    # never by dropping it into a "might not apply" list. This report covers every role the Act
+    # binds whoever is reading it; deciding on a reader's behalf which of their obligations to
+    # demote is the same error as omitting a role for want of a ruleset.
     return ActiveRules(
         use_case_id=use_case.use_case_id,
         role=role,

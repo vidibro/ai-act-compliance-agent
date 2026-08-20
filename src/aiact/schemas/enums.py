@@ -316,6 +316,22 @@ class ActorRole(StrEnum):
     """Art. 3(3). Develops the system, or has it developed, and places it on the market /
     puts it into service under its own name or trademark. Bears the heaviest obligations."""
 
+    INITIAL_PROVIDER = "initial_provider"
+    """Art. 25(2). The party that placed the system on the market BEFORE Art. 25 moved the provider
+    role to someone else — and which, on that paragraph's own words, "shall no longer be considered
+    to be a provider of that specific AI system".
+
+    A role of its own because the duty runs the wrong way to sit anywhere else. Art. 25(2) leaves
+    this party owing a cooperation duty — supply the information, technical access and assistance
+    the new provider needs, in particular for the conformity assessment — and attaching that to
+    PROVIDER would put it on the organisation that has just taken the role ON, which is the exact
+    reverse of who owes it. `Finding.role` exists to stop that kind of mis-attribution; naming the
+    role is how it is stopped here.
+
+    It holds exactly one rule, and holds it only where a reallocation actually occurred. A high-risk
+    system whose provider never changed has no initial provider distinct from its provider, so the
+    role is selected for and comes back empty."""
+
     DEPLOYER = "deployer"
     """Art. 3(4). Uses the system under its own authority in a professional capacity.
     Distinct, lighter obligation set (Art. 26) — out of scope for v0.1."""
