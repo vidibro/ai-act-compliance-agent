@@ -661,7 +661,7 @@ So a report covering every role is a decision aid, not padding: it is what a rea
 
 **The real cost is the golden set, not the rules.** Layer 2's ground truth is ablations of a PROVIDER's technical file. Deployer duties cannot be evidenced there — they need deployment records, a FRIA, logs, evidence that instructions were followed. That is a new corpus authored from scratch, and until it exists the deployer rules are unmeasured. **Ship the LIST for all roles first** (no ground truth needed, since nothing is judged), and gate JUDGING a role on having cases for it.
 
-#### M4d-5 — Nothing is in force yet, and no report says so 🟠
+#### M4d-5 — Nothing is in force yet, and no report says so 🟠 approach decided, build deferred
 
 All rules carried `effective_date: 2026-08-02` (Art. 113) and `status: active`. Today's reports raise gaps against obligations that bind nobody yet, and `ActiveRules.postponed` is permanently empty because no rule uses `status: postponed` — the spec deliberately carries the date instead.
 
@@ -672,6 +672,14 @@ The first of the three options below is gone with it: the rules no longer share 
 **The second is a much larger change than it looks, and this is the note to read before starting it.** Almost every document-verifiable rule is in Sections 1–3, so routing on the date would empty `document_verifiable` for a high-risk system, produce a report with no findings at all, and break every golden case at once — the answer key scores GAP/PASS per rule and those rules would no longer be judged. Whether that is *right* is a genuine question: a report that raises no gaps because nothing applies yet is legally accurate and useless as a compliance tool, and "adopted, applies from 2027-12-02, here is what it will require" is probably what a reader wants. Whatever is chosen, the eval has to move with it rather than be discovered afterwards.
 
 `PolicyRule.effective_date_for(route)` already resolves the right date, so the data half is done — what is missing is the decision about what a report does with it.
+
+**DECIDED 2026-08-20: show the date per obligation. Do NOT route not-yet-effective rules out of the check.** An obligation that binds in sixteen months still has to be reported, with its date beside it, so a reader can sort what is owed now from what is owed later — *"adopted, applies from 2027-12-02, here is what it will require"*. Withholding it produces a report that is legally accurate and useless, and it would break every golden case for a reason that has nothing to do with the checker's quality. Deferred deliberately: the report's wording has to be settled across several of these date-and-tense problems at once (see the wording note below), not invented for this one. The pieces to build when it is taken up:
+
+- **Resolution happens at report-assembly time, not at load.** The date depends on the Art. 6 route, so it cannot be a static field copied off the rule — `effective_date_for(route)` must be called with the use case's own route, which the report knows and the spec does not.
+- **Both buckets or neither.** `Finding` carries no date today and `not_document_verifiable` is a bare `dict[ActorRole, list[str]]` of rule ids. Dating only the findings would leave the provider's process obligations — Arts. 17–21, all moved to 2027 — looking like the in-force ones, which is the failure this is meant to fix. That bucket has to grow beyond a list of strings.
+- **`ReportSummary.gaps` is the number a reader anchors on, and it is about to mean two things.** A GAP against Art. 9 today is not non-compliance: nobody is in breach of a requirement that binds in sixteen months. The verdict may be right while the WORD is wrong. Leaning toward counting them apart — "3 gaps against obligations in force, 14 against obligations from 2027-12-02" — rather than renaming the verdict, but that is a wording decision, which is why it waits.
+- **`ActiveRules.postponed` stays empty and that is now a decision, not an oversight.** Its docstring says "adopted but not yet applicable … reported so a provider can prepare, never a gap", which describes these rules exactly — but moving them there removes them from the check. The bucket keeps its meaning for a rule with `status: postponed`; the date does not route anything into it.
+- **The same wording problem appears in three places now**, and they should be answered together rather than three ways: this; the Art. 5 prohibited note, which already says "applies from 2026-12-02 … treat this as a withdrawal deadline" (`pipeline._prohibited_note`); and the Section 5 oddity, where conformity assessment and registration apply *before* the requirements they attest to.
 
 #### M4d-7 — Art. 2(1) territorial reach is never asked ✅ BUILT 2026-08-19 (`c853340`)
 
