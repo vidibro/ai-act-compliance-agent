@@ -544,3 +544,45 @@ def test_an_unknown_route_resolves_to_the_earlier_date(spec):
     have been 2027 is the direction that costs them a deadline."""
     rule = next(r for r in spec.rules if r.rule_id == "AIA-HR-A09")
     assert rule.effective_date_for(None) == _ANNEX_III_DATE
+
+
+# Chapter III Section 5 — Arts. 40 to 49. Not moved by the Omnibus, so in force ahead of the
+# requirements it attests to.
+_SECTION_5_ARTICLES = set(range(40, 50))
+
+
+def test_every_section_5_rule_explains_why_it_is_already_in_force(spec):
+    """These apply from 2 August 2026 while the Section 2 requirements they assess, declare, mark or
+    register wait until December 2027. A reader meeting that unexplained reasonably concludes the
+    tool is broken, and the damaging response is to disregard the date rather than the note. So the
+    explanation travels WITH the obligation instead of living in a comment only we read."""
+    section_5 = [r for r in spec.rules if r.source.article in _SECTION_5_ARTICLES]
+    assert len(section_5) == 8, "Arts. 43 and 47-49 are the whole of Section 5 in this ruleset"
+    for rule in section_5:
+        assert rule.effective_date == _GENERAL_DATE, rule.rule_id
+        note = rule.effective_date_note or ""
+        assert "2 December 2027" in note and "2 August 2026" in note, rule.rule_id
+        assert "Section 5" in note, rule.rule_id
+
+
+def test_the_contested_date_names_the_reading_it_did_not_take(spec):
+    """Art. 6(4) binds a provider whose system is NOT high-risk, and Art. 113's limbs both describe
+    systems that are — so no limb reaches it and a date had to be chosen. Choosing silently would
+    present our reading as the Act's, and the two readings are sixteen months apart in the direction
+    that matters: the alternative means the duty is owed NOW."""
+    rule = next(r for r in spec.rules if r.rule_id == "AIA-NHR-A06-4")
+    note = rule.effective_date_note or ""
+
+    assert rule.effective_date == date(2027, 12, 2)
+    assert "CONTESTED" in note
+    assert "2 August 2026" in note, "the reading not taken must be named, with its date"
+    assert "take advice" in note
+
+
+def test_a_timing_note_never_stands_in_for_a_date(spec):
+    """The note qualifies a date; it does not replace one. A rule carrying prose about when it
+    applies and no resolvable date would read as an answer while being none."""
+    for rule in spec.rules:
+        if rule.effective_date_note:
+            resolved = rule.effective_date_for(HighRiskRoute.ANNEX_III)
+            assert resolved is not None, f"{rule.rule_id} explains a date it does not have"

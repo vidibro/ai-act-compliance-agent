@@ -229,6 +229,25 @@ class PolicyRule(BaseModel):
     conformity assessment and registration rules carry a plain `effective_date` while the
     requirements they attest to do not."""
 
+    effective_date_note: str | None = None
+    """WHY this obligation's timing is not what a reader would assume — carried to the report, not
+    left in a comment only we read.
+
+    Two shapes, both real in the current ruleset:
+
+    A DATE THAT IS CONTESTED. Art. 113's limbs describe systems that ARE high-risk, and Art. 6(4)
+    binds a provider who concluded theirs is NOT, so no limb reaches it literally. A date had to be
+    chosen; choosing silently would present our reading as the Act's. The note names the other one
+    and what turns on it.
+
+    A DATE THAT IS RIGHT AND READS WRONG. Chapter III Section 5 was not moved, so conformity
+    assessment and registration apply from 2 August 2026 while the requirements they attest to wait
+    until December 2027. A reader meeting that with no explanation reasonably concludes the tool is
+    broken, and the more damaging response is to disregard the date.
+
+    Distinct from `activation_condition`, which narrows WHO owes a duty; this qualifies WHEN. Both
+    are reported beside the obligation and neither withholds it."""
+
     @model_validator(mode="after")
     def _one_way_of_saying_when(self) -> PolicyRule:
         """A rule states its date one way or the other, never both.
