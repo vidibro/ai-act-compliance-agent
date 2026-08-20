@@ -55,15 +55,12 @@ def test_article_store_is_version_scoped():
 # A fetched version that no ledger covers, listed with the reason it is not covered yet. Same
 # discipline as the coverage ledger one level up: the store may hold a version the ruleset has not
 # migrated to, but never silently.
-UNTRIAGED_VERSIONS = {
-    "2026-07-27": (
-        "Consolidated text as amended by Regulation (EU) 2026/1744 (Digital Omnibus on AI), "
-        "applicable 27 July 2026. Fetched so the diff against 2024-07-12 is reviewable in the "
-        "repo; the ruleset still cites 2024-07-12 and MUST NOT be repointed until each changed "
-        "article is triaged. 36 articles changed, 6 inserted (4a, 60a, 75a-75d), Annexes I and "
-        "VIII changed, Annex XIV added."
-    )
-}
+UNTRIAGED_VERSIONS: dict[str, str] = {}
+"""Empty, and the mechanism stays for the next refresh.
+
+2026-07-27 lived here for exactly one commit — long enough for the consolidated text to sit in the
+repo, reviewable, without any claim that the ruleset had been checked against it. It has a ledger
+now, so the coverage guarantee below covers it and this entry would be a lie."""
 
 
 def test_every_fetched_version_is_covered_or_declared_untriaged():
@@ -90,17 +87,28 @@ def test_every_fetched_version_is_covered_or_declared_untriaged():
     assert VERSION in covered, "the version the spec pins must have a ledger"
 
 
-def test_every_article_is_classified_in_scope_or_out():
+@pytest.mark.parametrize("version", sorted(p.name for p in ARTICLES_ROOT.iterdir() if p.is_dir()))
+def test_every_article_is_classified_in_scope_or_out(version):
     """THE COVERAGE GUARANTEE. Every article is either cited by a rule or explicitly out of scope.
     A new article in a future Act version is neither -> this fails -> a human must rule on it.
-    That is how a newly legislated obligation cannot silently go unchecked."""
-    spec = _spec()
-    ledger = yaml.safe_load(SCOPE_PATH.read_text(encoding="utf-8"))
-    assert ledger["act_version_date"] == ACT_DATE
+    That is how a newly legislated obligation cannot silently go unchecked.
 
-    in_store = {int(p.stem.split("-")[1]) for p in ARTICLES_DIR.glob("article-*.md")}
-    cited = {r.source.article for r in spec.rules}
-    out_of_scope = set(ledger["out_of_scope"])
+    Run against EVERY fetched version, not only the pinned one. A version the ruleset has not
+    adopted yet is exactly where an unruled article hides: it is in the repo, it looks authoritative
+    and nothing else reads it. Checking it here is what makes repointing the pin a decision rather
+    than a discovery. Article NUMBERS are version-independent, so the citations in spec.yaml are
+    meaningful against a store the spec does not currently resolve from."""
+    spec = _spec()
+    scope_path = SPEC_PATH.parent / f"scope-{version}.yaml"
+    ledger = yaml.safe_load(scope_path.read_text(encoding="utf-8"))
+    assert str(ledger["act_version_date"]) == version
+
+    # str, not int: a consolidation inserts LETTERED articles (4a, 60a, 75a-75d), and int() both
+    # crashes on them and would collapse 4a onto 4.
+    in_store = {p.stem.removeprefix("article-").lstrip("0") for p in
+                (ARTICLES_ROOT / version).glob("article-*.md")}
+    cited = {str(r.source.article) for r in spec.rules}
+    out_of_scope = {str(k) for k in ledger["out_of_scope"]}
 
     overlap = cited & out_of_scope
     assert not overlap, f"articles both cited and marked out of scope: {sorted(overlap)}"
@@ -108,7 +116,7 @@ def test_every_article_is_classified_in_scope_or_out():
     unclassified = in_store - cited - out_of_scope
     assert not unclassified, (
         f"Articles present in the store but neither cited by a rule nor listed in "
-        f"{SCOPE_PATH.name}: {sorted(unclassified)}. Rule on them before shipping."
+        f"{scope_path.name}: {sorted(unclassified)}. Rule on them before shipping."
     )
 
     phantom = (cited | out_of_scope) - in_store
@@ -143,8 +151,13 @@ def test_roles_out_of_scope_entries_have_reasons():
         )
 
 
-def test_out_of_scope_entries_have_reasons():
-    ledger = yaml.safe_load(SCOPE_PATH.read_text(encoding="utf-8"))
+@pytest.mark.parametrize("version", sorted(p.name for p in ARTICLES_ROOT.iterdir() if p.is_dir()))
+def test_out_of_scope_entries_have_reasons(version):
+    """Both ledgers. A reason copied forward onto an amended article without being re-read is the
+    failure this file already caught once, when "employment self-assesses, so no notified body"
+    survived Art. 43(1) landing."""
+    scope_path = SPEC_PATH.parent / f"scope-{version}.yaml"
+    ledger = yaml.safe_load(scope_path.read_text(encoding="utf-8"))
     for article, reason in ledger["out_of_scope"].items():
         assert isinstance(reason, str) and len(reason.strip()) > 15, (
             f"Article {article} is dismissed without a real reason"
