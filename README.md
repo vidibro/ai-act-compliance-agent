@@ -183,14 +183,17 @@ flowchart TD
   it ships — with no transition period, since Chapter V has applied since August 2025. Reporting
   "outside scope, nothing owed" would be true this morning and misleading by the time anyone acted
   on it.
-- **A ban must name the point that bans it.** Art. 5(1) prohibits eight specific practices, and
+- **A ban must name the point that bans it.** Art. 5(1) prohibits ten specific practices, and
   the node answers *which* — not merely *whether*. This is the only class that tells a provider
   their system may not ship at all, and "Art. 5" alone gives them nothing to check the claim
   against. Naming the point also forces the exception into view: (d) does not reach a system
   supporting a human assessment already grounded in objective facts, (f) not medical or safety
   uses, (g) not the labelling of lawfully acquired datasets, and (h) is lifted for three named
-  law-enforcement objectives. A verdict that cannot cite its point is reported as `needs review`,
-  never as a ban and never as a clearance.
+  law-enforcement objectives. The two points the 2026 Omnibus inserted, (ba) and (bb), turn on
+  safeguards rather than capability — a generator is not banned for being *able* to produce the
+  material — and they are the first points of the Article with an application date of their own,
+  so the report says when a ban bites rather than assuming it already has. A verdict that cannot
+  cite its point is reported as `needs review`, never as a ban and never as a clearance.
 - **Two doors into high risk, not one.** Art. 6(1) catches AI *inside a regulated physical
   product* — a braking controller, a dose limiter in a surgical robot. Art. 6(2) catches AI used
   *for a listed purpose* — hiring, credit, policing. A surgical robot appears nowhere in Annex III,

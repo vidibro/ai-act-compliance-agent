@@ -37,6 +37,30 @@ _PROHIBITED_NOTE = (
     "against it would imply the system may be placed on the market once the paperwork is fixed. "
     "It may not. Withdraw the practice."
 )
+
+
+def _prohibited_note(classification: ClassificationResult) -> str:
+    """The Art. 5 note, plus the date the ban bites where that is not yet.
+
+    Art. 5 applied from 2 February 2025 and for a long time that was true of every point in it, so
+    "this is prohibited" carried its own timing. Regulation (EU) 2026/1744 inserted points (ba) and
+    (bb) and gave them 2 December 2026. Telling an organisation to withdraw a practice that the
+    Article does not yet reach is wrong in one direction; saying nothing about the date is wrong in
+    the other, because the practice does become unlawful and building toward it is not a plan. So
+    the verdict stands and the note says when.
+    """
+    practice = classification.prohibited_practice
+    if practice is None or practice.applies_from <= datetime.now(UTC).date():
+        return _PROHIBITED_NOTE
+    return (
+        f"No obligation check was run: Art. 5(1)({practice.point}) prohibits this practice from "
+        f"{practice.applies_from.isoformat()}. That date has NOT passed — the prohibition is "
+        f"enacted and in force as law but does not yet apply, so the practice is not unlawful "
+        f"under this Regulation today and will be on that date without any further step. Chapter "
+        f"III is not checked against it: it sets out how a PERMITTED high-risk system must be "
+        f"built, and no documentation makes a practice that is about to be banned shippable. "
+        f"Treat this as a withdrawal deadline, not a gap to close."
+    )
 _OUT_OF_SCOPE_NOTE = (
     "No obligation check was run, and none is owed: Art. 2 withholds this Regulation from the "
     "system entirely. This is not a low risk tier — a minimal-risk system is still governed and "
@@ -126,7 +150,7 @@ def review(
     if overall == RiskClass.OUT_OF_SCOPE:
         return _empty_report(system_id, spec, classification, _OUT_OF_SCOPE_NOTE)
     if overall == RiskClass.PROHIBITED:
-        return _empty_report(system_id, spec, classification, _PROHIBITED_NOTE)
+        return _empty_report(system_id, spec, classification, _prohibited_note(classification))
     if overall == RiskClass.NEEDS_REVIEW:
         return _empty_report(system_id, spec, classification, _NEEDS_REVIEW_NOTE)
     # A general-purpose AI model is not on the Art. 6 track at all, so there is nothing here to

@@ -19,6 +19,7 @@ from aiact.schemas.enums import (
     ActorRole,
     AnnexIIIArea,
     AnnexIProduct,
+    ProhibitedPractice,
     RiskClass,
     TransparencyDuty,
 )
@@ -172,6 +173,19 @@ class ClassificationResult(BaseModel):
     text generator and a high-risk chatbot can both owe transparency, and a high-risk system may owe
     none. It is therefore answered for every classification and reported beside the risk class —
     never as an input to it."""
+
+    @property
+    def prohibited_practice(self) -> ProhibitedPractice | None:
+        """WHICH point of Art. 5(1) banned the practice, or None where none did.
+
+        Read off the cascade's own answers rather than stored again, so it cannot disagree with the
+        verdict it came from. A reader needs the point and not just the tier: Art. 5's points do not
+        all begin to apply on the same day any more, so `prohibited` alone no longer settles whether
+        a practice is banned NOW — see `ProhibitedPractice.applies_from`."""
+        for answer in self.answers:
+            if answer.node_id == "prohibited" and isinstance(answer.value, ProhibitedPractice):
+                return answer.value
+        return None
 
     @property
     def transparency_duties(self) -> list[TransparencyDuty]:

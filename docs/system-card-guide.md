@@ -69,9 +69,20 @@ Say explicitly whether the system does any of the following, because these are b
 - categorises people **biometrically** to infer protected characteristics
 - scores people's **social behaviour** leading to detrimental treatment
 - uses subliminal or manipulative techniques, or exploits vulnerability
+- generates or manipulates **realistic intimate imagery** of an identifiable person without their
+  consent (Art. 5(1)(ba)), or **child sexual abuse material** (Art. 5(1)(bb)) — both added by
+  Regulation (EU) 2026/1744 and applying from **2 December 2026**
 
 If it processes faces, voices, or video of people, say what it extracts from them. "Analyses video
 interviews" is ambiguous in the way that matters most.
+
+**If it generates images, video or audio of people, the safeguards are the answer.** Art. 5(1)(ba)
+and (bb) do not ban a generator for being *capable* of producing that material — Art. 5(1a) catches
+a provider only where producing it is the system's intended purpose, or where it is a reasonably
+foreseeable and reproducible output **and** there are no reasonable safeguards against it. So the
+card should say what those safeguards are: filtering, refusal training, output classification,
+misuse detection, and how reported misuse gets corrected. A general-purpose generator whose card
+describes none of that is closer to the second limb than its authors probably intend.
 
 ### 3. What is it used for? — Art. 6(2), Annex III
 

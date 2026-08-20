@@ -2408,3 +2408,82 @@ cases:
       The identification half of the carve-out pair, and the one that keeps the exclusion honest:
       an area a classifier can be talked out of is worse than one it never had. Also the golden
       set's first biometrics case, so the first to select AIA-PO-A43-1 rather than -A43-2.
+
+  # --- ART. 5(1)(ba) — THE SAFEGUARD BOUNDARY -------------------------------------------------
+  # The two points Reg (EU) 2026/1744 inserted are the easiest in the Article to over-apply, and a
+  # false `prohibited` is the most damaging verdict this tool produces: it tells an organisation to
+  # withdraw a lawful product and skips the obligation check entirely. Art. 5(1a) is what separates
+  # these two cases, and it turns on SAFEGUARDS, not on capability.
+  - case_id: image_generator_with_safeguards
+    description: >-
+      A general-purpose text-to-image service for marketing teams, generating illustrations and
+      product imagery from written prompts. It can render people. Nudity and sexual content are
+      refused at the prompt and blocked at the output by a classifier; the model was trained to
+      refuse such requests; uploading a photograph of a real person to edit is not supported.
+      Reported misuse is investigated and the filters updated. Outputs carry an embedded C2PA
+      provenance manifest marking them as AI-generated.
+    expected_risk_class: minimal
+    expected_is_ai_system: true
+    is_ai_basis: >-
+      Generates images inferred from a text prompt — the mapping from words to pixels is learned,
+      not written down by anyone.
+    expected_prohibited_practice: null
+    expected_annex_i_product: null
+    expected_annex_iii_area: null
+    expected_transparency_duties: [synthetic_content_marking]
+    transparency_basis: >-
+      Art. 50(2): a provider of a system generating synthetic image content must mark the output as
+      artificially generated in a machine-readable format, which the C2PA manifest is. Not 50(1) —
+      it takes a prompt and returns an image rather than conversing; not 50(3), which reaches
+      emotion recognition and biometric categorisation; 50(4) binds the DEPLOYER who publishes a
+      deep fake, not this provider.
+    decisive_fact: >-
+      Capability is not the test. Art. 5(1a)(a) catches a provider only where such generation is the
+      INTENDED PURPOSE, or where it is a reasonably foreseeable and reproducible output AND the
+      system lacks reasonable safeguards. The purpose here is marketing imagery and the description
+      names refusal training, prompt refusal, output classification and misuse correction — so
+      neither limb is met and the system is outside Art. 5 entirely.
+    difficulty: buried
+    split: dev
+    notes: >-
+      The FALSE-POSITIVE anchor for the two inserted points, and the more important half. A
+      classifier that bans this bans every image generator on the market. Pairs with
+      nudify_app_no_consent.
+
+  - case_id: nudify_app_no_consent
+    flips_from: image_generator_with_safeguards
+    description: >-
+      A consumer app whose advertised function is to take an uploaded photograph of a real person
+      and return an altered version of that photograph with the clothing removed. It is marketed
+      for use on photographs of people known to the user. The app asks for no confirmation that the
+      depicted person agreed, and has no filter preventing use on any given photograph.
+    expected_risk_class: prohibited
+    expected_is_ai_system: true
+    is_ai_basis: >-
+      Infers an altered image from an input photograph — a generative model, not a rule-based
+      edit.
+    expected_prohibited_practice: non_consensual_intimate_imagery
+    expected_transparency_duties: [synthetic_content_marking, deep_fake_disclosure]
+    transparency_basis: >-
+      Art. 50 attaches on its own axis and is answered even here. 50(2) binds the provider: the
+      system generates synthetic image content, which must be marked machine-readably. 50(4) binds
+      the deployer: manipulated imagery of a real person that would appear authentic is a deep fake,
+      and its use must be disclosed. Neither 50(1) nor 50(3) applies — it holds no conversation and
+      assigns nobody to a biometric category. That these duties are owed by a system Art. 5 bans is
+      not a contradiction: the transparency duty attaches to what the system DOES, and the ban is
+      what makes the whole practice unlawful. The obligation layer never reaches them, because the
+      pipeline stops at a prohibited verdict rather than issuing a compliance checklist for a
+      practice that must be withdrawn.
+    decisive_fact: >-
+      Art. 5(1)(ba): generating realistic imagery of an identifiable natural person's intimate parts
+      without that person's explicit consent. Art. 5(1a)(a)(i) is satisfied on the plainest limb —
+      producing that material is the system's INTENDED PURPOSE, so the safeguards question never
+      arises. Art. 5(1b) does not save it either: removing clothing increases the exposure of
+      intimate parts, which is exactly what that paragraph declines to exclude. The prohibition
+      applies from 2 December 2026, so a report must give the date rather than say "withdraw now".
+    difficulty: obvious
+    split: dev
+    notes: >-
+      The first golden case for a prohibition that is enacted but NOT YET IN FORCE, which is what
+      makes it worth having beyond the label: it exercises the report's two-date branch as well as
+      the classifier's.

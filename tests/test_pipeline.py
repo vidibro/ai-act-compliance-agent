@@ -262,3 +262,42 @@ def test_a_gpai_model_is_not_checked_but_is_not_cleared_either(spec):
     assert report.scope_note and "NOT ASSESSED, not compliant" in report.scope_note
     # The handover travels with it, so the reader is told what DOES govern.
     assert "Art. 53" in report.scope_note and "Chapter V" in report.scope_note
+
+
+# --- Art. 5's two dates ---------------------------------------------------------------------
+def test_a_prohibition_not_yet_in_force_reports_its_date(spec):
+    """Art. 5(1)(ba) and (bb) were inserted by Reg (EU) 2026/1744 and apply only from 2 December
+    2026 — the first time Art. 5 has had more than one date. Telling an organisation to withdraw a
+    practice the Article does not yet reach would be wrong; saying nothing about the date would be
+    wrong the other way, because it does become unlawful and no documentation changes that."""
+    brain = a_brain(prohibited=ProhibitedPractice.NON_CONSENSUAL_INTIMATE_IMAGERY)
+    report = review(DOCUMENT, spec, brain, judge=StubJudge())
+
+    assert report.classification.overall_risk_class == RiskClass.PROHIBITED
+    assert report.findings == [], "Chapter III is never checked against a prohibited practice"
+    note = report.scope_note or ""
+    assert "2026-12-02" in note
+    assert "Art. 5(1)(ba)" in note
+    assert "withdrawal deadline" in note
+
+
+def test_a_prohibition_already_in_force_says_withdraw(spec):
+    """The contrast that gives the test above its meaning: for a point that already applies, the
+    answer is still the plain one."""
+    brain = a_brain(prohibited=ProhibitedPractice.SOCIAL_SCORING)
+    report = review(DOCUMENT, spec, brain, judge=StubJudge())
+
+    note = report.scope_note or ""
+    assert "Withdraw the practice." in note
+    assert "2026-12-02" not in note
+
+
+def test_the_report_can_name_which_point_banned_the_practice(spec):
+    """The tier alone no longer settles whether a practice is banned today, so the point has to
+    reach the report rather than only the reasoning string."""
+    brain = a_brain(prohibited=ProhibitedPractice.CHILD_SEXUAL_ABUSE_MATERIAL)
+    report = review(DOCUMENT, spec, brain, judge=StubJudge())
+    practice = report.classification.prohibited_practice
+
+    assert practice is ProhibitedPractice.CHILD_SEXUAL_ABUSE_MATERIAL
+    assert practice.point == "bb"

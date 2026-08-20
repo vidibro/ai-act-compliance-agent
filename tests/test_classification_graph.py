@@ -133,10 +133,28 @@ def test_a_ban_that_cannot_cite_its_point_is_not_reported_as_a_ban():
 
 
 def test_every_prohibited_practice_can_cite_itself():
-    """Art. 5(1) runs (a) to (h) and each member must map to its own letter — a duplicate or a
-    missing key would cite a ban under a letter belonging to another one."""
+    """Each member maps to its own point of Art. 5(1) — a duplicate or a missing key would cite a
+    ban under a letter belonging to another one.
+
+    The list is no longer (a) to (h): Regulation (EU) 2026/1744 inserted (ba) and (bb) BETWEEN (b)
+    and (c) rather than appending them, so the declaration order is the Article's order and the
+    letters are not a contiguous alphabet."""
     points = [p.point for p in ProhibitedPractice]
-    assert points == list("abcdefgh")
+    assert points == ["a", "b", "ba", "bb", "c", "d", "e", "f", "g", "h"]
+    assert len(set(points)) == len(points)
+
+
+def test_the_two_inserted_prohibitions_are_not_yet_in_force():
+    """A prohibited verdict says STOP, not 'document this', so when it starts to bite is part of
+    the answer. Art. 5 applied from 2 February 2025, but the two points the Omnibus inserted apply
+    only from 2 December 2026 — the first time this Article has had more than one date."""
+    inserted = {
+        ProhibitedPractice.NON_CONSENSUAL_INTIMATE_IMAGERY,
+        ProhibitedPractice.CHILD_SEXUAL_ABUSE_MATERIAL,
+    }
+    for practice in ProhibitedPractice:
+        expected = date(2026, 12, 2) if practice in inserted else date(2025, 2, 2)
+        assert practice.applies_from == expected, practice.value
 
 
 def test_a_general_purpose_model_leaves_the_risk_cascade():

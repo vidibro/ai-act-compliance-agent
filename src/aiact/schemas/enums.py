@@ -5,6 +5,7 @@ These are the vocabulary the rest of the schema layer is built on; a bare identi
 list would lose the reasoning that later readers (human or model) depend on.
 """
 
+from datetime import date
 from enum import StrEnum
 
 
@@ -257,6 +258,29 @@ class ProhibitedPractice(StrEnum):
     """5(1)(b). Exploits vulnerabilities due to age, disability, or a specific social or economic
     situation, materially distorting behaviour so as to cause significant harm."""
 
+    NON_CONSENSUAL_INTIMATE_IMAGERY = "non_consensual_intimate_imagery"
+    """5(1)(ba). Generating or manipulating REALISTIC images, video or audio of an identifiable
+    person's intimate parts, or of them engaged in sexually explicit activity, without that person's
+    freely given, specific, informed, unambiguous and explicit consent.
+
+    Inserted by Regulation (EU) 2026/1744 and NOT IN FORCE until 2 December 2026 — see
+    `applies_from`. Narrowed twice over by Art. 5(1a): a provider is caught only where such
+    generation is the system's INTENDED PURPOSE, or where it is a reasonably foreseeable and
+    reproducible outcome that the system has no reasonable safeguards against; a deployer only where
+    it USES the system for that purpose. And Art. 5(1b) excludes manipulation that does not increase
+    the exposure of intimate parts or alter the nature of the activity depicted. A general-purpose
+    image generator is therefore not caught by capability alone, which is the whole difficulty of
+    this point."""
+
+    CHILD_SEXUAL_ABUSE_MATERIAL = "child_sexual_abuse_material"
+    """5(1)(bb). Generating or manipulating material or a performance within the meaning of
+    Art. 2, points (c) and (e), of Directive 2011/93/EU, except where a 'without right' defence
+    applies under national law.
+
+    Inserted by Regulation (EU) 2026/1744, in force from 2 December 2026, and narrowed by the same
+    Art. 5(1a) test as (ba). The 'without right' carve-out is a question of national criminal law,
+    not of the system, so nothing here can resolve it."""
+
     SOCIAL_SCORING = "social_scoring"
     """5(1)(c). Evaluating or classifying persons over time on social behaviour or personal
     characteristics, where the social score leads to detrimental treatment that is either
@@ -293,18 +317,54 @@ class ProhibitedPractice(StrEnum):
         """The Art. 5(1) point, for citation — same discipline as `ScopeExclusion.paragraph`."""
         return _PROHIBITED_POINT[self]
 
+    @property
+    def applies_from(self) -> date:
+        """WHEN this prohibition began, or begins, to apply.
+
+        Not decoration, and not the same for every point. Art. 5 applied from 2 February 2025 under
+        Art. 113(a), and until Regulation (EU) 2026/1744 that was true of the whole Article — so the
+        date could be left implicit. It inserted points (ba) and (bb) and gave them their own date,
+        2 December 2026, which is in the FUTURE at the time of writing.
+
+        A prohibited verdict is the one verdict that tells an organisation to stop rather than to
+        document, so 'this practice is banned' and 'this practice will be banned in three months'
+        are different things to be told, and a report that cannot tell them apart would be wrong in
+        whichever direction it guessed. This is the same gap as M4d-5, in miniature and answerable.
+        """
+        return _PROHIBITED_APPLIES_FROM[self]
+
 
 # No default, and every member listed, for the reason given at _SCOPE_EXCLUSION_PARAGRAPH: a member
 # added without its point would be cited under a letter belonging to another prohibition.
 _PROHIBITED_POINT: dict[ProhibitedPractice, str] = {
     ProhibitedPractice.SUBLIMINAL_MANIPULATION: "a",
     ProhibitedPractice.EXPLOITING_VULNERABILITIES: "b",
+    ProhibitedPractice.NON_CONSENSUAL_INTIMATE_IMAGERY: "ba",
+    ProhibitedPractice.CHILD_SEXUAL_ABUSE_MATERIAL: "bb",
     ProhibitedPractice.SOCIAL_SCORING: "c",
     ProhibitedPractice.CRIMINAL_OFFENCE_PREDICTION: "d",
     ProhibitedPractice.FACIAL_IMAGE_SCRAPING: "e",
     ProhibitedPractice.EMOTION_INFERENCE_WORKPLACE_EDUCATION: "f",
     ProhibitedPractice.BIOMETRIC_CATEGORISATION_SENSITIVE: "g",
     ProhibitedPractice.REALTIME_REMOTE_BIOMETRIC_IDENTIFICATION: "h",
+}
+
+# Art. 113(a) as amended. Every member listed, no default, for the reason given above: a member
+# added without a date would silently inherit someone else's, and here that means reporting a
+# practice as banned today when the Article gives it another three months.
+_ART_5_GENERAL = date(2025, 2, 2)
+_ART_5_OMNIBUS_INSERTIONS = date(2026, 12, 2)
+_PROHIBITED_APPLIES_FROM: dict[ProhibitedPractice, date] = {
+    ProhibitedPractice.SUBLIMINAL_MANIPULATION: _ART_5_GENERAL,
+    ProhibitedPractice.EXPLOITING_VULNERABILITIES: _ART_5_GENERAL,
+    ProhibitedPractice.NON_CONSENSUAL_INTIMATE_IMAGERY: _ART_5_OMNIBUS_INSERTIONS,
+    ProhibitedPractice.CHILD_SEXUAL_ABUSE_MATERIAL: _ART_5_OMNIBUS_INSERTIONS,
+    ProhibitedPractice.SOCIAL_SCORING: _ART_5_GENERAL,
+    ProhibitedPractice.CRIMINAL_OFFENCE_PREDICTION: _ART_5_GENERAL,
+    ProhibitedPractice.FACIAL_IMAGE_SCRAPING: _ART_5_GENERAL,
+    ProhibitedPractice.EMOTION_INFERENCE_WORKPLACE_EDUCATION: _ART_5_GENERAL,
+    ProhibitedPractice.BIOMETRIC_CATEGORISATION_SENSITIVE: _ART_5_GENERAL,
+    ProhibitedPractice.REALTIME_REMOTE_BIOMETRIC_IDENTIFICATION: _ART_5_GENERAL,
 }
 
 
