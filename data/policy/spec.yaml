@@ -48,13 +48,19 @@
 # PINNED TO 2026-07-27 — the consolidated text as amended by Regulation (EU) 2026/1744 (Digital
 # Omnibus on AI). Requirement text below resolves from data/policy/articles/2026-07-27/.
 #
-# KNOWN STALE, and deliberately not fixed in the same change that repointed the pin:
-# `effective_date` still says 2026-08-02 on the Chapter III rules. The amended Art. 113 moved
-# Chapter III Sections 1-3 to 2 DECEMBER 2027 for Annex III systems and 2 AUGUST 2028 for Annex I
-# ones — a date that depends on the ROUTE, which a single effective_date field cannot express, so
-# fixing it is a schema question rather than a find-and-replace. Sections 5 (Arts. 43, 47-49) was
-# NOT moved and keeps the general date. Until that lands, treat every 2026-08-02 below as unmigrated
-# rather than as an assertion about the law.
+# WHEN each obligation applies, per the amended Art. 113. Not one date any more:
+#   Chapter III Sections 1-3 (Arts. 6-27) -> `effective_date_by_route`, because the Omnibus gave the
+#       two Art. 6 doors different days: 2 DECEMBER 2027 for a system high-risk under 6(2)/Annex III,
+#       2 AUGUST 2028 for one high-risk under 6(1)/Annex I. The same rule, two start dates.
+#   Chapter III Section 5 (Arts. 43, 47-49) -> NOT moved. General date, 2 August 2026, already
+#       passed — so conformity assessment and registration apply while the requirements they attest
+#       to do not. That is what the Article says; it is not a transcription error.
+#   Chapter IV (Art. 50) and Chapter IX (Arts. 72, 73, 86) -> general date, 2 August 2026.
+#   Chapter I (Art. 4) -> 2 February 2025, the earliest here and owed today.
+#
+# These dates are RECORDED, not yet enforced: nothing gates a rule out of a report for being
+# inapplicable today, so a high-risk report still raises all of Chapter III. Making the date live is
+# M4d-5 and a larger change than this one — see docs/ROADMAP.md.
 
 spec_version: "0.8.0"
 act_version_date: 2026-07-27
@@ -84,7 +90,9 @@ rules:
       reasonably foreseeable misuse, evaluation against post-market monitoring data, and adoption
       of targeted mitigation measures — not a one-line assertion that "risks are managed".
     document_verifiable: true
-    effective_date: 2026-08-02
+    effective_date_by_route:
+      annex_iii: 2027-12-02
+      annex_i: 2028-08-02
     status: active
 
   - rule_id: AIA-HR-A10
@@ -102,7 +110,9 @@ rules:
       relevance to the intended purpose. A generic "responsible AI" statement with no
       data-governance substance is INADEQUATE, not a pass.
     document_verifiable: true
-    effective_date: 2026-08-02
+    effective_date_by_route:
+      annex_iii: 2027-12-02
+      annex_i: 2028-08-02
     status: active
 
   - rule_id: AIA-HR-A11
@@ -121,7 +131,9 @@ rules:
       process, monitoring/functioning/control, performance metrics, risk-management, and changes
       over the lifecycle. Missing elements are gaps in an otherwise-present documentation set.
     document_verifiable: true
-    effective_date: 2026-08-02
+    effective_date_by_route:
+      annex_iii: 2027-12-02
+      annex_i: 2028-08-02
     status: active
 
   - rule_id: AIA-HR-A12
@@ -138,7 +150,9 @@ rules:
       A description that the system records events/logs automatically over its lifetime. Existence
       of the logging capability, described, is sufficient for this rule.
     document_verifiable: true
-    effective_date: 2026-08-02
+    effective_date_by_route:
+      annex_iii: 2027-12-02
+      annex_i: 2028-08-02
     status: active
 
   - rule_id: AIA-HR-A13
@@ -155,7 +169,9 @@ rules:
       characteristics, capabilities and limitations of performance, and the human-oversight
       measures. Substance, not a claim that "the system is transparent".
     document_verifiable: true
-    effective_date: 2026-08-02
+    effective_date_by_route:
+      annex_iii: 2027-12-02
+      annex_i: 2028-08-02
     status: active
 
   - rule_id: AIA-HR-A14
@@ -172,7 +188,9 @@ rules:
       operator to intervene in or stop the system, and the competencies expected of the overseer.
       "We ensure human oversight" with nothing further is INADEQUATE.
     document_verifiable: true
-    effective_date: 2026-08-02
+    effective_date_by_route:
+      annex_iii: 2027-12-02
+      annex_i: 2028-08-02
     status: active
 
   - rule_id: AIA-HR-A15
@@ -189,7 +207,9 @@ rules:
       errors, faults or adversarial conditions), and cybersecurity measures. A claim of "high
       accuracy" with no numbers is INADEQUATE, not a pass.
     document_verifiable: true
-    effective_date: 2026-08-02
+    effective_date_by_route:
+      annex_iii: 2027-12-02
+      annex_i: 2028-08-02
     status: active
 
   # ------------------------------------------------------------------------------------------
@@ -222,7 +242,9 @@ rules:
       does not satisfy it is documentation that identifies no provider at all and says nothing
       about where the identification sits.
     document_verifiable: true
-    effective_date: 2026-08-02
+    effective_date_by_route:
+      annex_iii: 2027-12-02
+      annex_i: 2028-08-02
     status: active
 
   - rule_id: AIA-PO-A16-K
@@ -242,7 +264,9 @@ rules:
       provider organisation rather than a property of the technical documentation — confirm
       separately.
     document_verifiable: false
-    effective_date: 2026-08-02
+    effective_date_by_route:
+      annex_iii: 2027-12-02
+      annex_i: 2028-08-02
     status: active
 
   - rule_id: AIA-PO-A16-L
@@ -265,7 +289,9 @@ rules:
       provider duty. This tool reads Regulation (EU) 2024/1689 alone, so the assessment belongs
       with whoever holds the accessibility conformity evidence — confirm separately.
     document_verifiable: false
-    effective_date: 2026-08-02
+    effective_date_by_route:
+      annex_iii: 2027-12-02
+      annex_i: 2028-08-02
     status: active
 
   - rule_id: AIA-PO-A17
@@ -283,7 +309,9 @@ rules:
       the provider organisation, not a property of the system's technical documentation — confirm
       separately.
     document_verifiable: false
-    effective_date: 2026-08-02
+    effective_date_by_route:
+      annex_iii: 2027-12-02
+      annex_i: 2028-08-02
     status: active
 
   - rule_id: AIA-PO-A18
@@ -300,7 +328,9 @@ rules:
       A document-retention process at the provider. Not observable from the system's technical
       documentation — confirm separately.
     document_verifiable: false
-    effective_date: 2026-08-02
+    effective_date_by_route:
+      annex_iii: 2027-12-02
+      annex_i: 2028-08-02
     status: active
 
   - rule_id: AIA-PO-A19
@@ -317,7 +347,9 @@ rules:
       A log-retention process at the provider. Distinct from Art. 12 (the system's capability to
       generate logs, which IS document-verifiable) — confirm separately.
     document_verifiable: false
-    effective_date: 2026-08-02
+    effective_date_by_route:
+      annex_iii: 2027-12-02
+      annex_i: 2028-08-02
     status: active
 
   - rule_id: AIA-PO-A20
@@ -334,7 +366,9 @@ rules:
       A corrective-action and notification procedure. A post-market process obligation, not visible
       in the technical documentation — confirm separately.
     document_verifiable: false
-    effective_date: 2026-08-02
+    effective_date_by_route:
+      annex_iii: 2027-12-02
+      annex_i: 2028-08-02
     status: active
 
   - rule_id: AIA-PO-A21
@@ -351,7 +385,9 @@ rules:
       A duty to cooperate with authorities on request. A relational process obligation, not a
       property of the documentation — confirm separately.
     document_verifiable: false
-    effective_date: 2026-08-02
+    effective_date_by_route:
+      annex_iii: 2027-12-02
+      annex_i: 2028-08-02
     status: active
 
   # Art. 43 splits THREE WAYS and the split is by route and area, not by anything a single rule
@@ -647,7 +683,16 @@ rules:
       why the system does not pose a significant risk. The reasoning IS expected in the
       documentation, hence document-verifiable.
     document_verifiable: true
-    effective_date: 2026-08-02
+    # A JUDGEMENT CALL, and the only date here that the amended Art. 113 does not settle. Its two
+    # limbs run to systems "classified as high-risk pursuant to Article 6(2)" and "pursuant to
+    # Article 6(1)" — and this rule's subject is a system the provider concluded is NOT high-risk,
+    # so it answers to neither limb literally. Art. 6(4) is nonetheless in Chapter III Section 1,
+    # which those limbs move wholesale, and the assessment it requires is an assessment about the
+    # Annex III door: 6(3) derogates from 6(2) alone and can never reach an Annex I system. So the
+    # Annex III date is taken. The alternative reading — that an unmoved Section 1 obligation falls
+    # back to the general 2 August 2026 — is arguable, and would make this duty apply sixteen months
+    # BEFORE the classification it documents. Recorded because it is a choice, not a reading.
+    effective_date: 2027-12-02
     status: active
 
   # ------------------------------------------------------------------------------------------
@@ -819,7 +864,9 @@ rules:
       workplace. Held by the operating organisation, so a provider's technical file cannot evidence
       it.
     document_verifiable: false
-    effective_date: 2026-08-02
+    effective_date_by_route:
+      annex_iii: 2027-12-02
+      annex_i: 2028-08-02
     status: active
 
   - rule_id: AIA-DP-A27
@@ -866,7 +913,9 @@ rules:
       meets part of this, Art. 27(4) makes the fundamental rights assessment COMPLEMENT it rather
       than replace it — an existing DPIA is not on its own an answer here.
     document_verifiable: false
-    effective_date: 2026-08-02
+    effective_date_by_route:
+      annex_iii: 2027-12-02
+      annex_i: 2028-08-02
     status: active
 
   # ------------------------------------------------------------------------------------------
@@ -911,7 +960,9 @@ rules:
       separately. Note the direction: this binds the party that has STOPPED being the provider, and
       the provider obligations elsewhere in this report are the new provider's.
     document_verifiable: false
-    effective_date: 2026-08-02
+    effective_date_by_route:
+      annex_iii: 2027-12-02
+      annex_i: 2028-08-02
     status: active
 
   # ------------------------------------------------------------------------------------------
@@ -943,7 +994,9 @@ rules:
       to TERMINATE the mandate, and tell the market surveillance authority, where the representative
       has reason to consider the provider in breach.
     document_verifiable: false
-    effective_date: 2026-08-02
+    effective_date_by_route:
+      annex_iii: 2027-12-02
+      annex_i: 2028-08-02
     status: active
 
   - rule_id: AIA-IM-A23
@@ -965,7 +1018,9 @@ rules:
       use and declaration of conformity; and cooperation with authorities on reasoned request. A
       system it has reason to consider non-conforming or falsified must NOT be placed on the market.
     document_verifiable: false
-    effective_date: 2026-08-02
+    effective_date_by_route:
+      annex_iii: 2027-12-02
+      annex_i: 2028-08-02
     status: active
 
   - rule_id: AIA-DI-A24
@@ -985,7 +1040,9 @@ rules:
       already supplied non-conforming; and information and cooperation on reasoned request. A
       system it has reason to consider non-conforming must NOT be made available.
     document_verifiable: false
-    effective_date: 2026-08-02
+    effective_date_by_route:
+      annex_iii: 2027-12-02
+      annex_i: 2028-08-02
     status: active
 
   # ------------------------------------------------------------------------------------------

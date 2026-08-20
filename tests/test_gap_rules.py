@@ -15,6 +15,7 @@ from datetime import date
 
 import pytest
 
+from aiact.config import get_settings
 from aiact.gap.rules import select_rules
 from aiact.policy_loader import load_policy_spec
 from aiact.schemas.classification import ClassificationEvidence, UseCaseClassification
@@ -29,7 +30,9 @@ from aiact.schemas.enums import (
 )
 from aiact.schemas.policy import LegalSource, PolicyRule
 
-ACT_DATE = date(2024, 7, 12)
+# Fixture LegalSources only — read rather than restated, for the reason given in
+# tests/test_policy_loader.py: the act version already lives in two places that must agree.
+ACT_DATE = get_settings().act_version_date
 
 
 @pytest.fixture(scope="module")
@@ -477,3 +480,67 @@ def test_the_secure_section_covers_the_deployer_registration_too(spec):
 
     assert "AIA-ALL-A49-4" in police_deployer
     assert "AIA-ALL-A49-4" in police_provider
+
+
+# --- Art. 113 — when each obligation starts ----------------------------------------------------
+#
+# One rule, two start dates. The Omnibus rewrote Art. 113 so Chapter III Sections 1-3 apply from
+# 2 December 2027 to a system high-risk by the Annex III door and 2 August 2028 by the Annex I one,
+# which is the same shape of problem `applies_to_route` was built for: there the route decided WHICH
+# law applies, here it decides WHEN.
+
+# Chapter III Sections 1, 2 and 3 = Arts. 6 to 27. Section 5 (Arts. 40-49) was NOT moved.
+_ROUTE_SPLIT_ARTICLES = set(range(6, 28))
+_ANNEX_III_DATE = date(2027, 12, 2)
+_ANNEX_I_DATE = date(2028, 8, 2)
+_GENERAL_DATE = date(2026, 8, 2)
+
+
+def test_chapter_iii_obligations_start_on_the_route_s_date(spec):
+    """Every rule citing Arts. 6-27 carries both dates, and resolves to the right one per door."""
+    split = [r for r in spec.rules if r.source.article in _ROUTE_SPLIT_ARTICLES]
+    assert len(split) == 22, "Arts. 6-27 should be the whole of Chapter III Sections 1-3"
+    for rule in split:
+        if rule.rule_id == "AIA-NHR-A06-4":
+            continue  # not a high-risk system at all — see its comment in spec.yaml
+        assert rule.effective_date is None, f"{rule.rule_id} states a single date"
+        assert rule.effective_date_for(HighRiskRoute.ANNEX_III) == _ANNEX_III_DATE, rule.rule_id
+        assert rule.effective_date_for(HighRiskRoute.ANNEX_I) == _ANNEX_I_DATE, rule.rule_id
+
+
+def test_the_sections_the_omnibus_left_alone_keep_the_general_date(spec):
+    """Arts. 43 and 47-49 sit in Section 5, which Art. 113(c) does not name, so they still apply
+    from 2 August 2026. Conformity assessment and registration therefore apply BEFORE the
+    requirements they attest to — the Article's own result, and the reason this is pinned rather
+    than smoothed over."""
+    for rule_id in ("AIA-PO-A43-1", "AIA-PO-A47", "AIA-PO-A49", "AIA-DP-A49-3", "AIA-ALL-A49-4"):
+        rule = next(r for r in spec.rules if r.rule_id == rule_id)
+        assert rule.effective_date == _GENERAL_DATE, rule_id
+        assert not rule.effective_date_by_route, f"{rule_id} was not moved by the Omnibus"
+
+
+def test_no_rule_still_carries_a_date_the_omnibus_moved(spec):
+    """The migration tripwire. 2026-08-02 was the date on every Chapter III rule before the
+    amendment, so one left behind in Sections 1-3 is an unmigrated rule rather than a decision."""
+    stale = [
+        r.rule_id
+        for r in spec.rules
+        if r.source.article in _ROUTE_SPLIT_ARTICLES and r.effective_date == _GENERAL_DATE
+    ]
+    assert not stale, f"still on the pre-Omnibus date: {stale}"
+
+
+def test_a_rule_may_not_state_its_date_twice():
+    with pytest.raises(ValueError, match="sets both effective_date"):
+        _a_rule(
+            applies_to_risk_class=[RiskClass.HIGH_RISK],
+            effective_date=_GENERAL_DATE,
+            effective_date_by_route={HighRiskRoute.ANNEX_III: _ANNEX_III_DATE},
+        )
+
+
+def test_an_unknown_route_resolves_to_the_earlier_date(spec):
+    """Deliberately the earlier one. Telling a reader they have until 2028 when the answer might
+    have been 2027 is the direction that costs them a deadline."""
+    rule = next(r for r in spec.rules if r.rule_id == "AIA-HR-A09")
+    assert rule.effective_date_for(None) == _ANNEX_III_DATE

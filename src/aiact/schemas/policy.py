@@ -189,6 +189,51 @@ class PolicyRule(BaseModel):
     evidence_expected: str  # what in the documentation would satisfy this
     document_verifiable: bool  # see model_validator below
     effective_date: date | None = None
+    """WHEN this obligation starts to apply, where that does not depend on the Art. 6 route."""
+
+    effective_date_by_route: dict[HighRiskRoute, date] = {}
+    """WHEN it starts to apply, where Art. 113 gives the two doors DIFFERENT dates.
+
+    Empty is the ordinary case. It is non-empty for Chapter III Sections 1 to 3 — Arts. 6-27 — and
+    the reason is Regulation (EU) 2026/1744: it rewrote Art. 113 so those Sections apply from
+    2 December 2027 to a system that is high-risk under Art. 6(2) and Annex III, and from
+    2 August 2028 to one high-risk under Art. 6(1) and Annex I.
+
+    So the SAME rule now starts on two different days depending on which door the system came
+    through, and a single `effective_date` cannot say that. This is structurally the same gap
+    `applies_to_route` was built for — there the route decided WHICH law applies, here it decides
+    WHEN — and it is answered the same way rather than by picking one date and rounding.
+
+    Sections 4 and 5 were NOT moved. Arts. 43 and 47-49 keep the general date, which is why the
+    conformity assessment and registration rules carry a plain `effective_date` while the
+    requirements they attest to do not."""
+
+    @model_validator(mode="after")
+    def _one_way_of_saying_when(self) -> PolicyRule:
+        """A rule states its date one way or the other, never both.
+
+        Both would leave two answers to one question with nothing deciding between them, and the
+        one a reader got would depend on which field the renderer happened to read."""
+        if self.effective_date is not None and self.effective_date_by_route:
+            raise ValueError(
+                f"PolicyRule {self.rule_id!r}: sets both effective_date and "
+                f"effective_date_by_route. Art. 113 gives this obligation either one date or one "
+                f"per Art. 6 route — say which."
+            )
+        return self
+
+    def effective_date_for(self, route: HighRiskRoute | None) -> date | None:
+        """The date this obligation applies from, for a use case that came through `route`.
+
+        An unknown route resolves to the EARLIEST date on offer, deliberately. The alternative is
+        telling a reader they have until 2028 when the answer might have been 2027, and a deadline
+        that is wrong in that direction is the one that costs them. Every high-risk use case
+        actually carries a route, so this is a fallback rather than a normal path."""
+        if not self.effective_date_by_route:
+            return self.effective_date
+        if route is not None and route in self.effective_date_by_route:
+            return self.effective_date_by_route[route]
+        return min(self.effective_date_by_route.values())
     status: Literal["active", "postponed", "amended"]
     # "postponed": adopted but not yet applicable (e.g. Annex III obligations whose
     # application date was pushed back). Regulatory movement lives in DATA, not in code.
