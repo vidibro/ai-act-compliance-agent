@@ -2,8 +2,8 @@
 
 | | |
 |---|---|
-| **Provider** | Meridian Workforce Intelligence GmbH, Munich, Germany |
-| **System** | PathFinder, release 7.3 |
+| **Provider** | Meridian Workforce Intelligence GmbH (trade mark: Meridian WI), Leopoldstraße 210, 80804 Munich, Germany |
+| **Provider contact** | ai-compliance@meridian-wi.example — also shown on the sign-in screen of every PathFinder release || **System** | PathFinder, release 7.3 |
 | **File revision** | R7.3-b — May 2026 |
 | **Classification** | High-risk, Annex III point 4(b) |
 | **Conformity route** | Internal control (Annex VI) |

@@ -1,7 +1,8 @@
 # TalentRank Candidate Scoring — Technical Documentation
 
-**Provider:** Northwind Analytics B.V., Amsterdam, Netherlands
-**System:** TalentRank v4.2
+**Provider:** Northwind Analytics B.V., trading as Northwind Analytics, Keizersgracht 100,
+1015 CS Amsterdam, Netherlands. Contact: compliance@northwind-analytics.example.
+The same details are affixed to the product's start-up screen and its packaging.**System:** TalentRank v4.2
 **Document version:** 4.2.1 — March 2026
 **Intended purpose:** TalentRank produces a ranked fit score (0–100) for applicants against a job
 requisition, to support recruiter shortlisting decisions in the hiring process. The system is

@@ -16,7 +16,11 @@ figures and named measures, because a checker that only passes on perfect prose 
 
 # TalentRank Candidate Scoring — Technical Documentation
 
-**Provider:** Northwind Analytics B.V., Amsterdam, Netherlands
+<!-- rule: AIA-PO-A16-B -->
+**Provider:** Northwind Analytics B.V., trading as Northwind Analytics, Keizersgracht 100,
+1015 CS Amsterdam, Netherlands. Contact: compliance@northwind-analytics.example.
+The same details are affixed to the product's start-up screen and its packaging.
+<!-- /rule -->
 **System:** TalentRank v4.2
 **Document version:** 4.2.1 — March 2026
 **Intended purpose:** TalentRank produces a ranked fit score (0–100) for applicants against a job
@@ -209,8 +213,7 @@ TalentRank is designed so that its operation is sufficiently transparent for dep
 interpret its output and use it appropriately. The following instructions for use accompany the
 system.
 
-**Provider identity and contact.** Northwind Analytics B.V., Keizersgracht 100, 1015 CS Amsterdam,
-Netherlands. Contact: compliance@northwind-analytics.example.
+**Provider identity and contact.** As stated in the header of this document.
 
 **Characteristics and intended purpose.** TalentRank ranks applicants against a requisition to
 support recruiter shortlisting. It is decision-support only; it does not make hiring decisions and

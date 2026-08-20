@@ -34,7 +34,10 @@ The tags are stripped from generated case documents; they never reach the agent.
 
 | | |
 |---|---|
-| **Provider** | Meridian Workforce Intelligence GmbH, Munich, Germany |
+<!-- rule: AIA-PO-A16-B -->
+| **Provider** | Meridian Workforce Intelligence GmbH (trade mark: Meridian WI), Leopoldstraße 210, 80804 Munich, Germany |
+| **Provider contact** | ai-compliance@meridian-wi.example — also shown on the sign-in screen of every PathFinder release |
+<!-- /rule -->
 | **System** | PathFinder, release 7.3 |
 | **File revision** | R7.3-b — May 2026 |
 | **Classification** | High-risk, Annex III point 4(b) |
@@ -308,8 +311,7 @@ PathFinder is designed so that its operation is sufficiently transparent for dep
 interpret its output and use it appropriately. The following instructions accompany the system and
 are supplied to every deployer before use.
 
-**Identity and contact of the provider.** Meridian Workforce Intelligence GmbH, Leopoldstraße 210,
-80804 Munich, Germany. Compliance contact: ai-compliance@meridian-wi.example.
+**Identity and contact of the provider.** As given in the file header above.
 
 **Characteristics and intended purpose.** PathFinder recommends internal employees for open
 positions, successor slates and development assignments, and returns a readiness band with named
