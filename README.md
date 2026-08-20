@@ -245,16 +245,20 @@ applies and what a verdict means, the model answers one bounded question at a ti
 It takes a classification as an argument rather than producing one — `review()` supplies the
 cascade's output, and the two layers never import each other.
 
-Four steps, in a line. Boxes are the graph nodes; rounded shapes are the data passing between them.
+Four nodes. Boxes are the nodes; rounded shapes are the data passing between them, and the edges out
+of the two role answers are labelled because they do different things. **Neither ever removes an
+obligation** — that is the invariant the whole layer is built on.
 
 ```mermaid
 flowchart TD
-    IN([your documentation<br/>+ its risk class]):::data --> A25
+    IN([your documentation<br/>+ its risk class]):::data --> ROLES
 
-    A25{"<b>1. provider_role</b> — high-risk only<br/>Art. 25: did someone else place this system<br/>on the market, and have you become<br/>its provider since?"}:::model
-    A25 --> SEL
+    ROLES["<b>1. roles</b> — up to two AI calls, high-risk only<br/>Art. 25: has the provider role moved to a party that<br/>rebadged, modified or repurposed the system?<br/>Art. 27: what kind of organisation deploys it?"]:::model
+    ROLES --> MOVED([Art. 25: did the provider<br/>role move, and how?]):::data
+    ROLES --> WHO([Art. 27: which deployers<br/>a listed duty reaches]):::data
+    MOVED -->|"adds one obligation"| SEL
 
-    SEL["<b>2. select_rules</b> — no AI<br/>For each use case, for EVERY role the Act binds —<br/>provider, deployer, importer, distributor,<br/>authorised representative — look up the rules<br/>this risk class puts on them"]:::code
+    SEL["<b>2. select_rules</b> — no AI<br/>For each use case, for EVERY role the Act binds —<br/>provider, initial provider, deployer, importer,<br/>distributor, authorised representative — look up<br/>the rules this risk class puts on them"]:::code
     SEL --> CAN([rules a document<br/>can answer,<br/>per use case × role]):::data
     SEL --> CANT([rules it cannot —<br/>company processes,<br/>rules not in force yet]):::data
 
@@ -263,6 +267,8 @@ flowchart TD
 
     V --> ASM["<b>4. assemble_report</b> — no AI<br/>Count the answers, group them by who owes<br/>them, and list the rules nobody could check"]:::code
     CANT --> ASM
+    WHO -->|"reported beside Art. 27,<br/>which is listed either way"| ASM
+    MOVED -->|"AND reported in its own right:<br/>who the provider is now, and what<br/>Art. 25(2) leaves the old one owing"| ASM
     ASM --> OUT([compliance report]):::ok
 
     classDef code fill:#eef1f6,stroke:#5b6b8c
@@ -304,6 +310,15 @@ flowchart TD
   it would state as a separate obligation set the very thing the Article says is the provider's. It
   is reached by the Art. 25 step below instead, which answers with the provider ruleset this spec
   already holds.
+- **A role that changes hands leaves a duty behind.** Art. 25(2) says the party that originally
+  placed the system "shall no longer be considered to be a provider of that specific AI system" —
+  and then binds it anyway: cooperate with the new provider, supply the information, technical
+  access and assistance needed for the conformity assessment. So `ActorRole` names an **initial
+  provider**, holding exactly that one rule and holding it only where a reallocation actually
+  occurred. It is a role of its own because the duty runs the wrong way to sit anywhere else:
+  attaching it to `provider` would put it on the organisation that has just taken the role ON.
+  This is also the only obligation in the ruleset whose activation is answered by a question rather
+  than by the classification, which is why the Art. 25 answer feeds `select_rules`.
 - **And the roles can change hands, which is the first thing this graph asks.** Where the system is
   high-risk, Art. 25 makes a distributor, importer or deployer **the provider** — owing Art. 16
   whole, not a share of it — if it puts its name on a high-risk system someone else placed on the
@@ -317,6 +332,19 @@ flowchart TD
   This is a question about the READER, not the system, which is why it is here and not in the
   cascade — it consumes the risk class and changes nothing about it. Asked only at high risk,
   because that is the only system Art. 25 reallocates the provider of.
+- **Some duties bind only part of a role, and the report says so beside them — it does not
+  withhold them.** Art. 27's fundamental rights impact assessment reaches deployers that are bodies
+  governed by public law or private entities providing public services, and deployers of Annex
+  III(5)(b)–(c) systems — not deployers at large. Neither limb is a fact about the system, so no
+  technical file settles it and this tool does not guess: the rule carries an `activation_condition`
+  in plain words, and it is listed under the deployer's obligations like any other. Demoting it into
+  a "might not apply to you" list would be the tool deciding on a reader's behalf which of their
+  duties to take seriously, which is the same error as omitting a role because no ruleset was
+  written for it. But where the documentation *does* answer the condition — "deployed by the
+  municipality of X", "sold to private recruiters" — the report says which side it falls on rather
+  than restating the condition and ignoring the answer. Three outcomes, and the third is not the
+  second: **reached**, **not reached on that limb**, and **the document does not say**. Reading
+  silence as "commercial, so nothing owed" would clear a duty on evidence nobody supplied.
 - **`minimal` is not `out_of_scope`, and Art. 4 is what proves it.** A minimal-risk system is
   inside the Regulation: both its provider and its deployer owe AI literacy measures, in force
   since 2 February 2025. An excluded system owes nothing at all. If the obligation layer returned

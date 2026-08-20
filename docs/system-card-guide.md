@@ -124,12 +124,77 @@ one can owe none. State whether the system:
 - produces **deep fakes**, or text published to inform the public on matters of public interest
   (Art. 50(4))
 
-### 7. Are you the provider or the deployer? — Art. 3(3), Art. 3(4)
+### 7. Which organisations are in the chain? — Art. 3(3)–(7), Art. 25, Art. 27
 
-The **provider** develops the system, or places it on the market under its own name or trademark.
-The **deployer** uses it under its own authority. Obligations attach to the role, not to the
-organisation, and one organisation can hold both — assessed separately for each. This tool currently
-checks **provider** obligations.
+Obligations attach to a **role**, not to an organisation. One organisation can hold several, and a
+single system usually involves more than one party. Name every party you know of and say what each
+one does with the system.
+
+You will be writing from inside one of them. The others still belong in the card: the report covers
+every role the Act binds whoever wrote the document, and a party the card names gets a specific
+answer where an unnamed one gets a generic one.
+
+| role | what makes an organisation this | Art. |
+|---|---|---|
+| provider | developed it, or places it on the market under its own name or trademark | 3(3) |
+| initial provider | placed it on the market, and then stopped being its provider because Art. 25 moved the role to someone else | 25(2) |
+| deployer | uses it under its own authority, in a professional capacity | 3(4) |
+| importer | established in the EU, places a third-country entity's system on the market | 3(6) |
+| distributor | in the supply chain, makes it available on the EU market | 3(7) |
+| authorised representative | mandated by a non-EU provider to act for it in the EU | 3(5) |
+
+Then two facts about those parties that no description of the *system* can supply.
+
+**Has the provider role moved along the chain?** Under **Art. 25** a distributor, importer, deployer
+or other third party *becomes the provider* — owing Art. 16 in full, not a share of it — where it
+puts its own name or trademark on a high-risk system someone else placed on the market,
+substantially modifies one, or changes the intended purpose of a system that was not high-risk so
+that it becomes high-risk. Art. 25(3) does the same to a product manufacturer shipping bought-in AI
+inside its own product.
+
+"Substantially" is narrow and defined: **Art. 3(23)** means a change *not foreseen in the initial
+conformity assessment*, affecting Chapter III compliance or the assessed intended purpose.
+Configuring a system, tuning it within its documented envelope, or taking the vendor's updates is
+not it.
+
+So the card should show **both ends**: who placed the system on the market, and what any later party
+does to it. A document that mentions only one party cannot answer this, and a role change is never
+inferred from silence. The organisation this catches most often is the one least likely to write it
+down — a company that white-labels a vendor's hiring tool is its provider, and will otherwise read
+the short deployer column and think it is done.
+
+**And the party that loses the role does not walk away.** Art. 25(2) says the original provider
+"shall no longer be considered to be a provider of that specific AI system" — and then binds it
+anyway: cooperate with the new provider, and supply the information, the reasonably expected
+technical access and the other assistance needed to meet this Regulation, in particular for the
+conformity assessment. So the report gives that party a column of its own, the **initial provider**,
+and it appears exactly when the card shows the role moving. Two organisations to name, then, not
+one: whoever holds the provider role now, and whoever held it before.
+
+The duty falls away in one case, and it is a fact about the supply terms rather than the system: it
+does not apply where the initial provider **clearly specified** that its system was not to be turned
+into a high-risk one. If your terms say that, say so in the card.
+
+**What kind of organisations are the deployers?** **Art. 27** requires a fundamental rights impact
+assessment before first use — covering the deployer's processes, the period and frequency of use,
+who is affected, the specific risks, the human oversight measures, and what happens if those risks
+materialise. It does not reach every deployer. It binds those that are **bodies governed by public
+law or private entities providing public services**, and deployers of **Annex III(5)(b) and (c)**
+systems — creditworthiness and credit scoring, and risk assessment and pricing for life and health
+insurance.
+
+That turns on what the deploying organisation *is*, so no technical description settles it. A vendor
+usually knows the answer for its customer base even though it is not the deployer itself: "sold to
+municipalities" and "sold to private recruiters" lead to different obligations, and saying which
+resolves the question for everyone reading.
+
+**The tool reads this line if you write it.** Say nothing and the report records the condition as
+unresolved — which is honest, and useless. Name the kind of organisation and the report says whether
+Art. 27 reaches it. Saying nothing is never read as "commercial, so nothing owed": silence clears
+no duty here.
+
+*An existing GDPR data protection impact assessment does not discharge this. Art. 27(4) makes the
+fundamental rights assessment complement it.*
 
 ---
 
@@ -140,9 +205,26 @@ Copy this, fill it in, delete the prompts. One block per intended purpose.
 ```markdown
 # <system name> — system card
 
-**Provider:** <legal entity, address>
-**Our role:** provider | deployer | both (explain)
 **Version / date:**
+
+## Parties
+
+<Name every organisation you know of and what it does with the system. Leave a line out rather
+than guess; an unknown party is not the same as no party.>
+
+- **Developed by:** <legal entity>
+- **Placed on the market by:** <legal entity, and under whose name or trademark>
+- **Deployed by:** <who uses it under their own authority — a named customer, or the kind of
+  organisation it is sold to. For each: body governed by public law | private entity providing
+  public services | neither (Art. 27)>
+- **Importer / distributor / authorised representative:** <where a non-EU provider is involved>
+- **Changed after placing?** <Does any later party put its name on it, modify it beyond what the
+  original conformity assessment foresaw, or aim it at a new purpose? If so, who and what — that
+  party becomes the provider (Art. 25(1)), and the one named above as placing it on the market
+  becomes the INITIAL PROVIDER, owing cooperation and technical access under Art. 25(2). If your
+  supply terms forbid such changes, say so: Art. 25(2) does not apply where the initial provider
+  clearly specified the system was not to be turned into a high-risk one.>
+- **This card is written by:** <legal entity, address> — <which of the roles above we hold>
 
 ## Use case 1: <name the purpose, e.g. "candidate shortlisting">
 
@@ -178,6 +260,12 @@ communicate directly with the people it affects?>
 - [ ] The awkward capability is written down, not implied
 - [ ] Exemption claims are stated as claims, not left to inference
 - [ ] Art. 50 questions answered even if the risk tier is minimal
+- [ ] Every party you know of is named, with what it does to the system
+- [ ] Where one party placed the system and another changed or rebadged it, both ends are shown —
+      the new provider and the initial provider are two different organisations, and each owes
+      something (Art. 25(1) and 25(2))
+- [ ] The deploying organisations are described by kind — public body, private provider of public
+      services, or neither (Art. 27)
 
 If the tool still returns **needs review**, it will name the fact it was missing and the article that
 needed it. Add that fact and run it again.
@@ -199,9 +287,25 @@ template is trivially readable by our own tool, so a score measured on it would 
 
 ### Smart Screening — system card
 
-**Provider:** Example Analytics Ltd, Dublin, Ireland
-**Our role:** provider
 **Version / date:** 3.4 — July 2026
+
+#### Parties
+
+- **Developed by:** Example Analytics Ltd, Dublin, Ireland
+- **Placed on the market by:** Example Analytics Ltd, under its own name. No third party's system
+  is incorporated, rebadged or resold here.
+- **Deployed by:** our customers, who are private-sector recruiters and staffing agencies. We are
+  aware of none that is a body governed by public law or a private entity providing public
+  services; the product is not sold into public-sector recruitment. Where a customer is either,
+  the Art. 27 assessment falls to them and the instructions for use say so.
+- **Importer / distributor / authorised representative:** none. Sold directly, from the Union.
+- **Changed after placing?** Customers configure scoring criteria within the documented envelope
+  and receive our updates. No customer may retrain the model, add inputs, or resell the system
+  under its own name; our terms forbid it, and they state expressly that the system is not to be
+  turned into a different high-risk system. On our understanding that keeps Art. 25 from moving the
+  provider role — so there is no initial provider distinct from us — and we say it here so a
+  customer who does otherwise knows what it takes on.
+- **This card is written by:** Example Analytics Ltd — the provider.
 
 #### Use case 1: application field extraction
 
