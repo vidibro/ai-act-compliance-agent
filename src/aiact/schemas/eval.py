@@ -27,6 +27,7 @@ from pydantic import BaseModel, ConfigDict, field_validator, model_validator
 from aiact.schemas.enums import (
     AnnexIIIArea,
     AnnexIProduct,
+    DeployerType,
     DerogationCondition,
     GpaiStatus,
     ProhibitedPractice,
@@ -298,6 +299,17 @@ class ClassificationCase(BaseModel):
     five paragraphs at once, and the labels that were wrong were wrong in that direction. Same
     discipline as LegalSource on a verdict — a key that cannot show its working is how a wrong
     label survives unnoticed."""
+
+    expected_deployer_type: DeployerType = DeployerType.NOT_STATED
+    """What kind of organisation the description says DEPLOYS the system.
+
+    Pinned on high-risk Annex III cases, because that is where the question is put. Defaults to
+    NOT_STATED because that is what almost every real document supports: product documentation
+    describes a system, not its customers. `NEITHER` is a POSITIVE finding — the text establishes an
+    ordinary commercial deployer — and a case must not use it for silence, which is the failure this
+    column exists to catch. Art. 27 binds deployers that are bodies governed by public law or
+    private entities providing public services, and a run that read "sold to recruiters" as
+    "commercial, so no assessment owed" would have cleared a duty on evidence nobody supplied."""
 
     expected_provider_reallocation: ProviderReallocation | None = None
     """Art. 25 — WHICH circumstance has made the reader the provider of a system someone else

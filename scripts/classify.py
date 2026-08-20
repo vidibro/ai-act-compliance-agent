@@ -152,14 +152,15 @@ def run_golden(cases_path: Path | None = None) -> None:
     for case in cases.cases:
         result = classify(case.description, brain, case.case_id, questions=anchored)
         pairs.append((case, result))
-        # Art. 25 is asked by the GAP layer, not the cascade, so its answer is not on `result`.
-        # It is still measured here: the answer key is a fact about the case, and running the whole
-        # pipeline just to reach one question would pay for a full document review per case. The
-        # gate is `gap.roles.ask`'s own, so this asks exactly what a real review would.
-        art25 = role_questions.ask(
-            brain, case.description, result.overall_risk_class, role_qs
-        )
-        node_pairs.append((case, [*result.answers, *([art25] if art25 else [])]))
+        # The ROLE questions are asked by the GAP layer, not the cascade, so their answers are not
+        # on `result`. They are still measured here: an answer key is a fact about the case, and
+        # running the whole pipeline just to reach two questions would pay for a full document
+        # review per case. The gates are `gap.roles`' own, so these ask exactly what a review would.
+        role_answers = [
+            role_questions.ask(brain, case.description, result.overall_risk_class, role_qs),
+            role_questions.ask_deployer_type(brain, case.description, result, role_qs),
+        ]
+        node_pairs.append((case, [*result.answers, *[a for a in role_answers if a]]))
         score = score_case(case, result)
         # Art. 50 is reported per case beside the class, not folded into it — a run can get every
         # tier right while owing the wrong transparency duty on all of them.

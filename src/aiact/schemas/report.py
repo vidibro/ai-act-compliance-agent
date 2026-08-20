@@ -13,7 +13,7 @@ from datetime import date, datetime
 from pydantic import BaseModel, ValidationInfo, field_validator, model_validator
 
 from aiact.schemas.classification import ClassificationResult
-from aiact.schemas.enums import ActorRole, ProviderReallocation, Verdict
+from aiact.schemas.enums import ActorRole, DeployerType, ProviderReallocation, Verdict
 from aiact.schemas.policy import LegalSource, PolicySpec
 from aiact.schemas.question import EVIDENCE_QUOTE_MAX, Answer, Confidence
 
@@ -123,6 +123,18 @@ class ComplianceReport(BaseModel):
     that a deployer informed its workers under Art. 26(7).
     Roles owing nothing are absent rather than present-and-empty."""
 
+    deployer_type: Answer | None = None
+    """What kind of organisation deploys the system — read from the documentation, where it says.
+
+    Several deployer duties are narrowed by this and Art. 27 is the one modelled: the fundamental
+    rights impact assessment binds deployers that are bodies governed by public law or private
+    entities providing public services. The obligation is listed under the deployer whatever this
+    answers; the answer only tells a reader which side of that condition the document falls on,
+    which is otherwise a paragraph of prose the report restates and never resolves.
+
+    `None` means the question was not put — it is asked for a high-risk Annex III system, because
+    no other classification carries a duty narrowed this way."""
+
     provider_reallocation: Answer | None = None
     """Art. 25 — whether the reader has BECOME the provider of a system someone else built.
 
@@ -137,6 +149,51 @@ class ComplianceReport(BaseModel):
     a reader would otherwise have to infer. An empty findings list reads as a clean bill of health,
     and for a prohibited practice or an out-of-scope system that reading is dangerously wrong."""
     disclaimer: str = DISCLAIMER
+
+    @property
+    def deployer_organisation(self) -> DeployerType | None:
+        """The kind of organisation the documentation describes as deploying, or None where the
+        question was not put or the answer was unusable. Narrowed by TYPE, as elsewhere."""
+        answer = self.deployer_type
+        value = answer.value if answer is not None else None
+        return value if isinstance(value, DeployerType) else None
+
+    @property
+    def deployer_type_note(self) -> str | None:
+        """What the answer settles about Art. 27's organisation limb, or None where nothing was
+        asked. Three outcomes, and the third is not the second: a document that does not say is not
+        a document describing a private commercial deployer."""
+        kind = self.deployer_organisation
+        if kind is None:
+            return None
+        caught = kind.caught_by_article_27
+        if caught is True:
+            which = (
+                "a body governed by public law"
+                if kind is DeployerType.PUBLIC_BODY
+                else "a private entity providing public services"
+            )
+            return (
+                f"The documentation describes the deployer as {which}, which Art. 27(1) reaches. "
+                f"The fundamental rights impact assessment is owed before the system is first put "
+                f"into use, and its result notified to the market surveillance authority "
+                f"(Art. 27(3))."
+            )
+        if caught is False:
+            return (
+                "The documentation describes an ordinary commercial deployer, which Art. 27(1)'s "
+                "first limb does not reach. The second limb still can: the assessment is owed by "
+                "any deployer of an Annex III(5)(b) system — creditworthiness or credit scoring — "
+                "or an Annex III(5)(c) one — risk assessment and pricing for life and health "
+                "insurance — whoever they are, and this ruleset classifies by listed area rather "
+                "than by those sub-points."
+            )
+        return (
+            "The documentation does not say what kind of organisation deploys the system, so "
+            "whether Art. 27(1) reaches it is unresolved. That is not a finding that it does not: "
+            "the paragraph reaches bodies governed by public law and private entities providing "
+            "public services, and one line naming the deployer would settle it either way."
+        )
 
     @property
     def becomes_provider(self) -> ProviderReallocation | None:

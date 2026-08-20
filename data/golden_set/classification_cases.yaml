@@ -70,6 +70,7 @@ cases:
     expected_annex_i_product: null
     expected_annex_iii_area: employment
     expected_performs_profiling: true
+    expected_deployer_type: not_stated
     expected_provider_reallocation: null
     expected_transparency_duties: []
     transparency_basis: >-
@@ -423,6 +424,7 @@ cases:
     expected_annex_i_product: null
     expected_annex_iii_area: employment
     expected_performs_profiling: true
+    expected_deployer_type: not_stated
     expected_provider_reallocation: null
     expected_transparency_duties: []
     transparency_basis: >-
@@ -496,6 +498,7 @@ cases:
     expected_annex_i_product: null
     expected_annex_iii_area: essential_services
     expected_performs_profiling: true
+    expected_deployer_type: neither
     expected_provider_reallocation: null
     expected_transparency_duties: []
     transparency_basis: >-
@@ -596,6 +599,7 @@ cases:
     expected_annex_i_product: null
     expected_annex_iii_area: employment
     expected_performs_profiling: true
+    expected_deployer_type: not_stated
     expected_provider_reallocation: null
     expected_transparency_duties: []
     transparency_basis: >-
@@ -633,6 +637,7 @@ cases:
     expected_performs_profiling: false
     expected_derogation: narrow_procedural_task
     expected_poses_significant_risk: true
+    expected_deployer_type: not_stated
     expected_provider_reallocation: null
     expected_transparency_duties: []
     transparency_basis: >-
@@ -855,6 +860,7 @@ cases:
     expected_annex_iii_area: migration
     expected_performs_profiling: false
     expected_derogation: null
+    expected_deployer_type: public_body
     expected_provider_reallocation: null
     expected_transparency_duties: []
     transparency_basis: >-
@@ -992,6 +998,7 @@ cases:
     expected_annex_i_product: null
     expected_annex_iii_area: employment
     expected_performs_profiling: true
+    expected_deployer_type: not_stated
     expected_provider_reallocation: null
     expected_transparency_duties: []
     transparency_basis: >-
@@ -1228,6 +1235,7 @@ cases:
     expected_annex_i_product: null
     expected_annex_iii_area: employment
     expected_performs_profiling: true
+    expected_deployer_type: not_stated
     expected_provider_reallocation: null
     expected_transparency_duties: []
     transparency_basis: >-
@@ -2182,6 +2190,7 @@ cases:
       natural person (50(1)) nor generation of synthetic content (50(2)); no emotion is inferred and
       nobody is categorised biometrically (50(3)); and there is no deep fake or published
       public-interest text (50(4)).
+    expected_deployer_type: neither
     expected_provider_reallocation: name_or_trademark
     provider_reallocation_basis: >-
       Art. 25(1)(a) squarely: the vendor placed the platform on the market, and the agency puts its
@@ -2220,6 +2229,7 @@ cases:
       synthetic content (50(2)), infers no emotion and categorises nobody biometrically (50(3)),
       and produces no deep fake or public-interest text (50(4)). Message VOLUME is a count, not
       content, so nothing here reads what employees wrote.
+    expected_deployer_type: neither
     expected_provider_reallocation: substantial_modification
     provider_reallocation_basis: >-
       Art. 25(1)(b) on the Art. 3(23) definition, which is what makes this a substantial
@@ -2263,6 +2273,7 @@ cases:
       manager as an internal assessment rather than as synthetic content put out into the world
       (50(2)); no emotion is inferred and nobody is categorised biometrically (50(3)); and there is
       no deep fake or text published to inform the public (50(4)).
+    expected_deployer_type: not_stated
     expected_provider_reallocation: intended_purpose_change
     provider_reallocation_basis: >-
       Art. 25(1)(c): the vendor's tool was placed on the market for general document work and was

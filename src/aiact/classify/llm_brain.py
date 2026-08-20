@@ -29,6 +29,7 @@ from aiact.providers import ProviderProfile, gateway_kwargs, profile_for
 from aiact.schemas.enums import (
     AnnexIIIArea,
     AnnexIProduct,
+    DeployerType,
     DerogationCondition,
     GpaiStatus,
     ProhibitedPractice,
@@ -141,6 +142,16 @@ def _answer_instructions(answer_type: str) -> str:
             f'set "value" to one of [{practices}]; null if no Article 5(1) point prohibits the '
             f'system; or "{UNKNOWN}" if the description does not state the facts the prohibition '
             f"or its exception turns on"
+        )
+    if answer_type == "deployer_type":
+        kinds = ", ".join(d.value for d in DeployerType)
+        # No UNKNOWN branch: `not_stated` IS the record of silence, and a second way to say it
+        # would split the ordinary answer across two values that mean the same thing.
+        return (
+            f'set "value" to one of [{kinds}] — use "not_stated" when the description says '
+            f"nothing about the deploying organisation, which is the ordinary case; use "
+            f'"neither" only where the text positively establishes an ordinary commercial '
+            f"deployer"
         )
     if answer_type == "provider_reallocation":
         limbs = ", ".join(r.value for r in ProviderReallocation)
@@ -274,11 +285,26 @@ def _parse_value(answer_type: str, value: object) -> object:
             return ScopeExclusion(str(value).strip().lower())
         except ValueError as exc:
             raise Unanswerable(f"{value!r} is not an Art. 2 exclusion") from exc
+    if answer_type == "deployer_type":
+        kinds = ", ".join(d.value for d in DeployerType)
+        # No UNKNOWN branch: `not_stated` IS the record of silence, and a second way to say it
+        # would split the ordinary answer across two values that mean the same thing.
+        return (
+            f'set "value" to one of [{kinds}] — use "not_stated" when the description says '
+            f"nothing about the deploying organisation, which is the ordinary case; use "
+            f'"neither" only where the text positively establishes an ordinary commercial '
+            f"deployer"
+        )
     if answer_type == "provider_reallocation":
         try:
             return ProviderReallocation(str(value).strip().lower())
         except ValueError as exc:
             raise Unanswerable(f"{value!r} is not an Art. 25 circumstance") from exc
+    if answer_type == "deployer_type":
+        try:
+            return DeployerType(str(value).strip().lower())
+        except ValueError as exc:
+            raise Unanswerable(f"{value!r} is not a kind of deploying organisation") from exc
     raise ValueError(f"unknown answer_type {answer_type!r}")
 
 

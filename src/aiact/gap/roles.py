@@ -24,6 +24,7 @@ from pathlib import Path
 
 from aiact.anchoring import Provisions, anchor_questions
 from aiact.brain import Brain
+from aiact.schemas.classification import ClassificationResult
 from aiact.schemas.enums import RiskClass
 from aiact.schemas.policy import LegalSource
 from aiact.schemas.question import Answer, Question
@@ -31,8 +32,49 @@ from aiact.schemas.question import Answer, Question
 _ACT_DATE = date(2024, 7, 12)
 
 NODE_ID = "provider_reallocation"
+DEPLOYER_NODE_ID = "deployer_type"
 
 QUESTIONS: dict[str, Question] = {
+    DEPLOYER_NODE_ID: Question(
+        DEPLOYER_NODE_ID,
+        LegalSource(
+            instrument="Regulation (EU) 2024/1689",
+            article=27,
+            paragraph=1,
+            act_version_date=_ACT_DATE,
+        ),
+        # A fact about the DEPLOYING ORGANISATION, which several deployer duties turn on and no
+        # description of a system supplies. Art. 27 is the one modelled today; Art. 49(3) narrows
+        # deployer registration the same way.
+        #
+        # NARROW AND FACTUAL, deliberately. The model is not asked "does Art. 27 apply?" — that is
+        # a legal conclusion the code draws, and it has a second limb (Annex III(5)(b)/(c)) this
+        # question knows nothing about. It is asked what kind of organisation the document says
+        # operates the system, which is a fact the document either states or does not.
+        "What kind of organisation does this description say DEPLOYS the system — that is, uses it "
+        "under its own authority? Answer about the deployer, not about whoever built or sells the "
+        "system.\n"
+        "- public_body: a body governed by public law — a public authority or agency, or an entity "
+        "established to meet needs in the general interest and controlled or financed by the "
+        "state. A ministry, a municipality, a public hospital, a state school, a court.\n"
+        "- public_service_provider: a PRIVATE entity providing public services — education, "
+        "healthcare, social services, social housing, administration of justice. Private in form, "
+        "public in function.\n"
+        "- neither: a private organisation providing no public service. A commercial employer, a "
+        "recruitment agency, a bank, a retailer. Answer this only where the description "
+        "POSITIVELY establishes it — that the system is sold to, or operated by, ordinary "
+        "commercial customers.\n"
+        "- not_stated: THE ORDINARY ANSWER. The description says nothing about who operates the "
+        "system or what kind of organisation they are. Most documentation describes a system and "
+        "not its customers. Give this rather than inferring a commercial deployer from silence: a "
+        "document that never mentions the deploying organisation is not a document about a private "
+        "one.\n"
+        "Where the description names several kinds of deployer, or a vendor selling into both "
+        "public and private sectors, answer the one that brings the widest duties — "
+        "public_body over public_service_provider over neither.",
+        "deployer_type",
+        label="What kind of organisation operates the system?",
+    ),
     NODE_ID: Question(
         NODE_ID,
         LegalSource(
@@ -81,16 +123,27 @@ QUESTIONS: dict[str, Question] = {
 # Art. 3 as well as Art. 25: limb (b) turns on the Art. 3(23) definition of 'substantial
 # modification', and Art. 16 is what the reallocation costs — the duty set the new provider takes
 # on whole.
-_QUESTION_CONTEXT: dict[str, Provisions] = {NODE_ID: ((3, 16, 25), ())}
+_QUESTION_CONTEXT: dict[str, Provisions] = {
+    NODE_ID: ((3, 16, 25), ()),
+    # Art. 27 itself, and Art. 3 for the definition of 'deployer' at 3(4) — the question turns on
+    # who uses the system under their own authority, not on who supplies it.
+    DEPLOYER_NODE_ID: ((3, 27), ()),
+}
 
 # What the DESCRIPTION had to state, phrased for the person who has to go and write it — the same
 # contract the cascade's `_WHAT_THE_NODE_NEEDED` holds, so an abstention here can name the missing
 # fact rather than reporting that a question went unanswered.
-WHAT_THE_NODE_NEEDED = (
-    "who placed this system on the market, and what any later party does to it — rebadge it, "
-    "change it beyond what its supplier assessed, aim it at a new purpose, or ship it inside a "
-    "product of their own"
-)
+WHAT_THE_NODE_NEEDED = {
+    NODE_ID: (
+        "who placed this system on the market, and what any later party does to it — rebadge it, "
+        "change it beyond what its supplier assessed, aim it at a new purpose, or ship it inside a "
+        "product of their own"
+    ),
+    DEPLOYER_NODE_ID: (
+        "what kind of organisation operates the system — a public authority, a private entity "
+        "providing a public service, or an ordinary commercial one"
+    ),
+}
 
 
 def load_questions(
@@ -109,6 +162,31 @@ def load_questions(
         articles_root=articles_root,
         annexes_root=annexes_root,
     )
+
+
+def ask_deployer_type(
+    brain: Brain,
+    document: str,
+    classification: ClassificationResult,
+    questions: dict[str, Question] | None = None,
+) -> Answer | None:
+    """What kind of organisation deploys the system, asked where a deployer duty turns on it.
+
+    Put for a HIGH-RISK system in an ANNEX III area. Art. 6(1) systems are outside Art. 27(1),
+    which opens on "a high-risk AI system referred to in Article 6(2)", and no lower tier carries a
+    deployer duty narrowed this way. The Annex III point 2 exclusion is NOT applied here: it is the
+    rule's business which obligations the answer bears on, and the fact is worth recording for the
+    reader whatever Art. 27 does with it.
+
+    The answer NEVER withholds an obligation. Art. 27 is selected and listed under the deployer
+    whatever comes back; this only lets the report say which side of the condition the document
+    falls on, instead of restating the condition and ignoring a document that answers it."""
+    if classification.overall_risk_class is not RiskClass.HIGH_RISK:
+        return None
+    if not any(uc.annex_iii_area is not None for uc in classification.use_cases):
+        return None
+    asked = questions if questions is not None else QUESTIONS
+    return brain.decide(asked[DEPLOYER_NODE_ID], document)
 
 
 def ask(

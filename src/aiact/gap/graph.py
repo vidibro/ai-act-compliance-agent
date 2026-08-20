@@ -2,16 +2,19 @@
 
 Four nodes, and two of them use a model:
 
-    provider_role     has Art. 25 moved the provider's duties onto  — one LLM call, high-risk only
-                      the reader (gap/roles.py)
+    roles             WHO the parties are: has Art. 25 moved the  — up to two LLM calls,
+                      provider role, and what kind of organisation      high-risk only
+                      deploys the system (gap/roles.py)
     select_rules      which obligations apply, per use case      — pure data (gap/rules.py)
     check_compliance  does the documentation satisfy each one    — one LLM call per rule
     assemble_report   findings, outstanding confirmations, counts — pure data
 
-`provider_role` runs FIRST because it is about who the reader is, and everything after it is about
-what that reader owes. It changes no selection today — the report lists every role's obligations
-either way — but the ordering is where a future gate on Art. 25 would go, and putting a
-role question after the rules were chosen would read as an afterthought about the answer.
+`roles` runs FIRST because it is about WHO the parties are, and everything after it is about what
+each of them owes. Neither answer changes selection: the report lists every role's obligations
+either way, and an obligation the Act narrows within a role — Art. 27 to public bodies and private
+providers of public services — is still listed, with the answer saying which side of that condition
+the document falls on. Withholding it instead would decide on someone's behalf which of their duties
+to take seriously.
 
 The split is the same one the classification cascade makes: code owns what applies and what the
 verdict means, the model answers one bounded question at a time. Nothing here decides that a rule
@@ -53,6 +56,7 @@ class ComplianceCheckState(BaseModel):
     document: str
     classification: ClassificationResult
     provider_reallocation: Answer | None = None
+    deployer_type: Answer | None = None
     active: list[ActiveRules] = Field(default_factory=list)
     findings: list[Finding] = Field(default_factory=list)
     report: ComplianceReport | None = None
@@ -107,13 +111,19 @@ def build_graph(
     roles = roles_with_rules(spec)
     asked = questions if questions is not None else role_questions.QUESTIONS
 
-    def node_provider_role(state: ComplianceCheckState) -> dict:
-        # Art. 25, and only where the tier makes it answerable — the gate is in gap/roles.py, so
-        # that the eval harness which measures this answer applies the same one.
-        answer = role_questions.ask(
+    def node_roles(state: ComplianceCheckState) -> dict:
+        # Both gates live in gap/roles.py, so that the eval harness which measures these answers
+        # applies the same ones. A `None` means the question was NOT PUT — never an answer of "no".
+        out: dict = {}
+        moved = role_questions.ask(
             brain, state.document, state.classification.overall_risk_class, asked
         )
-        return {"provider_reallocation": answer} if answer is not None else {}
+        if moved is not None:
+            out["provider_reallocation"] = moved
+        kind = role_questions.ask_deployer_type(brain, state.document, state.classification, asked)
+        if kind is not None:
+            out["deployer_type"] = kind
+        return out
 
     def node_select_rules(state: ComplianceCheckState) -> dict:
         # Once per (use case, role). Selection is per use case because Art. 6 classifies per
@@ -180,17 +190,18 @@ def build_graph(
                 findings=state.findings,
                 not_document_verifiable=outstanding,
                 provider_reallocation=state.provider_reallocation,
+                deployer_type=state.deployer_type,
                 summary=_summarise(state.findings),
             )
         }
 
     g = StateGraph(ComplianceCheckState)
-    g.add_node("provider_role", node_provider_role)
+    g.add_node("roles", node_roles)
     g.add_node("select_rules", node_select_rules)
     g.add_node("check_compliance", node_check_compliance)
     g.add_node("assemble_report", node_assemble_report)
-    g.add_edge(START, "provider_role")
-    g.add_edge("provider_role", "select_rules")
+    g.add_edge(START, "roles")
+    g.add_edge("roles", "select_rules")
     g.add_edge("select_rules", "check_compliance")
     g.add_edge("check_compliance", "assemble_report")
     g.add_edge("assemble_report", END)

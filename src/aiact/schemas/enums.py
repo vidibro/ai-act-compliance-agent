@@ -572,6 +572,57 @@ class AnnexIIIArea(StrEnum):
     JUSTICE_DEMOCRACY = "justice_democracy"  # Annex III(8)
 
 
+class DeployerType(StrEnum):
+    """WHAT KIND of organisation deploys the system — a fact about the deployer, not the system.
+
+    The Act narrows several deployer duties by this, and Art. 27 is the one modelled today: the
+    fundamental rights impact assessment binds deployers that are bodies governed by public law or
+    private entities providing public services, not deployers at large. Art. 49(3) narrows deployer
+    registration the same way, to public authorities and Union bodies.
+
+    NOT_STATED IS ITS OWN VALUE, and the ordinary one. Most documentation describes a system, not
+    its customers, and a description that never mentions the deploying organisation is not a
+    description of a private commercial one. Folding silence into `NEITHER` would resolve the
+    condition against a duty on evidence nobody supplied — the same failure `TerritorialLink`
+    avoids with `not_addressed`.
+
+    It never withholds an obligation. A rule narrowed this way is still selected and still listed
+    under its role; this answer only tells a reader which side of the condition the document falls
+    on, and says so plainly where the document does not fall on either."""
+
+    PUBLIC_BODY = "public_body"
+    """A body governed by public law — a public authority or agency, or an entity established to
+    meet needs in the general interest and controlled or financed by the state. Art. 27(1), first
+    limb."""
+
+    PUBLIC_SERVICE_PROVIDER = "public_service_provider"
+    """A private entity providing public services — education, healthcare, social services, housing,
+    justice administration. Private in form, public in function, and Art. 27(1) reaches it for that
+    reason."""
+
+    NEITHER = "neither"
+    """A private organisation not providing public services, established by the description rather
+    than assumed from its silence. The Art. 27(1) organisation limb does not reach it — though the
+    Annex III(5)(b)/(c) limb still can, whoever the deployer is."""
+
+    NOT_STATED = "not_stated"
+    """THE ORDINARY ANSWER. The description does not say what kind of organisation deploys the
+    system. The condition stands unresolved, and the report says so rather than choosing a side."""
+
+    @property
+    def caught_by_article_27(self) -> bool | None:
+        """Whether Art. 27(1)'s ORGANISATION limb reaches this deployer — `None` where the
+        description does not settle it.
+
+        Tri-state deliberately: `False` is a finding that the limb does not reach them, `None` is
+        the absence of one, and a report that could not tell those apart would present a silence as
+        a clearance. Answers only the first limb; a system within Annex III(5)(b) or (c) is caught
+        whatever this returns."""
+        if self is DeployerType.NOT_STATED:
+            return None
+        return self is not DeployerType.NEITHER
+
+
 class HighRiskRoute(StrEnum):
     """WHICH of Art. 6's two doors made a use case high-risk.
 

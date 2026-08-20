@@ -107,7 +107,11 @@ def _check_pins_match_the_route(case: ClassificationCase, path: Path) -> None:
         # is what makes the index comparison meaningful. Two entries are off that order and exempt:
         # `transparency`, which `assemble` asks on every route including this one, and
         # `provider_reallocation`, which a different graph asks and never on an abstaining case.
-        order = [n for n in NODE_KEYS if n not in ("transparency", "provider_reallocation")]
+        order = [
+            n
+            for n in NODE_KEYS
+            if n not in ("transparency", "provider_reallocation", "deployer_type")
+        ]
         past = [
             n
             for n in order[order.index(str(node)) + 1 :]
@@ -142,6 +146,11 @@ def _check_pins_match_the_route(case: ClassificationCase, path: Path) -> None:
     # provider of a high-risk system and of nothing else.
     if case.expected_risk_class == RiskClass.HIGH_RISK:
         reached.add("provider_reallocation")
+        # `deployer_type` is asked for a high-risk ANNEX III system — Art. 27(1) opens on
+        # "a high-risk AI system referred to in Article 6(2)", so an Annex I one carries no duty
+        # narrowed by the deployer's organisation.
+        if case.expected_annex_iii_area is not None:
+            reached.add("deployer_type")
     problems: list[str] = []
     for node_id, field in NODE_KEYS.items():
         if field is None or field in DERIVED_FROM_CLASS:

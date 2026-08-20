@@ -25,6 +25,7 @@ from aiact.schemas.classification import (
 from aiact.schemas.enums import (
     ActorRole,
     AnnexIIIArea,
+    DeployerType,
     DerogationCondition,
     ProviderReallocation,
     RiskClass,
@@ -448,3 +449,85 @@ def test_the_art_25_question_is_anchored_in_the_articles_it_turns_on():
     assert "‘substantial modification’ means" in q.context  # Art. 3(23)
     assert "shall be considered to be a provider of a high-risk AI system" in q.context  # 25(1)
     assert "Providers of high-risk AI systems shall" in q.context  # Art. 16
+
+
+# --- Art. 27 — reading the deployer's organisation out of the document ---------------------------
+def _deployer_report(spec, risk_class, answer, area=AnnexIIIArea.EMPLOYMENT):
+    use_case = a_use_case("scoring", risk_class)
+    if area is None:
+        use_case = use_case.model_copy(update={"annex_iii_area": None})
+    return analyse(
+        DOCUMENT,
+        a_classification(use_case),
+        spec,
+        brain=ScriptedBrain({roles.DEPLOYER_NODE_ID: answer}),
+        judge=StubJudge(),  # type: ignore[arg-type]
+        max_workers=1,
+    )
+
+
+@pytest.mark.parametrize(
+    "kind,caught",
+    [
+        (DeployerType.PUBLIC_BODY, True),
+        (DeployerType.PUBLIC_SERVICE_PROVIDER, True),
+        (DeployerType.NEITHER, False),
+        (DeployerType.NOT_STATED, None),
+    ],
+)
+def test_the_document_settles_art_27_where_it_names_the_deployer(spec, kind, caught):
+    """The condition used to be prose the report restated and never resolved, even when the
+    documentation answered it. Three outcomes, and the third is not the second: a document that
+    does not say is not a document describing a private commercial deployer."""
+    report = _deployer_report(spec, RiskClass.HIGH_RISK, kind)
+
+    assert report.deployer_organisation is kind
+    assert kind.caught_by_article_27 is caught
+    note = report.deployer_type_note
+    assert note is not None
+    assert "Art. 27" in note
+
+
+def test_reading_the_deployer_never_withholds_the_obligation(spec):
+    """Art. 27 stays listed under the deployer whatever the answer. The report describes what the
+    Act requires of each role; an obligation dropped because one limb of its condition looks
+    unmet would be the tool deciding on someone's behalf which of their duties to take
+    seriously."""
+    for kind in DeployerType:
+        report = _deployer_report(spec, RiskClass.HIGH_RISK, kind)
+        assert "AIA-DP-A27" in report.not_document_verifiable[ActorRole.DEPLOYER]
+
+
+def test_silence_is_reported_as_unresolved_not_as_a_clearance(spec):
+    """The failure this guards is the whole reason `not_stated` is a value: reading "sold to
+    recruiters" as "commercial, so no assessment owed" would clear a duty on evidence nobody
+    supplied."""
+    note = _deployer_report(spec, RiskClass.HIGH_RISK, DeployerType.NOT_STATED).deployer_type_note
+
+    assert note is not None
+    assert "unresolved" in note
+    assert "not a finding that it does not" in note
+
+
+def test_the_deployer_question_is_not_put_where_no_duty_turns_on_it(spec):
+    """Art. 27(1) opens on "a high-risk AI system referred to in Article 6(2)", so an Annex I
+    system carries no duty narrowed by the deployer's organisation, and nor does a lower tier.
+    `None` records that the question was never put — not an answer of "not stated"."""
+    annex_i = _deployer_report(spec, RiskClass.HIGH_RISK, DeployerType.PUBLIC_BODY, area=None)
+    not_high = _deployer_report(spec, RiskClass.NOT_HIGH_RISK, DeployerType.PUBLIC_BODY)
+
+    for report in (annex_i, not_high):
+        assert report.deployer_type is None
+        assert report.deployer_organisation is None
+        assert report.deployer_type_note is None
+
+
+def test_the_deployer_question_is_anchored_in_article_27():
+    """The question turns on Art. 3(4)'s definition of 'deployer' and on who Art. 27(1) reaches;
+    neither may be answered from a model's memory."""
+    q = roles.load_questions(
+        "2024-07-12", ROOT / "data" / "policy" / "articles", ROOT / "data" / "policy" / "annexes"
+    )[roles.DEPLOYER_NODE_ID]
+
+    assert "bodies governed by public law" in q.context  # Art. 27(1)
+    assert "‘deployer’ means" in q.context  # Art. 3(4)

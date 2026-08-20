@@ -71,6 +71,7 @@ NODE_KEYS: dict[str, str | None] = {
     "significant_risk": "expected_poses_significant_risk",
     "transparency": "expected_transparency_duties",
     "provider_reallocation": "expected_provider_reallocation",
+    "deployer_type": "expected_deployer_type",
 }
 
 # Fields every case carries whether or not its YAML names them, so the `model_fields_set` test does
