@@ -124,7 +124,7 @@ one can owe none. State whether the system:
 - produces **deep fakes**, or text published to inform the public on matters of public interest
   (Art. 50(4))
 
-### 7. Which organisations are in the chain? — Art. 3(3)–(7), Art. 25, Art. 27
+### 7. Which organisations are in the chain? — Art. 3(3)–(7), Art. 16(b), Art. 25, Art. 27
 
 Obligations attach to a **role**, not to an organisation. One organisation can hold several, and a
 single system usually involves more than one party. Name every party you know of and say what each
@@ -143,7 +143,23 @@ answer where an unnamed one gets a generic one.
 | distributor | in the supply chain, makes it available on the EU market | 3(7) |
 | authorised representative | mandated by a non-EU provider to act for it in the EU | 3(5) |
 
-Then two facts about those parties that no description of the *system* can supply.
+Then three facts about those parties that no description of the *system* can supply.
+
+**Give the provider's name and an address that reaches it.** This one is an obligation in its own
+right, not background. **Art. 16(b)** requires the provider's name, registered trade name or
+registered trade mark, and the address at which it can be contacted, to be indicated **on the
+system** — or, where that is not possible, on its packaging or its **accompanying documentation**.
+
+So it is the one Art. 16 point a document can discharge, and the only place a reader can check it is
+a document like this one. A trading name with no address does not satisfy it; neither does a website.
+Where the details are already on the product itself — a start-up screen, a label, an about box — say
+that, and the point is met however the card is worded.
+
+*Two other points of Art. 16 stand alone in the same way, and neither is something you can write
+your way out of: **(k)** demonstrating conformity to a national authority on reasoned request, and
+**(l)** meeting the accessibility requirements of Directives (EU) 2016/2102 and (EU) 2019/882. The
+report lists both and checks neither — (k) is a readiness of your organisation, and (l) is settled by
+two instruments this tool does not read.*
 
 **Has the provider role moved along the chain?** Under **Art. 25** a distributor, importer, deployer
 or other third party *becomes the provider* — owing Art. 16 in full, not a share of it — where it
@@ -213,7 +229,10 @@ Copy this, fill it in, delete the prompts. One block per intended purpose.
 than guess; an unknown party is not the same as no party.>
 
 - **Developed by:** <legal entity>
-- **Placed on the market by:** <legal entity, and under whose name or trademark>
+- **Placed on the market by:** <legal entity, and under whose name or trademark. Give the
+  registered name or trade mark and an address that reaches you — Art. 16(b) requires it, and this
+  is one of the places it may be given. If the same details are on the system itself or its
+  packaging, say so.>
 - **Deployed by:** <who uses it under their own authority — a named customer, or the kind of
   organisation it is sold to. For each: body governed by public law | private entity providing
   public services | neither (Art. 27)>
@@ -261,6 +280,8 @@ communicate directly with the people it affects?>
 - [ ] Exemption claims are stated as claims, not left to inference
 - [ ] Art. 50 questions answered even if the risk tier is minimal
 - [ ] Every party you know of is named, with what it does to the system
+- [ ] The provider is identified by registered name or trade mark **and** a contact address, or the
+      card says where on the system those details appear (Art. 16(b))
 - [ ] Where one party placed the system and another changed or rebadged it, both ends are shown —
       the new provider and the initial provider are two different organisations, and each owes
       something (Art. 25(1) and 25(2))
@@ -292,8 +313,10 @@ template is trivially readable by our own tool, so a score measured on it would 
 #### Parties
 
 - **Developed by:** Example Analytics Ltd, Dublin, Ireland
-- **Placed on the market by:** Example Analytics Ltd, under its own name. No third party's system
-  is incorporated, rebadged or resold here.
+- **Placed on the market by:** Example Analytics Ltd, trading as Example Analytics, 12 Harcourt
+  Road, Dublin 2, D02 XY45, Ireland. Contact: compliance@example-analytics.invalid. Placed on the
+  market under its own name; no third party's system is incorporated, rebadged or resold here. The
+  same name and address are shown on the product's sign-in screen (Art. 16(b)).
 - **Deployed by:** our customers, who are private-sector recruiters and staffing agencies. We are
   aware of none that is a body governed by public law or a private entity providing public
   services; the product is not sold into public-sector recruitment. Where a customer is either,
