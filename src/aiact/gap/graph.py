@@ -177,6 +177,11 @@ def build_graph(
                 reasoning=judgement.reasoning,
                 citation=rule.source,
                 confidence=judgement.confidence,
+                # What the judge was SHOWN, taken from the rule rather than from the reply: the
+                # model is not asked whether it leaned on the guidance, and a self-report would be
+                # the wrong evidence for it anyway. The claim this records is "interpretation was in
+                # context for this verdict", which is a fact about the prompt.
+                guidance=list(rule.guidance_sources),
             )
 
         if max_workers <= 1:

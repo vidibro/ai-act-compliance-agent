@@ -14,7 +14,7 @@ from pydantic import BaseModel, ValidationInfo, field_validator, model_validator
 
 from aiact.schemas.classification import ClassificationResult
 from aiact.schemas.enums import ActorRole, DeployerType, ProviderReallocation, Verdict
-from aiact.schemas.policy import LegalSource, PolicySpec
+from aiact.schemas.policy import GuidanceSource, LegalSource, PolicySpec
 from aiact.schemas.question import EVIDENCE_QUOTE_MAX, Answer, Confidence
 
 # Modelled on the European Commission's own wording for their AI Act Compliance Checker, with a
@@ -71,6 +71,20 @@ class Finding(BaseModel):
     reasoning: str
     citation: LegalSource
     confidence: Confidence
+
+    guidance: list[GuidanceSource] = []
+    """NON-BINDING Commission interpretation the judge was shown when reaching this verdict.
+
+    Separate from `citation`, which is enacted law, and never merged with it — the same split
+    `ClassificationEvidence` keeps one layer up. A finding reached with the Commission's reading in
+    front of the judge is weaker than one resting on the Article alone, and a reader who cannot see
+    which is which cannot weigh it. Empty for almost every finding, which is what makes the
+    non-empty ones worth noticing."""
+
+    @property
+    def rests_on_guidance(self) -> bool:
+        """True when non-binding interpretation was in context for this verdict."""
+        return bool(self.guidance)
 
     @field_validator("evidence_quote")
     @classmethod
@@ -149,6 +163,25 @@ class ComplianceReport(BaseModel):
     a reader would otherwise have to infer. An empty findings list reads as a clean bill of health,
     and for a prohibited practice or an out-of-scope system that reading is dangerously wrong."""
     disclaimer: str = DISCLAIMER
+
+    @property
+    def guidance_sources(self) -> list[GuidanceSource]:
+        """Every non-binding Commission passage this report leaned on, de-duplicated by snippet_ref
+        and covering BOTH halves — the classification's and the obligation check's.
+
+        Both, because a reader asking "how much of this rests on interpretation rather than enacted
+        law?" is asking about the report, and a rollup that covered only the half it was written for
+        would answer confidently and wrongly."""
+        seen = {g.snippet_ref: g for g in self.classification.guidance_sources}
+        for finding in self.findings:
+            for g in finding.guidance:
+                seen.setdefault(g.snippet_ref, g)
+        return list(seen.values())
+
+    @property
+    def rests_on_guidance(self) -> bool:
+        """True where any verdict in this report had Commission interpretation in front of it."""
+        return bool(self.guidance_sources)
 
     @property
     def deployer_organisation(self) -> DeployerType | None:

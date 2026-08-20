@@ -233,11 +233,25 @@ class LLMJudge:
         volatile suffix.
         """
         rubric = _RUBRIC.get(rule.check_type, _RUBRIC[CheckType.SUBSTANCE])
+        # Labelled NON-BINDING and kept in its own block, never folded into the enacted text above.
+        # The Commission's reading of a provision is not the provision: a judge shown the two as one
+        # passage would weigh an interpretation as law, and the finding could not say which it
+        # rested on. Part of the stable half because it is per-rule, so it caches with the rest.
+        guidance = ""
+        if rule.guidance_context:
+            guidance = (
+                f"NON-BINDING guidance from the European Commission on this provision. It is the "
+                f"Commission's interpretation, NOT enacted text — the Court of Justice of the EU "
+                f"is the only authoritative interpreter. Use it to read the obligation above; "
+                f"never treat it as adding a requirement the Article does not contain:\n"
+                f'"""\n{rule.guidance_context}\n"""\n\n'
+            )
         stable = (
             f"Obligation under review: {rule.rule_id} (Article {rule.source.article}"
             f"{f'({rule.source.paragraph})' if rule.source.paragraph else ''}).\n\n"
             f"Enacted text you must judge against (verbatim):\n"
             f'"""\n{rule.requirement}\n"""\n\n'
+            f"{guidance}"
             f"What documentation satisfying this looks like:\n"
             f'"""\n{rule.evidence_expected}\n"""\n\n'
             f"{rubric}\n\n"

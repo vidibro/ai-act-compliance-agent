@@ -25,6 +25,7 @@ from typing import Any
 import yaml
 
 from aiact.config import get_settings
+from aiact.guidance import load_snippet
 from aiact.schemas.policy import PolicySpec
 
 _FRONT_MATTER = re.compile(r"\A---\n(.*?)\n---\n+", re.S)
@@ -195,6 +196,7 @@ def articles_dir_for(version: str | date, root: str | Path | None = None) -> Pat
 def load_policy_spec(
     path: str | Path | None = None,
     articles_root: str | Path | None = None,
+    guidance_root: str | Path | None = None,
 ) -> PolicySpec:
     """Read the spec, resolve every rule's requirement from the article store, and validate.
 
@@ -236,6 +238,13 @@ def load_policy_spec(
                 f"Rule {rule.get('rule_id')!r} hand-writes `requirement`. Legal text lives only in "
                 f"{art_dir} and is resolved from source.article/source.paragraph — remove it."
             )
+        for field in ("guidance_context", "guidance_sources"):
+            if field in rule:
+                raise ValueError(
+                    f"Rule {rule.get('rule_id')!r} hand-writes `{field}`. Commission guidance "
+                    f"lives only in the guidance store and is resolved from `guidance_refs` — "
+                    f"remove it. A paraphrase is as unverifiable here as it is for the Article."
+                )
 
     # Pass 2 — resolve each citation to its literal enacted text, for THIS act version.
     for rule in raw.get("rules", []):
@@ -252,6 +261,20 @@ def load_policy_spec(
         )
         rule["requirement"] = text
         source.setdefault("url", url)
+
+        # Pass 3 — resolve any guidance the rule cites, on the same terms as the law: verbatim,
+        # integrity-checked, and failing the LOAD rather than the run when a ref does not resolve.
+        # Kept structurally apart from `requirement` all the way to the prompt — a verdict that
+        # leaned on the Commission's reading is weaker than one resting on the Article, and merging
+        # the two here is how that distinction would be lost.
+        chunks, sources = [], []
+        for ref in rule.get("guidance_refs", []):
+            snippet = load_snippet(ref, guidance_root)
+            chunks.append(f"[{snippet.document}, {snippet.locator}]\n{snippet.body}")
+            sources.append(snippet.to_source().model_dump())
+        if chunks:
+            rule["guidance_context"] = "\n\n".join(chunks)
+            rule["guidance_sources"] = sources
 
     spec = PolicySpec.model_validate(raw)
 

@@ -11,11 +11,17 @@ from __future__ import annotations
 import hashlib
 import re
 from pathlib import Path
+from types import SimpleNamespace
 
 import pytest
+import yaml
 
 from aiact.eval.classification_cases import load_classification_cases
+from aiact.gap.judge import LLMJudge
 from aiact.guidance import load_snippet, snippet_path
+from aiact.policy_loader import load_policy_spec
+from aiact.schemas.enums import ActorRole, Verdict
+from aiact.schemas.report import Finding
 
 ROOT = Path(__file__).resolve().parents[1]
 GUIDANCE_ROOT = ROOT / "data" / "policy" / "guidance"
@@ -153,3 +159,89 @@ def test_the_marking_snippet_loads_and_is_verbatim():
         "without human intervention" in snippet.body
     )
     assert "Perceptible marks and labels are not excluded as a complementary" in snippet.body
+
+
+# --- a RULE citing guidance ---------------------------------------------------------------------
+def test_the_marking_rule_resolves_its_guidance_at_load():
+    """`guidance_refs` is the only guidance a rule authors; the passage and its citation are filled
+    by the loader, exactly as `requirement` is filled from `source`. So a rule cannot hand-write an
+    interpretation any more than it can hand-write the law."""
+    spec = load_policy_spec()
+    rule = next(r for r in spec.rules if r.rule_id == "AIA-TR-A50-2")
+
+    assert rule.guidance_refs == ["C-2026-5054/machine-readable-marking-defined"]
+    assert "without human intervention" in rule.guidance_context
+    assert [g.reference for g in rule.guidance_sources] == ["C(2026) 5054 final"]
+    assert all(g.binding is False for g in rule.guidance_sources)
+
+
+def test_no_other_rule_leans_on_interpretation():
+    """Guidance is for where the enacted text leaves a question open, and that should stay rare.
+    A ruleset quietly accumulating interpretations is one whose verdicts are progressively less
+    grounded in the Article they cite."""
+    spec = load_policy_spec()
+    citing = {r.rule_id for r in spec.rules if r.guidance_refs}
+    assert citing == {"AIA-TR-A50-2"}
+
+
+def test_a_dangling_rule_guidance_ref_fails_the_spec_load(tmp_path):
+    """Fails the LOAD, not the run — the same contract as a missing article file. A ruleset that
+    starts up and only discovers its citation is broken while judging has already shipped."""
+    raw = yaml.safe_load((ROOT / "data" / "policy" / "spec.yaml").read_text(encoding="utf-8"))
+    raw["rules"][0]["guidance_refs"] = ["C-2026-5054/does-not-exist"]
+    bad = tmp_path / "dangling.yaml"
+    bad.write_text(yaml.safe_dump(raw), encoding="utf-8")
+    with pytest.raises(FileNotFoundError):
+        load_policy_spec(bad, ROOT / "data" / "policy" / "articles")
+
+
+@pytest.mark.parametrize("field", ["guidance_context", "guidance_sources"])
+def test_a_rule_may_not_hand_write_its_guidance(tmp_path, field):
+    """A paraphrased interpretation is as unverifiable as a paraphrased Article, and the loader
+    rejects both on the same terms."""
+    raw = yaml.safe_load((ROOT / "data" / "policy" / "spec.yaml").read_text(encoding="utf-8"))
+    raw["rules"][0][field] = "the Commission says this is fine"
+    bad = tmp_path / "handwritten.yaml"
+    bad.write_text(yaml.safe_dump(raw), encoding="utf-8")
+    with pytest.raises(ValueError, match=f"hand-writes `{field}`"):
+        load_policy_spec(bad, ROOT / "data" / "policy" / "articles")
+
+
+def test_the_judge_sees_guidance_labelled_and_apart_from_the_law():
+    """The Commission's reading of a provision is not the provision. Shown as one passage, a judge
+    would weigh an interpretation as enacted text and the finding could not say which it rested
+    on."""
+    spec = load_policy_spec()
+    rule = next(r for r in spec.rules if r.rule_id == "AIA-TR-A50-2")
+    judge = LLMJudge.__new__(LLMJudge)
+    judge.profile = SimpleNamespace(caches=lambda _: False)
+    prompt = judge._user_content(rule, hits=())
+
+    assert "NON-BINDING guidance from the European Commission" in prompt
+    assert "only authoritative interpreter" in prompt
+    # The enacted text ends before the guidance block opens — the two are never one passage.
+    assert prompt.index(rule.requirement) < prompt.index("NON-BINDING")
+    assert "never treat it as adding a requirement the Article does not contain" in prompt
+
+
+def test_a_finding_records_the_interpretation_it_was_reached_with():
+    """The report has to be able to say a verdict leaned on Commission interpretation. Taken from
+    the RULE — what the judge was shown — rather than from the model's reply, because the model is
+    never asked and a self-report would be the wrong evidence anyway."""
+    spec = load_policy_spec()
+    rule = next(r for r in spec.rules if r.rule_id == "AIA-TR-A50-2")
+    finding = Finding(
+        rule_id=rule.rule_id,
+        use_case_id="uc",
+        role=ActorRole.PROVIDER,
+        verdict=Verdict.PASS,
+        reasoning="stub",
+        citation=rule.source,
+        confidence="high",
+        guidance=list(rule.guidance_sources),
+    )
+    assert finding.rests_on_guidance is True
+    assert finding.guidance[0].snippet_ref == "C-2026-5054/machine-readable-marking-defined"
+
+    plain = finding.model_copy(update={"guidance": []})
+    assert plain.rests_on_guidance is False

@@ -783,14 +783,22 @@ rules:
       act_version_date: 2026-07-27
     applies_to_transparency_duty: [synthetic_content_marking]
     applies_to_role: [provider]
+    # The Commission read "machine-readable format" in C(2026) 5054 para (71), and it settles a
+    # question the Article leaves open — what the mark has to be, and what a human-visible label
+    # does and does not do about it. The first ruleset to cite guidance rather than assert.
+    guidance_refs: [C-2026-5054/machine-readable-marking-defined]
     obligation_status: mandatory
     check_type: substance
     evidence_expected: >-
       The technical solution that marks generated output as artificially generated or manipulated,
       in a MACHINE-READABLE format — a named watermarking, provenance or metadata scheme, and what
-      it survives. The paragraph asks for solutions that are effective, interoperable, robust and
-      reliable as far as technically feasible, so a statement that outputs are "labelled as AI"
-      without saying how a machine detects it is INADEQUATE, not a pass.
+      it survives. Machine-readable means a mark software can identify and extract WITHOUT human
+      intervention, so a statement that outputs are "labelled as AI", with nothing about how a
+      machine detects it, does not reach the obligation. A visible label is not a mark against the
+      provider either: it is expressly allowed as a COMPLEMENT, and it helps a deployer meet the
+      separate Art. 50(4) duty — so its presence is neither the answer nor a fault. The paragraph
+      also asks that the solution be effective, interoperable, robust and reliable as far as
+      technically feasible, and a single technique or a combination may be used.
     document_verifiable: true
     effective_date: 2026-08-02
     status: active

@@ -184,6 +184,27 @@ class PolicyRule(BaseModel):
     is that the obligation is stated WITH its condition rather than as an unqualified duty of every
     deployer."""
 
+    guidance_refs: list[str] = []
+    """Snippet ids into the guidance store, where the Commission has read a provision this rule
+    cites and the reading changes what counts as evidence.
+
+    THE ONLY THING A RULE AUTHORS. `guidance_context` and `guidance_sources` below are filled by the
+    loader from these ids, exactly as `requirement` is filled from `source` — so a rule cannot
+    hand-write an interpretation any more than it can hand-write the law, and a ref naming a snippet
+    that does not exist fails the spec load rather than the run.
+
+    Empty is the ordinary case and should stay that way. A rule reaches for guidance only where the
+    enacted text leaves the question open; most do not."""
+
+    guidance_context: str = ""
+    """The verbatim guidance passages, injected at load. Goes into the judge's prompt LABELLED
+    non-binding, beside the enacted text and never merged with it."""
+
+    guidance_sources: list[GuidanceSource] = []
+    """Citations for whatever is in `guidance_context`, injected at load and carried onto any
+    finding this rule produces — so a verdict that leaned on Commission interpretation says so
+    rather than presenting itself as resting on the Article alone."""
+
     obligation_status: ObligationStatus
     check_type: CheckType
     evidence_expected: str  # what in the documentation would satisfy this
