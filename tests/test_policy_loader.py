@@ -22,7 +22,7 @@ from aiact.schemas.enums import ActorRole, CheckType, ObligationStatus, RiskClas
 ROOT = Path(__file__).resolve().parents[1]
 SPEC_PATH = ROOT / "data" / "policy" / "spec.yaml"
 ARTICLES_ROOT = ROOT / "data" / "policy" / "articles"
-ACT_DATE = date(2024, 7, 12)
+ACT_DATE = date(2026, 7, 27)
 VERSION = ACT_DATE.isoformat()
 ARTICLES_DIR = ARTICLES_ROOT / VERSION
 SCOPE_PATH = ROOT / "data" / "policy" / f"scope-{VERSION}.yaml"
@@ -48,7 +48,7 @@ def test_shipped_spec_loads():
 def test_article_store_is_version_scoped():
     """Versions live side by side so a report pinned to an older act version stays reproducible."""
     assert ARTICLES_DIR.is_dir(), f"expected a version-scoped store at {ARTICLES_DIR}"
-    assert len(list(ARTICLES_DIR.glob("article-*.md"))) == 113
+    assert len(list(ARTICLES_DIR.glob("article-*.md"))) == 119
     assert not list(ARTICLES_ROOT.glob("article-*.md")), "articles must not sit at the store root"
 
 

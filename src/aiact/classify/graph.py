@@ -123,6 +123,7 @@ from pydantic import BaseModel
 
 from aiact.anchoring import anchor_questions
 from aiact.brain import Brain
+from aiact.config import get_settings
 from aiact.schemas.classification import (
     ClassificationEvidence,
     ClassificationResult,
@@ -141,7 +142,15 @@ from aiact.schemas.policy import LegalSource
 from aiact.schemas.question import Answer, Confidence, Question
 from aiact.tracing import trace_run
 
-_ACT_DATE = date(2024, 7, 12)
+
+def _act_date() -> date:
+    """The pinned act version, read from settings rather than restated here.
+
+    A module constant is how the two halves silently diverged: `anchoring` loads the LAW TEXT for a
+    question from `settings.act_version_date`, while this stamped a hard-coded date on the citation
+    beside it. A `.env` pinning one version and a constant naming another produces a verdict
+    reasoned from one text and cited to a different one — which is unfalsifiable from the report."""
+    return get_settings().act_version_date
 
 
 def _src(article: int, paragraph: int | None = None, annex: str | None = None) -> LegalSource:
@@ -150,7 +159,7 @@ def _src(article: int, paragraph: int | None = None, annex: str | None = None) -
         article=article,
         paragraph=paragraph,
         annex=annex,
-        act_version_date=_ACT_DATE,
+        act_version_date=_act_date(),
     )
 
 

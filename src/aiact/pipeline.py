@@ -58,7 +58,7 @@ def _section_b_note(products: list[str]) -> str:
     return (
         f"High-risk under Art. 6(1), but Chapter III was NOT checked: this system is a safety "
         f"component of a product covered by Annex I Section B ({', '.join(products)}). Under "
-        f"Art. 2(2) only Art. 6(1), Arts. 102-109 and Art. 112 of this Regulation apply to such a "
+        f"Art. 2(2) only Art. 6(1), Art. 60a and Arts. 102-112 of this Regulation apply to such a "
         f"system — the requirements of Art. 9-15 and the provider obligations of Art. 16 onward do "
         f"not. Its safety duties come from that sectoral legislation instead, which is outside "
         f"this tool's scope."

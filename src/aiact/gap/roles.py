@@ -24,12 +24,21 @@ from pathlib import Path
 
 from aiact.anchoring import Provisions, anchor_questions
 from aiact.brain import Brain
+from aiact.config import get_settings
 from aiact.schemas.classification import ClassificationResult
 from aiact.schemas.enums import RiskClass
 from aiact.schemas.policy import LegalSource
 from aiact.schemas.question import Answer, Question
 
-_ACT_DATE = date(2024, 7, 12)
+
+def _act_date() -> date:
+    """The pinned act version, read from settings rather than restated here.
+
+    A module constant is how the two halves silently diverged: `anchoring` loads the LAW TEXT for a
+    question from `settings.act_version_date`, while this stamped a hard-coded date on the citation
+    beside it. A `.env` pinning one version and a constant naming another produces a verdict
+    reasoned from one text and cited to a different one — which is unfalsifiable from the report."""
+    return get_settings().act_version_date
 
 NODE_ID = "provider_reallocation"
 DEPLOYER_NODE_ID = "deployer_type"
@@ -41,7 +50,7 @@ QUESTIONS: dict[str, Question] = {
             instrument="Regulation (EU) 2024/1689",
             article=27,
             paragraph=1,
-            act_version_date=_ACT_DATE,
+            act_version_date=_act_date(),
         ),
         # A fact about the DEPLOYING ORGANISATION, which several deployer duties turn on and no
         # description of a system supplies. Art. 27 is the one modelled today; Art. 49(3) narrows
@@ -80,7 +89,7 @@ QUESTIONS: dict[str, Question] = {
         LegalSource(
             instrument="Regulation (EU) 2024/1689",
             article=25,
-            act_version_date=_ACT_DATE,
+            act_version_date=_act_date(),
         ),
         # THE DEFAULT IS THAT NOTHING HAPPENED, and unlike the cascade's scope questions that
         # default is the safe one: answering `none` leaves the report as it already is, with both

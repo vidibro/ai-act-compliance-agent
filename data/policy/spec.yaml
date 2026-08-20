@@ -45,11 +45,19 @@
 #             Art. 49(4), which sends the registrations of BOTH parties to the database's secure
 #             non-public section.
 #
-# High-risk obligations for Annex III systems apply from 2026-08-02 (Art. 113). That applicability
-# date is carried in each rule's effective_date; status stays "active" (adopted, in force).
+# PINNED TO 2026-07-27 — the consolidated text as amended by Regulation (EU) 2026/1744 (Digital
+# Omnibus on AI). Requirement text below resolves from data/policy/articles/2026-07-27/.
+#
+# KNOWN STALE, and deliberately not fixed in the same change that repointed the pin:
+# `effective_date` still says 2026-08-02 on the Chapter III rules. The amended Art. 113 moved
+# Chapter III Sections 1-3 to 2 DECEMBER 2027 for Annex III systems and 2 AUGUST 2028 for Annex I
+# ones — a date that depends on the ROUTE, which a single effective_date field cannot express, so
+# fixing it is a schema question rather than a find-and-replace. Sections 5 (Arts. 43, 47-49) was
+# NOT moved and keeps the general date. Until that lands, treat every 2026-08-02 below as unmigrated
+# rather than as an assertion about the law.
 
 spec_version: "0.8.0"
-act_version_date: 2024-07-12
+act_version_date: 2026-07-27
 source_note: >-
   Rule structure and scope selection derived from the EC AI Act Compliance Checker, Chapter III
   (requirements for high-risk AI systems and obligations of providers). Legal wording is NOT stored
@@ -65,7 +73,7 @@ rules:
     source:
       instrument: "Regulation (EU) 2024/1689"
       article: 9 # whole article: the risk management system, all 10 paragraphs
-      act_version_date: 2024-07-12
+      act_version_date: 2026-07-27
     applies_to_risk_class: [high_risk]
     applies_to_role: [provider]
     obligation_status: mandatory
@@ -83,7 +91,7 @@ rules:
     source:
       instrument: "Regulation (EU) 2024/1689"
       article: 10 # whole article: data and data governance
-      act_version_date: 2024-07-12
+      act_version_date: 2026-07-27
     applies_to_risk_class: [high_risk]
     applies_to_role: [provider]
     obligation_status: mandatory
@@ -103,7 +111,7 @@ rules:
       article: 11
       paragraph: 1 # the drawing-up obligation + the Annex IV minimum element list
       annex: "IV"
-      act_version_date: 2024-07-12
+      act_version_date: 2026-07-27
     applies_to_risk_class: [high_risk]
     applies_to_role: [provider]
     obligation_status: mandatory
@@ -121,7 +129,7 @@ rules:
       instrument: "Regulation (EU) 2024/1689"
       article: 12
       paragraph: 1 # the logging capability itself
-      act_version_date: 2024-07-12
+      act_version_date: 2026-07-27
     applies_to_risk_class: [high_risk]
     applies_to_role: [provider]
     obligation_status: mandatory
@@ -137,7 +145,7 @@ rules:
     source:
       instrument: "Regulation (EU) 2024/1689"
       article: 13 # whole article: transparency + the Art. 13(3) instructions-for-use contents
-      act_version_date: 2024-07-12
+      act_version_date: 2026-07-27
     applies_to_risk_class: [high_risk]
     applies_to_role: [provider]
     obligation_status: mandatory
@@ -154,7 +162,7 @@ rules:
     source:
       instrument: "Regulation (EU) 2024/1689"
       article: 14 # whole article: oversight measures, incl. the (a)-(e) capabilities in para 4
-      act_version_date: 2024-07-12
+      act_version_date: 2026-07-27
     applies_to_risk_class: [high_risk]
     applies_to_role: [provider]
     obligation_status: mandatory
@@ -171,7 +179,7 @@ rules:
     source:
       instrument: "Regulation (EU) 2024/1689"
       article: 15 # whole article: accuracy, robustness and cybersecurity
-      act_version_date: 2024-07-12
+      act_version_date: 2026-07-27
     applies_to_risk_class: [high_risk]
     applies_to_role: [provider]
     obligation_status: mandatory
@@ -198,7 +206,7 @@ rules:
       instrument: "Regulation (EU) 2024/1689"
       article: 16
       point: b
-      act_version_date: 2024-07-12
+      act_version_date: 2026-07-27
     applies_to_risk_class: [high_risk]
     applies_to_role: [provider]
     obligation_status: mandatory
@@ -222,7 +230,7 @@ rules:
       instrument: "Regulation (EU) 2024/1689"
       article: 16
       point: k
-      act_version_date: 2024-07-12
+      act_version_date: 2026-07-27
     applies_to_risk_class: [high_risk]
     applies_to_role: [provider]
     obligation_status: mandatory
@@ -242,7 +250,7 @@ rules:
       instrument: "Regulation (EU) 2024/1689"
       article: 16
       point: l
-      act_version_date: 2024-07-12
+      act_version_date: 2026-07-27
     applies_to_risk_class: [high_risk]
     applies_to_role: [provider]
     obligation_status: mandatory
@@ -265,7 +273,7 @@ rules:
       instrument: "Regulation (EU) 2024/1689"
       article: 17
       paragraph: 1 # the QMS obligation + its (a)-(m) required aspects
-      act_version_date: 2024-07-12
+      act_version_date: 2026-07-27
     applies_to_risk_class: [high_risk]
     applies_to_role: [provider]
     obligation_status: mandatory
@@ -283,7 +291,7 @@ rules:
       instrument: "Regulation (EU) 2024/1689"
       article: 18
       paragraph: 1 # the 10-year retention duty + the (a)-(e) documents it covers
-      act_version_date: 2024-07-12
+      act_version_date: 2026-07-27
     applies_to_risk_class: [high_risk]
     applies_to_role: [provider]
     obligation_status: mandatory
@@ -300,7 +308,7 @@ rules:
       instrument: "Regulation (EU) 2024/1689"
       article: 19
       paragraph: 1
-      act_version_date: 2024-07-12
+      act_version_date: 2026-07-27
     applies_to_risk_class: [high_risk]
     applies_to_role: [provider]
     obligation_status: mandatory
@@ -317,7 +325,7 @@ rules:
       instrument: "Regulation (EU) 2024/1689"
       article: 20
       paragraph: 1
-      act_version_date: 2024-07-12
+      act_version_date: 2026-07-27
     applies_to_risk_class: [high_risk]
     applies_to_role: [provider]
     obligation_status: mandatory
@@ -334,7 +342,7 @@ rules:
       instrument: "Regulation (EU) 2024/1689"
       article: 21
       paragraph: 1
-      act_version_date: 2024-07-12
+      act_version_date: 2026-07-27
     applies_to_risk_class: [high_risk]
     applies_to_role: [provider]
     obligation_status: mandatory
@@ -356,7 +364,7 @@ rules:
       instrument: "Regulation (EU) 2024/1689"
       article: 43
       paragraph: 1
-      act_version_date: 2024-07-12
+      act_version_date: 2026-07-27
     applies_to_risk_class: [high_risk]
     applies_to_role: [provider]
     applies_to_annex_iii_area: [biometrics]
@@ -382,7 +390,7 @@ rules:
       article: 43
       paragraph: 2
       annex: "VI"
-      act_version_date: 2024-07-12
+      act_version_date: 2026-07-27
     applies_to_risk_class: [high_risk]
     applies_to_role: [provider]
     # Annex III points 2 to 8 — every listed area except biometrics.
@@ -412,7 +420,7 @@ rules:
       instrument: "Regulation (EU) 2024/1689"
       article: 43
       paragraph: 3
-      act_version_date: 2024-07-12
+      act_version_date: 2026-07-27
     applies_to_risk_class: [high_risk]
     applies_to_role: [provider]
     applies_to_route: annex_i
@@ -423,7 +431,11 @@ rules:
       legislation was carried out, with the Chapter III Section 2 requirements assessed as part of
       it. This Regulation does not supply the procedure here — the sectoral act does — so what is
       expected is that act's assessment, plus confirmation that the Section 2 requirements were
-      inside its scope. Only Annex I Section A systems reach this rule; a Section B one owes no
+      inside its scope. Where the sectoral act offers a route that does not involve a third party,
+      state which HARMONISED STANDARDS were applied: that option is available only where standards
+      or common specifications cover all of the Section 2 requirements. Containing a high-risk AI
+      system does not by itself force a third-party assessment where the sectoral act does not
+      require one. Only Annex I Section A systems reach this rule; a Section B one owes no
       Chapter III at all under Art. 2(2) and is withheld earlier. A procedural act preceding market
       placement — confirm separately.
     document_verifiable: false
@@ -435,7 +447,7 @@ rules:
       instrument: "Regulation (EU) 2024/1689"
       article: 47
       paragraph: 1
-      act_version_date: 2024-07-12
+      act_version_date: 2026-07-27
     applies_to_risk_class: [high_risk]
     applies_to_role: [provider]
     obligation_status: mandatory
@@ -452,7 +464,7 @@ rules:
       instrument: "Regulation (EU) 2024/1689"
       article: 48
       paragraph: 3 # the operative "affixed visibly, legibly and indelibly" duty
-      act_version_date: 2024-07-12
+      act_version_date: 2026-07-27
     applies_to_risk_class: [high_risk]
     applies_to_role: [provider]
     obligation_status: mandatory
@@ -470,7 +482,7 @@ rules:
       article: 49
       paragraph: 1
       annex: "III"
-      act_version_date: 2024-07-12
+      act_version_date: 2026-07-27
     applies_to_risk_class: [high_risk]
     applies_to_role: [provider]
     # 49(1) reaches systems "listed in Annex III, with the EXCEPTION of point 2" — so critical
@@ -501,7 +513,7 @@ rules:
       article: 49
       paragraph: 4
       annex: "VIII"
-      act_version_date: 2024-07-12
+      act_version_date: 2026-07-27
     applies_to_risk_class: [high_risk]
     applies_to_role: [provider, deployer]
     # NOT a second registration — the same one, lodged somewhere else and carrying less. It stands
@@ -544,7 +556,7 @@ rules:
       article: 49
       paragraph: 3
       annex: "III"
-      act_version_date: 2024-07-12
+      act_version_date: 2026-07-27
     applies_to_risk_class: [high_risk]
     applies_to_role: [deployer]
     # The same Annex III exception as 49(1): "with the exception of ... point 2 of Annex III", so
@@ -585,7 +597,7 @@ rules:
       instrument: "Regulation (EU) 2024/1689"
       article: 72
       paragraph: 1 # establish and document a post-market monitoring system
-      act_version_date: 2024-07-12
+      act_version_date: 2026-07-27
     applies_to_risk_class: [high_risk]
     applies_to_role: [provider]
     obligation_status: mandatory
@@ -604,7 +616,7 @@ rules:
       instrument: "Regulation (EU) 2024/1689"
       article: 73
       paragraph: 1 # report serious incidents to market surveillance authorities
-      act_version_date: 2024-07-12
+      act_version_date: 2026-07-27
     applies_to_risk_class: [high_risk]
     applies_to_role: [provider]
     obligation_status: mandatory
@@ -625,7 +637,7 @@ rules:
       instrument: "Regulation (EU) 2024/1689"
       article: 6
       paragraph: 4 # document the not-high-risk assessment + register under Art. 49(2)
-      act_version_date: 2024-07-12
+      act_version_date: 2026-07-27
     applies_to_risk_class: [not_high_risk]
     applies_to_role: [provider]
     obligation_status: mandatory
@@ -652,16 +664,25 @@ rules:
     source:
       instrument: "Regulation (EU) 2024/1689"
       article: 4
-      act_version_date: 2024-07-12
+      # PARAGRAPH 1, not the article. Until the 2026-07-27 consolidation Art. 4 was a single
+      # unnumbered block and citing it whole was citing the duty. Reg (EU) 2026/1744 replaced it
+      # with three paragraphs, and only the first binds providers and deployers: (2) is a support
+      # duty of the Commission and the Member States, (3) a task of the Board. Citing the article
+      # whole would now quote two other bodies' duties as the reader's own.
+      paragraph: 1
+      act_version_date: 2026-07-27
     applies_to_risk_class: [high_risk, not_high_risk, minimal]
     applies_to_role: [provider, deployer]
     obligation_status: mandatory
     check_type: presence
     evidence_expected: >-
-      Measures taken to ensure a sufficient level of AI literacy among staff and others operating
-      the system on the organisation's behalf — training, briefing or competence requirements,
-      pitched to their technical knowledge and to the context the system is used in, and to the
-      persons it is used on. An organisational measure, not a property of the system.
+      Measures taken to support the development of AI literacy among staff and others operating the
+      system on the organisation's behalf — training, briefing or competence requirements, pitched
+      to their technical knowledge and to the context the system is used in, and to the persons it
+      is used on. An organisational measure, not a property of the system. The duty is to take the
+      MEASURES: the paragraph says in terms that it does not require guaranteeing any particular
+      level of literacy in any individual, so evidence of a programme satisfies it and an
+      attainment record is not what is being asked for.
     document_verifiable: false
     # Chapter I, so Art. 113(a): in application since 2 February 2025 — earlier than every other
     # rule here, and already owed today.
@@ -694,7 +715,7 @@ rules:
       instrument: "Regulation (EU) 2024/1689"
       article: 50
       paragraph: 1
-      act_version_date: 2024-07-12
+      act_version_date: 2026-07-27
     applies_to_transparency_duty: [direct_interaction]
     applies_to_role: [provider]
     obligation_status: mandatory
@@ -714,7 +735,7 @@ rules:
       instrument: "Regulation (EU) 2024/1689"
       article: 50
       paragraph: 2
-      act_version_date: 2024-07-12
+      act_version_date: 2026-07-27
     applies_to_transparency_duty: [synthetic_content_marking]
     applies_to_role: [provider]
     obligation_status: mandatory
@@ -734,7 +755,7 @@ rules:
       instrument: "Regulation (EU) 2024/1689"
       article: 50
       paragraph: 3
-      act_version_date: 2024-07-12
+      act_version_date: 2026-07-27
     applies_to_transparency_duty: [emotion_or_biometric_categorisation]
     applies_to_role: [deployer]
     obligation_status: mandatory
@@ -754,7 +775,7 @@ rules:
       instrument: "Regulation (EU) 2024/1689"
       article: 50
       paragraph: 4
-      act_version_date: 2024-07-12
+      act_version_date: 2026-07-27
     # BOTH duties of paragraph 4, on one rule. Its two subparagraphs are one provision reached by
     # either — deep fakes in the first, published public-interest text in the second — and
     # LegalSource cites no finer than the paragraph, so splitting would mean two rules quoting the
@@ -784,7 +805,7 @@ rules:
     source:
       instrument: "Regulation (EU) 2024/1689"
       article: 26
-      act_version_date: 2024-07-12
+      act_version_date: 2026-07-27
     applies_to_risk_class: [high_risk]
     applies_to_role: [deployer]
     obligation_status: mandatory
@@ -806,7 +827,7 @@ rules:
       instrument: "Regulation (EU) 2024/1689"
       article: 27
       paragraph: 1 # the assessment duty and its (a)-(f) required contents
-      act_version_date: 2024-07-12
+      act_version_date: 2026-07-27
     applies_to_risk_class: [high_risk]
     applies_to_role: [deployer]
     # Art. 27(1) opens on "a high-risk AI system referred to in Article 6(2)" — the Annex III route
@@ -869,7 +890,7 @@ rules:
       instrument: "Regulation (EU) 2024/1689"
       article: 25
       paragraph: 2
-      act_version_date: 2024-07-12
+      act_version_date: 2026-07-27
     applies_to_risk_class: [high_risk]
     applies_to_role: [initial_provider]
     requires_provider_reallocation: true
@@ -907,7 +928,7 @@ rules:
     source:
       instrument: "Regulation (EU) 2024/1689"
       article: 22
-      act_version_date: 2024-07-12
+      act_version_date: 2026-07-27
     applies_to_risk_class: [high_risk]
     applies_to_role: [authorised_representative]
     obligation_status: mandatory
@@ -929,7 +950,7 @@ rules:
     source:
       instrument: "Regulation (EU) 2024/1689"
       article: 23
-      act_version_date: 2024-07-12
+      act_version_date: 2026-07-27
     applies_to_risk_class: [high_risk]
     applies_to_role: [importer]
     obligation_status: mandatory
@@ -951,7 +972,7 @@ rules:
     source:
       instrument: "Regulation (EU) 2024/1689"
       article: 24
-      act_version_date: 2024-07-12
+      act_version_date: 2026-07-27
     applies_to_risk_class: [high_risk]
     applies_to_role: [distributor]
     obligation_status: mandatory
@@ -978,7 +999,7 @@ rules:
       instrument: "Regulation (EU) 2024/1689"
       article: 86
       paragraph: 1 # the right, and the deployer duty that answers it
-      act_version_date: 2024-07-12
+      act_version_date: 2026-07-27
     applies_to_risk_class: [high_risk]
     applies_to_role: [deployer]
     obligation_status: mandatory

@@ -63,7 +63,7 @@ class Settings(BaseSettings):
     chroma_path: str = "./chroma"
 
     # Policy / reproducibility.
-    act_version_date: date = date(2024, 7, 12)
+    act_version_date: date = date(2026, 7, 27)
     policy_spec_path: str = "./data/policy/spec.yaml"
     # Literal article text, fetched by scripts/fetch_articles.py. The SINGLE store of enacted
     # wording: rules cite a provision, the loader resolves the text from here. Never duplicated

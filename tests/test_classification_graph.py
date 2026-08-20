@@ -16,6 +16,7 @@ from pydantic import ValidationError
 
 from aiact.classify import ScriptedBrain, build_graph, classify
 from aiact.classify.graph import route_for
+from aiact.config import get_settings
 from aiact.eval.classification_cases import load_classification_cases
 from aiact.schemas.enums import (
     ActorRole,
@@ -392,7 +393,11 @@ def test_every_verdict_is_cited():
     result = classify("cv parser", brain, "p")
     assert result.overall_risk_class == RiskClass.NOT_HIGH_RISK
     assert result.triggered_by
-    assert all(e.source.act_version_date.isoformat() == "2024-07-12" for e in result.triggered_by)
+    # Compared against the SHIPPED pin, not a literal: a citation carrying a different act version
+    # from the one the cascade read its law out of would be a verdict quoting one text and citing
+    # another, and hard-coding the date here would hide exactly that on the next refresh.
+    pinned = get_settings().act_version_date
+    assert all(e.source.act_version_date == pinned for e in result.triggered_by)
 
 
 def test_assemble_result_passes_use_case_validator():
