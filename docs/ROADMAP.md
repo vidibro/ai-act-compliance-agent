@@ -137,6 +137,26 @@ candidate or application; scheduling and room-booking do not.
 > was authored to catch exactly this, and re-running after every dev change spends its honesty. Defer
 > to a genuine milestone (end of the classification block), and expect it still won't be a clean 9/9.
 
+**The Annex III(1) carve-out — a third test at the same node (2026-08-20).** The node's two tests
+answer *is this purpose part of a listed function*, and both exclusions it knew about were Art. 6(3)
+ones assessed later. Point 1 carries an exclusion of a different kind: 1(a) lists remote biometric
+identification and then says it *"shall not include"* verification whose **sole purpose** is
+confirming a person is who they claim to be. That one IS decided here — it defines the area rather
+than derogating from it — and it is a genuine boundary, not a technicality: one face against that
+person's own stored template is out, the same face against a gallery of many is in. Test (iii) says
+so, with `sole` marked strict, and with the exclusion confined to point 1 so a verification system
+serving another listed function keeps that area. Test (iv) handles the chapeau on points 1, 6 and
+7 — *"in so far as their use is permitted under relevant Union or national law"* — by saying it is
+**not a test to apply here**: whether a Member State permits the use is that State's question, and
+an impermissible use is not thereby made low-risk, it is barred by the other law. Left unaddressed
+it is an invitation to answer "none" for a reason the node cannot assess, which is the same failure
+the Art. 6(3) warning already guards against. Two dev cases, a flip pair in one venue —
+`stadium_ticket_face_verification` (minimal) and `stadium_banned_person_face_identification`
+(high_risk, biometrics). The pair is deliberately symmetric: the exclusion has to hold *and* have a
+limit, because an area a classifier can be talked out of is worse than one it never had. These are
+also the golden set's first **biometrics** cases, so the first to select `AIA-PO-A43-1` — the Annex
+VII/notified-body branch — rather than `-A43-2`. Neither has been run against a model yet.
+
 7. ~~**Langfuse**~~ 🟡 **plumbing done 2026-07-22; visible trace needs your keys.** `src/aiact/tracing.py`
    wires LiteLLM's Langfuse callback: one trace per `classify()` run, each node's LLM call a span
    under it tagged by `node_id` — the decision path. STRICT no-op without keys (never imports

@@ -2330,3 +2330,81 @@ cases:
       The only case that reaches Art. 25 by the Annex I door rather than Annex III, and the one that
       justifies leaving product_manufacturer out of the ruleset: it needs no rules because 25(3)
       gives it the provider's whole.
+
+  # --- THE ANNEX III(1) CARVE-OUT -------------------------------------------------------------
+  # Point 1(a) lists remote biometric identification and then excludes verification "the sole
+  # purpose of which is to confirm that a specific natural person is the person he or she claims to
+  # be". Same venue, same faces, same cameras in both cases below — what flips the tier is the
+  # DIRECTION of the match: one face against that person's own stored template, or one face against
+  # a gallery of many. A classifier reading "facial recognition at a stadium" answers both alike.
+  - case_id: stadium_ticket_face_verification
+    description: >-
+      A gate system at a sports venue that confirms a season-ticket holder at entry. The holder
+      looks at a camera and the system compares the live image with the photograph stored on that
+      same ticket record, returning a match or no-match for the one person presenting it. It holds
+      no gallery of other faces, searches nothing, and infers nothing about the holder beyond
+      whether the face is theirs. Non-matching holders are directed to a staffed desk.
+    expected_risk_class: minimal
+    expected_is_ai_system: true
+    is_ai_basis: >-
+      Infers from a live camera image whether it depicts the same person as a stored photograph —
+      a learned face-matching model, not a rule anyone wrote out.
+    expected_annex_i_product: null
+    expected_annex_iii_area: null
+    expected_transparency_duties: []
+    transparency_basis: >-
+      Art. 50 does not attach. The gate holds no conversation with the holder (50(1)), generates no
+      synthetic content (50(2)) and produces no deep fake (50(4)). Nor is it a biometric
+      categorisation system under 50(3): it assigns the holder to no category, it decides only
+      whether the face is the one on their own ticket.
+    decisive_fact: >-
+      One-to-one biometric verification whose sole purpose is confirming that the holder is who
+      they claim to be — the exclusion written into Annex III(1)(a) itself. Outside point 1, and no
+      other listed function is served, so the system is minimal risk. Note what does the work: the
+      description says there is no gallery and no search. Face recognition at a turnstile is not
+      by itself outside the area.
+    difficulty: buried
+    split: dev
+    notes: >-
+      The dev anchor for the Annex III(1)(a) carve-out, and the half a classifier gets wrong by
+      over-inclusion. Pairs with stadium_banned_person_face_identification.
+
+  - case_id: stadium_banned_person_face_identification
+    description: >-
+      A system at the same sports venue that reviews recorded entrance footage after each fixture
+      and searches every face captured against the operator's gallery of individuals subject to a
+      banning order, to establish whether any of them attended. Matches are reported to the venue's
+      safety team, which decides whether to refer the incident. The venue is privately operated and
+      the reviews are not carried out for or on behalf of any law enforcement authority.
+    expected_risk_class: high_risk
+    expected_is_ai_system: true
+    is_ai_basis: >-
+      Infers from recorded video which captured faces correspond to a person in the gallery —
+      a learned face-matching model applied to images no rule could resolve.
+    expected_annex_i_product: null
+    expected_annex_iii_area: biometrics
+    expected_performs_profiling: false
+    expected_derogation: null
+    expected_deployer_type: neither
+    expected_provider_reallocation: null
+    expected_transparency_duties: []
+    transparency_basis: >-
+      Art. 50 does not attach. There is no direct interaction with the people filmed (50(1)), no
+      synthetic content (50(2)) and no deep fake (50(4)). And 50(3) reaches emotion recognition and
+      biometric CATEGORISATION — sorting people by an attribute — whereas this establishes which
+      individual a face belongs to, which is identification.
+    decisive_fact: >-
+      Searching each captured face against a gallery of many is remote biometric IDENTIFICATION,
+      Annex III(1)(a), and the point 1(a) verification exclusion does not reach it: the purpose is
+      not to confirm a claim of identity made by the person in front of the camera. Not prohibited
+      under Art. 5(1)(h), which reaches 'real-time' identification in publicly accessible spaces
+      for law-enforcement purposes — this is post-event review by a private operator on its own
+      behalf. It performs no profiling: it establishes who a face belongs to and evaluates nothing
+      about them, and with no Art. 6(3)(a)-(d) condition available the derogation cannot open.
+    difficulty: buried
+    split: dev
+    flips_from: stadium_ticket_face_verification
+    notes: >-
+      The identification half of the carve-out pair, and the one that keeps the exclusion honest:
+      an area a classifier can be talked out of is worse than one it never had. Also the golden
+      set's first biometrics case, so the first to select AIA-PO-A43-1 rather than -A43-2.

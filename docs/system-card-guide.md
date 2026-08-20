@@ -83,6 +83,19 @@ Employment (Annex III(4)) covers recruitment and selection — placing targeted 
 applications, evaluating candidates — and decisions on promotion, termination, task allocation and
 performance monitoring.
 
+Biometrics (Annex III(1)) is the one area with a boundary inside it, and the card decides which side
+you land on. If the system matches faces, voices or fingerprints, **say which direction the match
+runs**:
+
+- **one against that same person's own stored record**, to confirm they are who they claim to be —
+  verification, and Annex III(1)(a) excludes it in terms
+- **one against a gallery of many**, to establish who someone is — remote identification, and
+  squarely in the area
+
+"Uses facial recognition" does not distinguish them, and the exclusion is only for systems whose
+**sole** purpose is that confirmation: if it also searches for unknown people or infers anything
+about them, the exclusion is gone. Say whether a gallery exists and what is in it.
+
 Name who is affected: applicants, employees, students, patients, the public.
 
 ### 4. Does it evaluate people? — Art. 6(3)
@@ -275,6 +288,8 @@ communicate directly with the people it affects?>
 ## Before you submit it
 
 - [ ] Every use case says whether it evaluates people, and on what
+- [ ] Any biometric matching says which direction it runs — against the person's own record, or
+      against a gallery of many (Annex III(1)(a))
 - [ ] Nothing is described only by its benefit
 - [ ] The awkward capability is written down, not implied
 - [ ] Exemption claims are stated as claims, not left to inference

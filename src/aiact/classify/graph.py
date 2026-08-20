@@ -383,6 +383,20 @@ QUESTIONS: dict[str, Question] = {
         "provisioning, facilities for already-employed staff) OR surrounding logistics that handle "
         "calendars, rooms or reminders rather than the candidate or their application (e.g. "
         "scheduling interview slots) — even though it plainly operates in that setting.\n"
+        "(iii) ONE exclusion IS decided here, because the Annex writes it into the area itself "
+        "rather than derogating from it: point 1(a) does not cover biometric VERIFICATION whose "
+        "SOLE purpose is confirming that a person is who they claim to be — one face, fingerprint "
+        "or voice matched against that same person's enrolled template, as when a device is "
+        "unlocked or a ticket is checked against its own holder. Searching a person against a "
+        "gallery of many is remote IDENTIFICATION and stays in scope. 'Sole' is strict: a system "
+        "that also searches for unknown people, categorises them, or infers anything about them "
+        "keeps the area. And the exclusion is from point 1 only — a verification system used for a "
+        "function listed under another point is in scope under that point.\n"
+        "(iv) Points 1, 6 and 7 open with 'in so far as their use is permitted under relevant "
+        "Union or national law'. Do NOT treat that as a test to apply here. Whether a Member State "
+        "permits the use is a question for that State's law, not for this description, and a use "
+        "that is not permitted is not thereby made low-risk — it is barred by that other law. "
+        "Answer on the listed function the purpose serves.\n"
         "Answer the area, or none only if the purpose serves no listed function at all.",
         "annex_area",
         label="Is it used in a listed high-risk area?",
