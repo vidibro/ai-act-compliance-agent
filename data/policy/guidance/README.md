@@ -47,6 +47,15 @@ same one. Add a passage when a second thing needs it, not before.
 
 - Every snippet carries `binding: false`. A verdict that rests on a snippet must say it rests on
   **Commission interpretation**, not on enacted law.
-- Guidance documents get re-issued (this one was: `C(2025) 884 final` draft-approval →
-  `C(2025) 5052 final` finalised). `source.md` records which version, and the PDF sha detects silent
-  changes at the source URL.
+- Guidance documents get re-issued (the prohibited-practices one was: `C(2025) 884 final`
+  draft-approval → `C(2025) 5052 final` finalised). `source.md` records which version, and the PDF
+  sha detects silent changes at the source URL. It does NOT detect a re-issue at a *new* URL, which
+  is why `supersedes` is written by hand.
+- **Do not read a document's status off its title page.** Both stored PDFs open with *"Approval of
+  the content of the draft Communication"* — for `C(2025) 884` that meant draft, for
+  `C(2026) 5054` it is the College's adoption wrapper on the final text. The Commission's own
+  download labels settle it; each `source.md` records which, and why.
+- A snippet's sha proves the QUOTE has not drifted. `source.md`'s `pdf_sha256` proves the DOCUMENT
+  behind it has not — swap the PDF for another revision and every snippet still passes its own
+  check while its page numbers point into a file that no longer says what they say. Both are
+  tested (`tests/test_guidance.py`).

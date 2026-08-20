@@ -8,6 +8,8 @@ the passage a human checked against the PDF).
 
 from __future__ import annotations
 
+import hashlib
+import re
 from pathlib import Path
 
 import pytest
@@ -94,3 +96,60 @@ def test_the_recruitment_case_is_now_prohibited_and_cited():
     assert case.expected_risk_class.value == "prohibited"
     assert case.expected_prohibited is True
     assert case.guidance_refs == [REF], "the prohibited label must carry its non-binding basis"
+
+
+# --- the PDF anchor ----------------------------------------------------------------------------
+def test_every_guidance_document_matches_its_recorded_sha():
+    """The PDF is the anchor every snippet traces to, and nothing checked it until now.
+
+    A snippet's own sha proves the QUOTE has not drifted since a human verified it. It says nothing
+    about the document that human read: replace source.pdf with a different revision and every
+    snippet still passes its own check while pointing at page numbers in a file that no longer says
+    what they say. The store's README calls the PDF "authoritative, byte-exact" — this is what makes
+    that true rather than aspirational."""
+    docs = sorted(p for p in GUIDANCE_ROOT.iterdir() if p.is_dir())
+    assert docs, "expected at least one guidance document"
+    for doc in docs:
+        source_md, pdf = doc / "source.md", doc / "source.pdf"
+        assert source_md.is_file() and pdf.is_file(), f"{doc.name} is missing source.md/source.pdf"
+        declared = re.search(
+            r"^pdf_sha256:\s*([0-9a-f]{64})\s*$", source_md.read_text(encoding="utf-8"), re.M
+        )
+        assert declared, f"{doc.name}/source.md records no pdf_sha256"
+        actual = hashlib.sha256(pdf.read_bytes()).hexdigest()
+        assert actual == declared.group(1), (
+            f"{doc.name}/source.pdf does not match its recorded sha256 — the stored document has "
+            f"changed since its snippets were verified against it. Re-verify every snippet's "
+            f"locator before trusting them."
+        )
+
+
+def test_every_snippet_names_a_document_that_exists():
+    """A snippet's `document` must be the reference its directory actually holds — a snippet filed
+    under one Communication while quoting another would cite the wrong instrument."""
+    for doc in sorted(p for p in GUIDANCE_ROOT.iterdir() if p.is_dir()):
+        reference = re.search(
+            r"^reference:\s*(.+?)\s*$", (doc / "source.md").read_text(encoding="utf-8"), re.M
+        )
+        assert reference, f"{doc.name}/source.md has no reference"
+        for snippet in sorted((doc / "snippets").glob("*.md")):
+            loaded = load_snippet(f"{doc.name}/{snippet.stem}", GUIDANCE_ROOT)
+            assert loaded.document == reference.group(1), snippet.name
+            assert loaded.binding is False, f"{snippet.name} claims to be binding"
+
+
+# --- Art. 50 transparency guidance -------------------------------------------------------------
+def test_the_marking_snippet_loads_and_is_verbatim():
+    """C(2026) 5054 para (71) is what grounds AIA-TR-A50-2's `evidence_expected`, which until now
+    asserted on our own authority that a human-readable "AI-generated" label does not discharge
+    Art. 50(2). It does not — but the passage also says such labels are not EXCLUDED, they are a
+    complement, and that second half is the part an interpretation written from the bare Article
+    was most likely to get wrong."""
+    snippet = load_snippet("C-2026-5054/machine-readable-marking-defined", GUIDANCE_ROOT)
+    assert snippet.binding is False
+    assert "p. 25" in snippet.locator
+    assert "limited to implementing marks in a machine-readable format" in snippet.body
+    assert "without\nhuman intervention" in snippet.body or (
+        "without human intervention" in snippet.body
+    )
+    assert "Perceptible marks and labels are not excluded as a complementary" in snippet.body
