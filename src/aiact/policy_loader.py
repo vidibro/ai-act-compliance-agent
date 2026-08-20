@@ -4,9 +4,9 @@ Pure IO + validation — no LLM, no retrieval, no paraphrase.
 
 The enacted wording lives in EXACTLY ONE place: data/policy/articles/*.md, written verbatim from
 EUR-Lex Formex XML by scripts/fetch_articles.py. spec.yaml never contains legal text — a rule only
-CITES a provision (source.article, optionally source.paragraph) and supplies the non-legal
-retrieval hints (evidence_expected). At load time we resolve the citation to its literal text and
-inject it into `requirement` before validation.
+CITES a provision (source.article, optionally source.paragraph and source.point) and supplies the
+non-legal retrieval hints (evidence_expected). At load time we resolve the citation to its literal
+text and inject it into `requirement` before validation.
 
 Why this way: Resolving from the store makes the legal text mechanically derived — the only way it
 can be wrong is if the article file itself is wrong, and that file is reproducible from the
@@ -30,6 +30,7 @@ from aiact.schemas.policy import PolicySpec
 _FRONT_MATTER = re.compile(r"\A---\n(.*?)\n---\n+", re.S)
 _PARAGRAPH_START = re.compile(r"^(\d+)\.\s+", re.M)
 _FRONT_FIELD = re.compile(r"^(\w+):\s*(.*)$", re.M)
+_POINT_LABEL = re.compile(r"^(?P<indent>[ \t]*)\((?P<label>[a-z]+)\)\s", re.M)
 
 
 def verify_integrity(path: Path, raw: str, front: dict[str, str], body: str) -> None:
@@ -110,11 +111,53 @@ def _extract_paragraph(provisions: str, paragraph: int, article: int) -> str:
     )
 
 
+def _extract_point(text: str, point: str, article: int) -> str:
+    """Pull one lettered point's literal text out of an article body or paragraph.
+
+    Needed because not every obligation is a whole paragraph. Article 16 is a chapeau followed by
+    points (a) to (l), most of which cross-reference another article — citing the article whole
+    would resolve to the entire list and restate twelve duties in one requirement.
+
+    The returned text KEEPS its "(b) " label and drops the chapeau, so it stays a literal substring
+    of the stored article. The chapeau is not lost to the reader: it says who owes the point, and
+    that is what the rule's `applies_to_role` carries.
+
+    A point runs to the next label at the same or a shallower indent, or to the next numbered
+    paragraph — so citing a point that has sub-points resolves to the point and its sub-points
+    together, which is how the provision reads.
+    """
+    labels = list(_POINT_LABEL.finditer(text))
+    hits = [m for m in labels if m.group("label") == point]
+    if not hits:
+        found = [m.group("label") for m in labels]
+        raise ValueError(f"Article {article} has no point ({point}) (found: {found}).")
+    if len(hits) > 1:
+        # Two points with the same letter means the citation is under-specified — an article whose
+        # paragraphs each carry an (a). Picking the first would silently resolve to the wrong duty.
+        raise ValueError(
+            f"Article {article} has {len(hits)} points labelled ({point}). Cite the paragraph "
+            f"as well so the point is unambiguous."
+        )
+    start = hits[0]
+    indent = len(start.group("indent"))
+    stop = len(text)
+    for later in labels:
+        if later.start() > start.start() and len(later.group("indent")) <= indent:
+            stop = later.start()
+            break
+    for para in _PARAGRAPH_START.finditer(text):
+        if para.start() > start.start():
+            stop = min(stop, para.start())
+            break
+    return text[start.start() : stop].strip()
+
+
 def resolve_requirement(
     articles_dir: Path,
     article: int,
     paragraph: int | None,
     expected_version: str | None = None,
+    point: str | None = None,
 ) -> tuple[str, str]:
     """Resolve a citation to its literal enacted text. Returns (requirement_text, source_url).
 
@@ -133,6 +176,8 @@ def resolve_requirement(
                 f"across versions — regenerate the store for {expected_version} or review the spec."
             )
     text = provisions if paragraph is None else _extract_paragraph(provisions, paragraph, article)
+    if point is not None:
+        text = _extract_point(text, point, article)
     return text, front.get("source_url", "")
 
 
@@ -199,7 +244,11 @@ def load_policy_spec(
         if article is None:
             raise ValueError(f"Rule {rule.get('rule_id')!r} has no source.article to resolve.")
         text, url = resolve_requirement(
-            art_dir, article, source.get("paragraph"), expected_version=version_str
+            art_dir,
+            article,
+            source.get("paragraph"),
+            expected_version=version_str,
+            point=source.get("point"),
         )
         rule["requirement"] = text
         source.setdefault("url", url)

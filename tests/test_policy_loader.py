@@ -150,6 +150,36 @@ def test_resolve_paragraph_vs_whole_article():
     assert len(para2) < len(whole)
 
 
+def test_resolve_point_of_an_article_without_paragraphs():
+    """Art. 16 is a chapeau plus points (a)-(l) and has no numbered paragraphs, so a rule that
+    wants one duty out of it has to cite the point. Citing the article resolves to all twelve."""
+    point_b, _ = resolve_requirement(ARTICLES_DIR, 16, None, point="b")
+    whole, _ = resolve_requirement(ARTICLES_DIR, 16, None)
+    assert point_b.startswith("(b) indicate on the high-risk AI system")
+    assert point_b.endswith("the address at which they can be contacted;")
+    assert point_b in whole
+    assert "(c) have a quality management system" not in point_b
+
+
+def test_resolve_point_within_a_paragraph():
+    para, _ = resolve_requirement(ARTICLES_DIR, 9, 2)
+    point_a, _ = resolve_requirement(ARTICLES_DIR, 9, 2, point="a")
+    assert point_a in para
+    assert len(point_a) < len(para)
+
+
+def test_resolve_ambiguous_point_raises():
+    """Art. 9 has an (a) under paragraph 2 and another under paragraph 5. Resolving to the first
+    would cite one duty and quote another, which is the failure this whole loader exists to stop."""
+    with pytest.raises(ValueError, match=r"2 points labelled \(a\)"):
+        resolve_requirement(ARTICLES_DIR, 9, None, point="a")
+
+
+def test_resolve_unknown_point_raises():
+    with pytest.raises(ValueError, match=r"no point \(z\)"):
+        resolve_requirement(ARTICLES_DIR, 16, None, point="z")
+
+
 def test_resolve_unknown_paragraph_raises():
     with pytest.raises(ValueError, match="no paragraph 99"):
         resolve_requirement(ARTICLES_DIR, 9, 99)
