@@ -91,6 +91,25 @@ class PolicyRule(BaseModel):
     alone and 43(2) points 2 to 8, and until this field existed the spec carried 43(2) with the
     comment "employment is Annex III point 4" and fired it at biometrics too. A condition written in
     a comment is not a condition."""
+    activation_condition: str | None = None
+    """WHICH members of the role owe this, where the Act binds only some of them — stated plainly,
+    in terms of the organisations concerned rather than of whoever is reading.
+
+    The Regulation sometimes narrows a duty by a fact about the ORGANISATION rather than about the
+    system. Art. 27 is the case: the fundamental rights impact assessment binds deployers that are
+    bodies governed by public law or private entities providing public services, not deployers at
+    large. Nothing in a system's documentation establishes that, and nothing in this ruleset can
+    derive it — READ, NEVER DERIVED, the same discipline as Art. 6(1)(b) and Art. 2(4) in the
+    cascade.
+
+    IT NARROWS THE DUTY-HOLDER, NOT THE REPORT. Such a rule is still selected, still listed under
+    its role, and still counted. The report describes what the Act requires of each role for this
+    system; it is not addressed to one organisation, and dropping an obligation into a "might not
+    apply" list would be the tool deciding on someone's behalf which of their duties to demote —
+    the same error as omitting a role because no ruleset was written for it. What this field buys
+    is that the obligation is stated WITH its condition rather than as an unqualified duty of every
+    deployer."""
+
     obligation_status: ObligationStatus
     check_type: CheckType
     evidence_expected: str  # what in the documentation would satisfy this

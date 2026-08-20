@@ -10,6 +10,7 @@ law that does not govern you.
 
 from __future__ import annotations
 
+import re
 from datetime import date
 
 import pytest
@@ -17,7 +18,13 @@ import pytest
 from aiact.gap.rules import select_rules
 from aiact.policy_loader import load_policy_spec
 from aiact.schemas.classification import ClassificationEvidence, UseCaseClassification
-from aiact.schemas.enums import ActorRole, AnnexIIIArea, AnnexIProduct, HighRiskRoute, RiskClass
+from aiact.schemas.enums import (
+    ActorRole,
+    AnnexIIIArea,
+    AnnexIProduct,
+    HighRiskRoute,
+    RiskClass,
+)
 from aiact.schemas.policy import LegalSource, PolicyRule
 
 ACT_DATE = date(2024, 7, 12)
@@ -160,3 +167,58 @@ def test_every_area_scoped_rule_cites_the_law_for_those_areas(spec):
             f"{rule.rule_id} names Annex III areas but cites {rule.source.article} as a whole. "
             f"Area-specific law lives in a paragraph."
         )
+
+
+# --- Art. 27 — a duty the Act narrows within a role ----------------------------------------------
+def test_art_27_is_reported_under_the_deployer_role_like_any_other(spec):
+    """Art. 27(1) binds only SOME deployers — public bodies, private providers of public services,
+    and deployers of Annex III(5)(b)/(c) systems. That narrowing is reported with the obligation,
+    never used to withhold it.
+
+    The report covers every obligation the Act creates for every role it binds, whoever happens to
+    be reading. Demoting this one into a "might not apply to you" list would be the tool deciding
+    on a reader's behalf which of their duties to take seriously — the same error as omitting a
+    role because no ruleset was written for it."""
+    active = select_rules(spec, a_use_case(area=AnnexIIIArea.EMPLOYMENT), ActorRole.DEPLOYER)
+
+    assert "AIA-DP-A27" in {r.rule_id for r in active.not_document_verifiable}
+
+
+def test_a_narrowed_duty_names_the_organisations_it_binds(spec):
+    """The narrowing is only useful if it says WHICH organisations are caught — and it must say so
+    about the parties, not about "you". This report describes what the Act requires of each role
+    for this system; it is not addressed to whoever happens to be reading, and the deployer it
+    describes is often not the organisation that wrote the document."""
+    rule = next(r for r in spec.rules if r.rule_id == "AIA-DP-A27")
+    condition = rule.activation_condition
+
+    assert condition is not None
+    assert "governed by public law" in condition
+    assert "5(b)" in condition and "5(c)" in condition
+    assert not re.search(r"\byou(r|rs|rself)?\b", condition, re.I)
+
+
+def test_art_27_never_reaches_the_systems_it_excludes(spec):
+    """Art. 27(1) reaches Art. 6(2) systems "with the exception of" Annex III point 2. An Annex I
+    safety component is not an Art. 6(2) system at all, so it is outside on the same words."""
+    for uc in (
+        a_use_case(area=AnnexIIIArea.CRITICAL_INFRASTRUCTURE),
+        a_use_case(product=AnnexIProduct.MEDICAL_DEVICES),
+    ):
+        assert "AIA-DP-A27" not in _rule_ids(spec, uc, ActorRole.DEPLOYER)
+
+
+def test_a_narrowed_duty_is_selected_exactly_like_an_unnarrowed_one(spec):
+    """`activation_condition` is reporting, not filtering. A rule carrying one is selected by the
+    same conditions as any other and lands in the same buckets — the only difference is that the
+    reader is told which members of the role owe it."""
+    narrowed = [r for r in spec.rules if r.activation_condition is not None]
+    assert narrowed, "the mechanism is unused — Art. 27 should carry it"
+    for rule in narrowed:
+        for role in rule.applies_to_role:
+            for area in rule.applies_to_annex_iii_area or list(AnnexIIIArea):
+                active = select_rules(spec, a_use_case(area=area), role)
+                assert rule.rule_id in {r.rule_id for r in active.all_rules}, (
+                    f"{rule.rule_id} states a condition and was withheld for {role}/{area} — "
+                    f"a condition is reported beside a duty, never used to drop it"
+                )

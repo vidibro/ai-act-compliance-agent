@@ -16,6 +16,13 @@
 #                       our own interpretive text and the query used for vector retrieval over the
 #                       document under review. Interpretation belongs here, never in requirement.
 #   document_verifiable — whether it can be seen in a system's technical documentation at all
+#   activation_condition — OPTIONAL. WHICH members of the role owe this, where the Act binds only
+#                       some of them on a fact about the ORGANISATION rather than the system
+#                       (Art. 27 binds deployers that are bodies governed by public law, not
+#                       deployers at large). It NARROWS THE DUTY-HOLDER, NOT THE REPORT: the rule
+#                       is still selected and still listed under its role, with the condition
+#                       carried beside it. This report covers every obligation the Act creates for
+#                       every role it binds, whoever is reading it.
 #
 # Two families:
 #   AIA-HR-*  Chapter III Section 2 (Art. 9-15) — requirements the system must meet.
@@ -562,16 +569,41 @@ rules:
       act_version_date: 2024-07-12
     applies_to_risk_class: [high_risk]
     applies_to_role: [deployer]
+    # Art. 27(1) opens on "a high-risk AI system referred to in Article 6(2)" — the Annex III route
+    # only, so an Annex I safety component is never reached — "with the exception of" point 2.
+    applies_to_annex_iii_area:
+      [
+        biometrics,
+        education,
+        employment,
+        essential_services,
+        law_enforcement,
+        migration,
+        justice_democracy,
+      ]
+    # The rest of the paragraph is not about the system at all, and no document settles it. It is
+    # stated for the reader to answer rather than guessed at — the discipline Art. 6(1)(b) and
+    # Art. 2(4) already follow in the cascade.
+    activation_condition: >-
+      Art. 27(1) does not bind every deployer of an Annex III system. It binds deployers that are
+      bodies governed by public law or private entities providing public services; and, whoever the
+      deployer is, deployers of the systems in Annex III point 5(b) — evaluating creditworthiness or
+      establishing a credit score, other than for detecting financial fraud — and 5(c), risk
+      assessment and pricing for life and health insurance. The first limb turns on what the
+      deploying organisation IS; the second on a sub-point of Annex III finer than this ruleset
+      classifies to. Neither is derivable from a description of the system, so the obligation is
+      listed with this condition attached rather than asserted of every deployer or dropped.
     obligation_status: mandatory
     check_type: presence
     evidence_expected: >-
       A fundamental rights impact assessment carried out BEFORE first use, covering the deployer's
       processes, the period and frequency of use, the categories of persons affected, the specific
       risks of harm to them, the human oversight measures, and what happens if those risks
-      materialise. CONDITIONAL, and the condition is not one this tool can settle: Art. 27(1) binds
-      only deployers that are bodies governed by public law or private entities providing public
-      services, plus deployers of Annex III(5)(b) and (c) systems, and it never reaches Annex
-      III(2). Reported as a confirmation to make, not as a duty asserted.
+      materialise. Art. 27(2) lets a deployer rely on an earlier assessment, or on the provider's,
+      in similar cases; Art. 27(3) then requires the result to be notified to the market
+      surveillance authority. Where a data protection impact assessment under Art. 35 GDPR already
+      meets part of this, Art. 27(4) makes the fundamental rights assessment COMPLEMENT it rather
+      than replace it — an existing DPIA is not on its own an answer here.
     document_verifiable: false
     effective_date: 2026-08-02
     status: active
