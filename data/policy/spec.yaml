@@ -9,7 +9,8 @@
 #
 # So each rule carries only:
 #   source            — WHICH provision (the pointer; resolves to the literal text)
-#   applies_to_*      — WHEN the rule activates (risk class, actor role, and where the law is
+#   applies_to_*      — WHEN the rule activates (risk class OR — for Art. 50 alone — the
+#                       transparency duty that attached; actor role; and where the law is
 #                       area-specific, which Art. 6 route and which Annex III areas)
 #   check_type        — HOW it must be verified
 #   evidence_expected — NON-LEGAL, plain-language description of what would satisfy it. This is
@@ -37,6 +38,9 @@
 #             where a reallocation actually occurred.
 #   AIA-AR-*  AUTHORISED REPRESENTATIVE (Art. 22), AIA-IM-* IMPORTER (Art. 23), AIA-DI-*
 #             DISTRIBUTOR (Art. 24) — the supply-chain roles, each with duties of its own.
+#   AIA-TR-* TRANSPARENCY (Art. 50). The one family that does not gate on a risk class: it gates
+#             on the DUTY the classification found, because Art. 50 cuts across the tiers. Split by
+#             role like the Article — (1)(2) provider, (3)(4) deployer.
 #   AIA-ALL-* Obligations binding BOTH provider and deployer at every governed tier — Art. 4 today.
 #
 # High-risk obligations for Annex III systems apply from 2026-08-02 (Art. 113). That applicability
@@ -609,6 +613,113 @@ rules:
     # Chapter I, so Art. 113(a): in application since 2 February 2025 — earlier than every other
     # rule here, and already owed today.
     effective_date: 2025-02-02
+    status: active
+
+  # ------------------------------------------------------------------------------------------
+  # Art. 50 — TRANSPARENCY. The only rules here that do not gate on a risk class, because Art. 50
+  # does not: it cuts ACROSS the Art. 6 tiers, and it is ADDITIVE to them. Art. 50(6) says so in
+  # terms — paragraphs 1 to 4 "shall not affect the requirements and obligations set out in
+  # Chapter III" — so a high-risk system that generates content owes 50(2) AND all of Art. 9-21.
+  # What varies is the DUTY, not the tier: a minimal-risk text generator owes 50(2), and a
+  # high-risk candidate scorer owes no Art. 50 duty at all — because it generates nothing and
+  # holds no conversation, NOT because of its tier. No set of risk classes expresses "whenever
+  # this duty attached"; `applies_to_transparency_duty` does, and naming it forbids naming
+  # `applies_to_risk_class`. The duties come from the classification cascade's own `transparency`
+  # answer, which every path reaches.
+  #
+  # The role split is the Article's, not ours: (1) and (2) bind the PROVIDER and are built into the
+  # system, so a technical file can evidence them; (3) and (4) bind the DEPLOYER and are discharged
+  # in front of the affected person, which no provider document shows. A validator checks each rule
+  # is filed under the role TransparencyDuty.owed_by names.
+  #
+  # Every paragraph is disapplied for law-enforcement use authorised by law, and (1), (2) and (4)
+  # carry carve-outs of their own. Those are conditions on the DUTY, resolved when the cascade
+  # decided the duty attached — not re-litigated here.
+  # ------------------------------------------------------------------------------------------
+  - rule_id: AIA-TR-A50-1
+    source:
+      instrument: "Regulation (EU) 2024/1689"
+      article: 50
+      paragraph: 1
+      act_version_date: 2024-07-12
+    applies_to_transparency_duty: [direct_interaction]
+    applies_to_role: [provider]
+    obligation_status: mandatory
+    check_type: presence
+    evidence_expected: >-
+      A description of how the system tells the people it interacts with that they are dealing with
+      an AI system — an opening disclosure, a persistent label, a spoken statement. The duty is on
+      the DESIGN, so the technical documentation is where it shows. A provider relying on the
+      "obvious to a reasonably well-informed, observant and circumspect person" exception should say
+      so and say why; it is a judgement about the context of use, not a default.
+    document_verifiable: true
+    effective_date: 2026-08-02
+    status: active
+
+  - rule_id: AIA-TR-A50-2
+    source:
+      instrument: "Regulation (EU) 2024/1689"
+      article: 50
+      paragraph: 2
+      act_version_date: 2024-07-12
+    applies_to_transparency_duty: [synthetic_content_marking]
+    applies_to_role: [provider]
+    obligation_status: mandatory
+    check_type: substance
+    evidence_expected: >-
+      The technical solution that marks generated output as artificially generated or manipulated,
+      in a MACHINE-READABLE format — a named watermarking, provenance or metadata scheme, and what
+      it survives. The paragraph asks for solutions that are effective, interoperable, robust and
+      reliable as far as technically feasible, so a statement that outputs are "labelled as AI"
+      without saying how a machine detects it is INADEQUATE, not a pass.
+    document_verifiable: true
+    effective_date: 2026-08-02
+    status: active
+
+  - rule_id: AIA-TR-A50-3
+    source:
+      instrument: "Regulation (EU) 2024/1689"
+      article: 50
+      paragraph: 3
+      act_version_date: 2024-07-12
+    applies_to_transparency_duty: [emotion_or_biometric_categorisation]
+    applies_to_role: [deployer]
+    obligation_status: mandatory
+    check_type: presence
+    evidence_expected: >-
+      How the deployer informs the people exposed to the emotion recognition or biometric
+      categorisation system that it is operating, and the data-protection basis under Regulation
+      (EU) 2016/679, Regulation (EU) 2018/1725 or Directive (EU) 2016/680. Discharged in front of
+      those people, by the operating organisation — a provider's technical file cannot show it, so
+      confirm separately.
+    document_verifiable: false
+    effective_date: 2026-08-02
+    status: active
+
+  - rule_id: AIA-TR-A50-4
+    source:
+      instrument: "Regulation (EU) 2024/1689"
+      article: 50
+      paragraph: 4
+      act_version_date: 2024-07-12
+    # BOTH duties of paragraph 4, on one rule. Its two subparagraphs are one provision reached by
+    # either — deep fakes in the first, published public-interest text in the second — and
+    # LegalSource cites no finer than the paragraph, so splitting would mean two rules quoting the
+    # same law and citing it identically.
+    applies_to_transparency_duty: [deep_fake_disclosure, public_interest_text_disclosure]
+    applies_to_role: [deployer]
+    obligation_status: mandatory
+    check_type: presence
+    evidence_expected: >-
+      The deployer's disclosure that the content is artificially generated or manipulated. For an
+      evidently artistic, creative, satirical or fictional work the duty is reduced to disclosing
+      that such content exists, in a way that does not hamper enjoyment of the work. For published
+      text informing the public on matters of public interest, the duty falls away where the content
+      had human review or editorial control and a named person holds editorial responsibility — so
+      whether such a process exists is what settles it. A publication practice, not a property of
+      the system — confirm separately.
+    document_verifiable: false
+    effective_date: 2026-08-02
     status: active
 
   # ------------------------------------------------------------------------------------------

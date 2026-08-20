@@ -136,10 +136,16 @@ def build_graph(
         # did. The deployer-type answer is deliberately NOT passed — it resolves a condition on a
         # duty that exists either way, and gating on it would withhold an obligation the Act
         # creates.
+        #
+        # The Art. 50 duties come from the CLASSIFICATION, not from a question here — the cascade
+        # answers them at `assemble`, for every system it classifies. They are the fourth thing that
+        # can activate a rule, and the only one that is not a risk class: 50(2) reaches a
+        # minimal-risk generator and no high-risk scorer owes any of Art. 50 at all.
         moved = narrow(state.provider_reallocation, ProviderReallocation)
+        duties = state.classification.transparency_duties
         return {
             "active": [
-                select_rules(spec, uc, role, reallocation=moved)
+                select_rules(spec, uc, role, reallocation=moved, transparency_duties=duties)
                 for uc in state.classification.use_cases
                 for role in roles
             ]

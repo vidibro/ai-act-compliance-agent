@@ -25,6 +25,7 @@ from aiact.schemas.enums import (
     HighRiskRoute,
     ProviderReallocation,
     RiskClass,
+    TransparencyDuty,
 )
 from aiact.schemas.policy import LegalSource, PolicyRule
 
@@ -52,6 +53,24 @@ def a_use_case(
         confidence="high",
         triggered_by=[ClassificationEvidence(source=source, reasoning="fixture")],
     )
+
+
+def _a_rule(**overrides) -> PolicyRule:
+    """A minimal valid rule, for testing what the schema REFUSES to build."""
+    fields = {
+        "rule_id": "BAD",
+        "requirement": "x",
+        "source": LegalSource(
+            instrument="Regulation (EU) 2024/1689", article=50, act_version_date=ACT_DATE
+        ),
+        "applies_to_role": [ActorRole.PROVIDER],
+        "obligation_status": "mandatory",
+        "check_type": "presence",
+        "evidence_expected": "x",
+        "document_verifiable": False,
+        "status": "active",
+    }
+    return PolicyRule(**(fields | overrides))
 
 
 def _rule_ids(spec, use_case, role=ActorRole.PROVIDER) -> set[str]:
@@ -294,3 +313,127 @@ def test_only_one_rule_is_gated_on_the_reallocation(spec):
     Art. 25 question failed would silently under-report."""
     gated = {r.rule_id for r in spec.rules if r.requires_provider_reallocation}
     assert gated == {"AIA-IP-A25-2"}
+
+
+# --- Art. 50 — the activation axis that is not a tier ------------------------------------------
+#
+# Every other rule in the spec activates from the risk class. Art. 50 cannot: it cuts ACROSS the
+# tiers, and the two directions fail differently. Gate it on `minimal` and a high-risk chatbot owes
+# nothing under 50(1); gate it on every tier and a candidate scorer that generates nothing is told
+# to watermark its output. The tests below pin both directions.
+
+
+def _a_minimal_use_case() -> UseCaseClassification:
+    use_case = a_use_case()
+    return use_case.model_copy(update={"risk_class": RiskClass.MINIMAL})
+
+
+def _tr_ids(spec, use_case, role, duties) -> set[str]:
+    active = select_rules(spec, use_case, role, transparency_duties=duties)
+    return {r.rule_id for r in active.all_rules if r.rule_id.startswith("AIA-TR-")}
+
+
+def test_a_minimal_system_owes_a_transparency_duty(spec):
+    """The direction a tier-gated rule gets wrong. A text generator can be minimal risk and still
+    owe 50(2) — that is the whole reason Art. 50 is answered on its own axis."""
+    duties = [TransparencyDuty.SYNTHETIC_CONTENT_MARKING]
+    assert _tr_ids(spec, _a_minimal_use_case(), ActorRole.PROVIDER, duties) == {"AIA-TR-A50-2"}
+
+
+def test_a_high_risk_system_owing_no_duty_owes_no_transparency_rule(spec):
+    """The other direction, and the one that would flood a report. Most high-risk systems owe
+    nothing under Art. 50: a candidate scorer holds no conversation and generates no content."""
+    use_case = a_use_case(area=AnnexIIIArea.EMPLOYMENT)
+    assert _tr_ids(spec, use_case, ActorRole.PROVIDER, []) == set()
+    assert _tr_ids(spec, use_case, ActorRole.DEPLOYER, []) == set()
+
+
+def test_the_tier_never_narrows_a_duty_that_attached(spec):
+    """Same duty, every governed tier, same rule. The duty is the condition; the tier is not one."""
+    duties = [TransparencyDuty.DIRECT_INTERACTION]
+    for risk_class in (RiskClass.MINIMAL, RiskClass.NOT_HIGH_RISK, RiskClass.HIGH_RISK):
+        use_case = a_use_case(area=AnnexIIIArea.EMPLOYMENT).model_copy(
+            update={"risk_class": risk_class}
+        )
+        assert _tr_ids(spec, use_case, ActorRole.PROVIDER, duties) == {"AIA-TR-A50-1"}
+
+
+def test_a_transparency_duty_is_added_to_chapter_iii_never_instead_of_it(spec):
+    """Art. 50(6): paragraphs 1 to 4 'shall not affect the requirements and obligations set out in
+    Chapter III'. A high-risk system that generates content owes 50(2) AND all of Arts. 9-21 — the
+    Article is additive, and a duty rule must never displace a tier rule."""
+    use_case = a_use_case(area=AnnexIIIArea.EMPLOYMENT)
+    duties = [TransparencyDuty.SYNTHETIC_CONTENT_MARKING]
+    without = {r.rule_id for r in select_rules(spec, use_case, ActorRole.PROVIDER).all_rules}
+    with_duty = {
+        r.rule_id
+        for r in select_rules(
+            spec, use_case, ActorRole.PROVIDER, transparency_duties=duties
+        ).all_rules
+    }
+    assert without < with_duty, "the duty removed a Chapter III obligation"
+    assert with_duty - without == {"AIA-TR-A50-2"}
+
+
+def test_transparency_rules_are_filed_under_the_role_that_owes_them(spec):
+    """Art. 50 splits by role and the split is not cosmetic: (1) and (2) are built into the system
+    by the provider, (3) and (4) are performed in front of the affected person by the deployer. A
+    provider handed 50(3) cannot discharge it, and the deployer's duty would go unnamed."""
+    for duty in TransparencyDuty:
+        rules = [r for r in spec.rules if duty in r.applies_to_transparency_duty]
+        assert rules, f"no rule carries {duty.value}"
+        for rule in rules:
+            assert rule.applies_to_role == [duty.owed_by]
+
+
+def test_both_duties_of_paragraph_four_reach_the_same_rule(spec):
+    """50(4) is one paragraph with two subparagraphs — deep fakes, and published public-interest
+    text. One provision, one citation, either duty."""
+    use_case = _a_minimal_use_case()
+    for duty in (
+        TransparencyDuty.DEEP_FAKE_DISCLOSURE,
+        TransparencyDuty.PUBLIC_INTEREST_TEXT_DISCLOSURE,
+    ):
+        assert _tr_ids(spec, use_case, ActorRole.DEPLOYER, [duty]) == {"AIA-TR-A50-4"}
+
+
+def test_an_out_of_scope_system_owes_no_transparency_duty_either(spec):
+    """Art. 2 withholds the Regulation whole, Art. 50 included. This is the case the early return in
+    `select_rules` now exists for: a duty-gated rule names no risk class, so nothing further down
+    tests the tier for it."""
+    use_case = a_use_case().model_copy(update={"risk_class": RiskClass.OUT_OF_SCOPE})
+    duties = list(TransparencyDuty)
+    for role in (ActorRole.PROVIDER, ActorRole.DEPLOYER):
+        assert _tr_ids(spec, use_case, role, duties) == set()
+
+
+def test_a_section_b_system_owes_no_transparency_duty_either(spec):
+    """Art. 2(2) is exhaustive — 'only Article 6(1), Articles 102 to 109 and Article 112 apply'."""
+    use_case = a_use_case(product=AnnexIProduct.MOTOR_VEHICLES)
+    duties = list(TransparencyDuty)
+    for role in (ActorRole.PROVIDER, ActorRole.DEPLOYER):
+        assert _tr_ids(spec, use_case, role, duties) == set()
+
+
+def test_a_rule_may_not_gate_on_both_a_tier_and_a_duty():
+    with pytest.raises(ValueError, match="names both applies_to_transparency_duty"):
+        _a_rule(
+            applies_to_risk_class=[RiskClass.MINIMAL],
+            applies_to_transparency_duty=[TransparencyDuty.DIRECT_INTERACTION],
+        )
+
+
+def test_a_rule_gating_on_neither_is_rejected():
+    """A rule nothing can activate reads in the spec as covered and in every report as absent."""
+    with pytest.raises(ValueError, match="names neither"):
+        _a_rule()
+
+
+def test_a_transparency_rule_filed_under_the_wrong_role_is_rejected():
+    """50(3) is the deployer's. Filed under the provider it would select for a party that cannot
+    discharge it — caught at load time rather than in a report."""
+    with pytest.raises(ValueError, match=r"Art. 50\(3\) is owed by deployer"):
+        _a_rule(
+            applies_to_transparency_duty=[TransparencyDuty.EMOTION_OR_BIOMETRIC_CATEGORISATION],
+            applies_to_role=[ActorRole.PROVIDER],
+        )

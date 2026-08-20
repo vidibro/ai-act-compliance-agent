@@ -40,8 +40,9 @@ def test_shipped_spec_loads():
     # + 3 deployer (Arts. 26-27, 86) + 3 supply-chain (Arts. 22-24) + 1 initial provider
     # (Art. 25(2)). Art. 43 is three rules and Art. 49 two, because both send different systems to
     # different law — see applies_to_route and applies_to_annex_iii_area. Art. 16 is three, one per
-    # point that cross-references nothing.
-    assert len(spec.rules) == 33
+    # point that cross-references nothing. Plus 4 Art. 50 transparency rules, the only ones that
+    # gate on a duty instead of a tier.
+    assert len(spec.rules) == 37
 
 
 def test_article_store_is_version_scoped():

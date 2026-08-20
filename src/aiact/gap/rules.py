@@ -1,7 +1,8 @@
 """Which obligations apply to a classified use case.
 
-Deterministic and model-free: activation is a property of the ruleset (`applies_to_risk_class`,
-`applies_to_role`, `applies_to_route`, `applies_to_annex_iii_area`, `status`), not a judgement.
+Deterministic and model-free: activation is a property of the ruleset (`applies_to_risk_class` or
+`applies_to_transparency_duty`, `applies_to_role`, `applies_to_route`, `applies_to_annex_iii_area`,
+`status`), not a judgement.
 Only whether the documentation SATISFIES an active rule is a judgement, and that is the judge's job.
 
 WHICH DOOR, WHICH AREA and — for one rule — WHETHER THE PROVIDER ROLE MOVED are conditions, not
@@ -18,10 +19,17 @@ against that intended purpose — so selection runs per use case and the results
 
 from __future__ import annotations
 
+from collections.abc import Sequence
 from dataclasses import dataclass, field
 
 from aiact.schemas.classification import UseCaseClassification
-from aiact.schemas.enums import ActorRole, HighRiskRoute, ProviderReallocation, RiskClass
+from aiact.schemas.enums import (
+    ActorRole,
+    HighRiskRoute,
+    ProviderReallocation,
+    RiskClass,
+    TransparencyDuty,
+)
 from aiact.schemas.policy import PolicyRule, PolicySpec
 
 
@@ -86,6 +94,25 @@ def _route_matches(rule: PolicyRule, use_case: UseCaseClassification) -> bool:
     return rule.applies_to_route is None or rule.applies_to_route is _route_of(use_case)
 
 
+def _tier_or_duty_matches(
+    rule: PolicyRule,
+    use_case: UseCaseClassification,
+    duties: Sequence[TransparencyDuty],
+) -> bool:
+    """WHETHER this rule's activation condition is met — the tier for most rules, an Art. 50 duty
+    for the few that name one.
+
+    The two are alternatives, not filters applied in series, and the validator on `PolicyRule`
+    guarantees a rule names exactly one. An Art. 50 rule fires on the duty ALONE, and the tier never
+    narrows it — Art. 50(6) makes the Article ADDITIVE to Chapter III, so a high-risk system that
+    generates content owes 50(2) on top of Arts. 9-21, and a minimal-risk one owes it with nothing
+    else. What a high-risk scorer owes nothing under Art. 50 for is that it generates no content and
+    holds no conversation; its tier has no part in that."""
+    if rule.applies_to_transparency_duty:
+        return any(duty in duties for duty in rule.applies_to_transparency_duty)
+    return use_case.risk_class in rule.applies_to_risk_class
+
+
 def _area_matches(rule: PolicyRule, use_case: UseCaseClassification) -> bool:
     """A rule that names Annex III areas fires only inside them.
 
@@ -102,6 +129,7 @@ def select_rules(
     use_case: UseCaseClassification,
     role: ActorRole,
     reallocation: ProviderReallocation | None = None,
+    transparency_duties: Sequence[TransparencyDuty] = (),
 ) -> ActiveRules:
     """The obligations `role` owes for this use case, under its risk class.
 
@@ -111,6 +139,13 @@ def select_rules(
     stopped being its provider owes the new one cooperation and technical access. `None` — nothing
     moved, or the question went unanswered — leaves that rule unselected, because a duty asserted
     against a party the facts do not produce is an invented obligation rather than a cautious one.
+
+    `transparency_duties` is the cascade's Art. 50 answer, and it activates the rules that gate on a
+    duty instead of on a tier. It is a property of the SYSTEM rather than of one intended purpose —
+    the cascade asks it once, at `assemble` — so where a classification holds several use cases the
+    same duty is selected under each. Over-inclusive, and visibly so, which is the safe direction
+    here: the alternative is guessing which purpose generates the content, and a duty filed under
+    the wrong use case is one a reader looks for in the wrong document.
 
     **Art. 2** comes first, and it is the stronger case. Where the Regulation does not govern the
     system at all — military use, sole-purpose research, pre-market development, a natural person's
@@ -124,11 +159,11 @@ def select_rules(
     selecting on the tier alone would raise every one of them against a provider the Regulation
     exempts.
     """
-    # Redundant against today's spec, and kept deliberately: no rule lists OUT_OF_SCOPE among its
-    # risk classes, so the filter below would empty the set anyway. That is a property of the
-    # current 19 rules rather than of the law, and the day a rule is written with a wider
-    # `applies_to_risk_class` this is what stops it attaching to a system the Regulation does not
-    # govern. Stated here because a silent emptiness cannot be told apart from an intended one.
+    # LOAD-BEARING, and it was not always: while every rule gated on a risk class, no rule listed
+    # OUT_OF_SCOPE and the filter below emptied the set anyway. The Art. 50 rules gate on a DUTY and
+    # name no risk class at all, so nothing downstream tests the tier for them — this return is the
+    # only thing standing between an excluded system and a transparency obligation. Art. 2 withholds
+    # the Regulation whole, Art. 50 included.
     # OUT_OF_SCOPE owes nothing; GPAI_MODEL owes plenty, but under Chapter V, which this ruleset
     # does not carry. Selecting Art. 6-track rules for a model would raise Chapter III duties
     # against a provider the Act never puts them on — and would hide the ones it does.
@@ -136,15 +171,15 @@ def select_rules(
         return ActiveRules(use_case_id=use_case.use_case_id, role=role)
 
     # Art. 2(2) is exhaustive — "only Article 6(1), Articles 102 to 109 and Article 112 apply" — so
-    # this withholds Art. 4 from a Section B system as surely as it withholds Chapter III, and from
-    # the deployer as surely as from the provider.
+    # this withholds Art. 4 and Art. 50 from a Section B system as surely as it withholds
+    # Chapter III, and from the deployer as surely as from the provider.
     if use_case.annex_i_product is not None and not use_case.annex_i_product.chapter_iii_applies:
         return ActiveRules(use_case_id=use_case.use_case_id, role=role)
 
     active = [
         rule
         for rule in spec.rules
-        if use_case.risk_class in rule.applies_to_risk_class
+        if _tier_or_duty_matches(rule, use_case, transparency_duties)
         and role in rule.applies_to_role
         and _route_matches(rule, use_case)
         and _area_matches(rule, use_case)

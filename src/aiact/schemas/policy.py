@@ -19,6 +19,7 @@ from aiact.schemas.enums import (
     HighRiskRoute,
     ObligationStatus,
     RiskClass,
+    TransparencyDuty,
 )
 
 
@@ -71,8 +72,64 @@ class PolicyRule(BaseModel):
     rule_id: str  # "AIA-HR-A06" — stable, human-readable
     requirement: str  # the obligation, in the Commission's own wording
     source: LegalSource
-    applies_to_risk_class: list[RiskClass]
+    applies_to_risk_class: list[RiskClass] = []
+    """WHICH tiers owe this. Empty ONLY for an Art. 50 rule, which gates on a duty instead — see
+    `applies_to_transparency_duty`. The default is empty rather than required so that an Art. 50
+    rule need not write `applies_to_risk_class: []` to say something it does not mean; a rule that
+    names neither axis is rejected by the validator below, so nothing slips through unactivated."""
+
     applies_to_role: list[ActorRole]
+
+    applies_to_transparency_duty: list[TransparencyDuty] = []
+    """WHICH Art. 50 duty makes this rule fire. Empty is the ordinary case: the rule gates on the
+    risk class like every other.
+
+    A non-empty list REPLACES the tier condition rather than narrowing it, and that is the whole
+    reason the field exists. Art. 50 cuts across the Art. 6 tiers: a minimal-risk text generator
+    owes 50(2) and a high-risk scorer owes nothing under Art. 50 at all. There is no set of risk
+    classes that expresses "whenever this duty attached", so a rule written with
+    `applies_to_risk_class` would either miss the minimal-risk system or raise Art. 50 against every
+    high-risk one.
+
+    Several duties in one list means ANY of them fires the rule, and 50(4) is why: one paragraph,
+    two subparagraphs, deep fakes and published public-interest text — the same provision, cited
+    once, reached by either duty."""
+
+    @model_validator(mode="after")
+    def _gates_on_a_tier_or_a_duty_but_not_both(self) -> PolicyRule:
+        """Exactly one activation axis. Both, or neither, is a rule that fires at the wrong times.
+
+        Naming both would make an Art. 50 duty conditional on a tier the Article does not mention.
+        Naming neither leaves a rule with nothing to activate it, which reads in the spec as covered
+        and in every report as absent."""
+        if self.applies_to_transparency_duty and self.applies_to_risk_class:
+            raise ValueError(
+                f"PolicyRule {self.rule_id!r}: names both applies_to_transparency_duty and "
+                f"applies_to_risk_class. Art. 50 attaches independently of the risk tier — a duty "
+                f"rule must leave applies_to_risk_class empty."
+            )
+        if not self.applies_to_transparency_duty and not self.applies_to_risk_class:
+            raise ValueError(
+                f"PolicyRule {self.rule_id!r}: names neither applies_to_risk_class nor "
+                f"applies_to_transparency_duty, so nothing can ever activate it."
+            )
+        return self
+
+    @model_validator(mode="after")
+    def _duty_is_owed_by_a_role_this_rule_names(self) -> PolicyRule:
+        """An Art. 50 rule must be filed under the role the Article puts the duty on.
+
+        `TransparencyDuty.owed_by` already knows: (1) and (2) bind the provider, (3) and (4) the
+        deployer. Filing 50(3) under the provider would select it for a party that cannot discharge
+        it and leave the deployer's duty unreported — the split this enum exists to preserve."""
+        for duty in self.applies_to_transparency_duty:
+            if duty.owed_by not in self.applies_to_role:
+                raise ValueError(
+                    f"PolicyRule {self.rule_id!r}: Art. 50({duty.paragraph}) is owed by "
+                    f"{duty.owed_by.value}, which is not among applies_to_role "
+                    f"({[r.value for r in self.applies_to_role]})."
+                )
+        return self
 
     applies_to_route: HighRiskRoute | None = None
     """WHICH of Art. 6's two doors this rule needs the use case to have come through, or None for

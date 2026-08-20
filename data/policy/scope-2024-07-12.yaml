@@ -110,13 +110,11 @@ out_of_scope:
     surveillance authority, not a standing provider duty.
 
   # --- Chapter IV — transparency ---------------------------------------------------------------
-  50: >-
-    Transparency obligations for certain AI systems. Applies INDEPENDENTLY of the risk tier, so it
-    is answered by the classification graph's `transparency` node into
-    ClassificationResult.transparency_duties — a list of TransparencyDuty, each carrying the
-    paragraph and the role that owes it. Not yet promoted to rules: doing so needs rule activation
-    to gate on a duty rather than on a risk class, since 50(1) can attach to a minimal-risk use case
-    such as job-ad generation while 50(3) attaches to the deployer of a prohibited one.
+  # 50 is NOT listed here: it is cited, by AIA-TR-A50-1 to -4. The classification cascade answers
+  # WHICH duty attached; those rules then check the documentation against it, which is what every
+  # other obligation this tool detects gets. The entry used to end "not yet promoted to rules:
+  # doing so needs rule activation to gate on a duty rather than on a risk class" — that is exactly
+  # what `PolicyRule.applies_to_transparency_duty` now does.
 
   # --- Chapter V — general-purpose AI models ---------------------------------------------------
   # Chapter V is a SEPARATE TRACK, not a lesser one, and it has applied since 2 August 2025 —

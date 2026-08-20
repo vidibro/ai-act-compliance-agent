@@ -219,7 +219,9 @@ flowchart TD
   different duties, owed by different parties, discharged in different documents, so the report
   groups them by who owes them rather than listing "Art. 50 applies". A minimal-risk generator and
   a high-risk chatbot can both owe them, and a high-risk system may owe none — which is why this
-  question is asked on every path and never routes anything.
+  question is asked on every path and never routes anything. The duty is then CHECKED like any
+  other: the gap layer carries four Art. 50 rules, and they are the only ones that activate on a
+  duty rather than on a risk class, because no set of tiers describes when Art. 50 applies.
 - **`needs review`** (dashed) is the abstain path: any node that answers with low confidence bails
   out here rather than guessing. For a compliance tool a confident wrong answer is the worst
   outcome, so abstaining beats guessing.
@@ -258,7 +260,7 @@ flowchart TD
     ROLES --> WHO([Art. 27: which deployers<br/>a listed duty reaches]):::data
     MOVED -->|"adds one obligation"| SEL
 
-    SEL["<b>2. select_rules</b> — no AI<br/>For each use case, for EVERY role the Act binds —<br/>provider, initial provider, deployer, importer,<br/>distributor, authorised representative — look up<br/>the rules this risk class puts on them"]:::code
+    SEL["<b>2. select_rules</b> — no AI<br/>For each use case, for EVERY role the Act binds —<br/>provider, initial provider, deployer, importer,<br/>distributor, authorised representative — look up<br/>the rules this risk class puts on them,<br/>plus any Art. 50 duty the tier does not decide"]:::code
     SEL --> CAN([rules a document<br/>can answer,<br/>per use case × role]):::data
     SEL --> CANT([rules it cannot —<br/>company processes,<br/>rules not in force yet]):::data
 

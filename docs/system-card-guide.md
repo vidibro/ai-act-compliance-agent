@@ -137,6 +137,13 @@ one can owe none. State whether the system:
 - produces **deep fakes**, or text published to inform the public on matters of public interest
   (Art. 50(4))
 
+Each of these is an obligation the report then checks, so answer the follow-up too. For 50(2) that
+means saying **how** the output is marked — a named watermarking, provenance or metadata scheme, and
+what it survives. The paragraph asks for a marking a machine can detect, so "outputs are labelled as
+AI-generated" is an answer that does not reach the duty. For 50(1), if you rely on the exception for
+what is obvious to a reasonably well-informed person, say so and say why: it is a judgement about
+the context of use, not a default.
+
 ### 7. Which organisations are in the chain? — Art. 3(3)–(7), Art. 16(b), Art. 25, Art. 27
 
 Obligations attach to a **role**, not to an organisation. One organisation can hold several, and a
@@ -276,7 +283,9 @@ If it processes people's faces or voices, what does it extract from them?>
 Note: this does not change the risk class — state it for the record, not as a defence.>
 
 **Content generation / interaction.** <Does it generate text, image, audio or video? Does it
-communicate directly with the people it affects?>
+communicate directly with the people it affects? If it generates: how is the output marked so a
+machine can detect it was artificially generated — which scheme, and what does the marking survive?
+If it interacts: how is the person told they are dealing with an AI system?>
 
 **Out of scope.** <Uses you do not support and do not validate for.>
 
@@ -293,7 +302,8 @@ communicate directly with the people it affects?>
 - [ ] Nothing is described only by its benefit
 - [ ] The awkward capability is written down, not implied
 - [ ] Exemption claims are stated as claims, not left to inference
-- [ ] Art. 50 questions answered even if the risk tier is minimal
+- [ ] Art. 50 questions answered even if the risk tier is minimal — and where content is generated,
+      the marking scheme is named, not just asserted (Art. 50(2))
 - [ ] Every party you know of is named, with what it does to the system
 - [ ] The provider is identified by registered name or trade mark **and** a contact address, or the
       card says where on the system those details appear (Art. 16(b))

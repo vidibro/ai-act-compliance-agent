@@ -26,6 +26,7 @@ from aiact.schemas.enums import (
     RiskClass,
     ScopeExclusion,
     TerritorialLink,
+    TransparencyDuty,
     Verdict,
 )
 
@@ -153,6 +154,23 @@ def test_a_minimal_system_still_owes_article_4(spec):
     assert report.summary.total_applicable == 0
     assert report.not_document_verifiable[ActorRole.PROVIDER] == ["AIA-ALL-A04"]
     assert report.not_document_verifiable[ActorRole.DEPLOYER] == ["AIA-ALL-A04"]
+
+
+def test_a_minimal_system_that_generates_content_owes_article_50(spec):
+    """The tier-crossing case, end to end. `minimal` is the tier a rule gated on `high_risk` would
+    miss entirely, and Art. 50(2) is a real duty of a text generator that owes nothing else. The
+    duty comes from the classification's own transparency answer, not from the risk class."""
+    brain = a_brain(
+        prohibited=None,
+        annex_iii=None,
+        transparency=[TransparencyDuty.SYNTHETIC_CONTENT_MARKING],
+    )
+    report = review(DOCUMENT, spec, brain, judge=StubJudge())
+
+    assert report.classification.overall_risk_class == RiskClass.MINIMAL
+    # 50(2) binds the PROVIDER and is built into the system, so it is judged rather than deferred.
+    assert "AIA-TR-A50-2" in {f.rule_id for f in report.findings}
+    assert "AIA-TR-A50-2" not in report.not_document_verifiable.get(ActorRole.DEPLOYER, [])
 
 
 def test_an_out_of_scope_system_owes_nothing_at_all(spec):
