@@ -6,7 +6,7 @@
 # One case = one rule degraded, everything else left intact. That gives every case two signals at
 # once:
 #   - does the checker CATCH the degraded rule?          (expected verdict below)
-#   - does it leave the other 6 rules alone?             (expected PASS — the false-positive test)
+#   - does it leave every other applicable rule alone?   (expected PASS — the false-positive test)
 # A checker that flags everything is useless, so untouched rules matter as much as ablated ones.
 #
 # ablation types (see schemas/enums.py AblationType):
@@ -180,6 +180,24 @@ cases:
       TalentRank is deployed on a highly available architecture with a 99.95% uptime SLA. Median
       scoring latency is 120 ms and p99 latency is under 400 ms. The service auto-scales to handle
       peak hiring seasons, and we maintain a public status page with real-time availability.
+
+  # --- Art. 16(b) — provider identification ---------------------------------------------------
+  # The shortest obligation in the ruleset and the easiest to leave out of a technical file. Its
+  # section is the header block; the instructions for use point at it rather than repeating it, so
+  # removing it takes the provider's contact details out of the document altogether.
+  - rule_id: AIA-PO-A16-B
+    ablation: removed
+    difficulty: obvious
+
+  - rule_id: AIA-PO-A16-B
+    ablation: distractor
+    difficulty: buried
+    # Names the company everywhere and gives no address anywhere — the common real failure, and
+    # the one a keyword search for the provider's name gets wrong.
+    replacement: |
+      **Provider:** Built by the Northwind Analytics team. Northwind is a European leader in
+      talent intelligence, trusted by over 400 employers across 14 countries. Learn more about
+      us and our mission at northwind-analytics.example.
 
   # --- The pristine document — measures FALSE POSITIVES ---------------------------------------
   - rule_id: null

@@ -202,6 +202,20 @@ cases:
       twelvefold, and we publish real-time availability and incident history on a public status
       page.
 
+  # --- Art. 16(b) — provider identification ---------------------------------------------------
+  - rule_id: AIA-PO-A16-B
+    ablation: removed
+    difficulty: obvious
+
+  - rule_id: AIA-PO-A16-B
+    ablation: distractor
+    difficulty: buried
+    # A registered number and a jurisdiction identify the company but are not what the point asks
+    # for: a name and an address at which the provider can be CONTACTED.
+    replacement: |
+      | **Provider** | Meridian Workforce Intelligence GmbH, HRB 214 887, registered in Germany |
+      | **Provider profile** | Founded 2016. 180 employees. ISO 27001 and ISO 9001 certified. |
+
   # --- The pristine document — measures FALSE POSITIVES ---------------------------------------
   - rule_id: null
     ablation: untouched

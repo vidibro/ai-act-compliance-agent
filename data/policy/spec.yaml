@@ -179,8 +179,81 @@ rules:
     status: active
 
   # ------------------------------------------------------------------------------------------
-  # Art. 16+ — provider PROCESS obligations (NOT document-verifiable -> confirm separately).
+  # Art. 16+ — provider obligations. Mostly PROCESS (NOT document-verifiable -> confirm
+  # separately); Art. 16(b) is the exception, and the Act itself says why.
   # ------------------------------------------------------------------------------------------
+  # Art. 16 is a list of twelve points, and nine of them ((a), (c) to (j)) do nothing but
+  # cross-reference Art. 17-21, 43, 47-49 — each modelled below as a rule of its own, so modelling
+  # those points too would report every finding twice. THREE POINTS CROSS-REFERENCE NOTHING. They
+  # are the whole of their own obligation, and until they were written here no rule asked for them.
+  # Cited by point, not by article: a rule citing Art. 16 whole would resolve to the entire list.
+  - rule_id: AIA-PO-A16-B
+    source:
+      instrument: "Regulation (EU) 2024/1689"
+      article: 16
+      point: b
+      act_version_date: 2024-07-12
+    applies_to_risk_class: [high_risk]
+    applies_to_role: [provider]
+    obligation_status: mandatory
+    check_type: presence
+    # The one document-verifiable rule in this family, because the Act names the accompanying
+    # documentation as a place the duty may be discharged. Not a process at the provider: an
+    # identification that is either in the file or is not.
+    evidence_expected: >-
+      The provider's name, registered trade name or registered trade mark, and an address at which
+      they can be contacted. The Act's first choice is a marking on the system itself, with the
+      packaging or the accompanying documentation as fallbacks — so a file that states the marking
+      is affixed to the device satisfies this as fully as one that carries the details itself. What
+      does not satisfy it is documentation that identifies no provider at all and says nothing
+      about where the identification sits.
+    document_verifiable: true
+    effective_date: 2026-08-02
+    status: active
+
+  - rule_id: AIA-PO-A16-K
+    source:
+      instrument: "Regulation (EU) 2024/1689"
+      article: 16
+      point: k
+      act_version_date: 2024-07-12
+    applies_to_risk_class: [high_risk]
+    applies_to_role: [provider]
+    obligation_status: mandatory
+    check_type: presence
+    evidence_expected: >-
+      An ability to demonstrate conformity with Art. 8-15 to a national competent authority on
+      reasoned request. Distinct from Art. 18's retention duty and Art. 21's duty to cooperate:
+      this one is about being able to SHOW the requirements are met, which is a readiness of the
+      provider organisation rather than a property of the technical documentation — confirm
+      separately.
+    document_verifiable: false
+    effective_date: 2026-08-02
+    status: active
+
+  - rule_id: AIA-PO-A16-L
+    source:
+      instrument: "Regulation (EU) 2024/1689"
+      article: 16
+      point: l
+      act_version_date: 2024-07-12
+    applies_to_risk_class: [high_risk]
+    applies_to_role: [provider]
+    obligation_status: mandatory
+    check_type: presence
+    # Not document-verifiable, and the reason is a scope limit rather than a process: whether the
+    # accessibility requirements are met is settled by two other instruments this tool does not
+    # read. Judging it from an AI Act technical file would be a verdict on law we have not loaded.
+    evidence_expected: >-
+      Conformity with the accessibility requirements of Directive (EU) 2016/2102 (public sector
+      websites and mobile applications) and Directive (EU) 2019/882 (the European Accessibility
+      Act). Those instruments set the requirements; this Regulation only makes meeting them a
+      provider duty. This tool reads Regulation (EU) 2024/1689 alone, so the assessment belongs
+      with whoever holds the accessibility conformity evidence — confirm separately.
+    document_verifiable: false
+    effective_date: 2026-08-02
+    status: active
+
   - rule_id: AIA-PO-A17
     source:
       instrument: "Regulation (EU) 2024/1689"

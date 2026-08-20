@@ -69,9 +69,12 @@ out_of_scope:
     modelled rule-by-rule as AIA-HR-A09..A15; a rule here would double-count every finding.
 
   # --- Chapter III Section 3 — obligations of other actors -------------------------------------
-  16: >-
-    Umbrella list of provider obligations that cross-references Art. 17-21, 43, 47-49, each of
-    which is modelled individually. Modelling it too would double-count every finding.
+  # 16 is NOT listed here: it is cited, by AIA-PO-A16-B, -K and -L. The exclusion used to read
+  # "umbrella list that cross-references Art. 17-21, 43, 47-49, each modelled individually" — true
+  # of nine of its twelve points and false of three. Points (b), (k) and (l) cross-reference
+  # nothing, so excluding the article whole dropped three obligations that no other rule carried.
+  # The nine cross-referencing points stay unmodelled, for the reason the old entry gave: they
+  # would report every Art. 17-21/43/47-49 finding a second time.
   # --- Chapter III Section 4 — notifying authorities and notified bodies -----------------------
   # Duties of MEMBER STATES, notifying authorities and notified bodies — none of the roles this
   # tool reports for. That holds whatever the area, which is the point: the reason used to be

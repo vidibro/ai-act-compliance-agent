@@ -36,11 +36,12 @@ def test_shipped_spec_loads():
     spec = _spec()
     assert spec.spec_version == "0.8.0"
     assert spec.act_version_date == ACT_DATE
-    # 7 Art.9-15 + 13 provider obligations + 1 Art.6(4) + Art.4 (provider AND deployer)
+    # 7 Art.9-15 + 16 provider obligations + 1 Art.6(4) + Art.4 (provider AND deployer)
     # + 3 deployer (Arts. 26-27, 86) + 3 supply-chain (Arts. 22-24) + 1 initial provider
     # (Art. 25(2)). Art. 43 is three rules and Art. 49 two, because both send different systems to
-    # different law — see applies_to_route and applies_to_annex_iii_area.
-    assert len(spec.rules) == 30
+    # different law — see applies_to_route and applies_to_annex_iii_area. Art. 16 is three, one per
+    # point that cross-references nothing.
+    assert len(spec.rules) == 33
 
 
 def test_article_store_is_version_scoped():
@@ -229,11 +230,18 @@ def test_every_rule_pinned_to_spec_version_date():
 
 
 def test_provider_process_obligations_are_not_document_verifiable():
-    """The Art. 16+ family must be confirm-separately, never silently flagged as gaps."""
+    """The Art. 16+ family is confirm-separately, never silently flagged as gaps — with one
+    exception, named here so adding another has to be argued for rather than typed.
+
+    Art. 16(b) is document-verifiable because the Act says so: the provider's identification may be
+    discharged on the accompanying documentation, which is the file under review. Every other rule
+    in this family is a process at the provider or a duty under law this tool does not read, and
+    checking a document for it would manufacture gaps out of a scope limit."""
     spec = _spec()
     process = [r for r in spec.rules if r.rule_id.startswith("AIA-PO-")]
     assert process, "expected provider process obligations in the spec"
-    assert all(not r.document_verifiable for r in process)
+    checkable = {r.rule_id for r in process if r.document_verifiable}
+    assert checkable == {"AIA-PO-A16-B"}
 
 
 def test_high_risk_requirements_are_document_verifiable():
