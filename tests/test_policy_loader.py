@@ -15,6 +15,7 @@ from pathlib import Path
 import pytest
 import yaml
 
+from aiact.config import get_settings
 from aiact.gap.rules import roles_with_rules
 from aiact.policy_loader import load_policy_spec, resolve_requirement
 from aiact.schemas.enums import ActorRole, CheckType, ObligationStatus, RiskClass
@@ -22,7 +23,15 @@ from aiact.schemas.enums import ActorRole, CheckType, ObligationStatus, RiskClas
 ROOT = Path(__file__).resolve().parents[1]
 SPEC_PATH = ROOT / "data" / "policy" / "spec.yaml"
 ARTICLES_ROOT = ROOT / "data" / "policy" / "articles"
-ACT_DATE = date(2026, 7, 27)
+
+# READ, never restated. The act version already lives in two places that must agree — the runtime
+# setting and the spec header — and a literal here would be a third copy of a fact whose copies
+# have already drifted once: a hard-coded date in the classification graph outlived a `.env` that
+# said otherwise, and the cascade was set to read one version of the Act while citing another.
+# A test that restates the pin cannot detect that; one that reads it is what makes the test agree
+# with whatever is actually shipped, and `test_the_two_pins_agree` below turns the agreement itself
+# into the assertion.
+ACT_DATE = get_settings().act_version_date
 VERSION = ACT_DATE.isoformat()
 ARTICLES_DIR = ARTICLES_ROOT / VERSION
 SCOPE_PATH = ROOT / "data" / "policy" / f"scope-{VERSION}.yaml"
@@ -32,10 +41,24 @@ def _spec():
     return load_policy_spec(SPEC_PATH, ARTICLES_ROOT)
 
 
+def test_the_two_pins_agree():
+    """The ruleset and the runtime must read the SAME version of the Act.
+
+    Two independent pins select it: `spec.yaml`'s header decides which article store the
+    obligations resolve their text from, and `settings.act_version_date` decides which one the
+    classification cascade puts in front of the model. Nothing forces them to match, and when they
+    do not, every failure is invisible from the output — a report whose classification was reasoned
+    against one text and whose obligations were quoted from another, each half internally
+    consistent and correctly cited to a different document.
+
+    Untested until now, which is how the same divergence went unnoticed one layer down: a
+    hard-coded date in `classify/graph.py` outlived a `.env` naming an older version."""
+    assert _spec().act_version_date == get_settings().act_version_date
+
+
 def test_shipped_spec_loads():
     spec = _spec()
     assert spec.spec_version == "0.8.0"
-    assert spec.act_version_date == ACT_DATE
     # 7 Art.9-15 + 16 provider obligations + 1 Art.6(4) + Art.4 (provider AND deployer)
     # + 4 deployer (Arts. 26-27, 49(3), 86) + 3 supply-chain (Arts. 22-24) + 1 initial provider
     # (Art. 25(2)). Art. 43 is three rules and Art. 49 two, because both send different systems to
@@ -45,11 +68,31 @@ def test_shipped_spec_loads():
     assert len(spec.rules) == 38
 
 
-def test_article_store_is_version_scoped():
-    """Versions live side by side so a report pinned to an older act version stays reproducible."""
-    assert ARTICLES_DIR.is_dir(), f"expected a version-scoped store at {ARTICLES_DIR}"
-    assert len(list(ARTICLES_DIR.glob("article-*.md"))) == 119
+# How many articles each fetched version holds. Per version, not one number, because the count is
+# a fact about a particular text rather than about "the store": the consolidation inserted six
+# articles (4a, 60a, 75a-75d). Keyed rather than derived so a truncated or half-written fetch fails
+# here instead of quietly shipping a store missing the articles nobody happened to cite.
+ARTICLE_COUNTS = {"2024-07-12": 113, "2026-07-27": 119}
+
+
+@pytest.mark.parametrize("version", sorted(ARTICLE_COUNTS))
+def test_article_store_is_version_scoped(version):
+    """Versions live side by side so a report pinned to an older act version stays reproducible.
+
+    Checked for EVERY fetched version, not just the pinned one — the point of the store is that the
+    older text remains intact and readable after a newer one lands, and only the older one can
+    demonstrate that."""
+    version_dir = ARTICLES_ROOT / version
+    assert version_dir.is_dir(), f"expected a version-scoped store at {version_dir}"
+    assert len(list(version_dir.glob("article-*.md"))) == ARTICLE_COUNTS[version]
     assert not list(ARTICLES_ROOT.glob("article-*.md")), "articles must not sit at the store root"
+
+
+def test_every_fetched_version_has_a_declared_article_count():
+    """A version fetched but not listed above would skip the count check entirely."""
+    fetched = {p.name for p in ARTICLES_ROOT.iterdir() if p.is_dir()}
+    undeclared = sorted(fetched ^ set(ARTICLE_COUNTS))
+    assert fetched == set(ARTICLE_COUNTS), f"undeclared versions: {undeclared}"
 
 
 # A fetched version that no ledger covers, listed with the reason it is not covered yet. Same
