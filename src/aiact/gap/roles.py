@@ -48,9 +48,9 @@ QUESTIONS: dict[str, Question] = {
         # Limb (b) is the one that needs an anchor rather than a judgement, so the Art. 3(23)
         # definition is quoted into the question. Without it "substantial" reads as "significant",
         # and every configured deployment becomes a modification.
-        "Has the reader of this document BECOME the provider of this high-risk AI system under "
-        "Article 25 — that is, did someone else place it on the market? Answer which "
-        "circumstance, or none.\n"
+        "Does this description show the provider role MOVING under Article 25 — one party placed "
+        "this high-risk AI system on the market, and another has since done something to it that "
+        "makes it the provider instead? Answer which circumstance, or none.\n"
         "- name_or_trademark (25(1)(a)): they put their own name or trademark on a high-risk AI "
         "system already placed on the market or put into service by someone else — white-labelling "
         "or rebadging a vendor's tool.\n"
@@ -67,14 +67,14 @@ QUESTIONS: dict[str, Question] = {
         "- product_manufacturer (25(3)): the system is a safety component of a product they "
         "manufacture, and it goes to market with that product under their name or trademark, or "
         "is put into service under it after the product shipped.\n"
-        "Answer none if the document describes an organisation that DEVELOPED this system itself, "
-        "or one that simply uses a system as supplied. Those are the ordinary cases: the first is "
-        "already the provider under Art. 3(3) without any help from Art. 25, and the second is a "
-        "plain deployer. Art. 25 is about a role CHANGING HANDS, so answer a circumstance only "
-        "where the document shows both parties — someone who placed the system on the market, and "
-        "the reader doing one of the four things above to it afterwards.",
+        "Answer none where the description is of an organisation that DEVELOPED this system "
+        "itself, or of one that simply uses a system as supplied. Those are the ordinary cases: "
+        "the first is already the provider under Art. 3(3) without any help from Art. 25, and the "
+        "second is a plain deployer. Art. 25 is about a role CHANGING HANDS, so answer a "
+        "circumstance only where the description shows BOTH ENDS — a party that placed the system "
+        "on the market, and another party doing one of the four things above to it afterwards.",
         "provider_reallocation",
-        label="Have you become the provider of someone else's system?",
+        label="Has the provider role moved to another party?",
     ),
 }
 
@@ -87,9 +87,9 @@ _QUESTION_CONTEXT: dict[str, Provisions] = {NODE_ID: ((3, 16, 25), ())}
 # contract the cascade's `_WHAT_THE_NODE_NEEDED` holds, so an abstention here can name the missing
 # fact rather than reporting that a question went unanswered.
 WHAT_THE_NODE_NEEDED = (
-    "who placed this system on the market, and what the organisation reading this document does "
-    "to it — rebadge it, change it beyond what its supplier assessed, aim it at a new purpose, or "
-    "ship it inside their own product"
+    "who placed this system on the market, and what any later party does to it — rebadge it, "
+    "change it beyond what its supplier assessed, aim it at a new purpose, or ship it inside a "
+    "product of their own"
 )
 
 

@@ -34,16 +34,16 @@ DISCLAIMER = (
     "sector, not only a lawyer. This tool does not attempt them: it reports what the "
     "documentation states, says when the answer is missing, and leaves the question open rather "
     "than guessing. An open question is unfinished work, not a clean result.\n\n"
-    "Where a system is high-risk, this report asks whether you have BECOME its provider under "
-    "Article 25 — a distributor, importer, deployer or other third party takes on the provider's "
-    "obligations where it puts its name on a high-risk system, substantially modifies one, or "
-    "changes the intended purpose of a system so that it becomes high-risk, and under Article "
-    "25(3) a product manufacturer placing an AI system on the market with its product is the "
-    "provider of it. That question is answered from what the documentation states about who "
-    "placed the system on the market and what you do to it. Documentation written from a single "
-    "party's point of view often shows neither, so silence here is not a finding that Article 25 "
-    "leaves you alone. If any of those circumstances describes you, read this report's provider "
-    "section as yours whatever it says."
+    "Roles can change hands, and where a system is high-risk this report asks whether they have. "
+    "Under Article 25 a distributor, importer, deployer or other third party BECOMES the provider "
+    "where it puts its name on a high-risk system someone else placed on the market, substantially "
+    "modifies one, or changes the intended purpose of a system so that it becomes high-risk; under "
+    "Article 25(3) a product manufacturer placing an AI system on the market with its own product "
+    "is the provider of it. That question is answered from what the documentation states about who "
+    "placed the system on the market and what any later party does to it. A document written from "
+    "a single party's point of view usually shows neither, so silence is not a finding that "
+    "Article 25 moved nothing. Any organisation to which one of those circumstances applies owes "
+    "the provider obligations set out in this report, whatever role the documentation gives it."
 )
 
 class Finding(BaseModel):
@@ -122,6 +122,7 @@ class ComplianceReport(BaseModel):
     Grouped by role because that is the only way the list is actionable: a provider cannot confirm
     that a deployer informed its workers under Art. 26(7).
     Roles owing nothing are absent rather than present-and-empty."""
+
     provider_reallocation: Answer | None = None
     """Art. 25 — whether the reader has BECOME the provider of a system someone else built.
 
@@ -162,22 +163,24 @@ class ComplianceReport(BaseModel):
             return None
         if limb is ProviderReallocation.PRODUCT_MANUFACTURER:
             return (
-                f"YOU ARE THE PROVIDER ({limb.citation}). This high-risk AI system is a safety "
-                f"component of a product covered by Annex I Section A and is placed on the market "
-                f"or put into service under your name or trademark, so Art. 25(3) makes the "
-                f"product manufacturer the provider of it and subjects you to Art. 16 whole. Read "
-                f"the provider obligations in this report as yours, not the AI supplier's."
+                f"THE PROVIDER IS THE PRODUCT MANUFACTURER ({limb.citation}). This high-risk AI "
+                f"system is a safety component of a product covered by Annex I Section A and goes "
+                f"to market under the manufacturer's own name or trademark, so Art. 25(3) makes "
+                f"that manufacturer the provider of the AI system and subjects it to Art. 16 "
+                f"whole. The provider obligations in this report are the manufacturer's, not the "
+                f"AI supplier's."
             )
         return (
-            f"YOU ARE THE PROVIDER ({limb.citation}). Art. 25(1) makes a distributor, importer, "
-            f"deployer or other third party the provider of a high-risk AI system in this "
-            f"circumstance, subject to the obligations of Art. 16 — the whole provider set, not a "
-            f"share of it. Read the provider obligations in this report as yours. Art. 25(2) is "
-            f"the other half: the party that originally placed this system on the market is no "
-            f"longer its provider, and must cooperate with you and supply the information, "
-            f"technical access and assistance you need — in particular for the conformity "
-            f"assessment. Ask them for it. That duty does not apply where they clearly specified "
-            f"the system was not to be turned into a high-risk one."
+            f"THE PROVIDER ROLE HAS MOVED ({limb.citation}). Art. 25(1) makes a distributor, "
+            f"importer, deployer or other third party the provider of a high-risk AI system in "
+            f"this circumstance, subject to the obligations of Art. 16 — the whole provider set, "
+            f"not a share of it. The provider obligations in this report are owed by the party "
+            f"that did this, not by the one that originally placed the system on the market. "
+            f"Art. 25(2) is the other half: that original provider stops being the provider of "
+            f"this system, and must cooperate with the new one — supplying the information, "
+            f"technical access and assistance needed, in particular for the conformity "
+            f"assessment. That duty falls away where the original provider clearly specified the "
+            f"system was not to be turned into a high-risk one."
         )
 
     @model_validator(mode="after")

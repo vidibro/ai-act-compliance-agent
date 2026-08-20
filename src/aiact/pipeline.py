@@ -42,8 +42,8 @@ _OUT_OF_SCOPE_NOTE = (
     "system entirely. This is not a low risk tier — a minimal-risk system is still governed and "
     "owes Art. 4 AI literacy, with Art. 50 possibly attaching, whereas an excluded one owes "
     "nothing under this Regulation at all. Other law may well still apply; this tool reads only "
-    "Regulation (EU) 2024/1689. Every Art. 2 exclusion is narrow, so check the classification's "
-    "stated reason against your own facts before relying on it."
+    "Regulation (EU) 2024/1689. Every Art. 2 exclusion is narrow, so the classification's stated "
+    "reason should be checked against the facts of the deployment before it is relied on."
 )
 _NEEDS_REVIEW_NOTE = (
     "No obligation check was run: the classification is unresolved, so which obligations apply is "

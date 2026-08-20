@@ -6,6 +6,7 @@ which are reported without being judged, and whether the tally can be read at fa
 
 from __future__ import annotations
 
+import re
 from datetime import date
 from pathlib import Path
 
@@ -23,6 +24,7 @@ from aiact.schemas.classification import (
 )
 from aiact.schemas.enums import (
     ActorRole,
+    AnnexIIIArea,
     DerogationCondition,
     ProviderReallocation,
     RiskClass,
@@ -41,6 +43,12 @@ def spec():
 
 
 def a_use_case(use_case_id: str, risk_class: RiskClass) -> UseCaseClassification:
+    """A use case as the cascade actually produces one.
+
+    The Annex III area is set for every tier the Art. 6(2) route can reach — high_risk and
+    not_high_risk both mean "in a listed area", the second by derogation. Some rules are gated on
+    the area (Arts. 27, 43, 49), so a fixture without one is not a simpler use case, it is an
+    impossible one, and it would quietly under-select."""
     source = LegalSource(
         instrument="Regulation (EU) 2024/1689", article=6, act_version_date=date(2024, 7, 12)
     )
@@ -52,10 +60,12 @@ def a_use_case(use_case_id: str, risk_class: RiskClass) -> UseCaseClassification
     # Art. 6(3) exempts only on both limbs, so a not_high_risk use case cannot be constructed
     # without them — see UseCaseClassification._enforce_derogation_conjunction.
     derogated = risk_class == RiskClass.NOT_HIGH_RISK
+    in_annex_iii = risk_class in (RiskClass.HIGH_RISK, RiskClass.NOT_HIGH_RISK)
     return UseCaseClassification(
         use_case_id=use_case_id,
         description="a system",
         risk_class=risk_class,
+        annex_iii_area=AnnexIIIArea.EMPLOYMENT if in_annex_iii else None,
         derogation=an_answer(DerogationCondition.NARROW_PROCEDURAL_TASK) if derogated else None,
         poses_significant_risk=an_answer(False) if derogated else None,
         reasoning="fixture",
@@ -343,14 +353,19 @@ def _report(spec, risk_class, answer=None, low_confidence=frozenset()):
 
 @pytest.mark.parametrize("limb", list(ProviderReallocation))
 def test_art_25_names_who_the_provider_is(spec, limb):
-    """Every limb reallocates the provider, and the report says which and what it costs."""
+    """Every limb reallocates the provider, and the report says which limb and what it costs.
+
+    Stated about the PARTIES, never about "you": the report describes a value chain, and the
+    organisation that took the role on may not be the one that wrote the document."""
     report = _report(spec, RiskClass.HIGH_RISK, limb)
 
     assert report.becomes_provider is limb
     note = report.provider_reallocation_note
     assert note is not None
     assert limb.citation in note
-    assert "YOU ARE THE PROVIDER" in note
+    assert "PROVIDER" in note
+    assert "Art. 16" in note
+    assert not re.search(r"\byou(r|rs|rself)?\b", note, re.I)
 
 
 def test_art_25_never_changes_what_is_owed(spec):
@@ -396,7 +411,7 @@ def test_a_reallocation_that_cannot_be_cited_is_not_reported_as_one(spec):
     assert report.provider_reallocation_note is None
 
 
-def test_the_reallocation_note_tells_the_reader_to_ask_the_initial_provider(spec):
+def test_the_reallocation_note_names_what_the_initial_provider_now_owes(spec):
     """Art. 25(2) is the half that is invisible from the value alone: the party that placed the
     system on the market stops being its provider and owes the new one cooperation and technical
     access. A note omitting it names a burden and withholds the remedy."""
@@ -406,7 +421,7 @@ def test_the_reallocation_note_tells_the_reader_to_ask_the_initial_provider(spec
 
     assert note is not None
     assert "Art. 25(2)" in note
-    assert "no longer its provider" in note
+    assert "stops being the provider" in note
 
 
 def test_an_art_25_abstention_does_not_touch_the_findings(spec):
