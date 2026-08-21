@@ -79,38 +79,122 @@ roles_out_of_scope:
 # so no entry claiming a node reads it can pass.
 articles_out_of_scope:
   # --- Chapter I — General provisions ---------------------------------------------------------
-  1: Declaratory statement of the Regulation's subject matter. Creates no obligation.
-  2: >-
-    Scope. Determines whether the Regulation applies at all, so it is a gate rather than a provider
-    obligation checkable against documentation. Consumed by the classification cascade's `scope`
-    node, which answers it into ScopeExclusion and RiskClass.OUT_OF_SCOPE; Art. 2(2) is consumed
-    separately, by AnnexIProduct.chapter_iii_applies and the Section B branch of
-    gap.rules.select_rules.
-    AMENDED HERE, in two ways that matter. Art. 2(2)'s list was rewritten: a Section B system is now
-    governed by "Article 6(1), Article 60a and Articles 102 to 112", where it was "Article 6(1),
-    Articles 102 to 109 and Article 112". The exhaustive-list reasoning behind the Section B branch
-    is unchanged; the LIST is not, and any report text quoting it has to be re-read.
-    And a NEW Art. 2(13) creates a limitation mechanism that does not exist in the 2024-07-12 text:
-    for Art. 6(1) systems the requirements of Arts. 9-15 and 17-25 MAY BE LIMITED where Section A
-    harmonisation legislation gives equivalent or higher protection. It is not operative yet — it
-    works through delegated acts the Commission must adopt by 2 August 2027 — so no rule changes on
-    it today. When those acts land they narrow obligations this ruleset raises, which makes this the
-    entry to revisit first.
-  3: >-
-    Definitions. Feeds classification (Art. 3(1) is_ai_system, Art. 3(3) actor_role). Definitional,
-    creates no standalone duty.
+  1:
+    1: Statement of the Regulation's purpose. Declaratory; creates no obligation.
+    2: A table of what the Regulation lays down, points (a)-(f). Declaratory.
+  2:
+    1: >-
+      CASCADE territorial — who the Regulation reaches, points (a)-(g). The positive limb, answered
+      into TerritorialLink; a system it does not reach exits at RiskClass.OUT_OF_SCOPE.
+    2: >-
+      Section B Annex I systems are governed by "Article 6(1), Article 60a and Articles 102 to 112"
+      only. Not an exclusion but a LIMIT, consumed by AnnexIProduct.chapter_iii_applies and the
+      Section B branch of gap.rules.select_rules. AMENDED in this version: the list was previously
+      "Article 6(1), Articles 102 to 109 and Article 112", so any report text quoting it was re-read.
+    3: CASCADE scope — military, defence and national security. ScopeExclusion.MILITARY_DEFENCE_NATIONAL_SECURITY.
+    4: CASCADE scope — third-country authorities in law enforcement cooperation. THIRD_COUNTRY_LAW_ENFORCEMENT_COOPERATION.
+    5: Preserves the Digital Services Act's liability rules for intermediary providers. A saving clause.
+    6: CASCADE scope — sole purpose of scientific research and development. SCIENTIFIC_RESEARCH.
+    7: >-
+      Union data protection law continues to apply. A saving clause, and expressly without prejudice
+      to Arts. 4a and 59.
+    8: CASCADE scope — research, testing or development prior to placing on the market. PRE_MARKET_DEVELOPMENT.
+    9: Consumer protection and product safety law unaffected. A saving clause.
+    10: CASCADE scope — a deployer using AI in a purely personal non-professional activity. PERSONAL_NON_PROFESSIONAL.
+    11: >-
+      Member States may keep or introduce law more favourable to workers. A power of the Member
+      State; it can only add to what a deployer owes, never subtract, so no obligation is missed.
+    12: CASCADE scope — free and open-source licences, unless high-risk or caught by Art. 5 or 50. FREE_OPEN_SOURCE.
+    13: >-
+      NEW in this version. Arts. 9-15 and 17-25 MAY BE LIMITED for an Art. 6(1) system where Section
+      A Annex I law gives equivalent or higher protection. NOT OPERATIVE: it works only through
+      delegated acts the Commission must adopt by 2 August 2027. When they land they will narrow
+      obligations this ruleset raises, which makes this the entry to revisit first.
+  3:
+    1: CASCADE is_ai — the 'AI system' definition, Art. 3(1). The cascade's first question.
+    2: "'risk'. Definitional; used inside Arts. 9 and 79, both handled where they are cited."
+    3: "'provider'. ActorRole.PROVIDER, the duty-holder most rules name."
+    4: "'deployer'. ActorRole.DEPLOYER, and its personal-use carve-out feeds Art. 2(10)."
+    5: "'authorised representative'. ActorRole.AUTHORISED_REPRESENTATIVE, duties at Art. 22."
+    6: "'importer'. ActorRole.IMPORTER, duties at Art. 23."
+    7: "'distributor'. ActorRole.DISTRIBUTOR, duties at Art. 24."
+    8: "'operator'. The collective term; this tool reports for each role separately instead."
+    9: "'placing on the market'. Fixes when duties bite; read by the scope and territorial nodes."
+    10: "'making available on the market'. Definitional, feeding Art. 3(9)."
+    11: "'putting into service'. The other trigger, alongside placing on the market."
+    12: "'intended purpose'. Why classification runs per use case rather than per product."
+    13: "'reasonably foreseeable misuse'. Feeds Arts. 9 and 14, both cited whole."
+    14: CASCADE annex_i — 'safety component', the term Art. 6(1)(a) turns on.
+    15: "'instructions for use'. Feeds Art. 13(3), cited whole as AIA-HR-A13."
+    16: "'recall of an AI system'. Feeds Art. 20, cited at 20(1)."
+    17: "'withdrawal of an AI system'. Feeds Art. 20, cited at 20(1)."
+    18: "'performance of an AI system'. Feeds Art. 15, cited whole."
+    19: "'notifying authority'. Chapter III Section 4, out of scope whole."
+    20: "'conformity assessment'. Feeds Art. 43, cited at 43(1)-(3)."
+    21: "'conformity assessment body'. Section 4 actor, out of scope."
+    22: "'notified body'. Section 4 actor, out of scope."
+    23: "'substantial modification'. Feeds Art. 25(1)(b) and Art. 43(4); the second awaits a rule."
+    24: "'CE marking'. Feeds Art. 48, cited at 48(3)."
+    25: "'post-market monitoring system'. Feeds Art. 72, cited at 72(1)."
+    26: "'market surveillance authority'. An authority this tool reports duties toward, never for."
+    27: "'harmonised standard'. Feeds Art. 40, out of scope as an option."
+    28: "'common specification'. Feeds Art. 41; 41(5) awaits a rule."
+    29: "'training data'. Feeds Art. 10, cited whole."
+    30: "'validation data'. Feeds Art. 10, cited whole."
+    31: "'validation data set'. Feeds Art. 10, cited whole."
+    32: "'testing data'. Feeds Art. 10, cited whole."
+    33: "'input data'. Feeds Arts. 10 and 26(4), both cited whole."
+    34: "'biometric data'. Feeds Annex III(1) and Art. 5(1)(g)."
+    35: CASCADE annex_iii — 'biometric identification', the limb that stays inside Annex III(1)(a).
+    36: CASCADE annex_iii — 'biometric verification', the carve-out the Annex writes into point 1(a).
+    37: "'special categories of personal data'. Feeds Art. 4a, a permission."
+    38: "'sensitive operational data'. Feeds law-enforcement carve-outs in Arts. 26(5) and 5(4)."
+    39: CASCADE transparency — 'emotion recognition system', for Art. 50(3) and Art. 5(1)(f).
+    40: CASCADE transparency — 'biometric categorisation system', for Art. 50(3) and Art. 5(1)(g).
+    41: CASCADE prohibited — 'remote biometric identification system', the genus for Art. 5(1)(h).
+    42: CASCADE prohibited — 'real-time' RBI, the species Art. 5(1)(h) bans.
+    43: "'post-remote biometric identification system'. Feeds Art. 26(10), cited whole."
+    44: CASCADE prohibited — 'publicly accessible space', a condition of the Art. 5(1)(h) ban.
+    45: "'law enforcement authority'. Feeds the law-enforcement carve-outs throughout."
+    46: "'law enforcement'. Feeds Annex III(6) and the Art. 50 carve-outs."
+    47: "'AI Office'. An EU body; its powers are Arts. 75a-75d, out of scope."
+    48: "'national competent authority'. An authority this tool reports duties toward."
+    49: "'serious incident'. Feeds Art. 73, whose deadlines await a rule."
+    50: "'personal data'. Borrowed from Regulation (EU) 2016/679."
+    51: "'non-personal data'. Definitional; used in Art. 10."
+    52: CASCADE profiling — 'profiling', the Art. 6(3) carve-back this tool asks directly.
+    53: "'real-world testing plan'. Feeds Art. 60, an optional route out of scope."
+    54: "'sandbox plan'. Feeds Arts. 57-58, out of scope."
+    55: "'AI regulatory sandbox'. Feeds Arts. 57-58, out of scope."
+    56: "'AI literacy'. The subject of Art. 4(1), cited as AIA-ALL-A04."
+    57: "'testing in real-world conditions'. Read by the scope node: it is what stops Art. 2(8) covering a live pilot."
+    58: "'subject' of testing. Feeds Arts. 60-61, out of scope."
+    59: "'informed consent'. Feeds Art. 61, out of scope."
+    60: CASCADE transparency — 'deep fake', the trigger for the Art. 50(4) disclosure.
+    61: "'widespread infringement'. Feeds Art. 73(3), which awaits a rule."
+    62: "'critical infrastructure'. Feeds Annex III(2), an area this ruleset gates on."
+    63: CASCADE gpai_model — 'general-purpose AI model', the Chapter V handover test.
+    64: "'high-impact capabilities'. Feeds Art. 51, Chapter V, deferred (M4d-8)."
+    65: "'systemic risk'. Feeds Arts. 51 and 55, Chapter V, deferred (M4d-8)."
+    66: >-
+      CASCADE gpai_model — 'general-purpose AI system'. The guard that keeps a system BUILT ON a
+      model an ordinary AI system rather than a Chapter V handover.
+    67: "'floating-point operation'. Feeds the Art. 51(2) FLOP threshold, deferred (M4d-8)."
+    68: "'downstream provider'. Feeds Chapter V and Art. 89, deferred (M4d-8)."
   4:
     2: Commission and Member State duty to support providers in meeting Art. 4(1). Not a provider duty.
     3: Board duty to adopt AI-literacy recommendations. Institutional.
-  4a: >-
-    NEW in this version. A LEGAL BASIS, not an obligation: it permits providers and deployers to
-    process special categories of personal data where strictly necessary for bias detection and
-    correction, subject to safeguards. Nothing here is a duty a technical file could satisfy —
-    failing its conditions means the permission is unavailable, not that a duty was breached.
-    Worth recording where it came from: Art. 10(5) held this basis in the 2024-07-12 text and was
-    DELETED, its substance moved here and widened to deployers and to systems that are not
-    high-risk. So AIA-HR-A10's requirement text legitimately loses it — the provision moved out of
-    the article that rule cites, it was not repealed.
+  4a:
+    1: >-
+      A LEGAL BASIS, not an obligation: a provider of a high-risk system MAY exceptionally process
+      special categories of personal data for bias detection and correction, subject to conditions
+      (a)-(f). Failing a condition means the permission is unavailable, not that a duty was breached.
+      Worth recording where it came from: Art. 10(5) held this basis in the 2024-07-12 text and was
+      DELETED, its substance moved here. AIA-HR-A10's requirement text legitimately loses it — the
+      provision moved out of the article that rule cites, it was not repealed.
+    2: >-
+      The same permission widened — to providers and deployers of other systems and models, and to
+      deployers of high-risk systems. A permission on the same terms, so the same ruling.
   5: >-
     Prohibited AI practices. Evaluated by the classification cascade's `prohibited` node, before
     high-risk and after Art. 2; a prohibited system never reaches an obligation check, so this is a

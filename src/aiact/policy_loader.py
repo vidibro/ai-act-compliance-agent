@@ -36,6 +36,8 @@ _FRONT_MATTER = re.compile(r"\A---\n(.*?)\n---\n+", re.S)
 _PARAGRAPH_START = re.compile(r"^(\d+[a-z]*)\.\s+", re.M)
 _FRONT_FIELD = re.compile(r"^(\w+):\s*(.*)$", re.M)
 _POINT_LABEL = re.compile(r"^(?P<indent>[ \t]*)\((?P<label>[a-z]+)\)\s", re.M)
+# Article 3's definitions are numbered points, `(1)` to `(68)`, not numbered paragraphs.
+_NUMBERED_POINT = re.compile(r"^(?P<indent>[ \t]*)\((?P<label>\d+)\)\s", re.M)
 
 
 def verify_integrity(path: Path, raw: str, front: dict[str, str], body: str) -> None:
@@ -122,9 +124,16 @@ def _extract_paragraph(provisions: str, paragraph: int | str, article: int) -> s
 def provision_labels(articles_dir: Path, article: int) -> tuple[str, ...]:
     """Every separately citable division of one article, in the order the Article writes them.
 
-    Numbered paragraphs where the article has them (`1`, `1a`, `2`, …); otherwise its top-level
-    lettered points (`a`, `b`, …), which is how Article 16 and the other chapeau-plus-list articles
-    are built. An article that is one unbroken block has neither and returns empty.
+    THREE SHAPES, in the order the Act uses them. Numbered paragraphs where the article has them
+    (`1`, `1a`, `2`, …); failing that its top-level NUMBERED points (`1`, `2`, … written `(1)`),
+    which is how Article 3 lists its sixty-eight definitions; failing that its top-level lettered
+    points (`a`, `b`, …), which is how Article 16 and the other chapeau-plus-list articles are
+    built. An article that is one unbroken block has none of them and returns empty.
+
+    The numbered-point shape is not cosmetic. Without it Article 3 falls through to the lettered
+    branch and reports the sub-points buried inside individual definitions — `('a','b','a','b',…)`,
+    duplicated and meaningless — so a ledger enumerating it would be ruling on labels that do not
+    identify anything.
 
     THIS IS WHAT THE COVERAGE LEDGER COUNTS. An article-level partition answers "accounted for" as
     soon as any one rule cites any one paragraph, so most of an article's duties can go unmodelled
@@ -135,6 +144,10 @@ def provision_labels(articles_dir: Path, article: int) -> tuple[str, ...]:
     paragraphs = tuple(m.group(1) for m in _PARAGRAPH_START.finditer(provisions))
     if paragraphs:
         return paragraphs
+    numbered = list(_NUMBERED_POINT.finditer(provisions))
+    if numbered:
+        top = min(len(m.group("indent")) for m in numbered)
+        return tuple(m.group("label") for m in numbered if len(m.group("indent")) == top)
     labels = list(_POINT_LABEL.finditer(provisions))
     if not labels:
         return ()

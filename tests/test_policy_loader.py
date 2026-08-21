@@ -178,16 +178,11 @@ def test_every_article_is_classified_in_scope_or_out(version):
         f"an article is owed, the exclusion covers the rest of it division by division."
     )
 
-    # An UNCITED article may be broken down too, and Art. 8 is why: its chapeau duplicates the
-    # Art. 9-15 rules, while 8(2) makes the provider answerable for the sectoral instrument and no
-    # rule carries that. The breakdown has to be allowed to say so, but only alongside the admission
-    # in articles_awaiting_rules — otherwise it is a way to itemise an article nothing reports on.
-    stray = by_division - cited - awaiting
-    assert not stray, (
-        f"articles broken down by division that no rule cites and nothing is owed on: "
-        f"{sorted(stray)}. An uncited article is ruled out whole, with a reason."
-    )
-
+    # ANY article may be broken down, cited or not. That is the direction of travel: a string entry
+    # dismisses every paragraph inside an article on one line, and twice now a real duty has been
+    # sitting in one — Art. 8(2), then Art. 41(5) and Art. 71(2)-(3). Itemising is how an entry
+    # stops being a blanket, so nothing here discourages it; `test_the_blanket_only_shrinks` counts
+    # what is left.
     unclassified = in_store - cited - whole - by_division
     assert not unclassified, (
         f"Articles present in the store but neither cited by a rule nor listed in "
@@ -633,9 +628,6 @@ _DUTY_VERB = re.compile(r"\b(shall|must|required to|obliged to|responsible for)\
 # Most are false positives of a deliberately blunt regex — the role is mentioned, the obligation is
 # somebody else's. Saying so in one line is the price of not missing the ones that are real.
 DUTY_BEARING_EXCLUSIONS: dict[str, str] = {
-    "2": "2(5) preserves the DSA's liability rules for intermediary providers. A saving clause.",
-    "3": "Definitions. Roles are defined here, not bound. Consumed by the cascade.",
-    "4a": "Providers and deployers MAY process special data for bias correction. A permission.",
     "7": "Criteria the Commission applies when amending Annex III. Institutional.",
     "31": "Notified bodies shall be independent OF the provider. The duty is the body's.",
     "33": "Subcontracting needs the provider's agreement — a consent right, not a duty.",
@@ -731,3 +723,62 @@ def test_a_wholly_excluded_article_holds_no_unacknowledged_duty():
 
     for article, reason in DUTY_BEARING_EXCLUSIONS.items():
         assert len(reason.strip()) > 15, f"Article {article} is dismissed without a real reason"
+
+
+# How many of the Act's provisions are still accounted for by a BLANKET rather than individually:
+# a paragraph inside an article cited whole by one rule, or inside an article dismissed in one
+# sentence. Declared, so it can only change by someone editing this number.
+#
+# THE TARGET IS ZERO. Until it is, the honest answer to "has every paragraph been read and ruled
+# on?" is no, and this is the number that says how far off. It is not a quality bar to hold — it is
+# a debt to pay down chapter by chapter.
+BLANKET_COVERED_PROVISIONS = 443
+
+
+def _blanket_covered() -> tuple[int, list[str]]:
+    """(count, per-article breakdown) of provisions no one has ruled on individually."""
+    spec = _spec()
+    ledger = yaml.safe_load(SCOPE_PATH.read_text(encoding="utf-8"))
+    entries = {str(k): v for k, v in ledger["articles_out_of_scope"].items()}
+    cited_whole = {
+        str(r.source.article)
+        for r in spec.rules
+        if r.source.paragraph is None and r.source.point is None
+    }
+    total, detail = 0, []
+    articles = entries.keys() | cited_whole
+    for article in sorted(articles, key=lambda a: int(re.match(r"\d+", a).group())):
+        if not re.fullmatch(r"\d+", article):
+            continue
+        blanket = article in cited_whole or isinstance(entries.get(article), str)
+        if not blanket:
+            continue
+        divisions = provision_labels(ARTICLES_DIR, int(article)) or ("(whole)",)
+        total += len(divisions)
+        detail.append(f"Art. {article}: {len(divisions)}")
+    return total, detail
+
+
+def test_the_blanket_only_shrinks():
+    """THE ANSWER TO "how do I know every paragraph was actually read?"
+
+    Not by anyone's assurance. By counting the provisions where no one has written a ruling, and
+    refusing to let that number drift upward unnoticed.
+
+    A ledger entry that is a STRING dismisses every paragraph of its article at once. That is where
+    both misses of this kind lived: Art. 8 excluded as a chapeau while 8(2) made the provider
+    answerable for the sectoral instrument, and Arts. 41 and 71 excluded as institutional while
+    41(5), 71(2) and 71(3) put real duties on a provider or deployer. In each case the article-level
+    reason was defensible and the paragraph inside it was never read.
+
+    So the guarantee cannot be "a regex found nothing" — a regex was wrong twice, and widening it
+    found more each time. The guarantee has to be that someone read the paragraph and wrote down
+    why. This counts what is left of the alternative."""
+    total, detail = _blanket_covered()
+    assert total == BLANKET_COVERED_PROVISIONS, (
+        f"Provisions covered by a blanket rather than a ruling: {total}, declared "
+        f"{BLANKET_COVERED_PROVISIONS}.\n"
+        f"If it went DOWN, a chapter was itemised — lower the constant.\n"
+        f"If it went UP, an article was collapsed back to a one-line dismissal, or a new Act "
+        f"version added text nobody has read.\nBreakdown: {', '.join(detail)}"
+    )
