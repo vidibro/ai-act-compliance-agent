@@ -572,8 +572,8 @@ rules:
     applies_to_risk_class: [high_risk]
     applies_to_role: [provider]
     # 49(1) reaches systems "listed in Annex III, with the EXCEPTION of point 2" — so critical
-    # infrastructure owes no registration, and an Annex I system is not reached at all. Both used to
-    # be raised anyway, on a rule written for employment and gated only on the tier.
+    # infrastructure owes no registration, and an Annex I system is not reached at all. Gating on
+    # the tier alone raises this obligation against both.
     applies_to_annex_iii_area:
       [
         biometrics,
@@ -867,12 +867,12 @@ rules:
       act_version_date: 2026-07-27
     applies_to_transparency_duty: [synthetic_content_marking]
     applies_to_role: [provider]
-    # TWO ELEMENTS, and this rule used to check one. Art. 50(2) requires outputs "marked in a
-    # machine-readable format AND detectable as artificially generated or manipulated" — the
+    # TWO ELEMENTS, AND THE EVIDENCE ASKS FOR BOTH. Art. 50(2) requires outputs "marked in a
+    # machine-readable format AND detectable as artificially generated or manipulated"; the
     # conjunction is in the enacted words, and para (70) says fulfilling one "will not suffice".
-    # The evidence below was written entirely about marking, so a provider documenting C2PA
-    # embedding and silent on detection passed the only Art. 50 rule that is both
-    # document_verifiable and check_type substance.
+    # Marking is the half a provider documents readily — a watermarking scheme is a design
+    # decision worth writing down — and detection is the half that goes unsaid, so evidence
+    # written around marking alone would PASS a system whose marks only its own provider can read.
     #
     # Para (71) settles what the MARK has to be, and what a human-visible label does and does not
     # do about it; (75) and (76) settle what DETECTION has to be — available to the persons

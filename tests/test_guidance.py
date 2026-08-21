@@ -180,12 +180,13 @@ def test_the_marking_rule_resolves_its_guidance_at_load():
 
 
 def test_the_marking_rule_carries_the_detection_half_of_the_paragraph():
-    """ART. 50(2) IS A CONJUNCTION, and this rule once checked one side of it.
+    """ART. 50(2) IS A CONJUNCTION, and both sides have to be asked for.
 
     The enacted words are "marked in a machine-readable format AND detectable as artificially
-    generated or manipulated". The evidence described marking and nothing else, so a provider
-    documenting a watermarking scheme in full and silent on detection passed the only Art. 50 rule
-    that is both document_verifiable and check_type substance — a false PASS on half a duty.
+    generated or manipulated". Marking is the half a provider documents readily; detection is the
+    half that goes unsaid, so evidence written around marking alone passes a provider whose marks
+    only the provider can read — a false PASS on half a duty, on the only Art. 50 rule that is both
+    document_verifiable and check_type substance.
 
     Both halves are pinned here: the enacted conjunction, which comes from the resolved law, and
     the guidance that says one element does not suffice, which comes from the store."""

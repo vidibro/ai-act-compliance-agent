@@ -457,11 +457,11 @@ _DUTY_VERB = re.compile(r"\b(shall|must|required to|obliged to|responsible for)\
 # obligation, each with the reason no rule follows. THIS IS THE LIST THE SCREEN BELOW FREEZES: an
 # article that starts bearing a duty and is not named here fails, and a human rules on it.
 #
-# ONE ENTRY LEFT, because the screen was always a substitute for reading and the reading is now
-# done: every other article that used to sit here has been ruled on paragraph by paragraph in the
-# ledger, and a paragraph ruling is a stronger claim than a whole-article dismissal a regex agreed
-# with. The screen stays because the failure it guards against is an itemised article being
-# collapsed back to one line — the ledger's blanket count would notice, and so would this.
+# ONE ENTRY LEFT, because the screen is a substitute for reading and the ledger now rules on every
+# article paragraph by paragraph — a stronger claim than a whole-article dismissal a regex agreed
+# with. Art. 94 stays because the text gives it no divisions to itemise. The screen stays because
+# the failure it guards against is an itemised article collapsed back to one line: the ledger's
+# blanket count would notice, and so would the stale half of this test.
 DUTY_BEARING_EXCLUSIONS: dict[str, str] = {
     "94": "Procedural rights of GPAI economic operators. Rights against the enforcing body, not "
           "duties owed under the Regulation. The Article has no divisions to itemise.",

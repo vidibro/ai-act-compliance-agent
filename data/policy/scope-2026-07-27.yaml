@@ -592,7 +592,7 @@ article_rulings:
   # check documentation against them. Tracked as M4d-8, deliberately deferred: see the roadmap for
   # why the systemic-risk step should wait for the Art. 52(6) list to be published.
   #
-  # Read per paragraph, the chapter separates into three things this file had been treating as one:
+  # Read per paragraph, the chapter separates into three things a single ruling cannot hold apart:
   # provider duties nobody checks (52(1), 53(1), 53(4), 54(1)-(5), 55(1)-(2)), which are declared in
   # articles_awaiting_rules; the systemic-risk LINE, which is a classification question no node asks;
   # and the AI Office and Commission machinery of Arts. 52 and 56, which binds nobody this tool
@@ -819,8 +819,8 @@ article_rulings:
   # THE ONLY CHAPTER THAT BINDS NO OPERATOR AT ALL. Read paragraph by paragraph, every provision
   # addresses the Commission, the AI Office, the Board, the advisory forum, the scientific panel, a
   # Member State or a national competent authority. Nothing here reaches a provider, deployer,
-  # importer, distributor or authorised representative even indirectly, which is what "institutional"
-  # had been asserting for seven articles at once.
+  # importer, distributor or authorised representative even indirectly — so "institutional" is the
+  # right word for all seven articles, and it is written per paragraph because that is checkable.
   64:
     1: The Commission develops Union AI expertise through the AI Office. Institutional.
     2: Member States facilitate the tasks entrusted to the AI Office. The Member State's duty.
@@ -1383,8 +1383,8 @@ articles_awaiting_rules:
       AIA-HR-A10 cites Art. 10 whole, so the judge reads the cross-reference and the near-identical
       Art. 10(5) wording, but NOT Art. 4a(1)'s own text, which is where the (a)-(f) list lives.
       Emptied by widening AIA-HR-A10's citation to reach this paragraph, not by a rule of its own.
-      Ruled out here for two versions on the ground that a permission creates no duty, which was
-      true of the Article read alone and false of it read with Art. 10(1).
+      Read alone this Article is a permission and creates no duty; that reading is only safe for
+      paragraph 2, which no Art. 10 cross-reference reaches.
   8:
     2: >-
       THE PROVIDER ANSWERS FOR THE SECTORAL INSTRUMENT TOO. Where a product contains an AI system to
@@ -1650,11 +1650,12 @@ annex_rulings:
       except from registration, and the one Art. 43(6) may move to the Annex VII route.
       THE ONE AREA THE NODE DECIDES ON A DIFFERENT TEST, and the node says so in terms. The other
       seven points each name natural persons, so the question turns on whether the purpose acts on
-      a person or their application. Point 2's subject is a pipe, a road or a grid, and a signal
-      controller answered that test's OUT limb word for word — reported `minimal`, one obligation
-      in the whole report. It is decided instead on Art. 3(14): a safety function, or a failure
-      that endangers health and safety. Nothing is to be read into the person test reaching every
-      other area; it does, and it is the reason this one had to be carved out rather than folded in.
+      a person or their application. Point 2's subject is a pipe, a road or a grid, so a signal
+      controller satisfies that test's OUT limb word for word and would be reported `minimal` —
+      one obligation in the whole report, for a system whose failure kills people. It is decided
+      instead on Art. 3(14): a safety function, or a failure that endangers health and safety.
+      The person test does reach every other area correctly, which is why this one is carved out
+      rather than the test loosened.
     3: CASCADE annex_iii — education and vocational training; admission, evaluation, proctoring.
     4: CASCADE annex_iii — employment; recruitment, promotion, termination, task allocation, monitoring.
     5: >-

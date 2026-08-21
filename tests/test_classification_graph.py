@@ -751,9 +751,9 @@ def test_every_derogation_limb_reaches_the_model_with_its_qualifier():
     Art. 6(3)(c) and (d) are each two tests joined by "and"/a tether, and the second half is the
     one that decides real cases: (c) excludes a system that detects a pattern AND then replaces or
     influences the human assessment, (d) reaches only a task preparatory to an ASSESSMENT RELEVANT
-    TO AN ANNEX III USE CASE. The question once read "detects decision patterns; or a preparatory
-    task", which clears exactly what the points exclude — and a named condition routes to
-    `significant_risk`, whose `false` ends at NOT_HIGH_RISK with Arts. 9-15 and 16-21 dropped.
+    TO AN ANNEX III USE CASE. A question naming just the first half of either clears exactly what
+    the point excludes, and a named condition routes to `significant_risk`, whose `false` ends at
+    NOT_HIGH_RISK with Arts. 9-15 and 16-21 dropped.
 
     Enum docstrings carry the full test and never reach the model: `_answer_instructions` renders
     bare `p.value` identifiers, so the question text is the only place a qualifier can live.

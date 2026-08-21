@@ -3,9 +3,9 @@
 The headline here is Art. 43. Conformity assessment is not one duty with one citation: an Annex III
 point 1 system may need a notified body (43(1)), points 2 to 8 self-assess under Annex VI (43(2)),
 and an Annex I system follows its own sectoral act instead (43(3)). Three mutually exclusive
-branches, and the spec used to carry one of them — 43(2), written for employment — and fire it at
-all three. A wrong citation is worse than a missing one: it is a confident instruction to follow
-law that does not govern you.
+branches, so one rule gated on the tier alone cites the wrong procedure to two systems out of
+three. A wrong citation is worse than a missing one: it is a confident instruction to follow law
+that does not govern you.
 """
 
 from __future__ import annotations
@@ -119,7 +119,7 @@ def test_every_high_risk_system_owes_exactly_one_conformity_rule(spec):
         assert len(art43) == 1, f"{label}: expected one Art. 43 rule, got {sorted(art43)}"
 
 
-# --- Art. 49 — the exception that used to be ignored ----------------------------------------------
+# --- Art. 49 — the exception inside the area gate ----------------------------------------------
 def test_critical_infrastructure_owes_no_registration(spec):
     """Art. 49(1) reaches Annex III "with the exception of point 2". The rule was written for
     employment and gated on the tier, so it raised registration against point 2 as well."""

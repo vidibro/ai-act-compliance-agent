@@ -487,9 +487,10 @@ def _deployer_report(spec, risk_class, answer, area=AnnexIIIArea.EMPLOYMENT):
     ],
 )
 def test_the_document_settles_art_27_where_it_names_the_deployer(spec, kind, caught):
-    """The condition used to be prose the report restated and never resolved, even when the
-    documentation answered it. Three outcomes, and the third is not the second: a document that
-    does not say is not a document describing a private commercial deployer."""
+    """Art. 27(1)'s condition is a fact about the ORGANISATION, so a report that restates it as
+    prose leaves the reader to answer what the documentation already settles. Three outcomes, and
+    the third is not the second: a document that does not say is not a document describing a
+    private commercial deployer."""
     report = _deployer_report(spec, RiskClass.HIGH_RISK, kind)
 
     assert report.deployer_organisation is kind

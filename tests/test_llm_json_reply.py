@@ -1,4 +1,4 @@
-"""Both layers parse JSON out of a model reply, and both used to carry their own copy of this.
+"""Both layers parse JSON out of a model reply, through this one shared implementation.
 
 `response_format={"type": "json_object"}` is advisory rather than enforced on several providers, so
 a reply can arrive wrapped in a markdown fence and json.loads dies on the first backtick. One

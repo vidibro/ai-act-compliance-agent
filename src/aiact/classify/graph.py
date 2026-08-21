@@ -459,13 +459,14 @@ QUESTIONS: dict[str, Question] = {
         # The SECOND subparagraph only. The chapeau is the `significant_risk` node — see there for
         # why the paragraph is split in two.
         #
-        # EACH LIMB CARRIES ITS QUALIFIER, because two of the four are conjunctions and the
-        # qualifier is the half that decides real cases. Shortening (c) to "detects decision
-        # patterns" clears exactly the system the point excludes — one that spots a pattern AND
-        # feeds it back into the assessment — and shortening (d) to "a preparatory task" drops the
-        # Annex III tether that makes it a derogation rather than a general exemption. A named
-        # condition here routes to `significant_risk`, and a `false` there ends at NOT_HIGH_RISK
-        # with Arts. 9-15 and 16-21 gone, so a loose limb is a false clearance.
+        # EACH LIMB CARRIES ITS QUALIFIER, because two of the four are conjunctions whose second
+        # half is what decides real cases. (c) reaches a system that detects decision patterns AND
+        # is not meant to replace or influence the completed human assessment — a system that
+        # detects a pattern and then feeds it back into the assessment is the case the point
+        # excludes. (d) reaches a task preparatory TO AN ASSESSMENT RELEVANT TO AN ANNEX III USE
+        # CASE, and without that tether it reads as a general exemption for anything preparatory.
+        # A named condition routes to `significant_risk`, whose `false` ends at NOT_HIGH_RISK with
+        # Arts. 9-15 and 16-21 gone, so a limb stated loosely is a false clearance.
         "Does an Article 6(3)(a)-(d) derogation apply? Answer which condition, or none. Each is a "
         "test in full — a system that meets the first half of (c) or (d) and not the second does "
         "NOT qualify:\n"
