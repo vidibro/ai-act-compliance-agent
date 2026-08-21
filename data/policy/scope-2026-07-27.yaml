@@ -142,9 +142,12 @@ articles_out_of_scope:
     7: Commission delegated power to delete Art. 6(3) conditions. Institutional.
     8: Limit on those delegated powers. Institutional.
   7: Empowers the Commission to amend Annex III. Institutional, no provider duty.
-  8: >-
-    Chapeau to Chapter III Section 2: high-risk systems shall comply with Art. 9-15. Already
-    modelled rule-by-rule as AIA-HR-A09..A15; a rule here would double-count every finding.
+  8:
+    1: >-
+      Chapeau to Chapter III Section 2: high-risk systems shall comply with Arts. 9-15. Already
+      modelled rule-by-rule as AIA-HR-A09..A15; a rule here would double-count every finding.
+      That reasoning covers this paragraph and NOT 8(2), which is a duty of its own — see
+      articles_awaiting_rules.
   11:
     3: Commission delegated power to amend Annex IV. Institutional.
 
@@ -187,9 +190,6 @@ articles_out_of_scope:
       whole. Also recorded in roles_out_of_scope above: there is no separate duty set to write.
     5: Without prejudice to intellectual property and trade secrets. A saving clause, not a duty.
   27:
-    2: >-
-      First-use rule and the permission to reuse an earlier assessment. Qualifies WHEN the Art.
-      27(1) duty is discharged; the duty itself is AIA-DP-A27.
     4: Permission to cross-reference a GDPR data protection impact assessment. An accommodation.
     5: AI Office duty to publish a FRIA template. Institutional.
 
@@ -283,8 +283,12 @@ articles_out_of_scope:
   58: Commission/Member State arrangements for sandboxes.
   59: Conditional permission to further process personal data in a sandbox. A permission, not a duty.
   60: >-
-    Testing in real-world conditions — an optional route with its own conditions, not a standing
-    duty for a system placed on the market.
+    Testing in real-world conditions — an optional route, not a standing duty of a system placed on
+    the market. A KNOWN SCOPE LIMIT rather than an absence of duty: a provider who takes the route
+    owes real obligations under it (a testing plan, mitigation measures, suspension, a recall
+    procedure), and this tool reports none of them. The same limit applies to Arts. 46, 60a and 61,
+    each excluded on the same ground. Revisit together if documentation describing live testing
+    comes into scope.
   60a: >-
     NEW in this version. Real-world testing of Section B Annex I systems outside a sandbox — the
     same shape as Art. 60 and excluded for the same reason: an optional route with its own
@@ -326,7 +330,11 @@ articles_out_of_scope:
   # --- Chapter IX — post-market monitoring, market surveillance --------------------------------
   # NOTE: Art. 72 and 73 from this chapter ARE in scope (AIA-PO-A72, AIA-PO-A73).
   74: Market surveillance authority powers and duties. Not a provider duty.
-  75: Mutual assistance and control of general-purpose AI systems. Authority duties.
+  75: >-
+    Mutual assistance and control of general-purpose AI systems. Authority duties, and the one
+    operator duty in it — the provider pays the notified body for services the Commission entrusts
+    to it — arises only inside an AI Office enforcement action over a system built on that
+    provider's own general-purpose model. Chapter V territory, deferred with the rest (M4d-8).
   75a: >-
     NEW in this version. Supervisory and enforcement powers of the AI OFFICE over AI systems within
     its competence. A power of an EU body, not a duty of any role this tool reports for.
@@ -345,12 +353,23 @@ articles_out_of_scope:
   76: Authority supervision of real-world testing.
   77: Powers of authorities protecting fundamental rights.
   78: Confidentiality duties of authorities.
-  79: National procedure for AI systems presenting a risk — an authority-led procedure.
+  # Arts. 79, 80 and 82 are authority-led procedures that DO put duties on the operator once the
+  # authority acts — cooperate with the evaluation, ensure corrective action across every unit made
+  # available. Excluded not because those duties are unreal but because they are Arts. 20 and 21
+  # restated at the enforcement stage, and both are modelled (AIA-PO-A20, AIA-PO-A21). Reporting
+  # them again would double-count, the same ground on which Art. 16's cross-referencing points are
+  # excluded. A reader is told what they owe; they are not told it twice.
+  79: >-
+    National procedure for AI systems presenting a risk. Its operator duties — cooperation, and
+    corrective action across all units on the market — are Arts. 21 and 20 at the enforcement stage.
   80: >-
     Authority procedure for systems the provider classified as not-high-risk under Annex III. The
-    provider-side duty it enforces is Art. 6(4), in scope as AIA-NHR-A06-4.
+    provider-side duty it enforces is Art. 6(4), in scope as AIA-NHR-A06-4; the 80(4) duty to bring
+    the system into compliance is Art. 20 restated once the authority has ruled.
   81: Union safeguard procedure. Institutional.
-  82: Authority procedure for compliant systems that nonetheless present a risk.
+  82: >-
+    Authority procedure for compliant systems that nonetheless present a risk. The 82(2) corrective
+    action duty is Art. 20 again, on a timeline the authority sets.
   83: Authority procedure for formal non-compliance.
   84: Union AI testing support structures. Institutional.
   85: Right of any person to lodge a complaint. A right, not a provider duty.
@@ -405,6 +424,15 @@ articles_out_of_scope:
 #
 # Emptying this bucket is the work. Editing it away is not.
 articles_awaiting_rules:
+  8:
+    2: >-
+      THE PROVIDER ANSWERS FOR THE SECTORAL INSTRUMENT TOO. Where a product contains an AI system to
+      which both this Regulation and Section A Annex I harmonisation legislation apply, providers
+      "shall be responsible for ensuring that their product is fully compliant with all applicable
+      requirements under applicable Union harmonisation legislation". The rest of Art. 8 is the
+      chapeau to Arts. 9-15 and is excluded as such, which is why the whole article read as covered.
+      Settled by law this tool does not carry, so document_verifiable false — the same treatment
+      AIA-PO-A16-L already gets for the accessibility Directives. Narrow: applies_to_route annex_i.
   11:
     2: >-
       A SINGLE set of technical documentation where the system relates to a Section A Annex I
@@ -443,6 +471,12 @@ articles_awaiting_rules:
       file — argues for document_verifiable false, which is what the entire AIA-PO-* family carries.
       A duty invisible in the file is reported as confirm-separately, never dropped.
   27:
+    2: >-
+      KEEP THE ASSESSMENT CURRENT. Most of the paragraph is timing — the duty attaches to first use,
+      and an earlier or the provider's own assessment may be relied on in similar cases — but its
+      last sentence is operative: where an element of paragraph 1 has changed or is no longer up to
+      date, "the deployer shall take the necessary steps to update the information". AIA-DP-A27
+      cites 27(1), the initial assessment, so nothing carries the duty to maintain it.
     3: >-
       Notify the market surveillance authority of the FRIA result, submitting the Art. 27(5)
       template. AIA-DP-A27 cites 27(1), so the judge sees the assessment's required contents and

@@ -162,17 +162,28 @@ def test_every_article_is_classified_in_scope_or_out(version):
     entries = {str(k): v for k, v in ledger["articles_out_of_scope"].items()}
     whole = {k for k, v in entries.items() if isinstance(v, str)}
     by_division = {k for k, v in entries.items() if isinstance(v, dict)}
+    awaiting = {str(k) for k in ledger.get("articles_awaiting_rules", {})}
 
     overlap = cited & whole
     assert not overlap, f"articles both cited and marked out of scope whole: {sorted(overlap)}"
 
-    stray = by_division - cited
-    assert not stray, (
-        f"articles broken down by division that no rule cites: {sorted(stray)}. An uncited article "
-        f"is ruled out whole, with a reason, not division by division."
+    contradiction = whole & awaiting
+    assert not contradiction, (
+        f"articles ruled out WHOLE and also awaiting a rule: {sorted(contradiction)}. If part of "
+        f"an article is owed, the exclusion covers the rest of it division by division."
     )
 
-    unclassified = in_store - cited - whole
+    # An UNCITED article may be broken down too, and Art. 8 is why: its chapeau duplicates the
+    # Art. 9-15 rules, while 8(2) makes the provider answerable for the sectoral instrument and no
+    # rule carries that. The breakdown has to be allowed to say so, but only alongside the admission
+    # in articles_awaiting_rules — otherwise it is a way to itemise an article nothing reports on.
+    stray = by_division - cited - awaiting
+    assert not stray, (
+        f"articles broken down by division that no rule cites and nothing is owed on: "
+        f"{sorted(stray)}. An uncited article is ruled out whole, with a reason."
+    )
+
+    unclassified = in_store - cited - whole - by_division
     assert not unclassified, (
         f"Articles present in the store but neither cited by a rule nor listed in "
         f"{scope_path.name}: {sorted(unclassified)}. Rule on them before shipping."
@@ -255,9 +266,16 @@ def test_every_division_of_a_cited_article_is_ruled_on():
     }
     awaiting = {str(k): v for k, v in ledger["articles_awaiting_rules"].items()}
 
+    # Cited articles, plus any UNCITED one the ledger chose to break down — Art. 8, whose chapeau
+    # is excluded and whose second paragraph is owed. Once an article is itemised at all, every
+    # division of it has to be accounted for.
+    subjects = {r.source.article for r in spec.rules}
+    subjects |= {int(re.match(r"\d+", k).group()) for k in set(excluded) | set(awaiting)
+                 if re.fullmatch(r"\d+", k)}
+
     unruled: list[str] = []
     phantom: list[str] = []
-    for article in sorted({r.source.article for r in spec.rules}):
+    for article in sorted(subjects):
         divisions = provision_labels(ARTICLES_DIR, article)
         if not divisions:
             continue
