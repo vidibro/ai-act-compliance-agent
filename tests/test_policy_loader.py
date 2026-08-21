@@ -222,12 +222,10 @@ def test_articles_awaiting_rules_have_reasons():
 
 @pytest.mark.parametrize("key", ["annex_rulings", "annexes_awaiting_rules"])
 def test_annex_rulings_have_reasons(key):
-    """And over the annex buckets, which had no reason check of their own."""
+    """And over the annex buckets, at both depths — an annex ruled on whole, and one ruled on item
+    by item. Annex II is the only one left in the first shape; the text does not divide it."""
     ledger = yaml.safe_load(SCOPE_PATH.read_text(encoding="utf-8"))
-    for annex, reason in ledger[key].items():
-        assert isinstance(reason, str) and len(reason.strip()) > 15, (
-            f"Annex {annex} is dismissed without a real reason"
-        )
+    _assert_reasons(ledger[key])
 
 
 @pytest.mark.parametrize("version", sorted(p.name for p in ARTICLES_ROOT.iterdir() if p.is_dir()))
@@ -459,49 +457,14 @@ _DUTY_VERB = re.compile(r"\b(shall|must|required to|obliged to|responsible for)\
 # obligation, each with the reason no rule follows. THIS IS THE LIST THE SCREEN BELOW FREEZES: an
 # article that starts bearing a duty and is not named here fails, and a human rules on it.
 #
-# Most are false positives of a deliberately blunt regex — the role is mentioned, the obligation is
-# somebody else's. Saying so in one line is the price of not missing the ones that are real.
+# ONE ENTRY LEFT, because the screen was always a substitute for reading and the reading is now
+# done: every other article that used to sit here has been ruled on paragraph by paragraph in the
+# ledger, and a paragraph ruling is a stronger claim than a whole-article dismissal a regex agreed
+# with. The screen stays because the failure it guards against is an itemised article being
+# collapsed back to one line — the ledger's blanket count would notice, and so would this.
 DUTY_BEARING_EXCLUSIONS: dict[str, str] = {
-    "52": "GPAI provider notification. Chapter V, deferred whole (M4d-8).",
-    "53": "GPAI provider obligations. Chapter V, deferred whole (M4d-8).",
-    "54": "GPAI authorised representative. Chapter V, deferred whole (M4d-8).",
-    "55": "GPAI systemic-risk obligations. Chapter V, deferred whole (M4d-8).",
-    "56": "Codes of practice; the AI Office invites providers. Voluntary instrument.",
-    "57": "Sandbox participants' duties, owed only by a provider who enters a sandbox.",
-    "58": "Sandbox arrangements; the duties are the authority's, and participation is optional.",
-    "59": "Conditions on processing personal data in a sandbox. A permission with conditions.",
-    "60": "Real-world testing duties, owed only on a route this tool does not assess.",
-    "60a": "Section B real-world testing frameworks. Same optional route as Art. 60.",
-    "61": "Informed consent, owed by whoever conducts real-world testing. Same route.",
-    "62": "Fees 'shall be reduced' for SMEs — binds whoever sets the fee, not the provider.",
-    "63": "63(2) says the microenterprise derogation exempts nobody from Arts. 9-15, 72, 73 — an "
-          "anti-avoidance clause pointing at duties already modelled.",
-    "66": "Tasks of the Board. Institutional.",
-    "68": "Composition of the scientific panel. Institutional.",
-    "74": "Defines how Regulation (EU) 2019/1020's terms map onto operators. Definitional.",
-    "75": "The provider pays the notified body only inside an AI Office action (M4d-8).",
-    "75a": "Powers of the AI Office as a market surveillance authority. A power, not a duty.",
-    "75b": "Commitments an operator may offer the AI Office, opened at the Office's discretion.",
-    "75c": "Describing measures taken to comply with an AI Office decision. Not standing.",
-    "75d": "Rights of defence against the enforcing body, not duties owed under the Regulation.",
-    "76": "Authority supervision of real-world testing. The verification duty is the authority's.",
-    "77": "Access granted BY the market surveillance authority to fundamental-rights bodies.",
-    "78": "Confidentiality of information about providers. Binds the authorities holding it.",
-    "79": "Operator cooperation and corrective action — Arts. 21 and 20 at the enforcement stage.",
-    "80": "80(4)'s duty to bring the system into compliance is Art. 20 once the authority rules.",
-    "81": "The 'shall' governs the authority's objection procedure, not any operator.",
-    "82": "82(2) corrective action is Art. 20 again, on a timeline the authority sets.",
-    "83": "The authority 'shall require the provider to put an end to' formal non-compliance. The "
-          "provider-side duty it enforces is Arts. 47-49, each already modelled.",
-    "89": "A downstream provider's RIGHT to complain, and a GPAI one. Chapter V (M4d-8).",
-    "90": "Scientific panel alerts naming a GPAI provider's contact point. Chapter V (M4d-8).",
-    "91": "Commission power to request documentation from GPAI providers. Chapter V (M4d-8).",
-    "92": "Commission power to evaluate GPAI models. Chapter V (M4d-8).",
-    "94": "Procedural rights of GPAI economic operators. Chapter V (M4d-8).",
-    "95": "Codes of conduct for voluntary application, including by deployers. Not binding.",
-    "99": "Penalties. A consequence of breach; this tool reports what is owed, not its cost.",
-    "101": "Fines for GPAI model providers. A consequence, and Chapter V (M4d-8).",
-    "111": "Reported rather than ruled — ComplianceReport.legacy_system_note carries it.",
+    "94": "Procedural rights of GPAI economic operators. Rights against the enforcing body, not "
+          "duties owed under the Regulation. The Article has no divisions to itemise.",
 }
 
 

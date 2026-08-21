@@ -32,10 +32,12 @@ ARTICLES_DIR = ARTICLES_ROOT / VERSION
 ANNEXES_DIR = ROOT / "data" / "policy" / "annexes" / VERSION
 SCOPE_PATH = ROOT / "data" / "policy" / f"scope-{VERSION}.yaml"
 
-# Provisions still covered by a ruling made about the whole article or annex around them, rather
-# than by one written for them. THE TARGET IS ZERO, and it is paid down a chapter at a time.
-# Declared here so the number can only move when someone edits it.
-BLANKET_PROVISIONS = 426
+# Provisions covered by a ruling made about the whole article or annex around them, rather than by
+# one written for them. ZERO: all 787 addresses of the stored text are ruled on individually.
+# Declared as a constant rather than asserted as zero so the failure reads as a number that moved —
+# new text arriving, a parser fix making a division visible, or an itemised article collapsed back
+# to a one-line dismissal — and so paying it down again is one edit.
+BLANKET_PROVISIONS = 0
 
 
 @pytest.fixture(scope="module")

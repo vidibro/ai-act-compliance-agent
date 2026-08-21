@@ -16,7 +16,8 @@
 # ENTRIES ARE PER PROVISION, not per article. A reason written about a whole article applies to
 # every paragraph inside it and says nothing about any of them, and duties have been found sitting
 # under exactly that — Art. 8(2), Art. 41(5), Art. 71(2). `test_the_blanket_only_shrinks` counts
-# what is still dismissed that way, and the target is zero.
+# what is still dismissed that way, and it now counts ZERO: every one of the 787 addresses in the
+# stored text — 674 article divisions and 113 annex items — carries a ruling written for it.
 #
 # SCOPE: obligations of every role the Act binds — provider, deployer, importer, distributor and
 # authorised representative — for a HIGH-RISK AI system, plus Art. 4, which binds provider and
@@ -270,7 +271,6 @@ article_rulings:
       modelled rule-by-rule as AIA-HR-A09..A15; a rule here would double-count every finding.
       That reasoning covers this paragraph and NOT 8(2), which is a duty of its own — see
       articles_awaiting_rules.
-
   # --- Chapter III Section 2 — the requirements themselves ------------------------------------
   # Arts. 9-15 are each cited WHOLE by one rule, so every paragraph below is inside the requirement
   # text the judge reads. "RULE <id>" records that, per paragraph, rather than leaving the article's
@@ -331,7 +331,6 @@ article_rulings:
     3: RULE AIA-HR-A15 — declare the accuracy levels and metrics in the instructions for use.
     4: RULE AIA-HR-A15 — resilience to errors, faults and inconsistencies, including feedback loops.
     5: RULE AIA-HR-A15 — resilience against third parties exploiting vulnerabilities.
-
   # --- Chapter III Section 3 — obligations of providers and other actors -----------------------
   # Art. 16 is the chapeau, and it is the article this whole nesting exists for. Nine of its twelve
   # points cross-reference an article modelled on its own, so ruling them out here is what stops
@@ -426,7 +425,6 @@ article_rulings:
   27:
     4: Permission to cross-reference a GDPR data protection impact assessment. An accommodation.
     5: AI Office duty to publish a FRIA template. Institutional.
-
   # --- Chapter III Section 4 — notifying authorities and notified bodies -----------------------
   # Duties of MEMBER STATES, notifying authorities and notified bodies — none of the roles this tool
   # reports for. It holds whatever the Annex III area: a provider whose biometric system takes the
@@ -516,7 +514,6 @@ article_rulings:
     2: Each notifying authority ensures its bodies take part. Institutional.
     3: The Commission provides for exchange of knowledge and best practice. Institutional.
   39: Rules for conformity assessment bodies of third countries.
-
   # --- Chapter III Section 5 — standards, conformity, certificates, registration ---------------
   40:
     1: >-
@@ -525,7 +522,6 @@ article_rulings:
       consequences.
     2: Commission duty to issue standardisation requests. Institutional.
     3: Participants in standardisation seek to promote investment and innovation. Aspirational.
-
   41:
     1: Commission power to adopt common specifications by implementing act. Institutional.
     2: Commission duty to inform the Art. 1025/2012 committee first. Institutional.
@@ -587,7 +583,6 @@ article_rulings:
     2: >-
       Registration of a system the provider concluded is not high-risk. Carried by AIA-NHR-A06-4,
       whose Art. 6(4) text imposes it by cross-reference.
-
   # --- Chapter IV — transparency ---------------------------------------------------------------
   # Art. 50(1) to (4) are CITED, by AIA-TR-A50-1 to -4: the cascade answers which duty attached and
   # those rules check the documentation against it. Only the two paragraphs below are ruled out.
@@ -597,61 +592,332 @@ article_rulings:
       is why applies_to_transparency_duty adds a rule to a tier's obligations instead of replacing
       them, so a high-risk system owes Chapter III and its Art. 50 duty together.
     7: Commission duty to facilitate codes of practice on marking and labelling. Institutional.
-
   # --- Chapter V — general-purpose AI models ---------------------------------------------------
   # Chapter V is a SEPARATE TRACK, not a lesser one, and it has applied since 2 August 2025 —
   # earlier than every rule in spec.yaml. The classification cascade DETECTS a general-purpose AI
   # model (Art. 3(63)) and hands over to these articles by name; what is missing is the ruleset to
   # check documentation against them. Tracked as M4d-8, deliberately deferred: see the roadmap for
   # why the systemic-risk step should wait for the Art. 52(6) list to be published.
-  51: >-
-    Classification of GPAI models as carrying systemic risk. Answered against the Art. 52(6) list
-    once the Commission publishes it; the 10(^25) FLOP presumption is not derivable from a model
-    card. Handed over, not checked (M4d-8).
-  52: >-
-    Notification procedure, and the Commission's duty under 52(6) to publish a list of GPAI models
-    with systemic risk. Cited in the GPAI handover text so a reader knows the list is authoritative
-    and, at the time of writing, not published.
-  53: >-
-    Obligations of GPAI model providers — Annex XI documentation, information to downstream
-    providers, copyright policy, training-content summary. Named in the handover; no rules yet
-    (M4d-8).
-  54: Authorised representatives of GPAI model providers. Chapter V ruleset not built (M4d-8).
-  55: >-
-    Obligations for GPAI models with systemic risk. Named in the handover; no rules yet (M4d-8).
-  56: Codes of practice for GPAI. Voluntary instrument; a signature is evidence, not a duty.
-
+  #
+  # Read per paragraph, the chapter separates into three things this file had been treating as one:
+  # provider duties nobody checks (52(1), 53(1), 53(4), 54(1)-(5), 55(1)-(2)), which are declared in
+  # articles_awaiting_rules; the systemic-risk LINE, which is a classification question no node asks;
+  # and the AI Office and Commission machinery of Arts. 52 and 56, which binds nobody this tool
+  # reports for however Chapter V is eventually modelled.
+  51:
+    1: >-
+      THE SYSTEMIC-RISK LINE, and NO NODE ASKS IT. The cascade ends at GPAI_MODEL (Art. 3(63)) and
+      hands the whole chapter over, so a model is never sorted into the two regimes Chapter V
+      actually has. Everything that turns on the answer is therefore unreachable: Art. 55 in full,
+      and the open-source carve-outs in 53(2) and 54(6), which are disapplied for systemic-risk
+      models. Not a duty of anyone, so not a debt in articles_awaiting_rules; a missing question.
+    2: >-
+      Presumption of high impact capabilities above 10^25 cumulative training FLOP. The one limb a
+      document could answer, and only where the model card states the training compute at all.
+      Unasked with 51(1).
+    3: Commission delegated power to amend the thresholds and supplement the benchmarks. Institutional.
+  52:
+    2: >-
+      The provider MAY argue that its model, though over the threshold, presents no systemic risk.
+      An option exercised with the 52(1) notification, not a duty owed independently of it.
+    3: The Commission rejects insufficiently substantiated arguments. The Commission's decision.
+    4: >-
+      Commission power to designate a model as presenting systemic risk ex officio or on a scientific
+      panel alert, plus the delegated power to amend Annex XIII. Institutional.
+    5: >-
+      A designated provider MAY request reassessment, at the earliest six months after the decision.
+      A right with a waiting period, not a duty.
+    6: >-
+      THE COMMISSION PUBLISHES THE LIST of GPAI models with systemic risk. The Commission's duty, and
+      the authoritative answer to 51(1) once it exists. Named in the GPAI handover text so a reader
+      knows where the line is actually drawn rather than inferring it from a FLOP count.
+  53:
+    2: >-
+      OPEN-SOURCE CARVE-OUT from 53(1)(a) and (b) — free and open-source licence, weights,
+      architecture and usage information all public — DISAPPLIED for systemic-risk models. A limit on
+      the duty rather than a duty, and it cannot be applied until 51(1) is asked.
+    3: >-
+      Cooperate as necessary with the Commission and national competent authorities. Conduct during
+      an authority's exercise of its powers, with no document that evidences it in advance — the same
+      treatment Art. 21(3) and Art. 74 get on the high-risk track.
+    5: >-
+      Commission delegated power to detail measurement and calculation methodologies for Annex XI
+      points 2(d) and (e). Institutional.
+    6: Commission delegated power to amend Annexes XI and XII. Institutional.
+    7: Information obtained under this Article is treated under Art. 78. The receiving body's duty.
+  54:
+    6: >-
+      OPEN-SOURCE CARVE-OUT from the whole Article, disapplied for systemic-risk models. A limit on
+      the duty, and unreachable for the same reason as 53(2).
+  55:
+    3: Information obtained under this Article is treated under Art. 78. The receiving body's duty.
+  # Art. 56 is AI OFFICE AND COMMISSION MACHINERY end to end, and the one duty it produces is owed by
+  # signing rather than by the Regulation: 56(5) has participants report on their commitments, which
+  # binds whoever joined a code and nobody else. Adherence itself is voluntary in both directions —
+  # 56(3) and 56(7) are invitations. What a code IS matters to Chapter V, because 53(4) and 55(2) let
+  # a provider discharge their duties through one; that is ruled on there, where the duty sits.
+  56:
+    1: The AI Office encourages and facilitates the drawing up of codes of practice. Institutional.
+    2: >-
+      The AI Office and the Board aim to ensure codes cover at least Arts. 53 and 55, including the
+      issues in points (a)-(d). A target set for the Office, not a duty of a provider.
+    3: The AI Office may invite providers and authorities to take part in drafting. An invitation.
+    4: The Office and the Board aim to ensure codes set out objectives, commitments and KPIs. Institutional.
+    5: >-
+      Participants report regularly to the AI Office on implementation of their commitments. A duty,
+      but one taken on by joining a code rather than imposed by the Regulation — it binds signatories,
+      and only for as long as they are signatories.
+    6: >-
+      The Commission and the Board monitor and evaluate the codes, and the Commission publishes its
+      adequacy assessment. Institutional.
+    7: >-
+      The AI Office may invite providers to adhere, and a non-systemic-risk provider may limit its
+      adherence to Art. 53. Voluntary in both directions.
+    8: The AI Office encourages review and adaptation of codes in light of emerging standards. Institutional.
+    9: >-
+      Codes were to be ready by 2 May 2025, failing which the Commission may set common rules by
+      implementing act. A deadline on the Office and a reserve power for the Commission.
   # --- Chapter VI — measures in support of innovation ------------------------------------------
-  57: Member State duty to establish AI regulatory sandboxes.
-  58: Commission/Member State arrangements for sandboxes.
-  59: Conditional permission to further process personal data in a sandbox. A permission, not a duty.
-  60: >-
-    Testing in real-world conditions — an optional route, not a standing duty of a system placed on
-    the market. A KNOWN SCOPE LIMIT rather than an absence of duty: a provider who takes the route
-    owes real obligations under it (a testing plan, mitigation measures, suspension, a recall
-    procedure), and this tool reports none of them. The same limit applies to Arts. 46, 60a and 61,
-    each excluded on the same ground. Revisit together if documentation describing live testing
-    comes into scope.
-  60a: >-
-    NEW in this version. Real-world testing of Section B Annex I systems outside a sandbox — the
-    same shape as Art. 60 and excluded for the same reason: an optional route with its own
-    conditions, not a standing duty of a system placed on the market. Doubly so here, because its
-    subjects are Section B systems, which Art. 2(2) already withholds Chapter III from.
-  61: Informed consent — applies only where real-world testing is undertaken.
-  62: Member State and Commission support duties toward SMEs.
-  63: >-
-    Derogations for microenterprises — modifies how other obligations are met rather than creating
-    one.
-
+  # THE CHAPTER OF OPTIONAL ROUTES. Almost everything here binds a Member State, a competent
+  # authority or the Commission; what binds a provider does so only once the provider has chosen to
+  # enter a sandbox (Arts. 57-59) or to test in real-world conditions (Arts. 60, 60a, 61).
+  #
+  # That choice is A KNOWN SCOPE LIMIT, not an absence of duty. A provider who takes either route
+  # owes real obligations under it — a testing plan filed and approved, informed consent, oversight,
+  # serious-incident reporting, suspension and recall — and this tool reports none of them, because
+  # it assesses a system being placed on the market rather than a testing programme. Art. 46(2) is
+  # excluded on the same ground. Revisit the four together if documentation describing live testing
+  # comes into scope; each paragraph below says what would then have to be checked.
+  57:
+    1: >-
+      Member States shall ensure a national sandbox operational by 2 August 2027. The Member State's
+      duty; the Commission MAY support it.
+    2: Additional regional, local or joint sandboxes may be established. A permission for authorities.
+    3: The EDPS may establish a sandbox for Union institutions. Institutional.
+    3a: >-
+      NEW in this version. The AI Office may establish a Union-level sandbox for Art. 75(1) systems,
+      with priority access for SMEs and SMCs. Institutional.
+    4: Member States allocate sufficient resources and cooperate with other authorities. Institutional.
+    5: >-
+      What a sandbox must provide: a controlled environment under a sandbox plan agreed between the
+      provider and the authority, which incorporates the Art. 60 and 60a testing plan where relevant.
+      A requirement on the sandbox, and the plan is agreed rather than owed.
+    6: Competent authorities provide guidance, supervision and support in the sandbox. The authority's duty.
+    7: >-
+      The authority provides regulatory guidance and, on request, written proof and an exit report a
+      provider may use as conformity evidence. The authority's duty; the request is the provider's
+      option, and the resulting document is evidence rather than an obligation.
+    8: >-
+      Commission and Board access to exit reports with the provider's agreement, and publication if
+      both agree. Institutional, and consent-gated in both limbs.
+    9: The objectives sandboxes aim at, points (a)-(e). Aspirational, addressed to no one in particular.
+    10: >-
+      National authorities associate the data protection and other competent authorities with the
+      sandbox's operation. The authority's duty.
+    11: >-
+      Sandboxes do not affect supervisory or corrective powers; the authority may suspend testing or
+      participation and must inform the AI Office. The authority's power, and a saving clause.
+    12: >-
+      Participants remain liable under liability law, but NO ADMINISTRATIVE FINES for infringements
+      of this Regulation where they observe the plan and follow the authority's guidance in good
+      faith. A protection earned inside the sandbox, not a duty — and this tool reports the
+      obligation, never the penalty, so the immunity changes nothing it says.
+    13: Sandboxes shall facilitate cross-border cooperation. A design requirement on the authorities.
+    14: National authorities, the EDPS and the AI Office coordinate within the Board. Institutional.
+    15: >-
+      Authorities inform the AI Office and Board of a sandbox; the Office publishes the list.
+      Institutional.
+    16: >-
+      Annual and final reports from the authority to the AI Office and the Board, made public
+      online. The authority's duty.
+    17: >-
+      The Commission develops a single interface for sandbox information and Art. 62(1)(c) non-binding
+      guidance. Institutional.
+  58:
+    1: >-
+      Commission implementing acts specifying the detailed arrangements for sandboxes, on the common
+      principles in points (a)-(d). Institutional.
+    2: >-
+      What those implementing acts must ensure, points (a)-(i) — open and fair access, a three-month
+      decision, free access for SMEs, mutual recognition across the Union. Requirements on the
+      implementing act and on the authorities operating a sandbox; a provider's side of it is an
+      application, which is optional.
+    3: >-
+      Prospective providers shall be DIRECTED to pre-deployment and value-adding services. The
+      authority directs; the provider receives.
+    4: >-
+      Where an authority considers authorising real-world testing inside a sandbox it agrees the
+      terms, conditions and safeguards with the participants. The authority's duty, and agreement is
+      not a unilateral obligation.
+  59:
+    1: >-
+      A CONDITIONAL PERMISSION to further process lawfully collected personal data in a sandbox, on
+      the ten cumulative conditions in points (a)-(j) — a substantial public interest area, necessity,
+      an isolated environment, deletion on exit, an Annex IV description of the process, a published
+      project summary. Read as a duty it would be a heavy one; read as it is written it is the price
+      of an option, and it is owed only by a provider who takes the sandbox route.
+    2: >-
+      The same conditions for law enforcement processing, plus a specific Union or national legal
+      basis. A permission on stricter terms.
+    3: Without prejudice to other Union or national law on processing personal data. A saving clause.
+  60:
+    1: >-
+      Real-world testing outside a sandbox MAY be conducted by providers of Annex III or Section A
+      Annex I systems, per a real-world testing plan the Commission specifies by implementing act.
+      The permission that opens the route, and the reason the rest of the Article is conditional.
+    2: The same permission, stated as to timing and as to partnering with deployers. A permission.
+    3: Without prejudice to any ethical review required by other law. A saving clause.
+    4: >-
+      THE ELEVEN CONDITIONS (a)-(k) a provider must meet to test: a plan submitted to and approved by
+      the market surveillance authority, registration under Art. 71(4) or Art. 49(4)(d)/(5), Union
+      establishment or a legal representative, transfer safeguards, a six-month limit, protection of
+      vulnerable subjects, a written agreement with any participating deployer, informed consent under
+      Art. 61, qualified human oversight, and reversible outputs. Every one of them document-verifiable
+      and none of them checked — the substance of the scope limit named above.
+    5: >-
+      The subject's right to withdraw consent at any time and demand deletion. A right of the subject;
+      the provider's side of it is the 60(4)(i) and Art. 61 consent machinery.
+    6: Member States confer inspection powers on market surveillance authorities. Institutional.
+    7: >-
+      Serious incidents in testing reported under Art. 73, immediate mitigation or suspension, and a
+      prompt recall procedure. A real duty, owed only on this route.
+    8: Notify the authority of suspension, termination and final outcomes. Same route, same limit.
+    9: The provider is liable for damage caused during testing. Liability, not a compliance duty.
+  60a:
+    1: >-
+      NEW in this version. Member States MAY allow real-world testing of Section B Annex I systems
+      outside a sandbox. A permission granted to Member States, not to providers, and doubly outside
+      what this tool reports: Art. 2(2) already withholds Chapter III from Section B systems.
+    2: Member States choosing to allow it adopt real-world testing frameworks. The Member State's duty.
+    3: Notify the Commission of any framework before implementing it. The Member State's duty.
+    4: Authorities cooperate and remove practical obstacles to those frameworks. Institutional.
+    5: >-
+      What the frameworks must contain, points (a)-(d) — including (b), which carries Art. 60(2),
+      (3), (4)(d)-(j) and (5)-(9) across to this route with the authority substituted for the market
+      surveillance authority. A requirement on the framework; the provider duties it imports are
+      excluded here for the same reason they are under Art. 60.
+    6: >-
+      Testing complies with the Section B instrument's own provisions, which do not displace this
+      Article. A conflict rule between instruments.
+  61:
+    1: >-
+      INFORMED CONSENT from testing subjects before participation, after being told the (a)-(e)
+      information. A real provider duty, and the one Art. 60(4)(i) points at — owed only where the
+      Art. 60 route is taken.
+    2: The consent shall be dated, documented, and a copy given to the subject. Same route, same limit.
+  62:
+    1: Member State actions for SMEs, points (a)-(d) — sandbox priority, training, channels. Institutional.
+    2: >-
+      SME interests taken into account when setting Art. 43 conformity assessment FEES, reduced
+      proportionately. Addressed to whoever sets the fees, and it lowers a cost rather than adding a
+      duty.
+    3: AI Office actions, points (a)-(d) — templates, information platform, campaigns. Institutional.
+  63:
+    1: >-
+      SME RELIEF: an SME without partner or linked enterprises may comply with certain elements of
+      the Art. 17 quality management system IN A SIMPLIFIED MANNER, on Commission guidelines. Relief,
+      not a duty, and NOT APPLIED — the same treatment as the Art. 111(2) legacy window: applying a
+      relief wrongly clears someone. Which elements may be simplified is settled by guidelines rather
+      than by the Article, so there is nothing here to check documentation against.
+    2: >-
+      Paragraph 1 exempts nobody from any other requirement, Arts. 9-15, 72 and 73 named expressly.
+      A saving clause, and it is why AIA-PO-A17 stays active for an SME.
   # --- Chapter VII — governance ----------------------------------------------------------------
-  64: Establishes the AI Office. Institutional.
-  65: Establishes the European Artificial Intelligence Board. Institutional.
-  66: Tasks of the Board. Institutional.
-  67: Advisory forum. Institutional.
-  68: Scientific panel of independent experts. Institutional.
-  69: Member State access to the pool of experts. Institutional.
-  70: Member State duty to designate national competent authorities. Institutional.
-
+  # THE ONLY CHAPTER THAT BINDS NO OPERATOR AT ALL. Read paragraph by paragraph, every provision
+  # addresses the Commission, the AI Office, the Board, the advisory forum, the scientific panel, a
+  # Member State or a national competent authority. Nothing here reaches a provider, deployer,
+  # importer, distributor or authorised representative even indirectly, which is what "institutional"
+  # had been asserting for seven articles at once.
+  64:
+    1: The Commission develops Union AI expertise through the AI Office. Institutional.
+    2: Member States facilitate the tasks entrusted to the AI Office. The Member State's duty.
+    3: The AI Office is allocated adequate resources. Budgetary.
+  65:
+    1: The Board is established. Constitutive.
+    2: Composition — one representative per Member State, the EDPS as observer. Institutional.
+    3: Representatives designated for three years, renewable once. Institutional.
+    4: >-
+      Member States ensure their representatives have the competences, act as single contact point,
+      and can coordinate national authorities, points (a)-(c). The Member State's duty.
+    5: The Board adopts its rules of procedure by two-thirds majority. Internal procedure.
+    6: >-
+      Two standing sub-groups for market surveillance and notifying authorities, the first acting as
+      the ADCO under Reg (EU) 2019/1020. Internal structure.
+    7: The Board is organised to safeguard objectivity and impartiality. Internal.
+    8: The Chair, and the AI Office as secretariat. Internal.
+  66:
+    a: >-
+      Coordination among national competent authorities and support for joint market surveillance
+      activities under Art. 74(11). A Board task.
+    b: Collect and share technical and regulatory expertise and best practices. A Board task.
+    c: Advise on implementation, in particular enforcement of the general-purpose AI model rules. A Board task.
+    d: >-
+      Harmonise administrative practices, including on Art. 46 derogations, sandboxes and real-world
+      testing. A Board task.
+    e: >-
+      Issue recommendations and written opinions, on the matters in points (i)-(vii) — codes,
+      the Art. 112 review, technical specifications, harmonised standards, market trends, value-chain
+      typology, and the potential need to amend Annex III or revise Art. 5. Advisory throughout: an
+      opinion that Annex III should change is not a change to Annex III.
+    f: Support the Commission in promoting AI literacy and public awareness. A Board task.
+    g: Facilitate common criteria and shared understanding of the Regulation's concepts. A Board task.
+    h: Cooperate with other Union bodies and expert networks. A Board task.
+    i: Cooperate with third-country authorities and international organisations. A Board task.
+    j: Assist authorities and the Commission in developing expertise and assessing training needs. A Board task.
+    k: Assist the AI Office in supporting sandboxes and information-sharing among them. A Board task.
+    l: Contribute to and advise on guidance documents. A Board task.
+    m: Advise the Commission on international AI matters. A Board task.
+    n: Provide opinions on qualified alerts regarding general-purpose AI models. A Board task.
+    o: >-
+      Receive Member State opinions on qualified alerts and on national monitoring and enforcement
+      experience. A Board task.
+  67:
+    1: An advisory forum is established to advise the Board and the Commission. Constitutive.
+    2: Balanced stakeholder membership across commercial and non-commercial interests. Institutional.
+    3: The Commission appoints the members. Institutional.
+    4: Two-year terms, extendable to no more than four. Institutional.
+    5: FRA, ENISA, CEN, CENELEC and ETSI are permanent members. Institutional.
+    6: The forum draws up its rules of procedure and elects two co-chairs. Internal procedure.
+    7: The forum meets at least twice a year and may invite experts. Internal procedure.
+    8: The forum may prepare opinions and written contributions on request. Advisory.
+    9: The forum may establish sub-groups. Internal.
+    10: The forum prepares a public annual report on its activities. The forum's duty.
+  68:
+    1: The Commission establishes the scientific panel by implementing act. Institutional.
+    2: >-
+      Selection of the experts, on the conditions in points (a)-(c) — expertise, INDEPENDENCE FROM ANY
+      PROVIDER of AI systems or general-purpose AI models, and diligence. A condition on the expert,
+      and the independence limb constrains who may be appointed rather than what a provider must do.
+    3: >-
+      What the panel advises on, points (a)-(d) — including (a)(i), the qualified alert to the AI
+      Office about a general-purpose AI model's systemic risk that Art. 51(1)(b) and Art. 52(4) act
+      on. The panel's task; the consequence for a provider is a designation under Art. 52, ruled on
+      there.
+    4: >-
+      Experts act impartially, keep information confidential, and take instructions from no one. The
+      expert's duty.
+    5: The implementing act covers how alerts are issued and assistance requested. Institutional.
+  69:
+    1: Member States may call on the panel's experts to support enforcement. A Member State option.
+    2: Member States may be charged fees for that support. Institutional.
+    3: >-
+      The Commission facilitates access and coordinates it with the Art. 84 Union AI testing support.
+      Institutional.
+  70:
+    1: >-
+      Each Member State establishes or designates at least one notifying authority and one market
+      surveillance authority, exercising their powers independently and impartially. The Member
+      State's duty, and it is the authority a provider deals with under Arts. 44-46 and 71-79.
+    2: Communicate the authorities' identity and tasks to the Commission, and publish contact routes. Institutional.
+    3: Adequate technical, financial and human resources and permanent competent staff. Institutional.
+    4: National competent authorities ensure an adequate level of cybersecurity. The authority's duty.
+    5: The authorities act under the Art. 78 confidentiality obligations. The authority's duty.
+    6: Biennial Member State reporting on the authorities' resources. Institutional.
+    7: The Commission facilitates exchange of experience between authorities. Institutional.
+    8: >-
+      Authorities MAY provide guidance and advice, in particular to SMEs and SMCs. A power to help,
+      not an obligation on anyone helped.
+    9: The EDPS is the competent authority for Union institutions within scope. Institutional.
   # --- Chapter VIII — EU database --------------------------------------------------------------
   71:
     1: Commission duty to set up and maintain the EU database. Institutional.
@@ -673,105 +939,430 @@ article_rulings:
     10: >-
       Limits notification for medical-device systems to Art. 3(49)(c) incidents. Narrows the duty.
     11: National authority duty to notify the Commission. Not a provider duty.
-
   # --- Chapter IX — post-market monitoring, market surveillance --------------------------------
   # NOTE: Art. 72 and 73 from this chapter ARE in scope (AIA-PO-A72, AIA-PO-A73).
-  74: Market surveillance authority powers and duties. Not a provider duty.
-  75: >-
-    Mutual assistance and control of general-purpose AI systems. Authority duties, and the one
-    operator duty in it — the provider pays the notified body for services the Commission entrusts
-    to it — arises only inside an AI Office enforcement action over a system built on that
-    provider's own general-purpose model. Chapter V territory, deferred with the rest (M4d-8).
-  75a: >-
-    NEW in this version. Supervisory and enforcement powers of the AI OFFICE over AI systems within
-    its competence. A power of an EU body, not a duty of any role this tool reports for.
-  75b: >-
-    NEW in this version. Commitments offered to the AI Office and made binding by it — a procedure
-    between an operator and the enforcing body, opened at the AI Office's discretion. Not a
-    standing obligation, and nothing a technical file evidences.
-  75c: >-
-    NEW in this version. Fines and periodic penalty payments the AI Office may impose. A
-    consequence of breach, not an obligation of its own — the same ground on which Art. 99 is
-    excluded. This tool reports what is owed, never what non-compliance would cost.
-  75d: >-
-    NEW in this version. Procedural safeguards for the party subject to Arts. 75a-75c — right to be
-    heard, access to the file — and the Commission's power to specify them further. Rights against
-    the enforcing body, held by whoever it proceeds against; not a duty owed under the Regulation.
-  76: Authority supervision of real-world testing.
-  77: Powers of authorities protecting fundamental rights.
-  78: Confidentiality duties of authorities.
-  # Arts. 79, 80 and 82 are authority-led procedures that DO put duties on the operator once the
+  #
+  # THE ENFORCEMENT CHAPTER, and the one where "not a provider duty" is easiest to say and hardest
+  # to justify. Almost every Article here is written from the AUTHORITY's side, and a good number of
+  # them put a real obligation on an operator in the same sentence — grant access, take corrective
+  # action, put an end to the non-compliance. Read paragraph by paragraph they sort into three:
+  #
+  #   the authority's own procedure, which binds nobody this tool reports for;
+  #   an operator duty ALREADY MODELLED at its standing source (Arts. 20, 21, 72, 73), restated here
+  #     at the enforcement stage — recorded once, at the source, never twice;
+  #   an operator duty that is genuinely new here, of which there is exactly one: Art. 75(1a), which
+  #     redirects serious-incident reporting to the AI Office. Declared in articles_awaiting_rules.
+  74:
+    1: >-
+      Regulation (EU) 2019/1020 applies to AI systems, with every Art. 2(1) operator read as an
+      economic operator and every AI system read as a product. A conflict-of-laws bridge; the duties
+      it carries across belong to that Regulation, which this tool does not hold.
+    2: Annual market surveillance reporting to the Commission and competition authorities. The authority's duty.
+    3: >-
+      For Section A Annex I systems the market surveillance authority is the one designated under the
+      sectoral act. Allocation of competence.
+    4: >-
+      Arts. 79-83 do not apply where the sectoral act already provides equivalent procedures. A
+      conflict rule between procedures, both of them the authority's.
+    5: Authorities may exercise certain Reg (EU) 2019/1020 powers remotely. The authority's power.
+    6: For financial institutions the financial supervisor is the market surveillance authority. Allocation.
+    7: Member States may designate another authority, with ECB reporting for SSM credit institutions. Allocation.
+    8: >-
+      Designation for Annex III(1) law enforcement, border and justice uses and Annex III(6)-(8).
+      Allocation.
+    9: The EDPS supervises Union institutions, except the CJEU acting judicially. Allocation.
+    10: Member States facilitate coordination between authorities. Institutional.
+    11: Authorities and the Commission may propose joint activities and investigations. The authority's power.
+    12: >-
+      PROVIDERS SHALL GRANT FULL ACCESS to documentation and to the training, validation and testing
+      data sets, through APIs or other technical means where appropriate. A real provider duty, and
+      the market-surveillance face of Art. 21, which puts the same access on the provider as a
+      standing obligation. Recorded once: the gap is declared at Art. 21(2), not again here.
+    13: >-
+      Source code access on a reasoned request, and only where both (a) it is necessary to assess
+      Chapter III Section 2 conformity and (b) testing on the data and documentation is exhausted or
+      insufficient. Wider than Art. 21 in what it reaches, but there is no artefact to prepare in
+      advance: the duty is to comply with a request that may never come, so no document evidences it.
+    14: Information obtained is treated under Art. 78. The receiving authority's duty.
+  75:
+    1: >-
+      The AI OFFICE IS EXCLUSIVELY COMPETENT for systems built on the provider's own general-purpose
+      model, and for systems in a VLOP or VLOSE, subject to the (i)-(iv) exceptions. Allocation of
+      competence, and the trigger for 75(1a) below — which is why this paragraph is worth reading
+      even though it binds no operator.
+    1b: Authorities cooperate actively with and assist the AI Office. The authority's duty.
+    1c: The market surveillance authority assists the AI Office where public authority data is accessed. Institutional.
+    1d: The AI Office notifies the national authority before a prohibiting or recall decision. Institutional.
+    1e: >-
+      The AI Office is responsible for Art. 43 third-party conformity assessment of 75(1) systems, and
+      THE PROVIDER PAYS the notified body costs. A fee owed to a body, not a compliance obligation —
+      this tool reports what a file must contain, never what a procedure costs.
+    2: >-
+      Authority procedure where a general-purpose AI system usable directly for a high-risk purpose is
+      suspected non-compliant. The authority's procedure.
+    2a: >-
+      A market surveillance authority may ask the AI Office to act on a suspected infringement by a
+      75(1) operator, on the (a)-(c) contents, and the AI Office answers within four months.
+      Inter-authority procedure.
+    3: >-
+      Reasoned request to the AI Office where an authority cannot obtain general-purpose model
+      information. Inter-authority procedure.
+  75a:
+    1: >-
+      NEW in this version. The AI Office holds all the powers of a market surveillance authority when
+      supervising Art. 75(1) systems. A power of an EU body.
+    2: The AI Office may decide to open an investigation into suspected non-compliance. The Office's power.
+    3: >-
+      Information requests by simple request or by decision, with the legal basis, purpose and period
+      stated. Procedure; the operator's side is answering a request, penalised under 75c rather than
+      owed as a standing duty.
+    4: >-
+      Remote and on-site inspections, and the (a)-(e) powers of the inspecting officials — enter
+      premises, examine and copy records, take explanations, seal premises. The Office's powers; the
+      operator's side is submission to them.
+    5: A national authority may act on the AI Office's behalf. Inter-authority procedure.
+    6: >-
+      The AI Office may (a) order operators to provide access to and explanations of their AI systems
+      and (b) IMPOSE A DATA AND DOCUMENT RETENTION OBLIGATION. A duty created by an order in an open
+      proceeding, with content the order sets, so there is nothing here to check a file against.
+    7: The AI Office may appoint independent external experts and auditors. The Office's power.
+    8: Information collected is used only for the purposes of this Regulation. A purpose limitation on the Office.
+  75b:
+    a: >-
+      NEW in this version. A ground for reopening commitments made binding: a material change in the
+      facts. Part of a procedure between an operator and the enforcing body, opened at the Office's
+      discretion; nothing a technical file evidences.
+    b: The operator acting contrary to its commitments. Same procedure.
+    c: The decision rested on incomplete, incorrect or misleading information. Same procedure.
+  75c:
+    1: NEW in this version. The AI Office adopts a non-compliance decision. The Office's decision.
+    2: Preliminary findings communicated to the operator before the decision. A procedural right of the operator.
+    3: The decision may order the necessary measures within a specified period. The Office's power.
+    4: >-
+      Fines under Art. 99(3)-(7) applied mutatis mutandis, and what attracts them, points (a)-(c). A
+      consequence of breach, not an obligation — the ground on which Art. 99 is excluded. This tool
+      reports what is owed, never what non-compliance would cost.
+    5: >-
+      Periodic penalty payments to compel the (a)-(g) acts, capped at 5% of average daily income or
+      worldwide annual turnover. A consequence, as 75c(4).
+    6: The CJEU has unlimited jurisdiction to review a fine. Judicial review.
+    7: Funds collected go to the Union budget. Budgetary.
+    8: Five-year limitation periods for imposing and for enforcing. Procedural.
+    9: A decision closing the proceeding where there are no grounds. The Office's decision.
+  75d:
+    1: >-
+      NEW in this version. Art. 18 of Reg (EU) 2019/1020 applies mutatis mutandis to operators under
+      the AI Office's competence. A procedural safeguard held against the enforcing body.
+    2: Rights of defence and of access to the file. A right of the operator, not a duty.
+    3: Commission implementing acts on access to the file and negotiated disclosure. Institutional.
+    4: The AI Office publishes its Art. 75b and 75c decisions, naming the parties. The Office's duty.
+  76:
+    1: >-
+      Authorities have the competences and powers to supervise real-world testing, with the Art. 60a
+      substitution of authority. The authority's power over a route this tool does not cover.
+    2: Verification of Art. 60 compliance for testing inside a sandbox. The authority's duty.
+    3: >-
+      On a serious incident or grounds to think Arts. 60 and 61 are not met, the authority may suspend
+      or terminate the testing or require the operator to modify it, points (a)-(b). The operator's
+      side is compliance with a decision on the testing route, excluded with Art. 60.
+    4: The decision or objection states its grounds and how to contest it. A procedural right.
+    5: Communication of the grounds to other Member States' authorities. Institutional.
+  77:
+    1: >-
+      Fundamental-rights authorities may request and access documentation created or maintained under
+      this Regulation, in an accessible language and format. The requesting body's power, and what it
+      reaches is the Art. 11 and Art. 12 material a rule already checks exists.
+    1a: The market surveillance authority grants that access, requesting the material where needed. Inter-authority.
+    1b: Those authorities and market surveillance authorities cooperate and assist each other. Institutional.
+    2: Member States identify and publish the list of such authorities by 2 November 2024. The Member State's duty.
+    3: >-
+      Where the documentation is insufficient, a reasoned request to the market surveillance authority
+      to organise testing of the system. Inter-authority procedure.
+    4: Information obtained is treated under Art. 78. The receiving body's duty.
+  78:
+    1: >-
+      CONFIDENTIALITY OWED BY the Commission, market surveillance authorities, NOTIFIED BODIES and
+      anyone else involved in applying the Regulation, respecting the (a)-(e) interests including
+      source code and trade secrets. Not a duty of a provider, deployer, importer, distributor or
+      authorised representative — it is the counterweight to what they must hand over.
+    2: Authorities request only data strictly necessary, with proportionate security. The authority's duty.
+    3: >-
+      Confidential information is not disclosed without prior consultation, and Annex IV technical
+      documentation of law enforcement, immigration and asylum providers stays on their premises. A
+      restriction on the authority, and a protection for that provider.
+    4: The confidentiality rules do not affect information exchange and dissemination duties. A saving clause.
+    5: Exchange of confidential information with third-country regulators. Institutional.
+  # Arts. 79, 80, 82 and 83 are authority-led procedures that DO put duties on the operator once the
   # authority acts — cooperate with the evaluation, ensure corrective action across every unit made
-  # available. Excluded not because those duties are unreal but because they are Arts. 20 and 21
-  # restated at the enforcement stage, and both are modelled (AIA-PO-A20, AIA-PO-A21). Reporting
-  # them again would double-count, the same ground on which Art. 16's cross-referencing points are
-  # excluded. A reader is told what they owe; they are not told it twice.
-  79: >-
-    National procedure for AI systems presenting a risk. Its operator duties — cooperation, and
-    corrective action across all units on the market — are Arts. 21 and 20 at the enforcement stage.
-  80: >-
-    Authority procedure for systems the provider classified as not-high-risk under Annex III. The
-    provider-side duty it enforces is Art. 6(4), in scope as AIA-NHR-A06-4; the 80(4) duty to bring
-    the system into compliance is Art. 20 restated once the authority has ruled.
-  81: Union safeguard procedure. Institutional.
-  82: >-
-    Authority procedure for compliant systems that nonetheless present a risk. The 82(2) corrective
-    action duty is Art. 20 again, on a timeline the authority sets.
-  83: Authority procedure for formal non-compliance.
-  84: Union AI testing support structures. Institutional.
-  85: Right of any person to lodge a complaint. A right, not a provider duty.
+  # available, put an end to a formal non-compliance. Excluded not because those duties are unreal
+  # but because each is a standing duty this ruleset already carries, restated at the enforcement
+  # stage: Art. 20 for corrective action, Art. 21 for cooperation, Arts. 47, 48, 71 and 22 for the
+  # formal defects Art. 83 lists. Reporting them again would double-count, the same ground on which
+  # Art. 16's cross-referencing points are excluded. A reader is told what they owe, not told twice.
+  79:
+    1: An AI system presenting a risk is a "product presenting a risk" under Reg (EU) 2019/1020. A definition.
+    2: >-
+      The authority evaluates the system and requires corrective action, withdrawal or recall within a
+      period it prescribes. The authority's procedure; the operator's side is Art. 20.
+    3: Informing the Commission and other Member States where non-compliance is not national. Institutional.
+    4: >-
+      THE OPERATOR SHALL ENSURE CORRECTIVE ACTION across every unit it has made available on the
+      Union market. Art. 20 at the enforcement stage, and AIA-PO-A20 already reports it.
+    5: Provisional measures where the operator does not act in time. The authority's power.
+    6: >-
+      What the 79(5) notification must contain, and the (a)-(d) grounds of non-compliance it may
+      rest on. The authority's duty.
+    7: Other authorities inform the Commission of their own measures. Institutional.
+    8: A provisional measure unopposed for three months is deemed justified. Institutional timing.
+    9: Authorities ensure appropriate restrictive measures are taken without undue delay. The authority's duty.
+  80:
+    1: >-
+      Authority evaluation where a system the provider classified as not-high-risk under Art. 6(3) is
+      suspected to be high-risk. The provider-side duty it enforces is Art. 6(4), in scope as
+      AIA-NHR-A06-4.
+    2: The authority requires the provider to bring the system into compliance. The authority's procedure.
+    3: Informing the Commission and other Member States. Institutional.
+    4: The provider shall bring the system into compliance. Art. 20 once the authority has ruled.
+    5: The provider shall ensure corrective action across all units made available. Art. 20 again.
+    6: Art. 79(5)-(9) applies where the provider does not act. Procedural cross-reference.
+    7: >-
+      MISCLASSIFICATION TO CIRCUMVENT Chapter III attracts a fine. A penalty, and the duty behind it
+      is the Art. 6(4) assessment AIA-NHR-A06-4 checks.
+    8: Authorities may perform checks using EU database information. The authority's power.
+  81:
+    1: >-
+      Commission consultation where objections are raised to a national measure, within three months
+      or 30 days for an Art. 5 prohibition. Institutional.
+    2: Member States take restrictive measures where the Commission finds the national measure justified. Institutional.
+    3: >-
+      Where the non-compliance is attributed to a shortcoming in a harmonised standard or common
+      specification, the Art. 41 procedure follows. Institutional.
+  82:
+    1: >-
+      Authority procedure for a COMPLIANT high-risk system that nonetheless presents a risk to health,
+      safety, fundamental rights or the public interest. The authority's finding.
+    2: The operator ensures corrective action on the authority's timeline. Art. 20 again.
+    3: Member States inform the Commission and other Member States immediately. Institutional.
+    4: The Commission consults and evaluates the national measure. Institutional.
+    5: The Commission communicates its decision to the Member States and operators. Institutional.
+  83:
+    1: >-
+      FORMAL NON-COMPLIANCE, points (a)-(g) — CE marking wrongly affixed or absent, no EU declaration
+      of conformity or one drawn up incorrectly, no EU database registration, no authorised
+      representative where one is required, technical documentation unavailable. A list of the
+      document-verifiable duties this ruleset exists to check, read back from the enforcement side:
+      Arts. 48, 47, 71, 22 and 11, each already carried by a rule. The duty is to end the
+      non-compliance, which is to comply with those Articles.
+    2: Restriction or prohibition where the formal non-compliance persists. The authority's escalation.
+  84:
+    1: The Commission designates Union AI testing support structures. Institutional.
+    2: Those structures give independent technical advice on request. Institutional.
+  85: Right of any person to lodge a complaint with a market surveillance authority. A right, not a provider duty.
   86:
     2: Carve-out where Union or national law restricts the right. Narrows Art. 86(1).
     3: The right applies only where not otherwise provided under Union law. Narrows Art. 86(1).
-  87: Reporting of infringements and whistleblower protection. Not a provider system duty.
-  88: Commission enforcement of GPAI provider obligations. Out of v0.1 scope.
-  89: Commission monitoring actions for GPAI. Out of v0.1 scope.
-  90: Scientific panel alerts of systemic risk. Out of v0.1 scope.
-  91: Commission power to request documentation from GPAI providers. Out of v0.1 scope.
-  92: Commission power to evaluate GPAI models. Out of v0.1 scope.
-  93: Commission power to request measures from GPAI providers. Out of v0.1 scope.
-  94: Procedural rights of GPAI economic operators. Out of v0.1 scope.
-
+  87: >-
+    Reporting of infringements and protection of reporting persons, under Directive (EU) 2019/1937.
+    A protection for the person who reports; the employer duties it carries belong to that Directive.
+  # Arts. 88-94 are the AI OFFICE'S ENFORCEMENT POWERS over Chapter V. They bind a general-purpose
+  # model provider only through an open proceeding — answer this request, grant this access — and
+  # the standing duties they enforce are Arts. 53 and 55, declared in articles_awaiting_rules. What
+  # is missing from this tool is the ruleset, not these powers.
+  88:
+    1: The Commission has exclusive powers to enforce Chapter V, exercised through the AI Office. Allocation.
+    2: Market surveillance authorities may ask the Commission to exercise them. Inter-authority procedure.
+  89:
+    1: The AI Office may take monitoring actions over general-purpose model providers. The Office's power.
+    2: >-
+      A DOWNSTREAM PROVIDER'S RIGHT to complain of an infringement, on the (a)-(c) contents. A right
+      held by a provider integrating the model, not a duty owed by anyone.
+  90:
+    1: The scientific panel may issue a qualified alert on the (a)-(b) grounds. The panel's power.
+    2: The Commission may exercise this Section's powers on such an alert. Institutional.
+    3: What a qualified alert must contain, points (a)-(c). The panel's duty.
+  91:
+    1: >-
+      The Commission may request the Art. 53 and 55 documentation, or further information. The power
+      that makes that documentation worth holding; the duty to hold it is Art. 53(1)(a).
+    2: The AI Office may open a structured dialogue first. Procedural.
+    3: A request for information on the scientific panel's substantiated request. Procedural.
+    4: What the request must state, including the Art. 101 fines. The Commission's duty.
+    5: >-
+      THE PROVIDER SHALL SUPPLY the information requested. A duty to answer a request that may never
+      come, with content the request sets, so no document evidences it in advance — the same reading
+      as Art. 74(13).
+  92:
+    1: The AI Office may evaluate a model on the (a)-(b) grounds. The Office's power.
+    2: Independent experts may be appointed to evaluate on the Commission's behalf. Institutional.
+    3: >-
+      The Commission may request access to the model through APIs or other technical means, SOURCE
+      CODE INCLUDED. A power exercised in a proceeding.
+    4: What the request for access must state, including the Art. 101 fines. The Commission's duty.
+    5: The provider shall supply the information requested. As Art. 91(5).
+    6: Implementing acts on the detailed arrangements for evaluations. Institutional.
+    7: The AI Office may open a structured dialogue before requesting access. Procedural.
+  93:
+    1: >-
+      The Commission may request providers to (a) take measures to comply with Arts. 53 and 54, (b)
+      implement mitigation measures after an Art. 92 evaluation, or (c) restrict, withdraw or recall
+      the model. Enforcement of the Chapter V duties, which are declared in articles_awaiting_rules.
+    2: The AI Office may open a structured dialogue before requesting a measure. Procedural.
+    3: Commitments offered during that dialogue may be made binding. The Art. 75b procedure for models.
+  94: >-
+    Procedural rights of the economic operator in an AI Office proceeding — Art. 18 of Reg (EU)
+    2019/1020 applied mutatis mutandis. Rights against the enforcing body, not duties owed.
   # --- Chapter X-XII — codes of conduct, delegation, penalties, final provisions ---------------
-  95: Codes of conduct for VOLUNTARY application. Not binding; creates no compliance gap.
-  96: Commission guidelines on implementation. Interpretive aid, not a duty.
-  97: Exercise of the delegation. Institutional.
-  98: Committee procedure. Institutional.
-  99: Member State duty to lay down penalties. A consequence of non-compliance, not an obligation.
-  100: Administrative fines on Union institutions. Consequence, not an obligation.
-  101: Fines for GPAI model providers. Consequence, and out of v0.1 scope.
+  # PENALTIES ARE NOT OBLIGATIONS, and Arts. 99, 100 and 101 are excluded on that single ground,
+  # stated once here and not repeated at each paragraph: this tool reports what a party owes, never
+  # what breaching it would cost. Art. 99(4) is worth reading anyway — its points (a)-(g) are the
+  # legislator's own list of the operator duties that carry the higher tier of fine, and every one
+  # of them (Arts. 16, 22, 23, 24, 25(2) and (4), 26, 50) is an article this ruleset carries.
+  95:
+    1: >-
+      The AI Office and Member States encourage codes of conduct for the VOLUNTARY application of the
+      Chapter III Section 2 requirements to systems that are not high-risk. Institutional, and the
+      thing it promotes is voluntary — a signature is evidence, never a duty.
+    2: >-
+      Codes for the voluntary application of specific requirements to all AI systems, on the (a)-(e)
+      issues — ethical guidelines, environmental sustainability, AI literacy, inclusive design,
+      impact on vulnerable persons. Voluntary throughout, and note that AI LITERACY here is the
+      voluntary version; the binding one is Art. 4, which this ruleset carries.
+    3: Codes may be drawn up by individual providers or deployers, or by their organisations. Permissive.
+    4: SME and SMC interests are taken into account when facilitating codes. Institutional.
+  96:
+    1: >-
+      Commission guidelines on practical implementation, on the (a)-(g) subjects. An interpretive aid,
+      not a duty — and the source of the non-binding guidance snippets this tool supplies to the
+      cascade for questions the enacted text leaves open.
+    2: The Commission updates guidelines when necessary. Institutional.
+  97:
+    1: The conditions on the delegated-act power. Institutional.
+    2: A five-year conferral, tacitly extended, over the named delegated powers. Institutional.
+    3: The Parliament or Council may revoke the delegation. Institutional.
+    4: Member State experts are consulted before a delegated act is adopted. Institutional.
+    5: Delegated acts are notified simultaneously to the Parliament and the Council. Institutional.
+    6: A delegated act enters into force only if neither institution objects within three months. Institutional.
+  98:
+    1: The Commission is assisted by a committee under Reg (EU) No 182/2011. Institutional.
+    2: The examination procedure applies where this paragraph is referenced. Institutional.
+  99:
+    1: Member States lay down the rules on penalties and other enforcement measures. The Member State's duty.
+    2: Those rules are notified to the Commission. The Member State's duty.
+    3: Fines up to EUR 35 000 000 or 7% of worldwide turnover for an Art. 5 breach. A penalty.
+    4: >-
+      Fines up to EUR 15 000 000 or 3% for breach of the operator duties in points (a)-(g) — Arts. 16,
+      22, 23, 24, 25(2) and (4), 26 and 50, plus the notified-body requirements. A penalty, and a
+      cross-check on the ruleset's shape: every operator article named here has rules in spec.yaml.
+    5: Fines up to EUR 7 500 000 or 1% for incorrect or misleading information to an authority. A penalty.
+    6: SMEs face the lower of the percentage and the amount. A penalty cap.
+    6a: NEW in this version. SMCs face the lower of the two for the 99(4) and (5) fines. A penalty cap.
+    7: The (a)-(j) factors in deciding whether and how much to fine. Sentencing criteria.
+    8: Member States decide how far fines reach public authorities. Institutional.
+    9: Fines may be imposed by courts or other bodies depending on the legal system. Institutional.
+    10: Procedural safeguards and effective judicial remedies. A right of the party fined.
+    11: Annual Member State reporting on fines issued. Institutional.
+  100:
+    1: >-
+      The EDPS may fine Union institutions, on the (a)-(g) factors. A penalty, and its subject is a
+      Union body rather than an operator.
+    2: Up to EUR 1 500 000 for an Art. 5 breach by a Union body. A penalty.
+    3: Up to EUR 750 000 for any other breach by a Union body. A penalty.
+    4: The body is heard before a decision. A procedural right.
+    5: Rights of defence and access to the EDPS file. A procedural right.
+    6: Funds go to the Union budget and must not impair the body's operation. Budgetary.
+    7: Annual EDPS notification to the Commission. Institutional.
+  101:
+    1: >-
+      Commission fines on general-purpose model providers, up to 3% of turnover or EUR 15 000 000, on
+      the (a)-(d) grounds. A penalty; the duties behind it are Arts. 53 and 55, declared in
+      articles_awaiting_rules.
+    2: Preliminary findings and an opportunity to be heard. A procedural right.
+    3: Fines are effective, proportionate and dissuasive. A standard for the Commission.
+    4: Fines are communicated to the Board. Institutional.
+    5: The CJEU has unlimited jurisdiction to review. Judicial review.
+    6: Implementing acts on the procedural arrangements. Institutional.
   102: Amendment to Regulation (EC) No 300/2008 — amends another instrument.
   103: Amendment to Regulation (EU) No 167/2013 — amends another instrument.
   104: Amendment to Regulation (EU) No 168/2013 — amends another instrument.
   105: Amendment to Directive 2014/90/EU — amends another instrument.
   106: Amendment to Directive (EU) 2016/797 — amends another instrument.
   107: Amendment to Regulation (EU) 2018/858 — amends another instrument.
-  108: Amendments to Regulation (EU) 2018/1139 — amends another instrument.
+  # Art. 108 is the only amending article the text divides, into six numbered amendments. Each adds
+  # a paragraph to Regulation (EU) 2018/1139 requiring the Commission to take the Chapter III
+  # Section 2 requirements into account when it legislates for aviation AI safety components. All
+  # six bind the Commission's rule-making, not an operator, and the requirements they carry across
+  # are Arts. 8-15, which this ruleset already checks in their own right.
+  108:
+    1: Art. 17 of Reg (EU) 2018/1139 — implementing acts on airworthiness. Binds the Commission.
+    2: Art. 19 — delegated acts on airworthiness. Binds the Commission.
+    3: Art. 43 — implementing acts on air traffic management. Binds the Commission.
+    4: Art. 47 — delegated acts on air traffic management. Binds the Commission.
+    5: Art. 57 — implementing acts on ATM/ANS. Binds the Commission.
+    6: Art. 58 — delegated acts on ATM/ANS. Binds the Commission.
   109: Amendment to Regulation (EU) 2019/2144 — amends another instrument.
   110: Amendment to Directive (EU) 2020/1828 — amends another instrument.
-  111: >-
-    Transitional regime for systems already on the market. REPORTED, NEVER APPLIED — carried by
-    ComplianceReport.legacy_system_note rather than by a rule, because every limb turns on the date
-    the system was placed on the market, which no system card states. A condition to read, never to
-    derive, like Art. 6(1)(b) and Art. 2(4).
-    Four dated duties, and the reason this is a note rather than a rule is that two of them cut the
-    other way from everything else here. 111(2) is RELIEF: a high-risk system placed before Chapter
-    III applies (2 December 2027 by the Annex III route, 2 August 2028 by Annex I, per Art. 113(c))
-    is reached only once significantly redesigned — but not the Art. 5 prohibitions, and not a
-    system intended for public authorities, which must comply by 2 August 2030 regardless. Applying
-    that wrongly would CLEAR a reader, so it is named and never acted on. 111(4) is the same shape
-    at a shorter range: a synthetic-content generator placed before 2 August 2026 has until
-    2 December 2026 for Art. 50(2), later than the date AIA-TR-A50-2 carries.
-    Worth a practitioner's eye: 111(2) fixed this window at "before 2 August 2026" in the original
-    Act, and this version replaced the fixed date with a cross-reference to Chapter III's own
-    application date — which then moved sixteen months later. The relief window widened as a
-    consequence. Whether that was intended is not a question this tool can answer.
-    111(1) (Annex X large-scale IT systems, comply by 31 December 2030) and 111(3) (legacy GPAI
-    models, 2 August 2027) stay out of scope: neither subject is one this tool assesses.
-  112: Commission duty to evaluate and review the Regulation. Institutional.
-  113: >-
-    Entry into force and application dates. Drives each rule's effective_date (2026-08-02 for
-    Annex III high-risk obligations) rather than being a rule itself.
+  # Art. 111 is the TRANSITIONAL REGIME, and it is REPORTED, NEVER APPLIED — carried by
+  # ComplianceReport.legacy_system_note rather than by a rule, because every limb turns on the date
+  # the system was placed on the market, which no system card states. A condition to read, never to
+  # derive, like Art. 6(1)(b) and Art. 2(4). Two of the four limbs are RELIEF, and applying a relief
+  # wrongly clears a reader, which is the one error this tool must not make.
+  111:
+    1: >-
+      Annex X large-scale IT system components placed before 2 August 2027 comply by 31 December
+      2030, and the requirements are taken into account when those legal acts are evaluated. Out of
+      scope by subject: this tool does not assess Union large-scale IT systems.
+    2: >-
+      RELIEF, and the widest thing in this Article. A high-risk system placed on the market before
+      Chapter III applies to it — 2 December 2027 by the Annex III route, 2 August 2028 by Annex I,
+      per Art. 113(c) — is reached only once SIGNIFICANTLY REDESIGNED. Not the Art. 5 prohibitions,
+      and not a system intended for public authorities, which comply by 2 August 2030 regardless.
+      Worth a practitioner's eye: the original Act fixed this window at "before 2 August 2026", and
+      this version replaced the fixed date with a cross-reference to Chapter III's own application
+      date, which then moved sixteen months later. The window widened as a consequence, and on a
+      literal reading it now covers most high-risk systems on the market today. Whether that was
+      intended is not a question this tool can answer, which is why it is named and never acted on.
+    3: >-
+      Legacy general-purpose AI models placed before 2 August 2025 comply by 2 August 2027. Chapter V
+      territory; the duties it defers are declared in articles_awaiting_rules.
+    4: >-
+      RELIEF at a shorter range: a synthetic-content generator placed before 2 August 2026 has until
+      2 December 2026 for Art. 50(2) — LATER than the date AIA-TR-A50-2 carries. Reported in the
+      legacy note; the rule's own date is corrected as part of M4d-5, when dates become live.
+  112:
+    1: Annual Commission assessment of the need to amend Annex III and Art. 5. Institutional.
+    2: Four-yearly evaluation and report on the (a)-(c) subjects. Institutional.
+    3: Four-yearly report on the evaluation and review of the Regulation. Institutional.
+    4: What those reports pay attention to, points (a)-(d). Institutional.
+    5: Evaluation of the AI Office's powers and competences by 2 August 2028. Institutional.
+    6: Report on energy-efficient development of general-purpose models. Institutional.
+    7: Three-yearly evaluation of the Art. 95 voluntary codes of conduct. Institutional.
+    8: The Board, Member States and authorities supply information on request. Institutional.
+    9: The Commission takes account of the Board's and the institutions' positions. Institutional.
+    10: The Commission may propose amendments to the Regulation. Institutional.
+    11: >-
+      The AI Office develops a methodology for evaluating risk levels and for including new systems in
+      the (a)-(c) lists — Annex III, the Art. 5 prohibitions, and the Art. 50 transparency list. The
+      machinery by which this tool's three classification vocabularies would change; a reason to
+      derive them from the stored text rather than to type them out, not a duty of anyone.
+    12: Amendments touching Section B Annex I legislation respect each sector's specificities. Institutional.
+    13: Assessment of enforcement by 2 August 2031. Institutional.
+  # Art. 113 is what every rule's effective_date is read from, and the amended dates are here rather
+  # than in Chapter III: the Chapter III Sections 1-3 obligations now apply from 2 December 2027 by
+  # the Annex III route and 2 August 2028 by the Annex I route. Point (a)'s carve-out is the other
+  # half of the same picture — two Art. 5 prohibitions do not bite until 2 December 2026.
+  113:
+    a: >-
+      Chapters I and II from 2 February 2025, except Art. 5(1) points (ba) and (bb) and Art. 5(1a)
+      and (1b), which apply from 2 December 2026. Two prohibitions not yet in force, and the reason a
+      report must distinguish a duty owed now from one owed later.
+    b: >-
+      Chapter III Section 4, Chapter V, Chapter VII, Chapter XII and Art. 78 from 2 August 2025,
+      except Art. 101. Chapter V has been in force for a year; its rules are still unwritten.
+    c: >-
+      Chapter III Sections 1, 2 and 3, except Art. 6(5), from 2 DECEMBER 2027 for Art. 6(2)/Annex III
+      systems and 2 AUGUST 2028 for Art. 6(1)/Annex I systems. The dates almost every rule in
+      spec.yaml turns on, and what Art. 111(2)'s relief window is measured against.
+    d: Arts. 102 to 110 from 27 July 2026. The sectoral amendments, now in force.
 
 # --- ARTICLES AWAITING A RULE -----------------------------------------------------------------
 # REAL DUTIES THAT GO UNREPORTED TODAY. Separate from `article_rulings` because it says something
@@ -786,17 +1377,6 @@ article_rulings:
 #
 # Emptying this bucket is the work. Editing it away is not.
 articles_awaiting_rules:
-  22:
-    1: >-
-      APPOINT AN AUTHORISED REPRESENTATIVE — a duty of the PROVIDER, not of the representative.
-      A provider established in a third country must appoint one by written mandate before making a
-      high-risk system available on the Union market. AIA-AR-A22 cites Art. 22 whole and is filed
-      under authorised_representative, so the judge does see this text, but the report attributes it
-      to the party being appointed rather than to the party who must appoint. A third-country
-      provider reading their own column never sees it.
-    2: >-
-      ENABLE THE REPRESENTATIVE to perform the mandate. The provider's duty again, and mis-attributed
-      the same way as 22(1).
   8:
     2: >-
       THE PROVIDER ANSWERS FOR THE SECTORAL INSTRUMENT TOO. Where a product contains an AI system to
@@ -806,24 +1386,6 @@ articles_awaiting_rules:
       chapeau to Arts. 9-15 and is excluded as such, which is why the whole article read as covered.
       Settled by law this tool does not carry, so document_verifiable false — the same treatment
       AIA-PO-A16-L already gets for the accessibility Directives. Narrow: applies_to_route annex_i.
-  41:
-    5: >-
-      JUSTIFY THE ALTERNATIVE. A provider who does NOT follow a common specification must "duly
-      justify that they have adopted technical solutions that meet the requirements referred to in
-      Section 2". Art. 41 was excluded as a Commission power, which is true of every other paragraph
-      in it. The justification is a document, so this is document-verifiable in a way most of the
-      AIA-PO-* family is not — a technical file either carries the equivalence argument or does not.
-  71:
-    2: >-
-      WHAT registration consists of, for the provider: the Annex VIII Section A and B data "shall be
-      entered into the EU database by the provider or, where applicable, by the authorised
-      representative". AIA-PO-A49 carries Art. 49(1), which is the duty to register at all; this is
-      the content of it, and nothing checks the content. Same shape as Art. 47(2) for the
-      declaration of conformity, and it belongs in the same bucket for the same reason.
-    3: >-
-      The deployer half of the same duty: Annex VIII Section C data, entered by a deployer that is
-      or acts for a public authority. AIA-DP-A49-3 carries the Art. 49(3) duty to register; this
-      says what goes in.
   11:
     2: >-
       A SINGLE set of technical documentation where the system relates to a Section A Annex I
@@ -849,6 +1411,17 @@ articles_awaiting_rules:
     2: >-
       Give a competent authority access to the automatically generated logs on reasoned request.
       AIA-PO-A21 cites 21(1), which covers information and documentation but not log access.
+  22:
+    1: >-
+      APPOINT AN AUTHORISED REPRESENTATIVE — a duty of the PROVIDER, not of the representative.
+      A provider established in a third country must appoint one by written mandate before making a
+      high-risk system available on the Union market. AIA-AR-A22 cites Art. 22 whole and is filed
+      under authorised_representative, so the judge does see this text, but the report attributes it
+      to the party being appointed rather than to the party who must appoint. A third-country
+      provider reading their own column never sees it.
+    2: >-
+      ENABLE THE REPRESENTATIVE to perform the mandate. The provider's duty again, and mis-attributed
+      the same way as 22(1).
   25:
     4: >-
       A WRITTEN AGREEMENT between the provider and any third party supplying an AI system, model,
@@ -872,6 +1445,13 @@ articles_awaiting_rules:
       Notify the market surveillance authority of the FRIA result, submitting the Art. 27(5)
       template. AIA-DP-A27 cites 27(1), so the judge sees the assessment's required contents and
       never the duty to file it. A complete FRIA that is never sent passes.
+  41:
+    5: >-
+      JUSTIFY THE ALTERNATIVE. A provider who does NOT follow a common specification must "duly
+      justify that they have adopted technical solutions that meet the requirements referred to in
+      Section 2". Art. 41 was excluded as a Commission power, which is true of every other paragraph
+      in it. The justification is a document, so this is document-verifiable in a way most of the
+      AIA-PO-* family is not — a technical file either carries the equivalence argument or does not.
   43:
     4: >-
       A NEW conformity assessment on substantial modification, and the rule that pre-determined
@@ -906,6 +1486,74 @@ articles_awaiting_rules:
       first interaction or exposure, and must meet applicable accessibility requirements. All four
       Art. 50 rules cite only their own paragraph, so a disclosure buried in a footer passes
       AIA-TR-A50-1. This qualifies all four duties rather than adding a fifth.
+  # --- Arts. 52 to 55: Chapter V, the general-purpose AI model regime --------------------------
+  # A DIFFERENT KIND OF DEBT from the rest of this section, and worth reading as one group even
+  # though article order splits it. Every other entry here is a paragraph a high-risk rule was
+  # written for and did not reach. Arts. 52 to 55 are a complete parallel regime the ruleset does
+  # not carry at all: the cascade classifies a model as GPAI_MODEL and select_rules returns an empty
+  # set, so the report a model provider gets is silent about all thirteen. Deferred as M4d-8, but
+  # deferring a duty does not make it not owed, which is why they are declared here rather than
+  # dismissed in article_rulings.
+  52:
+    1: >-
+      NOTIFY THE COMMISSION WITHIN TWO WEEKS of meeting the Art. 51(1)(a) condition, or of learning
+      that it will be met, with the information demonstrating it. The only hard deadline in
+      Chapter V, and the Commission may designate the model itself if it is missed.
+  53:
+    1: >-
+      THE FOUR CORE DUTIES OF A GPAI MODEL PROVIDER, and the document-verifiable heart of the
+      chapter: (a) technical documentation containing at least Annex XI, held for the AI Office and
+      national authorities; (b) information and documentation for downstream providers integrating
+      the model, containing at least Annex XII; (c) a copyright policy that identifies and complies
+      with an Art. 4(3) Directive (EU) 2019/790 reservation of rights, state-of-the-art technologies
+      included; (d) a publicly available, sufficiently detailed summary of the training content, on
+      the AI Office's template. Points (a) and (b) are lifted by the 53(2) open-source carve-out;
+      (c) and (d) are owed by every provider, open-source or not.
+    4: >-
+      A provider that adheres to neither an approved code of practice nor a harmonised standard
+      SHALL DEMONSTRATE alternative adequate means of compliance for the Commission's assessment.
+      The first two sentences are a permission and a presumption; the third is a duty, and it is the
+      one that bites on a provider who did neither.
+  54:
+    1: >-
+      A THIRD-COUNTRY PROVIDER SHALL APPOINT an authorised representative established in the Union,
+      by written mandate, BEFORE placing the model on the Union market. The Chapter V twin of
+      Art. 22(1), and mis-attributable the same way: the duty is the provider's.
+    2: Enable the representative to perform the mandate. The provider's duty, as in Art. 22(2).
+    3: >-
+      The representative performs the mandate and produces a copy to the AI Office on request; the
+      mandate must empower it to verify the Annex XI documentation and Art. 53 and 55 compliance,
+      keep that documentation for 10 YEARS after placing on the market, supply it on reasoned
+      request, and cooperate in any action over the model.
+    4: >-
+      The mandate must empower the representative to be addressed by the AI Office and competent
+      authorities in addition to or INSTEAD OF the provider. A requirement on what the mandate says,
+      owed by whoever draws it.
+    5: >-
+      Terminate the mandate where the representative considers the provider to be acting contrary to
+      the Regulation, and immediately tell the AI Office, with reasons. The representative's duty.
+  55:
+    1: >-
+      THE SYSTEMIC-RISK DUTIES, owed in addition to Arts. 53 and 54: (a) model evaluation to
+      state-of-the-art standardised protocols, including documented adversarial testing; (b) assess
+      and mitigate systemic risks at Union level, sources included; (c) track, document and report
+      serious incidents and corrective measures to the AI Office without undue delay; (d) an adequate
+      level of cybersecurity for the model AND its physical infrastructure. Unreachable today for a
+      second reason as well: no node asks Art. 51(1), so nothing ever reaches this Article.
+    2: >-
+      Demonstrate alternative adequate means of compliance where neither a code of practice nor a
+      harmonised standard is followed. The 53(4) duty again, for the systemic-risk obligations.
+  71:
+    2: >-
+      WHAT registration consists of, for the provider: the Annex VIII Section A and B data "shall be
+      entered into the EU database by the provider or, where applicable, by the authorised
+      representative". AIA-PO-A49 carries Art. 49(1), which is the duty to register at all; this is
+      the content of it, and nothing checks the content. Same shape as Art. 47(2) for the
+      declaration of conformity, and it belongs in the same bucket for the same reason.
+    3: >-
+      The deployer half of the same duty: Annex VIII Section C data, entered by a deployer that is
+      or acts for a public authority. AIA-DP-A49-3 carries the Art. 49(3) duty to register; this
+      says what goes in.
   72:
     2: >-
       The monitoring system must actively and systematically collect, document and analyse
@@ -926,6 +1574,14 @@ articles_awaiting_rules:
       After reporting, the provider must investigate, risk-assess the incident, cooperate with
       authorities and the notified body, and NOT alter the system before informing them. A distinct
       post-report duty that AIA-PO-A73's citation of 73(1) does not reach.
+  75:
+    1a: >-
+      NEW in this version. SERIOUS INCIDENTS GO TO THE AI OFFICE, not to the national market
+      surveillance authority, where the provider's high-risk system falls under Art. 75(1) — a system
+      built on the provider's own general-purpose model, or one inside a VLOP or VLOSE. Art. 73(2) to
+      (9) then apply mutatis mutandis, so the deadlines are unchanged and only the addressee moves.
+      AIA-PO-A73 names the national authority unconditionally, which is the wrong addressee for
+      exactly the providers most likely to have one of these systems.
 
 # --- ANNEXES ---------------------------------------------------------------------------------
 # The Annexes carry operative content the Articles only point at: Annex III IS the list of high-risk
@@ -939,40 +1595,271 @@ articles_awaiting_rules:
 # annex, NOT that its contents have been modelled — Annex IV is cited by AIA-HR-A11 and its element
 # list is not itself checked.
 annex_rulings:
+  # Annex I: EVERY ITEM IS AN ANSWER THE CASCADE CAN GIVE. AnnexIProduct holds one member per
+  # instrument and tests/test_vocabulary.py derives the list from this file, so an instrument added
+  # by amendment fails CI rather than becoming a system the cascade cannot classify. The Section
+  # decides what follows: Section A carries Chapter III, Section B has it withheld by Art. 2(2).
+  I:
+    A/1: CASCADE annex_i — Directive 2006/42/EC, machinery. Section A, Chapter III applies.
+    A/2: CASCADE annex_i — Directive 2009/48/EC, toy safety. Section A.
+    A/3: CASCADE annex_i — Directive 2013/53/EU, recreational craft and personal watercraft. Section A.
+    A/4: CASCADE annex_i — Directive 2014/33/EU, lifts and safety components. Section A.
+    A/5: CASCADE annex_i — Directive 2014/34/EU, equipment for explosive atmospheres. Section A.
+    A/6: CASCADE annex_i — Directive 2014/53/EU, radio equipment. Section A.
+    A/7: CASCADE annex_i — Directive 2014/68/EU, pressure equipment. Section A.
+    A/8: CASCADE annex_i — Regulation (EU) 2016/424, cableway installations. Section A.
+    A/9: CASCADE annex_i — Regulation (EU) 2016/425, personal protective equipment. Section A.
+    A/10: CASCADE annex_i — Regulation (EU) 2016/426, gas-burning appliances. Section A.
+    A/11: CASCADE annex_i — Regulation (EU) 2017/745, medical devices. Section A.
+    A/12: CASCADE annex_i — Regulation (EU) 2017/746, in vitro diagnostic medical devices. Section A.
+    B/13: CASCADE annex_i — Regulation (EC) No 300/2008, civil aviation security. Section B.
+    B/14: CASCADE annex_i — Regulation (EU) No 167/2013, agricultural and forestry vehicles. Section B.
+    B/15: CASCADE annex_i — Regulation (EU) No 168/2013, two- and three-wheel vehicles. Section B.
+    B/16: CASCADE annex_i — Directive 2014/90/EU, marine equipment. Section B.
+    B/17: CASCADE annex_i — Directive (EU) 2016/797, rail system interoperability. Section B.
+    B/18: CASCADE annex_i — Regulation (EU) 2018/858, motor vehicle approval. Section B.
+    B/19: CASCADE annex_i — Regulation (EU) 2019/2144, vehicle general safety. Section B.
+    B/20: CASCADE annex_i — Regulation (EU) 2018/1139, civil aviation and unmanned aircraft. Section B.
+    B/21: >-
+      CASCADE annex_i — Regulation (EU) 2023/1230, the MACHINERY REGULATION. Section B, and kept
+      apart from A/1 for that reason: the Directive it replaces sits in Section A and carries
+      Chapter III, while this one does not. The Directive is repealed on 20 January 2027.
   II: >-
     List of criminal offences for the Art. 5(1)(h)(iii) exception to the real-time remote biometric
     identification ban. The cascade reports the practice as prohibited and hands the
     national-authorisation question over rather than adjudicating the exception, so the offence list
     is never applied. Over-inclusive in the safe direction: a use a Member State has authorised is
     reported as prohibited rather than cleared.
-  IX: >-
-    Registration information for real-world testing under Art. 60, which is out of scope as an
-    optional route rather than a standing duty.
-  X: >-
-    Union legislative acts on large-scale IT systems in Freedom, Security and Justice. A reference
-    list for the Annex III(7) migration area; creates no duty of its own.
-  XI: Technical documentation for GPAI model providers (Art. 53(1)(a)). Chapter V, deferred (M4d-8).
-  XII: Transparency information for GPAI providers to downstream providers. Chapter V (M4d-8).
-  XIII: Criteria for designating GPAI models with systemic risk (Art. 51). Chapter V (M4d-8).
-  XIV: >-
-    NEW in this version. Codes, categories and types of AI system used to scope a notified body's
-    designation under Arts. 29 and 30. Duties of conformity assessment bodies and notifying
-    authorities, both already out of scope. Recorded because it appeared in the store unnoticed —
-    the whole reason this section now exists.
+  # Annex III: the eight high-risk areas, one AnnexIIIArea member each, derived and enforced the
+  # same way as Annex I. The area also gates the rules the Act narrows — Art. 14(5) biometrics,
+  # Art. 26(10) law enforcement, Art. 49's exception for point 2.
+  III:
+    1: CASCADE annex_iii — biometrics; remote identification, categorisation, emotion recognition.
+    2: >-
+      CASCADE annex_iii — critical infrastructure: safety components in digital infrastructure,
+      traffic, and the supply of water, gas, heating and electricity. The point Art. 49(1) and (3)
+      except from registration, and the one Art. 43(6) may move to the Annex VII route.
+    3: CASCADE annex_iii — education and vocational training; admission, evaluation, proctoring.
+    4: CASCADE annex_iii — employment; recruitment, promotion, termination, task allocation, monitoring.
+    5: >-
+      CASCADE annex_iii — essential private and public services: benefits eligibility,
+      creditworthiness, life and health insurance pricing, emergency call triage.
+    6: CASCADE annex_iii — law enforcement; victim risk, polygraphs, evidence reliability, profiling.
+    7: CASCADE annex_iii — migration, asylum and border control; polygraphs, risk assessment, applications.
+    8: CASCADE annex_iii — administration of justice and democratic processes.
+  # Annex IV is the CONTENT of the Art. 11 technical documentation and AIA-HR-A11 cites Art. 11
+  # whole, so the judge reads this list. Ruled per item all the same, because a shared verdict on
+  # "is there a technical file" says nothing about whether the file holds point 2(g)'s validation
+  # metrics. Several items point at an Article a rule already checks in its own right; where they
+  # do, the item says which, so a reader is not told the same thing twice.
+  IV:
+    1: RULE AIA-HR-A11 — general description of the system, points (a)-(h).
+    2: >-
+      RULE AIA-HR-A11 — detailed description of the system and its development, points (a)-(h):
+      methods and steps, design specifications, architecture, data requirements, the Art. 14 human
+      oversight assessment, pre-determined changes, validation and testing procedures, cybersecurity.
+    3: RULE AIA-HR-A11 — monitoring, functioning and control, including accuracy and foreseeable risks.
+    4: RULE AIA-HR-A11 — appropriateness of the performance metrics for this system.
+    5: RULE AIA-HR-A11 — detailed description of the Art. 9 risk management system.
+    6: RULE AIA-HR-A11 — relevant changes made through the system's lifecycle.
+    7: RULE AIA-HR-A11 — harmonised standards applied, or the solutions adopted where none were.
+    8: RULE AIA-HR-A11 — a copy of the Art. 47 EU declaration of conformity, which AIA-PO-A47 checks.
+    9: >-
+      RULE AIA-HR-A11 — the Art. 72 post-market monitoring system and plan. The plan is also the
+      duty declared at Art. 72(3) in articles_awaiting_rules; the item is where it must live.
+  # Annex VI is the internal-control conformity assessment route, cited by AIA-PO-A43-2. Its four
+  # points are the procedure itself, performed by the provider without a notified body.
+  VI:
+    1: RULE AIA-PO-A43-2 — the procedure is points 2, 3 and 4. Definitional.
+    2: RULE AIA-PO-A43-2 — verify the Art. 17 quality management system, which AIA-PO-A17 checks.
+    3: RULE AIA-PO-A43-2 — examine the technical documentation against the Section 2 requirements.
+    4: >-
+      RULE AIA-PO-A43-2 — verify that design, development and Art. 72 post-market monitoring are
+      consistent with the technical documentation.
+  # Annex VIII is the CONTENT of the Art. 49 registrations, and it divides by who registers:
+  # Section A the Art. 49(1) provider, Section B the Art. 49(2) provider of a system assessed as not
+  # high-risk, Section C the Art. 49(3) deployer. Each rule checks that the registration was made;
+  # none checks what went into it, and most of what goes in is an artefact another rule already
+  # requires. Ruled per item so that split is visible rather than assumed.
+  VIII:
+    A/1: RULE AIA-PO-A49 — the provider's name, address and contact details. Registry identification.
+    A/2: RULE AIA-PO-A49 — details of a person submitting on the provider's behalf. Registry identification.
+    A/3: >-
+      RULE AIA-PO-A49 — the authorised representative's details where applicable. The appointment
+      itself is Art. 22, declared at 22(1) in articles_awaiting_rules.
+    A/4: RULE AIA-PO-A49 — trade name and any reference allowing identification and traceability.
+    A/5: RULE AIA-PO-A49 — the intended purpose, components and functions. Also Annex IV(1)(a).
+    A/6: RULE AIA-PO-A49 — a concise description of the data, inputs and operating logic.
+    A/7: RULE AIA-PO-A49 — the system's status; on the market, withdrawn, or recalled. Registry state.
+    A/8: >-
+      RULE AIA-PO-A49 — type, number and expiry of the notified body certificate, where applicable.
+      Exists only on the Annex VII route, which AIA-PO-A43-1 covers.
+    A/9: RULE AIA-PO-A49 — a scanned copy of that certificate, where applicable.
+    A/10: RULE AIA-PO-A49 — the Member States where the system has been placed on the market.
+    A/11: RULE AIA-PO-A49 — a copy of the Art. 47 EU declaration of conformity, which AIA-PO-A47 checks.
+    A/12: >-
+      RULE AIA-PO-A49 — electronic instructions for use, withheld for law enforcement, migration,
+      asylum and border control systems. The instructions themselves are Art. 13, checked by
+      AIA-HR-A13.
+    A/13: RULE AIA-PO-A49 — a URL for additional information, expressly OPTIONAL. Not a duty at all.
+    B/1: RULE AIA-NHR-A06-4 — the provider's name, address and contact details.
+    B/2: RULE AIA-NHR-A06-4 — details of a person submitting on the provider's behalf.
+    B/3: RULE AIA-NHR-A06-4 — the authorised representative's details, where applicable.
+    B/4: RULE AIA-NHR-A06-4 — trade name and identification reference.
+    B/5: RULE AIA-NHR-A06-4 — a description of the intended purpose.
+    B/6: >-
+      RULE AIA-NHR-A06-4 — WHICH Art. 6(3) condition the system relies on. The substance of the
+      not-high-risk claim, and what Art. 80(1) puts an authority onto.
+    B/7: >-
+      RULE AIA-NHR-A06-4 — a short summary of the grounds for the not-high-risk conclusion. The
+      Art. 6(4) assessment, written down; misstating it attracts the Art. 80(7) fine.
+    B/8: RULE AIA-NHR-A06-4 — the system's status. Registry state.
+    B/9: RULE AIA-NHR-A06-4 — the Member States where it has been placed on the market.
+    C/1: RULE AIA-DP-A49-3 — the deployer's name, address and contact details.
+    C/2: RULE AIA-DP-A49-3 — details of the person submitting on the deployer's behalf.
+    C/3: RULE AIA-DP-A49-3 — the URL of the provider's own entry for the system. Links the two entries.
+    C/4: >-
+      RULE AIA-DP-A49-3 — a summary of the Art. 27 FUNDAMENTAL RIGHTS IMPACT ASSESSMENT findings.
+      The assessment is checked by AIA-DP-A27; this item is where its summary must be lodged, and
+      Art. 27(3) — notifying the authority — is declared in articles_awaiting_rules.
+    C/5: >-
+      RULE AIA-DP-A49-3 — a summary of the data protection impact assessment under Art. 35 GDPR or
+      Art. 27 of Directive (EU) 2016/680, as Art. 26(9) specifies. Settled by data protection law
+      this tool does not carry; the item is the registration of its summary.
+  # Annex IX is what Art. 60(4)(c) has a provider register before real-world testing. Out of scope
+  # with the Art. 60 route itself, and ruled per item so the scope limit names what it costs.
+  IX:
+    1: The Union-wide unique single identification number of the testing. Art. 60 route, out of scope.
+    2: >-
+      Name and contact details of the provider or prospective provider and of the deployers taking
+      part. Art. 60 route.
+    3: A brief description of the system, its intended purpose and identifying information. Art. 60 route.
+    4: >-
+      A summary of the main characteristics of the REAL-WORLD TESTING PLAN — the document
+      Art. 60(4)(a) has approved before testing begins. Art. 60 route.
+    5: Information on suspension or termination of the testing, per Art. 60(8). Art. 60 route.
+  # Annex X is a reference list of instruments, not a set of requirements. It is what Art. 111(1)
+  # means by a large-scale IT system, and what Annex III(7)'s migration area points at.
+  X:
+    1: Schengen Information System — Regulations (EU) 2018/1860, 2018/1861 and 2018/1862. A reference.
+    2: Visa Information System — Regulations (EU) 2021/1133 and 2021/1134. A reference.
+    3: Eurodac — Regulation (EU) 2024/1358. A reference.
+    4: Entry/Exit System — Regulation (EU) 2017/2226. A reference.
+    5: ETIAS — Regulations (EU) 2018/1240 and 2018/1241. A reference.
+    6: ECRIS-TCN — Regulation (EU) 2019/816. A reference.
+    7: Interoperability — Regulations (EU) 2019/817 and 2019/818. A reference.
+  # Annexes XI, XII and XIII are Chapter V content: the technical documentation Art. 53(1)(a)
+  # requires, the downstream information Art. 53(1)(b) requires, and the criteria Art. 51(1)(b) has
+  # the Commission weigh. The duties they fill out are declared in articles_awaiting_rules; ruled
+  # here per item so the shape of the missing ruleset is on record rather than deferred as a block.
+  XI:
+    1/1: >-
+      Section 1(1) — general description of the model, points (a)-(f): tasks, acceptable use
+      policies, release date and distribution, architecture and parameter count, modality, licence.
+      The content of the Art. 53(1)(a) duty, which is declared owed.
+    1/2: >-
+      Section 1(2) — detailed description of the model's elements and development, points (a)-(e):
+      integration means, design specifications and training methodology, training data provenance
+      and curation, COMPUTATIONAL RESOURCES in FLOP, and energy consumption. Point (d) is the one
+      place a document could answer Art. 51(2)'s 10^25 threshold.
+    2/1: >-
+      Section 2(1) — for systemic-risk models: evaluation strategies and results, including
+      adversarial testing. Content of the Art. 55(1)(a) duty, declared owed.
+    2/2: >-
+      Section 2(2) — measures to assess and mitigate systemic risks at Union level. Content of the
+      Art. 55(1)(b) duty.
+    2/3: >-
+      Section 2(3) — a detailed description of the system architecture and how software components
+      integrate. Content of the same systemic-risk documentation.
+  XII:
+    1: >-
+      General description for downstream providers, points (a)-(h). The content of the
+      Art. 53(1)(b) duty, which is declared owed — and the information a provider building an
+      Annex III system on someone else's model needs to meet Arts. 9 to 15 at all.
+    2: >-
+      Elements of the model and its development, points (a)-(c): integration means, input and output
+      modality and maximum size, and training data provenance. Same duty.
+  XIII:
+    a: >-
+      Number of parameters. One of the criteria the COMMISSION weighs under Art. 51(1)(b); not a
+      duty of anyone, and no node asks it — the systemic-risk line is unasked, recorded at Art. 51(1).
+    b: Quality or size of the data set, measured through tokens. A Commission criterion.
+    c: Amount of computation used for training, in FLOP or proxies for it. A Commission criterion.
+    d: Input and output modalities and state-of-the-art thresholds. A Commission criterion.
+    e: Benchmarks and evaluations of capabilities, autonomy and scalability. A Commission criterion.
+    f: >-
+      High impact on the internal market, PRESUMED at 10 000 registered Union business users. A
+      Commission criterion, and the one limb a business could count for itself.
+    g: Number of registered end-users. A Commission criterion.
+  # Annex XIV was ADDED by this consolidation, and it appeared in the store unnoticed — the reason
+  # this section exists at all. It scopes a notified body's designation under Arts. 29 and 30.
+  XIV:
+    1: >-
+      Introduction: only designated conformity assessment bodies may act, and the codes below scope
+      what each is designated for. Addressed to notifying authorities and the bodies themselves.
+    2: >-
+      The codes and categories for AI systems subject to Annex I and Annex III. A taxonomy for
+      designation, not a classification the cascade uses — the tier is decided by Arts. 6 and 5.
+    3: >-
+      AI technology-specific codes: symbolic AI, machine learning, and the rest. Describes what a
+      body is competent to assess, not what a system owes.
+    4: >-
+      Conformity assessment bodies use these lists when applying for designation. The applicant
+      body's duty, and conformity assessment bodies are out of scope by role.
 
 # ANNEXES A RULE SHOULD REACH AND DOES NOT. Same split, and for the same reason: an annex the tool
 # ought to read is not an annex the tool has decided against. Both of these are consequences of a
 # rule citing too narrowly, so each is emptied by fixing that rule rather than by writing an annex
 # rule of its own.
 annexes_awaiting_rules:
-  V: >-
-    Contents of the EU declaration of conformity. Art. 47(2) requires the declaration to contain the
-    Annex V information, and AIA-PO-A47 cites 47(1) — drawing the declaration up and keeping it ten
-    years — so nothing checks what is in it. Reached when 47(2) leaves articles_awaiting_rules.
-  VII: >-
-    Conformity based on an assessment of the quality management system and of the technical
-    documentation — the notified-body route Art. 43(1)(b) offers for Annex III point 1. AIA-PO-A43-1
-    carries that duty and cites NEITHER Annex VI nor Annex VII, though it is the one rule in the
-    spec where a notified body can be involved. Annex VI is in scope only because AIA-PO-A43-2
-    happens to cite it for the internal-control route; Annex VII is reached by no rule at all.
+  # ANNEX V IS THE DECLARATION OF CONFORMITY'S CONTENT. Art. 47(2) requires the declaration to
+  # contain this information, and AIA-PO-A47 cites 47(1) — draw it up, keep it ten years — so
+  # nothing checks what is in it. Emptied when 47(2) leaves articles_awaiting_rules. Every item
+  # below is document-verifiable: the declaration is a single page, and this is what is on it.
+  V:
+    1: The system's name and type, and any reference allowing identification and traceability.
+    2: The name and address of the provider or, where applicable, of the authorised representative.
+    3: A statement that the declaration is issued under the SOLE RESPONSIBILITY of the provider.
+    4: >-
+      A statement that the system conforms with this Regulation and with any other Union law
+      requiring a declaration of conformity. The operative sentence of the document.
+    5: >-
+      Where personal data is processed, a statement of compliance with Regulations (EU) 2016/679 and
+      2018/1725 and Directive (EU) 2016/680. Absent from most templates written for this Regulation
+      alone, and required whenever the system touches personal data.
+    6: References to the harmonised standards or common specifications conformity is declared against.
+    7: >-
+      Where applicable, the notified body's name and identification number, the procedure performed,
+      and the certificate issued. Populated only on the Annex VII route.
+    8: >-
+      Place and date of issue, the signatory's name and function, on whose behalf they signed, and a
+      SIGNATURE. An unsigned declaration does not satisfy Art. 47.
+  # ANNEX VII is the notified-body conformity assessment route Art. 43(1)(b) offers for Annex III
+  # point 1. AIA-PO-A43-1 carries that duty and cites neither Annex VI nor Annex VII, though it is
+  # the one rule in the spec where a notified body can be involved. Annex VI is in scope only
+  # because AIA-PO-A43-2 happens to cite it for the internal-control route; Annex VII is reached by
+  # no rule at all — so a provider taking the notified-body route is told to take it and nothing
+  # about what it consists of.
+  VII:
+    1: The procedure is points 2 to 5. Definitional, and it is what the missing rule must cite.
+    2: >-
+      Overview: the Art. 17 quality management system is examined under point 3 and kept under
+      surveillance under point 5; the technical documentation is examined under point 4.
+    3: >-
+      QUALITY MANAGEMENT SYSTEM. 3.1 lists what the provider's application must contain, points
+      (a)-(f) — the systems covered, the technical documentation for each, the Art. 17 documentation,
+      the procedures keeping the system adequate, and a written declaration that the same
+      application is with no other notified body. 3.3 has the provider CONTINUE to implement and
+      maintain the approved system, and 3.4 has any intended change brought to the notified body.
+      Real provider duties, and every one of them evidenced by a document.
+    4: >-
+      CONTROL OF THE TECHNICAL DOCUMENTATION. 4.2's application must contain the provider's name, a
+      written declaration of exclusivity, and the Annex IV documentation; 4.3 has the notified body
+      granted FULL ACCESS to the training, validation and testing data sets, through an API where
+      appropriate; 4.4 lets it require further evidence or tests. The access duty is Art. 74(12) on
+      the notified-body route, and the application contents are checkable against a file.
+    5: >-
+      SURVEILLANCE. 5.2 has the provider allow the notified body onto the premises where design,
+      development and testing happen and share all necessary information; 5.3 has the body audit
+      periodically. A continuing duty for as long as the certificate stands.
 
