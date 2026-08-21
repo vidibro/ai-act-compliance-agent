@@ -29,6 +29,7 @@ from aiact.schemas.enums import (
     DerogationCondition,
     ProviderReallocation,
     RiskClass,
+    TransparencyDuty,
     Verdict,
 )
 from aiact.schemas.policy import LegalSource
@@ -590,3 +591,85 @@ def test_deployer_registration_is_never_withheld_from_the_report(spec):
     for kind in DeployerType:
         report = _deployer_report(spec, RiskClass.HIGH_RISK, kind)
         assert "AIA-DP-A49-3" in report.not_document_verifiable[ActorRole.DEPLOYER]
+
+
+def _legacy_report(spec, risk_class, area=AnnexIIIArea.EMPLOYMENT, duties=()):
+    use_case = a_use_case("scoring", risk_class)
+    if area is None:
+        use_case = use_case.model_copy(update={"annex_iii_area": None})
+    classification = a_classification(use_case)
+    if duties:
+        # transparency_duties is DERIVED from the cascade's own answer, so the fixture supplies the
+        # answer rather than the list — setting the property would test a shape nothing produces.
+        answer = Answer(
+            value=list(duties),
+            reasoning="fixture",
+            confidence="high",
+            source=LegalSource(
+                instrument="Regulation (EU) 2024/1689",
+                article=50,
+                act_version_date=date(2024, 7, 12),
+            ),
+            node_id="transparency",
+        )
+        classification = classification.model_copy(update={"transparency": answer})
+    return analyse(
+        DOCUMENT,
+        classification,
+        spec,
+        brain=ScriptedBrain({}),
+        judge=StubJudge(),  # type: ignore[arg-type]
+        max_workers=1,
+    )
+
+
+def test_art_111_names_the_relief_without_granting_it(spec):
+    """The report says a legacy system may owe less, and that the tool cannot tell if it is one.
+
+    Art. 111(2) is RELIEF, so the failure direction is inverted from every other note here: guessing
+    it right costs nothing, guessing it wrong clears a reader who is not cleared. The date it turns
+    on — when the system was placed on the market — appears in no system card, so it is read and
+    never derived, the same treatment Art. 6(1)(b) gets."""
+    note = _legacy_report(spec, RiskClass.HIGH_RISK).legacy_system_note
+
+    assert note is not None
+    assert "Art. 111(2)" in note
+    assert "2 December 2027" in note  # Art. 113(c)(i), the Annex III route
+    assert "Art. 5" in note  # the relief does not reach the prohibitions
+    assert "2 August 2030" in note  # nor a public-authority system
+    assert "not stated in the documentation" in note
+    assert not re.search(r"\byou(r|rs|rself)?\b", note, re.I)
+
+
+def test_art_111_dates_the_two_routes_apart(spec):
+    """Art. 113(c) gives Annex III and Annex I different dates, so Art. 111(2)'s window differs too.
+    One date for both would be wrong for whichever route it was not written for."""
+    annex_iii = _legacy_report(spec, RiskClass.HIGH_RISK).legacy_system_note
+    assert annex_iii is not None and "2 December 2027" in annex_iii
+
+
+def test_art_111_never_withholds_an_obligation(spec):
+    """The whole point of reporting it rather than applying it. A report whose findings or counts
+    moved with this note would be granting relief on a fact nothing established."""
+    with_note = _legacy_report(spec, RiskClass.HIGH_RISK)
+    assert with_note.legacy_system_note is not None
+    assert with_note.findings
+    assert with_note.summary.total_applicable > 0
+
+
+def test_art_111_is_silent_where_no_legacy_relief_could_apply(spec):
+    """Art. 111(2) speaks of high-risk systems, and 111(4) of the Art. 50(2) marking duty. A note on
+    a system owing neither would be describing relief from nothing."""
+    assert _legacy_report(spec, RiskClass.MINIMAL, area=None).legacy_system_note is None
+
+
+def test_art_111_4_rides_on_the_duty_not_the_tier(spec):
+    """Art. 50 is gated on the duty throughout, and its transitional deadline has to follow it —
+    a minimal-risk generator owes Art. 50(2) and gets the later date with it."""
+    duties = [TransparencyDuty.SYNTHETIC_CONTENT_MARKING]
+    note = _legacy_report(spec, RiskClass.MINIMAL, area=None, duties=duties).legacy_system_note
+
+    assert note is not None
+    assert "Art. 111(4)" in note
+    assert "2 December 2026" in note
+    assert "Art. 111(2)" not in note  # minimal risk, so the Chapter III limb does not fire

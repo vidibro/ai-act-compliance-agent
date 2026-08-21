@@ -403,9 +403,24 @@ articles_out_of_scope:
   109: Amendment to Regulation (EU) 2019/2144 — amends another instrument.
   110: Amendment to Directive (EU) 2020/1828 — amends another instrument.
   111: >-
-    Transitional regime for systems already on the market. Affects WHETHER obligations bite for a
-    legacy system; a scoping/temporal question, not a checkable duty. Revisit if the tool is asked
-    to assess legacy systems.
+    Transitional regime for systems already on the market. REPORTED, NEVER APPLIED — carried by
+    ComplianceReport.legacy_system_note rather than by a rule, because every limb turns on the date
+    the system was placed on the market, which no system card states. A condition to read, never to
+    derive, like Art. 6(1)(b) and Art. 2(4).
+    Four dated duties, and the reason this is a note rather than a rule is that two of them cut the
+    other way from everything else here. 111(2) is RELIEF: a high-risk system placed before Chapter
+    III applies (2 December 2027 by the Annex III route, 2 August 2028 by Annex I, per Art. 113(c))
+    is reached only once significantly redesigned — but not the Art. 5 prohibitions, and not a
+    system intended for public authorities, which must comply by 2 August 2030 regardless. Applying
+    that wrongly would CLEAR a reader, so it is named and never acted on. 111(4) is the same shape
+    at a shorter range: a synthetic-content generator placed before 2 August 2026 has until
+    2 December 2026 for Art. 50(2), later than the date AIA-TR-A50-2 carries.
+    Worth a practitioner's eye: 111(2) fixed this window at "before 2 August 2026" in the original
+    Act, and this version replaced the fixed date with a cross-reference to Chapter III's own
+    application date — which then moved sixteen months later. The relief window widened as a
+    consequence. Whether that was intended is not a question this tool can answer.
+    111(1) (Annex X large-scale IT systems, comply by 31 December 2030) and 111(3) (legacy GPAI
+    models, 2 August 2027) stay out of scope: neither subject is one this tool assesses.
   112: Commission duty to evaluate and review the Regulation. Institutional.
   113: >-
     Entry into force and application dates. Drives each rule's effective_date (2026-08-02 for

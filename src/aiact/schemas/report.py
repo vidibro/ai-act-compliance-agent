@@ -13,7 +13,14 @@ from datetime import date, datetime
 from pydantic import BaseModel, ValidationInfo, field_validator, model_validator
 
 from aiact.schemas.classification import ClassificationResult
-from aiact.schemas.enums import ActorRole, DeployerType, ProviderReallocation, Verdict
+from aiact.schemas.enums import (
+    ActorRole,
+    DeployerType,
+    ProviderReallocation,
+    RiskClass,
+    TransparencyDuty,
+    Verdict,
+)
 from aiact.schemas.policy import GuidanceSource, LegalSource, PolicySpec
 from aiact.schemas.question import EVIDENCE_QUOTE_MAX, Answer, Confidence
 
@@ -182,6 +189,56 @@ class ComplianceReport(BaseModel):
     def rests_on_guidance(self) -> bool:
         """True where any verdict in this report had Commission interpretation in front of it."""
         return bool(self.guidance_sources)
+
+    @property
+    def legacy_system_note(self) -> str | None:
+        """Art. 111 — what changes if the system was ALREADY on the market. Reported, never applied.
+
+        THE FACT IT TURNS ON IS ONE NOTHING HERE READS: the date the system was placed on the
+        market or put into service. Same shape as Art. 6(1)(b) and Art. 2(4) — a condition to read,
+        never to derive — so no obligation above is withheld on it, and the counts are unchanged.
+
+        The direction of the error is why it is reported this way round. Art. 111(2) is RELIEF: it
+        can remove obligations rather than add them, so guessing it wrong clears a reader who is not
+        cleared, and this report would look like a pass. Naming it instead over-reports, which costs
+        the reader a conversation with their adviser rather than a breach.
+
+        Two limbs, because the Article gives a legacy system two different reliefs and a reader told
+        about one would carry it across to the other. 111(2) is about Chapter III whole; 111(4) is
+        about Art. 50(2) alone, and it is the tighter deadline of the two."""
+        limbs = [self._article_111_2_note(), self._article_111_4_note()]
+        written = [limb for limb in limbs if limb]
+        return " ".join(written) if written else None
+
+    def _article_111_2_note(self) -> str | None:
+        """The Chapter III limb, worded around the route because Art. 113(c) dates the two apart."""
+        if not any(uc.risk_class == RiskClass.HIGH_RISK for uc in self.classification.use_cases):
+            return None
+        annex_i = any(uc.annex_i_product is not None for uc in self.classification.use_cases)
+        applies_from = "2 August 2028" if annex_i else "2 December 2027"
+        return (
+            f"IF THIS SYSTEM WAS ALREADY ON THE MARKET, some of the above may not bind it yet. "
+            f"Chapter III applies from {applies_from} (Art. 113(c)), and under Art. 111(2) a "
+            f"high-risk system placed on the market or put into service before that date is "
+            f"reached only once it undergoes significant changes in its design. Three things that "
+            f"relief does NOT cover: the Art. 5 prohibitions, which apply to a legacy system "
+            f"regardless; a system intended to be used by public authorities, whose providers and "
+            f"deployers must comply by 2 August 2030 in any case; and anything this report raises "
+            f"outside Chapter III. Whether the system is already on the market is not stated in "
+            f"the documentation reviewed, so nothing here has been withheld on it — take advice "
+            f"before relying on Art. 111(2)."
+        )
+
+    def _article_111_4_note(self) -> str | None:
+        """The Art. 50(2) limb. Fires on the DUTY rather than the tier, as Art. 50 always does."""
+        duties = self.classification.transparency_duties
+        if TransparencyDuty.SYNTHETIC_CONTENT_MARKING not in duties:
+            return None
+        return (
+            "For the Art. 50(2) marking duty specifically, Art. 111(4) gives a system placed on "
+            "the market before 2 August 2026 until 2 December 2026 to comply — later than the "
+            "date this report carries, which is the one for a system placed after it."
+        )
 
     @property
     def deployer_organisation(self) -> DeployerType | None:
