@@ -604,3 +604,91 @@ def test_act_version_date_mismatch_rejected(tmp_path):
     bad_file.write_text(yaml.safe_dump(raw), encoding="utf-8")
     with pytest.raises(ValueError, match="different act_version_date"):
         load_policy_spec(bad_file, ARTICLES_ROOT)
+
+
+# A sentence that puts `shall` on one of the roles this tool reports for. Deliberately crude: it
+# over-matches, and the over-matches are cheap to dismiss in writing while a miss is not.
+_DUTY_SENTENCE = re.compile(
+    r"\b(provider|deployer|importer|distributor|authorised representative|operator)s?\b"
+    r"[^.]{0,120}?\bshall\b",
+    re.I,
+)
+
+# Articles ruled out WHOLE whose text nevertheless puts a duty on a role this tool reports for,
+# each with the reason no rule follows. THIS IS THE LIST THE SCREEN BELOW EXISTS TO FREEZE: an
+# article that starts bearing a duty and is not named here fails, and a human rules on it.
+#
+# Art. 8 is why. It was excluded as the chapeau to Arts. 9-15 — true of 8(1), and false of 8(2),
+# which makes the provider answerable for the sectoral instrument. Nothing in the repo could have
+# surfaced that, because a wholly-excluded article is never itemised.
+DUTY_BEARING_EXCLUSIONS: dict[str, str] = {
+    "36": "Certificates 'shall remain valid' — a fact about the certificate, not its holder.",
+    "46": "46(2)'s request duty binds whoever took the derogation route, which is an option.",
+    "52": "GPAI provider notification. Chapter V, deferred whole (M4d-8).",
+    "53": "GPAI provider obligations. Chapter V, deferred whole (M4d-8).",
+    "54": "GPAI authorised representative. Chapter V, deferred whole (M4d-8).",
+    "55": "GPAI systemic-risk obligations. Chapter V, deferred whole (M4d-8).",
+    "57": "Sandbox participants' duties, owed only by a provider who enters a sandbox.",
+    "58": "Sandbox arrangements; the duties are the authority's, and participation is optional.",
+    "60": "Real-world testing duties, owed only on a route this tool does not assess.",
+    "62": "Fees 'shall be reduced' for SMEs — binds whoever sets the fee, not the provider.",
+    "74": "Defines how Regulation (EU) 2019/1020's terms map onto operators. Definitional.",
+    "75": "The provider pays the notified body only inside an AI Office action (M4d-8).",
+    "75b": "Commitments an operator may offer the AI Office, opened at the Office's discretion.",
+    "75c": "Describing measures taken to comply with an AI Office decision. Not standing.",
+    "75d": "Rights of defence against the enforcing body, not duties owed under the Regulation.",
+    "79": "Operator cooperation and corrective action — Arts. 21 and 20 at the enforcement stage.",
+    "80": "80(4)'s duty to bring the system into compliance is Art. 20 once the authority rules.",
+    "81": "The 'shall' governs the authority's objection procedure, not any operator.",
+    "82": "82(2) corrective action is Art. 20 again, on a timeline the authority sets.",
+    "89": "A downstream provider's RIGHT to complain, and a GPAI one. Chapter V (M4d-8).",
+    "91": "Commission power to request documentation from GPAI providers. Chapter V (M4d-8).",
+    "92": "Commission power to evaluate GPAI models. Chapter V (M4d-8).",
+    "94": "Procedural rights of GPAI economic operators. Chapter V (M4d-8).",
+    "99": "Penalties. A consequence of breach; this tool reports what is owed, not its cost.",
+    "111": "Reported rather than ruled — ComplianceReport.legacy_system_note carries it.",
+}
+
+
+def test_a_wholly_excluded_article_holds_no_unacknowledged_duty():
+    """THE GUARANTEE THE PARAGRAPH PARTITION CANNOT GIVE.
+
+    Divisions are enumerated only for articles a rule cites. An article ruled out WHOLE is dismissed
+    in one sentence and never itemised, so a duty inside one is invisible to every other check here
+    — 401 paragraphs sit inside the articles excluded that way.
+
+    This screens all of them mechanically: any sentence putting `shall` on a provider, deployer,
+    importer, distributor, authorised representative or operator. The regex over-matches on purpose,
+    because dismissing a false positive costs a line of writing and missing a real duty costs a
+    false PASS. Every hit must be named above with the reason no rule follows from it.
+
+    Stale entries fail too. An article that stops bearing a duty — the legislator amends it, or the
+    ruleset starts citing it — should lose its entry rather than keep a dismissal for text that is
+    no longer there."""
+    ledger = yaml.safe_load(SCOPE_PATH.read_text(encoding="utf-8"))
+    whole = [str(k) for k, v in ledger["articles_out_of_scope"].items() if isinstance(v, str)]
+
+    flagged = set()
+    for article in whole:
+        number = int(re.match(r"\d+", article).group())
+        suffix = article[len(str(number)):]
+        path = ARTICLES_DIR / f"article-{number:03d}{suffix}.md"
+        body = path.read_text(encoding="utf-8").split("---", 2)[2].replace("\n", " ")
+        if any(_DUTY_SENTENCE.search(s) for s in re.split(r"(?<=\.)\s+", body)):
+            flagged.add(article)
+
+    undeclared = flagged - set(DUTY_BEARING_EXCLUSIONS)
+    assert not undeclared, (
+        f"Articles ruled out WHOLE that put a duty on a role this tool reports for, with no reason "
+        f"recorded: {sorted(undeclared)}. Rule on each — either the duty needs a rule, or say in "
+        f"DUTY_BEARING_EXCLUSIONS why it does not."
+    )
+
+    stale = set(DUTY_BEARING_EXCLUSIONS) - flagged
+    assert not stale, (
+        f"Declared as duty-bearing but no longer are: {sorted(stale)}. Drop the entry rather than "
+        f"leave a dismissal standing for text that is not there."
+    )
+
+    for article, reason in DUTY_BEARING_EXCLUSIONS.items():
+        assert len(reason.strip()) > 15, f"Article {article} is dismissed without a real reason"
