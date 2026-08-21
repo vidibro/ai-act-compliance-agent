@@ -605,6 +605,35 @@ def test_art_25_is_measured_in_both_directions(cases):
     assert set(ProviderReallocation) <= claimed, "every Art. 25 limb needs a case"
 
 
+def test_the_annex_iii_areas_nothing_measures_are_declared(cases):
+    """THE HOLE THAT LET THE `annex_iii` PROMPT BE WRONG ABOUT CRITICAL INFRASTRUCTURE.
+
+    That node's tests (i) and (ii) ask whether a purpose acts on a PERSON. Seven areas are about
+    people and one — point 2, critical infrastructure — is about pipes, roads and grids, so a
+    signal controller answered the OUT test word for word and came back `none`. Nothing caught it
+    because 14 of the classified cases are employment and four areas have no case at all: an area
+    nothing measures is an area whose prompt wording is an assertion.
+
+    Declared rather than asserted empty, because authoring a case needs a real document and the
+    discipline is that cases come before numbers. The set may only SHRINK."""
+    unmeasured = {
+        AnnexIIIArea.CRITICAL_INFRASTRUCTURE,
+        AnnexIIIArea.EDUCATION,
+        AnnexIIIArea.LAW_ENFORCEMENT,
+        AnnexIIIArea.JUSTICE_DEMOCRACY,
+    }
+    measured = {c.expected_annex_iii_area for c in cases.cases} - {None}
+    assert not (measured & unmeasured), (
+        f"declared unmeasured but a case now exercises it: {sorted(measured & unmeasured)}. "
+        f"Remove it from the set."
+    )
+    still_missing = set(AnnexIIIArea) - measured - unmeasured
+    assert not still_missing, (
+        f"no case exercises {sorted(still_missing)}, and it is not declared. Author a case, or "
+        f"declare it here with the reason the area goes unmeasured."
+    )
+
+
 def test_every_art_25_limb_can_cite_itself():
     """A limb added without its citation would be reported under a paragraph belonging to another
     one — the same failure `_PROHIBITED_POINT` guards against."""

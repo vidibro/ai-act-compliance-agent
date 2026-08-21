@@ -391,9 +391,28 @@ QUESTIONS: dict[str, Question] = {
         # "no area" for a system that IS in scope but has a narrow role. That collapses
         # not_high_risk (Art. 6(4) documentation and registration still owed) into minimal (nothing
         # owed), and it skips the derogation node entirely so the reason is never recorded.
+        #
+        # POINT 2 NEEDS ITS OWN TEST, and (0) is it. Tests (i) and (ii) ask whether the purpose acts
+        # on a PERSON or their application, which is the right test for seven of the eight areas and
+        # the wrong one for critical infrastructure: point 2's subject is a pipe, a road or a grid,
+        # so a signal controller answers (ii) word for word and comes back `none` — reported as
+        # `minimal`, one obligation in the whole report, for a system whose failure kills people.
         "Which Annex III high-risk area, if any, does this use case fall within (Article 6(2))? "
-        "Decide SCOPE ONLY, by whether the described PURPOSE is part of a listed function — two "
-        "tests, both taken from the text:\n"
+        "Decide SCOPE ONLY, by whether the described PURPOSE is part of a listed function.\n"
+        "(0) POINT 2 IS DECIDED ON A DIFFERENT TEST, and it is the only area that is. Critical "
+        "infrastructure names no natural person: it covers AI systems used as SAFETY COMPONENTS in "
+        "the management and operation of critical digital infrastructure, road traffic, or the "
+        "supply of water, gas, heating or electricity. A safety component is one whose intended "
+        "purpose is to prevent or mitigate risks to health and safety, or whose failure or "
+        "malfunctioning endangers health and safety — signal and traffic control, grid frequency "
+        "response or load shedding, protection relays, pressure or flow control in a water or gas "
+        "network, or the monitoring that trips them. Answer critical_infrastructure for those. Do "
+        "NOT answer none merely because no person is acted on: tests (i) and (ii) below are the "
+        "test for the SEVEN areas that are about people, not for this one. Billing, demand "
+        "forecasting, asset maintenance scheduling, capacity planning and customer-facing outage "
+        "notification are not safety components.\n"
+        "For points 1 and 3 to 8, which are each about natural persons, two tests, both taken from "
+        "the text:\n"
         "(i) IN scope if the purpose SUBSTANTIVELY acts on the person or their application within "
         "a listed function, INCLUDING where the system only prepares, extracts, organises or "
         "de-duplicates that material. For employment the listed functions are the recruitment or "
