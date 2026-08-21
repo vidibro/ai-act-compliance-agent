@@ -130,6 +130,45 @@ def annex_divisions(annexes_dir: Path, roman: str) -> tuple[str, ...]:
 # division" would drift, and one answer is the whole point of this module.
 article_divisions = provision_labels
 
+# An OJ citation of a Union act — "Directive 2006/42/EC", "Regulation (EU) No 168/2013". The
+# optional "No" and the trailing "/EC" both vary by era and by act type.
+_INSTRUMENT = re.compile(
+    r"(?:Regulation|Directive)\s+(?:\((?:EU|EC|EEC)\)\s+)?(?:No\s+)?\d{1,4}/\d{2,4}"
+    r"(?:/(?:EC|EU|EEC))?"
+)
+
+
+def annex_instruments(annexes_dir: Path, roman: str) -> dict[str, str]:
+    """The Union act each item of an annex names, keyed by the same division label as above.
+
+    For the annexes that ARE lists of legislation — Annex I's harmonisation instruments, Annex X's
+    large-scale IT systems — the item is a citation and the citation is the content. The FIRST one
+    inside an item is the act that item enacts; later ones are the acts it amends or repeals, which
+    is why this takes the first rather than collecting them all.
+
+    Exists so that anything naming an instrument — the ledger's rulings, the `legislation` strings
+    the classification cascade offers the model as answer options — can be checked against the
+    Annex rather than against whoever typed it. Annex I lists machinery twice, under instruments
+    in different Sections, so a transposed pair there decides whether Chapter III applies at all.
+    """
+    content = _annex_body(annexes_dir, roman)
+    positions: list[tuple[str, int]] = []
+    for division in annex_divisions(annexes_dir, roman):
+        number = division.rpartition("/")[2]
+        marker = re.compile(rf"(?:^|(?<=\s)){re.escape(number)}\.(?=[ \t]*[A-Z(‘])", re.M)
+        start = positions[-1][1] if positions else 0
+        found = marker.search(content, start)
+        if found:
+            positions.append((division, found.end()))
+
+    instruments: dict[str, str] = {}
+    for index, (division, start) in enumerate(positions):
+        end = positions[index + 1][1] if index + 1 < len(positions) else len(content)
+        found = _INSTRUMENT.search(content, start, end)
+        if found:
+            instruments[division] = found.group(0)
+    return instruments
+
 
 def points_within(articles_dir: Path, article: int | str, paragraph: str) -> tuple[str, ...]:
     """The top-level lettered points of one numbered paragraph.

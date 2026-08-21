@@ -103,7 +103,12 @@ def _answer_instructions(answer_type: str) -> str:
             f'"{UNKNOWN}" if the description does not say what the system is used for'
         )
     if answer_type == "annex_i_product":
-        products = ", ".join(p.value for p in AnnexIProduct)
+        # EACH OPTION CARRIES ITS INSTRUMENT, because the identifiers alone do not separate them.
+        # Annex I lists machinery twice — Directive 2006/42/EC at A/1 and Regulation (EU) 2023/1230
+        # at B/21 — and the two sit in different Sections, so Art. 2(2) withholds Chapter III from
+        # one and not the other. Offered as bare words, `machinery` and `machinery_regulation` are
+        # synonyms, and picking the second returns an EMPTY obligation set for every role.
+        products = "; ".join(f"{p.value} = {p.legislation}" for p in AnnexIProduct)
         return (
             f'set "value" to one of [{products}]; null if the system is not a safety component '
             f"of, or itself, a product covered by Annex I; or \"{UNKNOWN}\" if the description "

@@ -20,7 +20,12 @@ from pathlib import Path
 import pytest
 
 from aiact.config import get_settings
-from aiact.provisions import annex_divisions, article_divisions, points_within
+from aiact.provisions import (
+    annex_divisions,
+    annex_instruments,
+    article_divisions,
+    points_within,
+)
 from aiact.schemas.enums import (
     AnnexIIIArea,
     AnnexIProduct,
@@ -159,3 +164,34 @@ def test_the_lists_that_must_stay_complete_are_complete(declared):
     assert declared == {}, (
         f"a case was declared absent from a list that must stay exhaustive: {declared}"
     )
+
+
+def test_every_annex_i_option_names_the_instrument_the_annex_puts_at_that_item():
+    """THE ANSWER OPTIONS THE MODEL PICKS FROM, checked against the Annex rather than against
+    whoever typed them.
+
+    `_answer_instructions` renders each AnnexIProduct as `<value> = <legislation>`, and the
+    legislation string is what separates two options whose identifiers do not: Annex I lists
+    machinery twice, as Directive 2006/42/EC at A/1 and Regulation (EU) 2023/1230 at B/21. The two
+    sit in different Sections, so Art. 2(2) withholds Chapter III from one and not the other, and
+    `machinery_regulation` returns an EMPTY obligation set for every role. B/14 and B/15 are a
+    second adjacent pair — two vehicle Regulations whose numbers differ by one digit.
+
+    The member-to-item map is checked above; this checks the prose beside it, which is the half a
+    reader believes and no address comparison can see."""
+    instruments = annex_instruments(ANNEXES_DIR, "I")
+    assert instruments, "no instrument parsed out of Annex I — re-derive this test"
+
+    wrong = {
+        product.annex_item: (instruments[product.annex_item], product.legislation)
+        for product in AnnexIProduct
+        if product.annex_item in instruments
+        and instruments[product.annex_item] not in product.legislation
+    }
+    assert not wrong, (
+        f"AnnexIProduct.legislation naming an act the Annex does not put at that item: "
+        f"{ {k: f'annex says {v[0]}, code says {v[1]}' for k, v in wrong.items()} }"
+    )
+
+    unmatched = {p.annex_item for p in AnnexIProduct} - set(instruments)
+    assert not unmatched, f"items with no instrument derived from the Annex: {sorted(unmatched)}"

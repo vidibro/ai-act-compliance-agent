@@ -1608,7 +1608,11 @@ annex_rulings:
   # by amendment fails CI rather than becoming a system the cascade cannot classify. The Section
   # decides what follows: Section A carries Chapter III, Section B has it withheld by Art. 2(2).
   I:
-    A/1: CASCADE annex_i — Directive 2006/42/EC, machinery. Section A, Chapter III applies.
+    A/1: >-
+      CASCADE annex_i — Directive 2006/42/EC, machinery. Section A, Chapter III applies. THE
+      DEFAULT ANSWER FOR A MACHINE: the Regulation at B/21 replaces this Directive only from
+      20 January 2027, so anything on the market before then is governed here, and the node says so
+      rather than leaving the model to choose on how modern the machine sounds.
     A/2: CASCADE annex_i — Directive 2009/48/EC, toy safety. Section A.
     A/3: CASCADE annex_i — Directive 2013/53/EU, recreational craft and personal watercraft. Section A.
     A/4: CASCADE annex_i — Directive 2014/33/EU, lifts and safety components. Section A.
@@ -1633,6 +1637,11 @@ annex_rulings:
       CASCADE annex_i — Regulation (EU) 2023/1230, the MACHINERY REGULATION. Section B, and kept
       apart from A/1 for that reason: the Directive it replaces sits in Section A and carries
       Chapter III, while this one does not. The Directive is repealed on 20 January 2027.
+      THE COSTLIEST ANSWER IN THIS ANNEX. Art. 2(2) withholds Chapter III from Section B, so this
+      item returns an empty obligation set for every role — a report with no findings at all. The
+      node offers each option with its instrument attached rather than as a bare identifier,
+      because `machinery` and `machinery_regulation` are synonyms as words and opposites as law,
+      and it answers this one only where the document names Regulation (EU) 2023/1230 itself.
   II: >-
     List of criminal offences for the Art. 5(1)(h)(iii) exception to the real-time remote biometric
     identification ban. The cascade reports the practice as prohibited and hands the

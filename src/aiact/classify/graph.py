@@ -354,6 +354,12 @@ QUESTIONS: dict[str, Question] = {
         "or dose control, collision avoidance, structural monitoring. Software that merely runs "
         "alongside such a product, or handles its scheduling, billing, diagnostics reporting or "
         "fleet analytics, is NOT a safety component.\n"
+        "MACHINERY APPEARS TWICE, under two instruments, and the choice decides which obligations "
+        "follow. Answer `machinery` (Directive 2006/42/EC) for a machine unless the description "
+        "itself says the product is placed on the market under Regulation (EU) 2023/1230 — that "
+        "Regulation replaces the Directive only from 20 January 2027, so the Directive governs "
+        "anything on the market before then. Do not choose between them on how modern the machine "
+        "sounds; choose on the instrument the document names.\n"
         "Answer none if the system is not embedded in, or sold as, a regulated physical product.",
         "annex_i_product",
         label="Is it a safety component of a regulated physical product?",

@@ -518,6 +518,16 @@ Ordered by what a wrong answer costs a user.
 
 **Not verified by a run.** The prompt no longer contradicts the Annex; whether a model now answers `critical_infrastructure` for a SCADA description is unmeasured, and stays that way until a case exists. Found by an independent adversarial audit against the enacted text, not by the suite — 798 tests passed with the defect in place.
 
+#### M4d-11 — The Annex I options were bare identifiers, and two of them are synonyms ✅ FIXED 2026-08-21
+
+**The defect.** `_answer_instructions` rendered `AnnexIProduct` as `", ".join(p.value)` — `machinery, toys, … machinery_regulation` — with no instrument attached to any option. Annex I lists **machinery twice**: Directive 2006/42/EC at A/1 and Regulation (EU) 2023/1230 at B/21. As English words the two identifiers are synonyms; as law they are opposites, because A/1 is Section A and B/21 is Section B, from which **Art. 2(2) withholds Chapter III**. `machinery_regulation` sets `chapter_iii_applies = False`, and `select_rules` then returns an **empty `ActiveRules` for every role** — no Chapter III, no Art. 4, no Art. 50, a report with zero findings and a `scope_note` saying those obligations do not apply. B/14 and B/15 are a second adjacent pair, two vehicle Regulations whose numbers differ by one digit.
+
+**The fix.** Options now render as `<value> = <legislation>`, using the `legislation` property the enum already carried and nothing used. The node also gets a decision rule for the pair, because the distinguishing fact is a date no system description states: Regulation (EU) 2023/1230 replaces the Directive only **from 20 January 2027**, so `machinery` is the answer for a machine unless the document itself names the Regulation. *"Do not choose between them on how modern the machine sounds; choose on the instrument the document names."*
+
+**The strings the model reads are now derived.** `_ANNEX_I_LEGISLATION` was hand-written prose that nothing checked — the same defect as the transposed ledger entries in M4d-9, one layer over, and worse here because the cascade now depends on it. `provisions.annex_instruments()` reads the first OJ citation out of each annex item, and one implementation serves both the ledger check and `test_every_annex_i_option_names_the_instrument_the_annex_puts_at_that_item`. Verified by transposing a digit in B/21's citation: *"annex says Regulation (EU) 2023/1230, code says Regulation (EU) 2023/1231"*.
+
+**Not verified by a run**, same as M4d-10: no golden case pins any Annex I product to a specific instrument, so whether a model now separates the two is unmeasured.
+
 #### M4d-1 — Annex I safety components ✅ DONE 2026-07-30
 
 **Was:** `RiskClass.HIGH_RISK` said it plainly — *"Either an Annex I safety component, or an Annex III use case…"* — and the cascade only ever asked the second. `decide_risk_class` routed `in_annex_iii.value is None` straight to `MINIMAL`, so an AI safety component of a machine, a lift, a surgical robot or a car was told it owed nothing. A false clearance: not a missed gap inside a report, but a high-risk system handed a clean bill of health.

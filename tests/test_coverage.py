@@ -22,7 +22,7 @@ from aiact.config import get_settings
 from aiact.coverage import Status, classify_coverage, summarise
 from aiact.gap import roles as role_questions
 from aiact.policy_loader import load_policy_spec
-from aiact.provisions import all_provisions
+from aiact.provisions import all_provisions, annex_instruments
 
 ROOT = Path(__file__).resolve().parents[1]
 VERSION = get_settings().act_version_date.isoformat()
@@ -211,24 +211,7 @@ def test_the_annex_i_rulings_name_the_instrument_the_annex_names(ledger):
 
     So the instrument is DERIVED: the first OJ citation inside an Annex I item is the act that item
     enacts, and the ruling written for that item must name it."""
-    body = (ANNEXES_DIR / "annex-I.md").read_text(encoding="utf-8").split("---", 2)[2]
-    cite = re.compile(
-        r"(?:Regulation|Directive)\s+(?:\((?:EU|EC|EEC)\)\s+)?(?:No\s+)?\d{1,4}/\d{2,4}"
-        r"(?:/(?:EC|EU|EEC))?"
-    )
-    marker = re.compile(r"(?:^|(?<=\s))(\d{1,2})\.(?=[ \t]*[A-Z(])", re.M)
-
-    starts = {name: body.index(f"Section {name}") for name in ("A", "B")}
-    bounds = (("A", starts["A"], starts["B"]), ("B", starts["B"], len(body)))
-    instruments: dict[str, str] = {}
-    for section, start, end in bounds:
-        span = body[start:end]
-        marks = list(marker.finditer(span))
-        for i, m in enumerate(marks):
-            nxt = marks[i + 1].start() if i + 1 < len(marks) else len(span)
-            found = cite.search(span[m.end() : nxt])
-            assert found, f"Annex I({section})({m.group(1)}) names no instrument — re-derive this"
-            instruments[f"{section}/{m.group(1)}"] = found.group(0)
+    instruments = annex_instruments(ANNEXES_DIR, "I")
 
     rulings = ledger["annex_rulings"]["I"]
     assert set(rulings) == set(instruments), (
