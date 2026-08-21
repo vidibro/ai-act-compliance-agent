@@ -19,7 +19,13 @@ import yaml
 
 from aiact.classify.graph import _QUESTION_CONTEXT, QUESTIONS, load_questions
 from aiact.config import get_settings
-from aiact.coverage import CASCADE_PREFIX, Status, classify_coverage, summarise
+from aiact.coverage import (
+    CASCADE_PREFIX,
+    RULE_PREFIX,
+    Status,
+    classify_coverage,
+    summarise,
+)
 from aiact.gap import roles as role_questions
 from aiact.policy_loader import load_policy_spec, resolve_requirement
 from aiact.provisions import all_provisions, annex_instruments
@@ -259,4 +265,35 @@ def test_every_definition_the_ledger_hands_to_a_node_reaches_it(ledger):
     assert not missing, (
         f"definitions the ledger hands to a node that never sees them: {missing}. Supply the point "
         f"in _QUESTION_DEFINITIONS, or rule the definition on some other ground."
+    )
+
+
+def test_every_annex_item_a_rule_checks_is_supplied_to_that_rule(ledger, spec):
+    """"RULE <id>" ON AN ANNEX ITEM MUST MEAN THE JUDGE IS SHOWN THE ANNEX.
+
+    The sibling of `test_every_definition_the_ledger_hands_to_a_node_reaches_it`, for the
+    obligation layer. `requirement` resolves from `source.article`/`paragraph`/`point` only, so an
+    Article that POINTS AT an annex — Art. 11(1): documentation containing "at a minimum, the
+    elements set out in Annex IV" — resolves to the pointer and not the list. A `completeness`
+    verdict reached that way asks a judge to find every element of something nobody showed it.
+
+    `source.annex` is what closes it: the loader injects that Annex verbatim into `annex_context`
+    and the judge prompt carries it. So a ledger entry claiming a rule checks an annex item is only
+    true where the rule cites THAT annex."""
+    by_id = {r.rule_id: r for r in spec.rules}
+    unsupplied: dict[str, str] = {}
+    for annex, value in (ledger["annex_rulings"] or {}).items():
+        for item, reason in (value if isinstance(value, dict) else {}).items():
+            text = str(reason)
+            if not text.startswith(RULE_PREFIX):
+                continue
+            rule_id = text[len(RULE_PREFIX) :].split()[0].rstrip(",:—")
+            rule = by_id[rule_id]
+            if rule.source.annex != str(annex) or not rule.annex_context:
+                unsupplied[f"Annex {annex}({item})"] = (
+                    f"{rule_id} cites annex {rule.source.annex!r}"
+                )
+    assert not unsupplied, (
+        f"annex items claimed as checked by a rule that is never shown that annex: {unsupplied}. "
+        f"Cite the annex on the rule, or declare the items in annexes_awaiting_rules."
     )

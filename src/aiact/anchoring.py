@@ -20,12 +20,7 @@ from pathlib import Path
 
 from aiact.config import get_settings
 from aiact.guidance import load_snippet
-from aiact.policy_loader import (
-    _FRONT_FIELD,
-    _FRONT_MATTER,
-    resolve_requirement,
-    verify_integrity,
-)
+from aiact.policy_loader import provision_text, resolve_requirement
 from aiact.schemas.policy import GuidanceSource
 from aiact.schemas.question import Question
 
@@ -39,25 +34,6 @@ Provisions = tuple[tuple[int, ...], tuple[str, ...]]
 # Naming the points also makes the supply checkable: the coverage ledger rules a definition
 # `CASCADE <node>`, and a test can ask whether that node is in fact given it.
 DEFINITIONS_ARTICLE = 3
-
-
-def provision_text(path: Path) -> str:
-    """Read a stored article/annex file, verify its integrity, and strip the YAML front matter.
-
-    This text goes STRAIGHT INTO THE PROMPT as "the enacted text you must answer against", so it is
-    the single most important place to check that the stored law is the law: a tampered or corrupted
-    file here would be presented to the model as the Official Journal, and the verdict's citation
-    would point at wording that was never enacted. Verified on every load — see
-    `policy_loader.verify_integrity` and SECURITY.md.
-    """
-    raw = path.read_text(encoding="utf-8")
-    match = _FRONT_MATTER.match(raw)
-    if match is None:
-        raise ValueError(f"{path} is missing YAML front matter — regenerate it.")
-    front = dict(_FRONT_FIELD.findall(match.group(1)))
-    body = raw[match.end() :]
-    verify_integrity(path, raw, front, body)
-    return body.strip()
 
 
 def anchor_questions(

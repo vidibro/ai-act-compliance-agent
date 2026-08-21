@@ -545,6 +545,22 @@ Ordered by what a wrong answer costs a user.
 
 **The guard is the point.** `test_every_ruling_names_something_that_exists` checked that a cascade node id resolves — the weaker half of the claim. `test_every_definition_the_ledger_hands_to_a_node_reaches_it` reads the ledger's own `CASCADE <node>` ruling for each Art. 3 point and requires the definition's verbatim text to be in that node's built context. Verified by dropping 3(44) from the map: *"definitions the ledger hands to a node that never sees them: {'Art. 3(44)': 'prohibited'}"*.
 
+#### M4d-13 — Forty annex items were marked CHECKED and no judge ever saw them ✅ FIXED 2026-08-21
+
+**The defect.** `resolve_requirement` takes article, paragraph and point — **no annex parameter** — and `judge.py` contained no reference to annexes. `source.annex` was metadata. Yet the ledger wrote `RULE <id>` against 40 annex items: Annex IV(1)–(9), Annex VI(1)–(4), and Annex VIII's 27 items across its three Sections. `coverage.py`'s own docstring states the honest rule — *"the tool reading Annex III is not the same as anyone having ruled on what Annex III(5)(b) requires"* — and writing `RULE X` per item routed around it by hand.
+
+**Where it bit hardest.** `AIA-HR-A11` is `check_type: completeness` — *"a prescribed list must be fully covered"* — and the prescribed list is Annex IV. Art. 11(1), the resolved requirement, says only that the documentation *"shall contain, at a minimum, the elements set out in Annex IV"*. The judge got the pointer, never the list, and worked from a paraphrase in `evidence_expected` that named **six of the nine elements** — omitting **IV(7)** harmonised standards applied, **IV(8)** the copy of the Art. 47 declaration of conformity, and **IV(9)** the Art. 72 post-market monitoring plan. Those three are exactly where a technical file stops short.
+
+**Two different fixes, because they are two different problems.**
+
+*Annex IV and VI — supply the text.* `PolicyRule.annex_context` is filled by the loader from `source.annex`, verbatim and integrity-checked on the same terms as the Article, and the judge prompt carries it in its own labelled block: *"Where the Article requires the elements it sets out, this Annex IS the list to judge completeness against."* Kept out of `requirement`, which must stay a literal substring of the cited Article. `AIA-HR-A11`'s evidence now enumerates all nine and says to judge against the supplied list rather than the summary. `provision_text` moved from `anchoring` into `policy_loader` so the store read and its integrity check stay in one place — `anchoring` imports from the loader, so it could not go the other way.
+
+*Annex VIII — declare the debt.* Its 27 items were never checked by anything. `AIA-PO-A49`, `AIA-NHR-A06-4` and `AIA-DP-A49-3` have Art. 49(1), 6(4) and 49(3) as their subject and cite Annex **III**, the area gate; **Art. 49 never names Annex VIII at all** — it is Annex VIII's own Section headers that tie Section A to 49(1), B to 49(2), C to 49(3). Those rules check that registration was MADE, not what went into it. Moved to `annexes_awaiting_rules`, emptied by a rule for Art. 71(2)–(3), which is already declared owed and is where the duty is written as a duty.
+
+**Coverage moves accordingly**: checked 122 → 95, owed 53 → 80. A number going the wrong way, and correctly so — 27 items stopped claiming a check nobody performs.
+
+**The guard.** `test_every_annex_item_a_rule_checks_is_supplied_to_that_rule` requires any item ruled `RULE <id>` to be in an annex that rule actually cites and has resolved. Verified by removing `annex: "IV"` from the spec: all nine Annex IV items fail with *"AIA-HR-A11 cites annex None"*.
+
 #### M4d-1 — Annex I safety components ✅ DONE 2026-07-30
 
 **Was:** `RiskClass.HIGH_RISK` said it plainly — *"Either an Annex I safety component, or an Annex III use case…"* — and the cascade only ever asked the second. `decide_risk_class` routed `in_annex_iii.value is None` straight to `MINIMAL`, so an AI safety component of a machine, a lift, a surgical robot or a car was told it owed nothing. A false clearance: not a missed gap inside a report, but a high-risk system handed a clean bill of health.

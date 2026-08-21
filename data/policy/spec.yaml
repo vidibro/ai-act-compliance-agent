@@ -127,9 +127,17 @@ rules:
     obligation_status: mandatory
     check_type: completeness
     evidence_expected: >-
-      Coverage of the Annex IV element list: general description of the system, its development
-      process, monitoring/functioning/control, performance metrics, risk-management, and changes
-      over the lifecycle. Missing elements are gaps in an otherwise-present documentation set.
+      Coverage of ALL NINE Annex IV elements, which are supplied verbatim beside the Article — judge
+      against that list, not against this summary of it: (1) general description of the system;
+      (2) detailed description of its elements and development process, including the design
+      specifications, the data requirements, the Art. 14 human-oversight assessment, the validation
+      and testing procedures with their metrics, and the cybersecurity measures; (3) monitoring,
+      functioning and control, including accuracy and foreseeable risks; (4) appropriateness of the
+      performance metrics; (5) the Art. 9 risk management system; (6) changes over the lifecycle;
+      (7) THE HARMONISED STANDARDS APPLIED, or where none were, the solutions adopted to meet
+      Section 2; (8) A COPY OF THE ART. 47 EU DECLARATION OF CONFORMITY; (9) THE ART. 72 POST-MARKET
+      MONITORING SYSTEM AND PLAN. Missing elements are gaps in an otherwise-present documentation
+      set, and (7) to (9) are the ones a technical file most often stops short of.
     document_verifiable: true
     effective_date_by_route:
       annex_iii: 2027-12-02

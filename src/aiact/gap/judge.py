@@ -246,11 +246,25 @@ class LLMJudge:
                 f"never treat it as adding a requirement the Article does not contain:\n"
                 f'"""\n{rule.guidance_context}\n"""\n\n'
             )
+        # THE ANNEX THE ARTICLE POINTS AT, where it cites one. Art. 11(1) requires documentation
+        # containing "at a minimum, the elements set out in Annex IV" — the Article names a list and
+        # the Annex is the list, so a completeness verdict reached without it rests on whatever the
+        # judge remembers Annex IV to contain. Enacted text like the requirement, and kept in its
+        # own block only so the citation stays the Article the rule cites.
+        annex = ""
+        if rule.annex_context:
+            annex = (
+                f"Annex {rule.source.annex}, referred to by that provision (verbatim, enacted "
+                f"text). Where the Article requires the elements it sets out, this Annex IS the "
+                f"list to judge completeness against:\n"
+                f'"""\n{rule.annex_context}\n"""\n\n'
+            )
         stable = (
             f"Obligation under review: {rule.rule_id} (Article {rule.source.article}"
             f"{f'({rule.source.paragraph})' if rule.source.paragraph else ''}).\n\n"
             f"Enacted text you must judge against (verbatim):\n"
             f'"""\n{rule.requirement}\n"""\n\n'
+            f"{annex}"
             f"{guidance}"
             f"What documentation satisfying this looks like:\n"
             f'"""\n{rule.evidence_expected}\n"""\n\n'

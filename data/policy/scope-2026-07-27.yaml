@@ -1707,53 +1707,6 @@ annex_rulings:
   # high-risk, Section C the Art. 49(3) deployer. Each rule checks that the registration was made;
   # none checks what went into it, and most of what goes in is an artefact another rule already
   # requires. Ruled per item so that split is visible rather than assumed.
-  VIII:
-    A/1: RULE AIA-PO-A49 — the provider's name, address and contact details. Registry identification.
-    A/2: RULE AIA-PO-A49 — details of a person submitting on the provider's behalf. Registry identification.
-    A/3: >-
-      RULE AIA-PO-A49 — the authorised representative's details where applicable. The appointment
-      itself is Art. 22, declared at 22(1) in articles_awaiting_rules.
-    A/4: RULE AIA-PO-A49 — trade name and any reference allowing identification and traceability.
-    A/5: RULE AIA-PO-A49 — the intended purpose, components and functions. Also Annex IV(1)(a).
-    A/6: RULE AIA-PO-A49 — a concise description of the data, inputs and operating logic.
-    A/7: RULE AIA-PO-A49 — the system's status; on the market, withdrawn, or recalled. Registry state.
-    A/8: >-
-      RULE AIA-PO-A49 — type, number and expiry of the notified body certificate, where applicable.
-      Exists only on the Annex VII route, which AIA-PO-A43-1 covers.
-    A/9: RULE AIA-PO-A49 — a scanned copy of that certificate, where applicable.
-    A/10: RULE AIA-PO-A49 — the Member States where the system has been placed on the market.
-    A/11: RULE AIA-PO-A49 — a copy of the Art. 47 EU declaration of conformity, which AIA-PO-A47 checks.
-    A/12: >-
-      RULE AIA-PO-A49 — electronic instructions for use, withheld for law enforcement, migration,
-      asylum and border control systems. The instructions themselves are Art. 13, checked by
-      AIA-HR-A13.
-    A/13: RULE AIA-PO-A49 — a URL for additional information, expressly OPTIONAL. Not a duty at all.
-    B/1: RULE AIA-NHR-A06-4 — the provider's name, address and contact details.
-    B/2: RULE AIA-NHR-A06-4 — details of a person submitting on the provider's behalf.
-    B/3: RULE AIA-NHR-A06-4 — the authorised representative's details, where applicable.
-    B/4: RULE AIA-NHR-A06-4 — trade name and identification reference.
-    B/5: RULE AIA-NHR-A06-4 — a description of the intended purpose.
-    B/6: >-
-      RULE AIA-NHR-A06-4 — WHICH Art. 6(3) condition the system relies on. The substance of the
-      not-high-risk claim, and what Art. 80(1) puts an authority onto.
-    B/7: >-
-      RULE AIA-NHR-A06-4 — a short summary of the grounds for the not-high-risk conclusion. The
-      Art. 6(4) assessment, written down; misstating it attracts the Art. 80(7) fine.
-    B/8: RULE AIA-NHR-A06-4 — the system's status. Registry state.
-    B/9: RULE AIA-NHR-A06-4 — the Member States where it has been placed on the market.
-    C/1: RULE AIA-DP-A49-3 — the deployer's name, address and contact details.
-    C/2: RULE AIA-DP-A49-3 — details of the person submitting on the deployer's behalf.
-    C/3: RULE AIA-DP-A49-3 — the URL of the provider's own entry for the system. Links the two entries.
-    C/4: >-
-      RULE AIA-DP-A49-3 — a summary of the Art. 27 FUNDAMENTAL RIGHTS IMPACT ASSESSMENT findings.
-      The assessment is checked by AIA-DP-A27; this item is where its summary must be lodged, and
-      Art. 27(3) — notifying the authority — is declared in articles_awaiting_rules.
-    C/5: >-
-      RULE AIA-DP-A49-3 — a summary of the data protection impact assessment under Art. 35 GDPR or
-      Art. 27 of Directive (EU) 2016/680, as Art. 26(9) specifies. Settled by data protection law
-      this tool does not carry; the item is the registration of its summary.
-  # Annex IX is what Art. 60(4)(c) has a provider register before real-world testing. Out of scope
-  # with the Art. 60 route itself, and ruled per item so the scope limit names what it costs.
   IX:
     1: The Union-wide unique single identification number of the testing. Art. 60 route, out of scope.
     2: >-
@@ -1889,3 +1842,59 @@ annexes_awaiting_rules:
       development and testing happen and share all necessary information; 5.3 has the body audit
       periodically. A continuing duty for as long as the certificate stands.
 
+  # ANNEX VIII IS THE CONTENT OF THE ART. 49 REGISTRATIONS, and nothing checks it.
+  # AIA-PO-A49, AIA-NHR-A06-4 and AIA-DP-A49-3 check that the registration was MADE — their subject
+  # is Art. 49(1), 6(4) and 49(3), and the Annex they cite is III, the area gate. Art. 49 never
+  # names Annex VIII at all; it is this Annex's own Section headers that tie Section A to 49(1),
+  # B to 49(2) and C to 49(3), so no rule's text reaches these items and no judge is shown them.
+  #
+  # Emptied by a rule for Art. 71(2)-(3) — entering the Annex VIII data into the EU database —
+  # which is already declared in articles_awaiting_rules. That is where the duty is written as a
+  # duty, and this Annex is the list it must satisfy.
+  VIII:
+    A/1: the provider's name, address and contact details. Registry identification.
+    A/2: details of a person submitting on the provider's behalf. Registry identification.
+    A/3: >-
+      the authorised representative's details where applicable. The appointment
+      itself is Art. 22, declared at 22(1) in articles_awaiting_rules.
+    A/4: trade name and any reference allowing identification and traceability.
+    A/5: the intended purpose, components and functions. Also Annex IV(1)(a).
+    A/6: a concise description of the data, inputs and operating logic.
+    A/7: the system's status; on the market, withdrawn, or recalled. Registry state.
+    A/8: >-
+      type, number and expiry of the notified body certificate, where applicable.
+      Exists only on the Annex VII route, which AIA-PO-A43-1 covers.
+    A/9: a scanned copy of that certificate, where applicable.
+    A/10: the Member States where the system has been placed on the market.
+    A/11: a copy of the Art. 47 EU declaration of conformity, which AIA-PO-A47 checks.
+    A/12: >-
+      electronic instructions for use, withheld for law enforcement, migration,
+      asylum and border control systems. The instructions themselves are Art. 13, checked by
+      AIA-HR-A13.
+    A/13: a URL for additional information, expressly OPTIONAL. Not a duty at all.
+    B/1: the provider's name, address and contact details.
+    B/2: details of a person submitting on the provider's behalf.
+    B/3: the authorised representative's details, where applicable.
+    B/4: trade name and identification reference.
+    B/5: a description of the intended purpose.
+    B/6: >-
+      WHICH Art. 6(3) condition the system relies on. The substance of the
+      not-high-risk claim, and what Art. 80(1) puts an authority onto.
+    B/7: >-
+      a short summary of the grounds for the not-high-risk conclusion. The
+      Art. 6(4) assessment, written down; misstating it attracts the Art. 80(7) fine.
+    B/8: the system's status. Registry state.
+    B/9: the Member States where it has been placed on the market.
+    C/1: the deployer's name, address and contact details.
+    C/2: details of the person submitting on the deployer's behalf.
+    C/3: the URL of the provider's own entry for the system. Links the two entries.
+    C/4: >-
+      a summary of the Art. 27 FUNDAMENTAL RIGHTS IMPACT ASSESSMENT findings.
+      The assessment is checked by AIA-DP-A27; this item is where its summary must be lodged, and
+      Art. 27(3) — notifying the authority — is declared in articles_awaiting_rules.
+    C/5: >-
+      a summary of the data protection impact assessment under Art. 35 GDPR or
+      Art. 27 of Directive (EU) 2016/680, as Art. 26(9) specifies. Settled by data protection law
+      this tool does not carry; the item is the registration of its summary.
+  # Annex IX is what Art. 60(4)(c) has a provider register before real-world testing. Out of scope
+  # with the Art. 60 route itself, and ruled per item so the scope limit names what it costs.

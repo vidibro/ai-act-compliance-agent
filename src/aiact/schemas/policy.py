@@ -205,6 +205,18 @@ class PolicyRule(BaseModel):
     finding this rule produces — so a verdict that leaned on Commission interpretation says so
     rather than presenting itself as resting on the Article alone."""
 
+    annex_context: str = ""
+    """The verbatim text of the Annex `source.annex` names, injected at load.
+
+    THE ANNEX IS OFTEN THE REQUIREMENT. Art. 11(1) says the technical documentation "shall contain,
+    at a minimum, the elements set out in Annex IV" — the Article names a list and the Annex is the
+    list, so a `completeness` check resolved from the Article alone asks a judge to find every
+    element of something it cannot see. Supplied labelled and separately, never merged into
+    `requirement`, which stays a literal substring of the cited Article.
+
+    Filled by the loader, like `requirement` and `guidance_context`; a rule hand-writing it fails
+    the load."""
+
     obligation_status: ObligationStatus
     check_type: CheckType
     evidence_expected: str  # what in the documentation would satisfy this

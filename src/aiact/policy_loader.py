@@ -255,10 +255,30 @@ def articles_dir_for(version: str | date, root: str | Path | None = None) -> Pat
     return base / (version.isoformat() if isinstance(version, date) else str(version))
 
 
+def provision_text(path: Path) -> str:
+    """Read a stored article/annex file, verify its integrity, and strip the YAML front matter.
+
+    This text goes STRAIGHT INTO THE PROMPT as "the enacted text you must answer against", so it is
+    the single most important place to check that the stored law is the law: a tampered or corrupted
+    file here would be presented to the model as the Official Journal, and the verdict's citation
+    would point at wording that was never enacted. Verified on every load — see
+    `policy_loader.verify_integrity` and SECURITY.md.
+    """
+    raw = path.read_text(encoding="utf-8")
+    match = _FRONT_MATTER.match(raw)
+    if match is None:
+        raise ValueError(f"{path} is missing YAML front matter — regenerate it.")
+    front = dict(_FRONT_FIELD.findall(match.group(1)))
+    body = raw[match.end() :]
+    verify_integrity(path, raw, front, body)
+    return body.strip()
+
+
 def load_policy_spec(
     path: str | Path | None = None,
     articles_root: str | Path | None = None,
     guidance_root: str | Path | None = None,
+    annexes_root: str | Path | None = None,
 ) -> PolicySpec:
     """Read the spec, resolve every rule's requirement from the article store, and validate.
 
@@ -286,6 +306,7 @@ def load_policy_spec(
         raise ValueError(f"{spec_path} has no act_version_date — cannot select an article store.")
     version_str = version.isoformat() if isinstance(version, date) else str(version)
     art_dir = articles_dir_for(version_str, articles_root)
+    ann_dir = Path(annexes_root or settings.policy_annexes_path) / version_str
     if not art_dir.is_dir():
         raise FileNotFoundError(
             f"No article store for act version {version_str} at {art_dir}. Run: "
@@ -300,12 +321,13 @@ def load_policy_spec(
                 f"Rule {rule.get('rule_id')!r} hand-writes `requirement`. Legal text lives only in "
                 f"{art_dir} and is resolved from source.article/source.paragraph — remove it."
             )
-        for field in ("guidance_context", "guidance_sources"):
+        for field in ("annex_context", "guidance_context", "guidance_sources"):
             if field in rule:
                 raise ValueError(
-                    f"Rule {rule.get('rule_id')!r} hand-writes `{field}`. Commission guidance "
-                    f"lives only in the guidance store and is resolved from `guidance_refs` — "
-                    f"remove it. A paraphrase is as unverifiable here as it is for the Article."
+                    f"Rule {rule.get('rule_id')!r} hand-writes `{field}`. Legal and guidance text "
+                    f"is resolved from `source.annex` and `guidance_refs` — remove it. A "
+                    f"paraphrase "
+                    f"is as unverifiable here as it is for the Article."
                 )
 
     # Pass 2 — resolve each citation to its literal enacted text, for THIS act version.
@@ -323,6 +345,22 @@ def load_policy_spec(
         )
         rule["requirement"] = text
         source.setdefault("url", url)
+
+        # The Annex the rule cites, verbatim. Art. 11(1) names Annex IV and Annex IV is the list of
+        # elements the documentation must contain, so a completeness check without it asks a judge
+        # to find every item of a list nobody showed it. Integrity-checked on the same terms as the
+        # Article, and kept in its own field so `requirement` stays a literal substring of the
+        # Article it cites.
+        annex = source.get("annex")
+        if annex:
+            annex_path = ann_dir / f"annex-{annex}.md"
+            if not annex_path.is_file():
+                raise FileNotFoundError(
+                    f"Rule {rule.get('rule_id')!r} cites Annex {annex}, which is not in the store "
+                    f"at {annex_path}. Run: python scripts/fetch_articles.py "
+                    f"--version-date {version_str}"
+                )
+            rule["annex_context"] = provision_text(annex_path)
 
         # Pass 3 — resolve any guidance the rule cites, on the same terms as the law: verbatim,
         # integrity-checked, and failing the LOAD rather than the run when a ref does not resolve.
