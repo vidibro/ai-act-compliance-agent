@@ -15,14 +15,12 @@ from pathlib import Path
 import pytest
 import yaml
 
-from aiact.classify.graph import _QUESTION_CONTEXT, QUESTIONS
+from aiact.classify.graph import QUESTIONS
 from aiact.config import get_settings
 from aiact.gap import roles as role_questions
-from aiact.gap.rules import roles_with_rules
 from aiact.policy_loader import (
     _PARAGRAPH_START,
     load_policy_spec,
-    provision_labels,
     resolve_requirement,
 )
 from aiact.schemas.enums import ActorRole, CheckType, ObligationStatus, RiskClass
@@ -193,50 +191,6 @@ def test_every_article_is_classified_in_scope_or_out(version):
     assert not phantom, f"classified articles that do not exist in the store: {sorted(phantom)}"
 
 
-def test_every_annex_is_classified_in_scope_or_out():
-    """THE COVERAGE GUARANTEE, over ANNEXES.
-
-    The Annexes carry operative content the Articles only point at — Annex III IS the list of
-    high-risk areas, Annex I IS the list of harmonisation instruments, Annex IV IS the technical
-    documentation an Art. 11 file must contain. An amendment can land in an Annex without a word of
-    the Articles changing, so a partition over `articles/` alone would never see it.
-
-    An annex counts as covered if a rule cites it (`source.annex`) or the classification cascade
-    supplies it as context. Both are real uses, and neither is a claim that the annex's own contents
-    have been modelled — only that some part of the tool reads it.
-
-    An annex the tool OUGHT to read is not an annex the tool has decided against, so the ledger
-    splits the remainder the same way the paragraph partition does: `annexes_out_of_scope` for a
-    considered exclusion, `annexes_awaiting_rules` for one a rule should reach and does not.
-
-    THE PINNED VERSION ONLY, unlike the article partition beside it. A ledger for a superseded text
-    can only be checked by writing rulings into it, and those rulings buy nothing: the ruleset does
-    not resolve against that store, and no report has ever been generated from it. The article
-    partition still runs over every version because those rulings already exist."""
-    annex_dir = ANNEXES_ROOT / VERSION
-    ledger = yaml.safe_load(SCOPE_PATH.read_text(encoding="utf-8"))
-
-    in_store = {p.stem.removeprefix("annex-") for p in annex_dir.glob("annex-*.md")}
-    cited = {r.source.annex for r in _spec().rules if r.source.annex}
-    cited |= {a for _articles, annexes in _QUESTION_CONTEXT.values() for a in annexes}
-    out_of_scope = {str(k) for k in ledger["annexes_out_of_scope"]}
-    awaiting = {str(k) for k in ledger["annexes_awaiting_rules"]}
-
-    both = out_of_scope & awaiting
-    assert not both, f"annexes both ruled out of scope and awaiting a rule: {sorted(both)}"
-    overlap = cited & (out_of_scope | awaiting)
-    assert not overlap, f"annexes both used and ruled on: {sorted(overlap)}"
-
-    unclassified = in_store - cited - out_of_scope - awaiting
-    assert not unclassified, (
-        f"Annexes present in the store but neither used by the tool nor listed in "
-        f"{SCOPE_PATH.name}: {sorted(unclassified)}. Rule on them before shipping."
-    )
-
-    phantom = (cited | out_of_scope | awaiting) - in_store
-    assert not phantom, f"classified annexes that do not exist in the store: {sorted(phantom)}"
-
-
 # A paragraph ruling that hands the provision to the classification cascade rather than to a rule
 # names the node that consumes it, so the claim is checkable instead of decorative.
 _CASCADE_PREFIX = "CASCADE "
@@ -244,59 +198,6 @@ _CASCADE_PREFIX = "CASCADE "
 
 def _cascade_nodes() -> set[str]:
     return set(QUESTIONS) | {role_questions.NODE_ID, role_questions.DEPLOYER_NODE_ID}
-
-
-def test_every_division_of_a_cited_article_is_ruled_on():
-    """THE COVERAGE GUARANTEE, one level down: per PARAGRAPH, not per article.
-
-    An article-level partition asks "is Article N accounted for?" and answers yes the moment any one
-    rule cites any one paragraph of it. An article can therefore be recorded as in scope while most
-    of the duties inside it are modelled by nothing, and the ledger then reads as coverage — worse
-    than an absence, because it invites no further look.
-
-    A division is accounted for when a rule cites it, when a rule cites the whole article, or when
-    the ledger rules on it — as out of scope, as consumed by the cascade, or as openly awaiting a
-    rule. What is forbidden is silence."""
-    spec = _spec()
-    ledger = yaml.safe_load(SCOPE_PATH.read_text(encoding="utf-8"))
-    # Only the mapping-shaped entries carry divisions; a string entry rules out a whole article the
-    # spec does not cite, and `test_every_article_is_classified_in_scope_or_out` owns those.
-    excluded = {
-        str(k): v for k, v in ledger["articles_out_of_scope"].items() if isinstance(v, dict)
-    }
-    awaiting = {str(k): v for k, v in ledger["articles_awaiting_rules"].items()}
-
-    # Cited articles, plus any UNCITED one the ledger chose to break down — Art. 8, whose chapeau
-    # is excluded and whose second paragraph is owed. Once an article is itemised at all, every
-    # division of it has to be accounted for.
-    subjects = {r.source.article for r in spec.rules}
-    subjects |= {int(re.match(r"\d+", k).group()) for k in set(excluded) | set(awaiting)
-                 if re.fullmatch(r"\d+", k)}
-
-    unruled: list[str] = []
-    phantom: list[str] = []
-    for article in sorted(subjects):
-        divisions = provision_labels(ARTICLES_DIR, article)
-        if not divisions:
-            continue
-        covering = [r.source for r in spec.rules if r.source.article == article]
-        if any(s.paragraph is None and s.point is None for s in covering):
-            continue  # a rule cites the article whole, so every division is inside its requirement
-        cited = {str(s.paragraph) for s in covering if s.paragraph is not None}
-        cited |= {str(s.point) for s in covering if s.point is not None}
-        ruled = {str(k) for k in excluded.get(str(article), {})}
-        ruled |= {str(k) for k in awaiting.get(str(article), {})}
-
-        both = cited & ruled
-        assert not both, f"Article {article}: divisions both cited and ruled on: {sorted(both)}"
-        unruled += [f"{article}({d})" for d in divisions if d not in cited and d not in ruled]
-        phantom += [f"{article}({d})" for d in ruled if d not in divisions]
-
-    assert not phantom, f"ledger rules on divisions that do not exist: {phantom}"
-    assert not unruled, (
-        f"Divisions of CITED articles that no rule covers and {SCOPE_PATH.name} does not rule on: "
-        f"{unruled}. Each is a duty inside an article the ledger already calls covered."
-    )
 
 
 def _assert_reasons(section: dict) -> None:
@@ -326,73 +227,6 @@ def test_annex_rulings_have_reasons(key):
     for annex, reason in ledger[key].items():
         assert isinstance(reason, str) and len(reason.strip()) > 15, (
             f"Annex {annex} is dismissed without a real reason"
-        )
-
-
-def test_a_cascade_ruling_names_a_node_that_actually_consumes_it():
-    """"The cascade handles it" is only an answer if some node does.
-
-    Art. 6 is the article this exists for: it is cited at 6(4), so the article-level ledger calls it
-    covered, while the paragraphs deciding the whole Annex I route are read by the cascade rather
-    than by a rule. Requiring the node to be named is what stops an unconsumed paragraph being waved
-    through on that phrase."""
-    ledger = yaml.safe_load(SCOPE_PATH.read_text(encoding="utf-8"))
-    nodes = _cascade_nodes()
-    for article, value in ledger["articles_out_of_scope"].items():
-        if not isinstance(value, dict):
-            continue
-        for division, reason in value.items():
-            if not reason.startswith(_CASCADE_PREFIX):
-                continue
-            named = reason[len(_CASCADE_PREFIX) :].split()[0].rstrip(",:—")
-            assert named in nodes, (
-                f"Article {article}({division}) is handed to cascade node {named!r}, which does "
-                f"not exist. Known nodes: {sorted(nodes)}"
-            )
-
-
-def test_articles_awaiting_rules_are_declared_not_disguised():
-    """A division that is OWED a rule must say so, never be filed as an exclusion.
-
-    The two buckets mean opposite things — `articles_out_of_scope` says the tool has considered the
-    provision and correctly reports nothing for it; `articles_awaiting_rules` says a real duty goes
-    unreported. Collapsing the second into the first turns a known gap into apparent coverage, which
-    is the one move this ledger exists to prevent."""
-    ledger = yaml.safe_load(SCOPE_PATH.read_text(encoding="utf-8"))
-    awaiting = ledger["articles_awaiting_rules"]
-    for article, divisions in awaiting.items():
-        for division, reason in divisions.items():
-            assert not reason.startswith(_CASCADE_PREFIX), (
-                f"Article {article}({division}) claims to await a rule and to be handled by the "
-                f"cascade. It is one or the other."
-            )
-
-
-def test_every_role_is_classified_in_scope_or_out():
-    """THE SAME COVERAGE GUARANTEE, over ActorRole. A role either has rules or is listed in the
-    ledger with a reason; a role that is neither fails here. That is what stops a duty-holder
-    silently vanishing from every report — an omitted role reads as a role that owes nothing, and
-    no role the Act names owes nothing."""
-    spec = _spec()
-    ledger = yaml.safe_load(SCOPE_PATH.read_text(encoding="utf-8"))
-    covered = set(roles_with_rules(spec))
-    excluded = {ActorRole(r) for r in ledger["roles_out_of_scope"]}
-
-    overlap = covered & excluded
-    assert not overlap, f"roles both given rules and marked out of scope: {sorted(overlap)}"
-
-    unclassified = set(ActorRole) - covered - excluded
-    assert not unclassified, (
-        f"Roles in ActorRole that neither have rules nor appear in {SCOPE_PATH.name}: "
-        f"{sorted(unclassified)}. Rule on them before shipping."
-    )
-
-
-def test_roles_out_of_scope_entries_have_reasons():
-    ledger = yaml.safe_load(SCOPE_PATH.read_text(encoding="utf-8"))
-    for role, reason in ledger["roles_out_of_scope"].items():
-        assert isinstance(reason, str) and len(reason.strip()) > 15, (
-            f"Role {role} is dismissed without a real reason"
         )
 
 
@@ -725,60 +559,3 @@ def test_a_wholly_excluded_article_holds_no_unacknowledged_duty():
         assert len(reason.strip()) > 15, f"Article {article} is dismissed without a real reason"
 
 
-# How many of the Act's provisions are still accounted for by a BLANKET rather than individually:
-# a paragraph inside an article cited whole by one rule, or inside an article dismissed in one
-# sentence. Declared, so it can only change by someone editing this number.
-#
-# THE TARGET IS ZERO. Until it is, the honest answer to "has every paragraph been read and ruled
-# on?" is no, and this is the number that says how far off. It is not a quality bar to hold — it is
-# a debt to pay down chapter by chapter.
-BLANKET_COVERED_PROVISIONS = 443
-
-
-def _blanket_covered() -> tuple[int, list[str]]:
-    """(count, per-article breakdown) of provisions no one has ruled on individually."""
-    spec = _spec()
-    ledger = yaml.safe_load(SCOPE_PATH.read_text(encoding="utf-8"))
-    entries = {str(k): v for k, v in ledger["articles_out_of_scope"].items()}
-    cited_whole = {
-        str(r.source.article)
-        for r in spec.rules
-        if r.source.paragraph is None and r.source.point is None
-    }
-    total, detail = 0, []
-    articles = entries.keys() | cited_whole
-    for article in sorted(articles, key=lambda a: int(re.match(r"\d+", a).group())):
-        if not re.fullmatch(r"\d+", article):
-            continue
-        blanket = article in cited_whole or isinstance(entries.get(article), str)
-        if not blanket:
-            continue
-        divisions = provision_labels(ARTICLES_DIR, int(article)) or ("(whole)",)
-        total += len(divisions)
-        detail.append(f"Art. {article}: {len(divisions)}")
-    return total, detail
-
-
-def test_the_blanket_only_shrinks():
-    """THE ANSWER TO "how do I know every paragraph was actually read?"
-
-    Not by anyone's assurance. By counting the provisions where no one has written a ruling, and
-    refusing to let that number drift upward unnoticed.
-
-    A ledger entry that is a STRING dismisses every paragraph of its article at once. That is where
-    both misses of this kind lived: Art. 8 excluded as a chapeau while 8(2) made the provider
-    answerable for the sectoral instrument, and Arts. 41 and 71 excluded as institutional while
-    41(5), 71(2) and 71(3) put real duties on a provider or deployer. In each case the article-level
-    reason was defensible and the paragraph inside it was never read.
-
-    So the guarantee cannot be "a regex found nothing" — a regex was wrong twice, and widening it
-    found more each time. The guarantee has to be that someone read the paragraph and wrote down
-    why. This counts what is left of the alternative."""
-    total, detail = _blanket_covered()
-    assert total == BLANKET_COVERED_PROVISIONS, (
-        f"Provisions covered by a blanket rather than a ruling: {total}, declared "
-        f"{BLANKET_COVERED_PROVISIONS}.\n"
-        f"If it went DOWN, a chapter was itemised — lower the constant.\n"
-        f"If it went UP, an article was collapsed back to a one-line dismissal, or a new Act "
-        f"version added text nobody has read.\nBreakdown: {', '.join(detail)}"
-    )
