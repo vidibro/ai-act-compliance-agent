@@ -162,7 +162,7 @@ def test_every_article_is_classified_in_scope_or_out(version):
     in_store = {p.stem.removeprefix("article-").lstrip("0") for p in
                 (ARTICLES_ROOT / version).glob("article-*.md")}
     cited = {str(r.source.article) for r in spec.rules}
-    entries = {str(k): v for k, v in ledger["articles_out_of_scope"].items()}
+    entries = {str(k): v for k, v in ledger["article_rulings"].items()}
     whole = {k for k, v in entries.items() if isinstance(v, str)}
     by_division = {k for k, v in entries.items() if isinstance(v, dict)}
     awaiting = {str(k) for k in ledger.get("articles_awaiting_rules", {})}
@@ -220,7 +220,7 @@ def test_articles_awaiting_rules_have_reasons():
     _assert_reasons(ledger["articles_awaiting_rules"])
 
 
-@pytest.mark.parametrize("key", ["annexes_out_of_scope", "annexes_awaiting_rules"])
+@pytest.mark.parametrize("key", ["annex_rulings", "annexes_awaiting_rules"])
 def test_annex_rulings_have_reasons(key):
     """And over the annex buckets, which had no reason check of their own."""
     ledger = yaml.safe_load(SCOPE_PATH.read_text(encoding="utf-8"))
@@ -231,13 +231,13 @@ def test_annex_rulings_have_reasons(key):
 
 
 @pytest.mark.parametrize("version", sorted(p.name for p in ARTICLES_ROOT.iterdir() if p.is_dir()))
-def test_articles_out_of_scope_entries_have_reasons(version):
+def test_article_rulings_entries_have_reasons(version):
     """Both ledgers, and both shapes of entry. A reason copied forward onto an amended article
     without being re-read is the failure this file already caught once, when "employment
     self-assesses, so no notified body" survived Art. 43(1) landing."""
     scope_path = SPEC_PATH.parent / f"scope-{version}.yaml"
     ledger = yaml.safe_load(scope_path.read_text(encoding="utf-8"))
-    _assert_reasons(ledger["articles_out_of_scope"])
+    _assert_reasons(ledger["article_rulings"])
 
 
 def test_every_requirement_is_literal_article_text():
@@ -462,7 +462,6 @@ _DUTY_VERB = re.compile(r"\b(shall|must|required to|obliged to|responsible for)\
 # Most are false positives of a deliberately blunt regex — the role is mentioned, the obligation is
 # somebody else's. Saying so in one line is the price of not missing the ones that are real.
 DUTY_BEARING_EXCLUSIONS: dict[str, str] = {
-    "7": "Criteria the Commission applies when amending Annex III. Institutional.",
     "31": "Notified bodies shall be independent OF the provider. The duty is the body's.",
     "33": "Subcontracting needs the provider's agreement — a consent right, not a duty.",
     "34": "Notified bodies shall avoid burdening providers. The body's duty.",
@@ -526,7 +525,7 @@ def test_a_wholly_excluded_article_holds_no_unacknowledged_duty():
     ruleset starts citing it — should lose its entry rather than keep a dismissal for text that is
     no longer there. That half is what caught Arts. 41 and 71 being split off."""
     ledger = yaml.safe_load(SCOPE_PATH.read_text(encoding="utf-8"))
-    whole = [str(k) for k, v in ledger["articles_out_of_scope"].items() if isinstance(v, str)]
+    whole = [str(k) for k, v in ledger["article_rulings"].items() if isinstance(v, str)]
 
     flagged = set()
     for article in whole:

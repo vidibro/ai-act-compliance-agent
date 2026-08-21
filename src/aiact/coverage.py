@@ -32,6 +32,12 @@ from aiact.provisions import Provision, all_provisions
 
 CASCADE_PREFIX = "CASCADE "
 
+# A division inside an article a rule cites WHOLE. The rule's requirement text already contains it
+# and the judge sees it, so it is checked — but under a verdict shared with the article's other
+# paragraphs, which says nothing about this one. Writing the ruling out is what turns "the rule
+# covers the article" into "someone read this paragraph and confirmed the rule reaches it".
+RULE_PREFIX = "RULE "
+
 
 class Status(StrEnum):
     """How one provision is accounted for."""
@@ -119,9 +125,9 @@ def classify_coverage(
     graph it is measuring.
     """
     precise, whole_cited = _cited_addresses(spec)
-    art_whole, art_div = _rulings(ledger.get("articles_out_of_scope"))
+    art_whole, art_div = _rulings(ledger.get("article_rulings"))
     art_owed_whole, art_owed_div = _rulings(ledger.get("articles_awaiting_rules"))
-    ann_whole, ann_div = _rulings(ledger.get("annexes_out_of_scope"))
+    ann_whole, ann_div = _rulings(ledger.get("annex_rulings"))
     ann_owed_whole, ann_owed_div = _rulings(ledger.get("annexes_awaiting_rules"))
 
     covered: list[Coverage] = []
@@ -145,6 +151,8 @@ def classify_coverage(
             if reason.startswith(CASCADE_PREFIX):
                 node = reason[len(CASCADE_PREFIX) :].split()[0].rstrip(",:—")
                 status, detail = Status.ASKED, node
+            elif reason.startswith(RULE_PREFIX):
+                status, detail = Status.CHECKED, reason[len(RULE_PREFIX) :].split()[0].rstrip(",:—")
             else:
                 status, detail = Status.NOT_OWED, reason
         elif key in owed:

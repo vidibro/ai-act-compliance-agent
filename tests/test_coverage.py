@@ -34,7 +34,7 @@ SCOPE_PATH = ROOT / "data" / "policy" / f"scope-{VERSION}.yaml"
 # Provisions still covered by a ruling made about the whole article or annex around them, rather
 # than by one written for them. THE TARGET IS ZERO, and it is paid down a chapter at a time.
 # Declared here so the number can only move when someone edits it.
-BLANKET_PROVISIONS = 586
+BLANKET_PROVISIONS = 515
 
 
 @pytest.fixture(scope="module")
@@ -112,22 +112,25 @@ def test_every_ruling_names_something_that_exists(covered, spec):
 
 
 def test_a_provision_is_never_ruled_on_twice(ledger):
-    """The two ledger buckets mean opposite things, so an address in both is a contradiction.
+    """The two ledger sections mean different things, so an address in both is a contradiction.
 
-    `articles_out_of_scope` says the tool considered this and correctly reports nothing.
-    `articles_awaiting_rules` says a party owes this and no report mentions it. Whichever the
-    partition happened to resolve first would silently win."""
-    for kind in ("articles", "annexes"):
-        excluded, owed = ledger[f"{kind}_out_of_scope"], ledger[f"{kind}_awaiting_rules"]
+    `article_rulings` says how a provision is accounted for — checked by a rule, asked by a node, or
+    not owed. `articles_awaiting_rules` says a party owes it and no report mentions it. Whichever
+    the partition happened to resolve first would silently win."""
+    for ruled_key, owed_key in (
+        ("article_rulings", "articles_awaiting_rules"),
+        ("annex_rulings", "annexes_awaiting_rules"),
+    ):
+        ruled, owed = ledger[ruled_key], ledger[owed_key]
         for document, value in (owed or {}).items():
-            other = (excluded or {}).get(document)
+            other = (ruled or {}).get(document)
             if isinstance(value, dict) and isinstance(other, dict):
                 clash = {str(k) for k in value} & {str(k) for k in other}
                 assert not clash, (
-                    f"{kind} {document}: divisions ruled out AND owed: {sorted(clash)}"
+                    f"{ruled_key} {document}: divisions ruled on AND owed: {sorted(clash)}"
                 )
             elif other is not None and not isinstance(value, dict):
-                pytest.fail(f"{kind} {document} is both ruled out and owed a rule")
+                pytest.fail(f"{document} is both ruled on in {ruled_key} and owed a rule")
 
 
 def test_the_ledger_rules_on_nothing_that_does_not_exist(ledger):
@@ -135,16 +138,21 @@ def test_the_ledger_rules_on_nothing_that_does_not_exist(ledger):
     coverage. It happens when an amendment renumbers, or when an address is mistyped."""
     real = {(c.kind, c.document, c.division) for c in all_provisions(ARTICLES_DIR, ANNEXES_DIR)}
     documents = {(kind, document) for kind, document, _division in real}
-    for kind, key in (("article", "articles"), ("annex", "annexes")):
-        for section in (f"{key}_out_of_scope", f"{key}_awaiting_rules"):
-            for document, value in (ledger.get(section) or {}).items():
-                assert (kind, str(document)) in documents, (
-                    f"{section} rules on {kind} {document}, which is not in the store"
+    sections = (
+        ("article", "article_rulings"),
+        ("article", "articles_awaiting_rules"),
+        ("annex", "annex_rulings"),
+        ("annex", "annexes_awaiting_rules"),
+    )
+    for kind, section in sections:
+        for document, value in (ledger.get(section) or {}).items():
+            assert (kind, str(document)) in documents, (
+                f"{section} rules on {kind} {document}, which is not in the store"
+            )
+            for division in value if isinstance(value, dict) else ():
+                assert (kind, str(document), str(division)) in real, (
+                    f"{section} rules on {kind} {document}({division}), which does not exist"
                 )
-                for division in value if isinstance(value, dict) else ():
-                    assert (kind, str(document), str(division)) in real, (
-                        f"{section} rules on {kind} {document}({division}), which does not exist"
-                    )
 
 
 def test_a_provision_a_rule_checks_is_not_also_ruled_out(covered):

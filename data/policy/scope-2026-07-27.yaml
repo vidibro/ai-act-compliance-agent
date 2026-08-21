@@ -1,22 +1,22 @@
 # Coverage ledger — Regulation (EU) 2024/1689, act version 2026-07-27.
 #
 # THIS VERSION is the consolidated text as amended by Regulation (EU) 2026/1744 of 8 July 2026
-# (the Digital Omnibus on AI), applicable from 27 July 2026. It is derived from the 2024-07-12
-# ledger: 36 articles changed, 6 were inserted (4a, 60a, 75a-75d), and every exclusion reason
-# carried over was re-read against the amended text rather than copied on trust. The entries that
-# actually moved are Art. 2 (its Section B carve-out was rewritten and it gained a paragraph 13)
-# and the six new articles at the end of their chapters.
+# (the Digital Omnibus on AI), applicable from 27 July 2026. It inserts six articles — 4a, 60a and
+# 75a to 75d — and rewrites Art. 2(2)'s Section B list.
 #
 # WHY THIS FILE EXISTS
-# Every article in data/policy/articles/2026-07-27/ must be accounted for: either it is CITED by a
-# rule in spec.yaml (in scope), or it is listed here with a reason (out of scope). A test enforces
-# the partition. Nothing may be merely unexamined.
+# Every provision of the stored text must be accounted for, and `src/aiact/coverage.py` is what
+# enforces it: each address resolves to a rule that checks it, a cascade node that asks it, a reason
+# it is not owed, or a declared debt. Nothing may be merely unexamined.
 #
-# The point is what happens on a NEW ACT VERSION. A newly added article would be neither cited nor
-# listed here — the coverage test fails, and CI blocks until a human rules on it. The guarantee is
-# not "we automatically detect new obligations"; it is "a new obligation cannot pass unnoticed".
-# For a compliance tool a false PASS is the worst outcome, and silently ignoring an article the
-# legislator added is exactly how one happens.
+# A newly legislated obligation would resolve to none of those — the partition fails, and CI blocks
+# until a human rules on it. The guarantee is not "we detect new obligations automatically"; it is
+# "an obligation cannot pass unnoticed". For a compliance tool a false PASS is the worst outcome.
+#
+# ENTRIES ARE PER PROVISION, not per article. A reason written about a whole article applies to
+# every paragraph inside it and says nothing about any of them, and duties have been found sitting
+# under exactly that — Art. 8(2), Art. 41(5), Art. 71(2). `test_the_blanket_only_shrinks` counts
+# what is still dismissed that way, and the target is zero.
 #
 # SCOPE: obligations of every role the Act binds — provider, deployer, importer, distributor and
 # authorised representative — for a HIGH-RISK AI system, plus Art. 4, which binds provider and
@@ -25,14 +25,8 @@
 #
 # The ruleset was authored against the EMPLOYMENT area (Annex III(4)) and most of it generalises
 # untouched: Arts. 9-15 and 16-21 bind every high-risk system whatever the area. Where the law is
-# area-specific it is now SAID so — `applies_to_annex_iii_area` and `applies_to_route` on the rule
-# — rather than assumed. Art. 43 is the case that forced it: conformity assessment is 43(1) for
-# Annex III point 1, 43(2) for points 2 to 8, and 43(3) for an Annex I product. A reason in this
-# file that rests on "employment does X" is therefore suspect, and two of them were wrong until the
-# split landed.
-#
-# Authoring this ledger already paid for itself: it surfaced Art. 72 and Art. 73 as genuine
-# provider obligations for high-risk systems that the initial ruleset had simply missed.
+# area-specific the RULE says so — `applies_to_annex_iii_area` and `applies_to_route`. A reason in
+# this file that rests on "employment does X" is suspect for the same reason.
 
 act_version_date: 2026-07-27
 
@@ -55,29 +49,30 @@ roles_out_of_scope:
     answers with the provider ruleset this spec already holds.
 
 # --- ARTICLES ---------------------------------------------------------------------------------
-# ONE ENTRY PER ARTICLE, in Article order, and the shape of the entry says how much of it is ruled
-# out:
+# HOW EACH PROVISION IS ACCOUNTED FOR — not only the ones the tool ignores. An entry says which of
+# the four it is, and `src/aiact/coverage.py` reads that back out:
 #
-#   47:  a string   — the whole Article is out of scope, for the reason given
-#   48:  a mapping  — the Article IS cited by a rule, and these DIVISIONS of it are out of scope,
-#                     keyed by paragraph (1, 1a, 2 …) or, for a chapeau-plus-list Article with no
-#                     numbered paragraphs, by point (a, b, c …)
+#   RULE <rule_id>      CHECKED. The division sits inside an Article a rule cites WHOLE, so the
+#                       judge reads it — under a verdict shared with the Article's other paragraphs,
+#                       which is why it is written out per paragraph rather than left implied.
+#   CASCADE <node_id>   ASKED. The classification graph decides it, at that node. The node must
+#                       exist: "the cascade handles it" is only an answer if something reads it.
+#   anything else       NOT OWED, for the reason given.
 #
-# THE SECOND SHAPE IS THE POINT. An article-level partition answers "is Article N accounted for?"
-# as soon as any one rule cites any one paragraph of it, so most of an article's duties can go
-# unmodelled inside an article the ledger records as covered — and it then reads as coverage, which
-# is worse than an absence. Art. 16 is the worked example: excluded whole as an "umbrella list that
-# cross-references other articles", true of nine of its twelve points and false of (b), (k), (l).
+# A division a RULE cites precisely — Art. 43(2), Art. 16(b) — needs no entry at all: the citation
+# in spec.yaml is the ruling, and the partition reads it from there.
 #
-# Divisions are enumerated only for CITED articles. An article ruled out whole needs no breakdown,
-# and the two the cascade reads instead of a rule — Art. 2 and Art. 5 — have their own enumeration
-# guarantee in ScopeExclusion and ProhibitedPractice, each pinned by a test. Art. 6 has neither,
-# which is why its paragraphs are ruled on one by one.
+# TWO ENTRY SHAPES, and the difference between them is the subject of this file:
 #
-# "CASCADE <node_id>" hands a division to the classification graph rather than to a rule, and a test
-# checks the node exists. That is the point of the convention: nothing in the tool reads Art. 6(1c),
-# so no entry claiming a node reads it can pass.
-articles_out_of_scope:
+#   47:  a string   — one reason covering the WHOLE Article, and therefore every paragraph in it
+#   48:  a mapping  — a ruling per DIVISION, keyed by paragraph (1, 1a, 2 …), by numbered point for
+#                     Art. 3's definitions, or by lettered point for a chapeau-plus-list Article
+#
+# A STRING IS A BLANKET. It answers "is this Article accounted for?" without anyone having read the
+# paragraphs inside it, which is how Art. 16(b), (k) and (l) sat unmodelled under a reason that was
+# true of the article's other nine points. Any Article may be itemised, cited or not; the string
+# form is what remains to be worked through.
+article_rulings:
   # --- Chapter I — General provisions ---------------------------------------------------------
   1:
     1: Statement of the Regulation's purpose. Declaratory; creates no obligation.
@@ -89,8 +84,9 @@ articles_out_of_scope:
     2: >-
       Section B Annex I systems are governed by "Article 6(1), Article 60a and Articles 102 to 112"
       only. Not an exclusion but a LIMIT, consumed by AnnexIProduct.chapter_iii_applies and the
-      Section B branch of gap.rules.select_rules. AMENDED in this version: the list was previously
-      "Article 6(1), Articles 102 to 109 and Article 112", so any report text quoting it was re-read.
+      Section B branch of gap.rules.select_rules. The list is EXHAUSTIVE and is quoted in the
+      report's Section B note, so the two have to be checked against each other whenever either
+      moves — a note naming the wrong articles tells a provider they owe the wrong thing.
     3: CASCADE scope — military, defence and national security. ScopeExclusion.MILITARY_DEFENCE_NATIONAL_SECURITY.
     4: CASCADE scope — third-country authorities in law enforcement cooperation. THIRD_COUNTRY_LAW_ENFORCEMENT_COOPERATION.
     5: Preserves the Digital Services Act's liability rules for intermediary providers. A saving clause.
@@ -189,16 +185,55 @@ articles_out_of_scope:
       A LEGAL BASIS, not an obligation: a provider of a high-risk system MAY exceptionally process
       special categories of personal data for bias detection and correction, subject to conditions
       (a)-(f). Failing a condition means the permission is unavailable, not that a duty was breached.
-      Worth recording where it came from: Art. 10(5) held this basis in the 2024-07-12 text and was
-      DELETED, its substance moved here. AIA-HR-A10's requirement text legitimately loses it — the
-      provision moved out of the article that rule cites, it was not repealed.
+      DUPLICATED, not moved. Art. 10(5) states the same permission for providers of high-risk
+      systems in near-identical words and is still in force in this version, so the two overlap
+      almost entirely and 4a(2) is what this Article adds — the permission widened to deployers and
+      to systems that are not high-risk. AIA-HR-A10 cites Art. 10 whole, so the 10(5) wording does
+      reach the judge; nothing reaches it for 4a.
     2: >-
       The same permission widened — to providers and deployers of other systems and models, and to
       deployers of high-risk systems. A permission on the same terms, so the same ruling.
-  5: >-
-    Prohibited AI practices. Evaluated by the classification cascade's `prohibited` node, before
-    high-risk and after Art. 2; a prohibited system never reaches an obligation check, so this is a
-    risk-tier gate rather than a provider rule.
+  # --- Chapter II — prohibited practices ------------------------------------------------------
+  # Art. 5 is a risk-tier GATE, not a provider rule: the cascade answers it before high-risk and
+  # after Art. 2, and a prohibited system never reaches an obligation check. Paragraphs 2 to 4 are
+  # the exception worth reading twice — they are duties, owed by a law-enforcement deployer whose
+  # use of real-time remote biometric identification a Member State has authorised under 5(5). This
+  # tool never reaches them, because it reports the practice as prohibited and stops there. Stated
+  # as a KNOWN LIMIT rather than an absence of duty, the same way Art. 60 is.
+  5:
+    1: >-
+      CASCADE prohibited — the ten prohibited practices, points (a) to (h). Enumerated as
+      ProhibitedPractice, and a test derives that list from this paragraph's points rather than
+      restating it, so a practice added here cannot go unnamed.
+    1a: >-
+      CASCADE prohibited — narrows points (ba) and (bb): placing on the market is prohibited only
+      where the generation is the intended purpose or a reasonably foreseeable and reproducible
+      outcome without adequate safeguards, and USE only where the deployer uses the system for that
+      purpose. The whole test, not a gloss on it, and the node's question carries it.
+    1b: >-
+      CASCADE prohibited — for point (ba) only: manipulation that does not increase exposure or
+      alter the nature of the depicted activity is not manipulation.
+    2: >-
+      Conditions on a real-time remote biometric identification use permitted under 5(5) — confirm
+      the identity of the specifically targeted individual, weigh the (a)-(b) elements, and complete
+      an Art. 27 fundamental rights impact assessment and an Art. 49 registration first. Real duties
+      on a law-enforcement deployer, and this tool reports none of them: it answers the practice as
+      prohibited and never reaches the lawful branch. Over-inclusive, so the reader is told the
+      strongest thing rather than cleared, but a known limit all the same.
+    3: >-
+      Prior authorisation by a judicial or independent administrative authority, or within 24 hours
+      in urgency. Same limit as 5(2): a duty on the lawful-use branch this tool does not model.
+    4: >-
+      Each use notified to the market surveillance authority and the national data protection
+      authority. Same limit as 5(2).
+    5: >-
+      A Member State MAY authorise the use, and must lay down the national rules for it. A power of
+      the Member State; the deployer's duties under it are 5(2)-(4).
+    6: National authorities' duty to report annual use to the Commission. Not a deployer duty.
+    7: Commission duty to publish annual reports on that use. Institutional.
+    8: >-
+      This Article does not affect prohibitions arising under other Union law. A saving clause, and
+      a reminder that a practice cleared here may still be banned elsewhere.
   6:
     1: CASCADE annex_i — Art. 6(1)(a), the safety-component limb, decided at the annex_i node.
     1a: >-
@@ -225,15 +260,77 @@ articles_out_of_scope:
     6: Commission delegated power to add Art. 6(3) conditions. Institutional.
     7: Commission delegated power to delete Art. 6(3) conditions. Institutional.
     8: Limit on those delegated powers. Institutional.
-  7: Empowers the Commission to amend Annex III. Institutional, no provider duty.
+  7:
+    1: Commission delegated power to ADD or modify Annex III use-cases. Institutional.
+    2: The criteria the Commission weighs when doing so. Institutional.
+    3: Commission delegated power to REMOVE a use-case from Annex III. Institutional.
   8:
     1: >-
       Chapeau to Chapter III Section 2: high-risk systems shall comply with Arts. 9-15. Already
       modelled rule-by-rule as AIA-HR-A09..A15; a rule here would double-count every finding.
       That reasoning covers this paragraph and NOT 8(2), which is a duty of its own — see
       articles_awaiting_rules.
+
+  # --- Chapter III Section 2 — the requirements themselves ------------------------------------
+  # Arts. 9-15 are each cited WHOLE by one rule, so every paragraph below is inside the requirement
+  # text the judge reads. "RULE <id>" records that, per paragraph, rather than leaving the article's
+  # duties to one shared verdict nobody has looked behind. Where a paragraph inside a cited article
+  # is NOT a duty of a role this tool reports for, it is ruled out here on its own terms.
+  9:
+    1: RULE AIA-HR-A09 — establish, implement, document and maintain a risk management system.
+    2: RULE AIA-HR-A09 — the continuous iterative process and its (a)-(d) steps.
+    3: RULE AIA-HR-A09 — limits the risks in scope to those design or information can mitigate.
+    4: RULE AIA-HR-A09 — measures must account for the combined effect of the Section 2 requirements.
+    5: >-
+      RULE AIA-HR-A09 — residual risk must be judged acceptable, and the judgement is the provider's
+      to document.
+    6: RULE AIA-HR-A09 — testing to identify the most appropriate risk management measures.
+    7: >-
+      RULE AIA-HR-A09 — testing MAY include real-world testing under Art. 60. A permission inside a
+      duty; Art. 60 itself is out of scope as an optional route.
+    8: RULE AIA-HR-A09 — when testing happens, and against prior metrics and probabilistic thresholds.
+    9: >-
+      RULE AIA-HR-A09 — consider adverse impact on persons under 18 and other vulnerable groups. A
+      distinct consideration inside the same system rather than a restatement of paragraph 2.
+    10: >-
+      Providers already subject to internal risk management under other Union law may combine the
+      Art. 9 aspects with it. An accommodation, and the only paragraph of Art. 9 that adds nothing
+      to what a provider must achieve.
+  10:
+    1: RULE AIA-HR-A10 — training, validation and testing data sets must meet paragraphs 2-5.
+    2: RULE AIA-HR-A10 — the data governance practices, points (a)-(h).
+    3: RULE AIA-HR-A10 — relevant, sufficiently representative, free of errors, complete.
+    4: RULE AIA-HR-A10 — the geographical, contextual, behavioural and functional setting.
+    5: >-
+      RULE AIA-HR-A10 — the special-category permission for bias detection and correction, with its
+      (a)-(f) conditions. STILL IN FORCE in this version and near-identical to Art. 4a(1); see the
+      Art. 4a entry above for how the two sit together.
+    6: >-
+      RULE AIA-HR-A10 — for a system not trained on data, only the testing data sets are caught.
+      Narrows which paragraphs apply rather than adding a duty.
   11:
     3: Commission delegated power to amend Annex IV. Institutional.
+  13:
+    1: RULE AIA-HR-A13 — the system must be transparent enough for a deployer to interpret its output.
+    2: RULE AIA-HR-A13 — instructions for use, in an appropriate digital format.
+    3: RULE AIA-HR-A13 — what the instructions must contain, points (a)-(f).
+  14:
+    1: RULE AIA-HR-A14 — designed so natural persons can effectively oversee it in use.
+    2: RULE AIA-HR-A14 — what the oversight must aim at, including reasonably foreseeable misuse.
+    3: RULE AIA-HR-A14 — measures built in by the provider, identified for the deployer, or both.
+    4: RULE AIA-HR-A14 — the (a)-(e) capabilities the overseeing person must be given.
+    5: >-
+      RULE AIA-HR-A14 — for Annex III point 1(a) only: no action on a biometric identification
+      unless two competent persons verify it. Area-specific, and the rule carries no area gate, so
+      it is raised for every high-risk system.
+  15:
+    1: RULE AIA-HR-A15 — appropriate accuracy, robustness and cybersecurity across the lifecycle.
+    2: >-
+      Commission duty to encourage benchmarks and measurement methodologies with stakeholders.
+      Institutional; inside the cited article, but nothing a provider's file can answer.
+    3: RULE AIA-HR-A15 — declare the accuracy levels and metrics in the instructions for use.
+    4: RULE AIA-HR-A15 — resilience to errors, faults and inconsistencies, including feedback loops.
+    5: RULE AIA-HR-A15 — resilience against third parties exploiting vulnerabilities.
 
   # --- Chapter III Section 3 — obligations of providers and other actors -----------------------
   # Art. 16 is the chapeau, and it is the article this whole nesting exists for. Nine of its twelve
@@ -265,6 +362,28 @@ articles_out_of_scope:
     2: Financial institutions keep logs under financial services law. An accommodation.
   21:
     3: Confidentiality duty of the receiving competent authority (Art. 78). Not a provider duty.
+  22:
+    3: >-
+      RULE AIA-AR-A22 — the authorised representative's own tasks: hold the mandate, produce it on
+      request, and perform the (a)-(e) duties the mandate must contain.
+    4: >-
+      RULE AIA-AR-A22 — terminate the mandate where the provider acts contrary to the Regulation,
+      and tell the authorities why.
+  23:
+    1: RULE AIA-IM-A23 — verify conformity before placing on the market, points (a)-(d).
+    2: RULE AIA-IM-A23 — do not place a non-conforming or falsified system, and inform the others.
+    3: RULE AIA-IM-A23 — the importer's own name, trade mark and contact address on the system.
+    4: RULE AIA-IM-A23 — storage and transport conditions must not jeopardise compliance.
+    5: RULE AIA-IM-A23 — keep the certificate, instructions and declaration for 10 years.
+    6: RULE AIA-IM-A23 — provide information and documentation on a reasoned request.
+    7: RULE AIA-IM-A23 — cooperate with authorities acting on a system the importer placed.
+  24:
+    1: RULE AIA-DI-A24 — verify the CE marking, declaration, instructions and upstream duties.
+    2: RULE AIA-DI-A24 — do not make a non-conforming system available, and inform the provider.
+    3: RULE AIA-DI-A24 — storage and transport conditions must not jeopardise compliance.
+    4: RULE AIA-DI-A24 — corrective action, withdrawal or recall, and informing the authorities.
+    5: RULE AIA-DI-A24 — provide the authority with information about those actions on request.
+    6: RULE AIA-DI-A24 — cooperate with authorities acting on a system the distributor supplied.
   25:
     1: >-
       CASCADE provider_reallocation — the Art. 25(1)(a)-(c) triggers that move the provider role.
@@ -273,6 +392,37 @@ articles_out_of_scope:
       CASCADE provider_reallocation — the product manufacturer becomes THE PROVIDER, owing Art. 16
       whole. Also recorded in roles_out_of_scope above: there is no separate duty set to write.
     5: Without prejudice to intellectual property and trade secrets. A saving clause, not a duty.
+  26:
+    1: RULE AIA-DP-A26 — technical and organisational measures to use it per the instructions.
+    2: RULE AIA-DP-A26 — assign human oversight to competent, trained, supported, authorised people.
+    3: >-
+      Without prejudice to other obligations and to the deployer's freedom to organise its own
+      resources. A saving clause inside the cited article.
+    4: RULE AIA-DP-A26 — where the deployer controls the input data, it must be relevant and
+      sufficiently representative.
+    5: >-
+      RULE AIA-DP-A26 — monitor operation, inform the provider and the authority of an Art. 79(1)
+      risk, suspend use, and report a serious incident. The financial-institution subparagraph is an
+      accommodation within the same duty.
+    6: >-
+      RULE AIA-DP-A26 — keep the automatically generated logs for at least six months where they are
+      under the deployer's control.
+    7: >-
+      RULE AIA-DP-A26 — inform workers' representatives and affected workers BEFORE putting a
+      high-risk system into service at the workplace. Owed by the deployer as employer, so a
+      provider-written document evidences it only by accident.
+    8: >-
+      RULE AIA-DP-A26 — public-authority deployers register under Art. 49, and must not use a system
+      they find unregistered. Overlaps AIA-DP-A49-3, which carries the same duty from Art. 49(3).
+    9: RULE AIA-DP-A26 — use the Art. 13 information to carry out a GDPR data protection impact assessment.
+    10: >-
+      RULE AIA-DP-A26 — post-remote biometric identification: judicial authorisation, deletion on
+      refusal, no untargeted use, documentation in the police file, annual reports. Area-specific to
+      law enforcement, and AIA-DP-A26 carries no area gate, so it is raised for every deployer.
+    11: >-
+      RULE AIA-DP-A26 — inform natural persons that they are subject to an Annex III high-risk system
+      making or assisting decisions about them.
+    12: RULE AIA-DP-A26 — cooperate with competent authorities acting on the system.
   27:
     4: Permission to cross-reference a GDPR data protection impact assessment. An accommodation.
     5: AI Office duty to publish a FRIA template. Institutional.
@@ -520,11 +670,11 @@ articles_out_of_scope:
     Annex III high-risk obligations) rather than being a rule itself.
 
 # --- ARTICLES AWAITING A RULE -----------------------------------------------------------------
-# REAL DUTIES THAT GO UNREPORTED TODAY. This bucket means the opposite of articles_out_of_scope:
-# not "the tool considered this and correctly says nothing", but "a party owes this and no report
-# mentions it". Filing any of these as an exclusion would turn a known gap into apparent coverage,
-# which is the single failure this ledger exists to prevent — so the two are kept apart and a test
-# forbids an entry here from claiming the cascade handles it.
+# REAL DUTIES THAT GO UNREPORTED TODAY. Separate from `article_rulings` because it says something
+# different: not "here is what accounts for this provision", but "a party owes this and nothing
+# accounts for it". Filing one of these as a ruling would turn a known gap into apparent coverage,
+# which is the single failure this ledger exists to prevent — so a test forbids an entry here from
+# claiming the cascade handles it, and another forbids the same address appearing in both.
 #
 # Keyed by article and nested by division, the same shape as the section above. Every one sits
 # inside an article that section counts as IN SCOPE, which is why they need naming here: nothing
@@ -532,6 +682,17 @@ articles_out_of_scope:
 #
 # Emptying this bucket is the work. Editing it away is not.
 articles_awaiting_rules:
+  22:
+    1: >-
+      APPOINT AN AUTHORISED REPRESENTATIVE — a duty of the PROVIDER, not of the representative.
+      A provider established in a third country must appoint one by written mandate before making a
+      high-risk system available on the Union market. AIA-AR-A22 cites Art. 22 whole and is filed
+      under authorised_representative, so the judge does see this text, but the report attributes it
+      to the party being appointed rather than to the party who must appoint. A third-country
+      provider reading their own column never sees it.
+    2: >-
+      ENABLE THE REPRESENTATIVE to perform the mandate. The provider's duty again, and mis-attributed
+      the same way as 22(1).
   8:
     2: >-
       THE PROVIDER ANSWERS FOR THE SECTORAL INSTRUMENT TOO. Where a product contains an AI system to
@@ -673,7 +834,7 @@ articles_awaiting_rules:
 # as context: Annexes I, III, IV, VI and VIII. That is a claim that some part of the tool reads the
 # annex, NOT that its contents have been modelled — Annex IV is cited by AIA-HR-A11 and its element
 # list is not itself checked.
-annexes_out_of_scope:
+annex_rulings:
   II: >-
     List of criminal offences for the Art. 5(1)(h)(iii) exception to the real-time remote biometric
     identification ban. The cascade reports the practice as prohibited and hands the
