@@ -131,6 +131,26 @@ def annex_divisions(annexes_dir: Path, roman: str) -> tuple[str, ...]:
 article_divisions = provision_labels
 
 
+def points_within(articles_dir: Path, article: int | str, paragraph: str) -> tuple[str, ...]:
+    """The top-level lettered points of one numbered paragraph.
+
+    A LEVEL BELOW the division, and needed where a paragraph's points are the substance rather than
+    an elaboration of it. Art. 5(1) is the case: the paragraph is a chapeau and the prohibited
+    practices are its points, so "every practice the Act bans" is this list and not Art. 5's
+    paragraphs. Labels may be two letters — 5(1)(ba) and 5(1)(bb) were inserted between (b) and (c)
+    without renumbering what followed.
+    """
+    from aiact.policy_loader import _extract_paragraph, _read_article
+
+    provisions, _ = _read_article(articles_dir, article)
+    text = _extract_paragraph(provisions, paragraph, article)
+    labels = list(_POINT_LABEL.finditer(text))
+    if not labels:
+        return ()
+    top = min(len(m.group("indent")) for m in labels)
+    return tuple(m.group("label") for m in labels if len(m.group("indent")) == top)
+
+
 def _article_key(name: str) -> tuple[int, str]:
     match = re.match(r"(\d+)([a-z]*)", name)
     assert match is not None

@@ -154,12 +154,21 @@ def test_a_prohibited_practice_still_outranks_annex_i():
 
 
 # --- Art. 2(2): Section B is high-risk AND owes no Chapter III ------------------------------------
-def test_annex_i_splits_into_exactly_the_act_s_two_sections():
-    products = list(AnnexIProduct)
-    assert len(products) == 20, "Annex I lists 20 instruments"
-    assert sum(p.section == "A" for p in products) == 12, "Section A lists 12"
-    assert sum(p.section == "B" for p in products) == 8, "Section B lists 8"
-    assert all(p.chapter_iii_applies == (p.section == "A") for p in products)
+def test_the_section_split_follows_the_annex_rather_than_a_number():
+    """Which Section an instrument sits in decides whether Chapter III applies at all, so the split
+    is load-bearing and it has to be read off the Annex.
+
+    Counting the members instead — "Annex I lists 20 instruments" — checks the enum against a
+    literal and keeps passing when the Annex changes underneath it. Here each member names its
+    item, and `tests/test_vocabulary.py` requires that set to match the Annex; this test only has
+    to hold the Section letter to the item number the Annex assigns."""
+    for product in AnnexIProduct:
+        section, _, number = product.annex_item.partition("/")
+        assert product.section == section, f"{product} is filed under Section {product.section}"
+        assert number.isdigit()
+        assert product.chapter_iii_applies == (section == "A"), (
+            "Art. 2(2) withholds Chapter III from Section B and from nothing else"
+        )
 
 
 def test_section_a_owes_the_full_chapter_iii(spec):

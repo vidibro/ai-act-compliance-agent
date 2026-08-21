@@ -635,17 +635,41 @@ class CheckType(StrEnum):
 
 
 class AnnexIIIArea(StrEnum):
-    """Art. 6(2), Annex III. The eight high-risk areas. Only EMPLOYMENT is in v0.1 scope;
-    the rest are modelled so the graph generalises without schema changes."""
+    """Art. 6(2), Annex III. The high-risk areas. Only EMPLOYMENT is in v0.1 scope; the rest are
+    modelled so the graph generalises without schema changes.
 
-    CRITICAL_INFRASTRUCTURE = "critical_infrastructure"  # Annex III(2)
-    BIOMETRICS = "biometrics"  # Annex III(1)
-    EDUCATION = "education"  # Annex III(3)
-    EMPLOYMENT = "employment"  # Annex III(4) <- v0.1 SCOPE
-    ESSENTIAL_SERVICES = "essential_services"  # Annex III(5)
-    LAW_ENFORCEMENT = "law_enforcement"  # Annex III(6)
-    MIGRATION = "migration"  # Annex III(7)
-    JUSTICE_DEMOCRACY = "justice_democracy"  # Annex III(8)
+    Each member names the Annex III item it stands for, and a test compares that set against the
+    items the stored Annex actually lists. Art. 7 empowers the Commission to amend Annex III, so
+    the list is not fixed for the life of the Regulation and a count written down here would be a
+    claim about the law that stops being true without anything failing."""
+
+    CRITICAL_INFRASTRUCTURE = "critical_infrastructure"
+    BIOMETRICS = "biometrics"
+    EDUCATION = "education"
+    EMPLOYMENT = "employment"  # <- v0.1 SCOPE
+    ESSENTIAL_SERVICES = "essential_services"
+    LAW_ENFORCEMENT = "law_enforcement"
+    MIGRATION = "migration"
+    JUSTICE_DEMOCRACY = "justice_democracy"
+
+    @property
+    def annex_item(self) -> str:
+        """The Annex III item this area is, for citation and for the coverage partition."""
+        return _ANNEX_III_ITEM[self]
+
+
+# No default and every member listed, so an area added to the enum without an Annex item fails here
+# rather than silently claiming none.
+_ANNEX_III_ITEM: dict[AnnexIIIArea, str] = {
+    AnnexIIIArea.BIOMETRICS: "1",
+    AnnexIIIArea.CRITICAL_INFRASTRUCTURE: "2",
+    AnnexIIIArea.EDUCATION: "3",
+    AnnexIIIArea.EMPLOYMENT: "4",
+    AnnexIIIArea.ESSENTIAL_SERVICES: "5",
+    AnnexIIIArea.LAW_ENFORCEMENT: "6",
+    AnnexIIIArea.MIGRATION: "7",
+    AnnexIIIArea.JUSTICE_DEMOCRACY: "8",
+}
 
 
 class DeployerType(StrEnum):
@@ -738,12 +762,17 @@ class HighRiskRoute(StrEnum):
 
 
 class AnnexIProduct(StrEnum):
-    """Art. 6(1), Annex I. The twenty Union harmonisation instruments, named by the product they
-    govern rather than by directive number — a system card says "surgical robot", never
+    """Art. 6(1), Annex I. The Union harmonisation instruments, named by the product they govern
+    rather than by directive number — a system card says "surgical robot", never
     "Regulation (EU) 2017/745".
 
     The SECTION a value belongs to decides which obligations follow, so it is carried in the enum
-    rather than looked up: see `section` and `chapter_iii_applies`."""
+    rather than looked up: see `section` and `chapter_iii_applies`.
+
+    Each member names its Annex I item, and a test compares that set against the items the stored
+    Annex lists. The count is deliberately absent from this docstring: Annex I is amended along with
+    the sectoral law it points at, and a number written here would be a claim about the Annex that
+    nothing checks."""
 
     # --- Section A — New Legislative Framework. Chapter III applies in full. ---
     MACHINERY = "machinery"  # Annex I(A)(1) — Directive 2006/42/EC
@@ -768,11 +797,24 @@ class AnnexIProduct(StrEnum):
     MOTOR_VEHICLES = "motor_vehicles"  # Annex I(B)(18) — Regulation (EU) 2018/858
     VEHICLE_GENERAL_SAFETY = "vehicle_general_safety"  # Annex I(B)(19) — Reg (EU) 2019/2144
     CIVIL_AVIATION_UAS = "civil_aviation_uas"  # Annex I(B)(20) — Reg (EU) 2018/1139
+    MACHINERY_REGULATION = "machinery_regulation"  # Annex I(B)(21) — Regulation (EU) 2023/1230
+    """Annex I(B)(21). The successor to Directive 2006/42/EC, which it repeals from 20 January 2027.
+
+    SEPARATE FROM `MACHINERY`, and in the other Section, because that is where the Annex puts it.
+    The Directive sits in Section A, so an AI safety component of machinery owes Chapter III in
+    full; the Regulation sits in Section B, from which Art. 2(2) withholds Chapter III entirely.
+    Collapsing the two onto one member would answer that question by whichever Section happened to
+    be recorded, for a system whose governing instrument is about to change."""
 
     @property
     def section(self) -> str:
         """ "A" or "B" — which half of Annex I lists this instrument."""
         return "B" if self in _ANNEX_I_SECTION_B else "A"
+
+    @property
+    def annex_item(self) -> str:
+        """The Annex I item this instrument is — "A/1", "B/21" — for citation and for coverage."""
+        return _ANNEX_I_ITEM[self]
 
     @property
     def legislation(self) -> str:
@@ -807,8 +849,37 @@ _ANNEX_I_SECTION_B = frozenset(
         AnnexIProduct.MOTOR_VEHICLES,
         AnnexIProduct.VEHICLE_GENERAL_SAFETY,
         AnnexIProduct.CIVIL_AVIATION_UAS,
+        AnnexIProduct.MACHINERY_REGULATION,
     }
 )
+
+
+# Derived from the Section letter and the item number the Annex gives each instrument. No default
+# and every member listed, so an instrument added without an Annex item fails here rather than
+# claiming none.
+_ANNEX_I_ITEM: dict[AnnexIProduct, str] = {
+    AnnexIProduct.MACHINERY: "A/1",
+    AnnexIProduct.TOYS: "A/2",
+    AnnexIProduct.RECREATIONAL_CRAFT: "A/3",
+    AnnexIProduct.LIFTS: "A/4",
+    AnnexIProduct.EXPLOSIVE_ATMOSPHERES: "A/5",
+    AnnexIProduct.RADIO_EQUIPMENT: "A/6",
+    AnnexIProduct.PRESSURE_EQUIPMENT: "A/7",
+    AnnexIProduct.CABLEWAYS: "A/8",
+    AnnexIProduct.PERSONAL_PROTECTIVE_EQUIPMENT: "A/9",
+    AnnexIProduct.GAS_APPLIANCES: "A/10",
+    AnnexIProduct.MEDICAL_DEVICES: "A/11",
+    AnnexIProduct.IVD_MEDICAL_DEVICES: "A/12",
+    AnnexIProduct.CIVIL_AVIATION_SECURITY: "B/13",
+    AnnexIProduct.TWO_THREE_WHEEL_VEHICLES: "B/14",
+    AnnexIProduct.AGRICULTURAL_VEHICLES: "B/15",
+    AnnexIProduct.MARINE_EQUIPMENT: "B/16",
+    AnnexIProduct.RAIL_INTEROPERABILITY: "B/17",
+    AnnexIProduct.MOTOR_VEHICLES: "B/18",
+    AnnexIProduct.VEHICLE_GENERAL_SAFETY: "B/19",
+    AnnexIProduct.CIVIL_AVIATION_UAS: "B/20",
+    AnnexIProduct.MACHINERY_REGULATION: "B/21",
+}
 
 
 # Annex I cites each instrument in full; these are the short forms a report can carry. Every
@@ -847,6 +918,7 @@ _ANNEX_I_LEGISLATION: dict[AnnexIProduct, str] = {
     AnnexIProduct.CIVIL_AVIATION_UAS: (
         "Regulation (EU) 2018/1139 (civil aviation, unmanned aircraft)"
     ),
+    AnnexIProduct.MACHINERY_REGULATION: "Regulation (EU) 2023/1230 (machinery)",
 }
 
 _NOTIFIED_BODY = (
@@ -898,6 +970,7 @@ _ANNEX_I_CONFORMITY_ROUTE: dict[AnnexIProduct, str] = {
     AnnexIProduct.CIVIL_AVIATION_UAS: (
         "EASA, or the design-organisation lead who holds the aircraft's certification basis"
     ),
+    AnnexIProduct.MACHINERY_REGULATION: _NOTIFIED_BODY,
     AnnexIProduct.RAIL_INTEROPERABILITY: (
         "the notified body for the interoperability constituent, or the national safety "
         "authority that authorised the subsystem"

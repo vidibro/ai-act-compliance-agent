@@ -108,7 +108,7 @@ def _read_article(articles_dir: Path, article: int | str) -> tuple[str, dict[str
     return provisions.strip("\n"), front
 
 
-def _extract_paragraph(provisions: str, paragraph: int | str, article: int) -> str:
+def _extract_paragraph(provisions: str, paragraph: int | str, article: int | str) -> str:
     """Pull one numbered paragraph's literal text out of an article body.
 
     Paragraphs are rendered by scripts/fetch_articles.py as a line starting `N. ` at column 0,
