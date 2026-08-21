@@ -70,13 +70,26 @@ def verify_integrity(path: Path, raw: str, front: dict[str, str], body: str) -> 
         )
 
 
-def _read_article(articles_dir: Path, article: int) -> tuple[str, dict[str, str]]:
+def _article_filename(article: int | str) -> str:
+    """`4` -> article-004.md, `4a` -> article-004a.md.
+
+    An article id is a STRING. A consolidation inserts articles without renumbering the ones after
+    them, so 4a, 60a and 75a-75d are all real ids, and `int()` of one resolves to the article BEFORE
+    it — Art. 4a would be read as Art. 4, quietly, with no file missing.
+    """
+    match = re.fullmatch(r"(\d+)([a-z]*)", str(article))
+    if match is None:
+        raise ValueError(f"{article!r} is not an article id — expected forms like 6 or 75a.")
+    return f"article-{int(match.group(1)):03d}{match.group(2)}.md"
+
+
+def _read_article(articles_dir: Path, article: int | str) -> tuple[str, dict[str, str]]:
     """Return (provision_text, front_matter) for one article file.
 
     provision_text is the article body with the "Article N" / title heading stripped — i.e. the
     enacted provisions only.
     """
-    path = articles_dir / f"article-{article:03d}.md"
+    path = articles_dir / _article_filename(article)
     if not path.is_file():
         raise FileNotFoundError(
             f"No article file for Article {article} at {path}. Run: "
@@ -121,7 +134,7 @@ def _extract_paragraph(provisions: str, paragraph: int | str, article: int) -> s
     )
 
 
-def provision_labels(articles_dir: Path, article: int) -> tuple[str, ...]:
+def provision_labels(articles_dir: Path, article: int | str) -> tuple[str, ...]:
     """Every separately citable division of one article, in the order the Article writes them.
 
     THREE SHAPES, in the order the Act uses them. Numbered paragraphs where the article has them

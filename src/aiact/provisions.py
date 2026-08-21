@@ -1,0 +1,170 @@
+"""One address for every piece of the enacted text, derived from the stored files.
+
+WHY THIS EXISTS. Every coverage claim this project makes has to be checkable against the law rather
+than against something someone typed. A test that asserts "the Annex lists twenty instruments"
+compares the code to a number and passes whatever the Annex says; a test that counts the Annex
+cannot.
+
+So nothing here accepts a count or a list as input. The enumerator reads the files and produces the
+addresses; every partition, ledger and budget elsewhere is a claim ABOUT that output.
+
+THE UNIT IS THE DIVISION, and the coarsest ruling allowed anywhere is one per division:
+
+    Article 6(1a)        a numbered paragraph
+    Article 16(b)        a lettered point, where the article has no numbered paragraphs
+    Article 3(63)        a numbered point, likewise — Art. 3 lists 68 definitions this way
+    Annex III(5)         a numbered item
+    Annex VIII(A)(1)     a numbered item inside a lettered Section, whose numbering restarts
+
+Below a division sit sub-points — Art. 27(1)(a)-(f), Annex III(5)(b) — which elaborate the division
+they hang from rather than standing alone. A ruling on the division covers them. Above a division
+sits the whole article or annex, and a ruling THERE is what this module exists to make impossible
+to mistake for coverage.
+"""
+
+from __future__ import annotations
+
+import re
+from dataclasses import dataclass
+from pathlib import Path
+
+from aiact.policy_loader import _POINT_LABEL, provision_labels
+
+# The Annexes are rendered inconsistently by the Official Journal's own XML, and the fetcher
+# preserves what it is given rather than tidying it. Both shapes are real and both are here:
+#
+#   line-anchored   "    1. Biometrics, in so far as ..."        (Annexes III, IV, V, VI, VIII, IX)
+#   run together    "Section A. ... 1.Directive 2006/42/EC ..."  (Annexes I and VII)
+#
+# So an item marker is `N.` followed by a space, a capital, or an opening bracket, at a line start
+# or after whitespace. Requiring a line start would miss every instrument in Annex I.
+_ANNEX_ITEM = re.compile(r"(?:^|(?<=\s))(\d{1,2})\.(?=[ \t]*[A-Z(‘])", re.M)
+
+# Annexes I, VIII and XI restart their numbering inside Sections, so an item number alone is not an
+# address: Annex VIII has three different point 1s. Sections are lettered in some annexes and
+# numbered in others, and both punctuations occur.
+_ANNEX_SECTION = re.compile(r"^Section (\d+|[A-Z])\s*[.:—-]?\s*(?=[A-Z])", re.M)
+
+
+@dataclass(frozen=True)
+class Provision:
+    """One addressable piece of the Act, as the stored text divides it."""
+
+    kind: str  # "article" | "annex"
+    document: str  # "6", "75a", "III"
+    division: str | None  # "1a", "b", "A/1"; None where the document has no divisions
+
+    def __str__(self) -> str:
+        label = f"Art. {self.document}" if self.kind == "article" else f"Annex {self.document}"
+        if self.division is None:
+            return label
+        parts = "".join(f"({p})" for p in self.division.split("/"))
+        return f"{label}{parts}"
+
+
+def _annex_body(annexes_dir: Path, roman: str) -> str:
+    """The annex's text with its heading block removed, verified against its stored hash."""
+    from aiact.anchoring import provision_text
+
+    path = annexes_dir / f"annex-{roman}.md"
+    if not path.is_file():
+        raise FileNotFoundError(f"No annex file for Annex {roman} at {path}")
+    body = provision_text(path)
+    # body = "ANNEX <roman>\n<title>\n\n<content>"; drop the heading block.
+    _, _, content = body.partition("\n\n")
+    return content or body
+
+
+def annex_divisions(annexes_dir: Path, roman: str) -> tuple[str, ...]:
+    """Every separately citable item of one annex, in the order the Annex writes them.
+
+    Numbered items, prefixed by their Section where the annex has Sections — `A/1`, `B/1` — because
+    the numbering restarts and a bare `1` would name three different provisions in Annex VIII.
+
+    An annex that enumerates nothing returns empty, and that is a real answer rather than a failure:
+    Annex II is a bare list of offence names with no numbering, so the annex IS the unit.
+    """
+    content = _annex_body(annexes_dir, roman)
+    sections = list(_ANNEX_SECTION.finditer(content))
+
+    def section_of(pos: int) -> str | None:
+        name = None
+        for section in sections:
+            if section.start() < pos:
+                name = section.group(1)
+            else:
+                break
+        return name
+
+    # KEPT ONLY IF IT CONTINUES THE SEQUENCE. Where an annex is run together on one line, a
+    # cross-reference reads exactly like an item marker: "points 2 to 5. Article 17 ..." offers a
+    # `5.` and a `17.` that begin nothing. Sequence position separates the two, and it is structure
+    # the text carries rather than a list of exceptions someone maintains.
+    #
+    # A Section may restart the count or carry it on, and both occur: Annex VIII starts each Section
+    # at 1, Annex I runs 1-12 through Section A and 13-21 through Section B. So the next number is
+    # accepted, and so is a 1 that opens a Section — nothing else.
+    divisions: list[str] = []
+    nxt, current = 1, object()
+    for item in _ANNEX_ITEM.finditer(content):
+        section = section_of(item.start())
+        number = int(item.group(1))
+        opens_section = section != current and number == 1
+        if number != nxt and not opens_section:
+            continue
+        current, nxt = section, number + 1
+        divisions.append(f"{section}/{number}" if section else str(number))
+    if divisions:
+        return tuple(divisions)
+
+    # No numbered list. Some annexes enumerate with letters instead — Annex XIII's criteria.
+    letters = list(_POINT_LABEL.finditer(content))
+    if letters:
+        top = min(len(m.group("indent")) for m in letters)
+        return tuple(m.group("label") for m in letters if len(m.group("indent")) == top)
+    return ()
+
+
+# The article half already lives beside the text loader, which owns the file read and its
+# integrity check. Re-exported rather than reimplemented: two copies of "what counts as a
+# division" would drift, and one answer is the whole point of this module.
+article_divisions = provision_labels
+
+
+def _article_key(name: str) -> tuple[int, str]:
+    match = re.match(r"(\d+)([a-z]*)", name)
+    assert match is not None
+    return int(match.group(1)), match.group(2)
+
+
+_ANNEX_ORDER = ["I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X", "XI", "XII",
+                "XIII", "XIV", "XV", "XVI"]
+
+
+def all_provisions(articles_dir: Path, annexes_dir: Path) -> list[Provision]:
+    """Every addressable piece of the stored Act, articles then annexes, in the Act's own order.
+
+    A document with no divisions contributes ONE provision addressing the whole of it, so the
+    output is never silently short: an annex the parser cannot break down still has to be ruled on,
+    it just gets ruled on whole and the ledger says so.
+    """
+    found: list[Provision] = []
+    names = sorted(
+        (p.stem.removeprefix("article-").lstrip("0") for p in articles_dir.glob("article-*.md")),
+        key=_article_key,
+    )
+    for name in names:
+        divisions = article_divisions(articles_dir, name)
+        if divisions:
+            found += [Provision("article", name, d) for d in divisions]
+        else:
+            found.append(Provision("article", name, None))
+
+    stored = {p.stem.removeprefix("annex-") for p in annexes_dir.glob("annex-*.md")}
+    for roman in [r for r in _ANNEX_ORDER if r in stored] + sorted(stored - set(_ANNEX_ORDER)):
+        divisions = annex_divisions(annexes_dir, roman)
+        if divisions:
+            found += [Provision("annex", roman, d) for d in divisions]
+        else:
+            found.append(Provision("annex", roman, None))
+    return found
