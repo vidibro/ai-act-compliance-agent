@@ -20,13 +20,25 @@ from pathlib import Path
 
 from aiact.config import get_settings
 from aiact.guidance import load_snippet
-from aiact.policy_loader import _FRONT_FIELD, _FRONT_MATTER, verify_integrity
+from aiact.policy_loader import (
+    _FRONT_FIELD,
+    _FRONT_MATTER,
+    resolve_requirement,
+    verify_integrity,
+)
 from aiact.schemas.policy import GuidanceSource
 from aiact.schemas.question import Question
 
 # Which verbatim provisions one question must be answered against: article numbers, and Annexes by
 # their roman numeral.
 Provisions = tuple[tuple[int, ...], tuple[str, ...]]
+
+# Article 3 is the DEFINITIONS article, and it is supplied by the point rather than whole. Its 68
+# definitions run to some 19 000 characters; a question turns on two or three of them, and handing
+# every node the lot would multiply the cost of a classification for text the question never uses.
+# Naming the points also makes the supply checkable: the coverage ledger rules a definition
+# `CASCADE <node>`, and a test can ask whether that node is in fact given it.
+DEFINITIONS_ARTICLE = 3
 
 
 def provision_text(path: Path) -> str:
@@ -56,6 +68,7 @@ def anchor_questions(
     articles_root: str | Path | None = None,
     annexes_root: str | Path | None = None,
     guidance_root: str | Path | None = None,
+    definitions: dict[str, tuple[int, ...]] | None = None,
 ) -> dict[str, Question]:
     """`questions` with each `context` filled from the verbatim article/annex store, and
     `guidance_context` filled where `guidance` names a snippet.
@@ -63,6 +76,12 @@ def anchor_questions(
     A question with no entry in `provisions` gets empty context rather than an error: that is a
     deliberate authoring choice for the few questions answerable from the description alone, and
     the caller's own tests are where it belongs — this function does not know which those are.
+
+    `definitions` names Article 3 points to supply beside those provisions. A question whose test is
+    a defined term — "real-time", "publicly accessible space", "safety component" — is answerable
+    only against the definition, and a gloss written in its place drops the qualifying half: Art.
+    3(42) covers "not only instant identification, but also limited short delays in order to avoid
+    circumvention", and Art. 3(44) reaches a "publicly OR PRIVATELY owned" place.
     """
     settings = get_settings()
     v = version or settings.act_version_date
@@ -90,6 +109,19 @@ def anchor_questions(
                     f"python scripts/fetch_articles.py --version-date {v_str}"
                 )
             chunks.append(provision_text(p))
+
+        # Definitions LAST, and labelled, so the model reads them as the meaning of terms used in
+        # the provisions above rather than as further provisions of their own.
+        points = (definitions or {}).get(node_id, ())
+        if points:
+            defined = [
+                resolve_requirement(art_dir, DEFINITIONS_ARTICLE, None, point=str(n))[0]
+                for n in points
+            ]
+            chunks.append(
+                f"Article {DEFINITIONS_ARTICLE} — definitions this question turns on:\n\n"
+                + "\n\n".join(defined)
+            )
 
         # Non-binding guidance, where the enacted text leaves the question open.
         g_chunks: list[str] = []

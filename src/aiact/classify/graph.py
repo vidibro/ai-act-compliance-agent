@@ -334,7 +334,11 @@ QUESTIONS: dict[str, Question] = {
         "religious or philosophical beliefs, sex life or sexual orientation. Does NOT cover "
         "labelling or filtering of lawfully acquired biometric datasets.\n"
         "- (h) 'real-time' remote biometric identification in publicly accessible spaces for law "
-        "enforcement. Post-hoc identification on already-recorded material is not 'real-time'.\n"
+        "enforcement. Both qualifiers are DEFINED and supplied: 'real-time' (Art. 3(42)) covers "
+        "not only instant identification but LIMITED SHORT DELAYS, so a buffer of seconds does not "
+        "take a system out of it — only identification run over already-recorded material is "
+        "post-hoc. A 'publicly accessible space' (Art. 3(44)) is PUBLICLY OR PRIVATELY OWNED, so "
+        "a shop, stadium or transport hub counts.\n"
         "Answer none if no point fits. That is the ordinary answer: Art. 5 bans ten specific "
         "practices, not everything that reads as sensitive or intrusive.",
         "prohibited_practice",
@@ -350,10 +354,12 @@ QUESTIONS: dict[str, Question] = {
         "Is this AI system intended to be used as a SAFETY COMPONENT of a product, or is it "
         "itself a product, covered by one of the Union harmonisation instruments listed in "
         "Annex I (Article 6(1)(a))? Answer which product family, or none.\n"
-        "A safety component is one whose failure endangers health or safety — braking, pressure "
-        "or dose control, collision avoidance, structural monitoring. Software that merely runs "
-        "alongside such a product, or handles its scheduling, billing, diagnostics reporting or "
-        "fleet analytics, is NOT a safety component.\n"
+        "'Safety component' is DEFINED at Art. 3(14) and supplied below, in TWO limbs: a component "
+        "whose intended purpose is to prevent or mitigate risks to health and safety, OR one "
+        "whose failure or malfunctioning endangers health and safety OF PERSONS OR PROPERTY. "
+        "Either limb suffices — braking, pressure or dose control, collision avoidance, "
+        "structural monitoring. Software that merely runs alongside such a product, or handles "
+        "its scheduling, billing, diagnostics reporting or fleet analytics, is NOT one.\n"
         "MACHINERY APPEARS TWICE, under two instruments, and the choice decides which obligations "
         "follow. Answer `machinery` (Directive 2006/42/EC) for a machine unless the description "
         "itself says the product is placed on the market under Regulation (EU) 2023/1230 — that "
@@ -454,8 +460,14 @@ QUESTIONS: dict[str, Question] = {
     "profiling": Question(
         "profiling",
         _src(6, 3),
-        "Does this use case perform profiling of natural persons (Article 6(3))? Profiling means "
-        "evaluating or scoring a person, as opposed to a purely procedural task.",
+        "Does this use case perform profiling of natural persons (Article 6(3))? Profiling is "
+        "DEFINED, at Art. 3(52), by reference to Article 4(4) GDPR and supplied below: any "
+        "automated processing of personal data to EVALUATE personal aspects of a natural person, "
+        "in particular to analyse or predict performance at work, economic situation, health, "
+        "preferences, interests, reliability, behaviour, location or movements. Evaluating or "
+        "scoring a person is profiling; a purely procedural task on their file is not.\n"
+        "THIS ANSWER OVERRIDES EVERY Art. 6(3) DEROGATION, so it is asked on the definition "
+        "rather than on how narrow the system's role sounds.",
         "bool",
         label="Does it score, rank or judge people?",
     ),
@@ -545,10 +557,16 @@ QUESTIONS: dict[str, Question] = {
         "deployer's input data or its semantics — polishing a person's own text is that carve-out; "
         "drafting the text is not.\n"
         "- emotion_or_biometric_categorisation (50(3), the DEPLOYER's duty): it is an emotion "
-        "recognition or biometric categorisation system. Attaches to the system TYPE, so answer it "
-        "even where the practice is also prohibited under Art. 5.\n"
+        "recognition or biometric categorisation system. Both are DEFINED and supplied: emotion "
+        "recognition (Art. 3(39)) infers emotions ON THE BASIS OF BIOMETRIC DATA, so sentiment "
+        "scoring of typed text is not one; biometric categorisation (Art. 3(40)) EXCEPTS a "
+        "feature ancillary to another commercial service and strictly necessary for objective "
+        "technical reasons. Attaches to the system TYPE, so answer it even where the practice is "
+        "also prohibited under Art. 5.\n"
         "- deep_fake_disclosure (50(4), the DEPLOYER's duty): it generates or manipulates image, "
-        "audio or video constituting a deep fake.\n"
+        "audio or video constituting a deep fake — DEFINED at Art. 3(60) and supplied below, "
+        "which requires that the content resemble existing persons, objects, places, entities or "
+        "events and would FALSELY APPEAR to a person to be authentic or truthful.\n"
         "- public_interest_text_disclosure (50(4), the DEPLOYER's duty): it generates text "
         "published to inform the public on matters of public interest. NOT owed where the content "
         "undergoes human review or editorial control with a person holding editorial "
@@ -583,6 +601,26 @@ _QUESTION_CONTEXT: dict[str, tuple[tuple[int, ...], tuple[str, ...]]] = {
     "derogation": ((6,), ()),  # Art. 6(3)(a)-(d)
     "significant_risk": ((6,), ()),  # Art. 6(3) first subparagraph
     "transparency": ((50,), ()),  # Art. 50
+}
+
+# THE DEFINED TERMS EACH QUESTION TURNS ON — Article 3 points, supplied beside the provisions above.
+# Art. 3 is 68 definitions and some 19 000 characters, so it is handed over by the point: naming
+# them keeps a classification cheap, and it makes the supply checkable, which is the part that
+# matters. The coverage ledger rules each of these `CASCADE <node>`, and
+# `test_every_definition_the_ledger_hands_to_a_node_reaches_it` reads that claim back out.
+#
+# A DEFINITION IS NOT A GLOSS. Each of these carries a qualifier that decides cases and that a
+# paraphrase drops: 3(42) covers "not only instant identification, but also limited short delays in
+# order to avoid circumvention", 3(44) reaches a "publicly OR PRIVATELY owned" place, 3(40) excepts
+# categorisation "ancillary to another commercial service and strictly necessary for objective
+# technical reasons", and 3(14) has two limbs of which the second reaches property as well as
+# persons. The questions state the test; these supply the words it is made of.
+_QUESTION_DEFINITIONS: dict[str, tuple[int, ...]] = {
+    "annex_i": (14,),  # 'safety component' — the whole test of Art. 6(1)(a)
+    "annex_iii": (35, 36),  # biometric identification vs verification, the Annex III(1)(a) line
+    "prohibited": (41, 42, 44),  # remote biometric identification, 'real-time', public space
+    "profiling": (52,),  # 'profiling' — defined by reference to Art. 4(4) GDPR
+    "transparency": (39, 40, 60),  # emotion recognition, biometric categorisation, 'deep fake'
 }
 
 # NON-BINDING Commission guidance to supply per question, by snippet ref (data/policy/guidance/).
@@ -621,6 +659,7 @@ def load_questions(
         articles_root=articles_root,
         annexes_root=annexes_root,
         guidance_root=guidance_root,
+        definitions=_QUESTION_DEFINITIONS,
     )
 
 

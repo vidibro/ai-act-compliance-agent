@@ -528,6 +528,23 @@ Ordered by what a wrong answer costs a user.
 
 **Not verified by a run**, same as M4d-10: no golden case pins any Annex I product to a specific instrument, so whether a model now separates the two is unmeasured.
 
+#### M4d-12 — Ten definitions were ruled `CASCADE <node>` and never put in front of that node ✅ FIXED 2026-08-21
+
+**The defect.** `_QUESTION_CONTEXT` is the entire supply of law to a node, and it named Article 3 for two nodes only — `is_ai` and `gpai_model`. The ledger meanwhile ruled thirteen Art. 3 definitions `CASCADE <node>`, so **ten of them were claimed as asked by a node that never saw them**: 3(14) → `annex_i`, 3(35)/3(36) → `annex_iii`, 3(39)/3(40)/3(60) → `transparency`, 3(41)/3(42)/3(44) → `prohibited`, 3(52) → `profiling`. Each question answered on a hand-written gloss instead, and every gloss had dropped the qualifying half:
+
+- **3(42)** covers *"not only instant identification, but also limited short delays in order to avoid circumvention"*. The prompt said only that post-hoc identification is not real-time — inviting *"we buffer thirty seconds, so it is not real-time"* to clear an Art. 5(1)(h) prohibition.
+- **3(44)** reaches a *"publicly **or privately** owned"* place. The prompt never said privately owned counts, so a shop or stadium read as private.
+- **3(40)** excepts categorisation *"ancillary to another commercial service and strictly necessary for objective technical reasons"*. `grep -rn "ancillary"` over `src/` and both policy files returned **zero hits**.
+- **3(39)** infers emotions *"on the basis of their biometric data"* — omitted, so text sentiment analysis read as emotion recognition.
+- **3(14)** has two limbs and reaches *"persons **or property**"*; the prompt carried the second limb only.
+- **3(52)** defines profiling by reference to Art. 4(4) GDPR; the node that **overrides every Art. 6(3) derogation** got one hand-written sentence.
+
+**Supplied by the point, not the article.** Art. 3 is 68 definitions and ~19 000 characters; handing it whole to five more nodes would multiply the cost of every classification for text the questions never use. `anchor_questions` takes a `definitions` map, and `_QUESTION_DEFINITIONS` names the two or three points each node turns on — ~2 900 characters in total across all ten. They are appended last and labelled, so they read as the meaning of terms used above rather than as further provisions.
+
+**A resolver bug fell out of it.** `_extract_point` matched only the lettered pattern, so `resolve_requirement(dir, 3, None, point="14")` raised *"Article 3 has no point (14) (found: ['a', 'b', 'a', …])"* — it had found the sub-points nested inside the definitions. `provision_labels` gained `_NUMBERED_POINT` when Art. 3's definitions were first enumerated; the resolver never did. A digit label now selects the numbered pattern.
+
+**The guard is the point.** `test_every_ruling_names_something_that_exists` checked that a cascade node id resolves — the weaker half of the claim. `test_every_definition_the_ledger_hands_to_a_node_reaches_it` reads the ledger's own `CASCADE <node>` ruling for each Art. 3 point and requires the definition's verbatim text to be in that node's built context. Verified by dropping 3(44) from the map: *"definitions the ledger hands to a node that never sees them: {'Art. 3(44)': 'prohibited'}"*.
+
 #### M4d-1 — Annex I safety components ✅ DONE 2026-07-30
 
 **Was:** `RiskClass.HIGH_RISK` said it plainly — *"Either an Annex I safety component, or an Annex III use case…"* — and the cascade only ever asked the second. `decide_risk_class` routed `in_annex_iii.value is None` straight to `MINIMAL`, so an AI safety component of a machine, a lift, a surgical robot or a car was told it owed nothing. A false clearance: not a missed gap inside a report, but a high-risk system handed a clean bill of health.

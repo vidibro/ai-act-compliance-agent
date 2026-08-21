@@ -169,11 +169,16 @@ def provision_labels(articles_dir: Path, article: int | str) -> tuple[str, ...]:
 
 
 def _extract_point(text: str, point: str, article: int) -> str:
-    """Pull one lettered point's literal text out of an article body or paragraph.
+    """Pull one point's literal text out of an article body or paragraph.
 
     Needed because not every obligation is a whole paragraph. Article 16 is a chapeau followed by
     points (a) to (l), most of which cross-reference another article — citing the article whole
     would resolve to the entire list and restate twelve duties in one requirement.
+
+    TWO POINT SHAPES, chosen by the label. Most articles number their points with letters; Article 3
+    numbers its 68 definitions `(1)` to `(68)`. Matching a numbered one against the lettered pattern
+    finds the sub-points nested inside the definitions instead — a handful of stray (a)/(b) labels
+    where the caller asked for definition (14) — so a digit label selects the numbered pattern.
 
     The returned text KEEPS its "(b) " label and drops the chapeau, so it stays a literal substring
     of the stored article. The chapeau is not lost to the reader: it says who owes the point, and
@@ -183,7 +188,8 @@ def _extract_point(text: str, point: str, article: int) -> str:
     paragraph — so citing a point that has sub-points resolves to the point and its sub-points
     together, which is how the provision reads.
     """
-    labels = list(_POINT_LABEL.finditer(text))
+    pattern = _NUMBERED_POINT if point.isdigit() else _POINT_LABEL
+    labels = list(pattern.finditer(text))
     hits = [m for m in labels if m.group("label") == point]
     if not hits:
         found = [m.group("label") for m in labels]

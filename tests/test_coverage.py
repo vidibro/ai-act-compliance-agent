@@ -17,11 +17,11 @@ from pathlib import Path
 import pytest
 import yaml
 
-from aiact.classify.graph import _QUESTION_CONTEXT, QUESTIONS
+from aiact.classify.graph import _QUESTION_CONTEXT, QUESTIONS, load_questions
 from aiact.config import get_settings
-from aiact.coverage import Status, classify_coverage, summarise
+from aiact.coverage import CASCADE_PREFIX, Status, classify_coverage, summarise
 from aiact.gap import roles as role_questions
-from aiact.policy_loader import load_policy_spec
+from aiact.policy_loader import load_policy_spec, resolve_requirement
 from aiact.provisions import all_provisions, annex_instruments
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -226,4 +226,37 @@ def test_the_annex_i_rulings_name_the_instrument_the_annex_names(ledger):
     assert not wrong, (
         f"Annex I rulings naming an instrument the Annex does not put at that item: "
         f"{ {k: v[0] for k, v in wrong.items()} }. The Annex is authoritative."
+    )
+
+
+def test_every_definition_the_ledger_hands_to_a_node_reaches_it(ledger):
+    """"CASCADE <node>" MUST MEAN THE NODE IS GIVEN THE PROVISION, not merely that the node exists.
+
+    `test_every_ruling_names_something_that_exists` checks the node id resolves. That is the weaker
+    half of the claim: a definition can be ruled `CASCADE prohibited` while the `prohibited` node is
+    handed Art. 5 and nothing else, leaving the question to be answered from a paraphrase in the
+    prompt. Art. 3's definitions are where that costs something, because each carries a qualifier a
+    paraphrase drops — 3(42)'s "limited short delays", 3(44)'s "publicly OR PRIVATELY owned",
+    3(40)'s "ancillary to another commercial service" exception.
+
+    So the ledger's own claim is read back against what `load_questions` actually builds: for every
+    Art. 3 point ruled to a node, that node's context must contain the definition's text."""
+    questions = load_questions()
+    definitions = {
+        str(division): str(reason)
+        for division, reason in (ledger["article_rulings"].get(3) or {}).items()
+    }
+    assert definitions, "Art. 3 is no longer itemised in the ledger — re-derive this test"
+
+    missing: dict[str, str] = {}
+    for point, reason in definitions.items():
+        if not reason.startswith(CASCADE_PREFIX):
+            continue
+        node = reason[len(CASCADE_PREFIX) :].split()[0].rstrip(",:—")
+        text, _url = resolve_requirement(ARTICLES_DIR, 3, None, point=point)
+        if text.strip() not in questions[node].context:
+            missing[f"Art. 3({point})"] = node
+    assert not missing, (
+        f"definitions the ledger hands to a node that never sees them: {missing}. Supply the point "
+        f"in _QUESTION_DEFINITIONS, or rule the definition on some other ground."
     )
