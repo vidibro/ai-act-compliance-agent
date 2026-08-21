@@ -15,14 +15,17 @@ from pathlib import Path
 import pytest
 import yaml
 
+from aiact.classify.graph import _QUESTION_CONTEXT, QUESTIONS
 from aiact.config import get_settings
+from aiact.gap import roles as role_questions
 from aiact.gap.rules import roles_with_rules
-from aiact.policy_loader import load_policy_spec, resolve_requirement
+from aiact.policy_loader import load_policy_spec, provision_labels, resolve_requirement
 from aiact.schemas.enums import ActorRole, CheckType, ObligationStatus, RiskClass
 
 ROOT = Path(__file__).resolve().parents[1]
 SPEC_PATH = ROOT / "data" / "policy" / "spec.yaml"
 ARTICLES_ROOT = ROOT / "data" / "policy" / "articles"
+ANNEXES_ROOT = ROOT / "data" / "policy" / "annexes"
 
 # READ, never restated. The act version already lives in two places that must agree — the runtime
 # setting and the spec header — and a literal here would be a third copy of a fact whose copies
@@ -140,7 +143,12 @@ def test_every_article_is_classified_in_scope_or_out(version):
     adopted yet is exactly where an unruled article hides: it is in the repo, it looks authoritative
     and nothing else reads it. Checking it here is what makes repointing the pin a decision rather
     than a discovery. Article NUMBERS are version-independent, so the citations in spec.yaml are
-    meaningful against a store the spec does not currently resolve from."""
+    meaningful against a store the spec does not currently resolve from.
+
+    An entry's SHAPE says how much of the article it rules out: a string excludes the whole article,
+    a mapping excludes named divisions of an article a rule does cite. The two are checked against
+    opposite expectations — a cited article may not be excluded whole, and an uncited one has no
+    divisions worth enumerating."""
     spec = _spec()
     scope_path = SPEC_PATH.parent / f"scope-{version}.yaml"
     ledger = yaml.safe_load(scope_path.read_text(encoding="utf-8"))
@@ -151,19 +159,195 @@ def test_every_article_is_classified_in_scope_or_out(version):
     in_store = {p.stem.removeprefix("article-").lstrip("0") for p in
                 (ARTICLES_ROOT / version).glob("article-*.md")}
     cited = {str(r.source.article) for r in spec.rules}
-    out_of_scope = {str(k) for k in ledger["out_of_scope"]}
+    entries = {str(k): v for k, v in ledger["articles_out_of_scope"].items()}
+    whole = {k for k, v in entries.items() if isinstance(v, str)}
+    by_division = {k for k, v in entries.items() if isinstance(v, dict)}
 
-    overlap = cited & out_of_scope
-    assert not overlap, f"articles both cited and marked out of scope: {sorted(overlap)}"
+    overlap = cited & whole
+    assert not overlap, f"articles both cited and marked out of scope whole: {sorted(overlap)}"
 
-    unclassified = in_store - cited - out_of_scope
+    stray = by_division - cited
+    assert not stray, (
+        f"articles broken down by division that no rule cites: {sorted(stray)}. An uncited article "
+        f"is ruled out whole, with a reason, not division by division."
+    )
+
+    unclassified = in_store - cited - whole
     assert not unclassified, (
         f"Articles present in the store but neither cited by a rule nor listed in "
         f"{scope_path.name}: {sorted(unclassified)}. Rule on them before shipping."
     )
 
-    phantom = (cited | out_of_scope) - in_store
+    phantom = (whole | by_division) - in_store
     assert not phantom, f"classified articles that do not exist in the store: {sorted(phantom)}"
+
+
+def test_every_annex_is_classified_in_scope_or_out():
+    """THE COVERAGE GUARANTEE, over ANNEXES.
+
+    The Annexes carry operative content the Articles only point at — Annex III IS the list of
+    high-risk areas, Annex I IS the list of harmonisation instruments, Annex IV IS the technical
+    documentation an Art. 11 file must contain. An amendment can land in an Annex without a word of
+    the Articles changing, so a partition over `articles/` alone would never see it.
+
+    An annex counts as covered if a rule cites it (`source.annex`) or the classification cascade
+    supplies it as context. Both are real uses, and neither is a claim that the annex's own contents
+    have been modelled — only that some part of the tool reads it.
+
+    An annex the tool OUGHT to read is not an annex the tool has decided against, so the ledger
+    splits the remainder the same way the paragraph partition does: `annexes_out_of_scope` for a
+    considered exclusion, `annexes_awaiting_rules` for one a rule should reach and does not.
+
+    THE PINNED VERSION ONLY, unlike the article partition beside it. A ledger for a superseded text
+    can only be checked by writing rulings into it, and those rulings buy nothing: the ruleset does
+    not resolve against that store, and no report has ever been generated from it. The article
+    partition still runs over every version because those rulings already exist."""
+    annex_dir = ANNEXES_ROOT / VERSION
+    ledger = yaml.safe_load(SCOPE_PATH.read_text(encoding="utf-8"))
+
+    in_store = {p.stem.removeprefix("annex-") for p in annex_dir.glob("annex-*.md")}
+    cited = {r.source.annex for r in _spec().rules if r.source.annex}
+    cited |= {a for _articles, annexes in _QUESTION_CONTEXT.values() for a in annexes}
+    out_of_scope = {str(k) for k in ledger["annexes_out_of_scope"]}
+    awaiting = {str(k) for k in ledger["annexes_awaiting_rules"]}
+
+    both = out_of_scope & awaiting
+    assert not both, f"annexes both ruled out of scope and awaiting a rule: {sorted(both)}"
+    overlap = cited & (out_of_scope | awaiting)
+    assert not overlap, f"annexes both used and ruled on: {sorted(overlap)}"
+
+    unclassified = in_store - cited - out_of_scope - awaiting
+    assert not unclassified, (
+        f"Annexes present in the store but neither used by the tool nor listed in "
+        f"{SCOPE_PATH.name}: {sorted(unclassified)}. Rule on them before shipping."
+    )
+
+    phantom = (cited | out_of_scope | awaiting) - in_store
+    assert not phantom, f"classified annexes that do not exist in the store: {sorted(phantom)}"
+
+
+# A paragraph ruling that hands the provision to the classification cascade rather than to a rule
+# names the node that consumes it, so the claim is checkable instead of decorative.
+_CASCADE_PREFIX = "CASCADE "
+
+
+def _cascade_nodes() -> set[str]:
+    return set(QUESTIONS) | {role_questions.NODE_ID, role_questions.DEPLOYER_NODE_ID}
+
+
+def test_every_division_of_a_cited_article_is_ruled_on():
+    """THE COVERAGE GUARANTEE, one level down: per PARAGRAPH, not per article.
+
+    An article-level partition asks "is Article N accounted for?" and answers yes the moment any one
+    rule cites any one paragraph of it. An article can therefore be recorded as in scope while most
+    of the duties inside it are modelled by nothing, and the ledger then reads as coverage — worse
+    than an absence, because it invites no further look.
+
+    A division is accounted for when a rule cites it, when a rule cites the whole article, or when
+    the ledger rules on it — as out of scope, as consumed by the cascade, or as openly awaiting a
+    rule. What is forbidden is silence."""
+    spec = _spec()
+    ledger = yaml.safe_load(SCOPE_PATH.read_text(encoding="utf-8"))
+    # Only the mapping-shaped entries carry divisions; a string entry rules out a whole article the
+    # spec does not cite, and `test_every_article_is_classified_in_scope_or_out` owns those.
+    excluded = {
+        str(k): v for k, v in ledger["articles_out_of_scope"].items() if isinstance(v, dict)
+    }
+    awaiting = {str(k): v for k, v in ledger["articles_awaiting_rules"].items()}
+
+    unruled: list[str] = []
+    phantom: list[str] = []
+    for article in sorted({r.source.article for r in spec.rules}):
+        divisions = provision_labels(ARTICLES_DIR, article)
+        if not divisions:
+            continue
+        covering = [r.source for r in spec.rules if r.source.article == article]
+        if any(s.paragraph is None and s.point is None for s in covering):
+            continue  # a rule cites the article whole, so every division is inside its requirement
+        cited = {str(s.paragraph) for s in covering if s.paragraph is not None}
+        cited |= {str(s.point) for s in covering if s.point is not None}
+        ruled = {str(k) for k in excluded.get(str(article), {})}
+        ruled |= {str(k) for k in awaiting.get(str(article), {})}
+
+        both = cited & ruled
+        assert not both, f"Article {article}: divisions both cited and ruled on: {sorted(both)}"
+        unruled += [f"{article}({d})" for d in divisions if d not in cited and d not in ruled]
+        phantom += [f"{article}({d})" for d in ruled if d not in divisions]
+
+    assert not phantom, f"ledger rules on divisions that do not exist: {phantom}"
+    assert not unruled, (
+        f"Divisions of CITED articles that no rule covers and {SCOPE_PATH.name} does not rule on: "
+        f"{unruled}. Each is a duty inside an article the ledger already calls covered."
+    )
+
+
+def _assert_reasons(section: dict) -> None:
+    """Nothing is dismissed by bare assertion, at either depth.
+
+    Handles both entry shapes: a string ruling out a whole article, and a mapping ruling out named
+    divisions of one."""
+    for article, value in section.items():
+        divisions = value.items() if isinstance(value, dict) else [(None, value)]
+        for division, reason in divisions:
+            where = f"Article {article}" + (f"({division})" if division is not None else "")
+            assert isinstance(reason, str) and len(reason.strip()) > 15, (
+                f"{where} is dismissed without a real reason"
+            )
+
+
+def test_articles_awaiting_rules_have_reasons():
+    """The same discipline over the bucket that admits a duty is going unreported."""
+    ledger = yaml.safe_load(SCOPE_PATH.read_text(encoding="utf-8"))
+    _assert_reasons(ledger["articles_awaiting_rules"])
+
+
+@pytest.mark.parametrize("key", ["annexes_out_of_scope", "annexes_awaiting_rules"])
+def test_annex_rulings_have_reasons(key):
+    """And over the annex buckets, which had no reason check of their own."""
+    ledger = yaml.safe_load(SCOPE_PATH.read_text(encoding="utf-8"))
+    for annex, reason in ledger[key].items():
+        assert isinstance(reason, str) and len(reason.strip()) > 15, (
+            f"Annex {annex} is dismissed without a real reason"
+        )
+
+
+def test_a_cascade_ruling_names_a_node_that_actually_consumes_it():
+    """"The cascade handles it" is only an answer if some node does.
+
+    Art. 6 is the article this exists for: it is cited at 6(4), so the article-level ledger calls it
+    covered, while the paragraphs deciding the whole Annex I route are read by the cascade rather
+    than by a rule. Requiring the node to be named is what stops an unconsumed paragraph being waved
+    through on that phrase."""
+    ledger = yaml.safe_load(SCOPE_PATH.read_text(encoding="utf-8"))
+    nodes = _cascade_nodes()
+    for article, value in ledger["articles_out_of_scope"].items():
+        if not isinstance(value, dict):
+            continue
+        for division, reason in value.items():
+            if not reason.startswith(_CASCADE_PREFIX):
+                continue
+            named = reason[len(_CASCADE_PREFIX) :].split()[0].rstrip(",:—")
+            assert named in nodes, (
+                f"Article {article}({division}) is handed to cascade node {named!r}, which does "
+                f"not exist. Known nodes: {sorted(nodes)}"
+            )
+
+
+def test_articles_awaiting_rules_are_declared_not_disguised():
+    """A division that is OWED a rule must say so, never be filed as an exclusion.
+
+    The two buckets mean opposite things — `articles_out_of_scope` says the tool has considered the
+    provision and correctly reports nothing for it; `articles_awaiting_rules` says a real duty goes
+    unreported. Collapsing the second into the first turns a known gap into apparent coverage, which
+    is the one move this ledger exists to prevent."""
+    ledger = yaml.safe_load(SCOPE_PATH.read_text(encoding="utf-8"))
+    awaiting = ledger["articles_awaiting_rules"]
+    for article, divisions in awaiting.items():
+        for division, reason in divisions.items():
+            assert not reason.startswith(_CASCADE_PREFIX), (
+                f"Article {article}({division}) claims to await a rule and to be handled by the "
+                f"cascade. It is one or the other."
+            )
 
 
 def test_every_role_is_classified_in_scope_or_out():
@@ -195,16 +379,13 @@ def test_roles_out_of_scope_entries_have_reasons():
 
 
 @pytest.mark.parametrize("version", sorted(p.name for p in ARTICLES_ROOT.iterdir() if p.is_dir()))
-def test_out_of_scope_entries_have_reasons(version):
-    """Both ledgers. A reason copied forward onto an amended article without being re-read is the
-    failure this file already caught once, when "employment self-assesses, so no notified body"
-    survived Art. 43(1) landing."""
+def test_articles_out_of_scope_entries_have_reasons(version):
+    """Both ledgers, and both shapes of entry. A reason copied forward onto an amended article
+    without being re-read is the failure this file already caught once, when "employment
+    self-assesses, so no notified body" survived Art. 43(1) landing."""
     scope_path = SPEC_PATH.parent / f"scope-{version}.yaml"
     ledger = yaml.safe_load(scope_path.read_text(encoding="utf-8"))
-    for article, reason in ledger["out_of_scope"].items():
-        assert isinstance(reason, str) and len(reason.strip()) > 15, (
-            f"Article {article} is dismissed without a real reason"
-        )
+    _assert_reasons(ledger["articles_out_of_scope"])
 
 
 def test_every_requirement_is_literal_article_text():

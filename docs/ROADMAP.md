@@ -731,6 +731,24 @@ The handover text already tells the reader the list is required, is authoritativ
 
 **Not urgent despite Chapter V being in force**, for one reason only: the golden set has two GPAI cases and both are classification cases. Building an unmeasured ruleset for a regime nobody has asked this tool to check would repeat the mistake M5-a exists to prevent.
 
+#### M4d-9 — The coverage ledger counts articles, and duties live in paragraphs 🟠 mechanism built, 21 rulings owed
+
+**The gap this closes.** An article-level coverage guarantee asks *"is Article N accounted for?"* and answers yes as soon as **any** rule cites **any** paragraph of it. An article can therefore sit in the in-scope half while most of the duties inside it are modelled by nothing, and the ledger then reads as coverage — worse than an absence, because it invites no further look. Art. 16 is the worked example: excluded whole as an "umbrella list that cross-references other articles", true of nine of its twelve points and false of (b), (k) and (l). Fixing those three by hand left the shape intact, and it was still holding Art. 25(4), 27(3), 49(5), 50(5), 72(3) and 73(6).
+
+**The Annexes were outside the partition entirely.** Every check ran over `articles/`. Operative content lives in the Annexes — Annex III *is* the area list, Annex IV *is* the technical documentation — so an amendment can land there without a word of the Articles changing. This consolidation added **Annex XIV** and moved the Machinery Regulation into **Annex I Section B**, from which Art. 2(2) withholds Chapter III.
+
+**What is built.** Three partitions, each failing closed:
+
+- **Annexes** — used by a rule (`source.annex`) or supplied by the cascade, or listed with a reason. **Pinned version only**, unlike the article partition: rulings for a superseded text buy nothing, since the ruleset does not resolve against that store and no report has ever come from it. `data/policy/{articles,annexes}/2024-07-12/` and `scope-2024-07-12.yaml` go with the golden-set rework — 21 tests across 7 files hold the old pin, and repinning 59 cases to a text that is about to be deleted would be doing it twice.
+- **Paragraphs of cited articles** — `provision_labels()` enumerates every citable division (numbered paragraphs, or top-level lettered points for chapeau-plus-list articles like Art. 16), and each must be cited, ruled out of scope, handed to the cascade, or declared as awaiting a rule.
+- **Cascade rulings name their node**, and a test checks it exists. This is the load-bearing one: *"the cascade handles it"* is only an answer if some node does. Nothing reads Art. 6(1c), so no entry claiming a node reads it can pass.
+
+`_PARAGRAPH_START` is `^(\d+[a-z]*)\.` for the same reason. A consolidation inserts paragraphs without renumbering, and the letter has to be part of the match: without it `1a.` starts no paragraph and its text is absorbed into paragraph 1, which then resolves to several paragraphs of law under one citation. Art. 6(1c) is individually addressable.
+
+**What is owed.** `articles_awaiting_rules` holds **21 divisions across 13 articles**, and `annexes_awaiting_rules` holds **Annex V and Annex VII** — the declaration-of-conformity contents Art. 47(2) requires, and the notified-body route Art. 43(1)(b) offers. Both annexes are consequences of a rule citing too narrowly, so each is emptied by fixing that rule rather than by writing an annex rule. Every entry sits inside an article the ledger already called in scope. Beyond the six found by hand: Art. 11(2), 12(2), 12(3), 20(2), 21(2), 43(4), 47(2), 47(4), 48(2), 48(4) and 73(2)-(5). Several are ordinary rules; a few are widened citations on rules that already exist (50(5) qualifies all four Art. 50 duties rather than adding a fifth; 73(2)-(5) are the deadlines on a duty already reported). Art. 47(2) brings Annex V into scope, and Art. 43(1)'s rule cites neither Annex VI nor VII though it is the one rule where a notified body can be involved.
+
+**The bucket is deliberately separate from `articles_out_of_scope`**, and a test forbids an entry in it from claiming the cascade handles it. The two mean opposite things — *"considered, correctly silent"* versus *"a party owes this and no report says so"* — and collapsing the second into the first is exactly how a known gap becomes apparent coverage. Emptying it is the work; editing it away is not.
+
 #### M4d-6 — The ledger cites a class that no longer exists 🟡 two of three fixed 2026-08-11
 
 Arts. 2, 5 and 50 all justified themselves by reference to `ClassificationState`. It is gone. A ledger whose reasons are stale is worse than none, because the coverage test still passes and the file still reads as an audit.

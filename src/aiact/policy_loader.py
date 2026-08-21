@@ -29,7 +29,11 @@ from aiact.guidance import load_snippet
 from aiact.schemas.policy import PolicySpec
 
 _FRONT_MATTER = re.compile(r"\A---\n(.*?)\n---\n+", re.S)
-_PARAGRAPH_START = re.compile(r"^(\d+)\.\s+", re.M)
+# A consolidation inserts paragraphs without renumbering the ones after them, so a paragraph label
+# is a STRING — `1`, `1a`, `1b` — never an integer. Art. 5(1a)-(1b) and Art. 6(1a)-(1c) are the live
+# cases. The letter must be part of the match: without it `1a.` starts no paragraph and its text is
+# absorbed into paragraph 1, which then resolves to several paragraphs under one citation.
+_PARAGRAPH_START = re.compile(r"^(\d+[a-z]*)\.\s+", re.M)
 _FRONT_FIELD = re.compile(r"^(\w+):\s*(.*)$", re.M)
 _POINT_LABEL = re.compile(r"^(?P<indent>[ \t]*)\((?P<label>[a-z]+)\)\s", re.M)
 
@@ -89,19 +93,22 @@ def _read_article(articles_dir: Path, article: int) -> tuple[str, dict[str, str]
     return provisions.strip("\n"), front
 
 
-def _extract_paragraph(provisions: str, paragraph: int, article: int) -> str:
+def _extract_paragraph(provisions: str, paragraph: int | str, article: int) -> str:
     """Pull one numbered paragraph's literal text out of an article body.
 
     Paragraphs are rendered by scripts/fetch_articles.py as a line starting `N. ` at column 0,
     with continuation/sub-points indented — so a paragraph runs until the next such line.
+
+    `paragraph` is compared as a STRING, so a rule may cite `1` or `1a` and get exactly that one.
     """
-    starts = [(int(m.group(1)), m.start(), m.end()) for m in _PARAGRAPH_START.finditer(provisions)]
+    wanted = str(paragraph)
+    starts = [(m.group(1), m.start(), m.end()) for m in _PARAGRAPH_START.finditer(provisions)]
     if not starts:
         raise ValueError(
             f"Article {article} has no numbered paragraphs, but a rule cites paragraph {paragraph}."
         )
     for i, (num, _start, end) in enumerate(starts):
-        if num != paragraph:
+        if num != wanted:
             continue
         stop = starts[i + 1][1] if i + 1 < len(starts) else len(provisions)
         # Text after the "N. " label, up to the next paragraph.
@@ -110,6 +117,29 @@ def _extract_paragraph(provisions: str, paragraph: int, article: int) -> str:
     raise ValueError(
         f"Article {article} has no paragraph {paragraph} (found: {available})."
     )
+
+
+def provision_labels(articles_dir: Path, article: int) -> tuple[str, ...]:
+    """Every separately citable division of one article, in the order the Article writes them.
+
+    Numbered paragraphs where the article has them (`1`, `1a`, `2`, …); otherwise its top-level
+    lettered points (`a`, `b`, …), which is how Article 16 and the other chapeau-plus-list articles
+    are built. An article that is one unbroken block has neither and returns empty.
+
+    THIS IS WHAT THE COVERAGE LEDGER COUNTS. An article-level partition answers "accounted for" as
+    soon as any one rule cites any one paragraph, so most of an article's duties can go unmodelled
+    inside an article the ledger records as covered. Enumerating the divisions turns "this article
+    is in scope" into a claim about each duty the article contains.
+    """
+    provisions, _ = _read_article(articles_dir, article)
+    paragraphs = tuple(m.group(1) for m in _PARAGRAPH_START.finditer(provisions))
+    if paragraphs:
+        return paragraphs
+    labels = list(_POINT_LABEL.finditer(provisions))
+    if not labels:
+        return ()
+    top = min(len(m.group("indent")) for m in labels)
+    return tuple(m.group("label") for m in labels if len(m.group("indent")) == top)
 
 
 def _extract_point(text: str, point: str, article: int) -> str:
