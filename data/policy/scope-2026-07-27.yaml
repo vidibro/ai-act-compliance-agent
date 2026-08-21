@@ -428,46 +428,150 @@ article_rulings:
     5: AI Office duty to publish a FRIA template. Institutional.
 
   # --- Chapter III Section 4 — notifying authorities and notified bodies -----------------------
-  # Duties of MEMBER STATES, notifying authorities and notified bodies — none of the roles this
-  # tool reports for. That holds whatever the area, which is the point: the reason used to be
-  # "employment self-assesses, so no notified body is ever involved", and Art. 43(1) makes that
-  # false for Annex III point 1. A provider whose biometric system goes the Annex VII route deals
-  # with a notified body; the duties in this section are still the body's, not theirs.
-  28: Duty of Member States to designate notifying authorities.
-  29: Duty of conformity assessment bodies seeking notification.
-  30: Notification procedure — Member State and Commission duties.
-  31: Requirements on notified bodies.
+  # Duties of MEMBER STATES, notifying authorities and notified bodies — none of the roles this tool
+  # reports for. It holds whatever the Annex III area: a provider whose biometric system takes the
+  # Annex VII route under Art. 43(1) DOES deal with a notified body, and the duties here are still
+  # the body's rather than theirs.
+  #
+  # Several paragraphs name the provider while binding somebody else — Art. 31(4) requires the body
+  # to be independent OF the provider, Art. 33(3) makes subcontracting subject to the provider's
+  # AGREEMENT, Art. 34(2) tells the body not to burden it. A right held is not a duty owed, and
+  # reading each one is what settles which it is.
+  28:
+    1: Member State duty to designate or establish a notifying authority.
+    2: Member States may hand the assessment to a national accreditation body. A Member State choice.
+    3: Notifying authorities must be free of conflicts of interest. The authority's own duty.
+    4: Separation of the notification decision from the assessment. The authority's duty.
+    5: Notifying authorities may not offer the services they supervise. The authority's duty.
+    6: Notifying authorities safeguard confidentiality under Art. 78. The authority's duty.
+    7: Notifying authorities must have competent personnel. The authority's duty.
+    8: Coordination with the Section A Annex I notifying authorities. Institutional.
+    9: A notifying authority designated under Section A Annex I law may act here too. Institutional.
+  29:
+    1: A conformity assessment body applies for notification. The body's own act, and optional.
+    2: What the application must contain. The body's duty on that route.
+    3: Where the body cannot supply an accreditation certificate. The body's duty.
+    4: Documents from a designation under other Union harmonisation law. The body's duty.
+  30:
+    1: Notifying authorities may notify only bodies meeting Art. 31. The authority's duty.
+    2: Notification to the Commission and the Member States, using the Annex XIV codes.
+    3: What that notification must contain. The authority's duty.
+    4: When the body may begin acting as a notified body. Institutional timing.
+    5: The Commission's consultation where objections are raised. Institutional.
+  31:
+    1: A notified body must be established under national law with legal personality.
+    2: Organisational, quality management, resource and process requirements on the body.
+    3: Structure and reporting lines safeguarding confidence in its performance.
+    4: >-
+      Independence FROM the provider, and from anyone with an interest in the system. A requirement
+      on the body; the provider is the party it must be independent of, not the party bound.
+    5: No conflicting activity by the body, its management or assessment personnel.
+    6: Independence, objectivity and impartiality of the body's activities.
+    7: Documented procedures safeguarding confidentiality of information the body obtains.
+    8: >-
+      Procedures taking due account of the size of a provider and of the AI system's complexity. A
+      duty of the body toward providers, not of the provider.
+    9: Liability insurance for the body's conformity assessment activities.
+    10: Professional integrity and competence in the body's tasks.
+    11: Sufficient internal competence to evaluate work done by external parties.
+    12: Participation in the Art. 38 coordination activities.
   32: Presumption of conformity for notified bodies. Declaratory.
-  33: Duty of notified bodies regarding subsidiaries and subcontracting.
-  34: Operational duties of notified bodies.
-  35: Commission duty to assign identification numbers and publish lists.
-  36: Member State duty regarding changes to notifications.
-  37: Commission procedure to challenge a notified body's competence.
-  38: Commission duty to coordinate notified bodies.
+  33:
+    1: Conditions on a notified body subcontracting or using a subsidiary.
+    2: The notified body takes full responsibility for subcontracted work.
+    3: >-
+      Subcontracting requires the PROVIDER'S AGREEMENT. A consent right held by the provider, not a
+      duty owed by it; nothing in a technical file evidences or breaches it.
+    4: Documents on the subcontractor's qualifications held at the notifying authority's disposal.
+  34:
+    1: Notified bodies verify conformity under the Art. 43 procedures. The body's duty.
+    2: >-
+      Notified bodies must avoid unnecessary burdens on providers, weighing the provider's size and
+      the system's complexity. A duty of the body toward the provider.
+    3: The body makes documentation available to its notifying authority on request.
+  35:
+    1: The Commission assigns each notified body a single identification number. Institutional.
+    2: The Commission publishes the list of notified bodies. Institutional.
+  36:
+    1: The notifying authority notifies changes to a notification. Institutional.
+    2: Arts. 29 and 30 apply to an extension of scope. Institutional.
+    3: A notified body ceasing activity informs its notifying authority. The body's duty.
+    4: Where the authority doubts a notified body still meets Art. 31. The authority's duty.
+    5: >-
+      A body whose designation is suspended, restricted or withdrawn informs the affected providers.
+      A duty of the body; the provider is the recipient, not the duty-holder.
+    6: The authority ensures another body takes over the affected files. Institutional.
+    7: What the authority must do on restriction, suspension or withdrawal. Institutional.
+    8: >-
+      Certificates remain valid for three months after a suspension or restriction in the stated
+      circumstances. A fact about the certificate, not a duty of the provider holding it.
+    9: Certificate validity following a withdrawal. Same shape as 36(8).
+  37:
+    1: The Commission investigates doubts about a notified body's competence. Institutional.
+    2: The notifying authority supplies information to that investigation. Institutional.
+    3: The Commission keeps investigation information confidential. Institutional.
+    4: The Commission may require the Member State to act on a failing body. Institutional.
+  38:
+    1: The Commission ensures coordination between notified bodies. Institutional.
+    2: Each notifying authority ensures its bodies take part. Institutional.
+    3: The Commission provides for exchange of knowledge and best practice. Institutional.
   39: Rules for conformity assessment bodies of third countries.
 
   # --- Chapter III Section 5 — standards, conformity, certificates, registration ---------------
-  40: >-
-    Harmonised standards. Confers a presumption of conformity if applied; an option, not a duty.
+  40:
+    1: >-
+      PRESUMPTION OF CONFORMITY where harmonised standards are applied. A benefit available to the
+      provider, not a duty: applying standards is optional, and Art. 43(1) is where the choice has
+      consequences.
+    2: Commission duty to issue standardisation requests. Institutional.
+    3: Participants in standardisation seek to promote investment and innovation. Aspirational.
+
   41:
     1: Commission power to adopt common specifications by implementing act. Institutional.
     2: Commission duty to inform the Art. 1025/2012 committee first. Institutional.
     3: Presumption of conformity for a system that follows them. Declaratory, no duty.
     4: Commission duty to assess a harmonised standard proposed to it. Institutional.
     6: Member State route to challenge a common specification. Not a provider duty.
-  42: Presumption of conformity for certain requirements. Declaratory, no duty.
+  42:
+    1: >-
+      Presumption that a system trained on data reflecting its specific setting meets Art. 10(4). A
+      benefit, and evidence for it is already sought by AIA-HR-A10.
+    2: Presumption of cybersecurity conformity from a certification under Reg (EU) 2019/881. A benefit.
+    3: Interaction with Regulation (EU) 2024/2847 on horizontal cybersecurity. A benefit.
   43:
     5: Commission delegated power to amend Annexes VI and VII. Institutional.
     6: Commission delegated power to move Annex III points 2-8 to the Annex VII route. Institutional.
-  44: >-
-    Certificates issued by notified bodies — their contents, validity, renewal, suspension and
-    withdrawal. Duties of the BODY that issues them, not of the provider that holds one. A provider
-    on the Annex VII route (Art. 43(1)) will hold such a certificate, and this article still says
-    nothing about what they must do with it.
-  45: Information duties of notified bodies.
-  46: >-
-    Derogation from the conformity assessment procedure — an exceptional authorisation by a market
-    surveillance authority, not a standing provider duty.
+  44:
+    1: Language and content of certificates issued by notified bodies. The body's duty.
+    2: >-
+      Certificate validity periods, and extension "at the request of the provider". The request is
+      the provider's option, and the decision is the body's.
+    3: >-
+      A notified body finding a system no longer conforming suspends, withdraws or restricts the
+      certificate. The body's duty; the consequence for the provider is that it may no longer rely
+      on it.
+  45:
+    1: Notified bodies inform their notifying authority of the listed events. The body's duty.
+    2: Notified bodies inform each other of refusals, suspensions and withdrawals. The body's duty.
+    3: Notified bodies share relevant information on negative and positive results. The body's duty.
+    4: Notified bodies safeguard confidentiality under Art. 78. The body's duty.
+  46:
+    1: >-
+      A market surveillance authority MAY authorise placing on the market without the Art. 43
+      assessment, for exceptional reasons of public security or protection of life and health. A
+      derogation granted by the authority on request; the request is an option, not a duty.
+    2: >-
+      Law enforcement or civil protection may put a system into service without that authorisation
+      in urgency, PROVIDED the authorisation is requested during or after use without undue delay.
+      A real duty, owed by whoever takes this exceptional route. This tool assesses systems on the
+      ordinary route and reports nothing here — the same known limit as Art. 60.
+    3: The authorisation issues only if the authority finds the system meets Section 2. The authority's duty.
+    4: An unopposed authorisation is deemed justified after 15 days. Institutional timing.
+    5: The Commission's consultation where a Member State objects. Institutional.
+    6: Withdrawal of an authorisation the Commission considers unjustified. Institutional.
+    7: >-
+      For Section A Annex I products only the derogations in that product's own legislation apply.
+      A pointer to law this tool does not carry.
   47:
     3: >-
       A single EU declaration of conformity where other Union harmonisation legislation also requires

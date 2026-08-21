@@ -462,12 +462,6 @@ _DUTY_VERB = re.compile(r"\b(shall|must|required to|obliged to|responsible for)\
 # Most are false positives of a deliberately blunt regex — the role is mentioned, the obligation is
 # somebody else's. Saying so in one line is the price of not missing the ones that are real.
 DUTY_BEARING_EXCLUSIONS: dict[str, str] = {
-    "31": "Notified bodies shall be independent OF the provider. The duty is the body's.",
-    "33": "Subcontracting needs the provider's agreement — a consent right, not a duty.",
-    "34": "Notified bodies shall avoid burdening providers. The body's duty.",
-    "36": "Certificates 'shall remain valid' — a fact about the certificate, not its holder.",
-    "44": "Certificate validity and renewal 'at the request of the provider'. An option.",
-    "46": "46(2)'s request duty binds whoever took the derogation route, which is an option.",
     "52": "GPAI provider notification. Chapter V, deferred whole (M4d-8).",
     "53": "GPAI provider obligations. Chapter V, deferred whole (M4d-8).",
     "54": "GPAI authorised representative. Chapter V, deferred whole (M4d-8).",
@@ -556,5 +550,3 @@ def test_a_wholly_excluded_article_holds_no_unacknowledged_duty():
 
     for article, reason in DUTY_BEARING_EXCLUSIONS.items():
         assert len(reason.strip()) > 15, f"Article {article} is dismissed without a real reason"
-
-

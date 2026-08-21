@@ -157,6 +157,12 @@ def classify_coverage(
                 status, detail = Status.NOT_OWED, reason
         elif key in owed:
             status, detail = Status.OWED, owed[key]
+        elif division is None and document in blanket_reasons:
+            # An Article or Annex the text does not divide at all — Art. 32, Art. 39. There is one
+            # provision, so a reason written about the document IS the reason for that provision.
+            # Nothing is being covered by proxy, and calling it a blanket would report a debt that
+            # cannot be paid: there is no finer address to write.
+            status, detail = Status.NOT_OWED, blanket_reasons[document]
         elif provision.kind == "article" and document in whole_cited:
             by = whole_cited[document]
             status, detail = Status.BLANKET, f"inside {document}, cited whole by {by}"

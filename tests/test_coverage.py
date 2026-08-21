@@ -11,6 +11,7 @@ ruleset has been found to miss was sitting inside one.
 
 from __future__ import annotations
 
+import re
 from pathlib import Path
 
 import pytest
@@ -34,7 +35,7 @@ SCOPE_PATH = ROOT / "data" / "policy" / f"scope-{VERSION}.yaml"
 # Provisions still covered by a ruling made about the whole article or annex around them, rather
 # than by one written for them. THE TARGET IS ZERO, and it is paid down a chapter at a time.
 # Declared here so the number can only move when someone edits it.
-BLANKET_PROVISIONS = 515
+BLANKET_PROVISIONS = 426
 
 
 @pytest.fixture(scope="module")
@@ -168,3 +169,29 @@ def test_the_partition_covers_the_whole_store(covered):
     provisions = all_provisions(ARTICLES_DIR, ANNEXES_DIR)
     assert len(covered) == len(provisions)
     assert [c.provision for c in covered] == provisions
+
+
+def test_the_ledger_defines_nothing_twice():
+    """A DUPLICATE KEY IS SILENT, and that is what makes it dangerous here.
+
+    PyYAML keeps the last definition and discards the earlier one without a word, so a ledger can
+    carry two contradictory rulings for the same provision while every other test in this file
+    passes — they all read the parsed mapping, which by then holds only one of them. The ruling a
+    reviewer reads and the ruling the partition applies would be different sentences.
+
+    Parsed from the TEXT rather than from the loaded mapping, because the loaded mapping is exactly
+    what cannot show the problem."""
+    key = re.compile(r"^  ([\"']?[0-9A-Za-z]+[\"']?):")
+    section, seen, clashes = None, {}, []
+    for line in SCOPE_PATH.read_text(encoding="utf-8").splitlines():
+        if re.match(r"^[a-z_]+:", line):
+            section = line.split(":")[0]
+            seen[section] = set()
+            continue
+        match = key.match(line)
+        if match and section:
+            name = match.group(1).strip("\"'")
+            if name in seen[section]:
+                clashes.append(f"{section}: {name}")
+            seen[section].add(name)
+    assert not clashes, f"the ledger defines these twice, and YAML keeps only the last: {clashes}"
