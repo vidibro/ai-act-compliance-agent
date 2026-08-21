@@ -169,10 +169,34 @@ def test_the_marking_rule_resolves_its_guidance_at_load():
     spec = load_policy_spec()
     rule = next(r for r in spec.rules if r.rule_id == "AIA-TR-A50-2")
 
-    assert rule.guidance_refs == ["C-2026-5054/machine-readable-marking-defined"]
+    assert rule.guidance_refs == [
+        "C-2026-5054/machine-readable-marking-defined",
+        "C-2026-5054/both-elements-required",
+        "C-2026-5054/detection-must-be-available",
+    ]
     assert "without human intervention" in rule.guidance_context
-    assert [g.reference for g in rule.guidance_sources] == ["C(2026) 5054 final"]
     assert all(g.binding is False for g in rule.guidance_sources)
+    assert {g.reference for g in rule.guidance_sources} == {"C(2026) 5054 final"}
+
+
+def test_the_marking_rule_carries_the_detection_half_of_the_paragraph():
+    """ART. 50(2) IS A CONJUNCTION, and this rule once checked one side of it.
+
+    The enacted words are "marked in a machine-readable format AND detectable as artificially
+    generated or manipulated". The evidence described marking and nothing else, so a provider
+    documenting a watermarking scheme in full and silent on detection passed the only Art. 50 rule
+    that is both document_verifiable and check_type substance — a false PASS on half a duty.
+
+    Both halves are pinned here: the enacted conjunction, which comes from the resolved law, and
+    the guidance that says one element does not suffice, which comes from the store."""
+    rule = next(r for r in load_policy_spec().rules if r.rule_id == "AIA-TR-A50-2")
+
+    assert "detectable as artificially generated or manipulated" in rule.requirement
+    assert "will not suffice to comply" in rule.guidance_context
+    assert "means of detection are available to the persons" in rule.guidance_context
+    assert "DETECTION" in rule.evidence_expected, (
+        "the evidence must ask for the detection half, not only the marking half"
+    )
 
 
 def test_no_other_rule_leans_on_interpretation():

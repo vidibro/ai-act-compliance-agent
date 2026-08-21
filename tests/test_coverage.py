@@ -197,3 +197,49 @@ def test_the_ledger_defines_nothing_twice():
                 clashes.append(f"{section}: {name}")
             seen[section].add(name)
     assert not clashes, f"the ledger defines these twice, and YAML keeps only the last: {clashes}"
+
+
+def test_the_annex_i_rulings_name_the_instrument_the_annex_names(ledger):
+    """THE PROSE BESIDE A KEY WAS NEVER CHECKED AGAINST ANYTHING, and this is where it showed.
+
+    The ledger had B/14 as Regulation (EU) No 167/2013 and B/15 as No 168/2013. The Annex has them
+    the other way round. Every existing check compared KEYS — `test_the_ledger_rules_on_nothing_
+    that_does_not_exist` matches addresses, `_assert_reasons` measures a reason's length, and
+    `test_every_annex_i_instrument_has_a_name_in_the_code` compares item keys to enum members. A
+    reason can therefore describe the wrong law entirely and pass all three.
+
+    So the instrument is DERIVED: the first OJ citation inside each Annex I item is the act that
+    item enacts, and the ruling written for that item must name it."""
+    body = (ANNEXES_DIR / "annex-I.md").read_text(encoding="utf-8").split("---", 2)[2]
+    cite = re.compile(
+        r"(?:Regulation|Directive)\s+(?:\((?:EU|EC|EEC)\)\s+)?(?:No\s+)?\d{1,4}/\d{2,4}"
+        r"(?:/(?:EC|EU|EEC))?"
+    )
+    marker = re.compile(r"(?:^|(?<=\s))(\d{1,2})\.(?=[ \t]*[A-Z(])", re.M)
+
+    starts = {name: body.index(f"Section {name}") for name in ("A", "B")}
+    bounds = (("A", starts["A"], starts["B"]), ("B", starts["B"], len(body)))
+    instruments: dict[str, str] = {}
+    for section, start, end in bounds:
+        span = body[start:end]
+        marks = list(marker.finditer(span))
+        for i, m in enumerate(marks):
+            nxt = marks[i + 1].start() if i + 1 < len(marks) else len(span)
+            found = cite.search(span[m.end() : nxt])
+            assert found, f"Annex I({section})({m.group(1)}) names no instrument — re-derive this"
+            instruments[f"{section}/{m.group(1)}"] = found.group(0)
+
+    rulings = ledger["annex_rulings"]["I"]
+    assert set(rulings) == set(instruments), (
+        f"the ledger and the Annex disagree on which items exist: "
+        f"{sorted(set(rulings) ^ set(instruments))}"
+    )
+    wrong = {
+        item: (instrument, rulings[item])
+        for item, instrument in instruments.items()
+        if instrument not in str(rulings[item])
+    }
+    assert not wrong, (
+        f"Annex I rulings naming an instrument the Annex does not put at that item: "
+        f"{ {k: v[0] for k, v in wrong.items()} }. The Annex is authoritative."
+    )

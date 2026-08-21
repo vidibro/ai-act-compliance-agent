@@ -458,9 +458,29 @@ QUESTIONS: dict[str, Question] = {
         _src(6, 3),
         # The SECOND subparagraph only. The chapeau is the `significant_risk` node — see there for
         # why the paragraph is split in two.
-        "Does an Article 6(3)(a)-(d) derogation apply — narrow procedural task; improves a "
-        "completed human activity; detects decision patterns; or a preparatory task? Answer which, "
-        "or none.",
+        #
+        # EACH LIMB CARRIES ITS QUALIFIER, because two of the four are conjunctions and the
+        # qualifier is the half that decides real cases. Shortening (c) to "detects decision
+        # patterns" clears exactly the system the point excludes — one that spots a pattern AND
+        # feeds it back into the assessment — and shortening (d) to "a preparatory task" drops the
+        # Annex III tether that makes it a derogation rather than a general exemption. A named
+        # condition here routes to `significant_risk`, and a `false` there ends at NOT_HIGH_RISK
+        # with Arts. 9-15 and 16-21 gone, so a loose limb is a false clearance.
+        "Does an Article 6(3)(a)-(d) derogation apply? Answer which condition, or none. Each is a "
+        "test in full — a system that meets the first half of (c) or (d) and not the second does "
+        "NOT qualify:\n"
+        "(a) narrow_procedural_task — intended to perform a NARROW PROCEDURAL task.\n"
+        "(b) improves_completed_human_activity — intended to improve the result of a PREVIOUSLY "
+        "COMPLETED human activity. The human work is already done; the system polishes it.\n"
+        "(c) detects_decision_patterns — intended to detect decision-making patterns or deviations "
+        "from prior decision-making patterns, AND is not meant to replace or influence the "
+        "previously completed human assessment without proper human review. Both halves. A system "
+        "that surfaces a pattern and then feeds it into the assessment, or that stands in for the "
+        "human review, fails the second half and the derogation does not apply.\n"
+        "(d) preparatory_task — intended to perform a preparatory task TO AN ASSESSMENT RELEVANT "
+        "FOR THE PURPOSES OF THE USE CASES LISTED IN ANNEX III. Preparatory to the listed "
+        "assessment, not preparatory in general.\n"
+        "Answer none where the description does not establish the whole of any one condition.",
         "derogation",
         label="Is its role only a narrow one?",
     ),

@@ -8,6 +8,7 @@ sub-answers; the graph must route them to that case's expected risk class. The h
 
 from __future__ import annotations
 
+import re
 from datetime import date
 from pathlib import Path
 
@@ -15,9 +16,11 @@ import pytest
 from pydantic import ValidationError
 
 from aiact.classify import ScriptedBrain, build_graph, classify
-from aiact.classify.graph import route_for
+from aiact.classify.graph import QUESTIONS, route_for
 from aiact.config import get_settings
 from aiact.eval.classification_cases import load_classification_cases
+from aiact.policy_loader import resolve_requirement
+from aiact.provisions import points_within
 from aiact.schemas.enums import (
     ActorRole,
     AnnexIIIArea,
@@ -740,3 +743,48 @@ def test_the_demo_script_still_shows_the_flip(capsys):
     assert "risk class : not_high_risk" in out, "the parser half of the flip no longer lands"
     assert "risk class : high_risk" in out, "the scorer half of the flip no longer lands"
     assert "needs_review" not in out, "a cascade node the demo does not answer has broken it"
+
+
+def test_every_derogation_limb_reaches_the_model_with_its_qualifier():
+    """A CONJUNCTIVE CONDITION SHORTENED TO ITS FIRST HALF IS A FALSE CLEARANCE.
+
+    Art. 6(3)(c) and (d) are each two tests joined by "and"/a tether, and the second half is the
+    one that decides real cases: (c) excludes a system that detects a pattern AND then replaces or
+    influences the human assessment, (d) reaches only a task preparatory to an ASSESSMENT RELEVANT
+    TO AN ANNEX III USE CASE. The question once read "detects decision patterns; or a preparatory
+    task", which clears exactly what the points exclude — and a named condition routes to
+    `significant_risk`, whose `false` ends at NOT_HIGH_RISK with Arts. 9-15 and 16-21 dropped.
+
+    Enum docstrings carry the full test and never reach the model: `_answer_instructions` renders
+    bare `p.value` identifiers, so the question text is the only place a qualifier can live.
+
+    DERIVED, not typed: the points come from the stored Article, the conjunctive ones are found by
+    looking for the qualifier, and the question must carry words from the half that qualifies."""
+    articles_dir = (
+        ROOT / "data" / "policy" / "articles" / get_settings().act_version_date.isoformat()
+    )
+    question = QUESTIONS["derogation"].text
+
+    for condition in DerogationCondition:
+        assert condition.value in question, (
+            f"the derogation question never names {condition.value}, so the model is asked to "
+            f"return a value it was not offered"
+        )
+
+    points = points_within(articles_dir, 6, "3")
+    assert set(points) == {"a", "b", "c", "d"}, f"Art. 6(3) points changed: {points}"
+
+    for point, tail_marker in (("c", " and is not meant to"), ("d", " to an assessment relevant")):
+        text, _url = resolve_requirement(articles_dir, 6, 3, point=point)
+        assert tail_marker in text, (
+            f"Art. 6(3)({point}) no longer reads as expected — re-derive this test from the text"
+        )
+        # Stop at the sentence end: resolving a POINT returns the trailing subparagraph too, and
+        # Art. 6(3)'s is the profiling carve-back, which belongs to another node entirely.
+        qualifier = text.split(tail_marker, 1)[1].split(".")[0]
+        keywords = [w for w in re.findall(r"[a-z]{5,}", qualifier.lower()) if w != "system"]
+        carried = [w for w in keywords if w in question.lower()]
+        assert len(carried) >= max(3, len(set(keywords)) // 3), (
+            f"Art. 6(3)({point}) is a conjunction and the question carries almost none of its "
+            f"qualifying half: {sorted(set(keywords) - set(carried))}"
+        )

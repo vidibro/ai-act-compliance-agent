@@ -182,18 +182,11 @@ article_rulings:
     2: Commission and Member State duty to support providers in meeting Art. 4(1). Not a provider duty.
     3: Board duty to adopt AI-literacy recommendations. Institutional.
   4a:
-    1: >-
-      A LEGAL BASIS, not an obligation: a provider of a high-risk system MAY exceptionally process
-      special categories of personal data for bias detection and correction, subject to conditions
-      (a)-(f). Failing a condition means the permission is unavailable, not that a duty was breached.
-      DUPLICATED, not moved. Art. 10(5) states the same permission for providers of high-risk
-      systems in near-identical words and is still in force in this version, so the two overlap
-      almost entirely and 4a(2) is what this Article adds — the permission widened to deployers and
-      to systems that are not high-risk. AIA-HR-A10 cites Art. 10 whole, so the 10(5) wording does
-      reach the judge; nothing reaches it for 4a.
     2: >-
       The same permission widened — to providers and deployers of other systems and models, and to
-      deployers of high-risk systems. A permission on the same terms, so the same ruling.
+      deployers of high-risk systems. NO Art. 10 cross-reference reaches paragraph 2, so unlike
+      4a(1) this one stays what it looks like: a legal basis, unavailable if a condition fails,
+      never a duty breached. It is what Art. 4a adds over Art. 10(5).
   # --- Chapter II — prohibited practices ------------------------------------------------------
   # Art. 5 is a risk-tier GATE, not a provider rule: the cascade answers it before high-risk and
   # after Art. 2, and a prohibited system never reaches an obligation check. Paragraphs 2 to 4 are
@@ -1377,6 +1370,21 @@ article_rulings:
 #
 # Emptying this bucket is the work. Editing it away is not.
 articles_awaiting_rules:
+  4a:
+    1: >-
+      A PERMISSION ON ITS FACE, A SECTION 2 REQUIREMENT BY CROSS-REFERENCE — and the second is what
+      governs a high-risk system. On its own terms 4a(1) lets a provider exceptionally process
+      special categories of personal data for bias detection and correction, subject to conditions
+      (a)-(f). But Art. 10(1) reads: data sets "that meet the quality criteria referred to in
+      paragraphs 2, 3 and 4 of this Article AND IN ARTICLE 4a(1) whenever such data sets are used",
+      and Art. 10(6) repeats the reference for testing data. So the (a)-(f) conditions are quality
+      criteria: failing (f) — records of processing that do not state why the special-category
+      processing was strictly necessary — breaches Art. 10(1). It is not the loss of an option.
+      AIA-HR-A10 cites Art. 10 whole, so the judge reads the cross-reference and the near-identical
+      Art. 10(5) wording, but NOT Art. 4a(1)'s own text, which is where the (a)-(f) list lives.
+      Emptied by widening AIA-HR-A10's citation to reach this paragraph, not by a rule of its own.
+      Ruled out here for two versions on the ground that a permission creates no duty, which was
+      true of the Article read alone and false of it read with Art. 10(1).
   8:
     2: >-
       THE PROVIDER ANSWERS FOR THE SECTORAL INSTRUMENT TOO. Where a product contains an AI system to
@@ -1613,8 +1621,9 @@ annex_rulings:
     A/11: CASCADE annex_i — Regulation (EU) 2017/745, medical devices. Section A.
     A/12: CASCADE annex_i — Regulation (EU) 2017/746, in vitro diagnostic medical devices. Section A.
     B/13: CASCADE annex_i — Regulation (EC) No 300/2008, civil aviation security. Section B.
-    B/14: CASCADE annex_i — Regulation (EU) No 167/2013, agricultural and forestry vehicles. Section B.
-    B/15: CASCADE annex_i — Regulation (EU) No 168/2013, two- and three-wheel vehicles. Section B.
+    B/14: CASCADE annex_i — Regulation (EU) No 168/2013, two- and three-wheel vehicles and
+      quadricycles. Section B.
+    B/15: CASCADE annex_i — Regulation (EU) No 167/2013, agricultural and forestry vehicles. Section B.
     B/16: CASCADE annex_i — Directive 2014/90/EU, marine equipment. Section B.
     B/17: CASCADE annex_i — Directive (EU) 2016/797, rail system interoperability. Section B.
     B/18: CASCADE annex_i — Regulation (EU) 2018/858, motor vehicle approval. Section B.
