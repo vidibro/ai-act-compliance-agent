@@ -215,7 +215,12 @@ articles_out_of_scope:
   # --- Chapter III Section 5 — standards, conformity, certificates, registration ---------------
   40: >-
     Harmonised standards. Confers a presumption of conformity if applied; an option, not a duty.
-  41: Commission power to adopt common specifications. Institutional.
+  41:
+    1: Commission power to adopt common specifications by implementing act. Institutional.
+    2: Commission duty to inform the Art. 1025/2012 committee first. Institutional.
+    3: Presumption of conformity for a system that follows them. Declaratory, no duty.
+    4: Commission duty to assess a harmonised standard proposed to it. Institutional.
+    6: Member State route to challenge a common specification. Not a provider duty.
   42: Presumption of conformity for certain requirements. Declaratory, no duty.
   43:
     5: Commission delegated power to amend Annexes VI and VII. Institutional.
@@ -310,9 +315,13 @@ articles_out_of_scope:
   70: Member State duty to designate national competent authorities. Institutional.
 
   # --- Chapter VIII — EU database --------------------------------------------------------------
-  71: >-
-    Commission duty to establish and operate the EU database. The PROVIDER's duty to register in it
-    is Art. 49, which is in scope as AIA-PO-A49.
+  71:
+    1: Commission duty to set up and maintain the EU database. Institutional.
+    4: Which parts of the database are public. A property of the register, not a duty of any role.
+    5: Limits the personal data the database may hold. Binds the Commission as controller.
+    6: >-
+      Commission is the controller, and provides support to providers and deployers. Institutional;
+      the accessibility requirement lands on the database, not on a registrant.
   72:
     4: >-
       Integration with post-market monitoring already established under Section A Annex I law or
@@ -448,6 +457,24 @@ articles_awaiting_rules:
       chapeau to Arts. 9-15 and is excluded as such, which is why the whole article read as covered.
       Settled by law this tool does not carry, so document_verifiable false — the same treatment
       AIA-PO-A16-L already gets for the accessibility Directives. Narrow: applies_to_route annex_i.
+  41:
+    5: >-
+      JUSTIFY THE ALTERNATIVE. A provider who does NOT follow a common specification must "duly
+      justify that they have adopted technical solutions that meet the requirements referred to in
+      Section 2". Art. 41 was excluded as a Commission power, which is true of every other paragraph
+      in it. The justification is a document, so this is document-verifiable in a way most of the
+      AIA-PO-* family is not — a technical file either carries the equivalence argument or does not.
+  71:
+    2: >-
+      WHAT registration consists of, for the provider: the Annex VIII Section A and B data "shall be
+      entered into the EU database by the provider or, where applicable, by the authorised
+      representative". AIA-PO-A49 carries Art. 49(1), which is the duty to register at all; this is
+      the content of it, and nothing checks the content. Same shape as Art. 47(2) for the
+      declaration of conformity, and it belongs in the same bucket for the same reason.
+    3: >-
+      The deployer half of the same duty: Annex VIII Section C data, entered by a deployer that is
+      or acts for a public authority. AIA-DP-A49-3 carries the Art. 49(3) duty to register; this
+      says what goes in.
   11:
     2: >-
       A SINGLE set of technical documentation where the system relates to a Section A Annex I

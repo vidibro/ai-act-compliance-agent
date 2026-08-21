@@ -19,7 +19,12 @@ from aiact.classify.graph import _QUESTION_CONTEXT, QUESTIONS
 from aiact.config import get_settings
 from aiact.gap import roles as role_questions
 from aiact.gap.rules import roles_with_rules
-from aiact.policy_loader import load_policy_spec, provision_labels, resolve_requirement
+from aiact.policy_loader import (
+    _PARAGRAPH_START,
+    load_policy_spec,
+    provision_labels,
+    resolve_requirement,
+)
 from aiact.schemas.enums import ActorRole, CheckType, ObligationStatus, RiskClass
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -606,46 +611,77 @@ def test_act_version_date_mismatch_rejected(tmp_path):
         load_policy_spec(bad_file, ARTICLES_ROOT)
 
 
-# A sentence that puts `shall` on one of the roles this tool reports for. Deliberately crude: it
-# over-matches, and the over-matches are cheap to dismiss in writing while a miss is not.
-_DUTY_SENTENCE = re.compile(
-    r"\b(provider|deployer|importer|distributor|authorised representative|operator)s?\b"
-    r"[^.]{0,120}?\bshall\b",
+# A PARAGRAPH that names one of the roles this tool reports for and states an obligation. Scoped to
+# the paragraph rather than the sentence, and deliberately crude in both halves.
+#
+# Sentence scope was the first attempt and it under-matched: splitting on ". " breaks at "Art. 5"
+# and "No 300/2008", so a duty whose subject and verb land either side of a citation went unseen.
+# It missed Art. 41(5) and Art. 71(2)-(3), all three real duties. Paragraph scope over-matches
+# instead, which is the right direction — a false positive costs one line of writing here, a miss
+# costs a false PASS in a report.
+_DUTY_ROLE = re.compile(
+    r"\b(provider|deployer|importer|distributor|authorised representative"
+    r"|operator|product manufacturer)s?\b",
     re.I,
 )
+_DUTY_VERB = re.compile(r"\b(shall|must|required to|obliged to|responsible for)\b", re.I)
 
-# Articles ruled out WHOLE whose text nevertheless puts a duty on a role this tool reports for,
-# each with the reason no rule follows. THIS IS THE LIST THE SCREEN BELOW EXISTS TO FREEZE: an
+# Articles ruled out WHOLE whose text nevertheless names a role this tool reports for beside an
+# obligation, each with the reason no rule follows. THIS IS THE LIST THE SCREEN BELOW FREEZES: an
 # article that starts bearing a duty and is not named here fails, and a human rules on it.
 #
-# Art. 8 is why. It was excluded as the chapeau to Arts. 9-15 — true of 8(1), and false of 8(2),
-# which makes the provider answerable for the sectoral instrument. Nothing in the repo could have
-# surfaced that, because a wholly-excluded article is never itemised.
+# Most are false positives of a deliberately blunt regex — the role is mentioned, the obligation is
+# somebody else's. Saying so in one line is the price of not missing the ones that are real.
 DUTY_BEARING_EXCLUSIONS: dict[str, str] = {
+    "2": "2(5) preserves the DSA's liability rules for intermediary providers. A saving clause.",
+    "3": "Definitions. Roles are defined here, not bound. Consumed by the cascade.",
+    "4a": "Providers and deployers MAY process special data for bias correction. A permission.",
+    "7": "Criteria the Commission applies when amending Annex III. Institutional.",
+    "31": "Notified bodies shall be independent OF the provider. The duty is the body's.",
+    "33": "Subcontracting needs the provider's agreement — a consent right, not a duty.",
+    "34": "Notified bodies shall avoid burdening providers. The body's duty.",
     "36": "Certificates 'shall remain valid' — a fact about the certificate, not its holder.",
+    "44": "Certificate validity and renewal 'at the request of the provider'. An option.",
     "46": "46(2)'s request duty binds whoever took the derogation route, which is an option.",
     "52": "GPAI provider notification. Chapter V, deferred whole (M4d-8).",
     "53": "GPAI provider obligations. Chapter V, deferred whole (M4d-8).",
     "54": "GPAI authorised representative. Chapter V, deferred whole (M4d-8).",
     "55": "GPAI systemic-risk obligations. Chapter V, deferred whole (M4d-8).",
+    "56": "Codes of practice; the AI Office invites providers. Voluntary instrument.",
     "57": "Sandbox participants' duties, owed only by a provider who enters a sandbox.",
     "58": "Sandbox arrangements; the duties are the authority's, and participation is optional.",
+    "59": "Conditions on processing personal data in a sandbox. A permission with conditions.",
     "60": "Real-world testing duties, owed only on a route this tool does not assess.",
+    "60a": "Section B real-world testing frameworks. Same optional route as Art. 60.",
+    "61": "Informed consent, owed by whoever conducts real-world testing. Same route.",
     "62": "Fees 'shall be reduced' for SMEs — binds whoever sets the fee, not the provider.",
+    "63": "63(2) says the microenterprise derogation exempts nobody from Arts. 9-15, 72, 73 — an "
+          "anti-avoidance clause pointing at duties already modelled.",
+    "66": "Tasks of the Board. Institutional.",
+    "68": "Composition of the scientific panel. Institutional.",
     "74": "Defines how Regulation (EU) 2019/1020's terms map onto operators. Definitional.",
     "75": "The provider pays the notified body only inside an AI Office action (M4d-8).",
+    "75a": "Powers of the AI Office as a market surveillance authority. A power, not a duty.",
     "75b": "Commitments an operator may offer the AI Office, opened at the Office's discretion.",
     "75c": "Describing measures taken to comply with an AI Office decision. Not standing.",
     "75d": "Rights of defence against the enforcing body, not duties owed under the Regulation.",
+    "76": "Authority supervision of real-world testing. The verification duty is the authority's.",
+    "77": "Access granted BY the market surveillance authority to fundamental-rights bodies.",
+    "78": "Confidentiality of information about providers. Binds the authorities holding it.",
     "79": "Operator cooperation and corrective action — Arts. 21 and 20 at the enforcement stage.",
     "80": "80(4)'s duty to bring the system into compliance is Art. 20 once the authority rules.",
     "81": "The 'shall' governs the authority's objection procedure, not any operator.",
     "82": "82(2) corrective action is Art. 20 again, on a timeline the authority sets.",
+    "83": "The authority 'shall require the provider to put an end to' formal non-compliance. The "
+          "provider-side duty it enforces is Arts. 47-49, each already modelled.",
     "89": "A downstream provider's RIGHT to complain, and a GPAI one. Chapter V (M4d-8).",
+    "90": "Scientific panel alerts naming a GPAI provider's contact point. Chapter V (M4d-8).",
     "91": "Commission power to request documentation from GPAI providers. Chapter V (M4d-8).",
     "92": "Commission power to evaluate GPAI models. Chapter V (M4d-8).",
     "94": "Procedural rights of GPAI economic operators. Chapter V (M4d-8).",
+    "95": "Codes of conduct for voluntary application, including by deployers. Not binding.",
     "99": "Penalties. A consequence of breach; this tool reports what is owed, not its cost.",
+    "101": "Fines for GPAI model providers. A consequence, and Chapter V (M4d-8).",
     "111": "Reported rather than ruled — ComplianceReport.legacy_system_note carries it.",
 }
 
@@ -655,16 +691,14 @@ def test_a_wholly_excluded_article_holds_no_unacknowledged_duty():
 
     Divisions are enumerated only for articles a rule cites. An article ruled out WHOLE is dismissed
     in one sentence and never itemised, so a duty inside one is invisible to every other check here
-    — 401 paragraphs sit inside the articles excluded that way.
+    — several hundred paragraphs sit inside the articles excluded that way.
 
-    This screens all of them mechanically: any sentence putting `shall` on a provider, deployer,
-    importer, distributor, authorised representative or operator. The regex over-matches on purpose,
-    because dismissing a false positive costs a line of writing and missing a real duty costs a
-    false PASS. Every hit must be named above with the reason no rule follows from it.
+    This screens all of them: any paragraph naming a role this tool reports for beside an obligation
+    verb. Every hit must be named above with the reason no rule follows from it.
 
     Stale entries fail too. An article that stops bearing a duty — the legislator amends it, or the
     ruleset starts citing it — should lose its entry rather than keep a dismissal for text that is
-    no longer there."""
+    no longer there. That half is what caught Arts. 41 and 71 being split off."""
     ledger = yaml.safe_load(SCOPE_PATH.read_text(encoding="utf-8"))
     whole = [str(k) for k, v in ledger["articles_out_of_scope"].items() if isinstance(v, str)]
 
@@ -673,15 +707,20 @@ def test_a_wholly_excluded_article_holds_no_unacknowledged_duty():
         number = int(re.match(r"\d+", article).group())
         suffix = article[len(str(number)):]
         path = ARTICLES_DIR / f"article-{number:03d}{suffix}.md"
-        body = path.read_text(encoding="utf-8").split("---", 2)[2].replace("\n", " ")
-        if any(_DUTY_SENTENCE.search(s) for s in re.split(r"(?<=\.)\s+", body)):
-            flagged.add(article)
+        body = path.read_text(encoding="utf-8").split("---", 2)[2]
+        bounds = [m.start() for m in _PARAGRAPH_START.finditer(body)] or [0]
+        bounds.append(len(body))
+        for i in range(len(bounds) - 1):
+            paragraph = body[bounds[i]:bounds[i + 1]].replace("\n", " ")
+            if _DUTY_ROLE.search(paragraph) and _DUTY_VERB.search(paragraph):
+                flagged.add(article)
+                break
 
     undeclared = flagged - set(DUTY_BEARING_EXCLUSIONS)
     assert not undeclared, (
-        f"Articles ruled out WHOLE that put a duty on a role this tool reports for, with no reason "
-        f"recorded: {sorted(undeclared)}. Rule on each — either the duty needs a rule, or say in "
-        f"DUTY_BEARING_EXCLUSIONS why it does not."
+        f"Articles ruled out WHOLE that name a role this tool reports for beside an obligation, "
+        f"with no reason recorded: {sorted(undeclared)}. Rule on each — either the duty needs a "
+        f"rule, or say in DUTY_BEARING_EXCLUSIONS why it does not."
     )
 
     stale = set(DUTY_BEARING_EXCLUSIONS) - flagged
