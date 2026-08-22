@@ -39,6 +39,20 @@ CASCADE_PREFIX = "CASCADE "
 RULE_PREFIX = "RULE "
 
 
+def cascade_nodes(reason: str) -> list[str]:
+    """Every cascade node a `CASCADE ...` ruling names, in the order it names them.
+
+    A ruling may name more than one: a defined term can decide more than one question — 3(14)
+    settles Art. 6(1)(a) at `annex_i` and Annex III(2) at `annex_iii` — and each named node is a
+    separate claim that the node exists and is handed the provision. Parsed here rather than at
+    each caller so the partition and the tests that read its claims back cannot disagree about
+    what a ruling said.
+
+    The node list ends at the em dash that opens the prose; a ruling with no dash is all nodes."""
+    claimed = reason[len(CASCADE_PREFIX) :].split("—")[0]
+    return [node for node in (word.strip(",:") for word in claimed.split()) if node]
+
+
 class Status(StrEnum):
     """How one provision is accounted for."""
 
@@ -149,8 +163,7 @@ def classify_coverage(
         elif key in reasons:
             reason = reasons[key]
             if reason.startswith(CASCADE_PREFIX):
-                node = reason[len(CASCADE_PREFIX) :].split()[0].rstrip(",:—")
-                status, detail = Status.ASKED, node
+                status, detail = Status.ASKED, " ".join(cascade_nodes(reason))
             elif reason.startswith(RULE_PREFIX):
                 status, detail = Status.CHECKED, reason[len(RULE_PREFIX) :].split()[0].rstrip(",:—")
             else:

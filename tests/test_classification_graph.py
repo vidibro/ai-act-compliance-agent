@@ -745,6 +745,51 @@ def test_the_demo_script_still_shows_the_flip(capsys):
     assert "needs_review" not in out, "a cascade node the demo does not answer has broken it"
 
 
+def test_the_safety_component_exclusion_is_the_one_article_6_enacts():
+    """A HAND-WRITTEN EXCLUSION LIST IS A HAND-WRITTEN AMENDMENT.
+
+    Art. 6(1a) is the only thing that takes a system out of 'safety component', and it is worded:
+    SOLELY non-safety-related aspects of user assistance, performance optimisation, service
+    efficiency, automation or convenience, or quality control. Art. 6(1b) then takes back what it
+    gives — notwithstanding 6(1a), a system whose failure would endanger health and safety
+    qualifies anyway.
+
+    Two questions decide on the term — `annex_i` for Art. 6(1)(a), `annex_iii` for Annex III(2) —
+    and both are held to both paragraphs. A question naming exclusions of its own clears a case
+    Art. 6(1a) does not exclude, and at `annex_iii` that runs Annex III(2) → none → minimal: one
+    obligation for a system whose failure kills. A question stating 6(1a) flat, without the
+    carve-back, clears the same cases more quietly.
+
+    DERIVED: the grounds come from Art. 6(1a) as stored, and the carve-back is looked for by the
+    word the paragraph turns on."""
+    articles_dir = (
+        ROOT / "data" / "policy" / "articles" / get_settings().act_version_date.isoformat()
+    )
+    excluding, _url = resolve_requirement(articles_dir, 6, "1a")
+    carve_back, _url = resolve_requirement(articles_dir, 6, "1b")
+    assert "shall not qualify as safety components" in excluding, (
+        "Art. 6(1a) no longer reads as expected — re-derive this test from the text"
+    )
+    assert "Notwithstanding paragraph 1a" in carve_back, (
+        "Art. 6(1b) no longer reads as expected — re-derive this test from the text"
+    )
+    grounds = excluding.split("non-safety related aspects of", 1)[1].split(" shall not")[0]
+    keywords = sorted({w for w in re.findall(r"[a-z]{6,}", grounds.lower())})
+    assert len(keywords) >= 5, f"Art. 6(1a)'s grounds no longer parse: {keywords}"
+
+    for node_id in ("annex_i", "annex_iii"):
+        question = QUESTIONS[node_id].text.lower()
+        dropped = [w for w in keywords if w not in question]
+        assert not dropped, (
+            f"the {node_id} question states an exclusion but omits grounds Art. 6(1a) enacts: "
+            f"{dropped}. The paragraph's list is the list."
+        )
+        assert "6(1b)" in question or "notwithstanding" in question, (
+            f"the {node_id} question carries Art. 6(1a) without Art. 6(1b), so a system whose "
+            f"failure endangers health and safety is excluded when the Act puts it back in"
+        )
+
+
 def test_every_derogation_limb_reaches_the_model_with_its_qualifier():
     """A CONJUNCTIVE CONDITION SHORTENED TO ITS FIRST HALF IS A FALSE CLEARANCE.
 
@@ -782,9 +827,13 @@ def test_every_derogation_limb_reaches_the_model_with_its_qualifier():
         # Stop at the sentence end: resolving a POINT returns the trailing subparagraph too, and
         # Art. 6(3)'s is the profiling carve-back, which belongs to another node entirely.
         qualifier = text.split(tail_marker, 1)[1].split(".")[0]
-        keywords = [w for w in re.findall(r"[a-z]{5,}", qualifier.lower()) if w != "system"]
-        carried = [w for w in keywords if w in question.lower()]
-        assert len(carried) >= max(3, len(set(keywords)) // 3), (
-            f"Art. 6(3)({point}) is a conjunction and the question carries almost none of its "
-            f"qualifying half: {sorted(set(keywords) - set(carried))}"
+        keywords = {w for w in re.findall(r"[a-z]{5,}", qualifier.lower()) if w != "system"}
+        # EVERY word, not a quorum. A qualifier is itself made of qualifiers — (c) excludes a
+        # system that replaces the human assessment OR influences it, and only without proper human
+        # review — so a threshold counting words is met by whichever of them a shortening leaves
+        # behind, while the words that decide cases are gone.
+        dropped = sorted(w for w in keywords if w not in question.lower())
+        assert not dropped, (
+            f"Art. 6(3)({point}) is a conjunction and the question drops part of its qualifying "
+            f"half: {dropped}"
         )

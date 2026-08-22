@@ -833,9 +833,13 @@ class AnnexIProduct(StrEnum):
     @property
     def chapter_iii_applies(self) -> bool:
         """Art. 2(2): for a Section B product classified high-risk under Art. 6(1), ONLY Art. 6(1),
-        Arts. 102-109 and Art. 112 apply. Chapter III does not — so an aircraft or motor-vehicle
+        Art. 60a and Arts. 102-112 apply. Chapter III does not — so an aircraft or motor-vehicle
         system is high-risk AND owes none of Art. 9-15. Raising them anyway would accuse a
-        provider of gaps the Regulation does not put on them."""
+        provider of gaps the Regulation does not put on them.
+
+        A PROPERTY OF THE PRODUCT, not of the use case: it answers which Section the product sits
+        in and nothing else. Whether Art. 2(2) reaches a given use case needs Art. 6(1) to have
+        fired as well — `UseCaseClassification.high_risk_under_article_6_1` is that test."""
         return self.section == "A"
 
 

@@ -211,10 +211,16 @@ class ComplianceReport(BaseModel):
         return " ".join(written) if written else None
 
     def _article_111_2_note(self) -> str | None:
-        """The Chapter III limb, worded around the route because Art. 113(c) dates the two apart."""
+        """The Chapter III limb, worded around the route because Art. 113(c) dates the two apart.
+
+        Art. 113(c) keys on the classification, not on the product: (i) gives 2 December 2027 to a
+        system "classified as high-risk pursuant to Article 6(2) and Annex III", (ii) 2 August 2028
+        to one "classified as high-risk pursuant to Article 6(1) and Annex I". A named product that
+        self-assesses is classified under 6(2), so it takes the earlier date — reading the product
+        alone would hand it eight months of relief the Article does not give."""
         if not any(uc.risk_class == RiskClass.HIGH_RISK for uc in self.classification.use_cases):
             return None
-        annex_i = any(uc.annex_i_product is not None for uc in self.classification.use_cases)
+        annex_i = any(uc.high_risk_under_article_6_1 for uc in self.classification.use_cases)
         applies_from = "2 August 2028" if annex_i else "2 December 2027"
         return (
             f"IF THIS SYSTEM WAS ALREADY ON THE MARKET, some of the above may not bind it yet. "

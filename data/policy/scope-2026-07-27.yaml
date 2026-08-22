@@ -16,8 +16,8 @@
 # ENTRIES ARE PER PROVISION, not per article. A reason written about a whole article applies to
 # every paragraph inside it and says nothing about any of them, and duties have been found sitting
 # under exactly that — Art. 8(2), Art. 41(5), Art. 71(2). `test_the_blanket_only_shrinks` counts
-# what is still dismissed that way, and it now counts ZERO: every one of the 787 addresses in the
-# stored text — 674 article divisions and 113 annex items — carries a ruling written for it.
+# what is still dismissed that way, and it now counts ZERO: every one of the 789 addresses in the
+# stored text — 676 article divisions and 113 annex items — carries a ruling written for it.
 #
 # SCOPE: obligations of every role the Act binds — provider, deployer, importer, distributor and
 # authorised representative — for a HIGH-RISK AI system, plus Art. 4, which binds provider and
@@ -121,7 +121,20 @@ article_rulings:
     11: "'putting into service'. The other trigger, alongside placing on the market."
     12: "'intended purpose'. Why classification runs per use case rather than per product."
     13: "'reasonably foreseeable misuse'. Feeds Arts. 9 and 14, both cited whole."
-    14: CASCADE annex_i — 'safety component', the term Art. 6(1)(a) turns on.
+    14: >-
+      CASCADE annex_i, annex_iii — 'safety component'. The whole of Art. 6(1)(a), and also the test
+      Annex III(2) turns on: critical infrastructure is listed by the safety function, not by any
+      person acted on, so both nodes decide on this term and both are handed it.
+    14a: >-
+      'micro, small and medium-sized enterprise'. Borrowed whole from Article 2 of the Annex to
+      Recommendation 2003/361/EC, which this corpus does not hold. Feeds the SME reliefs — Art. 62
+      priority access to sandboxes, Art. 63(1) a simplified quality management system, Art. 99(6)
+      fines capped at the lower of the percentage and the amount — every one of them a RELIEF, so
+      none is an obligation this ruleset checks.
+    14b: >-
+      'small mid-cap enterprise'. Borrowed whole from point (2) of the Annex to Recommendation
+      (EU) 2025/1099, which this corpus does not hold. Inserted beside 14a and named alongside it in
+      those same reliefs; same ground.
     15: "'instructions for use'. Feeds Art. 13(3), cited whole as AIA-HR-A13."
     16: "'recall of an AI system'. Feeds Art. 20, cited at 20(1)."
     17: "'withdrawal of an AI system'. Feeds Art. 20, cited at 20(1)."
@@ -134,8 +147,13 @@ article_rulings:
     24: "'CE marking'. Feeds Art. 48, cited at 48(3)."
     25: "'post-market monitoring system'. Feeds Art. 72, cited at 72(1)."
     26: "'market surveillance authority'. An authority this tool reports duties toward, never for."
-    27: "'harmonised standard'. Feeds Art. 40, out of scope as an option."
-    28: "'common specification'. Feeds Art. 41; 41(5) awaits a rule."
+    27: >-
+      'harmonised standard'. Borrowed whole from Article 2, point (1)(c), of Regulation (EU)
+      No 1025/2012, which this corpus does not hold. Feeds Art. 40, out of scope as an option.
+    28: >-
+      'common specification'. Defined against 'technical specification' in Article 2, point (4), of
+      Regulation (EU) No 1025/2012, which this corpus does not hold. Feeds Art. 41; 41(5) awaits a
+      rule.
     29: "'training data'. Feeds Art. 10, cited whole."
     30: "'validation data'. Feeds Art. 10, cited whole."
     31: "'validation data set'. Feeds Art. 10, cited whole."
@@ -158,8 +176,15 @@ article_rulings:
     48: "'national competent authority'. An authority this tool reports duties toward."
     49: "'serious incident'. Feeds Art. 73, whose deadlines await a rule."
     50: "'personal data'. Borrowed from Regulation (EU) 2016/679."
-    51: "'non-personal data'. Definitional; used in Art. 10."
-    52: CASCADE profiling — 'profiling', the Art. 6(3) carve-back this tool asks directly.
+    51: >-
+      'non-personal data'. Defined by exclusion from 'personal data' in Regulation (EU) 2016/679,
+      which this corpus does not hold. Definitional; used in Art. 10.
+    52: >-
+      CASCADE profiling — 'profiling', the Art. 6(3) carve-back this tool asks directly. The point
+      is a bare cross-reference to Article 4, point (4), of Regulation (EU) 2016/679, which this
+      corpus does not hold, so supplying it gives the node the pointer and not the test. The
+      operative words are the gloss in the node's own question, which nothing here checks against a
+      stored document.
     53: "'real-world testing plan'. Feeds Art. 60, an optional route out of scope."
     54: "'sandbox plan'. Feeds Arts. 57-58, out of scope."
     55: "'AI regulatory sandbox'. Feeds Arts. 57-58, out of scope."
@@ -169,7 +194,11 @@ article_rulings:
     59: "'informed consent'. Feeds Art. 61, out of scope."
     60: CASCADE transparency — 'deep fake', the trigger for the Art. 50(4) disclosure.
     61: "'widespread infringement'. Feeds Art. 73(3), which awaits a rule."
-    62: "'critical infrastructure'. Feeds Annex III(2), an area this ruleset gates on."
+    62: >-
+      'critical infrastructure'. A bare cross-reference to Article 2, point (4), of Directive (EU)
+      2022/2557, which this corpus does not hold. Feeds Annex III(2), an area this ruleset gates on,
+      and the annex_iii node decides that area on 'safety component' (Art. 3(14)) rather than on
+      this term — so nothing turns on the borrowed meaning today.
     63: CASCADE gpai_model — 'general-purpose AI model', the Chapter V handover test.
     64: "'high-impact capabilities'. Feeds Art. 51, Chapter V, deferred (M4d-8)."
     65: "'systemic risk'. Feeds Arts. 51 and 55, Chapter V, deferred (M4d-8)."
@@ -231,15 +260,16 @@ article_rulings:
   6:
     1: CASCADE annex_i — Art. 6(1)(a), the safety-component limb, decided at the annex_i node.
     1a: >-
-      CASCADE annex_i — what does NOT qualify as a safety component. The node's prompt DIVERGES from
-      it: the prompt supplies a hand-written list (scheduling, billing, diagnostics reporting, fleet
-      analytics) where 6(1a) enacts one (user assistance, performance optimisation, service
-      efficiency, automation, convenience, quality control).
-      Quality control is the divergence that bites. Consumed, but not yet read faithfully.
+      CASCADE annex_i, annex_iii — what does NOT qualify as a safety component. Both nodes decide on
+      the term (Art. 6(1)(a) at the first, Annex III(2) at the second) and both state the six
+      grounds this paragraph enacts: user assistance, performance optimisation, service efficiency,
+      automation, convenience, quality control. Held to the enacted wording by
+      test_the_safety_component_exclusion_is_the_one_article_6_enacts, which derives the grounds
+      from this paragraph and fails on any the questions drop.
     1b: >-
-      CASCADE annex_i — the counter-exception: failure or malfunctioning endangering health and
-      safety makes it a safety component after all. Carried by the node's "failure endangers health
-      or safety" wording.
+      CASCADE annex_i, annex_iii — the counter-exception: failure or malfunctioning endangering
+      health and safety makes it a safety component after all, notwithstanding 6(1a). Stated at both
+      nodes, because 6(1a) read flat excludes exactly the systems this paragraph puts back.
     1c: >-
       CASCADE third_party_assessment — third-party assessment required SOLELY for non-health-safety
       risks (radio spectrum, electromagnetic interference) does not satisfy Art. 6(1)(b). The node
@@ -1094,13 +1124,7 @@ article_rulings:
   # Art. 16's cross-referencing points are excluded. A reader is told what they owe, not told twice.
   79:
     1: An AI system presenting a risk is a "product presenting a risk" under Reg (EU) 2019/1020. A definition.
-    2: >-
-      The authority evaluates the system and requires corrective action, withdrawal or recall within a
-      period it prescribes. The authority's procedure; the operator's side is Art. 20.
     3: Informing the Commission and other Member States where non-compliance is not national. Institutional.
-    4: >-
-      THE OPERATOR SHALL ENSURE CORRECTIVE ACTION across every unit it has made available on the
-      Union market. Art. 20 at the enforcement stage, and AIA-PO-A20 already reports it.
     5: Provisional measures where the operator does not act in time. The authority's power.
     6: >-
       What the 79(5) notification must contain, and the (a)-(d) grounds of non-compliance it may
@@ -1590,6 +1614,22 @@ articles_awaiting_rules:
       (9) then apply mutatis mutandis, so the deadlines are unchanged and only the addressee moves.
       AIA-PO-A73 names the national authority unconditionally, which is the wrong addressee for
       exactly the providers most likely to have one of these systems.
+  79:
+    2: >-
+      THE OPERATORS SHALL COOPERATE with the market surveillance authority and with the Art. 77(1)
+      fundamental-rights bodies during an evaluation. The rest of the paragraph is the authority's
+      procedure and creates no duty here, but that final sentence binds the operator, and 'operator'
+      is Art. 3(8): provider, product manufacturer, deployer, authorised representative, importer or
+      distributor. Not Art. 20, which is a self-initiated duty to investigate and inform on a
+      provider who has reason to consider its own system non-conforming — a different party, a
+      different trigger, and not cooperation with anyone.
+    4: >-
+      THE OPERATOR SHALL ENSURE CORRECTIVE ACTION across every unit it has made available on the
+      Union market, following the authority's requirement under 79(2). AIA-PO-A20 does not report
+      it: that rule is provider-only and high-risk-only, while this binds all six roles in Art. 3(8)
+      and Art. 79 reaches any system presenting a risk — 79(6)(d) names non-compliance with Art. 50,
+      so a minimal-risk generator in breach of 50(2) owes this. A deployer, importer or distributor
+      is told nothing about either duty today.
 
 # --- ANNEXES ---------------------------------------------------------------------------------
 # The Annexes carry operative content the Articles only point at: Annex III IS the list of high-risk
@@ -1613,6 +1653,12 @@ annex_rulings:
       DEFAULT ANSWER FOR A MACHINE: the Regulation at B/21 replaces this Directive only from
       20 January 2027, so anything on the market before then is governed here, and the node says so
       rather than leaving the model to choose on how modern the machine sounds.
+      THAT DATE IS NOT IN THIS CORPUS. It is Art. 54 of Regulation (EU) 2023/1230; the Annex gives
+      the OJ reference and the repeal, not the application date, so the node states a fact about
+      external law that nothing here can check — the one such fact in any question. Two bounds make
+      it tolerable: the default it supports is Section A, which is the OVER-inclusive side, and the
+      instruction answers on the instrument the document names rather than on the date. It goes
+      stale on 20 January 2027, when the default should become B/21, and nothing reads a clock.
     A/2: CASCADE annex_i — Directive 2009/48/EC, toy safety. Section A.
     A/3: CASCADE annex_i — Directive 2013/53/EU, recreational craft and personal watercraft. Section A.
     A/4: CASCADE annex_i — Directive 2014/33/EU, lifts and safety components. Section A.
@@ -1842,15 +1888,23 @@ annexes_awaiting_rules:
       development and testing happen and share all necessary information; 5.3 has the body audit
       periodically. A continuing duty for as long as the certificate stands.
 
-  # ANNEX VIII IS THE CONTENT OF THE ART. 49 REGISTRATIONS, and nothing checks it.
+  # ANNEX VIII IS THE CONTENT OF THE ART. 49 REGISTRATIONS, and for most systems nothing checks it.
   # AIA-PO-A49, AIA-NHR-A06-4 and AIA-DP-A49-3 check that the registration was MADE — their subject
-  # is Art. 49(1), 6(4) and 49(3), and the Annex they cite is III, the area gate. Art. 49 never
-  # names Annex VIII at all; it is this Annex's own Section headers that tie Section A to 49(1),
-  # B to 49(2) and C to 49(3), so no rule's text reaches these items and no judge is shown them.
+  # is Art. 49(1), 6(4) and 49(3), and the Annex they cite is III, the area gate. Which Section of
+  # this Annex answers which paragraph is written into the Annex's own headers, not into Art. 49(1)
+  # to (3), so those three rules point at the registration without carrying its contents.
+  #
+  # ONE RULE DOES CITE THIS ANNEX: AIA-ALL-A49-4, for Art. 49(4) — which names Annex VIII three
+  # times, by Section and by point range. The loader injects the Annex into that rule's
+  # annex_context and the judge prompt carries it, so the items 49(4) enumerates (A/1-A/5, A/7,
+  # A/10; B/1-B/5, B/8, B/9; C/1-C/3) ARE shown to a judge. But only for the systems Art. 49(4)
+  # reaches: Annex III points 1, 6 and 7 in law enforcement, migration, asylum and border control.
+  # For every other high-risk system — the ordinary case — no judge sees this Annex, and the seven
+  # items outside 49(4)'s list are never shown at all.
   #
   # Emptied by a rule for Art. 71(2)-(3) — entering the Annex VIII data into the EU database —
   # which is already declared in articles_awaiting_rules. That is where the duty is written as a
-  # duty, and this Annex is the list it must satisfy.
+  # duty for every high-risk system, and this Annex is the list it must satisfy.
   VIII:
     A/1: the provider's name, address and contact details. Registry identification.
     A/2: details of a person submitting on the provider's behalf. Registry identification.

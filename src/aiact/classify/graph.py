@@ -358,8 +358,15 @@ QUESTIONS: dict[str, Question] = {
         "whose intended purpose is to prevent or mitigate risks to health and safety, OR one "
         "whose failure or malfunctioning endangers health and safety OF PERSONS OR PROPERTY. "
         "Either limb suffices — braking, pressure or dose control, collision avoidance, "
-        "structural monitoring. Software that merely runs alongside such a product, or handles "
-        "its scheduling, billing, diagnostics reporting or fleet analytics, is NOT one.\n"
+        "structural monitoring.\n"
+        "THE EXCLUSION IS ART. 6(1a), supplied below, and it is worded: a system SOLELY used for "
+        "NON-SAFETY-RELATED aspects of user assistance, performance optimisation, service "
+        "efficiency, automation or convenience, or for quality control, does not qualify as a "
+        "safety component. Apply that list and not a longer one — scheduling, billing, diagnostics "
+        "reporting and fleet analytics sit within it. But Art. 6(1b) takes back what 6(1a) gives: "
+        "NOTWITHSTANDING 6(1a), a system whose failure or malfunctioning would endanger health and "
+        "safety qualifies anyway. So software alongside the product is excluded only where getting "
+        "it wrong could not endanger health or safety; where it could, 6(1b) puts it back in.\n"
         "MACHINERY APPEARS TWICE, under two instruments, and the choice decides which obligations "
         "follow. Answer `machinery` (Directive 2006/42/EC) for a machine unless the description "
         "itself says the product is placed on the market under Regulation (EU) 2023/1230 — that "
@@ -414,15 +421,25 @@ QUESTIONS: dict[str, Question] = {
         "(0) POINT 2 IS DECIDED ON A DIFFERENT TEST, and it is the only area that is. Critical "
         "infrastructure names no natural person: it covers AI systems used as SAFETY COMPONENTS in "
         "the management and operation of critical digital infrastructure, road traffic, or the "
-        "supply of water, gas, heating or electricity. A safety component is one whose intended "
-        "purpose is to prevent or mitigate risks to health and safety, or whose failure or "
-        "malfunctioning endangers health and safety — signal and traffic control, grid frequency "
+        "supply of water, gas, heating or electricity. 'Safety component' is DEFINED at Art. 3(14) "
+        "and supplied below, in TWO limbs: a component that fulfils a safety function — its "
+        "intended purpose being to prevent or mitigate risks to health and safety OF PERSONS OR "
+        "PROPERTY — OR one whose failure or malfunctioning endangers the health and safety of "
+        "persons or property. Either limb suffices: signal and traffic control, grid frequency "
         "response or load shedding, protection relays, pressure or flow control in a water or gas "
         "network, or the monitoring that trips them. Answer critical_infrastructure for those. Do "
         "NOT answer none merely because no person is acted on: tests (i) and (ii) below are the "
-        "test for the SEVEN areas that are about people, not for this one. Billing, demand "
-        "forecasting, asset maintenance scheduling, capacity planning and customer-facing outage "
-        "notification are not safety components.\n"
+        "test for the SEVEN areas that are about people, not for this one.\n"
+        "The exclusion is Art. 6(1a), also supplied, and it is worded and limited: a system SOLELY "
+        "used for NON-SAFETY-RELATED aspects of user assistance, performance optimisation, service "
+        "efficiency, automation or convenience, or for quality control, does not qualify as a "
+        "safety component. Apply that list, not a longer one of your own — billing and customer "
+        "outage notification sit within it. But Art. 6(1b) takes back what 6(1a) gives: "
+        "NOTWITHSTANDING 6(1a), a system whose failure or malfunctioning would endanger health and "
+        "safety DOES qualify. So an optimisation, forecasting, maintenance or capacity system is "
+        "excluded only where getting it wrong could not endanger health or safety. Where it could "
+        "— maintenance that leaves a corroding gas main unflagged, forecasting that under-calls "
+        "grid load — 6(1b) puts it back in, and the answer is critical_infrastructure.\n"
         "For points 1 and 3 to 8, which are each about natural persons, two tests, both taken from "
         "the text:\n"
         "(i) IN scope if the purpose SUBSTANTIVELY acts on the person or their application within "
@@ -617,7 +634,9 @@ _QUESTION_CONTEXT: dict[str, tuple[tuple[int, ...], tuple[str, ...]]] = {
 # persons. The questions state the test; these supply the words it is made of.
 _QUESTION_DEFINITIONS: dict[str, tuple[int, ...]] = {
     "annex_i": (14,),  # 'safety component' — the whole test of Art. 6(1)(a)
-    "annex_iii": (35, 36),  # biometric identification vs verification, the Annex III(1)(a) line
+    # 35/36 draw the Annex III(1)(a) line; 14 because branch (0) decides point 2 on the same
+    # 'safety component' test Art. 6(1)(a) uses, and a node that decides on a term needs its words.
+    "annex_iii": (14, 35, 36),
     "prohibited": (41, 42, 44),  # remote biometric identification, 'real-time', public space
     "profiling": (52,),  # 'profiling' — defined by reference to Art. 4(4) GDPR
     "transparency": (39, 40, 60),  # emotion recognition, biometric categorisation, 'deep fake'
@@ -1389,6 +1408,7 @@ def build_graph(
             use_case_id=state.use_case_id,
             description=state.description,
             annex_i_product=state.in_annex_i.value if state.in_annex_i else None,
+            third_party_assessment=state.third_party_assessment,
             annex_iii_area=state.in_annex_iii.value if state.in_annex_iii else None,
             performs_profiling=state.performs_profiling,
             derogation=state.derogation,

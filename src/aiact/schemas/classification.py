@@ -87,10 +87,19 @@ class UseCaseClassification(BaseModel):
     use_case_id: str  # "cv_parsing", "candidate_scoring"
     description: str  # what the system does in this use case
     annex_i_product: AnnexIProduct | None = None
-    """Art. 6(1)(a). Set only when the use case is high-risk by the Annex I route. Carried because
-    Art. 2(2) makes the SECTION decide what is owed: a Section B product (vehicles, aviation, rail,
-    marine) is high-risk and yet Chapter III does not apply to it. Selecting obligations from the
-    risk class alone would raise Art. 9-15 against a system the Act exempts."""
+    """Art. 6(1)(a) ALONE — the product family the cascade named, whether or not Art. 6(1) went on
+    to fire. Condition (a) is half of a conjunction, so this field does not on its own say the use
+    case is high-risk by the Annex I route: read `high_risk_under_article_6_1` for that. Carried
+    because a named product is worth reporting either way, and because Art. 2(2) makes the SECTION
+    decide what is owed once Art. 6(1) HAS fired."""
+
+    third_party_assessment: Answer | None = None
+    """Art. 6(1)(b), the other half. Recorded beside (a) because every consumer of the Annex I
+    route needs BOTH: Art. 2(2) withholds Chapter III from a system "classified as high-risk in
+    accordance with Article 6(1)", and Art. 113(c)(ii) dates one "classified as high-risk pursuant
+    to Article 6(1) and Annex I". A product named under (a) that self-assesses is neither — the
+    cascade carries it on to Annex III, where it can be high-risk under Art. 6(2) and owe
+    Chapter III in full."""
 
     annex_iii_area: AnnexIIIArea | None = None
     annex_iii_use_case: LegalSource | None = None  # e.g. Annex III(4)(a)
@@ -110,6 +119,25 @@ class UseCaseClassification(BaseModel):
     triggered_by: list[ClassificationEvidence]  # which provisions drove it, and on what evidence
     reasoning: str
     confidence: Confidence
+
+    @property
+    def high_risk_under_article_6_1(self) -> bool:
+        """Whether Art. 6(1) is the door this use case came through — BOTH conditions, not (a).
+
+        THE ONE TEST FOR EVERY ART. 6(1) CONSEQUENCE, and there are three: Art. 2(2) withholds
+        Chapter III from a Section B system, Art. 113(c) dates Chapter III to 2 August 2028 rather
+        than 2 December 2027, and `HighRiskRoute.ANNEX_I` selects the sectoral conformity rule over
+        Art. 43(1)/(2). All three are keyed on classification "in accordance with Article 6(1)", so
+        all three read this and none reads the product alone.
+
+        Answering (b) `false` is not an exit from the cascade — Art. 6(3) cannot derogate from
+        Art. 6(1), but nothing stops Art. 6(2) from reaching the same system through Annex III. Such
+        a use case is high-risk, carries an Annex I product, and owes Chapter III entire."""
+        return (
+            self.annex_i_product is not None
+            and self.third_party_assessment is not None
+            and self.third_party_assessment.value is True
+        )
 
     @model_validator(mode="after")
     def _enforce_profiling_carve_back(self) -> UseCaseClassification:

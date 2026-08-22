@@ -28,7 +28,7 @@ import re
 from dataclasses import dataclass
 from pathlib import Path
 
-from aiact.policy_loader import _POINT_LABEL, provision_labels
+from aiact.policy_loader import _POINT_LABEL, provision_labels, provision_text
 
 # The Annexes are rendered inconsistently by the Official Journal's own XML, and the fetcher
 # preserves what it is given rather than tidying it. Both shapes are real and both are here:
@@ -64,8 +64,6 @@ class Provision:
 
 def _annex_body(annexes_dir: Path, roman: str) -> str:
     """The annex's text with its heading block removed, verified against its stored hash."""
-    from aiact.anchoring import provision_text
-
     path = annexes_dir / f"annex-{roman}.md"
     if not path.is_file():
         raise FileNotFoundError(f"No annex file for Annex {roman} at {path}")

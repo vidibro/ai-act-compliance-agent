@@ -38,7 +38,8 @@ from aiact.schemas.question import Answer
 DOCUMENT = "# Doc\n\n## Safety\n\nThe controller halts the actuator on fault.\n"
 
 
-def a_use_case(product: AnnexIProduct) -> UseCaseClassification:
+def a_use_case(product: AnnexIProduct, third_party: bool = True) -> UseCaseClassification:
+    """Art. 6(1) is a conjunction, so the fixture answers both halves. `third_party` is (b)."""
     source = LegalSource(
         instrument="Regulation (EU) 2024/1689",
         article=6,
@@ -50,6 +51,13 @@ def a_use_case(product: AnnexIProduct) -> UseCaseClassification:
         description="d",
         risk_class=RiskClass.HIGH_RISK,
         annex_i_product=product,
+        third_party_assessment=Answer(
+            value=third_party,
+            reasoning="fixture",
+            confidence="high",
+            source=source,
+            node_id="third_party_assessment",
+        ),
         reasoning="r",
         confidence="high",
         triggered_by=[
@@ -177,10 +185,38 @@ def test_section_a_owes_the_full_chapter_iii(spec):
 
 
 def test_section_b_owes_nothing_under_this_regulation(spec):
-    """Art. 2(2): for a Section B product only Art. 6(1), 102-109 and 112 apply. Its safety duties
-    come from the sectoral legislation instead."""
+    """Art. 2(2): for a Section B product only Art. 6(1), Art. 60a and Arts. 102-112 apply. Its
+    safety duties come from the sectoral legislation instead."""
     uc = a_use_case(AnnexIProduct.MOTOR_VEHICLES)
     assert select_rules(spec, uc, ActorRole.PROVIDER).all_rules == ()
+
+
+def test_a_self_assessed_section_b_product_is_not_reached_by_article_2_2(spec):
+    """ART. 2(2) IS THE WIDEST EXEMPTION IN THIS TOOL, and it is keyed on the whole of Art. 6(1).
+
+    The paragraph opens "For AI systems classified as high-risk AI systems in accordance with
+    Article 6(1)". Art. 6(1) is a conjunction: a Section B product whose manufacturer self-assesses
+    fails condition (b), so `_route_third_party` carries it on to Annex III, where Art. 6(2) can
+    make it high-risk by the other door. Such a system is classified under 6(2), not 6(1), and
+    Art. 2(2) does not reach it — it owes Chapter III entire.
+
+    Keyed on the product alone this returns nothing for every role, and the report then prints a
+    scope note telling the provider the Regulation exempts them from obligations they owe in full.
+    Both directions are asserted, because the exemption standing for the certified case is the
+    other half of the reading."""
+    for role in (ActorRole.PROVIDER, ActorRole.DEPLOYER):
+        self_assessed = a_use_case(AnnexIProduct.MOTOR_VEHICLES, third_party=False)
+        self_assessed = self_assessed.model_copy(
+            update={"annex_iii_area": AnnexIIIArea.CRITICAL_INFRASTRUCTURE}
+        )
+        assert select_rules(spec, self_assessed, role).all_rules, (
+            f"{role.value}: a self-assessed Section B product is high-risk under Art. 6(2), and "
+            f"Art. 2(2) reaches only systems classified under Art. 6(1)"
+        )
+        certified = a_use_case(AnnexIProduct.MOTOR_VEHICLES, third_party=True)
+        assert select_rules(spec, certified, role).all_rules == (), (
+            f"{role.value}: with Art. 6(1)(b) answered, Art. 2(2) does withhold Chapter III"
+        )
 
 
 def test_a_section_b_report_says_why_it_is_empty(spec):

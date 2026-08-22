@@ -179,11 +179,17 @@ def review(
     # Art. 2(2). `select` already withholds Chapter III from a Section B use case, so the findings
     # are correct — but silently correct. Without this the report shows high_risk beside an empty
     # findings list, which reads as a clean bill of health rather than a limit on what was checked.
+    #
+    # Tested on the same `high_risk_under_article_6_1` that governs `select`, so the note and the
+    # findings can never disagree: this sentence tells a reader the Regulation exempts them, and it
+    # is only true of a system Art. 6(1) itself classified.
     section_b = sorted(
         {
             uc.annex_i_product.value
             for uc in classification.use_cases
-            if uc.annex_i_product is not None and not uc.annex_i_product.chapter_iii_applies
+            if uc.high_risk_under_article_6_1
+            and uc.annex_i_product is not None
+            and not uc.annex_i_product.chapter_iii_applies
         }
     )
     if section_b:

@@ -81,8 +81,13 @@ def _route_of(use_case: UseCaseClassification) -> HighRiskRoute | None:
 
     Annex I is checked FIRST because it is checked first in law: Art. 6(1) is an independent route
     and Art. 6(3) cannot derogate from it, so a system that is a certified safety component is an
-    Annex I system whatever Annex III would have said about its purpose."""
-    if use_case.annex_i_product is not None:
+    Annex I system whatever Annex III would have said about its purpose.
+
+    Art. 6(1) is a conjunction, so a NAMED PRODUCT IS NOT THE ANNEX I ROUTE. A product whose
+    manufacturer self-assesses fails condition (b), and the cascade carries it on to Annex III —
+    where Art. 6(2) can make it high-risk by the other door. Reading the product alone would send
+    such a use case down the sectoral conformity rule (`AIA-PO-A43-3`) instead of Art. 43(1)/(2)."""
+    if use_case.high_risk_under_article_6_1:
         return HighRiskRoute.ANNEX_I
     if use_case.annex_iii_area is not None:
         return HighRiskRoute.ANNEX_III
@@ -154,7 +159,7 @@ def select_rules(
 
     Risk class is not on its own sufficient. **Art. 2(2)**: where a system is high-risk under
     Art. 6(1) because it is a safety component of a product listed in Annex I **Section B** —
-    vehicles, aviation, rail, marine — only Art. 6(1), Arts. 102-109 and Art. 112 apply. Chapter III
+    vehicles, aviation, rail, marine — only Art. 6(1), Art. 60a and Arts. 102-112 apply. Chapter III
     does not. Such a system is genuinely high-risk and genuinely owes none of Art. 9-15, so
     selecting on the tier alone would raise every one of them against a provider the Regulation
     exempts.
@@ -170,10 +175,20 @@ def select_rules(
     if use_case.risk_class in (RiskClass.OUT_OF_SCOPE, RiskClass.GPAI_MODEL):
         return ActiveRules(use_case_id=use_case.use_case_id, role=role)
 
-    # Art. 2(2) is exhaustive — "only Article 6(1), Articles 102 to 109 and Article 112 apply" — so
-    # this withholds Art. 4 and Art. 50 from a Section B system as surely as it withholds
-    # Chapter III, and from the deployer as surely as from the provider.
-    if use_case.annex_i_product is not None and not use_case.annex_i_product.chapter_iii_applies:
+    # Art. 2(2) is exhaustive — "only Article 6(1), Article 60a and Articles 102 to 112 shall
+    # apply" — so this withholds Art. 4 and Art. 50 from a Section B system as surely as it
+    # withholds Chapter III, and from the deployer as surely as from the provider.
+    #
+    # It is also the widest exemption this module grants, which is why it is gated on the whole of
+    # Art. 6(1) and not on the product. The paragraph opens "For AI systems classified as high-risk
+    # AI systems in accordance with Article 6(1)": a self-assessed Section B product that is
+    # high-risk under Art. 6(2) instead is not one, and returning empty for it would tell its
+    # provider the Regulation exempts them from obligations they owe in full.
+    if (
+        use_case.high_risk_under_article_6_1
+        and use_case.annex_i_product is not None
+        and not use_case.annex_i_product.chapter_iii_applies
+    ):
         return ActiveRules(use_case_id=use_case.use_case_id, role=role)
 
     active = [

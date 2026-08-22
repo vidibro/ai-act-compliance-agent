@@ -36,8 +36,13 @@ _FRONT_MATTER = re.compile(r"\A---\n(.*?)\n---\n+", re.S)
 _PARAGRAPH_START = re.compile(r"^(\d+[a-z]*)\.\s+", re.M)
 _FRONT_FIELD = re.compile(r"^(\w+):\s*(.*)$", re.M)
 _POINT_LABEL = re.compile(r"^(?P<indent>[ \t]*)\((?P<label>[a-z]+)\)\s", re.M)
-# Article 3's definitions are numbered points, `(1)` to `(68)`, not numbered paragraphs.
-_NUMBERED_POINT = re.compile(r"^(?P<indent>[ \t]*)\((?P<label>\d+)\)\s", re.M)
+# Article 3's definitions are numbered points, `(1)` to `(68)`, not numbered paragraphs. A numbered
+# point takes a letter suffix for the same reason a paragraph does — Art. 3(14a) and (14b) were
+# inserted between (14) and (15) without renumbering — so the label is a STRING here too. Without
+# the suffix in the match, `(14a)` starts no point and its text is absorbed into (14), which then
+# resolves to three definitions under one citation and leaves two off the coverage partition
+# entirely: both sides of that partition read this expression.
+_NUMBERED_POINT = re.compile(r"^(?P<indent>[ \t]*)\((?P<label>\d+[a-z]*)\)\s", re.M)
 
 
 def verify_integrity(path: Path, raw: str, front: dict[str, str], body: str) -> None:
@@ -188,7 +193,9 @@ def _extract_point(text: str, point: str, article: int) -> str:
     paragraph — so citing a point that has sub-points resolves to the point and its sub-points
     together, which is how the provision reads.
     """
-    pattern = _NUMBERED_POINT if point.isdigit() else _POINT_LABEL
+    # `14a` is a numbered point, not a lettered one — routed on the FIRST character, since a
+    # suffixed label is neither all digits nor all letters.
+    pattern = _NUMBERED_POINT if point[:1].isdigit() else _POINT_LABEL
     labels = list(pattern.finditer(text))
     hits = [m for m in labels if m.group("label") == point]
     if not hits:

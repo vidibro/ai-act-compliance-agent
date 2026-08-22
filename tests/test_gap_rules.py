@@ -29,6 +29,7 @@ from aiact.schemas.enums import (
     TransparencyDuty,
 )
 from aiact.schemas.policy import LegalSource, PolicyRule
+from aiact.schemas.question import Answer
 
 # Fixture LegalSources only — read rather than restated, for the reason given in
 # tests/test_policy_loader.py: the act version already lives in two places that must agree.
@@ -41,8 +42,14 @@ def spec():
 
 
 def a_use_case(
-    area: AnnexIIIArea | None = None, product: AnnexIProduct | None = None
+    area: AnnexIIIArea | None = None,
+    product: AnnexIProduct | None = None,
+    third_party: bool = True,
 ) -> UseCaseClassification:
+    """`third_party` answers Art. 6(1)(b), and naming a product without it is not the Annex I route.
+
+    Defaulted to true so that `product=` alone reads as the Art. 6(1) case it is meant to be. Pass
+    false for the other one: a self-assessed product whose use case is high-risk under Art. 6(2)."""
     source = LegalSource(
         instrument="Regulation (EU) 2024/1689", article=6, act_version_date=ACT_DATE
     )
@@ -51,6 +58,17 @@ def a_use_case(
         description="a system",
         annex_iii_area=area,
         annex_i_product=product,
+        third_party_assessment=(
+            None
+            if product is None
+            else Answer(
+                value=third_party,
+                reasoning="fixture",
+                confidence="high",
+                source=source,
+                node_id="third_party_assessment",
+            )
+        ),
         risk_class=RiskClass.HIGH_RISK,
         reasoning="fixture",
         confidence="high",
@@ -411,7 +429,8 @@ def test_an_out_of_scope_system_owes_no_transparency_duty_either(spec):
 
 
 def test_a_section_b_system_owes_no_transparency_duty_either(spec):
-    """Art. 2(2) is exhaustive — 'only Article 6(1), Articles 102 to 109 and Article 112 apply'."""
+    """Art. 2(2) is exhaustive — 'only Article 6(1), Article 60a and Articles 102 to 112 shall
+    apply'."""
     use_case = a_use_case(product=AnnexIProduct.MOTOR_VEHICLES)
     duties = list(TransparencyDuty)
     for role in (ActorRole.PROVIDER, ActorRole.DEPLOYER):

@@ -23,12 +23,13 @@ from aiact.coverage import (
     CASCADE_PREFIX,
     RULE_PREFIX,
     Status,
+    cascade_nodes,
     classify_coverage,
     summarise,
 )
 from aiact.gap import roles as role_questions
 from aiact.policy_loader import load_policy_spec, resolve_requirement
-from aiact.provisions import all_provisions, annex_instruments
+from aiact.provisions import all_provisions, annex_instruments, provision_labels
 
 ROOT = Path(__file__).resolve().parents[1]
 VERSION = get_settings().act_version_date.isoformat()
@@ -39,7 +40,7 @@ ANNEXES_DIR = ROOT / "data" / "policy" / "annexes" / VERSION
 SCOPE_PATH = ROOT / "data" / "policy" / f"scope-{VERSION}.yaml"
 
 # Provisions covered by a ruling made about the whole article or annex around them, rather than by
-# one written for them. ZERO: all 787 addresses of the stored text are ruled on individually.
+# one written for them. ZERO: all 789 addresses of the stored text are ruled on individually.
 # Declared as a constant rather than asserted as zero so the failure reads as a number that moved —
 # new text arriving, a parser fix making a division visible, or an itemised article collapsed back
 # to a one-line dismissal — and so paying it down again is one edit.
@@ -54,6 +55,24 @@ def spec():
 @pytest.fixture(scope="module")
 def ledger():
     return yaml.safe_load(SCOPE_PATH.read_text(encoding="utf-8"))
+
+
+def _comment_above(key: object) -> str:
+    """The comment block written immediately above `key:` in the ledger, or "" if there is none.
+
+    The ledger argues a whole-annex debt in a heading comment and describes the individual items
+    in the values, so a test asking what the ledger SAYS about an annex has to read both.
+    `yaml.safe_load` drops comments, which is why this reads the file rather than the mapping."""
+    lines = SCOPE_PATH.read_text(encoding="utf-8").splitlines()
+    for index, line in enumerate(lines):
+        if line.strip().startswith(f"{key}:"):
+            block = []
+            cursor = index - 1
+            while cursor >= 0 and lines[cursor].strip().startswith("#"):
+                block.append(lines[cursor])
+                cursor -= 1
+            return "\n".join(reversed(block))
+    return ""
 
 
 @pytest.fixture(scope="module")
@@ -112,8 +131,10 @@ def test_every_ruling_names_something_that_exists(covered, spec):
                 f"{where} cites rule {entry.detail!r}, which does not exist"
             )
         elif entry.status is Status.ASKED:
-            assert entry.detail in nodes, (
-                f"{where} is handed to cascade node {entry.detail!r}, which does not exist. "
+            # Every node named, because a ruling may name several and each is its own claim.
+            unknown = [node for node in entry.detail.split() if node not in nodes]
+            assert not unknown, (
+                f"{where} is handed to cascade node(s) {unknown}, which do not exist. "
                 f"Known nodes: {sorted(nodes)}"
             )
         elif entry.is_individual:
@@ -246,7 +267,12 @@ def test_every_definition_the_ledger_hands_to_a_node_reaches_it(ledger):
     3(40)'s "ancillary to another commercial service" exception.
 
     So the ledger's own claim is read back against what `load_questions` actually builds: for every
-    Art. 3 point ruled to a node, that node's context must contain the definition's text."""
+    Art. 3 point ruled to a node, that node's context must contain the definition's text.
+
+    EVERY node the ruling names, not the first. A term can decide more than one question — 3(14)
+    settles Art. 6(1)(a) at `annex_i` and Annex III(2) at `annex_iii` — and a ruling that lists two
+    nodes while only one holds the text is the same defect as a ruling that lists one node holding
+    none."""
     questions = load_questions()
     definitions = {
         str(division): str(reason)
@@ -254,17 +280,65 @@ def test_every_definition_the_ledger_hands_to_a_node_reaches_it(ledger):
     }
     assert definitions, "Art. 3 is no longer itemised in the ledger — re-derive this test"
 
-    missing: dict[str, str] = {}
+    missing: dict[str, list[str]] = {}
     for point, reason in definitions.items():
         if not reason.startswith(CASCADE_PREFIX):
             continue
-        node = reason[len(CASCADE_PREFIX) :].split()[0].rstrip(",:—")
+        nodes = cascade_nodes(reason)
         text, _url = resolve_requirement(ARTICLES_DIR, 3, None, point=point)
-        if text.strip() not in questions[node].context:
-            missing[f"Art. 3({point})"] = node
+        # A node id that does not resolve is `test_every_ruling_names_something_that_exists`'s
+        # claim, and reporting it here as well would say the supply is missing when the address is.
+        absent = [n for n in nodes if n in questions and text.strip() not in questions[n].context]
+        if absent:
+            missing[f"Art. 3({point})"] = absent
     assert not missing, (
         f"definitions the ledger hands to a node that never sees them: {missing}. Supply the point "
         f"in _QUESTION_DEFINITIONS, or rule the definition on some other ground."
+    )
+
+
+def test_every_borrowed_definition_names_the_instrument_it_is_borrowed_from(ledger):
+    """A CROSS-REFERENCE IS NOT A MEANING, and the ledger must say which of the two it ruled on.
+
+    Six of Art. 3's definitions define nothing themselves: 3(52) is "profiling as defined in
+    Article 4, point (4), of Regulation (EU) 2016/679", and that is the whole point. None of those
+    instruments is in `data/policy/`, so a node handed such a point receives a pointer — the
+    operative words are still whatever gloss the question happens to carry, which nothing here can
+    check against a stored document.
+
+    `test_every_definition_the_ledger_hands_to_a_node_reaches_it` counts these as supplied, and on
+    its own terms it is right: the Act's text does reach the node. This test bounds that claim.
+    Making a borrowed meaning checkable needs the instrument in the corpus; what this does instead
+    is put the borrowing in the ruling, so a reader of the ledger can tell a definition that was
+    read from one that was pointed at.
+
+    DERIVED: the borrowings are found by reading Art. 3, not listed here."""
+    borrowed = re.compile(
+        r"as (?:defined|referred to) in [^;]*?((?:Regulation|Directive)[^;,]*?)(?:[;,]|$)"
+    )
+    rulings = {
+        str(division): str(reason)
+        for division, reason in (ledger["article_rulings"].get(3) or {}).items()
+    }
+    silent: dict[str, str] = {}
+    found = 0
+    for point in provision_labels(ARTICLES_DIR, 3):
+        text, _url = resolve_requirement(ARTICLES_DIR, 3, None, point=point)
+        body = text.split("\n")[0]
+        match = borrowed.search(body)
+        # A long body defines the term itself and merely cites an instrument in passing; only a
+        # definition that is ALL cross-reference borrows its meaning whole.
+        if match is None or len(body) >= 420:
+            continue
+        found += 1
+        instrument = match.group(1).strip()
+        if instrument not in rulings.get(point, ""):
+            silent[f"Art. 3({point})"] = instrument
+    assert found >= 5, f"Art. 3's borrowed definitions no longer parse ({found}) — re-derive this"
+    assert not silent, (
+        f"definitions that borrow their meaning from an instrument this corpus does not hold, "
+        f"ruled on without naming it: {silent}. Name the instrument in the ruling — a reader of "
+        f"the ledger cannot otherwise tell a definition that was read from one that was pointed at."
     )
 
 
@@ -296,4 +370,39 @@ def test_every_annex_item_a_rule_checks_is_supplied_to_that_rule(ledger, spec):
     assert not unsupplied, (
         f"annex items claimed as checked by a rule that is never shown that annex: {unsupplied}. "
         f"Cite the annex on the rule, or declare the items in annexes_awaiting_rules."
+    )
+
+
+def test_an_annex_declared_owed_engages_with_any_rule_that_cites_it(ledger, spec):
+    """THE OTHER DIRECTION, and it is the one that misreports a debt rather than a coverage.
+
+    Its sibling above reads ledger claims forward: an item claiming a rule must be shown that
+    rule's annex. It cannot see the inverse — an annex declared unchecked while a rule in the spec
+    does cite it, and does carry it into the judge prompt. That reads as "nobody looked" when
+    somebody did, and it sends the next person to write a rule that partly exists.
+
+    A citing rule does not on its own make the debt wrong: Art. 49(4) narrows its rule to two
+    Annex III areas, so Annex VIII is genuinely unchecked for every other high-risk system. What is
+    wrong is a reason that does not know the rule is there. So the requirement is engagement, not
+    removal — the reason must name the rule and say what it leaves uncovered."""
+    citing: dict[str, list[str]] = {}
+    for rule in spec.rules:
+        if rule.source.annex and rule.annex_context:
+            citing.setdefault(str(rule.source.annex), []).append(rule.rule_id)
+
+    silent: dict[str, list[str]] = {}
+    for annex, value in (ledger["annexes_awaiting_rules"] or {}).items():
+        rule_ids = citing.get(str(annex), [])
+        if not rule_ids:
+            continue
+        # The Annex's own heading comment is where the debt is argued; the per-item reasons are
+        # descriptions of the items. Either may carry the engagement, so both are read.
+        written = str(value) + _comment_above(annex)
+        unnamed = [rule_id for rule_id in rule_ids if rule_id not in written]
+        if unnamed:
+            silent[str(annex)] = unnamed
+    assert not silent, (
+        f"annexes declared as awaiting a rule while a rule already cites them and shows them to a "
+        f"judge: {silent}. Say in the reason what that rule covers and what it leaves — or move "
+        f"the items it does reach into annex_rulings."
     )
