@@ -3,13 +3,16 @@ id: C-2026-5054/detection-must-be-available
 document: C(2026) 5054 final
 issuer: European Commission
 binding: false
-topic: Art. 50(2) — what the detection obligation requires: means of detection available to persons
+topic: "Art. 50(2) — what the detection obligation requires: means of detection available to persons"
   exposed, human-readable results, and reliance on publicly-available industry standards
 locator: paragraphs (75) and (76), p. 26
 source_url: https://ai-act-service-desk.ec.europa.eu/sites/default/files/2026-07/guidelines_on_the_implementation_of_the_transparency_obligations_for_certain_ai_systems_under_article_50_of_the_ai_act_bzptwqhk0ikg1dtlddap41psfy_131215.pdf
 extraction: pdftotext -layout; layout line-wraps rejoined into sentences and footnote
   reference markers dropped; wording otherwise verbatim. The authoritative form is the PDF
   at the cited page — verify against it, not against this transcription.
+omits: nothing of (75) or (76), both quoted whole. Section 4.2.3 on interoperability, which
+  (76) cross-references, is not quoted — it details how detection solutions interoperate and
+  does not change what the obligation requires.
 retrieved_at: 2026-08-21
 sha256: ea862a84441471c6f8271e0ef45d6868cd1b0e36e2b86a526c9d70d78f8b513f
 ---

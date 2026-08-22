@@ -10,6 +10,8 @@ source_url: https://ai-act-service-desk.ec.europa.eu/sites/default/files/2026-07
 extraction: pdftotext -layout; layout line-wraps rejoined into sentences and footnote
   reference markers dropped; wording otherwise verbatim. The authoritative form is the PDF
   at the cited page — verify against it, not against this transcription.
+omits: nothing. Paragraph (70) is quoted whole. Its footnote (27) points at Recitals 133 and
+  135, which restate the two elements rather than qualifying them.
 retrieved_at: 2026-08-21
 sha256: 5adb6ab822d22f0c4b89aedc48081ba6c36d06f5c45caa7b9cb46859d6724cd5
 ---

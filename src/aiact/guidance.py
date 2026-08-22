@@ -45,6 +45,12 @@ class GuidanceSnippet:
     issuer: str  # "European Commission"
     topic: str
     source_url: str
+    omits: str
+    """What this quote leaves out of the passage at its locator, or "nothing".
+
+    A quote can be verbatim and still misrepresent its source by stopping early. The one stored here
+    kept two of five worked examples, and the two dropped were the ones that NARROW the prohibition
+    — so the passage read as Commission support for a wider ban than the Commission wrote."""
 
     def to_source(self) -> GuidanceSource:
         """The citation form carried by a verdict — distinct from LegalSource (enacted law)."""
@@ -96,6 +102,18 @@ def load_snippet(ref: str, root: str | Path | None = None) -> GuidanceSnippet:
             f"without re-verifying it against the source PDF."
         )
 
+    # THE SHA PROVES THE QUOTE IS UNALTERED. It cannot prove the quote is COMPLETE — a passage that
+    # drops half its worked examples hashes perfectly well, and reads as the whole passage. So the
+    # omission is a declared field: "nothing", or what was left out and why. It is required, because
+    # the failure it guards against is silence, and a field nobody has to write is silence.
+    omits = _front("omits", raw)
+    if not omits:
+        raise ValueError(
+            f"guidance snippet {ref!r} has no `omits:` field. State what the quote leaves out of "
+            f"the passage at its locator — `omits: nothing` where it is quoted whole. A sha256 "
+            f"detects an edited quote, never a truncated one."
+        )
+
     binding_m = _FRONT_BINDING.search(raw)
     return GuidanceSnippet(
         ref=ref,
@@ -106,5 +124,6 @@ def load_snippet(ref: str, root: str | Path | None = None) -> GuidanceSnippet:
         document=_front("document", raw),
         issuer=_front("issuer", raw),
         topic=_front("topic", raw),
+        omits=omits,
         source_url=_front("source_url", raw),
     )

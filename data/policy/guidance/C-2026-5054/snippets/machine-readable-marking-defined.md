@@ -9,6 +9,8 @@ locator: paragraph (71), p. 25
 source_url: https://ai-act-service-desk.ec.europa.eu/sites/default/files/2026-07/guidelines_on_the_implementation_of_the_transparency_obligations_for_certain_ai_systems_under_article_50_of_the_ai_act_bzptwqhk0ikg1dtlddap41psfy_131215.pdf
 extraction: pdftotext -layout; layout line-wraps rejoined into sentences; wording verbatim. The
   authoritative form is the PDF at the cited page — verify against it, not against this transcription.
+omits: nothing. Paragraph (71) is quoted whole; it is a single paragraph with no examples
+  or sub-points.
 retrieved_at: 2026-08-20
 sha256: f1edc1fb38739dc3d3bffd4c2c74eb0e27edfeefdb30d371d7089412625a620d
 ---

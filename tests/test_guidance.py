@@ -270,3 +270,46 @@ def test_a_finding_records_the_interpretation_it_was_reached_with():
 
     plain = finding.model_copy(update={"guidance": []})
     assert plain.rests_on_guidance is False
+
+
+def test_every_snippet_declares_what_it_leaves_out():
+    """A SHA PROVES A QUOTE IS UNALTERED, NEVER THAT IT IS COMPLETE.
+
+    A passage that keeps half its worked examples hashes perfectly and reads as the whole passage.
+    That is not hypothetical: the Art. 5(1)(f) snippet is a paragraph plus five bulleted examples,
+    and a quote of it carrying only the two that say "is prohibited" would present the Commission as
+    supporting a wider ban than it wrote — the other three include "is not prohibited by Article
+    5(1)(f)" and "are allowed".
+
+    So `omits` is required, and the loader refuses a snippet without it. It cannot be verified
+    mechanically against a PDF this repo has no library to read, which is exactly why it is a claim
+    someone has to write down rather than a check nobody performs."""
+    root = ROOT / "data" / "policy" / "guidance"
+    refs = [
+        f"{doc.name}/{snippet.stem}"
+        for doc in sorted(root.iterdir())
+        if doc.is_dir()
+        for snippet in sorted((doc / "snippets").glob("*.md"))
+    ]
+    assert refs, "no guidance snippets found — re-derive this test"
+    for ref in refs:
+        snippet = load_snippet(ref)
+        assert len(snippet.omits.strip()) > 6, (
+            f"{ref} declares `omits` without saying anything. Write `omits: nothing` where the "
+            f"passage is quoted whole, or name what was left out and why it does not matter."
+        )
+
+
+def test_a_snippet_without_an_omits_field_fails_to_load(tmp_path):
+    """The field is enforced at LOAD, so a truncated quote cannot reach a prompt while someone
+    means to document it later."""
+    store = tmp_path / "C-2025-5052" / "snippets"
+    store.mkdir(parents=True)
+    body = "(1) A passage.\n"
+    (store / "no-omits.md").write_text(
+        "---\nid: C-2025-5052/no-omits\ndocument: C(2025) 5052 final\nbinding: false\n"
+        f"sha256: {hashlib.sha256(body.encode()).hexdigest()}\n---\n\n{body}",
+        encoding="utf-8",
+    )
+    with pytest.raises(ValueError, match="no `omits:` field"):
+        load_snippet("C-2025-5052/no-omits", root=tmp_path)
