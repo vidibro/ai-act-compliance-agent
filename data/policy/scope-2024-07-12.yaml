@@ -64,9 +64,14 @@ article_rulings:
     high-risk and after Art. 2; a prohibited system never reaches an obligation check, so this is a
     risk-tier gate rather than a provider rule.
   7: Empowers the Commission to amend Annex III. Institutional, no provider duty.
-  8: >-
-    Chapeau to Chapter III Section 2: high-risk systems shall comply with Art. 9-15. Already
-    modelled rule-by-rule as AIA-HR-A09..A15; a rule here would double-count every finding.
+  8:
+    1: >-
+      Chapeau to Chapter III Section 2: high-risk systems shall comply with Art. 9-15. Already
+      modelled rule-by-rule as AIA-HR-A09..A15; a rule here would double-count every finding.
+    2: >-
+      RULE AIA-PO-A08-2 — where the product is also covered by Section A Annex I legislation, the
+      provider answers for that instrument's requirements too, and may integrate this Regulation's
+      testing, reporting and documentation into the procedures it already requires.
 
   # --- Chapter III Section 3 — obligations of other actors -------------------------------------
   # 16 is NOT listed here: it is cited, by AIA-PO-A16-B, -K and -L. The exclusion used to read
@@ -169,11 +174,36 @@ article_rulings:
   # --- Chapter IX — post-market monitoring, market surveillance --------------------------------
   # NOTE: Art. 72 and 73 from this chapter ARE in scope (AIA-PO-A72, AIA-PO-A73).
   74: Market surveillance authority powers and duties. Not a provider duty.
-  75: Mutual assistance and control of general-purpose AI systems. Authority duties.
+  75:
+    1: >-
+      The AI Office is exclusively competent to supervise a high-risk system built on a
+      general-purpose model the same provider develops. Allocation of competence between
+      authorities, not a duty on any operator. This version has no paragraph 1a; the consolidation
+      inserts one, and AIA-PO-A75-1a cites it there.
+    2: >-
+      Market surveillance authorities may request the AI Office to exercise its powers over a
+      general-purpose AI system usable for a high-risk purpose. An inter-authority request.
+    3: >-
+      Where an authority cannot conclude an investigation for want of access to the model, it may
+      ask the AI Office to obtain that access. An inter-authority request.
   76: Authority supervision of real-world testing.
   77: Powers of authorities protecting fundamental rights.
   78: Confidentiality duties of authorities.
-  79: National procedure for AI systems presenting a risk — an authority-led procedure.
+  79:
+    1: An AI system presenting a risk is a "product presenting a risk" under Reg (EU) 2019/1020. A definition.
+    2: >-
+      RULE AIA-ALL-A79 — the paragraph is the authority's evaluation procedure, and its final
+      sentence binds the operator: "the relevant operators shall cooperate as necessary" with the
+      market surveillance authority and the Art. 77(1) bodies.
+    3: Informing the Commission and other Member States where non-compliance is not national. Institutional.
+    4: RULE AIA-ALL-A79 — the operator ensures corrective action across every unit it has made available.
+    5: Provisional measures where the operator does not act in time. The authority's power.
+    6: >-
+      What the notification must contain, and the (a)-(d) grounds of non-compliance it may rest on.
+      The authority's duty.
+    7: Other authorities inform the Commission of their own measures. Institutional.
+    8: A provisional measure unopposed for three months is deemed justified. Institutional timing.
+    9: Authorities ensure appropriate restrictive measures are taken without undue delay. The authority's duty.
   80: >-
     Authority procedure for systems the provider classified as not-high-risk under Annex III. The
     provider-side duty it enforces is Art. 6(4), in scope as AIA-NHR-A06-4.

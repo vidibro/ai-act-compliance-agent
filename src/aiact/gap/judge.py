@@ -259,11 +259,25 @@ class LLMJudge:
                 f"list to judge completeness against:\n"
                 f'"""\n{rule.annex_context}\n"""\n\n'
             )
+        # THE PROVISIONS THAT QUALIFY THE ONE UNDER REVIEW. A duty and the condition on how it must
+        # be discharged are often written in different paragraphs — Art. 50(1) requires the
+        # disclosure, Art. 50(5) requires it to be clear and given at first interaction — and a
+        # judge shown only the first passes a disclosure the second rules out. Labelled with their
+        # own addresses so the verdict still belongs to the paragraph the rule cites.
+        qualifiers = ""
+        if rule.qualifier_context:
+            qualifiers = (
+                f"Provisions that QUALIFY the obligation above (verbatim, enacted text). They do "
+                f"not add a separate duty — they condition how this one must be discharged, and "
+                f"documentation that fails them fails this obligation:\n"
+                f'"""\n{rule.qualifier_context}\n"""\n\n'
+            )
         stable = (
             f"Obligation under review: {rule.rule_id} (Article {rule.source.article}"
             f"{f'({rule.source.paragraph})' if rule.source.paragraph else ''}).\n\n"
             f"Enacted text you must judge against (verbatim):\n"
             f'"""\n{rule.requirement}\n"""\n\n'
+            f"{qualifiers}"
             f"{annex}"
             f"{guidance}"
             f"What documentation satisfying this looks like:\n"

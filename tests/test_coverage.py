@@ -25,6 +25,7 @@ from aiact.coverage import (
     Status,
     cascade_nodes,
     classify_coverage,
+    rule_ids,
     summarise,
 )
 from aiact.gap import roles as role_questions
@@ -127,9 +128,9 @@ def test_every_ruling_names_something_that_exists(covered, spec):
     for entry in covered:
         where = str(entry.provision)
         if entry.status is Status.CHECKED:
-            assert entry.detail in rules, (
-                f"{where} cites rule {entry.detail!r}, which does not exist"
-            )
+            # Every rule named, because a ruling may name several and each is its own claim.
+            unknown = [rule_id for rule_id in entry.detail.split() if rule_id not in rules]
+            assert not unknown, f"{where} cites rule(s) {unknown}, which do not exist"
         elif entry.status is Status.ASKED:
             # Every node named, because a ruling may name several and each is its own claim.
             unknown = [node for node in entry.detail.split() if node not in nodes]
@@ -370,6 +371,52 @@ def test_every_annex_item_a_rule_checks_is_supplied_to_that_rule(ledger, spec):
     assert not unsupplied, (
         f"annex items claimed as checked by a rule that is never shown that annex: {unsupplied}. "
         f"Cite the annex on the rule, or declare the items in annexes_awaiting_rules."
+    )
+
+
+def test_every_provision_a_rule_is_qualified_by_reaches_that_rule(ledger, spec):
+    """A QUALIFIER RULED ON MUST BE ONE THE JUDGE IS SHOWN, not one a rule merely points near.
+
+    The third of the supply guards, after the cascade definitions and the annex items. A provision
+    can be ruled CHECKED by rules that do not cite it at all — Art. 50(5) is checked by the four
+    Art. 50 rules, none of which has 5 as its `source.paragraph`, and Art. 4a(1) by a rule for a
+    different Article entirely. `qualified_by` is what makes those rulings true: it resolves the
+    provision at load and the judge prompt carries it in its own block. Without it the ruling names
+    a rule whose prompt has never contained the text.
+
+    So for every division ruled `RULE <ids>` where no named rule CITES it, each of those rules must
+    name it in `qualified_by` and carry a non-empty `qualifier_context`."""
+    by_id = {r.rule_id: r for r in spec.rules}
+    unsupplied: dict[str, str] = {}
+    checked = 0
+    for article, value in (ledger["article_rulings"] or {}).items():
+        for division, reason in (value if isinstance(value, dict) else {}).items():
+            text = str(reason)
+            if not text.startswith(RULE_PREFIX):
+                continue
+            for rule_id in rule_ids(text):
+                rule = by_id[rule_id]
+                cites = str(rule.source.article) == str(article) and (
+                    rule.source.paragraph is None
+                    or str(rule.source.paragraph) == str(division)
+                )
+                if cites:
+                    continue
+                checked += 1
+                qualifies = any(
+                    str(q.get("article")) == str(article)
+                    and str(q.get("paragraph")) == str(division)
+                    for q in rule.qualified_by
+                )
+                if not qualifies or not rule.qualifier_context:
+                    unsupplied[f"Art. {article}({division}) via {rule_id}"] = (
+                        f"qualified_by={rule.qualified_by}"
+                    )
+    assert checked >= 5, f"no cross-article rulings left to check ({checked}) — re-derive this"
+    assert not unsupplied, (
+        f"provisions ruled as checked by a rule that neither cites nor is qualified by them: "
+        f"{unsupplied}. Add the provision to that rule's `qualified_by`, or rule it on some other "
+        f"ground."
     )
 
 

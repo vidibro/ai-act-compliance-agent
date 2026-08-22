@@ -39,6 +39,20 @@ CASCADE_PREFIX = "CASCADE "
 RULE_PREFIX = "RULE "
 
 
+def rule_ids(reason: str) -> list[str]:
+    """Every rule a `RULE ...` ruling names, in the order it names them.
+
+    A provision may be checked by more than one rule — Art. 50(5) conditions all four transparency
+    duties — and each named rule is a claim that the rule exists and reaches the provision. The
+    sibling of `cascade_nodes`, and split the same way."""
+    return _named(reason[len(RULE_PREFIX) :])
+
+
+def _named(claimed: str) -> list[str]:
+    """The identifiers at the head of a ruling, up to the em dash that opens the prose."""
+    return [name for name in (word.strip(",:") for word in claimed.split("—")[0].split()) if name]
+
+
 def cascade_nodes(reason: str) -> list[str]:
     """Every cascade node a `CASCADE ...` ruling names, in the order it names them.
 
@@ -49,8 +63,7 @@ def cascade_nodes(reason: str) -> list[str]:
     what a ruling said.
 
     The node list ends at the em dash that opens the prose; a ruling with no dash is all nodes."""
-    claimed = reason[len(CASCADE_PREFIX) :].split("—")[0]
-    return [node for node in (word.strip(",:") for word in claimed.split()) if node]
+    return _named(reason[len(CASCADE_PREFIX) :])
 
 
 class Status(StrEnum):
@@ -165,7 +178,7 @@ def classify_coverage(
             if reason.startswith(CASCADE_PREFIX):
                 status, detail = Status.ASKED, " ".join(cascade_nodes(reason))
             elif reason.startswith(RULE_PREFIX):
-                status, detail = Status.CHECKED, reason[len(RULE_PREFIX) :].split()[0].rstrip(",:—")
+                status, detail = Status.CHECKED, " ".join(rule_ids(reason))
             else:
                 status, detail = Status.NOT_OWED, reason
         elif key in owed:

@@ -211,6 +211,14 @@ article_rulings:
     2: Commission and Member State duty to support providers in meeting Art. 4(1). Not a provider duty.
     3: Board duty to adopt AI-literacy recommendations. Institutional.
   4a:
+    1: >-
+      RULE AIA-HR-A10 — a permission on its face, a Section 2 quality criterion by cross-reference,
+      and it is the second that governs a high-risk system. Art. 10(1) requires data sets meeting
+      the criteria in "paragraphs 2, 3 and 4 of this Article AND IN ARTICLE 4a(1)", and 10(6)
+      repeats it for testing data, so failing condition (f) — records that do not state why the
+      special-category processing was strictly necessary — breaches Art. 10(1) rather than losing an
+      option. Supplied to the judge through AIA-HR-A10's `qualified_by`, so the (a)-(f) list is read
+      and not merely pointed at.
     2: >-
       The same permission widened — to providers and deployers of other systems and models, and to
       deployers of high-risk systems. NO Art. 10 cross-reference reaches paragraph 2, so unlike
@@ -385,6 +393,11 @@ article_rulings:
   21:
     3: Confidentiality duty of the receiving competent authority (Art. 78). Not a provider duty.
   22:
+    2: >-
+      RULE AIA-PO-A22 — the provider ENABLES its representative to perform the tasks in the mandate.
+      Carried by the rule that checks the appointment, because the two fail together: a
+      representative appointed on paper and left without the documents it must produce discharges
+      neither paragraph.
     3: >-
       RULE AIA-AR-A22 — the authorised representative's own tasks: hold the mandate, produce it on
       request, and perform the (a)-(e) duties the mandate must contain.
@@ -610,6 +623,12 @@ article_rulings:
   # Art. 50(1) to (4) are CITED, by AIA-TR-A50-1 to -4: the cascade answers which duty attached and
   # those rules check the documentation against it. Only the two paragraphs below are ruled out.
   50:
+    5: >-
+      RULE AIA-TR-A50-1, AIA-TR-A50-2, AIA-TR-A50-3, AIA-TR-A50-4 — how the information owed under
+      (1) to (4) must be given: clearly and distinguishably, at the latest at first interaction or
+      exposure, and meeting applicable accessibility requirements. Not a fifth duty, so it is
+      attached to all four through `qualified_by` rather than modelled as a rule; a disclosure
+      buried in a footer breaches the paragraph that required the disclosure.
     6: >-
       Art. 50(1)-(4) do not affect Chapter III. LOAD-BEARING and already modelled structurally: it
       is why applies_to_transparency_duty adds a rule to a tier's obligations instead of replacing
@@ -950,10 +969,26 @@ article_rulings:
       Commission is the controller, and provides support to providers and deployers. Institutional;
       the accessibility requirement lands on the database, not on a registrant.
   72:
+    2: >-
+      RULE AIA-PO-A72 — the system must actively and systematically collect, document and analyse
+      performance data over the lifetime, so continuing Chapter III Section 2 compliance can be
+      evaluated. Supplied to the judge through that rule's `qualified_by`: a system established and
+      then left idle satisfies 72(1) and not this.
     4: >-
       Integration with post-market monitoring already established under Section A Annex I law or
       Union financial services law. An accommodation.
   73:
+    1: RULE AIA-PO-A73 — report a serious incident to the market surveillance authority.
+    2: RULE AIA-PO-A73 — immediately on establishing a causal link, and within 15 days regardless.
+    3: RULE AIA-PO-A73 — two days for a widespread infringement or a critical-infrastructure incident.
+    4: RULE AIA-PO-A73 — immediately, and within 10 days, where a person has died.
+    5: >-
+      RULE AIA-PO-A73 — an initial incomplete report followed by a complete one. A permission, and
+      it is carried because a procedure that waits for certainty before reporting misreads the
+      deadlines above.
+    6: >-
+      RULE AIA-PO-A73 — after reporting: investigate, risk-assess, cooperate with the authority and
+      the notified body, and alter nothing before informing them.
     7: Market surveillance authority duty on receiving a notification. Not a provider duty.
     8: Market surveillance authority duty to act within seven days. Not a provider duty.
     9: >-
@@ -1013,6 +1048,10 @@ article_rulings:
       model, and for systems in a VLOP or VLOSE, subject to the (i)-(iv) exceptions. Allocation of
       competence, and the trigger for 75(1a) below — which is why this paragraph is worth reading
       even though it binds no operator.
+    1a: >-
+      RULE AIA-PO-A75-1a — by way of derogation from Art. 73, a provider Art. 75(1) puts under the
+      AI Office's competence reports serious incidents to the AI OFFICE. Art. 73(2) to (9) apply
+      mutatis mutandis, so only the addressee moves.
     1b: Authorities cooperate actively with and assist the AI Office. The authority's duty.
     1c: The market surveillance authority assists the AI Office where public authority data is accessed. Institutional.
     1d: The AI Office notifies the national authority before a prohibiting or recall decision. Institutional.
@@ -1124,7 +1163,14 @@ article_rulings:
   # Art. 16's cross-referencing points are excluded. A reader is told what they owe, not told twice.
   79:
     1: An AI system presenting a risk is a "product presenting a risk" under Reg (EU) 2019/1020. A definition.
+    2: >-
+      RULE AIA-ALL-A79 — the paragraph is the authority's evaluation procedure, and its final
+      sentence binds every operator: cooperate as necessary with the market surveillance authority
+      and with the Art. 77(1) fundamental-rights bodies.
     3: Informing the Commission and other Member States where non-compliance is not national. Institutional.
+    4: >-
+      RULE AIA-ALL-A79 — the operator ensures corrective action across every unit it has made
+      available on the Union market, not only the one the authority examined.
     5: Provisional measures where the operator does not act in time. The authority's power.
     6: >-
       What the 79(5) notification must contain, and the (a)-(d) grounds of non-compliance it may
@@ -1394,30 +1440,6 @@ article_rulings:
 #
 # Emptying this bucket is the work. Editing it away is not.
 articles_awaiting_rules:
-  4a:
-    1: >-
-      A PERMISSION ON ITS FACE, A SECTION 2 REQUIREMENT BY CROSS-REFERENCE — and the second is what
-      governs a high-risk system. On its own terms 4a(1) lets a provider exceptionally process
-      special categories of personal data for bias detection and correction, subject to conditions
-      (a)-(f). But Art. 10(1) reads: data sets "that meet the quality criteria referred to in
-      paragraphs 2, 3 and 4 of this Article AND IN ARTICLE 4a(1) whenever such data sets are used",
-      and Art. 10(6) repeats the reference for testing data. So the (a)-(f) conditions are quality
-      criteria: failing (f) — records of processing that do not state why the special-category
-      processing was strictly necessary — breaches Art. 10(1). It is not the loss of an option.
-      AIA-HR-A10 cites Art. 10 whole, so the judge reads the cross-reference and the near-identical
-      Art. 10(5) wording, but NOT Art. 4a(1)'s own text, which is where the (a)-(f) list lives.
-      Emptied by widening AIA-HR-A10's citation to reach this paragraph, not by a rule of its own.
-      Read alone this Article is a permission and creates no duty; that reading is only safe for
-      paragraph 2, which no Art. 10 cross-reference reaches.
-  8:
-    2: >-
-      THE PROVIDER ANSWERS FOR THE SECTORAL INSTRUMENT TOO. Where a product contains an AI system to
-      which both this Regulation and Section A Annex I harmonisation legislation apply, providers
-      "shall be responsible for ensuring that their product is fully compliant with all applicable
-      requirements under applicable Union harmonisation legislation". The rest of Art. 8 is the
-      chapeau to Arts. 9-15 and is excluded as such, which is why the whole article read as covered.
-      Settled by law this tool does not carry, so document_verifiable false — the same treatment
-      AIA-PO-A16-L already gets for the accessibility Directives. Narrow: applies_to_route annex_i.
   11:
     2: >-
       A SINGLE set of technical documentation where the system relates to a Section A Annex I
@@ -1434,49 +1456,6 @@ articles_awaiting_rules:
       Minimum logging for Annex III point 1(a) systems: period of each use, the reference database,
       the input data that matched, and the persons who verified the result. Document-verifiable and
       area-specific — applies_to_annex_iii_area biometrics.
-  20:
-    2: >-
-      Where the system presents an Art. 79(1) risk, the provider must investigate the causes with
-      the reporting deployer and inform the market surveillance authorities. AIA-PO-A20 cites 20(1),
-      the corrective-action duty, which is a different obligation with a different trigger.
-  21:
-    2: >-
-      Give a competent authority access to the automatically generated logs on reasoned request.
-      AIA-PO-A21 cites 21(1), which covers information and documentation but not log access.
-  22:
-    1: >-
-      APPOINT AN AUTHORISED REPRESENTATIVE — a duty of the PROVIDER, not of the representative.
-      A provider established in a third country must appoint one by written mandate before making a
-      high-risk system available on the Union market. AIA-AR-A22 cites Art. 22 whole and is filed
-      under authorised_representative, so the judge does see this text, but the report attributes it
-      to the party being appointed rather than to the party who must appoint. A third-country
-      provider reading their own column never sees it.
-    2: >-
-      ENABLE THE REPRESENTATIVE to perform the mandate. The provider's duty again, and mis-attributed
-      the same way as 22(1).
-  25:
-    4: >-
-      A WRITTEN AGREEMENT between the provider and any third party supplying an AI system, model,
-      tools, services, components or processes integrated into the high-risk system, specifying the
-      information, capabilities and technical access needed for the provider to comply. Carve-out
-      for free and open-source suppliers other than GPAI models. AIA-IP-A25-2 covers 25(2), which
-      only fires once the provider role has already moved, so a provider building on a third-party
-      model is told nothing.
-      Belongs in this bucket rather than the one above. The standing argument for leaving it
-      unmodelled — it is discharged in a contract with a component supplier, not in the technical
-      file — argues for document_verifiable false, which is what the entire AIA-PO-* family carries.
-      A duty invisible in the file is reported as confirm-separately, never dropped.
-  27:
-    2: >-
-      KEEP THE ASSESSMENT CURRENT. Most of the paragraph is timing — the duty attaches to first use,
-      and an earlier or the provider's own assessment may be relied on in similar cases — but its
-      last sentence is operative: where an element of paragraph 1 has changed or is no longer up to
-      date, "the deployer shall take the necessary steps to update the information". AIA-DP-A27
-      cites 27(1), the initial assessment, so nothing carries the duty to maintain it.
-    3: >-
-      Notify the market surveillance authority of the FRIA result, submitting the Art. 27(5)
-      template. AIA-DP-A27 cites 27(1), so the judge sees the assessment's required contents and
-      never the duty to file it. A complete FRIA that is never sent passes.
   41:
     5: >-
       JUSTIFY THE ALTERNATIVE. A provider who does NOT follow a common specification must "duly
@@ -1484,20 +1463,12 @@ articles_awaiting_rules:
       Section 2". Art. 41 was excluded as a Commission power, which is true of every other paragraph
       in it. The justification is a document, so this is document-verifiable in a way most of the
       AIA-PO-* family is not — a technical file either carries the equivalence argument or does not.
-  43:
-    4: >-
-      A NEW conformity assessment on substantial modification, and the rule that pre-determined
-      changes to a continuously learning system are not substantial modifications. A standing duty
-      for the life of the system; all three Art. 43 rules cite only the initial assessment.
   47:
     2: >-
       The declaration must state conformity with Section 2, contain the Annex V information, and be
       translated for the Member States where the system is placed. AIA-PO-A47 cites 47(1) — drawing
       it up and keeping it ten years — so its CONTENTS are checked by nothing. Brings Annex V into
       scope.
-    4: >-
-      By drawing up the declaration the provider assumes responsibility for Section 2 compliance and
-      must keep the declaration up to date. The maintenance duty is continuous and uncited.
   48:
     2: >-
       A DIGITAL CE marking for systems provided digitally, accessible via the interface or a
@@ -1506,18 +1477,6 @@ articles_awaiting_rules:
     4: >-
       Where a notified body was involved, the CE marking must be followed by its identification
       number. Applies on the Annex VII route that Art. 43(1) opens for Annex III point 1.
-  49:
-    5: >-
-      Annex III point 2 systems "shall be registered at NATIONAL level". AIA-PO-A49 excludes
-      critical infrastructure from EU-database registration and its comment states that critical
-      infrastructure "owes no registration" — which is wrong on the text. It owes no EU-database
-      registration; this duty is real and carried by nothing.
-  50:
-    5: >-
-      The Art. 50(1)-(4) information must be given clearly and distinguishably, at the latest at the
-      first interaction or exposure, and must meet applicable accessibility requirements. All four
-      Art. 50 rules cite only their own paragraph, so a disclosure buried in a footer passes
-      AIA-TR-A50-1. This qualifies all four duties rather than adding a fifth.
   # --- Arts. 52 to 55: Chapter V, the general-purpose AI model regime --------------------------
   # A DIFFERENT KIND OF DEBT from the rest of this section, and worth reading as one group even
   # though article order splits it. Every other entry here is a paragraph a high-risk rule was
@@ -1587,50 +1546,10 @@ articles_awaiting_rules:
       or acts for a public authority. AIA-DP-A49-3 carries the Art. 49(3) duty to register; this
       says what goes in.
   72:
-    2: >-
-      The monitoring system must actively and systematically collect, document and analyse
-      performance data over the system's lifetime. AIA-PO-A72 cites 72(1), which requires only that
-      a system be established and documented.
     3: >-
       The post-market monitoring PLAN shall be part of the Annex IV technical documentation. This is
       the document-verifiable half of Art. 72 — it is in the file under review — while AIA-PO-A72
       carries document_verifiable false on the strength of 72(1) alone.
-  73:
-    2: >-
-      The reporting deadline: immediately on establishing a causal link, and in any event within 15
-      days. AIA-PO-A73 tells a provider they must report a serious incident and not by when.
-    3: Two days for a widespread infringement or an Art. 3(49)(b) incident. Same gap as 73(2).
-    4: Immediately on death, on suspicion of a causal link. Same gap as 73(2).
-    5: Permission to file an incomplete initial report followed by a complete one. Same gap as 73(2).
-    6: >-
-      After reporting, the provider must investigate, risk-assess the incident, cooperate with
-      authorities and the notified body, and NOT alter the system before informing them. A distinct
-      post-report duty that AIA-PO-A73's citation of 73(1) does not reach.
-  75:
-    1a: >-
-      NEW in this version. SERIOUS INCIDENTS GO TO THE AI OFFICE, not to the national market
-      surveillance authority, where the provider's high-risk system falls under Art. 75(1) — a system
-      built on the provider's own general-purpose model, or one inside a VLOP or VLOSE. Art. 73(2) to
-      (9) then apply mutatis mutandis, so the deadlines are unchanged and only the addressee moves.
-      AIA-PO-A73 names the national authority unconditionally, which is the wrong addressee for
-      exactly the providers most likely to have one of these systems.
-  79:
-    2: >-
-      THE OPERATORS SHALL COOPERATE with the market surveillance authority and with the Art. 77(1)
-      fundamental-rights bodies during an evaluation. The rest of the paragraph is the authority's
-      procedure and creates no duty here, but that final sentence binds the operator, and 'operator'
-      is Art. 3(8): provider, product manufacturer, deployer, authorised representative, importer or
-      distributor. Not Art. 20, which is a self-initiated duty to investigate and inform on a
-      provider who has reason to consider its own system non-conforming — a different party, a
-      different trigger, and not cooperation with anyone.
-    4: >-
-      THE OPERATOR SHALL ENSURE CORRECTIVE ACTION across every unit it has made available on the
-      Union market, following the authority's requirement under 79(2). AIA-PO-A20 does not report
-      it: that rule is provider-only and high-risk-only, while this binds all six roles in Art. 3(8)
-      and Art. 79 reaches any system presenting a risk — 79(6)(d) names non-compliance with Art. 50,
-      so a minimal-risk generator in breach of 50(2) owes this. A deployer, importer or distributor
-      is told nothing about either duty today.
-
 # --- ANNEXES ---------------------------------------------------------------------------------
 # The Annexes carry operative content the Articles only point at: Annex III IS the list of high-risk
 # areas, Annex I IS the list of harmonisation instruments, Annex IV IS the technical documentation an

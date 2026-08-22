@@ -75,6 +75,36 @@ rules:
   # ------------------------------------------------------------------------------------------
   # Art. 9-15 — requirements for high-risk AI systems (document-verifiable).
   # ------------------------------------------------------------------------------------------
+  # Art. 8(1) is the chapeau to Arts. 9-15 and is modelled rule by rule below. Paragraph 2 is not a
+  # chapeau: it is a duty of its own, and it points OUTSIDE this Regulation.
+  - rule_id: AIA-PO-A08-2
+    source:
+      instrument: "Regulation (EU) 2024/1689"
+      article: 8
+      paragraph: 2 # compliance with the Section A sectoral instrument as well
+      act_version_date: 2026-07-27
+    applies_to_risk_class: [high_risk]
+    applies_to_role: [provider]
+    # Only where both regimes apply, which is the Annex I route by definition — the paragraph opens
+    # "where a product contains an AI system, to which the requirements of this Regulation as well
+    # as requirements of the Union harmonisation legislation listed in Section A of Annex I apply".
+    applies_to_route: annex_i
+    obligation_status: mandatory
+    check_type: presence
+    evidence_expected: >-
+      Evidence that the PRODUCT is compliant with the Section A Annex I instrument that governs it —
+      the Medical Devices, Machinery, Lifts or other Regulation named for that product — and not
+      only with this Regulation. The paragraph also gives the provider a CHOICE: the testing,
+      reporting, information and documentation owed here may be integrated into the documentation
+      and procedures that instrument already requires, rather than duplicated. Settled by law this
+      tool does not carry, so what a competent conformity route looks like is a question for a
+      specialist in that sector — confirm separately.
+    document_verifiable: false
+    effective_date_by_route:
+      annex_iii: 2027-12-02
+      annex_i: 2028-08-02
+    status: active
+
   - rule_id: AIA-HR-A09
     source:
       instrument: "Regulation (EU) 2024/1689"
@@ -102,6 +132,17 @@ rules:
       act_version_date: 2026-07-27
     applies_to_risk_class: [high_risk]
     applies_to_role: [provider]
+    # ART. 10(1) MAKES ART. 4a(1) A QUALITY CRITERION, and the cross-reference is easy to read past.
+    # 10(1) requires data sets "that meet the quality criteria referred to in paragraphs 2, 3 and 4
+    # of this Article AND IN ARTICLE 4a(1) whenever such data sets are used"; 10(6) repeats it for
+    # testing data. So Art. 4a(1) is not merely a permission to process special categories of
+    # personal data for bias detection — its conditions (a) to (f) are conditions of complying with
+    # Art. 10(1), and a provider that processes such data without the records point (f) requires
+    # breaches this Article. The judge reads the pointer in Art. 10(1) either way; this supplies
+    # what it points at.
+    qualified_by:
+      - article: 4a
+        paragraph: 1
     obligation_status: mandatory
     check_type: substance
     evidence_expected: >-
@@ -379,6 +420,30 @@ rules:
       annex_i: 2028-08-02
     status: active
 
+  - rule_id: AIA-PO-A20-2
+    source:
+      instrument: "Regulation (EU) 2024/1689"
+      article: 20
+      paragraph: 2 # investigate the causes and inform the authorities
+      act_version_date: 2026-07-27
+    applies_to_risk_class: [high_risk]
+    applies_to_role: [provider]
+    obligation_status: mandatory
+    check_type: presence
+    evidence_expected: >-
+      A procedure for the case where the system presents an Art. 79(1) risk and the provider becomes
+      aware of it: IMMEDIATELY investigate the causes, in collaboration with the reporting deployer
+      where there is one, and inform the market surveillance authorities competent for the system
+      and any notified body that issued an Art. 44 certificate — telling them the nature of the
+      non-compliance and any corrective action taken. Distinct from Art. 20(1), which is the duty to
+      bring a non-conforming system into line, withdraw or recall it. A post-market process
+      obligation, not visible in the technical documentation — confirm separately.
+    document_verifiable: false
+    effective_date_by_route:
+      annex_iii: 2027-12-02
+      annex_i: 2028-08-02
+    status: active
+
   - rule_id: AIA-PO-A21
     source:
       instrument: "Regulation (EU) 2024/1689"
@@ -392,6 +457,29 @@ rules:
     evidence_expected: >-
       A duty to cooperate with authorities on request. A relational process obligation, not a
       property of the documentation — confirm separately.
+    document_verifiable: false
+    effective_date_by_route:
+      annex_iii: 2027-12-02
+      annex_i: 2028-08-02
+    status: active
+
+  - rule_id: AIA-PO-A21-2
+    source:
+      instrument: "Regulation (EU) 2024/1689"
+      article: 21
+      paragraph: 2 # access to the automatically generated logs
+      act_version_date: 2026-07-27
+    applies_to_risk_class: [high_risk]
+    applies_to_role: [provider]
+    obligation_status: mandatory
+    check_type: presence
+    evidence_expected: >-
+      A procedure for giving a competent authority ACCESS TO THE LOGS the system generates
+      automatically under Art. 12(1), on reasoned request, so far as those logs are under the
+      provider's control. Distinct from Art. 21(1), which covers information and documentation:
+      a provider that can hand over its technical file and not its logs satisfies one and not the
+      other. A relational process obligation, not a property of the documentation — confirm
+      separately.
     document_verifiable: false
     effective_date_by_route:
       annex_iii: 2027-12-02
@@ -516,6 +604,40 @@ rules:
       the date the Article gives and says plainly that it looks inverted.
     status: active
 
+  # A STANDING DUTY, where the three rules above are all about the FIRST assessment.
+  - rule_id: AIA-PO-A43-4
+    source:
+      instrument: "Regulation (EU) 2024/1689"
+      article: 43
+      paragraph: 4 # a new assessment on substantial modification
+      act_version_date: 2026-07-27
+    applies_to_risk_class: [high_risk]
+    applies_to_role: [provider]
+    obligation_status: mandatory
+    check_type: presence
+    evidence_expected: >-
+      A change-control procedure that triggers a NEW conformity assessment whenever the system is
+      substantially modified — whether or not the modified system is distributed further, and
+      whether or not the current deployer simply keeps using it. For a system that continues to
+      learn after being placed on the market, the paragraph carves out changes the provider
+      PRE-DETERMINED at the initial assessment and recorded in the technical documentation under
+      Annex IV point 2(f): those are not substantial modifications. A provider relying on that
+      carve-out must therefore have written the intended changes down in advance; one that has not
+      cannot rely on it. A lifecycle process obligation — confirm separately.
+    document_verifiable: false
+    effective_date: 2026-08-02
+    effective_date_note: >-
+      IN FORCE ALREADY, AND EARLIER THAN WHAT IT ATTESTS TO — which reads like an error and is
+      not one. Regulation (EU) 2026/1744 moved Chapter III Sections 1 to 3 to 2 December 2027 for
+      an Annex III system and 2 August 2028 for an Annex I one, and did NOT move Section 5, where
+      this obligation sits. So the new conformity assessment applies from the general date of 2 August 2026,
+      while the Section 2 requirements it rests on wait another sixteen months or more. The
+      sequence is what Art. 113(c) says, not a transcription of it: that paragraph names Sections
+      1, 2 and 3 only. Whether the legislator intended Section 5 to run ahead of them, or simply
+      did not carry it across, is a question for advice rather than for this tool — which reports
+      the date the Article gives and says plainly that it looks inverted.
+    status: active
+
   - rule_id: AIA-PO-A47
     source:
       instrument: "Regulation (EU) 2024/1689"
@@ -537,6 +659,39 @@ rules:
       an Annex III system and 2 August 2028 for an Annex I one, and did NOT move Section 5, where
       this obligation sits. So the EU declaration of conformity applies from the general date of 2 August 2026,
       while the Section 2 requirements it is declared against wait another sixteen months or more. The
+      sequence is what Art. 113(c) says, not a transcription of it: that paragraph names Sections
+      1, 2 and 3 only. Whether the legislator intended Section 5 to run ahead of them, or simply
+      did not carry it across, is a question for advice rather than for this tool — which reports
+      the date the Article gives and says plainly that it looks inverted.
+    status: active
+
+  - rule_id: AIA-PO-A47-4
+    source:
+      instrument: "Regulation (EU) 2024/1689"
+      article: 47
+      paragraph: 4 # assuming responsibility, and keeping the declaration current
+      act_version_date: 2026-07-27
+    applies_to_risk_class: [high_risk]
+    applies_to_role: [provider]
+    obligation_status: mandatory
+    check_type: presence
+    evidence_expected: >-
+      Evidence that the EU declaration of conformity is KEPT UP TO DATE as appropriate — a review
+      trigger tied to changes in the system, in the harmonised standards it is declared against, or
+      in the Section 2 requirements themselves. Drawing the declaration up is Art. 47(1); this is
+      the continuing duty that follows it, and the paragraph attaches a consequence to the act of
+      drawing it up at all: by doing so the provider ASSUMES RESPONSIBILITY for compliance with
+      Section 2. A declaration that was accurate on the day of signature and has not been revisited
+      does not satisfy this. An administrative artefact, not part of the technical documentation —
+      confirm separately.
+    document_verifiable: false
+    effective_date: 2026-08-02
+    effective_date_note: >-
+      IN FORCE ALREADY, AND EARLIER THAN WHAT IT ATTESTS TO — which reads like an error and is
+      not one. Regulation (EU) 2026/1744 moved Chapter III Sections 1 to 3 to 2 December 2027 for
+      an Annex III system and 2 August 2028 for an Annex I one, and did NOT move Section 5, where
+      this obligation sits. So the EU declaration of conformity applies from the general date of 2 August 2026,
+      while the Section 2 requirements it rests on wait another sixteen months or more. The
       sequence is what Art. 113(c) says, not a transcription of it: that paragraph names Sections
       1, 2 and 3 only. Whether the legislator intended Section 5 to run ahead of them, or simply
       did not carry it across, is a question for advice rather than for this tool — which reports
@@ -605,6 +760,42 @@ rules:
       an Annex III system and 2 August 2028 for an Annex I one, and did NOT move Section 5, where
       this obligation sits. So the registration applies from the general date of 2 August 2026,
       while the Section 2 requirements it is registered under wait another sixteen months or more. The
+      sequence is what Art. 113(c) says, not a transcription of it: that paragraph names Sections
+      1, 2 and 3 only. Whether the legislator intended Section 5 to run ahead of them, or simply
+      did not carry it across, is a question for advice rather than for this tool — which reports
+      the date the Article gives and says plainly that it looks inverted.
+    status: active
+
+  # THE OTHER HALF OF ART. 49, and the reason AIA-PO-A49 excludes critical infrastructure. That rule
+  # withholds EU-database registration from Annex III point 2 because Art. 49(1) does; it does not
+  # follow that such a system owes no registration at all. Paragraph 5 gives it a different one.
+  - rule_id: AIA-PO-A49-5
+    source:
+      instrument: "Regulation (EU) 2024/1689"
+      article: 49
+      paragraph: 5 # Annex III point 2 systems register at national level
+      annex: "III"
+      act_version_date: 2026-07-27
+    applies_to_risk_class: [high_risk]
+    applies_to_role: [provider]
+    applies_to_annex_iii_area: [critical_infrastructure]
+    obligation_status: mandatory
+    check_type: presence
+    evidence_expected: >-
+      Registration of the system AT NATIONAL LEVEL, in the register the Member State concerned
+      operates — not in the EU database, which Art. 49(1) expressly withholds from Annex III point 2
+      systems. The Article says only that the registration must happen; where and how is left to
+      national law, so a provider needs the rules of each Member State it places the system in. An
+      external act against a registry, not observable from the technical documentation — confirm
+      separately.
+    document_verifiable: false
+    effective_date: 2026-08-02
+    effective_date_note: >-
+      IN FORCE ALREADY, AND EARLIER THAN WHAT IT ATTESTS TO — which reads like an error and is
+      not one. Regulation (EU) 2026/1744 moved Chapter III Sections 1 to 3 to 2 December 2027 for
+      an Annex III system and 2 August 2028 for an Annex I one, and did NOT move Section 5, where
+      this obligation sits. So the national registration applies from the general date of 2 August 2026,
+      while the Section 2 requirements it rests on wait another sixteen months or more. The
       sequence is what Art. 113(c) says, not a transcription of it: that paragraph names Sections
       1, 2 and 3 only. Whether the legislator intended Section 5 to run ahead of them, or simply
       did not carry it across, is a question for advice rather than for this tool — which reports
@@ -724,30 +915,142 @@ rules:
       act_version_date: 2026-07-27
     applies_to_risk_class: [high_risk]
     applies_to_role: [provider]
+    # 72(2) is what the system established under 72(1) must DO: actively and systematically collect,
+    # document and analyse performance data over the lifetime, so the provider can evaluate
+    # continuing compliance with Chapter III Section 2. Supplied rather than cited, because a
+    # provider that has established nothing breaches 72(1) and the finding belongs there.
+    qualified_by:
+      - article: 72
+        paragraph: 2
     obligation_status: mandatory
     check_type: presence
     evidence_expected: >-
-      An operating post-market monitoring system at the provider. The duty is to run the system;
-      that is an operational process, not a property of the documentation — confirm separately.
-      (The presence of the post-market monitoring PLAN inside the technical documentation is a
-      different question, already covered by Annex IV via AIA-HR-A11.)
+      An operating post-market monitoring system at the provider, and evidence that it ACTIVELY AND
+      SYSTEMATICALLY collects, documents and analyses performance data over the system's lifetime —
+      from deployers and from other sources — so that continuing compliance with Chapter III
+      Section 2 can be evaluated. A system that exists on paper and gathers nothing satisfies
+      Art. 72(1) and not Art. 72(2). The duty is to run it; that is an operational process, not a
+      property of the documentation — confirm separately. (The presence of the post-market
+      monitoring PLAN inside the technical documentation is a different question, already covered by
+      Annex IV via AIA-HR-A11.)
     document_verifiable: false
     effective_date: 2026-08-02
     status: active
 
+  # THE WHOLE ARTICLE, because a reporting duty without its deadline is not the duty. Art. 73(1)
+  # says a serious incident must be reported; (2) to (5) say WHEN — immediately on establishing a
+  # causal link and within 15 days, two days for a widespread infringement or a critical
+  # infrastructure incident, immediately on death — and (6) says what happens after: investigate,
+  # risk-assess, cooperate with the authority and the notified body, and do not alter the system
+  # before informing them. Citing (1) alone puts a procedure in front of the judge and none of the
+  # timing that makes one adequate.
   - rule_id: AIA-PO-A73
     source:
       instrument: "Regulation (EU) 2024/1689"
-      article: 73
-      paragraph: 1 # report serious incidents to market surveillance authorities
+      article: 73 # whole article: report serious incidents, by when, and what follows
       act_version_date: 2026-07-27
     applies_to_risk_class: [high_risk]
     applies_to_role: [provider]
     obligation_status: mandatory
     check_type: presence
     evidence_expected: >-
-      A serious-incident reporting procedure toward market surveillance authorities. A relational
-      post-market obligation, not visible in the technical documentation — confirm separately.
+      A serious-incident reporting procedure toward market surveillance authorities, carrying the
+      Article's DEADLINES: immediately on establishing a causal link and in any event within 15 days
+      of becoming aware; two days for a widespread infringement or an incident to critical
+      infrastructure; immediately, and no later than 10 days, where a person has died. An initial
+      incomplete report followed by a complete one is expressly allowed, so a procedure that waits
+      for certainty before reporting at all is wrong. Also the post-report duties: investigate the
+      incident and the system, risk-assess it, cooperate with the authority, and take no action that
+      alters the system before informing them. A relational post-market obligation, not visible in
+      the technical documentation — confirm separately.
+    document_verifiable: false
+    effective_date: 2026-08-02
+    status: active
+
+  - rule_id: AIA-PO-A75-1a
+    source:
+      instrument: "Regulation (EU) 2024/1689"
+      article: 75
+      paragraph: 1a # serious incidents go to the AI Office, not the national authority
+      act_version_date: 2026-07-27
+    applies_to_risk_class: [high_risk]
+    applies_to_role: [provider]
+    # A DIFFERENT ADDRESSEE, not a second report. Art. 75(1a) opens "by way of derogation from
+    # Article 73", so where it applies it REPLACES that Article's addressee and leaves everything
+    # else standing — 73(2) to (9) apply mutatis mutandis, so the deadlines above are unchanged.
+    # Reported beside AIA-PO-A73 rather than folded into it because the condition is a fact about
+    # the provider, not about the system: whether the high-risk system is built on a general-purpose
+    # model the same provider supplies, or is a component of a VLOP or VLOSE under Art. 75(1). That
+    # is not derivable from a description of the system, so it is stated for the reader.
+    activation_condition: >-
+      Art. 75(1a) binds only the providers Art. 75(1) puts under the AI Office's competence: a
+      provider whose high-risk system is based on a general-purpose AI model where the SAME provider
+      develops both the model and the system, and a provider whose system is used as a component of
+      a very large online platform or search engine designated under Regulation (EU) 2022/2065.
+      Whether either holds turns on the provider's own corporate and product structure rather than
+      on this description, so the obligation is listed with the condition attached.
+    obligation_status: mandatory
+    check_type: presence
+    evidence_expected: >-
+      A serious-incident reporting procedure addressed to the AI OFFICE rather than to a national
+      market surveillance authority. The deadlines and the post-report duties of Art. 73 are
+      unchanged; only the recipient moves, and the AI Office then passes the information on to the
+      national authority itself. A procedure naming only the national authority is the wrong
+      addressee for a provider this Article reaches. Not visible in the technical documentation —
+      confirm separately.
+    document_verifiable: false
+    effective_date: 2026-08-02
+    status: active
+
+  # Art. 79 binds the OPERATOR — Art. 3(8): provider, product manufacturer, deployer, authorised
+  # representative, importer or distributor — which is why this is filed AIA-ALL- and carries five
+  # roles where every other rule carries one or two. The sixth, product manufacturer, is left off on
+  # the ground the ledger already gives for the role as a whole: Art. 25(3) makes a manufacturer who
+  # places a high-risk system on the market with their product THE PROVIDER, so they are reached
+  # through the gap graph's reallocation question and owe the provider set, this rule included.
+  # Giving them a column of their own here would assert a separate obligation set for a party the
+  # Act folds into another.
+  #
+  # EVERY GOVERNED TIER, because Art. 79 reaches any "AI system presenting a risk" rather than a
+  # tier, and 79(6)(d) names non-compliance with Art. 50 as a ground — so a minimal-risk generator
+  # in breach of Art. 50(2) owes it. Narrowing to high_risk would drop exactly the case the Article
+  # names.
+  - rule_id: AIA-ALL-A79
+    source:
+      instrument: "Regulation (EU) 2024/1689"
+      article: 79
+      paragraph: 4 # ensure corrective action across every unit made available
+      act_version_date: 2026-07-27
+    applies_to_risk_class: [high_risk, not_high_risk, minimal]
+    applies_to_role:
+      [provider, deployer, importer, distributor, authorised_representative]
+    # CONTINGENT, and the condition is an event rather than a fact about the system: neither duty
+    # exists until a market surveillance authority opens an Art. 79 evaluation. Stated here rather
+    # than used to withhold the rule, for the reason the Art. 27 condition is: no document settles
+    # whether an authority has acted, and a party that has been contacted needs to know what it owes
+    # before it goes looking.
+    activation_condition: >-
+      Art. 79(2) and (4) attach once a market surveillance authority has sufficient reason to
+      consider the system to present a risk and opens an evaluation. Until then neither duty is
+      live. Nothing in a description of the system says whether that has happened, so the obligation
+      is listed with the condition attached rather than asserted of every operator or dropped.
+    # 79(2)'s final sentence is the cooperation duty, and the paragraph around it is the
+    # authority's procedure — so it is supplied here rather than cited, which would make the finding
+    # point at a procedure this party does not carry out.
+    qualified_by:
+      - article: 79
+        paragraph: 2
+    obligation_status: mandatory
+    check_type: presence
+    evidence_expected: >-
+      A procedure for responding to a market surveillance authority's evaluation under Art. 79: the
+      duty in 79(2) to COOPERATE as necessary with that authority and with the Art. 77(1)
+      fundamental-rights bodies, and the duty in 79(4) to ensure appropriate corrective action is
+      taken in respect of ALL the systems concerned that this party has made available on the Union
+      market — not only the unit the authority examined. Distinct from Art. 20, which a provider
+      starts itself on its own suspicion; this one begins with the authority's requirement and binds
+      every operator in the chain. A relational enforcement obligation, not visible in the technical
+      documentation — confirm separately.
     document_verifiable: false
     effective_date: 2026-08-02
     status: active
@@ -855,6 +1158,13 @@ rules:
       act_version_date: 2026-07-27
     applies_to_transparency_duty: [direct_interaction]
     applies_to_role: [provider]
+    # Art. 50(5) is not a fifth duty — it says HOW the information owed under (1) to (4) must be
+    # given: clearly, distinguishably, at the latest at first interaction or exposure, and meeting
+    # applicable accessibility requirements. Attached to each of the four rather than modelled once,
+    # because a disclosure buried in a footer breaches the paragraph that required the disclosure.
+    qualified_by:
+      - article: 50
+        paragraph: 5
     obligation_status: mandatory
     check_type: presence
     evidence_expected: >-
@@ -890,6 +1200,13 @@ rules:
       - C-2026-5054/machine-readable-marking-defined
       - C-2026-5054/both-elements-required
       - C-2026-5054/detection-must-be-available
+    # Art. 50(5) is not a fifth duty — it says HOW the information owed under (1) to (4) must be
+    # given: clearly, distinguishably, at the latest at first interaction or exposure, and meeting
+    # applicable accessibility requirements. Attached to each of the four rather than modelled once,
+    # because a disclosure buried in a footer breaches the paragraph that required the disclosure.
+    qualified_by:
+      - article: 50
+        paragraph: 5
     obligation_status: mandatory
     check_type: substance
     evidence_expected: >-
@@ -922,6 +1239,13 @@ rules:
       act_version_date: 2026-07-27
     applies_to_transparency_duty: [emotion_or_biometric_categorisation]
     applies_to_role: [deployer]
+    # Art. 50(5) is not a fifth duty — it says HOW the information owed under (1) to (4) must be
+    # given: clearly, distinguishably, at the latest at first interaction or exposure, and meeting
+    # applicable accessibility requirements. Attached to each of the four rather than modelled once,
+    # because a disclosure buried in a footer breaches the paragraph that required the disclosure.
+    qualified_by:
+      - article: 50
+        paragraph: 5
     obligation_status: mandatory
     check_type: presence
     evidence_expected: >-
@@ -946,6 +1270,13 @@ rules:
     # same law and citing it identically.
     applies_to_transparency_duty: [deep_fake_disclosure, public_interest_text_disclosure]
     applies_to_role: [deployer]
+    # Art. 50(5) is not a fifth duty — it says HOW the information owed under (1) to (4) must be
+    # given: clearly, distinguishably, at the latest at first interaction or exposure, and meeting
+    # applicable accessibility requirements. Attached to each of the four rather than modelled once,
+    # because a disclosure buried in a footer breaches the paragraph that required the disclosure.
+    qualified_by:
+      - article: 50
+        paragraph: 5
     obligation_status: mandatory
     check_type: presence
     evidence_expected: >-
@@ -1053,6 +1384,94 @@ rules:
   # is NOT modelled: it is discharged in a contract with a third party, not in the technical
   # documentation this tool reads, so a document check could only ever report "not found".
   # ------------------------------------------------------------------------------------------
+  # Art. 27 is THREE duties on one assessment: carry it out, keep it current, file it. AIA-DP-A27
+  # carries the first and its required contents. The other two are separate obligations with
+  # separate failure modes — an assessment that was right at first use and never revisited, and a
+  # complete assessment that was never sent — so each is its own rule and its own finding.
+  - rule_id: AIA-DP-A27-2
+    source:
+      instrument: "Regulation (EU) 2024/1689"
+      article: 27
+      paragraph: 2 # keep the assessment up to date
+      act_version_date: 2026-07-27
+    applies_to_risk_class: [high_risk]
+    applies_to_role: [deployer]
+    applies_to_annex_iii_area:
+      [
+        biometrics,
+        education,
+        employment,
+        essential_services,
+        law_enforcement,
+        migration,
+        justice_democracy,
+      ]
+    activation_condition: >-
+      Art. 27(1) does not bind every deployer of an Annex III system, and this paragraph follows it:
+      it binds deployers that are bodies governed by public law or private entities providing public
+      services; and, whoever the deployer is, deployers of the systems in Annex III point 5(b) —
+      evaluating creditworthiness or establishing a credit score, other than for detecting financial
+      fraud — and 5(c), risk assessment and pricing for life and health insurance. Neither limb is
+      derivable from a description of the system, so the obligation is listed with this condition
+      attached rather than asserted of every deployer or dropped.
+    obligation_status: mandatory
+    check_type: presence
+    evidence_expected: >-
+      A trigger for UPDATING the fundamental rights impact assessment: where the deployer considers,
+      during use, that any element listed in Art. 27(1) has changed or is no longer up to date, it
+      must take the necessary steps to update the information. The paragraph also settles two things
+      in the deployer's favour — the Art. 27(1) duty attaches to FIRST use, and in similar cases the
+      deployer may rely on an assessment already carried out, its own or the provider's — so a
+      deployer reusing an earlier assessment is doing what the Article allows, provided it is still
+      current. A process obligation, not visible in the technical documentation — confirm separately.
+    document_verifiable: false
+    effective_date_by_route:
+      annex_iii: 2027-12-02
+      annex_i: 2028-08-02
+    status: active
+
+  - rule_id: AIA-DP-A27-3
+    source:
+      instrument: "Regulation (EU) 2024/1689"
+      article: 27
+      paragraph: 3 # notify the market surveillance authority of the result
+      act_version_date: 2026-07-27
+    applies_to_risk_class: [high_risk]
+    applies_to_role: [deployer]
+    applies_to_annex_iii_area:
+      [
+        biometrics,
+        education,
+        employment,
+        essential_services,
+        law_enforcement,
+        migration,
+        justice_democracy,
+      ]
+    activation_condition: >-
+      Art. 27(1) does not bind every deployer of an Annex III system, and this paragraph follows it:
+      it binds deployers that are bodies governed by public law or private entities providing public
+      services; and, whoever the deployer is, deployers of the systems in Annex III point 5(b) —
+      evaluating creditworthiness or establishing a credit score, other than for detecting financial
+      fraud — and 5(c), risk assessment and pricing for life and health insurance. Neither limb is
+      derivable from a description of the system, so the obligation is listed with this condition
+      attached rather than asserted of every deployer or dropped.
+    obligation_status: mandatory
+    check_type: presence
+    evidence_expected: >-
+      Evidence that the RESULT of the assessment was notified to the market surveillance authority,
+      on the filled-out template the AI Office publishes under Art. 27(5). A complete and current
+      fundamental rights impact assessment that was never filed does not satisfy this. One
+      exemption: a deployer in the Art. 46(1) case — a system authorised for use by a market
+      surveillance authority for exceptional reasons of public security or protection of life —
+      may be exempt from notifying. An external filing, not visible in the technical documentation —
+      confirm separately.
+    document_verifiable: false
+    effective_date_by_route:
+      annex_iii: 2027-12-02
+      annex_i: 2028-08-02
+    status: active
+
   - rule_id: AIA-IP-A25-2
     source:
       instrument: "Regulation (EU) 2024/1689"
@@ -1094,6 +1513,76 @@ rules:
   # provider's technical file can evidence them: document_verifiable is false throughout, and they
   # are reported as confirmations to make rather than as gaps.
   # ------------------------------------------------------------------------------------------
+  - rule_id: AIA-PO-A25-4
+    source:
+      instrument: "Regulation (EU) 2024/1689"
+      article: 25
+      paragraph: 4 # the written agreement with a third-party supplier
+      act_version_date: 2026-07-27
+    applies_to_risk_class: [high_risk]
+    applies_to_role: [provider]
+    obligation_status: mandatory
+    check_type: presence
+    evidence_expected: >-
+      A WRITTEN AGREEMENT between this provider and each third party supplying an AI system, model,
+      tools, services, components or processes used or integrated in the high-risk system,
+      specifying the information, capabilities, technical access and other assistance — on the
+      generally acknowledged state of the art — that the provider needs in order to comply with this
+      Regulation. A provider that cannot obtain a component's documentation still owes Arts. 9-15 on
+      the finished system, which is what this agreement exists to make possible. It does NOT apply
+      to a third party making tools, services, processes or components available to the public under
+      a free and open-source licence, unless what is supplied is a general-purpose AI model. The AI
+      Office may recommend voluntary model contract terms. Discharged in a contract with a supplier
+      rather than in the technical file — confirm separately.
+    document_verifiable: false
+    effective_date_by_route:
+      annex_iii: 2027-12-02
+      annex_i: 2028-08-02
+    status: active
+
+  # ART. 22 BINDS TWO PARTIES, and only one of them is the representative. Paragraphs (1) and (2)
+  # are duties of the PROVIDER — appoint a representative, then enable it to do the job — while
+  # (3) to (5) are the representative's own, which AIA-AR-A22 carries. One rule for both would file
+  # the appointment under the party being appointed, and a third-country provider reading its own
+  # column would never see the duty that applies before it may sell at all.
+  - rule_id: AIA-PO-A22
+    source:
+      instrument: "Regulation (EU) 2024/1689"
+      article: 22
+      paragraph: 1 # appoint an authorised representative, by written mandate
+      act_version_date: 2026-07-27
+    applies_to_risk_class: [high_risk]
+    applies_to_role: [provider]
+    # Whether the provider is established in a third country is a fact about the organisation, not
+    # about the system, and no description settles it — the same treatment Art. 27's public-body
+    # limb gets, and for the same reason.
+    activation_condition: >-
+      Art. 22(1) binds providers ESTABLISHED IN THIRD COUNTRIES. A provider established in the Union
+      appoints no representative and owes nothing here. Where the provider is established is not
+      stated in a description of the system, so the obligation is listed with this condition
+      attached rather than asserted of every provider or dropped.
+    # 22(2) is the other half of the same duty and is supplied rather than cited: the finding
+    # belongs to the appointment, and a representative left without documents fails both.
+    qualified_by:
+      - article: 22
+        paragraph: 2
+    obligation_status: mandatory
+    check_type: presence
+    evidence_expected: >-
+      A WRITTEN MANDATE appointing an authorised representative established in the Union, executed
+      BEFORE the system is made available on the Union market — the appointment is a precondition of
+      placing it, not a formality to follow. And evidence under Art. 22(2) that the provider ENABLES
+      that representative to perform the tasks in the mandate: giving it the technical documentation
+      and the declaration of conformity to hold, answering its requests, and keeping it able to
+      cooperate with authorities. A representative appointed on paper and left without the documents
+      it must produce does not satisfy the second half. An organisational arrangement, not visible
+      in the technical documentation — confirm separately.
+    document_verifiable: false
+    effective_date_by_route:
+      annex_iii: 2027-12-02
+      annex_i: 2028-08-02
+    status: active
+
   - rule_id: AIA-AR-A22
     source:
       instrument: "Regulation (EU) 2024/1689"

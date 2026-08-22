@@ -123,8 +123,9 @@ def test_only_the_rules_for_this_risk_class_activate(spec):
     assert not minimal.document_verifiable, "a minimal-risk use case owes no Chapter III"
     # But NOT nothing at all: Art. 4 binds every tier the Regulation governs, and an empty set here
     # would make `minimal` indistinguishable from `out_of_scope` — the collapse the class exists to
-    # prevent.
-    assert [r.rule_id for r in minimal.all_rules] == ["AIA-ALL-A04"]
+    # prevent. Art. 79 joins it for the same reason, one Article further on: it reaches any system
+    # presenting a risk rather than a tier, and 79(6)(d) names Art. 50 as a ground.
+    assert sorted(r.rule_id for r in minimal.all_rules) == ["AIA-ALL-A04", "AIA-ALL-A79"]
 
 
 def test_an_out_of_scope_use_case_owes_nothing_at_all(spec):
@@ -147,12 +148,17 @@ def test_each_role_gets_its_own_obligations(spec):
     assert "AIA-HR-A14" in provider_ids and "AIA-HR-A14" not in deployer_ids
     assert deployer_ids == {
         "AIA-ALL-A04",
+        "AIA-ALL-A79",
         "AIA-DP-A26",
         "AIA-DP-A27",
+        "AIA-DP-A27-2",
+        "AIA-DP-A27-3",
         "AIA-DP-A49-3",
         "AIA-DP-A86",
     }
-    assert provider_ids & deployer_ids == {"AIA-ALL-A04"}
+    # The two rules that bind by something other than the role: Art. 4 by the tier, Art. 79 by an
+    # authority having opened an evaluation.
+    assert provider_ids & deployer_ids == {"AIA-ALL-A04", "AIA-ALL-A79"}
 
 
 def test_selection_is_per_use_case(spec):
@@ -196,8 +202,11 @@ def test_process_obligations_are_reported_but_never_judged(spec):
     # Grouped by who owes them: a provider cannot confirm that a deployer informed its workers.
     assert outstanding[ActorRole.DEPLOYER] == [
         "AIA-ALL-A04",
+        "AIA-ALL-A79",
         "AIA-DP-A26",
         "AIA-DP-A27",
+        "AIA-DP-A27-2",
+        "AIA-DP-A27-3",
         "AIA-DP-A49-3",
         "AIA-DP-A86",
     ]
@@ -316,15 +325,21 @@ def test_the_covered_roles_come_from_the_spec(spec):
 
 def test_the_supply_chain_roles_each_owe_their_own_article(spec):
     """Arts. 22-24 are duties of the representative, importer and distributor themselves — not a
-    weaker echo of the provider's. Each role must select its own rule and nobody else's."""
+    weaker echo of the provider's. Each role must select its own rule and nobody else's.
+
+    Art. 79 sits beside each of them and is subtracted here rather than listed three times: it binds
+    the OPERATOR, which Art. 3(8) defines to include all three, so it is the one rule these roles
+    share with the provider and with each other."""
     scoring = a_use_case("scoring", RiskClass.HIGH_RISK)
     owed = {
         role: {r.rule_id for r in select_rules(spec, scoring, role).all_rules}
         for role in (ActorRole.IMPORTER, ActorRole.DISTRIBUTOR, ActorRole.AUTHORISED_REPRESENTATIVE)
     }
-    assert owed[ActorRole.IMPORTER] == {"AIA-IM-A23"}
-    assert owed[ActorRole.DISTRIBUTOR] == {"AIA-DI-A24"}
-    assert owed[ActorRole.AUTHORISED_REPRESENTATIVE] == {"AIA-AR-A22"}
+    shared = {"AIA-ALL-A79"}
+    assert all(shared <= ids for ids in owed.values()), "Art. 79 binds every operator"
+    assert owed[ActorRole.IMPORTER] - shared == {"AIA-IM-A23"}
+    assert owed[ActorRole.DISTRIBUTOR] - shared == {"AIA-DI-A24"}
+    assert owed[ActorRole.AUTHORISED_REPRESENTATIVE] - shared == {"AIA-AR-A22"}
 
 
 def test_the_report_lists_every_role_the_act_binds(spec):

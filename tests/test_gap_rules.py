@@ -99,6 +99,14 @@ def _rule_ids(spec, use_case, role=ActorRole.PROVIDER) -> set[str]:
 
 
 # --- Art. 43 — one duty, three bodies of law ------------------------------------------------------
+# The three route rules answer "which procedure applies the FIRST time". Art. 43(4) is a different
+# question — when the procedure must be run AGAIN — and it is route-independent, so it fires beside
+# whichever of the three is selected. Subtracted in the tests below rather than folded into them:
+# the partition they pin is over the initial routes, and one system owing both a route and the
+# re-assessment duty is the correct answer, not a second conformity procedure.
+_ART_43_ANY_ROUTE = {"AIA-PO-A43-4"}
+
+
 @pytest.mark.parametrize(
     "area,expected",
     [
@@ -114,7 +122,8 @@ def test_the_conformity_route_follows_the_annex_iii_point(spec, area, expected):
     clean bill of health it did not earn."""
     ids = _rule_ids(spec, a_use_case(area=area))
     art43 = {r for r in ids if r.startswith("AIA-PO-A43")}
-    assert art43 == {expected}
+    assert _ART_43_ANY_ROUTE <= art43, "Art. 43(4) binds whichever route was taken"
+    assert art43 - _ART_43_ANY_ROUTE == {expected}
 
 
 def test_an_annex_i_system_follows_its_own_legislation(spec):
@@ -122,7 +131,7 @@ def test_an_annex_i_system_follows_its_own_legislation(spec):
     branches are silent here — neither was written for a system with no Annex III area at all."""
     ids = _rule_ids(spec, a_use_case(product=AnnexIProduct.MEDICAL_DEVICES))
     art43 = {r for r in ids if r.startswith("AIA-PO-A43")}
-    assert art43 == {"AIA-PO-A43-3"}
+    assert art43 - _ART_43_ANY_ROUTE == {"AIA-PO-A43-3"}
 
 
 def test_every_high_risk_system_owes_exactly_one_conformity_rule(spec):
@@ -132,18 +141,25 @@ def test_every_high_risk_system_owes_exactly_one_conformity_rule(spec):
         a_use_case(product=p) for p in AnnexIProduct if p.chapter_iii_applies
     ]
     for uc in cases:
-        art43 = {r for r in _rule_ids(spec, uc) if r.startswith("AIA-PO-A43")}
+        art43 = {r for r in _rule_ids(spec, uc) if r.startswith("AIA-PO-A43")} - _ART_43_ANY_ROUTE
         label = uc.annex_iii_area or uc.annex_i_product
-        assert len(art43) == 1, f"{label}: expected one Art. 43 rule, got {sorted(art43)}"
+        assert len(art43) == 1, f"{label}: expected one Art. 43 route rule, got {sorted(art43)}"
 
 
 # --- Art. 49 — the exception inside the area gate ----------------------------------------------
 def test_critical_infrastructure_owes_no_registration(spec):
-    """Art. 49(1) reaches Annex III "with the exception of point 2". The rule was written for
-    employment and gated on the tier, so it raised registration against point 2 as well."""
+    """Art. 49(1) reaches Annex III "with the exception of point 2", so an area gate does the work a
+    tier gate cannot: gated on high_risk alone this raises EU-database registration against point 2.
+
+    NO EU-DATABASE REGISTRATION IS NOT NO REGISTRATION. Art. 49(5) sends the same system to a
+    national register instead, and the two are asserted together so that neither reading can be
+    taken from this test on its own."""
     critical = _rule_ids(spec, a_use_case(area=AnnexIIIArea.CRITICAL_INFRASTRUCTURE))
+    employment = _rule_ids(spec, a_use_case(area=AnnexIIIArea.EMPLOYMENT))
     assert "AIA-PO-A49" not in critical
-    assert "AIA-PO-A49" in _rule_ids(spec, a_use_case(area=AnnexIIIArea.EMPLOYMENT))
+    assert "AIA-PO-A49" in employment
+    assert "AIA-PO-A49-5" in critical, "point 2 registers at national level under Art. 49(5)"
+    assert "AIA-PO-A49-5" not in employment, "Art. 49(5) reaches point 2 and nothing else"
 
 
 def test_an_annex_i_system_is_not_registered_under_article_49(spec):
@@ -518,7 +534,7 @@ _GENERAL_DATE = date(2026, 8, 2)
 def test_chapter_iii_obligations_start_on_the_route_s_date(spec):
     """Every rule citing Arts. 6-27 carries both dates, and resolves to the right one per door."""
     split = [r for r in spec.rules if r.source.article in _ROUTE_SPLIT_ARTICLES]
-    assert len(split) == 22, "Arts. 6-27 should be the whole of Chapter III Sections 1-3"
+    assert len(split) == 29, "Arts. 6-27 should be the whole of Chapter III Sections 1-3"
     for rule in split:
         if rule.rule_id == "AIA-NHR-A06-4":
             continue  # not a high-risk system at all — see its comment in spec.yaml
@@ -576,7 +592,7 @@ def test_every_section_5_rule_explains_why_it_is_already_in_force(spec):
     tool is broken, and the damaging response is to disregard the date rather than the note. So the
     explanation travels WITH the obligation instead of living in a comment only we read."""
     section_5 = [r for r in spec.rules if r.source.article in _SECTION_5_ARTICLES]
-    assert len(section_5) == 8, "Arts. 43 and 47-49 are the whole of Section 5 in this ruleset"
+    assert len(section_5) == 11, "Arts. 43 and 47-49 are the whole of Section 5 in this ruleset"
     for rule in section_5:
         assert rule.effective_date == _GENERAL_DATE, rule.rule_id
         note = rule.effective_date_note or ""

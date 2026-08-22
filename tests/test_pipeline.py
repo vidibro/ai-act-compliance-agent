@@ -152,8 +152,8 @@ def test_a_minimal_system_still_owes_article_4(spec):
     assert report.classification.overall_risk_class == RiskClass.MINIMAL
     # Nothing to JUDGE — Art. 4 is an organisational measure, not a property of the system.
     assert report.summary.total_applicable == 0
-    assert report.not_document_verifiable[ActorRole.PROVIDER] == ["AIA-ALL-A04"]
-    assert report.not_document_verifiable[ActorRole.DEPLOYER] == ["AIA-ALL-A04"]
+    assert report.not_document_verifiable[ActorRole.PROVIDER] == ["AIA-ALL-A04", "AIA-ALL-A79"]
+    assert report.not_document_verifiable[ActorRole.DEPLOYER] == ["AIA-ALL-A04", "AIA-ALL-A79"]
 
 
 def test_a_minimal_system_that_generates_content_owes_article_50(spec):
@@ -198,8 +198,11 @@ def test_the_report_covers_both_duty_holders(spec):
     assert "AIA-PO-A17" in outstanding[ActorRole.PROVIDER]
     assert outstanding[ActorRole.DEPLOYER] == [
         "AIA-ALL-A04",
+        "AIA-ALL-A79",
         "AIA-DP-A26",
         "AIA-DP-A27",
+        "AIA-DP-A27-2",
+        "AIA-DP-A27-3",
         "AIA-DP-A49-3",
         "AIA-DP-A86",
     ]

@@ -28,14 +28,30 @@ class LegalSource(BaseModel):
     that no assessment can exist without pointing at the article it rests on."""
 
     instrument: str  # "Regulation (EU) 2024/1689"
-    article: int | None = None
-    paragraph: int | None = None
+    article: int | str | None = None
+    paragraph: int | str | None = None
+    """AN ARTICLE OR PARAGRAPH LABEL IS A STRING. A consolidation inserts provisions without
+    renumbering the ones after them, so Art. 4a, Art. 75a-75d and Art. 6(1a)-(1c) are all real
+    addresses, and `int()` of one silently resolves to the provision BEFORE it. Typed to accept
+    both and normalised below, so `6` and `"6"` are one value and `"1a"` is available at all."""
+
     point: str | None = None  # "a", "b", ...
     annex: str | None = None  # "III", "IV"
     annex_point: str | None = None  # "4(a)"
     act_version_date: date  # pinned snapshot — REQUIRED for reproducibility
     url: str | None = None  # canonical location of the cited provision — lets a future
     # rule-refresh tool re-fetch the verbatim text and diff it against a new Act version
+
+    @field_validator("article", "paragraph", mode="before")
+    @classmethod
+    def _one_form_per_label(cls, value: object) -> object:
+        """`"6"` becomes `6`, `"1a"` stays `"1a"`.
+
+        Two spellings of one address would compare unequal, and the route and section tests that
+        group rules by article number do compare them."""
+        if isinstance(value, str) and value.isdigit():
+            return int(value)
+        return value
 
 
 class GuidanceSource(BaseModel):
@@ -204,6 +220,24 @@ class PolicyRule(BaseModel):
     """Citations for whatever is in `guidance_context`, injected at load and carried onto any
     finding this rule produces — so a verdict that leaned on Commission interpretation says so
     rather than presenting itself as resting on the Article alone."""
+
+    qualified_by: list[dict[str, int | str]] = []
+    """OTHER provisions that condition this one, each `{article, paragraph}` — the only place a rule
+    names enacted text besides `source` and `source.annex`.
+
+    A duty and its qualifier are often written apart. Art. 50(1) says a chatbot must disclose that
+    it is one; Art. 50(5) says the disclosure must be clear, distinguishable and given at the latest
+    at first interaction. A rule citing (1) alone passes a disclosure buried in a footer, and the
+    fix cannot be to cite Art. 50 whole: all four transparency rules would then carry all four
+    duties, and each finding would point at the Article rather than at the paragraph breached.
+
+    Resolved at load into `qualifier_context` and carried into the judge prompt in its own block, so
+    `requirement` stays a literal substring of the paragraph the finding cites."""
+
+    qualifier_context: str = ""
+    """The verbatim text of the provisions `qualified_by` names, injected at load. Labelled with its
+    own Article and paragraph, because a judge shown two provisions must be able to tell which one
+    the verdict is about."""
 
     annex_context: str = ""
     """The verbatim text of the Annex `source.annex` names, injected at load.

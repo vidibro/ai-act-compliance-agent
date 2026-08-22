@@ -328,13 +328,17 @@ def load_policy_spec(
                 f"Rule {rule.get('rule_id')!r} hand-writes `requirement`. Legal text lives only in "
                 f"{art_dir} and is resolved from source.article/source.paragraph — remove it."
             )
-        for field in ("annex_context", "guidance_context", "guidance_sources"):
+        for field in (
+            "annex_context",
+            "guidance_context",
+            "guidance_sources",
+            "qualifier_context",
+        ):
             if field in rule:
                 raise ValueError(
                     f"Rule {rule.get('rule_id')!r} hand-writes `{field}`. Legal and guidance text "
-                    f"is resolved from `source.annex` and `guidance_refs` — remove it. A "
-                    f"paraphrase "
-                    f"is as unverifiable here as it is for the Article."
+                    f"is resolved from `source.annex`, `qualified_by` and `guidance_refs` — remove "
+                    f"it. A paraphrase is as unverifiable here as it is for the Article."
                 )
 
     # Pass 2 — resolve each citation to its literal enacted text, for THIS act version.
@@ -368,6 +372,28 @@ def load_policy_spec(
                     f"--version-date {version_str}"
                 )
             rule["annex_context"] = provision_text(annex_path)
+
+        # The provisions that QUALIFY this one, verbatim. A duty is often written in one paragraph
+        # and conditioned by another that never mentions it: Art. 50(1) says a chatbot must disclose
+        # itself and Art. 50(5) says when and how clearly, so a rule citing (1) alone passes a
+        # disclosure buried in a footer. Supplied rather than folded into the citation, because
+        # widening `source` to the whole Article would hand a deepfake rule the chatbot duty as well
+        # and leave the finding pointing at the wrong paragraph.
+        qualifiers = []
+        for cite in rule.get("qualified_by", []):
+            text, _url = resolve_requirement(
+                art_dir,
+                cite["article"],
+                cite.get("paragraph"),
+                expected_version=version_str,
+                point=cite.get("point"),
+            )
+            where = f"Article {cite['article']}"
+            if cite.get("paragraph") is not None:
+                where += f"({cite['paragraph']})"
+            qualifiers.append(f"{where}:\n{text}")
+        if qualifiers:
+            rule["qualifier_context"] = "\n\n".join(qualifiers)
 
         # Pass 3 — resolve any guidance the rule cites, on the same terms as the law: verbatim,
         # integrity-checked, and failing the LOAD rather than the run when a ref does not resolve.

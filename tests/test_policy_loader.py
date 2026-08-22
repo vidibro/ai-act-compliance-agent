@@ -70,8 +70,15 @@ def test_shipped_spec_loads():
     # (Art. 25(2)). Art. 43 is three rules and Art. 49 two, because both send different systems to
     # different law — see applies_to_route and applies_to_annex_iii_area. Art. 16 is three, one per
     # point that cross-references nothing. Plus 4 Art. 50 transparency rules, the only ones that
-    # gate on a duty instead of a tier.
-    assert len(spec.rules) == 38
+    # gate on a duty instead of a tier; Art. 75(1a), which redirects the Art. 73 report to the AI
+    # Office; and Art. 79, the one rule binding five roles at once.
+    #
+    # Several Articles are more than one rule because they hold more than one duty, and a single
+    # rule would let a finding on the first hide a breach of the second: Art. 20, 21 and 47 are two
+    # each (the standing duty and what follows it), Art. 22 is two by PARTY — the provider appoints,
+    # the representative performs — Art. 27 is three (carry the assessment out, keep it current,
+    # file it), Art. 43 is four (three initial routes plus re-assessment), and Art. 49 is three.
+    assert len(spec.rules) == 50
 
 
 # How many articles each fetched version holds. Per version, not one number, because the count is
