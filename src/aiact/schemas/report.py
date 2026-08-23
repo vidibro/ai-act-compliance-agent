@@ -142,7 +142,13 @@ class ComplianceReport(BaseModel):
 
     Grouped by role because that is the only way the list is actionable: a provider cannot confirm
     that a deployer informed its workers under Art. 26(7).
-    Roles owing nothing are absent rather than present-and-empty."""
+    Roles owing nothing are absent rather than present-and-empty.
+
+    AN INDEX, NOT THE OBLIGATION. These rules never reach the judge, so unlike a `Finding` they
+    carry no reasoning of their own, and an id alone tells a reader nothing they can act on — which
+    members of the role owe it, from when, and what would satisfy it all live on the rule in the
+    spec. `aiact.reporting.render_report` resolves each id and renders those beside it; any other
+    consumer must do the same, and `tests/test_reporting.py` holds the shipped renderer to it."""
 
     deployer_type: Answer | None = None
     """What kind of organisation deploys the system — read from the documentation, where it says.
@@ -217,10 +223,19 @@ class ComplianceReport(BaseModel):
         system "classified as high-risk pursuant to Article 6(2) and Annex III", (ii) 2 August 2028
         to one "classified as high-risk pursuant to Article 6(1) and Annex I". A named product that
         self-assesses is classified under 6(2), so it takes the earlier date — reading the product
-        alone would hand it eight months of relief the Article does not give."""
-        if not any(uc.risk_class == RiskClass.HIGH_RISK for uc in self.classification.use_cases):
+        alone would hand it eight months of relief the Article does not give.
+
+        ALL, not ANY, across the use cases. Risk is classified per use case, so one system can hold
+        an Art. 6(1) use case and an Annex III use case at once and the two have different dates.
+        The later date is right only where EVERY high-risk use case earned it; `any` would print
+        2 August 2028 over a use case bound from 2 December 2027. Art. 111(2) is relief, so the
+        generous reading is the one that clears a reader who is not cleared."""
+        high_risk = [
+            uc for uc in self.classification.use_cases if uc.risk_class == RiskClass.HIGH_RISK
+        ]
+        if not high_risk:
             return None
-        annex_i = any(uc.high_risk_under_article_6_1 for uc in self.classification.use_cases)
+        annex_i = all(uc.high_risk_under_article_6_1 for uc in high_risk)
         applies_from = "2 August 2028" if annex_i else "2 December 2027"
         return (
             f"IF THIS SYSTEM WAS ALREADY ON THE MARKET, some of the above may not bind it yet. "

@@ -773,20 +773,46 @@ def test_the_safety_component_exclusion_is_the_one_article_6_enacts():
     assert "Notwithstanding paragraph 1a" in carve_back, (
         "Art. 6(1b) no longer reads as expected — re-derive this test from the text"
     )
-    grounds = excluding.split("non-safety related aspects of", 1)[1].split(" shall not")[0]
-    keywords = sorted({w for w in re.findall(r"[a-z]{6,}", grounds.lower())})
-    assert len(keywords) >= 5, f"Art. 6(1a)'s grounds no longer parse: {keywords}"
+    # THREE PARTS, and the grounds are the least of them. A list of nine activities is what makes
+    # Art. 6(1a) recognisable; "solely" and "non-safety related" are what make it narrow, and
+    # "notwithstanding" is a word rather than a test. Each is derived from its own span of the text.
+    head, _, tail = excluding.partition(" aspects of")
+    qualifiers = re.findall(r"[a-z][a-z-]{4,}", head.split("AI systems that are", 1)[1].lower())
+    grounds = sorted({w for w in re.findall(r"[a-z]{6,}", tail.split(" shall not")[0].lower())})
+    # The condition Art. 6(1b) puts the system back on, taken from the clause that states it.
+    condition = carve_back.split("AI systems", 1)[1].split(" shall qualify")[0].lower()
+    carve_back_test = sorted(set(re.findall(r"[a-z]{6,}", condition)))
+    assert len(grounds) >= 5, f"Art. 6(1a)'s grounds no longer parse: {grounds}"
+    assert {"solely", "non-safety"} <= set(qualifiers), (
+        f"Art. 6(1a)'s qualifiers no longer parse: {qualifiers}"
+    )
+    assert len(carve_back_test) >= 3, f"Art. 6(1b)'s condition no longer parses: {carve_back_test}"
 
     for node_id in ("annex_i", "annex_iii"):
         question = QUESTIONS[node_id].text.lower()
-        dropped = [w for w in keywords if w not in question]
-        assert not dropped, (
-            f"the {node_id} question states an exclusion but omits grounds Art. 6(1a) enacts: "
-            f"{dropped}. The paragraph's list is the list."
+        for label, words in (
+            ("the grounds Art. 6(1a) enacts", grounds),
+            ("the words that make Art. 6(1a) NARROW", qualifiers),
+        ):
+            dropped = [w for w in words if w not in question]
+            assert not dropped, (
+                f"the {node_id} question states an exclusion but omits {label}: {dropped}. "
+                f"A list without 'solely' and 'non-safety related' excludes a dose controller "
+                f"described as performance optimisation."
+            )
+        # THE CARVE-BACK IS TESTED WHERE IT IS STATED, not anywhere in the prompt. Both questions
+        # also gloss Art. 3(14), whose second limb uses the same words — so a whole-question search
+        # is satisfied by the definition while the carve-back has been reduced to a bare
+        # "notwithstanding". The sentence that names Art. 6(1b) is the one that has to carry it.
+        stated = [s for s in question.split(".") if "notwithstanding" in s or "6(1b)" in s]
+        assert stated, (
+            f"the {node_id} question never names Art. 6(1b), so a system whose failure endangers "
+            f"health and safety is excluded when the Act puts it back in"
         )
-        assert "6(1b)" in question or "notwithstanding" in question, (
-            f"the {node_id} question carries Art. 6(1a) without Art. 6(1b), so a system whose "
-            f"failure endangers health and safety is excluded when the Act puts it back in"
+        dropped = [w for w in carve_back_test if not any(w in s for s in stated)]
+        assert not dropped, (
+            f"the {node_id} question names Art. 6(1b) without stating what it does: {dropped}. "
+            f"A carve-back cited but not stated leaves the flat exclusion standing."
         )
 
 

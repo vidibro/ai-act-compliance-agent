@@ -42,8 +42,12 @@ act_version_date: 2026-07-27
 roles_out_of_scope:
   product_manufacturer: >-
     Art. 25(3) gives the product manufacturer no duty set of its own — where a high-risk AI system
-    is placed on the market with their product under their name, it makes them THE PROVIDER, owing
-    Art. 16 whole. So there is no ruleset to write, and writing one would be wrong: it would state
+    that is a SAFETY COMPONENT of a Section A Annex I product is placed on the market with that
+    product under the manufacturer's name, it makes them THE PROVIDER, owing Art. 16 whole. Note the
+    limit: 25(3) reaches Section A safety components and nothing else, so it is not on its own the
+    whole reason. The rest is Art. 3(3) — a manufacturer placing an AI system on the market under
+    its own name is a provider by definition, whatever the product — which is why a manufacturer
+    outside 25(3) is still reached, by the provider ruleset rather than by a set of its own. So there is no ruleset to write, and writing one would be wrong: it would state
     as a separate obligation set the very thing the Article says is the provider's. The role is
     reached instead by the gap graph's `roles` node (src/aiact/gap/roles.py), which asks at high
     risk whether Art. 25(1)(a)-(c) or 25(3) has moved the provider's duties onto another party, and
@@ -372,11 +376,11 @@ article_rulings:
     "c": Quality management system — cross-references Art. 17, modelled as AIA-PO-A17.
     "d": Documentation keeping — cross-references Art. 18, modelled as AIA-PO-A18.
     "e": Automatically generated logs — cross-references Art. 19, modelled as AIA-PO-A19.
-    "f": Conformity assessment — cross-references Art. 43, modelled as AIA-PO-A43-1/-2/-3.
-    "g": EU declaration of conformity — cross-references Art. 47, modelled as AIA-PO-A47.
+    "f": Conformity assessment — cross-references Art. 43, modelled as AIA-PO-A43-1/-2/-3/-4.
+    "g": EU declaration of conformity — cross-references Art. 47, modelled as AIA-PO-A47 and -A47-4.
     "h": CE marking — cross-references Art. 48, modelled as AIA-PO-A48.
     "i": Registration — cross-references Art. 49(1), modelled as AIA-PO-A49.
-    "j": Corrective actions — cross-references Art. 20, modelled as AIA-PO-A20.
+    "j": Corrective actions — cross-references Art. 20, modelled as AIA-PO-A20 and AIA-PO-A20-2.
   17:
     2: >-
       Proportionality of the QMS to the provider's size. Modifies how Art. 17(1) is met rather than
@@ -1186,7 +1190,13 @@ article_rulings:
     2: The authority requires the provider to bring the system into compliance. The authority's procedure.
     3: Informing the Commission and other Member States. Institutional.
     4: The provider shall bring the system into compliance. Art. 20 once the authority has ruled.
-    5: The provider shall ensure corrective action across all units made available. Art. 20 again.
+    5: >-
+      The provider ensures corrective action across all units made available. Art. 20 reaches this
+      one, unlike Art. 82(2): the duty-holder is the provider alone, and an authority's Art. 80(2)
+      ruling that the system is high-risk after all gives that provider "reason to consider" it
+      non-conforming, which is Art. 20(1)'s trigger. The all-units limb is Art. 20(1)'s withdraw-or-
+      recall. Reported by AIA-PO-A20, and by AIA-PO-A20-2 where the system also presents an
+      Art. 79(1) risk.
     6: Art. 79(5)-(9) applies where the provider does not act. Procedural cross-reference.
     7: >-
       MISCLASSIFICATION TO CIRCUMVENT Chapter III attracts a fine. A penalty, and the duty behind it
@@ -1204,7 +1214,11 @@ article_rulings:
     1: >-
       Authority procedure for a COMPLIANT high-risk system that nonetheless presents a risk to health,
       safety, fundamental rights or the public interest. The authority's finding.
-    2: The operator ensures corrective action on the authority's timeline. Art. 20 again.
+    2: >-
+      RULE AIA-ALL-A82 — "the provider or other relevant operator" ensures corrective action across
+      every unit it has made available, on the authority's timeline. NOT Art. 20: that Article binds
+      providers alone and fires on their own belief that the system is NOT in conformity, while
+      Art. 82's whole premise is a system that complies. Disjoint triggers, and five more roles.
     3: Member States inform the Commission and other Member States immediately. Institutional.
     4: The Commission consults and evaluates the national measure. Institutional.
     5: The Commission communicates its decision to the Member States and operators. Institutional.
@@ -1631,7 +1645,18 @@ annex_rulings:
       The person test does reach every other area correctly, which is why this one is carved out
       rather than the test loosened.
     3: CASCADE annex_iii — education and vocational training; admission, evaluation, proctoring.
-    4: CASCADE annex_iii — employment; recruitment, promotion, termination, task allocation, monitoring.
+    4: >-
+      CASCADE annex_iii — employment: recruitment and selection (4(a)); and decisions AFFECTING THE
+      TERMS of work-related relationships, promotion, termination, task allocation, and monitoring
+      and evaluation of performance and behaviour (4(b)).
+      THE OUT-OF-SCOPE EXAMPLES IN THE NODE'S TEST (ii) ARE A READING, NOT A QUOTATION. Points 1 and
+      3 to 8 enact no exclusion at all — unlike Annex III(2), whose test the Act supplies through
+      Art. 6(1a) and (1b) — so every item in that list is the tool's own and none of it is derived
+      from a document. "Payroll" is the item that bites: payroll PROCESSING disburses pay already
+      agreed and is genuinely outside, while anything setting or adjusting pay, bonus, grade or
+      benefits is a decision affecting the terms of a work-related relationship and is squarely
+      inside 4(b). The node now says which way that cuts and states that the listed function wins
+      over its own examples; nothing mechanical checks the rest of the list.
     5: >-
       CASCADE annex_iii — essential private and public services: benefits eligibility,
       creditworthiness, life and health insurance pricing, emergency call triage.

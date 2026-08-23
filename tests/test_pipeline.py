@@ -199,6 +199,7 @@ def test_the_report_covers_both_duty_holders(spec):
     assert outstanding[ActorRole.DEPLOYER] == [
         "AIA-ALL-A04",
         "AIA-ALL-A79",
+        "AIA-ALL-A82",
         "AIA-DP-A26",
         "AIA-DP-A27",
         "AIA-DP-A27-2",

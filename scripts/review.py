@@ -20,16 +20,8 @@ from dotenv import load_dotenv  # noqa: E402
 
 from aiact.pipeline import review  # noqa: E402
 from aiact.policy_loader import load_policy_spec  # noqa: E402
-from aiact.schemas.enums import ActorRole, Verdict  # noqa: E402
+from aiact.reporting import render_report  # noqa: E402
 from aiact.tracing import enable_tracing  # noqa: E402
-
-_MARK = {
-    Verdict.PASS: "ok  ",
-    Verdict.GAP: "GAP ",
-    Verdict.INADEQUATE: "THIN",
-    Verdict.NEEDS_REVIEW: "??  ",
-    Verdict.NOT_APPLICABLE: "n/a ",
-}
 
 
 def main() -> None:
@@ -49,55 +41,16 @@ def main() -> None:
     print(f"Reviewing {args.document} ({len(text)} chars) — model={brain.model}")
     print(f"Langfuse tracing: {'ON' if enable_tracing() else 'off (no keys)'}\n")
 
+    spec = load_policy_spec()
     report = review(
         text,
-        load_policy_spec(),
+        spec,
         brain,
         system_id=system_id,
         max_workers=args.workers,
     )
 
-    print(f"risk class : {report.classification.overall_risk_class.value}")
-    print(f"reasoning  : {report.classification.reasoning}\n")
-
-    if report.scope_note:
-        print(f"!! {report.scope_note}\n")
-
-    # Art. 50 sits beside the tier, not inside it, and splits by duty-holder.
-    for role, duties in report.classification.transparency_duties_by_role.items():
-        cites = ", ".join(f"Art. 50({d.paragraph}) {d.value}" for d in duties)
-        print(f"Art. 50, {role.value}: {cites}")
-    if report.classification.transparency_duties:
-        print()
-
-    # Grouped by WHO OWES the obligation. A provider cannot act on a deployer's duty, and a flat
-    # list invites them to try.
-    for role in ActorRole:
-        findings = [f for f in report.findings if f.role == role]
-        outstanding = report.not_document_verifiable.get(role, [])
-        if not findings and not outstanding:
-            continue
-        print(f"--- {role.value} ---")
-        for finding in findings:
-            src = finding.citation
-            cite = f"Art.{src.article}" + (f"({src.paragraph})" if src.paragraph else "")
-            print(f"  {_MARK[finding.verdict]} {finding.rule_id:<16} {cite}")
-            print(f"       {finding.reasoning[:160]}")
-        if outstanding:
-            print(f"  confirm separately: {', '.join(outstanding)}")
-        counts = (report.summary.per_role or {}).get(role)
-        if counts is not None:
-            print(
-                f"  {counts.total_applicable} checked — {counts.passed} pass, {counts.gaps} gap, "
-                f"{counts.inadequate} inadequate, {counts.needs_review} needs review"
-            )
-        print()
-
-    s = report.summary
-    print(
-        f"{s.total_applicable} applicable — {s.passed} pass, {s.gaps} gap, "
-        f"{s.inadequate} inadequate, {s.needs_review} needs review"
-    )
+    print(render_report(report, spec))
 
 
 if __name__ == "__main__":

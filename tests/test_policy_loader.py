@@ -71,14 +71,15 @@ def test_shipped_spec_loads():
     # different law — see applies_to_route and applies_to_annex_iii_area. Art. 16 is three, one per
     # point that cross-references nothing. Plus 4 Art. 50 transparency rules, the only ones that
     # gate on a duty instead of a tier; Art. 75(1a), which redirects the Art. 73 report to the AI
-    # Office; and Art. 79, the one rule binding five roles at once.
+    # Office; Art. 74(12) full access to the data sets; and Arts. 79 and 82, the two rules binding
+    # five roles at once.
     #
     # Several Articles are more than one rule because they hold more than one duty, and a single
     # rule would let a finding on the first hide a breach of the second: Art. 20, 21 and 47 are two
     # each (the standing duty and what follows it), Art. 22 is two by PARTY — the provider appoints,
     # the representative performs — Art. 27 is three (carry the assessment out, keep it current,
     # file it), Art. 43 is four (three initial routes plus re-assessment), and Art. 49 is three.
-    assert len(spec.rules) == 50
+    assert len(spec.rules) == 52
 
 
 # How many articles each fetched version holds. Per version, not one number, because the count is
@@ -143,17 +144,26 @@ def test_every_fetched_version_is_covered_or_declared_untriaged():
     assert VERSION in covered, "the version the spec pins must have a ledger"
 
 
-@pytest.mark.parametrize("version", sorted(p.name for p in ARTICLES_ROOT.iterdir() if p.is_dir()))
+@pytest.mark.parametrize(
+    "version",
+    sorted(p.name for p in ARTICLES_ROOT.iterdir() if p.is_dir() and p.name >= VERSION),
+)
 def test_every_article_is_classified_in_scope_or_out(version):
     """THE COVERAGE GUARANTEE. Every article is either cited by a rule or explicitly out of scope.
     A new article in a future Act version is neither -> this fails -> a human must rule on it.
     That is how a newly legislated obligation cannot silently go unchecked.
 
-    Run against EVERY fetched version, not only the pinned one. A version the ruleset has not
-    adopted yet is exactly where an unruled article hides: it is in the repo, it looks authoritative
-    and nothing else reads it. Checking it here is what makes repointing the pin a decision rather
-    than a discovery. Article NUMBERS are version-independent, so the citations in spec.yaml are
-    meaningful against a store the spec does not currently resolve from.
+    Run against the pinned version and every version AFTER it, not only the pinned one. A version
+    the ruleset has not adopted YET is exactly where an unruled article hides: it is in the repo, it
+    looks authoritative and nothing else reads it. Checking it here is what makes repointing the pin
+    a decision rather than a discovery. Article NUMBERS are version-independent, so the citations in
+    spec.yaml are meaningful against a store the spec does not currently resolve from.
+
+    A SUPERSEDED version is skipped, and that is the whole of the difference. Its ledger records how
+    the ruleset stood against a text no longer in force, so holding it to today's spec makes every
+    new rule a reason to edit a file nobody consults — the ledger's own claims stop being read and
+    start being satisfied. Superseded stores are kept only while something else still pins them (the
+    golden set pins 2024-07-12) and are deleted when it stops.
 
     An entry's SHAPE says how much of the article it rules out: a string excludes the whole article,
     a mapping excludes named divisions of an article a rule does cite. The two are checked against

@@ -85,10 +85,21 @@ rules:
       act_version_date: 2026-07-27
     applies_to_risk_class: [high_risk]
     applies_to_role: [provider]
-    # Only where both regimes apply, which is the Annex I route by definition — the paragraph opens
-    # "where a product contains an AI system, to which the requirements of this Regulation as well
-    # as requirements of the Union harmonisation legislation listed in Section A of Annex I apply".
-    applies_to_route: annex_i
+    # NOT GATED ON THE ART. 6 ROUTE, though it reads as if it could be. The paragraph opens "where a
+    # product contains an AI system, to which the requirements of this Regulation as well as
+    # requirements of the Union harmonisation legislation listed in Section A of Annex I apply" —
+    # two conditions about the PRODUCT and about this Regulation applying, and neither asks which
+    # paragraph of Art. 6 made the system high-risk. A Section A product whose manufacturer
+    # self-assesses fails Art. 6(1)(b), and the cascade carries it on to Annex III where Art. 6(2)
+    # can make it high-risk; both regimes then apply and Art. 8(2) reaches it, but `_route_of`
+    # answers ANNEX_III and a route gate would drop the rule. So the condition is stated instead.
+    activation_condition: >-
+      Art. 8(2) applies where the AI system is contained in a product that is itself covered by the
+      Union harmonisation legislation listed in SECTION A of Annex I — medical devices, machinery,
+      lifts, radio equipment and the rest. A system that is not part of such a product owes nothing
+      here, whichever door of Art. 6 made it high-risk. Which instrument covers a given product is
+      settled by that instrument rather than by this Regulation, so it is listed with the condition
+      attached rather than asserted of every provider or dropped.
     obligation_status: mandatory
     check_type: presence
     evidence_expected: >-
@@ -983,12 +994,23 @@ rules:
     # model the same provider supplies, or is a component of a VLOP or VLOSE under Art. 75(1). That
     # is not derivable from a description of the system, so it is stated for the reader.
     activation_condition: >-
-      Art. 75(1a) binds only the providers Art. 75(1) puts under the AI Office's competence: a
-      provider whose high-risk system is based on a general-purpose AI model where the SAME provider
-      develops both the model and the system, and a provider whose system is used as a component of
-      a very large online platform or search engine designated under Regulation (EU) 2022/2065.
-      Whether either holds turns on the provider's own corporate and product structure rather than
-      on this description, so the obligation is listed with the condition attached.
+      Art. 75(1a) binds only the providers Art. 75(1) puts under the AI Office's exclusive
+      competence, and that paragraph has a limb and four exceptions that are easy to read past.
+      IN: (a) a system based on a general-purpose AI model where the model and the system are
+      developed by the same provider OR BY PROVIDERS FORMING PART OF THE SAME UNDERTAKING as that
+      provider — so a group where one company trains the model and a sister company ships the system
+      is inside, not outside; and (b) a system that constitutes or is integrated into a very large
+      online platform or search engine designated under Regulation (EU) 2022/2065.
+      OUT, even where (a) holds: (i) systems related to products covered by the Annex I
+      harmonisation legislation; (ii) systems in Annex III point 2, critical infrastructure;
+      (iii) systems provided by law enforcement authorities, border management authorities and
+      financial institutions so far as they fall under Art. 74(6); and (iv) Annex III point 8
+      systems as regards the administration of justice — note that this ruleset's `justice_democracy`
+      area covers both limbs of point 8, so it cannot tell an administration-of-justice system from
+      a democratic-processes one and the exception must be applied by the reader.
+      A deployer is reached only where it is also the provider or part of the same undertaking.
+      None of this is derivable from a description of the system, so the obligation is listed with
+      the condition attached rather than asserted of every provider or dropped.
     obligation_status: mandatory
     check_type: presence
     evidence_expected: >-
@@ -997,6 +1019,82 @@ rules:
       unchanged; only the recipient moves, and the AI Office then passes the information on to the
       national authority itself. A procedure naming only the national authority is the wrong
       addressee for a provider this Article reaches. Not visible in the technical documentation —
+      confirm separately.
+    document_verifiable: false
+    effective_date: 2026-08-02
+    status: active
+
+  # NOT ART. 21 IN ANOTHER PLACE. Art. 21(1) is information and documentation demonstrating
+  # conformity; 21(2) is the Art. 12(1) logs. Neither reaches the TRAINING, VALIDATION AND TESTING
+  # DATA SETS, and neither says anything about the API or remote-access modality this paragraph
+  # names. Annex VII point 4.3 imposes the same data-set access, but only on the notified-body route
+  # and only for a provider that takes it.
+  - rule_id: AIA-PO-A74-12
+    source:
+      instrument: "Regulation (EU) 2024/1689"
+      article: 74
+      paragraph: 12 # full access to documentation and to the data sets
+      act_version_date: 2026-07-27
+    applies_to_risk_class: [high_risk]
+    applies_to_role: [provider]
+    obligation_status: mandatory
+    check_type: presence
+    evidence_expected: >-
+      The ability to grant a market surveillance authority FULL ACCESS to the documentation and to
+      the training, validation and testing data sets used to develop the system — including, where
+      appropriate and subject to security safeguards, through an API or other technical means
+      enabling REMOTE access. Retention of those data sets, and a route by which an authority can
+      reach them, are the practical requirements; a provider that discarded its training data after
+      release cannot satisfy this. The paragraph is bounded — "where relevant and limited to what is
+      necessary to fulfil their tasks" — so it is a capability to hold ready rather than a standing
+      disclosure. Distinct from Art. 21, which covers documentation and the automatically generated
+      logs and reaches no data set. A relational obligation toward an authority, not visible in the
+      technical documentation — confirm separately.
+    document_verifiable: false
+    effective_date: 2026-08-02
+    status: active
+
+  # Art. 82 IS NOT ART. 79 AGAIN, and it is not Art. 20 either. Its whole premise is a system that
+  # COMPLIES: 82(1) opens "finds that although a high-risk AI system complies with this Regulation,
+  # it nevertheless presents a risk". Art. 20(1) fires where a provider "consider[s] or ha[s] reason
+  # to consider" its system NOT in conformity, so the two triggers are disjoint and Art. 20 can
+  # never reach an Art. 82 case. Like Art. 79(4) it binds "the provider or other relevant operator",
+  # which is Art. 3(8) — five roles here, product manufacturer left off on the ground the ledger
+  # records for that role.
+  #
+  # HIGH-RISK ONLY, unlike AIA-ALL-A79: 82(1) names a high-risk AI system, where Art. 79 reaches any
+  # system presenting a risk.
+  - rule_id: AIA-ALL-A82
+    source:
+      instrument: "Regulation (EU) 2024/1689"
+      article: 82
+      paragraph: 2 # corrective action across every unit, on the authority's timeline
+      act_version_date: 2026-07-27
+    applies_to_risk_class: [high_risk]
+    applies_to_role:
+      [provider, deployer, importer, distributor, authorised_representative]
+    # 82(1) is the authority's finding and carries the trigger this duty hangs from — supplied
+    # rather than cited, because the finding is the authority's act and the duty is the operator's.
+    qualified_by:
+      - article: 82
+        paragraph: 1
+    activation_condition: >-
+      Art. 82 attaches only after a market surveillance authority has performed an Art. 79
+      evaluation, consulted the relevant Art. 77(1) body, and found that the system COMPLIES with
+      this Regulation yet still presents a risk to health, safety, fundamental rights or another
+      aspect of public interest protection. Until that finding there is no duty. Nothing in a
+      description of the system says whether it has been made, so the obligation is listed with the
+      condition attached rather than asserted of every operator or dropped.
+    obligation_status: mandatory
+    check_type: presence
+    evidence_expected: >-
+      A procedure for acting on an Art. 82(1) finding: ensuring corrective action is taken across
+      ALL the systems concerned that this party has made available on the Union market — not only
+      the unit the authority examined — within the timeline the authority prescribes. The measures
+      82(1) can require reach withdrawal and recall. Distinct from Art. 20, which a provider starts
+      itself on its own suspicion that the system is NOT in conformity: this one begins with an
+      authority's finding that it IS, and binds every operator in the chain rather than the provider
+      alone. A relational enforcement obligation, not visible in the technical documentation —
       confirm separately.
     document_verifiable: false
     effective_date: 2026-08-02

@@ -183,15 +183,22 @@ def review(
     # Tested on the same `high_risk_under_article_6_1` that governs `select`, so the note and the
     # findings can never disagree: this sentence tells a reader the Regulation exempts them, and it
     # is only true of a system Art. 6(1) itself classified.
-    section_b = sorted(
-        {
-            uc.annex_i_product.value
-            for uc in classification.use_cases
-            if uc.high_risk_under_article_6_1
-            and uc.annex_i_product is not None
-            and not uc.annex_i_product.chapter_iii_applies
-        }
-    )
-    if section_b:
+    #
+    # EVERY high-risk use case, not one of them. The note says Chapter III "was NOT checked", and
+    # that is only true where nothing was: a system holding one Section B use case and one ordinary
+    # Annex III use case has real findings, and this sentence would tell its reader to disregard
+    # them.
+    high_risk = [
+        uc for uc in classification.use_cases if uc.risk_class == RiskClass.HIGH_RISK
+    ]
+    withheld = [
+        uc
+        for uc in high_risk
+        if uc.high_risk_under_article_6_1
+        and uc.annex_i_product is not None
+        and not uc.annex_i_product.chapter_iii_applies
+    ]
+    section_b = sorted({uc.annex_i_product.value for uc in withheld if uc.annex_i_product})
+    if section_b and len(withheld) == len(high_risk):
         return report.model_copy(update={"scope_note": _section_b_note(section_b)})
     return report
