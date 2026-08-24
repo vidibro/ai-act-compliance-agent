@@ -47,6 +47,16 @@ SCOPE_PATH = ROOT / "data" / "policy" / f"scope-{VERSION}.yaml"
 # to a one-line dismissal — and so paying it down again is one edit.
 BLANKET_PROVISIONS = 0
 
+# Provisions a party owes and no report mentions, declared as a debt in `articles_awaiting_rules`
+# or `annexes_awaiting_rules`. ZERO: every duty the Act puts on a role this tool reports for is
+# carried by a rule, on the Art. 6 track and in Chapter V alike.
+#
+# Held as a constant for the reason the blanket count is, and the reason is stronger here: an
+# UNPAID debt is the one status that admits a reader will be told nothing about a duty they have.
+# Going up means a new duty was found, or new text arrived — both worth a decision rather than a
+# silent entry in a file nobody re-reads.
+OWED_PROVISIONS = 0
+
 
 @pytest.fixture(scope="module")
 def spec():
@@ -114,6 +124,23 @@ def test_the_blanket_only_shrinks(covered):
     assert actual == BLANKET_PROVISIONS, (
         f"{actual} provisions are covered by a blanket, declared {BLANKET_PROVISIONS}. "
         f"Down means progress — lower the constant. Up needs explaining."
+    )
+
+
+def test_the_declared_debt_only_shrinks(covered):
+    """What is owed and unreported, counted rather than described.
+
+    `articles_awaiting_rules` and `annexes_awaiting_rules` are the honest half of the ledger: an
+    entry says a party owes something and this tool's report is silent about it. That is a stronger
+    claim than a dismissal, which is why the sections are separate from the rulings — and why
+    emptying them is work rather than editing.
+
+    Down means a rule was written; lower the constant. UP MEANS A READER IS NOW BEING TOLD NOTHING
+    about a duty they have, which is the failure this whole partition exists to surface."""
+    owed = [str(c.provision) for c in covered if c.status is Status.OWED]
+    assert len(owed) == OWED_PROVISIONS, (
+        f"{len(owed)} provisions are owed a rule, declared {OWED_PROVISIONS}: {owed[:20]}. "
+        f"Down means progress — lower the constant. Up needs a rule, or an argument."
     )
 
 

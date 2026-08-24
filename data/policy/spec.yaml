@@ -726,6 +726,83 @@ rules:
       the date the Article gives and says plainly that it looks inverted.
     status: active
 
+  # WHAT THE NOTIFIED-BODY ROUTE CONSISTS OF. AIA-PO-A43-1 carries the CHOICE Art. 43(1) offers and
+  # says nothing about either branch, deliberately — naming one annex there would assert a branch
+  # the paragraph leaves open. This rule is the Annex VII branch itself: same paragraph, because
+  # Annex VII is reachable only through it, and the two carry different duties. One is "complete a
+  # conformity assessment by one of the routes"; this one is "and here is what that route requires
+  # of you", which is four applications, two grants of access and a notification duty that runs for
+  # as long as the certificate stands.
+  - rule_id: AIA-PO-A43-1B
+    source:
+      instrument: "Regulation (EU) 2024/1689"
+      article: 43
+      paragraph: 1 # the Annex VII branch of the choice, and the cases that compel it
+      annex: "VII"
+      act_version_date: 2026-07-27
+    applies_to_risk_class: [high_risk]
+    applies_to_role: [provider]
+    applies_to_annex_iii_area: [biometrics]
+    activation_condition: >-
+      Owed only where the provider is ON the Annex VII route, and Art. 43(1) reaches it two ways.
+      ELECTED: where harmonised standards under Art. 40 or common specifications under Art. 41 were
+      applied, the provider chooses between internal control under Annex VI and this. COMPELLED:
+      where (a) no harmonised standard exists and no common specification is available, (b) the
+      provider applied none or only part of the harmonised standard, (c) a common specification
+      exists and the provider did not apply it, or (d) a harmonised standard was published with a
+      restriction — then Annex VII is the only route, and only for the restricted part in case (d).
+      Which standards exist is a fact about the Official Journal and which were applied is a fact
+      about the provider, so neither is settled by a description of the system. One further point
+      the provider does not choose: where the system is intended to be put into service by law
+      enforcement, immigration or asylum authorities or by Union institutions, bodies, offices or
+      agencies, the Art. 74(8) or (9) market surveillance authority ACTS AS the notified body —
+      the provider may not shop for one.
+    obligation_status: mandatory
+    check_type: completeness
+    evidence_expected: >-
+      The Annex VII procedure, which is TWO SEPARATE APPLICATIONS to a notified body and then a
+      continuing relationship with it.
+      POINT 3, THE QUALITY MANAGEMENT SYSTEM. The application must contain (a) the provider's name
+      and address, and the representative's where it lodges; (b) the list of AI systems covered by
+      the same quality management system; (c) the technical documentation for each of them; (d) the
+      documentation of the quality management system covering ALL the Art. 17 aspects; (e) a
+      description of the procedures keeping that system adequate and effective; and (f) A WRITTEN
+      DECLARATION that the same application has not been lodged with any other notified body. Then
+      two duties that outlive the approval: point 3.3 has the approved system CONTINUE to be
+      implemented and maintained, and point 3.4 has any intended change to it — or to the list of
+      systems it covers — brought to the notified body BEFORE it is made.
+      POINT 4, CONTROL OF THE TECHNICAL DOCUMENTATION. A SECOND application, per system, containing
+      the provider's name and address, another written declaration of exclusivity, and the Annex IV
+      documentation. The provider must then grant the body FULL ACCESS to the training, validation
+      and testing data sets, through an API or other remote means where appropriate — the
+      notified-body face of the Art. 74(12) duty AIA-PO-A74-12 carries toward an authority. Point
+      4.5 goes further and is the one most often overlooked: on a reasoned request, and only after
+      other means of verifying conformity are exhausted, the body must also be given access to the
+      TRAINED MODELS AND THEIR PARAMETERS, subject to intellectual property and trade secret law.
+      Point 4.7 is a standing duty: the provider shall INFORM the notified body of any intended
+      change that could affect compliance or the intended purpose, and of any such change it
+      becomes aware of — the body then decides whether Art. 43(4) requires a fresh assessment or a
+      supplement to the certificate will do.
+      POINT 5, SURVEILLANCE. For as long as the approval stands, the provider shall ALLOW THE
+      NOTIFIED BODY ONTO THE PREMISES where design, development and testing take place, and shall
+      share all necessary information; the body audits periodically and may test the certified
+      systems again.
+      A procedure conducted with a third party over the life of the certificate, not a property of
+      the documentation under review — confirm separately.
+    document_verifiable: false
+    effective_date: 2026-08-02
+    effective_date_note: >-
+      IN FORCE ALREADY, AND EARLIER THAN WHAT IT ATTESTS TO — which reads like an error and is
+      not one. Regulation (EU) 2026/1744 moved Chapter III Sections 1 to 3 to 2 December 2027 for
+      an Annex III system and 2 August 2028 for an Annex I one, and did NOT move Section 5, where
+      this obligation sits. So the conformity assessment applies from the general date of 2 August 2026,
+      while the Section 2 requirements it is assessed against wait another sixteen months or more. The
+      sequence is what Art. 113(c) says, not a transcription of it: that paragraph names Sections
+      1, 2 and 3 only. Whether the legislator intended Section 5 to run ahead of them, or simply
+      did not carry it across, is a question for advice rather than for this tool — which reports
+      the date the Article gives and says plainly that it looks inverted.
+    status: active
+
   - rule_id: AIA-PO-A43-2
     source:
       instrument: "Regulation (EU) 2024/1689"

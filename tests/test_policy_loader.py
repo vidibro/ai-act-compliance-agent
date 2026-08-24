@@ -90,12 +90,16 @@ def test_shipped_spec_loads():
     # (5) split between the provider and its representative, and Art. 55(1)(a) to (d) and 55(2) for
     # a model with systemic risk.
     #
+    # ONE pays annexes_awaiting_rules: Art. 43(1)'s Annex VII branch, which says what the
+    # notified-body route consists of where AIA-PO-A43-1 carries only the choice between it and
+    # internal control.
+    #
     # Several Articles are more than one rule because they hold more than one duty, and a single
     # rule would let a finding on the first hide a breach of the second: Art. 20, 21 and 47 are two
     # each (the standing duty and what follows it), Art. 22 is two by PARTY — the provider appoints,
     # the representative performs — Art. 27 is three (carry the assessment out, keep it current,
     # file it), Art. 43 is four (three initial routes plus re-assessment), and Art. 49 is three.
-    assert len(spec.rules) == 78
+    assert len(spec.rules) == 79
 
 
 # How many articles each fetched version holds. Per version, not one number, because the count is

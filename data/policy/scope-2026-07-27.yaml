@@ -1755,6 +1755,43 @@ annex_rulings:
     4: >-
       RULE AIA-PO-A43-2 — verify that design, development and Art. 72 post-market monitoring are
       consistent with the technical documentation.
+  # ANNEX VII is the notified-body conformity assessment route Art. 43(1) offers for Annex III
+  # point 1, and AIA-PO-A43-1B is the rule for it. AIA-PO-A43-1 carries the CHOICE between the
+  # two branches and names neither annex, so the branches are ruled where they are written:
+  # Annex VI under AIA-PO-A43-2 for the internal-control route, Annex VII here.
+  #
+  # Neither rule is document_verifiable, so no judge reads either annex — what they do is tell a
+  # provider on each route what the route consists of. For Annex VII that is two applications, a
+  # written declaration of exclusivity on each, two grants of access, and a duty to notify changes
+  # that runs for as long as the certificate stands.
+  VII:
+    1: >-
+      RULE AIA-PO-A43-1B — the procedure is points 2 to 5. Definitional, and it is what the rule
+      cites.
+    2: >-
+      RULE AIA-PO-A43-1B — overview: the Art. 17 quality management system is examined under point
+      3 and kept under surveillance under point 5; the technical documentation is examined under
+      point 4.
+    3: >-
+      RULE AIA-PO-A43-1B — QUALITY MANAGEMENT SYSTEM. 3.1 lists what the provider's application
+      must contain, points (a)-(f) — the systems covered, the technical documentation for each,
+      the Art. 17 documentation, the procedures keeping the system adequate, and a written
+      declaration that the same application is with no other notified body. 3.3 has the provider
+      CONTINUE to implement and maintain the approved system, and 3.4 has any intended change
+      brought to the notified body.
+    4: >-
+      RULE AIA-PO-A43-1B — CONTROL OF THE TECHNICAL DOCUMENTATION. 4.2's application must contain
+      the provider's name, a written declaration of exclusivity, and the Annex IV documentation;
+      4.3 has the notified body granted FULL ACCESS to the training, validation and testing data
+      sets, through an API where appropriate; 4.5 adds access to the trained models and their
+      parameters where other means are exhausted; and 4.7 has the provider notify any change that
+      could affect compliance. The access duty is Art. 74(12) on the notified-body route.
+    5: >-
+      RULE AIA-PO-A43-1B — SURVEILLANCE. 5.2 has the provider allow the notified body onto the
+      premises where design, development and testing happen and share all necessary information;
+      5.3 has the body audit periodically. A continuing duty for as long as the certificate
+      stands.
+
   # ANNEX VIII IS THE CONTENT OF THE ART. 49 REGISTRATIONS, and Arts. 71(2) and (3) are what put it
   # there: AIA-PO-A71-2 for the provider's Sections A and B, AIA-DP-A71-3 for the public-authority
   # deployer's Section C. AIA-PO-A49, AIA-NHR-A06-4 and AIA-DP-A49-3 carry the duty to register at
@@ -1924,34 +1961,7 @@ annex_rulings:
       Conformity assessment bodies use these lists when applying for designation. The applicant
       body's duty, and conformity assessment bodies are out of scope by role.
 
-
-annexes_awaiting_rules:
-  # ANNEX VII is the notified-body conformity assessment route Art. 43(1)(b) offers for Annex III
-  # point 1. AIA-PO-A43-1 carries that duty and cites neither Annex VI nor Annex VII, though it is
-  # the one rule in the spec where a notified body can be involved. Annex VI is in scope only
-  # because AIA-PO-A43-2 happens to cite it for the internal-control route; Annex VII is reached by
-  # no rule at all — so a provider taking the notified-body route is told to take it and nothing
-  # about what it consists of.
-  VII:
-    1: The procedure is points 2 to 5. Definitional, and it is what the missing rule must cite.
-    2: >-
-      Overview: the Art. 17 quality management system is examined under point 3 and kept under
-      surveillance under point 5; the technical documentation is examined under point 4.
-    3: >-
-      QUALITY MANAGEMENT SYSTEM. 3.1 lists what the provider's application must contain, points
-      (a)-(f) — the systems covered, the technical documentation for each, the Art. 17 documentation,
-      the procedures keeping the system adequate, and a written declaration that the same
-      application is with no other notified body. 3.3 has the provider CONTINUE to implement and
-      maintain the approved system, and 3.4 has any intended change brought to the notified body.
-      Real provider duties, and every one of them evidenced by a document.
-    4: >-
-      CONTROL OF THE TECHNICAL DOCUMENTATION. 4.2's application must contain the provider's name, a
-      written declaration of exclusivity, and the Annex IV documentation; 4.3 has the notified body
-      granted FULL ACCESS to the training, validation and testing data sets, through an API where
-      appropriate; 4.4 lets it require further evidence or tests. The access duty is Art. 74(12) on
-      the notified-body route, and the application contents are checkable against a file.
-    5: >-
-      SURVEILLANCE. 5.2 has the provider allow the notified body onto the premises where design,
-      development and testing happen and share all necessary information; 5.3 has the body audit
-      periodically. A continuing duty for as long as the certificate stands.
-
+# EMPTY, and the mechanism stays. An entry here means an annex item carries content a party owes
+# and no report mentions it — a stronger claim than a dismissal, and the reason this section is
+# separate from annex_rulings rather than folded into it.
+annexes_awaiting_rules: {}

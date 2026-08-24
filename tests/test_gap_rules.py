@@ -104,12 +104,18 @@ def _rule_ids(spec, use_case, role=ActorRole.PROVIDER) -> set[str]:
 
 
 # --- Art. 43 — one duty, three bodies of law ------------------------------------------------------
-# The three route rules answer "which procedure applies the FIRST time". Art. 43(4) is a different
-# question — when the procedure must be run AGAIN — and it is route-independent, so it fires beside
-# whichever of the three is selected. Subtracted in the tests below rather than folded into them:
-# the partition they pin is over the initial routes, and one system owing both a route and the
-# re-assessment duty is the correct answer, not a second conformity procedure.
-_ART_43_ANY_ROUTE = {"AIA-PO-A43-4"}
+# The three route rules answer "which procedure applies the FIRST time", and the partition the
+# tests below pin is over those three. Two more Art. 43 rules answer different questions and are
+# subtracted rather than folded in, because a system owing one of them beside its route is the
+# correct answer, not a second conformity procedure:
+#
+#   AIA-PO-A43-4 asks when the procedure must be run AGAIN. Route-independent, so it fires beside
+#     whichever of the three was selected.
+#   AIA-PO-A43-1B says what the ANNEX VII BRANCH CONSISTS OF — the two applications, the access
+#     duties, the surveillance. It is not a fourth route: it fires beside AIA-PO-A43-1 for a
+#     biometrics system, whose Art. 43(1) choice this tool cannot make on its behalf, and it
+#     carries that choice as its activation_condition.
+_ART_43_NOT_A_ROUTE_CHOICE = {"AIA-PO-A43-4", "AIA-PO-A43-1B"}
 
 
 @pytest.mark.parametrize(
@@ -127,8 +133,8 @@ def test_the_conformity_route_follows_the_annex_iii_point(spec, area, expected):
     clean bill of health it did not earn."""
     ids = _rule_ids(spec, a_use_case(area=area))
     art43 = {r for r in ids if r.startswith("AIA-PO-A43")}
-    assert _ART_43_ANY_ROUTE <= art43, "Art. 43(4) binds whichever route was taken"
-    assert art43 - _ART_43_ANY_ROUTE == {expected}
+    assert "AIA-PO-A43-4" in art43, "Art. 43(4) binds whichever route was taken"
+    assert art43 - _ART_43_NOT_A_ROUTE_CHOICE == {expected}
 
 
 def test_an_annex_i_system_follows_its_own_legislation(spec):
@@ -136,7 +142,7 @@ def test_an_annex_i_system_follows_its_own_legislation(spec):
     branches are silent here — neither was written for a system with no Annex III area at all."""
     ids = _rule_ids(spec, a_use_case(product=AnnexIProduct.MEDICAL_DEVICES))
     art43 = {r for r in ids if r.startswith("AIA-PO-A43")}
-    assert art43 - _ART_43_ANY_ROUTE == {"AIA-PO-A43-3"}
+    assert art43 - _ART_43_NOT_A_ROUTE_CHOICE == {"AIA-PO-A43-3"}
 
 
 def test_every_high_risk_system_owes_exactly_one_conformity_rule(spec):
@@ -146,7 +152,9 @@ def test_every_high_risk_system_owes_exactly_one_conformity_rule(spec):
         a_use_case(product=p) for p in AnnexIProduct if p.chapter_iii_applies
     ]
     for uc in cases:
-        art43 = {r for r in _rule_ids(spec, uc) if r.startswith("AIA-PO-A43")} - _ART_43_ANY_ROUTE
+        art43 = {
+            r for r in _rule_ids(spec, uc) if r.startswith("AIA-PO-A43")
+        } - _ART_43_NOT_A_ROUTE_CHOICE
         label = uc.annex_iii_area or uc.annex_i_product
         assert len(art43) == 1, f"{label}: expected one Art. 43 route rule, got {sorted(art43)}"
 
@@ -619,7 +627,7 @@ def test_every_section_5_rule_explains_why_it_is_already_in_force(spec):
     tool is broken, and the damaging response is to disregard the date rather than the note. So the
     explanation travels WITH the obligation instead of living in a comment only we read."""
     section_5 = [r for r in spec.rules if r.source.article in _SECTION_5_ARTICLES]
-    assert len(section_5) == 15, (
+    assert len(section_5) == 16, (
         "Arts. 41, 43 and 47-49 are the whole of Section 5 in this ruleset"
     )
     for rule in section_5:
