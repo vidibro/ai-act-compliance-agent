@@ -108,11 +108,13 @@ cases:
   - rule_id: AIA-HR-A12
     ablation: present_but_inadequate
     difficulty: ambiguous
-    # NOTE: Art. 12 is a PRESENCE check — existence of the logging capability, described, is
-    # enough. So a bare assertion that logging exists is arguably a PASS, not INADEQUATE. This
-    # case is deliberately marked `ambiguous`: it probes whether the checker respects check_type
-    # instead of applying substance scrutiny everywhere. Expected verdict is overridden below.
-    expect: pass
+    # A SUBSTANCE CHECK, so the bare assertion below is INADEQUATE and the default expectation
+    # stands. Art. 12(1) requires the logging capability and Art. 12(2) fixes the three purposes it
+    # must serve, which AIA-HR-A12 carries as a qualifier — its `evidence_expected` ends by saying
+    # in terms that "the system writes logs", with nothing about what is in them, does not answer
+    # the rule. Marked `ambiguous` because the replacement asserts the capability accurately and
+    # only the content is missing: what it probes is whether the judge reads past the assertion to
+    # what Art. 12(2) requires the log to contain.
     replacement: |
       ## 6. Record-keeping and logging
 

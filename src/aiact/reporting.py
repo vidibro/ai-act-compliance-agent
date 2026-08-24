@@ -183,6 +183,19 @@ def render_report(report: ComplianceReport, spec: PolicySpec) -> str:
         f"{s.total_applicable} applicable — {s.passed} pass, {s.gaps} gap, "
         f"{s.inadequate} inadequate, {s.needs_review} needs review"
     )
+    # WHAT THE COUNT ABOVE LEAVES OUT. `total_applicable` counts verdicts, and half this ruleset
+    # produces none: a process obligation never reaches the judge, so it is listed above and
+    # counted nowhere. For a general-purpose AI model that is EVERY obligation it owes, and the
+    # footer then reads "0 applicable — 0 pass, 0 gap" under a column of fourteen duties, which is
+    # the exact shape of a clean bill of health. Naming the outstanding count is what stops the
+    # last line of the report contradicting the body of it.
+    unjudged = sum(len(ids) for ids in report.not_document_verifiable.values())
+    if unjudged:
+        out.append(
+            f"{unjudged} further obligation{'s' if unjudged > 1 else ''} listed above that "
+            f"nobody judged — a technical file cannot evidence them, so each is a separate "
+            f"confirmation and none of them is a pass"
+        )
 
     # WHICH verdicts rested on non-binding interpretation. A finding reached with the Commission's
     # reading in front of the judge is weaker than one resting on the Article alone, and the report

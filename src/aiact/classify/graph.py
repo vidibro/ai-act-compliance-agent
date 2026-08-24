@@ -1495,11 +1495,22 @@ def build_graph(
         return {"poses_significant_risk": _ask("significant_risk", state.description)}
 
     def node_assemble(state: GraphState) -> dict[str, Any]:
-        # Art. 50 runs HERE, unconditionally. Every path through the cascade reaches `assemble`,
-        # so asking it here — and nowhere else — is what makes transparency independent of the
-        # risk tier: it is answered for a minimal generator and a high-risk chatbot alike, and it
-        # never routes anything. It is an output beside the risk class, not an input to it.
-        transparency = _ask("transparency", state.description)
+        # Art. 50 runs HERE. Every path through the cascade reaches `assemble`, so asking it here
+        # — and nowhere else — is what makes transparency independent of the risk tier: it is
+        # answered for a minimal generator and a high-risk chatbot alike, and it never routes
+        # anything. It is an output beside the risk class, not an input to it.
+        #
+        # ONE EXCEPTION, AND IT IS ABOUT WHAT ART. 50 BINDS. The Article reaches providers and
+        # deployers of AI SYSTEMS; Art. 3(63) makes a general-purpose AI MODEL a different thing
+        # from the Art. 3(66) system built on one, so no Art. 50 duty attaches to a model and
+        # asking is buying an answer that must then be discarded. `_decide_tier` settles the tier
+        # without transparency, and the one thing `decide_risk_class` needs the answer FOR — the
+        # Art. 2(12) carve-back — is reachable only from MINIMAL or NOT_HIGH_RISK, which a model
+        # is not. So the question is skipped rather than asked and ignored.
+        tier, _, _ = _decide_tier(state)
+        transparency = (
+            None if tier is RiskClass.GPAI_MODEL else _ask("transparency", state.description)
+        )
 
         risk_class, reasoning, triggered_by = decide_risk_class(state, transparency)
         confidence: Confidence = (
@@ -1529,8 +1540,9 @@ def build_graph(
             confidence=confidence,
             transparency=transparency,
             # `transparency` is answered in this node, so it is not on the state yet — passed in
-            # explicitly rather than read back, the same reason decide_risk_class takes it.
-            answers=[*_every_answer(state), transparency],
+            # explicitly rather than read back, the same reason decide_risk_class takes it. It is
+            # None for a model, which owes no Art. 50 duty and is never asked.
+            answers=[a for a in (*_every_answer(state), transparency) if a is not None],
         )
         return {"result": result, "transparency": transparency}
 

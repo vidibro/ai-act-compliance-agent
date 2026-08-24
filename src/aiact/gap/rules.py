@@ -112,8 +112,18 @@ def _tier_or_duty_matches(
     narrows it — Art. 50(6) makes the Article ADDITIVE to Chapter III, so a high-risk system that
     generates content owes 50(2) on top of Arts. 9-21, and a minimal-risk one owes it with nothing
     else. What a high-risk scorer owes nothing under Art. 50 for is that it generates no content and
-    holds no conversation; its tier has no part in that."""
+    holds no conversation; its tier has no part in that.
+
+    ONE TIER IS NOT A TIER AT ALL, and it is the exception. Art. 50 binds providers and deployers of
+    AI SYSTEMS — 50(2) says so in terms, "providers of AI systems, including general-purpose AI
+    systems" — and Art. 3(63) makes a general-purpose AI MODEL a different thing from the Art. 3(66)
+    system BUILT ON one. GPAI_MODEL is the tier for the model, so no Art. 50 duty reaches it. The
+    tier cannot do this work through `applies_to_risk_class`, because an Art. 50 rule names no risk
+    class at all: the duty rules apply across every tier by design, and a model is the one
+    classification that is not a tier of system."""
     if rule.applies_to_transparency_duty:
+        if use_case.risk_class is RiskClass.GPAI_MODEL:
+            return False
         return any(duty in duties for duty in rule.applies_to_transparency_duty)
     return use_case.risk_class in rule.applies_to_risk_class
 
@@ -173,7 +183,8 @@ def select_rules(
     # DELIBERATELY NOT HERE: it owes Chapter V, and the separation is done by the rules themselves
     # — every Art. 6-track rule names a tier that a model is not, and every Chapter V rule names
     # `gpai_model` and nothing else. Returning early for a model would hide the duties it does owe,
-    # which is the failure this tier exists to prevent.
+    # which is the failure this tier exists to prevent. The Art. 50 rules name no tier and so are
+    # separated one layer down, in `_tier_or_duty_matches`.
     if use_case.risk_class is RiskClass.OUT_OF_SCOPE:
         return ActiveRules(use_case_id=use_case.use_case_id, role=role)
 

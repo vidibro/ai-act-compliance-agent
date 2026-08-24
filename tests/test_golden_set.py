@@ -15,7 +15,7 @@ import pytest
 from aiact.eval.baseline import KeywordBaseline, keywords_from_title
 from aiact.eval.runner import rules_a_case_is_scored_on, run
 from aiact.policy_loader import load_policy_spec
-from aiact.schemas.enums import Verdict
+from aiact.schemas.enums import CheckType, Verdict
 from aiact.schemas.eval import AblationType, GoldenCase, GoldenSet
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -77,23 +77,42 @@ def test_every_case_expects_all_applicable_rules(any_golden: GoldenSet, spec):
         assert set(case.expected) == applicable, f"{case.case_id} does not score every rule"
 
 
-def test_expected_verdict_matches_ablation_type(any_golden: GoldenSet):
-    """Ground truth must follow from what was degraded — that is what makes it exact."""
+def test_expected_verdict_matches_ablation_type(any_golden: GoldenSet, spec):
+    """Ground truth must follow from what was degraded — that is what makes it exact.
+
+    A CASE THAT EXPECTS A PASS ON A DEGRADED SECTION IS THE RULER REWARDING A FALSE PASS, which is
+    worse than a bug in the thing being ruled: prompt tuning driven by such a case pushes the judge
+    toward accepting exactly the documents this ruleset exists to catch. `make_golden_set.py` lets
+    a plan override the implied verdict with `expect:`, and the only defensible ground for
+    overriding INADEQUATE to PASS is that the rule asks for PRESENCE — where the check is
+    `substance` or `completeness`, a hollowed-out section is inadequate by construction.
+
+    So the exception is DERIVED from the rule rather than named by case id. A rule whose
+    `check_type` changes takes its ablations with it, instead of leaving a pinned expectation
+    behind that now says the opposite of what the rule says."""
     implied = {
         AblationType.REMOVED: Verdict.GAP,
         AblationType.PRESENT_BUT_INADEQUATE: Verdict.INADEQUATE,
         AblationType.DISTRACTOR: Verdict.GAP,
     }
+    by_id = {rule.rule_id: rule for rule in spec.rules}
     for case in any_golden.cases:
         if case.ablated_rule_id is None:
             continue
         got = case.expected[case.ablated_rule_id]
-        # AIA-HR-A12 is a deliberate `ambiguous` override: a presence check is satisfied by a bare
-        # assertion, so its hollowed-out case expects PASS, not INADEQUATE.
-        if case.case_id == "AIA-HR-A12__present_but_inadequate":
-            assert got == Verdict.PASS
+        if got == implied[case.ablation]:
             continue
-        assert got == implied[case.ablation], f"{case.case_id} expects {got}"
+        rule = by_id[case.ablated_rule_id]
+        assert case.ablation is AblationType.PRESENT_BUT_INADEQUATE and got is Verdict.PASS, (
+            f"{case.case_id} expects {got.value} where the ablation implies "
+            f"{implied[case.ablation].value}, and no check_type justifies that"
+        )
+        assert rule.check_type is CheckType.PRESENCE, (
+            f"{case.case_id} expects a PASS on a hollowed-out section, but "
+            f"{rule.rule_id} is a {rule.check_type.value} check — its own evidence_expected asks "
+            f"for more than the assertion the case leaves behind, so the ruler and the rule "
+            f"disagree and the ruler is the one that scores the judge"
+        )
 
 
 def test_untouched_rules_expect_pass(any_golden: GoldenSet):

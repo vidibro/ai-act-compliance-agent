@@ -710,8 +710,17 @@ rules:
       system. Unlike every other Annex III area this one can require a NOTIFIED BODY: internal
       control (Annex VI) is available only where harmonised standards or common specifications were
       applied, and Annex VII is compulsory otherwise. Which applies turns on the standards the
-      provider used, so the route and the standards relied on both have to be stated. A procedural
-      act preceding market placement — confirm separately.
+      provider used, so the route and the standards relied on both have to be stated.
+      EACH BRANCH CARRIES ITS OWN WORK. Electing internal control under ANNEX VI is not a lighter
+      filing but three verifications the provider performs itself and no notified body checks:
+      that the established quality management system complies with Art. 17; that the information in
+      the technical documentation supports conformity with the Chapter III Section 2 requirements;
+      and that the design and development process and the Art. 72 post-market monitoring are
+      CONSISTENT WITH that technical documentation. Nothing outside the provider's own organisation
+      records that they were done, which is what makes the route the easier one to leave undone.
+      The Annex VII branch is set out at AIA-PO-A43-1B, which is selected alongside this rule and
+      states what that route requires. A procedural act preceding market placement — confirm
+      separately.
     document_verifiable: false
     effective_date: 2026-08-02
     effective_date_note: >-
@@ -865,8 +874,25 @@ rules:
       or common specifications cover all of the Section 2 requirements. Containing a high-risk AI
       system does not by itself force a third-party assessment where the sectoral act does not
       require one. Only Annex I Section A systems reach this rule; a Section B one owes no
-      Chapter III at all under Art. 2(2) and is withheld earlier. A procedural act preceding market
-      placement — confirm separately.
+      Chapter III at all under Art. 2(2) and is withheld earlier.
+      THE SECTORAL PROCEDURE IS NOT THE WHOLE OF WHAT THIS PARAGRAPH REQUIRES. It also has the
+      Art. 17 QUALITY MANAGEMENT SYSTEM assessed, and it applies six pieces of ANNEX VII to this
+      route by name: point 3, the quality management system application and the duties to keep the
+      approved system in place and to bring intended changes to the notified body before making
+      them; point 4.3, full access for the notified body to the training, validation and testing
+      data sets, where relevant and limited to what is necessary, through an API or other remote
+      means where appropriate; point 4.4, further evidence or further tests where the body requires
+      them, and tests the body carries out itself where it is not satisfied with the provider's;
+      point 4.5, access to the training and trained models INCLUDING THEIR PARAMETERS, on a
+      reasoned request and only after other means of verifying conformity are exhausted, subject
+      to intellectual property and trade secret law; the FIFTH PARAGRAPH OF POINT 4.6, under which
+      a system failing the training-data requirement must be RE-TRAINED before a new conformity
+      assessment is applied for; and point 5, surveillance — for as long as the approval stands the
+      provider allows the body onto the premises where design, development and testing take place,
+      shares all necessary information, and is audited periodically. So an Annex I Section A
+      provider owes a standing notified-body relationship under this Regulation on top of whatever
+      its own instrument requires. A procedural act preceding market placement, and a relationship
+      running after it — confirm separately.
     document_verifiable: false
     effective_date: 2026-08-02
     effective_date_note: >-
@@ -1312,8 +1338,12 @@ rules:
       paragraph: 2 # the Annex VIII Section A and B data the provider enters
       annex: "VIII"
       act_version_date: 2026-07-27
-    applies_to_risk_class: [high_risk, not_high_risk]
+    applies_to_risk_class: [high_risk]
     applies_to_role: [provider, authorised_representative]
+    # ANNEX III POINTS 1 AND 3 TO 8. Point 2, critical infrastructure, is missing because Art. 49(1)
+    # excepts it — "with the exception of high-risk AI systems referred to in point 2 of Annex III"
+    # — and Art. 49(5) sends those systems to registration at NATIONAL level instead. Nothing goes
+    # into the EU database for them, so there is no Annex VIII entry to make.
     applies_to_annex_iii_area:
       [
         biometrics,
@@ -1324,12 +1354,13 @@ rules:
         migration,
         justice_democracy,
       ]
-    # BOTH TIERS, and the Annex says which Section answers which. Art. 71(1) has the database hold
+    # THE HIGH-RISK TIER ONLY, and AIA-NHR-A71-2 carries the other. Art. 71(1) has the database hold
     # Art. 6(2) high-risk systems registered under Art. 49, AND systems a provider concluded are
-    # NOT high-risk under Art. 6(3) and registered under Art. 6(4) — Annex VIII Section A is the
-    # first, Section B the second. A rule for the high-risk tier alone would leave the derogating
-    # provider told to register and never told what to enter, which is the half Art. 80 then
-    # audits.
+    # NOT high-risk under Art. 6(3) — Annex VIII Section A is the first, Section B the second. Two
+    # rules rather than one because the two tiers do not share an area gate: Art. 49(1) excepts
+    # Annex III point 2 and Art. 49(2) excepts nothing, so a single list would either withhold the
+    # entry from a derogating critical-infrastructure provider or demand a database entry from a
+    # high-risk one the Act registers nationally.
     #
     # THE AUTHORISED REPRESENTATIVE is named in the paragraph itself, "where applicable", so it is
     # a duty-holder here and not merely the provider's agent.
@@ -1343,13 +1374,49 @@ rules:
       market status, the notified body certificate and a scanned copy where one exists, the Member
       States of placing, a copy of the Art. 47 EU declaration of conformity, and electronic
       instructions for use — withheld for law enforcement, migration, asylum and border control
-      systems. Item A/13, a URL for further information, is expressly OPTIONAL.
-      For a system registered as NOT high-risk under Art. 6(3), Section B replaces it and adds the
-      two items that carry the whole claim: B/6, WHICH Art. 6(3) condition is relied on, and B/7, a
-      short summary of the grounds for the conclusion. Those are what Art. 80 puts an authority
-      onto, and misstating them attracts the Art. 80(7) fine.
+      systems. Item A/13, a URL for further information, is expressly OPTIONAL. A system registered
+      as NOT high-risk under Art. 6(3) enters Section B instead, which AIA-NHR-A71-2 carries.
       An external act against a registry, not observable from the technical documentation — confirm
       separately.
+    document_verifiable: false
+    effective_date: 2026-08-02
+    effective_date_note: >-
+      Art. 71 sits in Chapter VIII, which Art. 113 does not carve out, so the entry duty runs from
+      the general date of 2 August 2026 — ahead of the Chapter III Section 2 requirements the
+      entered data describes. Same inversion as the Art. 49 registrations it fills in, and for the
+      same reason: Regulation (EU) 2026/1744 moved Sections 1 to 3 and left everything else where
+      it was.
+    status: active
+
+  # NO AREA GATE, AND THAT IS THE DIFFERENCE FROM AIA-PO-A71-2. Art. 49(1) and 49(3) each except
+  # "high-risk AI systems referred to in point 2 of Annex III" and Art. 49(5) registers those
+  # nationally; Art. 49(2) enacts NO SUCH EXCEPTION. A provider that derogates an Annex III point 2
+  # system under Art. 6(3) registers it in the EU database like any other, so gating this rule on
+  # the seven areas would tell a critical-infrastructure provider to register under AIA-NHR-A06-4
+  # and never tell it what to enter — including the two items its whole derogation rests on.
+  - rule_id: AIA-NHR-A71-2
+    source:
+      instrument: "Regulation (EU) 2024/1689"
+      article: 71
+      paragraph: 2 # the Annex VIII Section B data a derogating provider enters
+      annex: "VIII"
+      act_version_date: 2026-07-27
+    applies_to_risk_class: [not_high_risk]
+    applies_to_role: [provider, authorised_representative]
+    obligation_status: mandatory
+    check_type: completeness
+    evidence_expected: >-
+      The Annex VIII SECTION B data actually entered in the EU database, not merely an account
+      created — nine items for a system the provider concluded is not high-risk under Art. 6(3):
+      the provider's and any representative's identity and contact details, the person submitting
+      on their behalf, the trade name and the references allowing identification and traceability,
+      a description of the intended purpose, the market status and the Member States of placing.
+      Then the two that carry the whole claim: B/6, WHICH of the Art. 6(3) conditions is relied on,
+      and B/7, a SHORT SUMMARY OF THE GROUNDS for concluding the system is not high-risk. Those are
+      what Art. 80 puts an authority onto, and misstating them attracts the Art. 80(7) fine — so a
+      registration that names the condition without the grounds has entered half of what the
+      paragraph asks. An external act against a registry, not observable from the technical
+      documentation — confirm separately.
     document_verifiable: false
     effective_date: 2026-08-02
     effective_date_note: >-
@@ -2368,9 +2435,11 @@ rules:
     activation_condition: >-
       Owed only where the model meets the Art. 51(1)(a) condition — high impact capabilities, which
       Art. 51(2) PRESUMES above 10^25 cumulative training FLOP. That is the one limb a model card
-      can answer, and only where it states the training compute at all; no node asks it, so this
-      obligation is listed with the threshold attached rather than asserted of every provider or
-      dropped. The presumption is rebuttable: Art. 52(2) lets the provider argue with its
+      can answer, and only where it states the training compute at all. The systemic_risk node
+      reads what the document says and cannot settle the condition in the negative — a figure
+      below the threshold defeats the PRESUMPTION and leaves Art. 51(1)(a) standing as a
+      substantive test — so this obligation is listed with the threshold attached rather than
+      asserted of every provider or dropped. The presumption is rebuttable: Art. 52(2) lets the provider argue with its
       notification that the model presents no systemic risk despite meeting the condition.
     obligation_status: mandatory
     check_type: presence
@@ -2406,8 +2475,10 @@ rules:
       model architecture and model usage information are made publicly available. All of that must
       hold; a permissive licence over closed weights is not the carve-out. And the carve-out is
       itself disapplied for a general-purpose AI model WITH SYSTEMIC RISK, which owes this duty
-      whatever its licence. No node answers either fact, so the obligation is listed with both
-      conditions attached.
+      whatever its licence. The open_source_release and systemic_risk nodes read what the document
+      says about each, and neither can settle the carve-out: the licence limbs are the provider's
+      own description, and no document puts a model outside Art. 51(1). So the obligation is
+      listed with both conditions attached and withheld on neither.
     obligation_status: mandatory
     check_type: completeness
     evidence_expected: >-
@@ -2415,10 +2486,17 @@ rules:
       testing process and the results of the evaluation, and containing at least the Annex XI
       elements: Section 1(1)'s general description — tasks, acceptable use policies, release date
       and distribution methods, architecture and parameter count, modality and format, licence —
-      and Section 1(2)'s account of the model's elements and development, including the design
-      specifications, the training methodology, the provenance and curation of the training data,
-      the COMPUTATIONAL RESOURCES used expressed in floating point operations, and the known or
-      estimated energy consumption. Held for the AI Office and the national competent authorities
+      and Section 1(2)'s account of the model's elements and development, including the technical
+      means required for the model to be integrated into AI systems, the design specifications,
+      the training methodology, the provenance and curation of the training data, the COMPUTATIONAL
+      RESOURCES used expressed in floating point operations, and the known or estimated energy
+      consumption. A MODEL WITH SYSTEMIC RISK OWES SECTION 2 ON TOP OF SECTION 1, three items more:
+      (1) a detailed description of the evaluation strategies and their results, with the criteria,
+      the metrics and the methodology for identifying limitations; (2) where applicable, the
+      measures put in place for internal and/or external adversarial testing such as red teaming,
+      and for model adaptations including alignment and fine-tuning; and (3) where applicable, a
+      detailed description of the system architecture, explaining how the software components build
+      or feed into each other. Held for the AI Office and the national competent authorities
       and produced on request, so it need not be published — its absence is not visible from what a
       provider chooses to release. Note that Section 1(2)(d) is where the Art. 51(2) 10^25 FLOP
       figure would be recorded, which is the same number Art. 52(1) turns on.
@@ -2508,6 +2586,34 @@ rules:
       data provenance under point (a), which is confidential and far more detailed — this one is
       the version the world sees. Published outside the documentation under review — confirm
       separately.
+    document_verifiable: false
+    effective_date: 2025-08-02
+    status: active
+
+  # THE CHAPTER V TWIN OF ART. 21 AND ART. 74(12), and it is a provider duty on its face —
+  # "Providers of general-purpose AI models shall cooperate". Not documentable and modelled anyway,
+  # for the reason AIA-PO-A21 and AIA-PO-A74-12 are: conduct owed to an authority is still owed,
+  # and a rule is how the reader is told about it. Art. 21(3) is the one Art. 21 paragraph with no
+  # rule, and only because it binds the RECEIVING AUTHORITY rather than the provider.
+  - rule_id: AIA-GP-A53-3
+    source:
+      instrument: "Regulation (EU) 2024/1689"
+      article: 53
+      paragraph: 3 # cooperate with the Commission and national competent authorities
+      act_version_date: 2026-07-27
+    applies_to_risk_class: [gpai_model]
+    applies_to_role: [provider]
+    obligation_status: mandatory
+    check_type: presence
+    evidence_expected: >-
+      A standing readiness to COOPERATE with the Commission and the national competent authorities
+      as they exercise their competences and powers under this Regulation. Wider than the specific
+      production duties elsewhere in Chapter V: Art. 53(1)(a) and (b) say what documentation is
+      held and for whom, and Art. 55(1)(c) says what is reported to the AI Office, while this
+      paragraph reaches whatever an authority's exercise of its powers requires — access, answers,
+      a named contact who can give them. What makes it actionable in advance is having decided who
+      answers and on what timescale before the request arrives. Conduct during an authority's
+      exercise of its powers rather than a property of any file — confirm separately.
     document_verifiable: false
     effective_date: 2025-08-02
     status: active
@@ -2698,8 +2804,10 @@ rules:
     activation_condition: >-
       OWED ONLY BY A MODEL WITH SYSTEMIC RISK under Art. 51(1) — either high impact capabilities,
       which Art. 51(2) presumes above 10^25 cumulative training FLOP, or a Commission designation
-      under Art. 51(1)(b) on the Annex XIII criteria. No node asks it and this tool does not
-      estimate it; the Art. 52(6) list the Commission maintains is the authoritative answer.
+      under Art. 51(1)(b) on the Annex XIII criteria. The systemic_risk node reads what the
+      document states and this tool estimates nothing; a stated figure below the threshold defeats
+      the Art. 51(2) presumption and settles neither limb, so the answer never withholds this
+      duty. The Art. 52(6) list the Commission maintains is the authoritative answer.
     obligation_status: mandatory
     check_type: presence
     evidence_expected: >-
@@ -2708,8 +2816,10 @@ rules:
       documented half is what makes the duty checkable: an internal red-team exercise nobody wrote
       up does not satisfy the point. The stated purpose is identifying and mitigating systemic
       risks, so an evaluation measuring capability on benchmarks and never asking what could go
-      wrong at Union level is the wrong instrument however rigorous. Annex XI Section 2(1) is where
-      the results belong for a provider that also owes Art. 53(1)(a).
+      wrong at Union level is the wrong instrument however rigorous. A provider that also owes
+      Art. 53(1)(a) files both halves in Annex XI Section 2: the evaluation strategies and results
+      under Section 2(1), and the adversarial-testing measures — with any model adaptations,
+      alignment and fine-tuning — under Section 2(2).
     document_verifiable: false
     effective_date: 2025-08-02
     status: active
@@ -2735,7 +2845,12 @@ rules:
       an assessment listing harms without tracing where they come from is incomplete; and the
       development phase is inside scope, so risks are owed an answer before the model ships. The
       mitigation half is a duty of its own — an assessment that identifies a risk and stops there
-      has met half the point. Annex XI Section 2(2) is where the measures belong.
+      has met half the point. NO ANNEX XI ITEM CORRESPONDS TO THIS DUTY: Section 2 enacts three
+      items and they are the evaluation strategies, the adversarial-testing and model-adaptation
+      measures, and the system architecture — all of them Art. 55(1)(a)'s subject or the model's
+      description, none of them the Union-level risk assessment and mitigation this point
+      requires. So a provider that files its Annex XI documentation and stops has not answered
+      this, and where the assessment is recorded is the provider's own choice.
     document_verifiable: false
     effective_date: 2025-08-02
     status: active

@@ -22,7 +22,7 @@
 #   - If you do tune against it, it is dev now — permanently. Say so and author a new one.
 #
 # DISTRIBUTION MATCHES DEV EXACTLY: same 19 cases, same ablation type per rule, same difficulty
-# labels, same deliberate `expect: pass` probe on Art. 12. A held-out set is meant to estimate
+# labels, same ambiguous Art. 12 probe. A held-out set is meant to estimate
 # performance on unseen cases from the SAME population — making it harder would produce a
 # pessimistic number that measures nothing, making it easier would flatter.
 #
@@ -123,10 +123,10 @@ cases:
   - rule_id: AIA-HR-A12
     ablation: present_but_inadequate
     difficulty: ambiguous
-    # Mirrors the dev set's Art. 12 probe. Art. 12 is a PRESENCE check — the logging capability,
-    # described, is enough — so a bare assertion is arguably a PASS. Tests whether the checker
-    # respects check_type instead of applying substance scrutiny everywhere. Verdict overridden.
-    expect: pass
+    # Mirrors the dev set's Art. 12 probe. AIA-HR-A12 is a SUBSTANCE check qualified by Art. 12(2),
+    # so the bare assertion below is INADEQUATE and the default expectation stands. What it probes
+    # is whether the judge reads past an accurate assertion of the capability to the three purposes
+    # Art. 12(2) requires the log to serve.
     replacement: |
       ## Part F — Event records
 

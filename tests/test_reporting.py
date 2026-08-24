@@ -47,6 +47,7 @@ from aiact.schemas.report import (
     ComplianceReport,
     Finding,
     ReportSummary,
+    _release_note,
 )
 
 
@@ -247,7 +248,7 @@ def test_the_report_says_it_is_not_legal_advice(spec):
     [
         (SystemicRisk.DESIGNATED, OpenSourceRelease.NOT_OPEN, "SYSTEMIC RISK IS ESTABLISHED"),
         (SystemicRisk.HIGH_IMPACT_CAPABILITIES, OpenSourceRelease.FULLY_OPEN, "DISAPPLIED"),
-        (SystemicRisk.BELOW_THRESHOLD, OpenSourceRelease.FULLY_OPEN, "Art. 54(6) lifts"),
+        (SystemicRisk.BELOW_THRESHOLD, OpenSourceRelease.FULLY_OPEN, "ONE HALF OF THE CARVE-OUT"),
         (SystemicRisk.NOT_STATED, OpenSourceRelease.NOT_STATED, "UNANSWERED"),
     ],
 )
@@ -261,10 +262,12 @@ def test_a_model_is_told_which_side_of_each_chapter_v_gate_it_falls_on(
     document says — otherwise the report answers "Art. 55 applies if you carry systemic risk",
     which they knew before they ran it.
 
-    The `FULLY_OPEN` rows are the pair that matters. The same release answer means opposite things
-    depending on Art. 51: above the threshold the carve-out is DISAPPLIED and lifts nothing, below
-    it Art. 54(6) lifts the whole Article. A note composed from the licence alone would tell the
-    systemic-risk provider that four obligations had fallen away."""
+    The `FULLY_OPEN` rows are the pair that matters, and they are not opposites. Above the
+    threshold the carve-out is DISAPPLIED outright. Below it the licence half is answered and the
+    Art. 51 half is not — a stated compute figure defeats the Art. 51(2) presumption and settles
+    neither limb of Art. 51(1) — so the report says what the release establishes and stops short of
+    saying the obligations are lifted. A note composed from the licence alone would tell either
+    provider that four obligations had fallen away."""
     report = _report(spec, {})
     report.classification.use_cases[0].systemic_risk = _answer(report, risk)
     report.classification.use_cases[0].open_source_release = _answer(report, release)
@@ -279,3 +282,85 @@ def test_a_document_that_is_not_a_model_gets_no_chapter_v_note(spec):
     Art. 6-track system is not a model, and a paragraph about Art. 51 in its report would send its
     provider to read a chapter that does not reach them."""
     assert _report(spec, {}).chapter_v_gate_note is None
+
+
+@pytest.mark.parametrize("risk", list(SystemicRisk))
+@pytest.mark.parametrize("release", list(OpenSourceRelease))
+def test_no_pair_of_answers_lets_the_report_lift_a_duty_without_naming_art_51(risk, release):
+    """THE ONLY PLACE THIS TOOL SAYS AN OBLIGATION IS LIFTED, and it must never say it alone.
+
+    Art. 53(2) and Art. 54(6) are both disapplied for a general-purpose AI model with systemic
+    risk, so the open-source answer decides nothing by itself — it decides with Art. 51. And
+    Art. 51 is a question no document settles in the negative: Art. 51(2) is a presumption running
+    one way, so a stated compute figure below 10^25 defeats the presumption and leaves Art. 51(1)(a)
+    standing as a substantive test and Art. 51(1)(b) standing as a Commission designation available
+    at any compute.
+
+    A report that says "Art. 53(2) lifts" without naming the Article that disapplies it clears the
+    Annex XI technical documentation, the Annex XII downstream information and the whole of Art. 54
+    on the single easiest number in a model card to understate.
+
+    NOT THE SAME CHECK AS `test_neither_chapter_v_gate_is_allowed_to_clear_an_obligation`. That one
+    compares the rules SELECTED across the gate answers and they are identical, as they should be.
+    The clearance this catches is not in the rule set — it is in the sentence beside it, which a
+    reader acts on and a rule-set comparison cannot see."""
+    note = _release_note(risk, release)
+    if "lift" not in note:
+        return
+    assert "Art. 51" in note, (
+        f"the release note for {risk.value}/{release.value} states a Chapter V obligation is "
+        f"lifted and never names Art. 51, which is what disapplies both carve-outs: "
+        f"{note}"
+    )
+
+
+def test_no_document_can_put_a_model_outside_article_51():
+    """`carries_systemic_risk` is True or None and NEVER False, and the whole Chapter V report
+    rests on it.
+
+    Art. 51(1) is a disjunction — high impact capabilities on limb (a), a Commission designation on
+    limb (b) — and a model card can establish either and neither can be ruled out from one. The
+    compute figure Art. 51(2) speaks to feeds a PRESUMPTION, and defeating a presumption is not
+    proving its conclusion false. So there is no answer to this question that means "no systemic
+    risk", and any enum member returning False would hand the open-source carve-out to a model that
+    had merely stated a small number.
+
+    DERIVED over the enum, so a member added later is covered without anyone remembering."""
+    assert all(risk.carries_systemic_risk is not False for risk in SystemicRisk)
+
+
+def test_a_model_is_told_the_transitional_deadline_written_for_it(spec):
+    """Art. 111(3) is the one transitional limb addressed to a general-purpose model provider, and
+    it is the one the other limbs cannot reach.
+
+    `_article_111_2_note` returns None where no use case is HIGH_RISK, which is always true of a
+    GPAI_MODEL classification, and `_article_111_4_note` fires on an Art. 50 duty a model never
+    owes. So without a limb of its own the whole `legacy_system_note` is None for exactly the
+    reader Art. 111(3) is written for — while every Chapter V rule beside it carries
+    `effective_date: 2025-08-02` and the scope note says those duties are live now.
+
+    THE DIRECTION MATTERS. Art. 111(3) is a DEFERRAL: a model placed before 2 August 2025 owes the
+    Chapter V duties by 2 August 2027. Silence over-reports, which costs a reader a conversation
+    with their adviser; but silence here also leaves a provider reading a 2025 date against a model
+    it shipped in 2024 and concluding it is two years in breach of duties it is not yet late on."""
+    report = _report(spec, {})
+    report.classification.use_cases[0].risk_class = RiskClass.GPAI_MODEL
+    report.classification.overall_risk_class = RiskClass.GPAI_MODEL
+    note = report.legacy_system_note
+    assert note, "a model gets no legacy note at all — Art. 111(3) reaches no reader"
+    assert "Art. 111(3)" in note and "2 AUGUST 2027" in note
+    assert " ".join(note.split()) in " ".join(render_report(report, spec).split())
+
+
+def test_a_report_says_how_many_obligations_nobody_judged(spec):
+    """`total_applicable` counts VERDICTS, and half this ruleset produces none.
+
+    A process obligation never reaches the judge, so it is listed in the body and counted in no
+    bucket. For a general-purpose AI model that is every obligation it owes, and the last line of
+    the report then reads "0 applicable — 0 pass, 0 gap, 0 inadequate, 0 needs review" underneath a
+    column of fourteen duties. That is the exact shape of a clean bill of health, printed over a
+    report that judged nothing — and the summary line is the one a reader scans."""
+    outstanding = [r.rule_id for r in spec.rules if not r.document_verifiable][:3]
+    text = render_report(_report(spec, {ActorRole.PROVIDER: outstanding}), spec)
+    assert "0 applicable" in text
+    assert f"{len(outstanding)} further obligations listed above that nobody judged" in text

@@ -29,8 +29,13 @@ from aiact.coverage import (
     summarise,
 )
 from aiact.gap import roles as role_questions
+from aiact.gap.rules import select_rules
 from aiact.policy_loader import load_policy_spec, resolve_requirement
 from aiact.provisions import all_provisions, annex_instruments, provision_labels
+from aiact.schemas.classification import ClassificationEvidence, UseCaseClassification
+from aiact.schemas.enums import ActorRole, AnnexIIIArea, DerogationCondition, RiskClass
+from aiact.schemas.policy import LegalSource
+from aiact.schemas.question import Answer
 
 ROOT = Path(__file__).resolve().parents[1]
 VERSION = get_settings().act_version_date.isoformat()
@@ -594,3 +599,102 @@ def test_a_ruling_written_where_a_rule_cites_names_that_rule(ledger, spec):
             f"ruled on: {reason!r}. The rule wins and the reason is never read — rewrite it to "
             f"record the rule, or delete it."
         )
+
+
+def test_no_annex_is_carried_only_by_rules_a_single_area_can_reach(spec, ledger):
+    """A COVERAGE RULING IS SATISFIED BY A RULE THAT EXISTS. It does not ask whether that rule can
+    fire for the party the provision binds, and the partition cannot see the difference.
+
+    That is how an annex comes to be ruled `RULE ...` at every item and reach nobody. Art. 43 is
+    where both halves of it live: AIA-PO-A43-1B is gated to biometrics while Art. 43(3) applies six
+    Annex VII points to an ANNEX I Section A provider, and AIA-PO-A43-2 is gated to Annex III
+    points 2 to 8 while Art. 43(1)(a) lets a point 1 provider elect Annex VI. Rule one of those
+    annexes to one of those rules alone and the ledger reads as covered, `owed` stays at zero, and
+    the provider on the route the annex applies to is told the route exists and never told what it
+    consists of.
+
+    So this asks the question the partition does not: taking the rules the ledger names for an
+    annex, is there any use case at all that cannot reach ONE of them? An annex reached only through
+    `applies_to_annex_iii_area` gates is reachable only from the areas those gates name between
+    them, and an annex the Act applies more widely than that is an annex some reader is missing. An
+    ungated rule — no area condition — settles it, which is the ordinary case and why this is not
+    noisy."""
+    every_area = {area.value for area in AnnexIIIArea}
+    by_id = {rule.rule_id: rule for rule in spec.rules}
+    for annex, items in (ledger.get("annex_rulings") or {}).items():
+        named = {
+            rule_id
+            for value in _values(items)
+            if isinstance(value, str) and value.startswith(RULE_PREFIX)
+            for rule_id in rule_ids(value)
+        }
+        rules = [by_id[rule_id] for rule_id in named if rule_id in by_id]
+        if not rules:
+            continue
+        if any(not rule.applies_to_annex_iii_area for rule in rules):
+            continue  # an ungated rule reaches every area; nothing to prove
+        reached = {
+            area.value for rule in rules for area in rule.applies_to_annex_iii_area
+        }
+        assert reached == every_area, (
+            f"Annex {annex} is ruled only to area-gated rules, and between them they reach "
+            f"{sorted(reached)} — a use case in {sorted(every_area - reached)} is told nothing "
+            f"about it. The ledger reads as covered because a named rule EXISTS; the reader never "
+            f"selects it."
+        )
+
+
+def _values(items: object) -> list[object]:
+    """Every ruling under one annex key, whether the annex is itemised or ruled in one line."""
+    if isinstance(items, dict):
+        return list(items.values())
+    return [items]
+
+
+def test_a_provider_that_registers_a_derogated_system_is_told_what_to_enter(spec):
+    """Art. 49(2) enacts NO AREA EXCEPTION, and Arts. 49(1) and 49(3) both do.
+
+    "with the exception of high-risk AI systems referred to in point 2 of Annex III" appears in
+    49(1) and 49(3) and not in 49(2), and Art. 49(5) registers the excepted systems nationally
+    instead. So the seven-area gate that is right for a high-risk provider's EU database entry is
+    wrong for a provider that concluded under Art. 6(3) that its critical-infrastructure system is
+    NOT high-risk: that provider registers like any other and owes the Annex VIII Section B items,
+    B/6 and B/7 above all — which of the Art. 6(3) conditions it relies on, and the grounds.
+
+    DERIVED over every area, so an area added to the enum is covered without anyone remembering."""
+    for area in AnnexIIIArea:
+        rules = select_rules(
+            spec, _derogated_use_case(area), ActorRole.PROVIDER
+        ).all_rules
+        assert any(rule.source.annex == "VIII" for rule in rules), (
+            f"a provider derogating a {area.value} system under Art. 6(3) is told to register and "
+            f"never told what to enter — no selected rule cites Annex VIII"
+        )
+
+
+def _derogated_use_case(area: AnnexIIIArea) -> UseCaseClassification:
+    """A system inside an Annex III area whose provider concluded under Art. 6(3) it is not
+    high-risk — the reader Art. 49(2) and Annex VIII Section B are written for."""
+    source = LegalSource(
+        instrument="Regulation (EU) 2024/1689",
+        article="6",
+        act_version_date=get_settings().act_version_date,
+    )
+    return UseCaseClassification(
+        use_case_id="uc",
+        description="a derogated system",
+        risk_class=RiskClass.NOT_HIGH_RISK,
+        annex_iii_area=area,
+        poses_significant_risk=Answer(
+            value=False, reasoning="fixture", confidence="high", source=source
+        ),
+        derogation=Answer(
+            value=DerogationCondition.NARROW_PROCEDURAL_TASK,
+            reasoning="fixture",
+            confidence="high",
+            source=source,
+        ),
+        reasoning="fixture",
+        confidence="high",
+        triggered_by=[ClassificationEvidence(source=source, reasoning="fixture")],
+    )

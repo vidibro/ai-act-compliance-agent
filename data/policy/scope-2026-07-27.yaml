@@ -753,9 +753,12 @@ article_rulings:
       are selected whatever it answers and carry the carve-out as an activation_condition, because
       a model card mis-read on any one limb would otherwise clear two obligations.
     3: >-
-      Cooperate as necessary with the Commission and national competent authorities. Conduct during
-      an authority's exercise of its powers, with no document that evidences it in advance — the same
-      treatment Art. 21(3) and Art. 74 get on the high-risk track.
+      RULE AIA-GP-A53-3 — providers of general-purpose AI models shall cooperate with the
+      Commission and the national competent authorities in the exercise of their competences and
+      powers. A provider duty on its face, so it is a rule and not a dismissal, and not
+      document_verifiable for the reason AIA-PO-A21 and AIA-PO-A74-12 are not: conduct owed to an
+      authority is owed whether or not a file evidences it. Art. 21(3) is the paragraph on the
+      high-risk track with no rule, and only because it binds the receiving authority.
     4: >-
       RULE AIA-GP-A53-4 — a provider adhering to NEITHER an approved code of practice NOR a
       European harmonised standard shall demonstrate alternative adequate means of compliance for
@@ -797,8 +800,8 @@ article_rulings:
       assessment and mitigation of Union-level systemic risks and their sources; tracking,
       documenting and reporting serious incidents to the AI Office; and cybersecurity for the model
       AND its physical infrastructure. One rule each, because a provider can meet the first and
-      breach the last. All four rest on the Art. 51 line no node asks, which each states as its
-      activation_condition.
+      breach the last. All four rest on the Art. 51 line the systemic_risk node asks and that no
+      document settles in the negative, which each states as its activation_condition.
     2: >-
       RULE AIA-GP-A55-2 — demonstrate alternative adequate means of compliance where neither a code
       of practice nor a harmonised standard is followed. The 53(4) duty again, for the
@@ -1076,10 +1079,11 @@ article_rulings:
   71:
     1: Commission duty to set up and maintain the EU database. Institutional.
     2: >-
-      RULE AIA-PO-A71-2 — the Annex VIII Section A and B data entered into the EU database by the
-      provider or, where applicable, by the authorised representative. Section A for a high-risk
-      system, Section B for one registered as not high-risk under Art. 6(3); AIA-PO-A49 and
-      AIA-NHR-A06-4 carry the duty to register at all.
+      RULE AIA-PO-A71-2 AIA-NHR-A71-2 — the Annex VIII Section A and B data entered into the EU
+      database by the provider or, where applicable, by the authorised representative. Section A
+      for a high-risk system, Section B for one registered as not high-risk under Art. 6(3); one
+      rule each, because Art. 49(1) excepts Annex III point 2 from the EU database and Art. 49(2)
+      excepts nothing. AIA-PO-A49 and AIA-NHR-A06-4 carry the duty to register at all.
     3: >-
       RULE AIA-DP-A71-3 — the Annex VIII Section C data entered by a deployer that is, or acts on
       behalf of, a public authority. AIA-DP-A49-3 carries the duty to register the deployment.
@@ -1507,11 +1511,15 @@ article_rulings:
     6: Art. 58 — delegated acts on ATM/ANS. Binds the Commission.
   109: Amendment to Regulation (EU) 2019/2144 — amends another instrument.
   110: Amendment to Directive (EU) 2020/1828 — amends another instrument.
-  # Art. 111 is the TRANSITIONAL REGIME, and it is REPORTED, NEVER APPLIED — carried by
-  # ComplianceReport.legacy_system_note rather than by a rule, because every limb turns on the date
-  # the system was placed on the market, which no system card states. A condition to read, never to
-  # derive, like Art. 6(1)(b) and Art. 2(4). Two of the four limbs are RELIEF, and applying a relief
-  # wrongly clears a reader, which is the one error this tool must not make.
+  # Art. 111 is the TRANSITIONAL REGIME, and it is REPORTED, NEVER APPLIED — never by a rule,
+  # because every limb turns on the date the system or model was placed on the market, which no
+  # system card states. A condition to read, never to derive, like Art. 6(1)(b) and Art. 2(4).
+  # Every limb is RELIEF of one kind or another, and applying a relief wrongly clears a reader,
+  # which is the one error this tool must not make — so each is named and none is acted on.
+  #
+  # ComplianceReport.legacy_system_note carries three of the four, one limb each: 111(2) for the
+  # high-risk track, 111(3) for a general-purpose model, 111(4) for the Art. 50(2) marking duty.
+  # 111(1) is out of scope by subject rather than reported.
   111:
     1: >-
       Annex X large-scale IT system components placed before 2 August 2027 comply by 31 December
@@ -1531,7 +1539,8 @@ article_rulings:
       Legacy general-purpose AI models placed before 2 August 2025 comply by 2 August 2027 — a
       DEFERRAL of the Chapter V duties the AIA-GP-* rules carry, and the one date in this ruleset
       that runs later than the obligation it defers. Not gated on: whether a model was placed
-      before 2 August 2025 is not a fact the cascade asks.
+      before 2 August 2025 is not a fact the cascade asks, so nothing is withheld on it and the
+      limb is reported instead, by ComplianceReport._article_111_3_note.
     4: >-
       RELIEF at a shorter range: a synthetic-content generator placed before 2 August 2026 has until
       2 December 2026 for Art. 50(2) — LATER than the date AIA-TR-A50-2 carries. Reported in the
@@ -1760,21 +1769,37 @@ annex_rulings:
       RULE AIA-PO-A47-2 — Place and date of issue, the signatory's name and function, on whose
       behalf they signed, and a SIGNATURE. An unsigned declaration does not satisfy Art. 47.
 
-  # Annex VI is the internal-control conformity assessment route, cited by AIA-PO-A43-2. Its four
-  # points are the procedure itself, performed by the provider without a notified body.
+  # Annex VI is the internal-control conformity assessment route, and TWO RULES REACH IT because
+  # two paragraphs of Art. 43 do. Art. 43(2) makes it compulsory for Annex III points 2 to 8, which
+  # is AIA-PO-A43-2; Art. 43(1)(a) lets a point 1 provider that applied harmonised standards ELECT
+  # it, which is AIA-PO-A43-1. Naming only the first would rule the Annex covered by a rule gated
+  # away from biometrics, so a provider that elected this route would be told it took a route and
+  # never told what the route consists of. Its four points are the procedure itself, performed by
+  # the provider without a notified body.
   VI:
-    1: RULE AIA-PO-A43-2 — the procedure is points 2, 3 and 4. Definitional.
-    2: RULE AIA-PO-A43-2 — verify the Art. 17 quality management system, which AIA-PO-A17 checks.
-    3: RULE AIA-PO-A43-2 — examine the technical documentation against the Section 2 requirements.
+    1: >-
+      RULE AIA-PO-A43-2 AIA-PO-A43-1 — the procedure is points 2, 3 and 4. Definitional.
+    2: >-
+      RULE AIA-PO-A43-2 AIA-PO-A43-1 — verify the Art. 17 quality management system, which
+      AIA-PO-A17 checks.
+    3: >-
+      RULE AIA-PO-A43-2 AIA-PO-A43-1 — examine the technical documentation against the Section 2
+      requirements.
     4: >-
-      RULE AIA-PO-A43-2 — verify that design, development and Art. 72 post-market monitoring are
-      consistent with the technical documentation.
+      RULE AIA-PO-A43-2 AIA-PO-A43-1 — verify that design, development and Art. 72 post-market
+      monitoring are consistent with the technical documentation.
   # ANNEX VII is the notified-body conformity assessment route Art. 43(1) offers for Annex III
   # point 1, and AIA-PO-A43-1B is the rule for it. AIA-PO-A43-1 carries the CHOICE between the
   # two branches and names neither annex, so the branches are ruled where they are written:
-  # Annex VI under AIA-PO-A43-2 for the internal-control route, Annex VII here.
+  # Annex VI under AIA-PO-A43-2 and AIA-PO-A43-1, Annex VII here.
   #
-  # Neither rule is document_verifiable, so no judge reads either annex — what they do is tell a
+  # A SECOND ROUTE REACHES SIX OF THESE POINTS, and it is not an Annex III route at all. Art. 43(3)
+  # applies "points 3, 4.3, 4.4. and 4.5, the fifth paragraph of point 4.6 and point 5 of Annex
+  # VII" to an ANNEX I SECTION A provider, on top of that product's own sectoral assessment.
+  # AIA-PO-A43-1B is gated to biometrics and never fires for such a provider, so those points are
+  # ruled to AIA-PO-A43-3 as well and that rule states each of them.
+  #
+  # No rule here is document_verifiable, so no judge reads either annex — what they do is tell a
   # provider on each route what the route consists of. For Annex VII that is two applications, a
   # written declaration of exclusivity on each, two grants of access, and a duty to notify changes
   # that runs for as long as the certificate stands.
@@ -1787,27 +1812,34 @@ annex_rulings:
       3 and kept under surveillance under point 5; the technical documentation is examined under
       point 4.
     3: >-
-      RULE AIA-PO-A43-1B — QUALITY MANAGEMENT SYSTEM. 3.1 lists what the provider's application
-      must contain, points (a)-(f) — the systems covered, the technical documentation for each,
+      RULE AIA-PO-A43-1B AIA-PO-A43-3 — QUALITY MANAGEMENT SYSTEM. 3.1 lists what the provider's
+      application must contain, points (a)-(f) — the systems covered, the technical documentation for each,
       the Art. 17 documentation, the procedures keeping the system adequate, and a written
       declaration that the same application is with no other notified body. 3.3 has the provider
       CONTINUE to implement and maintain the approved system, and 3.4 has any intended change
       brought to the notified body.
     4: >-
-      RULE AIA-PO-A43-1B — CONTROL OF THE TECHNICAL DOCUMENTATION. 4.2's application must contain
-      the provider's name, a written declaration of exclusivity, and the Annex IV documentation;
+      RULE AIA-PO-A43-1B AIA-PO-A43-3 — CONTROL OF THE TECHNICAL DOCUMENTATION. 4.2's
+      application must contain the provider's name, a written declaration of exclusivity, and the Annex IV documentation;
       4.3 has the notified body granted FULL ACCESS to the training, validation and testing data
-      sets, through an API where appropriate; 4.5 adds access to the trained models and their
-      parameters where other means are exhausted; and 4.7 has the provider notify any change that
-      could affect compliance. The access duty is Art. 74(12) on the notified-body route.
+      sets, where relevant and limited to what is necessary, through an API where appropriate; 4.4
+      lets the body require further evidence or further tests, and carry out its own where it is
+      not satisfied with the provider's; 4.5 adds access to the training and trained models and
+      their parameters where other means are exhausted; the fifth paragraph of 4.6 requires
+      RE-TRAINING before a new application where the system fails the training-data requirement;
+      and 4.7 has the provider notify any change that could affect compliance. The access duty is
+      Art. 74(12) on the notified-body route. RULE AIA-PO-A43-3 carries 4.3, 4.4, 4.5 and the fifth
+      paragraph of 4.6 for the Annex I Section A route, which Art. 43(3) applies them to; 4.1, 4.2
+      and 4.7 it does not name, and they stay with AIA-PO-A43-1B alone.
     5: >-
-      RULE AIA-PO-A43-1B — SURVEILLANCE. 5.2 has the provider allow the notified body onto the
-      premises where design, development and testing happen and share all necessary information;
-      5.3 has the body audit periodically. A continuing duty for as long as the certificate
+      RULE AIA-PO-A43-1B AIA-PO-A43-3 — SURVEILLANCE. 5.2 has the provider allow the notified
+      body onto the premises where design, development and testing happen and share all necessary
+      information; 5.3 has the body audit periodically. A continuing duty for as long as the certificate
       stands.
 
   # ANNEX VIII IS THE CONTENT OF THE ART. 49 REGISTRATIONS, and Arts. 71(2) and (3) are what put it
-  # there: AIA-PO-A71-2 for the provider's Sections A and B, AIA-DP-A71-3 for the public-authority
+  # there: AIA-PO-A71-2 for the high-risk provider's Section A, AIA-NHR-A71-2 for the Section B a
+  # provider derogating under Art. 6(3) enters, AIA-DP-A71-3 for the public-authority
   # deployer's Section C. AIA-PO-A49, AIA-NHR-A06-4 and AIA-DP-A49-3 carry the duty to register at
   # all — their subject is Art. 49(1), 6(4) and 49(3), and the Annex they cite is III, the area
   # gate — so the split between registering and what is entered runs along the Article boundary.
@@ -1852,25 +1884,25 @@ annex_rulings:
     A/13: >-
       RULE AIA-PO-A71-2 — a URL for additional information, expressly OPTIONAL. Not a duty at all.
     B/1: >-
-      RULE AIA-PO-A71-2 — the provider's name, address and contact details.
+      RULE AIA-NHR-A71-2 — the provider's name, address and contact details.
     B/2: >-
-      RULE AIA-PO-A71-2 — details of a person submitting on the provider's behalf.
+      RULE AIA-NHR-A71-2 — details of a person submitting on the provider's behalf.
     B/3: >-
-      RULE AIA-PO-A71-2 — the authorised representative's details, where applicable.
+      RULE AIA-NHR-A71-2 — the authorised representative's details, where applicable.
     B/4: >-
-      RULE AIA-PO-A71-2 — trade name and identification reference.
+      RULE AIA-NHR-A71-2 — trade name and identification reference.
     B/5: >-
-      RULE AIA-PO-A71-2 — a description of the intended purpose.
+      RULE AIA-NHR-A71-2 — a description of the intended purpose.
     B/6: >-
-      RULE AIA-PO-A71-2 — WHICH Art. 6(3) condition the system relies on. The substance of the
+      RULE AIA-NHR-A71-2 — WHICH Art. 6(3) condition the system relies on. The substance of the
       not-high-risk claim, and what Art. 80(1) puts an authority onto.
     B/7: >-
-      RULE AIA-PO-A71-2 — a short summary of the grounds for the not-high-risk conclusion. The
+      RULE AIA-NHR-A71-2 — a short summary of the grounds for the not-high-risk conclusion. The
       Art. 6(4) assessment, written down; misstating it attracts the Art. 80(7) fine.
     B/8: >-
-      RULE AIA-PO-A71-2 — the system's status. Registry state.
+      RULE AIA-NHR-A71-2 — the system's status. Registry state.
     B/9: >-
-      RULE AIA-PO-A71-2 — the Member States where it has been placed on the market.
+      RULE AIA-NHR-A71-2 — the Member States where it has been placed on the market.
     C/1: >-
       RULE AIA-DP-A71-3 — the deployer's name, address and contact details.
     C/2: >-
@@ -1930,12 +1962,18 @@ annex_rulings:
       turns on, and the reason a model card that states its training compute answers two questions
       at once.
     2/1: >-
-      RULE AIA-GP-A53-1A — Section 2(1), for systemic-risk models: evaluation strategies and
-      results, including adversarial testing. The documentary form of the Art. 55(1)(a) duty, which
-      AIA-GP-A55-1A carries as an obligation in its own right.
+      RULE AIA-GP-A53-1A — Section 2(1), for systemic-risk models: a detailed description of the
+      EVALUATION STRATEGIES, including evaluation results, on public evaluation protocols and
+      tools or other methodologies, and including the evaluation criteria, the metrics and the
+      methodology for identifying limitations. The documentary form of the evaluation half of
+      Art. 55(1)(a), which AIA-GP-A55-1A carries as an obligation in its own right.
     2/2: >-
-      RULE AIA-GP-A53-1A — Section 2(2), measures to assess and mitigate systemic risks at Union
-      level. The documentary form of Art. 55(1)(b), carried as a duty by AIA-GP-A55-1B.
+      RULE AIA-GP-A53-1A — Section 2(2), where applicable: the measures put in place for INTERNAL
+      AND/OR EXTERNAL ADVERSARIAL TESTING, such as red teaming, and for model adaptations including
+      alignment and fine-tuning. The documentary form of the adversarial-testing half of
+      Art. 55(1)(a), NOT of Art. 55(1)(b) — Annex XI enacts no item for the Union-level risk
+      assessment and mitigation Art. 55(1)(b) requires, which is why AIA-GP-A55-1B points at no
+      Annex item and says so.
     2/3: >-
       RULE AIA-GP-A53-1A — Section 2(3), a detailed description of the system architecture and how
       software components integrate. Part of the same systemic-risk documentation.
@@ -1950,7 +1988,8 @@ annex_rulings:
   XIII:
     a: >-
       Number of parameters. One of the criteria the COMMISSION weighs under Art. 51(1)(b); not a
-      duty of anyone, and no node asks it — the systemic-risk line is unasked, recorded at Art. 51(1).
+      duty of anyone. The systemic_risk node asks what a document states about Art. 51(1); these
+      criteria are the Commission's own and no cascade answer turns on them.
     b: Quality or size of the data set, measured through tokens. A Commission criterion.
     c: Amount of computation used for training, in FLOP or proxies for it. A Commission criterion.
     d: Input and output modalities and state-of-the-art thresholds. A Commission criterion.

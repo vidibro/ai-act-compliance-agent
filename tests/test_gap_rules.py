@@ -16,7 +16,7 @@ from datetime import date
 import pytest
 
 from aiact.config import get_settings
-from aiact.gap.rules import select_rules
+from aiact.gap.rules import roles_with_rules, select_rules
 from aiact.policy_loader import load_policy_spec
 from aiact.schemas.classification import ClassificationEvidence, UseCaseClassification
 from aiact.schemas.enums import (
@@ -658,3 +658,34 @@ def test_a_timing_note_never_stands_in_for_a_date(spec):
         if rule.effective_date_note:
             resolved = rule.effective_date_for(HighRiskRoute.ANNEX_III)
             assert resolved is not None, f"{rule.rule_id} explains a date it does not have"
+
+
+def test_no_article_50_duty_reaches_a_general_purpose_model(spec):
+    """ART. 50 BINDS AI SYSTEMS, AND A MODEL IS NOT ONE.
+
+    Art. 50(2) says it in terms — "providers of AI systems, including general-purpose AI systems" —
+    and Art. 3(63) makes a general-purpose AI MODEL a distinct thing from the Art. 3(66) system
+    BUILT ON one. A model card describing a text generator answers the cascade's transparency
+    question easily, so nothing about the document stops the duty attaching; the tier has to.
+
+    THE TIER CANNOT DO IT THROUGH `applies_to_risk_class`. The Art. 50 rules name no risk class at
+    all — that is what makes them additive to every tier — so `_tier_or_duty_matches` returns on the
+    duty and never reaches the tier test. `select_rules` returning early for OUT_OF_SCOPE is the
+    only comparable guard, and GPAI_MODEL deliberately has no such return, because it owes
+    Chapter V.
+
+    Left unguarded, the failure is a manufactured GAP under Art. 50(2) in a report that says
+    nothing was judged — and a provider that spends its attention on a marking duty it does not
+    owe is not spending it on Art. 53(3).
+
+    DERIVED: every duty at once, over every role the spec carries rules for."""
+    model = a_use_case(risk_class=RiskClass.GPAI_MODEL)
+    for role in roles_with_rules(spec):
+        selected = select_rules(
+            spec, model, role, transparency_duties=list(TransparencyDuty)
+        ).all_rules
+        offending = [r.rule_id for r in selected if r.applies_to_transparency_duty]
+        assert not offending, (
+            f"{offending} attach an Art. 50 duty to a general-purpose AI MODEL for the "
+            f"{role.value} role. Art. 50 reaches providers and deployers of AI SYSTEMS."
+        )

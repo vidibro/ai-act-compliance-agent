@@ -283,12 +283,25 @@ class SystemicRisk(StrEnum):
 
     @property
     def carries_systemic_risk(self) -> bool | None:
-        """True where the document says so, False where it says the opposite, None where it is
-        silent. Three-valued deliberately — collapsing `NOT_STATED` into False is how a model that
-        never published its compute would be cleared of Art. 55."""
-        if self in (SystemicRisk.DESIGNATED, SystemicRisk.HIGH_IMPACT_CAPABILITIES):
-            return True
-        return False if self is SystemicRisk.BELOW_THRESHOLD else None
+        """True where the document establishes it, None where the document leaves it open.
+
+        NEVER FALSE, AND THAT IS THE WHOLE POINT. Art. 51(1) is a disjunction of two conditions and
+        neither is a fact a model card settles in the negative. Limb (a) is a substantive test —
+        high impact capabilities "evaluated on the basis of appropriate technical tools and
+        methodologies, including indicators and benchmarks" — and it says nothing about compute;
+        limb (b) is a Commission designation available at any compute at all. Art. 51(2) is a
+        PRESUMPTION running one way only: above 10^25 FLOP the model is presumed to have high
+        impact capabilities, and below it nothing is presumed either way.
+
+        So `BELOW_THRESHOLD` defeats the presumption on the stated figure and settles neither limb,
+        which makes it None alongside `NOT_STATED` rather than a third value. The two answers still
+        differ in what the reader is told — `_systemic_risk_note` words them apart — but neither
+        may be read as "this model does not carry systemic risk", because the only consumer of
+        that reading is the Art. 53(2) and Art. 54(6) carve-out, which is DISAPPLIED for a
+        systemic-risk model. A False here would clear the Annex XI documentation, the Annex XII
+        downstream information and all six Art. 54 duties on a self-reported FLOP count."""
+        established = (SystemicRisk.DESIGNATED, SystemicRisk.HIGH_IMPACT_CAPABILITIES)
+        return True if self in established else None
 
 
 class OpenSourceRelease(StrEnum):

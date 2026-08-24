@@ -77,10 +77,15 @@ def _systemic_risk_note(risk: SystemicRisk | None) -> str:
     if risk is SystemicRisk.BELOW_THRESHOLD:
         return (
             "The documentation states cumulative training compute BELOW 10^25 floating point "
-            "operations, so the Art. 51(2) presumption is not engaged on the stated figure. That "
-            "rules out one limb and not the other: Art. 51(1)(b) lets the Commission designate a "
-            "model on the Annex XIII criteria at any level of compute, and the Art. 52(6) list is "
-            "the authoritative answer. The Art. 55 obligations are still listed below."
+            "operations, so the Art. 51(2) presumption is not engaged on the stated figure. THAT "
+            "DEFEATS THE PRESUMPTION AND NOT THE CONDITION. Art. 51(2) runs one way only: above "
+            "the threshold high impact capabilities are presumed, below it nothing is presumed "
+            "either way, and Art. 51(1)(a) remains a substantive test of capabilities evaluated "
+            "on appropriate technical tools and methodologies, which says nothing about compute. "
+            "Art. 51(1)(b) then lets the Commission designate a model on the Annex XIII criteria "
+            "at any level of compute at all. So this figure does not establish that the model is "
+            "outside Art. 51(1); the Art. 52(6) list of models with systemic risk is where the "
+            "question is settled. The Art. 55 obligations are still listed below."
         )
     return (
         "The documentation states neither a Commission designation nor a cumulative training "
@@ -98,23 +103,32 @@ def _release_note(risk: SystemicRisk | None, release: OpenSourceRelease | None) 
     release lifts nothing while Art. 51 is answered yes or left open."""
     if release is None:
         return ""
-    disapplied = risk is not None and risk.carries_systemic_risk is not False
     if release is OpenSourceRelease.FULLY_OPEN:
-        if disapplied:
+        if risk is not None and risk.carries_systemic_risk:
             return (
                 "The release is described as meeting the Art. 53(2) open-source conditions, and "
-                "that carve-out is DISAPPLIED for a model with systemic risk — so on the answer "
-                "above it lifts nothing, and Art. 53(1)(a) and (b) and the whole of Art. 54 stand."
+                "both that carve-out and Art. 54(6) are DISAPPLIED for a general-purpose AI model "
+                "with systemic risk under Art. 51(1) — which the answer above establishes. So the "
+                "licence lifts nothing here: Art. 53(1)(a) and (b) and the whole of Art. 54 stand."
             )
+        # THE CARVE-OUT IS NEVER APPLIED, ONLY REPORTED AS AVAILABLE. Both Art. 53(2) and
+        # Art. 54(6) are disapplied for a model with systemic risk, and no document settles
+        # Art. 51(1) in the negative — `carries_systemic_risk` is True or None and never False.
+        # So the most this tool can say is that the licence half is answered and the Art. 51 half
+        # is not. Saying the obligations are lifted would clear the Annex XI documentation, the
+        # Annex XII downstream information and the whole of Art. 54 on a condition nobody checked.
         return (
             "The release is described as meeting all four Art. 53(2) conditions — a free and "
             "open-source licence allowing access, use, modification and distribution, with the "
-            "parameters, architecture information and usage information publicly available. On "
-            "that basis Art. 53(2) lifts Art. 53(1)(a) and (b), and Art. 54(6) lifts the whole of "
-            "Art. 54. Art. 53(1)(c) and (d) — the copyright policy and the public training-content "
-            "summary — are NOT lifted and are owed by every provider. The lifted obligations are "
-            "still listed below, because the carve-out is disapplied the moment the model is found "
-            "to carry systemic risk."
+            "parameters, architecture information and usage information publicly available. THAT "
+            "IS ONE HALF OF THE CARVE-OUT AND NOT THE WHOLE OF IT: both Art. 53(2) and Art. 54(6) "
+            "are disapplied for a general-purpose AI model with systemic risk, and the Art. 51 "
+            "answer above does not establish that this model is outside Art. 51(1). If it is, "
+            "Art. 53(2) lifts Art. 53(1)(a) and (b) and Art. 54(6) lifts the whole of Art. 54 — "
+            "and Art. 53(1)(c) and (d), the copyright policy and the public training-content "
+            "summary, are not lifted by either and are owed by every provider whatever its "
+            "licence. All of them are listed below, on that condition, because this report does "
+            "not decide it."
         )
     if release is OpenSourceRelease.NOT_OPEN:
         return (
@@ -286,10 +300,21 @@ class ComplianceReport(BaseModel):
         cleared, and this report would look like a pass. Naming it instead over-reports, which costs
         the reader a conversation with their adviser rather than a breach.
 
-        Two limbs, because the Article gives a legacy system two different reliefs and a reader told
-        about one would carry it across to the other. 111(2) is about Chapter III whole; 111(4) is
-        about Art. 50(2) alone, and it is the tighter deadline of the two."""
-        limbs = [self._article_111_2_note(), self._article_111_4_note()]
+        Three limbs, because the Article gives three different reliefs and a reader told about one
+        would carry it across to the others. 111(2) is about Chapter III whole; 111(3) is about
+        Chapter V and reaches a general-purpose model rather than a system; 111(4) is about
+        Art. 50(2) alone, and it is the tighter deadline of the three. 111(1) is not here: it is
+        about components of the Annex X large-scale IT systems, which this tool does not assess.
+
+        No limb fires for every report and 111(3) fires for the reports the others cannot reach —
+        `_article_111_2_note` returns None where no use case is high-risk, which is always true of
+        a model, so without this limb the one reader Art. 111(3) is written for got no note at
+        all."""
+        limbs = [
+            self._article_111_2_note(),
+            self._article_111_3_note(),
+            self._article_111_4_note(),
+        ]
         written = [limb for limb in limbs if limb]
         return " ".join(written) if written else None
 
@@ -325,6 +350,30 @@ class ComplianceReport(BaseModel):
             f"outside Chapter III. Whether the system is already on the market is not stated in "
             f"the documentation reviewed, so nothing here has been withheld on it — take advice "
             f"before relying on Art. 111(2)."
+        )
+
+    def _article_111_3_note(self) -> str | None:
+        """The Chapter V limb, and the only one that fires on a general-purpose AI MODEL.
+
+        The relief is a DEFERRAL rather than a carve-out: a model placed on the market before
+        2 August 2025 owes everything the AIA-GP-* rules carry and owes it by 2 August 2027. That
+        is the one date in this ruleset later than the obligation it defers, which is why it is
+        worth saying out loud — every Chapter V rule below carries `effective_date: 2025-08-02`,
+        and a provider reading that date against a model it shipped in 2024 would conclude it is
+        two years in breach."""
+        if not any(
+            uc.risk_class is RiskClass.GPAI_MODEL for uc in self.classification.use_cases
+        ):
+            return None
+        return (
+            "IF THIS MODEL WAS PLACED ON THE MARKET BEFORE 2 AUGUST 2025, the Chapter V dates "
+            "above are not the ones that bind it. Art. 111(3) gives the provider of such a model "
+            "until 2 AUGUST 2027 to take the necessary steps to comply with the obligations laid "
+            "down in this Regulation — a deferral of the duties listed below, not a release from "
+            "any of them. Every Chapter V obligation here carries 2 August 2025, the date "
+            "Art. 113(b) gives the Chapter, which is the date for a model placed on or after it. "
+            "When the model was placed on the market is not stated in the documentation reviewed, "
+            "so nothing here has been withheld on it — take advice before relying on Art. 111(3)."
         )
 
     def _article_111_4_note(self) -> str | None:

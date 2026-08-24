@@ -84,11 +84,11 @@ def test_shipped_spec_loads():
     # conformity must say, Art. 48(2) and (4) the digital marking and the notified body's number,
     # and Arts. 71(2) and (3) what each party enters in the EU database.
     #
-    # SIXTEEN ARE CHAPTER V, the general-purpose AI model regime, and they share nothing with the
+    # SEVENTEEN ARE CHAPTER V, the general-purpose AI model regime, and they share nothing with the
     # rest: `applies_to_risk_class: [gpai_model]` puts them on the other side of the cascade's
-    # Art. 3(63) question. Art. 52(1) notification, Art. 53(1)(a) to (d) and 53(4), Art. 54(1) to
-    # (5) split between the provider and its representative, and Art. 55(1)(a) to (d) and 55(2) for
-    # a model with systemic risk.
+    # Art. 3(63) question. Art. 52(1) notification, Art. 53(1)(a) to (d), 53(3) and 53(4),
+    # Art. 54(1) to (5) split between the provider and its representative, and Art. 55(1)(a) to (d)
+    # and 55(2) for a model with systemic risk.
     #
     # ONE pays annexes_awaiting_rules: Art. 43(1)'s Annex VII branch, which says what the
     # notified-body route consists of where AIA-PO-A43-1 carries only the choice between it and
@@ -99,7 +99,12 @@ def test_shipped_spec_loads():
     # each (the standing duty and what follows it), Art. 22 is two by PARTY — the provider appoints,
     # the representative performs — Art. 27 is three (carry the assessment out, keep it current,
     # file it), Art. 43 is four (three initial routes plus re-assessment), and Art. 49 is three.
-    assert len(spec.rules) == 79
+    #
+    # Art. 71(2) is TWO rules, one per tier, and they are the only pair split by nothing but the
+    # area gate: Art. 49(1) excepts Annex III point 2 from the EU database and Art. 49(2), which
+    # registers a system derogated under Art. 6(3), excepts nothing. One rule could not hold both
+    # lists without demanding an entry the Act registers nationally or withholding one it does not.
+    assert len(spec.rules) == 81
 
 
 # How many articles each fetched version holds. Per version, not one number, because the count is
