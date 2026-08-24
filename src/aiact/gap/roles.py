@@ -133,10 +133,10 @@ QUESTIONS: dict[str, Question] = {
 # modification', and Art. 16 is what the reallocation costs — the duty set the new provider takes
 # on whole.
 _QUESTION_CONTEXT: dict[str, Provisions] = {
-    NODE_ID: ((3, 16, 25), ()),
+    NODE_ID: (("3", "16", "25"), ()),
     # Art. 27 itself, and Art. 3 for the definition of 'deployer' at 3(4) — the question turns on
     # who uses the system under their own authority, not on who supplies it.
-    DEPLOYER_NODE_ID: ((3, 27), ()),
+    DEPLOYER_NODE_ID: (("3", "27"), ()),
 }
 
 # What the DESCRIPTION had to state, phrased for the person who has to go and write it — the same

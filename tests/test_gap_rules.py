@@ -525,7 +525,8 @@ def test_the_secure_section_covers_the_deployer_registration_too(spec):
 # law applies, here it decides WHEN.
 
 # Chapter III Sections 1, 2 and 3 = Arts. 6 to 27. Section 5 (Arts. 40-49) was NOT moved.
-_ROUTE_SPLIT_ARTICLES = set(range(6, 28))
+# Article ids are STRINGS everywhere — see LegalSource.article — so the range is spelled as one.
+_ROUTE_SPLIT_ARTICLES = {str(n) for n in range(6, 28)}
 _ANNEX_III_DATE = date(2027, 12, 2)
 _ANNEX_I_DATE = date(2028, 8, 2)
 _GENERAL_DATE = date(2026, 8, 2)
@@ -583,7 +584,7 @@ def test_an_unknown_route_resolves_to_the_earlier_date(spec):
 
 # Chapter III Section 5 — Arts. 40 to 49. Not moved by the Omnibus, so in force ahead of the
 # requirements it attests to.
-_SECTION_5_ARTICLES = set(range(40, 50))
+_SECTION_5_ARTICLES = {str(n) for n in range(40, 50)}
 
 
 def test_every_section_5_rule_explains_why_it_is_already_in_force(spec):

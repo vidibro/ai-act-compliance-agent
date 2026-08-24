@@ -75,26 +75,39 @@ def verify_integrity(path: Path, raw: str, front: dict[str, str], body: str) -> 
         )
 
 
-def _article_filename(article: int | str) -> str:
+def label(value: object) -> str:
+    """An article, paragraph or point id as the one type it has: a string.
+
+    YAML writes `article: 6` unquoted, so the loader receives integers whatever the schema says.
+    Converting here means the rest of the module can take `str` and mean it, rather than each
+    function calling `str()` again in case this one did not."""
+    return str(value)
+
+
+def article_filename(article: str) -> str:
     """`4` -> article-004.md, `4a` -> article-004a.md.
 
     An article id is a STRING. A consolidation inserts articles without renumbering the ones after
     them, so 4a, 60a and 75a-75d are all real ids, and `int()` of one resolves to the article BEFORE
     it — Art. 4a would be read as Art. 4, quietly, with no file missing.
+
+    Public because every caller that needs an article's path needs this rule. Spelling it as
+    `f"article-{n:03d}.md"` at the call site works until the id has a letter, and then it either
+    raises or resolves to the wrong article; both happened.
     """
-    match = re.fullmatch(r"(\d+)([a-z]*)", str(article))
+    match = re.fullmatch(r"(\d+)([a-z]*)", article)
     if match is None:
         raise ValueError(f"{article!r} is not an article id — expected forms like 6 or 75a.")
     return f"article-{int(match.group(1)):03d}{match.group(2)}.md"
 
 
-def _read_article(articles_dir: Path, article: int | str) -> tuple[str, dict[str, str]]:
+def _read_article(articles_dir: Path, article: str) -> tuple[str, dict[str, str]]:
     """Return (provision_text, front_matter) for one article file.
 
     provision_text is the article body with the "Article N" / title heading stripped — i.e. the
     enacted provisions only.
     """
-    path = articles_dir / _article_filename(article)
+    path = articles_dir / article_filename(article)
     if not path.is_file():
         raise FileNotFoundError(
             f"No article file for Article {article} at {path}. Run: "
@@ -113,7 +126,7 @@ def _read_article(articles_dir: Path, article: int | str) -> tuple[str, dict[str
     return provisions.strip("\n"), front
 
 
-def _extract_paragraph(provisions: str, paragraph: int | str, article: int | str) -> str:
+def _extract_paragraph(provisions: str, paragraph: str, article: str) -> str:
     """Pull one numbered paragraph's literal text out of an article body.
 
     Paragraphs are rendered by scripts/fetch_articles.py as a line starting `N. ` at column 0,
@@ -121,14 +134,13 @@ def _extract_paragraph(provisions: str, paragraph: int | str, article: int | str
 
     `paragraph` is compared as a STRING, so a rule may cite `1` or `1a` and get exactly that one.
     """
-    wanted = str(paragraph)
     starts = [(m.group(1), m.start(), m.end()) for m in _PARAGRAPH_START.finditer(provisions)]
     if not starts:
         raise ValueError(
             f"Article {article} has no numbered paragraphs, but a rule cites paragraph {paragraph}."
         )
     for i, (num, _start, end) in enumerate(starts):
-        if num != wanted:
+        if num != paragraph:
             continue
         stop = starts[i + 1][1] if i + 1 < len(starts) else len(provisions)
         # Text after the "N. " label, up to the next paragraph.
@@ -139,7 +151,7 @@ def _extract_paragraph(provisions: str, paragraph: int | str, article: int | str
     )
 
 
-def provision_labels(articles_dir: Path, article: int | str) -> tuple[str, ...]:
+def provision_labels(articles_dir: Path, article: str) -> tuple[str, ...]:
     """Every separately citable division of one article, in the order the Article writes them.
 
     THREE SHAPES, in the order the Act uses them. Numbered paragraphs where the article has them
@@ -173,7 +185,7 @@ def provision_labels(articles_dir: Path, article: int | str) -> tuple[str, ...]:
     return tuple(m.group("label") for m in labels if len(m.group("indent")) == top)
 
 
-def _extract_point(text: str, point: str, article: int) -> str:
+def _extract_point(text: str, point: str, article: str) -> str:
     """Pull one point's literal text out of an article body or paragraph.
 
     Needed because not every obligation is a whole paragraph. Article 16 is a chapeau followed by
@@ -224,8 +236,8 @@ def _extract_point(text: str, point: str, article: int) -> str:
 
 def resolve_requirement(
     articles_dir: Path,
-    article: int,
-    paragraph: int | None,
+    article: str,
+    paragraph: str | None,
     expected_version: str | None = None,
     point: str | None = None,
 ) -> tuple[str, str]:
@@ -349,8 +361,8 @@ def load_policy_spec(
             raise ValueError(f"Rule {rule.get('rule_id')!r} has no source.article to resolve.")
         text, url = resolve_requirement(
             art_dir,
-            article,
-            source.get("paragraph"),
+            label(article),
+            label(source["paragraph"]) if source.get("paragraph") is not None else None,
             expected_version=version_str,
             point=source.get("point"),
         )
@@ -383,8 +395,8 @@ def load_policy_spec(
         for cite in rule.get("qualified_by", []):
             text, _url = resolve_requirement(
                 art_dir,
-                cite["article"],
-                cite.get("paragraph"),
+                label(cite["article"]),
+                label(cite["paragraph"]) if cite.get("paragraph") is not None else None,
                 expected_version=version_str,
                 point=cite.get("point"),
             )

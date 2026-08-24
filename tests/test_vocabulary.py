@@ -96,7 +96,7 @@ def test_every_prohibited_practice_has_a_name_in_the_code():
     bans are its points, so 5(1a) and 5(1b) — which qualify two of them — are not themselves
     practices and must not be counted as missing ones."""
     _assert_covers(
-        points_within(ARTICLES_DIR, 5, "1"),
+        points_within(ARTICLES_DIR, "5", "1"),
         {p.point for p in ProhibitedPractice},
         PROHIBITED_NOT_MODELLED,
         "Art. 5(1)",
@@ -117,7 +117,7 @@ def test_every_art_50_paragraph_that_creates_a_duty_has_a_name_in_the_code():
     """Art. 50 cuts across the risk tiers in both directions, so a duty with no name is one no
     system can be found to owe — whatever tier it lands in."""
     _assert_covers(
-        article_divisions(ARTICLES_DIR, 50),
+        article_divisions(ARTICLES_DIR, "50"),
         {str(d.paragraph) for d in TransparencyDuty},
         TRANSPARENCY_NOT_A_DUTY,
         "Art. 50",
@@ -145,7 +145,7 @@ def test_every_art_2_paragraph_that_withholds_the_regulation_has_a_name_in_the_c
     not the dangerous direction, but it means telling someone they owe duties the legislator
     expressly withheld."""
     _assert_covers(
-        article_divisions(ARTICLES_DIR, 2),
+        article_divisions(ARTICLES_DIR, "2"),
         {str(e.paragraph) for e in ScopeExclusion},
         SCOPE_NOT_AN_EXCLUSION,
         "Art. 2",

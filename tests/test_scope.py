@@ -235,7 +235,7 @@ def test_every_exclusion_carries_a_paragraph():
     """No default in the mapping: a newly added exclusion must be given its paragraph deliberately,
     rather than inheriting a plausible wrong one."""
     for exclusion in ScopeExclusion:
-        assert isinstance(exclusion.paragraph, int)
+        assert isinstance(exclusion.paragraph, str)
 
 
 # --- evidence -------------------------------------------------------------------------------------
@@ -259,5 +259,5 @@ def test_the_citation_pinpoints_the_paragraph_not_just_the_article(exclusion):
     result = classify("x", brain(scope=exclusion, annex_iii=None, transparency=False), "uc")
     scope_evidence = [e for e in result.triggered_by if e.node_id == "scope"]
     assert scope_evidence, "the deciding answer must travel out as evidence"
-    assert scope_evidence[0].source.article == 2
+    assert scope_evidence[0].source.article == "2"
     assert scope_evidence[0].source.paragraph == exclusion.paragraph

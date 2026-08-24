@@ -138,7 +138,7 @@ def test_every_abstention_is_still_cited(stub_litellm):
     """Abstaining does not exempt an answer from the citation rule."""
     stub_litellm(None)
     answer = LLMBrain(model="stub/model").decide(a_question(), "a system")
-    assert answer.source.article == 6
+    assert answer.source.article == "6"
     assert answer.node_id == "profiling"
 
 

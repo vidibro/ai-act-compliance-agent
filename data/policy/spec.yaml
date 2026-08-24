@@ -497,6 +497,56 @@ rules:
       annex_i: 2028-08-02
     status: active
 
+  # THE ONLY PROVIDER DUTY IN CHAPTER III SECTION 4. Arts. 28 to 39 govern notifying authorities
+  # and notified bodies, and every other paragraph of them binds one of those two. Art. 36(8)(b) is
+  # the exception: inside a paragraph about when certificates stay valid, its second half turns and
+  # binds the provider holding the certificate, in writing and on a three-month clock.
+  - rule_id: AIA-PO-A36-8
+    source:
+      instrument: "Regulation (EU) 2024/1689"
+      article: 36
+      paragraph: 8 # the provider's written confirmation of a replacement notified body
+      act_version_date: 2026-07-27
+    applies_to_risk_class: [high_risk]
+    applies_to_role: [provider]
+    # NO ROUTE GATE. An Annex III provider reaches a notified body through Art. 43(1); an Annex I
+    # Section A provider reaches one through the sectoral act Art. 43(3) sends it to, and whether
+    # that body is designated under Arts. 29 to 39 or under the sectoral act is a question about
+    # the body, not about the system. Gating on route would drop the second case whenever the
+    # answer is this Regulation. The certificate condition is stated below instead.
+    activation_condition: >-
+      Three things must all hold before this duty exists, and none of them is a fact about the
+      system. The provider must hold a notified body certificate at all — so it took a third-party
+      assessment route rather than internal control under Annex VI. That body's designation must
+      then have been SUSPENDED OR RESTRICTED, which is the notifying authority's act under
+      Art. 36(4); a full withdrawal is Art. 36(9) instead, and puts nothing on the provider. And
+      the notifying authority must have determined, under point (b), that the body cannot go on
+      monitoring and remaining responsible for existing certificates. Only then does the clock
+      start. Nothing in a description of the system says whether any of it has happened, so the
+      obligation is listed with the condition attached rather than asserted of every provider or
+      dropped.
+    obligation_status: mandatory
+    check_type: presence
+    evidence_expected: >-
+      A written confirmation, sent to the national competent authorities of the Member State where
+      the provider has its registered place of business, WITHIN THREE MONTHS of the suspension or
+      restriction, that another qualified notified body is temporarily assuming the suspended
+      body's functions — monitoring and remaining responsible for the certificates for the period
+      of the suspension or restriction. The provider must therefore have found that replacement
+      body itself; the Article gives it no one. Missing the deadline is not a paperwork failure,
+      because the certificate's continued validity under 36(8) is what rests on it. A relational
+      obligation triggered by someone else's act, not visible in the technical documentation —
+      confirm separately.
+    document_verifiable: false
+    effective_date: 2025-08-02
+    effective_date_note: >-
+      Art. 113(b) applies Chapter III Section 4 from 2 August 2025, without any of the route splits
+      Art. 113(c) writes for Sections 1 to 3. So this duty has been live since before the
+      requirements the certificate attests to bind at all. That is what the dates say; it is the
+      same inversion recorded on AIA-PO-A43-4, and for the same reason — the amending Regulation
+      moved Sections 1 to 3 and left the rest where it was.
+    status: active
+
   # Art. 43 splits THREE WAYS and the split is by route and area, not by anything a single rule
   # could express. Until `applies_to_annex_iii_area` existed, the spec carried 43(2) alone with a
   # comment saying "employment is Annex III point 4", and fired it at biometrics and at Annex I
@@ -1020,6 +1070,57 @@ rules:
       national authority itself. A procedure naming only the national authority is the wrong
       addressee for a provider this Article reaches. Not visible in the technical documentation —
       confirm separately.
+    document_verifiable: false
+    effective_date: 2026-08-02
+    status: active
+
+  # NOT THE OFFICE'S POWER, THOUGH IT SITS INSIDE ONE. Art. 75c(3) opens with what the AI Office
+  # may order and then turns: "The operator concerned shall provide the AI Office with a
+  # description of the measures it has taken". Art. 75a(6) is ruled out on the ground that an order
+  # sets its own content and leaves nothing to check a file against — this is not that. The Act
+  # fixes the artefact (a description of measures taken) and its timing (upon implementation); the
+  # decision settles only which measures. Same shape as Art. 82(2): an authority's act creates the
+  # trigger, the Regulation writes the duty.
+  - rule_id: AIA-ALL-A75c-3
+    source:
+      instrument: "Regulation (EU) 2024/1689"
+      article: 75c
+      paragraph: 3 # the operator's description of the measures it has taken
+      act_version_date: 2026-07-27
+    applies_to_risk_class: [high_risk, not_high_risk, minimal]
+    applies_to_role: [provider, deployer]
+    # EVERY GOVERNED TIER, because Art. 75c(1) reaches non-compliance with "the relevant provisions
+    # of this Regulation" without naming one — an Art. 50 transparency breach by a minimal-risk
+    # generator built on its own provider's model is inside it.
+    #
+    # TWO ROLES, and the second is narrow: Art. 75(1) closes by applying the AI Office's exclusive
+    # competence to the providers of those systems, and to deployers ONLY where the deployer is
+    # also the provider or forms part of the same undertaking.
+    qualified_by:
+      - article: 75c
+        paragraph: 1
+    activation_condition: >-
+      The duty attaches only once the AI Office has adopted an Art. 75c(1) decision establishing
+      non-compliance against this operator, and only where that decision orders measures under
+      75c(3). The Office reaches an operator at all only through Art. 75(1): a system based on a
+      general-purpose AI model where the model and the system come from the same provider or from
+      providers in the same undertaking — excluding Annex I products, Annex III point 2 critical
+      infrastructure, systems provided by law enforcement, border management authorities and
+      financial institutions so far as Art. 74(6) catches them, and Annex III point 8 as regards
+      the administration of justice — or a system that constitutes or is integrated into a very
+      large online platform or search engine designated under Regulation (EU) 2022/2065. None of
+      that is derivable from a description of the system, so the obligation is listed with the
+      condition attached rather than asserted of every operator or dropped.
+    obligation_status: mandatory
+    check_type: presence
+    evidence_expected: >-
+      A description of the measures actually taken, provided to the AI Office UPON THEIR
+      IMPLEMENTATION. Distinct from the information the decision itself requires under the first
+      sentence, which is what the operator INTENDS to do: that one is forward-looking and ordered,
+      this one is a report back and is owed by the Regulation. An operator that carries out the
+      ordered measures and says nothing has complied with the decision and breached this paragraph.
+      A relational enforcement obligation, not visible in the technical documentation — confirm
+      separately.
     document_verifiable: false
     effective_date: 2026-08-02
     status: active

@@ -121,7 +121,7 @@ from typing import Any
 from langgraph.graph import END, START, StateGraph
 from pydantic import BaseModel
 
-from aiact.anchoring import anchor_questions
+from aiact.anchoring import Provisions, anchor_questions
 from aiact.brain import Brain
 from aiact.config import get_settings
 from aiact.schemas.classification import (
@@ -458,20 +458,33 @@ QUESTIONS: dict[str, Question] = {
         "reminders "
         "rather than the candidate or their application (e.g. scheduling interview slots) — even "
         "though it plainly operates in that setting. This list is a reading of the Annex and not "
-        "a quotation: points 1 and 3 to 8 enact NO exclusion, so where an example here and the "
-        "listed "
+        "a quotation. The exclusions the Annex itself enacts are the four in (iii) and there is no "
+        "fifth to infer, so where an example here and the listed "
         "function disagree, the listed function wins. Anything that SETS or adjusts pay, bonus, "
         "grade or benefits is a decision affecting the terms of a work-related relationship under "
         "Annex III(4)(b) and stays IN, whatever the surrounding system is called.\n"
-        "(iii) ONE exclusion IS decided here, because the Annex writes it into the area itself "
-        "rather than derogating from it: point 1(a) does not cover biometric VERIFICATION whose "
-        "SOLE purpose is confirming that a person is who they claim to be — one face, fingerprint "
-        "or voice matched against that same person's enrolled template, as when a device is "
-        "unlocked or a ticket is checked against its own holder. Searching a person against a "
-        "gallery of many is remote IDENTIFICATION and stays in scope. 'Sole' is strict: a system "
-        "that also searches for unknown people, categorises them, or infers anything about them "
-        "keeps the area. And the exclusion is from point 1 only — a verification system used for a "
-        "function listed under another point is in scope under that point.\n"
+        "(iii) FOUR exclusions ARE decided here, because the Annex writes each one into the area "
+        "itself rather than derogating from it. These four are the whole of what points 1 and 3 to "
+        "8 exclude; every one of them is above in the supplied text, and there is no fifth.\n"
+        "  - Point 1(a) does not cover biometric VERIFICATION the sole purpose of which is to "
+        "confirm that a specific natural person is the person he or she claims to be — one face, "
+        "fingerprint or voice matched against that same person's enrolled template, as when a "
+        "device is unlocked or a ticket is checked against its own holder. Searching a person "
+        "against a gallery of many is remote IDENTIFICATION and stays in scope. 'Sole' is strict: "
+        "a system that also searches for unknown people, categorises them, or infers anything "
+        "about them keeps the area.\n"
+        "  - Point 5(b) covers evaluating CREDITWORTHINESS or establishing a credit score, WITH "
+        "THE EXCEPTION of systems used for the purpose of DETECTING FINANCIAL FRAUD. A fraud "
+        "detector is outside point 5 even though it scores natural persons.\n"
+        "  - Point 7(d) covers detecting, recognising or identifying natural persons in migration, "
+        "asylum or border control, WITH THE EXCEPTION of the VERIFICATION OF TRAVEL DOCUMENTS. "
+        "Checking a document is excepted; identifying the person carrying it is not.\n"
+        "  - Point 8(b) covers influencing the outcome of an election or referendum or voting "
+        "behaviour, but DOES NOT INCLUDE AI systems to the output of which natural persons are "
+        "not DIRECTLY EXPOSED — the Annex's own example is tools used to organise, optimise or "
+        "structure political campaigns from an administrative or logistical point of view.\n"
+        "Each exception belongs to its own point only: a system excepted under one point is still "
+        "in scope under any other point whose listed function it serves.\n"
         "(iv) Points 1, 6 and 7 open with 'in so far as their use is permitted under relevant "
         "Union or national law'. Do NOT treat that as a test to apply here. Whether a Member State "
         "permits the use is a question for that State's law, not for this description, and a use "
@@ -607,24 +620,25 @@ QUESTIONS: dict[str, Question] = {
 # never from a model's memory of the law. Annex III in particular IS the list of high-risk areas —
 # asking "which Annex III area is this?" without supplying Annex III is exactly the unanchored
 # guessing this project exists to avoid.
-_QUESTION_CONTEXT: dict[str, tuple[tuple[int, ...], tuple[str, ...]]] = {
-    "is_ai": ((3,), ()),  # Art. 3 — the 'AI system' definition
+_QUESTION_CONTEXT: dict[str, Provisions] = {
+    "is_ai": (("3",), ()),  # Art. 3 — the 'AI system' definition
     # Art. 3 too: the exclusions lean on defined terms the Article does not restate — 'placing on
     # the market' (3(9)-(10)) for 2(8), 'deployer' (3(4)) for 2(10), and 'testing in real-world
     # conditions' (3(57)), which is what stops 2(8) covering a live pilot.
-    "territorial": ((2,), ()),  # Art. 2(1) — the positive limb
-    "scope": ((2, 3), ()),
-    "gpai_model": ((3, 51, 53), ()),  # Art. 3(63) definition + the Chapter V regime it hands to
-    "prohibited": ((5,), ()),  # Art. 5 — the prohibited practices
-    "annex_i": ((6,), ("I",)),  # Art. 6(1) + the Annex I legislation list itself
+    "territorial": (("2",), ()),  # Art. 2(1) — the positive limb
+    "scope": (("2", "3"), ()),
+    # Art. 3(63) definition + the Chapter V regime it hands to
+    "gpai_model": (("3", "51", "53"), ()),
+    "prohibited": (("5",), ()),  # Art. 5 — the prohibited practices
+    "annex_i": (("6",), ("I",)),  # Art. 6(1) + the Annex I legislation list itself
     # Art. 2 as well: 2(2) is what makes the Section A/B split matter, and the model is
     # judging which instrument covers the product.
-    "third_party_assessment": ((2, 6), ("I",)),
-    "annex_iii": ((6,), ("III",)),  # Art. 6(2) + the Annex III area list itself
-    "profiling": ((6,), ()),  # Art. 6(3) — the carve-back
-    "derogation": ((6,), ()),  # Art. 6(3)(a)-(d)
-    "significant_risk": ((6,), ()),  # Art. 6(3) first subparagraph
-    "transparency": ((50,), ()),  # Art. 50
+    "third_party_assessment": (("2", "6"), ("I",)),
+    "annex_iii": (("6",), ("III",)),  # Art. 6(2) + the Annex III area list itself
+    "profiling": (("6",), ()),  # Art. 6(3) — the carve-back
+    "derogation": (("6",), ()),  # Art. 6(3)(a)-(d)
+    "significant_risk": (("6",), ()),  # Art. 6(3) first subparagraph
+    "transparency": (("50",), ()),  # Art. 50
 }
 
 # THE DEFINED TERMS EACH QUESTION TURNS ON — Article 3 points, supplied beside the provisions above.
@@ -1101,7 +1115,7 @@ def _decide_tier(state: GraphState) -> tuple[RiskClass, str, list[Classification
             )
         pinpointed = ClassificationEvidence.from_answer(state.prohibited)
         pinpointed = pinpointed.model_copy(
-            update={"source": pinpointed.source.model_copy(update={"paragraph": 1})}
+            update={"source": pinpointed.source.model_copy(update={"paragraph": "1"})}
         )
         return (
             RiskClass.PROHIBITED,

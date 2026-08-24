@@ -28,12 +28,16 @@ class LegalSource(BaseModel):
     that no assessment can exist without pointing at the article it rests on."""
 
     instrument: str  # "Regulation (EU) 2024/1689"
-    article: int | str | None = None
-    paragraph: int | str | None = None
-    """AN ARTICLE OR PARAGRAPH LABEL IS A STRING. A consolidation inserts provisions without
-    renumbering the ones after them, so Art. 4a, Art. 75a-75d and Art. 6(1a)-(1c) are all real
-    addresses, and `int()` of one silently resolves to the provision BEFORE it. Typed to accept
-    both and normalised below, so `6` and `"6"` are one value and `"1a"` is available at all."""
+    article: str | None = None
+    paragraph: str | None = None
+    """AN ARTICLE OR PARAGRAPH LABEL IS A STRING, always, including when it looks like a number.
+
+    A consolidation inserts provisions without renumbering the ones after them, so Art. 4a,
+    Art. 75a-75d and Art. 6(1a)-(1c) are all real addresses, and `int()` of one silently resolves
+    to the provision BEFORE it. Half the addresses being integers is what makes that mistake
+    available: `f"article-{n:03d}.md"` reads correctly, works for 113 of 119 articles, and then
+    raises or resolves wrong. One type for every label removes the case that has to be remembered,
+    so `6` written in a spec is normalised to `"6"` below rather than accepted as a second form."""
 
     point: str | None = None  # "a", "b", ...
     annex: str | None = None  # "III", "IV"
@@ -45,13 +49,12 @@ class LegalSource(BaseModel):
     @field_validator("article", "paragraph", mode="before")
     @classmethod
     def _one_form_per_label(cls, value: object) -> object:
-        """`"6"` becomes `6`, `"1a"` stays `"1a"`.
+        """`6` becomes `"6"`; `"1a"` stays `"1a"`.
 
         Two spellings of one address would compare unequal, and the route and section tests that
-        group rules by article number do compare them."""
-        if isinstance(value, str) and value.isdigit():
-            return int(value)
-        return value
+        group rules by article do compare them. YAML writes `article: 6` unquoted, so the integer
+        arrives here whatever the field says; this is where it stops being one."""
+        return str(value) if isinstance(value, int) else value
 
 
 class GuidanceSource(BaseModel):
@@ -221,9 +224,10 @@ class PolicyRule(BaseModel):
     finding this rule produces — so a verdict that leaned on Commission interpretation says so
     rather than presenting itself as resting on the Article alone."""
 
-    qualified_by: list[dict[str, int | str]] = []
+    qualified_by: list[dict[str, str]] = []
     """OTHER provisions that condition this one, each `{article, paragraph}` — the only place a rule
-    names enacted text besides `source` and `source.annex`.
+    names enacted text besides `source` and `source.annex`. The labels are strings, as in
+    `LegalSource`, so an address written here compares equal to the same address written there.
 
     A duty and its qualifier are often written apart. Art. 50(1) says a chatbot must disclose that
     it is one; Art. 50(5) says the disclosure must be clear, distinguishable and given at the latest
@@ -293,6 +297,21 @@ class PolicyRule(BaseModel):
 
     Distinct from `activation_condition`, which narrows WHO owes a duty; this qualifies WHEN. Both
     are reported beside the obligation and neither withholds it."""
+
+    @field_validator("qualified_by", mode="before")
+    @classmethod
+    def _qualifier_labels_are_strings(cls, value: object) -> object:
+        """`{article: 50, paragraph: 5}` becomes `{"article": "50", "paragraph": "5"}`.
+
+        The same normalisation `LegalSource` runs on its own labels, and needed for the same
+        reason: `test_every_provision_a_rule_is_qualified_by_reaches_that_rule` matches these
+        addresses against ledger keys and rule sources, and `50 != "50"`."""
+        if not isinstance(value, list):
+            return value
+        return [
+            {k: str(v) for k, v in cite.items()} if isinstance(cite, dict) else cite
+            for cite in value
+        ]
 
     @model_validator(mode="after")
     def _one_way_of_saying_when(self) -> PolicyRule:

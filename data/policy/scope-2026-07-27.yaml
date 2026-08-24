@@ -147,7 +147,7 @@ article_rulings:
     20: "'conformity assessment'. Feeds Art. 43, cited at 43(1)-(3)."
     21: "'conformity assessment body'. Section 4 actor, out of scope."
     22: "'notified body'. Section 4 actor, out of scope."
-    23: "'substantial modification'. Feeds Art. 25(1)(b) and Art. 43(4); the second awaits a rule."
+    23: "'substantial modification'. Feeds Art. 25(1)(b) and Art. 43(4), cited by AIA-PO-A43-4."
     24: "'CE marking'. Feeds Art. 48, cited at 48(3)."
     25: "'post-market monitoring system'. Feeds Art. 72, cited at 72(1)."
     26: "'market surveillance authority'. An authority this tool reports duties toward, never for."
@@ -178,7 +178,7 @@ article_rulings:
     46: "'law enforcement'. Feeds Annex III(6) and the Art. 50 carve-outs."
     47: "'AI Office'. An EU body; its powers are Arts. 75a-75d, out of scope."
     48: "'national competent authority'. An authority this tool reports duties toward."
-    49: "'serious incident'. Feeds Art. 73, whose deadlines await a rule."
+    49: "'serious incident'. Feeds Art. 73, cited whole by AIA-PO-A73."
     50: "'personal data'. Borrowed from Regulation (EU) 2016/679."
     51: >-
       'non-personal data'. Defined by exclusion from 'personal data' in Regulation (EU) 2016/679,
@@ -197,7 +197,7 @@ article_rulings:
     58: "'subject' of testing. Feeds Arts. 60-61, out of scope."
     59: "'informed consent'. Feeds Art. 61, out of scope."
     60: CASCADE transparency — 'deep fake', the trigger for the Art. 50(4) disclosure.
-    61: "'widespread infringement'. Feeds Art. 73(3), which awaits a rule."
+    61: "'widespread infringement'. Feeds Art. 73(3), inside the Art. 73 AIA-PO-A73 cites whole."
     62: >-
       'critical infrastructure'. A bare cross-reference to Article 2, point (4), of Directive (EU)
       2022/2557, which this corpus does not hold. Feeds Annex III(2), an area this ruleset gates on,
@@ -304,8 +304,8 @@ article_rulings:
     1: >-
       Chapeau to Chapter III Section 2: high-risk systems shall comply with Arts. 9-15. Already
       modelled rule-by-rule as AIA-HR-A09..A15; a rule here would double-count every finding.
-      That reasoning covers this paragraph and NOT 8(2), which is a duty of its own — see
-      articles_awaiting_rules.
+      That reasoning covers this paragraph and NOT 8(2), which is a duty of its own and carries
+      its own rule, AIA-PO-A08-2.
   # --- Chapter III Section 2 — the requirements themselves ------------------------------------
   # Arts. 9-15 are each cited WHOLE by one rule, so every paragraph below is inside the requirement
   # text the judge reads. "RULE <id>" records that, per paragraph, rather than leaving the article's
@@ -541,9 +541,16 @@ article_rulings:
     6: The authority ensures another body takes over the affected files. Institutional.
     7: What the authority must do on restriction, suspension or withdrawal. Institutional.
     8: >-
-      Certificates remain valid for three months after a suspension or restriction in the stated
-      circumstances. A fact about the certificate, not a duty of the provider holding it.
-    9: Certificate validity following a withdrawal. Same shape as 36(8).
+      RULE AIA-PO-A36-8 — where a designation is suspended or restricted, point (b) puts a duty on
+      THE PROVIDER: if the notifying authority determines the body cannot support existing
+      certificates, the provider confirms in writing to its national competent authority, within
+      three months, that another qualified body is temporarily assuming the functions. The
+      surrounding paragraph is about certificate validity; the second half of (b) is a provider
+      obligation with a form and a deadline, and it is the only one in Art. 36.
+    9: >-
+      Certificate validity for nine months following a withdrawal. Every confirmation this
+      paragraph requires is made by the national competent authority or by another notified body;
+      unlike 36(8)(b) it puts nothing on the provider.
   37:
     1: The Commission investigates doubts about a notified body's competence. Institutional.
     2: The notifying authority supplies information to that investigation. Institutional.
@@ -1012,8 +1019,9 @@ article_rulings:
   #   the authority's own procedure, which binds nobody this tool reports for;
   #   an operator duty ALREADY MODELLED at its standing source (Arts. 20, 21, 72, 73), restated here
   #     at the enforcement stage — recorded once, at the source, never twice;
-  #   an operator duty that is genuinely new here, of which there is exactly one: Art. 75(1a), which
-  #     redirects serious-incident reporting to the AI Office. Declared in articles_awaiting_rules.
+  #   an operator duty that is genuinely new here, and this chapter carries several. Each is written
+  #     out as its own rule at the paragraph it comes from: Art. 74(12), Art. 75(1a), Art. 75c(3),
+  #     Art. 79(2) and (4), Art. 82(2). The count is not fixed by this header — read the rulings.
   74:
     1: >-
       Regulation (EU) 2019/1020 applies to AI systems, with every Art. 2(1) operator read as an
@@ -1036,10 +1044,10 @@ article_rulings:
     10: Member States facilitate coordination between authorities. Institutional.
     11: Authorities and the Commission may propose joint activities and investigations. The authority's power.
     12: >-
-      PROVIDERS SHALL GRANT FULL ACCESS to documentation and to the training, validation and testing
-      data sets, through APIs or other technical means where appropriate. A real provider duty, and
-      the market-surveillance face of Art. 21, which puts the same access on the provider as a
-      standing obligation. Recorded once: the gap is declared at Art. 21(2), not again here.
+      RULE AIA-PO-A74-12 — PROVIDERS SHALL GRANT FULL ACCESS to documentation and to the training,
+      validation and testing data sets, through APIs or other technical means where appropriate.
+      Not Art. 21 restated: Art. 21(1) is information demonstrating conformity and 21(2) is the
+      Art. 12(1) logs, and neither reaches the data sets or names the access modality.
     13: >-
       Source code access on a reasoned request, and only where both (a) it is necessary to assess
       Chapter III Section 2 conformity and (b) testing on the data and documentation is exhausted or
@@ -1103,7 +1111,13 @@ article_rulings:
   75c:
     1: NEW in this version. The AI Office adopts a non-compliance decision. The Office's decision.
     2: Preliminary findings communicated to the operator before the decision. A procedural right of the operator.
-    3: The decision may order the necessary measures within a specified period. The Office's power.
+    3: >-
+      RULE AIA-ALL-A75c-3 — the first sentence is the Office's power to order measures within a
+      specified period. The second is the operator's own duty: it shall provide the AI Office with
+      a description of the measures it has taken, upon their implementation. Not the shape of
+      75a(6), where the order sets the content and there is nothing to check a file against — here
+      the Act fixes both the artefact and its timing, and the order settles only what the measures
+      are.
     4: >-
       Fines under Art. 99(3)-(7) applied mutatis mutandis, and what attracts them, points (a)-(c). A
       consequence of breach, not an obligation — the ground on which Art. 99 is excluded. This tool
@@ -1840,11 +1854,11 @@ annexes_awaiting_rules:
   #
   # ONE RULE DOES CITE THIS ANNEX: AIA-ALL-A49-4, for Art. 49(4) — which names Annex VIII three
   # times, by Section and by point range. The loader injects the Annex into that rule's
-  # annex_context and the judge prompt carries it, so the items 49(4) enumerates (A/1-A/5, A/7,
-  # A/10; B/1-B/5, B/8, B/9; C/1-C/3) ARE shown to a judge. But only for the systems Art. 49(4)
-  # reaches: Annex III points 1, 6 and 7 in law enforcement, migration, asylum and border control.
-  # For every other high-risk system — the ordinary case — no judge sees this Annex, and the seven
-  # items outside 49(4)'s list are never shown at all.
+  # annex_context, but AIA-ALL-A49-4 is document_verifiable: false, so it never becomes a judging
+  # job and the prompt is never built. NO JUDGE SEES ANY OF THE 27 ITEMS. The same holds for every
+  # other annex-citing rule except AIA-HR-A11: AIA-PO-A43-2 (Annex VI), AIA-PO-A49 and
+  # AIA-DP-A49-3 (Annex III) are all non-verifiable too, so annex_context reaches a prompt for
+  # Annex IV alone.
   #
   # Emptied by a rule for Art. 71(2)-(3) — entering the Annex VIII data into the EU database —
   # which is already declared in articles_awaiting_rules. That is where the duty is written as a
@@ -1854,7 +1868,7 @@ annexes_awaiting_rules:
     A/2: details of a person submitting on the provider's behalf. Registry identification.
     A/3: >-
       the authorised representative's details where applicable. The appointment
-      itself is Art. 22, declared at 22(1) in articles_awaiting_rules.
+      itself is Art. 22, cited at 22(1) by AIA-PO-A22.
     A/4: trade name and any reference allowing identification and traceability.
     A/5: the intended purpose, components and functions. Also Annex IV(1)(a).
     A/6: a concise description of the data, inputs and operating logic.
@@ -1889,7 +1903,7 @@ annexes_awaiting_rules:
     C/4: >-
       a summary of the Art. 27 FUNDAMENTAL RIGHTS IMPACT ASSESSMENT findings.
       The assessment is checked by AIA-DP-A27; this item is where its summary must be lodged, and
-      Art. 27(3) — notifying the authority — is declared in articles_awaiting_rules.
+      Art. 27(3) — notifying the authority — is cited by AIA-DP-A27-3.
     C/5: >-
       a summary of the data protection impact assessment under Art. 35 GDPR or
       Art. 27 of Directive (EU) 2016/680, as Art. 26(9) specifies. Settled by data protection law

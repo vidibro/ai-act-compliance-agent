@@ -20,6 +20,7 @@ from aiact.config import get_settings
 from aiact.gap import roles as role_questions
 from aiact.policy_loader import (
     _PARAGRAPH_START,
+    article_filename,
     load_policy_spec,
     resolve_requirement,
 )
@@ -72,14 +73,16 @@ def test_shipped_spec_loads():
     # point that cross-references nothing. Plus 4 Art. 50 transparency rules, the only ones that
     # gate on a duty instead of a tier; Art. 75(1a), which redirects the Art. 73 report to the AI
     # Office; Art. 74(12) full access to the data sets; and Arts. 79 and 82, the two rules binding
-    # five roles at once.
+    # five roles at once. Two more come from paragraphs whose surroundings bind someone else:
+    # Art. 36(8), the one provider duty in Chapter III Section 4, and Art. 75c(3), whose second
+    # sentence turns from the AI Office's power to the operator's report back.
     #
     # Several Articles are more than one rule because they hold more than one duty, and a single
     # rule would let a finding on the first hide a breach of the second: Art. 20, 21 and 47 are two
     # each (the standing duty and what follows it), Art. 22 is two by PARTY — the provider appoints,
     # the representative performs — Art. 27 is three (carry the assessment out, keep it current,
     # file it), Art. 43 is four (three initial routes plus re-assessment), and Art. 49 is three.
-    assert len(spec.rules) == 52
+    assert len(spec.rules) == 54
 
 
 # How many articles each fetched version holds. Per version, not one number, because the count is
@@ -175,10 +178,11 @@ def test_every_article_is_classified_in_scope_or_out(version):
     assert str(ledger["act_version_date"]) == version
 
     # str, not int: a consolidation inserts LETTERED articles (4a, 60a, 75a-75d), and int() both
-    # crashes on them and would collapse 4a onto 4.
+    # crashes on them and would collapse 4a onto 4. A rule's own label is already a string; the
+    # ledger's keys come from YAML and are not.
     in_store = {p.stem.removeprefix("article-").lstrip("0") for p in
                 (ARTICLES_ROOT / version).glob("article-*.md")}
-    cited = {str(r.source.article) for r in spec.rules}
+    cited = {r.source.article for r in spec.rules}
     entries = {str(k): v for k, v in ledger["article_rulings"].items()}
     whole = {k for k, v in entries.items() if isinstance(v, str)}
     by_division = {k for k, v in entries.items() if isinstance(v, dict)}
@@ -260,7 +264,7 @@ def test_every_requirement_is_literal_article_text():
     article files. This is the guarantee against paraphrase creeping back in."""
     spec = _spec()
     for r in spec.rules:
-        article_file = ARTICLES_DIR / f"article-{r.source.article:03d}.md"
+        article_file = ARTICLES_DIR / article_filename(r.source.article)
         body = re.sub(r"\s+", " ", article_file.read_text(encoding="utf-8"))
         req = re.sub(r"\s+", " ", r.requirement).strip()
         assert req, f"{r.rule_id} resolved to empty requirement"
@@ -287,8 +291,8 @@ def test_loader_rejects_hand_written_requirement(tmp_path):
 
 def test_resolve_paragraph_vs_whole_article():
     """A citation with a paragraph resolves to that paragraph; without one, to the whole article."""
-    whole, _ = resolve_requirement(ARTICLES_DIR, 43, None)
-    para2, _ = resolve_requirement(ARTICLES_DIR, 43, 2)
+    whole, _ = resolve_requirement(ARTICLES_DIR, "43", None)
+    para2, _ = resolve_requirement(ARTICLES_DIR, "43", "2")
     assert para2.startswith("For high-risk AI systems referred to in points 2 to 8 of Annex III")
     assert para2 in re.sub(r"\s+", " ", whole) or para2 in whole
     assert len(para2) < len(whole)
@@ -297,8 +301,8 @@ def test_resolve_paragraph_vs_whole_article():
 def test_resolve_point_of_an_article_without_paragraphs():
     """Art. 16 is a chapeau plus points (a)-(l) and has no numbered paragraphs, so a rule that
     wants one duty out of it has to cite the point. Citing the article resolves to all twelve."""
-    point_b, _ = resolve_requirement(ARTICLES_DIR, 16, None, point="b")
-    whole, _ = resolve_requirement(ARTICLES_DIR, 16, None)
+    point_b, _ = resolve_requirement(ARTICLES_DIR, "16", None, point="b")
+    whole, _ = resolve_requirement(ARTICLES_DIR, "16", None)
     assert point_b.startswith("(b) indicate on the high-risk AI system")
     assert point_b.endswith("the address at which they can be contacted;")
     assert point_b in whole
@@ -306,8 +310,8 @@ def test_resolve_point_of_an_article_without_paragraphs():
 
 
 def test_resolve_point_within_a_paragraph():
-    para, _ = resolve_requirement(ARTICLES_DIR, 9, 2)
-    point_a, _ = resolve_requirement(ARTICLES_DIR, 9, 2, point="a")
+    para, _ = resolve_requirement(ARTICLES_DIR, "9", "2")
+    point_a, _ = resolve_requirement(ARTICLES_DIR, "9", "2", point="a")
     assert point_a in para
     assert len(point_a) < len(para)
 
@@ -316,29 +320,29 @@ def test_resolve_ambiguous_point_raises():
     """Art. 9 has an (a) under paragraph 2 and another under paragraph 5. Resolving to the first
     would cite one duty and quote another, which is the failure this whole loader exists to stop."""
     with pytest.raises(ValueError, match=r"2 points labelled \(a\)"):
-        resolve_requirement(ARTICLES_DIR, 9, None, point="a")
+        resolve_requirement(ARTICLES_DIR, "9", None, point="a")
 
 
 def test_resolve_unknown_point_raises():
     with pytest.raises(ValueError, match=r"no point \(z\)"):
-        resolve_requirement(ARTICLES_DIR, 16, None, point="z")
+        resolve_requirement(ARTICLES_DIR, "16", None, point="z")
 
 
 def test_resolve_unknown_paragraph_raises():
     with pytest.raises(ValueError, match="no paragraph 99"):
-        resolve_requirement(ARTICLES_DIR, 9, 99)
+        resolve_requirement(ARTICLES_DIR, "9", "99")
 
 
 def test_resolve_missing_article_raises(tmp_path):
     with pytest.raises(FileNotFoundError, match="No article file"):
-        resolve_requirement(tmp_path, 9, None)
+        resolve_requirement(tmp_path, "9", None)
 
 
 def test_resolve_rejects_version_mismatch():
     """Closes the silent-drift hole: resolving a rule against an article fetched for a DIFFERENT
     act version would swap the requirement's meaning while the spec still claims the old pin."""
     with pytest.raises(ValueError, match="Refusing to resolve requirement text across versions"):
-        resolve_requirement(ARTICLES_DIR, 9, None, expected_version="2026-08-02")
+        resolve_requirement(ARTICLES_DIR, "9", None, expected_version="2026-08-02")
 
 
 def test_load_rejects_spec_with_no_article_store(tmp_path):

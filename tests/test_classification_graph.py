@@ -8,6 +8,7 @@ sub-answers; the graph must route them to that case's expected risk class. The h
 
 from __future__ import annotations
 
+import collections
 import re
 from datetime import date
 from pathlib import Path
@@ -98,7 +99,7 @@ def test_the_flip_flips_through_the_graph(cases):
     assert parser.overall_risk_class == RiskClass.NOT_HIGH_RISK
     assert scorer.overall_risk_class == RiskClass.HIGH_RISK
     # The reason is the carve-back, and the verdict is cited.
-    assert scorer.triggered_by and any(e.source.article == 6 for e in scorer.triggered_by)
+    assert scorer.triggered_by and any(e.source.article == "6" for e in scorer.triggered_by)
     assert "profiling" in scorer.reasoning.lower()
 
 
@@ -122,7 +123,7 @@ def test_the_ban_names_the_point_it_rests_on():
     result = classify("infers employee emotions from webcam", brain, "emo")
     assert result.overall_risk_class == RiskClass.PROHIBITED
     assert "Art. 5(1)(f)" in result.reasoning
-    assert [e.source.paragraph for e in result.triggered_by] == [1]
+    assert [e.source.paragraph for e in result.triggered_by] == ["1"]
 
 
 def test_a_ban_that_cannot_cite_its_point_is_not_reported_as_a_ban():
@@ -475,7 +476,7 @@ def test_transparency_is_checked_for_a_high_risk_use_case():
     assert result.overall_risk_class == RiskClass.HIGH_RISK
     assert result.transparency is not None, "Art. 50 must be asked even for a high-risk system"
     assert result.transparency.value == [TransparencyDuty.DIRECT_INTERACTION]
-    assert result.transparency.source.article == 50
+    assert result.transparency.source.article == "50"
 
 
 def test_transparency_is_checked_on_every_path():
@@ -539,7 +540,7 @@ def test_every_transparency_duty_knows_its_paragraph_and_its_role():
     """Art. 50 runs (1) to (4), with (4) carrying two duties. Each must name its own paragraph and
     the party that owes it — a duty attributed to the wrong role is worse than an unattributed one.
     """
-    assert [d.paragraph for d in TransparencyDuty] == [1, 2, 3, 4, 4]
+    assert [d.paragraph for d in TransparencyDuty] == ["1", "2", "3", "4", "4"]
     assert [d.owed_by for d in TransparencyDuty] == [
         ActorRole.PROVIDER,
         ActorRole.PROVIDER,
@@ -745,6 +746,50 @@ def test_the_demo_script_still_shows_the_flip(capsys):
     assert "needs_review" not in out, "a cascade node the demo does not answer has broken it"
 
 
+_ANNEX_III_EXCEPTION = re.compile(
+    r"(?:This shall not include|with the exception of|This does not include)(.*?)$",
+    re.IGNORECASE | re.MULTILINE,
+)
+
+
+def test_every_exception_annex_iii_writes_into_an_area_reaches_the_model():
+    """Annex III excepts four things from areas it lists, and the question must state all four.
+
+    They are exceptions the Annex writes INTO the area rather than derogations from it, so nothing
+    downstream applies them: Art. 6(3) is a separate test with its own four conditions, and by the
+    time it runs the area has already been chosen. If the question omits one, a fraud detector is
+    reported as an essential-services high-risk system and a passport-gate document reader as a
+    border-control one — over-inclusion, and it is the `annex_iii` node or nowhere.
+
+    DERIVED: the exceptions are parsed from the stored Annex, and each is looked for by the words
+    that occur in it and NOWHERE ELSE in the Annex. Those are what distinguish an exception from
+    the area it sits in — a question that keeps 'AI systems used for the purpose of detecting' and
+    drops 'financial fraud' has named nothing."""
+    annexes_dir = (
+        ROOT / "data" / "policy" / "annexes" / get_settings().act_version_date.isoformat()
+    )
+    annex = (annexes_dir / "annex-III.md").read_text(encoding="utf-8").split("---", 2)[2]
+    frequency = collections.Counter(re.findall(r"[a-z]{5,}", annex.lower()))
+    exceptions = [m.group(1) for m in _ANNEX_III_EXCEPTION.finditer(annex)]
+    assert len(exceptions) == 4, (
+        f"Annex III no longer holds four exceptions but {len(exceptions)} — re-derive this test "
+        f"from the text, and state any new one in the question"
+    )
+
+    question = QUESTIONS["annex_iii"].text.lower()
+    for clause in exceptions:
+        distinctive = sorted(
+            {w for w in re.findall(r"[a-z]{5,}", clause.lower()) if frequency[w] == 1}
+        )
+        assert distinctive, f"no word distinguishes this exception: {clause!r}"
+        dropped = [w for w in distinctive if w not in question]
+        assert not dropped, (
+            f"the annex_iii question does not state the exception '{clause.strip()}': it omits "
+            f"{dropped}. An exception the Annex enacts and the question omits is an area the "
+            f"model will answer."
+        )
+
+
 def test_the_safety_component_exclusion_is_the_one_article_6_enacts():
     """A HAND-WRITTEN EXCLUSION LIST IS A HAND-WRITTEN AMENDMENT.
 
@@ -765,8 +810,8 @@ def test_the_safety_component_exclusion_is_the_one_article_6_enacts():
     articles_dir = (
         ROOT / "data" / "policy" / "articles" / get_settings().act_version_date.isoformat()
     )
-    excluding, _url = resolve_requirement(articles_dir, 6, "1a")
-    carve_back, _url = resolve_requirement(articles_dir, 6, "1b")
+    excluding, _url = resolve_requirement(articles_dir, "6", "1a")
+    carve_back, _url = resolve_requirement(articles_dir, "6", "1b")
     assert "shall not qualify as safety components" in excluding, (
         "Art. 6(1a) no longer reads as expected — re-derive this test from the text"
     )
@@ -790,11 +835,21 @@ def test_the_safety_component_exclusion_is_the_one_article_6_enacts():
 
     for node_id in ("annex_i", "annex_iii"):
         question = QUESTIONS[node_id].text.lower()
+        # EACH HALF IS TESTED WHERE IT IS STATED. Presence anywhere in the prompt is not the
+        # claim being made: both questions gloss Art. 3(14) and Annex III with the same
+        # vocabulary, so a whole-question search is satisfied by a parenthetical aside while the
+        # operative sentence states the exclusion flat. The sentence naming Art. 6(1a) is the one
+        # that has to carry the grounds AND the words that narrow them.
+        excludes = [s for s in question.split(".") if "6(1a)" in s]
+        assert excludes, (
+            f"the {node_id} question never names Art. 6(1a), so a reader cannot tell which "
+            f"exclusion it is applying"
+        )
         for label, words in (
             ("the grounds Art. 6(1a) enacts", grounds),
             ("the words that make Art. 6(1a) NARROW", qualifiers),
         ):
-            dropped = [w for w in words if w not in question]
+            dropped = [w for w in words if not any(w in s for s in excludes)]
             assert not dropped, (
                 f"the {node_id} question states an exclusion but omits {label}: {dropped}. "
                 f"A list without 'solely' and 'non-safety related' excludes a dose controller "
@@ -842,11 +897,11 @@ def test_every_derogation_limb_reaches_the_model_with_its_qualifier():
             f"return a value it was not offered"
         )
 
-    points = points_within(articles_dir, 6, "3")
+    points = points_within(articles_dir, "6", "3")
     assert set(points) == {"a", "b", "c", "d"}, f"Art. 6(3) points changed: {points}"
 
     for point, tail_marker in (("c", " and is not meant to"), ("d", " to an assessment relevant")):
-        text, _url = resolve_requirement(articles_dir, 6, 3, point=point)
+        text, _url = resolve_requirement(articles_dir, "6", "3", point=point)
         assert tail_marker in text, (
             f"Art. 6(3)({point}) no longer reads as expected — re-derive this test from the text"
         )
@@ -863,3 +918,28 @@ def test_every_derogation_limb_reaches_the_model_with_its_qualifier():
             f"Art. 6(3)({point}) is a conjunction and the question drops part of its qualifying "
             f"half: {dropped}"
         )
+
+
+def test_every_citation_the_cascade_emits_labels_its_address_as_a_string(cases):
+    """An article or paragraph label is a string EVERYWHERE, and validation is not what enforces it.
+
+    `LegalSource` normalises `6` to `"6"` on construction, but the cascade pinpoints a citation
+    with `model_copy(update=...)`, which runs no validators — so an integer written there survives
+    into the report and compares unequal to the same address written anywhere else. That is how a
+    scope verdict came to carry `paragraph=12` while its article read `"2"`.
+
+    Run over every golden case rather than one, because the pinpointing happens on the Art. 2 and
+    Art. 5 branches only and a single case reaches neither."""
+    for case in cases.cases:
+        result = classify(case.description, _brain_from_case(case), case.case_id)
+        sources = [e.source for e in result.triggered_by]
+        for use_case in result.use_cases:
+            sources += [e.source for e in use_case.triggered_by]
+        for source in sources:
+            for label in ("article", "paragraph"):
+                value = getattr(source, label)
+                assert value is None or isinstance(value, str), (
+                    f"{case.case_id}: LegalSource.{label} is {value!r}, an "
+                    f"{type(value).__name__}. Something built this citation without validation — "
+                    f"model_copy(update=...) is the way in."
+                )

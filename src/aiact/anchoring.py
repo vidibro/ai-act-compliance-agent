@@ -14,37 +14,39 @@ verification step goes missing.
 
 from __future__ import annotations
 
+from collections.abc import Mapping
 from dataclasses import replace
 from datetime import date
 from pathlib import Path
 
 from aiact.config import get_settings
 from aiact.guidance import load_snippet
-from aiact.policy_loader import provision_text, resolve_requirement
+from aiact.policy_loader import article_filename, provision_text, resolve_requirement
 from aiact.schemas.policy import GuidanceSource
 from aiact.schemas.question import Question
 
-# Which verbatim provisions one question must be answered against: article numbers, and Annexes by
-# their roman numeral.
-Provisions = tuple[tuple[int, ...], tuple[str, ...]]
+# Which verbatim provisions one question must be answered against: article ids, and Annexes by
+# their roman numeral. An article id is a STRING, as everywhere else — a consolidation inserts
+# 4a, 60a and 75a-75d without renumbering, and `int()` of one of those resolves to the one before.
+Provisions = tuple[tuple[str, ...], tuple[str, ...]]
 
 # Article 3 is the DEFINITIONS article, and it is supplied by the point rather than whole. Its 68
 # definitions run to some 19 000 characters; a question turns on two or three of them, and handing
 # every node the lot would multiply the cost of a classification for text the question never uses.
 # Naming the points also makes the supply checkable: the coverage ledger rules a definition
 # `CASCADE <node>`, and a test can ask whether that node is in fact given it.
-DEFINITIONS_ARTICLE = 3
+DEFINITIONS_ARTICLE = "3"
 
 
 def anchor_questions(
     questions: dict[str, Question],
-    provisions: dict[str, Provisions],
+    provisions: Mapping[str, Provisions],
     guidance: dict[str, tuple[str, ...]] | None = None,
     version: str | date | None = None,
     articles_root: str | Path | None = None,
     annexes_root: str | Path | None = None,
     guidance_root: str | Path | None = None,
-    definitions: dict[str, tuple[int, ...]] | None = None,
+    definitions: Mapping[str, tuple[int, ...]] | None = None,
 ) -> dict[str, Question]:
     """`questions` with each `context` filled from the verbatim article/annex store, and
     `guidance_context` filled where `guidance` names a snippet.
@@ -70,7 +72,7 @@ def anchor_questions(
         articles, annexes = provisions.get(node_id, ((), ()))
         chunks: list[str] = []
         for n in articles:
-            p = art_dir / f"article-{n:03d}.md"
+            p = art_dir / article_filename(n)
             if not p.is_file():
                 raise FileNotFoundError(
                     f"{node_id}: no stored text for Article {n} at {p}. Run: "

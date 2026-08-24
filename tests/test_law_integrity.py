@@ -55,7 +55,7 @@ def test_a_tampered_article_is_refused(tmp_path):
     (store / "article-006.md").write_text(tampered, encoding="utf-8")
 
     with pytest.raises(ValueError, match="does not match its stored sha256"):
-        _read_article(store, 6)
+        _read_article(store, "6")
 
 
 def test_a_tampered_annex_is_refused_on_the_prompt_path(tmp_path):
@@ -83,7 +83,7 @@ def test_a_file_with_no_hash_is_refused(tmp_path):
     (store / "article-006.md").write_text(stripped, encoding="utf-8")
 
     with pytest.raises(ValueError, match="no sha256"):
-        _read_article(store, 6)
+        _read_article(store, "6")
 
 
 def test_a_whitespace_only_edit_is_still_caught(tmp_path):
@@ -97,12 +97,12 @@ def test_a_whitespace_only_edit_is_still_caught(tmp_path):
     (store / "article-006.md").write_text(original + "\n", encoding="utf-8")
 
     with pytest.raises(ValueError, match="does not match its stored sha256"):
-        _read_article(store, 6)
+        _read_article(store, "6")
 
 
 def test_the_untampered_store_still_loads(tmp_path):
     """Guard against a check so strict nothing passes it — the real files must verify cleanly."""
-    provisions, front = _read_article(ARTICLES, 6)
+    provisions, front = _read_article(ARTICLES, "6")
     assert "high-risk" in provisions
     assert front["sha256"]
     assert provision_text(ANNEXES / "annex-III.md").startswith("ANNEX III")

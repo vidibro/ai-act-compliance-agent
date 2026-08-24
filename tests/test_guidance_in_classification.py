@@ -87,7 +87,7 @@ def test_a_prohibited_verdict_carries_the_guidance_it_rested_on():
 
     # the guidance rides on the deciding node's evidence, next to (not merged with) the law
     prohibited_ev = next(e for e in result.triggered_by if e.node_id == "prohibited")
-    assert prohibited_ev.source.article == 5  # enacted law
+    assert prohibited_ev.source.article == "5"  # enacted law
     assert prohibited_ev.guidance[0].snippet_ref == REF  # non-binding interpretation, distinct
 
 

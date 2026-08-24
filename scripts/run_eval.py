@@ -28,7 +28,11 @@ from dotenv import load_dotenv  # noqa: E402
 from aiact.eval.baseline import KeywordBaseline  # noqa: E402
 from aiact.eval.runner import Checker, report, run  # noqa: E402
 from aiact.gap.judge import LLMJudge  # noqa: E402
-from aiact.policy_loader import articles_dir_for, load_policy_spec  # noqa: E402
+from aiact.policy_loader import (  # noqa: E402
+    article_filename,
+    articles_dir_for,
+    load_policy_spec,
+)
 from aiact.schemas.eval import GoldenSet  # noqa: E402
 from aiact.tracing import trace_run  # noqa: E402
 
@@ -40,7 +44,7 @@ def article_titles(spec, articles_root: Path | None) -> dict[str, str]:
     art_dir = articles_dir_for(spec.act_version_date, articles_root)
     titles: dict[str, str] = {}
     for rule in spec.rules:
-        path = art_dir / f"article-{rule.source.article:03d}.md"
+        path = art_dir / article_filename(rule.source.article)
         m = _TITLE.search(path.read_text(encoding="utf-8"))
         if m is None:
             raise ValueError(f"{path} has no title in its front matter")

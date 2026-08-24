@@ -115,8 +115,8 @@ class ScopeExclusion(StrEnum):
     Art. 5 and Art. 50 answers, so those are decided first."""
 
     @property
-    def paragraph(self) -> int:
-        """The Art. 2 paragraph, for citation."""
+    def paragraph(self) -> str:
+        """The Art. 2 paragraph, for citation. A STRING, as every paragraph label is."""
         return _SCOPE_EXCLUSION_PARAGRAPH[self]
 
     @property
@@ -128,13 +128,13 @@ class ScopeExclusion(StrEnum):
 
 # No default, and every member listed. A dict.get() fallback would give a newly added exclusion a
 # plausible wrong citation; a missing key raises instead.
-_SCOPE_EXCLUSION_PARAGRAPH: dict[ScopeExclusion, int] = {
-    ScopeExclusion.MILITARY_DEFENCE_NATIONAL_SECURITY: 3,
-    ScopeExclusion.THIRD_COUNTRY_LAW_ENFORCEMENT_COOPERATION: 4,
-    ScopeExclusion.SCIENTIFIC_RESEARCH: 6,
-    ScopeExclusion.PRE_MARKET_DEVELOPMENT: 8,
-    ScopeExclusion.PERSONAL_NON_PROFESSIONAL: 10,
-    ScopeExclusion.FREE_OPEN_SOURCE: 12,
+_SCOPE_EXCLUSION_PARAGRAPH: dict[ScopeExclusion, str] = {
+    ScopeExclusion.MILITARY_DEFENCE_NATIONAL_SECURITY: "3",
+    ScopeExclusion.THIRD_COUNTRY_LAW_ENFORCEMENT_COOPERATION: "4",
+    ScopeExclusion.SCIENTIFIC_RESEARCH: "6",
+    ScopeExclusion.PRE_MARKET_DEVELOPMENT: "8",
+    ScopeExclusion.PERSONAL_NON_PROFESSIONAL: "10",
+    ScopeExclusion.FREE_OPEN_SOURCE: "12",
 }
 
 
@@ -458,8 +458,8 @@ class TransparencyDuty(StrEnum):
     undergone human review or editorial control and a person holds editorial responsibility."""
 
     @property
-    def paragraph(self) -> int:
-        """The Art. 50 paragraph, for citation."""
+    def paragraph(self) -> str:
+        """The Art. 50 paragraph, for citation. A STRING, as every paragraph label is."""
         return _TRANSPARENCY_PARAGRAPH[self]
 
     @property
@@ -470,12 +470,12 @@ class TransparencyDuty(StrEnum):
 
 
 # No default, and every member listed, for the reason given at _SCOPE_EXCLUSION_PARAGRAPH.
-_TRANSPARENCY_PARAGRAPH: dict[TransparencyDuty, int] = {
-    TransparencyDuty.DIRECT_INTERACTION: 1,
-    TransparencyDuty.SYNTHETIC_CONTENT_MARKING: 2,
-    TransparencyDuty.EMOTION_OR_BIOMETRIC_CATEGORISATION: 3,
-    TransparencyDuty.DEEP_FAKE_DISCLOSURE: 4,
-    TransparencyDuty.PUBLIC_INTEREST_TEXT_DISCLOSURE: 4,
+_TRANSPARENCY_PARAGRAPH: dict[TransparencyDuty, str] = {
+    TransparencyDuty.DIRECT_INTERACTION: "1",
+    TransparencyDuty.SYNTHETIC_CONTENT_MARKING: "2",
+    TransparencyDuty.EMOTION_OR_BIOMETRIC_CATEGORISATION: "3",
+    TransparencyDuty.DEEP_FAKE_DISCLOSURE: "4",
+    TransparencyDuty.PUBLIC_INTEREST_TEXT_DISCLOSURE: "4",
 }
 
 _TRANSPARENCY_ROLE: dict[TransparencyDuty, ActorRole] = {
@@ -540,8 +540,8 @@ class ProviderReallocation(StrEnum):
     the provider's, whole."""
 
     @property
-    def paragraph(self) -> int:
-        """The Art. 25 paragraph, for citation."""
+    def paragraph(self) -> str:
+        """The Art. 25 paragraph, for citation. A STRING, as every paragraph label is."""
         return _REALLOCATION_CITE[self][0]
 
     @property
@@ -558,11 +558,11 @@ class ProviderReallocation(StrEnum):
 
 
 # No default, and every member listed, for the reason given at _SCOPE_EXCLUSION_PARAGRAPH.
-_REALLOCATION_CITE: dict[ProviderReallocation, tuple[int, str | None]] = {
-    ProviderReallocation.NAME_OR_TRADEMARK: (1, "a"),
-    ProviderReallocation.SUBSTANTIAL_MODIFICATION: (1, "b"),
-    ProviderReallocation.INTENDED_PURPOSE_CHANGE: (1, "c"),
-    ProviderReallocation.PRODUCT_MANUFACTURER: (3, None),
+_REALLOCATION_CITE: dict[ProviderReallocation, tuple[str, str | None]] = {
+    ProviderReallocation.NAME_OR_TRADEMARK: ("1", "a"),
+    ProviderReallocation.SUBSTANTIAL_MODIFICATION: ("1", "b"),
+    ProviderReallocation.INTENDED_PURPOSE_CHANGE: ("1", "c"),
+    ProviderReallocation.PRODUCT_MANUFACTURER: ("3", None),
 }
 
 

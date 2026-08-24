@@ -168,7 +168,7 @@ def annex_instruments(annexes_dir: Path, roman: str) -> dict[str, str]:
     return instruments
 
 
-def points_within(articles_dir: Path, article: int | str, paragraph: str) -> tuple[str, ...]:
+def points_within(articles_dir: Path, article: str, paragraph: str) -> tuple[str, ...]:
     """The top-level lettered points of one numbered paragraph.
 
     A LEVEL BELOW the division, and needed where a paragraph's points are the substance rather than

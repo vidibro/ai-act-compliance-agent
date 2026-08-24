@@ -108,12 +108,11 @@ def _cited_addresses(spec: Any) -> tuple[dict[tuple[str, str], str], dict[str, s
         source = rule.source
         if source.article is None:
             continue
-        article = str(source.article)
         division = source.paragraph if source.paragraph is not None else source.point
         if division is None:
-            whole.setdefault(article, rule.rule_id)
+            whole.setdefault(source.article, rule.rule_id)
         else:
-            precise.setdefault((article, str(division)), rule.rule_id)
+            precise.setdefault((source.article, division), rule.rule_id)
     return precise, whole
 
 
@@ -145,11 +144,13 @@ def classify_coverage(
     otherwise excluded article — which is how Art. 8(2) sits inside an Art. 8 that is otherwise the
     chapeau to rules modelled elsewhere.
 
-    `used_annexes` names the annexes some part of the tool reads — cited by a rule, or supplied to
-    the cascade as context. Their items come back BLANKET rather than CHECKED, and the distinction
-    is the honest one: the tool reading Annex III is not the same as anyone having ruled on what
-    Annex III(5)(b) requires. Passed in rather than imported so this module stays independent of the
-    graph it is measuring.
+    `used_annexes` names the annexes the loader or the cascade pulls text for — cited by a rule, or
+    supplied to a question as context. Their items come back BLANKET rather than CHECKED, and the
+    distinction is the honest one: the tool reading Annex III is not the same as anyone having
+    ruled on what Annex III(5)(b) requires. Weaker still for a rule that is not
+    `document_verifiable`: the loader fills its `annex_context` and no prompt is ever built, so the
+    text is loaded and read by nobody. Passed in rather than imported so this module stays
+    independent of the graph it is measuring.
     """
     precise, whole_cited = _cited_addresses(spec)
     art_whole, art_div = _rulings(ledger.get("article_rulings"))

@@ -30,9 +30,22 @@ from aiact.schemas.classification import (
     ClassificationResult,
     UseCaseClassification,
 )
-from aiact.schemas.enums import ActorRole, AnnexIIIArea, RiskClass
+from aiact.schemas.enums import (
+    ActorRole,
+    AnnexIIIArea,
+    DeployerType,
+    ProviderReallocation,
+    RiskClass,
+    Verdict,
+)
 from aiact.schemas.policy import LegalSource
-from aiact.schemas.report import ComplianceReport, ReportSummary
+from aiact.schemas.question import Answer
+from aiact.schemas.report import (
+    DISCLAIMER,
+    ComplianceReport,
+    Finding,
+    ReportSummary,
+)
 
 
 @pytest.fixture(scope="module")
@@ -40,7 +53,22 @@ def spec():
     return load_policy_spec()
 
 
-def _report(spec, outstanding: dict[ActorRole, list[str]]) -> ComplianceReport:
+def _finding(spec, rule) -> Finding:
+    """The Finding a `document_verifiable` rule produces once a judge has looked at it."""
+    return Finding(
+        rule_id=rule.rule_id,
+        use_case_id="uc",
+        role=ActorRole.PROVIDER,
+        verdict=Verdict.PASS,
+        reasoning="fixture",
+        citation=rule.source,
+        confidence="high",
+    )
+
+
+def _report(
+    spec, outstanding: dict[ActorRole, list[str]], findings: list[Finding] | None = None
+) -> ComplianceReport:
     source = LegalSource(
         instrument="Regulation (EU) 2024/1689", article=6, act_version_date=spec.act_version_date
     )
@@ -65,7 +93,7 @@ def _report(spec, outstanding: dict[ActorRole, list[str]]) -> ComplianceReport:
             triggered_by=[ClassificationEvidence(source=source, reasoning="fixture")],
             confidence="high",
         ),
-        findings=[],
+        findings=findings or [],
         not_document_verifiable=outstanding,
         summary=ReportSummary(total_applicable=0, passed=0, gaps=0, inadequate=0, needs_review=0),
     )
@@ -85,13 +113,26 @@ def test_every_condition_the_spec_writes_reaches_the_reader(spec):
     conditioned = [r for r in spec.rules if r.activation_condition]
     assert conditioned, "no rule carries an activation_condition — re-derive this test"
 
+    # EACH RULE THROUGH THE PATH IT WOULD REALLY TAKE. A `document_verifiable` rule becomes a
+    # Finding and renders through the finding branch; routing it through the outstanding branch
+    # would test a path production never reaches for it, and pass a renderer that drops the
+    # condition from the branch it does.
+    judged = [r for r in conditioned if r.document_verifiable]
     text = render_report(
-        _report(spec, {ActorRole.PROVIDER: [r.rule_id for r in conditioned]}), spec
+        _report(
+            spec,
+            {ActorRole.PROVIDER: [r.rule_id for r in conditioned if not r.document_verifiable]},
+            findings=[_finding(spec, r) for r in judged],
+        ),
+        spec,
     )
     for rule in conditioned:
         assert rule.rule_id in text, f"{rule.rule_id} is not rendered at all"
-        opening = " ".join(rule.activation_condition.split())[:60]
-        assert opening in " ".join(text.split()), (
+        # THE WHOLE CONDITION, not an opening that a truncating renderer would also satisfy.
+        # Art. 27's condition opens "Art. 27(1) does not bind every deployer of an Annex III
+        # system" and only later says which deployers it DOES bind; a prefix match accepts a
+        # report that gives a public body the negative half and stops.
+        assert " ".join(rule.activation_condition.split()) in " ".join(text.split()), (
             f"{rule.rule_id} is rendered without its activation_condition. A reader is told to "
             f"confirm an obligation the Act does not put on them."
         )
@@ -112,7 +153,7 @@ def test_an_obligation_nobody_judged_still_says_what_would_satisfy_it(spec):
     text = " ".join(
         render_report(_report(spec, {ActorRole.PROVIDER: [rule.rule_id]}), spec).split()
     )
-    assert " ".join(rule.evidence_expected.split())[:60] in text
+    assert " ".join(rule.evidence_expected.split()) in text
 
 
 def test_a_timing_note_travels_with_the_obligation_it_qualifies(spec):
@@ -126,5 +167,64 @@ def test_a_timing_note_travels_with_the_obligation_it_qualifies(spec):
         render_report(_report(spec, {ActorRole.PROVIDER: [r.rule_id for r in noted]}), spec).split()
     )
     for rule in noted:
-        assert " ".join(rule.effective_date_note.split())[:60] in text, rule.rule_id
+        assert " ".join(rule.effective_date_note.split()) in text, rule.rule_id
         assert rule.effective_date is not None and rule.effective_date.isoformat() in text
+
+
+def test_a_role_change_the_report_found_is_stated_in_the_report(spec):
+    """Art. 25 moves the provider role, and the report answers the question — but the answer is an
+    enum, and "substantial_modification" beside a column of provider obligations does not tell a
+    distributor that the column is now theirs.
+
+    `provider_reallocation_note` is the sentence that does, and it carries the half that is
+    invisible from the value: Art. 25(2) takes the original provider OUT and puts a cooperation
+    duty on them. A report that computes the note and does not print it has found the reallocation
+    and told nobody."""
+    report = _report(spec, {})
+    report.provider_reallocation = Answer(
+        value=ProviderReallocation.SUBSTANTIAL_MODIFICATION,
+        reasoning="fixture",
+        confidence="high",
+        source=report.classification.triggered_by[0].source,
+    )
+    assert report.provider_reallocation_note, "re-derive this test: the note is no longer composed"
+    text = " ".join(render_report(report, spec).split())
+    assert " ".join(report.provider_reallocation_note.split()) in text
+
+
+def test_a_deployer_is_told_which_side_of_the_condition_it_falls_on(spec):
+    """Two duties turn on the kind of organisation deploying — Art. 27's impact assessment and
+    Art. 49(3)'s registration — and they do not answer alike. `deployer_type_note` is composed
+    precisely because a reader told about one would assume the other."""
+    report = _report(spec, {})
+    report.deployer_type = Answer(
+        value=DeployerType.PUBLIC_BODY,
+        reasoning="fixture",
+        confidence="high",
+        source=report.classification.triggered_by[0].source,
+    )
+    assert report.deployer_type_note, "re-derive this test: the note is no longer composed"
+    text = " ".join(render_report(report, spec).split())
+    assert " ".join(report.deployer_type_note.split()) in text
+
+
+def test_a_verdict_says_which_use_case_it_is_about_and_how_sure_it_is(spec):
+    """One rule is judged once per use case, so a two-purpose system produces two findings with the
+    same rule id and role. Unlabelled they are a pass and a gap on adjacent lines about the same
+    Article, and a reader resolving the contradiction in the favourable direction concludes the
+    obligation is met. The confidence is the other half: a low-confidence PASS that renders exactly
+    like a confident one is the false pass this whole ruleset is built to avoid."""
+    rule = next(r for r in spec.rules if r.document_verifiable)
+    report = _report(spec, {}, findings=[_finding(spec, rule)])
+    report.findings[0].confidence = "low"
+    text = render_report(report, spec)
+    assert "uc" in text and "low confidence" in text
+
+
+def test_the_report_says_it_is_not_legal_advice(spec):
+    """The disclaimer is a field on the report with a default, so a renderer that never reads it
+    still produces something that looks complete. Its third paragraph is also the only other place
+    Art. 25 is explained — that silence about a role change is not a finding that none happened."""
+    text = " ".join(render_report(_report(spec, {}), spec).split())
+    for paragraph in DISCLAIMER.split("\n\n"):
+        assert " ".join(paragraph.split()) in text

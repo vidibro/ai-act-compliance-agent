@@ -286,7 +286,7 @@ def test_every_definition_the_ledger_hands_to_a_node_reaches_it(ledger):
         if not reason.startswith(CASCADE_PREFIX):
             continue
         nodes = cascade_nodes(reason)
-        text, _url = resolve_requirement(ARTICLES_DIR, 3, None, point=point)
+        text, _url = resolve_requirement(ARTICLES_DIR, "3", None, point=point)
         # A node id that does not resolve is `test_every_ruling_names_something_that_exists`'s
         # claim, and reporting it here as well would say the supply is missing when the address is.
         absent = [n for n in nodes if n in questions and text.strip() not in questions[n].context]
@@ -323,8 +323,8 @@ def test_every_borrowed_definition_names_the_instrument_it_is_borrowed_from(ledg
     }
     silent: dict[str, str] = {}
     found = 0
-    for point in provision_labels(ARTICLES_DIR, 3):
-        text, _url = resolve_requirement(ARTICLES_DIR, 3, None, point=point)
+    for point in provision_labels(ARTICLES_DIR, "3"):
+        text, _url = resolve_requirement(ARTICLES_DIR, "3", None, point=point)
         body = text.split("\n")[0]
         match = borrowed.search(body)
         # A long body defines the term itself and merely cites an instrument in passing; only a
@@ -396,16 +396,16 @@ def test_every_provision_a_rule_is_qualified_by_reaches_that_rule(ledger, spec):
                 continue
             for rule_id in rule_ids(text):
                 rule = by_id[rule_id]
-                cites = str(rule.source.article) == str(article) and (
-                    rule.source.paragraph is None
-                    or str(rule.source.paragraph) == str(division)
+                # `str()` on the LEDGER side only: its keys come from YAML and are integers,
+                # while a rule's labels are strings by construction — see LegalSource.article.
+                cites = rule.source.article == str(article) and (
+                    rule.source.paragraph is None or rule.source.paragraph == str(division)
                 )
                 if cites:
                     continue
                 checked += 1
                 qualifies = any(
-                    str(q.get("article")) == str(article)
-                    and str(q.get("paragraph")) == str(division)
+                    q.get("article") == str(article) and q.get("paragraph") == str(division)
                     for q in rule.qualified_by
                 )
                 if not qualifies or not rule.qualifier_context:
@@ -453,3 +453,103 @@ def test_an_annex_declared_owed_engages_with_any_rule_that_cites_it(ledger, spec
         f"judge: {silent}. Say in the reason what that rule covers and what it leaves — or move "
         f"the items it does reach into annex_rulings."
     )
+
+
+# A prose claim in the ledger that points somewhere else. Round 3 found five made false by the
+# commit that paid the debts they described, and round 4 found seven more; nothing tested any of
+# them, because the existing guards read the RULE/CASCADE head of a ruling and stop.
+_DEBT_CLAIM = re.compile(r"await[s]? a rule|awaiting_rules")
+# "Art 43" and "43(4)" are different claims, and the paragraph is the one that matters — so the
+# article-only branch declines to match where a paragraph follows, leaving the next position to
+# the branch that reads both.
+_ADDRESS = re.compile(r"\bArts? (\d+[a-z]*)\b(?!\()|\b(\d+[a-z]*)\((\d+[a-z]*)\)")
+_RULE_ID = re.compile(r"\bAIA-[A-Z]+-A[0-9A-Za-z]+(?:-[0-9A-Za-z]+)*")
+
+
+def _prose(path: Path) -> list[str]:
+    """The ledger read as sentences, comments included.
+
+    Comments are half the ledger's argument — the chapter headers that say how a chapter sorts, and
+    the annex headers that say what a debt costs — and two of round 4's stale claims were in one.
+    So the raw file is read rather than the parsed mapping. "Art." is unpunctuated first because a
+    sentence split would otherwise cut every citation off from the claim that names it, and the
+    split is on the full stop alone: "Art 43(4); the second awaits a rule" is one claim, and
+    breaking it at the semicolon leaves the half that makes the claim with no address in it."""
+    raw = re.sub(r"^\s*#\s?", " ", path.read_text(encoding="utf-8"), flags=re.M)
+    raw = re.sub(r"\s+", " ", raw).replace("Art. ", "Art ").replace("Arts. ", "Arts ")
+    return re.split(r"(?<=\.)\s+", raw)
+
+
+def test_every_rule_the_ledger_names_in_prose_exists():
+    """A ruling's prose names rules the partition never parses — "modelled as AIA-PO-A17", "which
+    AIA-PO-A47 checks". Renaming a rule leaves every one of those pointing at nothing, and the
+    partition passes, because it only reads the identifiers at the head of a RULE ruling."""
+    known = {rule.rule_id for rule in load_policy_spec(SPEC_PATH, ARTICLES_ROOT).rules}
+    for sentence in _prose(SCOPE_PATH):
+        unknown = sorted({m.group(0) for m in _RULE_ID.finditer(sentence)} - known)
+        assert not unknown, f"the ledger names {unknown}, which no rule has: {sentence.strip()!r}"
+
+
+def test_a_debt_the_ledger_claims_in_prose_is_a_debt_it_actually_holds():
+    """"Declared in articles_awaiting_rules" has to still be true of the address it names.
+
+    This is the claim that goes stale, and it goes stale in one direction: the commit that writes
+    the rule pays the debt and leaves the sentence behind, so the ledger tells the next reader a
+    provision is unchecked when a rule now checks it. Seven of nine such claims were false at one
+    point, all made false by the same commit.
+
+    A sentence naming no address is not checked — "the duties it defers are declared in
+    articles_awaiting_rules" is about a set the sentence does not enumerate, and inventing an
+    address for it would be the guess this test exists to stop."""
+    ledger = yaml.safe_load(SCOPE_PATH.read_text(encoding="utf-8"))
+    divisions, documents = set(), set()
+    for document, value in (ledger["articles_awaiting_rules"] or {}).items():
+        documents.add(str(document))
+        divisions.update(
+            (str(document), str(d)) for d in (value if isinstance(value, dict) else {"": value})
+        )
+
+    for sentence in _prose(SCOPE_PATH):
+        if not _DEBT_CLAIM.search(sentence):
+            continue
+        named = [
+            (m.group(1), None) if m.group(1) else (m.group(2), m.group(3))
+            for m in _ADDRESS.finditer(sentence)
+        ]
+        if not named:
+            continue
+        owed = [
+            a for a in named if (a in divisions) or (a[1] is None and a[0] in documents)
+        ]
+        assert owed, (
+            f"the ledger calls {named} a debt, and none of them is in articles_awaiting_rules — "
+            f"a rule was written and the sentence pointing at the gap was left behind: "
+            f"{sentence.strip()!r}"
+        )
+
+
+def test_a_ruling_written_where_a_rule_cites_names_that_rule(ledger, spec):
+    """A rule citing a division wins the partition outright, so a reason written at the same
+    address is never read again — it is not overruled, it is invisible.
+
+    That is how Art. 74(12) came to carry both a rule and a sentence saying the duty was recorded
+    elsewhere and there was nothing to write here. The partition was right and the ledger, which is
+    what anyone reads to check the partition, said the opposite. Silence is fine: most cited
+    divisions have no ruling at all, because the rule is the record. A ruling that contradicts one
+    is not."""
+    written = {
+        (str(document), str(division)): str(reason)
+        for document, value in (ledger["article_rulings"] or {}).items()
+        if isinstance(value, dict)
+        for division, reason in value.items()
+    }
+    for rule in spec.rules:
+        division = rule.source.paragraph if rule.source.paragraph is not None else rule.source.point
+        if rule.source.article is None or division is None:
+            continue
+        reason = written.get((rule.source.article, division))
+        assert reason is None or rule.rule_id in reason, (
+            f"Art. {rule.source.article}({division}) is cited by {rule.rule_id} and separately "
+            f"ruled on: {reason!r}. The rule wins and the reason is never read — rewrite it to "
+            f"record the rule, or delete it."
+        )

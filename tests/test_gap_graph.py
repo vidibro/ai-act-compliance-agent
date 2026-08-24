@@ -125,7 +125,11 @@ def test_only_the_rules_for_this_risk_class_activate(spec):
     # would make `minimal` indistinguishable from `out_of_scope` — the collapse the class exists to
     # prevent. Art. 79 joins it for the same reason, one Article further on: it reaches any system
     # presenting a risk rather than a tier, and 79(6)(d) names Art. 50 as a ground.
-    assert sorted(r.rule_id for r in minimal.all_rules) == ["AIA-ALL-A04", "AIA-ALL-A79"]
+    assert sorted(r.rule_id for r in minimal.all_rules) == [
+        "AIA-ALL-A04",
+        "AIA-ALL-A75c-3",
+        "AIA-ALL-A79",
+    ]
 
 
 def test_an_out_of_scope_use_case_owes_nothing_at_all(spec):
@@ -148,6 +152,7 @@ def test_each_role_gets_its_own_obligations(spec):
     assert "AIA-HR-A14" in provider_ids and "AIA-HR-A14" not in deployer_ids
     assert deployer_ids == {
         "AIA-ALL-A04",
+        "AIA-ALL-A75c-3",
         "AIA-ALL-A79",
         "AIA-ALL-A82",
         "AIA-DP-A26",
@@ -157,9 +162,15 @@ def test_each_role_gets_its_own_obligations(spec):
         "AIA-DP-A49-3",
         "AIA-DP-A86",
     }
-    # The two rules that bind by something other than the role: Art. 4 by the tier, Art. 79 by an
-    # authority having opened an evaluation.
-    assert provider_ids & deployer_ids == {"AIA-ALL-A04", "AIA-ALL-A79", "AIA-ALL-A82"}
+    # The rules that bind by something other than the role: Art. 4 by the tier, and Arts. 75c(3),
+    # 79 and 82 by an act of an authority — an AI Office non-compliance decision, an opened
+    # evaluation, a finding that a complying system still presents a risk.
+    assert provider_ids & deployer_ids == {
+        "AIA-ALL-A04",
+        "AIA-ALL-A75c-3",
+        "AIA-ALL-A79",
+        "AIA-ALL-A82",
+    }
 
 
 def test_selection_is_per_use_case(spec):
@@ -203,6 +214,7 @@ def test_process_obligations_are_reported_but_never_judged(spec):
     # Grouped by who owes them: a provider cannot confirm that a deployer informed its workers.
     assert outstanding[ActorRole.DEPLOYER] == [
         "AIA-ALL-A04",
+        "AIA-ALL-A75c-3",
         "AIA-ALL-A79",
         "AIA-ALL-A82",
         "AIA-DP-A26",
