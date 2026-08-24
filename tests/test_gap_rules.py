@@ -280,9 +280,16 @@ def test_a_narrowed_duty_is_selected_exactly_like_an_unnarrowed_one(spec):
             if rule.requires_provider_reallocation
             else None
         )
+        # THE USE CASE THIS RULE IS FOR, not an arbitrary one. `applies_to_route` and
+        # `applies_to_annex_iii_area` are gates on the SYSTEM and withholding on them is correct —
+        # Art. 11(2) reaches an Annex I product and nothing else. What is under test is that the
+        # condition, which narrows the DUTY-HOLDER, never withholds on top of them.
+        annex_i = rule.applies_to_route is HighRiskRoute.ANNEX_I
+        product = AnnexIProduct.MEDICAL_DEVICES if annex_i else None
         for role in rule.applies_to_role:
             for area in rule.applies_to_annex_iii_area or list(AnnexIIIArea):
-                active = select_rules(spec, a_use_case(area=area), role, reallocation=moved)
+                use_case = a_use_case(area=None if product else area, product=product)
+                active = select_rules(spec, use_case, role, reallocation=moved)
                 assert rule.rule_id in {r.rule_id for r in active.all_rules}, (
                     f"{rule.rule_id} states a condition and was withheld for {role}/{area} — "
                     f"a condition is reported beside a duty, never used to drop it"
@@ -535,7 +542,7 @@ _GENERAL_DATE = date(2026, 8, 2)
 def test_chapter_iii_obligations_start_on_the_route_s_date(spec):
     """Every rule citing Arts. 6-27 carries both dates, and resolves to the right one per door."""
     split = [r for r in spec.rules if r.source.article in _ROUTE_SPLIT_ARTICLES]
-    assert len(split) == 29, "Arts. 6-27 should be the whole of Chapter III Sections 1-3"
+    assert len(split) == 31, "Arts. 6-27 should be the whole of Chapter III Sections 1-3"
     for rule in split:
         if rule.rule_id == "AIA-NHR-A06-4":
             continue  # not a high-risk system at all — see its comment in spec.yaml
@@ -593,7 +600,9 @@ def test_every_section_5_rule_explains_why_it_is_already_in_force(spec):
     tool is broken, and the damaging response is to disregard the date rather than the note. So the
     explanation travels WITH the obligation instead of living in a comment only we read."""
     section_5 = [r for r in spec.rules if r.source.article in _SECTION_5_ARTICLES]
-    assert len(section_5) == 11, "Arts. 43 and 47-49 are the whole of Section 5 in this ruleset"
+    assert len(section_5) == 15, (
+        "Arts. 41, 43 and 47-49 are the whole of Section 5 in this ruleset"
+    )
     for rule in section_5:
         assert rule.effective_date == _GENERAL_DATE, rule.rule_id
         note = rule.effective_date_note or ""

@@ -35,8 +35,9 @@ import yaml
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 
+from aiact.eval.runner import rules_a_case_is_scored_on  # noqa: E402
 from aiact.policy_loader import load_policy_spec  # noqa: E402
-from aiact.schemas.enums import Verdict  # noqa: E402
+from aiact.schemas.enums import AnnexIIIArea, Verdict  # noqa: E402
 from aiact.schemas.eval import (  # noqa: E402
     AblationType,
     Difficulty,
@@ -115,12 +116,19 @@ def main() -> None:
     print(f"Reference: {ref_path}  ({len(sections)} tagged rule sections)")
 
     spec = load_policy_spec(args.spec)
-    # The rules a high-risk employment system is actually judged on from its documentation.
-    applicable = sorted(
-        r.rule_id
-        for r in spec.rules
-        if r.document_verifiable and "high_risk" in [c.value for c in r.applies_to_risk_class]
+    area = AnnexIIIArea(plan["annex_iii_area"])
+    # The rules this system is actually judged on, SELECTED by the same code the agent runs — see
+    # rules_a_case_is_scored_on. A hand-written filter here would be a second opinion about which
+    # obligations a document owes, and the ruler is the last place that should hold one.
+    header = GoldenSet(
+        system_id=plan["system_id"],
+        reference_path=str(ref_path),
+        act_version_date=spec.act_version_date.isoformat(),
+        spec_version=spec.spec_version,
+        annex_iii_area=area,
+        cases=[],
     )
+    applicable = sorted(r.rule_id for r in rules_a_case_is_scored_on(spec, header))
     missing = set(applicable) - set(sections)
     if missing:
         sys.exit(f"Reference document has no section for applicable rule(s): {sorted(missing)}")
@@ -175,13 +183,7 @@ def main() -> None:
         )
         print(f"  + {case_id:45} {rule_id or '-':14} [{split:4}] -> {verdict.value}")
 
-    golden = GoldenSet(
-        system_id=plan["system_id"],
-        reference_path=str(ref_path),
-        act_version_date=spec.act_version_date.isoformat(),
-        spec_version=spec.spec_version,
-        cases=cases,
-    )
+    golden = header.model_copy(update={"cases": cases})
     out = args.golden_dir / f"golden_set{variant.replace('-', '_')}.json"
     out.write_text(json.dumps(golden.model_dump(mode="json"), indent=2) + "\n", encoding="utf-8")
     n_dev = sum(c.split == "dev" for c in cases)

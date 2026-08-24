@@ -13,7 +13,7 @@ from pathlib import Path
 import pytest
 
 from aiact.eval.baseline import KeywordBaseline, keywords_from_title
-from aiact.eval.runner import run
+from aiact.eval.runner import rules_a_case_is_scored_on, run
 from aiact.policy_loader import load_policy_spec
 from aiact.schemas.enums import Verdict
 from aiact.schemas.eval import AblationType, GoldenCase, GoldenSet
@@ -64,12 +64,15 @@ def test_golden_set_loads(golden: GoldenSet):
 
 
 def test_every_case_expects_all_applicable_rules(any_golden: GoldenSet, spec):
-    """A case scores every applicable rule, so each one measures both catching and false alarms."""
-    applicable = {
-        r.rule_id
-        for r in spec.rules
-        if r.document_verifiable and any(c.value == "high_risk" for c in r.applies_to_risk_class)
-    }
+    """A case scores every applicable rule, so each one measures both catching and false alarms.
+
+    APPLICABLE IS SELECTED, not filtered here. `select_rules` gates on the Art. 6 route and the
+    Annex III area as well as the tier, and a filter written out here would have to keep pace with
+    all three. A rule bound to Annex I products, or to Annex III point 1(a) biometrics, is not owed
+    by an employment document — demanding it would mean writing a reference section that evidences
+    an obligation the system does not have, which makes the ruler wrong rather than the checker."""
+    applicable = {r.rule_id for r in rules_a_case_is_scored_on(spec, any_golden)}
+    assert applicable, "no rule is selected for this golden set — re-derive"
     for case in any_golden.cases:
         assert set(case.expected) == applicable, f"{case.case_id} does not score every rule"
 

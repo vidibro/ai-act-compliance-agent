@@ -160,6 +160,7 @@ def test_each_role_gets_its_own_obligations(spec):
         "AIA-DP-A27-2",
         "AIA-DP-A27-3",
         "AIA-DP-A49-3",
+        "AIA-DP-A71-3",
         "AIA-DP-A86",
     }
     # The rules that bind by something other than the role: Art. 4 by the tier, and Arts. 75c(3),
@@ -222,6 +223,7 @@ def test_process_obligations_are_reported_but_never_judged(spec):
         "AIA-DP-A27-2",
         "AIA-DP-A27-3",
         "AIA-DP-A49-3",
+        "AIA-DP-A71-3",
         "AIA-DP-A86",
     ]
     flat = {r for ids in outstanding.values() for r in ids}
@@ -353,7 +355,10 @@ def test_the_supply_chain_roles_each_owe_their_own_article(spec):
     assert all(shared <= ids for ids in owed.values()), "Arts. 79 and 82 bind every operator"
     assert owed[ActorRole.IMPORTER] - shared == {"AIA-IM-A23"}
     assert owed[ActorRole.DISTRIBUTOR] - shared == {"AIA-DI-A24"}
-    assert owed[ActorRole.AUTHORISED_REPRESENTATIVE] - shared == {"AIA-AR-A22"}
+    # The representative owes one more than its own Article: Art. 71(2) names it in the paragraph
+    # — the Annex VIII data is entered "by the provider or, where applicable, by the authorised
+    # representative" — so it is a duty-holder there and not merely the provider's agent.
+    assert owed[ActorRole.AUTHORISED_REPRESENTATIVE] - shared == {"AIA-AR-A22", "AIA-PO-A71-2"}
 
 
 def test_the_report_lists_every_role_the_act_binds(spec):

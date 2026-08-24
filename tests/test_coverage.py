@@ -344,7 +344,7 @@ def test_every_borrowed_definition_names_the_instrument_it_is_borrowed_from(ledg
 
 
 def test_every_annex_item_a_rule_checks_is_supplied_to_that_rule(ledger, spec):
-    """"RULE <id>" ON AN ANNEX ITEM MUST MEAN THE JUDGE IS SHOWN THE ANNEX.
+    """"RULE <id>" ON AN ANNEX ITEM MUST MEAN THE RULE CARRIES THAT ANNEX.
 
     The sibling of `test_every_definition_the_ledger_hands_to_a_node_reaches_it`, for the
     obligation layer. `requirement` resolves from `source.article`/`paragraph`/`point` only, so an
@@ -352,9 +352,18 @@ def test_every_annex_item_a_rule_checks_is_supplied_to_that_rule(ledger, spec):
     elements set out in Annex IV" — resolves to the pointer and not the list. A `completeness`
     verdict reached that way asks a judge to find every element of something nobody showed it.
 
-    `source.annex` is what closes it: the loader injects that Annex verbatim into `annex_context`
-    and the judge prompt carries it. So a ledger entry claiming a rule checks an annex item is only
-    true where the rule cites THAT annex."""
+    `source.annex` is what closes it: the loader injects that Annex verbatim into `annex_context`.
+    So a ledger entry claiming a rule checks an annex item is only true where the rule cites THAT
+    annex.
+
+    WHAT THIS DOES NOT PROVE: that a judge reads the annex, which is a separate and narrower
+    claim. `annex_context` reaches a prompt only for a `document_verifiable` rule —
+    otherwise the judge returns NOT_APPLICABLE before building one. Annex IV, through AIA-HR-A11,
+    is the only annex any judge is shown. Annexes V and VI and VIII are ruled on by rules that are
+    not verifiable, because a declaration of conformity, a conformity assessment procedure and a
+    database entry are none of them the file under review — so for those items the claim this test
+    enforces is that the rule carries the annex and states what the item requires, not that
+    anything has read it against a document."""
     by_id = {r.rule_id: r for r in spec.rules}
     unsupplied: dict[str, str] = {}
     for annex, value in (ledger["annex_rulings"] or {}).items():
@@ -475,7 +484,12 @@ def _prose(path: Path) -> list[str]:
     sentence split would otherwise cut every citation off from the claim that names it, and the
     split is on the full stop alone: "Art 43(4); the second awaits a rule" is one claim, and
     breaking it at the semicolon leaves the half that makes the claim with no address in it."""
-    raw = re.sub(r"^\s*#\s?", " ", path.read_text(encoding="utf-8"), flags=re.M)
+    text = path.read_text(encoding="utf-8")
+    # A top-level key ENDS a sentence. Without this the key `annexes_awaiting_rules:` joins the
+    # comment beneath it and the section's own name reads as a claim about whatever that comment
+    # cites first — a debt about an Annex reported as a false claim about an Article.
+    text = re.sub(r"^(\w[\w-]*:)", r"\1 .", text, flags=re.M)
+    raw = re.sub(r"^\s*#\s?", " ", text, flags=re.M)
     raw = re.sub(r"\s+", " ", raw).replace("Art. ", "Art ").replace("Arts. ", "Arts ")
     return re.split(r"(?<=\.)\s+", raw)
 

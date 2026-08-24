@@ -34,6 +34,10 @@
 
 reference: internal-mobility.md
 system_id: internal-mobility
+# Which Annex III area the document's system falls in. Read, not assumed: the rules a case is
+# scored on are SELECTED for this area, so a document describing something else would be judged
+# against obligations it does not owe.
+annex_iii_area: employment
 default_split: test  # every case here is HELD OUT — the reportable split
 
 cases:

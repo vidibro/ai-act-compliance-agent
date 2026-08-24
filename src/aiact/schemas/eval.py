@@ -134,6 +134,21 @@ class GoldenSet(BaseModel):
     reference_path: str
     act_version_date: str
     spec_version: str
+
+    annex_iii_area: AnnexIIIArea
+    """WHICH KIND OF SYSTEM the reference document describes, so the rules a case is scored on can
+    be SELECTED rather than guessed.
+
+    Not decoration. Obligations gate on the area and on the Art. 6 route, so "every
+    document-verifiable high-risk rule" is not the set any real system owes: Art. 12(3) binds
+    Annex III point 1(a) biometrics and Art. 11(2) binds an Annex I product. A ruler that demanded
+    a section for those in an employment document would mark a compliant file as failing two
+    obligations it does not have.
+
+    Required, and no default. Every case here comes from one reference document describing one kind
+    of system; a set that could not say which kind would be scored against a rule list nobody
+    checked."""
+
     cases: list[GoldenCase]
 
     def for_split(self, split: Split | Literal["all"]) -> list[GoldenCase]:

@@ -20,11 +20,13 @@ from __future__ import annotations
 import sys
 from collections import defaultdict
 from concurrent.futures import ThreadPoolExecutor, as_completed
+from datetime import date
 from typing import Protocol
 
-from aiact.schemas.enums import Verdict
+from aiact.schemas.classification import ClassificationEvidence, UseCaseClassification
+from aiact.schemas.enums import ActorRole, RiskClass, Verdict
 from aiact.schemas.eval import AblationType, GoldenCase, GoldenSet
-from aiact.schemas.policy import PolicyRule, PolicySpec
+from aiact.schemas.policy import LegalSource, PolicyRule, PolicySpec
 
 
 class Checker(Protocol):
@@ -175,3 +177,39 @@ def report(checker_name: str, results: list[Result]) -> str:
         f"{_pct(overall, len(results))}"
     )
     return "\n".join(lines)
+
+
+def rules_a_case_is_scored_on(spec: PolicySpec, golden: GoldenSet) -> tuple[PolicyRule, ...]:
+    """The obligations a document from this golden set is judged against.
+
+    SELECTED, not filtered by hand. `select_rules` is what decides which obligations a real system
+    owes, and it gates on the Art. 6 route and the Annex III area as well as the tier — so a hand
+    written "every document-verifiable high-risk rule" is a different, wider set, and the two drift
+    the moment a gated rule is added. Both the generator and the ruler's own tests read this, so
+    the ground truth and the check on it cannot disagree about what a case covers.
+
+    The provider's set: the reference documents are a provider's technical file, and the deployer
+    obligations are all `document_verifiable: false` in any event.
+    """
+    from aiact.gap.rules import select_rules  # local: the eval layer is below gap, not beside it
+
+    use_case = UseCaseClassification(
+        use_case_id=golden.system_id,
+        description=f"the system {golden.reference_path} documents",
+        risk_class=RiskClass.HIGH_RISK,
+        annex_iii_area=golden.annex_iii_area,
+        reasoning="declared by the golden set",
+        confidence="high",
+        triggered_by=[
+            ClassificationEvidence(
+                source=LegalSource(
+                    instrument="Regulation (EU) 2024/1689",
+                    article="6",
+                    paragraph="2",
+                    act_version_date=date.fromisoformat(golden.act_version_date),
+                ),
+                reasoning="the golden set declares this system high-risk under Annex III",
+            )
+        ],
+    )
+    return select_rules(spec, use_case, ActorRole.PROVIDER).document_verifiable

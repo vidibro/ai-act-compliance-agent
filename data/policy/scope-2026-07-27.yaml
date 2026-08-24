@@ -156,8 +156,8 @@ article_rulings:
       No 1025/2012, which this corpus does not hold. Feeds Art. 40, out of scope as an option.
     28: >-
       'common specification'. Defined against 'technical specification' in Article 2, point (4), of
-      Regulation (EU) No 1025/2012, which this corpus does not hold. Feeds Art. 41; 41(5) awaits a
-      rule.
+      Regulation (EU) No 1025/2012, which this corpus does not hold. Feeds Art. 41, whose one
+      provider duty at 41(5) is cited by AIA-PO-A41-5.
     29: "'training data'. Feeds Art. 10, cited whole."
     30: "'validation data'. Feeds Art. 10, cited whole."
     31: "'validation data set'. Feeds Art. 10, cited whole."
@@ -344,7 +344,23 @@ article_rulings:
       RULE AIA-HR-A10 — for a system not trained on data, only the testing data sets are caught.
       Narrows which paragraphs apply rather than adding a duty.
   11:
+    2: >-
+      RULE AIA-HR-A11-2 — where the high-risk system relates to a Section A Annex I product, ONE
+      set of technical documentation carries both this Regulation's information and the sectoral
+      instrument's. Gated to the Annex I route, because an Annex III system has no second
+      instrument to merge with.
     3: Commission delegated power to amend Annex IV. Institutional.
+  12:
+    2: >-
+      RULE AIA-HR-A12 — WHAT the logging capability must be able to record: events identifying an
+      Art. 79(1) risk or a substantial modification, events feeding Art. 72 post-market monitoring,
+      and events supporting the deployer's Art. 26(5) monitoring. Supplied to the judge through
+      that rule's `qualified_by`, because a system that logs nothing at all breaches 12(1) and the
+      finding belongs there.
+    3: >-
+      RULE AIA-HR-A12-3 — the four records an Annex III point 1(a) remote biometric identification
+      log must hold: the period of each use, the reference database, the input data that matched,
+      and the persons who verified the result under Art. 14(5). Gated to the biometrics area.
   13:
     1: RULE AIA-HR-A13 — the system must be transparent enough for a deployer to interpret its output.
     2: RULE AIA-HR-A13 — instructions for use, in an appropriate digital format.
@@ -574,6 +590,10 @@ article_rulings:
     2: Commission duty to inform the Art. 1025/2012 committee first. Institutional.
     3: Presumption of conformity for a system that follows them. Declaratory, no duty.
     4: Commission duty to assess a harmonised standard proposed to it. Institutional.
+    5: >-
+      RULE AIA-PO-A41-5 — a provider that does NOT follow an adopted common specification must duly
+      justify that its own technical solutions meet the Section 2 requirements to a level at least
+      equivalent. The one paragraph of Art. 41 that binds a provider rather than the Commission.
     6: Member State route to challenge a common specification. Not a provider duty.
   42:
     1: >-
@@ -620,9 +640,22 @@ article_rulings:
       A single EU declaration of conformity where other Union harmonisation legislation also requires
       one. Consolidates declarations owed under instruments this tool does not carry, so a gap
       against it could not be stated meaningfully.
+    2: >-
+      RULE AIA-PO-A47-2 — the declaration must state conformity with Section 2, carry the Annex V
+      information, and be translated for every Member State where the system is placed on the
+      market or made available. AIA-PO-A47 carries 47(1), which is the duty to draw one up at all.
     5: Commission delegated power to amend Annex V. Institutional.
   48:
     1: The CE marking is subject to Art. 30 of Regulation (EC) No 765/2008 — an external instrument.
+    2: >-
+      RULE AIA-PO-A48-2 — a DIGITAL CE marking for a system provided digitally, permitted only
+      where it is easily accessible via the interface the system is accessed from or via an easily
+      accessible machine-readable code. AIA-PO-A48 carries 48(3), written for something to affix a
+      mark to.
+    4: >-
+      RULE AIA-PO-A48-4 — where a notified body performed the Art. 43 assessment, its
+      identification number follows the marking, is affixed by the body or on its instructions, and
+      appears in any promotional material claiming CE conformity.
     5: >-
       States what the CE marking MEANS where other Union law also requires it. Declaratory about the
       marking's effect rather than a separate act the provider performs.
@@ -974,6 +1007,14 @@ article_rulings:
   # --- Chapter VIII — EU database --------------------------------------------------------------
   71:
     1: Commission duty to set up and maintain the EU database. Institutional.
+    2: >-
+      RULE AIA-PO-A71-2 — the Annex VIII Section A and B data entered into the EU database by the
+      provider or, where applicable, by the authorised representative. Section A for a high-risk
+      system, Section B for one registered as not high-risk under Art. 6(3); AIA-PO-A49 and
+      AIA-NHR-A06-4 carry the duty to register at all.
+    3: >-
+      RULE AIA-DP-A71-3 — the Annex VIII Section C data entered by a deployer that is, or acts on
+      behalf of, a public authority. AIA-DP-A49-3 carries the duty to register the deployment.
     4: Which parts of the database are public. A property of the register, not a duty of any role.
     5: Limits the personal data the database may hold. Binds the Commission as controller.
     6: >-
@@ -985,6 +1026,11 @@ article_rulings:
       performance data over the lifetime, so continuing Chapter III Section 2 compliance can be
       evaluated. Supplied to the judge through that rule's `qualified_by`: a system established and
       then left idle satisfies 72(1) and not this.
+    3: >-
+      RULE AIA-PO-A72 — the monitoring system must be BASED ON a written post-market monitoring
+      plan, and that plan belongs inside the Annex IV technical documentation. Supplied to the
+      judge through that rule's `qualified_by`. The documentation half is separately reachable:
+      Annex IV point 9 names the plan by its Article, and AIA-HR-A11 carries Annex IV verbatim.
     4: >-
       Integration with post-market monitoring already established under Section A Annex I law or
       Union financial services law. An accommodation.
@@ -1467,44 +1513,10 @@ article_rulings:
 # else in the repo would show them as missing.
 #
 # Emptying this bucket is the work. Editing it away is not.
+# CHAPTER V AND NOTHING ELSE. Every high-risk debt is written as a rule; what is left is the
+# general-purpose AI model regime, which is not a paragraph a rule cites too narrowly but a parallel
+# regime the ruleset does not carry at all.
 articles_awaiting_rules:
-  11:
-    2: >-
-      A SINGLE set of technical documentation where the system relates to a Section A Annex I
-      product, containing both this Regulation's information and the sectoral instrument's.
-      AIA-HR-A11 cites 11(1) only, so an Annex I provider is told to draw up documentation and never
-      told it must be one document. Narrow: applies_to_route annex_i.
-  12:
-    2: >-
-      WHAT the logging must enable — events identifying an Art. 79(1) risk or a substantial
-      modification, events supporting Art. 72 post-market monitoring, and events supporting the
-      deployer's Art. 26(5) monitoring. AIA-HR-A12 cites 12(1), the bare capability, so a system
-      that logs anything at all satisfies the rule while recording none of the three.
-    3: >-
-      Minimum logging for Annex III point 1(a) systems: period of each use, the reference database,
-      the input data that matched, and the persons who verified the result. Document-verifiable and
-      area-specific — applies_to_annex_iii_area biometrics.
-  41:
-    5: >-
-      JUSTIFY THE ALTERNATIVE. A provider who does NOT follow a common specification must "duly
-      justify that they have adopted technical solutions that meet the requirements referred to in
-      Section 2". Art. 41 was excluded as a Commission power, which is true of every other paragraph
-      in it. The justification is a document, so this is document-verifiable in a way most of the
-      AIA-PO-* family is not — a technical file either carries the equivalence argument or does not.
-  47:
-    2: >-
-      The declaration must state conformity with Section 2, contain the Annex V information, and be
-      translated for the Member States where the system is placed. AIA-PO-A47 cites 47(1) — drawing
-      it up and keeping it ten years — so its CONTENTS are checked by nothing. Brings Annex V into
-      scope.
-  48:
-    2: >-
-      A DIGITAL CE marking for systems provided digitally, accessible via the interface or a
-      machine-readable code. AIA-PO-A48 cites 48(3), the affixing duty written for physical goods,
-      which is the wrong half for most systems this tool will review.
-    4: >-
-      Where a notified body was involved, the CE marking must be followed by its identification
-      number. Applies on the Annex VII route that Art. 43(1) opens for Annex III point 1.
   # --- Arts. 52 to 55: Chapter V, the general-purpose AI model regime --------------------------
   # A DIFFERENT KIND OF DEBT from the rest of this section, and worth reading as one group even
   # though article order splits it. Every other entry here is a paragraph a high-risk rule was
@@ -1562,22 +1574,6 @@ articles_awaiting_rules:
     2: >-
       Demonstrate alternative adequate means of compliance where neither a code of practice nor a
       harmonised standard is followed. The 53(4) duty again, for the systemic-risk obligations.
-  71:
-    2: >-
-      WHAT registration consists of, for the provider: the Annex VIII Section A and B data "shall be
-      entered into the EU database by the provider or, where applicable, by the authorised
-      representative". AIA-PO-A49 carries Art. 49(1), which is the duty to register at all; this is
-      the content of it, and nothing checks the content. Same shape as Art. 47(2) for the
-      declaration of conformity, and it belongs in the same bucket for the same reason.
-    3: >-
-      The deployer half of the same duty: Annex VIII Section C data, entered by a deployer that is
-      or acts for a public authority. AIA-DP-A49-3 carries the Art. 49(3) duty to register; this
-      says what goes in.
-  72:
-    3: >-
-      The post-market monitoring PLAN shall be part of the Annex IV technical documentation. This is
-      the document-verifiable half of Art. 72 — it is in the file under review — while AIA-PO-A72
-      carries document_verifiable false on the strength of 72(1) alone.
 # --- ANNEXES ---------------------------------------------------------------------------------
 # The Annexes carry operative content the Articles only point at: Annex III IS the list of high-risk
 # areas, Annex I IS the list of harmonisation instruments, Annex IV IS the technical documentation an
@@ -1695,8 +1691,48 @@ annex_rulings:
     7: RULE AIA-HR-A11 — harmonised standards applied, or the solutions adopted where none were.
     8: RULE AIA-HR-A11 — a copy of the Art. 47 EU declaration of conformity, which AIA-PO-A47 checks.
     9: >-
-      RULE AIA-HR-A11 — the Art. 72 post-market monitoring system and plan. The plan is also the
-      duty declared at Art. 72(3) in articles_awaiting_rules; the item is where it must live.
+      RULE AIA-HR-A11 — the Art. 72 post-market monitoring system and plan. Art. 72(3) is what
+      requires the plan to sit here, and AIA-PO-A72 carries it as a qualifier; this item is where
+      the plan must live.
+# ANNEXES A RULE SHOULD REACH AND DOES NOT. Same split, and for the same reason: an annex the tool
+# ought to read is not an annex the tool has decided against. Both of these are consequences of a
+# rule citing too narrowly, so each is emptied by fixing that rule rather than by writing an annex
+# rule of its own.
+  # ANNEX V IS THE DECLARATION OF CONFORMITY'S CONTENT, and AIA-PO-A47-2 is the rule for it —
+  # Art. 47(2) requires the declaration to state conformity with Section 2 and to carry this
+  # information. That rule is document_verifiable false, as the declaration is an administrative
+  # artefact rather than part of the technical file, so no judge is shown these items; what the
+  # rule does is tell the reader what has to be on the page and what is most often missing.
+  # Every item is document-verifiable in itself: the declaration is a single page, and this is it.
+  V:
+    1: >-
+      RULE AIA-PO-A47-2 — The system's name and type, and any reference allowing identification
+      and traceability.
+    2: >-
+      RULE AIA-PO-A47-2 — The name and address of the provider or, where applicable, of the
+      authorised representative.
+    3: >-
+      RULE AIA-PO-A47-2 — A statement that the declaration is issued under the SOLE RESPONSIBILITY
+      of the provider.
+    4: >-
+      RULE AIA-PO-A47-2 — A statement that the system conforms with this Regulation and with any
+      other Union law requiring a declaration of conformity. The operative sentence of the
+      document.
+    5: >-
+      RULE AIA-PO-A47-2 — Where personal data is processed, a statement of compliance with
+      Regulations (EU) 2016/679 and 2018/1725 and Directive (EU) 2016/680. Absent from most
+      templates written for this Regulation alone, and required whenever the system touches
+      personal data.
+    6: >-
+      RULE AIA-PO-A47-2 — References to the harmonised standards or common specifications
+      conformity is declared against.
+    7: >-
+      RULE AIA-PO-A47-2 — Where applicable, the notified body's name and identification number,
+      the procedure performed, and the certificate issued. Populated only on the Annex VII route.
+    8: >-
+      RULE AIA-PO-A47-2 — Place and date of issue, the signatory's name and function, on whose
+      behalf they signed, and a SIGNATURE. An unsigned declaration does not satisfy Art. 47.
+
   # Annex VI is the internal-control conformity assessment route, cited by AIA-PO-A43-2. Its four
   # points are the procedure itself, performed by the provider without a notified body.
   VI:
@@ -1706,11 +1742,90 @@ annex_rulings:
     4: >-
       RULE AIA-PO-A43-2 — verify that design, development and Art. 72 post-market monitoring are
       consistent with the technical documentation.
-  # Annex VIII is the CONTENT of the Art. 49 registrations, and it divides by who registers:
-  # Section A the Art. 49(1) provider, Section B the Art. 49(2) provider of a system assessed as not
-  # high-risk, Section C the Art. 49(3) deployer. Each rule checks that the registration was made;
-  # none checks what went into it, and most of what goes in is an artefact another rule already
-  # requires. Ruled per item so that split is visible rather than assumed.
+  # ANNEX VIII IS THE CONTENT OF THE ART. 49 REGISTRATIONS, and Arts. 71(2) and (3) are what put it
+  # there: AIA-PO-A71-2 for the provider's Sections A and B, AIA-DP-A71-3 for the public-authority
+  # deployer's Section C. AIA-PO-A49, AIA-NHR-A06-4 and AIA-DP-A49-3 carry the duty to register at
+  # all — their subject is Art. 49(1), 6(4) and 49(3), and the Annex they cite is III, the area
+  # gate — so the split between registering and what is entered runs along the Article boundary.
+  #
+  # NO JUDGE SEES ANY OF THE 27 ITEMS, and no rule here changes that. Every rule citing this Annex
+  # is document_verifiable false, so the loader fills annex_context and no prompt is ever built;
+  # AIA-ALL-A49-4, for Art. 49(4), is the same. Registration is an act against a registry, not a
+  # property of a file, so what these rules give a reader is the list to check themselves.
+  VIII:
+    A/1: >-
+      RULE AIA-PO-A71-2 — the provider's name, address and contact details. Registry
+      identification.
+    A/2: >-
+      RULE AIA-PO-A71-2 — details of a person submitting on the provider's behalf. Registry
+      identification.
+    A/3: >-
+      RULE AIA-PO-A71-2 — the authorised representative's details where applicable. The
+      appointment itself is Art. 22, cited at 22(1) by AIA-PO-A22.
+    A/4: >-
+      RULE AIA-PO-A71-2 — trade name and any reference allowing identification and traceability.
+    A/5: >-
+      RULE AIA-PO-A71-2 — the intended purpose, components and functions. Also Annex IV(1)(a).
+    A/6: >-
+      RULE AIA-PO-A71-2 — a concise description of the data, inputs and operating logic.
+    A/7: >-
+      RULE AIA-PO-A71-2 — the system's status; on the market, withdrawn, or recalled. Registry
+      state.
+    A/8: >-
+      RULE AIA-PO-A71-2 — type, number and expiry of the notified body certificate, where
+      applicable. Exists only on the Annex VII route, which AIA-PO-A43-1 covers.
+    A/9: >-
+      RULE AIA-PO-A71-2 — a scanned copy of that certificate, where applicable.
+    A/10: >-
+      RULE AIA-PO-A71-2 — the Member States where the system has been placed on the market.
+    A/11: >-
+      RULE AIA-PO-A71-2 — a copy of the Art. 47 EU declaration of conformity, which AIA-PO-A47
+      checks.
+    A/12: >-
+      RULE AIA-PO-A71-2 — electronic instructions for use, withheld for law enforcement,
+      migration, asylum and border control systems. The instructions themselves are Art. 13,
+      checked by AIA-HR-A13.
+    A/13: >-
+      RULE AIA-PO-A71-2 — a URL for additional information, expressly OPTIONAL. Not a duty at all.
+    B/1: >-
+      RULE AIA-PO-A71-2 — the provider's name, address and contact details.
+    B/2: >-
+      RULE AIA-PO-A71-2 — details of a person submitting on the provider's behalf.
+    B/3: >-
+      RULE AIA-PO-A71-2 — the authorised representative's details, where applicable.
+    B/4: >-
+      RULE AIA-PO-A71-2 — trade name and identification reference.
+    B/5: >-
+      RULE AIA-PO-A71-2 — a description of the intended purpose.
+    B/6: >-
+      RULE AIA-PO-A71-2 — WHICH Art. 6(3) condition the system relies on. The substance of the
+      not-high-risk claim, and what Art. 80(1) puts an authority onto.
+    B/7: >-
+      RULE AIA-PO-A71-2 — a short summary of the grounds for the not-high-risk conclusion. The
+      Art. 6(4) assessment, written down; misstating it attracts the Art. 80(7) fine.
+    B/8: >-
+      RULE AIA-PO-A71-2 — the system's status. Registry state.
+    B/9: >-
+      RULE AIA-PO-A71-2 — the Member States where it has been placed on the market.
+    C/1: >-
+      RULE AIA-DP-A71-3 — the deployer's name, address and contact details.
+    C/2: >-
+      RULE AIA-DP-A71-3 — details of the person submitting on the deployer's behalf.
+    C/3: >-
+      RULE AIA-DP-A71-3 — the URL of the provider's own entry for the system. Links the two
+      entries.
+    C/4: >-
+      RULE AIA-DP-A71-3 — a summary of the Art. 27 FUNDAMENTAL RIGHTS IMPACT ASSESSMENT findings.
+      The assessment is checked by AIA-DP-A27; this item is where its summary must be lodged, and
+      Art. 27(3) — notifying the authority — is cited by AIA-DP-A27-3.
+    C/5: >-
+      RULE AIA-DP-A71-3 — a summary of the data protection impact assessment under Art. 35 GDPR or
+      Art. 27 of Directive (EU) 2016/680, as Art. 26(9) specifies. Settled by data protection law
+      this tool does not carry; the item is the registration of its summary.
+
+  # Annex IX is what Art. 60(4)(c) has a provider register before real-world testing. Out of
+  # scope with the Art. 60 route itself, and ruled per item so the scope limit names what it
+  # costs.
   IX:
     1: The Union-wide unique single identification number of the testing. Art. 60 route, out of scope.
     2: >-
@@ -1790,33 +1905,8 @@ annex_rulings:
       Conformity assessment bodies use these lists when applying for designation. The applicant
       body's duty, and conformity assessment bodies are out of scope by role.
 
-# ANNEXES A RULE SHOULD REACH AND DOES NOT. Same split, and for the same reason: an annex the tool
-# ought to read is not an annex the tool has decided against. Both of these are consequences of a
-# rule citing too narrowly, so each is emptied by fixing that rule rather than by writing an annex
-# rule of its own.
+
 annexes_awaiting_rules:
-  # ANNEX V IS THE DECLARATION OF CONFORMITY'S CONTENT. Art. 47(2) requires the declaration to
-  # contain this information, and AIA-PO-A47 cites 47(1) — draw it up, keep it ten years — so
-  # nothing checks what is in it. Emptied when 47(2) leaves articles_awaiting_rules. Every item
-  # below is document-verifiable: the declaration is a single page, and this is what is on it.
-  V:
-    1: The system's name and type, and any reference allowing identification and traceability.
-    2: The name and address of the provider or, where applicable, of the authorised representative.
-    3: A statement that the declaration is issued under the SOLE RESPONSIBILITY of the provider.
-    4: >-
-      A statement that the system conforms with this Regulation and with any other Union law
-      requiring a declaration of conformity. The operative sentence of the document.
-    5: >-
-      Where personal data is processed, a statement of compliance with Regulations (EU) 2016/679 and
-      2018/1725 and Directive (EU) 2016/680. Absent from most templates written for this Regulation
-      alone, and required whenever the system touches personal data.
-    6: References to the harmonised standards or common specifications conformity is declared against.
-    7: >-
-      Where applicable, the notified body's name and identification number, the procedure performed,
-      and the certificate issued. Populated only on the Annex VII route.
-    8: >-
-      Place and date of issue, the signatory's name and function, on whose behalf they signed, and a
-      SIGNATURE. An unsigned declaration does not satisfy Art. 47.
   # ANNEX VII is the notified-body conformity assessment route Art. 43(1)(b) offers for Annex III
   # point 1. AIA-PO-A43-1 carries that duty and cites neither Annex VI nor Annex VII, though it is
   # the one rule in the spec where a notified body can be involved. Annex VI is in scope only
@@ -1846,67 +1936,3 @@ annexes_awaiting_rules:
       development and testing happen and share all necessary information; 5.3 has the body audit
       periodically. A continuing duty for as long as the certificate stands.
 
-  # ANNEX VIII IS THE CONTENT OF THE ART. 49 REGISTRATIONS, and for most systems nothing checks it.
-  # AIA-PO-A49, AIA-NHR-A06-4 and AIA-DP-A49-3 check that the registration was MADE — their subject
-  # is Art. 49(1), 6(4) and 49(3), and the Annex they cite is III, the area gate. Which Section of
-  # this Annex answers which paragraph is written into the Annex's own headers, not into Art. 49(1)
-  # to (3), so those three rules point at the registration without carrying its contents.
-  #
-  # ONE RULE DOES CITE THIS ANNEX: AIA-ALL-A49-4, for Art. 49(4) — which names Annex VIII three
-  # times, by Section and by point range. The loader injects the Annex into that rule's
-  # annex_context, but AIA-ALL-A49-4 is document_verifiable: false, so it never becomes a judging
-  # job and the prompt is never built. NO JUDGE SEES ANY OF THE 27 ITEMS. The same holds for every
-  # other annex-citing rule except AIA-HR-A11: AIA-PO-A43-2 (Annex VI), AIA-PO-A49 and
-  # AIA-DP-A49-3 (Annex III) are all non-verifiable too, so annex_context reaches a prompt for
-  # Annex IV alone.
-  #
-  # Emptied by a rule for Art. 71(2)-(3) — entering the Annex VIII data into the EU database —
-  # which is already declared in articles_awaiting_rules. That is where the duty is written as a
-  # duty for every high-risk system, and this Annex is the list it must satisfy.
-  VIII:
-    A/1: the provider's name, address and contact details. Registry identification.
-    A/2: details of a person submitting on the provider's behalf. Registry identification.
-    A/3: >-
-      the authorised representative's details where applicable. The appointment
-      itself is Art. 22, cited at 22(1) by AIA-PO-A22.
-    A/4: trade name and any reference allowing identification and traceability.
-    A/5: the intended purpose, components and functions. Also Annex IV(1)(a).
-    A/6: a concise description of the data, inputs and operating logic.
-    A/7: the system's status; on the market, withdrawn, or recalled. Registry state.
-    A/8: >-
-      type, number and expiry of the notified body certificate, where applicable.
-      Exists only on the Annex VII route, which AIA-PO-A43-1 covers.
-    A/9: a scanned copy of that certificate, where applicable.
-    A/10: the Member States where the system has been placed on the market.
-    A/11: a copy of the Art. 47 EU declaration of conformity, which AIA-PO-A47 checks.
-    A/12: >-
-      electronic instructions for use, withheld for law enforcement, migration,
-      asylum and border control systems. The instructions themselves are Art. 13, checked by
-      AIA-HR-A13.
-    A/13: a URL for additional information, expressly OPTIONAL. Not a duty at all.
-    B/1: the provider's name, address and contact details.
-    B/2: details of a person submitting on the provider's behalf.
-    B/3: the authorised representative's details, where applicable.
-    B/4: trade name and identification reference.
-    B/5: a description of the intended purpose.
-    B/6: >-
-      WHICH Art. 6(3) condition the system relies on. The substance of the
-      not-high-risk claim, and what Art. 80(1) puts an authority onto.
-    B/7: >-
-      a short summary of the grounds for the not-high-risk conclusion. The
-      Art. 6(4) assessment, written down; misstating it attracts the Art. 80(7) fine.
-    B/8: the system's status. Registry state.
-    B/9: the Member States where it has been placed on the market.
-    C/1: the deployer's name, address and contact details.
-    C/2: details of the person submitting on the deployer's behalf.
-    C/3: the URL of the provider's own entry for the system. Links the two entries.
-    C/4: >-
-      a summary of the Art. 27 FUNDAMENTAL RIGHTS IMPACT ASSESSMENT findings.
-      The assessment is checked by AIA-DP-A27; this item is where its summary must be lodged, and
-      Art. 27(3) — notifying the authority — is cited by AIA-DP-A27-3.
-    C/5: >-
-      a summary of the data protection impact assessment under Art. 35 GDPR or
-      Art. 27 of Directive (EU) 2016/680, as Art. 26(9) specifies. Settled by data protection law
-      this tool does not carry; the item is the registration of its summary.
-  # Annex IX is what Art. 60(4)(c) has a provider register before real-world testing. Out of scope
-  # with the Art. 60 route itself, and ruled per item so the scope limit names what it costs.

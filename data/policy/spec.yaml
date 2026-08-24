@@ -204,11 +204,105 @@ rules:
       act_version_date: 2026-07-27
     applies_to_risk_class: [high_risk]
     applies_to_role: [provider]
+    # 12(2) is WHAT the capability must be able to record, and it is the whole substance of the
+    # duty: a system that logs anything at all satisfies 12(1) while recording none of the three.
+    # Supplied rather than cited, because a system with no logging at all breaches 12(1) and the
+    # finding belongs there — the same relation 72(2) has to 72(1).
+    qualified_by:
+      - article: 12
+        paragraph: 2
     obligation_status: mandatory
-    check_type: presence
+    check_type: substance
     evidence_expected: >-
-      A description that the system records events/logs automatically over its lifetime. Existence
-      of the logging capability, described, is sufficient for this rule.
+      Automatic recording of events over the system's lifetime, and a description of WHICH events
+      the logs capture. Art. 12(2) fixes three purposes the capability must serve, and a log that
+      serves none of them is not the capability the Article requires: events that would identify
+      the system presenting a risk under Art. 79(1) or undergoing a substantial modification;
+      events that feed the Art. 72 post-market monitoring; and events that let the deployer carry
+      out its Art. 26(5) monitoring of the system in operation. "The system writes logs", with
+      nothing about what is in them, does not answer this.
+    document_verifiable: true
+    effective_date_by_route:
+      annex_iii: 2027-12-02
+      annex_i: 2028-08-02
+    status: active
+
+  # ONE FILE, NOT TWO. AIA-HR-A11 carries 11(1) — draw the documentation up, keep it current, cover
+  # Annex IV — and an Annex I Section A provider satisfying it with a separate AI annex bolted to a
+  # sectoral file has done what that rule asks and not what 11(2) requires.
+  - rule_id: AIA-HR-A11-2
+    source:
+      instrument: "Regulation (EU) 2024/1689"
+      article: 11
+      paragraph: 2 # a single set of technical documentation
+      act_version_date: 2026-07-27
+    applies_to_risk_class: [high_risk]
+    applies_to_role: [provider]
+    # ANNEX I ONLY, and Section A at that. The paragraph opens "Where a high-risk AI system related
+    # to a product covered by the Union harmonisation legislation listed in Section A of Annex I" —
+    # an Annex III system has no second instrument to merge with, and Section B is withheld
+    # Chapter III entirely by Art. 2(2).
+    applies_to_route: annex_i
+    activation_condition: >-
+      Section A of Annex I, specifically. Art. 2(2) withholds Chapter III from a system high-risk
+      under Art. 6(1) because of a SECTION B product — vehicles, aviation, rail, marine — so such a
+      provider owes no technical documentation under this Regulation at all and nothing to merge.
+      Which Section the product's instrument sits in is a fact about that instrument, and this rule
+      is selected on the Annex I route alone.
+    obligation_status: mandatory
+    check_type: completeness
+    evidence_expected: >-
+      A SINGLE document set covering both regimes: everything Art. 11(1) and Annex IV require, and
+      everything the product's own harmonisation instrument requires, in one place. Two files that
+      each cross-reference the other do not satisfy this — the paragraph asks for one set, so that
+      an authority or notified body reading the product's documentation finds the AI system's there
+      too rather than being sent elsewhere. A file that opens by scoping itself to "the AI
+      component" is evidence of the split rather than of the merge.
+    document_verifiable: true
+    effective_date_by_route:
+      annex_iii: 2027-12-02
+      annex_i: 2028-08-02
+    status: active
+
+  # THE BIOMETRIC MINIMUM. AIA-HR-A12 asks what the logs must be able to record for any high-risk
+  # system; for a remote biometric identification system Art. 12(3) names four specific records, and
+  # they are the ones that make an identification auditable after the fact.
+  - rule_id: AIA-HR-A12-3
+    source:
+      instrument: "Regulation (EU) 2024/1689"
+      article: 12
+      paragraph: 3 # the minimum logging for Annex III point 1(a) systems
+      act_version_date: 2026-07-27
+    applies_to_risk_class: [high_risk]
+    applies_to_role: [provider]
+    # NO `annex: III`. The paragraph points at Annex III point 1(a) and the rule is already gated
+    # to that area, so the judge is not being asked which area this is — it is being asked whether
+    # four named records are in the logs. Supplying the whole Annex would add some 7 600 characters
+    # of areas the question does not turn on to every biometric judgement.
+    #
+    # ANNEX III POINT 1(a) ONLY — remote biometric identification. `biometrics` is this ruleset's
+    # name for the whole of point 1, so the rule is selected for categorisation and emotion
+    # recognition systems too, which point 1(a) does not reach. Over-inclusive within one area, and
+    # said so in the condition rather than dropped: the alternative is an area vocabulary that
+    # splits point 1 three ways for this one paragraph.
+    applies_to_annex_iii_area: [biometrics]
+    activation_condition: >-
+      Art. 12(3) binds systems referred to in point 1(a) of Annex III — REMOTE BIOMETRIC
+      IDENTIFICATION. A biometric categorisation system under point 1(b) or an emotion recognition
+      system under point 1(c) is in the same area and is not reached by this paragraph; both still
+      owe Art. 12(1) and (2) through AIA-HR-A12. Point 1(a) also excludes verification whose sole
+      purpose is confirming a person is who they claim to be, which is outside the area altogether.
+    obligation_status: mandatory
+    check_type: completeness
+    evidence_expected: >-
+      Four specific records, described as things the logs actually hold: the PERIOD of each use,
+      with a start date and time and an end date and time; the REFERENCE DATABASE the input data
+      was checked against; the INPUT DATA for which the search produced a match; and the IDENTITY
+      of the natural persons who verified the result under Art. 14(5). The fourth is the one most
+      often missing, and it is the one that ties the Art. 14(5) two-person verification to a named
+      individual after the fact — a log that records the match but not who confirmed it leaves the
+      oversight requirement unevidenced. "Comprehensive audit logging" without these four is not
+      this paragraph.
     document_verifiable: true
     effective_date_by_route:
       annex_iii: 2027-12-02
@@ -495,6 +589,51 @@ rules:
     effective_date_by_route:
       annex_iii: 2027-12-02
       annex_i: 2028-08-02
+    status: active
+
+  # ART. 41 IS A COMMISSION POWER, WITH ONE PARAGRAPH THAT IS NOT. Paragraphs 1 to 4 and 6 are all
+  # about adopting, assessing and repealing common specifications; 41(5) turns and binds the
+  # provider that does not follow one.
+  - rule_id: AIA-PO-A41-5
+    source:
+      instrument: "Regulation (EU) 2024/1689"
+      article: 41
+      paragraph: 5 # justify the equivalent technical solution
+      act_version_date: 2026-07-27
+    applies_to_risk_class: [high_risk]
+    applies_to_role: [provider]
+    activation_condition: >-
+      The duty exists only where the Commission has actually ADOPTED a common specification under
+      Art. 41(1) covering the Section 2 requirement in question, and the provider has chosen not to
+      comply with it. Art. 41(1) allows a common specification only after a standardisation request
+      has failed or gone unanswered and no harmonised standard reference has been published, so
+      which requirements are covered at any moment is a fact about the Official Journal rather than
+      about this system. Nothing in a description of the system settles it, so the obligation is
+      listed with the condition attached rather than asserted of every provider or dropped. A
+      provider that DOES follow the applicable common specification owes nothing here and gains the
+      Art. 41(3) presumption of conformity instead.
+    obligation_status: mandatory
+    check_type: presence
+    evidence_expected: >-
+      A written justification that the technical solutions actually adopted meet the Section 2
+      requirements TO A LEVEL AT LEAST EQUIVALENT to the common specification not followed. The
+      standard is equivalence, not reasonableness: an argument that the chosen approach is sound
+      does not answer the paragraph unless it is measured against what the specification requires.
+      "Duly justify" means the argument is recorded, so a provider that departed from a common
+      specification and wrote nothing down cannot satisfy this after the fact. Which specifications
+      are in force is not visible in the documentation — confirm separately.
+    document_verifiable: false
+    effective_date: 2026-08-02
+    effective_date_note: >-
+      IN FORCE ALREADY, AND EARLIER THAN WHAT IT ATTESTS TO — which reads like an error and is
+      not one. Regulation (EU) 2026/1744 moved Chapter III Sections 1 to 3 to 2 December 2027 for
+      an Annex III system and 2 August 2028 for an Annex I one, and did NOT move Section 5, where
+      this obligation sits. So it applies from the general date of 2 August 2026, while the
+      Section 2 requirements it rests on wait another sixteen months or more. The
+      sequence is what Art. 113(c) says, not a transcription of it: that paragraph names Sections
+      1, 2 and 3 only. Whether the legislator intended Section 5 to run ahead of them, or simply
+      did not carry it across, is a question for advice rather than for this tool — which reports
+      the date the Article gives and says plainly that it looks inverted.
     status: active
 
   # THE ONLY PROVIDER DUTY IN CHAPTER III SECTION 4. Arts. 28 to 39 govern notifying authorities
@@ -786,6 +925,123 @@ rules:
       the date the Article gives and says plainly that it looks inverted.
     status: active
 
+  # WHAT IS ON THE PAGE, as against the fact that a page exists. AIA-PO-A47 carries 47(1) — draw
+  # one up, keep it ten years — and would be satisfied by a document titled "EU declaration of
+  # conformity" saying nothing. This is the paragraph that says what it must say, and it is the one
+  # that brings Annex V into the ruleset.
+  - rule_id: AIA-PO-A47-2
+    source:
+      instrument: "Regulation (EU) 2024/1689"
+      article: 47
+      paragraph: 2 # the declaration's contents and its languages
+      annex: "V"
+      act_version_date: 2026-07-27
+    applies_to_risk_class: [high_risk]
+    applies_to_role: [provider]
+    obligation_status: mandatory
+    check_type: completeness
+    evidence_expected: >-
+      An EU declaration of conformity carrying all eight items Annex V lists, and stating in terms
+      that the system meets the Chapter III Section 2 requirements. The items most often missing
+      are not the identifying ones: point 3, that the declaration is issued under the provider's
+      SOLE RESPONSIBILITY; point 5, a statement of compliance with Regulations (EU) 2016/679 and
+      2018/1725 and Directive (EU) 2016/680, owed wherever the system processes personal data and
+      absent from most templates written for this Regulation alone; point 6, the harmonised
+      standards or common specifications conformity is declared against; and point 8, a place, a
+      date, a named signatory with their function, and a SIGNATURE — an unsigned declaration does
+      not satisfy Art. 47. Point 7 is populated only where a notified body was involved. Separately,
+      the declaration must be TRANSLATED into a language easily understood by the national
+      competent authorities of every Member State where the system is placed on the market or made
+      available, which is a duty per market rather than a single document. An administrative
+      artefact, not part of the technical documentation — confirm separately.
+    document_verifiable: false
+    effective_date: 2026-08-02
+    effective_date_note: >-
+      IN FORCE ALREADY, AND EARLIER THAN WHAT IT ATTESTS TO — which reads like an error and is
+      not one. Regulation (EU) 2026/1744 moved Chapter III Sections 1 to 3 to 2 December 2027 for
+      an Annex III system and 2 August 2028 for an Annex I one, and did NOT move Section 5, where
+      this obligation sits. So it applies from the general date of 2 August 2026, while the
+      Section 2 requirements it rests on wait another sixteen months or more. The
+      sequence is what Art. 113(c) says, not a transcription of it: that paragraph names Sections
+      1, 2 and 3 only. Whether the legislator intended Section 5 to run ahead of them, or simply
+      did not carry it across, is a question for advice rather than for this tool — which reports
+      the date the Article gives and says plainly that it looks inverted.
+    status: active
+
+  # TWO PARAGRAPHS AIA-PO-A48 DOES NOT REACH. It cites 48(3), which is written for something you
+  # can affix a mark to; most systems this tool reviews are supplied digitally, and 48(4) applies
+  # wherever a notified body was involved on the Art. 43(1)(b) route.
+  - rule_id: AIA-PO-A48-2
+    source:
+      instrument: "Regulation (EU) 2024/1689"
+      article: 48
+      paragraph: 2 # the digital CE marking
+      act_version_date: 2026-07-27
+    applies_to_risk_class: [high_risk]
+    applies_to_role: [provider]
+    activation_condition: >-
+      Applies to a high-risk AI system PROVIDED DIGITALLY, which is most of them and is not a fact
+      the tier settles. Where the system ships as or inside a physical product, Art. 48(3)'s
+      affixing duty is the one that binds and AIA-PO-A48 carries it.
+    obligation_status: mandatory
+    check_type: presence
+    evidence_expected: >-
+      A digital CE marking, and the access route that makes it lawful: the paragraph permits one
+      ONLY IF it can easily be accessed via the interface from which the system is accessed, or via
+      an easily accessible machine-readable code or other electronic means. A marking recorded in
+      an internal register, or reachable only through a support request, is not accessible in the
+      sense the paragraph requires. A property of the delivered product, not of the technical
+      documentation — confirm separately.
+    document_verifiable: false
+    effective_date: 2026-08-02
+    effective_date_note: >-
+      IN FORCE ALREADY, AND EARLIER THAN WHAT IT ATTESTS TO — which reads like an error and is
+      not one. Regulation (EU) 2026/1744 moved Chapter III Sections 1 to 3 to 2 December 2027 for
+      an Annex III system and 2 August 2028 for an Annex I one, and did NOT move Section 5, where
+      this obligation sits. So it applies from the general date of 2 August 2026, while the
+      Section 2 requirements it rests on wait another sixteen months or more. The
+      sequence is what Art. 113(c) says, not a transcription of it: that paragraph names Sections
+      1, 2 and 3 only. Whether the legislator intended Section 5 to run ahead of them, or simply
+      did not carry it across, is a question for advice rather than for this tool — which reports
+      the date the Article gives and says plainly that it looks inverted.
+    status: active
+
+  - rule_id: AIA-PO-A48-4
+    source:
+      instrument: "Regulation (EU) 2024/1689"
+      article: 48
+      paragraph: 4 # the notified body's identification number beside the marking
+      act_version_date: 2026-07-27
+    applies_to_risk_class: [high_risk]
+    applies_to_role: [provider]
+    activation_condition: >-
+      "Where applicable" means where a notified body carried out the Art. 43 conformity assessment
+      — the Annex VII route, which Art. 43(1)(b) opens for Annex III point 1 systems and which the
+      sectoral acts open for some Annex I products. A provider that self-assessed under Annex VI
+      has no identification number to add and owes nothing here.
+    obligation_status: mandatory
+    check_type: presence
+    evidence_expected: >-
+      The notified body's identification number following the CE marking, affixed by the body
+      itself or on its instructions by the provider or the authorised representative — the provider
+      may not choose the number or place it on its own initiative. The number must ALSO appear in
+      any promotional material claiming the system fulfils the CE marking requirements, which is a
+      marketing-review duty rather than a documentation one and is the half most often missed. Not
+      visible in the technical documentation — confirm separately.
+    document_verifiable: false
+    effective_date: 2026-08-02
+    effective_date_note: >-
+      IN FORCE ALREADY, AND EARLIER THAN WHAT IT ATTESTS TO — which reads like an error and is
+      not one. Regulation (EU) 2026/1744 moved Chapter III Sections 1 to 3 to 2 December 2027 for
+      an Annex III system and 2 August 2028 for an Annex I one, and did NOT move Section 5, where
+      this obligation sits. So it applies from the general date of 2 August 2026, while the
+      Section 2 requirements it rests on wait another sixteen months or more. The
+      sequence is what Art. 113(c) says, not a transcription of it: that paragraph names Sections
+      1, 2 and 3 only. Whether the legislator intended Section 5 to run ahead of them, or simply
+      did not carry it across, is a question for advice rather than for this tool — which reports
+      the date the Article gives and says plainly that it looks inverted.
+    status: active
+
   - rule_id: AIA-PO-A49
     source:
       instrument: "Regulation (EU) 2024/1689"
@@ -968,6 +1224,111 @@ rules:
       the date the Article gives and says plainly that it looks inverted.
     status: active
 
+  # WHAT THE REGISTRATION CONSISTS OF. AIA-PO-A49, AIA-DP-A49-3 and AIA-NHR-A06-4 carry the duty to
+  # register; Art. 71(2) and (3) say what has to be entered. The split between them is by party,
+  # and it is not the split Art. 49 uses: 71(2) is the provider's Sections A and B, 71(3) is the
+  # public-authority deployer's Section C.
+  - rule_id: AIA-PO-A71-2
+    source:
+      instrument: "Regulation (EU) 2024/1689"
+      article: 71
+      paragraph: 2 # the Annex VIII Section A and B data the provider enters
+      annex: "VIII"
+      act_version_date: 2026-07-27
+    applies_to_risk_class: [high_risk, not_high_risk]
+    applies_to_role: [provider, authorised_representative]
+    applies_to_annex_iii_area:
+      [
+        biometrics,
+        education,
+        employment,
+        essential_services,
+        law_enforcement,
+        migration,
+        justice_democracy,
+      ]
+    # BOTH TIERS, and the Annex says which Section answers which. Art. 71(1) has the database hold
+    # Art. 6(2) high-risk systems registered under Art. 49, AND systems a provider concluded are
+    # NOT high-risk under Art. 6(3) and registered under Art. 6(4) — Annex VIII Section A is the
+    # first, Section B the second. A rule for the high-risk tier alone would leave the derogating
+    # provider told to register and never told what to enter, which is the half Art. 80 then
+    # audits.
+    #
+    # THE AUTHORISED REPRESENTATIVE is named in the paragraph itself, "where applicable", so it is
+    # a duty-holder here and not merely the provider's agent.
+    obligation_status: mandatory
+    check_type: completeness
+    evidence_expected: >-
+      The Annex VIII data actually entered in the EU database, not merely an account created. For a
+      high-risk system that is Section A, thirteen items: the provider's and any representative's
+      identity, the trade name and traceability references, the intended purpose with the
+      components and functions it uses, a concise description of the data and operating logic, the
+      market status, the notified body certificate and a scanned copy where one exists, the Member
+      States of placing, a copy of the Art. 47 EU declaration of conformity, and electronic
+      instructions for use — withheld for law enforcement, migration, asylum and border control
+      systems. Item A/13, a URL for further information, is expressly OPTIONAL.
+      For a system registered as NOT high-risk under Art. 6(3), Section B replaces it and adds the
+      two items that carry the whole claim: B/6, WHICH Art. 6(3) condition is relied on, and B/7, a
+      short summary of the grounds for the conclusion. Those are what Art. 80 puts an authority
+      onto, and misstating them attracts the Art. 80(7) fine.
+      An external act against a registry, not observable from the technical documentation — confirm
+      separately.
+    document_verifiable: false
+    effective_date: 2026-08-02
+    effective_date_note: >-
+      Art. 71 sits in Chapter VIII, which Art. 113 does not carve out, so the entry duty runs from
+      the general date of 2 August 2026 — ahead of the Chapter III Section 2 requirements the
+      entered data describes. Same inversion as the Art. 49 registrations it fills in, and for the
+      same reason: Regulation (EU) 2026/1744 moved Sections 1 to 3 and left everything else where
+      it was.
+    status: active
+
+  - rule_id: AIA-DP-A71-3
+    source:
+      instrument: "Regulation (EU) 2024/1689"
+      article: 71
+      paragraph: 3 # the Annex VIII Section C data the deployer enters
+      annex: "VIII"
+      act_version_date: 2026-07-27
+    applies_to_risk_class: [high_risk]
+    applies_to_role: [deployer]
+    applies_to_annex_iii_area:
+      [
+        biometrics,
+        education,
+        employment,
+        essential_services,
+        law_enforcement,
+        migration,
+        justice_democracy,
+      ]
+    activation_condition: >-
+      The same duty-holder as Art. 49(3), and the paragraph says so: the deployer who IS, or who
+      ACTS ON BEHALF OF, a public authority, agency or body. A private deployer enters nothing; a
+      private entity providing public services owes the Art. 27 impact assessment and not this,
+      unless it is acting on a public authority's behalf. A fact about the deploying organisation
+      and its arrangements, not about the system.
+    obligation_status: mandatory
+    check_type: completeness
+    evidence_expected: >-
+      The Annex VIII Section C data entered in the EU database: the deployer's own identity, the
+      identity of the person submitting on its behalf, the URL of the PROVIDER'S entry for the same
+      system — which is what links the two registrations — and, where Art. 27 applies, a summary of
+      the findings of the fundamental rights impact assessment. Item C/5 adds a summary of the data
+      protection impact assessment under Art. 35 GDPR or Art. 27 of Directive (EU) 2016/680 where
+      Art. 26(9) requires one. Registering the deployment is Art. 49(3); this is what the entry has
+      to contain, and an entry naming the organisation and nothing else does not satisfy it. An
+      external act against a registry — confirm separately.
+    document_verifiable: false
+    effective_date: 2026-08-02
+    effective_date_note: >-
+      Art. 71 sits in Chapter VIII, which Art. 113 does not carve out, so the entry duty runs from
+      the general date of 2 August 2026 — ahead of the Chapter III Section 2 requirements the
+      entered data describes. Same inversion as the Art. 49 registrations it fills in, and for the
+      same reason: Regulation (EU) 2026/1744 moved Sections 1 to 3 and left everything else where
+      it was.
+    status: active
+
   - rule_id: AIA-PO-A72
     source:
       instrument: "Regulation (EU) 2024/1689"
@@ -980,9 +1341,16 @@ rules:
     # document and analyse performance data over the lifetime, so the provider can evaluate
     # continuing compliance with Chapter III Section 2. Supplied rather than cited, because a
     # provider that has established nothing breaches 72(1) and the finding belongs there.
+    # 72(3) is the other half of the same duty: the system must be BASED ON a post-market
+    # monitoring plan, and that plan must sit inside the Annex IV technical documentation. The
+    # second sentence is separately shown to a judge — Annex IV point 9 names the plan and
+    # AIA-HR-A11 carries Annex IV verbatim — but the first is a requirement on the monitoring
+    # SYSTEM, which is this rule's subject and nobody else's.
     qualified_by:
       - article: 72
         paragraph: 2
+      - article: 72
+        paragraph: 3
     obligation_status: mandatory
     check_type: presence
     evidence_expected: >-
@@ -990,10 +1358,11 @@ rules:
       SYSTEMATICALLY collects, documents and analyses performance data over the system's lifetime —
       from deployers and from other sources — so that continuing compliance with Chapter III
       Section 2 can be evaluated. A system that exists on paper and gathers nothing satisfies
-      Art. 72(1) and not Art. 72(2). The duty is to run it; that is an operational process, not a
-      property of the documentation — confirm separately. (The presence of the post-market
-      monitoring PLAN inside the technical documentation is a different question, already covered by
-      Annex IV via AIA-HR-A11.)
+      Art. 72(1) and not Art. 72(2). Art. 72(3) adds that the system must be BASED ON a written
+      post-market monitoring plan — monitoring carried on ad hoc, however diligently, is not this —
+      and that the plan belongs inside the Annex IV technical documentation, where AIA-HR-A11 does
+      reach it. The duty is to run it; that is an operational process, not a property of the
+      documentation — confirm separately.
     document_verifiable: false
     effective_date: 2026-08-02
     status: active

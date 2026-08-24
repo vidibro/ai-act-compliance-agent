@@ -214,6 +214,7 @@ def test_the_report_covers_both_duty_holders(spec):
         "AIA-DP-A27-2",
         "AIA-DP-A27-3",
         "AIA-DP-A49-3",
+        "AIA-DP-A71-3",
         "AIA-DP-A86",
     ]
     # Every judged finding says whose duty it is, so the two sets never merge in a reader's eye.

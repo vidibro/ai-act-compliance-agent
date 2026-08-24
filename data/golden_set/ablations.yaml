@@ -25,6 +25,10 @@
 
 reference: hr-candidate-scoring.md
 system_id: hr-candidate-scoring
+# Which Annex III area the document's system falls in. Read, not assumed: the rules a case is
+# scored on are SELECTED for this area, so a document describing something else would be judged
+# against obligations it does not owe.
+annex_iii_area: employment
 default_split: dev  # all current cases are dev; test set to be authored later (held out)
 
 cases:

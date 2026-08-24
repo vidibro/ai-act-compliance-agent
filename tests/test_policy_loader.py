@@ -77,12 +77,19 @@ def test_shipped_spec_loads():
     # Art. 36(8), the one provider duty in Chapter III Section 4, and Art. 75c(3), whose second
     # sentence turns from the AI Office's power to the operator's report back.
     #
+    # Six more pay down articles_awaiting_rules, and each is the CONTENT of a duty another rule
+    # only required the existence of: Art. 11(2) one documentation set for an Annex I product,
+    # Art. 12(3) the four records a biometric identification log must hold, Art. 41(5) the
+    # justification for departing from a common specification, Art. 47(2) what the declaration of
+    # conformity must say, Art. 48(2) and (4) the digital marking and the notified body's number,
+    # and Arts. 71(2) and (3) what each party enters in the EU database.
+    #
     # Several Articles are more than one rule because they hold more than one duty, and a single
     # rule would let a finding on the first hide a breach of the second: Art. 20, 21 and 47 are two
     # each (the standing duty and what follows it), Art. 22 is two by PARTY — the provider appoints,
     # the representative performs — Art. 27 is three (carry the assessment out, keep it current,
     # file it), Art. 43 is four (three initial routes plus re-assessment), and Art. 49 is three.
-    assert len(spec.rules) == 54
+    assert len(spec.rules) == 62
 
 
 # How many articles each fetched version holds. Per version, not one number, because the count is
@@ -393,8 +400,11 @@ def test_provider_process_obligations_are_not_document_verifiable():
 
 def test_high_risk_requirements_are_document_verifiable():
     spec = _spec()
+    # Nine: Arts. 9 to 15 whole, plus the two paragraphs a whole-article citation does not reach —
+    # Art. 11(2)'s single documentation set and Art. 12(3)'s biometric logging minimum, each gated
+    # to the systems its paragraph names.
     reqs = [r for r in spec.rules if r.rule_id.startswith("AIA-HR-")]
-    assert len(reqs) == 7
+    assert len(reqs) == 9
     assert all(r.document_verifiable for r in reqs)
 
 
