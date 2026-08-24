@@ -84,12 +84,18 @@ def test_shipped_spec_loads():
     # conformity must say, Art. 48(2) and (4) the digital marking and the notified body's number,
     # and Arts. 71(2) and (3) what each party enters in the EU database.
     #
+    # SIXTEEN ARE CHAPTER V, the general-purpose AI model regime, and they share nothing with the
+    # rest: `applies_to_risk_class: [gpai_model]` puts them on the other side of the cascade's
+    # Art. 3(63) question. Art. 52(1) notification, Art. 53(1)(a) to (d) and 53(4), Art. 54(1) to
+    # (5) split between the provider and its representative, and Art. 55(1)(a) to (d) and 55(2) for
+    # a model with systemic risk.
+    #
     # Several Articles are more than one rule because they hold more than one duty, and a single
     # rule would let a finding on the first hide a breach of the second: Art. 20, 21 and 47 are two
     # each (the standing duty and what follows it), Art. 22 is two by PARTY — the provider appoints,
     # the representative performs — Art. 27 is three (carry the assessment out, keep it current,
     # file it), Art. 43 is four (three initial routes plus re-assessment), and Art. 49 is three.
-    assert len(spec.rules) == 62
+    assert len(spec.rules) == 78
 
 
 # How many articles each fetched version holds. Per version, not one number, because the count is

@@ -169,10 +169,12 @@ def select_rules(
     # name no risk class at all, so nothing downstream tests the tier for them — this return is the
     # only thing standing between an excluded system and a transparency obligation. Art. 2 withholds
     # the Regulation whole, Art. 50 included.
-    # OUT_OF_SCOPE owes nothing; GPAI_MODEL owes plenty, but under Chapter V, which this ruleset
-    # does not carry. Selecting Art. 6-track rules for a model would raise Chapter III duties
-    # against a provider the Act never puts them on — and would hide the ones it does.
-    if use_case.risk_class in (RiskClass.OUT_OF_SCOPE, RiskClass.GPAI_MODEL):
+    # OUT_OF_SCOPE owes nothing under this Regulation, so there is no set to build. GPAI_MODEL is
+    # DELIBERATELY NOT HERE: it owes Chapter V, and the separation is done by the rules themselves
+    # — every Art. 6-track rule names a tier that a model is not, and every Chapter V rule names
+    # `gpai_model` and nothing else. Returning early for a model would hide the duties it does owe,
+    # which is the failure this tier exists to prevent.
+    if use_case.risk_class is RiskClass.OUT_OF_SCOPE:
         return ActiveRules(use_case_id=use_case.use_case_id, role=role)
 
     # Art. 2(2) is exhaustive — "only Article 6(1), Article 60a and Articles 102 to 112 shall

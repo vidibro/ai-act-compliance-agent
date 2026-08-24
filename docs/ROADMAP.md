@@ -759,9 +759,9 @@ Fails **safe** — over-reporting, never a false clearance — which is why this
 
 </details>
 
-#### M4d-8 — Chapter V: general-purpose AI models are DETECTED but not assessed 🟠
+#### M4d-8 — Chapter V: general-purpose AI models are DETECTED and LISTED, not judged 🟡
 
-Half built 2026-08-19. The classification half is done; the obligation half is not, deliberately.
+Classification built 2026-08-19; the ruleset 2026-08-24. What is still deliberately absent is the Art. 51 systemic-risk step, and with it any judging.
 
 **What was wrong.** The cascade began at Art. 3(1) and ended at Art. 6, so a foundation-model card answered "yes it's AI", found no Annex III area, and came back **`minimal`** — a false clearance for a provider owing Chapter V. Not an abstention: a wrong answer, in the one direction this project treats as unacceptable.
 
@@ -771,12 +771,11 @@ Half built 2026-08-19. The classification half is done; the obligation half is n
 
 **The guard matters as much as the feature.** Art. 3(66) makes a system built ON a general-purpose model an ordinary AI system. Routing out everything that mentions a foundation model would exempt exactly the products the tier logic exists for, so the node tests **generality** (Art. 3(63): significant generality, a wide range of distinct tasks, integrable downstream) rather than size or reuse. A single-purpose pre-trained model — text-to-speech, demand forecasting — is not GPAI however large, which is why `h_open_licence_tts_voices` and `h_open_licence_demand_forecaster` stay where they are. `open_weight_frontier_model_card` and `llm_backed_cv_screener` are the pair that pins the line.
 
-**What is NOT built (option B, the Chapter V ruleset).** A second regime beside the risk cascade:
+**What is built (option B, the Chapter V ruleset).** Sixteen `AIA-GP-*` rules, selected by `applies_to_risk_class: [gpai_model]` — the whole of the separation, since every Art. 6-track rule names a tier a model is not. `select_rules`' early return for `GPAI_MODEL` is gone; `OUT_OF_SCOPE` keeps its own, because a system the Regulation does not govern has no set to build. Art. 53(1) is four rules rather than one, because (a) and (b) are lifted by the 53(2) open-source carve-out and (c) and (d) are not, and a single verdict would let a copyright policy hide a missing Annex XI file. Art. 55(1) is four for the same reason. Art. 54 splits by PARTY as Art. 22 does — the provider appoints and enables, the representative performs and terminates — and needs no new `ActorRole`: Art. 3(3) and 3(5) already define 'provider' and 'authorised representative' over a general-purpose AI model as well as a system. Annexes XI and XII are cited and their items ruled.
 
-- `AIA-GP-*` rules for Art. 53 — Annex XI technical documentation, information to downstream providers, a copyright policy, a public training-content summary
-- `AIA-GP-*` rules for Art. 55 where systemic risk applies — model evaluation, adversarial testing, serious-incident reporting to the AI Office, cybersecurity
-- a duty-holder for the GPAI model provider, and its entry in the coverage ledger's role partition
-- an Art. 51 systemic-risk classification step
+**NOTHING IN THE CHAPTER IS JUDGED, and that is not a statement about the artefacts.** Annex XI documentation and the Art. 53(1)(d) training-content summary are documents a judge could read. They are withheld because the two gates deciding who owes what are answered by nobody — Art. 51 systemic risk, and the Art. 53(2)/54(6) open-source carve-out — so a verdict drawn from a model card would return a GAP against a provider that owes nothing, in a chapter with no golden set to measure that against. Each rule states its gate in `activation_condition` and is listed for confirmation. Art. 53(1)(c) and (d) are the two that owe nothing to either gate and are the ones to judge first, the day a general-purpose model reference document exists.
+
+**Still NOT built: an Art. 51 systemic-risk classification step.**
 
 **Wait for the Commission's list before building the systemic-risk step.** Art. 52(6) requires the Commission to publish and maintain a list of general-purpose AI models with systemic risk. **As of 2026-08-19 that list does not appear to be published** — the Commission's GPAI guidance and Q&A pages do not link one, and the closest public artefact is the [GPAI Code of Practice](https://digital-strategy.ec.europa.eu/en/policies/contents-code-gpai) signatory roster, which names companies rather than models.
 
@@ -784,7 +783,7 @@ That list is the authoritative answer, and the alternatives are poor. Training F
 
 The handover text already tells the reader the list is required, is authoritative, and appears not to exist yet — so someone who checks and finds nothing knows that is expected rather than assuming they searched badly.
 
-**Not urgent despite Chapter V being in force**, for one reason only: the golden set has two GPAI cases and both are classification cases. Building an unmeasured ruleset for a regime nobody has asked this tool to check would repeat the mistake M5-a exists to prevent.
+**The measurement debt is declared, not hidden.** The golden set has two GPAI cases and both are classification cases, so nothing here is scored. That is why the ruleset ships as a LIST rather than as judgements — the same decision M4d-5 records for the deployer rules: ship the list for every role, and gate judging a role on having cases for it.
 
 #### M4d-9 — The coverage ledger counts articles, and duties live in paragraphs 🟢 every provision ruled on; 52 duties declared unreported
 
@@ -804,14 +803,14 @@ The handover text already tells the reader the list is required, is authoritativ
 
 | status | count | means |
 |---|---|---|
-| checked | 166 | a rule tests documentation against it, and names the rule |
+| checked | 183 | a rule tests documentation against it, and names the rule |
 | asked | 60 | the cascade decides it, and names the node |
-| not owed | 548 | creates no duty for the roles this tool reports for, with a written reason |
-| owed | 15 | a real duty this tool does not check, declared as a debt |
+| not owed | 541 | creates no duty for the roles this tool reports for, with a written reason |
+| owed | 5 | a real duty this tool does not check, declared as a debt |
 | blanket | 0 | nobody read it |
 | unaccounted | 0 | nothing covers it — the failure state |
 
-**What is owed, and it is now one thing.** `articles_awaiting_rules` holds **10 divisions across Arts. 52 to 55** and `annexes_awaiting_rules` **5 items in Annex VII**. Every high-risk debt has been written as a rule — the last batch paid Arts. 11(2), 12(2)-(3), 41(5), 47(2), 48(2)/(4), 71(2)-(3) and 72(3), and emptied Annexes V and VIII with it. Two of those turned out not to need a rule of their own: Art. 12(2) is WHAT the 12(1) logging capability must record and Art. 72(3) is the plan the 72(1) monitoring system must rest on, so both are `qualified_by` on the rule that already carried the duty rather than a second obligation reported beside it. What remains is the **Chapter V regime**, which is not a gap in a ruleset but the absence of one: Arts. 52(1), 53(1)/(4), 54(1)-(5) and 55(1)-(2), the duties a general-purpose model provider owes while `select_rules` returns an empty set for `GPAI_MODEL` (M4d-8). And Annex VII, the notified-body route Art. 43(1)(b) offers, which no rule cites at all.
+**What is owed.** `articles_awaiting_rules` is **EMPTY** and `annexes_awaiting_rules` holds **Annex VII's 5 items** — the notified-body conformity assessment route Art. 43(1)(b) offers for Annex III point 1, which no rule cites. Every duty this Regulation puts on a role the tool reports for is carried by a rule: the Art. 6 track in Chapters II and III, and Chapter V for a general-purpose AI model. What is left in the ledger is not a missing ruleset but two missing QUESTIONS, recorded where they belong — the **Art. 51 systemic-risk line**, which every Art. 55 rule states as an `activation_condition` rather than being withheld for, and the **Art. 53(2) / 54(6) open-source carve-out**, handled the same way.
 
 **The screen that covered what the partition could not, and what is left of it.** While articles were ruled out *whole*, their paragraphs stayed unitemised and a real duty could sit inside one — Art. 8(2) proved it. `test_a_wholly_excluded_article_holds_no_unacknowledged_duty` screened every such article for a sentence putting `shall` on a provider, deployer, importer, distributor, authorised representative or operator; **48 articles hit**, each declared in `DUTY_BEARING_EXCLUSIONS`. **The scope of the match was the finding.** A first cut matched within a SENTENCE, which under-matched: splitting on `. ` breaks at "Art. 5" and "No 300/2008", so a duty whose subject and verb straddle a citation went unseen. It missed **Art. 41(5)** (justify a technical solution departing from a common specification) and **Art. 71(2)-(3)** (enter the Annex VIII data into the EU database), three real duties inside articles the ledger dismissed in one line. Paragraph scope over-matches instead, the correct direction: dismissing a false positive costs a line of writing, missing a duty costs a false PASS. **The list now holds one entry.** The screen was always a substitute for reading, and the reading is done — every other article on it has a ruling per paragraph, which is a stronger claim than a whole-article dismissal a regex agreed with. Only Art. 94 remains, because the text gives it no divisions to itemise. The mechanism stays: its stale-entry half is what would catch an itemised article being collapsed back.
 

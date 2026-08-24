@@ -2249,3 +2249,492 @@ rules:
     document_verifiable: false
     effective_date: 2026-08-02
     status: active
+
+  # ==============================================================================================
+  # CHAPTER V — GENERAL-PURPOSE AI MODELS. A separate track, not a lesser one.
+  #
+  # Every rule above answers the Art. 6 question "what tier is this system?"; these answer a
+  # different one, and the two never meet. Art. 3(66) makes a SYSTEM built on a general-purpose
+  # model an ordinary AI system that classifies through the cascade, so nothing here fires for the
+  # products the tier logic exists for. `applies_to_risk_class: [gpai_model]` is the whole of the
+  # separation — the cascade's `gpai_model` node decides which side a document is on.
+  #
+  # IN FORCE SINCE 2 AUGUST 2025 (Art. 113(b)), earlier than every high-risk rule in this file.
+  #
+  # NOTHING HERE IS document_verifiable, AND THAT IS NOT A STATEMENT ABOUT THE ARTEFACTS. Annex XI
+  # technical documentation and the Art. 53(1)(d) training-content summary are documents, and a
+  # judge could read a model card for them. They are withheld from the judge because the two gates
+  # that decide who owes what in this chapter are answered by nobody:
+  #
+  #   ART. 51 SYSTEMIC RISK turns the whole of Art. 55 on. No cascade node asks it, and the two
+  #     ways to answer it are both bad — training FLOP is rarely in a model card, and estimating it
+  #     from a parameter count would derive a regulatory finding from a guess. The Art. 52(6) list
+  #     the Commission must publish is the authoritative answer and does not appear to exist yet.
+  #   THE OPEN-SOURCE CARVE-OUT of Arts. 53(2) and 54(6) turns Art. 53(1)(a) and (b) and the whole
+  #     of Art. 54 off — unless the model carries systemic risk, so it depends on the first gate.
+  #
+  # A judge run against either gate unanswered returns a GAP for a provider that owes nothing, and
+  # a false gap in a chapter with no golden set is a number nobody can check. So each rule states
+  # its gate in `activation_condition` and is listed for confirmation. The two that owe nothing to
+  # either gate — Art. 53(1)(c) and (d), owed by every provider open-source or not — are the ones
+  # to judge first, on the day a general-purpose model reference document exists.
+  # ==============================================================================================
+
+  - rule_id: AIA-GP-A52-1
+    source:
+      instrument: "Regulation (EU) 2024/1689"
+      article: 52
+      paragraph: 1 # notify the Commission within two weeks
+      act_version_date: 2026-07-27
+    applies_to_risk_class: [gpai_model]
+    applies_to_role: [provider]
+    activation_condition: >-
+      Owed only where the model meets the Art. 51(1)(a) condition — high impact capabilities, which
+      Art. 51(2) PRESUMES above 10^25 cumulative training FLOP. That is the one limb a model card
+      can answer, and only where it states the training compute at all; no node asks it, so this
+      obligation is listed with the threshold attached rather than asserted of every provider or
+      dropped. The presumption is rebuttable: Art. 52(2) lets the provider argue with its
+      notification that the model presents no systemic risk despite meeting the condition.
+    obligation_status: mandatory
+    check_type: presence
+    evidence_expected: >-
+      A notification to the Commission, sent WITHOUT DELAY and in any event WITHIN TWO WEEKS of the
+      condition being met or of it becoming known that it will be met — so the clock can start
+      before the model exists, on the day the training run is planned to cross the threshold. The
+      notification must carry the information demonstrating the condition is met. The only hard
+      deadline in Chapter V, and missing it does not avoid the designation: Art. 52(1) lets the
+      Commission designate an un-notified model itself. A filing with an authority, not a property
+      of any document under review — confirm separately.
+    document_verifiable: false
+    effective_date: 2025-08-02
+    status: active
+
+  # ART. 53(1) IS FOUR DUTIES, NOT ONE, and they do not share a fate: (a) and (b) are lifted for a
+  # free and open-source model by Art. 53(2), while (c) and (d) are owed by every provider. One
+  # rule for the paragraph would let a pass on the copyright policy hide a missing Annex XI file,
+  # and would have to state a carve-out that applies to half of what it covers.
+  - rule_id: AIA-GP-A53-1A
+    source:
+      instrument: "Regulation (EU) 2024/1689"
+      article: 53
+      paragraph: 1
+      point: "a" # technical documentation containing at least Annex XI
+      annex: "XI"
+      act_version_date: 2026-07-27
+    applies_to_risk_class: [gpai_model]
+    applies_to_role: [provider]
+    activation_condition: >-
+      LIFTED BY ART. 53(2) for a model released under a free and open-source licence that allows
+      access, usage, modification and distribution AND whose parameters — the weights included —
+      model architecture and model usage information are made publicly available. All of that must
+      hold; a permissive licence over closed weights is not the carve-out. And the carve-out is
+      itself disapplied for a general-purpose AI model WITH SYSTEMIC RISK, which owes this duty
+      whatever its licence. No node answers either fact, so the obligation is listed with both
+      conditions attached.
+    obligation_status: mandatory
+    check_type: completeness
+    evidence_expected: >-
+      Technical documentation of the model, drawn up and KEPT UP TO DATE, covering the training and
+      testing process and the results of the evaluation, and containing at least the Annex XI
+      elements: Section 1(1)'s general description — tasks, acceptable use policies, release date
+      and distribution methods, architecture and parameter count, modality and format, licence —
+      and Section 1(2)'s account of the model's elements and development, including the design
+      specifications, the training methodology, the provenance and curation of the training data,
+      the COMPUTATIONAL RESOURCES used expressed in floating point operations, and the known or
+      estimated energy consumption. Held for the AI Office and the national competent authorities
+      and produced on request, so it need not be published — its absence is not visible from what a
+      provider chooses to release. Note that Section 1(2)(d) is where the Art. 51(2) 10^25 FLOP
+      figure would be recorded, which is the same number Art. 52(1) turns on.
+    document_verifiable: false
+    effective_date: 2025-08-02
+    status: active
+
+  - rule_id: AIA-GP-A53-1B
+    source:
+      instrument: "Regulation (EU) 2024/1689"
+      article: 53
+      paragraph: 1
+      point: "b" # information and documentation for downstream providers
+      annex: "XII"
+      act_version_date: 2026-07-27
+    applies_to_risk_class: [gpai_model]
+    applies_to_role: [provider]
+    activation_condition: >-
+      Lifted by the same Art. 53(2) open-source carve-out as point (a), on the same four conditions,
+      and disapplied again for a model with systemic risk. See AIA-GP-A53-1A.
+    obligation_status: mandatory
+    check_type: completeness
+    evidence_expected: >-
+      Information and documentation MADE AVAILABLE to providers of AI systems that intend to
+      integrate the model, drawn up and kept up to date, containing at least the Annex XII
+      elements: the general description at Section 1, points (a) to (h), and the account at
+      Section 2 of the model's elements and development — how it integrates into AI systems, the
+      input and output modality and maximum size, and the provenance of the training data. The
+      test the Article sets is functional and it is the one that matters: the material must let a
+      downstream provider understand the model's CAPABILITIES AND LIMITATIONS and COMPLY WITH ITS
+      OWN OBLIGATIONS under this Regulation — which for an Annex III system means Arts. 9 to 15. A
+      model card that describes benchmarks and says nothing a downstream provider could build a
+      risk management system on does not answer it. Intellectual property and trade secrets are
+      protected without excusing the duty. Owed toward another party rather than recorded in the
+      provider's own file — confirm separately.
+    document_verifiable: false
+    effective_date: 2025-08-02
+    status: active
+
+  - rule_id: AIA-GP-A53-1C
+    source:
+      instrument: "Regulation (EU) 2024/1689"
+      article: 53
+      paragraph: 1
+      point: "c" # a copyright policy, including a rights reservation
+      act_version_date: 2026-07-27
+    applies_to_risk_class: [gpai_model]
+    applies_to_role: [provider]
+    # NO CONDITION. Art. 53(2) lifts points (a) and (b) only, so this is owed by every provider of
+    # a general-purpose AI model — open-source, closed, systemic-risk or not. One of the two rules
+    # in this chapter with no gate anyone has to answer first.
+    obligation_status: mandatory
+    check_type: presence
+    evidence_expected: >-
+      A policy to comply with Union copyright and related rights law, in place rather than
+      intended. Its named content is the hard part: the policy must IDENTIFY AND COMPLY WITH a
+      reservation of rights expressed under Art. 4(3) of Directive (EU) 2019/790 — the text and
+      data mining opt-out — and must do so INCLUDING THROUGH STATE-OF-THE-ART TECHNOLOGIES, so a
+      policy that states an intention to respect opt-outs without describing how they are detected
+      at crawl time does not meet the wording. A statement that training data was "lawfully
+      obtained" is not this policy. An organisational artefact, not part of a model card — confirm
+      separately.
+    document_verifiable: false
+    effective_date: 2025-08-02
+    status: active
+
+  - rule_id: AIA-GP-A53-1D
+    source:
+      instrument: "Regulation (EU) 2024/1689"
+      article: 53
+      paragraph: 1
+      point: "d" # the public training-content summary
+      act_version_date: 2026-07-27
+    applies_to_risk_class: [gpai_model]
+    applies_to_role: [provider]
+    # NO CONDITION, as with point (c): Art. 53(2) does not reach it. The other rule in this chapter
+    # that every provider owes outright, and the one whose artefact is most nearly a document a
+    # judge could read — it is public by definition.
+    obligation_status: mandatory
+    check_type: presence
+    evidence_expected: >-
+      A summary of the content used to train the model, drawn up AND MADE PUBLICLY AVAILABLE, and
+      sufficiently detailed. Two things make it checkable: it must follow the TEMPLATE PROVIDED BY
+      THE AI OFFICE, so a free-form paragraph about "a diverse mixture of licensed and publicly
+      available data" is the wrong artefact whatever it says; and it must be public, so a summary
+      held for authorities on request does not discharge it. Distinct from the Annex XI training
+      data provenance under point (a), which is confidential and far more detailed — this one is
+      the version the world sees. Published outside the documentation under review — confirm
+      separately.
+    document_verifiable: false
+    effective_date: 2025-08-02
+    status: active
+
+  - rule_id: AIA-GP-A53-4
+    source:
+      instrument: "Regulation (EU) 2024/1689"
+      article: 53
+      paragraph: 4 # demonstrate alternative adequate means of compliance
+      act_version_date: 2026-07-27
+    applies_to_risk_class: [gpai_model]
+    applies_to_role: [provider]
+    activation_condition: >-
+      Owed by a provider that adheres to NEITHER an approved code of practice under Art. 56 NOR a
+      European harmonised standard covering the Art. 53(1) obligations. A provider that does either
+      owes nothing here: a code of practice may be relied on to demonstrate compliance until a
+      harmonised standard is published, and compliance with a harmonised standard grants the
+      presumption of conformity so far as it covers those obligations. Which codes are approved and
+      which standards published is a fact about the Official Journal rather than about this model.
+    obligation_status: mandatory
+    check_type: presence
+    evidence_expected: >-
+      A demonstration of ALTERNATIVE ADEQUATE MEANS of complying with the four Art. 53(1) duties,
+      prepared FOR ASSESSMENT BY THE COMMISSION. The first two sentences of the paragraph are a
+      permission and a presumption; this is the duty, and it bites on the provider that took
+      neither route. "Adequate" is measured against what the code or standard would have required,
+      so an account of the provider's own practices that never engages with them does not answer
+      it. The Chapter V twin of Art. 41(5). Addressed to the Commission rather than recorded in a
+      file — confirm separately.
+    document_verifiable: false
+    effective_date: 2025-08-02
+    status: active
+
+  # ART. 54 IS THE CHAPTER V TWIN OF ART. 22, and it splits by PARTY the same way: the provider
+  # appoints and enables, the representative performs and terminates. Filed under two roles for
+  # that reason, and Art. 3(5) makes the same `authorised_representative` the duty-holder — it
+  # covers a mandate from a provider of an AI system OR of a general-purpose AI model.
+  - rule_id: AIA-GP-A54-1
+    source:
+      instrument: "Regulation (EU) 2024/1689"
+      article: 54
+      paragraph: 1 # appoint an authorised representative before placing on the market
+      act_version_date: 2026-07-27
+    applies_to_risk_class: [gpai_model]
+    applies_to_role: [provider]
+    activation_condition: >-
+      Binds providers ESTABLISHED IN THIRD COUNTRIES, and nobody else — a provider established in
+      the Union needs no representative and owes nothing here. Art. 54(6) then lifts the whole
+      Article for a model released under a free and open-source licence with publicly available
+      parameters, architecture and usage information, unless the model presents systemic risk.
+      Neither fact is answered by any node.
+    obligation_status: mandatory
+    check_type: presence
+    evidence_expected: >-
+      An authorised representative established in the Union, appointed BY WRITTEN MANDATE and
+      appointed PRIOR TO placing the model on the Union market — an appointment made afterwards
+      does not cure the breach. The Chapter V twin of Art. 22(1), and mis-attributable the same
+      way: the duty is the PROVIDER'S, not the representative's. An appointment recorded in a
+      contract, not in a model card — confirm separately.
+    document_verifiable: false
+    effective_date: 2025-08-02
+    status: active
+
+  - rule_id: AIA-GP-A54-2
+    source:
+      instrument: "Regulation (EU) 2024/1689"
+      article: 54
+      paragraph: 2 # enable the representative to perform the mandate
+      act_version_date: 2026-07-27
+    applies_to_risk_class: [gpai_model]
+    applies_to_role: [provider]
+    activation_condition: >-
+      Owed by the same third-country provider that owes Art. 54(1), and lifted by the same
+      Art. 54(6) open-source carve-out. See AIA-GP-A54-1.
+    obligation_status: mandatory
+    check_type: presence
+    evidence_expected: >-
+      Evidence that the representative is actually ABLE to perform the mandate's tasks — access to
+      the Annex XI technical documentation it must verify and keep for ten years, and to the
+      information it must supply to the AI Office on reasoned request. A mandate signed and then
+      starved of access satisfies Art. 54(1) and breaches this paragraph, which is why the two are
+      separate rules. An arrangement between two organisations — confirm separately.
+    document_verifiable: false
+    effective_date: 2025-08-02
+    status: active
+
+  - rule_id: AIA-GPAR-A54-3
+    source:
+      instrument: "Regulation (EU) 2024/1689"
+      article: 54
+      paragraph: 3 # the representative performs the mandate
+      annex: "XI"
+      act_version_date: 2026-07-27
+    applies_to_risk_class: [gpai_model]
+    applies_to_role: [authorised_representative]
+    activation_condition: >-
+      Exists only where Art. 54(1) required an appointment — a third-country provider, outside the
+      Art. 54(6) open-source carve-out — and only for the party that accepted the mandate.
+    obligation_status: mandatory
+    check_type: completeness
+    evidence_expected: >-
+      Performance of the mandate's tasks, and a copy of the mandate produced to the AI Office on
+      request in an official language of the Union institutions. The paragraph fixes four tasks the
+      mandate must empower, and they are what a representative has to be able to show it does:
+      (a) VERIFY that the Annex XI technical documentation has been drawn up and that the Art. 53
+      and, where applicable, Art. 55 obligations have been fulfilled by the provider — a
+      verification, not a receipt; (b) KEEP A COPY of that documentation at the disposal of the AI
+      Office and national competent authorities for TEN YEARS after the model was placed on the
+      market, together with the appointing provider's contact details; (c) supply the AI Office, on
+      reasoned request, with everything needed to demonstrate compliance with this Chapter; and
+      (d) COOPERATE in any action taken over the model, including where it has been integrated into
+      AI systems placed on the market in the Union. Discharged by an organisation over a decade,
+      not by any document under review — confirm separately.
+    document_verifiable: false
+    effective_date: 2025-08-02
+    status: active
+
+  - rule_id: AIA-GP-A54-4
+    source:
+      instrument: "Regulation (EU) 2024/1689"
+      article: 54
+      paragraph: 4 # the mandate empowers the representative to be addressed
+      act_version_date: 2026-07-27
+    applies_to_risk_class: [gpai_model]
+    applies_to_role: [provider, authorised_representative]
+    # BOTH PARTIES, because the paragraph binds the mandate rather than a person. The provider
+    # draws it and the representative accepts it, and a mandate missing this term fails whichever
+    # of them is asked about it — so filing it under one would tell the other their copy is fine.
+    activation_condition: >-
+      Exists only where Art. 54(1) required an appointment, and is lifted with the rest of the
+      Article by the Art. 54(6) open-source carve-out.
+    obligation_status: mandatory
+    check_type: presence
+    evidence_expected: >-
+      A term in the written mandate empowering the representative to be addressed by the AI Office
+      or the competent authorities IN ADDITION TO OR INSTEAD OF the provider, on all issues related
+      to ensuring compliance with this Regulation. "Instead of" is the operative half: the mandate
+      must allow an authority to deal with the representative alone, so a term making it a channel
+      to the provider does not satisfy this. A clause in a contract — confirm separately.
+    document_verifiable: false
+    effective_date: 2025-08-02
+    status: active
+
+  - rule_id: AIA-GPAR-A54-5
+    source:
+      instrument: "Regulation (EU) 2024/1689"
+      article: 54
+      paragraph: 5 # terminate the mandate and tell the AI Office
+      act_version_date: 2026-07-27
+    applies_to_risk_class: [gpai_model]
+    applies_to_role: [authorised_representative]
+    activation_condition: >-
+      Attaches when the representative considers, or has reason to consider, that the provider is
+      acting contrary to its obligations under this Regulation. Until then there is nothing to do,
+      and no description of a model says whether the moment has arrived.
+    obligation_status: mandatory
+    check_type: presence
+    evidence_expected: >-
+      A standing procedure for terminating the mandate where the representative considers — OR HAS
+      REASON TO CONSIDER — that the provider is acting contrary to its obligations, and for
+      IMMEDIATELY informing the AI Office of the termination AND OF THE REASONS FOR IT. Both halves
+      matter: a representative that resigns quietly has breached the paragraph as surely as one
+      that stays. "Has reason to consider" makes the trigger objective, so a representative that
+      chose not to look cannot rely on not having concluded. The Chapter V analogue of Art. 22(3),
+      and a duty that runs against the party paying the representative. A governance process at the
+      representative — confirm separately.
+    document_verifiable: false
+    effective_date: 2025-08-02
+    status: active
+
+  # ART. 55 IS FOUR DUTIES ON TOP OF ARTS. 53 AND 54, and the paragraph says so in terms — "in
+  # addition to", not instead of. They are split for the reason Art. 53(1) is: a model that
+  # documents its evaluations thoroughly and says nothing about the physical security of its
+  # training cluster has met (a) and breached (d), and one verdict would hide that.
+  #
+  # EVERY ONE OF THEM TURNS ON THE ART. 51 LINE, which nothing answers. That is why each carries
+  # the same condition rather than a route or an area gate: the ruleset can say what a
+  # systemic-risk provider owes without being able to say whether this provider is one.
+  - rule_id: AIA-GP-A55-1A
+    source:
+      instrument: "Regulation (EU) 2024/1689"
+      article: 55
+      paragraph: 1
+      point: "a" # model evaluation and adversarial testing
+      act_version_date: 2026-07-27
+    applies_to_risk_class: [gpai_model]
+    applies_to_role: [provider]
+    activation_condition: >-
+      OWED ONLY BY A MODEL WITH SYSTEMIC RISK under Art. 51(1) — either high impact capabilities,
+      which Art. 51(2) presumes above 10^25 cumulative training FLOP, or a Commission designation
+      under Art. 51(1)(b) on the Annex XIII criteria. No node asks it and this tool does not
+      estimate it; the Art. 52(6) list the Commission maintains is the authoritative answer.
+    obligation_status: mandatory
+    check_type: presence
+    evidence_expected: >-
+      Model evaluation carried out in accordance with STANDARDISED PROTOCOLS AND TOOLS REFLECTING
+      THE STATE OF THE ART, and adversarial testing that is both CONDUCTED AND DOCUMENTED. The
+      documented half is what makes the duty checkable: an internal red-team exercise nobody wrote
+      up does not satisfy the point. The stated purpose is identifying and mitigating systemic
+      risks, so an evaluation measuring capability on benchmarks and never asking what could go
+      wrong at Union level is the wrong instrument however rigorous. Annex XI Section 2(1) is where
+      the results belong for a provider that also owes Art. 53(1)(a).
+    document_verifiable: false
+    effective_date: 2025-08-02
+    status: active
+
+  - rule_id: AIA-GP-A55-1B
+    source:
+      instrument: "Regulation (EU) 2024/1689"
+      article: 55
+      paragraph: 1
+      point: "b" # assess and mitigate systemic risks at Union level
+      act_version_date: 2026-07-27
+    applies_to_risk_class: [gpai_model]
+    applies_to_role: [provider]
+    activation_condition: >-
+      Owed only by a model with systemic risk under Art. 51(1). See AIA-GP-A55-1A.
+    obligation_status: mandatory
+    check_type: presence
+    evidence_expected: >-
+      Assessment AND mitigation of possible systemic risks AT UNION LEVEL, including their SOURCES,
+      covering risks that may stem from the model's development, from its placing on the market and
+      from its use. Three things narrow it: the level is Union-wide rather than product-level, so a
+      per-deployment risk register does not answer it; sources are named separately from risks, so
+      an assessment listing harms without tracing where they come from is incomplete; and the
+      development phase is inside scope, so risks are owed an answer before the model ships. The
+      mitigation half is a duty of its own — an assessment that identifies a risk and stops there
+      has met half the point. Annex XI Section 2(2) is where the measures belong.
+    document_verifiable: false
+    effective_date: 2025-08-02
+    status: active
+
+  - rule_id: AIA-GP-A55-1C
+    source:
+      instrument: "Regulation (EU) 2024/1689"
+      article: 55
+      paragraph: 1
+      point: "c" # serious incident reporting to the AI Office
+      act_version_date: 2026-07-27
+    applies_to_risk_class: [gpai_model]
+    applies_to_role: [provider]
+    activation_condition: >-
+      Owed only by a model with systemic risk under Art. 51(1). See AIA-GP-A55-1A.
+    obligation_status: mandatory
+    check_type: presence
+    evidence_expected: >-
+      A procedure that KEEPS TRACK OF, DOCUMENTS AND REPORTS relevant information about serious
+      incidents, and about the possible corrective measures to address them, WITHOUT UNDUE DELAY —
+      to the AI OFFICE and, as appropriate, to national competent authorities. Three verbs, and
+      tracking is the one that is missed: a provider that reports the incidents it hears about has
+      not shown it looks for them. Distinct from Art. 73, which binds providers of high-risk AI
+      SYSTEMS and runs to a market surveillance authority on fixed deadlines; this one binds the
+      model provider, runs to the AI Office, and has no numbered clock — "without undue delay" is
+      the whole of the timing. A relational obligation — confirm separately.
+    document_verifiable: false
+    effective_date: 2025-08-02
+    status: active
+
+  - rule_id: AIA-GP-A55-1D
+    source:
+      instrument: "Regulation (EU) 2024/1689"
+      article: 55
+      paragraph: 1
+      point: "d" # cybersecurity of the model and its physical infrastructure
+      act_version_date: 2026-07-27
+    applies_to_risk_class: [gpai_model]
+    applies_to_role: [provider]
+    activation_condition: >-
+      Owed only by a model with systemic risk under Art. 51(1). See AIA-GP-A55-1A.
+    obligation_status: mandatory
+    check_type: presence
+    evidence_expected: >-
+      An adequate level of cybersecurity protection for the model AND FOR THE PHYSICAL
+      INFRASTRUCTURE OF THE MODEL. The second half is the one an application-security programme
+      does not cover: the point reaches the data centres, hardware and facilities the model is
+      trained and served on, and the risk it is written against is weight exfiltration. An answer
+      describing API authentication, rate limiting and prompt-injection defences addresses the
+      model's interface and not what this point protects. Distinct from Art. 15(5), which is
+      cybersecurity for a high-risk SYSTEM against adversarial manipulation of its behaviour.
+      Operational security at the provider — confirm separately.
+    document_verifiable: false
+    effective_date: 2025-08-02
+    status: active
+
+  - rule_id: AIA-GP-A55-2
+    source:
+      instrument: "Regulation (EU) 2024/1689"
+      article: 55
+      paragraph: 2 # demonstrate alternative adequate means, for the systemic-risk duties
+      act_version_date: 2026-07-27
+    applies_to_risk_class: [gpai_model]
+    applies_to_role: [provider]
+    activation_condition: >-
+      Two conditions, and both must hold: the model carries systemic risk under Art. 51(1), and the
+      provider adheres to neither an approved Art. 56 code of practice nor a European harmonised
+      standard covering the Art. 55(1) obligations.
+    obligation_status: mandatory
+    check_type: presence
+    evidence_expected: >-
+      A demonstration of ALTERNATIVE ADEQUATE MEANS of complying with the four Art. 55(1) duties,
+      prepared for assessment by the Commission. Art. 53(4) again, one tier up, and the two are
+      separate obligations rather than one: a provider may rely on a code of practice for its
+      Art. 53 duties and on nothing for its Art. 55 duties, and would then owe this and not
+      AIA-GP-A53-4. Addressed to the Commission — confirm separately.
+    document_verifiable: false
+    effective_date: 2025-08-02
+    status: active

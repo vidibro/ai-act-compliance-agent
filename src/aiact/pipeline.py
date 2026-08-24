@@ -90,9 +90,14 @@ def _section_b_note(products: list[str]) -> str:
 
 
 _GPAI_NOTE = (
-    "No obligation check was run: this ruleset models the Art. 6 risk-tier track, and a "
-    "general-purpose AI model is governed by Chapter V instead. An empty findings list here means "
-    "NOT ASSESSED, not compliant — see docs/ROADMAP.md (M4d-8) for the Chapter V ruleset."
+    "Chapter V obligations are listed, and NONE OF THEM IS JUDGED AGAINST THIS DOCUMENT. Two gates "
+    "decide who owes what in Chapter V and this tool answers neither: whether the model carries "
+    "SYSTEMIC RISK under Art. 51, which turns the whole of Art. 55 on, and whether it is released "
+    "under a free and open-source licence with public weights, architecture and usage information, "
+    "which turns Art. 53(1)(a) and (b) and the whole of Art. 54 off. Each obligation below "
+    "therefore carries the condition it depends on and is listed for confirmation rather than "
+    "assessed. The Art. 6 risk-tier requirements — Arts. 9 to 15 and the provider obligations from "
+    "Art. 16 — are absent because Chapter V is a separate track, not because they were met."
 )
 
 
@@ -153,14 +158,6 @@ def review(
         return _empty_report(system_id, spec, classification, _prohibited_note(classification))
     if overall == RiskClass.NEEDS_REVIEW:
         return _empty_report(system_id, spec, classification, _NEEDS_REVIEW_NOTE)
-    # A general-purpose AI model is not on the Art. 6 track at all, so there is nothing here to
-    # check it against — but unlike out_of_scope it is NOT unburdened, and the note has to say so
-    # or an empty findings list reads as a clean bill of health for a provider who owes Art. 53
-    # today. The classification's own reasoning carries the full handover.
-    if overall == RiskClass.GPAI_MODEL:
-        return _empty_report(
-            system_id, spec, classification, classification.reasoning + " " + _GPAI_NOTE
-        )
 
     # The same brain both layers use. The gap layer needs one for the Art. 25 role question and
     # cannot build its own without importing a classification brain — so this module, the only one
@@ -201,4 +198,11 @@ def review(
     section_b = sorted({uc.annex_i_product.value for uc in withheld if uc.annex_i_product})
     if section_b and len(withheld) == len(high_risk):
         return report.model_copy(update={"scope_note": _section_b_note(section_b)})
+
+    # A model's obligations are listed and none is judged, so its findings list is empty for a
+    # reason that has nothing to do with the documentation. Said here, because an empty findings
+    # list beside a column of obligations reads as a clean bill of health for the provider who owes
+    # them today — Chapter V has applied since 2 August 2025.
+    if overall == RiskClass.GPAI_MODEL:
+        return report.model_copy(update={"scope_note": _GPAI_NOTE})
     return report

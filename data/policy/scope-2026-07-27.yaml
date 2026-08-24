@@ -680,16 +680,21 @@ article_rulings:
     7: Commission duty to facilitate codes of practice on marking and labelling. Institutional.
   # --- Chapter V — general-purpose AI models ---------------------------------------------------
   # Chapter V is a SEPARATE TRACK, not a lesser one, and it has applied since 2 August 2025 —
-  # earlier than every rule in spec.yaml. The classification cascade DETECTS a general-purpose AI
-  # model (Art. 3(63)) and hands over to these articles by name; what is missing is the ruleset to
-  # check documentation against them. Tracked as M4d-8, deliberately deferred: see the roadmap for
-  # why the systemic-risk step should wait for the Art. 52(6) list to be published.
+  # earlier than every rule in spec.yaml. The cascade detects a general-purpose AI model at
+  # Art. 3(63) and `RiskClass.GPAI_MODEL` selects the AIA-GP-* ruleset, which carries every duty
+  # this chapter puts on a provider or its authorised representative.
   #
   # Read per paragraph, the chapter separates into three things a single ruling cannot hold apart:
-  # provider duties nobody checks (52(1), 53(1), 53(4), 54(1)-(5), 55(1)-(2)), which are declared in
-  # articles_awaiting_rules; the systemic-risk LINE, which is a classification question no node asks;
-  # and the AI Office and Commission machinery of Arts. 52 and 56, which binds nobody this tool
-  # reports for however Chapter V is eventually modelled.
+  # the operator duties, now rules; the systemic-risk LINE, which is a classification question no
+  # node asks and which every Art. 55 rule therefore states as a condition; and the AI Office and
+  # Commission machinery of Arts. 52 and 56, which binds nobody this tool reports for.
+  #
+  # NOTHING IN THE CHAPTER IS JUDGED. Every AIA-GP-* rule is document_verifiable false, and for
+  # Art. 53(1)(a), (b) and (d) that is not a statement about the artefacts — those are documents.
+  # It is that both gates deciding who owes what here are unanswered: Art. 51 systemic risk, and
+  # the Art. 53(2)/54(6) open-source carve-out. A verdict drawn from a model card without them
+  # would report a gap against a provider that owes nothing, and there is no golden set for this
+  # chapter to measure that against.
   51:
     1: >-
       THE SYSTEMIC-RISK LINE, and NO NODE ASKS IT. The cascade ends at GPAI_MODEL (Art. 3(63)) and
@@ -703,6 +708,11 @@ article_rulings:
       Unasked with 51(1).
     3: Commission delegated power to amend the thresholds and supplement the benchmarks. Institutional.
   52:
+    1: >-
+      RULE AIA-GP-A52-1 — NOTIFY THE COMMISSION WITHOUT DELAY and within two weeks of meeting the
+      Art. 51(1)(a) condition, or of learning it will be met, with the information demonstrating
+      it. The only hard deadline in Chapter V, and missing it does not avoid the designation: the
+      Commission may designate an un-notified model itself.
     2: >-
       The provider MAY argue that its model, though over the threshold, presents no systemic risk.
       An option exercised with the 52(1) notification, not a duty owed independently of it.
@@ -718,24 +728,68 @@ article_rulings:
       the authoritative answer to 51(1) once it exists. Named in the GPAI handover text so a reader
       knows where the line is actually drawn rather than inferring it from a FLOP count.
   53:
+    1: >-
+      RULE AIA-GP-A53-1A AIA-GP-A53-1B AIA-GP-A53-1C AIA-GP-A53-1D — the four core duties of a
+      general-purpose model provider, one rule each because they do not share a fate: (a) Annex XI
+      technical documentation and (b) the Annex XII information for downstream providers are lifted
+      by the 53(2) open-source carve-out, while (c) the copyright policy and (d) the public
+      training-content summary are owed by every provider whatever its licence.
     2: >-
       OPEN-SOURCE CARVE-OUT from 53(1)(a) and (b) — free and open-source licence, weights,
       architecture and usage information all public — DISAPPLIED for systemic-risk models. A limit on
-      the duty rather than a duty, and it cannot be applied until 51(1) is asked.
+      the duty rather than a duty, and it cannot be applied until 51(1) is asked, so AIA-GP-A53-1A
+      and -1B carry it as an activation_condition instead.
     3: >-
       Cooperate as necessary with the Commission and national competent authorities. Conduct during
       an authority's exercise of its powers, with no document that evidences it in advance — the same
       treatment Art. 21(3) and Art. 74 get on the high-risk track.
+    4: >-
+      RULE AIA-GP-A53-4 — a provider adhering to NEITHER an approved code of practice NOR a
+      European harmonised standard shall demonstrate alternative adequate means of compliance for
+      the Commission's assessment. The first two sentences are a permission and a presumption; the
+      third is the duty, and it is the Chapter V twin of Art. 41(5).
     5: >-
       Commission delegated power to detail measurement and calculation methodologies for Annex XI
       points 2(d) and (e). Institutional.
     6: Commission delegated power to amend Annexes XI and XII. Institutional.
     7: Information obtained under this Article is treated under Art. 78. The receiving body's duty.
   54:
+    1: >-
+      RULE AIA-GP-A54-1 — a THIRD-COUNTRY provider appoints an authorised representative
+      established in the Union, by written mandate, BEFORE placing the model on the Union market.
+      The Chapter V twin of Art. 22(1), and mis-attributable the same way: the duty is the
+      provider's.
+    2: RULE AIA-GP-A54-2 — the provider enables the representative to perform the mandate's tasks.
+    3: >-
+      RULE AIA-GPAR-A54-3 — the representative performs the mandate and produces a copy to the AI
+      Office on request, and the mandate must empower it to verify the Annex XI documentation and
+      Art. 53 and 55 compliance, keep that documentation for TEN YEARS, supply it on reasoned
+      request, and cooperate in any action over the model.
+    4: >-
+      RULE AIA-GP-A54-4 — the mandate must empower the representative to be addressed IN ADDITION
+      TO OR INSTEAD OF the provider. A requirement on what the mandate says, so it is filed under
+      both the party that draws it and the party that accepts it.
+    5: >-
+      RULE AIA-GPAR-A54-5 — the representative terminates the mandate where it considers, or has
+      reason to consider, the provider to be acting contrary to the Regulation, and immediately
+      tells the AI Office, with reasons.
     6: >-
       OPEN-SOURCE CARVE-OUT from the whole Article, disapplied for systemic-risk models. A limit on
       the duty, and unreachable for the same reason as 53(2).
   55:
+    1: >-
+      RULE AIA-GP-A55-1A AIA-GP-A55-1B AIA-GP-A55-1C AIA-GP-A55-1D — the systemic-risk duties, owed
+      IN ADDITION TO Arts. 53 and 54: model evaluation with documented adversarial testing;
+      assessment and mitigation of Union-level systemic risks and their sources; tracking,
+      documenting and reporting serious incidents to the AI Office; and cybersecurity for the model
+      AND its physical infrastructure. One rule each, because a provider can meet the first and
+      breach the last. All four rest on the Art. 51 line no node asks, which each states as its
+      activation_condition.
+    2: >-
+      RULE AIA-GP-A55-2 — demonstrate alternative adequate means of compliance where neither a code
+      of practice nor a harmonised standard is followed. The 53(4) duty again, for the
+      systemic-risk obligations, and a separate one: a provider may rely on a code for its Art. 53
+      duties and on nothing for these.
     3: Information obtained under this Article is treated under Art. 78. The receiving body's duty.
   # Art. 56 is AI OFFICE AND COMMISSION MACHINERY end to end, and the one duty it produces is owed by
   # signing rather than by the Regulation: 56(5) has participants report on their commitments, which
@@ -1303,8 +1357,8 @@ article_rulings:
     A protection for the person who reports; the employer duties it carries belong to that Directive.
   # Arts. 88-94 are the AI OFFICE'S ENFORCEMENT POWERS over Chapter V. They bind a general-purpose
   # model provider only through an open proceeding — answer this request, grant this access — and
-  # the standing duties they enforce are Arts. 53 and 55, declared in articles_awaiting_rules. What
-  # is missing from this tool is the ruleset, not these powers.
+  # the standing duties they enforce are Arts. 53 and 55, which the AIA-GP-* rules carry. What is
+  # missing from this tool is not the ruleset but the systemic-risk question those powers turn on.
   88:
     1: The Commission has exclusive powers to enforce Chapter V, exercised through the AI Office. Allocation.
     2: Market surveillance authorities may ask the Commission to exercise them. Inter-authority procedure.
@@ -1342,7 +1396,8 @@ article_rulings:
     1: >-
       The Commission may request providers to (a) take measures to comply with Arts. 53 and 54, (b)
       implement mitigation measures after an Art. 92 evaluation, or (c) restrict, withdraw or recall
-      the model. Enforcement of the Chapter V duties, which are declared in articles_awaiting_rules.
+      the model. Enforcement of the Chapter V duties, which AIA-GP-A53-1A to -1D and AIA-GP-A54-1
+      to -A55-2 carry.
     2: The AI Office may open a structured dialogue before requesting a measure. Procedural.
     3: Commitments offered during that dialogue may be made binding. The Art. 75b procedure for models.
   94: >-
@@ -1411,8 +1466,8 @@ article_rulings:
   101:
     1: >-
       Commission fines on general-purpose model providers, up to 3% of turnover or EUR 15 000 000, on
-      the (a)-(d) grounds. A penalty; the duties behind it are Arts. 53 and 55, declared in
-      articles_awaiting_rules.
+      the (a)-(d) grounds. A penalty; the duties behind it are Arts. 53 and 55, carried by the
+      AIA-GP-* rules. This tool reports what is owed, never what non-compliance would cost.
     2: Preliminary findings and an opportunity to be heard. A procedural right.
     3: Fines are effective, proportionate and dissuasive. A standard for the Commission.
     4: Fines are communicated to the Board. Institutional.
@@ -1459,8 +1514,10 @@ article_rulings:
       literal reading it now covers most high-risk systems on the market today. Whether that was
       intended is not a question this tool can answer, which is why it is named and never acted on.
     3: >-
-      Legacy general-purpose AI models placed before 2 August 2025 comply by 2 August 2027. Chapter V
-      territory; the duties it defers are declared in articles_awaiting_rules.
+      Legacy general-purpose AI models placed before 2 August 2025 comply by 2 August 2027 — a
+      DEFERRAL of the Chapter V duties the AIA-GP-* rules carry, and the one date in this ruleset
+      that runs later than the obligation it defers. Not gated on: whether a model was placed
+      before 2 August 2025 is not a fact the cascade asks.
     4: >-
       RELIEF at a shorter range: a synthetic-content generator placed before 2 August 2026 has until
       2 December 2026 for Art. 50(2) — LATER than the date AIA-TR-A50-2 carries. Reported in the
@@ -1517,63 +1574,19 @@ article_rulings:
 # general-purpose AI model regime, which is not a paragraph a rule cites too narrowly but a parallel
 # regime the ruleset does not carry at all.
 articles_awaiting_rules:
-  # --- Arts. 52 to 55: Chapter V, the general-purpose AI model regime --------------------------
-  # A DIFFERENT KIND OF DEBT from the rest of this section, and worth reading as one group even
-  # though article order splits it. Every other entry here is a paragraph a high-risk rule was
-  # written for and did not reach. Arts. 52 to 55 are a complete parallel regime the ruleset does
-  # not carry at all: the cascade classifies a model as GPAI_MODEL and select_rules returns an empty
-  # set, so the report a model provider gets is silent about all thirteen. Deferred as M4d-8, but
-  # deferring a duty does not make it not owed, which is why they are declared here rather than
-  # dismissed in article_rulings.
-  52:
-    1: >-
-      NOTIFY THE COMMISSION WITHIN TWO WEEKS of meeting the Art. 51(1)(a) condition, or of learning
-      that it will be met, with the information demonstrating it. The only hard deadline in
-      Chapter V, and the Commission may designate the model itself if it is missed.
-  53:
-    1: >-
-      THE FOUR CORE DUTIES OF A GPAI MODEL PROVIDER, and the document-verifiable heart of the
-      chapter: (a) technical documentation containing at least Annex XI, held for the AI Office and
-      national authorities; (b) information and documentation for downstream providers integrating
-      the model, containing at least Annex XII; (c) a copyright policy that identifies and complies
-      with an Art. 4(3) Directive (EU) 2019/790 reservation of rights, state-of-the-art technologies
-      included; (d) a publicly available, sufficiently detailed summary of the training content, on
-      the AI Office's template. Points (a) and (b) are lifted by the 53(2) open-source carve-out;
-      (c) and (d) are owed by every provider, open-source or not.
-    4: >-
-      A provider that adheres to neither an approved code of practice nor a harmonised standard
-      SHALL DEMONSTRATE alternative adequate means of compliance for the Commission's assessment.
-      The first two sentences are a permission and a presumption; the third is a duty, and it is the
-      one that bites on a provider who did neither.
-  54:
-    1: >-
-      A THIRD-COUNTRY PROVIDER SHALL APPOINT an authorised representative established in the Union,
-      by written mandate, BEFORE placing the model on the Union market. The Chapter V twin of
-      Art. 22(1), and mis-attributable the same way: the duty is the provider's.
-    2: Enable the representative to perform the mandate. The provider's duty, as in Art. 22(2).
-    3: >-
-      The representative performs the mandate and produces a copy to the AI Office on request; the
-      mandate must empower it to verify the Annex XI documentation and Art. 53 and 55 compliance,
-      keep that documentation for 10 YEARS after placing on the market, supply it on reasoned
-      request, and cooperate in any action over the model.
-    4: >-
-      The mandate must empower the representative to be addressed by the AI Office and competent
-      authorities in addition to or INSTEAD OF the provider. A requirement on what the mandate says,
-      owed by whoever draws it.
-    5: >-
-      Terminate the mandate where the representative considers the provider to be acting contrary to
-      the Regulation, and immediately tell the AI Office, with reasons. The representative's duty.
-  55:
-    1: >-
-      THE SYSTEMIC-RISK DUTIES, owed in addition to Arts. 53 and 54: (a) model evaluation to
-      state-of-the-art standardised protocols, including documented adversarial testing; (b) assess
-      and mitigate systemic risks at Union level, sources included; (c) track, document and report
-      serious incidents and corrective measures to the AI Office without undue delay; (d) an adequate
-      level of cybersecurity for the model AND its physical infrastructure. Unreachable today for a
-      second reason as well: no node asks Art. 51(1), so nothing ever reaches this Article.
-    2: >-
-      Demonstrate alternative adequate means of compliance where neither a code of practice nor a
-      harmonised standard is followed. The 53(4) duty again, for the systemic-risk obligations.
+  # EMPTY, and the mechanism stays. Every duty this Regulation puts on a role this tool reports
+  # for is now carried by a rule — the Art. 6 track in Chapters II and III, and Chapter V for a
+  # general-purpose AI model. An entry here means a party owes something and no report mentions
+  # it, which is a stronger claim than a dismissal and is why the section is separate from
+  # article_rulings rather than folded into it.
+  #
+  # What is NOT recorded here, because it is not a duty: the Art. 51 systemic-risk line, which no
+  # cascade node asks. Every Art. 55 rule states it as an activation_condition instead, so the
+  # obligation reaches the reader with the question attached rather than being withheld. Same for
+  # the Art. 53(2) and 54(6) open-source carve-out. Both are missing QUESTIONS, and the place
+  # they are recorded is the Art. 51 ruling above.
+  {}
+
 # --- ANNEXES ---------------------------------------------------------------------------------
 # The Annexes carry operative content the Articles only point at: Annex III IS the list of high-risk
 # areas, Annex I IS the list of harmonisation instruments, Annex IV IS the technical documentation an
@@ -1848,35 +1861,41 @@ annex_rulings:
     7: Interoperability — Regulations (EU) 2019/817 and 2019/818. A reference.
   # Annexes XI, XII and XIII are Chapter V content: the technical documentation Art. 53(1)(a)
   # requires, the downstream information Art. 53(1)(b) requires, and the criteria Art. 51(1)(b) has
-  # the Commission weigh. The duties they fill out are declared in articles_awaiting_rules; ruled
-  # here per item so the shape of the missing ruleset is on record rather than deferred as a block.
+  # the Commission weigh. Annexes XI and XII are now cited — AIA-GP-A53-1A carries XI and
+  # AIA-GP-A53-1B carries XII, and AIA-GPAR-A54-3 carries XI again for the ten-year keeping duty.
+  # No judge sees either, because those rules are document_verifiable false for the reason the
+  # Chapter V header gives; what the rules do is state item by item what the documentation must
+  # hold. Annex XIII is the Commission's designation criteria and binds no operator.
   XI:
     1/1: >-
-      Section 1(1) — general description of the model, points (a)-(f): tasks, acceptable use
-      policies, release date and distribution, architecture and parameter count, modality, licence.
-      The content of the Art. 53(1)(a) duty, which is declared owed.
+      RULE AIA-GP-A53-1A — Section 1(1), general description of the model, points (a)-(f): tasks,
+      acceptable use policies, release date and distribution, architecture and parameter count,
+      modality, licence.
     1/2: >-
-      Section 1(2) — detailed description of the model's elements and development, points (a)-(e):
+      RULE AIA-GP-A53-1A — Section 1(2), the model's elements and development, points (a)-(e):
       integration means, design specifications and training methodology, training data provenance
       and curation, COMPUTATIONAL RESOURCES in FLOP, and energy consumption. Point (d) is the one
-      place a document could answer Art. 51(2)'s 10^25 threshold.
+      place a document could answer Art. 51(2)'s 10^25 threshold — the same figure Art. 52(1)
+      turns on, and the reason a model card that states its training compute answers two questions
+      at once.
     2/1: >-
-      Section 2(1) — for systemic-risk models: evaluation strategies and results, including
-      adversarial testing. Content of the Art. 55(1)(a) duty, declared owed.
+      RULE AIA-GP-A53-1A — Section 2(1), for systemic-risk models: evaluation strategies and
+      results, including adversarial testing. The documentary form of the Art. 55(1)(a) duty, which
+      AIA-GP-A55-1A carries as an obligation in its own right.
     2/2: >-
-      Section 2(2) — measures to assess and mitigate systemic risks at Union level. Content of the
-      Art. 55(1)(b) duty.
+      RULE AIA-GP-A53-1A — Section 2(2), measures to assess and mitigate systemic risks at Union
+      level. The documentary form of Art. 55(1)(b), carried as a duty by AIA-GP-A55-1B.
     2/3: >-
-      Section 2(3) — a detailed description of the system architecture and how software components
-      integrate. Content of the same systemic-risk documentation.
+      RULE AIA-GP-A53-1A — Section 2(3), a detailed description of the system architecture and how
+      software components integrate. Part of the same systemic-risk documentation.
   XII:
     1: >-
-      General description for downstream providers, points (a)-(h). The content of the
-      Art. 53(1)(b) duty, which is declared owed — and the information a provider building an
-      Annex III system on someone else's model needs to meet Arts. 9 to 15 at all.
+      RULE AIA-GP-A53-1B — general description for downstream providers, points (a)-(h), and the
+      information a provider building an Annex III system on someone else's model needs to meet
+      Arts. 9 to 15 at all.
     2: >-
-      Elements of the model and its development, points (a)-(c): integration means, input and output
-      modality and maximum size, and training data provenance. Same duty.
+      RULE AIA-GP-A53-1B — elements of the model and its development, points (a)-(c): integration
+      means, input and output modality and maximum size, and training data provenance.
   XIII:
     a: >-
       Number of parameters. One of the criteria the COMMISSION weighs under Art. 51(1)(b); not a

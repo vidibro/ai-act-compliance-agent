@@ -919,9 +919,10 @@ def _condition_letter(state: GraphState) -> str:
     return a.value.letter if a is not None and isinstance(a.value, DerogationCondition) else "a)-(d"
 
 
-# What a GPAI verdict SAYS. A handover, in the same shape as `_handover` for Art. 6(1)(b): name the
-# regime, say plainly that this tool does not apply it, and point the reader at what to read. The
-# alternative was `minimal`, which told a foundation-model provider they owed almost nothing.
+# What a GPAI verdict SAYS. It names the regime and summarises it, and the obligation layer
+# then lists Chapter V rule by rule — this text is the orientation, not the report. The
+# alternative to both is `minimal`, which tells a foundation-model provider they owe almost
+# nothing.
 #
 # The dates are load-bearing. Chapter V has applied since 2 August 2025 (Art. 113(b)), which makes
 # these the only obligations in this tool's field of view that are in force TODAY — every high-risk
@@ -960,8 +961,8 @@ _GPAI_DUTIES = (
 # misleading by the time anyone acted on it.
 _GPAI_PLACED = (
     "This describes a GENERAL-PURPOSE AI MODEL (Art. 3(63)), not an AI system. Article 6 does not "
-    "classify it and it has no risk tier: it is governed instead by Chapter V, which this tool "
-    f"does not assess. {_GPAI_DUTIES} "
+    "classify it and it has no risk tier: it is governed instead by Chapter V, whose obligations "
+    f"are listed below rather than judged against this document. {_GPAI_DUTIES} "
     "NOTE THE DATE: Chapter V has applied since 2 August 2025 (Art. 113(b)), earlier than the "
     "high-risk obligations this tool does model, which apply from 2 August 2026. These duties are "
     "live now."

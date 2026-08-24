@@ -45,11 +45,16 @@ def a_use_case(
     area: AnnexIIIArea | None = None,
     product: AnnexIProduct | None = None,
     third_party: bool = True,
+    risk_class: RiskClass = RiskClass.HIGH_RISK,
 ) -> UseCaseClassification:
     """`third_party` answers Art. 6(1)(b), and naming a product without it is not the Annex I route.
 
     Defaulted to true so that `product=` alone reads as the Art. 6(1) case it is meant to be. Pass
-    false for the other one: a self-assessed product whose use case is high-risk under Art. 6(2)."""
+    false for the other one: a self-assessed product whose use case is high-risk under Art. 6(2).
+
+    `risk_class` defaults to high_risk because most rules are on the Art. 6 track. Chapter V is the
+    other track — a general-purpose AI model has no area and no route, and its rules name
+    `gpai_model` and nothing else."""
     source = LegalSource(
         instrument="Regulation (EU) 2024/1689", article=6, act_version_date=ACT_DATE
     )
@@ -69,7 +74,7 @@ def a_use_case(
                 node_id="third_party_assessment",
             )
         ),
-        risk_class=RiskClass.HIGH_RISK,
+        risk_class=risk_class,
         reasoning="fixture",
         confidence="high",
         triggered_by=[ClassificationEvidence(source=source, reasoning="fixture")],
@@ -280,15 +285,29 @@ def test_a_narrowed_duty_is_selected_exactly_like_an_unnarrowed_one(spec):
             if rule.requires_provider_reallocation
             else None
         )
-        # THE USE CASE THIS RULE IS FOR, not an arbitrary one. `applies_to_route` and
-        # `applies_to_annex_iii_area` are gates on the SYSTEM and withholding on them is correct —
-        # Art. 11(2) reaches an Annex I product and nothing else. What is under test is that the
-        # condition, which narrows the DUTY-HOLDER, never withholds on top of them.
+        # THE USE CASE THIS RULE IS FOR, not an arbitrary one. The TIER, the ROUTE and the AREA
+        # are gates on the SYSTEM, and withholding on them is correct: Art. 11(2) reaches an
+        # Annex I product and nothing else, and a Chapter V rule withheld from a high-risk system
+        # is on the other track rather than narrowed. What is under test is the one gate that is
+        # NOT about the system — the condition, which narrows the duty-HOLDER and must never
+        # withhold on top of the three that are.
         annex_i = rule.applies_to_route is HighRiskRoute.ANNEX_I
         product = AnnexIProduct.MEDICAL_DEVICES if annex_i else None
+        # high_risk where the rule names it, because that is the case the fixture is built around;
+        # otherwise the first tier it does name, any of which is a use case it must be selected for.
+        tier = (
+            RiskClass.HIGH_RISK
+            if RiskClass.HIGH_RISK in rule.applies_to_risk_class
+            else rule.applies_to_risk_class[0]
+        )
+        annex_iii = tier in (RiskClass.HIGH_RISK, RiskClass.NOT_HIGH_RISK)
         for role in rule.applies_to_role:
             for area in rule.applies_to_annex_iii_area or list(AnnexIIIArea):
-                use_case = a_use_case(area=None if product else area, product=product)
+                use_case = a_use_case(
+                    area=area if annex_iii and not product else None,
+                    product=product,
+                    risk_class=tier,
+                )
                 active = select_rules(spec, use_case, role, reallocation=moved)
                 assert rule.rule_id in {r.rule_id for r in active.all_rules}, (
                     f"{rule.rule_id} states a condition and was withheld for {role}/{area} — "

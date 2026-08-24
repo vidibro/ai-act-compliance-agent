@@ -259,10 +259,15 @@ def test_the_out_of_scope_note_distinguishes_itself_from_minimal(spec):
     assert "Art. 4" in note, "and what a minimal system would still owe"
 
 
-def test_a_gpai_model_is_not_checked_but_is_not_cleared_either(spec):
+def test_a_gpai_model_owes_chapter_v_and_none_of_the_art_6_track(spec):
     """The distinction that matters. `out_of_scope` owes nothing; a general-purpose AI model owes
-    plenty — just under Chapter V, which this ruleset does not carry. An empty findings list with
-    no note would read as a clean bill of health for a provider who owes Art. 53 today."""
+    plenty, and it owes it under a different chapter — so the report must be full of Chapter V and
+    empty of Chapter III, not empty of both.
+
+    Two failures this pins apart. Selecting nothing tells a provider who owes Art. 53 today that
+    they owe nothing. Selecting the Art. 6 track raises Arts. 9 to 15 against a model the Article
+    does not classify — and Art. 3(66) makes a SYSTEM built on such a model an ordinary AI system,
+    so that mistake would land on the products the tier logic exists for."""
     brain = a_brain(
         territorial=TerritorialLink.NOT_ADDRESSED,
         scope=None,
@@ -271,11 +276,16 @@ def test_a_gpai_model_is_not_checked_but_is_not_cleared_either(spec):
     report = review(DOCUMENT, spec, brain, judge=StubJudge(), system_id="model")
 
     assert report.classification.overall_risk_class == RiskClass.GPAI_MODEL
+    owed = report.not_document_verifiable
+    provider = owed[ActorRole.PROVIDER]
+    assert all(r.startswith("AIA-GP") for r in provider), provider
+    assert {"AIA-GP-A53-1A", "AIA-GP-A53-1D", "AIA-GP-A55-1A"} <= set(provider)
+    assert owed[ActorRole.AUTHORISED_REPRESENTATIVE], "Art. 54 binds the representative too"
+
+    # NOTHING IS JUDGED, and the note is what stops an empty findings list reading as a pass.
     assert report.findings == []
-    assert report.not_document_verifiable == {}
-    assert report.scope_note and "NOT ASSESSED, not compliant" in report.scope_note
-    # The handover travels with it, so the reader is told what DOES govern.
-    assert "Art. 53" in report.scope_note and "Chapter V" in report.scope_note
+    assert report.scope_note and "NONE OF THEM IS JUDGED" in report.scope_note
+    assert "Art. 51" in report.scope_note and "Art. 55" in report.scope_note
 
 
 # --- Art. 5's two dates ---------------------------------------------------------------------
