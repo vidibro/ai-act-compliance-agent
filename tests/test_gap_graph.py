@@ -488,7 +488,7 @@ def test_the_art_25_question_is_anchored_in_the_articles_it_turns_on():
     """Limb (b) turns on the Art. 3(23) definition of 'substantial modification', and Art. 16 is
     what the reallocation costs. Neither may be answered from a model's memory."""
     q = roles.load_questions(
-        "2024-07-12", ROOT / "data" / "policy" / "articles", ROOT / "data" / "policy" / "annexes"
+        "2026-07-27", ROOT / "data" / "policy" / "articles", ROOT / "data" / "policy" / "annexes"
     )[roles.NODE_ID]
 
     assert "‘substantial modification’ means" in q.context  # Art. 3(23)
@@ -572,7 +572,7 @@ def test_the_deployer_question_is_anchored_in_article_27():
     """The question turns on Art. 3(4)'s definition of 'deployer' and on who Art. 27(1) reaches;
     neither may be answered from a model's memory."""
     q = roles.load_questions(
-        "2024-07-12", ROOT / "data" / "policy" / "articles", ROOT / "data" / "policy" / "annexes"
+        "2026-07-27", ROOT / "data" / "policy" / "articles", ROOT / "data" / "policy" / "annexes"
     )[roles.DEPLOYER_NODE_ID]
 
     assert "bodies governed by public law" in q.context  # Art. 27(1)

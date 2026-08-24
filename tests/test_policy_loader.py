@@ -107,11 +107,13 @@ def test_shipped_spec_loads():
     assert len(spec.rules) == 81
 
 
-# How many articles each fetched version holds. Per version, not one number, because the count is
-# a fact about a particular text rather than about "the store": the consolidation inserted six
-# articles (4a, 60a, 75a-75d). Keyed rather than derived so a truncated or half-written fetch fails
-# here instead of quietly shipping a store missing the articles nobody happened to cite.
-ARTICLE_COUNTS = {"2024-07-12": 113, "2026-07-27": 119}
+# How many articles each fetched version holds. KEYED BY VERSION EVEN WHILE ONE IS FETCHED, because
+# the count is a fact about a particular text rather than about "the store" — the consolidation
+# holds 119 where the original held 113, having inserted six articles (4a, 60a, 75a-75d). Keyed
+# rather than derived so a truncated or half-written fetch fails here instead of quietly shipping a
+# store missing the articles nobody happened to cite, and so the next refresh adds a line rather
+# than reworking a number.
+ARTICLE_COUNTS = {"2026-07-27": 119}
 
 
 @pytest.mark.parametrize("version", sorted(ARTICLE_COUNTS))
@@ -140,9 +142,10 @@ def test_every_fetched_version_has_a_declared_article_count():
 UNTRIAGED_VERSIONS: dict[str, str] = {}
 """Empty, and the mechanism stays for the next refresh.
 
-2026-07-27 lived here for exactly one commit — long enough for the consolidated text to sit in the
-repo, reviewable, without any claim that the ruleset had been checked against it. It has a ledger
-now, so the coverage guarantee below covers it and this entry would be a lie."""
+It is where a freshly fetched version sits: in the repo and reviewable, with no claim that the
+ruleset has been checked against it. A version leaves this dict by gaining a ledger, and the
+coverage guarantee below then holds it to the spec — so an entry here alongside a ledger is a
+contradiction the test rejects rather than a redundancy it tolerates."""
 
 
 def test_every_fetched_version_is_covered_or_declared_untriaged():
@@ -187,8 +190,10 @@ def test_every_article_is_classified_in_scope_or_out(version):
     A SUPERSEDED version is skipped, and that is the whole of the difference. Its ledger records how
     the ruleset stood against a text no longer in force, so holding it to today's spec makes every
     new rule a reason to edit a file nobody consults — the ledger's own claims stop being read and
-    start being satisfied. Superseded stores are kept only while something else still pins them (the
-    golden set pins 2024-07-12) and are deleted when it stops.
+    start being satisfied. A superseded store is therefore kept only while something else still
+    pins it, and deleted when nothing does. Only the pinned version is in the store today, so the
+    comparison selects everything; it earns its keep at the next refresh, when a newer text lands
+    beside this one and must be ruled on before the pin moves.
 
     An entry's SHAPE says how much of the article it rules out: a string excludes the whole article,
     a mapping excludes named divisions of an article a rule does cite. The two are checked against

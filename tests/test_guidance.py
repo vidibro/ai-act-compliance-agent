@@ -80,7 +80,7 @@ def test_every_golden_guidance_ref_resolves():
 def test_a_dangling_guidance_ref_fails_the_loader(tmp_path):
     bad = tmp_path / "cases.yaml"
     bad.write_text(
-        "act_version_date: 2024-07-12\n"
+        "act_version_date: 2026-07-27\n"
         "default_split: dev\n"
         "cases:\n"
         "  - case_id: x\n"

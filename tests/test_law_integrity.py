@@ -21,8 +21,8 @@ from aiact.anchoring import provision_text
 from aiact.policy_loader import _read_article, verify_integrity
 
 ROOT = Path(__file__).resolve().parents[1]
-ARTICLES = ROOT / "data" / "policy" / "articles" / "2024-07-12"
-ANNEXES = ROOT / "data" / "policy" / "annexes" / "2024-07-12"
+ARTICLES = ROOT / "data" / "policy" / "articles" / "2026-07-27"
+ANNEXES = ROOT / "data" / "policy" / "annexes" / "2026-07-27"
 _FRONT_SHA = re.compile(r"^sha256:\s*([0-9a-f]{64})\s*$", re.M)
 
 
@@ -50,7 +50,7 @@ def test_a_tampered_article_is_refused(tmp_path):
     tampered = original.replace("high-risk", "low-risk")
     assert tampered != original, "fixture must actually change the provision text"
 
-    store = tmp_path / "2024-07-12"
+    store = tmp_path / "2026-07-27"
     store.mkdir()
     (store / "article-006.md").write_text(tampered, encoding="utf-8")
 
@@ -78,7 +78,7 @@ def test_a_file_with_no_hash_is_refused(tmp_path):
     original = (ARTICLES / "article-006.md").read_text(encoding="utf-8")
     stripped = _FRONT_SHA.sub("", original)
 
-    store = tmp_path / "2024-07-12"
+    store = tmp_path / "2026-07-27"
     store.mkdir()
     (store / "article-006.md").write_text(stripped, encoding="utf-8")
 
@@ -92,7 +92,7 @@ def test_a_whitespace_only_edit_is_still_caught(tmp_path):
     divergence means the file is no longer the fetched text."""
     original = (ARTICLES / "article-006.md").read_text(encoding="utf-8")
 
-    store = tmp_path / "2024-07-12"
+    store = tmp_path / "2026-07-27"
     store.mkdir()
     (store / "article-006.md").write_text(original + "\n", encoding="utf-8")
 

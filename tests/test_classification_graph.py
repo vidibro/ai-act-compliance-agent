@@ -581,7 +581,7 @@ def test_load_questions_anchors_every_question_in_stored_text():
     from aiact.classify.graph import QUESTIONS, load_questions
 
     anchored = load_questions(
-        "2024-07-12", ROOT / "data" / "policy" / "articles", ROOT / "data" / "policy" / "annexes"
+        "2026-07-27", ROOT / "data" / "policy" / "articles", ROOT / "data" / "policy" / "annexes"
     )
     assert set(anchored) == set(QUESTIONS)
     for node_id, q in anchored.items():
@@ -593,7 +593,7 @@ def test_annex_iii_question_contains_the_actual_annex_iii():
     from aiact.classify.graph import load_questions
 
     q = load_questions(
-        "2024-07-12", ROOT / "data" / "policy" / "articles", ROOT / "data" / "policy" / "annexes"
+        "2026-07-27", ROOT / "data" / "policy" / "articles", ROOT / "data" / "policy" / "annexes"
     )["annex_iii"]
     assert "Employment, workers" in q.context  # Annex III point 4
     assert "detecting financial fraud" in q.context  # the 5(b) carve-out

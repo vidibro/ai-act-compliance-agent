@@ -33,7 +33,7 @@ from aiact.schemas.enums import (
 )
 
 ROOT = Path(__file__).resolve().parents[1]
-ARTICLE_2 = ROOT / "data" / "policy" / "articles" / "2024-07-12" / "article-002.md"
+ARTICLE_2 = ROOT / "data" / "policy" / "articles" / "2026-07-27" / "article-002.md"
 
 
 def brain(**answers) -> ScriptedBrain:

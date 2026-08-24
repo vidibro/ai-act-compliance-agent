@@ -76,7 +76,9 @@ INSTRUMENT = "Regulation (EU) 2024/1689"
 LANGUAGE = "ENG"
 ELI = "http://data.europa.eu/eli/reg/2024/1689/oj"
 
-DEFAULT_VERSION_DATE = "2024-07-12"
+# The version the ruleset pins, so a bare run refreshes the store the tool actually resolves
+# against. Every other version in VERSIONS is reachable by naming it.
+DEFAULT_VERSION_DATE = "2026-07-27"
 DEFAULT_OUT_ROOT = Path("data/policy/articles")
 DEFAULT_ANNEX_ROOT = Path("data/policy/annexes")
 
@@ -98,7 +100,11 @@ class ActVersion(NamedTuple):
 #
 # 2024-07-12 is the ORIGINAL Official Journal publication (L_202401689). That document is
 # immutable — it can never gain or lose an article — which is what makes re-running this script
-# byte-for-byte reproducible.
+# byte-for-byte reproducible. IT IS LISTED HERE AND NOT IN THE STORE, and the two facts are
+# independent: what a version costs to keep is a directory the coverage ledger must account for
+# and the tests must hold to the spec, while what it costs to keep FETCHABLE is these six lines.
+# A superseded version is deleted from the store once nothing pins it and stays here, so the text
+# behind any citation this repo ever made can be recovered without hunting for the URL again.
 #
 # Amendments never edit the original; they appear as a CONSOLIDATED version, a different CELLAR
 # resource of the form:

@@ -19,7 +19,7 @@ from aiact.schemas.policy import LegalSource
 from aiact.schemas.question import Answer
 
 ART50 = LegalSource(
-    instrument="Regulation (EU) 2024/1689", article=50, act_version_date="2024-07-12"
+    instrument="Regulation (EU) 2024/1689", article=50, act_version_date="2026-07-27"
 )
 
 

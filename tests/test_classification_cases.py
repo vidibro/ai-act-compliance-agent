@@ -42,7 +42,7 @@ def test_loads_and_ids_unique(cases):
     ids = [c.case_id for c in cases.cases]
     assert ids
     assert len(ids) == len(set(ids))
-    assert cases.act_version_date == "2024-07-12"
+    assert cases.act_version_date == "2026-07-27"
 
 
 def test_the_flip_case_flips(cases):
@@ -451,7 +451,7 @@ def test_a_concluding_exclusion_cannot_carry_art_6_answers():
 def test_dangling_flips_from_is_rejected(tmp_path):
     bad = tmp_path / "c.yaml"
     bad.write_text(
-        "act_version_date: 2024-07-12\n"
+        "act_version_date: 2026-07-27\n"
         "default_split: dev\n"
         "cases:\n"
         "  - case_id: only\n"
@@ -471,7 +471,7 @@ def test_dangling_flips_from_is_rejected(tmp_path):
 def _case_yaml(tmp_path, body: str):
     p = tmp_path / "c.yaml"
     p.write_text(
-        "act_version_date: 2024-07-12\ndefault_split: dev\ncases:\n" + body, encoding="utf-8"
+        "act_version_date: 2026-07-27\ndefault_split: dev\ncases:\n" + body, encoding="utf-8"
     )
     return p
 

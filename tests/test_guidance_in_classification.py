@@ -28,7 +28,7 @@ REF = "C-2025-5052/workplace-covers-recruitment"
 
 
 def anchored():
-    return load_questions("2024-07-12", ARTS, ANNS, GUID)
+    return load_questions("2026-07-27", ARTS, ANNS, GUID)
 
 
 # --- the GuidanceSource type --------------------------------------------------------------------

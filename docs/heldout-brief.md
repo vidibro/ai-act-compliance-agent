@@ -60,11 +60,11 @@ For each source document:
 
 ## The law you need
 
-- `data/policy/articles/2024-07-12/article-006.md` — the classification rules
-- `data/policy/articles/2024-07-12/article-002.md` — scope, and what it limits
-- `data/policy/annexes/2024-07-12/annex-I.md` — the harmonisation legislation list
-- `data/policy/annexes/2024-07-12/annex-III.md` — the listed high-risk areas
-- `data/policy/articles/2024-07-12/article-050.md` — transparency, answered for every case
+- `data/policy/articles/2026-07-27/article-006.md` — the classification rules
+- `data/policy/articles/2026-07-27/article-002.md` — scope, and what it limits
+- `data/policy/annexes/2026-07-27/annex-I.md` — the harmonisation legislation list
+- `data/policy/annexes/2026-07-27/annex-III.md` — the listed high-risk areas
+- `data/policy/articles/2026-07-27/article-050.md` — transparency, answered for every case
 
 Read them. Do not work from memory of the AI Act: the point of this repo is that the text is
 resolved verbatim from the Official Journal, and a case argued from recollection is worth less than
