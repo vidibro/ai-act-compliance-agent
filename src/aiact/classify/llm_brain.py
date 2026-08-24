@@ -32,9 +32,11 @@ from aiact.schemas.enums import (
     DeployerType,
     DerogationCondition,
     GpaiStatus,
+    OpenSourceRelease,
     ProhibitedPractice,
     ProviderReallocation,
     ScopeExclusion,
+    SystemicRisk,
     TerritorialLink,
     TransparencyDuty,
 )
@@ -140,6 +142,21 @@ def _answer_instructions(answer_type: str) -> str:
         return (
             f'set "value" to one of [{statuses}]; or "{UNKNOWN}" if the description does not say '
             f"enough about what the thing is, or about whether it has been released, to choose"
+        )
+    if answer_type == "systemic_risk":
+        levels = ", ".join(s.value for s in SystemicRisk)
+        # No UNKNOWN branch, for the reason `deployer_type` has none: `not_stated` IS the record
+        # of silence, and it is the ordinary answer here rather than a failure to answer.
+        return (
+            f'set "value" to one of [{levels}] — use "not_stated" whenever the description gives '
+            f"neither a designation nor a training compute figure, which is the ordinary case. Do "
+            f"not estimate the compute from anything else"
+        )
+    if answer_type == "open_source_release":
+        releases = ", ".join(o.value for o in OpenSourceRelease)
+        return (
+            f'set "value" to one of [{releases}] — use "not_stated" where the description does not '
+            f"say enough about the licence and the released artefacts to decide all four limbs"
         )
     if answer_type == "prohibited_practice":
         practices = ", ".join(p.value for p in ProhibitedPractice)
@@ -285,6 +302,16 @@ def _parse_value(answer_type: str, value: object) -> object:
             return ProhibitedPractice(str(value).strip().lower())
         except ValueError as exc:
             raise Unanswerable(f"{value!r} is not an Art. 5(1) prohibited practice") from exc
+    if answer_type == "systemic_risk":
+        try:
+            return SystemicRisk(str(value).strip().lower())
+        except ValueError as exc:
+            raise Unanswerable(f"{value!r} is not an Art. 51(1) systemic-risk answer") from exc
+    if answer_type == "open_source_release":
+        try:
+            return OpenSourceRelease(str(value).strip().lower())
+        except ValueError as exc:
+            raise Unanswerable(f"{value!r} is not an Art. 53(2) release answer") from exc
     if answer_type == "scope_exclusion":
         try:
             return ScopeExclusion(str(value).strip().lower())

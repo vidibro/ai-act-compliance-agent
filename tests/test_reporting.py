@@ -34,8 +34,10 @@ from aiact.schemas.enums import (
     ActorRole,
     AnnexIIIArea,
     DeployerType,
+    OpenSourceRelease,
     ProviderReallocation,
     RiskClass,
+    SystemicRisk,
     Verdict,
 )
 from aiact.schemas.policy import LegalSource
@@ -51,6 +53,16 @@ from aiact.schemas.report import (
 @pytest.fixture(scope="module")
 def spec():
     return load_policy_spec()
+
+
+def _answer(report, value) -> Answer:
+    """One cascade answer, on the source the fixture already carries."""
+    return Answer(
+        value=value,
+        reasoning="fixture",
+        confidence="high",
+        source=report.classification.triggered_by[0].source,
+    )
 
 
 def _finding(spec, rule) -> Finding:
@@ -228,3 +240,42 @@ def test_the_report_says_it_is_not_legal_advice(spec):
     text = " ".join(render_report(_report(spec, {}), spec).split())
     for paragraph in DISCLAIMER.split("\n\n"):
         assert " ".join(paragraph.split()) in text
+
+
+@pytest.mark.parametrize(
+    ("risk", "release", "expected"),
+    [
+        (SystemicRisk.DESIGNATED, OpenSourceRelease.NOT_OPEN, "SYSTEMIC RISK IS ESTABLISHED"),
+        (SystemicRisk.HIGH_IMPACT_CAPABILITIES, OpenSourceRelease.FULLY_OPEN, "DISAPPLIED"),
+        (SystemicRisk.BELOW_THRESHOLD, OpenSourceRelease.FULLY_OPEN, "Art. 54(6) lifts"),
+        (SystemicRisk.NOT_STATED, OpenSourceRelease.NOT_STATED, "UNANSWERED"),
+    ],
+)
+def test_a_model_is_told_which_side_of_each_chapter_v_gate_it_falls_on(
+    spec, risk, release, expected
+):
+    """THE OTHER HALF OF NOT WITHHOLDING.
+
+    Chapter V lists every obligation for every model, because neither of its gates is a fact a
+    model card reliably settles. That is only defensible if the reader is then told what their own
+    document says — otherwise the report answers "Art. 55 applies if you carry systemic risk",
+    which they knew before they ran it.
+
+    The `FULLY_OPEN` rows are the pair that matters. The same release answer means opposite things
+    depending on Art. 51: above the threshold the carve-out is DISAPPLIED and lifts nothing, below
+    it Art. 54(6) lifts the whole Article. A note composed from the licence alone would tell the
+    systemic-risk provider that four obligations had fallen away."""
+    report = _report(spec, {})
+    report.classification.use_cases[0].systemic_risk = _answer(report, risk)
+    report.classification.use_cases[0].open_source_release = _answer(report, release)
+    assert report.chapter_v_gate_note, "the note is no longer composed — re-derive this test"
+    text = " ".join(render_report(report, spec).split())
+    assert " ".join(report.chapter_v_gate_note.split()) in text
+    assert expected in text
+
+
+def test_a_document_that_is_not_a_model_gets_no_chapter_v_note(spec):
+    """`None` means the questions were never put, and it must not read as "no systemic risk". An
+    Art. 6-track system is not a model, and a paragraph about Art. 51 in its report would send its
+    provider to read a chapter that does not reach them."""
+    assert _report(spec, {}).chapter_v_gate_note is None

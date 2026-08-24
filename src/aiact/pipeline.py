@@ -91,13 +91,16 @@ def _section_b_note(products: list[str]) -> str:
 
 _GPAI_NOTE = (
     "Chapter V obligations are listed, and NONE OF THEM IS JUDGED AGAINST THIS DOCUMENT. Two gates "
-    "decide who owes what in Chapter V and this tool answers neither: whether the model carries "
-    "SYSTEMIC RISK under Art. 51, which turns the whole of Art. 55 on, and whether it is released "
-    "under a free and open-source licence with public weights, architecture and usage information, "
-    "which turns Art. 53(1)(a) and (b) and the whole of Art. 54 off. Each obligation below "
-    "therefore carries the condition it depends on and is listed for confirmation rather than "
-    "assessed. The Art. 6 risk-tier requirements — Arts. 9 to 15 and the provider obligations from "
-    "Art. 16 — are absent because Chapter V is a separate track, not because they were met."
+    "decide who owes what in Chapter V — whether the model carries SYSTEMIC RISK under Art. 51, "
+    "which turns the whole of Art. 55 on, and whether it is released under a free and open-source "
+    "licence with public weights, architecture and usage information, which turns Art. 53(1)(a) "
+    "and (b) and the whole of Art. 54 off. Both are answered from this documentation and the "
+    "answers are above; neither is used to withhold an obligation, because both are read from the "
+    "same document a judge would read and a card that understates its compute or overstates its "
+    "licence would otherwise clear four duties at once. So every obligation below is listed with "
+    "the condition it depends on, for confirmation rather than as an assessment. The Art. 6 "
+    "risk-tier requirements — Arts. 9 to 15 and the provider obligations from Art. 16 — are absent "
+    "because Chapter V is a separate track, not because they were met."
 )
 
 

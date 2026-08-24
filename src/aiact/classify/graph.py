@@ -288,6 +288,58 @@ QUESTIONS: dict[str, Question] = {
         "gpai_status",
         label="Is this a general-purpose AI model rather than a system?",
     ),
+    # THE TWO CHAPTER V GATES, asked only of a model. Neither withholds an obligation: every
+    # Art. 55 rule is selected for every model whatever these answer, and the four Art. 53(2) and
+    # 54(6) duties likewise. What they decide is what the REPORT SAYS about which side of each line
+    # the document falls on — the same job `deployer_type` does for Art. 27, and for the same
+    # reason. A model answering these wrong must cost a reader a sentence, never an obligation.
+    "systemic_risk": Question(
+        "systemic_risk",
+        _src(51, 1),
+        "Does the description state that this general-purpose AI model is one WITH SYSTEMIC RISK "
+        "under Article 51(1)? READ WHAT IS WRITTEN. Do not estimate, and do not infer from a "
+        "parameter count, a benchmark score, a company's size or how capable the model sounds — "
+        "Article 51(1) turns on a designation or on a compute figure, and nothing else settles it. "
+        "Four answers:\n"
+        "- designated: the description states a COMMISSION DESIGNATION under Art. 51(1)(b) or "
+        "Art. 52(4), or that an Art. 52(1) notification has been made to the Commission, or that "
+        "the model appears on the Art. 52(6) list. Any of those, stated, is this answer.\n"
+        "- high_impact_capabilities: the description states the CUMULATIVE TRAINING COMPUTE and it "
+        "is GREATER THAN 10^25 floating point operations — Art. 51(2) presumes high impact "
+        "capabilities above that. The figure must be in the description; 10^25 is 10 septillion, "
+        "so 5e25 or 3 x 10^26 FLOP is above it and 8e24 is not.\n"
+        "- below_threshold: the description states a training compute figure and it is BELOW "
+        "10^25, and no designation is mentioned.\n"
+        "- not_stated: neither a designation nor a training compute figure is in the description. "
+        "THIS IS THE ORDINARY ANSWER and it is the right one whenever you would otherwise be "
+        "guessing. It does not clear the model of anything.",
+        "systemic_risk",
+        label="Does the description state that the model carries systemic risk?",
+    ),
+    "open_source_release": Question(
+        "open_source_release",
+        _src(53, 2),
+        "Does the description state that this model's release meets the open-source exception in "
+        "Article 53(2) and Article 54(6)? It is a CONJUNCTION OF FOUR THINGS and every one must be "
+        "stated:\n"
+        "(1) a free and open-source licence that allows ACCESS, (2) USE, (3) MODIFICATION and "
+        "(4) DISTRIBUTION of the model — and, separately, the PARAMETERS INCLUDING THE WEIGHTS, "
+        "the information on the MODEL ARCHITECTURE, and the information on MODEL USAGE must all be "
+        "made PUBLICLY AVAILABLE.\n"
+        "Three answers:\n"
+        "- fully_open: every limb above is stated as met.\n"
+        "- not_open: at least one fails. A licence that restricts commercial use, forbids "
+        "modification or redistribution, caps users, or requires the licensor's permission is not "
+        "a free and open-source licence however it is labelled — and weights released behind an "
+        "acceptable-use agreement, a request form or a paid tier are not publicly available. A "
+        "model described as 'open' or 'open-weight' with any of those attached is not_open.\n"
+        "- not_stated: the description does not say enough about the licence and what was released "
+        "to answer. Answer this rather than assuming either way.\n"
+        "Do NOT answer on whether the model is popular, self-hostable, or available on a model "
+        "hub — none of that is the test.",
+        "open_source_release",
+        label="Is the model released under a free and open-source licence with public weights?",
+    ),
     "prohibited": Question(
         "prohibited",
         _src(5),
@@ -629,6 +681,12 @@ _QUESTION_CONTEXT: dict[str, Provisions] = {
     "scope": (("2", "3"), ()),
     # Art. 3(63) definition + the Chapter V regime it hands to
     "gpai_model": (("3", "51", "53"), ()),
+    # Art. 51 for the line itself and Art. 52 for what a notification looks like, since the node
+    # reads a stated claim rather than computing a threshold.
+    "systemic_risk": (("51", "52"), ()),
+    # Arts. 53 and 54 both, because the carve-out is written twice with the same four limbs and
+    # lifts different duties each time.
+    "open_source_release": (("53", "54"), ()),
     "prohibited": (("5",), ()),  # Art. 5 — the prohibited practices
     "annex_i": (("6",), ("I",)),  # Art. 6(1) + the Annex I legislation list itself
     # Art. 2 as well: 2(2) is what makes the Section A/B split matter, and the model is
@@ -710,6 +768,8 @@ class GraphState(BaseModel):
     territorial_link: Answer | None = None
     scope_exclusion: Answer | None = None
     gpai_model: Answer | None = None
+    systemic_risk: Answer | None = None
+    open_source_release: Answer | None = None
     prohibited: Answer | None = None
     in_annex_i: Answer | None = None
     third_party_assessment: Answer | None = None
@@ -739,6 +799,8 @@ def _every_answer(state: GraphState) -> list[Answer]:
         state.territorial_link,
         state.scope_exclusion,
         state.gpai_model,
+        state.systemic_risk,
+        state.open_source_release,
         state.prohibited,
         state.in_annex_i,
         state.third_party_assessment,
@@ -754,10 +816,13 @@ def _every_answer(state: GraphState) -> list[Answer]:
 def _get_answers(state: GraphState) -> list[Answer]:
     """The answers that determine the RISK CLASS.
 
-    `transparency` is deliberately absent. Art. 50 is a separate axis, not a step in the risk
-    cascade — a minimal-risk generator and a high-risk chatbot can both trigger it. If it were
-    counted here, a low-confidence transparency answer would wrongly drag the whole classification
-    to needs_review, and an Art. 50 finding would look like it influenced the tier. It does not."""
+    THREE ARE DELIBERATELY ABSENT, on one reasoning. `transparency` is a separate axis rather than
+    a step in the risk cascade — a minimal-risk generator and a high-risk chatbot can both trigger
+    it — and `systemic_risk` and `open_source_release` are the same shape one chapter over: they
+    decide which Chapter V obligations a MODEL owes, and a model is already `gpai_model` before
+    either is asked. Counting any of them here would let a low-confidence answer drag a
+    classification the node had no part in to needs_review, and would make an Art. 50 or Art. 51
+    finding look as though it had influenced the tier. None of them does."""
     answers = [
         state.is_ai_system,
         state.territorial_link,
@@ -786,6 +851,10 @@ _WHAT_THE_NODE_NEEDED: dict[str, str] = {
     "pre-market, or a private person's own use",
     "gpai_model": "whether the document describes a model or a product built with one — and, if a "
     "model, whether it is general enough to serve a wide range of distinct tasks",
+    "systemic_risk": "whether the model has been designated or notified as carrying systemic risk, "
+    "or what its cumulative training compute in floating point operations was",
+    "open_source_release": "the model's licence terms, and whether the weights, the architecture "
+    "information and the usage information are publicly available",
     "prohibited": "whether it infers emotions, categorises people biometrically, scores social "
     "behaviour, or predicts who will commit an offence — and, where it does, whether an Art. 5 "
     "exception applies (medical or safety use, a lawfully acquired dataset, a human assessment on "
@@ -1274,15 +1343,19 @@ def _route_scope(state: GraphState) -> str:
 
 
 def _route_gpai(state: GraphState) -> str:
-    """A general-purpose AI model leaves the risk cascade entirely: Art. 6 does not classify it, so
-    every question after this one is a category error for it. Anything else — including a system
-    built ON such a model, which Art. 3(66) makes an ordinary AI system — carries on."""
+    """A general-purpose AI model leaves the RISK cascade entirely — Art. 6 does not classify it,
+    so every Art. 6 question after this one is a category error for it — and turns onto the two
+    Chapter V questions instead. Anything else, including a system built ON such a model, which
+    Art. 3(66) makes an ordinary AI system, carries on down the Art. 6 track."""
     a = state.gpai_model
     if a is None or _is_low_confidence(a):
         return "assemble"
     status = _gpai_status(state)
     if status is not None and status.is_a_model:
-        return "assemble"
+        # A PRE-MARKET model is asked them too. Its Chapter V duties attach on the day it ships
+        # with no transition period, so which of them the release and the compute figure will
+        # engage is exactly what its provider needs to know now rather than then.
+        return "systemic_risk"
     # Art. 2(8) fell through to THIS question and no further. It is asked because a pre-market
     # general-purpose model needs its Chapter V duties named and dated rather than an exclusion;
     # once the answer is "an AI system", the exclusion concludes and running the Art. 6 track would
@@ -1406,6 +1479,12 @@ def build_graph(
     def node_annex_i(state: GraphState) -> dict[str, Any]:
         return {"in_annex_i": _ask("annex_i", state.description)}
 
+    def node_systemic_risk(state: GraphState) -> dict[str, Any]:
+        return {"systemic_risk": _ask("systemic_risk", state.description)}
+
+    def node_open_source(state: GraphState) -> dict[str, Any]:
+        return {"open_source_release": _ask("open_source_release", state.description)}
+
     def node_third_party(state: GraphState) -> dict[str, Any]:
         return {"third_party_assessment": _ask("third_party_assessment", state.description)}
 
@@ -1431,6 +1510,8 @@ def build_graph(
             description=state.description,
             annex_i_product=state.in_annex_i.value if state.in_annex_i else None,
             third_party_assessment=state.third_party_assessment,
+            systemic_risk=state.systemic_risk,
+            open_source_release=state.open_source_release,
             annex_iii_area=state.in_annex_iii.value if state.in_annex_iii else None,
             performs_profiling=state.performs_profiling,
             derogation=state.derogation,
@@ -1458,6 +1539,8 @@ def build_graph(
     g.add_node("territorial", node_territorial)
     g.add_node("scope", node_scope)
     g.add_node("gpai_model", node_gpai)
+    g.add_node("systemic_risk", node_systemic_risk)
+    g.add_node("open_source_release", node_open_source)
     g.add_node("prohibited", node_prohibited)
     g.add_node("annex_i", node_annex_i)
     g.add_node("third_party_assessment", node_third_party)
@@ -1478,8 +1561,19 @@ def build_graph(
         "scope", _route_scope, {"gpai_model": "gpai_model", "assemble": "assemble"}
     )
     g.add_conditional_edges(
-        "gpai_model", _route_gpai, {"prohibited": "prohibited", "assemble": "assemble"}
+        "gpai_model",
+        _route_gpai,
+        {
+            "prohibited": "prohibited",
+            "systemic_risk": "systemic_risk",
+            "assemble": "assemble",
+        },
     )
+    # The two Chapter V gates, in series and then out. Nothing branches on either: they answer
+    # what the report says about which side of each line the document falls on, and a model on
+    # this path has already left the Art. 6 track.
+    g.add_edge("systemic_risk", "open_source_release")
+    g.add_edge("open_source_release", "assemble")
     g.add_conditional_edges(
         "prohibited", _route_prohibited, {"annex_i": "annex_i", "assemble": "assemble"}
     )
@@ -1515,11 +1609,25 @@ def build_graph(
     return g.compile()
 
 
+# STATIC EDGES, written as routers so `route_for` can walk them. The compiled graph joins these two
+# with `add_edge` because nothing branches on either answer — they inform the report, they do not
+# steer the cascade — but the walk below follows `_ROUTERS` and would stop at a node with no entry,
+# which would then tell a golden case that pins the second one that the cascade never reaches it.
+def _route_systemic_risk(state: GraphState) -> str:
+    return "open_source_release"
+
+
+def _route_open_source(state: GraphState) -> str:
+    return "assemble"
+
+
 _ROUTERS = {
     "is_ai": _route_is_ai,
     "territorial": _route_territorial,
     "scope": _route_scope,
     "gpai_model": _route_gpai,
+    "systemic_risk": _route_systemic_risk,
+    "open_source_release": _route_open_source,
     "prohibited": _route_prohibited,
     "annex_i": _route_annex_i,
     "third_party_assessment": _route_third_party,
@@ -1532,6 +1640,8 @@ _STATE_FIELD = {
     "territorial": "territorial_link",
     "scope": "scope_exclusion",
     "gpai_model": "gpai_model",
+    "systemic_risk": "systemic_risk",
+    "open_source_release": "open_source_release",
     "prohibited": "prohibited",
     "annex_i": "in_annex_i",
     "third_party_assessment": "third_party_assessment",

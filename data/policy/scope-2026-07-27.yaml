@@ -685,27 +685,37 @@ article_rulings:
   # this chapter puts on a provider or its authorised representative.
   #
   # Read per paragraph, the chapter separates into three things a single ruling cannot hold apart:
-  # the operator duties, now rules; the systemic-risk LINE, which is a classification question no
-  # node asks and which every Art. 55 rule therefore states as a condition; and the AI Office and
-  # Commission machinery of Arts. 52 and 56, which binds nobody this tool reports for.
+  # the operator duties, which are rules; the two GATES that decide who owes what — Art. 51's
+  # systemic-risk line and the Art. 53(2)/54(6) open-source carve-out, each answered by a cascade
+  # node; and the AI Office and Commission machinery of Arts. 52 and 56, which binds nobody this
+  # tool reports for.
   #
-  # NOTHING IN THE CHAPTER IS JUDGED. Every AIA-GP-* rule is document_verifiable false, and for
-  # Art. 53(1)(a), (b) and (d) that is not a statement about the artefacts — those are documents.
-  # It is that both gates deciding who owes what here are unanswered: Art. 51 systemic risk, and
-  # the Art. 53(2)/54(6) open-source carve-out. A verdict drawn from a model card without them
-  # would report a gap against a provider that owes nothing, and there is no golden set for this
-  # chapter to measure that against.
+  # THE GATES ARE ANSWERED AND NOTHING IS WITHHELD ON THEM. `systemic_risk` and
+  # `open_source_release` read a STATED claim and answer `not_stated` rather than estimating, and
+  # their answers reach the reader as `ComplianceReport.chapter_v_gate_note` — which side of each
+  # line the document falls on. Every Chapter V rule is still selected for every model and still
+  # carries its condition, because a model card mis-read on a compute figure or on one licence
+  # limb would otherwise clear four obligations, and a clearance is the error direction this
+  # ruleset does not accept.
+  #
+  # NOTHING IN THE CHAPTER IS JUDGED, and for Art. 53(1)(a), (b) and (d) that is not a statement
+  # about the artefacts — those are documents. It is that the gates are read from the same
+  # documentation a judge would read, so a GAP returned against a provider whose card simply did
+  # not mention its licence would be manufactured by the tool rather than found. There is no golden
+  # set for this chapter to measure that against.
   51:
     1: >-
-      THE SYSTEMIC-RISK LINE, and NO NODE ASKS IT. The cascade ends at GPAI_MODEL (Art. 3(63)) and
-      hands the whole chapter over, so a model is never sorted into the two regimes Chapter V
-      actually has. Everything that turns on the answer is therefore unreachable: Art. 55 in full,
-      and the open-source carve-outs in 53(2) and 54(6), which are disapplied for systemic-risk
-      models. Not a duty of anyone, so not a debt in articles_awaiting_rules; a missing question.
+      CASCADE systemic_risk — THE SYSTEMIC-RISK LINE, and the whole of Art. 55 rests on it. The
+      node READS A STATED CLAIM and refuses to estimate: an Art. 51(1)(b) designation or an
+      Art. 52(1) notification answers `designated`, a stated compute figure answers on the
+      Art. 51(2) threshold, and anything else answers `not_stated`. It withholds no obligation —
+      every Art. 55 rule is selected for every model and carries the condition — so what the answer
+      decides is what the report tells the reader about their own document.
     2: >-
-      Presumption of high impact capabilities above 10^25 cumulative training FLOP. The one limb a
-      document could answer, and only where the model card states the training compute at all.
-      Unasked with 51(1).
+      CASCADE systemic_risk — presumption of high impact capabilities above 10^25 cumulative
+      training FLOP. The one limb a document can answer, and only where the model card states the
+      training compute at all; `SystemicRisk.BELOW_THRESHOLD` is what a stated figure under the
+      threshold records, and it rules out this presumption and not Art. 51(1)(b).
     3: Commission delegated power to amend the thresholds and supplement the benchmarks. Institutional.
   52:
     1: >-
@@ -735,10 +745,13 @@ article_rulings:
       by the 53(2) open-source carve-out, while (c) the copyright policy and (d) the public
       training-content summary are owed by every provider whatever its licence.
     2: >-
-      OPEN-SOURCE CARVE-OUT from 53(1)(a) and (b) — free and open-source licence, weights,
-      architecture and usage information all public — DISAPPLIED for systemic-risk models. A limit on
-      the duty rather than a duty, and it cannot be applied until 51(1) is asked, so AIA-GP-A53-1A
-      and -1B carry it as an activation_condition instead.
+      CASCADE open_source_release — OPEN-SOURCE CARVE-OUT from 53(1)(a) and (b): a free and
+      open-source licence allowing access, use, modification and distribution, AND public
+      parameters, architecture information and usage information. A conjunction of four limbs, and
+      DISAPPLIED for a systemic-risk model — so the node is read with `systemic_risk` and never
+      alone. A limit on a duty rather than a duty, and it withholds nothing: AIA-GP-A53-1A and -1B
+      are selected whatever it answers and carry the carve-out as an activation_condition, because
+      a model card mis-read on any one limb would otherwise clear two obligations.
     3: >-
       Cooperate as necessary with the Commission and national competent authorities. Conduct during
       an authority's exercise of its powers, with no document that evidences it in advance — the same
@@ -774,8 +787,9 @@ article_rulings:
       reason to consider, the provider to be acting contrary to the Regulation, and immediately
       tells the AI Office, with reasons.
     6: >-
-      OPEN-SOURCE CARVE-OUT from the whole Article, disapplied for systemic-risk models. A limit on
-      the duty, and unreachable for the same reason as 53(2).
+      CASCADE open_source_release — OPEN-SOURCE CARVE-OUT from the WHOLE Article, on the same four
+      limbs as 53(2) and disapplied for a systemic-risk model in the same way. Wider than 53(2) in
+      what it lifts and identical in what it requires, which is why one node answers both.
   55:
     1: >-
       RULE AIA-GP-A55-1A AIA-GP-A55-1B AIA-GP-A55-1C AIA-GP-A55-1D — the systemic-risk duties, owed

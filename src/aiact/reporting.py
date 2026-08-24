@@ -127,6 +127,11 @@ def render_report(report: ComplianceReport, spec: PolicySpec) -> str:
         out += _wrapped("!!", report.provider_reallocation_note, indent="") + [""]
     if report.deployer_type_note:
         out += _wrapped("!!", report.deployer_type_note, indent="") + [""]
+    # Chapter V lists every obligation for every model, because neither of its two gates is a fact
+    # a model card reliably settles. This is the other half: the reader is told what their OWN
+    # document says about each line, rather than having the condition read back at them.
+    if report.chapter_v_gate_note:
+        out += _wrapped("!!", report.chapter_v_gate_note, indent="") + [""]
 
     # Art. 50 sits beside the tier, not inside it, and splits by duty-holder.
     for role, duties in report.classification.transparency_duties_by_role.items():

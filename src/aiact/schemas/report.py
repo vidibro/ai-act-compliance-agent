@@ -16,8 +16,10 @@ from aiact.schemas.classification import ClassificationResult
 from aiact.schemas.enums import (
     ActorRole,
     DeployerType,
+    OpenSourceRelease,
     ProviderReallocation,
     RiskClass,
+    SystemicRisk,
     TransparencyDuty,
     Verdict,
 )
@@ -52,6 +54,81 @@ DISCLAIMER = (
     "Article 25 moved nothing. Any organisation to which one of those circumstances applies owes "
     "the provider obligations set out in this report, whatever role the documentation gives it."
 )
+
+def _systemic_risk_note(risk: SystemicRisk | None) -> str:
+    """What the Art. 51 answer settles, in the reader's own terms."""
+    if risk is SystemicRisk.DESIGNATED:
+        return (
+            "SYSTEMIC RISK IS ESTABLISHED on the face of the documentation — it records a "
+            "Commission designation or an Art. 52(1) notification. The Art. 55 obligations below "
+            "are owed in addition to Arts. 53 and 54, and Art. 52(5) allows a reasoned request for "
+            "reassessment at the earliest six months after the designation decision."
+        )
+    if risk is SystemicRisk.HIGH_IMPACT_CAPABILITIES:
+        return (
+            "SYSTEMIC RISK IS PRESUMED: the documentation states cumulative training compute above "
+            "10^25 floating point operations, which Art. 51(2) presumes to be the high impact "
+            "capabilities of Art. 51(1)(a). The Art. 55 obligations below are owed, and Art. 52(1) "
+            "requires the Commission to be notified within two weeks of the threshold being met or "
+            "foreseen. The presumption is rebuttable — Art. 52(2) allows substantiated arguments "
+            "that the model presents no systemic risk despite meeting the condition — but the "
+            "arguments travel WITH the notification, not instead of it."
+        )
+    if risk is SystemicRisk.BELOW_THRESHOLD:
+        return (
+            "The documentation states cumulative training compute BELOW 10^25 floating point "
+            "operations, so the Art. 51(2) presumption is not engaged on the stated figure. That "
+            "rules out one limb and not the other: Art. 51(1)(b) lets the Commission designate a "
+            "model on the Annex XIII criteria at any level of compute, and the Art. 52(6) list is "
+            "the authoritative answer. The Art. 55 obligations are still listed below."
+        )
+    return (
+        "The documentation states neither a Commission designation nor a cumulative training "
+        "compute figure, so whether Art. 51(1) reaches this model is UNANSWERED — not answered no. "
+        "This tool does not estimate compute from a parameter count. The Art. 55 obligations are "
+        "listed below with that condition attached; the Art. 52(6) list of models with systemic "
+        "risk is where the question is actually settled."
+    )
+
+
+def _release_note(risk: SystemicRisk | None, release: OpenSourceRelease | None) -> str:
+    """What the Art. 53(2)/54(6) answer settles, READ WITH the Art. 51 answer.
+
+    Never alone: both carve-outs are disapplied for a model with systemic risk, so a fully open
+    release lifts nothing while Art. 51 is answered yes or left open."""
+    if release is None:
+        return ""
+    disapplied = risk is not None and risk.carries_systemic_risk is not False
+    if release is OpenSourceRelease.FULLY_OPEN:
+        if disapplied:
+            return (
+                "The release is described as meeting the Art. 53(2) open-source conditions, and "
+                "that carve-out is DISAPPLIED for a model with systemic risk — so on the answer "
+                "above it lifts nothing, and Art. 53(1)(a) and (b) and the whole of Art. 54 stand."
+            )
+        return (
+            "The release is described as meeting all four Art. 53(2) conditions — a free and "
+            "open-source licence allowing access, use, modification and distribution, with the "
+            "parameters, architecture information and usage information publicly available. On "
+            "that basis Art. 53(2) lifts Art. 53(1)(a) and (b), and Art. 54(6) lifts the whole of "
+            "Art. 54. Art. 53(1)(c) and (d) — the copyright policy and the public training-content "
+            "summary — are NOT lifted and are owed by every provider. The lifted obligations are "
+            "still listed below, because the carve-out is disapplied the moment the model is found "
+            "to carry systemic risk."
+        )
+    if release is OpenSourceRelease.NOT_OPEN:
+        return (
+            "The release does NOT meet the Art. 53(2) conditions — at least one of the licence "
+            "terms or the public availability of the parameters, architecture information and "
+            "usage information fails. Neither carve-out is available, so Art. 53(1)(a) and (b) and "
+            "the whole of Art. 54 are owed in full."
+        )
+    return (
+        "The documentation does not say enough about the licence and the released artefacts to "
+        "decide the Art. 53(2) carve-out, which has to be earned on ALL FOUR of its limbs. Silence "
+        "on any of them leaves Art. 53(1)(a) and (b) and the whole of Art. 54 standing."
+    )
+
 
 class Finding(BaseModel):
     """The verdict on one PolicyRule for one use case.
@@ -268,6 +345,27 @@ class ComplianceReport(BaseModel):
         answer = self.deployer_type
         value = answer.value if answer is not None else None
         return value if isinstance(value, DeployerType) else None
+
+    @property
+    def chapter_v_gate_note(self) -> str | None:
+        """WHICH SIDE OF CHAPTER V'S TWO LINES this document falls on, or None for anything that is
+        not a general-purpose AI model.
+
+        The report lists every Chapter V obligation for every model, because neither line is a fact
+        a model card reliably settles and withholding four duties on a guess would be a clearance.
+        This is the other half of that bargain: the reader is told what their own document says, so
+        a card that states a designation or a compute figure gets an answer rather than the
+        condition read back at them.
+
+        BOTH LINES IN ONE NOTE, because neither decides anything alone. Art. 53(2) lifts
+        Art. 53(1)(a) and (b), and Art. 54(6) lifts the whole of Art. 54 — but both are disapplied
+        for a model with systemic risk, so a fully open release lifts nothing until Art. 51 is
+        answered. A reader told only about the licence would draw exactly the wrong conclusion."""
+        risk = self.classification.stated_systemic_risk
+        release = self.classification.stated_open_source_release
+        if risk is None and release is None:
+            return None
+        return " ".join(p for p in (_systemic_risk_note(risk), _release_note(risk, release)) if p)
 
     @property
     def deployer_type_note(self) -> str | None:

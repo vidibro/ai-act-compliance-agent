@@ -30,10 +30,12 @@ from aiact.schemas.enums import (
     DeployerType,
     DerogationCondition,
     GpaiStatus,
+    OpenSourceRelease,
     ProhibitedPractice,
     ProviderReallocation,
     RiskClass,
     ScopeExclusion,
+    SystemicRisk,
     TerritorialLink,
     TransparencyDuty,
     Verdict,
@@ -237,6 +239,34 @@ class ClassificationCase(BaseModel):
     def expected_gpai_model(self) -> bool:
         """Whether the described thing is a general-purpose model at all, placed or not."""
         return self.expected_gpai_status.is_a_model
+
+    expected_systemic_risk: SystemicRisk | None = None
+    """Art. 51(1) — whether the description STATES that the model carries systemic risk.
+
+    Asked of a model and of nothing else, so it is pinned on a GPAI case and left unset everywhere
+    else. `NOT_STATED` is a real answer and the ordinary one: the node reads a designation or a
+    training compute figure and refuses to estimate, so a card that gives neither is answered, not
+    abstained on."""
+
+    expected_open_source_release: OpenSourceRelease | None = None
+    """Arts. 53(2) and 54(6) — whether the release meets the open-source carve-out on all four
+    limbs. Pinned on a GPAI case for the same reason, and `NOT_STATED` is the ordinary answer for
+    the same one: a card that calls itself open-weight without stating its licence terms has not
+    established the exception."""
+
+    systemic_risk_basis: str = ""
+    """WHICH words in the description settle Art. 51(1), or why nothing does.
+
+    Not paired by a validator the way `scope_exclusion_basis` is, because the ordinary answer here
+    is `NOT_STATED` and demanding an argument for silence would fill the file with restatements of
+    the question. Worth writing where the answer is anything else — a designation and a compute
+    figure are both quotable, and an answer key that cannot point at the words is a guess with a
+    label on it."""
+
+    open_source_release_basis: str = ""
+    """WHICH of Art. 53(2)'s four limbs the description settles, and how. Optional for the reason
+    `systemic_risk_basis` is, and most useful on a `NOT_OPEN` case: that answer says a specific
+    limb FAILS, which is a claim about the text rather than an absence in it."""
 
     # The "why" — the decisive sub-answers a correct classifier should also produce. Optional so a
     # case only pins what actually decides it.

@@ -13,14 +13,19 @@ exemptions — so profiling must be evaluated on its own, before exemptions are 
 
 from __future__ import annotations
 
+from enum import StrEnum
+from typing import TypeVar
+
 from pydantic import BaseModel, field_validator, model_validator
 
 from aiact.schemas.enums import (
     ActorRole,
     AnnexIIIArea,
     AnnexIProduct,
+    OpenSourceRelease,
     ProhibitedPractice,
     RiskClass,
+    SystemicRisk,
     TransparencyDuty,
 )
 from aiact.schemas.policy import GuidanceSource, LegalSource
@@ -30,6 +35,8 @@ from aiact.schemas.question import (
     Confidence,
     _check_quote_length,
 )
+
+_E = TypeVar("_E", bound=StrEnum)
 
 
 class ClassificationEvidence(BaseModel):
@@ -100,6 +107,22 @@ class UseCaseClassification(BaseModel):
     to Article 6(1) and Annex I". A product named under (a) that self-assesses is neither — the
     cascade carries it on to Annex III, where it can be high-risk under Art. 6(2) and owe
     Chapter III in full."""
+
+    systemic_risk: Answer | None = None
+    """Art. 51(1) — whether the description STATES that this general-purpose AI model is one with
+    systemic risk. Asked of a model and of nothing else, so `None` on every Art. 6-track use case.
+
+    IT NARROWS NOTHING. Every Art. 55 rule is selected for every model whatever this says, and each
+    carries the condition itself; what this decides is what the report tells the reader about which
+    side of the Art. 51 line their own document falls on. Withholding four obligations on a model's
+    reading of a compute figure would be a clearance, and a clearance is the one error direction
+    this project does not accept — the same reasoning `deployer_type` records for Art. 27."""
+
+    open_source_release: Answer | None = None
+    """Arts. 53(2) and 54(6) — whether the release meets the open-source carve-out on all four
+    limbs. Asked of a model, and read WITH `systemic_risk`, never alone: both carve-outs are
+    disapplied for a model with systemic risk, so a fully open release lifts nothing until the
+    Art. 51 line is answered too. Narrows nothing, for the reason above."""
 
     annex_iii_area: AnnexIIIArea | None = None
     annex_iii_use_case: LegalSource | None = None  # e.g. Annex III(4)(a)
@@ -212,6 +235,32 @@ class ClassificationResult(BaseModel):
         a practice is banned NOW — see `ProhibitedPractice.applies_from`."""
         for answer in self.answers:
             if answer.node_id == "prohibited" and isinstance(answer.value, ProhibitedPractice):
+                return answer.value
+        return None
+
+    @property
+    def stated_systemic_risk(self) -> SystemicRisk | None:
+        """Art. 51(1) as the documentation answered it, or None where the question was not put.
+
+        Narrowed by TYPE, as every other read of an Answer is: only a recognised member is a
+        finding. `None` here means "no model was classified", not "no systemic risk" — the two
+        readings are sixteen obligations apart."""
+        return self._model_answer("systemic_risk", SystemicRisk)
+
+    @property
+    def stated_open_source_release(self) -> OpenSourceRelease | None:
+        """Arts. 53(2) and 54(6) as the documentation answered them, or None where not put."""
+        return self._model_answer("open_source_release", OpenSourceRelease)
+
+    def _model_answer(self, node_id: str, kind: type[_E]) -> _E | None:
+        """The value of a Chapter V gate answer, from whichever use case carries it.
+
+        Read off the use cases rather than stored again, for the reason `prohibited_practice` is:
+        a second copy could disagree with the verdict it came from. A model classification holds
+        exactly one use case, so "whichever" is "the one"."""
+        for use_case in self.use_cases:
+            answer = getattr(use_case, node_id, None)
+            if answer is not None and isinstance(answer.value, kind):
                 return answer.value
         return None
 

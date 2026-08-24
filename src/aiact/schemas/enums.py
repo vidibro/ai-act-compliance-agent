@@ -238,6 +238,100 @@ class GpaiStatus(StrEnum):
         return self is not GpaiStatus.AI_SYSTEM
 
 
+class SystemicRisk(StrEnum):
+    """Art. 51(1). WHETHER a general-purpose AI model is one WITH SYSTEMIC RISK.
+
+    The line that decides the whole of Art. 55, and the one the Regulation gives no test a document
+    can settle on its own. Art. 51(1) has two limbs: (a) high impact capabilities, which Art. 51(2)
+    PRESUMES above 10^25 cumulative training FLOP, and (b) a Commission decision on the Annex XIII
+    criteria. Art. 52(6) has the Commission publish and maintain the list of such models, and that
+    list — not a FLOP estimate — is the authoritative answer.
+
+    So this reads a STATED CLAIM and abstains otherwise. Training compute is rarely in a model card,
+    and inferring it from a parameter count would derive a regulatory finding from a guess — the
+    same refusal `third_party_assessment` makes about a conformity route. `NOT_STATED` is therefore
+    the ordinary answer, and it is a value rather than a `None`: "the document does not say" is a
+    finding a reader can act on, and it is not the same as "no".
+
+    NOTHING IS WITHHELD ON THIS ANSWER. Every Art. 55 rule is selected for every model and carries
+    the condition; what this decides is what the REPORT SAYS about which side of the line the
+    document falls on. A model answering `below_threshold` on a card that understates its compute
+    would otherwise clear four obligations, and a clearance reached that way is the one error this
+    project treats as unacceptable."""
+
+    DESIGNATED = "designated"
+    """The document states a Commission designation under Art. 51(1)(b) or Art. 52(4), or an
+    Art. 52(1) notification already made. The authoritative limb: no threshold argument survives
+    it, and Art. 52(5) lets the provider request reassessment at the earliest six months on."""
+
+    HIGH_IMPACT_CAPABILITIES = "high_impact_capabilities"
+    """The document states cumulative training compute ABOVE 10^25 floating point operations, which
+    Art. 51(2) presumes to be high impact capabilities under Art. 51(1)(a). A presumption, not a
+    conclusion — Art. 52(2) lets the provider argue with its notification that the model presents
+    no systemic risk despite meeting the condition."""
+
+    BELOW_THRESHOLD = "below_threshold"
+    """The document states a training compute figure and it is BELOW 10^25, with no designation
+    mentioned. The narrowest of the four: it rules out the Art. 51(2) presumption on the stated
+    figure and rules out nothing else, because Art. 51(1)(b) lets the Commission designate a model
+    on the Annex XIII criteria at any compute."""
+
+    NOT_STATED = "not_stated"
+    """Neither a designation nor a training compute figure is in the document. The ordinary answer,
+    and not a clearance: Art. 55 applies from the day the model meets Art. 51(1), whatever a model
+    card happens to mention."""
+
+    @property
+    def carries_systemic_risk(self) -> bool | None:
+        """True where the document says so, False where it says the opposite, None where it is
+        silent. Three-valued deliberately — collapsing `NOT_STATED` into False is how a model that
+        never published its compute would be cleared of Art. 55."""
+        if self in (SystemicRisk.DESIGNATED, SystemicRisk.HIGH_IMPACT_CAPABILITIES):
+            return True
+        return False if self is SystemicRisk.BELOW_THRESHOLD else None
+
+
+class OpenSourceRelease(StrEnum):
+    """Arts. 53(2) and 54(6). WHETHER the model's release meets the open-source carve-out.
+
+    A CONJUNCTION OF FOUR THINGS, and that is the whole difficulty: a free and open-source licence
+    allowing access, usage, modification AND distribution, and public availability of the
+    parameters INCLUDING THE WEIGHTS, of the information on model architecture, and of the
+    information on model usage. A permissive licence over closed weights is not this, and neither
+    is a weights release under a licence restricting commercial use or downstream modification.
+
+    What it lifts is narrow and asymmetric. Art. 53(2) lifts Art. 53(1)(a) and (b) — the Annex XI
+    technical documentation and the Annex XII downstream information — and leaves (c) the copyright
+    policy and (d) the public training-content summary owed by everyone. Art. 54(6) lifts the whole
+    of Art. 54. Both are DISAPPLIED for a model with systemic risk, so this answer never decides
+    anything on its own: it decides with `SystemicRisk`.
+
+    Distinct from `ScopeExclusion.FREE_OPEN_SOURCE`, which is Art. 2(12) and withholds the whole
+    Regulation from an AI SYSTEM on a different and shorter test — no weights condition at all."""
+
+    FULLY_OPEN = "fully_open"
+    """All four limbs stated: the licence permits access, usage, modification and distribution, and
+    the parameters, architecture information and usage information are publicly available."""
+
+    NOT_OPEN = "not_open"
+    """At least one limb fails — a restrictive licence, or weights that are not public. The common
+    case for a model card that calls itself "open" while gating the weights behind an
+    acceptable-use agreement or a commercial licence."""
+
+    NOT_STATED = "not_stated"
+    """The document does not say enough about the licence and the released artefacts to answer.
+    Not the carve-out: the exception has to be earned on all four limbs, so silence leaves the
+    Art. 53(1)(a), (b) and Art. 54 duties standing."""
+
+    @property
+    def meets_article_53_2(self) -> bool | None:
+        """True only where every limb is stated as met; False where one fails; None on silence.
+        Three-valued for the reason `SystemicRisk.carries_systemic_risk` is."""
+        if self is OpenSourceRelease.FULLY_OPEN:
+            return True
+        return False if self is OpenSourceRelease.NOT_OPEN else None
+
+
 class ProhibitedPractice(StrEnum):
     """Art. 5(1). WHICH point bans the practice.
 

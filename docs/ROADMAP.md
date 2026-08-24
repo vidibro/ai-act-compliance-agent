@@ -759,9 +759,9 @@ Fails **safe** — over-reporting, never a false clearance — which is why this
 
 </details>
 
-#### M4d-8 — Chapter V: general-purpose AI models are DETECTED and LISTED, not judged 🟡
+#### M4d-8 — Chapter V: general-purpose AI models are DETECTED, GATED and LISTED, not judged 🟡
 
-Classification built 2026-08-19; the ruleset 2026-08-24. What is still deliberately absent is the Art. 51 systemic-risk step, and with it any judging.
+Classification built 2026-08-19; the ruleset and both gates 2026-08-24. What is still deliberately absent is any judging.
 
 **What was wrong.** The cascade began at Art. 3(1) and ended at Art. 6, so a foundation-model card answered "yes it's AI", found no Annex III area, and came back **`minimal`** — a false clearance for a provider owing Chapter V. Not an abstention: a wrong answer, in the one direction this project treats as unacceptable.
 
@@ -775,7 +775,9 @@ Classification built 2026-08-19; the ruleset 2026-08-24. What is still deliberat
 
 **NOTHING IN THE CHAPTER IS JUDGED, and that is not a statement about the artefacts.** Annex XI documentation and the Art. 53(1)(d) training-content summary are documents a judge could read. They are withheld because the two gates deciding who owes what are answered by nobody — Art. 51 systemic risk, and the Art. 53(2)/54(6) open-source carve-out — so a verdict drawn from a model card would return a GAP against a provider that owes nothing, in a chapter with no golden set to measure that against. Each rule states its gate in `activation_condition` and is listed for confirmation. Art. 53(1)(c) and (d) are the two that owe nothing to either gate and are the ones to judge first, the day a general-purpose model reference document exists.
 
-**Still NOT built: an Art. 51 systemic-risk classification step.**
+**The Art. 51 step is built, on the terms this section set for it.** `systemic_risk` READS A STATED CLAIM and abstains otherwise, exactly as the note below asked: a Commission designation or an Art. 52(1) notification answers `designated`, a stated cumulative training compute answers on the Art. 51(2) 10^25 threshold, and everything else answers `not_stated` — which is a value, not a `None`, because "the card does not say" is a finding a reader can act on and is not the same as no. `open_source_release` is its twin for the Art. 53(2)/54(6) carve-out, a conjunction of four limbs that one node answers for both Articles.
+
+**NEITHER GATE WITHHOLDS AN OBLIGATION**, and a test pins it: the same model run with `not_stated`/`not_stated`, `below_threshold`/`fully_open` and `designated`/`not_open` must produce an identical Chapter V rule set. The gates are read from the same model card a judge would read, so letting them gate selection would let a card that understates its compute, or calls a restrictive licence open, clear four obligations at once. What they produce instead is `ComplianceReport.chapter_v_gate_note` — and the two are composed TOGETHER, because a fully open release lifts nothing while the model carries systemic risk, and a note written from the licence alone would tell a systemic-risk provider that Art. 54 had fallen away.
 
 **Wait for the Commission's list before building the systemic-risk step.** Art. 52(6) requires the Commission to publish and maintain a list of general-purpose AI models with systemic risk. **As of 2026-08-19 that list does not appear to be published** — the Commission's GPAI guidance and Q&A pages do not link one, and the closest public artefact is the [GPAI Code of Practice](https://digital-strategy.ec.europa.eu/en/policies/contents-code-gpai) signatory roster, which names companies rather than models.
 
@@ -804,13 +806,13 @@ The handover text already tells the reader the list is required, is authoritativ
 | status | count | means |
 |---|---|---|
 | checked | 188 | a rule tests documentation against it, and names the rule |
-| asked | 60 | the cascade decides it, and names the node |
-| not owed | 541 | creates no duty for the roles this tool reports for, with a written reason |
+| asked | 64 | the cascade decides it, and names the node |
+| not owed | 537 | creates no duty for the roles this tool reports for, with a written reason |
 | owed | 0 | a real duty this tool does not check, declared as a debt |
 | blanket | 0 | nobody read it |
 | unaccounted | 0 | nothing covers it — the failure state |
 
-**What is owed: nothing.** `articles_awaiting_rules` and `annexes_awaiting_rules` are both **EMPTY**, and `OWED_PROVISIONS` in `tests/test_coverage.py` holds them there the way `BLANKET_PROVISIONS` holds the blanket at zero — the count only shrinks, and it going up means a reader is now being told nothing about a duty they have. Every duty this Regulation puts on a role the tool reports for is carried by a rule: the Art. 6 track in Chapters II and III, Chapter V for a general-purpose AI model, and Annex VII's notified-body procedure under `AIA-PO-A43-1B`. What is left is not a missing ruleset but two missing QUESTIONS, recorded where they belong — the **Art. 51 systemic-risk line**, which every Art. 55 rule states as an `activation_condition` rather than being withheld for, and the **Art. 53(2) / 54(6) open-source carve-out**, handled the same way.
+**What is owed: nothing.** `articles_awaiting_rules` and `annexes_awaiting_rules` are both **EMPTY**, and `OWED_PROVISIONS` in `tests/test_coverage.py` holds them there the way `BLANKET_PROVISIONS` holds the blanket at zero — the count only shrinks, and it going up means a reader is now being told nothing about a duty they have. Every duty this Regulation puts on a role the tool reports for is carried by a rule, and both of Chapter V's gates are asked: `systemic_risk` for the Art. 51 line and `open_source_release` for the Art. 53(2)/54(6) carve-out. Neither withholds an obligation — they decide what the report TELLS the reader about which side of each line their own document falls on.
 
 **The screen that covered what the partition could not, and what is left of it.** While articles were ruled out *whole*, their paragraphs stayed unitemised and a real duty could sit inside one — Art. 8(2) proved it. `test_a_wholly_excluded_article_holds_no_unacknowledged_duty` screened every such article for a sentence putting `shall` on a provider, deployer, importer, distributor, authorised representative or operator; **48 articles hit**, each declared in `DUTY_BEARING_EXCLUSIONS`. **The scope of the match was the finding.** A first cut matched within a SENTENCE, which under-matched: splitting on `. ` breaks at "Art. 5" and "No 300/2008", so a duty whose subject and verb straddle a citation went unseen. It missed **Art. 41(5)** (justify a technical solution departing from a common specification) and **Art. 71(2)-(3)** (enter the Annex VIII data into the EU database), three real duties inside articles the ledger dismissed in one line. Paragraph scope over-matches instead, the correct direction: dismissing a false positive costs a line of writing, missing a duty costs a false PASS. **The list now holds one entry.** The screen was always a substitute for reading, and the reading is done — every other article on it has a ruling per paragraph, which is a stronger claim than a whole-article dismissal a regex agreed with. Only Art. 94 remains, because the text gives it no divisions to itemise. The mechanism stays: its stale-entry half is what would catch an itemised article being collapsed back.
 

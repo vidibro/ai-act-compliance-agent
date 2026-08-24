@@ -38,7 +38,7 @@ on. The Regulation does not template this part.
 *(A fill-in template is planned — see M8 in `docs/ROADMAP.md`.)*
 
 **2. What gets checked against obligations.** Here you need no guide from us, because the Act
-contains one: [**Annex IV**](data/policy/annexes/2024-07-12/annex-IV.md) is its own minimum element
+contains one: [**Annex IV**](data/policy/annexes/2026-07-27/annex-IV.md) is its own minimum element
 list for the technical documentation of a **high-risk** system — general description, development
 process, monitoring and control, performance metrics, risk management, lifecycle changes, standards
 applied, and a copy of the EU declaration of conformity (Art. 47, contents fixed by Annex V).
@@ -52,7 +52,8 @@ turns out not to be high-risk.
 ## Status
 
 Built: the Pydantic v2 schema layer; a policy spec whose legal wording is resolved verbatim from
-the Official Journal (Formex XML) with a coverage ledger over all 113 articles; a two-layer golden
+the Official Journal (Formex XML) with a coverage ledger over every one of the 789 provisions of
+the consolidated Act — 79 rules, and nothing owed and unreported; a two-layer golden
 set (classification + obligation-checking) with exact, generated ground truth; the LangGraph
 **classification cascade**; and the LangGraph **gap-analysis graph** (both below), with local
 Chroma retrieval and Langfuse tracing. Both jobs run against real models and are measured — see
@@ -77,10 +78,12 @@ because that is a legal question rather than a property of either graph:
 - **`prohibited` stops here.** Chapter III describes how a *permitted* high-risk system must be
   built and documented. Reporting documentation gaps against a banned practice would imply it may
   ship once the paperwork is fixed. It may not.
-- **`gpai_model` stops here — but owing plenty.** Chapter V governs a general-purpose AI model, and
-  this ruleset models the Art. 6 track. Unlike `out_of_scope`, the provider is *not* unburdened: the
-  note says **not assessed, not compliant** and the classification's reasoning names Arts. 53 and 55
-  and the Art. 52(6) list.
+- **`gpai_model` proceeds, onto a different track.** Chapter V governs a general-purpose AI model,
+  and the ruleset carries it: sixteen `AIA-GP-*` rules for Arts. 52 to 55, selected by the tier
+  alone, so a model gets Chapter V and none of Arts. 9–15. **None of them is judged**, and the
+  `scope_note` says so — the two gates that decide who owes what in Chapter V are read from the same
+  model card a judge would read, so a card that understates its compute or overstates its licence
+  would otherwise clear four duties at once.
 - **`needs_review` stops here** too: which obligations apply is not yet known, and findings from a
   guessed risk class are findings a provider might act on without owing them.
 - **Everything else proceeds** — including `not_high_risk`, which still owes Art. 6(4): a provider
@@ -109,7 +112,9 @@ flowchart TD
     TERR -->|"yes, or the document<br/>never says"| SCOPE{"Does this law apply to the system at all?<br/>Art. 2(3)-(12)"}
     SCOPE -->|"no — military, research-only,<br/>pre-market, or a person's own use"| OOS([out of scope]):::oos
     SCOPE -->|yes| GPAI{"Is this a general-purpose MODEL,<br/>or a system?<br/>Art. 3(63)"}
-    GPAI -->|"a model — placed, or not yet"| GP([general-purpose AI model<br/>Chapter V, not assessed here]):::gpai
+    GPAI -->|"a model — placed, or not yet"| SR{"Does the card STATE systemic risk?<br/>a designation, or compute over 10^25<br/>Art. 51(1), Art. 51(2)"}
+    SR --> OSS{"Does it STATE a free and open-source<br/>release with public weights?<br/>Art. 53(2), Art. 54(6)"}
+    OSS --> GP([general-purpose AI model<br/>Chapter V obligations, listed not judged]):::gpai
     GPAI -->|"a system, incl. one built<br/>on such a model"| PROH{"Is the practice itself banned?<br/>Art. 5(1)(a)-(h)"}
     PROH -->|"yes — a named point bans it"| BAN([prohibited]):::ban
     PROH -->|no| ANNEXI{"Is it a safety part of a regulated<br/>physical product?<br/>Annex I, Art. 6(1)(a)"}
@@ -169,12 +174,21 @@ flowchart TD
   integrable downstream) has no risk tier: Chapter V governs it, and its provider owes Art. 53
   documentation, downstream information, a copyright policy and a public training-data summary —
   plus Art. 55 where the model carries systemic risk. **Those duties have applied since 2 August
-  2025**, earlier than every high-risk obligation this tool checks. So the cascade detects the model
-  and *hands over*, naming the articles and the Art. 52(6) list the Commission must publish; it does
-  not assess Chapter V. An empty findings list there means **not assessed, not compliant**.
-  The guard matters as much: Art. 3(66) makes a system *built on* such a model an ordinary AI
-  system, so an LLM-backed hiring tool is still Annex III(4) high-risk. The question tests
-  **generality**, not size — a single-purpose pre-trained model is not GPAI however large.
+  2025**, earlier than every high-risk obligation this tool checks. The report lists all of them,
+  rule by rule. The guard matters as much: Art. 3(66) makes a system *built on* such a model an
+  ordinary AI system, so an LLM-backed hiring tool is still Annex III(4) high-risk. The question
+  tests **generality**, not size — a single-purpose pre-trained model is not GPAI however large.
+- **Chapter V's two gates are asked, and neither is allowed to clear anything.** Art. 51 decides
+  whether the model carries **systemic risk**, which turns the whole of Art. 55 on; Arts. 53(2) and
+  54(6) decide whether a **free and open-source release** turns Art. 53(1)(a)–(b) and all of Art. 54
+  off. Both nodes read a **stated claim** and answer `not_stated` otherwise: a designation or an
+  Art. 52(1) notification settles the first, a stated training-compute figure settles it against
+  Art. 51(2)'s 10²⁵ threshold, and estimating FLOP from a parameter count is refused. Neither answer
+  withholds an obligation — every Chapter V rule is selected for every model, and what the answers
+  produce is a note telling the reader **which side of each line their own document falls on**. The
+  two are written together, because a fully open release lifts nothing while the model carries
+  systemic risk, and a note composed from the licence alone would tell a systemic-risk provider that
+  Art. 54 had fallen away.
 - **A model still in development gets a deadline, not a clearance.** Art. 3(63) excludes models in
   research or prototyping until they are placed on the market, and Art. 2(8) excludes the
   development activity itself. Both are *temporal*. So the cascade does not stop at the exclusion:
@@ -225,9 +239,12 @@ flowchart TD
   question is asked on every path and never routes anything. The duty is then CHECKED like any
   other: the gap layer carries four Art. 50 rules, and they are the only ones that activate on a
   duty rather than on a risk class, because no set of tiers describes when Art. 50 applies.
-- **`needs review`** (dashed) is the abstain path: any node that answers with low confidence bails
-  out here rather than guessing. For a compliance tool a confident wrong answer is the worst
-  outcome, so abstaining beats guessing.
+- **`needs review`** (dashed) is the abstain path: any node **on the risk path** that answers with
+  low confidence bails out here rather than guessing. For a compliance tool a confident wrong answer
+  is the worst outcome, so abstaining beats guessing. The two Chapter V gates have no dashed edge
+  and that is deliberate — they decide which obligations a model owes, not whether the thing is a
+  model, and dragging a settled classification to `needs review` over a question it did not turn on
+  would report the wrong uncertainty. `transparency` is off this path for the same reason.
 
 The node "brain" is injectable. A deterministic `ScriptedBrain` feeds known answers — this is what
 proves the routing (and the flip) with no LLM and no API key. An `LLMBrain` (via LiteLLM) reads the

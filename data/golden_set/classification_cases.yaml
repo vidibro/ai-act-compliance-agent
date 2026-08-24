@@ -352,6 +352,20 @@ cases:
       Infers its outputs from the input it receives — that is what a language model does. Art. 3(1)
       is met, which is why the cascade reaches the Art. 3(63) question rather than exiting earlier.
     expected_gpai_status: general_purpose_model
+    expected_systemic_risk: not_stated
+    systemic_risk_basis: >-
+      The card gives a parameter count and a token budget and no CUMULATIVE TRAINING COMPUTE in
+      floating point operations, and mentions no Commission designation or Art. 52(1) notification.
+      Art. 51(1) turns on one or the other, so the honest answer is that the description does not
+      say. A run answering high_impact_capabilities here has estimated FLOP from a parameter count,
+      which is the guess this node exists to refuse.
+    expected_open_source_release: not_stated
+    open_source_release_basis: >-
+      "Open-weight" and "the licence terms" are not the four limbs Art. 53(2) requires. The card
+      states that terms exist without stating that they permit access, use, modification AND
+      distribution, and says nothing about the architecture and usage information being publicly
+      available. The carve-out has to be earned on every limb, so silence on any of them leaves
+      Arts. 53(1)(a) and (b) and the whole of Art. 54 standing.
     expected_transparency_duties: []
     transparency_basis: >-
       Art. 50 is not answered for the MODEL. Its paragraphs bind providers and deployers of AI
@@ -370,6 +384,51 @@ cases:
       The reason RiskClass.GPAI_MODEL exists. This tool does not assess Chapter V; the verdict is a
       handover naming Arts. 53 and 55 and the Art. 52(6) list.
 
+  - case_id: notified_systemic_risk_model_card
+    description: >-
+      A model card for a large language model offered through a commercial API. It reports a
+      cumulative training compute of 6.2e25 floating point operations, states that the provider
+      notified the European Commission under Article 52(1) before release, and describes the model
+      as general-purpose and adaptable to a wide range of downstream tasks. The weights are not
+      distributed: access is through the provider's API under commercial terms of service that
+      forbid redistribution and reverse engineering. The card summarises adversarial testing and
+      red-teaming carried out before launch.
+    expected_risk_class: gpai_model
+    expected_is_ai_system: true
+    is_ai_basis: >-
+      Infers its outputs from the input it receives — Art. 3(1) is met, so the cascade reaches the
+      Art. 3(63) question rather than exiting earlier.
+    expected_gpai_status: general_purpose_model
+    expected_systemic_risk: designated
+    systemic_risk_basis: >-
+      The card states an Art. 52(1) notification was made, which is the designated limb and settles
+      Art. 51(1) on its own. The 6.2e25 FLOP figure would independently engage the Art. 51(2)
+      presumption, so the two limbs agree here — which is the point of the case: `designated` is the
+      stronger answer and a run that returns high_impact_capabilities has read the compute and
+      missed the notification.
+    expected_open_source_release: not_open
+    open_source_release_basis: >-
+      Every limb fails and the card says so: the weights are not distributed at all, access is
+      through an API, and the terms forbid redistribution and reverse engineering. Art. 53(2) needs
+      a licence permitting access, use, modification AND distribution together with public
+      parameters, so this is the clean negative.
+    expected_transparency_duties: []
+    transparency_basis: >-
+      Art. 50 binds providers and deployers of AI SYSTEMS. A model offered through an API has no
+      deployer and no output in use until someone builds a system on it; the Art. 50(2) marking
+      duty falls on whoever does.
+    decisive_fact: >-
+      THE POSITIVE BRANCH OF BOTH CHAPTER V GATES, which the other two model cases only exercise
+      as `not_stated`. Art. 55's four obligations are owed on a stated notification, and neither
+      carve-out is available on a closed release — so this is the model whose report should read
+      "systemic risk is established" rather than "unanswered".
+    difficulty: obvious
+    notes: >-
+      Both gates are read from STATED facts and neither is estimated: the notification and the FLOP
+      figure are quoted in the card. A run that infers systemic risk from the model sounding capable
+      is wrong here for the same reason it is wrong on open_weight_frontier_model_card, where the
+      card gives a parameter count and no compute.
+
   - case_id: pre_market_frontier_model_in_training
     description: >-
       An internal research write-up from an AI lab on a large language model still in training. It
@@ -383,6 +442,17 @@ cases:
     is_ai_basis: >-
       Infers its outputs from its input — a language model does nothing else. Art. 3(1) is met.
     expected_gpai_status: general_purpose_model_pre_market
+    expected_systemic_risk: not_stated
+    systemic_risk_basis: >-
+      The write-up records that a compute budget exists and never gives the figure, and no
+      designation could have been made for a model nobody outside the team has seen.
+    expected_open_source_release: not_open
+    open_source_release_basis: >-
+      Positively established rather than merely unstated: the lab says the model has not been
+      released, licensed or made available to anyone outside the team, and that the decision on
+      publishing weights has not been taken. Parameters that are not public fail Art. 53(2) on its
+      own terms, so the carve-out is unavailable — which matters precisely because these duties
+      attach on the day it ships.
     expected_scope_exclusion: pre_market_development
     scope_exclusion_basis: >-
       Art. 2(8): research and development activity prior to being placed on the market or put into

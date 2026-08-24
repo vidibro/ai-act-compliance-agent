@@ -20,16 +20,19 @@ from aiact.classify import ScriptedBrain, build_graph, classify
 from aiact.classify.graph import QUESTIONS, route_for
 from aiact.config import get_settings
 from aiact.eval.classification_cases import load_classification_cases
-from aiact.policy_loader import resolve_requirement
+from aiact.gap.rules import select_rules
+from aiact.policy_loader import load_policy_spec, resolve_requirement
 from aiact.provisions import points_within
 from aiact.schemas.enums import (
     ActorRole,
     AnnexIIIArea,
     DerogationCondition,
     GpaiStatus,
+    OpenSourceRelease,
     ProhibitedPractice,
     RiskClass,
     ScopeExclusion,
+    SystemicRisk,
     TerritorialLink,
     TransparencyDuty,
 )
@@ -943,3 +946,81 @@ def test_every_citation_the_cascade_emits_labels_its_address_as_a_string(cases):
                     f"{type(value).__name__}. Something built this citation without validation — "
                     f"model_copy(update=...) is the way in."
                 )
+
+
+def test_a_model_is_asked_both_chapter_v_gates_and_a_system_is_asked_neither():
+    """The two questions Chapter V turns on, put to the things they are questions about.
+
+    Art. 51 decides the whole of Art. 55 and Arts. 53(2)/54(6) decide what an open release lifts,
+    so a model never asked them is a model whose report can only read the conditions back at it.
+    A SYSTEM must not be asked either one: Art. 3(66) makes a system built on a general-purpose
+    model an ordinary AI system, and answering Art. 51 about it would be a category error paid for
+    with two LLM calls on every ordinary document."""
+    for status in (GpaiStatus.GENERAL_PURPOSE_MODEL, GpaiStatus.GENERAL_PURPOSE_MODEL_PRE_MARKET):
+        walked = route_for(
+            {
+                "is_ai": True,
+                "territorial": TerritorialLink.NOT_ADDRESSED,
+                "scope": None,
+                "gpai_model": status,
+            }
+        )
+        assert "systemic_risk" in walked and "open_source_release" in walked, status
+        # And nothing on the Art. 6 track: a model has no tier for those questions to compute.
+        assert not {"prohibited", "annex_i", "annex_iii"} & set(walked), status
+
+    system = route_for(
+        {
+            "is_ai": True,
+            "territorial": TerritorialLink.NOT_ADDRESSED,
+            "scope": None,
+            "gpai_model": GpaiStatus.AI_SYSTEM,
+            "prohibited": None,
+        }
+    )
+    assert not {"systemic_risk", "open_source_release"} & set(system)
+
+
+def test_neither_chapter_v_gate_is_allowed_to_clear_an_obligation():
+    """BOTH ANSWERS INFORM THE REPORT AND NEITHER WITHHOLDS A DUTY.
+
+    Art. 51 and the Art. 53(2)/54(6) carve-out are read from the same model card a judge would
+    read, so a card that understates its compute or calls a restrictive licence open would, if the
+    answers gated selection, clear four obligations at once. The ruleset's answer is to select
+    every Chapter V rule for every model and carry the condition on the rule — which only holds if
+    the answers change nothing about what is selected.
+
+    DERIVED: the same model run three ways, including the two answers most likely to be read as
+    permission."""
+    spec = load_policy_spec()
+    sets = []
+    for risk, release in (
+        (SystemicRisk.NOT_STATED, OpenSourceRelease.NOT_STATED),
+        (SystemicRisk.BELOW_THRESHOLD, OpenSourceRelease.FULLY_OPEN),
+        (SystemicRisk.DESIGNATED, OpenSourceRelease.NOT_OPEN),
+    ):
+        result = classify(
+            "a model",
+            ScriptedBrain(
+                {
+                    "is_ai": True,
+                    "gpai_model": GpaiStatus.GENERAL_PURPOSE_MODEL,
+                    "systemic_risk": risk,
+                    "open_source_release": release,
+                }
+            ),
+            "m",
+        )
+        assert result.overall_risk_class == RiskClass.GPAI_MODEL
+        sets.append(
+            frozenset(
+                r.rule_id
+                for role in (ActorRole.PROVIDER, ActorRole.AUTHORISED_REPRESENTATIVE)
+                for r in select_rules(spec, result.use_cases[0], role).all_rules
+            )
+        )
+    assert len(set(sets)) == 1, (
+        f"the Chapter V obligation set changed with the gate answers: {sets}. A model card read "
+        f"wrongly on one licence limb must cost a reader a sentence, never an obligation."
+    )
+    assert any(r.startswith("AIA-GP-A55") for r in sets[0]), "Art. 55 must be in the set at all"

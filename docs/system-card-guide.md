@@ -9,7 +9,7 @@ This tool reads a description of your AI system and works out its risk class und
 "needs review" — and this guide exists so you get a verdict instead.
 
 **It is not a technical file.** That is a different document, for a different step, and the Act
-already specifies it: [Annex IV](../data/policy/annexes/2024-07-12/annex-IV.md), which applies once
+already specifies it: [Annex IV](../data/policy/annexes/2026-07-27/annex-IV.md), which applies once
 you know you are high-risk. This card comes first, and nothing in the Regulation templates it.
 
 ---
@@ -155,7 +155,60 @@ AI-generated" is an answer that does not reach the duty. For 50(1), if you rely 
 what is obvious to a reasonably well-informed person, say so and say why: it is a judgement about
 the context of use, not a default.
 
-### 7. Which organisations are in the chain? — Art. 3(3)–(7), Art. 16(b), Art. 25, Art. 27
+### 7. Is it a MODEL rather than a system? — Art. 3(63), and then Chapter V
+
+Everything above classifies an AI **system**. A general-purpose AI **model** is not on that track at
+all: Art. 6 does not classify it, it has no risk tier, and Chapter V governs it instead — with
+duties that have applied since **2 August 2025**, earlier than every high-risk obligation in this
+guide. Say which one you are describing.
+
+The test is **generality**, not size. Art. 3(63) reaches a model that displays significant
+generality, performs a wide range of distinct tasks, and can be integrated into downstream systems.
+A single-purpose pre-trained model — text-to-speech, demand forecasting, image segmentation — is not
+one however large. And a *system* built on someone else's foundation model is an ordinary AI system
+(Art. 3(66)), so a chatbot or a hiring tool goes back to the sections above.
+
+If you are describing a model, two more facts decide what you owe, and **the tool will not guess
+either of them**. It reads what you state and records "not stated" otherwise — which is honest, and
+leaves every Chapter V obligation on your list with the condition attached.
+
+**Does the model carry systemic risk? — Art. 51(1).** This turns the whole of Art. 55 on: model
+evaluation with documented adversarial testing, Union-level risk assessment and mitigation,
+serious-incident reporting to the AI Office, and cybersecurity for the model *and its physical
+infrastructure*. Two limbs settle it, and either is enough:
+
+- a **Commission designation** under Art. 51(1)(b) or Art. 52(4), or an **Art. 52(1) notification**
+  you have already made — say so, and say when
+- **cumulative training compute above 10^25 floating point operations**, which Art. 51(2) presumes
+  to be high impact capabilities — so give the FLOP figure
+
+A parameter count is not a compute figure and the tool will not convert one into the other. If your
+compute is below the threshold, say the number anyway: it rules out the presumption, and the report
+then says so rather than leaving the question open. It rules out nothing else — the Commission can
+designate a model on the Annex XIII criteria at any level of compute.
+
+**Is the release free and open-source, on all four limbs? — Art. 53(2) and Art. 54(6).** This is the
+only thing in Chapter V that takes duties *off* you, and it is a conjunction. State every part:
+
+- a licence permitting **access, use, modification AND distribution**
+- the **parameters, including the weights**, publicly available
+- the information on **model architecture** publicly available
+- the information on **model usage** publicly available
+
+"Open-weight" is not this claim, and neither is a licence you name without quoting its terms. Weights
+behind an acceptable-use agreement, a request form, a commercial tier or a non-compete are not
+publicly available, and a licence that forbids redistribution or caps users is not free and
+open-source however it is labelled. Where all four hold, Art. 53(2) lifts the Annex XI technical
+documentation and the Annex XII downstream information, and Art. 54(6) lifts the whole of Art. 54.
+
+**Two things it never lifts**, and they catch most people: Art. 53(1)(c), a copyright policy that
+identifies and complies with an Art. 4(3) Directive (EU) 2019/790 rights reservation *including
+through state-of-the-art technologies*, and Art. 53(1)(d), a publicly available training-content
+summary **on the AI Office's template**. Every provider owes both, open-source or not. And the whole
+carve-out is **disapplied for a model with systemic risk** — so if the first question above answers
+yes, the second one lifts nothing.
+
+### 8. Which organisations are in the chain? — Art. 3(3)–(7), Art. 16(b), Art. 25, Art. 27
 
 Obligations attach to a **role**, not to an organisation. One organisation can hold several, and a
 single system usually involves more than one party. Name every party you know of and say what each
@@ -289,6 +342,33 @@ than guess; an unknown party is not the same as no party.>
   clearly specified the system was not to be turned into a high-risk one.>
 - **This card is written by:** <legal entity, address> — <which of the roles above we hold>
 
+## If this is a general-purpose AI MODEL rather than a system
+
+<Delete this block for an AI system. Keep it where Art. 3(63) fits: significant generality, a wide
+range of distinct tasks, integrable downstream. A system built ON a model is not this — use the
+use-case blocks below instead.>
+
+- **Placed on the market?** <Or still in research, development or prototyping — Art. 3(63) and
+  Art. 2(8) both stop applying on the day it ships, and Chapter V has no transition period.>
+- **Systemic risk (Art. 51):** <A Commission designation under Art. 51(1)(b) or 52(4), or an
+  Art. 52(1) notification you have made, with dates. AND the cumulative training compute in FLOP —
+  give the figure whether it is above or below 10^25. A parameter count is not a compute figure.>
+- **Release terms (Arts. 53(2), 54(6)):** <All four limbs or none of the carve-out. The licence,
+  quoted on whether it permits access, use, modification and distribution; and whether the
+  parameters including the weights, the model architecture information and the model usage
+  information are each publicly available — with no agreement, request form or paid tier in front
+  of them.>
+- **Downstream information (Art. 53(1)(b)):** <What you give providers who integrate the model, so
+  they can understand its capabilities and limitations and meet their OWN obligations — Annex XII
+  is the minimum.>
+- **Copyright policy (Art. 53(1)(c)):** <How the policy identifies and complies with an Art. 4(3)
+  Directive (EU) 2019/790 rights reservation, including the state-of-the-art technologies used to
+  detect one at crawl time. Owed whatever the licence.>
+- **Training-content summary (Art. 53(1)(d)):** <Where the public summary is, and that it follows
+  the AI Office template. Owed whatever the licence.>
+- **Authorised representative (Art. 54):** <Required by written mandate BEFORE placing on the Union
+  market where the provider is established in a third country.>
+
 ## Use case 1: <name the purpose, e.g. "candidate shortlisting">
 
 **Intended purpose.** <What decision does this support, in what sector, affecting whom?>
@@ -336,6 +416,12 @@ If it interacts: how is the person told they are dealing with an AI system?>
       something (Art. 25(1) and 25(2))
 - [ ] The deploying organisations are described by kind — public body, private provider of public
       services, or neither. Two duties turn on it and they differ (Art. 27, Art. 49(3))
+- [ ] For a general-purpose MODEL: the cumulative training compute is given as a FLOP figure, and
+      any Commission designation or Art. 52(1) notification is stated with its date (Art. 51)
+- [ ] For a general-purpose MODEL: the licence terms are quoted on access, use, modification and
+      distribution, and the card says whether the weights, the architecture information and the
+      usage information are each publicly available — all four, or the carve-out is unavailable
+      (Arts. 53(2), 54(6))
 
 If the tool still returns **needs review**, it will name the fact it was missing and the article that
 needed it. Add that fact and run it again.
