@@ -731,9 +731,19 @@ cases:
       explicit and the narrowness is carried by what the system does with it, not by how it works.
 
   # --- Art. 6(1): the OTHER door into high-risk (Annex I) ----------------------------------------
-  # None of these are in any Annex III area. Before the annex_i node existed the cascade answered
-  # "no area" and exited to minimal — telling a surgical robot it owed nothing. Every case here
-  # would have scored WRONG then, which is the point of adding them.
+  # NONE OF THESE IS IN ANY ANNEX III AREA, so the Annex I door is the only one open to them and a
+  # cascade that asks about areas alone answers "no area" and exits to minimal — telling a surgical
+  # robot it owes nothing. That is the false clearance this section measures.
+  #
+  # It measures the door in BOTH directions, and the amended text is why the negative half carries
+  # as many cases as the positive one. Art. 6(1) is a conjunction of two conditions, and each has
+  # its own way of failing: limb (b) fails where the host product self-certifies, and limb (a) now
+  # fails wherever Art. 6(1a) applies — an AI solely used for non-safety related user assistance,
+  # performance optimisation, service efficiency, automation, convenience or quality control is not
+  # a safety component at all. Art. 6(1b) is the limb that pulls it back: a system whose failure
+  # would endanger health and safety qualifies whatever it is marketed as doing. So a case reaching
+  # `minimal` here is not a weak case — it is the half of the test that stops a maintenance
+  # reminder being handed Chapter III.
   - case_id: surgical_robot_dose_control
     description: >-
       An AI dose-control module embedded in a robotic surgical system. It computes and limits the
@@ -783,9 +793,12 @@ cases:
       person (50(1)), no synthetic content (50(2)), no emotion inference or biometric
       categorisation (50(3)), no deep fake (50(4)).
     decisive_fact: >-
-      High-risk under Art. 6(1) via Annex I SECTION B. The class is the same as the surgical robot,
-      but what follows is not: Art. 2(2) means only Art. 6(1), 102-109 and 112 apply, so Chapter III
-      does NOT. Classifying it high_risk and then raising Art. 9-15 would be a false accusation.
+      High-risk under Art. 6(1) via Annex I SECTION B, and the AI qualifies as a safety component
+      on the Art. 6(1b) limb: braking without driver input is the prevention of a risk to health
+      and safety, which is what Art. 3(14) now requires of a safety function. The class is the same
+      as the surgical robot, but what follows is not: Art. 2(2) means only Art. 6(1), Art. 60a and
+      Arts. 102 to 112 apply, so Chapter III does NOT. Classifying it high_risk and then raising
+      Art. 9-15 would be a false accusation.
     difficulty: obvious
     split: dev
     notes: >-
@@ -803,23 +816,30 @@ cases:
     is_ai_basis: >-
       Infers bearing wear from spindle vibration: a model of degradation derived from signal,
       not a service interval counted off a calendar.
-    expected_annex_i_product: machinery
-    expected_third_party_assessment: false
+    expected_annex_i_product: null
     expected_annex_iii_area: null
     expected_transparency_duties: []
     transparency_basis: >-
       Art. 50 does not attach: a maintenance reminder is not direct interaction of the kind
       50(1) addresses, and none of 50(2)-(4) apply.
     decisive_fact: >-
-      Limb (a) of Art. 6(1) is met and limb (b) is NOT — the machinery self-certifies, with no
-      notified body. Art. 6(1) is a conjunction, so it is not high-risk by that door; and it falls
-      within no Annex III area either, so minimal.
+      NEITHER LIMB OF ART. 6(1) IS MET, and the first is the one that decides it. Art. 6(1a)
+      excludes from "safety component" any AI system solely used for non-safety related aspects of
+      performance optimisation or quality control, and predicting when a bearing needs servicing is
+      exactly that; Art. 3(14) requires of a safety function that its intended purpose be to prevent
+      or mitigate risks to health and safety, and this one's purpose is uptime. Art. 6(1b) does not
+      pull it back: what the reminder's failure costs is an unplanned stoppage, while the guarding
+      that keeps the operator safe is the machine's own and does not depend on it. So limb (a)
+      fails, and limb (b) fails independently because the drill press self-certifies with no
+      notified body. No Annex III area reaches it either, so minimal.
     difficulty: buried
     split: dev
-    flips_from: drill_press_in_annex_iv
     notes: >-
-      The negative case for condition (b). A classifier that treats "is it an Annex I product?" as
-      sufficient marks this high_risk and demands Chapter III of a bench drill.
+      The case for Art. 6(1a), and it is OVER-DETERMINED — two independent reasons the door does
+      not open, which is why it is the gentler of the pair. drill_press_in_annex_iv is the same AI
+      in a machine that does require a notified body, so limb (b) is met there and Art. 6(1a) is
+      the only thing standing between it and high_risk. A classifier that treats "is it an Annex I
+      product?" as sufficient marks this high_risk and demands Chapter III of a bench drill.
 
   - case_id: drill_press_in_annex_iv
     description: >-
@@ -828,29 +848,120 @@ cases:
       service is due. The saw is a portable hand-fed circular saw listed in Annex IV of Directive
       2006/42/EC, so its conformity is assessed by a notified body before it may be placed on the
       market.
-    expected_risk_class: high_risk
+    expected_risk_class: minimal
     expected_is_ai_system: true
     is_ai_basis: >-
       Infers blade and bearing wear from spindle vibration, as its benchtop sibling does.
-    expected_annex_i_product: machinery
-    expected_third_party_assessment: true
-    expected_provider_reallocation: null
+    expected_annex_i_product: null
+    expected_annex_iii_area: null
     expected_transparency_duties: []
     transparency_basis: >-
       Art. 50 does not attach: a maintenance reminder shown to the machine operator is not the
       direct interaction 50(1) addresses, it generates no synthetic content (50(2)), infers no
       emotion and categorises nobody biometrically (50(3)), and produces no deep fake (50(4)).
     decisive_fact: >-
-      Same AI feature, same product family, opposite class — because THIS machine is listed in
-      Annex IV of the Machinery Directive and so requires notified-body assessment, satisfying
-      Art. 6(1)(b). The flip is one fact about the PRODUCT, not about the AI.
+      ART. 6(1a) ON ITS OWN, with nothing else to fall back on. Limb (b) IS met — a portable
+      hand-fed circular saw is listed in Annex IV, so a notified body assesses the machine before
+      it may be placed on the market — and the system is still not high-risk, because limb (a)
+      fails: an AI solely used for non-safety related performance optimisation or quality control
+      does not qualify as a safety component, whatever the host product's conformity route.
+      Art. 6(1b) is the limb to test against, and it does not reach a maintenance reminder: the
+      saw's guarding and its two-hand controls are what keep the operator safe, and a reminder that
+      never fires costs a stoppage rather than a hand. No Annex III area covers woodworking, so
+      minimal.
     difficulty: buried
     split: dev
-    flips_from: drill_press_wear_monitor
     notes: >-
-      The Annex I flip, and the mirror of cv_parsing_plus_scoring. There the flip is a sentence
-      about what the AI does; here the AI is identical and the flip is the host product's
-      conformity route. Both are one-fact flips a keyword classifier cannot see.
+      THE PRODUCT'S CONFORMITY ROUTE IS NOT DECISIVE, which is the opposite of what the Annex I
+      door looks like from outside. This case and drill_press_wear_monitor differ by exactly one
+      sentence — whether the host machine needs a notified body — and reach the same tier, because
+      Art. 6(1a) closes limb (a) for both. A classifier that reads "Annex IV, notified body" and
+      stops marks this high_risk and demands Chapter III of a saw's maintenance reminder.
+
+  - case_id: mewp_stability_cutout_machinery_regulation
+    description: >-
+      A mobile elevating work platform used to lift workers to height on construction sites. An AI
+      model estimates the machine's stability margin from boom geometry, load-cell readings and
+      chassis inclination, progressively limits boom movement as the margin narrows, and halts it
+      before the platform would tip. The MEWP is machinery for lifting persons, listed in Annex I
+      Part A of Regulation (EU) 2023/1230, so a notified body assesses its conformity before it may
+      be placed on the market.
+    expected_risk_class: high_risk
+    expected_is_ai_system: true
+    is_ai_basis: >-
+      Infers a stability margin the machine cannot measure directly, from geometry, load and
+      inclination together — a model of when the platform would go over, not a fixed angle limit.
+    expected_annex_i_product: machinery_regulation
+    expected_third_party_assessment: true
+    expected_provider_reallocation: null
+    expected_transparency_duties: []
+    transparency_basis: >-
+      Art. 50 does not attach: the system limits a hydraulic actuator. It does not interact
+      directly with a natural person (50(1)), generates no synthetic content (50(2)), infers no
+      emotion and categorises nobody biometrically (50(3)), and produces no deep fake (50(4)).
+    decisive_fact: >-
+      BOTH LIMBS OF ART. 6(1) ARE MET AND THAT IS THE EASY HALF. Halting the boom before a tip-over
+      is the prevention of a risk to health and safety, so the AI is a safety component within
+      Art. 3(14) and Art. 6(1b) confirms it against any argument that stability control is
+      performance optimisation; and Annex I Part A of Regulation (EU) 2023/1230 requires
+      notified-body assessment, which is condition (b). So high_risk. WHAT FOLLOWS IS WHERE THE
+      CASE BITES: the Machinery Regulation is listed at Annex I SECTION B, so Art. 2(2) applies and
+      Chapter III does NOT — only Art. 6(1), Art. 60a and Arts. 102 to 112. The identical AI in a
+      machine still certified under Directive 2006/42/EC sits at Section A and owes Chapter III in
+      full.
+    difficulty: obvious
+    split: dev
+    notes: >-
+      The Section A / Section B line drawn through ONE product family. Directive 2006/42/EC is
+      Annex I(A)(1) and Regulation (EU) 2023/1230, which replaces it from 20 January 2027, is
+      Annex I(B)(21) — so the instrument a machine is certified under decides whether its provider
+      owes Arts. 9 to 15 or nothing of them, on facts that are otherwise identical. See
+      AnnexIProduct.MACHINERY_REGULATION and the Art. 2(2) branch in gap/rules.select_rules. The
+      failure this measures is a classifier that reads "machinery" and answers with the Section the
+      Directive is in.
+
+  - case_id: wireless_gas_detector_spectrum_only
+    description: >-
+      A domestic wireless gas-leak detector. An AI model classifies the sensor's response pattern
+      over time to tell a real methane leak from cooking vapour, aerosols and humidity, and on a
+      leak sounds the alarm and closes the linked shut-off valve. The unit reports to a hub over a
+      sub-GHz radio link, which makes it radio equipment under Directive 2014/53/EU. The
+      manufacturer applied the harmonised standards for health and safety and for electromagnetic
+      compatibility and assessed conformity against them itself. A notified body was involved for
+      one reason: the manufacturer did not apply the harmonised standard for efficient use of the
+      radio spectrum, so the spectrum aspects went through the notified-body module.
+    expected_risk_class: minimal
+    expected_is_ai_system: true
+    is_ai_basis: >-
+      Infers whether a sensor response is a real leak from the shape of that response over time —
+      a learned discrimination between gases, not a fixed parts-per-million threshold.
+    expected_annex_i_product: radio_equipment
+    expected_third_party_assessment: false
+    expected_annex_iii_area: null
+    expected_transparency_duties: []
+    transparency_basis: >-
+      Art. 50 does not attach: an audible alarm is not the direct interaction 50(1) addresses, the
+      system generates no synthetic content (50(2)), infers no emotion and categorises nobody
+      biometrically (50(3)), and produces no deep fake (50(4)).
+    decisive_fact: >-
+      LIMB (a) IS MET AND LIMB (b) IS NOT, and only Art. 6(1c) explains why. The AI decides when
+      the alarm sounds and when the gas is shut off, so its intended purpose is to prevent or
+      mitigate a risk to health and safety within Art. 3(14) — a safety component beyond argument,
+      and Art. 6(1b) would supply it even if Art. 6(1a) were pressed. Condition (b) is where it
+      stops: the product IS required to undergo third-party conformity assessment, but solely for
+      risks relating to the distribution of radio spectrum, which do not affect health and safety,
+      and Art. 6(1c) says such an assessment does not fulfil condition (b). The health and safety
+      aspects were self-assessed against harmonised standards, with no notified body. Art. 6(1) is
+      a conjunction, no Annex III area covers a domestic gas alarm, so minimal.
+    difficulty: buried
+    split: dev
+    notes: >-
+      The case for Art. 6(1c), and it reads high-risk on every keyword: a genuine safety component,
+      a listed Annex I product, a notified body named in the text. What decides it is WHY that body
+      was involved, which is one clause in a sentence about which harmonised standards were
+      applied. A classifier that stops at "a notified body was involved" marks this high_risk and
+      demands Chapter III of a gas alarm. Contrast drill_press_in_annex_iv, where the notified body
+      is genuinely there for safety and limb (a) is what fails instead.
 
   - case_id: theatre_and_shift_scheduler
     description: >-
