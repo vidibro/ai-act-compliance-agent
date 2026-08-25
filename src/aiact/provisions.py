@@ -249,6 +249,50 @@ def _with_unnumbered(
 _UNNUMBERED_MIN = 35
 
 
+def _annex_with_chapeau(
+    annexes_dir: Path, roman: str, divisions: tuple[str, ...]
+) -> tuple[str, ...]:
+    """`divisions`, plus an address for the words that introduce them.
+
+    THE SAME GAP AS `_with_unnumbered`, on the other half of the Act. An annex is a chapeau plus
+    numbered items, and the items are what `annex_divisions` finds — so the sentence that says what
+    the list IS has no address. Annex IV opens "The technical documentation referred to in
+    Article 11(1) shall contain at least the following information, AS APPLICABLE TO THE RELEVANT
+    AI SYSTEM": a qualifier governing every one of the nine elements `AIA-HR-A11` is judged on, and
+    part of no element.
+
+    PER SECTION WHERE THE ANNEX HAS SECTIONS, because each section carries its own introduction and
+    they are not interchangeable — Annex VIII Section A is submitted by providers under Art. 49(1)
+    and Section C by deployers under Art. 49(3), and the heading is the only place either fact is
+    written. The address takes the section prefix the items already use, so `A/chapeau` sorts with
+    the items it introduces.
+
+    The stored annexes run a heading and its first item together on one line, so the chapeau is
+    measured to the first item marker rather than to a line break, and the marker is matched the
+    way `annex_divisions` matched it in the first place: the numeric form of `_ANNEX_ITEM`, which
+    line-anchored matching would miss throughout Annex I, then the lettered form for the annexes
+    that enumerate with `(a)` instead."""
+    body = _annex_body(annexes_dir, roman)
+    sections = {m.group(1): m.start() for m in _ANNEX_SECTION.finditer(body)}
+    out: list[str] = []
+    seen: set[str | None] = set()
+    for division in divisions:
+        prefix, _, item = division.rpartition("/")
+        section: str | None = prefix or None
+        if section not in seen:
+            seen.add(section)
+            start = sections.get(section, 0) if section else 0
+            marker = re.compile(
+                rf"(?:^|(?<=\s)){re.escape(item)}[.)](?=[ \t]*[A-Z(‘])", re.M
+            ).search(body, start) or re.compile(
+                rf"^[ \t]*\({re.escape(item)}\)\s", re.M
+            ).search(body, start)
+            if marker and len(body[start : marker.start()].strip()) > _UNNUMBERED_MIN:
+                out.append(f"{section}/chapeau" if section else "chapeau")
+        out.append(division)
+    return tuple(out)
+
+
 def all_provisions(articles_dir: Path, annexes_dir: Path) -> list[Provision]:
     """Every addressable piece of the stored Act, articles then annexes, in the Act's own order.
 
@@ -282,7 +326,10 @@ def all_provisions(articles_dir: Path, annexes_dir: Path) -> list[Provision]:
     for roman in [r for r in _ANNEX_ORDER if r in stored] + sorted(stored - set(_ANNEX_ORDER)):
         divisions = annex_divisions(annexes_dir, roman)
         if divisions:
-            found += [Provision("annex", roman, d) for d in divisions]
+            found += [
+                Provision("annex", roman, d)
+                for d in _annex_with_chapeau(annexes_dir, roman, divisions)
+            ]
         else:
             found.append(Provision("annex", roman, None))
     return found

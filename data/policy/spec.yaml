@@ -466,15 +466,18 @@ rules:
       (b) design, design control and design verification; (c) development, quality control and
       quality assurance; (d) examination, test and validation procedures before, during and after
       development, AND THE FREQUENCY with which they are carried out; (e) technical specifications
-      and standards, and where harmonised standards are not applied in full, the means used to meet
-      the Section 2 requirements instead; (f) data management across acquisition, collection,
-      analysis, labelling, storage, filtration, mining, aggregation and retention; (g) the Art. 9
-      risk management system; (h) the Art. 72 post-market monitoring system; (i) serious-incident
-      reporting under Art. 73; (j) handling of communication with national competent authorities,
-      notified bodies, other operators and customers; (k) record-keeping of all relevant
-      documentation; (l) resource management including security of supply; (m) an accountability
-      framework naming what management and staff are responsible for. An organisational system
-      rather than a property of the system's technical documentation — confirm separately.
+      and standards, and where harmonised standards are not applied in full OR DO NOT COVER ALL of
+      the relevant requirements, the means used to meet those Section 2 requirements instead; (f)
+      data management across acquisition, collection, analysis, labelling, storage, filtration,
+      mining, aggregation, retention AND ANY OTHER OPERATION on the data performed before and for
+      the purpose of placing the system on the market; (g) the Art. 9 risk management system; (h)
+      the Art. 72 post-market monitoring system; (i) serious-incident reporting under Art. 73; (j)
+      handling of communication with national competent authorities, OTHER RELEVANT AUTHORITIES
+      INCLUDING THOSE PROVIDING OR SUPPORTING ACCESS TO DATA, notified bodies, other operators,
+      customers and OTHER INTERESTED PARTIES; (k) record-keeping of all relevant documentation; (l)
+      resource management including security of supply; (m) an accountability framework naming what
+      management and staff are responsible for. An organisational system rather than a property of
+      the system's technical documentation — confirm separately.
     document_verifiable: false
     effective_date_by_route:
       annex_iii: 2027-12-02
@@ -1609,6 +1612,41 @@ rules:
     effective_date: 2026-08-02
     status: active
 
+  # ART. 73(10) MOVES THE ADDRESSEE, which is why it is a rule and not a narrowing. Read as a limit
+  # it only cuts the reportable set down to Art. 3(49)(c) incidents; read whole it also sends the
+  # notification somewhere else — to the national competent authority the Member State chose for
+  # medical devices, which is neither the market surveillance authority AIA-ALL-A73 names nor the
+  # AI Office AIA-PO-A75-1a names. A provider of a medical-device AI system that follows either of
+  # those rules notifies the wrong body.
+  - rule_id: AIA-ALL-A73-10
+    source:
+      instrument: "Regulation (EU) 2024/1689"
+      article: 73
+      paragraph: 10 # medical devices: fewer reportable incidents, and a different recipient
+      act_version_date: 2026-07-27
+    applies_to_risk_class: [high_risk]
+    applies_to_role: [provider, deployer]
+    activation_condition: >-
+      High-risk AI systems that are safety components of devices covered by Regulation (EU)
+      2017/745 or Regulation (EU) 2017/746, or that are themselves such devices. Whether a product
+      is a device under those Regulations is a question under them and not under this one, so it is
+      stated rather than decided here.
+    obligation_status: mandatory
+    check_type: presence
+    evidence_expected: >-
+      A serious-incident procedure that differs from Art. 73's default IN BOTH DIRECTIONS. The
+      reportable set NARROWS to serious incidents within Art. 3(49)(c) — a breach of an obligation
+      under Union law intended to protect fundamental rights. And the recipient MOVES: the
+      notification shall be made to the NATIONAL COMPETENT AUTHORITY CHOSEN FOR THAT PURPOSE by the
+      Member States where the incident occurred, not to the market surveillance authority under
+      AIA-ALL-A73 and not to the AI Office under AIA-PO-A75-1a. Which body that is comes from the
+      Member State's own designation, so knowing it in advance is part of having the procedure. The
+      Art. 73 deadlines and post-report duties are otherwise unchanged. Not visible in the
+      technical documentation — confirm separately.
+    document_verifiable: false
+    effective_date: 2026-08-02
+    status: active
+
   # THE WHOLE ARTICLE, because a reporting duty without its deadline is not the duty. Art. 73(1)
   # says a serious incident must be reported; (2) to (5) say WHEN — immediately on establishing a
   # causal link and within 15 days, two days for a widespread infringement or a critical
@@ -1643,10 +1681,13 @@ rules:
       of becoming aware; two days for a widespread infringement or an incident to critical
       infrastructure; immediately, and no later than 10 days, where a person has died. An initial
       incomplete report followed by a complete one is expressly allowed, so a procedure that waits
-      for certainty before reporting at all is wrong. Also the post-report duties: investigate the
-      incident and the system, risk-assess it, cooperate with the authority, and take no action that
-      alters the system before informing them. A relational post-market obligation, not visible in
-      the technical documentation — confirm separately.
+      for certainty before reporting at all is wrong. Then Art. 73(6): WITHOUT DELAY, the necessary
+      investigations in relation to the incident and the system, and those shall include a risk
+      assessment of the incident AND CORRECTIVE ACTION — investigating is not the end of it. Also
+      cooperate with the authority, and take no action that alters the system before informing
+      them.
+      A relational post-market obligation, not visible in the technical documentation — confirm
+      separately.
     document_verifiable: false
     effective_date: 2026-08-02
     status: active
@@ -2147,8 +2188,10 @@ rules:
       that such content exists, in a way that does not hamper enjoyment of the work. For published
       text informing the public on matters of public interest, the duty falls away where the content
       had human review or editorial control and a named person holds editorial responsibility — so
-      whether such a process exists is what settles it. A publication practice, not a property of
-      the system — confirm separately.
+      whether such a process exists is what settles it. Art. 50(5) SETS THE MOMENT AND THE FORM for
+      whatever disclosure remains owed: clearly and distinguishably, AT THE LATEST AT THE TIME OF
+      THE FIRST INTERACTION OR EXPOSURE, and conforming to the applicable accessibility
+      requirements. A publication practice, not a property of the system — confirm separately.
     document_verifiable: false
     effective_date: 2026-08-02
     status: active
@@ -2653,14 +2696,33 @@ rules:
     obligation_status: mandatory
     check_type: presence
     evidence_expected: >-
-      A written mandate from a third-country provider, and evidence the representative performs it:
-      verifying that the EU declaration of conformity (Art. 47) and the technical documentation
-      (Art. 11) exist and that a conformity assessment was carried out; keeping the provider's
-      contact details and that documentation available to authorities for 10 years after placing on
-      the market; supplying it on reasoned request; cooperating on risk-mitigation action; and
-      meeting the Art. 49(1) registration duty where it falls to the representative. Also the duty
-      to TERMINATE the mandate, and tell the market surveillance authority, where the representative
-      has reason to consider the provider in breach.
+      Art. 22(3) and (4), the representative's own duties. Art. 22(1) and (2) bind the provider and
+      are carried by AIA-PO-A22. Art. 22(3) OPENS WITH TWO DUTIES BEFORE THE MANDATE LIST. Perform
+      the tasks specified in the mandate; and PROVIDE A COPY OF THE MANDATE to the market
+      surveillance authorities upon request, in one of the official languages of the institutions of
+      the Union AS INDICATED BY THE COMPETENT AUTHORITY. THE MANDATE ITSELF MUST EMPOWER five tasks,
+      and one thing beyond them: it shall empower the representative TO BE ADDRESSED, IN ADDITION TO
+      OR INSTEAD OF THE PROVIDER, BY THE COMPETENT AUTHORITIES on all issues related to compliance
+      with this Regulation. A mandate drafted to cover only (a) to (e) is short of what the
+      paragraph requires. (a) verify that the Art. 47 EU declaration of conformity and the Art. 11
+      technical documentation have been drawn up and that an appropriate conformity assessment was
+      carried out. (b) keep at the disposal of the competent authorities AND the national
+      authorities or bodies referred to in Art. 74(10), for TEN YEARS after the system was placed on
+      the market OR PUT INTO SERVICE: the appointing provider's contact details, a copy of the EU
+      declaration of conformity, the technical documentation, and if applicable the notified body
+      certificate. (c) on a reasoned request, all information and documentation necessary to
+      demonstrate conformity with Section 2, INCLUDING ACCESS TO THE ART. 12(1) LOGS the system
+      generates automatically, to the extent they are under the provider's control. (d) cooperate
+      with competent authorities, on a reasoned request, in any action they take on the system, in
+      particular to reduce and mitigate its risks. (e) where applicable, comply with the Art. 49(1)
+      registration obligations — OR, where the provider registered the system itself, ensure that
+      the information in Annex VIII Section A point 3 IS CORRECT. The second limb binds even where
+      the representative did not register anything. Art. 22(4): TERMINATE THE MANDATE where the
+      representative considers or has reason to consider the provider to be acting contrary to its
+      obligations, and in that case IMMEDIATELY inform the relevant market surveillance authority
+      AND, where applicable, the relevant notified body, of the termination AND THE REASONS FOR IT.
+      Held by the representative organisation, so a provider's technical file cannot evidence it —
+      confirm separately.
     document_verifiable: false
     effective_date_by_route:
       annex_iii: 2027-12-02
@@ -2677,14 +2739,29 @@ rules:
     obligation_status: mandatory
     check_type: presence
     evidence_expected: >-
-      Pre-market verification by the importer that the provider carried out the Art. 43 conformity
-      assessment, drew up Art. 11 / Annex IV technical documentation, affixed the CE marking with
-      the EU declaration of conformity and instructions for use, and appointed an authorised
-      representative under Art. 22(1). Plus the importer's own name and contact address on the
-      system, its packaging or accompanying documentation; storage and transport conditions that do
-      not jeopardise conformity; a 10-year copy of the notified body certificate, instructions for
-      use and declaration of conformity; and cooperation with authorities on reasoned request. A
-      system it has reason to consider non-conforming or falsified must NOT be placed on the market.
+      Art. 23. BEFORE PLACING THE SYSTEM ON THE MARKET, verify four things: (a) the provider carried
+      out the relevant Art. 43 conformity assessment; (b) the provider drew up the Art. 11 / Annex
+      IV technical documentation; (c) the system bears the required CE marking and is accompanied by
+      the Art. 47 EU declaration of conformity AND the instructions for use; (d) the provider
+      appointed an authorised representative under Art. 22(1). Art. 23(2) IS TWO DUTIES. Where the
+      importer has sufficient reason to consider the system non-conforming, falsified, or
+      accompanied by falsified documentation, it shall not place it on the market until it has been
+      brought into conformity. AND where the system presents an Art. 79(1) risk it shall INFORM THE
+      PROVIDER, THE AUTHORISED REPRESENTATIVE AND THE MARKET SURVEILLANCE AUTHORITIES — three
+      addressees. Holding the system back and telling nobody discharges the first half only. Art.
+      23(3): the importer's name, registered trade name or trade mark, and the address at which it
+      can be contacted, on the system and on its packaging or accompanying documentation. Art.
+      23(4): storage and transport conditions, while the system is under the importer's
+      responsibility, that do not jeopardise compliance with Section 2. Art. 23(5): keep for TEN
+      YEARS after the system was placed on the market OR PUT INTO SERVICE a copy of the notified
+      body certificate where applicable, of the instructions for use, and of the Art. 47 EU
+      declaration of conformity. Art. 23(6): on a reasoned request, all necessary information and
+      documentation IN A LANGUAGE WHICH CAN BE EASILY UNDERSTOOD BY the authority — and ensure the
+      technical documentation CAN BE MADE AVAILABLE to it, which is a duty about access rather than
+      about handing over a copy. Art. 23(7): cooperation with the competent authorities in any
+      action they take on a system the importer placed on the market, in particular to reduce and
+      mitigate its risks. NOT conditional on a reasoned request, unlike 23(6). Conduct in the import
+      chain rather than a property of any file — confirm separately.
     document_verifiable: false
     effective_date_by_route:
       annex_iii: 2027-12-02
@@ -2701,12 +2778,30 @@ rules:
     obligation_status: mandatory
     check_type: presence
     evidence_expected: >-
-      Verification, before making the system available, that it bears the CE marking and carries the
-      EU declaration of conformity and instructions for use, and that the provider and importer met
-      their own obligations. Plus storage and transport conditions that do not jeopardise
-      conformity; corrective action where the distributor has reason to consider a system it has
-      already supplied non-conforming; and information and cooperation on reasoned request. A
-      system it has reason to consider non-conforming must NOT be made available.
+      Art. 24. BEFORE MAKING THE SYSTEM AVAILABLE, verify that it bears the CE marking, that it is
+      accompanied by a copy of the Art. 47 EU declaration of conformity and the instructions for
+      use, and that the provider and the importer have complied with THREE NAMED OBLIGATIONS AND NOT
+      THEIR WHOLE DUTY SET: Art. 16(b), the provider's name and contact address on the system; Art.
+      16(c), a quality management system complying with Art. 17; and Art. 23(3), the importer's own
+      name and address. A distributor that checks the marking and the paperwork but never asks
+      whether a quality management system exists has not done 24(1). Art. 24(2): where the
+      distributor considers, or has reason to consider on the information in its possession, that
+      the system does not meet the Section 2 requirements, it shall NOT make it available until it
+      has been brought into conformity — and where the system presents an Art. 79(1) risk it shall
+      inform the provider or the importer to that effect. Art. 24(3): storage and transport
+      conditions, while the system is under the distributor's responsibility, that do not jeopardise
+      its compliance with Section 2. Art. 24(4) IS THE HEAVIEST PARAGRAPH AND IT REACHES BACKWARDS,
+      to a system already made available. On the same reason-to-consider trigger the distributor
+      shall take the corrective actions necessary to bring the system into conformity, TO WITHDRAW
+      IT OR RECALL IT — or ensure that the provider, the importer or any relevant operator takes
+      them. Where the system presents an Art. 79(1) risk it shall IMMEDIATELY inform BOTH the
+      provider or importer AND THE AUTHORITIES COMPETENT for that system, giving details in
+      particular of the non-compliance and of any corrective actions taken. Art. 24(5): on a
+      reasoned request, all information and documentation REGARDING ITS OWN ACTIONS under paragraphs
+      1 to 4, necessary to demonstrate the system's conformity with Section 2. Art. 24(6):
+      cooperation with the competent authorities in any action they take on a system the distributor
+      made available — NOT conditional on a reasoned request, unlike 24(5). Conduct in the
+      distribution chain rather than a property of any file — confirm separately.
     document_verifiable: false
     effective_date_by_route:
       annex_iii: 2027-12-02

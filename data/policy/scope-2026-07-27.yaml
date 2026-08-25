@@ -1181,7 +1181,8 @@ article_rulings:
       Equivalence carve-out for Annex III systems whose providers report under other Union
       instruments. Narrows the Art. 73(1) duty rather than creating one.
     10: >-
-      Limits notification for medical-device systems to Art. 3(49)(c) incidents. Narrows the duty.
+      RULE AIA-ALL-A73-10 — for medical-device systems, fewer reportable incidents AND a different
+      recipient: the national competent authority the Member State chose for that purpose.
     11: National authority duty to notify the Commission. Not a provider duty.
   # --- Chapter IX — post-market monitoring, market surveillance --------------------------------
   # NOTE: Art. 72 and 73 from this chapter ARE in scope (AIA-PO-A72, AIA-ALL-A73).
@@ -1704,6 +1705,14 @@ annex_rulings:
   # by amendment fails CI rather than becoming a system the cascade cannot classify. The Section
   # decides what follows: Section A carries Chapter III, Section B has it withheld by Art. 2(2).
   I:
+    A/chapeau: >-
+      A Section heading, not enacted content: it names what the list below it is — Union
+      harmonisation legislation based on the New Legislative Framework. What turns on the Section
+      is decided elsewhere, in Art. 6(1)'s reference to Section A and Art. 2(2)'s withholding of
+      Chapter III from Section B.
+    B/chapeau: >-
+      A Section heading, as A/chapeau. It names the list as other Union harmonisation legislation
+      — the instruments Art. 2(2) reaches, from which Chapter III is withheld.
     A/1: >-
       CASCADE annex_i — Directive 2006/42/EC, machinery. Section A, Chapter III applies. THE
       DEFAULT ANSWER FOR A MACHINE: the Regulation at B/21 replaces this Directive only from
@@ -1754,6 +1763,10 @@ annex_rulings:
   # same way as Annex I. The area also gates the rules the Act narrows — Art. 14(5) biometrics,
   # Art. 26(10) law enforcement, Art. 49's exception for point 2.
   III:
+    chapeau: >-
+      CASCADE annex_iii — the operative sentence of Annex III: a system in any of the eight areas
+      below is high-risk PURSUANT TO ART. 6(2). The cascade supplies this annex whole to the area
+      question, which is where the sentence is applied; the items below say which area.
     1: CASCADE annex_iii — biometrics; remote identification, categorisation, emotion recognition.
     2: >-
       CASCADE annex_iii — critical infrastructure: safety components in digital infrastructure,
@@ -1792,6 +1805,11 @@ annex_rulings:
   # metrics. Several items point at an Article a rule already checks in its own right; where they
   # do, the item says which, so a reader is not told the same thing twice.
   IV:
+    chapeau: >-
+      RULE AIA-HR-A11 — the qualifier governing all nine elements: the technical documentation
+      shall contain AT LEAST the information below, AS APPLICABLE TO THE RELEVANT AI SYSTEM. Both
+      limbs bind — the list is a floor, and an element that does not apply to the system is not
+      owed.
     1: RULE AIA-HR-A11 — general description of the system, points (a)-(h).
     2: >-
       RULE AIA-HR-A11 — detailed description of the system and its development, points (a)-(h):
@@ -1818,6 +1836,9 @@ annex_rulings:
   # rule does is tell the reader what has to be on the page and what is most often missing.
   # Every item is document-verifiable in itself: the declaration is a single page, and this is it.
   V:
+    chapeau: >-
+      RULE AIA-PO-A47-2 — the declaration shall contain ALL of the information below, which is a
+      stricter chapeau than Annex IV's: no element of Annex V falls away as inapplicable.
     1: >-
       RULE AIA-PO-A47-2 — The system's name and type, and any reference allowing identification
       and traceability.
@@ -1926,6 +1947,16 @@ annex_rulings:
   # AIA-ALL-A49-4, for Art. 49(4), is the same. Registration is an act against a registry, not a
   # property of a file, so what these rules give a reader is the list to check themselves.
   VIII:
+    A/chapeau: >-
+      RULE AIA-PO-A71-2 — information submitted BY PROVIDERS under Art. 49(1), provided and
+      THEREAFTER KEPT UP TO DATE. The upkeep duty is in the chapeau and in none of the thirteen
+      items.
+    B/chapeau: >-
+      RULE AIA-NHR-A71-2 — the same, for a system the provider concluded is not high-risk and
+      registers under Art. 49(2).
+    C/chapeau: >-
+      RULE AIA-DP-A71-3 — the same, for information submitted BY DEPLOYERS under Art. 49(3). The
+      section heading is the only place the Act says which party owes this block.
     A/1: >-
       RULE AIA-PO-A71-2 — the provider's name, address and contact details. Registry
       identification.
@@ -2000,6 +2031,10 @@ annex_rulings:
   # scope with the Art. 60 route itself, and ruled per item so the scope limit names what it
   # costs.
   IX:
+    chapeau: >-
+      Information registered for TESTING IN REAL WORLD CONDITIONS under Art. 60, provided and
+      thereafter kept up to date. The real-world testing regime is out of scope — see the Art. 60
+      rulings — so the chapeau follows its items.
     1: The Union-wide unique single identification number of the testing. Art. 60 route, out of scope.
     2: >-
       Name and contact details of the provider or prospective provider and of the deployers taking
@@ -2027,6 +2062,13 @@ annex_rulings:
   # Chapter V header gives; what the rules do is state item by item what the documentation must
   # hold. Annex XIII is the Commission's designation criteria and binds no operator.
   XI:
+    1/chapeau: >-
+      RULE AIA-GP-A53-1A — the qualifier on Section 1: the Art. 53(1)(a) technical documentation
+      shall contain AT LEAST the information below, AS APPROPRIATE TO THE SIZE AND RISK PROFILE OF
+      THE MODEL. A floor and a proportionality limb, neither of them in any item.
+    2/chapeau: >-
+      A Section heading naming the additional information owed by providers of models WITH
+      SYSTEMIC RISK. What it adds is in the items; the heading states who they bind.
     1/1: >-
       RULE AIA-GP-A53-1A — Section 1(1), general description of the model, points (a)-(f): tasks,
       acceptable use policies, release date and distribution, architecture and parameter count,
@@ -2055,6 +2097,9 @@ annex_rulings:
       RULE AIA-GP-A53-1A — Section 2(3), a detailed description of the system architecture and how
       software components integrate. Part of the same systemic-risk documentation.
   XII:
+    chapeau: >-
+      RULE AIA-GP-A53-1B — the qualifier on the whole Section: the Art. 53(1)(b) information for
+      downstream providers shall contain AT LEAST the following.
     1: >-
       RULE AIA-GP-A53-1B — general description for downstream providers, points (a)-(h), and the
       information a provider building an Annex III system on someone else's model needs to meet
@@ -2063,6 +2108,10 @@ annex_rulings:
       RULE AIA-GP-A53-1B — elements of the model and its development, points (a)-(c): integration
       means, input and output modality and maximum size, and training data provenance.
   XIII:
+    chapeau: >-
+      Criteria the COMMISSION takes into account when designating a model under Art. 51(1)(a). A
+      power of the Commission exercised on its own assessment, not a duty this tool reports — see
+      the Art. 51 rulings.
     a: >-
       Number of parameters. One of the criteria the COMMISSION weighs under Art. 51(1)(b); not a
       duty of anyone. The systemic_risk node asks what a document states about Art. 51(1); these
@@ -2078,6 +2127,10 @@ annex_rulings:
   # Annex XIV was ADDED by this consolidation, and it appeared in the store unnoticed — the reason
   # this section exists at all. It scopes a notified body's designation under Arts. 29 and 30.
   XIV:
+    chapeau: >-
+      The list of codes and categories for the Art. 30 notification procedure, specifying the
+      scope of a designation as a notified body. An instrument of the notifying authorities;
+      conformity assessment bodies are outside the roles this tool reports on.
     1: >-
       Introduction: only designated conformity assessment bodies may act, and the codes below scope
       what each is designated for. Addressed to notifying authorities and the bodies themselves.

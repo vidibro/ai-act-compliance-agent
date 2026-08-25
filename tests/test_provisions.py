@@ -18,7 +18,9 @@ import pytest
 from aiact.config import get_settings
 from aiact.policy_loader import article_filename, provision_text
 from aiact.provisions import (
+    _ANNEX_SECTION,
     Provision,
+    _annex_body,
     all_provisions,
     annex_divisions,
     article_divisions,
@@ -139,7 +141,11 @@ def test_no_enacted_text_sits_outside_every_address():
     with that code however either one is changed.
 
     An article with no labels at all is one provision with `division=None` covering its whole body,
-    so those are skipped rather than read as one long chapeau."""
+    so those are skipped rather than read as one long chapeau.
+
+    ARTICLES ONLY — the annexes are checked by `test_no_annex_text_sits_outside_every_address`,
+    which cannot share this attribution: an annex runs its heading and its first item together on
+    one line, so nothing here about flush-left lines applies to it."""
     articles = ARTICLES_DIR
     provisions = all_provisions(articles, ANNEXES_DIR)
     addressed = {(p.document, p.division) for p in provisions if p.kind == "article"}
@@ -175,3 +181,51 @@ def test_no_enacted_text_sits_outside_every_address():
 # a shorter one is a label or a stray fragment. Sharing the module's constant would let one change
 # move both sides of the comparison at once.
 _SENTENCE = 35
+
+
+def test_no_annex_text_sits_outside_every_address():
+    """THE SAME INVARIANT AS ABOVE, on the half of the Act the article check cannot see.
+
+    `annex_divisions` finds the numbered items and nothing else, so the sentence that introduces
+    them has no address of its own. Annex IV's is "The technical documentation referred to in
+    Article 11(1) shall contain at least the following information, AS APPLICABLE TO THE RELEVANT
+    AI SYSTEM" — a floor and a limb narrowing it, governing all nine elements and part of none of
+    them. Annex VIII's three Section headings are the only place the Act says which party submits
+    which block.
+
+    Derived from the files: for every annex item that OPENS a section — or the annex, where it has
+    no sections — the text before it must be short enough to be a label, or an address must exist.
+    The item marker is found by scanning forward from the section start for the item's own number
+    or letter, which is a different search from the one `_annex_with_chapeau` runs backwards from
+    the divisions it was handed."""
+    provisions = all_provisions(ARTICLES_DIR, ANNEXES_DIR)
+    addressed = {(p.document, p.division) for p in provisions if p.kind == "annex"}
+    orphaned: list[str] = []
+    for annex in {p.document for p in provisions if p.kind == "annex"}:
+        divisions = [
+            d for d in annex_divisions(ANNEXES_DIR, annex) if not d.endswith("chapeau")
+        ]
+        if not divisions:
+            continue
+        body = _annex_body(ANNEXES_DIR, annex)
+        sections = {m.group(1): m.start() for m in _ANNEX_SECTION.finditer(body)}
+        opened: set[str | None] = set()
+        for division in divisions:
+            section, _, item = division.rpartition("/")
+            section = section or None
+            if section in opened:
+                continue
+            opened.add(section)
+            start = sections.get(section, 0) if section else 0
+            marker = re.search(rf"(?:^|(?<=\s)){re.escape(item)}[.)]", body[start:], re.M)
+            if marker is None:
+                continue
+            head = body[start : start + marker.start()].strip()
+            address = f"{section}/chapeau" if section else "chapeau"
+            if len(head) > _SENTENCE and (annex, address) not in addressed:
+                orphaned.append(f"Annex {annex}({address})")
+    assert not orphaned, (
+        f"annex text with no address in the partition: {sorted(orphaned)}. A chapeau states what "
+        f"its whole list is qualified by, and text the enumerator cannot see is text that reads "
+        f"as covered."
+    )

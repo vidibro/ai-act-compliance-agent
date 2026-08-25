@@ -114,7 +114,7 @@ def test_shipped_spec_loads():
     # area gate: Art. 49(1) excepts Annex III point 2 from the EU database and Art. 49(2), which
     # registers a system derogated under Art. 6(3), excepts nothing. One rule could not hold both
     # lists without demanding an entry the Act registers nationally or withholding one it does not.
-    assert len(spec.rules) == 90
+    assert len(spec.rules) == 91
 
 
 # How many articles each fetched version holds. KEYED BY VERSION EVEN WHILE ONE IS FETCHED, because

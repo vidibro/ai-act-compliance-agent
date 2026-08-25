@@ -30,7 +30,7 @@ from aiact.coverage import (
 )
 from aiact.gap import roles as role_questions
 from aiact.gap.rules import roles_with_rules, select_rules
-from aiact.policy_loader import load_policy_spec, resolve_requirement
+from aiact.policy_loader import load_policy_spec, provision_text, resolve_requirement
 from aiact.provisions import all_provisions, annex_instruments, provision_labels
 from aiact.schemas.classification import ClassificationEvidence, UseCaseClassification
 from aiact.schemas.enums import (
@@ -280,7 +280,9 @@ def test_the_annex_i_rulings_name_the_instrument_the_annex_names(ledger):
     enacts, and the ruling written for that item must name it."""
     instruments = annex_instruments(ANNEXES_DIR, "I")
 
-    rulings = ledger["annex_rulings"]["I"]
+    # A Section chapeau names the list rather than an act, so it has no instrument to be checked
+    # against. It is still an address and still ruled on; this comparison is about the items.
+    rulings = {k: v for k, v in ledger["annex_rulings"]["I"].items() if "chapeau" not in str(k)}
     assert set(rulings) == set(instruments), (
         f"the ledger and the Annex disagree on which items exist: "
         f"{sorted(set(rulings) ^ set(instruments))}"
@@ -857,3 +859,73 @@ def test_every_role_has_rules_or_a_written_reason(spec, ledger):
             f"roles_out_of_scope[{role_name}] is too short to be an argument. A dismissal is the "
             f"one status that admits a reader will be told nothing, so it states WHY."
         )
+
+
+# How an annex section heading names the party that owes its items. The Act writes them as
+# "Information to be submitted by providers of…" / "…by deployers of…", so the noun follows "by".
+# "by all providers" is Annex XI Section 1's form and has to precede the bare one, or the shorter
+# string matches first and the longer one is never reached.
+_SECTION_OWNERS = (
+    ("by all providers", ActorRole.PROVIDER),
+    ("by providers", ActorRole.PROVIDER),
+    ("by deployers", ActorRole.DEPLOYER),
+)
+
+
+def test_no_annex_section_is_carried_by_a_rule_its_own_heading_excludes(spec, ledger):
+    """AN ANNEX SECTION NAMES ITS DUTY-HOLDER IN ITS HEADING, and a rule no such party can select
+    leaves that section owed to nobody.
+
+    Annex VIII splits three ways along the role and says so in its own words: Section A is
+    "Information to be submitted BY PROVIDERS … in accordance with Article 49(1)", Section B is
+    providers again under Art. 49(2), and Section C is "BY DEPLOYERS … in accordance with
+    Article 49(3)". Three sections, two parties, one annex — so a rule that carries the right annex
+    on the right route can still be the wrong party's rule.
+
+    `test_no_annex_is_carried_only_by_rules_a_single_area_can_reach` reads the route dimension and
+    the area dimension and stops there. Reattribute every Section A item to the deployer's
+    registration rule and it stays green, because a rule reaching the Annex III route does exist —
+    it is simply one no provider ever selects, and the provider's thirteen registration fields
+    reach no report.
+
+    IT READS THE HEADING AND NOT THE ITEMS, which is the whole of its reach. A section whose
+    heading names no party is skipped rather than guessed at, and an item that binds someone the
+    heading does not mention is invisible here. The sections that do name a party are the ones
+    where a whole block of an annex can change hands in one edit."""
+    by_id = {rule.rule_id: rule for rule in spec.rules}
+    wrong: list[str] = []
+    for annex, items in (ledger.get("annex_rulings") or {}).items():
+        if not isinstance(items, dict):
+            continue
+        headings = _section_headings(ANNEXES_DIR / f"annex-{annex}.md")
+        for key, ruling in items.items():
+            section, _, _ = str(key).partition("/")
+            heading = headings.get(section, "").lower()
+            owner = next((r for text, r in _SECTION_OWNERS if text in heading), None)
+            if owner is None or not str(ruling).startswith(RULE_PREFIX):
+                continue
+            named = [by_id[r] for r in rule_ids(str(ruling)) if r in by_id]
+            reached = {role for rule in named for role in rule.applies_to_role}
+            if named and owner not in reached:
+                wrong.append(
+                    f"Annex {annex}({key}) is submitted by {owner.value}s, but "
+                    f"{sorted(r.rule_id for r in named)} reach "
+                    f"{sorted(x.value for x in reached)}"
+                )
+    assert not wrong, (
+        f"annex items ruled to a rule the section's own duty-holder cannot select: {wrong}. The "
+        f"ledger reads as covered because a named rule EXISTS; that party never selects it."
+    )
+
+
+def _section_headings(path: Path) -> dict[str, str]:
+    """Each `Section X` heading in an annex, keyed by the letter or number the ledger keys use.
+
+    The stored annexes run a section's heading and its first item together on one line, so the
+    heading is the line the marker opens rather than a block of its own."""
+    body = provision_text(path)
+    headings: dict[str, str] = {}
+    for match in re.finditer(r"^Section\s+([A-Z0-9]+)[.\s—]", body, re.M):
+        end = body.find("\n", match.start())
+        headings[match.group(1)] = body[match.start() : end if end != -1 else len(body)]
+    return headings

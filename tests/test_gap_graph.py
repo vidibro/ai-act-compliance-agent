@@ -153,6 +153,7 @@ def test_each_role_gets_its_own_obligations(spec):
     assert deployer_ids == {
         "AIA-ALL-A04",
         "AIA-ALL-A73",
+        "AIA-ALL-A73-10",
         "AIA-ALL-A75c-3",
         "AIA-ALL-A79",
         "AIA-ALL-A82",
@@ -176,6 +177,7 @@ def test_each_role_gets_its_own_obligations(spec):
     assert provider_ids & deployer_ids == {
         "AIA-ALL-A04",
         "AIA-ALL-A73",
+        "AIA-ALL-A73-10",
         "AIA-ALL-A75c-3",
         "AIA-ALL-A79",
         "AIA-ALL-A82",
@@ -224,6 +226,7 @@ def test_process_obligations_are_reported_but_never_judged(spec):
     assert outstanding[ActorRole.DEPLOYER] == [
         "AIA-ALL-A04",
         "AIA-ALL-A73",
+        "AIA-ALL-A73-10",
         "AIA-ALL-A75c-3",
         "AIA-ALL-A79",
         "AIA-ALL-A82",
