@@ -1284,8 +1284,9 @@ article_rulings:
       operator's own offer, not a duty this tool reports.
     closing: >-
       Where the AI Office considers the commitments offered are unable to ensure effective
-      compliance, or are not proportionate, it rejects them in a REASONED DECISION. The Office's
-      duty toward the operator, and the counterpart of the chapeau's power.
+      compliance with the relevant provisions, it rejects them in a REASONED DECISION when
+      concluding the proceedings. The Office's duty toward the operator, and the counterpart of the
+      chapeau's power.
     a: >-
       NEW in this version. A ground for reopening commitments made binding: a material change in the
       facts. Part of a procedure between an operator and the enforcing body, opened at the Office's
@@ -2094,3 +2095,21 @@ annex_rulings:
 # and no report mentions it — a stronger claim than a dismissal, and the reason this section is
 # separate from annex_rulings rather than folded into it.
 annexes_awaiting_rules: {}
+
+# WHICH OF ART. 6'S TWO DOORS AN ANNEX'S HIGH-RISK POPULATION COMES THROUGH, for the annexes where
+# it is not both. A reading of the Act that no rule records: a rule states the routes IT fires on,
+# and nothing else states the routes an annex has to be complete over. Without that, an annex ruled
+# only to rules gated at Annex III is indistinguishable from one that leaves the Annex I provider
+# out — Annex VII is reached from both doors, and Annexes VI and VIII from one.
+#
+# An annex absent from this list is owed to both routes. Read by the coverage tests, not by any
+# rule: it constrains what a ruling has to name, not what a report says.
+annex_route_population:
+  VI: >-
+    annex_iii — Art. 43(1) and (2) put the internal-control procedure on Annex III systems. An
+    Annex I Section A provider follows the conformity procedure of its own sectoral act under
+    Art. 43(3) and never reaches Annex VI.
+  VIII: >-
+    annex_iii — Art. 49(1) registers "a high-risk AI system listed in Annex III", and Art. 49(2)
+    a system the provider concluded is not high-risk under Art. 6(3). Both are Annex III questions;
+    an Annex I safety component is registered under its own legislation, not in the EU database.

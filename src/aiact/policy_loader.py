@@ -93,7 +93,7 @@ def article_filename(article: str) -> str:
 
     Public because every caller that needs an article's path needs this rule. Spelling it as
     `f"article-{n:03d}.md"` at the call site works until the id has a letter, and then it either
-    raises or resolves to the wrong article; both happened.
+    raises or resolves to the wrong article.
     """
     match = re.fullmatch(r"(\d+)([a-z]*)", article)
     if match is None:

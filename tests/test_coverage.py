@@ -641,8 +641,19 @@ def test_no_annex_is_carried_only_by_rules_a_single_area_can_reach(spec, ledger)
     because some named rule lacks an area gate exempts it on rules that are narrower still. The
     exemption below therefore requires a rule unconditional on route AND area, and the assertion
     runs per risk class, because an annex reached only by Chapter V rules has no Annex III
-    dimension to be complete over."""
+    dimension to be complete over.
+
+    AN AREA GATE IS A ROUTE GATE. `_area_matches` returns False when the use case has no area, and
+    an Annex I system has none, so a rule naming Annex III areas is unreachable from the Annex I
+    door however its `applies_to_route` reads. It is credited with `ANNEX_III` here for that
+    reason; reading its `None` as "every route" is the trap above, inverted.
+
+    WHICH ROUTES AN ANNEX OWES is the one thing neither the spec nor the rules record — Annex VII
+    is reached from both doors, Annexes VI and VIII from Annex III alone. That is a reading of the
+    Act, so it lives in the ledger under `annex_route_population`, and an annex absent from it owes
+    both."""
     by_id = {rule.rule_id: rule for rule in spec.rules}
+    population = ledger.get("annex_route_population") or {}
     for annex, items in (ledger.get("annex_rulings") or {}).items():
         named = {
             rule_id
@@ -653,6 +664,7 @@ def test_no_annex_is_carried_only_by_rules_a_single_area_can_reach(spec, ledger)
         rules = [by_id[rule_id] for rule_id in named if rule_id in by_id]
         if not rules:
             continue
+        owed = _declared_routes(population.get(str(annex)))
         for risk_class in {c for rule in rules for c in rule.applies_to_risk_class}:
             tier = [r for r in rules if risk_class in r.applies_to_risk_class]
             # Unconditional on BOTH: such a rule really is reachable from every route and area at
@@ -661,13 +673,28 @@ def test_no_annex_is_carried_only_by_rules_a_single_area_can_reach(spec, ledger)
                 not r.applies_to_annex_iii_area and r.applies_to_route is None for r in tier
             ):
                 continue
-            reached = {r.applies_to_route for r in tier}
-            assert None in reached or reached >= set(HighRiskRoute), (
-                f"Annex {annex} at {risk_class.value} is ruled only to route-gated rules, and "
-                f"between them they reach {sorted(r.value for r in reached if r)} — a provider on "
-                f"the other route is told nothing about it. The ledger reads as covered because a "
-                f"named rule EXISTS; that reader never selects it."
+            reached = {
+                HighRiskRoute.ANNEX_III if r.applies_to_annex_iii_area else r.applies_to_route
+                for r in tier
+            }
+            assert None in reached or reached >= owed, (
+                f"Annex {annex} at {risk_class.value} is ruled only to gated rules, and between "
+                f"them they reach {sorted(r.value for r in reached if r)} of the "
+                f"{sorted(x.value for x in owed)} this annex is owed to — a provider on the "
+                f"other route is told nothing about it. "
+                f"The ledger reads as covered because a named rule EXISTS; that reader never "
+                f"selects it."
             )
+
+
+def _declared_routes(ruling: object) -> set[HighRiskRoute]:
+    """The routes an annex's high-risk population comes through, read off its ledger entry.
+
+    The entry is prose whose FIRST WORD is the route, in the ledger's usual shape: the machine-read
+    part at the head, the reading behind it after the em-dash. No entry means both doors."""
+    if not isinstance(ruling, str):
+        return set(HighRiskRoute)
+    return {HighRiskRoute(ruling.split("—")[0].strip())}
 
 
 def _values(items: object) -> list[object]:
@@ -734,7 +761,7 @@ def test_a_rule_reaches_every_role_the_divisions_it_covers_bind(spec, ledger):
     reads as covered and reaches no report.
 
     Mechanical form: where a ruled division OPENS by naming a role as its subject, some rule named
-    for that division must apply to that role. Eight divisions are examined today.
+    for that division must apply to that role. Twenty-six divisions are examined today.
 
     THE LIMIT, because a guard that overstates its reach is worse than none. A duty can attach to a
     party by CROSS-REFERENCE from another Article, and nothing here sees that. Art. 73(1) opens
@@ -742,8 +769,8 @@ def test_a_rule_reaches_every_role_the_divisions_it_covers_bind(spec, ledger):
     the deployer owes it through Art. 26(5)'s closing sentence — "If the deployer is not able to
     reach the provider, Article 73 shall apply mutatis mutandis" — which is in a different Article
     and invisible to any test that reads one division at a time. Those stay a reading job. What
-    this catches is the simpler shape: a division naming its own duty-holder in its first three
-    words, ruled to a rule that party cannot select."""
+    this catches is the simpler shape: a division naming its own duty-holder in its opening words,
+    ruled to a rule that party cannot select. `_ROLE_OPENINGS` is how many of those it sees."""
     by_id = {rule.rule_id: rule for rule in spec.rules}
     wrong: list[str] = []
     for article, rulings in (ledger.get("article_rulings") or {}).items():
@@ -761,8 +788,7 @@ def test_a_rule_reaches_every_role_the_divisions_it_covers_bind(spec, ledger):
                 enacted, _ = resolve_requirement(ARTICLES_DIR, str(article), str(division))
             except (KeyError, ValueError):
                 continue
-            for word, role in (("Deployers shall", ActorRole.DEPLOYER),
-                               ("Providers of", ActorRole.PROVIDER)):
+            for word, role in _ROLE_OPENINGS:
                 if enacted.startswith(word) and role not in roles:
                     wrong.append(
                         f"Art. {article}({division}) opens {word!r} but "
@@ -773,6 +799,30 @@ def test_a_rule_reaches_every_role_the_divisions_it_covers_bind(spec, ledger):
         f"{wrong}. The ledger reads as covered because the rule EXISTS; that reader never selects "
         f"it."
     )
+
+
+# How the Act names a duty-holder as the subject of a division. Every opening the enacted text
+# actually uses, so a paragraph is examined rather than skipped: the plural bare form, the plural
+# with a narrowing ("Deployers of", "Deployers that"), and the singular with the article. An
+# opening absent from this tuple is not a passing division, it is an unexamined one.
+_ROLE_OPENINGS = (
+    ("Deployers shall", ActorRole.DEPLOYER),
+    ("Deployers of", ActorRole.DEPLOYER),
+    ("Deployers that", ActorRole.DEPLOYER),
+    ("The deployer shall", ActorRole.DEPLOYER),
+    ("Providers shall", ActorRole.PROVIDER),
+    ("Providers of", ActorRole.PROVIDER),
+    ("Providers that", ActorRole.PROVIDER),
+    ("The provider shall", ActorRole.PROVIDER),
+    ("The provider of", ActorRole.PROVIDER),
+    ("The providers of", ActorRole.PROVIDER),
+    ("Importers shall", ActorRole.IMPORTER),
+    ("The importer shall", ActorRole.IMPORTER),
+    ("Distributors shall", ActorRole.DISTRIBUTOR),
+    ("The distributor shall", ActorRole.DISTRIBUTOR),
+    ("Authorised representatives", ActorRole.AUTHORISED_REPRESENTATIVE),
+    ("The authorised representative", ActorRole.AUTHORISED_REPRESENTATIVE),
+)
 
 
 def test_every_role_has_rules_or_a_written_reason(spec, ledger):

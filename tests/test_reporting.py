@@ -19,6 +19,7 @@ carry it too.
 
 from __future__ import annotations
 
+import re
 from datetime import UTC, datetime
 
 import pytest
@@ -364,3 +365,49 @@ def test_a_report_says_how_many_obligations_nobody_judged(spec):
     text = render_report(_report(spec, {ActorRole.PROVIDER: outstanding}), spec)
     assert "0 applicable" in text
     assert f"{len(outstanding)} further obligations listed above that nobody judged" in text
+
+
+# Every way the Act writes a deadline, so a period in a qualifier is matched wherever it appears.
+# "working days" and "calendar days" come before the bare form: an alternation that tries `days`
+# first would match the tail of "15 working days" and compare the wrong unit.
+_PERIOD = re.compile(
+    r"\b(\d+)\s+(working\s+days?|calendar\s+days?|days?|weeks?|months?|years?)\b", re.I
+)
+
+
+def test_a_deadline_in_a_qualifier_reaches_the_reader_of_an_unjudged_rule(spec):
+    """`qualifier_context` IS RENDERED BY THE JUDGE AND BY NOBODY ELSE, so on a rule no judge sees
+    it is a field the reader never receives.
+
+    `qualified_by` resolves neighbouring provisions into the rule at load, and the judge prints them
+    in their own block beside the requirement. `_outstanding_block` — the branch that renders a
+    `document_verifiable: false` rule — prints `evidence_expected` and stops. The two facts are
+    fine apart and wrong together: seven rules today carry a qualifier and are never judged, and for
+    each of them the qualifying text is written into the spec, resolved from the Act at load, and
+    shown to no one.
+
+    A DEADLINE IS THE PART THAT CANNOT SURVIVE THAT. Art. 79(2) gives the market surveillance
+    authority's requirement a ceiling of the shorter of 15 working days or the sectoral period, and
+    Art. 79(5) makes a missed period the trigger for provisional measures — a procedure written to
+    a 30-day escalation satisfies every word the report would otherwise print. So where a qualifier
+    states a period, `evidence_expected` must state the same period.
+
+    IT CHECKS THE PERIODS AND NOT THE PROSE, because only the periods are mechanical. A qualifier
+    can lose an addressee, a condition or a menu of remedies and nothing here notices; those stay a
+    reading job, and this is the one part of the class a test can hold."""
+    dropped: list[str] = []
+    for rule in spec.rules:
+        if rule.document_verifiable or not rule.qualifier_context:
+            continue
+        qualified = {(m[0], m[1].lower()) for m in _PERIOD.findall(rule.qualifier_context)}
+        stated = {(m[0], m[1].lower()) for m in _PERIOD.findall(rule.evidence_expected)}
+        for count, unit in sorted(qualified - stated):
+            dropped.append(
+                f"{rule.rule_id} qualifier says {count} {unit}, evidence_expected does not"
+            )
+    assert not dropped, (
+        f"a deadline resolved into a rule nobody judges, and rendered to nobody: {dropped}. "
+        f"`qualifier_context` reaches the judge only; on an unjudged rule `evidence_expected` is "
+        f"the whole of what the reader gets, so a period stated only in the qualifier is a period "
+        f"the reader is never given."
+    )

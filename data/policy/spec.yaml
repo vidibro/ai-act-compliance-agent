@@ -459,9 +459,22 @@ rules:
     obligation_status: mandatory
     check_type: presence
     evidence_expected: >-
-      Evidence of an organisational quality management system. This is a process obligation about
-      the provider organisation, not a property of the system's technical documentation — confirm
-      separately.
+      Art. 17(1). A quality management system that ensures compliance with this Regulation,
+      DOCUMENTED in a systematic and orderly manner in the form of written policies, procedures and
+      instructions. It shall include AT LEAST thirteen aspects: (a) a strategy for regulatory
+      compliance, covering conformity assessment and the management of MODIFICATIONS to the system;
+      (b) design, design control and design verification; (c) development, quality control and
+      quality assurance; (d) examination, test and validation procedures before, during and after
+      development, AND THE FREQUENCY with which they are carried out; (e) technical specifications
+      and standards, and where harmonised standards are not applied in full, the means used to meet
+      the Section 2 requirements instead; (f) data management across acquisition, collection,
+      analysis, labelling, storage, filtration, mining, aggregation and retention; (g) the Art. 9
+      risk management system; (h) the Art. 72 post-market monitoring system; (i) serious-incident
+      reporting under Art. 73; (j) handling of communication with national competent authorities,
+      notified bodies, other operators and customers; (k) record-keeping of all relevant
+      documentation; (l) resource management including security of supply; (m) an accountability
+      framework naming what management and staff are responsible for. An organisational system
+      rather than a property of the system's technical documentation — confirm separately.
     document_verifiable: false
     effective_date_by_route:
       annex_iii: 2027-12-02
@@ -479,8 +492,13 @@ rules:
     obligation_status: mandatory
     check_type: presence
     evidence_expected: >-
-      A document-retention process at the provider. Not observable from the system's technical
-      documentation — confirm separately.
+      Art. 18(1). Keep FIVE documents at the disposal of the national competent authorities for a
+      period ending TEN YEARS after the system was placed on the market or put into service: the
+      Art. 11 technical documentation; the documentation of the Art. 17 quality management system;
+      the documentation of changes APPROVED BY NOTIFIED BODIES, where applicable; the decisions and
+      other documents issued by the notified bodies; and the Art. 47 EU declaration of conformity. A
+      retention process at the provider, not observable from the technical documentation — confirm
+      separately.
     document_verifiable: false
     effective_date_by_route:
       annex_iii: 2027-12-02
@@ -498,8 +516,11 @@ rules:
     obligation_status: mandatory
     check_type: presence
     evidence_expected: >-
-      A log-retention process at the provider. Distinct from Art. 12 (the system's capability to
-      generate logs, which IS document-verifiable) — confirm separately.
+      Art. 19(1). Keep the Art. 12(1) logs the system generates automatically, to the extent they
+      are under the provider's control, for a period appropriate to the intended purpose and AT
+      LEAST SIX MONTHS — unless Union or national law provides otherwise, in particular data
+      protection law. Distinct from Art. 12, which is the system's capability to generate the logs
+      and IS document-verifiable; this is what happens to them afterwards — confirm separately.
     document_verifiable: false
     effective_date_by_route:
       annex_iii: 2027-12-02
@@ -517,8 +538,14 @@ rules:
     obligation_status: mandatory
     check_type: presence
     evidence_expected: >-
-      A corrective-action and notification procedure. A post-market process obligation, not visible
-      in the technical documentation — confirm separately.
+      Art. 20(1). Where the provider considers, OR HAS REASON TO CONSIDER, that a system it has
+      placed on the market or put into service is not in conformity with this Regulation:
+      IMMEDIATELY take the necessary corrective actions to bring that system into conformity, to
+      withdraw it, to DISABLE it, or to recall it, as appropriate. And inform the distributors of
+      that system and, where applicable, the deployers, the authorised representative AND THE
+      IMPORTERS. The trigger is the provider's own reason to consider, not an authority's finding —
+      Art. 79 is the duty that begins with the authority. A post-market process, not visible in the
+      technical documentation — confirm separately.
     document_verifiable: false
     effective_date_by_route:
       annex_iii: 2027-12-02
@@ -560,8 +587,14 @@ rules:
     obligation_status: mandatory
     check_type: presence
     evidence_expected: >-
-      A duty to cooperate with authorities on request. A relational process obligation, not a
-      property of the documentation — confirm separately.
+      Art. 21(1). Upon a REASONED REQUEST by a competent authority, provide that authority ALL the
+      information and documentation necessary to demonstrate the system's conformity with the
+      Section 2 requirements — Arts. 9 to 15. In A LANGUAGE WHICH CAN BE EASILY UNDERSTOOD by the
+      authority, being one of the official languages of the institutions of the Union as indicated
+      by the Member State concerned; a file held only in a language that Member State has not
+      indicated does not discharge this. What makes it actionable in advance is knowing which
+      languages have been indicated where the system is placed on the market. A relational
+      obligation, not a property of the documentation — confirm separately.
     document_verifiable: false
     effective_date_by_route:
       annex_iii: 2027-12-02
@@ -1001,8 +1034,13 @@ rules:
     obligation_status: mandatory
     check_type: presence
     evidence_expected: >-
-      An EU declaration of conformity as an administrative artefact. Not part of the system's
-      technical documentation — confirm separately.
+      Art. 47(1). Draw up a written EU declaration of conformity — machine readable, physical or
+      electronically signed — FOR EACH high-risk AI system, and keep it at the disposal of the
+      national competent authorities for TEN YEARS after the system was placed on the market or put
+      into service. The declaration shall IDENTIFY the system it was drawn up for, so one
+      declaration covering a range of systems does not discharge it. A copy shall be submitted to
+      the relevant national competent authorities UPON REQUEST. An administrative artefact held
+      separately from the technical documentation — confirm separately.
     document_verifiable: false
     effective_date: 2026-08-02
     effective_date_note: >-
@@ -1061,8 +1099,12 @@ rules:
     obligation_status: mandatory
     check_type: presence
     evidence_expected: >-
-      Affixing of the CE marking. A physical/administrative act, not a property of the technical
-      documentation content — confirm separately.
+      Art. 48(3). The CE marking shall be affixed VISIBLY, LEGIBLY AND INDELIBLY to the high-risk AI
+      system. Where that is not possible or not warranted on account of the nature of the system, it
+      shall be affixed to the PACKAGING or to the ACCOMPANYING DOCUMENTATION, as appropriate — that
+      fallback turns on the nature of the system and not on convenience. For a system provided
+      digitally the digital marking in Art. 48(2) applies. A physical or administrative act, not a
+      property of the technical documentation — confirm separately.
     document_verifiable: false
     effective_date: 2026-08-02
     effective_date_note: >-
@@ -1219,8 +1261,15 @@ rules:
     obligation_status: mandatory
     check_type: presence
     evidence_expected: >-
-      Registration in the EU database. An external act against a registry, not observable from the
-      technical documentation — confirm separately.
+      Art. 49(1). BEFORE placing on the market or putting into service an Annex III high-risk AI
+      system, the provider or, where applicable, the authorised representative shall register BOTH
+      THEMSELVES AND THE SYSTEM in the EU database referred to in Art. 71 — two registrations, and a
+      registered organisation with an unregistered system does not satisfy the paragraph. Systems
+      under Annex III point 2, critical infrastructure, are excepted here and are registered at
+      national level under Art. 49(5). Where the system is in the law enforcement, migration, asylum
+      or border control areas, Art. 49(4) puts the entry in a secure non-public section — see
+      AIA-ALL-A49-4. An act against an external registry, not observable from the technical
+      documentation — confirm separately.
     document_verifiable: false
     effective_date: 2026-08-02
     effective_date_note: >-
@@ -1854,10 +1903,16 @@ rules:
       duty in 79(2) to COOPERATE as necessary with that authority and with the Art. 77(1)
       fundamental-rights bodies, and the duty in 79(4) to ensure appropriate corrective action is
       taken in respect of ALL the systems concerned that this party has made available on the Union
-      market — not only the unit the authority examined. Distinct from Art. 20, which a provider
-      starts itself on its own suspicion; this one begins with the authority's requirement and binds
-      every operator in the chain. A relational enforcement obligation, not visible in the technical
-      documentation — confirm separately.
+      market — not only the unit the authority examined. WHAT THE AUTHORITY MAY REQUIRE, and the
+      deadline it runs against, are in 79(2): to bring the system into compliance, to WITHDRAW it
+      from the market, or to RECALL it, within a period the authority may prescribe and IN ANY
+      EVENT WITHIN THE SHORTER OF 15 WORKING DAYS or the period in the relevant Union harmonisation
+      legislation. A procedure that cannot move inside 15 working days does not answer this
+      paragraph, and Art. 79(5) makes a missed period the trigger for provisional measures against
+      the system. Distinct from Art. 20, which a provider starts itself on its own suspicion; this
+      one begins with the authority's requirement and binds every operator in the chain. A
+      relational enforcement obligation, not visible in the technical documentation — confirm
+      separately.
     document_verifiable: false
     effective_date: 2026-08-02
     status: active
@@ -2113,9 +2168,11 @@ rules:
     obligation_status: mandatory
     check_type: presence
     evidence_expected: >-
-      THE DEPLOYER'S CORE OPERATING MEASURES, which are six of this Article's twelve paragraphs; the
-      other six are narrowed to particular deployers or particular systems and are carried by
-      AIA-DP-A26-8 through -12.
+      THE DEPLOYER'S CORE OPERATING MEASURES, which are six of this Article's twelve paragraphs.
+      Five more are carried by AIA-DP-A26-8 through -12: 26(8) to (11) are narrowed to particular
+      deployers or particular systems, and 26(12) is conduct toward an authority rather than an
+      operating measure. Art. 26(3) imposes nothing — it is a saving clause preserving the
+      deployer's freedom to organise its own resources for the oversight measures in 26(1) and (2).
       Art. 26(1) and (2): technical and organisational measures to use the system in accordance with
       its instructions for use, and human oversight assigned to natural persons who have the
       necessary competence, training AND AUTHORITY, as well as the necessary support — a named
@@ -2147,11 +2204,13 @@ rules:
     status: active
 
   # SIX RULES FOR ONE ARTICLE, and the split is the Act's rather than a preference. Art. 26 runs to
-  # twelve paragraphs and six of them narrow the duty — to public-authority deployers, to Annex III
+  # twelve paragraphs and four of them narrow the duty — to public-authority deployers, to Annex III
   # systems, to post-remote biometric identification. A narrowing is stated on the rule,
   # in `activation_condition` or a gate, and the report renders it beside the obligation; folded
   # into one rule's evidence text it becomes a sentence a reader has to notice and apply to
-  # themselves. AIA-DP-A26 keeps the six paragraphs that bind every deployer alike.
+  # themselves. Art. 26(12) carries no narrowing and is separate for the other reason a rule earns
+  # its own entry: it is answered by whoever handles an authority, not by whoever operates the
+  # system. AIA-DP-A26 keeps the six paragraphs that bind every deployer alike.
   - rule_id: AIA-DP-A26-8
     source:
       instrument: "Regulation (EU) 2024/1689"

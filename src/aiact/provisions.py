@@ -28,7 +28,12 @@ import re
 from dataclasses import dataclass
 from pathlib import Path
 
-from aiact.policy_loader import _POINT_LABEL, provision_labels, provision_text
+from aiact.policy_loader import (
+    _POINT_LABEL,
+    article_filename,
+    provision_labels,
+    provision_text,
+)
 
 # The Annexes are rendered inconsistently by the Official Journal's own XML, and the fetcher
 # preserves what it is given rather than tidying it. Both shapes are real and both are here:
@@ -221,7 +226,7 @@ def _with_unnumbered(
     ledger to rule on them rather than letting them fall out of the count unnoticed. A chapeau that
     only introduces its list is still an address, and the ledger dismisses it in one line; that is
     cheaper than deciding per article which chapeaux are worth keeping."""
-    body = provision_text(articles_dir / _article_file(article))
+    body = provision_text(articles_dir / article_filename(article))
     lines = body.split("\n")
     body = "\n".join(lines[2:]) if len(lines) > 2 else body
     first, last = divisions[0], divisions[-1]
@@ -236,12 +241,6 @@ def _with_unnumbered(
     if marks and len(body[marks[-1].end() :].partition("\n")[2].strip()) > _UNNUMBERED_MIN:
         out.append("closing")
     return tuple(out)
-
-
-def _article_file(article: str) -> str:
-    """The stored filename for an article id, zero-padded as the fetcher writes it."""
-    digits = "".join(c for c in article if c.isdigit())
-    return f"article-{int(digits):03d}{article[len(digits):]}.md"
 
 
 # Long enough to be a sentence rather than a stray label or a line break. Art. 16's chapeau is

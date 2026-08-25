@@ -16,11 +16,9 @@ from pathlib import Path
 import pytest
 
 from aiact.config import get_settings
-from aiact.policy_loader import provision_text
+from aiact.policy_loader import article_filename, provision_text
 from aiact.provisions import (
-    _UNNUMBERED_MIN,
     Provision,
-    _article_file,
     all_provisions,
     annex_divisions,
     article_divisions,
@@ -134,36 +132,46 @@ def test_no_enacted_text_sits_outside_every_address():
     2 August 2026" is the general application date every rule's `effective_date` is read from, and
     it sits before point (a).
 
-    So this reconstructs the check from the files rather than from `all_provisions`: for every
-    article whose divisions are POINTS, the text outside them must be short enough to be
-    punctuation, or an address must exist for it. Derived, so an article that gains a closing
-    paragraph in a future consolidation fails here rather than disappearing."""
+    So the attribution below is BUILT FROM THE LAYOUT OF THE FILES rather than from the enumerator:
+    it walks the lines, opens an address on each label line, and gives a flush-left line that opens
+    no label its own `chapeau` or `closing`. It shares no regex, no threshold and no filename rule
+    with `_with_unnumbered`, which is the point — a check that re-runs the code it checks agrees
+    with that code however either one is changed.
+
+    An article with no labels at all is one provision with `division=None` covering its whole body,
+    so those are skipped rather than read as one long chapeau."""
     articles = ARTICLES_DIR
     provisions = all_provisions(articles, ANNEXES_DIR)
     addressed = {(p.document, p.division) for p in provisions if p.kind == "article"}
     orphaned: list[str] = []
-    for document in {p.document for p in provisions if p.kind == "article"}:
-        divisions = [
-            d for d in article_divisions(articles, document) if d not in ("chapeau", "closing")
-        ]
-        if not divisions:
+    for document in sorted({p.document for p in provisions if p.kind == "article"}):
+        if (document, None) in addressed:
             continue
-        body = provision_text(articles / _article_file(document))
-        body = "\n".join(body.split("\n")[2:])
-        head = re.search(rf"^\s*\({re.escape(divisions[0])}\)", body, re.M)
-        if head is None:
-            continue  # numbered paragraphs: every subparagraph belongs to the one above it
-        if len(body[: head.start()].strip()) > _UNNUMBERED_MIN and (
-            document,
-            "chapeau",
-        ) not in addressed:
-            orphaned.append(f"Art. {document} chapeau")
-        marks = list(re.finditer(rf"^\s*\({re.escape(divisions[-1])}\)", body, re.M))
-        after = body[marks[-1].end() :].partition("\n")[2].strip() if marks else ""
-        if len(after) > _UNNUMBERED_MIN and (document, "closing") not in addressed:
-            orphaned.append(f"Art. {document} closing")
+        body = provision_text(articles / article_filename(document)).split("\n")
+        current: str | None = None
+        labelled = False
+        for line in body[2:]:
+            if not line.strip():
+                continue
+            paragraph = re.match(r"(\d+[a-z]*)\.\s", line)
+            point = re.match(r"\s+\(([^)]+)\)\s", line)
+            if paragraph and not line[0].isspace():
+                current, labelled = paragraph.group(1), True
+            elif point and not labelled:
+                # A point at the TOP level: this article is a chapeau plus points, not paragraphs.
+                current, labelled = point.group(1), True
+            elif not line[0].isspace() and not paragraph:
+                current = "closing" if labelled else "chapeau"
+            if len(line.strip()) > _SENTENCE and (document, current) not in addressed:
+                orphaned.append(f"Art. {document}({current})")
     assert not orphaned, (
-        f"enacted text with no address in the partition: {orphaned}. Every coverage count is a "
-        f"claim about this enumerator's output, so text it cannot see is text that reads as "
-        f"covered."
+        f"enacted text with no address in the partition: {sorted(set(orphaned))}. Every coverage "
+        f"count is a claim about this enumerator's output, so text it cannot see is text that "
+        f"reads as covered."
     )
+
+
+# This test's own floor, deliberately not the module's: a line longer than this carries a duty, and
+# a shorter one is a label or a stray fragment. Sharing the module's constant would let one change
+# move both sides of the comparison at once.
+_SENTENCE = 35
