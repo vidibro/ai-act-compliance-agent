@@ -16,7 +16,15 @@ from pathlib import Path
 import pytest
 
 from aiact.config import get_settings
-from aiact.provisions import Provision, all_provisions, annex_divisions, article_divisions
+from aiact.policy_loader import provision_text
+from aiact.provisions import (
+    _UNNUMBERED_MIN,
+    Provision,
+    _article_file,
+    all_provisions,
+    annex_divisions,
+    article_divisions,
+)
 
 ROOT = Path(__file__).resolve().parents[1]
 VERSION = get_settings().act_version_date.isoformat()
@@ -110,3 +118,52 @@ def test_an_address_renders_the_way_the_act_writes_it():
     assert str(Provision("article", "6", "1a")) == "Art. 6(1a)"
     assert str(Provision("annex", "VIII", "A/1")) == "Annex VIII(A)(1)"
     assert str(Provision("annex", "II", None)) == "Annex II"
+
+
+def test_no_enacted_text_sits_outside_every_address():
+    """THE DENOMINATOR CANNOT SHRINK WITHOUT A COUNTER MOVING, which is the one failure this module
+    is not allowed to have.
+
+    Every number this project reports — the provision count, `unaccounted 0`, `owed 0` — is a claim
+    ABOUT the enumerator's output, never about the Act directly. If the enumerator stops seeing part
+    of the Act, the partition stays complete over what is left and says so in a reassuring number
+    that nothing contradicts.
+
+    An article built as a chapeau plus points is where the text escapes: the labels name the points
+    and nothing names the words before the first or after the last. Art. 113's "It shall apply from
+    2 August 2026" is the general application date every rule's `effective_date` is read from, and
+    it sits before point (a).
+
+    So this reconstructs the check from the files rather than from `all_provisions`: for every
+    article whose divisions are POINTS, the text outside them must be short enough to be
+    punctuation, or an address must exist for it. Derived, so an article that gains a closing
+    paragraph in a future consolidation fails here rather than disappearing."""
+    articles = ARTICLES_DIR
+    provisions = all_provisions(articles, ANNEXES_DIR)
+    addressed = {(p.document, p.division) for p in provisions if p.kind == "article"}
+    orphaned: list[str] = []
+    for document in {p.document for p in provisions if p.kind == "article"}:
+        divisions = [
+            d for d in article_divisions(articles, document) if d not in ("chapeau", "closing")
+        ]
+        if not divisions:
+            continue
+        body = provision_text(articles / _article_file(document))
+        body = "\n".join(body.split("\n")[2:])
+        head = re.search(rf"^\s*\({re.escape(divisions[0])}\)", body, re.M)
+        if head is None:
+            continue  # numbered paragraphs: every subparagraph belongs to the one above it
+        if len(body[: head.start()].strip()) > _UNNUMBERED_MIN and (
+            document,
+            "chapeau",
+        ) not in addressed:
+            orphaned.append(f"Art. {document} chapeau")
+        marks = list(re.finditer(rf"^\s*\({re.escape(divisions[-1])}\)", body, re.M))
+        after = body[marks[-1].end() :].partition("\n")[2].strip() if marks else ""
+        if len(after) > _UNNUMBERED_MIN and (document, "closing") not in addressed:
+            orphaned.append(f"Art. {document} closing")
+    assert not orphaned, (
+        f"enacted text with no address in the partition: {orphaned}. Every coverage count is a "
+        f"claim about this enumerator's output, so text it cannot see is text that reads as "
+        f"covered."
+    )

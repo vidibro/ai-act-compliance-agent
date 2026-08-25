@@ -152,10 +152,15 @@ def test_each_role_gets_its_own_obligations(spec):
     assert "AIA-HR-A14" in provider_ids and "AIA-HR-A14" not in deployer_ids
     assert deployer_ids == {
         "AIA-ALL-A04",
+        "AIA-ALL-A73",
         "AIA-ALL-A75c-3",
         "AIA-ALL-A79",
         "AIA-ALL-A82",
         "AIA-DP-A26",
+        "AIA-DP-A26-11",
+        "AIA-DP-A26-12",
+        "AIA-DP-A26-8",
+        "AIA-DP-A26-9",
         "AIA-DP-A27",
         "AIA-DP-A27-2",
         "AIA-DP-A27-3",
@@ -165,9 +170,12 @@ def test_each_role_gets_its_own_obligations(spec):
     }
     # The rules that bind by something other than the role: Art. 4 by the tier, and Arts. 75c(3),
     # 79 and 82 by an act of an authority — an AI Office non-compliance decision, an opened
-    # evaluation, a finding that a complying system still presents a risk.
+    # evaluation, a finding that a complying system still presents a risk. Art. 73 joins them by an
+    # EVENT: the report is the provider's under 73(1), and Art. 26(5) hands it to a deployer that
+    # has identified a serious incident and cannot reach the provider.
     assert provider_ids & deployer_ids == {
         "AIA-ALL-A04",
+        "AIA-ALL-A73",
         "AIA-ALL-A75c-3",
         "AIA-ALL-A79",
         "AIA-ALL-A82",
@@ -215,10 +223,15 @@ def test_process_obligations_are_reported_but_never_judged(spec):
     # Grouped by who owes them: a provider cannot confirm that a deployer informed its workers.
     assert outstanding[ActorRole.DEPLOYER] == [
         "AIA-ALL-A04",
+        "AIA-ALL-A73",
         "AIA-ALL-A75c-3",
         "AIA-ALL-A79",
         "AIA-ALL-A82",
         "AIA-DP-A26",
+        "AIA-DP-A26-11",
+        "AIA-DP-A26-12",
+        "AIA-DP-A26-8",
+        "AIA-DP-A26-9",
         "AIA-DP-A27",
         "AIA-DP-A27-2",
         "AIA-DP-A27-3",

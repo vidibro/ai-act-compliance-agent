@@ -29,11 +29,17 @@ from aiact.coverage import (
     summarise,
 )
 from aiact.gap import roles as role_questions
-from aiact.gap.rules import select_rules
+from aiact.gap.rules import roles_with_rules, select_rules
 from aiact.policy_loader import load_policy_spec, resolve_requirement
 from aiact.provisions import all_provisions, annex_instruments, provision_labels
 from aiact.schemas.classification import ClassificationEvidence, UseCaseClassification
-from aiact.schemas.enums import ActorRole, AnnexIIIArea, DerogationCondition, RiskClass
+from aiact.schemas.enums import (
+    ActorRole,
+    AnnexIIIArea,
+    DerogationCondition,
+    HighRiskRoute,
+    RiskClass,
+)
 from aiact.schemas.policy import LegalSource
 from aiact.schemas.question import Answer
 
@@ -44,6 +50,7 @@ ARTICLES_ROOT = ROOT / "data" / "policy" / "articles"
 ARTICLES_DIR = ARTICLES_ROOT / VERSION
 ANNEXES_DIR = ROOT / "data" / "policy" / "annexes" / VERSION
 SCOPE_PATH = ROOT / "data" / "policy" / f"scope-{VERSION}.yaml"
+INSTRUMENT = "Regulation (EU) 2024/1689"
 
 # Provisions covered by a ruling made about the whole article or annex around them, rather than by
 # one written for them. ZERO: all 789 addresses of the stored text are ruled on individually.
@@ -403,12 +410,16 @@ def test_every_annex_item_a_rule_checks_is_supplied_to_that_rule(ledger, spec):
             text = str(reason)
             if not text.startswith(RULE_PREFIX):
                 continue
-            rule_id = text[len(RULE_PREFIX) :].split()[0].rstrip(",:—")
-            rule = by_id[rule_id]
-            if rule.source.annex != str(annex) or not rule.annex_context:
-                unsupplied[f"Annex {annex}({item})"] = (
-                    f"{rule_id} cites annex {rule.source.annex!r}"
-                )
+            # EVERY rule the ruling names, not the first. A ruling may name several — Annex VII
+            # point 5 is carried by AIA-PO-A43-1B on the Annex III route and AIA-PO-A43-3 on the
+            # Annex I one — and reading only the head validates the claim for one of them while
+            # the others go unchecked, which is the failure this test exists to catch.
+            for rule_id in rule_ids(text):
+                rule = by_id[rule_id]
+                if rule.source.annex != str(annex) or not rule.annex_context:
+                    unsupplied[f"Annex {annex}({item}) via {rule_id}"] = (
+                        f"{rule_id} cites annex {rule.source.annex!r}"
+                    )
     assert not unsupplied, (
         f"annex items claimed as checked by a rule that is never shown that annex: {unsupplied}. "
         f"Cite the annex on the rule, or declare the items in annexes_awaiting_rules."
@@ -614,12 +625,23 @@ def test_no_annex_is_carried_only_by_rules_a_single_area_can_reach(spec, ledger)
     consists of.
 
     So this asks the question the partition does not: taking the rules the ledger names for an
-    annex, is there any use case at all that cannot reach ONE of them? An annex reached only through
-    `applies_to_annex_iii_area` gates is reachable only from the areas those gates name between
-    them, and an annex the Act applies more widely than that is an annex some reader is missing. An
-    ungated rule — no area condition — settles it, which is the ordinary case and why this is not
-    noisy."""
-    every_area = {area.value for area in AnnexIIIArea}
+    annex, can some reader in scope reach one of them?
+
+    IT TESTS THE ROUTE DIMENSION AND NOT THE AREA DIMENSION, and the difference is that only one of
+    them is free of enacted exceptions. Art. 49(1) writes "with the exception of ... point 2 of
+    Annex III" and Art. 49(5) registers those systems nationally, so an Annex VIII rule that omits
+    `critical_infrastructure` is CORRECT and an area-completeness assertion would fire on it. No
+    comparable exception runs along the route: where an annex is reached from the Annex I route and
+    the Annex III route both, a rule must exist for each. Areas stay a reading job, and this
+    docstring is where that limit is written down rather than assumed.
+
+    "NO AREA GATE" IS NOT "REACHES EVERYTHING", which is the trap. A rule carrying
+    `applies_to_route: annex_i` reaches no Annex III area at all, and one carrying
+    `applies_to_risk_class: [gpai_model]` reaches no high-risk use case — so exempting an annex
+    because some named rule lacks an area gate exempts it on rules that are narrower still. The
+    exemption below therefore requires a rule unconditional on route AND area, and the assertion
+    runs per risk class, because an annex reached only by Chapter V rules has no Annex III
+    dimension to be complete over."""
     by_id = {rule.rule_id: rule for rule in spec.rules}
     for annex, items in (ledger.get("annex_rulings") or {}).items():
         named = {
@@ -631,17 +653,21 @@ def test_no_annex_is_carried_only_by_rules_a_single_area_can_reach(spec, ledger)
         rules = [by_id[rule_id] for rule_id in named if rule_id in by_id]
         if not rules:
             continue
-        if any(not rule.applies_to_annex_iii_area for rule in rules):
-            continue  # an ungated rule reaches every area; nothing to prove
-        reached = {
-            area.value for rule in rules for area in rule.applies_to_annex_iii_area
-        }
-        assert reached == every_area, (
-            f"Annex {annex} is ruled only to area-gated rules, and between them they reach "
-            f"{sorted(reached)} — a use case in {sorted(every_area - reached)} is told nothing "
-            f"about it. The ledger reads as covered because a named rule EXISTS; the reader never "
-            f"selects it."
-        )
+        for risk_class in {c for rule in rules for c in rule.applies_to_risk_class}:
+            tier = [r for r in rules if risk_class in r.applies_to_risk_class]
+            # Unconditional on BOTH: such a rule really is reachable from every route and area at
+            # this tier, and settles the annex on its own.
+            if any(
+                not r.applies_to_annex_iii_area and r.applies_to_route is None for r in tier
+            ):
+                continue
+            reached = {r.applies_to_route for r in tier}
+            assert None in reached or reached >= set(HighRiskRoute), (
+                f"Annex {annex} at {risk_class.value} is ruled only to route-gated rules, and "
+                f"between them they reach {sorted(r.value for r in reached if r)} — a provider on "
+                f"the other route is told nothing about it. The ledger reads as covered because a "
+                f"named rule EXISTS; that reader never selects it."
+            )
 
 
 def _values(items: object) -> list[object]:
@@ -698,3 +724,86 @@ def _derogated_use_case(area: AnnexIIIArea) -> UseCaseClassification:
         confidence="high",
         triggered_by=[ClassificationEvidence(source=source, reasoning="fixture")],
     )
+
+
+def test_a_rule_reaches_every_role_the_divisions_it_covers_bind(spec, ledger):
+    """`RULE <id>` ON A DIVISION CLAIMS THE RULE REACHES THE PARTY THAT DIVISION BINDS.
+
+    The partition checks that the rule EXISTS. It never asks whether that rule can be SELECTED for
+    the party the division binds, so a duty ruled to a rule gated away from its own duty-holder
+    reads as covered and reaches no report.
+
+    Mechanical form: where a ruled division OPENS by naming a role as its subject, some rule named
+    for that division must apply to that role. Eight divisions are examined today.
+
+    THE LIMIT, because a guard that overstates its reach is worse than none. A duty can attach to a
+    party by CROSS-REFERENCE from another Article, and nothing here sees that. Art. 73(1) opens
+    "Providers of high-risk AI systems" and its own words are satisfied by a provider-only rule;
+    the deployer owes it through Art. 26(5)'s closing sentence — "If the deployer is not able to
+    reach the provider, Article 73 shall apply mutatis mutandis" — which is in a different Article
+    and invisible to any test that reads one division at a time. Those stay a reading job. What
+    this catches is the simpler shape: a division naming its own duty-holder in its first three
+    words, ruled to a rule that party cannot select."""
+    by_id = {rule.rule_id: rule for rule in spec.rules}
+    wrong: list[str] = []
+    for article, rulings in (ledger.get("article_rulings") or {}).items():
+        if not isinstance(rulings, dict):
+            continue
+        for division, reason in rulings.items():
+            text = str(reason)
+            if not text.startswith(RULE_PREFIX):
+                continue
+            named = [by_id[r] for r in rule_ids(text) if r in by_id]
+            if not named:
+                continue
+            roles = {role for rule in named for role in rule.applies_to_role}
+            try:
+                enacted, _ = resolve_requirement(ARTICLES_DIR, str(article), str(division))
+            except (KeyError, ValueError):
+                continue
+            for word, role in (("Deployers shall", ActorRole.DEPLOYER),
+                               ("Providers of", ActorRole.PROVIDER)):
+                if enacted.startswith(word) and role not in roles:
+                    wrong.append(
+                        f"Art. {article}({division}) opens {word!r} but "
+                        f"{sorted(r.rule_id for r in named)} reach {sorted(x.value for x in roles)}"
+                    )
+    assert not wrong, (
+        f"divisions ruled to a rule that cannot be selected for the role the division binds: "
+        f"{wrong}. The ledger reads as covered because the rule EXISTS; that reader never selects "
+        f"it."
+    )
+
+
+def test_every_role_has_rules_or_a_written_reason(spec, ledger):
+    """THE PARTITION, OVER ROLES. Every `ActorRole` either carries rules in the spec or is listed in
+    `roles_out_of_scope` with a reason, and this is what `roles_with_rules` means when it says a
+    role missing from its list is a CI failure rather than a silent omission from every report.
+
+    The failure it guards is silent by construction. A role added to `ActorRole` and never given a
+    rule is selected for in every report and contributes an empty column; a role that loses its last
+    rule disappears from `roles_with_rules` and no report mentions it again. Neither changes a
+    count, and neither looks like an error from the outside.
+
+    TWO KINDS OF ENTRY, and the difference is worth keeping. `product_manufacturer` IS an
+    `ActorRole` and is dismissed because Art. 25(3) hands it the provider's duty set rather than one
+    of its own. `third_party_supplier` is NOT an `ActorRole` at all — Art. 3(8)'s "operator" does
+    not reach a component supplier — and its entry records a party the Act names in a bilateral duty
+    that this tool reports from one side only. A reader is owed that second kind most, because
+    nothing else in the output hints the other side exists."""
+    named = set(roles_with_rules(spec))
+    dismissed = ledger.get("roles_out_of_scope") or {}
+    for role in ActorRole:
+        assert role in named or role.value in dismissed, (
+            f"{role.value} has no rule in the spec and no entry in roles_out_of_scope. It is "
+            f"selected for in every report and contributes nothing, which reads as a party that "
+            f"owes nothing rather than one nobody wrote rules for."
+        )
+    for role_name, reason in dismissed.items():
+        assert role_name not in {r.value for r in named}, (
+            f"{role_name} is both dismissed in roles_out_of_scope and carries rules in the spec."
+        )
+        assert len(str(reason).split()) >= 25, (
+            f"roles_out_of_scope[{role_name}] is too short to be an argument. A dismissal is the "
+            f"one status that admits a reader will be told nothing, so it states WHY."
+        )

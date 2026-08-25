@@ -111,11 +111,14 @@ def _rule_ids(spec, use_case, role=ActorRole.PROVIDER) -> set[str]:
 #
 #   AIA-PO-A43-4 asks when the procedure must be run AGAIN. Route-independent, so it fires beside
 #     whichever of the three was selected.
-#   AIA-PO-A43-1B says what the ANNEX VII BRANCH CONSISTS OF — the two applications, the access
-#     duties, the surveillance. It is not a fourth route: it fires beside AIA-PO-A43-1 for a
-#     biometrics system, whose Art. 43(1) choice this tool cannot make on its behalf, and it
-#     carries that choice as its activation_condition.
-_ART_43_NOT_A_ROUTE_CHOICE = {"AIA-PO-A43-4", "AIA-PO-A43-1B"}
+#   AIA-PO-A43-1A and -1B say what EACH BRANCH OF THE ART. 43(1) CHOICE CONSISTS OF — -1A the three
+#     internal-control verifications of Annex VI, -1B the Annex VII notified-body route with its two
+#     applications, access duties and surveillance. Neither is a fourth route: both fire beside
+#     AIA-PO-A43-1 for a biometrics system, whose Art. 43(1) choice this tool cannot make on its
+#     behalf, and each carries the branch condition as its activation_condition. They are a pair
+#     because the paragraph offers a pair, and listing only one would assert the branch it leaves
+#     open.
+_ART_43_NOT_A_ROUTE_CHOICE = {"AIA-PO-A43-4", "AIA-PO-A43-1A", "AIA-PO-A43-1B"}
 
 
 @pytest.mark.parametrize(
@@ -569,7 +572,7 @@ _GENERAL_DATE = date(2026, 8, 2)
 def test_chapter_iii_obligations_start_on_the_route_s_date(spec):
     """Every rule citing Arts. 6-27 carries both dates, and resolves to the right one per door."""
     split = [r for r in spec.rules if r.source.article in _ROUTE_SPLIT_ARTICLES]
-    assert len(split) == 31, "Arts. 6-27 should be the whole of Chapter III Sections 1-3"
+    assert len(split) == 36, "Arts. 6-27 should be the whole of Chapter III Sections 1-3"
     for rule in split:
         if rule.rule_id == "AIA-NHR-A06-4":
             continue  # not a high-risk system at all — see its comment in spec.yaml
@@ -627,7 +630,7 @@ def test_every_section_5_rule_explains_why_it_is_already_in_force(spec):
     tool is broken, and the damaging response is to disregard the date rather than the note. So the
     explanation travels WITH the obligation instead of living in a comment only we read."""
     section_5 = [r for r in spec.rules if r.source.article in _SECTION_5_ARTICLES]
-    assert len(section_5) == 16, (
+    assert len(section_5) == 17, (
         "Arts. 41, 43 and 47-49 are the whole of Section 5 in this ruleset"
     )
     for rule in section_5:

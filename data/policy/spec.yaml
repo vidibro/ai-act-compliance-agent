@@ -711,15 +711,59 @@ rules:
       control (Annex VI) is available only where harmonised standards or common specifications were
       applied, and Annex VII is compulsory otherwise. Which applies turns on the standards the
       provider used, so the route and the standards relied on both have to be stated.
-      EACH BRANCH CARRIES ITS OWN WORK. Electing internal control under ANNEX VI is not a lighter
-      filing but three verifications the provider performs itself and no notified body checks:
-      that the established quality management system complies with Art. 17; that the information in
-      the technical documentation supports conformity with the Chapter III Section 2 requirements;
-      and that the design and development process and the Art. 72 post-market monitoring are
-      CONSISTENT WITH that technical documentation. Nothing outside the provider's own organisation
-      records that they were done, which is what makes the route the easier one to leave undone.
-      The Annex VII branch is set out at AIA-PO-A43-1B, which is selected alongside this rule and
-      states what that route requires. A procedural act preceding market placement — confirm
+      EACH BRANCH CARRIES ITS OWN WORK, and both are selected alongside this rule:
+      AIA-PO-A43-1A sets out what internal control under Annex VI requires, AIA-PO-A43-1B what
+      the Annex VII notified-body route requires. A procedural act preceding market placement —
+      confirm separately.
+    document_verifiable: false
+    effective_date: 2026-08-02
+    effective_date_note: >-
+      IN FORCE ALREADY, AND EARLIER THAN WHAT IT ATTESTS TO — which reads like an error and is
+      not one. Regulation (EU) 2026/1744 moved Chapter III Sections 1 to 3 to 2 December 2027 for
+      an Annex III system and 2 August 2028 for an Annex I one, and did NOT move Section 5, where
+      this obligation sits. So the conformity assessment applies from the general date of 2 August 2026,
+      while the Section 2 requirements it is assessed against wait another sixteen months or more. The
+      sequence is what Art. 113(c) says, not a transcription of it: that paragraph names Sections
+      1, 2 and 3 only. Whether the legislator intended Section 5 to run ahead of them, or simply
+      did not carry it across, is a question for advice rather than for this tool — which reports
+      the date the Article gives and says plainly that it looks inverted.
+    status: active
+
+  # WHAT THE INTERNAL-CONTROL ROUTE CONSISTS OF, and the mirror of AIA-PO-A43-1B. Art. 43(1)(a)
+  # lets an Annex III point 1 provider that applied harmonised standards ELECT Annex VI, and
+  # electing it is not a lighter filing — it is three verifications nobody outside the provider's
+  # organisation witnesses. AIA-PO-A43-2 carries the same Annex for points 2 to 8, where Art. 43(2)
+  # makes it compulsory rather than elected.
+  - rule_id: AIA-PO-A43-1A
+    source:
+      instrument: "Regulation (EU) 2024/1689"
+      article: 43
+      paragraph: 1 # the Annex VI branch of the choice
+      annex: "VI"
+      act_version_date: 2026-07-27
+    applies_to_risk_class: [high_risk]
+    applies_to_role: [provider]
+    applies_to_annex_iii_area: [biometrics]
+    activation_condition: >-
+      Owed only where the provider ELECTED internal control, which Art. 43(1)(a) offers only where
+      harmonised standards under Art. 40 or common specifications under Art. 41 were applied in
+      demonstrating conformity with the Section 2 requirements. Where none were applied, or only
+      part of one was, Annex VII is compulsory and AIA-PO-A43-1B is the rule instead. Which
+      standards exist is a fact about the Official Journal and which were applied is a fact about
+      the provider, so neither is settled by a description of the system.
+    obligation_status: mandatory
+    check_type: completeness
+    evidence_expected: >-
+      THREE VERIFICATIONS THE PROVIDER PERFORMS ITSELF, which together are the whole of the Annex VI
+      procedure. That the established QUALITY MANAGEMENT SYSTEM complies with Art. 17 — the same
+      system AIA-PO-A17 checks. That the information contained in the TECHNICAL DOCUMENTATION
+      supports conformity of the system with the relevant essential requirements of Chapter III
+      Section 2. And that the DESIGN AND DEVELOPMENT PROCESS and the Art. 72 post-market monitoring
+      are CONSISTENT WITH that technical documentation — a cross-check between what the file says
+      was built and what the organisation actually does, which is the one of the three that a
+      complete file cannot evidence on its own. No notified body is involved, so nothing outside
+      the provider's organisation records that any of them happened, which is what makes this route
+      the easier one to leave undone. A procedural act preceding market placement — confirm
       separately.
     document_verifiable: false
     effective_date: 2026-08-02
@@ -858,6 +902,11 @@ rules:
       instrument: "Regulation (EU) 2024/1689"
       article: 43
       paragraph: 3
+      # Art. 43(3) applies "points 3, 4.3, 4.4. and 4.5, the fifth paragraph of point 4.6 and
+      # point 5 of Annex VII" to this route by name, so the Annex is part of what the paragraph
+      # requires and the rule cites it. The sectoral procedure itself comes from the product's own
+      # instrument, which this Regulation does not supply and this rule does not quote.
+      annex: "VII"
       act_version_date: 2026-07-27
     applies_to_risk_class: [high_risk]
     applies_to_role: [provider]
@@ -1518,13 +1567,25 @@ rules:
   # risk-assess, cooperate with the authority and the notified body, and do not alter the system
   # before informing them. Citing (1) alone puts a procedure in front of the judge and none of the
   # timing that makes one adequate.
-  - rule_id: AIA-PO-A73
+  # BOTH ROLES, and the deployer's half arrives from another Article. Art. 73(1) puts the report on
+  # the provider, and Art. 26(5) closes with "If the deployer is not able to reach the provider,
+  # Article 73 shall apply mutatis mutandis" — so a deployer that cannot reach its provider owes
+  # this Article directly, on these deadlines. Paragraphs 2 to 5 already write "the provider or,
+  # where applicable, the deployer" into every clock. Hence AIA-ALL-, not AIA-PO-.
+  - rule_id: AIA-ALL-A73
     source:
       instrument: "Regulation (EU) 2024/1689"
       article: 73 # whole article: report serious incidents, by when, and what follows
       act_version_date: 2026-07-27
     applies_to_risk_class: [high_risk]
-    applies_to_role: [provider]
+    applies_to_role: [provider, deployer]
+    activation_condition: >-
+      The provider owes this outright under Art. 73(1). A DEPLOYER owes it where Art. 26(5)'s last
+      condition is met — it has identified a serious incident and IS NOT ABLE TO REACH THE PROVIDER
+      — and then Art. 73 applies mutatis mutandis, with the same deadlines running from the
+      deployer's own awareness. A deployer that can reach its provider owes Art. 26(5) instead:
+      inform first the provider, then the importer or distributor and the market surveillance
+      authorities. Which of the two applies turns on an event, so both are listed.
     obligation_status: mandatory
     check_type: presence
     evidence_expected: >-
@@ -1552,7 +1613,7 @@ rules:
     # A DIFFERENT ADDRESSEE, not a second report. Art. 75(1a) opens "by way of derogation from
     # Article 73", so where it applies it REPLACES that Article's addressee and leaves everything
     # else standing — 73(2) to (9) apply mutatis mutandis, so the deadlines above are unchanged.
-    # Reported beside AIA-PO-A73 rather than folded into it because the condition is a fact about
+    # Reported beside AIA-ALL-A73 rather than folded into it because the condition is a fact about
     # the provider, not about the system: whether the high-risk system is built on a general-purpose
     # model the same provider supplies, or is a component of a VLOP or VLOSE under Art. 75(1). That
     # is not derivable from a description of the system, so it is stated for the reader.
@@ -1643,6 +1704,40 @@ rules:
   # DATA SETS, and neither says anything about the API or remote-access modality this paragraph
   # names. Annex VII point 4.3 imposes the same data-set access, but only on the notified-body route
   # and only for a provider that takes it.
+  # ONE PARAGRAPH ON FROM AIA-PO-A74-12 AND THE SAME SHAPE. "Shall be granted access" names no
+  # grantor and means the provider, exactly as 74(12) does; not documentable is what
+  # `document_verifiable: false` records, not a reason to leave a duty unmodelled.
+  - rule_id: AIA-PO-A74-13
+    source:
+      instrument: "Regulation (EU) 2024/1689"
+      article: 74
+      paragraph: 13 # source code access on a reasoned request
+      act_version_date: 2026-07-27
+    applies_to_risk_class: [high_risk]
+    applies_to_role: [provider]
+    activation_condition: >-
+      Owed on a REASONED REQUEST and only where BOTH cumulative conditions are met: (a) access to
+      the source code is necessary to assess conformity with the Chapter III Section 2
+      requirements, and (b) testing, auditing and verification based on the data and documentation
+      the provider already supplied have been EXHAUSTED OR PROVED INSUFFICIENT. So it is the last
+      step rather than a standing entitlement, and satisfying Art. 74(12) well is what keeps it
+      from being reached.
+    obligation_status: mandatory
+    check_type: presence
+    evidence_expected: >-
+      The ability to grant a market surveillance authority access to the SOURCE CODE of the
+      high-risk system. Materially more than Art. 74(12), which reaches documentation and the
+      training, validation and testing data sets: source code is the thing a provider is least
+      likely to have arranged to release, and arranging it is the work — retention of the exact
+      build corresponding to the system placed on the market, and whatever escrow, licensing or
+      trade-secret terms let it be shown to an authority without being lost. Art. 78 governs what
+      the authority may then do with it, which is the protection a provider relies on rather than a
+      ground to refuse. A relational obligation toward an authority, not visible in the technical
+      documentation — confirm separately.
+    document_verifiable: false
+    effective_date: 2026-08-02
+    status: active
+
   - rule_id: AIA-PO-A74-12
     source:
       instrument: "Regulation (EU) 2024/1689"
@@ -2018,13 +2113,207 @@ rules:
     obligation_status: mandatory
     check_type: presence
     evidence_expected: >-
-      The deployer's own operating measures: using the system per the instructions for use,
-      assigning human oversight to competent and adequately supported people, controlling input
-      data relevance where the deployer supplies it, monitoring operation and reporting risks and
-      serious incidents to the provider, retaining logs for at least six months, and — where the
-      deployer is an employer — informing workers and their representatives before use at the
-      workplace. Held by the operating organisation, so a provider's technical file cannot evidence
-      it.
+      THE DEPLOYER'S CORE OPERATING MEASURES, which are six of this Article's twelve paragraphs; the
+      other six are narrowed to particular deployers or particular systems and are carried by
+      AIA-DP-A26-8 through -12.
+      Art. 26(1) and (2): technical and organisational measures to use the system in accordance with
+      its instructions for use, and human oversight assigned to natural persons who have the
+      necessary competence, training AND AUTHORITY, as well as the necessary support — a named
+      person without the authority to stop the system does not satisfy the paragraph.
+      Art. 26(4): where the deployer exercises control over the input data, that data must be
+      relevant and sufficiently representative in view of the intended purpose.
+      Art. 26(5) IS THREE DUTIES WITH THREE DIFFERENT ADDRESSEES, and reporting to the provider is
+      only the first. Monitor operation on the basis of the instructions for use, and inform the
+      provider under Art. 72 where relevant. Where the deployer has reason to consider that use in
+      accordance with the instructions may result in the system presenting an Art. 79(1) risk, it
+      shall WITHOUT UNDUE DELAY inform the provider or distributor AND THE RELEVANT MARKET
+      SURVEILLANCE AUTHORITY, and SUSPEND THE USE of the system — the suspension is a duty of its
+      own, not a consequence of the report. Where it has identified a SERIOUS INCIDENT it shall
+      immediately inform FIRST the provider, and THEN the importer or distributor and the relevant
+      market surveillance authorities, in that order. And if it cannot reach the provider, Art. 73
+      applies mutatis mutandis and the deployer owes the report itself — see AIA-ALL-A73 for the
+      deadlines that then bind it. Sensitive operational data of law-enforcement deployers is
+      outside this obligation, and a financial institution meets the monitoring half by complying
+      with its internal-governance rules under Union financial services law.
+      Art. 26(6): keep the automatically generated logs, to the extent they are under the deployer's
+      control, for a period appropriate to the intended purpose and AT LEAST SIX MONTHS.
+      Art. 26(7): where the deployer is an employer, inform workers' representatives and the
+      affected workers BEFORE putting the system into service or using it at the workplace.
+      Held by the operating organisation, so a provider's technical file cannot evidence it.
+    document_verifiable: false
+    effective_date_by_route:
+      annex_iii: 2027-12-02
+      annex_i: 2028-08-02
+    status: active
+
+  # SIX RULES FOR ONE ARTICLE, and the split is the Act's rather than a preference. Art. 26 runs to
+  # twelve paragraphs and six of them narrow the duty — to public-authority deployers, to Annex III
+  # systems, to post-remote biometric identification. A narrowing is stated on the rule,
+  # in `activation_condition` or a gate, and the report renders it beside the obligation; folded
+  # into one rule's evidence text it becomes a sentence a reader has to notice and apply to
+  # themselves. AIA-DP-A26 keeps the six paragraphs that bind every deployer alike.
+  - rule_id: AIA-DP-A26-8
+    source:
+      instrument: "Regulation (EU) 2024/1689"
+      article: 26
+      paragraph: 8 # register, and do not use an unregistered system
+      act_version_date: 2026-07-27
+    applies_to_risk_class: [high_risk]
+    applies_to_role: [deployer]
+    activation_condition: >-
+      Deployers that are PUBLIC AUTHORITIES, or Union institutions, bodies, offices or agencies.
+      Whether the deploying organisation is one is a fact about the organisation and not about the
+      system, so no document settles it and the obligation is listed with the condition attached.
+      Narrower than Art. 27(1), which also reaches private bodies providing public services and
+      certain creditworthiness and life-and-health-insurance deployers.
+    obligation_status: mandatory
+    check_type: presence
+    evidence_expected: >-
+      TWO DUTIES, and the second is a prohibition. First, compliance with the Art. 49 registration
+      obligations, which for this deployer is Art. 49(3) and AIA-DP-A49-3. Second, and independent
+      of it: where such a deployer finds that the high-risk system it ENVISAGES USING has not been
+      registered in the EU database, IT SHALL NOT USE THAT SYSTEM, and shall inform the provider or
+      the distributor. So a check of the EU database before deployment is the practical
+      requirement, and finding the system absent stops the deployment rather than merely
+      generating a report. An act against a registry and a decision not to deploy, neither visible
+      in a technical file — confirm separately.
+    document_verifiable: false
+    effective_date_by_route:
+      annex_iii: 2027-12-02
+      annex_i: 2028-08-02
+    status: active
+
+  - rule_id: AIA-DP-A26-9
+    source:
+      instrument: "Regulation (EU) 2024/1689"
+      article: 26
+      paragraph: 9 # use the Art. 13 information for the DPIA
+      act_version_date: 2026-07-27
+    applies_to_risk_class: [high_risk]
+    applies_to_role: [deployer]
+    activation_condition: >-
+      "Where applicable" — that is, where the deployer owes a data protection impact assessment
+      under Art. 35 of Regulation (EU) 2016/679 or Art. 27 of Directive (EU) 2016/680 at all.
+      Whether it does is a question under those instruments and not under this one, so it is
+      stated rather than decided here.
+    obligation_status: mandatory
+    check_type: presence
+    evidence_expected: >-
+      A data protection impact assessment that DRAWS ON the information the provider supplied under
+      Art. 13 — the instructions for use, the system's characteristics, capabilities and limits of
+      performance, the known and foreseeable risks, and the human oversight measures. This
+      Regulation does not create the DPIA duty; it directs that the Art. 13 information be used to
+      discharge it, so an assessment written without reference to the instructions for use has not
+      answered this paragraph even where it satisfies the data protection instrument on its own
+      terms. Held by the deploying organisation and governed by another regime — confirm
+      separately.
+    document_verifiable: false
+    effective_date_by_route:
+      annex_iii: 2027-12-02
+      annex_i: 2028-08-02
+    status: active
+
+  # THE POST-REMOTE BIOMETRIC IDENTIFICATION REGIME, which is one paragraph and six subparagraphs
+  # and the densest passage in the Article. Its own rule because it reaches one kind of system used
+  # by one kind of deployer, and because a reader who is not that deployer should not be reading it.
+  - rule_id: AIA-DP-A26-10
+    source:
+      instrument: "Regulation (EU) 2024/1689"
+      article: 26
+      paragraph: 10 # post-remote biometric identification in a criminal investigation
+      act_version_date: 2026-07-27
+    applies_to_risk_class: [high_risk]
+    applies_to_role: [deployer]
+    applies_to_annex_iii_area: [biometrics, law_enforcement]
+    activation_condition: >-
+      A deployer of a high-risk AI system for POST-REMOTE BIOMETRIC IDENTIFICATION, using it in the
+      framework of an investigation for the targeted search of a person suspected or convicted of a
+      criminal offence. Both halves are conditions: another biometric system is not reached, and the
+      same system used outside a criminal investigation is not reached by the authorisation duty —
+      though the documentation and annual-reporting duties below bind REGARDLESS OF THE PURPOSE OR
+      DEPLOYER. Gated to the biometrics and law-enforcement areas because those are where such a
+      system is classified; whether a given deployment is a targeted search is a fact about the
+      investigation, which no system description settles.
+    obligation_status: mandatory
+    check_type: presence
+    evidence_expected: >-
+      JUDICIAL AUTHORISATION FIRST, and the rest follows from it. Request an authorisation from a
+      judicial authority, or an administrative authority whose decision is binding and subject to
+      judicial review, EX ANTE or without undue delay and no later than 48 HOURS — except where the
+      system is used for the initial identification of a potential suspect on objective and
+      verifiable facts directly linked to the offence. Each use is limited to what is strictly
+      necessary for the investigation of a SPECIFIC criminal offence.
+      IF THE AUTHORISATION IS REFUSED, use stops with immediate effect AND the personal data linked
+      to that use is DELETED. Deletion is a separate duty from stopping.
+      Never used for law enforcement purposes in an UNTARGETED way, with no link to a criminal
+      offence, criminal proceeding, genuine and present or genuine and foreseeable threat of one, or
+      the search for a specific missing person. And no decision producing an adverse legal effect on
+      a person may be taken by law enforcement based SOLELY on such a system's output.
+      REGARDLESS OF PURPOSE OR DEPLOYER, each use is documented in the relevant police file and made
+      available to the market surveillance authority and the national data protection authority on
+      request, excluding sensitive operational law-enforcement data. And ANNUAL REPORTS go to both
+      of those authorities on the use of post-remote biometric identification systems, which may be
+      aggregated across deployments.
+      All of it without prejudice to Art. 9 of Regulation (EU) 2016/679 and Art. 10 of Directive
+      (EU) 2016/680, and Member States may impose more restrictive national law. Authorisations,
+      police files and annual reports are acts of the deploying authority — confirm separately.
+    document_verifiable: false
+    effective_date_by_route:
+      annex_iii: 2027-12-02
+      annex_i: 2028-08-02
+    status: active
+
+  - rule_id: AIA-DP-A26-11
+    source:
+      instrument: "Regulation (EU) 2024/1689"
+      article: 26
+      paragraph: 11 # tell the people subject to the system that they are
+      annex: "III"
+      act_version_date: 2026-07-27
+    applies_to_risk_class: [high_risk]
+    applies_to_role: [deployer]
+    # ANNEX III ONLY. The paragraph opens on "high-risk AI systems referred to in Annex III", so a
+    # safety component high-risk under Art. 6(1) is not reached. No area is excepted, unlike
+    # Arts. 27(1) and 49 — every listed area is in, point 2 included.
+    applies_to_route: annex_iii
+    activation_condition: >-
+      Deployers of Annex III systems that MAKE DECISIONS OR ASSIST IN MAKING DECISIONS related to
+      natural persons. A system that neither decides nor assists in deciding about people is
+      outside it. Where the system is used for law enforcement purposes, Art. 13 of Directive (EU)
+      2016/680 applies instead of this paragraph.
+    obligation_status: mandatory
+    check_type: presence
+    evidence_expected: >-
+      INFORMATION TO THE PEOPLE THEMSELVES: the deployer shall inform the natural persons that they
+      are subject to the use of the high-risk AI system. Owed to the affected individuals rather
+      than to an authority or to the provider, which makes it the one Art. 26 duty a person outside
+      the organisation can observe. Without prejudice to Art. 50, so a system that also owes an
+      Art. 50 transparency duty owes both and neither discharges the other. A notice given to
+      individuals at the point of use — confirm separately.
+    document_verifiable: false
+    effective_date_by_route:
+      annex_iii: 2027-12-02
+      annex_i: 2028-08-02
+    status: active
+
+  - rule_id: AIA-DP-A26-12
+    source:
+      instrument: "Regulation (EU) 2024/1689"
+      article: 26
+      paragraph: 12 # cooperate with the competent authorities
+      act_version_date: 2026-07-27
+    applies_to_risk_class: [high_risk]
+    applies_to_role: [deployer]
+    obligation_status: mandatory
+    check_type: presence
+    evidence_expected: >-
+      Cooperation with the relevant competent authorities in ANY ACTION those authorities take in
+      relation to the high-risk AI system to implement this Regulation. The deployer-side twin of
+      the provider's Art. 21 and Art. 74(12) duties, and as wide as they are: it is not limited to
+      an investigation the deployer is the subject of. What makes it actionable in advance is
+      having decided who answers an authority and on what timescale before the request arrives.
+      Conduct during an authority's exercise of its powers rather than a property of any file —
+      confirm separately.
     document_verifiable: false
     effective_date_by_route:
       annex_iii: 2027-12-02
@@ -2595,6 +2884,66 @@ rules:
   # for the reason AIA-PO-A21 and AIA-PO-A74-12 are: conduct owed to an authority is still owed,
   # and a rule is how the reader is told about it. Art. 21(3) is the one Art. 21 paragraph with no
   # rule, and only because it binds the RECEIVING AUTHORITY rather than the provider.
+  # THE TWO COMMISSION-REQUEST DUTIES OF CHAPTER V. Arts. 91 and 92 are mostly the AI Office's and
+  # the Commission's powers, and one paragraph of each turns and binds the provider: supply what is
+  # requested. Art. 101 attaches fines to failing. Modelled for the reason AIA-GP-A53-3 and
+  # AIA-PO-A74-12 are — a duty owed to an authority is owed whether or not a file evidences it.
+  - rule_id: AIA-GP-A91-5
+    source:
+      instrument: "Regulation (EU) 2024/1689"
+      article: 91
+      paragraph: 5 # supply the information the Commission requests
+      act_version_date: 2026-07-27
+    applies_to_risk_class: [gpai_model]
+    applies_to_role: [provider, authorised_representative]
+    activation_condition: >-
+      Owed once the Commission makes a request under Art. 91(1) or (3) — the second of which follows
+      a substantiated request from the scientific panel. Art. 91(2) lets the AI Office open a
+      structured dialogue first, so a request is not always the opening move. The representative is
+      named in the paragraph itself and owes it alongside the provider.
+    obligation_status: mandatory
+    check_type: presence
+    evidence_expected: >-
+      SUPPLY OF THE INFORMATION REQUESTED, in the form and by the deadline the request sets under
+      Art. 91(4) — which must also state the Art. 101 fines for supplying information that is
+      incorrect, incomplete or misleading. Who may answer is settled by the paragraph: for legal
+      persons, companies or firms, and where the provider has no legal personality, the persons
+      authorised to represent them by law or by statute; duly authorised lawyers may supply
+      information for their clients, AND THE CLIENT REMAINS FULLY RESPONSIBLE if what is supplied is
+      incomplete, incorrect or misleading. So delegating the answer does not delegate the exposure,
+      which is the part worth knowing before a request arrives. A duty to answer a request whose
+      content the request sets — confirm separately.
+    document_verifiable: false
+    effective_date: 2025-08-02
+    status: active
+
+  - rule_id: AIA-GP-A92-5
+    source:
+      instrument: "Regulation (EU) 2024/1689"
+      article: 92
+      paragraph: 5 # grant the access the Commission requests
+      act_version_date: 2026-07-27
+    applies_to_risk_class: [gpai_model]
+    applies_to_role: [provider, authorised_representative]
+    activation_condition: >-
+      Owed once the Commission requests access under Art. 92(3), which it may do to conduct an
+      evaluation under Art. 92(1) on either of that paragraph's grounds. Art. 92(7) lets the AI
+      Office open a structured dialogue before requesting access.
+    obligation_status: mandatory
+    check_type: presence
+    evidence_expected: >-
+      ACCESS TO THE MODEL, granted as the Art. 92(3) request specifies — through APIs or further
+      appropriate technical means and tools, SOURCE CODE INCLUDED. The Chapter V counterpart of
+      Art. 74(13) and the same practical problem: an evaluation the Commission may conduct itself
+      or through independent experts appointed under Art. 92(2), so the access has to work for
+      someone outside the provider. Art. 92(4) requires the request to state the Art. 101 fines.
+      Who grants it is settled as in Art. 91(5): for legal persons, companies or firms, and where
+      the provider has no legal personality, the persons authorised to represent them by law or by
+      statute. A relational obligation toward the Commission — confirm separately.
+    document_verifiable: false
+    effective_date: 2025-08-02
+    status: active
+
   - rule_id: AIA-GP-A53-3
     source:
       instrument: "Regulation (EU) 2024/1689"

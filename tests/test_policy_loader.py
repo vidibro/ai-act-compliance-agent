@@ -67,7 +67,7 @@ def test_shipped_spec_loads():
     spec = _spec()
     assert spec.spec_version == "0.8.0"
     # 7 Art.9-15 + 16 provider obligations + 1 Art.6(4) + Art.4 (provider AND deployer)
-    # + 4 deployer (Arts. 26-27, 49(3), 86) + 3 supply-chain (Arts. 22-24) + 1 initial provider
+    # + 9 deployer (Arts. 26-27, 49(3), 86) + 3 supply-chain (Arts. 22-24) + 1 initial provider
     # (Art. 25(2)). Art. 43 is three rules and Art. 49 two, because both send different systems to
     # different law — see applies_to_route and applies_to_annex_iii_area. Art. 16 is three, one per
     # point that cross-references nothing. Plus 4 Art. 50 transparency rules, the only ones that
@@ -84,11 +84,13 @@ def test_shipped_spec_loads():
     # conformity must say, Art. 48(2) and (4) the digital marking and the notified body's number,
     # and Arts. 71(2) and (3) what each party enters in the EU database.
     #
-    # SEVENTEEN ARE CHAPTER V, the general-purpose AI model regime, and they share nothing with the
+    # NINETEEN ARE CHAPTER V, the general-purpose AI model regime, and they share nothing with the
     # rest: `applies_to_risk_class: [gpai_model]` puts them on the other side of the cascade's
     # Art. 3(63) question. Art. 52(1) notification, Art. 53(1)(a) to (d), 53(3) and 53(4),
-    # Art. 54(1) to (5) split between the provider and its representative, and Art. 55(1)(a) to (d)
-    # and 55(2) for a model with systemic risk.
+    # Art. 54(1) to (5) split between the provider and its representative, Art. 55(1)(a) to (d) and
+    # 55(2) for a model with systemic risk, and Arts. 91(5) and 92(5) — the two paragraphs of the
+    # Commission's investigatory powers that turn and bind the provider, to supply the information
+    # requested and to grant access to the model.
     #
     # ONE pays annexes_awaiting_rules: Art. 43(1)'s Annex VII branch, which says what the
     # notified-body route consists of where AIA-PO-A43-1 carries only the choice between it and
@@ -100,11 +102,19 @@ def test_shipped_spec_loads():
     # the representative performs — Art. 27 is three (carry the assessment out, keep it current,
     # file it), Art. 43 is four (three initial routes plus re-assessment), and Art. 49 is three.
     #
+    # ART. 26 IS SIX, and it is the widest split in the ruleset because the Article is the widest
+    # duty set. Six of its twelve paragraphs bind every deployer alike and are AIA-DP-A26; the other
+    # six narrow the duty-holder or the system, and a narrowing is only rendered where it sits on a
+    # rule of its own — public-authority registration and the bar on using an unregistered system
+    # (26(8)), the data protection impact assessment (26(9)), the post-remote biometric
+    # identification regime (26(10)), informing the people subject to an Annex III system (26(11)),
+    # and cooperation with authorities (26(12)).
+    #
     # Art. 71(2) is TWO rules, one per tier, and they are the only pair split by nothing but the
     # area gate: Art. 49(1) excepts Annex III point 2 from the EU database and Art. 49(2), which
     # registers a system derogated under Art. 6(3), excepts nothing. One rule could not hold both
     # lists without demanding an entry the Act registers nationally or withholding one it does not.
-    assert len(spec.rules) == 81
+    assert len(spec.rules) == 90
 
 
 # How many articles each fetched version holds. KEYED BY VERSION EVEN WHILE ONE IS FETCHED, because

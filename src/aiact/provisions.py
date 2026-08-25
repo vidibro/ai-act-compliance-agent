@@ -198,12 +198,72 @@ _ANNEX_ORDER = ["I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X", "XI
                 "XIII", "XIV", "XV", "XVI"]
 
 
+def _with_unnumbered(
+    articles_dir: Path, article: str, divisions: tuple[str, ...]
+) -> tuple[str, ...]:
+    """`divisions`, plus an address for enacted text they leave outside.
+
+    ONLY FOR THE POINT SHAPE, and that restriction is what makes it correct. An article divided into
+    numbered PARAGRAPHS starts at paragraph 1 and every later subparagraph belongs to the paragraph
+    above it — Art. 26(5) runs to two subparagraphs and both are 26(5). An article divided into
+    POINTS is built the other way: a chapeau introduces the list, the points hang off it, and a
+    closing paragraph after the last point is outside all of them. The Act writes points in
+    brackets, `(a)` or `(1)`, and paragraphs without, which is how the two are told apart here.
+
+    Art. 113 is why it matters. Its second sentence — "It shall apply from 2 August 2026" — sits
+    before point (a) and is the general application date every rule's `effective_date` is read from.
+    Art. 75b's closing paragraph, after point (c), is what happens when the AI Office rejects the
+    commitments an operator offered. Neither is a point, and without an address neither is in the
+    denominator that `unaccounted 0` is measured against.
+
+    `chapeau` and `closing` are not citable divisions in the Act's own sense — no rule cites
+    Art. 113(chapeau). They exist so the partition has somewhere to put the words, which forces the
+    ledger to rule on them rather than letting them fall out of the count unnoticed. A chapeau that
+    only introduces its list is still an address, and the ledger dismisses it in one line; that is
+    cheaper than deciding per article which chapeaux are worth keeping."""
+    body = provision_text(articles_dir / _article_file(article))
+    lines = body.split("\n")
+    body = "\n".join(lines[2:]) if len(lines) > 2 else body
+    first, last = divisions[0], divisions[-1]
+    head = re.search(rf"^\s*\({re.escape(first)}\)", body, re.M)
+    if head is None:
+        return divisions  # numbered paragraphs: nothing sits outside them
+    out = list(divisions)
+    if len(body[: head.start()].strip()) > _UNNUMBERED_MIN:
+        out.insert(0, "chapeau")
+    # The LAST occurrence of the last point's label: a point may be quoted before it is enacted.
+    marks = list(re.finditer(rf"^\s*\({re.escape(last)}\)", body, re.M))
+    if marks and len(body[marks[-1].end() :].partition("\n")[2].strip()) > _UNNUMBERED_MIN:
+        out.append("closing")
+    return tuple(out)
+
+
+def _article_file(article: str) -> str:
+    """The stored filename for an article id, zero-padded as the fetcher writes it."""
+    digits = "".join(c for c in article if c.isdigit())
+    return f"article-{int(digits):03d}{article[len(digits):]}.md"
+
+
+# Long enough to be a sentence rather than a stray label or a line break. Art. 16's chapeau is
+# "Providers of high-risk AI systems shall:" at 40 characters and IS enacted text that binds; a
+# shorter fragment is punctuation.
+_UNNUMBERED_MIN = 35
+
+
 def all_provisions(articles_dir: Path, annexes_dir: Path) -> list[Provision]:
     """Every addressable piece of the stored Act, articles then annexes, in the Act's own order.
 
     A document with no divisions contributes ONE provision addressing the whole of it, so the
     output is never silently short: an annex the parser cannot break down still has to be ruled on,
     it just gets ruled on whole and the ledger says so.
+
+    AND A DOCUMENT WITH DIVISIONS THAT DO NOT COVER IT contributes an address for what they leave
+    out. An article built as a chapeau plus lettered points has enacted text before the first point
+    and sometimes after the last, and neither is a point — Art. 113's "It shall apply from 2 August
+    2026" is the general application date every rule's `effective_date` is read from, and it sits
+    outside (a) to (d). Without `chapeau` and `closing` those words have no address, so the
+    denominator every coverage claim is measured against shrinks with no counter moving. That is the
+    one failure this module cannot be allowed to have.
     """
     found: list[Provision] = []
     names = sorted(
@@ -213,7 +273,9 @@ def all_provisions(articles_dir: Path, annexes_dir: Path) -> list[Provision]:
     for name in names:
         divisions = article_divisions(articles_dir, name)
         if divisions:
-            found += [Provision("article", name, d) for d in divisions]
+            found += [Provision("article", name, d) for d in _with_unnumbered(
+                articles_dir, name, divisions
+            )]
         else:
             found.append(Provision("article", name, None))
 
