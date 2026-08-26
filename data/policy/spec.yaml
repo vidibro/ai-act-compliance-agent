@@ -2050,6 +2050,58 @@ rules:
     effective_date: 2026-08-02
     status: active
 
+  # Art. 78 is otherwise a confidentiality duty on the AUTHORITIES, and its third paragraph turns
+  # halfway through. The first subparagraph restricts what they may disclose; the second puts two
+  # duties on a PROVIDER — one that happens to be a public authority — and it is the only place in
+  # the Act that says where a technical file physically lives.
+  - rule_id: AIA-PO-A78-3
+    source:
+      instrument: "Regulation (EU) 2024/1689"
+      article: 78
+      paragraph: 3 # second subparagraph: where the file is kept, and access to it
+      annex: "IV"
+      act_version_date: 2026-07-27
+    applies_to_risk_class: [high_risk]
+    applies_to_role: [provider]
+    # THE SAME POPULATION AS AIA-ALL-A49-4, and gated the same way. The paragraph names Annex III
+    # points 1, 6 and 7 held by law enforcement, immigration or asylum authorities: points 6 and 7
+    # ARE those areas, and point 1 is biometrics, which qualifies only by who holds the system.
+    # `biometrics` is named and the limit stated in the condition, because gating it out would
+    # withhold the duty from a police face-matching provider — the case the paragraph is written
+    # for.
+    applies_to_annex_iii_area: [biometrics, law_enforcement, migration]
+    activation_condition: >-
+      Owed only where THE PROVIDER IS ITSELF A LAW ENFORCEMENT, IMMIGRATION OR ASYLUM AUTHORITY.
+      That is a fact about who drew up the documentation, not about the system, so no
+      classification here settles it: a commercial provider selling into those authorities keeps
+      its technical documentation under Art. 11 and Art. 18 on the ordinary terms and owes nothing
+      under this paragraph. Points 6 and 7 of Annex III are the law enforcement and migration
+      areas; a point 1 (biometrics) system is reached only when held by such an authority.
+    obligation_status: mandatory
+    check_type: presence
+    evidence_expected: >-
+      Confirmation of two things about the Annex IV technical documentation, both owed by the
+      authority that is the provider. First, that it REMAINS WITHIN THE PREMISES of that authority
+      — this paragraph is the one place the Act says where a technical file is kept, and it
+      displaces any arrangement holding it with a contractor, a parent department or a cloud
+      provider. Second, that the authority has ENSURED the market surveillance authority referred
+      to in Art. 74(8) or (9) can, UPON REQUEST, IMMEDIATELY ACCESS the documentation or obtain a
+      copy of it — an arrangement standing in advance, not a willingness to respond, since a
+      process that takes days to clear does not meet "immediately". Access is confined to staff of
+      that authority holding the appropriate level of SECURITY CLEARANCE, so the arrangement has to
+      survive that limit rather than be satisfied by a general disclosure route. A custody and
+      access arrangement between two public bodies, settled outside the technical file — confirm
+      separately.
+    document_verifiable: false
+    effective_date: 2026-08-02
+    effective_date_note: >-
+      Art. 113(c) moved Chapter III Sections 1 to 3 and nothing else, and Art. 78 is in Chapter IX.
+      So the custody duty binds from the general date while the Annex IV documentation it governs
+      is not owed until 2 December 2027 for an Annex III system. In force ahead of its own subject,
+      as with AIA-ALL-A49-4.
+    status: active
+
+
   # Art. 79 binds the OPERATOR — Art. 3(8): provider, product manufacturer, deployer, authorised
   # representative, importer or distributor — which is why this is filed AIA-ALL- and carries five
   # roles where every other rule carries one or two. The sixth, product manufacturer, is left off on

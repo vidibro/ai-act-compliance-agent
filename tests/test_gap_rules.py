@@ -554,6 +554,30 @@ def test_the_secure_section_covers_the_deployer_registration_too(spec):
     assert "AIA-ALL-A49-4" in police_provider
 
 
+def test_the_authority_that_is_its_own_provider_is_told_where_its_file_lives(spec):
+    """Art. 78(3)'s second subparagraph is a duty on a PROVIDER inside an article of authority
+    duties, and it reaches the three areas the paragraph names, on the provider side only.
+
+    A DEPLOYER MUST NOT SELECT IT. The paragraph binds "law enforcement, immigration or asylum
+    authorities [that] are providers" — the file is kept by whoever drew it up, and telling a
+    deploying police force to hold Annex IV documentation it never wrote sends it looking for a
+    document that is not its to keep. The mirror of `AIA-ALL-A49-4`, which binds both roles
+    because Art. 49(4) governs the deployer's own registration too; the difference is in the
+    paragraphs, not in the population.
+
+    Pinned per rule rather than derived, and deliberately: what went wrong here was a ledger entry
+    that summarised a two-subparagraph provision from its first subparagraph, and no mechanical
+    test separates that from an accurate summary. The subject of the duty is "Those authorities",
+    which is a provider only by reading back to the sentence before it.
+    """
+    for area in (AnnexIIIArea.BIOMETRICS, AnnexIIIArea.LAW_ENFORCEMENT, AnnexIIIArea.MIGRATION):
+        use_case = a_use_case(area=area)
+        assert "AIA-PO-A78-3" in _rule_ids(spec, use_case, ActorRole.PROVIDER), area.value
+        assert "AIA-PO-A78-3" not in _rule_ids(spec, use_case, ActorRole.DEPLOYER), area.value
+    outside = a_use_case(area=AnnexIIIArea.EMPLOYMENT)
+    assert "AIA-PO-A78-3" not in _rule_ids(spec, outside, ActorRole.PROVIDER)
+
+
 # --- Art. 113 — when each obligation starts ----------------------------------------------------
 #
 # One rule, two start dates. The Omnibus rewrote Art. 113 so Chapter III Sections 1-3 apply from
