@@ -30,7 +30,12 @@ from aiact.coverage import (
 )
 from aiact.gap import roles as role_questions
 from aiact.gap.rules import roles_with_rules, select_rules
-from aiact.policy_loader import load_policy_spec, provision_text, resolve_requirement
+from aiact.policy_loader import (
+    article_filename,
+    load_policy_spec,
+    provision_text,
+    resolve_requirement,
+)
 from aiact.provisions import all_provisions, annex_instruments, provision_labels
 from aiact.schemas.classification import ClassificationEvidence, UseCaseClassification
 from aiact.schemas.enums import (
@@ -956,3 +961,145 @@ def _section_headings(path: Path) -> dict[str, str]:
         end = body.find("\n", match.start())
         headings[match.group(1)] = body[match.start() : end if end != -1 else len(body)]
     return headings
+
+
+# The five parties this ruleset writes obligations for. Matched in the enacted text as words, so
+# "providers" and "provider" are one mention and "provider of a general-purpose AI model" is still
+# a provider — narrowing by phrase would be a second opinion about who the Act is addressing.
+_ROLE_WORD = re.compile(
+    r"\b(provider|deployer|importer|distributor|authorised representative)s?\b", re.I
+)
+_ROLE_OF_WORD = {
+    "provider": ActorRole.PROVIDER,
+    "deployer": ActorRole.DEPLOYER,
+    "importer": ActorRole.IMPORTER,
+    "distributor": ActorRole.DISTRIBUTOR,
+    "authorised representative": ActorRole.AUTHORISED_REPRESENTATIVE,
+}
+
+
+# An article divides into numbered PARAGRAPHS or into lettered POINTS, and the labels do not tell
+# them apart: Art. 3's points are `1`, `2`, `3` exactly as Art. 5's paragraphs are. The Act writes
+# points in brackets and paragraphs without, which is the test `provisions._with_unnumbered` uses
+# to decide where an article's chapeau ends, and the same one here. Both shapes go into the same
+# population: Art. 3 is entirely points and every definition of a party is in it, so a sweep that
+# addressed paragraphs alone would step over the place the Act says who these parties ARE.
+_BRACKETED = r"^[ \t]*\({label}\)"
+
+
+def _division_text(article: str, division: str) -> str:
+    """One division's enacted text, whichever shape its article is written in.
+
+    A point is taken from the body directly rather than through `resolve_requirement`, which
+    reaches points by label and refuses an ambiguous one — Art. 66 writes `(i)` at two depths. The
+    span here is from this point's label to the next top-level label of the same article, which is
+    what the address means whether or not the label is unique further down."""
+    body = provision_text(ARTICLES_DIR / article_filename(article))
+    opens = re.search(_BRACKETED.format(label=re.escape(division)), body, re.M)
+    if opens is None:
+        text, _url = resolve_requirement(ARTICLES_DIR, article, division)
+        return text
+    following = [
+        m.start()
+        for label in provision_labels(ARTICLES_DIR, article)
+        for m in [re.search(_BRACKETED.format(label=re.escape(label)), body, re.M)]
+        if m and m.start() > opens.start()
+    ]
+    return body[opens.start() : min(following) if following else len(body)]
+
+
+def _roles_bound_at(spec) -> dict[tuple[str, str], set[ActorRole]]:
+    """Which roles the rules citing each article address bind.
+
+    A RULE CITING AN ARTICLE WHOLE BINDS EVERY DIVISION OF IT. `AIA-HR-A09` names Art. 9 with no
+    paragraph and its `requirement` is all ten of them, so the party it binds is bound at 9(5) and
+    9(9) as surely as a rule that cited those paragraphs by number. Reading the citation literally
+    would put every paragraph of every whole-article rule into the sweep, which is not a population
+    of unanswered questions but a population of answered ones filed one level up."""
+    bound: dict[tuple[str, str], set[ActorRole]] = {}
+    for rule in spec.rules:
+        source = rule.source
+        if source.article is None:
+            continue
+        article = str(source.article)
+        division = source.paragraph if source.paragraph is not None else source.point
+        divisions = (
+            [str(division)]
+            if division is not None
+            else [str(d) for d in provision_labels(ARTICLES_DIR, article)]
+        )
+        for one in divisions:
+            bound.setdefault((article, one), set()).update(rule.applies_to_role)
+    return bound
+
+
+def _unbound_role_mentions(spec) -> dict[str, list[str]]:
+    """Every address naming a role that no rule citing it binds, and which roles those are.
+
+    THE MENTION IS THE UNIT, not the paragraph and not the duty. Whether a mention creates an
+    obligation is a reading, and the point of deriving the population this way is that the reading
+    has somewhere it must be written down: a mention with no rule behind it and no entry in the
+    ledger is a party the Act names and this ruleset says nothing about."""
+    bound = _roles_bound_at(spec)
+    unbound: dict[str, list[str]] = {}
+    for provision in all_provisions(ARTICLES_DIR, ANNEXES_DIR):
+        if provision.kind != "article" or provision.division in (None, "chapeau", "closing"):
+            continue
+        key = (provision.document, str(provision.division))
+        text = _division_text(key[0], key[1])
+        named = {_ROLE_OF_WORD[m.lower()] for m in _ROLE_WORD.findall(text)}
+        missing = named - bound.get(key, set())
+        if missing:
+            unbound[f"{key[0]}({key[1]})"] = sorted(r.value for r in missing)
+    return unbound
+
+
+def test_every_role_mention_is_accounted_for(spec, ledger):
+    """Where the Act names a party, this ruleset either binds it or says what the words do.
+
+    `unaccounted` counts addresses with no ruling. It has nothing to say about a ruling that
+    accounts for one of the parties its provision names, which is the failure this guards: a rule
+    cites the address, the partition reads `checked`, and a duty on the other party reaches no
+    reader.
+
+    A MENTION IS NOT A DUTY. The Act names the party a duty is owed TO, the party an authority must
+    inform, the party a definition classifies. This does not decide which — it requires that
+    somebody has, and that the answer is written where the next reader finds it."""
+    unbound = _unbound_role_mentions(spec)
+    recorded = ledger.get("role_mentions") or {}
+    missing = sorted(set(unbound) - set(recorded))
+    stale = sorted(set(recorded) - set(unbound))
+    assert not missing, (
+        f"{len(missing)} addresses name a role no rule binds and carry no entry in "
+        f"`role_mentions`: {missing}. Each needs a rule, or a line saying what the words do for "
+        f"that role."
+    )
+    assert not stale, (
+        f"`role_mentions` accounts for {stale}, where a rule now binds every role the text names. "
+        f"The entry claims a reading nobody owes — delete it."
+    )
+
+
+def test_a_role_mention_entry_names_the_roles_it_accounts_for(spec, ledger):
+    """An entry answers for the roles the address actually leaves unbound, and says so.
+
+    Written as prose keyed by address, like every other ruling here, so the check is that the
+    prose NAMES each unbound role rather than answering for the paragraph in general. An entry
+    that explains the deployer mention and is silent on the importer accounts for half of what
+    put the address in the population."""
+    unbound = _unbound_role_mentions(spec)
+    recorded = ledger.get("role_mentions") or {}
+    for address, roles in unbound.items():
+        if address not in recorded:
+            continue  # `test_every_role_mention_is_accounted_for` owns the missing ones
+        reason = str(recorded[address])
+        unnamed = [r for r in roles if r.split("_")[0] not in reason.lower()]
+        assert not unnamed, (
+            f"role_mentions[{address}] does not name {unnamed}. The address names that party and "
+            f"no rule citing it binds them; the entry has to say what the words do for THEM."
+        )
+        assert len(reason.split()) >= 12, (
+            f"role_mentions[{address}] is too short to be a reading: {reason!r}"
+        )
+
+

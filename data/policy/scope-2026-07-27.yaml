@@ -2199,3 +2199,668 @@ annex_route_population:
     annex_iii — Art. 49(1) registers "a high-risk AI system listed in Annex III", and Art. 49(2)
     a system the provider concluded is not high-risk under Art. 6(3). Both are Annex III questions;
     an Annex I safety component is registered under its own legislation, not in the EU database.
+
+# EVERY PLACE THE ACT NAMES AN OPERATOR, AND WHAT THAT MENTION IS.
+#
+# The partition asks whether every address has a ruling. It does not ask whether a ruling accounts
+# for every party the address names, and that is a different question with its own failure: a rule
+# cites Art. 25(2) and carries the provider's duty while the paragraph also names the party that
+# has stopped being the provider; a ruling summarises Art. 78(3) from its first subparagraph while
+# its second binds a provider. Both leave `unaccounted` at zero.
+#
+# So the population swept here is derived, not sampled: EVERY address whose enacted text names a
+# provider, deployer, importer, distributor or authorised representative that no rule citing that
+# address binds. `test_every_role_mention_is_accounted_for` recomputes it from the stored text on
+# every run and holds it to the entries below, so an address entering the population — new text, a
+# rule narrowed, a role dropped from `applies_to_role` — fails the suite until someone reads it.
+#
+# A MENTION IS NOT A DUTY, and most of these are not. The Act names the party a duty is owed TO
+# (Art. 13(3)'s instructions are written for deployers), the party an authority must inform, the
+# party a definition classifies, and the party a permission allows something to. Each entry says
+# which of those it is, in the same terms a ruling does: what the words do for that role, and why
+# no rule carries them. An entry that cannot say it is a rule waiting to be written.
+role_mentions:
+  # --- Art. 3 — the definitions. Every one of these names a party in order to SAY WHAT IT IS, and
+  # a definition binds nobody: the duty it feeds lives in the article that uses the term. Ruled
+  # here rather than exempted in code, because "Art. 3 is definitions" is a reading of the Act and
+  # the day a definition carries an operative limb it should have to be argued out of this list.
+  # --- Art. 2 — who the Regulation reaches. Scope, answered by the cascade, and scope is not duty.
+  "2(1)": >-
+    CASCADE territorial. Lists the parties the Regulation applies TO — providers, deployers,
+    importers and distributors, product manufacturers, authorised representatives — and applying
+    to a party is the precondition of every duty rather than one of them. The cascade answers it
+    at the `territorial` node; a system it does not reach exits as OUT_OF_SCOPE and owes nothing.
+  "2(5)": >-
+    A saving clause about a different instrument: the liability rules for providers of intermediary
+    services in the Digital Services Act are unaffected. Those providers are not this Regulation's
+    provider, and nothing here binds them under it.
+  "2(10)": >-
+    CASCADE scope. Withholds the Regulation from a deployer who is a natural person using a system
+    in a purely personal non-professional activity. An exclusion — it removes duties rather than
+    creating one, and the cascade answers it as PERSONAL_NON_PROFESSIONAL.
+  # --- Art. 4 and 4a — support, and a permission that is a condition in one place and not the other.
+  "4(2)": >-
+    A duty on the COMMISSION AND THE MEMBER STATES to support providers and deployers in meeting
+    Art. 4(1), and to publish practical examples. Both parties are named as the beneficiaries of
+    that support; what they owe is Art. 4(1) itself, carried by AIA-ALL-A04.
+  "4a(1)": >-
+    A permission the provider may use, not a duty it owes: special categories of personal data may
+    exceptionally be processed for bias detection and correction. It reaches this ruleset anyway,
+    because Art. 10(1) makes the conditions of Art. 4a(1) quality criteria of the data sets, and
+    AIA-HR-A10 supplies the paragraph as a qualifier and judges against it.
+  "4a(2)": >-
+    The same permission widened to providers and deployers of systems that are not high-risk, and
+    to deployers of high-risk systems. It creates nothing for either party and says so in its own
+    last sentence — "This paragraph does not create any obligation to conduct such bias detection
+    and correction." A permission that disclaims itself is the clearest case in this list.
+  "5(1a)": >-
+    CASCADE prohibited. Narrows points (ba) and (bb), and names the deployer to say when USE is
+    caught: only where the deployer uses the system for the purpose of generating the material.
+    A limit on a prohibition, which the cascade answers; a prohibition binds by forbidding, and
+    the report carries it as a risk class rather than as an obligation to evidence.
+  "7(2)": >-
+    The criteria the COMMISSION weighs when adding an area to Annex III. The deployer is named in
+    point (h), as the party a potentially harmed person may stand in an imbalance of power toward.
+    A factor in the Commission's assessment, and no duty of the deployer's.
+  "9(5)": >-
+    RULE AIA-HR-A09 binds the provider. The deployer is named twice as the party the provider acts
+    TOWARD: point (c) requires the provider to supply Art. 13 information and, where appropriate,
+    training to deployers, and the closing subparagraph makes the deployer's expected knowledge and
+    training a factor the provider must weigh. Both are the provider's obligations.
+  "13(1)": >-
+    RULE AIA-HR-A13 binds the provider. The deployer is named as the party the system's operation
+    must be transparent ENOUGH FOR — the beneficiary of the design duty, and the measure of it.
+    The deployer's own duties are Arts. 26 and 27.
+  "13(2)": >-
+    The same relation: the instructions must be relevant, accessible and comprehensible TO
+    DEPLOYERS. AIA-HR-A13 supplies this paragraph as the qualifier on 13(1); the deployer is the
+    audience the quality is measured against, not a party that owes anything here.
+  "13(3)": >-
+    RULE AIA-HR-A13-3 binds the provider. The deployer is named throughout as the reader the
+    instructions are written for, and the authorised representative in point (a) as a party whose
+    identity and contact details the provider must state. Neither owes anything under this
+    paragraph: the representative's own duties are Art. 22(3), and stating its details is the
+    provider's obligation, carried by the rule.
+  "14(3)": >-
+    RULE AIA-HR-A14 binds the provider. Both parties are named to divide the work of oversight:
+    measures the provider builds into the system under (a), and measures the provider identifies
+    for the DEPLOYER to implement under (b). Point (b) is still the provider's duty — to identify
+    them and pass them on — and Art. 26(1) is what makes the deployer act on what it receives.
+  "14(4)": >-
+    RULE AIA-HR-A14 binds the provider. The deployer is named as the party the system must be
+    PROVIDED TO in a state where its overseers are enabled to do the five things listed. The
+    capability is the provider's to ship; assigning a competent person to use it is Art. 26(2).
+  "14(5)": >-
+    RULE AIA-HR-A14 binds the provider. The deployer is named as the party that may take no action
+    on a biometric identification unless two persons have separately verified it — a constraint the
+    PROVIDER must build the measures to ensure, which is what "the measures referred to in
+    paragraph 3 shall be such as to ensure" makes it. Art. 26(2) and Art. 26(10) carry the
+    deployer's side.
+  # --- Arts. 17-19 — the accommodations. Each says a duty already modelled may be discharged
+  # through a process the provider runs under other Union law, so each narrows a rule rather than
+  # adding one, and none of them changes what the provider must achieve.
+  "17(2)": >-
+    Proportionality: the Art. 17(1) aspects are implemented in proportion to the size of the
+    provider's organisation, an SME or SMC included. It expressly holds the required rigour and
+    level of protection constant, so it scales the effort and not the outcome. AIA-PO-A17 carries
+    the duty.
+  "17(3)": >-
+    A relief: a provider already subject to quality management obligations under sectoral Union law
+    may include the Art. 17(1) aspects in that system. One quality system, not two. AIA-PO-A17
+    carries the duty and this narrows how it may be met.
+  "17(4)": >-
+    A deeming provision for a provider that is a financial institution: complying with internal
+    governance rules under Union financial services law satisfies the quality management obligation
+    except for points (g), (h) and (i). Narrower than 17(3) — it discharges the duty rather than
+    permitting a shared system — and it is still not a duty of its own.
+  "18(2)": >-
+    A duty on each MEMBER STATE to set the conditions under which the documentation stays available
+    to authorities where the provider or its authorised representative goes bankrupt or ceases
+    activity. Both are named as the party whose failure triggers the arrangement; neither owes
+    anything under this paragraph, and AIA-PO-A18 carries the provider's own keeping duty.
+  "18(3)": >-
+    A provider that is a financial institution keeps the technical documentation as part of the
+    documentation it already maintains under Union financial services law. One file, not two —
+    the same relief as 17(3), on Art. 18's duty, which AIA-PO-A18 carries.
+  "19(2)": >-
+    The same relief on Art. 19: a provider that is a financial institution keeps the automatically
+    generated logs within the documentation held under Union financial services law. AIA-PO-A19
+    carries the duty to keep them.
+  "20(1)": >-
+    RULE AIA-PO-A20 binds the provider. The distributor, deployer, authorised representative and
+    importer are named as the parties the provider must INFORM once it takes corrective action —
+    recipients of a notification, not holders of a duty. What each of them owes on learning of a
+    non-conformity is Art. 23(6), Art. 24(5) and Art. 26(5).
+  "20(2)": >-
+    RULE AIA-PO-A20-2 binds the provider. The deployer is named as the party the provider
+    investigates the risk IN COLLABORATION WITH, where one has reported it. The reporting itself
+    is the deployer's duty under Art. 26(5), which AIA-DP-A26 carries.
+  # --- Arts. 22-24 — the supply chain. Each article is one rule per party, and the mentions here
+  # are almost all the OTHER parties: whom to verify, whom to inform, whose mandate it is.
+  "22(2)": >-
+    RULE AIA-PO-A22 binds the provider to ENABLE its authorised representative to perform the
+    mandate. Carried on the appointment rule because the two fail together, and the representative
+    is named as the party that must be enabled rather than one that owes anything here.
+  "22(3)": >-
+    RULE AIA-AR-A22 binds the authorised representative — hold the mandate, produce it on request,
+    and perform tasks (a) to (e). The provider is named as the party that grants the mandate and
+    whose conformity work the representative verifies; its own duty is Art. 22(1) and 22(2).
+  "22(4)": >-
+    RULE AIA-AR-A22 binds the authorised representative to terminate the mandate and tell the
+    authority why. The provider is named as the party whose conduct triggers termination — the
+    subject of the representative's judgement, not a duty-holder under this paragraph.
+  "23(1)": >-
+    RULE AIA-IM-A23 binds the importer to verify four things before placing the system. The
+    provider is named as the party whose conformity assessment, technical documentation and
+    appointment the importer checks, and the authorised representative as the appointment that
+    must exist. Neither owes anything here; the duties verified are Arts. 11, 22(1) and 43.
+  "23(2)": >-
+    RULE AIA-IM-A23 binds the importer not to place a non-conforming or falsified system. The
+    provider and the authorised representative are named as parties the importer must INFORM where
+    the system presents an Art. 79(1) risk — recipients of a notification.
+  "24(1)": >-
+    RULE AIA-DI-A24 binds the distributor to verify the CE marking, declaration and instructions
+    before making the system available. The provider and the importer are named as the parties
+    whose own obligations — Art. 16(b) and (c), and Art. 23(3) — the distributor checks have been
+    complied with. Those duties are theirs and are carried elsewhere.
+  "24(2)": >-
+    RULE AIA-DI-A24 binds the distributor not to make a non-conforming system available. The
+    provider and the importer are named as the parties it must inform where the system presents an
+    Art. 79(1) risk.
+  "24(4)": >-
+    RULE AIA-DI-A24 binds the distributor to take corrective action, withdraw or recall — or to
+    ensure the provider, the importer or another operator does — and to inform the authorities. The
+    provider and importer are named as parties the distributor may require to act and must inform;
+    their own corrective duties are Art. 20 and Art. 23(2).
+  # --- Art. 25 — the role change. Answered by the cascade, not by a rule, because who the provider
+  # IS has to be settled before any obligation set can be selected.
+  "25(1)": >-
+    CASCADE provider_reallocation. Names the distributor, importer and deployer as the parties who
+    BECOME the provider on any of the (a)-(c) triggers, and the provider as the role they take on.
+    It reallocates a duty set rather than adding one: the gap graph asks it, and a party it moves
+    is reported against the whole provider ruleset.
+  "25(2)": >-
+    RULE AIA-IP-A25-2 binds the initial provider — the party that has STOPPED being the provider —
+    to cooperate with the new one. The word "provider" also appears as the NEW provider, the party
+    that cooperation is owed to and whose Art. 16 obligations the assistance serves; that party
+    owes the whole provider ruleset through the cascade's reallocation answer, not through this
+    paragraph.
+  "25(3)": >-
+    CASCADE provider_reallocation. The product manufacturer becomes the provider of a safety
+    component placed under its own name, owing Art. 16 whole. Names the provider as the role
+    assumed; `roles_out_of_scope` records why the manufacturer needs no duty set of its own.
+  # --- Art. 26 — the deployer's obligations. AIA-DP-A26 carries six paragraphs and four more sit
+  # on rules of their own; the mentions below are the parties the deployer acts toward.
+  "26(3)": >-
+    A saving clause: paragraphs 1 and 2 are without prejudice to the deployer's other obligations
+    under Union or national law and to its freedom to organise its own resources. The provider is
+    named as the party whose indicated oversight measures the deployer implements in its own way.
+    It preserves duties rather than creating one, for either party.
+  "26(5)": >-
+    RULE AIA-DP-A26 binds the deployer to monitor operation, suspend use, and report. The provider,
+    importer and distributor are named as the parties it must INFORM — the provider of an
+    Art. 79(1) risk and first of a serious incident, then the importer or distributor. What each
+    does on being told is Art. 20, Art. 23(2) and Art. 24(4).
+  "26(8)": >-
+    RULE AIA-DP-A26-8 binds the public-authority deployer: register under Art. 49, and do not use a
+    system found unregistered. The provider and the distributor are named as the parties the
+    deployer informs on finding it unregistered — recipients, and the registration itself is the
+    provider's own duty under Art. 49(1).
+  # --- Art. 27 — the fundamental rights impact assessment. AIA-DP-A27 binds the deployer.
+  "27(1)": >-
+    RULE AIA-DP-A27 binds the deployer to carry the assessment out. The provider is named in point
+    (d) through the reference to information the provider gives under Art. 13; the assessment is
+    the deployer's own work and nothing here binds the provider.
+  "27(2)": >-
+    RULE AIA-DP-A27 binds the deployer to keep the assessment current. The provider is named as a
+    party whose existing impact assessment the deployer MAY rely on in similar cases — a permission
+    to reuse someone else's document, not an obligation to produce one.
+  "27(4)": >-
+    A relief for the deployer: where an obligation of this Article is already met by a data
+    protection impact assessment under Art. 35 GDPR or Art. 27 of Directive (EU) 2016/680, the
+    fundamental rights assessment may cross-reference or incorporate it. AIA-DP-A27 carries the
+    duty and this narrows what discharging it costs.
+  "27(5)": >-
+    A duty on the AI OFFICE to publish a questionnaire template that helps deployers comply in a
+    simplified manner. The deployer is named as the beneficiary of the template.
+  # --- Arts. 31-36 and 44 — the notified bodies. The provider appears throughout as the party a
+  # body must be independent of, must not burden, must inform, or must ask before subcontracting.
+  # Every duty in this stretch is the body's or the notifying authority's.
+  "31(4)": >-
+    A requirement on the notified body to be independent OF the provider, of any operator with an
+    economic interest, and of the provider's competitors. The provider is the party independence is
+    measured against.
+  "31(8)": >-
+    A requirement on the notified body to have procedures taking due account of the size of a
+    provider and the complexity of the system. Owed toward the provider, not by it.
+  "33(3)": >-
+    Subcontracting or use of a subsidiary requires THE PROVIDER'S AGREEMENT. That is a consent
+    right the provider holds, and a condition on the body; a right is not an obligation, and
+    nothing in a technical file evidences or breaches it.
+  "34(2)": >-
+    A requirement on the notified body to avoid unnecessary burdens for providers and to weigh the
+    provider's size and structure, while holding the required rigour constant. Owed toward the
+    provider.
+  "34(3)": >-
+    A duty on the notified body to submit all relevant documentation, INCLUDING THE PROVIDERS'
+    DOCUMENTATION, to its notifying authority on request. The provider is named as the author of
+    documents the body already holds; supplying them to the body is Art. 43 and Annex VII.
+  "36(3)": >-
+    A notified body ceasing activity informs its notifying authority and the providers concerned at
+    least a year ahead. The provider is the recipient of that notice.
+  "36(5)": >-
+    A notified body whose designation is suspended, restricted or withdrawn informs the providers
+    concerned within ten days. Again the provider is the recipient.
+  "36(7)": >-
+    What the NOTIFYING AUTHORITY must do on a restriction, suspension or withdrawal, points (a) to
+    (e). The provider is named in (e) only to locate the national competent authority of the Member
+    State where it has its registered place of business.
+  "36(9)": >-
+    Certificate validity for nine months after a withdrawal, on confirmations made by the national
+    competent authority and by another notified body. The provider is named only to identify which
+    Member State's authority acts; unlike Art. 36(8) it puts nothing on the provider.
+  "44(2)": >-
+    Certificate validity periods, and extension AT THE REQUEST OF THE PROVIDER. The request is the
+    provider's option and the decision is the body's; an option is not a duty, and a provider that
+    lets a certificate lapse breaches Art. 43, not this paragraph.
+  "44(3)": >-
+    A duty on the notified body to suspend, withdraw or restrict a certificate where the system no
+    longer conforms, unless the provider takes corrective action within the deadline the body sets.
+    The provider is named as the party whose corrective action can avert that; the duty to take it
+    is Art. 20, carried by AIA-PO-A20.
+  # --- Arts. 43 and 48 — the conformity assessment and the marking.
+  "43(4)": >-
+    RULE AIA-PO-A43-4 binds the provider to a new conformity assessment on a substantial
+    modification. The deployer is named to say that the duty arises REGARDLESS of whether the
+    modified system is distributed further or stays with the current deployer — a limit on an
+    exception, and nothing the deployer owes.
+  "48(4)": >-
+    RULE AIA-PO-A48-4 binds the provider. The authorised representative is named as one of the
+    parties who may physically affix the notified body's identification number on that body's
+    instructions — a permitted actor, and the obligation that the number be affixed at all is the
+    provider's.
+  # --- Arts. 49-50 — registration and transparency.
+  "49(1)": >-
+    RULE AIA-PO-A49 binds the provider to register itself and the system before placing it on the
+    market. The authorised representative is named as the party that registers WHERE APPLICABLE —
+    that is, where one has been appointed under Art. 22(1) and the mandate covers it, which
+    Art. 22(3)(e) makes explicit. AIA-AR-A22 carries the representative's side.
+  "49(2)": >-
+    RULE AIA-NHR-A06-4 carries this through Art. 6(4)'s cross-reference: a provider that concluded
+    under Art. 6(3) its system is not high-risk registers it anyway. The authorised representative
+    is named on the same terms as in 49(1) — the party that may register where one is appointed.
+  "50(2)": >-
+    RULE AIA-TR-A50-2 binds the provider to mark synthetic output machine-readably. The deployer is
+    named inside the exception: the duty does not apply where the system performs an assistive
+    editing function or does not substantially alter the input data the DEPLOYER provided. A limit
+    on the provider's duty, defined by reference to whose data it is.
+  "50(6)": >-
+    A saving clause: Art. 50(1) to (4) do not affect Chapter III, and are without prejudice to
+    other transparency obligations on deployers under Union or national law. Already modelled
+    structurally — `applies_to_transparency_duty` ADDS a rule to a tier's obligations rather than
+    replacing them — and it preserves other duties rather than creating one.
+  # --- Arts. 52-56 — the Chapter V gates and the codes of practice. Almost every mention here is a
+  # provider exercising an OPTION or receiving an invitation.
+  "52(2)": >-
+    An option: a provider whose model meets the Art. 51(1)(a) threshold MAY present substantiated
+    arguments, with its Art. 52(1) notification, that the model nonetheless carries no systemic
+    risk. Exercised with a notification the provider already owes; not owed on its own.
+  "52(3)": >-
+    The COMMISSION's decision to reject insufficiently substantiated arguments, with the
+    consequence that the model is treated as carrying systemic risk. The provider is named as the
+    party whose arguments failed.
+  "52(5)": >-
+    A right with a waiting period: a provider whose model has been designated may request
+    reassessment, at the earliest six months after the decision and again six months after any
+    decision maintaining it. A right the provider holds, not a duty.
+  "53(2)": >-
+    CASCADE open_source_release. Lifts Art. 53(1)(a) and (b) from a provider releasing under a free
+    and open-source licence with public parameters, architecture and usage information — and not
+    where the model carries systemic risk. An exemption, answered by the cascade so the report can
+    tell the provider which side of the line its own release falls on.
+  "54(1)": >-
+    RULE AIA-GP-A54-1 binds the third-country model provider to appoint an authorised
+    representative. The representative is the party appointed; AIA-GPAR-A54-3 carries what it owes.
+  "54(2)": >-
+    RULE AIA-GP-A54-2 binds the model provider to ENABLE its authorised representative to perform
+    the mandate. The representative is the party that must be enabled.
+  "54(3)": >-
+    RULE AIA-GPAR-A54-3 binds the authorised representative to perform the mandate and produce a
+    copy to the AI Office. The provider is named as the party that grants the mandate and whose
+    Annex XI documentation and Art. 53 and 55 compliance the representative verifies; those duties
+    are the provider's and are carried by the Chapter V rules.
+  "54(5)": >-
+    RULE AIA-GPAR-A54-5 binds the authorised representative to terminate the mandate and tell the
+    AI Office. The provider is named as the party whose conduct triggers termination.
+  "54(6)": >-
+    CASCADE open_source_release. Lifts the whole of Art. 54 from a provider releasing under a free
+    and open-source licence on the same four limbs as 53(2), and not where the model carries
+    systemic risk. An exemption, not a duty.
+  "56(3)": >-
+    The AI Office MAY INVITE providers of general-purpose AI models to take part in drawing up
+    codes of practice. An invitation to a voluntary process.
+  "56(7)": >-
+    The AI Office may invite providers to adhere to the codes, and a provider without systemic risk
+    may limit its adherence to Art. 53. Voluntary in both directions; adherence is a means of
+    demonstrating compliance, and the obligations themselves are Arts. 53 and 55.
+  "56(9)": >-
+    A deadline on the AI OFFICE to have codes ready, and a reserve power for the Commission to set
+    common rules by implementing act if they are not. The provider is named as the party the Office
+    invites under paragraph 7.
+  # --- Arts. 57-59 — the regulatory sandboxes. The authority runs them; a provider participates.
+  "57(5)": >-
+    What a sandbox must provide — a controlled environment under a plan AGREED BETWEEN the
+    providers and the competent authority, incorporating the Art. 60 and 60a testing plan where
+    relevant. A requirement on the sandbox, and agreement to a plan is a condition of taking part
+    rather than an obligation of the Regulation.
+  "57(7)": >-
+    A duty on the COMPETENT AUTHORITY to give participating providers regulatory guidance and, on
+    request, written proof and an exit report. The provider is named as the party that receives
+    them and MAY use them as evidence of compliance; the request is its option.
+  "57(8)": >-
+    Commission and Board access to exit reports WITH THE AGREEMENT OF THE PROVIDER, and publication
+    only if the provider and the authority both explicitly agree. Consent-gated in both limbs, so
+    the provider is named as the party whose agreement is required.
+  "57(12)": >-
+    A protection rather than a duty: a participating provider stays liable under liability law, and
+    no administrative fines are imposed for infringements of this Regulation where it observes the
+    sandbox plan and follows the authority's guidance in good faith.
+  "58(2)": >-
+    What the Commission's implementing acts on sandboxes must ensure, points (a) to (i). The
+    provider is named as the applicant sandboxes must be open to, and the deployer in point (b) as
+    a party a provider may apply in partnership with. Requirements on the act and the authorities.
+  "58(3)": >-
+    Prospective providers, in particular SMEs and start-ups, SHALL BE DIRECTED to pre-deployment
+    and value-adding services. The authority directs; the provider receives, and owes nothing.
+  "59(1)": >-
+    A conditional permission to further process lawfully collected personal data inside a sandbox,
+    on ten cumulative conditions. The provider is named as a party that may develop such a system;
+    the conditions gate a permission, and a provider that cannot meet them simply may not process
+    the data.
+  # --- Arts. 60, 60a and 61 — testing in real world conditions. AN OPEN SCOPE LIMIT, and these
+  # entries do not close it: the duties in 60(4), 60(7), 60(8) and 61 are real and owed by a
+  # provider that takes this route, and no rule carries them. The entries say what the words do and
+  # name the gap rather than dressing it as an answer.
+  "60(1)": >-
+    A permission: a provider or prospective provider of an Annex III or Annex I Section A system
+    MAY test in real world conditions outside a sandbox, under a plan the Commission specifies.
+    Nothing here is owed; what a provider that elects the route then owes is 60(4) onward, and this
+    ruleset does not select it — an open limit, not a finding that nothing is owed.
+  "60(2)": >-
+    The same permission as to timing and partnering: a provider may test at any time before placing
+    on the market, alone or in partnership with one or more deployers. The deployer is named as an
+    optional partner. Still a permission.
+  "60(4)": >-
+    Eleven conditions (a) to (k) a provider must meet to test, and a deployer taking part must be
+    informed and put under a written agreement by point (h). REAL AND DOCUMENT-VERIFIABLE, and no
+    rule carries them, because this ruleset does not ask whether the Art. 60 route was taken. The
+    largest known gap in the coverage, recorded here rather than implied by the dismissal.
+  "60(6)": >-
+    A duty on MEMBER STATES to confer inspection powers on their market surveillance authorities.
+    The provider is named as the party those powers are exercised against.
+  "60(7)": >-
+    A real duty of the provider or prospective provider on this route: report a serious incident
+    under Art. 73, mitigate immediately or suspend, and establish a prompt recall procedure. No
+    rule carries it, for the same reason as 60(4).
+  "60(8)": >-
+    A real duty of the provider on this route: notify the market surveillance authority of
+    suspension, termination and final outcomes. No rule carries it, for the same reason as 60(4).
+  "60(9)": >-
+    Liability, not compliance: the provider or prospective provider is liable under Union and
+    national liability law for damage caused during testing. This tool reports what a file must
+    contain and never what an act costs in damages.
+  "60a(1)": >-
+    A permission granted to MEMBER STATES to allow real-world testing of Annex I Section B systems.
+    The provider is named as the party that may then test. Doubly outside what this report carries:
+    Art. 2(2) withholds Chapter III from a Section B system in any event.
+  "60a(5)": >-
+    What a Member State's testing framework must contain, points (a) to (d), including a plan
+    agreed with the provider and compliance with named parts of Art. 60. A requirement on the
+    framework; the provider duties it carries across are excluded with Art. 60 itself.
+  "61(1)": >-
+    A real duty on this route: informed consent from testing subjects before participation, after
+    they are told the (a) to (e) information. The provider is the party that must obtain it —
+    Art. 60(4)(i) points here — and no rule carries it, with Art. 60.
+  # --- Arts. 62, 68, 71 and 72 — support, the scientific panel, the database, monitoring.
+  "62(1)": >-
+    Actions MEMBER STATES must undertake for SMEs, points (a) to (d). The deployer is named in (b)
+    as an audience for awareness-raising and training activities.
+  "62(2)": >-
+    SME providers' interests are taken into account when setting Art. 43 conformity assessment
+    fees, which are reduced proportionately. Addressed to whoever sets the fees; it lowers a cost
+    rather than adding a duty.
+  "68(2)": >-
+    Conditions the COMMISSION selects scientific panel experts against, including INDEPENDENCE FROM
+    ANY PROVIDER of AI systems or general-purpose AI models. The provider is the party
+    independence is measured against; it constrains who may be appointed.
+  "71(4)": >-
+    Which parts of the EU database are public, and that Art. 60 testing information is visible only
+    to authorities unless the provider consents. A property of the register and a consent the
+    provider holds; the duty to register is Art. 49.
+  "71(5)": >-
+    A limit on the personal data the database may hold, naming the persons authorised to represent
+    the provider or the deployer for registration. Binds the Commission as controller; the entries
+    themselves are Art. 71(2) and (3), carried by AIA-PO-A71-2 and AIA-DP-A71-3.
+  "71(6)": >-
+    The Commission is the controller of the database and provides technical and administrative
+    support to providers, prospective providers and deployers. Both are named as recipients of that
+    support, and the accessibility requirement lands on the database.
+  "72(2)": >-
+    RULE AIA-PO-A72 binds the provider. The deployer is named as one source of the performance data
+    the monitoring system collects, and again to exclude the sensitive operational data of a
+    law-enforcement deployer. Supplying that data is the deployer's Art. 26(5) duty.
+  "72(4)": >-
+    A relief: where a post-market monitoring system already exists under Annex I Section A
+    legislation or Union financial services law, the provider may integrate the Art. 72 elements
+    into it rather than run a second one. AIA-PO-A72 carries the duty.
+  # --- Arts. 75-83 — enforcement. The operator appears as the party investigated, informed,
+  # inspected or ordered; the duties are the AI Office's and the market surveillance authorities'.
+  # Where an order lands on the provider, the compliance duty behind it is already modelled.
+  "75(1)": >-
+    Allocation of competence: the AI Office is exclusively competent for systems built on the same
+    provider's own general-purpose model and for systems inside a VLOP or VLOSE, subject to four
+    exceptions. The provider is named to define the class of system; the deployer appears in the
+    exceptions. Which authority supervises is not a duty of either.
+  "75(1e)": >-
+    The AI Office is responsible for Art. 43 third-party assessment of those systems, and the
+    provider pays the notified body's costs directly. A fee owed to a body — this tool reports what
+    a file must contain, never what a procedure costs. The assessment duty is Art. 43.
+  "75(2)": >-
+    An inter-authority procedure where a general-purpose AI system usable directly for a high-risk
+    purpose is suspected non-compliant. The deployer is named to describe such a system — one that
+    deployers can use directly for a high-risk purpose.
+  "75(2a)": >-
+    A market surveillance authority may ask the AI Office to act on a suspected infringement, and
+    the request names the provider or deployer concerned. Both are named as the subject of a
+    request between authorities.
+  "75a(2)": >-
+    The AI Office may decide to open an investigation into suspected non-compliance by a provider or
+    a deployer, and must notify the operator. Both are named as the party investigated and
+    notified; the Office's power, and their side is being told.
+  "75a(4)": >-
+    Remote and on-site inspections and the (a) to (e) powers of the inspecting officials. The
+    provider is named as the party informed of the subject matter, the fines and the right of
+    review. Submitting to an inspection is not an obligation this report can evidence.
+  "76(2)": >-
+    The market surveillance authority verifies Art. 60 compliance for testing inside a sandbox, and
+    may allow the provider to test in derogation from two of the Art. 60(4) conditions. The
+    authority's supervisory duty, and a derogation it may grant.
+  "76(3)": >-
+    On a serious incident or grounds to think Arts. 60 and 61 are unmet, the authority may suspend
+    or terminate the testing, or require the provider and the deployer to modify it. Both are named
+    as parties a decision may be addressed to; complying with a decision is not a standing duty.
+  "76(4)": >-
+    A decision or objection must state its grounds and how the provider can challenge it. A
+    procedural right of the provider, not an obligation of it.
+  "77(1a)": >-
+    The market surveillance authority grants a fundamental-rights body access to information,
+    requesting it from the provider or the deployer where necessary. Both are named as the source
+    the authority may request from; the duty to answer a reasoned request is Art. 21 and Art. 26(12).
+  "78(3)": >-
+    RULE AIA-PO-A78-3 binds the authority that is itself the provider. The deployer is named in the
+    first subparagraph as a party that must be consulted before confidential information is
+    disclosed — a protection for the deployer, and a restriction on the authorities.
+  "80(1)": >-
+    An authority evaluation where a system the provider classified as not-high-risk under Art. 6(3)
+    is suspected to be high-risk. The provider is named as the party that made the classification;
+    the duty to document it is Art. 6(4), carried by AIA-NHR-A06-4.
+  "80(2)": >-
+    The authority requires the provider to bring the system into compliance within a prescribed
+    period. An order; what the provider must then do is Art. 20 and the Section 2 requirements.
+  "80(3)": >-
+    The authority informs the Commission and other Member States of the evaluation and of what it
+    required the provider to do. Institutional, and the provider is named as the subject.
+  "80(4)": >-
+    The provider ensures the necessary action is taken, on pain of Art. 99 fines. Its content is
+    Art. 20 and the Section 2 requirements once an authority has ruled, and AIA-PO-A20 and
+    AIA-ALL-A79 carry the corrective duty; this paragraph adds the penalty rather than a new duty.
+  "80(5)": >-
+    The provider ensures corrective action across every unit it has made available on the Union
+    market. The same duty as Art. 20 and Art. 79(4), which AIA-PO-A20 and AIA-ALL-A79 carry.
+  "80(6)": >-
+    A procedural cross-reference: Art. 79(5) to (9) applies where the provider does not act in
+    time. It routes the authority's next step and imposes nothing new.
+  "80(7)": >-
+    A penalty: a provider that misclassified its system as not-high-risk IN ORDER TO CIRCUMVENT
+    Chapter III attracts an Art. 99 fine. The duty behind it is the Art. 6(4) assessment, carried
+    by AIA-NHR-A06-4; this paragraph prices the breach rather than creating one.
+  "83(1)": >-
+    Formal non-compliance, points (a) to (g) — the authority requires the provider to end it. Each
+    finding names a duty modelled elsewhere: CE marking (Art. 48), the declaration of conformity
+    (Art. 47), EU database registration (Art. 49), and point (f), NO AUTHORISED REPRESENTATIVE
+    APPOINTED where Art. 22(1) requires one. The representative is named as the appointment that
+    must exist; AIA-PO-A22 carries the duty to make it.
+  # --- Arts. 89-101 — the Chapter V enforcement powers. The model provider appears as the party
+  # asked, evaluated or fined; the duties behind every one of them are Arts. 53, 54 and 55.
+  "89(1)": >-
+    The AI Office may take monitoring actions over providers of general-purpose AI models,
+    including their adherence to approved codes of practice. The Office's power; the provider is
+    the party monitored.
+  "89(2)": >-
+    A RIGHT held by a downstream provider to lodge a reasoned complaint against the provider of a
+    model it integrates. The complainant is a provider, and a right to complain is not a duty; the
+    duties it alleges a breach of are Arts. 53 and 55.
+  "90(3)": >-
+    What a qualified alert from the scientific panel must contain, points (a) to (c). The panel's
+    duty; the provider is named only as the point of contact the alert must identify.
+  "91(1)": >-
+    The COMMISSION may request the Art. 53 and 55 documentation from a model provider, or further
+    information. The power that makes holding that documentation matter; the provider's duty to
+    hold it is Art. 53(1)(a), and its duty to answer such a request is Art. 91(5), carried by
+    AIA-GP-A91-5.
+  "91(2)": >-
+    The AI Office may open a structured dialogue with the provider before sending the request.
+    Procedural, and optional for the Office.
+  "91(3)": >-
+    The Commission may issue a request for information to a model provider on the scientific
+    panel's substantiated request. Procedural; the provider is the addressee.
+  "92(1)": >-
+    The AI Office may evaluate a model on the (a) and (b) grounds. The Office's power, and the
+    provider is named as the party whose compliance is assessed; answering an evaluation is
+    Art. 92(5), carried by AIA-GP-A92-5.
+  "92(7)": >-
+    The AI Office may open a structured dialogue with the provider before requesting access to the
+    model, to gather information on internal testing and safeguards. Optional and procedural.
+  "93(1)": >-
+    The Commission may request providers to take compliance measures, implement mitigation
+    measures, or restrict, withdraw or recall the model. An enforcement power; the underlying
+    duties are Arts. 53, 54 and 55, and complying with a decision is not a standing obligation this
+    report can evidence.
+  "93(2)": >-
+    The AI Office may open a structured dialogue with the provider before a measure is requested.
+    Optional and procedural.
+  "93(3)": >-
+    Commitments a model provider OFFERS during that dialogue may be made binding by decision. The
+    offer is voluntary and the decision is the Commission's; the Art. 75b twin for models.
+  "95(2)": >-
+    Codes of conduct for the VOLUNTARY application of specific requirements to all AI systems,
+    including by deployers, on the (a) to (e) issues. Voluntary by its own words, and facilitated
+    by the AI Office and the Member States.
+  "95(3)": >-
+    Codes of conduct MAY be drawn up by individual providers or deployers, or by organisations
+    representing them. Permissive for both parties.
+  "99(4)": >-
+    Administrative fines for non-compliance with the operator duties in points (a) to (g) — the
+    provider's under Art. 16, the authorised representative's under Art. 22, the importer's under
+    Art. 23, the distributor's under Art. 24, the deployer's under Art. 26, and Art. 50. A penalty
+    schedule, and a useful cross-check on the shape of this ruleset: every article it names carries
+    rules here. It creates no duty of its own.
+  "101(1)": >-
+    Commission fines on providers of general-purpose AI models, on the (a) to (d) grounds. A
+    penalty; the duties behind it are Arts. 53 and 55 and the Art. 91 and 93 responses.
+  "101(2)": >-
+    Preliminary findings are communicated to the model provider and it is given an opportunity to
+    be heard. A procedural right of the provider.
+  # --- Art. 111 — the legacy systems. Each of these is a RELIEF that moves a date, and each is
+  # reported through the legacy note rather than by changing a rule's own effective date.
+  "111(2)": >-
+    A relief for operators of high-risk systems placed before Chapter III applies: they are reached
+    only if the system undergoes significant changes in design after that date. It then closes off
+    that relief for the providers and deployers of systems INTENDED TO BE USED BY PUBLIC
+    AUTHORITIES, who must comply by 2 August 2030 regardless. A date, not a duty.
+  "111(3)": >-
+    A deferral for providers of general-purpose AI models placed before 2 August 2025: comply by
+    2 August 2027. It moves when the Chapter V duties the AIA-GP-* rules carry bite, and adds none.
+  "111(4)": >-
+    A deferral for providers of synthetic-content generators placed before 2 August 2026: comply
+    with Art. 50(2) by 2 December 2026. Later than the date AIA-TR-A50-2 carries, and reported in
+    the legacy note so the rule's own date stays the one the Act sets for a new system.
+  "3(3)": >-
+    Defines 'provider'. Who the party IS, not what it owes: develops or has developed a system or
+    model and places it on the market or into service under its own name, paid or free. The whole
+    of the provider's obligations hang off this term and none of them is here.
+  "3(4)": >-
+    Defines 'deployer'. Who the party IS: uses a system under its own authority, except in a
+    personal non-professional activity. The deployer's duties are Arts. 26 and 27.
+  "3(5)": >-
+    Defines 'authorised representative', and names the provider only to say who mandates one. What
+    the representative owes is Art. 22(3); what the provider owes is the appointment, Art. 22(1).
+  "3(6)": >-
+    Defines 'importer'. Who the party IS: established in the Union and places on the market a
+    system bearing a third-country party's name. What an importer owes is Art. 23.
+  "3(7)": >-
+    Defines 'distributor', naming the provider and importer only to exclude them from it — a
+    distributor is a supply-chain party that is neither. What a distributor owes is Art. 24.
+  "3(8)": >-
+    Defines 'operator' as the union of the five: provider, product manufacturer, deployer,
+    authorised representative, importer or distributor. A collective noun used by the enforcement
+    articles; every duty it carries is written against the term in those articles, not here.
+  "3(11)": >-
+    Defines 'putting into service', naming the deployer only as the party a system is supplied to
+    for first use. It fixes WHEN an obligation attaches; it creates none for the deployer.
+  "3(12)": >-
+    Defines 'intended purpose' by reference to what the provider specifies. It makes the provider
+    the author of the purpose the rest of the Act tests against, and imposes nothing itself; the
+    duty to state it is Art. 13(3)(b)(i), carried by AIA-HR-A13-3.
+  "3(15)": >-
+    Defines 'instructions for use' as information the provider gives the deployer. Both parties are
+    named to say what the document IS; what it must contain is Art. 13(3).
+  "3(16)": >-
+    Defines 'recall' as return to the provider, or taking out of service, of a system made
+    available to deployers. Both named descriptively; the duty to recall is Art. 20(1).
+  "3(23)": >-
+    Defines 'substantial modification', naming the provider only as the party whose initial
+    conformity assessment did not foresee the change. The consequence is Art. 43(4).
+  "3(24)": >-
+    Defines 'CE marking' as a marking by which a provider indicates conformity. Descriptive; the
+    duty to affix it is Art. 48, carried by AIA-PO-A48-2 and AIA-PO-A48-4.
+  "3(25)": >-
+    Defines 'post-market monitoring system' as activities carried out by providers. Descriptive;
+    the duty to have one is Art. 72, carried by AIA-PO-A72.
+  "3(54)": >-
+    Defines 'sandbox plan' as a document agreed between the participating provider and the
+    authority. Part of the sandbox regime, which is the authority's to run.
+  "3(55)": >-
+    Defines 'AI regulatory sandbox' as a framework a competent authority sets up for providers.
+    Names the provider as the party offered a possibility; a possibility is not an obligation.
+  "3(56)": >-
+    Defines 'AI literacy' by reference to what providers, deployers and affected persons
+    understand. The duty on the provider and the deployer is Art. 4, carried by AIA-ALL-A04.
+  "3(61)": >-
+    Defines 'widespread infringement' by where harm falls and where the party acted. It names the
+    provider, the deployer and the authorised representative through 'operator'; the term is used
+    by the enforcement chapter against authorities, and creates no duty for any of them.
+  "3(68)": >-
+    Defines 'downstream provider' as a provider integrating a model into a system. A relation
+    between two providers, used by Art. 53(1)(b); the duty is on the model provider, not defined
+    here.
