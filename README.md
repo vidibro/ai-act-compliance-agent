@@ -105,42 +105,42 @@ makes profiling high-risk *notwithstanding* the derogations.
 
 ```mermaid
 flowchart TD
-    START([use-case description]) --> AI{"Is it an AI system at all?<br/>Art. 3(1)"}
-    AI -->|no| MIN1([minimal]):::ok
-    AI -->|yes| TERR{"Is it sold, used, or its output<br/>relied on in the EU?<br/>Art. 2(1)"}
-    TERR -->|"no — it is placed, used and<br/>consumed entirely outside the EU"| OOS
-    TERR -->|"yes, or the document<br/>never says"| SCOPE{"Does this law apply to the system at all?<br/>Art. 2(3)-(12)"}
-    SCOPE -->|"no — military, research-only,<br/>pre-market, or a person's own use"| OOS([out of scope]):::oos
-    SCOPE -->|yes| GPAI{"Is this a general-purpose MODEL,<br/>or a system?<br/>Art. 3(63)"}
-    GPAI -->|"a model — placed, or not yet"| SR{"Does the card STATE systemic risk?<br/>a designation, or compute over 10^25<br/>Art. 51(1), Art. 51(2)"}
-    SR --> OSS{"Does it STATE a free and open-source<br/>release with public weights?<br/>Art. 53(2), Art. 54(6)"}
-    OSS --> GP([general-purpose AI model<br/>Chapter V obligations, listed not judged]):::gpai
-    GPAI -->|"a system, incl. one built<br/>on such a model"| PROH{"Is the practice itself banned?<br/>Art. 5(1)(a)-(h)"}
-    PROH -->|"yes — a named point bans it"| BAN([prohibited]):::ban
-    PROH -->|no| ANNEXI{"Is it a safety part of a regulated<br/>physical product?<br/>Annex I, Art. 6(1)(a)"}
-    ANNEXI -->|yes| TPA{"Does that product need an<br/>outside body to certify it?<br/>Art. 6(1)(b)"}
-    TPA -->|yes| HIGH([high risk]):::high
-    TPA -->|"no — self-certified"| ANNEX
-    ANNEXI -->|no| ANNEX{"Is it used in a listed high-risk area?<br/>Annex III, Art. 6(2)"}
-    ANNEX -->|no| MIN2([minimal]):::ok
-    ANNEX -->|yes| PROF{"Does it score, rank or judge people?<br/>Art. 6(3)"}
-    PROF -->|"yes — it profiles people"| HIGH
-    PROF -->|no| DER{"Is its role only a narrow one?<br/>Art. 6(3)(a-d)"}
-    DER -->|"no — none of (a)-(d) fits"| HIGH
-    DER -->|"yes — narrow role only"| SIG{"Could it still materially affect<br/>the decision?<br/>Art. 6(3), first subparagraph"}
-    SIG -->|"yes — it does the real deciding"| HIGH
-    SIG -->|"no — a person decides anyway"| NHR([not high risk]):::mid
-    AI -.->|low confidence| NR([needs review]):::rev
-    TERR -.-> NR
-    SCOPE -.-> NR
-    GPAI -.-> NR
-    PROH -.-> NR
-    ANNEXI -.-> NR
-    TPA -.-> NR
-    ANNEX -.-> NR
-    PROF -.-> NR
-    DER -.-> NR
-    SIG -.-> NR
+    START([use-case description]) --> is_ai{"Is it an AI system at all?<br/>Art. 3(1)"}
+    is_ai -->|no| MIN1([minimal]):::ok
+    is_ai -->|yes| territorial{"Is it sold, used, or its output<br/>relied on in the EU?<br/>Art. 2(1)"}
+    territorial -->|"no — it is placed, used and<br/>consumed entirely outside the EU"| OOS
+    territorial -->|"yes, or the document<br/>never says"| scope{"Does this law apply to the system at all?<br/>Art. 2(3)-(12)"}
+    scope -->|"no — military, research-only,<br/>pre-market, or a person's own use"| OOS([out of scope]):::oos
+    scope -->|yes| gpai_model{"Is this a general-purpose MODEL,<br/>or a system?<br/>Art. 3(63)"}
+    gpai_model -->|"a model — placed, or not yet"| systemic_risk{"Does the card STATE systemic risk?<br/>a designation, or compute over 10^25<br/>Art. 51(1), Art. 51(2)"}
+    systemic_risk --> open_source_release{"Does it STATE a free and open-source<br/>release with public weights?<br/>Art. 53(2), Art. 54(6)"}
+    open_source_release --> GP([general-purpose AI model<br/>Chapter V obligations, listed not judged]):::gpai
+    gpai_model -->|"a system, incl. one built<br/>on such a model"| prohibited{"Is the practice itself banned?<br/>Art. 5(1)(a)-(h)"}
+    prohibited -->|"yes — a named point bans it"| BAN([prohibited]):::ban
+    prohibited -->|no| annex_i{"Is it a safety part of a regulated<br/>physical product?<br/>Annex I, Art. 6(1)(a)"}
+    annex_i -->|yes| third_party_assessment{"Does that product need an<br/>outside body to certify it?<br/>Art. 6(1)(b)"}
+    third_party_assessment -->|yes| HIGH([high risk]):::high
+    third_party_assessment -->|"no — self-certified"| annex_iii
+    annex_i -->|no| annex_iii{"Is it used in a listed high-risk area?<br/>Annex III, Art. 6(2)"}
+    annex_iii -->|no| MIN2([minimal]):::ok
+    annex_iii -->|yes| profiling{"Does it score, rank or judge people?<br/>Art. 6(3)"}
+    profiling -->|"yes — it profiles people"| HIGH
+    profiling -->|no| derogation{"Is its role only a narrow one?<br/>Art. 6(3)(a-d)"}
+    derogation -->|"no — none of (a)-(d) fits"| HIGH
+    derogation -->|"yes — narrow role only"| significant_risk{"Could it still materially affect<br/>the decision?<br/>Art. 6(3), first subparagraph"}
+    significant_risk -->|"yes — it does the real deciding"| HIGH
+    significant_risk -->|"no — a person decides anyway"| NHR([not high risk]):::mid
+    is_ai -.->|low confidence| NR([needs review]):::rev
+    territorial -.-> NR
+    scope -.-> NR
+    gpai_model -.-> NR
+    prohibited -.-> NR
+    annex_i -.-> NR
+    third_party_assessment -.-> NR
+    annex_iii -.-> NR
+    profiling -.-> NR
+    derogation -.-> NR
+    significant_risk -.-> NR
 
     classDef gpai fill:#efeaf7,stroke:#7a63a8
     classDef oos fill:#eceef1,stroke:#7a828c

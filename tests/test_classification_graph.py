@@ -17,7 +17,14 @@ import pytest
 from pydantic import ValidationError
 
 from aiact.classify import ScriptedBrain, build_graph, classify
-from aiact.classify.graph import QUESTIONS, route_for
+from aiact.classify.graph import (
+    _STATE_FIELD,
+    QUESTIONS,
+    GraphState,
+    _get_answers,
+    _src,
+    route_for,
+)
 from aiact.config import get_settings
 from aiact.eval.classification_cases import load_classification_cases
 from aiact.gap.rules import select_rules
@@ -1024,3 +1031,81 @@ def test_neither_chapter_v_gate_is_allowed_to_clear_an_obligation():
         f"wrongly on one licence limb must cost a reader a sentence, never an obligation."
     )
     assert any(r.startswith("AIA-GP-A55") for r in sets[0]), "Art. 55 must be in the set at all"
+
+
+# ==================================================================================================
+# The README's cascade diagram, held to the graph it draws
+# ==================================================================================================
+README = Path(__file__).resolve().parents[1] / "README.md"
+
+# The diagram's node ids ARE the question ids. That is the whole mechanism: a picture whose nodes
+# are named `AI` and `TPA` can only be compared to the code through a mapping someone maintains,
+# and a mapping is the thing that goes stale alongside the diagram it was written to check.
+_DIAGRAM_NODE = re.compile(r"\b([a-z_]+)\{\"")
+_DIAGRAM_ABSTAINS = re.compile(r"^\s{4}([a-z_]+) -\.->", re.M)
+
+
+def _cascade_diagram() -> str:
+    """The first mermaid block of the README — the cascade. The second draws the gap pipeline."""
+    text = README.read_text(encoding="utf-8")
+    start = text.index("```mermaid", text.index("flowchart TD") - 20)
+    return text[start : text.index("```", start + 3)]
+
+
+def _risk_deciding_nodes() -> set[str]:
+    """Which nodes' answers decide the tier, read off `_get_answers` rather than listed here.
+
+    Every field is populated and the function is asked what it keeps. `transparency`,
+    `systemic_risk` and `open_source_release` are excluded there on purpose — none of them is a
+    step in the risk cascade — and this derivation inherits that reasoning instead of restating
+    it."""
+    state = GraphState(description="")
+    for node_id, field in _STATE_FIELD.items():
+        setattr(
+            state,
+            field,
+            Answer(value=True, reasoning="", confidence="high", source=_src(6), node_id=node_id),
+        )
+    return {answer.node_id for answer in _get_answers(state)}
+
+
+def test_the_readme_cascade_draws_every_node_the_graph_runs():
+    """A node added to the graph and not to the picture leaves the README quietly wrong.
+
+    The diagram is how anyone reads the legal routing before reading the code, and its edges carry
+    the arguments that are easy to get backwards — a self-certified Annex I product falling THROUGH
+    to the Annex III door rather than exiting, profiling answered before any derogation. A drawing
+    that has silently stopped matching is worse than none, because it is still believed.
+
+    `transparency` is absent from both, and that is the graph's own answer rather than an exception
+    written here: `assemble` asks Art. 50 beside `decide_risk_class`, so it is not a node, and the
+    comparison is against the compiled graph's nodes."""
+    diagram = _cascade_diagram()
+    drawn = set(_DIAGRAM_NODE.findall(diagram))
+    compiled = {
+        node
+        for node in build_graph(ScriptedBrain({})).get_graph().nodes
+        if not node.startswith("__") and node != "assemble"
+    }
+    assert drawn == compiled, (
+        f"the README cascade and the compiled graph disagree about their nodes. "
+        f"Drawn but not run: {sorted(drawn - compiled)}. Run but not drawn: "
+        f"{sorted(compiled - drawn)}."
+    )
+
+
+def test_the_readme_draws_an_abstention_for_every_node_that_can_abstain():
+    """The dashed edges are a legal claim: THESE questions can end the assessment in needs_review.
+
+    Drawing one where the code cannot abstain promises an escape hatch that is not there; omitting
+    one where it can hides the tool's own uncertainty from the reader deciding whether to trust it.
+    `systemic_risk` and `open_source_release` have no dashed edge because a low-confidence answer
+    on either must not drag a settled classification to needs_review — the picture is where that
+    decision is visible."""
+    abstaining = set(_DIAGRAM_ABSTAINS.findall(_cascade_diagram()))
+    deciding = _risk_deciding_nodes()
+    assert abstaining == deciding, (
+        f"the README's low-confidence edges and `_get_answers` disagree. Drawn as able to abstain "
+        f"but not counted toward the tier: {sorted(abstaining - deciding)}. Counted toward the "
+        f"tier with no abstention drawn: {sorted(deciding - abstaining)}."
+    )
