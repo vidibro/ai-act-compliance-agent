@@ -136,6 +136,36 @@ cases:
       the system, enabling them to interpret the output and use it appropriately. Our
       documentation is clear, comprehensive and accessible.
 
+  # --- Art. 13(3) — what the instructions must contain ----------------------------------------
+  # A COMPLETENESS RULE, so the interesting case is the partial list rather than the empty claim:
+  # three of the six items answered in real depth and three absent is a document that reads well
+  # and is short by half the paragraph.
+  - rule_id: AIA-HR-A13-3
+    ablation: removed
+    difficulty: obvious
+
+  - rule_id: AIA-HR-A13-3
+    ablation: present_but_inadequate
+    difficulty: buried
+    replacement: |
+      ### 9.1 Contents of the instructions for use
+
+      **Provider identity and contact.** As stated in the header of this document.
+
+      **Characteristics and intended purpose.** TalentRank ranks applicants against a requisition
+      to support recruiter shortlisting. It is decision-support only; it does not make hiring
+      decisions and must not be wired to automatic rejection.
+
+      **Capabilities and limitations of performance.** Known limitations: (i) accuracy is lower for
+      Marketing and Operations families; (ii) the system is not validated for public-sector
+      requisitions, internal promotion, or contractor selection. Measured accuracy figures and the
+      metrics they were tested against are held in Northwind's internal validation report
+      TR-VAL-5.0 and are not disclosed to deployers.
+
+      **Human oversight measures.** The oversight measures the provider has built in, and the
+      measures the deployer must implement, are described in §7. The deployer must assign oversight
+      to trained recruiters with authority to overrule the ranking.
+
   # --- Art. 14 — human oversight (the canonical case from the brief) --------------------------
   - rule_id: AIA-HR-A14
     ablation: removed

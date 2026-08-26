@@ -10,7 +10,8 @@ it — lives on the rule in the spec.
 Rendering them as a bare list of ids is therefore not a terse presentation of the obligation, it is
 the loss of it. `AIA-PO-A22` on its own tells a provider established in the Union to confirm a duty
 Art. 22(1) puts only on providers established in third countries; `AIA-ALL-A49-4` on its own tells a
-biometrics provider nothing about the gap its own `evidence_expected` was written to disclose.
+biometrics provider to register somewhere its `activation_condition` says most biometric systems
+must not, and names none of the reduced Annex VIII fields that make the entry checkable.
 
 So the rule is looked up and its condition, date and expected evidence are rendered beside it. Here
 rather than in `scripts/review.py` so that it is importable, and so a test can hold it to that.

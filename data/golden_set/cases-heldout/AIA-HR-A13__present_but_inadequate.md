@@ -260,6 +260,59 @@ PathFinder is designed to be transparent to the organisations that use it. Deplo
 given complete instructions for use, so that they can interpret the system's output and
 apply it appropriately in their talent processes. Our documentation is clear, thorough and
 written for a non-technical audience.
+### G.1 — What the instructions contain
+
+**Identity and contact of the provider.** As given in the file header above.
+
+**Characteristics and intended purpose.** PathFinder recommends internal employees for open
+positions, successor slates and development assignments, and returns a readiness band with named
+competency gaps. It is decision-support for line managers and talent review panels. It does not
+decide, and it must not be configured as an automatic filter.
+
+**Capabilities and limitations of performance.** Expected accuracy per job family is stated in
+Part D with confidence intervals. Known limitations:
+
+- Legal and clinical families perform materially below the other six (precision@5 0.49 and 0.47)
+  owing to the data gaps in Part B; both carry a mandatory low-confidence banner.
+- Grade bands 1–2 are not validated and are refused by the API.
+- Public-administration employers are outside the validated population.
+- Employees with fewer than three completed competency assessments receive lower-quality
+  recommendations; below two, no band is returned at all.
+- Profiles not updated within 24 months are flagged; recommendations based on them are unreliable.
+- The measured parity ratio is 0.91, not 1.0. PathFinder reflects historical progression patterns
+  it was trained on and cannot correct upstream inequality in development opportunity.
+
+**Circumstances which may lead to risks to health, safety or fundamental rights.** Using the
+shortlist as the decision rather than an input; using PathFinder for redundancy selection,
+performance management, disciplinary processes or external recruitment, all outside the intended
+purpose; applying it to unvalidated grade bands or job families; assigning oversight to untrained
+staff or to staff without authority to depart from a recommendation; and withholding the named
+competency gaps from the employee, which removes the only actionable part of the output.
+
+**Human oversight measures.** The oversight the provider has built in, and the measures the
+deployer must implement, are set out in Part E. The deployer must: assign panel oversight to
+trained staff with authority to overrule; keep the employee-facing explanation view enabled; and
+review shortlist-adoption rates quarterly against the report Meridian supplies.
+
+**Expected input data.** Employee profiles and target-role profiles conforming to the client's
+mapped competency framework; the field schema and mapping requirements are in Annex 1. Protected
+attributes are neither required nor accepted on the inference path.
+
+**Pre-determined changes.** Three changes to PathFinder and its performance were fixed by Meridian
+at the initial conformity assessment and fall inside it: scheduled retraining on the same feature
+schema, calibration refits within the Part D thresholds, and the addition of a job family once its
+validation set clears those thresholds. Any other change is assessed afresh.
+
+**Computational and hardware resources, maintenance, changes and expected lifetime.** PathFinder is
+served from Meridian's hosted inference tier; a deployer runs no model locally and needs only the
+connector, sized at 2 vCPU and 8 GB of memory for a 50 000-employee population. Each release is
+supported for 18 months. Retraining cadence, change-notification policy and the version-retirement
+schedule are in Annex 2. Software updates are shipped monthly and are mandatory for supported
+releases. Deployers receive 90 days' notice before a model version is withdrawn, and a change log
+for every release that alters band boundaries or calibration.
+
+**Log collection and interpretation.** The deployer's ability to collect, access and interpret
+event records is described in Part F; the export schema is in Annex 3.
 ---
 
 ## Part H — Technical documentation index (Annex IV)

@@ -195,9 +195,17 @@ def test_no_annex_text_sits_outside_every_address():
 
     Derived from the files: for every annex item that OPENS a section — or the annex, where it has
     no sections — the text before it must be short enough to be a label, or an address must exist.
-    The item marker is found by scanning forward from the section start for the item's own number
-    or letter, which is a different search from the one `_annex_with_chapeau` runs backwards from
-    the divisions it was handed."""
+
+    THE MARKER IS FOUND BY A STRICTER TEST THAN THE MODULE'S, and it has to be, because a guard
+    whose search matches everything the module's matches can never complain: it would find the
+    first item at or before the module does, measure a prefix at or shorter than the module's, and
+    stay silent wherever the module stayed silent. So this one asks what the module does not — what
+    PRECEDES the marker. An item opens after a sentence ends or a heading does; a number that
+    reads like an item marker in the middle of a sentence is a CROSS-REFERENCE, and "as set out in
+    point 1." is the shape that fools a forward scan for `1.` into placing the annex's first item
+    inside its own chapeau. Where that happens the module emits no address and the words it should
+    have addressed leave the partition with `unaccounted` still reading zero, which is the one
+    failure the count cannot show. This test is what sees it."""
     provisions = all_provisions(ARTICLES_DIR, ANNEXES_DIR)
     addressed = {(p.document, p.division) for p in provisions if p.kind == "annex"}
     orphaned: list[str] = []
@@ -217,7 +225,9 @@ def test_no_annex_text_sits_outside_every_address():
                 continue
             opened.add(section)
             start = sections.get(section, 0) if section else 0
-            marker = re.search(rf"(?:^|(?<=\s)){re.escape(item)}[.)]", body[start:], re.M)
+            marker = re.search(
+                rf"(?:^|(?<=[.:;)—]\s)|(?<=\n)){re.escape(item)}[.)]", body[start:], re.M
+            )
             if marker is None:
                 continue
             head = body[start : start + marker.start()].strip()

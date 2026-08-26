@@ -53,7 +53,7 @@ SCOPE_PATH = ROOT / "data" / "policy" / f"scope-{VERSION}.yaml"
 INSTRUMENT = "Regulation (EU) 2024/1689"
 
 # Provisions covered by a ruling made about the whole article or annex around them, rather than by
-# one written for them. ZERO: all 789 addresses of the stored text are ruled on individually.
+# one written for them. ZERO: every address of the stored text is ruled on individually.
 # Declared as a constant rather than asserted as zero so the failure reads as a number that moved —
 # new text arriving, a parser fix making a division visible, or an itemised article collapsed back
 # to a one-line dismissal — and so paying it down again is one edit.
@@ -653,40 +653,50 @@ def test_no_annex_is_carried_only_by_rules_a_single_area_can_reach(spec, ledger)
     WHICH ROUTES AN ANNEX OWES is the one thing neither the spec nor the rules record — Annex VII
     is reached from both doors, Annexes VI and VIII from Annex III alone. That is a reading of the
     Act, so it lives in the ledger under `annex_route_population`, and an annex absent from it owes
-    both."""
+    both.
+
+    PER ITEM, because that is how the ledger rules. Pooling an annex's rulings asks only whether a
+    rule for each route is named SOMEWHERE under the annex, and Art. 43(3) is the case that shows
+    the difference: it applies six named pieces of Annex VII to the Annex I route and not the rest,
+    so the annex has rules for both doors while individual items have one. Ruled item by item, an
+    item reached from a door no rule on it can fire for is visible; pooled, it is not.
+
+    Which also makes the population entry itemisable — the routes an item is owed to are the
+    routes the Act sends a reader to THAT ITEM by, and for Annex VII points 1 and 2 that is one
+    door where the annex has two."""
     by_id = {rule.rule_id: rule for rule in spec.rules}
     population = ledger.get("annex_route_population") or {}
     for annex, items in (ledger.get("annex_rulings") or {}).items():
-        named = {
-            rule_id
-            for value in _values(items)
-            if isinstance(value, str) and value.startswith(RULE_PREFIX)
-            for rule_id in rule_ids(value)
-        }
-        rules = [by_id[rule_id] for rule_id in named if rule_id in by_id]
-        if not rules:
-            continue
-        owed = _declared_routes(population.get(str(annex)))
-        for risk_class in {c for rule in rules for c in rule.applies_to_risk_class}:
-            tier = [r for r in rules if risk_class in r.applies_to_risk_class]
-            # Unconditional on BOTH: such a rule really is reachable from every route and area at
-            # this tier, and settles the annex on its own.
-            if any(
-                not r.applies_to_annex_iii_area and r.applies_to_route is None for r in tier
-            ):
+        declared = population.get(str(annex))
+        per_item = declared if isinstance(declared, dict) else {}
+        for division, value in _divisions(items):
+            if not (isinstance(value, str) and value.startswith(RULE_PREFIX)):
                 continue
-            reached = {
-                HighRiskRoute.ANNEX_III if r.applies_to_annex_iii_area else r.applies_to_route
-                for r in tier
-            }
-            assert None in reached or reached >= owed, (
-                f"Annex {annex} at {risk_class.value} is ruled only to gated rules, and between "
-                f"them they reach {sorted(r.value for r in reached if r)} of the "
-                f"{sorted(x.value for x in owed)} this annex is owed to — a provider on the "
-                f"other route is told nothing about it. "
-                f"The ledger reads as covered because a named rule EXISTS; that reader never "
-                f"selects it."
-            )
+            rules = [by_id[rule_id] for rule_id in rule_ids(value) if rule_id in by_id]
+            if not rules:
+                continue
+            owed = _declared_routes(per_item.get(division, None if per_item else declared))
+            where = f"Annex {annex}({division})"
+            for risk_class in {c for rule in rules for c in rule.applies_to_risk_class}:
+                tier = [r for r in rules if risk_class in r.applies_to_risk_class]
+                # Unconditional on BOTH: such a rule really is reachable from every route and
+                # area at this tier, and settles the item on its own.
+                if any(
+                    not r.applies_to_annex_iii_area and r.applies_to_route is None for r in tier
+                ):
+                    continue
+                reached = {
+                    HighRiskRoute.ANNEX_III if r.applies_to_annex_iii_area else r.applies_to_route
+                    for r in tier
+                }
+                assert reached >= owed, (
+                    f"{where} at {risk_class.value} is ruled only to gated rules, and between "
+                    f"them they reach {sorted(r.value for r in reached if r)} of the "
+                    f"{sorted(x.value for x in owed)} this item is owed to — a provider on the "
+                    f"other route is told nothing about it. "
+                    f"The ledger reads as covered because a named rule EXISTS; that reader never "
+                    f"selects it."
+                )
 
 
 def _declared_routes(ruling: object) -> set[HighRiskRoute]:
@@ -704,6 +714,18 @@ def _values(items: object) -> list[object]:
     if isinstance(items, dict):
         return list(items.values())
     return [items]
+
+
+def _divisions(items: object) -> list[tuple[str, object]]:
+    """The same rulings, each with the division it addresses.
+
+    An annex ruled in one line addresses the whole of itself, and `""` is the division that names
+    that. The distinction matters because a rule is named PER ITEM: two items of one annex can be
+    ruled to rules with different gates, and an assertion that pools them reads the annex as
+    covered on the strength of the item that is."""
+    if isinstance(items, dict):
+        return [(str(k), v) for k, v in items.items()]
+    return [("", items)]
 
 
 def test_a_provider_that_registers_a_derogated_system_is_told_what_to_enter(spec):
@@ -922,10 +944,15 @@ def _section_headings(path: Path) -> dict[str, str]:
     """Each `Section X` heading in an annex, keyed by the letter or number the ledger keys use.
 
     The stored annexes run a section's heading and its first item together on one line, so the
-    heading is the line the marker opens rather than a block of its own."""
+    heading is the line the marker opens rather than a block of its own.
+
+    AND THEY RUN THE LABEL INTO THE HEADING TOO. Annex I and Annex VIII write "Section A. …", and
+    Annex XI writes "Section 1Information to be provided by all providers…" with no separator at
+    all, so the separator is optional here and the label is a number OR a letter rather than a run
+    of either — "Section 1Information" offers `1I` to a pattern that takes both."""
     body = provision_text(path)
     headings: dict[str, str] = {}
-    for match in re.finditer(r"^Section\s+([A-Z0-9]+)[.\s—]", body, re.M):
+    for match in re.finditer(r"^Section\s+(\d+|[A-Z])\s*[.:—-]?\s*(?=[A-Z])", body, re.M):
         end = body.find("\n", match.start())
         headings[match.group(1)] = body[match.start() : end if end != -1 else len(body)]
     return headings

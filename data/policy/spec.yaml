@@ -126,10 +126,25 @@ rules:
     obligation_status: mandatory
     check_type: substance
     evidence_expected: >-
-      A described risk management process covering identification and analysis of known and
-      reasonably foreseeable risks to health, safety and fundamental rights, estimation under
-      reasonably foreseeable misuse, evaluation against post-market monitoring data, and adoption
-      of targeted mitigation measures — not a one-line assertion that "risks are managed".
+      A described risk management process, run as a CONTINUOUS ITERATIVE process across the whole
+      lifecycle with regular systematic review and updating, covering identification and analysis of
+      known and reasonably foreseeable risks to health, safety and fundamental rights, estimation
+      under reasonably foreseeable misuse, evaluation against post-market monitoring data, and
+      adoption of targeted mitigation measures — not a one-line assertion that "risks are managed".
+      The paragraphs after the four steps are where a described process usually falls short, and
+      each names something the documentation can be read against. RESIDUAL RISK: each hazard's
+      residual risk AND the overall residual risk judged ACCEPTABLE, with the judgement stated
+      rather than implied, after elimination or reduction by design as far as technically feasible,
+      mitigation and control measures for what cannot be eliminated, and information under Art. 13
+      with training for deployers where appropriate. TESTING: performed throughout development and
+      in any event BEFORE placing on the market, against PRIOR DEFINED METRICS AND PROBABILISTIC
+      THRESHOLDS appropriate to the intended purpose — testing described without the metrics and
+      thresholds it was carried out against is not this paragraph. PERSONS UNDER THE AGE OF 18:
+      whether the system is likely to have an adverse impact on them and, as appropriate, on other
+      VULNERABLE GROUPS, considered in view of the intended purpose. And the risks in scope are only
+      those reasonably mitigable through development, design or adequate technical information, so a
+      risk register that is a list of societal harms with no design response is not the system this
+      Article requires.
     document_verifiable: true
     effective_date_by_route:
       annex_iii: 2027-12-02
@@ -157,10 +172,28 @@ rules:
     obligation_status: mandatory
     check_type: substance
     evidence_expected: >-
-      Described data governance practices: design choices, provenance and collection of data,
-      examination for possible biases and mitigation, identification of relevant data gaps, and
-      relevance to the intended purpose. A generic "responsible AI" statement with no
-      data-governance substance is INADEQUATE, not a pass.
+      Described data governance practices covering the eight in Art. 10(2): design choices; data
+      collection processes and the ORIGIN of the data, and for personal data the original purpose it
+      was collected for; data-preparation operations such as annotation, labelling, cleaning,
+      updating, enrichment and aggregation; the ASSUMPTIONS formulated about what the data are
+      supposed to measure and represent; an assessment of the availability, quantity and suitability
+      of the data sets needed; examination for possible biases, ESPECIALLY WHERE DATA OUTPUTS
+      INFLUENCE INPUTS FOR FUTURE OPERATIONS; measures to detect, prevent and mitigate the biases
+      that examination identified; and identification of relevant data gaps or shortcomings AND HOW
+      THEY CAN BE ADDRESSED. A generic "responsible AI" statement with no data-governance substance
+      is INADEQUATE, not a pass. THE QUALITY CRITERIA ARE SEPARATE FROM THE PRACTICES and are their
+      own test: the training, validation and testing data sets are to be relevant, sufficiently
+      representative, and to the best extent possible FREE OF ERRORS and COMPLETE in view of the
+      intended purpose, with the appropriate STATISTICAL PROPERTIES including as regards the persons
+      or groups the system is intended to be used on, and taking into account the characteristics
+      particular to the GEOGRAPHICAL, CONTEXTUAL, BEHAVIOURAL OR FUNCTIONAL SETTING of the intended
+      use. Documentation that describes a governance process and asserts nothing about
+      representativeness, error rate or setting has answered half the Article. Where SPECIAL
+      CATEGORIES OF PERSONAL DATA are processed for bias detection and correction, the six
+      conditions of Art. 10(5) apply and Art. 4a(1) conditions compliance with Art. 10(1) —
+      including the record of WHY that processing was strictly necessary and why other data,
+      synthetic or anonymised, could not achieve it. A system that does not train on data still owes
+      paragraphs 2, 3 and 4 on its TESTING data sets.
     document_verifiable: true
     effective_date_by_route:
       annex_iii: 2027-12-02
@@ -312,16 +345,78 @@ rules:
   - rule_id: AIA-HR-A13
     source:
       instrument: "Regulation (EU) 2024/1689"
-      article: 13 # whole article: transparency + the Art. 13(3) instructions-for-use contents
+      article: 13
+      paragraph: 1 # the transparency of the system's operation itself
+      act_version_date: 2026-07-27
+    applies_to_risk_class: [high_risk]
+    applies_to_role: [provider]
+    # 13(2) is the QUALITY of the instructions, and it is the whole substance of 13(1)'s duty as a
+    # deployer meets it: a system shipped with instructions that are neither concise, complete,
+    # correct and clear nor accessible and comprehensible to deployers is not transparent enough
+    # for them to interpret its output, whatever the design section says. Supplied rather than
+    # cited, for the same reason 12(2) is supplied to AIA-HR-A12: a system with no instructions at
+    # all breaches 13(2) and the finding belongs to the paragraph that lists their contents.
+    qualified_by:
+      - article: 13
+        paragraph: 2
+    obligation_status: mandatory
+    check_type: substance
+    evidence_expected: >-
+      Evidence that the system's OPERATION is sufficiently transparent for a deployer to interpret
+      its output and use it appropriately — the design and development choices that make it so, not
+      a claim that "the system is transparent". The type and degree of transparency is to be
+      appropriate to the Section 3 obligations the provider and the DEPLOYER have to meet, so
+      documentation that establishes transparency for the provider's own engineers and leaves the
+      deployer unable to read an output has answered the wrong question. The instructions for use
+      are the vehicle: they accompany the system in an appropriate digital format or otherwise, and
+      Art. 13(2) makes their quality part of this duty — concise, complete, correct and clear, and
+      relevant, accessible and comprehensible TO DEPLOYERS. WHAT they must contain is the separate
+      list in Art. 13(3), which AIA-HR-A13-3 judges.
+    document_verifiable: true
+    effective_date_by_route:
+      annex_iii: 2027-12-02
+      annex_i: 2028-08-02
+    status: active
+
+  # THE CONTENTS OF THE INSTRUCTIONS. AIA-HR-A13 asks whether the system is transparent and its
+  # instructions fit to be read; Art. 13(3) is a list of six items the instructions "shall contain
+  # at least", and (b) alone runs to seven sub-points. The same relation Art. 12(3) has to
+  # Art. 12(1), and judged the same way: against the list, not against the presence of a section
+  # titled "Instructions for Use".
+  - rule_id: AIA-HR-A13-3
+    source:
+      instrument: "Regulation (EU) 2024/1689"
+      article: 13
+      paragraph: 3 # the six items the instructions for use must contain
       act_version_date: 2026-07-27
     applies_to_risk_class: [high_risk]
     applies_to_role: [provider]
     obligation_status: mandatory
-    check_type: substance
+    check_type: completeness
     evidence_expected: >-
-      Instructions for use accompanying the system, covering the provider's identity, the system's
-      characteristics, capabilities and limitations of performance, and the human-oversight
-      measures. Substance, not a claim that "the system is transparent".
+      Six items in the instructions for use, judged as a list and not as a section heading. (a) The
+      IDENTITY AND CONTACT DETAILS of the provider and, where applicable, of its authorised
+      representative. (b) The CHARACTERISTICS, CAPABILITIES AND LIMITATIONS OF PERFORMANCE, itself
+      seven sub-points: the intended purpose; the level of ACCURACY INCLUDING ITS METRICS,
+      robustness and cybersecurity under Art. 15 that the system was tested and validated against
+      and that can be expected, together with any known or foreseeable circumstances affecting that
+      expected level; known or foreseeable circumstances of use in accordance with the intended
+      purpose or under reasonably foreseeable misuse that may lead to risks to health, safety or
+      fundamental rights; where applicable, the technical capabilities to provide information
+      RELEVANT TO EXPLAIN ITS OUTPUT; when appropriate, performance regarding the specific persons
+      or GROUPS OF PERSONS the system is intended to be used on; when appropriate, specifications
+      for the INPUT DATA or other information about the training, validation and testing data sets
+      used; and where applicable, information enabling deployers to INTERPRET THE OUTPUT and use it
+      appropriately. (c) The PRE-DETERMINED CHANGES to the system and its performance fixed by the
+      provider at the initial conformity assessment, if any. (d) The Art. 14 HUMAN OVERSIGHT
+      MEASURES, including the technical measures facilitating the deployer's interpretation of
+      outputs. (e) The COMPUTATIONAL AND HARDWARE RESOURCES needed, the EXPECTED LIFETIME of the
+      system, and any necessary maintenance and care measures INCLUDING THEIR FREQUENCY and
+      including as regards SOFTWARE UPDATES. (f) Where relevant, the mechanisms in the system that
+      let deployers collect, store and interpret the Art. 12 LOGS. Instructions that cover (a), (b)
+      and (d) in depth and are silent on (c), (e) and (f) are short by three items, and an item
+      whose content is held back from the deployer — an accuracy figure kept in an internal
+      validation report — is not in the instructions at all.
     document_verifiable: true
     effective_date_by_route:
       annex_iii: 2027-12-02
@@ -338,9 +433,28 @@ rules:
     obligation_status: mandatory
     check_type: substance
     evidence_expected: >-
-      Described oversight measures: the human-machine interface tools provided, the ability of an
-      operator to intervene in or stop the system, and the competencies expected of the overseer.
-      "We ensure human oversight" with nothing further is INADEQUATE.
+      Described oversight measures: the human-machine interface tools built in, whether the measures
+      are ones the provider built into the system or ones the provider identified for the DEPLOYER
+      to implement, and how they are commensurate with the risks, the level of autonomy and the
+      context of use. "We ensure human oversight" with nothing further is INADEQUATE. Art. 14(4)
+      names five things the assigned person must be ENABLED to do, and each is a separate test of
+      the interface actually shipped: to understand the system's capacities and limitations well
+      enough to MONITOR it and detect anomalies, dysfunctions and unexpected performance; to remain
+      aware of the tendency to rely or over-rely on the output (AUTOMATION BIAS), particularly where
+      the system informs a decision a natural person takes; to CORRECTLY INTERPRET the output, given
+      the interpretation tools and methods available; to DECIDE NOT TO USE the system, or to
+      disregard, override or REVERSE its output; and to intervene or INTERRUPT the system through a
+      'stop' button or similar procedure bringing it to a halt IN A SAFE STATE. An oversight section
+      describing training and escalation but no interface capability has not answered this
+      paragraph. FOR REMOTE BIOMETRIC IDENTIFICATION under Annex III point 1(a) there is one more,
+      and it is the one most often understated: no action or decision may be taken on the basis of
+      an identification unless that identification has been SEPARATELY VERIFIED AND CONFIRMED BY AT
+      LEAST TWO NATURAL PERSONS with the necessary competence, training and authority. One reviewer,
+      however well qualified, is not two, and documentation describing a single-confirmer workflow
+      fails this Article whatever else it provides. The two-person requirement is disapplied only
+      for law enforcement, migration, border control or asylum use where Union or national law
+      considers it disproportionate — a legal fact about the use, not a design choice the
+      documentation can make for itself.
     document_verifiable: true
     effective_date_by_route:
       annex_iii: 2027-12-02
@@ -357,9 +471,27 @@ rules:
     obligation_status: mandatory
     check_type: metrics
     evidence_expected: >-
-      Declared accuracy levels and relevant accuracy metrics, robustness measures (e.g. against
-      errors, faults or adversarial conditions), and cybersecurity measures. A claim of "high
-      accuracy" with no numbers is INADEQUATE, not a pass.
+      Declared accuracy LEVELS and the relevant accuracy METRICS, stated in the accompanying
+      instructions for use; robustness measures; and cybersecurity measures. A claim of "high
+      accuracy" with no numbers is INADEQUATE, not a pass. ROBUSTNESS is resilience to errors,
+      faults or inconsistencies arising in the system or its environment, in particular from
+      interaction with natural persons or other systems, addressed by technical AND organisational
+      measures, and may be achieved through technical REDUNDANCY solutions including BACKUP OR FAIL-
+      SAFE PLANS. A system that CONTINUES TO LEARN after being placed on the market owes one thing
+      more, and it is a duty a document can breach while satisfying everything above: it must be
+      developed so as to eliminate or reduce as far as possible the risk of biased outputs
+      influencing input for future operations (FEEDBACK LOOPS), and to ensure any such feedback
+      loops are duly addressed with mitigation measures. Documentation that describes continuous
+      retraining on data the previous model selected, and treats that as acceptable, fails Art.
+      15(4) however strong its accuracy figures are. CYBERSECURITY here is not general IT security:
+      the Article requires resilience against unauthorised third parties altering the system's use,
+      outputs or performance by exploiting vulnerabilities, and the technical solutions must address
+      AI-SPECIFIC vulnerabilities where appropriate — measures to prevent, detect, respond to,
+      resolve and control for attacks manipulating the training data set (DATA POISONING), attacks
+      on pre-trained components used in training (MODEL POISONING), inputs designed to make the
+      model err (ADVERSARIAL EXAMPLES OR MODEL EVASION), CONFIDENTIALITY ATTACKS, and MODEL FLAWS.
+      An ISO 27001 certification and a list of conventional network controls name none of these and
+      do not answer Art. 15(5).
     document_verifiable: true
     effective_date_by_route:
       annex_iii: 2027-12-02
@@ -746,11 +878,20 @@ rules:
       system. Unlike every other Annex III area this one can require a NOTIFIED BODY: internal
       control (Annex VI) is available only where harmonised standards or common specifications were
       applied, and Annex VII is compulsory otherwise. Which applies turns on the standards the
-      provider used, so the route and the standards relied on both have to be stated.
-      EACH BRANCH CARRIES ITS OWN WORK, and both are selected alongside this rule:
-      AIA-PO-A43-1A sets out what internal control under Annex VI requires, AIA-PO-A43-1B what
-      the Annex VII notified-body route requires. A procedural act preceding market placement —
-      confirm separately.
+      provider used, so the route and the standards relied on both have to be stated. Annex VII is
+      compulsory in four cases the paragraph names: no harmonised standard exists and no common
+      specification is available; the provider did not apply the harmonised standard, or applied
+      only part of it; common specifications exist and the provider did not apply them; or a
+      harmonised standard was published WITH A RESTRICTION, and then only on the restricted part.
+      EACH BRANCH CARRIES ITS OWN WORK, and both are selected alongside this rule: AIA-PO-A43-1A
+      sets out what internal control under Annex VI requires, AIA-PO-A43-1B what the Annex VII
+      notified-body route requires. WHICH NOTIFIED BODY IS NOT ALWAYS THE PROVIDER'S CHOICE. On the
+      Annex VII route the provider may choose any of the notified bodies — except where the system
+      is intended to be put into service by LAW ENFORCEMENT, IMMIGRATION OR ASYLUM AUTHORITIES, or
+      by Union institutions, bodies, offices or agencies, in which case the market surveillance
+      authority referred to in Art. 74(8) or (9) shall act as the notified body. A provider selling
+      into those authorities does not appoint a body; one is fixed for it by the intended customer.
+      A procedural act preceding market placement — confirm separately.
     document_verifiable: false
     effective_date: 2026-08-02
     effective_date_note: >-
@@ -1339,24 +1480,34 @@ rules:
     # 2 and 3" — the deployer's own entry under 49(3) goes to the secure section on the same terms
     # as the provider's. Hence AIA-ALL-, not AIA-PO-.
     #
-    # UNDER-INCLUSIVE, deliberately. Art. 49(4) reaches Annex III points 1, 6 and 7 "in the areas of
-    # law enforcement, migration, asylum and border control management". Points 6 and 7 ARE those
-    # areas, so they are named here. Point 1 is biometrics, which qualifies only when used FOR law
-    # enforcement — and `AnnexIIIArea` records the listed area, not the sector a system is deployed
-    # in, so nothing in this ruleset can tell a police face-matching system from a workplace
-    # sign-in one. Naming `biometrics` here would send every biometric provider to the non-public
-    # section, which is a wrong instruction rather than a cautious one. The gap is recorded in
-    # `evidence_expected` so a biometrics provider is told to check it themselves.
-    applies_to_annex_iii_area: [law_enforcement, migration]
+    # OVER-INCLUSIVE WITHIN ONE AREA, and said so in the condition. Art. 49(4) reaches Annex III
+    # points 1, 6 and 7 "in the areas of law enforcement, migration, asylum and border control
+    # management". Points 6 and 7 ARE those areas and need no qualification. Point 1 is biometrics,
+    # which qualifies only when used FOR those purposes — and `AnnexIIIArea` records the listed
+    # area, not the sector a system is deployed in, so nothing in this ruleset tells a police
+    # face-matching system from a workplace sign-in one. `biometrics` is named anyway, on the same
+    # terms as AIA-HR-A12-3: the rule is selected for every biometric system and the sector limit
+    # is stated in `activation_condition`, where the reader can apply it. The alternative gates the
+    # rule out of the only area where the reader has to decide anything, and a duty withheld from
+    # the party who owes it is not the safe direction.
+    applies_to_annex_iii_area: [biometrics, law_enforcement, migration]
+    activation_condition: >-
+      Points 6 and 7 owe this unconditionally — they ARE the law enforcement and migration areas.
+      For an Annex III POINT 1 (biometrics) system it is owed only where the system is used for
+      LAW ENFORCEMENT, MIGRATION, ASYLUM OR BORDER CONTROL MANAGEMENT. That is a fact about the
+      sector of deployment rather than about the listed area, so no classification in this report
+      settles it: a biometric system used anywhere else registers in the public section under
+      Art. 49(1) or 49(3) and owes nothing here.
     obligation_status: mandatory
     check_type: presence
     evidence_expected: >-
       Confirmation that the Art. 49 registration was made in the SECURE NON-PUBLIC section of the EU
       database, carrying only the reduced set of Annex VIII fields this paragraph lists. An external
-      act against a registry — confirm separately. Note also that this paragraph reaches Annex III
-      point 1 (biometrics) systems used for law enforcement, migration, asylum or border control;
-      this ruleset classifies by listed AREA and not by sector of use, so a biometric system
-      deployed in those sectors must check this obligation for itself.
+      act against a registry — confirm separately. The reduced set is Annex VIII Section A points 1
+      to 10 except 6, 8 and 9; Section B points 1 to 5 and points 8 and 9; Section C points 1 to 3;
+      and Annex IX points 1, 2, 3 and 5. Only the Commission and the Art. 74(8) national
+      authorities have access to those restricted sections, so registering these systems in the
+      ordinary public section is a breach of this paragraph and not a harmless surplus.
     document_verifiable: false
     effective_date: 2026-08-02
     effective_date_note: >-
@@ -2596,7 +2747,13 @@ rules:
       Evidence that the party which originally placed this system on the market is cooperating with
       the new provider: the information, the reasonably expected technical access, and the other
       assistance needed to fulfil the obligations of this Regulation — in particular for the
-      conformity assessment of the high-risk system. A relational duty between two organisations,
+      conformity assessment of the high-risk system. THE PARAGRAPH THEN NAMES THREE THINGS THAT
+      COOPERATION INCLUDES, where relevant for those purposes, and they are what makes the general
+      duty checkable: (a) MAKING AVAILABLE TECHNICAL DOCUMENTATION sufficient to assess compliance
+      with the Art. 16 requirements; (b) INFORMING the new provider about KNOWN LIMITATIONS AND
+      FAILURE MODES; and (c) providing TARGETED TECHNICAL ACCESS, INCLUDING FOR TESTING AND
+      VALIDATION. An assurance of general cooperation that withholds the documentation, the failure
+      modes or the test access is not this obligation. A relational duty between two organisations,
       discharged in correspondence and supply terms rather than in a technical file — confirm
       separately. Note the direction: this binds the party that has STOPPED being the provider, and
       the provider obligations elsewhere in this report are the new provider's.

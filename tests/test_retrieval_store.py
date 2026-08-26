@@ -21,8 +21,8 @@ from chromadb.api.types import EmbeddingFunction
 
 from aiact.policy_loader import load_policy_spec
 from aiact.retrieval.chunking import chunk_document
-from aiact.retrieval.store import DocumentIndex, document_id
-from aiact.tools.evidence import find_evidence, query_for
+from aiact.retrieval.store import Chunk, DocumentIndex, Hit, document_id
+from aiact.tools.evidence import find_evidence, queries_for, query_for
 
 ROOT = Path(__file__).resolve().parents[1]
 DEV_DOC = ROOT / "data" / "golden_set" / "cases" / "pristine__untouched.md"
@@ -238,6 +238,44 @@ def test_find_evidence_returns_passages_for_a_document_verifiable_rule(client, s
     hits = find_evidence(index, rule, k=3)
     assert len(hits) == 3
     assert all(h.chunk.chunk_id in index.chunks for h in hits)
+
+
+def test_every_duty_the_evidence_text_names_gets_a_passage_of_its_own(spec):
+    """The retrieval budget is spent per duty, not per ranking.
+
+    `evidence_expected` is the query, and a rule that names several duties embeds to a point near
+    whichever of them most of the text is about. The passage that BREACHES one of the others is
+    then outside the result set entirely — and `judge` tells the model to read absence from the
+    excerpts as absence from the document, so an unretrieved breach becomes a PASS.
+
+    Asserted on the ALLOCATION and not on an embedding: what has to hold is that each facet takes
+    its best unclaimed passage before any facet takes a second, and that is a property of the
+    round-robin rather than of how MiniLM ranks a paragraph. A fake index gives each query its own
+    ranking, so a merge by distance and a merge by facet produce visibly different sets.
+    """
+    rule = next(r for r in spec.rules if r.rule_id == "AIA-HR-A15")
+    facets = queries_for(rule)
+    assert len(facets) > 3, "Art. 15 names accuracy, robustness, feedback loops and five attacks"
+
+    class OneRankingPerQuery:
+        """Every query ranks a chunk of its own first, then falls back to a shared tail."""
+
+        def search(self, query: str, k: int) -> list[Hit]:
+            own = f"own-{facets.index(query)}"
+            return [_fake_hit(own)] + [_fake_hit(f"tail-{i}") for i in range(k)]
+
+    hits = find_evidence(OneRankingPerQuery(), rule, k=len(facets))  # type: ignore[arg-type]
+    assert [h.chunk.chunk_id for h in hits] == [f"own-{i}" for i in range(len(facets))], (
+        "a facet was crowded out of its own budget: the duties a rule names after the first "
+        "reach the judge only if each is searched for in its own right"
+    )
+
+
+def _fake_hit(chunk_id: str) -> Hit:
+    chunk = Chunk(
+        chunk_id=chunk_id, body=chunk_id, heading_path=chunk_id, char_start=0, char_end=0
+    )
+    return Hit(chunk=chunk, distance=1.0)
 
 
 def test_a_different_embedder_gets_a_different_index(client):

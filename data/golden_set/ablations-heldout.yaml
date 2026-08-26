@@ -149,6 +149,36 @@ cases:
       apply it appropriately in their talent processes. Our documentation is clear, thorough and
       written for a non-technical audience.
 
+  # --- Art. 13(3) — what the instructions must contain ----------------------------------------
+  # The partial list: the items a provider finds easy to write are present in depth, and the three
+  # that commit it to something — pre-determined changes, resources and lifetime, log mechanisms —
+  # are gone, along with the accuracy figures point (b)(ii) puts in the instructions themselves.
+  - rule_id: AIA-HR-A13-3
+    ablation: removed
+    difficulty: obvious
+
+  - rule_id: AIA-HR-A13-3
+    ablation: present_but_inadequate
+    difficulty: buried
+    replacement: |
+      ### G.1 — What the instructions contain
+
+      **Identity and contact of the provider.** As given in the file header above.
+
+      **Characteristics and intended purpose.** PathFinder recommends internal employees for open
+      positions, successor slates and development assignments, and returns a readiness band with
+      named competency gaps. It is decision-support for line managers and talent review panels.
+
+      **Capabilities and limitations of performance.** Known limitations: legal and clinical
+      families perform materially below the other six; grade bands 1-2 are not validated;
+      public-administration employers are outside the validated population. Per-family accuracy
+      figures and the metrics used to obtain them are commercially sensitive and are held in
+      Meridian's validation dossier rather than issued to deployers.
+
+      **Human oversight measures.** The oversight the provider has built in, and the measures the
+      deployer must implement, are set out in Part E. The deployer must assign panel oversight to
+      trained staff with authority to overrule.
+
   # --- Art. 14 — human oversight --------------------------------------------------------------
   - rule_id: AIA-HR-A14
     ablation: removed

@@ -77,12 +77,13 @@ def test_shipped_spec_loads():
     # Art. 36(8), the one provider duty in Chapter III Section 4, and Art. 75c(3), whose second
     # sentence turns from the AI Office's power to the operator's report back.
     #
-    # Six more pay down articles_awaiting_rules, and each is the CONTENT of a duty another rule
+    # Seven more pay down articles_awaiting_rules, and each is the CONTENT of a duty another rule
     # only required the existence of: Art. 11(2) one documentation set for an Annex I product,
-    # Art. 12(3) the four records a biometric identification log must hold, Art. 41(5) the
-    # justification for departing from a common specification, Art. 47(2) what the declaration of
-    # conformity must say, Art. 48(2) and (4) the digital marking and the notified body's number,
-    # and Arts. 71(2) and (3) what each party enters in the EU database.
+    # Art. 12(3) the four records a biometric identification log must hold, Art. 13(3) the six
+    # items the instructions for use must contain, Art. 41(5) the justification for departing from
+    # a common specification, Art. 47(2) what the declaration of conformity must say, Art. 48(2)
+    # and (4) the digital marking and the notified body's number, and Arts. 71(2) and (3) what each
+    # party enters in the EU database.
     #
     # NINETEEN ARE CHAPTER V, the general-purpose AI model regime, and they share nothing with the
     # rest: `applies_to_risk_class: [gpai_model]` puts them on the other side of the cascade's
@@ -114,7 +115,7 @@ def test_shipped_spec_loads():
     # area gate: Art. 49(1) excepts Annex III point 2 from the EU database and Art. 49(2), which
     # registers a system derogated under Art. 6(3), excepts nothing. One rule could not hold both
     # lists without demanding an entry the Act registers nationally or withholding one it does not.
-    assert len(spec.rules) == 91
+    assert len(spec.rules) == 92
 
 
 # How many articles each fetched version holds. KEYED BY VERSION EVEN WHILE ONE IS FETCHED, because
@@ -430,12 +431,63 @@ def test_provider_process_obligations_are_not_document_verifiable():
 
 def test_high_risk_requirements_are_document_verifiable():
     spec = _spec()
-    # Nine: Arts. 9 to 15 whole, plus the two paragraphs a whole-article citation does not reach —
-    # Art. 11(2)'s single documentation set and Art. 12(3)'s biometric logging minimum, each gated
-    # to the systems its paragraph names.
+    # Ten: Arts. 9 to 15 whole, plus the three paragraphs a whole-article citation does not reach —
+    # Art. 11(2)'s single documentation set, Art. 12(3)'s biometric logging minimum and Art. 13(3)'s
+    # instructions-for-use contents, each judged on its own terms.
     reqs = [r for r in spec.rules if r.rule_id.startswith("AIA-HR-")]
-    assert len(reqs) == 9
+    assert len(reqs) == 10
     assert all(r.document_verifiable for r in reqs)
+
+
+# A term the Act coined for itself, in the shape it coins them: a parenthesis naming the thing the
+# sentence before it just described. `(feedback loops)`, `(automation bias)`, `(data poisoning)`.
+# Two or more words, so a bare point label `(a)` and a cross-reference `(EU)` are not terms.
+_COINED = re.compile(r"\((?:‘)?([a-z][a-z]*(?: [a-z-]+)+)(?:’)?\)")
+
+# A NAME IS A NOUN PHRASE. Past this length the parenthesis is not a name for what precedes it but
+# an expansion of it — Art. 12(3)(a)'s "(start date and time and end date and time of each use)"
+# spells out the period the same sentence already required, and demanding it verbatim would ask a
+# rule to quote the Act rather than describe the documentation. The longest name in the stored Act
+# is Art. 15(5)'s "adversarial examples or model evasion".
+_NAME_WORDS = 5
+
+
+def test_a_term_the_act_coins_reaches_the_judge_that_searches_for_it():
+    """Where the Act names a risk, the rule judging that article must name it too.
+
+    `tools.evidence.query_for` returns `evidence_expected`, so that text is not only the
+    instruction to the judge — it is the RETRIEVAL QUERY. A term missing from it is missing twice:
+    the judge is not told to look for the thing, and the passages that would show it are not among
+    the ones retrieved. The second loss is the worse one, because the prompt tells the judge to
+    read absence from the excerpts as absence from the document.
+
+    THE ACT'S OWN PARENTHESES ARE THE DERIVATION, not a list anyone maintains. Where the drafter
+    put a name in brackets after describing something — "the risk of possibly biased outputs
+    influencing input for future operations (feedback loops)" — that name is what a technical file
+    will call it, which makes it exactly the token the query needs and the one a compressed
+    evidence text drops first. Only judged rules: an unjudged rule's evidence text is rendered to a
+    reader and searches for nothing.
+
+    Silent on terms the Act does not bracket, and that limit is real — Art. 14(5)'s "two natural
+    persons" is a hard requirement written in plain prose and no test derives it. This catches the
+    class the text marks for itself."""
+    for rule in _spec().rules:
+        if not rule.document_verifiable:
+            continue
+        expected = rule.evidence_expected.lower()
+        missing = sorted(
+            {
+                t
+                for t in _COINED.findall(rule.requirement)
+                if len(t.split()) <= _NAME_WORDS and t.lower() not in expected
+            }
+        )
+        assert not missing, (
+            f"{rule.rule_id} is judged on Art. {rule.source.article}, which coins {missing}, and "
+            f"its evidence_expected names none of them. That text is the retrieval query: "
+            f"documentation breaching the named risk is not retrieved, and the judge is told to "
+            f"treat what it was not shown as absent from the document."
+        )
 
 
 def test_every_rule_is_mandatory_and_names_a_duty_holder():

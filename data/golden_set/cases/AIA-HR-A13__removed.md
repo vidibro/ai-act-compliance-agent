@@ -170,6 +170,43 @@ admitted only from contracted client pipelines with checksum verification and hu
 dataset snapshots. Rate limiting and anomaly detection guard against model-extraction probing.
 Penetration test: annual, latest February 2026, no critical findings outstanding.
 
+### 9.1 Contents of the instructions for use
+
+**Provider identity and contact.** As stated in the header of this document.
+
+**Characteristics and intended purpose.** TalentRank ranks applicants against a requisition to
+support recruiter shortlisting. It is decision-support only; it does not make hiring decisions and
+must not be wired to automatic rejection.
+
+**Capabilities and limitations of performance.** Expected accuracy per requisition family is stated
+in §8 with confidence intervals. Known limitations: (i) accuracy is lower for Marketing and
+Operations families; (ii) scores for candidates from BG/RO/GR markets carry wider confidence
+intervals owing to the data gap in §3; (iii) the system is not validated for public-sector
+requisitions, internal promotion, or contractor selection, and must not be used for them; (iv)
+performance degrades on CVs shorter than 200 words.
+
+**Circumstances that may lead to risks.** Using the ranking as an automatic filter, using it
+outside the six validated families, or assigning oversight to untrained staff.
+
+**Human oversight measures.** The oversight measures the provider has built in, and the measures
+the deployer must implement, are described in §7. The deployer must assign oversight to trained
+recruiters with authority to overrule the ranking.
+
+**Expected input data.** Structured requisition fields plus CV text in one of six supported
+languages; see Annex A for the field schema.
+
+**Pre-determined changes.** Two changes to the system and its performance were fixed at the
+initial conformity assessment and are covered by it: quarterly retraining on the same feature
+schema, and the addition of a supported language once its validation set clears the §8 thresholds.
+Anything else is a new conformity assessment.
+
+**Computational and hardware resources, maintenance and expected lifetime.** Scoring runs on the
+provider's hosted service; a deployer needs no local accelerator, and the integration requires 2
+vCPU and 4 GB of memory for the connector. Supported for 24 months from release; retraining cadence
+and change policy in Annex B. Security and model updates ship monthly and are mandatory; deployers
+are notified 60 days before a model version is retired.
+
+**Logs.** The deployer's ability to collect and interpret logs is described in §6.
 ## 10. Post-market monitoring plan
 
 Selection-rate ratio per protected group, score drift, recruiter override rate and reported

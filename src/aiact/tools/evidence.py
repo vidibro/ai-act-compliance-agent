@@ -16,9 +16,17 @@ the documentation is product prose ("panel members can return a case for re-revi
 legislative register against product register retrieves badly. `evidence_expected` was written to
 describe what satisfying documentation LOOKS LIKE, which is the same register as the target — it is
 the retrieval hint the spec always intended, finally used for retrieval.
+
+AND IT IS SEVERAL QUERIES, not one. Being the query makes `evidence_expected` decide what the judge
+is SHOWN and not only what it is told to check, and one vector for a text naming four duties lands
+near whichever of them the text mostly talks about. `queries_for` splits it and `find_evidence`
+spends the budget a duty at a time, so the passage answering the fourth duty is retrieved on that
+duty's own terms rather than on the text's average.
 """
 
 from __future__ import annotations
+
+import re
 
 from aiact.retrieval.store import DocumentIndex, Hit
 from aiact.schemas.policy import PolicyRule
@@ -40,8 +48,42 @@ def query_for(rule: PolicyRule) -> str:
     return rule.evidence_expected
 
 
+# A sentence short enough to be a fragment carries no duty of its own — a list label, an aside, a
+# clause the splitter cut at an abbreviation. Below this it is noise as a query and would spend a
+# slot on whatever the index happens to sit nearest.
+_MIN_QUERY_WORDS = 6
+
+# Sentence end: a full stop, colon or semicolon followed by space. Not a comma, because the Act's
+# duties are written as comma-separated limbs of one sentence and splitting there would ask for
+# half a requirement.
+_SENTENCE_END = re.compile(r"(?<=[.:;])\s+")
+
+
+def queries_for(rule: PolicyRule) -> list[str]:
+    """The query and its facets: the whole evidence text, then each duty it names separately.
+
+    ONE QUERY CANNOT REACH A DUTY THE REST OF THE TEXT OUTVOTES. An evidence text that names
+    accuracy, robustness and three classes of AI-specific attack embeds to a point near the
+    document's accuracy prose, because that is what most of the text is about; the sentence about
+    feedback loops contributes a fraction of the vector and the passage that breaches it can sit
+    outside the whole result set. Splitting restores it: that sentence is its own query, and it
+    retrieves its own passage on its own terms.
+
+    WHICH MATTERS MOST FOR TEXT THAT BREACHES rather than text that is missing. The query describes
+    what compliance looks like, so a passage saying the obligation is not met is far from it by
+    construction — and the judge is told to read absence from the excerpts as absence from the
+    document. A duty with no facet of its own is a duty whose breach the judge cannot be shown."""
+    whole = query_for(rule)
+    facets = [
+        s.strip()
+        for s in _SENTENCE_END.split(" ".join(whole.split()))
+        if len(s.split()) >= _MIN_QUERY_WORDS
+    ]
+    return [whole] + [f for f in facets if f != whole]
+
+
 def find_evidence(index: DocumentIndex, rule: PolicyRule, k: int = DEFAULT_K) -> list[Hit]:
-    """Candidate evidence for `rule` in one document, nearest first.
+    """Candidate evidence for `rule` in one document, k passages, nearest first.
 
     Raises for a rule the documentation cannot answer. Art. 17-21, 43, 47-49 and 72-73 are process
     and administrative obligations of the provider ORGANISATION — a quality management system, a
@@ -49,6 +91,18 @@ def find_evidence(index: DocumentIndex, rule: PolicyRule, k: int = DEFAULT_K) ->
     returns the k least-unrelated paragraphs, which is exactly how a checker talks itself into
     PASS on an obligation the document was never capable of evidencing. The spec already records
     which rules those are; this refuses to guess where it has no standing to.
+
+    THE BUDGET IS SPENT A FACET AT A TIME, not on one ranking. `queries_for` breaks the evidence
+    text into the duties it names, and each of them takes its best unclaimed passage in turn before
+    any of them takes a second. A duty the whole-text query cannot reach — because the rest of the
+    text outvotes it in the embedding — reaches its own passage here, which is the difference
+    between a judge that can see a breach and one that is shown only compliant prose and told to
+    treat what it was not shown as absent.
+
+    ROUND-ROBIN AND NOT A MERGED RANKING, because merging by distance reinstates the problem: the
+    passage that BREACHES an obligation is semantically far from a query describing compliance, so
+    it loses every global comparison and wins only against the other candidates for its own facet.
+    The whole text goes first, so a document with nothing to hide is retrieved much as before.
     """
     if not rule.document_verifiable:
         raise ValueError(
@@ -56,4 +110,15 @@ def find_evidence(index: DocumentIndex, rule: PolicyRule, k: int = DEFAULT_K) ->
             f"outside the technical documentation. Retrieval would return unrelated passages and "
             f"invite a false PASS. Handle it as 'confirm separately', do not search for it."
         )
-    return index.search(query_for(rule), k=k)
+    ranked = [iter(index.search(query, k=k)) for query in queries_for(rule)]
+    taken: dict[str, Hit] = {}
+    while ranked and len(taken) < k:
+        for hits in list(ranked):
+            hit = next((h for h in hits if h.chunk.chunk_id not in taken), None)
+            if hit is None:
+                ranked.remove(hits)
+                continue
+            taken[hit.chunk.chunk_id] = hit
+            if len(taken) == k:
+                break
+    return list(taken.values())

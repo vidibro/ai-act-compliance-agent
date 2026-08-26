@@ -16,8 +16,8 @@
 # ENTRIES ARE PER PROVISION, not per article. A reason written about a whole article applies to
 # every paragraph inside it and says nothing about any of them, and duties have been found sitting
 # under exactly that — Art. 8(2), Art. 41(5), Art. 71(2). `test_the_blanket_only_shrinks` counts
-# what is still dismissed that way, and it now counts ZERO: every one of the 789 addresses in the
-# stored text — 676 article divisions and 113 annex items — carries a ruling written for it.
+# what is still dismissed that way, and it now counts ZERO: every address in the stored text —
+# article divisions and annex items alike — carries a ruling written for it.
 #
 # SCOPE: obligations of every role the Act binds — provider, deployer, importer, distributor and
 # authorised representative — on BOTH TRACKS. The Art. 6 track for a high-risk AI system is the
@@ -173,7 +173,7 @@ article_rulings:
       'small mid-cap enterprise'. Borrowed whole from point (2) of the Annex to Recommendation
       (EU) 2025/1099, which this corpus does not hold. Inserted beside 14a and named alongside it in
       those same reliefs; same ground.
-    15: "'instructions for use'. Feeds Art. 13(3), cited whole as AIA-HR-A13."
+    15: "'instructions for use'. Feeds Art. 13(3), cited at 13(3) as AIA-HR-A13-3."
     16: "'recall of an AI system'. Feeds Art. 20, cited at 20(1)."
     17: "'withdrawal of an AI system'. Feeds Art. 20, cited at 20(1)."
     18: "'performance of an AI system'. Feeds Art. 15, cited whole."
@@ -397,8 +397,9 @@ article_rulings:
       and the persons who verified the result under Art. 14(5). Gated to the biometrics area.
   13:
     1: RULE AIA-HR-A13 — the system must be transparent enough for a deployer to interpret its output.
-    2: RULE AIA-HR-A13 — instructions for use, in an appropriate digital format.
-    3: RULE AIA-HR-A13 — what the instructions must contain, points (a)-(f).
+    2: RULE AIA-HR-A13 — the quality the instructions must have, supplied to 13(1) as its qualifier.
+    3: RULE AIA-HR-A13-3 — what the instructions must contain, points (a)-(f). A prescribed list,
+      judged for completeness against the list rather than against 13(1) transparency.
   14:
     1: RULE AIA-HR-A14 — designed so natural persons can effectively oversee it in use.
     2: RULE AIA-HR-A14 — what the oversight must aim at, including reasonably foreseeable misuse.
@@ -1953,7 +1954,13 @@ annex_rulings:
       items.
     B/chapeau: >-
       RULE AIA-NHR-A71-2 — the same, for a system the provider concluded is not high-risk and
-      registers under Art. 49(2).
+      registers under Art. 49(2). THE HEADING AND THE PARAGRAPH IT CITES DISAGREE, and this is the
+      one place a ruling here reads a heading against its own words: the OJ writes "by providers of
+      HIGH-RISK AI systems in accordance with Article 49(2)", while Art. 49(2) is the registration
+      of a system the provider concluded under Art. 6(3) is NOT high-risk. The paragraph governs —
+      Section B point 6 asks WHICH Art. 6(3) condition the system relies on, which only a
+      not-high-risk claim has — so the duty-holder is read from Art. 49(2). Sections A and C need
+      no such reading and get none; C/chapeau below takes its heading at face value.
     C/chapeau: >-
       RULE AIA-DP-A71-3 — the same, for information submitted BY DEPLOYERS under Art. 49(3). The
       section heading is the only place the Act says which party owes this block.
@@ -1988,7 +1995,7 @@ annex_rulings:
     A/12: >-
       RULE AIA-PO-A71-2 — electronic instructions for use, withheld for law enforcement,
       migration, asylum and border control systems. The instructions themselves are Art. 13,
-      checked by AIA-HR-A13.
+      checked by AIA-HR-A13 and AIA-HR-A13-3.
     A/13: >-
       RULE AIA-PO-A71-2 — a URL for additional information, expressly OPTIONAL. Not a duty at all.
     B/1: >-
@@ -2157,7 +2164,25 @@ annexes_awaiting_rules: {}
 #
 # An annex absent from this list is owed to both routes. Read by the coverage tests, not by any
 # rule: it constrains what a ruling has to name, not what a report says.
+#
+# AN ENTRY MAY BE ITEMISED, because the Act reaches parts of one annex from different doors.
+# Art. 43(3) applies six named pieces of Annex VII to the Annex I Section A route and does not
+# apply the rest, so the routes Annex VII's items are owed to differ item by item and one answer
+# for the whole annex is wrong whichever way it is written. Where an entry is a mapping, an item
+# absent from it is owed to both routes; where it is a line, that line answers for every item.
 annex_route_population:
+  VII:
+    # The two items Art. 43(3) leaves out. Point 1 says the procedure IS points 2 to 5 and point 2
+    # is its overview; the paragraph applies point 3, points 4.3, 4.4 and 4.5, the fifth paragraph
+    # of point 4.6, and point 5 — so an Annex I Section A provider is never sent to either of
+    # these, and a rule reaching it here would be reporting an obligation the Act does not impose.
+    "1": >-
+      annex_iii — the definitional item. Art. 43(1)(b) sends an Annex III point 1 provider to the
+      whole of Annex VII; Art. 43(3) sends an Annex I Section A provider to six pieces of it by
+      name, and this is not among them.
+    "2": >-
+      annex_iii — the overview of the procedure, on the same ground as point 1: named by neither
+      limb of Art. 43(3).
   VI: >-
     annex_iii — Art. 43(1) and (2) put the internal-control procedure on Annex III systems. An
     Annex I Section A provider follows the conformity procedure of its own sectoral act under

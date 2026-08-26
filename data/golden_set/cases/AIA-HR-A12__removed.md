@@ -163,6 +163,7 @@ Penetration test: annual, latest February 2026, no critical findings outstanding
 TalentRank is designed so that its operation is sufficiently transparent for deployers to
 interpret its output and use it appropriately. The following instructions for use accompany the
 system.
+### 9.1 Contents of the instructions for use
 
 **Provider identity and contact.** As stated in the header of this document.
 
@@ -187,8 +188,16 @@ recruiters with authority to overrule the ranking.
 **Expected input data.** Structured requisition fields plus CV text in one of six supported
 languages; see Annex A for the field schema.
 
-**Maintenance and expected lifetime.** Supported for 24 months from release; retraining cadence
-and change policy in Annex B. Deployers are notified 60 days before a model version is retired.
+**Pre-determined changes.** Two changes to the system and its performance were fixed at the
+initial conformity assessment and are covered by it: quarterly retraining on the same feature
+schema, and the addition of a supported language once its validation set clears the §8 thresholds.
+Anything else is a new conformity assessment.
+
+**Computational and hardware resources, maintenance and expected lifetime.** Scoring runs on the
+provider's hosted service; a deployer needs no local accelerator, and the integration requires 2
+vCPU and 4 GB of memory for the connector. Supported for 24 months from release; retraining cadence
+and change policy in Annex B. Security and model updates ship monthly and are mandatory; deployers
+are notified 60 days before a model version is retired.
 
 **Logs.** The deployer's ability to collect and interpret logs is described in §6.
 ## 10. Post-market monitoring plan

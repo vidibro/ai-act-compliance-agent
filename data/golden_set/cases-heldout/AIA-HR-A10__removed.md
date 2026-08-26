@@ -214,6 +214,7 @@ recommendation can be reconstructed and attributed to the exact build that produ
 PathFinder is designed so that its operation is sufficiently transparent for deployers to
 interpret its output and use it appropriately. The following instructions accompany the system and
 are supplied to every deployer before use.
+### G.1 — What the instructions contain
 
 **Identity and contact of the provider.** As given in the file header above.
 
@@ -251,10 +252,18 @@ review shortlist-adoption rates quarterly against the report Meridian supplies.
 mapped competency framework; the field schema and mapping requirements are in Annex 1. Protected
 attributes are neither required nor accepted on the inference path.
 
-**Maintenance, changes and expected lifetime.** Each release is supported for 18 months. Retraining
-cadence, change-notification policy and the version-retirement schedule are in Annex 2. Deployers
-receive 90 days' notice before a model version is withdrawn, and a change log for every release
-that alters band boundaries or calibration.
+**Pre-determined changes.** Three changes to PathFinder and its performance were fixed by Meridian
+at the initial conformity assessment and fall inside it: scheduled retraining on the same feature
+schema, calibration refits within the Part D thresholds, and the addition of a job family once its
+validation set clears those thresholds. Any other change is assessed afresh.
+
+**Computational and hardware resources, maintenance, changes and expected lifetime.** PathFinder is
+served from Meridian's hosted inference tier; a deployer runs no model locally and needs only the
+connector, sized at 2 vCPU and 8 GB of memory for a 50 000-employee population. Each release is
+supported for 18 months. Retraining cadence, change-notification policy and the version-retirement
+schedule are in Annex 2. Software updates are shipped monthly and are mandatory for supported
+releases. Deployers receive 90 days' notice before a model version is withdrawn, and a change log
+for every release that alters band boundaries or calibration.
 
 **Log collection and interpretation.** The deployer's ability to collect, access and interpret
 event records is described in Part F; the export schema is in Annex 3.
