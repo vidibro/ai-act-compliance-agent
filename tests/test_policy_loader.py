@@ -468,10 +468,17 @@ _NAME_WORDS = 5
 # system, the elements may be INTEGRATED into existing documentation, the record is kept AS PART OF
 # the file already maintained. Matched as the Act writes them rather than by topic, so a relief
 # added in a later version joins this population without anyone deciding it should.
+#
+# THE PRESUMPTIONS OF CONFORMITY ARE THE SAME KIND OF THING and are written in the same register:
+# a system IS PRESUMED TO COMPLY or IS DEEMED TO COMPLY where it meets a harmonised standard, a
+# common specification or a certificate under another Regulation. Legally they shift the burden
+# rather than discharge the duty, but they reach the reader the same way — a provider that already
+# has the standard is being told to build something it may already be presumed to have.
 _RELIEF = re.compile(
     r"\b(deemed to be fulfilled|may be part of|may include the aspects"
     r"|shall have a choice of integrating|as part of the documentation"
-    r"|part of, or combined with|include cross-references)\b",
+    r"|part of, or combined with|include cross-references"
+    r"|shall be presumed|presumed to (?:be in )?compl|deemed to comply)\b",
     re.I,
 )
 
@@ -487,42 +494,46 @@ def test_a_relief_reaches_the_reader_the_duty_reaches():
     the paragraph is `checked`, because a rule cites the article it sits in.
 
     SATISFIED TWO WAYS, and both are real answers. A rule whose own citation IS the relief paragraph
-    renders it by existing — Art. 8(2) is its own rule. Otherwise some rule citing the same article
-    must name the paragraph by number, which is what makes the reader able to look it up."""
+    renders it by existing — Art. 8(2) is its own rule. Otherwise SOME rule must name the paragraph
+    by number in its evidence text, which is what makes the reader able to look it up. The naming
+    rule need not sit in the same article: Art. 42(2) presumes the cybersecurity limb of Art. 15
+    satisfied, and the place a reader meets that is AIA-HR-A15, which cites Art. 15."""
+    spec = _spec()
     for rule_ids, article, paragraph in _relief_paragraphs():
-        assert rule_ids, (
-            f"Art. {article}({paragraph}) says a duty may be discharged through a process under "
-            f"other law, and no rule cites Art. {article} at all. A relief nobody renders is a "
-            f"duty asserted more widely than the Act asserts it."
-        )
-        spec = _spec()
         by_id = {r.rule_id: r for r in spec.rules}
         owns = [r for r in rule_ids if str(by_id[r].source.paragraph) == paragraph]
         cite = re.compile(rf"\b{re.escape(article)}\({re.escape(paragraph)}\)")
-        names = [r for r in rule_ids if cite.search(by_id[r].evidence_expected)]
+        names = [r.rule_id for r in spec.rules if cite.search(r.evidence_expected)]
         assert owns or names, (
-            f"Art. {article}({paragraph}) is a relief and {sorted(rule_ids)} cite that article "
-            f"without naming it. The reader is told the whole duty and not that it may already be "
-            f"met — a false positive, and the report has no way to show its own over-reach."
+            f"Art. {article}({paragraph}) says a duty may be discharged through, or is presumed "
+            f"satisfied by, something the operator already has, and no rule names it. The reader "
+            f"is told the whole duty and not that it may already be met — a false positive, and "
+            f"the report has no way to show its own over-reach."
         )
 
 
 def _relief_paragraphs() -> list[tuple[list[str], str, str]]:
-    """Every paragraph carrying a relief, with the rules citing its article."""
+    """Every paragraph in the Act carrying a relief, with the rules citing its article.
+
+    SWEPT OVER THE WHOLE ACT rather than over the articles some rule cites. Deriving the population
+    from the cited articles makes the guard blind exactly where it is needed: Arts. 40 and 42 hold
+    the presumptions of conformity that run against the Chapter III Section 2 requirements, no rule
+    cites either article, and so no phrase list however complete would have reached them."""
     spec = _spec()
     articles: dict[str, list[str]] = {}
     for rule in spec.rules:
         if rule.source.article is not None:
             articles.setdefault(str(rule.source.article), []).append(rule.rule_id)
     found: list[tuple[list[str], str, str]] = []
-    for article, rule_ids in articles.items():
+    for path in sorted(ARTICLES_DIR.glob("article-*.md")):
+        article = path.stem.split("-", 1)[1].lstrip("0")
         for paragraph in provision_labels(ARTICLES_DIR, article):
             try:
                 text, _url = resolve_requirement(ARTICLES_DIR, article, paragraph)
             except ValueError:
                 continue  # a point-shaped article; the relief phrases occur in paragraphs
             if _RELIEF.search(text):
-                found.append((rule_ids, article, str(paragraph)))
+                found.append((articles.get(article, []), article, str(paragraph)))
     return found
 
 

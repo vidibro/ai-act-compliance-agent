@@ -85,7 +85,11 @@ def _section_b_note(products: list[str]) -> str:
         f"Art. 2(2) only Art. 6(1), Art. 60a and Arts. 102-112 of this Regulation apply to such a "
         f"system — the requirements of Art. 9-15 and the provider obligations of Art. 16 onward do "
         f"not. Its safety duties come from that sectoral legislation instead, which is outside "
-        f"this tool's scope."
+        f"this tool's scope. ART. 60a IS THE ONE THAT STILL BITES HERE: if this system is tested "
+        f"in real world conditions, the Member State framework allowing that must under "
+        f"Art. 60a(5)(b) ensure compliance with Art. 60(2), (3), (4)(d) to (j) and (5) to (9). "
+        f"Those conditions reach the provider through national law rather than through this "
+        f"Regulation, so no obligation for them is listed above — confirm them separately."
     )
 
 

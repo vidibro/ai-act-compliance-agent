@@ -693,9 +693,9 @@ class RealWorldTesting(StrEnum):
     and is taken from Art. 2(1)'s treatment in the cascade. There, only a document that positively
     rules out every territorial limb ends the assessment, because almost no document mentions
     territory. The same holds here: a technical file describes a system, not a testing programme,
-    and reading its silence as "no real-world testing" would drop six duties on the strength of a
-    document that was never asked the question. `NOT_STATED` therefore selects the rules with the
-    condition attached, and only `NONE` withholds them."""
+    and reading its silence as "no real-world testing" would drop four obligations on the strength
+    of a document that was never asked the question. `NOT_STATED` therefore selects the rules with
+    the condition attached, and only `NONE` withholds them."""
 
     UNDERWAY = "underway"
     """The description states that testing in real world conditions is being conducted, or has
@@ -708,10 +708,16 @@ class RealWorldTesting(StrEnum):
     problem."""
 
     NONE = "none"
-    """The description POSITIVELY establishes that the system is not and will not be tested in real
-    world conditions outside a sandbox: validation is retrospective, or on held-out data, or inside
-    an AI regulatory sandbox under Art. 57, where the authority supervises Art. 60 compliance under
-    Art. 76(2) instead. The only answer that withholds the duties."""
+    """The description POSITIVELY RULES OUT any running on live inputs outside a sandbox: the
+    testing happens inside an AI regulatory sandbox under Art. 57 and nowhere else, where the
+    authority supervises Art. 60 compliance under Art. 76(2) instead, or the description says in
+    terms that the system has never left the lab.
+
+    HOW THE SYSTEM WAS EVALUATED IS NOT AN ANSWER TO THIS. Held-out sets, retrospective data and
+    offline benchmarks appear in nearly every technical file and are not exclusive of a live trial
+    running alongside them. Reading them as `none` would take the one answer that withholds four
+    obligations from a document that was never asked the question — the inference `NOT_STATED`
+    exists to prevent."""
 
     NOT_STATED = "not_stated"
     """THE ORDINARY ANSWER. The description says nothing either way. The duties are reported with

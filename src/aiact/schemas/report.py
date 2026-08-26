@@ -259,9 +259,10 @@ class ComplianceReport(BaseModel):
     outside a sandbox before it is placed on the market.
 
     The one answer here that can WITHHOLD obligations, and the report says so rather than letting
-    six duties appear and disappear silently. `RealWorldTesting.NONE` — a document that positively
-    establishes there is no such trial — drops Art. 60(4)'s conditions, Art. 60(7), Art. 60(8) and
-    Art. 61. Every other answer, silence included, leaves them listed with their condition attached.
+    four obligations appear and disappear silently. `RealWorldTesting.NONE` — a document that
+    positively establishes there is no such trial — drops Art. 60(4)'s conditions, Art. 60(7),
+    Art. 60(8) and Art. 61. Every other answer, silence included, leaves them listed with their
+    condition attached.
 
     `None` means the question was not put, because the system is not high-risk and Art. 60 governs
     no other tier."""
@@ -435,7 +436,7 @@ class ComplianceReport(BaseModel):
 
         THE ONLY NOTE ATTACHED TO A WITHHOLDING, which is why it exists at all. Every other answer
         in this report resolves a condition on an obligation that is listed either way; this one
-        decides whether six obligations are listed. A reader who is not told which way it went
+        decides whether four obligations are listed. A reader who is not told which way it went
         cannot tell a system that cleared Art. 60 from one nobody asked about, and the difference
         is the whole of Arts. 60 and 61."""
         answer = self.real_world_testing

@@ -104,13 +104,21 @@ def _check_pins_match_the_route(case: ClassificationCase, path: Path) -> None:
             )
         # Against the CASCADE ORDER, not the walked route: an unpinned abstention node halts the
         # walk, so nothing is ever "after" it there. NODE_KEYS is declared in cascade order, which
-        # is what makes the index comparison meaningful. Two entries are off that order and exempt:
-        # `transparency`, which `assemble` asks on every route including this one, and
-        # `provider_reallocation`, which a different graph asks and never on an abstaining case.
+        # is what makes the index comparison meaningful. Four entries are off that order and
+        # exempt: `transparency`, which `assemble` asks on every route including this one, and
+        # the three the GAP layer asks — `provider_reallocation`, `deployer_type` and
+        # `real_world_testing` — none of which is reached on an abstaining case, because all
+        # three gate on the tier.
         order = [
             n
             for n in NODE_KEYS
-            if n not in ("transparency", "provider_reallocation", "deployer_type")
+            if n
+            not in (
+                "transparency",
+                "provider_reallocation",
+                "deployer_type",
+                "real_world_testing",
+            )
         ]
         past = [
             n
@@ -151,6 +159,11 @@ def _check_pins_match_the_route(case: ClassificationCase, path: Path) -> None:
         # narrowed by the deployer's organisation.
         if case.expected_annex_iii_area is not None:
             reached.add("deployer_type")
+        # `real_world_testing` is gated on the TIER and not the route: Art. 60(1) opens on systems
+        # high-risk under Annex III "or covered by Union harmonisation legislation listed in
+        # Section A of Annex I", so both Art. 6 doors reach it. It decides whether Art. 60(4)'s
+        # eleven conditions, Art. 60(7), Art. 60(8) and Art. 61 are reported at all.
+        reached.add("real_world_testing")
     problems: list[str] = []
     for node_id, field in NODE_KEYS.items():
         if field is None or field in DERIVED_FROM_CLASS:

@@ -777,3 +777,22 @@ def test_no_article_50_duty_reaches_a_general_purpose_model(spec):
             f"{offending} attach an Art. 50 duty to a general-purpose AI MODEL for the "
             f"{role.value} role. Art. 50 reaches providers and deployers of AI SYSTEMS."
         )
+
+
+def test_only_chapter_iii_sections_1_to_3_carry_two_start_dates(spec):
+    """The converse of the guard above, and the half a rule can slip through.
+
+    Art. 113(c) defers Arts. 6 to 27 and nothing else. A rule OUTSIDE that range carrying the
+    split states a date the Article does not give it, and `reporting._outstanding_block` prints
+    that date to the reader as the day the duty begins — so the error is a live obligation
+    presented as a future one. The forward guard cannot see it: it iterates the rules inside the
+    range and never asks which rules outside it also took the split."""
+    outside = [
+        r.rule_id
+        for r in spec.rules
+        if r.effective_date_by_route and r.source.article not in _ROUTE_SPLIT_ARTICLES
+    ]
+    assert not outside, (
+        f"{outside} cite an article outside Chapter III Sections 1-3 and carry two start dates. "
+        f"Art. 113 gives those articles one date; state it as `effective_date`."
+    )

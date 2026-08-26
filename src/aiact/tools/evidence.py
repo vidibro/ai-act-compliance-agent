@@ -56,7 +56,13 @@ _MIN_QUERY_WORDS = 6
 # Sentence end: a full stop, colon or semicolon followed by space. Not a comma, because the Act's
 # duties are written as comma-separated limbs of one sentence and splitting there would ask for
 # half a requirement.
-_SENTENCE_END = re.compile(r"(?<=[.:;])\s+")
+#
+# THE ABBREVIATIONS ARE EXCLUDED BY NAME. Evidence texts cite the Act constantly, and a citation
+# carries a full stop in the middle of a clause: splitting at "under Art. 15(4) however strong its
+# accuracy figures are" yields a query beginning "15(4) however strong", which names no duty, is
+# long enough to survive the word-count filter, and spends a slot. `Art`, `Arts`, `No` and `Reg`
+# are the ones the stored Act and the evidence texts use.
+_SENTENCE_END = re.compile(r"(?<=[.:;])(?<!\bArt\.)(?<!\bArts\.)(?<!\bNo\.)(?<!\bReg\.)\s+")
 
 
 def queries_for(rule: PolicyRule) -> list[str]:
@@ -79,7 +85,10 @@ def queries_for(rule: PolicyRule) -> list[str]:
         for s in _SENTENCE_END.split(" ".join(whole.split()))
         if len(s.split()) >= _MIN_QUERY_WORDS
     ]
-    return [whole] + [f for f in facets if f != whole]
+    # A single-sentence evidence text splits into one facet that IS the whole text, and a text
+    # whose first sentence runs to the end splits into a facet that starts it. Either way the
+    # second query embeds where the first already did and buys nothing for the slot it costs.
+    return [whole] + [f for f in facets if not whole.startswith(f)]
 
 
 def find_evidence(index: DocumentIndex, rule: PolicyRule, k: int = DEFAULT_K) -> list[Hit]:
@@ -110,15 +119,23 @@ def find_evidence(index: DocumentIndex, rule: PolicyRule, k: int = DEFAULT_K) ->
             f"outside the technical documentation. Retrieval would return unrelated passages and "
             f"invite a false PASS. Handle it as 'confirm separately', do not search for it."
         )
-    ranked = [iter(index.search(query, k=k)) for query in queries_for(rule)]
+    queries = queries_for(rule)
+    # EVERY FACET GETS A SLOT, so k is a floor and not a ceiling. A rule naming sixteen duties
+    # spends the first ten slots on its first ten facets and the rest never reach the index at
+    # all — and those are the later points of a list, which is where an instructions-for-use or
+    # data-governance rule keeps the items a file most often omits. Returning six more passages
+    # for such a rule costs prompt; not returning them costs the judge the only evidence it would
+    # have had for duties it is still asked to rule on.
+    budget = max(k, len(queries))
+    ranked = [iter(index.search(query, k=budget)) for query in queries]
     taken: dict[str, Hit] = {}
-    while ranked and len(taken) < k:
+    while ranked and len(taken) < budget:
         for hits in list(ranked):
             hit = next((h for h in hits if h.chunk.chunk_id not in taken), None)
             if hit is None:
                 ranked.remove(hits)
                 continue
             taken[hit.chunk.chunk_id] = hit
-            if len(taken) == k:
+            if len(taken) == budget:
                 break
     return list(taken.values())

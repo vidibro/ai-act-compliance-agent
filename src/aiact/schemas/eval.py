@@ -367,7 +367,7 @@ class ClassificationCase(BaseModel):
     the trial that preceded it.
 
     `NONE` IS A POSITIVE FINDING and a case must not use it for silence. It is the one answer that
-    withholds six obligations, so a case that labels an ordinary quiet document `none` teaches the
+    withholds four obligations, so a case that labels an ordinary quiet document `none` teaches the
     checker that quiet means cleared — the same failure `expected_deployer_type` guards against,
     with more at stake, since Art. 60(4)'s conditions bind before testing starts and a provider
     told late is told uselessly."""

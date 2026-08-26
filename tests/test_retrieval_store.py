@@ -13,6 +13,7 @@ is enough to prove the wiring carries a query to the right chunk and back.
 from __future__ import annotations
 
 import math
+import re
 from pathlib import Path
 
 import chromadb
@@ -233,11 +234,24 @@ def test_process_obligations_are_never_searched_for(spec):
 
 
 def test_find_evidence_returns_passages_for_a_document_verifiable_rule(client, spec):
+    """k is a FLOOR. Art. 14 names more duties than the k asked for, and each takes a slot, so the
+    result is as long as the facet count — the alternative is duties the judge rules on without
+    being shown anything."""
     rule = next(r for r in spec.rules if r.rule_id == "AIA-HR-A14")
     index = _index(DEV_DOC.read_text(encoding="utf-8"), client)
     hits = find_evidence(index, rule, k=3)
-    assert len(hits) == 3
+    assert len(hits) == len(queries_for(rule))
     assert all(h.chunk.chunk_id in index.chunks for h in hits)
+
+
+def test_a_rule_with_few_duties_still_gets_the_whole_budget(client, spec):
+    """The floor cuts one way only: a rule naming fewer duties than k asked for keeps k passages,
+    because k answers a different question — how much of the document the judge needs to see to
+    read a section in context."""
+    rule = next(r for r in spec.rules if r.rule_id == "AIA-PO-A16-B")
+    assert len(queries_for(rule)) < 6
+    index = _index(DEV_DOC.read_text(encoding="utf-8"), client)
+    assert len(find_evidence(index, rule, k=6)) == 6
 
 
 def test_every_duty_the_evidence_text_names_gets_a_passage_of_its_own(spec):
@@ -264,7 +278,9 @@ def test_every_duty_the_evidence_text_names_gets_a_passage_of_its_own(spec):
             own = f"own-{facets.index(query)}"
             return [_fake_hit(own)] + [_fake_hit(f"tail-{i}") for i in range(k)]
 
-    hits = find_evidence(OneRankingPerQuery(), rule, k=len(facets))  # type: ignore[arg-type]
+    # k deliberately BELOW the facet count: the guarantee under test is that `find_evidence`
+    # raises its own budget to fit the duties, not that a caller happened to ask for enough.
+    hits = find_evidence(OneRankingPerQuery(), rule, k=3)  # type: ignore[arg-type]
     assert [h.chunk.chunk_id for h in hits] == [f"own-{i}" for i in range(len(facets))], (
         "a facet was crowded out of its own budget: the duties a rule names after the first "
         "reach the judge only if each is searched for in its own right"
@@ -292,3 +308,21 @@ def test_a_different_embedder_gets_a_different_index(client):
     other = DocumentIndex.build(DOC_A, client=client, embedding_function=OtherStub())
     assert other.doc_id == stub.doc_id, "same document"
     assert other.collection_name != stub.collection_name, "but not the same index"
+
+
+def test_no_facet_is_a_citation_the_splitter_cut_in_half(spec):
+    """A query that begins mid-citation names no duty and spends a slot on nothing.
+
+    Evidence texts cite the Act in the middle of clauses — "under Art. 15(4) however strong its
+    accuracy figures are" — and the full stop in `Art.` is the same character that ends a sentence.
+    Cut there, the tail starts with the paragraph number and reads as a fragment: too long for the
+    word-count filter to drop, too incoherent to retrieve the passage the clause was about. Each
+    one displaces a real duty from the budget."""
+    for rule in spec.rules:
+        if not rule.document_verifiable:
+            continue
+        for facet in queries_for(rule):
+            assert not re.match(r"^\d+[(.]", facet), (
+                f"{rule.rule_id} has a retrieval query starting {facet[:40]!r} — the splitter cut "
+                f"a citation. Add the abbreviation to `_SENTENCE_END`."
+            )

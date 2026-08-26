@@ -211,9 +211,17 @@ class NodeRunScore:
         ]
         for node_id in NODE_KEYS:
             asked = self.asked.get(node_id, 0)
-            if not asked:
-                continue
             counts = self.outcomes(node_id)
+            # A NODE THE RUN NEVER ASKED STILL GETS A ROW. Skipping it hides the one state worth
+            # seeing — a node wired into the graph that no case reaches, whose answer therefore
+            # decides obligations nothing measures. The row carries the reason so it does not read
+            # as a zero score.
+            if not asked:
+                out.append(
+                    f"  {node_id:24} {0:5} {sum(counts.values()):6} {'-':>7} {'-':>5} {'-':>7}"
+                    f"   NEVER ASKED — no case reaches this node"
+                )
+                continue
             pinned = sum(counts.values())
             if NODE_KEYS[node_id] is None:
                 out.append(

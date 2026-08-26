@@ -375,7 +375,8 @@ flowchart TD
   may test a high-risk system **in real world conditions** outside a sandbox before placing it on
   the market (Art. 60), and doing so costs eleven conditions that all bind *before* the first live
   input — a testing plan submitted to and approved by the market surveillance authority, a
-  registration with a Union-wide identification number, a six-month ceiling, a written agreement
+  registration by one of three routes that differ in where the entry goes and what it holds, a
+  six-month ceiling, a written agreement
   with any participating deployer — plus serious-incident reporting with a standing recall
   procedure (60(7)), notification of the outcomes (60(8)), and informed consent from every subject
   (Art. 61). A provider that never leaves the lab owes none of it, so the question is asked.
