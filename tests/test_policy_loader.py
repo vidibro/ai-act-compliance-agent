@@ -120,7 +120,12 @@ def test_shipped_spec_loads():
     # ONE comes from an article that is otherwise entirely the authorities' — Art. 78(3), whose
     # second subparagraph turns and binds a law enforcement, immigration or asylum authority that
     # is itself the provider.
-    assert len(spec.rules) == 93
+    #
+    # FOUR ARE THE REAL-WORLD TESTING ROUTE, Arts. 60(4), 60(7), 60(8) and 61, and they are the
+    # only rules besides Art. 25(2) whose activation is decided by a question rather than by the
+    # classification: the duties exist for a provider that elects to trial the system on live
+    # inputs before placing it on the market, and for nobody else.
+    assert len(spec.rules) == 97
 
 
 # How many articles each fetched version holds. KEYED BY VERSION EVEN WHILE ONE IS FETCHED, because

@@ -673,6 +673,52 @@ _REALLOCATION_CITE: dict[ProviderReallocation, tuple[str, str | None]] = {
 }
 
 
+class RealWorldTesting(StrEnum):
+    """Art. 60. Whether the provider is testing this system IN REAL WORLD CONDITIONS outside a
+    sandbox — an elective route that carries its own duties and is owed by nobody who has not
+    taken it.
+
+    THE SAME SHAPE AS ProviderReallocation, and for the same reason. Art. 60(4)'s eleven
+    conditions, Art. 60(7)'s incident and recall duties, Art. 60(8)'s notification and Art. 61's
+    informed consent have no holder until a provider elects the route. Asserting them against every
+    provider would report eleven conditions to an organisation that never left the lab; withholding
+    them from one that did leaves the largest block of pre-market duties in the Act unreported.
+    So it is asked, and the answer decides.
+
+    ONLY REACHED AT HIGH RISK. Art. 60(1) opens on "high-risk AI systems listed in Annex III or
+    covered by Union harmonisation legislation listed in Section A of Annex I", so no other tier
+    has a system this Article can be about.
+
+    SILENCE CONTINUES RATHER THAN CLEARS, which is the opposite default to `ProviderReallocation`
+    and is taken from Art. 2(1)'s treatment in the cascade. There, only a document that positively
+    rules out every territorial limb ends the assessment, because almost no document mentions
+    territory. The same holds here: a technical file describes a system, not a testing programme,
+    and reading its silence as "no real-world testing" would drop six duties on the strength of a
+    document that was never asked the question. `NOT_STATED` therefore selects the rules with the
+    condition attached, and only `NONE` withholds them."""
+
+    UNDERWAY = "underway"
+    """The description states that testing in real world conditions is being conducted, or has
+    been. Every Art. 60 and Art. 61 duty is live now."""
+
+    PLANNED = "planned"
+    """The description states an intention to test in real world conditions before placing the
+    system on the market. The conditions of Art. 60(4) bind before the testing starts — the plan
+    must be submitted and approved and the testing registered first — so this is not a later
+    problem."""
+
+    NONE = "none"
+    """The description POSITIVELY establishes that the system is not and will not be tested in real
+    world conditions outside a sandbox: validation is retrospective, or on held-out data, or inside
+    an AI regulatory sandbox under Art. 57, where the authority supervises Art. 60 compliance under
+    Art. 76(2) instead. The only answer that withholds the duties."""
+
+    NOT_STATED = "not_stated"
+    """THE ORDINARY ANSWER. The description says nothing either way. The duties are reported with
+    the condition attached, so a provider that is not testing can dismiss them in one reading and
+    one that is finds them named."""
+
+
 class Verdict(StrEnum):
     """Outcome of checking ONE PolicyRule against the system's documentation."""
 

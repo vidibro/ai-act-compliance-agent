@@ -128,6 +128,11 @@ def render_report(report: ComplianceReport, spec: PolicySpec) -> str:
         out += _wrapped("!!", report.provider_reallocation_note, indent="") + [""]
     if report.deployer_type_note:
         out += _wrapped("!!", report.deployer_type_note, indent="") + [""]
+    # The only note attached to a WITHHOLDING. Six obligations are listed or not listed on this
+    # answer, so a renderer that skipped it would leave a reader unable to tell a system that
+    # cleared Art. 60 from one nobody asked about.
+    if report.real_world_testing_note:
+        out += _wrapped("!!", report.real_world_testing_note, indent="") + [""]
     # Chapter V lists every obligation for every model, because neither of its two gates is a fact
     # a model card reliably settles. This is the other half: the reader is told what their OWN
     # document says about each line, rather than having the condition read back at them.

@@ -223,12 +223,15 @@ article_rulings:
       corpus does not hold, so supplying it gives the node the pointer and not the test. The
       operative words are the gloss in the node's own question, which nothing here checks against a
       stored document.
-    53: "'real-world testing plan'. Feeds Art. 60, an optional route out of scope."
+    53: >-
+      'real-world testing plan'. Feeds Art. 60(4)(a) and Annex IX(4), both carried by AIA-PO-A60-4.
     54: "'sandbox plan'. Feeds Arts. 57-58, out of scope."
     55: "'AI regulatory sandbox'. Feeds Arts. 57-58, out of scope."
     56: "'AI literacy'. The subject of Art. 4(1), cited as AIA-ALL-A04."
     57: "'testing in real-world conditions'. Read by the scope node: it is what stops Art. 2(8) covering a live pilot."
-    58: "'subject' of testing. Feeds Arts. 60-61, out of scope."
+    58: >-
+      'subject' of testing. Who Art. 61 consent is obtained from and who Art. 60(4)(g) protects
+      where they are vulnerable by age or disability. Carried by AIA-PO-A61 and AIA-PO-A60-4.
     59: "'informed consent'. Feeds Art. 61, out of scope."
     60: CASCADE transparency — 'deep fake', the trigger for the Art. 50(4) disclosure.
     61: "'widespread infringement'. Feeds Art. 73(3), inside the Art. 73 AIA-ALL-A73 cites whole."
@@ -356,7 +359,8 @@ article_rulings:
     6: RULE AIA-HR-A09 — testing to identify the most appropriate risk management measures.
     7: >-
       RULE AIA-HR-A09 — testing MAY include real-world testing under Art. 60. A permission inside a
-      duty; Art. 60 itself is out of scope as an optional route.
+      duty; Art. 60 itself is an elective route, and what a provider that takes it owes is
+      AIA-PO-A60-4, AIA-PO-A60-7, AIA-PO-A60-8 and AIA-PO-A61.
     8: RULE AIA-HR-A09 — when testing happens, and against prior metrics and probabilistic thresholds.
     9: >-
       RULE AIA-HR-A09 — consider adverse impact on persons under 18 and other vulnerable groups. A
@@ -969,26 +973,36 @@ article_rulings:
     3: Without prejudice to other Union or national law on processing personal data. A saving clause.
   60:
     1: >-
-      Real-world testing outside a sandbox MAY be conducted by providers of Annex III or Section A
-      Annex I systems, per a real-world testing plan the Commission specifies by implementing act.
-      The permission that opens the route, and the reason the rest of the Article is conditional.
-    2: The same permission, stated as to timing and as to partnering with deployers. A permission.
+      CASCADE real_world_testing — the permission that opens the route: a provider of an Annex III
+      or Section A Annex I system MAY test in real world conditions outside a sandbox, per a
+      real-world testing plan the Commission specifies by implementing act. It creates no duty and
+      is the question the gap layer puts, because the rest of the Article binds only a provider
+      that has taken it.
+    2: >-
+      CASCADE real_world_testing — the same permission as to timing and partnering: at any time
+      before placing on the market, alone or with one or more deployers. Answered by the same
+      question, and Art. 60(4)(h) is what a participating deployer costs.
     3: Without prejudice to any ethical review required by other law. A saving clause.
     4: >-
-      THE ELEVEN CONDITIONS (a)-(k) a provider must meet to test: a plan submitted to and approved by
+      RULE AIA-PO-A60-4 — THE ELEVEN CONDITIONS (a)-(k) a provider must meet to test: a plan submitted to and approved by
       the market surveillance authority, registration under Art. 71(4) or Art. 49(4)(d)/(5), Union
       establishment or a legal representative, transfer safeguards, a six-month limit, protection of
       vulnerable subjects, a written agreement with any participating deployer, informed consent under
       Art. 61, qualified human oversight, and reversible outputs. Every one of them document-verifiable
       and none of them checked — the substance of the scope limit named above.
     5: >-
-      The subject's right to withdraw consent at any time and demand deletion. A right of the subject;
-      the provider's side of it is the 60(4)(i) and Art. 61 consent machinery.
+      RULE AIA-PO-A61 — the subject's right to withdraw consent at any time, without detriment or
+      justification, and to demand immediate and permanent deletion of their personal data. A right
+      of the subject, and the provider's side of it is the consent machinery: Art. 61(1)(c)
+      requires the subject be told about this right before consenting, so the rule that carries the
+      consent carries this.
     6: Member States confer inspection powers on market surveillance authorities. Institutional.
     7: >-
-      Serious incidents in testing reported under Art. 73, immediate mitigation or suspension, and a
+      RULE AIA-PO-A60-7 — serious incidents in testing reported under Art. 73, immediate mitigation or suspension, and a
       prompt recall procedure. A real duty, owed only on this route.
-    8: Notify the authority of suspension, termination and final outcomes. Same route, same limit.
+    8: >-
+      RULE AIA-PO-A60-8 — notify the authority of suspension, termination and final outcomes.
+      Owed at the END of the route, which is why it is a rule of its own.
     9: The provider is liable for damage caused during testing. Liability, not a compliance duty.
   60a:
     1: >-
@@ -1008,10 +1022,13 @@ article_rulings:
       Article. A conflict rule between instruments.
   61:
     1: >-
-      INFORMED CONSENT from testing subjects before participation, after being told the (a)-(e)
-      information. A real provider duty, and the one Art. 60(4)(i) points at — owed only where the
-      Art. 60 route is taken.
-    2: The consent shall be dated, documented, and a copy given to the subject. Same route, same limit.
+      RULE AIA-PO-A61 — INFORMED CONSENT from testing subjects before participation, after being told
+      the (a)-(e) information. The duty Art. 60(4)(i) points at, owed only where the Art. 60 route
+      is taken, and disapplied for law-enforcement testing where seeking consent would prevent it.
+    2: >-
+      RULE AIA-PO-A61 — the consent shall be DATED, DOCUMENTED, and a copy given to the subject.
+      Supplied to 61(1) as its qualifier: a consent nobody recorded is unevidenced, whatever was
+      said when it was obtained.
   62:
     1: Member State actions for SMEs, points (a)-(d) — sandbox priority, training, channels. Institutional.
     2: >-
@@ -1331,7 +1348,8 @@ article_rulings:
     3: >-
       On a serious incident or grounds to think Arts. 60 and 61 are not met, the authority may suspend
       or terminate the testing or require the operator to modify it, points (a)-(b). The operator's
-      side is compliance with a decision on the testing route, excluded with Art. 60.
+      side is compliance with a decision on the testing route, which is not a standing duty; what
+      the route itself requires is AIA-PO-A60-4 and AIA-PO-A61, the two the decision tests.
     4: The decision or objection states its grounds and how to contest it. A procedural right.
     5: Communication of the grounds to other Member States' authorities. Institutional.
   77:
@@ -2042,25 +2060,33 @@ annex_rulings:
       Art. 27 of Directive (EU) 2016/680, as Art. 26(9) specifies. Settled by data protection law
       this tool does not carry; the item is the registration of its summary.
 
-  # Annex IX is what Art. 60(4)(c) has a provider register before real-world testing. Out of
-  # scope with the Art. 60 route itself, and ruled per item so the scope limit names what it
-  # costs.
+  # Annex IX is what Art. 60(4)(c) has a provider register before real-world testing, and it is
+  # ruled per item because the items are not alike: two of them are the register's own keys, and
+  # two are the trial's substance — the approved testing plan, and how it ended.
   IX:
     chapeau: >-
-      Information registered for TESTING IN REAL WORLD CONDITIONS under Art. 60, provided and
-      thereafter kept up to date. The real-world testing regime is out of scope — see the Art. 60
-      rulings — so the chapeau follows its items.
-    1: The Union-wide unique single identification number of the testing. Art. 60 route, out of scope.
+      RULE AIA-PO-A60-4 — the information registered for TESTING IN REAL WORLD CONDITIONS under
+      Art. 60, provided and THEREAFTER KEPT UP TO DATE. Art. 60(4)(c) is what requires the
+      registration and names this Annex as its contents, so the rule that carries the eleven
+      conditions carries the list they point at.
+    1: >-
+      RULE AIA-PO-A60-4 — the Union-wide UNIQUE SINGLE IDENTIFICATION NUMBER of the testing. Not
+      only a registry key: Art. 61(1)(e) requires it to be given to every subject of the testing,
+      so a registration that never produced one leaves the consent short as well.
     2: >-
-      Name and contact details of the provider or prospective provider and of the deployers taking
-      part. Art. 60 route.
-    3: A brief description of the system, its intended purpose and identifying information. Art. 60 route.
+      RULE AIA-PO-A60-4 — name and contact details of the provider or prospective provider AND of
+      the deployers taking part. The deployers named here are the ones Art. 60(4)(h) puts under a
+      written agreement.
+    3: >-
+      RULE AIA-PO-A60-4 — a brief description of the system, its intended purpose and the
+      information identifying it.
     4: >-
-      A summary of the main characteristics of the REAL-WORLD TESTING PLAN — the document
-      Art. 60(4)(a) has approved before testing begins. Art. 60 route.
-    5: Information on suspension or termination of the testing, per Art. 60(8). Art. 60 route.
-  # Annex X is a reference list of instruments, not a set of requirements. It is what Art. 111(1)
-  # means by a large-scale IT system, and what Annex III(7)'s migration area points at.
+      RULE AIA-PO-A60-4 — a summary of the main characteristics of the REAL-WORLD TESTING PLAN,
+      the document Art. 60(4)(a) has the authority approve before testing begins.
+    5: >-
+      RULE AIA-PO-A60-4 — information on the suspension or termination of the testing. The entry
+      that Art. 60(8)'s notification to the authority puts on the register, so AIA-PO-A60-8 is
+      where the duty to report it lives and this is where it lands.
   X:
     1: Schengen Information System — Regulations (EU) 2018/1860, 2018/1861 and 2018/1862. A reference.
     2: Visa Information System — Regulations (EU) 2021/1133 and 2021/1134. A reference.
@@ -2584,27 +2610,21 @@ role_mentions:
   "60(1)": >-
     A permission: a provider or prospective provider of an Annex III or Annex I Section A system
     MAY test in real world conditions outside a sandbox, under a plan the Commission specifies.
-    Nothing here is owed; what a provider that elects the route then owes is 60(4) onward, and this
-    ruleset does not select it — an open limit, not a finding that nothing is owed.
+    Nothing here is owed. It is the question the gap layer puts — CASCADE real_world_testing — and
+    what a provider that elects the route then owes is Arts. 60(4), (7), (8) and 61.
   "60(2)": >-
     The same permission as to timing and partnering: a provider may test at any time before placing
     on the market, alone or in partnership with one or more deployers. The deployer is named as an
     optional partner. Still a permission.
   "60(4)": >-
-    Eleven conditions (a) to (k) a provider must meet to test, and a deployer taking part must be
-    informed and put under a written agreement by point (h). REAL AND DOCUMENT-VERIFIABLE, and no
-    rule carries them, because this ruleset does not ask whether the Art. 60 route was taken. The
-    largest known gap in the coverage, recorded here rather than implied by the dismissal.
+    RULE AIA-PO-A60-4 binds the provider to the eleven conditions. The DEPLOYER is named by point
+    (h) alone, and not as a duty-holder: where one takes part in the testing, the PROVIDER must
+    have informed it of everything relevant to its decision to participate, given it the Art. 13
+    instructions, and concluded a written agreement with it. Point (j) then makes the deployer
+    share the oversight, which is again something the provider must secure before testing starts.
   "60(6)": >-
     A duty on MEMBER STATES to confer inspection powers on their market surveillance authorities.
     The provider is named as the party those powers are exercised against.
-  "60(7)": >-
-    A real duty of the provider or prospective provider on this route: report a serious incident
-    under Art. 73, mitigate immediately or suspend, and establish a prompt recall procedure. No
-    rule carries it, for the same reason as 60(4).
-  "60(8)": >-
-    A real duty of the provider on this route: notify the market surveillance authority of
-    suspension, termination and final outcomes. No rule carries it, for the same reason as 60(4).
   "60(9)": >-
     Liability, not compliance: the provider or prospective provider is liable under Union and
     national liability law for damage caused during testing. This tool reports what a file must
@@ -2617,10 +2637,6 @@ role_mentions:
     What a Member State's testing framework must contain, points (a) to (d), including a plan
     agreed with the provider and compliance with named parts of Art. 60. A requirement on the
     framework; the provider duties it carries across are excluded with Art. 60 itself.
-  "61(1)": >-
-    A real duty on this route: informed consent from testing subjects before participation, after
-    they are told the (a) to (e) information. The provider is the party that must obtain it —
-    Art. 60(4)(i) points here — and no rule carries it, with Art. 60.
   # --- Arts. 62, 68, 71 and 72 — support, the scientific panel, the database, monitoring.
   "62(1)": >-
     Actions MEMBER STATES must undertake for SMEs, points (a) to (d). The deployer is named in (b)

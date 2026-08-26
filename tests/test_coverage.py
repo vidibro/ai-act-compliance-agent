@@ -168,7 +168,10 @@ def test_every_ruling_names_something_that_exists(covered, spec):
     runs — "the cascade handles it" is only an answer if some node does, and nothing reads
     Art. 6(1c). NOT_OWED and OWED must carry a reason long enough to be an argument."""
     rules = {r.rule_id for r in spec.rules}
-    nodes = set(QUESTIONS) | {role_questions.NODE_ID, role_questions.DEPLOYER_NODE_ID}
+    # Both askers, and the gap layer's questions taken as a SET rather than named one by one. A
+    # question added there is a node a ruling may hand a provision to, so a hand-written list is a
+    # second opinion about which questions exist, kept in the one place least likely to be updated.
+    nodes = set(QUESTIONS) | set(role_questions.QUESTIONS)
     for entry in covered:
         where = str(entry.provision)
         if entry.status is Status.CHECKED:

@@ -73,6 +73,7 @@ NODE_KEYS: dict[str, str | None] = {
     "significant_risk": "expected_poses_significant_risk",
     "transparency": "expected_transparency_duties",
     "provider_reallocation": "expected_provider_reallocation",
+    "real_world_testing": "expected_real_world_testing",
     "deployer_type": "expected_deployer_type",
 }
 

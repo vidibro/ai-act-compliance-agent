@@ -42,6 +42,7 @@ def _act_date() -> date:
 
 NODE_ID = "provider_reallocation"
 DEPLOYER_NODE_ID = "deployer_type"
+TESTING_NODE_ID = "real_world_testing"
 
 QUESTIONS: dict[str, Question] = {
     DEPLOYER_NODE_ID: Question(
@@ -127,6 +128,45 @@ QUESTIONS: dict[str, Question] = {
         "provider_reallocation",
         label="Has the provider role moved to another party?",
     ),
+    TESTING_NODE_ID: Question(
+        TESTING_NODE_ID,
+        LegalSource(
+            instrument="Regulation (EU) 2024/1689",
+            article=60,
+            paragraph=1,
+            act_version_date=_act_date(),
+        ),
+        # AN ELECTIVE ROUTE, and the only block of duties in this ruleset that binds before the
+        # system exists in its final form. Art. 60(4) requires a plan submitted to and approved by
+        # the market surveillance authority, a registration, and nine more conditions — all of them
+        # before testing starts. A report that raises them after the technical file is written is
+        # describing a door the provider has already walked through.
+        #
+        # ASKED AS A FACT, not as a legal conclusion. The model is not asked "does Art. 60 apply?"
+        # — that turns on whether the sandbox supervision of Art. 76(2) covers the testing instead,
+        # which the code decides. It is asked what the description says the provider is DOING.
+        "Does this description say the system is, or will be, TESTED IN REAL WORLD CONDITIONS — "
+        "run on live inputs, with real people or a real environment, outside a laboratory and "
+        "outside an AI regulatory sandbox — before it is placed on the market?\n"
+        "- underway: the description states that such testing is being conducted or has been. A "
+        "pilot with real users, a live trial at a customer site, a field deployment described as "
+        "testing or evaluation before launch.\n"
+        "- planned: the description states an intention to do this before placing the system on "
+        "the market.\n"
+        "- none: the description POSITIVELY establishes that there is none — validation is "
+        "retrospective or on held-out data only, or the testing happens inside an AI REGULATORY "
+        "SANDBOX supervised by a competent authority under Art. 57. Answer this only where the "
+        "description says so; do not infer it from a document that describes offline evaluation "
+        "and simply never mentions a trial.\n"
+        "- not_stated: THE ORDINARY ANSWER. The description says nothing either way. Most "
+        "technical documentation describes a finished system and not how it was trialled, and "
+        "silence is not a statement that no trial happened.\n"
+        "Testing on live production traffic AFTER the system has been placed on the market is not "
+        "this — Art. 60 is about testing before or in place of the conformity assessment. Neither "
+        "is internal use by the provider's own staff on their own data, which is development.",
+        "real_world_testing",
+        label="Is the system being tested in real world conditions?",
+    ),
 }
 
 # Art. 3 as well as Art. 25: limb (b) turns on the Art. 3(23) definition of 'substantial
@@ -137,6 +177,11 @@ _QUESTION_CONTEXT: dict[str, Provisions] = {
     # Art. 27 itself, and Art. 3 for the definition of 'deployer' at 3(4) — the question turns on
     # who uses the system under their own authority, not on who supplies it.
     DEPLOYER_NODE_ID: (("3", "27"), ()),
+    # Arts. 60 and 61 whole, and Art. 57 because the answer turns on the line between real-world
+    # testing OUTSIDE a sandbox and testing inside one — Art. 57 is where the sandbox is, and a
+    # question that could not tell them apart would report Art. 60 duties to a provider the
+    # authority is already supervising under Art. 76(2).
+    TESTING_NODE_ID: (("57", "60", "61"), ()),
 }
 
 # What the DESCRIPTION had to state, phrased for the person who has to go and write it — the same
@@ -151,6 +196,10 @@ WHAT_THE_NODE_NEEDED = {
     DEPLOYER_NODE_ID: (
         "what kind of organisation operates the system — a public authority, a private entity "
         "providing a public service, or an ordinary commercial one"
+    ),
+    TESTING_NODE_ID: (
+        "whether the system is trialled on live inputs with real people or a real environment "
+        "before it goes to market, and whether any such trial runs inside a regulatory sandbox"
     ),
 }
 
@@ -196,6 +245,30 @@ def ask_deployer_type(
         return None
     asked = questions if questions is not None else QUESTIONS
     return brain.decide(asked[DEPLOYER_NODE_ID], document)
+
+
+def ask_real_world_testing(
+    brain: Brain,
+    document: str,
+    risk_class: RiskClass,
+    questions: dict[str, Question] | None = None,
+) -> Answer | None:
+    """Whether the provider is testing this system in real world conditions outside a sandbox.
+
+    Put for a HIGH-RISK system and nothing else. Art. 60(1) opens on "high-risk AI systems listed
+    in Annex III or covered by Union harmonisation legislation listed in Section A of Annex I", so
+    no other tier has a system this Article governs, and the eleven conditions of Art. 60(4) would
+    be asserted against a provider the Article never addresses.
+
+    THE GATE IS THE TIER AND NOT THE ROUTE, deliberately. Art. 60(1) names both Art. 6 doors, so a
+    high-risk system reaches this question whichever way it got there.
+
+    `None` means the question was NOT PUT — never an answer of "no testing". `select_rules` treats
+    the two differently and must: a system nobody asked reads as one that cleared, otherwise."""
+    if risk_class is not RiskClass.HIGH_RISK:
+        return None
+    asked = questions if questions is not None else QUESTIONS
+    return brain.decide(asked[TESTING_NODE_ID], document)
 
 
 def ask(

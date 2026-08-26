@@ -37,6 +37,7 @@ from aiact.schemas.enums import (
     DeployerType,
     OpenSourceRelease,
     ProviderReallocation,
+    RealWorldTesting,
     RiskClass,
     SystemicRisk,
     Verdict,
@@ -220,6 +221,28 @@ def test_a_deployer_is_told_which_side_of_the_condition_it_falls_on(spec):
     assert report.deployer_type_note, "re-derive this test: the note is no longer composed"
     text = " ".join(render_report(report, spec).split())
     assert " ".join(report.deployer_type_note.split()) in text
+
+
+def test_a_reader_is_told_when_six_obligations_were_withheld(spec):
+    """The Art. 60 answer is the only one in this report that DROPS obligations, so it is the one
+    a renderer must not skip.
+
+    Every other note here resolves a condition on a duty that is listed either way — the reader
+    loses a sentence if it goes missing. This one decides whether four rules appear at all, and a
+    report that withholds them silently is indistinguishable from a report about a system nobody
+    asked. Asserted on both answers that matter: the withholding, and the ordinary silence that
+    does not withhold, because a reader shown the duties needs to know they are conditional."""
+    for value in (RealWorldTesting.NONE, RealWorldTesting.NOT_STATED):
+        report = _report(spec, {})
+        report.real_world_testing = Answer(
+            value=value,
+            reasoning="fixture",
+            confidence="high",
+            source=report.classification.triggered_by[0].source,
+        )
+        note = report.real_world_testing_note
+        assert note, f"no note composed for {value.value}"
+        assert " ".join(note.split()) in " ".join(render_report(report, spec).split()), value.value
 
 
 def test_a_verdict_says_which_use_case_it_is_about_and_how_sure_it_is(spec):

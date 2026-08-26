@@ -27,6 +27,7 @@ from aiact.classify.graph import (
 )
 from aiact.config import get_settings
 from aiact.eval.classification_cases import load_classification_cases
+from aiact.gap import roles as role_questions
 from aiact.gap.rules import select_rules
 from aiact.policy_loader import load_policy_spec, resolve_requirement
 from aiact.provisions import points_within
@@ -1045,11 +1046,18 @@ _DIAGRAM_NODE = re.compile(r"\b([a-z_]+)\{\"")
 _DIAGRAM_ABSTAINS = re.compile(r"^\s{4}([a-z_]+) -\.->", re.M)
 
 
-def _cascade_diagram() -> str:
-    """The first mermaid block of the README — the cascade. The second draws the gap pipeline."""
+def _diagram(nth: int) -> str:
+    """The nth mermaid block of the README. The first draws the cascade, the second the gap
+    pipeline — and both are drawings of code that a reader trusts before reading the code."""
     text = README.read_text(encoding="utf-8")
-    start = text.index("```mermaid", text.index("flowchart TD") - 20)
-    return text[start : text.index("```", start + 3)]
+    start = 0
+    for _ in range(nth + 1):
+        start = text.index("```mermaid", start) + 3
+    return text[start : text.index("```", start)]
+
+
+def _cascade_diagram() -> str:
+    return _diagram(0)
 
 
 def _risk_deciding_nodes() -> set[str]:
@@ -1108,4 +1116,22 @@ def test_the_readme_draws_an_abstention_for_every_node_that_can_abstain():
         f"the README's low-confidence edges and `_get_answers` disagree. Drawn as able to abstain "
         f"but not counted toward the tier: {sorted(abstaining - deciding)}. Counted toward the "
         f"tier with no abstention drawn: {sorted(deciding - abstaining)}."
+    )
+
+
+def test_the_readme_gap_pipeline_draws_every_question_the_gap_layer_asks():
+    """The second diagram draws the obligation half, and it asks questions of its own.
+
+    They are not in the cascade and cannot be: `provider_reallocation` and `real_world_testing`
+    decide whether a rule activates, and `deployer_type` resolves a condition on one that activates
+    either way — none of them touches the risk class. So the cascade guards above say nothing about
+    them, and this is where a question added to `gap.roles` is held to the picture of it.
+
+    Named by question id in the diagram, on the same reasoning as the cascade's nodes: a data node
+    called `MOVED` can only be compared to the code through a mapping somebody keeps up to date."""
+    drawn = _diagram(1)
+    missing = sorted(q for q in role_questions.QUESTIONS if q not in drawn)
+    assert not missing, (
+        f"the gap layer asks {missing} and the README's pipeline diagram does not draw them. A "
+        f"question that decides whether an obligation is reported is not an implementation detail."
     )

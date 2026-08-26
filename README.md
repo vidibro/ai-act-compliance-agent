@@ -275,10 +275,12 @@ obligation** — that is the invariant the whole layer is built on.
 flowchart TD
     IN([your documentation<br/>+ its risk class]):::data --> ROLES
 
-    ROLES["<b>1. roles</b> — up to two AI calls, high-risk only<br/>Art. 25: has the provider role moved to a party that<br/>rebadged, modified or repurposed the system?<br/>Art. 27: what kind of organisation deploys it?"]:::model
-    ROLES --> MOVED([Art. 25: did the provider<br/>role move, and how?]):::data
-    ROLES --> WHO([Art. 27: which deployers<br/>a listed duty reaches]):::data
-    MOVED -->|"adds one obligation"| SEL
+    ROLES["<b>1. roles</b> — up to three AI calls, high-risk only<br/>Art. 25: has the provider role moved to a party that<br/>rebadged, modified or repurposed the system?<br/>Art. 27: what kind of organisation deploys it?<br/>Art. 60: is the system trialled on live inputs<br/>before it goes to market?"]:::model
+    ROLES --> provider_reallocation([Art. 25: did the provider<br/>role move, and how?]):::data
+    ROLES --> deployer_type([Art. 27: which deployers<br/>a listed duty reaches]):::data
+    ROLES --> real_world_testing([Art. 60: is it tested in<br/>real world conditions?]):::data
+    provider_reallocation -->|"adds one obligation"| SEL
+    real_world_testing -->|"WITHHOLDS four, and only where the<br/>document rules the route out.<br/>Silence leaves them listed"| SEL
 
     SEL["<b>2. select_rules</b> — no AI<br/>For each use case, for EVERY role the Act binds —<br/>provider, initial provider, deployer, importer,<br/>distributor, authorised representative — look up<br/>the rules this risk class puts on them,<br/>plus any Art. 50 duty the tier does not decide"]:::code
     SEL --> CAN([rules a document<br/>can answer,<br/>per use case × role]):::data
@@ -289,8 +291,9 @@ flowchart TD
 
     V --> ASM["<b>4. assemble_report</b> — no AI<br/>Count the answers, group them by who owes<br/>them, and list the rules nobody could check"]:::code
     CANT --> ASM
-    WHO -->|"reported beside Art. 27,<br/>which is listed either way"| ASM
-    MOVED -->|"AND reported in its own right:<br/>who the provider is now, and what<br/>Art. 25(2) leaves the old one owing"| ASM
+    deployer_type -->|"reported beside Art. 27,<br/>which is listed either way"| ASM
+    provider_reallocation -->|"AND reported in its own right:<br/>who the provider is now, and what<br/>Art. 25(2) leaves the old one owing"| ASM
+    real_world_testing -->|"AND reported in its own right:<br/>the one answer that can drop<br/>an obligation, so it says which way"| ASM
     ASM --> OUT([compliance report]):::ok
 
     classDef code fill:#eef1f6,stroke:#5b6b8c
@@ -339,8 +342,9 @@ flowchart TD
   provider**, holding exactly that one rule and holding it only where a reallocation actually
   occurred. It is a role of its own because the duty runs the wrong way to sit anywhere else:
   attaching it to `provider` would put it on the organisation that has just taken the role ON.
-  This is also the only obligation in the ruleset whose activation is answered by a question rather
-  than by the classification, which is why the Art. 25 answer feeds `select_rules`.
+  This is one of two places where a question rather than the classification decides whether a rule
+  activates at all, which is why the Art. 25 answer feeds `select_rules`. Art. 60 below is the
+  other, and the two default opposite ways.
 - **And the roles can change hands, which is the first thing this graph asks.** Where the system is
   high-risk, Art. 25 makes a distributor, importer or deployer **the provider** — owing Art. 16
   whole, not a share of it — if it puts its name on a high-risk system someone else placed on the
@@ -367,6 +371,21 @@ flowchart TD
   than restating the condition and ignoring the answer. Three outcomes, and the third is not the
   second: **reached**, **not reached on that limb**, and **the document does not say**. Reading
   silence as "commercial, so nothing owed" would clear a duty on evidence nobody supplied.
+- **An elective route carries duties nobody else owes, and silence is not a clearance.** A provider
+  may test a high-risk system **in real world conditions** outside a sandbox before placing it on
+  the market (Art. 60), and doing so costs eleven conditions that all bind *before* the first live
+  input — a testing plan submitted to and approved by the market surveillance authority, a
+  registration with a Union-wide identification number, a six-month ceiling, a written agreement
+  with any participating deployer — plus serious-incident reporting with a standing recall
+  procedure (60(7)), notification of the outcomes (60(8)), and informed consent from every subject
+  (Art. 61). A provider that never leaves the lab owes none of it, so the question is asked.
+  **It defaults the opposite way to Art. 25**, and the difference is what the silence is about.
+  A reallocation nobody established did not happen, and asserting Art. 25(2) anyway would invent a
+  party. Here the party plainly exists — this system's provider — and what is unknown is whether
+  they are running a trial, which a technical file has no reason to mention either way. So only a
+  document that *positively* rules the route out withholds these duties; silence lists them with
+  their condition attached. It is the one answer in the report that can remove an obligation, and
+  the report says which way it went rather than letting four rules appear and disappear in silence.
 - **`minimal` is not `out_of_scope`, and Art. 4 is what proves it.** A minimal-risk system is
   inside the Regulation: both its provider and its deployer owe AI literacy measures, in force
   since 2 February 2025. An excluded system owes nothing at all. If the obligation layer returned

@@ -25,6 +25,7 @@ from aiact.schemas.enums import (
     AnnexIProduct,
     HighRiskRoute,
     ProviderReallocation,
+    RealWorldTesting,
     RiskClass,
     TransparencyDuty,
 )
@@ -257,6 +258,62 @@ def test_art_27_is_reported_under_the_deployer_role_like_any_other(spec):
     assert "AIA-DP-A27" in {r.rule_id for r in active.not_document_verifiable}
 
 
+# --- Art. 60 — the elective route ---------------------------------------------------------------
+_TESTING_RULES = {"AIA-PO-A60-4", "AIA-PO-A60-7", "AIA-PO-A60-8", "AIA-PO-A61"}
+
+
+def test_only_a_document_that_rules_out_testing_withholds_the_testing_duties(spec):
+    """Silence selects. Only `RealWorldTesting.NONE` drops the Art. 60 and 61 duties.
+
+    THE DEFAULT RUNS THE OPPOSITE WAY TO ART. 25, and the difference is what the silence is about.
+    A reallocation nobody established did not happen, and Art. 25(2) asserted anyway invents a
+    party. Here the party is this system's provider and what is uncertain is whether they are
+    running a trial — something a technical file has no reason to mention either way, so reading
+    its silence as a clearance drops six duties on evidence nobody supplied. The cascade already
+    treats Art. 2(1) this way, and this is that reasoning applied one layer down.
+
+    A DOCUMENT THAT SAYS `NONE` IS ANSWERED, not ignored: it positively establishes retrospective
+    validation, or a trial inside a sandbox, where Art. 76(2) puts the authority in charge of
+    Art. 60 compliance instead. That is the one case where withholding is what the Act says."""
+    use_case = a_use_case(area=AnnexIIIArea.EMPLOYMENT)
+    selects = {
+        answer: _TESTING_RULES
+        <= {
+            r.rule_id
+            for r in select_rules(
+                spec, use_case, ActorRole.PROVIDER, real_world_testing=answer
+            ).all_rules
+        }
+        for answer in (*RealWorldTesting, None)
+    }
+    assert selects[RealWorldTesting.UNDERWAY]
+    assert selects[RealWorldTesting.PLANNED]
+    assert selects[RealWorldTesting.NOT_STATED], (
+        "a document that never mentions a trial had the Art. 60 duties withheld — silence is not "
+        "a statement that no trial happened, and these bind before the trial starts"
+    )
+    assert not selects[RealWorldTesting.NONE], (
+        "a document that positively rules out real-world testing is still shown the Art. 60 duties"
+    )
+    assert not selects[None], (
+        "the question was not put — the system is not high-risk — and the duties were selected "
+        "anyway. Art. 60(1) governs high-risk systems and no other tier."
+    )
+
+
+def test_the_testing_duties_reach_no_tier_the_article_does_not_govern(spec):
+    """Art. 60(1) opens on high-risk systems, on either Art. 6 route. Nothing else.
+
+    The gate lives in `gap.roles.ask_real_world_testing`, so a lower tier never gets the question
+    and `None` withholds. Asserted from the other end as well — the rules themselves must name the
+    tier — because a rule that named `minimal` would be selected the moment anything answered."""
+    for rule_id in sorted(_TESTING_RULES):
+        rule = next(r for r in spec.rules if r.rule_id == rule_id)
+        assert rule.applies_to_risk_class == [RiskClass.HIGH_RISK], rule_id
+        assert rule.applies_to_role == [ActorRole.PROVIDER], rule_id
+        assert rule.requires_real_world_testing, rule_id
+
+
 def test_a_narrowed_duty_names_the_organisations_it_binds(spec):
     """The narrowing is only useful if it says WHICH organisations are caught — and it must say so
     about the parties, not about "you". This report describes what the Act requires of each role
@@ -288,14 +345,16 @@ def test_a_narrowed_duty_is_selected_exactly_like_an_unnarrowed_one(spec):
     narrowed = [r for r in spec.rules if r.activation_condition is not None]
     assert narrowed, "the mechanism is unused — Art. 27 should carry it"
     for rule in narrowed:
-        # Art. 25(2) is the one rule whose activation IS gated, and not by this field: its duty has
-        # no holder until the provider role moves (`requires_provider_reallocation`). Supplying a
-        # reallocation isolates what is under test — that stating a condition never withholds.
+        # TWO RULES ARE GATED ON A QUESTION, and neither is gated by this field. Art. 25(2)'s duty
+        # has no holder until the provider role moves; the Art. 60 and 61 duties have none until a
+        # provider elects real-world testing. Supplying both answers isolates what is under test —
+        # that STATING a condition never withholds — from the separate mechanism that does.
         moved = (
             ProviderReallocation.NAME_OR_TRADEMARK
             if rule.requires_provider_reallocation
             else None
         )
+        testing = RealWorldTesting.UNDERWAY if rule.requires_real_world_testing else None
         # THE USE CASE THIS RULE IS FOR, not an arbitrary one. The TIER, the ROUTE and the AREA
         # are gates on the SYSTEM, and withholding on them is correct: Art. 11(2) reaches an
         # Annex I product and nothing else, and a Chapter V rule withheld from a high-risk system
@@ -319,7 +378,9 @@ def test_a_narrowed_duty_is_selected_exactly_like_an_unnarrowed_one(spec):
                     product=product,
                     risk_class=tier,
                 )
-                active = select_rules(spec, use_case, role, reallocation=moved)
+                active = select_rules(
+                    spec, use_case, role, reallocation=moved, real_world_testing=testing
+                )
                 assert rule.rule_id in {r.rule_id for r in active.all_rules}, (
                     f"{rule.rule_id} states a condition and was withheld for {role}/{area} — "
                     f"a condition is reported beside a duty, never used to drop it"

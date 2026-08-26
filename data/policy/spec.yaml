@@ -1748,6 +1748,181 @@ rules:
       it was.
     status: active
 
+
+  # ------------------------------------------------------------------------------------------
+  # Arts. 60-61 — TESTING IN REAL WORLD CONDITIONS. An elective route, and the only block of
+  # duties in this ruleset that binds before the technical file is finished: the plan is submitted
+  # and approved and the testing registered BEFORE the first live input. A provider that has not
+  # taken the route owes none of it, which is why every rule here carries
+  # `requires_real_world_testing` and the gap layer asks. Silence selects them — see the flag's own
+  # docstring for why the default runs the opposite way to Art. 25's.
+  #
+  # THE SECTION B ROUTE IS NOT HERE. Art. 60a lets a Member State allow the same testing for an
+  # Annex I Section B product, but Art. 2(2) withholds the whole of Chapter III from such a system,
+  # so its provider never reaches these rules and a rule for it would report an obligation the
+  # Regulation does not impose. The ledger's Art. 60a entries carry that reading.
+  - rule_id: AIA-PO-A60-4
+    source:
+      instrument: "Regulation (EU) 2024/1689"
+      article: 60
+      paragraph: 4 # the eleven conditions that must ALL be met before testing
+      annex: "IX"
+      act_version_date: 2026-07-27
+    applies_to_risk_class: [high_risk]
+    applies_to_role: [provider]
+    # ANNEX IX IS SUPPLIED, because point (c) registers the testing "with the information specified
+    # in Annex IX" and the Annex is that information. Without it the registration limb is a
+    # pointer to a list nobody reads.
+    requires_real_world_testing: true
+    activation_condition: >-
+      Owed only where the provider conducts, or intends to conduct, TESTING IN REAL WORLD
+      CONDITIONS OUTSIDE AN AI REGULATORY SANDBOX under Art. 60. Testing inside a sandbox is
+      supervised by the competent authority instead, which verifies Art. 60 compliance under
+      Art. 76(2) and may waive conditions (f) and (g). Every condition below binds BEFORE the
+      testing starts, so a provider reading this after a trial has begun is already late.
+    obligation_status: mandatory
+    check_type: completeness
+    evidence_expected: >-
+      Eleven conditions, ALL of which must be met before testing begins. (a) A REAL-WORLD TESTING
+      PLAN drawn up and submitted to the market surveillance authority of the Member State where
+      the testing takes place. (b) That authority's APPROVAL of both the testing and the plan —
+      with no answer within 30 days counting as approval, except where national law provides no
+      tacit approval, in which case an authorisation is still required. (c) REGISTRATION with a
+      Union-wide unique single identification number: under Art. 71(4) with the Annex IX
+      information for most systems, in the SECURE NON-PUBLIC section under Art. 49(4)(d) for
+      Annex III points 1, 6 and 7 used for law enforcement, migration, asylum or border control,
+      and under Art. 49(5) for an Annex III point 2 system. (d) The provider ESTABLISHED IN THE
+      UNION, or a legal representative established here. (e) Data transferred to third countries
+      only under appropriate and applicable Union-law safeguards. (f) A duration no longer than
+      necessary and IN ANY CASE NOT LONGER THAN SIX MONTHS, extendable once by six months on prior
+      notification to the authority with an explanation of why. (g) Appropriate protection for
+      subjects belonging to VULNERABLE GROUPS by reason of age or disability. (h) Where a deployer
+      takes part, that deployer informed of all aspects relevant to its decision to participate,
+      given the Art. 13 instructions for use, and bound by a WRITTEN AGREEMENT specifying the roles
+      and responsibilities of each party. (i) INFORMED CONSENT from the subjects under Art. 61 —
+      except in law enforcement, where seeking it would prevent the testing, and then only if the
+      testing has no negative effect on the subjects and their personal data is deleted afterwards.
+      (j) Effective oversight of the testing by the provider AND by any participating deployer,
+      through persons suitably qualified with the capacity, training and authority to do it.
+      (k) Predictions, recommendations and decisions that can be EFFECTIVELY REVERSED AND
+      DISREGARDED. A programme of acts before and around a trial rather than a property of the
+      technical file — confirm separately.
+    document_verifiable: false
+    effective_date_by_route:
+      annex_iii: 2027-12-02
+      annex_i: 2028-08-02
+    status: active
+
+  - rule_id: AIA-PO-A60-7
+    source:
+      instrument: "Regulation (EU) 2024/1689"
+      article: 60
+      paragraph: 7 # serious incidents during testing
+      act_version_date: 2026-07-27
+    applies_to_risk_class: [high_risk]
+    applies_to_role: [provider]
+    requires_real_world_testing: true
+    activation_condition: >-
+      Owed only where the Art. 60 route is taken. It sits BESIDE Art. 73 rather than inside it:
+      Art. 73 reports incidents of a system on the market, this reports incidents of one still
+      being trialled, and the same incident does not have to happen twice for both to bind.
+    obligation_status: mandatory
+    check_type: presence
+    evidence_expected: >-
+      Three things, on a serious incident identified during the testing. First, a REPORT to the
+      national market surveillance authority in accordance with Art. 73 — the same procedure and
+      the same deadlines, reached from this Article. Second, IMMEDIATE MITIGATION MEASURES or,
+      failing that, SUSPENSION of the testing until mitigation is in place, or termination of it:
+      the Article offers no third option of continuing while the cause is investigated. Third, and
+      the one most often absent, A PROCEDURE FOR THE PROMPT RECALL of the AI system established
+      against the event of such a termination — a standing arrangement, in place before it is
+      needed, not a decision taken when it is. An operational response — confirm separately.
+    document_verifiable: false
+    effective_date_by_route:
+      annex_iii: 2027-12-02
+      annex_i: 2028-08-02
+    status: active
+
+  - rule_id: AIA-PO-A60-8
+    source:
+      instrument: "Regulation (EU) 2024/1689"
+      article: 60
+      paragraph: 8 # notify suspension, termination and final outcomes
+      act_version_date: 2026-07-27
+    applies_to_risk_class: [high_risk]
+    applies_to_role: [provider]
+    requires_real_world_testing: true
+    activation_condition: >-
+      Owed only where the Art. 60 route is taken, and owed at the END of it — which is why it is
+      separate from the conditions that open the route. A provider that satisfied Art. 60(4) and
+      then let the trial lapse without telling the authority has met the first duty and not this.
+    obligation_status: mandatory
+    check_type: presence
+    evidence_expected: >-
+      Notification to the national market surveillance authority of the Member State where the
+      testing is conducted, of THREE things: the suspension of the testing, its termination, and
+      the FINAL OUTCOMES. The last is the one that is not a formality — the outcomes are what the
+      authority approved the testing to produce, and a notification of termination that reports no
+      results has closed the file without answering it. An external act against an authority —
+      confirm separately.
+    document_verifiable: false
+    effective_date_by_route:
+      annex_iii: 2027-12-02
+      annex_i: 2028-08-02
+    status: active
+
+  - rule_id: AIA-PO-A61
+    source:
+      instrument: "Regulation (EU) 2024/1689"
+      article: 61
+      paragraph: 1 # informed consent from the subjects of testing
+      act_version_date: 2026-07-27
+    applies_to_risk_class: [high_risk]
+    applies_to_role: [provider]
+    # 61(2) is HOW the consent must be recorded and is the whole substance of proving 61(1) was
+    # obtained: a consent nobody dated, documented or gave a copy of is unevidenced. Supplied
+    # rather than cited, the same relation 12(2) has to 12(1).
+    #
+    # Art. 60(5) is the other half of point (c). The subject may withdraw at any time and demand
+    # deletion, and 61(1)(c) requires them to be TOLD SO before consenting — so a consent form
+    # drafted without 60(5) in front of it discloses a right it does not describe.
+    qualified_by:
+      - article: 61
+        paragraph: 2
+      - article: 60
+        paragraph: 5
+    requires_real_world_testing: true
+    activation_condition: >-
+      Owed only where the Art. 60 route is taken, and DISAPPLIED IN ONE CASE by Art. 60(4)(i):
+      testing for law enforcement purposes where seeking consent would prevent the system from
+      being tested at all. That exception carries its own price — the testing and its outcome must
+      have no negative effect on the subjects, and their personal data must be deleted once the
+      test is done — so it relieves the consent duty and not the protection behind it.
+    obligation_status: mandatory
+    check_type: completeness
+    evidence_expected: >-
+      FREELY-GIVEN INFORMED CONSENT obtained from each subject BEFORE they take part, after being
+      told five things in concise, clear, relevant and understandable terms. (a) The NATURE AND
+      OBJECTIVES of the testing, and the possible inconvenience of taking part. (b) The CONDITIONS
+      under which it is conducted, including how long their own participation is expected to last.
+      (c) Their RIGHTS AND GUARANTEES — in particular the right to refuse and the right to withdraw
+      at any time, without any resulting detriment and without giving a reason. (d) The
+      ARRANGEMENTS FOR REQUESTING THE REVERSAL OR DISREGARDING of the system's predictions,
+      recommendations or decisions, which is the point at which the trial touches the subject's own
+      affairs. (e) The Union-wide UNIQUE SINGLE IDENTIFICATION NUMBER of the testing under
+      Art. 60(4)(c), and the contact details of the provider or its legal representative for
+      further information. Art. 61(2) then fixes how it is recorded, and a consent that fails this
+      is not evidenced however freely it was given: DATED, DOCUMENTED, and A COPY GIVEN to the
+      subject or their legal representative. Art. 60(5) is the other side of point (c) — a subject
+      may withdraw at any time by revoking consent and may demand immediate and permanent deletion
+      of their personal data, and only the activities already carried out survive that. Consent
+      obtained from people rather than a property of the technical file — confirm separately.
+    document_verifiable: false
+    effective_date_by_route:
+      annex_iii: 2027-12-02
+      annex_i: 2028-08-02
+    status: active
+
   - rule_id: AIA-PO-A72
     source:
       instrument: "Regulation (EU) 2024/1689"

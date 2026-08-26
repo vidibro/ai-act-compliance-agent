@@ -33,6 +33,7 @@ from aiact.schemas.enums import (
     OpenSourceRelease,
     ProhibitedPractice,
     ProviderReallocation,
+    RealWorldTesting,
     RiskClass,
     ScopeExclusion,
     SystemicRisk,
@@ -355,6 +356,21 @@ class ClassificationCase(BaseModel):
     column exists to catch. Art. 27 binds deployers that are bodies governed by public law or
     private entities providing public services, and a run that read "sold to recruiters" as
     "commercial, so no assessment owed" would have cleared a duty on evidence nobody supplied."""
+
+    expected_real_world_testing: RealWorldTesting = RealWorldTesting.NOT_STATED
+    """Art. 60 — whether the description says the system is TESTED IN REAL WORLD CONDITIONS
+    outside a sandbox before it goes to market.
+
+    Pinned on high-risk cases, because that is where the question is put: Art. 60(1) governs
+    high-risk systems on either Art. 6 route and nothing else. Defaults to NOT_STATED, which is
+    what almost every real document supports — a technical file describes a finished system, not
+    the trial that preceded it.
+
+    `NONE` IS A POSITIVE FINDING and a case must not use it for silence. It is the one answer that
+    withholds six obligations, so a case that labels an ordinary quiet document `none` teaches the
+    checker that quiet means cleared — the same failure `expected_deployer_type` guards against,
+    with more at stake, since Art. 60(4)'s conditions bind before testing starts and a provider
+    told late is told uselessly."""
 
     expected_provider_reallocation: ProviderReallocation | None = None
     """Art. 25 — WHICH circumstance has made the reader the provider of a system someone else

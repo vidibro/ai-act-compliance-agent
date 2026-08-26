@@ -184,6 +184,23 @@ class PolicyRule(BaseModel):
     A run where the question ABSTAINED leaves this unselected, and the report carries the
     unresolved Art. 25 answer so the silence is visible rather than implied."""
 
+    requires_real_world_testing: bool = False
+    """Whether this rule activates only where the provider is testing the system IN REAL WORLD
+    CONDITIONS outside a sandbox under Art. 60.
+
+    The second question-answered condition, and it works the OPPOSITE WAY ROUND to the first.
+    `requires_provider_reallocation` withholds unless the answer positively says the role moved,
+    because a duty owed by a party the facts do not produce is invented. Here the duties are owed
+    by a party who certainly exists — this system's provider — and turn on something they are
+    doing that a technical file has no reason to mention. So silence selects, and only a positive
+    `RealWorldTesting.NONE` withholds, on the same reasoning the cascade applies to Art. 2(1): a
+    document that never addresses a question has not answered it in the reader's favour.
+
+    Six duties depend on it — Art. 60(4)'s eleven conditions, 60(7)'s incident, mitigation and
+    recall duties, 60(8)'s notification, and Art. 61's informed consent — and every one of them
+    binds BEFORE OR DURING testing, which is before the technical file is finished. Reporting them
+    late is reporting them uselessly."""
+
     activation_condition: str | None = None
     """WHICH members of the role owe this, where the Act binds only some of them — stated plainly,
     in terms of the organisations concerned rather than of whoever is reading.

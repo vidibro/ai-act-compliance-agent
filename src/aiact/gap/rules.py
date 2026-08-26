@@ -27,6 +27,7 @@ from aiact.schemas.enums import (
     ActorRole,
     HighRiskRoute,
     ProviderReallocation,
+    RealWorldTesting,
     RiskClass,
     TransparencyDuty,
 )
@@ -139,12 +140,30 @@ def _area_matches(rule: PolicyRule, use_case: UseCaseClassification) -> bool:
     return use_case.annex_iii_area in rule.applies_to_annex_iii_area
 
 
+def _testing_matches(rule: PolicyRule, answer: RealWorldTesting | None) -> bool:
+    """A rule that depends on the Art. 60 route fires unless the description rules the route out.
+
+    THE OPPOSITE DEFAULT TO ART. 25, and the difference is which way silence cuts. A reallocation
+    that has not been established did not happen, and asserting Art. 25(2) would invent a party.
+    Here the party is this system's provider, and what is uncertain is whether they are running a
+    trial — something a technical file has no reason to mention either way. So `NOT_STATED` selects
+    and only `NONE` withholds, which is how the cascade already treats Art. 2(1): a document that
+    never addresses a question has not answered it in the reader's favour.
+
+    `None` — the question was not put, because the system is not high-risk — withholds too. Art. 60
+    governs high-risk systems alone, so there is nothing for the route to be elected on."""
+    if not rule.requires_real_world_testing:
+        return True
+    return answer is not None and answer is not RealWorldTesting.NONE
+
+
 def select_rules(
     spec: PolicySpec,
     use_case: UseCaseClassification,
     role: ActorRole,
     reallocation: ProviderReallocation | None = None,
     transparency_duties: Sequence[TransparencyDuty] = (),
+    real_world_testing: RealWorldTesting | None = None,
 ) -> ActiveRules:
     """The obligations `role` owes for this use case, under its risk class.
 
@@ -212,6 +231,7 @@ def select_rules(
         and _route_matches(rule, use_case)
         and _area_matches(rule, use_case)
         and (reallocation is not None or not rule.requires_provider_reallocation)
+        and _testing_matches(rule, real_world_testing)
         and rule.status != "amended"
     ]
     # A rule carrying an `activation_condition` is NOT withheld here. The Act narrows some duties

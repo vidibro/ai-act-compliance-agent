@@ -18,6 +18,7 @@ from aiact.schemas.enums import (
     DeployerType,
     OpenSourceRelease,
     ProviderReallocation,
+    RealWorldTesting,
     RiskClass,
     SystemicRisk,
     TransparencyDuty,
@@ -253,6 +254,18 @@ class ComplianceReport(BaseModel):
     `None` means the question was not put — it is asked for a high-risk Annex III system, because
     no other classification carries a duty narrowed this way."""
 
+    real_world_testing: Answer | None = None
+    """Art. 60 — whether the documentation says the system is TESTED IN REAL WORLD CONDITIONS
+    outside a sandbox before it is placed on the market.
+
+    The one answer here that can WITHHOLD obligations, and the report says so rather than letting
+    six duties appear and disappear silently. `RealWorldTesting.NONE` — a document that positively
+    establishes there is no such trial — drops Art. 60(4)'s conditions, Art. 60(7), Art. 60(8) and
+    Art. 61. Every other answer, silence included, leaves them listed with their condition attached.
+
+    `None` means the question was not put, because the system is not high-risk and Art. 60 governs
+    no other tier."""
+
     provider_reallocation: Answer | None = None
     """Art. 25 — whether the reader has BECOME the provider of a system someone else built.
 
@@ -415,6 +428,40 @@ class ComplianceReport(BaseModel):
         if risk is None and release is None:
             return None
         return " ".join(p for p in (_systemic_risk_note(risk), _release_note(risk, release)) if p)
+
+    @property
+    def real_world_testing_note(self) -> str | None:
+        """What the Art. 60 answer settled, or None where the question was not put.
+
+        THE ONLY NOTE ATTACHED TO A WITHHOLDING, which is why it exists at all. Every other answer
+        in this report resolves a condition on an obligation that is listed either way; this one
+        decides whether six obligations are listed. A reader who is not told which way it went
+        cannot tell a system that cleared Art. 60 from one nobody asked about, and the difference
+        is the whole of Arts. 60 and 61."""
+        answer = self.real_world_testing
+        value = answer.value if answer is not None else None
+        if not isinstance(value, RealWorldTesting):
+            return None
+        if value is RealWorldTesting.NONE:
+            return (
+                "Art. 60: this documentation states that the system is not tested in real world "
+                "conditions outside an AI regulatory sandbox, so the pre-market testing duties of "
+                "Art. 60(4), (7) and (8) and the informed consent of Art. 61 are NOT listed below. "
+                "If a live trial is planned after all, they bind before it starts — the testing "
+                "plan has to be submitted and approved and the testing registered first."
+            )
+        if value is RealWorldTesting.NOT_STATED:
+            return (
+                "Art. 60: this documentation does not say whether the system is tested in real "
+                "world conditions outside a sandbox, so the duties that route carries are listed "
+                "below with their condition attached. A provider that runs no such trial owes none "
+                "of them and can dismiss them in one reading."
+            )
+        return (
+            f"Art. 60: this documentation states that testing in real world conditions is "
+            f"{value.value}, so the duties of Art. 60(4), (7) and (8) and the informed consent of "
+            f"Art. 61 are listed below and bind BEFORE the testing starts."
+        )
 
     @property
     def deployer_type_note(self) -> str | None:

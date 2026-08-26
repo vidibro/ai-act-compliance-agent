@@ -38,7 +38,7 @@ from aiact.gap import roles as role_questions
 from aiact.gap.judge import LLMJudge
 from aiact.gap.rules import ActiveRules, roles_with_rules, select_rules
 from aiact.schemas.classification import ClassificationResult
-from aiact.schemas.enums import ActorRole, ProviderReallocation, Verdict
+from aiact.schemas.enums import ActorRole, ProviderReallocation, RealWorldTesting, Verdict
 from aiact.schemas.policy import PolicyRule, PolicySpec
 from aiact.schemas.question import Answer, Question, narrow
 from aiact.schemas.report import ComplianceReport, Finding, ReportSummary
@@ -57,6 +57,7 @@ class ComplianceCheckState(BaseModel):
     classification: ClassificationResult
     provider_reallocation: Answer | None = None
     deployer_type: Answer | None = None
+    real_world_testing: Answer | None = None
     active: list[ActiveRules] = Field(default_factory=list)
     findings: list[Finding] = Field(default_factory=list)
     report: ComplianceReport | None = None
@@ -123,6 +124,11 @@ def build_graph(
         kind = role_questions.ask_deployer_type(brain, state.document, state.classification, asked)
         if kind is not None:
             out["deployer_type"] = kind
+        testing = role_questions.ask_real_world_testing(
+            brain, state.document, state.classification.overall_risk_class, asked
+        )
+        if testing is not None:
+            out["real_world_testing"] = testing
         return out
 
     def node_select_rules(state: ComplianceCheckState) -> dict:
@@ -143,9 +149,17 @@ def build_graph(
         # minimal-risk generator and no high-risk scorer owes any of Art. 50 at all.
         moved = narrow(state.provider_reallocation, ProviderReallocation)
         duties = state.classification.transparency_duties
+        testing = narrow(state.real_world_testing, RealWorldTesting)
         return {
             "active": [
-                select_rules(spec, uc, role, reallocation=moved, transparency_duties=duties)
+                select_rules(
+                    spec,
+                    uc,
+                    role,
+                    reallocation=moved,
+                    transparency_duties=duties,
+                    real_world_testing=testing,
+                )
                 for uc in state.classification.use_cases
                 for role in roles
             ]
@@ -210,6 +224,7 @@ def build_graph(
                 not_document_verifiable=outstanding,
                 provider_reallocation=state.provider_reallocation,
                 deployer_type=state.deployer_type,
+                real_world_testing=state.real_world_testing,
                 summary=_summarise(state.findings),
             )
         }
