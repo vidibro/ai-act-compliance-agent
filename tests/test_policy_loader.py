@@ -22,6 +22,7 @@ from aiact.policy_loader import (
     _PARAGRAPH_START,
     article_filename,
     load_policy_spec,
+    provision_labels,
     resolve_requirement,
 )
 from aiact.schemas.enums import ActorRole, CheckType, ObligationStatus, RiskClass
@@ -454,6 +455,70 @@ _COINED = re.compile(r"\((?:‘)?([a-z][a-z]*(?: [a-z-]+)+)(?:’)?\)")
 # rule to quote the Act rather than describe the documentation. The longest name in the stored Act
 # is Art. 15(5)'s "adversarial examples or model evasion".
 _NAME_WORDS = 5
+
+
+# THE ACT'S OWN WORDS FOR "you may already have this". Where a duty may be discharged through, or
+# folded into, a process the operator runs under other Union law, the drafter reaches for one of a
+# small set of phrases: the obligation is DEEMED TO BE FULFILLED, the aspects MAY BE PART OF another
+# system, the elements may be INTEGRATED into existing documentation, the record is kept AS PART OF
+# the file already maintained. Matched as the Act writes them rather than by topic, so a relief
+# added in a later version joins this population without anyone deciding it should.
+_RELIEF = re.compile(
+    r"\b(deemed to be fulfilled|may be part of|may include the aspects"
+    r"|shall have a choice of integrating|as part of the documentation"
+    r"|part of, or combined with|include cross-references)\b",
+    re.I,
+)
+
+
+def test_a_relief_reaches_the_reader_the_duty_reaches():
+    """Where the Act says a duty may be met by something the operator already does, say so.
+
+    THE FAILURE HERE IS A FALSE POSITIVE, which is the direction this ruleset is otherwise built to
+    avoid in the other sense. A rule that renders Art. 17 in full and omits Art. 17(4) tells a bank
+    to build a quality management system the Act deems fulfilled by the internal governance rules it
+    already complies with; the same shape recurs at Arts. 9(10), 18(3), 19(2) and 72(4). A reader
+    acting on that spends money on a duplicate, and nothing in the coverage partition can see it:
+    the paragraph is `checked`, because a rule cites the article it sits in.
+
+    SATISFIED TWO WAYS, and both are real answers. A rule whose own citation IS the relief paragraph
+    renders it by existing — Art. 8(2) is its own rule. Otherwise some rule citing the same article
+    must name the paragraph by number, which is what makes the reader able to look it up."""
+    for rule_ids, article, paragraph in _relief_paragraphs():
+        assert rule_ids, (
+            f"Art. {article}({paragraph}) says a duty may be discharged through a process under "
+            f"other law, and no rule cites Art. {article} at all. A relief nobody renders is a "
+            f"duty asserted more widely than the Act asserts it."
+        )
+        spec = _spec()
+        by_id = {r.rule_id: r for r in spec.rules}
+        owns = [r for r in rule_ids if str(by_id[r].source.paragraph) == paragraph]
+        cite = re.compile(rf"\b{re.escape(article)}\({re.escape(paragraph)}\)")
+        names = [r for r in rule_ids if cite.search(by_id[r].evidence_expected)]
+        assert owns or names, (
+            f"Art. {article}({paragraph}) is a relief and {sorted(rule_ids)} cite that article "
+            f"without naming it. The reader is told the whole duty and not that it may already be "
+            f"met — a false positive, and the report has no way to show its own over-reach."
+        )
+
+
+def _relief_paragraphs() -> list[tuple[list[str], str, str]]:
+    """Every paragraph carrying a relief, with the rules citing its article."""
+    spec = _spec()
+    articles: dict[str, list[str]] = {}
+    for rule in spec.rules:
+        if rule.source.article is not None:
+            articles.setdefault(str(rule.source.article), []).append(rule.rule_id)
+    found: list[tuple[list[str], str, str]] = []
+    for article, rule_ids in articles.items():
+        for paragraph in provision_labels(ARTICLES_DIR, article):
+            try:
+                text, _url = resolve_requirement(ARTICLES_DIR, article, paragraph)
+            except ValueError:
+                continue  # a point-shaped article; the relief phrases occur in paragraphs
+            if _RELIEF.search(text):
+                found.append((rule_ids, article, str(paragraph)))
+    return found
 
 
 def test_a_term_the_act_coins_reaches_the_judge_that_searches_for_it():

@@ -144,7 +144,12 @@ rules:
       VULNERABLE GROUPS, considered in view of the intended purpose. And the risks in scope are only
       those reasonably mitigable through development, design or adequate technical information, so a
       risk register that is a list of societal harms with no design response is not the system this
-      Article requires.
+      Article requires. ONE PARAGRAPH NARROWS THIS RATHER THAN ADDING TO IT. Art. 9(10): a provider
+      already subject to internal risk management requirements under other Union law may make the
+      aspects of paragraphs 1 to 9 PART OF, OR COMBINED WITH, the procedures established under that
+      law. Documentation that describes one risk management process serving both is not a gap in
+      this Article — what has to be shown is that the aspects above are in it, not that a separate
+      process exists for them.
     document_verifiable: true
     effective_date_by_route:
       annex_iii: 2027-12-02
@@ -609,7 +614,17 @@ rules:
       customers and OTHER INTERESTED PARTIES; (k) record-keeping of all relevant documentation; (l)
       resource management including security of supply; (m) an accountability framework naming what
       management and staff are responsible for. An organisational system rather than a property of
-      the system's technical documentation — confirm separately.
+      the system's technical documentation — confirm separately. TWO THINGS NARROW THIS, and a
+      provider that already runs a quality system should read them before building a second. Art.
+      17(3): a provider subject to quality management obligations under SECTORAL UNION LAW may
+      include the thirteen aspects in that system — one system, not two. Art. 17(4) goes further for
+      a provider that is a FINANCIAL INSTITUTION subject to internal governance requirements under
+      Union financial services law: complying with those rules DEEMS this obligation fulfilled,
+      EXCEPT for points (g), (h) and (i), which stay owed in their own right — the Art. 9 risk
+      management system, the Art. 72 post-market monitoring system and Art. 73 serious-incident
+      reporting. And Art. 17(2) scales the effort to the size of the organisation, an SME or SMC
+      included, while expressly holding the degree of rigour and the level of protection constant: a
+      smaller provider does less work, not less well.
     document_verifiable: false
     effective_date_by_route:
       annex_iii: 2027-12-02
@@ -633,7 +648,11 @@ rules:
       the documentation of changes APPROVED BY NOTIFIED BODIES, where applicable; the decisions and
       other documents issued by the notified bodies; and the Art. 47 EU declaration of conformity. A
       retention process at the provider, not observable from the technical documentation — confirm
-      separately.
+      separately. Art. 18(3) narrows where the five documents live rather than whether they are
+      kept: a provider that is a FINANCIAL INSTITUTION subject to internal governance requirements
+      under Union financial services law maintains the technical documentation as part of the
+      documentation it already keeps under that law. One file, not two, and the ten-year
+      availability to national competent authorities is unchanged.
     document_verifiable: false
     effective_date_by_route:
       annex_iii: 2027-12-02
@@ -655,7 +674,11 @@ rules:
       are under the provider's control, for a period appropriate to the intended purpose and AT
       LEAST SIX MONTHS — unless Union or national law provides otherwise, in particular data
       protection law. Distinct from Art. 12, which is the system's capability to generate the logs
-      and IS document-verifiable; this is what happens to them afterwards — confirm separately.
+      and IS document-verifiable; this is what happens to them afterwards — confirm separately. Art.
+      19(2) narrows where they live rather than whether they are kept: a provider that is a
+      FINANCIAL INSTITUTION subject to internal governance requirements under Union financial
+      services law maintains these logs as part of the documentation it already keeps under that
+      law. The retention period is unchanged.
     document_verifiable: false
     effective_date_by_route:
       annex_iii: 2027-12-02
@@ -1752,13 +1775,19 @@ rules:
     evidence_expected: >-
       An operating post-market monitoring system at the provider, and evidence that it ACTIVELY AND
       SYSTEMATICALLY collects, documents and analyses performance data over the system's lifetime —
-      from deployers and from other sources — so that continuing compliance with Chapter III
-      Section 2 can be evaluated. A system that exists on paper and gathers nothing satisfies
-      Art. 72(1) and not Art. 72(2). Art. 72(3) adds that the system must be BASED ON a written
-      post-market monitoring plan — monitoring carried on ad hoc, however diligently, is not this —
-      and that the plan belongs inside the Annex IV technical documentation, where AIA-HR-A11 does
-      reach it. The duty is to run it; that is an operational process, not a property of the
-      documentation — confirm separately.
+      from deployers and from other sources — so that continuing compliance with Chapter III Section
+      2 can be evaluated. A system that exists on paper and gathers nothing satisfies Art. 72(1) and
+      not Art. 72(2). Art. 72(3) adds that the system must be BASED ON a written post-market
+      monitoring plan — monitoring carried on ad hoc, however diligently, is not this — and that the
+      plan belongs inside the Annex IV technical documentation, where AIA-HR-A11 does reach it. The
+      duty is to run it; that is an operational process, not a property of the documentation —
+      confirm separately. Art. 72(4) offers a CHOICE rather than a second system: where a post-
+      market monitoring system and plan already exist under the Annex I Section A legislation
+      covering the product, the provider may integrate the elements of Art. 72(1), (2) and (3) into
+      them, using the Art. 72(3) template and provided the result achieves AN EQUIVALENT LEVEL OF
+      PROTECTION. The same choice is open to a FINANCIAL INSTITUTION placing an Annex III point 5
+      system on the market under Union financial services law. Integration is not exemption — the
+      elements must still be there and the equivalence is the provider's to show.
     document_verifiable: false
     effective_date: 2026-08-02
     status: active
