@@ -116,7 +116,11 @@ article_rulings:
     2: >-
       Section B Annex I systems are governed by "Article 6(1), Article 60a and Articles 102 to 112"
       only. Not an exclusion but a LIMIT, consumed by AnnexIProduct.chapter_iii_applies and the
-      Section B branch of gap.rules.select_rules. The list is EXHAUSTIVE and is quoted in the
+      Section B branch of gap.rules.select_rules. THE LIST IS NOT QUITE EXHAUSTIVE — the
+      paragraph's SECOND sentence adds Arts. 57, 58 and 59 where the high-risk requirements have
+      been integrated into that Union harmonisation legislation. Nothing turns on it for duties
+      today, because those three articles are sandbox provisions binding no party this tool reports
+      for, but the first sentence's list is quoted in the
       report's Section B note, so the two have to be checked against each other whenever either
       moves — a note naming the wrong articles tells a provider they owe the wrong thing.
     3: CASCADE scope — military, defence and national security. ScopeExclusion.MILITARY_DEFENCE_NATIONAL_SECURITY.
@@ -236,22 +240,44 @@ article_rulings:
     58: >-
       'subject' of testing. Who Art. 61 consent is obtained from and who Art. 60(4)(g) protects
       where they are vulnerable by age or disability. Carried by AIA-PO-A61 and AIA-PO-A60-4.
-    59: "'informed consent'. Feeds Art. 61, out of scope."
+    59: >-
+      'informed consent'. Feeds Art. 61, which AIA-PO-A61 carries: the definition is what the
+      consent obtained from each subject must amount to — freely given, specific, unambiguous and
+      voluntary — so the rule's substance rests on it. A definition all the same.
     60: CASCADE transparency — 'deep fake', the trigger for the Art. 50(4) disclosure.
     61: "'widespread infringement'. Feeds Art. 73(3), inside the Art. 73 AIA-ALL-A73 cites whole."
     62: >-
       'critical infrastructure'. A bare cross-reference to Article 2, point (4), of Directive (EU)
       2022/2557, which this corpus does not hold. Feeds Annex III(2), an area this ruleset gates on,
       and the annex_iii node decides that area on 'safety component' (Art. 3(14)) rather than on
-      this term — so nothing turns on the borrowed meaning today.
+      this term. IT DOES REACH ONE THING THAT BITES: Art. 3(49)(b) uses the defined term verbatim
+      to make a serious and irreversible disruption of critical infrastructure a serious incident,
+      and Art. 73(3) then shortens the report for such an incident to immediately and not later than
+      two days. So where the borrowed meaning matters it is a DEADLINE, not an area, and a reader
+      near that line has to go to Directive (EU) 2022/2557 for it. A definition all the same.
     63: CASCADE gpai_model — 'general-purpose AI model', the Chapter V handover test.
-    64: "'high-impact capabilities'. Feeds Art. 51, Chapter V, deferred (M4d-8)."
-    65: "'systemic risk'. Feeds Arts. 51 and 55, Chapter V, deferred (M4d-8)."
+    64: >-
+      'high-impact capabilities'. Feeds Art. 51(1)(a), the limb of the systemic-risk line the
+      `systemic_risk` cascade node does NOT decide — it reads a stated designation or a stated
+      compute figure and never estimates capability. A definition, and the gate it feeds is
+      answered rather than judged.
+    65: >-
+      'systemic risk'. Feeds Art. 51, where the `systemic_risk` cascade node reads which side of the
+      line a model card states it is on, and Art. 55, whose five rules — AIA-GP-A55-1A to -1D and
+      AIA-GP-A55-2 — are live and carry the condition rather than being withheld on it. A
+      definition; what is unjudged is the Art. 51 gate, not the obligations it conditions.
     66: >-
       CASCADE gpai_model — 'general-purpose AI system'. The guard that keeps a system BUILT ON a
       model an ordinary AI system rather than a Chapter V handover.
-    67: "'floating-point operation'. Feeds the Art. 51(2) FLOP threshold, deferred (M4d-8)."
-    68: "'downstream provider'. Feeds Chapter V and Art. 89, deferred (M4d-8)."
+    67: >-
+      'floating-point operation'. Feeds the Art. 51(2) presumption at 10^25 cumulative training
+      FLOP, which the `systemic_risk` node reads off a stated figure. A definition; the unit is not
+      a duty on anyone.
+    68: >-
+      'downstream provider'. Feeds Art. 53(1)(b), which AIA-GP-A53-1B carries — the duty to give the
+      Annex XII information to providers who intend to integrate the model into their systems — and
+      Art. 89, which is AI Office monitoring. Live in a reported obligation; a definition all the
+      same.
   4:
     2: Commission and Member State duty to support providers in meeting Art. 4(1). Not a provider duty.
     3: Board duty to adopt AI-literacy recommendations. Institutional.
@@ -348,7 +374,13 @@ article_rulings:
   8:
     1: >-
       Chapeau to Chapter III Section 2: high-risk systems shall comply with Arts. 9-15. Already
-      modelled rule-by-rule as AIA-HR-A09..A15; a rule here would double-count every finding.
+      modelled rule-by-rule as AIA-HR-A09..A15; a rule here would double-count every finding. TWO
+      THINGS IN THE PARAGRAPH ARE NOT IN THOSE RULES and so are not double-counted by them: the
+      standard compliance is measured against — the intended purpose AND the generally acknowledged
+      state of the art — and the requirement that the Art. 9 risk management system be TAKEN INTO
+      ACCOUNT when meeting the others, which makes Art. 9 a lens on Arts. 10 to 15 rather than a
+      duty beside them. Both qualify how each rule is judged rather than adding a duty, which is
+      why they stay here. Section 2 is Arts. 8 to 15, this paragraph included.
       That reasoning covers this paragraph and NOT 8(2), which is a duty of its own and carries
       its own rule, AIA-PO-A08-2.
   # --- Chapter III Section 2 — the requirements themselves ------------------------------------
@@ -456,12 +488,27 @@ article_rulings:
     3: Permission to fold the Art. 17(1) aspects into a sectoral QMS. An accommodation, not a duty.
     4: >-
       Financial institutions may satisfy the QMS duty through internal-governance rules under Union
-      financial services law. An accommodation.
+      financial services law. An accommodation, AND NOT A COMPLETE ONE: the deeming runs "with the
+      exception of paragraph 1, points (g), (h) and (i)", so the risk management system, the
+      post-market monitoring system and the serious-incident reporting procedures are still owed
+      under Art. 17(1) by a financial institution that complies with its sectoral governance rules
+      in full. AIA-PO-A17 renders the exception, which is what keeps the relief from clearing
+      someone who is not cleared.
   18:
     2: Member State duty to keep documentation available where a provider goes insolvent. Not a provider duty.
-    3: Financial institutions keep the technical documentation under financial services law. An accommodation.
+    3: >-
+      Financial institutions keep the technical documentation under financial services law. NOT AN
+      ACCOMMODATION but a DIRECTION: the paragraph says such a provider "shall maintain the
+      technical documentation as part of" that documentation, where the genuine reliefs nearby say
+      "may include" (Art. 17(3)) or "shall be deemed to be fulfilled" (Art. 17(4)). It settles
+      WHERE the file lives and relieves nothing, and it moves point (a) alone — the other four
+      Art. 18(1) documents stay where they were. AIA-PO-A18 renders it.
   19:
-    2: Financial institutions keep logs under financial services law. An accommodation.
+    2: >-
+      Financial institutions keep logs under financial services law. A DIRECTION rather than an
+      accommodation, in the same words as Art. 18(3): such a provider "shall maintain" the
+      automatically generated logs "as part of" the documentation kept under that law. The keeping
+      is not excused, only located. AIA-PO-A19 renders it.
   21:
     3: Confidentiality duty of the receiving competent authority (Art. 78). Not a provider duty.
   22:
@@ -840,7 +887,13 @@ article_rulings:
       Commission delegated power to detail measurement and calculation methodologies for Annex XI
       points 2(d) and (e). Institutional.
     6: Commission delegated power to amend Annexes XI and XII. Institutional.
-    7: Information obtained under this Article is treated under Art. 78. The receiving body's duty.
+    7: >-
+      Information obtained under this Article is treated under Art. 78. NOT ONLY THE AUTHORITIES:
+      Art. 53(1)(b) hands the Annex XII information to "providers of AI systems who intend to
+      integrate the general-purpose AI model into their AI systems", so a DOWNSTREAM PROVIDER
+      obtains documentation pursuant to this Article and this paragraph binds it. RULE
+      AIA-PO-A53-7. Contrast Art. 55(3), worded identically, whose receivers really are the AI
+      Office and the Commission.
   54:
     1: >-
       RULE AIA-GP-A54-1 — a THIRD-COUNTRY provider appoints an authorised representative
@@ -879,7 +932,10 @@ article_rulings:
       of practice nor a harmonised standard is followed. The 53(4) duty again, for the
       systemic-risk obligations, and a separate one: a provider may rely on a code for its Art. 53
       duties and on nothing for these.
-    3: Information obtained under this Article is treated under Art. 78. The receiving body's duty.
+    3: >-
+      Information obtained under this Article is treated under Art. 78. The receiving body's duty
+      here, and unlike the identically worded Art. 53(7): everything Art. 55 requires goes TO the
+      AI Office and the Commission, so no operator receives anything under this Article.
   # Art. 56 is AI OFFICE AND COMMISSION MACHINERY end to end, and the one duty it produces is owed by
   # signing rather than by the Regulation: 56(5) has participants report on their commitments, which
   # binds whoever joined a code and nobody else. Adherence itself is voluntary in both directions —
@@ -894,7 +950,9 @@ article_rulings:
     4: The Office and the Board aim to ensure codes set out objectives, commitments and KPIs. Institutional.
     5: >-
       Participants report regularly to the AI Office on implementation of their commitments. A duty,
-      but one taken on by joining a code rather than imposed by the Regulation — it binds signatories,
+      but not one this paragraph imposes on them. The only addressee is the AI OFFICE, and what it
+      owes is an AIM — it "shall aim to ensure" that participants report. Whatever a signatory owes
+      it owes by joining the code,
       and only for as long as they are signatories.
     6: >-
       The Commission and the Board monitor and evaluate the codes, and the Commission publishes its
@@ -945,7 +1003,12 @@ article_rulings:
       sandbox's operation. The authority's duty.
     11: >-
       Sandboxes do not affect supervisory or corrective powers; the authority may suspend testing or
-      participation and must inform the AI Office. The authority's power, and a saving clause.
+      participation and must inform the AI Office. Mostly the authority's power and a saving clause,
+      but ONE SENTENCE IS NEITHER: significant risks to health, safety or fundamental rights
+      identified during development and testing "shall result in an adequate mitigation", and the
+      party doing that developing and testing is the participating provider. It is out on the ground
+      Art. 59(1) uses — a duty owed only inside a sandbox, a route this tool does not model — and
+      not because the paragraph contains no duty.
     12: >-
       Participants remain liable under liability law, but NO ADMINISTRATIVE FINES for infringements
       of this Regulation where they observe the plan and follow the authority's guidance in good
@@ -1375,7 +1438,12 @@ article_rulings:
   77:
     1: >-
       Fundamental-rights authorities may request and access documentation created or maintained under
-      this Regulation, in an accessible language and format. The requesting body's power, and what it
+      this Regulation, in an accessible language and machine-readable format by electronic means.
+      The requesting body's power. WHAT IT REACHES IS EVERYTHING THE REGULATION MAKES AN OPERATOR
+      CREATE OR KEEP — the Art. 17 quality management documentation, the Art. 27 fundamental rights
+      impact assessment, the Art. 47 declaration and the Art. 72 monitoring plan as much as the
+      Art. 11 and Art. 12 material — and it attaches a FORMAT condition no rule checks. The duty to
+      produce on request is still Arts. 21 and 26(12), which are ruled; what
       reaches is the Art. 11 and Art. 12 material a rule already checks exists.
     1a: The market surveillance authority grants that access, requesting the material where needed. Inter-authority.
     1b: Those authorities and market surveillance authorities cooperate and assist each other. Institutional.
@@ -1389,7 +1457,12 @@ article_rulings:
       CONFIDENTIALITY OWED BY the Commission, market surveillance authorities, NOTIFIED BODIES and
       anyone else involved in applying the Regulation, respecting the (a)-(e) interests including
       source code and trade secrets. Not a duty of a provider, deployer, importer, distributor or
-      authorised representative — it is the counterweight to what they must hand over.
+      authorised representative in the ordinary case — it is the counterweight to what they must
+      hand over. THE ADDRESSEES ARE NOT CLOSED, though: "any other natural or legal person involved
+      in the application of this Regulation" reaches an operator that has itself received another's
+      material under this Regulation, which is why Art. 53(7) can point here and bind a downstream
+      provider. Ruled at that address rather than this one, because that is the paragraph naming
+      the receipt.
     2: Authorities request only data strictly necessary, with proportionate security. The authority's duty.
     3: >-
       RULE AIA-PO-A78-3 — the paragraph turns halfway through. Its first subparagraph restricts the
@@ -1534,7 +1607,11 @@ article_rulings:
       The Commission may request providers to (a) take measures to comply with Arts. 53 and 54, (b)
       implement mitigation measures after an Art. 92 evaluation, or (c) restrict, withdraw or recall
       the model. Enforcement of the Chapter V duties, which AIA-GP-A53-1A to -1D and AIA-GP-A54-1
-      to -A55-2 carry.
+      to -A55-2 carry — TRUE OF POINT (a) ONLY, which points at Arts. 53 and 54. Points (b) and (c)
+      create measures whose content the Commission's request sets: mitigation after an Art. 92
+      evaluation, and restriction, withdrawal or recall. Those two are out on the ground Art. 75a(6)
+      uses — a duty created by an order in an open proceeding, whose terms are in the order and not
+      in the Article.
     2: The AI Office may open a structured dialogue before requesting a measure. Procedural.
     3: Commitments offered during that dialogue may be made binding. The Art. 75b procedure for models.
   94: >-
@@ -1645,8 +1722,12 @@ article_rulings:
   111:
     1: >-
       Annex X large-scale IT system components placed before 2 August 2027 comply by 31 December
-      2030, and the requirements are taken into account when those legal acts are evaluated. Out of
-      scope by subject: this tool does not assess Union large-scale IT systems.
+      2030, and the requirements are taken into account when those legal acts are evaluated. A
+      TRANSITIONAL DEFERRAL, and its subject is the AI SYSTEM that is a component — whose provider
+      is an ordinary provider this tool does assess — rather than the Annex X system it sits in. It
+      is out because the paragraph only POSTPONES: this tool applies the Regulation to such a
+      component now, which is over-inclusive against a provider entitled to wait until 31 December
+      2030, and over-inclusive is the direction it accepts.
     2: >-
       RELIEF, and the widest thing in this Article. A high-risk system placed on the market before
       Chapter III applies to it — 2 December 2027 by the Annex III route, 2 August 2028 by Annex I,
@@ -1702,7 +1783,9 @@ article_rulings:
       report must distinguish a duty owed now from one owed later.
     b: >-
       Chapter III Section 4, Chapter V, Chapter VII, Chapter XII and Art. 78 from 2 August 2025,
-      except Art. 101. Chapter V has been in force for a year; its rules are still unwritten.
+      except Art. 101. A date, not a duty. Chapter V is modelled — nineteen AIA-GP-* rules for
+      Arts. 52 to 55 — and this is the paragraph that makes them live: they have applied since
+      2 August 2025, ahead of everything on the Art. 6 track.
     c: >-
       Chapter III Sections 1, 2 and 3, except Art. 6(5), from 2 DECEMBER 2027 for Art. 6(2)/Annex III
       systems and 2 AUGUST 2028 for Art. 6(1)/Annex I systems. The dates almost every rule in

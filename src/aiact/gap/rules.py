@@ -223,9 +223,12 @@ def select_rules(
     if use_case.risk_class is RiskClass.OUT_OF_SCOPE:
         return ActiveRules(use_case_id=use_case.use_case_id, role=role)
 
-    # Art. 2(2) is exhaustive — "only Article 6(1), Article 60a and Articles 102 to 112 shall
-    # apply" — so this withholds Art. 4 and Art. 50 from a Section B system as surely as it
-    # withholds Chapter III, and from the deployer as surely as from the provider.
+    # Art. 2(2)'s first sentence is a closed list — "only Article 6(1), Article 60a and Articles 102
+    # to 112 shall apply" — so this withholds Art. 4 and Art. 50 from a Section B system as surely
+    # as it withholds Chapter III, and from the deployer as surely as from the provider. The
+    # paragraph's SECOND sentence adds Arts. 57 to 59 where the high-risk requirements have been
+    # integrated into the sectoral legislation; those three are sandbox provisions that bind no
+    # party this reports for, so nothing is withheld here that they would supply.
     #
     # It is also the widest exemption this module grants, which is why it is gated on the whole of
     # Art. 6(1) and not on the product. The paragraph opens "For AI systems classified as high-risk

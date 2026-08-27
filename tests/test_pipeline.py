@@ -156,6 +156,7 @@ def test_a_minimal_system_still_owes_article_4(spec):
         "AIA-ALL-A04",
         "AIA-ALL-A75c-3",
         "AIA-ALL-A79",
+        "AIA-PO-A53-7",
     ]
     assert report.not_document_verifiable[ActorRole.DEPLOYER] == [
         "AIA-ALL-A04",

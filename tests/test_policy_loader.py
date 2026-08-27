@@ -125,7 +125,7 @@ def test_shipped_spec_loads():
     # only rules besides Art. 25(2) whose activation is decided by a question rather than by the
     # classification: the duties exist for a provider that elects to trial the system on live
     # inputs before placing it on the market, and for nobody else.
-    assert len(spec.rules) == 105
+    assert len(spec.rules) == 106
 
 
 # How many articles each fetched version holds. KEYED BY VERSION EVEN WHILE ONE IS FETCHED, because

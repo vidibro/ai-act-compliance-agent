@@ -124,11 +124,15 @@ def test_only_the_rules_for_this_risk_class_activate(spec):
     # But NOT nothing at all: Art. 4 binds every tier the Regulation governs, and an empty set here
     # would make `minimal` indistinguishable from `out_of_scope` — the collapse the class exists to
     # prevent. Art. 79 joins it for the same reason, one Article further on: it reaches any system
-    # presenting a risk rather than a tier, and 79(6)(d) names Art. 50 as a ground.
+    # presenting a risk rather than a tier, and 79(6)(d) names Art. 50 as a ground. Art. 53(7) is
+    # the fourth and is not about the system at all: a provider of any governed tier that built on
+    # someone else's general-purpose AI model holds that model's Annex XII documentation in
+    # confidence.
     assert sorted(r.rule_id for r in minimal.all_rules) == [
         "AIA-ALL-A04",
         "AIA-ALL-A75c-3",
         "AIA-ALL-A79",
+        "AIA-PO-A53-7",
     ]
 
 

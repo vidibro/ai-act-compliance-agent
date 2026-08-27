@@ -1106,3 +1106,39 @@ def test_a_role_mention_entry_names_the_roles_it_accounts_for(spec, ledger):
         )
 
 
+
+
+# The words a dismissal reaches for when it means "no rule stands here yet". Said about an article
+# the ruleset covers, the claim is not a scope decision but a stale fact, and the next reader takes
+# it as current. The exposure is a whole chapter: one ruling per definition, each pointing at the
+# same area, all of them out of date the moment its first rule lands.
+_STALE_CLAIM = re.compile(
+    r"\b(still unwritten|not (?:yet )?(?:modelled|written|carried)|deferred|out of scope)\b", re.I
+)
+
+
+def test_no_ruling_says_a_chapter_is_unmodelled_while_its_rules_exist(spec):
+    """A dismissal may say a duty is not owed. It may not say a rule does not exist when it does.
+
+    THE TWO ARE DIFFERENT CLAIMS and only the first is a scope decision. A ruling that says an
+    article is unmodelled turns false the moment a rule cites that article, and nothing else
+    catches it: the article's own ruling is correct, so the coverage partition sees a covered
+    provision either way. What the stale line costs is the next reader, told a whole area is
+    unmodelled and stopping there.
+
+    Asserted on the ARTICLES A RULING NAMES, not on its topic: a ruling that cites Art. 61 and
+    calls it out of scope is checked against the rules citing Art. 61, whatever else it says."""
+    cited = {str(r.source.article) for r in spec.rules if r.source.article is not None}
+    scope = yaml.safe_load(SCOPE_PATH.read_text(encoding="utf-8"))
+    stale: list[str] = []
+    for article, body in scope["article_rulings"].items():
+        items = body.items() if isinstance(body, dict) else [(None, body)]
+        for para, text in items:
+            ruling = " ".join(str(text).split())
+            if ruling.startswith(("RULE", "CASCADE")) or not _STALE_CLAIM.search(ruling):
+                continue
+            named = {m for m in re.findall(r"Arts?\. (\d+[a-z]?)", ruling) if m in cited}
+            if named:
+                where = f"Art. {article}({para})" if para is not None else f"Art. {article}"
+                stale.append(f"{where} calls {sorted(named)} unmodelled, and rules cite them")
+    assert not stale, "\n".join(stale)

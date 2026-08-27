@@ -4245,3 +4245,51 @@ rules:
       Art. 75 sits in Chapter IX, which Art. 113 does not carve out — general date, as the other
       Art. 75 rules.
     status: active
+
+  # THE OTHER END OF ART. 53(1)(b). AIA-GP-A53-1B binds the MODEL provider to hand the Annex XII
+  # information over; this binds the party that receives it. Art. 53(7) says "any information or
+  # documentation obtained pursuant to this Article, including trade secrets, shall be treated in
+  # accordance with the confidentiality obligations set out in Article 78" — and a downstream
+  # provider is a party that obtains documentation pursuant to Art. 53.
+  #
+  # NOT A CHAPTER V RULE, despite citing Art. 53. Every other AIA-GP-* rule names `gpai_model`
+  # because it binds the provider OF the model; this one binds the provider of an AI SYSTEM that
+  # integrates one, whose own tier is whatever Art. 6 made it. So it names the three governed
+  # system tiers instead — a prohibited or out-of-scope system reaches no obligation here for the
+  # reasons those tiers reach none anywhere.
+  - rule_id: AIA-PO-A53-7
+    source:
+      instrument: "Regulation (EU) 2024/1689"
+      article: 53
+      paragraph: 7 # confidentiality of what was obtained under this Article
+      annex: "XII"
+      act_version_date: 2026-07-27
+    applies_to_risk_class: [high_risk, not_high_risk, minimal]
+    applies_to_role: [provider]
+    activation_condition: >-
+      Owed only by a DOWNSTREAM PROVIDER that has actually obtained information or documentation
+      under Art. 53 — in practice the Annex XII material a general-purpose AI model provider gives
+      under Art. 53(1)(b) to providers intending to integrate the model. A provider that builds on
+      no third-party model, or that received nothing under that Article, owes nothing here.
+    obligation_status: mandatory
+    check_type: presence
+    evidence_expected: >-
+      CONFIDENTIAL TREATMENT of everything obtained from the model provider under Art. 53, TRADE
+      SECRETS EXPRESSLY INCLUDED, on the terms Art. 78 sets: protecting in particular the
+      intellectual property rights and confidential business information or trade secrets of a
+      natural or legal person, INCLUDING SOURCE CODE, and the effective implementation of this
+      Regulation. The duty runs the opposite way to every other obligation in this ruleset — it is
+      about material the reader RECEIVED rather than material they must produce — and it is the
+      price of the Art. 53(1)(b) disclosure: a model provider is compelled to hand over the Annex
+      XII documentation, and this is what stops that from being a route into its model. A
+      downstream provider that has folded the Annex XII material into a public integration guide,
+      or passed it on unrestricted to its own customers, has breached this whatever its own
+      documentation says. A confidentiality regime at the receiving organisation rather than a
+      property of the technical file — confirm separately.
+    document_verifiable: false
+    effective_date: 2025-08-02
+    effective_date_note: >-
+      Art. 113(b) applies Chapter V from 2 August 2025. The duty arrives with the disclosure that
+      triggers it, so it binds a downstream provider from the day the model provider owed the
+      Annex XII material — well before the Chapter III requirements of the system built on it.
+    status: active
