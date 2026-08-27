@@ -23,7 +23,9 @@ from aiact.schemas.enums import (
     ActorRole,
     AnnexIIIArea,
     AnnexIProduct,
+    DerogationCondition,
     HighRiskRoute,
+    ProhibitedPractice,
     ProviderReallocation,
     RealWorldTesting,
     RiskClass,
@@ -76,9 +78,28 @@ def a_use_case(
             )
         ),
         risk_class=risk_class,
+        # Art. 6(3) is the ONLY door to not_high_risk, and the schema enforces both its limbs — a
+        # named condition under (a)-(d) and no significant risk of harm. A fixture that set the
+        # tier without them would be a use case the cascade could never produce.
+        derogation=(
+            _an_answer(DerogationCondition.NARROW_PROCEDURAL_TASK, "derogation", source)
+            if risk_class is RiskClass.NOT_HIGH_RISK
+            else None
+        ),
+        poses_significant_risk=(
+            _an_answer(False, "poses_significant_risk", source)
+            if risk_class is RiskClass.NOT_HIGH_RISK
+            else None
+        ),
         reasoning="fixture",
         confidence="high",
         triggered_by=[ClassificationEvidence(source=source, reasoning="fixture")],
+    )
+
+
+def _an_answer(value, node_id: str, source: LegalSource) -> Answer:
+    return Answer(
+        value=value, reasoning="fixture", confidence="high", source=source, node_id=node_id
     )
 
 
@@ -345,16 +366,22 @@ def test_a_narrowed_duty_is_selected_exactly_like_an_unnarrowed_one(spec):
     narrowed = [r for r in spec.rules if r.activation_condition is not None]
     assert narrowed, "the mechanism is unused — Art. 27 should carry it"
     for rule in narrowed:
-        # TWO RULES ARE GATED ON A QUESTION, and neither is gated by this field. Art. 25(2)'s duty
-        # has no holder until the provider role moves; the Art. 60 and 61 duties have none until a
-        # provider elects real-world testing. Supplying both answers isolates what is under test —
-        # that STATING a condition never withholds — from the separate mechanism that does.
+        # THREE MECHANISMS GATE ON SOMETHING OTHER THAN THIS FIELD, and none of them is it.
+        # Art. 25(2)'s duty has no holder until the provider role moves; the Art. 60 and 61 duties
+        # have none until a provider elects real-world testing; the Art. 5(2) to (4) conditions
+        # reach only the practice point (h) banned. Supplying all three answers isolates what is
+        # under test — that STATING a condition never withholds — from the mechanisms that do.
         moved = (
             ProviderReallocation.NAME_OR_TRADEMARK
             if rule.requires_provider_reallocation
             else None
         )
         testing = RealWorldTesting.UNDERWAY if rule.requires_real_world_testing else None
+        practice = (
+            rule.applies_to_prohibited_practice[0]
+            if rule.applies_to_prohibited_practice
+            else None
+        )
         # THE USE CASE THIS RULE IS FOR, not an arbitrary one. The TIER, the ROUTE and the AREA
         # are gates on the SYSTEM, and withholding on them is correct: Art. 11(2) reaches an
         # Annex I product and nothing else, and a Chapter V rule withheld from a high-risk system
@@ -379,7 +406,12 @@ def test_a_narrowed_duty_is_selected_exactly_like_an_unnarrowed_one(spec):
                     risk_class=tier,
                 )
                 active = select_rules(
-                    spec, use_case, role, reallocation=moved, real_world_testing=testing
+                    spec,
+                    use_case,
+                    role,
+                    reallocation=moved,
+                    real_world_testing=testing,
+                    prohibited_practice=practice,
                 )
                 assert rule.rule_id in {r.rule_id for r in active.all_rules}, (
                     f"{rule.rule_id} states a condition and was withheld for {role}/{area} — "
@@ -715,10 +747,18 @@ def test_every_section_5_rule_explains_why_it_is_already_in_force(spec):
     tool is broken, and the damaging response is to disregard the date rather than the note. So the
     explanation travels WITH the obligation instead of living in a comment only we read."""
     section_5 = [r for r in spec.rules if r.source.article in _SECTION_5_ARTICLES]
-    assert len(section_5) == 17, (
-        "Arts. 41, 43 and 47-49 are the whole of Section 5 in this ruleset"
+    assert len(section_5) == 21, (
+        "Arts. 41, 43 and 46-49 are the whole of Section 5 in this ruleset"
     )
     for rule in section_5:
+        # ONE RULE IN SECTION 5 TAKES THE OTHER DATE, and it is the same contested reading
+        # AIA-NHR-A06-4 carries: Art. 49(2) registers an Art. 6(3) conclusion, and Art. 6 sits in
+        # Section 1, which Art. 113(c) DID move. Splitting the paragraph — the provider on the
+        # deferred date, its authorised representative on the general one — would put the two
+        # parties to one registration on dates sixteen months apart. Its note argues the choice and
+        # names the reading not taken, which is what this test exists to require.
+        if rule.rule_id == "AIA-AR-A49-2":
+            continue
         assert rule.effective_date == _GENERAL_DATE, rule.rule_id
         note = rule.effective_date_note or ""
         assert "2 December 2027" in note and "2 August 2026" in note, rule.rule_id
@@ -730,13 +770,14 @@ def test_the_contested_date_names_the_reading_it_did_not_take(spec):
     systems that are — so no limb reaches it and a date had to be chosen. Choosing silently would
     present our reading as the Act's, and the two readings are sixteen months apart in the direction
     that matters: the alternative means the duty is owed NOW."""
-    rule = next(r for r in spec.rules if r.rule_id == "AIA-NHR-A06-4")
-    note = rule.effective_date_note or ""
+    for rule_id in ("AIA-NHR-A06-4", "AIA-AR-A49-2"):
+        rule = next(r for r in spec.rules if r.rule_id == rule_id)
+        note = rule.effective_date_note or ""
 
-    assert rule.effective_date == date(2027, 12, 2)
-    assert "CONTESTED" in note
-    assert "2 August 2026" in note, "the reading not taken must be named, with its date"
-    assert "take advice" in note
+        assert rule.effective_date == date(2027, 12, 2), rule_id
+        assert "CONTESTED" in note, rule_id
+        assert "2 August 2026" in note, f"{rule_id}: name the reading not taken, with its date"
+        assert "take advice" in note, rule_id
 
 
 def test_a_timing_note_never_stands_in_for_a_date(spec):
@@ -796,3 +837,67 @@ def test_only_chapter_iii_sections_1_to_3_carry_two_start_dates(spec):
         f"{outside} cite an article outside Chapter III Sections 1-3 and carry two start dates. "
         f"Art. 113 gives those articles one date; state it as `effective_date`."
     )
+
+
+# --- Art. 5(1)(h) — the one prohibition with a lawful branch --------------------------------------
+
+_ART_5_LAWFUL_BRANCH = {"AIA-DP-A05-2", "AIA-DP-A05-3", "AIA-DP-A05-4"}
+
+
+def test_the_lawful_branch_duties_reach_only_the_practice_that_has_one(spec):
+    """Art. 5(2) to (4) are conditions on point (h) and on nothing else in the Article.
+
+    Every other point of Art. 5(1) bans outright: a system classified prohibited for social scoring
+    owes withdrawal, and listing a fundamental rights impact assessment beside that would describe a
+    route the Act does not open. Point (h) is drafted the other way — banned "unless and in so far
+    as such use is strictly necessary", with Art. 5(5) letting a Member State authorise it — so a
+    deployer there owes the paragraphs that condition the exception."""
+    use_case = a_use_case(risk_class=RiskClass.PROHIBITED, area=None, product=None)
+    lawful = select_rules(
+        spec,
+        use_case,
+        ActorRole.DEPLOYER,
+        prohibited_practice=ProhibitedPractice.REALTIME_REMOTE_BIOMETRIC_IDENTIFICATION,
+    )
+    assert {r.rule_id for r in lawful.all_rules} == _ART_5_LAWFUL_BRANCH
+
+    for practice in ProhibitedPractice:
+        if practice is ProhibitedPractice.REALTIME_REMOTE_BIOMETRIC_IDENTIFICATION:
+            continue
+        other = select_rules(spec, use_case, ActorRole.DEPLOYER, prohibited_practice=practice)
+        assert not other.all_rules, (
+            f"{practice.value} bans outright and owes withdrawal, but "
+            f"{[r.rule_id for r in other.all_rules]} were selected for it"
+        )
+
+
+def test_a_prohibited_classification_never_reaches_a_chapter_iii_duty(spec):
+    """Checking documentation against Chapter III would tell a reader the system ships once the
+    paperwork is fixed. Nothing in Chapter III names this tier, and this holds it that way.
+
+    Art. 5's own conditions are a different thing and are the reason the tier reaches selection at
+    all: they say what the Article costs a deployer holding the national authorisation, and saying
+    so implies nothing about whether the system may be placed on the market."""
+    use_case = a_use_case(risk_class=RiskClass.PROHIBITED, area=None, product=None)
+    for role in ActorRole:
+        active = select_rules(
+            spec,
+            use_case,
+            role,
+            prohibited_practice=ProhibitedPractice.REALTIME_REMOTE_BIOMETRIC_IDENTIFICATION,
+        )
+        for rule in active.all_rules:
+            assert rule.rule_id in _ART_5_LAWFUL_BRANCH, (
+                f"{rule.rule_id} was selected for a prohibited system. Only Art. 5's own "
+                f"conditions belong here — nothing in Chapter III applies to a banned practice."
+            )
+
+
+def test_the_practice_gate_is_the_only_thing_holding_those_duties_back(spec):
+    """A prohibited classification whose practice is unknown selects nothing, rather than
+    everything. `None` reaches this function when the cascade abstained at `prohibited` — and a
+    fundamental rights impact assessment asserted on an unidentified practice is an invented duty
+    in the same way Art. 25(2) would be."""
+    use_case = a_use_case(risk_class=RiskClass.PROHIBITED, area=None, product=None)
+    silent = select_rules(spec, use_case, ActorRole.DEPLOYER, prohibited_practice=None)
+    assert not silent.all_rules

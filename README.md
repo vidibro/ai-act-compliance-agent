@@ -75,9 +75,19 @@ because that is a legal question rather than a property of either graph:
 
 - **`out_of_scope` stops here**, and owes nothing: there are no obligations to check against, so
   running the check would produce findings for duties that do not exist.
-- **`prohibited` stops here.** Chapter III describes how a *permitted* high-risk system must be
-  built and documented. Reporting documentation gaps against a banned practice would imply it may
-  ship once the paperwork is fixed. It may not.
+- **`prohibited` gets Chapter III from nobody, and Art. 5's own conditions where they exist.**
+  Chapter III describes how a *permitted* high-risk system must be built and documented, and
+  reporting gaps against it would imply a banned practice ships once the paperwork is fixed. It may
+  not, and no Chapter III rule names this tier. **One prohibition has a lawful branch**, though:
+  Art. 5(1)(h) bans real-time remote biometric identification for law enforcement *"unless and in so
+  far as such use is strictly necessary"* for the objectives it lists, and Art. 5(5) lets a Member
+  State authorise that use. A deployer there owes Art. 5(2), (3) and (4) — a fundamental rights
+  impact assessment, an EU database registration, prior judicial authorisation per use, a 24-hour
+  clock on the urgency route, deletion of everything if the authorisation is refused, and a
+  notification of each use to two authorities. Those three rules name the practice, so a system
+  banned for social scoring still reaches an empty findings list. The verdict and the note are
+  unchanged either way: the practice is prohibited, and this is what Art. 5 costs the deployer that
+  holds the authorisation.
 - **`gpai_model` proceeds, onto a different track.** Chapter V governs a general-purpose AI model,
   and the ruleset carries it: sixteen `AIA-GP-*` rules for Arts. 52 to 55, selected by the tier
   alone, so a model gets Chapter V and none of Arts. 9–15. **None of them is judged**, and the

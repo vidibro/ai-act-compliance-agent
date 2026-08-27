@@ -150,6 +150,12 @@ def build_graph(
         moved = narrow(state.provider_reallocation, ProviderReallocation)
         duties = state.classification.transparency_duties
         testing = narrow(state.real_world_testing, RealWorldTesting)
+        # WHICH Art. 5(1) point banned the practice, read off the classification. It activates the
+        # rules on the LAWFUL BRANCH of point (h): real-time remote biometric identification for
+        # law enforcement is banned "unless and in so far as such use is strictly necessary", and a
+        # deployer running it under an Art. 5(5) national authorisation still owes Art. 5(2), (3)
+        # and (4). Every other point of Art. 5 bans outright and matches no rule.
+        practice = state.classification.prohibited_practice
         return {
             "active": [
                 select_rules(
@@ -159,6 +165,7 @@ def build_graph(
                     reallocation=moved,
                     transparency_duties=duties,
                     real_world_testing=testing,
+                    prohibited_practice=practice,
                 )
                 for uc in state.classification.use_cases
                 for role in roles

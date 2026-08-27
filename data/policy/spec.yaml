@@ -249,6 +249,13 @@ rules:
       SPECIFICATION the Commission has adopted (Art. 41(3)). Documentation that names the standard
       applied, and the parts of it applied, is answering this requirement through that route rather
       than avoiding it.
+      ONE RELIEF CARRIES A DUTY WITH IT. An SME, including a start-up, or an SMC MAY provide the
+      Annex IV elements IN A SIMPLIFIED MANNER — and where it takes that route it SHALL USE THE
+      COMMISSION'S SIMPLIFIED TECHNICAL DOCUMENTATION FORM, which notified bodies are required to
+      accept. A small provider that has abridged its Annex IV documentation into a format of its own
+      has taken the relief without meeting the condition attached to it, and the abridgement is what
+      makes that visible. The full Annex IV set remains the alternative; what is not open is a
+      simplified set outside the form.
     document_verifiable: true
     effective_date_by_route:
       annex_iii: 2027-12-02
@@ -2466,6 +2473,12 @@ rules:
       act_version_date: 2026-07-27
     applies_to_risk_class: [not_high_risk]
     applies_to_role: [provider]
+    # Art. 6(4)'s last limb IS Art. 49(2): "Such provider shall be subject to the registration
+    # obligation set out in Article 49(2)". The cross-reference carries the PROVIDER limb only —
+    # the authorised representative's is AIA-AR-A49-2.
+    qualified_by:
+      - article: 49
+        paragraph: 2
     obligation_status: mandatory
     check_type: substance
     evidence_expected: >-
@@ -3934,4 +3947,301 @@ rules:
       AIA-GP-A53-4. Addressed to the Commission — confirm separately.
     document_verifiable: false
     effective_date: 2025-08-02
+    status: active
+
+  # ------------------------------------------------------------------------------------------
+  # ART. 5(2)-(4) — THE LAWFUL BRANCH OF THE REAL-TIME BIOMETRIC PROHIBITION.
+  #
+  # Every other point of Art. 5(1) bans outright, and a banned practice owes withdrawal and nothing
+  # else. Point (h) is drafted differently: it prohibits real-time remote biometric identification
+  # in publicly accessible spaces for law enforcement "unless and in so far as such use is strictly
+  # necessary" for the three objectives it lists, and Art. 5(5) lets a Member State authorise that
+  # use within those limits. A deployer operating under such a national authorisation is not
+  # outside Art. 5 — it is inside the exception, and paragraphs 2, 3 and 4 are the conditions the
+  # Article attaches to being there.
+  #
+  # REPORTED ALONGSIDE THE PROHIBITION, not instead of it. The classification still answers
+  # `prohibited` and the report's scope note still says withdraw; these rules add what Art. 5 costs
+  # a deployer that has the authorisation. `applies_to_prohibited_practice` is what keeps them off
+  # a system banned for social scoring, which has no lawful branch.
+  #
+  # THE DEPLOYER, because Art. 5(2) to (4) address the law enforcement authority USING the system.
+  # The provider of such a system owes Chapter III on the ordinary route where the use is lawful;
+  # nothing here is a provider duty.
+  - rule_id: AIA-DP-A05-2
+    source:
+      instrument: "Regulation (EU) 2024/1689"
+      article: 5
+      paragraph: 2 # the conditions on a use permitted under 5(1)(h)
+      act_version_date: 2026-07-27
+    applies_to_risk_class: [prohibited]
+    applies_to_role: [deployer]
+    applies_to_prohibited_practice: [realtime_remote_biometric_identification]
+    activation_condition: >-
+      Owed only where a MEMBER STATE HAS AUTHORISED the use under Art. 5(5) and the use is strictly
+      necessary for one of the objectives in Art. 5(1), first subparagraph, point (h). Without that
+      national authorisation the practice is prohibited outright and the answer is withdrawal, not
+      compliance with these conditions.
+    obligation_status: mandatory
+    check_type: presence
+    evidence_expected: >-
+      Four things, all of which bind before the system is used. A completed FUNDAMENTAL RIGHTS
+      IMPACT ASSESSMENT under Art. 27, and a REGISTRATION of the system in the EU database under
+      Art. 49 — the paragraph makes the authorisation conditional on both, with one narrow
+      exception: in duly justified cases of urgency use may begin before the registration, provided
+      the registration is then completed without undue delay. The use CONFINED to confirming the
+      identity of the specifically targeted individual, and not open-ended surveillance. And a
+      recorded weighing of the two elements the paragraph names — the nature of the situation,
+      including the seriousness, probability and scale of the harm if the system were not used, and
+      the consequences of the use for the rights and freedoms of all persons concerned. The use
+      must also comply with the temporal, geographic and personal limitations set by the national
+      law authorising it. Acts of a law enforcement authority before a deployment rather than
+      properties of a technical file — confirm separately.
+    document_verifiable: false
+    effective_date: 2025-02-02
+    effective_date_note: >-
+      Art. 113(a) applies Chapters I and II from 2 February 2025. The Omnibus deferred only Art.
+      5(1), first subparagraph, points (ba) and (bb) and Art. 5(1a) and (1b); paragraphs 2 to 4
+      were not moved, so these conditions have bound since the Article began to apply.
+    status: active
+
+  - rule_id: AIA-DP-A05-3
+    source:
+      instrument: "Regulation (EU) 2024/1689"
+      article: 5
+      paragraph: 3 # prior authorisation, the 24-hour urgency route, and what a refusal costs
+      act_version_date: 2026-07-27
+    applies_to_risk_class: [prohibited]
+    applies_to_role: [deployer]
+    applies_to_prohibited_practice: [realtime_remote_biometric_identification]
+    activation_condition: >-
+      Owed on the same branch as AIA-DP-A05-2: a use permitted under Art. 5(1), first subparagraph,
+      point (h) and authorised by a Member State under Art. 5(5).
+    obligation_status: mandatory
+    check_type: presence
+    evidence_expected: >-
+      A PRIOR AUTHORISATION for EACH USE, granted by a judicial authority or by an independent
+      administrative authority whose decision is binding, in the Member State where the use takes
+      place, issued on a reasoned request. Per use, not a standing permission for the deployment.
+      THE URGENCY ROUTE IS NARROW AND CARRIES A CLOCK: in a duly justified situation of urgency the
+      use may begin without the authorisation, but the authorisation must then be requested without
+      undue delay and AT THE LATEST WITHIN 24 HOURS. AND A REFUSAL ENDS IT: if the authorisation is
+      rejected, the use shall be stopped WITH IMMEDIATE EFFECT and all the data, as well as the
+      results and outputs of that use, shall be immediately discarded and deleted. A deployer that
+      has an urgency procedure but no deletion procedure has answered half of this. One further
+      limit binds the decision the system feeds: no decision producing an adverse legal effect on a
+      person may be taken based solely on the output of the identification system. Authorisations
+      obtained from a court and an operational deletion procedure rather than a property of the
+      technical file — confirm separately.
+    document_verifiable: false
+    effective_date: 2025-02-02
+    effective_date_note: >-
+      Art. 113(a), same as AIA-DP-A05-2 — Chapter II from 2 February 2025, and this paragraph was
+      not among the points the Omnibus deferred.
+    status: active
+
+  - rule_id: AIA-DP-A05-4
+    source:
+      instrument: "Regulation (EU) 2024/1689"
+      article: 5
+      paragraph: 4 # the per-use notification, its minimum content and its one exclusion
+      act_version_date: 2026-07-27
+    applies_to_risk_class: [prohibited]
+    applies_to_role: [deployer]
+    applies_to_prohibited_practice: [realtime_remote_biometric_identification]
+    activation_condition: >-
+      Owed on the same branch as AIA-DP-A05-2, and owed WITHOUT PREJUDICE TO Art. 5(3): the
+      notification is due whether or not the prior authorisation was obtained in advance or on the
+      urgency route.
+    obligation_status: mandatory
+    check_type: presence
+    evidence_expected: >-
+      A NOTIFICATION OF EACH USE to TWO authorities — the relevant market surveillance authority
+      AND the national data protection authority — made in accordance with the national rules
+      adopted under Art. 5(5). Per use, like the authorisation, and to both bodies: notifying one
+      of them is not this. WHAT IT MUST CONTAIN is a minimum and not a maximum: at least the
+      information specified under Art. 5(6), which is what lets those authorities file the annual
+      report to the Commission on the template it provides, including the number of authorisation
+      decisions and their result. AND ONE EXCLUSION runs the other way: the notification SHALL NOT
+      include sensitive operational data. A notification routine that ships the operational record
+      wholesale breaches the paragraph it is trying to satisfy. Notifications sent to authorities
+      rather than a property of the technical file — confirm separately.
+    document_verifiable: false
+    effective_date: 2025-02-02
+    effective_date_note: >-
+      Art. 113(a), same as AIA-DP-A05-2.
+    status: active
+
+  # ------------------------------------------------------------------------------------------
+  # ARTS. 46, 47(3), 49(2) AND 75(1e) — DUTIES ON ROUTES AND LIMBS THE ORDINARY RULES MISS.
+  #
+  # Each of these binds a party this report covers, and each sat outside the ruleset because the
+  # thing that triggers it is a route the tool does not classify to (the Art. 46 derogation), an
+  # instrument it does not carry (Art. 47(3)), a limb of a cross-reference (Art. 49(2)) or a cost
+  # rather than a document (Art. 75(1e)). None of those is a reason the duty is not owed.
+  - rule_id: AIA-PO-A46-1
+    source:
+      instrument: "Regulation (EU) 2024/1689"
+      article: 46
+      paragraph: 1 # the derogation, and the duty that runs while it lasts
+      act_version_date: 2026-07-27
+    applies_to_risk_class: [high_risk]
+    applies_to_role: [provider]
+    activation_condition: >-
+      Owed only where a market surveillance authority has AUTHORISED the placing on the market or
+      putting into service under Art. 46(1), by way of derogation from Art. 43. Requesting the
+      derogation is the provider's choice and granting it is the authority's; this is what the
+      provider owes once it has been granted.
+    obligation_status: mandatory
+    check_type: presence
+    evidence_expected: >-
+      The Art. 43 CONFORMITY ASSESSMENT PROCEDURES CARRIED THROUGH TO COMPLETION, WITHOUT UNDUE
+      DELAY, while the derogation runs. The authorisation is for a limited period and is granted
+      "while the necessary conformity assessment procedures are being carried out" — it postpones
+      the procedure, it does not replace it, and a provider that placed the system on the market
+      under Art. 46(1) and then let the assessment lapse is in breach of this paragraph rather than
+      of Art. 43. The exceptional reasons that justified the derogation — public security, the
+      protection of life and health, environmental protection, or the protection of key industrial
+      and infrastructural assets — bound the period, so a longer one is not covered by the grant.
+      An ongoing procedure at the provider — confirm separately.
+    document_verifiable: false
+    effective_date: 2026-08-02
+    effective_date_note: >-
+      Art. 46 sits in Chapter III Section 5, which Art. 113(c) does not name, so it runs from the
+      general date of 2 August 2026 while the Section 2 requirements the derogation postpones
+      assessing wait until 2 December 2027. The same inversion as Arts. 43 and 47 to 49: the
+      procedure applies before the requirements it verifies.
+    status: active
+
+  - rule_id: AIA-DP-A46-2
+    source:
+      instrument: "Regulation (EU) 2024/1689"
+      article: 46
+      paragraph: 2 # putting into service in urgency, and what a refusal costs
+      act_version_date: 2026-07-27
+    applies_to_risk_class: [high_risk]
+    applies_to_role: [deployer]
+    activation_condition: >-
+      Owed only by a LAW-ENFORCEMENT OR CIVIL PROTECTION AUTHORITY that has put a high-risk system
+      into service WITHOUT the Art. 46(1) authorisation, in a duly justified situation of urgency
+      for exceptional reasons of public security or a specific, substantial and imminent threat to
+      the life or physical safety of natural persons. No other deployer can reach this paragraph.
+    obligation_status: mandatory
+    check_type: presence
+    evidence_expected: >-
+      Two duties, and the second is the one a procedure usually lacks. The Art. 46(1) AUTHORISATION
+      REQUESTED during or after the use WITHOUT UNDUE DELAY — the urgency excuses the sequence, not
+      the request. And if that authorisation is REFUSED, the use of the system STOPPED WITH
+      IMMEDIATE EFFECT and all the results and outputs of the use IMMEDIATELY DISCARDED. An
+      authority with an emergency deployment procedure and no procedure for a refusal has answered
+      the first half: the discarding is not discretionary and not deferred to a review. Acts around
+      a deployment rather than properties of a technical file — confirm separately.
+    document_verifiable: false
+    effective_date: 2026-08-02
+    effective_date_note: >-
+      Art. 46 sits in Chapter III Section 5, so 2 August 2026, ahead of the 2 December 2027 start
+      of the Section 2 requirements — as AIA-PO-A46-1.
+    status: active
+
+  - rule_id: AIA-PO-A47-3
+    source:
+      instrument: "Regulation (EU) 2024/1689"
+      article: 47
+      paragraph: 3 # one declaration where several instruments require one
+      act_version_date: 2026-07-27
+    applies_to_risk_class: [high_risk]
+    applies_to_role: [provider]
+    activation_condition: >-
+      Owed only where the system is ALSO subject to other Union harmonisation legislation that
+      requires an EU declaration of conformity — in practice an Annex I product. The other
+      instrument's content is not carried by this tool; what this rule states is the duty Art. 47(3)
+      itself imposes about the form the declarations take.
+    obligation_status: mandatory
+    check_type: presence
+    evidence_expected: >-
+      A SINGLE EU declaration of conformity drawn up in respect of ALL Union law applicable to the
+      system, not one under this Regulation alongside a separate one under the sectoral instrument.
+      The duty is imposed here and is breached by the separate pair even where each is individually
+      correct. And that single declaration must CONTAIN ALL THE INFORMATION REQUIRED TO IDENTIFY
+      THE UNION HARMONISATION LEGISLATION it relates to — a reader has to be able to tell from the
+      document which instruments it discharges. A declaration document rather than the technical
+      file — confirm separately, and with a specialist in the sectoral instrument for what that
+      instrument adds.
+    document_verifiable: false
+    effective_date: 2026-08-02
+    effective_date_note: >-
+      Art. 47 sits in Chapter III Section 5, which Art. 113(c) does not name, so 2 August 2026 —
+      ahead of the 2 December 2027 start of the Section 2 requirements the declaration attests to.
+      As AIA-PO-A47.
+    status: active
+
+  # THE LIMB A CROSS-REFERENCE DROPS. Art. 6(4) sends a provider that self-assessed out of Annex III
+  # to "the registration obligation set out in Article 49(2)", and AIA-NHR-A06-4 carries that. But
+  # Art. 49(2) binds "that provider or, where applicable, the authorised representative", and
+  # Art. 6(4) names only the provider — so the representative's limb arrives through neither. It is
+  # not covered by Art. 22(3)(e) either, which sends the representative to Art. 49(1).
+  - rule_id: AIA-AR-A49-2
+    source:
+      instrument: "Regulation (EU) 2024/1689"
+      article: 49
+      paragraph: 2 # registration of a system self-assessed out of Annex III
+      act_version_date: 2026-07-27
+    applies_to_risk_class: [not_high_risk]
+    applies_to_role: [authorised_representative]
+    activation_condition: >-
+      Owed WHERE APPLICABLE — that is, where the provider has appointed an authorised
+      representative under Art. 22 and the registration falls to it rather than to the provider.
+      A provider established in the Union that registers itself leaves nothing here.
+    obligation_status: mandatory
+    check_type: presence
+    evidence_expected: >-
+      REGISTRATION OF BOTH the representative ITSELF and the system, in the EU database referred to
+      in Art. 71, BEFORE the system is placed on the market or put into service. The trigger is the
+      provider's Art. 6(3) conclusion that an Annex III system is not high-risk: the system escapes
+      Chapter III and does not escape the register, which is what makes the self-assessment
+      reviewable. Registering the system and not the representative, or registering after placing,
+      does not satisfy it. An entry in an external registry — confirm separately.
+    document_verifiable: false
+    effective_date: 2027-12-02
+    effective_date_note: >-
+      THIS DATE IS CONTESTED, on exactly the reading AIA-NHR-A06-4 sets out and for the same
+      reason. Art. 49 sits in Chapter III Section 5, which Art. 113 did NOT move, so on the text
+      this registration is already due from the general date of 2 August 2026. But what triggers it
+      is an Art. 6(3) conclusion, and Art. 6 is in Section 1, which Art. 113(c) defers to 2 December
+      2027 — so on that reading the registration cannot be owed before there is a conclusion to
+      register. The later date is taken here, tracking the provider limb rather than splitting the
+      paragraph between two dates for two parties. An authorised representative of a provider
+      relying on an Art. 6(3) derogation should take advice on which date binds them rather than
+      the later one by default. Annex III is the only door a self-assessment out of Annex III can
+      come through, so the Annex I date cannot arise.
+    status: active
+
+  - rule_id: AIA-PO-A75-1E
+    source:
+      instrument: "Regulation (EU) 2024/1689"
+      article: 75
+      paragraph: 1e # AI Office competence for the assessment, and who pays for it
+      act_version_date: 2026-07-27
+    applies_to_risk_class: [high_risk]
+    applies_to_role: [provider]
+    activation_condition: >-
+      Owed only by the provider of a system the AI OFFICE IS EXCLUSIVELY COMPETENT FOR under
+      Art. 75(1) — broadly, a system built on a general-purpose AI model by the model's own
+      provider or an undertaking of the same group — that is high-risk AND subject to a third-party
+      conformity assessment under Art. 43. Art. 75(1)(a) excludes Annex I products and Annex III
+      point 2 systems from that competence.
+    obligation_status: mandatory
+    check_type: presence
+    evidence_expected: >-
+      PAYMENT OF THE ASSESSMENT COSTS, BY THE PROVIDER, DIRECTLY TO THE NOTIFIED BODY. Where the AI
+      Office is competent it entrusts the tests and assessments to a notified body acting on the
+      Commission's behalf, and the fees are levied on the provider that applied for the assessment
+      — but the paragraph routes the money past the Commission: the provider pays the body direct.
+      A provider that has budgeted a fee to the Commission has the payee wrong. A commercial
+      arrangement rather than a property of the technical file — confirm separately.
+    document_verifiable: false
+    effective_date: 2026-08-02
+    effective_date_note: >-
+      Art. 75 sits in Chapter IX, which Art. 113 does not carve out — general date, as the other
+      Art. 75 rules.
     status: active

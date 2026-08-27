@@ -18,6 +18,7 @@ from aiact.schemas.enums import (
     CheckType,
     HighRiskRoute,
     ObligationStatus,
+    ProhibitedPractice,
     RiskClass,
     TransparencyDuty,
 )
@@ -167,6 +168,17 @@ class PolicyRule(BaseModel):
     alone and 43(2) points 2 to 8, and until this field existed the spec carried 43(2) with the
     comment "employment is Annex III point 4" and fired it at biometrics too. A condition written in
     a comment is not a condition."""
+    applies_to_prohibited_practice: list[ProhibitedPractice] = []
+    """WHICH Art. 5(1) practice this rule fires for. Empty is the ordinary case: no condition.
+
+    A non-empty list is how a rule reaches the LAWFUL BRANCH of a prohibition. Most of Art. 5 bans
+    outright and a banned practice owes nothing but withdrawal. Point (h) is the exception: it bans
+    real-time remote biometric identification for law enforcement "unless and in so far as such use
+    is strictly necessary" for the objectives it lists, and Art. 5(5) lets a Member State authorise
+    that use. A deployer on that branch owes Art. 5(2), (3) and (4) — a fundamental rights impact
+    assessment, an EU database registration, prior judicial authorisation, per-use notification.
+    Naming the practice is what keeps those duties off a system banned for social scoring, which has
+    no lawful branch and owes none of them."""
     requires_provider_reallocation: bool = False
     """Whether this rule activates ONLY where Art. 25 has moved the provider role to another party.
 
@@ -373,6 +385,16 @@ class PolicyRule(BaseModel):
                 f"PolicyRule {self.rule_id!r}: applies_to_annex_iii_area names areas but "
                 f"applies_to_route is annex_i. An Annex I use case has no Annex III area, so this "
                 f"rule could never activate."
+            )
+        # Same shape, same reason: only a PROHIBITED classification carries an Art. 5(1) practice,
+        # so a rule naming one and not naming that tier could never fire.
+        if self.applies_to_prohibited_practice and RiskClass.PROHIBITED not in (
+            self.applies_to_risk_class or []
+        ):
+            raise ValueError(
+                f"PolicyRule {self.rule_id!r}: applies_to_prohibited_practice names a practice but "
+                f"applies_to_risk_class does not include prohibited. Only a prohibited "
+                f"classification carries a practice, so this rule could never activate."
             )
         return self
 

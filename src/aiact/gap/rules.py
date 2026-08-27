@@ -26,6 +26,7 @@ from aiact.schemas.classification import UseCaseClassification
 from aiact.schemas.enums import (
     ActorRole,
     HighRiskRoute,
+    ProhibitedPractice,
     ProviderReallocation,
     RealWorldTesting,
     RiskClass,
@@ -140,6 +141,20 @@ def _area_matches(rule: PolicyRule, use_case: UseCaseClassification) -> bool:
     return use_case.annex_iii_area in rule.applies_to_annex_iii_area
 
 
+def _practice_matches(rule: PolicyRule, practice: ProhibitedPractice | None) -> bool:
+    """A rule that names an Art. 5(1) practice fires only for that practice.
+
+    Empty list is no condition, which is every rule outside Art. 5. A rule that names one reaches
+    the LAWFUL BRANCH of a prohibition — Art. 5(1)(h) bans real-time remote biometric
+    identification for law enforcement "unless and in so far as such use is strictly necessary",
+    and a deployer operating under an Art. 5(5) national authorisation still owes Art. 5(2), (3)
+    and (4). A classification with no practice matches no list, which keeps those duties off every
+    system that is not on that branch."""
+    if not rule.applies_to_prohibited_practice:
+        return True
+    return practice in rule.applies_to_prohibited_practice
+
+
 def _testing_matches(rule: PolicyRule, answer: RealWorldTesting | None) -> bool:
     """A rule that depends on the Art. 60 route fires unless the description rules the route out.
 
@@ -164,6 +179,7 @@ def select_rules(
     reallocation: ProviderReallocation | None = None,
     transparency_duties: Sequence[TransparencyDuty] = (),
     real_world_testing: RealWorldTesting | None = None,
+    prohibited_practice: ProhibitedPractice | None = None,
 ) -> ActiveRules:
     """The obligations `role` owes for this use case, under its risk class.
 
@@ -232,6 +248,7 @@ def select_rules(
         and _area_matches(rule, use_case)
         and (reallocation is not None or not rule.requires_provider_reallocation)
         and _testing_matches(rule, real_world_testing)
+        and _practice_matches(rule, prohibited_practice)
         and rule.status != "amended"
     ]
     # A rule carrying an `activation_condition` is NOT withheld here. The Act narrows some duties

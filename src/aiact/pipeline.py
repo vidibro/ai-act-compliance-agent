@@ -161,8 +161,20 @@ def review(
     overall = classification.overall_risk_class
     if overall == RiskClass.OUT_OF_SCOPE:
         return _empty_report(system_id, spec, classification, _OUT_OF_SCOPE_NOTE)
-    if overall == RiskClass.PROHIBITED:
-        return _empty_report(system_id, spec, classification, _prohibited_note(classification))
+    # PROHIBITED DOES NOT SHORT-CIRCUIT, because one prohibition has a lawful branch. Art. 5(1)(h)
+    # bans real-time remote biometric identification for law enforcement "unless and in so far as
+    # such use is strictly necessary" for the objectives it lists, and Art. 5(5) lets a Member State
+    # authorise that use. A deployer on that branch owes Art. 5(2), (3) and (4) — a fundamental
+    # rights impact assessment, an EU database registration, prior judicial authorisation and a
+    # per-use notification — and returning an empty report tells them none of it.
+    #
+    # The note still stands and still says withdraw. What is selected here is Art. 5's OWN
+    # conditions and nothing from Chapter III: those rules name the practice, and no Chapter III
+    # rule names the prohibited tier, so a practice banned outright still reaches an empty findings
+    # list. The reasoning in `_PROHIBITED_NOTE` holds — checking documentation against Chapter III
+    # would imply the system ships once the paperwork is fixed — and it is about Chapter III, not
+    # about the Article that did the banning.
+    prohibited = overall == RiskClass.PROHIBITED
     if overall == RiskClass.NEEDS_REVIEW:
         return _empty_report(system_id, spec, classification, _NEEDS_REVIEW_NOTE)
 
@@ -205,6 +217,14 @@ def review(
     section_b = sorted({uc.annex_i_product.value for uc in withheld if uc.annex_i_product})
     if section_b and len(withheld) == len(high_risk):
         return report.model_copy(update={"scope_note": _section_b_note(section_b)})
+
+    # The Art. 5 verdict, carried through to a report that now has findings behind it. The note is
+    # unchanged for a practice banned outright — nothing was selected and the findings list is
+    # empty. Where the lawful branch of point (h) put Art. 5(2) to (4) in the report, the reader
+    # needs both halves at once: the practice is prohibited unless the national authorisation
+    # exists, and if it does, these are the conditions Art. 5 itself attaches to it.
+    if prohibited:
+        return report.model_copy(update={"scope_note": _prohibited_note(classification)})
 
     # A model's obligations are listed and none is judged, so its findings list is empty for a
     # reason that has nothing to do with the documentation. Said here, because an empty findings

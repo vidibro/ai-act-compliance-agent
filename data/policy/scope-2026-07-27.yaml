@@ -167,12 +167,16 @@ article_rulings:
       'micro, small and medium-sized enterprise'. Borrowed whole from Article 2 of the Annex to
       Recommendation 2003/361/EC, which this corpus does not hold. Feeds the SME reliefs — Art. 62
       priority access to sandboxes, Art. 63(1) a simplified quality management system, Art. 99(6)
-      fines capped at the lower of the percentage and the amount — every one of them a RELIEF, so
-      none is an obligation this ruleset checks.
+      fines capped at the lower of the percentage and the amount. Those three are pure reliefs. A
+      FOURTH IS NOT: Art. 11(1) lets an SME or SMC give the Annex IV elements in a simplified
+      manner and then requires it to USE THE COMMISSION'S FORM, so the relief carries a condition.
+      AIA-HR-A11 names that condition, which is where the duty is reported; the definition itself
+      stays a definition.
     14b: >-
       'small mid-cap enterprise'. Borrowed whole from point (2) of the Annex to Recommendation
       (EU) 2025/1099, which this corpus does not hold. Inserted beside 14a and named alongside it in
-      those same reliefs; same ground.
+      those same provisions, Art. 11(1) included — same ground, and the same Art. 11(1) condition,
+      which AIA-HR-A11 names.
     15: "'instructions for use'. Feeds Art. 13(3), cited at 13(3) as AIA-HR-A13-3."
     16: "'recall of an AI system'. Feeds Art. 20, cited at 20(1)."
     17: "'withdrawal of an AI system'. Feeds Art. 20, cited at 20(1)."
@@ -286,18 +290,22 @@ article_rulings:
       CASCADE prohibited — for point (ba) only: manipulation that does not increase exposure or
       alter the nature of the depicted activity is not manipulation.
     2: >-
-      Conditions on a real-time remote biometric identification use permitted under 5(5) — confirm
-      the identity of the specifically targeted individual, weigh the (a)-(b) elements, and complete
-      an Art. 27 fundamental rights impact assessment and an Art. 49 registration first. Real duties
-      on a law-enforcement deployer, and this tool reports none of them: it answers the practice as
-      prohibited and never reaches the lawful branch. Over-inclusive, so the reader is told the
-      strongest thing rather than cleared, but a known limit all the same.
+      RULE AIA-DP-A05-2 — the conditions on a real-time remote biometric identification use
+      permitted under 5(1)(h) and authorised by a Member State under 5(5): a completed Art. 27
+      fundamental rights impact assessment, an Art. 49 registration, the use confined to confirming
+      the identity of the specifically targeted individual, the (a)-(b) elements weighed, and the
+      temporal, geographic and personal limitations of the authorising national law. Reported
+      BESIDE the prohibition verdict rather than instead of it: the classification still answers
+      prohibited and the scope note still says withdraw, and these are what Art. 5 costs a deployer
+      that holds the national authorisation.
     3: >-
-      Prior authorisation by a judicial or independent administrative authority, or within 24 hours
-      in urgency. Same limit as 5(2): a duty on the lawful-use branch this tool does not model.
+      RULE AIA-DP-A05-3 — prior authorisation by a judicial or independent administrative authority
+      for each use, the 24-hour request clock on the urgency route, and the immediate stop and
+      deletion of data, results and outputs where the authorisation is refused.
     4: >-
-      Each use notified to the market surveillance authority and the national data protection
-      authority. Same limit as 5(2).
+      RULE AIA-DP-A05-4 — notification of each use to both the market surveillance authority and
+      the national data protection authority, carrying the Art. 5(6) information as a minimum and
+      excluding sensitive operational data.
     5: >-
       A Member State MAY authorise the use, and must lay down the national rules for it. A power of
       the Member State; the deployer's duties under it are 5(2)-(4).
@@ -674,14 +682,18 @@ article_rulings:
     4: Notified bodies safeguard confidentiality under Art. 78. The body's duty.
   46:
     1: >-
-      A market surveillance authority MAY authorise placing on the market without the Art. 43
-      assessment, for exceptional reasons of public security or protection of life and health. A
-      derogation granted by the authority on request; the request is an option, not a duty.
+      RULE AIA-PO-A46-1 — a market surveillance authority MAY authorise placing on the market
+      without the Art. 43 assessment, for exceptional reasons of public security, the protection of
+      life and health, environmental protection or key industrial and infrastructural assets. The
+      request is the provider's option and the grant is the authority's, but the last sentence is a
+      duty on the provider that took the route: the conformity assessment procedures shall be
+      completed without undue delay while the authorisation runs.
     2: >-
-      Law enforcement or civil protection may put a system into service without that authorisation
-      in urgency, PROVIDED the authorisation is requested during or after use without undue delay.
-      A real duty, owed by whoever takes this exceptional route. This tool assesses systems on the
-      ordinary route and reports nothing here — the same known limit as Art. 60.
+      RULE AIA-DP-A46-2 — law enforcement or civil protection may put a system into service without
+      that authorisation in urgency, PROVIDED the authorisation is requested during or after the use
+      without undue delay, and if it is refused the use stops with immediate effect and all results
+      and outputs are immediately discarded. Owed by whoever takes this exceptional route, and
+      reported with that condition attached rather than withheld for it.
     3: The authorisation issues only if the authority finds the system meets Section 2. The authority's duty.
     4: An unopposed authorisation is deemed justified after 15 days. Institutional timing.
     5: The Commission's consultation where a Member State objects. Institutional.
@@ -691,9 +703,11 @@ article_rulings:
       A pointer to law this tool does not carry.
   47:
     3: >-
-      A single EU declaration of conformity where other Union harmonisation legislation also requires
-      one. Consolidates declarations owed under instruments this tool does not carry, so a gap
-      against it could not be stated meaningfully.
+      RULE AIA-PO-A47-3 — a SINGLE EU declaration of conformity where other Union harmonisation
+      legislation also requires one, identifying every instrument it relates to. The other
+      instrument's contents are outside this tool, but both limbs of this paragraph are imposed
+      here and are statable without carrying it: one document rather than several, and it must name
+      the legislation it discharges.
     2: >-
       RULE AIA-PO-A47-2 — the declaration must state conformity with Section 2, carry the Annex V
       information, and be translated for every Member State where the system is placed on the
@@ -715,8 +729,12 @@ article_rulings:
       marking's effect rather than a separate act the provider performs.
   49:
     2: >-
-      Registration of a system the provider concluded is not high-risk. Carried by AIA-NHR-A06-4,
-      whose Art. 6(4) text imposes it by cross-reference.
+      RULE AIA-NHR-A06-4, AIA-AR-A49-2 — the provider limb, which Art. 6(4) imposes by
+      cross-reference, and the AUTHORISED REPRESENTATIVE limb, which it does not. Art. 6(4) reads "Such
+      provider shall be subject to the registration obligation set out in Article 49(2)" and names
+      the provider alone, while this paragraph binds "that provider or, where applicable, the
+      authorised representative". Art. 22(3)(e) does not close the gap either — it sends the
+      representative to Art. 49(1).
   # --- Chapter IV — transparency ---------------------------------------------------------------
   # Art. 50(1) to (4) are CITED, by AIA-TR-A50-1 to -4: the cascade answers which duty attached and
   # those rules check the documentation against it. Only the two paragraphs below are ruled out.
@@ -1263,9 +1281,11 @@ article_rulings:
     1c: The market surveillance authority assists the AI Office where public authority data is accessed. Institutional.
     1d: The AI Office notifies the national authority before a prohibiting or recall decision. Institutional.
     1e: >-
-      The AI Office is responsible for Art. 43 third-party conformity assessment of 75(1) systems, and
-      THE PROVIDER PAYS the notified body costs. A fee owed to a body, not a compliance obligation —
-      this tool reports what a file must contain, never what a procedure costs.
+      RULE AIA-PO-A75-1E — the AI Office is responsible for the Art. 43 third-party conformity
+      assessment of Art. 75(1) systems, entrusts it to a notified body acting on the Commission's
+      behalf, and THE PROVIDER PAYS those costs DIRECTLY TO THE BODY. A cost rather than a document,
+      which is why it is not judged; it is still a duty this Regulation puts on the provider, and
+      the payee it names is not the Commission.
     2: >-
       Authority procedure where a general-purpose AI system usable directly for a high-risk purpose is
       suspected non-compliant. The authority's procedure.
@@ -2693,10 +2713,6 @@ role_mentions:
     provider's own general-purpose model and for systems inside a VLOP or VLOSE, subject to four
     exceptions. The provider is named to define the class of system; the deployer appears in the
     exceptions. Which authority supervises is not a duty of either.
-  "75(1e)": >-
-    The AI Office is responsible for Art. 43 third-party assessment of those systems, and the
-    provider pays the notified body's costs directly. A fee owed to a body — this tool reports what
-    a file must contain, never what a procedure costs. The assessment duty is Art. 43.
   "75(2)": >-
     An inter-authority procedure where a general-purpose AI system usable directly for a high-risk
     purpose is suspected non-compliant. The deployer is named to describe such a system — one that
