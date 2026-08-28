@@ -1,9 +1,13 @@
 # Normative Coverage Migration
 
-**Status:** accepted design; migrate incrementally using the strangler pattern  
-**Act snapshot:** `2026-07-27`  
-**Decision date:** 2026-08-28  
-**Related:** [Development roadmap](ROADMAP.md), [audit notes](auditing.md)
+**Status:** accepted design; Phase 0 complete, Phase 1 next
+
+**Act snapshot:** `2026-07-27`
+
+**Decision date:** 2026-08-28
+
+**Related:** [Development roadmap](ROADMAP.md),
+[Phase 0 scope contract](NORMATIVE-COVERAGE-SCOPE.md)
 
 ## Why this migration exists
 
@@ -78,12 +82,13 @@ actually judged. A condition disclosed in prose but not resolved is different ag
 
 ## Target model
 
-The new system has two connected inventories.
+The new system has three connected inventories: enacted-text review segments, normative
+propositions, and non-binding interpretive links for guidance that affects behaviour.
 
 ### 1. Text review segments
 
 Segments prove what source text was examined. They form a complete partition of every integrity-
-checked enacted body, apart from ignorable whitespace only.
+checked enacted body, including whitespace and structural text.
 
 Illustrative shape:
 
@@ -111,19 +116,8 @@ The offsets are relative to the verified enacted body for the pinned version. `t
 for human review, but is not an independent copy of the law: the loader must require it to equal
 the exact source slice and must verify its hash.
 
-Permitted segment dispositions should be explicit, for example:
-
-- `normative`
-- `definition`
-- `qualifier`
-- `cross_reference`
-- `institutional_duty`
-- `right_or_permission`
-- `structural`
-- `non_normative`
-- `needs_review`
-
-The exact enum should be decided during the pilot. Broad labels that conceal an unresolved legal
+The canonical segment dispositions are fixed by the
+[Phase 0 scope contract](NORMATIVE-COVERAGE-SCOPE.md). Broad labels that conceal an unresolved legal
 judgment are not acceptable.
 
 ### 2. Normative propositions
@@ -176,18 +170,17 @@ Norm types must cover more than positive operator duties:
 The full Act is inventoried even where the product does not report for the addressee. Product scope
 is a disposition on a discovered norm, not a reason to omit the norm from the denominator.
 
-Suggested product dispositions:
+The canonical norm, product-scope, implementation, verification, review, and dependency
+vocabularies are fixed by the [Phase 0 scope contract](NORMATIVE-COVERAGE-SCOPE.md).
 
-- `implemented`
-- `classification_gate`
-- `reported_not_judged`
-- `reported_conditionally`
-- `outside_supported_actor_scope`
-- `institutional`
-- `right_or_relief`
-- `duplicate_or_restatement`
-- `missing`
-- `needs_legal_review`
+### 3. Interpretive links
+
+The separately stored, non-binding Commission guidance is not a source of enacted norms, but it is
+a third assurance inventory wherever it affects behaviour. Every guidance-derived classification,
+rule interpretation, or expected label links a verified snippet to the enacted norm it interprets,
+declares whether the interpretation expands, narrows, clarifies, or defines evidence, and states
+how much of the source PDF was actually reviewed. The canonical `InterpretiveEffect` and
+`GuidanceReviewScope` vocabularies are fixed in the Phase 0 scope contract.
 
 ## Required invariants
 
@@ -196,11 +189,15 @@ The migration is complete only when CI enforces all of the following.
 ### Source and review integrity
 
 - Every stored article and annex contributes a verified enacted body.
-- Review segments cover every non-whitespace source character without unexplained gaps.
+- Review segments cover every source character without gaps.
 - Every stored segment text equals its source slice and matches its hash.
 - Overlaps are either forbidden or explicitly typed; accidental overlap fails validation.
 - Every segment has a review status and reviewer provenance.
 - `needs_review` remains visible debt and cannot count as complete.
+- Every guidance document and snippet used by the application passes the existing PDF/snippet hash
+  and omission checks.
+- Guidance review scope is recorded without presenting a bounded passage review as full-document
+  coverage.
 
 ### Norm integrity
 
@@ -224,6 +221,10 @@ The migration is complete only when CI enforces all of the following.
 - Every applicable norm is visible in the final report as a finding, an outstanding confirmation,
   a postponed obligation, a conditional obligation, or an explicit scope note.
 - Every document-verifiable norm has behavioural evaluation coverage or declared evaluation debt.
+- Every guidance reference used by a question, rule, or golden label maps through an approved
+  interpretive link to the enacted norm it affects and the implementation target that consumes it.
+- A guidance-derived claim without a verified snippet, declared effect, and review scope fails the
+  assurance gate.
 
 ## Extraction and review workflow
 
@@ -280,9 +281,16 @@ unless reconciliation proves current behaviour legally wrong.
 
 **Exit:** a written scope contract and stable schema vocabulary.
 
+**Completed 2026-08-28:** [`NORMATIVE-COVERAGE-SCOPE.md`](NORMATIVE-COVERAGE-SCOPE.md) fixes the
+corpus and product denominators, exact full-text review semantics, atomicity rules, assurance
+metrics, and the canonical Phase 0 vocabulary. Phase 1 must implement that contract without
+changing runtime behaviour.
+
 ### Phase 1 — schema, resolver, and shadow loader
 
 - Add segment and norm Pydantic schemas.
+- Add interpretive-link and guidance-review-scope schemas without changing the existing guidance
+  resolver or its non-binding source type.
 - Add exact-span resolution against the integrity-checked article and annex store.
 - Add validators for hashes, offsets, gaps, overlaps, references, and versions.
 - Load the new artifacts in tests only; do not change classification, selection, judging, or
@@ -293,6 +301,7 @@ Likely additions:
 - `src/aiact/schemas/norm.py`
 - `src/aiact/norm_loader.py`
 - `src/aiact/text_segments.py`
+- `src/aiact/schemas/interpretation.py`
 - `data/policy/norms-2026-07-27.yaml`
 - `data/policy/text-review-2026-07-27.yaml`
 
@@ -348,6 +357,8 @@ actually shown. Completion comes from approved span coverage, never from auditor
 - Add norm links to classification questions and gap-role questions, either directly or through a
   mapping artifact.
 - Backfill all existing rules and nodes.
+- Backfill interpretive links for every existing `guidance_ref` consumed by rules, questions, and
+  golden labels.
 - Validate citations, roles, routes, areas, conditions, qualifiers, and dates against mapped norms.
 - Continue using the current runtime selection logic.
 
@@ -464,6 +475,8 @@ Publish separate measures:
 | Report-surfacing coverage | Every applicable norm is visible to the reader |
 | Judgment coverage | Document-verifiable norms have behavioural evaluation cases |
 | Independent-review coverage | Norms and dismissals have separate verification |
+| Guidance-use traceability | Every behaviour-affecting interpretation maps to verified guidance |
+| Guidance review-scope coverage | Every used snippet states how much source context was reviewed |
 
 No aggregate percentage replaces these measures.
 
@@ -492,4 +505,3 @@ current provision count is too coarse to extrapolate from safely.
 Do not begin with a full-Act extraction run. Complete Phase 0, implement the shadow schemas and
 span resolver, and run the Phase 2 pilot. The pilot must validate the review workflow and narrow the
 effort estimate before the full inventory is authored.
-
