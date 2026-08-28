@@ -1,0 +1,495 @@
+# Normative Coverage Migration
+
+**Status:** accepted design; migrate incrementally using the strangler pattern  
+**Act snapshot:** `2026-07-27`  
+**Decision date:** 2026-08-28  
+**Related:** [Development roadmap](ROADMAP.md), [audit notes](auditing.md)
+
+## Why this migration exists
+
+The current coverage machinery proves an important but narrower claim than the product ultimately
+needs: every address emitted by `src/aiact/provisions.py` has a disposition. For the pinned Act it
+currently partitions the stored text into provisions marked checked by a rule, asked by a graph
+node, ruled not owed, declared owed, covered only by a blanket, or unaccounted.
+
+That is **address coverage**, not yet **normative coverage**. One paragraph can contain several
+separate duties, actors, conditions, exceptions, deadlines, recipients, and cross-references. A
+single rule citing that paragraph can make the address read `checked` while covering only one of
+those propositions. Repeated audits found exactly this defect class.
+
+The goal of this migration is a stronger, mechanically testable claim:
+
+> Every independently meaningful legal proposition in the pinned Act has an explicit, reviewed
+> disposition, every implemented proposition has a tested path into the application, and every
+> part of the enacted text has demonstrably been reviewed.
+
+The existing provision partition remains useful. It becomes the structural layer beneath the new
+normative layer rather than being discarded.
+
+## Lessons from the previous audits
+
+### Modal-word searches are candidate generators, not a denominator
+
+Searching for `shall` found dense provisions and real omissions, but the Act also creates legal
+effects without that word. Relevant forms include prohibitions, conditional permissions, passive
+requirements, responsibilities, exclusive conditions, deadlines, deeming clauses, exceptions,
+and duties imported by cross-reference.
+
+Signals such as the following help find candidates but cannot establish completeness:
+
+- `shall`, `shall not`, `must`, `is required to`, `is responsible for`;
+- `may only`, `only where`, `provided that`, `subject to`, `unless`;
+- `without undue delay`, `at the latest`, `before`, `after`;
+- `shall be deemed`, `shall apply`, `shall cease`, `shall ensure`;
+- permissions whose cumulative conditions function as mandatory requirements;
+- cross-references that import a duty, exception, definition, or procedure from another address.
+
+Candidate discovery therefore combines deterministic signals, grammatical/semantic analysis,
+source-only LLM extraction, cross-reference expansion, and independent review. None of those is
+the completeness guarantee. The full-text review partition below is.
+
+### Audit completion must be computed, never self-reported
+
+Several audit passes stated that an entire article had been analysed even though later work showed
+that only part of its text had reached the auditor. Future review tooling must record the exact
+source spans shown and decided. An article is complete only when the union of approved review spans
+covers its entire enacted body. A prose claim such as “119/119 articles read” is not evidence.
+
+### Capture-recapture is not a stopping rule
+
+Independent blind audits remain useful for discovery, but capture-recapture does not certify this
+corpus. Defects cluster by drafting pattern, auditors have unequal detection probabilities, later
+briefs are informed by earlier findings, and fixes change the population between rounds. Overlap is
+a signal to keep looking, not an estimate that proves how many defects remain.
+
+### “Covered” must be split into distinct assurance levels
+
+The product must not compress these into one percentage:
+
+1. the legal proposition was identified;
+2. its applicability is decided correctly;
+3. it is selected for the correct actor and facts;
+4. it reaches the user-facing report;
+5. it is judged against documentation where that is possible;
+6. the judgment behaviour is measured by an evaluation case.
+
+A rule that is listed but not document-verifiable is covered at a different level from one that is
+actually judged. A condition disclosed in prose but not resolved is different again.
+
+## Target model
+
+The new system has two connected inventories.
+
+### 1. Text review segments
+
+Segments prove what source text was examined. They form a complete partition of every integrity-
+checked enacted body, apart from ignorable whitespace only.
+
+Illustrative shape:
+
+```yaml
+segment_id: AIA-TEXT-026-005-07
+source:
+  kind: article
+  document: "26"
+  division: "5"
+  start: 1842
+  end: 2077
+  sha256: "..."
+text: >-
+  If the deployer is not able to reach the provider ...
+disposition: normative
+norm_ids:
+  - AIA-NORM-026-005-D
+review:
+  extracted_by: source-pass-a
+  verified_by: reviewer-b
+  status: approved
+```
+
+The offsets are relative to the verified enacted body for the pinned version. `text` is retained
+for human review, but is not an independent copy of the law: the loader must require it to equal
+the exact source slice and must verify its hash.
+
+Permitted segment dispositions should be explicit, for example:
+
+- `normative`
+- `definition`
+- `qualifier`
+- `cross_reference`
+- `institutional_duty`
+- `right_or_permission`
+- `structural`
+- `non_normative`
+- `needs_review`
+
+The exact enum should be decided during the pilot. Broad labels that conceal an unresolved legal
+judgment are not acceptable.
+
+### 2. Normative propositions
+
+A norm is one independently meaningful legal proposition. A provision may create several norms,
+and one norm may depend on several non-contiguous spans.
+
+Illustrative shape:
+
+```yaml
+norm_id: AIA-NORM-050-001-A
+type: obligation
+subject:
+  - provider
+action: ensure_direct_interaction_disclosure
+primary_spans:
+  - AIA-TEXT-050-001-01
+qualifier_spans:
+  - AIA-TEXT-050-005-01
+definition_spans:
+  - AIA-TEXT-003-066-01
+effective_date_spans:
+  - AIA-TEXT-113-B-01
+conditions:
+  - direct_interaction_with_natural_person
+exceptions:
+  - obvious_from_context_to_reasonably_well_informed_person
+product_disposition: implemented
+rule_ids:
+  - AIA-TR-A50-1
+verification_mode: document_verifiable
+review:
+  status: approved
+```
+
+Norm types must cover more than positive operator duties:
+
+- obligation;
+- prohibition;
+- applicability condition;
+- exception or relief;
+- deadline or transitional rule;
+- mandatory content;
+- role allocation or reallocation;
+- definition or dependency;
+- right or permission;
+- enforcement-triggered duty;
+- institutional duty outside the supported product scope.
+
+The full Act is inventoried even where the product does not report for the addressee. Product scope
+is a disposition on a discovered norm, not a reason to omit the norm from the denominator.
+
+Suggested product dispositions:
+
+- `implemented`
+- `classification_gate`
+- `reported_not_judged`
+- `reported_conditionally`
+- `outside_supported_actor_scope`
+- `institutional`
+- `right_or_relief`
+- `duplicate_or_restatement`
+- `missing`
+- `needs_legal_review`
+
+## Required invariants
+
+The migration is complete only when CI enforces all of the following.
+
+### Source and review integrity
+
+- Every stored article and annex contributes a verified enacted body.
+- Review segments cover every non-whitespace source character without unexplained gaps.
+- Every stored segment text equals its source slice and matches its hash.
+- Overlaps are either forbidden or explicitly typed; accidental overlap fails validation.
+- Every segment has a review status and reviewer provenance.
+- `needs_review` remains visible debt and cannot count as complete.
+
+### Norm integrity
+
+- Every normative segment links to at least one norm.
+- Every norm links to at least one primary source span.
+- Qualifiers, exceptions, definitions, cross-references, and timing sources are explicit spans.
+- Every norm has a subject, legal type, product disposition, and pinned Act version.
+- Every in-scope norm maps to a rule, graph question, report-only obligation, or declared missing
+  implementation.
+- Every `outside scope`, `institutional`, `right`, and `duplicate` disposition carries a reviewed
+  reason rather than a bare label.
+
+### Implementation integrity
+
+- Every `PolicyRule` links back to one or more norm IDs.
+- Every classification or role question links back to the norm IDs it decides.
+- A rule's roles and activation gates cannot be narrower than the mapped norm without an explicit
+  legal basis.
+- Every implemented norm has a positive reachability witness.
+- Every gate has an adjacent negative or boundary witness.
+- Every applicable norm is visible in the final report as a finding, an outstanding confirmation,
+  a postponed obligation, a conditional obligation, or an explicit scope note.
+- Every document-verifiable norm has behavioural evaluation coverage or declared evaluation debt.
+
+## Extraction and review workflow
+
+### Source-first extraction
+
+The extractor sees only the pinned enacted text and the extraction schema. It does not see
+`spec.yaml`, the existing scope ledger, graph questions, tests, audit reports, or implementation
+comments. This avoids fitting the legal inventory to what the application already believes.
+
+Use several independent candidate channels:
+
+1. deterministic modality and deadline signals;
+2. grammatical actor/action/object analysis;
+3. cross-reference and definition expansion;
+4. a structured, source-only LLM extraction pass;
+5. a second blind pass with a materially different prompt or model.
+
+Every candidate records the exact text it was derived from. Disagreement is routed to review; it is
+not silently resolved by majority vote.
+
+### Independent implementation inventory
+
+Separately inventory the existing rules, questions, route predicates, role predicates, dates,
+exceptions, report paths, and judgment modes. Reconcile that inventory against the source-first
+norms only after both exist.
+
+### Adjudication
+
+For each norm, an independent reviewer verifies:
+
+- the exact enacted span;
+- legal type and duty-holder;
+- action and mandatory content;
+- conditions, exceptions, timing, and recipient;
+- imported meaning from definitions and cross-references;
+- product disposition;
+- correctness of any mapped implementation.
+
+Agents can perform extraction and adversarial review. A final dismissal of a plausible operator
+duty should receive human legal review before it counts as approved.
+
+## Strangler migration phases
+
+The runtime remains stable while the assurance layer is introduced. Existing tests are preserved
+unless reconciliation proves current behaviour legally wrong.
+
+### Phase 0 — scope contract and vocabulary
+
+- Define whether the product reports for all operators, all current `ActorRole` members, or another
+  explicit subset.
+- Inventory every addressee in the Act even where it is outside the product scope.
+- Finalise the segment dispositions, norm types, product dispositions, and review states.
+- Define what counts as ignorable source whitespace and how headings are treated.
+
+**Exit:** a written scope contract and stable schema vocabulary.
+
+### Phase 1 — schema, resolver, and shadow loader
+
+- Add segment and norm Pydantic schemas.
+- Add exact-span resolution against the integrity-checked article and annex store.
+- Add validators for hashes, offsets, gaps, overlaps, references, and versions.
+- Load the new artifacts in tests only; do not change classification, selection, judging, or
+  reporting.
+
+Likely additions:
+
+- `src/aiact/schemas/norm.py`
+- `src/aiact/norm_loader.py`
+- `src/aiact/text_segments.py`
+- `data/policy/norms-2026-07-27.yaml`
+- `data/policy/text-review-2026-07-27.yaml`
+
+The two YAML artifacts may be combined if the pilot shows that review remains practical.
+
+**Exit:** shadow artifacts load and validate without changing a report.
+
+### Phase 2 — representative pilot
+
+Pilot on provisions selected for different failure modes:
+
+- Art. 11(1)
+- Art. 26(5)
+- Art. 43(3)
+- Art. 50
+- Art. 60(4)
+- Art. 75(1e)
+- Art. 113
+- Annex IV
+- relevant Annex VII and Annex VIII items
+- several apparently institutional or non-normative provisions
+
+Measure:
+
+- norms per provision;
+- review time per segment and norm;
+- disagreements between extraction passes;
+- missed candidates by detection channel;
+- one-to-one versus many-to-many rule mappings;
+- implementation defects discovered;
+- usability of offsets and text rendering during review.
+
+**Exit:** corrected schema and a data-backed estimate for full authoring.
+
+### Phase 3 — extraction and review tooling
+
+Likely scripts:
+
+- `scripts/extract_norm_candidates.py`
+- `scripts/review_text_segments.py`
+- `scripts/check_norm_coverage.py`
+- `scripts/render_norm_matrix.py`
+- `scripts/diff_versions.py`
+
+The review interface must present bounded source text with surrounding context and record what was
+actually shown. Completion comes from approved span coverage, never from auditor self-report.
+
+**Exit:** repeatable source-first extraction and review workflow.
+
+### Phase 4 — link the current implementation in shadow mode
+
+- Add optional `norm_ids` to `PolicyRule`.
+- Add norm links to classification questions and gap-role questions, either directly or through a
+  mapping artifact.
+- Backfill all existing rules and nodes.
+- Validate citations, roles, routes, areas, conditions, qualifiers, and dates against mapped norms.
+- Continue using the current runtime selection logic.
+
+**Exit:** every existing rule and question maps to reviewed norms or carries explicit migration
+debt.
+
+### Phase 5 — full-Act text segmentation and norm inventory
+
+- Partition every stored article and annex into review spans.
+- Run both source-first extraction passes.
+- Adjudicate every segment and norm.
+- Reconcile the existing `scope-2026-07-27.yaml` entries into the new dispositions.
+- Keep the old ledger as a comparison oracle until every entry is linked or retired.
+
+**Exit:** 100% approved text-span coverage and no undisposed norm.
+
+### Phase 6 — normative coverage compiler and CI gate
+
+- Extend or complement `src/aiact/coverage.py` with atom-level coverage.
+- Preserve the address-level partition as a structural metric.
+- Fail CI on source gaps, unreviewed spans, undisposed norms, missing mappings, invalid references,
+  unreachable rules, or missing report paths.
+- Report assurance metrics separately rather than as one “100% covered” number.
+
+**Exit:** atom coverage is the authoritative completeness gate.
+
+### Phase 7 — executable witnesses and mutation tests
+
+For every implemented norm require:
+
+- a positive activation scenario;
+- an adjacent negative or exception scenario;
+- a report-surfacing assertion.
+
+Mutation tests should demonstrate failure when a rule is removed or when its role, route, Annex III
+area, prohibited practice, exception, qualifier, deadline, effective date, or report path is
+changed.
+
+**Exit:** mapped law is not merely present in data; it is reachable and observable.
+
+### Phase 8 — behavioural evaluation completion
+
+- Add cases for document-verifiable norms not represented in the golden set.
+- Keep selection/report tests for norms that cannot be judged from submitted documentation.
+- Add cases for newly discovered document-verifiable norms.
+- Re-run held-out evaluation only after the inventory and behaviour have stabilised.
+
+At migration start the golden sets exercise 9 of 14 document-verifiable rules. The known missing
+set is:
+
+- `AIA-HR-A11-2`
+- `AIA-HR-A12-3`
+- `AIA-NHR-A06-4`
+- `AIA-TR-A50-1`
+- `AIA-TR-A50-2`
+
+**Exit:** every document-verifiable norm has behavioural coverage or explicit evaluation debt.
+
+### Phase 9 — retire only what the new system supersedes
+
+- Make `norm_ids` mandatory on rules and questions.
+- Reduce or retire duplicated parts of the old scope ledger.
+- Preserve provision enumeration and law-integrity checks.
+- Update documentation to distinguish address, normative, reachability, report, and judgment
+  coverage.
+
+**Exit:** no runtime or assurance claim depends solely on the old address disposition.
+
+## Test impact
+
+### Expected to remain largely intact
+
+- classification graph topology and behaviour;
+- gap graph topology;
+- retrieval and judging;
+- reporting contracts;
+- law-integrity checks;
+- most rule-selection tests;
+- existing golden cases.
+
+### Expected to be extended
+
+- `PolicyRule` and `PolicySpec` schemas;
+- `policy_loader.py`;
+- configuration paths;
+- coverage and provision tests;
+- selection reachability tests;
+- report provenance tests;
+- version-refresh workflow.
+
+### Expected to change substantially
+
+- `tests/test_coverage.py`;
+- the interpretation and eventual shape of `scope-2026-07-27.yaml`;
+- `spec.yaml` through the addition of norm links;
+- coverage reporting and its acceptance criteria.
+
+Runtime and golden tests change only where legal reconciliation demonstrates that current behaviour
+is wrong. A data-model migration alone is not a reason to rebaseline an expected legal result.
+
+## Assurance metrics
+
+Publish separate measures:
+
+| Measure | Meaning |
+|---|---|
+| Source-address coverage | Every stored legal address is enumerated |
+| Reviewed-text coverage | Every enacted source span has an approved disposition |
+| Norm disposition coverage | Every extracted legal proposition has a reviewed disposition |
+| In-scope implementation coverage | Every in-scope norm maps to a rule or node |
+| Applicability coverage | Conditions and exceptions are executable or explicitly unresolved |
+| Reachability coverage | Every implemented norm has a positive activation witness |
+| Boundary coverage | Every gate has a negative or exception witness |
+| Report-surfacing coverage | Every applicable norm is visible to the reader |
+| Judgment coverage | Document-verifiable norms have behavioural evaluation cases |
+| Independent-review coverage | Norms and dismissals have separate verification |
+
+No aggregate percentage replaces these measures.
+
+## Rough effort
+
+The pilot is the first reliable estimator. Initial planning range for one experienced engineer,
+using agents for extraction but retaining independent adjudication:
+
+| Work | Estimate |
+|---|---:|
+| Schema, source spans, loader, validation | 3–5 days |
+| Extraction and review tooling | 5–8 days |
+| Pilot and design correction | 4–6 days |
+| Backfill and reconcile existing rules | 5–10 days |
+| Full-Act segmentation and norm authoring | 10–25 days |
+| Coverage compiler and CI integration | 5–8 days |
+| Reachability, mutation, and report tests | 5–10 days |
+| Golden-set additions and reruns | 4–8 days |
+
+Expected total: roughly **6–10 person-weeks**. The dominant uncertainty is legal review and the
+number of atomic norms, not the code scaffolding. Do not promise a norm count until the pilot; the
+current provision count is too coarse to extrapolate from safely.
+
+## Immediate next action
+
+Do not begin with a full-Act extraction run. Complete Phase 0, implement the shadow schemas and
+span resolver, and run the Phase 2 pilot. The pilot must validate the review workflow and narrow the
+effort estimate before the full inventory is authored.
+

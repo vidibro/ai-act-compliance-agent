@@ -6,6 +6,11 @@
 
 **North star:** what gates the roles I'm targeting is not knowledge of frameworks, it's public proof of a working system. One vertical agent, shipped with eval numbers and a trace, is the deliverable. Everything below serves that.
 
+**Normative coverage migration:** the accepted strangler plan for moving from one disposition per
+legal address to reviewed full-text spans and atomic normative propositions is recorded in
+[`docs/NORMATIVE-COVERAGE-MIGRATION.md`](NORMATIVE-COVERAGE-MIGRATION.md). Preserve the current
+coverage machinery during the migration; begin with its scope contract, shadow schemas, and pilot.
+
 ## Locked decisions (do not relitigate)
 
 - **Domain: EU AI Act.** The agent is architected to handle AI systems in **any of the eight Annex III high-risk areas** — biometrics (1), critical infrastructure (2), education (3), **employment (4)**, essential services (5), law enforcement (6), migration (7), justice & democracy (8). All eight are modelled in `AnnexIIIArea` and the classification graph reproduces the EC checker's multi-area flow, so no schema change is needed to cover a new area.
