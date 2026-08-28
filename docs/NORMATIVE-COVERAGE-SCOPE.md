@@ -454,8 +454,9 @@ requires:
 3. tests that distinguish the new meaning;
 4. a note in the parent migration document.
 
-Adding a source version creates a new text and norm inventory. It does not mutate the approved
-records for `2026-07-27`.
+Adding a source version creates a new `data/policy/normative-coverage/<version>/` authoring
+directory and new generated text and norm inventories. It does not mutate the reviewed inputs or
+generated artifacts for `2026-07-27`.
 
 ## Phase 0 exit decision
 

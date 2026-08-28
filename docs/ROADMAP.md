@@ -12,8 +12,10 @@ legal address to reviewed full-text spans and atomic normative propositions is r
 coverage machinery during the migration. Phase 0's accepted scope and vocabulary are recorded in
 [`docs/NORMATIVE-COVERAGE-SCOPE.md`](NORMATIVE-COVERAGE-SCOPE.md). The exact-span schemas, resolver,
 cross-file validator, and versioned artifacts are complete. Every stored article and annex is now
-present in the exact-span inventory; the representative extraction is proposed and measured in
-[`docs/NORMATIVE-COVERAGE-REPORT-2026-07-27.md`](NORMATIVE-COVERAGE-REPORT-2026-07-27.md); independent review and timed
+present in the exact-span inventory. Reviewed findings live under
+`data/policy/normative-coverage/<version>/` and compile through the version-independent
+`src/aiact/norm_builder.py`; the representative extraction is proposed and measured in
+[`data/policy/normative-coverage/2026-07-27/report.md`](../data/policy/normative-coverage/2026-07-27/report.md); independent review and timed
 authoring remain before the pilot can exit.
 
 ## Locked decisions (do not relitigate)

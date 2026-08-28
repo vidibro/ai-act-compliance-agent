@@ -22,7 +22,13 @@ def metrics():
 
 def test_generated_coverage_artifacts_are_reproducible():
     completed = subprocess.run(
-        [sys.executable, "scripts/build_normative_coverage_2026_07_27.py", "--check"],
+        [
+            sys.executable,
+            "scripts/build_normative_coverage.py",
+            "--act-version",
+            "2026-07-27",
+            "--check",
+        ],
         cwd=ROOT,
         check=False,
         capture_output=True,

@@ -302,8 +302,8 @@ Likely additions:
 - `src/aiact/norm_loader.py`
 - `src/aiact/text_segments.py`
 - `src/aiact/schemas/interpretation.py`
-- `data/policy/norms-2026-07-27.yaml`
-- `data/policy/text-review-2026-07-27.yaml`
+- `data/policy/normative-coverage/2026-07-27/norms.yaml`
+- `data/policy/normative-coverage/2026-07-27/text-review.yaml`
 
 The two YAML artifacts may be combined if the pilot shows that review remains practical.
 
@@ -347,8 +347,8 @@ Measure:
 **Proposed extraction 2026-08-28:** the inventory now partitions all 133 source bodies in the pinned
 corpus into 204 exact segments. It proposes 82 norms across the ten documents selected for detailed
 extraction; every other article and annex is retained as exact full-body `needs_review` debt.
-The reproducible measurements are in
-[`NORMATIVE-COVERAGE-REPORT-2026-07-27.md`](NORMATIVE-COVERAGE-REPORT-2026-07-27.md). The extraction added loader-validated exact
+The reproducible measurements are in the versioned
+[`report.md`](../data/policy/normative-coverage/2026-07-27/report.md). The extraction added loader-validated exact
 `norm_text`, candidate-detection provenance, and review timing fields. Its semantic pass found 13 of
 82 proposed propositions whose exact operative quote contains no `shall` token, while 357,085
 source characters not yet semantically extracted remain explicitly marked `needs_review`.
@@ -357,6 +357,27 @@ All extracted records remain `proposed`, elapsed review time was not captured, a
 reviewer has approved the legal extraction. Consequently the repository makes no legal-completeness
 claim for the extracted set and does not yet have the data-backed full-authoring estimate required
 by the exit criterion.
+
+#### Versioned authoring and reproducible compilation
+
+Reviewed legal judgments are versioned inputs rather than Python declarations:
+
+- `data/policy/normative-coverage/2026-07-27/segments.yaml` records reviewed document divisions and
+  the provenance of the extraction run;
+- `data/policy/normative-coverage/2026-07-27/source-records.yaml` records exact norm quotations,
+  subjects, dispositions, mappings, dependencies, carrier relationships, and interpretive links.
+- Generated `text-review.yaml`, `norms.yaml`, and `report.md` live beside those inputs, making the
+  directory a self-contained assurance package for the Act snapshot.
+
+`src/aiact/norm_builder.py` contains the reusable compiler. It discovers the complete article and
+annex denominator for the input version, partitions exact source bodies, computes offsets and
+hashes, compiles source records into validated norms, checks implementation references, and renders
+the coverage report. `scripts/build_normative_coverage.py --act-version <YYYY-MM-DD>` is the single
+entry point for every snapshot.
+
+A later Act snapshot receives a new directory under `data/policy/normative-coverage/`; it does not
+modify the reviewed inputs for `2026-07-27`. The generic builder contains no article numbers,
+paragraph markers, norm findings, carrier relationships, or guidance interpretations.
 
 ### Phase 3 — extraction and review tooling
 

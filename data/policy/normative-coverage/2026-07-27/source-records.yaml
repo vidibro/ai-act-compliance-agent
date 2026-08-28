@@ -1,0 +1,996 @@
+act_version_date: '2026-07-27'
+implementation_targets:
+- AIA-DP-A26
+- AIA-HR-A11
+- AIA-PO-A43-1B
+- AIA-PO-A43-3
+- AIA-PO-A60-4
+- AIA-PO-A75-1E
+- AIA-TR-A50-1
+- AIA-TR-A50-2
+- AIA-TR-A50-3
+- AIA-TR-A50-4
+records:
+- norm_id: AIA-NORM-A011-P1-DRAW
+  source: A011-P1
+  quote: shall be drawn up before that system is placed on the market or put into service
+  action: draw up technical documentation before placing the system on the market or putting it into service
+  subject_ref: provider
+  subject_category: supported_operator
+  implementation_refs:
+  - AIA-HR-A11
+  verification_mode: judged_from_document
+- norm_id: AIA-NORM-A011-P1-UPDATE
+  source: A011-P1
+  quote: shall be kept up-to date
+  action: keep technical documentation up to date
+  subject_ref: provider
+  subject_category: supported_operator
+  implementation_refs:
+  - AIA-HR-A11
+  verification_mode: judged_from_document
+- norm_id: AIA-NORM-A011-P1-DEMONSTRATE
+  source: A011-P1
+  quote: shall be drawn up in such a way as to demonstrate that the high-risk AI system complies
+  action: draw up documentation that demonstrates compliance and enables assessment
+  subject_ref: provider
+  subject_category: supported_operator
+  implementation_refs:
+  - AIA-HR-A11
+  verification_mode: judged_from_document
+- norm_id: AIA-NORM-A011-P1-ANNEX-IV
+  source: A011-P1
+  quote: It shall contain, at a minimum, the elements set out in Annex IV.
+  action: include every applicable Annex IV element
+  subject_ref: provider
+  subject_category: supported_operator
+  implementation_refs:
+  - AIA-HR-A11
+  verification_mode: judged_from_document
+  dependencies:
+  - dependency_ref: AIA-NORM-ANNEX-IV-CONTENT
+    resolution: internal_resolved
+    detail: Annex IV supplies the mandatory content.
+- norm_id: AIA-NORM-A011-P1-SIMPLIFY
+  source: A011-P1
+  quote: may provide the elements of the technical documentation specified in Annex IV in a simplified
+    manner
+  action: use the simplified-documentation option
+  subject_ref: provider
+  subject_category: supported_operator
+  kind: permission
+  conditions:
+  - provider is an SME, start-up, or SMC
+- norm_id: AIA-NORM-A011-P1-FORM
+  source: A011-P1
+  quote: the Commission shall establish a simplified technical documentation form
+  action: establish a simplified technical-documentation form
+  subject_ref: commission
+  subject_category: union_institution_or_body
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A011-P1-USE-FORM
+  source: A011-P1
+  quote: it shall use the form referred to in this paragraph
+  action: use the Commission form when taking the simplified-documentation option
+  subject_ref: provider
+  subject_category: supported_operator
+  implementation_refs:
+  - AIA-HR-A11
+  verification_mode: judged_from_document
+  conditions:
+  - provider is an SME, start-up, or SMC and opts for simplified documentation
+- norm_id: AIA-NORM-A011-P1-ACCEPT-FORM
+  source: A011-P1
+  quote: Notified bodies shall accept the form
+  action: accept the simplified form for conformity assessment
+  subject_ref: notified_body
+  subject_category: notified_or_conformity_body
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A011-P3-AMEND
+  source: A011-P3
+  quote: The Commission is empowered to adopt delegated acts
+  action: adopt delegated acts amending Annex IV
+  subject_ref: commission
+  subject_category: union_institution_or_body
+  kind: power
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A026-P5-MONITOR
+  source: A026-P5
+  quote: Deployers shall monitor the operation of the high-risk AI system
+  action: monitor system operation using the instructions for use
+  subject_ref: deployer
+  subject_category: supported_operator
+  implementation_refs:
+  - AIA-DP-A26
+  verification_mode: listed_for_confirmation
+- norm_id: AIA-NORM-A026-P5-INFORM-PROVIDER
+  source: A026-P5
+  quote: Deployers shall monitor the operation of the high-risk AI system on the basis of the instructions
+    for use and, where relevant, inform providers in accordance with Article 72.
+  action: inform the provider where monitoring makes that relevant
+  subject_ref: deployer
+  subject_category: supported_operator
+  implementation_refs:
+  - AIA-DP-A26
+  verification_mode: listed_for_confirmation
+- norm_id: AIA-NORM-A026-P5-RISK-NOTIFY
+  source: A026-P5
+  quote: they shall, without undue delay, inform the provider or distributor and the relevant market surveillance
+    authority
+  action: notify the provider or distributor and market-surveillance authority of an Article 79(1) risk
+  subject_ref: deployer
+  subject_category: supported_operator
+  implementation_refs:
+  - AIA-DP-A26
+  verification_mode: listed_for_confirmation
+- norm_id: AIA-NORM-A026-P5-SUSPEND
+  source: A026-P5
+  quote: shall suspend the use of that system
+  action: suspend use when compliant use may present an Article 79(1) risk
+  subject_ref: deployer
+  subject_category: supported_operator
+  implementation_refs:
+  - AIA-DP-A26
+  verification_mode: listed_for_confirmation
+- norm_id: AIA-NORM-A026-P5-INCIDENT
+  source: A026-P5
+  quote: they shall also immediately inform first the provider, and then the importer or distributor and
+    the relevant market surveillance authorities
+  action: report an identified serious incident in the enacted sequence
+  subject_ref: deployer
+  subject_category: supported_operator
+  implementation_refs:
+  - AIA-DP-A26
+  verification_mode: listed_for_confirmation
+- norm_id: AIA-NORM-A026-P5-FALLBACK
+  source: A026-P5
+  quote: If the deployer is not able to reach the provider, Article 73 shall apply mutatis mutandis.
+  action: apply the Article 73 reporting route when the provider cannot be reached
+  subject_ref: deployer
+  subject_category: supported_operator
+  kind: applicability
+  implementation_refs:
+  - AIA-DP-A26
+  verification_mode: listed_for_confirmation
+- norm_id: AIA-NORM-A026-P5-SENSITIVE
+  source: A026-P5
+  quote: This obligation shall not cover sensitive operational data
+  action: exclude sensitive operational data of law-enforcement deployers
+  subject_ref: deployer
+  subject_category: supported_operator
+  kind: applicability
+  implementation_refs:
+  - AIA-DP-A26
+  verification_mode: reported_conditionally
+- norm_id: AIA-NORM-A026-P5-FINANCIAL
+  source: A026-P5
+  quote: shall be deemed to be fulfilled by complying with the rules on internal governance arrangements
+  action: deem financial institutions compliant through relevant financial-services governance rules
+  subject_ref: financial_institution_deployer
+  subject_category: supported_operator
+  kind: legal_consequence
+  implementation_refs:
+  - AIA-DP-A26
+  verification_mode: reported_conditionally
+- norm_id: AIA-NORM-A043-P3-PROCEDURE
+  source: A043-P3
+  quote: shall follow the relevant conformity assessment procedure
+  action: follow the applicable Section A Annex I conformity-assessment procedure
+  subject_ref: provider
+  subject_category: supported_operator
+  implementation_refs:
+  - AIA-PO-A43-3
+  verification_mode: listed_for_confirmation
+- norm_id: AIA-NORM-A043-P3-SECTION2
+  source: A043-P3
+  quote: shall be part of that assessment
+  action: include Chapter III Section 2 requirements in that assessment
+  subject_ref: provider
+  subject_category: supported_operator
+  implementation_refs:
+  - AIA-PO-A43-3
+  verification_mode: listed_for_confirmation
+- norm_id: AIA-NORM-A043-P3-QMS
+  source: A043-P3
+  quote: Assessment of the quality management system set out in Article 17 shall also be undertaken
+  action: undertake assessment of the Article 17 quality-management system
+  subject_ref: provider
+  subject_category: supported_operator
+  implementation_refs:
+  - AIA-PO-A43-3
+  verification_mode: listed_for_confirmation
+- norm_id: AIA-NORM-A043-P3-ANNEXVII
+  source: A043-P3
+  quote: points 3, 4.3, 4.4. and 4.5, the fifth paragraph of point 4.6 and point 5 of Annex VII shall
+    apply
+  action: apply the specified Annex VII procedural requirements
+  subject_ref: provider
+  subject_category: supported_operator
+  implementation_refs:
+  - AIA-PO-A43-3
+  verification_mode: listed_for_confirmation
+  dependencies:
+  - dependency_ref: AIA-TEXT-ANNEX-VII-I3
+    resolution: internal_resolved
+    detail: Annex VII point 3 is imported in full.
+  - dependency_ref: AIA-TEXT-ANNEX-VII-I4
+    resolution: internal_resolved
+    detail: The specified point 4 subparagraphs are represented within this source segment.
+  - dependency_ref: AIA-TEXT-ANNEX-VII-I5
+    resolution: internal_resolved
+    detail: Annex VII point 5 is imported in full.
+- norm_id: AIA-NORM-A043-P3-BODY-POWER
+  source: A043-P3
+  quote: shall have the power to assess the conformity of high-risk AI systems
+  action: assess conformity with Chapter III Section 2
+  subject_ref: sectoral_notified_body
+  subject_category: notified_or_conformity_body
+  kind: power
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A043-P3-DESIGNATE
+  source: A043-P3
+  quote: shall apply for designation in accordance with Section 4 of this Chapter by 28 January 2028
+  action: apply for AI Act designation by 28 January 2028
+  subject_ref: sectoral_notified_body
+  subject_category: notified_or_conformity_body
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A043-P3-OPTION
+  source: A043-P3
+  quote: that manufacturer may use that option only if it has also applied harmonised standards
+  action: use a no-third-party sectoral route only after applying standards covering all Section 2 requirements
+  subject_ref: product_manufacturer
+  subject_category: supported_operator
+  kind: permission
+  implementation_refs:
+  - AIA-PO-A43-3
+  verification_mode: listed_for_confirmation
+- norm_id: AIA-NORM-A043-P3-NO-EFFECT
+  source: A043-P3
+  quote: does not affect the choice of the conformity assessment procedure
+  action: preserve the sectoral conformity-route choice despite AI high-risk classification
+  subject_ref: product_manufacturer
+  subject_category: supported_operator
+  kind: applicability
+  product_scope: dependency_only
+  product_scope_reason: This proposition supplies applicability or content to operator norms.
+  implementation_mode: none_required
+  implementation_reason: Represented as a dependency rather than an independent finding.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A043-P3-NO-THIRD-PARTY
+  source: A043-P3
+  quote: are not required to choose a conformity assessment procedure involving third-party conformity
+    assessment only because the product includes a high-risk AI system
+  action: avoid a third-party procedure where sectoral law does not otherwise require it
+  subject_ref: product_manufacturer
+  subject_category: supported_operator
+  kind: applicability
+  product_scope: dependency_only
+  product_scope_reason: This proposition supplies applicability or content to operator norms.
+  implementation_mode: none_required
+  implementation_reason: Represented as a dependency rather than an independent finding.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A043-P3-DUAL
+  source: A043-P3
+  quote: shall follow the relevant conformity assessment procedure as required pursuant to the relevant
+    Union harmonisation legislation
+  action: use the Section A Annex I procedure when the system is also in Annex III
+  subject_ref: provider
+  subject_category: supported_operator
+  implementation_refs:
+  - AIA-PO-A43-3
+  verification_mode: listed_for_confirmation
+- norm_id: AIA-NORM-A043-P5-AMEND
+  source: A043-P5
+  quote: The Commission is empowered to adopt delegated acts
+  action: amend Annexes VI and VII for technical progress
+  subject_ref: commission
+  subject_category: union_institution_or_body
+  kind: power
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A043-P6-AMEND
+  source: A043-P6
+  quote: The Commission is empowered to adopt delegated acts
+  action: move Annex III points 2 to 8 to some or all of the Annex VII procedure
+  subject_ref: commission
+  subject_category: union_institution_or_body
+  kind: power
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A050-P1-DISCLOSE
+  source: A050-P1
+  quote: Providers shall ensure that AI systems intended to interact directly with natural persons are
+    designed and developed in such a way that the natural persons concerned are informed that they are
+    interacting with an AI system
+  action: design direct-interaction systems to inform natural persons they are interacting with AI
+  subject_ref: provider
+  subject_category: supported_operator
+  implementation_refs:
+  - AIA-TR-A50-1
+  verification_mode: judged_from_document
+  exceptions:
+  - obvious interaction in context
+  - qualifying law-enforcement authorisation
+  qualifier_spans:
+  - A050-P5
+- norm_id: AIA-NORM-A050-P2-MARK-DETECT
+  source: A050-P2
+  quote: Providers of AI systems, including general-purpose AI systems, generating synthetic audio, image,
+    video or text content, shall ensure that the outputs of the AI system are marked in a machine-readable
+    format and detectable as artificially generated or manipulated.
+  action: make synthetic outputs both machine-readably marked and detectable
+  subject_ref: provider
+  subject_category: supported_operator
+  implementation_refs:
+  - AIA-TR-A50-2
+  verification_mode: judged_from_document
+  mandatory_content:
+  - machine-readable marking
+  - detectability as artificial or manipulated
+  - effective, interoperable, robust and reliable solution as technically feasible
+  qualifier_spans:
+  - A050-P5
+- norm_id: AIA-NORM-A050-P3-INFORM
+  source: A050-P3
+  quote: shall inform the natural persons exposed thereto of the operation of the system
+  action: inform people exposed to emotion recognition or biometric categorisation
+  subject_ref: deployer
+  subject_category: supported_operator
+  implementation_refs:
+  - AIA-TR-A50-3
+  verification_mode: listed_for_confirmation
+  qualifier_spans:
+  - A050-P5
+- norm_id: AIA-NORM-A050-P3-DATA
+  source: A050-P3
+  quote: shall process the personal data in accordance with Regulations (EU) 2016/679 and (EU) 2018/1725
+    and Directive (EU) 2016/680
+  action: process personal data under the referenced data-protection instruments
+  subject_ref: deployer
+  subject_category: supported_operator
+  dependencies:
+  - dependency_ref: Regulation (EU) 2016/679; Regulation (EU) 2018/1725; Directive (EU) 2016/680
+    resolution: external_recorded
+    detail: Referenced instruments are outside the enacted corpus.
+- norm_id: AIA-NORM-A050-P4-DEEPFAKE
+  source: A050-P4
+  quote: shall disclose that the content has been artificially generated or manipulated
+  action: disclose artificial generation or manipulation of deep-fake image, audio, or video
+  subject_ref: deployer
+  subject_category: supported_operator
+  implementation_refs:
+  - AIA-TR-A50-4
+  verification_mode: listed_for_confirmation
+  qualifier_spans:
+  - A050-P5
+- norm_id: AIA-NORM-A050-P4-TEXT
+  source: A050-P4
+  quote: shall disclose that the text has been artificially generated or manipulated
+  action: disclose artificial generation or manipulation of public-interest text
+  subject_ref: deployer
+  subject_category: supported_operator
+  implementation_refs:
+  - AIA-TR-A50-4
+  verification_mode: listed_for_confirmation
+  qualifier_spans:
+  - A050-P5
+- norm_id: AIA-NORM-A050-P5-MANNER
+  source: A050-P5
+  quote: shall be provided to the natural persons concerned in a clear and distinguishable manner
+  action: provide paragraphs 1 to 4 information clearly, distinguishably, on time, and accessibly
+  subject_ref: provider_or_deployer
+  subject_category: supported_operator
+  implementation_mode: carried_by_other_norm
+  implementation_reason: The four existing transparency rules carry this shared qualifier.
+  verification_mode: reported_conditionally
+  mandatory_content:
+  - clear and distinguishable
+  - no later than first interaction or exposure
+  - applicable accessibility requirements
+- norm_id: AIA-NORM-A050-P6-CUMULATIVE
+  source: A050-P6
+  quote: Paragraphs 1 to 4 shall not affect the requirements and obligations set out in Chapter III
+  action: preserve Chapter III and other transparency duties alongside Article 50
+  subject_ref: provider_or_deployer
+  subject_category: supported_operator
+  kind: applicability
+  product_scope: dependency_only
+  product_scope_reason: This proposition supplies applicability or content to operator norms.
+  implementation_mode: none_required
+  implementation_reason: Represented as a dependency rather than an independent finding.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A050-P7-CODES
+  source: A050-P7
+  quote: The Commission shall encourage and facilitate the drawing up of codes of practice
+  action: encourage and facilitate Union-level codes of practice
+  subject_ref: commission
+  subject_category: union_institution_or_body
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A050-P7-ASSESS
+  source: A050-P7
+  quote: The Commission, taking utmost account of the opinion of the Board, shall assess
+  action: assess whether code adherence adequately ensures compliance
+  subject_ref: commission
+  subject_category: union_institution_or_body
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A050-P7-ACT
+  source: A050-P7
+  quote: the Commission may adopt an implementing act
+  action: adopt common implementation rules if a code is inadequate
+  subject_ref: commission
+  subject_category: union_institution_or_body
+  kind: power
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A060-P4-PERMISSION
+  source: A060-P4
+  quote: may conduct the testing in real world conditions only where all of the following conditions are
+    met
+  action: conduct real-world testing only when all eleven conditions are met
+  subject_ref: provider
+  subject_category: supported_operator
+  kind: permission
+  implementation_refs:
+  - AIA-PO-A60-4
+  verification_mode: listed_for_confirmation
+  mandatory_content:
+  - testing plan submitted
+  - authority approval or applicable tacit approval
+  - correct registration route
+  - Union establishment or representative
+  - third-country transfer safeguards
+  - six-month limit and extension process
+  - vulnerable-subject protection
+  - participating deployer information, instructions, and agreement
+  - informed consent or law-enforcement substitute safeguards
+  - qualified effective oversight
+  - reversible and disregardable outputs
+- norm_id: AIA-NORM-A060-P4-TACIT
+  source: A060-P4
+  quote: shall be understood to have been approved
+  action: deem testing approved after 30 days of authority silence where national law permits
+  subject_ref: provider
+  subject_category: supported_operator
+  kind: legal_consequence
+  product_scope: dependency_only
+  product_scope_reason: This proposition supplies applicability or content to operator norms.
+  implementation_mode: none_required
+  implementation_reason: Represented as a dependency rather than an independent finding.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A060-P4-EXTEND
+  source: A060-P4
+  quote: may be extended for an additional period of six months
+  action: extend testing once for six months after prior notice and explanation
+  subject_ref: provider
+  subject_category: supported_operator
+  kind: permission
+  implementation_refs:
+  - AIA-PO-A60-4
+  verification_mode: listed_for_confirmation
+  conditions:
+  - prior notification and explanation of need
+- norm_id: AIA-NORM-A060-P4-AGREEMENT
+  source: A060-P4
+  quote: shall conclude an agreement specifying their roles and responsibilities
+  action: conclude a roles-and-responsibilities agreement with participating deployers
+  subject_ref: provider_and_deployer
+  subject_category: supported_operator
+  implementation_refs:
+  - AIA-PO-A60-4
+  verification_mode: listed_for_confirmation
+- norm_id: AIA-NORM-A075-P1-COMPETENCE
+  source: A075-P1
+  quote: The AI Office shall be exclusively competent
+  action: hold exclusive supervision and enforcement competence for the listed systems
+  subject_ref: ai_office
+  subject_category: union_institution_or_body
+  kind: legal_consequence
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A075-P1E-RESPONSIBLE
+  source: A075-P1E
+  quote: The AI Office shall be responsible for conformity assessments and tests
+  action: take responsibility for third-party conformity assessments and tests of paragraph 1 systems
+  subject_ref: ai_office
+  subject_category: union_institution_or_body
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A075-P1E-VERIFY
+  source: A075-P1E
+  quote: Those tests and assessments shall verify that the systems comply
+  action: verify regulatory conformity and market eligibility
+  subject_ref: ai_office
+  subject_category: union_institution_or_body
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A075-P1E-ENTRUST
+  source: A075-P1E
+  quote: The Commission shall entrust the performance of those tests or assessments to notified bodies
+  action: entrust tests or assessments to designated notified bodies
+  subject_ref: commission
+  subject_category: union_institution_or_body
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A075-P1E-ACT
+  source: A075-P1E
+  quote: the notified body shall act on behalf of the Commission
+  action: act on the Commission's behalf when entrusted
+  subject_ref: notified_body
+  subject_category: notified_or_conformity_body
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A075-P1E-WITHDRAW
+  source: A075-P1E
+  quote: the Commission may withdraw the delegation with immediate effect
+  action: withdraw an inadequately performed delegation immediately
+  subject_ref: commission
+  subject_category: union_institution_or_body
+  kind: power
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A075-P1E-FEES
+  source: A075-P1E
+  quote: The fees for testing and assessment activities shall be levied on the provider
+  action: bear testing and assessment fees
+  subject_ref: provider
+  subject_category: supported_operator
+  implementation_refs:
+  - AIA-PO-A75-1E
+  verification_mode: listed_for_confirmation
+- norm_id: AIA-NORM-A075-P1E-PAY
+  source: A075-P1E
+  quote: The provider shall pay the costs related to the services
+  action: pay entrusted-service costs directly to the notified body
+  subject_ref: provider
+  subject_category: supported_operator
+  implementation_refs:
+  - AIA-PO-A75-1E
+  verification_mode: listed_for_confirmation
+- norm_id: AIA-NORM-A113-ENTRY
+  source: A113-ENTRY
+  quote: shall enter into force on the twentieth day following that of its publication
+  action: enter into force twenty days after publication
+  subject_ref: regulation
+  subject_category: other
+  kind: legal_consequence
+  product_scope: dependency_only
+  product_scope_reason: This proposition supplies applicability or content to operator norms.
+  implementation_mode: none_required
+  implementation_reason: Represented as a dependency rather than an independent finding.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A113-GENERAL
+  source: A113-GENERAL
+  quote: It shall apply from 2 August 2026.
+  action: apply generally from 2 August 2026
+  subject_ref: regulation
+  subject_category: other
+  kind: applicability
+  product_scope: dependency_only
+  product_scope_reason: This proposition supplies applicability or content to operator norms.
+  implementation_mode: none_required
+  implementation_reason: Represented as a dependency rather than an independent finding.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A113-A-EARLY
+  source: A113-A
+  quote: Chapters I and II shall apply from 2 February 2025
+  action: apply Chapters I and II from 2 February 2025
+  subject_ref: regulation
+  subject_category: other
+  kind: applicability
+  product_scope: dependency_only
+  product_scope_reason: This proposition supplies applicability or content to operator norms.
+  implementation_mode: none_required
+  implementation_reason: Represented as a dependency rather than an independent finding.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A113-A-LATE
+  source: A113-A
+  quote: shall apply from 2 December 2026
+  action: apply the listed Article 5 amendments from 2 December 2026
+  subject_ref: regulation
+  subject_category: other
+  kind: applicability
+  product_scope: dependency_only
+  product_scope_reason: This proposition supplies applicability or content to operator norms.
+  implementation_mode: none_required
+  implementation_reason: Represented as a dependency rather than an independent finding.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A113-B
+  source: A113-B
+  quote: shall apply from 2 August 2025
+  action: apply the listed chapters and Article 78 from 2 August 2025 except Article 101
+  subject_ref: regulation
+  subject_category: other
+  kind: applicability
+  product_scope: dependency_only
+  product_scope_reason: This proposition supplies applicability or content to operator norms.
+  implementation_mode: none_required
+  implementation_reason: Represented as a dependency rather than an independent finding.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A113-C-ANNEXIII
+  source: A113-C
+  quote: "Chapter III, Sections 1, 2, and 3, with the exception of Article 6(5), shall apply from:\n \
+    \           (i) 2 December 2027 as regards AI systems classified as high-risk pursuant to Article\
+    \ 6(2) and Annex III"
+  action: apply Chapter III Sections 1 to 3 to the Annex III route from 2 December 2027
+  subject_ref: regulation
+  subject_category: other
+  kind: applicability
+  product_scope: dependency_only
+  product_scope_reason: This proposition supplies applicability or content to operator norms.
+  implementation_mode: none_required
+  implementation_reason: Represented as a dependency rather than an independent finding.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A113-C-ANNEXI
+  source: A113-C
+  quote: "Chapter III, Sections 1, 2, and 3, with the exception of Article 6(5), shall apply from:\n \
+    \           (i) 2 December 2027 as regards AI systems classified as high-risk pursuant to Article\
+    \ 6(2) and Annex III; and\n            (ii) 2 August 2028 as regards AI systems classified as high-risk\
+    \ pursuant to Article 6(1) and Annex I"
+  action: apply Chapter III Sections 1 to 3 to the Annex I route from 2 August 2028
+  subject_ref: regulation
+  subject_category: other
+  kind: applicability
+  product_scope: dependency_only
+  product_scope_reason: This proposition supplies applicability or content to operator norms.
+  implementation_mode: none_required
+  implementation_reason: Represented as a dependency rather than an independent finding.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A113-D
+  source: A113-D
+  quote: Articles 102 to 110 shall apply from 27 July 2026.
+  action: apply Articles 102 to 110 from 27 July 2026
+  subject_ref: regulation
+  subject_category: other
+  kind: applicability
+  product_scope: dependency_only
+  product_scope_reason: This proposition supplies applicability or content to operator norms.
+  implementation_mode: none_required
+  implementation_reason: Represented as a dependency rather than an independent finding.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-ANNEX-IV-CONTENT
+  source: ANNEX-IV-CHAPEAU
+  quote: shall contain at least the following information
+  action: include all nine applicable Annex IV information groups in technical documentation
+  subject_ref: provider
+  subject_category: supported_operator
+  implementation_mode: carried_by_other_norm
+  implementation_reason: Carried by the Article 11(1) technical-documentation norm.
+  verification_mode: judged_from_document
+  mandatory_content:
+  - general system description
+  - system elements and development process
+  - monitoring, functioning and control
+  - appropriateness of performance metrics
+  - risk-management system
+  - lifecycle changes
+  - standards or alternative compliance solutions
+  - EU declaration of conformity
+  - post-market performance evaluation and monitoring plan
+  qualifier_spans:
+  - ANNEX-IV-I1
+  - ANNEX-IV-I2
+  - ANNEX-IV-I3
+  - ANNEX-IV-I4
+  - ANNEX-IV-I5
+  - ANNEX-IV-I6
+  - ANNEX-IV-I7
+  - ANNEX-IV-I8
+  - ANNEX-IV-I9
+- norm_id: AIA-NORM-ANNEX-VII-QMS-APPLICATION
+  source: ANNEX-VII-I3
+  quote: The application of the provider shall include
+  action: complete the Annex VII quality-management application
+  subject_ref: provider
+  subject_category: supported_operator
+  implementation_refs:
+  - AIA-PO-A43-1B
+  - AIA-PO-A43-3
+  verification_mode: listed_for_confirmation
+  mandatory_content:
+  - provider and representative identity
+  - covered systems
+  - technical documentation for every system
+  - Article 17 QMS documentation
+  - procedures maintaining QMS adequacy and effectiveness
+  - declaration no duplicate application
+- norm_id: AIA-NORM-ANNEX-VII-QMS-MAINTAIN
+  source: ANNEX-VII-I3
+  quote: shall continue to be implemented and maintained by the provider
+  action: continue implementing and maintaining the approved quality-management system
+  subject_ref: provider
+  subject_category: supported_operator
+  implementation_refs:
+  - AIA-PO-A43-1B
+  - AIA-PO-A43-3
+  verification_mode: listed_for_confirmation
+- norm_id: AIA-NORM-ANNEX-VII-QMS-CHANGE
+  source: ANNEX-VII-I3
+  quote: shall be brought to the attention of the notified body by the provider
+  action: notify the notified body of intended QMS or covered-system-list changes
+  subject_ref: provider
+  subject_category: supported_operator
+  implementation_refs:
+  - AIA-PO-A43-1B
+  - AIA-PO-A43-3
+  verification_mode: listed_for_confirmation
+- norm_id: AIA-NORM-ANNEX-VII-QMS-ASSESS
+  source: ANNEX-VII-I3
+  quote: The quality management system shall be assessed by the notified body
+  action: assess whether the quality-management system satisfies Article 17
+  subject_ref: notified_body
+  subject_category: notified_or_conformity_body
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-ANNEX-VII-QMS-DECISION
+  source: ANNEX-VII-I3
+  quote: The decision shall be notified to the provider or its authorised representative.
+  action: notify the provider of the quality-management assessment decision and reasons
+  subject_ref: notified_body
+  subject_category: notified_or_conformity_body
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-ANNEX-VII-QMS-CHANGE-DECISION
+  source: ANNEX-VII-I3
+  quote: The proposed changes shall be examined by the notified body
+  action: examine proposed changes, decide whether reassessment is needed, and notify the provider
+  subject_ref: notified_body
+  subject_category: notified_or_conformity_body
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-ANNEX-VII-DOC-EXAMINE
+  source: ANNEX-VII-I4
+  quote: The technical documentation shall be examined by the notified body.
+  action: examine the technical documentation
+  subject_ref: notified_body
+  subject_category: notified_or_conformity_body
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-ANNEX-VII-DATA-ACCESS
+  source: ANNEX-VII-I4
+  quote: the notified body shall be granted full access to the training, validation, and testing data
+    sets used
+  action: grant the notified body necessary full dataset access
+  subject_ref: provider
+  subject_category: supported_operator
+  implementation_refs:
+  - AIA-PO-A43-1B
+  - AIA-PO-A43-3
+  verification_mode: listed_for_confirmation
+- norm_id: AIA-NORM-ANNEX-VII-EVIDENCE
+  source: ANNEX-VII-I4
+  quote: the provider supply further evidence or carry out further tests
+  action: supply further evidence or tests required for the conformity assessment
+  subject_ref: provider
+  subject_category: supported_operator
+  implementation_refs:
+  - AIA-PO-A43-1B
+  - AIA-PO-A43-3
+  verification_mode: listed_for_confirmation
+  conditions:
+  - notified body requires them
+- norm_id: AIA-NORM-ANNEX-VII-TESTS
+  source: ANNEX-VII-I4
+  quote: the notified body shall itself directly carry out adequate tests
+  action: carry out adequate tests when provider testing is unsatisfactory
+  subject_ref: notified_body
+  subject_category: notified_or_conformity_body
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-ANNEX-VII-MODEL-ACCESS
+  source: ANNEX-VII-I4
+  quote: the notified body shall also be granted access to the training and trained models
+  action: grant reasoned and necessary model access after other means are exhausted
+  subject_ref: provider
+  subject_category: supported_operator
+  implementation_refs:
+  - AIA-PO-A43-1B
+  - AIA-PO-A43-3
+  verification_mode: listed_for_confirmation
+- norm_id: AIA-NORM-ANNEX-VII-RETRAIN
+  source: ANNEX-VII-I4
+  quote: re-training of the AI system will be needed prior to the application for a new conformity assessment
+  action: retrain before reapplying where training data fail the requirement
+  subject_ref: provider
+  subject_category: supported_operator
+  kind: legal_consequence
+  implementation_refs:
+  - AIA-PO-A43-1B
+  - AIA-PO-A43-3
+  verification_mode: listed_for_confirmation
+- norm_id: AIA-NORM-ANNEX-VII-DOC-DECISION
+  source: ANNEX-VII-I4
+  quote: The decision of the notified body shall be notified to the provider or its authorised representative.
+  action: notify the provider of the technical-documentation assessment decision
+  subject_ref: notified_body
+  subject_category: notified_or_conformity_body
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-ANNEX-VII-CERTIFICATE
+  source: ANNEX-VII-I4
+  quote: the notified body shall issue a Union technical documentation assessment certificate
+  action: issue the certificate where the system conforms
+  subject_ref: notified_body
+  subject_category: notified_or_conformity_body
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-ANNEX-VII-REFUSE
+  source: ANNEX-VII-I4
+  quote: the notified body shall refuse to issue a Union technical documentation assessment certificate
+    and shall inform the applicant accordingly
+  action: refuse certification and give detailed reasons where the system does not conform
+  subject_ref: notified_body
+  subject_category: notified_or_conformity_body
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-ANNEX-VII-DATA-REASONS
+  source: ANNEX-VII-I4
+  quote: shall contain specific considerations on the quality data used to train the AI system
+  action: state specific training-data non-compliance considerations in the refusal decision
+  subject_ref: notified_body
+  subject_category: notified_or_conformity_body
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-ANNEX-VII-SURVEILLANCE
+  source: ANNEX-VII-I5
+  quote: the provider shall allow the notified body to access the premises
+  action: allow surveillance access to premises and share all necessary information
+  subject_ref: provider
+  subject_category: supported_operator
+  implementation_refs:
+  - AIA-PO-A43-1B
+  - AIA-PO-A43-3
+  verification_mode: listed_for_confirmation
+- norm_id: AIA-NORM-ANNEX-VII-AUDIT
+  source: ANNEX-VII-I5
+  quote: The notified body shall carry out periodic audits
+  action: carry out periodic audits and provide the provider an audit report
+  subject_ref: notified_body
+  subject_category: notified_or_conformity_body
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-ANNEX-VIII-A
+  source: ANNEX-VIII-A
+  quote: The following information shall be provided and thereafter kept up to date
+  action: submit and maintain the Section A provider registration information
+  subject_ref: provider
+  subject_category: supported_operator
+  implementation_mode: unresolved
+  verification_mode: unresolved
+  mandatory_content_source: numbered_items
+- norm_id: AIA-NORM-ANNEX-VIII-B
+  source: ANNEX-VIII-B
+  quote: The following information shall be provided and thereafter kept up to date
+  action: submit and maintain the Section B not-high-risk registration information
+  subject_ref: provider
+  subject_category: supported_operator
+  implementation_mode: unresolved
+  verification_mode: unresolved
+  mandatory_content_source: numbered_items
+- norm_id: AIA-NORM-ANNEX-VIII-C
+  source: ANNEX-VIII-C
+  quote: The following information shall be provided and thereafter kept up to date
+  action: submit and maintain the Section C deployer registration information
+  subject_ref: deployer
+  subject_category: supported_operator
+  implementation_mode: unresolved
+  verification_mode: unresolved
+  mandatory_content_source: numbered_items
+carried_by:
+  AIA-NORM-A050-P5-MANNER:
+  - AIA-NORM-A050-P1-DISCLOSE
+  - AIA-NORM-A050-P2-MARK-DETECT
+  - AIA-NORM-A050-P3-INFORM
+  - AIA-NORM-A050-P4-DEEPFAKE
+  - AIA-NORM-A050-P4-TEXT
+  AIA-NORM-ANNEX-IV-CONTENT:
+  - AIA-NORM-A011-P1-ANNEX-IV
+interpretations:
+- interpretation_id: AIA-INT-A050-P2-C2026-5054
+  snippet_refs:
+  - C-2026-5054/machine-readable-marking-defined
+  - C-2026-5054/both-elements-required
+  - C-2026-5054/detection-must-be-available
+  norm_ids:
+  - AIA-NORM-A050-P2-MARK-DETECT
+  targets:
+  - kind: policy_rule
+    target_id: AIA-TR-A50-2
+  effect: defines_mechanism
+  effect_explanation: Explains machine readability and the separate detection mechanism.
+  review_scope: passage_with_context
+  review_scope_detail: Stored paragraphs (70), (71), (75), and (76) with declared omissions.
+  binding: false
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null

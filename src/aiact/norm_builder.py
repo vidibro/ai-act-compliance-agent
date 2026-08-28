@@ -1,0 +1,523 @@
+"""Compile reviewed, versioned legal findings into exact normative-coverage artifacts."""
+
+from __future__ import annotations
+
+import hashlib
+import re
+from dataclasses import dataclass
+from datetime import date
+from pathlib import Path
+from typing import Literal
+
+import yaml
+from pydantic import BaseModel, Field, model_validator
+
+from aiact.norm_loader import load_normative_coverage
+from aiact.norm_metrics import measure_normative_coverage, render_coverage_markdown
+from aiact.policy_loader import article_filename, source_body
+from aiact.schemas.interpretation import InterpretationTargetKind, InterpretiveLink
+from aiact.schemas.norm import (
+    DependencyResolution,
+    ImplementationMode,
+    NormDependency,
+    NormKind,
+    ProductScope,
+    SegmentDisposition,
+    SourceKind,
+    SubjectCategory,
+    VerificationMode,
+)
+from aiact.text_segments import corpus_documents
+from aiact.yaml_loader import load_yaml_mapping
+
+DEFAULT_REVIEW_DEBT_REASON = "Not yet semantically extracted; retained as explicit review debt."
+
+
+class DivisionSource(BaseModel):
+    label: str = Field(pattern=r"^[A-Z0-9-]+$")
+    marker: str | None
+    disposition: SegmentDisposition
+    reason: str = ""
+
+
+class DocumentSource(BaseModel):
+    kind: SourceKind
+    number: str = Field(min_length=1)
+    divisions: list[DivisionSource] = Field(min_length=1)
+
+    @model_validator(mode="after")
+    def _markers_define_an_ordered_partition(self) -> DocumentSource:
+        if self.divisions[0].marker is not None:
+            raise ValueError("the first division marker must be null")
+        if any(division.marker is None for division in self.divisions[1:]):
+            raise ValueError("every division after the first requires a marker")
+        labels = [division.label for division in self.divisions]
+        if len(labels) != len(set(labels)):
+            raise ValueError("division labels must be unique within a document")
+        return self
+
+
+class ReviewedDocumentInventory(BaseModel):
+    act_version_date: date
+    review_run_id: str = Field(min_length=1)
+    extracted_by: str = "semantic-legal-effect-pass"
+    presentation_mode: str = "exact-source-slice"
+    documents: list[DocumentSource] = []
+
+    @model_validator(mode="after")
+    def _document_addresses_are_unique(self) -> ReviewedDocumentInventory:
+        addresses = [(document.kind, document.number) for document in self.documents]
+        if len(addresses) != len(set(addresses)):
+            raise ValueError("reviewed document addresses must be unique")
+        return self
+
+
+class NormSourceRecord(BaseModel):
+    """Reviewed authoring input from which a complete runtime-independent Norm is compiled."""
+
+    norm_id: str = Field(pattern=r"^AIA-NORM-[A-Z0-9-]+$")
+    source: str = Field(pattern=r"^[A-Z0-9-]+$")
+    quote: str = Field(min_length=1)
+    action: str = Field(min_length=1)
+    subject_ref: str = Field(min_length=1)
+    subject_category: SubjectCategory
+    kind: NormKind = NormKind.OBLIGATION
+    product_scope: ProductScope = ProductScope.IN_SCOPE
+    product_scope_reason: str = ""
+    implementation_refs: list[str] = []
+    implementation_mode: ImplementationMode | None = None
+    implementation_reason: str = ""
+    verification_mode: VerificationMode | None = None
+    conditions: list[str] = []
+    exceptions: list[str] = []
+    mandatory_content: list[str] = []
+    mandatory_content_source: Literal["numbered_items"] | None = None
+    dependencies: list[NormDependency] = []
+    qualifier_spans: list[str] = []
+    effective_date_spans: list[str] = []
+
+
+class NormSourceInventory(BaseModel):
+    act_version_date: date
+    implementation_targets: list[str] = []
+    records: list[NormSourceRecord] = []
+    carried_by: dict[str, list[str]] = {}
+    interpretations: list[InterpretiveLink] = []
+
+    @model_validator(mode="after")
+    def _source_ids_are_unique(self) -> NormSourceInventory:
+        norm_ids = [record.norm_id for record in self.records]
+        if len(norm_ids) != len(set(norm_ids)):
+            raise ValueError("norm source record IDs must be unique")
+        if len(self.implementation_targets) != len(set(self.implementation_targets)):
+            raise ValueError("implementation target IDs must be unique")
+        referenced = {
+            target for record in self.records for target in record.implementation_refs
+        }
+        unknown_targets = sorted(referenced - set(self.implementation_targets))
+        if unknown_targets:
+            raise ValueError(
+                "norm source records reference undeclared implementation targets: "
+                f"{unknown_targets}"
+            )
+        interpreted_rules = {
+            target.target_id
+            for link in self.interpretations
+            for target in link.targets
+            if target.kind is InterpretationTargetKind.POLICY_RULE
+        }
+        unknown_interpreted_rules = sorted(
+            interpreted_rules - set(self.implementation_targets)
+        )
+        if unknown_interpreted_rules:
+            raise ValueError(
+                "interpretive links reference undeclared policy-rule targets: "
+                f"{unknown_interpreted_rules}"
+            )
+        return self
+
+
+@dataclass(frozen=True)
+class NormBuilderPaths:
+    reviewed_documents: Path
+    norm_sources: Path
+    articles_root: Path
+    annexes_root: Path
+    guidance_root: Path
+    text_output: Path
+    norm_output: Path
+    report_output: Path
+    generated_by: str
+
+
+def load_builder_inputs(
+    paths: NormBuilderPaths,
+) -> tuple[ReviewedDocumentInventory, NormSourceInventory]:
+    reviewed = ReviewedDocumentInventory.model_validate(
+        load_yaml_mapping(paths.reviewed_documents, description="reviewed document inventory")
+    )
+    sources = NormSourceInventory.model_validate(
+        load_yaml_mapping(paths.norm_sources, description="norm source inventory")
+    )
+    if reviewed.act_version_date != sources.act_version_date:
+        raise ValueError(
+            "reviewed documents and norm sources use different Act versions: "
+            f"{reviewed.act_version_date} != {sources.act_version_date}"
+        )
+    return reviewed, sources
+
+
+def _document_sort_key(document: DocumentSource) -> tuple[int, int, str]:
+    if document.kind is SourceKind.ANNEX:
+        return 1, 0, document.number
+    match = re.fullmatch(r"(\d+)([a-z]?)", document.number)
+    if match is None:
+        raise ValueError(f"invalid article identifier {document.number!r}")
+    return 0, int(match.group(1)), match.group(2)
+
+
+def _complete_document_inventory(
+    reviewed: ReviewedDocumentInventory,
+    paths: NormBuilderPaths,
+) -> tuple[DocumentSource, ...]:
+    version = reviewed.act_version_date
+    declared = {(document.kind, document.number): document for document in reviewed.documents}
+    expected = corpus_documents(version, paths.articles_root, paths.annexes_root)
+    unknown = sorted((kind.value, document) for kind, document in set(declared) - expected)
+    if unknown:
+        raise ValueError(f"reviewed document inventory references unknown sources: {unknown}")
+
+    documents = [
+        declared.get(
+            key,
+            DocumentSource(
+                kind=key[0],
+                number=key[1],
+                divisions=[
+                    DivisionSource(
+                        label="FULL",
+                        marker=None,
+                        disposition=SegmentDisposition.NEEDS_REVIEW,
+                        reason=DEFAULT_REVIEW_DEBT_REASON,
+                    )
+                ],
+            ),
+        )
+        for key in expected
+    ]
+    return tuple(sorted(documents, key=_document_sort_key))
+
+
+def _source_file(document: DocumentSource, version: date, paths: NormBuilderPaths) -> Path:
+    root = paths.articles_root if document.kind is SourceKind.ARTICLE else paths.annexes_root
+    version_root = root / version.isoformat()
+    if document.kind is SourceKind.ARTICLE:
+        return version_root / article_filename(document.number)
+    return version_root / f"annex-{document.number}.md"
+
+
+def _segment_id(document: DocumentSource, label: str) -> str:
+    if document.kind is SourceKind.ARTICLE:
+        match = re.fullmatch(r"(\d+)([a-z]?)", document.number)
+        if match is None:
+            raise ValueError(f"invalid article identifier {document.number!r}")
+        prefix = f"A{int(match.group(1)):03d}{match.group(2).upper()}"
+    else:
+        prefix = f"ANNEX-{document.number}"
+    return f"AIA-TEXT-{prefix}-{label}"
+
+
+def _line_start(body: str, marker: str, cursor: int) -> int:
+    start = body.find(marker, cursor)
+    while start >= 0 and start > 0 and body[start - 1] != "\n":
+        start = body.find(marker, start + 1)
+    return start
+
+
+def _review(
+    reviewed: ReviewedDocumentInventory,
+    status: str,
+    fully_displayed: bool,
+) -> dict[str, object]:
+    return {
+        "status": status,
+        "extracted_by": reviewed.extracted_by,
+        "verified_by": "",
+        "review_run_id": reviewed.review_run_id,
+        "presentation_mode": reviewed.presentation_mode,
+        "display_chunks": 1 if fully_displayed else 0,
+        "fully_displayed": fully_displayed,
+        "elapsed_seconds": None,
+    }
+
+
+def _build_segments(
+    reviewed: ReviewedDocumentInventory,
+    paths: NormBuilderPaths,
+) -> list[dict[str, object]]:
+    segments: list[dict[str, object]] = []
+    version_text = reviewed.act_version_date.isoformat()
+    for document in _complete_document_inventory(reviewed, paths):
+        body = source_body(
+            _source_file(document, reviewed.act_version_date, paths),
+            expected_version=version_text,
+        )
+        starts: list[int] = []
+        cursor = 0
+        for index, division in enumerate(document.divisions):
+            if index == 0:
+                start = 0
+            else:
+                assert division.marker is not None
+                start = _line_start(body, division.marker, cursor)
+                if start < 0:
+                    raise ValueError(
+                        f"{document.kind.value} {document.number}: marker "
+                        f"{division.marker!r} not found"
+                    )
+            starts.append(start)
+            cursor = start + 1
+
+        for index, division in enumerate(document.divisions):
+            start = starts[index]
+            end = starts[index + 1] if index + 1 < len(starts) else len(body)
+            exact = body[start:end]
+            is_debt = division.disposition is SegmentDisposition.NEEDS_REVIEW
+            segments.append(
+                {
+                    "segment_id": _segment_id(document, division.label),
+                    "source": {
+                        "kind": document.kind.value,
+                        "document": document.number,
+                        "act_version_date": version_text,
+                    },
+                    "start": start,
+                    "end": end,
+                    "sha256": hashlib.sha256(exact.encode()).hexdigest(),
+                    "text": exact,
+                    "disposition": division.disposition.value,
+                    "disposition_reason": division.reason,
+                    "norm_ids": [],
+                    "review": _review(
+                        reviewed,
+                        "needs_review" if is_debt else "proposed",
+                        not is_debt,
+                    ),
+                }
+            )
+    return segments
+
+
+def _detection_channels(record: NormSourceRecord) -> list[str]:
+    quote = record.quote.lower()
+    channels = ["semantic_legal_effect"]
+    if "shall" in quote:
+        channels.append("shall_token")
+    if any(token in quote for token in (" may ", "is empowered", "will be needed")):
+        channels.append("other_modal")
+    if record.kind in {NormKind.LEGAL_CONSEQUENCE, NormKind.APPLICABILITY}:
+        channels.append("deeming_or_consequence")
+    if record.dependencies or record.qualifier_spans:
+        channels.append("cross_reference_structure")
+    if record.implementation_refs:
+        channels.append("existing_implementation")
+    return channels
+
+
+def _resolved_mode(record: NormSourceRecord) -> ImplementationMode:
+    if record.implementation_mode is not None:
+        return record.implementation_mode
+    if record.implementation_refs:
+        return ImplementationMode.COMPLIANCE_RULE
+    if record.product_scope is ProductScope.IN_SCOPE:
+        return ImplementationMode.MISSING
+    return ImplementationMode.NONE_REQUIRED
+
+
+def _resolved_verification(record: NormSourceRecord) -> VerificationMode:
+    if record.verification_mode is not None:
+        return record.verification_mode
+    if record.product_scope is ProductScope.IN_SCOPE:
+        return VerificationMode.UNRESOLVED
+    return VerificationMode.NOT_ASSESSED
+
+
+def _numbered_items(text: str) -> list[str]:
+    return [
+        match.group(1).strip()
+        for match in re.finditer(r"(?ms)^    \d+\. (.*?)(?=^    \d+\. |\Z)", text)
+    ]
+
+
+def _build_norms(
+    reviewed: ReviewedDocumentInventory,
+    source_inventory: NormSourceInventory,
+    segments: list[dict[str, object]],
+    paths: NormBuilderPaths,
+) -> list[dict[str, object]]:
+    version_text = reviewed.act_version_date.isoformat()
+    segments_by_id = {str(segment["segment_id"]): segment for segment in segments}
+    known_rule_ids = set(source_inventory.implementation_targets)
+    known_norm_ids = {record.norm_id for record in source_inventory.records}
+    norms: list[dict[str, object]] = []
+
+    for record in source_inventory.records:
+        primary = f"AIA-TEXT-{record.source}"
+        spans = [primary, *(f"AIA-TEXT-{span}" for span in record.qualifier_spans)]
+        effective = [f"AIA-TEXT-{span}" for span in record.effective_date_spans]
+        unknown_spans = [span for span in [*spans, *effective] if span not in segments_by_id]
+        if unknown_spans:
+            raise ValueError(f"{record.norm_id}: unknown source-record span(s) {unknown_spans}")
+        primary_text = str(segments_by_id[primary]["text"])
+        if record.quote not in primary_text:
+            raise ValueError(f"{record.norm_id}: quote is not exact in {primary}: {record.quote!r}")
+        unknown_rules = sorted(set(record.implementation_refs) - known_rule_ids)
+        if unknown_rules:
+            raise ValueError(f"{record.norm_id}: unknown implementation rule(s) {unknown_rules}")
+        for span in [*spans, *effective]:
+            segment = segments_by_id[span]
+            if segment["disposition"] != SegmentDisposition.NORMATIVE.value:
+                raise ValueError(f"{record.norm_id}: linked span {span} is not normative")
+            norm_ids = segment["norm_ids"]
+            assert isinstance(norm_ids, list)
+            norm_ids.append(record.norm_id)
+
+        dependencies = [
+            {
+                "dependency_ref": dependency.dependency_ref,
+                "resolution": dependency.resolution.value,
+                "detail": dependency.detail,
+            }
+            for dependency in record.dependencies
+        ]
+        for dependency in dependencies:
+            if (
+                dependency["resolution"] == DependencyResolution.INTERNAL_RESOLVED.value
+                and dependency["dependency_ref"] not in known_norm_ids
+                and dependency["dependency_ref"] not in segments_by_id
+            ):
+                raise ValueError(
+                    f"{record.norm_id}: internal dependency "
+                    f"{dependency['dependency_ref']} is unknown"
+                )
+
+        mandatory_content = list(record.mandatory_content)
+        if record.mandatory_content_source == "numbered_items":
+            mandatory_content = _numbered_items(primary_text)
+            if not mandatory_content:
+                raise ValueError(f"{record.norm_id}: no numbered mandatory-content items found")
+
+        norms.append(
+            {
+                "norm_id": record.norm_id,
+                "act_version_date": version_text,
+                "kind": record.kind.value,
+                "subjects": [
+                    {
+                        "subject_ref": record.subject_ref,
+                        "category": record.subject_category.value,
+                    }
+                ],
+                "action": record.action,
+                "norm_text": record.quote,
+                "detection_channels": _detection_channels(record),
+                "primary_spans": [primary],
+                "qualifier_spans": [f"AIA-TEXT-{span}" for span in record.qualifier_spans],
+                "effective_date_spans": effective,
+                "conditions": record.conditions,
+                "exceptions": record.exceptions,
+                "mandatory_content": mandatory_content,
+                "dependencies": dependencies,
+                "product_scope": record.product_scope.value,
+                "product_scope_reason": record.product_scope_reason,
+                "implementation_mode": _resolved_mode(record).value,
+                "implementation_refs": record.implementation_refs,
+                "implementation_reason": record.implementation_reason,
+                "verification_mode": _resolved_verification(record).value,
+                "review": _review(reviewed, "proposed", True),
+            }
+        )
+
+    norms_by_id = {str(norm["norm_id"]): norm for norm in norms}
+    for norm_id, carriers in source_inventory.carried_by.items():
+        if norm_id not in norms_by_id:
+            raise ValueError(f"carried_by references unknown source norm {norm_id}")
+        unknown_carriers = sorted(set(carriers) - known_norm_ids)
+        if unknown_carriers:
+            raise ValueError(f"{norm_id}: unknown carrier norm(s) {unknown_carriers}")
+        norms_by_id[norm_id]["carried_by_norm_ids"] = carriers
+    return norms
+
+
+def build_artifacts(
+    reviewed: ReviewedDocumentInventory,
+    source_inventory: NormSourceInventory,
+    paths: NormBuilderPaths,
+) -> tuple[dict[str, object], dict[str, object]]:
+    """Compile versioned reviewed inputs without reading or writing generated artifacts."""
+    segments = _build_segments(reviewed, paths)
+    norms = _build_norms(reviewed, source_inventory, segments, paths)
+    return (
+        {
+            "act_version_date": reviewed.act_version_date.isoformat(),
+            "corpus_complete": True,
+            "segments": segments,
+        },
+        {
+            "act_version_date": reviewed.act_version_date.isoformat(),
+            "norms": norms,
+            "interpretations": [
+                link.model_dump(mode="json") for link in source_inventory.interpretations
+            ],
+        },
+    )
+
+
+def render_artifacts(
+    reviewed: ReviewedDocumentInventory,
+    source_inventory: NormSourceInventory,
+    paths: NormBuilderPaths,
+) -> tuple[str, str]:
+    text_review, norms = build_artifacts(reviewed, source_inventory, paths)
+    heading = (
+        f"# Generated by {paths.generated_by} from versioned reviewed inputs; "
+        "do not edit generated offsets.\n"
+    )
+    return (
+        heading + yaml.safe_dump(text_review, sort_keys=False, width=100),
+        heading + yaml.safe_dump(norms, sort_keys=False, width=100),
+    )
+
+
+def run_builder(paths: NormBuilderPaths, *, check: bool) -> None:
+    """Write or reproducibly verify artifacts and their rendered metrics report."""
+    reviewed, source_inventory = load_builder_inputs(paths)
+    text, norms = render_artifacts(reviewed, source_inventory, paths)
+    expected_artifacts = ((paths.text_output, text), (paths.norm_output, norms))
+    if check:
+        stale = [
+            str(path)
+            for path, expected in expected_artifacts
+            if not path.is_file() or path.read_text(encoding="utf-8") != expected
+        ]
+        if stale:
+            raise ValueError(f"generated coverage artifacts are stale: {', '.join(stale)}")
+    else:
+        for path, content in expected_artifacts:
+            path.write_text(content, encoding="utf-8")
+
+    bundle = load_normative_coverage(
+        paths.text_output,
+        paths.norm_output,
+        articles_root=paths.articles_root,
+        annexes_root=paths.annexes_root,
+        guidance_root=paths.guidance_root,
+    )
+    report = render_coverage_markdown(measure_normative_coverage(bundle))
+    if check:
+        if not paths.report_output.is_file() or (
+            paths.report_output.read_text(encoding="utf-8") != report
+        ):
+            raise ValueError(f"generated coverage report is stale: {paths.report_output}")
+    else:
+        paths.report_output.write_text(report, encoding="utf-8")

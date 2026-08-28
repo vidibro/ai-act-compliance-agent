@@ -7,10 +7,6 @@ against the pinned corpus without changing classification or reports.
 from __future__ import annotations
 
 from pathlib import Path
-from typing import Any
-
-import yaml
-from yaml.constructor import ConstructorError
 
 from aiact.config import get_settings
 from aiact.guidance import load_snippet
@@ -27,54 +23,7 @@ from aiact.text_segments import (
     load_source_body,
     validate_document_partition,
 )
-
-
-class _UniqueKeyLoader(yaml.SafeLoader):
-    """Safe YAML loader that refuses mappings whose earlier value would be discarded."""
-
-
-def _construct_unique_mapping(
-    loader: _UniqueKeyLoader,
-    node: yaml.MappingNode,
-    deep: bool = False,
-) -> dict[Any, Any]:
-    loader.flatten_mapping(node)
-    result: dict[Any, Any] = {}
-    for key_node, value_node in node.value:
-        key = loader.construct_object(key_node, deep=deep)
-        try:
-            duplicate = key in result
-        except TypeError as exc:
-            raise ConstructorError(
-                "while constructing a mapping",
-                node.start_mark,
-                "found an unhashable key",
-                key_node.start_mark,
-            ) from exc
-        if duplicate:
-            raise ConstructorError(
-                "while constructing a mapping",
-                node.start_mark,
-                f"found duplicate key {key!r}",
-                key_node.start_mark,
-            )
-        result[key] = loader.construct_object(value_node, deep=deep)
-    return result
-
-
-_UniqueKeyLoader.add_constructor(
-    yaml.resolver.BaseResolver.DEFAULT_MAPPING_TAG,
-    _construct_unique_mapping,
-)
-
-
-def _yaml(path: Path) -> dict[str, Any]:
-    if not path.is_file():
-        raise FileNotFoundError(f"normative coverage artifact not found: {path}")
-    raw = yaml.load(path.read_text(encoding="utf-8"), Loader=_UniqueKeyLoader)
-    if not isinstance(raw, dict):
-        raise ValueError(f"{path} must contain a YAML mapping")
-    return raw
+from aiact.yaml_loader import load_yaml_mapping
 
 
 def _assert_no_carried_cycles(inventory: NormInventory) -> None:
@@ -104,13 +53,28 @@ def load_normative_coverage(
 ) -> NormativeCoverageBundle:
     """Load both artifacts and prove their source and cross-file invariants."""
     settings = get_settings()
-    text_path = Path(text_review_path or settings.policy_text_review_path)
-    norm_path = Path(norm_inventory_path or settings.policy_norms_path)
+    coverage_root = (
+        Path(settings.policy_normative_coverage_path) / settings.act_version_date.isoformat()
+    )
+    text_path = (
+        Path(text_review_path)
+        if text_review_path is not None
+        else coverage_root / "text-review.yaml"
+    )
+    norm_path = (
+        Path(norm_inventory_path)
+        if norm_inventory_path is not None
+        else coverage_root / "norms.yaml"
+    )
     article_root = Path(articles_root or settings.policy_articles_path)
     annex_root = Path(annexes_root or settings.policy_annexes_path)
 
-    text_review = TextReviewInventory.model_validate(_yaml(text_path))
-    norm_inventory = NormInventory.model_validate(_yaml(norm_path))
+    text_review = TextReviewInventory.model_validate(
+        load_yaml_mapping(text_path, description="normative coverage artifact")
+    )
+    norm_inventory = NormInventory.model_validate(
+        load_yaml_mapping(norm_path, description="normative coverage artifact")
+    )
     if text_review.act_version_date != norm_inventory.act_version_date:
         raise ValueError(
             "text-review and norm inventories use different Act versions: "
