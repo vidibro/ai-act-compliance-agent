@@ -11,9 +11,9 @@ Module layout, in dependency order:
     classification.py  what the cascade adds up to — evidence, a use case, a risk class.
     report.py          what the gap layer adds up to — findings, and whose they are.
     system.py          the document under review.
-    review.py          independent review provenance for shadow assurance artifacts.
+    review.py          independent review provenance for assurance artifacts.
     interpretation.py  non-binding guidance links and their implementation targets.
-    norm.py            exact source segments and atomic legal propositions (shadow only).
+    norm.py            exact source segments and atomic legal propositions.
     eval.py            EVAL ONLY, and not part of the Regulation.
 """
 
@@ -48,6 +48,7 @@ from aiact.schemas.interpretation import (
     InterpretiveLink,
 )
 from aiact.schemas.norm import (
+    CandidateDetectionChannel,
     DependencyResolution,
     ImplementationMode,
     Norm,
@@ -88,7 +89,7 @@ __all__ = [
     "GoldenSet",
     "ClassificationCase",
     "ClassificationGoldenSet",
-    # normative-coverage assurance — shadow only until later migration phases
+    # normative-coverage assurance
     "ReviewStatus",
     "ReviewRecord",
     "GuidanceReviewScope",
@@ -96,6 +97,7 @@ __all__ = [
     "InterpretationTargetKind",
     "InterpretiveEffect",
     "InterpretiveLink",
+    "CandidateDetectionChannel",
     "DependencyResolution",
     "ImplementationMode",
     "Norm",

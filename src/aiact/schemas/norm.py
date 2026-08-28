@@ -1,7 +1,7 @@
-"""Shadow schemas for exact text review and atomic legal propositions.
+"""Schemas for exact text review and atomic legal propositions.
 
 These models do not participate in classification, rule selection, judging, or reporting. They
-are the Phase 1 assurance layer beneath those runtime paths.
+form an independently validated assurance layer beneath those runtime paths.
 """
 
 from __future__ import annotations
@@ -88,6 +88,21 @@ class DependencyResolution(StrEnum):
     UNRESOLVED = "unresolved"
 
 
+class CandidateDetectionChannel(StrEnum):
+    """Why an extraction pass proposed a legal proposition.
+
+    These observations are not substitutes for semantic review. In particular, shall_token
+    preserves the token heuristic as a measurable baseline.
+    """
+
+    SEMANTIC_LEGAL_EFFECT = "semantic_legal_effect"
+    SHALL_TOKEN = "shall_token"
+    OTHER_MODAL = "other_modal"
+    DEEMING_OR_CONSEQUENCE = "deeming_or_consequence"
+    CROSS_REFERENCE_STRUCTURE = "cross_reference_structure"
+    EXISTING_IMPLEMENTATION = "existing_implementation"
+
+
 class SegmentSource(BaseModel):
     kind: SourceKind
     document: str = Field(min_length=1)
@@ -170,6 +185,8 @@ class Norm(BaseModel):
     kind: NormKind
     subjects: list[NormSubject] = Field(min_length=1)
     action: str = Field(min_length=1)
+    norm_text: str = Field(min_length=1)
+    detection_channels: list[CandidateDetectionChannel] = Field(min_length=1)
     primary_spans: list[str] = Field(min_length=1)
     qualifier_spans: list[str] = []
     definition_spans: list[str] = []
@@ -201,6 +218,10 @@ class Norm(BaseModel):
 
     @model_validator(mode="after")
     def _scope_and_implementation_are_explained(self) -> Norm:
+        if not self.norm_text.strip():
+            raise ValueError("norm_text must contain an exact enacted quotation")
+        if len(self.detection_channels) != len(set(self.detection_channels)):
+            raise ValueError("detection_channels must not contain duplicates")
         if self.product_scope not in {ProductScope.IN_SCOPE, ProductScope.UNRESOLVED}:
             if not self.product_scope_reason.strip():
                 raise ValueError(f"product_scope={self.product_scope.value} requires a reason")
@@ -258,7 +279,7 @@ class NormInventory(BaseModel):
 
 
 class NormativeCoverageBundle(BaseModel):
-    """Both shadow artifacts after their cross-file and source validation has succeeded."""
+    """Both assurance artifacts after cross-file and source validation succeeds."""
 
     text_review: TextReviewInventory
     norm_inventory: NormInventory

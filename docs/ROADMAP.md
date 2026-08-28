@@ -10,9 +10,11 @@
 legal address to reviewed full-text spans and atomic normative propositions is recorded in
 [`docs/NORMATIVE-COVERAGE-MIGRATION.md`](NORMATIVE-COVERAGE-MIGRATION.md). Preserve the current
 coverage machinery during the migration. Phase 0's accepted scope and vocabulary are recorded in
-[`docs/NORMATIVE-COVERAGE-SCOPE.md`](NORMATIVE-COVERAGE-SCOPE.md). Phase 1's shadow schemas, exact
-span resolver, cross-file validator, and empty versioned artifacts are complete; the representative
-pilot is next.
+[`docs/NORMATIVE-COVERAGE-SCOPE.md`](NORMATIVE-COVERAGE-SCOPE.md). The exact-span schemas, resolver,
+cross-file validator, and versioned artifacts are complete. Every stored article and annex is now
+present in the exact-span inventory; the representative extraction is proposed and measured in
+[`docs/NORMATIVE-COVERAGE-REPORT-2026-07-27.md`](NORMATIVE-COVERAGE-REPORT-2026-07-27.md); independent review and timed
+authoring remain before the pilot can exit.
 
 ## Locked decisions (do not relitigate)
 

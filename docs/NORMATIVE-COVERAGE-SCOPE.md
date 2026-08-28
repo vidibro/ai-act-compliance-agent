@@ -234,6 +234,10 @@ Review tooling must record:
 - confirmation that every page/chunk of the segment was displayed;
 - review decision and timestamp or review-run identifier.
 
+Review records may include elapsed seconds. Missing timing does not invalidate an otherwise honest
+proposed record, but it prevents estimation of full-corpus authoring effort. The review interface
+must capture timing automatically rather than asking reviewers to reconstruct it after the fact.
+
 The UI may include surrounding context, but context does not count as reviewed unless it belongs to
 an independently approved segment. A reviewer cannot approve an article or annex as one opaque
 unit merely by asserting that it was read.
@@ -255,6 +259,27 @@ downgraded to context merely because they do not contain a freestanding duty.
 
 `context_only` and `structural` require human verification. An extractor may propose them but may
 not approve them.
+
+### Exact proposition text and detection provenance
+
+A paragraph-level source span may support several independently applicable
+norms. Every norm therefore carries `norm_text`: an exact enacted quotation that the loader proves
+occurs inside one of the norm's primary spans. The quotation does not replace qualifier, condition,
+exception, dependency, or effective-date spans; it prevents a paraphrased `action` from being the
+only visible statement of what exact words the norm claims.
+
+Every proposed norm also records one or more candidate-detection channels. These are extraction
+provenance, not legal classifications:
+
+- `semantic_legal_effect`
+- `shall_token`
+- `other_modal`
+- `deeming_or_consequence`
+- `cross_reference_structure`
+- `existing_implementation`
+
+The `shall_token` channel deliberately preserves the earlier heuristic as a measurable baseline.
+It is never sufficient for completeness and does not outrank semantic review.
 
 ## Norm vocabulary
 

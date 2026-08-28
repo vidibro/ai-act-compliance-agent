@@ -1,4 +1,4 @@
-"""Phase 1 shadow assurance: exact spans, atomic norms, and interpretive links."""
+"""Exact source spans, atomic norms, and interpretive-link assurance."""
 
 from __future__ import annotations
 
@@ -76,6 +76,8 @@ def norm(norm_id: str, spans: list[str]) -> dict:
         "kind": "obligation",
         "subjects": [{"subject_ref": "provider", "category": "supported_operator"}],
         "action": "perform the reviewed action",
+        "norm_text": "Article 32",
+        "detection_channels": ["semantic_legal_effect"],
         "primary_spans": spans,
         "product_scope": "in_scope",
         "implementation_mode": "missing",
@@ -132,16 +134,17 @@ def truncate_last_segment(items: list[dict]) -> None:
     item["sha256"] = hashlib.sha256(item["text"].encode()).hexdigest()
 
 
-def test_repository_shadow_artifacts_load_without_touching_runtime():
+def test_repository_coverage_artifacts_load_without_touching_runtime():
     bundle = load_normative_coverage(
         articles_root=ARTICLES,
         annexes_root=ANNEXES,
         guidance_root=GUIDANCE,
     )
     assert bundle.runtime_integrated is False
-    assert bundle.validated_documents == 0
-    assert bundle.validated_segments == 0
-    assert bundle.validated_norms == 0
+    assert bundle.text_review.corpus_complete is True
+    assert bundle.validated_documents == 133
+    assert bundle.validated_segments == 204
+    assert bundle.validated_norms == 82
 
 
 def test_exact_source_body_preserves_characters_that_rule_text_strips():
@@ -219,6 +222,20 @@ def test_norm_cannot_reference_an_unknown_span(tmp_path):
     norms["norms"][0]["primary_spans"].append("AIA-TEXT-032-MISSING")
     with pytest.raises(ValueError, match="unknown segment"):
         load(tmp_path, text, norms)
+
+
+def test_norm_text_must_be_an_exact_quote_from_a_primary_span(tmp_path):
+    _body, text, norms = one_document()
+    norms["norms"][0]["norm_text"] = "paraphrased legal proposition"
+    with pytest.raises(ValueError, match="norm_text is not an exact substring"):
+        load(tmp_path, text, norms)
+
+
+def test_norm_detection_channels_are_unique():
+    raw = norm("AIA-NORM-032-A", ["AIA-TEXT-032-A"])
+    raw["detection_channels"] = ["semantic_legal_effect", "semantic_legal_effect"]
+    with pytest.raises(ValidationError, match="must not contain duplicates"):
+        Norm.model_validate(raw)
 
 
 def test_segment_and_norm_links_must_agree_in_both_directions(tmp_path):

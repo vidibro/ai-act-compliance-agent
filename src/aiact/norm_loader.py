@@ -1,7 +1,7 @@
-"""Load and cross-validate the shadow normative-coverage artifacts.
+"""Load and cross-validate normative-coverage assurance artifacts.
 
-This module is intentionally unused by the runtime pipeline. Phase 1 proves that the new assurance
-data can be resolved against the pinned corpus without changing classification or reports.
+This module is intentionally separate from the runtime pipeline. It validates assurance data
+against the pinned corpus without changing classification or reports.
 """
 
 from __future__ import annotations
@@ -102,7 +102,7 @@ def load_normative_coverage(
     annexes_root: str | Path | None = None,
     guidance_root: str | Path | None = None,
 ) -> NormativeCoverageBundle:
-    """Load both shadow artifacts and prove their source and cross-file invariants."""
+    """Load both artifacts and prove their source and cross-file invariants."""
     settings = get_settings()
     text_path = Path(text_review_path or settings.policy_text_review_path)
     norm_path = Path(norm_inventory_path or settings.policy_norms_path)
@@ -157,6 +157,10 @@ def load_normative_coverage(
             raise ValueError(f"{norm.norm_id} references unknown segment(s): {unknown}")
         for span in norm.all_spans:
             linked_from_norms[span].add(norm.norm_id)
+        if not any(norm.norm_text in segments_by_id[span].text for span in norm.primary_spans):
+            raise ValueError(
+                f"{norm.norm_id} norm_text is not an exact substring of any primary span"
+            )
         unknown_carriers = [n for n in norm.carried_by_norm_ids if n not in norms_by_id]
         if unknown_carriers:
             raise ValueError(f"{norm.norm_id} is carried by unknown norm(s): {unknown_carriers}")

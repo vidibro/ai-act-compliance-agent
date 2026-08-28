@@ -23,6 +23,7 @@ class ReviewRecord(BaseModel):
     presentation_mode: str = ""
     display_chunks: int = Field(default=0, ge=0)
     fully_displayed: bool = False
+    elapsed_seconds: float | None = Field(default=None, ge=0)
 
     @model_validator(mode="after")
     def _approved_means_independently_and_fully_reviewed(self) -> ReviewRecord:

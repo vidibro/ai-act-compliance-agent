@@ -1,6 +1,6 @@
 # Normative Coverage Migration
 
-**Status:** accepted design; Phases 0–1 complete, Phase 2 next
+**Status:** validation infrastructure complete; representative extraction awaiting independent review
 
 **Act snapshot:** `2026-07-27`
 
@@ -343,6 +343,20 @@ Measure:
 - usability of offsets and text rendering during review.
 
 **Exit:** corrected schema and a data-backed estimate for full authoring.
+
+**Proposed extraction 2026-08-28:** the inventory now partitions all 133 source bodies in the pinned
+corpus into 204 exact segments. It proposes 82 norms across the ten documents selected for detailed
+extraction; every other article and annex is retained as exact full-body `needs_review` debt.
+The reproducible measurements are in
+[`NORMATIVE-COVERAGE-REPORT-2026-07-27.md`](NORMATIVE-COVERAGE-REPORT-2026-07-27.md). The extraction added loader-validated exact
+`norm_text`, candidate-detection provenance, and review timing fields. Its semantic pass found 13 of
+82 proposed propositions whose exact operative quote contains no `shall` token, while 357,085
+source characters not yet semantically extracted remain explicitly marked `needs_review`.
+
+All extracted records remain `proposed`, elapsed review time was not captured, and no independent
+reviewer has approved the legal extraction. Consequently the repository makes no legal-completeness
+claim for the extracted set and does not yet have the data-backed full-authoring estimate required
+by the exit criterion.
 
 ### Phase 3 — extraction and review tooling
 
