@@ -146,9 +146,7 @@ def _extract_paragraph(provisions: str, paragraph: str, article: str) -> str:
         # Text after the "N. " label, up to the next paragraph.
         return provisions[end:stop].strip("\n").rstrip()
     available = [n for n, _, _ in starts]
-    raise ValueError(
-        f"Article {article} has no paragraph {paragraph} (found: {available})."
-    )
+    raise ValueError(f"Article {article} has no paragraph {paragraph} (found: {available}).")
 
 
 def provision_labels(articles_dir: Path, article: str) -> tuple[str, ...]:
@@ -283,6 +281,17 @@ def provision_text(path: Path) -> str:
     would point at wording that was never enacted. Verified on every load — see
     `policy_loader.verify_integrity` and SECURITY.md.
     """
+    return source_body(path).strip()
+
+
+def source_body(path: Path, expected_version: str | None = None) -> str:
+    """The exact integrity-checked body after generated YAML front matter.
+
+    Unlike :func:`provision_text`, this deliberately preserves every leading and trailing
+    character. Normative coverage uses offsets into this string and requires its review segments to
+    concatenate back to it exactly; stripping here would make whitespace and final newlines
+    impossible to account for.
+    """
     raw = path.read_text(encoding="utf-8")
     match = _FRONT_MATTER.match(raw)
     if match is None:
@@ -290,7 +299,12 @@ def provision_text(path: Path) -> str:
     front = dict(_FRONT_FIELD.findall(match.group(1)))
     body = raw[match.end() :]
     verify_integrity(path, raw, front, body)
-    return body.strip()
+    if expected_version is not None and front.get("act_version_date") != expected_version:
+        raise ValueError(
+            f"{path} was fetched for Act version {front.get('act_version_date')!r}, but normative "
+            f"coverage is pinned to {expected_version!r}"
+        )
+    return body
 
 
 def load_policy_spec(

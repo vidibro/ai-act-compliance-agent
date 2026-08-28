@@ -11,6 +11,9 @@ Module layout, in dependency order:
     classification.py  what the cascade adds up to — evidence, a use case, a risk class.
     report.py          what the gap layer adds up to — findings, and whose they are.
     system.py          the document under review.
+    review.py          independent review provenance for shadow assurance artifacts.
+    interpretation.py  non-binding guidance links and their implementation targets.
+    norm.py            exact source segments and atomic legal propositions (shadow only).
     eval.py            EVAL ONLY, and not part of the Regulation.
 """
 
@@ -37,9 +40,35 @@ from aiact.schemas.eval import (
     GoldenCase,
     GoldenSet,
 )
+from aiact.schemas.interpretation import (
+    GuidanceReviewScope,
+    InterpretationTarget,
+    InterpretationTargetKind,
+    InterpretiveEffect,
+    InterpretiveLink,
+)
+from aiact.schemas.norm import (
+    DependencyResolution,
+    ImplementationMode,
+    Norm,
+    NormativeCoverageBundle,
+    NormDependency,
+    NormInventory,
+    NormKind,
+    NormSubject,
+    ProductScope,
+    SegmentDisposition,
+    SegmentSource,
+    SourceKind,
+    SubjectCategory,
+    TextReviewInventory,
+    TextReviewSegment,
+    VerificationMode,
+)
 from aiact.schemas.policy import GuidanceSource, LegalSource, PolicyRule, PolicySpec
 from aiact.schemas.question import Answer, Question
 from aiact.schemas.report import DISCLAIMER, ComplianceReport, Finding, ReportSummary
+from aiact.schemas.review import ReviewRecord, ReviewStatus
 from aiact.schemas.system import DocumentChunk, SystemUnderReview
 
 __all__ = [
@@ -59,6 +88,30 @@ __all__ = [
     "GoldenSet",
     "ClassificationCase",
     "ClassificationGoldenSet",
+    # normative-coverage assurance — shadow only until later migration phases
+    "ReviewStatus",
+    "ReviewRecord",
+    "GuidanceReviewScope",
+    "InterpretationTarget",
+    "InterpretationTargetKind",
+    "InterpretiveEffect",
+    "InterpretiveLink",
+    "DependencyResolution",
+    "ImplementationMode",
+    "Norm",
+    "NormDependency",
+    "NormInventory",
+    "NormKind",
+    "NormSubject",
+    "NormativeCoverageBundle",
+    "ProductScope",
+    "SegmentDisposition",
+    "SegmentSource",
+    "SourceKind",
+    "SubjectCategory",
+    "TextReviewInventory",
+    "TextReviewSegment",
+    "VerificationMode",
     # policy
     "GuidanceSource",
     "LegalSource",

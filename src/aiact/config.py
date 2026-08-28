@@ -71,6 +71,9 @@ class Settings(BaseSettings):
     policy_articles_path: str = "./data/policy/articles"
     # Verbatim annex text (Annex III = the high-risk areas, Annex IV = the Art. 11 checklist).
     policy_annexes_path: str = "./data/policy/annexes"
+    # Shadow-only normative assurance artifacts. The runtime pipeline does not load them in Phase 1.
+    policy_norms_path: str = "./data/policy/norms-2026-07-27.yaml"
+    policy_text_review_path: str = "./data/policy/text-review-2026-07-27.yaml"
 
 
 def get_settings() -> Settings:

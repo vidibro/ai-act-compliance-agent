@@ -1,0 +1,217 @@
+"""Load and cross-validate the shadow normative-coverage artifacts.
+
+This module is intentionally unused by the runtime pipeline. Phase 1 proves that the new assurance
+data can be resolved against the pinned corpus without changing classification or reports.
+"""
+
+from __future__ import annotations
+
+from pathlib import Path
+from typing import Any
+
+import yaml
+from yaml.constructor import ConstructorError
+
+from aiact.config import get_settings
+from aiact.guidance import load_snippet
+from aiact.schemas.norm import (
+    DependencyResolution,
+    ImplementationMode,
+    NormativeCoverageBundle,
+    NormInventory,
+    TextReviewInventory,
+)
+from aiact.text_segments import (
+    corpus_documents,
+    group_segments,
+    load_source_body,
+    validate_document_partition,
+)
+
+
+class _UniqueKeyLoader(yaml.SafeLoader):
+    """Safe YAML loader that refuses mappings whose earlier value would be discarded."""
+
+
+def _construct_unique_mapping(
+    loader: _UniqueKeyLoader,
+    node: yaml.MappingNode,
+    deep: bool = False,
+) -> dict[Any, Any]:
+    loader.flatten_mapping(node)
+    result: dict[Any, Any] = {}
+    for key_node, value_node in node.value:
+        key = loader.construct_object(key_node, deep=deep)
+        try:
+            duplicate = key in result
+        except TypeError as exc:
+            raise ConstructorError(
+                "while constructing a mapping",
+                node.start_mark,
+                "found an unhashable key",
+                key_node.start_mark,
+            ) from exc
+        if duplicate:
+            raise ConstructorError(
+                "while constructing a mapping",
+                node.start_mark,
+                f"found duplicate key {key!r}",
+                key_node.start_mark,
+            )
+        result[key] = loader.construct_object(value_node, deep=deep)
+    return result
+
+
+_UniqueKeyLoader.add_constructor(
+    yaml.resolver.BaseResolver.DEFAULT_MAPPING_TAG,
+    _construct_unique_mapping,
+)
+
+
+def _yaml(path: Path) -> dict[str, Any]:
+    if not path.is_file():
+        raise FileNotFoundError(f"normative coverage artifact not found: {path}")
+    raw = yaml.load(path.read_text(encoding="utf-8"), Loader=_UniqueKeyLoader)
+    if not isinstance(raw, dict):
+        raise ValueError(f"{path} must contain a YAML mapping")
+    return raw
+
+
+def _assert_no_carried_cycles(inventory: NormInventory) -> None:
+    edges = {
+        norm.norm_id: norm.carried_by_norm_ids
+        for norm in inventory.norms
+        if norm.implementation_mode is ImplementationMode.CARRIED_BY_OTHER_NORM
+    }
+
+    def visit(node: str, path: tuple[str, ...]) -> None:
+        if node in path:
+            cycle = " -> ".join((*path[path.index(node) :], node))
+            raise ValueError(f"carried_by_other_norm cycle: {cycle}")
+        for target in edges.get(node, []):
+            visit(target, (*path, node))
+
+    for norm_id in edges:
+        visit(norm_id, ())
+
+
+def load_normative_coverage(
+    text_review_path: str | Path | None = None,
+    norm_inventory_path: str | Path | None = None,
+    articles_root: str | Path | None = None,
+    annexes_root: str | Path | None = None,
+    guidance_root: str | Path | None = None,
+) -> NormativeCoverageBundle:
+    """Load both shadow artifacts and prove their source and cross-file invariants."""
+    settings = get_settings()
+    text_path = Path(text_review_path or settings.policy_text_review_path)
+    norm_path = Path(norm_inventory_path or settings.policy_norms_path)
+    article_root = Path(articles_root or settings.policy_articles_path)
+    annex_root = Path(annexes_root or settings.policy_annexes_path)
+
+    text_review = TextReviewInventory.model_validate(_yaml(text_path))
+    norm_inventory = NormInventory.model_validate(_yaml(norm_path))
+    if text_review.act_version_date != norm_inventory.act_version_date:
+        raise ValueError(
+            "text-review and norm inventories use different Act versions: "
+            f"{text_review.act_version_date} != {norm_inventory.act_version_date}"
+        )
+
+    version = text_review.act_version_date
+    for segment in text_review.segments:
+        if segment.source.act_version_date != version:
+            raise ValueError(
+                f"{segment.segment_id} uses Act version {segment.source.act_version_date}, "
+                f"inventory uses {version}"
+            )
+    for norm in norm_inventory.norms:
+        if norm.act_version_date != version:
+            raise ValueError(
+                f"{norm.norm_id} uses Act version {norm.act_version_date}, inventory uses {version}"
+            )
+
+    grouped = group_segments(text_review.segments)
+    for (kind, document), segments in grouped.items():
+        source = segments[0].source
+        body = load_source_body(source, article_root, annex_root)
+        validate_document_partition(segments, body, f"{kind.value} {document}")
+
+    if text_review.corpus_complete:
+        expected = corpus_documents(version, article_root, annex_root)
+        present = set(grouped)
+        if present != expected:
+            missing = sorted(f"{kind.value} {doc}" for kind, doc in expected - present)
+            extra = sorted(f"{kind.value} {doc}" for kind, doc in present - expected)
+            raise ValueError(
+                f"corpus_complete inventory disagrees with source store; "
+                f"missing={missing[:20]}, extra={extra[:20]}"
+            )
+
+    segments_by_id = {segment.segment_id: segment for segment in text_review.segments}
+    norms_by_id = {norm.norm_id: norm for norm in norm_inventory.norms}
+
+    linked_from_norms: dict[str, set[str]] = {segment_id: set() for segment_id in segments_by_id}
+    for norm in norm_inventory.norms:
+        unknown = [span for span in norm.all_spans if span not in segments_by_id]
+        if unknown:
+            raise ValueError(f"{norm.norm_id} references unknown segment(s): {unknown}")
+        for span in norm.all_spans:
+            linked_from_norms[span].add(norm.norm_id)
+        unknown_carriers = [n for n in norm.carried_by_norm_ids if n not in norms_by_id]
+        if unknown_carriers:
+            raise ValueError(f"{norm.norm_id} is carried by unknown norm(s): {unknown_carriers}")
+        unknown_successors = [n for n in norm.superseded_by_norm_ids if n not in norms_by_id]
+        if unknown_successors:
+            raise ValueError(
+                f"{norm.norm_id} is superseded by unknown norm(s): {unknown_successors}"
+            )
+        for dependency in norm.dependencies:
+            if dependency.resolution is DependencyResolution.INTERNAL_RESOLVED:
+                if dependency.dependency_ref not in norms_by_id and (
+                    dependency.dependency_ref not in segments_by_id
+                ):
+                    raise ValueError(
+                        f"{norm.norm_id} has unresolved internal dependency "
+                        f"{dependency.dependency_ref!r}"
+                    )
+
+    for segment in text_review.segments:
+        declared = set(segment.norm_ids)
+        actual = linked_from_norms[segment.segment_id]
+        if declared != actual:
+            raise ValueError(
+                f"{segment.segment_id} norm links disagree: segment declares "
+                f"{sorted(declared)}, norms link {sorted(actual)}"
+            )
+
+    _assert_no_carried_cycles(norm_inventory)
+
+    for link in norm_inventory.interpretations:
+        unknown = [norm_id for norm_id in link.norm_ids if norm_id not in norms_by_id]
+        if unknown:
+            raise ValueError(f"{link.interpretation_id} references unknown norm(s): {unknown}")
+        for ref in link.snippet_refs:
+            load_snippet(ref, guidance_root)
+
+    guidance_refs_by_norm: dict[str, set[str]] = {norm_id: set() for norm_id in norms_by_id}
+    for link in norm_inventory.interpretations:
+        for norm_id in link.norm_ids:
+            guidance_refs_by_norm[norm_id].update(link.snippet_refs)
+    for norm in norm_inventory.norms:
+        for dependency in norm.dependencies:
+            if (
+                dependency.resolution is DependencyResolution.GUIDANCE_LINKED
+                and dependency.dependency_ref not in guidance_refs_by_norm[norm.norm_id]
+            ):
+                raise ValueError(
+                    f"{norm.norm_id} declares guidance-linked dependency "
+                    f"{dependency.dependency_ref!r} without a matching interpretive link"
+                )
+
+    return NormativeCoverageBundle(
+        text_review=text_review,
+        norm_inventory=norm_inventory,
+        validated_documents=len(grouped),
+        validated_segments=len(text_review.segments),
+        validated_norms=len(norm_inventory.norms),
+    )

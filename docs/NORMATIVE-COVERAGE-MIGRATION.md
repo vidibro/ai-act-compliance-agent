@@ -1,6 +1,6 @@
 # Normative Coverage Migration
 
-**Status:** accepted design; Phase 0 complete, Phase 1 next
+**Status:** accepted design; Phases 0–1 complete, Phase 2 next
 
 **Act snapshot:** `2026-07-27`
 
@@ -308,6 +308,14 @@ Likely additions:
 The two YAML artifacts may be combined if the pilot shows that review remains practical.
 
 **Exit:** shadow artifacts load and validate without changing a report.
+
+**Completed 2026-08-28:** Phase 1 adds shadow-only Pydantic contracts for exact source segments,
+atomic norms, independent review provenance, and non-binding interpretive links. The loader resolves
+every included article or annex against its integrity-checked, version-pinned source body and
+rejects gaps, overlaps, truncation, altered text or hashes, duplicate YAML keys and IDs, broken
+cross-references, carried-norm cycles, and guidance-linked dependencies without reviewed guidance.
+Empty versioned artifacts establish the migration boundary without entering classification,
+selection, judging, or reporting. The representative-provision pilot is now the next phase.
 
 ### Phase 2 — representative pilot
 
