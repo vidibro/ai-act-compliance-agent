@@ -30,7 +30,7 @@ from __future__ import annotations
 import textwrap
 
 from aiact.schemas.enums import ActorRole, Verdict
-from aiact.schemas.policy import PolicyRule, PolicySpec
+from aiact.schemas.policy import PolicyRule, PolicyRuleset
 from aiact.schemas.report import ComplianceReport
 
 _MARK = {
@@ -106,7 +106,7 @@ def _outstanding_block(rule: PolicyRule) -> list[str]:
     return lines + _timing(rule)
 
 
-def render_report(report: ComplianceReport, spec: PolicySpec) -> str:
+def render_report(report: ComplianceReport, spec: PolicyRuleset) -> str:
     """The whole report as text, grouped by the role that owes each obligation.
 
     Grouped by WHO OWES it, because a provider cannot act on a deployer's duty and a flat list

@@ -39,7 +39,7 @@ from aiact.gap.judge import LLMJudge
 from aiact.gap.rules import ActiveRules, roles_with_rules, select_rules
 from aiact.schemas.classification import ClassificationResult
 from aiact.schemas.enums import ActorRole, ProviderReallocation, RealWorldTesting, Verdict
-from aiact.schemas.policy import PolicyRule, PolicySpec
+from aiact.schemas.policy import PolicyRule, PolicyRuleset
 from aiact.schemas.question import Answer, Question, narrow
 from aiact.schemas.report import ComplianceReport, Finding, ReportSummary
 from aiact.tracing import trace_run
@@ -97,7 +97,7 @@ def _summarise(findings: list[Finding]) -> ReportSummary:
 
 
 def build_graph(
-    spec: PolicySpec,
+    spec: PolicyRuleset,
     judge: LLMJudge,
     brain: Brain,
     max_workers: int = DEFAULT_WORKERS,
@@ -252,7 +252,7 @@ def build_graph(
 def analyse(
     document: str,
     classification: ClassificationResult,
-    spec: PolicySpec,
+    spec: PolicyRuleset,
     brain: Brain,
     judge: LLMJudge | None = None,
     system_id: str = "system",

@@ -49,10 +49,11 @@ def test_inventory_partitions_the_complete_versioned_corpus(metrics):
     assert bundle.text_review.corpus_complete is True
     assert set(grouped) == expected
     assert metrics.documents == 133
-    assert metrics.documents_with_extracted_norms == 10
-    assert metrics.documents_with_review_debt == 129
+    assert metrics.documents_with_extracted_norms == 11
+    assert metrics.documents_with_review_debt == 127
     assert metrics.exact_source_characters == 394_667
     assert set(metrics.norms_by_document) == {
+        "article 2",
         "article 11",
         "article 26",
         "article 43",
@@ -66,7 +67,7 @@ def test_inventory_partitions_the_complete_versioned_corpus(metrics):
     }
 
 
-def test_unextracted_article_is_retained_as_exact_full_body_review_debt():
+def test_reviewed_context_only_article_retains_exact_paragraph_partition():
     bundle = load_normative_coverage()
     article_one = [
         segment
@@ -74,33 +75,238 @@ def test_unextracted_article_is_retained_as_exact_full_body_review_debt():
         if segment.source.kind.value == "article" and segment.source.document == "1"
     ]
 
-    assert len(article_one) == 1
-    segment = article_one[0]
-    assert segment.segment_id == "AIA-TEXT-A001-FULL"
-    assert segment.start == 0
-    assert segment.end == len(
-        load_source_body(
-            segment.source,
-            ROOT / "data" / "policy" / "articles",
-            ROOT / "data" / "policy" / "annexes",
-        )
+    assert len(article_one) == 10
+    assert article_one[0].segment_id == "AIA-TEXT-A001-HEAD"
+    assert article_one[0].disposition.value == "structural"
+    assert article_one[1].segment_id == "AIA-TEXT-A001-P001"
+    assert article_one[1].text.startswith("1. The purpose")
+    source = load_source_body(
+        article_one[0].source,
+        ROOT / "data" / "policy" / "articles",
+        ROOT / "data" / "policy" / "annexes",
     )
-    assert segment.disposition.value == "needs_review"
-    assert segment.review.status.value == "needs_review"
-    assert segment.norm_ids == []
+    assert "".join(segment.text for segment in article_one) == source
+    assert all(segment.disposition.value == "context_only" for segment in article_one[1:])
+    assert all(segment.review.status.value == "approved" for segment in article_one)
+    assert all(segment.review.verified_by == "vidibro" for segment in article_one)
+    assert all(segment.disposition_reason for segment in article_one[1:])
+    assert all(segment.norm_ids == [] for segment in article_one)
+
+
+def test_article_two_scope_chapeau_qualifies_seven_applicability_norms():
+    bundle = load_normative_coverage()
+    segments = {segment.segment_id: segment for segment in bundle.text_review.segments}
+    norms = {
+        norm.norm_id: norm
+        for norm in bundle.norm_inventory.norms
+        if norm.norm_id.startswith("AIA-NORM-A002-P1-")
+    }
+
+    assert len(norms) == 7
+    assert set(segments["AIA-TEXT-A002-P001"].norm_ids) == set(norms)
+    for index, norm in enumerate(norms.values(), start=2):
+        assert norm.kind.value == "applicability"
+        assert norm.primary_spans == [f"AIA-TEXT-A002-P{index:03d}"]
+        assert norm.qualifier_spans == ["AIA-TEXT-A002-P001"]
+        assert norm.implementation_mode.value == "missing"
+
+
+def test_article_two_section_b_limit_has_two_applicability_norms():
+    bundle = load_normative_coverage()
+    segment = next(
+        segment
+        for segment in bundle.text_review.segments
+        if segment.segment_id == "AIA-TEXT-A002-P009"
+    )
+    norms = {
+        norm.norm_id: norm
+        for norm in bundle.norm_inventory.norms
+        if norm.norm_id in segment.norm_ids
+    }
+
+    assert segment.disposition.value == "normative"
+    assert set(norms) == {
+        "AIA-NORM-A002-P2-SECTION-B-LIMIT",
+        "AIA-NORM-A002-P2-INTEGRATED-SANDBOX-PROVISIONS",
+    }
+    assert all(norm.kind.value == "applicability" for norm in norms.values())
+    assert all(norm.primary_spans == [segment.segment_id] for norm in norms.values())
+    assert all(norm.implementation_mode.value == "missing" for norm in norms.values())
+
+
+def test_article_two_competence_limits_require_no_product_action():
+    bundle = load_normative_coverage()
+    segment = next(
+        segment
+        for segment in bundle.text_review.segments
+        if segment.segment_id == "AIA-TEXT-A002-P010"
+    )
+    norms = [
+        norm for norm in bundle.norm_inventory.norms if norm.norm_id in segment.norm_ids
+    ]
+
+    assert segment.disposition.value == "normative"
+    assert {norm.norm_id for norm in norms} == {
+        "AIA-NORM-A002-P3-OUTSIDE-UNION-LAW",
+        "AIA-NORM-A002-P3-NATIONAL-SECURITY-COMPETENCE",
+    }
+    assert all(norm.product_scope.value == "no_product_action" for norm in norms)
+    assert all(norm.implementation_mode.value == "none_required" for norm in norms)
+    assert all(norm.verification_mode.value == "not_assessed" for norm in norms)
+
+
+def test_article_two_military_exclusion_remains_implementation_debt():
+    bundle = load_normative_coverage()
+    segment = next(
+        segment
+        for segment in bundle.text_review.segments
+        if segment.segment_id == "AIA-TEXT-A002-P011"
+    )
+    norm = next(
+        norm
+        for norm in bundle.norm_inventory.norms
+        if norm.norm_id == "AIA-NORM-A002-P3-MILITARY-EXCLUSION"
+    )
+
+    assert segment.disposition.value == "normative"
+    assert segment.norm_ids == [norm.norm_id]
+    assert norm.kind.value == "applicability"
+    assert norm.product_scope.value == "in_scope"
+    assert norm.implementation_mode.value == "missing"
+    assert norm.verification_mode.value == "unresolved"
+
+
+def test_article_two_military_output_exclusion_remains_separate_norm():
+    bundle = load_normative_coverage()
+    segment = next(
+        segment
+        for segment in bundle.text_review.segments
+        if segment.segment_id == "AIA-TEXT-A002-P012"
+    )
+    norm = next(
+        norm
+        for norm in bundle.norm_inventory.norms
+        if norm.norm_id == "AIA-NORM-A002-P3-MILITARY-OUTPUT-EXCLUSION"
+    )
+
+    assert segment.disposition.value == "normative"
+    assert segment.norm_ids == [norm.norm_id]
+    assert norm.kind.value == "applicability"
+    assert norm.product_scope.value == "in_scope"
+    assert norm.implementation_mode.value == "missing"
+    assert norm.verification_mode.value == "unresolved"
+
+
+def test_article_two_international_cooperation_exclusion_is_in_scope():
+    bundle = load_normative_coverage()
+    segment = next(
+        segment
+        for segment in bundle.text_review.segments
+        if segment.segment_id == "AIA-TEXT-A002-P013"
+    )
+    norm = next(
+        norm
+        for norm in bundle.norm_inventory.norms
+        if norm.norm_id == "AIA-NORM-A002-P4-INTERNATIONAL-COOPERATION-EXCLUSION"
+    )
+
+    assert segment.disposition.value == "normative"
+    assert segment.norm_ids == [norm.norm_id]
+    assert norm.kind.value == "applicability"
+    assert norm.product_scope.value == "in_scope"
+    assert norm.implementation_mode.value == "missing"
+    assert norm.verification_mode.value == "unresolved"
+
+
+def test_article_two_intermediary_liability_saving_clause_needs_no_product_action():
+    bundle = load_normative_coverage()
+    segment = next(
+        segment
+        for segment in bundle.text_review.segments
+        if segment.segment_id == "AIA-TEXT-A002-P014"
+    )
+    norm = next(
+        norm
+        for norm in bundle.norm_inventory.norms
+        if norm.norm_id == "AIA-NORM-A002-P5-INTERMEDIARY-LIABILITY-SAVING"
+    )
+
+    assert segment.disposition.value == "normative"
+    assert segment.norm_ids == [norm.norm_id]
+    assert norm.kind.value == "applicability"
+    assert norm.product_scope.value == "no_product_action"
+    assert norm.implementation_mode.value == "none_required"
+    assert norm.verification_mode.value == "not_assessed"
+    assert norm.dependencies[0].dependency_ref == "Regulation (EU) 2022/2065, Chapter II"
+
+
+def test_article_two_is_fully_reviewed_as_twenty_eight_atomic_norms():
+    bundle = load_normative_coverage()
+    segments = [
+        segment
+        for segment in bundle.text_review.segments
+        if segment.source.kind.value == "article" and segment.source.document == "2"
+    ]
+    norms = [
+        norm
+        for norm in bundle.norm_inventory.norms
+        if norm.norm_id.startswith("AIA-NORM-A002-")
+    ]
+
+    assert len(segments) == 26
+    assert segments[0].disposition.value == "structural"
+    assert all(segment.disposition.value == "normative" for segment in segments[1:])
+    assert all(segment.review.status.value == "approved" for segment in segments)
+    assert all(segment.review.verified_by == "vidibro" for segment in segments)
+    assert len(norms) == 28
+
+
+def test_article_two_paragraph_thirteen_uses_two_cumulative_qualifier_spans():
+    bundle = load_normative_coverage()
+    segments = {segment.segment_id: segment for segment in bundle.text_review.segments}
+    norm = next(
+        norm
+        for norm in bundle.norm_inventory.norms
+        if norm.norm_id == "AIA-NORM-A002-P13-LIMIT-HIGH-RISK-REQUIREMENTS"
+    )
+
+    assert norm.primary_spans == ["AIA-TEXT-A002-P022"]
+    assert norm.qualifier_spans == ["AIA-TEXT-A002-P023", "AIA-TEXT-A002-P024"]
+    assert len(norm.conditions) == 2
+    for segment_id in [*norm.primary_spans, *norm.qualifier_spans]:
+        assert segments[segment_id].norm_ids == [norm.norm_id]
+
+
+def test_article_two_commission_delegated_act_has_deadline_and_four_contents():
+    bundle = load_normative_coverage()
+    norm = next(
+        norm
+        for norm in bundle.norm_inventory.norms
+        if norm.norm_id == "AIA-NORM-A002-P13-COMMISSION-DELEGATED-ACTS"
+    )
+
+    assert norm.kind.value == "obligation"
+    assert "2 August 2027" in norm.norm_text
+    assert len(norm.mandatory_content) == 4
+    assert norm.product_scope.value == "no_product_action"
+    assert norm.implementation_mode.value == "none_required"
 
 
 def test_inventory_cannot_be_misreported_as_independently_approved(metrics):
-    assert metrics.approved_characters == 0
-    assert metrics.needs_review_characters == 357_085
-    assert metrics.review_statuses == {"needs_review": 154, "proposed": 132}
+    assert metrics.approved_characters == 6_903
+    assert metrics.needs_review_characters == 342_719
+    assert metrics.review_statuses == {
+        "approved": 36,
+        "needs_review": 1222,
+        "proposed": 281,
+    }
     assert metrics.timed_review_records == 0
-    assert metrics.total_review_records == 287
+    assert metrics.total_review_records == 1540
 
 
 def test_semantic_pass_finds_propositions_a_shall_scan_misses(metrics):
-    assert metrics.shall_vs_semantic_disagreements == 13
-    assert metrics.shall_token_candidate_recall == pytest.approx(69 / 82)
+    assert metrics.shall_vs_semantic_disagreements == 33
+    assert metrics.shall_token_candidate_recall == pytest.approx(77 / 110)
     assert "AIA-NORM-A011-P1-SIMPLIFY" in metrics.semantic_norms_without_shall_token
     assert "AIA-NORM-A043-P5-AMEND" in metrics.semantic_norms_without_shall_token
     assert "AIA-NORM-A060-P4-PERMISSION" in metrics.semantic_norms_without_shall_token
@@ -108,12 +314,30 @@ def test_semantic_pass_finds_propositions_a_shall_scan_misses(metrics):
 
 
 def test_metrics_expose_many_to_many_and_implementation_debt(metrics):
-    assert metrics.normative_segments_with_multiple_norms == 14
+    assert metrics.normative_segments_with_multiple_norms == 20
     assert metrics.mapping_shape.many_norms_to_one_target == 26
     assert metrics.mapping_shape.many_to_many == 8
-    assert metrics.mapping_shape.unmapped == 45
-    assert metrics.semantic_vs_existing_implementation_disagreements == 7
+    assert metrics.mapping_shape.unmapped == 73
+    assert metrics.semantic_vs_existing_implementation_disagreements == 25
     assert metrics.semantic_norms_without_existing_implementation == [
+        "AIA-NORM-A002-P1-A-PROVIDER",
+        "AIA-NORM-A002-P1-B-DEPLOYER",
+        "AIA-NORM-A002-P1-C-THIRD-COUNTRY-OUTPUT",
+        "AIA-NORM-A002-P1-D-IMPORT-DISTRIBUTE",
+        "AIA-NORM-A002-P1-E-PRODUCT-MANUFACTURER",
+        "AIA-NORM-A002-P1-F-AUTHORISED-REPRESENTATIVE",
+        "AIA-NORM-A002-P1-G-AFFECTED-PERSON",
+        "AIA-NORM-A002-P10-PERSONAL-USE-DEPLOYER-EXCLUSION",
+        "AIA-NORM-A002-P12-OPEN-SOURCE-AI-SYSTEM-EXCLUSION",
+        "AIA-NORM-A002-P13-LIMIT-HIGH-RISK-REQUIREMENTS",
+        "AIA-NORM-A002-P2-INTEGRATED-SANDBOX-PROVISIONS",
+        "AIA-NORM-A002-P2-SECTION-B-LIMIT",
+        "AIA-NORM-A002-P3-MILITARY-EXCLUSION",
+        "AIA-NORM-A002-P3-MILITARY-OUTPUT-EXCLUSION",
+        "AIA-NORM-A002-P4-INTERNATIONAL-COOPERATION-EXCLUSION",
+        "AIA-NORM-A002-P6-SCIENTIFIC-RD-EXCLUSION",
+        "AIA-NORM-A002-P8-PRE-MARKET-RD-EXCLUSION",
+        "AIA-NORM-A002-P8-REAL-WORLD-TESTING-CARVEOUT",
         "AIA-NORM-A011-P1-SIMPLIFY",
         "AIA-NORM-A050-P3-DATA",
         "AIA-NORM-A050-P5-MANNER",
@@ -123,6 +347,24 @@ def test_metrics_expose_many_to_many_and_implementation_debt(metrics):
         "AIA-NORM-ANNEX-VIII-C",
     ]
     assert metrics.implementation_debt_norm_ids == [
+        "AIA-NORM-A002-P1-A-PROVIDER",
+        "AIA-NORM-A002-P1-B-DEPLOYER",
+        "AIA-NORM-A002-P1-C-THIRD-COUNTRY-OUTPUT",
+        "AIA-NORM-A002-P1-D-IMPORT-DISTRIBUTE",
+        "AIA-NORM-A002-P1-E-PRODUCT-MANUFACTURER",
+        "AIA-NORM-A002-P1-F-AUTHORISED-REPRESENTATIVE",
+        "AIA-NORM-A002-P1-G-AFFECTED-PERSON",
+        "AIA-NORM-A002-P10-PERSONAL-USE-DEPLOYER-EXCLUSION",
+        "AIA-NORM-A002-P12-OPEN-SOURCE-AI-SYSTEM-EXCLUSION",
+        "AIA-NORM-A002-P13-LIMIT-HIGH-RISK-REQUIREMENTS",
+        "AIA-NORM-A002-P2-INTEGRATED-SANDBOX-PROVISIONS",
+        "AIA-NORM-A002-P2-SECTION-B-LIMIT",
+        "AIA-NORM-A002-P3-MILITARY-EXCLUSION",
+        "AIA-NORM-A002-P3-MILITARY-OUTPUT-EXCLUSION",
+        "AIA-NORM-A002-P4-INTERNATIONAL-COOPERATION-EXCLUSION",
+        "AIA-NORM-A002-P6-SCIENTIFIC-RD-EXCLUSION",
+        "AIA-NORM-A002-P8-PRE-MARKET-RD-EXCLUSION",
+        "AIA-NORM-A002-P8-REAL-WORLD-TESTING-CARVEOUT",
         "AIA-NORM-A011-P1-SIMPLIFY",
         "AIA-NORM-A050-P3-DATA",
         "AIA-NORM-ANNEX-VIII-A",

@@ -66,7 +66,11 @@ from aiact.schemas.norm import (
     TextReviewSegment,
     VerificationMode,
 )
-from aiact.schemas.policy import GuidanceSource, LegalSource, PolicyRule, PolicySpec
+from aiact.schemas.norm_review import (
+    NormCandidate,
+    NormCandidateRun,
+)
+from aiact.schemas.policy import GuidanceSource, LegalSource, PolicyRule, PolicyRuleset
 from aiact.schemas.question import Answer, Question
 from aiact.schemas.report import DISCLAIMER, ComplianceReport, Finding, ReportSummary
 from aiact.schemas.review import ReviewRecord, ReviewStatus
@@ -114,11 +118,13 @@ __all__ = [
     "TextReviewInventory",
     "TextReviewSegment",
     "VerificationMode",
+    "NormCandidate",
+    "NormCandidateRun",
     # policy
     "GuidanceSource",
     "LegalSource",
     "PolicyRule",
-    "PolicySpec",
+    "PolicyRuleset",
     # system
     "DocumentChunk",
     "SystemUnderReview",

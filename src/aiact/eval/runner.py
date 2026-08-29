@@ -26,7 +26,7 @@ from typing import Protocol
 from aiact.schemas.classification import ClassificationEvidence, UseCaseClassification
 from aiact.schemas.enums import ActorRole, RiskClass, Verdict
 from aiact.schemas.eval import AblationType, GoldenCase, GoldenSet
-from aiact.schemas.policy import LegalSource, PolicyRule, PolicySpec
+from aiact.schemas.policy import LegalSource, PolicyRule, PolicyRuleset
 
 
 class Checker(Protocol):
@@ -56,7 +56,7 @@ class Result:
 def run(
     checker: Checker,
     golden: GoldenSet,
-    spec: PolicySpec,
+    spec: PolicyRuleset,
     max_workers: int = 1,
     progress: bool = False,
 ) -> list[Result]:
@@ -179,7 +179,7 @@ def report(checker_name: str, results: list[Result]) -> str:
     return "\n".join(lines)
 
 
-def rules_a_case_is_scored_on(spec: PolicySpec, golden: GoldenSet) -> tuple[PolicyRule, ...]:
+def rules_a_case_is_scored_on(spec: PolicyRuleset, golden: GoldenSet) -> tuple[PolicyRule, ...]:
     """The obligations a document from this golden set is judged against.
 
     SELECTED, not filtered by hand. `select_rules` is what decides which obligations a real system

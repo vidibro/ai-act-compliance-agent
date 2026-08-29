@@ -32,7 +32,7 @@ from aiact.schemas.enums import (
     RiskClass,
     TransparencyDuty,
 )
-from aiact.schemas.policy import PolicyRule, PolicySpec
+from aiact.schemas.policy import PolicyRule, PolicyRuleset
 
 
 @dataclass(frozen=True)
@@ -64,7 +64,7 @@ class ActiveRules:
         return self.document_verifiable + self.not_document_verifiable + self.postponed
 
 
-def roles_with_rules(spec: PolicySpec) -> list[ActorRole]:
+def roles_with_rules(spec: PolicyRuleset) -> list[ActorRole]:
     """Every role the spec actually carries rules for, in `ActorRole` declaration order.
 
     DERIVED, never listed by hand. A hand-written list is a second place to keep in sync, and the
@@ -173,7 +173,7 @@ def _testing_matches(rule: PolicyRule, answer: RealWorldTesting | None) -> bool:
 
 
 def select_rules(
-    spec: PolicySpec,
+    spec: PolicyRuleset,
     use_case: UseCaseClassification,
     role: ActorRole,
     reallocation: ProviderReallocation | None = None,

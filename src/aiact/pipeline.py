@@ -27,7 +27,7 @@ from aiact.gap.graph import DEFAULT_WORKERS, analyse
 from aiact.gap.judge import LLMJudge
 from aiact.schemas.classification import ClassificationResult
 from aiact.schemas.enums import RiskClass
-from aiact.schemas.policy import PolicySpec
+from aiact.schemas.policy import PolicyRuleset
 from aiact.schemas.question import Question
 from aiact.schemas.report import ComplianceReport, ReportSummary
 
@@ -112,7 +112,7 @@ _GPAI_NOTE = (
 
 def _empty_report(
     system_id: str,
-    spec: PolicySpec,
+    spec: PolicyRuleset,
     classification: ClassificationResult,
     scope_note: str,
 ) -> ComplianceReport:
@@ -134,7 +134,7 @@ def _empty_report(
 
 def review(
     document: str,
-    spec: PolicySpec,
+    spec: PolicyRuleset,
     brain: Brain,
     judge: LLMJudge | None = None,
     system_id: str = "system",

@@ -1,4 +1,4 @@
-"""Load a PolicySpec from YAML, resolving each rule's requirement text from the article store.
+"""Load a PolicyRuleset from YAML, resolving each rule's requirement text from the article store.
 
 Pure IO + validation — no LLM, no retrieval, no paraphrase.
 
@@ -26,7 +26,7 @@ import yaml
 
 from aiact.config import get_settings
 from aiact.guidance import load_snippet
-from aiact.schemas.policy import PolicySpec
+from aiact.schemas.policy import PolicyRuleset
 
 _FRONT_MATTER = re.compile(r"\A---\n(.*?)\n---\n+", re.S)
 # A consolidation inserts paragraphs without renumbering the ones after them, so a paragraph label
@@ -312,7 +312,7 @@ def load_policy_spec(
     articles_root: str | Path | None = None,
     guidance_root: str | Path | None = None,
     annexes_root: str | Path | None = None,
-) -> PolicySpec:
+) -> PolicyRuleset:
     """Read the spec, resolve every rule's requirement from the article store, and validate.
 
     The spec's own `act_version_date` selects which version of the article store to resolve
@@ -435,7 +435,7 @@ def load_policy_spec(
             rule["guidance_context"] = "\n\n".join(chunks)
             rule["guidance_sources"] = sources
 
-    spec = PolicySpec.model_validate(raw)
+    spec = PolicyRuleset.model_validate(raw)
 
     duplicates = [rid for rid, n in Counter(r.rule_id for r in spec.rules).items() if n > 1]
     if duplicates:

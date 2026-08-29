@@ -26,7 +26,7 @@ from aiact.schemas import (
     LegalSource,
     ObligationStatus,
     PolicyRule,
-    PolicySpec,
+    PolicyRuleset,
     ReportSummary,
     RiskClass,
     SystemUnderReview,
@@ -122,7 +122,7 @@ def test_document_chunk_and_system_valid():
 
 
 def test_policy_rule_and_spec_valid():
-    spec = PolicySpec(
+    spec = PolicyRuleset(
         spec_version="0.1.0",
         act_version_date=ACT_DATE,
         source_note="derived from EC Compliance Checker",
@@ -215,7 +215,7 @@ def test_finding_evidence_quote_length_capped():
 # --------------------------------------------------------------------------------------
 # End-to-end: multi-use-case system -> three different risk classes at once.
 # --------------------------------------------------------------------------------------
-def _multi_use_case_report(policy_spec: PolicySpec) -> ComplianceReport:
+def _multi_use_case_report(policy_spec: PolicyRuleset) -> ComplianceReport:
     parser = a_use_case(
         use_case_id="cv_parsing",
         description="extracts structured fields from CVs without evaluating the person",
@@ -276,7 +276,7 @@ def _multi_use_case_report(policy_spec: PolicySpec) -> ComplianceReport:
 
 
 def test_multi_use_case_three_risk_classes():
-    spec = PolicySpec(
+    spec = PolicyRuleset(
         spec_version="0.1.0",
         act_version_date=ACT_DATE,
         source_note="derived from EC Compliance Checker",
@@ -296,7 +296,7 @@ def test_multi_use_case_three_risk_classes():
 
 
 def test_report_rejects_finding_with_unknown_use_case():
-    spec = PolicySpec(
+    spec = PolicyRuleset(
         spec_version="0.1.0",
         act_version_date=ACT_DATE,
         source_note="derived from EC Compliance Checker",
@@ -337,7 +337,7 @@ def test_report_rejects_finding_with_unknown_use_case():
 
 
 def test_report_rejects_finding_with_unknown_rule_id():
-    spec = PolicySpec(
+    spec = PolicyRuleset(
         spec_version="0.1.0",
         act_version_date=ACT_DATE,
         source_note="derived from EC Compliance Checker",
@@ -359,7 +359,7 @@ def test_report_rejects_finding_with_unknown_rule_id():
         triggered_by=[an_evidence()],
         confidence="high",
     )
-    with pytest.raises(ValidationError, match="not present in the loaded PolicySpec"):
+    with pytest.raises(ValidationError, match="not present in the loaded PolicyRuleset"):
         ComplianceReport.model_validate(
             dict(
                 system_id="sys-1",

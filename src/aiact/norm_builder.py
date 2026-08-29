@@ -43,6 +43,8 @@ class DivisionSource(BaseModel):
 class DocumentSource(BaseModel):
     kind: SourceKind
     number: str = Field(min_length=1)
+    segmentation: Literal["declared", "paragraphs"] = "declared"
+    verified_by: str = ""
     divisions: list[DivisionSource] = Field(min_length=1)
 
     @model_validator(mode="after")
@@ -54,6 +56,11 @@ class DocumentSource(BaseModel):
         labels = [division.label for division in self.divisions]
         if len(labels) != len(set(labels)):
             raise ValueError("division labels must be unique within a document")
+        if self.verified_by.strip() and any(
+            division.disposition is SegmentDisposition.NEEDS_REVIEW
+            for division in self.divisions
+        ):
+            raise ValueError("verified document cannot contain review-debt divisions")
         return self
 
 
@@ -111,9 +118,7 @@ class NormSourceInventory(BaseModel):
             raise ValueError("norm source record IDs must be unique")
         if len(self.implementation_targets) != len(set(self.implementation_targets)):
             raise ValueError("implementation target IDs must be unique")
-        referenced = {
-            target for record in self.records for target in record.implementation_refs
-        }
+        referenced = {target for record in self.records for target in record.implementation_refs}
         unknown_targets = sorted(referenced - set(self.implementation_targets))
         if unknown_targets:
             raise ValueError(
@@ -126,9 +131,7 @@ class NormSourceInventory(BaseModel):
             for target in link.targets
             if target.kind is InterpretationTargetKind.POLICY_RULE
         }
-        unknown_interpreted_rules = sorted(
-            interpreted_rules - set(self.implementation_targets)
-        )
+        unknown_interpreted_rules = sorted(interpreted_rules - set(self.implementation_targets))
         if unknown_interpreted_rules:
             raise ValueError(
                 "interpretive links reference undeclared policy-rule targets: "
@@ -193,6 +196,7 @@ def _complete_document_inventory(
             DocumentSource(
                 kind=key[0],
                 number=key[1],
+                segmentation="paragraphs",
                 divisions=[
                     DivisionSource(
                         label="FULL",
@@ -238,17 +242,66 @@ def _review(
     reviewed: ReviewedDocumentInventory,
     status: str,
     fully_displayed: bool,
+    verified_by: str = "",
 ) -> dict[str, object]:
     return {
         "status": status,
         "extracted_by": reviewed.extracted_by,
-        "verified_by": "",
+        "verified_by": verified_by,
         "review_run_id": reviewed.review_run_id,
         "presentation_mode": reviewed.presentation_mode,
         "display_chunks": 1 if fully_displayed else 0,
         "fully_displayed": fully_displayed,
         "elapsed_seconds": None,
     }
+
+
+def _paragraph_partition(body: str) -> tuple[list[DivisionSource], list[int]]:
+    """Split a stored source into its structural heading and source-format paragraphs.
+
+    The Formex-derived Markdown stores each legal paragraph or nested list item on one non-empty
+    line. Blank lines and trailing newlines stay attached to the preceding segment, preserving an
+    exact, gap-free partition of the source body.
+    """
+    heading_break = body.find("\n\n")
+    content_start = heading_break + 2 if heading_break >= 0 else 0
+    paragraph_starts = [
+        match.start() for match in re.finditer(r"(?m)^(?=[^\n]*\S)", body[content_start:])
+    ]
+    paragraph_starts = [content_start + start for start in paragraph_starts]
+
+    divisions: list[DivisionSource] = []
+    starts: list[int] = []
+    if content_start > 0:
+        divisions.append(
+            DivisionSource(
+                label="HEAD",
+                marker=None,
+                disposition=SegmentDisposition.STRUCTURAL,
+            )
+        )
+        starts.append(0)
+    for index, start in enumerate(paragraph_starts, start=1):
+        divisions.append(
+            DivisionSource(
+                label=f"P{index:03d}",
+                marker=body[start : body.find("\n", start) if "\n" in body[start:] else len(body)],
+                disposition=SegmentDisposition.NEEDS_REVIEW,
+                reason=DEFAULT_REVIEW_DEBT_REASON,
+            )
+        )
+        starts.append(start)
+    if not divisions:
+        divisions.append(
+            DivisionSource(
+                label="P001",
+                marker=None,
+                disposition=SegmentDisposition.NEEDS_REVIEW,
+                reason=DEFAULT_REVIEW_DEBT_REASON,
+            )
+        )
+        starts.append(0)
+    return divisions, starts
 
 
 def _build_segments(
@@ -262,27 +315,38 @@ def _build_segments(
             _source_file(document, reviewed.act_version_date, paths),
             expected_version=version_text,
         )
-        starts: list[int] = []
-        cursor = 0
-        for index, division in enumerate(document.divisions):
-            if index == 0:
-                start = 0
-            else:
-                assert division.marker is not None
-                start = _line_start(body, division.marker, cursor)
-                if start < 0:
-                    raise ValueError(
-                        f"{document.kind.value} {document.number}: marker "
-                        f"{division.marker!r} not found"
-                    )
-            starts.append(start)
-            cursor = start + 1
+        if document.segmentation == "paragraphs":
+            divisions, starts = _paragraph_partition(body)
+        else:
+            divisions = document.divisions
+            starts = []
+            cursor = 0
+            for index, division in enumerate(divisions):
+                if index == 0:
+                    start = 0
+                else:
+                    assert division.marker is not None
+                    start = _line_start(body, division.marker, cursor)
+                    if start < 0:
+                        raise ValueError(
+                            f"{document.kind.value} {document.number}: marker "
+                            f"{division.marker!r} not found"
+                        )
+                starts.append(start)
+                cursor = start + 1
 
-        for index, division in enumerate(document.divisions):
+        for index, division in enumerate(divisions):
             start = starts[index]
             end = starts[index + 1] if index + 1 < len(starts) else len(body)
             exact = body[start:end]
             is_debt = division.disposition is SegmentDisposition.NEEDS_REVIEW
+            review_status = (
+                "needs_review"
+                if is_debt
+                else "approved"
+                if document.verified_by.strip()
+                else "proposed"
+            )
             segments.append(
                 {
                     "segment_id": _segment_id(document, division.label),
@@ -300,8 +364,9 @@ def _build_segments(
                     "norm_ids": [],
                     "review": _review(
                         reviewed,
-                        "needs_review" if is_debt else "proposed",
+                        review_status,
                         not is_debt,
+                        document.verified_by,
                     ),
                 }
             )

@@ -345,18 +345,20 @@ Measure:
 **Exit:** corrected schema and a data-backed estimate for full authoring.
 
 **Proposed extraction 2026-08-28:** the inventory now partitions all 133 source bodies in the pinned
-corpus into 204 exact segments. It proposes 82 norms across the ten documents selected for detailed
-extraction; every other article and annex is retained as exact full-body `needs_review` debt.
+corpus into 1,429 exact segments. It proposes 110 norms across the eleven documents selected for detailed
+extraction; every other article and annex is retained as paragraph-sized `needs_review` debt, with
+structural headings kept separate.
 The reproducible measurements are in the versioned
 [`report.md`](../data/policy/normative-coverage/2026-07-27/report.md). The extraction added loader-validated exact
-`norm_text`, candidate-detection provenance, and review timing fields. Its semantic pass found 13 of
-82 proposed propositions whose exact operative quote contains no `shall` token, while 357,085
+`norm_text`, candidate-detection provenance, and review timing fields. Its semantic pass found 33 of
+110 proposed propositions whose exact operative quote contains no `shall` token, while 342,719
 source characters not yet semantically extracted remain explicitly marked `needs_review`.
 
-All extracted records remain `proposed`, elapsed review time was not captured, and no independent
-reviewer has approved the legal extraction. Consequently the repository makes no legal-completeness
-claim for the extracted set and does not yet have the data-backed full-authoring estimate required
-by the exit criterion.
+The 36 segments covering Articles 1 and 2 have been independently approved by `vidibro`; their
+linked norm records remain `proposed`. Elapsed review time was not captured, and the rest of the
+corpus still contains explicit review debt. Consequently the repository makes no legal-completeness
+claim for the full corpus and does not yet have the data-backed full-authoring estimate required by
+the exit criterion.
 
 #### Versioned authoring and reproducible compilation
 
@@ -393,6 +395,12 @@ The review interface must present bounded source text with surrounding context a
 actually shown. Completion comes from approved span coverage, never from auditor self-report.
 
 **Exit:** repeatable source-first extraction and review workflow.
+
+**Tooling started 2026-08-28:** versioned candidate runs enumerate every paragraph-sized debt
+segment and source character even when multi-channel heuristics find no candidate. Candidate
+records are revalidated against the exact source inventory. Candidate adjudication, applying its
+results to canonical authoring inputs, rendering the review matrix, and cross-version diffing remain
+open.
 
 ### Phase 4 — link the current implementation in shadow mode
 
@@ -484,7 +492,7 @@ set is:
 
 ### Expected to be extended
 
-- `PolicyRule` and `PolicySpec` schemas;
+- `PolicyRule` and `PolicyRuleset` schemas;
 - `policy_loader.py`;
 - configuration paths;
 - coverage and provision tests;

@@ -1,6 +1,6 @@
 """The ruleset: individual provider obligations, their legal source, and how to check them.
 
-A PolicySpec is loaded from data (derived from the EC Compliance Checker) — regulatory
+A PolicyRuleset is loaded from data (derived from the EC Compliance Checker) — regulatory
 movement lives in the data, never hard-coded here.
 """
 
@@ -414,7 +414,7 @@ class PolicyRule(BaseModel):
         return self
 
 
-class PolicySpec(BaseModel):
+class PolicyRuleset(BaseModel):
     """The full loaded ruleset for one pinned version of the Regulation."""
 
     spec_version: str

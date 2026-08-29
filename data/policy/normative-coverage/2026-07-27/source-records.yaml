@@ -11,6 +11,357 @@ implementation_targets:
 - AIA-TR-A50-3
 - AIA-TR-A50-4
 records:
+- norm_id: AIA-NORM-A002-P1-A-PROVIDER
+  source: A002-P002
+  quote: providers placing on the market or putting into service AI systems or placing on the market general-purpose AI models in the Union, irrespective of whether those providers are established or located within the Union or in a third country
+  action: apply the Regulation to providers placing AI systems or general-purpose AI models on the Union market or putting AI systems into service in the Union, regardless of establishment
+  subject_ref: provider
+  subject_category: supported_operator
+  kind: applicability
+  qualifier_spans:
+  - A002-P001
+- norm_id: AIA-NORM-A002-P1-B-DEPLOYER
+  source: A002-P003
+  quote: deployers of AI systems that have their place of establishment or are located within the Union
+  action: apply the Regulation to deployers established or located within the Union
+  subject_ref: deployer
+  subject_category: supported_operator
+  kind: applicability
+  qualifier_spans:
+  - A002-P001
+- norm_id: AIA-NORM-A002-P1-C-THIRD-COUNTRY-OUTPUT
+  source: A002-P004
+  quote: providers and deployers of AI systems that have their place of establishment or are located in a third country, where the output produced by the AI system is used in the Union
+  action: apply the Regulation to third-country providers and deployers where the AI system output is used in the Union
+  subject_ref: provider_or_deployer
+  subject_category: supported_operator
+  kind: applicability
+  qualifier_spans:
+  - A002-P001
+- norm_id: AIA-NORM-A002-P1-D-IMPORT-DISTRIBUTE
+  source: A002-P005
+  quote: importers and distributors of AI systems
+  action: apply the Regulation to importers and distributors of AI systems
+  subject_ref: importer_or_distributor
+  subject_category: supported_operator
+  kind: applicability
+  qualifier_spans:
+  - A002-P001
+- norm_id: AIA-NORM-A002-P1-E-PRODUCT-MANUFACTURER
+  source: A002-P006
+  quote: product manufacturers placing on the market or putting into service an AI system together with their product and under their own name or trademark
+  action: apply the Regulation to product manufacturers placing an AI system on the market or putting it into service with their product under their name or trademark
+  subject_ref: product_manufacturer
+  subject_category: supported_operator
+  kind: applicability
+  qualifier_spans:
+  - A002-P001
+- norm_id: AIA-NORM-A002-P1-F-AUTHORISED-REPRESENTATIVE
+  source: A002-P007
+  quote: authorised representatives of providers, which are not established in the Union
+  action: apply the Regulation to authorised representatives of providers not established in the Union
+  subject_ref: authorised_representative
+  subject_category: supported_operator
+  kind: applicability
+  qualifier_spans:
+  - A002-P001
+- norm_id: AIA-NORM-A002-P1-G-AFFECTED-PERSON
+  source: A002-P008
+  quote: affected persons that are located in the Union
+  action: apply the Regulation to affected persons located in the Union
+  subject_ref: affected_person
+  subject_category: natural_person
+  kind: applicability
+  qualifier_spans:
+  - A002-P001
+- norm_id: AIA-NORM-A002-P2-SECTION-B-LIMIT
+  source: A002-P009
+  quote: For AI systems classified as high-risk AI systems in accordance with Article 6(1) related to products covered by the Union harmonisation legislation listed in Section B of Annex I, only Article 6(1), Article 60a and Articles 102 to 112 shall apply.
+  action: limit the applicable AI Act provisions for Article 6(1) high-risk systems related to Annex I Section B products to Articles 6(1), 60a, and 102 to 112
+  subject_ref: annex_i_section_b_high_risk_system
+  subject_category: other
+  kind: applicability
+  conditions:
+  - the system is classified as high-risk under Article 6(1)
+  - the related product is covered by Union harmonisation legislation listed in Annex I Section B
+- norm_id: AIA-NORM-A002-P2-INTEGRATED-SANDBOX-PROVISIONS
+  source: A002-P009
+  quote: Articles 57, 58 and 59 shall apply only in so far as the requirements for high-risk AI systems under this Regulation have been integrated in that Union harmonisation legislation.
+  action: apply Articles 57 to 59 to Annex I Section B systems only where the AI Act high-risk requirements have been integrated into the applicable sectoral legislation
+  subject_ref: annex_i_section_b_high_risk_system
+  subject_category: other
+  kind: applicability
+  conditions:
+  - the AI Act high-risk requirements are integrated into the applicable Union harmonisation legislation
+- norm_id: AIA-NORM-A002-P3-OUTSIDE-UNION-LAW
+  source: A002-P010
+  quote: This Regulation does not apply to areas outside the scope of Union law
+  action: exclude areas outside the scope of Union law from the Regulation
+  subject_ref: regulation
+  subject_category: other
+  kind: applicability
+  product_scope: no_product_action
+  product_scope_reason: This constitutional boundary creates no independent product-facing action.
+  implementation_mode: none_required
+  implementation_reason: The product does not adjudicate the constitutional limits of Union competence.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A002-P3-NATIONAL-SECURITY-COMPETENCE
+  source: A002-P010
+  quote: shall not, in any event, affect the competences of the Member States concerning national security, regardless of the type of entity entrusted by the Member States with carrying out tasks in relation to those competences
+  action: preserve Member State competences concerning national security regardless of the entity entrusted with the relevant tasks
+  subject_ref: member_state
+  subject_category: member_state
+  kind: applicability
+  product_scope: no_product_action
+  product_scope_reason: This saving clause preserves Member State competence without creating an independent product-facing action.
+  implementation_mode: none_required
+  implementation_reason: Concrete system exclusions are represented separately by Article 2(3)'s following subparagraphs.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A002-P3-MILITARY-EXCLUSION
+  source: A002-P011
+  quote: This Regulation does not apply to AI systems where and in so far they are placed on the market, put into service, or used with or without modification exclusively for military, defence or national security purposes, regardless of the type of entity carrying out those activities.
+  action: exclude AI systems placed on the market, put into service, or used exclusively for military, defence, or national-security purposes
+  subject_ref: military_defence_or_national_security_ai_system
+  subject_category: other
+  kind: applicability
+  conditions:
+  - the AI system is placed on the market, put into service, or used exclusively for military, defence, or national-security purposes
+  - the exclusion applies regardless of the type of entity carrying out those activities
+- norm_id: AIA-NORM-A002-P3-MILITARY-OUTPUT-EXCLUSION
+  source: A002-P012
+  quote: This Regulation does not apply to AI systems which are not placed on the market or put into service in the Union, where the output is used in the Union exclusively for military, defence or national security purposes, regardless of the type of entity carrying out those activities.
+  action: exclude AI systems outside the Union whose output is used in the Union exclusively for military, defence, or national-security purposes
+  subject_ref: third_country_military_defence_or_national_security_ai_system
+  subject_category: other
+  kind: applicability
+  conditions:
+  - the AI system is not placed on the market or put into service in the Union
+  - the AI system output is used in the Union exclusively for military, defence, or national-security purposes
+  - the exclusion applies regardless of the type of entity carrying out those activities
+- norm_id: AIA-NORM-A002-P4-INTERNATIONAL-COOPERATION-EXCLUSION
+  source: A002-P013
+  quote: This Regulation applies neither to public authorities in a third country nor to international organisations falling within the scope of this Regulation pursuant to paragraph 1, where those authorities or organisations use AI systems in the framework of international cooperation or agreements for law enforcement and judicial cooperation with the Union or with one or more Member States, provided that such a third country or international organisation provides adequate safeguards with respect to the protection of fundamental rights and freedoms of individuals.
+  action: exclude qualifying third-country public authorities and international organisations using AI systems under law-enforcement or judicial-cooperation arrangements with adequate fundamental-rights safeguards
+  subject_ref: third_country_public_authority_or_international_organisation
+  subject_category: other
+  kind: applicability
+  conditions:
+  - the public authority is in a third country or the subject is an international organisation otherwise falling within Article 2(1)
+  - the AI system is used under international cooperation or an agreement for law-enforcement and judicial cooperation
+  - the cooperation or agreement is with the Union or one or more Member States
+  - the third country or international organisation provides adequate safeguards for individual fundamental rights and freedoms
+- norm_id: AIA-NORM-A002-P5-INTERMEDIARY-LIABILITY-SAVING
+  source: A002-P014
+  quote: This Regulation shall not affect the application of the provisions on the liability of providers of intermediary services as set out in Chapter II of Regulation (EU) 2022/2065.
+  action: preserve the application of intermediary-service provider liability rules under Chapter II of Regulation (EU) 2022/2065
+  subject_ref: intermediary_service_provider
+  subject_category: external_private_party
+  kind: applicability
+  dependencies:
+  - dependency_ref: Regulation (EU) 2022/2065, Chapter II
+    resolution: external_recorded
+    detail: The preserved intermediary-service liability rules are outside the enacted corpus.
+  product_scope: no_product_action
+  product_scope_reason: This saving clause preserves another legal regime without creating an independent product-facing classification or action.
+  implementation_mode: none_required
+  implementation_reason: The product does not adjudicate intermediary-service liability under Regulation (EU) 2022/2065.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A002-P6-SCIENTIFIC-RD-EXCLUSION
+  source: A002-P015
+  quote: This Regulation does not apply to AI systems or AI models, including their output, specifically developed and put into service for the sole purpose of scientific research and development.
+  action: exclude AI systems and AI models, including their output, specifically developed and put into service solely for scientific research and development
+  subject_ref: scientific_research_and_development_ai_system_or_model
+  subject_category: other
+  kind: applicability
+  conditions:
+  - the AI system or AI model, including its output, is specifically developed for scientific research and development
+  - it is put into service solely for scientific research and development
+- norm_id: AIA-NORM-A002-P7-DATA-PROTECTION-APPLICATION
+  source: A002-P016
+  quote: Union law on the protection of personal data, privacy and the confidentiality of communications applies to personal data processed in connection with the rights and obligations laid down in this Regulation.
+  action: preserve the application of Union data-protection, privacy, and communications-confidentiality law to personal data processed under the Regulation
+  subject_ref: personal_data_processing_under_the_regulation
+  subject_category: other
+  kind: applicability
+  dependencies:
+  - dependency_ref: Union data-protection, privacy, and communications-confidentiality law
+    resolution: external_recorded
+    detail: The applicable external legal regimes are not fully contained in the enacted corpus.
+  product_scope: no_product_action
+  product_scope_reason: This clause confirms the continued application of external law without creating an independent product-facing action.
+  implementation_mode: none_required
+  implementation_reason: The product does not adjudicate compliance with the preserved external data-protection and privacy regimes.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A002-P7-PRIVACY-LAW-SAVING
+  source: A002-P016
+  quote: Without prejudice to Articles 4a and 59 of this Regulation, this Regulation shall not affect Regulation (EU) 2016/679 or (EU) 2018/1725, or Directive 2002/58/EC or (EU) 2016/680.
+  action: preserve the application of the listed Union data-protection and privacy instruments, subject to Articles 4a and 59 of the Regulation
+  subject_ref: regulation
+  subject_category: other
+  kind: applicability
+  conditions:
+  - the saving clause is without prejudice to Articles 4a and 59 of the Regulation
+  dependencies:
+  - dependency_ref: Regulation (EU) 2016/679; Regulation (EU) 2018/1725; Directive 2002/58/EC; Directive (EU) 2016/680
+    resolution: external_recorded
+    detail: The preserved data-protection and privacy instruments are outside the enacted corpus.
+  - dependency_ref: Articles 4a and 59 of this Regulation
+    resolution: unresolved
+    detail: The saving clause is expressly qualified by these provisions.
+  product_scope: no_product_action
+  product_scope_reason: This saving clause preserves other legal regimes without creating an independent product-facing action.
+  implementation_mode: none_required
+  implementation_reason: The product does not adjudicate the continued application of the listed external instruments.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A002-P8-PRE-MARKET-RD-EXCLUSION
+  source: A002-P017
+  quote: This Regulation does not apply to any research, testing or development activity regarding AI systems or AI models prior to their being placed on the market or put into service.
+  action: exclude research, testing, and development activities concerning AI systems or AI models before they are placed on the market or put into service
+  subject_ref: pre_market_ai_research_testing_or_development_activity
+  subject_category: other
+  kind: applicability
+  conditions:
+  - the activity concerns an AI system or AI model
+  - the activity occurs before the system or model is placed on the market or put into service
+- norm_id: AIA-NORM-A002-P8-RD-UNION-LAW-COMPLIANCE
+  source: A002-P017
+  quote: Such activities shall be conducted in accordance with applicable Union law.
+  action: conduct pre-market AI research, testing, and development activities in accordance with applicable Union law
+  subject_ref: pre_market_ai_research_testing_or_development_actor
+  subject_category: other
+  kind: obligation
+  dependencies:
+  - dependency_ref: applicable Union law governing the activity
+    resolution: external_recorded
+    detail: The applicable Union-law requirements depend on the activity and are outside this enacted corpus.
+  product_scope: no_product_action
+  product_scope_reason: This general saving clause does not identify a concrete AI Act requirement that the product can assess.
+  implementation_mode: none_required
+  implementation_reason: The product does not adjudicate compliance with unspecified external Union law.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A002-P8-REAL-WORLD-TESTING-CARVEOUT
+  source: A002-P017
+  quote: Testing in real world conditions shall not be covered by that exclusion.
+  action: keep testing in real-world conditions outside the pre-market research, testing, and development exclusion
+  subject_ref: real_world_testing_activity
+  subject_category: other
+  kind: applicability
+  dependencies:
+  - dependency_ref: AIA-NORM-A002-P8-PRE-MARKET-RD-EXCLUSION
+    resolution: internal_resolved
+    detail: This norm limits the exclusion stated earlier in the same paragraph.
+- norm_id: AIA-NORM-A002-P9-CONSUMER-PRODUCT-SAFETY-SAVING
+  source: A002-P018
+  quote: This Regulation is without prejudice to the rules laid down by other Union legal acts related to consumer protection and product safety.
+  action: preserve the application of other Union consumer-protection and product-safety rules
+  subject_ref: regulation
+  subject_category: other
+  kind: applicability
+  dependencies:
+  - dependency_ref: other Union legal acts related to consumer protection and product safety
+    resolution: external_recorded
+    detail: The preserved Union-law rules are outside this enacted corpus.
+  product_scope: no_product_action
+  product_scope_reason: This saving clause preserves other legal regimes without creating an independent product-facing action.
+  implementation_mode: none_required
+  implementation_reason: The product does not adjudicate compliance with unspecified external consumer-protection and product-safety law.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A002-P10-PERSONAL-USE-DEPLOYER-EXCLUSION
+  source: A002-P019
+  quote: This Regulation does not apply to obligations of deployers who are natural persons using AI systems in the course of a purely personal non-professional activity.
+  action: exclude deployer obligations for natural persons using AI systems in a purely personal non-professional activity
+  subject_ref: natural_person_deployer
+  subject_category: supported_operator
+  kind: applicability
+  conditions:
+  - the deployer is a natural person
+  - the AI system is used in the course of a purely personal activity
+  - the activity is non-professional
+- norm_id: AIA-NORM-A002-P11-MORE-FAVOURABLE-WORKER-RULES
+  source: A002-P020
+  quote: This Regulation does not preclude the Union or Member States from maintaining or introducing laws, regulations or administrative provisions which are more favourable to workers in terms of protecting their rights in respect of the use of AI systems by employers
+  action: maintain or introduce laws, regulations, or administrative provisions that more favourably protect workers regarding employers' use of AI systems
+  subject_ref: union_or_member_state
+  subject_category: other
+  kind: permission
+  product_scope: no_product_action
+  product_scope_reason: This permission concerns legislative and administrative powers rather than a product-facing action.
+  implementation_mode: none_required
+  implementation_reason: The product does not implement Union or Member State legislative choices.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A002-P11-MORE-FAVOURABLE-COLLECTIVE-AGREEMENTS
+  source: A002-P020
+  quote: encouraging or allowing the application of collective agreements which are more favourable to workers
+  action: encourage or allow collective agreements that are more favourable to workers
+  subject_ref: union_or_member_state
+  subject_category: other
+  kind: permission
+  product_scope: no_product_action
+  product_scope_reason: This permission concerns labour-policy powers rather than a product-facing action.
+  implementation_mode: none_required
+  implementation_reason: The product does not implement Union or Member State collective-agreement policy.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A002-P12-OPEN-SOURCE-AI-SYSTEM-EXCLUSION
+  source: A002-P021
+  quote: This Regulation does not apply to AI systems released under free and open-source licences, unless they are placed on the market or put into service as high-risk AI systems or as an AI system that falls under Article 5 or 50.
+  action: exclude AI systems released under free and open-source licences unless a listed regulated-use exception applies
+  subject_ref: free_and_open_source_ai_system
+  subject_category: other
+  kind: applicability
+  conditions:
+  - the AI system is released under a free and open-source licence
+  exceptions:
+  - the system is placed on the market or put into service as a high-risk AI system
+  - the system falls under Article 5
+  - the system falls under Article 50
+  dependencies:
+  - dependency_ref: Article 5 of this Regulation
+    resolution: unresolved
+    detail: Article 5 determines one exception to the exclusion and has not yet been semantically reviewed in this inventory.
+  - dependency_ref: Article 50 of this Regulation
+    resolution: unresolved
+    detail: Article 50 determines one exception but has not yet been completely semantically reviewed.
+- norm_id: AIA-NORM-A002-P13-LIMIT-HIGH-RISK-REQUIREMENTS
+  source: A002-P022
+  quote: For high-risk AI systems referred to in Article 6(1), the application of specific requirements or obligations laid down in Articles 9 to 15 and 17 to 25 may be limited, where and to the extent that
+  action: limit specific Article 9 to 15 and 17 to 25 requirements for Article 6(1) high-risk AI systems when both protective conditions are satisfied
+  subject_ref: article_6_1_high_risk_ai_system
+  subject_category: other
+  kind: permission
+  qualifier_spans:
+  - A002-P023
+  - A002-P024
+  conditions:
+  - Union harmonisation legislation listed in Annex I Section A provides an equivalent or higher level of health, safety, or fundamental-rights protection for the requirement concerned
+  - the limitation does not reduce the overall level of protection provided by the Regulation
+  dependencies:
+  - dependency_ref: Article 6(1), Articles 9 to 15 and 17 to 25, and Annex I Section A of this Regulation
+    resolution: unresolved
+    detail: These provisions define the affected systems, limitable requirements, and relevant harmonisation legislation and are not all semantically reviewed yet.
+- norm_id: AIA-NORM-A002-P13-COMMISSION-DELEGATED-ACTS
+  source: A002-P025
+  quote: By 2 August 2027, the Commission shall adopt delegated acts in accordance with Article 97 in order to supplement this Regulation by specifying the high-risk AI systems concerned, the requirements or obligations that may be limited, the conditions under which such limitation applies, and the scope of the limitation.
+  action: adopt delegated acts by 2 August 2027 specifying how the Article 2(13) limitation operates
+  subject_ref: commission
+  subject_category: union_institution_or_body
+  kind: obligation
+  conditions:
+  - the delegated acts are adopted by 2 August 2027
+  - the delegated acts are adopted in accordance with Article 97
+  mandatory_content:
+  - the high-risk AI systems concerned
+  - the requirements or obligations that may be limited
+  - the conditions under which the limitation applies
+  - the scope of the limitation
+  dependencies:
+  - dependency_ref: Article 97 of this Regulation
+    resolution: unresolved
+    detail: Article 97 supplies the delegated-act procedure and has not yet been semantically reviewed.
+  product_scope: no_product_action
+  product_scope_reason: This is a legislative task for the Commission rather than an independent product-facing action.
+  implementation_mode: none_required
+  implementation_reason: The product does not perform the Commission's delegated-act function.
+  verification_mode: not_assessed
 - norm_id: AIA-NORM-A011-P1-DRAW
   source: A011-P1
   quote: shall be drawn up before that system is placed on the market or put into service

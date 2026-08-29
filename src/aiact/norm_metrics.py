@@ -216,9 +216,28 @@ def render_coverage_markdown(metrics: CoverageMetrics) -> str:
     channel_counts = ", ".join(
         f"{channel}={count}" for channel, count in metrics.detection_channels.items()
     )
+    if metrics.approved_characters:
+        report_status = "proposed norm extraction; independently reviewed segments present"
+        review_boundary = (
+            f"Segment reviews covering {metrics.approved_characters} source characters are "
+            "independently approved. Approval applies to source coverage and segment dispositions; "
+            "it does not by itself approve linked norm records. Remaining records are proposed "
+            "findings or explicit `needs_review` debt. This report therefore does not claim legal "
+            "completeness for the corpus."
+        )
+    else:
+        report_status = "proposed extraction; independent legal review not yet performed"
+        review_boundary = (
+            "No segment or norm is independently approved. Records are either proposed findings "
+            "or explicit\n`needs_review` debt. Approval still requires a different reviewer "
+            "identity "
+            "and proof that the full\nexact slice was displayed. This report is therefore evidence "
+            "about schema fitness and\n"
+            "extraction-method failure modes, not a legal completeness claim."
+        )
     return f"""# Normative Coverage Report
 
-**Status:** proposed extraction; independent legal review not yet performed
+**Status:** {report_status}
 
 **Act version:** {metrics.act_version_date.isoformat()}
 
@@ -268,8 +287,5 @@ rule selection, judging, or reporting.
 
 ## Review boundary
 
-No segment or norm is independently approved. Records are either proposed findings or explicit
-`needs_review` debt. Approval still requires a different reviewer identity and proof that the full
-exact slice was displayed. This report is therefore evidence about schema fitness and
-extraction-method failure modes, not a legal completeness claim.
+{review_boundary}
 """

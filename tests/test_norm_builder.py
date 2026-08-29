@@ -67,10 +67,49 @@ def test_generic_builder_uses_input_version_and_discovers_its_complete_corpus(tm
     assert text["act_version_date"] == version
     assert text["corpus_complete"] is True
     assert norms == {"act_version_date": version, "norms": [], "interpretations": []}
-    segment = text["segments"][0]
-    assert segment["segment_id"] == "AIA-TEXT-A004A-FULL"
-    assert segment["text"] == body
-    assert segment["disposition"] == "needs_review"
+    assert [segment["segment_id"] for segment in text["segments"]] == [
+        "AIA-TEXT-A004A-HEAD",
+        "AIA-TEXT-A004A-P001",
+    ]
+    assert "".join(segment["text"] for segment in text["segments"]) == body
+    assert text["segments"][0]["disposition"] == "structural"
+    assert text["segments"][1]["text"] == "Text awaiting review.\n"
+    assert text["segments"][1]["disposition"] == "needs_review"
+
+
+def test_undeclared_document_uses_one_exact_segment_per_source_paragraph(tmp_path):
+    version = "2030-01-02"
+    body = (
+        "Article 1\nPurpose\n\n"
+        "1. The provider shall keep records.\n"
+        "2. The records shall contain:\n"
+        "    (a) the system identifier;\n"
+        "    (b) the operating period.\n"
+    )
+    configured_paths = paths(tmp_path)
+    write_article(configured_paths.articles_root, version, "1", body)
+    (configured_paths.annexes_root / version).mkdir(parents=True)
+
+    text, _norms = build_artifacts(
+        ReviewedDocumentInventory(act_version_date=version, review_run_id="paragraph-review"),
+        NormSourceInventory(act_version_date=version),
+        configured_paths,
+    )
+
+    assert [segment["segment_id"] for segment in text["segments"]] == [
+        "AIA-TEXT-A001-HEAD",
+        "AIA-TEXT-A001-P001",
+        "AIA-TEXT-A001-P002",
+        "AIA-TEXT-A001-P003",
+        "AIA-TEXT-A001-P004",
+    ]
+    assert [segment["text"] for segment in text["segments"][1:]] == [
+        "1. The provider shall keep records.\n",
+        "2. The records shall contain:\n",
+        "    (a) the system identifier;\n",
+        "    (b) the operating period.\n",
+    ]
+    assert "".join(segment["text"] for segment in text["segments"]) == body
 
 
 def test_reviewed_divisions_and_norm_sources_compile_without_version_specific_code(tmp_path):
@@ -126,6 +165,64 @@ def test_reviewed_divisions_and_norm_sources_compile_without_version_specific_co
     assert norm["implementation_mode"] == "missing"
 
 
+def test_document_verifier_approves_all_non_debt_segments(tmp_path):
+    version = "2030-01-02"
+    body = "Article 1\nPurpose\n\n1. Context only.\n"
+    configured_paths = paths(tmp_path)
+    write_article(configured_paths.articles_root, version, "1", body)
+    (configured_paths.annexes_root / version).mkdir(parents=True)
+    reviewed = ReviewedDocumentInventory(
+        act_version_date=version,
+        review_run_id="verified-review",
+        documents=[
+            DocumentSource(
+                kind=SourceKind.ARTICLE,
+                number="1",
+                verified_by="reviewer-b",
+                divisions=[
+                    DivisionSource(
+                        label="HEAD",
+                        marker=None,
+                        disposition=SegmentDisposition.STRUCTURAL,
+                    ),
+                    DivisionSource(
+                        label="P1",
+                        marker="1. ",
+                        disposition=SegmentDisposition.CONTEXT_ONLY,
+                        reason="The paragraph creates no independent legal proposition.",
+                    ),
+                ],
+            )
+        ],
+    )
+
+    text, _norms = build_artifacts(
+        reviewed,
+        NormSourceInventory(act_version_date=version),
+        configured_paths,
+    )
+
+    assert all(segment["review"]["status"] == "approved" for segment in text["segments"])
+    assert all(segment["review"]["verified_by"] == "reviewer-b" for segment in text["segments"])
+
+
+def test_document_verifier_cannot_approve_review_debt():
+    with pytest.raises(ValueError, match="review-debt divisions"):
+        DocumentSource(
+            kind=SourceKind.ARTICLE,
+            number="1",
+            verified_by="reviewer-b",
+            divisions=[
+                DivisionSource(
+                    label="P1",
+                    marker=None,
+                    disposition=SegmentDisposition.NEEDS_REVIEW,
+                    reason="Not reviewed.",
+                )
+            ],
+        )
+
+
 def test_versioned_builder_inputs_must_use_the_same_act_snapshot(tmp_path):
     configured_paths = paths(tmp_path)
     configured_paths.reviewed_documents.write_text(
@@ -143,12 +240,7 @@ def test_versioned_builder_inputs_must_use_the_same_act_snapshot(tmp_path):
 
 def test_versioned_implementation_targets_exist_in_the_pinned_policy_spec():
     source_path = (
-        ROOT
-        / "data"
-        / "policy"
-        / "normative-coverage"
-        / "2026-07-27"
-        / "source-records.yaml"
+        ROOT / "data" / "policy" / "normative-coverage" / "2026-07-27" / "source-records.yaml"
     )
     source_inventory = NormSourceInventory.model_validate(
         load_yaml_mapping(source_path, description="norm source inventory")
@@ -156,6 +248,4 @@ def test_versioned_implementation_targets_exist_in_the_pinned_policy_spec():
     policy = load_policy_spec()
 
     assert source_inventory.act_version_date == policy.act_version_date
-    assert set(source_inventory.implementation_targets) <= {
-        rule.rule_id for rule in policy.rules
-    }
+    assert set(source_inventory.implementation_targets) <= {rule.rule_id for rule in policy.rules}

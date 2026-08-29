@@ -2,7 +2,7 @@
 
 Cross-references are validated so a finding can never point at nothing:
   - use_case_id must match a use case in the report's ClassificationResult (always checked);
-  - rule_id must exist in the loaded PolicySpec (checked when the spec is supplied via the
+  - rule_id must exist in the loaded PolicyRuleset (checked when the spec is supplied via the
     validation context, e.g. ComplianceReport.model_validate(data, context={"policy_spec": spec})).
 """
 
@@ -24,7 +24,7 @@ from aiact.schemas.enums import (
     TransparencyDuty,
     Verdict,
 )
-from aiact.schemas.policy import GuidanceSource, LegalSource, PolicySpec
+from aiact.schemas.policy import GuidanceSource, LegalSource, PolicyRuleset
 from aiact.schemas.question import EVIDENCE_QUOTE_MAX, Answer, Confidence
 
 # Modelled on the European Commission's own wording for their AI Act Compliance Checker, with a
@@ -150,9 +150,9 @@ class Finding(BaseModel):
 
     `citation` is a required LegalSource with no default: an uncited finding cannot be built.
     `rule_id` is kept as a plain id rather than the full rule — the rule already lives in the
-    loaded PolicySpec, and embedding it here would duplicate every rule in every report."""
+    loaded PolicyRuleset, and embedding it here would duplicate every rule in every report."""
 
-    rule_id: str  # references PolicyRule.rule_id in the loaded PolicySpec
+    rule_id: str  # references PolicyRule.rule_id in the loaded PolicyRuleset
     use_case_id: str  # which use case activated this rule
     role: ActorRole
     """WHOSE obligation this is. REQUIRED, with no default, for the same reason `citation` has
@@ -221,7 +221,7 @@ class ReportSummary(BaseModel):
 
 
 class ComplianceReport(BaseModel):
-    """The full assembled output for one SystemUnderReview against one PolicySpec."""
+    """The full assembled output for one SystemUnderReview against one PolicyRuleset."""
 
     system_id: str
     act_version_date: date
@@ -594,7 +594,7 @@ class ComplianceReport(BaseModel):
         """Every finding must point at a real use case and a real rule.
 
         - use_case_id is checked against this report's own classification (always available).
-        - rule_id is checked against the PolicySpec when one is supplied via the validation
+        - rule_id is checked against the PolicyRuleset when one is supplied via the validation
           context: ComplianceReport.model_validate(data, context={"policy_spec": spec}).
           Without the spec we cannot verify rule ids, so we skip that check rather than guess."""
         known_use_cases = {uc.use_case_id for uc in self.classification.use_cases}
@@ -606,18 +606,18 @@ class ComplianceReport(BaseModel):
                 )
 
         spec = (info.context or {}).get("policy_spec") if info.context else None
-        if isinstance(spec, PolicySpec):
+        if isinstance(spec, PolicyRuleset):
             known_rules = {rule.rule_id for rule in spec.rules}
             for finding in self.findings:
                 if finding.rule_id not in known_rules:
                     raise ValueError(
                         f"Finding references rule_id {finding.rule_id!r} not present in the "
-                        f"loaded PolicySpec (spec_version={spec.spec_version})."
+                        f"loaded PolicyRuleset (spec_version={spec.spec_version})."
                     )
             for rule_id in [r for ids in self.not_document_verifiable.values() for r in ids]:
                 if rule_id not in known_rules:
                     raise ValueError(
                         f"not_document_verifiable references rule_id {rule_id!r} not present "
-                        f"in the loaded PolicySpec (spec_version={spec.spec_version})."
+                        f"in the loaded PolicyRuleset (spec_version={spec.spec_version})."
                     )
         return self
