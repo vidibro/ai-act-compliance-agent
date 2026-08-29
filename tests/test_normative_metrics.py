@@ -49,12 +49,13 @@ def test_inventory_partitions_the_complete_versioned_corpus(metrics):
     assert bundle.text_review.corpus_complete is True
     assert set(grouped) == expected
     assert metrics.documents == 133
-    assert metrics.documents_with_extracted_norms == 12
-    assert metrics.documents_with_review_debt == 126
+    assert metrics.documents_with_extracted_norms == 13
+    assert metrics.documents_with_review_debt == 125
     assert metrics.exact_source_characters == 394_667
     assert set(metrics.norms_by_document) == {
         "article 2",
         "article 3",
+        "article 4",
         "article 11",
         "article 26",
         "article 43",
@@ -373,21 +374,75 @@ def test_article_three_preserves_embedded_reference_and_market_consequences():
         assert norm.implementation_mode.value == "none_required"
 
 
+def test_article_four_is_fully_reviewed_as_four_atomic_obligations():
+    bundle = load_normative_coverage()
+    segments = [
+        segment
+        for segment in bundle.text_review.segments
+        if segment.source.kind.value == "article" and segment.source.document == "4"
+    ]
+    norms = {
+        norm.norm_id: norm
+        for norm in bundle.norm_inventory.norms
+        if norm.norm_id.startswith("AIA-NORM-A004-")
+    }
+
+    assert len(segments) == 4
+    assert segments[0].disposition.value == "structural"
+    assert all(segment.disposition.value == "normative" for segment in segments[1:])
+    assert all(segment.review.status.value == "approved" for segment in segments)
+    assert all(segment.review.verified_by == "vidibro" for segment in segments)
+    assert len(norms) == 4
+    assert all(norm.kind.value == "obligation" for norm in norms.values())
+
+
+def test_article_four_literacy_norm_keeps_context_and_individual_guarantee_limit():
+    bundle = load_normative_coverage()
+    norm = next(
+        norm
+        for norm in bundle.norm_inventory.norms
+        if norm.norm_id == "AIA-NORM-A004-P1-AI-LITERACY-MEASURES"
+    )
+
+    assert norm.subjects[0].subject_ref == "provider_or_deployer"
+    assert norm.product_scope.value == "in_scope"
+    assert norm.implementation_mode.value == "missing"
+    assert len(norm.conditions) == 3
+    assert norm.exceptions == [
+        "the obligation does not require a guaranteed specific AI-literacy level for any "
+        "particular individual among the covered staff or other persons"
+    ]
+
+
+def test_article_four_institutional_norms_are_outside_supported_actor_scope():
+    bundle = load_normative_coverage()
+    norms = [
+        norm
+        for norm in bundle.norm_inventory.norms
+        if norm.norm_id.startswith("AIA-NORM-A004-P2-")
+        or norm.norm_id == "AIA-NORM-A004-P3-BOARD-RECOMMENDATIONS"
+    ]
+
+    assert len(norms) == 3
+    assert all(norm.product_scope.value == "outside_supported_actor" for norm in norms)
+    assert all(norm.implementation_mode.value == "none_required" for norm in norms)
+
+
 def test_inventory_cannot_be_misreported_as_independently_approved(metrics):
-    assert metrics.approved_characters == 24_941
-    assert metrics.needs_review_characters == 324_704
+    assert metrics.approved_characters == 26_139
+    assert metrics.needs_review_characters == 323_529
     assert metrics.review_statuses == {
-        "approved": 119,
-        "needs_review": 1140,
-        "proposed": 353,
+        "approved": 123,
+        "needs_review": 1137,
+        "proposed": 356,
     }
     assert metrics.timed_review_records == 0
-    assert metrics.total_review_records == 1613
+    assert metrics.total_review_records == 1617
 
 
 def test_semantic_pass_finds_propositions_a_shall_scan_misses(metrics):
     assert metrics.shall_vs_semantic_disagreements == 104
-    assert metrics.shall_token_candidate_recall == pytest.approx(79 / 183)
+    assert metrics.shall_token_candidate_recall == pytest.approx(83 / 187)
     assert "AIA-NORM-A011-P1-SIMPLIFY" in metrics.semantic_norms_without_shall_token
     assert "AIA-NORM-A043-P5-AMEND" in metrics.semantic_norms_without_shall_token
     assert "AIA-NORM-A060-P4-PERMISSION" in metrics.semantic_norms_without_shall_token
@@ -395,11 +450,11 @@ def test_semantic_pass_finds_propositions_a_shall_scan_misses(metrics):
 
 
 def test_metrics_expose_many_to_many_and_implementation_debt(metrics):
-    assert metrics.normative_segments_with_multiple_norms == 24
+    assert metrics.normative_segments_with_multiple_norms == 25
     assert metrics.mapping_shape.many_norms_to_one_target == 26
     assert metrics.mapping_shape.many_to_many == 8
-    assert metrics.mapping_shape.unmapped == 146
-    assert metrics.semantic_vs_existing_implementation_disagreements == 25
+    assert metrics.mapping_shape.unmapped == 150
+    assert metrics.semantic_vs_existing_implementation_disagreements == 26
     assert metrics.semantic_norms_without_existing_implementation == [
         "AIA-NORM-A002-P1-A-PROVIDER",
         "AIA-NORM-A002-P1-B-DEPLOYER",
@@ -419,6 +474,7 @@ def test_metrics_expose_many_to_many_and_implementation_debt(metrics):
         "AIA-NORM-A002-P6-SCIENTIFIC-RD-EXCLUSION",
         "AIA-NORM-A002-P8-PRE-MARKET-RD-EXCLUSION",
         "AIA-NORM-A002-P8-REAL-WORLD-TESTING-CARVEOUT",
+        "AIA-NORM-A004-P1-AI-LITERACY-MEASURES",
         "AIA-NORM-A011-P1-SIMPLIFY",
         "AIA-NORM-A050-P3-DATA",
         "AIA-NORM-A050-P5-MANNER",
@@ -446,6 +502,7 @@ def test_metrics_expose_many_to_many_and_implementation_debt(metrics):
         "AIA-NORM-A002-P6-SCIENTIFIC-RD-EXCLUSION",
         "AIA-NORM-A002-P8-PRE-MARKET-RD-EXCLUSION",
         "AIA-NORM-A002-P8-REAL-WORLD-TESTING-CARVEOUT",
+        "AIA-NORM-A004-P1-AI-LITERACY-MEASURES",
         "AIA-NORM-A011-P1-SIMPLIFY",
         "AIA-NORM-A050-P3-DATA",
         "AIA-NORM-ANNEX-VIII-A",

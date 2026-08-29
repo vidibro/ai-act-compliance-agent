@@ -4,8 +4,8 @@
 
 **Act version:** 2026-07-27
 
-The inventory contains 133 complete source-body partitions, 1429 exact segments, and 183 proposed atomic norms. Every stored article and annex is present. Proposed
-norms have been extracted from 12 documents; the remaining
+The inventory contains 133 complete source-body partitions, 1429 exact segments, and 187 proposed atomic norms. Every stored article and annex is present. Proposed
+norms have been extracted from 13 documents; the remaining
 work is retained explicitly rather than omitted. The inventory is not consumed by classification,
 rule selection, judging, or reporting.
 
@@ -19,6 +19,7 @@ rule selection, judging, or reporting.
 - article 2: 28
 - article 26: 8
 - article 3: 73
+- article 4: 4
 - article 43: 12
 - article 50: 11
 - article 60: 4
@@ -118,6 +119,9 @@ rule selection, judging, or reporting.
 - AIA-TEXT-A003-P080: 1
 - AIA-TEXT-A003-P081: 1
 - AIA-TEXT-A003-P082: 1
+- AIA-TEXT-A004-P001: 1
+- AIA-TEXT-A004-P002: 2
+- AIA-TEXT-A004-P003: 1
 - AIA-TEXT-A011-P1: 8
 - AIA-TEXT-A011-P3: 1
 - AIA-TEXT-A026-P5: 8
@@ -149,19 +153,19 @@ rule selection, judging, or reporting.
 - AIA-TEXT-ANNEX-VIII-C: 1
 
 - Exact source characters partitioned: 394667
-- Documents containing explicit review debt: 126
-- Characters displayed by the extraction pass: 69963
-- Independently approved characters: 24941
-- Characters deliberately left as review debt: 324704
-- Normative segments supporting multiple propositions: 24
+- Documents containing explicit review debt: 125
+- Characters displayed by the extraction pass: 71138
+- Independently approved characters: 26139
+- Characters deliberately left as review debt: 323529
+- Normative segments supporting multiple propositions: 25
 - Semantic candidates a shall-token pass missed: 104
-- Shall-token candidate recall: 43.2%
-- In-scope semantic candidates absent from existing implementation: 25
-- Detection-channel counts: cross_reference_structure=96, deeming_or_consequence=43, existing_implementation=37, other_modal=12, semantic_legal_effect=183, shall_token=79
-- Mapping shapes, by norm: one-to-one=3, many-to-one=26, one-to-many=0, many-to-many=8, unmapped=146
-- Implementation debt candidates: 23
+- Shall-token candidate recall: 44.4%
+- In-scope semantic candidates absent from existing implementation: 26
+- Detection-channel counts: cross_reference_structure=99, deeming_or_consequence=43, existing_implementation=37, other_modal=12, semantic_legal_effect=187, shall_token=83
+- Mapping shapes, by norm: one-to-one=3, many-to-one=26, one-to-many=0, many-to-many=8, unmapped=150
+- Implementation debt candidates: 24
 - Interpretive links to non-binding guidance: 1
-- Review records with measured elapsed time: 0/1613
+- Review records with measured elapsed time: 0/1617
 
 ## Findings
 
@@ -181,4 +185,4 @@ rule selection, judging, or reporting.
 
 ## Review boundary
 
-Segment reviews covering 24941 source characters are independently approved. Approval applies to source coverage and segment dispositions; it does not by itself approve linked norm records. Remaining records are proposed findings or explicit `needs_review` debt. This report therefore does not claim legal completeness for the corpus.
+Segment reviews covering 26139 source characters are independently approved. Approval applies to source coverage and segment dispositions; it does not by itself approve linked norm records. Remaining records are proposed findings or explicit `needs_review` debt. This report therefore does not claim legal completeness for the corpus.
