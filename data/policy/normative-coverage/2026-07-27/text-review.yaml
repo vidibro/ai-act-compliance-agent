@@ -941,9 +941,9 @@ segments:
   disposition_reason: ''
   norm_ids: []
   review:
-    status: proposed
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
     display_chunks: 1
@@ -960,17 +960,87 @@ segments:
   text: 'For the purposes of this Regulation, the following definitions apply:
 
     '
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A003-D001-AI-SYSTEM
+  - AIA-NORM-A003-D002-RISK
+  - AIA-NORM-A003-D003-PROVIDER
+  - AIA-NORM-A003-D004-DEPLOYER
+  - AIA-NORM-A003-D005-AUTHORISED-REPRESENTATIVE
+  - AIA-NORM-A003-D006-IMPORTER
+  - AIA-NORM-A003-D007-DISTRIBUTOR
+  - AIA-NORM-A003-D008-OPERATOR
+  - AIA-NORM-A003-D009-PLACING-ON-THE-MARKET
+  - AIA-NORM-A003-D010-MAKING-AVAILABLE-ON-THE-MARKET
+  - AIA-NORM-A003-D011-PUTTING-INTO-SERVICE
+  - AIA-NORM-A003-D012-INTENDED-PURPOSE
+  - AIA-NORM-A003-D013-REASONABLY-FORESEEABLE-MISUSE
+  - AIA-NORM-A003-D014-SAFETY-COMPONENT
+  - AIA-NORM-A003-D014A-MICRO-SMALL-AND-MEDIUM-SIZED-ENTERPRISE
+  - AIA-NORM-A003-D014B-SMALL-MID-CAP-ENTERPRISE
+  - AIA-NORM-A003-D015-INSTRUCTIONS-FOR-USE
+  - AIA-NORM-A003-D016-RECALL-OF-AN-AI-SYSTEM
+  - AIA-NORM-A003-D017-WITHDRAWAL-OF-AN-AI-SYSTEM
+  - AIA-NORM-A003-D018-PERFORMANCE-OF-AN-AI-SYSTEM
+  - AIA-NORM-A003-D019-NOTIFYING-AUTHORITY
+  - AIA-NORM-A003-D020-CONFORMITY-ASSESSMENT
+  - AIA-NORM-A003-D021-CONFORMITY-ASSESSMENT-BODY
+  - AIA-NORM-A003-D022-NOTIFIED-BODY
+  - AIA-NORM-A003-D023-SUBSTANTIAL-MODIFICATION
+  - AIA-NORM-A003-D024-CE-MARKING
+  - AIA-NORM-A003-D025-POST-MARKET-MONITORING-SYSTEM
+  - AIA-NORM-A003-D026-MARKET-SURVEILLANCE-AUTHORITY
+  - AIA-NORM-A003-D027-HARMONISED-STANDARD
+  - AIA-NORM-A003-D028-COMMON-SPECIFICATION
+  - AIA-NORM-A003-D029-TRAINING-DATA
+  - AIA-NORM-A003-D030-VALIDATION-DATA
+  - AIA-NORM-A003-D031-VALIDATION-DATA-SET
+  - AIA-NORM-A003-D032-TESTING-DATA
+  - AIA-NORM-A003-D033-INPUT-DATA
+  - AIA-NORM-A003-D034-BIOMETRIC-DATA
+  - AIA-NORM-A003-D035-BIOMETRIC-IDENTIFICATION
+  - AIA-NORM-A003-D036-BIOMETRIC-VERIFICATION
+  - AIA-NORM-A003-D037-SPECIAL-CATEGORIES-OF-PERSONAL-DATA
+  - AIA-NORM-A003-D038-SENSITIVE-OPERATIONAL-DATA
+  - AIA-NORM-A003-D039-EMOTION-RECOGNITION-SYSTEM
+  - AIA-NORM-A003-D040-BIOMETRIC-CATEGORISATION-SYSTEM
+  - AIA-NORM-A003-D041-REMOTE-BIOMETRIC-IDENTIFICATION-SYSTEM
+  - AIA-NORM-A003-D042-REAL-TIME-REMOTE-BIOMETRIC-IDENTIFICATION-SYSTEM
+  - AIA-NORM-A003-D043-POST-REMOTE-BIOMETRIC-IDENTIFICATION-SYSTEM
+  - AIA-NORM-A003-D044-PUBLICLY-ACCESSIBLE-SPACE
+  - AIA-NORM-A003-D045-LAW-ENFORCEMENT-AUTHORITY
+  - AIA-NORM-A003-D046-LAW-ENFORCEMENT
+  - AIA-NORM-A003-D047-AI-OFFICE
+  - AIA-NORM-A003-D048-NATIONAL-COMPETENT-AUTHORITY
+  - AIA-NORM-A003-D049-SERIOUS-INCIDENT
+  - AIA-NORM-A003-D050-PERSONAL-DATA
+  - AIA-NORM-A003-D051-NON-PERSONAL-DATA
+  - AIA-NORM-A003-D052-PROFILING
+  - AIA-NORM-A003-D053-REAL-WORLD-TESTING-PLAN
+  - AIA-NORM-A003-D054-SANDBOX-PLAN
+  - AIA-NORM-A003-D055-AI-REGULATORY-SANDBOX
+  - AIA-NORM-A003-D056-AI-LITERACY
+  - AIA-NORM-A003-D057-TESTING-IN-REAL-WORLD-CONDITIONS
+  - AIA-NORM-A003-D058-SUBJECT
+  - AIA-NORM-A003-D059-INFORMED-CONSENT
+  - AIA-NORM-A003-D060-DEEP-FAKE
+  - AIA-NORM-A003-D061-WIDESPREAD-INFRINGEMENT
+  - AIA-NORM-A003-D062-CRITICAL-INFRASTRUCTURE
+  - AIA-NORM-A003-D063-GENERAL-PURPOSE-AI-MODEL
+  - AIA-NORM-A003-D064-HIGH-IMPACT-CAPABILITIES
+  - AIA-NORM-A003-D065-SYSTEMIC-RISK
+  - AIA-NORM-A003-D066-GENERAL-PURPOSE-AI-SYSTEM
+  - AIA-NORM-A003-D067-FLOATING-POINT-OPERATION
+  - AIA-NORM-A003-D068-DOWNSTREAM-PROVIDER
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A003-P002
   source:
@@ -984,17 +1054,18 @@ segments:
     \ levels of autonomy and that may exhibit adaptiveness after deployment, and that, for explicit or\
     \ implicit objectives, infers, from the input it receives, how to generate outputs such as predictions,\
     \ content, recommendations, or decisions that can influence physical or virtual environments;\n"
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A003-D001-AI-SYSTEM
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A003-P003
   source:
@@ -1006,17 +1077,18 @@ segments:
   sha256: 252fccda2d48df101aa7bae27bd6e52823bd4f5b62b92b23103565d0d3e2501b
   text: "    (2) \u2018risk\u2019 means the combination of the probability of an occurrence of harm and\
     \ the severity of that harm;\n"
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A003-D002-RISK
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A003-P004
   source:
@@ -1030,17 +1102,18 @@ segments:
     \ body that develops an AI system or a general-purpose AI model or that has an AI system or a general-purpose\
     \ AI model developed and places it on the market or puts the AI system into service under its own\
     \ name or trademark, whether for payment or free of charge;\n"
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A003-D003-PROVIDER
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A003-P005
   source:
@@ -1053,17 +1126,18 @@ segments:
   text: "    (4) \u2018deployer\u2019 means a natural or legal person, public authority, agency or other\
     \ body using an AI system under its authority except where the AI system is used in the course of\
     \ a personal non-professional activity;\n"
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A003-D004-DEPLOYER
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A003-P006
   source:
@@ -1077,17 +1151,18 @@ segments:
     \ in the Union who has received and accepted a written mandate from a provider of an AI system or\
     \ a general-purpose AI model to, respectively, perform and carry out on its behalf the obligations\
     \ and procedures established by this Regulation;\n"
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A003-D005-AUTHORISED-REPRESENTATIVE
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A003-P007
   source:
@@ -1100,17 +1175,18 @@ segments:
   text: "    (6) \u2018importer\u2019 means a natural or legal person located or established in the Union\
     \ that places on the market an AI system that bears the name or trademark of a natural or legal person\
     \ established in a third country;\n"
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A003-D006-IMPORTER
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A003-P008
   source:
@@ -1122,17 +1198,18 @@ segments:
   sha256: 28d0800557d9a263dfb0429ed1bf30ef349a5f5ca8596a319ae4c4d66cd61d52
   text: "    (7) \u2018distributor\u2019 means a natural or legal person in the supply chain, other than\
     \ the provider or the importer, that makes an AI system available on the Union market;\n"
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A003-D007-DISTRIBUTOR
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A003-P009
   source:
@@ -1144,17 +1221,18 @@ segments:
   sha256: 246b9aab5813c31ce86acbb890ed106ab6ffa898fb4af3ab6d0f54be80e4293e
   text: "    (8) \u2018operator\u2019 means a provider, product manufacturer, deployer, authorised representative,\
     \ importer or distributor;\n"
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A003-D008-OPERATOR
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A003-P010
   source:
@@ -1166,17 +1244,18 @@ segments:
   sha256: 4b0a729b43f57d038deced697246bd1bedd81226baab132bdf718794983d7b12
   text: "    (9) \u2018placing on the market\u2019 means the first making available of an AI system or\
     \ a general-purpose AI model on the Union market;\n"
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A003-D009-PLACING-ON-THE-MARKET
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A003-P011
   source:
@@ -1189,17 +1268,18 @@ segments:
   text: "    (10) \u2018making available on the market\u2019 means the supply of an AI system or a general-purpose\
     \ AI model for distribution or use on the Union market in the course of a commercial activity, whether\
     \ in return for payment or free of charge;\n"
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A003-D010-MAKING-AVAILABLE-ON-THE-MARKET
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A003-P012
   source:
@@ -1211,17 +1291,18 @@ segments:
   sha256: 8e50dd9de08ae787d715d21f3f0277ff934f3972c7dbd100866a21bd5cbbed22
   text: "    (11) \u2018putting into service\u2019 means the supply of an AI system for first use directly\
     \ to the deployer or for own use in the Union for its intended purpose;\n"
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A003-D011-PUTTING-INTO-SERVICE
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A003-P013
   source:
@@ -1235,17 +1316,18 @@ segments:
     \ provider, including the specific context and conditions of use, as specified in the information\
     \ supplied by the provider in the instructions for use, promotional or sales materials and statements,\
     \ as well as in the technical documentation;\n"
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A003-D012-INTENDED-PURPOSE
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A003-P014
   source:
@@ -1258,17 +1340,18 @@ segments:
   text: "    (13) \u2018reasonably foreseeable misuse\u2019 means the use of an AI system in a way that\
     \ is not in accordance with its intended purpose, but which may result from reasonably foreseeable\
     \ human behaviour or interaction with other systems, including other AI systems;\n"
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A003-D013-REASONABLY-FORESEEABLE-MISUSE
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A003-P015
   source:
@@ -1283,17 +1366,18 @@ segments:
     \ endangers the health and safety of persons or property; for the purposes of this definition, a component\
     \ fulfils a safety function where its intended purpose is to prevent or mitigate risks to health and\
     \ safety of persons or property;\n"
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A003-D014-SAFETY-COMPONENT
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A003-P016
   source:
@@ -1305,17 +1389,18 @@ segments:
   sha256: eaff36090c41896e5be7f6112d4c65cd5824db4871942427abf63c83818216d3
   text: "    (14a) \u2018micro, small and medium-sized enterprise\u2019 or \u2018SME\u2019 means a micro,\
     \ small or medium-sized enterprise as defined in Article 2 of the Annex to Recommendation 2003/361/EC;\n"
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A003-D014A-MICRO-SMALL-AND-MEDIUM-SIZED-ENTERPRISE
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A003-P017
   source:
@@ -1327,17 +1412,18 @@ segments:
   sha256: 3fa7d4d21940164d759e85ee2dab75f87f0d6ae739bb2f4fecaa2b26b67ed2b6
   text: "    (14b) \u2018small mid-cap enterprise\u2019 or \u2018SMC\u2019 means a small mid-cap enterprise\
     \ as defined in point (2) of the Annex to Recommendation (EU) 2025/1099;\n"
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A003-D014B-SMALL-MID-CAP-ENTERPRISE
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A003-P018
   source:
@@ -1349,17 +1435,18 @@ segments:
   sha256: 8686a2213d5f3fb35b47fe6935b49330b85986d485e592c5f1ae1c55d20f5358
   text: "    (15) \u2018instructions for use\u2019 means the information provided by the provider to inform\
     \ the deployer of, in particular, an AI system\u2019s intended purpose and proper use;\n"
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A003-D015-INSTRUCTIONS-FOR-USE
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A003-P019
   source:
@@ -1371,17 +1458,18 @@ segments:
   sha256: b460bf1dfa746a561096fe34d51a5470038894333dd239e8f0797a960d673013
   text: "    (16) \u2018recall of an AI system\u2019 means any measure aiming to achieve the return to\
     \ the provider or taking out of service or disabling the use of an AI system made available to deployers;\n"
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A003-D016-RECALL-OF-AN-AI-SYSTEM
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A003-P020
   source:
@@ -1393,17 +1481,18 @@ segments:
   sha256: 964f89383e5f1ddb965a4ee4a9d2b6bd39928576aa7a2a8e3b5f768b1a50f801
   text: "    (17) \u2018withdrawal of an AI system\u2019 means any measure aiming to prevent an AI system\
     \ in the supply chain being made available on the market;\n"
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A003-D017-WITHDRAWAL-OF-AN-AI-SYSTEM
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A003-P021
   source:
@@ -1415,17 +1504,18 @@ segments:
   sha256: f2ff74c8350f6707f16e4cc4df236a9f605f2ab297aae8da65af4fdc6cd24c3d
   text: "    (18) \u2018performance of an AI system\u2019 means the ability of an AI system to achieve\
     \ its intended purpose;\n"
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A003-D018-PERFORMANCE-OF-AN-AI-SYSTEM
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A003-P022
   source:
@@ -1438,17 +1528,18 @@ segments:
   text: "    (19) \u2018notifying authority\u2019 means the national authority responsible for setting\
     \ up and carrying out the necessary procedures for the assessment, designation and notification of\
     \ conformity assessment bodies and for their monitoring;\n"
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A003-D019-NOTIFYING-AUTHORITY
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A003-P023
   source:
@@ -1460,17 +1551,18 @@ segments:
   sha256: ce4dfff1bf985f528fd24917e4bbdd52f4d852834c5fdd7e1659e8cd5b5b8fff
   text: "    (20) \u2018conformity assessment\u2019 means the process of demonstrating whether the requirements\
     \ set out in Chapter III, Section 2 relating to a high-risk AI system have been fulfilled;\n"
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A003-D020-CONFORMITY-ASSESSMENT
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A003-P024
   source:
@@ -1482,17 +1574,18 @@ segments:
   sha256: 137ba4ba24d0680fd503e5be89f3d3333207f782785abde3a4f54df721754cc1
   text: "    (21) \u2018conformity assessment body\u2019 means a body that performs third-party conformity\
     \ assessment activities, including testing, certification and inspection;\n"
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A003-D021-CONFORMITY-ASSESSMENT-BODY
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A003-P025
   source:
@@ -1504,17 +1597,18 @@ segments:
   sha256: 02f67a4c67de35b63055bd77c8612ab458703d6a87629a2c13bfd1dbf4ed182c
   text: "    (22) \u2018notified body\u2019 means a conformity assessment body notified in accordance\
     \ with this Regulation and other relevant Union harmonisation legislation;\n"
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A003-D022-NOTIFIED-BODY
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A003-P026
   source:
@@ -1529,17 +1623,18 @@ segments:
     \ assessment carried out by the provider and as a result of which the compliance of the AI system\
     \ with the requirements set out in Chapter III, Section 2 is affected or results in a modification\
     \ to the intended purpose for which the AI system has been assessed;\n"
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A003-D023-SUBSTANTIAL-MODIFICATION
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A003-P027
   source:
@@ -1552,17 +1647,18 @@ segments:
   text: "    (24) \u2018CE marking\u2019 means a marking by which a provider indicates that an AI system\
     \ is in conformity with the requirements set out in Chapter III, Section 2 and other applicable Union\
     \ harmonisation legislation providing for its affixing;\n"
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A003-D024-CE-MARKING
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A003-P028
   source:
@@ -1576,17 +1672,18 @@ segments:
     \ of AI systems to collect and review experience gained from the use of AI systems they place on the\
     \ market or put into service for the purpose of identifying any need to immediately apply any necessary\
     \ corrective or preventive actions;\n"
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A003-D025-POST-MARKET-MONITORING-SYSTEM
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A003-P029
   source:
@@ -1598,17 +1695,18 @@ segments:
   sha256: ca9dce30d881aede50c43fed62a550f509a17f45fe9fa3786e1613f9db25f6cc
   text: "    (26) \u2018market surveillance authority\u2019 means the national authority carrying out\
     \ the activities and taking the measures pursuant to Regulation (EU) 2019/1020;\n"
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A003-D026-MARKET-SURVEILLANCE-AUTHORITY
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A003-P030
   source:
@@ -1620,17 +1718,18 @@ segments:
   sha256: 45a8b462f68df3355df4ac6fdc9c4a0e82e97be5a16e4f74625dc86aa38c51b3
   text: "    (27) \u2018harmonised standard\u2019 means a harmonised standard as defined in Article 2(1),\
     \ point (c), of Regulation (EU) No 1025/2012;\n"
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A003-D027-HARMONISED-STANDARD
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A003-P031
   source:
@@ -1643,17 +1742,18 @@ segments:
   text: "    (28) \u2018common specification\u2019 means a set of technical specifications as defined\
     \ in Article 2, point (4) of Regulation (EU) No 1025/2012, providing means to comply with certain\
     \ requirements established under this Regulation;\n"
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A003-D028-COMMON-SPECIFICATION
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A003-P032
   source:
@@ -1665,17 +1765,18 @@ segments:
   sha256: d322ba2eaf09eb74b5dbd64d25bb563c90d380d7445e01d8103ecae45b089008
   text: "    (29) \u2018training data\u2019 means data used for training an AI system through fitting\
     \ its learnable parameters;\n"
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A003-D029-TRAINING-DATA
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A003-P033
   source:
@@ -1688,17 +1789,18 @@ segments:
   text: "    (30) \u2018validation data\u2019 means data used for providing an evaluation of the trained\
     \ AI system and for tuning its non-learnable parameters and its learning process in order, inter alia,\
     \ to prevent underfitting or overfitting;\n"
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A003-D030-VALIDATION-DATA
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A003-P034
   source:
@@ -1710,17 +1812,18 @@ segments:
   sha256: 53e127912fac35cf0cfb40af4c2d3af69fd404f475c022900e7238963a224355
   text: "    (31) \u2018validation data set\u2019 means a separate data set or part of the training data\
     \ set, either as a fixed or variable split;\n"
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A003-D031-VALIDATION-DATA-SET
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A003-P035
   source:
@@ -1733,17 +1836,18 @@ segments:
   text: "    (32) \u2018testing data\u2019 means data used for providing an independent evaluation of\
     \ the AI system in order to confirm the expected performance of that system before its placing on\
     \ the market or putting into service;\n"
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A003-D032-TESTING-DATA
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A003-P036
   source:
@@ -1755,17 +1859,18 @@ segments:
   sha256: 90c8c468958629d2060d704e6dedf0c88ec38d91b95ad258d29930dcdd513b8d
   text: "    (33) \u2018input data\u2019 means data provided to or directly acquired by an AI system on\
     \ the basis of which the system produces an output;\n"
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A003-D033-INPUT-DATA
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A003-P037
   source:
@@ -1778,17 +1883,18 @@ segments:
   text: "    (34) \u2018biometric data\u2019 means personal data resulting from specific technical processing\
     \ relating to the physical, physiological or behavioural characteristics of a natural person, such\
     \ as facial images or dactyloscopic data;\n"
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A003-D034-BIOMETRIC-DATA
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A003-P038
   source:
@@ -1802,17 +1908,18 @@ segments:
     \ behavioural, or psychological human features for the purpose of establishing the identity of a natural\
     \ person by comparing biometric data of that individual to biometric data of individuals stored in\
     \ a database;\n"
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A003-D035-BIOMETRIC-IDENTIFICATION
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A003-P039
   source:
@@ -1825,17 +1932,18 @@ segments:
   text: "    (36) \u2018biometric verification\u2019 means the automated, one-to-one verification, including\
     \ authentication, of the identity of natural persons by comparing their biometric data to previously\
     \ provided biometric data;\n"
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A003-D036-BIOMETRIC-VERIFICATION
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A003-P040
   source:
@@ -1848,17 +1956,18 @@ segments:
   text: "    (37) \u2018special categories of personal data\u2019 means the categories of personal data\
     \ referred to in Article 9(1) of Regulation (EU) 2016/679, Article 10 of Directive (EU) 2016/680 and\
     \ Article 10(1) of Regulation (EU) 2018/1725;\n"
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A003-D037-SPECIAL-CATEGORIES-OF-PERSONAL-DATA
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A003-P041
   source:
@@ -1871,17 +1980,18 @@ segments:
   text: "    (38) \u2018sensitive operational data\u2019 means operational data related to activities\
     \ of prevention, detection, investigation or prosecution of criminal offences, the disclosure of which\
     \ could jeopardise the integrity of criminal proceedings;\n"
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A003-D038-SENSITIVE-OPERATIONAL-DATA
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A003-P042
   source:
@@ -1893,17 +2003,18 @@ segments:
   sha256: 4de5b8bccbb0a24e98c2ec75a197f539aa51a2880549bb43be2bcd5e495cb713
   text: "    (39) \u2018emotion recognition system\u2019 means an AI system for the purpose of identifying\
     \ or inferring emotions or intentions of natural persons on the basis of their biometric data;\n"
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A003-D039-EMOTION-RECOGNITION-SYSTEM
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A003-P043
   source:
@@ -1916,17 +2027,18 @@ segments:
   text: "    (40) \u2018biometric categorisation system\u2019 means an AI system for the purpose of assigning\
     \ natural persons to specific categories on the basis of their biometric data, unless it is ancillary\
     \ to another commercial service and strictly necessary for objective technical reasons;\n"
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A003-D040-BIOMETRIC-CATEGORISATION-SYSTEM
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A003-P044
   source:
@@ -1940,17 +2052,18 @@ segments:
     \ of identifying natural persons, without their active involvement, typically at a distance through\
     \ the comparison of a person\u2019s biometric data with the biometric data contained in a reference\
     \ database;\n"
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A003-D041-REMOTE-BIOMETRIC-IDENTIFICATION-SYSTEM
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A003-P045
   source:
@@ -1964,17 +2077,18 @@ segments:
     \ identification system, whereby the capturing of biometric data, the comparison and the identification\
     \ all occur without a significant delay, comprising not only instant identification, but also limited\
     \ short delays in order to avoid circumvention;\n"
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A003-D042-REAL-TIME-REMOTE-BIOMETRIC-IDENTIFICATION-SYSTEM
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A003-P046
   source:
@@ -1986,17 +2100,18 @@ segments:
   sha256: a2a20ad10caa1c1a92ff1f3e78c3393605ef99182c3865e527cd4f347e041608
   text: "    (43) \u2018post-remote biometric identification system\u2019 means a remote biometric identification\
     \ system other than a real-time remote biometric identification system;\n"
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A003-D043-POST-REMOTE-BIOMETRIC-IDENTIFICATION-SYSTEM
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A003-P047
   source:
@@ -2009,17 +2124,18 @@ segments:
   text: "    (44) \u2018publicly accessible space\u2019 means any publicly or privately owned physical\
     \ place accessible to an undetermined number of natural persons, regardless of whether certain conditions\
     \ for access may apply, and regardless of the potential capacity restrictions;\n"
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A003-D044-PUBLICLY-ACCESSIBLE-SPACE
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A003-P048
   source:
@@ -2030,17 +2146,18 @@ segments:
   end: 10302
   sha256: 3940b8ed5fc7b5ae7ea901dc174812359a7e2604c81526d74daf5de7558362a0
   text: "    (45) \u2018law enforcement authority\u2019 means:\n"
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A003-D045-LAW-ENFORCEMENT-AUTHORITY
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A003-P049
   source:
@@ -2055,17 +2172,18 @@ segments:
     against and the prevention of threats to public security; or
 
     '
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A003-D045-LAW-ENFORCEMENT-AUTHORITY
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A003-P050
   source:
@@ -2081,17 +2199,18 @@ segments:
     of threats to public security;
 
     '
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A003-D045-LAW-ENFORCEMENT-AUTHORITY
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A003-P051
   source:
@@ -2105,17 +2224,18 @@ segments:
     \ or on their behalf for the prevention, investigation, detection or prosecution of criminal offences\
     \ or the execution of criminal penalties, including safeguarding against and preventing threats to\
     \ public security;\n"
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A003-D046-LAW-ENFORCEMENT
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A003-P052
   source:
@@ -2129,17 +2249,19 @@ segments:
     \ monitoring and supervision of AI systems and general-purpose AI models, and AI governance, provided\
     \ for in Commission Decision of 24 January 2024; references in this Regulation to the AI Office shall\
     \ be construed as references to the Commission;\n"
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A003-D047-AI-OFFICE
+  - AIA-NORM-A003-D047-AI-OFFICE-REFERENCE
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A003-P053
   source:
@@ -2153,17 +2275,19 @@ segments:
     \ authority; as regards AI systems put into service or used by Union institutions, agencies, offices\
     \ and bodies, references to national competent authorities or market surveillance authorities in this\
     \ Regulation shall be construed as references to the European Data Protection Supervisor;\n"
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A003-D048-NATIONAL-COMPETENT-AUTHORITY
+  - AIA-NORM-A003-D048-EDPS-REFERENCE
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A003-P054
   source:
@@ -2175,17 +2299,18 @@ segments:
   sha256: 8c49e5819ddb8ae907f38dfc883b55840b6dbfac31be778ccaff8ec65033591f
   text: "    (49) \u2018serious incident\u2019 means an incident or malfunctioning of an AI system that\
     \ directly or indirectly leads to any of the following:\n"
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A003-D049-SERIOUS-INCIDENT
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A003-P055
   source:
@@ -2196,17 +2321,18 @@ segments:
   end: 12133
   sha256: 7f7852ece1db7920fbb97de2558786108815cfa708a5f7948a24edf6ca60aeb9
   text: "            (a) the death of a person, or serious harm to a person\u2019s health;\n"
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A003-D049-SERIOUS-INCIDENT
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A003-P056
   source:
@@ -2220,17 +2346,18 @@ segments:
     infrastructure;
 
     '
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A003-D049-SERIOUS-INCIDENT
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A003-P057
   source:
@@ -2244,17 +2371,18 @@ segments:
     rights;
 
     '
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A003-D049-SERIOUS-INCIDENT
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A003-P058
   source:
@@ -2267,17 +2395,18 @@ segments:
   text: '            (d) serious harm to property or the environment;
 
     '
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A003-D049-SERIOUS-INCIDENT
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A003-P059
   source:
@@ -2289,17 +2418,18 @@ segments:
   sha256: 0e0933726c7a67c5598355781f0164a8100ea6c735bf495ce6cfdcec1dcec3bb
   text: "    (50) \u2018personal data\u2019 means personal data as defined in Article 4, point (1), of\
     \ Regulation (EU) 2016/679;\n"
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A003-D050-PERSONAL-DATA
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A003-P060
   source:
@@ -2311,17 +2441,18 @@ segments:
   sha256: 58ace21ae4ca9a0c7b138b7a930bb82fa18ade820700fe2611e4fd4f1bbfacf4
   text: "    (51) \u2018non-personal data\u2019 means data other than personal data as defined in Article\
     \ 4, point (1), of Regulation (EU) 2016/679;\n"
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A003-D051-NON-PERSONAL-DATA
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A003-P061
   source:
@@ -2333,17 +2464,18 @@ segments:
   sha256: 89034ebf2b9fa2ad1c1241774c6600ed0d984ba03fcb4b7b2fa31df69dcf0688
   text: "    (52) \u2018profiling\u2019 means profiling as defined in Article 4, point (4), of Regulation\
     \ (EU) 2016/679;\n"
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A003-D052-PROFILING
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A003-P062
   source:
@@ -2356,17 +2488,18 @@ segments:
   text: "    (53) \u2018real-world testing plan\u2019 means a document that describes the objectives,\
     \ methodology, geographical, population and temporal scope, monitoring, organisation and conduct of\
     \ testing in real-world conditions;\n"
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A003-D053-REAL-WORLD-TESTING-PLAN
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A003-P063
   source:
@@ -2379,17 +2512,18 @@ segments:
   text: "    (54) \u2018sandbox plan\u2019 means a document agreed between the participating provider\
     \ and the competent authority describing the objectives, conditions, timeframe, methodology and requirements\
     \ for the activities carried out within the sandbox;\n"
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A003-D054-SANDBOX-PLAN
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A003-P064
   source:
@@ -2403,17 +2537,18 @@ segments:
     \ authority which offers providers or prospective providers of AI systems the possibility to develop,\
     \ train, validate and test, where appropriate in real-world conditions, an innovative AI system, pursuant\
     \ to a sandbox plan for a limited time under regulatory supervision;\n"
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A003-D055-AI-REGULATORY-SANDBOX
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A003-P065
   source:
@@ -2427,17 +2562,18 @@ segments:
     \ deployers and affected persons, taking into account their respective rights and obligations in the\
     \ context of this Regulation, to make an informed deployment of AI systems, as well as to gain awareness\
     \ about the opportunities and risks of AI and possible harm it can cause;\n"
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A003-D056-AI-LITERACY
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A003-P066
   source:
@@ -2453,17 +2589,19 @@ segments:
     \ of the AI system with the requirements of this Regulation and it does not qualify as placing the\
     \ AI system on the market or putting it into service within the meaning of this Regulation, provided\
     \ that all the conditions laid down in Article 57 or 60 are fulfilled;\n"
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A003-D057-TESTING-IN-REAL-WORLD-CONDITIONS
+  - AIA-NORM-A003-D057-REAL-WORLD-TESTING-NON-MARKET-EFFECT
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A003-P067
   source:
@@ -2475,17 +2613,18 @@ segments:
   sha256: 9705b8feb65ada8125764afd0394c6ad94b9dd3305d518d5a4ed368f401d1aba
   text: "    (58) \u2018subject\u2019, for the purpose of real-world testing, means a natural person who\
     \ participates in testing in real-world conditions;\n"
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A003-D058-SUBJECT
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A003-P068
   source:
@@ -2499,17 +2638,18 @@ segments:
     \ and voluntary expression of his or her willingness to participate in a particular testing in real-world\
     \ conditions, after having been informed of all aspects of the testing that are relevant to the subject\u2019\
     s decision to participate;\n"
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A003-D059-INFORMED-CONSENT
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A003-P069
   source:
@@ -2522,17 +2662,18 @@ segments:
   text: "    (60) \u2018deep fake\u2019 means AI-generated or manipulated image, audio or video content\
     \ that resembles existing persons, objects, places, entities or events and would falsely appear to\
     \ a person to be authentic or truthful;\n"
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A003-D060-DEEP-FAKE
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A003-P070
   source:
@@ -2544,17 +2685,18 @@ segments:
   sha256: 664a6d64c20dc61dae4149e52109392f9dfee7d9ba4a8e2a5ce8708f8d80e045
   text: "    (61) \u2018widespread infringement\u2019 means any act or omission contrary to Union law\
     \ protecting the interest of individuals, which:\n"
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A003-D061-WIDESPREAD-INFRINGEMENT
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A003-P071
   source:
@@ -2568,17 +2710,18 @@ segments:
     in at least two Member States other than the Member State in which:
 
     '
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A003-D061-WIDESPREAD-INFRINGEMENT
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A003-P072
   source:
@@ -2591,17 +2734,18 @@ segments:
   text: '                    (i) the act or omission originated or took place;
 
     '
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A003-D061-WIDESPREAD-INFRINGEMENT
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A003-P073
   source:
@@ -2615,17 +2759,18 @@ segments:
     is located or established; or
 
     '
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A003-D061-WIDESPREAD-INFRINGEMENT
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A003-P074
   source:
@@ -2639,17 +2784,18 @@ segments:
     the deployer;
 
     '
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A003-D061-WIDESPREAD-INFRINGEMENT
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A003-P075
   source:
@@ -2665,17 +2811,18 @@ segments:
     States;
 
     '
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A003-D061-WIDESPREAD-INFRINGEMENT
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A003-P076
   source:
@@ -2687,17 +2834,18 @@ segments:
   sha256: c5eaec71075127506369ed22e4910de530937fa95fd6d610f0f8541d8361d185
   text: "    (62) \u2018critical infrastructure\u2019 means critical infrastructure as defined in Article\
     \ 2, point (4), of Directive (EU) 2022/2557;\n"
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A003-D062-CRITICAL-INFRASTRUCTURE
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A003-P077
   source:
@@ -2713,17 +2861,18 @@ segments:
     \ the way the model is placed on the market and that can be integrated into a variety of downstream\
     \ systems or applications, except AI models that are used for research, development or prototyping\
     \ activities before they are placed on the market;\n"
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A003-D063-GENERAL-PURPOSE-AI-MODEL
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A003-P078
   source:
@@ -2735,17 +2884,18 @@ segments:
   sha256: ed61ad96b1040e703736e69d742f6a768b09a980e206433b51dbaf8d3e116d1e
   text: "    (64) \u2018high-impact capabilities\u2019 means capabilities that match or exceed the capabilities\
     \ recorded in the most advanced general-purpose AI models;\n"
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A003-D064-HIGH-IMPACT-CAPABILITIES
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A003-P079
   source:
@@ -2760,17 +2910,18 @@ segments:
     \ or due to actual or reasonably foreseeable negative effects on public health, safety, public security,\
     \ fundamental rights, or the society as a whole, that can be propagated at scale across the value\
     \ chain;\n"
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A003-D065-SYSTEMIC-RISK
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A003-P080
   source:
@@ -2783,17 +2934,18 @@ segments:
   text: "    (66) \u2018general-purpose AI system\u2019 means an AI system which is based on a general-purpose\
     \ AI model and which has the capability to serve a variety of purposes, both for direct use as well\
     \ as for integration in other AI systems;\n"
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A003-D066-GENERAL-PURPOSE-AI-SYSTEM
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A003-P081
   source:
@@ -2806,17 +2958,18 @@ segments:
   text: "    (67) \u2018floating-point operation\u2019 means any mathematical operation or assignment\
     \ involving floating-point numbers, which are a subset of the real numbers typically represented on\
     \ computers by an integer of fixed precision scaled by an integer exponent of a fixed base;\n"
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A003-D067-FLOATING-POINT-OPERATION
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A003-P082
   source:
@@ -2829,17 +2982,18 @@ segments:
   text: "    (68) \u2018downstream provider\u2019 means a provider of an AI system, including a general-purpose\
     \ AI system, which integrates an AI model, regardless of whether the AI model is provided by themselves\
     \ and vertically integrated or provided by another entity based on contractual relations.\n"
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A003-D068-DOWNSTREAM-PROVIDER
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A004-HEAD
   source:

@@ -112,6 +112,49 @@ def test_undeclared_document_uses_one_exact_segment_per_source_paragraph(tmp_pat
     assert "".join(segment["text"] for segment in text["segments"]) == body
 
 
+def test_declared_paragraph_document_can_apply_one_reviewed_disposition(tmp_path):
+    version = "2030-01-02"
+    body = "Article 1\nDefinitions\n\nA first definition.\nA second definition.\n"
+    configured_paths = paths(tmp_path)
+    write_article(configured_paths.articles_root, version, "1", body)
+    (configured_paths.annexes_root / version).mkdir(parents=True)
+    reviewed = ReviewedDocumentInventory(
+        act_version_date=version,
+        review_run_id="paragraph-review",
+        documents=[
+            DocumentSource(
+                kind=SourceKind.ARTICLE,
+                number="1",
+                segmentation="paragraphs",
+                paragraph_disposition=SegmentDisposition.CONTEXT_ONLY,
+                paragraph_reason="Reviewed together as non-operative explanatory text.",
+                verified_by="reviewer-b",
+                divisions=[
+                    DivisionSource(
+                        label="HEAD",
+                        marker=None,
+                        disposition=SegmentDisposition.STRUCTURAL,
+                    )
+                ],
+            )
+        ],
+    )
+
+    text, _norms = build_artifacts(
+        reviewed,
+        NormSourceInventory(act_version_date=version),
+        configured_paths,
+    )
+
+    assert [segment["disposition"] for segment in text["segments"]] == [
+        "structural",
+        "context_only",
+        "context_only",
+    ]
+    assert all(segment["review"]["status"] == "approved" for segment in text["segments"])
+    assert all(segment["review"]["verified_by"] == "reviewer-b" for segment in text["segments"])
+
+
 def test_reviewed_divisions_and_norm_sources_compile_without_version_specific_code(tmp_path):
     version = "2030-01-02"
     body = "Article 1\nPurpose\n\n1. The provider shall keep a record.\n"

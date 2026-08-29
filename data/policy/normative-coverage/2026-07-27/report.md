@@ -4,8 +4,8 @@
 
 **Act version:** 2026-07-27
 
-The inventory contains 133 complete source-body partitions, 1429 exact segments, and 110 proposed atomic norms. Every stored article and annex is present. Proposed
-norms have been extracted from 11 documents; the remaining
+The inventory contains 133 complete source-body partitions, 1429 exact segments, and 183 proposed atomic norms. Every stored article and annex is present. Proposed
+norms have been extracted from 12 documents; the remaining
 work is retained explicitly rather than omitted. The inventory is not consumed by classification,
 rule selection, judging, or reporting.
 
@@ -18,6 +18,7 @@ rule selection, judging, or reporting.
 - article 113: 8
 - article 2: 28
 - article 26: 8
+- article 3: 73
 - article 43: 12
 - article 50: 11
 - article 60: 4
@@ -47,6 +48,76 @@ rule selection, judging, or reporting.
 - AIA-TEXT-A002-P021: 1
 - AIA-TEXT-A002-P022: 1
 - AIA-TEXT-A002-P025: 1
+- AIA-TEXT-A003-P002: 1
+- AIA-TEXT-A003-P003: 1
+- AIA-TEXT-A003-P004: 1
+- AIA-TEXT-A003-P005: 1
+- AIA-TEXT-A003-P006: 1
+- AIA-TEXT-A003-P007: 1
+- AIA-TEXT-A003-P008: 1
+- AIA-TEXT-A003-P009: 1
+- AIA-TEXT-A003-P010: 1
+- AIA-TEXT-A003-P011: 1
+- AIA-TEXT-A003-P012: 1
+- AIA-TEXT-A003-P013: 1
+- AIA-TEXT-A003-P014: 1
+- AIA-TEXT-A003-P015: 1
+- AIA-TEXT-A003-P016: 1
+- AIA-TEXT-A003-P017: 1
+- AIA-TEXT-A003-P018: 1
+- AIA-TEXT-A003-P019: 1
+- AIA-TEXT-A003-P020: 1
+- AIA-TEXT-A003-P021: 1
+- AIA-TEXT-A003-P022: 1
+- AIA-TEXT-A003-P023: 1
+- AIA-TEXT-A003-P024: 1
+- AIA-TEXT-A003-P025: 1
+- AIA-TEXT-A003-P026: 1
+- AIA-TEXT-A003-P027: 1
+- AIA-TEXT-A003-P028: 1
+- AIA-TEXT-A003-P029: 1
+- AIA-TEXT-A003-P030: 1
+- AIA-TEXT-A003-P031: 1
+- AIA-TEXT-A003-P032: 1
+- AIA-TEXT-A003-P033: 1
+- AIA-TEXT-A003-P034: 1
+- AIA-TEXT-A003-P035: 1
+- AIA-TEXT-A003-P036: 1
+- AIA-TEXT-A003-P037: 1
+- AIA-TEXT-A003-P038: 1
+- AIA-TEXT-A003-P039: 1
+- AIA-TEXT-A003-P040: 1
+- AIA-TEXT-A003-P041: 1
+- AIA-TEXT-A003-P042: 1
+- AIA-TEXT-A003-P043: 1
+- AIA-TEXT-A003-P044: 1
+- AIA-TEXT-A003-P045: 1
+- AIA-TEXT-A003-P046: 1
+- AIA-TEXT-A003-P047: 1
+- AIA-TEXT-A003-P048: 1
+- AIA-TEXT-A003-P051: 1
+- AIA-TEXT-A003-P052: 2
+- AIA-TEXT-A003-P053: 2
+- AIA-TEXT-A003-P054: 1
+- AIA-TEXT-A003-P059: 1
+- AIA-TEXT-A003-P060: 1
+- AIA-TEXT-A003-P061: 1
+- AIA-TEXT-A003-P062: 1
+- AIA-TEXT-A003-P063: 1
+- AIA-TEXT-A003-P064: 1
+- AIA-TEXT-A003-P065: 1
+- AIA-TEXT-A003-P066: 2
+- AIA-TEXT-A003-P067: 1
+- AIA-TEXT-A003-P068: 1
+- AIA-TEXT-A003-P069: 1
+- AIA-TEXT-A003-P070: 1
+- AIA-TEXT-A003-P076: 1
+- AIA-TEXT-A003-P077: 1
+- AIA-TEXT-A003-P078: 1
+- AIA-TEXT-A003-P079: 1
+- AIA-TEXT-A003-P080: 1
+- AIA-TEXT-A003-P081: 1
+- AIA-TEXT-A003-P082: 1
 - AIA-TEXT-A011-P1: 8
 - AIA-TEXT-A011-P3: 1
 - AIA-TEXT-A026-P5: 8
@@ -78,19 +149,19 @@ rule selection, judging, or reporting.
 - AIA-TEXT-ANNEX-VIII-C: 1
 
 - Exact source characters partitioned: 394667
-- Documents containing explicit review debt: 127
-- Characters displayed by the extraction pass: 51948
-- Independently approved characters: 6903
-- Characters deliberately left as review debt: 342719
-- Normative segments supporting multiple propositions: 20
-- Semantic candidates a shall-token pass missed: 33
-- Shall-token candidate recall: 70.0%
+- Documents containing explicit review debt: 126
+- Characters displayed by the extraction pass: 69963
+- Independently approved characters: 24941
+- Characters deliberately left as review debt: 324704
+- Normative segments supporting multiple propositions: 24
+- Semantic candidates a shall-token pass missed: 104
+- Shall-token candidate recall: 43.2%
 - In-scope semantic candidates absent from existing implementation: 25
-- Detection-channel counts: cross_reference_structure=25, deeming_or_consequence=40, existing_implementation=37, other_modal=9, semantic_legal_effect=110, shall_token=77
-- Mapping shapes, by norm: one-to-one=3, many-to-one=26, one-to-many=0, many-to-many=8, unmapped=73
+- Detection-channel counts: cross_reference_structure=96, deeming_or_consequence=43, existing_implementation=37, other_modal=12, semantic_legal_effect=183, shall_token=79
+- Mapping shapes, by norm: one-to-one=3, many-to-one=26, one-to-many=0, many-to-many=8, unmapped=146
 - Implementation debt candidates: 23
 - Interpretive links to non-binding guidance: 1
-- Review records with measured elapsed time: 0/1540
+- Review records with measured elapsed time: 0/1613
 
 ## Findings
 
@@ -110,4 +181,4 @@ rule selection, judging, or reporting.
 
 ## Review boundary
 
-Segment reviews covering 6903 source characters are independently approved. Approval applies to source coverage and segment dispositions; it does not by itself approve linked norm records. Remaining records are proposed findings or explicit `needs_review` debt. This report therefore does not claim legal completeness for the corpus.
+Segment reviews covering 24941 source characters are independently approved. Approval applies to source coverage and segment dispositions; it does not by itself approve linked norm records. Remaining records are proposed findings or explicit `needs_review` debt. This report therefore does not claim legal completeness for the corpus.

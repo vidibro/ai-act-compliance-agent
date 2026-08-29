@@ -44,6 +44,8 @@ class DocumentSource(BaseModel):
     kind: SourceKind
     number: str = Field(min_length=1)
     segmentation: Literal["declared", "paragraphs"] = "declared"
+    paragraph_disposition: SegmentDisposition = SegmentDisposition.NEEDS_REVIEW
+    paragraph_reason: str = DEFAULT_REVIEW_DEBT_REASON
     verified_by: str = ""
     divisions: list[DivisionSource] = Field(min_length=1)
 
@@ -56,11 +58,19 @@ class DocumentSource(BaseModel):
         labels = [division.label for division in self.divisions]
         if len(labels) != len(set(labels)):
             raise ValueError("division labels must be unique within a document")
-        if self.verified_by.strip() and any(
-            division.disposition is SegmentDisposition.NEEDS_REVIEW
-            for division in self.divisions
-        ):
+        has_review_debt = any(
+            division.disposition is SegmentDisposition.NEEDS_REVIEW for division in self.divisions
+        )
+        if self.segmentation == "paragraphs":
+            has_review_debt = self.paragraph_disposition is SegmentDisposition.NEEDS_REVIEW
+        if self.verified_by.strip() and has_review_debt:
             raise ValueError("verified document cannot contain review-debt divisions")
+        if (
+            self.segmentation == "paragraphs"
+            and self.paragraph_disposition is SegmentDisposition.CONTEXT_ONLY
+            and not self.paragraph_reason.strip()
+        ):
+            raise ValueError("context-only paragraph segmentation requires a reason")
         return self
 
 
@@ -256,7 +266,11 @@ def _review(
     }
 
 
-def _paragraph_partition(body: str) -> tuple[list[DivisionSource], list[int]]:
+def _paragraph_partition(
+    body: str,
+    disposition: SegmentDisposition,
+    reason: str,
+) -> tuple[list[DivisionSource], list[int]]:
     """Split a stored source into its structural heading and source-format paragraphs.
 
     The Formex-derived Markdown stores each legal paragraph or nested list item on one non-empty
@@ -286,8 +300,8 @@ def _paragraph_partition(body: str) -> tuple[list[DivisionSource], list[int]]:
             DivisionSource(
                 label=f"P{index:03d}",
                 marker=body[start : body.find("\n", start) if "\n" in body[start:] else len(body)],
-                disposition=SegmentDisposition.NEEDS_REVIEW,
-                reason=DEFAULT_REVIEW_DEBT_REASON,
+                disposition=disposition,
+                reason=reason,
             )
         )
         starts.append(start)
@@ -296,8 +310,8 @@ def _paragraph_partition(body: str) -> tuple[list[DivisionSource], list[int]]:
             DivisionSource(
                 label="P001",
                 marker=None,
-                disposition=SegmentDisposition.NEEDS_REVIEW,
-                reason=DEFAULT_REVIEW_DEBT_REASON,
+                disposition=disposition,
+                reason=reason,
             )
         )
         starts.append(0)
@@ -316,7 +330,11 @@ def _build_segments(
             expected_version=version_text,
         )
         if document.segmentation == "paragraphs":
-            divisions, starts = _paragraph_partition(body)
+            divisions, starts = _paragraph_partition(
+                body,
+                document.paragraph_disposition,
+                document.paragraph_reason,
+            )
         else:
             divisions = document.divisions
             starts = []

@@ -49,11 +49,12 @@ def test_inventory_partitions_the_complete_versioned_corpus(metrics):
     assert bundle.text_review.corpus_complete is True
     assert set(grouped) == expected
     assert metrics.documents == 133
-    assert metrics.documents_with_extracted_norms == 11
-    assert metrics.documents_with_review_debt == 127
+    assert metrics.documents_with_extracted_norms == 12
+    assert metrics.documents_with_review_debt == 126
     assert metrics.exact_source_characters == 394_667
     assert set(metrics.norms_by_document) == {
         "article 2",
+        "article 3",
         "article 11",
         "article 26",
         "article 43",
@@ -292,21 +293,101 @@ def test_article_two_commission_delegated_act_has_deadline_and_four_contents():
     assert norm.implementation_mode.value == "none_required"
 
 
+def test_article_three_is_fully_reviewed_as_definitions_and_embedded_consequences():
+    bundle = load_normative_coverage()
+    segments = [
+        segment
+        for segment in bundle.text_review.segments
+        if segment.source.kind.value == "article" and segment.source.document == "3"
+    ]
+    norms = [
+        norm
+        for norm in bundle.norm_inventory.norms
+        if norm.norm_id.startswith("AIA-NORM-A003-")
+    ]
+
+    assert len(segments) == 83
+    assert segments[0].disposition.value == "structural"
+    assert all(segment.disposition.value == "normative" for segment in segments[1:])
+    assert all(segment.review.status.value == "approved" for segment in segments)
+    assert all(segment.review.verified_by == "vidibro" for segment in segments)
+    assert len(norms) == 73
+    assert sum(norm.kind.value == "definition" for norm in norms) == 70
+    assert sum(norm.kind.value == "legal_consequence" for norm in norms) == 3
+    definition_norms = [norm for norm in norms if norm.kind.value == "definition"]
+    assert all(norm.product_scope.value == "dependency_only" for norm in definition_norms)
+    assert all(norm.implementation_mode.value == "none_required" for norm in definition_norms)
+
+
+def test_article_three_chapeau_and_nested_lists_are_qualifier_spans():
+    bundle = load_normative_coverage()
+    segments = {segment.segment_id: segment for segment in bundle.text_review.segments}
+    definitions = {
+        norm.norm_id: norm
+        for norm in bundle.norm_inventory.norms
+        if norm.norm_id.startswith("AIA-NORM-A003-") and norm.kind.value == "definition"
+    }
+
+    assert set(segments["AIA-TEXT-A003-P001"].norm_ids) == set(definitions)
+    assert all("AIA-TEXT-A003-P001" in norm.qualifier_spans for norm in definitions.values())
+    assert definitions["AIA-NORM-A003-D045-LAW-ENFORCEMENT-AUTHORITY"].qualifier_spans == [
+        "AIA-TEXT-A003-P001",
+        "AIA-TEXT-A003-P049",
+        "AIA-TEXT-A003-P050",
+    ]
+    assert definitions["AIA-NORM-A003-D049-SERIOUS-INCIDENT"].qualifier_spans == [
+        "AIA-TEXT-A003-P001",
+        "AIA-TEXT-A003-P055",
+        "AIA-TEXT-A003-P056",
+        "AIA-TEXT-A003-P057",
+        "AIA-TEXT-A003-P058",
+    ]
+    assert definitions["AIA-NORM-A003-D061-WIDESPREAD-INFRINGEMENT"].qualifier_spans == [
+        "AIA-TEXT-A003-P001",
+        "AIA-TEXT-A003-P071",
+        "AIA-TEXT-A003-P072",
+        "AIA-TEXT-A003-P073",
+        "AIA-TEXT-A003-P074",
+        "AIA-TEXT-A003-P075",
+    ]
+
+
+def test_article_three_preserves_embedded_reference_and_market_consequences():
+    bundle = load_normative_coverage()
+    norms = {
+        norm.norm_id: norm
+        for norm in bundle.norm_inventory.norms
+        if norm.norm_id.startswith("AIA-NORM-A003-")
+    }
+
+    expected = {
+        "AIA-NORM-A003-D047-AI-OFFICE-REFERENCE",
+        "AIA-NORM-A003-D048-EDPS-REFERENCE",
+        "AIA-NORM-A003-D057-REAL-WORLD-TESTING-NON-MARKET-EFFECT",
+    }
+    assert expected <= set(norms)
+    for norm_id in expected:
+        norm = norms[norm_id]
+        assert norm.kind.value == "legal_consequence"
+        assert norm.product_scope.value == "dependency_only"
+        assert norm.implementation_mode.value == "none_required"
+
+
 def test_inventory_cannot_be_misreported_as_independently_approved(metrics):
-    assert metrics.approved_characters == 6_903
-    assert metrics.needs_review_characters == 342_719
+    assert metrics.approved_characters == 24_941
+    assert metrics.needs_review_characters == 324_704
     assert metrics.review_statuses == {
-        "approved": 36,
-        "needs_review": 1222,
-        "proposed": 281,
+        "approved": 119,
+        "needs_review": 1140,
+        "proposed": 353,
     }
     assert metrics.timed_review_records == 0
-    assert metrics.total_review_records == 1540
+    assert metrics.total_review_records == 1613
 
 
 def test_semantic_pass_finds_propositions_a_shall_scan_misses(metrics):
-    assert metrics.shall_vs_semantic_disagreements == 33
-    assert metrics.shall_token_candidate_recall == pytest.approx(77 / 110)
+    assert metrics.shall_vs_semantic_disagreements == 104
+    assert metrics.shall_token_candidate_recall == pytest.approx(79 / 183)
     assert "AIA-NORM-A011-P1-SIMPLIFY" in metrics.semantic_norms_without_shall_token
     assert "AIA-NORM-A043-P5-AMEND" in metrics.semantic_norms_without_shall_token
     assert "AIA-NORM-A060-P4-PERMISSION" in metrics.semantic_norms_without_shall_token
@@ -314,10 +395,10 @@ def test_semantic_pass_finds_propositions_a_shall_scan_misses(metrics):
 
 
 def test_metrics_expose_many_to_many_and_implementation_debt(metrics):
-    assert metrics.normative_segments_with_multiple_norms == 20
+    assert metrics.normative_segments_with_multiple_norms == 24
     assert metrics.mapping_shape.many_norms_to_one_target == 26
     assert metrics.mapping_shape.many_to_many == 8
-    assert metrics.mapping_shape.unmapped == 73
+    assert metrics.mapping_shape.unmapped == 146
     assert metrics.semantic_vs_existing_implementation_disagreements == 25
     assert metrics.semantic_norms_without_existing_implementation == [
         "AIA-NORM-A002-P1-A-PROVIDER",
