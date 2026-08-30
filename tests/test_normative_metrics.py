@@ -49,8 +49,8 @@ def test_inventory_partitions_the_complete_versioned_corpus(metrics):
     assert bundle.text_review.corpus_complete is True
     assert set(grouped) == expected
     assert metrics.documents == 133
-    assert metrics.documents_with_extracted_norms == 22
-    assert metrics.documents_with_review_debt == 115
+    assert metrics.documents_with_extracted_norms == 23
+    assert metrics.documents_with_review_debt == 114
     assert metrics.exact_source_characters == 394_667
     assert set(metrics.norms_by_document) == {
         "article 2",
@@ -65,6 +65,7 @@ def test_inventory_partitions_the_complete_versioned_corpus(metrics):
         "article 10",
         "article 11",
         "article 12",
+        "article 13",
         "article 26",
         "article 43",
         "article 50",
@@ -840,21 +841,63 @@ def test_article_twelve_separates_general_and_biometric_logging_requirements():
     )
 
 
+def test_article_thirteen_keeps_instruction_qualities_and_contents_atomic():
+    bundle = load_normative_coverage()
+    segments = [
+        segment
+        for segment in bundle.text_review.segments
+        if segment.source.kind.value == "article" and segment.source.document == "13"
+    ]
+    norms = {
+        norm.norm_id: norm
+        for norm in bundle.norm_inventory.norms
+        if norm.norm_id.startswith("AIA-NORM-A013-")
+    }
+
+    assert len(segments) == 17
+    assert all(segment.review.status.value == "approved" for segment in segments)
+    assert all(segment.review.verified_by == "vidibro" for segment in segments)
+    assert len(norms) == 27
+    assert all(norm.kind.value == "obligation" for norm in norms.values())
+
+    transparency = {norm_id for norm_id in norms if "-P1-" in norm_id or "-P2-" in norm_id}
+    contents = set(norms) - transparency
+    assert len(transparency) == 10
+    assert len(contents) == 17
+    assert all(
+        norms[norm_id].implementation_refs == ["AIA-HR-A13"]
+        for norm_id in transparency
+    )
+    assert all(
+        norms[norm_id].implementation_refs == ["AIA-HR-A13-3"]
+        for norm_id in contents
+    )
+    assert all("AIA-TEXT-A013-P003" in norms[norm_id].qualifier_spans for norm_id in contents)
+    nested_characteristics = {
+        norm_id for norm_id in contents if "-P3-B-" in norm_id and "CHARACTERISTICS" not in norm_id
+    }
+    assert len(nested_characteristics) == 8
+    assert all(
+        "AIA-TEXT-A013-P005" in norms[norm_id].qualifier_spans
+        for norm_id in nested_characteristics
+    )
+
+
 def test_inventory_cannot_be_misreported_as_independently_approved(metrics):
-    assert metrics.approved_characters == 71_974
-    assert metrics.needs_review_characters == 279_598
+    assert metrics.approved_characters == 75_259
+    assert metrics.needs_review_characters == 276_380
     assert metrics.review_statuses == {
-        "approved": 303,
-        "needs_review": 968,
-        "proposed": 507,
+        "approved": 320,
+        "needs_review": 952,
+        "proposed": 533,
     }
     assert metrics.timed_review_records == 0
-    assert metrics.total_review_records == 1779
+    assert metrics.total_review_records == 1806
 
 
 def test_semantic_pass_finds_propositions_a_shall_scan_misses(metrics):
-    assert metrics.shall_vs_semantic_disagreements == 196
-    assert metrics.shall_token_candidate_recall == pytest.approx(153 / 349)
+    assert metrics.shall_vs_semantic_disagreements == 213
+    assert metrics.shall_token_candidate_recall == pytest.approx(163 / 376)
     assert "AIA-NORM-A011-P1-SIMPLIFY" in metrics.semantic_norms_without_shall_token
     assert "AIA-NORM-A043-P5-AMEND" in metrics.semantic_norms_without_shall_token
     assert "AIA-NORM-A060-P4-PERMISSION" in metrics.semantic_norms_without_shall_token
@@ -862,9 +905,9 @@ def test_semantic_pass_finds_propositions_a_shall_scan_misses(metrics):
 
 
 def test_metrics_expose_many_to_many_and_implementation_debt(metrics):
-    assert metrics.normative_segments_with_multiple_norms == 79
+    assert metrics.normative_segments_with_multiple_norms == 86
     assert metrics.mapping_shape.one_norm_to_one_target == 3
-    assert metrics.mapping_shape.many_norms_to_one_target == 87
+    assert metrics.mapping_shape.many_norms_to_one_target == 114
     assert metrics.mapping_shape.many_to_many == 8
     assert metrics.mapping_shape.unmapped == 251
     assert metrics.semantic_vs_existing_implementation_disagreements == 103

@@ -6,6 +6,8 @@ implementation_targets:
 - AIA-HR-A11
 - AIA-HR-A12
 - AIA-HR-A12-3
+- AIA-HR-A13
+- AIA-HR-A13-3
 - AIA-PO-A08-2
 - AIA-PO-A43-1B
 - AIA-PO-A43-3
@@ -3984,6 +3986,268 @@ records:
   - dependency_ref: Article 14(5) of this Regulation
     resolution: unresolved
     detail: Article 14(5) defines the referenced result-verification safeguards and has not yet been semantically reviewed.
+- norm_id: AIA-NORM-A013-P1-TRANSPARENT-OPERATION
+  source: A013-P001
+  quote: High-risk AI systems shall be designed and developed in such a way as to ensure that their operation is sufficiently transparent to enable deployers to interpret a system’s output and use it appropriately.
+  action: design and develop the high-risk AI system so its operation is sufficiently transparent for deployers to interpret its output and use it appropriately
+  subject_ref: provider
+  subject_category: supported_operator
+  implementation_refs: &article_13_implementation
+  - AIA-HR-A13
+  verification_mode: judged_from_document
+- norm_id: AIA-NORM-A013-P1-APPROPRIATE-TRANSPARENCY
+  source: A013-P001
+  quote: An appropriate type and degree of transparency shall be ensured with a view to achieving compliance with the relevant obligations of the provider and deployer set out in Section 3.
+  action: ensure a type and degree of transparency appropriate for provider and deployer compliance with Section 3
+  subject_ref: provider
+  subject_category: supported_operator
+  implementation_refs: *article_13_implementation
+  verification_mode: judged_from_document
+- norm_id: AIA-NORM-A013-P2-PROVIDE-INSTRUCTIONS
+  source: A013-P002
+  quote: High-risk AI systems shall be accompanied by instructions for use in an appropriate digital format or otherwise that include concise, complete, correct and clear information that is relevant, accessible and comprehensible to deployers.
+  action: accompany the high-risk AI system with instructions for use in an appropriate digital or other format
+  subject_ref: provider
+  subject_category: supported_operator
+  implementation_refs: *article_13_implementation
+  verification_mode: judged_from_document
+- norm_id: AIA-NORM-A013-P2-CONCISE
+  source: A013-P002
+  quote: High-risk AI systems shall be accompanied by instructions for use in an appropriate digital format or otherwise that include concise, complete, correct and clear information that is relevant, accessible and comprehensible to deployers.
+  action: ensure the instructions provide concise information
+  subject_ref: provider
+  subject_category: supported_operator
+  implementation_refs: *article_13_implementation
+  verification_mode: judged_from_document
+- norm_id: AIA-NORM-A013-P2-COMPLETE
+  source: A013-P002
+  quote: High-risk AI systems shall be accompanied by instructions for use in an appropriate digital format or otherwise that include concise, complete, correct and clear information that is relevant, accessible and comprehensible to deployers.
+  action: ensure the instructions provide complete information
+  subject_ref: provider
+  subject_category: supported_operator
+  implementation_refs: *article_13_implementation
+  verification_mode: judged_from_document
+- norm_id: AIA-NORM-A013-P2-CORRECT
+  source: A013-P002
+  quote: High-risk AI systems shall be accompanied by instructions for use in an appropriate digital format or otherwise that include concise, complete, correct and clear information that is relevant, accessible and comprehensible to deployers.
+  action: ensure the instructions provide correct information
+  subject_ref: provider
+  subject_category: supported_operator
+  implementation_refs: *article_13_implementation
+  verification_mode: judged_from_document
+- norm_id: AIA-NORM-A013-P2-CLEAR
+  source: A013-P002
+  quote: High-risk AI systems shall be accompanied by instructions for use in an appropriate digital format or otherwise that include concise, complete, correct and clear information that is relevant, accessible and comprehensible to deployers.
+  action: ensure the instructions provide clear information
+  subject_ref: provider
+  subject_category: supported_operator
+  implementation_refs: *article_13_implementation
+  verification_mode: judged_from_document
+- norm_id: AIA-NORM-A013-P2-RELEVANT
+  source: A013-P002
+  quote: High-risk AI systems shall be accompanied by instructions for use in an appropriate digital format or otherwise that include concise, complete, correct and clear information that is relevant, accessible and comprehensible to deployers.
+  action: ensure the instructions provide information relevant to deployers
+  subject_ref: provider
+  subject_category: supported_operator
+  implementation_refs: *article_13_implementation
+  verification_mode: judged_from_document
+- norm_id: AIA-NORM-A013-P2-ACCESSIBLE
+  source: A013-P002
+  quote: High-risk AI systems shall be accompanied by instructions for use in an appropriate digital format or otherwise that include concise, complete, correct and clear information that is relevant, accessible and comprehensible to deployers.
+  action: ensure the instructions provide information accessible to deployers
+  subject_ref: provider
+  subject_category: supported_operator
+  implementation_refs: *article_13_implementation
+  verification_mode: judged_from_document
+- norm_id: AIA-NORM-A013-P2-COMPREHENSIBLE
+  source: A013-P002
+  quote: High-risk AI systems shall be accompanied by instructions for use in an appropriate digital format or otherwise that include concise, complete, correct and clear information that is relevant, accessible and comprehensible to deployers.
+  action: ensure the instructions provide information comprehensible to deployers
+  subject_ref: provider
+  subject_category: supported_operator
+  implementation_refs: *article_13_implementation
+  verification_mode: judged_from_document
+- norm_id: AIA-NORM-A013-P3-A-CONTACT-DETAILS
+  source: A013-P004
+  quote: the identity and the contact details of the provider and, where applicable, of its authorised representative
+  action: include the provider’s identity and contact details and, where applicable, those of its authorised representative in the instructions
+  subject_ref: provider
+  subject_category: supported_operator
+  qualifier_spans: &article_13_p3_chapeau
+  - A013-P003
+  implementation_refs: &article_13_content_implementation
+  - AIA-HR-A13-3
+  verification_mode: judged_from_document
+- norm_id: AIA-NORM-A013-P3-B-PERFORMANCE-CHARACTERISTICS
+  source: A013-P005
+  quote: the characteristics, capabilities and limitations of performance of the high-risk AI system
+  action: include the system’s characteristics, capabilities, and performance limitations in the instructions
+  subject_ref: provider
+  subject_category: supported_operator
+  qualifier_spans: *article_13_p3_chapeau
+  implementation_refs: *article_13_content_implementation
+  verification_mode: judged_from_document
+- norm_id: AIA-NORM-A013-P3-B-I-INTENDED-PURPOSE
+  source: A013-P006
+  quote: its intended purpose
+  action: include the system’s intended purpose in the instructions
+  subject_ref: provider
+  subject_category: supported_operator
+  qualifier_spans: &article_13_p3_b_chapeaux
+  - A013-P003
+  - A013-P005
+  implementation_refs: *article_13_content_implementation
+  verification_mode: judged_from_document
+- norm_id: AIA-NORM-A013-P3-B-II-EXPECTED-PERFORMANCE
+  source: A013-P007
+  quote: the level of accuracy, including its metrics, robustness and cybersecurity referred to in Article 15 against which the high-risk AI system has been tested and validated and which can be expected, and any known and foreseeable circumstances that may have an impact on that expected level of accuracy, robustness and cybersecurity
+  action: include tested, validated, and expected accuracy levels and metrics, robustness, and cybersecurity in the instructions
+  subject_ref: provider
+  subject_category: supported_operator
+  qualifier_spans: *article_13_p3_b_chapeaux
+  implementation_refs: *article_13_content_implementation
+  verification_mode: judged_from_document
+  dependencies:
+  - dependency_ref: Article 15 of this Regulation
+    resolution: unresolved
+    detail: Article 15 supplies the referenced accuracy, robustness, and cybersecurity requirements and has not yet been semantically reviewed.
+- norm_id: AIA-NORM-A013-P3-B-II-AFFECTING-CIRCUMSTANCES
+  source: A013-P007
+  quote: the level of accuracy, including its metrics, robustness and cybersecurity referred to in Article 15 against which the high-risk AI system has been tested and validated and which can be expected, and any known and foreseeable circumstances that may have an impact on that expected level of accuracy, robustness and cybersecurity
+  action: include known and foreseeable circumstances that may affect expected accuracy, robustness, or cybersecurity
+  subject_ref: provider
+  subject_category: supported_operator
+  qualifier_spans: *article_13_p3_b_chapeaux
+  implementation_refs: *article_13_content_implementation
+  verification_mode: judged_from_document
+- norm_id: AIA-NORM-A013-P3-B-III-RISK-CIRCUMSTANCES
+  source: A013-P008
+  quote: any known or foreseeable circumstance, related to the use of the high-risk AI system in accordance with its intended purpose or under conditions of reasonably foreseeable misuse, which may lead to risks to the health and safety or fundamental rights referred to in Article 9(2)
+  action: include known or foreseeable intended-use or misuse circumstances that may create health, safety, or fundamental-rights risks
+  subject_ref: provider
+  subject_category: supported_operator
+  qualifier_spans: *article_13_p3_b_chapeaux
+  implementation_refs: *article_13_content_implementation
+  verification_mode: judged_from_document
+- norm_id: AIA-NORM-A013-P3-B-IV-EXPLAIN-OUTPUT
+  source: A013-P009
+  quote: where applicable, the technical capabilities and characteristics of the high-risk AI system to provide information that is relevant to explain its output
+  action: include technical capabilities and characteristics relevant to explaining system outputs
+  subject_ref: provider
+  subject_category: supported_operator
+  qualifier_spans: *article_13_p3_b_chapeaux
+  conditions:
+  - the system has technical capabilities or characteristics relevant to explaining its output
+  implementation_refs: *article_13_content_implementation
+  verification_mode: judged_from_document
+- norm_id: AIA-NORM-A013-P3-B-V-GROUP-PERFORMANCE
+  source: A013-P010
+  quote: when appropriate, its performance regarding specific persons or groups of persons on which the system is intended to be used
+  action: include performance concerning specific persons or groups on which the system is intended to be used
+  subject_ref: provider
+  subject_category: supported_operator
+  qualifier_spans: *article_13_p3_b_chapeaux
+  conditions:
+  - information about performance for intended persons or groups is appropriate
+  implementation_refs: *article_13_content_implementation
+  verification_mode: judged_from_document
+- norm_id: AIA-NORM-A013-P3-B-VI-INPUT-DATA
+  source: A013-P011
+  quote: when appropriate, specifications for the input data, or any other relevant information in terms of the training, validation and testing data sets used, taking into account the intended purpose of the high-risk AI system
+  action: include input-data specifications or other relevant information about the training, validation, and testing datasets used
+  subject_ref: provider
+  subject_category: supported_operator
+  qualifier_spans: *article_13_p3_b_chapeaux
+  conditions:
+  - input-data specifications or dataset information is appropriate for the intended purpose
+  implementation_refs: *article_13_content_implementation
+  verification_mode: judged_from_document
+- norm_id: AIA-NORM-A013-P3-B-VII-INTERPRET-OUTPUT
+  source: A013-P012
+  quote: where applicable, information to enable deployers to interpret the output of the high-risk AI system and use it appropriately
+  action: include information enabling deployers to interpret system outputs and use them appropriately
+  subject_ref: provider
+  subject_category: supported_operator
+  qualifier_spans: *article_13_p3_b_chapeaux
+  conditions:
+  - information is applicable to deployer interpretation and appropriate use of system outputs
+  implementation_refs: *article_13_content_implementation
+  verification_mode: judged_from_document
+- norm_id: AIA-NORM-A013-P3-C-PREDETERMINED-CHANGES
+  source: A013-P013
+  quote: the changes to the high-risk AI system and its performance which have been pre-determined by the provider at the moment of the initial conformity assessment, if any
+  action: include system and performance changes predetermined at the initial conformity assessment
+  subject_ref: provider
+  subject_category: supported_operator
+  qualifier_spans: *article_13_p3_chapeau
+  conditions:
+  - the provider predetermined changes to the system or its performance at the initial conformity assessment
+  implementation_refs: *article_13_content_implementation
+  verification_mode: judged_from_document
+- norm_id: AIA-NORM-A013-P3-D-HUMAN-OVERSIGHT
+  source: A013-P014
+  quote: the human oversight measures referred to in Article 14, including the technical measures put in place to facilitate the interpretation of the outputs of the high-risk AI systems by the deployers
+  action: include the Article 14 human-oversight measures in the instructions
+  subject_ref: provider
+  subject_category: supported_operator
+  qualifier_spans: *article_13_p3_chapeau
+  implementation_refs: *article_13_content_implementation
+  verification_mode: judged_from_document
+  dependencies:
+  - dependency_ref: Article 14 of this Regulation
+    resolution: unresolved
+    detail: Article 14 supplies the referenced human-oversight requirements and has not yet been semantically reviewed.
+- norm_id: AIA-NORM-A013-P3-D-OUTPUT-INTERPRETATION-MEASURES
+  source: A013-P014
+  quote: the human oversight measures referred to in Article 14, including the technical measures put in place to facilitate the interpretation of the outputs of the high-risk AI systems by the deployers
+  action: include technical measures that help deployers interpret high-risk system outputs
+  subject_ref: provider
+  subject_category: supported_operator
+  qualifier_spans: *article_13_p3_chapeau
+  implementation_refs: *article_13_content_implementation
+  verification_mode: judged_from_document
+- norm_id: AIA-NORM-A013-P3-E-RESOURCES
+  source: A013-P015
+  quote: the computational and hardware resources needed, the expected lifetime of the high-risk AI system and any necessary maintenance and care measures, including their frequency, to ensure the proper functioning of that AI system, including as regards software updates
+  action: include the computational and hardware resources needed by the system
+  subject_ref: provider
+  subject_category: supported_operator
+  qualifier_spans: *article_13_p3_chapeau
+  implementation_refs: *article_13_content_implementation
+  verification_mode: judged_from_document
+- norm_id: AIA-NORM-A013-P3-E-EXPECTED-LIFETIME
+  source: A013-P015
+  quote: the computational and hardware resources needed, the expected lifetime of the high-risk AI system and any necessary maintenance and care measures, including their frequency, to ensure the proper functioning of that AI system, including as regards software updates
+  action: include the expected lifetime of the system
+  subject_ref: provider
+  subject_category: supported_operator
+  qualifier_spans: *article_13_p3_chapeau
+  implementation_refs: *article_13_content_implementation
+  verification_mode: judged_from_document
+- norm_id: AIA-NORM-A013-P3-E-MAINTENANCE
+  source: A013-P015
+  quote: the computational and hardware resources needed, the expected lifetime of the high-risk AI system and any necessary maintenance and care measures, including their frequency, to ensure the proper functioning of that AI system, including as regards software updates
+  action: include necessary maintenance and care measures, their frequency, and software-update needs for proper functioning
+  subject_ref: provider
+  subject_category: supported_operator
+  qualifier_spans: *article_13_p3_chapeau
+  implementation_refs: *article_13_content_implementation
+  verification_mode: judged_from_document
+- norm_id: AIA-NORM-A013-P3-F-LOG-MECHANISMS
+  source: A013-P016
+  quote: where relevant, a description of the mechanisms included within the high-risk AI system that allows deployers to properly collect, store and interpret the logs in accordance with Article 12
+  action: describe relevant system mechanisms that let deployers properly collect, store, and interpret Article 12 logs
+  subject_ref: provider
+  subject_category: supported_operator
+  qualifier_spans: *article_13_p3_chapeau
+  conditions:
+  - the system includes mechanisms relevant to deployer collection, storage, or interpretation of logs
+  implementation_refs: *article_13_content_implementation
+  verification_mode: judged_from_document
+  dependencies:
+  - dependency_ref: AIA-NORM-A012-P1-AUTOMATIC-LOGGING
+    resolution: internal_resolved
+    detail: Article 12 supplies the automatic-logging requirement whose mechanisms are described here.
 - norm_id: AIA-NORM-A026-P5-MONITOR
   source: A026-P5
   quote: Deployers shall monitor the operation of the high-risk AI system

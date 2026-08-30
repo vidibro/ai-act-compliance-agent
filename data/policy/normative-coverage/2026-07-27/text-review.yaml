@@ -7062,9 +7062,9 @@ segments:
   disposition_reason: ''
   norm_ids: []
   review:
-    status: proposed
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
     display_chunks: 1
@@ -7083,17 +7083,19 @@ segments:
     \ use it appropriately. An appropriate type and degree of transparency shall be ensured with a view\
     \ to achieving compliance with the relevant obligations of the provider and deployer set out in Section\
     \ 3.\n"
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A013-P1-TRANSPARENT-OPERATION
+  - AIA-NORM-A013-P1-APPROPRIATE-TRANSPARENCY
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A013-P002
   source:
@@ -7108,17 +7110,25 @@ segments:
     accessible and comprehensible to deployers.
 
     '
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A013-P2-PROVIDE-INSTRUCTIONS
+  - AIA-NORM-A013-P2-CONCISE
+  - AIA-NORM-A013-P2-COMPLETE
+  - AIA-NORM-A013-P2-CORRECT
+  - AIA-NORM-A013-P2-CLEAR
+  - AIA-NORM-A013-P2-RELEVANT
+  - AIA-NORM-A013-P2-ACCESSIBLE
+  - AIA-NORM-A013-P2-COMPREHENSIBLE
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A013-P003
   source:
@@ -7131,17 +7141,34 @@ segments:
   text: '3. The instructions for use shall contain at least the following information:
 
     '
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A013-P3-A-CONTACT-DETAILS
+  - AIA-NORM-A013-P3-B-PERFORMANCE-CHARACTERISTICS
+  - AIA-NORM-A013-P3-B-I-INTENDED-PURPOSE
+  - AIA-NORM-A013-P3-B-II-EXPECTED-PERFORMANCE
+  - AIA-NORM-A013-P3-B-II-AFFECTING-CIRCUMSTANCES
+  - AIA-NORM-A013-P3-B-III-RISK-CIRCUMSTANCES
+  - AIA-NORM-A013-P3-B-IV-EXPLAIN-OUTPUT
+  - AIA-NORM-A013-P3-B-V-GROUP-PERFORMANCE
+  - AIA-NORM-A013-P3-B-VI-INPUT-DATA
+  - AIA-NORM-A013-P3-B-VII-INTERPRET-OUTPUT
+  - AIA-NORM-A013-P3-C-PREDETERMINED-CHANGES
+  - AIA-NORM-A013-P3-D-HUMAN-OVERSIGHT
+  - AIA-NORM-A013-P3-D-OUTPUT-INTERPRETATION-MEASURES
+  - AIA-NORM-A013-P3-E-RESOURCES
+  - AIA-NORM-A013-P3-E-EXPECTED-LIFETIME
+  - AIA-NORM-A013-P3-E-MAINTENANCE
+  - AIA-NORM-A013-P3-F-LOG-MECHANISMS
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A013-P004
   source:
@@ -7155,17 +7182,18 @@ segments:
     authorised representative;
 
     '
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A013-P3-A-CONTACT-DETAILS
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A013-P005
   source:
@@ -7179,17 +7207,26 @@ segments:
     AI system, including:
 
     '
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A013-P3-B-PERFORMANCE-CHARACTERISTICS
+  - AIA-NORM-A013-P3-B-I-INTENDED-PURPOSE
+  - AIA-NORM-A013-P3-B-II-EXPECTED-PERFORMANCE
+  - AIA-NORM-A013-P3-B-II-AFFECTING-CIRCUMSTANCES
+  - AIA-NORM-A013-P3-B-III-RISK-CIRCUMSTANCES
+  - AIA-NORM-A013-P3-B-IV-EXPLAIN-OUTPUT
+  - AIA-NORM-A013-P3-B-V-GROUP-PERFORMANCE
+  - AIA-NORM-A013-P3-B-VI-INPUT-DATA
+  - AIA-NORM-A013-P3-B-VII-INTERPRET-OUTPUT
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A013-P006
   source:
@@ -7202,17 +7239,18 @@ segments:
   text: '                (i) its intended purpose;
 
     '
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A013-P3-B-I-INTENDED-PURPOSE
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A013-P007
   source:
@@ -7228,17 +7266,19 @@ segments:
     expected level of accuracy, robustness and cybersecurity;
 
     '
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A013-P3-B-II-EXPECTED-PERFORMANCE
+  - AIA-NORM-A013-P3-B-II-AFFECTING-CIRCUMSTANCES
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A013-P008
   source:
@@ -7253,17 +7293,18 @@ segments:
     which may lead to risks to the health and safety or fundamental rights referred to in Article 9(2);
 
     '
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A013-P3-B-III-RISK-CIRCUMSTANCES
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A013-P009
   source:
@@ -7277,17 +7318,18 @@ segments:
     high-risk AI system to provide information that is relevant to explain its output;
 
     '
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A013-P3-B-IV-EXPLAIN-OUTPUT
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A013-P010
   source:
@@ -7301,17 +7343,18 @@ segments:
     persons on which the system is intended to be used;
 
     '
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A013-P3-B-V-GROUP-PERFORMANCE
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A013-P011
   source:
@@ -7326,17 +7369,18 @@ segments:
     intended purpose of the high-risk AI system;
 
     '
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A013-P3-B-VI-INPUT-DATA
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A013-P012
   source:
@@ -7350,17 +7394,18 @@ segments:
     of the high-risk AI system and use it appropriately;
 
     '
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A013-P3-B-VII-INTERPRET-OUTPUT
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A013-P013
   source:
@@ -7374,17 +7419,18 @@ segments:
     by the provider at the moment of the initial conformity assessment, if any;
 
     '
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A013-P3-C-PREDETERMINED-CHANGES
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A013-P014
   source:
@@ -7398,17 +7444,19 @@ segments:
     put in place to facilitate the interpretation of the outputs of the high-risk AI systems by the deployers;
 
     '
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A013-P3-D-HUMAN-OVERSIGHT
+  - AIA-NORM-A013-P3-D-OUTPUT-INTERPRETATION-MEASURES
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A013-P015
   source:
@@ -7423,17 +7471,20 @@ segments:
     proper functioning of that AI system, including as regards software updates;
 
     '
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A013-P3-E-RESOURCES
+  - AIA-NORM-A013-P3-E-EXPECTED-LIFETIME
+  - AIA-NORM-A013-P3-E-MAINTENANCE
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A013-P016
   source:
@@ -7448,17 +7499,18 @@ segments:
     Article 12.
 
     '
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A013-P3-F-LOG-MECHANISMS
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A014-HEAD
   source:
