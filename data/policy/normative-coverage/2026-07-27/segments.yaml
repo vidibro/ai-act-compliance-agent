@@ -254,6 +254,7 @@ documents:
     disposition: structural
 - kind: article
   number: '11'
+  verified_by: vidibro
   divisions:
   - label: HEAD
     marker: null
@@ -263,8 +264,7 @@ documents:
     disposition: normative
   - label: P2
     marker: '2. '
-    disposition: needs_review
-    reason: Not yet semantically extracted; retained as explicit review debt.
+    disposition: normative
   - label: P3
     marker: '3. '
     disposition: normative

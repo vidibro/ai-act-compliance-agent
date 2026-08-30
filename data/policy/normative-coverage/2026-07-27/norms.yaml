@@ -10605,11 +10605,49 @@ norms:
   subjects:
   - subject_ref: provider
     category: supported_operator
-  action: draw up documentation that demonstrates compliance and enables assessment
+  action: draw up documentation that demonstrates compliance with the requirements in Chapter III, Section
+    2
   norm_text: shall be drawn up in such a way as to demonstrate that the high-risk AI system complies
   detection_channels:
   - semantic_legal_effect
   - shall_token
+  - existing_implementation
+  primary_spans:
+  - AIA-TEXT-A011-P1
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions: []
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: in_scope
+  product_scope_reason: ''
+  implementation_mode: compliance_rule
+  implementation_refs:
+  - AIA-HR-A11
+  implementation_reason: ''
+  verification_mode: judged_from_document
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A011-P1-ASSESSMENT-INFORMATION
+  act_version_date: '2026-07-27'
+  kind: obligation
+  subjects:
+  - subject_ref: provider
+    category: supported_operator
+  action: provide national competent authorities and notified bodies with the clear and comprehensive
+    information necessary to assess compliance
+  norm_text: to provide national competent authorities and notified bodies with the necessary information
+    in a clear and comprehensive form to assess the compliance of the AI system with those requirements
+  detection_channels:
+  - semantic_legal_effect
   - existing_implementation
   primary_spans:
   - AIA-TEXT-A011-P1
@@ -10806,6 +10844,54 @@ norms:
   implementation_refs: []
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_assessed
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A011-P2-SINGLE-DOCUMENTATION-SET
+  act_version_date: '2026-07-27'
+  kind: obligation
+  subjects:
+  - subject_ref: provider
+    category: supported_operator
+  action: draw up one technical-documentation set containing both the Article 11(1) information and the
+    information required by the applicable Annex I Section A legislation
+  norm_text: a single set of technical documentation shall be drawn up containing all the information
+    set out in paragraph 1, as well as the information required under those legal acts
+  detection_channels:
+  - semantic_legal_effect
+  - shall_token
+  - cross_reference_structure
+  - existing_implementation
+  primary_spans:
+  - AIA-TEXT-A011-P2
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions:
+  - the high-risk AI system relates to a product covered by Union harmonisation legislation listed in
+    Annex I, Section A
+  exceptions: []
+  mandatory_content: []
+  dependencies:
+  - dependency_ref: AIA-NORM-A011-P1-ANNEX-IV
+    resolution: internal_resolved
+    detail: Article 11(1) supplies the AI Act information that must be included in the single documentation
+      set.
+  - dependency_ref: Annex I, Section A Union harmonisation legislation
+    resolution: external_recorded
+    detail: The applicable sectoral legal act supplies the additional information that must be included.
+  product_scope: in_scope
+  product_scope_reason: ''
+  implementation_mode: compliance_rule
+  implementation_refs:
+  - AIA-HR-A11
+  implementation_reason: ''
+  verification_mode: judged_from_document
   review:
     status: proposed
     extracted_by: semantic-legal-effect-pass
