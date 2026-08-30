@@ -4629,9 +4629,8 @@ records:
   subject_ref: provider
   subject_category: supported_operator
   qualifier_spans: *article_16_chapeau
-  implementation_refs:
-  - AIA-PO-A18
-  implementation_reason: The Article 18 rule carries the substantive documentation-retention finding.
+  implementation_mode: carried_by_other_norm
+  implementation_reason: The five Article 18(1) retention norms collectively carry this cross-reference obligation.
   verification_mode: judged_from_document
 - norm_id: AIA-NORM-A016-E-KEEP-LOGS
   source: A016-P006
@@ -4938,6 +4937,90 @@ records:
   conditions:
   - the provider relies on Union financial-services governance compliance to fulfil the Article 17 QMS obligation
   implementation_refs: *article_17_implementation
+  verification_mode: listed_for_confirmation
+- norm_id: AIA-NORM-A018-P1-A-TECHNICAL-DOCUMENTATION
+  source: A018-P002
+  quote: the technical documentation referred to in Article 11
+  action: keep the Article 11 technical documentation available to national competent authorities until ten years after market placement or being put into service
+  subject_ref: provider
+  subject_category: supported_operator
+  qualifier_spans: &article_18_p1_chapeau
+  - A018-P001
+  implementation_refs: &article_18_implementation
+  - AIA-PO-A18
+  verification_mode: listed_for_confirmation
+  dependencies:
+  - dependency_ref: AIA-NORM-A011-P1-DRAW
+    resolution: internal_resolved
+    detail: Article 11 supplies the referenced technical-documentation requirement.
+- norm_id: AIA-NORM-A018-P1-B-QMS-DOCUMENTATION
+  source: A018-P003
+  quote: the documentation concerning the quality management system referred to in Article 17
+  action: keep the Article 17 quality-management-system documentation available to national competent authorities until ten years after market placement or being put into service
+  subject_ref: provider
+  subject_category: supported_operator
+  qualifier_spans: *article_18_p1_chapeau
+  implementation_refs: *article_18_implementation
+  verification_mode: listed_for_confirmation
+  dependencies:
+  - dependency_ref: AIA-NORM-A017-P1-WRITTEN-DOCUMENTATION
+    resolution: internal_resolved
+    detail: Article 17 supplies the referenced quality-management-system documentation requirement.
+- norm_id: AIA-NORM-A018-P1-C-APPROVED-CHANGES
+  source: A018-P004
+  quote: the documentation concerning the changes approved by notified bodies, where applicable
+  action: keep documentation of changes approved by notified bodies available to national competent authorities until ten years after market placement or being put into service
+  subject_ref: provider
+  subject_category: supported_operator
+  qualifier_spans: *article_18_p1_chapeau
+  conditions:
+  - a notified body approved changes to the high-risk AI system
+  implementation_refs: *article_18_implementation
+  verification_mode: listed_for_confirmation
+- norm_id: AIA-NORM-A018-P1-D-NOTIFIED-BODY-DOCUMENTS
+  source: A018-P005
+  quote: the decisions and other documents issued by the notified bodies, where applicable
+  action: keep notified-body decisions and other documents available to national competent authorities until ten years after market placement or being put into service
+  subject_ref: provider
+  subject_category: supported_operator
+  qualifier_spans: *article_18_p1_chapeau
+  conditions:
+  - a notified body issued decisions or other documents concerning the high-risk AI system
+  implementation_refs: *article_18_implementation
+  verification_mode: listed_for_confirmation
+- norm_id: AIA-NORM-A018-P1-E-EU-DECLARATION
+  source: A018-P006
+  quote: the EU declaration of conformity referred to in Article 47
+  action: keep the Article 47 EU declaration of conformity available to national competent authorities until ten years after market placement or being put into service
+  subject_ref: provider
+  subject_category: supported_operator
+  qualifier_spans: *article_18_p1_chapeau
+  implementation_refs: *article_18_implementation
+  verification_mode: listed_for_confirmation
+  dependencies:
+  - dependency_ref: Article 47 of this Regulation
+    resolution: unresolved
+    detail: Article 47 supplies the EU declaration requirements and has not yet been semantically reviewed.
+- norm_id: AIA-NORM-A018-P2-MEMBER-STATE-CONDITIONS
+  source: A018-P007
+  quote: Each Member State shall determine conditions under which the documentation referred to in paragraph 1 remains at the disposal of the national competent authorities for the period indicated in that paragraph for the cases when a provider or its authorised representative established on its territory goes bankrupt or ceases its activity prior to the end of that period.
+  action: determine conditions preserving authority access to Article 18(1) documentation after a locally established provider or authorised representative becomes bankrupt or ceases activity early
+  subject_ref: member_state
+  subject_category: member_state
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A018-P3-FINANCIAL-DOCUMENTATION
+  source: A018-P008
+  quote: Providers that are financial institutions subject to requirements regarding their internal governance, arrangements or processes under Union financial services law shall maintain the technical documentation as part of the documentation kept under the relevant Union financial services law.
+  action: maintain Article 11 technical documentation within the documentation kept under applicable Union financial-services law
+  subject_ref: financial_institution_provider
+  subject_category: supported_operator
+  conditions:
+  - the provider is a financial institution subject to internal-governance requirements under Union financial-services law
+  implementation_refs: *article_18_implementation
   verification_mode: listed_for_confirmation
 - norm_id: AIA-NORM-A026-P5-MONITOR
   source: A026-P5
@@ -5794,6 +5877,12 @@ records:
   verification_mode: unresolved
   mandatory_content_source: numbered_items
 carried_by:
+  AIA-NORM-A016-D-KEEP-DOCUMENTATION:
+  - AIA-NORM-A018-P1-A-TECHNICAL-DOCUMENTATION
+  - AIA-NORM-A018-P1-B-QMS-DOCUMENTATION
+  - AIA-NORM-A018-P1-C-APPROVED-CHANGES
+  - AIA-NORM-A018-P1-D-NOTIFIED-BODY-DOCUMENTS
+  - AIA-NORM-A018-P1-E-EU-DECLARATION
   AIA-NORM-A016-C-QUALITY-MANAGEMENT:
   - AIA-NORM-A017-P1-QMS
   AIA-NORM-A010-P5-SPECIAL-CATEGORY-PROCESSING:
