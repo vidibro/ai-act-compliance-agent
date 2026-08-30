@@ -7326,6 +7326,1153 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+- norm_id: AIA-NORM-A009-P1-ESTABLISH
+  act_version_date: '2026-07-27'
+  kind: obligation
+  subjects:
+  - subject_ref: provider
+    category: supported_operator
+  action: establish a risk-management system for each high-risk AI system
+  norm_text: A risk management system shall be established, implemented, documented and maintained in
+    relation to high-risk AI systems.
+  detection_channels:
+  - semantic_legal_effect
+  - shall_token
+  - existing_implementation
+  primary_spans:
+  - AIA-TEXT-A009-P001
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions: []
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: in_scope
+  product_scope_reason: ''
+  implementation_mode: compliance_rule
+  implementation_refs:
+  - AIA-HR-A09
+  implementation_reason: ''
+  verification_mode: judged_from_document
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A009-P1-IMPLEMENT
+  act_version_date: '2026-07-27'
+  kind: obligation
+  subjects:
+  - subject_ref: provider
+    category: supported_operator
+  action: implement the risk-management system
+  norm_text: A risk management system shall be established, implemented, documented and maintained in
+    relation to high-risk AI systems.
+  detection_channels:
+  - semantic_legal_effect
+  - shall_token
+  - existing_implementation
+  primary_spans:
+  - AIA-TEXT-A009-P001
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions: []
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: in_scope
+  product_scope_reason: ''
+  implementation_mode: compliance_rule
+  implementation_refs:
+  - AIA-HR-A09
+  implementation_reason: ''
+  verification_mode: judged_from_document
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A009-P1-DOCUMENT
+  act_version_date: '2026-07-27'
+  kind: obligation
+  subjects:
+  - subject_ref: provider
+    category: supported_operator
+  action: document the risk-management system
+  norm_text: A risk management system shall be established, implemented, documented and maintained in
+    relation to high-risk AI systems.
+  detection_channels:
+  - semantic_legal_effect
+  - shall_token
+  - existing_implementation
+  primary_spans:
+  - AIA-TEXT-A009-P001
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions: []
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: in_scope
+  product_scope_reason: ''
+  implementation_mode: compliance_rule
+  implementation_refs:
+  - AIA-HR-A09
+  implementation_reason: ''
+  verification_mode: judged_from_document
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A009-P1-MAINTAIN
+  act_version_date: '2026-07-27'
+  kind: obligation
+  subjects:
+  - subject_ref: provider
+    category: supported_operator
+  action: maintain the risk-management system
+  norm_text: A risk management system shall be established, implemented, documented and maintained in
+    relation to high-risk AI systems.
+  detection_channels:
+  - semantic_legal_effect
+  - shall_token
+  - existing_implementation
+  primary_spans:
+  - AIA-TEXT-A009-P001
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions: []
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: in_scope
+  product_scope_reason: ''
+  implementation_mode: compliance_rule
+  implementation_refs:
+  - AIA-HR-A09
+  implementation_reason: ''
+  verification_mode: judged_from_document
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A009-P2-LIFECYCLE-PROCESS
+  act_version_date: '2026-07-27'
+  kind: obligation
+  subjects:
+  - subject_ref: provider
+    category: supported_operator
+  action: plan and operate risk management as a continuous iterative process throughout the entire high-risk
+    AI-system lifecycle
+  norm_text: The risk management system shall be understood as a continuous iterative process planned
+    and run throughout the entire lifecycle of a high-risk AI system
+  detection_channels:
+  - semantic_legal_effect
+  - shall_token
+  - existing_implementation
+  primary_spans:
+  - AIA-TEXT-A009-P002
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions: []
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: in_scope
+  product_scope_reason: ''
+  implementation_mode: compliance_rule
+  implementation_refs:
+  - AIA-HR-A09
+  implementation_reason: ''
+  verification_mode: judged_from_document
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A009-P2-REVIEW
+  act_version_date: '2026-07-27'
+  kind: obligation
+  subjects:
+  - subject_ref: provider
+    category: supported_operator
+  action: conduct regular systematic reviews of the risk-management system
+  norm_text: requiring regular systematic review and updating.
+  detection_channels:
+  - semantic_legal_effect
+  - existing_implementation
+  primary_spans:
+  - AIA-TEXT-A009-P002
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions: []
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: in_scope
+  product_scope_reason: ''
+  implementation_mode: compliance_rule
+  implementation_refs:
+  - AIA-HR-A09
+  implementation_reason: ''
+  verification_mode: judged_from_document
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A009-P2-UPDATE
+  act_version_date: '2026-07-27'
+  kind: obligation
+  subjects:
+  - subject_ref: provider
+    category: supported_operator
+  action: regularly update the risk-management system
+  norm_text: requiring regular systematic review and updating.
+  detection_channels:
+  - semantic_legal_effect
+  - existing_implementation
+  primary_spans:
+  - AIA-TEXT-A009-P002
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions: []
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: in_scope
+  product_scope_reason: ''
+  implementation_mode: compliance_rule
+  implementation_refs:
+  - AIA-HR-A09
+  implementation_reason: ''
+  verification_mode: judged_from_document
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A009-P2-A-IDENTIFY-ANALYSE
+  act_version_date: '2026-07-27'
+  kind: obligation
+  subjects:
+  - subject_ref: provider
+    category: supported_operator
+  action: identify and analyse known and reasonably foreseeable intended-use risks to health, safety,
+    and fundamental rights
+  norm_text: the identification and analysis of the known and the reasonably foreseeable risks that the
+    high-risk AI system can pose to health, safety or fundamental rights when the high-risk AI system
+    is used in accordance with its intended purpose
+  detection_channels:
+  - semantic_legal_effect
+  - cross_reference_structure
+  - existing_implementation
+  primary_spans:
+  - AIA-TEXT-A009-P003
+  qualifier_spans:
+  - AIA-TEXT-A009-P002
+  effective_date_spans: []
+  conditions: []
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: in_scope
+  product_scope_reason: ''
+  implementation_mode: compliance_rule
+  implementation_refs:
+  - AIA-HR-A09
+  implementation_reason: ''
+  verification_mode: judged_from_document
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A009-P2-B-ESTIMATE-EVALUATE
+  act_version_date: '2026-07-27'
+  kind: obligation
+  subjects:
+  - subject_ref: provider
+    category: supported_operator
+  action: estimate and evaluate risks emerging from intended use and reasonably foreseeable misuse
+  norm_text: the estimation and evaluation of the risks that may emerge when the high-risk AI system is
+    used in accordance with its intended purpose, and under conditions of reasonably foreseeable misuse
+  detection_channels:
+  - semantic_legal_effect
+  - other_modal
+  - cross_reference_structure
+  - existing_implementation
+  primary_spans:
+  - AIA-TEXT-A009-P004
+  qualifier_spans:
+  - AIA-TEXT-A009-P002
+  effective_date_spans: []
+  conditions: []
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: in_scope
+  product_scope_reason: ''
+  implementation_mode: compliance_rule
+  implementation_refs:
+  - AIA-HR-A09
+  implementation_reason: ''
+  verification_mode: judged_from_document
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A009-P2-C-POST-MARKET-RISKS
+  act_version_date: '2026-07-27'
+  kind: obligation
+  subjects:
+  - subject_ref: provider
+    category: supported_operator
+  action: evaluate other risks using data from the Article 72 post-market monitoring system
+  norm_text: the evaluation of other risks possibly arising, based on the analysis of data gathered from
+    the post-market monitoring system referred to in Article 72
+  detection_channels:
+  - semantic_legal_effect
+  - cross_reference_structure
+  - existing_implementation
+  primary_spans:
+  - AIA-TEXT-A009-P005
+  qualifier_spans:
+  - AIA-TEXT-A009-P002
+  effective_date_spans: []
+  conditions: []
+  exceptions: []
+  mandatory_content: []
+  dependencies:
+  - dependency_ref: Article 72 of this Regulation
+    resolution: unresolved
+    detail: Article 72 supplies the post-market monitoring requirements and has not yet been semantically
+      reviewed.
+  product_scope: in_scope
+  product_scope_reason: ''
+  implementation_mode: compliance_rule
+  implementation_refs:
+  - AIA-HR-A09
+  implementation_reason: ''
+  verification_mode: judged_from_document
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A009-P2-D-ADOPT-MEASURES
+  act_version_date: '2026-07-27'
+  kind: obligation
+  subjects:
+  - subject_ref: provider
+    category: supported_operator
+  action: adopt appropriate and targeted measures addressing the risks identified under Article 9(2)(a)
+  norm_text: the adoption of appropriate and targeted risk management measures designed to address the
+    risks identified pursuant to point (a).
+  detection_channels:
+  - semantic_legal_effect
+  - cross_reference_structure
+  - existing_implementation
+  primary_spans:
+  - AIA-TEXT-A009-P006
+  qualifier_spans:
+  - AIA-TEXT-A009-P002
+  effective_date_spans: []
+  conditions: []
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: in_scope
+  product_scope_reason: ''
+  implementation_mode: compliance_rule
+  implementation_refs:
+  - AIA-HR-A09
+  implementation_reason: ''
+  verification_mode: judged_from_document
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A009-P3-MITIGABLE-RISK-SCOPE
+  act_version_date: '2026-07-27'
+  kind: applicability
+  subjects:
+  - subject_ref: article_9_risk
+    category: other
+  action: limit Article 9 risk treatment to risks reasonably mitigable or eliminable through development,
+    design, or adequate technical information
+  norm_text: The risks referred to in this Article shall concern only those which may be reasonably mitigated
+    or eliminated through the development or design of the high-risk AI system, or the provision of adequate
+    technical information.
+  detection_channels:
+  - semantic_legal_effect
+  - shall_token
+  - other_modal
+  - deeming_or_consequence
+  - existing_implementation
+  primary_spans:
+  - AIA-TEXT-A009-P007
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions: []
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: in_scope
+  product_scope_reason: ''
+  implementation_mode: compliance_rule
+  implementation_refs:
+  - AIA-HR-A09
+  implementation_reason: ''
+  verification_mode: judged_from_document
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A009-P4-CONSIDER-INTERACTIONS
+  act_version_date: '2026-07-27'
+  kind: obligation
+  subjects:
+  - subject_ref: provider
+    category: supported_operator
+  action: consider the effects and possible interactions of the combined Section 2 requirements when selecting
+    risk-management measures
+  norm_text: shall give due consideration to the effects and possible interaction resulting from the combined
+    application of the requirements set out in this Section
+  detection_channels:
+  - semantic_legal_effect
+  - shall_token
+  - existing_implementation
+  primary_spans:
+  - AIA-TEXT-A009-P008
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions:
+  - minimise risks effectively while appropriately balancing implementation of the combined requirements
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: in_scope
+  product_scope_reason: ''
+  implementation_mode: compliance_rule
+  implementation_refs:
+  - AIA-HR-A09
+  implementation_reason: ''
+  verification_mode: judged_from_document
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A009-P5-HAZARD-RESIDUAL-RISK
+  act_version_date: '2026-07-27'
+  kind: obligation
+  subjects:
+  - subject_ref: provider
+    category: supported_operator
+  action: judge the residual risk associated with each individual hazard to be acceptable
+  norm_text: the relevant residual risk associated with each hazard, as well as the overall residual risk
+    of the high-risk AI systems is judged to be acceptable.
+  detection_channels:
+  - semantic_legal_effect
+  - existing_implementation
+  primary_spans:
+  - AIA-TEXT-A009-P009
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions: []
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: in_scope
+  product_scope_reason: ''
+  implementation_mode: compliance_rule
+  implementation_refs:
+  - AIA-HR-A09
+  implementation_reason: ''
+  verification_mode: judged_from_document
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A009-P5-OVERALL-RESIDUAL-RISK
+  act_version_date: '2026-07-27'
+  kind: obligation
+  subjects:
+  - subject_ref: provider
+    category: supported_operator
+  action: judge the high-risk AI system's overall residual risk to be acceptable
+  norm_text: the relevant residual risk associated with each hazard, as well as the overall residual risk
+    of the high-risk AI systems is judged to be acceptable.
+  detection_channels:
+  - semantic_legal_effect
+  - existing_implementation
+  primary_spans:
+  - AIA-TEXT-A009-P009
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions: []
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: in_scope
+  product_scope_reason: ''
+  implementation_mode: compliance_rule
+  implementation_refs:
+  - AIA-HR-A09
+  implementation_reason: ''
+  verification_mode: judged_from_document
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A009-P5-A-DESIGN-RISK-REDUCTION
+  act_version_date: '2026-07-27'
+  kind: obligation
+  subjects:
+  - subject_ref: provider
+    category: supported_operator
+  action: eliminate or reduce identified and evaluated risks through design and development as far as
+    technically feasible
+  norm_text: elimination or reduction of risks identified and evaluated pursuant to paragraph 2 in as
+    far as technically feasible through adequate design and development of the high-risk AI system
+  detection_channels:
+  - semantic_legal_effect
+  - cross_reference_structure
+  - existing_implementation
+  primary_spans:
+  - AIA-TEXT-A009-P011
+  qualifier_spans:
+  - AIA-TEXT-A009-P010
+  effective_date_spans: []
+  conditions: []
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: in_scope
+  product_scope_reason: ''
+  implementation_mode: compliance_rule
+  implementation_refs:
+  - AIA-HR-A09
+  implementation_reason: ''
+  verification_mode: judged_from_document
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A009-P5-B-MITIGATION-CONTROLS
+  act_version_date: '2026-07-27'
+  kind: obligation
+  subjects:
+  - subject_ref: provider
+    category: supported_operator
+  action: implement adequate mitigation and control measures for risks that cannot be eliminated where
+    appropriate
+  norm_text: where appropriate, implementation of adequate mitigation and control measures addressing
+    risks that cannot be eliminated
+  detection_channels:
+  - semantic_legal_effect
+  - cross_reference_structure
+  - existing_implementation
+  primary_spans:
+  - AIA-TEXT-A009-P012
+  qualifier_spans:
+  - AIA-TEXT-A009-P010
+  effective_date_spans: []
+  conditions: []
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: in_scope
+  product_scope_reason: ''
+  implementation_mode: compliance_rule
+  implementation_refs:
+  - AIA-HR-A09
+  implementation_reason: ''
+  verification_mode: judged_from_document
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A009-P5-C-PROVIDE-INFORMATION
+  act_version_date: '2026-07-27'
+  kind: obligation
+  subjects:
+  - subject_ref: provider
+    category: supported_operator
+  action: provide the information required by Article 13 as part of risk management
+  norm_text: provision of information required pursuant to Article 13 and, where appropriate, training
+    to deployers.
+  detection_channels:
+  - semantic_legal_effect
+  - cross_reference_structure
+  - existing_implementation
+  primary_spans:
+  - AIA-TEXT-A009-P013
+  qualifier_spans:
+  - AIA-TEXT-A009-P010
+  effective_date_spans: []
+  conditions: []
+  exceptions: []
+  mandatory_content: []
+  dependencies:
+  - dependency_ref: Article 13 of this Regulation
+    resolution: unresolved
+    detail: Article 13 supplies the required transparency information and has not yet been semantically
+      reviewed.
+  product_scope: in_scope
+  product_scope_reason: ''
+  implementation_mode: compliance_rule
+  implementation_refs:
+  - AIA-HR-A09
+  implementation_reason: ''
+  verification_mode: judged_from_document
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A009-P5-C-TRAIN-DEPLOYERS
+  act_version_date: '2026-07-27'
+  kind: obligation
+  subjects:
+  - subject_ref: provider
+    category: supported_operator
+  action: provide deployer training where appropriate as part of risk management
+  norm_text: provision of information required pursuant to Article 13 and, where appropriate, training
+    to deployers.
+  detection_channels:
+  - semantic_legal_effect
+  - cross_reference_structure
+  - existing_implementation
+  primary_spans:
+  - AIA-TEXT-A009-P013
+  qualifier_spans:
+  - AIA-TEXT-A009-P010
+  effective_date_spans: []
+  conditions: []
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: in_scope
+  product_scope_reason: ''
+  implementation_mode: compliance_rule
+  implementation_refs:
+  - AIA-HR-A09
+  implementation_reason: ''
+  verification_mode: judged_from_document
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A009-P5-CONSIDER-DEPLOYER-CONTEXT
+  act_version_date: '2026-07-27'
+  kind: obligation
+  subjects:
+  - subject_ref: provider
+    category: supported_operator
+  action: consider expected deployer knowledge, experience, education, training, and the presumable use
+    context when reducing use-related risks
+  norm_text: due consideration shall be given to the technical knowledge, experience, education, the training
+    to be expected by the deployer, and the presumable context in which the system is intended to be used.
+  detection_channels:
+  - semantic_legal_effect
+  - shall_token
+  - existing_implementation
+  primary_spans:
+  - AIA-TEXT-A009-P014
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions: []
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: in_scope
+  product_scope_reason: ''
+  implementation_mode: compliance_rule
+  implementation_refs:
+  - AIA-HR-A09
+  implementation_reason: ''
+  verification_mode: judged_from_document
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A009-P6-TEST-FOR-MEASURES
+  act_version_date: '2026-07-27'
+  kind: obligation
+  subjects:
+  - subject_ref: provider
+    category: supported_operator
+  action: test high-risk AI systems to identify the most appropriate targeted risk-management measures
+  norm_text: High-risk AI systems shall be tested for the purpose of identifying the most appropriate
+    and targeted risk management measures.
+  detection_channels:
+  - semantic_legal_effect
+  - shall_token
+  - existing_implementation
+  primary_spans:
+  - AIA-TEXT-A009-P015
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions: []
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: in_scope
+  product_scope_reason: ''
+  implementation_mode: compliance_rule
+  implementation_refs:
+  - AIA-HR-A09
+  implementation_reason: ''
+  verification_mode: judged_from_document
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A009-P6-TEST-PERFORMANCE
+  act_version_date: '2026-07-27'
+  kind: obligation
+  subjects:
+  - subject_ref: provider
+    category: supported_operator
+  action: use testing to ensure consistent performance for the intended purpose
+  norm_text: Testing shall ensure that high-risk AI systems perform consistently for their intended purpose
+    and that they are in compliance with the requirements set out in this Section.
+  detection_channels:
+  - semantic_legal_effect
+  - shall_token
+  - existing_implementation
+  primary_spans:
+  - AIA-TEXT-A009-P015
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions: []
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: in_scope
+  product_scope_reason: ''
+  implementation_mode: compliance_rule
+  implementation_refs:
+  - AIA-HR-A09
+  implementation_reason: ''
+  verification_mode: judged_from_document
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A009-P6-TEST-COMPLIANCE
+  act_version_date: '2026-07-27'
+  kind: obligation
+  subjects:
+  - subject_ref: provider
+    category: supported_operator
+  action: use testing to ensure compliance with the Section 2 requirements
+  norm_text: Testing shall ensure that high-risk AI systems perform consistently for their intended purpose
+    and that they are in compliance with the requirements set out in this Section.
+  detection_channels:
+  - semantic_legal_effect
+  - shall_token
+  - existing_implementation
+  primary_spans:
+  - AIA-TEXT-A009-P015
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions: []
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: in_scope
+  product_scope_reason: ''
+  implementation_mode: compliance_rule
+  implementation_refs:
+  - AIA-HR-A09
+  implementation_reason: ''
+  verification_mode: judged_from_document
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A009-P7-REAL-WORLD-TESTING
+  act_version_date: '2026-07-27'
+  kind: permission
+  subjects:
+  - subject_ref: provider
+    category: supported_operator
+  action: include testing in real-world conditions in the testing procedures
+  norm_text: Testing procedures may include testing in real-world conditions in accordance with Article
+    60.
+  detection_channels:
+  - semantic_legal_effect
+  - other_modal
+  - cross_reference_structure
+  - existing_implementation
+  primary_spans:
+  - AIA-TEXT-A009-P016
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions:
+  - real-world testing complies with Article 60
+  exceptions: []
+  mandatory_content: []
+  dependencies:
+  - dependency_ref: Article 60 of this Regulation
+    resolution: unresolved
+    detail: Article 60 supplies the requirements for testing in real-world conditions but has only been
+      partially semantically reviewed.
+  product_scope: in_scope
+  product_scope_reason: ''
+  implementation_mode: compliance_rule
+  implementation_refs:
+  - AIA-HR-A09
+  implementation_reason: ''
+  verification_mode: reported_conditionally
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A009-P8-DEVELOPMENT-TESTING
+  act_version_date: '2026-07-27'
+  kind: obligation
+  subjects:
+  - subject_ref: provider
+    category: supported_operator
+  action: test high-risk AI systems throughout development whenever appropriate
+  norm_text: The testing of high-risk AI systems shall be performed, as appropriate, at any time throughout
+    the development process, and, in any event, prior to their being placed on the market or put into
+    service.
+  detection_channels:
+  - semantic_legal_effect
+  - shall_token
+  - existing_implementation
+  primary_spans:
+  - AIA-TEXT-A009-P017
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions: []
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: in_scope
+  product_scope_reason: ''
+  implementation_mode: compliance_rule
+  implementation_refs:
+  - AIA-HR-A09
+  implementation_reason: ''
+  verification_mode: judged_from_document
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A009-P8-PRE-MARKET-TESTING
+  act_version_date: '2026-07-27'
+  kind: obligation
+  subjects:
+  - subject_ref: provider
+    category: supported_operator
+  action: test high-risk AI systems before placing them on the market or putting them into service
+  norm_text: The testing of high-risk AI systems shall be performed, as appropriate, at any time throughout
+    the development process, and, in any event, prior to their being placed on the market or put into
+    service.
+  detection_channels:
+  - semantic_legal_effect
+  - shall_token
+  - existing_implementation
+  primary_spans:
+  - AIA-TEXT-A009-P017
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions: []
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: in_scope
+  product_scope_reason: ''
+  implementation_mode: compliance_rule
+  implementation_refs:
+  - AIA-HR-A09
+  implementation_reason: ''
+  verification_mode: judged_from_document
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A009-P8-METRICS-THRESHOLDS
+  act_version_date: '2026-07-27'
+  kind: obligation
+  subjects:
+  - subject_ref: provider
+    category: supported_operator
+  action: test against predefined metrics and probabilistic thresholds appropriate to the intended purpose
+  norm_text: Testing shall be carried out against prior defined metrics and probabilistic thresholds that
+    are appropriate to the intended purpose of the high-risk AI system.
+  detection_channels:
+  - semantic_legal_effect
+  - shall_token
+  - existing_implementation
+  primary_spans:
+  - AIA-TEXT-A009-P017
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions: []
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: in_scope
+  product_scope_reason: ''
+  implementation_mode: compliance_rule
+  implementation_refs:
+  - AIA-HR-A09
+  implementation_reason: ''
+  verification_mode: judged_from_document
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A009-P9-UNDER-18-IMPACT
+  act_version_date: '2026-07-27'
+  kind: obligation
+  subjects:
+  - subject_ref: provider
+    category: supported_operator
+  action: consider whether the high-risk AI system is likely to adversely affect persons under the age
+    of 18 in view of its intended purpose
+  norm_text: providers shall give consideration to whether in view of its intended purpose the high-risk
+    AI system is likely to have an adverse impact on persons under the age of 18 and, as appropriate,
+    other vulnerable groups.
+  detection_channels:
+  - semantic_legal_effect
+  - shall_token
+  - existing_implementation
+  primary_spans:
+  - AIA-TEXT-A009-P018
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions: []
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: in_scope
+  product_scope_reason: ''
+  implementation_mode: compliance_rule
+  implementation_refs:
+  - AIA-HR-A09
+  implementation_reason: ''
+  verification_mode: judged_from_document
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A009-P9-VULNERABLE-GROUPS
+  act_version_date: '2026-07-27'
+  kind: obligation
+  subjects:
+  - subject_ref: provider
+    category: supported_operator
+  action: consider likely adverse impacts on other vulnerable groups where appropriate
+  norm_text: providers shall give consideration to whether in view of its intended purpose the high-risk
+    AI system is likely to have an adverse impact on persons under the age of 18 and, as appropriate,
+    other vulnerable groups.
+  detection_channels:
+  - semantic_legal_effect
+  - shall_token
+  - existing_implementation
+  primary_spans:
+  - AIA-TEXT-A009-P018
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions: []
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: in_scope
+  product_scope_reason: ''
+  implementation_mode: compliance_rule
+  implementation_refs:
+  - AIA-HR-A09
+  implementation_reason: ''
+  verification_mode: judged_from_document
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A009-P10-INTEGRATE-RISK-PROCESSES
+  act_version_date: '2026-07-27'
+  kind: permission
+  subjects:
+  - subject_ref: provider
+    category: supported_operator
+  action: incorporate or combine Article 9 aspects with internal risk-management procedures required by
+    other Union law
+  norm_text: the aspects provided in paragraphs 1 to 9 may be part of, or combined with, the risk management
+    procedures established pursuant to that law.
+  detection_channels:
+  - semantic_legal_effect
+  - other_modal
+  - existing_implementation
+  primary_spans:
+  - AIA-TEXT-A009-P019
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions:
+  - the provider is already subject to internal risk-management-process requirements under other relevant
+    Union law
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: in_scope
+  product_scope_reason: ''
+  implementation_mode: compliance_rule
+  implementation_refs:
+  - AIA-HR-A09
+  implementation_reason: ''
+  verification_mode: reported_conditionally
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
 - norm_id: AIA-NORM-ANNEX-III-1A-REMOTE-BIOMETRIC-IDENTIFICATION
   act_version_date: '2026-07-27'
   kind: applicability
