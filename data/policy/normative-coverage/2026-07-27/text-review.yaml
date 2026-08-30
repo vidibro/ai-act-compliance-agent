@@ -3122,9 +3122,9 @@ segments:
   disposition_reason: ''
   norm_ids: []
   review:
-    status: proposed
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
     display_chunks: 1
@@ -3146,17 +3146,23 @@ segments:
     all the following conditions shall be met in order for such processing to occur:
 
     '
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A004A-P1-HIGH-RISK-BIAS-DATA-PROCESSING
+  - AIA-NORM-A004A-P1-B-REUSE-SECURITY
+  - AIA-NORM-A004A-P1-C-ACCESS-SAFEGUARDS
+  - AIA-NORM-A004A-P1-D-NO-THIRD-PARTY-ACCESS
+  - AIA-NORM-A004A-P1-E-DELETE-DATA
+  - AIA-NORM-A004A-P1-F-RECORD-NECESSITY
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A004A-P002
   source:
@@ -3170,17 +3176,18 @@ segments:
     data, including synthetic or anonymised data;
 
     '
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A004A-P1-HIGH-RISK-BIAS-DATA-PROCESSING
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A004A-P003
   source:
@@ -3195,17 +3202,19 @@ segments:
     pseudonymisation;
 
     '
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A004A-P1-HIGH-RISK-BIAS-DATA-PROCESSING
+  - AIA-NORM-A004A-P1-B-REUSE-SECURITY
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A004A-P004
   source:
@@ -3221,17 +3230,19 @@ segments:
     have access to those personal data with appropriate confidentiality obligations;
 
     '
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A004A-P1-HIGH-RISK-BIAS-DATA-PROCESSING
+  - AIA-NORM-A004A-P1-C-ACCESS-SAFEGUARDS
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A004A-P005
   source:
@@ -3245,17 +3256,19 @@ segments:
     accessed by other parties;
 
     '
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A004A-P1-HIGH-RISK-BIAS-DATA-PROCESSING
+  - AIA-NORM-A004A-P1-D-NO-THIRD-PARTY-ACCESS
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A004A-P006
   source:
@@ -3269,17 +3282,19 @@ segments:
     or the personal data has reached the end of its retention period, whichever comes first; and
 
     '
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A004A-P1-HIGH-RISK-BIAS-DATA-PROCESSING
+  - AIA-NORM-A004A-P1-E-DELETE-DATA
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A004A-P007
   source:
@@ -3295,17 +3310,19 @@ segments:
     not be achieved by processing other data.
 
     '
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A004A-P1-HIGH-RISK-BIAS-DATA-PROCESSING
+  - AIA-NORM-A004A-P1-F-RECORD-NECESSITY
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A004A-P008
   source:
@@ -3319,17 +3336,18 @@ segments:
     may exceptionally process special categories of personal data to the extent that:
 
     '
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A004A-P2-OTHER-SYSTEM-BIAS-DATA-PROCESSING
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A004A-P009
   source:
@@ -3345,17 +3363,18 @@ segments:
     where data outputs influence inputs for future operations; and
 
     '
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A004A-P2-OTHER-SYSTEM-BIAS-DATA-PROCESSING
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A004A-P010
   source:
@@ -3368,17 +3387,23 @@ segments:
   text: '        (b) all of the conditions and safeguards set out in paragraph 1 are applied.
 
     '
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A004A-P1-B-REUSE-SECURITY
+  - AIA-NORM-A004A-P1-C-ACCESS-SAFEGUARDS
+  - AIA-NORM-A004A-P1-D-NO-THIRD-PARTY-ACCESS
+  - AIA-NORM-A004A-P1-E-DELETE-DATA
+  - AIA-NORM-A004A-P1-F-RECORD-NECESSITY
+  - AIA-NORM-A004A-P2-OTHER-SYSTEM-BIAS-DATA-PROCESSING
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A004A-P011
   source:
@@ -3391,17 +3416,18 @@ segments:
   text: '    This paragraph does not create any obligation to conduct such bias detection and correction.
 
     '
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A004A-P2-NO-BIAS-DETECTION-DUTY
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A005-HEAD
   source:
