@@ -12884,6 +12884,790 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+- norm_id: AIA-NORM-A015-P1-ACCURACY
+  act_version_date: '2026-07-27'
+  kind: obligation
+  subjects:
+  - subject_ref: provider
+    category: supported_operator
+  action: design and develop the high-risk AI system to achieve an appropriate level of accuracy
+  norm_text: High-risk AI systems shall be designed and developed in such a way that they achieve an appropriate
+    level of accuracy, robustness, and cybersecurity, and that they perform consistently in those respects
+    throughout their lifecycle.
+  detection_channels:
+  - semantic_legal_effect
+  - shall_token
+  - existing_implementation
+  primary_spans:
+  - AIA-TEXT-A015-P001
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions: []
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: in_scope
+  product_scope_reason: ''
+  implementation_mode: compliance_rule
+  implementation_refs:
+  - AIA-HR-A15
+  implementation_reason: ''
+  verification_mode: judged_from_document
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A015-P1-ROBUSTNESS
+  act_version_date: '2026-07-27'
+  kind: obligation
+  subjects:
+  - subject_ref: provider
+    category: supported_operator
+  action: design and develop the high-risk AI system to achieve an appropriate level of robustness
+  norm_text: High-risk AI systems shall be designed and developed in such a way that they achieve an appropriate
+    level of accuracy, robustness, and cybersecurity, and that they perform consistently in those respects
+    throughout their lifecycle.
+  detection_channels:
+  - semantic_legal_effect
+  - shall_token
+  - existing_implementation
+  primary_spans:
+  - AIA-TEXT-A015-P001
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions: []
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: in_scope
+  product_scope_reason: ''
+  implementation_mode: compliance_rule
+  implementation_refs:
+  - AIA-HR-A15
+  implementation_reason: ''
+  verification_mode: judged_from_document
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A015-P1-CYBERSECURITY
+  act_version_date: '2026-07-27'
+  kind: obligation
+  subjects:
+  - subject_ref: provider
+    category: supported_operator
+  action: design and develop the high-risk AI system to achieve an appropriate level of cybersecurity
+  norm_text: High-risk AI systems shall be designed and developed in such a way that they achieve an appropriate
+    level of accuracy, robustness, and cybersecurity, and that they perform consistently in those respects
+    throughout their lifecycle.
+  detection_channels:
+  - semantic_legal_effect
+  - shall_token
+  - existing_implementation
+  primary_spans:
+  - AIA-TEXT-A015-P001
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions: []
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: in_scope
+  product_scope_reason: ''
+  implementation_mode: compliance_rule
+  implementation_refs:
+  - AIA-HR-A15
+  implementation_reason: ''
+  verification_mode: judged_from_document
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A015-P1-LIFECYCLE-CONSISTENCY
+  act_version_date: '2026-07-27'
+  kind: obligation
+  subjects:
+  - subject_ref: provider
+    category: supported_operator
+  action: maintain consistent accuracy, robustness, and cybersecurity performance throughout the system
+    lifecycle
+  norm_text: High-risk AI systems shall be designed and developed in such a way that they achieve an appropriate
+    level of accuracy, robustness, and cybersecurity, and that they perform consistently in those respects
+    throughout their lifecycle.
+  detection_channels:
+  - semantic_legal_effect
+  - shall_token
+  - existing_implementation
+  primary_spans:
+  - AIA-TEXT-A015-P001
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions: []
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: in_scope
+  product_scope_reason: ''
+  implementation_mode: compliance_rule
+  implementation_refs:
+  - AIA-HR-A15
+  implementation_reason: ''
+  verification_mode: judged_from_document
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A015-P2-ENCOURAGE-MEASUREMENT
+  act_version_date: '2026-07-27'
+  kind: obligation
+  subjects:
+  - subject_ref: commission
+    category: union_institution_or_body
+  action: encourage appropriate accuracy, robustness, and performance benchmarks and measurement methodologies
+    in cooperation with relevant stakeholders and organisations
+  norm_text: the Commission shall, in cooperation with relevant stakeholders and organisations such as
+    metrology and benchmarking authorities, encourage, as appropriate, the development of benchmarks and
+    measurement methodologies.
+  detection_channels:
+  - semantic_legal_effect
+  - shall_token
+  primary_spans:
+  - AIA-TEXT-A015-P002
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions: []
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_refs: []
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A015-P3-DECLARE-ACCURACY
+  act_version_date: '2026-07-27'
+  kind: obligation
+  subjects:
+  - subject_ref: provider
+    category: supported_operator
+  action: "declare the system\u2019s accuracy levels in the accompanying instructions for use"
+  norm_text: The levels of accuracy and the relevant accuracy metrics of high-risk AI systems shall be
+    declared in the accompanying instructions of use.
+  detection_channels:
+  - semantic_legal_effect
+  - shall_token
+  - cross_reference_structure
+  - existing_implementation
+  primary_spans:
+  - AIA-TEXT-A015-P003
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions: []
+  exceptions: []
+  mandatory_content: []
+  dependencies:
+  - dependency_ref: AIA-NORM-A013-P2-PROVIDE-INSTRUCTIONS
+    resolution: internal_resolved
+    detail: Article 13 supplies the obligation to accompany the system with instructions for use.
+  product_scope: in_scope
+  product_scope_reason: ''
+  implementation_mode: compliance_rule
+  implementation_refs:
+  - AIA-HR-A15
+  implementation_reason: ''
+  verification_mode: judged_from_document
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A015-P3-DECLARE-METRICS
+  act_version_date: '2026-07-27'
+  kind: obligation
+  subjects:
+  - subject_ref: provider
+    category: supported_operator
+  action: declare the relevant accuracy metrics in the accompanying instructions for use
+  norm_text: The levels of accuracy and the relevant accuracy metrics of high-risk AI systems shall be
+    declared in the accompanying instructions of use.
+  detection_channels:
+  - semantic_legal_effect
+  - shall_token
+  - cross_reference_structure
+  - existing_implementation
+  primary_spans:
+  - AIA-TEXT-A015-P003
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions: []
+  exceptions: []
+  mandatory_content: []
+  dependencies:
+  - dependency_ref: AIA-NORM-A013-P2-PROVIDE-INSTRUCTIONS
+    resolution: internal_resolved
+    detail: Article 13 supplies the obligation to accompany the system with instructions for use.
+  product_scope: in_scope
+  product_scope_reason: ''
+  implementation_mode: compliance_rule
+  implementation_refs:
+  - AIA-HR-A15
+  implementation_reason: ''
+  verification_mode: judged_from_document
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A015-P4-RESILIENCE
+  act_version_date: '2026-07-27'
+  kind: obligation
+  subjects:
+  - subject_ref: provider
+    category: supported_operator
+  action: make the high-risk AI system as resilient as possible to errors, faults, and inconsistencies
+    within the system or its operating environment
+  norm_text: High-risk AI systems shall be as resilient as possible regarding errors, faults or inconsistencies
+    that may occur within the system or the environment in which the system operates, in particular due
+    to their interaction with natural persons or other systems.
+  detection_channels:
+  - semantic_legal_effect
+  - shall_token
+  - other_modal
+  - existing_implementation
+  primary_spans:
+  - AIA-TEXT-A015-P004
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions: []
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: in_scope
+  product_scope_reason: ''
+  implementation_mode: compliance_rule
+  implementation_refs:
+  - AIA-HR-A15
+  implementation_reason: ''
+  verification_mode: judged_from_document
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A015-P4-TECHNICAL-MEASURES
+  act_version_date: '2026-07-27'
+  kind: obligation
+  subjects:
+  - subject_ref: provider
+    category: supported_operator
+  action: apply technical measures supporting resilience to errors, faults, and inconsistencies
+  norm_text: Technical and organisational measures shall be taken in this regard.
+  detection_channels:
+  - semantic_legal_effect
+  - shall_token
+  - existing_implementation
+  primary_spans:
+  - AIA-TEXT-A015-P004
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions: []
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: in_scope
+  product_scope_reason: ''
+  implementation_mode: compliance_rule
+  implementation_refs:
+  - AIA-HR-A15
+  implementation_reason: ''
+  verification_mode: judged_from_document
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A015-P4-ORGANISATIONAL-MEASURES
+  act_version_date: '2026-07-27'
+  kind: obligation
+  subjects:
+  - subject_ref: provider
+    category: supported_operator
+  action: apply organisational measures supporting resilience to errors, faults, and inconsistencies
+  norm_text: Technical and organisational measures shall be taken in this regard.
+  detection_channels:
+  - semantic_legal_effect
+  - shall_token
+  - existing_implementation
+  primary_spans:
+  - AIA-TEXT-A015-P004
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions: []
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: in_scope
+  product_scope_reason: ''
+  implementation_mode: compliance_rule
+  implementation_refs:
+  - AIA-HR-A15
+  implementation_reason: ''
+  verification_mode: judged_from_document
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A015-P4-REDUNDANCY
+  act_version_date: '2026-07-27'
+  kind: permission
+  subjects:
+  - subject_ref: provider
+    category: supported_operator
+  action: use technical redundancy solutions, including backup or fail-safe plans, to achieve system robustness
+  norm_text: The robustness of high-risk AI systems may be achieved through technical redundancy solutions,
+    which may include backup or fail-safe plans.
+  detection_channels:
+  - semantic_legal_effect
+  - other_modal
+  - existing_implementation
+  primary_spans:
+  - AIA-TEXT-A015-P005
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions: []
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: in_scope
+  product_scope_reason: ''
+  implementation_mode: compliance_rule
+  implementation_refs:
+  - AIA-HR-A15
+  implementation_reason: ''
+  verification_mode: reported_conditionally
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A015-P4-FEEDBACK-RISK
+  act_version_date: '2026-07-27'
+  kind: obligation
+  subjects:
+  - subject_ref: provider
+    category: supported_operator
+  action: eliminate or minimise the risk of biased outputs influencing input for future operations
+  norm_text: High-risk AI systems that continue to learn after being placed on the market or put into
+    service shall be developed in such a way as to eliminate or reduce as far as possible the risk of
+    possibly biased outputs influencing input for future operations (feedback loops), and as to ensure
+    that any such feedback loops are duly addressed with appropriate mitigation measures.
+  detection_channels:
+  - semantic_legal_effect
+  - shall_token
+  - existing_implementation
+  primary_spans:
+  - AIA-TEXT-A015-P006
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions:
+  - the high-risk AI system continues to learn after market placement or being put into service
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: in_scope
+  product_scope_reason: ''
+  implementation_mode: compliance_rule
+  implementation_refs:
+  - AIA-HR-A15
+  implementation_reason: ''
+  verification_mode: judged_from_document
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A015-P4-MITIGATE-FEEDBACK
+  act_version_date: '2026-07-27'
+  kind: obligation
+  subjects:
+  - subject_ref: provider
+    category: supported_operator
+  action: address feedback loops with appropriate mitigation measures
+  norm_text: High-risk AI systems that continue to learn after being placed on the market or put into
+    service shall be developed in such a way as to eliminate or reduce as far as possible the risk of
+    possibly biased outputs influencing input for future operations (feedback loops), and as to ensure
+    that any such feedback loops are duly addressed with appropriate mitigation measures.
+  detection_channels:
+  - semantic_legal_effect
+  - shall_token
+  - existing_implementation
+  primary_spans:
+  - AIA-TEXT-A015-P006
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions:
+  - the high-risk AI system continues to learn after market placement or being put into service
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: in_scope
+  product_scope_reason: ''
+  implementation_mode: compliance_rule
+  implementation_refs:
+  - AIA-HR-A15
+  implementation_reason: ''
+  verification_mode: judged_from_document
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A015-P5-UNAUTHORISED-ALTERATION
+  act_version_date: '2026-07-27'
+  kind: obligation
+  subjects:
+  - subject_ref: provider
+    category: supported_operator
+  action: make the system resilient against unauthorised attempts to alter its use, outputs, or performance
+    through vulnerabilities
+  norm_text: High-risk AI systems shall be resilient against attempts by unauthorised third parties to
+    alter their use, outputs or performance by exploiting system vulnerabilities.
+  detection_channels:
+  - semantic_legal_effect
+  - shall_token
+  - existing_implementation
+  primary_spans:
+  - AIA-TEXT-A015-P007
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions: []
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: in_scope
+  product_scope_reason: ''
+  implementation_mode: compliance_rule
+  implementation_refs:
+  - AIA-HR-A15
+  implementation_reason: ''
+  verification_mode: judged_from_document
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A015-P5-APPROPRIATE-SOLUTIONS
+  act_version_date: '2026-07-27'
+  kind: obligation
+  subjects:
+  - subject_ref: provider
+    category: supported_operator
+  action: make cybersecurity technical solutions appropriate to the relevant circumstances and risks
+  norm_text: The technical solutions aiming to ensure the cybersecurity of high-risk AI systems shall
+    be appropriate to the relevant circumstances and the risks.
+  detection_channels:
+  - semantic_legal_effect
+  - shall_token
+  - existing_implementation
+  primary_spans:
+  - AIA-TEXT-A015-P008
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions: []
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: in_scope
+  product_scope_reason: ''
+  implementation_mode: compliance_rule
+  implementation_refs:
+  - AIA-HR-A15
+  implementation_reason: ''
+  verification_mode: judged_from_document
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A015-P5-DATA-POISONING
+  act_version_date: '2026-07-27'
+  kind: obligation
+  subjects:
+  - subject_ref: provider
+    category: supported_operator
+  action: implement measures to prevent, detect, respond to, resolve, and control training-data-poisoning
+    attacks
+  norm_text: The technical solutions to address AI specific vulnerabilities shall include, where appropriate,
+    measures to prevent, detect, respond to, resolve and control for attacks trying to manipulate the
+    training data set (data poisoning), or pre-trained components used in training (model poisoning),
+    inputs designed to cause the AI model to make a mistake (adversarial examples or model evasion), confidentiality
+    attacks or model flaws.
+  detection_channels:
+  - semantic_legal_effect
+  - shall_token
+  - existing_implementation
+  primary_spans:
+  - AIA-TEXT-A015-P009
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions:
+  - measures addressing the AI-specific vulnerability are appropriate
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: in_scope
+  product_scope_reason: ''
+  implementation_mode: compliance_rule
+  implementation_refs:
+  - AIA-HR-A15
+  implementation_reason: ''
+  verification_mode: judged_from_document
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A015-P5-MODEL-POISONING
+  act_version_date: '2026-07-27'
+  kind: obligation
+  subjects:
+  - subject_ref: provider
+    category: supported_operator
+  action: implement measures to prevent, detect, respond to, resolve, and control attacks manipulating
+    pre-trained training components
+  norm_text: The technical solutions to address AI specific vulnerabilities shall include, where appropriate,
+    measures to prevent, detect, respond to, resolve and control for attacks trying to manipulate the
+    training data set (data poisoning), or pre-trained components used in training (model poisoning),
+    inputs designed to cause the AI model to make a mistake (adversarial examples or model evasion), confidentiality
+    attacks or model flaws.
+  detection_channels:
+  - semantic_legal_effect
+  - shall_token
+  - existing_implementation
+  primary_spans:
+  - AIA-TEXT-A015-P009
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions:
+  - measures addressing the AI-specific vulnerability are appropriate
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: in_scope
+  product_scope_reason: ''
+  implementation_mode: compliance_rule
+  implementation_refs:
+  - AIA-HR-A15
+  implementation_reason: ''
+  verification_mode: judged_from_document
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A015-P5-ADVERSARIAL-ATTACKS
+  act_version_date: '2026-07-27'
+  kind: obligation
+  subjects:
+  - subject_ref: provider
+    category: supported_operator
+  action: implement measures to prevent, detect, respond to, resolve, and control adversarial-example
+    and model-evasion attacks
+  norm_text: The technical solutions to address AI specific vulnerabilities shall include, where appropriate,
+    measures to prevent, detect, respond to, resolve and control for attacks trying to manipulate the
+    training data set (data poisoning), or pre-trained components used in training (model poisoning),
+    inputs designed to cause the AI model to make a mistake (adversarial examples or model evasion), confidentiality
+    attacks or model flaws.
+  detection_channels:
+  - semantic_legal_effect
+  - shall_token
+  - existing_implementation
+  primary_spans:
+  - AIA-TEXT-A015-P009
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions:
+  - measures addressing the AI-specific vulnerability are appropriate
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: in_scope
+  product_scope_reason: ''
+  implementation_mode: compliance_rule
+  implementation_refs:
+  - AIA-HR-A15
+  implementation_reason: ''
+  verification_mode: judged_from_document
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A015-P5-CONFIDENTIALITY-ATTACKS
+  act_version_date: '2026-07-27'
+  kind: obligation
+  subjects:
+  - subject_ref: provider
+    category: supported_operator
+  action: implement measures to prevent, detect, respond to, resolve, and control confidentiality attacks
+  norm_text: The technical solutions to address AI specific vulnerabilities shall include, where appropriate,
+    measures to prevent, detect, respond to, resolve and control for attacks trying to manipulate the
+    training data set (data poisoning), or pre-trained components used in training (model poisoning),
+    inputs designed to cause the AI model to make a mistake (adversarial examples or model evasion), confidentiality
+    attacks or model flaws.
+  detection_channels:
+  - semantic_legal_effect
+  - shall_token
+  - existing_implementation
+  primary_spans:
+  - AIA-TEXT-A015-P009
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions:
+  - measures addressing the AI-specific vulnerability are appropriate
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: in_scope
+  product_scope_reason: ''
+  implementation_mode: compliance_rule
+  implementation_refs:
+  - AIA-HR-A15
+  implementation_reason: ''
+  verification_mode: judged_from_document
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A015-P5-MODEL-FLAWS
+  act_version_date: '2026-07-27'
+  kind: obligation
+  subjects:
+  - subject_ref: provider
+    category: supported_operator
+  action: implement measures to prevent, detect, respond to, resolve, and control model flaws
+  norm_text: The technical solutions to address AI specific vulnerabilities shall include, where appropriate,
+    measures to prevent, detect, respond to, resolve and control for attacks trying to manipulate the
+    training data set (data poisoning), or pre-trained components used in training (model poisoning),
+    inputs designed to cause the AI model to make a mistake (adversarial examples or model evasion), confidentiality
+    attacks or model flaws.
+  detection_channels:
+  - semantic_legal_effect
+  - shall_token
+  - existing_implementation
+  primary_spans:
+  - AIA-TEXT-A015-P009
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions:
+  - measures addressing the AI-specific vulnerability are appropriate
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: in_scope
+  product_scope_reason: ''
+  implementation_mode: compliance_rule
+  implementation_refs:
+  - AIA-HR-A15
+  implementation_reason: ''
+  verification_mode: judged_from_document
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
 - norm_id: AIA-NORM-A026-P5-MONITOR
   act_version_date: '2026-07-27'
   kind: obligation
