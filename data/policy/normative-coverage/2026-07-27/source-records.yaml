@@ -2622,6 +2622,106 @@ records:
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_assessed
+- norm_id: AIA-NORM-A007-P1-AMEND-ANNEX-III
+  source: A007-P001
+  quote: The Commission is empowered to adopt delegated acts in accordance with Article 97 to amend Annex III by adding or modifying use-cases of high-risk AI systems where both of the following conditions are fulfilled
+  action: adopt Article 97 delegated acts adding or modifying Annex III high-risk use cases when both statutory conditions are fulfilled
+  subject_ref: commission
+  subject_category: union_institution_or_body
+  kind: power
+  qualifier_spans:
+  - A007-P002
+  - A007-P003
+  conditions:
+  - the AI system is intended for an area already listed in Annex III
+  - its health, safety, or fundamental-rights risk is equivalent to or greater than the risk of an existing Annex III high-risk use case
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for the Commission.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+  dependencies:
+  - dependency_ref: Article 97 of this Regulation
+    resolution: unresolved
+    detail: Article 97 supplies the delegated-act procedure and has not yet been semantically reviewed.
+  - dependency_ref: AIA-NORM-A006-P2-ANNEX-III-HIGH-RISK
+    resolution: internal_resolved
+    detail: Article 6(2) gives high-risk legal effect to the Annex III use-case list.
+- norm_id: AIA-NORM-A007-P2-CONSIDER-RISK-CRITERIA
+  source: A007-P004
+  quote: the Commission shall take into account the following criteria
+  action: take every Article 7(2) criterion into account when assessing whether an Annex III amendment meets Article 7(1)(b)
+  subject_ref: commission
+  subject_category: union_institution_or_body
+  kind: obligation
+  qualifier_spans:
+  - A007-P005
+  - A007-P006
+  - A007-P007
+  - A007-P008
+  - A007-P009
+  - A007-P010
+  - A007-P011
+  - A007-P012
+  - A007-P013
+  - A007-P014
+  - A007-P015
+  - A007-P016
+  - A007-P017
+  conditions:
+  - consider the system's intended purpose
+  - consider actual and likely extent of use
+  - consider the nature and amount of processed data, especially special-category personal data
+  - consider system autonomy and the possibility of human override
+  - consider demonstrated harm, adverse impact, and significant documented concerns
+  - consider potential harm intensity, scale, and disproportionate group effects
+  - consider affected persons' dependency on outcomes and practical or legal ability to opt out
+  - consider power imbalances and vulnerability relative to the deployer
+  - consider whether outcomes are technically corrigible or reversible
+  - consider the magnitude and likelihood of benefits, including product-safety improvements
+  - consider effective non-damages redress and measures under Union law that prevent or substantially minimise risk
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for the Commission.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A007-P2-ADVERSE-OUTCOME-NOT-REVERSIBLE
+  source: A007-P013
+  quote: outcomes having an adverse impact on health, safety or fundamental rights, shall not be considered to be easily corrigible or reversible
+  action: treat outcomes adversely affecting health, safety, or fundamental rights as not easily corrigible or reversible in the Article 7 assessment
+  subject_ref: annex_iii_amendment_risk_assessment
+  subject_category: other
+  kind: legal_consequence
+  product_scope: dependency_only
+  product_scope_reason: This assessment rule constrains the Commission's Annex III amendment analysis without creating an independent product-facing action.
+  implementation_mode: none_required
+  implementation_reason: The legal consequence is represented as a dependency rather than a standalone product rule.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A007-P3-REMOVE-ANNEX-III-USE-CASE
+  source: A007-P018
+  quote: The Commission is empowered to adopt delegated acts in accordance with Article 97 to amend the list in Annex III by removing high-risk AI systems where both of the following conditions are fulfilled
+  action: adopt Article 97 delegated acts removing Annex III high-risk use cases when both statutory conditions are fulfilled
+  subject_ref: commission
+  subject_category: union_institution_or_body
+  kind: power
+  qualifier_spans:
+  - A007-P019
+  - A007-P020
+  conditions:
+  - applying the Article 7(2) criteria, the use case no longer poses significant risks to fundamental rights, health, or safety
+  - removal does not decrease the overall protection of health, safety, and fundamental rights under Union law
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for the Commission.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+  dependencies:
+  - dependency_ref: Article 97 of this Regulation
+    resolution: unresolved
+    detail: Article 97 supplies the delegated-act procedure and has not yet been semantically reviewed.
+  - dependency_ref: AIA-NORM-A007-P2-CONSIDER-RISK-CRITERIA
+    resolution: internal_resolved
+    detail: Article 7(2) supplies the criteria used to determine whether significant risk remains.
 - norm_id: AIA-NORM-ANNEX-III-1A-REMOTE-BIOMETRIC-IDENTIFICATION
   source: ANNEX-III-P003
   quote: 'remote biometric identification systems. This shall not include AI systems intended to be used for biometric verification the sole purpose of which is to confirm that a specific natural person is the person he or she claims to be;'

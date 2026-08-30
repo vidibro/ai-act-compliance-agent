@@ -6948,6 +6948,205 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+- norm_id: AIA-NORM-A007-P1-AMEND-ANNEX-III
+  act_version_date: '2026-07-27'
+  kind: power
+  subjects:
+  - subject_ref: commission
+    category: union_institution_or_body
+  action: adopt Article 97 delegated acts adding or modifying Annex III high-risk use cases when both
+    statutory conditions are fulfilled
+  norm_text: The Commission is empowered to adopt delegated acts in accordance with Article 97 to amend
+    Annex III by adding or modifying use-cases of high-risk AI systems where both of the following conditions
+    are fulfilled
+  detection_channels:
+  - semantic_legal_effect
+  - other_modal
+  - cross_reference_structure
+  primary_spans:
+  - AIA-TEXT-A007-P001
+  qualifier_spans:
+  - AIA-TEXT-A007-P002
+  - AIA-TEXT-A007-P003
+  effective_date_spans: []
+  conditions:
+  - the AI system is intended for an area already listed in Annex III
+  - its health, safety, or fundamental-rights risk is equivalent to or greater than the risk of an existing
+    Annex III high-risk use case
+  exceptions: []
+  mandatory_content: []
+  dependencies:
+  - dependency_ref: Article 97 of this Regulation
+    resolution: unresolved
+    detail: Article 97 supplies the delegated-act procedure and has not yet been semantically reviewed.
+  - dependency_ref: AIA-NORM-A006-P2-ANNEX-III-HIGH-RISK
+    resolution: internal_resolved
+    detail: Article 6(2) gives high-risk legal effect to the Annex III use-case list.
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for the Commission.
+  implementation_mode: none_required
+  implementation_refs: []
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A007-P2-CONSIDER-RISK-CRITERIA
+  act_version_date: '2026-07-27'
+  kind: obligation
+  subjects:
+  - subject_ref: commission
+    category: union_institution_or_body
+  action: take every Article 7(2) criterion into account when assessing whether an Annex III amendment
+    meets Article 7(1)(b)
+  norm_text: the Commission shall take into account the following criteria
+  detection_channels:
+  - semantic_legal_effect
+  - shall_token
+  - cross_reference_structure
+  primary_spans:
+  - AIA-TEXT-A007-P004
+  qualifier_spans:
+  - AIA-TEXT-A007-P005
+  - AIA-TEXT-A007-P006
+  - AIA-TEXT-A007-P007
+  - AIA-TEXT-A007-P008
+  - AIA-TEXT-A007-P009
+  - AIA-TEXT-A007-P010
+  - AIA-TEXT-A007-P011
+  - AIA-TEXT-A007-P012
+  - AIA-TEXT-A007-P013
+  - AIA-TEXT-A007-P014
+  - AIA-TEXT-A007-P015
+  - AIA-TEXT-A007-P016
+  - AIA-TEXT-A007-P017
+  effective_date_spans: []
+  conditions:
+  - consider the system's intended purpose
+  - consider actual and likely extent of use
+  - consider the nature and amount of processed data, especially special-category personal data
+  - consider system autonomy and the possibility of human override
+  - consider demonstrated harm, adverse impact, and significant documented concerns
+  - consider potential harm intensity, scale, and disproportionate group effects
+  - consider affected persons' dependency on outcomes and practical or legal ability to opt out
+  - consider power imbalances and vulnerability relative to the deployer
+  - consider whether outcomes are technically corrigible or reversible
+  - consider the magnitude and likelihood of benefits, including product-safety improvements
+  - consider effective non-damages redress and measures under Union law that prevent or substantially
+    minimise risk
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for the Commission.
+  implementation_mode: none_required
+  implementation_refs: []
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A007-P2-ADVERSE-OUTCOME-NOT-REVERSIBLE
+  act_version_date: '2026-07-27'
+  kind: legal_consequence
+  subjects:
+  - subject_ref: annex_iii_amendment_risk_assessment
+    category: other
+  action: treat outcomes adversely affecting health, safety, or fundamental rights as not easily corrigible
+    or reversible in the Article 7 assessment
+  norm_text: outcomes having an adverse impact on health, safety or fundamental rights, shall not be considered
+    to be easily corrigible or reversible
+  detection_channels:
+  - semantic_legal_effect
+  - shall_token
+  - deeming_or_consequence
+  primary_spans:
+  - AIA-TEXT-A007-P013
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions: []
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: dependency_only
+  product_scope_reason: This assessment rule constrains the Commission's Annex III amendment analysis
+    without creating an independent product-facing action.
+  implementation_mode: none_required
+  implementation_refs: []
+  implementation_reason: The legal consequence is represented as a dependency rather than a standalone
+    product rule.
+  verification_mode: not_assessed
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A007-P3-REMOVE-ANNEX-III-USE-CASE
+  act_version_date: '2026-07-27'
+  kind: power
+  subjects:
+  - subject_ref: commission
+    category: union_institution_or_body
+  action: adopt Article 97 delegated acts removing Annex III high-risk use cases when both statutory conditions
+    are fulfilled
+  norm_text: The Commission is empowered to adopt delegated acts in accordance with Article 97 to amend
+    the list in Annex III by removing high-risk AI systems where both of the following conditions are
+    fulfilled
+  detection_channels:
+  - semantic_legal_effect
+  - other_modal
+  - cross_reference_structure
+  primary_spans:
+  - AIA-TEXT-A007-P018
+  qualifier_spans:
+  - AIA-TEXT-A007-P019
+  - AIA-TEXT-A007-P020
+  effective_date_spans: []
+  conditions:
+  - applying the Article 7(2) criteria, the use case no longer poses significant risks to fundamental
+    rights, health, or safety
+  - removal does not decrease the overall protection of health, safety, and fundamental rights under Union
+    law
+  exceptions: []
+  mandatory_content: []
+  dependencies:
+  - dependency_ref: Article 97 of this Regulation
+    resolution: unresolved
+    detail: Article 97 supplies the delegated-act procedure and has not yet been semantically reviewed.
+  - dependency_ref: AIA-NORM-A007-P2-CONSIDER-RISK-CRITERIA
+    resolution: internal_resolved
+    detail: Article 7(2) supplies the criteria used to determine whether significant risk remains.
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for the Commission.
+  implementation_mode: none_required
+  implementation_refs: []
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
 - norm_id: AIA-NORM-ANNEX-III-1A-REMOTE-BIOMETRIC-IDENTIFICATION
   act_version_date: '2026-07-27'
   kind: applicability
