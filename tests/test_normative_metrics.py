@@ -49,8 +49,8 @@ def test_inventory_partitions_the_complete_versioned_corpus(metrics):
     assert bundle.text_review.corpus_complete is True
     assert set(grouped) == expected
     assert metrics.documents == 133
-    assert metrics.documents_with_extracted_norms == 26
-    assert metrics.documents_with_review_debt == 111
+    assert metrics.documents_with_extracted_norms == 27
+    assert metrics.documents_with_review_debt == 110
     assert metrics.exact_source_characters == 394_667
     assert set(metrics.norms_by_document) == {
         "article 2",
@@ -69,6 +69,7 @@ def test_inventory_partitions_the_complete_versioned_corpus(metrics):
         "article 14",
         "article 15",
         "article 16",
+        "article 17",
         "article 26",
         "article 43",
         "article 50",
@@ -999,21 +1000,60 @@ def test_article_sixteen_reuses_substantive_rules_without_duplicate_targets():
     ]
 
 
+def test_article_seventeen_models_thirteen_qms_aspects_without_micro_splitting():
+    bundle = load_normative_coverage()
+    segments = [
+        segment
+        for segment in bundle.text_review.segments
+        if segment.source.kind.value == "article" and segment.source.document == "17"
+    ]
+    norms = {
+        norm.norm_id: norm
+        for norm in bundle.norm_inventory.norms
+        if norm.norm_id.startswith("AIA-NORM-A017-")
+    }
+
+    assert len(segments) == 18
+    assert all(segment.review.status.value == "approved" for segment in segments)
+    assert all(segment.review.verified_by == "vidibro" for segment in segments)
+    assert len(norms) == 21
+    assert sum(norm.kind.value == "obligation" for norm in norms.values()) == 19
+    assert sum(norm.kind.value == "permission" for norm in norms.values()) == 1
+    assert sum(norm.kind.value == "legal_consequence" for norm in norms.values()) == 1
+    assert all(norm.implementation_refs == ["AIA-PO-A17"] for norm in norms.values())
+
+    aspect_ids = {
+        norm_id
+        for norm_id in norms
+        if any(f"-P1-{point}-" in norm_id for point in "ABCDEFGHIJKLM")
+    }
+    assert len(aspect_ids) == 13
+    assert all(norms[norm_id].qualifier_spans == ["AIA-TEXT-A017-P001"] for norm_id in aspect_ids)
+
+    article_sixteen = next(
+        norm
+        for norm in bundle.norm_inventory.norms
+        if norm.norm_id == "AIA-NORM-A016-C-QUALITY-MANAGEMENT"
+    )
+    assert article_sixteen.implementation_mode.value == "carried_by_other_norm"
+    assert article_sixteen.carried_by_norm_ids == ["AIA-NORM-A017-P1-QMS"]
+
+
 def test_inventory_cannot_be_misreported_as_independently_approved(metrics):
-    assert metrics.approved_characters == 82_596
-    assert metrics.needs_review_characters == 269_183
+    assert metrics.approved_characters == 86_424
+    assert metrics.needs_review_characters == 265_393
     assert metrics.review_statuses == {
-        "approved": 358,
-        "needs_review": 917,
-        "proposed": 576,
+        "approved": 376,
+        "needs_review": 900,
+        "proposed": 596,
     }
     assert metrics.timed_review_records == 0
-    assert metrics.total_review_records == 1852
+    assert metrics.total_review_records == 1873
 
 
 def test_semantic_pass_finds_propositions_a_shall_scan_misses(metrics):
-    assert metrics.shall_vs_semantic_disagreements == 235
-    assert metrics.shall_token_candidate_recall == pytest.approx(187 / 422)
+    assert metrics.shall_vs_semantic_disagreements == 249
+    assert metrics.shall_token_candidate_recall == pytest.approx(194 / 443)
     assert "AIA-NORM-A011-P1-SIMPLIFY" in metrics.semantic_norms_without_shall_token
     assert "AIA-NORM-A043-P5-AMEND" in metrics.semantic_norms_without_shall_token
     assert "AIA-NORM-A060-P4-PERMISSION" in metrics.semantic_norms_without_shall_token
@@ -1021,13 +1061,13 @@ def test_semantic_pass_finds_propositions_a_shall_scan_misses(metrics):
 
 
 def test_metrics_expose_many_to_many_and_implementation_debt(metrics):
-    assert metrics.normative_segments_with_multiple_norms == 97
-    assert metrics.mapping_shape.one_norm_to_one_target == 11
-    assert metrics.mapping_shape.many_norms_to_one_target == 147
+    assert metrics.normative_segments_with_multiple_norms == 100
+    assert metrics.mapping_shape.one_norm_to_one_target == 10
+    assert metrics.mapping_shape.many_norms_to_one_target == 168
     assert metrics.mapping_shape.one_norm_to_many_targets == 2
     assert metrics.mapping_shape.many_to_many == 10
-    assert metrics.mapping_shape.unmapped == 252
-    assert metrics.semantic_vs_existing_implementation_disagreements == 103
+    assert metrics.mapping_shape.unmapped == 253
+    assert metrics.semantic_vs_existing_implementation_disagreements == 104
     assert metrics.semantic_norms_without_existing_implementation == [
         "AIA-NORM-A002-P1-A-PROVIDER",
         "AIA-NORM-A002-P1-B-DEPLOYER",
@@ -1101,6 +1141,7 @@ def test_metrics_expose_many_to_many_and_implementation_debt(metrics):
         "AIA-NORM-A010-P5-F-RECORD-NECESSITY",
         "AIA-NORM-A010-P5-SPECIAL-CATEGORY-PROCESSING",
         "AIA-NORM-A011-P1-SIMPLIFY",
+        "AIA-NORM-A016-C-QUALITY-MANAGEMENT",
         "AIA-NORM-A050-P3-DATA",
         "AIA-NORM-A050-P5-MANNER",
         "AIA-NORM-ANNEX-III-1A-REMOTE-BIOMETRIC-IDENTIFICATION",

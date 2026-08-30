@@ -4619,9 +4619,8 @@ records:
   subject_ref: provider
   subject_category: supported_operator
   qualifier_spans: *article_16_chapeau
-  implementation_refs:
-  - AIA-PO-A17
-  implementation_reason: The Article 17 rule carries the substantive quality-management-system finding.
+  implementation_mode: carried_by_other_norm
+  implementation_reason: The principal Article 17 quality-management-system norm carries this cross-reference obligation.
   verification_mode: judged_from_document
 - norm_id: AIA-NORM-A016-D-KEEP-DOCUMENTATION
   source: A016-P005
@@ -4735,6 +4734,211 @@ records:
   - dependency_ref: Directive (EU) 2016/2102; Directive (EU) 2019/882
     resolution: external_recorded
     detail: The referenced directives supply the substantive accessibility requirements.
+- norm_id: AIA-NORM-A017-P1-QMS
+  source: A017-P001
+  quote: Providers of high-risk AI systems shall put a quality management system in place that ensures compliance with this Regulation.
+  action: establish a quality-management system that ensures compliance with the Regulation
+  subject_ref: provider
+  subject_category: supported_operator
+  implementation_refs: &article_17_implementation
+  - AIA-PO-A17
+  verification_mode: listed_for_confirmation
+- norm_id: AIA-NORM-A017-P1-SYSTEMATIC-DOCUMENTATION
+  source: A017-P001
+  quote: That system shall be documented in a systematic and orderly manner in the form of written policies, procedures and instructions
+  action: document the quality-management system systematically and orderly
+  subject_ref: provider
+  subject_category: supported_operator
+  implementation_refs: *article_17_implementation
+  verification_mode: listed_for_confirmation
+- norm_id: AIA-NORM-A017-P1-WRITTEN-DOCUMENTATION
+  source: A017-P001
+  quote: That system shall be documented in a systematic and orderly manner in the form of written policies, procedures and instructions
+  action: document the quality-management system through written policies, procedures, and instructions
+  subject_ref: provider
+  subject_category: supported_operator
+  implementation_refs: *article_17_implementation
+  verification_mode: listed_for_confirmation
+- norm_id: AIA-NORM-A017-P1-A-REGULATORY-STRATEGY
+  source: A017-P002
+  quote: a strategy for regulatory compliance, including compliance with conformity assessment procedures and procedures for the management of modifications to the high-risk AI system
+  action: include a regulatory-compliance strategy covering conformity assessment and management of system modifications
+  subject_ref: provider
+  subject_category: supported_operator
+  qualifier_spans: &article_17_p1_chapeau
+  - A017-P001
+  implementation_refs: *article_17_implementation
+  verification_mode: listed_for_confirmation
+- norm_id: AIA-NORM-A017-P1-B-DESIGN-PROCESSES
+  source: A017-P003
+  quote: techniques, procedures and systematic actions to be used for the design, design control and design verification of the high-risk AI system
+  action: include techniques, procedures, and systematic actions for system design, design control, and design verification
+  subject_ref: provider
+  subject_category: supported_operator
+  qualifier_spans: *article_17_p1_chapeau
+  implementation_refs: *article_17_implementation
+  verification_mode: listed_for_confirmation
+- norm_id: AIA-NORM-A017-P1-C-DEVELOPMENT-PROCESSES
+  source: A017-P004
+  quote: techniques, procedures and systematic actions to be used for the development, quality control and quality assurance of the high-risk AI system
+  action: include techniques, procedures, and systematic actions for system development, quality control, and quality assurance
+  subject_ref: provider
+  subject_category: supported_operator
+  qualifier_spans: *article_17_p1_chapeau
+  implementation_refs: *article_17_implementation
+  verification_mode: listed_for_confirmation
+- norm_id: AIA-NORM-A017-P1-D-TESTING-PROCESSES
+  source: A017-P005
+  quote: examination, test and validation procedures to be carried out before, during and after the development of the high-risk AI system, and the frequency with which they have to be carried out
+  action: include examination, testing, and validation procedures covering the periods before, during, and after development and specifying their frequency
+  subject_ref: provider
+  subject_category: supported_operator
+  qualifier_spans: *article_17_p1_chapeau
+  implementation_refs: *article_17_implementation
+  verification_mode: listed_for_confirmation
+- norm_id: AIA-NORM-A017-P1-E-SPECIFICATIONS
+  source: A017-P006
+  quote: technical specifications, including standards, to be applied and, where the relevant harmonised standards are not applied in full or do not cover all of the relevant requirements set out in Section 2, the means to be used to ensure that the high-risk AI system complies with those requirements
+  action: include applicable technical specifications and standards and the alternative means used for Section 2 compliance where harmonised standards are incomplete or insufficient
+  subject_ref: provider
+  subject_category: supported_operator
+  qualifier_spans: *article_17_p1_chapeau
+  implementation_refs: *article_17_implementation
+  verification_mode: listed_for_confirmation
+- norm_id: AIA-NORM-A017-P1-F-DATA-MANAGEMENT
+  source: A017-P007
+  quote: systems and procedures for data management, including data acquisition, data collection, data analysis, data labelling, data storage, data filtration, data mining, data aggregation, data retention and any other operation regarding the data that is performed before and for the purpose of the placing on the market or the putting into service of high-risk AI systems
+  action: include data-management systems and procedures covering all listed and other relevant pre-market or pre-service data operations
+  subject_ref: provider
+  subject_category: supported_operator
+  qualifier_spans: *article_17_p1_chapeau
+  implementation_refs: *article_17_implementation
+  verification_mode: listed_for_confirmation
+- norm_id: AIA-NORM-A017-P1-G-RISK-MANAGEMENT
+  source: A017-P008
+  quote: the risk management system referred to in Article 9
+  action: include the Article 9 risk-management system in the quality-management system
+  subject_ref: provider
+  subject_category: supported_operator
+  qualifier_spans: *article_17_p1_chapeau
+  implementation_refs: *article_17_implementation
+  verification_mode: listed_for_confirmation
+  dependencies:
+  - dependency_ref: AIA-NORM-A009-P1-ESTABLISH
+    resolution: internal_resolved
+    detail: Article 9 supplies the referenced risk-management-system obligation.
+- norm_id: AIA-NORM-A017-P1-H-POST-MARKET-MONITORING
+  source: A017-P009
+  quote: the setting-up, implementation and maintenance of a post-market monitoring system, in accordance with Article 72
+  action: include the establishment, implementation, and maintenance of an Article 72 post-market monitoring system
+  subject_ref: provider
+  subject_category: supported_operator
+  qualifier_spans: *article_17_p1_chapeau
+  implementation_refs: *article_17_implementation
+  verification_mode: listed_for_confirmation
+  dependencies:
+  - dependency_ref: Article 72 of this Regulation
+    resolution: unresolved
+    detail: Article 72 supplies the post-market monitoring requirements and has not yet been semantically reviewed.
+- norm_id: AIA-NORM-A017-P1-I-INCIDENT-REPORTING
+  source: A017-P010
+  quote: procedures related to the reporting of a serious incident in accordance with Article 73
+  action: include procedures for reporting serious incidents under Article 73
+  subject_ref: provider
+  subject_category: supported_operator
+  qualifier_spans: *article_17_p1_chapeau
+  implementation_refs: *article_17_implementation
+  verification_mode: listed_for_confirmation
+  dependencies:
+  - dependency_ref: Article 73 of this Regulation
+    resolution: unresolved
+    detail: Article 73 supplies the serious-incident reporting requirements and has not yet been semantically reviewed.
+- norm_id: AIA-NORM-A017-P1-J-COMMUNICATION
+  source: A017-P011
+  quote: the handling of communication with national competent authorities, other relevant authorities, including those providing or supporting the access to data, notified bodies, other operators, customers or other interested parties
+  action: include processes for handling communication with all listed authorities, bodies, operators, customers, and interested parties
+  subject_ref: provider
+  subject_category: supported_operator
+  qualifier_spans: *article_17_p1_chapeau
+  implementation_refs: *article_17_implementation
+  verification_mode: listed_for_confirmation
+- norm_id: AIA-NORM-A017-P1-K-RECORD-KEEPING
+  source: A017-P012
+  quote: systems and procedures for record-keeping of all relevant documentation and information
+  action: include systems and procedures for keeping all relevant documentation and information
+  subject_ref: provider
+  subject_category: supported_operator
+  qualifier_spans: *article_17_p1_chapeau
+  implementation_refs: *article_17_implementation
+  verification_mode: listed_for_confirmation
+- norm_id: AIA-NORM-A017-P1-L-RESOURCE-MANAGEMENT
+  source: A017-P013
+  quote: resource management, including security-of-supply related measures
+  action: include resource management and security-of-supply measures
+  subject_ref: provider
+  subject_category: supported_operator
+  qualifier_spans: *article_17_p1_chapeau
+  implementation_refs: *article_17_implementation
+  verification_mode: listed_for_confirmation
+- norm_id: AIA-NORM-A017-P1-M-ACCOUNTABILITY
+  source: A017-P014
+  quote: an accountability framework setting out the responsibilities of the management and other staff with regard to all the aspects listed in this paragraph
+  action: include an accountability framework assigning management and staff responsibilities for every Article 17(1) aspect
+  subject_ref: provider
+  subject_category: supported_operator
+  qualifier_spans: *article_17_p1_chapeau
+  implementation_refs: *article_17_implementation
+  verification_mode: listed_for_confirmation
+- norm_id: AIA-NORM-A017-P2-PROPORTIONATE-IMPLEMENTATION
+  source: A017-P015
+  quote: The implementation of the aspects referred to in paragraph 1 shall be proportionate to the size of the provider’s organisation, in particular, if the provider is an SME, including a start-up, or an SMC.
+  action: implement the Article 17(1) aspects proportionately to the provider’s organisational size, particularly for SMEs, start-ups, and SMCs
+  subject_ref: provider
+  subject_category: supported_operator
+  implementation_refs: *article_17_implementation
+  verification_mode: listed_for_confirmation
+- norm_id: AIA-NORM-A017-P2-RIGOUR-PROTECTION
+  source: A017-P015
+  quote: Providers shall, in any event, respect the degree of rigour and the level of protection required to ensure the compliance of their high-risk AI systems with this Regulation.
+  action: preserve the degree of rigour and protection required for system compliance regardless of provider size
+  subject_ref: provider
+  subject_category: supported_operator
+  implementation_refs: *article_17_implementation
+  verification_mode: listed_for_confirmation
+- norm_id: AIA-NORM-A017-P3-SECTORAL-INTEGRATION
+  source: A017-P016
+  quote: Providers of high-risk AI systems that are subject to obligations regarding quality management systems or an equivalent function under relevant sectoral Union law may include the aspects listed in paragraph 1 as part of the quality management systems pursuant to that law.
+  action: integrate the Article 17(1) aspects into a quality-management system required by relevant sectoral Union law
+  subject_ref: provider
+  subject_category: supported_operator
+  kind: permission
+  conditions:
+  - the provider is subject to quality-management-system or equivalent obligations under relevant sectoral Union law
+  implementation_refs: *article_17_implementation
+  verification_mode: reported_conditionally
+- norm_id: AIA-NORM-A017-P4-FINANCIAL-DEEMING
+  source: A017-P017
+  quote: the obligation to put in place a quality management system, with the exception of paragraph 1, points (g), (h) and (i) of this Article, shall be deemed to be fulfilled by complying with the rules on internal governance arrangements or processes pursuant to the relevant Union financial services law
+  action: deem the Article 17 QMS obligation fulfilled through compliance with applicable Union financial-services governance rules, except for points (g), (h), and (i)
+  subject_ref: financial_institution_provider
+  subject_category: supported_operator
+  kind: legal_consequence
+  conditions:
+  - the provider is a financial institution subject to internal-governance requirements under Union financial-services law
+  exceptions:
+  - Article 17(1)(g), (h), and (i) remain independently required
+  implementation_refs: *article_17_implementation
+  verification_mode: reported_conditionally
+- norm_id: AIA-NORM-A017-P4-HARMONISED-STANDARDS
+  source: A017-P017
+  quote: To that end, any harmonised standards referred to in Article 40 shall be taken into account.
+  action: take applicable Article 40 harmonised standards into account when relying on the financial-institution governance route
+  subject_ref: financial_institution_provider
+  subject_category: supported_operator
+  conditions:
+  - the provider relies on Union financial-services governance compliance to fulfil the Article 17 QMS obligation
+  implementation_refs: *article_17_implementation
+  verification_mode: listed_for_confirmation
 - norm_id: AIA-NORM-A026-P5-MONITOR
   source: A026-P5
   quote: Deployers shall monitor the operation of the high-risk AI system
@@ -5590,6 +5794,8 @@ records:
   verification_mode: unresolved
   mandatory_content_source: numbered_items
 carried_by:
+  AIA-NORM-A016-C-QUALITY-MANAGEMENT:
+  - AIA-NORM-A017-P1-QMS
   AIA-NORM-A010-P5-SPECIAL-CATEGORY-PROCESSING:
   - AIA-NORM-A004A-P1-HIGH-RISK-BIAS-DATA-PROCESSING
   AIA-NORM-A010-P5-B-REUSE-SECURITY:
