@@ -49,8 +49,8 @@ def test_inventory_partitions_the_complete_versioned_corpus(metrics):
     assert bundle.text_review.corpus_complete is True
     assert set(grouped) == expected
     assert metrics.documents == 133
-    assert metrics.documents_with_extracted_norms == 30
-    assert metrics.documents_with_review_debt == 107
+    assert metrics.documents_with_extracted_norms == 31
+    assert metrics.documents_with_review_debt == 106
     assert metrics.exact_source_characters == 394_667
     assert set(metrics.norms_by_document) == {
         "article 2",
@@ -73,6 +73,7 @@ def test_inventory_partitions_the_complete_versioned_corpus(metrics):
         "article 18",
         "article 19",
         "article 20",
+        "article 21",
         "article 26",
         "article 43",
         "article 50",
@@ -1161,21 +1162,51 @@ def test_article_twenty_keeps_alternative_corrective_outcomes_in_one_norm():
     assert set(article_sixteen.carried_by_norm_ids) == set(norms)
 
 
+def test_article_twenty_one_separates_disclosure_language_and_log_access():
+    bundle = load_normative_coverage()
+    segments = [
+        segment
+        for segment in bundle.text_review.segments
+        if segment.source.kind.value == "article" and segment.source.document == "21"
+    ]
+    norms = {
+        norm.norm_id: norm
+        for norm in bundle.norm_inventory.norms
+        if norm.norm_id.startswith("AIA-NORM-A021-")
+    }
+
+    assert len(segments) == 4
+    assert all(segment.review.status.value == "approved" for segment in segments)
+    assert all(segment.review.verified_by == "vidibro" for segment in segments)
+    assert len(norms) == 4
+    assert all(norm.kind.value == "obligation" for norm in norms.values())
+
+    paragraph_one = {norm_id for norm_id in norms if "-P1-" in norm_id}
+    assert len(paragraph_one) == 2
+    assert all(norms[norm_id].implementation_refs == ["AIA-PO-A21"] for norm_id in paragraph_one)
+    assert norms["AIA-NORM-A021-P2-PROVIDE-LOG-ACCESS"].implementation_refs == [
+        "AIA-PO-A21-2"
+    ]
+    confidentiality = norms["AIA-NORM-A021-P3-CONFIDENTIALITY"]
+    assert confidentiality.subjects[0].category.value == "public_authority"
+    assert confidentiality.implementation_mode.value == "none_required"
+
+
 def test_inventory_cannot_be_misreported_as_independently_approved(metrics):
-    assert metrics.approved_characters == 89_752
-    assert metrics.needs_review_characters == 262_195
+    assert metrics.approved_characters == 90_689
+    assert metrics.needs_review_characters == 261_309
     assert metrics.review_statuses == {
-        "approved": 391,
-        "needs_review": 888,
-        "proposed": 609,
+        "approved": 395,
+        "needs_review": 885,
+        "proposed": 612,
     }
     assert metrics.timed_review_records == 0
-    assert metrics.total_review_records == 1889
+    assert metrics.total_review_records == 1893
 
 
 def test_semantic_pass_finds_propositions_a_shall_scan_misses(metrics):
     assert metrics.shall_vs_semantic_disagreements == 256
-    assert metrics.shall_token_candidate_recall == pytest.approx(203 / 459)
+    assert metrics.shall_token_candidate_recall == pytest.approx(207 / 463)
     assert "AIA-NORM-A011-P1-SIMPLIFY" in metrics.semantic_norms_without_shall_token
     assert "AIA-NORM-A043-P5-AMEND" in metrics.semantic_norms_without_shall_token
     assert "AIA-NORM-A060-P4-PERMISSION" in metrics.semantic_norms_without_shall_token
@@ -1183,12 +1214,12 @@ def test_semantic_pass_finds_propositions_a_shall_scan_misses(metrics):
 
 
 def test_metrics_expose_many_to_many_and_implementation_debt(metrics):
-    assert metrics.normative_segments_with_multiple_norms == 104
-    assert metrics.mapping_shape.one_norm_to_one_target == 8
-    assert metrics.mapping_shape.many_norms_to_one_target == 183
+    assert metrics.normative_segments_with_multiple_norms == 105
+    assert metrics.mapping_shape.one_norm_to_one_target == 9
+    assert metrics.mapping_shape.many_norms_to_one_target == 185
     assert metrics.mapping_shape.one_norm_to_many_targets == 1
     assert metrics.mapping_shape.many_to_many == 10
-    assert metrics.mapping_shape.unmapped == 257
+    assert metrics.mapping_shape.unmapped == 258
     assert metrics.semantic_vs_existing_implementation_disagreements == 107
     assert metrics.semantic_norms_without_existing_implementation == [
         "AIA-NORM-A002-P1-A-PROVIDER",
