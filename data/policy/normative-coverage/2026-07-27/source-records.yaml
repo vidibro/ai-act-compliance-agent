@@ -1,7 +1,9 @@
 act_version_date: '2026-07-27'
 implementation_targets:
 - AIA-DP-A26
+- AIA-HR-A09
 - AIA-HR-A11
+- AIA-PO-A08-2
 - AIA-PO-A43-1B
 - AIA-PO-A43-3
 - AIA-PO-A60-4
@@ -2722,6 +2724,66 @@ records:
   - dependency_ref: AIA-NORM-A007-P2-CONSIDER-RISK-CRITERIA
     resolution: internal_resolved
     detail: Article 7(2) supplies the criteria used to determine whether significant risk remains.
+- norm_id: AIA-NORM-A008-P1-COMPLY-SECTION-REQUIREMENTS
+  source: A008-P001
+  quote: High-risk AI systems shall comply with the requirements laid down in this Section, taking into account their intended purpose as well as the generally acknowledged state of the art on AI and AI-related technologies.
+  action: ensure high-risk AI systems comply with the Section 2 requirements while considering intended purpose and the generally acknowledged state of the art
+  subject_ref: provider
+  subject_category: supported_operator
+  kind: obligation
+  implementation_mode: unresolved
+  implementation_reason: The detailed Article 9 to 15 norms must be authored before this Section 2 chapeau can receive complete carrier links.
+  verification_mode: not_assessed
+  dependencies:
+  - dependency_ref: Articles 9 to 15 of this Regulation
+    resolution: unresolved
+    detail: Articles 9 to 15 supply the detailed high-risk AI-system requirements and have not all been semantically reviewed.
+- norm_id: AIA-NORM-A008-P1-CONSIDER-RISK-MANAGEMENT
+  source: A008-P001
+  quote: The risk management system referred to in Article 9 shall be taken into account when ensuring compliance with those requirements.
+  action: take the Article 9 risk-management system into account when ensuring compliance with the Section 2 requirements
+  subject_ref: provider
+  subject_category: supported_operator
+  kind: obligation
+  implementation_refs:
+  - AIA-HR-A09
+  verification_mode: judged_from_document
+  dependencies:
+  - dependency_ref: Article 9 of this Regulation
+    resolution: unresolved
+    detail: Article 9 supplies the detailed risk-management-system requirements and has not yet been semantically reviewed.
+- norm_id: AIA-NORM-A008-P2-ENSURE-PRODUCT-COMPLIANCE
+  source: A008-P002
+  quote: providers shall be responsible for ensuring that their product is fully compliant with all applicable requirements under applicable Union harmonisation legislation.
+  action: ensure a product containing an AI system fully complies with every applicable requirement under the relevant Union harmonisation legislation
+  subject_ref: provider
+  subject_category: supported_operator
+  kind: obligation
+  conditions:
+  - the product contains an AI system to which both this Regulation and Union harmonisation legislation listed in Annex I Section A apply
+  implementation_refs:
+  - AIA-PO-A08-2
+  verification_mode: listed_for_confirmation
+  dependencies:
+  - dependency_ref: Annex I, Section A, of this Regulation and the Union harmonisation legislation listed there
+    resolution: unresolved
+    detail: The relevant external legislation supplies the applicable product requirements.
+- norm_id: AIA-NORM-A008-P2-INTEGRATE-COMPLIANCE-PROCESSES
+  source: A008-P002
+  quote: providers shall have a choice of integrating, as appropriate, the necessary testing and reporting processes, information and documentation they provide with regard to their product into documentation and procedures that already exist and are required under the Union harmonisation legislation listed in Section A of Annex I.
+  action: integrate AI testing, reporting, information, and documentation into existing product documentation and procedures required by Annex I Section A legislation
+  subject_ref: provider
+  subject_category: supported_operator
+  kind: permission
+  conditions:
+  - integration is appropriate for ensuring consistency, avoiding duplication, and minimising additional burdens
+  implementation_refs:
+  - AIA-PO-A08-2
+  verification_mode: reported_conditionally
+  dependencies:
+  - dependency_ref: Annex I, Section A, of this Regulation and the Union harmonisation legislation listed there
+    resolution: unresolved
+    detail: The relevant external legislation supplies the existing product documentation and procedures into which AI compliance work may be integrated.
 - norm_id: AIA-NORM-ANNEX-III-1A-REMOTE-BIOMETRIC-IDENTIFICATION
   source: ANNEX-III-P003
   quote: 'remote biometric identification systems. This shall not include AI systems intended to be used for biometric verification the sole purpose of which is to confirm that a specific natural person is the person he or she claims to be;'
