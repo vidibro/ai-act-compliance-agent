@@ -2381,6 +2381,247 @@ records:
   implementation_mode: none_required
   implementation_reason: The preserved external prohibitions are represented as legal dependencies rather than standalone product rules.
   verification_mode: not_assessed
+- norm_id: AIA-NORM-A006-P1-ANNEX-I-HIGH-RISK
+  source: A006-P001
+  quote: that AI system shall be considered to be high-risk where both of the following conditions are fulfilled
+  action: classify an AI system as high-risk when both the Annex I product or safety-component condition and the third-party conformity-assessment condition are fulfilled
+  subject_ref: ai_system
+  subject_category: other
+  kind: applicability
+  qualifier_spans:
+  - A006-P002
+  - A006-P003
+  conditions:
+  - the AI system is intended as a safety component of a product, or is itself a product, covered by Union harmonisation legislation listed in Annex I
+  - the relevant product is required to undergo third-party conformity assessment for market placement or putting into service under that Annex I legislation
+  dependencies:
+  - dependency_ref: AIA-NORM-A003-D014-SAFETY-COMPONENT
+    resolution: internal_resolved
+    detail: Article 3(14) defines safety component.
+  - dependency_ref: Annex I of this Regulation and the Union harmonisation legislation listed there
+    resolution: unresolved
+    detail: Annex I and the referenced legislation determine the covered products and conformity-assessment requirements.
+- norm_id: AIA-NORM-A006-P1A-NON-SAFETY-ASSISTANCE
+  source: A006-P004
+  quote: AI systems that are solely used for non-safety related aspects of user assistance, performance optimisation, service efficiency, automation or convenience or quality control shall not qualify as safety components.
+  action: exclude AI systems used solely for the listed non-safety functions from qualification as safety components
+  subject_ref: ai_system
+  subject_category: other
+  kind: applicability
+  conditions:
+  - the system is used solely for non-safety aspects of user assistance, performance optimisation, service efficiency, automation, convenience, or quality control
+  dependencies:
+  - dependency_ref: AIA-NORM-A003-D014-SAFETY-COMPONENT
+    resolution: internal_resolved
+    detail: Article 3(14) defines safety component.
+- norm_id: AIA-NORM-A006-P1B-HEALTH-SAFETY-OVERRIDE
+  source: A006-P005
+  quote: AI systems the failure or malfunctioning of which would endanger health and safety shall qualify as safety components.
+  action: classify an AI system as a safety component when its failure or malfunction would endanger health and safety
+  subject_ref: ai_system
+  subject_category: other
+  kind: applicability
+  conditions:
+  - failure or malfunction of the AI system would endanger health and safety
+  dependencies:
+  - dependency_ref: AIA-NORM-A003-D014-SAFETY-COMPONENT
+    resolution: internal_resolved
+    detail: Article 3(14) defines safety component.
+- norm_id: AIA-NORM-A006-P1C-NON-SAFETY-ASSESSMENT
+  source: A006-P006
+  quote: A product that is required to undergo a third-party conformity assessment solely due to risks other than risks to health and safety, in particular risks relating to the distribution of radio spectrum or electromagnetic interference that do not affect health and safety, shall not be considered as fulfilling the condition in paragraph 1, point (b).
+  action: exclude a third-party conformity assessment required solely for non-health-and-safety risks from satisfying Article 6(1)(b)
+  subject_ref: ai_system_or_product
+  subject_category: other
+  kind: applicability
+  conditions:
+  - third-party conformity assessment is required solely because of risks unrelated to health and safety
+- norm_id: AIA-NORM-A006-P2-ANNEX-III-HIGH-RISK
+  source: A006-P007
+  quote: AI systems referred to in Annex III shall be considered to be high-risk.
+  action: classify AI systems referred to in Annex III as high-risk
+  subject_ref: annex_iii_ai_system
+  subject_category: other
+  kind: applicability
+  dependencies:
+  - dependency_ref: Annex III of this Regulation
+    resolution: unresolved
+    detail: Annex III supplies the high-risk use-case areas and has not yet been semantically reviewed.
+- norm_id: AIA-NORM-A006-P3-INSIGNIFICANT-RISK-EXCEPTION
+  source: A006-P008
+  quote: an AI system referred to in Annex III shall not be considered to be high-risk where it does not pose a significant risk of harm to the health, safety or fundamental rights of natural persons, including by not materially influencing the outcome of decision making.
+  action: exclude an Annex III AI system from high-risk classification when it poses no significant harm risk and satisfies at least one listed condition
+  subject_ref: annex_iii_ai_system
+  subject_category: other
+  kind: applicability
+  qualifier_spans:
+  - A006-P009
+  - A006-P010
+  - A006-P011
+  - A006-P012
+  - A006-P013
+  conditions:
+  - the system does not pose a significant risk of harm to natural persons' health, safety, or fundamental rights, including by not materially influencing decision-making outcomes
+  - the system performs a narrow procedural task, improves a completed human activity, detects decision patterns without improperly replacing or influencing the completed human assessment, or performs a preparatory task for an Annex III assessment
+  dependencies:
+  - dependency_ref: AIA-NORM-A006-P2-ANNEX-III-HIGH-RISK
+    resolution: internal_resolved
+    detail: This norm derogates from the Annex III high-risk classification.
+- norm_id: AIA-NORM-A006-P3-PROFILING-OVERRIDE
+  source: A006-P014
+  quote: an AI system referred to in Annex III shall always be considered to be high-risk where the AI system performs profiling of natural persons.
+  action: classify an Annex III AI system as high-risk whenever it profiles natural persons
+  subject_ref: annex_iii_ai_system
+  subject_category: other
+  kind: applicability
+  conditions:
+  - the AI system performs profiling of natural persons
+  dependencies:
+  - dependency_ref: AIA-NORM-A003-D052-PROFILING
+    resolution: internal_resolved
+    detail: Article 3(52) defines profiling.
+  - dependency_ref: AIA-NORM-A006-P3-INSIGNIFICANT-RISK-EXCEPTION
+    resolution: internal_resolved
+    detail: Profiling overrides the Article 6(3) insignificant-risk exception.
+- norm_id: AIA-NORM-A006-P4-DOCUMENT-ASSESSMENT
+  source: A006-P015
+  quote: A provider who considers that an AI system referred to in Annex III is not high-risk shall document its assessment before that system is placed on the market or put into service.
+  action: document the Article 6(3) non-high-risk assessment before placing the system on the market or putting it into service
+  subject_ref: provider
+  subject_category: supported_operator
+  kind: obligation
+  conditions:
+  - the provider considers an Annex III AI system not to be high-risk under Article 6(3)
+  dependencies:
+  - dependency_ref: AIA-NORM-A006-P3-INSIGNIFICANT-RISK-EXCEPTION
+    resolution: internal_resolved
+    detail: Article 6(3) supplies the substantive basis for the assessment.
+- norm_id: AIA-NORM-A006-P4-REGISTER-SYSTEM
+  source: A006-P015
+  quote: Such provider shall be subject to the registration obligation set out in Article 49(2).
+  action: register the provider and non-high-risk system as required by Article 49(2)
+  subject_ref: provider
+  subject_category: supported_operator
+  kind: obligation
+  conditions:
+  - the provider concludes that an Annex III AI system is not high-risk under Article 6(3)
+  dependencies:
+  - dependency_ref: Article 49(2) of this Regulation
+    resolution: unresolved
+    detail: Article 49(2) supplies the detailed registration obligation and has not yet been semantically reviewed.
+- norm_id: AIA-NORM-A006-P4-PROVIDE-ASSESSMENT
+  source: A006-P015
+  quote: Upon request of national competent authorities, the provider shall provide the documentation of the assessment.
+  action: provide the documented non-high-risk assessment to national competent authorities upon request
+  subject_ref: provider
+  subject_category: supported_operator
+  kind: obligation
+  conditions:
+  - a national competent authority requests the documentation
+- norm_id: AIA-NORM-A006-P5-PROVIDE-GUIDELINES
+  source: A006-P016
+  quote: The Commission shall, after consulting the European Artificial Intelligence Board (the ‘ Board ’), and no later than 2 February 2026, provide guidelines specifying the practical implementation of this Article in line with Article 96
+  action: provide Article 96 guidelines on the practical implementation of Article 6 by 2 February 2026 after consulting the AI Board
+  subject_ref: commission
+  subject_category: union_institution_or_body
+  kind: obligation
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for the Commission.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+  dependencies:
+  - dependency_ref: Article 96 of this Regulation
+    resolution: unresolved
+    detail: Article 96 governs Commission guidelines and has not yet been semantically reviewed.
+- norm_id: AIA-NORM-A006-P5-PROVIDE-EXAMPLES
+  source: A006-P016
+  quote: together with a comprehensive list of practical examples of use cases of AI systems that are high-risk and not high-risk.
+  action: provide a comprehensive list of practical high-risk and non-high-risk AI-system use cases with the Article 6 guidelines
+  subject_ref: commission
+  subject_category: union_institution_or_body
+  kind: obligation
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for the Commission.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A006-P6-AMEND-EXCEPTIONS
+  source: A006-P017
+  quote: The Commission is empowered to adopt delegated acts in accordance with Article 97 in order to amend paragraph 3, second subparagraph, of this Article by adding new conditions to those laid down therein, or by modifying them
+  action: adopt Article 97 delegated acts adding or modifying Article 6(3) exception conditions when supported by concrete and reliable evidence
+  subject_ref: commission
+  subject_category: union_institution_or_body
+  kind: power
+  conditions:
+  - concrete and reliable evidence shows that AI systems within Annex III do not pose a significant risk of harm to natural persons' health, safety, or fundamental rights
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for the Commission.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+  dependencies:
+  - dependency_ref: Article 97 of this Regulation
+    resolution: unresolved
+    detail: Article 97 supplies the delegated-act procedure and has not yet been semantically reviewed.
+- norm_id: AIA-NORM-A006-P7-DELETE-EXCEPTIONS
+  source: A006-P018
+  quote: The Commission shall adopt delegated acts in accordance with Article 97 in order to amend paragraph 3, second subparagraph, of this Article by deleting any of the conditions laid down therein
+  action: adopt Article 97 delegated acts deleting Article 6(3) exception conditions when necessary to maintain the required protection
+  subject_ref: commission
+  subject_category: union_institution_or_body
+  kind: obligation
+  conditions:
+  - concrete and reliable evidence shows deletion is necessary to maintain protection of health, safety, and fundamental rights
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for the Commission.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+  dependencies:
+  - dependency_ref: Article 97 of this Regulation
+    resolution: unresolved
+    detail: Article 97 supplies the delegated-act procedure and has not yet been semantically reviewed.
+- norm_id: AIA-NORM-A006-P8-NO-REDUCED-PROTECTION
+  source: A006-P019
+  quote: Any amendment to the conditions laid down in paragraph 3, second subparagraph, adopted in accordance with paragraphs 6 and 7 of this Article shall not decrease the overall level of protection of health, safety and fundamental rights provided for by this Regulation
+  action: prohibit Article 6(3) condition amendments from decreasing the Regulation's overall protection of health, safety, and fundamental rights
+  subject_ref: commission
+  subject_category: union_institution_or_body
+  kind: prohibition
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for the Commission.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A006-P8-ENSURE-CONSISTENCY
+  source: A006-P019
+  quote: shall ensure consistency with the delegated acts adopted pursuant to Article 7(1)
+  action: ensure Article 6(3) condition amendments remain consistent with delegated acts adopted under Article 7(1)
+  subject_ref: commission
+  subject_category: union_institution_or_body
+  kind: obligation
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for the Commission.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+  dependencies:
+  - dependency_ref: Article 7(1) of this Regulation
+    resolution: unresolved
+    detail: Article 7(1) governs related delegated acts and has not yet been semantically reviewed.
+- norm_id: AIA-NORM-A006-P8-CONSIDER-DEVELOPMENTS
+  source: A006-P019
+  quote: take account of market and technological developments.
+  action: take market and technological developments into account when amending Article 6(3) conditions
+  subject_ref: commission
+  subject_category: union_institution_or_body
+  kind: obligation
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for the Commission.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
 - norm_id: AIA-NORM-A011-P1-DRAW
   source: A011-P1
   quote: shall be drawn up before that system is placed on the market or put into service

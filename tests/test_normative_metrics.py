@@ -49,8 +49,8 @@ def test_inventory_partitions_the_complete_versioned_corpus(metrics):
     assert bundle.text_review.corpus_complete is True
     assert set(grouped) == expected
     assert metrics.documents == 133
-    assert metrics.documents_with_extracted_norms == 15
-    assert metrics.documents_with_review_debt == 123
+    assert metrics.documents_with_extracted_norms == 16
+    assert metrics.documents_with_review_debt == 122
     assert metrics.exact_source_characters == 394_667
     assert set(metrics.norms_by_document) == {
         "article 2",
@@ -58,6 +58,7 @@ def test_inventory_partitions_the_complete_versioned_corpus(metrics):
         "article 4",
         "article 4a",
         "article 5",
+        "article 6",
         "article 11",
         "article 26",
         "article 43",
@@ -589,21 +590,44 @@ def test_article_five_one_a_and_one_b_narrow_the_new_content_prohibitions():
     assert non_manipulation.product_scope.value == "in_scope"
 
 
+def test_article_six_is_fully_approved_and_atomically_classified():
+    bundle = load_normative_coverage()
+    segments = [
+        segment
+        for segment in bundle.text_review.segments
+        if segment.source.kind.value == "article" and segment.source.document == "6"
+    ]
+    norms = [
+        norm
+        for norm in bundle.norm_inventory.norms
+        if norm.norm_id.startswith("AIA-NORM-A006-")
+    ]
+
+    assert len(segments) == 20
+    assert all(segment.review.status.value == "approved" for segment in segments)
+    assert all(segment.review.verified_by == "vidibro" for segment in segments)
+    assert len(norms) == 17
+    assert sum(norm.kind.value == "applicability" for norm in norms) == 7
+    assert sum(norm.kind.value == "obligation" for norm in norms) == 8
+    assert sum(norm.kind.value == "power" for norm in norms) == 1
+    assert sum(norm.kind.value == "prohibition" for norm in norms) == 1
+
+
 def test_inventory_cannot_be_misreported_as_independently_approved(metrics):
-    assert metrics.approved_characters == 42_387
-    assert metrics.needs_review_characters == 307_377
+    assert metrics.approved_characters == 47_288
+    assert metrics.needs_review_characters == 302_533
     assert metrics.review_statuses == {
-        "approved": 169,
-        "needs_review": 1092,
-        "proposed": 403,
+        "approved": 189,
+        "needs_review": 1073,
+        "proposed": 419,
     }
     assert metrics.timed_review_records == 0
-    assert metrics.total_review_records == 1665
+    assert metrics.total_review_records == 1682
 
 
 def test_semantic_pass_finds_propositions_a_shall_scan_misses(metrics):
-    assert metrics.shall_vs_semantic_disagreements == 130
-    assert metrics.shall_token_candidate_recall == pytest.approx(105 / 235)
+    assert metrics.shall_vs_semantic_disagreements == 133
+    assert metrics.shall_token_candidate_recall == pytest.approx(119 / 252)
     assert "AIA-NORM-A011-P1-SIMPLIFY" in metrics.semantic_norms_without_shall_token
     assert "AIA-NORM-A043-P5-AMEND" in metrics.semantic_norms_without_shall_token
     assert "AIA-NORM-A060-P4-PERMISSION" in metrics.semantic_norms_without_shall_token
@@ -611,11 +635,11 @@ def test_semantic_pass_finds_propositions_a_shall_scan_misses(metrics):
 
 
 def test_metrics_expose_many_to_many_and_implementation_debt(metrics):
-    assert metrics.normative_segments_with_multiple_norms == 47
+    assert metrics.normative_segments_with_multiple_norms == 50
     assert metrics.mapping_shape.many_norms_to_one_target == 26
     assert metrics.mapping_shape.many_to_many == 8
-    assert metrics.mapping_shape.unmapped == 198
-    assert metrics.semantic_vs_existing_implementation_disagreements == 61
+    assert metrics.mapping_shape.unmapped == 215
+    assert metrics.semantic_vs_existing_implementation_disagreements == 71
     assert metrics.semantic_norms_without_existing_implementation == [
         "AIA-NORM-A002-P1-A-PROVIDER",
         "AIA-NORM-A002-P1-B-DEPLOYER",
@@ -671,6 +695,16 @@ def test_metrics_expose_many_to_many_and_implementation_debt(metrics):
         "AIA-NORM-A005-P4-EXCLUDE-SENSITIVE-DATA",
         "AIA-NORM-A005-P4-NOTIFICATION-CONTENT",
         "AIA-NORM-A005-P4-NOTIFY-AUTHORITIES",
+        "AIA-NORM-A006-P1-ANNEX-I-HIGH-RISK",
+        "AIA-NORM-A006-P1A-NON-SAFETY-ASSISTANCE",
+        "AIA-NORM-A006-P1B-HEALTH-SAFETY-OVERRIDE",
+        "AIA-NORM-A006-P1C-NON-SAFETY-ASSESSMENT",
+        "AIA-NORM-A006-P2-ANNEX-III-HIGH-RISK",
+        "AIA-NORM-A006-P3-INSIGNIFICANT-RISK-EXCEPTION",
+        "AIA-NORM-A006-P3-PROFILING-OVERRIDE",
+        "AIA-NORM-A006-P4-DOCUMENT-ASSESSMENT",
+        "AIA-NORM-A006-P4-PROVIDE-ASSESSMENT",
+        "AIA-NORM-A006-P4-REGISTER-SYSTEM",
         "AIA-NORM-A011-P1-SIMPLIFY",
         "AIA-NORM-A050-P3-DATA",
         "AIA-NORM-A050-P5-MANNER",
@@ -734,6 +768,16 @@ def test_metrics_expose_many_to_many_and_implementation_debt(metrics):
         "AIA-NORM-A005-P4-EXCLUDE-SENSITIVE-DATA",
         "AIA-NORM-A005-P4-NOTIFICATION-CONTENT",
         "AIA-NORM-A005-P4-NOTIFY-AUTHORITIES",
+        "AIA-NORM-A006-P1-ANNEX-I-HIGH-RISK",
+        "AIA-NORM-A006-P1A-NON-SAFETY-ASSISTANCE",
+        "AIA-NORM-A006-P1B-HEALTH-SAFETY-OVERRIDE",
+        "AIA-NORM-A006-P1C-NON-SAFETY-ASSESSMENT",
+        "AIA-NORM-A006-P2-ANNEX-III-HIGH-RISK",
+        "AIA-NORM-A006-P3-INSIGNIFICANT-RISK-EXCEPTION",
+        "AIA-NORM-A006-P3-PROFILING-OVERRIDE",
+        "AIA-NORM-A006-P4-DOCUMENT-ASSESSMENT",
+        "AIA-NORM-A006-P4-PROVIDE-ASSESSMENT",
+        "AIA-NORM-A006-P4-REGISTER-SYSTEM",
         "AIA-NORM-A011-P1-SIMPLIFY",
         "AIA-NORM-A050-P3-DATA",
         "AIA-NORM-ANNEX-VIII-A",
