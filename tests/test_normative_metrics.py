@@ -49,8 +49,8 @@ def test_inventory_partitions_the_complete_versioned_corpus(metrics):
     assert bundle.text_review.corpus_complete is True
     assert set(grouped) == expected
     assert metrics.documents == 133
-    assert metrics.documents_with_extracted_norms == 16
-    assert metrics.documents_with_review_debt == 122
+    assert metrics.documents_with_extracted_norms == 17
+    assert metrics.documents_with_review_debt == 121
     assert metrics.exact_source_characters == 394_667
     assert set(metrics.norms_by_document) == {
         "article 2",
@@ -66,6 +66,7 @@ def test_inventory_partitions_the_complete_versioned_corpus(metrics):
         "article 60",
         "article 75",
         "article 113",
+        "annex III",
         "annex IV",
         "annex VII",
         "annex VIII",
@@ -613,21 +614,48 @@ def test_article_six_is_fully_approved_and_atomically_classified():
     assert sum(norm.kind.value == "prohibition" for norm in norms) == 1
 
 
+def test_annex_three_supplies_twenty_five_article_six_classification_routes():
+    bundle = load_normative_coverage()
+    segments = [
+        segment
+        for segment in bundle.text_review.segments
+        if segment.source.kind.value == "annex" and segment.source.document == "III"
+    ]
+    norms = [
+        norm
+        for norm in bundle.norm_inventory.norms
+        if norm.norm_id.startswith("AIA-NORM-ANNEX-III-")
+    ]
+
+    assert len(segments) == 34
+    assert all(segment.review.status.value == "approved" for segment in segments)
+    assert all(segment.review.verified_by == "vidibro" for segment in segments)
+    assert len(norms) == 25
+    assert all(norm.kind.value == "applicability" for norm in norms)
+    assert all(
+        any(
+            dependency.dependency_ref == "AIA-NORM-A006-P2-ANNEX-III-HIGH-RISK"
+            for dependency in norm.dependencies
+        )
+        for norm in norms
+    )
+
+
 def test_inventory_cannot_be_misreported_as_independently_approved(metrics):
-    assert metrics.approved_characters == 47_288
-    assert metrics.needs_review_characters == 302_533
+    assert metrics.approved_characters == 54_960
+    assert metrics.needs_review_characters == 294_921
     assert metrics.review_statuses == {
-        "approved": 189,
-        "needs_review": 1073,
-        "proposed": 419,
+        "approved": 223,
+        "needs_review": 1040,
+        "proposed": 443,
     }
     assert metrics.timed_review_records == 0
-    assert metrics.total_review_records == 1682
+    assert metrics.total_review_records == 1707
 
 
 def test_semantic_pass_finds_propositions_a_shall_scan_misses(metrics):
-    assert metrics.shall_vs_semantic_disagreements == 133
-    assert metrics.shall_token_candidate_recall == pytest.approx(119 / 252)
+    assert metrics.shall_vs_semantic_disagreements == 157
+    assert metrics.shall_token_candidate_recall == pytest.approx(120 / 277)
     assert "AIA-NORM-A011-P1-SIMPLIFY" in metrics.semantic_norms_without_shall_token
     assert "AIA-NORM-A043-P5-AMEND" in metrics.semantic_norms_without_shall_token
     assert "AIA-NORM-A060-P4-PERMISSION" in metrics.semantic_norms_without_shall_token
@@ -635,11 +663,11 @@ def test_semantic_pass_finds_propositions_a_shall_scan_misses(metrics):
 
 
 def test_metrics_expose_many_to_many_and_implementation_debt(metrics):
-    assert metrics.normative_segments_with_multiple_norms == 50
+    assert metrics.normative_segments_with_multiple_norms == 58
     assert metrics.mapping_shape.many_norms_to_one_target == 26
     assert metrics.mapping_shape.many_to_many == 8
-    assert metrics.mapping_shape.unmapped == 215
-    assert metrics.semantic_vs_existing_implementation_disagreements == 71
+    assert metrics.mapping_shape.unmapped == 240
+    assert metrics.semantic_vs_existing_implementation_disagreements == 96
     assert metrics.semantic_norms_without_existing_implementation == [
         "AIA-NORM-A002-P1-A-PROVIDER",
         "AIA-NORM-A002-P1-B-DEPLOYER",
@@ -708,6 +736,31 @@ def test_metrics_expose_many_to_many_and_implementation_debt(metrics):
         "AIA-NORM-A011-P1-SIMPLIFY",
         "AIA-NORM-A050-P3-DATA",
         "AIA-NORM-A050-P5-MANNER",
+        "AIA-NORM-ANNEX-III-1A-REMOTE-BIOMETRIC-IDENTIFICATION",
+        "AIA-NORM-ANNEX-III-1B-BIOMETRIC-CATEGORISATION",
+        "AIA-NORM-ANNEX-III-1C-EMOTION-RECOGNITION",
+        "AIA-NORM-ANNEX-III-2-CRITICAL-INFRASTRUCTURE",
+        "AIA-NORM-ANNEX-III-3A-EDUCATION-ACCESS",
+        "AIA-NORM-ANNEX-III-3B-LEARNING-OUTCOMES",
+        "AIA-NORM-ANNEX-III-3C-EDUCATION-LEVEL",
+        "AIA-NORM-ANNEX-III-3D-TEST-BEHAVIOUR",
+        "AIA-NORM-ANNEX-III-4A-RECRUITMENT",
+        "AIA-NORM-ANNEX-III-4B-WORKER-MANAGEMENT",
+        "AIA-NORM-ANNEX-III-5A-ESSENTIAL-BENEFITS",
+        "AIA-NORM-ANNEX-III-5B-CREDITWORTHINESS",
+        "AIA-NORM-ANNEX-III-5C-LIFE-HEALTH-INSURANCE",
+        "AIA-NORM-ANNEX-III-5D-EMERGENCY-RESPONSE",
+        "AIA-NORM-ANNEX-III-6A-VICTIM-RISK",
+        "AIA-NORM-ANNEX-III-6B-LAW-ENFORCEMENT-POLYGRAPH",
+        "AIA-NORM-ANNEX-III-6C-EVIDENCE-RELIABILITY",
+        "AIA-NORM-ANNEX-III-6D-OFFENDING-RISK",
+        "AIA-NORM-ANNEX-III-6E-LAW-ENFORCEMENT-PROFILING",
+        "AIA-NORM-ANNEX-III-7A-BORDER-POLYGRAPH",
+        "AIA-NORM-ANNEX-III-7B-BORDER-RISK",
+        "AIA-NORM-ANNEX-III-7C-ASYLUM-VISA-RESIDENCE",
+        "AIA-NORM-ANNEX-III-7D-BORDER-IDENTIFICATION",
+        "AIA-NORM-ANNEX-III-8A-JUSTICE",
+        "AIA-NORM-ANNEX-III-8B-ELECTION-INFLUENCE",
         "AIA-NORM-ANNEX-IV-CONTENT",
         "AIA-NORM-ANNEX-VIII-A",
         "AIA-NORM-ANNEX-VIII-B",
@@ -780,6 +833,31 @@ def test_metrics_expose_many_to_many_and_implementation_debt(metrics):
         "AIA-NORM-A006-P4-REGISTER-SYSTEM",
         "AIA-NORM-A011-P1-SIMPLIFY",
         "AIA-NORM-A050-P3-DATA",
+        "AIA-NORM-ANNEX-III-1A-REMOTE-BIOMETRIC-IDENTIFICATION",
+        "AIA-NORM-ANNEX-III-1B-BIOMETRIC-CATEGORISATION",
+        "AIA-NORM-ANNEX-III-1C-EMOTION-RECOGNITION",
+        "AIA-NORM-ANNEX-III-2-CRITICAL-INFRASTRUCTURE",
+        "AIA-NORM-ANNEX-III-3A-EDUCATION-ACCESS",
+        "AIA-NORM-ANNEX-III-3B-LEARNING-OUTCOMES",
+        "AIA-NORM-ANNEX-III-3C-EDUCATION-LEVEL",
+        "AIA-NORM-ANNEX-III-3D-TEST-BEHAVIOUR",
+        "AIA-NORM-ANNEX-III-4A-RECRUITMENT",
+        "AIA-NORM-ANNEX-III-4B-WORKER-MANAGEMENT",
+        "AIA-NORM-ANNEX-III-5A-ESSENTIAL-BENEFITS",
+        "AIA-NORM-ANNEX-III-5B-CREDITWORTHINESS",
+        "AIA-NORM-ANNEX-III-5C-LIFE-HEALTH-INSURANCE",
+        "AIA-NORM-ANNEX-III-5D-EMERGENCY-RESPONSE",
+        "AIA-NORM-ANNEX-III-6A-VICTIM-RISK",
+        "AIA-NORM-ANNEX-III-6B-LAW-ENFORCEMENT-POLYGRAPH",
+        "AIA-NORM-ANNEX-III-6C-EVIDENCE-RELIABILITY",
+        "AIA-NORM-ANNEX-III-6D-OFFENDING-RISK",
+        "AIA-NORM-ANNEX-III-6E-LAW-ENFORCEMENT-PROFILING",
+        "AIA-NORM-ANNEX-III-7A-BORDER-POLYGRAPH",
+        "AIA-NORM-ANNEX-III-7B-BORDER-RISK",
+        "AIA-NORM-ANNEX-III-7C-ASYLUM-VISA-RESIDENCE",
+        "AIA-NORM-ANNEX-III-7D-BORDER-IDENTIFICATION",
+        "AIA-NORM-ANNEX-III-8A-JUSTICE",
+        "AIA-NORM-ANNEX-III-8B-ELECTION-INFLUENCE",
         "AIA-NORM-ANNEX-VIII-A",
         "AIA-NORM-ANNEX-VIII-B",
         "AIA-NORM-ANNEX-VIII-C",
