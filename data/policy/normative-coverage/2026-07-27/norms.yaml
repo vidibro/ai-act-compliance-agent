@@ -10935,6 +10935,329 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+- norm_id: AIA-NORM-A012-P1-AUTOMATIC-LOGGING
+  act_version_date: '2026-07-27'
+  kind: obligation
+  subjects:
+  - subject_ref: provider
+    category: supported_operator
+  action: ensure the high-risk AI system automatically records event logs throughout its lifetime
+  norm_text: shall technically allow for the automatic recording of events (logs) over the lifetime of
+    the system
+  detection_channels:
+  - semantic_legal_effect
+  - shall_token
+  - existing_implementation
+  primary_spans:
+  - AIA-TEXT-A012-P001
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions: []
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: in_scope
+  product_scope_reason: ''
+  implementation_mode: compliance_rule
+  implementation_refs:
+  - AIA-HR-A12
+  implementation_reason: ''
+  verification_mode: judged_from_document
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A012-P2-A-RISK-MODIFICATION-EVENTS
+  act_version_date: '2026-07-27'
+  kind: obligation
+  subjects:
+  - subject_ref: provider
+    category: supported_operator
+  action: enable logging of events relevant to identifying Article 79(1) risk situations or substantial
+    modifications
+  norm_text: identifying situations that may result in the high-risk AI system presenting a risk within
+    the meaning of Article 79(1) or in a substantial modification
+  detection_channels:
+  - semantic_legal_effect
+  - other_modal
+  - cross_reference_structure
+  - existing_implementation
+  primary_spans:
+  - AIA-TEXT-A012-P003
+  qualifier_spans:
+  - AIA-TEXT-A012-P002
+  effective_date_spans: []
+  conditions: []
+  exceptions: []
+  mandatory_content: []
+  dependencies:
+  - dependency_ref: Article 79(1) of this Regulation
+    resolution: unresolved
+    detail: Article 79(1) defines the referenced risk situation and has not yet been semantically reviewed.
+  product_scope: in_scope
+  product_scope_reason: ''
+  implementation_mode: compliance_rule
+  implementation_refs:
+  - AIA-HR-A12
+  implementation_reason: ''
+  verification_mode: judged_from_document
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A012-P2-B-POST-MARKET-EVENTS
+  act_version_date: '2026-07-27'
+  kind: obligation
+  subjects:
+  - subject_ref: provider
+    category: supported_operator
+  action: enable logging of events relevant to Article 72 post-market monitoring
+  norm_text: facilitating the post-market monitoring referred to in Article 72
+  detection_channels:
+  - semantic_legal_effect
+  - cross_reference_structure
+  - existing_implementation
+  primary_spans:
+  - AIA-TEXT-A012-P004
+  qualifier_spans:
+  - AIA-TEXT-A012-P002
+  effective_date_spans: []
+  conditions: []
+  exceptions: []
+  mandatory_content: []
+  dependencies:
+  - dependency_ref: Article 72 of this Regulation
+    resolution: unresolved
+    detail: Article 72 supplies the post-market monitoring requirements and has not yet been semantically
+      reviewed.
+  product_scope: in_scope
+  product_scope_reason: ''
+  implementation_mode: compliance_rule
+  implementation_refs:
+  - AIA-HR-A12
+  implementation_reason: ''
+  verification_mode: judged_from_document
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A012-P2-C-OPERATION-MONITORING-EVENTS
+  act_version_date: '2026-07-27'
+  kind: obligation
+  subjects:
+  - subject_ref: provider
+    category: supported_operator
+  action: enable logging of events relevant to deployer monitoring under Article 26(5)
+  norm_text: monitoring the operation of high-risk AI systems referred to in Article 26(5)
+  detection_channels:
+  - semantic_legal_effect
+  - cross_reference_structure
+  - existing_implementation
+  primary_spans:
+  - AIA-TEXT-A012-P005
+  qualifier_spans:
+  - AIA-TEXT-A012-P002
+  effective_date_spans: []
+  conditions: []
+  exceptions: []
+  mandatory_content: []
+  dependencies:
+  - dependency_ref: AIA-NORM-A026-P5-MONITOR
+    resolution: internal_resolved
+    detail: Article 26(5) supplies the deployer monitoring activity that the logging capability supports.
+  product_scope: in_scope
+  product_scope_reason: ''
+  implementation_mode: compliance_rule
+  implementation_refs:
+  - AIA-HR-A12
+  implementation_reason: ''
+  verification_mode: judged_from_document
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A012-P3-A-USE-PERIOD
+  act_version_date: '2026-07-27'
+  kind: obligation
+  subjects:
+  - subject_ref: provider
+    category: supported_operator
+  action: record the start and end date and time of every use
+  norm_text: recording of the period of each use of the system (start date and time and end date and time
+    of each use)
+  detection_channels:
+  - semantic_legal_effect
+  - cross_reference_structure
+  - existing_implementation
+  primary_spans:
+  - AIA-TEXT-A012-P007
+  qualifier_spans:
+  - AIA-TEXT-A012-P006
+  effective_date_spans: []
+  conditions:
+  - the high-risk AI system is a remote biometric identification system referred to in Annex III, point
+    1(a)
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: in_scope
+  product_scope_reason: ''
+  implementation_mode: compliance_rule
+  implementation_refs:
+  - AIA-HR-A12-3
+  implementation_reason: ''
+  verification_mode: judged_from_document
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A012-P3-B-REFERENCE-DATABASE
+  act_version_date: '2026-07-27'
+  kind: obligation
+  subjects:
+  - subject_ref: provider
+    category: supported_operator
+  action: record the reference database against which the system checked input data
+  norm_text: the reference database against which input data has been checked by the system
+  detection_channels:
+  - semantic_legal_effect
+  - cross_reference_structure
+  - existing_implementation
+  primary_spans:
+  - AIA-TEXT-A012-P008
+  qualifier_spans:
+  - AIA-TEXT-A012-P006
+  effective_date_spans: []
+  conditions:
+  - the high-risk AI system is a remote biometric identification system referred to in Annex III, point
+    1(a)
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: in_scope
+  product_scope_reason: ''
+  implementation_mode: compliance_rule
+  implementation_refs:
+  - AIA-HR-A12-3
+  implementation_reason: ''
+  verification_mode: judged_from_document
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A012-P3-C-MATCHED-INPUT
+  act_version_date: '2026-07-27'
+  kind: obligation
+  subjects:
+  - subject_ref: provider
+    category: supported_operator
+  action: record the input data for which the search produced a match
+  norm_text: the input data for which the search has led to a match
+  detection_channels:
+  - semantic_legal_effect
+  - cross_reference_structure
+  - existing_implementation
+  primary_spans:
+  - AIA-TEXT-A012-P009
+  qualifier_spans:
+  - AIA-TEXT-A012-P006
+  effective_date_spans: []
+  conditions:
+  - the high-risk AI system is a remote biometric identification system referred to in Annex III, point
+    1(a)
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: in_scope
+  product_scope_reason: ''
+  implementation_mode: compliance_rule
+  implementation_refs:
+  - AIA-HR-A12-3
+  implementation_reason: ''
+  verification_mode: judged_from_document
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A012-P3-D-RESULT-VERIFIERS
+  act_version_date: '2026-07-27'
+  kind: obligation
+  subjects:
+  - subject_ref: provider
+    category: supported_operator
+  action: record the identity of every natural person involved in verifying results under Article 14(5)
+  norm_text: the identification of the natural persons involved in the verification of the results, as
+    referred to in Article 14(5)
+  detection_channels:
+  - semantic_legal_effect
+  - cross_reference_structure
+  - existing_implementation
+  primary_spans:
+  - AIA-TEXT-A012-P010
+  qualifier_spans:
+  - AIA-TEXT-A012-P006
+  effective_date_spans: []
+  conditions:
+  - the high-risk AI system is a remote biometric identification system referred to in Annex III, point
+    1(a)
+  exceptions: []
+  mandatory_content: []
+  dependencies:
+  - dependency_ref: Article 14(5) of this Regulation
+    resolution: unresolved
+    detail: Article 14(5) defines the referenced result-verification safeguards and has not yet been semantically
+      reviewed.
+  product_scope: in_scope
+  product_scope_reason: ''
+  implementation_mode: compliance_rule
+  implementation_refs:
+  - AIA-HR-A12-3
+  implementation_reason: ''
+  verification_mode: judged_from_document
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
 - norm_id: AIA-NORM-A026-P5-MONITOR
   act_version_date: '2026-07-27'
   kind: obligation

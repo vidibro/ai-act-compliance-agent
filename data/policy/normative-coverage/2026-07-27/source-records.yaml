@@ -4,6 +4,8 @@ implementation_targets:
 - AIA-HR-A09
 - AIA-HR-A10
 - AIA-HR-A11
+- AIA-HR-A12
+- AIA-HR-A12-3
 - AIA-PO-A08-2
 - AIA-PO-A43-1B
 - AIA-PO-A43-3
@@ -3872,6 +3874,116 @@ records:
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_assessed
+- norm_id: AIA-NORM-A012-P1-AUTOMATIC-LOGGING
+  source: A012-P001
+  quote: shall technically allow for the automatic recording of events (logs) over the lifetime of the system
+  action: ensure the high-risk AI system automatically records event logs throughout its lifetime
+  subject_ref: provider
+  subject_category: supported_operator
+  implementation_refs:
+  - AIA-HR-A12
+  verification_mode: judged_from_document
+- norm_id: AIA-NORM-A012-P2-A-RISK-MODIFICATION-EVENTS
+  source: A012-P003
+  quote: identifying situations that may result in the high-risk AI system presenting a risk within the meaning of Article 79(1) or in a substantial modification
+  action: enable logging of events relevant to identifying Article 79(1) risk situations or substantial modifications
+  subject_ref: provider
+  subject_category: supported_operator
+  qualifier_spans:
+  - A012-P002
+  implementation_refs:
+  - AIA-HR-A12
+  verification_mode: judged_from_document
+  dependencies:
+  - dependency_ref: Article 79(1) of this Regulation
+    resolution: unresolved
+    detail: Article 79(1) defines the referenced risk situation and has not yet been semantically reviewed.
+- norm_id: AIA-NORM-A012-P2-B-POST-MARKET-EVENTS
+  source: A012-P004
+  quote: facilitating the post-market monitoring referred to in Article 72
+  action: enable logging of events relevant to Article 72 post-market monitoring
+  subject_ref: provider
+  subject_category: supported_operator
+  qualifier_spans:
+  - A012-P002
+  implementation_refs:
+  - AIA-HR-A12
+  verification_mode: judged_from_document
+  dependencies:
+  - dependency_ref: Article 72 of this Regulation
+    resolution: unresolved
+    detail: Article 72 supplies the post-market monitoring requirements and has not yet been semantically reviewed.
+- norm_id: AIA-NORM-A012-P2-C-OPERATION-MONITORING-EVENTS
+  source: A012-P005
+  quote: monitoring the operation of high-risk AI systems referred to in Article 26(5)
+  action: enable logging of events relevant to deployer monitoring under Article 26(5)
+  subject_ref: provider
+  subject_category: supported_operator
+  qualifier_spans:
+  - A012-P002
+  implementation_refs:
+  - AIA-HR-A12
+  verification_mode: judged_from_document
+  dependencies:
+  - dependency_ref: AIA-NORM-A026-P5-MONITOR
+    resolution: internal_resolved
+    detail: Article 26(5) supplies the deployer monitoring activity that the logging capability supports.
+- norm_id: AIA-NORM-A012-P3-A-USE-PERIOD
+  source: A012-P007
+  quote: recording of the period of each use of the system (start date and time and end date and time of each use)
+  action: record the start and end date and time of every use
+  subject_ref: provider
+  subject_category: supported_operator
+  qualifier_spans:
+  - A012-P006
+  conditions:
+  - the high-risk AI system is a remote biometric identification system referred to in Annex III, point 1(a)
+  implementation_refs:
+  - AIA-HR-A12-3
+  verification_mode: judged_from_document
+- norm_id: AIA-NORM-A012-P3-B-REFERENCE-DATABASE
+  source: A012-P008
+  quote: the reference database against which input data has been checked by the system
+  action: record the reference database against which the system checked input data
+  subject_ref: provider
+  subject_category: supported_operator
+  qualifier_spans:
+  - A012-P006
+  conditions:
+  - the high-risk AI system is a remote biometric identification system referred to in Annex III, point 1(a)
+  implementation_refs:
+  - AIA-HR-A12-3
+  verification_mode: judged_from_document
+- norm_id: AIA-NORM-A012-P3-C-MATCHED-INPUT
+  source: A012-P009
+  quote: the input data for which the search has led to a match
+  action: record the input data for which the search produced a match
+  subject_ref: provider
+  subject_category: supported_operator
+  qualifier_spans:
+  - A012-P006
+  conditions:
+  - the high-risk AI system is a remote biometric identification system referred to in Annex III, point 1(a)
+  implementation_refs:
+  - AIA-HR-A12-3
+  verification_mode: judged_from_document
+- norm_id: AIA-NORM-A012-P3-D-RESULT-VERIFIERS
+  source: A012-P010
+  quote: the identification of the natural persons involved in the verification of the results, as referred to in Article 14(5)
+  action: record the identity of every natural person involved in verifying results under Article 14(5)
+  subject_ref: provider
+  subject_category: supported_operator
+  qualifier_spans:
+  - A012-P006
+  conditions:
+  - the high-risk AI system is a remote biometric identification system referred to in Annex III, point 1(a)
+  implementation_refs:
+  - AIA-HR-A12-3
+  verification_mode: judged_from_document
+  dependencies:
+  - dependency_ref: Article 14(5) of this Regulation
+    resolution: unresolved
+    detail: Article 14(5) defines the referenced result-verification safeguards and has not yet been semantically reviewed.
 - norm_id: AIA-NORM-A026-P5-MONITOR
   source: A026-P5
   quote: Deployers shall monitor the operation of the high-risk AI system
