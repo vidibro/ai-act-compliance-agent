@@ -159,6 +159,50 @@ documents:
     marker: null
     disposition: structural
 - kind: article
+  number: '5'
+  segmentation: paragraphs
+  paragraph_overrides:
+    P001: &article_5_reviewed
+      disposition: normative
+      verified_by: vidibro
+    P002: *article_5_reviewed
+    P003: *article_5_reviewed
+    P004: *article_5_reviewed
+    P005: *article_5_reviewed
+    P006: *article_5_reviewed
+    P007: *article_5_reviewed
+    P008: *article_5_reviewed
+    P009: *article_5_reviewed
+    P010: *article_5_reviewed
+    P011: *article_5_reviewed
+    P012: *article_5_reviewed
+    P013: *article_5_reviewed
+    P014: *article_5_reviewed
+    P015: *article_5_reviewed
+    P016: *article_5_reviewed
+    P017: *article_5_reviewed
+    P018: *article_5_reviewed
+    P019: *article_5_reviewed
+    P020: *article_5_reviewed
+    P021: *article_5_reviewed
+    P022: *article_5_reviewed
+    P023: *article_5_reviewed
+    P024: *article_5_reviewed
+    P025: *article_5_reviewed
+    P026: *article_5_reviewed
+    P027: *article_5_reviewed
+    P028: *article_5_reviewed
+    P029: *article_5_reviewed
+    P030: *article_5_reviewed
+    P031: *article_5_reviewed
+    P032: *article_5_reviewed
+    P033: *article_5_reviewed
+    P034: *article_5_reviewed
+  divisions:
+  - label: HEAD
+    marker: null
+    disposition: structural
+- kind: article
   number: '11'
   divisions:
   - label: HEAD

@@ -49,14 +49,15 @@ def test_inventory_partitions_the_complete_versioned_corpus(metrics):
     assert bundle.text_review.corpus_complete is True
     assert set(grouped) == expected
     assert metrics.documents == 133
-    assert metrics.documents_with_extracted_norms == 14
-    assert metrics.documents_with_review_debt == 124
+    assert metrics.documents_with_extracted_norms == 15
+    assert metrics.documents_with_review_debt == 123
     assert metrics.exact_source_characters == 394_667
     assert set(metrics.norms_by_document) == {
         "article 2",
         "article 3",
         "article 4",
         "article 4a",
+        "article 5",
         "article 11",
         "article 26",
         "article 43",
@@ -506,21 +507,103 @@ def test_article_four_a_second_permission_imports_safeguards_without_creating_bi
     assert consequence.implementation_mode.value == "none_required"
 
 
+def test_article_five_is_fully_approved():
+    bundle = load_normative_coverage()
+    segments = [
+        segment
+        for segment in bundle.text_review.segments
+        if segment.source.kind.value == "article" and segment.source.document == "5"
+    ]
+    norms = [
+        norm
+        for norm in bundle.norm_inventory.norms
+        if norm.norm_id.startswith("AIA-NORM-A005-")
+    ]
+
+    assert len(segments) == 35
+    assert segments[0].disposition.value == "structural"
+    assert segments[0].review.status.value == "proposed"
+    assert all(segment.disposition.value == "normative" for segment in segments[1:])
+    assert all(segment.review.status.value == "approved" for segment in segments[1:])
+    assert all(segment.review.verified_by == "vidibro" for segment in segments[1:])
+    assert len(norms) == 40
+    assert sum(norm.kind.value == "obligation" for norm in norms) == 18
+    assert sum(norm.kind.value == "prohibition" for norm in norms) == 13
+    assert sum(norm.kind.value == "applicability" for norm in norms) == 2
+    assert sum(norm.kind.value == "legal_consequence" for norm in norms) == 3
+    assert sum(norm.kind.value == "permission" for norm in norms) == 1
+    assert sum(norm.kind.value == "power" for norm in norms) == 3
+
+
+def test_article_five_paragraph_one_chapeau_carries_ten_prohibitions():
+    bundle = load_normative_coverage()
+    segment = next(
+        segment
+        for segment in bundle.text_review.segments
+        if segment.segment_id == "AIA-TEXT-A005-P001"
+    )
+    norms = {
+        norm.norm_id: norm
+        for norm in bundle.norm_inventory.norms
+        if norm.norm_id in segment.norm_ids
+    }
+
+    assert len(norms) == 10
+    assert all(norm.kind.value == "prohibition" for norm in norms.values())
+    assert all(norm.qualifier_spans[0] == segment.segment_id for norm in norms.values())
+
+
+def test_article_five_social_scoring_and_rbi_lists_remain_qualifier_spans():
+    bundle = load_normative_coverage()
+    norms = {norm.norm_id: norm for norm in bundle.norm_inventory.norms}
+
+    assert norms["AIA-NORM-A005-P1-C-SOCIAL-SCORING"].qualifier_spans == [
+        "AIA-TEXT-A005-P001",
+        "AIA-TEXT-A005-P007",
+        "AIA-TEXT-A005-P008",
+    ]
+    assert norms["AIA-NORM-A005-P1-H-REAL-TIME-RBI"].qualifier_spans == [
+        "AIA-TEXT-A005-P001",
+        "AIA-TEXT-A005-P014",
+        "AIA-TEXT-A005-P015",
+        "AIA-TEXT-A005-P016",
+    ]
+
+
+def test_article_five_one_a_and_one_b_narrow_the_new_content_prohibitions():
+    bundle = load_normative_coverage()
+    norms = {norm.norm_id: norm for norm in bundle.norm_inventory.norms}
+    market_scope = norms["AIA-NORM-A005-P1A-MARKET-SERVICE-SCOPE"]
+    use_scope = norms["AIA-NORM-A005-P1A-DEPLOYER-USE-SCOPE"]
+    non_manipulation = norms["AIA-NORM-A005-P1B-NON-MANIPULATION"]
+
+    assert market_scope.qualifier_spans == [
+        "AIA-TEXT-A005-P018",
+        "AIA-TEXT-A005-P020",
+        "AIA-TEXT-A005-P021",
+    ]
+    assert use_scope.qualifier_spans == ["AIA-TEXT-A005-P018"]
+    assert market_scope.kind.value == "applicability"
+    assert use_scope.kind.value == "applicability"
+    assert non_manipulation.kind.value == "legal_consequence"
+    assert non_manipulation.product_scope.value == "in_scope"
+
+
 def test_inventory_cannot_be_misreported_as_independently_approved(metrics):
-    assert metrics.approved_characters == 28_915
-    assert metrics.needs_review_characters == 320_849
+    assert metrics.approved_characters == 42_387
+    assert metrics.needs_review_characters == 307_377
     assert metrics.review_statuses == {
-        "approved": 135,
-        "needs_review": 1126,
-        "proposed": 363,
+        "approved": 169,
+        "needs_review": 1092,
+        "proposed": 403,
     }
     assert metrics.timed_review_records == 0
-    assert metrics.total_review_records == 1625
+    assert metrics.total_review_records == 1665
 
 
 def test_semantic_pass_finds_propositions_a_shall_scan_misses(metrics):
-    assert metrics.shall_vs_semantic_disagreements == 112
-    assert metrics.shall_token_candidate_recall == pytest.approx(83 / 195)
+    assert metrics.shall_vs_semantic_disagreements == 130
+    assert metrics.shall_token_candidate_recall == pytest.approx(105 / 235)
     assert "AIA-NORM-A011-P1-SIMPLIFY" in metrics.semantic_norms_without_shall_token
     assert "AIA-NORM-A043-P5-AMEND" in metrics.semantic_norms_without_shall_token
     assert "AIA-NORM-A060-P4-PERMISSION" in metrics.semantic_norms_without_shall_token
@@ -528,11 +611,11 @@ def test_semantic_pass_finds_propositions_a_shall_scan_misses(metrics):
 
 
 def test_metrics_expose_many_to_many_and_implementation_debt(metrics):
-    assert metrics.normative_segments_with_multiple_norms == 32
+    assert metrics.normative_segments_with_multiple_norms == 47
     assert metrics.mapping_shape.many_norms_to_one_target == 26
     assert metrics.mapping_shape.many_to_many == 8
-    assert metrics.mapping_shape.unmapped == 158
-    assert metrics.semantic_vs_existing_implementation_disagreements == 33
+    assert metrics.mapping_shape.unmapped == 198
+    assert metrics.semantic_vs_existing_implementation_disagreements == 61
     assert metrics.semantic_norms_without_existing_implementation == [
         "AIA-NORM-A002-P1-A-PROVIDER",
         "AIA-NORM-A002-P1-B-DEPLOYER",
@@ -560,6 +643,34 @@ def test_metrics_expose_many_to_many_and_implementation_debt(metrics):
         "AIA-NORM-A004A-P1-F-RECORD-NECESSITY",
         "AIA-NORM-A004A-P1-HIGH-RISK-BIAS-DATA-PROCESSING",
         "AIA-NORM-A004A-P2-OTHER-SYSTEM-BIAS-DATA-PROCESSING",
+        "AIA-NORM-A005-P1-A-MANIPULATIVE-TECHNIQUES",
+        "AIA-NORM-A005-P1-B-VULNERABILITY-EXPLOITATION",
+        "AIA-NORM-A005-P1-BA-NONCONSENSUAL-INTIMATE-MATERIAL",
+        "AIA-NORM-A005-P1-BB-DIRECTIVE-MATERIAL",
+        "AIA-NORM-A005-P1-C-SOCIAL-SCORING",
+        "AIA-NORM-A005-P1-D-CRIMINAL-RISK-PROFILING",
+        "AIA-NORM-A005-P1-E-UNTARGETED-FACIAL-SCRAPING",
+        "AIA-NORM-A005-P1-F-WORKPLACE-EDUCATION-EMOTION-INFERENCE",
+        "AIA-NORM-A005-P1-G-SENSITIVE-BIOMETRIC-CATEGORISATION",
+        "AIA-NORM-A005-P1-H-REAL-TIME-RBI",
+        "AIA-NORM-A005-P1A-DEPLOYER-USE-SCOPE",
+        "AIA-NORM-A005-P1A-MARKET-SERVICE-SCOPE",
+        "AIA-NORM-A005-P1B-NON-MANIPULATION",
+        "AIA-NORM-A005-P2-COMPLETE-FRIA",
+        "AIA-NORM-A005-P2-CONFIRM-TARGETED-IDENTITY",
+        "AIA-NORM-A005-P2-CONSIDER-IMPACTS",
+        "AIA-NORM-A005-P2-NATIONAL-SAFEGUARDS",
+        "AIA-NORM-A005-P2-REGISTER-SYSTEM",
+        "AIA-NORM-A005-P3-CONSIDER-P2-ELEMENTS",
+        "AIA-NORM-A005-P3-DELETE-ON-REJECTION",
+        "AIA-NORM-A005-P3-NO-SOLE-OUTPUT-ADVERSE-DECISION",
+        "AIA-NORM-A005-P3-PRIOR-AUTHORISATION",
+        "AIA-NORM-A005-P3-RESTRICT-AUTHORISATION",
+        "AIA-NORM-A005-P3-STOP-ON-REJECTION",
+        "AIA-NORM-A005-P3-URGENT-USE",
+        "AIA-NORM-A005-P4-EXCLUDE-SENSITIVE-DATA",
+        "AIA-NORM-A005-P4-NOTIFICATION-CONTENT",
+        "AIA-NORM-A005-P4-NOTIFY-AUTHORITIES",
         "AIA-NORM-A011-P1-SIMPLIFY",
         "AIA-NORM-A050-P3-DATA",
         "AIA-NORM-A050-P5-MANNER",
@@ -595,6 +706,34 @@ def test_metrics_expose_many_to_many_and_implementation_debt(metrics):
         "AIA-NORM-A004A-P1-F-RECORD-NECESSITY",
         "AIA-NORM-A004A-P1-HIGH-RISK-BIAS-DATA-PROCESSING",
         "AIA-NORM-A004A-P2-OTHER-SYSTEM-BIAS-DATA-PROCESSING",
+        "AIA-NORM-A005-P1-A-MANIPULATIVE-TECHNIQUES",
+        "AIA-NORM-A005-P1-B-VULNERABILITY-EXPLOITATION",
+        "AIA-NORM-A005-P1-BA-NONCONSENSUAL-INTIMATE-MATERIAL",
+        "AIA-NORM-A005-P1-BB-DIRECTIVE-MATERIAL",
+        "AIA-NORM-A005-P1-C-SOCIAL-SCORING",
+        "AIA-NORM-A005-P1-D-CRIMINAL-RISK-PROFILING",
+        "AIA-NORM-A005-P1-E-UNTARGETED-FACIAL-SCRAPING",
+        "AIA-NORM-A005-P1-F-WORKPLACE-EDUCATION-EMOTION-INFERENCE",
+        "AIA-NORM-A005-P1-G-SENSITIVE-BIOMETRIC-CATEGORISATION",
+        "AIA-NORM-A005-P1-H-REAL-TIME-RBI",
+        "AIA-NORM-A005-P1A-DEPLOYER-USE-SCOPE",
+        "AIA-NORM-A005-P1A-MARKET-SERVICE-SCOPE",
+        "AIA-NORM-A005-P1B-NON-MANIPULATION",
+        "AIA-NORM-A005-P2-COMPLETE-FRIA",
+        "AIA-NORM-A005-P2-CONFIRM-TARGETED-IDENTITY",
+        "AIA-NORM-A005-P2-CONSIDER-IMPACTS",
+        "AIA-NORM-A005-P2-NATIONAL-SAFEGUARDS",
+        "AIA-NORM-A005-P2-REGISTER-SYSTEM",
+        "AIA-NORM-A005-P3-CONSIDER-P2-ELEMENTS",
+        "AIA-NORM-A005-P3-DELETE-ON-REJECTION",
+        "AIA-NORM-A005-P3-NO-SOLE-OUTPUT-ADVERSE-DECISION",
+        "AIA-NORM-A005-P3-PRIOR-AUTHORISATION",
+        "AIA-NORM-A005-P3-RESTRICT-AUTHORISATION",
+        "AIA-NORM-A005-P3-STOP-ON-REJECTION",
+        "AIA-NORM-A005-P3-URGENT-USE",
+        "AIA-NORM-A005-P4-EXCLUDE-SENSITIVE-DATA",
+        "AIA-NORM-A005-P4-NOTIFICATION-CONTENT",
+        "AIA-NORM-A005-P4-NOTIFY-AUTHORITIES",
         "AIA-NORM-A011-P1-SIMPLIFY",
         "AIA-NORM-A050-P3-DATA",
         "AIA-NORM-ANNEX-VIII-A",

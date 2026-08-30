@@ -13,6 +13,7 @@ from aiact.norm_builder import (
     NormBuilderPaths,
     NormSourceInventory,
     NormSourceRecord,
+    ParagraphOverride,
     ReviewedDocumentInventory,
     build_artifacts,
     load_builder_inputs,
@@ -153,6 +154,58 @@ def test_declared_paragraph_document_can_apply_one_reviewed_disposition(tmp_path
     ]
     assert all(segment["review"]["status"] == "approved" for segment in text["segments"])
     assert all(segment["review"]["verified_by"] == "reviewer-b" for segment in text["segments"])
+
+
+def test_paragraph_overrides_approve_only_the_reviewed_chunk(tmp_path):
+    version = "2030-01-02"
+    body = "Article 1\nMixed review\n\nFirst paragraph.\nSecond paragraph.\n"
+    configured_paths = paths(tmp_path)
+    write_article(configured_paths.articles_root, version, "1", body)
+    (configured_paths.annexes_root / version).mkdir(parents=True)
+    reviewed = ReviewedDocumentInventory(
+        act_version_date=version,
+        review_run_id="partial-paragraph-review",
+        documents=[
+            DocumentSource(
+                kind=SourceKind.ARTICLE,
+                number="1",
+                segmentation="paragraphs",
+                paragraph_overrides={
+                    "P001": ParagraphOverride(
+                        disposition=SegmentDisposition.CONTEXT_ONLY,
+                        reason="Reviewed as explanatory context.",
+                        verified_by="reviewer-b",
+                    )
+                },
+                divisions=[
+                    DivisionSource(
+                        label="HEAD",
+                        marker=None,
+                        disposition=SegmentDisposition.STRUCTURAL,
+                    )
+                ],
+            )
+        ],
+    )
+
+    text, _norms = build_artifacts(
+        reviewed,
+        NormSourceInventory(act_version_date=version),
+        configured_paths,
+    )
+
+    assert [segment["disposition"] for segment in text["segments"]] == [
+        "structural",
+        "context_only",
+        "needs_review",
+    ]
+    assert [segment["review"]["status"] for segment in text["segments"]] == [
+        "proposed",
+        "approved",
+        "needs_review",
+    ]
+    assert text["segments"][1]["review"]["verified_by"] == "reviewer-b"
+    assert text["segments"][2]["review"]["verified_by"] == ""
 
 
 def test_reviewed_divisions_and_norm_sources_compile_without_version_specific_code(tmp_path):

@@ -4,8 +4,8 @@
 
 **Act version:** 2026-07-27
 
-The inventory contains 133 complete source-body partitions, 1429 exact segments, and 195 proposed atomic norms. Every stored article and annex is present. Proposed
-norms have been extracted from 14 documents; the remaining
+The inventory contains 133 complete source-body partitions, 1429 exact segments, and 235 proposed atomic norms. Every stored article and annex is present. Proposed
+norms have been extracted from 15 documents; the remaining
 work is retained explicitly rather than omitted. The inventory is not consumed by classification,
 rule selection, judging, or reporting.
 
@@ -22,6 +22,7 @@ rule selection, judging, or reporting.
 - article 4: 4
 - article 43: 12
 - article 4a: 8
+- article 5: 40
 - article 50: 11
 - article 60: 4
 - article 75: 8
@@ -131,6 +132,29 @@ rule selection, judging, or reporting.
 - AIA-TEXT-A004A-P007: 1
 - AIA-TEXT-A004A-P008: 1
 - AIA-TEXT-A004A-P011: 1
+- AIA-TEXT-A005-P002: 1
+- AIA-TEXT-A005-P003: 1
+- AIA-TEXT-A005-P004: 1
+- AIA-TEXT-A005-P005: 1
+- AIA-TEXT-A005-P006: 1
+- AIA-TEXT-A005-P009: 1
+- AIA-TEXT-A005-P010: 1
+- AIA-TEXT-A005-P011: 1
+- AIA-TEXT-A005-P012: 1
+- AIA-TEXT-A005-P013: 1
+- AIA-TEXT-A005-P017: 1
+- AIA-TEXT-A005-P019: 1
+- AIA-TEXT-A005-P022: 1
+- AIA-TEXT-A005-P023: 1
+- AIA-TEXT-A005-P024: 2
+- AIA-TEXT-A005-P027: 3
+- AIA-TEXT-A005-P028: 4
+- AIA-TEXT-A005-P029: 3
+- AIA-TEXT-A005-P030: 3
+- AIA-TEXT-A005-P031: 5
+- AIA-TEXT-A005-P032: 3
+- AIA-TEXT-A005-P033: 2
+- AIA-TEXT-A005-P034: 1
 - AIA-TEXT-A011-P1: 8
 - AIA-TEXT-A011-P3: 1
 - AIA-TEXT-A026-P5: 8
@@ -162,19 +186,19 @@ rule selection, judging, or reporting.
 - AIA-TEXT-ANNEX-VIII-C: 1
 
 - Exact source characters partitioned: 394667
-- Documents containing explicit review debt: 124
-- Characters displayed by the extraction pass: 73818
-- Independently approved characters: 28915
-- Characters deliberately left as review debt: 320849
-- Normative segments supporting multiple propositions: 32
-- Semantic candidates a shall-token pass missed: 112
-- Shall-token candidate recall: 42.6%
-- In-scope semantic candidates absent from existing implementation: 33
-- Detection-channel counts: cross_reference_structure=107, deeming_or_consequence=44, existing_implementation=37, other_modal=14, semantic_legal_effect=195, shall_token=83
-- Mapping shapes, by norm: one-to-one=3, many-to-one=26, one-to-many=0, many-to-many=8, unmapped=158
-- Implementation debt candidates: 31
+- Documents containing explicit review debt: 123
+- Characters displayed by the extraction pass: 87290
+- Independently approved characters: 42387
+- Characters deliberately left as review debt: 307377
+- Normative segments supporting multiple propositions: 47
+- Semantic candidates a shall-token pass missed: 130
+- Shall-token candidate recall: 44.7%
+- In-scope semantic candidates absent from existing implementation: 61
+- Detection-channel counts: cross_reference_structure=132, deeming_or_consequence=49, existing_implementation=37, other_modal=19, semantic_legal_effect=235, shall_token=105
+- Mapping shapes, by norm: one-to-one=3, many-to-one=26, one-to-many=0, many-to-many=8, unmapped=198
+- Implementation debt candidates: 59
 - Interpretive links to non-binding guidance: 1
-- Review records with measured elapsed time: 0/1625
+- Review records with measured elapsed time: 0/1665
 
 ## Findings
 
@@ -194,4 +218,4 @@ rule selection, judging, or reporting.
 
 ## Review boundary
 
-Segment reviews covering 28915 source characters are independently approved. Approval applies to source coverage and segment dispositions; it does not by itself approve linked norm records. Remaining records are proposed findings or explicit `needs_review` debt. This report therefore does not claim legal completeness for the corpus.
+Segment reviews covering 42387 source characters are independently approved. Approval applies to source coverage and segment dispositions; it does not by itself approve linked norm records. Remaining records are proposed findings or explicit `needs_review` debt. This report therefore does not claim legal completeness for the corpus.

@@ -38,6 +38,35 @@ class DivisionSource(BaseModel):
     marker: str | None
     disposition: SegmentDisposition
     reason: str = ""
+    verified_by: str = ""
+
+    @model_validator(mode="after")
+    def _review_metadata_matches_disposition(self) -> DivisionSource:
+        if self.verified_by.strip() and self.disposition is SegmentDisposition.NEEDS_REVIEW:
+            raise ValueError("review-debt division cannot have a verifier")
+        if (
+            self.disposition is SegmentDisposition.CONTEXT_ONLY
+            and not self.reason.strip()
+        ):
+            raise ValueError("context-only division requires a reason")
+        return self
+
+
+class ParagraphOverride(BaseModel):
+    disposition: SegmentDisposition
+    reason: str = ""
+    verified_by: str = ""
+
+    @model_validator(mode="after")
+    def _review_metadata_matches_disposition(self) -> ParagraphOverride:
+        if self.verified_by.strip() and self.disposition is SegmentDisposition.NEEDS_REVIEW:
+            raise ValueError("review-debt paragraph cannot have a verifier")
+        if (
+            self.disposition is SegmentDisposition.CONTEXT_ONLY
+            and not self.reason.strip()
+        ):
+            raise ValueError("context-only paragraph requires a reason")
+        return self
 
 
 class DocumentSource(BaseModel):
@@ -46,6 +75,7 @@ class DocumentSource(BaseModel):
     segmentation: Literal["declared", "paragraphs"] = "declared"
     paragraph_disposition: SegmentDisposition = SegmentDisposition.NEEDS_REVIEW
     paragraph_reason: str = DEFAULT_REVIEW_DEBT_REASON
+    paragraph_overrides: dict[str, ParagraphOverride] = Field(default_factory=dict)
     verified_by: str = ""
     divisions: list[DivisionSource] = Field(min_length=1)
 
@@ -71,6 +101,11 @@ class DocumentSource(BaseModel):
             and not self.paragraph_reason.strip()
         ):
             raise ValueError("context-only paragraph segmentation requires a reason")
+        invalid_overrides = sorted(
+            label for label in self.paragraph_overrides if re.fullmatch(r"P\d{3}", label) is None
+        )
+        if invalid_overrides:
+            raise ValueError(f"invalid paragraph override labels: {invalid_overrides}")
         return self
 
 
@@ -270,6 +305,7 @@ def _paragraph_partition(
     body: str,
     disposition: SegmentDisposition,
     reason: str,
+    overrides: dict[str, ParagraphOverride],
 ) -> tuple[list[DivisionSource], list[int]]:
     """Split a stored source into its structural heading and source-format paragraphs.
 
@@ -296,12 +332,15 @@ def _paragraph_partition(
         )
         starts.append(0)
     for index, start in enumerate(paragraph_starts, start=1):
+        label = f"P{index:03d}"
+        override = overrides.get(label)
         divisions.append(
             DivisionSource(
-                label=f"P{index:03d}",
+                label=label,
                 marker=body[start : body.find("\n", start) if "\n" in body[start:] else len(body)],
-                disposition=disposition,
-                reason=reason,
+                disposition=override.disposition if override else disposition,
+                reason=override.reason if override else reason,
+                verified_by=override.verified_by if override else "",
             )
         )
         starts.append(start)
@@ -334,6 +373,7 @@ def _build_segments(
                 body,
                 document.paragraph_disposition,
                 document.paragraph_reason,
+                document.paragraph_overrides,
             )
         else:
             divisions = document.divisions
@@ -358,11 +398,12 @@ def _build_segments(
             end = starts[index + 1] if index + 1 < len(starts) else len(body)
             exact = body[start:end]
             is_debt = division.disposition is SegmentDisposition.NEEDS_REVIEW
+            verified_by = division.verified_by or document.verified_by
             review_status = (
                 "needs_review"
                 if is_debt
                 else "approved"
-                if document.verified_by.strip()
+                if verified_by.strip()
                 else "proposed"
             )
             segments.append(
@@ -384,7 +425,7 @@ def _build_segments(
                         reviewed,
                         review_status,
                         not is_debt,
-                        document.verified_by,
+                        verified_by,
                     ),
                 }
             )

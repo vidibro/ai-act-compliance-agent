@@ -4584,6 +4584,1671 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+- norm_id: AIA-NORM-A005-P1-A-MANIPULATIVE-TECHNIQUES
+  act_version_date: '2026-07-27'
+  kind: prohibition
+  subjects:
+  - subject_ref: operator
+    category: supported_operator
+  action: prohibit placing on the market, putting into service, or using AI systems employing subliminal,
+    purposefully manipulative, or deceptive techniques that materially distort decisions and cause or
+    are reasonably likely to cause significant harm
+  norm_text: "the placing on the market, the putting into service or the use of an AI system that deploys\
+    \ subliminal techniques beyond a person\u2019s consciousness or purposefully manipulative or deceptive\
+    \ techniques, with the objective, or the effect of materially distorting the behaviour of a person\
+    \ or a group of persons by appreciably impairing their ability to make an informed decision, thereby\
+    \ causing them to take a decision that they would not have otherwise taken in a manner that causes\
+    \ or is reasonably likely to cause that person, another person or group of persons significant harm"
+  detection_channels:
+  - semantic_legal_effect
+  - cross_reference_structure
+  primary_spans:
+  - AIA-TEXT-A005-P002
+  qualifier_spans:
+  - AIA-TEXT-A005-P001
+  effective_date_spans: []
+  conditions:
+  - the techniques have the objective or effect of materially distorting a person or group's behaviour
+    by appreciably impairing informed decision-making
+  - the distortion causes a decision that would not otherwise have been taken
+  - the decision causes or is reasonably likely to cause significant harm to that person, another person,
+    or a group
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: in_scope
+  product_scope_reason: ''
+  implementation_mode: missing
+  implementation_refs: []
+  implementation_reason: ''
+  verification_mode: unresolved
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A005-P1-B-VULNERABILITY-EXPLOITATION
+  act_version_date: '2026-07-27'
+  kind: prohibition
+  subjects:
+  - subject_ref: operator
+    category: supported_operator
+  action: prohibit placing on the market, putting into service, or using AI systems that exploit vulnerabilities
+    and materially distort behaviour in a significantly harmful or likely harmful manner
+  norm_text: the placing on the market, the putting into service or the use of an AI system that exploits
+    any of the vulnerabilities of a natural person or a specific group of persons due to their age, disability
+    or a specific social or economic situation, with the objective, or the effect, of materially distorting
+    the behaviour of that person or a person belonging to that group in a manner that causes or is reasonably
+    likely to cause that person or another person significant harm
+  detection_channels:
+  - semantic_legal_effect
+  - cross_reference_structure
+  primary_spans:
+  - AIA-TEXT-A005-P003
+  qualifier_spans:
+  - AIA-TEXT-A005-P001
+  effective_date_spans: []
+  conditions:
+  - the vulnerability arises from age, disability, or a specific social or economic situation
+  - exploitation has the objective or effect of materially distorting the behaviour of the vulnerable
+    person or group member
+  - the distortion causes or is reasonably likely to cause significant harm to that person or another
+    person
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: in_scope
+  product_scope_reason: ''
+  implementation_mode: missing
+  implementation_refs: []
+  implementation_reason: ''
+  verification_mode: unresolved
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A005-P1-BA-NONCONSENSUAL-INTIMATE-MATERIAL
+  act_version_date: '2026-07-27'
+  kind: prohibition
+  subjects:
+  - subject_ref: operator
+    category: supported_operator
+  action: prohibit qualifying placement, service, or use of AI systems generating or manipulating realistic
+    intimate or sexually explicit material of an identifiable natural person without explicit consent
+  norm_text: "the placing on the market, the putting into service or the use of an AI system that generates\
+    \ or manipulates realistic images, videos, audio or similar material of an identifiable natural person\u2019\
+    s intimate parts, or of an identifiable natural person engaged in sexually explicit activities, without\
+    \ that person\u2019s freely-given, specific, informed, unambiguous and explicit consent for that generation\
+    \ or manipulation"
+  detection_channels:
+  - semantic_legal_effect
+  - cross_reference_structure
+  primary_spans:
+  - AIA-TEXT-A005-P004
+  qualifier_spans:
+  - AIA-TEXT-A005-P001
+  - AIA-TEXT-A005-P018
+  - AIA-TEXT-A005-P019
+  - AIA-TEXT-A005-P020
+  - AIA-TEXT-A005-P021
+  - AIA-TEXT-A005-P022
+  - AIA-TEXT-A005-P023
+  effective_date_spans: []
+  conditions:
+  - the material realistically depicts an identifiable natural person's intimate parts or sexually explicit
+    activities
+  - the depicted person did not give freely-given, specific, informed, unambiguous, and explicit consent
+    to the generation or manipulation
+  - the relevant placing, service, or use condition in Article 5(1a) is satisfied
+  exceptions:
+  - manipulation that neither increases exposure of depicted intimate parts nor alters the nature of depicted
+    sexually explicit activities does not constitute manipulation
+  mandatory_content: []
+  dependencies: []
+  product_scope: in_scope
+  product_scope_reason: ''
+  implementation_mode: missing
+  implementation_refs: []
+  implementation_reason: ''
+  verification_mode: unresolved
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A005-P1-BB-DIRECTIVE-MATERIAL
+  act_version_date: '2026-07-27'
+  kind: prohibition
+  subjects:
+  - subject_ref: operator
+    category: supported_operator
+  action: prohibit qualifying placement, service, or use of AI systems generating or manipulating material
+    or performances covered by Directive 2011/93/EU
+  norm_text: "the placing on the market, the putting into service or the use of an AI system that generates\
+    \ or manipulates material or performance within the meaning of Article 2, points (c) and (e), of Directive\
+    \ 2011/93/EU, except where a \u2018without right\u2019 defence applies under national law"
+  detection_channels:
+  - semantic_legal_effect
+  - cross_reference_structure
+  primary_spans:
+  - AIA-TEXT-A005-P005
+  qualifier_spans:
+  - AIA-TEXT-A005-P001
+  - AIA-TEXT-A005-P018
+  - AIA-TEXT-A005-P019
+  - AIA-TEXT-A005-P020
+  - AIA-TEXT-A005-P021
+  - AIA-TEXT-A005-P022
+  effective_date_spans: []
+  conditions:
+  - the generated or manipulated material or performance falls within Article 2, points (c) or (e), of
+    Directive 2011/93/EU
+  - the relevant placing, service, or use condition in Article 5(1a) is satisfied
+  exceptions:
+  - a without-right defence applies under national law
+  mandatory_content: []
+  dependencies:
+  - dependency_ref: Article 2, points (c) and (e), of Directive 2011/93/EU
+    resolution: external_recorded
+    detail: The prohibited material and performance are defined by the external directive.
+  - dependency_ref: applicable national-law without-right defence
+    resolution: national_or_factual
+    detail: National law determines whether the express defence applies.
+  product_scope: in_scope
+  product_scope_reason: ''
+  implementation_mode: missing
+  implementation_refs: []
+  implementation_reason: ''
+  verification_mode: unresolved
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A005-P1-C-SOCIAL-SCORING
+  act_version_date: '2026-07-27'
+  kind: prohibition
+  subjects:
+  - subject_ref: operator
+    category: supported_operator
+  action: prohibit placing on the market, putting into service, or using AI systems for social scoring
+    that leads to either prohibited form of detrimental or unfavourable treatment
+  norm_text: 'the placing on the market, the putting into service or the use of AI systems for the evaluation
+    or classification of natural persons or groups of persons over a certain period of time based on their
+    social behaviour or known, inferred or predicted personal or personality characteristics, with the
+    social score leading to either or both of the following:'
+  detection_channels:
+  - semantic_legal_effect
+  - cross_reference_structure
+  primary_spans:
+  - AIA-TEXT-A005-P006
+  qualifier_spans:
+  - AIA-TEXT-A005-P001
+  - AIA-TEXT-A005-P007
+  - AIA-TEXT-A005-P008
+  effective_date_spans: []
+  conditions:
+  - persons or groups are evaluated or classified over time using social behaviour or known, inferred,
+    or predicted personal or personality characteristics
+  - the social score leads to treatment in an unrelated context or treatment that is unjustified or disproportionate
+    to the social behaviour or its gravity
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: in_scope
+  product_scope_reason: ''
+  implementation_mode: missing
+  implementation_refs: []
+  implementation_reason: ''
+  verification_mode: unresolved
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A005-P1-D-CRIMINAL-RISK-PROFILING
+  act_version_date: '2026-07-27'
+  kind: prohibition
+  subjects:
+  - subject_ref: operator
+    category: supported_operator
+  action: prohibit placing on the market, putting into service for the purpose, or using AI systems to
+    assess or predict criminal-offence risk based solely on profiling or personality traits and characteristics
+  norm_text: the placing on the market, the putting into service for this specific purpose, or the use
+    of an AI system for making risk assessments of natural persons in order to assess or predict the risk
+    of a natural person committing a criminal offence, based solely on the profiling of a natural person
+    or on assessing their personality traits and characteristics
+  detection_channels:
+  - semantic_legal_effect
+  - cross_reference_structure
+  primary_spans:
+  - AIA-TEXT-A005-P009
+  qualifier_spans:
+  - AIA-TEXT-A005-P001
+  effective_date_spans: []
+  conditions: []
+  exceptions:
+  - an AI system supports a human assessment of a person's involvement in criminal activity already based
+    on objective and verifiable facts directly linked to criminal activity
+  mandatory_content: []
+  dependencies: []
+  product_scope: in_scope
+  product_scope_reason: ''
+  implementation_mode: missing
+  implementation_refs: []
+  implementation_reason: ''
+  verification_mode: unresolved
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A005-P1-E-UNTARGETED-FACIAL-SCRAPING
+  act_version_date: '2026-07-27'
+  kind: prohibition
+  subjects:
+  - subject_ref: operator
+    category: supported_operator
+  action: prohibit placing on the market, putting into service for the purpose, or using AI systems that
+    create or expand facial-recognition databases through untargeted scraping from the internet or CCTV
+  norm_text: the placing on the market, the putting into service for this specific purpose, or the use
+    of AI systems that create or expand facial recognition databases through the untargeted scraping of
+    facial images from the internet or CCTV footage
+  detection_channels:
+  - semantic_legal_effect
+  - cross_reference_structure
+  primary_spans:
+  - AIA-TEXT-A005-P010
+  qualifier_spans:
+  - AIA-TEXT-A005-P001
+  effective_date_spans: []
+  conditions: []
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: in_scope
+  product_scope_reason: ''
+  implementation_mode: missing
+  implementation_refs: []
+  implementation_reason: ''
+  verification_mode: unresolved
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A005-P1-F-WORKPLACE-EDUCATION-EMOTION-INFERENCE
+  act_version_date: '2026-07-27'
+  kind: prohibition
+  subjects:
+  - subject_ref: operator
+    category: supported_operator
+  action: prohibit placing on the market, putting into service for the purpose, or using AI systems to
+    infer emotions in workplaces or educational institutions
+  norm_text: the placing on the market, the putting into service for this specific purpose, or the use
+    of AI systems to infer emotions of a natural person in the areas of workplace and education institutions,
+    except where the use of the AI system is intended to be put in place or into the market for medical
+    or safety reasons
+  detection_channels:
+  - semantic_legal_effect
+  - cross_reference_structure
+  primary_spans:
+  - AIA-TEXT-A005-P011
+  qualifier_spans:
+  - AIA-TEXT-A005-P001
+  effective_date_spans: []
+  conditions: []
+  exceptions:
+  - the system is intended to be put in place or on the market for medical or safety reasons
+  mandatory_content: []
+  dependencies: []
+  product_scope: in_scope
+  product_scope_reason: ''
+  implementation_mode: missing
+  implementation_refs: []
+  implementation_reason: ''
+  verification_mode: unresolved
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A005-P1-G-SENSITIVE-BIOMETRIC-CATEGORISATION
+  act_version_date: '2026-07-27'
+  kind: prohibition
+  subjects:
+  - subject_ref: operator
+    category: supported_operator
+  action: prohibit placing on the market, putting into service for the purpose, or using biometric categorisation
+    systems to infer the listed sensitive characteristics of individuals
+  norm_text: the placing on the market, the putting into service for this specific purpose, or the use
+    of biometric categorisation systems that categorise individually natural persons based on their biometric
+    data to deduce or infer their race, political opinions, trade union membership, religious or philosophical
+    beliefs, sex life or sexual orientation
+  detection_channels:
+  - semantic_legal_effect
+  - cross_reference_structure
+  primary_spans:
+  - AIA-TEXT-A005-P012
+  qualifier_spans:
+  - AIA-TEXT-A005-P001
+  effective_date_spans: []
+  conditions: []
+  exceptions:
+  - labelling or filtering lawfully acquired biometric datasets based on biometric data
+  - categorising biometric data in the area of law enforcement
+  mandatory_content: []
+  dependencies:
+  - dependency_ref: AIA-NORM-A003-D040-BIOMETRIC-CATEGORISATION-SYSTEM
+    resolution: internal_resolved
+    detail: Article 3(40) defines biometric categorisation systems.
+  product_scope: in_scope
+  product_scope_reason: ''
+  implementation_mode: missing
+  implementation_refs: []
+  implementation_reason: ''
+  verification_mode: unresolved
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A005-P1-H-REAL-TIME-RBI
+  act_version_date: '2026-07-27'
+  kind: prohibition
+  subjects:
+  - subject_ref: law_enforcement_authority
+    category: public_authority
+  action: prohibit law-enforcement use of real-time remote biometric identification in publicly accessible
+    spaces unless strictly necessary for a listed objective
+  norm_text: "the use of \u2018real-time\u2019 remote biometric identification systems in publicly accessible\
+    \ spaces for the purposes of law enforcement, unless and in so far as such use is strictly necessary\
+    \ for one of the following objectives:"
+  detection_channels:
+  - semantic_legal_effect
+  - cross_reference_structure
+  primary_spans:
+  - AIA-TEXT-A005-P013
+  qualifier_spans:
+  - AIA-TEXT-A005-P001
+  - AIA-TEXT-A005-P014
+  - AIA-TEXT-A005-P015
+  - AIA-TEXT-A005-P016
+  effective_date_spans: []
+  conditions: []
+  exceptions:
+  - targeted searches for specified victims and missing persons
+  - prevention of the specified substantial and imminent safety threat or terrorist-attack threat
+  - localisation or identification of a criminal suspect for investigation, prosecution, or penalty execution
+    concerning qualifying Annex II offences
+  mandatory_content: []
+  dependencies:
+  - dependency_ref: AIA-NORM-A003-D042-REAL-TIME-REMOTE-BIOMETRIC-IDENTIFICATION-SYSTEM
+    resolution: internal_resolved
+    detail: Article 3(42) defines a real-time remote biometric identification system.
+  - dependency_ref: AIA-NORM-A003-D044-PUBLICLY-ACCESSIBLE-SPACE
+    resolution: internal_resolved
+    detail: Article 3(44) defines publicly accessible space.
+  - dependency_ref: Annex II of this Regulation
+    resolution: unresolved
+    detail: Point (h)(iii) depends on the offence list in Annex II, which has not yet been semantically
+      reviewed.
+  product_scope: in_scope
+  product_scope_reason: ''
+  implementation_mode: missing
+  implementation_refs: []
+  implementation_reason: ''
+  verification_mode: unresolved
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A005-P1-H-GDPR-SAVING
+  act_version_date: '2026-07-27'
+  kind: legal_consequence
+  subjects:
+  - subject_ref: non_law_enforcement_biometric_data_processing
+    category: other
+  action: preserve GDPR Article 9 for biometric-data processing conducted for purposes other than law
+    enforcement
+  norm_text: Point (h) of the first subparagraph is without prejudice to Article 9 of Regulation (EU)
+    2016/679 for the processing of biometric data for purposes other than law enforcement.
+  detection_channels:
+  - semantic_legal_effect
+  - deeming_or_consequence
+  - cross_reference_structure
+  primary_spans:
+  - AIA-TEXT-A005-P017
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions: []
+  exceptions: []
+  mandatory_content: []
+  dependencies:
+  - dependency_ref: Article 9 of Regulation (EU) 2016/679
+    resolution: external_recorded
+    detail: The saving clause preserves the external GDPR rule.
+  product_scope: dependency_only
+  product_scope_reason: This saving clause constrains interpretation without creating an independent AI
+    Act product action.
+  implementation_mode: none_required
+  implementation_refs: []
+  implementation_reason: The preserved GDPR rule is represented as a legal dependency rather than a standalone
+    product rule.
+  verification_mode: not_assessed
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A005-P1A-MARKET-SERVICE-SCOPE
+  act_version_date: '2026-07-27'
+  kind: applicability
+  subjects:
+  - subject_ref: provider
+    category: supported_operator
+  action: limit the point (ba) and (bb) market-placement and putting-into-service prohibitions to the
+    two specified system-purpose or foreseeable-outcome cases
+  norm_text: 'the placing on the market or putting into service of an AI system that generates or manipulates
+    the material or performance referred to in paragraph 1, first subparagraph, point (ba) or (bb) is
+    only prohibited where:'
+  detection_channels:
+  - semantic_legal_effect
+  - deeming_or_consequence
+  - cross_reference_structure
+  primary_spans:
+  - AIA-TEXT-A005-P019
+  qualifier_spans:
+  - AIA-TEXT-A005-P018
+  - AIA-TEXT-A005-P020
+  - AIA-TEXT-A005-P021
+  effective_date_spans: []
+  conditions:
+  - generation or manipulation is the intended purpose of the AI system
+  - or generation or manipulation is reasonably foreseeable and reproducible without significant technical
+    modification and the system lacks reasonable and adequate safeguards to reliably prevent and correct
+    it
+  exceptions: []
+  mandatory_content: []
+  dependencies:
+  - dependency_ref: AIA-NORM-A005-P1-BA-NONCONSENSUAL-INTIMATE-MATERIAL
+    resolution: internal_resolved
+    detail: This norm limits market placement and service under point (ba).
+  - dependency_ref: AIA-NORM-A005-P1-BB-DIRECTIVE-MATERIAL
+    resolution: internal_resolved
+    detail: This norm limits market placement and service under point (bb).
+  product_scope: in_scope
+  product_scope_reason: ''
+  implementation_mode: missing
+  implementation_refs: []
+  implementation_reason: ''
+  verification_mode: unresolved
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A005-P1A-DEPLOYER-USE-SCOPE
+  act_version_date: '2026-07-27'
+  kind: applicability
+  subjects:
+  - subject_ref: deployer
+    category: supported_operator
+  action: limit the point (ba) and (bb) use prohibitions to purposeful generation or manipulation by the
+    deployer
+  norm_text: the use of an AI system that generates or manipulates the material or performance referred
+    to in paragraph 1, first subparagraph, points (ba) and (bb) is only prohibited where the deployer
+    uses the system for the purpose of generating or manipulating such material or performance.
+  detection_channels:
+  - semantic_legal_effect
+  - deeming_or_consequence
+  - cross_reference_structure
+  primary_spans:
+  - AIA-TEXT-A005-P022
+  qualifier_spans:
+  - AIA-TEXT-A005-P018
+  effective_date_spans: []
+  conditions:
+  - the deployer uses the system for the purpose of generating or manipulating the prohibited material
+    or performance
+  exceptions: []
+  mandatory_content: []
+  dependencies:
+  - dependency_ref: AIA-NORM-A005-P1-BA-NONCONSENSUAL-INTIMATE-MATERIAL
+    resolution: internal_resolved
+    detail: This norm limits use under point (ba).
+  - dependency_ref: AIA-NORM-A005-P1-BB-DIRECTIVE-MATERIAL
+    resolution: internal_resolved
+    detail: This norm limits use under point (bb).
+  product_scope: in_scope
+  product_scope_reason: ''
+  implementation_mode: missing
+  implementation_refs: []
+  implementation_reason: ''
+  verification_mode: unresolved
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A005-P1B-NON-MANIPULATION
+  act_version_date: '2026-07-27'
+  kind: legal_consequence
+  subjects:
+  - subject_ref: intimate_material_manipulation
+    category: other
+  action: treat manipulation as outside point (ba) where it neither increases intimate-part exposure nor
+    alters the nature of depicted sexually explicit activities
+  norm_text: For the purposes of paragraph 1, first subparagraph, point (ba), an AI system that manipulates
+    material in a way that does not increase the exposure of any depicted intimate parts or alter the
+    nature of any depicted sexually explicit activities shall not constitute manipulation.
+  detection_channels:
+  - semantic_legal_effect
+  - shall_token
+  - deeming_or_consequence
+  - cross_reference_structure
+  primary_spans:
+  - AIA-TEXT-A005-P023
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions:
+  - the manipulation does not increase exposure of any depicted intimate parts
+  - the manipulation does not alter the nature of depicted sexually explicit activities
+  exceptions: []
+  mandatory_content: []
+  dependencies:
+  - dependency_ref: AIA-NORM-A005-P1-BA-NONCONSENSUAL-INTIMATE-MATERIAL
+    resolution: internal_resolved
+    detail: This consequence narrows what constitutes manipulation under point (ba).
+  product_scope: in_scope
+  product_scope_reason: ''
+  implementation_mode: missing
+  implementation_refs: []
+  implementation_reason: ''
+  verification_mode: unresolved
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A005-P2-CONFIRM-TARGETED-IDENTITY
+  act_version_date: '2026-07-27'
+  kind: obligation
+  subjects:
+  - subject_ref: law_enforcement_authority
+    category: public_authority
+  action: deploy real-time remote biometric identification for a permitted Article 5(1)(h) objective only
+    to confirm the specifically targeted individual's identity
+  norm_text: shall be deployed for the purposes set out in that point only to confirm the identity of
+    the specifically targeted individual
+  detection_channels:
+  - semantic_legal_effect
+  - shall_token
+  - cross_reference_structure
+  primary_spans:
+  - AIA-TEXT-A005-P024
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions: []
+  exceptions: []
+  mandatory_content: []
+  dependencies:
+  - dependency_ref: AIA-NORM-A005-P1-H-REAL-TIME-RBI
+    resolution: internal_resolved
+    detail: The obligation applies to use under an Article 5(1)(h) exception.
+  product_scope: in_scope
+  product_scope_reason: ''
+  implementation_mode: missing
+  implementation_refs: []
+  implementation_reason: ''
+  verification_mode: unresolved
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A005-P2-CONSIDER-IMPACTS
+  act_version_date: '2026-07-27'
+  kind: obligation
+  subjects:
+  - subject_ref: law_enforcement_authority
+    category: public_authority
+  action: consider both the non-use harm and the rights-and-freedoms consequences before using real-time
+    remote biometric identification
+  norm_text: 'it shall take into account the following elements:'
+  detection_channels:
+  - semantic_legal_effect
+  - shall_token
+  - cross_reference_structure
+  primary_spans:
+  - AIA-TEXT-A005-P024
+  qualifier_spans:
+  - AIA-TEXT-A005-P025
+  - AIA-TEXT-A005-P026
+  effective_date_spans: []
+  conditions:
+  - consider the nature of the situation and the seriousness, probability, and scale of harm if the system
+    is not used
+  - consider the seriousness, probability, and scale of consequences for the rights and freedoms of all
+    persons concerned
+  exceptions: []
+  mandatory_content: []
+  dependencies:
+  - dependency_ref: AIA-NORM-A005-P1-H-REAL-TIME-RBI
+    resolution: internal_resolved
+    detail: The assessment applies to use under an Article 5(1)(h) exception.
+  product_scope: in_scope
+  product_scope_reason: ''
+  implementation_mode: missing
+  implementation_refs: []
+  implementation_reason: ''
+  verification_mode: unresolved
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A005-P2-NATIONAL-SAFEGUARDS
+  act_version_date: '2026-07-27'
+  kind: obligation
+  subjects:
+  - subject_ref: law_enforcement_authority
+    category: public_authority
+  action: comply with necessary and proportionate national-law safeguards and conditions, particularly
+    temporal, geographic, and personal limits
+  norm_text: "the use of \u2018 real-time \u2019 remote biometric identification systems in publicly accessible\
+    \ spaces for the purposes of law enforcement for any of the objectives referred to in paragraph 1,\
+    \ first subparagraph, point (h), of this Article shall comply with necessary and proportionate safeguards\
+    \ and conditions in relation to the use in accordance with the national law authorising the use thereof,\
+    \ in particular as regards the temporal, geographic and personal limitations."
+  detection_channels:
+  - semantic_legal_effect
+  - shall_token
+  - cross_reference_structure
+  primary_spans:
+  - AIA-TEXT-A005-P027
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions: []
+  exceptions: []
+  mandatory_content: []
+  dependencies:
+  - dependency_ref: national law authorising real-time remote biometric identification use
+    resolution: national_or_factual
+    detail: Applicable national law supplies the required safeguards, conditions, and use limitations.
+  product_scope: in_scope
+  product_scope_reason: ''
+  implementation_mode: missing
+  implementation_refs: []
+  implementation_reason: ''
+  verification_mode: unresolved
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A005-P2-COMPLETE-FRIA
+  act_version_date: '2026-07-27'
+  kind: obligation
+  subjects:
+  - subject_ref: law_enforcement_authority
+    category: public_authority
+  action: complete an Article 27 fundamental-rights impact assessment before authorisation of real-time
+    remote biometric identification use
+  norm_text: "The use of the \u2018 real-time \u2019 remote biometric identification system in publicly\
+    \ accessible spaces shall be authorised only if the law enforcement authority has completed a fundamental\
+    \ rights impact assessment as provided for in Article 27"
+  detection_channels:
+  - semantic_legal_effect
+  - shall_token
+  - cross_reference_structure
+  primary_spans:
+  - AIA-TEXT-A005-P027
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions: []
+  exceptions: []
+  mandatory_content: []
+  dependencies:
+  - dependency_ref: Article 27 of this Regulation
+    resolution: unresolved
+    detail: Article 27 defines the impact-assessment requirements and has not yet been semantically reviewed.
+  product_scope: in_scope
+  product_scope_reason: ''
+  implementation_mode: missing
+  implementation_refs: []
+  implementation_reason: ''
+  verification_mode: unresolved
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A005-P2-REGISTER-SYSTEM
+  act_version_date: '2026-07-27'
+  kind: obligation
+  subjects:
+  - subject_ref: law_enforcement_authority
+    category: public_authority
+  action: register the real-time remote biometric identification system in the EU database before authorisation,
+    or without undue delay after urgent use begins
+  norm_text: "The use of the \u2018 real-time \u2019 remote biometric identification system in publicly\
+    \ accessible spaces shall be authorised only if the law enforcement authority has completed a fundamental\
+    \ rights impact assessment as provided for in Article 27 and has registered the system in the EU database\
+    \ according to Article 49."
+  detection_channels:
+  - semantic_legal_effect
+  - shall_token
+  - cross_reference_structure
+  primary_spans:
+  - AIA-TEXT-A005-P027
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions:
+  - when urgent use begins before registration, complete registration without undue delay
+  exceptions:
+  - in a duly justified urgent case, use may begin before registration
+  mandatory_content: []
+  dependencies:
+  - dependency_ref: Article 49 of this Regulation
+    resolution: unresolved
+    detail: Article 49 defines the EU-database registration and has not yet been semantically reviewed.
+  product_scope: in_scope
+  product_scope_reason: ''
+  implementation_mode: missing
+  implementation_refs: []
+  implementation_reason: ''
+  verification_mode: unresolved
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A005-P3-PRIOR-AUTHORISATION
+  act_version_date: '2026-07-27'
+  kind: obligation
+  subjects:
+  - subject_ref: law_enforcement_authority
+    category: public_authority
+  action: obtain prior judicial or binding independent-administrative authorisation, upon a reasoned request
+    and under applicable national rules, for each covered use
+  norm_text: "each use for the purposes of law enforcement of a \u2018 real-time \u2019 remote biometric\
+    \ identification system in publicly accessible spaces shall be subject to a prior authorisation granted\
+    \ by a judicial authority or an independent administrative authority whose decision is binding of\
+    \ the Member State in which the use is to take place, issued upon a reasoned request and in accordance\
+    \ with the detailed rules of national law referred to in paragraph 5."
+  detection_channels:
+  - semantic_legal_effect
+  - shall_token
+  - cross_reference_structure
+  primary_spans:
+  - AIA-TEXT-A005-P028
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions: []
+  exceptions: []
+  mandatory_content: []
+  dependencies:
+  - dependency_ref: national law referred to in Article 5(5) of this Regulation
+    resolution: national_or_factual
+    detail: National law supplies the detailed rules for requesting and granting authorisation.
+  product_scope: in_scope
+  product_scope_reason: ''
+  implementation_mode: missing
+  implementation_refs: []
+  implementation_reason: ''
+  verification_mode: unresolved
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A005-P3-URGENT-USE
+  act_version_date: '2026-07-27'
+  kind: permission
+  subjects:
+  - subject_ref: law_enforcement_authority
+    category: public_authority
+  action: commence urgent use without prior authorisation
+  norm_text: in a duly justified situation of urgency, the use of such system may be commenced without
+    an authorisation provided that such authorisation is requested without undue delay, at the latest
+    within 24 hours.
+  detection_channels:
+  - semantic_legal_effect
+  - other_modal
+  primary_spans:
+  - AIA-TEXT-A005-P028
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions:
+  - the situation of urgency is duly justified
+  - request authorisation without undue delay and no later than 24 hours after use commences
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: in_scope
+  product_scope_reason: ''
+  implementation_mode: missing
+  implementation_refs: []
+  implementation_reason: ''
+  verification_mode: unresolved
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A005-P3-STOP-ON-REJECTION
+  act_version_date: '2026-07-27'
+  kind: obligation
+  subjects:
+  - subject_ref: law_enforcement_authority
+    category: public_authority
+  action: stop the use immediately if authorisation is rejected
+  norm_text: If such authorisation is rejected, the use shall be stopped with immediate effect
+  detection_channels:
+  - semantic_legal_effect
+  - shall_token
+  primary_spans:
+  - AIA-TEXT-A005-P028
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions:
+  - the requested authorisation is rejected
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: in_scope
+  product_scope_reason: ''
+  implementation_mode: missing
+  implementation_refs: []
+  implementation_reason: ''
+  verification_mode: unresolved
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A005-P3-DELETE-ON-REJECTION
+  act_version_date: '2026-07-27'
+  kind: obligation
+  subjects:
+  - subject_ref: law_enforcement_authority
+    category: public_authority
+  action: immediately discard and delete all data, results, and outputs from the use if authorisation
+    is rejected
+  norm_text: all the data, as well as the results and outputs of that use shall be immediately discarded
+    and deleted.
+  detection_channels:
+  - semantic_legal_effect
+  - shall_token
+  primary_spans:
+  - AIA-TEXT-A005-P028
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions:
+  - the requested authorisation is rejected
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: in_scope
+  product_scope_reason: ''
+  implementation_mode: missing
+  implementation_refs: []
+  implementation_reason: ''
+  verification_mode: unresolved
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A005-P3-RESTRICT-AUTHORISATION
+  act_version_date: '2026-07-27'
+  kind: power
+  subjects:
+  - subject_ref: authorising_authority
+    category: public_authority
+  action: grant authorisation only on objective evidence or clear indications that the requested use is
+    necessary, proportionate, and strictly limited in time and geographic and personal scope
+  norm_text: "The competent judicial authority or an independent administrative authority whose decision\
+    \ is binding shall grant the authorisation only where it is satisfied, on the basis of objective evidence\
+    \ or clear indications presented to it, that the use of the \u2018 real-time \u2019 remote biometric\
+    \ identification system concerned is necessary for, and proportionate to, achieving one of the objectives\
+    \ specified in paragraph 1, first subparagraph, point (h), as identified in the request and, in particular,\
+    \ remains limited to what is strictly necessary concerning the period of time as well as the geographic\
+    \ and personal scope."
+  detection_channels:
+  - semantic_legal_effect
+  - shall_token
+  - cross_reference_structure
+  primary_spans:
+  - AIA-TEXT-A005-P029
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions:
+  - the use pursues an Article 5(1)(h) objective identified in the request
+  - objective evidence or clear indications establish necessity and proportionality
+  - the time period and geographic and personal scope are limited to what is strictly necessary
+  exceptions: []
+  mandatory_content: []
+  dependencies:
+  - dependency_ref: AIA-NORM-A005-P1-H-REAL-TIME-RBI
+    resolution: internal_resolved
+    detail: Article 5(1)(h) supplies the permitted law-enforcement objectives.
+  product_scope: in_scope
+  product_scope_reason: ''
+  implementation_mode: missing
+  implementation_refs: []
+  implementation_reason: ''
+  verification_mode: unresolved
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A005-P3-CONSIDER-P2-ELEMENTS
+  act_version_date: '2026-07-27'
+  kind: obligation
+  subjects:
+  - subject_ref: authorising_authority
+    category: public_authority
+  action: take the Article 5(2) elements into account when deciding an authorisation request
+  norm_text: In deciding on the request, that authority shall take into account the elements referred
+    to in paragraph 2.
+  detection_channels:
+  - semantic_legal_effect
+  - shall_token
+  - cross_reference_structure
+  primary_spans:
+  - AIA-TEXT-A005-P029
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions: []
+  exceptions: []
+  mandatory_content: []
+  dependencies:
+  - dependency_ref: AIA-NORM-A005-P2-CONSIDER-IMPACTS
+    resolution: internal_resolved
+    detail: The referenced norm records the non-use harm and rights-and-freedoms consequences that must
+      be considered.
+  product_scope: in_scope
+  product_scope_reason: ''
+  implementation_mode: missing
+  implementation_refs: []
+  implementation_reason: ''
+  verification_mode: unresolved
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A005-P3-NO-SOLE-OUTPUT-ADVERSE-DECISION
+  act_version_date: '2026-07-27'
+  kind: prohibition
+  subjects:
+  - subject_ref: decision_maker
+    category: public_authority
+  action: prohibit decisions producing an adverse legal effect on a person based solely on real-time remote
+    biometric identification output
+  norm_text: "No decision that produces an adverse legal effect on a person may be taken based solely\
+    \ on the output of the \u2018 real-time \u2019 remote biometric identification system."
+  detection_channels:
+  - semantic_legal_effect
+  - other_modal
+  primary_spans:
+  - AIA-TEXT-A005-P029
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions: []
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: in_scope
+  product_scope_reason: ''
+  implementation_mode: missing
+  implementation_refs: []
+  implementation_reason: ''
+  verification_mode: unresolved
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A005-P4-NOTIFY-AUTHORITIES
+  act_version_date: '2026-07-27'
+  kind: obligation
+  subjects:
+  - subject_ref: law_enforcement_authority
+    category: public_authority
+  action: notify the relevant market-surveillance authority and national data-protection authority of
+    each covered use in accordance with applicable national rules
+  norm_text: "each use of a \u2018 real-time \u2019 remote biometric identification system in publicly\
+    \ accessible spaces for law enforcement purposes shall be notified to the relevant market surveillance\
+    \ authority and the national data protection authority in accordance with the national rules referred\
+    \ to in paragraph 5."
+  detection_channels:
+  - semantic_legal_effect
+  - shall_token
+  - cross_reference_structure
+  primary_spans:
+  - AIA-TEXT-A005-P030
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions: []
+  exceptions: []
+  mandatory_content: []
+  dependencies:
+  - dependency_ref: national rules referred to in Article 5(5) of this Regulation
+    resolution: national_or_factual
+    detail: National law supplies the detailed notification rules.
+  product_scope: in_scope
+  product_scope_reason: ''
+  implementation_mode: missing
+  implementation_refs: []
+  implementation_reason: ''
+  verification_mode: unresolved
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A005-P4-NOTIFICATION-CONTENT
+  act_version_date: '2026-07-27'
+  kind: obligation
+  subjects:
+  - subject_ref: law_enforcement_authority
+    category: public_authority
+  action: include at least the information specified in Article 5(6) in each use notification
+  norm_text: The notification shall, as a minimum, contain the information specified under paragraph 6
+  detection_channels:
+  - semantic_legal_effect
+  - shall_token
+  - cross_reference_structure
+  primary_spans:
+  - AIA-TEXT-A005-P030
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions: []
+  exceptions: []
+  mandatory_content: []
+  dependencies:
+  - dependency_ref: Article 5(6) of this Regulation
+    resolution: unresolved
+    detail: Article 5(6) supplies the minimum notification information and has not yet been semantically
+      reviewed.
+  product_scope: in_scope
+  product_scope_reason: ''
+  implementation_mode: missing
+  implementation_refs: []
+  implementation_reason: ''
+  verification_mode: unresolved
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A005-P4-EXCLUDE-SENSITIVE-DATA
+  act_version_date: '2026-07-27'
+  kind: prohibition
+  subjects:
+  - subject_ref: law_enforcement_authority
+    category: public_authority
+  action: exclude sensitive operational data from each use notification
+  norm_text: shall not include sensitive operational data.
+  detection_channels:
+  - semantic_legal_effect
+  - shall_token
+  primary_spans:
+  - AIA-TEXT-A005-P030
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions: []
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: in_scope
+  product_scope_reason: ''
+  implementation_mode: missing
+  implementation_refs: []
+  implementation_reason: ''
+  verification_mode: unresolved
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A005-P5-AUTHORISE-USE
+  act_version_date: '2026-07-27'
+  kind: power
+  subjects:
+  - subject_ref: member_state
+    category: member_state
+  action: provide for full or partial authorisation of covered real-time remote biometric identification
+    use within the limits and conditions of Article 5(1)(h), (2), and (3)
+  norm_text: "A Member State may decide to provide for the possibility to fully or partially authorise\
+    \ the use of \u2018 real-time \u2019 remote biometric identification systems in publicly accessible\
+    \ spaces for the purposes of law enforcement within the limits and under the conditions listed in\
+    \ paragraph 1, first subparagraph, point (h), and paragraphs 2 and 3."
+  detection_channels:
+  - semantic_legal_effect
+  - other_modal
+  primary_spans:
+  - AIA-TEXT-A005-P031
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions: []
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for Member States, although their
+    national rules determine whether covered use is permitted.
+  implementation_mode: none_required
+  implementation_refs: []
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A005-P5-LAY-DOWN-RULES
+  act_version_date: '2026-07-27'
+  kind: obligation
+  subjects:
+  - subject_ref: member_state
+    category: member_state
+  action: lay down national rules for the request, issuance, exercise, supervision, and reporting of Article
+    5(3) authorisations
+  norm_text: Member States concerned shall lay down in their national law the necessary detailed rules
+    for the request, issuance and exercise of, as well as supervision and reporting relating to, the authorisations
+    referred to in paragraph 3.
+  detection_channels:
+  - semantic_legal_effect
+  - shall_token
+  primary_spans:
+  - AIA-TEXT-A005-P031
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions: []
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for Member States, although their
+    national rules govern covered use.
+  implementation_mode: none_required
+  implementation_refs: []
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A005-P5-SPECIFY-OBJECTIVES
+  act_version_date: '2026-07-27'
+  kind: obligation
+  subjects:
+  - subject_ref: member_state
+    category: member_state
+  action: specify in national rules the objectives and qualifying criminal offences for which competent
+    authorities may receive authorisation
+  norm_text: Those rules shall also specify in respect of which of the objectives listed in paragraph
+    1, first subparagraph, point (h), including which of the criminal offences referred to in point (h)(iii)
+    thereof, the competent authorities may be authorised to use those systems for the purposes of law
+    enforcement.
+  detection_channels:
+  - semantic_legal_effect
+  - shall_token
+  - other_modal
+  primary_spans:
+  - AIA-TEXT-A005-P031
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions: []
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for Member States, although the
+    specified objectives constrain covered use.
+  implementation_mode: none_required
+  implementation_refs: []
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A005-P5-NOTIFY-COMMISSION
+  act_version_date: '2026-07-27'
+  kind: obligation
+  subjects:
+  - subject_ref: member_state
+    category: member_state
+  action: notify the Commission of the national rules no later than 30 days after their adoption
+  norm_text: Member States shall notify those rules to the Commission at the latest 30 days following
+    the adoption thereof.
+  detection_channels:
+  - semantic_legal_effect
+  - shall_token
+  primary_spans:
+  - AIA-TEXT-A005-P031
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions: []
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for Member States.
+  implementation_mode: none_required
+  implementation_refs: []
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A005-P5-MORE-RESTRICTIVE-LAWS
+  act_version_date: '2026-07-27'
+  kind: power
+  subjects:
+  - subject_ref: member_state
+    category: member_state
+  action: introduce more restrictive laws on remote biometric identification use in accordance with Union
+    law
+  norm_text: Member States may introduce, in accordance with Union law, more restrictive laws on the use
+    of remote biometric identification systems.
+  detection_channels:
+  - semantic_legal_effect
+  - other_modal
+  primary_spans:
+  - AIA-TEXT-A005-P031
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions: []
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for Member States, although stricter
+    national law can constrain covered use.
+  implementation_mode: none_required
+  implementation_refs: []
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A005-P6-SUBMIT-ANNUAL-REPORTS
+  act_version_date: '2026-07-27'
+  kind: obligation
+  subjects:
+  - subject_ref: national_market_surveillance_and_data_protection_authorities
+    category: public_authority
+  action: submit annual reports to the Commission on notified real-time remote biometric identification
+    use
+  norm_text: "National market surveillance authorities and the national data protection authorities of\
+    \ Member States that have been notified of the use of \u2018 real-time \u2019 remote biometric identification\
+    \ systems in publicly accessible spaces for law enforcement purposes pursuant to paragraph 4 shall\
+    \ submit to the Commission annual reports on such use."
+  detection_channels:
+  - semantic_legal_effect
+  - shall_token
+  primary_spans:
+  - AIA-TEXT-A005-P032
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions:
+  - the authority has been notified of covered use pursuant to Article 5(4)
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for national supervisory authorities.
+  implementation_mode: none_required
+  implementation_refs: []
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A005-P6-PROVIDE-TEMPLATE
+  act_version_date: '2026-07-27'
+  kind: obligation
+  subjects:
+  - subject_ref: commission
+    category: union_institution_or_body
+  action: provide Member States and national market-surveillance and data-protection authorities with
+    an annual-reporting template
+  norm_text: the Commission shall provide Member States and national market surveillance and data protection
+    authorities with a template
+  detection_channels:
+  - semantic_legal_effect
+  - shall_token
+  primary_spans:
+  - AIA-TEXT-A005-P032
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions: []
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for the Commission.
+  implementation_mode: none_required
+  implementation_refs: []
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A005-P6-TEMPLATE-CONTENT
+  act_version_date: '2026-07-27'
+  kind: obligation
+  subjects:
+  - subject_ref: commission
+    category: union_institution_or_body
+  action: include in the reporting template the number and outcomes of decisions on Article 5(3) authorisation
+    requests
+  norm_text: including information on the number of the decisions taken by competent judicial authorities
+    or an independent administrative authority whose decision is binding upon requests for authorisations
+    in accordance with paragraph 3 and their result.
+  detection_channels:
+  - semantic_legal_effect
+  primary_spans:
+  - AIA-TEXT-A005-P032
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions: []
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for the Commission.
+  implementation_mode: none_required
+  implementation_refs: []
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A005-P7-PUBLISH-ANNUAL-REPORTS
+  act_version_date: '2026-07-27'
+  kind: obligation
+  subjects:
+  - subject_ref: commission
+    category: union_institution_or_body
+  action: publish annual reports on covered real-time remote biometric identification use using aggregated
+    Member State data from Article 5(6) reports
+  norm_text: The Commission shall publish annual reports on the use of real-time remote biometric identification
+    systems in publicly accessible spaces for law enforcement purposes, based on aggregated data in Member
+    States on the basis of the annual reports referred to in paragraph 6.
+  detection_channels:
+  - semantic_legal_effect
+  - shall_token
+  primary_spans:
+  - AIA-TEXT-A005-P033
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions: []
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for the Commission.
+  implementation_mode: none_required
+  implementation_refs: []
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A005-P7-EXCLUDE-SENSITIVE-DATA
+  act_version_date: '2026-07-27'
+  kind: prohibition
+  subjects:
+  - subject_ref: commission
+    category: union_institution_or_body
+  action: exclude sensitive operational data about related law-enforcement activities from the Commission's
+    annual reports
+  norm_text: Those annual reports shall not include sensitive operational data of the related law enforcement
+    activities.
+  detection_channels:
+  - semantic_legal_effect
+  - shall_token
+  primary_spans:
+  - AIA-TEXT-A005-P033
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions: []
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for the Commission.
+  implementation_mode: none_required
+  implementation_refs: []
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A005-P8-OTHER-UNION-LAW
+  act_version_date: '2026-07-27'
+  kind: legal_consequence
+  subjects:
+  - subject_ref: ai_practice_subject_to_other_union_law
+    category: other
+  action: preserve prohibitions under other Union law where an AI practice infringes that law
+  norm_text: This Article shall not affect the prohibitions that apply where an AI practice infringes
+    other Union law.
+  detection_channels:
+  - semantic_legal_effect
+  - shall_token
+  - deeming_or_consequence
+  - cross_reference_structure
+  primary_spans:
+  - AIA-TEXT-A005-P034
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions: []
+  exceptions: []
+  mandatory_content: []
+  dependencies:
+  - dependency_ref: applicable prohibitions under other Union law
+    resolution: external_recorded
+    detail: The saving clause preserves prohibitions arising under other Union law.
+  product_scope: dependency_only
+  product_scope_reason: This saving clause constrains legal interpretation without creating an independent
+    AI Act product action.
+  implementation_mode: none_required
+  implementation_refs: []
+  implementation_reason: The preserved external prohibitions are represented as legal dependencies rather
+    than standalone product rules.
+  verification_mode: not_assessed
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
 - norm_id: AIA-NORM-A011-P1-DRAW
   act_version_date: '2026-07-27'
   kind: obligation

@@ -1848,6 +1848,539 @@ records:
   implementation_mode: none_required
   implementation_reason: The no-obligation consequence is represented as a dependency rather than a standalone product rule.
   verification_mode: not_assessed
+- norm_id: AIA-NORM-A005-P1-A-MANIPULATIVE-TECHNIQUES
+  source: A005-P002
+  quote: the placing on the market, the putting into service or the use of an AI system that deploys subliminal techniques beyond a person’s consciousness or purposefully manipulative or deceptive techniques, with the objective, or the effect of materially distorting the behaviour of a person or a group of persons by appreciably impairing their ability to make an informed decision, thereby causing them to take a decision that they would not have otherwise taken in a manner that causes or is reasonably likely to cause that person, another person or group of persons significant harm
+  action: prohibit placing on the market, putting into service, or using AI systems employing subliminal, purposefully manipulative, or deceptive techniques that materially distort decisions and cause or are reasonably likely to cause significant harm
+  subject_ref: operator
+  subject_category: supported_operator
+  kind: prohibition
+  qualifier_spans:
+  - A005-P001
+  conditions:
+  - the techniques have the objective or effect of materially distorting a person or group's behaviour by appreciably impairing informed decision-making
+  - the distortion causes a decision that would not otherwise have been taken
+  - the decision causes or is reasonably likely to cause significant harm to that person, another person, or a group
+- norm_id: AIA-NORM-A005-P1-B-VULNERABILITY-EXPLOITATION
+  source: A005-P003
+  quote: the placing on the market, the putting into service or the use of an AI system that exploits any of the vulnerabilities of a natural person or a specific group of persons due to their age, disability or a specific social or economic situation, with the objective, or the effect, of materially distorting the behaviour of that person or a person belonging to that group in a manner that causes or is reasonably likely to cause that person or another person significant harm
+  action: prohibit placing on the market, putting into service, or using AI systems that exploit vulnerabilities and materially distort behaviour in a significantly harmful or likely harmful manner
+  subject_ref: operator
+  subject_category: supported_operator
+  kind: prohibition
+  qualifier_spans:
+  - A005-P001
+  conditions:
+  - the vulnerability arises from age, disability, or a specific social or economic situation
+  - exploitation has the objective or effect of materially distorting the behaviour of the vulnerable person or group member
+  - the distortion causes or is reasonably likely to cause significant harm to that person or another person
+- norm_id: AIA-NORM-A005-P1-BA-NONCONSENSUAL-INTIMATE-MATERIAL
+  source: A005-P004
+  quote: the placing on the market, the putting into service or the use of an AI system that generates or manipulates realistic images, videos, audio or similar material of an identifiable natural person’s intimate parts, or of an identifiable natural person engaged in sexually explicit activities, without that person’s freely-given, specific, informed, unambiguous and explicit consent for that generation or manipulation
+  action: prohibit qualifying placement, service, or use of AI systems generating or manipulating realistic intimate or sexually explicit material of an identifiable natural person without explicit consent
+  subject_ref: operator
+  subject_category: supported_operator
+  kind: prohibition
+  qualifier_spans:
+  - A005-P001
+  - A005-P018
+  - A005-P019
+  - A005-P020
+  - A005-P021
+  - A005-P022
+  - A005-P023
+  conditions:
+  - the material realistically depicts an identifiable natural person's intimate parts or sexually explicit activities
+  - the depicted person did not give freely-given, specific, informed, unambiguous, and explicit consent to the generation or manipulation
+  - the relevant placing, service, or use condition in Article 5(1a) is satisfied
+  exceptions:
+  - manipulation that neither increases exposure of depicted intimate parts nor alters the nature of depicted sexually explicit activities does not constitute manipulation
+- norm_id: AIA-NORM-A005-P1-BB-DIRECTIVE-MATERIAL
+  source: A005-P005
+  quote: the placing on the market, the putting into service or the use of an AI system that generates or manipulates material or performance within the meaning of Article 2, points (c) and (e), of Directive 2011/93/EU, except where a ‘without right’ defence applies under national law
+  action: prohibit qualifying placement, service, or use of AI systems generating or manipulating material or performances covered by Directive 2011/93/EU
+  subject_ref: operator
+  subject_category: supported_operator
+  kind: prohibition
+  qualifier_spans:
+  - A005-P001
+  - A005-P018
+  - A005-P019
+  - A005-P020
+  - A005-P021
+  - A005-P022
+  conditions:
+  - the generated or manipulated material or performance falls within Article 2, points (c) or (e), of Directive 2011/93/EU
+  - the relevant placing, service, or use condition in Article 5(1a) is satisfied
+  exceptions:
+  - a without-right defence applies under national law
+  dependencies:
+  - dependency_ref: Article 2, points (c) and (e), of Directive 2011/93/EU
+    resolution: external_recorded
+    detail: The prohibited material and performance are defined by the external directive.
+  - dependency_ref: applicable national-law without-right defence
+    resolution: national_or_factual
+    detail: National law determines whether the express defence applies.
+- norm_id: AIA-NORM-A005-P1-C-SOCIAL-SCORING
+  source: A005-P006
+  quote: 'the placing on the market, the putting into service or the use of AI systems for the evaluation or classification of natural persons or groups of persons over a certain period of time based on their social behaviour or known, inferred or predicted personal or personality characteristics, with the social score leading to either or both of the following:'
+  action: prohibit placing on the market, putting into service, or using AI systems for social scoring that leads to either prohibited form of detrimental or unfavourable treatment
+  subject_ref: operator
+  subject_category: supported_operator
+  kind: prohibition
+  qualifier_spans:
+  - A005-P001
+  - A005-P007
+  - A005-P008
+  conditions:
+  - persons or groups are evaluated or classified over time using social behaviour or known, inferred, or predicted personal or personality characteristics
+  - the social score leads to treatment in an unrelated context or treatment that is unjustified or disproportionate to the social behaviour or its gravity
+- norm_id: AIA-NORM-A005-P1-D-CRIMINAL-RISK-PROFILING
+  source: A005-P009
+  quote: the placing on the market, the putting into service for this specific purpose, or the use of an AI system for making risk assessments of natural persons in order to assess or predict the risk of a natural person committing a criminal offence, based solely on the profiling of a natural person or on assessing their personality traits and characteristics
+  action: prohibit placing on the market, putting into service for the purpose, or using AI systems to assess or predict criminal-offence risk based solely on profiling or personality traits and characteristics
+  subject_ref: operator
+  subject_category: supported_operator
+  kind: prohibition
+  qualifier_spans:
+  - A005-P001
+  exceptions:
+  - an AI system supports a human assessment of a person's involvement in criminal activity already based on objective and verifiable facts directly linked to criminal activity
+- norm_id: AIA-NORM-A005-P1-E-UNTARGETED-FACIAL-SCRAPING
+  source: A005-P010
+  quote: the placing on the market, the putting into service for this specific purpose, or the use of AI systems that create or expand facial recognition databases through the untargeted scraping of facial images from the internet or CCTV footage
+  action: prohibit placing on the market, putting into service for the purpose, or using AI systems that create or expand facial-recognition databases through untargeted scraping from the internet or CCTV
+  subject_ref: operator
+  subject_category: supported_operator
+  kind: prohibition
+  qualifier_spans:
+  - A005-P001
+- norm_id: AIA-NORM-A005-P1-F-WORKPLACE-EDUCATION-EMOTION-INFERENCE
+  source: A005-P011
+  quote: the placing on the market, the putting into service for this specific purpose, or the use of AI systems to infer emotions of a natural person in the areas of workplace and education institutions, except where the use of the AI system is intended to be put in place or into the market for medical or safety reasons
+  action: prohibit placing on the market, putting into service for the purpose, or using AI systems to infer emotions in workplaces or educational institutions
+  subject_ref: operator
+  subject_category: supported_operator
+  kind: prohibition
+  qualifier_spans:
+  - A005-P001
+  exceptions:
+  - the system is intended to be put in place or on the market for medical or safety reasons
+- norm_id: AIA-NORM-A005-P1-G-SENSITIVE-BIOMETRIC-CATEGORISATION
+  source: A005-P012
+  quote: the placing on the market, the putting into service for this specific purpose, or the use of biometric categorisation systems that categorise individually natural persons based on their biometric data to deduce or infer their race, political opinions, trade union membership, religious or philosophical beliefs, sex life or sexual orientation
+  action: prohibit placing on the market, putting into service for the purpose, or using biometric categorisation systems to infer the listed sensitive characteristics of individuals
+  subject_ref: operator
+  subject_category: supported_operator
+  kind: prohibition
+  qualifier_spans:
+  - A005-P001
+  exceptions:
+  - labelling or filtering lawfully acquired biometric datasets based on biometric data
+  - categorising biometric data in the area of law enforcement
+  dependencies:
+  - dependency_ref: AIA-NORM-A003-D040-BIOMETRIC-CATEGORISATION-SYSTEM
+    resolution: internal_resolved
+    detail: Article 3(40) defines biometric categorisation systems.
+- norm_id: AIA-NORM-A005-P1-H-REAL-TIME-RBI
+  source: A005-P013
+  quote: 'the use of ‘real-time’ remote biometric identification systems in publicly accessible spaces for the purposes of law enforcement, unless and in so far as such use is strictly necessary for one of the following objectives:'
+  action: prohibit law-enforcement use of real-time remote biometric identification in publicly accessible spaces unless strictly necessary for a listed objective
+  subject_ref: law_enforcement_authority
+  subject_category: public_authority
+  kind: prohibition
+  qualifier_spans:
+  - A005-P001
+  - A005-P014
+  - A005-P015
+  - A005-P016
+  exceptions:
+  - targeted searches for specified victims and missing persons
+  - prevention of the specified substantial and imminent safety threat or terrorist-attack threat
+  - localisation or identification of a criminal suspect for investigation, prosecution, or penalty execution concerning qualifying Annex II offences
+  dependencies:
+  - dependency_ref: AIA-NORM-A003-D042-REAL-TIME-REMOTE-BIOMETRIC-IDENTIFICATION-SYSTEM
+    resolution: internal_resolved
+    detail: Article 3(42) defines a real-time remote biometric identification system.
+  - dependency_ref: AIA-NORM-A003-D044-PUBLICLY-ACCESSIBLE-SPACE
+    resolution: internal_resolved
+    detail: Article 3(44) defines publicly accessible space.
+  - dependency_ref: Annex II of this Regulation
+    resolution: unresolved
+    detail: Point (h)(iii) depends on the offence list in Annex II, which has not yet been semantically reviewed.
+- norm_id: AIA-NORM-A005-P1-H-GDPR-SAVING
+  source: A005-P017
+  quote: Point (h) of the first subparagraph is without prejudice to Article 9 of Regulation (EU) 2016/679 for the processing of biometric data for purposes other than law enforcement.
+  action: preserve GDPR Article 9 for biometric-data processing conducted for purposes other than law enforcement
+  subject_ref: non_law_enforcement_biometric_data_processing
+  subject_category: other
+  kind: legal_consequence
+  dependencies:
+  - dependency_ref: Article 9 of Regulation (EU) 2016/679
+    resolution: external_recorded
+    detail: The saving clause preserves the external GDPR rule.
+  product_scope: dependency_only
+  product_scope_reason: This saving clause constrains interpretation without creating an independent AI Act product action.
+  implementation_mode: none_required
+  implementation_reason: The preserved GDPR rule is represented as a legal dependency rather than a standalone product rule.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A005-P1A-MARKET-SERVICE-SCOPE
+  source: A005-P019
+  quote: 'the placing on the market or putting into service of an AI system that generates or manipulates the material or performance referred to in paragraph 1, first subparagraph, point (ba) or (bb) is only prohibited where:'
+  action: limit the point (ba) and (bb) market-placement and putting-into-service prohibitions to the two specified system-purpose or foreseeable-outcome cases
+  subject_ref: provider
+  subject_category: supported_operator
+  kind: applicability
+  qualifier_spans:
+  - A005-P018
+  - A005-P020
+  - A005-P021
+  conditions:
+  - generation or manipulation is the intended purpose of the AI system
+  - or generation or manipulation is reasonably foreseeable and reproducible without significant technical modification and the system lacks reasonable and adequate safeguards to reliably prevent and correct it
+  dependencies:
+  - dependency_ref: AIA-NORM-A005-P1-BA-NONCONSENSUAL-INTIMATE-MATERIAL
+    resolution: internal_resolved
+    detail: This norm limits market placement and service under point (ba).
+  - dependency_ref: AIA-NORM-A005-P1-BB-DIRECTIVE-MATERIAL
+    resolution: internal_resolved
+    detail: This norm limits market placement and service under point (bb).
+- norm_id: AIA-NORM-A005-P1A-DEPLOYER-USE-SCOPE
+  source: A005-P022
+  quote: the use of an AI system that generates or manipulates the material or performance referred to in paragraph 1, first subparagraph, points (ba) and (bb) is only prohibited where the deployer uses the system for the purpose of generating or manipulating such material or performance.
+  action: limit the point (ba) and (bb) use prohibitions to purposeful generation or manipulation by the deployer
+  subject_ref: deployer
+  subject_category: supported_operator
+  kind: applicability
+  qualifier_spans:
+  - A005-P018
+  conditions:
+  - the deployer uses the system for the purpose of generating or manipulating the prohibited material or performance
+  dependencies:
+  - dependency_ref: AIA-NORM-A005-P1-BA-NONCONSENSUAL-INTIMATE-MATERIAL
+    resolution: internal_resolved
+    detail: This norm limits use under point (ba).
+  - dependency_ref: AIA-NORM-A005-P1-BB-DIRECTIVE-MATERIAL
+    resolution: internal_resolved
+    detail: This norm limits use under point (bb).
+- norm_id: AIA-NORM-A005-P1B-NON-MANIPULATION
+  source: A005-P023
+  quote: For the purposes of paragraph 1, first subparagraph, point (ba), an AI system that manipulates material in a way that does not increase the exposure of any depicted intimate parts or alter the nature of any depicted sexually explicit activities shall not constitute manipulation.
+  action: treat manipulation as outside point (ba) where it neither increases intimate-part exposure nor alters the nature of depicted sexually explicit activities
+  subject_ref: intimate_material_manipulation
+  subject_category: other
+  kind: legal_consequence
+  conditions:
+  - the manipulation does not increase exposure of any depicted intimate parts
+  - the manipulation does not alter the nature of depicted sexually explicit activities
+  dependencies:
+  - dependency_ref: AIA-NORM-A005-P1-BA-NONCONSENSUAL-INTIMATE-MATERIAL
+    resolution: internal_resolved
+    detail: This consequence narrows what constitutes manipulation under point (ba).
+- norm_id: AIA-NORM-A005-P2-CONFIRM-TARGETED-IDENTITY
+  source: A005-P024
+  quote: shall be deployed for the purposes set out in that point only to confirm the identity of the specifically targeted individual
+  action: deploy real-time remote biometric identification for a permitted Article 5(1)(h) objective only to confirm the specifically targeted individual's identity
+  subject_ref: law_enforcement_authority
+  subject_category: public_authority
+  kind: obligation
+  dependencies:
+  - dependency_ref: AIA-NORM-A005-P1-H-REAL-TIME-RBI
+    resolution: internal_resolved
+    detail: The obligation applies to use under an Article 5(1)(h) exception.
+- norm_id: AIA-NORM-A005-P2-CONSIDER-IMPACTS
+  source: A005-P024
+  quote: 'it shall take into account the following elements:'
+  action: consider both the non-use harm and the rights-and-freedoms consequences before using real-time remote biometric identification
+  subject_ref: law_enforcement_authority
+  subject_category: public_authority
+  kind: obligation
+  qualifier_spans:
+  - A005-P025
+  - A005-P026
+  conditions:
+  - consider the nature of the situation and the seriousness, probability, and scale of harm if the system is not used
+  - consider the seriousness, probability, and scale of consequences for the rights and freedoms of all persons concerned
+  dependencies:
+  - dependency_ref: AIA-NORM-A005-P1-H-REAL-TIME-RBI
+    resolution: internal_resolved
+    detail: The assessment applies to use under an Article 5(1)(h) exception.
+- norm_id: AIA-NORM-A005-P2-NATIONAL-SAFEGUARDS
+  source: A005-P027
+  quote: the use of ‘ real-time ’ remote biometric identification systems in publicly accessible spaces for the purposes of law enforcement for any of the objectives referred to in paragraph 1, first subparagraph, point (h), of this Article shall comply with necessary and proportionate safeguards and conditions in relation to the use in accordance with the national law authorising the use thereof, in particular as regards the temporal, geographic and personal limitations.
+  action: comply with necessary and proportionate national-law safeguards and conditions, particularly temporal, geographic, and personal limits
+  subject_ref: law_enforcement_authority
+  subject_category: public_authority
+  kind: obligation
+  dependencies:
+  - dependency_ref: national law authorising real-time remote biometric identification use
+    resolution: national_or_factual
+    detail: Applicable national law supplies the required safeguards, conditions, and use limitations.
+- norm_id: AIA-NORM-A005-P2-COMPLETE-FRIA
+  source: A005-P027
+  quote: The use of the ‘ real-time ’ remote biometric identification system in publicly accessible spaces shall be authorised only if the law enforcement authority has completed a fundamental rights impact assessment as provided for in Article 27
+  action: complete an Article 27 fundamental-rights impact assessment before authorisation of real-time remote biometric identification use
+  subject_ref: law_enforcement_authority
+  subject_category: public_authority
+  kind: obligation
+  dependencies:
+  - dependency_ref: Article 27 of this Regulation
+    resolution: unresolved
+    detail: Article 27 defines the impact-assessment requirements and has not yet been semantically reviewed.
+- norm_id: AIA-NORM-A005-P2-REGISTER-SYSTEM
+  source: A005-P027
+  quote: The use of the ‘ real-time ’ remote biometric identification system in publicly accessible spaces shall be authorised only if the law enforcement authority has completed a fundamental rights impact assessment as provided for in Article 27 and has registered the system in the EU database according to Article 49.
+  action: register the real-time remote biometric identification system in the EU database before authorisation, or without undue delay after urgent use begins
+  subject_ref: law_enforcement_authority
+  subject_category: public_authority
+  kind: obligation
+  exceptions:
+  - in a duly justified urgent case, use may begin before registration
+  conditions:
+  - when urgent use begins before registration, complete registration without undue delay
+  dependencies:
+  - dependency_ref: Article 49 of this Regulation
+    resolution: unresolved
+    detail: Article 49 defines the EU-database registration and has not yet been semantically reviewed.
+- norm_id: AIA-NORM-A005-P3-PRIOR-AUTHORISATION
+  source: A005-P028
+  quote: each use for the purposes of law enforcement of a ‘ real-time ’ remote biometric identification system in publicly accessible spaces shall be subject to a prior authorisation granted by a judicial authority or an independent administrative authority whose decision is binding of the Member State in which the use is to take place, issued upon a reasoned request and in accordance with the detailed rules of national law referred to in paragraph 5.
+  action: obtain prior judicial or binding independent-administrative authorisation, upon a reasoned request and under applicable national rules, for each covered use
+  subject_ref: law_enforcement_authority
+  subject_category: public_authority
+  kind: obligation
+  dependencies:
+  - dependency_ref: national law referred to in Article 5(5) of this Regulation
+    resolution: national_or_factual
+    detail: National law supplies the detailed rules for requesting and granting authorisation.
+- norm_id: AIA-NORM-A005-P3-URGENT-USE
+  source: A005-P028
+  quote: in a duly justified situation of urgency, the use of such system may be commenced without an authorisation provided that such authorisation is requested without undue delay, at the latest within 24 hours.
+  action: commence urgent use without prior authorisation
+  subject_ref: law_enforcement_authority
+  subject_category: public_authority
+  kind: permission
+  conditions:
+  - the situation of urgency is duly justified
+  - request authorisation without undue delay and no later than 24 hours after use commences
+- norm_id: AIA-NORM-A005-P3-STOP-ON-REJECTION
+  source: A005-P028
+  quote: If such authorisation is rejected, the use shall be stopped with immediate effect
+  action: stop the use immediately if authorisation is rejected
+  subject_ref: law_enforcement_authority
+  subject_category: public_authority
+  kind: obligation
+  conditions:
+  - the requested authorisation is rejected
+- norm_id: AIA-NORM-A005-P3-DELETE-ON-REJECTION
+  source: A005-P028
+  quote: all the data, as well as the results and outputs of that use shall be immediately discarded and deleted.
+  action: immediately discard and delete all data, results, and outputs from the use if authorisation is rejected
+  subject_ref: law_enforcement_authority
+  subject_category: public_authority
+  kind: obligation
+  conditions:
+  - the requested authorisation is rejected
+- norm_id: AIA-NORM-A005-P3-RESTRICT-AUTHORISATION
+  source: A005-P029
+  quote: The competent judicial authority or an independent administrative authority whose decision is binding shall grant the authorisation only where it is satisfied, on the basis of objective evidence or clear indications presented to it, that the use of the ‘ real-time ’ remote biometric identification system concerned is necessary for, and proportionate to, achieving one of the objectives specified in paragraph 1, first subparagraph, point (h), as identified in the request and, in particular, remains limited to what is strictly necessary concerning the period of time as well as the geographic and personal scope.
+  action: grant authorisation only on objective evidence or clear indications that the requested use is necessary, proportionate, and strictly limited in time and geographic and personal scope
+  subject_ref: authorising_authority
+  subject_category: public_authority
+  kind: power
+  conditions:
+  - the use pursues an Article 5(1)(h) objective identified in the request
+  - objective evidence or clear indications establish necessity and proportionality
+  - the time period and geographic and personal scope are limited to what is strictly necessary
+  dependencies:
+  - dependency_ref: AIA-NORM-A005-P1-H-REAL-TIME-RBI
+    resolution: internal_resolved
+    detail: Article 5(1)(h) supplies the permitted law-enforcement objectives.
+- norm_id: AIA-NORM-A005-P3-CONSIDER-P2-ELEMENTS
+  source: A005-P029
+  quote: In deciding on the request, that authority shall take into account the elements referred to in paragraph 2.
+  action: take the Article 5(2) elements into account when deciding an authorisation request
+  subject_ref: authorising_authority
+  subject_category: public_authority
+  kind: obligation
+  dependencies:
+  - dependency_ref: AIA-NORM-A005-P2-CONSIDER-IMPACTS
+    resolution: internal_resolved
+    detail: The referenced norm records the non-use harm and rights-and-freedoms consequences that must be considered.
+- norm_id: AIA-NORM-A005-P3-NO-SOLE-OUTPUT-ADVERSE-DECISION
+  source: A005-P029
+  quote: No decision that produces an adverse legal effect on a person may be taken based solely on the output of the ‘ real-time ’ remote biometric identification system.
+  action: prohibit decisions producing an adverse legal effect on a person based solely on real-time remote biometric identification output
+  subject_ref: decision_maker
+  subject_category: public_authority
+  kind: prohibition
+- norm_id: AIA-NORM-A005-P4-NOTIFY-AUTHORITIES
+  source: A005-P030
+  quote: each use of a ‘ real-time ’ remote biometric identification system in publicly accessible spaces for law enforcement purposes shall be notified to the relevant market surveillance authority and the national data protection authority in accordance with the national rules referred to in paragraph 5.
+  action: notify the relevant market-surveillance authority and national data-protection authority of each covered use in accordance with applicable national rules
+  subject_ref: law_enforcement_authority
+  subject_category: public_authority
+  kind: obligation
+  dependencies:
+  - dependency_ref: national rules referred to in Article 5(5) of this Regulation
+    resolution: national_or_factual
+    detail: National law supplies the detailed notification rules.
+- norm_id: AIA-NORM-A005-P4-NOTIFICATION-CONTENT
+  source: A005-P030
+  quote: The notification shall, as a minimum, contain the information specified under paragraph 6
+  action: include at least the information specified in Article 5(6) in each use notification
+  subject_ref: law_enforcement_authority
+  subject_category: public_authority
+  kind: obligation
+  dependencies:
+  - dependency_ref: Article 5(6) of this Regulation
+    resolution: unresolved
+    detail: Article 5(6) supplies the minimum notification information and has not yet been semantically reviewed.
+- norm_id: AIA-NORM-A005-P4-EXCLUDE-SENSITIVE-DATA
+  source: A005-P030
+  quote: shall not include sensitive operational data.
+  action: exclude sensitive operational data from each use notification
+  subject_ref: law_enforcement_authority
+  subject_category: public_authority
+  kind: prohibition
+- norm_id: AIA-NORM-A005-P5-AUTHORISE-USE
+  source: A005-P031
+  quote: A Member State may decide to provide for the possibility to fully or partially authorise the use of ‘ real-time ’ remote biometric identification systems in publicly accessible spaces for the purposes of law enforcement within the limits and under the conditions listed in paragraph 1, first subparagraph, point (h), and paragraphs 2 and 3.
+  action: provide for full or partial authorisation of covered real-time remote biometric identification use within the limits and conditions of Article 5(1)(h), (2), and (3)
+  subject_ref: member_state
+  subject_category: member_state
+  kind: power
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for Member States, although their national rules determine whether covered use is permitted.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A005-P5-LAY-DOWN-RULES
+  source: A005-P031
+  quote: Member States concerned shall lay down in their national law the necessary detailed rules for the request, issuance and exercise of, as well as supervision and reporting relating to, the authorisations referred to in paragraph 3.
+  action: lay down national rules for the request, issuance, exercise, supervision, and reporting of Article 5(3) authorisations
+  subject_ref: member_state
+  subject_category: member_state
+  kind: obligation
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for Member States, although their national rules govern covered use.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A005-P5-SPECIFY-OBJECTIVES
+  source: A005-P031
+  quote: Those rules shall also specify in respect of which of the objectives listed in paragraph 1, first subparagraph, point (h), including which of the criminal offences referred to in point (h)(iii) thereof, the competent authorities may be authorised to use those systems for the purposes of law enforcement.
+  action: specify in national rules the objectives and qualifying criminal offences for which competent authorities may receive authorisation
+  subject_ref: member_state
+  subject_category: member_state
+  kind: obligation
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for Member States, although the specified objectives constrain covered use.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A005-P5-NOTIFY-COMMISSION
+  source: A005-P031
+  quote: Member States shall notify those rules to the Commission at the latest 30 days following the adoption thereof.
+  action: notify the Commission of the national rules no later than 30 days after their adoption
+  subject_ref: member_state
+  subject_category: member_state
+  kind: obligation
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for Member States.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A005-P5-MORE-RESTRICTIVE-LAWS
+  source: A005-P031
+  quote: Member States may introduce, in accordance with Union law, more restrictive laws on the use of remote biometric identification systems.
+  action: introduce more restrictive laws on remote biometric identification use in accordance with Union law
+  subject_ref: member_state
+  subject_category: member_state
+  kind: power
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for Member States, although stricter national law can constrain covered use.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A005-P6-SUBMIT-ANNUAL-REPORTS
+  source: A005-P032
+  quote: National market surveillance authorities and the national data protection authorities of Member States that have been notified of the use of ‘ real-time ’ remote biometric identification systems in publicly accessible spaces for law enforcement purposes pursuant to paragraph 4 shall submit to the Commission annual reports on such use.
+  action: submit annual reports to the Commission on notified real-time remote biometric identification use
+  subject_ref: national_market_surveillance_and_data_protection_authorities
+  subject_category: public_authority
+  kind: obligation
+  conditions:
+  - the authority has been notified of covered use pursuant to Article 5(4)
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for national supervisory authorities.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A005-P6-PROVIDE-TEMPLATE
+  source: A005-P032
+  quote: the Commission shall provide Member States and national market surveillance and data protection authorities with a template
+  action: provide Member States and national market-surveillance and data-protection authorities with an annual-reporting template
+  subject_ref: commission
+  subject_category: union_institution_or_body
+  kind: obligation
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for the Commission.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A005-P6-TEMPLATE-CONTENT
+  source: A005-P032
+  quote: including information on the number of the decisions taken by competent judicial authorities or an independent administrative authority whose decision is binding upon requests for authorisations in accordance with paragraph 3 and their result.
+  action: include in the reporting template the number and outcomes of decisions on Article 5(3) authorisation requests
+  subject_ref: commission
+  subject_category: union_institution_or_body
+  kind: obligation
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for the Commission.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A005-P7-PUBLISH-ANNUAL-REPORTS
+  source: A005-P033
+  quote: The Commission shall publish annual reports on the use of real-time remote biometric identification systems in publicly accessible spaces for law enforcement purposes, based on aggregated data in Member States on the basis of the annual reports referred to in paragraph 6.
+  action: publish annual reports on covered real-time remote biometric identification use using aggregated Member State data from Article 5(6) reports
+  subject_ref: commission
+  subject_category: union_institution_or_body
+  kind: obligation
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for the Commission.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A005-P7-EXCLUDE-SENSITIVE-DATA
+  source: A005-P033
+  quote: Those annual reports shall not include sensitive operational data of the related law enforcement activities.
+  action: exclude sensitive operational data about related law-enforcement activities from the Commission's annual reports
+  subject_ref: commission
+  subject_category: union_institution_or_body
+  kind: prohibition
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for the Commission.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A005-P8-OTHER-UNION-LAW
+  source: A005-P034
+  quote: This Article shall not affect the prohibitions that apply where an AI practice infringes other Union law.
+  action: preserve prohibitions under other Union law where an AI practice infringes that law
+  subject_ref: ai_practice_subject_to_other_union_law
+  subject_category: other
+  kind: legal_consequence
+  dependencies:
+  - dependency_ref: applicable prohibitions under other Union law
+    resolution: external_recorded
+    detail: The saving clause preserves prohibitions arising under other Union law.
+  product_scope: dependency_only
+  product_scope_reason: This saving clause constrains legal interpretation without creating an independent AI Act product action.
+  implementation_mode: none_required
+  implementation_reason: The preserved external prohibitions are represented as legal dependencies rather than standalone product rules.
+  verification_mode: not_assessed
 - norm_id: AIA-NORM-A011-P1-DRAW
   source: A011-P1
   quote: shall be drawn up before that system is placed on the market or put into service

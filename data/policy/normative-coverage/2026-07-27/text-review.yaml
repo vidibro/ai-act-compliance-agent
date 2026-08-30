@@ -3466,17 +3466,27 @@ segments:
   text: '1. The following AI practices shall be prohibited:
 
     '
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A005-P1-A-MANIPULATIVE-TECHNIQUES
+  - AIA-NORM-A005-P1-B-VULNERABILITY-EXPLOITATION
+  - AIA-NORM-A005-P1-BA-NONCONSENSUAL-INTIMATE-MATERIAL
+  - AIA-NORM-A005-P1-BB-DIRECTIVE-MATERIAL
+  - AIA-NORM-A005-P1-C-SOCIAL-SCORING
+  - AIA-NORM-A005-P1-D-CRIMINAL-RISK-PROFILING
+  - AIA-NORM-A005-P1-E-UNTARGETED-FACIAL-SCRAPING
+  - AIA-NORM-A005-P1-F-WORKPLACE-EDUCATION-EMOTION-INFERENCE
+  - AIA-NORM-A005-P1-G-SENSITIVE-BIOMETRIC-CATEGORISATION
+  - AIA-NORM-A005-P1-H-REAL-TIME-RBI
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A005-P002
   source:
@@ -3493,17 +3503,18 @@ segments:
     \ thereby causing them to take a decision that they would not have otherwise taken in a manner that\
     \ causes or is reasonably likely to cause that person, another person or group of persons significant\
     \ harm;\n"
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A005-P1-A-MANIPULATIVE-TECHNIQUES
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A005-P003
   source:
@@ -3520,17 +3531,18 @@ segments:
     that causes or is reasonably likely to cause that person or another person significant harm;
 
     '
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A005-P1-B-VULNERABILITY-EXPLOITATION
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A005-P004
   source:
@@ -3545,17 +3557,18 @@ segments:
     \ natural person\u2019s intimate parts, or of an identifiable natural person engaged in sexually explicit\
     \ activities, without that person\u2019s freely-given, specific, informed, unambiguous and explicit\
     \ consent for that generation or manipulation;\n"
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A005-P1-BA-NONCONSENSUAL-INTIMATE-MATERIAL
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A005-P005
   source:
@@ -3569,17 +3582,18 @@ segments:
     \ generates or manipulates material or performance within the meaning of Article 2, points (c) and\
     \ (e), of Directive 2011/93/EU, except where a \u2018without right\u2019 defence applies under national\
     \ law;\n"
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A005-P1-BB-DIRECTIVE-MATERIAL
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A005-P006
   source:
@@ -3595,17 +3609,18 @@ segments:
     with the social score leading to either or both of the following:
 
     '
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A005-P1-C-SOCIAL-SCORING
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A005-P007
   source:
@@ -3620,17 +3635,18 @@ segments:
     generated or collected;
 
     '
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A005-P1-C-SOCIAL-SCORING
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A005-P008
   source:
@@ -3644,17 +3660,18 @@ segments:
     of persons that is unjustified or disproportionate to their social behaviour or its gravity;
 
     '
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A005-P1-C-SOCIAL-SCORING
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A005-P009
   source:
@@ -3672,17 +3689,18 @@ segments:
     which is already based on objective and verifiable facts directly linked to a criminal activity;
 
     '
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A005-P1-D-CRIMINAL-RISK-PROFILING
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A005-P010
   source:
@@ -3697,17 +3715,18 @@ segments:
     of facial images from the internet or CCTV footage;
 
     '
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A005-P1-E-UNTARGETED-FACIAL-SCRAPING
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A005-P011
   source:
@@ -3723,17 +3742,18 @@ segments:
     for medical or safety reasons;
 
     '
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A005-P1-F-WORKPLACE-EDUCATION-EMOTION-INFERENCE
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A005-P012
   source:
@@ -3751,17 +3771,18 @@ segments:
     of biometric data in the area of law enforcement;
 
     '
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A005-P1-G-SENSITIVE-BIOMETRIC-CATEGORISATION
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A005-P013
   source:
@@ -3774,17 +3795,18 @@ segments:
   text: "        (h) the use of \u2018real-time\u2019 remote biometric identification systems in publicly\
     \ accessible spaces for the purposes of law enforcement, unless and in so far as such use is strictly\
     \ necessary for one of the following objectives:\n"
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A005-P1-H-REAL-TIME-RBI
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A005-P014
   source:
@@ -3798,17 +3820,18 @@ segments:
     beings or sexual exploitation of human beings, as well as the search for missing persons;
 
     '
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A005-P1-H-REAL-TIME-RBI
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A005-P015
   source:
@@ -3823,17 +3846,18 @@ segments:
     a terrorist attack;
 
     '
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A005-P1-H-REAL-TIME-RBI
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A005-P016
   source:
@@ -3849,17 +3873,18 @@ segments:
     by a custodial sentence or a detention order for a maximum period of at least four years.
 
     '
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A005-P1-H-REAL-TIME-RBI
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A005-P017
   source:
@@ -3873,17 +3898,18 @@ segments:
     2016/679 for the processing of biometric data for purposes other than law enforcement.
 
     '
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A005-P1-H-GDPR-SAVING
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A005-P018
   source:
@@ -3896,17 +3922,21 @@ segments:
   text: '1a. For the purposes of paragraph 1, first subparagraph, points (ba) and (bb):
 
     '
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A005-P1-BA-NONCONSENSUAL-INTIMATE-MATERIAL
+  - AIA-NORM-A005-P1-BB-DIRECTIVE-MATERIAL
+  - AIA-NORM-A005-P1A-MARKET-SERVICE-SCOPE
+  - AIA-NORM-A005-P1A-DEPLOYER-USE-SCOPE
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A005-P019
   source:
@@ -3921,17 +3951,20 @@ segments:
     or (bb) is only prohibited where:
 
     '
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A005-P1-BA-NONCONSENSUAL-INTIMATE-MATERIAL
+  - AIA-NORM-A005-P1-BB-DIRECTIVE-MATERIAL
+  - AIA-NORM-A005-P1A-MARKET-SERVICE-SCOPE
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A005-P020
   source:
@@ -3945,17 +3978,20 @@ segments:
     or
 
     '
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A005-P1-BA-NONCONSENSUAL-INTIMATE-MATERIAL
+  - AIA-NORM-A005-P1-BB-DIRECTIVE-MATERIAL
+  - AIA-NORM-A005-P1A-MARKET-SERVICE-SCOPE
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A005-P021
   source:
@@ -3970,17 +4006,20 @@ segments:
     \ without requiring significant technical modification, and the system does not have reasonable and\
     \ adequate technical safety measures and other safeguards to reliably prevent that generation or manipulation,\
     \ taking into account reasonably foreseeable misuse, and to correct observed or reported misuse;\n"
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A005-P1-BA-NONCONSENSUAL-INTIMATE-MATERIAL
+  - AIA-NORM-A005-P1-BB-DIRECTIVE-MATERIAL
+  - AIA-NORM-A005-P1A-MARKET-SERVICE-SCOPE
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A005-P022
   source:
@@ -3995,17 +4034,20 @@ segments:
     deployer uses the system for the purpose of generating or manipulating such material or performance.
 
     '
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A005-P1-BA-NONCONSENSUAL-INTIMATE-MATERIAL
+  - AIA-NORM-A005-P1-BB-DIRECTIVE-MATERIAL
+  - AIA-NORM-A005-P1A-DEPLOYER-USE-SCOPE
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A005-P023
   source:
@@ -4020,17 +4062,19 @@ segments:
     nature of any depicted sexually explicit activities shall not constitute manipulation.
 
     '
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A005-P1-BA-NONCONSENSUAL-INTIMATE-MATERIAL
+  - AIA-NORM-A005-P1B-NON-MANIPULATION
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A005-P024
   source:
@@ -4045,17 +4089,19 @@ segments:
     \ first subparagraph, point (h), shall be deployed for the purposes set out in that point only to\
     \ confirm the identity of the specifically targeted individual, and it shall take into account the\
     \ following elements:\n"
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A005-P2-CONFIRM-TARGETED-IDENTITY
+  - AIA-NORM-A005-P2-CONSIDER-IMPACTS
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A005-P025
   source:
@@ -4069,17 +4115,18 @@ segments:
     probability and scale of the harm that would be caused if the system were not used;
 
     '
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A005-P2-CONSIDER-IMPACTS
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A005-P026
   source:
@@ -4093,17 +4140,18 @@ segments:
     concerned, in particular the seriousness, probability and scale of those consequences.
 
     '
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A005-P2-CONSIDER-IMPACTS
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A005-P027
   source:
@@ -4124,17 +4172,20 @@ segments:
     \ according to Article 49. However, in duly justified cases of urgency, the use of such systems may\
     \ be commenced without the registration in the EU database, provided that such registration is completed\
     \ without undue delay.\n"
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A005-P2-NATIONAL-SAFEGUARDS
+  - AIA-NORM-A005-P2-COMPLETE-FRIA
+  - AIA-NORM-A005-P2-REGISTER-SYSTEM
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A005-P028
   source:
@@ -4154,17 +4205,21 @@ segments:
     \ requested without undue delay, at the latest within 24 hours. If such authorisation is rejected,\
     \ the use shall be stopped with immediate effect and all the data, as well as the results and outputs\
     \ of that use shall be immediately discarded and deleted.\n"
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A005-P3-PRIOR-AUTHORISATION
+  - AIA-NORM-A005-P3-URGENT-USE
+  - AIA-NORM-A005-P3-STOP-ON-REJECTION
+  - AIA-NORM-A005-P3-DELETE-ON-REJECTION
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A005-P029
   source:
@@ -4184,17 +4239,20 @@ segments:
     \ referred to in paragraph 2. No decision that produces an adverse legal effect on a person may be\
     \ taken based solely on the output of the \u2018 real-time \u2019 remote biometric identification\
     \ system.\n"
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A005-P3-RESTRICT-AUTHORISATION
+  - AIA-NORM-A005-P3-CONSIDER-P2-ELEMENTS
+  - AIA-NORM-A005-P3-NO-SOLE-OUTPUT-ADVERSE-DECISION
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A005-P030
   source:
@@ -4209,17 +4267,20 @@ segments:
     \ market surveillance authority and the national data protection authority in accordance with the\
     \ national rules referred to in paragraph 5. The notification shall, as a minimum, contain the information\
     \ specified under paragraph 6 and shall not include sensitive operational data.\n"
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A005-P4-NOTIFY-AUTHORITIES
+  - AIA-NORM-A005-P4-NOTIFICATION-CONTENT
+  - AIA-NORM-A005-P4-EXCLUDE-SENSITIVE-DATA
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A005-P031
   source:
@@ -4241,17 +4302,22 @@ segments:
     \ shall notify those rules to the Commission at the latest 30 days following the adoption thereof.\
     \ Member States may introduce, in accordance with Union law, more restrictive laws on the use of remote\
     \ biometric identification systems.\n"
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A005-P5-AUTHORISE-USE
+  - AIA-NORM-A005-P5-LAY-DOWN-RULES
+  - AIA-NORM-A005-P5-SPECIFY-OBJECTIVES
+  - AIA-NORM-A005-P5-NOTIFY-COMMISSION
+  - AIA-NORM-A005-P5-MORE-RESTRICTIVE-LAWS
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A005-P032
   source:
@@ -4269,17 +4335,20 @@ segments:
     \ including information on the number of the decisions taken by competent judicial authorities or\
     \ an independent administrative authority whose decision is binding upon requests for authorisations\
     \ in accordance with paragraph 3 and their result.\n"
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A005-P6-SUBMIT-ANNUAL-REPORTS
+  - AIA-NORM-A005-P6-PROVIDE-TEMPLATE
+  - AIA-NORM-A005-P6-TEMPLATE-CONTENT
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A005-P033
   source:
@@ -4295,17 +4364,19 @@ segments:
     include sensitive operational data of the related law enforcement activities.
 
     '
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A005-P7-PUBLISH-ANNUAL-REPORTS
+  - AIA-NORM-A005-P7-EXCLUDE-SENSITIVE-DATA
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A005-P034
   source:
@@ -4319,17 +4390,18 @@ segments:
     Union law.
 
     '
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A005-P8-OTHER-UNION-LAW
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A006-HEAD
   source:
