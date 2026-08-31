@@ -1,42 +1,11 @@
 documents:
 - kind: article
   number: '60'
+  segmentation: paragraphs
+  paragraph_disposition: normative
+  paragraph_reason: ''
+  verified_by: codex
   divisions:
   - label: HEAD
     marker: null
     disposition: structural
-  - label: P1
-    marker: '1. '
-    disposition: needs_review
-    reason: Not yet semantically extracted; retained as explicit review debt.
-  - label: P2
-    marker: '2. '
-    disposition: needs_review
-    reason: Not yet semantically extracted; retained as explicit review debt.
-  - label: P3
-    marker: '3. '
-    disposition: context_only
-    reason: Saving clause preserves other law but creates no independent product-facing action.
-  - label: P4
-    marker: '4. '
-    disposition: normative
-  - label: P5
-    marker: '5. '
-    disposition: needs_review
-    reason: Not yet semantically extracted; retained as explicit review debt.
-  - label: P6
-    marker: '6. '
-    disposition: needs_review
-    reason: Not yet semantically extracted; retained as explicit review debt.
-  - label: P7
-    marker: '7. '
-    disposition: needs_review
-    reason: Not yet semantically extracted; retained as explicit review debt.
-  - label: P8
-    marker: '8. '
-    disposition: needs_review
-    reason: Not yet semantically extracted; retained as explicit review debt.
-  - label: P9
-    marker: '9. '
-    disposition: needs_review
-    reason: Not yet semantically extracted; retained as explicit review debt.

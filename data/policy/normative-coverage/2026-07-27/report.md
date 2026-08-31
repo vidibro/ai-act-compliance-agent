@@ -4,7 +4,7 @@
 
 **Act version:** 2026-07-27
 
-The inventory contains 133 complete source-body partitions, 1429 exact segments, and 871 proposed atomic norms. Every stored article and annex is present. Proposed
+The inventory contains 133 complete source-body partitions, 1442 exact segments, and 891 proposed atomic norms. Every stored article and annex is present. Proposed
 norms have been extracted from 66 documents; the remaining
 work is retained explicitly rather than omitted. The inventory is not consumed by classification,
 rule selection, judging, or reporting.
@@ -72,7 +72,7 @@ rule selection, judging, or reporting.
 - article 58: 5
 - article 59: 13
 - article 6: 17
-- article 60: 4
+- article 60: 24
 - article 7: 4
 - article 75: 8
 - article 8: 4
@@ -623,7 +623,28 @@ rule selection, judging, or reporting.
 - AIA-TEXT-A059-P016: 1
 - AIA-TEXT-A059-P017: 1
 - AIA-TEXT-A059-P018: 1
-- AIA-TEXT-A060-P4: 4
+- AIA-TEXT-A060-P001: 1
+- AIA-TEXT-A060-P002: 1
+- AIA-TEXT-A060-P003: 1
+- AIA-TEXT-A060-P004: 1
+- AIA-TEXT-A060-P005: 1
+- AIA-TEXT-A060-P006: 1
+- AIA-TEXT-A060-P007: 1
+- AIA-TEXT-A060-P008: 1
+- AIA-TEXT-A060-P009: 1
+- AIA-TEXT-A060-P010: 1
+- AIA-TEXT-A060-P011: 1
+- AIA-TEXT-A060-P012: 2
+- AIA-TEXT-A060-P013: 1
+- AIA-TEXT-A060-P014: 1
+- AIA-TEXT-A060-P015: 1
+- AIA-TEXT-A060-P016: 1
+- AIA-TEXT-A060-P017: 1
+- AIA-TEXT-A060-P018: 2
+- AIA-TEXT-A060-P019: 1
+- AIA-TEXT-A060-P020: 1
+- AIA-TEXT-A060-P021: 1
+- AIA-TEXT-A060-P022: 1
 - AIA-TEXT-A075-P1: 1
 - AIA-TEXT-A075-P1E: 7
 - AIA-TEXT-A113-A: 2
@@ -666,19 +687,19 @@ rule selection, judging, or reporting.
 - AIA-TEXT-ANNEX-VIII-C: 1
 
 - Exact source characters partitioned: 394667
-- Documents containing explicit review debt: 69
-- Characters displayed by the extraction pass: 239726
-- Independently approved characters: 204380
-- Characters deliberately left as review debt: 154941
-- Normative segments supporting multiple propositions: 211
-- Semantic candidates a shall-token pass missed: 374
-- Shall-token candidate recall: 57.1%
-- In-scope semantic candidates absent from existing implementation: 139
-- Detection-channel counts: cross_reference_structure=339, deeming_or_consequence=140, existing_implementation=363, other_modal=89, semantic_legal_effect=871, shall_token=497
-- Mapping shapes, by norm: one-to-one=17, many-to-one=331, one-to-many=0, many-to-many=15, unmapped=508
-- Implementation debt candidates: 127
+- Documents containing explicit review debt: 68
+- Characters displayed by the extraction pass: 242941
+- Independently approved characters: 212442
+- Characters deliberately left as review debt: 151726
+- Normative segments supporting multiple propositions: 222
+- Semantic candidates a shall-token pass missed: 384
+- Shall-token candidate recall: 56.9%
+- In-scope semantic candidates absent from existing implementation: 153
+- Detection-channel counts: cross_reference_structure=340, deeming_or_consequence=143, existing_implementation=363, other_modal=93, semantic_legal_effect=891, shall_token=507
+- Mapping shapes, by norm: one-to-one=17, many-to-one=331, one-to-many=0, many-to-many=15, unmapped=528
+- Implementation debt candidates: 141
 - Interpretive links to non-binding guidance: 1
-- Review records with measured elapsed time: 0/2301
+- Review records with measured elapsed time: 0/2334
 
 ## Findings
 
@@ -698,4 +719,4 @@ rule selection, judging, or reporting.
 
 ## Review boundary
 
-Segment reviews covering 204380 source characters are independently approved. Approval applies to source coverage and segment dispositions; it does not by itself approve linked norm records. Remaining records are proposed findings or explicit `needs_review` debt. This report therefore does not claim legal completeness for the corpus.
+Segment reviews covering 212442 source characters are independently approved. Approval applies to source coverage and segment dispositions; it does not by itself approve linked norm records. Remaining records are proposed findings or explicit `needs_review` debt. This report therefore does not claim legal completeness for the corpus.

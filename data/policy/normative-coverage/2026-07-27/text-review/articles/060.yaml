@@ -18,44 +18,95 @@ segments:
   disposition_reason: ''
   norm_ids: []
   review:
-    status: proposed
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: codex
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
-- segment_id: AIA-TEXT-A060-P1
+- segment_id: AIA-TEXT-A060-P001
   source:
     kind: article
     document: '60'
     act_version_date: '2026-07-27'
   start: 101
-  end: 970
-  sha256: 2f696c58cda1a17899b416fc7379a879bdb437cd1de63854e567a40c72358d2e
-  text: "1. Testing of high-risk AI systems in real world conditions outside AI regulatory sandboxes may\
-    \ be conducted by providers or prospective providers of high-risk AI systems listed in Annex III or\
-    \ covered by Union harmonisation legislation listed in Section A of Annex I, in accordance with this\
-    \ Article and the real-world testing plan referred to in this Article, without prejudice to the prohibitions\
-    \ under Article 5.\n    The Commission shall, by means of implementing acts, specify the detailed\
-    \ elements of the real-world testing plan. Those implementing acts shall be adopted in accordance\
-    \ with the examination procedure referred to in Article 98(2).\n    This paragraph shall be without\
-    \ prejudice to Union or national law on the testing in real world conditions of high-risk AI systems\
-    \ related to products covered by Union harmonisation legislation listed in Annex I.\n"
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  end: 518
+  sha256: 66a7f96634c14ad59f2f1ffea056fecea66e8c7d6cb49ea2148d8ffbb8aa47bd
+  text: '1. Testing of high-risk AI systems in real world conditions outside AI regulatory sandboxes may
+    be conducted by providers or prospective providers of high-risk AI systems listed in Annex III or
+    covered by Union harmonisation legislation listed in Section A of Annex I, in accordance with this
+    Article and the real-world testing plan referred to in this Article, without prejudice to the prohibitions
+    under Article 5.
+
+    '
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A060-P1-REAL-WORLD-TESTING-PERMISSION
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: codex
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
-- segment_id: AIA-TEXT-A060-P2
+- segment_id: AIA-TEXT-A060-P002
+  source:
+    kind: article
+    document: '60'
+    act_version_date: '2026-07-27'
+  start: 518
+  end: 753
+  sha256: 16e53d307e8dc521189b7ec54106e1bdfe9ff5f252b50dda15044f451a6d8287
+  text: '    The Commission shall, by means of implementing acts, specify the detailed elements of the
+    real-world testing plan. Those implementing acts shall be adopted in accordance with the examination
+    procedure referred to in Article 98(2).
+
+    '
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A060-P1-COMMISSION-PLAN-ACTS
+  review:
+    status: approved
+    extracted_by: semantic-legal-effect-pass
+    verified_by: codex
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- segment_id: AIA-TEXT-A060-P003
+  source:
+    kind: article
+    document: '60'
+    act_version_date: '2026-07-27'
+  start: 753
+  end: 970
+  sha256: f24c519ed49b7cea613d5a135917dde4c83478dc74382325da4ef05a5fad6006
+  text: '    This paragraph shall be without prejudice to Union or national law on the testing in real
+    world conditions of high-risk AI systems related to products covered by Union harmonisation legislation
+    listed in Annex I.
+
+    '
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A060-P1-PRESERVE-PRODUCT-TESTING-LAW
+  review:
+    status: approved
+    extracted_by: semantic-legal-effect-pass
+    verified_by: codex
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- segment_id: AIA-TEXT-A060-P004
   source:
     kind: article
     document: '60'
@@ -69,19 +120,20 @@ segments:
     AI system on their own or in partnership with one or more deployers or prospective deployers.
 
     '
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A060-P2-PREMARKET-TESTING-PERMISSION
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: codex
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
-- segment_id: AIA-TEXT-A060-P3
+- segment_id: AIA-TEXT-A060-P005
   source:
     kind: article
     document: '60'
@@ -93,89 +145,359 @@ segments:
     prejudice to any ethical review that is required by Union or national law.
 
     '
-  disposition: context_only
-  disposition_reason: Saving clause preserves other law but creates no independent product-facing action.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A060-P3-PRESERVE-ETHICAL-REVIEW
   review:
-    status: proposed
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: codex
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
-- segment_id: AIA-TEXT-A060-P4
+- segment_id: AIA-TEXT-A060-P006
   source:
     kind: article
     document: '60'
     act_version_date: '2026-07-27'
   start: 1538
-  end: 6109
-  sha256: 56992cc4a38a1a6f66fb42640fe413343c7a825e04842e9f9b8f3a805acde121
-  text: "4. Providers or prospective providers may conduct the testing in real world conditions only where\
-    \ all of the following conditions are met:\n        (a) the provider or prospective provider has drawn\
-    \ up a real-world testing plan and submitted it to the market surveillance authority in the Member\
-    \ State where the testing in real world conditions is to be conducted;\n        (b) the market surveillance\
-    \ authority in the Member State where the testing in real world conditions is to be conducted has\
-    \ approved the testing in real world conditions and the real-world testing plan; where the market\
-    \ surveillance authority has not provided an answer within 30 days, the testing in real world conditions\
-    \ and the real-world testing plan shall be understood to have been approved; where national law does\
-    \ not provide for a tacit approval, the testing in real world conditions shall remain subject to an\
-    \ authorisation;\n        (c) the provider or prospective provider, with the exception of providers\
-    \ or prospective providers of high-risk AI systems referred to in points 1, 6 and 7 of Annex III in\
-    \ the areas of law enforcement, migration, asylum and border control management, and high-risk AI\
-    \ systems referred to in point 2 of Annex III has registered the testing in real world conditions\
-    \ in accordance with Article 71(4) with a Union-wide unique single identification number and with\
-    \ the information specified in Annex IX; the provider or prospective provider of high-risk AI systems\
-    \ referred to in points 1, 6 and 7 of Annex III in the areas of law enforcement, migration, asylum\
-    \ and border control management, has registered the testing in real-world conditions in the secure\
-    \ non-public section of the EU database according to Article 49(4), point (d), with a Union-wide unique\
-    \ single identification number and with the information specified therein; the provider or prospective\
-    \ provider of high-risk AI systems referred to in point 2 of Annex III has registered the testing\
-    \ in real-world conditions in accordance with Article 49(5);\n        (d) the provider or prospective\
-    \ provider conducting the testing in real world conditions is established in the Union or has appointed\
-    \ a legal representative who is established in the Union;\n        (e) data collected and processed\
-    \ for the purpose of the testing in real world conditions shall be transferred to third countries\
-    \ only provided that appropriate and applicable safeguards under Union law are implemented;\n    \
-    \    (f) the testing in real world conditions does not last longer than necessary to achieve its objectives\
-    \ and in any case not longer than six months, which may be extended for an additional period of six\
-    \ months, subject to prior notification by the provider or prospective provider to the market surveillance\
-    \ authority, accompanied by an explanation of the need for such an extension;\n        (g) the subjects\
-    \ of the testing in real world conditions who are persons belonging to vulnerable groups due to their\
-    \ age or disability, are appropriately protected;\n        (h) where a provider or prospective provider\
-    \ organises the testing in real world conditions in cooperation with one or more deployers or prospective\
-    \ deployers, the latter have been informed of all aspects of the testing that are relevant to their\
-    \ decision to participate, and given the relevant instructions for use of the AI system referred to\
-    \ in Article 13; the provider or prospective provider and the deployer or prospective deployer shall\
-    \ conclude an agreement specifying their roles and responsibilities with a view to ensuring compliance\
-    \ with the provisions for testing in real world conditions under this Regulation and under other applicable\
-    \ Union and national law;\n        (i) the subjects of the testing in real world conditions have given\
-    \ informed consent in accordance with Article 61, or in the case of law enforcement, where the seeking\
-    \ of informed consent would prevent the AI system from being tested, the testing itself and the outcome\
-    \ of the testing in the real world conditions shall not have any negative effect on the subjects,\
-    \ and their personal data shall be deleted after the test is performed;\n        (j) the testing in\
-    \ real world conditions is effectively overseen by the provider or prospective provider, as well as\
-    \ by deployers or prospective deployers through persons who are suitably qualified in the relevant\
-    \ field and have the necessary capacity, training and authority to perform their tasks;\n        (k)\
-    \ the predictions, recommendations or decisions of the AI system can be effectively reversed and disregarded.\n"
+  end: 1677
+  sha256: f0cb68d72fa51364c43781d14a86fbdb8d8d68a1d0331ae2b5d5beaf2c6a78ae
+  text: '4. Providers or prospective providers may conduct the testing in real world conditions only where
+    all of the following conditions are met:
+
+    '
   disposition: normative
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A060-P4-PERMISSION
-  - AIA-NORM-A060-P4-TACIT
-  - AIA-NORM-A060-P4-EXTEND
-  - AIA-NORM-A060-P4-AGREEMENT
   review:
-    status: proposed
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: codex
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
-- segment_id: AIA-TEXT-A060-P5
+- segment_id: AIA-TEXT-A060-P007
+  source:
+    kind: article
+    document: '60'
+    act_version_date: '2026-07-27'
+  start: 1677
+  end: 1902
+  sha256: c0c0f6241fffe3cede25fa6bea20c9c27e1ea92a4df9ba24f052272603739873
+  text: '        (a) the provider or prospective provider has drawn up a real-world testing plan and submitted
+    it to the market surveillance authority in the Member State where the testing in real world conditions
+    is to be conducted;
+
+    '
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A060-P4-PERMISSION
+  - AIA-NORM-A060-P4-A-SUBMIT-TESTING-PLAN
+  review:
+    status: approved
+    extracted_by: semantic-legal-effect-pass
+    verified_by: codex
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- segment_id: AIA-TEXT-A060-P008
+  source:
+    kind: article
+    document: '60'
+    act_version_date: '2026-07-27'
+  start: 1902
+  end: 2445
+  sha256: 76d3df09ef9f4815e886d3ca6dc15b86af6c295eb024db38ac33215b629081ea
+  text: '        (b) the market surveillance authority in the Member State where the testing in real world
+    conditions is to be conducted has approved the testing in real world conditions and the real-world
+    testing plan; where the market surveillance authority has not provided an answer within 30 days, the
+    testing in real world conditions and the real-world testing plan shall be understood to have been
+    approved; where national law does not provide for a tacit approval, the testing in real world conditions
+    shall remain subject to an authorisation;
+
+    '
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A060-P4-PERMISSION
+  - AIA-NORM-A060-P4-B-APPROVAL-AND-TACIT-EFFECT
+  review:
+    status: approved
+    extracted_by: semantic-legal-effect-pass
+    verified_by: codex
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- segment_id: AIA-TEXT-A060-P009
+  source:
+    kind: article
+    document: '60'
+    act_version_date: '2026-07-27'
+  start: 2445
+  end: 3565
+  sha256: c918125cccc7a634d489f946b62400270e48028f392fdfdf6fd03813c00682e3
+  text: '        (c) the provider or prospective provider, with the exception of providers or prospective
+    providers of high-risk AI systems referred to in points 1, 6 and 7 of Annex III in the areas of law
+    enforcement, migration, asylum and border control management, and high-risk AI systems referred to
+    in point 2 of Annex III has registered the testing in real world conditions in accordance with Article
+    71(4) with a Union-wide unique single identification number and with the information specified in
+    Annex IX; the provider or prospective provider of high-risk AI systems referred to in points 1, 6
+    and 7 of Annex III in the areas of law enforcement, migration, asylum and border control management,
+    has registered the testing in real-world conditions in the secure non-public section of the EU database
+    according to Article 49(4), point (d), with a Union-wide unique single identification number and with
+    the information specified therein; the provider or prospective provider of high-risk AI systems referred
+    to in point 2 of Annex III has registered the testing in real-world conditions in accordance with
+    Article 49(5);
+
+    '
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A060-P4-PERMISSION
+  - AIA-NORM-A060-P4-C-REGISTER-TESTING
+  review:
+    status: approved
+    extracted_by: semantic-legal-effect-pass
+    verified_by: codex
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- segment_id: AIA-TEXT-A060-P010
+  source:
+    kind: article
+    document: '60'
+    act_version_date: '2026-07-27'
+  start: 3565
+  end: 3763
+  sha256: 72fcbee92cf1dae15461c01d55b1f175ccd13d7256d60940756130ee213cbe48
+  text: '        (d) the provider or prospective provider conducting the testing in real world conditions
+    is established in the Union or has appointed a legal representative who is established in the Union;
+
+    '
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A060-P4-PERMISSION
+  - AIA-NORM-A060-P4-D-UNION-ESTABLISHMENT
+  review:
+    status: approved
+    extracted_by: semantic-legal-effect-pass
+    verified_by: codex
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- segment_id: AIA-TEXT-A060-P011
+  source:
+    kind: article
+    document: '60'
+    act_version_date: '2026-07-27'
+  start: 3763
+  end: 3990
+  sha256: 58ce75aa888864b436fbf4bf3497e44ba163084f5dbe2bf88b0627c1d727fd70
+  text: '        (e) data collected and processed for the purpose of the testing in real world conditions
+    shall be transferred to third countries only provided that appropriate and applicable safeguards under
+    Union law are implemented;
+
+    '
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A060-P4-PERMISSION
+  - AIA-NORM-A060-P4-E-TRANSFER-SAFEGUARDS
+  review:
+    status: approved
+    extracted_by: semantic-legal-effect-pass
+    verified_by: codex
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- segment_id: AIA-TEXT-A060-P012
+  source:
+    kind: article
+    document: '60'
+    act_version_date: '2026-07-27'
+  start: 3990
+  end: 4380
+  sha256: 6113c442b39e3c8f7226709082a1ff82092893c0969ed2d1bf2bc80d7d7afc60
+  text: '        (f) the testing in real world conditions does not last longer than necessary to achieve
+    its objectives and in any case not longer than six months, which may be extended for an additional
+    period of six months, subject to prior notification by the provider or prospective provider to the
+    market surveillance authority, accompanied by an explanation of the need for such an extension;
+
+    '
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A060-P4-PERMISSION
+  - AIA-NORM-A060-P4-F-DURATION-LIMIT
+  - AIA-NORM-A060-P4-EXTEND
+  review:
+    status: approved
+    extracted_by: semantic-legal-effect-pass
+    verified_by: codex
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- segment_id: AIA-TEXT-A060-P013
+  source:
+    kind: article
+    document: '60'
+    act_version_date: '2026-07-27'
+  start: 4380
+  end: 4553
+  sha256: 6407c704d76a3a1cbed327d3355dd5e9d0f663086a8e25a4c54ddf8ed4497890
+  text: '        (g) the subjects of the testing in real world conditions who are persons belonging to
+    vulnerable groups due to their age or disability, are appropriately protected;
+
+    '
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A060-P4-PERMISSION
+  - AIA-NORM-A060-P4-G-PROTECT-VULNERABLE-SUBJECTS
+  review:
+    status: approved
+    extracted_by: semantic-legal-effect-pass
+    verified_by: codex
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- segment_id: AIA-TEXT-A060-P014
+  source:
+    kind: article
+    document: '60'
+    act_version_date: '2026-07-27'
+  start: 4553
+  end: 5236
+  sha256: 3c41c2f91f22774e28d22ccf0ea07136c4e00b03d4f68cffcc105931bad9e2fb
+  text: '        (h) where a provider or prospective provider organises the testing in real world conditions
+    in cooperation with one or more deployers or prospective deployers, the latter have been informed
+    of all aspects of the testing that are relevant to their decision to participate, and given the relevant
+    instructions for use of the AI system referred to in Article 13; the provider or prospective provider
+    and the deployer or prospective deployer shall conclude an agreement specifying their roles and responsibilities
+    with a view to ensuring compliance with the provisions for testing in real world conditions under
+    this Regulation and under other applicable Union and national law;
+
+    '
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A060-P4-PERMISSION
+  - AIA-NORM-A060-P4-H-INFORM-AND-AGREE-ROLES
+  review:
+    status: approved
+    extracted_by: semantic-legal-effect-pass
+    verified_by: codex
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- segment_id: AIA-TEXT-A060-P015
+  source:
+    kind: article
+    document: '60'
+    act_version_date: '2026-07-27'
+  start: 5236
+  end: 5681
+  sha256: effb80e1c675eb17774c1e285bfdf8ca99b4a850658277b8040134509e1689a9
+  text: '        (i) the subjects of the testing in real world conditions have given informed consent
+    in accordance with Article 61, or in the case of law enforcement, where the seeking of informed consent
+    would prevent the AI system from being tested, the testing itself and the outcome of the testing in
+    the real world conditions shall not have any negative effect on the subjects, and their personal data
+    shall be deleted after the test is performed;
+
+    '
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A060-P4-PERMISSION
+  - AIA-NORM-A060-P4-I-CONSENT-OR-SAFEGUARDS
+  review:
+    status: approved
+    extracted_by: semantic-legal-effect-pass
+    verified_by: codex
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- segment_id: AIA-TEXT-A060-P016
+  source:
+    kind: article
+    document: '60'
+    act_version_date: '2026-07-27'
+  start: 5681
+  end: 5989
+  sha256: 07bc9197fe8de43fb7a51c833f03318ae4477efb930a05baeec562a23f80e512
+  text: '        (j) the testing in real world conditions is effectively overseen by the provider or prospective
+    provider, as well as by deployers or prospective deployers through persons who are suitably qualified
+    in the relevant field and have the necessary capacity, training and authority to perform their tasks;
+
+    '
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A060-P4-PERMISSION
+  - AIA-NORM-A060-P4-J-QUALIFIED-OVERSIGHT
+  review:
+    status: approved
+    extracted_by: semantic-legal-effect-pass
+    verified_by: codex
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- segment_id: AIA-TEXT-A060-P017
+  source:
+    kind: article
+    document: '60'
+    act_version_date: '2026-07-27'
+  start: 5989
+  end: 6109
+  sha256: d568166566e73805749f690ad8824f7de431384c81bf282186419b6e1a23f841
+  text: '        (k) the predictions, recommendations or decisions of the AI system can be effectively
+    reversed and disregarded.
+
+    '
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A060-P4-PERMISSION
+  - AIA-NORM-A060-P4-K-REVERSIBLE-OUTPUTS
+  review:
+    status: approved
+    extracted_by: semantic-legal-effect-pass
+    verified_by: codex
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- segment_id: AIA-TEXT-A060-P018
   source:
     kind: article
     document: '60'
@@ -190,19 +512,21 @@ segments:
     the activities already carried out.
 
     '
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A060-P5-WITHDRAW-AND-DELETE
+  - AIA-NORM-A060-P5-PRIOR-ACTIVITIES-UNAFFECTED
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: codex
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
-- segment_id: AIA-TEXT-A060-P6
+- segment_id: AIA-TEXT-A060-P019
   source:
     kind: article
     document: '60'
@@ -217,19 +541,20 @@ segments:
     use those powers to ensure the safe development of testing in real world conditions.
 
     '
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A060-P6-CONFER-AND-USE-SURVEILLANCE-POWERS
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: codex
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
-- segment_id: AIA-TEXT-A060-P7
+- segment_id: AIA-TEXT-A060-P020
   source:
     kind: article
     document: '60'
@@ -245,19 +570,20 @@ segments:
     upon such termination of the testing in real world conditions.
 
     '
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A060-P7-INCIDENT-RESPONSE
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: codex
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
-- segment_id: AIA-TEXT-A060-P8
+- segment_id: AIA-TEXT-A060-P021
   source:
     kind: article
     document: '60'
@@ -270,19 +596,20 @@ segments:
     or termination of the testing in real world conditions and of the final outcomes.
 
     '
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A060-P8-NOTIFY-OUTCOMES
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: codex
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
-- segment_id: AIA-TEXT-A060-P9
+- segment_id: AIA-TEXT-A060-P022
   source:
     kind: article
     document: '60'
@@ -294,15 +621,16 @@ segments:
     law for any damage caused in the course of their testing in real world conditions.
 
     '
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A060-P9-TESTING-LIABILITY
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: codex
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null

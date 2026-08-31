@@ -50,7 +50,7 @@ def test_inventory_partitions_the_complete_versioned_corpus(metrics):
     assert set(grouped) == expected
     assert metrics.documents == 133
     assert metrics.documents_with_extracted_norms == 66
-    assert metrics.documents_with_review_debt == 69
+    assert metrics.documents_with_review_debt == 68
     assert metrics.exact_source_characters == 394_667
     assert set(metrics.norms_by_document) == {
         "article 2",
@@ -1590,20 +1590,20 @@ def test_article_twenty_eight_is_complete_institutional_coverage():
 
 
 def test_inventory_cannot_be_misreported_as_independently_approved(metrics):
-    assert metrics.approved_characters == 204_380
-    assert metrics.needs_review_characters == 154_941
+    assert metrics.approved_characters == 212_442
+    assert metrics.needs_review_characters == 151_726
     assert metrics.review_statuses == {
-        "approved": 763,
-        "needs_review": 558,
-        "proposed": 979,
+        "approved": 786,
+        "needs_review": 551,
+        "proposed": 996,
     }
     assert metrics.timed_review_records == 0
-    assert metrics.total_review_records == 2301
+    assert metrics.total_review_records == 2334
 
 
 def test_semantic_pass_finds_propositions_a_shall_scan_misses(metrics):
-    assert metrics.shall_vs_semantic_disagreements == 374
-    assert metrics.shall_token_candidate_recall == pytest.approx(497 / 871)
+    assert metrics.shall_vs_semantic_disagreements == 384
+    assert metrics.shall_token_candidate_recall == pytest.approx(507 / 891)
     assert "AIA-NORM-A011-P1-SIMPLIFY" in metrics.semantic_norms_without_shall_token
     assert "AIA-NORM-A043-P5-AMEND" in metrics.semantic_norms_without_shall_token
     assert "AIA-NORM-A060-P4-PERMISSION" in metrics.semantic_norms_without_shall_token
@@ -1611,13 +1611,13 @@ def test_semantic_pass_finds_propositions_a_shall_scan_misses(metrics):
 
 
 def test_metrics_expose_many_to_many_and_implementation_debt(metrics):
-    assert metrics.normative_segments_with_multiple_norms == 211
+    assert metrics.normative_segments_with_multiple_norms == 222
     assert metrics.mapping_shape.one_norm_to_one_target == 17
     assert metrics.mapping_shape.many_norms_to_one_target == 331
     assert metrics.mapping_shape.one_norm_to_many_targets == 0
     assert metrics.mapping_shape.many_to_many == 15
-    assert metrics.mapping_shape.unmapped == 508
-    assert metrics.semantic_vs_existing_implementation_disagreements == 139
+    assert metrics.mapping_shape.unmapped == 528
+    assert metrics.semantic_vs_existing_implementation_disagreements == 153
     assert metrics.semantic_norms_without_existing_implementation == [
         "AIA-NORM-A002-P1-A-PROVIDER",
         "AIA-NORM-A002-P1-B-DEPLOYER",
@@ -1729,6 +1729,20 @@ def test_metrics_expose_many_to_many_and_implementation_debt(metrics):
         "AIA-NORM-A059-P1-H-KEEP-PROCESSING-LOGS",
         "AIA-NORM-A059-P1-I-DOCUMENT-TRAINING-TESTING-VALIDATION",
         "AIA-NORM-A059-P1-J-PUBLISH-PROJECT-SUMMARY",
+        "AIA-NORM-A060-P1-REAL-WORLD-TESTING-PERMISSION",
+        "AIA-NORM-A060-P2-PREMARKET-TESTING-PERMISSION",
+        "AIA-NORM-A060-P4-A-SUBMIT-TESTING-PLAN",
+        "AIA-NORM-A060-P4-B-APPROVAL-AND-TACIT-EFFECT",
+        "AIA-NORM-A060-P4-C-REGISTER-TESTING",
+        "AIA-NORM-A060-P4-D-UNION-ESTABLISHMENT",
+        "AIA-NORM-A060-P4-E-TRANSFER-SAFEGUARDS",
+        "AIA-NORM-A060-P4-F-DURATION-LIMIT",
+        "AIA-NORM-A060-P4-G-PROTECT-VULNERABLE-SUBJECTS",
+        "AIA-NORM-A060-P4-I-CONSENT-OR-SAFEGUARDS",
+        "AIA-NORM-A060-P4-J-QUALIFIED-OVERSIGHT",
+        "AIA-NORM-A060-P4-K-REVERSIBLE-OUTPUTS",
+        "AIA-NORM-A060-P7-INCIDENT-RESPONSE",
+        "AIA-NORM-A060-P8-NOTIFY-OUTCOMES",
         "AIA-NORM-ANNEX-III-1A-REMOTE-BIOMETRIC-IDENTIFICATION",
         "AIA-NORM-ANNEX-III-1B-BIOMETRIC-CATEGORISATION",
         "AIA-NORM-ANNEX-III-1C-EMOTION-RECOGNITION",
@@ -2696,6 +2710,35 @@ def test_article_fifty_nine_extracts_conditional_sandbox_data_processing():
     assert norms["AIA-NORM-A059-P3-PRESERVE-OTHER-DATA-LAW"].product_scope.value == (
         "no_product_action"
     )
+
+
+def test_article_sixty_extracts_real_world_testing_lifecycle():
+    bundle = load_normative_coverage()
+    segments = [
+        segment
+        for segment in bundle.text_review.segments
+        if segment.source.kind.value == "article" and segment.source.document == "60"
+    ]
+    norms = {
+        norm.norm_id: norm
+        for norm in bundle.norm_inventory.norms
+        if norm.norm_id.startswith("AIA-NORM-A060-")
+    }
+
+    assert len(segments) == 23
+    assert all(segment.review.status.value == "approved" for segment in segments)
+    assert all(segment.review.verified_by == "codex" for segment in segments)
+    assert len(norms) == 24
+    permission = norms["AIA-NORM-A060-P4-PERMISSION"]
+    assert len(permission.qualifier_spans) == 11
+    assert len(permission.mandatory_content) == 11
+    assert sum(norm.implementation_mode.value == "missing" for norm in norms.values()) == 14
+    assert norms["AIA-NORM-A060-P7-INCIDENT-RESPONSE"].mandatory_content == [
+        "Article 73 incident report",
+        "immediate mitigation",
+        "suspension until mitigation or termination",
+        "prompt recall procedure upon termination",
+    ]
 
 
 def test_annex_inventory_keeps_external_actors_and_exact_mandatory_content():
