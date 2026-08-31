@@ -1,0 +1,39 @@
+records:
+- norm_id: AIA-NORM-A062-P1-MEMBER-STATE-SME-SUPPORT
+  source: A062-P001
+  quote: 'Member States shall undertake the following actions:'
+  action: provide every enacted sandbox access awareness communication and standardisation measure for SMEs deployers innovators and relevant authorities
+  subject_ref: member_state
+  subject_category: member_state
+  mandatory_content: [priority sandbox access for eligible Union-established SMEs and start-ups without excluding other eligible SMEs, tailored Regulation awareness and training, advice and query-response communication channels, SME and stakeholder participation in standards development]
+  qualifier_spans: [A062-P002, A062-P003, A062-P004, A062-P005]
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A062-P2-PROPORTIONATE-SME-FEES
+  source: A062-P006
+  quote: The specific interests and needs of the SME providers, including start-ups, shall be taken into account when setting the fees for conformity assessment under Article 43, reducing those fees proportionately to their size, market size and other relevant indicators.
+  action: account for SME provider interests and needs and proportionately reduce Article 43 conformity-assessment fees
+  subject_ref: conformity_assessment_fee_setter
+  subject_category: notified_or_conformity_body
+  mandatory_content: [SME size, market size, other relevant indicators]
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A062-P3-AI-OFFICE-SUPPORT
+  source: A062-P007
+  quote: 'The AI Office shall undertake the following actions:'
+  action: provide every enacted template information awareness and procurement-best-practice measure
+  subject_ref: ai_office
+  subject_category: union_institution_or_body
+  mandatory_content: [Board-requested standardised templates, a maintained easy-to-use Union information platform for all operators, communication campaigns on Regulation obligations, evaluation and promotion of convergent AI public-procurement best practices]
+  qualifier_spans: [A062-P008, A062-P009, A062-P010, A062-P011]
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
