@@ -1,6 +1,8 @@
 act_version_date: '2026-07-27'
 implementation_targets:
+- AIA-ALL-A49-4
 - AIA-AR-A22
+- AIA-AR-A49-2
 - AIA-DI-A24
 - AIA-DP-A26
 - AIA-DP-A26-8
@@ -11,6 +13,7 @@ implementation_targets:
 - AIA-DP-A27
 - AIA-DP-A27-2
 - AIA-DP-A27-3
+- AIA-DP-A49-3
 - AIA-HR-A09
 - AIA-HR-A10
 - AIA-HR-A11
@@ -23,6 +26,7 @@ implementation_targets:
 - AIA-HR-A15
 - AIA-IM-A23
 - AIA-IP-A25-2
+- AIA-NHR-A06-4
 - AIA-PO-A08-2
 - AIA-PO-A16-B
 - AIA-PO-A16-K
@@ -50,6 +54,7 @@ implementation_targets:
 - AIA-PO-A48-2
 - AIA-PO-A48-4
 - AIA-PO-A49
+- AIA-PO-A49-5
 - AIA-PO-A60-4
 - AIA-PO-A75-1E
 - AIA-TR-A50-1
@@ -8564,6 +8569,124 @@ records:
   implementation_mode: missing
   verification_mode: unresolved
   conditions: [other applicable Union law also provides for affixing the CE marking]
+- norm_id: AIA-NORM-A049-P1-PROVIDER-REGISTER
+  source: A049-P001
+  quote: Before placing on the market or putting into service a high-risk AI system listed in Annex III, with the exception of high-risk AI systems referred to in point 2 of Annex III, the provider or, where applicable, the authorised representative shall register themselves and their system in the EU database referred to in Article 71.
+  action: register itself and the Annex III high-risk system in the Article 71 EU database before market placement or putting into service
+  subject_ref: provider
+  subject_category: supported_operator
+  conditions:
+  - the system is high-risk and listed in Annex III other than point 2
+  - registration occurs before placing on the market or putting into service
+  implementation_refs: [AIA-PO-A49]
+  verification_mode: listed_for_confirmation
+- norm_id: AIA-NORM-A049-P1-REPRESENTATIVE-REGISTER
+  source: A049-P001
+  quote: Before placing on the market or putting into service a high-risk AI system listed in Annex III, with the exception of high-risk AI systems referred to in point 2 of Annex III, the provider or, where applicable, the authorised representative shall register themselves and their system in the EU database referred to in Article 71.
+  action: register itself and the Annex III high-risk system in the Article 71 EU database where the registration falls to the representative
+  subject_ref: authorised_representative
+  subject_category: supported_operator
+  conditions:
+  - the system is high-risk and listed in Annex III other than point 2
+  - the representative is applicable for the registration
+  - registration occurs before placing on the market or putting into service
+  implementation_refs: [AIA-AR-A22]
+  verification_mode: listed_for_confirmation
+- norm_id: AIA-NORM-A049-P2-PROVIDER-REGISTER-NON-HIGH-RISK
+  source: A049-P002
+  quote: Before placing on the market or putting into service an AI system for which the provider has concluded that it is not high-risk according to Article 6(3), that provider or, where applicable, the authorised representative shall register themselves and that system in the EU database referred to in Article 71.
+  action: register itself and the system concluded not high-risk under Article 6(3) in the Article 71 EU database
+  subject_ref: provider
+  subject_category: supported_operator
+  conditions:
+  - the provider concluded under Article 6(3) that the system is not high-risk
+  - registration occurs before placing on the market or putting into service
+  implementation_refs: [AIA-NHR-A06-4]
+  implementation_reason: The Article 6(4) rule carries the provider limb of the Article 49(2) registration obligation.
+  verification_mode: listed_for_confirmation
+- norm_id: AIA-NORM-A049-P2-REPRESENTATIVE-REGISTER-NON-HIGH-RISK
+  source: A049-P002
+  quote: Before placing on the market or putting into service an AI system for which the provider has concluded that it is not high-risk according to Article 6(3), that provider or, where applicable, the authorised representative shall register themselves and that system in the EU database referred to in Article 71.
+  action: register itself and the system concluded not high-risk under Article 6(3) in the Article 71 EU database where applicable
+  subject_ref: authorised_representative
+  subject_category: supported_operator
+  conditions:
+  - the provider concluded under Article 6(3) that the system is not high-risk
+  - the representative is applicable for the registration
+  - registration occurs before placing on the market or putting into service
+  implementation_refs: [AIA-AR-A49-2]
+  verification_mode: listed_for_confirmation
+- norm_id: AIA-NORM-A049-P3-DEPLOYER-REGISTER-USE
+  source: A049-P003
+  quote: Before putting into service or using a high-risk AI system listed in Annex III, with the exception of high-risk AI systems listed in point 2 of Annex III, deployers that are public authorities, Union institutions, bodies, offices or agencies or persons acting on their behalf shall register themselves, select the system and register its use in the EU database referred to in Article 71.
+  action: register itself, select the system, and register its use in the Article 71 EU database before service or use
+  subject_ref: public_authority_deployer
+  subject_category: supported_operator
+  conditions:
+  - the deployer is a public authority, Union institution, body, office or agency, or acts on its behalf
+  - the system is high-risk and listed in Annex III other than point 2
+  - registration occurs before putting into service or use
+  implementation_refs: [AIA-DP-A49-3]
+  verification_mode: listed_for_confirmation
+- norm_id: AIA-NORM-A049-P4-SECURE-NON-PUBLIC-SECTION
+  source: A049-P004
+  quote: For high-risk AI systems referred to in points 1, 6 and 7 of Annex III, in the areas of law enforcement, migration, asylum and border control management, the registration referred to in paragraphs 1, 2 and 3 of this Article shall be in a secure non-public section of the EU database referred to in Article 71
+  action: lodge the applicable registration in a secure non-public section of the Article 71 EU database
+  subject_ref: registering_operator
+  subject_category: supported_operator
+  conditions:
+  - the system falls within Annex III point 1, 6 or 7 in law enforcement, migration, asylum, or border-control management
+  implementation_refs: [AIA-ALL-A49-4]
+  verification_mode: listed_for_confirmation
+- norm_id: AIA-NORM-A049-P4-RESTRICTED-INFORMATION
+  source: A049-P004
+  quote: shall include only the following information, as applicable, referred to in
+  action: limit the secure-section registration to the enacted Annex VIII and Annex IX information
+  subject_ref: registering_operator
+  subject_category: supported_operator
+  conditions:
+  - the secure non-public registration rule in Article 49(4) applies
+  mandatory_content:
+  - Annex VIII Section A points 1 to 10, except points 6, 8, and 9
+  - Annex VIII Section B points 1 to 5 and points 8 and 9
+  - Annex VIII Section C points 1 to 3
+  - Annex IX points 1, 2, 3, and 5
+  qualifier_spans: [A049-P005, A049-P006, A049-P007, A049-P008]
+  implementation_refs: [AIA-ALL-A49-4]
+  verification_mode: listed_for_confirmation
+- norm_id: AIA-NORM-A049-P4-COMMISSION-ACCESS
+  source: A049-P009
+  quote: Only the Commission and national authorities referred to in Article 74(8) shall have access to the respective restricted sections of the EU database listed in the first subparagraph of this paragraph.
+  action: access the respective restricted sections of the EU database
+  subject_ref: commission
+  subject_category: union_institution_or_body
+  kind: entitlement
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A049-P4-NATIONAL-AUTHORITY-ACCESS
+  source: A049-P009
+  quote: Only the Commission and national authorities referred to in Article 74(8) shall have access to the respective restricted sections of the EU database listed in the first subparagraph of this paragraph.
+  action: access the respective restricted sections of the EU database
+  subject_ref: article_74_8_national_authority
+  subject_category: public_authority
+  kind: entitlement
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A049-P5-NATIONAL-REGISTRATION
+  source: A049-P010
+  quote: High-risk AI systems referred to in point 2 of Annex III shall be registered at national level.
+  action: register Annex III point 2 high-risk systems at national level
+  subject_ref: provider
+  subject_category: supported_operator
+  conditions: [the high-risk system is referred to in Annex III point 2]
+  implementation_refs: [AIA-PO-A49-5]
+  verification_mode: listed_for_confirmation
 - norm_id: AIA-NORM-A050-P1-DISCLOSE
   source: A050-P1
   quote: Providers shall ensure that AI systems intended to interact directly with natural persons are
