@@ -49,8 +49,8 @@ def test_inventory_partitions_the_complete_versioned_corpus(metrics):
     assert bundle.text_review.corpus_complete is True
     assert set(grouped) == expected
     assert metrics.documents == 133
-    assert metrics.documents_with_extracted_norms == 57
-    assert metrics.documents_with_review_debt == 78
+    assert metrics.documents_with_extracted_norms == 58
+    assert metrics.documents_with_review_debt == 77
     assert metrics.exact_source_characters == 394_667
     assert set(metrics.norms_by_document) == {
         "article 2",
@@ -103,6 +103,7 @@ def test_inventory_partitions_the_complete_versioned_corpus(metrics):
         "article 48",
         "article 49",
         "article 50",
+        "article 51",
         "article 60",
         "article 75",
         "article 113",
@@ -1581,20 +1582,20 @@ def test_article_twenty_eight_is_complete_institutional_coverage():
 
 
 def test_inventory_cannot_be_misreported_as_independently_approved(metrics):
-    assert metrics.approved_characters == 167_435
-    assert metrics.needs_review_characters == 191_244
+    assert metrics.approved_characters == 168_708
+    assert metrics.needs_review_characters == 190_075
     assert metrics.review_statuses == {
-        "approved": 636,
-        "needs_review": 676,
-        "proposed": 860,
+        "approved": 642,
+        "needs_review": 671,
+        "proposed": 864,
     }
     assert metrics.timed_review_records == 0
-    assert metrics.total_review_records == 2173
+    assert metrics.total_review_records == 2178
 
 
 def test_semantic_pass_finds_propositions_a_shall_scan_misses(metrics):
-    assert metrics.shall_vs_semantic_disagreements == 315
-    assert metrics.shall_token_candidate_recall == pytest.approx(428 / 743)
+    assert metrics.shall_vs_semantic_disagreements == 317
+    assert metrics.shall_token_candidate_recall == pytest.approx(431 / 748)
     assert "AIA-NORM-A011-P1-SIMPLIFY" in metrics.semantic_norms_without_shall_token
     assert "AIA-NORM-A043-P5-AMEND" in metrics.semantic_norms_without_shall_token
     assert "AIA-NORM-A060-P4-PERMISSION" in metrics.semantic_norms_without_shall_token
@@ -1602,13 +1603,13 @@ def test_semantic_pass_finds_propositions_a_shall_scan_misses(metrics):
 
 
 def test_metrics_expose_many_to_many_and_implementation_debt(metrics):
-    assert metrics.normative_segments_with_multiple_norms == 169
+    assert metrics.normative_segments_with_multiple_norms == 171
     assert metrics.mapping_shape.one_norm_to_one_target == 14
     assert metrics.mapping_shape.many_norms_to_one_target == 292
     assert metrics.mapping_shape.one_norm_to_many_targets == 0
     assert metrics.mapping_shape.many_to_many == 11
-    assert metrics.mapping_shape.unmapped == 426
-    assert metrics.semantic_vs_existing_implementation_disagreements == 123
+    assert metrics.mapping_shape.unmapped == 431
+    assert metrics.semantic_vs_existing_implementation_disagreements == 126
     assert metrics.semantic_norms_without_existing_implementation == [
         "AIA-NORM-A002-P1-A-PROVIDER",
         "AIA-NORM-A002-P1-B-DEPLOYER",
@@ -1704,6 +1705,9 @@ def test_metrics_expose_many_to_many_and_implementation_debt(metrics):
         "AIA-NORM-A048-P5-OTHER-LAW-COMPLIANCE",
         "AIA-NORM-A050-P3-DATA",
         "AIA-NORM-A050-P5-MANNER",
+        "AIA-NORM-A051-P1-A-HIGH-IMPACT-SYSTEMIC-RISK",
+        "AIA-NORM-A051-P1-B-EQUIVALENT-SYSTEMIC-RISK",
+        "AIA-NORM-A051-P2-COMPUTE-PRESUMPTION",
         "AIA-NORM-ANNEX-III-1A-REMOTE-BIOMETRIC-IDENTIFICATION",
         "AIA-NORM-ANNEX-III-1B-BIOMETRIC-CATEGORISATION",
         "AIA-NORM-ANNEX-III-1C-EMOTION-RECOGNITION",
@@ -1818,6 +1822,9 @@ def test_metrics_expose_many_to_many_and_implementation_debt(metrics):
         "AIA-NORM-A048-P1-GENERAL-CE-PRINCIPLES",
         "AIA-NORM-A048-P5-OTHER-LAW-COMPLIANCE",
         "AIA-NORM-A050-P3-DATA",
+        "AIA-NORM-A051-P1-A-HIGH-IMPACT-SYSTEMIC-RISK",
+        "AIA-NORM-A051-P1-B-EQUIVALENT-SYSTEMIC-RISK",
+        "AIA-NORM-A051-P2-COMPUTE-PRESUMPTION",
         "AIA-NORM-ANNEX-III-1A-REMOTE-BIOMETRIC-IDENTIFICATION",
         "AIA-NORM-ANNEX-III-1B-BIOMETRIC-CATEGORISATION",
         "AIA-NORM-ANNEX-III-1C-EMOTION-RECOGNITION",
@@ -2382,6 +2389,39 @@ def test_article_forty_nine_maps_registration_routes_and_restricted_content():
     access = [norm for norm in norms.values() if norm.kind.value == "entitlement"]
     assert len(access) == 2
     assert all(norm.implementation_mode.value == "none_required" for norm in access)
+
+
+def test_article_fifty_one_extracts_systemic_risk_classification_gates():
+    bundle = load_normative_coverage()
+    segments = [
+        segment
+        for segment in bundle.text_review.segments
+        if segment.source.kind.value == "article" and segment.source.document == "51"
+    ]
+    norms = {
+        norm.norm_id: norm
+        for norm in bundle.norm_inventory.norms
+        if norm.norm_id.startswith("AIA-NORM-A051-")
+    }
+
+    assert len(segments) == 6
+    assert all(segment.review.status.value == "approved" for segment in segments)
+    assert all(segment.review.verified_by == "codex" for segment in segments)
+    assert len(norms) == 5
+    assert len(segments[1].norm_ids) == 2
+    assert len(segments[5].norm_ids) == 2
+    classification = [norm for norm in norms.values() if norm.kind.value == "applicability"]
+    assert len(classification) == 3
+    assert all(norm.implementation_mode.value == "missing" for norm in classification)
+    delegated_acts = [
+        norm for norm in norms.values() if norm.subjects[0].subject_ref == "commission"
+    ]
+    assert len(delegated_acts) == 2
+    assert all(norm.implementation_mode.value == "none_required" for norm in delegated_acts)
+    presumption = norms["AIA-NORM-A051-P2-COMPUTE-PRESUMPTION"]
+    assert presumption.conditions == [
+        "cumulative training computation measured in floating-point operations exceeds 10^25"
+    ]
 
 
 def test_annex_inventory_keeps_external_actors_and_exact_mandatory_content():
