@@ -21781,6 +21781,50 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+- norm_id: AIA-NORM-A032-P1-HARMONISED-STANDARDS-PRESUMPTION
+  act_version_date: '2026-07-27'
+  kind: legal_consequence
+  subjects:
+  - subject_ref: conformity_assessment_body
+    category: notified_or_conformity_body
+  action: presume Article 31 compliance where demonstrated conformity with published harmonised standards
+    covers the applicable requirements
+  norm_text: Where a conformity assessment body demonstrates its conformity with the criteria laid down
+    in the relevant harmonised standards or parts thereof, the references of which have been published
+    in the Official Journal of the European Union, it shall be presumed to comply with the requirements
+    set out in Article 31 in so far as the applicable harmonised standards cover those requirements.
+  detection_channels:
+  - semantic_legal_effect
+  - shall_token
+  - deeming_or_consequence
+  primary_spans:
+  - AIA-TEXT-A032-P001
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions:
+  - the conformity-assessment body demonstrates conformity with the relevant harmonised standards or parts
+    thereof
+  - references to those standards or parts have been published in the Official Journal of the European
+    Union
+  - the standards cover the relevant Article 31 requirements
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_refs: []
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
 - norm_id: AIA-NORM-A043-P3-PROCEDURE
   act_version_date: '2026-07-27'
   kind: obligation
