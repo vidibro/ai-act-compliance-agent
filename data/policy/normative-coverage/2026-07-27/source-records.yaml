@@ -15,6 +15,12 @@ implementation_targets:
 - AIA-DP-A27-3
 - AIA-DP-A49-3
 - AIA-GP-A52-1
+- AIA-GP-A53-1A
+- AIA-GP-A53-1B
+- AIA-GP-A53-1C
+- AIA-GP-A53-1D
+- AIA-GP-A53-3
+- AIA-GP-A53-4
 - AIA-HR-A09
 - AIA-HR-A10
 - AIA-HR-A11
@@ -56,6 +62,7 @@ implementation_targets:
 - AIA-PO-A48-4
 - AIA-PO-A49
 - AIA-PO-A49-5
+- AIA-PO-A53-7
 - AIA-PO-A60-4
 - AIA-PO-A75-1E
 - AIA-TR-A50-1
@@ -9075,6 +9082,202 @@ records:
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_assessed
+- norm_id: AIA-NORM-A053-P1-A-DRAW-KEEP-DOCUMENTATION
+  source: A053-P002
+  quote: draw up and keep up-to-date the technical documentation of the model, including its training and testing process and the results of its evaluation
+  action: draw up and keep current technical documentation covering model training, testing, and evaluation results
+  subject_ref: provider
+  subject_category: supported_operator
+  qualifier_spans: [A053-P001]
+  implementation_refs: [AIA-GP-A53-1A]
+  verification_mode: listed_for_confirmation
+- norm_id: AIA-NORM-A053-P1-A-ANNEX-XI-CONTENT
+  source: A053-P002
+  quote: which shall contain, at a minimum, the information set out in Annex XI
+  action: include at least all Annex XI information in the model technical documentation
+  subject_ref: provider
+  subject_category: supported_operator
+  mandatory_content: [the information set out in Annex XI]
+  implementation_refs: [AIA-GP-A53-1A]
+  verification_mode: listed_for_confirmation
+- norm_id: AIA-NORM-A053-P1-A-PROVIDE-ON-REQUEST
+  source: A053-P002
+  quote: for the purpose of providing it, upon request, to the AI Office and the national competent authorities
+  action: provide the model technical documentation to the AI Office and national competent authorities on request
+  subject_ref: provider
+  subject_category: supported_operator
+  conditions: [the AI Office or a national competent authority requests the documentation]
+  implementation_refs: [AIA-GP-A53-1A]
+  verification_mode: listed_for_confirmation
+- norm_id: AIA-NORM-A053-P1-B-DRAW-KEEP-DOWNSTREAM-DOCUMENTATION
+  source: A053-P003
+  quote: draw up, keep up-to-date and make available information and documentation to providers of AI systems who intend to integrate the general-purpose AI model into their AI systems.
+  action: draw up and keep current information and documentation for intended downstream integrators
+  subject_ref: provider
+  subject_category: supported_operator
+  qualifier_spans: [A053-P001]
+  implementation_refs: [AIA-GP-A53-1B]
+  verification_mode: listed_for_confirmation
+- norm_id: AIA-NORM-A053-P1-B-MAKE-AVAILABLE
+  source: A053-P003
+  quote: draw up, keep up-to-date and make available information and documentation to providers of AI systems who intend to integrate the general-purpose AI model into their AI systems.
+  action: make the information and documentation available to providers intending to integrate the model
+  subject_ref: provider
+  subject_category: supported_operator
+  implementation_refs: [AIA-GP-A53-1B]
+  verification_mode: listed_for_confirmation
+- norm_id: AIA-NORM-A053-P1-B-PROTECT-RIGHTS
+  source: A053-P003
+  quote: Without prejudice to the need to observe and protect intellectual property rights and confidential business information or trade secrets in accordance with Union and national law
+  action: observe and protect intellectual-property rights, confidential business information, and trade secrets when providing downstream documentation
+  subject_ref: provider
+  subject_category: supported_operator
+  implementation_refs: [AIA-GP-A53-1B]
+  verification_mode: listed_for_confirmation
+- norm_id: AIA-NORM-A053-P1-B-ENABLE-DOWNSTREAM-COMPLIANCE
+  source: A053-P004
+  quote: enable providers of AI systems to have a good understanding of the capabilities and limitations of the general-purpose AI model and to comply with their obligations pursuant to this Regulation
+  action: enable downstream providers to understand model capabilities and limitations and comply with the Regulation
+  subject_ref: provider
+  subject_category: supported_operator
+  qualifier_spans: [A053-P003]
+  implementation_refs: [AIA-GP-A53-1B]
+  verification_mode: listed_for_confirmation
+- norm_id: AIA-NORM-A053-P1-B-ANNEX-XII-CONTENT
+  source: A053-P005
+  quote: contain, at a minimum, the elements set out in Annex XII
+  action: include at least all Annex XII elements in the downstream information and documentation
+  subject_ref: provider
+  subject_category: supported_operator
+  qualifier_spans: [A053-P003]
+  mandatory_content: [the elements set out in Annex XII]
+  implementation_refs: [AIA-GP-A53-1B]
+  verification_mode: listed_for_confirmation
+- norm_id: AIA-NORM-A053-P1-C-COPYRIGHT-POLICY
+  source: A053-P006
+  quote: put in place a policy to comply with Union law on copyright and related rights
+  action: put in place a policy for compliance with Union copyright and related-rights law
+  subject_ref: provider
+  subject_category: supported_operator
+  qualifier_spans: [A053-P001]
+  implementation_refs: [AIA-GP-A53-1C]
+  verification_mode: listed_for_confirmation
+- norm_id: AIA-NORM-A053-P1-C-RIGHTS-RESERVATION
+  source: A053-P006
+  quote: identify and comply with, including through state-of-the-art technologies, a reservation of rights expressed pursuant to Article 4(3) of Directive (EU) 2019/790
+  action: identify and comply through state-of-the-art technologies with Article 4(3) rights reservations
+  subject_ref: provider
+  subject_category: supported_operator
+  implementation_refs: [AIA-GP-A53-1C]
+  verification_mode: listed_for_confirmation
+- norm_id: AIA-NORM-A053-P1-D-PUBLIC-TRAINING-SUMMARY
+  source: A053-P007
+  quote: draw up and make publicly available a sufficiently detailed summary about the content used for training of the general-purpose AI model, according to a template provided by the AI Office.
+  action: draw up and publish a sufficiently detailed AI-Office-template summary of model training content
+  subject_ref: provider
+  subject_category: supported_operator
+  qualifier_spans: [A053-P001]
+  implementation_refs: [AIA-GP-A53-1D]
+  verification_mode: listed_for_confirmation
+- norm_id: AIA-NORM-A053-P2-OPEN-SOURCE-EXCEPTION
+  source: A053-P008
+  quote: The obligations set out in paragraph 1, points (a) and (b), shall not apply to providers of AI models that are released under a free and open-source licence that allows for the access, usage, modification, and distribution of the model, and whose parameters, including the weights, the information on the model architecture, and the information on model usage, are made publicly available.
+  action: disapply Article 53(1)(a) and (b) where every enacted free-and-open-source condition is met
+  subject_ref: provider
+  subject_category: supported_operator
+  kind: applicability
+  conditions:
+  - the licence permits access, usage, modification, and distribution
+  - model parameters including weights, architecture information, and usage information are public
+  implementation_refs: [AIA-GP-A53-1A, AIA-GP-A53-1B]
+  implementation_reason: Both rules encode this exception in their activation conditions.
+  verification_mode: listed_for_confirmation
+- norm_id: AIA-NORM-A053-P2-SYSTEMIC-RISK-OVERRIDE
+  source: A053-P008
+  quote: This exception shall not apply to general-purpose AI models with systemic risks.
+  action: restore Article 53(1)(a) and (b) obligations for general-purpose AI models with systemic risk
+  subject_ref: provider
+  subject_category: supported_operator
+  kind: applicability
+  conditions: [the general-purpose AI model presents systemic risk]
+  implementation_refs: [AIA-GP-A53-1A, AIA-GP-A53-1B]
+  implementation_reason: Both rules disapply the open-source exception for systemic-risk models.
+  verification_mode: listed_for_confirmation
+- norm_id: AIA-NORM-A053-P3-COOPERATE
+  source: A053-P009
+  quote: Providers of general-purpose AI models shall cooperate as necessary with the Commission and the national competent authorities in the exercise of their competences and powers pursuant to this Regulation.
+  action: cooperate as necessary with the Commission and national competent authorities exercising regulatory powers
+  subject_ref: provider
+  subject_category: supported_operator
+  implementation_refs: [AIA-GP-A53-3]
+  verification_mode: listed_for_confirmation
+- norm_id: AIA-NORM-A053-P4-RELY-ON-CODES
+  source: A053-P010
+  quote: Providers of general-purpose AI models may rely on codes of practice within the meaning of Article 56 to demonstrate compliance with the obligations set out in paragraph 1 of this Article, until a harmonised standard is published.
+  action: rely on Article 56 codes of practice to demonstrate Article 53(1) compliance until a harmonised standard is published
+  subject_ref: provider
+  subject_category: supported_operator
+  kind: permission
+  product_scope: no_product_action
+  product_scope_reason: Provides an optional compliance route rather than an additional product action.
+  implementation_refs: [AIA-GP-A53-4]
+  implementation_reason: The rule's activation condition recognises this code-of-practice route.
+  verification_mode: listed_for_confirmation
+- norm_id: AIA-NORM-A053-P4-HARMONISED-STANDARD-PRESUMPTION
+  source: A053-P010
+  quote: Compliance with European harmonised standards grants providers the presumption of conformity to the extent that those standards cover those obligations.
+  action: presume conformity to the extent a European harmonised standard covers the Article 53 obligations
+  subject_ref: provider
+  subject_category: supported_operator
+  kind: legal_consequence
+  product_scope: no_product_action
+  product_scope_reason: Establishes an evidentiary consequence rather than an independent action.
+  implementation_refs: [AIA-GP-A53-4]
+  implementation_reason: The rule's activation condition recognises the harmonised-standard route.
+  verification_mode: listed_for_confirmation
+- norm_id: AIA-NORM-A053-P4-ALTERNATIVE-COMPLIANCE
+  source: A053-P010
+  quote: Providers of general-purpose AI models who do not adhere to an approved code of practice or do not comply with a European harmonised standard shall demonstrate alternative adequate means of compliance for assessment by the Commission.
+  action: demonstrate alternative adequate means of compliance for Commission assessment
+  subject_ref: provider
+  subject_category: supported_operator
+  conditions:
+  - the provider neither adheres to an approved code nor complies with a covering harmonised standard
+  implementation_refs: [AIA-GP-A53-4]
+  verification_mode: listed_for_confirmation
+- norm_id: AIA-NORM-A053-P5-DETAIL-METHODOLOGIES
+  source: A053-P011
+  quote: the Commission is empowered to adopt delegated acts in accordance with Article 97 to detail measurement and calculation methodologies with a view to allowing for comparable and verifiable documentation.
+  action: adopt Article 97 delegated acts detailing measurement and calculation methodologies for comparable, verifiable Annex XI documentation
+  subject_ref: commission
+  subject_category: union_institution_or_body
+  kind: power
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A053-P6-AMEND-ANNEXES
+  source: A053-P012
+  quote: The Commission is empowered to adopt delegated acts in accordance with Article 97(2) to amend Annexes XI and XII in light of evolving technological developments.
+  action: adopt Article 97(2) delegated acts amending Annexes XI and XII for technological developments
+  subject_ref: commission
+  subject_category: union_institution_or_body
+  kind: power
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A053-P7-CONFIDENTIAL-TREATMENT
+  source: A053-P013
+  quote: Any information or documentation obtained pursuant to this Article, including trade secrets, shall be treated in accordance with the confidentiality obligations set out in Article 78.
+  action: treat Article 53 information and documentation, including trade secrets, under Article 78 confidentiality obligations
+  subject_ref: downstream_provider
+  subject_category: supported_operator
+  conditions: [the downstream provider obtains information or documentation under Article 53]
+  implementation_refs: [AIA-PO-A53-7]
+  verification_mode: listed_for_confirmation
 - norm_id: AIA-NORM-A060-P4-PERMISSION
   source: A060-P4
   quote: may conduct the testing in real world conditions only where all of the following conditions are
