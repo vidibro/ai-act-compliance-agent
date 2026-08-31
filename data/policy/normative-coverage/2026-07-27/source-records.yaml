@@ -6632,6 +6632,95 @@ records:
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_assessed
+- norm_id: AIA-NORM-A029-P1-SUBMIT-APPLICATION
+  source: A029-P001
+  quote: Conformity assessment bodies shall submit an application for notification to the notifying authority of the Member State in which they are established.
+  action: submit a notification application to the notifying authority of the establishment Member State
+  subject_ref: conformity_assessment_body
+  subject_category: notified_or_conformity_body
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A029-P2-APPLICATION-CONTENT
+  source: A029-P002
+  quote: The application for notification shall be accompanied by a description of the conformity assessment activities, the conformity assessment module or modules and the types of AI systems for which the conformity assessment body claims to be competent, as well as by an accreditation certificate, where one exists, issued by a national accreditation body attesting that the conformity assessment body fulfils the requirements laid down in Article 31.
+  action: accompany the notification application with the required scope description and available qualifying accreditation certificate
+  subject_ref: conformity_assessment_body
+  subject_category: notified_or_conformity_body
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+  mandatory_content:
+  - conformity assessment activities
+  - conformity assessment modules
+  - AI-system types for which competence is claimed
+  - available national accreditation certificate attesting Article 31 compliance
+- norm_id: AIA-NORM-A029-P2-EXISTING-DESIGNATION-DOCUMENTS
+  source: A029-P003
+  quote: Any valid document related to existing designations of the applicant notified body under any other Union harmonisation legislation shall be added.
+  action: add valid documents relating to the applicant's existing designations under other Union harmonisation legislation
+  subject_ref: conformity_assessment_body
+  subject_category: notified_or_conformity_body
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A029-P3-NONACCREDITED-EVIDENCE
+  source: A029-P004
+  quote: Where the conformity assessment body concerned cannot provide an accreditation certificate, it shall provide the notifying authority with all the documentary evidence necessary for the verification, recognition and regular monitoring of its compliance with the requirements laid down in Article 31.
+  action: provide all evidence necessary to verify, recognise, and monitor Article 31 compliance when no accreditation certificate is available
+  subject_ref: conformity_assessment_body
+  subject_category: notified_or_conformity_body
+  conditions:
+  - the body cannot provide an accreditation certificate
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A029-P4-REUSE-DESIGNATION-DOCUMENTS
+  source: A029-P005
+  quote: For notified bodies which are designated pursuant to any other Union harmonisation legislation, all documents and certificates linked to those designations may be used to support and expedite their designation procedure under this Regulation, as appropriate.
+  action: reuse existing harmonisation-law designation documents and certificates to support and expedite AI Act designation
+  subject_ref: notified_body
+  subject_category: notified_or_conformity_body
+  kind: permission
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A029-P4-SINGLE-APPLICATION
+  source: A029-P006
+  quote: Notified bodies, which are designated pursuant to any of the Union harmonisation legislation listed in Section A of Annex I and which undergo the unified assessment procedure referred to in Article 28(8), shall submit the single application for assessment to the notifying authority designated pursuant to that Union harmonisation legislation.
+  action: submit the unified-assessment single application to the notifying authority designated under the relevant harmonisation legislation
+  subject_ref: notified_body
+  subject_category: notified_or_conformity_body
+  conditions:
+  - the body has a Section A Annex I designation and undergoes the Article 28(8) unified assessment
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A029-P4-UPDATE-DOCUMENTATION
+  source: A029-P007
+  quote: The notified body shall update the documentation referred to in paragraphs 2 and 3 of this Article whenever relevant changes occur, in order to enable the authority responsible for notified bodies to monitor and verify continuous compliance with all the requirements laid down in Article 31.
+  action: update application and compliance evidence whenever relevant changes occur
+  subject_ref: notified_body
+  subject_category: notified_or_conformity_body
+  conditions:
+  - relevant changes occur
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
 - norm_id: AIA-NORM-A043-P3-PROCEDURE
   source: A043-P3
   quote: shall follow the relevant conformity assessment procedure
