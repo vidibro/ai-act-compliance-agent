@@ -7169,6 +7169,313 @@ records:
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_assessed
+- norm_id: AIA-NORM-A036-P1-NOTIFY-CHANGES
+  source: A036-P001
+  quote: The notifying authority shall notify the Commission and the other Member States of any relevant changes to the notification of a notified body via the electronic notification tool referred to in Article 30(2).
+  action: notify the Commission and other Member States of relevant notification changes through the Article 30(2) tool
+  subject_ref: notifying_authority
+  subject_category: public_authority
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A036-P2-EXTENSION-PROCEDURES
+  source: A036-P002
+  quote: The procedures laid down in Articles 29 and 30 shall apply to extensions of the scope of the notification.
+  action: apply the Articles 29 and 30 procedures to notification-scope extensions
+  subject_ref: notifying_authority
+  subject_category: public_authority
+  kind: applicability
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A036-P2-OTHER-CHANGE-PROCEDURES
+  source: A036-P003
+  quote: For changes to the notification other than extensions of its scope, the procedures laid down in paragraphs (3) to (9) shall apply.
+  action: apply paragraphs 3 to 9 to notification changes other than scope extensions
+  subject_ref: notifying_authority
+  subject_category: public_authority
+  kind: applicability
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A036-P3-CEASING-BODY-NOTICE
+  source: A036-P004
+  quote: Where a notified body decides to cease its conformity assessment activities, it shall inform the notifying authority and the providers concerned as soon as possible and, in the case of a planned cessation, at least one year before ceasing its activities.
+  action: inform the notifying authority and affected providers of cessation as soon as possible and at least one year ahead when planned
+  subject_ref: notified_body
+  subject_category: notified_or_conformity_body
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+  conditions: [the notified body decides to cease conformity-assessment activities]
+- norm_id: AIA-NORM-A036-P3-NINE-MONTH-CERTIFICATE-VALIDITY
+  source: A036-P004
+  quote: The certificates of the notified body may remain valid for a period of nine months after cessation of the notified body’s activities, on condition that another notified body has confirmed in writing that it will assume responsibilities for the high-risk AI systems covered by those certificates.
+  action: preserve certificate validity for up to nine months after cessation when a replacement notified body accepts responsibility in writing
+  subject_ref: affected_certificates
+  subject_category: other
+  kind: legal_consequence
+  product_scope: no_product_action
+  product_scope_reason: Defines certificate validity rather than an operator compliance action.
+  implementation_mode: none_required
+  implementation_reason: No independent product action is required.
+  verification_mode: not_assessed
+  conditions: [another notified body confirms in writing that it assumes responsibility for the covered systems]
+- norm_id: AIA-NORM-A036-P3-REPLACEMENT-ASSESSMENT
+  source: A036-P004
+  quote: The latter notified body shall complete a full assessment of the high-risk AI systems affected by the end of that nine-month-period before issuing new certificates for those systems.
+  action: complete a full assessment within nine months before issuing replacement certificates
+  subject_ref: assuming_notified_body
+  subject_category: notified_or_conformity_body
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A036-P3-WITHDRAW-DESIGNATION
+  source: A036-P004
+  quote: Where the notified body has ceased its activity, the notifying authority shall withdraw the designation.
+  action: withdraw the designation when the notified body has ceased activity
+  subject_ref: notifying_authority
+  subject_category: public_authority
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A036-P4-INVESTIGATE-FAILURE
+  source: A036-P005
+  quote: Where a notifying authority has sufficient reason to consider that a notified body no longer meets the requirements laid down in Article 31, or that it is failing to fulfil its obligations, the notifying authority shall without delay investigate the matter with the utmost diligence.
+  action: investigate suspected Article 31 noncompliance or failure of obligations without delay and with utmost diligence
+  subject_ref: notifying_authority
+  subject_category: public_authority
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A036-P4-INFORM-OBJECTIONS
+  source: A036-P005
+  quote: In that context, it shall inform the notified body concerned about the objections raised and give it the possibility to make its views known.
+  action: inform the notified body of the objections raised
+  subject_ref: notifying_authority
+  subject_category: public_authority
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A036-P4-OPPORTUNITY-TO-RESPOND
+  source: A036-P005
+  quote: In that context, it shall inform the notified body concerned about the objections raised and give it the possibility to make its views known.
+  action: receive an opportunity to make its views on the objections known
+  subject_ref: notified_body
+  subject_category: notified_or_conformity_body
+  kind: entitlement
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A036-P4-CORRECT-DESIGNATION
+  source: A036-P005
+  quote: If the notifying authority comes to the conclusion that the notified body no longer meets the requirements laid down in Article 31 or that it is failing to fulfil its obligations, it shall restrict, suspend or withdraw the designation as appropriate, depending on the seriousness of the failure to meet those requirements or fulfil those obligations.
+  action: restrict, suspend, or withdraw the designation proportionately to the seriousness of confirmed failure
+  subject_ref: notifying_authority
+  subject_category: public_authority
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A036-P4-INFORM-COMMISSION-AND-STATES
+  source: A036-P005
+  quote: It shall immediately inform the Commission and the other Member States accordingly.
+  action: immediately inform the Commission and other Member States of the designation measure
+  subject_ref: notifying_authority
+  subject_category: public_authority
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A036-P5-INFORM-PROVIDERS
+  source: A036-P006
+  quote: Where its designation has been suspended, restricted, or fully or partially withdrawn, the notified body shall inform the providers concerned within 10 days.
+  action: inform affected providers within 10 days of restriction, suspension, or withdrawal of designation
+  subject_ref: notified_body
+  subject_category: notified_or_conformity_body
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A036-P6-PRESERVE-FILES
+  source: A036-P007
+  quote: In the event of the restriction, suspension or withdrawal of a designation, the notifying authority shall take appropriate steps to ensure that the files of the notified body concerned are kept, and to make them available to notifying authorities in other Member States and to market surveillance authorities at their request.
+  action: take appropriate steps to preserve the affected notified body's files
+  subject_ref: notifying_authority
+  subject_category: public_authority
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A036-P6-MAKE-FILES-AVAILABLE
+  source: A036-P007
+  quote: In the event of the restriction, suspension or withdrawal of a designation, the notifying authority shall take appropriate steps to ensure that the files of the notified body concerned are kept, and to make them available to notifying authorities in other Member States and to market surveillance authorities at their request.
+  action: make the affected notified body's files available to other notifying and market-surveillance authorities on request
+  subject_ref: notifying_authority
+  subject_category: public_authority
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A036-P7-A-ASSESS-CERTIFICATE-IMPACT
+  source: A036-P009
+  quote: assess the impact on the certificates issued by the notified body
+  action: assess the impact of the designation change on certificates issued by the notified body
+  subject_ref: notifying_authority
+  subject_category: public_authority
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+  qualifier_spans: [A036-P008]
+- norm_id: AIA-NORM-A036-P7-B-REPORT-FINDINGS
+  source: A036-P010
+  quote: submit a report on its findings to the Commission and the other Member States within three months of having notified the changes to the designation
+  action: report findings to the Commission and other Member States within three months of notifying the designation change
+  subject_ref: notifying_authority
+  subject_category: public_authority
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+  qualifier_spans: [A036-P008]
+- norm_id: AIA-NORM-A036-P7-C-CORRECT-UNDUE-CERTIFICATES
+  source: A036-P011
+  quote: require the notified body to suspend or withdraw, within a reasonable period of time determined by the authority, any certificates which were unduly issued, in order to ensure the continuing conformity of high-risk AI systems on the market
+  action: require suspension or withdrawal of unduly issued certificates within a reasonable authority-set period
+  subject_ref: notifying_authority
+  subject_category: public_authority
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+  qualifier_spans: [A036-P008]
+- norm_id: AIA-NORM-A036-P7-D-INFORM-CERTIFICATE-MEASURES
+  source: A036-P012
+  quote: inform the Commission and the Member States about certificates the suspension or withdrawal of which it has required
+  action: inform the Commission and Member States which certificates were required to be suspended or withdrawn
+  subject_ref: notifying_authority
+  subject_category: public_authority
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+  qualifier_spans: [A036-P008]
+- norm_id: AIA-NORM-A036-P7-E-PROVIDE-CERTIFICATE-INFORMATION
+  source: A036-P013
+  quote: provide the national competent authorities of the Member State in which the provider has its registered place of business with all relevant information about the certificates of which it has required the suspension or withdrawal
+  action: provide the provider's establishment-state authorities all relevant information on certificates required to be suspended or withdrawn
+  subject_ref: notifying_authority
+  subject_category: public_authority
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+  qualifier_spans: [A036-P008]
+- norm_id: AIA-NORM-A036-P7-E-MITIGATE-RISK
+  source: A036-P013
+  quote: that authority shall take the appropriate measures, where necessary, to avoid a potential risk to health, safety or fundamental rights.
+  action: take necessary appropriate measures to avoid potential health, safety, or fundamental-rights risk
+  subject_ref: national_competent_authority
+  subject_category: public_authority
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+  qualifier_spans: [A036-P008]
+- norm_id: AIA-NORM-A036-P8-SUSPENSION-CERTIFICATE-VALIDITY
+  source: A036-P014
+  quote: With the exception of certificates unduly issued, and where a designation has been suspended or restricted, the certificates shall remain valid in one of the following circumstances
+  action: preserve non-unduly-issued certificate validity during suspension or restriction when either enacted condition set is satisfied
+  subject_ref: affected_certificates
+  subject_category: other
+  kind: legal_consequence
+  product_scope: no_product_action
+  product_scope_reason: Defines certificate validity rather than an operator compliance action.
+  implementation_mode: none_required
+  implementation_reason: No independent product action is required.
+  verification_mode: not_assessed
+  qualifier_spans: [A036-P015, A036-P016]
+  conditions:
+  - the notifying authority confirms within one month that affected certificates pose no health, safety, or fundamental-rights risk and provides a remediation timeline
+  - alternatively, the notifying authority confirms no relevant certificates will be issued, amended, or reissued and states whether the notified body can support existing certificates
+- norm_id: AIA-NORM-A036-P8-B-PROVIDER-REPLACEMENT-CONFIRMATION
+  source: A036-P016
+  quote: in the event that the notifying authority determines that the notified body does not have the capability to support existing certificates issued, the provider of the system covered by the certificate shall confirm in writing to the national competent authorities of the Member State in which it has its registered place of business, within three months of the suspension or restriction, that another qualified notified body is temporarily assuming the functions of the notified body to monitor and remain responsible for the certificates during the period of suspension or restriction.
+  action: confirm in writing within three months that a qualified replacement body temporarily assumes certificate monitoring and responsibility
+  subject_ref: provider
+  subject_category: supported_operator
+  implementation_mode: missing
+  verification_mode: unresolved
+  conditions: [the notifying authority determines the original notified body cannot support existing certificates]
+- norm_id: AIA-NORM-A036-P9-WITHDRAWAL-CERTIFICATE-VALIDITY
+  source: A036-P017
+  quote: With the exception of certificates unduly issued, and where a designation has been withdrawn, the certificates shall remain valid for a period of nine months under the following circumstances
+  action: preserve non-unduly-issued certificate validity for nine months after withdrawal when both enacted conditions are satisfied
+  subject_ref: affected_certificates
+  subject_category: other
+  kind: legal_consequence
+  product_scope: no_product_action
+  product_scope_reason: Defines certificate validity rather than an operator compliance action.
+  implementation_mode: none_required
+  implementation_reason: No independent product action is required.
+  verification_mode: not_assessed
+  qualifier_spans: [A036-P018, A036-P019]
+  conditions:
+  - the provider's establishment-state authority confirms no associated health, safety, or fundamental-rights risk
+  - another notified body accepts immediate responsibility in writing and completes assessment within 12 months of withdrawal
+- norm_id: AIA-NORM-A036-P9-EXTEND-PROVISIONAL-VALIDITY
+  source: A036-P020
+  quote: In the circumstances referred to in the first subparagraph, the national competent authority of the Member State in which the provider of the system covered by the certificate has its place of business may extend the provisional validity of the certificates for additional periods of three months, which shall not exceed 12 months in total.
+  action: extend provisional certificate validity in three-month periods up to a total of 12 months
+  subject_ref: national_competent_authority
+  subject_category: public_authority
+  kind: power
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A036-P9-INFORM-STAKEHOLDERS
+  source: A036-P021
+  quote: The national competent authority or the notified body assuming the functions of the notified body affected by the change of designation shall immediately inform the Commission, the other Member States and the other notified bodies thereof.
+  action: immediately inform the Commission, other Member States, and other notified bodies of the replacement arrangement
+  subject_ref: competent_authority_or_assuming_notified_body
+  subject_category: other
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for these addressees.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
 - norm_id: AIA-NORM-A043-P3-PROCEDURE
   source: A043-P3
   quote: shall follow the relevant conformity assessment procedure

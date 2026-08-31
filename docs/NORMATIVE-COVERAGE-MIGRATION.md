@@ -345,16 +345,16 @@ Measure:
 **Exit:** corrected schema and a data-backed estimate for full authoring.
 
 **Proposed extraction 2026-08-28:** the inventory now partitions all 133 source bodies in the pinned
-corpus into 1,429 exact segments. It proposes 622 norms across the 44 documents selected for detailed
+corpus into 1,429 exact segments. It proposes 648 norms across the 45 documents selected for detailed
 extraction; every other article and annex is retained as paragraph-sized `needs_review` debt, with
 structural headings kept separate.
 The reproducible measurements are in the versioned
 [`report.md`](../data/policy/normative-coverage/2026-07-27/report.md). The extraction added loader-validated exact
-`norm_text`, candidate-detection provenance, and review timing fields. Its semantic pass found 300 of
-622 proposed propositions whose exact operative quote contains no `shall` token, while 223,483
+`norm_text`, candidate-detection provenance, and review timing fields. Its semantic pass found 306 of
+648 proposed propositions whose exact operative quote contains no `shall` token, while 216,925
 source characters not yet semantically extracted remain explicitly marked `needs_review`.
 
-The 522 approved segments cover Articles 1, 2, 3, 4, 4a, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, and 35, plus Annex III; their
+The 544 approved segments cover Articles 1, 2, 3, 4, 4a, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, and 36, plus Annex III; their
 linked norm records remain `proposed`. Elapsed review time was not captured, and the rest of the
 corpus still contains explicit review debt. Consequently the repository makes no legal-completeness
 claim for the full corpus and does not yet have the data-backed full-authoring estimate required by

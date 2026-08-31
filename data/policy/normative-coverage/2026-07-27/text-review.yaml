@@ -12989,9 +12989,9 @@ segments:
   disposition_reason: ''
   norm_ids: []
   review:
-    status: proposed
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: codex
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
     display_chunks: 1
@@ -13010,17 +13010,18 @@ segments:
     Article 30(2).
 
     '
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A036-P1-NOTIFY-CHANGES
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: codex
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A036-P002
   source:
@@ -13034,17 +13035,18 @@ segments:
     notification.
 
     '
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A036-P2-EXTENSION-PROCEDURES
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: codex
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A036-P003
   source:
@@ -13058,17 +13060,18 @@ segments:
     in paragraphs (3) to (9) shall apply.
 
     '
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A036-P2-OTHER-CHANGE-PROCEDURES
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: codex
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A036-P004
   source:
@@ -13087,17 +13090,21 @@ segments:
     \ a full assessment of the high-risk AI systems affected by the end of that nine-month-period before\
     \ issuing new certificates for those systems. Where the notified body has ceased its activity, the\
     \ notifying authority shall withdraw the designation.\n"
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A036-P3-CEASING-BODY-NOTICE
+  - AIA-NORM-A036-P3-NINE-MONTH-CERTIFICATE-VALIDITY
+  - AIA-NORM-A036-P3-REPLACEMENT-ASSESSMENT
+  - AIA-NORM-A036-P3-WITHDRAW-DESIGNATION
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: codex
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A036-P005
   source:
@@ -13118,17 +13125,22 @@ segments:
     the Commission and the other Member States accordingly.
 
     '
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A036-P4-INVESTIGATE-FAILURE
+  - AIA-NORM-A036-P4-INFORM-OBJECTIONS
+  - AIA-NORM-A036-P4-OPPORTUNITY-TO-RESPOND
+  - AIA-NORM-A036-P4-CORRECT-DESIGNATION
+  - AIA-NORM-A036-P4-INFORM-COMMISSION-AND-STATES
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: codex
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A036-P006
   source:
@@ -13142,17 +13154,18 @@ segments:
     notified body shall inform the providers concerned within 10 days.
 
     '
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A036-P5-INFORM-PROVIDERS
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: codex
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A036-P007
   source:
@@ -13168,17 +13181,19 @@ segments:
     authorities at their request.
 
     '
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A036-P6-PRESERVE-FILES
+  - AIA-NORM-A036-P6-MAKE-FILES-AVAILABLE
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: codex
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A036-P008
   source:
@@ -13192,17 +13207,23 @@ segments:
     authority shall:
 
     '
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A036-P7-A-ASSESS-CERTIFICATE-IMPACT
+  - AIA-NORM-A036-P7-B-REPORT-FINDINGS
+  - AIA-NORM-A036-P7-C-CORRECT-UNDUE-CERTIFICATES
+  - AIA-NORM-A036-P7-D-INFORM-CERTIFICATE-MEASURES
+  - AIA-NORM-A036-P7-E-PROVIDE-CERTIFICATE-INFORMATION
+  - AIA-NORM-A036-P7-E-MITIGATE-RISK
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: codex
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A036-P009
   source:
@@ -13215,17 +13236,18 @@ segments:
   text: '        (a) assess the impact on the certificates issued by the notified body;
 
     '
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A036-P7-A-ASSESS-CERTIFICATE-IMPACT
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: codex
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A036-P010
   source:
@@ -13239,17 +13261,18 @@ segments:
     three months of having notified the changes to the designation;
 
     '
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A036-P7-B-REPORT-FINDINGS
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: codex
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A036-P011
   source:
@@ -13264,17 +13287,18 @@ segments:
     conformity of high-risk AI systems on the market;
 
     '
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A036-P7-C-CORRECT-UNDUE-CERTIFICATES
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: codex
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A036-P012
   source:
@@ -13288,17 +13312,18 @@ segments:
     withdrawal of which it has required;
 
     '
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A036-P7-D-INFORM-CERTIFICATE-MEASURES
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: codex
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A036-P013
   source:
@@ -13314,17 +13339,19 @@ segments:
     where necessary, to avoid a potential risk to health, safety or fundamental rights.
 
     '
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A036-P7-E-PROVIDE-CERTIFICATE-INFORMATION
+  - AIA-NORM-A036-P7-E-MITIGATE-RISK
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: codex
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A036-P014
   source:
@@ -13338,17 +13365,18 @@ segments:
     or restricted, the certificates shall remain valid in one of the following circumstances:
 
     '
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A036-P8-SUSPENSION-CERTIFICATE-VALIDITY
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: codex
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A036-P015
   source:
@@ -13364,17 +13392,18 @@ segments:
     to remedy the suspension or restriction; or
 
     '
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A036-P8-SUSPENSION-CERTIFICATE-VALIDITY
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: codex
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A036-P016
   source:
@@ -13396,17 +13425,19 @@ segments:
     during the period of suspension or restriction.
 
     '
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A036-P8-SUSPENSION-CERTIFICATE-VALIDITY
+  - AIA-NORM-A036-P8-B-PROVIDER-REPLACEMENT-CONFIRMATION
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: codex
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A036-P017
   source:
@@ -13420,17 +13451,18 @@ segments:
     the certificates shall remain valid for a period of nine months under the following circumstances:
 
     '
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A036-P9-WITHDRAWAL-CERTIFICATE-VALIDITY
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: codex
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A036-P018
   source:
@@ -13446,17 +13478,18 @@ segments:
     concerned; and
 
     '
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A036-P9-WITHDRAWAL-CERTIFICATE-VALIDITY
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: codex
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A036-P019
   source:
@@ -13470,17 +13503,18 @@ segments:
     for those AI systems and completes its assessment within 12 months of the withdrawal of the designation.
 
     '
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A036-P9-WITHDRAWAL-CERTIFICATE-VALIDITY
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: codex
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A036-P020
   source:
@@ -13496,17 +13530,18 @@ segments:
     which shall not exceed 12 months in total.
 
     '
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A036-P9-EXTEND-PROVISIONAL-VALIDITY
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: codex
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A036-P021
   source:
@@ -13521,17 +13556,18 @@ segments:
     States and the other notified bodies thereof.
 
     '
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A036-P9-INFORM-STAKEHOLDERS
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: codex
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A037-HEAD
   source:

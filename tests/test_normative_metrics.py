@@ -49,8 +49,8 @@ def test_inventory_partitions_the_complete_versioned_corpus(metrics):
     assert bundle.text_review.corpus_complete is True
     assert set(grouped) == expected
     assert metrics.documents == 133
-    assert metrics.documents_with_extracted_norms == 44
-    assert metrics.documents_with_review_debt == 92
+    assert metrics.documents_with_extracted_norms == 45
+    assert metrics.documents_with_review_debt == 91
     assert metrics.exact_source_characters == 394_667
     assert set(metrics.norms_by_document) == {
         "article 2",
@@ -88,6 +88,7 @@ def test_inventory_partitions_the_complete_versioned_corpus(metrics):
         "article 33",
         "article 34",
         "article 35",
+        "article 36",
         "article 43",
         "article 50",
         "article 60",
@@ -1568,20 +1569,20 @@ def test_article_twenty_eight_is_complete_institutional_coverage():
 
 
 def test_inventory_cannot_be_misreported_as_independently_approved(metrics):
-    assert metrics.approved_characters == 130_685
-    assert metrics.needs_review_characters == 223_483
+    assert metrics.approved_characters == 137_280
+    assert metrics.needs_review_characters == 216_925
     assert metrics.review_statuses == {
-        "approved": 522,
-        "needs_review": 773,
-        "proposed": 756,
+        "approved": 544,
+        "needs_review": 752,
+        "proposed": 781,
     }
     assert metrics.timed_review_records == 0
-    assert metrics.total_review_records == 2052
+    assert metrics.total_review_records == 2078
 
 
 def test_semantic_pass_finds_propositions_a_shall_scan_misses(metrics):
-    assert metrics.shall_vs_semantic_disagreements == 300
-    assert metrics.shall_token_candidate_recall == pytest.approx(322 / 622)
+    assert metrics.shall_vs_semantic_disagreements == 306
+    assert metrics.shall_token_candidate_recall == pytest.approx(342 / 648)
     assert "AIA-NORM-A011-P1-SIMPLIFY" in metrics.semantic_norms_without_shall_token
     assert "AIA-NORM-A043-P5-AMEND" in metrics.semantic_norms_without_shall_token
     assert "AIA-NORM-A060-P4-PERMISSION" in metrics.semantic_norms_without_shall_token
@@ -1589,13 +1590,13 @@ def test_semantic_pass_finds_propositions_a_shall_scan_misses(metrics):
 
 
 def test_metrics_expose_many_to_many_and_implementation_debt(metrics):
-    assert metrics.normative_segments_with_multiple_norms == 141
+    assert metrics.normative_segments_with_multiple_norms == 147
     assert metrics.mapping_shape.one_norm_to_one_target == 11
     assert metrics.mapping_shape.many_norms_to_one_target == 266
     assert metrics.mapping_shape.one_norm_to_many_targets == 1
     assert metrics.mapping_shape.many_to_many == 10
-    assert metrics.mapping_shape.unmapped == 334
-    assert metrics.semantic_vs_existing_implementation_disagreements == 108
+    assert metrics.mapping_shape.unmapped == 360
+    assert metrics.semantic_vs_existing_implementation_disagreements == 109
     assert metrics.semantic_norms_without_existing_implementation == [
         "AIA-NORM-A002-P1-A-PROVIDER",
         "AIA-NORM-A002-P1-B-DEPLOYER",
@@ -1674,6 +1675,7 @@ def test_metrics_expose_many_to_many_and_implementation_debt(metrics):
         "AIA-NORM-A016-E-KEEP-LOGS",
         "AIA-NORM-A016-J-CORRECTIVE-ACTION",
         "AIA-NORM-A025-P5-PROTECT-RIGHTS-AND-SECRETS",
+        "AIA-NORM-A036-P8-B-PROVIDER-REPLACEMENT-CONFIRMATION",
         "AIA-NORM-A050-P3-DATA",
         "AIA-NORM-A050-P5-MANNER",
         "AIA-NORM-ANNEX-III-1A-REMOTE-BIOMETRIC-IDENTIFICATION",
@@ -1774,6 +1776,7 @@ def test_metrics_expose_many_to_many_and_implementation_debt(metrics):
         "AIA-NORM-A008-P1-COMPLY-SECTION-REQUIREMENTS",
         "AIA-NORM-A011-P1-SIMPLIFY",
         "AIA-NORM-A025-P5-PROTECT-RIGHTS-AND-SECRETS",
+        "AIA-NORM-A036-P8-B-PROVIDER-REPLACEMENT-CONFIRMATION",
         "AIA-NORM-A050-P3-DATA",
         "AIA-NORM-ANNEX-III-1A-REMOTE-BIOMETRIC-IDENTIFICATION",
         "AIA-NORM-ANNEX-III-1B-BIOMETRIC-CATEGORISATION",
@@ -1930,6 +1933,44 @@ def test_article_thirty_five_keeps_publication_and_currency_separate():
         "identification numbers",
         "notified activities",
     ]
+
+
+def test_article_thirty_six_preserves_certificate_change_workflows():
+    bundle = load_normative_coverage()
+    segments = [
+        segment
+        for segment in bundle.text_review.segments
+        if segment.source.kind.value == "article" and segment.source.document == "36"
+    ]
+    norms = {
+        norm.norm_id: norm
+        for norm in bundle.norm_inventory.norms
+        if norm.norm_id.startswith("AIA-NORM-A036-")
+    }
+
+    assert len(segments) == 22
+    assert all(segment.review.status.value == "approved" for segment in segments)
+    assert all(segment.review.verified_by == "codex" for segment in segments)
+    assert len(norms) == 26
+    assert sum(norm.kind.value == "obligation" for norm in norms.values()) == 19
+    assert sum(norm.kind.value == "legal_consequence" for norm in norms.values()) == 3
+    assert sum(norm.kind.value == "applicability" for norm in norms.values()) == 2
+    assert sum(norm.kind.value == "entitlement" for norm in norms.values()) == 1
+    assert sum(norm.kind.value == "power" for norm in norms.values()) == 1
+
+    suspension = norms["AIA-NORM-A036-P8-SUSPENSION-CERTIFICATE-VALIDITY"]
+    assert suspension.qualifier_spans == [
+        "AIA-TEXT-A036-P015",
+        "AIA-TEXT-A036-P016",
+    ]
+    withdrawal = norms["AIA-NORM-A036-P9-WITHDRAWAL-CERTIFICATE-VALIDITY"]
+    assert withdrawal.qualifier_spans == [
+        "AIA-TEXT-A036-P018",
+        "AIA-TEXT-A036-P019",
+    ]
+    provider = norms["AIA-NORM-A036-P8-B-PROVIDER-REPLACEMENT-CONFIRMATION"]
+    assert provider.product_scope.value == "in_scope"
+    assert provider.implementation_mode.value == "missing"
 
 
 def test_annex_inventory_keeps_external_actors_and_exact_mandatory_content():
