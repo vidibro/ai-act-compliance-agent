@@ -17638,9 +17638,9 @@ segments:
   disposition_reason: ''
   norm_ids: []
   review:
-    status: proposed
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: codex
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
     display_chunks: 1
@@ -17659,17 +17659,18 @@ segments:
     approaches.
 
     '
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A056-P1-FACILITATE-CODES
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: codex
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A056-P002
   source:
@@ -17683,17 +17684,18 @@ segments:
     the obligations provided for in Articles 53 and 55, including the following issues:
 
     '
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A056-P2-CODE-COVERAGE
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: codex
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A056-P003
   source:
@@ -17707,17 +17709,18 @@ segments:
     and (b), is kept up to date in light of market and technological developments;
 
     '
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A056-P2-CODE-COVERAGE
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: codex
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A056-P004
   source:
@@ -17730,17 +17733,18 @@ segments:
   text: '        (b) the adequate level of detail for the summary about the content used for training;
 
     '
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A056-P2-CODE-COVERAGE
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: codex
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A056-P005
   source:
@@ -17754,17 +17758,18 @@ segments:
     their sources, where appropriate;
 
     '
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A056-P2-CODE-COVERAGE
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: codex
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A056-P006
   source:
@@ -17781,17 +17786,19 @@ segments:
     materialise along the AI value chain.
 
     '
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A056-P2-CODE-COVERAGE
+  - AIA-NORM-A056-P2-D-PROPORTIONATE-MEASURES
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: codex
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A056-P007
   source:
@@ -17807,17 +17814,19 @@ segments:
     may support the process.
 
     '
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A056-P3-INVITE-PARTICIPANTS
+  - AIA-NORM-A056-P3-STAKEHOLDER-SUPPORT
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: codex
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A056-P008
   source:
@@ -17833,17 +17842,19 @@ segments:
     needs and interests of all interested parties, including affected persons, at Union level.
 
     '
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A056-P4-OBJECTIVES-AND-COMMITMENTS
+  - AIA-NORM-A056-P4-INTERESTED-PARTIES
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: codex
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A056-P009
   source:
@@ -17859,17 +17870,19 @@ segments:
     and reporting commitments shall reflect differences in size and capacity between various participants.
 
     '
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A056-P5-PARTICIPANT-REPORTING
+  - AIA-NORM-A056-P5-CAPACITY-SENSITIVE-METRICS
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: codex
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A056-P010
   source:
@@ -17887,17 +17900,21 @@ segments:
     of the adequacy of the codes of practice.
 
     '
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A056-P6-JOINT-MONITOR-EVALUATE
+  - AIA-NORM-A056-P6-ASSESS-COVERAGE
+  - AIA-NORM-A056-P6-COMMISSION-MONITOR-EVALUATE
+  - AIA-NORM-A056-P6-PUBLISH-ASSESSMENT
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: codex
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A056-P011
   source:
@@ -17913,17 +17930,19 @@ segments:
     interest to join the full code.
 
     '
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A056-P7-INVITE-ADHERENCE
+  - AIA-NORM-A056-P7-LIMITED-ADHERENCE
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: codex
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A056-P012
   source:
@@ -17938,17 +17957,19 @@ segments:
     in the assessment of available standards.
 
     '
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A056-P8-REVIEW-ADAPT-CODES
+  - AIA-NORM-A056-P8-ASSESS-STANDARDS
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: codex
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A056-P013
   source:
@@ -17962,17 +17983,19 @@ segments:
     necessary steps, including inviting providers pursuant to paragraph 7.
 
     '
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A056-P9-CODES-DEADLINE
+  - AIA-NORM-A056-P9-TAKE-STEPS
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: codex
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A056-P014
   source:
@@ -17989,17 +18012,19 @@ segments:
     acts shall be adopted in accordance with the examination procedure referred to in Article 98(2).
 
     '
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A056-P9-COMMON-RULES
+  - AIA-NORM-A056-P9-EXAMINATION-PROCEDURE
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: codex
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A057-HEAD
   source:
