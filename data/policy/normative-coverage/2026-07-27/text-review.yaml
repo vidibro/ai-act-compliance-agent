@@ -10789,9 +10789,9 @@ segments:
   disposition_reason: ''
   norm_ids: []
   review:
-    status: proposed
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
     display_chunks: 1
@@ -10810,17 +10810,18 @@ segments:
     pursuant to paragraphs 3 and 6.
 
     '
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A026-P1-INSTRUCTION-COMPLIANT-USE
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A026-P2
   source:
@@ -10834,17 +10835,18 @@ segments:
     training and authority, as well as the necessary support.
 
     '
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A026-P2-HUMAN-OVERSIGHT-ASSIGNMENT
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A026-P3
   source:
@@ -10857,17 +10859,19 @@ segments:
   text: "3. The obligations set out in paragraphs 1 and 2, are without prejudice to other deployer obligations\
     \ under Union or national law and to the deployer\u2019s freedom to organise its own resources and\
     \ activities for the purpose of implementing the human oversight measures indicated by the provider.\n"
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A026-P3-PRESERVE-OTHER-OBLIGATIONS
+  - AIA-NORM-A026-P3-RESOURCE-ORGANISATION-FREEDOM
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A026-P4
   source:
@@ -10882,17 +10886,18 @@ segments:
     in view of the intended purpose of the high-risk AI system.
 
     '
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A026-P4-INPUT-DATA-QUALITY
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A026-P5
   source:
@@ -10928,9 +10933,9 @@ segments:
   - AIA-NORM-A026-P5-SENSITIVE
   - AIA-NORM-A026-P5-FINANCIAL
   review:
-    status: proposed
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
     display_chunks: 1
@@ -10951,17 +10956,22 @@ segments:
     \ that are financial institutions subject to requirements regarding their internal governance, arrangements\
     \ or processes under Union financial services law shall maintain the logs as part of the documentation\
     \ kept pursuant to the relevant Union financial service law.\n"
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A026-P6-KEEP-CONTROLLED-LOGS
+  - AIA-NORM-A026-P6-PURPOSE-APPROPRIATE-PERIOD
+  - AIA-NORM-A026-P6-SIX-MONTH-MINIMUM
+  - AIA-NORM-A026-P6-OTHER-LAW-PERIOD
+  - AIA-NORM-A026-P6-FINANCIAL-DOCUMENTATION
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A026-P7
   source:
@@ -10976,17 +10986,19 @@ segments:
     \ be subject to the use of the high-risk AI system. This information shall be provided, where applicable,\
     \ in accordance with the rules and procedures laid down in Union and national law and practice on\
     \ information of workers and their representatives.\n"
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A026-P7-INFORM-WORKERS
+  - AIA-NORM-A026-P7-FOLLOW-WORKER-INFORMATION-RULES
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A026-P8
   source:
@@ -11003,17 +11015,20 @@ segments:
     provider or the distributor.
 
     '
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A026-P8-REGISTER
+  - AIA-NORM-A026-P8-DO-NOT-USE-UNREGISTERED
+  - AIA-NORM-A026-P8-INFORM-UNREGISTERED
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A026-P9
   source:
@@ -11028,17 +11043,18 @@ segments:
     assessment under Article 35 of Regulation (EU) 2016/679 or Article 27 of Directive (EU) 2016/680.
 
     '
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A026-P9-USE-ARTICLE-13-IN-DPIA
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A026-P10
   source:
@@ -11076,17 +11092,33 @@ segments:
     \ of sensitive operational data related to law enforcement. The reports may be aggregated to cover\
     \ more than one deployment.\n    Member States may introduce, in accordance with Union law, more restrictive\
     \ laws on the use of post-remote biometric identification systems.\n"
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A026-P10-PRESERVE-DIRECTIVE-2016-680
+  - AIA-NORM-A026-P10-REQUEST-AUTHORISATION
+  - AIA-NORM-A026-P10-STRICT-NECESSITY
+  - AIA-NORM-A026-P10-STOP-ON-REJECTION
+  - AIA-NORM-A026-P10-DELETE-ON-REJECTION
+  - AIA-NORM-A026-P10-PROHIBIT-UNTARGETED-USE
+  - AIA-NORM-A026-P10-NO-SOLE-OUTPUT-ADVERSE-DECISION
+  - AIA-NORM-A026-P10-PRESERVE-BIOMETRIC-DATA-LAW
+  - AIA-NORM-A026-P10-DOCUMENT-EACH-USE
+  - AIA-NORM-A026-P10-MAKE-FILE-AVAILABLE
+  - AIA-NORM-A026-P10-FILE-SENSITIVE-DATA-EXCLUSION
+  - AIA-NORM-A026-P10-PRESERVE-SUPERVISORY-POWERS
+  - AIA-NORM-A026-P10-ANNUAL-REPORTS
+  - AIA-NORM-A026-P10-REPORT-SENSITIVE-DATA-EXCLUSION
+  - AIA-NORM-A026-P10-AGGREGATE-REPORTS
+  - AIA-NORM-A026-P10-MEMBER-STATE-STRICTER-LAW
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A026-P11
   source:
@@ -11102,17 +11134,20 @@ segments:
     AI systems used for law enforcement purposes Article 13 of Directive (EU) 2016/680 shall apply.
 
     '
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A026-P11-PRESERVE-ARTICLE-50
+  - AIA-NORM-A026-P11-INFORM-NATURAL-PERSONS
+  - AIA-NORM-A026-P11-LAW-ENFORCEMENT-NOTICE
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A026-P12
   source:
@@ -11126,17 +11161,18 @@ segments:
     take in relation to the high-risk AI system in order to implement this Regulation.
 
     '
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A026-P12-COOPERATE
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A027-HEAD
   source:

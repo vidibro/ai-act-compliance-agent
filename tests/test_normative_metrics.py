@@ -50,7 +50,7 @@ def test_inventory_partitions_the_complete_versioned_corpus(metrics):
     assert set(grouped) == expected
     assert metrics.documents == 133
     assert metrics.documents_with_extracted_norms == 35
-    assert metrics.documents_with_review_debt == 102
+    assert metrics.documents_with_review_debt == 101
     assert metrics.exact_source_characters == 394_667
     assert set(metrics.norms_by_document) == {
         "article 2",
@@ -1419,21 +1419,85 @@ def test_article_twenty_five_separates_role_transfer_from_surviving_duties():
     assert protection.implementation_mode.value == "missing"
 
 
+def test_article_twenty_six_models_core_and_specialised_deployer_duties():
+    bundle = load_normative_coverage()
+    segments = [
+        segment
+        for segment in bundle.text_review.segments
+        if segment.source.kind.value == "article" and segment.source.document == "26"
+    ]
+    norms = {
+        norm.norm_id: norm
+        for norm in bundle.norm_inventory.norms
+        if norm.norm_id.startswith("AIA-NORM-A026-")
+    }
+
+    assert len(segments) == 13
+    assert all(segment.review.status.value == "approved" for segment in segments)
+    assert all(segment.review.verified_by == "vidibro" for segment in segments)
+    assert len(norms) == 44
+
+    by_target = {
+        target: {
+            norm_id
+            for norm_id, norm in norms.items()
+            if norm.implementation_refs == [target]
+        }
+        for target in (
+            "AIA-DP-A26",
+            "AIA-DP-A26-8",
+            "AIA-DP-A26-9",
+            "AIA-DP-A26-10",
+            "AIA-DP-A26-11",
+            "AIA-DP-A26-12",
+        )
+    }
+    assert len(by_target["AIA-DP-A26"]) == 18
+    assert len(by_target["AIA-DP-A26-8"]) == 3
+    assert len(by_target["AIA-DP-A26-9"]) == 1
+    assert len(by_target["AIA-DP-A26-10"]) == 15
+    assert len(by_target["AIA-DP-A26-11"]) == 3
+    assert len(by_target["AIA-DP-A26-12"]) == 1
+
+    paragraph_five = {
+        norm_id for norm_id in norms if norm_id.startswith("AIA-NORM-A026-P5-")
+    }
+    assert len(paragraph_five) == 8
+    paragraph_ten = {
+        norm_id for norm_id in norms if norm_id.startswith("AIA-NORM-A026-P10-")
+    }
+    assert len(paragraph_ten) == 16
+    assert {
+        norm_id
+        for norm_id in paragraph_ten
+        if norms[norm_id].kind.value == "prohibition"
+    } == {
+        "AIA-NORM-A026-P10-PROHIBIT-UNTARGETED-USE",
+        "AIA-NORM-A026-P10-NO-SOLE-OUTPUT-ADVERSE-DECISION",
+    }
+    member_state_power = norms["AIA-NORM-A026-P10-MEMBER-STATE-STRICTER-LAW"]
+    assert member_state_power.kind.value == "power"
+    assert member_state_power.product_scope.value == "outside_supported_actor"
+    assert norms["AIA-NORM-A026-P8-DO-NOT-USE-UNREGISTERED"].kind.value == (
+        "prohibition"
+    )
+
+
 def test_inventory_cannot_be_misreported_as_independently_approved(metrics):
-    assert metrics.approved_characters == 103_707
-    assert metrics.needs_review_characters == 248_498
+    assert metrics.approved_characters == 111_223
+    assert metrics.needs_review_characters == 242_410
     assert metrics.review_statuses == {
-        "approved": 442,
-        "needs_review": 842,
-        "proposed": 661,
+        "approved": 455,
+        "needs_review": 831,
+        "proposed": 695,
     }
     assert metrics.timed_review_records == 0
-    assert metrics.total_review_records == 1946
+    assert metrics.total_review_records == 1982
 
 
 def test_semantic_pass_finds_propositions_a_shall_scan_misses(metrics):
-    assert metrics.shall_vs_semantic_disagreements == 276
-    assert metrics.shall_token_candidate_recall == pytest.approx(240 / 516)
+    assert metrics.shall_vs_semantic_disagreements == 288
+    assert metrics.shall_token_candidate_recall == pytest.approx(264 / 552)
     assert "AIA-NORM-A011-P1-SIMPLIFY" in metrics.semantic_norms_without_shall_token
     assert "AIA-NORM-A043-P5-AMEND" in metrics.semantic_norms_without_shall_token
     assert "AIA-NORM-A060-P4-PERMISSION" in metrics.semantic_norms_without_shall_token
@@ -1441,12 +1505,12 @@ def test_semantic_pass_finds_propositions_a_shall_scan_misses(metrics):
 
 
 def test_metrics_expose_many_to_many_and_implementation_debt(metrics):
-    assert metrics.normative_segments_with_multiple_norms == 120
-    assert metrics.mapping_shape.one_norm_to_one_target == 9
-    assert metrics.mapping_shape.many_norms_to_one_target == 228
+    assert metrics.normative_segments_with_multiple_norms == 126
+    assert metrics.mapping_shape.one_norm_to_one_target == 11
+    assert metrics.mapping_shape.many_norms_to_one_target == 259
     assert metrics.mapping_shape.one_norm_to_many_targets == 1
     assert metrics.mapping_shape.many_to_many == 10
-    assert metrics.mapping_shape.unmapped == 268
+    assert metrics.mapping_shape.unmapped == 271
     assert metrics.semantic_vs_existing_implementation_disagreements == 108
     assert metrics.semantic_norms_without_existing_implementation == [
         "AIA-NORM-A002-P1-A-PROVIDER",
