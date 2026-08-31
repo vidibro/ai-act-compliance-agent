@@ -7135,6 +7135,40 @@ records:
   mandatory_content: [all relevant documentation, provider documentation]
   conditions:
   - the Article 28 notifying authority requests the documentation
+- norm_id: AIA-NORM-A035-P1-ASSIGN-SINGLE-IDENTIFICATION-NUMBER
+  source: A035-P001
+  quote: The Commission shall assign a single identification number to each notified body, even where a body is notified under more than one Union act.
+  action: assign one identification number to each notified body even when it is notified under multiple Union acts
+  subject_ref: commission
+  subject_category: union_institution_or_body
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A035-P2-PUBLISH-NOTIFIED-BODY-LIST
+  source: A035-P002
+  quote: The Commission shall make publicly available the list of the bodies notified under this Regulation, including their identification numbers and the activities for which they have been notified.
+  action: publish the list of bodies notified under the Regulation with their identification numbers and notified activities
+  subject_ref: commission
+  subject_category: union_institution_or_body
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+  mandatory_content: [notified bodies, identification numbers, notified activities]
+- norm_id: AIA-NORM-A035-P2-KEEP-LIST-CURRENT
+  source: A035-P002
+  quote: The Commission shall ensure that the list is kept up to date.
+  action: keep the notified-body list up to date
+  subject_ref: commission
+  subject_category: union_institution_or_body
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
 - norm_id: AIA-NORM-A043-P3-PROCEDURE
   source: A043-P3
   quote: shall follow the relevant conformity assessment procedure
