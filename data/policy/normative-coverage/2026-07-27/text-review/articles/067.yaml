@@ -18,9 +18,9 @@ segments:
   disposition_reason: ''
   norm_ids: []
   review:
-    status: proposed
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: codex
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
     display_chunks: 1
@@ -38,17 +38,18 @@ segments:
     and the Commission, and to contribute to their tasks under this Regulation.
 
     '
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A067-P1-ESTABLISH-ADVISORY-FORUM
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: codex
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A067-P002
   source:
@@ -64,17 +65,18 @@ segments:
     of commercial interests, with regard to SMEs and other undertakings.
 
     '
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A067-P2-BALANCED-MEMBERSHIP
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: codex
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A067-P003
   source:
@@ -88,17 +90,18 @@ segments:
     set out in paragraph 2, from amongst stakeholders with recognised expertise in the field of AI.
 
     '
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A067-P3-APPOINT-MEMBERS
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: codex
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A067-P004
   source:
@@ -112,17 +115,18 @@ segments:
     by up to no more than four years.
 
     '
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A067-P4-MEMBER-TERM
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: codex
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A067-P005
   source:
@@ -137,17 +141,18 @@ segments:
     Standards Institute (ETSI) shall be permanent members of the advisory forum.
 
     '
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A067-P5-PERMANENT-MEMBERS
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: codex
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A067-P006
   source:
@@ -162,17 +167,18 @@ segments:
     shall be two years, renewable once.
 
     '
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A067-P6-RULES-AND-COCHAIRS
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: codex
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A067-P007
   source:
@@ -186,17 +192,18 @@ segments:
     experts and other stakeholders to its meetings.
 
     '
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A067-P7-MEETINGS-AND-INVITATIONS
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: codex
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A067-P008
   source:
@@ -210,17 +217,18 @@ segments:
     request of the Board or the Commission.
 
     '
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A067-P8-PREPARE-REQUESTED-CONTRIBUTIONS
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: codex
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A067-P009
   source:
@@ -234,17 +242,18 @@ segments:
     of examining specific questions related to the objectives of this Regulation.
 
     '
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A067-P9-ESTABLISH-SUBGROUPS
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: codex
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A067-P010
   source:
@@ -258,15 +267,16 @@ segments:
     made publicly available.
 
     '
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A067-P10-ANNUAL-PUBLIC-REPORT
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: codex
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
