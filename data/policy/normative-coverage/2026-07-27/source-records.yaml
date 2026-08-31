@@ -14,6 +14,7 @@ implementation_targets:
 - AIA-DP-A27-2
 - AIA-DP-A27-3
 - AIA-DP-A49-3
+- AIA-GP-A52-1
 - AIA-HR-A09
 - AIA-HR-A10
 - AIA-HR-A11
@@ -8880,6 +8881,195 @@ records:
   subject_category: union_institution_or_body
   conditions:
   - supplementation is necessary in light of technological developments such as algorithmic improvements or increased hardware efficiency
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A052-P1-NOTIFY-COMMISSION
+  source: A052-P001
+  quote: Where a general-purpose AI model meets the condition referred to in Article 51(1), point (a), the relevant provider shall notify the Commission without delay and in any event within two weeks after that requirement is met or it becomes known that it will be met.
+  action: notify the Commission without delay and within two weeks of meeting or anticipating the Article 51(1)(a) condition
+  subject_ref: provider
+  subject_category: supported_operator
+  conditions:
+  - the general-purpose AI model meets or is known will meet the Article 51(1)(a) condition
+  implementation_refs: [AIA-GP-A52-1]
+  verification_mode: listed_for_confirmation
+- norm_id: AIA-NORM-A052-P1-NOTIFICATION-CONTENT
+  source: A052-P001
+  quote: That notification shall include the information necessary to demonstrate that the relevant requirement has been met.
+  action: include information demonstrating that the Article 51(1)(a) requirement is met in the notification
+  subject_ref: provider
+  subject_category: supported_operator
+  conditions: [the provider submits the Article 52(1) notification]
+  mandatory_content: [information necessary to demonstrate that the Article 51(1)(a) requirement has been met]
+  implementation_refs: [AIA-GP-A52-1]
+  verification_mode: listed_for_confirmation
+- norm_id: AIA-NORM-A052-P1-DESIGNATE-UNNOTIFIED-MODEL
+  source: A052-P001
+  quote: If the Commission becomes aware of a general-purpose AI model presenting systemic risks of which it has not been notified, it may decide to designate it as a model with systemic risk.
+  action: designate an unnotified general-purpose AI model presenting systemic risks as a model with systemic risk
+  subject_ref: commission
+  subject_category: union_institution_or_body
+  kind: power
+  conditions:
+  - the Commission becomes aware that an unnotified general-purpose AI model presents systemic risks
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A052-P2-PRESENT-REBUTTAL
+  source: A052-P002
+  quote: The provider of a general-purpose AI model that meets the condition referred to in Article 51(1), point (a), may present, with its notification, sufficiently substantiated arguments to demonstrate that, exceptionally, although it meets that requirement, the general-purpose AI model does not present, due to its specific characteristics, systemic risks and therefore should not be classified as a general-purpose AI model with systemic risk.
+  action: present substantiated model-specific arguments with the notification against systemic-risk classification
+  subject_ref: provider
+  subject_category: supported_operator
+  kind: permission
+  conditions:
+  - the model meets the Article 51(1)(a) condition
+  - the arguments are presented with the notification and are sufficiently substantiated
+  product_scope: no_product_action
+  product_scope_reason: Grants an optional rebuttal procedure rather than imposing a compliance action.
+  implementation_mode: none_required
+  implementation_reason: No independent product action is required.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A052-P3-REJECT-UNSUBSTANTIATED-ARGUMENTS
+  source: A052-P003
+  quote: Where the Commission concludes that the arguments submitted pursuant to paragraph 2 are not sufficiently substantiated and the relevant provider was not able to demonstrate that the general-purpose AI model does not present, due to its specific characteristics, systemic risks, it shall reject those arguments
+  action: reject insufficiently substantiated rebuttal arguments that fail to demonstrate absence of systemic risk
+  subject_ref: commission
+  subject_category: union_institution_or_body
+  conditions:
+  - paragraph 2 arguments are insufficiently substantiated
+  - the provider did not demonstrate that the model lacks systemic risk due to its specific characteristics
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A052-P3-SYSTEMIC-RISK-CONSEQUENCE
+  source: A052-P003
+  quote: the general-purpose AI model shall be considered to be a general-purpose AI model with systemic risk.
+  action: classify the model as a general-purpose AI model with systemic risk after unsuccessful rebuttal
+  subject_ref: general_purpose_ai_model
+  subject_category: other
+  kind: legal_consequence
+  conditions:
+  - the Commission rejects the provider's paragraph 2 arguments under Article 52(3)
+  implementation_mode: missing
+  verification_mode: unresolved
+- norm_id: AIA-NORM-A052-P4-DESIGNATE-SYSTEMIC-RISK
+  source: A052-P004
+  quote: The Commission may designate a general-purpose AI model as presenting systemic risks, ex officio or following a qualified alert from the scientific panel pursuant to Article 90(1), point (a), on the basis of criteria set out in Annex XIII.
+  action: designate a general-purpose AI model as presenting systemic risks using Annex XIII criteria
+  subject_ref: commission
+  subject_category: union_institution_or_body
+  kind: power
+  conditions:
+  - designation is ex officio or follows a qualified Article 90(1)(a) scientific-panel alert
+  - designation is based on Annex XIII criteria
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A052-P4-AMEND-ANNEX-XIII
+  source: A052-P005
+  quote: The Commission is empowered to adopt delegated acts in accordance with Article 97 in order to amend Annex XIII by specifying and updating the criteria set out in that Annex.
+  action: adopt Article 97 delegated acts specifying and updating Annex XIII criteria
+  subject_ref: commission
+  subject_category: union_institution_or_body
+  kind: power
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A052-P5-CONSIDER-REASSESSMENT-REQUEST
+  source: A052-P006
+  quote: Upon a reasoned request of a provider whose model has been designated as a general-purpose AI model with systemic risk pursuant to paragraph 4, the Commission shall take the request into account
+  action: take a provider's reasoned reassessment request into account
+  subject_ref: commission
+  subject_category: union_institution_or_body
+  conditions:
+  - the provider makes a reasoned request concerning a model designated under Article 52(4)
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A052-P5-REASSESS-DESIGNATION
+  source: A052-P006
+  quote: may decide to reassess whether the general-purpose AI model can still be considered to present systemic risks on the basis of the criteria set out in Annex XIII.
+  action: reassess under Annex XIII whether the model still presents systemic risks
+  subject_ref: commission
+  subject_category: union_institution_or_body
+  kind: power
+  conditions:
+  - the Commission has received and considered a reasoned provider request under Article 52(5)
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A052-P5-REQUEST-CONTENT
+  source: A052-P006
+  quote: Such a request shall contain objective, detailed and new reasons that have arisen since the designation decision.
+  action: include objective, detailed, and new post-designation reasons in a reassessment request
+  subject_ref: provider
+  subject_category: supported_operator
+  conditions: [the provider requests reassessment under Article 52(5)]
+  mandatory_content:
+  - objective reasons
+  - detailed reasons
+  - new reasons arising since the designation decision
+  implementation_mode: missing
+  verification_mode: unresolved
+- norm_id: AIA-NORM-A052-P5-REQUEST-AFTER-SIX-MONTHS
+  source: A052-P006
+  quote: Providers may request reassessment at the earliest six months after the designation decision. Where the Commission, following its reassessment, decides to maintain the designation as a general-purpose AI model with systemic risk, providers may request reassessment at the earliest six months after that decision.
+  action: request reassessment no earlier than six months after the applicable designation or maintenance decision
+  subject_ref: provider
+  subject_category: supported_operator
+  kind: permission
+  conditions:
+  - at least six months have passed since the initial designation or the latest decision maintaining it
+  product_scope: no_product_action
+  product_scope_reason: Grants a timed procedural option rather than imposing a compliance action.
+  implementation_mode: none_required
+  implementation_reason: No independent product action is required.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A052-P6-PUBLISH-LIST
+  source: A052-P007
+  quote: The Commission shall ensure that a list of general-purpose AI models with systemic risk is published
+  action: ensure publication of a list of general-purpose AI models with systemic risk
+  subject_ref: commission
+  subject_category: union_institution_or_body
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A052-P6-KEEP-LIST-CURRENT
+  source: A052-P007
+  quote: shall keep that list up to date
+  action: keep the systemic-risk model list up to date
+  subject_ref: commission
+  subject_category: union_institution_or_body
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A052-P6-PROTECT-CONFIDENTIAL-INFORMATION
+  source: A052-P007
+  quote: without prejudice to the need to observe and protect intellectual property rights and confidential business information or trade secrets in accordance with Union and national law.
+  action: observe and protect intellectual-property rights, confidential business information, and trade secrets when publishing and updating the list
+  subject_ref: commission
+  subject_category: union_institution_or_body
+  conditions: [the Commission publishes or updates the systemic-risk model list]
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
