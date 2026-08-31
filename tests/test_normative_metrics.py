@@ -49,8 +49,8 @@ def test_inventory_partitions_the_complete_versioned_corpus(metrics):
     assert bundle.text_review.corpus_complete is True
     assert set(grouped) == expected
     assert metrics.documents == 133
-    assert metrics.documents_with_extracted_norms == 69
-    assert metrics.documents_with_review_debt == 65
+    assert metrics.documents_with_extracted_norms == 70
+    assert metrics.documents_with_review_debt == 64
     assert metrics.exact_source_characters == 394_667
     assert set(metrics.norms_by_document) == {
         "article 2",
@@ -116,6 +116,7 @@ def test_inventory_partitions_the_complete_versioned_corpus(metrics):
         "article 60a",
         "article 61",
         "article 62",
+        "article 63",
         "article 75",
         "article 113",
         "annex III",
@@ -1593,20 +1594,20 @@ def test_article_twenty_eight_is_complete_institutional_coverage():
 
 
 def test_inventory_cannot_be_misreported_as_independently_approved(metrics):
-    assert metrics.approved_characters == 219_173
-    assert metrics.needs_review_characters == 145_373
+    assert metrics.approved_characters == 220_048
+    assert metrics.needs_review_characters == 144_545
     assert metrics.review_statuses == {
-        "approved": 817,
-        "needs_review": 523,
-        "proposed": 1007,
+        "approved": 820,
+        "needs_review": 521,
+        "proposed": 1009,
     }
     assert metrics.timed_review_records == 0
-    assert metrics.total_review_records == 2348
+    assert metrics.total_review_records == 2351
 
 
 def test_semantic_pass_finds_propositions_a_shall_scan_misses(metrics):
-    assert metrics.shall_vs_semantic_disagreements == 386
-    assert metrics.shall_token_candidate_recall == pytest.approx(519 / 905)
+    assert metrics.shall_vs_semantic_disagreements == 387
+    assert metrics.shall_token_candidate_recall == pytest.approx(521 / 908)
     assert "AIA-NORM-A011-P1-SIMPLIFY" in metrics.semantic_norms_without_shall_token
     assert "AIA-NORM-A043-P5-AMEND" in metrics.semantic_norms_without_shall_token
     assert "AIA-NORM-A060-P4-PERMISSION" in metrics.semantic_norms_without_shall_token
@@ -1614,13 +1615,13 @@ def test_semantic_pass_finds_propositions_a_shall_scan_misses(metrics):
 
 
 def test_metrics_expose_many_to_many_and_implementation_debt(metrics):
-    assert metrics.normative_segments_with_multiple_norms == 225
+    assert metrics.normative_segments_with_multiple_norms == 226
     assert metrics.mapping_shape.one_norm_to_one_target == 17
     assert metrics.mapping_shape.many_norms_to_one_target == 331
     assert metrics.mapping_shape.one_norm_to_many_targets == 0
     assert metrics.mapping_shape.many_to_many == 15
-    assert metrics.mapping_shape.unmapped == 542
-    assert metrics.semantic_vs_existing_implementation_disagreements == 158
+    assert metrics.mapping_shape.unmapped == 545
+    assert metrics.semantic_vs_existing_implementation_disagreements == 159
     assert metrics.semantic_norms_without_existing_implementation == [
         "AIA-NORM-A002-P1-A-PROVIDER",
         "AIA-NORM-A002-P1-B-DEPLOYER",
@@ -1751,6 +1752,7 @@ def test_metrics_expose_many_to_many_and_implementation_debt(metrics):
         "AIA-NORM-A060A-P6-COMPLY-WITH-SECTORAL-LAW",
         "AIA-NORM-A061-P1-OBTAIN-INFORMED-CONSENT",
         "AIA-NORM-A061-P2-DOCUMENT-AND-COPY-CONSENT",
+        "AIA-NORM-A063-P1-SIMPLIFIED-SME-QUALITY-MANAGEMENT",
         "AIA-NORM-ANNEX-III-1A-REMOTE-BIOMETRIC-IDENTIFICATION",
         "AIA-NORM-ANNEX-III-1B-BIOMETRIC-CATEGORISATION",
         "AIA-NORM-ANNEX-III-1C-EMOTION-RECOGNITION",
@@ -1900,6 +1902,7 @@ def test_metrics_expose_many_to_many_and_implementation_debt(metrics):
         "AIA-NORM-A060A-P6-COMPLY-WITH-SECTORAL-LAW",
         "AIA-NORM-A061-P1-OBTAIN-INFORMED-CONSENT",
         "AIA-NORM-A061-P2-DOCUMENT-AND-COPY-CONSENT",
+        "AIA-NORM-A063-P1-SIMPLIFIED-SME-QUALITY-MANAGEMENT",
         "AIA-NORM-ANNEX-III-1A-REMOTE-BIOMETRIC-IDENTIFICATION",
         "AIA-NORM-ANNEX-III-1B-BIOMETRIC-CATEGORISATION",
         "AIA-NORM-ANNEX-III-1C-EMOTION-RECOGNITION",
@@ -2849,6 +2852,31 @@ def test_article_sixty_two_extracts_sme_support_measures():
     assert len(member_state.mandatory_content) == 4
     assert len(ai_office.qualifier_spans) == 4
     assert len(ai_office.mandatory_content) == 4
+
+
+def test_article_sixty_three_limits_the_sme_derogation():
+    bundle = load_normative_coverage()
+    segments = [
+        segment
+        for segment in bundle.text_review.segments
+        if segment.source.kind.value == "article" and segment.source.document == "63"
+    ]
+    norms = {
+        norm.norm_id: norm
+        for norm in bundle.norm_inventory.norms
+        if norm.norm_id.startswith("AIA-NORM-A063-")
+    }
+
+    assert len(segments) == 3
+    assert all(segment.review.status.value == "approved" for segment in segments)
+    assert all(segment.review.verified_by == "codex" for segment in segments)
+    assert len(norms) == 3
+    assert norms["AIA-NORM-A063-P1-SIMPLIFIED-SME-QUALITY-MANAGEMENT"].kind.value == (
+        "permission"
+    )
+    assert norms["AIA-NORM-A063-P2-NO-BROADER-EXEMPTION"].product_scope.value == (
+        "no_product_action"
+    )
 
 
 def test_annex_inventory_keeps_external_actors_and_exact_mandatory_content():

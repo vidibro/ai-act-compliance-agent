@@ -1,0 +1,33 @@
+records:
+- norm_id: AIA-NORM-A063-P1-SIMPLIFIED-SME-QUALITY-MANAGEMENT
+  source: A063-P001
+  quote: SMEs, including start-ups, may comply with certain elements of the quality management system required by Article 17 in a simplified manner, provided that they do not have partner enterprises or linked enterprises within the meaning of Recommendation 2003/361/EC.
+  action: comply with eligible Article 17 quality-management elements in the authorised simplified manner
+  subject_ref: sme_provider
+  subject_category: supported_operator
+  kind: permission
+  conditions: [the SME has no partner enterprise or linked enterprise within Recommendation 2003/361/EC, simplification is limited to elements identified by Commission guidance]
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A063-P1-COMMISSION-SIMPLIFICATION-GUIDANCE
+  source: A063-P001
+  quote: For that purpose, the Commission shall develop guidelines on the elements of the quality management system which may be complied with in a simplified manner considering the needs of SMEs, without affecting the level of protection or the need for compliance with the requirements in respect of high-risk AI systems.
+  action: develop SME-sensitive quality-management simplification guidelines that preserve protection and high-risk compliance
+  subject_ref: commission
+  subject_category: union_institution_or_body
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A063-P2-NO-BROADER-EXEMPTION
+  source: A063-P002
+  quote: Paragraph 1 of this Article shall not be interpreted as exempting those operators from fulfilling any other requirements or obligations laid down in this Regulation, including those established in Articles 9, 10, 11, 12, 13, 14, 15, 72 and 73.
+  action: preserve every other Regulation requirement and obligation despite the Article 63(1) simplification
+  subject_ref: sme_provider
+  subject_category: supported_operator
+  kind: legal_consequence
+  product_scope: no_product_action
+  product_scope_reason: Limits the simplification's legal effect rather than creating an independent product action.
+  implementation_mode: none_required
+  implementation_reason: No independent product action is required.
+  verification_mode: not_assessed
