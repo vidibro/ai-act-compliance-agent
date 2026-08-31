@@ -49,8 +49,8 @@ def test_inventory_partitions_the_complete_versioned_corpus(metrics):
     assert bundle.text_review.corpus_complete is True
     assert set(grouped) == expected
     assert metrics.documents == 133
-    assert metrics.documents_with_extracted_norms == 48
-    assert metrics.documents_with_review_debt == 88
+    assert metrics.documents_with_extracted_norms == 49
+    assert metrics.documents_with_review_debt == 87
     assert metrics.exact_source_characters == 394_667
     assert set(metrics.norms_by_document) == {
         "article 2",
@@ -92,6 +92,7 @@ def test_inventory_partitions_the_complete_versioned_corpus(metrics):
         "article 37",
         "article 38",
         "article 39",
+        "article 40",
         "article 43",
         "article 50",
         "article 60",
@@ -1572,20 +1573,20 @@ def test_article_twenty_eight_is_complete_institutional_coverage():
 
 
 def test_inventory_cannot_be_misreported_as_independently_approved(metrics):
-    assert metrics.approved_characters == 139_616
-    assert metrics.needs_review_characters == 214_752
+    assert metrics.approved_characters == 143_576
+    assert metrics.needs_review_characters == 210_858
     assert metrics.review_statuses == {
-        "approved": 555,
-        "needs_review": 744,
-        "proposed": 789,
+        "approved": 562,
+        "needs_review": 738,
+        "proposed": 796,
     }
     assert metrics.timed_review_records == 0
-    assert metrics.total_review_records == 2089
+    assert metrics.total_review_records == 2097
 
 
 def test_semantic_pass_finds_propositions_a_shall_scan_misses(metrics):
     assert metrics.shall_vs_semantic_disagreements == 308
-    assert metrics.shall_token_candidate_recall == pytest.approx(351 / 659)
+    assert metrics.shall_token_candidate_recall == pytest.approx(359 / 667)
     assert "AIA-NORM-A011-P1-SIMPLIFY" in metrics.semantic_norms_without_shall_token
     assert "AIA-NORM-A043-P5-AMEND" in metrics.semantic_norms_without_shall_token
     assert "AIA-NORM-A060-P4-PERMISSION" in metrics.semantic_norms_without_shall_token
@@ -1593,13 +1594,13 @@ def test_semantic_pass_finds_propositions_a_shall_scan_misses(metrics):
 
 
 def test_metrics_expose_many_to_many_and_implementation_debt(metrics):
-    assert metrics.normative_segments_with_multiple_norms == 148
+    assert metrics.normative_segments_with_multiple_norms == 149
     assert metrics.mapping_shape.one_norm_to_one_target == 11
     assert metrics.mapping_shape.many_norms_to_one_target == 266
     assert metrics.mapping_shape.one_norm_to_many_targets == 1
     assert metrics.mapping_shape.many_to_many == 10
-    assert metrics.mapping_shape.unmapped == 371
-    assert metrics.semantic_vs_existing_implementation_disagreements == 109
+    assert metrics.mapping_shape.unmapped == 379
+    assert metrics.semantic_vs_existing_implementation_disagreements == 110
     assert metrics.semantic_norms_without_existing_implementation == [
         "AIA-NORM-A002-P1-A-PROVIDER",
         "AIA-NORM-A002-P1-B-DEPLOYER",
@@ -1679,6 +1680,7 @@ def test_metrics_expose_many_to_many_and_implementation_debt(metrics):
         "AIA-NORM-A016-J-CORRECTIVE-ACTION",
         "AIA-NORM-A025-P5-PROTECT-RIGHTS-AND-SECRETS",
         "AIA-NORM-A036-P8-B-PROVIDER-REPLACEMENT-CONFIRMATION",
+        "AIA-NORM-A040-P1-HARMONISED-STANDARD-PRESUMPTION",
         "AIA-NORM-A050-P3-DATA",
         "AIA-NORM-A050-P5-MANNER",
         "AIA-NORM-ANNEX-III-1A-REMOTE-BIOMETRIC-IDENTIFICATION",
@@ -1780,6 +1782,7 @@ def test_metrics_expose_many_to_many_and_implementation_debt(metrics):
         "AIA-NORM-A011-P1-SIMPLIFY",
         "AIA-NORM-A025-P5-PROTECT-RIGHTS-AND-SECRETS",
         "AIA-NORM-A036-P8-B-PROVIDER-REPLACEMENT-CONFIRMATION",
+        "AIA-NORM-A040-P1-HARMONISED-STANDARD-PRESUMPTION",
         "AIA-NORM-A050-P3-DATA",
         "AIA-NORM-ANNEX-III-1A-REMOTE-BIOMETRIC-IDENTIFICATION",
         "AIA-NORM-ANNEX-III-1B-BIOMETRIC-CATEGORISATION",
@@ -2049,6 +2052,34 @@ def test_article_thirty_nine_is_one_conditional_third_country_permission():
     assert norm.kind.value == "permission"
     assert len(norm.conditions) == 2
     assert norm.product_scope.value == "outside_supported_actor"
+
+
+def test_article_forty_separates_presumption_and_standardisation_duties():
+    bundle = load_normative_coverage()
+    segments = [
+        segment
+        for segment in bundle.text_review.segments
+        if segment.source.kind.value == "article" and segment.source.document == "40"
+    ]
+    norms = {
+        norm.norm_id: norm
+        for norm in bundle.norm_inventory.norms
+        if norm.norm_id.startswith("AIA-NORM-A040-")
+    }
+
+    assert len(segments) == 7
+    assert all(segment.review.status.value == "approved" for segment in segments)
+    assert all(segment.review.verified_by == "codex" for segment in segments)
+    assert len(norms) == 8
+    assert sum(norm.kind.value == "obligation" for norm in norms.values()) == 7
+    assert sum(norm.kind.value == "legal_consequence" for norm in norms.values()) == 1
+    assert len(segments[2].norm_ids) == 3
+    presumption = norms["AIA-NORM-A040-P1-HARMONISED-STANDARD-PRESUMPTION"]
+    assert presumption.product_scope.value == "in_scope"
+    assert presumption.implementation_mode.value == "missing"
+    assert len(presumption.conditions) == 2
+    objectives = norms["AIA-NORM-A040-P3-STANDARDISATION-OBJECTIVES"]
+    assert len(objectives.mandatory_content) == 4
 
 
 def test_annex_inventory_keeps_external_actors_and_exact_mandatory_content():
