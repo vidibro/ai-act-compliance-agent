@@ -49,8 +49,8 @@ def test_inventory_partitions_the_complete_versioned_corpus(metrics):
     assert bundle.text_review.corpus_complete is True
     assert set(grouped) == expected
     assert metrics.documents == 133
-    assert metrics.documents_with_extracted_norms == 51
-    assert metrics.documents_with_review_debt == 84
+    assert metrics.documents_with_extracted_norms == 52
+    assert metrics.documents_with_review_debt == 83
     assert metrics.exact_source_characters == 394_667
     assert set(metrics.norms_by_document) == {
         "article 2",
@@ -96,6 +96,7 @@ def test_inventory_partitions_the_complete_versioned_corpus(metrics):
         "article 41",
         "article 42",
         "article 43",
+        "article 44",
         "article 50",
         "article 60",
         "article 75",
@@ -1575,20 +1576,20 @@ def test_article_twenty_eight_is_complete_institutional_coverage():
 
 
 def test_inventory_cannot_be_misreported_as_independently_approved(metrics):
-    assert metrics.approved_characters == 155_342
-    assert metrics.needs_review_characters == 203_108
+    assert metrics.approved_characters == 156_800
+    assert metrics.needs_review_characters == 201_675
     assert metrics.review_statuses == {
-        "approved": 588,
-        "needs_review": 718,
-        "proposed": 812,
+        "approved": 593,
+        "needs_review": 714,
+        "proposed": 819,
     }
     assert metrics.timed_review_records == 0
-    assert metrics.total_review_records == 2119
+    assert metrics.total_review_records == 2127
 
 
 def test_semantic_pass_finds_propositions_a_shall_scan_misses(metrics):
-    assert metrics.shall_vs_semantic_disagreements == 310
-    assert metrics.shall_token_candidate_recall == pytest.approx(379 / 689)
+    assert metrics.shall_vs_semantic_disagreements == 312
+    assert metrics.shall_token_candidate_recall == pytest.approx(385 / 697)
     assert "AIA-NORM-A011-P1-SIMPLIFY" in metrics.semantic_norms_without_shall_token
     assert "AIA-NORM-A043-P5-AMEND" in metrics.semantic_norms_without_shall_token
     assert "AIA-NORM-A060-P4-PERMISSION" in metrics.semantic_norms_without_shall_token
@@ -1596,13 +1597,13 @@ def test_semantic_pass_finds_propositions_a_shall_scan_misses(metrics):
 
 
 def test_metrics_expose_many_to_many_and_implementation_debt(metrics):
-    assert metrics.normative_segments_with_multiple_norms == 154
+    assert metrics.normative_segments_with_multiple_norms == 156
     assert metrics.mapping_shape.one_norm_to_one_target == 11
     assert metrics.mapping_shape.many_norms_to_one_target == 271
     assert metrics.mapping_shape.one_norm_to_many_targets == 1
     assert metrics.mapping_shape.many_to_many == 10
-    assert metrics.mapping_shape.unmapped == 396
-    assert metrics.semantic_vs_existing_implementation_disagreements == 115
+    assert metrics.mapping_shape.unmapped == 404
+    assert metrics.semantic_vs_existing_implementation_disagreements == 119
     assert metrics.semantic_norms_without_existing_implementation == [
         "AIA-NORM-A002-P1-A-PROVIDER",
         "AIA-NORM-A002-P1-B-DEPLOYER",
@@ -1688,6 +1689,10 @@ def test_metrics_expose_many_to_many_and_implementation_debt(metrics):
         "AIA-NORM-A042-P1-REPRESENTATIVE-DATA-PRESUMPTION",
         "AIA-NORM-A042-P2-CYBERSECURITY-CERTIFICATE-PRESUMPTION",
         "AIA-NORM-A042-P3-CYBER-RESILIENCE-DEEMING",
+        "AIA-NORM-A044-P2-CERTIFICATE-VALIDITY-PERIOD",
+        "AIA-NORM-A044-P2-EXTEND-CERTIFICATE",
+        "AIA-NORM-A044-P2-SUPPLEMENT-VALIDITY",
+        "AIA-NORM-A044-P3-CORRECTIVE-ACTION-EXCEPTION",
         "AIA-NORM-A050-P3-DATA",
         "AIA-NORM-A050-P5-MANNER",
         "AIA-NORM-ANNEX-III-1A-REMOTE-BIOMETRIC-IDENTIFICATION",
@@ -1795,6 +1800,10 @@ def test_metrics_expose_many_to_many_and_implementation_debt(metrics):
         "AIA-NORM-A042-P1-REPRESENTATIVE-DATA-PRESUMPTION",
         "AIA-NORM-A042-P2-CYBERSECURITY-CERTIFICATE-PRESUMPTION",
         "AIA-NORM-A042-P3-CYBER-RESILIENCE-DEEMING",
+        "AIA-NORM-A044-P2-CERTIFICATE-VALIDITY-PERIOD",
+        "AIA-NORM-A044-P2-EXTEND-CERTIFICATE",
+        "AIA-NORM-A044-P2-SUPPLEMENT-VALIDITY",
+        "AIA-NORM-A044-P3-CORRECTIVE-ACTION-EXCEPTION",
         "AIA-NORM-A050-P3-DATA",
         "AIA-NORM-ANNEX-III-1A-REMOTE-BIOMETRIC-IDENTIFICATION",
         "AIA-NORM-ANNEX-III-1B-BIOMETRIC-CATEGORISATION",
@@ -2186,6 +2195,33 @@ def test_article_forty_three_reconciles_all_conformity_routes():
     exclusion = norms["AIA-NORM-A043-P4-PREDETERMINED-CHANGE-EXCLUSION"]
     assert exclusion.kind.value == "applicability"
     assert exclusion.product_scope.value == "dependency_only"
+
+
+def test_article_forty_four_separates_certificate_status_effects():
+    bundle = load_normative_coverage()
+    segments = [
+        segment
+        for segment in bundle.text_review.segments
+        if segment.source.kind.value == "article" and segment.source.document == "44"
+    ]
+    norms = {
+        norm.norm_id: norm
+        for norm in bundle.norm_inventory.norms
+        if norm.norm_id.startswith("AIA-NORM-A044-")
+    }
+
+    assert len(segments) == 5
+    assert all(segment.review.status.value == "approved" for segment in segments)
+    assert all(segment.review.verified_by == "codex" for segment in segments)
+    assert len(norms) == 8
+    assert len(segments[2].norm_ids) == 3
+    assert len(segments[3].norm_ids) == 3
+    missing = [norm for norm in norms.values() if norm.implementation_mode.value == "missing"]
+    assert len(missing) == 4
+    assert all(norm.product_scope.value == "in_scope" for norm in missing)
+    extension = norms["AIA-NORM-A044-P2-EXTEND-CERTIFICATE"]
+    assert extension.kind.value == "entitlement"
+    assert len(extension.conditions) == 2
 
 
 def test_annex_inventory_keeps_external_actors_and_exact_mandatory_content():

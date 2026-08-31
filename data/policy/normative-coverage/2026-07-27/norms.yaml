@@ -25333,6 +25333,301 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+- norm_id: AIA-NORM-A044-P1-CERTIFICATE-LANGUAGE
+  act_version_date: '2026-07-27'
+  kind: obligation
+  subjects:
+  - subject_ref: notified_body
+    category: notified_or_conformity_body
+  action: issue Annex VII certificates in a language easily understood by the relevant establishment-state
+    authorities
+  norm_text: Certificates issued by notified bodies in accordance with Annex VII shall be drawn-up in
+    a language which can be easily understood by the relevant authorities in the Member State in which
+    the notified body is established.
+  detection_channels:
+  - semantic_legal_effect
+  - shall_token
+  primary_spans:
+  - AIA-TEXT-A044-P001
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions: []
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_refs: []
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A044-P2-CERTIFICATE-VALIDITY-PERIOD
+  act_version_date: '2026-07-27'
+  kind: legal_consequence
+  subjects:
+  - subject_ref: certificate_holder
+    category: supported_operator
+  action: limit indicated certificate validity to five years for Annex I systems and four years for Annex
+    III systems
+  norm_text: Certificates shall be valid for the period they indicate, which shall not exceed five years
+    for AI systems covered by Annex I, and four years for AI systems covered by Annex III.
+  detection_channels:
+  - semantic_legal_effect
+  - shall_token
+  - deeming_or_consequence
+  primary_spans:
+  - AIA-TEXT-A044-P002
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions: []
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: in_scope
+  product_scope_reason: ''
+  implementation_mode: missing
+  implementation_refs: []
+  implementation_reason: ''
+  verification_mode: unresolved
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A044-P2-EXTEND-CERTIFICATE
+  act_version_date: '2026-07-27'
+  kind: entitlement
+  subjects:
+  - subject_ref: provider
+    category: supported_operator
+  action: extend certificate validity after provider request and applicable reassessment within the enacted
+    duration caps
+  norm_text: At the request of the provider, the validity of a certificate may be extended for further
+    periods, each not exceeding five years for AI systems covered by Annex I, and four years for AI systems
+    covered by Annex III, based on a re-assessment in accordance with the applicable conformity assessment
+    procedures.
+  detection_channels:
+  - semantic_legal_effect
+  - other_modal
+  primary_spans:
+  - AIA-TEXT-A044-P002
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions:
+  - the provider requests the extension
+  - applicable conformity-assessment procedures are used for reassessment
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: in_scope
+  product_scope_reason: ''
+  implementation_mode: missing
+  implementation_refs: []
+  implementation_reason: ''
+  verification_mode: unresolved
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A044-P2-SUPPLEMENT-VALIDITY
+  act_version_date: '2026-07-27'
+  kind: legal_consequence
+  subjects:
+  - subject_ref: certificate_holder
+    category: supported_operator
+  action: preserve a certificate supplement's validity while its underlying certificate remains valid
+  norm_text: Any supplement to a certificate shall remain valid, provided that the certificate which it
+    supplements is valid.
+  detection_channels:
+  - semantic_legal_effect
+  - shall_token
+  - deeming_or_consequence
+  primary_spans:
+  - AIA-TEXT-A044-P002
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions:
+  - the underlying certificate remains valid
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: in_scope
+  product_scope_reason: ''
+  implementation_mode: missing
+  implementation_refs: []
+  implementation_reason: ''
+  verification_mode: unresolved
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A044-P3-CERTIFICATE-MEASURE
+  act_version_date: '2026-07-27'
+  kind: obligation
+  subjects:
+  - subject_ref: notified_body
+    category: notified_or_conformity_body
+  action: proportionately suspend, withdraw, or restrict a certificate after Section 2 noncompliance unless
+    timely corrective action restores compliance
+  norm_text: Where a notified body finds that an AI system no longer meets the requirements set out in
+    Section 2, it shall, taking account of the principle of proportionality, suspend or withdraw the certificate
+    issued or impose restrictions on it, unless compliance with those requirements is ensured by appropriate
+    corrective action taken by the provider of the system within an appropriate deadline set by the notified
+    body.
+  detection_channels:
+  - semantic_legal_effect
+  - shall_token
+  primary_spans:
+  - AIA-TEXT-A044-P003
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions: []
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_refs: []
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A044-P3-CORRECTIVE-ACTION-EXCEPTION
+  act_version_date: '2026-07-27'
+  kind: legal_consequence
+  subjects:
+  - subject_ref: provider
+    category: supported_operator
+  action: avoid certificate suspension, withdrawal, or restriction by restoring compliance through appropriate
+    corrective action within the notified-body deadline
+  norm_text: unless compliance with those requirements is ensured by appropriate corrective action taken
+    by the provider of the system within an appropriate deadline set by the notified body
+  detection_channels:
+  - semantic_legal_effect
+  - deeming_or_consequence
+  primary_spans:
+  - AIA-TEXT-A044-P003
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions: []
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: in_scope
+  product_scope_reason: ''
+  implementation_mode: missing
+  implementation_refs: []
+  implementation_reason: ''
+  verification_mode: unresolved
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A044-P3-GIVE-REASONS
+  act_version_date: '2026-07-27'
+  kind: obligation
+  subjects:
+  - subject_ref: notified_body
+    category: notified_or_conformity_body
+  action: give reasons for the certificate decision
+  norm_text: The notified body shall give reasons for its decision.
+  detection_channels:
+  - semantic_legal_effect
+  - shall_token
+  primary_spans:
+  - AIA-TEXT-A044-P003
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions: []
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_refs: []
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A044-P3-APPEAL-PROCEDURE
+  act_version_date: '2026-07-27'
+  kind: obligation
+  subjects:
+  - subject_ref: notified_body
+    category: notified_or_conformity_body
+  action: make an appeal procedure available against notified-body decisions, including certificate decisions
+  norm_text: An appeal procedure against decisions of the notified bodies, including on conformity certificates
+    issued, shall be available.
+  detection_channels:
+  - semantic_legal_effect
+  - shall_token
+  primary_spans:
+  - AIA-TEXT-A044-P004
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions: []
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_refs: []
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
 - norm_id: AIA-NORM-A050-P1-DISCLOSE
   act_version_date: '2026-07-27'
   kind: obligation
