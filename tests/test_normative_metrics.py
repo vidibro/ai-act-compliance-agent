@@ -49,8 +49,8 @@ def test_inventory_partitions_the_complete_versioned_corpus(metrics):
     assert bundle.text_review.corpus_complete is True
     assert set(grouped) == expected
     assert metrics.documents == 133
-    assert metrics.documents_with_extracted_norms == 38
-    assert metrics.documents_with_review_debt == 98
+    assert metrics.documents_with_extracted_norms == 39
+    assert metrics.documents_with_review_debt == 97
     assert metrics.exact_source_characters == 394_667
     assert set(metrics.norms_by_document) == {
         "article 2",
@@ -82,6 +82,7 @@ def test_inventory_partitions_the_complete_versioned_corpus(metrics):
         "article 27",
         "article 28",
         "article 29",
+        "article 30",
         "article 43",
         "article 50",
         "article 60",
@@ -1562,20 +1563,20 @@ def test_article_twenty_eight_is_complete_institutional_coverage():
 
 
 def test_inventory_cannot_be_misreported_as_independently_approved(metrics):
-    assert metrics.approved_characters == 120_865
-    assert metrics.needs_review_characters == 232_949
+    assert metrics.approved_characters == 123_330
+    assert metrics.needs_review_characters == 230_519
     assert metrics.review_statuses == {
-        "approved": 488,
-        "needs_review": 801,
-        "proposed": 725,
+        "approved": 495,
+        "needs_review": 795,
+        "proposed": 733,
     }
     assert metrics.timed_review_records == 0
-    assert metrics.total_review_records == 2015
+    assert metrics.total_review_records == 2024
 
 
 def test_semantic_pass_finds_propositions_a_shall_scan_misses(metrics):
-    assert metrics.shall_vs_semantic_disagreements == 296
-    assert metrics.shall_token_candidate_recall == pytest.approx(289 / 585)
+    assert metrics.shall_vs_semantic_disagreements == 299
+    assert metrics.shall_token_candidate_recall == pytest.approx(295 / 594)
     assert "AIA-NORM-A011-P1-SIMPLIFY" in metrics.semantic_norms_without_shall_token
     assert "AIA-NORM-A043-P5-AMEND" in metrics.semantic_norms_without_shall_token
     assert "AIA-NORM-A060-P4-PERMISSION" in metrics.semantic_norms_without_shall_token
@@ -1583,12 +1584,12 @@ def test_semantic_pass_finds_propositions_a_shall_scan_misses(metrics):
 
 
 def test_metrics_expose_many_to_many_and_implementation_debt(metrics):
-    assert metrics.normative_segments_with_multiple_norms == 134
+    assert metrics.normative_segments_with_multiple_norms == 136
     assert metrics.mapping_shape.one_norm_to_one_target == 11
     assert metrics.mapping_shape.many_norms_to_one_target == 266
     assert metrics.mapping_shape.one_norm_to_many_targets == 1
     assert metrics.mapping_shape.many_to_many == 10
-    assert metrics.mapping_shape.unmapped == 297
+    assert metrics.mapping_shape.unmapped == 306
     assert metrics.semantic_vs_existing_implementation_disagreements == 108
     assert metrics.semantic_norms_without_existing_implementation == [
         "AIA-NORM-A002-P1-A-PROVIDER",

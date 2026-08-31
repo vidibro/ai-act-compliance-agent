@@ -20955,6 +20955,344 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+- norm_id: AIA-NORM-A030-P1-ARTICLE-31-GATE
+  act_version_date: '2026-07-27'
+  kind: prohibition
+  subjects:
+  - subject_ref: notifying_authority
+    category: public_authority
+  action: notify only conformity-assessment bodies satisfying Article 31
+  norm_text: Notifying authorities may notify only conformity assessment bodies which have satisfied the
+    requirements laid down in Article 31.
+  detection_channels:
+  - semantic_legal_effect
+  - other_modal
+  primary_spans:
+  - AIA-TEXT-A030-P001
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions: []
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_refs: []
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A030-P2-ELECTRONIC-NOTIFICATION
+  act_version_date: '2026-07-27'
+  kind: obligation
+  subjects:
+  - subject_ref: notifying_authority
+    category: public_authority
+  action: notify the Commission and other Member States of qualifying bodies using Annex XIV classifications
+    and the Commission tool
+  norm_text: Notifying authorities shall notify the Commission and the other Member States, based on the
+    list of codes, categories, and corresponding types of AI systems referred to in Annex XIV, and using
+    the electronic notification tool developed and managed by the Commission, of each conformity assessment
+    body referred to in paragraph 1.
+  detection_channels:
+  - semantic_legal_effect
+  - shall_token
+  primary_spans:
+  - AIA-TEXT-A030-P002
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions: []
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_refs: []
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A030-P2-AMEND-ANNEX-XIV
+  act_version_date: '2026-07-27'
+  kind: power
+  subjects:
+  - subject_ref: commission
+    category: union_institution_or_body
+  action: amend Annex XIV classifications by delegated act in response to technical, knowledge, or scientific
+    developments
+  norm_text: The Commission is empowered to adopt delegated acts in accordance with Article 97 in order
+    to amend Annex XIV, in light of technical progress, advances in knowledge or new scientific evidence
+    by adding to the list of codes, categories, and corresponding types of AI systems a new code, a category
+    or a type of AI system, withdrawing an existing code, category or a type of AI system from that list
+    or moving a code or type of AI system from one category to another.
+  detection_channels:
+  - semantic_legal_effect
+  - other_modal
+  primary_spans:
+  - AIA-TEXT-A030-P003
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions: []
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_refs: []
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A030-P3-NOTIFICATION-CONTENT
+  act_version_date: '2026-07-27'
+  kind: obligation
+  subjects:
+  - subject_ref: notifying_authority
+    category: public_authority
+  action: include complete assessment scope and competence information in the body notification
+  norm_text: The notification referred to in paragraph 2 of this Article shall include full details of
+    the conformity assessment activities, the conformity assessment module or modules, the types of AI
+    systems concerned, and the relevant attestation of competence.
+  detection_channels:
+  - semantic_legal_effect
+  - shall_token
+  primary_spans:
+  - AIA-TEXT-A030-P004
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions: []
+  exceptions: []
+  mandatory_content:
+  - conformity assessment activities
+  - conformity assessment modules
+  - AI-system types
+  - relevant competence attestation
+  dependencies: []
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_refs: []
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A030-P3-NONACCREDITED-EVIDENCE
+  act_version_date: '2026-07-27'
+  kind: obligation
+  subjects:
+  - subject_ref: notifying_authority
+    category: public_authority
+  action: provide competence and continuing-monitoring evidence for a notification not based on accreditation
+  norm_text: Where a notification is not based on an accreditation certificate as referred to in Article
+    29(2), the notifying authority shall provide the Commission and the other Member States with documentary
+    evidence which attests to the competence of the conformity assessment body and to the arrangements
+    in place to ensure that that body will be monitored regularly and will continue to satisfy the requirements
+    laid down in Article 31.
+  detection_channels:
+  - semantic_legal_effect
+  - shall_token
+  primary_spans:
+  - AIA-TEXT-A030-P004
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions:
+  - the notification is not based on an Article 29(2) accreditation certificate
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_refs: []
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A030-P4-NO-OBJECTION-AUTHORISATION
+  act_version_date: '2026-07-27'
+  kind: permission
+  subjects:
+  - subject_ref: conformity_assessment_body
+    category: notified_or_conformity_body
+  action: permit notified-body activities only after the applicable no-objection period expires
+  norm_text: The conformity assessment body concerned may perform the activities of a notified body only
+    where no objections are raised by the Commission or the other Member States within two weeks of a
+    notification by a notifying authority where it includes an accreditation certificate referred to in
+    Article 29(2), or within two months of a notification by the notifying authority where it includes
+    documentary evidence referred to in Article 29(3).
+  detection_channels:
+  - semantic_legal_effect
+  - other_modal
+  primary_spans:
+  - AIA-TEXT-A030-P005
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions:
+  - no Commission or Member-State objection within two weeks for an accredited notification or two months
+    for an evidence-based notification
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_refs: []
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A030-P5-CONSULT-ON-OBJECTIONS
+  act_version_date: '2026-07-27'
+  kind: obligation
+  subjects:
+  - subject_ref: commission
+    category: union_institution_or_body
+  action: promptly consult the relevant Member States and conformity body when objections arise
+  norm_text: Where objections are raised, the Commission shall, without delay, enter into consultations
+    with the relevant Member States and the conformity assessment body.
+  detection_channels:
+  - semantic_legal_effect
+  - shall_token
+  primary_spans:
+  - AIA-TEXT-A030-P006
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions:
+  - objections are raised to the notification
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_refs: []
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A030-P5-DECIDE-AUTHORISATION
+  act_version_date: '2026-07-27'
+  kind: obligation
+  subjects:
+  - subject_ref: commission
+    category: union_institution_or_body
+  action: decide whether the disputed authorisation is justified
+  norm_text: In view thereof, the Commission shall decide whether the authorisation is justified.
+  detection_channels:
+  - semantic_legal_effect
+  - shall_token
+  primary_spans:
+  - AIA-TEXT-A030-P006
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions:
+  - objections are raised to the notification
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_refs: []
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A030-P5-ADDRESS-DECISION
+  act_version_date: '2026-07-27'
+  kind: obligation
+  subjects:
+  - subject_ref: commission
+    category: union_institution_or_body
+  action: address the authorisation decision to the concerned Member State and conformity body
+  norm_text: The Commission shall address its decision to the Member State concerned and to the relevant
+    conformity assessment body.
+  detection_channels:
+  - semantic_legal_effect
+  - shall_token
+  primary_spans:
+  - AIA-TEXT-A030-P006
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions:
+  - objections are raised to the notification
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_refs: []
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
 - norm_id: AIA-NORM-A043-P3-PROCEDURE
   act_version_date: '2026-07-27'
   kind: obligation
