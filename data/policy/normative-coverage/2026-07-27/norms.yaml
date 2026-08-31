@@ -31167,6 +31167,900 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+- norm_id: AIA-NORM-A057-P1-ESTABLISH-NATIONAL-SANDBOX
+  act_version_date: '2026-07-27'
+  kind: obligation
+  subjects:
+  - subject_ref: member_state
+    category: member_state
+  action: ensure at least one national AI regulatory sandbox is operational by 2 August 2027, individually
+    or jointly
+  norm_text: Member States shall ensure that their competent authorities establish at least one AI regulatory
+    sandbox at national level, which shall be operational by 2 August 2027. That sandbox may also be established
+    jointly with the competent authorities of other Member States.
+  detection_channels:
+  - semantic_legal_effect
+  - shall_token
+  - other_modal
+  primary_spans:
+  - AIA-TEXT-A057-P001
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions: []
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_refs: []
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A057-P1-COMMISSION-SUPPORT
+  act_version_date: '2026-07-27'
+  kind: power
+  subjects:
+  - subject_ref: commission
+    category: union_institution_or_body
+  action: provide technical support, advice, and tools for sandbox establishment and operation
+  norm_text: The Commission may provide technical support, advice and tools for the establishment and
+    operation of AI regulatory sandboxes.
+  detection_channels:
+  - semantic_legal_effect
+  - other_modal
+  primary_spans:
+  - AIA-TEXT-A057-P001
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions: []
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_refs: []
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A057-P1-EQUIVALENT-PARTICIPATION
+  act_version_date: '2026-07-27'
+  kind: permission
+  subjects:
+  - subject_ref: member_state
+    category: member_state
+  action: fulfil the national-sandbox obligation through participation providing equivalent national coverage
+  norm_text: The obligation under the first subparagraph may also be fulfilled by participating in an
+    existing sandbox in so far as that participation provides an equivalent level of national coverage
+    for the participating Member States.
+  detection_channels:
+  - semantic_legal_effect
+  - other_modal
+  primary_spans:
+  - AIA-TEXT-A057-P002
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions:
+  - participation in the existing sandbox provides equivalent national coverage
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_refs: []
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A057-P2-ADDITIONAL-SANDBOXES
+  act_version_date: '2026-07-27'
+  kind: permission
+  subjects:
+  - subject_ref: member_state_or_competent_authority
+    category: public_authority
+  action: establish additional regional, local, or jointly operated sandboxes
+  norm_text: Additional AI regulatory sandboxes at regional or local level, or established jointly with
+    the competent authorities of other Member States may also be established.
+  detection_channels:
+  - semantic_legal_effect
+  - other_modal
+  primary_spans:
+  - AIA-TEXT-A057-P003
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions: []
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_refs: []
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A057-P3-EDPS-SANDBOX
+  act_version_date: '2026-07-27'
+  kind: power
+  subjects:
+  - subject_ref: european_data_protection_supervisor
+    category: union_institution_or_body
+  action: establish and act as competent authority for a Union-institution AI regulatory sandbox
+  norm_text: The European Data Protection Supervisor may establish an AI regulatory sandbox for Union
+    institutions, bodies, offices and agencies. For this purpose, references to national competent authorities
+    in this Chapter shall be construed as references to the European Data Protection Supervisor.
+  detection_channels:
+  - semantic_legal_effect
+  - shall_token
+  - other_modal
+  primary_spans:
+  - AIA-TEXT-A057-P004
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions: []
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_refs: []
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A057-P3A-AI-OFFICE-SANDBOX
+  act_version_date: '2026-07-27'
+  kind: power
+  subjects:
+  - subject_ref: ai_office
+    category: union_institution_or_body
+  action: establish and implement an Article 75(1) Union sandbox with relevant-authority cooperation and
+    priority SME, start-up, and SMC access
+  norm_text: The AI Office may establish an AI regulatory sandbox at Union level for AI systems covered
+    by Article 75(1). For this purpose, references to national competent authorities in this Chapter shall
+    be construed, where relevant, as references to the AI Office. That AI regulatory sandbox shall be
+    implemented in close cooperation with relevant competent authorities, in particular where compliance
+    with Union legislation other than this Regulation is supervised in the AI regulatory sandbox, and
+    shall provide priority access to SMEs, including start-ups, and SMCs.
+  detection_channels:
+  - semantic_legal_effect
+  - shall_token
+  - other_modal
+  primary_spans:
+  - AIA-TEXT-A057-P005
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions: []
+  exceptions: []
+  mandatory_content:
+  - close cooperation with relevant competent authorities
+  - priority access for SMEs including start-ups and SMCs
+  dependencies: []
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_refs: []
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A057-P4-RESOURCE-AND-AUTHORITY-COORDINATION
+  act_version_date: '2026-07-27'
+  kind: obligation
+  subjects:
+  - subject_ref: member_state
+    category: member_state
+  action: ensure sufficient sandbox resources and appropriate cooperation among national, specialist,
+    and other-sandbox authorities
+  norm_text: Member States shall ensure that the competent authorities referred to in paragraphs 1 and
+    2 allocate sufficient resources to comply with this Article effectively and in a timely manner. Where
+    appropriate, national competent authorities shall cooperate with other relevant authorities, and may
+    allow for the involvement of other actors within the AI ecosystem. This Article shall not affect other
+    regulatory sandboxes established under Union or national law. Member States shall ensure an appropriate
+    level of cooperation between the authorities supervising those other sandboxes and the national competent
+    authorities.
+  detection_channels:
+  - semantic_legal_effect
+  - shall_token
+  - other_modal
+  primary_spans:
+  - AIA-TEXT-A057-P007
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions: []
+  exceptions: []
+  mandatory_content:
+  - sufficient resources for effective timely compliance
+  - appropriate cooperation with relevant and other-sandbox authorities
+  dependencies: []
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_refs: []
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A057-P5-CONTROLLED-SANDBOX-LIFECYCLE
+  act_version_date: '2026-07-27'
+  kind: obligation
+  subjects:
+  - subject_ref: sandbox_competent_authority
+    category: public_authority
+  action: operate a time-limited safeguarded controlled environment under an agreed plan, incorporating
+    applicable real-world testing plans
+  norm_text: AI regulatory sandboxes established under this Article shall provide for a controlled environment
+    that fosters innovation and facilitates the development, training, testing and validation of innovative
+    AI systems for a limited time before their being placed on the market or put into service pursuant
+    to a specific sandbox plan agreed between the providers or prospective providers and the competent
+    authorities, ensuring that appropriate safeguards are in place. Such sandboxes may include testing
+    in real world conditions supervised therein. Where applicable, the sandbox plan shall incorporate
+    the real-world testing plan referred to in Articles 60 and 60a.
+  detection_channels:
+  - semantic_legal_effect
+  - shall_token
+  - other_modal
+  primary_spans:
+  - AIA-TEXT-A057-P008
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions: []
+  exceptions: []
+  mandatory_content:
+  - controlled environment
+  - limited pre-market period
+  - agreed sandbox plan
+  - appropriate safeguards
+  - applicable Articles 60 and 60a testing plan
+  dependencies: []
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_refs: []
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A057-P6-GUIDANCE-SUPERVISION-SUPPORT
+  act_version_date: '2026-07-27'
+  kind: obligation
+  subjects:
+  - subject_ref: sandbox_competent_authority
+    category: public_authority
+  action: provide sandbox guidance, supervision, and support addressing risks, testing, mitigation, effectiveness,
+    and applicable law
+  norm_text: Competent authorities shall provide, as appropriate, guidance, supervision and support within
+    the AI regulatory sandbox with a view to identifying risks, in particular to fundamental rights, health
+    and safety, testing, mitigation measures, and their effectiveness in relation to the obligations and
+    requirements of this Regulation and, where relevant, other Union and national law supervised within
+    the sandbox.
+  detection_channels:
+  - semantic_legal_effect
+  - shall_token
+  primary_spans:
+  - AIA-TEXT-A057-P009
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions: []
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_refs: []
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A057-P7-REGULATORY-EXPECTATIONS-GUIDANCE
+  act_version_date: '2026-07-27'
+  kind: obligation
+  subjects:
+  - subject_ref: sandbox_competent_authority
+    category: public_authority
+  action: guide sandbox participants on regulatory expectations and fulfilment of Regulation obligations
+  norm_text: Competent authorities shall provide providers and prospective providers participating in
+    the AI regulatory sandbox with guidance on regulatory expectations and how to fulfil the requirements
+    and obligations set out in this Regulation.
+  detection_channels:
+  - semantic_legal_effect
+  - shall_token
+  primary_spans:
+  - AIA-TEXT-A057-P010
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions: []
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_refs: []
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A057-P7-SANDBOX-EVIDENCE-PACKAGE
+  act_version_date: '2026-07-27'
+  kind: obligation
+  subjects:
+  - subject_ref: sandbox_competent_authority
+    category: public_authority
+  action: provide requested written proof and an exit report covering activities, results, and learning
+    outcomes
+  norm_text: Upon request of the provider or prospective provider of the AI system, the competent authority
+    shall provide a written proof of the activities successfully carried out in the sandbox. The competent
+    authority shall also provide an exit report detailing the activities carried out in the sandbox and
+    the related results and learning outcomes.
+  detection_channels:
+  - semantic_legal_effect
+  - shall_token
+  primary_spans:
+  - AIA-TEXT-A057-P011
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions: []
+  exceptions: []
+  mandatory_content:
+  - activities carried out
+  - related results
+  - learning outcomes
+  dependencies: []
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_refs: []
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A057-P7-EVIDENTIARY-USE
+  act_version_date: '2026-07-27'
+  kind: legal_consequence
+  subjects:
+  - subject_ref: provider
+    category: supported_operator
+  action: use sandbox documentation as compliance evidence receiving positive consideration in conformity
+    assessment and surveillance
+  norm_text: Providers may use such documentation to demonstrate their compliance with this Regulation
+    through the conformity assessment process or relevant market surveillance activities. In this regard,
+    the exit reports and the written proof provided by the national competent authority shall be taken
+    positively into account by market surveillance authorities and notified bodies, with a view to accelerating
+    conformity assessment procedures to a reasonable extent.
+  detection_channels:
+  - semantic_legal_effect
+  - shall_token
+  - other_modal
+  - deeming_or_consequence
+  primary_spans:
+  - AIA-TEXT-A057-P011
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions: []
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: no_product_action
+  product_scope_reason: Establishes an evidentiary route and consequence rather than a new product action.
+  implementation_mode: none_required
+  implementation_refs: []
+  implementation_reason: No independent product action is required.
+  verification_mode: not_assessed
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A057-P8-EXIT-REPORT-ACCESS
+  act_version_date: '2026-07-27'
+  kind: obligation
+  subjects:
+  - subject_ref: commission_and_board
+    category: union_institution_or_body
+  action: access and appropriately use agreed exit reports, with public release only on explicit provider
+    and authority agreement
+  norm_text: Subject to the confidentiality provisions in Article 78, and with the agreement of the provider
+    or prospective provider, the Commission and the Board shall be authorised to access the exit reports
+    and shall take them into account, as appropriate, when exercising their tasks under this Regulation.
+    If both the provider or prospective provider and the national competent authority explicitly agree,
+    the exit report may be made publicly available through the single information platform referred to
+    in this Article.
+  detection_channels:
+  - semantic_legal_effect
+  - shall_token
+  - other_modal
+  primary_spans:
+  - AIA-TEXT-A057-P012
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions:
+  - Article 78 confidentiality is observed
+  - the provider or prospective provider agrees
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_refs: []
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A057-P9-SANDBOX-OBJECTIVES
+  act_version_date: '2026-07-27'
+  kind: obligation
+  subjects:
+  - subject_ref: sandbox_competent_authority
+    category: public_authority
+  action: design sandbox establishment to contribute to every enacted objective
+  norm_text: The establishment of AI regulatory sandboxes shall aim to contribute to the following objectives
+  detection_channels:
+  - semantic_legal_effect
+  - shall_token
+  - cross_reference_structure
+  primary_spans:
+  - AIA-TEXT-A057-P013
+  qualifier_spans:
+  - AIA-TEXT-A057-P014
+  - AIA-TEXT-A057-P015
+  - AIA-TEXT-A057-P016
+  - AIA-TEXT-A057-P017
+  - AIA-TEXT-A057-P018
+  effective_date_spans: []
+  conditions: []
+  exceptions: []
+  mandatory_content:
+  - legal certainty and compliance
+  - best-practice sharing
+  - innovation competitiveness and ecosystem development
+  - evidence-based regulatory learning
+  - accelerated Union-market access especially for SMEs start-ups and SMCs
+  dependencies: []
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_refs: []
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A057-P10-ASSOCIATE-SPECIALIST-AUTHORITIES
+  act_version_date: '2026-07-27'
+  kind: obligation
+  subjects:
+  - subject_ref: national_competent_authority
+    category: public_authority
+  action: associate and involve data-protection and other competent authorities in sandbox operation and
+    supervision within their remit
+  norm_text: National competent authorities shall ensure that, to the extent the innovative AI systems
+    involve the processing of personal data or otherwise fall under the supervisory remit of other national
+    authorities or competent authorities providing or supporting access to data, the competent data protection
+    authorities and those other national or competent authorities are associated with the operation of
+    the AI regulatory sandbox and involved in the supervision of those aspects to the extent of their
+    respective tasks and powers.
+  detection_channels:
+  - semantic_legal_effect
+  - shall_token
+  primary_spans:
+  - AIA-TEXT-A057-P019
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions: []
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_refs: []
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A057-P11-SUPERVISORY-MITIGATION-WORKFLOW
+  act_version_date: '2026-07-27'
+  kind: obligation
+  subjects:
+  - subject_ref: national_competent_authority
+    category: public_authority
+  action: require adequate mitigation, suspend unmitigable testing or participation, notify the AI Office,
+    and exercise lawful discretion supporting innovation
+  norm_text: Any significant risks to health and safety and fundamental rights identified during the development
+    and testing of such AI systems shall result in an adequate mitigation. National competent authorities
+    shall have the power to temporarily or permanently suspend the testing process, or the participation
+    in the sandbox if no effective mitigation is possible, and shall inform the AI Office of such decision.
+    National competent authorities shall exercise their supervisory powers within the limits of the relevant
+    law, using their discretionary powers when implementing legal provisions in respect of a specific
+    AI regulatory sandbox project, with the objective of supporting innovation in AI in the Union.
+  detection_channels:
+  - semantic_legal_effect
+  - shall_token
+  primary_spans:
+  - AIA-TEXT-A057-P020
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions:
+  - significant health safety or fundamental-rights risks arise during development or testing
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_refs: []
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A057-P12-LIABILITY-AND-FINE-SAFE-HARBOUR
+  act_version_date: '2026-07-27'
+  kind: legal_consequence
+  subjects:
+  - subject_ref: provider_or_prospective_provider
+    category: supported_operator
+  action: preserve third-party damage liability while applying the enacted good-faith sandbox no-fine
+    safe harbours
+  norm_text: Providers and prospective providers participating in the AI regulatory sandbox shall remain
+    liable under applicable Union and national liability law for any damage inflicted on third parties
+    as a result of the experimentation taking place in the sandbox. However, provided that the prospective
+    providers observe the specific plan and the terms and conditions for their participation and follow
+    in good faith the guidance given by the national competent authority, no administrative fines shall
+    be imposed by the authorities for infringements of this Regulation. Where other competent authorities
+    responsible for other Union and national law were actively involved in the supervision of the AI system
+    in the sandbox and provided guidance for compliance, no administrative fines shall be imposed regarding
+    that law.
+  detection_channels:
+  - semantic_legal_effect
+  - shall_token
+  - deeming_or_consequence
+  primary_spans:
+  - AIA-TEXT-A057-P021
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions:
+  - the provider participates in sandbox experimentation
+  - applicable safe-harbour conditions are assessed separately for Regulation and other-law infringements
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: no_product_action
+  product_scope_reason: Defines liability and enforcement consequences rather than an independent product
+    action.
+  implementation_mode: none_required
+  implementation_refs: []
+  implementation_reason: No independent product action is required.
+  verification_mode: not_assessed
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A057-P13-CROSS-BORDER-DESIGN
+  act_version_date: '2026-07-27'
+  kind: obligation
+  subjects:
+  - subject_ref: sandbox_competent_authority
+    category: public_authority
+  action: design and implement sandboxes to facilitate relevant cross-border authority cooperation
+  norm_text: The AI regulatory sandboxes shall be designed and implemented in such a way that, where relevant,
+    they facilitate cross-border cooperation between national competent authorities.
+  detection_channels:
+  - semantic_legal_effect
+  - shall_token
+  primary_spans:
+  - AIA-TEXT-A057-P022
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions: []
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_refs: []
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A057-P14-COORDINATE-SANDBOX-ACTIVITIES
+  act_version_date: '2026-07-27'
+  kind: obligation
+  subjects:
+  - subject_ref: sandbox_public_authorities
+    category: public_authority
+  action: coordinate and cooperate through the Board and support joint sandboxes and best-practice exchange
+  norm_text: National competent authorities, the European Data Protection Supervisor and the AI Office,
+    shall, as appropriate and within their respective competences, coordinate their activities and cooperate
+    within the framework of the Board. They may support the joint establishment and operation of AI regulatory
+    sandboxes, including in different sectors, and exchange best practices on related matters.
+  detection_channels:
+  - semantic_legal_effect
+  - shall_token
+  - other_modal
+  primary_spans:
+  - AIA-TEXT-A057-P023
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions: []
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_refs: []
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A057-P15-NOTIFY-AND-LIST-SANDBOXES
+  act_version_date: '2026-07-27'
+  kind: obligation
+  subjects:
+  - subject_ref: national_competent_authority_and_ai_office
+    category: public_authority
+  action: notify Union bodies of established sandboxes and maintain a public current list supporting interaction
+    and cross-border cooperation
+  norm_text: National competent authorities shall inform the AI Office and the Board of the establishment
+    of a sandbox, and may ask them for support and guidance. The AI Office shall make publicly available
+    a list of planned and existing sandboxes and keep it up to date in order to encourage more interaction
+    in the AI regulatory sandboxes and cross-border cooperation.
+  detection_channels:
+  - semantic_legal_effect
+  - shall_token
+  - other_modal
+  primary_spans:
+  - AIA-TEXT-A057-P024
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions: []
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_refs: []
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A057-P16-SANDBOX-REPORTING
+  act_version_date: '2026-07-27'
+  kind: obligation
+  subjects:
+  - subject_ref: national_competent_authority
+    category: public_authority
+  action: submit, publish, and institutionally use annual and final sandbox reports with all enacted content
+  norm_text: National competent authorities shall submit annual reports to the AI Office and to the Board,
+    from one year after the establishment of the AI regulatory sandbox and every year thereafter until
+    its termination, and a final report. Those reports shall provide information on the progress and results
+    of the implementation of those sandboxes, including best practices, incidents, lessons learnt and
+    recommendations on their setup and, where relevant, on the application and possible revision of this
+    Regulation, including its delegated and implementing acts, and on the application of other Union law
+    supervised by the competent authorities within the sandbox. The national competent authorities shall
+    make those annual reports or abstracts thereof available to the public, online. The Commission shall,
+    where appropriate, take the annual reports into account when exercising its tasks under this Regulation.
+  detection_channels:
+  - semantic_legal_effect
+  - shall_token
+  primary_spans:
+  - AIA-TEXT-A057-P025
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions: []
+  exceptions: []
+  mandatory_content:
+  - implementation progress and results
+  - best practices
+  - incidents
+  - lessons learned
+  - setup recommendations
+  - relevant Regulation revision and other supervised Union-law information
+  dependencies: []
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_refs: []
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A057-P17-SINGLE-INFORMATION-INTERFACE
+  act_version_date: '2026-07-27'
+  kind: obligation
+  subjects:
+  - subject_ref: commission
+    category: union_institution_or_body
+  action: develop a dedicated sandbox information and enquiry interface and proactively coordinate it
+    with national authorities
+  norm_text: The Commission shall develop a single and dedicated interface containing all relevant information
+    related to AI regulatory sandboxes to allow stakeholders to interact with AI regulatory sandboxes
+    and to raise enquiries with competent authorities, and to seek non-binding guidance on the conformity
+    of innovative products, services, business models embedding AI technologies, in accordance with Article
+    62(1), point (c). The Commission shall proactively coordinate with national competent authorities,
+    where relevant.
+  detection_channels:
+  - semantic_legal_effect
+  - shall_token
+  primary_spans:
+  - AIA-TEXT-A057-P026
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions: []
+  exceptions: []
+  mandatory_content:
+  - sandbox information
+  - stakeholder interaction
+  - authority enquiries
+  - non-binding conformity guidance
+  dependencies: []
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_refs: []
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
 - norm_id: AIA-NORM-A060-P4-PERMISSION
   act_version_date: '2026-07-27'
   kind: permission

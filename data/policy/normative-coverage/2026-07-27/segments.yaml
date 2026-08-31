@@ -784,6 +784,20 @@ documents:
     marker: null
     disposition: structural
 - kind: article
+  number: '57'
+  segmentation: paragraphs
+  paragraph_disposition: normative
+  paragraph_reason: ''
+  verified_by: codex
+  paragraph_overrides:
+    P006:
+      disposition: context_only
+      reason: Preserves Member State sandbox competence and creates no independent action.
+  divisions:
+  - label: HEAD
+    marker: null
+    disposition: structural
+- kind: article
   number: '60'
   divisions:
   - label: HEAD
