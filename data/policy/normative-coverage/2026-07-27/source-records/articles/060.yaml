@@ -1,0 +1,57 @@
+records:
+- norm_id: AIA-NORM-A060-P4-PERMISSION
+  source: A060-P4
+  quote: may conduct the testing in real world conditions only where all of the following conditions are
+    met
+  action: conduct real-world testing only when all eleven conditions are met
+  subject_ref: provider
+  subject_category: supported_operator
+  kind: permission
+  implementation_refs:
+  - AIA-PO-A60-4
+  verification_mode: listed_for_confirmation
+  mandatory_content:
+  - testing plan submitted
+  - authority approval or applicable tacit approval
+  - correct registration route
+  - Union establishment or representative
+  - third-country transfer safeguards
+  - six-month limit and extension process
+  - vulnerable-subject protection
+  - participating deployer information, instructions, and agreement
+  - informed consent or law-enforcement substitute safeguards
+  - qualified effective oversight
+  - reversible and disregardable outputs
+- norm_id: AIA-NORM-A060-P4-TACIT
+  source: A060-P4
+  quote: shall be understood to have been approved
+  action: deem testing approved after 30 days of authority silence where national law permits
+  subject_ref: provider
+  subject_category: supported_operator
+  kind: legal_consequence
+  product_scope: dependency_only
+  product_scope_reason: This proposition supplies applicability or content to operator norms.
+  implementation_mode: none_required
+  implementation_reason: Represented as a dependency rather than an independent finding.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A060-P4-EXTEND
+  source: A060-P4
+  quote: may be extended for an additional period of six months
+  action: extend testing once for six months after prior notice and explanation
+  subject_ref: provider
+  subject_category: supported_operator
+  kind: permission
+  implementation_refs:
+  - AIA-PO-A60-4
+  verification_mode: listed_for_confirmation
+  conditions:
+  - prior notification and explanation of need
+- norm_id: AIA-NORM-A060-P4-AGREEMENT
+  source: A060-P4
+  quote: shall conclude an agreement specifying their roles and responsibilities
+  action: conclude a roles-and-responsibilities agreement with participating deployers
+  subject_ref: provider_and_deployer
+  subject_category: supported_operator
+  implementation_refs:
+  - AIA-PO-A60-4
+  verification_mode: listed_for_confirmation

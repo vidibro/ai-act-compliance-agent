@@ -1,0 +1,66 @@
+records:
+- norm_id: AIA-NORM-A021-P1-PROVIDE-CONFORMITY-INFORMATION
+  source: A021-P001
+  quote: Providers of high-risk AI systems shall, upon a reasoned request by a competent authority, provide
+    that authority all the information and documentation necessary to demonstrate the conformity of the
+    high-risk AI system with the requirements set out in Section 2, in a language which can be easily
+    understood by the authority in one of the official languages of the institutions of the Union as indicated
+    by the Member State concerned.
+  action: provide a requesting competent authority with all information and documentation necessary to
+    demonstrate Section 2 conformity
+  subject_ref: provider
+  subject_category: supported_operator
+  conditions: &id001
+  - a competent authority makes a reasoned request
+  implementation_refs: &id002
+  - AIA-PO-A21
+  verification_mode: listed_for_confirmation
+- norm_id: AIA-NORM-A021-P1-AUTHORITY-LANGUAGE
+  source: A021-P001
+  quote: Providers of high-risk AI systems shall, upon a reasoned request by a competent authority, provide
+    that authority all the information and documentation necessary to demonstrate the conformity of the
+    high-risk AI system with the requirements set out in Section 2, in a language which can be easily
+    understood by the authority in one of the official languages of the institutions of the Union as indicated
+    by the Member State concerned.
+  action: provide the requested material in an easily understood official EU-institution language indicated
+    by the relevant Member State
+  subject_ref: provider
+  subject_category: supported_operator
+  conditions: *id001
+  implementation_refs: *id002
+  verification_mode: listed_for_confirmation
+- norm_id: AIA-NORM-A021-P2-PROVIDE-LOG-ACCESS
+  source: A021-P002
+  quote: Upon a reasoned request by a competent authority, providers shall also give the requesting competent
+    authority, as applicable, access to the automatically generated logs of the high-risk AI system referred
+    to in Article 12(1), to the extent such logs are under their control.
+  action: "give a requesting competent authority access to applicable Article 12(1) logs under the provider\u2019\
+    s control"
+  subject_ref: provider
+  subject_category: supported_operator
+  conditions:
+  - a competent authority makes a reasoned request
+  - "the applicable automatically generated logs are under the provider\u2019s control"
+  implementation_refs:
+  - AIA-PO-A21-2
+  verification_mode: listed_for_confirmation
+  dependencies:
+  - dependency_ref: AIA-NORM-A012-P1-AUTOMATIC-LOGGING
+    resolution: internal_resolved
+    detail: Article 12(1) supplies the referenced automatic-logging requirement.
+- norm_id: AIA-NORM-A021-P3-CONFIDENTIALITY
+  source: A021-P003
+  quote: Any information obtained by a competent authority pursuant to this Article shall be treated in
+    accordance with the confidentiality obligations set out in Article 78.
+  action: treat information obtained under Article 21 according to the Article 78 confidentiality obligations
+  subject_ref: competent_authority
+  subject_category: public_authority
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+  dependencies:
+  - dependency_ref: Article 78 of this Regulation
+    resolution: unresolved
+    detail: Article 78 supplies the confidentiality obligations and has not yet been semantically reviewed.

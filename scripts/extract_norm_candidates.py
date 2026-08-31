@@ -36,8 +36,8 @@ def main() -> int:
     requested_version = args.act_version
     coverage_root = rooted(settings.policy_normative_coverage_path) / requested_version
     bundle = load_normative_coverage(
-        coverage_root / "text-review.yaml",
-        coverage_root / "norms.yaml",
+        coverage_root / "text-review",
+        coverage_root / "norms",
         articles_root=rooted(settings.policy_articles_path),
         annexes_root=rooted(settings.policy_annexes_path),
         guidance_root=ROOT / "data" / "policy" / "guidance",

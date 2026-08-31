@@ -1,0 +1,24 @@
+documents:
+- kind: annex
+  number: VII
+  divisions:
+  - label: HEAD
+    marker: null
+    disposition: structural
+  - label: I1
+    marker: 1.Introduction
+    disposition: needs_review
+    reason: Not yet semantically extracted; retained as explicit review debt.
+  - label: I2
+    marker: 2.Overview
+    disposition: needs_review
+    reason: Not yet semantically extracted; retained as explicit review debt.
+  - label: I3
+    marker: 3.Quality management system
+    disposition: normative
+  - label: I4
+    marker: 4.Control of the technical documentation.
+    disposition: normative
+  - label: I5
+    marker: 5.Surveillance
+    disposition: normative

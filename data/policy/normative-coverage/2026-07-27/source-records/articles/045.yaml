@@ -1,0 +1,70 @@
+records:
+- norm_id: AIA-NORM-A045-P1-INFORM-NOTIFYING-AUTHORITY
+  source: A045-P001
+  quote: Notified bodies shall inform the notifying authority of the following
+  action: inform the notifying authority of the complete enacted certificate, notification, request, and
+    activity information
+  subject_ref: notified_body
+  subject_category: notified_or_conformity_body
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+  qualifier_spans:
+  - A045-P002
+  - A045-P003
+  - A045-P004
+  - A045-P005
+  - A045-P006
+  mandatory_content:
+  - Annex VII technical-documentation certificates, supplements, and quality-management approvals issued
+  - refusals, restrictions, suspensions, or withdrawals of those certificates or approvals
+  - circumstances affecting notification scope or conditions
+  - market-surveillance-authority information requests concerning conformity-assessment activities
+  - on request, in-scope conformity-assessment activities and other activities including cross-border
+    work and subcontracting
+- norm_id: AIA-NORM-A045-P2-INFORM-OTHER-NOTIFIED-BODIES
+  source: A045-P007
+  quote: Each notified body shall inform the other notified bodies of
+  action: inform other notified bodies of the enacted approval and certificate outcomes
+  subject_ref: notified_body
+  subject_category: notified_or_conformity_body
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+  qualifier_spans:
+  - A045-P008
+  - A045-P009
+  mandatory_content:
+  - quality-management approvals refused, suspended, or withdrawn and, on request, approvals issued
+  - technical-documentation certificates or supplements refused, withdrawn, suspended, or restricted and,
+    on request, those issued
+- norm_id: AIA-NORM-A045-P3-SHARE-ASSESSMENT-RESULTS
+  source: A045-P010
+  quote: Each notified body shall provide the other notified bodies carrying out similar conformity assessment
+    activities covering the same types of AI systems with relevant information on issues relating to negative
+    and, on request, positive conformity assessment results.
+  action: share relevant negative and, on request, positive assessment-result information with similarly
+    active notified bodies
+  subject_ref: notified_body
+  subject_category: notified_or_conformity_body
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A045-P4-CONFIDENTIALITY
+  source: A045-P011
+  quote: Notified bodies shall safeguard the confidentiality of the information that they obtain, in accordance
+    with Article 78.
+  action: safeguard obtained information confidentiality under Article 78
+  subject_ref: notified_body
+  subject_category: notified_or_conformity_body
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed

@@ -1,0 +1,28 @@
+records:
+- norm_id: AIA-NORM-ANNEX-VIII-A
+  source: ANNEX-VIII-A
+  quote: The following information shall be provided and thereafter kept up to date
+  action: submit and maintain the Section A provider registration information
+  subject_ref: provider
+  subject_category: supported_operator
+  implementation_mode: unresolved
+  verification_mode: unresolved
+  mandatory_content_source: numbered_items
+- norm_id: AIA-NORM-ANNEX-VIII-B
+  source: ANNEX-VIII-B
+  quote: The following information shall be provided and thereafter kept up to date
+  action: submit and maintain the Section B not-high-risk registration information
+  subject_ref: provider
+  subject_category: supported_operator
+  implementation_mode: unresolved
+  verification_mode: unresolved
+  mandatory_content_source: numbered_items
+- norm_id: AIA-NORM-ANNEX-VIII-C
+  source: ANNEX-VIII-C
+  quote: The following information shall be provided and thereafter kept up to date
+  action: submit and maintain the Section C deployer registration information
+  subject_ref: deployer
+  subject_category: supported_operator
+  implementation_mode: unresolved
+  verification_mode: unresolved
+  mandatory_content_source: numbered_items

@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import hashlib
+from datetime import date
 from pathlib import Path
 
 import pytest
@@ -20,7 +21,7 @@ from aiact.norm_builder import (
 )
 from aiact.policy_loader import article_filename, load_policy_spec
 from aiact.schemas.norm import SegmentDisposition, SourceKind, SubjectCategory
-from aiact.yaml_loader import load_yaml_mapping
+from aiact.yaml_loader import load_yaml_mapping_or_shards
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -334,12 +335,39 @@ def test_versioned_builder_inputs_must_use_the_same_act_snapshot(tmp_path):
         load_builder_inputs(configured_paths)
 
 
+def test_yaml_inventory_shards_merge_metadata_lists_and_mappings(tmp_path):
+    shard_root = tmp_path / "source-records"
+    (shard_root / "articles").mkdir(parents=True)
+    (shard_root / "manifest.yaml").write_text(
+        "act_version_date: 2030-01-02\nimplementation_targets: [RULE-1]\n"
+        "carried_by: {NORM-2: [NORM-1]}\n",
+        encoding="utf-8",
+    )
+    (shard_root / "articles" / "001.yaml").write_text(
+        "records:\n- {norm_id: NORM-1}\n",
+        encoding="utf-8",
+    )
+    (shard_root / "articles" / "002.yaml").write_text(
+        "records:\n- {norm_id: NORM-2}\n",
+        encoding="utf-8",
+    )
+
+    merged = load_yaml_mapping_or_shards(shard_root, description="test inventory")
+
+    assert merged == {
+        "act_version_date": date(2030, 1, 2),
+        "implementation_targets": ["RULE-1"],
+        "carried_by": {"NORM-2": ["NORM-1"]},
+        "records": [{"norm_id": "NORM-1"}, {"norm_id": "NORM-2"}],
+    }
+
+
 def test_versioned_implementation_targets_exist_in_the_pinned_policy_spec():
     source_path = (
-        ROOT / "data" / "policy" / "normative-coverage" / "2026-07-27" / "source-records.yaml"
+        ROOT / "data" / "policy" / "normative-coverage" / "2026-07-27" / "source-records"
     )
     source_inventory = NormSourceInventory.model_validate(
-        load_yaml_mapping(source_path, description="norm source inventory")
+        load_yaml_mapping_or_shards(source_path, description="norm source inventory")
     )
     policy = load_policy_spec()
 

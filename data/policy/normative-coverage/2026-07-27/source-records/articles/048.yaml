@@ -1,0 +1,79 @@
+records:
+- norm_id: AIA-NORM-A048-P1-GENERAL-CE-PRINCIPLES
+  source: A048-P001
+  quote: The CE marking shall be subject to the general principles set out in Article 30 of Regulation
+    (EC) No 765/2008.
+  action: apply the Regulation 765/2008 Article 30 general principles to the CE marking
+  subject_ref: provider
+  subject_category: supported_operator
+  implementation_mode: missing
+  verification_mode: unresolved
+- norm_id: AIA-NORM-A048-P2-DIGITAL-CE-MARKING
+  source: A048-P002
+  quote: For high-risk AI systems provided digitally, a digital CE marking shall be used, only if it can
+    easily be accessed via the interface from which that system is accessed or via an easily accessible
+    machine-readable code or other electronic means.
+  action: use an easily accessible digital CE marking for digitally provided high-risk systems
+  subject_ref: provider
+  subject_category: supported_operator
+  implementation_refs:
+  - AIA-PO-A48-2
+  verification_mode: listed_for_confirmation
+  conditions:
+  - the marking is easily accessible through the system interface, a machine-readable code, or other electronic
+    means
+- norm_id: AIA-NORM-A048-P3-AFFIX-CE-MARKING
+  source: A048-P003
+  quote: The CE marking shall be affixed visibly, legibly and indelibly for high-risk AI systems. Where
+    that is not possible or not warranted on account of the nature of the high-risk AI system, it shall
+    be affixed to the packaging or to the accompanying documentation, as appropriate.
+  action: affix the CE marking visibly, legibly, and indelibly, using packaging or accompanying documentation
+    only where system affixing is impossible or unwarranted
+  subject_ref: provider
+  subject_category: supported_operator
+  implementation_refs:
+  - AIA-PO-A48
+  verification_mode: listed_for_confirmation
+- norm_id: AIA-NORM-A048-P4-FOLLOW-WITH-BODY-NUMBER
+  source: A048-P004
+  quote: Where applicable, the CE marking shall be followed by the identification number of the notified
+    body responsible for the conformity assessment procedures set out in Article 43.
+  action: place the responsible notified body's identification number after the CE marking where applicable
+  subject_ref: provider
+  subject_category: supported_operator
+  implementation_refs:
+  - AIA-PO-A48-4
+  verification_mode: listed_for_confirmation
+- norm_id: AIA-NORM-A048-P4-AFFIX-BODY-NUMBER
+  source: A048-P004
+  quote: "The identification number of the notified body shall be affixed by the body itself or, under\
+    \ its instructions, by the provider or by the provider\u2019s authorised representative."
+  action: have the notified-body number affixed by the body or, under its instructions, by the provider
+    or authorised representative
+  subject_ref: provider
+  subject_category: supported_operator
+  implementation_refs:
+  - AIA-PO-A48-4
+  verification_mode: listed_for_confirmation
+- norm_id: AIA-NORM-A048-P4-PROMOTIONAL-BODY-NUMBER
+  source: A048-P004
+  quote: The identification number shall also be indicated in any promotional material which mentions
+    that the high-risk AI system fulfils the requirements for CE marking.
+  action: include the notified-body number in promotional material claiming CE-marking compliance
+  subject_ref: provider
+  subject_category: supported_operator
+  implementation_refs:
+  - AIA-PO-A48-4
+  verification_mode: listed_for_confirmation
+- norm_id: AIA-NORM-A048-P5-OTHER-LAW-COMPLIANCE
+  source: A048-P005
+  quote: Where high-risk AI systems are subject to other Union law which also provides for the affixing
+    of the CE marking, the CE marking shall indicate that the high-risk AI system also fulfil the requirements
+    of that other law.
+  action: make the CE marking indicate compliance with other applicable CE-marking Union law
+  subject_ref: provider
+  subject_category: supported_operator
+  implementation_mode: missing
+  verification_mode: unresolved
+  conditions:
+  - other applicable Union law also provides for affixing the CE marking

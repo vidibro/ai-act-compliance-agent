@@ -1,0 +1,87 @@
+records:
+- norm_id: AIA-NORM-A075-P1-COMPETENCE
+  source: A075-P1
+  quote: The AI Office shall be exclusively competent
+  action: hold exclusive supervision and enforcement competence for the listed systems
+  subject_ref: ai_office
+  subject_category: union_institution_or_body
+  kind: legal_consequence
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A075-P1E-RESPONSIBLE
+  source: A075-P1E
+  quote: The AI Office shall be responsible for conformity assessments and tests
+  action: take responsibility for third-party conformity assessments and tests of paragraph 1 systems
+  subject_ref: ai_office
+  subject_category: union_institution_or_body
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A075-P1E-VERIFY
+  source: A075-P1E
+  quote: Those tests and assessments shall verify that the systems comply
+  action: verify regulatory conformity and market eligibility
+  subject_ref: ai_office
+  subject_category: union_institution_or_body
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A075-P1E-ENTRUST
+  source: A075-P1E
+  quote: The Commission shall entrust the performance of those tests or assessments to notified bodies
+  action: entrust tests or assessments to designated notified bodies
+  subject_ref: commission
+  subject_category: union_institution_or_body
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A075-P1E-ACT
+  source: A075-P1E
+  quote: the notified body shall act on behalf of the Commission
+  action: act on the Commission's behalf when entrusted
+  subject_ref: notified_body
+  subject_category: notified_or_conformity_body
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A075-P1E-WITHDRAW
+  source: A075-P1E
+  quote: the Commission may withdraw the delegation with immediate effect
+  action: withdraw an inadequately performed delegation immediately
+  subject_ref: commission
+  subject_category: union_institution_or_body
+  kind: power
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A075-P1E-FEES
+  source: A075-P1E
+  quote: The fees for testing and assessment activities shall be levied on the provider
+  action: bear testing and assessment fees
+  subject_ref: provider
+  subject_category: supported_operator
+  implementation_refs:
+  - AIA-PO-A75-1E
+  verification_mode: listed_for_confirmation
+- norm_id: AIA-NORM-A075-P1E-PAY
+  source: A075-P1E
+  quote: The provider shall pay the costs related to the services
+  action: pay entrusted-service costs directly to the notified body
+  subject_ref: provider
+  subject_category: supported_operator
+  implementation_refs:
+  - AIA-PO-A75-1E
+  verification_mode: listed_for_confirmation

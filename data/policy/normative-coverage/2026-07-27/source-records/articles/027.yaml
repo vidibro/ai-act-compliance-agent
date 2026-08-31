@@ -1,0 +1,145 @@
+records:
+- norm_id: AIA-NORM-A027-P1-PERFORM-FRIA
+  source: A027-P001
+  quote: 'Prior to deploying a high-risk AI system referred to in Article 6(2), with the exception of
+    high-risk AI systems intended to be used in the area listed in point 2 of Annex III, deployers that
+    are bodies governed by public law, or are private entities providing public services, and deployers
+    of high-risk AI systems referred to in points 5 (b) and (c) of Annex III, shall perform an assessment
+    of the impact on fundamental rights that the use of such system may produce. For that purpose, deployers
+    shall perform an assessment consisting of:'
+  action: perform a fundamental-rights impact assessment containing all six required elements before deploying
+    the qualifying Annex III system
+  subject_ref: qualifying_annex_iii_deployer
+  subject_category: supported_operator
+  conditions: &id001
+  - the system is high-risk under Article 6(2) and is not intended for Annex III point 2
+  - the deployer is governed by public law or provides public services, or the system falls within Annex
+    III point 5(b) or 5(c)
+  implementation_refs: &id004
+  - AIA-DP-A27
+  verification_mode: listed_for_confirmation
+  mandatory_content:
+  - deployer processes and intended-purpose use
+  - intended period and frequency of use
+  - affected natural-person and group categories
+  - specific harm risks informed by Article 13 provider information
+  - implementation of human oversight according to instructions
+  - measures for materialised risks, including internal governance and complaint mechanisms
+  qualifier_spans:
+  - A027-P002
+  - A027-P003
+  - A027-P004
+  - A027-P005
+  - A027-P006
+  - A027-P007
+- norm_id: AIA-NORM-A027-P2-FIRST-USE
+  source: A027-P008
+  quote: The obligation laid down in paragraph 1 applies to the first use of the high-risk AI system.
+  action: apply the fundamental-rights assessment duty to the system's first use
+  subject_ref: qualifying_annex_iii_deployer
+  subject_category: supported_operator
+  kind: applicability
+  conditions: *id001
+  implementation_refs: &id002
+  - AIA-DP-A27-2
+  verification_mode: reported_conditionally
+- norm_id: AIA-NORM-A027-P2-RELY-ON-PREVIOUS-ASSESSMENT
+  source: A027-P008
+  quote: The deployer may, in similar cases, rely on previously conducted fundamental rights impact assessments
+    or existing impact assessments carried out by provider.
+  action: rely in similar cases on a prior fundamental-rights assessment or an existing provider assessment
+  subject_ref: qualifying_annex_iii_deployer
+  subject_category: supported_operator
+  kind: permission
+  conditions:
+  - the prior or provider assessment concerns a similar case
+  implementation_refs: *id002
+  verification_mode: reported_conditionally
+- norm_id: AIA-NORM-A027-P2-UPDATE
+  source: A027-P008
+  quote: If, during the use of the high-risk AI system, the deployer considers that any of the elements
+    listed in paragraph 1 has changed or is no longer up to date, the deployer shall take the necessary
+    steps to update the information.
+  action: update the fundamental-rights assessment information when a required element changes or becomes
+    outdated
+  subject_ref: qualifying_annex_iii_deployer
+  subject_category: supported_operator
+  conditions:
+  - during use, the deployer considers a paragraph 1 element changed or no longer current
+  implementation_refs: *id002
+  verification_mode: listed_for_confirmation
+- norm_id: AIA-NORM-A027-P3-NOTIFY-RESULTS
+  source: A027-P009
+  quote: Once the assessment referred to in paragraph 1 of this Article has been performed, the deployer
+    shall notify the market surveillance authority of its results, submitting the filled-out template
+    referred to in paragraph 5 of this Article as part of the notification.
+  action: notify the market-surveillance authority of the assessment results using the completed paragraph
+    5 template
+  subject_ref: qualifying_annex_iii_deployer
+  subject_category: supported_operator
+  conditions:
+  - the Article 27(1) assessment has been performed
+  implementation_refs: &id003
+  - AIA-DP-A27-3
+  verification_mode: listed_for_confirmation
+  mandatory_content:
+  - assessment results
+  - completed Article 27(5) template
+- norm_id: AIA-NORM-A027-P3-ARTICLE-46-EXEMPTION
+  source: A027-P009
+  quote: In the case referred to in Article 46(1), deployers may be exempt from that obligation to notify.
+  action: exempt the deployer from the result-notification duty in an Article 46(1) case
+  subject_ref: qualifying_annex_iii_deployer
+  subject_category: supported_operator
+  kind: permission
+  conditions:
+  - the deployment falls within Article 46(1)
+  implementation_refs: *id003
+  verification_mode: reported_conditionally
+- norm_id: AIA-NORM-A027-P4-INCORPORATE-DPIA
+  source: A027-P010
+  quote: If any of the obligations laid down in this Article is already met through the data protection
+    impact assessment conducted pursuant to Article 35 of Regulation (EU) 2016/679 or Article 27 of Directive
+    (EU) 2016/680, the deployer may, when conducting the fundamental rights impact assessment referred
+    to in paragraph 1 of this Article, include cross-references to the relevant sections of that data
+    protection impact assessment or include relevant parts thereof in the fundamental rights impact assessment.
+  action: cross-reference or incorporate relevant DPIA sections when they already meet an Article 27 obligation
+  subject_ref: qualifying_annex_iii_deployer
+  subject_category: supported_operator
+  kind: permission
+  conditions:
+  - an applicable DPIA already meets an Article 27 obligation
+  implementation_refs: *id004
+  verification_mode: reported_conditionally
+  dependencies:
+  - dependency_ref: Article 35 of Regulation (EU) 2016/679 or Article 27 of Directive (EU) 2016/680
+    resolution: external_recorded
+    detail: The external instruments define the DPIA whose relevant content may be reused.
+- norm_id: AIA-NORM-A027-P5-AI-OFFICE-TEMPLATE
+  source: A027-P011
+  quote: The AI Office shall develop a template for a questionnaire, including through an automated tool,
+    to facilitate deployers in complying with their obligations under this Article in a simplified manner.
+  action: develop a questionnaire template, potentially through an automated tool, that simplifies deployer
+    compliance
+  subject_ref: ai_office
+  subject_category: union_institution_or_body
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A027-P5-TEMPLATE-DPIA-REUSE
+  source: A027-P011
+  quote: This template shall, where relevant, give deployers the possibility to include cross-references
+    to the relevant sections of the data protection impact assessment or include relevant parts thereof
+    in the fundamental rights impact assessment pursuant to paragraph 4.
+  action: make the template support relevant DPIA cross-references and incorporated sections
+  subject_ref: ai_office
+  subject_category: union_institution_or_body
+  conditions:
+  - DPIA reuse under Article 27(4) is relevant
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed

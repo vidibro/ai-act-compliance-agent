@@ -1,0 +1,185 @@
+records:
+- norm_id: AIA-NORM-A054-P1-APPOINT-REPRESENTATIVE
+  source: A054-P001
+  quote: Prior to placing a general-purpose AI model on the Union market, providers established in third
+    countries shall, by written mandate, appoint an authorised representative which is established in
+    the Union.
+  action: appoint by written mandate a Union-established authorised representative before placing the
+    model on the Union market
+  subject_ref: provider
+  subject_category: supported_operator
+  conditions:
+  - the provider is established in a third country
+  implementation_refs:
+  - AIA-GP-A54-1
+  verification_mode: listed_for_confirmation
+- norm_id: AIA-NORM-A054-P2-ENABLE-REPRESENTATIVE
+  source: A054-P002
+  quote: The provider shall enable its authorised representative to perform the tasks specified in the
+    mandate received from the provider.
+  action: enable the authorised representative to perform every task specified in its mandate
+  subject_ref: provider
+  subject_category: supported_operator
+  implementation_refs:
+  - AIA-GP-A54-2
+  verification_mode: listed_for_confirmation
+- norm_id: AIA-NORM-A054-P3-PERFORM-MANDATE
+  source: A054-P003
+  quote: The authorised representative shall perform the tasks specified in the mandate received from
+    the provider.
+  action: perform every task specified in the provider's mandate
+  subject_ref: authorised_representative
+  subject_category: supported_operator
+  implementation_refs:
+  - AIA-GPAR-A54-3
+  verification_mode: listed_for_confirmation
+- norm_id: AIA-NORM-A054-P3-PROVIDE-MANDATE
+  source: A054-P003
+  quote: It shall provide a copy of the mandate to the AI Office upon request, in one of the official
+    languages of the institutions of the Union.
+  action: provide the AI Office a mandate copy in an official Union-institution language on request
+  subject_ref: authorised_representative
+  subject_category: supported_operator
+  conditions:
+  - the AI Office requests a copy of the mandate
+  implementation_refs:
+  - AIA-GPAR-A54-3
+  verification_mode: listed_for_confirmation
+- norm_id: AIA-NORM-A054-P3-A-VERIFY-COMPLIANCE
+  source: A054-P004
+  quote: verify that the technical documentation specified in Annex XI has been drawn up and all obligations
+    referred to in Article 53 and, where applicable, Article 55 have been fulfilled by the provider
+  action: verify Annex XI documentation and provider fulfilment of Articles 53 and, where applicable,
+    55
+  subject_ref: authorised_representative
+  subject_category: supported_operator
+  qualifier_spans:
+  - A054-P003
+  implementation_refs:
+  - AIA-GPAR-A54-3
+  verification_mode: listed_for_confirmation
+- norm_id: AIA-NORM-A054-P3-B-RETAIN-DOCUMENTATION
+  source: A054-P005
+  quote: keep a copy of the technical documentation specified in Annex XI at the disposal of the AI Office
+    and national competent authorities, for a period of 10 years after the general-purpose AI model has
+    been placed on the market, and the contact details of the provider that appointed the authorised representative
+  action: retain Annex XI documentation and appointing-provider contact details for authorities for 10
+    years after market placement
+  subject_ref: authorised_representative
+  subject_category: supported_operator
+  qualifier_spans:
+  - A054-P003
+  mandatory_content:
+  - Annex XI technical documentation
+  - appointing-provider contact details
+  implementation_refs:
+  - AIA-GPAR-A54-3
+  verification_mode: listed_for_confirmation
+- norm_id: AIA-NORM-A054-P3-C-PROVIDE-COMPLIANCE-INFORMATION
+  source: A054-P006
+  quote: provide the AI Office, upon a reasoned request, with all the information and documentation, including
+    that referred to in point (b), necessary to demonstrate compliance with the obligations in this Chapter
+  action: provide all information and documentation necessary to demonstrate Chapter V compliance on reasoned
+    AI Office request
+  subject_ref: authorised_representative
+  subject_category: supported_operator
+  qualifier_spans:
+  - A054-P003
+  conditions:
+  - the AI Office makes a reasoned request
+  implementation_refs:
+  - AIA-GPAR-A54-3
+  verification_mode: listed_for_confirmation
+- norm_id: AIA-NORM-A054-P3-D-COOPERATE
+  source: A054-P007
+  quote: cooperate with the AI Office and competent authorities, upon a reasoned request, in any action
+    they take in relation to the general-purpose AI model, including when the model is integrated into
+    AI systems placed on the market or put into service in the Union.
+  action: cooperate on reasoned request in authority actions concerning the model, including integrated
+    systems in the Union
+  subject_ref: authorised_representative
+  subject_category: supported_operator
+  qualifier_spans:
+  - A054-P003
+  conditions:
+  - the AI Office or a competent authority makes a reasoned request
+  implementation_refs:
+  - AIA-GPAR-A54-3
+  verification_mode: listed_for_confirmation
+- norm_id: AIA-NORM-A054-P4-AUTHORITY-ADDRESS-TERM
+  source: A054-P008
+  quote: The mandate shall empower the authorised representative to be addressed, in addition to or instead
+    of the provider, by the AI Office or the competent authorities, on all issues related to ensuring
+    compliance with this Regulation.
+  action: empower the representative to be addressed in addition to or instead of the provider on all
+    compliance issues
+  subject_ref: provider
+  subject_category: supported_operator
+  implementation_refs:
+  - AIA-GP-A54-4
+  verification_mode: listed_for_confirmation
+- norm_id: AIA-NORM-A054-P5-TERMINATE-MANDATE
+  source: A054-P009
+  quote: The authorised representative shall terminate the mandate if it considers or has reason to consider
+    the provider to be acting contrary to its obligations pursuant to this Regulation.
+  action: terminate the mandate when the provider is or appears to be acting contrary to regulatory obligations
+  subject_ref: authorised_representative
+  subject_category: supported_operator
+  conditions:
+  - the representative considers or has reason to consider the provider non-compliant
+  implementation_refs:
+  - AIA-GPAR-A54-5
+  verification_mode: listed_for_confirmation
+- norm_id: AIA-NORM-A054-P5-NOTIFY-TERMINATION
+  source: A054-P009
+  quote: In such a case, it shall also immediately inform the AI Office about the termination of the mandate
+    and the reasons therefor.
+  action: immediately inform the AI Office of the mandate termination and its reasons
+  subject_ref: authorised_representative
+  subject_category: supported_operator
+  conditions:
+  - the representative terminates the mandate under Article 54(5)
+  mandatory_content:
+  - the mandate termination
+  - the reasons for termination
+  implementation_refs:
+  - AIA-GPAR-A54-5
+  verification_mode: listed_for_confirmation
+- norm_id: AIA-NORM-A054-P6-OPEN-SOURCE-EXCEPTION
+  source: A054-P010
+  quote: The obligation set out in this Article shall not apply to providers of general-purpose AI models
+    that are released under a free and open-source licence that allows for the access, usage, modification,
+    and distribution of the model, and whose parameters, including the weights, the information on the
+    model architecture, and the information on model usage, are made publicly available
+  action: disapply Article 54 where every enacted free-and-open-source condition is met
+  subject_ref: provider
+  subject_category: supported_operator
+  kind: applicability
+  conditions:
+  - the licence permits access, usage, modification, and distribution
+  - model parameters including weights, architecture information, and usage information are public
+  implementation_refs:
+  - AIA-GP-A54-1
+  - AIA-GP-A54-2
+  - AIA-GPAR-A54-3
+  - AIA-GP-A54-4
+  - AIA-GPAR-A54-5
+  implementation_reason: Each Article 54 rule encodes this exception in its activation condition.
+  verification_mode: listed_for_confirmation
+- norm_id: AIA-NORM-A054-P6-SYSTEMIC-RISK-OVERRIDE
+  source: A054-P010
+  quote: unless the general-purpose AI models present systemic risks.
+  action: restore Article 54 obligations for free-and-open-source models presenting systemic risk
+  subject_ref: provider
+  subject_category: supported_operator
+  kind: applicability
+  conditions:
+  - the general-purpose AI model presents systemic risk
+  implementation_refs:
+  - AIA-GP-A54-1
+  - AIA-GP-A54-2
+  - AIA-GPAR-A54-3
+  - AIA-GP-A54-4
+  - AIA-GPAR-A54-5
+  implementation_reason: Each Article 54 rule disapplies the open-source exception for systemic-risk models.
+  verification_mode: listed_for_confirmation

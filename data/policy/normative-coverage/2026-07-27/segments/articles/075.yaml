@@ -1,0 +1,41 @@
+documents:
+- kind: article
+  number: '75'
+  divisions:
+  - label: HEAD
+    marker: null
+    disposition: structural
+  - label: P1
+    marker: '1. '
+    disposition: normative
+  - label: P1A
+    marker: '1a. '
+    disposition: needs_review
+    reason: Not yet semantically extracted; retained as explicit review debt.
+  - label: P1B
+    marker: '1b. '
+    disposition: needs_review
+    reason: Not yet semantically extracted; retained as explicit review debt.
+  - label: P1C
+    marker: '1c. '
+    disposition: needs_review
+    reason: Not yet semantically extracted; retained as explicit review debt.
+  - label: P1D
+    marker: '1d. '
+    disposition: needs_review
+    reason: Not yet semantically extracted; retained as explicit review debt.
+  - label: P1E
+    marker: '1e. '
+    disposition: normative
+  - label: P2
+    marker: '2. '
+    disposition: needs_review
+    reason: Not yet semantically extracted; retained as explicit review debt.
+  - label: P2A
+    marker: '2a. '
+    disposition: needs_review
+    reason: Not yet semantically extracted; retained as explicit review debt.
+  - label: P3
+    marker: '3. '
+    disposition: needs_review
+    reason: Not yet semantically extracted; retained as explicit review debt.

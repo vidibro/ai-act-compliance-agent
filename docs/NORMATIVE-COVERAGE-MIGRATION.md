@@ -302,8 +302,8 @@ Likely additions:
 - `src/aiact/norm_loader.py`
 - `src/aiact/text_segments.py`
 - `src/aiact/schemas/interpretation.py`
-- `data/policy/normative-coverage/2026-07-27/norms.yaml`
-- `data/policy/normative-coverage/2026-07-27/text-review.yaml`
+- `data/policy/normative-coverage/2026-07-27/norms/`
+- `data/policy/normative-coverage/2026-07-27/text-review/`
 
 The two YAML artifacts may be combined if the pilot shows that review remains practical.
 
@@ -364,12 +364,16 @@ the exit criterion.
 
 Reviewed legal judgments are versioned inputs rather than Python declarations:
 
-- `data/policy/normative-coverage/2026-07-27/segments.yaml` records reviewed document divisions and
+- `data/policy/normative-coverage/2026-07-27/segments/` records reviewed document divisions and
   the provenance of the extraction run;
-- `data/policy/normative-coverage/2026-07-27/source-records.yaml` records exact norm quotations,
+- `data/policy/normative-coverage/2026-07-27/source-records/` records exact norm quotations,
   subjects, dispositions, mappings, dependencies, carrier relationships, and interpretive links.
-- Generated `text-review.yaml`, `norms.yaml`, and `report.md` live beside those inputs, making the
+- Generated `text-review/`, `norms/`, and `report.md` live beside those inputs, making the
   directory a self-contained assurance package for the Act snapshot.
+
+Each YAML directory has a small `manifest.yaml` plus `articles/` and `annexes/` shards. The loader
+merges them into the same validated inventories exposed before sharding, while an individual legal
+review now rewrites only its own authored and generated document files.
 
 `src/aiact/norm_builder.py` contains the reusable compiler. It discovers the complete article and
 annex denominator for the input version, partitions exact source bodies, computes offsets and

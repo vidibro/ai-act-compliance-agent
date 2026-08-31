@@ -1,0 +1,30 @@
+records:
+- norm_id: AIA-NORM-ANNEX-IV-CONTENT
+  source: ANNEX-IV-CHAPEAU
+  quote: shall contain at least the following information
+  action: include all nine applicable Annex IV information groups in technical documentation
+  subject_ref: provider
+  subject_category: supported_operator
+  implementation_mode: carried_by_other_norm
+  implementation_reason: Carried by the Article 11(1) technical-documentation norm.
+  verification_mode: judged_from_document
+  mandatory_content:
+  - general system description
+  - system elements and development process
+  - monitoring, functioning and control
+  - appropriateness of performance metrics
+  - risk-management system
+  - lifecycle changes
+  - standards or alternative compliance solutions
+  - EU declaration of conformity
+  - post-market performance evaluation and monitoring plan
+  qualifier_spans:
+  - ANNEX-IV-I1
+  - ANNEX-IV-I2
+  - ANNEX-IV-I3
+  - ANNEX-IV-I4
+  - ANNEX-IV-I5
+  - ANNEX-IV-I6
+  - ANNEX-IV-I7
+  - ANNEX-IV-I8
+  - ANNEX-IV-I9

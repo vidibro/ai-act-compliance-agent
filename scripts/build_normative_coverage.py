@@ -13,13 +13,13 @@ ROOT = Path(__file__).resolve().parents[1]
 def paths_for_version(version: str) -> NormBuilderPaths:
     source_root = ROOT / "data" / "policy" / "normative-coverage" / version
     return NormBuilderPaths(
-        reviewed_documents=source_root / "segments.yaml",
-        norm_sources=source_root / "source-records.yaml",
+        reviewed_documents=source_root / "segments",
+        norm_sources=source_root / "source-records",
         articles_root=ROOT / "data" / "policy" / "articles",
         annexes_root=ROOT / "data" / "policy" / "annexes",
         guidance_root=ROOT / "data" / "policy" / "guidance",
-        text_output=source_root / "text-review.yaml",
-        norm_output=source_root / "norms.yaml",
+        text_output=source_root / "text-review",
+        norm_output=source_root / "norms",
         report_output=source_root / "report.md",
         generated_by="src/aiact/norm_builder.py",
     )

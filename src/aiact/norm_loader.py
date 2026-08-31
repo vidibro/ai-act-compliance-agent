@@ -23,7 +23,7 @@ from aiact.text_segments import (
     load_source_body,
     validate_document_partition,
 )
-from aiact.yaml_loader import load_yaml_mapping
+from aiact.yaml_loader import load_yaml_mapping_or_shards
 
 
 def _assert_no_carried_cycles(inventory: NormInventory) -> None:
@@ -59,21 +59,21 @@ def load_normative_coverage(
     text_path = (
         Path(text_review_path)
         if text_review_path is not None
-        else coverage_root / "text-review.yaml"
+        else coverage_root / "text-review"
     )
     norm_path = (
         Path(norm_inventory_path)
         if norm_inventory_path is not None
-        else coverage_root / "norms.yaml"
+        else coverage_root / "norms"
     )
     article_root = Path(articles_root or settings.policy_articles_path)
     annex_root = Path(annexes_root or settings.policy_annexes_path)
 
     text_review = TextReviewInventory.model_validate(
-        load_yaml_mapping(text_path, description="normative coverage artifact")
+        load_yaml_mapping_or_shards(text_path, description="normative coverage artifact")
     )
     norm_inventory = NormInventory.model_validate(
-        load_yaml_mapping(norm_path, description="normative coverage artifact")
+        load_yaml_mapping_or_shards(norm_path, description="normative coverage artifact")
     )
     if text_review.act_version_date != norm_inventory.act_version_date:
         raise ValueError(

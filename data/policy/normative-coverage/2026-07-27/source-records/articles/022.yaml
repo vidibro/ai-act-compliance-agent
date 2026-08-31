@@ -1,0 +1,191 @@
+records:
+- norm_id: AIA-NORM-A022-P1-APPOINT-REPRESENTATIVE
+  source: A022-P001
+  quote: Prior to making their high-risk AI systems available on the Union market, providers established
+    in third countries shall, by written mandate, appoint an authorised representative which is established
+    in the Union.
+  action: appoint an authorised representative established in the Union by written mandate before making
+    a high-risk AI system available on the Union market
+  subject_ref: provider
+  subject_category: supported_operator
+  conditions:
+  - the provider is established in a third country
+  implementation_refs: &id001
+  - AIA-PO-A22
+  verification_mode: listed_for_confirmation
+- norm_id: AIA-NORM-A022-P2-ENABLE-REPRESENTATIVE
+  source: A022-P002
+  quote: The provider shall enable its authorised representative to perform the tasks specified in the
+    mandate received from the provider.
+  action: enable the authorised representative to perform every task specified in its mandate
+  subject_ref: provider
+  subject_category: supported_operator
+  implementation_refs: *id001
+  verification_mode: listed_for_confirmation
+- norm_id: AIA-NORM-A022-P3-PERFORM-MANDATE
+  source: A022-P003
+  quote: The authorised representative shall perform the tasks specified in the mandate received from
+    the provider.
+  action: perform the tasks specified in the mandate received from the provider
+  subject_ref: authorised_representative
+  subject_category: supported_operator
+  implementation_refs: &id002
+  - AIA-AR-A22
+  verification_mode: listed_for_confirmation
+- norm_id: AIA-NORM-A022-P3-PROVIDE-MANDATE
+  source: A022-P003
+  quote: It shall provide a copy of the mandate to the market surveillance authorities upon request, in
+    one of the official languages of the institutions of the Union, as indicated by the competent authority.
+  action: provide a copy of the mandate to market-surveillance authorities on request
+  subject_ref: authorised_representative
+  subject_category: supported_operator
+  conditions: &id003
+  - a market-surveillance authority requests a copy of the mandate
+  implementation_refs: *id002
+  verification_mode: listed_for_confirmation
+- norm_id: AIA-NORM-A022-P3-MANDATE-LANGUAGE
+  source: A022-P003
+  quote: It shall provide a copy of the mandate to the market surveillance authorities upon request, in
+    one of the official languages of the institutions of the Union, as indicated by the competent authority.
+  action: provide the requested mandate copy in an official EU-institution language indicated by the competent
+    authority
+  subject_ref: authorised_representative
+  subject_category: supported_operator
+  conditions: *id003
+  implementation_refs: *id002
+  verification_mode: listed_for_confirmation
+- norm_id: AIA-NORM-A022-P3-ADDRESSABLE
+  source: A022-P003
+  quote: The mandate shall empower the authorised representative to be addressed, in addition to or instead
+    of the provider, by the competent authorities, on all issues related to ensuring compliance with this
+    Regulation.
+  action: ensure the mandate empowers competent authorities to address the representative alongside or
+    instead of the provider on all compliance issues
+  subject_ref: authorised_representative
+  subject_category: supported_operator
+  implementation_refs: *id002
+  verification_mode: listed_for_confirmation
+- norm_id: AIA-NORM-A022-P3-A-VERIFY
+  source: A022-P004
+  quote: verify that the EU declaration of conformity referred to in Article 47 and the technical documentation
+    referred to in Article 11 have been drawn up and that an appropriate conformity assessment procedure
+    has been carried out by the provider
+  action: verify that the EU declaration and technical documentation exist and that the provider completed
+    an appropriate conformity assessment
+  subject_ref: authorised_representative
+  subject_category: supported_operator
+  implementation_refs: *id002
+  verification_mode: listed_for_confirmation
+  qualifier_spans: &id004
+  - A022-P003
+- norm_id: AIA-NORM-A022-P3-B-KEEP-RECORDS
+  source: A022-P005
+  quote: keep at the disposal of the competent authorities and national authorities or bodies referred
+    to in Article 74(10), for a period of 10 years after the high-risk AI system has been placed on the
+    market or put into service, the contact details of the provider that appointed the authorised representative,
+    a copy of the EU declaration of conformity referred to in Article 47, the technical documentation
+    and, if applicable, the certificate issued by the notified body
+  action: keep the listed provider, conformity, technical, and applicable certification records available
+    to the specified authorities for 10 years
+  subject_ref: authorised_representative
+  subject_category: supported_operator
+  implementation_refs: *id002
+  verification_mode: listed_for_confirmation
+  mandatory_content:
+  - appointing provider contact details
+  - EU declaration of conformity
+  - technical documentation
+  - notified-body certificate where applicable
+  qualifier_spans: *id004
+- norm_id: AIA-NORM-A022-P3-C-PROVIDE-CONFORMITY-INFORMATION
+  source: A022-P006
+  quote: provide a competent authority, upon a reasoned request, with all the information and documentation,
+    including that referred to in point (b) of this subparagraph, necessary to demonstrate the conformity
+    of a high-risk AI system with the requirements set out in Section 2
+  action: provide a requesting competent authority with all information and documentation necessary to
+    demonstrate Section 2 conformity
+  subject_ref: authorised_representative
+  subject_category: supported_operator
+  conditions: &id005
+  - a competent authority makes a reasoned request
+  implementation_refs: *id002
+  verification_mode: listed_for_confirmation
+  qualifier_spans: *id004
+- norm_id: AIA-NORM-A022-P3-C-PROVIDE-LOG-ACCESS
+  source: A022-P006
+  quote: including access to the logs, as referred to in Article 12(1), automatically generated by the
+    high-risk AI system, to the extent such logs are under the control of the provider
+  action: provide the requesting authority access to Article 12(1) logs under the provider's control
+  subject_ref: authorised_representative
+  subject_category: supported_operator
+  conditions:
+  - a competent authority makes a reasoned request
+  - the applicable automatically generated logs are under the provider's control
+  implementation_refs: *id002
+  verification_mode: listed_for_confirmation
+  qualifier_spans: *id004
+  dependencies:
+  - dependency_ref: AIA-NORM-A012-P1-AUTOMATIC-LOGGING
+    resolution: internal_resolved
+    detail: Article 12(1) supplies the referenced automatic-logging requirement.
+- norm_id: AIA-NORM-A022-P3-D-COOPERATE
+  source: A022-P007
+  quote: cooperate with competent authorities, upon a reasoned request, in any action the latter take
+    in relation to the high-risk AI system, in particular to reduce and mitigate the risks posed by the
+    high-risk AI system
+  action: cooperate in requested authority actions concerning the system, particularly risk reduction
+    and mitigation
+  subject_ref: authorised_representative
+  subject_category: supported_operator
+  conditions: *id005
+  implementation_refs: *id002
+  verification_mode: listed_for_confirmation
+  qualifier_spans: *id004
+- norm_id: AIA-NORM-A022-P3-E-REGISTER
+  source: A022-P008
+  quote: where applicable, comply with the registration obligations referred to in Article 49(1)
+  action: comply with the applicable Article 49(1) registration obligations
+  subject_ref: authorised_representative
+  subject_category: supported_operator
+  conditions:
+  - Article 49(1) registration obligations apply to the representative
+  implementation_refs: *id002
+  verification_mode: listed_for_confirmation
+  qualifier_spans: *id004
+- norm_id: AIA-NORM-A022-P3-E-ENSURE-REGISTRATION-CORRECT
+  source: A022-P008
+  quote: if the registration is carried out by the provider itself, ensure that the information referred
+    to in point 3 of Section A of Annex VIII is correct
+  action: ensure the provider's Annex VIII Section A point 3 registration information is correct
+  subject_ref: authorised_representative
+  subject_category: supported_operator
+  conditions:
+  - the provider carries out the registration itself
+  implementation_refs: *id002
+  verification_mode: listed_for_confirmation
+  qualifier_spans: *id004
+- norm_id: AIA-NORM-A022-P4-TERMINATE-MANDATE
+  source: A022-P009
+  quote: The authorised representative shall terminate the mandate if it considers or has reason to consider
+    the provider to be acting contrary to its obligations pursuant to this Regulation.
+  action: terminate the mandate when the provider is considered to be acting contrary to its obligations
+    under the Regulation
+  subject_ref: authorised_representative
+  subject_category: supported_operator
+  conditions: &id006
+  - the representative considers or has reason to consider that the provider is acting contrary to its
+    obligations under the Regulation
+  implementation_refs: *id002
+  verification_mode: listed_for_confirmation
+- norm_id: AIA-NORM-A022-P4-NOTIFY-TERMINATION
+  source: A022-P009
+  quote: In such a case, it shall immediately inform the relevant market surveillance authority, as well
+    as, where applicable, the relevant notified body, about the termination of the mandate and the reasons
+    therefor.
+  action: immediately inform the relevant market-surveillance authority and applicable notified body of
+    the mandate termination and its reasons
+  subject_ref: authorised_representative
+  subject_category: supported_operator
+  conditions: *id006
+  implementation_refs: *id002
+  verification_mode: listed_for_confirmation

@@ -1,0 +1,181 @@
+records:
+- norm_id: AIA-NORM-A046-P1-DEROGATION-AUTHORISATION
+  source: A046-P001
+  quote: By way of derogation from Article 43 and upon a duly justified request, any market surveillance
+    authority may authorise the placing on the market or the putting into service of specific high-risk
+    AI systems within the territory of the Member State concerned, for exceptional reasons of public security
+    or the protection of life and health of persons, environmental protection or the protection of key
+    industrial and infrastructural assets.
+  action: authorise temporary national placing or service of a specific high-risk system under the enacted
+    exceptional derogation
+  subject_ref: market_surveillance_authority
+  subject_category: public_authority
+  kind: power
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+  qualifier_spans:
+  - A046-P003
+  conditions:
+  - a duly justified request invokes public security, life or health, environmental, or key industrial
+    or infrastructure protection
+  - authorisation is limited to the period in which necessary conformity assessment is carried out
+  - the authority concludes that the system complies with Section 2
+- norm_id: AIA-NORM-A046-P1-COMPLETE-ASSESSMENT-PROMPTLY
+  source: A046-P001
+  quote: The completion of those procedures shall be undertaken without undue delay.
+  action: complete the necessary conformity-assessment procedures without undue delay
+  subject_ref: provider
+  subject_category: supported_operator
+  implementation_mode: missing
+  verification_mode: unresolved
+  conditions:
+  - the system is operating under a paragraph 1 derogation
+- norm_id: AIA-NORM-A046-P2-URGENT-USE-PERMISSION
+  source: A046-P002
+  quote: In a duly justified situation of urgency for exceptional reasons of public security or in the
+    case of specific, substantial and imminent threat to the life or physical safety of natural persons,
+    law-enforcement authorities or civil protection authorities may put a specific high-risk AI system
+    into service without the authorisation referred to in paragraph 1, provided that such authorisation
+    is requested during or after the use without undue delay.
+  action: put a specific high-risk system into urgent public-safety service before authorisation
+  subject_ref: law_enforcement_or_civil_protection_authority
+  subject_category: public_authority
+  kind: permission
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+  conditions:
+  - a duly justified public-security urgency or specific substantial imminent threat to life or physical
+    safety exists
+  - paragraph 1 authorisation is requested during or after use without undue delay
+- norm_id: AIA-NORM-A046-P2-REFUSAL-RESPONSE
+  source: A046-P002
+  quote: If the authorisation referred to in paragraph 1 is refused, the use of the high-risk AI system
+    shall be stopped with immediate effect and all the results and outputs of such use shall be immediately
+    discarded.
+  action: immediately stop use and discard every result and output when urgent-use authorisation is refused
+  subject_ref: law_enforcement_or_civil_protection_authority
+  subject_category: public_authority
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+  mandatory_content:
+  - immediately stop system use
+  - immediately discard all results and outputs
+- norm_id: AIA-NORM-A046-P3-NOTIFY-AUTHORISATION
+  source: A046-P003
+  quote: The market surveillance authority shall inform the Commission and the other Member States of
+    any authorisation issued pursuant to paragraphs 1 and 2.
+  action: inform the Commission and other Member States of every paragraph 1 or 2 authorisation
+  subject_ref: market_surveillance_authority
+  subject_category: public_authority
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A046-P3-SENSITIVE-DATA-EXCEPTION
+  source: A046-P003
+  quote: This obligation shall not cover sensitive operational data in relation to the activities of law-enforcement
+    authorities.
+  action: exclude sensitive law-enforcement operational data from the authorisation notification
+  subject_ref: market_surveillance_authority
+  subject_category: public_authority
+  kind: applicability
+  product_scope: no_product_action
+  product_scope_reason: Qualifies an institutional notification duty only.
+  implementation_mode: none_required
+  implementation_reason: No independent product action is required.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A046-P4-DEEMED-JUSTIFIED
+  source: A046-P004
+  quote: Where, within 15 calendar days of receipt of the information referred to in paragraph 3, no objection
+    has been raised by either a Member State or the Commission in respect of an authorisation issued by
+    a market surveillance authority of a Member State in accordance with paragraph 1, that authorisation
+    shall be deemed justified.
+  action: deem the authorisation justified when neither the Commission nor a Member State objects within
+    15 calendar days
+  subject_ref: derogation_authorisation
+  subject_category: other
+  kind: legal_consequence
+  product_scope: no_product_action
+  product_scope_reason: Defines authorisation status rather than an operator compliance action.
+  implementation_mode: none_required
+  implementation_reason: No independent product action is required.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A046-P5-CONSULT-MEMBER-STATE
+  source: A046-P005
+  quote: the Commission shall, without delay, enter into consultations with the relevant Member State.
+  action: consult the relevant Member State without delay after a qualifying objection or concern
+  subject_ref: commission
+  subject_category: union_institution_or_body
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A046-P5-OPERATOR-HEARING
+  source: A046-P005
+  quote: The operators concerned shall be consulted and have the possibility to present their views.
+  action: be consulted and receive an opportunity to present views on the authorisation
+  subject_ref: concerned_operator
+  subject_category: supported_operator
+  kind: entitlement
+  product_scope: no_product_action
+  product_scope_reason: Grants procedural participation rather than imposing a compliance action.
+  implementation_mode: none_required
+  implementation_reason: No independent product action is required.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A046-P5-DECIDE-JUSTIFICATION
+  source: A046-P005
+  quote: Having regard thereto, the Commission shall decide whether the authorisation is justified.
+  action: decide whether the authorisation is justified after consultation
+  subject_ref: commission
+  subject_category: union_institution_or_body
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A046-P5-ADDRESS-DECISION
+  source: A046-P005
+  quote: The Commission shall address its decision to the Member State concerned and to the relevant operators.
+  action: address the authorisation decision to the concerned Member State and relevant operators
+  subject_ref: commission
+  subject_category: union_institution_or_body
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A046-P6-WITHDRAW-UNJUSTIFIED-AUTHORISATION
+  source: A046-P006
+  quote: Where the Commission considers the authorisation unjustified, it shall be withdrawn by the market
+    surveillance authority of the Member State concerned.
+  action: withdraw an authorisation that the Commission considers unjustified
+  subject_ref: market_surveillance_authority
+  subject_category: public_authority
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A046-P7-SECTORAL-DEROGATIONS-ONLY
+  source: A046-P007
+  quote: For high-risk AI systems related to products covered by Union harmonisation legislation listed
+    in Section A of Annex I, only the derogations from the conformity assessment established in that Union
+    harmonisation legislation shall apply.
+  action: apply only the relevant sectoral-law conformity-assessment derogations to Section A Annex I
+    products
+  subject_ref: provider
+  subject_category: supported_operator
+  kind: applicability
+  implementation_mode: missing
+  verification_mode: unresolved

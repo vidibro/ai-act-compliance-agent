@@ -1,0 +1,85 @@
+records:
+- norm_id: AIA-NORM-A051-P1-A-HIGH-IMPACT-SYSTEMIC-RISK
+  source: A051-P002
+  quote: it has high impact capabilities evaluated on the basis of appropriate technical tools and methodologies,
+    including indicators and benchmarks
+  action: classify a general-purpose AI model with evaluated high-impact capabilities as a model with
+    systemic risk
+  subject_ref: general_purpose_ai_model
+  subject_category: other
+  kind: applicability
+  qualifier_spans:
+  - A051-P001
+  conditions:
+  - appropriate technical tools and methodologies, including indicators and benchmarks, establish high-impact
+    capabilities
+  implementation_mode: missing
+  verification_mode: unresolved
+- norm_id: AIA-NORM-A051-P1-B-EQUIVALENT-SYSTEMIC-RISK
+  source: A051-P003
+  quote: based on a decision of the Commission, ex officio or following a qualified alert from the scientific
+    panel, it has capabilities or an impact equivalent to those set out in point (a) having regard to
+    the criteria set out in Annex XIII
+  action: classify a general-purpose AI model with Commission-determined equivalent capabilities or impact
+    as a model with systemic risk
+  subject_ref: general_purpose_ai_model
+  subject_category: other
+  kind: applicability
+  qualifier_spans:
+  - A051-P001
+  conditions:
+  - the Commission decides ex officio or following a qualified scientific-panel alert that the model has
+    equivalent capabilities or impact
+  - the Commission has regard to the Annex XIII criteria
+  implementation_mode: missing
+  verification_mode: unresolved
+- norm_id: AIA-NORM-A051-P2-COMPUTE-PRESUMPTION
+  source: A051-P004
+  quote: A general-purpose AI model shall be presumed to have high impact capabilities pursuant to paragraph
+    1, point (a), when the cumulative amount of computation used for its training measured in floating
+    point operations is greater than 10 25.
+  action: presume a general-purpose AI model has high-impact capabilities when its training computation
+    exceeds 10^25 floating-point operations
+  subject_ref: general_purpose_ai_model
+  subject_category: other
+  kind: applicability
+  conditions:
+  - cumulative training computation measured in floating-point operations exceeds 10^25
+  implementation_mode: missing
+  verification_mode: unresolved
+- norm_id: AIA-NORM-A051-P3-AMEND-THRESHOLDS
+  source: A051-P005
+  quote: The Commission shall adopt delegated acts in accordance with Article 97 to amend the thresholds
+    listed in paragraphs 1 and 2 of this Article, as well as to supplement benchmarks and indicators in
+    light of evolving technological developments, such as algorithmic improvements or increased hardware
+    efficiency, when necessary, for these thresholds to reflect the state of the art.
+  action: adopt Article 97 delegated acts amending Article 51 thresholds when necessary to reflect the
+    state of the art
+  subject_ref: commission
+  subject_category: union_institution_or_body
+  conditions:
+  - amendment is necessary for the thresholds to reflect the state of the art in light of technological
+    developments
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A051-P3-SUPPLEMENT-BENCHMARKS
+  source: A051-P005
+  quote: The Commission shall adopt delegated acts in accordance with Article 97 to amend the thresholds
+    listed in paragraphs 1 and 2 of this Article, as well as to supplement benchmarks and indicators in
+    light of evolving technological developments, such as algorithmic improvements or increased hardware
+    efficiency, when necessary, for these thresholds to reflect the state of the art.
+  action: adopt Article 97 delegated acts supplementing benchmarks and indicators when necessary to reflect
+    the state of the art
+  subject_ref: commission
+  subject_category: union_institution_or_body
+  conditions:
+  - supplementation is necessary in light of technological developments such as algorithmic improvements
+    or increased hardware efficiency
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed

@@ -1,0 +1,44 @@
+documents:
+- kind: article
+  number: '1'
+  verified_by: vidibro
+  divisions:
+  - label: HEAD
+    marker: null
+    disposition: structural
+  - label: P001
+    marker: '1. '
+    disposition: context_only
+    reason: Describes the Regulation's purpose without creating an independent legal proposition.
+  - label: P002
+    marker: '2. '
+    disposition: context_only
+    reason: Introduces the subject-matter list without creating an independent legal proposition.
+  - label: P003
+    marker: '        (a) '
+    disposition: context_only
+    reason: Announces the category of market and use rules that later provisions create.
+  - label: P004
+    marker: '        (b) '
+    disposition: context_only
+    reason: Announces that prohibitions exist without itself prohibiting a practice.
+  - label: P005
+    marker: '        (c) '
+    disposition: context_only
+    reason: Announces high-risk requirements without stating an operative requirement.
+  - label: P006
+    marker: '        (d) '
+    disposition: context_only
+    reason: Announces the category of transparency rules that later provisions create.
+  - label: P007
+    marker: '        (e) '
+    disposition: context_only
+    reason: Announces the category of general-purpose AI model rules that later provisions create.
+  - label: P008
+    marker: '        (f) '
+    disposition: context_only
+    reason: Announces monitoring, governance, and enforcement rules created elsewhere.
+  - label: P009
+    marker: '        (g) '
+    disposition: context_only
+    reason: Announces innovation-support measures without creating an independent action.

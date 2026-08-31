@@ -1,0 +1,45 @@
+documents:
+- kind: article
+  number: '5'
+  segmentation: paragraphs
+  paragraph_overrides:
+    P001: &id001
+      disposition: normative
+      verified_by: vidibro
+    P002: *id001
+    P003: *id001
+    P004: *id001
+    P005: *id001
+    P006: *id001
+    P007: *id001
+    P008: *id001
+    P009: *id001
+    P010: *id001
+    P011: *id001
+    P012: *id001
+    P013: *id001
+    P014: *id001
+    P015: *id001
+    P016: *id001
+    P017: *id001
+    P018: *id001
+    P019: *id001
+    P020: *id001
+    P021: *id001
+    P022: *id001
+    P023: *id001
+    P024: *id001
+    P025: *id001
+    P026: *id001
+    P027: *id001
+    P028: *id001
+    P029: *id001
+    P030: *id001
+    P031: *id001
+    P032: *id001
+    P033: *id001
+    P034: *id001
+  divisions:
+  - label: HEAD
+    marker: null
+    disposition: structural

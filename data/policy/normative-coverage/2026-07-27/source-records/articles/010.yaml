@@ -1,0 +1,324 @@
+records:
+- norm_id: AIA-NORM-A010-P1-QUALIFY-DATASETS
+  source: A010-P001
+  quote: High-risk AI systems which make use of techniques involving the training of AI models with data
+    shall be developed on the basis of training, validation and testing data sets that meet the quality
+    criteria referred to in paragraphs 2, 3 and 4 of this Article and in Article 4a(1) whenever such data
+    sets are used.
+  action: develop data-trained high-risk AI systems using training, validation, and testing datasets that
+    meet the Article 10(2) to (4) and Article 4a(1) quality criteria
+  subject_ref: provider
+  subject_category: supported_operator
+  kind: obligation
+  implementation_refs: &id001
+  - AIA-HR-A10
+  verification_mode: judged_from_document
+  dependencies:
+  - dependency_ref: AIA-NORM-A004A-P1-HIGH-RISK-BIAS-DATA-PROCESSING
+    resolution: internal_resolved
+    detail: Article 4a(1) supplies the special-category-data permission and its safeguard conditions.
+- norm_id: AIA-NORM-A010-P2-GOVERN-DATASETS
+  source: A010-P002
+  quote: Training, validation and testing data sets shall be subject to data governance and management
+    practices appropriate for the intended purpose of the high-risk AI system.
+  action: apply data-governance and management practices appropriate to the intended purpose to training,
+    validation, and testing datasets
+  subject_ref: provider
+  subject_category: supported_operator
+  kind: obligation
+  implementation_refs: *id001
+  verification_mode: judged_from_document
+- norm_id: AIA-NORM-A010-P2-A-DESIGN-CHOICES
+  source: A010-P003
+  quote: the relevant design choices
+  action: address relevant design choices in dataset governance and management practices
+  subject_ref: provider
+  subject_category: supported_operator
+  kind: obligation
+  qualifier_spans: &id002
+  - A010-P002
+  implementation_refs: *id001
+  verification_mode: judged_from_document
+- norm_id: AIA-NORM-A010-P2-B-COLLECTION-ORIGIN
+  source: A010-P004
+  quote: data collection processes and the origin of data, and in the case of personal data, the original
+    purpose of the data collection
+  action: address data-collection processes, data origin, and the original collection purpose of personal
+    data
+  subject_ref: provider
+  subject_category: supported_operator
+  kind: obligation
+  qualifier_spans: *id002
+  implementation_refs: *id001
+  verification_mode: judged_from_document
+- norm_id: AIA-NORM-A010-P2-C-DATA-PREPARATION
+  source: A010-P005
+  quote: relevant data-preparation processing operations, such as annotation, labelling, cleaning, updating,
+    enrichment and aggregation
+  action: address relevant data-preparation operations including annotation, labelling, cleaning, updating,
+    enrichment, and aggregation
+  subject_ref: provider
+  subject_category: supported_operator
+  kind: obligation
+  qualifier_spans: *id002
+  implementation_refs: *id001
+  verification_mode: judged_from_document
+- norm_id: AIA-NORM-A010-P2-D-ASSUMPTIONS
+  source: A010-P006
+  quote: the formulation of assumptions, in particular with respect to the information that the data are
+    supposed to measure and represent
+  action: formulate assumptions about what the data are intended to measure and represent
+  subject_ref: provider
+  subject_category: supported_operator
+  kind: obligation
+  qualifier_spans: *id002
+  implementation_refs: *id001
+  verification_mode: judged_from_document
+- norm_id: AIA-NORM-A010-P2-E-AVAILABILITY-SUITABILITY
+  source: A010-P007
+  quote: an assessment of the availability, quantity and suitability of the data sets that are needed
+  action: assess the availability, quantity, and suitability of the required datasets
+  subject_ref: provider
+  subject_category: supported_operator
+  kind: obligation
+  qualifier_spans: *id002
+  implementation_refs: *id001
+  verification_mode: judged_from_document
+- norm_id: AIA-NORM-A010-P2-F-EXAMINE-BIASES
+  source: A010-P008
+  quote: examination in view of possible biases that are likely to affect the health and safety of persons,
+    have a negative impact on fundamental rights or lead to discrimination prohibited under Union law,
+    especially where data outputs influence inputs for future operations
+  action: examine possible biases likely to affect health or safety, negatively affect fundamental rights,
+    or cause prohibited discrimination
+  subject_ref: provider
+  subject_category: supported_operator
+  kind: obligation
+  qualifier_spans: *id002
+  conditions:
+  - give particular attention where data outputs influence inputs for future operations
+  implementation_refs: *id001
+  verification_mode: judged_from_document
+- norm_id: AIA-NORM-A010-P2-G-MITIGATE-BIASES
+  source: A010-P009
+  quote: appropriate measures to detect, prevent and mitigate possible biases identified according to
+    point (f)
+  action: adopt appropriate measures to detect, prevent, and mitigate biases identified under Article
+    10(2)(f)
+  subject_ref: provider
+  subject_category: supported_operator
+  kind: obligation
+  qualifier_spans: *id002
+  implementation_refs: *id001
+  verification_mode: judged_from_document
+- norm_id: AIA-NORM-A010-P2-H-DATA-GAPS
+  source: A010-P010
+  quote: the identification of relevant data gaps or shortcomings that prevent compliance with this Regulation,
+    and how those gaps and shortcomings can be addressed.
+  action: identify compliance-blocking data gaps or shortcomings and determine how to address them
+  subject_ref: provider
+  subject_category: supported_operator
+  kind: obligation
+  qualifier_spans: *id002
+  implementation_refs: *id001
+  verification_mode: judged_from_document
+- norm_id: AIA-NORM-A010-P3-RELEVANT
+  source: A010-P011
+  quote: Training, validation and testing data sets shall be relevant, sufficiently representative, and
+    to the best extent possible, free of errors and complete in view of the intended purpose.
+  action: ensure training, validation, and testing datasets are relevant to the intended purpose
+  subject_ref: provider
+  subject_category: supported_operator
+  kind: obligation
+  implementation_refs: *id001
+  verification_mode: judged_from_document
+- norm_id: AIA-NORM-A010-P3-REPRESENTATIVE
+  source: A010-P011
+  quote: Training, validation and testing data sets shall be relevant, sufficiently representative, and
+    to the best extent possible, free of errors and complete in view of the intended purpose.
+  action: ensure training, validation, and testing datasets are sufficiently representative for the intended
+    purpose
+  subject_ref: provider
+  subject_category: supported_operator
+  kind: obligation
+  implementation_refs: *id001
+  verification_mode: judged_from_document
+- norm_id: AIA-NORM-A010-P3-FREE-OF-ERRORS
+  source: A010-P011
+  quote: Training, validation and testing data sets shall be relevant, sufficiently representative, and
+    to the best extent possible, free of errors and complete in view of the intended purpose.
+  action: keep training, validation, and testing datasets free of errors to the best extent possible for
+    the intended purpose
+  subject_ref: provider
+  subject_category: supported_operator
+  kind: obligation
+  implementation_refs: *id001
+  verification_mode: judged_from_document
+- norm_id: AIA-NORM-A010-P3-COMPLETE
+  source: A010-P011
+  quote: Training, validation and testing data sets shall be relevant, sufficiently representative, and
+    to the best extent possible, free of errors and complete in view of the intended purpose.
+  action: keep training, validation, and testing datasets complete to the best extent possible for the
+    intended purpose
+  subject_ref: provider
+  subject_category: supported_operator
+  kind: obligation
+  implementation_refs: *id001
+  verification_mode: judged_from_document
+- norm_id: AIA-NORM-A010-P3-STATISTICAL-PROPERTIES
+  source: A010-P011
+  quote: They shall have the appropriate statistical properties, including, where applicable, as regards
+    the persons or groups of persons in relation to whom the high-risk AI system is intended to be used.
+  action: ensure datasets have appropriate statistical properties, including for affected persons or groups
+    where applicable
+  subject_ref: provider
+  subject_category: supported_operator
+  kind: obligation
+  implementation_refs: *id001
+  verification_mode: judged_from_document
+- norm_id: AIA-NORM-A010-P3-COMBINED-DATASETS
+  source: A010-P011
+  quote: Those characteristics of the data sets may be met at the level of individual data sets or at
+    the level of a combination thereof.
+  action: meet the Article 10(3) dataset characteristics at the individual-dataset level or across a combination
+    of datasets
+  subject_ref: provider
+  subject_category: supported_operator
+  kind: permission
+  implementation_refs: *id001
+  verification_mode: reported_conditionally
+- norm_id: AIA-NORM-A010-P4-INTENDED-SETTING
+  source: A010-P012
+  quote: Data sets shall take into account, to the extent required by the intended purpose, the characteristics
+    or elements that are particular to the specific geographical, contextual, behavioural or functional
+    setting within which the high-risk AI system is intended to be used.
+  action: account for geographical, contextual, behavioural, and functional characteristics of the intended-use
+    setting to the extent required by the intended purpose
+  subject_ref: provider
+  subject_category: supported_operator
+  kind: obligation
+  implementation_refs: *id001
+  verification_mode: judged_from_document
+- norm_id: AIA-NORM-A010-P5-SPECIAL-CATEGORY-PROCESSING
+  source: A010-P013
+  quote: the providers of such systems may exceptionally process special categories of personal data,
+    subject to appropriate safeguards for the fundamental rights and freedoms of natural persons.
+  action: exceptionally process special-category personal data where strictly necessary for bias detection
+    and correction in high-risk AI systems
+  subject_ref: provider
+  subject_category: supported_operator
+  kind: permission
+  qualifier_spans:
+  - A010-P014
+  - A010-P015
+  - A010-P016
+  - A010-P017
+  - A010-P018
+  - A010-P019
+  conditions:
+  - processing is strictly necessary for Article 10(2)(f) and (g) bias detection and correction
+  - bias detection and correction cannot be effectively achieved using other data, including synthetic
+    or anonymised data
+  - appropriate safeguards protect natural persons' fundamental rights and freedoms
+  implementation_mode: carried_by_other_norm
+  implementation_reason: Article 4a(1) carries the same exceptional high-risk bias-data-processing permission
+    and conditions.
+  verification_mode: judged_from_document
+- norm_id: AIA-NORM-A010-P5-B-REUSE-SECURITY
+  source: A010-P015
+  quote: the special categories of personal data are subject to technical limitations on the re-use of
+    the personal data, and state-of-the-art security and privacy-preserving measures, including pseudonymisation
+  action: apply technical reuse limitations and state-of-the-art security and privacy-preserving measures,
+    including pseudonymisation
+  subject_ref: provider
+  subject_category: supported_operator
+  kind: obligation
+  qualifier_spans:
+  - A010-P013
+  implementation_mode: carried_by_other_norm
+  implementation_reason: Article 4a(1)(b) carries the same safeguard.
+  verification_mode: judged_from_document
+- norm_id: AIA-NORM-A010-P5-C-ACCESS-SAFEGUARDS
+  source: A010-P016
+  quote: the special categories of personal data are subject to measures to ensure that the personal data
+    processed are secured, protected, subject to suitable safeguards, including strict controls and documentation
+    of the access, to avoid misuse and ensure that only authorised persons have access to those personal
+    data with appropriate confidentiality obligations
+  action: secure and protect special-category personal data using documented strict access controls, authorised
+    access, and confidentiality obligations
+  subject_ref: provider
+  subject_category: supported_operator
+  kind: obligation
+  qualifier_spans:
+  - A010-P013
+  implementation_mode: carried_by_other_norm
+  implementation_reason: Article 4a(1)(c) carries the same safeguard.
+  verification_mode: judged_from_document
+- norm_id: AIA-NORM-A010-P5-D-NO-THIRD-PARTY-ACCESS
+  source: A010-P017
+  quote: the special categories of personal data are not to be transmitted, transferred or otherwise accessed
+    by other parties
+  action: prevent special-category personal data from being transmitted, transferred, or otherwise accessed
+    by other parties
+  subject_ref: provider
+  subject_category: supported_operator
+  kind: obligation
+  qualifier_spans:
+  - A010-P013
+  implementation_mode: carried_by_other_norm
+  implementation_reason: Article 4a(1)(d) carries the same safeguard.
+  verification_mode: judged_from_document
+- norm_id: AIA-NORM-A010-P5-E-DELETE-DATA
+  source: A010-P018
+  quote: the special categories of personal data are deleted once the bias has been corrected or the personal
+    data has reached the end of its retention period, whichever comes first
+  action: delete special-category personal data when bias is corrected or the retention period ends, whichever
+    occurs first
+  subject_ref: provider
+  subject_category: supported_operator
+  kind: obligation
+  qualifier_spans:
+  - A010-P013
+  implementation_mode: carried_by_other_norm
+  implementation_reason: Article 4a(1)(e) carries the same safeguard.
+  verification_mode: judged_from_document
+- norm_id: AIA-NORM-A010-P5-F-RECORD-NECESSITY
+  source: A010-P019
+  quote: the records of processing activities pursuant to Regulations (EU) 2016/679 and (EU) 2018/1725
+    and Directive (EU) 2016/680 include the reasons why the processing of special categories of personal
+    data was strictly necessary to detect and correct biases, and why that objective could not be achieved
+    by processing other data.
+  action: record why special-category processing was strictly necessary for bias detection and correction
+    and why other data could not achieve that objective
+  subject_ref: provider
+  subject_category: supported_operator
+  kind: obligation
+  qualifier_spans:
+  - A010-P013
+  implementation_mode: carried_by_other_norm
+  implementation_reason: Article 4a(1)(f) carries the same recordkeeping safeguard.
+  verification_mode: judged_from_document
+  dependencies:
+  - dependency_ref: Regulation (EU) 2016/679; Regulation (EU) 2018/1725; Directive (EU) 2016/680
+    resolution: external_recorded
+    detail: The reasons must be included in processing records maintained under the applicable external
+      instruments.
+- norm_id: AIA-NORM-A010-P6-TESTING-DATA-ONLY
+  source: A010-P020
+  quote: For the development of high-risk AI systems not using techniques involving the training of AI
+    models, paragraphs 2, 3 and 4 of this Article and Article 4a(1) shall apply only to the testing data
+    sets.
+  action: limit the Article 10(2) to (4) and Article 4a(1) requirements to testing datasets for high-risk
+    systems developed without model-training techniques
+  subject_ref: provider
+  subject_category: supported_operator
+  kind: applicability
+  conditions:
+  - the high-risk AI system is developed without techniques involving training an AI model
+  implementation_refs: *id001
+  verification_mode: judged_from_document
+  dependencies:
+  - dependency_ref: AIA-NORM-A004A-P1-HIGH-RISK-BIAS-DATA-PROCESSING
+    resolution: internal_resolved
+    detail: Article 4a(1) supplies the special-category-data quality criterion incorporated by Article
+      10(6).

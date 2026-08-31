@@ -1,0 +1,203 @@
+records:
+- norm_id: AIA-NORM-ANNEX-VII-QMS-APPLICATION
+  source: ANNEX-VII-I3
+  quote: The application of the provider shall include
+  action: complete the Annex VII quality-management application
+  subject_ref: provider
+  subject_category: supported_operator
+  implementation_refs:
+  - AIA-PO-A43-1B
+  - AIA-PO-A43-3
+  verification_mode: listed_for_confirmation
+  mandatory_content:
+  - provider and representative identity
+  - covered systems
+  - technical documentation for every system
+  - Article 17 QMS documentation
+  - procedures maintaining QMS adequacy and effectiveness
+  - declaration no duplicate application
+- norm_id: AIA-NORM-ANNEX-VII-QMS-MAINTAIN
+  source: ANNEX-VII-I3
+  quote: shall continue to be implemented and maintained by the provider
+  action: continue implementing and maintaining the approved quality-management system
+  subject_ref: provider
+  subject_category: supported_operator
+  implementation_refs:
+  - AIA-PO-A43-1B
+  - AIA-PO-A43-3
+  verification_mode: listed_for_confirmation
+- norm_id: AIA-NORM-ANNEX-VII-QMS-CHANGE
+  source: ANNEX-VII-I3
+  quote: shall be brought to the attention of the notified body by the provider
+  action: notify the notified body of intended QMS or covered-system-list changes
+  subject_ref: provider
+  subject_category: supported_operator
+  implementation_refs:
+  - AIA-PO-A43-1B
+  - AIA-PO-A43-3
+  verification_mode: listed_for_confirmation
+- norm_id: AIA-NORM-ANNEX-VII-QMS-ASSESS
+  source: ANNEX-VII-I3
+  quote: The quality management system shall be assessed by the notified body
+  action: assess whether the quality-management system satisfies Article 17
+  subject_ref: notified_body
+  subject_category: notified_or_conformity_body
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-ANNEX-VII-QMS-DECISION
+  source: ANNEX-VII-I3
+  quote: The decision shall be notified to the provider or its authorised representative.
+  action: notify the provider of the quality-management assessment decision and reasons
+  subject_ref: notified_body
+  subject_category: notified_or_conformity_body
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-ANNEX-VII-QMS-CHANGE-DECISION
+  source: ANNEX-VII-I3
+  quote: The proposed changes shall be examined by the notified body
+  action: examine proposed changes, decide whether reassessment is needed, and notify the provider
+  subject_ref: notified_body
+  subject_category: notified_or_conformity_body
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-ANNEX-VII-DOC-EXAMINE
+  source: ANNEX-VII-I4
+  quote: The technical documentation shall be examined by the notified body.
+  action: examine the technical documentation
+  subject_ref: notified_body
+  subject_category: notified_or_conformity_body
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-ANNEX-VII-DATA-ACCESS
+  source: ANNEX-VII-I4
+  quote: the notified body shall be granted full access to the training, validation, and testing data
+    sets used
+  action: grant the notified body necessary full dataset access
+  subject_ref: provider
+  subject_category: supported_operator
+  implementation_refs:
+  - AIA-PO-A43-1B
+  - AIA-PO-A43-3
+  verification_mode: listed_for_confirmation
+- norm_id: AIA-NORM-ANNEX-VII-EVIDENCE
+  source: ANNEX-VII-I4
+  quote: the provider supply further evidence or carry out further tests
+  action: supply further evidence or tests required for the conformity assessment
+  subject_ref: provider
+  subject_category: supported_operator
+  implementation_refs:
+  - AIA-PO-A43-1B
+  - AIA-PO-A43-3
+  verification_mode: listed_for_confirmation
+  conditions:
+  - notified body requires them
+- norm_id: AIA-NORM-ANNEX-VII-TESTS
+  source: ANNEX-VII-I4
+  quote: the notified body shall itself directly carry out adequate tests
+  action: carry out adequate tests when provider testing is unsatisfactory
+  subject_ref: notified_body
+  subject_category: notified_or_conformity_body
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-ANNEX-VII-MODEL-ACCESS
+  source: ANNEX-VII-I4
+  quote: the notified body shall also be granted access to the training and trained models
+  action: grant reasoned and necessary model access after other means are exhausted
+  subject_ref: provider
+  subject_category: supported_operator
+  implementation_refs:
+  - AIA-PO-A43-1B
+  - AIA-PO-A43-3
+  verification_mode: listed_for_confirmation
+- norm_id: AIA-NORM-ANNEX-VII-RETRAIN
+  source: ANNEX-VII-I4
+  quote: re-training of the AI system will be needed prior to the application for a new conformity assessment
+  action: retrain before reapplying where training data fail the requirement
+  subject_ref: provider
+  subject_category: supported_operator
+  kind: legal_consequence
+  implementation_refs:
+  - AIA-PO-A43-1B
+  - AIA-PO-A43-3
+  verification_mode: listed_for_confirmation
+- norm_id: AIA-NORM-ANNEX-VII-DOC-DECISION
+  source: ANNEX-VII-I4
+  quote: The decision of the notified body shall be notified to the provider or its authorised representative.
+  action: notify the provider of the technical-documentation assessment decision
+  subject_ref: notified_body
+  subject_category: notified_or_conformity_body
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-ANNEX-VII-CERTIFICATE
+  source: ANNEX-VII-I4
+  quote: the notified body shall issue a Union technical documentation assessment certificate
+  action: issue the certificate where the system conforms
+  subject_ref: notified_body
+  subject_category: notified_or_conformity_body
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-ANNEX-VII-REFUSE
+  source: ANNEX-VII-I4
+  quote: the notified body shall refuse to issue a Union technical documentation assessment certificate
+    and shall inform the applicant accordingly
+  action: refuse certification and give detailed reasons where the system does not conform
+  subject_ref: notified_body
+  subject_category: notified_or_conformity_body
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-ANNEX-VII-DATA-REASONS
+  source: ANNEX-VII-I4
+  quote: shall contain specific considerations on the quality data used to train the AI system
+  action: state specific training-data non-compliance considerations in the refusal decision
+  subject_ref: notified_body
+  subject_category: notified_or_conformity_body
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-ANNEX-VII-SURVEILLANCE
+  source: ANNEX-VII-I5
+  quote: the provider shall allow the notified body to access the premises
+  action: allow surveillance access to premises and share all necessary information
+  subject_ref: provider
+  subject_category: supported_operator
+  implementation_refs:
+  - AIA-PO-A43-1B
+  - AIA-PO-A43-3
+  verification_mode: listed_for_confirmation
+- norm_id: AIA-NORM-ANNEX-VII-AUDIT
+  source: ANNEX-VII-I5
+  quote: The notified body shall carry out periodic audits
+  action: carry out periodic audits and provide the provider an audit report
+  subject_ref: notified_body
+  subject_category: notified_or_conformity_body
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed

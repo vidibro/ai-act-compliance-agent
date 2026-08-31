@@ -1,0 +1,90 @@
+records:
+- norm_id: AIA-NORM-A033-P1-SUBCONTRACTOR-ARTICLE-31-COMPLIANCE
+  source: A033-P001
+  quote: Where a notified body subcontracts specific tasks connected with the conformity assessment or
+    has recourse to a subsidiary, it shall ensure that the subcontractor or the subsidiary meets the requirements
+    laid down in Article 31, and shall inform the notifying authority accordingly.
+  action: ensure subcontractors and subsidiaries used for conformity-assessment tasks meet Article 31
+    requirements
+  subject_ref: notified_body
+  subject_category: notified_or_conformity_body
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+  conditions:
+  - the notified body subcontracts conformity-assessment tasks or uses a subsidiary
+- norm_id: AIA-NORM-A033-P1-INFORM-NOTIFYING-AUTHORITY
+  source: A033-P001
+  quote: Where a notified body subcontracts specific tasks connected with the conformity assessment or
+    has recourse to a subsidiary, it shall ensure that the subcontractor or the subsidiary meets the requirements
+    laid down in Article 31, and shall inform the notifying authority accordingly.
+  action: inform the notifying authority when using a subcontractor or subsidiary for conformity-assessment
+    tasks
+  subject_ref: notified_body
+  subject_category: notified_or_conformity_body
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+  conditions:
+  - the notified body subcontracts conformity-assessment tasks or uses a subsidiary
+- norm_id: AIA-NORM-A033-P2-FULL-RESPONSIBILITY
+  source: A033-P002
+  quote: Notified bodies shall take full responsibility for the tasks performed by any subcontractors
+    or subsidiaries.
+  action: take full responsibility for tasks performed by subcontractors or subsidiaries
+  subject_ref: notified_body
+  subject_category: notified_or_conformity_body
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A033-P3-PROVIDER-AGREEMENT
+  source: A033-P003
+  quote: Activities may be subcontracted or carried out by a subsidiary only with the agreement of the
+    provider.
+  action: subcontract activities or use a subsidiary only with the provider's agreement
+  subject_ref: notified_body
+  subject_category: notified_or_conformity_body
+  kind: permission
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+  conditions:
+  - the provider agrees to the subcontracting or subsidiary arrangement
+- norm_id: AIA-NORM-A033-P3-PUBLISH-SUBSIDIARIES
+  source: A033-P003
+  quote: Notified bodies shall make a list of their subsidiaries publicly available.
+  action: make the list of subsidiaries publicly available
+  subject_ref: notified_body
+  subject_category: notified_or_conformity_body
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A033-P4-RETAIN-SUBCONTRACTING-DOCUMENTS
+  source: A033-P004
+  quote: The relevant documents concerning the assessment of the qualifications of the subcontractor or
+    the subsidiary and the work carried out by them under this Regulation shall be kept at the disposal
+    of the notifying authority for a period of five years from the termination date of the subcontracting.
+  action: keep subcontractor or subsidiary qualification and work documents available to the notifying
+    authority for five years after subcontracting ends
+  subject_ref: notified_body
+  subject_category: notified_or_conformity_body
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+  mandatory_content:
+  - documents assessing the qualifications of the subcontractor or subsidiary
+  - documents concerning work performed by the subcontractor or subsidiary under the Regulation
+  conditions:
+  - retain the documents for five years from termination of the subcontracting

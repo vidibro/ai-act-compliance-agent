@@ -1,0 +1,253 @@
+records:
+- norm_id: AIA-NORM-A043-P1-CHOOSE-CONFORMITY-ROUTE
+  source: A043-P1
+  quote: the provider shall opt for one of the following conformity assessment procedures based on
+  action: choose either Annex VI internal control or Annex VII notified-body assessment when the applicable
+    standards or common specifications were applied
+  subject_ref: provider
+  subject_category: supported_operator
+  implementation_refs:
+  - AIA-PO-A43-1
+  verification_mode: listed_for_confirmation
+- norm_id: AIA-NORM-A043-P1-REQUIRED-ANNEX-VII-ROUTE
+  source: A043-P1
+  quote: the provider shall follow the conformity assessment procedure set out in Annex VII where
+  action: use Annex VII where standards or common specifications are unavailable, unapplied, partly applied,
+    or restricted
+  subject_ref: provider
+  subject_category: supported_operator
+  implementation_refs:
+  - AIA-PO-A43-1B
+  verification_mode: listed_for_confirmation
+  conditions:
+  - harmonised standards do not exist and common specifications are unavailable
+  - or the provider did not apply, or applied only part of, the harmonised standard
+  - or available common specifications were not applied
+  - or a harmonised standard was published with a restriction, for the restricted part
+- norm_id: AIA-NORM-A043-P1-CHOOSE-NOTIFIED-BODY
+  source: A043-P1
+  quote: For the purposes of the conformity assessment procedure referred to in Annex VII, the provider
+    may choose any of the notified bodies.
+  action: choose any notified body for the Annex VII conformity-assessment procedure
+  subject_ref: provider
+  subject_category: supported_operator
+  kind: permission
+  implementation_refs:
+  - AIA-PO-A43-1B
+  verification_mode: listed_for_confirmation
+- norm_id: AIA-NORM-A043-P1-AUTHORITY-AS-NOTIFIED-BODY
+  source: A043-P1
+  quote: where the high-risk AI system is intended to be put into service by law enforcement, immigration
+    or asylum authorities or by Union institutions, bodies, offices or agencies, the market surveillance
+    authority referred to in Article 74(8) or (9), as applicable, shall act as a notified body.
+  action: act as the notified body for systems intended for the specified public-authority or Union-body
+    use
+  subject_ref: market_surveillance_authority
+  subject_category: public_authority
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A043-P2-INTERNAL-CONTROL
+  source: A043-P2
+  quote: For high-risk AI systems referred to in points 2 to 8 of Annex III, providers shall follow the
+    conformity assessment procedure based on internal control as referred to in Annex VI, which does not
+    provide for the involvement of a notified body.
+  action: use the Annex VI internal-control procedure without notified-body involvement for Annex III
+    points 2 to 8
+  subject_ref: provider
+  subject_category: supported_operator
+  implementation_refs:
+  - AIA-PO-A43-2
+  verification_mode: listed_for_confirmation
+- norm_id: AIA-NORM-A043-P3-PROCEDURE
+  source: A043-P3
+  quote: shall follow the relevant conformity assessment procedure
+  action: follow the applicable Section A Annex I conformity-assessment procedure
+  subject_ref: provider
+  subject_category: supported_operator
+  implementation_refs:
+  - AIA-PO-A43-3
+  verification_mode: listed_for_confirmation
+- norm_id: AIA-NORM-A043-P3-SECTION2
+  source: A043-P3
+  quote: shall be part of that assessment
+  action: include Chapter III Section 2 requirements in that assessment
+  subject_ref: provider
+  subject_category: supported_operator
+  implementation_refs:
+  - AIA-PO-A43-3
+  verification_mode: listed_for_confirmation
+- norm_id: AIA-NORM-A043-P3-QMS
+  source: A043-P3
+  quote: Assessment of the quality management system set out in Article 17 shall also be undertaken
+  action: undertake assessment of the Article 17 quality-management system
+  subject_ref: provider
+  subject_category: supported_operator
+  implementation_refs:
+  - AIA-PO-A43-3
+  verification_mode: listed_for_confirmation
+- norm_id: AIA-NORM-A043-P3-ANNEXVII
+  source: A043-P3
+  quote: points 3, 4.3, 4.4. and 4.5, the fifth paragraph of point 4.6 and point 5 of Annex VII shall
+    apply
+  action: apply the specified Annex VII procedural requirements
+  subject_ref: provider
+  subject_category: supported_operator
+  implementation_refs:
+  - AIA-PO-A43-3
+  verification_mode: listed_for_confirmation
+  dependencies:
+  - dependency_ref: AIA-TEXT-ANNEX-VII-I3
+    resolution: internal_resolved
+    detail: Annex VII point 3 is imported in full.
+  - dependency_ref: AIA-TEXT-ANNEX-VII-I4
+    resolution: internal_resolved
+    detail: The specified point 4 subparagraphs are represented within this source segment.
+  - dependency_ref: AIA-TEXT-ANNEX-VII-I5
+    resolution: internal_resolved
+    detail: Annex VII point 5 is imported in full.
+- norm_id: AIA-NORM-A043-P3-BODY-POWER
+  source: A043-P3
+  quote: shall have the power to assess the conformity of high-risk AI systems
+  action: assess conformity with Chapter III Section 2
+  subject_ref: sectoral_notified_body
+  subject_category: notified_or_conformity_body
+  kind: power
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A043-P3-DESIGNATE
+  source: A043-P3
+  quote: shall apply for designation in accordance with Section 4 of this Chapter by 28 January 2028
+  action: apply for AI Act designation by 28 January 2028
+  subject_ref: sectoral_notified_body
+  subject_category: notified_or_conformity_body
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A043-P3-OPTION
+  source: A043-P3
+  quote: that manufacturer may use that option only if it has also applied harmonised standards
+  action: use a no-third-party sectoral route only after applying standards covering all Section 2 requirements
+  subject_ref: product_manufacturer
+  subject_category: supported_operator
+  kind: permission
+  implementation_refs:
+  - AIA-PO-A43-3
+  verification_mode: listed_for_confirmation
+- norm_id: AIA-NORM-A043-P3-NO-EFFECT
+  source: A043-P3
+  quote: does not affect the choice of the conformity assessment procedure
+  action: preserve the sectoral conformity-route choice despite AI high-risk classification
+  subject_ref: product_manufacturer
+  subject_category: supported_operator
+  kind: applicability
+  product_scope: dependency_only
+  product_scope_reason: This proposition supplies applicability or content to operator norms.
+  implementation_mode: none_required
+  implementation_reason: Represented as a dependency rather than an independent finding.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A043-P3-NO-THIRD-PARTY
+  source: A043-P3
+  quote: are not required to choose a conformity assessment procedure involving third-party conformity
+    assessment only because the product includes a high-risk AI system
+  action: avoid a third-party procedure where sectoral law does not otherwise require it
+  subject_ref: product_manufacturer
+  subject_category: supported_operator
+  kind: applicability
+  product_scope: dependency_only
+  product_scope_reason: This proposition supplies applicability or content to operator norms.
+  implementation_mode: none_required
+  implementation_reason: Represented as a dependency rather than an independent finding.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A043-P3-DUAL
+  source: A043-P3
+  quote: shall follow the relevant conformity assessment procedure as required pursuant to the relevant
+    Union harmonisation legislation
+  action: use the Section A Annex I procedure when the system is also in Annex III
+  subject_ref: provider
+  subject_category: supported_operator
+  implementation_refs:
+  - AIA-PO-A43-3
+  verification_mode: listed_for_confirmation
+- norm_id: AIA-NORM-A043-P4-NEW-ASSESSMENT
+  source: A043-P4
+  quote: High-risk AI systems that have already been subject to a conformity assessment procedure shall
+    undergo a new conformity assessment procedure in the event of a substantial modification, regardless
+    of whether the modified system is intended to be further distributed or continues to be used by the
+    current deployer.
+  action: perform a new conformity assessment after a substantial modification regardless of subsequent
+    distribution or continued use
+  subject_ref: provider
+  subject_category: supported_operator
+  implementation_refs:
+  - AIA-PO-A43-4
+  verification_mode: listed_for_confirmation
+- norm_id: AIA-NORM-A043-P4-PREDETERMINED-CHANGE-EXCLUSION
+  source: A043-P4
+  quote: For high-risk AI systems that continue to learn after being placed on the market or put into
+    service, changes to the high-risk AI system and its performance that have been pre-determined by the
+    provider at the moment of the initial conformity assessment and are part of the information contained
+    in the technical documentation referred to in point 2(f) of Annex IV, shall not constitute a substantial
+    modification.
+  action: exclude predetermined and initially documented learning changes from substantial modification
+  subject_ref: provider
+  subject_category: supported_operator
+  kind: applicability
+  product_scope: dependency_only
+  product_scope_reason: This proposition supplies applicability to the new-assessment obligation.
+  implementation_mode: none_required
+  implementation_reason: Represented as a dependency rather than an independent finding.
+  verification_mode: not_assessed
+  conditions:
+  - the continuing-learning change and performance effect was predetermined at initial conformity assessment
+  - the change is included in Annex IV point 2(f) technical documentation
+- norm_id: AIA-NORM-A043-P5-AMEND
+  source: A043-P5
+  quote: The Commission is empowered to adopt delegated acts
+  action: amend Annexes VI and VII for technical progress
+  subject_ref: commission
+  subject_category: union_institution_or_body
+  kind: power
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A043-P6-AMEND
+  source: A043-P6
+  quote: The Commission is empowered to adopt delegated acts
+  action: move Annex III points 2 to 8 to some or all of the Annex VII procedure
+  subject_ref: commission
+  subject_category: union_institution_or_body
+  kind: power
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A043-P6-DELEGATED-ACT-CRITERIA
+  source: A043-P6
+  quote: The Commission shall adopt such delegated acts taking into account the effectiveness of the conformity
+    assessment procedure based on internal control referred to in Annex VI in preventing or minimising
+    the risks to health and safety and protection of fundamental rights posed by such systems, as well
+    as the availability of adequate capacities and resources among notified bodies.
+  action: account for internal-control effectiveness and notified-body capacity when adopting the paragraph
+    6 delegated acts
+  subject_ref: commission
+  subject_category: union_institution_or_body
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+  mandatory_content:
+  - Annex VI internal-control effectiveness in preventing or minimising health, safety, and fundamental-rights
+    risks
+  - availability of adequate notified-body capacities and resources
