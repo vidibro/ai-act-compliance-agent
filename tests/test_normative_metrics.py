@@ -49,8 +49,8 @@ def test_inventory_partitions_the_complete_versioned_corpus(metrics):
     assert bundle.text_review.corpus_complete is True
     assert set(grouped) == expected
     assert metrics.documents == 133
-    assert metrics.documents_with_extracted_norms == 35
-    assert metrics.documents_with_review_debt == 101
+    assert metrics.documents_with_extracted_norms == 36
+    assert metrics.documents_with_review_debt == 100
     assert metrics.exact_source_characters == 394_667
     assert set(metrics.norms_by_document) == {
         "article 2",
@@ -79,6 +79,7 @@ def test_inventory_partitions_the_complete_versioned_corpus(metrics):
         "article 24",
         "article 25",
         "article 26",
+        "article 27",
         "article 43",
         "article 50",
         "article 60",
@@ -1483,21 +1484,75 @@ def test_article_twenty_six_models_core_and_specialised_deployer_duties():
     )
 
 
+def test_article_twenty_seven_keeps_fria_contents_in_one_assessment_norm():
+    bundle = load_normative_coverage()
+    segments = [
+        segment
+        for segment in bundle.text_review.segments
+        if segment.source.kind.value == "article" and segment.source.document == "27"
+    ]
+    norms = {
+        norm.norm_id: norm
+        for norm in bundle.norm_inventory.norms
+        if norm.norm_id.startswith("AIA-NORM-A027-")
+    }
+
+    assert len(segments) == 12
+    assert all(segment.review.status.value == "approved" for segment in segments)
+    assert all(segment.review.verified_by == "vidibro" for segment in segments)
+    assert len(norms) == 9
+
+    assessment = norms["AIA-NORM-A027-P1-PERFORM-FRIA"]
+    assert assessment.implementation_refs == ["AIA-DP-A27"]
+    assert len(assessment.mandatory_content) == 6
+    assert assessment.qualifier_spans == [
+        "AIA-TEXT-A027-P002",
+        "AIA-TEXT-A027-P003",
+        "AIA-TEXT-A027-P004",
+        "AIA-TEXT-A027-P005",
+        "AIA-TEXT-A027-P006",
+        "AIA-TEXT-A027-P007",
+    ]
+
+    by_target = {
+        target: {
+            norm_id
+            for norm_id, norm in norms.items()
+            if norm.implementation_refs == [target]
+        }
+        for target in ("AIA-DP-A27", "AIA-DP-A27-2", "AIA-DP-A27-3")
+    }
+    assert len(by_target["AIA-DP-A27"]) == 2
+    assert len(by_target["AIA-DP-A27-2"]) == 3
+    assert len(by_target["AIA-DP-A27-3"]) == 2
+
+    ai_office_norms = {
+        norm_id
+        for norm_id, norm in norms.items()
+        if norm.subjects[0].subject_ref == "ai_office"
+    }
+    assert len(ai_office_norms) == 2
+    assert all(
+        norms[norm_id].product_scope.value == "outside_supported_actor"
+        for norm_id in ai_office_norms
+    )
+
+
 def test_inventory_cannot_be_misreported_as_independently_approved(metrics):
-    assert metrics.approved_characters == 111_223
-    assert metrics.needs_review_characters == 242_410
+    assert metrics.approved_characters == 114_597
+    assert metrics.needs_review_characters == 239_110
     assert metrics.review_statuses == {
-        "approved": 455,
-        "needs_review": 831,
-        "proposed": 695,
+        "approved": 467,
+        "needs_review": 820,
+        "proposed": 703,
     }
     assert metrics.timed_review_records == 0
-    assert metrics.total_review_records == 1982
+    assert metrics.total_review_records == 1991
 
 
 def test_semantic_pass_finds_propositions_a_shall_scan_misses(metrics):
-    assert metrics.shall_vs_semantic_disagreements == 288
-    assert metrics.shall_token_candidate_recall == pytest.approx(264 / 552)
+    assert metrics.shall_vs_semantic_disagreements == 292
+    assert metrics.shall_token_candidate_recall == pytest.approx(269 / 561)
     assert "AIA-NORM-A011-P1-SIMPLIFY" in metrics.semantic_norms_without_shall_token
     assert "AIA-NORM-A043-P5-AMEND" in metrics.semantic_norms_without_shall_token
     assert "AIA-NORM-A060-P4-PERMISSION" in metrics.semantic_norms_without_shall_token
@@ -1505,12 +1560,12 @@ def test_semantic_pass_finds_propositions_a_shall_scan_misses(metrics):
 
 
 def test_metrics_expose_many_to_many_and_implementation_debt(metrics):
-    assert metrics.normative_segments_with_multiple_norms == 126
+    assert metrics.normative_segments_with_multiple_norms == 129
     assert metrics.mapping_shape.one_norm_to_one_target == 11
-    assert metrics.mapping_shape.many_norms_to_one_target == 259
+    assert metrics.mapping_shape.many_norms_to_one_target == 266
     assert metrics.mapping_shape.one_norm_to_many_targets == 1
     assert metrics.mapping_shape.many_to_many == 10
-    assert metrics.mapping_shape.unmapped == 271
+    assert metrics.mapping_shape.unmapped == 273
     assert metrics.semantic_vs_existing_implementation_disagreements == 108
     assert metrics.semantic_norms_without_existing_implementation == [
         "AIA-NORM-A002-P1-A-PROVIDER",
