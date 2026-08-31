@@ -7076,6 +7076,65 @@ records:
   - documents concerning work performed by the subcontractor or subsidiary under the Regulation
   conditions:
   - retain the documents for five years from termination of the subcontracting
+- norm_id: AIA-NORM-A034-P1-VERIFY-CONFORMITY
+  source: A034-P001
+  quote: Notified bodies shall verify the conformity of high-risk AI systems in accordance with the conformity assessment procedures set out in Article 43.
+  action: verify high-risk AI-system conformity using the Article 43 conformity-assessment procedures
+  subject_ref: notified_body
+  subject_category: notified_or_conformity_body
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A034-P2-AVOID-UNNECESSARY-BURDENS
+  source: A034-P002
+  quote: Notified bodies shall avoid unnecessary burdens for providers when performing their activities, and take due account of the size of the provider, the sector in which it operates, its structure and the degree of complexity of the high-risk AI system concerned, in particular in view of minimising administrative burdens and compliance costs for micro- and small enterprises within the meaning of Recommendation 2003/361/EC.
+  action: avoid imposing unnecessary burdens on providers when performing notified-body activities
+  subject_ref: notified_body
+  subject_category: notified_or_conformity_body
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A034-P2-PROPORTIONALITY-FACTORS
+  source: A034-P002
+  quote: Notified bodies shall avoid unnecessary burdens for providers when performing their activities, and take due account of the size of the provider, the sector in which it operates, its structure and the degree of complexity of the high-risk AI system concerned, in particular in view of minimising administrative burdens and compliance costs for micro- and small enterprises within the meaning of Recommendation 2003/361/EC.
+  action: account for provider size, sector, structure, and system complexity to minimise administrative burdens and compliance costs, particularly for micro and small enterprises
+  subject_ref: notified_body
+  subject_category: notified_or_conformity_body
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+  mandatory_content: [provider size, provider sector, provider structure, high-risk AI-system complexity]
+- norm_id: AIA-NORM-A034-P2-PRESERVE-RIGOUR-AND-PROTECTION
+  source: A034-P002
+  quote: The notified body shall, nevertheless, respect the degree of rigour and the level of protection required for the compliance of the high-risk AI system with the requirements of this Regulation.
+  action: preserve the rigor and protection required for the high-risk system's compliance with the Regulation
+  subject_ref: notified_body
+  subject_category: notified_or_conformity_body
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A034-P3-PROVIDE-DOCUMENTATION
+  source: A034-P003
+  quote: Notified bodies shall make available and submit upon request all relevant documentation, including the providers’ documentation, to the notifying authority referred to in Article 28 to allow that authority to conduct its assessment, designation, notification and monitoring activities, and to facilitate the assessment outlined in this Section.
+  action: make available and submit all relevant documentation to the Article 28 notifying authority upon request
+  subject_ref: notified_body
+  subject_category: notified_or_conformity_body
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+  mandatory_content: [all relevant documentation, provider documentation]
+  conditions:
+  - the Article 28 notifying authority requests the documentation
 - norm_id: AIA-NORM-A043-P3-PROCEDURE
   source: A043-P3
   quote: shall follow the relevant conformity assessment procedure
