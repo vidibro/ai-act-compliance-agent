@@ -43,6 +43,8 @@ implementation_targets:
 - AIA-PO-A43-2
 - AIA-PO-A43-4
 - AIA-PO-A47
+- AIA-PO-A47-2
+- AIA-PO-A47-3
 - AIA-PO-A47-4
 - AIA-PO-A48
 - AIA-PO-A49
@@ -8391,6 +8393,116 @@ records:
   kind: applicability
   implementation_mode: missing
   verification_mode: unresolved
+- norm_id: AIA-NORM-A047-P1-DRAW-UP-DECLARATION
+  source: A047-P001
+  quote: The provider shall draw up a written machine readable, physical or electronically signed EU declaration of conformity for each high-risk AI system, and keep it at the disposal of the national competent authorities for 10 years after the high-risk AI system has been placed on the market or put into service.
+  action: draw up a written machine-readable, physical, or electronically signed declaration for each high-risk system
+  subject_ref: provider
+  subject_category: supported_operator
+  implementation_refs: [AIA-PO-A47]
+  verification_mode: listed_for_confirmation
+- norm_id: AIA-NORM-A047-P1-RETAIN-DECLARATION
+  source: A047-P001
+  quote: The provider shall draw up a written machine readable, physical or electronically signed EU declaration of conformity for each high-risk AI system, and keep it at the disposal of the national competent authorities for 10 years after the high-risk AI system has been placed on the market or put into service.
+  action: retain the declaration for national competent authorities for 10 years after market placement or service
+  subject_ref: provider
+  subject_category: supported_operator
+  implementation_refs: [AIA-PO-A47]
+  verification_mode: listed_for_confirmation
+- norm_id: AIA-NORM-A047-P1-IDENTIFY-SYSTEM
+  source: A047-P001
+  quote: The EU declaration of conformity shall identify the high-risk AI system for which it has been drawn up.
+  action: identify the specific high-risk system covered by the declaration
+  subject_ref: provider
+  subject_category: supported_operator
+  implementation_refs: [AIA-PO-A47]
+  verification_mode: listed_for_confirmation
+- norm_id: AIA-NORM-A047-P1-SUBMIT-ON-REQUEST
+  source: A047-P001
+  quote: A copy of the EU declaration of conformity shall be submitted to the relevant national competent authorities upon request.
+  action: submit a declaration copy to relevant national competent authorities on request
+  subject_ref: provider
+  subject_category: supported_operator
+  implementation_refs: [AIA-PO-A47]
+  verification_mode: listed_for_confirmation
+- norm_id: AIA-NORM-A047-P2-STATE-SECTION-2-COMPLIANCE
+  source: A047-P002
+  quote: The EU declaration of conformity shall state that the high-risk AI system concerned meets the requirements set out in Section 2.
+  action: state that the covered high-risk system meets Chapter III Section 2 requirements
+  subject_ref: provider
+  subject_category: supported_operator
+  implementation_refs: [AIA-PO-A47-2]
+  verification_mode: listed_for_confirmation
+- norm_id: AIA-NORM-A047-P2-ANNEX-V-CONTENT
+  source: A047-P002
+  quote: The EU declaration of conformity shall contain the information set out in Annex V
+  action: include every information item required by Annex V in the declaration
+  subject_ref: provider
+  subject_category: supported_operator
+  implementation_refs: [AIA-PO-A47-2]
+  verification_mode: listed_for_confirmation
+  dependencies:
+  - {dependency_ref: AIA-TEXT-ANNEX-V-P001, resolution: internal_resolved, detail: Annex V item 1.}
+  - {dependency_ref: AIA-TEXT-ANNEX-V-P002, resolution: internal_resolved, detail: Annex V item 2.}
+  - {dependency_ref: AIA-TEXT-ANNEX-V-P003, resolution: internal_resolved, detail: Annex V item 3.}
+  - {dependency_ref: AIA-TEXT-ANNEX-V-P004, resolution: internal_resolved, detail: Annex V item 4.}
+  - {dependency_ref: AIA-TEXT-ANNEX-V-P005, resolution: internal_resolved, detail: Annex V item 5.}
+  - {dependency_ref: AIA-TEXT-ANNEX-V-P006, resolution: internal_resolved, detail: Annex V item 6.}
+  - {dependency_ref: AIA-TEXT-ANNEX-V-P007, resolution: internal_resolved, detail: Annex V item 7.}
+  - {dependency_ref: AIA-TEXT-ANNEX-V-P008, resolution: internal_resolved, detail: Annex V item 8.}
+  - {dependency_ref: AIA-TEXT-ANNEX-V-P009, resolution: internal_resolved, detail: Annex V final text.}
+- norm_id: AIA-NORM-A047-P2-TRANSLATE-DECLARATION
+  source: A047-P002
+  quote: shall be translated into a language that can be easily understood by the national competent authorities of the Member States in which the high-risk AI system is placed on the market or made available.
+  action: translate the declaration into an easily understood language for authorities in every market state
+  subject_ref: provider
+  subject_category: supported_operator
+  implementation_refs: [AIA-PO-A47-2]
+  verification_mode: listed_for_confirmation
+- norm_id: AIA-NORM-A047-P3-SINGLE-DECLARATION
+  source: A047-P003
+  quote: Where high-risk AI systems are subject to other Union harmonisation legislation which also requires an EU declaration of conformity, a single EU declaration of conformity shall be drawn up in respect of all Union law applicable to the high-risk AI system.
+  action: draw up one declaration covering all applicable Union law when other harmonisation legislation also requires one
+  subject_ref: provider
+  subject_category: supported_operator
+  implementation_refs: [AIA-PO-A47-3]
+  verification_mode: listed_for_confirmation
+- norm_id: AIA-NORM-A047-P3-IDENTIFY-LEGISLATION
+  source: A047-P003
+  quote: The declaration shall contain all the information required to identify the Union harmonisation legislation to which the declaration relates.
+  action: include all information needed to identify every Union harmonisation law covered
+  subject_ref: provider
+  subject_category: supported_operator
+  implementation_refs: [AIA-PO-A47-3]
+  verification_mode: listed_for_confirmation
+- norm_id: AIA-NORM-A047-P4-ASSUME-RESPONSIBILITY
+  source: A047-P004
+  quote: By drawing up the EU declaration of conformity, the provider shall assume responsibility for compliance with the requirements set out in Section 2.
+  action: assume responsibility for Section 2 compliance by drawing up the declaration
+  subject_ref: provider
+  subject_category: supported_operator
+  implementation_refs: [AIA-PO-A47-4]
+  verification_mode: listed_for_confirmation
+- norm_id: AIA-NORM-A047-P4-KEEP-CURRENT
+  source: A047-P004
+  quote: The provider shall keep the EU declaration of conformity up-to-date as appropriate.
+  action: keep the declaration of conformity current as appropriate
+  subject_ref: provider
+  subject_category: supported_operator
+  implementation_refs: [AIA-PO-A47-4]
+  verification_mode: listed_for_confirmation
+- norm_id: AIA-NORM-A047-P5-AMEND-ANNEX-V
+  source: A047-P005
+  quote: The Commission is empowered to adopt delegated acts in accordance with Article 97 in order to amend Annex V by updating the content of the EU declaration of conformity set out in that Annex, in order to introduce elements that become necessary in light of technical progress.
+  action: amend Annex V declaration content to introduce elements required by technical progress
+  subject_ref: commission
+  subject_category: union_institution_or_body
+  kind: power
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
 - norm_id: AIA-NORM-A050-P1-DISCLOSE
   source: A050-P1
   quote: Providers shall ensure that AI systems intended to interact directly with natural persons are
