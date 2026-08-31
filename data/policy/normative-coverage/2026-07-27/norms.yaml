@@ -21825,6 +21825,227 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+- norm_id: AIA-NORM-A033-P1-SUBCONTRACTOR-ARTICLE-31-COMPLIANCE
+  act_version_date: '2026-07-27'
+  kind: obligation
+  subjects:
+  - subject_ref: notified_body
+    category: notified_or_conformity_body
+  action: ensure subcontractors and subsidiaries used for conformity-assessment tasks meet Article 31
+    requirements
+  norm_text: Where a notified body subcontracts specific tasks connected with the conformity assessment
+    or has recourse to a subsidiary, it shall ensure that the subcontractor or the subsidiary meets the
+    requirements laid down in Article 31, and shall inform the notifying authority accordingly.
+  detection_channels:
+  - semantic_legal_effect
+  - shall_token
+  primary_spans:
+  - AIA-TEXT-A033-P001
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions:
+  - the notified body subcontracts conformity-assessment tasks or uses a subsidiary
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_refs: []
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A033-P1-INFORM-NOTIFYING-AUTHORITY
+  act_version_date: '2026-07-27'
+  kind: obligation
+  subjects:
+  - subject_ref: notified_body
+    category: notified_or_conformity_body
+  action: inform the notifying authority when using a subcontractor or subsidiary for conformity-assessment
+    tasks
+  norm_text: Where a notified body subcontracts specific tasks connected with the conformity assessment
+    or has recourse to a subsidiary, it shall ensure that the subcontractor or the subsidiary meets the
+    requirements laid down in Article 31, and shall inform the notifying authority accordingly.
+  detection_channels:
+  - semantic_legal_effect
+  - shall_token
+  primary_spans:
+  - AIA-TEXT-A033-P001
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions:
+  - the notified body subcontracts conformity-assessment tasks or uses a subsidiary
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_refs: []
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A033-P2-FULL-RESPONSIBILITY
+  act_version_date: '2026-07-27'
+  kind: obligation
+  subjects:
+  - subject_ref: notified_body
+    category: notified_or_conformity_body
+  action: take full responsibility for tasks performed by subcontractors or subsidiaries
+  norm_text: Notified bodies shall take full responsibility for the tasks performed by any subcontractors
+    or subsidiaries.
+  detection_channels:
+  - semantic_legal_effect
+  - shall_token
+  primary_spans:
+  - AIA-TEXT-A033-P002
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions: []
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_refs: []
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A033-P3-PROVIDER-AGREEMENT
+  act_version_date: '2026-07-27'
+  kind: permission
+  subjects:
+  - subject_ref: notified_body
+    category: notified_or_conformity_body
+  action: subcontract activities or use a subsidiary only with the provider's agreement
+  norm_text: Activities may be subcontracted or carried out by a subsidiary only with the agreement of
+    the provider.
+  detection_channels:
+  - semantic_legal_effect
+  - other_modal
+  primary_spans:
+  - AIA-TEXT-A033-P003
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions:
+  - the provider agrees to the subcontracting or subsidiary arrangement
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_refs: []
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A033-P3-PUBLISH-SUBSIDIARIES
+  act_version_date: '2026-07-27'
+  kind: obligation
+  subjects:
+  - subject_ref: notified_body
+    category: notified_or_conformity_body
+  action: make the list of subsidiaries publicly available
+  norm_text: Notified bodies shall make a list of their subsidiaries publicly available.
+  detection_channels:
+  - semantic_legal_effect
+  - shall_token
+  primary_spans:
+  - AIA-TEXT-A033-P003
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions: []
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_refs: []
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A033-P4-RETAIN-SUBCONTRACTING-DOCUMENTS
+  act_version_date: '2026-07-27'
+  kind: obligation
+  subjects:
+  - subject_ref: notified_body
+    category: notified_or_conformity_body
+  action: keep subcontractor or subsidiary qualification and work documents available to the notifying
+    authority for five years after subcontracting ends
+  norm_text: The relevant documents concerning the assessment of the qualifications of the subcontractor
+    or the subsidiary and the work carried out by them under this Regulation shall be kept at the disposal
+    of the notifying authority for a period of five years from the termination date of the subcontracting.
+  detection_channels:
+  - semantic_legal_effect
+  - shall_token
+  primary_spans:
+  - AIA-TEXT-A033-P004
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions:
+  - retain the documents for five years from termination of the subcontracting
+  exceptions: []
+  mandatory_content:
+  - documents assessing the qualifications of the subcontractor or subsidiary
+  - documents concerning work performed by the subcontractor or subsidiary under the Regulation
+  dependencies: []
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_refs: []
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
 - norm_id: AIA-NORM-A043-P3-PROCEDURE
   act_version_date: '2026-07-27'
   kind: obligation
