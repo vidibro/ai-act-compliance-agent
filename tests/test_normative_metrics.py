@@ -49,8 +49,8 @@ def test_inventory_partitions_the_complete_versioned_corpus(metrics):
     assert bundle.text_review.corpus_complete is True
     assert set(grouped) == expected
     assert metrics.documents == 133
-    assert metrics.documents_with_extracted_norms == 66
-    assert metrics.documents_with_review_debt == 68
+    assert metrics.documents_with_extracted_norms == 67
+    assert metrics.documents_with_review_debt == 67
     assert metrics.exact_source_characters == 394_667
     assert set(metrics.norms_by_document) == {
         "article 2",
@@ -113,6 +113,7 @@ def test_inventory_partitions_the_complete_versioned_corpus(metrics):
         "article 58",
         "article 59",
         "article 60",
+        "article 60a",
         "article 75",
         "article 113",
         "annex III",
@@ -1590,20 +1591,20 @@ def test_article_twenty_eight_is_complete_institutional_coverage():
 
 
 def test_inventory_cannot_be_misreported_as_independently_approved(metrics):
-    assert metrics.approved_characters == 212_442
-    assert metrics.needs_review_characters == 151_726
+    assert metrics.approved_characters == 215_401
+    assert metrics.needs_review_characters == 148_943
     assert metrics.review_statuses == {
-        "approved": 786,
-        "needs_review": 551,
-        "proposed": 996,
+        "approved": 797,
+        "needs_review": 541,
+        "proposed": 1004,
     }
     assert metrics.timed_review_records == 0
-    assert metrics.total_review_records == 2334
+    assert metrics.total_review_records == 2343
 
 
 def test_semantic_pass_finds_propositions_a_shall_scan_misses(metrics):
-    assert metrics.shall_vs_semantic_disagreements == 384
-    assert metrics.shall_token_candidate_recall == pytest.approx(507 / 891)
+    assert metrics.shall_vs_semantic_disagreements == 386
+    assert metrics.shall_token_candidate_recall == pytest.approx(514 / 900)
     assert "AIA-NORM-A011-P1-SIMPLIFY" in metrics.semantic_norms_without_shall_token
     assert "AIA-NORM-A043-P5-AMEND" in metrics.semantic_norms_without_shall_token
     assert "AIA-NORM-A060-P4-PERMISSION" in metrics.semantic_norms_without_shall_token
@@ -1611,13 +1612,13 @@ def test_semantic_pass_finds_propositions_a_shall_scan_misses(metrics):
 
 
 def test_metrics_expose_many_to_many_and_implementation_debt(metrics):
-    assert metrics.normative_segments_with_multiple_norms == 222
+    assert metrics.normative_segments_with_multiple_norms == 225
     assert metrics.mapping_shape.one_norm_to_one_target == 17
     assert metrics.mapping_shape.many_norms_to_one_target == 331
     assert metrics.mapping_shape.one_norm_to_many_targets == 0
     assert metrics.mapping_shape.many_to_many == 15
-    assert metrics.mapping_shape.unmapped == 528
-    assert metrics.semantic_vs_existing_implementation_disagreements == 153
+    assert metrics.mapping_shape.unmapped == 537
+    assert metrics.semantic_vs_existing_implementation_disagreements == 156
     assert metrics.semantic_norms_without_existing_implementation == [
         "AIA-NORM-A002-P1-A-PROVIDER",
         "AIA-NORM-A002-P1-B-DEPLOYER",
@@ -1743,6 +1744,9 @@ def test_metrics_expose_many_to_many_and_implementation_debt(metrics):
         "AIA-NORM-A060-P4-K-REVERSIBLE-OUTPUTS",
         "AIA-NORM-A060-P7-INCIDENT-RESPONSE",
         "AIA-NORM-A060-P8-NOTIFY-OUTCOMES",
+        "AIA-NORM-A060A-P5-A-AGREE-TESTING-PLAN",
+        "AIA-NORM-A060A-P5-B-COMPLY-WITH-INCORPORATED-SAFEGUARDS",
+        "AIA-NORM-A060A-P6-COMPLY-WITH-SECTORAL-LAW",
         "AIA-NORM-ANNEX-III-1A-REMOTE-BIOMETRIC-IDENTIFICATION",
         "AIA-NORM-ANNEX-III-1B-BIOMETRIC-CATEGORISATION",
         "AIA-NORM-ANNEX-III-1C-EMOTION-RECOGNITION",
@@ -2739,6 +2743,29 @@ def test_article_sixty_extracts_real_world_testing_lifecycle():
         "suspension until mitigation or termination",
         "prompt recall procedure upon termination",
     ]
+
+
+def test_article_sixty_a_extracts_section_b_testing_framework():
+    bundle = load_normative_coverage()
+    segments = [
+        segment
+        for segment in bundle.text_review.segments
+        if segment.source.kind.value == "article" and segment.source.document == "60a"
+    ]
+    norms = {
+        norm.norm_id: norm
+        for norm in bundle.norm_inventory.norms
+        if norm.norm_id.startswith("AIA-NORM-A060A-")
+    }
+
+    assert len(segments) == 11
+    assert all(segment.review.status.value == "approved" for segment in segments)
+    assert all(segment.review.verified_by == "codex" for segment in segments)
+    assert len(norms) == 9
+    framework = norms["AIA-NORM-A060A-P5-FRAMEWORK-REQUIREMENTS"]
+    assert len(framework.qualifier_spans) == 4
+    assert len(framework.mandatory_content) == 4
+    assert sum(norm.implementation_mode.value == "missing" for norm in norms.values()) == 3
 
 
 def test_annex_inventory_keeps_external_actors_and_exact_mandatory_content():
