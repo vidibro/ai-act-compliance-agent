@@ -1,0 +1,18 @@
+records:
+- norm_id: AIA-NORM-A061-P1-OBTAIN-INFORMED-CONSENT
+  source: A061-P001
+  quote: 'For the purpose of testing in real world conditions under Article 60, freely-given informed consent shall be obtained from the subjects of testing prior to their participation in such testing and after their having been duly informed with concise, clear, relevant, and understandable information regarding:'
+  action: obtain freely given informed consent before Article 60 testing after clearly informing subjects of every enacted matter
+  subject_ref: provider_or_prospective_provider
+  subject_category: supported_operator
+  mandatory_content: [testing nature objectives and possible inconvenience, testing conditions and expected participation duration, participation rights and guarantees including refusal and withdrawal, arrangements to reverse or disregard system outputs, testing identifier and provider or representative contact details]
+  qualifier_spans: [A061-P002, A061-P003, A061-P004, A061-P005, A061-P006]
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A061-P2-DOCUMENT-AND-COPY-CONSENT
+  source: A061-P007
+  quote: The informed consent shall be dated and documented and a copy shall be given to the subjects of testing or their legal representative.
+  action: date and document informed consent and give a copy to the testing subject or legal representative
+  subject_ref: provider_or_prospective_provider
+  subject_category: supported_operator
+  mandatory_content: [dated consent, documented consent, copy provided to subject or legal representative]
+  verification_mode: not_assessed
