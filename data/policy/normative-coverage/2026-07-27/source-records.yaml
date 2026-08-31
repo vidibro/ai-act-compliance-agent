@@ -7476,6 +7476,85 @@ records:
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_assessed
+- norm_id: AIA-NORM-A037-P1-INVESTIGATE-COMPETENCE-DOUBTS
+  source: A037-P001
+  quote: The Commission shall, where necessary, investigate all cases where there are reasons to doubt the competence of a notified body or the continued fulfilment by a notified body of the requirements laid down in Article 31 and of its applicable responsibilities.
+  action: investigate cases raising doubts about notified-body competence, Article 31 compliance, or continuing fulfilment of responsibilities
+  subject_ref: commission
+  subject_category: union_institution_or_body
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A037-P2-PROVIDE-NOTIFICATION-INFORMATION
+  source: A037-P002
+  quote: The notifying authority shall provide the Commission, on request, with all relevant information relating to the notification or the maintenance of the competence of the notified body concerned.
+  action: provide the Commission on request all relevant notification and notified-body competence information
+  subject_ref: notifying_authority
+  subject_category: public_authority
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+  mandatory_content: [notification information, information on maintaining notified-body competence]
+- norm_id: AIA-NORM-A037-P3-PROTECT-INVESTIGATION-INFORMATION
+  source: A037-P003
+  quote: The Commission shall ensure that all sensitive information obtained in the course of its investigations pursuant to this Article is treated confidentially in accordance with Article 78.
+  action: ensure Article 37 investigation information is treated confidentially under Article 78
+  subject_ref: commission
+  subject_category: union_institution_or_body
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A037-P4-INFORM-NOTIFYING-STATE
+  source: A037-P004
+  quote: Where the Commission ascertains that a notified body does not meet or no longer meets the requirements for its notification, it shall inform the notifying Member State accordingly and request it to take the necessary corrective measures, including the suspension or withdrawal of the notification if necessary.
+  action: inform the notifying Member State when a notified body fails notification requirements
+  subject_ref: commission
+  subject_category: union_institution_or_body
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A037-P4-REQUEST-CORRECTIVE-MEASURES
+  source: A037-P004
+  quote: Where the Commission ascertains that a notified body does not meet or no longer meets the requirements for its notification, it shall inform the notifying Member State accordingly and request it to take the necessary corrective measures, including the suspension or withdrawal of the notification if necessary.
+  action: request necessary Member-State corrective measures, including suspension or withdrawal where necessary
+  subject_ref: commission
+  subject_category: union_institution_or_body
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A037-P4-COMMISSION-DESIGNATION-POWER
+  source: A037-P004
+  quote: Where the Member State fails to take the necessary corrective measures, the Commission may, by means of an implementing act, suspend, restrict or withdraw the designation.
+  action: suspend, restrict, or withdraw a designation by implementing act when the Member State fails to correct it
+  subject_ref: commission
+  subject_category: union_institution_or_body
+  kind: power
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A037-P4-EXAMINATION-PROCEDURE
+  source: A037-P004
+  quote: That implementing act shall be adopted in accordance with the examination procedure referred to in Article 98(2).
+  action: adopt the designation implementing act under the Article 98(2) examination procedure
+  subject_ref: commission
+  subject_category: union_institution_or_body
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
 - norm_id: AIA-NORM-A043-P3-PROCEDURE
   source: A043-P3
   quote: shall follow the relevant conformity assessment procedure
