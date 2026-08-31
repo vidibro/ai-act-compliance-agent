@@ -7588,6 +7588,21 @@ records:
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_assessed
+- norm_id: AIA-NORM-A039-P1-THIRD-COUNTRY-BODY-AUTHORISATION
+  source: A039-P001
+  quote: Conformity assessment bodies established under the law of a third country with which the Union has concluded an agreement may be authorised to carry out the activities of notified bodies under this Regulation, provided that they meet the requirements laid down in Article 31 or they ensure an equivalent level of compliance.
+  action: authorise an eligible third-country conformity-assessment body to perform notified-body activities
+  subject_ref: third_country_conformity_assessment_body
+  subject_category: notified_or_conformity_body
+  kind: permission
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+  conditions:
+  - the body is established in a third country that has concluded an agreement with the Union
+  - the body meets Article 31 requirements or ensures an equivalent level of compliance
 - norm_id: AIA-NORM-A043-P3-PROCEDURE
   source: A043-P3
   quote: shall follow the relevant conformity assessment procedure
