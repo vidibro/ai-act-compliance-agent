@@ -1,0 +1,71 @@
+records:
+- norm_id: AIA-NORM-A058-P1-DETAILED-SANDBOX-ARRANGEMENTS
+  source: A058-P001
+  quote: 'the Commission shall adopt implementing acts specifying the detailed arrangements for the establishment, development, implementation, operation, governance, and supervision of the AI regulatory sandboxes. Those implementing acts shall include common principles on the following issues:'
+  action: adopt implementing acts specifying the complete sandbox lifecycle and all enacted common-principle areas
+  subject_ref: commission
+  subject_category: union_institution_or_body
+  mandatory_content: [eligibility and selection, application participation monitoring exit and termination procedures, participant terms and conditions, governance data-protection supervision and national and Union coordination]
+  qualifier_spans: [A058-P002, A058-P003, A058-P004, A058-P005]
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A058-P1-EXAMINATION-PROCEDURE
+  source: A058-P006
+  quote: Those implementing acts shall be adopted in accordance with the examination procedure referred to in Article 98(2).
+  action: adopt the sandbox-arrangement implementing acts under the Article 98(2) examination procedure
+  subject_ref: commission
+  subject_category: union_institution_or_body
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A058-P2-MINIMUM-IMPLEMENTING-ACT-OUTCOMES
+  source: A058-P007
+  quote: 'The implementing acts referred to in paragraph 1 shall ensure:'
+  action: ensure the implementing acts produce every enacted access, flexibility, support, recognition, duration, and testing outcome
+  subject_ref: commission
+  subject_category: union_institution_or_body
+  mandatory_content:
+  - transparent fair eligibility and selection with decisions within three months
+  - broad equal demand-responsive access and partnership applications
+  - national-authority flexibility
+  - free SME and start-up access subject only to fair proportionate exceptional costs
+  - conformity and code-of-conduct compliance learning
+  - involvement of relevant AI-ecosystem actors
+  - simple intelligible communicated and Union-streamlined procedures with mutual recognition
+  - project-appropriate limited participation periods extendable by the competent authority
+  - testing benchmarking assessment explanation and risk-mitigation tools and infrastructure
+  qualifier_spans: [A058-P008, A058-P009, A058-P010, A058-P011, A058-P012, A058-P013, A058-P014, A058-P015, A058-P016]
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A058-P3-DIRECT-TO-PREDEPLOYMENT-SERVICES
+  source: A058-P017
+  quote: Prospective providers in the AI regulatory sandboxes, in particular SMEs and start-ups, shall be directed, where relevant, to pre-deployment services such as guidance on the implementation of this Regulation, to other value-adding services such as help with standardisation documents and certification, testing and experimentation facilities, European Digital Innovation Hubs and centres of excellence.
+  action: direct prospective sandbox providers to relevant pre-deployment and value-adding services
+  subject_ref: sandbox_competent_authority
+  subject_category: public_authority
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A058-P4-AGREE-REAL-WORLD-TESTING-SAFEGUARDS
+  source: A058-P018
+  quote: Where national competent authorities consider authorising testing in real world conditions supervised within the framework of an AI regulatory sandbox to be established under this Article, they shall specifically agree the terms and conditions of such testing and, in particular, the appropriate safeguards with the participants, with a view to protecting fundamental rights, health and safety. Where appropriate, they shall cooperate with other national competent authorities with a view to ensuring consistent practices across the Union.
+  action: agree real-world testing terms and safeguards with participants and cooperate as appropriate for consistent Union practice
+  subject_ref: national_competent_authority
+  subject_category: public_authority
+  conditions: [the authority considers authorising supervised real-world sandbox testing]
+  mandatory_content: [testing terms and conditions, safeguards protecting fundamental rights health and safety]
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
