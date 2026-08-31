@@ -50,7 +50,7 @@ def test_inventory_partitions_the_complete_versioned_corpus(metrics):
     assert set(grouped) == expected
     assert metrics.documents == 133
     assert metrics.documents_with_extracted_norms == 51
-    assert metrics.documents_with_review_debt == 85
+    assert metrics.documents_with_review_debt == 84
     assert metrics.exact_source_characters == 394_667
     assert set(metrics.norms_by_document) == {
         "article 2",
@@ -1575,20 +1575,20 @@ def test_article_twenty_eight_is_complete_institutional_coverage():
 
 
 def test_inventory_cannot_be_misreported_as_independently_approved(metrics):
-    assert metrics.approved_characters == 148_644
-    assert metrics.needs_review_characters == 205_888
+    assert metrics.approved_characters == 155_342
+    assert metrics.needs_review_characters == 203_108
     assert metrics.review_statuses == {
-        "approved": 581,
-        "needs_review": 721,
-        "proposed": 808,
+        "approved": 588,
+        "needs_review": 718,
+        "proposed": 812,
     }
     assert metrics.timed_review_records == 0
-    assert metrics.total_review_records == 2111
+    assert metrics.total_review_records == 2119
 
 
 def test_semantic_pass_finds_propositions_a_shall_scan_misses(metrics):
-    assert metrics.shall_vs_semantic_disagreements == 309
-    assert metrics.shall_token_candidate_recall == pytest.approx(372 / 681)
+    assert metrics.shall_vs_semantic_disagreements == 310
+    assert metrics.shall_token_candidate_recall == pytest.approx(379 / 689)
     assert "AIA-NORM-A011-P1-SIMPLIFY" in metrics.semantic_norms_without_shall_token
     assert "AIA-NORM-A043-P5-AMEND" in metrics.semantic_norms_without_shall_token
     assert "AIA-NORM-A060-P4-PERMISSION" in metrics.semantic_norms_without_shall_token
@@ -1596,12 +1596,12 @@ def test_semantic_pass_finds_propositions_a_shall_scan_misses(metrics):
 
 
 def test_metrics_expose_many_to_many_and_implementation_debt(metrics):
-    assert metrics.normative_segments_with_multiple_norms == 151
+    assert metrics.normative_segments_with_multiple_norms == 154
     assert metrics.mapping_shape.one_norm_to_one_target == 11
-    assert metrics.mapping_shape.many_norms_to_one_target == 266
+    assert metrics.mapping_shape.many_norms_to_one_target == 271
     assert metrics.mapping_shape.one_norm_to_many_targets == 1
     assert metrics.mapping_shape.many_to_many == 10
-    assert metrics.mapping_shape.unmapped == 393
+    assert metrics.mapping_shape.unmapped == 396
     assert metrics.semantic_vs_existing_implementation_disagreements == 115
     assert metrics.semantic_norms_without_existing_implementation == [
         "AIA-NORM-A002-P1-A-PROVIDER",
@@ -2151,6 +2151,41 @@ def test_article_forty_two_keeps_three_conformity_presumptions_distinct():
     assert all(norm.product_scope.value == "in_scope" for norm in norms)
     assert all(norm.implementation_mode.value == "missing" for norm in norms)
     assert {len(norm.conditions) for norm in norms} == {1, 2}
+
+
+def test_article_forty_three_reconciles_all_conformity_routes():
+    bundle = load_normative_coverage()
+    segments = [
+        segment
+        for segment in bundle.text_review.segments
+        if segment.source.kind.value == "article" and segment.source.document == "43"
+    ]
+    norms = {
+        norm.norm_id: norm
+        for norm in bundle.norm_inventory.norms
+        if norm.norm_id.startswith("AIA-NORM-A043-")
+    }
+
+    assert len(segments) == 7
+    assert all(segment.review.status.value == "approved" for segment in segments)
+    assert all(segment.review.verified_by == "codex" for segment in segments)
+    assert len(norms) == 20
+    assert len(segments[1].norm_ids) == 4
+    assert len(segments[3].norm_ids) == 10
+    assert len(segments[4].norm_ids) == 2
+    assert len(segments[6].norm_ids) == 2
+    assert norms["AIA-NORM-A043-P1-CHOOSE-CONFORMITY-ROUTE"].implementation_refs == [
+        "AIA-PO-A43-1"
+    ]
+    assert norms["AIA-NORM-A043-P2-INTERNAL-CONTROL"].implementation_refs == [
+        "AIA-PO-A43-2"
+    ]
+    assert norms["AIA-NORM-A043-P4-NEW-ASSESSMENT"].implementation_refs == [
+        "AIA-PO-A43-4"
+    ]
+    exclusion = norms["AIA-NORM-A043-P4-PREDETERMINED-CHANGE-EXCLUSION"]
+    assert exclusion.kind.value == "applicability"
+    assert exclusion.product_scope.value == "dependency_only"
 
 
 def test_annex_inventory_keeps_external_actors_and_exact_mandatory_content():

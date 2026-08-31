@@ -14586,9 +14586,9 @@ segments:
   disposition_reason: ''
   norm_ids: []
   review:
-    status: proposed
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: codex
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
     display_chunks: 1
@@ -14621,17 +14621,21 @@ segments:
     \ enforcement, immigration or asylum authorities or by Union institutions, bodies, offices or agencies,\
     \ the market surveillance authority referred to in Article 74(8) or (9), as applicable, shall act\
     \ as a notified body.\n"
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A043-P1-CHOOSE-CONFORMITY-ROUTE
+  - AIA-NORM-A043-P1-REQUIRED-ANNEX-VII-ROUTE
+  - AIA-NORM-A043-P1-CHOOSE-NOTIFIED-BODY
+  - AIA-NORM-A043-P1-AUTHORITY-AS-NOTIFIED-BODY
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: codex
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A043-P2
   source:
@@ -14646,17 +14650,18 @@ segments:
     not provide for the involvement of a notified body.
 
     '
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A043-P2-INTERNAL-CONTROL
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: codex
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A043-P3
   source:
@@ -14711,9 +14716,9 @@ segments:
   - AIA-NORM-A043-P3-NO-THIRD-PARTY
   - AIA-NORM-A043-P3-DUAL
   review:
-    status: proposed
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: codex
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
     display_chunks: 1
@@ -14735,17 +14740,19 @@ segments:
     \ been pre-determined by the provider at the moment of the initial conformity assessment and are part\
     \ of the information contained in the technical documentation referred to in point 2(f) of Annex IV,\
     \ shall not constitute a substantial modification.\n"
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A043-P4-NEW-ASSESSMENT
+  - AIA-NORM-A043-P4-PREDETERMINED-CHANGE-EXCLUSION
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: codex
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A043-P5
   source:
@@ -14764,9 +14771,9 @@ segments:
   norm_ids:
   - AIA-NORM-A043-P5-AMEND
   review:
-    status: proposed
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: codex
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
     display_chunks: 1
@@ -14793,10 +14800,11 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A043-P6-AMEND
+  - AIA-NORM-A043-P6-DELEGATED-ACT-CRITERIA
   review:
-    status: proposed
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: codex
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
     display_chunks: 1

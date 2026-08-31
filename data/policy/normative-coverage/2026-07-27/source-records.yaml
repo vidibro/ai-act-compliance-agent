@@ -7874,6 +7874,55 @@ records:
   conditions:
   - the system falls within Regulation 2024/2847
   - the conditions in Article 12(1) of Regulation 2024/2847 are fulfilled
+- norm_id: AIA-NORM-A043-P1-CHOOSE-CONFORMITY-ROUTE
+  source: A043-P1
+  quote: the provider shall opt for one of the following conformity assessment procedures based on
+  action: choose either Annex VI internal control or Annex VII notified-body assessment when the applicable standards or common specifications were applied
+  subject_ref: provider
+  subject_category: supported_operator
+  implementation_refs: [AIA-PO-A43-1]
+  verification_mode: listed_for_confirmation
+- norm_id: AIA-NORM-A043-P1-REQUIRED-ANNEX-VII-ROUTE
+  source: A043-P1
+  quote: the provider shall follow the conformity assessment procedure set out in Annex VII where
+  action: use Annex VII where standards or common specifications are unavailable, unapplied, partly applied, or restricted
+  subject_ref: provider
+  subject_category: supported_operator
+  implementation_refs: [AIA-PO-A43-1B]
+  verification_mode: listed_for_confirmation
+  conditions:
+  - harmonised standards do not exist and common specifications are unavailable
+  - or the provider did not apply, or applied only part of, the harmonised standard
+  - or available common specifications were not applied
+  - or a harmonised standard was published with a restriction, for the restricted part
+- norm_id: AIA-NORM-A043-P1-CHOOSE-NOTIFIED-BODY
+  source: A043-P1
+  quote: For the purposes of the conformity assessment procedure referred to in Annex VII, the provider may choose any of the notified bodies.
+  action: choose any notified body for the Annex VII conformity-assessment procedure
+  subject_ref: provider
+  subject_category: supported_operator
+  kind: permission
+  implementation_refs: [AIA-PO-A43-1B]
+  verification_mode: listed_for_confirmation
+- norm_id: AIA-NORM-A043-P1-AUTHORITY-AS-NOTIFIED-BODY
+  source: A043-P1
+  quote: where the high-risk AI system is intended to be put into service by law enforcement, immigration or asylum authorities or by Union institutions, bodies, offices or agencies, the market surveillance authority referred to in Article 74(8) or (9), as applicable, shall act as a notified body.
+  action: act as the notified body for systems intended for the specified public-authority or Union-body use
+  subject_ref: market_surveillance_authority
+  subject_category: public_authority
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A043-P2-INTERNAL-CONTROL
+  source: A043-P2
+  quote: For high-risk AI systems referred to in points 2 to 8 of Annex III, providers shall follow the conformity assessment procedure based on internal control as referred to in Annex VI, which does not provide for the involvement of a notified body.
+  action: use the Annex VI internal-control procedure without notified-body involvement for Annex III points 2 to 8
+  subject_ref: provider
+  subject_category: supported_operator
+  implementation_refs: [AIA-PO-A43-2]
+  verification_mode: listed_for_confirmation
 - norm_id: AIA-NORM-A043-P3-PROCEDURE
   source: A043-P3
   quote: shall follow the relevant conformity assessment procedure
@@ -7989,6 +8038,29 @@ records:
   implementation_refs:
   - AIA-PO-A43-3
   verification_mode: listed_for_confirmation
+- norm_id: AIA-NORM-A043-P4-NEW-ASSESSMENT
+  source: A043-P4
+  quote: High-risk AI systems that have already been subject to a conformity assessment procedure shall undergo a new conformity assessment procedure in the event of a substantial modification, regardless of whether the modified system is intended to be further distributed or continues to be used by the current deployer.
+  action: perform a new conformity assessment after a substantial modification regardless of subsequent distribution or continued use
+  subject_ref: provider
+  subject_category: supported_operator
+  implementation_refs: [AIA-PO-A43-4]
+  verification_mode: listed_for_confirmation
+- norm_id: AIA-NORM-A043-P4-PREDETERMINED-CHANGE-EXCLUSION
+  source: A043-P4
+  quote: For high-risk AI systems that continue to learn after being placed on the market or put into service, changes to the high-risk AI system and its performance that have been pre-determined by the provider at the moment of the initial conformity assessment and are part of the information contained in the technical documentation referred to in point 2(f) of Annex IV, shall not constitute a substantial modification.
+  action: exclude predetermined and initially documented learning changes from substantial modification
+  subject_ref: provider
+  subject_category: supported_operator
+  kind: applicability
+  product_scope: dependency_only
+  product_scope_reason: This proposition supplies applicability to the new-assessment obligation.
+  implementation_mode: none_required
+  implementation_reason: Represented as a dependency rather than an independent finding.
+  verification_mode: not_assessed
+  conditions:
+  - the continuing-learning change and performance effect was predetermined at initial conformity assessment
+  - the change is included in Annex IV point 2(f) technical documentation
 - norm_id: AIA-NORM-A043-P5-AMEND
   source: A043-P5
   quote: The Commission is empowered to adopt delegated acts
@@ -8013,6 +8085,20 @@ records:
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_assessed
+- norm_id: AIA-NORM-A043-P6-DELEGATED-ACT-CRITERIA
+  source: A043-P6
+  quote: The Commission shall adopt such delegated acts taking into account the effectiveness of the conformity assessment procedure based on internal control referred to in Annex VI in preventing or minimising the risks to health and safety and protection of fundamental rights posed by such systems, as well as the availability of adequate capacities and resources among notified bodies.
+  action: account for internal-control effectiveness and notified-body capacity when adopting the paragraph 6 delegated acts
+  subject_ref: commission
+  subject_category: union_institution_or_body
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+  mandatory_content:
+  - Annex VI internal-control effectiveness in preventing or minimising health, safety, and fundamental-rights risks
+  - availability of adequate notified-body capacities and resources
 - norm_id: AIA-NORM-A050-P1-DISCLOSE
   source: A050-P1
   quote: Providers shall ensure that AI systems intended to interact directly with natural persons are
