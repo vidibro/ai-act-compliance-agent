@@ -1,0 +1,94 @@
+records:
+- norm_id: AIA-NORM-A097-P1-CONFER-DELEGATED-POWER
+  source: A097-P001
+  quote: The power to adopt delegated acts is conferred on the Commission
+  action: confer delegated-act power on the Commission subject to Article 97 conditions
+  subject_ref: commission
+  subject_category: union_institution_or_body
+  kind: power
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A097-P2-DELEGATION-PERIODS
+  source: A097-P002
+  quote: shall be conferred on the Commission for a period of five years
+  action: apply the specified five-year periods to the listed delegated powers
+  subject_ref: commission
+  subject_category: union_institution_or_body
+  kind: legal_consequence
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A097-P2-DELEGATION-REPORT
+  source: A097-P002
+  quote: The Commission shall draw up a report in respect of the delegation of power
+  action: prepare a delegation-of-power report at least nine months before the five-year period ends
+  subject_ref: commission
+  subject_category: union_institution_or_body
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A097-P2-TACIT-EXTENSION
+  source: A097-P002
+  quote: The delegation of power shall be tacitly extended for periods of an identical duration
+  action: extend delegated power automatically unless Parliament or Council timely opposes
+  subject_ref: delegation_of_power
+  subject_category: other
+  kind: legal_consequence
+  product_scope: outside_supported_actor
+  product_scope_reason: This institutional consequence is outside the supported operator surface.
+  implementation_mode: none_required
+  implementation_reason: No product implementation is required.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A097-P3-REVOKE-DELEGATION
+  source: A097-P003
+  quote: may be revoked at any time by the European Parliament or by the Council
+  action: revoke a specified delegation with prospective effect while preserving acts already in force
+  subject_ref: european_parliament_or_council
+  subject_category: union_institution_or_body
+  kind: power
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A097-P4-CONSULT-MEMBER-STATE-EXPERTS
+  source: A097-P004
+  quote: the Commission shall consult experts designated by each Member State
+  action: consult Member-State experts before adopting a delegated act under the Better-Law-Making principles
+  subject_ref: commission
+  subject_category: union_institution_or_body
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A097-P5-NOTIFY-DELEGATED-ACT
+  source: A097-P005
+  quote: the Commission shall notify it simultaneously to the European Parliament and to the Council
+  action: notify Parliament and Council simultaneously upon adopting a delegated act
+  subject_ref: commission
+  subject_category: union_institution_or_body
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A097-P6-DELEGATED-ACT-ENTRY-CONDITION
+  source: A097-P006
+  quote: shall enter into force only if no objection has been expressed
+  action: condition delegated-act entry into force on absence of a timely Parliament or Council objection
+  subject_ref: delegated_act
+  subject_category: other
+  kind: legal_consequence
+  product_scope: outside_supported_actor
+  product_scope_reason: This institutional consequence is outside the supported operator surface.
+  implementation_mode: none_required
+  implementation_reason: No product implementation is required.
+  verification_mode: not_assessed
