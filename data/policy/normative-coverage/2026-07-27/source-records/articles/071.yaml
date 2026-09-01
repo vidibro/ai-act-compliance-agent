@@ -1,0 +1,83 @@
+records:
+- norm_id: AIA-NORM-A071-P1-SET-UP-AND-MAINTAIN-DATABASE
+  source: A071-P001
+  quote: The Commission shall, in collaboration with the Member States, set up and maintain an EU database containing information referred to in paragraphs 2 and 3 of this Article concerning high-risk AI systems referred to in Article 6(2) which are registered in accordance with Articles 49 and 60 and AI systems that are not considered as high-risk pursuant to Article 6(3) and which are registered in accordance with Article 6(4) and Article 49. When setting the functional specifications of such database, the Commission shall consult the relevant experts, and when updating the functional specifications of such database, the Commission shall consult the Board.
+  action: collaboratively establish and maintain the EU database and consult experts and the Board on initial and updated specifications
+  subject_ref: commission
+  subject_category: union_institution_or_body
+  mandatory_content: [Article 6(2) high-risk systems registered under Articles 49 and 60, Article 6(3) non-high-risk systems registered under Articles 6(4) and 49, expert consultation on initial specifications, Board consultation on updated specifications]
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A071-P2-PROVIDER-ENTER-ANNEX-VIII-DATA
+  source: A071-P002
+  quote: The data listed in Sections A and B of Annex VIII shall be entered into the EU database by the provider or, where applicable, by the authorised representative.
+  action: enter the applicable Annex VIII Sections A and B data into the EU database
+  subject_ref: provider
+  subject_category: supported_operator
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A071-P2-REPRESENTATIVE-ENTER-ANNEX-VIII-DATA
+  source: A071-P002
+  quote: The data listed in Sections A and B of Annex VIII shall be entered into the EU database by the provider or, where applicable, by the authorised representative.
+  action: enter the applicable Annex VIII Sections A and B data into the EU database where registration falls to the representative
+  subject_ref: authorised_representative
+  subject_category: supported_operator
+  conditions: [the authorised representative is applicable for the data entry]
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A071-P3-PUBLIC-DEPLOYER-ENTER-ANNEX-VIII-DATA
+  source: A071-P003
+  quote: The data listed in Section C of Annex VIII shall be entered into the EU database by the deployer who is, or who acts on behalf of, a public authority, agency or body, in accordance with Article 49(3) and (4).
+  action: enter Annex VIII Section C data into the EU database under Article 49(3) and (4)
+  subject_ref: public_authority_deployer
+  subject_category: supported_operator
+  conditions: [the deployer is or acts for a public authority agency or body]
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A071-P4-DATABASE-ACCESS-RULES
+  source: A071-P004
+  quote: With the exception of the section referred to in Article 49(4) and Article 60(4), point (c), the information contained in the EU database registered in accordance with Article 49 shall be accessible and publicly available in a user-friendly manner. The information should be easily navigable and machine-readable. The information registered in accordance with Article 60 shall be accessible only to market surveillance authorities and the Commission, unless the prospective provider or provider has given consent for also making the information accessible the public.
+  action: apply public restricted and consent-based database access rules with user-friendly navigable machine-readable presentation
+  subject_ref: commission
+  subject_category: union_institution_or_body
+  mandatory_content: [public user-friendly Article 49 information except restricted sections, easily navigable machine-readable information, Article 60 access limited to surveillance authorities and Commission absent provider consent]
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A071-P5-DATABASE-DATA-MINIMISATION
+  source: A071-P005
+  quote: The EU database shall contain personal data only in so far as necessary for collecting and processing information in accordance with this Regulation. That information shall include the names and contact details of natural persons who are responsible for registering the system and have the legal authority to represent the provider or the deployer, as applicable.
+  action: limit database personal data to what Regulation processing requires while including authorised registrant names and contacts
+  subject_ref: commission
+  subject_category: union_institution_or_body
+  mandatory_content: [necessity-limited personal data, names and contact details of legally authorised natural-person registrants]
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A071-P6-CONTROLLER-AND-OPERATOR-SUPPORT
+  source: A071-P006
+  quote: The Commission shall be the controller of the EU database. It shall make available to providers, prospective providers and deployers adequate technical and administrative support.
+  action: act as EU database controller and provide operators adequate technical and administrative support
+  subject_ref: commission
+  subject_category: union_institution_or_body
+  mandatory_content: [database controllership, adequate technical support, adequate administrative support]
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A071-P6-DATABASE-ACCESSIBILITY
+  source: A071-P006
+  quote: The EU database shall comply with the applicable accessibility requirements.
+  action: ensure the EU database complies with applicable accessibility requirements
+  subject_ref: commission
+  subject_category: union_institution_or_body
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
