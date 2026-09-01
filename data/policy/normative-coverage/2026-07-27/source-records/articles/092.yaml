@@ -1,0 +1,93 @@
+records:
+- norm_id: AIA-NORM-A092-P1-CONDUCT-GPAI-EVALUATION
+  source: A092-P001
+  quote: The AI Office, after consulting the Board, may conduct evaluations of the general-purpose AI model concerned
+  action: after Board consultation evaluate a GPAI model for provider compliance or Union-level systemic risk under the enacted triggers
+  subject_ref: ai_office
+  subject_category: union_institution_or_body
+  kind: power
+  mandatory_content: [provider-compliance assessment when Article 91 information is insufficient, Union-level systemic-risk investigation particularly following an Article 90 qualified alert]
+  qualifier_spans: [A092-P002, A092-P003]
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A092-P2-APPOINT-INDEPENDENT-EXPERTS
+  source: A092-P004
+  quote: The Commission may decide to appoint independent experts to carry out evaluations on its behalf, including from the scientific panel established pursuant to Article 68. Independent experts appointed for this task shall meet the criteria outlined in Article 68(2).
+  action: appoint Article 68(2)-qualified independent experts to carry out evaluations for the Commission
+  subject_ref: commission
+  subject_category: union_institution_or_body
+  kind: power
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A092-P3-REQUEST-MODEL-ACCESS
+  source: A092-P005
+  quote: the Commission may request access to the general-purpose AI model concerned through APIs or further appropriate technical means and tools, including source code.
+  action: request access to the GPAI model through APIs source code or other appropriate technical means
+  subject_ref: commission
+  subject_category: union_institution_or_body
+  kind: power
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A092-P4-ACCESS-REQUEST-CONTENT
+  source: A092-P006
+  quote: The request for access shall state the legal basis, the purpose and reasons of the request and set the period within which the access is to be provided, and the fines provided for in Article 101 for failure to provide access.
+  action: include legal basis purpose reasons access period and applicable Article 101 fines in a model-access request
+  subject_ref: commission
+  subject_category: union_institution_or_body
+  mandatory_content: [legal basis, purpose and reasons, access period, Article 101 fines for failure to provide access]
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A092-P5-PROVIDE-MODEL-ACCESS
+  source: A092-P007
+  quote: The providers of the general-purpose AI model concerned or its representative shall supply the information requested.
+  action: provide the model access requested by the Commission
+  subject_ref: gpai_provider_or_representative
+  subject_category: supported_operator
+  implementation_refs: [AIA-GP-A92-5]
+  verification_mode: listed_for_confirmation
+- norm_id: AIA-NORM-A092-P5-AUTHORISED-PERSON-PROVIDE-ACCESS
+  source: A092-P007
+  quote: the persons authorised to represent them by law or by their statutes, shall provide the access requested on behalf of the provider of the general-purpose AI model concerned.
+  action: provide requested model access on behalf of a legal-person or non-legal-personality GPAI provider
+  subject_ref: legally_or_statutorily_authorised_representative
+  subject_category: external_private_party
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A092-P6-ADOPT-EVALUATION-ARRANGEMENTS
+  source: A092-P008
+  quote: The Commission shall adopt implementing acts setting out the detailed arrangements and the conditions for the evaluations, including the detailed arrangements for involving independent experts, and the procedure for the selection thereof.
+  action: adopt evaluation arrangements conditions and independent-expert selection procedures through the Article 98(2) examination procedure
+  subject_ref: commission
+  subject_category: union_institution_or_body
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A092-P7-INITIATE-STRUCTURED-DIALOGUE
+  source: A092-P009
+  quote: Prior to requesting access to the general-purpose AI model concerned, the AI Office may initiate a structured dialogue with the provider of the general-purpose AI model
+  action: initiate pre-access dialogue about internal testing safeguards procedures and systemic-risk mitigations
+  subject_ref: ai_office
+  subject_category: union_institution_or_body
+  kind: power
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed

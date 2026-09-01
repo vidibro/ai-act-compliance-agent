@@ -18,9 +18,9 @@ segments:
   disposition_reason: ''
   norm_ids: []
   review:
-    status: proposed
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: codex
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
     display_chunks: 1
@@ -38,17 +38,18 @@ segments:
     AI model concerned:
 
     '
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A092-P1-CONDUCT-GPAI-EVALUATION
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: codex
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A092-P002
   source:
@@ -62,17 +63,18 @@ segments:
     the information gathered pursuant to Article 91 is insufficient; or
 
     '
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A092-P1-CONDUCT-GPAI-EVALUATION
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: codex
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A092-P003
   source:
@@ -87,17 +89,18 @@ segments:
     90(1), point (a).
 
     '
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A092-P1-CONDUCT-GPAI-EVALUATION
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: codex
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A092-P004
   source:
@@ -112,17 +115,18 @@ segments:
     for this task shall meet the criteria outlined in Article 68(2).
 
     '
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A092-P2-APPOINT-INDEPENDENT-EXPERTS
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: codex
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A092-P005
   source:
@@ -137,17 +141,18 @@ segments:
     code.
 
     '
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A092-P3-REQUEST-MODEL-ACCESS
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: codex
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A092-P006
   source:
@@ -162,17 +167,18 @@ segments:
     101 for failure to provide access.
 
     '
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A092-P4-ACCESS-REQUEST-CONTENT
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: codex
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A092-P007
   source:
@@ -188,17 +194,19 @@ segments:
     provide the access requested on behalf of the provider of the general-purpose AI model concerned.
 
     '
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A092-P5-PROVIDE-MODEL-ACCESS
+  - AIA-NORM-A092-P5-AUTHORISED-PERSON-PROVIDE-ACCESS
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: codex
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A092-P008
   source:
@@ -214,17 +222,18 @@ segments:
     with the examination procedure referred to in Article 98(2).
 
     '
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A092-P6-ADOPT-EVALUATION-ARRANGEMENTS
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: codex
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A092-P009
   source:
@@ -240,15 +249,16 @@ segments:
     internal procedures and measures the provider has taken to mitigate such risks.
 
     '
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A092-P7-INITIATE-STRUCTURED-DIALOGUE
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: codex
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
