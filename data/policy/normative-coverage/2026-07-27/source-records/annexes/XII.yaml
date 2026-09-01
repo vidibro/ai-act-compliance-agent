@@ -1,0 +1,43 @@
+records:
+- norm_id: AIA-NORM-ANNEX-XII-DOWNSTREAM-TRANSPARENCY-INFORMATION
+  source: ANNEX-XII-P001
+  quote: shall contain at least the following
+  action: include all Annex XII model-description, integration, interaction, software, architecture, input-output, licence, and development-data information in documentation for downstream providers
+  subject_ref: provider
+  subject_category: supported_operator
+  implementation_mode: carried_by_other_norm
+  implementation_reason: Carried by the Article 53(1)(b) Annex XII content norm.
+  verification_mode: judged_from_document
+  mandatory_content:
+  - tasks the model is intended to perform and the type and nature of AI systems into which it can be integrated
+  - applicable acceptable-use policies
+  - release date and distribution methods
+  - applicable information on how the model interacts or can interact with hardware or software outside the model
+  - applicable versions of relevant software related to use of the model
+  - architecture and number of parameters
+  - input and output modalities and formats
+  - model licence
+  - technical means required to integrate the model into AI systems
+  - input and output modalities, formats, and maximum sizes
+  - applicable information on training, testing, and validation data, including type, provenance, and curation methodologies
+  qualifier_spans:
+  - ANNEX-XII-P002
+  - ANNEX-XII-P003
+  - ANNEX-XII-P004
+  - ANNEX-XII-P005
+  - ANNEX-XII-P006
+  - ANNEX-XII-P007
+  - ANNEX-XII-P008
+  - ANNEX-XII-P009
+  - ANNEX-XII-P010
+  - ANNEX-XII-P011
+  - ANNEX-XII-P012
+  - ANNEX-XII-P013
+  - ANNEX-XII-P014
+  dependencies:
+  - dependency_ref: AIA-NORM-A053-P1-B-ANNEX-XII-CONTENT
+    resolution: internal_resolved
+    detail: Article 53(1)(b) assigns the Annex XII minimum-content duty to GPAI model providers supplying downstream integrators.
+carried_by:
+  AIA-NORM-ANNEX-XII-DOWNSTREAM-TRANSPARENCY-INFORMATION:
+  - AIA-NORM-A053-P1-B-ANNEX-XII-CONTENT

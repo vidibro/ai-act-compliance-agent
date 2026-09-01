@@ -49,8 +49,8 @@ def test_inventory_partitions_the_complete_versioned_corpus(metrics):
     assert bundle.text_review.corpus_complete is True
     assert set(grouped) == expected
     assert metrics.documents == 133
-    assert metrics.documents_with_extracted_norms == 129
-    assert metrics.documents_with_review_debt == 3
+    assert metrics.documents_with_extracted_norms == 130
+    assert metrics.documents_with_review_debt == 2
     assert metrics.exact_source_characters == 394_667
     assert set(metrics.norms_by_document) == {
         "annex I",
@@ -182,6 +182,7 @@ def test_inventory_partitions_the_complete_versioned_corpus(metrics):
         "annex IX",
         "annex X",
         "annex XI",
+        "annex XII",
     }
 
 
@@ -1653,20 +1654,20 @@ def test_article_twenty_eight_is_complete_institutional_coverage():
 
 
 def test_inventory_cannot_be_misreported_as_independently_approved(metrics):
-    assert metrics.approved_characters == 372_840
-    assert metrics.needs_review_characters == 5_625
+    assert metrics.approved_characters == 374_465
+    assert metrics.needs_review_characters == 4_215
     assert metrics.review_statuses == {
-        "approved": 1393,
-        "needs_review": 27,
+        "approved": 1408,
+        "needs_review": 13,
         "proposed": 1354,
     }
     assert metrics.timed_review_records == 0
-    assert metrics.total_review_records == 2775
+    assert metrics.total_review_records == 2776
 
 
 def test_semantic_pass_finds_propositions_a_shall_scan_misses(metrics):
     assert metrics.shall_vs_semantic_disagreements == 500
-    assert metrics.shall_token_candidate_recall == pytest.approx(819 / 1319)
+    assert metrics.shall_token_candidate_recall == pytest.approx(820 / 1320)
     assert "AIA-NORM-A011-P1-SIMPLIFY" in metrics.semantic_norms_without_shall_token
     assert "AIA-NORM-A043-P5-AMEND" in metrics.semantic_norms_without_shall_token
     assert "AIA-NORM-A060-P4-PERMISSION" in metrics.semantic_norms_without_shall_token
@@ -1679,8 +1680,8 @@ def test_metrics_expose_many_to_many_and_implementation_debt(metrics):
     assert metrics.mapping_shape.many_norms_to_one_target == 348
     assert metrics.mapping_shape.one_norm_to_many_targets == 0
     assert metrics.mapping_shape.many_to_many == 15
-    assert metrics.mapping_shape.unmapped == 930
-    assert metrics.semantic_vs_existing_implementation_disagreements == 232
+    assert metrics.mapping_shape.unmapped == 931
+    assert metrics.semantic_vs_existing_implementation_disagreements == 233
     assert metrics.semantic_norms_without_existing_implementation == [
         "AIA-NORM-A002-P1-A-PROVIDER",
         "AIA-NORM-A002-P1-B-DEPLOYER",
@@ -1914,6 +1915,7 @@ def test_metrics_expose_many_to_many_and_implementation_debt(metrics):
         "AIA-NORM-ANNEX-X-VIS-REFORM",
         "AIA-NORM-ANNEX-XI-SECTION-1-TECHNICAL-DOCUMENTATION",
         "AIA-NORM-ANNEX-XI-SECTION-2-SYSTEMIC-RISK-DOCUMENTATION",
+        "AIA-NORM-ANNEX-XII-DOWNSTREAM-TRANSPARENCY-INFORMATION",
     ]
     assert metrics.implementation_debt_norm_ids == [
         "AIA-NORM-A002-P1-A-PROVIDER",
@@ -3953,3 +3955,15 @@ def test_annex_eleven_separates_general_and_systemic_risk_documentation():
     assert len(systemic.mandatory_content) == 4
     assert systemic.conditions == ["the general-purpose AI model has systemic risk"]
     assert norms["AIA-NORM-ANNEX-XI-ENERGY-ESTIMATE-BASIS"].kind.value == "permission"
+
+
+def test_annex_twelve_downstream_transparency_content_is_carried_by_article_fifty_three():
+    bundle = load_normative_coverage()
+    norms = {norm.norm_id: norm for norm in bundle.norm_inventory.norms}
+    annex = norms["AIA-NORM-ANNEX-XII-DOWNSTREAM-TRANSPARENCY-INFORMATION"]
+
+    assert len(annex.mandatory_content) == 11
+    assert annex.carried_by_norm_ids == ["AIA-NORM-A053-P1-B-ANNEX-XII-CONTENT"]
+    assert annex.qualifier_spans == [
+        f"AIA-TEXT-ANNEX-XII-P{index:03d}" for index in range(2, 15)
+    ]
