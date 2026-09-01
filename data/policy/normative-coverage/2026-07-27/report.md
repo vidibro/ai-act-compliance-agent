@@ -4,8 +4,8 @@
 
 **Act version:** 2026-07-27
 
-The inventory contains 133 complete source-body partitions, 1455 exact segments, and 1199 proposed atomic norms. Every stored article and annex is present. Proposed
-norms have been extracted from 118 documents; the remaining
+The inventory contains 133 complete source-body partitions, 1455 exact segments, and 1249 proposed atomic norms. Every stored article and annex is present. Proposed
+norms have been extracted from 122 documents; the remaining
 work is retained explicitly rather than omitted. The inventory is not consumed by classification,
 rule selection, judging, or reporting.
 
@@ -103,6 +103,10 @@ rule selection, judging, or reporting.
 - article 73: 13
 - article 74: 14
 - article 75: 25
+- article 75a: 21
+- article 75b: 3
+- article 75c: 18
+- article 75d: 8
 - article 76: 7
 - article 77: 7
 - article 78: 8
@@ -805,6 +809,39 @@ rule selection, judging, or reporting.
 - AIA-TEXT-A075-P020: 2
 - AIA-TEXT-A075-P021: 1
 - AIA-TEXT-A075-P022: 4
+- AIA-TEXT-A075A-P001: 3
+- AIA-TEXT-A075A-P002: 3
+- AIA-TEXT-A075A-P003: 1
+- AIA-TEXT-A075A-P004: 1
+- AIA-TEXT-A075A-P005: 2
+- AIA-TEXT-A075A-P006: 2
+- AIA-TEXT-A075A-P007: 1
+- AIA-TEXT-A075A-P013: 1
+- AIA-TEXT-A075A-P014: 2
+- AIA-TEXT-A075A-P015: 1
+- AIA-TEXT-A075A-P016: 1
+- AIA-TEXT-A075A-P019: 2
+- AIA-TEXT-A075A-P020: 1
+- AIA-TEXT-A075B-P001: 2
+- AIA-TEXT-A075B-P005: 1
+- AIA-TEXT-A075C-P001: 1
+- AIA-TEXT-A075C-P002: 2
+- AIA-TEXT-A075C-P003: 4
+- AIA-TEXT-A075C-P004: 1
+- AIA-TEXT-A075C-P005: 1
+- AIA-TEXT-A075C-P009: 1
+- AIA-TEXT-A075C-P010: 1
+- AIA-TEXT-A075C-P018: 1
+- AIA-TEXT-A075C-P019: 1
+- AIA-TEXT-A075C-P020: 1
+- AIA-TEXT-A075C-P021: 1
+- AIA-TEXT-A075C-P022: 1
+- AIA-TEXT-A075C-P023: 1
+- AIA-TEXT-A075C-P024: 1
+- AIA-TEXT-A075D-P001: 1
+- AIA-TEXT-A075D-P002: 4
+- AIA-TEXT-A075D-P003: 1
+- AIA-TEXT-A075D-P004: 2
 - AIA-TEXT-A076-P001: 1
 - AIA-TEXT-A076-P002: 1
 - AIA-TEXT-A076-P003: 2
@@ -997,19 +1034,19 @@ rule selection, judging, or reporting.
 - AIA-TEXT-ANNEX-VIII-C: 1
 
 - Exact source characters partitioned: 394667
-- Documents containing explicit review debt: 15
-- Characters displayed by the extraction pass: 355018
-- Independently approved characters: 330555
-- Characters deliberately left as review debt: 39649
-- Normative segments supporting multiple propositions: 269
-- Semantic candidates a shall-token pass missed: 427
-- Shall-token candidate recall: 64.4%
-- In-scope semantic candidates absent from existing implementation: 166
-- Detection-channel counts: cross_reference_structure=387, deeming_or_consequence=180, existing_implementation=388, other_modal=141, semantic_legal_effect=1199, shall_token=772
-- Mapping shapes, by norm: one-to-one=26, many-to-one=347, one-to-many=0, many-to-many=15, unmapped=811
-- Implementation debt candidates: 154
+- Documents containing explicit review debt: 11
+- Characters displayed by the extraction pass: 370604
+- Independently approved characters: 346346
+- Characters deliberately left as review debt: 24063
+- Normative segments supporting multiple propositions: 280
+- Semantic candidates a shall-token pass missed: 443
+- Shall-token candidate recall: 64.5%
+- In-scope semantic candidates absent from existing implementation: 168
+- Detection-channel counts: cross_reference_structure=392, deeming_or_consequence=187, existing_implementation=388, other_modal=151, semantic_legal_effect=1249, shall_token=806
+- Mapping shapes, by norm: one-to-one=26, many-to-one=347, one-to-many=0, many-to-many=15, unmapped=861
+- Implementation debt candidates: 156
 - Interpretive links to non-binding guidance: 1
-- Review records with measured elapsed time: 0/2655
+- Review records with measured elapsed time: 0/2705
 
 ## Findings
 
@@ -1029,4 +1066,4 @@ rule selection, judging, or reporting.
 
 ## Review boundary
 
-Segment reviews covering 330555 source characters are independently approved. Approval applies to source coverage and segment dispositions; it does not by itself approve linked norm records. Remaining records are proposed findings or explicit `needs_review` debt. This report therefore does not claim legal completeness for the corpus.
+Segment reviews covering 346346 source characters are independently approved. Approval applies to source coverage and segment dispositions; it does not by itself approve linked norm records. Remaining records are proposed findings or explicit `needs_review` debt. This report therefore does not claim legal completeness for the corpus.

@@ -18,9 +18,9 @@ segments:
   disposition_reason: ''
   norm_ids: []
   review:
-    status: proposed
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: codex
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
     display_chunks: 1
@@ -37,17 +37,18 @@ segments:
   text: "1. Article 18 of Regulation (EU) 2019/1020 shall apply mutatis mutandis to operators subject\
     \ to the AI Office\u2019s competence pursuant to Article 75(1) of this Regulation, without prejudice\
     \ to more specific procedural rights provided for in this Regulation.\n"
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A075D-P1-APPLY-PROCEDURAL-RIGHTS
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: codex
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A075D-P002
   source:
@@ -70,17 +71,21 @@ segments:
     and using information necessary to prove an infringement.
 
     '
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A075D-P2-RESPECT-DEFENCE-AND-FILE-RIGHTS
+  - AIA-NORM-A075D-P2-NEGOTIATED-FILE-ACCESS
+  - AIA-NORM-A075D-P2-SET-DISCLOSURE-TERMS
+  - AIA-NORM-A075D-P2-DISCLOSE-INFRINGEMENT-EVIDENCE
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: codex
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A075D-P003
   source:
@@ -94,17 +99,18 @@ segments:
     to the file and the negotiated disclosure of information provided for in paragraph 2.
 
     '
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A075D-P3-ADOPT-FILE-ACCESS-ARRANGEMENTS
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: codex
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A075D-P004
   source:
@@ -120,15 +126,17 @@ segments:
     person concerned in the protection of their confidential information.
 
     '
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A075D-P4-PUBLISH-DECISIONS
+  - AIA-NORM-A075D-P4-PROTECT-CONFIDENTIAL-INFORMATION
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: codex
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null

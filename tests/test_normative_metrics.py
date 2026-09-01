@@ -49,8 +49,8 @@ def test_inventory_partitions_the_complete_versioned_corpus(metrics):
     assert bundle.text_review.corpus_complete is True
     assert set(grouped) == expected
     assert metrics.documents == 133
-    assert metrics.documents_with_extracted_norms == 118
-    assert metrics.documents_with_review_debt == 15
+    assert metrics.documents_with_extracted_norms == 122
+    assert metrics.documents_with_review_debt == 11
     assert metrics.exact_source_characters == 394_667
     assert set(metrics.norms_by_document) == {
         "article 2",
@@ -129,6 +129,10 @@ def test_inventory_partitions_the_complete_versioned_corpus(metrics):
         "article 73",
         "article 74",
         "article 75",
+        "article 75a",
+        "article 75b",
+        "article 75c",
+        "article 75d",
         "article 76",
         "article 77",
         "article 78",
@@ -1642,20 +1646,20 @@ def test_article_twenty_eight_is_complete_institutional_coverage():
 
 
 def test_inventory_cannot_be_misreported_as_independently_approved(metrics):
-    assert metrics.approved_characters == 330_555
-    assert metrics.needs_review_characters == 39_649
+    assert metrics.approved_characters == 346_346
+    assert metrics.needs_review_characters == 24_063
     assert metrics.review_statuses == {
-        "approved": 1254,
-        "needs_review": 151,
-        "proposed": 1249,
+        "approved": 1311,
+        "needs_review": 98,
+        "proposed": 1295,
     }
     assert metrics.timed_review_records == 0
-    assert metrics.total_review_records == 2655
+    assert metrics.total_review_records == 2705
 
 
 def test_semantic_pass_finds_propositions_a_shall_scan_misses(metrics):
-    assert metrics.shall_vs_semantic_disagreements == 427
-    assert metrics.shall_token_candidate_recall == pytest.approx(772 / 1199)
+    assert metrics.shall_vs_semantic_disagreements == 443
+    assert metrics.shall_token_candidate_recall == pytest.approx(806 / 1249)
     assert "AIA-NORM-A011-P1-SIMPLIFY" in metrics.semantic_norms_without_shall_token
     assert "AIA-NORM-A043-P5-AMEND" in metrics.semantic_norms_without_shall_token
     assert "AIA-NORM-A060-P4-PERMISSION" in metrics.semantic_norms_without_shall_token
@@ -1663,13 +1667,13 @@ def test_semantic_pass_finds_propositions_a_shall_scan_misses(metrics):
 
 
 def test_metrics_expose_many_to_many_and_implementation_debt(metrics):
-    assert metrics.normative_segments_with_multiple_norms == 269
+    assert metrics.normative_segments_with_multiple_norms == 280
     assert metrics.mapping_shape.one_norm_to_one_target == 26
     assert metrics.mapping_shape.many_norms_to_one_target == 347
     assert metrics.mapping_shape.one_norm_to_many_targets == 0
     assert metrics.mapping_shape.many_to_many == 15
-    assert metrics.mapping_shape.unmapped == 811
-    assert metrics.semantic_vs_existing_implementation_disagreements == 166
+    assert metrics.mapping_shape.unmapped == 861
+    assert metrics.semantic_vs_existing_implementation_disagreements == 168
     assert metrics.semantic_norms_without_existing_implementation == [
         "AIA-NORM-A002-P1-A-PROVIDER",
         "AIA-NORM-A002-P1-B-DEPLOYER",
@@ -1804,6 +1808,8 @@ def test_metrics_expose_many_to_many_and_implementation_debt(metrics):
         "AIA-NORM-A071-P2-PROVIDER-ENTER-ANNEX-VIII-DATA",
         "AIA-NORM-A071-P2-REPRESENTATIVE-ENTER-ANNEX-VIII-DATA",
         "AIA-NORM-A071-P3-PUBLIC-DEPLOYER-ENTER-ANNEX-VIII-DATA",
+        "AIA-NORM-A075A-P3-VOLUNTARY-REPLY-CORRECTNESS",
+        "AIA-NORM-A075C-P3-DESCRIBE-IMPLEMENTED-MEASURES",
         "AIA-NORM-A111-P1-BRING-LARGE-SCALE-IT-INTO-COMPLIANCE",
         "AIA-NORM-A111-P2-PUBLIC-AUTHORITY-SYSTEM-COMPLIANCE",
         "AIA-NORM-A111-P3-LEGACY-GPAI-COMPLIANCE",
@@ -1961,6 +1967,8 @@ def test_metrics_expose_many_to_many_and_implementation_debt(metrics):
         "AIA-NORM-A071-P2-PROVIDER-ENTER-ANNEX-VIII-DATA",
         "AIA-NORM-A071-P2-REPRESENTATIVE-ENTER-ANNEX-VIII-DATA",
         "AIA-NORM-A071-P3-PUBLIC-DEPLOYER-ENTER-ANNEX-VIII-DATA",
+        "AIA-NORM-A075A-P3-VOLUNTARY-REPLY-CORRECTNESS",
+        "AIA-NORM-A075C-P3-DESCRIBE-IMPLEMENTED-MEASURES",
         "AIA-NORM-A111-P1-BRING-LARGE-SCALE-IT-INTO-COMPLIANCE",
         "AIA-NORM-A111-P2-PUBLIC-AUTHORITY-SYSTEM-COMPLIANCE",
         "AIA-NORM-A111-P3-LEGACY-GPAI-COMPLIANCE",
@@ -3620,6 +3628,46 @@ def test_article_one_hundred_twelve_extracts_review_framework():
     assert len(norms["AIA-NORM-A112-P4-REPORT-ATTENTION-AREAS"].mandatory_content) == 4
     methodology = norms["AIA-NORM-A112-P11-DEVELOP-RISK-EVALUATION-METHODOLOGY"]
     assert len(methodology.mandatory_content) == 3
+
+
+def test_articles_seventy_five_a_and_b_extract_ai_office_enforcement_powers():
+    bundle = load_normative_coverage()
+    article_a = {
+        norm.norm_id: norm
+        for norm in bundle.norm_inventory.norms
+        if norm.norm_id.startswith("AIA-NORM-A075A-")
+    }
+    article_b = [
+        norm
+        for norm in bundle.norm_inventory.norms
+        if norm.norm_id.startswith("AIA-NORM-A075B-")
+    ]
+
+    assert len(article_a) == 21
+    assert len(article_b) == 3
+    assert len(article_a["AIA-NORM-A075A-P4-INSPECTION-POWERS"].mandatory_content) == 5
+    assert article_a["AIA-NORM-A075A-P3-VOLUNTARY-REPLY-CORRECTNESS"].implementation_mode.value == (
+        "missing"
+    )
+
+
+def test_articles_seventy_five_c_and_d_extract_penalties_and_safeguards():
+    bundle = load_normative_coverage()
+    article_c = {
+        norm.norm_id: norm
+        for norm in bundle.norm_inventory.norms
+        if norm.norm_id.startswith("AIA-NORM-A075C-")
+    }
+    article_d = {
+        norm.norm_id: norm
+        for norm in bundle.norm_inventory.norms
+        if norm.norm_id.startswith("AIA-NORM-A075D-")
+    }
+
+    assert len(article_c) == 18
+    assert len(article_d) == 8
+    assert len(article_c["AIA-NORM-A075C-P5-IMPOSE-PERIODIC-PENALTIES"].mandatory_content) == 7
+    assert article_d["AIA-NORM-A075D-P2-NEGOTIATED-FILE-ACCESS"].kind.value == "entitlement"
 
 
 def test_annex_inventory_keeps_external_actors_and_exact_mandatory_content():
