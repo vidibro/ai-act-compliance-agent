@@ -49,10 +49,11 @@ def test_inventory_partitions_the_complete_versioned_corpus(metrics):
     assert bundle.text_review.corpus_complete is True
     assert set(grouped) == expected
     assert metrics.documents == 133
-    assert metrics.documents_with_extracted_norms == 122
-    assert metrics.documents_with_review_debt == 11
+    assert metrics.documents_with_extracted_norms == 123
+    assert metrics.documents_with_review_debt == 10
     assert metrics.exact_source_characters == 394_667
     assert set(metrics.norms_by_document) == {
+        "annex I",
         "article 2",
         "article 3",
         "article 4",
@@ -1646,20 +1647,20 @@ def test_article_twenty_eight_is_complete_institutional_coverage():
 
 
 def test_inventory_cannot_be_misreported_as_independently_approved(metrics):
-    assert metrics.approved_characters == 346_346
-    assert metrics.needs_review_characters == 24_063
+    assert metrics.approved_characters == 352_504
+    assert metrics.needs_review_characters == 17_954
     assert metrics.review_statuses == {
-        "approved": 1311,
-        "needs_review": 98,
-        "proposed": 1295,
+        "approved": 1314,
+        "needs_review": 96,
+        "proposed": 1315,
     }
     assert metrics.timed_review_records == 0
-    assert metrics.total_review_records == 2705
+    assert metrics.total_review_records == 2726
 
 
 def test_semantic_pass_finds_propositions_a_shall_scan_misses(metrics):
-    assert metrics.shall_vs_semantic_disagreements == 443
-    assert metrics.shall_token_candidate_recall == pytest.approx(806 / 1249)
+    assert metrics.shall_vs_semantic_disagreements == 464
+    assert metrics.shall_token_candidate_recall == pytest.approx(806 / 1270)
     assert "AIA-NORM-A011-P1-SIMPLIFY" in metrics.semantic_norms_without_shall_token
     assert "AIA-NORM-A043-P5-AMEND" in metrics.semantic_norms_without_shall_token
     assert "AIA-NORM-A060-P4-PERMISSION" in metrics.semantic_norms_without_shall_token
@@ -1667,13 +1668,13 @@ def test_semantic_pass_finds_propositions_a_shall_scan_misses(metrics):
 
 
 def test_metrics_expose_many_to_many_and_implementation_debt(metrics):
-    assert metrics.normative_segments_with_multiple_norms == 280
+    assert metrics.normative_segments_with_multiple_norms == 282
     assert metrics.mapping_shape.one_norm_to_one_target == 26
     assert metrics.mapping_shape.many_norms_to_one_target == 347
     assert metrics.mapping_shape.one_norm_to_many_targets == 0
     assert metrics.mapping_shape.many_to_many == 15
-    assert metrics.mapping_shape.unmapped == 861
-    assert metrics.semantic_vs_existing_implementation_disagreements == 168
+    assert metrics.mapping_shape.unmapped == 882
+    assert metrics.semantic_vs_existing_implementation_disagreements == 189
     assert metrics.semantic_norms_without_existing_implementation == [
         "AIA-NORM-A002-P1-A-PROVIDER",
         "AIA-NORM-A002-P1-B-DEPLOYER",
@@ -1814,6 +1815,27 @@ def test_metrics_expose_many_to_many_and_implementation_debt(metrics):
         "AIA-NORM-A111-P2-PUBLIC-AUTHORITY-SYSTEM-COMPLIANCE",
         "AIA-NORM-A111-P3-LEGACY-GPAI-COMPLIANCE",
         "AIA-NORM-A111-P4-LEGACY-SYNTHETIC-CONTENT-COMPLIANCE",
+        "AIA-NORM-ANNEX-I-01-MACHINERY-DIRECTIVE",
+        "AIA-NORM-ANNEX-I-02-TOY-SAFETY",
+        "AIA-NORM-ANNEX-I-03-RECREATIONAL-CRAFT",
+        "AIA-NORM-ANNEX-I-04-LIFTS",
+        "AIA-NORM-ANNEX-I-05-EXPLOSIVE-ATMOSPHERES",
+        "AIA-NORM-ANNEX-I-06-RADIO-EQUIPMENT",
+        "AIA-NORM-ANNEX-I-07-PRESSURE-EQUIPMENT",
+        "AIA-NORM-ANNEX-I-08-CABLEWAYS",
+        "AIA-NORM-ANNEX-I-09-PERSONAL-PROTECTIVE-EQUIPMENT",
+        "AIA-NORM-ANNEX-I-10-GAS-APPLIANCES",
+        "AIA-NORM-ANNEX-I-11-MEDICAL-DEVICES",
+        "AIA-NORM-ANNEX-I-12-IN-VITRO-DIAGNOSTICS",
+        "AIA-NORM-ANNEX-I-13-AVIATION-SECURITY",
+        "AIA-NORM-ANNEX-I-14-L-CATEGORY-VEHICLES",
+        "AIA-NORM-ANNEX-I-15-AGRICULTURAL-FORESTRY-VEHICLES",
+        "AIA-NORM-ANNEX-I-16-MARINE-EQUIPMENT",
+        "AIA-NORM-ANNEX-I-17-RAIL-INTEROPERABILITY",
+        "AIA-NORM-ANNEX-I-18-MOTOR-VEHICLE-APPROVAL",
+        "AIA-NORM-ANNEX-I-19-MOTOR-VEHICLE-GENERAL-SAFETY",
+        "AIA-NORM-ANNEX-I-20-UNMANNED-AIRCRAFT",
+        "AIA-NORM-ANNEX-I-21-MACHINERY-REGULATION",
         "AIA-NORM-ANNEX-III-1A-REMOTE-BIOMETRIC-IDENTIFICATION",
         "AIA-NORM-ANNEX-III-1B-BIOMETRIC-CATEGORISATION",
         "AIA-NORM-ANNEX-III-1C-EMOTION-RECOGNITION",
@@ -1973,6 +1995,27 @@ def test_metrics_expose_many_to_many_and_implementation_debt(metrics):
         "AIA-NORM-A111-P2-PUBLIC-AUTHORITY-SYSTEM-COMPLIANCE",
         "AIA-NORM-A111-P3-LEGACY-GPAI-COMPLIANCE",
         "AIA-NORM-A111-P4-LEGACY-SYNTHETIC-CONTENT-COMPLIANCE",
+        "AIA-NORM-ANNEX-I-01-MACHINERY-DIRECTIVE",
+        "AIA-NORM-ANNEX-I-02-TOY-SAFETY",
+        "AIA-NORM-ANNEX-I-03-RECREATIONAL-CRAFT",
+        "AIA-NORM-ANNEX-I-04-LIFTS",
+        "AIA-NORM-ANNEX-I-05-EXPLOSIVE-ATMOSPHERES",
+        "AIA-NORM-ANNEX-I-06-RADIO-EQUIPMENT",
+        "AIA-NORM-ANNEX-I-07-PRESSURE-EQUIPMENT",
+        "AIA-NORM-ANNEX-I-08-CABLEWAYS",
+        "AIA-NORM-ANNEX-I-09-PERSONAL-PROTECTIVE-EQUIPMENT",
+        "AIA-NORM-ANNEX-I-10-GAS-APPLIANCES",
+        "AIA-NORM-ANNEX-I-11-MEDICAL-DEVICES",
+        "AIA-NORM-ANNEX-I-12-IN-VITRO-DIAGNOSTICS",
+        "AIA-NORM-ANNEX-I-13-AVIATION-SECURITY",
+        "AIA-NORM-ANNEX-I-14-L-CATEGORY-VEHICLES",
+        "AIA-NORM-ANNEX-I-15-AGRICULTURAL-FORESTRY-VEHICLES",
+        "AIA-NORM-ANNEX-I-16-MARINE-EQUIPMENT",
+        "AIA-NORM-ANNEX-I-17-RAIL-INTEROPERABILITY",
+        "AIA-NORM-ANNEX-I-18-MOTOR-VEHICLE-APPROVAL",
+        "AIA-NORM-ANNEX-I-19-MOTOR-VEHICLE-GENERAL-SAFETY",
+        "AIA-NORM-ANNEX-I-20-UNMANNED-AIRCRAFT",
+        "AIA-NORM-ANNEX-I-21-MACHINERY-REGULATION",
         "AIA-NORM-ANNEX-III-1A-REMOTE-BIOMETRIC-IDENTIFICATION",
         "AIA-NORM-ANNEX-III-1B-BIOMETRIC-CATEGORISATION",
         "AIA-NORM-ANNEX-III-1C-EMOTION-RECOGNITION",
@@ -3689,3 +3732,20 @@ def test_annex_inventory_keeps_external_actors_and_exact_mandatory_content():
         "The name, address and contact details of the provider;"
     )
     assert all("Section A item" not in item for item in section_a.mandatory_content)
+
+
+def test_annex_one_extracts_each_harmonisation_instrument_and_its_uav_limit():
+    bundle = load_normative_coverage()
+    norms = {
+        norm.norm_id: norm
+        for norm in bundle.norm_inventory.norms
+        if norm.norm_id.startswith("AIA-NORM-ANNEX-I-")
+    }
+
+    assert len(norms) == 21
+    assert {norm.primary_spans[0] for norm in norms.values()} == {
+        "AIA-TEXT-ANNEX-I-P001",
+        "AIA-TEXT-ANNEX-I-P002",
+    }
+    assert len(norms["AIA-NORM-ANNEX-I-20-UNMANNED-AIRCRAFT"].conditions) == 1
+    assert all(norm.kind.value == "applicability" for norm in norms.values())

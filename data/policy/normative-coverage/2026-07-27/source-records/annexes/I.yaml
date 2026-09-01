@@ -1,0 +1,174 @@
+records:
+- norm_id: AIA-NORM-ANNEX-I-01-MACHINERY-DIRECTIVE
+  source: ANNEX-I-P001
+  quote: Directive 2006/42/EC
+  action: include products covered by Directive 2006/42/EC on machinery in the Annex I Section A harmonisation-legislation scope
+  subject_ref: annex_i_product_or_safety_component
+  subject_category: other
+  kind: applicability
+  dependencies: &article6_dependency
+  - dependency_ref: AIA-NORM-A006-P1-ANNEX-I-HIGH-RISK
+    resolution: internal_resolved
+    detail: Article 6(1) gives high-risk legal effect to the Annex I product listing when its cumulative conditions are met.
+- norm_id: AIA-NORM-ANNEX-I-02-TOY-SAFETY
+  source: ANNEX-I-P001
+  quote: Directive 2009/48/EC
+  action: include products covered by Directive 2009/48/EC on toy safety in the Annex I Section A harmonisation-legislation scope
+  subject_ref: annex_i_product_or_safety_component
+  subject_category: other
+  kind: applicability
+  dependencies: *article6_dependency
+- norm_id: AIA-NORM-ANNEX-I-03-RECREATIONAL-CRAFT
+  source: ANNEX-I-P001
+  quote: Directive 2013/53/EU
+  action: include products covered by Directive 2013/53/EU on recreational craft and personal watercraft in the Annex I Section A harmonisation-legislation scope
+  subject_ref: annex_i_product_or_safety_component
+  subject_category: other
+  kind: applicability
+  dependencies: *article6_dependency
+- norm_id: AIA-NORM-ANNEX-I-04-LIFTS
+  source: ANNEX-I-P001
+  quote: Directive 2014/33/EU
+  action: include products covered by Directive 2014/33/EU on lifts and lift safety components in the Annex I Section A harmonisation-legislation scope
+  subject_ref: annex_i_product_or_safety_component
+  subject_category: other
+  kind: applicability
+  dependencies: *article6_dependency
+- norm_id: AIA-NORM-ANNEX-I-05-EXPLOSIVE-ATMOSPHERES
+  source: ANNEX-I-P001
+  quote: Directive 2014/34/EU
+  action: include products covered by Directive 2014/34/EU on equipment and protective systems for potentially explosive atmospheres in the Annex I Section A harmonisation-legislation scope
+  subject_ref: annex_i_product_or_safety_component
+  subject_category: other
+  kind: applicability
+  dependencies: *article6_dependency
+- norm_id: AIA-NORM-ANNEX-I-06-RADIO-EQUIPMENT
+  source: ANNEX-I-P001
+  quote: Directive 2014/53/EU
+  action: include products covered by Directive 2014/53/EU on radio equipment in the Annex I Section A harmonisation-legislation scope
+  subject_ref: annex_i_product_or_safety_component
+  subject_category: other
+  kind: applicability
+  dependencies: *article6_dependency
+- norm_id: AIA-NORM-ANNEX-I-07-PRESSURE-EQUIPMENT
+  source: ANNEX-I-P001
+  quote: Directive 2014/68/EU
+  action: include products covered by Directive 2014/68/EU on pressure equipment in the Annex I Section A harmonisation-legislation scope
+  subject_ref: annex_i_product_or_safety_component
+  subject_category: other
+  kind: applicability
+  dependencies: *article6_dependency
+- norm_id: AIA-NORM-ANNEX-I-08-CABLEWAYS
+  source: ANNEX-I-P001
+  quote: Regulation (EU) 2016/424
+  action: include products covered by Regulation (EU) 2016/424 on cableway installations in the Annex I Section A harmonisation-legislation scope
+  subject_ref: annex_i_product_or_safety_component
+  subject_category: other
+  kind: applicability
+  dependencies: *article6_dependency
+- norm_id: AIA-NORM-ANNEX-I-09-PERSONAL-PROTECTIVE-EQUIPMENT
+  source: ANNEX-I-P001
+  quote: Regulation (EU) 2016/425
+  action: include products covered by Regulation (EU) 2016/425 on personal protective equipment in the Annex I Section A harmonisation-legislation scope
+  subject_ref: annex_i_product_or_safety_component
+  subject_category: other
+  kind: applicability
+  dependencies: *article6_dependency
+- norm_id: AIA-NORM-ANNEX-I-10-GAS-APPLIANCES
+  source: ANNEX-I-P001
+  quote: Regulation (EU) 2016/426
+  action: include products covered by Regulation (EU) 2016/426 on appliances burning gaseous fuels in the Annex I Section A harmonisation-legislation scope
+  subject_ref: annex_i_product_or_safety_component
+  subject_category: other
+  kind: applicability
+  dependencies: *article6_dependency
+- norm_id: AIA-NORM-ANNEX-I-11-MEDICAL-DEVICES
+  source: ANNEX-I-P001
+  quote: Regulation (EU) 2017/745
+  action: include products covered by Regulation (EU) 2017/745 on medical devices in the Annex I Section A harmonisation-legislation scope
+  subject_ref: annex_i_product_or_safety_component
+  subject_category: other
+  kind: applicability
+  dependencies: *article6_dependency
+- norm_id: AIA-NORM-ANNEX-I-12-IN-VITRO-DIAGNOSTICS
+  source: ANNEX-I-P001
+  quote: Regulation (EU) 2017/746
+  action: include products covered by Regulation (EU) 2017/746 on in vitro diagnostic medical devices in the Annex I Section A harmonisation-legislation scope
+  subject_ref: annex_i_product_or_safety_component
+  subject_category: other
+  kind: applicability
+  dependencies: *article6_dependency
+- norm_id: AIA-NORM-ANNEX-I-13-AVIATION-SECURITY
+  source: ANNEX-I-P002
+  quote: Regulation (EC) No 300/2008
+  action: include products covered by Regulation (EC) No 300/2008 on civil-aviation security in the Annex I Section B harmonisation-legislation scope
+  subject_ref: annex_i_product_or_safety_component
+  subject_category: other
+  kind: applicability
+  dependencies: *article6_dependency
+- norm_id: AIA-NORM-ANNEX-I-14-L-CATEGORY-VEHICLES
+  source: ANNEX-I-P002
+  quote: Regulation (EU) No 168/2013
+  action: include products covered by Regulation (EU) No 168/2013 on two- or three-wheel vehicles and quadricycles in the Annex I Section B harmonisation-legislation scope
+  subject_ref: annex_i_product_or_safety_component
+  subject_category: other
+  kind: applicability
+  dependencies: *article6_dependency
+- norm_id: AIA-NORM-ANNEX-I-15-AGRICULTURAL-FORESTRY-VEHICLES
+  source: ANNEX-I-P002
+  quote: Regulation (EU) No 167/2013
+  action: include products covered by Regulation (EU) No 167/2013 on agricultural and forestry vehicles in the Annex I Section B harmonisation-legislation scope
+  subject_ref: annex_i_product_or_safety_component
+  subject_category: other
+  kind: applicability
+  dependencies: *article6_dependency
+- norm_id: AIA-NORM-ANNEX-I-16-MARINE-EQUIPMENT
+  source: ANNEX-I-P002
+  quote: Directive 2014/90/EU
+  action: include products covered by Directive 2014/90/EU on marine equipment in the Annex I Section B harmonisation-legislation scope
+  subject_ref: annex_i_product_or_safety_component
+  subject_category: other
+  kind: applicability
+  dependencies: *article6_dependency
+- norm_id: AIA-NORM-ANNEX-I-17-RAIL-INTEROPERABILITY
+  source: ANNEX-I-P002
+  quote: Directive (EU) 2016/797
+  action: include products covered by Directive (EU) 2016/797 on Union rail-system interoperability in the Annex I Section B harmonisation-legislation scope
+  subject_ref: annex_i_product_or_safety_component
+  subject_category: other
+  kind: applicability
+  dependencies: *article6_dependency
+- norm_id: AIA-NORM-ANNEX-I-18-MOTOR-VEHICLE-APPROVAL
+  source: ANNEX-I-P002
+  quote: Regulation (EU) 2018/858
+  action: include products covered by Regulation (EU) 2018/858 on motor-vehicle approval and market surveillance in the Annex I Section B harmonisation-legislation scope
+  subject_ref: annex_i_product_or_safety_component
+  subject_category: other
+  kind: applicability
+  dependencies: *article6_dependency
+- norm_id: AIA-NORM-ANNEX-I-19-MOTOR-VEHICLE-GENERAL-SAFETY
+  source: ANNEX-I-P002
+  quote: Regulation (EU) 2019/2144
+  action: include products covered by Regulation (EU) 2019/2144 on motor-vehicle general safety in the Annex I Section B harmonisation-legislation scope
+  subject_ref: annex_i_product_or_safety_component
+  subject_category: other
+  kind: applicability
+  dependencies: *article6_dependency
+- norm_id: AIA-NORM-ANNEX-I-20-UNMANNED-AIRCRAFT
+  source: ANNEX-I-P002
+  quote: Regulation (EU) 2018/1139
+  action: include the specified unmanned-aircraft products covered by Regulation (EU) 2018/1139 in the Annex I Section B harmonisation-legislation scope
+  subject_ref: annex_i_product_or_safety_component
+  subject_category: other
+  kind: applicability
+  conditions:
+  - the product concerns the design, production, or placing on the market of unmanned aircraft referred to in Article 2(1)(a) or (b) of Regulation (EU) 2018/1139, or their engines, propellers, parts, or remote-control equipment
+  dependencies: *article6_dependency
+- norm_id: AIA-NORM-ANNEX-I-21-MACHINERY-REGULATION
+  source: ANNEX-I-P002
+  quote: Regulation (EU) 2023/1230
+  action: include products covered by Regulation (EU) 2023/1230 on machinery in the Annex I Section B harmonisation-legislation scope
+  subject_ref: annex_i_product_or_safety_component
+  subject_category: other
+  kind: applicability
+  dependencies: *article6_dependency

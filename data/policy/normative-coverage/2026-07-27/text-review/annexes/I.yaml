@@ -18,9 +18,9 @@ segments:
   disposition_reason: ''
   norm_ids: []
   review:
-    status: proposed
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: codex
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
     display_chunks: 1
@@ -63,17 +63,29 @@ segments:
     2010/227/EU (OJ L 117, 5.5.2017, p. 176).
 
     '
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-ANNEX-I-01-MACHINERY-DIRECTIVE
+  - AIA-NORM-ANNEX-I-02-TOY-SAFETY
+  - AIA-NORM-ANNEX-I-03-RECREATIONAL-CRAFT
+  - AIA-NORM-ANNEX-I-04-LIFTS
+  - AIA-NORM-ANNEX-I-05-EXPLOSIVE-ATMOSPHERES
+  - AIA-NORM-ANNEX-I-06-RADIO-EQUIPMENT
+  - AIA-NORM-ANNEX-I-07-PRESSURE-EQUIPMENT
+  - AIA-NORM-ANNEX-I-08-CABLEWAYS
+  - AIA-NORM-ANNEX-I-09-PERSONAL-PROTECTIVE-EQUIPMENT
+  - AIA-NORM-ANNEX-I-10-GAS-APPLIANCES
+  - AIA-NORM-ANNEX-I-11-MEDICAL-DEVICES
+  - AIA-NORM-ANNEX-I-12-IN-VITRO-DIAGNOSTICS
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: codex
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-ANNEX-I-P002
   source:
@@ -119,15 +131,24 @@ segments:
     (OJ L 165, 29.6.2023, p. 1, ELI: http://data.europa.eu/eli/reg/2023/1230/oj).
 
     '
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-ANNEX-I-13-AVIATION-SECURITY
+  - AIA-NORM-ANNEX-I-14-L-CATEGORY-VEHICLES
+  - AIA-NORM-ANNEX-I-15-AGRICULTURAL-FORESTRY-VEHICLES
+  - AIA-NORM-ANNEX-I-16-MARINE-EQUIPMENT
+  - AIA-NORM-ANNEX-I-17-RAIL-INTEROPERABILITY
+  - AIA-NORM-ANNEX-I-18-MOTOR-VEHICLE-APPROVAL
+  - AIA-NORM-ANNEX-I-19-MOTOR-VEHICLE-GENERAL-SAFETY
+  - AIA-NORM-ANNEX-I-20-UNMANNED-AIRCRAFT
+  - AIA-NORM-ANNEX-I-21-MACHINERY-REGULATION
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: codex
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
