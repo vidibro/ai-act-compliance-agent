@@ -18,50 +18,216 @@ segments:
   disposition_reason: ''
   norm_ids: []
   review:
-    status: proposed
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: codex
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
-- segment_id: AIA-TEXT-A075-P1
+- segment_id: AIA-TEXT-A075-P001
   source:
     kind: article
     document: '75'
     act_version_date: '2026-07-27'
   start: 80
-  end: 1393
-  sha256: 3ee3f6e4d58435efb95450b84b5670eb7349b973ed3c839f7526751b0fa5e002
-  text: "1. The AI Office shall be exclusively competent for the supervision and enforcement of the obligations\
-    \ under this Regulation in relation to the following AI systems:\n        (a) AI systems based on\
-    \ general-purpose AI models where the model and the system are developed by the same provider, or\
-    \ by providers forming part of the same undertaking as that provider, with the exception of:\n   \
-    \             (i) AI systems related to products covered by the Union harmonisation legislation listed\
-    \ in Annex I;\n                (ii) AI systems referred to in point 2 of Annex III;\n            \
-    \    (iii) AI systems provided by law enforcement authorities, border management authorities and financial\
-    \ institutions, insofar as those AI systems fall under Article 74(6); and\n                (iv) AI\
-    \ systems referred to in point 8 of Annex III as regards the administration of justice;\n        (b)\
-    \ AI systems that constitute or that are integrated into a very large online platform or very large\
-    \ online search engine designated in accordance with Regulation (EU) 2022/2065.\n    The exclusive\
-    \ competence referred to in the first subparagraph shall apply to the providers of those systems.\
-    \ It shall apply to the deployers of those systems only when they are also the provider or form part\
-    \ of the same undertaking as the provider.\n"
+  end: 246
+  sha256: 8d3b8d0aa3c85387877e1d8b972c45670bfacf7f8faf6d3b3548b3feb43b6c2c
+  text: '1. The AI Office shall be exclusively competent for the supervision and enforcement of the obligations
+    under this Regulation in relation to the following AI systems:
+
+    '
   disposition: normative
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A075-P1-COMPETENCE
   review:
-    status: proposed
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: codex
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
-- segment_id: AIA-TEXT-A075-P1A
+- segment_id: AIA-TEXT-A075-P002
+  source:
+    kind: article
+    document: '75'
+    act_version_date: '2026-07-27'
+  start: 246
+  end: 465
+  sha256: cf1719a46f0227e6dfdd9c055af5c03d614d35e8754f84222b89be91128cfcbd
+  text: '        (a) AI systems based on general-purpose AI models where the model and the system are
+    developed by the same provider, or by providers forming part of the same undertaking as that provider,
+    with the exception of:
+
+    '
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A075-P1-COMPETENCE
+  review:
+    status: approved
+    extracted_by: semantic-legal-effect-pass
+    verified_by: codex
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- segment_id: AIA-TEXT-A075-P003
+  source:
+    kind: article
+    document: '75'
+    act_version_date: '2026-07-27'
+  start: 465
+  end: 582
+  sha256: 5f502de47ad127b3150fa0c6a0f997fb83d31449d1e1d296d7650961c9d40e57
+  text: '                (i) AI systems related to products covered by the Union harmonisation legislation
+    listed in Annex I;
+
+    '
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A075-P1-COMPETENCE
+  review:
+    status: approved
+    extracted_by: semantic-legal-effect-pass
+    verified_by: codex
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- segment_id: AIA-TEXT-A075-P004
+  source:
+    kind: article
+    document: '75'
+    act_version_date: '2026-07-27'
+  start: 582
+  end: 651
+  sha256: b9367da2d145a605cb3fe227a71e6a7d34878e0abf0de37254c23f1adf476620
+  text: '                (ii) AI systems referred to in point 2 of Annex III;
+
+    '
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A075-P1-COMPETENCE
+  review:
+    status: approved
+    extracted_by: semantic-legal-effect-pass
+    verified_by: codex
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- segment_id: AIA-TEXT-A075-P005
+  source:
+    kind: article
+    document: '75'
+    act_version_date: '2026-07-27'
+  start: 651
+  end: 841
+  sha256: 810b644171bfefc1a548e3eeed7704401020097661b513aba6cf2dbc5baec40c
+  text: '                (iii) AI systems provided by law enforcement authorities, border management authorities
+    and financial institutions, insofar as those AI systems fall under Article 74(6); and
+
+    '
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A075-P1-COMPETENCE
+  review:
+    status: approved
+    extracted_by: semantic-legal-effect-pass
+    verified_by: codex
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- segment_id: AIA-TEXT-A075-P006
+  source:
+    kind: article
+    document: '75'
+    act_version_date: '2026-07-27'
+  start: 841
+  end: 951
+  sha256: 3de3e6ec6a49483ff164bd22d72161c9fb46231a54381e03e57ac954b0df9c7c
+  text: '                (iv) AI systems referred to in point 8 of Annex III as regards the administration
+    of justice;
+
+    '
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A075-P1-COMPETENCE
+  review:
+    status: approved
+    extracted_by: semantic-legal-effect-pass
+    verified_by: codex
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- segment_id: AIA-TEXT-A075-P007
+  source:
+    kind: article
+    document: '75'
+    act_version_date: '2026-07-27'
+  start: 951
+  end: 1139
+  sha256: ed943e33c4ea253ef7eeea6be79721f53dbea3deff37e3ecd7db984ec55217aa
+  text: '        (b) AI systems that constitute or that are integrated into a very large online platform
+    or very large online search engine designated in accordance with Regulation (EU) 2022/2065.
+
+    '
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A075-P1-COMPETENCE
+  review:
+    status: approved
+    extracted_by: semantic-legal-effect-pass
+    verified_by: codex
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- segment_id: AIA-TEXT-A075-P008
+  source:
+    kind: article
+    document: '75'
+    act_version_date: '2026-07-27'
+  start: 1139
+  end: 1393
+  sha256: e390dd1d8674fba33a69787fb82e5b8dcdcb231b0a3fd3fabb3b0da0302516c6
+  text: '    The exclusive competence referred to in the first subparagraph shall apply to the providers
+    of those systems. It shall apply to the deployers of those systems only when they are also the provider
+    or form part of the same undertaking as the provider.
+
+    '
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A075-P1-COMPETENCE-ADDRESSEES
+  review:
+    status: approved
+    extracted_by: semantic-legal-effect-pass
+    verified_by: codex
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- segment_id: AIA-TEXT-A075-P009
   source:
     kind: article
     document: '75'
@@ -76,19 +242,21 @@ segments:
     of which the provider or its legal representative is situated.
 
     '
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A075-P1A-REPORT-SERIOUS-INCIDENTS
+  - AIA-NORM-A075-P1A-TRANSMIT-INCIDENT-INFORMATION
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: codex
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
-- segment_id: AIA-TEXT-A075-P1B
+- segment_id: AIA-TEXT-A075-P010
   source:
     kind: article
     document: '75'
@@ -104,19 +272,21 @@ segments:
     to fulfil their tasks under this paragraph, in accordance with the applicable national procedures.
 
     '
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A075-P1B-COOPERATE-AND-ASSIST
+  - AIA-NORM-A075-P1B-AUTHORITY-POWERS
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: codex
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
-- segment_id: AIA-TEXT-A075-P1C
+- segment_id: AIA-TEXT-A075-P011
   source:
     kind: article
     document: '75'
@@ -127,19 +297,20 @@ segments:
   text: "1c. When taking investigatory or enforcement action in the territory of a Member State that involves\
     \ access to a public authority\u2019s data or AI system, the AI Office shall be assisted by the relevant\
     \ market surveillance authority.\n"
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A075-P1C-ASSIST-PUBLIC-DATA-ACTION
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: codex
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
-- segment_id: AIA-TEXT-A075-P1D
+- segment_id: AIA-TEXT-A075-P012
   source:
     kind: article
     document: '75'
@@ -155,40 +326,40 @@ segments:
     on any matter relating to the application and enforcement of this Regulation.
 
     '
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A075-P1D-NOTIFY-MARKET-AUTHORITY
+  - AIA-NORM-A075-P1D-CONSULT-AUTHORITIES
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: codex
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
-- segment_id: AIA-TEXT-A075-P1E
+- segment_id: AIA-TEXT-A075-P013
   source:
     kind: article
     document: '75'
     act_version_date: '2026-07-27'
   start: 3267
-  end: 4549
-  sha256: cd2bf60457dbab1643df08ca3a6759f5f735009e37e4ca6c51ef62856268ee99
-  text: "1e. The AI Office shall be responsible for conformity assessments and tests of AI systems referred\
-    \ to in paragraph 1 of this Article that are classified as high-risk and subject to a third-party\
-    \ conformity assessment pursuant to Article 43 before such AI systems are placed on the market or\
-    \ put into service. Those tests and assessments shall verify that the systems comply with the relevant\
-    \ requirements of this Regulation and may be placed on the market or put into service in the Union\
-    \ in accordance with this Regulation. The Commission shall entrust the performance of those tests\
-    \ or assessments to notified bodies designated in accordance with this Regulation, in which case the\
-    \ notified body shall act on behalf of the Commission. If a notified body to which the Commission\
-    \ has delegated tasks under this paragraph does not perform those tasks adequately, the Commission\
-    \ may withdraw the delegation with immediate effect.\n    The fees for testing and assessment activities\
-    \ shall be levied on the provider of a high-risk AI system who has applied for a third-party conformity\
-    \ assessment to the Commission. The provider shall pay the costs related to the services entrusted\
-    \ by the Commission to the notified bodies in accordance with this Article directly to the notified\
-    \ body.\n"
+  end: 4195
+  sha256: 15810fa103e32545323efc061cbd1d0772f3ed3c3fd87f28b5b52f827e146390
+  text: '1e. The AI Office shall be responsible for conformity assessments and tests of AI systems referred
+    to in paragraph 1 of this Article that are classified as high-risk and subject to a third-party conformity
+    assessment pursuant to Article 43 before such AI systems are placed on the market or put into service.
+    Those tests and assessments shall verify that the systems comply with the relevant requirements of
+    this Regulation and may be placed on the market or put into service in the Union in accordance with
+    this Regulation. The Commission shall entrust the performance of those tests or assessments to notified
+    bodies designated in accordance with this Regulation, in which case the notified body shall act on
+    behalf of the Commission. If a notified body to which the Commission has delegated tasks under this
+    paragraph does not perform those tasks adequately, the Commission may withdraw the delegation with
+    immediate effect.
+
+    '
   disposition: normative
   disposition_reason: ''
   norm_ids:
@@ -197,18 +368,44 @@ segments:
   - AIA-NORM-A075-P1E-ENTRUST
   - AIA-NORM-A075-P1E-ACT
   - AIA-NORM-A075-P1E-WITHDRAW
-  - AIA-NORM-A075-P1E-FEES
-  - AIA-NORM-A075-P1E-PAY
   review:
-    status: proposed
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: codex
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
-- segment_id: AIA-TEXT-A075-P2
+- segment_id: AIA-TEXT-A075-P014
+  source:
+    kind: article
+    document: '75'
+    act_version_date: '2026-07-27'
+  start: 4195
+  end: 4549
+  sha256: fcc60b0568576d9ce251ab650abf4246b2eb3dfb9ec95722cfbf43251c57156d
+  text: '    The fees for testing and assessment activities shall be levied on the provider of a high-risk
+    AI system who has applied for a third-party conformity assessment to the Commission. The provider
+    shall pay the costs related to the services entrusted by the Commission to the notified bodies in
+    accordance with this Article directly to the notified body.
+
+    '
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A075-P1E-FEES
+  - AIA-NORM-A075-P1E-PAY
+  review:
+    status: approved
+    extracted_by: semantic-legal-effect-pass
+    verified_by: codex
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- segment_id: AIA-TEXT-A075-P015
   source:
     kind: article
     document: '75'
@@ -223,57 +420,179 @@ segments:
     Board and other market surveillance authorities accordingly.
 
     '
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A075-P2-COOPERATE-ON-GPAI-SYSTEMS
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: codex
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
-- segment_id: AIA-TEXT-A075-P2A
+- segment_id: AIA-TEXT-A075-P016
   source:
     kind: article
     document: '75'
     act_version_date: '2026-07-27'
   start: 5020
-  end: 6763
-  sha256: dc0d6564fe22b5f148eb2c1e4ca6df825c7098675fbf8a7a311d5f690a5cb46a
-  text: "2a. Where a market surveillance authority has well-founded and sufficient reasons to suspect\
-    \ that a provider or a deployer of an AI system referred to in paragraph 1 of this Article has infringed\
-    \ this Regulation, it may request, through the relevant single point of contact designated in accordance\
-    \ with Article 70(2), the AI Office to assess the matter in order to take the necessary supervisory\
-    \ and enforcement measures to ensure prompt compliance with this Regulation. Such a request shall\
-    \ be duly reasoned and shall include at least:\n        (a) the name of the provider or the deployer\
-    \ concerned;\n        (b) a description of the relevant facts, the provisions of this Regulation that\
-    \ have allegedly been infringed, and any well-founded and sufficient reasons for suspecting an infringement,\
-    \ including, where applicable, the description of the negative effects of the alleged infringement;\n\
-    \        (c) the market surveillance authority making the request.\n    The AI Office shall take utmost\
-    \ account of the request and the market surveillance authority shall cooperate actively and provide\
-    \ the AI Office the necessary assistance for the exercise of its powers in accordance with paragraph\
-    \ 1a.\n    The AI Office shall, without undue delay and in any event no later than four months following\
-    \ receipt of the request, inform the single point of contact of its intention to exercise its powers\
-    \ in accordance with Article 75a or of its reasons for not exercising its powers. If the AI Office\
-    \ decides to exercise its powers in accordance with Article 75a, it shall periodically inform that\
-    \ single point of contact about major developments in the proceedings and the outcome of such proceedings,\
-    \ without disclosing any confidential information.\n"
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  end: 5558
+  sha256: de89938ec0405163a2c6a7b7f3bf07436b306396000534d5a49fd05d85d720ac
+  text: '2a. Where a market surveillance authority has well-founded and sufficient reasons to suspect
+    that a provider or a deployer of an AI system referred to in paragraph 1 of this Article has infringed
+    this Regulation, it may request, through the relevant single point of contact designated in accordance
+    with Article 70(2), the AI Office to assess the matter in order to take the necessary supervisory
+    and enforcement measures to ensure prompt compliance with this Regulation. Such a request shall be
+    duly reasoned and shall include at least:
+
+    '
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A075-P2A-REQUEST-ASSESSMENT
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: codex
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
-- segment_id: AIA-TEXT-A075-P3
+- segment_id: AIA-TEXT-A075-P017
+  source:
+    kind: article
+    document: '75'
+    act_version_date: '2026-07-27'
+  start: 5558
+  end: 5622
+  sha256: 39ff097ea33606d19525f71d38f9353051cd2eeaa6c629413902f0f549946a1c
+  text: '        (a) the name of the provider or the deployer concerned;
+
+    '
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A075-P2A-REQUEST-ASSESSMENT
+  review:
+    status: approved
+    extracted_by: semantic-legal-effect-pass
+    verified_by: codex
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- segment_id: AIA-TEXT-A075-P018
+  source:
+    kind: article
+    document: '75'
+    act_version_date: '2026-07-27'
+  start: 5622
+  end: 5915
+  sha256: 326f11a7b4c829828e3589186ddfe61aa8f104f0dcaac8048fe5b5a97d35dff1
+  text: '        (b) a description of the relevant facts, the provisions of this Regulation that have
+    allegedly been infringed, and any well-founded and sufficient reasons for suspecting an infringement,
+    including, where applicable, the description of the negative effects of the alleged infringement;
+
+    '
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A075-P2A-REQUEST-ASSESSMENT
+  review:
+    status: approved
+    extracted_by: semantic-legal-effect-pass
+    verified_by: codex
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- segment_id: AIA-TEXT-A075-P019
+  source:
+    kind: article
+    document: '75'
+    act_version_date: '2026-07-27'
+  start: 5915
+  end: 5981
+  sha256: 1a30181284dc92f310788bddf7ae030a4a5a19fcf8c2c397a59eee5e5f6d18d6
+  text: '        (c) the market surveillance authority making the request.
+
+    '
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A075-P2A-REQUEST-ASSESSMENT
+  review:
+    status: approved
+    extracted_by: semantic-legal-effect-pass
+    verified_by: codex
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- segment_id: AIA-TEXT-A075-P020
+  source:
+    kind: article
+    document: '75'
+    act_version_date: '2026-07-27'
+  start: 5981
+  end: 6218
+  sha256: 1ff2b26a41bba45cd82f257048ea6704d209800d328918bee598fe9bea83c698
+  text: '    The AI Office shall take utmost account of the request and the market surveillance authority
+    shall cooperate actively and provide the AI Office the necessary assistance for the exercise of its
+    powers in accordance with paragraph 1a.
+
+    '
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A075-P2A-ACCOUNT-FOR-REQUEST
+  - AIA-NORM-A075-P2A-ASSIST-AI-OFFICE
+  review:
+    status: approved
+    extracted_by: semantic-legal-effect-pass
+    verified_by: codex
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- segment_id: AIA-TEXT-A075-P021
+  source:
+    kind: article
+    document: '75'
+    act_version_date: '2026-07-27'
+  start: 6218
+  end: 6763
+  sha256: 0199b1067134547b9d74c0bbec921577a2600a90f98e1e0d61273db5f510cc11
+  text: '    The AI Office shall, without undue delay and in any event no later than four months following
+    receipt of the request, inform the single point of contact of its intention to exercise its powers
+    in accordance with Article 75a or of its reasons for not exercising its powers. If the AI Office decides
+    to exercise its powers in accordance with Article 75a, it shall periodically inform that single point
+    of contact about major developments in the proceedings and the outcome of such proceedings, without
+    disclosing any confidential information.
+
+    '
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A075-P2A-RESPOND-AND-UPDATE
+  review:
+    status: approved
+    extracted_by: semantic-legal-effect-pass
+    verified_by: codex
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- segment_id: AIA-TEXT-A075-P022
   source:
     kind: article
     document: '75'
@@ -292,15 +611,19 @@ segments:
     for in Chapter VI of Regulation (EU) 2019/1020 shall apply mutatis mutandis.
 
     '
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A075-P3-REQUEST-INFORMATION-ACCESS
+  - AIA-NORM-A075-P3-SUPPLY-INFORMATION
+  - AIA-NORM-A075-P3-SAFEGUARD-CONFIDENTIALITY
+  - AIA-NORM-A075-P3-APPLY-MUTUAL-ASSISTANCE-PROCEDURE
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: codex
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null

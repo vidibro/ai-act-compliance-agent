@@ -7,13 +7,312 @@ norms:
   - subject_ref: ai_office
     category: union_institution_or_body
   action: hold exclusive supervision and enforcement competence for the listed systems
-  norm_text: The AI Office shall be exclusively competent
+  norm_text: 'The AI Office shall be exclusively competent for the supervision and enforcement of the
+    obligations under this Regulation in relation to the following AI systems:'
+  detection_channels:
+  - semantic_legal_effect
+  - shall_token
+  - deeming_or_consequence
+  - cross_reference_structure
+  primary_spans:
+  - AIA-TEXT-A075-P001
+  qualifier_spans:
+  - AIA-TEXT-A075-P002
+  - AIA-TEXT-A075-P003
+  - AIA-TEXT-A075-P004
+  - AIA-TEXT-A075-P005
+  - AIA-TEXT-A075-P006
+  - AIA-TEXT-A075-P007
+  effective_date_spans: []
+  conditions: []
+  exceptions: []
+  mandatory_content:
+  - same-provider or same-undertaking general-purpose-model systems subject to the enacted exclusions
+  - very large online platform or search-engine systems
+  dependencies: []
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_refs: []
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A075-P1-COMPETENCE-ADDRESSEES
+  act_version_date: '2026-07-27'
+  kind: applicability
+  subjects:
+  - subject_ref: ai_office
+    category: union_institution_or_body
+  action: apply the AI Office's exclusive competence to providers and only to deployers that are the provider
+    or in its undertaking
+  norm_text: The exclusive competence referred to in the first subparagraph shall apply to the providers
+    of those systems. It shall apply to the deployers of those systems only when they are also the provider
+    or form part of the same undertaking as the provider.
   detection_channels:
   - semantic_legal_effect
   - shall_token
   - deeming_or_consequence
   primary_spans:
-  - AIA-TEXT-A075-P1
+  - AIA-TEXT-A075-P008
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions: []
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_refs: []
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A075-P1A-REPORT-SERIOUS-INCIDENTS
+  act_version_date: '2026-07-27'
+  kind: obligation
+  subjects:
+  - subject_ref: provider
+    category: supported_operator
+  action: report serious incidents for high-risk systems under AI Office competence to the AI Office using
+    the Article 73(2) to (9) procedure
+  norm_text: providers of high-risk AI systems subject to the competence of the AI Office pursuant to
+    paragraph 1 of this Article shall report any serious incidents to the AI Office
+  detection_channels:
+  - semantic_legal_effect
+  - shall_token
+  - existing_implementation
+  primary_spans:
+  - AIA-TEXT-A075-P009
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions: []
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: in_scope
+  product_scope_reason: ''
+  implementation_mode: compliance_rule
+  implementation_refs:
+  - AIA-PO-A75-1a
+  implementation_reason: ''
+  verification_mode: listed_for_confirmation
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A075-P1A-TRANSMIT-INCIDENT-INFORMATION
+  act_version_date: '2026-07-27'
+  kind: obligation
+  subjects:
+  - subject_ref: ai_office
+    category: union_institution_or_body
+  action: promptly transmit relevant incident information to the territorially competent market surveillance
+    authority
+  norm_text: The AI Office shall promptly transmit the relevant information to the market surveillance
+    authority of the Member State in the territory of which the provider or its legal representative is
+    situated.
+  detection_channels:
+  - semantic_legal_effect
+  - shall_token
+  primary_spans:
+  - AIA-TEXT-A075-P009
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions: []
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_refs: []
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A075-P1B-COOPERATE-AND-ASSIST
+  act_version_date: '2026-07-27'
+  kind: obligation
+  subjects:
+  - subject_ref: authorities_involved_in_application
+    category: public_authority
+  action: actively cooperate with and provide necessary assistance to the AI Office including for territorial
+    inspections and enforcement
+  norm_text: The authorities involved in the application of this Regulation shall cooperate actively with
+    the AI Office and provide the AI Office the necessary assistance for the exercise of its powers
+  detection_channels:
+  - semantic_legal_effect
+  - shall_token
+  primary_spans:
+  - AIA-TEXT-A075-P010
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions: []
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_refs: []
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A075-P1B-AUTHORITY-POWERS
+  act_version_date: '2026-07-27'
+  kind: power
+  subjects:
+  - subject_ref: authorities_involved_in_application
+    category: public_authority
+  action: exercise the enacted powers only as relevant and necessary under applicable national procedures
+  norm_text: those authorities shall enjoy the powers provided for pursuant to this Regulation and Regulation
+    (EU) 2019/1020
+  detection_channels:
+  - semantic_legal_effect
+  - shall_token
+  primary_spans:
+  - AIA-TEXT-A075-P010
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions: []
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_refs: []
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A075-P1C-ASSIST-PUBLIC-DATA-ACTION
+  act_version_date: '2026-07-27'
+  kind: obligation
+  subjects:
+  - subject_ref: market_surveillance_authority
+    category: public_authority
+  action: assist AI Office territorial action involving access to a public authority's data or AI system
+  norm_text: the AI Office shall be assisted by the relevant market surveillance authority
+  detection_channels:
+  - semantic_legal_effect
+  - shall_token
+  primary_spans:
+  - AIA-TEXT-A075-P011
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions: []
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_refs: []
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A075-P1D-NOTIFY-MARKET-AUTHORITY
+  act_version_date: '2026-07-27'
+  kind: obligation
+  subjects:
+  - subject_ref: ai_office
+    category: union_institution_or_body
+  action: notify the competent market authority without undue delay before a prohibition restriction withdrawal
+    or recall decision
+  norm_text: the AI Office shall, without undue delay, notify the market surveillance authority competent
+    for that market of its intention to take such a decision
+  detection_channels:
+  - semantic_legal_effect
+  - shall_token
+  primary_spans:
+  - AIA-TEXT-A075-P012
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions: []
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_refs: []
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A075-P1D-CONSULT-AUTHORITIES
+  act_version_date: '2026-07-27'
+  kind: obligation
+  subjects:
+  - subject_ref: ai_office
+    category: union_institution_or_body
+  action: consult involved authorities where appropriate on application and enforcement matters
+  norm_text: The AI Office shall consult the authorities involved in the application of this Regulation,
+    where appropriate, on any matter relating to the application and enforcement of this Regulation.
+  detection_channels:
+  - semantic_legal_effect
+  - shall_token
+  primary_spans:
+  - AIA-TEXT-A075-P012
   qualifier_spans: []
   effective_date_spans: []
   conditions: []
@@ -47,7 +346,7 @@ norms:
   - semantic_legal_effect
   - shall_token
   primary_spans:
-  - AIA-TEXT-A075-P1E
+  - AIA-TEXT-A075-P013
   qualifier_spans: []
   effective_date_spans: []
   conditions: []
@@ -81,7 +380,7 @@ norms:
   - semantic_legal_effect
   - shall_token
   primary_spans:
-  - AIA-TEXT-A075-P1E
+  - AIA-TEXT-A075-P013
   qualifier_spans: []
   effective_date_spans: []
   conditions: []
@@ -115,7 +414,7 @@ norms:
   - semantic_legal_effect
   - shall_token
   primary_spans:
-  - AIA-TEXT-A075-P1E
+  - AIA-TEXT-A075-P013
   qualifier_spans: []
   effective_date_spans: []
   conditions: []
@@ -149,7 +448,7 @@ norms:
   - semantic_legal_effect
   - shall_token
   primary_spans:
-  - AIA-TEXT-A075-P1E
+  - AIA-TEXT-A075-P013
   qualifier_spans: []
   effective_date_spans: []
   conditions: []
@@ -183,7 +482,7 @@ norms:
   - semantic_legal_effect
   - other_modal
   primary_spans:
-  - AIA-TEXT-A075-P1E
+  - AIA-TEXT-A075-P013
   qualifier_spans: []
   effective_date_spans: []
   conditions: []
@@ -218,7 +517,7 @@ norms:
   - shall_token
   - existing_implementation
   primary_spans:
-  - AIA-TEXT-A075-P1E
+  - AIA-TEXT-A075-P014
   qualifier_spans: []
   effective_date_spans: []
   conditions: []
@@ -254,7 +553,7 @@ norms:
   - shall_token
   - existing_implementation
   primary_spans:
-  - AIA-TEXT-A075-P1E
+  - AIA-TEXT-A075-P014
   qualifier_spans: []
   effective_date_spans: []
   conditions: []
@@ -268,6 +567,337 @@ norms:
   - AIA-PO-A75-1E
   implementation_reason: ''
   verification_mode: listed_for_confirmation
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A075-P2-COOPERATE-ON-GPAI-SYSTEMS
+  act_version_date: '2026-07-27'
+  kind: obligation
+  subjects:
+  - subject_ref: market_surveillance_authority
+    category: public_authority
+  action: cooperate on compliance evaluations and inform the Board and other authorities when directly
+    deployable GPAI systems may be non-compliant
+  norm_text: they shall cooperate with the AI Office to carry out compliance evaluations, and shall inform
+    the Board and other market surveillance authorities accordingly
+  detection_channels:
+  - semantic_legal_effect
+  - shall_token
+  primary_spans:
+  - AIA-TEXT-A075-P015
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions: []
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_refs: []
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A075-P2A-REQUEST-ASSESSMENT
+  act_version_date: '2026-07-27'
+  kind: power
+  subjects:
+  - subject_ref: market_surveillance_authority
+    category: public_authority
+  action: request an AI Office assessment through the single point of contact on well-founded and sufficiently
+    suspected infringement
+  norm_text: it may request, through the relevant single point of contact designated in accordance with
+    Article 70(2), the AI Office to assess the matter
+  detection_channels:
+  - semantic_legal_effect
+  - other_modal
+  - cross_reference_structure
+  primary_spans:
+  - AIA-TEXT-A075-P016
+  qualifier_spans:
+  - AIA-TEXT-A075-P017
+  - AIA-TEXT-A075-P018
+  - AIA-TEXT-A075-P019
+  effective_date_spans: []
+  conditions: []
+  exceptions: []
+  mandatory_content:
+  - provider or deployer name
+  - relevant facts allegedly infringed provisions reasons and any negative effects
+  - requesting authority
+  dependencies: []
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_refs: []
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A075-P2A-ACCOUNT-FOR-REQUEST
+  act_version_date: '2026-07-27'
+  kind: obligation
+  subjects:
+  - subject_ref: ai_office
+    category: union_institution_or_body
+  action: take utmost account of a market surveillance authority's assessment request
+  norm_text: The AI Office shall take utmost account of the request
+  detection_channels:
+  - semantic_legal_effect
+  - shall_token
+  primary_spans:
+  - AIA-TEXT-A075-P020
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions: []
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_refs: []
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A075-P2A-ASSIST-AI-OFFICE
+  act_version_date: '2026-07-27'
+  kind: obligation
+  subjects:
+  - subject_ref: market_surveillance_authority
+    category: public_authority
+  action: actively cooperate with and provide necessary assistance to the AI Office on the requested assessment
+  norm_text: the market surveillance authority shall cooperate actively and provide the AI Office the
+    necessary assistance for the exercise of its powers
+  detection_channels:
+  - semantic_legal_effect
+  - shall_token
+  primary_spans:
+  - AIA-TEXT-A075-P020
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions: []
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_refs: []
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A075-P2A-RESPOND-AND-UPDATE
+  act_version_date: '2026-07-27'
+  kind: obligation
+  subjects:
+  - subject_ref: ai_office
+    category: union_institution_or_body
+  action: respond within four months and periodically report major developments and outcome when exercising
+    Article 75a powers
+  norm_text: The AI Office shall, without undue delay and in any event no later than four months following
+    receipt of the request, inform the single point of contact of its intention to exercise its powers
+    in accordance with Article 75a or of its reasons for not exercising its powers.
+  detection_channels:
+  - semantic_legal_effect
+  - shall_token
+  primary_spans:
+  - AIA-TEXT-A075-P021
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions: []
+  exceptions: []
+  mandatory_content:
+  - intention to exercise Article 75a powers or reasons not to do so
+  - periodic major-development updates when powers are exercised
+  - proceeding outcome without confidential information
+  dependencies: []
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_refs: []
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A075-P3-REQUEST-INFORMATION-ACCESS
+  act_version_date: '2026-07-27'
+  kind: power
+  subjects:
+  - subject_ref: market_surveillance_authority
+    category: public_authority
+  action: submit a reasoned request to enforce access after appropriate efforts fail to obtain GPAI-model
+    information needed to conclude an investigation
+  norm_text: it may submit a reasoned request to the AI Office, by which access to that information shall
+    be enforced
+  detection_channels:
+  - semantic_legal_effect
+  - shall_token
+  - other_modal
+  primary_spans:
+  - AIA-TEXT-A075-P022
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions: []
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_refs: []
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A075-P3-SUPPLY-INFORMATION
+  act_version_date: '2026-07-27'
+  kind: obligation
+  subjects:
+  - subject_ref: ai_office
+    category: union_institution_or_body
+  action: supply relevant requested compliance information without delay and within 30 days
+  norm_text: the AI Office shall supply to the applicant authority without delay, and in any event within
+    30 days, any information that the AI Office considers to be relevant
+  detection_channels:
+  - semantic_legal_effect
+  - shall_token
+  primary_spans:
+  - AIA-TEXT-A075-P022
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions: []
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_refs: []
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A075-P3-SAFEGUARD-CONFIDENTIALITY
+  act_version_date: '2026-07-27'
+  kind: obligation
+  subjects:
+  - subject_ref: market_surveillance_authority
+    category: public_authority
+  action: safeguard obtained information under Article 78 confidentiality
+  norm_text: Market surveillance authorities shall safeguard the confidentiality of the information that
+    they obtain in accordance with Article 78 of this Regulation.
+  detection_channels:
+  - semantic_legal_effect
+  - shall_token
+  primary_spans:
+  - AIA-TEXT-A075-P022
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions: []
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_refs: []
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A075-P3-APPLY-MUTUAL-ASSISTANCE-PROCEDURE
+  act_version_date: '2026-07-27'
+  kind: applicability
+  subjects:
+  - subject_ref: market_surveillance_authority_and_ai_office
+    category: public_authority
+  action: apply the Regulation 2019/1020 Chapter VI procedure with necessary adaptations
+  norm_text: The procedure provided for in Chapter VI of Regulation (EU) 2019/1020 shall apply mutatis
+    mutandis.
+  detection_channels:
+  - semantic_legal_effect
+  - shall_token
+  - deeming_or_consequence
+  primary_spans:
+  - AIA-TEXT-A075-P022
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions: []
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_refs: []
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
   review:
     status: proposed
     extracted_by: semantic-legal-effect-pass
