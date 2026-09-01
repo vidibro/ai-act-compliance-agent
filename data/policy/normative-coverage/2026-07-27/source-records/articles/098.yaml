@@ -1,0 +1,24 @@
+records:
+- norm_id: AIA-NORM-A098-P1-COMMITTEE-ASSISTANCE
+  source: A098-P001
+  quote: The Commission shall be assisted by a committee
+  action: receive assistance from a Regulation 182/2011 committee
+  subject_ref: commission
+  subject_category: union_institution_or_body
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A098-P2-EXAMINATION-PROCEDURE
+  source: A098-P002
+  quote: Article 5 of Regulation (EU) No 182/2011 shall apply
+  action: apply the Regulation 182/2011 Article 5 examination procedure when Article 98(2) is referenced
+  subject_ref: committee_procedure
+  subject_category: union_institution_or_body
+  kind: applicability
+  product_scope: outside_supported_actor
+  product_scope_reason: This institutional procedure is outside the supported operator surface.
+  implementation_mode: none_required
+  implementation_reason: No product implementation is required.
+  verification_mode: not_assessed
