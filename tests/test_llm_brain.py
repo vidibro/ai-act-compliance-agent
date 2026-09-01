@@ -14,8 +14,30 @@ from datetime import date
 
 import pytest
 
-from aiact.classify.llm_brain import LLMBrain, Unanswerable, _parse_bool, _parse_value
-from aiact.schemas.enums import AnnexIIIArea, DerogationCondition
+from aiact.classify.graph import QUESTIONS
+from aiact.classify.llm_brain import (
+    LLMBrain,
+    Unanswerable,
+    _answer_instructions,
+    _parse_bool,
+    _parse_value,
+)
+from aiact.gap.roles import QUESTIONS as ROLE_QUESTIONS
+from aiact.schemas.enums import (
+    AnnexIIIArea,
+    AnnexIProduct,
+    DeployerType,
+    DerogationCondition,
+    GpaiStatus,
+    OpenSourceRelease,
+    ProhibitedPractice,
+    ProviderReallocation,
+    RealWorldTesting,
+    ScopeExclusion,
+    SystemicRisk,
+    TerritorialLink,
+    TransparencyDuty,
+)
 from aiact.schemas.policy import LegalSource
 from aiact.schemas.question import Question
 
@@ -89,6 +111,44 @@ def test_known_enum_values_parse():
         _parse_value("derogation", "narrow_procedural_task")
         is DerogationCondition.NARROW_PROCEDURAL_TASK
     )
+
+
+_ROUND_TRIPS = [
+    ("bool", True, bool),
+    ("annex_area", "employment", AnnexIIIArea),
+    ("annex_i_product", next(iter(AnnexIProduct)).value, AnnexIProduct),
+    ("derogation", "narrow_procedural_task", DerogationCondition),
+    ("transparency_duties", [next(iter(TransparencyDuty)).value], list),
+    ("territorial_link", next(iter(TerritorialLink)).value, TerritorialLink),
+    ("gpai_status", next(iter(GpaiStatus)).value, GpaiStatus),
+    ("systemic_risk", next(iter(SystemicRisk)).value, SystemicRisk),
+    ("open_source_release", next(iter(OpenSourceRelease)).value, OpenSourceRelease),
+    ("prohibited_practice", next(iter(ProhibitedPractice)).value, ProhibitedPractice),
+    ("deployer_type", "public_body", DeployerType),
+    ("real_world_testing", next(iter(RealWorldTesting)).value, RealWorldTesting),
+    ("provider_reallocation", next(iter(ProviderReallocation)).value, ProviderReallocation),
+    ("scope_exclusion", next(iter(ScopeExclusion)).value, ScopeExclusion),
+]
+
+
+@pytest.mark.parametrize(("answer_type", "raw", "expected"), _ROUND_TRIPS)
+def test_every_answer_type_parses_to_the_type_its_callers_narrow_to(answer_type, raw, expected):
+    assert isinstance(_parse_value(answer_type, raw), expected)
+
+
+@pytest.mark.parametrize(("answer_type", "raw", "expected"), _ROUND_TRIPS)
+def test_every_answer_type_can_be_asked(answer_type, raw, expected):
+    """The other half, and the half that fails LOUDLY: `_answer_instructions` builds the prompt, so
+    a missing branch raises ValueError out of `decide` — which catches only Unanswerable — and kills
+    the run before the model is ever called. `real_world_testing` did exactly that."""
+    assert _answer_instructions(answer_type)
+
+
+def test_every_answer_type_is_round_tripped():
+    """The table above must cover every branch, or the next one added escapes the check."""
+    covered = {answer_type for answer_type, _, _ in _ROUND_TRIPS}
+    declared = {q.answer_type for q in (*QUESTIONS.values(), *ROLE_QUESTIONS.values())}
+    assert declared <= covered, f"no round-trip case for {declared - covered}"
 
 
 @pytest.mark.parametrize(

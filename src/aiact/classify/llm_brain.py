@@ -35,6 +35,7 @@ from aiact.schemas.enums import (
     OpenSourceRelease,
     ProhibitedPractice,
     ProviderReallocation,
+    RealWorldTesting,
     ScopeExclusion,
     SystemicRisk,
     TerritorialLink,
@@ -188,6 +189,20 @@ def _answer_instructions(answer_type: str) -> str:
             f"reader taking on a system someone else placed on the market — which is the ordinary "
             f"answer, and a real one"
         )
+    if answer_type == "real_world_testing":
+        stages = ", ".join(t.value for t in RealWorldTesting)
+        # No UNKNOWN branch, for the reason `deployer_type` has none: `not_stated` IS the record of
+        # silence. And it is the ordinary answer here — a technical file describes a system, not a
+        # testing programme — so the alternative is not offered, because `none` withholds four
+        # obligations and must rest on the text ruling a live trial out rather than never raising
+        # it.
+        return (
+            f'set "value" to one of [{stages}] — use "not_stated" when the description says '
+            f'nothing either way, which is the ordinary case; use "none" ONLY where the text '
+            f"positively rules out running on live inputs outside an AI regulatory sandbox. How "
+            f"the system was evaluated is not an answer to this: held-out sets, retrospective data "
+            f"and offline benchmarks do not exclude a live trial running alongside them"
+        )
     if answer_type == "scope_exclusion":
         exclusions = ", ".join(e.value for e in ScopeExclusion)
         return (
@@ -317,16 +332,6 @@ def _parse_value(answer_type: str, value: object) -> object:
             return ScopeExclusion(str(value).strip().lower())
         except ValueError as exc:
             raise Unanswerable(f"{value!r} is not an Art. 2 exclusion") from exc
-    if answer_type == "deployer_type":
-        kinds = ", ".join(d.value for d in DeployerType)
-        # No UNKNOWN branch: `not_stated` IS the record of silence, and a second way to say it
-        # would split the ordinary answer across two values that mean the same thing.
-        return (
-            f'set "value" to one of [{kinds}] — use "not_stated" when the description says '
-            f"nothing about the deploying organisation, which is the ordinary case; use "
-            f'"neither" only where the text positively establishes an ordinary commercial '
-            f"deployer"
-        )
     if answer_type == "provider_reallocation":
         try:
             return ProviderReallocation(str(value).strip().lower())
@@ -337,6 +342,11 @@ def _parse_value(answer_type: str, value: object) -> object:
             return DeployerType(str(value).strip().lower())
         except ValueError as exc:
             raise Unanswerable(f"{value!r} is not a kind of deploying organisation") from exc
+    if answer_type == "real_world_testing":
+        try:
+            return RealWorldTesting(str(value).strip().lower())
+        except ValueError as exc:
+            raise Unanswerable(f"{value!r} is not an Art. 60 testing answer") from exc
     raise ValueError(f"unknown answer_type {answer_type!r}")
 
 
