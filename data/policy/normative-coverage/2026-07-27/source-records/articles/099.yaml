@@ -1,0 +1,153 @@
+records:
+- norm_id: AIA-NORM-A099-P1-ESTABLISH-PENALTIES
+  source: A099-P001
+  quote: Member States shall lay down the rules on penalties and other enforcement measures
+  action: establish and effectively implement effective proportionate and dissuasive infringement penalties and enforcement measures
+  subject_ref: member_state
+  subject_category: member_state
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A099-P1-ACCOUNT-FOR-SMALL-BUSINESSES
+  source: A099-P001
+  quote: The Member States shall take into account the interests of SMEs
+  action: account for SME start-up and SMC interests and economic viability when imposing penalties
+  subject_ref: member_state
+  subject_category: member_state
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A099-P2-NOTIFY-PENALTY-RULES
+  source: A099-P002
+  quote: Member States shall, without delay and at the latest by the date of entry into application, notify the Commission
+  action: notify the Commission timely of penalty and enforcement rules and every later amendment
+  subject_ref: member_state
+  subject_category: member_state
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A099-P3-ARTICLE5-FINE
+  source: A099-P003
+  quote: shall be subject to administrative fines of up to EUR 35000000
+  action: expose Article 5 prohibited-practice non-compliance to the specified maximum fine
+  subject_ref: infringing_operator
+  subject_category: supported_operator
+  kind: legal_consequence
+  product_scope: no_product_action
+  product_scope_reason: This is an enforcement consequence rather than an independent compliance action.
+  implementation_mode: none_required
+  implementation_reason: No independent product action arises.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A099-P4-OPERATOR-FINE
+  source: A099-P004
+  quote: shall be subject to administrative fines of up to EUR 15000000
+  action: expose listed operator and notified-body non-compliance to the specified maximum fine
+  subject_ref: infringing_operator_or_notified_body
+  subject_category: other
+  kind: legal_consequence
+  mandatory_content: [Article 16 provider obligations, Article 22 authorised-representative obligations, Article 23 importer obligations, Article 24 distributor obligations, Article 25(2) and (4) provider and operator obligations, Article 26 deployer obligations, listed notified-body requirements and obligations, Article 50 transparency obligations]
+  qualifier_spans: [A099-P005, A099-P006, A099-P007, A099-P008, A099-P009, A099-P010, A099-P011, A099-P012]
+  product_scope: no_product_action
+  product_scope_reason: This is an enforcement consequence rather than an independent compliance action.
+  implementation_mode: none_required
+  implementation_reason: No independent product action arises.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A099-P5-INFORMATION-FINE
+  source: A099-P013
+  quote: shall be subject to administrative fines of up to EUR 7500000
+  action: expose incorrect incomplete or misleading replies to the specified maximum fine
+  subject_ref: information_supplier
+  subject_category: other
+  kind: legal_consequence
+  product_scope: no_product_action
+  product_scope_reason: This is an enforcement consequence rather than an independent compliance action.
+  implementation_mode: none_required
+  implementation_reason: No independent product action arises.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A099-P6-SME-FINE-CAP
+  source: A099-P014
+  quote: each fine referred to in this Article shall be up to the percentages or amount referred to in paragraphs 3, 4 and 5, whichever thereof is lower
+  action: cap SME and start-up fines at the lower applicable percentage or amount
+  subject_ref: enforcing_authority
+  subject_category: public_authority
+  kind: legal_consequence
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A099-P6A-SMC-FINE-CAP
+  source: A099-P015
+  quote: each fine referred to in paragraphs 4 and 5 shall be up to the percentages or amount referred therein, whichever is lower
+  action: cap SMC fines under paragraphs 4 and 5 at the lower applicable percentage or amount
+  subject_ref: enforcing_authority
+  subject_category: public_authority
+  kind: legal_consequence
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A099-P7-CONSIDER-FINE-CIRCUMSTANCES
+  source: A099-P016
+  quote: all relevant circumstances of the specific situation shall be taken into account
+  action: consider all relevant circumstances and the specified factors when deciding whether and how much to fine
+  subject_ref: enforcing_authority
+  subject_category: public_authority
+  mandatory_content: [infringement nature gravity duration consequences affected persons and damage, same-infringement fines by market-surveillance authorities, related-law fines arising from the same activity or omission, operator size turnover and market share, aggravating and mitigating factors including financial benefit or avoided loss, cooperation with competent authorities, operator responsibility and technical organisational measures, how the infringement became known including self-notification, intentional or negligent character, harm mitigation]
+  qualifier_spans: [A099-P017, A099-P018, A099-P019, A099-P020, A099-P021, A099-P022, A099-P023, A099-P024, A099-P025, A099-P026]
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A099-P8-PUBLIC-BODY-FINE-RULES
+  source: A099-P027
+  quote: Each Member State shall lay down rules on to what extent administrative fines may be imposed on public authorities and bodies
+  action: establish the extent to which administrative fines apply to domestic public authorities and bodies
+  subject_ref: member_state
+  subject_category: member_state
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A099-P9-EQUIVALENT-FINE-EFFECT
+  source: A099-P028
+  quote: shall have an equivalent effect
+  action: ensure court-imposed or other-body-imposed fine rules have equivalent effect
+  subject_ref: member_state
+  subject_category: member_state
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A099-P10-PROCEDURAL-SAFEGUARDS
+  source: A099-P029
+  quote: shall be subject to appropriate procedural safeguards
+  action: exercise Article 99 powers subject to effective remedies due process and other appropriate safeguards
+  subject_ref: enforcing_authority
+  subject_category: public_authority
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A099-P11-ANNUAL-FINE-REPORT
+  source: A099-P030
+  quote: Member States shall, on an annual basis, report to the Commission
+  action: report annually to the Commission on Article 99 fines and related proceedings
+  subject_ref: member_state
+  subject_category: member_state
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed

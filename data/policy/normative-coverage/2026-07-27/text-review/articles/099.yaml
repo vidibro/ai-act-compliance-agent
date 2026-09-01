@@ -18,9 +18,9 @@ segments:
   disposition_reason: ''
   norm_ids: []
   review:
-    status: proposed
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: codex
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
     display_chunks: 1
@@ -43,17 +43,19 @@ segments:
     the interests of SMEs, including start-ups, and SMCs, and their economic viability when imposing penalties.
 
     '
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A099-P1-ESTABLISH-PENALTIES
+  - AIA-NORM-A099-P1-ACCOUNT-FOR-SMALL-BUSINESSES
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: codex
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A099-P002
   source:
@@ -68,17 +70,18 @@ segments:
     1, and shall notify it, without delay, of any subsequent amendment to them.
 
     '
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A099-P2-NOTIFY-PENALTY-RULES
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: codex
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A099-P003
   source:
@@ -93,17 +96,18 @@ segments:
     7 % of its total worldwide annual turnover for the preceding financial year, whichever is higher.
 
     '
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A099-P3-ARTICLE5-FINE
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: codex
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A099-P004
   source:
@@ -119,17 +123,18 @@ segments:
     financial year, whichever is higher:
 
     '
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A099-P4-OPERATOR-FINE
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: codex
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A099-P005
   source:
@@ -142,17 +147,18 @@ segments:
   text: '        (a) obligations of providers pursuant to Article 16;
 
     '
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A099-P4-OPERATOR-FINE
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: codex
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A099-P006
   source:
@@ -165,17 +171,18 @@ segments:
   text: '        (b) obligations of authorised representatives pursuant to Article 22;
 
     '
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A099-P4-OPERATOR-FINE
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: codex
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A099-P007
   source:
@@ -188,17 +195,18 @@ segments:
   text: '        (c) obligations of importers pursuant to Article 23;
 
     '
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A099-P4-OPERATOR-FINE
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: codex
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A099-P008
   source:
@@ -211,17 +219,18 @@ segments:
   text: '        (d) obligations of distributors pursuant to Article 24;
 
     '
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A099-P4-OPERATOR-FINE
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: codex
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A099-P009
   source:
@@ -234,17 +243,18 @@ segments:
   text: '        (da) obligations of providers and operators pursuant to Article 25(2) and (4);
 
     '
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A099-P4-OPERATOR-FINE
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: codex
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A099-P010
   source:
@@ -257,17 +267,18 @@ segments:
   text: '        (e) obligations of deployers pursuant to Article 26;
 
     '
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A099-P4-OPERATOR-FINE
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: codex
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A099-P011
   source:
@@ -281,17 +292,18 @@ segments:
     (3) and (4) or Article 34;
 
     '
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A099-P4-OPERATOR-FINE
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: codex
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A099-P012
   source:
@@ -304,17 +316,18 @@ segments:
   text: '        (g) transparency obligations for providers and deployers pursuant to Article 50.
 
     '
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A099-P4-OPERATOR-FINE
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: codex
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A099-P013
   source:
@@ -330,17 +343,18 @@ segments:
     the preceding financial year, whichever is higher.
 
     '
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A099-P5-INFORMATION-FINE
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: codex
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A099-P014
   source:
@@ -354,17 +368,18 @@ segments:
     to the percentages or amount referred to in paragraphs 3, 4 and 5, whichever thereof is lower.
 
     '
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A099-P6-SME-FINE-CAP
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: codex
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A099-P015
   source:
@@ -378,17 +393,18 @@ segments:
     or amount referred therein, whichever is lower.
 
     '
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A099-P6A-SMC-FINE-CAP
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: codex
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A099-P016
   source:
@@ -403,17 +419,18 @@ segments:
     shall be taken into account and, as appropriate, regard shall be given to the following:
 
     '
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A099-P7-CONSIDER-FINE-CIRCUMSTANCES
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: codex
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A099-P017
   source:
@@ -428,17 +445,18 @@ segments:
     and the level of damage suffered by them;
 
     '
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A099-P7-CONSIDER-FINE-CIRCUMSTANCES
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: codex
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A099-P018
   source:
@@ -452,17 +470,18 @@ segments:
     authorities to the same operator for the same infringement;
 
     '
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A099-P7-CONSIDER-FINE-CIRCUMSTANCES
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: codex
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A099-P019
   source:
@@ -477,17 +496,18 @@ segments:
     the same activity or omission constituting a relevant infringement of this Regulation;
 
     '
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A099-P7-CONSIDER-FINE-CIRCUMSTANCES
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: codex
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A099-P020
   source:
@@ -500,17 +520,18 @@ segments:
   text: '        (d) the size, the annual turnover and market share of the operator committing the infringement;
 
     '
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A099-P7-CONSIDER-FINE-CIRCUMSTANCES
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: codex
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A099-P021
   source:
@@ -524,17 +545,18 @@ segments:
     case, such as financial benefits gained, or losses avoided, directly or indirectly, from the infringement;
 
     '
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A099-P7-CONSIDER-FINE-CIRCUMSTANCES
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: codex
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A099-P022
   source:
@@ -548,17 +570,18 @@ segments:
     the infringement and mitigate the possible adverse effects of the infringement;
 
     '
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A099-P7-CONSIDER-FINE-CIRCUMSTANCES
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: codex
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A099-P023
   source:
@@ -572,17 +595,18 @@ segments:
     organisational measures implemented by it;
 
     '
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A099-P7-CONSIDER-FINE-CIRCUMSTANCES
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: codex
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A099-P024
   source:
@@ -596,17 +620,18 @@ segments:
     in particular whether, and if so to what extent, the operator notified the infringement;
 
     '
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A099-P7-CONSIDER-FINE-CIRCUMSTANCES
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: codex
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A099-P025
   source:
@@ -619,17 +644,18 @@ segments:
   text: '        (i) the intentional or negligent character of the infringement;
 
     '
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A099-P7-CONSIDER-FINE-CIRCUMSTANCES
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: codex
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A099-P026
   source:
@@ -642,17 +668,18 @@ segments:
   text: '        (j) any action taken by the operator to mitigate the harm suffered by the affected persons.
 
     '
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A099-P7-CONSIDER-FINE-CIRCUMSTANCES
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: codex
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A099-P027
   source:
@@ -666,17 +693,18 @@ segments:
     on public authorities and bodies established in that Member State.
 
     '
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A099-P8-PUBLIC-BODY-FINE-RULES
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: codex
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A099-P028
   source:
@@ -692,17 +720,18 @@ segments:
     an equivalent effect.
 
     '
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A099-P9-EQUIVALENT-FINE-EFFECT
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: codex
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A099-P029
   source:
@@ -716,17 +745,18 @@ segments:
     in accordance with Union and national law, including effective judicial remedies and due process.
 
     '
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A099-P10-PROCEDURAL-SAFEGUARDS
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: codex
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-A099-P030
   source:
@@ -741,15 +771,16 @@ segments:
     or judicial proceedings.
 
     '
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-A099-P11-ANNUAL-FINE-REPORT
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: codex
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
