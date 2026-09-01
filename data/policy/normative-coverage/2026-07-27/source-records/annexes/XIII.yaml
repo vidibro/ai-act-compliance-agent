@@ -1,0 +1,50 @@
+records:
+- norm_id: AIA-NORM-ANNEX-XIII-CONSIDER-SYSTEMIC-RISK-CRITERIA
+  source: ANNEX-XIII-P001
+  quote: the Commission shall take into account the following criteria
+  action: take all seven Annex XIII criteria into account when determining whether a GPAI model has capabilities or impact equivalent to Article 51(1)(a)
+  subject_ref: commission
+  subject_category: union_institution_or_body
+  mandatory_content:
+  - number of model parameters
+  - quality or size of the dataset, including token-based measurement
+  - training computation measured in floating point operations or indicated through variables such as estimated training cost, time, or energy consumption
+  - input and output modalities, state-of-the-art high-impact thresholds for each modality, and specific input and output types
+  - capability benchmarks and evaluations, including task breadth without additional training, adaptability, autonomy, scalability, and tool access
+  - high impact on the internal market due to reach
+  - number of registered end-users
+  qualifier_spans:
+  - ANNEX-XIII-P002
+  - ANNEX-XIII-P003
+  - ANNEX-XIII-P004
+  - ANNEX-XIII-P005
+  - ANNEX-XIII-P006
+  - ANNEX-XIII-P007
+  - ANNEX-XIII-P008
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for the Commission.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+  dependencies:
+  - dependency_ref: AIA-NORM-A051-P1-B-EQUIVALENT-SYSTEMIC-RISK
+    resolution: internal_resolved
+    detail: Article 52(1) empowers designation of models with equivalent systemic-risk capabilities or impact using Annex XIII criteria.
+- norm_id: AIA-NORM-ANNEX-XIII-TEN-THOUSAND-BUSINESS-USERS-PRESUMPTION
+  source: ANNEX-XIII-P007
+  quote: shall be presumed when it has been made available to at least 10000 registered business users established in the Union
+  action: presume that a GPAI model has high internal-market impact due to reach once it is available to at least 10,000 registered Union business users
+  subject_ref: general_purpose_ai_model
+  subject_category: other
+  kind: legal_consequence
+  conditions:
+  - the model has been made available to at least 10,000 registered business users established in the Union
+  product_scope: dependency_only
+  product_scope_reason: This presumption informs Commission designation without creating an independent operator action.
+  implementation_mode: none_required
+  implementation_reason: Represented as a legal dependency for systemic-risk designation.
+  verification_mode: not_assessed
+  dependencies:
+  - dependency_ref: AIA-NORM-ANNEX-XIII-CONSIDER-SYSTEMIC-RISK-CRITERIA
+    resolution: internal_resolved
+    detail: The presumption supplies the threshold within the Annex XIII internal-market-impact criterion.
