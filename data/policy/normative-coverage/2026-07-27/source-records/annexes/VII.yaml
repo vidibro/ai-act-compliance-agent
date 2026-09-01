@@ -1,4 +1,42 @@
 records:
+- norm_id: AIA-NORM-ANNEX-VII-PROCEDURE-COMPOSITION
+  source: ANNEX-VII-I1
+  quote: is the conformity assessment procedure based on points 2 to 5
+  action: define the Annex VII conformity-assessment procedure as comprising points 2 to 5
+  subject_ref: annex_vii_conformity_assessment
+  subject_category: other
+  kind: applicability
+  qualifier_spans:
+  - ANNEX-VII-I2
+  dependencies:
+  - dependency_ref: AIA-NORM-A043-P1-REQUIRED-ANNEX-VII-ROUTE
+    resolution: internal_resolved
+    detail: Article 43(1) determines when providers must use the Annex VII procedure.
+- norm_id: AIA-NORM-ANNEX-VII-OVERVIEW-QMS-EXAMINATION
+  source: ANNEX-VII-I2
+  quote: The approved quality management system for the design, development and testing of AI systems pursuant to Article 17 shall be examined in accordance with point 3
+  action: examine the approved Article 17 quality management system under Annex VII point 3
+  subject_ref: annex_vii_conformity_assessment
+  subject_category: other
+  kind: applicability
+  dependencies:
+  - dependency_ref: AIA-NORM-A017-P1-QMS
+    resolution: internal_resolved
+    detail: Article 17 establishes the quality management system examined by point 3.
+- norm_id: AIA-NORM-ANNEX-VII-OVERVIEW-QMS-SURVEILLANCE
+  source: ANNEX-VII-I2
+  quote: shall be subject to surveillance as specified in point 5
+  action: subject the approved quality management system to Annex VII point 5 surveillance
+  subject_ref: annex_vii_conformity_assessment
+  subject_category: other
+  kind: applicability
+- norm_id: AIA-NORM-ANNEX-VII-OVERVIEW-DOCUMENTATION-EXAMINATION
+  source: ANNEX-VII-I2
+  quote: The technical documentation of the AI system shall be examined in accordance with point 4.
+  action: examine the AI system's technical documentation under Annex VII point 4
+  subject_ref: annex_vii_conformity_assessment
+  subject_category: other
+  kind: applicability
 - norm_id: AIA-NORM-ANNEX-VII-QMS-APPLICATION
   source: ANNEX-VII-I3
   quote: The application of the provider shall include
@@ -58,6 +96,9 @@ records:
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_assessed
+  mandatory_content:
+  - conclusions of the quality-management-system assessment
+  - reasoned assessment decision
 - norm_id: AIA-NORM-ANNEX-VII-QMS-CHANGE-DECISION
   source: ANNEX-VII-I3
   quote: The proposed changes shall be examined by the notified body
@@ -69,6 +110,36 @@ records:
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_assessed
+  mandatory_content:
+  - conclusions of the examination of the proposed changes
+  - reasoned assessment decision
+- norm_id: AIA-NORM-ANNEX-VII-DOC-APPLICATION
+  source: ANNEX-VII-I4
+  quote: an application with a notified body of their choice shall be lodged by the provider for the assessment of the technical documentation
+  action: lodge an application with a notified body of the provider's choice for assessment of the technical documentation of the covered AI system
+  subject_ref: provider
+  subject_category: supported_operator
+  conditions:
+  - the provider intends to place the AI system on the market or put it into service
+  - the AI system is covered by the point 3 quality management system
+  dependencies:
+  - dependency_ref: AIA-NORM-A043-P1-CHOOSE-NOTIFIED-BODY
+    resolution: internal_resolved
+    detail: Article 43(1) preserves the provider's choice of notified body for the Annex VII procedure.
+- norm_id: AIA-NORM-ANNEX-VII-DOC-APPLICATION-CONTENT
+  source: ANNEX-VII-I4
+  quote: 'The application shall include:'
+  action: include all three point 4.2 items in the technical-documentation assessment application
+  subject_ref: provider
+  subject_category: supported_operator
+  mandatory_content:
+  - provider name and address
+  - written declaration that the same application has not been lodged with another notified body
+  - Annex IV technical documentation
+  dependencies:
+  - dependency_ref: AIA-NORM-ANNEX-IV-CONTENT
+    resolution: internal_resolved
+    detail: Annex IV defines the technical documentation included in the application.
 - norm_id: AIA-NORM-ANNEX-VII-DOC-EXAMINE
   source: ANNEX-VII-I4
   quote: The technical documentation shall be examined by the notified body.
@@ -91,6 +162,10 @@ records:
   - AIA-PO-A43-1B
   - AIA-PO-A43-3
   verification_mode: listed_for_confirmation
+  conditions:
+  - access is relevant and limited to what is necessary for the notified body to fulfil its tasks
+  - any remote access is provided through an API or another relevant technical means or tool where appropriate
+  - applicable security safeguards are observed
 - norm_id: AIA-NORM-ANNEX-VII-EVIDENCE
   source: ANNEX-VII-I4
   quote: the provider supply further evidence or carry out further tests
@@ -124,6 +199,14 @@ records:
   - AIA-PO-A43-1B
   - AIA-PO-A43-3
   verification_mode: listed_for_confirmation
+  conditions:
+  - access is necessary to assess compliance with Chapter III Section 2
+  - all other reasonable means of verifying conformity have been exhausted and proved insufficient
+  - the notified body makes a reasoned request
+  dependencies:
+  - dependency_ref: existing Union law on intellectual-property and trade-secret protection
+    resolution: external_recorded
+    detail: Model access remains subject to the applicable external Union-law protections.
 - norm_id: AIA-NORM-ANNEX-VII-RETRAIN
   source: ANNEX-VII-I4
   quote: re-training of the AI system will be needed prior to the application for a new conformity assessment
@@ -146,6 +229,9 @@ records:
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_assessed
+  mandatory_content:
+  - conclusions of the technical-documentation assessment
+  - reasoned assessment decision
 - norm_id: AIA-NORM-ANNEX-VII-CERTIFICATE
   source: ANNEX-VII-I4
   quote: the notified body shall issue a Union technical documentation assessment certificate
@@ -157,6 +243,26 @@ records:
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_assessed
+  conditions:
+  - the AI system conforms with Chapter III Section 2
+- norm_id: AIA-NORM-ANNEX-VII-CERTIFICATE-CONTENT
+  source: ANNEX-VII-I4
+  quote: The certificate shall indicate the name and address of the provider, the conclusions of the examination, the conditions (if any) for its validity and the data necessary for the identification of the AI system.
+  action: include the required provider, examination, validity, identification, evaluation, and in-use control information in the Union technical-documentation assessment certificate and its annexes
+  subject_ref: notified_body
+  subject_category: notified_or_conformity_body
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+  mandatory_content:
+  - provider name and address
+  - conclusions of the examination
+  - any conditions for certificate validity
+  - data necessary to identify the AI system
+  - all relevant information needed to evaluate the AI system's conformity
+  - all relevant information needed to control the AI system while in use, where applicable
 - norm_id: AIA-NORM-ANNEX-VII-REFUSE
   source: ANNEX-VII-I4
   quote: the notified body shall refuse to issue a Union technical documentation assessment certificate
@@ -180,6 +286,57 @@ records:
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_assessed
+  conditions:
+  - the AI system fails to meet the requirement relating to the data used to train it
+  mandatory_content:
+  - specific considerations on the quality of the training data
+  - reasons for non-compliance
+- norm_id: AIA-NORM-ANNEX-VII-CHANGE-ASSESSMENT
+  source: ANNEX-VII-I4
+  quote: Any change to the AI system that could affect the compliance of the AI system with the requirements or its intended purpose shall be assessed by the notified body which issued the Union technical documentation assessment certificate.
+  action: assess any AI-system change that could affect compliance or intended purpose
+  subject_ref: notified_body
+  subject_category: notified_or_conformity_body
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-ANNEX-VII-INFORM-CHANGES
+  source: ANNEX-VII-I4
+  quote: The provider shall inform such notified body of its intention to introduce any of the abovementioned changes, or if it otherwise becomes aware of the occurrence of such changes.
+  action: inform the certificate-issuing notified body of intended or discovered changes that could affect compliance or intended purpose
+  subject_ref: provider
+  subject_category: supported_operator
+- norm_id: AIA-NORM-ANNEX-VII-CHANGE-ROUTE-DECISION
+  source: ANNEX-VII-I4
+  quote: The intended changes shall be assessed by the notified body, which shall decide whether those changes require a new conformity assessment in accordance with Article 43(4) or whether they could be addressed by means of a supplement to the Union technical documentation assessment certificate.
+  action: assess an intended change and decide whether it requires a new Article 43(4) conformity assessment or a certificate supplement
+  subject_ref: notified_body
+  subject_category: notified_or_conformity_body
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+  dependencies:
+  - dependency_ref: AIA-NORM-A043-P4-NEW-ASSESSMENT
+    resolution: internal_resolved
+    detail: Article 43(4) determines when a changed high-risk system requires a new conformity assessment.
+- norm_id: AIA-NORM-ANNEX-VII-ISSUE-SUPPLEMENT
+  source: ANNEX-VII-I4
+  quote: In the latter case, the notified body shall assess the changes, notify the provider of its decision and, where the changes are approved, issue to the provider a supplement to the Union technical documentation assessment certificate.
+  action: assess changes eligible for the supplement route, notify the provider of the decision, and issue an approved certificate supplement
+  subject_ref: notified_body
+  subject_category: notified_or_conformity_body
+  conditions:
+  - the change can be addressed through a supplement to the Union technical-documentation assessment certificate
+  - issuance of the supplement requires approval of the change
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
 - norm_id: AIA-NORM-ANNEX-VII-SURVEILLANCE
   source: ANNEX-VII-I5
   quote: the provider shall allow the notified body to access the premises
@@ -196,6 +353,20 @@ records:
   action: carry out periodic audits and provide the provider an audit report
   subject_ref: notified_body
   subject_category: notified_or_conformity_body
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-ANNEX-VII-ADDITIONAL-TESTS
+  source: ANNEX-VII-I5
+  quote: the notified body may carry out additional tests of the AI systems for which a Union technical documentation assessment certificate was issued.
+  action: carry out additional tests during surveillance audits of certified AI systems
+  subject_ref: notified_body
+  subject_category: notified_or_conformity_body
+  kind: power
+  conditions:
+  - the AI system has a Union technical-documentation assessment certificate
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required

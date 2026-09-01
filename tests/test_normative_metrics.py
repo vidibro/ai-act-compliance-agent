@@ -50,7 +50,7 @@ def test_inventory_partitions_the_complete_versioned_corpus(metrics):
     assert set(grouped) == expected
     assert metrics.documents == 133
     assert metrics.documents_with_extracted_norms == 126
-    assert metrics.documents_with_review_debt == 7
+    assert metrics.documents_with_review_debt == 6
     assert metrics.exact_source_characters == 394_667
     assert set(metrics.norms_by_document) == {
         "annex I",
@@ -1650,20 +1650,20 @@ def test_article_twenty_eight_is_complete_institutional_coverage():
 
 
 def test_inventory_cannot_be_misreported_as_independently_approved(metrics):
-    assert metrics.approved_characters == 355_506
-    assert metrics.needs_review_characters == 15_158
+    assert metrics.approved_characters == 363_399
+    assert metrics.needs_review_characters == 14_639
     assert metrics.review_statuses == {
-        "approved": 1347,
-        "needs_review": 66,
-        "proposed": 1333,
+        "approved": 1353,
+        "needs_review": 64,
+        "proposed": 1341,
     }
     assert metrics.timed_review_records == 0
-    assert metrics.total_review_records == 2747
+    assert metrics.total_review_records == 2759
 
 
 def test_semantic_pass_finds_propositions_a_shall_scan_misses(metrics):
-    assert metrics.shall_vs_semantic_disagreements == 484
-    assert metrics.shall_token_candidate_recall == pytest.approx(807 / 1291)
+    assert metrics.shall_vs_semantic_disagreements == 486
+    assert metrics.shall_token_candidate_recall == pytest.approx(817 / 1303)
     assert "AIA-NORM-A011-P1-SIMPLIFY" in metrics.semantic_norms_without_shall_token
     assert "AIA-NORM-A043-P5-AMEND" in metrics.semantic_norms_without_shall_token
     assert "AIA-NORM-A060-P4-PERMISSION" in metrics.semantic_norms_without_shall_token
@@ -1671,13 +1671,13 @@ def test_semantic_pass_finds_propositions_a_shall_scan_misses(metrics):
 
 
 def test_metrics_expose_many_to_many_and_implementation_debt(metrics):
-    assert metrics.normative_segments_with_multiple_norms == 286
+    assert metrics.normative_segments_with_multiple_norms == 287
     assert metrics.mapping_shape.one_norm_to_one_target == 26
     assert metrics.mapping_shape.many_norms_to_one_target == 347
     assert metrics.mapping_shape.one_norm_to_many_targets == 0
     assert metrics.mapping_shape.many_to_many == 15
-    assert metrics.mapping_shape.unmapped == 903
-    assert metrics.semantic_vs_existing_implementation_disagreements == 210
+    assert metrics.mapping_shape.unmapped == 915
+    assert metrics.semantic_vs_existing_implementation_disagreements == 217
     assert metrics.semantic_norms_without_existing_implementation == [
         "AIA-NORM-A002-P1-A-PROVIDER",
         "AIA-NORM-A002-P1-B-DEPLOYER",
@@ -1886,6 +1886,13 @@ def test_metrics_expose_many_to_many_and_implementation_debt(metrics):
         "AIA-NORM-ANNEX-VI-P2-VERIFY-QMS",
         "AIA-NORM-ANNEX-VI-P3-EXAMINE-TECHNICAL-DOCUMENTATION",
         "AIA-NORM-ANNEX-VI-P4-VERIFY-CONSISTENCY",
+        "AIA-NORM-ANNEX-VII-DOC-APPLICATION",
+        "AIA-NORM-ANNEX-VII-DOC-APPLICATION-CONTENT",
+        "AIA-NORM-ANNEX-VII-INFORM-CHANGES",
+        "AIA-NORM-ANNEX-VII-OVERVIEW-DOCUMENTATION-EXAMINATION",
+        "AIA-NORM-ANNEX-VII-OVERVIEW-QMS-EXAMINATION",
+        "AIA-NORM-ANNEX-VII-OVERVIEW-QMS-SURVEILLANCE",
+        "AIA-NORM-ANNEX-VII-PROCEDURE-COMPOSITION",
         "AIA-NORM-ANNEX-VIII-A",
         "AIA-NORM-ANNEX-VIII-B",
         "AIA-NORM-ANNEX-VIII-C",
@@ -2085,6 +2092,13 @@ def test_metrics_expose_many_to_many_and_implementation_debt(metrics):
         "AIA-NORM-ANNEX-VI-P2-VERIFY-QMS",
         "AIA-NORM-ANNEX-VI-P3-EXAMINE-TECHNICAL-DOCUMENTATION",
         "AIA-NORM-ANNEX-VI-P4-VERIFY-CONSISTENCY",
+        "AIA-NORM-ANNEX-VII-DOC-APPLICATION",
+        "AIA-NORM-ANNEX-VII-DOC-APPLICATION-CONTENT",
+        "AIA-NORM-ANNEX-VII-INFORM-CHANGES",
+        "AIA-NORM-ANNEX-VII-OVERVIEW-DOCUMENTATION-EXAMINATION",
+        "AIA-NORM-ANNEX-VII-OVERVIEW-QMS-EXAMINATION",
+        "AIA-NORM-ANNEX-VII-OVERVIEW-QMS-SURVEILLANCE",
+        "AIA-NORM-ANNEX-VII-PROCEDURE-COMPOSITION",
         "AIA-NORM-ANNEX-VIII-A",
         "AIA-NORM-ANNEX-VIII-B",
         "AIA-NORM-ANNEX-VIII-C",
@@ -3764,7 +3778,7 @@ def test_annex_inventory_keeps_external_actors_and_exact_mandatory_content():
     annex_vii = [
         norm for norm in norms.values() if norm.primary_spans[0].startswith("AIA-TEXT-ANNEX-VII-")
     ]
-    assert len(annex_vii) == 18
+    assert len(annex_vii) == 30
     assert {norm.subjects[0].category.value for norm in annex_vii} >= {
         "supported_operator",
         "notified_or_conformity_body",
@@ -3841,3 +3855,24 @@ def test_annex_six_internal_control_defines_and_applies_all_three_checks():
     ]
     provider_checks = [norm for key, norm in norms.items() if "P1" not in key]
     assert all(norm.subjects[0].subject_ref == "provider" for norm in provider_checks)
+
+
+def test_annex_seven_completion_covers_change_control_and_certificate_content():
+    bundle = load_normative_coverage()
+    norms = {
+        norm.norm_id: norm
+        for norm in bundle.norm_inventory.norms
+        if norm.norm_id.startswith("AIA-NORM-ANNEX-VII-")
+    }
+
+    assert len(norms) == 30
+    assert len(norms["AIA-NORM-ANNEX-VII-CERTIFICATE-CONTENT"].mandatory_content) == 6
+    assert norms["AIA-NORM-ANNEX-VII-INFORM-CHANGES"].subjects[0].subject_ref == "provider"
+    assert norms["AIA-NORM-ANNEX-VII-ADDITIONAL-TESTS"].kind.value == "power"
+    assert {norm.primary_spans[0] for norm in norms.values()} == {
+        "AIA-TEXT-ANNEX-VII-I1",
+        "AIA-TEXT-ANNEX-VII-I2",
+        "AIA-TEXT-ANNEX-VII-I3",
+        "AIA-TEXT-ANNEX-VII-I4",
+        "AIA-TEXT-ANNEX-VII-I5",
+    }

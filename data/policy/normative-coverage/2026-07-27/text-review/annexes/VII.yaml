@@ -19,9 +19,9 @@ segments:
   disposition_reason: ''
   norm_ids: []
   review:
-    status: proposed
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: codex
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
     display_chunks: 1
@@ -39,17 +39,18 @@ segments:
     of the technical documentation is the conformity assessment procedure based on points 2 to 5.
 
     '
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-ANNEX-VII-PROCEDURE-COMPOSITION
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: codex
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-ANNEX-VII-I2
   source:
@@ -65,17 +66,21 @@ segments:
     in accordance with point 4.
 
     '
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-ANNEX-VII-PROCEDURE-COMPOSITION
+  - AIA-NORM-ANNEX-VII-OVERVIEW-QMS-EXAMINATION
+  - AIA-NORM-ANNEX-VII-OVERVIEW-QMS-SURVEILLANCE
+  - AIA-NORM-ANNEX-VII-OVERVIEW-DOCUMENTATION-EXAMINATION
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: codex
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-ANNEX-VII-I3
   source:
@@ -116,9 +121,9 @@ segments:
   - AIA-NORM-ANNEX-VII-QMS-DECISION
   - AIA-NORM-ANNEX-VII-QMS-CHANGE-DECISION
   review:
-    status: proposed
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: codex
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
     display_chunks: 1
@@ -182,6 +187,8 @@ segments:
   disposition: normative
   disposition_reason: ''
   norm_ids:
+  - AIA-NORM-ANNEX-VII-DOC-APPLICATION
+  - AIA-NORM-ANNEX-VII-DOC-APPLICATION-CONTENT
   - AIA-NORM-ANNEX-VII-DOC-EXAMINE
   - AIA-NORM-ANNEX-VII-DATA-ACCESS
   - AIA-NORM-ANNEX-VII-EVIDENCE
@@ -190,12 +197,17 @@ segments:
   - AIA-NORM-ANNEX-VII-RETRAIN
   - AIA-NORM-ANNEX-VII-DOC-DECISION
   - AIA-NORM-ANNEX-VII-CERTIFICATE
+  - AIA-NORM-ANNEX-VII-CERTIFICATE-CONTENT
   - AIA-NORM-ANNEX-VII-REFUSE
   - AIA-NORM-ANNEX-VII-DATA-REASONS
+  - AIA-NORM-ANNEX-VII-CHANGE-ASSESSMENT
+  - AIA-NORM-ANNEX-VII-INFORM-CHANGES
+  - AIA-NORM-ANNEX-VII-CHANGE-ROUTE-DECISION
+  - AIA-NORM-ANNEX-VII-ISSUE-SUPPLEMENT
   review:
-    status: proposed
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: codex
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
     display_chunks: 1
@@ -225,10 +237,11 @@ segments:
   norm_ids:
   - AIA-NORM-ANNEX-VII-SURVEILLANCE
   - AIA-NORM-ANNEX-VII-AUDIT
+  - AIA-NORM-ANNEX-VII-ADDITIONAL-TESTS
   review:
-    status: proposed
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: codex
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
     display_chunks: 1

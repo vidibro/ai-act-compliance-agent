@@ -1,18 +1,17 @@
 documents:
 - kind: annex
   number: VII
+  verified_by: codex
   divisions:
   - label: HEAD
     marker: null
     disposition: structural
   - label: I1
     marker: 1.Introduction
-    disposition: needs_review
-    reason: Not yet semantically extracted; retained as explicit review debt.
+    disposition: normative
   - label: I2
     marker: 2.Overview
-    disposition: needs_review
-    reason: Not yet semantically extracted; retained as explicit review debt.
+    disposition: normative
   - label: I3
     marker: 3.Quality management system
     disposition: normative
