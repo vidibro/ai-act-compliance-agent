@@ -49,8 +49,8 @@ def test_inventory_partitions_the_complete_versioned_corpus(metrics):
     assert bundle.text_review.corpus_complete is True
     assert set(grouped) == expected
     assert metrics.documents == 133
-    assert metrics.documents_with_extracted_norms == 111
-    assert metrics.documents_with_review_debt == 22
+    assert metrics.documents_with_extracted_norms == 118
+    assert metrics.documents_with_review_debt == 15
     assert metrics.exact_source_characters == 394_667
     assert set(metrics.norms_by_document) == {
         "article 2",
@@ -159,6 +159,13 @@ def test_inventory_partitions_the_complete_versioned_corpus(metrics):
         "article 103",
         "article 104",
         "article 105",
+        "article 106",
+        "article 107",
+        "article 108",
+        "article 109",
+        "article 110",
+        "article 111",
+        "article 112",
         "article 113",
         "annex III",
         "annex IV",
@@ -1635,20 +1642,20 @@ def test_article_twenty_eight_is_complete_institutional_coverage():
 
 
 def test_inventory_cannot_be_misreported_as_independently_approved(metrics):
-    assert metrics.approved_characters == 316_616
-    assert metrics.needs_review_characters == 53_164
+    assert metrics.approved_characters == 330_555
+    assert metrics.needs_review_characters == 39_649
     assert metrics.review_statuses == {
-        "approved": 1204,
-        "needs_review": 194,
-        "proposed": 1220,
+        "approved": 1254,
+        "needs_review": 151,
+        "proposed": 1249,
     }
     assert metrics.timed_review_records == 0
-    assert metrics.total_review_records == 2619
+    assert metrics.total_review_records == 2655
 
 
 def test_semantic_pass_finds_propositions_a_shall_scan_misses(metrics):
-    assert metrics.shall_vs_semantic_disagreements == 426
-    assert metrics.shall_token_candidate_recall == pytest.approx(737 / 1163)
+    assert metrics.shall_vs_semantic_disagreements == 427
+    assert metrics.shall_token_candidate_recall == pytest.approx(772 / 1199)
     assert "AIA-NORM-A011-P1-SIMPLIFY" in metrics.semantic_norms_without_shall_token
     assert "AIA-NORM-A043-P5-AMEND" in metrics.semantic_norms_without_shall_token
     assert "AIA-NORM-A060-P4-PERMISSION" in metrics.semantic_norms_without_shall_token
@@ -1656,13 +1663,13 @@ def test_semantic_pass_finds_propositions_a_shall_scan_misses(metrics):
 
 
 def test_metrics_expose_many_to_many_and_implementation_debt(metrics):
-    assert metrics.normative_segments_with_multiple_norms == 262
+    assert metrics.normative_segments_with_multiple_norms == 269
     assert metrics.mapping_shape.one_norm_to_one_target == 26
     assert metrics.mapping_shape.many_norms_to_one_target == 347
     assert metrics.mapping_shape.one_norm_to_many_targets == 0
     assert metrics.mapping_shape.many_to_many == 15
-    assert metrics.mapping_shape.unmapped == 775
-    assert metrics.semantic_vs_existing_implementation_disagreements == 162
+    assert metrics.mapping_shape.unmapped == 811
+    assert metrics.semantic_vs_existing_implementation_disagreements == 166
     assert metrics.semantic_norms_without_existing_implementation == [
         "AIA-NORM-A002-P1-A-PROVIDER",
         "AIA-NORM-A002-P1-B-DEPLOYER",
@@ -1797,6 +1804,10 @@ def test_metrics_expose_many_to_many_and_implementation_debt(metrics):
         "AIA-NORM-A071-P2-PROVIDER-ENTER-ANNEX-VIII-DATA",
         "AIA-NORM-A071-P2-REPRESENTATIVE-ENTER-ANNEX-VIII-DATA",
         "AIA-NORM-A071-P3-PUBLIC-DEPLOYER-ENTER-ANNEX-VIII-DATA",
+        "AIA-NORM-A111-P1-BRING-LARGE-SCALE-IT-INTO-COMPLIANCE",
+        "AIA-NORM-A111-P2-PUBLIC-AUTHORITY-SYSTEM-COMPLIANCE",
+        "AIA-NORM-A111-P3-LEGACY-GPAI-COMPLIANCE",
+        "AIA-NORM-A111-P4-LEGACY-SYNTHETIC-CONTENT-COMPLIANCE",
         "AIA-NORM-ANNEX-III-1A-REMOTE-BIOMETRIC-IDENTIFICATION",
         "AIA-NORM-ANNEX-III-1B-BIOMETRIC-CATEGORISATION",
         "AIA-NORM-ANNEX-III-1C-EMOTION-RECOGNITION",
@@ -1950,6 +1961,10 @@ def test_metrics_expose_many_to_many_and_implementation_debt(metrics):
         "AIA-NORM-A071-P2-PROVIDER-ENTER-ANNEX-VIII-DATA",
         "AIA-NORM-A071-P2-REPRESENTATIVE-ENTER-ANNEX-VIII-DATA",
         "AIA-NORM-A071-P3-PUBLIC-DEPLOYER-ENTER-ANNEX-VIII-DATA",
+        "AIA-NORM-A111-P1-BRING-LARGE-SCALE-IT-INTO-COMPLIANCE",
+        "AIA-NORM-A111-P2-PUBLIC-AUTHORITY-SYSTEM-COMPLIANCE",
+        "AIA-NORM-A111-P3-LEGACY-GPAI-COMPLIANCE",
+        "AIA-NORM-A111-P4-LEGACY-SYNTHETIC-CONTENT-COMPLIANCE",
         "AIA-NORM-ANNEX-III-1A-REMOTE-BIOMETRIC-IDENTIFICATION",
         "AIA-NORM-ANNEX-III-1B-BIOMETRIC-CATEGORISATION",
         "AIA-NORM-ANNEX-III-1C-EMOTION-RECOGNITION",
@@ -3555,6 +3570,56 @@ def test_articles_one_hundred_to_one_hundred_five_extract_enforcement_and_amendm
         )
     ]
     assert all("Chapter III Section 2" in norm.action for norm in amendments)
+
+
+def test_articles_one_hundred_six_to_one_hundred_ten_extract_amendments():
+    bundle = load_normative_coverage()
+    counts = {
+        article: sum(
+            norm.norm_id.startswith(f"AIA-NORM-A{article}-")
+            for norm in bundle.norm_inventory.norms
+        )
+        for article in ("106", "107", "108", "109", "110")
+    }
+
+    assert counts == {"106": 1, "107": 1, "108": 6, "109": 1, "110": 1}
+    representative_actions = next(
+        norm
+        for norm in bundle.norm_inventory.norms
+        if norm.norm_id == "AIA-NORM-A110-REPRESENTATIVE-ACTIONS-APPLICABILITY"
+    )
+    assert representative_actions.kind.value == "applicability"
+    assert representative_actions.product_scope.value == "no_product_action"
+
+
+def test_article_one_hundred_eleven_extracts_transition_rules_and_debt():
+    bundle = load_normative_coverage()
+    norms = {
+        norm.norm_id: norm
+        for norm in bundle.norm_inventory.norms
+        if norm.norm_id.startswith("AIA-NORM-A111-")
+    }
+
+    assert len(norms) == 6
+    assert sum(norm.implementation_mode.value == "missing" for norm in norms.values()) == 4
+    assert norms["AIA-NORM-A111-P2-LEGACY-HIGH-RISK-APPLICABILITY"].kind.value == (
+        "applicability"
+    )
+
+
+def test_article_one_hundred_twelve_extracts_review_framework():
+    bundle = load_normative_coverage()
+    norms = {
+        norm.norm_id: norm
+        for norm in bundle.norm_inventory.norms
+        if norm.norm_id.startswith("AIA-NORM-A112-")
+    }
+
+    assert len(norms) == 20
+    assert len(norms["AIA-NORM-A112-P2-FOUR-YEAR-EVALUATION"].mandatory_content) == 3
+    assert len(norms["AIA-NORM-A112-P4-REPORT-ATTENTION-AREAS"].mandatory_content) == 4
+    methodology = norms["AIA-NORM-A112-P11-DEVELOP-RISK-EVALUATION-METHODOLOGY"]
+    assert len(methodology.mandatory_content) == 3
 
 
 def test_annex_inventory_keeps_external_actors_and_exact_mandatory_content():
