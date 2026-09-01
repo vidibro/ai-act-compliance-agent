@@ -1,0 +1,45 @@
+records:
+- norm_id: AIA-NORM-A086-P1-PROVIDE-EXPLANATION
+  source: A086-P001
+  quote: shall have the right to obtain from the deployer clear and meaningful explanations of the role of the AI system in the decision-making procedure and the main elements of the decision taken.
+  action: provide a clear meaningful explanation of the AI system's decision-making role and the decision's main elements to an eligible affected person
+  subject_ref: deployer
+  subject_category: supported_operator
+  implementation_refs: [AIA-DP-A86]
+  verification_mode: listed_for_confirmation
+- norm_id: AIA-NORM-A086-P1-RIGHT-TO-EXPLANATION
+  source: A086-P001
+  quote: shall have the right to obtain from the deployer clear and meaningful explanations
+  action: obtain a clear meaningful explanation from the deployer when an eligible Annex III system-based decision adversely affects the person
+  subject_ref: affected_person
+  subject_category: natural_person
+  kind: entitlement
+  product_scope: no_product_action
+  product_scope_reason: This records the person's correlative entitlement; the deployer action is mapped separately.
+  implementation_mode: none_required
+  implementation_reason: No independent product action arises beyond the mapped deployer duty.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A086-P2-LEGAL-EXCEPTIONS
+  source: A086-P002
+  quote: Paragraph 1 shall not apply to the use of AI systems for which exceptions from, or restrictions to, the obligation under that paragraph follow from Union or national law in compliance with Union law.
+  action: disapply paragraph 1 to the extent compliant Union or national law supplies an exception or restriction
+  subject_ref: deployer
+  subject_category: supported_operator
+  kind: applicability
+  product_scope: no_product_action
+  product_scope_reason: This qualifies the mapped explanation duty rather than creating another action.
+  implementation_mode: none_required
+  implementation_reason: No independent product action arises.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A086-P3-SUBSIDIARY-RIGHT
+  source: A086-P003
+  quote: This Article shall apply only to the extent that the right referred to in paragraph 1 is not otherwise provided for under Union law.
+  action: apply Article 86 only where Union law does not otherwise provide the explanation right
+  subject_ref: authority_applying_article_86
+  subject_category: public_authority
+  kind: applicability
+  product_scope: no_product_action
+  product_scope_reason: This defines the right's legal boundary without creating another action.
+  implementation_mode: none_required
+  implementation_reason: No independent product action arises.
+  verification_mode: not_assessed
