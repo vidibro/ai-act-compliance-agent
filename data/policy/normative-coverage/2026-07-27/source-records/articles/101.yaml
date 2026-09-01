@@ -1,0 +1,82 @@
+records:
+- norm_id: AIA-NORM-A101-P1-IMPOSE-GPAI-FINES
+  source: A101-P001
+  quote: The Commission may impose on providers of general-purpose AI models fines not exceeding 3 %
+  action: fine a GPAI provider up to the specified ceiling for intentional or negligent listed conduct
+  subject_ref: commission
+  subject_category: union_institution_or_body
+  kind: power
+  mandatory_content: [infringing relevant AI Act provisions, failing an Article 91 request or supplying incorrect incomplete or misleading information, failing an Article 93 measure, failing to provide Article 92 evaluation access]
+  qualifier_spans: [A101-P002, A101-P003, A101-P004, A101-P005]
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A101-P1-FIX-FINE-AMOUNT
+  source: A101-P006
+  quote: regard shall be had to the nature, gravity and duration of the infringement
+  action: fix a fine or periodic penalty with regard to infringement characteristics proportionality appropriateness and relevant commitments
+  subject_ref: commission
+  subject_category: union_institution_or_body
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A101-P2-PRELIMINARY-FINDINGS-AND-HEARING
+  source: A101-P007
+  quote: the Commission shall communicate its preliminary findings
+  action: communicate preliminary findings and give the GPAI provider an opportunity to be heard before a fine decision
+  subject_ref: commission
+  subject_category: union_institution_or_body
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A101-P3-FINE-QUALITY
+  source: A101-P008
+  quote: Fines imposed in accordance with this Article shall be effective, proportionate and dissuasive
+  action: ensure Article 101 fines are effective proportionate and dissuasive
+  subject_ref: commission
+  subject_category: union_institution_or_body
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A101-P4-COMMUNICATE-FINES-TO-BOARD
+  source: A101-P009
+  quote: Information on fines imposed under this Article shall also be communicated to the Board as appropriate
+  action: communicate information on Article 101 fines to the Board as appropriate
+  subject_ref: commission
+  subject_category: union_institution_or_body
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A101-P5-JUDICIAL-REVIEW
+  source: A101-P010
+  quote: The Court of Justice of the European Union shall have unlimited jurisdiction to review decisions of the Commission
+  action: review and cancel reduce or increase Commission fines with unlimited jurisdiction
+  subject_ref: court_of_justice_of_the_european_union
+  subject_category: union_institution_or_body
+  kind: power
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A101-P6-ADOPT-FINE-PROCEDURES
+  source: A101-P011
+  quote: The Commission shall adopt implementing acts containing detailed arrangements and procedural safeguards
+  action: adopt implementing acts establishing arrangements and safeguards for Article 101 fine proceedings through the Article 98(2) examination procedure
+  subject_ref: commission
+  subject_category: union_institution_or_body
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
