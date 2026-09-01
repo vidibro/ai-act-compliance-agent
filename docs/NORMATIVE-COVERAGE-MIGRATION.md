@@ -345,16 +345,16 @@ Measure:
 **Exit:** corrected schema and a data-backed estimate for full authoring.
 
 **Proposed extraction 2026-08-28:** the inventory now partitions all 133 source bodies in the pinned
-corpus into 1,442 exact segments. It proposes 945 norms across the 75 documents selected for detailed
+corpus into 1,442 exact segments. It proposes 948 norms across the 76 documents selected for detailed
 extraction; every other article and annex is retained as paragraph-sized `needs_review` debt, with
 structural headings kept separate.
 The reproducible measurements are in the versioned
 [`report.md`](../data/policy/normative-coverage/2026-07-27/report.md). The extraction added loader-validated exact
-`norm_text`, candidate-detection provenance, and review timing fields. Its semantic pass found 395 of
-945 proposed propositions whose exact operative quote contains no `shall` token, while 131,407
+`norm_text`, candidate-detection provenance, and review timing fields. Its semantic pass found 397 of
+948 proposed propositions whose exact operative quote contains no `shall` token, while 130,723
 source characters not yet semantically extracted remain explicitly marked `needs_review`.
 
-The 892 approved segments cover Articles 1, 2, 3, 4, 4a, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 60a, 61, 62, 63, 64, 65, 66, 67, and 68, plus Annex III; their
+The 896 approved segments cover Articles 1, 2, 3, 4, 4a, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 60a, 61, 62, 63, 64, 65, 66, 67, 68, and 69, plus Annex III; their
 linked norm records remain `proposed`. Elapsed review time was not captured, and the rest of the
 corpus still contains explicit review debt. Consequently the repository makes no legal-completeness
 claim for the full corpus and does not yet have the data-backed full-authoring estimate required by

@@ -49,8 +49,8 @@ def test_inventory_partitions_the_complete_versioned_corpus(metrics):
     assert bundle.text_review.corpus_complete is True
     assert set(grouped) == expected
     assert metrics.documents == 133
-    assert metrics.documents_with_extracted_norms == 75
-    assert metrics.documents_with_review_debt == 59
+    assert metrics.documents_with_extracted_norms == 76
+    assert metrics.documents_with_review_debt == 58
     assert metrics.exact_source_characters == 394_667
     assert set(metrics.norms_by_document) == {
         "article 2",
@@ -122,6 +122,7 @@ def test_inventory_partitions_the_complete_versioned_corpus(metrics):
         "article 66",
         "article 67",
         "article 68",
+        "article 69",
         "article 75",
         "article 113",
         "annex III",
@@ -1599,20 +1600,20 @@ def test_article_twenty_eight_is_complete_institutional_coverage():
 
 
 def test_inventory_cannot_be_misreported_as_independently_approved(metrics):
-    assert metrics.approved_characters == 233_404
-    assert metrics.needs_review_characters == 131_407
+    assert metrics.approved_characters == 234_151
+    assert metrics.needs_review_characters == 130_723
     assert metrics.review_statuses == {
-        "approved": 892,
-        "needs_review": 454,
-        "proposed": 1041,
+        "approved": 896,
+        "needs_review": 451,
+        "proposed": 1043,
     }
     assert metrics.timed_review_records == 0
-    assert metrics.total_review_records == 2388
+    assert metrics.total_review_records == 2391
 
 
 def test_semantic_pass_finds_propositions_a_shall_scan_misses(metrics):
-    assert metrics.shall_vs_semantic_disagreements == 395
-    assert metrics.shall_token_candidate_recall == pytest.approx(550 / 945)
+    assert metrics.shall_vs_semantic_disagreements == 397
+    assert metrics.shall_token_candidate_recall == pytest.approx(551 / 948)
     assert "AIA-NORM-A011-P1-SIMPLIFY" in metrics.semantic_norms_without_shall_token
     assert "AIA-NORM-A043-P5-AMEND" in metrics.semantic_norms_without_shall_token
     assert "AIA-NORM-A060-P4-PERMISSION" in metrics.semantic_norms_without_shall_token
@@ -1625,7 +1626,7 @@ def test_metrics_expose_many_to_many_and_implementation_debt(metrics):
     assert metrics.mapping_shape.many_norms_to_one_target == 331
     assert metrics.mapping_shape.one_norm_to_many_targets == 0
     assert metrics.mapping_shape.many_to_many == 15
-    assert metrics.mapping_shape.unmapped == 582
+    assert metrics.mapping_shape.unmapped == 585
     assert metrics.semantic_vs_existing_implementation_disagreements == 159
     assert metrics.semantic_norms_without_existing_implementation == [
         "AIA-NORM-A002-P1-A-PROVIDER",
@@ -2999,6 +3000,26 @@ def test_article_sixty_eight_extracts_scientific_panel_safeguards():
     assert len(tasks.qualifier_spans) == 4
     assert len(gpai.qualifier_spans) == 5
     assert len(norms["AIA-NORM-A068-P4-EXPERT-INTEGRITY-AND-DISCLOSURE"].mandatory_content) == 4
+
+
+def test_article_sixty_nine_extracts_member_state_expert_access():
+    bundle = load_normative_coverage()
+    segments = [
+        segment
+        for segment in bundle.text_review.segments
+        if segment.source.kind.value == "article" and segment.source.document == "69"
+    ]
+    norms = [
+        norm
+        for norm in bundle.norm_inventory.norms
+        if norm.norm_id.startswith("AIA-NORM-A069-")
+    ]
+
+    assert len(segments) == 4
+    assert all(segment.review.status.value == "approved" for segment in segments)
+    assert all(segment.review.verified_by == "codex" for segment in segments)
+    assert len(norms) == 3
+    assert all(norm.product_scope.value == "outside_supported_actor" for norm in norms)
 
 
 def test_annex_inventory_keeps_external_actors_and_exact_mandatory_content():
