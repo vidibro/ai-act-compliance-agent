@@ -1,0 +1,77 @@
+records:
+- norm_id: AIA-NORM-ANNEX-XI-SECTION-1-TECHNICAL-DOCUMENTATION
+  source: ANNEX-XI-P001
+  quote: shall contain at least the following information as appropriate to the size and risk profile of the model
+  action: include all applicable Annex XI Section 1 information in the general-purpose AI model technical documentation, proportionate to model size and risk profile
+  subject_ref: provider
+  subject_category: supported_operator
+  implementation_mode: carried_by_other_norm
+  implementation_reason: Carried by the Article 53(1)(a) Annex XI content norm.
+  verification_mode: judged_from_document
+  mandatory_content:
+  - tasks the model is intended to perform and the type and nature of AI systems into which it can be integrated
+  - applicable acceptable-use policies
+  - release date and distribution methods
+  - architecture and number of parameters
+  - input and output modalities and formats
+  - licence
+  - technical means required to integrate the model into AI systems
+  - model and training-process design specifications, including methodologies, techniques, key choices, rationales, assumptions, optimisation objectives, and parameter relevance as applicable
+  - applicable information on training, testing, and validation data, including type, provenance, curation, data-point count, scope, characteristics, acquisition and selection, unsuitable-source detection, and identifiable-bias detection
+  - computational resources, training time, and other relevant training details
+  - known or estimated model energy consumption
+  qualifier_spans:
+  - ANNEX-XI-P002
+  - ANNEX-XI-P003
+  - ANNEX-XI-P004
+  - ANNEX-XI-P005
+  - ANNEX-XI-P006
+  - ANNEX-XI-P007
+  - ANNEX-XI-P008
+  - ANNEX-XI-P009
+  - ANNEX-XI-P010
+  - ANNEX-XI-P011
+  - ANNEX-XI-P012
+  - ANNEX-XI-P013
+  - ANNEX-XI-P014
+  dependencies:
+  - dependency_ref: AIA-NORM-A053-P1-A-ANNEX-XI-CONTENT
+    resolution: internal_resolved
+    detail: Article 53(1)(a) assigns the Annex XI minimum-content duty to GPAI model providers.
+- norm_id: AIA-NORM-ANNEX-XI-ENERGY-ESTIMATE-BASIS
+  source: ANNEX-XI-P009
+  quote: where the energy consumption of the model is unknown, the energy consumption may be based on information about computational resources used
+  action: base unknown model energy consumption on information about computational resources used
+  subject_ref: provider
+  subject_category: supported_operator
+  kind: permission
+  conditions:
+  - the model's energy consumption is unknown
+  implementation_refs:
+  - AIA-GP-A53-1A
+  verification_mode: listed_for_confirmation
+- norm_id: AIA-NORM-ANNEX-XI-SECTION-2-SYSTEMIC-RISK-DOCUMENTATION
+  source: ANNEX-XI-P015
+  quote: Additional information to be provided by providers of general-purpose AI models with systemic risk
+  action: include the additional Annex XI Section 2 evaluation, adversarial-testing, adaptation, and architecture information in technical documentation for a GPAI model with systemic risk
+  subject_ref: provider
+  subject_category: supported_operator
+  implementation_mode: carried_by_other_norm
+  implementation_reason: Carried by the Article 53(1)(a) Annex XI content norm.
+  verification_mode: judged_from_document
+  conditions:
+  - the general-purpose AI model has systemic risk
+  mandatory_content:
+  - detailed evaluation strategies and results based on available public evaluation protocols and tools or other evaluation methodologies
+  - evaluation criteria, metrics, and methodology for identifying limitations
+  - where applicable, measures for internal or external adversarial testing and model adaptations including alignment and fine-tuning
+  - where applicable, system architecture explaining component relationships and integration into overall processing
+  dependencies:
+  - dependency_ref: AIA-NORM-A053-P1-A-ANNEX-XI-CONTENT
+    resolution: internal_resolved
+    detail: Article 53(1)(a) assigns the Annex XI minimum-content duty to GPAI model providers.
+carried_by:
+  AIA-NORM-ANNEX-XI-SECTION-1-TECHNICAL-DOCUMENTATION:
+  - AIA-NORM-A053-P1-A-ANNEX-XI-CONTENT
+  AIA-NORM-ANNEX-XI-SECTION-2-SYSTEMIC-RISK-DOCUMENTATION:
+  - AIA-NORM-A053-P1-A-ANNEX-XI-CONTENT
