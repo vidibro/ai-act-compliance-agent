@@ -49,8 +49,8 @@ def test_inventory_partitions_the_complete_versioned_corpus(metrics):
     assert bundle.text_review.corpus_complete is True
     assert set(grouped) == expected
     assert metrics.documents == 133
-    assert metrics.documents_with_extracted_norms == 127
-    assert metrics.documents_with_review_debt == 5
+    assert metrics.documents_with_extracted_norms == 128
+    assert metrics.documents_with_review_debt == 4
     assert metrics.exact_source_characters == 394_667
     assert set(metrics.norms_by_document) == {
         "annex I",
@@ -180,6 +180,7 @@ def test_inventory_partitions_the_complete_versioned_corpus(metrics):
         "annex VII",
         "annex VIII",
         "annex IX",
+        "annex X",
     }
 
 
@@ -1651,20 +1652,20 @@ def test_article_twenty_eight_is_complete_institutional_coverage():
 
 
 def test_inventory_cannot_be_misreported_as_independently_approved(metrics):
-    assert metrics.approved_characters == 364_301
-    assert metrics.needs_review_characters == 13_919
+    assert metrics.approved_characters == 369_620
+    assert metrics.needs_review_characters == 8_702
     assert metrics.review_statuses == {
-        "approved": 1360,
-        "needs_review": 58,
-        "proposed": 1341,
+        "approved": 1377,
+        "needs_review": 42,
+        "proposed": 1352,
     }
     assert metrics.timed_review_records == 0
-    assert metrics.total_review_records == 2760
+    assert metrics.total_review_records == 2772
 
 
 def test_semantic_pass_finds_propositions_a_shall_scan_misses(metrics):
-    assert metrics.shall_vs_semantic_disagreements == 486
-    assert metrics.shall_token_candidate_recall == pytest.approx(818 / 1304)
+    assert metrics.shall_vs_semantic_disagreements == 498
+    assert metrics.shall_token_candidate_recall == pytest.approx(818 / 1316)
     assert "AIA-NORM-A011-P1-SIMPLIFY" in metrics.semantic_norms_without_shall_token
     assert "AIA-NORM-A043-P5-AMEND" in metrics.semantic_norms_without_shall_token
     assert "AIA-NORM-A060-P4-PERMISSION" in metrics.semantic_norms_without_shall_token
@@ -1677,8 +1678,8 @@ def test_metrics_expose_many_to_many_and_implementation_debt(metrics):
     assert metrics.mapping_shape.many_norms_to_one_target == 347
     assert metrics.mapping_shape.one_norm_to_many_targets == 0
     assert metrics.mapping_shape.many_to_many == 15
-    assert metrics.mapping_shape.unmapped == 916
-    assert metrics.semantic_vs_existing_implementation_disagreements == 218
+    assert metrics.mapping_shape.unmapped == 928
+    assert metrics.semantic_vs_existing_implementation_disagreements == 230
     assert metrics.semantic_norms_without_existing_implementation == [
         "AIA-NORM-A002-P1-A-PROVIDER",
         "AIA-NORM-A002-P1-B-DEPLOYER",
@@ -1898,6 +1899,18 @@ def test_metrics_expose_many_to_many_and_implementation_debt(metrics):
         "AIA-NORM-ANNEX-VIII-A",
         "AIA-NORM-ANNEX-VIII-B",
         "AIA-NORM-ANNEX-VIII-C",
+        "AIA-NORM-ANNEX-X-ECRIS-TCN",
+        "AIA-NORM-ANNEX-X-ENTRY-EXIT-SYSTEM",
+        "AIA-NORM-ANNEX-X-ETIAS",
+        "AIA-NORM-ANNEX-X-ETIAS-EUROPOL",
+        "AIA-NORM-ANNEX-X-EURODAC",
+        "AIA-NORM-ANNEX-X-INTEROPERABILITY-BORDERS-VISA",
+        "AIA-NORM-ANNEX-X-INTEROPERABILITY-POLICE-ASYLUM-MIGRATION",
+        "AIA-NORM-ANNEX-X-SIS-BORDER-CHECKS",
+        "AIA-NORM-ANNEX-X-SIS-POLICE-JUDICIAL",
+        "AIA-NORM-ANNEX-X-SIS-RETURN",
+        "AIA-NORM-ANNEX-X-VIS-ACCESS-CONDITIONS",
+        "AIA-NORM-ANNEX-X-VIS-REFORM",
     ]
     assert metrics.implementation_debt_norm_ids == [
         "AIA-NORM-A002-P1-A-PROVIDER",
@@ -2104,6 +2117,18 @@ def test_metrics_expose_many_to_many_and_implementation_debt(metrics):
         "AIA-NORM-ANNEX-VIII-A",
         "AIA-NORM-ANNEX-VIII-B",
         "AIA-NORM-ANNEX-VIII-C",
+        "AIA-NORM-ANNEX-X-ECRIS-TCN",
+        "AIA-NORM-ANNEX-X-ENTRY-EXIT-SYSTEM",
+        "AIA-NORM-ANNEX-X-ETIAS",
+        "AIA-NORM-ANNEX-X-ETIAS-EUROPOL",
+        "AIA-NORM-ANNEX-X-EURODAC",
+        "AIA-NORM-ANNEX-X-INTEROPERABILITY-BORDERS-VISA",
+        "AIA-NORM-ANNEX-X-INTEROPERABILITY-POLICE-ASYLUM-MIGRATION",
+        "AIA-NORM-ANNEX-X-SIS-BORDER-CHECKS",
+        "AIA-NORM-ANNEX-X-SIS-POLICE-JUDICIAL",
+        "AIA-NORM-ANNEX-X-SIS-RETURN",
+        "AIA-NORM-ANNEX-X-VIS-ACCESS-CONDITIONS",
+        "AIA-NORM-ANNEX-X-VIS-REFORM",
     ]
 
 
@@ -3891,3 +3916,21 @@ def test_annex_nine_registration_content_is_carried_by_article_sixty():
     assert annex.qualifier_spans == [
         f"AIA-TEXT-ANNEX-IX-P{index:03d}" for index in range(2, 7)
     ]
+
+
+def test_annex_ten_extracts_twelve_large_scale_it_instruments():
+    bundle = load_normative_coverage()
+    norms = [
+        norm
+        for norm in bundle.norm_inventory.norms
+        if norm.norm_id.startswith("AIA-NORM-ANNEX-X-")
+    ]
+
+    assert len(norms) == 12
+    assert all(norm.kind.value == "applicability" for norm in norms)
+    segments = [
+        segment
+        for segment in bundle.text_review.segments
+        if segment.source.kind.value == "annex" and segment.source.document == "X"
+    ]
+    assert sum(segment.disposition.value == "context_only" for segment in segments) == 4

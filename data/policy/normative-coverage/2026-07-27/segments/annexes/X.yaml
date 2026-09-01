@@ -1,0 +1,28 @@
+documents:
+- kind: annex
+  number: X
+  segmentation: paragraphs
+  paragraph_disposition: normative
+  paragraph_reason: ''
+  paragraph_overrides:
+    P001:
+      disposition: context_only
+      reason: Category heading for the Schengen Information System instruments.
+      verified_by: codex
+    P005:
+      disposition: context_only
+      reason: Category heading for the Visa Information System instruments.
+      verified_by: codex
+    P010:
+      disposition: context_only
+      reason: Category heading for the ETIAS instruments.
+      verified_by: codex
+    P014:
+      disposition: context_only
+      reason: Category heading for the interoperability instruments.
+      verified_by: codex
+  verified_by: codex
+  divisions:
+  - label: HEAD
+    marker: null
+    disposition: structural
