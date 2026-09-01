@@ -1,0 +1,149 @@
+records:
+- norm_id: AIA-NORM-ANNEX-II-01-TERRORISM
+  source: ANNEX-II-P002
+  quote: terrorism
+  action: treat terrorism as a qualifying Annex II offence for Article 5(1)(h)(iii)
+  subject_ref: article_5_remote_biometric_identification_use
+  subject_category: other
+  kind: applicability
+  qualifier_spans: &chapeau
+  - ANNEX-II-P001
+  dependencies: &article5_dependency
+  - dependency_ref: AIA-NORM-A005-P1-H-REAL-TIME-RBI
+    resolution: internal_resolved
+    detail: Article 5(1)(h)(iii) gives legal effect to the Annex II offence list within the real-time remote-biometric-identification exception.
+- norm_id: AIA-NORM-ANNEX-II-02-HUMAN-TRAFFICKING
+  source: ANNEX-II-P003
+  quote: trafficking in human beings
+  action: treat trafficking in human beings as a qualifying Annex II offence for Article 5(1)(h)(iii)
+  subject_ref: article_5_remote_biometric_identification_use
+  subject_category: other
+  kind: applicability
+  qualifier_spans: *chapeau
+  dependencies: *article5_dependency
+- norm_id: AIA-NORM-ANNEX-II-03-CHILD-SEXUAL-EXPLOITATION
+  source: ANNEX-II-P004
+  quote: sexual exploitation of children, and child pornography
+  action: treat sexual exploitation of children and child pornography as a qualifying Annex II offence category for Article 5(1)(h)(iii)
+  subject_ref: article_5_remote_biometric_identification_use
+  subject_category: other
+  kind: applicability
+  qualifier_spans: *chapeau
+  dependencies: *article5_dependency
+- norm_id: AIA-NORM-ANNEX-II-04-DRUG-TRAFFICKING
+  source: ANNEX-II-P005
+  quote: illicit trafficking in narcotic drugs or psychotropic substances
+  action: treat illicit trafficking in narcotic drugs or psychotropic substances as a qualifying Annex II offence for Article 5(1)(h)(iii)
+  subject_ref: article_5_remote_biometric_identification_use
+  subject_category: other
+  kind: applicability
+  qualifier_spans: *chapeau
+  dependencies: *article5_dependency
+- norm_id: AIA-NORM-ANNEX-II-05-WEAPONS-TRAFFICKING
+  source: ANNEX-II-P006
+  quote: illicit trafficking in weapons, munitions or explosives
+  action: treat illicit trafficking in weapons, munitions, or explosives as a qualifying Annex II offence for Article 5(1)(h)(iii)
+  subject_ref: article_5_remote_biometric_identification_use
+  subject_category: other
+  kind: applicability
+  qualifier_spans: *chapeau
+  dependencies: *article5_dependency
+- norm_id: AIA-NORM-ANNEX-II-06-MURDER-BODILY-INJURY
+  source: ANNEX-II-P007
+  quote: murder, grievous bodily injury
+  action: treat murder and grievous bodily injury as a qualifying Annex II offence category for Article 5(1)(h)(iii)
+  subject_ref: article_5_remote_biometric_identification_use
+  subject_category: other
+  kind: applicability
+  qualifier_spans: *chapeau
+  dependencies: *article5_dependency
+- norm_id: AIA-NORM-ANNEX-II-07-HUMAN-ORGANS
+  source: ANNEX-II-P008
+  quote: illicit trade in human organs or tissue
+  action: treat illicit trade in human organs or tissue as a qualifying Annex II offence for Article 5(1)(h)(iii)
+  subject_ref: article_5_remote_biometric_identification_use
+  subject_category: other
+  kind: applicability
+  qualifier_spans: *chapeau
+  dependencies: *article5_dependency
+- norm_id: AIA-NORM-ANNEX-II-08-NUCLEAR-MATERIALS
+  source: ANNEX-II-P009
+  quote: illicit trafficking in nuclear or radioactive materials
+  action: treat illicit trafficking in nuclear or radioactive materials as a qualifying Annex II offence for Article 5(1)(h)(iii)
+  subject_ref: article_5_remote_biometric_identification_use
+  subject_category: other
+  kind: applicability
+  qualifier_spans: *chapeau
+  dependencies: *article5_dependency
+- norm_id: AIA-NORM-ANNEX-II-09-KIDNAPPING-HOSTAGE-TAKING
+  source: ANNEX-II-P010
+  quote: kidnapping, illegal restraint or hostage-taking
+  action: treat kidnapping, illegal restraint, or hostage-taking as a qualifying Annex II offence category for Article 5(1)(h)(iii)
+  subject_ref: article_5_remote_biometric_identification_use
+  subject_category: other
+  kind: applicability
+  qualifier_spans: *chapeau
+  dependencies: *article5_dependency
+- norm_id: AIA-NORM-ANNEX-II-10-ICC-CRIMES
+  source: ANNEX-II-P011
+  quote: crimes within the jurisdiction of the International Criminal Court
+  action: treat crimes within the International Criminal Court's jurisdiction as a qualifying Annex II offence category for Article 5(1)(h)(iii)
+  subject_ref: article_5_remote_biometric_identification_use
+  subject_category: other
+  kind: applicability
+  qualifier_spans: *chapeau
+  dependencies: *article5_dependency
+- norm_id: AIA-NORM-ANNEX-II-11-AIRCRAFT-SHIP-SEIZURE
+  source: ANNEX-II-P012
+  quote: unlawful seizure of aircraft or ships
+  action: treat unlawful seizure of aircraft or ships as a qualifying Annex II offence for Article 5(1)(h)(iii)
+  subject_ref: article_5_remote_biometric_identification_use
+  subject_category: other
+  kind: applicability
+  qualifier_spans: *chapeau
+  dependencies: *article5_dependency
+- norm_id: AIA-NORM-ANNEX-II-12-RAPE
+  source: ANNEX-II-P013
+  quote: rape
+  action: treat rape as a qualifying Annex II offence for Article 5(1)(h)(iii)
+  subject_ref: article_5_remote_biometric_identification_use
+  subject_category: other
+  kind: applicability
+  qualifier_spans: *chapeau
+  dependencies: *article5_dependency
+- norm_id: AIA-NORM-ANNEX-II-13-ENVIRONMENTAL-CRIME
+  source: ANNEX-II-P014
+  quote: environmental crime
+  action: treat environmental crime as a qualifying Annex II offence for Article 5(1)(h)(iii)
+  subject_ref: article_5_remote_biometric_identification_use
+  subject_category: other
+  kind: applicability
+  qualifier_spans: *chapeau
+  dependencies: *article5_dependency
+- norm_id: AIA-NORM-ANNEX-II-14-ROBBERY
+  source: ANNEX-II-P015
+  quote: organised or armed robbery
+  action: treat organised or armed robbery as a qualifying Annex II offence category for Article 5(1)(h)(iii)
+  subject_ref: article_5_remote_biometric_identification_use
+  subject_category: other
+  kind: applicability
+  qualifier_spans: *chapeau
+  dependencies: *article5_dependency
+- norm_id: AIA-NORM-ANNEX-II-15-SABOTAGE
+  source: ANNEX-II-P016
+  quote: sabotage
+  action: treat sabotage as a qualifying Annex II offence for Article 5(1)(h)(iii)
+  subject_ref: article_5_remote_biometric_identification_use
+  subject_category: other
+  kind: applicability
+  qualifier_spans: *chapeau
+  dependencies: *article5_dependency
+- norm_id: AIA-NORM-ANNEX-II-16-CRIMINAL-ORGANISATION
+  source: ANNEX-II-P017
+  quote: participation in a criminal organisation involved in one or more of the offences listed above
+  action: treat participation in a criminal organisation involved in one or more other Annex II offences as a qualifying offence for Article 5(1)(h)(iii)
+  subject_ref: article_5_remote_biometric_identification_use
+  subject_category: other
+  kind: applicability
+  qualifier_spans: *chapeau
+  dependencies: *article5_dependency

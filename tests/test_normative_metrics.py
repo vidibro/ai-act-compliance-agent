@@ -49,11 +49,12 @@ def test_inventory_partitions_the_complete_versioned_corpus(metrics):
     assert bundle.text_review.corpus_complete is True
     assert set(grouped) == expected
     assert metrics.documents == 133
-    assert metrics.documents_with_extracted_norms == 123
-    assert metrics.documents_with_review_debt == 10
+    assert metrics.documents_with_extracted_norms == 124
+    assert metrics.documents_with_review_debt == 9
     assert metrics.exact_source_characters == 394_667
     assert set(metrics.norms_by_document) == {
         "annex I",
+        "annex II",
         "article 2",
         "article 3",
         "article 4",
@@ -1647,20 +1648,20 @@ def test_article_twenty_eight_is_complete_institutional_coverage():
 
 
 def test_inventory_cannot_be_misreported_as_independently_approved(metrics):
-    assert metrics.approved_characters == 352_504
-    assert metrics.needs_review_characters == 17_954
+    assert metrics.approved_characters == 353_352
+    assert metrics.needs_review_characters == 17_206
     assert metrics.review_statuses == {
-        "approved": 1314,
-        "needs_review": 96,
-        "proposed": 1315,
+        "approved": 1332,
+        "needs_review": 79,
+        "proposed": 1330,
     }
     assert metrics.timed_review_records == 0
-    assert metrics.total_review_records == 2726
+    assert metrics.total_review_records == 2742
 
 
 def test_semantic_pass_finds_propositions_a_shall_scan_misses(metrics):
-    assert metrics.shall_vs_semantic_disagreements == 464
-    assert metrics.shall_token_candidate_recall == pytest.approx(806 / 1270)
+    assert metrics.shall_vs_semantic_disagreements == 480
+    assert metrics.shall_token_candidate_recall == pytest.approx(806 / 1286)
     assert "AIA-NORM-A011-P1-SIMPLIFY" in metrics.semantic_norms_without_shall_token
     assert "AIA-NORM-A043-P5-AMEND" in metrics.semantic_norms_without_shall_token
     assert "AIA-NORM-A060-P4-PERMISSION" in metrics.semantic_norms_without_shall_token
@@ -1668,13 +1669,13 @@ def test_semantic_pass_finds_propositions_a_shall_scan_misses(metrics):
 
 
 def test_metrics_expose_many_to_many_and_implementation_debt(metrics):
-    assert metrics.normative_segments_with_multiple_norms == 282
+    assert metrics.normative_segments_with_multiple_norms == 283
     assert metrics.mapping_shape.one_norm_to_one_target == 26
     assert metrics.mapping_shape.many_norms_to_one_target == 347
     assert metrics.mapping_shape.one_norm_to_many_targets == 0
     assert metrics.mapping_shape.many_to_many == 15
-    assert metrics.mapping_shape.unmapped == 882
-    assert metrics.semantic_vs_existing_implementation_disagreements == 189
+    assert metrics.mapping_shape.unmapped == 898
+    assert metrics.semantic_vs_existing_implementation_disagreements == 205
     assert metrics.semantic_norms_without_existing_implementation == [
         "AIA-NORM-A002-P1-A-PROVIDER",
         "AIA-NORM-A002-P1-B-DEPLOYER",
@@ -1836,6 +1837,22 @@ def test_metrics_expose_many_to_many_and_implementation_debt(metrics):
         "AIA-NORM-ANNEX-I-19-MOTOR-VEHICLE-GENERAL-SAFETY",
         "AIA-NORM-ANNEX-I-20-UNMANNED-AIRCRAFT",
         "AIA-NORM-ANNEX-I-21-MACHINERY-REGULATION",
+        "AIA-NORM-ANNEX-II-01-TERRORISM",
+        "AIA-NORM-ANNEX-II-02-HUMAN-TRAFFICKING",
+        "AIA-NORM-ANNEX-II-03-CHILD-SEXUAL-EXPLOITATION",
+        "AIA-NORM-ANNEX-II-04-DRUG-TRAFFICKING",
+        "AIA-NORM-ANNEX-II-05-WEAPONS-TRAFFICKING",
+        "AIA-NORM-ANNEX-II-06-MURDER-BODILY-INJURY",
+        "AIA-NORM-ANNEX-II-07-HUMAN-ORGANS",
+        "AIA-NORM-ANNEX-II-08-NUCLEAR-MATERIALS",
+        "AIA-NORM-ANNEX-II-09-KIDNAPPING-HOSTAGE-TAKING",
+        "AIA-NORM-ANNEX-II-10-ICC-CRIMES",
+        "AIA-NORM-ANNEX-II-11-AIRCRAFT-SHIP-SEIZURE",
+        "AIA-NORM-ANNEX-II-12-RAPE",
+        "AIA-NORM-ANNEX-II-13-ENVIRONMENTAL-CRIME",
+        "AIA-NORM-ANNEX-II-14-ROBBERY",
+        "AIA-NORM-ANNEX-II-15-SABOTAGE",
+        "AIA-NORM-ANNEX-II-16-CRIMINAL-ORGANISATION",
         "AIA-NORM-ANNEX-III-1A-REMOTE-BIOMETRIC-IDENTIFICATION",
         "AIA-NORM-ANNEX-III-1B-BIOMETRIC-CATEGORISATION",
         "AIA-NORM-ANNEX-III-1C-EMOTION-RECOGNITION",
@@ -2016,6 +2033,22 @@ def test_metrics_expose_many_to_many_and_implementation_debt(metrics):
         "AIA-NORM-ANNEX-I-19-MOTOR-VEHICLE-GENERAL-SAFETY",
         "AIA-NORM-ANNEX-I-20-UNMANNED-AIRCRAFT",
         "AIA-NORM-ANNEX-I-21-MACHINERY-REGULATION",
+        "AIA-NORM-ANNEX-II-01-TERRORISM",
+        "AIA-NORM-ANNEX-II-02-HUMAN-TRAFFICKING",
+        "AIA-NORM-ANNEX-II-03-CHILD-SEXUAL-EXPLOITATION",
+        "AIA-NORM-ANNEX-II-04-DRUG-TRAFFICKING",
+        "AIA-NORM-ANNEX-II-05-WEAPONS-TRAFFICKING",
+        "AIA-NORM-ANNEX-II-06-MURDER-BODILY-INJURY",
+        "AIA-NORM-ANNEX-II-07-HUMAN-ORGANS",
+        "AIA-NORM-ANNEX-II-08-NUCLEAR-MATERIALS",
+        "AIA-NORM-ANNEX-II-09-KIDNAPPING-HOSTAGE-TAKING",
+        "AIA-NORM-ANNEX-II-10-ICC-CRIMES",
+        "AIA-NORM-ANNEX-II-11-AIRCRAFT-SHIP-SEIZURE",
+        "AIA-NORM-ANNEX-II-12-RAPE",
+        "AIA-NORM-ANNEX-II-13-ENVIRONMENTAL-CRIME",
+        "AIA-NORM-ANNEX-II-14-ROBBERY",
+        "AIA-NORM-ANNEX-II-15-SABOTAGE",
+        "AIA-NORM-ANNEX-II-16-CRIMINAL-ORGANISATION",
         "AIA-NORM-ANNEX-III-1A-REMOTE-BIOMETRIC-IDENTIFICATION",
         "AIA-NORM-ANNEX-III-1B-BIOMETRIC-CATEGORISATION",
         "AIA-NORM-ANNEX-III-1C-EMOTION-RECOGNITION",
@@ -3749,3 +3782,19 @@ def test_annex_one_extracts_each_harmonisation_instrument_and_its_uav_limit():
     }
     assert len(norms["AIA-NORM-ANNEX-I-20-UNMANNED-AIRCRAFT"].conditions) == 1
     assert all(norm.kind.value == "applicability" for norm in norms.values())
+
+
+def test_annex_two_extracts_each_offence_category_under_the_article_five_exception():
+    bundle = load_normative_coverage()
+    norms = [
+        norm
+        for norm in bundle.norm_inventory.norms
+        if norm.norm_id.startswith("AIA-NORM-ANNEX-II-")
+    ]
+
+    assert len(norms) == 16
+    assert all(norm.kind.value == "applicability" for norm in norms)
+    assert all(norm.qualifier_spans == ["AIA-TEXT-ANNEX-II-P001"] for norm in norms)
+    assert {norm.primary_spans[0] for norm in norms} == {
+        f"AIA-TEXT-ANNEX-II-P{index:03d}" for index in range(2, 18)
+    }
