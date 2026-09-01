@@ -1,0 +1,97 @@
+records:
+- norm_id: AIA-NORM-A068-P1-ESTABLISH-SCIENTIFIC-PANEL
+  source: A068-P001
+  quote: The Commission shall, by means of an implementing act, make provisions on the establishment of a scientific panel of independent experts (the ‘ scientific panel ’) intended to support the enforcement activities under this Regulation. That implementing act shall be adopted in accordance with the examination procedure referred to in Article 98(2).
+  action: provide for an independent scientific panel by implementing act under the Article 98(2) examination procedure
+  subject_ref: commission
+  subject_category: union_institution_or_body
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A068-P2-SELECT-QUALIFIED-INDEPENDENT-EXPERTS
+  source: A068-P002
+  quote: 'The scientific panel shall consist of experts selected by the Commission on the basis of up-to-date scientific or technical expertise in the field of AI necessary for the tasks set out in paragraph 3, and shall be able to demonstrate meeting all of the following conditions:'
+  action: select panel experts with current task-relevant AI expertise who satisfy every enacted competence independence and performance condition
+  subject_ref: commission
+  subject_category: union_institution_or_body
+  mandatory_content: [particular AI expertise and competence, independence from AI-system and GPAI-model providers, diligent accurate and objective performance ability]
+  qualifier_spans: [A068-P003, A068-P004, A068-P005]
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A068-P2-PANEL-SIZE-AND-REPRESENTATION
+  source: A068-P006
+  quote: The Commission, in consultation with the Board, shall determine the number of experts on the panel in accordance with the required needs and shall ensure fair gender and geographical representation.
+  action: determine needs-based panel size with Board consultation and ensure fair gender and geographical representation
+  subject_ref: commission
+  subject_category: union_institution_or_body
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A068-P3-ADVISE-AND-SUPPORT-AI-OFFICE
+  source: A068-P007
+  quote: 'The scientific panel shall advise and support the AI Office, in particular with regard to the following tasks:'
+  action: advise and support the AI Office across every enacted GPAI surveillance and safeguard task
+  subject_ref: scientific_panel
+  subject_category: union_institution_or_body
+  mandatory_content: [GPAI implementation and enforcement support, requested market-surveillance support, cross-border surveillance support without prejudicing authority powers, Union safeguard-procedure support]
+  qualifier_spans: [A068-P008, A068-P014, A068-P015, A068-P016]
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A068-P3-A-GPAI-SUPPORT-TASKS
+  source: A068-P008
+  quote: 'supporting the implementation and enforcement of this Regulation as regards general-purpose AI models and systems, in particular by:'
+  action: perform every enacted GPAI risk alert evaluation classification and tooling support task
+  subject_ref: scientific_panel
+  subject_category: union_institution_or_body
+  mandatory_content: [Article 90 systemic-risk alerts, capability-evaluation tools methodologies and benchmarks, systemic-risk GPAI model classification advice, other GPAI model and system classification advice, tools and templates]
+  qualifier_spans: [A068-P009, A068-P010, A068-P011, A068-P012, A068-P013]
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A068-P4-EXPERT-INTEGRITY-AND-DISCLOSURE
+  source: A068-P017
+  quote: The experts on the scientific panel shall perform their tasks with impartiality and objectivity, and shall ensure the confidentiality of information and data obtained in carrying out their tasks and activities. They shall neither seek nor take instructions from anyone when exercising their tasks under paragraph 3. Each expert shall draw up a declaration of interests, which shall be made publicly available.
+  action: perform panel tasks impartially objectively confidentially and independently and publish a declaration of interests
+  subject_ref: scientific_panel_expert
+  subject_category: external_private_party
+  mandatory_content: [impartiality and objectivity, information and data confidentiality, no sought or accepted instructions, public declaration of interests]
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A068-P4-MANAGE-CONFLICTS
+  source: A068-P017
+  quote: The AI Office shall establish systems and procedures to actively manage and prevent potential conflicts of interest.
+  action: establish systems and procedures actively managing and preventing potential expert conflicts of interest
+  subject_ref: ai_office
+  subject_category: union_institution_or_body
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A068-P5-ALERT-AND-ASSISTANCE-ARRANGEMENTS
+  source: A068-P018
+  quote: The implementing act referred to in paragraph 1 shall include provisions on the conditions, procedures and detailed arrangements for the scientific panel and its members to issue alerts, and to request the assistance of the AI Office for the performance of the tasks of the scientific panel.
+  action: include panel alert and AI Office assistance conditions procedures and detailed arrangements in the implementing act
+  subject_ref: commission
+  subject_category: union_institution_or_body
+  mandatory_content: [conditions procedures and arrangements for alerts, conditions procedures and arrangements for AI Office assistance requests]
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
