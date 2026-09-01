@@ -1,0 +1,213 @@
+records:
+- norm_id: AIA-NORM-A075C-P1-ESTABLISH-NONCOMPLIANCE
+  source: A075C-P001
+  quote: it shall adopt a decision establishing such non-compliance
+  action: adopt a decision establishing detected AI Act or binding-commitment non-compliance
+  subject_ref: ai_office
+  subject_category: union_institution_or_body
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A075C-P2-COMMUNICATE-PRELIMINARY-FINDINGS
+  source: A075C-P002
+  quote: the AI Office shall communicate its preliminary findings to the operator concerned
+  action: communicate preliminary findings before adopting a non-compliance decision
+  subject_ref: ai_office
+  subject_category: union_institution_or_body
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A075C-P2-EXPLAIN-CONTEMPLATED-MEASURES
+  source: A075C-P002
+  quote: the AI Office shall explain the measures that it is considering taking
+  action: explain contemplated AI Office measures and measures the operator should take in the preliminary findings
+  subject_ref: ai_office
+  subject_category: union_institution_or_body
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A075C-P3-ORDER-COMPLIANCE-MEASURES
+  source: A075C-P003
+  quote: the AI Office shall, where relevant, order the operator concerned to take the necessary measures
+  action: order necessary compliance measures within a reasonable specified period and information about intended measures
+  subject_ref: ai_office
+  subject_category: union_institution_or_body
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A075C-P3-DESCRIBE-IMPLEMENTED-MEASURES
+  source: A075C-P003
+  quote: The operator concerned shall provide the AI Office with a description of the measures it has taken
+  action: describe implemented measures ensuring compliance with the AI Office decision
+  subject_ref: article_75_operator
+  subject_category: supported_operator
+  product_scope: in_scope
+  product_scope_reason: This is an enforcement-response duty for a supported operator.
+  implementation_mode: missing
+  implementation_reason: No current rule represents this post-decision reporting duty.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A075C-P3-STRUCTURED-DIALOGUE
+  source: A075C-P003
+  quote: the AI Office may engage in a structured dialogue with the operator
+  action: conduct a structured dialogue before requesting a measure
+  subject_ref: ai_office
+  subject_category: union_institution_or_body
+  kind: power
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A075C-P3-PROPOSE-COMMITMENTS
+  source: A075C-P003
+  quote: the operator may propose commitments in accordance with Article 75b
+  action: propose Article 75b commitments during structured dialogue
+  subject_ref: article_75_operator
+  subject_category: supported_operator
+  kind: permission
+  product_scope: no_product_action
+  product_scope_reason: This is an optional procedural opportunity rather than a standing compliance duty.
+  implementation_mode: none_required
+  implementation_reason: No independent product action arises.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A075C-P4-IMPOSE-PENALTIES
+  source: A075C-P004
+  quote: may be accompanied by the imposition of penalties in accordance with Article 99(3) to (7)
+  action: accompany a non-compliance decision with Article 99 penalties adapted to AI Office enforcement
+  subject_ref: ai_office
+  subject_category: union_institution_or_body
+  kind: power
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A075C-P4-ARTICLE99-4-FINES
+  source: A075C-P005
+  quote: shall be subject to administrative fines as referred to in Article 99(4)
+  action: expose listed infringements decision breaches and binding-commitment breaches to Article 99(4) fines
+  subject_ref: article_75_operator
+  subject_category: supported_operator
+  kind: legal_consequence
+  mandatory_content: [infringement of any applicable AI Act provision, failure to comply with specified decisions or measures, failure to comply with a binding Article 75b commitment]
+  qualifier_spans: [A075C-P006, A075C-P007, A075C-P008]
+  product_scope: no_product_action
+  product_scope_reason: This is an enforcement consequence rather than an independent product action.
+  implementation_mode: none_required
+  implementation_reason: No independent product action arises.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A075C-P4-INFORMATION-FINE
+  source: A075C-P009
+  quote: shall be subject to administrative fines as referred to in Article 99(5)
+  action: expose incorrect incomplete or misleading requested information supplied to the AI Office to Article 99(5) fines
+  subject_ref: article_75_operator
+  subject_category: supported_operator
+  kind: legal_consequence
+  product_scope: no_product_action
+  product_scope_reason: This is an enforcement consequence rather than an independent product action.
+  implementation_mode: none_required
+  implementation_reason: No independent product action arises.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A075C-P5-IMPOSE-PERIODIC-PENALTIES
+  source: A075C-P010
+  quote: The AI Office may adopt a decision imposing periodic penalty payments
+  action: impose periodic penalty payments compelling specified investigation information inspection correction and compliance conduct
+  subject_ref: ai_office
+  subject_category: union_institution_or_body
+  kind: power
+  mandatory_content: [submit to investigation, comply with a decided information request, submit to a decided inspection, provide correct or complete inspection answers, comply with ordered corrective actions, comply with binding commitments, comply with an Article 75c(1) decision]
+  qualifier_spans: [A075C-P011, A075C-P012, A075C-P013, A075C-P014, A075C-P015, A075C-P016, A075C-P017]
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A075C-P5-PENALTY-PAYMENT-LIMITS
+  source: A075C-P018
+  quote: Those penalty payments shall be effective and proportionate
+  action: make periodic penalty payments effective and proportionate and respect the applicable five-percent daily ceiling
+  subject_ref: ai_office
+  subject_category: union_institution_or_body
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A075C-P6-JUDICIAL-REVIEW
+  source: A075C-P019
+  quote: shall have unlimited jurisdiction to review decisions of the AI Office
+  action: review and cancel reduce or increase AI Office fines and periodic penalty payments with unlimited jurisdiction
+  subject_ref: court_of_justice_of_the_european_union
+  subject_category: union_institution_or_body
+  kind: power
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A075C-P7-ALLOCATE-FINE-FUNDS
+  source: A075C-P020
+  quote: shall contribute to the general budget of the Union
+  action: allocate Article 75c fine and periodic-payment funds to the Union general budget
+  subject_ref: union_enforcement_framework
+  subject_category: union_institution_or_body
+  kind: legal_consequence
+  product_scope: outside_supported_actor
+  product_scope_reason: This institutional consequence is outside the supported operator surface.
+  implementation_mode: none_required
+  implementation_reason: No product implementation is required.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A075C-P8-FIVE-YEAR-INFRINGEMENT-LIMIT
+  source: A075C-P021
+  quote: shall be subject to a limitation period of five years
+  action: apply a five-year infringement limitation period from commission or cessation for continuing or repeated infringements
+  subject_ref: ai_office_enforcement_power
+  subject_category: union_institution_or_body
+  kind: legal_consequence
+  product_scope: outside_supported_actor
+  product_scope_reason: This institutional consequence is outside the supported operator surface.
+  implementation_mode: none_required
+  implementation_reason: No product implementation is required.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A075C-P8-FIVE-YEAR-DECISION-LIMIT
+  source: A075C-P022
+  quote: shall be subject to a limitation period of five years
+  action: apply a five-year final-decision enforcement limitation period
+  subject_ref: ai_office_decision_enforcement_power
+  subject_category: union_institution_or_body
+  kind: legal_consequence
+  product_scope: outside_supported_actor
+  product_scope_reason: This institutional consequence is outside the supported operator surface.
+  implementation_mode: none_required
+  implementation_reason: No product implementation is required.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A075C-P8-SPECIFY-LIMITATION-PERIODS
+  source: A075C-P023
+  quote: shall specify the first and second subparagraphs of this paragraph
+  action: specify infringement and decision-enforcement limitation rules including interruption circumstances in the Article 75d(3) implementing act
+  subject_ref: commission
+  subject_category: union_institution_or_body
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A075C-P9-CLOSE-PROCEEDING
+  source: A075C-P024
+  quote: it shall close the proceeding by a decision
+  action: close proceedings immediately by decision when no grounds for non-compliance exist
+  subject_ref: ai_office
+  subject_category: union_institution_or_body
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
