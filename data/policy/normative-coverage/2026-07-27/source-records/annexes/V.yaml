@@ -1,0 +1,35 @@
+records:
+- norm_id: AIA-NORM-ANNEX-V-DECLARATION-CONTENT
+  source: ANNEX-V-P001
+  quote: shall contain all of the following information
+  action: include all eight Annex V information items in the EU declaration of conformity
+  subject_ref: provider
+  subject_category: supported_operator
+  implementation_mode: carried_by_other_norm
+  implementation_reason: Carried by the Article 47(2) Annex V declaration-content norm.
+  verification_mode: judged_from_document
+  mandatory_content:
+  - AI system name and type and any additional unambiguous reference allowing the identification and traceability of the AI system
+  - the name and address of the provider or, where applicable, of their authorised representative
+  - a statement that the Article 47 EU declaration of conformity is issued under the provider's sole responsibility
+  - a statement that the AI system conforms with this Regulation and any other applicable Union law providing for the Article 47 EU declaration of conformity
+  - where the AI system processes personal data, a statement that it complies with Regulations (EU) 2016/679 and (EU) 2018/1725 and Directive (EU) 2016/680
+  - references to relevant harmonised standards used or other common specifications in relation to which conformity is declared
+  - where applicable, the notified body's name and identification number, a description of the conformity-assessment procedure performed, and identification of the certificate issued
+  - the declaration's place and date of issue, the signer's name and function, an indication for or on behalf of whom the person signed, and a signature
+  qualifier_spans:
+  - ANNEX-V-P002
+  - ANNEX-V-P003
+  - ANNEX-V-P004
+  - ANNEX-V-P005
+  - ANNEX-V-P006
+  - ANNEX-V-P007
+  - ANNEX-V-P008
+  - ANNEX-V-P009
+  dependencies:
+  - dependency_ref: AIA-NORM-A047-P2-ANNEX-V-CONTENT
+    resolution: internal_resolved
+    detail: Article 47(2) assigns the Annex V content duty to the provider.
+carried_by:
+  AIA-NORM-ANNEX-V-DECLARATION-CONTENT:
+  - AIA-NORM-A047-P2-ANNEX-V-CONTENT

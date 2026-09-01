@@ -212,33 +212,30 @@ norms:
   exceptions: []
   mandatory_content: []
   dependencies:
-  - dependency_ref: AIA-TEXT-ANNEX-V-P001
-    resolution: internal_resolved
-    detail: Annex V item 1.
   - dependency_ref: AIA-TEXT-ANNEX-V-P002
     resolution: internal_resolved
-    detail: Annex V item 2.
+    detail: Annex V item 1.
   - dependency_ref: AIA-TEXT-ANNEX-V-P003
     resolution: internal_resolved
-    detail: Annex V item 3.
+    detail: Annex V item 2.
   - dependency_ref: AIA-TEXT-ANNEX-V-P004
     resolution: internal_resolved
-    detail: Annex V item 4.
+    detail: Annex V item 3.
   - dependency_ref: AIA-TEXT-ANNEX-V-P005
     resolution: internal_resolved
-    detail: Annex V item 5.
+    detail: Annex V item 4.
   - dependency_ref: AIA-TEXT-ANNEX-V-P006
     resolution: internal_resolved
-    detail: Annex V item 6.
+    detail: Annex V item 5.
   - dependency_ref: AIA-TEXT-ANNEX-V-P007
     resolution: internal_resolved
-    detail: Annex V item 7.
+    detail: Annex V item 6.
   - dependency_ref: AIA-TEXT-ANNEX-V-P008
     resolution: internal_resolved
-    detail: Annex V item 8.
+    detail: Annex V item 7.
   - dependency_ref: AIA-TEXT-ANNEX-V-P009
     resolution: internal_resolved
-    detail: Annex V final text.
+    detail: Annex V item 8.
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: compliance_rule

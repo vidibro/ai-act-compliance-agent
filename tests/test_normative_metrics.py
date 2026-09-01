@@ -49,8 +49,8 @@ def test_inventory_partitions_the_complete_versioned_corpus(metrics):
     assert bundle.text_review.corpus_complete is True
     assert set(grouped) == expected
     assert metrics.documents == 133
-    assert metrics.documents_with_extracted_norms == 124
-    assert metrics.documents_with_review_debt == 9
+    assert metrics.documents_with_extracted_norms == 125
+    assert metrics.documents_with_review_debt == 8
     assert metrics.exact_source_characters == 394_667
     assert set(metrics.norms_by_document) == {
         "annex I",
@@ -175,6 +175,7 @@ def test_inventory_partitions_the_complete_versioned_corpus(metrics):
         "article 113",
         "annex III",
         "annex IV",
+        "annex V",
         "annex VII",
         "annex VIII",
     }
@@ -1648,20 +1649,20 @@ def test_article_twenty_eight_is_complete_institutional_coverage():
 
 
 def test_inventory_cannot_be_misreported_as_independently_approved(metrics):
-    assert metrics.approved_characters == 353_352
-    assert metrics.needs_review_characters == 17_206
+    assert metrics.approved_characters == 354_776
+    assert metrics.needs_review_characters == 15_820
     assert metrics.review_statuses == {
-        "approved": 1332,
-        "needs_review": 79,
+        "approved": 1342,
+        "needs_review": 70,
         "proposed": 1330,
     }
     assert metrics.timed_review_records == 0
-    assert metrics.total_review_records == 2742
+    assert metrics.total_review_records == 2743
 
 
 def test_semantic_pass_finds_propositions_a_shall_scan_misses(metrics):
     assert metrics.shall_vs_semantic_disagreements == 480
-    assert metrics.shall_token_candidate_recall == pytest.approx(806 / 1286)
+    assert metrics.shall_token_candidate_recall == pytest.approx(807 / 1287)
     assert "AIA-NORM-A011-P1-SIMPLIFY" in metrics.semantic_norms_without_shall_token
     assert "AIA-NORM-A043-P5-AMEND" in metrics.semantic_norms_without_shall_token
     assert "AIA-NORM-A060-P4-PERMISSION" in metrics.semantic_norms_without_shall_token
@@ -1674,8 +1675,8 @@ def test_metrics_expose_many_to_many_and_implementation_debt(metrics):
     assert metrics.mapping_shape.many_norms_to_one_target == 347
     assert metrics.mapping_shape.one_norm_to_many_targets == 0
     assert metrics.mapping_shape.many_to_many == 15
-    assert metrics.mapping_shape.unmapped == 898
-    assert metrics.semantic_vs_existing_implementation_disagreements == 205
+    assert metrics.mapping_shape.unmapped == 899
+    assert metrics.semantic_vs_existing_implementation_disagreements == 206
     assert metrics.semantic_norms_without_existing_implementation == [
         "AIA-NORM-A002-P1-A-PROVIDER",
         "AIA-NORM-A002-P1-B-DEPLOYER",
@@ -1879,6 +1880,7 @@ def test_metrics_expose_many_to_many_and_implementation_debt(metrics):
         "AIA-NORM-ANNEX-III-8A-JUSTICE",
         "AIA-NORM-ANNEX-III-8B-ELECTION-INFLUENCE",
         "AIA-NORM-ANNEX-IV-CONTENT",
+        "AIA-NORM-ANNEX-V-DECLARATION-CONTENT",
         "AIA-NORM-ANNEX-VIII-A",
         "AIA-NORM-ANNEX-VIII-B",
         "AIA-NORM-ANNEX-VIII-C",
@@ -3798,3 +3800,17 @@ def test_annex_two_extracts_each_offence_category_under_the_article_five_excepti
     assert {norm.primary_spans[0] for norm in norms} == {
         f"AIA-TEXT-ANNEX-II-P{index:03d}" for index in range(2, 18)
     }
+
+
+def test_annex_five_declaration_content_is_carried_by_article_forty_seven():
+    bundle = load_normative_coverage()
+    norms = {norm.norm_id: norm for norm in bundle.norm_inventory.norms}
+    annex = norms["AIA-NORM-ANNEX-V-DECLARATION-CONTENT"]
+    article = norms["AIA-NORM-A047-P2-ANNEX-V-CONTENT"]
+
+    assert len(annex.mandatory_content) == 8
+    assert annex.carried_by_norm_ids == [article.norm_id]
+    assert annex.implementation_mode.value == "carried_by_other_norm"
+    assert [dependency.dependency_ref for dependency in article.dependencies] == [
+        f"AIA-TEXT-ANNEX-V-P{index:03d}" for index in range(2, 10)
+    ]
