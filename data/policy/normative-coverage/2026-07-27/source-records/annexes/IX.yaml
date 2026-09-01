@@ -1,0 +1,29 @@
+records:
+- norm_id: AIA-NORM-ANNEX-IX-REGISTRATION-INFORMATION
+  source: ANNEX-IX-P001
+  quote: shall be provided and thereafter kept up to date
+  action: provide and keep current all five Annex IX information items when registering real-world testing under Article 60
+  subject_ref: provider_or_prospective_provider
+  subject_category: supported_operator
+  implementation_mode: carried_by_other_norm
+  implementation_reason: Carried by the Article 60(4)(c) real-world-testing registration norm.
+  verification_mode: not_assessed
+  mandatory_content:
+  - Union-wide unique single identification number for the real-world testing
+  - name and contact details of the provider or prospective provider and the deployers involved in the real-world testing
+  - brief description of the AI system, its intended purpose, and other information needed to identify it
+  - summary of the main characteristics of the real-world testing plan
+  - information on suspension or termination of the real-world testing
+  qualifier_spans:
+  - ANNEX-IX-P002
+  - ANNEX-IX-P003
+  - ANNEX-IX-P004
+  - ANNEX-IX-P005
+  - ANNEX-IX-P006
+  dependencies:
+  - dependency_ref: AIA-NORM-A060-P4-C-REGISTER-TESTING
+    resolution: internal_resolved
+    detail: Article 60(4)(c) assigns the Annex IX registration-content duty to the provider or prospective provider.
+carried_by:
+  AIA-NORM-ANNEX-IX-REGISTRATION-INFORMATION:
+  - AIA-NORM-A060-P4-C-REGISTER-TESTING
