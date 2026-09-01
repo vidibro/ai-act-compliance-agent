@@ -345,20 +345,20 @@ Measure:
 **Exit:** corrected schema and a data-backed estimate for full authoring.
 
 **Proposed extraction 2026-08-28:** the inventory now partitions all 133 source bodies in the pinned
-corpus into 1,455 exact segments. It proposes 1,322 norms across the 131 documents selected for detailed
-extraction; every other article and annex is retained as paragraph-sized `needs_review` debt, with
-structural headings kept separate.
+corpus into 1,455 exact segments. It proposes 1,347 norms across 132 documents; Article 1 supplies
+reviewed subject-matter context without an atomic norm. No article or annex remains as `needs_review`
+debt, and structural headings remain separately identified.
 The reproducible measurements are in the versioned
 [`report.md`](../data/policy/normative-coverage/2026-07-27/report.md). The extraction added loader-validated exact
-`norm_text`, candidate-detection provenance, and review timing fields. Its semantic pass found 500 of
-1,322 proposed propositions whose exact operative quote contains no `shall` token, while 2,797
-source characters not yet semantically extracted remain explicitly marked `needs_review`.
+`norm_text`, candidate-detection provenance, and review timing fields. Its semantic pass found 524 of
+1,347 proposed propositions whose exact operative quote contains no `shall` token. No source characters
+remain marked `needs_review`.
 
-The 1,417 approved segments cover Articles 1, 2, 3, 4, 4a, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 60a, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 75a, 75b, 75c, 75d, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, and 113, plus Annexes I, II, III, V, VI, VII, IX, X, XI, XII, and XIII; their
+The 1,423 approved segments cover Articles 1, 2, 3, 4, 4a, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 60a, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 75a, 75b, 75c, 75d, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, and 113, plus Annexes I, II, III, V, VI, VII, IX, X, XI, XII, XIII, and XIV; their
 linked norm records remain `proposed`. Elapsed review time was not captured, and the rest of the
-corpus still contains explicit review debt. Consequently the repository makes no legal-completeness
-claim for the full corpus and does not yet have the data-backed full-authoring estimate required by
-the exit criterion.
+corpus has no explicit semantic review debt. The remaining assurance boundary is independent approval
+of proposed norm records and implementation coverage; elapsed-time data still does not support the
+data-backed full-authoring estimate required by the exit criterion.
 
 #### Versioned authoring and reproducible compilation
 

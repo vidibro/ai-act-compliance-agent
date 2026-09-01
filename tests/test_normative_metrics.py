@@ -49,8 +49,8 @@ def test_inventory_partitions_the_complete_versioned_corpus(metrics):
     assert bundle.text_review.corpus_complete is True
     assert set(grouped) == expected
     assert metrics.documents == 133
-    assert metrics.documents_with_extracted_norms == 131
-    assert metrics.documents_with_review_debt == 1
+    assert metrics.documents_with_extracted_norms == 132
+    assert metrics.documents_with_review_debt == 0
     assert metrics.exact_source_characters == 394_667
     assert set(metrics.norms_by_document) == {
         "annex I",
@@ -184,6 +184,7 @@ def test_inventory_partitions_the_complete_versioned_corpus(metrics):
         "annex XI",
         "annex XII",
         "annex XIII",
+        "annex XIV",
     }
 
 
@@ -1655,20 +1656,19 @@ def test_article_twenty_eight_is_complete_institutional_coverage():
 
 
 def test_inventory_cannot_be_misreported_as_independently_approved(metrics):
-    assert metrics.approved_characters == 375_998
-    assert metrics.needs_review_characters == 2_797
+    assert metrics.approved_characters == 378_806
+    assert metrics.needs_review_characters == 0
     assert metrics.review_statuses == {
-        "approved": 1417,
-        "needs_review": 5,
-        "proposed": 1355,
+        "approved": 1423,
+        "proposed": 1379,
     }
     assert metrics.timed_review_records == 0
-    assert metrics.total_review_records == 2778
+    assert metrics.total_review_records == 2803
 
 
 def test_semantic_pass_finds_propositions_a_shall_scan_misses(metrics):
-    assert metrics.shall_vs_semantic_disagreements == 500
-    assert metrics.shall_token_candidate_recall == pytest.approx(822 / 1322)
+    assert metrics.shall_vs_semantic_disagreements == 524
+    assert metrics.shall_token_candidate_recall == pytest.approx(823 / 1347)
     assert "AIA-NORM-A011-P1-SIMPLIFY" in metrics.semantic_norms_without_shall_token
     assert "AIA-NORM-A043-P5-AMEND" in metrics.semantic_norms_without_shall_token
     assert "AIA-NORM-A060-P4-PERMISSION" in metrics.semantic_norms_without_shall_token
@@ -1676,12 +1676,12 @@ def test_semantic_pass_finds_propositions_a_shall_scan_misses(metrics):
 
 
 def test_metrics_expose_many_to_many_and_implementation_debt(metrics):
-    assert metrics.normative_segments_with_multiple_norms == 289
+    assert metrics.normative_segments_with_multiple_norms == 292
     assert metrics.mapping_shape.one_norm_to_one_target == 26
     assert metrics.mapping_shape.many_norms_to_one_target == 348
     assert metrics.mapping_shape.one_norm_to_many_targets == 0
     assert metrics.mapping_shape.many_to_many == 15
-    assert metrics.mapping_shape.unmapped == 933
+    assert metrics.mapping_shape.unmapped == 958
     assert metrics.semantic_vs_existing_implementation_disagreements == 233
     assert metrics.semantic_norms_without_existing_implementation == [
         "AIA-NORM-A002-P1-A-PROVIDER",
@@ -3981,3 +3981,22 @@ def test_annex_thirteen_separates_commission_criteria_from_the_user_presumption(
     assert presumption.kind.value == "legal_consequence"
     assert presumption.product_scope.value == "dependency_only"
     assert "10,000" in presumption.action
+
+
+def test_annex_fourteen_extracts_atomic_designation_code_mappings():
+    bundle = load_normative_coverage()
+    norms = {
+        norm.norm_id: norm
+        for norm in bundle.norm_inventory.norms
+        if norm.norm_id.startswith("AIA-NORM-ANNEX-XIV-")
+    }
+
+    assert len(norms) == 25
+    assert sum("-AIP-" in norm_id for norm_id in norms) == 11
+    assert sum("-AIB-" in norm_id for norm_id in norms) == 3
+    assert sum("-AIH-" in norm_id for norm_id in norms) == 8
+    assert norms["AIA-NORM-ANNEX-XIV-DESIGNATED-BODIES-ONLY"].kind.value == "prohibition"
+    assert norms["AIA-NORM-ANNEX-XIV-USE-CODES-IN-APPLICATION"].subjects[0].subject_ref == (
+        "conformity_assessment_body"
+    )
+    assert all(norm.product_scope.value == "outside_supported_actor" for norm in norms.values())

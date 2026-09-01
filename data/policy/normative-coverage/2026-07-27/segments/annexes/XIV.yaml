@@ -1,0 +1,16 @@
+documents:
+- kind: annex
+  number: XIV
+  segmentation: paragraphs
+  paragraph_disposition: normative
+  paragraph_reason: ''
+  paragraph_overrides:
+    P001:
+      disposition: context_only
+      reason: Annex title describing the Article 30 notification-purpose scope.
+      verified_by: codex
+  verified_by: codex
+  divisions:
+  - label: HEAD
+    marker: null
+    disposition: structural

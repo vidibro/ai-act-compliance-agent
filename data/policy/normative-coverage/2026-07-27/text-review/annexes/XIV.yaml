@@ -16,9 +16,9 @@ segments:
   disposition_reason: ''
   norm_ids: []
   review:
-    status: proposed
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: codex
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
     display_chunks: 1
@@ -36,17 +36,17 @@ segments:
     procedure referred to in Article 30 specifying the scope of the designation as notified bodies
 
     '
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
+  disposition: context_only
+  disposition_reason: Annex title describing the Article 30 notification-purpose scope.
   norm_ids: []
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: codex
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-ANNEX-XIV-P002
   source:
@@ -64,17 +64,19 @@ segments:
     Article 30.
 
     '
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-ANNEX-XIV-DESIGNATED-BODIES-ONLY
+  - AIA-NORM-ANNEX-XIV-CODES-SET-DESIGNATION-SCOPE
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: codex
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-ANNEX-XIV-P003
   source:
@@ -96,17 +98,31 @@ segments:
     AI systemsAIB 0203Emotion recognition AI systems
 
     '
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-ANNEX-XIV-AIP-0102
+  - AIA-NORM-ANNEX-XIV-AIP-0103
+  - AIA-NORM-ANNEX-XIV-AIP-0104
+  - AIA-NORM-ANNEX-XIV-AIP-0105
+  - AIA-NORM-ANNEX-XIV-AIP-0106
+  - AIA-NORM-ANNEX-XIV-AIP-0107
+  - AIA-NORM-ANNEX-XIV-AIP-0108
+  - AIA-NORM-ANNEX-XIV-AIP-0109
+  - AIA-NORM-ANNEX-XIV-AIP-0110
+  - AIA-NORM-ANNEX-XIV-AIP-0111
+  - AIA-NORM-ANNEX-XIV-AIP-0112
+  - AIA-NORM-ANNEX-XIV-AIB-0201
+  - AIA-NORM-ANNEX-XIV-AIB-0202
+  - AIA-NORM-ANNEX-XIV-AIB-0203
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: codex
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-ANNEX-XIV-P004
   source:
@@ -127,17 +143,25 @@ segments:
     not covered by other codes, including Agentic AI
 
     '
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-ANNEX-XIV-AIH-0101
+  - AIA-NORM-ANNEX-XIV-AIH-0201
+  - AIA-NORM-ANNEX-XIV-AIH-0202
+  - AIA-NORM-ANNEX-XIV-AIH-0203
+  - AIA-NORM-ANNEX-XIV-AIH-0204
+  - AIA-NORM-ANNEX-XIV-AIH-0205
+  - AIA-NORM-ANNEX-XIV-AIH-0301
+  - AIA-NORM-ANNEX-XIV-AIH-0401
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: codex
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
 - segment_id: AIA-TEXT-ANNEX-XIV-P005
   source:
@@ -152,15 +176,16 @@ segments:
     in the application for designation referred to in Article 29.
 
     '
-  disposition: needs_review
-  disposition_reason: Not yet semantically extracted; retained as explicit review debt.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-ANNEX-XIV-USE-CODES-IN-APPLICATION
   review:
-    status: needs_review
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: codex
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
-    display_chunks: 0
-    fully_displayed: false
+    display_chunks: 1
+    fully_displayed: true
     elapsed_seconds: null
