@@ -1,0 +1,24 @@
+records:
+- norm_id: AIA-NORM-A085-P1-LODGE-COMPLAINT
+  source: A085-P001
+  quote: any natural or legal person having grounds to consider that there has been an infringement of the provisions of this Regulation may submit complaints to the relevant market surveillance authority.
+  action: submit an infringement complaint to the relevant market surveillance authority without prejudice to other remedies
+  subject_ref: natural_or_legal_person
+  subject_category: natural_person
+  kind: entitlement
+  product_scope: no_product_action
+  product_scope_reason: This is a complainant entitlement rather than an operator product action.
+  implementation_mode: none_required
+  implementation_reason: No independent product action arises.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A085-P2-ACCOUNT-FOR-AND-HANDLE-COMPLAINTS
+  source: A085-P002
+  quote: such complaints shall be taken into account for the purpose of conducting market surveillance activities, and shall be handled in line with the dedicated procedures established therefor by the market surveillance authorities.
+  action: take complaints into account in surveillance and handle them under dedicated authority procedures
+  subject_ref: market_surveillance_authority
+  subject_category: public_authority
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
