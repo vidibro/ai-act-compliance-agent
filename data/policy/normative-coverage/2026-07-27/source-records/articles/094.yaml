@@ -1,0 +1,13 @@
+records:
+- norm_id: AIA-NORM-A094-GPAI-PROCEDURAL-RIGHTS
+  source: A094-P001
+  quote: Article 18 of Regulation (EU) 2019/1020 shall apply mutatis mutandis to the providers of the general-purpose AI model, without prejudice to more specific procedural rights provided for in this Regulation.
+  action: apply Regulation 2019/1020 Article 18 procedural rights to GPAI providers with necessary adaptations while preserving more specific rights
+  subject_ref: gpai_provider
+  subject_category: supported_operator
+  kind: applicability
+  product_scope: no_product_action
+  product_scope_reason: This grants procedural protection rather than imposing a product compliance action.
+  implementation_mode: none_required
+  implementation_reason: No independent product action arises.
+  verification_mode: not_assessed
