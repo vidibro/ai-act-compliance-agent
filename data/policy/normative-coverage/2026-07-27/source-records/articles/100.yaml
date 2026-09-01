@@ -1,0 +1,84 @@
+records:
+- norm_id: AIA-NORM-A100-P1-IMPOSE-UNION-BODY-FINES
+  source: A100-P001
+  quote: The European Data Protection Supervisor may impose administrative fines
+  action: impose administrative fines on in-scope Union institutions bodies offices and agencies after considering all relevant circumstances and specified factors
+  subject_ref: european_data_protection_supervisor
+  subject_category: union_institution_or_body
+  kind: power
+  mandatory_content: [infringement nature gravity duration consequences affected persons and damage, responsibility and technical organisational measures, harm mitigation, cooperation and compliance with prior measures, similar previous infringements, how the infringement became known including self-notification, annual budget]
+  qualifier_spans: [A100-P002, A100-P003, A100-P004, A100-P005, A100-P006, A100-P007, A100-P008]
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A100-P2-ARTICLE5-FINE
+  source: A100-P009
+  quote: shall be subject to administrative fines of up to EUR 1500000
+  action: expose Union-body Article 5 non-compliance to a fine up to EUR 1500000
+  subject_ref: infringing_union_institution_or_body
+  subject_category: union_institution_or_body
+  kind: legal_consequence
+  product_scope: outside_supported_actor
+  product_scope_reason: This enforcement consequence is outside the supported operator surface.
+  implementation_mode: none_required
+  implementation_reason: No product implementation is required.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A100-P3-OTHER-REQUIREMENT-FINE
+  source: A100-P010
+  quote: shall be subject to administrative fines of up to EUR 750000
+  action: expose other Union-body AI Act non-compliance to a fine up to EUR 750000
+  subject_ref: infringing_union_institution_or_body
+  subject_category: union_institution_or_body
+  kind: legal_consequence
+  product_scope: outside_supported_actor
+  product_scope_reason: This enforcement consequence is outside the supported operator surface.
+  implementation_mode: none_required
+  implementation_reason: No product implementation is required.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A100-P4-HEARING-RIGHTS
+  source: A100-P011
+  quote: shall give the Union institution, body, office or agency which is the subject of the proceedings
+  action: give the investigated Union body an opportunity to be heard and base decisions only on matters open to party comment while closely associating complainants
+  subject_ref: european_data_protection_supervisor
+  subject_category: union_institution_or_body
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A100-P5-DEFENCE-AND-FILE-ACCESS
+  source: A100-P012
+  quote: The rights of defence of the parties concerned shall be fully respected
+  action: fully respect defence rights and provide file access subject to personal-data and business-secret interests
+  subject_ref: european_data_protection_supervisor
+  subject_category: union_institution_or_body
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A100-P6-FINE-FUNDS-AND-OPERATION
+  source: A100-P013
+  quote: Funds collected by imposition of fines in this Article shall contribute to the general budget of the Union
+  action: contribute collected fines to the Union budget without affecting the fined body's effective operation
+  subject_ref: union_budget_and_enforcement_framework
+  subject_category: union_institution_or_body
+  kind: legal_consequence
+  product_scope: outside_supported_actor
+  product_scope_reason: This institutional consequence is outside the supported operator surface.
+  implementation_mode: none_required
+  implementation_reason: No product implementation is required.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A100-P7-ANNUAL-FINE-NOTIFICATION
+  source: A100-P014
+  quote: shall, on an annual basis, notify the Commission
+  action: notify the Commission annually of Article 100 fines and initiated proceedings
+  subject_ref: european_data_protection_supervisor
+  subject_category: union_institution_or_body
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
