@@ -1,0 +1,91 @@
+records:
+- norm_id: AIA-NORM-A078-P1-PROTECT-CONFIDENTIALITY
+  source: A078-P001
+  quote: shall, in accordance with Union or national law, respect the confidentiality of information and data obtained in carrying out their tasks and activities in such a manner as to protect, in particular
+  action: protect confidentiality of task-related information and data under Union or national law
+  subject_ref: persons_involved_in_regulation_application
+  subject_category: other
+  mandatory_content: [intellectual property confidential business information trade secrets and source code subject to the enacted exception, effective inspections investigations and audits, public and national security, criminal and administrative proceedings, classified information]
+  qualifier_spans: [A078-P002, A078-P003, A078-P004, A078-P005, A078-P006]
+  product_scope: outside_supported_actor
+  product_scope_reason: The cross-actor confidentiality rule is represented at specific supported-operator receipt points rather than reported here generically.
+  implementation_mode: none_required
+  implementation_reason: No independent generic operator action is reported from this mixed-addressee provision.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A078-P2-REQUEST-ONLY-NECESSARY-DATA
+  source: A078-P007
+  quote: The authorities involved in the application of this Regulation pursuant to paragraph 1 shall request only data that is strictly necessary for the assessment of the risk posed by AI systems and for the exercise of their powers
+  action: request only data strictly necessary for risk assessment and exercise of enacted powers
+  subject_ref: authorities_involved_in_application
+  subject_category: public_authority
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A078-P2-PROTECT-OBTAINED-DATA
+  source: A078-P007
+  quote: They shall put in place adequate and effective cybersecurity measures to protect the security and confidentiality of the information and data obtained
+  action: maintain adequate effective cybersecurity protecting obtained information and data
+  subject_ref: authorities_involved_in_application
+  subject_category: public_authority
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A078-P2-DELETE-UNNEEDED-DATA
+  source: A078-P007
+  quote: shall delete the data collected as soon as it is no longer needed for the purpose for which it was obtained
+  action: delete collected data as soon as its acquisition purpose no longer requires it
+  subject_ref: authorities_involved_in_application
+  subject_category: public_authority
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A078-P3-RESTRICT-CONFIDENTIAL-DISCLOSURE
+  source: A078-P008
+  quote: information exchanged on a confidential basis between the national competent authorities or between national competent authorities and the Commission shall not be disclosed without prior consultation of the originating national competent authority and the deployer
+  action: withhold security-jeopardising confidential information absent prior originating-authority and deployer consultation and exclude sensitive operational data from exchange
+  subject_ref: national_competent_authority_and_commission
+  subject_category: public_authority
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A078-P3-KEEP-DOCUMENTATION-AND-ENABLE-ACCESS
+  source: A078-P009
+  quote: the technical documentation referred to in Annex IV shall remain within the premises of those authorities. Those authorities shall ensure that the market surveillance authorities referred to in Article 74(8) and (9), as applicable, can, upon request, immediately access the documentation or obtain a copy thereof.
+  action: keep Annex IV documentation on the provider authority's premises and enable immediate cleared-staff authority access or copying on request
+  subject_ref: law_enforcement_immigration_or_asylum_authority_provider
+  subject_category: supported_operator
+  mandatory_content: [documentation remains within provider-authority premises, immediate access or copy on request, access limited to appropriately security-cleared market-authority staff]
+  implementation_refs: [AIA-PO-A78-3]
+  verification_mode: listed_for_confirmation
+- norm_id: AIA-NORM-A078-P4-PRESERVE-EXCHANGE-AND-CRIMINAL-LAW-DUTIES
+  source: A078-P010
+  quote: Paragraphs 1, 2 and 3 shall not affect the rights or obligations of the Commission, Member States and their relevant authorities, as well as those of notified bodies, with regard to the exchange of information and the dissemination of warnings
+  action: preserve information-exchange warning and Member State criminal-law disclosure rights and duties despite paragraphs 1 to 3
+  subject_ref: persons_applying_article_78
+  subject_category: other
+  kind: legal_consequence
+  product_scope: no_product_action
+  product_scope_reason: This saving clause qualifies other duties without creating an independent product action.
+  implementation_mode: none_required
+  implementation_reason: No independent product action arises.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A078-P5-EXCHANGE-WITH-THIRD-COUNTRY-REGULATORS
+  source: A078-P011
+  quote: The Commission and Member States may exchange, where necessary and in accordance with relevant provisions of international and trade agreements, confidential information with regulatory authorities of third countries with which they have concluded bilateral or multilateral confidentiality arrangements guaranteeing an adequate level of confidentiality.
+  action: exchange necessary confidential information with third-country regulators under applicable agreements and adequate confidentiality arrangements
+  subject_ref: commission_and_member_states
+  subject_category: union_institution_or_body
+  kind: power
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
