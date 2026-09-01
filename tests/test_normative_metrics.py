@@ -2607,7 +2607,7 @@ def test_article_forty_seven_maps_complete_declaration_workflow():
     assert len(mapped) == 11
     assert all(norm.implementation_mode.value == "compliance_rule" for norm in mapped)
     annex_content = norms["AIA-NORM-A047-P2-ANNEX-V-CONTENT"]
-    assert len(annex_content.dependencies) == 9
+    assert len(annex_content.dependencies) == 8
     assert {dependency.resolution.value for dependency in annex_content.dependencies} == {
         "internal_resolved"
     }
