@@ -1,0 +1,249 @@
+records:
+- norm_id: AIA-NORM-A075A-P1-MARKET-SURVEILLANCE-POWERS
+  source: A075A-P001
+  quote: the AI Office shall have all the powers of a market surveillance authority
+  action: exercise the specified market-surveillance authority powers when supervising Article 75(1) systems
+  subject_ref: ai_office
+  subject_category: union_institution_or_body
+  kind: power
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A075A-P1-RECLAIM-ENFORCEMENT-COSTS
+  source: A075A-P001
+  quote: The AI Office shall be authorised to fully reclaim from the relevant operator the totality of the costs
+  action: reclaim all supervision and enforcement costs associated with non-compliance from the relevant operator
+  subject_ref: ai_office
+  subject_category: union_institution_or_body
+  kind: power
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A075A-P1-APPLY-ARTICLE17
+  source: A075A-P001
+  quote: Article 17 of Regulation (EU) 2019/1020 shall apply mutatis mutandis
+  action: apply Regulation 2019/1020 Article 17 with necessary adaptations to AI Office supervision
+  subject_ref: ai_office_supervision
+  subject_category: union_institution_or_body
+  kind: applicability
+  product_scope: outside_supported_actor
+  product_scope_reason: This institutional procedure is outside the supported operator surface.
+  implementation_mode: none_required
+  implementation_reason: No product implementation is required.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A075A-P2-START-INVESTIGATION
+  source: A075A-P002
+  quote: it may adopt a decision to start an investigation into that non-compliance
+  action: start an investigation where reasonable grounds indicate provider or deployer non-compliance
+  subject_ref: ai_office
+  subject_category: union_institution_or_body
+  kind: power
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A075A-P2-NOTIFY-INVESTIGATION
+  source: A075A-P002
+  quote: the AI Office shall notify the operator of the AI system concerned
+  action: notify the concerned AI-system operator when starting an investigation
+  subject_ref: ai_office
+  subject_category: union_institution_or_body
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A075A-P2-EXERCISE-POWERS-PREINVESTIGATION
+  source: A075A-P002
+  quote: The AI Office may exercise the powers referred to in paragraph 1 of this Article on its own initiative or following a complaint
+  action: exercise paragraph 1 powers on initiative or complaint including before formally starting an investigation
+  subject_ref: ai_office
+  subject_category: union_institution_or_body
+  kind: power
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A075A-P2-MSA-REQUEST-ASSESSMENT
+  source: A075A-P003
+  quote: it may send a request to the AI Office to assess the matter
+  action: request AI Office assessment of suspected Article 75(1) provider or deployer non-compliance
+  subject_ref: market_surveillance_authority
+  subject_category: public_authority
+  kind: power
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A075A-P3-REQUEST-INFORMATION
+  source: A075A-P004
+  quote: The AI Office may exercise the powers listed
+  action: exercise listed information and document powers by simple request or decision
+  subject_ref: ai_office
+  subject_category: union_institution_or_body
+  kind: power
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A075A-P3-INFORMATION-REQUEST-CONTENT
+  source: A075A-P005
+  quote: the AI Office shall state the legal basis and the purpose of the request
+  action: include the generally required and request-type-specific information and send the territorial authority a copy
+  subject_ref: ai_office
+  subject_category: union_institution_or_body
+  mandatory_content: [legal basis and purpose, required information, response period, simple-request voluntariness correctness and potential fines, decision-request fines and judicial-review right, copy to the operator's territorial market-surveillance authority]
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A075A-P3-VOLUNTARY-REPLY-CORRECTNESS
+  source: A075A-P005
+  quote: in the case of a voluntary reply, the information must be correct and not misleading
+  action: ensure any voluntary response to a simple AI Office request is correct and not misleading
+  subject_ref: requested_operator
+  subject_category: supported_operator
+  product_scope: in_scope
+  product_scope_reason: This is a conditional information-quality duty for supported operators.
+  implementation_mode: missing
+  implementation_reason: No current rule represents this conditional response duty.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A075A-P4-CONDUCT-INSPECTIONS
+  source: A075A-P006
+  quote: the AI Office may conduct all necessary remote or on-site inspections
+  action: conduct necessary remote or on-site inspections for Section enforcement tasks
+  subject_ref: ai_office
+  subject_category: union_institution_or_body
+  kind: power
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A075A-P4-INSPECTION-NOTICES
+  source: A075A-P006
+  quote: the AI Office shall inform the provider concerned of the subject matter and purpose of the investigation
+  action: inform the provider about inspection subject purpose fines and review rights and inform the territorial authority before inspection
+  subject_ref: ai_office
+  subject_category: union_institution_or_body
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A075A-P4-INSPECTION-POWERS
+  source: A075A-P007
+  quote: the officials of the AI Office shall be empowered to
+  action: exercise the specified entry examination copying questioning recording and sealing powers during inspection
+  subject_ref: ai_office_official
+  subject_category: union_institution_or_body
+  kind: power
+  mandatory_content: [enter Union business premises land or property, examine relevant books data and material, copy or extract records, request and record oral or written explanations, seal premises books or records as necessary]
+  qualifier_spans: [A075A-P008, A075A-P009, A075A-P010, A075A-P011, A075A-P012]
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A075A-P4-ASSIST-OBSTRUCTED-INSPECTION
+  source: A075A-P013
+  quote: the national competent authority of the Member State concerned shall afford it the necessary assistance
+  action: provide necessary assistance including police-equivalent assistance where appropriate to overcome inspection obstruction
+  subject_ref: national_competent_authority
+  subject_category: public_authority
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A075A-P4-APPLY-JUDICIAL-AUTHORISATION
+  source: A075A-P014
+  quote: the AI Office shall apply for such an authorisation
+  action: apply for required judicial authorisation for an on-site inspection including precautionarily where appropriate
+  subject_ref: ai_office
+  subject_category: union_institution_or_body
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A075A-P4-JUDICIAL-AUTHORISATION-REVIEW
+  source: A075A-P014
+  quote: the national judicial authority shall promptly verify that the coercive measures envisaged are neither arbitrary nor excessive
+  action: promptly review requested coercive measures for non-arbitrariness and proportionality without reviewing investigation necessity or demanding the AI Office file
+  subject_ref: national_judicial_authority
+  subject_category: public_authority
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A075A-P5-MSA-FACT-FINDING
+  source: A075A-P015
+  quote: may in its own territory carry out any investigation, inspection or other fact-finding measure
+  action: conduct requested territorial fact-finding for the AI Office under national-law powers
+  subject_ref: member_state_market_surveillance_authority
+  subject_category: public_authority
+  kind: power
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A075A-P6-ADDITIONAL-OPERATOR-ORDERS
+  source: A075A-P016
+  quote: the AI Office, in the exercise of its competences referred to in Article 75(1), may
+  action: order system access and explanations and require retention of necessary compliance-assessment data and documents
+  subject_ref: ai_office
+  subject_category: union_institution_or_body
+  kind: power
+  mandatory_content: [access to and explanations about AI systems, retention of necessary compliance-assessment data and documents]
+  qualifier_spans: [A075A-P017, A075A-P018]
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A075A-P7-APPOINT-EXPERTS
+  source: A075A-P019
+  quote: the AI Office may appoint independent external experts and auditors
+  action: appoint external and agreed Member-State experts teams and auditors for Article 75(1) monitoring
+  subject_ref: ai_office
+  subject_category: union_institution_or_body
+  kind: power
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A075A-P7-SHARE-MONITORING-INFORMATION
+  source: A075A-P019
+  quote: Information obtained as a result of such monitoring actions shall be shared with the relevant competent authorities
+  action: share monitoring information with relevant Member-State competent authorities
+  subject_ref: ai_office
+  subject_category: union_institution_or_body
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A075A-P8-PURPOSE-LIMIT-INFORMATION
+  source: A075A-P020
+  quote: shall be used only for the purpose of this Regulation
+  action: use Article 75a information only for AI Act purposes
+  subject_ref: article_75a_information_recipient
+  subject_category: public_authority
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
