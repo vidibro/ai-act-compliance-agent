@@ -49,8 +49,8 @@ def test_inventory_partitions_the_complete_versioned_corpus(metrics):
     assert bundle.text_review.corpus_complete is True
     assert set(grouped) == expected
     assert metrics.documents == 133
-    assert metrics.documents_with_extracted_norms == 101
-    assert metrics.documents_with_review_debt == 32
+    assert metrics.documents_with_extracted_norms == 111
+    assert metrics.documents_with_review_debt == 22
     assert metrics.exact_source_characters == 394_667
     assert set(metrics.norms_by_document) == {
         "article 2",
@@ -149,6 +149,16 @@ def test_inventory_partitions_the_complete_versioned_corpus(metrics):
         "article 93",
         "article 94",
         "article 95",
+        "article 96",
+        "article 97",
+        "article 98",
+        "article 99",
+        "article 100",
+        "article 101",
+        "article 102",
+        "article 103",
+        "article 104",
+        "article 105",
         "article 113",
         "annex III",
         "annex IV",
@@ -1625,20 +1635,20 @@ def test_article_twenty_eight_is_complete_institutional_coverage():
 
 
 def test_inventory_cannot_be_misreported_as_independently_approved(metrics):
-    assert metrics.approved_characters == 296_245
-    assert metrics.needs_review_characters == 73_001
+    assert metrics.approved_characters == 316_616
+    assert metrics.needs_review_characters == 53_164
     assert metrics.review_statuses == {
-        "approved": 1115,
-        "needs_review": 273,
-        "proposed": 1184,
+        "approved": 1204,
+        "needs_review": 194,
+        "proposed": 1220,
     }
     assert metrics.timed_review_records == 0
-    assert metrics.total_review_records == 2573
+    assert metrics.total_review_records == 2619
 
 
 def test_semantic_pass_finds_propositions_a_shall_scan_misses(metrics):
-    assert metrics.shall_vs_semantic_disagreements == 421
-    assert metrics.shall_token_candidate_recall == pytest.approx(696 / 1117)
+    assert metrics.shall_vs_semantic_disagreements == 426
+    assert metrics.shall_token_candidate_recall == pytest.approx(737 / 1163)
     assert "AIA-NORM-A011-P1-SIMPLIFY" in metrics.semantic_norms_without_shall_token
     assert "AIA-NORM-A043-P5-AMEND" in metrics.semantic_norms_without_shall_token
     assert "AIA-NORM-A060-P4-PERMISSION" in metrics.semantic_norms_without_shall_token
@@ -1646,12 +1656,12 @@ def test_semantic_pass_finds_propositions_a_shall_scan_misses(metrics):
 
 
 def test_metrics_expose_many_to_many_and_implementation_debt(metrics):
-    assert metrics.normative_segments_with_multiple_norms == 258
+    assert metrics.normative_segments_with_multiple_norms == 262
     assert metrics.mapping_shape.one_norm_to_one_target == 26
     assert metrics.mapping_shape.many_norms_to_one_target == 347
     assert metrics.mapping_shape.one_norm_to_many_targets == 0
     assert metrics.mapping_shape.many_to_many == 15
-    assert metrics.mapping_shape.unmapped == 729
+    assert metrics.mapping_shape.unmapped == 775
     assert metrics.semantic_vs_existing_implementation_disagreements == 162
     assert metrics.semantic_norms_without_existing_implementation == [
         "AIA-NORM-A002-P1-A-PROVIDER",
@@ -3489,6 +3499,62 @@ def test_article_ninety_five_extracts_voluntary_code_framework():
     facilitated = norms["AIA-NORM-A095-P2-FACILITATE-SPECIFIC-REQUIREMENT-CODES"]
     assert len(facilitated.mandatory_content) == 5
     assert norms["AIA-NORM-A095-P3-DRAW-UP-VOLUNTARY-CODES"].kind.value == "power"
+
+
+def test_articles_ninety_six_to_ninety_eight_extract_institutional_procedures():
+    bundle = load_normative_coverage()
+    by_article = {
+        article: [
+            norm
+            for norm in bundle.norm_inventory.norms
+            if norm.norm_id.startswith(f"AIA-NORM-A{article}-")
+        ]
+        for article in ("096", "097", "098")
+    }
+
+    assert {article: len(norms) for article, norms in by_article.items()} == {
+        "096": 5,
+        "097": 8,
+        "098": 2,
+    }
+    assert len(by_article["096"][0].mandatory_content) == 7
+    assert sum(norm.kind.value == "power" for norm in by_article["097"]) == 2
+    assert all(norm.product_scope.value == "outside_supported_actor" for norm in by_article["098"])
+
+
+def test_article_ninety_nine_extracts_penalty_framework():
+    bundle = load_normative_coverage()
+    norms = {
+        norm.norm_id: norm
+        for norm in bundle.norm_inventory.norms
+        if norm.norm_id.startswith("AIA-NORM-A099-")
+    }
+
+    assert len(norms) == 13
+    assert len(norms["AIA-NORM-A099-P4-OPERATOR-FINE"].mandatory_content) == 8
+    assert len(norms["AIA-NORM-A099-P7-CONSIDER-FINE-CIRCUMSTANCES"].mandatory_content) == 10
+
+
+def test_articles_one_hundred_to_one_hundred_five_extract_enforcement_and_amendments():
+    bundle = load_normative_coverage()
+    counts = {
+        article: sum(
+            norm.norm_id.startswith(f"AIA-NORM-A{article}-")
+            for norm in bundle.norm_inventory.norms
+        )
+        for article in ("100", "101", "102", "103", "104", "105")
+    }
+
+    assert counts == {"100": 7, "101": 7, "102": 1, "103": 1, "104": 1, "105": 1}
+    amendments = [
+        norm
+        for norm in bundle.norm_inventory.norms
+        if any(
+            norm.norm_id.startswith(f"AIA-NORM-A{article}-")
+            for article in ("102", "103", "104", "105")
+        )
+    ]
+    assert all("Chapter III Section 2" in norm.action for norm in amendments)
 
 
 def test_annex_inventory_keeps_external_actors_and_exact_mandatory_content():
