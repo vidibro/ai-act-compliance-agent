@@ -1,6 +1,7 @@
 # Normative Coverage Migration
 
-**Status:** validation infrastructure complete; representative extraction awaiting independent review
+**Status:** full-corpus proposed extraction complete; independent assurance and implementation
+reconciliation in progress
 
 **Act snapshot:** `2026-07-27`
 
@@ -344,7 +345,8 @@ Measure:
 
 **Exit:** corrected schema and a data-backed estimate for full authoring.
 
-**Proposed extraction 2026-08-28:** the inventory now partitions all 133 source bodies in the pinned
+**Full-corpus proposed extraction 2026-08-28:** the representative pilot was expanded, in source
+order, into a complete proposed inventory. It now partitions all 133 source bodies in the pinned
 corpus into 1,455 exact segments. It proposes 1,347 norms across 132 documents; Article 1 supplies
 reviewed subject-matter context without an atomic norm. No article or annex remains as `needs_review`
 debt, and structural headings remain separately identified.
@@ -354,11 +356,14 @@ The reproducible measurements are in the versioned
 1,347 proposed propositions whose exact operative quote contains no `shall` token. No source characters
 remain marked `needs_review`.
 
-The 1,423 approved segments cover Articles 1, 2, 3, 4, 4a, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 60a, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 75a, 75b, 75c, 75d, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, and 113, plus Annexes I, II, III, V, VI, VII, IX, X, XI, XII, XIII, and XIV; their
-linked norm records remain `proposed`. Elapsed review time was not captured, and the rest of the
-corpus has no explicit semantic review debt. The remaining assurance boundary is independent approval
-of proposed norm records and implementation coverage; elapsed-time data still does not support the
-data-backed full-authoring estimate required by the exit criterion.
+Of the 1,455 segments, 1,432 are approved and 23 remain `proposed`: Article 113 and Annexes IV
+and VIII. The Article 5 heading and all Article 50 segments were independently confirmed on
+2026-09-02. Their linked norm records, like all 1,347 extracted
+norms, remain `proposed`; approving a source segment does not independently approve the legal
+propositions extracted from it. Elapsed review time was not captured. The remaining assurance
+boundary is independent approval of the proposed segments and norms, followed by implementation
+reconciliation. The original pilot exit criterion did not produce a measured full-authoring estimate
+because the work proceeded directly into full-corpus extraction.
 
 #### Versioned authoring and reproducible compilation
 
@@ -400,11 +405,32 @@ actually shown. Completion comes from approved span coverage, never from auditor
 
 **Exit:** repeatable source-first extraction and review workflow.
 
-**Tooling started 2026-08-28:** versioned candidate runs enumerate every paragraph-sized debt
-segment and source character even when multi-channel heuristics find no candidate. Candidate
-records are revalidated against the exact source inventory. Candidate adjudication, applying its
-results to canonical authoring inputs, rendering the review matrix, and cross-version diffing remain
-open.
+**Implemented through 2026-08-31:** versioned candidate runs enumerate every paragraph-sized segment
+and source character even when multi-channel heuristics find no candidate. Candidate records are
+revalidated against the exact source inventory. Reviewed judgments are stored in sharded authored
+inputs and compiled into the generated text-review, norm, and report artifacts. A dedicated review
+interface, review-matrix rendering, and cross-version diff tooling remain optional workflow debt;
+they do not block adjudication through the current source-order workflow.
+
+### Current checkpoint — independent assurance and implementation reconciliation
+
+The extraction result is an auditable draft, not a claim that every legal proposition is finally
+approved or executable. Work now proceeds in this order:
+
+1. independently decide the 23 proposed source segments and resolve the four `unresolved`
+   implementation modes;
+2. independently audit proposed norms, prioritising prohibitions, applicability, supported-actor
+   obligations, exceptions, deadlines, and cross-document dependencies;
+3. reconcile every in-scope norm with existing rules, classification questions, gap questions,
+   shared predicates, report-only behavior, or an explicit carrier norm;
+4. group compatible norms by actor, action, trigger, lifecycle, and evidence requirement rather
+   than creating one `PolicyRule` per norm;
+5. implement genuine gaps in shadow mode, then require reachability and report-surfacing evidence.
+
+Current implementation baseline: 618 norms are `in_scope`; 233 have no direct existing
+implementation reference. Of those, 17 are intentionally `carried_by_other_norm`, while 212 are
+`missing` and four are `unresolved`. The resulting 216 implementation-debt records are mapping and
+design candidates, not a forecast of 216 new rules.
 
 ### Phase 4 — link the current implementation in shadow mode
 
@@ -429,6 +455,12 @@ debt.
 - Keep the old ledger as a comparison oracle until every entry is linked or retired.
 
 **Exit:** 100% approved text-span coverage and no undisposed norm.
+
+**Extraction status:** complete as a proposed corpus inventory. Exact source partitioning and
+disposition authoring cover all 133 documents and all source characters. The exit criterion remains
+open because 23 segments and all 1,347 norm records still require independent assurance. Corrections
+found during assurance must be made in `segments/` and `source-records/`, followed by regeneration;
+generated `text-review/` and `norms/` files are never hand-edited.
 
 ### Phase 6 — normative coverage compiler and CI gate
 
@@ -537,8 +569,9 @@ No aggregate percentage replaces these measures.
 
 ## Rough effort
 
-The pilot is the first reliable estimator. Initial planning range for one experienced engineer,
-using agents for extraction but retaining independent adjudication:
+The original estimates below are retained as planning history. Full-corpus extraction established
+an actual inventory of 1,347 proposed norms, so remaining effort is driven by independent legal
+assurance, many-to-many implementation mapping, and behavioral proof rather than extraction volume:
 
 | Work | Estimate |
 |---|---:|
@@ -551,12 +584,17 @@ using agents for extraction but retaining independent adjudication:
 | Reachability, mutation, and report tests | 5–10 days |
 | Golden-set additions and reruns | 4–8 days |
 
-Expected total: roughly **6–10 person-weeks**. The dominant uncertainty is legal review and the
-number of atomic norms, not the code scaffolding. Do not promise a norm count until the pilot; the
-current provision count is too coarse to extrapolate from safely.
+The original total was roughly **6–10 person-weeks**. It must not be used as a remaining-work
+estimate: several infrastructure and authoring stages are complete, while the unexpectedly large
+norm inventory makes assurance and mapping more substantial than the original pilot could measure.
+A new forecast should be based on measured review and reconciliation throughput from representative
+batches of the 1,347 records.
 
 ## Immediate next action
 
-Do not begin with a full-Act extraction run. Complete Phase 0, implement the shadow schemas and
-span resolver, and run the Phase 2 pilot. The pilot must validate the review workflow and narrow the
-effort estimate before the full inventory is authored.
+Independently review the 23 proposed source segments in source order: Article 113, Annex IV, and
+Annex VIII. Apply confirmed review provenance to authored
+`segments/` records and regenerate the derived artifacts. Then audit representative high-risk norm
+batches and measure throughput before committing to a full norm-review estimate. In parallel with
+that assurance work, resolve the four `unresolved` implementation modes and begin the Phase 4
+norm-to-runtime reconciliation in shadow mode.

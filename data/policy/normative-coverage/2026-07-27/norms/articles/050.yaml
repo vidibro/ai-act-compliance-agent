@@ -23,7 +23,9 @@ norms:
   conditions: []
   exceptions:
   - obvious interaction in context
-  - qualifying law-enforcement authorisation
+  - AI system authorised by law to detect, prevent, investigate, or prosecute criminal offences, subject
+    to safeguards for third-party rights and freedoms, unless the system is publicly available for reporting
+    a criminal offence
   mandatory_content: []
   dependencies: []
   product_scope: in_scope
@@ -63,7 +65,9 @@ norms:
   - AIA-TEXT-A050-P5
   effective_date_spans: []
   conditions: []
-  exceptions: []
+  exceptions:
+  - assistive standard editing, or no substantial alteration of deployer input data or its semantics
+  - use authorised by law to detect, prevent, investigate, or prosecute criminal offences
   mandatory_content:
   - machine-readable marking
   - detectability as artificial or manipulated
@@ -104,7 +108,10 @@ norms:
   - AIA-TEXT-A050-P5
   effective_date_spans: []
   conditions: []
-  exceptions: []
+  exceptions:
+  - biometric categorisation or emotion recognition permitted by law to detect, prevent, or investigate
+    criminal offences, subject to safeguards for third-party rights and freedoms and in accordance with
+    Union law
   mandatory_content: []
   dependencies: []
   product_scope: in_scope
@@ -141,7 +148,10 @@ norms:
   qualifier_spans: []
   effective_date_spans: []
   conditions: []
-  exceptions: []
+  exceptions:
+  - biometric categorisation or emotion recognition permitted by law to detect, prevent, or investigate
+    criminal offences, subject to safeguards for third-party rights and freedoms and in accordance with
+    Union law
   mandatory_content: []
   dependencies:
   - dependency_ref: Regulation (EU) 2016/679; Regulation (EU) 2018/1725; Directive (EU) 2016/680
@@ -180,8 +190,11 @@ norms:
   qualifier_spans:
   - AIA-TEXT-A050-P5
   effective_date_spans: []
-  conditions: []
-  exceptions: []
+  conditions:
+  - for evidently artistic, creative, satirical, fictional, or analogous works or programmes, disclosure
+    is limited to an appropriate indication that does not hamper display or enjoyment
+  exceptions:
+  - use authorised by law to detect, prevent, investigate, or prosecute criminal offences
   mandatory_content: []
   dependencies: []
   product_scope: in_scope
@@ -219,7 +232,10 @@ norms:
   - AIA-TEXT-A050-P5
   effective_date_spans: []
   conditions: []
-  exceptions: []
+  exceptions:
+  - use authorised by law to detect, prevent, investigate, or prosecute criminal offences
+  - AI-generated content underwent human review or editorial control and a natural or legal person holds
+    editorial responsibility for publication
   mandatory_content: []
   dependencies: []
   product_scope: in_scope

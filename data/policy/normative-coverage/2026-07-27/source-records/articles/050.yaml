@@ -12,7 +12,9 @@ records:
   verification_mode: judged_from_document
   exceptions:
   - obvious interaction in context
-  - qualifying law-enforcement authorisation
+  - AI system authorised by law to detect, prevent, investigate, or prosecute criminal offences,
+    subject to safeguards for third-party rights and freedoms, unless the system is publicly
+    available for reporting a criminal offence
   qualifier_spans:
   - A050-P5
 - norm_id: AIA-NORM-A050-P2-MARK-DETECT
@@ -30,6 +32,9 @@ records:
   - machine-readable marking
   - detectability as artificial or manipulated
   - effective, interoperable, robust and reliable solution as technically feasible
+  exceptions:
+  - assistive standard editing, or no substantial alteration of deployer input data or its semantics
+  - use authorised by law to detect, prevent, investigate, or prosecute criminal offences
   qualifier_spans:
   - A050-P5
 - norm_id: AIA-NORM-A050-P3-INFORM
@@ -41,6 +46,10 @@ records:
   implementation_refs:
   - AIA-TR-A50-3
   verification_mode: listed_for_confirmation
+  exceptions:
+  - biometric categorisation or emotion recognition permitted by law to detect, prevent, or
+    investigate criminal offences, subject to safeguards for third-party rights and freedoms and
+    in accordance with Union law
   qualifier_spans:
   - A050-P5
 - norm_id: AIA-NORM-A050-P3-DATA
@@ -54,6 +63,10 @@ records:
   - dependency_ref: Regulation (EU) 2016/679; Regulation (EU) 2018/1725; Directive (EU) 2016/680
     resolution: external_recorded
     detail: Referenced instruments are outside the enacted corpus.
+  exceptions:
+  - biometric categorisation or emotion recognition permitted by law to detect, prevent, or
+    investigate criminal offences, subject to safeguards for third-party rights and freedoms and
+    in accordance with Union law
 - norm_id: AIA-NORM-A050-P4-DEEPFAKE
   source: A050-P4
   quote: shall disclose that the content has been artificially generated or manipulated
@@ -63,6 +76,11 @@ records:
   implementation_refs:
   - AIA-TR-A50-4
   verification_mode: listed_for_confirmation
+  conditions:
+  - for evidently artistic, creative, satirical, fictional, or analogous works or programmes,
+    disclosure is limited to an appropriate indication that does not hamper display or enjoyment
+  exceptions:
+  - use authorised by law to detect, prevent, investigate, or prosecute criminal offences
   qualifier_spans:
   - A050-P5
 - norm_id: AIA-NORM-A050-P4-TEXT
@@ -74,6 +92,10 @@ records:
   implementation_refs:
   - AIA-TR-A50-4
   verification_mode: listed_for_confirmation
+  exceptions:
+  - use authorised by law to detect, prevent, investigate, or prosecute criminal offences
+  - AI-generated content underwent human review or editorial control and a natural or legal person
+    holds editorial responsibility for publication
   qualifier_spans:
   - A050-P5
 - norm_id: AIA-NORM-A050-P5-MANNER
