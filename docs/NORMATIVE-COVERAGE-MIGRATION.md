@@ -356,8 +356,8 @@ The reproducible measurements are in the versioned
 1,347 proposed propositions whose exact operative quote contains no `shall` token. No source characters
 remain marked `needs_review`.
 
-Of the 1,455 segments, 1,432 are approved and 23 remain `proposed`: Article 113 and Annexes IV
-and VIII. The Article 5 heading and all Article 50 segments were independently confirmed on
+Of the 1,455 segments, 1,440 are approved and 15 remain `proposed`: Annexes IV and VIII. The
+Article 5 heading and all Article 50 and Article 113 segments were independently confirmed on
 2026-09-02. Their linked norm records, like all 1,347 extracted
 norms, remain `proposed`; approving a source segment does not independently approve the legal
 propositions extracted from it. Elapsed review time was not captured. The remaining assurance
@@ -417,7 +417,7 @@ they do not block adjudication through the current source-order workflow.
 The extraction result is an auditable draft, not a claim that every legal proposition is finally
 approved or executable. Work now proceeds in this order:
 
-1. independently decide the 23 proposed source segments and resolve the four `unresolved`
+1. independently decide the 15 proposed source segments and resolve the four `unresolved`
    implementation modes;
 2. independently audit proposed norms, prioritising prohibitions, applicability, supported-actor
    obligations, exceptions, deadlines, and cross-document dependencies;
@@ -458,7 +458,7 @@ debt.
 
 **Extraction status:** complete as a proposed corpus inventory. Exact source partitioning and
 disposition authoring cover all 133 documents and all source characters. The exit criterion remains
-open because 23 segments and all 1,347 norm records still require independent assurance. Corrections
+open because 15 segments and all 1,347 norm records still require independent assurance. Corrections
 found during assurance must be made in `segments/` and `source-records/`, followed by regeneration;
 generated `text-review/` and `norms/` files are never hand-edited.
 
@@ -592,8 +592,8 @@ batches of the 1,347 records.
 
 ## Immediate next action
 
-Independently review the 23 proposed source segments in source order: Article 113, Annex IV, and
-Annex VIII. Apply confirmed review provenance to authored
+Independently review the 15 proposed source segments in source order: Annex IV and Annex VIII.
+Apply confirmed review provenance to authored
 `segments/` records and regenerate the derived artifacts. Then audit representative high-risk norm
 batches and measure throughput before committing to a full norm-review estimate. In parallel with
 that assurance work, resolve the four `unresolved` implementation modes and begin the Phase 4

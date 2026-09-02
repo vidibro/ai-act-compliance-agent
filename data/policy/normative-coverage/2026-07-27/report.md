@@ -1094,7 +1094,7 @@ rule selection, judging, or reporting.
 - Exact source characters partitioned: 394667
 - Documents containing explicit review debt: 0
 - Characters displayed by the extraction pass: 394667
-- Independently approved characters: 383638
+- Independently approved characters: 384654
 - Characters deliberately left as review debt: 0
 - Normative segments supporting multiple propositions: 292
 - Semantic candidates a shall-token pass missed: 524
@@ -1124,4 +1124,4 @@ rule selection, judging, or reporting.
 
 ## Review boundary
 
-Segment reviews covering 383638 source characters are independently approved. Approval applies to source coverage and segment dispositions; it does not by itself approve linked norm records. Remaining records are proposed findings or explicit `needs_review` debt. This report therefore does not claim legal completeness for the corpus.
+Segment reviews covering 384654 source characters are independently approved. Approval applies to source coverage and segment dispositions; it does not by itself approve linked norm records. Remaining records are proposed findings or explicit `needs_review` debt. This report therefore does not claim legal completeness for the corpus.

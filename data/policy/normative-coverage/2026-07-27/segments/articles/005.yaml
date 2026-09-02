@@ -2,6 +2,8 @@ documents:
 - kind: article
   number: '5'
   segmentation: paragraphs
+  paragraph_disposition: normative
+  verified_by: vidibro
   paragraph_overrides:
     P001: &id001
       disposition: normative
@@ -43,4 +45,3 @@ documents:
   - label: HEAD
     marker: null
     disposition: structural
-    verified_by: vidibro

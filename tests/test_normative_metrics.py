@@ -639,7 +639,7 @@ def test_article_five_is_fully_approved():
 
     assert len(segments) == 35
     assert segments[0].disposition.value == "structural"
-    assert segments[0].review.status.value == "proposed"
+    assert segments[0].review.status.value == "approved"
     assert all(segment.disposition.value == "normative" for segment in segments[1:])
     assert all(segment.review.status.value == "approved" for segment in segments[1:])
     assert all(segment.review.verified_by == "vidibro" for segment in segments[1:])
