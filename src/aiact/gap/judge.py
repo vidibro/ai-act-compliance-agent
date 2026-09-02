@@ -40,7 +40,7 @@ from dataclasses import dataclass
 from typing import Any
 
 from aiact.config import get_settings
-from aiact.llm import flatten, unfence, verbatim
+from aiact.llm import DATA_NOT_INSTRUCTIONS, fence, flatten, new_marker, unfence, verbatim
 from aiact.providers import ProviderProfile, gateway_kwargs, profile_for
 from aiact.retrieval.store import DocumentIndex, Hit, document_id
 from aiact.schemas.enums import CheckType, Verdict
@@ -103,6 +103,8 @@ _SYSTEM_PROMPT = (
     "EXISTS, the pointer is legitimate drafting — the content is in the document even when it is "
     "not among your excerpts, and you must not hold that against the provider. Do not second-guess "
     "either marking from the excerpts alone."
+    # The excerpts, the section list and the resolved references are all the provider's own text.
+    "\n\n" + DATA_NOT_INSTRUCTIONS
 )
 
 # What "satisfying" means per check type. An obligation to DESCRIBE a capability and one to REPORT
@@ -292,6 +294,8 @@ class LLMJudge:
         # The document's full section list, so the judge can tell "not retrieved" from "not present"
         # instead of hedging every absence into INADEQUATE.
         contents = "\n".join(f"- {section}" for section in outline)
+
+        marker = new_marker(excerpts, contents, *(c.body for r in references for c in r.chunks))
         followed = ""
         if references:
             lines = []
@@ -314,12 +318,14 @@ class LLMJudge:
             )
             followed = (
                 "Cross-references appearing in the excerpts, resolved against the document "
-                "for you — these are FACTS, not inferences:\n" + "\n".join(lines) + bodies + "\n\n"
+                "for you — these are FACTS, not inferences:\n"
+                + fence("REFERENCES", "\n".join(lines) + bodies, marker)
+                + "\n\n"
             )
 
         task = (
             f"Complete list of sections in this document — nothing else exists in it:\n"
-            f"{contents}\n\n"
+            f"{fence('SECTIONS', contents, marker)}\n\n"
             f"{followed}"
             f"The excerpts below are what a search for THIS obligation returned across ALL of "
             f"those sections. So if the substance were anywhere in the document, it would be here: "
@@ -333,7 +339,7 @@ class LLMJudge:
             f"an excerpt is responsive because it was returned. In particular, a passage that "
             f"merely restates the obligation in the obligation's own words scores HIGHLY in this "
             f"search while containing no substance at all — rank is not evidence.\n"
-            f'"""\n{excerpts}\n"""\n\n'
+            f"{fence('EXCERPTS', excerpts, marker)}\n\n"
             f'Answer as JSON with keys: "verdict" (one of "pass", "gap", "inadequate", '
             f'"{UNSURE}"), "reasoning" (one sentence naming what is present or missing), '
             # One contiguous span from ONE excerpt: a quote stitched across excerpts reads as

@@ -9,7 +9,8 @@ an obligation is. This module handles the transport, not the question.
 """
 
 from aiact.llm.content import flatten
+from aiact.llm.fencing import DATA_NOT_INSTRUCTIONS, fence, new_marker
 from aiact.llm.json_reply import unfence
 from aiact.llm.quotes import verbatim
 
-__all__ = ["flatten", "unfence", "verbatim"]
+__all__ = ["DATA_NOT_INSTRUCTIONS", "fence", "flatten", "new_marker", "unfence", "verbatim"]
