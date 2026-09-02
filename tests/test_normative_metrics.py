@@ -1656,14 +1656,14 @@ def test_article_twenty_eight_is_complete_institutional_coverage():
 
 
 def test_inventory_cannot_be_misreported_as_independently_approved(metrics):
-    assert metrics.approved_characters == 378_806
+    assert metrics.approved_characters == 390_556
     assert metrics.needs_review_characters == 0
     assert metrics.review_statuses == {
-        "approved": 1423,
-        "proposed": 1379,
+        "approved": 1467,
+        "proposed": 1351,
     }
     assert metrics.timed_review_records == 0
-    assert metrics.total_review_records == 2803
+    assert metrics.total_review_records == 2819
 
 
 def test_semantic_pass_finds_propositions_a_shall_scan_misses(metrics):
@@ -3823,6 +3823,15 @@ def test_annex_inventory_keeps_external_actors_and_exact_mandatory_content():
         "The name, address and contact details of the provider;"
     )
     assert all("Section A item" not in item for item in section_a.mandatory_content)
+
+    annex_four = norms["AIA-NORM-ANNEX-IV-CONTENT"]
+    assert len(annex_four.mandatory_content) == 26
+    assert annex_four.qualifier_spans[:10] == [
+        "AIA-TEXT-ANNEX-IV-I1",
+        *(f"AIA-TEXT-ANNEX-IV-I1-{letter}" for letter in "ABCDEFGH"),
+        "AIA-TEXT-ANNEX-IV-I2",
+    ]
+    assert "cybersecurity measures" in annex_four.mandatory_content
 
 
 def test_annex_one_extracts_each_harmonisation_instrument_and_its_uav_limit():

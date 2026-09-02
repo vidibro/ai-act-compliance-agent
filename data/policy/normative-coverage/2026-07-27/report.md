@@ -4,7 +4,7 @@
 
 **Act version:** 2026-07-27
 
-The inventory contains 133 complete source-body partitions, 1455 exact segments, and 1347 proposed atomic norms. Every stored article and annex is present. Proposed
+The inventory contains 133 complete source-body partitions, 1471 exact segments, and 1347 proposed atomic norms. Every stored article and annex is present. Proposed
 norms have been extracted from 132 documents; the remaining
 work is retained explicitly rather than omitted. The inventory is not consumed by classification,
 rule selection, judging, or reporting.
@@ -1094,7 +1094,7 @@ rule selection, judging, or reporting.
 - Exact source characters partitioned: 394667
 - Documents containing explicit review debt: 0
 - Characters displayed by the extraction pass: 394667
-- Independently approved characters: 384654
+- Independently approved characters: 390556
 - Characters deliberately left as review debt: 0
 - Normative segments supporting multiple propositions: 292
 - Semantic candidates a shall-token pass missed: 524
@@ -1104,7 +1104,7 @@ rule selection, judging, or reporting.
 - Mapping shapes, by norm: one-to-one=26, many-to-one=348, one-to-many=0, many-to-many=15, unmapped=958
 - Implementation debt candidates: 216
 - Interpretive links to non-binding guidance: 1
-- Review records with measured elapsed time: 0/2803
+- Review records with measured elapsed time: 0/2819
 
 ## Findings
 
@@ -1124,4 +1124,4 @@ rule selection, judging, or reporting.
 
 ## Review boundary
 
-Segment reviews covering 384654 source characters are independently approved. Approval applies to source coverage and segment dispositions; it does not by itself approve linked norm records. Remaining records are proposed findings or explicit `needs_review` debt. This report therefore does not claim legal completeness for the corpus.
+Segment reviews covering 390556 source characters are independently approved. Approval applies to source coverage and segment dispositions; it does not by itself approve linked norm records. Remaining records are proposed findings or explicit `needs_review` debt. This report therefore does not claim legal completeness for the corpus.

@@ -9,18 +9,59 @@ records:
   implementation_reason: Carried by the Article 11(1) technical-documentation norm.
   verification_mode: judged_from_document
   mandatory_content:
-  - general system description
-  - system elements and development process
-  - monitoring, functioning and control
-  - appropriateness of performance metrics
-  - risk-management system
-  - lifecycle changes
-  - standards or alternative compliance solutions
+  - intended purpose, provider name, system version, and relationship to previous versions
+  - interaction or possible interaction with external hardware, software, or other AI systems
+  - relevant software or firmware versions and version-update requirements
+  - every form in which the system is placed on the market or put into service
+  - hardware on which the system is intended to run
+  - for product components, illustrations of external features, marking, and internal layout
+  - basic description of the user interface provided to the deployer
+  - deployer instructions for use and, where applicable, a basic user-interface description
+  - development methods and steps, including use, integration, or modification of third-party
+    pre-trained systems or tools
+  - design specifications, logic, algorithms, design choices and rationale, assumptions, intended
+    persons or groups, classification choices, optimisation objectives and parameters, expected
+    outputs and quality, and relevant technical trade-offs
+  - system architecture, component relationships, overall processing integration, and computational
+    resources used for development, training, testing, and validation
+  - relevant data requirements, training methodologies, data sets and their provenance, scope and
+    characteristics, acquisition and selection, labelling, and cleaning
+  - assessment of required human-oversight and output-interpretation measures
+  - applicable predetermined system and performance changes and continuous-compliance solutions
+  - validation and testing procedures, data and characteristics, metrics, discriminatory-impact
+    testing, logs, and dated and signed reports
+  - cybersecurity measures
+  - capabilities and performance limitations, including group-specific and overall expected accuracy
+  - foreseeable unintended outcomes and sources of health, safety, fundamental-rights, and
+    discrimination risks
+  - required human-oversight and output-interpretation measures
+  - input-data specifications, as appropriate
+  - appropriateness of the selected performance metrics
+  - detailed description of the risk-management system
+  - relevant lifecycle changes made by the provider
+  - applied standards and specifications, partial or non-application, and alternative solutions used
+    to meet Chapter III, Section 2 requirements
   - EU declaration of conformity
-  - post-market performance evaluation and monitoring plan
+  - post-market performance evaluation and the Article 72 monitoring plan
   qualifier_spans:
   - ANNEX-IV-I1
+  - ANNEX-IV-I1-A
+  - ANNEX-IV-I1-B
+  - ANNEX-IV-I1-C
+  - ANNEX-IV-I1-D
+  - ANNEX-IV-I1-E
+  - ANNEX-IV-I1-F
+  - ANNEX-IV-I1-G
+  - ANNEX-IV-I1-H
   - ANNEX-IV-I2
+  - ANNEX-IV-I2-A
+  - ANNEX-IV-I2-B
+  - ANNEX-IV-I2-C
+  - ANNEX-IV-I2-D
+  - ANNEX-IV-I2-E
+  - ANNEX-IV-I2-F
+  - ANNEX-IV-I2-G
+  - ANNEX-IV-I2-H
   - ANNEX-IV-I3
   - ANNEX-IV-I4
   - ANNEX-IV-I5

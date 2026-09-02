@@ -1,6 +1,7 @@
 documents:
 - kind: annex
   number: IV
+  verified_by: vidibro
   divisions:
   - label: HEAD
     marker: null
@@ -11,8 +12,56 @@ documents:
   - label: I1
     marker: '1. '
     disposition: normative
+  - label: I1-A
+    marker: '        (a) '
+    disposition: normative
+  - label: I1-B
+    marker: '        (b) '
+    disposition: normative
+  - label: I1-C
+    marker: '        (c) '
+    disposition: normative
+  - label: I1-D
+    marker: '        (d) '
+    disposition: normative
+  - label: I1-E
+    marker: '        (e) '
+    disposition: normative
+  - label: I1-F
+    marker: '        (f) '
+    disposition: normative
+  - label: I1-G
+    marker: '        (g) '
+    disposition: normative
+  - label: I1-H
+    marker: '        (h) '
+    disposition: normative
   - label: I2
     marker: '2. '
+    disposition: normative
+  - label: I2-A
+    marker: '        (a) '
+    disposition: normative
+  - label: I2-B
+    marker: '        (b) '
+    disposition: normative
+  - label: I2-C
+    marker: '        (c) '
+    disposition: normative
+  - label: I2-D
+    marker: '        (d) '
+    disposition: normative
+  - label: I2-E
+    marker: '        (e) '
+    disposition: normative
+  - label: I2-F
+    marker: '        (f) '
+    disposition: normative
+  - label: I2-G
+    marker: '        (g) '
+    disposition: normative
+  - label: I2-H
+    marker: '        (h) '
     disposition: normative
   - label: I3
     marker: '3. '

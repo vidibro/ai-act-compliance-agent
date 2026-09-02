@@ -18,9 +18,9 @@ segments:
   disposition_reason: ''
   norm_ids: []
   review:
-    status: proposed
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
     display_chunks: 1
@@ -43,9 +43,9 @@ segments:
   norm_ids:
   - AIA-NORM-ANNEX-IV-CONTENT
   review:
-    status: proposed
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
     display_chunks: 1
@@ -57,28 +57,217 @@ segments:
     document: IV
     act_version_date: '2026-07-27'
   start: 211
-  end: 1360
-  sha256: 976c99ca94d4e8934eeb547115c50fc5c56d629b1e8bf316e47958aa84d01967
-  text: "1. A general description of the AI system including:\n        (a) its intended purpose, the name\
-    \ of the provider and the version of the system reflecting its relation to previous versions;\n  \
-    \      (b) how the AI system interacts with, or can be used to interact with, hardware or software,\
-    \ including with other AI systems, that are not part of the AI system itself, where applicable;\n\
-    \        (c) the versions of relevant software or firmware, and any requirements related to version\
-    \ updates;\n        (d) the description of all the forms in which the AI system is placed on the market\
-    \ or put into service, such as software packages embedded into hardware, downloads, or APIs;\n   \
-    \     (e) the description of the hardware on which the AI system is intended to run;\n        (f)\
-    \ where the AI system is a component of products, photographs or illustrations showing external features,\
-    \ the marking and internal layout of those products;\n        (g) a basic description of the user-interface\
-    \ provided to the deployer;\n        (h) instructions for use for the deployer, and a basic description\
-    \ of the user-interface provided to the deployer, where applicable;\n"
+  end: 264
+  sha256: dcf0513219a892a33272ed55619354ed4f88eb29b4eb67b38a4c524d68e9e080
+  text: '1. A general description of the AI system including:
+
+    '
   disposition: normative
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-ANNEX-IV-CONTENT
   review:
-    status: proposed
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- segment_id: AIA-TEXT-ANNEX-IV-I1-A
+  source:
+    kind: annex
+    document: IV
+    act_version_date: '2026-07-27'
+  start: 264
+  end: 399
+  sha256: 68039bfe46a5f70da7e341bf199370770d797ed6f2679f9a95988c06320c5fa3
+  text: '        (a) its intended purpose, the name of the provider and the version of the system reflecting
+    its relation to previous versions;
+
+    '
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-ANNEX-IV-CONTENT
+  review:
+    status: approved
+    extracted_by: semantic-legal-effect-pass
+    verified_by: vidibro
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- segment_id: AIA-TEXT-ANNEX-IV-I1-B
+  source:
+    kind: annex
+    document: IV
+    act_version_date: '2026-07-27'
+  start: 399
+  end: 594
+  sha256: 10b25a8c5ac674f68d2871fdaf3a2f9db96f364d97af9dfaa26e67156142be10
+  text: '        (b) how the AI system interacts with, or can be used to interact with, hardware or software,
+    including with other AI systems, that are not part of the AI system itself, where applicable;
+
+    '
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-ANNEX-IV-CONTENT
+  review:
+    status: approved
+    extracted_by: semantic-legal-effect-pass
+    verified_by: vidibro
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- segment_id: AIA-TEXT-ANNEX-IV-I1-C
+  source:
+    kind: annex
+    document: IV
+    act_version_date: '2026-07-27'
+  start: 594
+  end: 702
+  sha256: 79f11ab19d318961d9cfada671046430e5ac282cfa4731cc58553d1449efbb03
+  text: '        (c) the versions of relevant software or firmware, and any requirements related to version
+    updates;
+
+    '
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-ANNEX-IV-CONTENT
+  review:
+    status: approved
+    extracted_by: semantic-legal-effect-pass
+    verified_by: vidibro
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- segment_id: AIA-TEXT-ANNEX-IV-I1-D
+  source:
+    kind: annex
+    document: IV
+    act_version_date: '2026-07-27'
+  start: 702
+  end: 885
+  sha256: 93de1b0252ff2761c79638fc9e8a0033c8084fb351cc92eaa7ee8ae28cf8af52
+  text: '        (d) the description of all the forms in which the AI system is placed on the market or
+    put into service, such as software packages embedded into hardware, downloads, or APIs;
+
+    '
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-ANNEX-IV-CONTENT
+  review:
+    status: approved
+    extracted_by: semantic-legal-effect-pass
+    verified_by: vidibro
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- segment_id: AIA-TEXT-ANNEX-IV-I1-E
+  source:
+    kind: annex
+    document: IV
+    act_version_date: '2026-07-27'
+  start: 885
+  end: 972
+  sha256: 95679f2bc1d8c18a1a64d0c7270b0560bf3ac620c51d76817046f55733c4bb46
+  text: '        (e) the description of the hardware on which the AI system is intended to run;
+
+    '
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-ANNEX-IV-CONTENT
+  review:
+    status: approved
+    extracted_by: semantic-legal-effect-pass
+    verified_by: vidibro
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- segment_id: AIA-TEXT-ANNEX-IV-I1-F
+  source:
+    kind: annex
+    document: IV
+    act_version_date: '2026-07-27'
+  start: 972
+  end: 1139
+  sha256: f17ee7d4b9486e16885850bca33fba4d937229e3de03ed73e2a7931511e73ec7
+  text: '        (f) where the AI system is a component of products, photographs or illustrations showing
+    external features, the marking and internal layout of those products;
+
+    '
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-ANNEX-IV-CONTENT
+  review:
+    status: approved
+    extracted_by: semantic-legal-effect-pass
+    verified_by: vidibro
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- segment_id: AIA-TEXT-ANNEX-IV-I1-G
+  source:
+    kind: annex
+    document: IV
+    act_version_date: '2026-07-27'
+  start: 1139
+  end: 1219
+  sha256: 125f81e2ce89474e15252252d7c252dddb6ddab7fa179c157afcd61fe03d9ed6
+  text: '        (g) a basic description of the user-interface provided to the deployer;
+
+    '
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-ANNEX-IV-CONTENT
+  review:
+    status: approved
+    extracted_by: semantic-legal-effect-pass
+    verified_by: vidibro
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- segment_id: AIA-TEXT-ANNEX-IV-I1-H
+  source:
+    kind: annex
+    document: IV
+    act_version_date: '2026-07-27'
+  start: 1219
+  end: 1360
+  sha256: 0a0690740d02207041a8ffde5385b09f5fd9b24752d329c7e3325b07e6887688
+  text: '        (h) instructions for use for the deployer, and a basic description of the user-interface
+    provided to the deployer, where applicable;
+
+    '
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-ANNEX-IV-CONTENT
+  review:
+    status: approved
+    extracted_by: semantic-legal-effect-pass
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
     display_chunks: 1
@@ -90,45 +279,235 @@ segments:
     document: IV
     act_version_date: '2026-07-27'
   start: 1360
-  end: 4165
-  sha256: 488ebf083a931e51447337f8df7cb1ff0705895bc207755422f6ea450c7c963b
-  text: "2. A detailed description of the elements of the AI system and of the process for its development,\
-    \ including:\n        (a) the methods and steps performed for the development of the AI system, including,\
-    \ where relevant, recourse to pre-trained systems or tools provided by third parties and how those\
-    \ were used, integrated or modified by the provider;\n        (b) the design specifications of the\
-    \ system, namely the general logic of the AI system and of the algorithms; the key design choices\
-    \ including the rationale and assumptions made, including with regard to persons or groups of persons\
-    \ in respect of who, the system is intended to be used; the main classification choices; what the\
-    \ system is designed to optimise for, and the relevance of the different parameters; the description\
-    \ of the expected output and output quality of the system; the decisions about any possible trade-off\
-    \ made regarding the technical solutions adopted to comply with the requirements set out in Chapter\
-    \ III, Section 2;\n        (c) the description of the system architecture explaining how software\
-    \ components build on or feed into each other and integrate into the overall processing; the computational\
-    \ resources used to develop, train, test and validate the AI system;\n        (d) where relevant,\
-    \ the data requirements in terms of datasheets describing the training methodologies and techniques\
-    \ and the training data sets used, including a general description of these data sets, information\
-    \ about their provenance, scope and main characteristics; how the data was obtained and selected;\
-    \ labelling procedures (e.g. for supervised learning), data cleaning methodologies (e.g. outliers\
-    \ detection);\n        (e) assessment of the human oversight measures needed in accordance with Article\
-    \ 14, including an assessment of the technical measures needed to facilitate the interpretation of\
-    \ the outputs of AI systems by the deployers, in accordance with Article 13(3), point (d);\n     \
-    \   (f) where applicable, a detailed description of pre-determined changes to the AI system and its\
-    \ performance, together with all the relevant information related to the technical solutions adopted\
-    \ to ensure continuous compliance of the AI system with the relevant requirements set out in Chapter\
-    \ III, Section 2;\n        (g) the validation and testing procedures used, including information about\
-    \ the validation and testing data used and their main characteristics; metrics used to measure accuracy,\
-    \ robustness and compliance with other relevant requirements set out in Chapter III, Section 2, as\
-    \ well as potentially discriminatory impacts; test logs and all test reports dated and signed by the\
-    \ responsible persons, including with regard to pre-determined changes as referred to under point\
-    \ (f);\n        (h) cybersecurity measures put in place;\n"
+  end: 1470
+  sha256: 1a6907c981127e07b5863f87188d870fb6e4ace20b369b402b29f85704e066cd
+  text: '2. A detailed description of the elements of the AI system and of the process for its development,
+    including:
+
+    '
   disposition: normative
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-ANNEX-IV-CONTENT
   review:
-    status: proposed
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- segment_id: AIA-TEXT-ANNEX-IV-I2-A
+  source:
+    kind: annex
+    document: IV
+    act_version_date: '2026-07-27'
+  start: 1470
+  end: 1711
+  sha256: e8013cf39663f0bd5e48314e39cce11aa1f750d7aeb8c103469b82807a945b65
+  text: '        (a) the methods and steps performed for the development of the AI system, including,
+    where relevant, recourse to pre-trained systems or tools provided by third parties and how those were
+    used, integrated or modified by the provider;
+
+    '
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-ANNEX-IV-CONTENT
+  review:
+    status: approved
+    extracted_by: semantic-legal-effect-pass
+    verified_by: vidibro
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- segment_id: AIA-TEXT-ANNEX-IV-I2-B
+  source:
+    kind: annex
+    document: IV
+    act_version_date: '2026-07-27'
+  start: 1711
+  end: 2361
+  sha256: 5f094dc527abc7fc0406cb18539081160561cc5733edd1fddd7e22d3e5c595a9
+  text: '        (b) the design specifications of the system, namely the general logic of the AI system
+    and of the algorithms; the key design choices including the rationale and assumptions made, including
+    with regard to persons or groups of persons in respect of who, the system is intended to be used;
+    the main classification choices; what the system is designed to optimise for, and the relevance of
+    the different parameters; the description of the expected output and output quality of the system;
+    the decisions about any possible trade-off made regarding the technical solutions adopted to comply
+    with the requirements set out in Chapter III, Section 2;
+
+    '
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-ANNEX-IV-CONTENT
+  review:
+    status: approved
+    extracted_by: semantic-legal-effect-pass
+    verified_by: vidibro
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- segment_id: AIA-TEXT-ANNEX-IV-I2-C
+  source:
+    kind: annex
+    document: IV
+    act_version_date: '2026-07-27'
+  start: 2361
+  end: 2612
+  sha256: 46ad02269002e6562a19bdcfdae9667d8a3a44659fb6c4387af23da27aef324e
+  text: '        (c) the description of the system architecture explaining how software components build
+    on or feed into each other and integrate into the overall processing; the computational resources
+    used to develop, train, test and validate the AI system;
+
+    '
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-ANNEX-IV-CONTENT
+  review:
+    status: approved
+    extracted_by: semantic-legal-effect-pass
+    verified_by: vidibro
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- segment_id: AIA-TEXT-ANNEX-IV-I2-D
+  source:
+    kind: annex
+    document: IV
+    act_version_date: '2026-07-27'
+  start: 2612
+  end: 3039
+  sha256: ef29e948152541840fa4bcac6c2478161def3b2074fe7da46e9ac2b206e2d3d2
+  text: '        (d) where relevant, the data requirements in terms of datasheets describing the training
+    methodologies and techniques and the training data sets used, including a general description of these
+    data sets, information about their provenance, scope and main characteristics; how the data was obtained
+    and selected; labelling procedures (e.g. for supervised learning), data cleaning methodologies (e.g.
+    outliers detection);
+
+    '
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-ANNEX-IV-CONTENT
+  review:
+    status: approved
+    extracted_by: semantic-legal-effect-pass
+    verified_by: vidibro
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- segment_id: AIA-TEXT-ANNEX-IV-I2-E
+  source:
+    kind: annex
+    document: IV
+    act_version_date: '2026-07-27'
+  start: 3039
+  end: 3314
+  sha256: 188c1b7c1f1e3df966e0ea58d65614567af002f3766e91904e1cd8ed4523ffc9
+  text: '        (e) assessment of the human oversight measures needed in accordance with Article 14,
+    including an assessment of the technical measures needed to facilitate the interpretation of the outputs
+    of AI systems by the deployers, in accordance with Article 13(3), point (d);
+
+    '
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-ANNEX-IV-CONTENT
+  review:
+    status: approved
+    extracted_by: semantic-legal-effect-pass
+    verified_by: vidibro
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- segment_id: AIA-TEXT-ANNEX-IV-I2-F
+  source:
+    kind: annex
+    document: IV
+    act_version_date: '2026-07-27'
+  start: 3314
+  end: 3632
+  sha256: e455964af0b2c651ed93bd06578155f75371116ceab94946003de9e12bceb6b9
+  text: '        (f) where applicable, a detailed description of pre-determined changes to the AI system
+    and its performance, together with all the relevant information related to the technical solutions
+    adopted to ensure continuous compliance of the AI system with the relevant requirements set out in
+    Chapter III, Section 2;
+
+    '
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-ANNEX-IV-CONTENT
+  review:
+    status: approved
+    extracted_by: semantic-legal-effect-pass
+    verified_by: vidibro
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- segment_id: AIA-TEXT-ANNEX-IV-I2-G
+  source:
+    kind: annex
+    document: IV
+    act_version_date: '2026-07-27'
+  start: 3632
+  end: 4116
+  sha256: fd2b06ffa15f37cf5af0bcbccd3db36c22423c992665a386499880d827a492c1
+  text: '        (g) the validation and testing procedures used, including information about the validation
+    and testing data used and their main characteristics; metrics used to measure accuracy, robustness
+    and compliance with other relevant requirements set out in Chapter III, Section 2, as well as potentially
+    discriminatory impacts; test logs and all test reports dated and signed by the responsible persons,
+    including with regard to pre-determined changes as referred to under point (f);
+
+    '
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-ANNEX-IV-CONTENT
+  review:
+    status: approved
+    extracted_by: semantic-legal-effect-pass
+    verified_by: vidibro
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- segment_id: AIA-TEXT-ANNEX-IV-I2-H
+  source:
+    kind: annex
+    document: IV
+    act_version_date: '2026-07-27'
+  start: 4116
+  end: 4165
+  sha256: e167e2fd8ece674117d1b60ff316055f72d0daa63837eaad94f8861f51377138
+  text: '        (h) cybersecurity measures put in place;
+
+    '
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-ANNEX-IV-CONTENT
+  review:
+    status: approved
+    extracted_by: semantic-legal-effect-pass
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
     display_chunks: 1
@@ -157,9 +536,9 @@ segments:
   norm_ids:
   - AIA-NORM-ANNEX-IV-CONTENT
   review:
-    status: proposed
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
     display_chunks: 1
@@ -181,9 +560,9 @@ segments:
   norm_ids:
   - AIA-NORM-ANNEX-IV-CONTENT
   review:
-    status: proposed
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
     display_chunks: 1
@@ -205,9 +584,9 @@ segments:
   norm_ids:
   - AIA-NORM-ANNEX-IV-CONTENT
   review:
-    status: proposed
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
     display_chunks: 1
@@ -229,9 +608,9 @@ segments:
   norm_ids:
   - AIA-NORM-ANNEX-IV-CONTENT
   review:
-    status: proposed
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
     display_chunks: 1
@@ -257,9 +636,9 @@ segments:
   norm_ids:
   - AIA-NORM-ANNEX-IV-CONTENT
   review:
-    status: proposed
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
     display_chunks: 1
@@ -281,9 +660,9 @@ segments:
   norm_ids:
   - AIA-NORM-ANNEX-IV-CONTENT
   review:
-    status: proposed
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
     display_chunks: 1
@@ -307,9 +686,9 @@ segments:
   norm_ids:
   - AIA-NORM-ANNEX-IV-CONTENT
   review:
-    status: proposed
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
     display_chunks: 1

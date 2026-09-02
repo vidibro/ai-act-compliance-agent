@@ -347,7 +347,7 @@ Measure:
 
 **Full-corpus proposed extraction 2026-08-28:** the representative pilot was expanded, in source
 order, into a complete proposed inventory. It now partitions all 133 source bodies in the pinned
-corpus into 1,455 exact segments. It proposes 1,347 norms across 132 documents; Article 1 supplies
+corpus into 1,471 exact segments. It proposes 1,347 norms across 132 documents; Article 1 supplies
 reviewed subject-matter context without an atomic norm. No article or annex remains as `needs_review`
 debt, and structural headings remain separately identified.
 The reproducible measurements are in the versioned
@@ -356,8 +356,9 @@ The reproducible measurements are in the versioned
 1,347 proposed propositions whose exact operative quote contains no `shall` token. No source characters
 remain marked `needs_review`.
 
-Of the 1,455 segments, 1,440 are approved and 15 remain `proposed`: Annexes IV and VIII. The
-Article 5 heading and all Article 50 and Article 113 segments were independently confirmed on
+Of the 1,471 segments, 1,467 are approved and four remain `proposed`: Annex VIII. The
+Article 5 heading, all Article 50 and Article 113 segments, and the 27 finer-grained Annex IV
+segments were independently confirmed on
 2026-09-02. Their linked norm records, like all 1,347 extracted
 norms, remain `proposed`; approving a source segment does not independently approve the legal
 propositions extracted from it. Elapsed review time was not captured. The remaining assurance
@@ -417,7 +418,7 @@ they do not block adjudication through the current source-order workflow.
 The extraction result is an auditable draft, not a claim that every legal proposition is finally
 approved or executable. Work now proceeds in this order:
 
-1. independently decide the 15 proposed source segments and resolve the four `unresolved`
+1. independently decide the four proposed source segments and resolve the four `unresolved`
    implementation modes;
 2. independently audit proposed norms, prioritising prohibitions, applicability, supported-actor
    obligations, exceptions, deadlines, and cross-document dependencies;
@@ -431,6 +432,15 @@ Current implementation baseline: 618 norms are `in_scope`; 233 have no direct ex
 implementation reference. Of those, 17 are intentionally `carried_by_other_norm`, while 212 are
 `missing` and four are `unresolved`. The resulting 216 implementation-debt records are mapping and
 design candidates, not a forecast of 216 new rules.
+
+**Granularity audit started 2026-09-02:** a corpus-wide heuristic pass identified 84 segments with
+either an internal enumerated list or multiple modal clauses represented by no more than one norm.
+The internal-list cases in Article 43(1), Article 113(c), and Annex VIII already preserve their
+routes or exact checklist items. Annex IV did not: items 1 and 2 were split into their lettered
+subitems and the carried technical-documentation norm was expanded from nine headings to 26
+concrete content requirements. The remaining multi-modal candidates require explicit semantic
+adjudication; modal-token counts alone cannot decide whether a lifecycle requirement should remain
+compound or be split.
 
 ### Phase 4 — link the current implementation in shadow mode
 
@@ -458,7 +468,7 @@ debt.
 
 **Extraction status:** complete as a proposed corpus inventory. Exact source partitioning and
 disposition authoring cover all 133 documents and all source characters. The exit criterion remains
-open because 15 segments and all 1,347 norm records still require independent assurance. Corrections
+open because four segments and all 1,347 norm records still require independent assurance. Corrections
 found during assurance must be made in `segments/` and `source-records/`, followed by regeneration;
 generated `text-review/` and `norms/` files are never hand-edited.
 
@@ -592,7 +602,7 @@ batches of the 1,347 records.
 
 ## Immediate next action
 
-Independently review the 15 proposed source segments in source order: Annex IV and Annex VIII.
+Independently review the four proposed source segments in Annex VIII.
 Apply confirmed review provenance to authored
 `segments/` records and regenerate the derived artifacts. Then audit representative high-risk norm
 batches and measure throughput before committing to a full norm-review estimate. In parallel with

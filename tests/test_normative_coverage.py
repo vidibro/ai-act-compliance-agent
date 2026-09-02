@@ -143,7 +143,7 @@ def test_repository_coverage_artifacts_load_without_touching_runtime():
     assert bundle.runtime_integrated is False
     assert bundle.text_review.corpus_complete is True
     assert bundle.validated_documents == 133
-    assert bundle.validated_segments == 1455
+    assert bundle.validated_segments == 1471
     assert bundle.validated_norms == 1347
 
 
