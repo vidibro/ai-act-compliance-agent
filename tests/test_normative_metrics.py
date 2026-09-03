@@ -1661,15 +1661,15 @@ def test_inventory_cannot_be_misreported_as_independently_approved(metrics):
     assert metrics.needs_review_characters == 0
     assert metrics.review_statuses == {
         "approved": 1467,
-        "proposed": 1455,
+        "proposed": 1458,
     }
     assert metrics.timed_review_records == 0
-    assert metrics.total_review_records == 2923
+    assert metrics.total_review_records == 2926
 
 
 def test_semantic_pass_finds_propositions_a_shall_scan_misses(metrics):
-    assert metrics.shall_vs_semantic_disagreements == 571
-    assert metrics.shall_token_candidate_recall == pytest.approx(880 / 1451)
+    assert metrics.shall_vs_semantic_disagreements == 572
+    assert metrics.shall_token_candidate_recall == pytest.approx(882 / 1454)
     assert "AIA-NORM-A011-P1-SIMPLIFY" in metrics.semantic_norms_without_shall_token
     assert "AIA-NORM-A043-P5-AMEND" in metrics.semantic_norms_without_shall_token
     assert "AIA-NORM-A060-P4-PERMISSION" in metrics.semantic_norms_without_shall_token
@@ -1677,12 +1677,12 @@ def test_semantic_pass_finds_propositions_a_shall_scan_misses(metrics):
 
 
 def test_metrics_expose_many_to_many_and_implementation_debt(metrics):
-    assert metrics.normative_segments_with_multiple_norms == 358
+    assert metrics.normative_segments_with_multiple_norms == 361
     assert metrics.mapping_shape.one_norm_to_one_target == 26
-    assert metrics.mapping_shape.many_norms_to_one_target == 349
+    assert metrics.mapping_shape.many_norms_to_one_target == 351
     assert metrics.mapping_shape.one_norm_to_many_targets == 0
     assert metrics.mapping_shape.many_to_many == 15
-    assert metrics.mapping_shape.unmapped == 1061
+    assert metrics.mapping_shape.unmapped == 1062
     assert metrics.semantic_vs_existing_implementation_disagreements == 239
     assert metrics.semantic_norms_without_existing_implementation == [
         "AIA-NORM-A002-P1-A-PROVIDER",
@@ -3878,15 +3878,42 @@ def test_article_seventy_three_maps_complete_incident_lifecycle():
     assert len(segments) == 14
     assert all(segment.review.status.value == "approved" for segment in segments)
     assert all(segment.review.verified_by == "codex" for segment in segments)
-    assert len(norms) == 13
+    assert len(norms) == 16
     default_mapped = [
         norm for norm in norms.values() if norm.implementation_refs == ["AIA-ALL-A73"]
     ]
-    assert len(default_mapped) == 8
+    assert len(default_mapped) == 10
     assert norms["AIA-NORM-A073-P10-MEDICAL-DEVICE-REPORTING"].implementation_refs == [
         "AIA-ALL-A73-10"
     ]
-    assert len(norms["AIA-NORM-A073-P6-INVESTIGATE-ASSESS-AND-CORRECT"].mandatory_content) == 3
+
+    # Investigation and corrective action have separately verifiable outcomes.
+    investigate = norms["AIA-NORM-A073-P6-INVESTIGATE-ASSESS-AND-CORRECT"]
+    correct = norms["AIA-NORM-A073-P6-CORRECTIVE-ACTION"]
+    reported = "a serious incident has been reported pursuant to paragraph 1"
+    assert investigate.mandatory_content == [
+        "necessary investigation of the serious incident and the AI system concerned",
+        "risk assessment of the incident",
+    ]
+    assert investigate.conditions == correct.conditions == [reported]
+    assert not correct.mandatory_content
+    assert "corrective action" in correct.action
+
+    # Cooperation is a duty; altering the system before informing the authorities is prohibited.
+    cooperate = norms["AIA-NORM-A073-P6-COOPERATE-AND-PRESERVE-SYSTEM"]
+    preserve = norms["AIA-NORM-A073-P6-NO-EVIDENCE-AFFECTING-ALTERATION"]
+    assert cooperate.kind.value == "obligation"
+    assert "notified body" in cooperate.action
+    assert preserve.kind.value == "prohibition"
+    assert "prior to informing" not in preserve.action
+    assert "before informing the competent authorities" in preserve.action
+
+    # The seven-day deadline belongs to the measures, not to the notification procedures.
+    measures = norms["AIA-NORM-A073-P8-SEVEN-DAY-AUTHORITY-ACTION"]
+    procedures = norms["AIA-NORM-A073-P8-FOLLOW-NOTIFICATION-PROCEDURES"]
+    assert "seven days" in measures.action
+    assert "seven days" not in procedures.action
+    assert all(norm.review.status.value == "proposed" for norm in norms.values())
 
 
 def test_article_seventy_four_maps_provider_access_duties():

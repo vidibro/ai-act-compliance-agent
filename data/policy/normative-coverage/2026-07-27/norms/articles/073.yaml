@@ -202,10 +202,11 @@ norms:
   subjects:
   - subject_ref: provider
     category: supported_operator
-  action: investigate without delay and perform incident risk assessment and corrective action
+  action: perform, without delay, the necessary investigations into the serious incident and the AI system
+    concerned, including a risk assessment of the incident
   norm_text: Following the reporting of a serious incident pursuant to paragraph 1, the provider shall,
     without delay, perform the necessary investigations in relation to the serious incident and the AI
-    system concerned. This shall include a risk assessment of the incident, and corrective action.
+    system concerned. This shall include a risk assessment of the incident
   detection_channels:
   - semantic_legal_effect
   - shall_token
@@ -214,12 +215,48 @@ norms:
   - AIA-TEXT-A073-P007
   qualifier_spans: []
   effective_date_spans: []
-  conditions: []
+  conditions:
+  - a serious incident has been reported pursuant to paragraph 1
   exceptions: []
   mandatory_content:
-  - necessary incident and system investigation
-  - incident risk assessment
-  - corrective action
+  - necessary investigation of the serious incident and the AI system concerned
+  - risk assessment of the incident
+  dependencies: []
+  product_scope: in_scope
+  product_scope_reason: ''
+  implementation_mode: compliance_rule
+  implementation_refs:
+  - AIA-ALL-A73
+  implementation_reason: ''
+  verification_mode: listed_for_confirmation
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A073-P6-CORRECTIVE-ACTION
+  act_version_date: '2026-07-27'
+  kind: obligation
+  subjects:
+  - subject_ref: provider
+    category: supported_operator
+  action: take corrective action following the investigation of the reported serious incident
+  norm_text: and corrective action.
+  detection_channels:
+  - semantic_legal_effect
+  - existing_implementation
+  primary_spans:
+  - AIA-TEXT-A073-P007
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions:
+  - a serious incident has been reported pursuant to paragraph 1
+  exceptions: []
+  mandatory_content: []
   dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -243,13 +280,49 @@ norms:
   subjects:
   - subject_ref: provider
     category: supported_operator
-  action: cooperate during investigations and inform authorities before any system alteration that could
-    affect cause evaluation
+  action: cooperate with the competent authorities, and where relevant with the notified body concerned,
+    during the first-subparagraph investigations
   norm_text: The provider shall cooperate with the competent authorities, and where relevant with the
-    notified body concerned, during the investigations referred to in the first subparagraph, and shall
-    not perform any investigation which involves altering the AI system concerned in a way which may affect
-    any subsequent evaluation of the causes of the incident, prior to informing the competent authorities
-    of such action.
+    notified body concerned, during the investigations referred to in the first subparagraph
+  detection_channels:
+  - semantic_legal_effect
+  - shall_token
+  - existing_implementation
+  primary_spans:
+  - AIA-TEXT-A073-P008
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions: []
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: in_scope
+  product_scope_reason: ''
+  implementation_mode: compliance_rule
+  implementation_refs:
+  - AIA-ALL-A73
+  implementation_reason: ''
+  verification_mode: listed_for_confirmation
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A073-P6-NO-EVIDENCE-AFFECTING-ALTERATION
+  act_version_date: '2026-07-27'
+  kind: prohibition
+  subjects:
+  - subject_ref: provider
+    category: supported_operator
+  action: perform no investigation that alters the AI system concerned in a way which may affect any subsequent
+    evaluation of the causes of the incident before informing the competent authorities of such action
+  norm_text: shall not perform any investigation which involves altering the AI system concerned in a
+    way which may affect any subsequent evaluation of the causes of the incident, prior to informing the
+    competent authorities of such action.
   detection_channels:
   - semantic_legal_effect
   - shall_token
@@ -357,11 +430,45 @@ norms:
   subjects:
   - subject_ref: market_surveillance_authority
     category: public_authority
-  action: take Article 19 measures within seven days and follow applicable notification procedures
+  action: take the appropriate measures provided for in Article 19 of Regulation (EU) 2019/1020 within
+    seven days of receiving the paragraph 1 notification
   norm_text: The market surveillance authority shall take appropriate measures, as provided for in Article
     19 of Regulation (EU) 2019/1020, within seven days from the date it received the notification referred
-    to in paragraph 1 of this Article, and shall follow the notification procedures as provided in that
-    Regulation.
+    to in paragraph 1 of this Article
+  detection_channels:
+  - semantic_legal_effect
+  - shall_token
+  primary_spans:
+  - AIA-TEXT-A073-P010
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions: []
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_refs: []
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A073-P8-FOLLOW-NOTIFICATION-PROCEDURES
+  act_version_date: '2026-07-27'
+  kind: obligation
+  subjects:
+  - subject_ref: market_surveillance_authority
+    category: public_authority
+  action: follow the notification procedures provided in Regulation (EU) 2019/1020
+  norm_text: and shall follow the notification procedures as provided in that Regulation.
   detection_channels:
   - semantic_legal_effect
   - shall_token

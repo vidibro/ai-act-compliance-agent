@@ -24,7 +24,7 @@ def test_pinned_corpus_triage_is_documented_without_mutating_review():
     assert bundle.model_dump() == before
     assert bundle.validated_documents == 133
     assert len(bundle.text_review.segments) == 1471
-    assert len(candidates) == 63
+    assert len(candidates) == 60
 
     segments = {s.segment_id: s for s in bundle.text_review.segments}
     for candidate in candidates:
@@ -48,6 +48,7 @@ def test_pinned_corpus_triage_is_documented_without_mutating_review():
     closed_by_splitting |= {"AIA-TEXT-A067-P006", "AIA-TEXT-A067-P010"}
     closed_by_splitting |= {"AIA-TEXT-A070-P001", "AIA-TEXT-A070-P003"}
     closed_by_splitting |= {"AIA-TEXT-A071-P001", "AIA-TEXT-A071-P004"}
+    closed_by_splitting |= {f"AIA-TEXT-A073-P{p:03}" for p in (7, 8, 10)}
     assert set(ids) - closed_by_splitting == {candidate.segment_id for candidate in candidates}
 
     content_report = (root / "docs/NORMATIVE-COVERAGE-CONTENT-AUDIT.md").read_text()
@@ -119,4 +120,6 @@ def test_pinned_corpus_triage_is_documented_without_mutating_review():
     baseline_content.pop("AIA-NORM-A071-P4-DATABASE-ACCESS-RULES")
     baseline_content.pop("AIA-NORM-A071-P6-CONTROLLER-AND-OPERATOR-SUPPORT")
     baseline_content["AIA-NORM-A071-P6-OPERATOR-SUPPORT"] = 2
+    # Article 73 separates corrective action from the investigation it follows.
+    baseline_content["AIA-NORM-A073-P6-INVESTIGATE-ASSESS-AND-CORRECT"] = 2
     assert baseline_content == expected_content

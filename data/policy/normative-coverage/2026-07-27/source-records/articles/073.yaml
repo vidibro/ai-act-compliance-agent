@@ -43,19 +43,45 @@ records:
   verification_mode: listed_for_confirmation
 - norm_id: AIA-NORM-A073-P6-INVESTIGATE-ASSESS-AND-CORRECT
   source: A073-P007
-  quote: Following the reporting of a serious incident pursuant to paragraph 1, the provider shall, without delay, perform the necessary investigations in relation to the serious incident and the AI system concerned. This shall include a risk assessment of the incident, and corrective action.
-  action: investigate without delay and perform incident risk assessment and corrective action
+  quote: Following the reporting of a serious incident pursuant to paragraph 1, the provider shall, without delay, perform the necessary investigations in relation to the serious incident and the AI system concerned. This shall include a risk assessment of the incident
+  action: perform, without delay, the necessary investigations into the serious incident and the AI
+    system concerned, including a risk assessment of the incident
   subject_ref: provider
   subject_category: supported_operator
-  mandatory_content: [necessary incident and system investigation, incident risk assessment, corrective action]
+  conditions:
+  - a serious incident has been reported pursuant to paragraph 1
+  mandatory_content: [necessary investigation of the serious incident and the AI system concerned,
+    risk assessment of the incident]
+  implementation_refs: [AIA-ALL-A73]
+  verification_mode: listed_for_confirmation
+- norm_id: AIA-NORM-A073-P6-CORRECTIVE-ACTION
+  source: A073-P007
+  quote: and corrective action.
+  action: take corrective action following the investigation of the reported serious incident
+  subject_ref: provider
+  subject_category: supported_operator
+  conditions:
+  - a serious incident has been reported pursuant to paragraph 1
   implementation_refs: [AIA-ALL-A73]
   verification_mode: listed_for_confirmation
 - norm_id: AIA-NORM-A073-P6-COOPERATE-AND-PRESERVE-SYSTEM
   source: A073-P008
-  quote: The provider shall cooperate with the competent authorities, and where relevant with the notified body concerned, during the investigations referred to in the first subparagraph, and shall not perform any investigation which involves altering the AI system concerned in a way which may affect any subsequent evaluation of the causes of the incident, prior to informing the competent authorities of such action.
-  action: cooperate during investigations and inform authorities before any system alteration that could affect cause evaluation
+  quote: The provider shall cooperate with the competent authorities, and where relevant with the notified body concerned, during the investigations referred to in the first subparagraph
+  action: cooperate with the competent authorities, and where relevant with the notified body
+    concerned, during the first-subparagraph investigations
   subject_ref: provider
   subject_category: supported_operator
+  implementation_refs: [AIA-ALL-A73]
+  verification_mode: listed_for_confirmation
+- norm_id: AIA-NORM-A073-P6-NO-EVIDENCE-AFFECTING-ALTERATION
+  source: A073-P008
+  quote: shall not perform any investigation which involves altering the AI system concerned in a way which may affect any subsequent evaluation of the causes of the incident, prior to informing the competent authorities of such action.
+  action: perform no investigation that alters the AI system concerned in a way which may affect any
+    subsequent evaluation of the causes of the incident before informing the competent authorities of
+    such action
+  subject_ref: provider
+  subject_category: supported_operator
+  kind: prohibition
   implementation_refs: [AIA-ALL-A73]
   verification_mode: listed_for_confirmation
 - norm_id: AIA-NORM-A073-P7-INFORM-FUNDAMENTAL-RIGHTS-AUTHORITIES
@@ -82,8 +108,20 @@ records:
   verification_mode: not_assessed
 - norm_id: AIA-NORM-A073-P8-SEVEN-DAY-AUTHORITY-ACTION
   source: A073-P010
-  quote: The market surveillance authority shall take appropriate measures, as provided for in Article 19 of Regulation (EU) 2019/1020, within seven days from the date it received the notification referred to in paragraph 1 of this Article, and shall follow the notification procedures as provided in that Regulation.
-  action: take Article 19 measures within seven days and follow applicable notification procedures
+  quote: The market surveillance authority shall take appropriate measures, as provided for in Article 19 of Regulation (EU) 2019/1020, within seven days from the date it received the notification referred to in paragraph 1 of this Article
+  action: take the appropriate measures provided for in Article 19 of Regulation (EU) 2019/1020
+    within seven days of receiving the paragraph 1 notification
+  subject_ref: market_surveillance_authority
+  subject_category: public_authority
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A073-P8-FOLLOW-NOTIFICATION-PROCEDURES
+  source: A073-P010
+  quote: and shall follow the notification procedures as provided in that Regulation.
+  action: follow the notification procedures provided in Regulation (EU) 2019/1020
   subject_ref: market_surveillance_authority
   subject_category: public_authority
   product_scope: outside_supported_actor

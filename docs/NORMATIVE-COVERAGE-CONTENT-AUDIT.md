@@ -132,8 +132,13 @@ Article 71's controllership finding is now corrected with its two recorded segme
 Database set-up keeps the two registered-system categories; the two specification
 consultations, the two access regimes and the operator-support duty are separate norms, and
 the paragraph 4 exclusions are now exceptions rather than checklist prose. The live inventory
-has 129 populated content lists across 1,451 proposed norms. Subsequent articles' findings
-remain pending.
+has 129 populated content lists across 1,451 proposed norms.
+
+Article 73's investigation finding is now corrected with its three recorded segment splits.
+The investigation keeps its two content items; corrective action, the evidence-preservation
+prohibition and the Regulation (EU) 2019/1020 notification procedures are separate norms. The
+live inventory still has 129 populated content lists, now across 1,454 proposed norms.
+Subsequent articles' findings remain pending.
 
 | Norm | Content entries | Decision | Finding / treatment |
 |---|---:|---|---|
