@@ -4,7 +4,7 @@
 
 **Act version:** 2026-07-27
 
-The inventory contains 133 complete source-body partitions, 1471 exact segments, and 1463 proposed atomic norms. Every stored article and annex is present. Proposed
+The inventory contains 133 complete source-body partitions, 1471 exact segments, and 1465 proposed atomic norms. Every stored article and annex is present. Proposed
 norms have been extracted from 132 documents; the remaining
 work is retained explicitly rather than omitted. The inventory is not consumed by classification,
 rule selection, judging, or reporting.
@@ -118,7 +118,7 @@ rule selection, judging, or reporting.
 - article 75c: 19
 - article 75d: 8
 - article 76: 7
-- article 77: 7
+- article 77: 9
 - article 78: 8
 - article 79: 14
 - article 8: 4
@@ -891,7 +891,7 @@ rule selection, judging, or reporting.
 - AIA-TEXT-A077-P001: 1
 - AIA-TEXT-A077-P002: 1
 - AIA-TEXT-A077-P003: 1
-- AIA-TEXT-A077-P004: 1
+- AIA-TEXT-A077-P004: 3
 - AIA-TEXT-A077-P005: 2
 - AIA-TEXT-A077-P006: 1
 - AIA-TEXT-A078-P001: 1
@@ -1126,15 +1126,15 @@ rule selection, judging, or reporting.
 - Characters displayed by the extraction pass: 394667
 - Independently approved characters: 390556
 - Characters deliberately left as review debt: 0
-- Normative segments supporting multiple propositions: 367
+- Normative segments supporting multiple propositions: 368
 - Semantic candidates a shall-token pass missed: 571
 - Shall-token candidate recall: 61.0%
 - In-scope semantic candidates absent from existing implementation: 239
-- Detection-channel counts: cross_reference_structure=486, deeming_or_consequence=275, existing_implementation=392, other_modal=156, semantic_legal_effect=1463, shall_token=892
-- Mapping shapes, by norm: one-to-one=26, many-to-one=351, one-to-many=0, many-to-many=15, unmapped=1071
+- Detection-channel counts: cross_reference_structure=486, deeming_or_consequence=275, existing_implementation=392, other_modal=156, semantic_legal_effect=1465, shall_token=894
+- Mapping shapes, by norm: one-to-one=26, many-to-one=351, one-to-many=0, many-to-many=15, unmapped=1073
 - Implementation debt candidates: 222
 - Interpretive links to non-binding guidance: 1
-- Review records with measured elapsed time: 0/2935
+- Review records with measured elapsed time: 0/2937
 
 ## Findings
 

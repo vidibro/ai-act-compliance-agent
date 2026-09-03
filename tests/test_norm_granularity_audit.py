@@ -24,7 +24,7 @@ def test_pinned_corpus_triage_is_documented_without_mutating_review():
     assert bundle.model_dump() == before
     assert bundle.validated_documents == 133
     assert len(bundle.text_review.segments) == 1471
-    assert len(candidates) == 54
+    assert len(candidates) == 53
 
     segments = {s.segment_id: s for s in bundle.text_review.segments}
     for candidate in candidates:
@@ -53,6 +53,7 @@ def test_pinned_corpus_triage_is_documented_without_mutating_review():
     closed_by_splitting |= {"AIA-TEXT-A075-P015", "AIA-TEXT-A075-P021"}
     # The Article 75c expansion also separated the conditional ceiling, closing its signal.
     closed_by_splitting.add("AIA-TEXT-A075C-P018")
+    closed_by_splitting.add("AIA-TEXT-A077-P004")
     assert set(ids) - closed_by_splitting == {candidate.segment_id for candidate in candidates}
 
     content_report = (root / "docs/NORMATIVE-COVERAGE-CONTENT-AUDIT.md").read_text()
@@ -137,4 +138,6 @@ def test_pinned_corpus_triage_is_documented_without_mutating_review():
     baseline_content["AIA-NORM-A075A-P3-DECISION-REQUEST-ADDITIONS"] = 2
     # Article 75c states the periodic-penalty ceiling basis, period, rate and start date.
     baseline_content["AIA-NORM-A075C-P5-PENALTY-PAYMENT-CEILING"] = 4
+    # Article 77 keeps only identification and publication under the deadline.
+    baseline_content["AIA-NORM-A077-P2-IDENTIFY-PUBLISH-NOTIFY-AND-UPDATE"] = 2
     assert baseline_content == expected_content

@@ -1661,15 +1661,15 @@ def test_inventory_cannot_be_misreported_as_independently_approved(metrics):
     assert metrics.needs_review_characters == 0
     assert metrics.review_statuses == {
         "approved": 1467,
-        "proposed": 1467,
+        "proposed": 1469,
     }
     assert metrics.timed_review_records == 0
-    assert metrics.total_review_records == 2935
+    assert metrics.total_review_records == 2937
 
 
 def test_semantic_pass_finds_propositions_a_shall_scan_misses(metrics):
     assert metrics.shall_vs_semantic_disagreements == 571
-    assert metrics.shall_token_candidate_recall == pytest.approx(892 / 1463)
+    assert metrics.shall_token_candidate_recall == pytest.approx(894 / 1465)
     assert "AIA-NORM-A011-P1-SIMPLIFY" in metrics.semantic_norms_without_shall_token
     assert "AIA-NORM-A043-P5-AMEND" in metrics.semantic_norms_without_shall_token
     assert "AIA-NORM-A060-P4-PERMISSION" in metrics.semantic_norms_without_shall_token
@@ -1677,12 +1677,12 @@ def test_semantic_pass_finds_propositions_a_shall_scan_misses(metrics):
 
 
 def test_metrics_expose_many_to_many_and_implementation_debt(metrics):
-    assert metrics.normative_segments_with_multiple_norms == 367
+    assert metrics.normative_segments_with_multiple_norms == 368
     assert metrics.mapping_shape.one_norm_to_one_target == 26
     assert metrics.mapping_shape.many_norms_to_one_target == 351
     assert metrics.mapping_shape.one_norm_to_many_targets == 0
     assert metrics.mapping_shape.many_to_many == 15
-    assert metrics.mapping_shape.unmapped == 1071
+    assert metrics.mapping_shape.unmapped == 1073
     assert metrics.semantic_vs_existing_implementation_disagreements == 239
     assert metrics.semantic_norms_without_existing_implementation == [
         "AIA-NORM-A002-P1-A-PROVIDER",
@@ -4059,9 +4059,23 @@ def test_article_seventy_seven_extracts_fundamental_rights_cooperation():
     assert len(segments) == 7
     assert all(segment.review.status.value == "approved" for segment in segments)
     assert all(segment.review.verified_by == "codex" for segment in segments)
-    assert len(norms) == 7
+    assert len(norms) == 9
     assert all(norm.product_scope.value == "outside_supported_actor" for norm in norms.values())
-    assert len(norms["AIA-NORM-A077-P2-IDENTIFY-PUBLISH-NOTIFY-AND-UPDATE"].mandatory_content) == 4
+
+    # The 2 November 2024 deadline covers identification and publication only.
+    identify = norms["AIA-NORM-A077-P2-IDENTIFY-PUBLISH-NOTIFY-AND-UPDATE"]
+    notify = norms["AIA-NORM-A077-P2-NOTIFY-LIST"]
+    maintain = norms["AIA-NORM-A077-P2-KEEP-LIST-UP-TO-DATE"]
+    assert identify.mandatory_content == [
+        "identification of the public authorities or bodies referred to in paragraph 1",
+        "a publicly available list of them",
+    ]
+    assert "2 November 2024" in identify.action
+    assert "2 November 2024" not in notify.action
+    assert "2 November 2024" not in maintain.action
+    assert "other Member States" in notify.action
+    assert "up to date" in maintain.action
+    assert all(norm.review.status.value == "proposed" for norm in norms.values())
 
 
 def test_article_seventy_eight_maps_the_special_provider_confidentiality_rule():

@@ -161,7 +161,12 @@ proposed norms.
 Article 75c's periodic-penalty ceiling is now explicit: the income or worldwide-turnover basis,
 the preceding financial year, the per-day 5 % rate and the decision-appointed start date, all
 conditional on the ceiling being applicable. The live inventory has 134 populated content
-lists across 1,463 proposed norms. Subsequent articles' findings remain pending.
+lists across 1,463 proposed norms.
+
+Article 76's retain decision needed no change. Article 77's paragraph 2 now keeps only
+identification and publication under the 2 November 2024 deadline; notification and keeping
+the list up to date are separate norms. The live inventory still has 134 populated content
+lists, now across 1,465 proposed norms. Subsequent articles' findings remain pending.
 
 | Norm | Content entries | Decision | Finding / treatment |
 |---|---:|---|---|

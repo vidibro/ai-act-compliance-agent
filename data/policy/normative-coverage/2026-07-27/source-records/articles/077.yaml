@@ -36,10 +36,35 @@ records:
 - norm_id: AIA-NORM-A077-P2-IDENTIFY-PUBLISH-NOTIFY-AND-UPDATE
   source: A077-P004
   quote: By 2 November 2024, each Member State shall identify the public authorities or bodies referred to in paragraph 1 and make a list of them publicly available.
-  action: identify and publish the authority list by 2 November 2024 notify the Commission and Member States and keep it current
+  action: identify the paragraph 1 public authorities or bodies and make a list of them publicly
+    available by 2 November 2024
   subject_ref: member_state
   subject_category: member_state
-  mandatory_content: [identify eligible authorities by the deadline, publish their list, notify the Commission and other Member States, keep the list up to date]
+  mandatory_content:
+  - identification of the public authorities or bodies referred to in paragraph 1
+  - a publicly available list of them
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A077-P2-NOTIFY-LIST
+  source: A077-P004
+  quote: Member States shall notify the list to the Commission and to the other Member States
+  action: notify the list to the Commission and to the other Member States
+  subject_ref: member_state
+  subject_category: member_state
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A077-P2-KEEP-LIST-UP-TO-DATE
+  source: A077-P004
+  quote: and shall keep the list up to date.
+  action: keep the list up to date
+  subject_ref: member_state
+  subject_category: member_state
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
