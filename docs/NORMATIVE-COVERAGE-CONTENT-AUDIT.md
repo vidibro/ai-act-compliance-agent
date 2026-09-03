@@ -37,7 +37,9 @@ norm carries two content groups. Article 46's paragraph 2 actions are now two se
 than two content items; the live number of populated content lists is now 144, while the
 146-row table below remains the historical baseline. Paragraph 3's corresponding negative/positive
 result split was found during the Article 45 source check and is recorded in the granularity ledger.
-Other rows in this content register remain pending.
+Article 50's marking norm now has six content entries rather than three, explicitly carrying the
+three considerations for technical-solution qualities. They are not new marking exemptions, and
+the number of populated content lists remains 144. Other rows in this content register remain pending.
 
 | Norm | Content entries | Decision | Finding / treatment |
 |---|---:|---|---|

@@ -62,4 +62,6 @@ def test_pinned_corpus_triage_is_documented_without_mutating_review():
     baseline_content["AIA-NORM-A045-P1-DISCLOSE-ACTIVITIES-ON-REQUEST"] = 2
     # Article 46's stopping and discarding actions are now distinct norms.
     baseline_content.pop("AIA-NORM-A046-P2-REFUSAL-RESPONSE")
+    # Article 50 now explicitly carries all three technical-solution consideration factors.
+    baseline_content["AIA-NORM-A050-P2-MARK-DETECT"] = 6
     assert baseline_content == expected_content

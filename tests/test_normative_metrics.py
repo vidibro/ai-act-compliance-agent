@@ -2732,6 +2732,60 @@ def test_article_forty_nine_maps_registration_routes_and_restricted_content():
     assert all(norm.implementation_mode.value == "none_required" for norm in access)
 
 
+def test_article_fifty_preserves_disclosure_test_and_technical_solution_qualifiers():
+    bundle = load_normative_coverage()
+    norms = {
+        norm.norm_id: norm
+        for norm in bundle.norm_inventory.norms
+        if norm.norm_id.startswith("AIA-NORM-A050-")
+    }
+    assert len(norms) == 11
+    disclose = norms["AIA-NORM-A050-P1-DISCLOSE"]
+    assert disclose.exceptions == [
+        "interaction with an AI system is obvious from the point of view of a natural person "
+        "who is reasonably well-informed, observant and circumspect, taking into account "
+        "the circumstances and the context of use",
+        "AI system authorised by law to detect, prevent, investigate, or prosecute criminal "
+        "offences, "
+        "subject to safeguards for third-party rights and freedoms, unless the system is publicly "
+        "available for reporting a criminal offence",
+    ]
+    marking = norms["AIA-NORM-A050-P2-MARK-DETECT"]
+    assert marking.mandatory_content == [
+        "machine-readable marking",
+        "detectability as artificial or manipulated",
+        "effective, interoperable, robust and reliable solution as technically feasible",
+        "in ensuring those technical-solution qualities, take into account the specificities and "
+        "limitations of various types of content",
+        "in ensuring those technical-solution qualities, take into account "
+        "the costs of implementation",
+        "in ensuring those technical-solution qualities, take into account the generally "
+        "acknowledged state of the art, as may be reflected in relevant technical standards",
+    ]
+    # Costs and technical feasibility do not become new exemptions from marking/detectability.
+    assert marking.exceptions == [
+        "assistive standard editing, or no substantial alteration of deployer input data "
+        "or its semantics",
+        "use authorised by law to detect, prevent, investigate, or prosecute criminal offences",
+    ]
+    assert disclose.implementation_refs == ["AIA-TR-A50-1"]
+    assert marking.implementation_refs == ["AIA-TR-A50-2"]
+    assert disclose.primary_spans == ["AIA-TEXT-A050-P1"]
+    assert marking.primary_spans == ["AIA-TEXT-A050-P2"]
+    for norm in (disclose, marking):
+        assert norm.qualifier_spans == ["AIA-TEXT-A050-P5"]
+        assert norm.review.status.value == "proposed"
+        assert norm.verification_mode.value == "judged_from_document"
+    article_segments = [
+        s for s in bundle.text_review.segments
+        if s.source.kind.value == "article" and s.source.document == "50"
+    ]
+    assert all(
+        s.review.status.value == "approved" and s.review.verified_by == "vidibro"
+        for s in article_segments
+    )
+
+
 def test_article_fifty_one_extracts_systemic_risk_classification_gates():
     bundle = load_normative_coverage()
     segments = [

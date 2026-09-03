@@ -189,12 +189,15 @@ modal/list scan. Source references identify full norm records in `source-records
 | 43 | Explicit Annex III point 1 scope, alternative Annex VII triggers, and the Article 74(8)/(9) exception to provider choice of notified body. | Route/exception regression; no runtime rules changed. |
 | 45 | Split event-based and request-only disclosures in paragraphs 1 and 2; the same source-linked issue in paragraph 3 was also split into negative-result and requested positive-result sharing. Event categories are explicit alternatives, not mandatory payload lists; paragraph 4 is unchanged. | Seven proposed norms instead of four; regression checks cover request triggers, recipients, all event categories and the narrower adverse QMS outcomes. |
 | 46 | Split paragraph 2's refusal response into immediate stopping of use and immediate discarding of all results and outputs. The actor and refusal trigger are identical; urgent-use permission and the other paragraphs are unchanged. | Fourteen proposed norms instead of thirteen; regressions check both actions, timing, shared condition and actor, source links and separate permission. |
+| 50 | Expanded paragraph 1's obvious-interaction exception to the reasonably well-informed, observant and circumspect person test, considering circumstances and context. Paragraph 2 now explicitly includes content specificities/limitations, implementation costs and generally acknowledged state of the art, including the possible reflection in technical standards. | Still eleven proposed norms; regressions preserve marking/detectability, existing exceptions, implementation links and user-approved source provenance. The three factors qualify technical-solution qualities, not exemptions from marking. |
 
 The original 88-row ledger above remains a historical audit baseline. Article 31's five split
 segments no longer trigger the scanner. The current inventory has 1,357 proposed norms and 1,471
 segments; the 216 implementation-debt records remain unchanged because the ten new norms concern
 actors outside supported reporting roles. Source approvals have not been relabelled as norm approvals.
-Next recorded correction: Article 50; Articles 47–49 have no open recorded correction in these ledgers.
+Next recorded correction: Article 57; Articles 47–49 and 51–56 have no open recorded correction
+in these ledgers. The Article 50 corrections do not remove their heuristic scan signals; a signal
+is not a finding or an approval status.
 
 Committed separately on 2026-09-03: shared condition mechanism `62c3011`; Article 3 `9fd7c58`;
 Article 6 `b31b780`; Article 31 `7282527`; Article 40 `856707c`; Article 41 `d8ec444`;

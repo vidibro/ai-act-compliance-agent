@@ -11,7 +11,8 @@ records:
   - AIA-TR-A50-1
   verification_mode: judged_from_document
   exceptions:
-  - obvious interaction in context
+  - interaction with an AI system is obvious from the point of view of a natural person who is reasonably
+    well-informed, observant and circumspect, taking into account the circumstances and the context of use
   - AI system authorised by law to detect, prevent, investigate, or prosecute criminal offences,
     subject to safeguards for third-party rights and freedoms, unless the system is publicly
     available for reporting a criminal offence
@@ -32,6 +33,11 @@ records:
   - machine-readable marking
   - detectability as artificial or manipulated
   - effective, interoperable, robust and reliable solution as technically feasible
+  - in ensuring those technical-solution qualities, take into account the specificities and limitations
+    of various types of content
+  - in ensuring those technical-solution qualities, take into account the costs of implementation
+  - in ensuring those technical-solution qualities, take into account the generally acknowledged state
+    of the art, as may be reflected in relevant technical standards
   exceptions:
   - assistive standard editing, or no substantial alteration of deployer input data or its semantics
   - use authorised by law to detect, prevent, investigate, or prosecute criminal offences

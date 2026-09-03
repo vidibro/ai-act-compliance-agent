@@ -461,8 +461,11 @@ with explicit alternative event triggers and preserved recipient limits. Its nor
 four to seven, taking the corpus to 1,356; all remain proposed. No runtime changes or new user approvals
 were made. Article 46 now separates immediate stopping from immediate discarding of all results and
 outputs following urgent-use authorisation refusal. It has fourteen norms instead of thirteen,
-taking the corpus to 1,357 proposed norms with unchanged implementation debt. Next recorded
-correction: Article 50; Articles 47–49 have no open recorded finding in these ledgers.
+taking the corpus to 1,357 proposed norms with unchanged implementation debt. Article 50's two
+qualifier gaps are also corrected: the objective person/context test and all three considerations
+for the qualities of technical marking solutions are explicit. Article 50 still has eleven norms;
+no new runtime behavior or independent legal approval is claimed. Next recorded correction:
+Article 57; Articles 47–49 and 51–56 have no open recorded finding in these ledgers.
 
 Correct the recorded defects and complete the unflagged-source semantic audit before declaring
 extraction complete or compiling new runtime rules. A full-corpus heuristic scan is not a full
@@ -631,7 +634,7 @@ batches of the 1,357 records.
 ## Immediate next action
 
 Continue the [granularity correction and completion queue](NORMATIVE-COVERAGE-GRANULARITY-AUDIT.md#correction-and-completion-queue)
-in source order, continuing with Article 50 after corrections through Article 46, and complete the
+in source order, continuing with Article 57 after corrections through Article 50, and complete the
 unflagged-source pass. Independently review the four proposed source segments in Annex VIII;
 exactly retained content still needs optional/conditional field semantics. Apply only confirmed
 user provenance to authored `segments/` records and regenerate derived artifacts. Keep codex audit
