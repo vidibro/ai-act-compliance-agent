@@ -152,6 +152,8 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A031-P5-CONFLICTING-ACTIVITIES-PROHIBITED
+  - AIA-NORM-A031-P5-DIRECT-INVOLVEMENT-PROHIBITED
+  - AIA-NORM-A031-P5-PARTY-REPRESENTATION-PROHIBITED
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -179,6 +181,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A031-P6-IMPARTIALITY-SYSTEM
+  - AIA-NORM-A031-P6-INDEPENDENT-OPERATION
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -209,6 +212,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A031-P7-CONFIDENTIALITY-AND-SECRECY
+  - AIA-NORM-A031-P7-STAFF-PROFESSIONAL-SECRECY
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -315,6 +319,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A031-P11-INTERNAL-COMPETENCE-AND-STAFF
+  - AIA-NORM-A031-P11-PERMANENT-EXPERT-STAFF
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -341,6 +346,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A031-P12-COORDINATION-AND-STANDARDS
+  - AIA-NORM-A031-P12-STANDARDISATION-OR-STANDARDS-CURRENCY
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass

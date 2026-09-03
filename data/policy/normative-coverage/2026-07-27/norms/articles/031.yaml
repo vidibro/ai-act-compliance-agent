@@ -191,13 +191,10 @@ norms:
   subjects:
   - subject_ref: conformity_assessment_body_and_personnel
     category: notified_or_conformity_body
-  action: prohibit body leadership and assessment personnel from system activities, party representation,
-    consultancy, or other independence conflicts
-  norm_text: Neither a conformity assessment body, its top-level management nor the personnel responsible
-    for carrying out its conformity assessment tasks shall be directly involved in the design, development,
-    marketing or use of high-risk AI systems, nor shall they represent the parties engaged in those activities.
-    They shall not engage in any activity that might conflict with their independence of judgement or
-    integrity in relation to conformity assessment activities for which they are notified. This shall,
+  action: prohibit the conformity assessment body, its top-level management and assessment personnel from
+    activities conflicting with independence of judgement or assessment integrity, in particular consultancy
+  norm_text: They shall not engage in any activity that might conflict with their independence of judgement
+    or integrity in relation to conformity assessment activities for which they are notified. This shall,
     in particular, apply to consultancy services.
   detection_channels:
   - semantic_legal_effect
@@ -231,12 +228,11 @@ norms:
   subjects:
   - subject_ref: notified_body
     category: notified_or_conformity_body
-  action: organise, document, and implement structures and procedures safeguarding independence, objectivity,
-    and organisation-wide impartiality
-  norm_text: Notified bodies shall be organised and operated so as to safeguard the independence, objectivity
-    and impartiality of their activities. Notified bodies shall document and implement a structure and
-    procedures to safeguard impartiality and to promote and apply the principles of impartiality throughout
-    their organisation, personnel and assessment activities.
+  action: document and implement structures and procedures safeguarding impartiality and promoting and
+    applying its principles throughout the organisation, personnel and assessment activities
+  norm_text: Notified bodies shall document and implement a structure and procedures to safeguard impartiality
+    and to promote and apply the principles of impartiality throughout their organisation, personnel and
+    assessment activities.
   detection_channels:
   - semantic_legal_effect
   - shall_token
@@ -269,15 +265,13 @@ norms:
   subjects:
   - subject_ref: notified_body
     category: notified_or_conformity_body
-  action: maintain documented confidentiality procedures and bind staff to professional secrecy subject
-    to enacted exceptions
+  action: maintain documented procedures ensuring Article 78 confidentiality for personnel, committees,
+    subsidiaries, subcontractors and associated external bodies or personnel during conformity assessment
   norm_text: Notified bodies shall have documented procedures in place ensuring that their personnel,
     committees, subsidiaries, subcontractors and any associated body or personnel of external bodies maintain,
     in accordance with Article 78, the confidentiality of the information which comes into their possession
     during the performance of conformity assessment activities, except when its disclosure is required
-    by law. The staff of notified bodies shall be bound to observe professional secrecy with regard to
-    all information obtained in carrying out their tasks under this Regulation, except in relation to
-    the notifying authorities of the Member State in which their activities are carried out.
+    by law.
   detection_channels:
   - semantic_legal_effect
   - shall_token
@@ -286,7 +280,8 @@ norms:
   qualifier_spans: []
   effective_date_spans: []
   conditions: []
-  exceptions: []
+  exceptions:
+  - disclosure required by law
   mandatory_content: []
   dependencies: []
   product_scope: outside_supported_actor
@@ -419,13 +414,10 @@ norms:
   subjects:
   - subject_ref: notified_body
     category: notified_or_conformity_body
-  action: maintain internal competence to evaluate outsourced work and permanent sufficient multidisciplinary
-    expert personnel
+  action: maintain sufficient internal competence to evaluate effectively the tasks conducted by external
+    parties on the notified body's behalf
   norm_text: Notified bodies shall have sufficient internal competences to be able effectively to evaluate
-    the tasks conducted by external parties on their behalf. The notified body shall have permanent availability
-    of sufficient administrative, technical, legal and scientific personnel who possess experience and
-    knowledge relating to the relevant types of AI systems, data and data computing, and relating to the
-    requirements set out in Section 2.
+    the tasks conducted by external parties on their behalf.
   detection_channels:
   - semantic_legal_effect
   - shall_token
@@ -458,9 +450,227 @@ norms:
   subjects:
   - subject_ref: notified_body
     category: notified_or_conformity_body
-  action: participate in Article 38 coordination and remain represented in or current on European standardisation
+  action: participate in the coordination activities referred to in Article 38
   norm_text: Notified bodies shall participate in coordination activities as referred to in Article 38.
-    They shall also take part directly, or be represented in, European standardisation organisations,
+  detection_channels:
+  - semantic_legal_effect
+  - shall_token
+  primary_spans:
+  - AIA-TEXT-A031-P012
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions: []
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_refs: []
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A031-P5-DIRECT-INVOLVEMENT-PROHIBITED
+  act_version_date: '2026-07-27'
+  kind: prohibition
+  subjects:
+  - subject_ref: conformity_assessment_body_and_personnel
+    category: notified_or_conformity_body
+  action: prohibit the conformity assessment body, its top-level management and assessment personnel from
+    direct involvement in high-risk AI-system design, development, marketing or use
+  norm_text: Neither a conformity assessment body, its top-level management nor the personnel responsible
+    for carrying out its conformity assessment tasks shall be directly involved in the design, development,
+    marketing or use of high-risk AI systems
+  detection_channels:
+  - semantic_legal_effect
+  - shall_token
+  primary_spans:
+  - AIA-TEXT-A031-P005
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions: []
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_refs: []
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A031-P5-PARTY-REPRESENTATION-PROHIBITED
+  act_version_date: '2026-07-27'
+  kind: prohibition
+  subjects:
+  - subject_ref: conformity_assessment_body_and_personnel
+    category: notified_or_conformity_body
+  action: prohibit the conformity assessment body, its top-level management and assessment personnel from
+    representing parties engaged in high-risk AI-system design, development, marketing or use
+  norm_text: nor shall they represent the parties engaged in those activities.
+  detection_channels:
+  - semantic_legal_effect
+  - shall_token
+  primary_spans:
+  - AIA-TEXT-A031-P005
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions: []
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_refs: []
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A031-P6-INDEPENDENT-OPERATION
+  act_version_date: '2026-07-27'
+  kind: obligation
+  subjects:
+  - subject_ref: notified_body
+    category: notified_or_conformity_body
+  action: organise and operate the notified body to safeguard the independence, objectivity and impartiality
+    of its activities
+  norm_text: Notified bodies shall be organised and operated so as to safeguard the independence, objectivity
+    and impartiality of their activities.
+  detection_channels:
+  - semantic_legal_effect
+  - shall_token
+  primary_spans:
+  - AIA-TEXT-A031-P006
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions: []
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_refs: []
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A031-P7-STAFF-PROFESSIONAL-SECRECY
+  act_version_date: '2026-07-27'
+  kind: obligation
+  subjects:
+  - subject_ref: notified_body_staff
+    category: notified_or_conformity_body
+  action: observe professional secrecy for all information obtained in carrying out tasks under the Regulation
+  norm_text: The staff of notified bodies shall be bound to observe professional secrecy with regard to
+    all information obtained in carrying out their tasks under this Regulation, except in relation to
+    the notifying authorities of the Member State in which their activities are carried out.
+  detection_channels:
+  - semantic_legal_effect
+  - shall_token
+  primary_spans:
+  - AIA-TEXT-A031-P007
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions: []
+  exceptions:
+  - in relation to the notifying authorities of the Member State in which the staff's activities are carried
+    out
+  mandatory_content: []
+  dependencies: []
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_refs: []
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A031-P11-PERMANENT-EXPERT-STAFF
+  act_version_date: '2026-07-27'
+  kind: obligation
+  subjects:
+  - subject_ref: notified_body
+    category: notified_or_conformity_body
+  action: maintain permanent availability of sufficient administrative, technical, legal and scientific
+    staff with experience and knowledge of the relevant AI-system types, data and data computing, and
+    Section 2 requirements
+  norm_text: The notified body shall have permanent availability of sufficient administrative, technical,
+    legal and scientific personnel who possess experience and knowledge relating to the relevant types
+    of AI systems, data and data computing, and relating to the requirements set out in Section 2.
+  detection_channels:
+  - semantic_legal_effect
+  - shall_token
+  primary_spans:
+  - AIA-TEXT-A031-P011
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions: []
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_refs: []
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A031-P12-STANDARDISATION-OR-STANDARDS-CURRENCY
+  act_version_date: '2026-07-27'
+  kind: obligation
+  subjects:
+  - subject_ref: notified_body
+    category: notified_or_conformity_body
+  action: take part directly in European standardisation organisations, be represented in them, or ensure
+    awareness and current knowledge of relevant standards
+  norm_text: They shall also take part directly, or be represented in, European standardisation organisations,
     or ensure that they are aware and up to date in respect of relevant standards.
   detection_channels:
   - semantic_legal_effect

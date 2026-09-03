@@ -72,14 +72,11 @@ records:
   verification_mode: not_assessed
 - norm_id: AIA-NORM-A031-P5-CONFLICTING-ACTIVITIES-PROHIBITED
   source: A031-P005
-  quote: Neither a conformity assessment body, its top-level management nor the personnel responsible
-    for carrying out its conformity assessment tasks shall be directly involved in the design, development,
-    marketing or use of high-risk AI systems, nor shall they represent the parties engaged in those activities.
-    They shall not engage in any activity that might conflict with their independence of judgement or
+  quote: They shall not engage in any activity that might conflict with their independence of judgement or
     integrity in relation to conformity assessment activities for which they are notified. This shall,
     in particular, apply to consultancy services.
-  action: prohibit body leadership and assessment personnel from system activities, party representation,
-    consultancy, or other independence conflicts
+  action: prohibit the conformity assessment body, its top-level management and assessment personnel
+    from activities conflicting with independence of judgement or assessment integrity, in particular consultancy
   subject_ref: conformity_assessment_body_and_personnel
   subject_category: notified_or_conformity_body
   kind: prohibition
@@ -90,12 +87,11 @@ records:
   verification_mode: not_assessed
 - norm_id: AIA-NORM-A031-P6-IMPARTIALITY-SYSTEM
   source: A031-P006
-  quote: Notified bodies shall be organised and operated so as to safeguard the independence, objectivity
-    and impartiality of their activities. Notified bodies shall document and implement a structure and
+  quote: Notified bodies shall document and implement a structure and
     procedures to safeguard impartiality and to promote and apply the principles of impartiality throughout
     their organisation, personnel and assessment activities.
-  action: organise, document, and implement structures and procedures safeguarding independence, objectivity,
-    and organisation-wide impartiality
+  action: document and implement structures and procedures safeguarding impartiality and promoting
+    and applying its principles throughout the organisation, personnel and assessment activities
   subject_ref: notified_body
   subject_category: notified_or_conformity_body
   product_scope: outside_supported_actor
@@ -109,11 +105,11 @@ records:
     subsidiaries, subcontractors and any associated body or personnel of external bodies maintain, in
     accordance with Article 78, the confidentiality of the information which comes into their possession
     during the performance of conformity assessment activities, except when its disclosure is required
-    by law. The staff of notified bodies shall be bound to observe professional secrecy with regard to
-    all information obtained in carrying out their tasks under this Regulation, except in relation to
-    the notifying authorities of the Member State in which their activities are carried out.
-  action: maintain documented confidentiality procedures and bind staff to professional secrecy subject
-    to enacted exceptions
+    by law.
+  action: maintain documented procedures ensuring Article 78 confidentiality for personnel, committees,
+    subsidiaries, subcontractors and associated external bodies or personnel during conformity assessment
+  exceptions:
+  - disclosure required by law
   subject_ref: notified_body
   subject_category: notified_or_conformity_body
   product_scope: outside_supported_actor
@@ -164,12 +160,9 @@ records:
 - norm_id: AIA-NORM-A031-P11-INTERNAL-COMPETENCE-AND-STAFF
   source: A031-P011
   quote: Notified bodies shall have sufficient internal competences to be able effectively to evaluate
-    the tasks conducted by external parties on their behalf. The notified body shall have permanent availability
-    of sufficient administrative, technical, legal and scientific personnel who possess experience and
-    knowledge relating to the relevant types of AI systems, data and data computing, and relating to the
-    requirements set out in Section 2.
-  action: maintain internal competence to evaluate outsourced work and permanent sufficient multidisciplinary
-    expert personnel
+    the tasks conducted by external parties on their behalf.
+  action: maintain sufficient internal competence to evaluate effectively the tasks conducted by external
+    parties on the notified body's behalf
   subject_ref: notified_body
   subject_category: notified_or_conformity_body
   product_scope: outside_supported_actor
@@ -179,12 +172,100 @@ records:
   verification_mode: not_assessed
 - norm_id: AIA-NORM-A031-P12-COORDINATION-AND-STANDARDS
   source: A031-P012
-  quote: Notified bodies shall participate in coordination activities as referred to in Article 38. They
-    shall also take part directly, or be represented in, European standardisation organisations, or ensure
-    that they are aware and up to date in respect of relevant standards.
-  action: participate in Article 38 coordination and remain represented in or current on European standardisation
+  quote: Notified bodies shall participate in coordination activities as referred to in Article 38.
+  action: participate in the coordination activities referred to in Article 38
   subject_ref: notified_body
   subject_category: notified_or_conformity_body
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A031-P5-DIRECT-INVOLVEMENT-PROHIBITED
+  source: A031-P005
+  quote: Neither a conformity assessment body, its top-level management nor the personnel
+    responsible for carrying out its conformity assessment tasks shall be directly involved in the
+    design, development, marketing or use of high-risk AI systems
+  action: prohibit the conformity assessment body, its top-level management and assessment personnel
+    from direct involvement in high-risk AI-system design, development, marketing or use
+  subject_ref: conformity_assessment_body_and_personnel
+  subject_category: notified_or_conformity_body
+  kind: prohibition
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A031-P5-PARTY-REPRESENTATION-PROHIBITED
+  source: A031-P005
+  quote: "nor shall they represent the parties engaged in those activities."
+  action: prohibit the conformity assessment body, its top-level management and assessment personnel
+    from representing parties engaged in high-risk AI-system design, development, marketing or use
+  subject_ref: conformity_assessment_body_and_personnel
+  subject_category: notified_or_conformity_body
+  kind: prohibition
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A031-P6-INDEPENDENT-OPERATION
+  source: A031-P006
+  quote: Notified bodies shall be organised and operated so as to safeguard the independence,
+    objectivity and impartiality of their activities.
+  action: organise and operate the notified body to safeguard the independence, objectivity and
+    impartiality of its activities
+  subject_ref: notified_body
+  subject_category: notified_or_conformity_body
+  kind: obligation
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A031-P7-STAFF-PROFESSIONAL-SECRECY
+  source: A031-P007
+  quote: The staff of notified bodies shall be bound to observe professional secrecy with regard to
+    all information obtained in carrying out their tasks under this Regulation, except in relation
+    to the notifying authorities of the Member State in which their activities are carried out.
+  action: observe professional secrecy for all information obtained in carrying out tasks under the
+    Regulation
+  subject_ref: notified_body_staff
+  subject_category: notified_or_conformity_body
+  kind: obligation
+  exceptions:
+  - in relation to the notifying authorities of the Member State in which the staff's activities are carried out
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A031-P11-PERMANENT-EXPERT-STAFF
+  source: A031-P011
+  quote: The notified body shall have permanent availability of sufficient administrative,
+    technical, legal and scientific personnel who possess experience and knowledge relating to the
+    relevant types of AI systems, data and data computing, and relating to the requirements set out
+    in Section 2.
+  action: maintain permanent availability of sufficient administrative, technical, legal and
+    scientific staff with experience and knowledge of the relevant AI-system types, data and data
+    computing, and Section 2 requirements
+  subject_ref: notified_body
+  subject_category: notified_or_conformity_body
+  kind: obligation
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A031-P12-STANDARDISATION-OR-STANDARDS-CURRENCY
+  source: A031-P012
+  quote: They shall also take part directly, or be represented in, European standardisation
+    organisations, or ensure that they are aware and up to date in respect of relevant standards.
+  action: take part directly in European standardisation organisations, be represented in them, or
+    ensure awareness and current knowledge of relevant standards
+  subject_ref: notified_body
+  subject_category: notified_or_conformity_body
+  kind: obligation
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required

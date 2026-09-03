@@ -101,3 +101,35 @@ def test_article_six_keeps_four_alternatives_and_human_review_qualification(corr
         for s in corrected_bundle.text_review.segments
         if s.source.kind.value == "article" and s.source.document in {"3", "6"}
     )
+
+
+def test_article_thirty_one_separates_actions_actors_and_exceptions(corrected_bundle):
+    norms = {
+        n.norm_id.removeprefix("AIA-NORM-A031-"): n
+        for n in corrected_bundle.norm_inventory.norms
+        if n.norm_id.startswith("AIA-NORM-A031-")
+    }
+    assert len(norms) == 19
+    assert norms["P7-CONFIDENTIALITY-AND-SECRECY"].exceptions == ["disclosure required by law"]
+    staff = norms["P7-STAFF-PROFESSIONAL-SECRECY"]
+    assert staff.subjects[0].subject_ref == "notified_body_staff"
+    assert "notifying authorities of the Member State" in staff.exceptions[0]
+    assert "disclosure required by law" not in staff.exceptions
+    for suffix in (
+        "P5-DIRECT-INVOLVEMENT-PROHIBITED",
+        "P5-PARTY-REPRESENTATION-PROHIBITED",
+        "P5-CONFLICTING-ACTIVITIES-PROHIBITED",
+    ):
+        assert norms[suffix].kind.value == "prohibition"
+    assert "consultancy" in norms["P5-CONFLICTING-ACTIVITIES-PROHIBITED"].action
+    assert "independence, objectivity" in norms["P6-INDEPENDENT-OPERATION"].action
+    assert "document and implement" in norms["P6-IMPARTIALITY-SYSTEM"].action
+    assert "external" in norms["P11-INTERNAL-COMPETENCE-AND-STAFF"].action
+    assert (
+        "administrative, technical, legal and scientific"
+        in norms["P11-PERMANENT-EXPERT-STAFF"].action
+    )
+    assert "Article 38" in norms["P12-COORDINATION-AND-STANDARDS"].action
+    assert "or ensure awareness" in norms["P12-STANDARDISATION-OR-STANDARDS-CURRENCY"].action
+    assert all(n.review.status.value == "proposed" for n in norms.values())
+    assert all(n.implementation_mode.value == "none_required" for n in norms.values())

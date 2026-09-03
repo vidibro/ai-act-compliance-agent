@@ -1660,15 +1660,15 @@ def test_inventory_cannot_be_misreported_as_independently_approved(metrics):
     assert metrics.needs_review_characters == 0
     assert metrics.review_statuses == {
         "approved": 1467,
-        "proposed": 1351,
+        "proposed": 1357,
     }
     assert metrics.timed_review_records == 0
-    assert metrics.total_review_records == 2819
+    assert metrics.total_review_records == 2825
 
 
 def test_semantic_pass_finds_propositions_a_shall_scan_misses(metrics):
     assert metrics.shall_vs_semantic_disagreements == 524
-    assert metrics.shall_token_candidate_recall == pytest.approx(823 / 1347)
+    assert metrics.shall_token_candidate_recall == pytest.approx(829 / 1353)
     assert "AIA-NORM-A011-P1-SIMPLIFY" in metrics.semantic_norms_without_shall_token
     assert "AIA-NORM-A043-P5-AMEND" in metrics.semantic_norms_without_shall_token
     assert "AIA-NORM-A060-P4-PERMISSION" in metrics.semantic_norms_without_shall_token
@@ -1676,12 +1676,12 @@ def test_semantic_pass_finds_propositions_a_shall_scan_misses(metrics):
 
 
 def test_metrics_expose_many_to_many_and_implementation_debt(metrics):
-    assert metrics.normative_segments_with_multiple_norms == 293
+    assert metrics.normative_segments_with_multiple_norms == 298
     assert metrics.mapping_shape.one_norm_to_one_target == 26
     assert metrics.mapping_shape.many_norms_to_one_target == 348
     assert metrics.mapping_shape.one_norm_to_many_targets == 0
     assert metrics.mapping_shape.many_to_many == 15
-    assert metrics.mapping_shape.unmapped == 958
+    assert metrics.mapping_shape.unmapped == 964
     assert metrics.semantic_vs_existing_implementation_disagreements == 233
     assert metrics.semantic_norms_without_existing_implementation == [
         "AIA-NORM-A002-P1-A-PROVIDER",
