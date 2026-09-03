@@ -75,9 +75,11 @@ norms:
   subjects:
   - subject_ref: member_state
     category: member_state
-  action: notify the Commission timely of penalty and enforcement rules and every later amendment
+  action: notify the Commission of the paragraph 1 rules on penalties and other enforcement measures,
+    without delay and at the latest by the date of entry into application
   norm_text: Member States shall, without delay and at the latest by the date of entry into application,
-    notify the Commission
+    notify the Commission of the rules on penalties and of other enforcement measures referred to in paragraph
+    1
   detection_channels:
   - semantic_legal_effect
   - shall_token
@@ -86,6 +88,41 @@ norms:
   qualifier_spans: []
   effective_date_spans: []
   conditions: []
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_refs: []
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A099-P2-NOTIFY-PENALTY-AMENDMENTS
+  act_version_date: '2026-07-27'
+  kind: obligation
+  subjects:
+  - subject_ref: member_state
+    category: member_state
+  action: notify the Commission without delay of any subsequent amendment to those rules and measures
+  norm_text: and shall notify it, without delay, of any subsequent amendment to them.
+  detection_channels:
+  - semantic_legal_effect
+  - shall_token
+  primary_spans:
+  - AIA-TEXT-A099-P002
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions:
+  - the rules on penalties or other enforcement measures are subsequently amended
   exceptions: []
   mandatory_content: []
   dependencies: []
@@ -145,8 +182,12 @@ norms:
   subjects:
   - subject_ref: infringing_operator_or_notified_body
     category: other
-  action: expose listed operator and notified-body non-compliance to the specified maximum fine
-  norm_text: shall be subject to administrative fines of up to EUR 15000000
+  action: expose non-compliance with the enacted operator and notified-body provisions, other than those
+    laid down in Article 5, to administrative fines of up to EUR 15 000 000 or, for an undertaking, up
+    to 3 % of its total worldwide annual turnover for the preceding financial year, whichever is higher
+  norm_text: shall be subject to administrative fines of up to EUR 15000000 or, if the offender is an
+    undertaking, up to 3 % of its total worldwide annual turnover for the preceding financial year, whichever
+    is higher
   detection_channels:
   - semantic_legal_effect
   - shall_token
@@ -165,16 +206,18 @@ norms:
   - AIA-TEXT-A099-P012
   effective_date_spans: []
   conditions: []
-  exceptions: []
+  exceptions:
+  - the provisions laid down in Article 5, which carry the paragraph 3 fine instead
   mandatory_content:
-  - Article 16 provider obligations
-  - Article 22 authorised-representative obligations
-  - Article 23 importer obligations
-  - Article 24 distributor obligations
-  - Article 25(2) and (4) provider and operator obligations
-  - Article 26 deployer obligations
-  - listed notified-body requirements and obligations
-  - Article 50 transparency obligations
+  - obligations of providers pursuant to Article 16
+  - obligations of authorised representatives pursuant to Article 22
+  - obligations of importers pursuant to Article 23
+  - obligations of distributors pursuant to Article 24
+  - obligations of providers and operators pursuant to Article 25(2) and (4)
+  - obligations of deployers pursuant to Article 26
+  - requirements and obligations of notified bodies pursuant to Article 31, Article 33(1), (3) and (4)
+    or Article 34
+  - transparency obligations for providers and deployers pursuant to Article 50
   dependencies: []
   product_scope: no_product_action
   product_scope_reason: This is an enforcement consequence rather than an independent compliance action.

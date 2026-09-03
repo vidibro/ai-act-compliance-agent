@@ -24,7 +24,7 @@ def test_pinned_corpus_triage_is_documented_without_mutating_review():
     assert bundle.model_dump() == before
     assert bundle.validated_documents == 133
     assert len(bundle.text_review.segments) == 1471
-    assert len(candidates) == 45
+    assert len(candidates) == 41
 
     segments = {s.segment_id: s for s in bundle.text_review.segments}
     for candidate in candidates:
@@ -59,6 +59,8 @@ def test_pinned_corpus_triage_is_documented_without_mutating_review():
     closed_by_splitting.add("AIA-TEXT-A082-P005")
     closed_by_splitting.add("AIA-TEXT-A085-P002")
     closed_by_splitting |= {"AIA-TEXT-A097-P003", "AIA-TEXT-A097-P006"}
+    closed_by_splitting.add("AIA-TEXT-A099-P002")
+    closed_by_splitting |= {f"AIA-TEXT-A100-P{p:03}" for p in (11, 12, 13)}
     assert set(ids) - closed_by_splitting == {candidate.segment_id for candidate in candidates}
 
     content_report = (root / "docs/NORMATIVE-COVERAGE-CONTENT-AUDIT.md").read_text()
@@ -73,7 +75,7 @@ def test_pinned_corpus_triage_is_documented_without_mutating_review():
         if norm.mandatory_content
     }
     assert len(content_rows) == 146  # Historical audit baseline.
-    assert len(expected_content) == 132
+    assert len(expected_content) == 133
     baseline_content = {norm_id: int(count) for norm_id, count, _ in content_rows}
     # Article 40's example is now nested in its proper deliverable, not a third requirement.
     baseline_content["AIA-NORM-A040-P2-RESOURCE-PERFORMANCE-DELIVERABLES"] = 2
@@ -153,4 +155,6 @@ def test_pinned_corpus_triage_is_documented_without_mutating_review():
     baseline_content.pop("AIA-NORM-A092-P1-CONDUCT-GPAI-EVALUATION")
     # Article 95's five topics are examples inside one non-exhaustive scope entry.
     baseline_content["AIA-NORM-A095-P2-FACILITATE-SPECIFIC-REQUIREMENT-CODES"] = 1
+    # Article 101 now enumerates the three fine-amount factors.
+    baseline_content["AIA-NORM-A101-P1-FIX-FINE-AMOUNT"] = 3
     assert baseline_content == expected_content

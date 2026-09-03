@@ -4,7 +4,7 @@
 
 **Act version:** 2026-07-27
 
-The inventory contains 133 complete source-body partitions, 1471 exact segments, and 1477 proposed atomic norms. Every stored article and annex is present. Proposed
+The inventory contains 133 complete source-body partitions, 1471 exact segments, and 1482 proposed atomic norms. Every stored article and annex is present. Proposed
 norms have been extracted from 132 documents; the remaining
 work is retained explicitly rather than omitted. The inventory is not consumed by classification,
 rule selection, judging, or reporting.
@@ -26,7 +26,7 @@ rule selection, judging, or reporting.
 - annex XIII: 2
 - annex XIV: 25
 - article 10: 24
-- article 100: 7
+- article 100: 11
 - article 101: 7
 - article 102: 1
 - article 103: 1
@@ -142,7 +142,7 @@ rule selection, judging, or reporting.
 - article 96: 6
 - article 97: 11
 - article 98: 2
-- article 99: 13
+- article 99: 14
 
 ### Norms per extracted provision
 
@@ -978,7 +978,7 @@ rule selection, judging, or reporting.
 - AIA-TEXT-A098-P001: 1
 - AIA-TEXT-A098-P002: 1
 - AIA-TEXT-A099-P001: 2
-- AIA-TEXT-A099-P002: 1
+- AIA-TEXT-A099-P002: 2
 - AIA-TEXT-A099-P003: 1
 - AIA-TEXT-A099-P004: 1
 - AIA-TEXT-A099-P013: 1
@@ -992,9 +992,9 @@ rule selection, judging, or reporting.
 - AIA-TEXT-A100-P001: 1
 - AIA-TEXT-A100-P009: 1
 - AIA-TEXT-A100-P010: 1
-- AIA-TEXT-A100-P011: 1
-- AIA-TEXT-A100-P012: 1
-- AIA-TEXT-A100-P013: 1
+- AIA-TEXT-A100-P011: 3
+- AIA-TEXT-A100-P012: 2
+- AIA-TEXT-A100-P013: 2
 - AIA-TEXT-A100-P014: 1
 - AIA-TEXT-A101-P001: 1
 - AIA-TEXT-A101-P006: 1
@@ -1127,15 +1127,15 @@ rule selection, judging, or reporting.
 - Characters displayed by the extraction pass: 394667
 - Independently approved characters: 390556
 - Characters deliberately left as review debt: 0
-- Normative segments supporting multiple propositions: 376
+- Normative segments supporting multiple propositions: 380
 - Semantic candidates a shall-token pass missed: 571
-- Shall-token candidate recall: 61.3%
+- Shall-token candidate recall: 61.5%
 - In-scope semantic candidates absent from existing implementation: 239
-- Detection-channel counts: cross_reference_structure=486, deeming_or_consequence=279, existing_implementation=393, other_modal=156, semantic_legal_effect=1477, shall_token=906
-- Mapping shapes, by norm: one-to-one=25, many-to-one=353, one-to-many=0, many-to-many=15, unmapped=1084
+- Detection-channel counts: cross_reference_structure=486, deeming_or_consequence=280, existing_implementation=393, other_modal=156, semantic_legal_effect=1482, shall_token=911
+- Mapping shapes, by norm: one-to-one=25, many-to-one=353, one-to-many=0, many-to-many=15, unmapped=1089
 - Implementation debt candidates: 222
 - Interpretive links to non-binding guidance: 1
-- Review records with measured elapsed time: 0/2949
+- Review records with measured elapsed time: 0/2954
 
 ## Findings
 

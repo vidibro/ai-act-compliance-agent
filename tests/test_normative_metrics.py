@@ -1661,15 +1661,15 @@ def test_inventory_cannot_be_misreported_as_independently_approved(metrics):
     assert metrics.needs_review_characters == 0
     assert metrics.review_statuses == {
         "approved": 1467,
-        "proposed": 1481,
+        "proposed": 1486,
     }
     assert metrics.timed_review_records == 0
-    assert metrics.total_review_records == 2949
+    assert metrics.total_review_records == 2954
 
 
 def test_semantic_pass_finds_propositions_a_shall_scan_misses(metrics):
     assert metrics.shall_vs_semantic_disagreements == 571
-    assert metrics.shall_token_candidate_recall == pytest.approx(906 / 1477)
+    assert metrics.shall_token_candidate_recall == pytest.approx(911 / 1482)
     assert "AIA-NORM-A011-P1-SIMPLIFY" in metrics.semantic_norms_without_shall_token
     assert "AIA-NORM-A043-P5-AMEND" in metrics.semantic_norms_without_shall_token
     assert "AIA-NORM-A060-P4-PERMISSION" in metrics.semantic_norms_without_shall_token
@@ -1677,12 +1677,12 @@ def test_semantic_pass_finds_propositions_a_shall_scan_misses(metrics):
 
 
 def test_metrics_expose_many_to_many_and_implementation_debt(metrics):
-    assert metrics.normative_segments_with_multiple_norms == 376
+    assert metrics.normative_segments_with_multiple_norms == 380
     assert metrics.mapping_shape.one_norm_to_one_target == 25
     assert metrics.mapping_shape.many_norms_to_one_target == 353
     assert metrics.mapping_shape.one_norm_to_many_targets == 0
     assert metrics.mapping_shape.many_to_many == 15
-    assert metrics.mapping_shape.unmapped == 1084
+    assert metrics.mapping_shape.unmapped == 1089
     assert metrics.semantic_vs_existing_implementation_disagreements == 239
     assert metrics.semantic_norms_without_existing_implementation == [
         "AIA-NORM-A002-P1-A-PROVIDER",
@@ -4480,9 +4480,30 @@ def test_article_ninety_nine_extracts_penalty_framework():
         if norm.norm_id.startswith("AIA-NORM-A099-")
     }
 
-    assert len(norms) == 13
-    assert len(norms["AIA-NORM-A099-P4-OPERATOR-FINE"].mandatory_content) == 8
+    assert len(norms) == 14
     assert len(norms["AIA-NORM-A099-P7-CONSIDER-FINE-CIRCUMSTANCES"].mandatory_content) == 10
+
+    # Initial notification and later amendments have different triggers and deadlines.
+    initial = norms["AIA-NORM-A099-P2-NOTIFY-PENALTY-RULES"]
+    amendments = norms["AIA-NORM-A099-P2-NOTIFY-PENALTY-AMENDMENTS"]
+    assert "date of entry into application" in initial.action
+    assert "date of entry into application" not in amendments.action
+    assert amendments.conditions == [
+        "the rules on penalties or other enforcement measures are subsequently amended"
+    ]
+
+    # The fine ceiling, its turnover alternative and the Article 5 exclusion are explicit.
+    fine = norms["AIA-NORM-A099-P4-OPERATOR-FINE"]
+    assert len(fine.mandatory_content) == 8
+    assert "Article 31, Article 33(1), (3) and (4) or Article 34" in (
+        " ".join(fine.mandatory_content[6].split())
+    )
+    assert "EUR 15 000 000" in fine.action
+    assert "3 % of its total worldwide annual turnover" in fine.action
+    assert "preceding financial year" in fine.action
+    assert fine.exceptions == [
+        "the provisions laid down in Article 5, which carry the paragraph 3 fine instead"
+    ]
 
 
 def test_articles_one_hundred_to_one_hundred_five_extract_enforcement_and_amendments():
@@ -4495,7 +4516,39 @@ def test_articles_one_hundred_to_one_hundred_five_extract_enforcement_and_amendm
         for article in ("100", "101", "102", "103", "104", "105")
     }
 
-    assert counts == {"100": 7, "101": 7, "102": 1, "103": 1, "104": 1, "105": 1}
+    assert counts == {"100": 11, "101": 7, "102": 1, "103": 1, "104": 1, "105": 1}
+    by_id = {norm.norm_id: norm for norm in bundle.norm_inventory.norms}
+
+    # Hearing, decision grounds and complainant association are separate protections.
+    assert by_id["AIA-NORM-A100-P4-HEARING-RIGHTS"].conditions == [
+        "the decision is taken pursuant to Article 100"
+    ]
+    assert "only on elements and circumstances" in by_id["AIA-NORM-A100-P4-DECISION-GROUNDS"].action
+    assert by_id["AIA-NORM-A100-P4-ASSOCIATE-COMPLAINANTS"].conditions == ["there are complainants"]
+
+    # File access is an entitlement of the parties, limited by the enacted interests.
+    access = by_id["AIA-NORM-A100-P5-FILE-ACCESS-ENTITLEMENT"]
+    assert access.kind.value == "entitlement"
+    assert access.subjects[0].subject_ref == "party_concerned_in_article_100_proceedings"
+    assert access.exceptions == [
+        "the legitimate interest of individuals or undertakings in the protection of their "
+        "personal data or business secrets"
+    ]
+
+    # Revenue allocation and the protection of the fined body are distinct consequences.
+    assert "general budget of the Union" in (
+        " ".join(by_id["AIA-NORM-A100-P6-FINE-FUNDS-AND-OPERATION"].action.split())
+    )
+    assert "effective operation" in by_id["AIA-NORM-A100-P6-PRESERVE-FINED-BODY-OPERATION"].action
+
+    # Article 101 enumerates the fine-amount factors instead of one combined summary.
+    amount = by_id["AIA-NORM-A101-P1-FIX-FINE-AMOUNT"]
+    assert amount.mandatory_content == [
+        "the nature, gravity and duration of the infringement",
+        "due account of the principles of proportionality and appropriateness",
+        "commitments made in accordance with Article 93(3) or made in relevant codes of practice "
+        "in accordance with Article 56",
+    ]
     amendments = [
         norm
         for norm in bundle.norm_inventory.norms

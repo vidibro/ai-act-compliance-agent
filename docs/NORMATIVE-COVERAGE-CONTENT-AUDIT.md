@@ -189,8 +189,13 @@ Article 95's and Article 96's findings are now corrected. Article 95 keeps one n
 scope entry quoting all five enacted examples, so they are not five operator duties. Article 96
 enumerates the seven guideline subjects and moves point (g)'s 1 August 2027 publication into
 its own norm. Article 97's two recorded segment splits are applied at the same time. The live
-inventory has 132 populated content lists across 1,477 proposed norms. Subsequent articles'
-findings remain pending.
+inventory has 132 populated content lists across 1,477 proposed norms.
+
+Article 99's and Article 101's findings are now corrected alongside the Article 99 and
+Article 100 segment splits. The operator fine names the notified-body provisions explicitly
+and states its ceiling, reference year and Article 5 exclusion; the fine-amount rule
+enumerates its three factors. The live inventory has 133 populated content lists across 1,482
+proposed norms. The remaining recorded findings are the Annex VII rows and Annex VIII-A.
 
 | Norm | Content entries | Decision | Finding / treatment |
 |---|---:|---|---|

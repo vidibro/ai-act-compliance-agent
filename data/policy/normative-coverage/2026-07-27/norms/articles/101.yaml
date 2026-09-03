@@ -50,9 +50,11 @@ norms:
   subjects:
   - subject_ref: commission
     category: union_institution_or_body
-  action: fix a fine or periodic penalty with regard to infringement characteristics proportionality appropriateness
-    and relevant commitments
-  norm_text: regard shall be had to the nature, gravity and duration of the infringement
+  action: fix the amount of the fine or periodic penalty payment having regard to every enacted factor
+  norm_text: In fixing the amount of the fine or periodic penalty payment, regard shall be had to the
+    nature, gravity and duration of the infringement, taking due account of the principles of proportionality
+    and appropriateness. The Commission shall also into account commitments made in accordance with Article
+    93(3) or made in relevant codes of practice in accordance with Article 56.
   detection_channels:
   - semantic_legal_effect
   - shall_token
@@ -62,7 +64,11 @@ norms:
   effective_date_spans: []
   conditions: []
   exceptions: []
-  mandatory_content: []
+  mandatory_content:
+  - the nature, gravity and duration of the infringement
+  - due account of the principles of proportionality and appropriateness
+  - commitments made in accordance with Article 93(3) or made in relevant codes of practice in accordance
+    with Article 56
   dependencies: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.

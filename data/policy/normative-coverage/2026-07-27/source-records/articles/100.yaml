@@ -39,8 +39,23 @@ records:
   verification_mode: not_assessed
 - norm_id: AIA-NORM-A100-P4-HEARING-RIGHTS
   source: A100-P011
-  quote: shall give the Union institution, body, office or agency which is the subject of the proceedings
-  action: give the investigated Union body an opportunity to be heard and base decisions only on matters open to party comment while closely associating complainants
+  quote: shall give the Union institution, body, office or agency which is the subject of the proceedings conducted by the European Data Protection Supervisor the opportunity of being heard on the matter regarding the possible infringement.
+  action: give the Union institution, body, office or agency subject to the proceedings the
+    opportunity of being heard on the possible infringement before taking a decision
+  subject_ref: european_data_protection_supervisor
+  subject_category: union_institution_or_body
+  conditions:
+  - the decision is taken pursuant to Article 100
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A100-P4-DECISION-GROUNDS
+  source: A100-P011
+  quote: The European Data Protection Supervisor shall base his or her decisions only on elements and circumstances on which the parties concerned have been able to comment.
+  action: base the decision only on elements and circumstances on which the parties concerned have
+    been able to comment
   subject_ref: european_data_protection_supervisor
   subject_category: union_institution_or_body
   product_scope: outside_supported_actor
@@ -48,12 +63,40 @@ records:
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_assessed
-- norm_id: AIA-NORM-A100-P5-DEFENCE-AND-FILE-ACCESS
-  source: A100-P012
-  quote: The rights of defence of the parties concerned shall be fully respected
-  action: fully respect defence rights and provide file access subject to personal-data and business-secret interests
+- norm_id: AIA-NORM-A100-P4-ASSOCIATE-COMPLAINANTS
+  source: A100-P011
+  quote: Complainants, if any, shall be associated closely with the proceedings.
+  action: associate any complainants closely with the proceedings
   subject_ref: european_data_protection_supervisor
   subject_category: union_institution_or_body
+  conditions:
+  - there are complainants
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A100-P5-DEFENCE-AND-FILE-ACCESS
+  source: A100-P012
+  quote: The rights of defence of the parties concerned shall be fully respected in the proceedings.
+  action: fully respect the rights of defence of the parties concerned in the proceedings
+  subject_ref: european_data_protection_supervisor
+  subject_category: union_institution_or_body
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A100-P5-FILE-ACCESS-ENTITLEMENT
+  source: A100-P012
+  quote: They shall be entitled to have access to the European Data Protection Supervisor’s file, subject to the legitimate interest of individuals or undertakings in the protection of their personal data or business secrets.
+  action: have access to the European Data Protection Supervisor's file
+  subject_ref: party_concerned_in_article_100_proceedings
+  subject_category: union_institution_or_body
+  kind: entitlement
+  exceptions:
+  - the legitimate interest of individuals or undertakings in the protection of their personal data
+    or business secrets
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -62,7 +105,21 @@ records:
 - norm_id: AIA-NORM-A100-P6-FINE-FUNDS-AND-OPERATION
   source: A100-P013
   quote: Funds collected by imposition of fines in this Article shall contribute to the general budget of the Union
-  action: contribute collected fines to the Union budget without affecting the fined body's effective operation
+  action: contribute the funds collected by imposing Article 100 fines to the general budget of the
+    Union
+  subject_ref: union_budget_and_enforcement_framework
+  subject_category: union_institution_or_body
+  kind: legal_consequence
+  product_scope: outside_supported_actor
+  product_scope_reason: This institutional consequence is outside the supported operator surface.
+  implementation_mode: none_required
+  implementation_reason: No product implementation is required.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A100-P6-PRESERVE-FINED-BODY-OPERATION
+  source: A100-P013
+  quote: The fines shall not affect the effective operation of the Union institution, body, office or agency fined.
+  action: keep the fines from affecting the effective operation of the Union institution, body,
+    office or agency fined
   subject_ref: union_budget_and_enforcement_framework
   subject_category: union_institution_or_body
   kind: legal_consequence

@@ -301,6 +301,8 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A100-P4-HEARING-RIGHTS
+  - AIA-NORM-A100-P4-DECISION-GROUNDS
+  - AIA-NORM-A100-P4-ASSOCIATE-COMPLAINANTS
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -326,6 +328,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A100-P5-DEFENCE-AND-FILE-ACCESS
+  - AIA-NORM-A100-P5-FILE-ACCESS-ENTITLEMENT
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -352,6 +355,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A100-P6-FINE-FUNDS-AND-OPERATION
+  - AIA-NORM-A100-P6-PRESERVE-FINED-BODY-OPERATION
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
