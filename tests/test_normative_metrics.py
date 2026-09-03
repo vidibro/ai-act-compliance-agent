@@ -1661,15 +1661,15 @@ def test_inventory_cannot_be_misreported_as_independently_approved(metrics):
     assert metrics.needs_review_characters == 0
     assert metrics.review_statuses == {
         "approved": 1467,
-        "proposed": 1487,
+        "proposed": 1488,
     }
     assert metrics.timed_review_records == 0
-    assert metrics.total_review_records == 2955
+    assert metrics.total_review_records == 2956
 
 
 def test_semantic_pass_finds_propositions_a_shall_scan_misses(metrics):
     assert metrics.shall_vs_semantic_disagreements == 571
-    assert metrics.shall_token_candidate_recall == pytest.approx(912 / 1483)
+    assert metrics.shall_token_candidate_recall == pytest.approx(913 / 1484)
     assert "AIA-NORM-A011-P1-SIMPLIFY" in metrics.semantic_norms_without_shall_token
     assert "AIA-NORM-A043-P5-AMEND" in metrics.semantic_norms_without_shall_token
     assert "AIA-NORM-A060-P4-PERMISSION" in metrics.semantic_norms_without_shall_token
@@ -1679,7 +1679,7 @@ def test_semantic_pass_finds_propositions_a_shall_scan_misses(metrics):
 def test_metrics_expose_many_to_many_and_implementation_debt(metrics):
     assert metrics.normative_segments_with_multiple_norms == 380
     assert metrics.mapping_shape.one_norm_to_one_target == 25
-    assert metrics.mapping_shape.many_norms_to_one_target == 353
+    assert metrics.mapping_shape.many_norms_to_one_target == 354
     assert metrics.mapping_shape.one_norm_to_many_targets == 0
     assert metrics.mapping_shape.many_to_many == 15
     assert metrics.mapping_shape.unmapped == 1090
@@ -3853,13 +3853,19 @@ def test_article_seventy_two_maps_post_market_monitoring_effects():
     assert len(segments) == 6
     assert all(segment.review.status.value == "approved" for segment in segments)
     assert all(segment.review.verified_by == "codex" for segment in segments)
-    assert len(norms) == 5
+    assert len(norms) == 6
     provider_norms = [
         norm for norm in norms.values() if norm.subjects[0].category.value == "supported_operator"
     ]
-    assert len(provider_norms) == 4
+    assert len(provider_norms) == 5
     assert all(norm.implementation_refs == ["AIA-PO-A72"] for norm in provider_norms)
     assert len(norms["AIA-NORM-A072-P2-OPERATE-LIFETIME-MONITORING"].mandatory_content) == 3
+
+    # Having a plan and placing it in the Annex IV documentation are separately verifiable.
+    plan = norms["AIA-NORM-A072-P3-PLAN-AND-TECHNICAL-DOCUMENTATION"]
+    documented = norms["AIA-NORM-A072-P3-PLAN-IN-TECHNICAL-DOCUMENTATION"]
+    assert "Annex IV" not in plan.action
+    assert "Annex IV" in documented.action
 
 
 def test_article_seventy_three_maps_complete_incident_lifecycle():

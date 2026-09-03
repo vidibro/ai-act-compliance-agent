@@ -91,9 +91,46 @@ norms:
   subjects:
   - subject_ref: provider
     category: supported_operator
-  action: base monitoring on a written plan included in the Annex IV technical documentation
-  norm_text: The post-market monitoring system shall be based on a post-market monitoring plan. The post-market
-    monitoring plan shall be part of the technical documentation referred to in Annex IV.
+  action: base the post-market monitoring system on a post-market monitoring plan
+  norm_text: The post-market monitoring system shall be based on a post-market monitoring plan.
+  detection_channels:
+  - semantic_legal_effect
+  - shall_token
+  - existing_implementation
+  primary_spans:
+  - AIA-TEXT-A072-P003
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions: []
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: in_scope
+  product_scope_reason: ''
+  implementation_mode: compliance_rule
+  implementation_refs:
+  - AIA-PO-A72
+  implementation_reason: ''
+  verification_mode: listed_for_confirmation
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A072-P3-PLAN-IN-TECHNICAL-DOCUMENTATION
+  act_version_date: '2026-07-27'
+  kind: obligation
+  subjects:
+  - subject_ref: provider
+    category: supported_operator
+  action: include the post-market monitoring plan in the technical documentation referred to in Annex
+    IV
+  norm_text: The post-market monitoring plan shall be part of the technical documentation referred to
+    in Annex IV.
   detection_channels:
   - semantic_legal_effect
   - shall_token

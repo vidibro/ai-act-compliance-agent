@@ -19,8 +19,17 @@ records:
   verification_mode: listed_for_confirmation
 - norm_id: AIA-NORM-A072-P3-PLAN-AND-TECHNICAL-DOCUMENTATION
   source: A072-P003
-  quote: The post-market monitoring system shall be based on a post-market monitoring plan. The post-market monitoring plan shall be part of the technical documentation referred to in Annex IV.
-  action: base monitoring on a written plan included in the Annex IV technical documentation
+  quote: The post-market monitoring system shall be based on a post-market monitoring plan.
+  action: base the post-market monitoring system on a post-market monitoring plan
+  subject_ref: provider
+  subject_category: supported_operator
+  implementation_refs: [AIA-PO-A72]
+  verification_mode: listed_for_confirmation
+- norm_id: AIA-NORM-A072-P3-PLAN-IN-TECHNICAL-DOCUMENTATION
+  source: A072-P003
+  quote: The post-market monitoring plan shall be part of the technical documentation referred to in Annex IV.
+  action: include the post-market monitoring plan in the technical documentation referred to in
+    Annex IV
   subject_ref: provider
   subject_category: supported_operator
   implementation_refs: [AIA-PO-A72]
