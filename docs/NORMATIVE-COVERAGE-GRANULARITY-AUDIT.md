@@ -2,8 +2,8 @@
 
 **Snapshot:** `2026-07-27`; **audit date:** 2026-09-02; **reviewer:** codex.
 **Source baseline:** `0951522` (confirmed Annex IV checklist and segmentation).
-**Status:** candidate triage and populated-content-list pass completed; corrections and the rest
-of the unflagged-source audit remain open.
+**Status:** candidate triage, the populated-content-list pass and every recorded correction in both
+registers are applied. The unflagged-source semantic audit and independent approval remain open.
 
 ## Boundary and method
 
@@ -164,9 +164,11 @@ modal/list scan. Source references identify full norm records in `source-records
 
 ## Correction and completion queue
 
-1. Address `split` and `expand` rows in both audit registers in source order, preserving old norm identity/history when a
-   proposition is replaced, and fixing subject/kind/conditions rather than merely multiplying IDs.
-2. Apply the four additional qualifier findings in source order too; these start at Article 3.
+1. **Applied.** Every `split` and `expand` row in both audit registers has been corrected in source
+   order, preserving old norm identity/history where a proposition was narrowed and fixing
+   subject/kind/conditions rather than merely multiplying IDs.
+2. **Applied.** The four additional qualifier findings, from Article 3 to Article 75(1), are also
+   corrected.
 3. Reassess source-segment approval only if its disposition or represented legal effect changes;
    never label a codex correction as independently verified by the user.
 4. Edit only authored `segments/` and `source-records/`; regenerate derived artifacts. Give every

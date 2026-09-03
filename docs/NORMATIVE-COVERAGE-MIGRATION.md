@@ -830,9 +830,10 @@ batches of the 1,485 records.
 
 ## Immediate next action
 
-Continue the [granularity correction and completion queue](NORMATIVE-COVERAGE-GRANULARITY-AUDIT.md#correction-and-completion-queue)
-in source order. Every recorded row is now applied, so the remaining work is the
-unflagged-source pass. Independently review the four proposed source segments in Annex VIII;
+Every recorded row in the
+[granularity correction and completion queue](NORMATIVE-COVERAGE-GRANULARITY-AUDIT.md#correction-and-completion-queue)
+is applied. The remaining work is the unflagged-source semantic pass, which a heuristic sweep cannot
+close. Independently review the four proposed source segments in Annex VIII;
 exactly retained content still needs optional/conditional field semantics. Apply only confirmed
 user provenance to authored `segments/` records and regenerate derived artifacts. Keep codex audit
 findings distinct from user approvals. Measure norm-review throughput and resolve the four
