@@ -24,7 +24,7 @@ def test_pinned_corpus_triage_is_documented_without_mutating_review():
     assert bundle.model_dump() == before
     assert bundle.validated_documents == 133
     assert len(bundle.text_review.segments) == 1471
-    assert len(candidates) == 70
+    assert len(candidates) == 69
 
     segments = {s.segment_id: s for s in bundle.text_review.segments}
     for candidate in candidates:
@@ -44,6 +44,7 @@ def test_pinned_corpus_triage_is_documented_without_mutating_review():
     closed_by_splitting.add("AIA-TEXT-A058-P018")
     closed_by_splitting |= {"AIA-TEXT-A060-P019", "AIA-TEXT-A060-P020"}
     closed_by_splitting.add("AIA-TEXT-A060A-P010")
+    closed_by_splitting.add("AIA-TEXT-A061-P007")
     assert set(ids) - closed_by_splitting == {candidate.segment_id for candidate in candidates}
 
     content_report = (root / "docs/NORMATIVE-COVERAGE-CONTENT-AUDIT.md").read_text()
@@ -87,4 +88,6 @@ def test_pinned_corpus_triage_is_documented_without_mutating_review():
     baseline_content.pop("AIA-NORM-A060-P7-INCIDENT-RESPONSE")
     baseline_content["AIA-NORM-A060-P4-H-INFORM-AND-AGREE-ROLES"] = 2
     baseline_content["AIA-NORM-A060-P6-CONFER-AND-USE-SURVEILLANCE-POWERS"] = 3
+    # Article 61 keeps the two documentation requirements; the copy duty is its own norm.
+    baseline_content["AIA-NORM-A061-P2-DOCUMENT-AND-COPY-CONSENT"] = 2
     assert baseline_content == expected_content

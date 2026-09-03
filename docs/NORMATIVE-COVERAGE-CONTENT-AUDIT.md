@@ -80,8 +80,14 @@ historical baseline.
 
 Article 60a's framework-content requirement keeps its four groups. Its recorded segment finding and
 a nearby cooperation defect were corrected without touching any content list, so the live inventory
-still has 139 populated lists across 1,396 proposed norms. Subsequent articles' findings remain
-pending.
+still has 139 populated lists across 1,396 proposed norms.
+
+Article 61's recorded findings are now corrected. Paragraph 1's five information items carry their
+full enacted detail, including the no-detriment and no-justification withdrawal safeguards, and the
+duty's action states the concise, clear, relevant and understandable information quality.
+Paragraph 2's content list is now the two documentation requirements; giving a copy to the subject
+or legal representative is a separate norm. The live inventory has 139 populated content lists
+across 1,397 proposed norms. Subsequent articles' findings remain pending.
 
 | Norm | Content entries | Decision | Finding / treatment |
 |---|---:|---|---|

@@ -1661,15 +1661,15 @@ def test_inventory_cannot_be_misreported_as_independently_approved(metrics):
     assert metrics.needs_review_characters == 0
     assert metrics.review_statuses == {
         "approved": 1467,
-        "proposed": 1400,
+        "proposed": 1401,
     }
     assert metrics.timed_review_records == 0
-    assert metrics.total_review_records == 2868
+    assert metrics.total_review_records == 2869
 
 
 def test_semantic_pass_finds_propositions_a_shall_scan_misses(metrics):
     assert metrics.shall_vs_semantic_disagreements == 534
-    assert metrics.shall_token_candidate_recall == pytest.approx(862 / 1396)
+    assert metrics.shall_token_candidate_recall == pytest.approx(863 / 1397)
     assert "AIA-NORM-A011-P1-SIMPLIFY" in metrics.semantic_norms_without_shall_token
     assert "AIA-NORM-A043-P5-AMEND" in metrics.semantic_norms_without_shall_token
     assert "AIA-NORM-A060-P4-PERMISSION" in metrics.semantic_norms_without_shall_token
@@ -1677,13 +1677,13 @@ def test_semantic_pass_finds_propositions_a_shall_scan_misses(metrics):
 
 
 def test_metrics_expose_many_to_many_and_implementation_debt(metrics):
-    assert metrics.normative_segments_with_multiple_norms == 319
+    assert metrics.normative_segments_with_multiple_norms == 320
     assert metrics.mapping_shape.one_norm_to_one_target == 26
     assert metrics.mapping_shape.many_norms_to_one_target == 349
     assert metrics.mapping_shape.one_norm_to_many_targets == 0
     assert metrics.mapping_shape.many_to_many == 15
-    assert metrics.mapping_shape.unmapped == 1006
-    assert metrics.semantic_vs_existing_implementation_disagreements == 238
+    assert metrics.mapping_shape.unmapped == 1007
+    assert metrics.semantic_vs_existing_implementation_disagreements == 239
     assert metrics.semantic_norms_without_existing_implementation == [
         "AIA-NORM-A002-P1-A-PROVIDER",
         "AIA-NORM-A002-P1-B-DEPLOYER",
@@ -1819,6 +1819,7 @@ def test_metrics_expose_many_to_many_and_implementation_debt(metrics):
         "AIA-NORM-A060A-P6-COMPLY-WITH-SECTORAL-LAW",
         "AIA-NORM-A061-P1-OBTAIN-INFORMED-CONSENT",
         "AIA-NORM-A061-P2-DOCUMENT-AND-COPY-CONSENT",
+        "AIA-NORM-A061-P2-GIVE-CONSENT-COPY",
         "AIA-NORM-A063-P1-SIMPLIFIED-SME-QUALITY-MANAGEMENT",
         "AIA-NORM-A071-P2-PROVIDER-ENTER-ANNEX-VIII-DATA",
         "AIA-NORM-A071-P2-REPRESENTATIVE-ENTER-ANNEX-VIII-DATA",
@@ -2048,6 +2049,7 @@ def test_metrics_expose_many_to_many_and_implementation_debt(metrics):
         "AIA-NORM-A060A-P6-COMPLY-WITH-SECTORAL-LAW",
         "AIA-NORM-A061-P1-OBTAIN-INFORMED-CONSENT",
         "AIA-NORM-A061-P2-DOCUMENT-AND-COPY-CONSENT",
+        "AIA-NORM-A061-P2-GIVE-CONSENT-COPY",
         "AIA-NORM-A063-P1-SIMPLIFIED-SME-QUALITY-MANAGEMENT",
         "AIA-NORM-A071-P2-PROVIDER-ENTER-ANNEX-VIII-DATA",
         "AIA-NORM-A071-P2-REPRESENTATIVE-ENTER-ANNEX-VIII-DATA",
@@ -3358,11 +3360,32 @@ def test_article_sixty_one_extracts_informed_consent_requirements():
     assert len(segments) == 8
     assert all(segment.review.status.value == "approved" for segment in segments)
     assert all(segment.review.verified_by == "codex" for segment in segments)
-    assert len(norms) == 2
+    assert len(norms) == 3
     consent = norms["AIA-NORM-A061-P1-OBTAIN-INFORMED-CONSENT"]
     assert len(consent.qualifier_spans) == 5
     assert len(consent.mandatory_content) == 5
-    assert len(norms["AIA-NORM-A061-P2-DOCUMENT-AND-COPY-CONSENT"].mandatory_content) == 3
+    # The information quality is part of the duty, not an optional presentation preference.
+    assert "concise, clear, relevant and understandable" in consent.action
+    # Point (c) keeps the no-detriment and no-justification safeguards on withdrawal.
+    assert consent.mandatory_content[2] == (
+        "their rights, and the guarantees regarding their participation, in particular their right "
+        "to refuse to participate in, and the right to withdraw from, testing in real world "
+        "conditions at any time without any resulting detriment and without having to provide any "
+        "justification"
+    )
+    assert "Article 60(4) point (c)" in consent.mandatory_content[4]
+    for item, span_id in zip(consent.mandatory_content, consent.qualifier_spans, strict=True):
+        segment = next(segment for segment in segments if segment.segment_id == span_id)
+        assert item in " ".join(segment.text.split())
+
+    # Dating/documenting the consent and handing over a copy have different recipients.
+    document = norms["AIA-NORM-A061-P2-DOCUMENT-AND-COPY-CONSENT"]
+    copy = norms["AIA-NORM-A061-P2-GIVE-CONSENT-COPY"]
+    assert document.mandatory_content == ["dated consent", "documented consent"]
+    assert not copy.mandatory_content
+    assert "subjects of testing or their legal representative" in copy.action
+    assert document.primary_spans == copy.primary_spans == ["AIA-TEXT-A061-P007"]
+    assert all(norm.review.status.value == "proposed" for norm in norms.values())
 
 
 def test_article_sixty_two_extracts_sme_support_measures():
