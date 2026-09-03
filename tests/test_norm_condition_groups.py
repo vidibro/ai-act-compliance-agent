@@ -133,3 +133,14 @@ def test_article_thirty_one_separates_actions_actors_and_exceptions(corrected_bu
     assert "or ensure awareness" in norms["P12-STANDARDISATION-OR-STANDARDS-CURRENCY"].action
     assert all(n.review.status.value == "proposed" for n in norms.values())
     assert all(n.implementation_mode.value == "none_required" for n in norms.values())
+
+
+def test_article_forty_preserves_illustrative_deliverable(corrected_bundle):
+    norms = {n.norm_id: n for n in corrected_bundle.norm_inventory.norms}
+    resource = norms["AIA-NORM-A040-P2-RESOURCE-PERFORMANCE-DELIVERABLES"]
+    assert len(resource.mandatory_content) == 2
+    assert "such as reducing" in resource.mandatory_content[0]
+    assert "during its lifecycle" in resource.mandatory_content[0]
+    assert (
+        resource.mandatory_content[1] == "energy-efficient development of general-purpose AI models"
+    )
