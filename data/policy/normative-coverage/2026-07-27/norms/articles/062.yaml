@@ -6,8 +6,8 @@ norms:
   subjects:
   - subject_ref: member_state
     category: member_state
-  action: provide every enacted sandbox access awareness communication and standardisation measure for
-    SMEs deployers innovators and relevant authorities
+  action: undertake every enacted sandbox access, awareness, communication and standardisation action
+    for SMEs, start-ups, deployers, innovators and relevant authorities
   norm_text: 'Member States shall undertake the following actions:'
   detection_channels:
   - semantic_legal_effect
@@ -23,12 +23,224 @@ norms:
   effective_date_spans: []
   conditions: []
   exceptions: []
-  mandatory_content:
-  - priority sandbox access for eligible Union-established SMEs and start-ups without excluding other
-    eligible SMEs
-  - tailored Regulation awareness and training
-  - advice and query-response communication channels
-  - SME and stakeholder participation in standards development
+  mandatory_content: []
+  dependencies: []
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_refs: []
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A062-P1-A-PRIORITY-SANDBOX-ACCESS
+  act_version_date: '2026-07-27'
+  kind: obligation
+  subjects:
+  - subject_ref: member_state
+    category: member_state
+  action: provide priority AI regulatory sandbox access to SMEs and start-ups with a registered office
+    or branch in the Union
+  norm_text: provide SMEs, including start-ups, having a registered office or a branch in the Union, with
+    priority access to the AI regulatory sandboxes, to the extent that they fulfil the eligibility conditions
+    and selection criteria;
+  detection_channels:
+  - semantic_legal_effect
+  primary_spans:
+  - AIA-TEXT-A062-P002
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions:
+  - the SME or start-up has a registered office or a branch in the Union
+  - the SME or start-up fulfils the sandbox eligibility conditions and selection criteria
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_refs: []
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A062-P1-A-PRESERVE-OTHER-SME-ACCESS
+  act_version_date: '2026-07-27'
+  kind: legal_consequence
+  subjects:
+  - subject_ref: member_state
+    category: member_state
+  action: keep the priority access from precluding other SMEs and start-ups from sandbox access
+  norm_text: the priority access shall not preclude other SMEs, including start-ups, other than those
+    referred to in this paragraph from access to the AI regulatory sandbox, provided that they also fulfil
+    the eligibility conditions and selection criteria;
+  detection_channels:
+  - semantic_legal_effect
+  - shall_token
+  - deeming_or_consequence
+  primary_spans:
+  - AIA-TEXT-A062-P002
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions:
+  - the other SMEs or start-ups also fulfil the eligibility conditions and selection criteria
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_refs: []
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A062-P1-B-AWARENESS-AND-TRAINING
+  act_version_date: '2026-07-27'
+  kind: obligation
+  subjects:
+  - subject_ref: member_state
+    category: member_state
+  action: organise awareness-raising and training activities on applying this Regulation, tailored to
+    the needs of SMEs, start-ups, deployers and, as appropriate, local public authorities
+  norm_text: organise specific awareness raising and training activities on the application of this Regulation
+    tailored to the needs of SMEs including start-ups, deployers and, as appropriate, local public authorities;
+  detection_channels:
+  - semantic_legal_effect
+  primary_spans:
+  - AIA-TEXT-A062-P003
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions: []
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_refs: []
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A062-P1-C-USE-EXISTING-CHANNELS
+  act_version_date: '2026-07-27'
+  kind: obligation
+  subjects:
+  - subject_ref: member_state
+    category: member_state
+  action: utilise existing dedicated channels to advise SMEs, start-ups, deployers, other innovators and,
+    as appropriate, local public authorities and answer their implementation queries, including on sandbox
+    participation
+  norm_text: utilise existing dedicated channels
+  detection_channels:
+  - semantic_legal_effect
+  primary_spans:
+  - AIA-TEXT-A062-P004
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions: []
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_refs: []
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A062-P1-C-ESTABLISH-NEW-CHANNELS
+  act_version_date: '2026-07-27'
+  kind: obligation
+  subjects:
+  - subject_ref: member_state
+    category: member_state
+  action: establish new communication channels for that advice and query response
+  norm_text: where appropriate, establish new ones for communication with SMEs including start-ups, deployers,
+    other innovators and, as appropriate, local public authorities to provide advice and respond to queries
+    about the implementation of this Regulation, including as regards participation in AI regulatory sandboxes;
+  detection_channels:
+  - semantic_legal_effect
+  primary_spans:
+  - AIA-TEXT-A062-P004
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions:
+  - where appropriate
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_refs: []
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A062-P1-D-FACILITATE-STANDARDISATION-PARTICIPATION
+  act_version_date: '2026-07-27'
+  kind: obligation
+  subjects:
+  - subject_ref: member_state
+    category: member_state
+  action: facilitate SME and other relevant stakeholder participation in the standardisation development
+    process
+  norm_text: facilitate the participation of SMEs and other relevant stakeholders in the standardisation
+    development process.
+  detection_channels:
+  - semantic_legal_effect
+  primary_spans:
+  - AIA-TEXT-A062-P005
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions: []
+  exceptions: []
+  mandatory_content: []
   dependencies: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -91,7 +303,8 @@ norms:
   subjects:
   - subject_ref: ai_office
     category: union_institution_or_body
-  action: provide every enacted template information awareness and procurement-best-practice measure
+  action: undertake every enacted template, information platform, awareness and procurement best-practice
+    action
   norm_text: 'The AI Office shall undertake the following actions:'
   detection_channels:
   - semantic_legal_effect
@@ -107,11 +320,146 @@ norms:
   effective_date_spans: []
   conditions: []
   exceptions: []
-  mandatory_content:
-  - Board-requested standardised templates
-  - a maintained easy-to-use Union information platform for all operators
-  - communication campaigns on Regulation obligations
-  - evaluation and promotion of convergent AI public-procurement best practices
+  mandatory_content: []
+  dependencies: []
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_refs: []
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A062-P3-A-PROVIDE-TEMPLATES
+  act_version_date: '2026-07-27'
+  kind: obligation
+  subjects:
+  - subject_ref: ai_office
+    category: union_institution_or_body
+  action: provide standardised templates for the areas covered by this Regulation
+  norm_text: provide standardised templates for areas covered by this Regulation, as specified by the
+    Board in its request;
+  detection_channels:
+  - semantic_legal_effect
+  primary_spans:
+  - AIA-TEXT-A062-P008
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions:
+  - the Board specifies the areas in its request
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_refs: []
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A062-P3-B-INFORMATION-PLATFORM
+  act_version_date: '2026-07-27'
+  kind: obligation
+  subjects:
+  - subject_ref: ai_office
+    category: union_institution_or_body
+  action: develop and maintain a single information platform giving all operators across the Union easy-to-use
+    information on this Regulation
+  norm_text: develop and maintain a single information platform providing easy to use information in relation
+    to this Regulation for all operators across the Union;
+  detection_channels:
+  - semantic_legal_effect
+  primary_spans:
+  - AIA-TEXT-A062-P009
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions: []
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_refs: []
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A062-P3-C-COMMUNICATION-CAMPAIGNS
+  act_version_date: '2026-07-27'
+  kind: obligation
+  subjects:
+  - subject_ref: ai_office
+    category: union_institution_or_body
+  action: organise appropriate communication campaigns raising awareness of the obligations arising from
+    this Regulation
+  norm_text: organise appropriate communication campaigns to raise awareness about the obligations arising
+    from this Regulation;
+  detection_channels:
+  - semantic_legal_effect
+  primary_spans:
+  - AIA-TEXT-A062-P010
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions: []
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_refs: []
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A062-P3-D-PROCUREMENT-BEST-PRACTICES
+  act_version_date: '2026-07-27'
+  kind: obligation
+  subjects:
+  - subject_ref: ai_office
+    category: union_institution_or_body
+  action: evaluate and promote convergence of best practices in public procurement procedures for AI systems
+  norm_text: evaluate and promote the convergence of best practices in public procurement procedures in
+    relation to AI systems.
+  detection_channels:
+  - semantic_legal_effect
+  primary_spans:
+  - AIA-TEXT-A062-P011
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions: []
+  exceptions: []
+  mandatory_content: []
   dependencies: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.

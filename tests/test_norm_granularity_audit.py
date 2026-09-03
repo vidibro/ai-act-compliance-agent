@@ -59,7 +59,7 @@ def test_pinned_corpus_triage_is_documented_without_mutating_review():
         if norm.mandatory_content
     }
     assert len(content_rows) == 146  # Historical audit baseline.
-    assert len(expected_content) == 139
+    assert len(expected_content) == 137
     baseline_content = {norm_id: int(count) for norm_id, count, _ in content_rows}
     # Article 40's example is now nested in its proper deliverable, not a third requirement.
     baseline_content["AIA-NORM-A040-P2-RESOURCE-PERFORMANCE-DELIVERABLES"] = 2
@@ -90,4 +90,7 @@ def test_pinned_corpus_triage_is_documented_without_mutating_review():
     baseline_content["AIA-NORM-A060-P6-CONFER-AND-USE-SURVEILLANCE-POWERS"] = 3
     # Article 61 keeps the two documentation requirements; the copy duty is its own norm.
     baseline_content["AIA-NORM-A061-P2-DOCUMENT-AND-COPY-CONSENT"] = 2
+    # Article 62's lettered actions are independent duties, not chapeau checklist fields.
+    baseline_content.pop("AIA-NORM-A062-P1-MEMBER-STATE-SME-SUPPORT")
+    baseline_content.pop("AIA-NORM-A062-P3-AI-OFFICE-SUPPORT")
     assert baseline_content == expected_content

@@ -87,7 +87,14 @@ full enacted detail, including the no-detriment and no-justification withdrawal 
 duty's action states the concise, clear, relevant and understandable information quality.
 Paragraph 2's content list is now the two documentation requirements; giving a copy to the subject
 or legal representative is a separate norm. The live inventory has 139 populated content lists
-across 1,397 proposed norms. Subsequent articles' findings remain pending.
+across 1,397 proposed norms.
+
+Article 62's two split findings are now corrected. Both chapeau duties keep their four
+qualifier spans but no longer carry a content list: each lettered action is a separate norm
+with its own beneficiaries and conditions, including the non-preclusion rule inside point 1(a)
+and the where-appropriate establishment of new channels inside point 1(c). Paragraph 2's three
+fee factors are unchanged. The live inventory has 137 populated content lists across 1,407
+proposed norms. Subsequent articles' findings remain pending.
 
 | Norm | Content entries | Decision | Finding / treatment |
 |---|---:|---|---|

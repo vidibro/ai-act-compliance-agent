@@ -1661,15 +1661,15 @@ def test_inventory_cannot_be_misreported_as_independently_approved(metrics):
     assert metrics.needs_review_characters == 0
     assert metrics.review_statuses == {
         "approved": 1467,
-        "proposed": 1401,
+        "proposed": 1411,
     }
     assert metrics.timed_review_records == 0
-    assert metrics.total_review_records == 2869
+    assert metrics.total_review_records == 2879
 
 
 def test_semantic_pass_finds_propositions_a_shall_scan_misses(metrics):
-    assert metrics.shall_vs_semantic_disagreements == 534
-    assert metrics.shall_token_candidate_recall == pytest.approx(863 / 1397)
+    assert metrics.shall_vs_semantic_disagreements == 543
+    assert metrics.shall_token_candidate_recall == pytest.approx(864 / 1407)
     assert "AIA-NORM-A011-P1-SIMPLIFY" in metrics.semantic_norms_without_shall_token
     assert "AIA-NORM-A043-P5-AMEND" in metrics.semantic_norms_without_shall_token
     assert "AIA-NORM-A060-P4-PERMISSION" in metrics.semantic_norms_without_shall_token
@@ -1677,12 +1677,12 @@ def test_semantic_pass_finds_propositions_a_shall_scan_misses(metrics):
 
 
 def test_metrics_expose_many_to_many_and_implementation_debt(metrics):
-    assert metrics.normative_segments_with_multiple_norms == 320
+    assert metrics.normative_segments_with_multiple_norms == 328
     assert metrics.mapping_shape.one_norm_to_one_target == 26
     assert metrics.mapping_shape.many_norms_to_one_target == 349
     assert metrics.mapping_shape.one_norm_to_many_targets == 0
     assert metrics.mapping_shape.many_to_many == 15
-    assert metrics.mapping_shape.unmapped == 1007
+    assert metrics.mapping_shape.unmapped == 1017
     assert metrics.semantic_vs_existing_implementation_disagreements == 239
     assert metrics.semantic_norms_without_existing_implementation == [
         "AIA-NORM-A002-P1-A-PROVIDER",
@@ -3404,14 +3404,54 @@ def test_article_sixty_two_extracts_sme_support_measures():
     assert len(segments) == 12
     assert all(segment.review.status.value == "approved" for segment in segments)
     assert all(segment.review.verified_by == "codex" for segment in segments)
-    assert len(norms) == 3
+    assert len(norms) == 13
     assert all(norm.product_scope.value == "outside_supported_actor" for norm in norms.values())
     member_state = norms["AIA-NORM-A062-P1-MEMBER-STATE-SME-SUPPORT"]
     ai_office = norms["AIA-NORM-A062-P3-AI-OFFICE-SUPPORT"]
     assert len(member_state.qualifier_spans) == 4
-    assert len(member_state.mandatory_content) == 4
     assert len(ai_office.qualifier_spans) == 4
-    assert len(ai_office.mandatory_content) == 4
+    # Each lettered action is separately verifiable, so neither chapeau keeps a checklist.
+    assert not member_state.mandatory_content
+    assert not ai_office.mandatory_content
+    for parent in (member_state, ai_office):
+        for span_id in parent.qualifier_spans:
+            segment = next(s for s in segments if s.segment_id == span_id)
+            children = [n for n in segment.norm_ids if n != parent.norm_id]
+            assert children
+            assert all(norms[child].primary_spans == [span_id] for child in children)
+
+    # Priority access is conditional and does not shut other eligible SMEs out of the sandbox.
+    priority = norms["AIA-NORM-A062-P1-A-PRIORITY-SANDBOX-ACCESS"]
+    preserved = norms["AIA-NORM-A062-P1-A-PRESERVE-OTHER-SME-ACCESS"]
+    assert priority.conditions == [
+        "the SME or start-up has a registered office or a branch in the Union",
+        "the SME or start-up fulfils the sandbox eligibility conditions and selection criteria",
+    ]
+    assert preserved.kind.value == "legal_consequence"
+    assert preserved.conditions == [
+        "the other SMEs or start-ups also fulfil the eligibility conditions and selection criteria"
+    ]
+
+    # Using existing channels is unconditional; creating new ones is only where appropriate.
+    assert not norms["AIA-NORM-A062-P1-C-USE-EXISTING-CHANNELS"].conditions
+    assert norms["AIA-NORM-A062-P1-C-ESTABLISH-NEW-CHANNELS"].conditions == ["where appropriate"]
+
+    # Templates follow a Board request; the other AI Office actions are standing duties.
+    assert norms["AIA-NORM-A062-P3-A-PROVIDE-TEMPLATES"].conditions == [
+        "the Board specifies the areas in its request"
+    ]
+    for suffix in (
+        "B-INFORMATION-PLATFORM",
+        "C-COMMUNICATION-CAMPAIGNS",
+        "D-PROCUREMENT-BEST-PRACTICES",
+    ):
+        assert not norms[f"AIA-NORM-A062-P3-{suffix}"].conditions
+    assert norms["AIA-NORM-A062-P2-PROPORTIONATE-SME-FEES"].mandatory_content == [
+        "SME size",
+        "market size",
+        "other relevant indicators",
+    ]
+    assert all(norm.review.status.value == "proposed" for norm in norms.values())
 
 
 def test_article_sixty_three_limits_the_sme_derogation():
