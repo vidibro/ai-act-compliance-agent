@@ -1661,15 +1661,15 @@ def test_inventory_cannot_be_misreported_as_independently_approved(metrics):
     assert metrics.needs_review_characters == 0
     assert metrics.review_statuses == {
         "approved": 1467,
-        "proposed": 1466,
+        "proposed": 1467,
     }
     assert metrics.timed_review_records == 0
-    assert metrics.total_review_records == 2934
+    assert metrics.total_review_records == 2935
 
 
 def test_semantic_pass_finds_propositions_a_shall_scan_misses(metrics):
     assert metrics.shall_vs_semantic_disagreements == 571
-    assert metrics.shall_token_candidate_recall == pytest.approx(891 / 1462)
+    assert metrics.shall_token_candidate_recall == pytest.approx(892 / 1463)
     assert "AIA-NORM-A011-P1-SIMPLIFY" in metrics.semantic_norms_without_shall_token
     assert "AIA-NORM-A043-P5-AMEND" in metrics.semantic_norms_without_shall_token
     assert "AIA-NORM-A060-P4-PERMISSION" in metrics.semantic_norms_without_shall_token
@@ -1677,12 +1677,12 @@ def test_semantic_pass_finds_propositions_a_shall_scan_misses(metrics):
 
 
 def test_metrics_expose_many_to_many_and_implementation_debt(metrics):
-    assert metrics.normative_segments_with_multiple_norms == 366
+    assert metrics.normative_segments_with_multiple_norms == 367
     assert metrics.mapping_shape.one_norm_to_one_target == 26
     assert metrics.mapping_shape.many_norms_to_one_target == 351
     assert metrics.mapping_shape.one_norm_to_many_targets == 0
     assert metrics.mapping_shape.many_to_many == 15
-    assert metrics.mapping_shape.unmapped == 1070
+    assert metrics.mapping_shape.unmapped == 1071
     assert metrics.semantic_vs_existing_implementation_disagreements == 239
     assert metrics.semantic_norms_without_existing_implementation == [
         "AIA-NORM-A002-P1-A-PROVIDER",
@@ -4473,10 +4473,23 @@ def test_articles_seventy_five_c_and_d_extract_penalties_and_safeguards():
         if norm.norm_id.startswith("AIA-NORM-A075D-")
     }
 
-    assert len(article_c) == 18
+    assert len(article_c) == 19
     assert len(article_d) == 8
     assert len(article_c["AIA-NORM-A075C-P5-IMPOSE-PERIODIC-PENALTIES"].mandatory_content) == 7
     assert article_d["AIA-NORM-A075D-P2-NEGOTIATED-FILE-ACCESS"].kind.value == "entitlement"
+
+    # Effectiveness and proportionality always apply; the 5 % ceiling only where applicable.
+    limits = article_c["AIA-NORM-A075C-P5-PENALTY-PAYMENT-LIMITS"]
+    ceiling = article_c["AIA-NORM-A075C-P5-PENALTY-PAYMENT-CEILING"]
+    assert not limits.conditions
+    assert not limits.mandatory_content
+    assert ceiling.conditions == ["the ceiling is applicable"]
+    assert ceiling.mandatory_content == [
+        "the basis is the average daily income or worldwide annual turnover",
+        "the reference period is the preceding financial year",
+        "the ceiling of 5 % applies per day",
+        "the days are counted from the date appointed by the decision",
+    ]
 
 
 def test_annex_inventory_keeps_external_actors_and_exact_mandatory_content():

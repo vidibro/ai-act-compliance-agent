@@ -28,7 +28,7 @@ independently triggered notifications, optional Board powers summarised as dutie
 information missing the no-detriment/no-justification safeguards.
 
 Reproduce the live read-only candidate list, source hashes and full scan denominator (after the
-corrections below, 55 candidates remain; a disappearing signal is not independent norm approval):
+corrections below, 54 candidates remain; a disappearing signal is not independent norm approval):
 
 ```sh
 uv run python scripts/audit_norm_granularity.py --act-version 2026-07-27
@@ -207,12 +207,13 @@ modal/list scan. Source references identify full norm records in `source-records
 | 74 | Split paragraph 2 into the competition-information report to the Commission and national competition authorities and the prohibited-practice report to the Commission, which keeps its own two content items. Paragraph 8 separates the Member State designation duty from the prohibition on surveillance activities affecting judicial independence, and paragraph 11 separates the joint-activity power of the authorities and the Commission from the AI Office's coordination-support duty. Paragraph 7's substitution is unchanged. | Seventeen proposed norms instead of fourteen; regressions cover the recipients, the typed prohibition and the power/duty boundary. Implementation debt is unchanged. |
 | 75 | Split paragraph 2 into cooperation with the AI Office on compliance evaluations and the separate duty to inform the Board and the other market surveillance authorities, and paragraph 2a's reply into the four-month initial response and the conditional periodic updates on major developments and outcome. Paragraph 2a's request now records that it must be duly reasoned, and paragraph 1's competence enumerates the four point (a) exclusions instead of referring to "the enacted exclusions". | Twenty-seven proposed norms instead of twenty-five; regressions cover the shared suspicion trigger, the deadline that belongs only to the first reply, the duly-reasoned request and the four exclusions being scoped to point (a). Implementation debt is unchanged. |
 | 75a | Split paragraph 3's information-request content into the three fields every request must state, the simple-request additions, the decision-request additions and the separate duty to send a copy to the operator's territorial market surveillance authority. The voluntary-reply correctness duty is unchanged. | Twenty-four proposed norms instead of twenty-one; regressions cover the branch conditions, both fine references, the judicial-review right and the copy being an action rather than a request field. Implementation debt is unchanged. |
+| 75c | Expanded paragraph 5's penalty-payment rule and, in doing so, separated the unconditional effectiveness and proportionality requirement from the where-applicable 5 % ceiling. The ceiling now states the income or worldwide-turnover basis, the preceding financial year, the per-day rate and the decision-appointed start date. Paragraphs 6 to 9 are unchanged. | Nineteen proposed norms instead of eighteen; regressions cover the conditional ceiling and its four elements. Implementation debt is unchanged. |
 
 The original 88-row ledger above remains a historical audit baseline. Article 31's five,
 Article 57's nine, Article 58's one, Article 60's two, Article 60a's one, Article 61's one,
 Article 67's two, Article 70's two, Article 71's two, Article 73's three, Article 74's
-three and Article 75's two split candidate segments no longer trigger the scanner, leaving 55 live
-signals. The current inventory has 1,462 proposed norms and 1,471 segments. Implementation debt rose from 216 to 222 records: six
+three and Article 75's two and Article 75c's one split candidate segments no longer trigger the scanner,
+leaving 54 live signals. The current inventory has 1,463 proposed norms and 1,471 segments. Implementation debt rose from 216 to 222 records: six
 separated provider duties in Articles 60 and 61 are in-scope propositions that no existing rule
 covers, which the previous combined checklists concealed. Every other norm added since baseline
 either addresses an actor outside the supported reporting roles, states a no-product-action
@@ -221,7 +222,7 @@ Source approvals have not been relabelled as norm approvals. The Article 57 miti
 preserves the supervisory requirement for adequate mitigation; it does not assign a new operational
 product action or turn suspension into a duty. This actor interpretation remains subject to
 independent norm review, as do the other corrections.
-Next recorded correction: Article 75c. Articles 47–49 and 51–56 have no open recorded correction
+Next recorded correction: Article 76. Articles 47–49 and 51–56 have no open recorded correction
 in these ledgers. The Article 50 corrections do not remove their heuristic scan signals; a signal
 is not a finding or an approval status.
 

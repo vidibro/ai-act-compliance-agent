@@ -133,9 +133,29 @@ records:
 - norm_id: AIA-NORM-A075C-P5-PENALTY-PAYMENT-LIMITS
   source: A075C-P018
   quote: Those penalty payments shall be effective and proportionate
-  action: make periodic penalty payments effective and proportionate and respect the applicable five-percent daily ceiling
+  action: make the periodic penalty payments effective and proportionate
   subject_ref: ai_office
   subject_category: union_institution_or_body
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A075C-P5-PENALTY-PAYMENT-CEILING
+  source: A075C-P018
+  quote: and, where applicable, shall not exceed 5 % of the average daily income or worldwide annual turnover in the preceding financial year per day, calculated from the date appointed by the decision.
+  action: keep the periodic penalty payment within 5 % of the average daily income or worldwide
+    annual turnover in the preceding financial year, per day, counted from the date appointed by the
+    decision
+  subject_ref: ai_office
+  subject_category: union_institution_or_body
+  conditions:
+  - the ceiling is applicable
+  mandatory_content:
+  - the basis is the average daily income or worldwide annual turnover
+  - the reference period is the preceding financial year
+  - the ceiling of 5 % applies per day
+  - the days are counted from the date appointed by the decision
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required

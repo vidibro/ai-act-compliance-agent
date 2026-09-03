@@ -156,7 +156,12 @@ Article 75a's request-content finding is now corrected. Three fields apply to ev
 the simple-request and decision-request additions are separate conditional duties with their
 own content; and sending a copy to the territorial market surveillance authority is an action
 rather than a request field. The live inventory has 133 populated content lists across 1,462
-proposed norms. Subsequent articles' findings remain pending.
+proposed norms.
+
+Article 75c's periodic-penalty ceiling is now explicit: the income or worldwide-turnover basis,
+the preceding financial year, the per-day 5 % rate and the decision-appointed start date, all
+conditional on the ceiling being applicable. The live inventory has 134 populated content
+lists across 1,463 proposed norms. Subsequent articles' findings remain pending.
 
 | Norm | Content entries | Decision | Finding / treatment |
 |---|---:|---|---|
