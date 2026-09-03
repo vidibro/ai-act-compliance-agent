@@ -406,6 +406,7 @@ segments:
   norm_ids:
   - AIA-NORM-A060-P4-PERMISSION
   - AIA-NORM-A060-P4-H-INFORM-AND-AGREE-ROLES
+  - AIA-NORM-A060-P4-H-CONCLUDE-ROLES-AGREEMENT
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -435,6 +436,8 @@ segments:
   norm_ids:
   - AIA-NORM-A060-P4-PERMISSION
   - AIA-NORM-A060-P4-I-CONSENT-OR-SAFEGUARDS
+  - AIA-NORM-A060-P4-I-NO-NEGATIVE-EFFECT
+  - AIA-NORM-A060-P4-I-DELETE-SUBJECT-DATA
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -516,6 +519,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A060-P5-WITHDRAW-AND-DELETE
+  - AIA-NORM-A060-P5-REQUEST-DATA-DELETION
   - AIA-NORM-A060-P5-PRIOR-ACTIVITIES-UNAFFECTED
   review:
     status: approved
@@ -545,6 +549,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A060-P6-CONFER-AND-USE-SURVEILLANCE-POWERS
+  - AIA-NORM-A060-P6-USE-SURVEILLANCE-POWERS
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -574,6 +579,9 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A060-P7-INCIDENT-RESPONSE
+  - AIA-NORM-A060-P7-IMMEDIATE-MITIGATION
+  - AIA-NORM-A060-P7-SUSPEND-OR-TERMINATE
+  - AIA-NORM-A060-P7-RECALL-PROCEDURE
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass

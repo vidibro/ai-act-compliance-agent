@@ -332,25 +332,48 @@ norms:
   subjects:
   - subject_ref: provider_or_prospective_provider
     category: supported_operator
-  action: register real-world testing through the route applicable to the system with the required identifier
-    and information
+  action: register real-world testing through the single registration route that the enacted system classes
+    assign, with the identifier and information that route requires
   norm_text: the provider or prospective provider, with the exception of providers or prospective providers
     of high-risk AI systems referred to in points 1, 6 and 7 of Annex III in the areas of law enforcement,
     migration, asylum and border control management, and high-risk AI systems referred to in point 2 of
     Annex III has registered the testing in real world conditions in accordance with Article 71(4) with
-    a Union-wide unique single identification number and with the information specified in Annex IX
+    a Union-wide unique single identification number and with the information specified in Annex IX; the
+    provider or prospective provider of high-risk AI systems referred to in points 1, 6 and 7 of Annex
+    III in the areas of law enforcement, migration, asylum and border control management, has registered
+    the testing in real-world conditions in the secure non-public section of the EU database according
+    to Article 49(4), point (d), with a Union-wide unique single identification number and with the information
+    specified therein; the provider or prospective provider of high-risk AI systems referred to in point
+    2 of Annex III has registered the testing in real-world conditions in accordance with Article 49(5);
   detection_channels:
   - semantic_legal_effect
   primary_spans:
   - AIA-TEXT-A060-P009
   qualifier_spans: []
   effective_date_spans: []
-  conditions: []
+  conditions:
+  - operator: any_of
+    operands:
+    - operator: all_of
+      operands:
+      - the system is neither a high-risk AI system referred to in points 1, 6 and 7 of Annex III in the
+        areas of law enforcement, migration, asylum and border control management nor a high-risk AI system
+        referred to in point 2 of Annex III
+      - the testing is registered in accordance with Article 71(4) with a Union-wide unique single identification
+        number and with the information specified in Annex IX
+    - operator: all_of
+      operands:
+      - the system is a high-risk AI system referred to in points 1, 6 and 7 of Annex III in the areas
+        of law enforcement, migration, asylum and border control management
+      - the testing is registered in the secure non-public section of the EU database according to Article
+        49(4), point (d), with a Union-wide unique single identification number and with the information
+        specified therein
+    - operator: all_of
+      operands:
+      - the system is a high-risk AI system referred to in point 2 of Annex III
+      - the testing is registered in accordance with Article 49(5)
   exceptions: []
-  mandatory_content:
-  - Article 71(4) general registration with Annex IX information
-  - Article 49(4)(d) secure registration for specified Annex III systems
-  - Article 49(5) registration for Annex III point 2
+  mandatory_content: []
   dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -549,14 +572,56 @@ norms:
   act_version_date: '2026-07-27'
   kind: obligation
   subjects:
+  - subject_ref: provider_or_prospective_provider
+    category: supported_operator
+  action: inform the participating deployers or prospective deployers of the testing aspects relevant
+    to their participation decision and give them the Article 13 instructions for use
+  norm_text: where a provider or prospective provider organises the testing in real world conditions in
+    cooperation with one or more deployers or prospective deployers, the latter have been informed of
+    all aspects of the testing that are relevant to their decision to participate, and given the relevant
+    instructions for use of the AI system referred to in Article 13;
+  detection_channels:
+  - semantic_legal_effect
+  - existing_implementation
+  primary_spans:
+  - AIA-TEXT-A060-P014
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions:
+  - the provider or prospective provider organises the testing in real world conditions in cooperation
+    with one or more deployers or prospective deployers
+  exceptions: []
+  mandatory_content:
+  - all aspects of the testing relevant to the deployer's decision to participate
+  - Article 13 instructions for use of the AI system
+  dependencies: []
+  product_scope: in_scope
+  product_scope_reason: ''
+  implementation_mode: compliance_rule
+  implementation_refs:
+  - AIA-PO-A60-4
+  implementation_reason: ''
+  verification_mode: listed_for_confirmation
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A060-P4-H-CONCLUDE-ROLES-AGREEMENT
+  act_version_date: '2026-07-27'
+  kind: obligation
+  subjects:
   - subject_ref: provider_and_deployer
     category: supported_operator
-  action: inform participating deployers provide instructions and conclude a compliance-focused roles-and-responsibilities
-    agreement
-  norm_text: the latter have been informed of all aspects of the testing that are relevant to their decision
-    to participate, and given the relevant instructions for use of the AI system referred to in Article
-    13; the provider or prospective provider and the deployer or prospective deployer shall conclude an
-    agreement specifying their roles and responsibilities with a view to ensuring compliance with the
+  action: conclude an agreement specifying the parties' roles and responsibilities with a view to ensuring
+    compliance with the real-world testing provisions of this Regulation and of other applicable Union
+    and national law
+  norm_text: the provider or prospective provider and the deployer or prospective deployer shall conclude
+    an agreement specifying their roles and responsibilities with a view to ensuring compliance with the
     provisions for testing in real world conditions under this Regulation and under other applicable Union
     and national law;
   detection_channels:
@@ -567,12 +632,11 @@ norms:
   - AIA-TEXT-A060-P014
   qualifier_spans: []
   effective_date_spans: []
-  conditions: []
+  conditions:
+  - the provider or prospective provider organises the testing in real world conditions in cooperation
+    with one or more deployers or prospective deployers
   exceptions: []
-  mandatory_content:
-  - decision-relevant testing information
-  - Article 13 instructions for use
-  - roles-and-responsibilities agreement
+  mandatory_content: []
   dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -596,13 +660,46 @@ norms:
   subjects:
   - subject_ref: provider_or_prospective_provider
     category: supported_operator
-  action: obtain Article 61 consent or in the law-enforcement exception prevent negative effects and delete
-    personal data after testing
+  action: obtain the testing subjects' informed consent in accordance with Article 61
   norm_text: the subjects of the testing in real world conditions have given informed consent in accordance
-    with Article 61, or in the case of law enforcement, where the seeking of informed consent would prevent
-    the AI system from being tested, the testing itself and the outcome of the testing in the real world
-    conditions shall not have any negative effect on the subjects, and their personal data shall be deleted
-    after the test is performed;
+    with Article 61
+  detection_channels:
+  - semantic_legal_effect
+  primary_spans:
+  - AIA-TEXT-A060-P015
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions: []
+  exceptions:
+  - law-enforcement testing where seeking informed consent would prevent the AI system from being tested
+  mandatory_content: []
+  dependencies: []
+  product_scope: in_scope
+  product_scope_reason: ''
+  implementation_mode: missing
+  implementation_refs: []
+  implementation_reason: ''
+  verification_mode: not_assessed
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A060-P4-I-NO-NEGATIVE-EFFECT
+  act_version_date: '2026-07-27'
+  kind: obligation
+  subjects:
+  - subject_ref: provider_or_prospective_provider
+    category: supported_operator
+  action: keep the testing itself and its outcome free of any negative effect on the subjects when the
+    law-enforcement substitute for informed consent applies
+  norm_text: in the case of law enforcement, where the seeking of informed consent would prevent the AI
+    system from being tested, the testing itself and the outcome of the testing in the real world conditions
+    shall not have any negative effect on the subjects
   detection_channels:
   - semantic_legal_effect
   - shall_token
@@ -610,12 +707,48 @@ norms:
   - AIA-TEXT-A060-P015
   qualifier_spans: []
   effective_date_spans: []
-  conditions: []
+  conditions:
+  - the testing is in the case of law enforcement
+  - seeking informed consent would prevent the AI system from being tested
   exceptions: []
-  mandatory_content:
-  - Article 61 informed consent
-  - no negative effect in the law-enforcement exception
-  - post-test personal-data deletion in that exception
+  mandatory_content: []
+  dependencies: []
+  product_scope: in_scope
+  product_scope_reason: ''
+  implementation_mode: missing
+  implementation_refs: []
+  implementation_reason: ''
+  verification_mode: not_assessed
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A060-P4-I-DELETE-SUBJECT-DATA
+  act_version_date: '2026-07-27'
+  kind: obligation
+  subjects:
+  - subject_ref: provider_or_prospective_provider
+    category: supported_operator
+  action: delete the subjects' personal data after the test is performed when the law-enforcement substitute
+    for informed consent applies
+  norm_text: their personal data shall be deleted after the test is performed;
+  detection_channels:
+  - semantic_legal_effect
+  - shall_token
+  primary_spans:
+  - AIA-TEXT-A060-P015
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions:
+  - the testing is in the case of law enforcement
+  - seeking informed consent would prevent the AI system from being tested
+  exceptions: []
+  mandatory_content: []
   dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -708,11 +841,44 @@ norms:
   subjects:
   - subject_ref: testing_subject_or_representative
     category: natural_person
-  action: withdraw without detriment or justification and request immediate permanent personal-data deletion
+  action: withdraw from the testing at any time by revoking informed consent, without any resulting detriment
+    and without having to provide any justification
   norm_text: Any subjects of the testing in real world conditions, or their legally designated representative,
     as appropriate, may, without any resulting detriment and without having to provide any justification,
-    withdraw from the testing at any time by revoking their informed consent and may request the immediate
-    and permanent deletion of their personal data.
+    withdraw from the testing at any time by revoking their informed consent
+  detection_channels:
+  - semantic_legal_effect
+  primary_spans:
+  - AIA-TEXT-A060-P018
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions: []
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_refs: []
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A060-P5-REQUEST-DATA-DELETION
+  act_version_date: '2026-07-27'
+  kind: entitlement
+  subjects:
+  - subject_ref: testing_subject_or_representative
+    category: natural_person
+  action: request the immediate and permanent deletion of the subject's personal data
+  norm_text: and may request the immediate and permanent deletion of their personal data.
   detection_channels:
   - semantic_legal_effect
   - other_modal
@@ -778,14 +944,14 @@ norms:
   act_version_date: '2026-07-27'
   kind: obligation
   subjects:
-  - subject_ref: member_state_and_market_surveillance_authority
-    category: public_authority
-  action: confer and use information inspection and testing-check powers to ensure safe real-world testing
-  norm_text: Member States shall confer on their market surveillance authorities the powers of requiring
-    providers and prospective providers to provide information, of carrying out unannounced remote or
-    on-site inspections, and of performing checks on the conduct of the testing in real world conditions
-    and the related high-risk AI systems. Market surveillance authorities shall use those powers to ensure
-    the safe development of testing in real world conditions.
+  - subject_ref: member_state
+    category: member_state
+  action: confer the enacted real-world testing supervision powers on the national market surveillance
+    authorities in accordance with Article 75
+  norm_text: In accordance with Article 75, Member States shall confer on their market surveillance authorities
+    the powers of requiring providers and prospective providers to provide information, of carrying out
+    unannounced remote or on-site inspections, and of performing checks on the conduct of the testing
+    in real world conditions and the related high-risk AI systems.
   detection_channels:
   - semantic_legal_effect
   - shall_token
@@ -796,10 +962,46 @@ norms:
   conditions: []
   exceptions: []
   mandatory_content:
-  - require provider information
-  - conduct unannounced remote or on-site inspections
-  - check testing and related systems
-  - use powers for safe testing development
+  - power to require providers and prospective providers to provide information
+  - power to carry out unannounced remote or on-site inspections
+  - power to perform checks on the conduct of the testing in real world conditions and the related high-risk
+    AI systems
+  dependencies: []
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_refs: []
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A060-P6-USE-SURVEILLANCE-POWERS
+  act_version_date: '2026-07-27'
+  kind: obligation
+  subjects:
+  - subject_ref: market_surveillance_authority
+    category: public_authority
+  action: use the conferred information, inspection and check powers to ensure the safe development of
+    testing in real world conditions
+  norm_text: Market surveillance authorities shall use those powers to ensure the safe development of
+    testing in real world conditions.
+  detection_channels:
+  - semantic_legal_effect
+  - shall_token
+  primary_spans:
+  - AIA-TEXT-A060-P019
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions: []
+  exceptions: []
+  mandatory_content: []
   dependencies: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -822,14 +1024,120 @@ norms:
   subjects:
   - subject_ref: provider_or_prospective_provider
     category: supported_operator
-  action: report serious incidents immediately mitigate or suspend or terminate testing and maintain a
-    prompt recall procedure
+  action: report the serious incident to the national market surveillance authority in accordance with
+    Article 73
   norm_text: Any serious incident identified in the course of the testing in real world conditions shall
-    be reported to the national market surveillance authority in accordance with Article 73. The provider
-    or prospective provider shall adopt immediate mitigation measures or, failing that, shall suspend
-    the testing in real world conditions until such mitigation takes place, or otherwise terminate it.
-    The provider or prospective provider shall establish a procedure for the prompt recall of the AI system
-    upon such termination of the testing in real world conditions.
+    be reported to the national market surveillance authority in accordance with Article 73.
+  detection_channels:
+  - semantic_legal_effect
+  - shall_token
+  primary_spans:
+  - AIA-TEXT-A060-P020
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions:
+  - a serious incident is identified in the course of the testing in real world conditions
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: in_scope
+  product_scope_reason: ''
+  implementation_mode: missing
+  implementation_refs: []
+  implementation_reason: ''
+  verification_mode: not_assessed
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A060-P7-IMMEDIATE-MITIGATION
+  act_version_date: '2026-07-27'
+  kind: obligation
+  subjects:
+  - subject_ref: provider_or_prospective_provider
+    category: supported_operator
+  action: adopt immediate mitigation measures for the serious incident
+  norm_text: The provider or prospective provider shall adopt immediate mitigation measures
+  detection_channels:
+  - semantic_legal_effect
+  - shall_token
+  primary_spans:
+  - AIA-TEXT-A060-P020
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions:
+  - a serious incident is identified in the course of the testing in real world conditions
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: in_scope
+  product_scope_reason: ''
+  implementation_mode: missing
+  implementation_refs: []
+  implementation_reason: ''
+  verification_mode: not_assessed
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A060-P7-SUSPEND-OR-TERMINATE
+  act_version_date: '2026-07-27'
+  kind: obligation
+  subjects:
+  - subject_ref: provider_or_prospective_provider
+    category: supported_operator
+  action: suspend the testing in real world conditions until mitigation takes place, or otherwise terminate
+    it
+  norm_text: or, failing that, shall suspend the testing in real world conditions until such mitigation
+    takes place, or otherwise terminate it.
+  detection_channels:
+  - semantic_legal_effect
+  - shall_token
+  primary_spans:
+  - AIA-TEXT-A060-P020
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions:
+  - a serious incident is identified in the course of the testing in real world conditions
+  - immediate mitigation measures are not adopted
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: in_scope
+  product_scope_reason: ''
+  implementation_mode: missing
+  implementation_refs: []
+  implementation_reason: ''
+  verification_mode: not_assessed
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A060-P7-RECALL-PROCEDURE
+  act_version_date: '2026-07-27'
+  kind: obligation
+  subjects:
+  - subject_ref: provider_or_prospective_provider
+    category: supported_operator
+  action: establish a procedure for the prompt recall of the AI system upon such termination of the testing
+    in real world conditions
+  norm_text: The provider or prospective provider shall establish a procedure for the prompt recall of
+    the AI system upon such termination of the testing in real world conditions.
   detection_channels:
   - semantic_legal_effect
   - shall_token
@@ -839,11 +1147,7 @@ norms:
   effective_date_spans: []
   conditions: []
   exceptions: []
-  mandatory_content:
-  - Article 73 incident report
-  - immediate mitigation
-  - suspension until mitigation or termination
-  - prompt recall procedure upon termination
+  mandatory_content: []
   dependencies: []
   product_scope: in_scope
   product_scope_reason: ''

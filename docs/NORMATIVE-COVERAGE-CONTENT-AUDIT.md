@@ -65,7 +65,18 @@ The list is no longer stored as five mandatory content checks, so the live inven
 populated content lists. Article 59 still has 13 proposed norms: the parent permission continues
 to require every lettered condition, and those ten child norms remain linked individually. This
 focused correction does not independently approve the norms or complete their runtime mapping.
-Subsequent articles' findings remain pending.
+
+Article 60's three recorded findings are now corrected. Point 4(c)'s three registration routes are
+mutually exclusive `any_of` gates carrying the exact Annex III scopes, identifiers and information
+sources, so its content list is gone rather than read as three cumulative registrations. Point 4(h)
+separates informing the participating deployers, whose two content groups remain, from the jointly
+concluded roles agreement. Point 4(i) separates Article 61 consent from the law-enforcement
+substitute's no-negative-effect and post-test deletion duties; both substitutes require law
+enforcement AND that seeking consent would prevent testing, so law-enforcement status alone does
+not activate them. Paragraph 7's compound content list also became four norms, and paragraph 6's
+combined content list is now the Member State conferral duty's three powers. The live inventory has
+139 populated content lists and 1,394 proposed norms; the 146-row table below remains the
+historical baseline. Subsequent articles' findings remain pending.
 
 | Norm | Content entries | Decision | Finding / treatment |
 |---|---:|---|---|

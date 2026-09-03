@@ -347,19 +347,19 @@ Measure:
 
 **Full-corpus proposed extraction 2026-08-28:** the representative pilot was expanded, in source
 order, into a complete proposed inventory. It now partitions all 133 source bodies in the pinned
-corpus into 1,471 exact segments. It now proposes 1,386 norms across 132 documents; Article 1 supplies
+corpus into 1,471 exact segments. It now proposes 1,394 norms across 132 documents; Article 1 supplies
 reviewed subject-matter context without an atomic norm. No article or annex remains as `needs_review`
 debt, and structural headings remain separately identified.
 The reproducible measurements are in the versioned
 [`report.md`](../data/policy/normative-coverage/2026-07-27/report.md). The extraction added loader-validated exact
-`norm_text`, candidate-detection provenance, and review timing fields. Its semantic pass found 530 of
-1,386 proposed propositions whose exact operative quote contains no `shall` token. No source characters
+`norm_text`, candidate-detection provenance, and review timing fields. Its semantic pass found 533 of
+1,394 proposed propositions whose exact operative quote contains no `shall` token. No source characters
 remain marked `needs_review`.
 
 Of the 1,471 segments, 1,467 are approved and four remain `proposed`: Annex VIII. The
 Article 5 heading, all Article 50 and Article 113 segments, and the 27 finer-grained Annex IV
 segments were independently confirmed on
-2026-09-02. Their linked norm records, like all 1,386 extracted
+2026-09-02. Their linked norm records, like all 1,394 extracted
 norms, remain `proposed`; approving a source segment does not independently approve the legal
 propositions extracted from it. Elapsed review time was not captured. The remaining assurance
 boundary is independent approval of the proposed segments and norms, followed by implementation
@@ -428,10 +428,10 @@ approved or executable. Work now proceeds in this order:
    than creating one `PolicyRule` per norm;
 5. implement genuine gaps in shadow mode, then require reachability and report-surfacing evidence.
 
-Current implementation baseline: 618 norms are `in_scope`; 233 have no direct existing
-implementation reference. Of those, 17 are intentionally `carried_by_other_norm`, while 212 are
-`missing` and four are `unresolved`. The resulting 216 implementation-debt records are mapping and
-design candidates, not a forecast of 216 new rules.
+Current implementation baseline: 624 norms are `in_scope`; 238 have no direct existing
+implementation reference. Of those, 17 are intentionally `carried_by_other_norm`, while 217 are
+`missing` and four are `unresolved`. The resulting 221 implementation-debt records are mapping and
+design candidates, not a forecast of 221 new rules.
 
 **Granularity audit checkpoint 2026-09-02:** Annex IV items 1 and 2 were split into lettered
 subitems, its carried technical-documentation norm was expanded from nine headings to 26 concrete
@@ -491,7 +491,21 @@ the corpus total remains 1,386; source approvals, the 73 detector candidates and
 debt are unchanged. There are now 142 populated content lists. Regressions check the grouped logic,
 exact source details and the parent permission's continued linkage to all ten lettered conditions.
 This is not independent norm approval or executable implementation of those conditions.
-Next recorded correction: Article 60. Articles 47–49 and 51–56 have no open recorded finding in
+
+Article 60 now separates the Member State duty to confer real-world testing supervision powers from
+the authorities' duty to use them, and splits paragraph 7 into Article 73 incident reporting,
+immediate mitigation, the conditional suspension-or-termination duty and the prompt-recall
+procedure. Point 4(h) separates informing participating deployers from the jointly concluded roles
+agreement, and 4(i) separates Article 61 consent from the law-enforcement substitute's
+no-negative-effect and deletion duties, which both require that seeking consent would prevent
+testing. Point 4(c)'s registration routes are mutually exclusive alternatives with their exact
+Annex III scopes rather than three cumulative checks, and its previously truncated quote now covers
+the whole point. Its 24 norms became 32, taking the corpus to 1,394; all remain proposed and no
+source approval changed. Implementation debt rises from 216 to 221 records and in-scope norms
+without existing coverage from 233 to 238, because five separated provider duties were previously
+hidden inside two checklists. The live detector now has 71 candidates and the inventory has 139
+populated content lists.
+Next recorded correction: Article 60a. Articles 47–49 and 51–56 have no open recorded finding in
 these ledgers.
 
 Correct the recorded defects and complete the unflagged-source semantic audit before declaring
@@ -526,7 +540,7 @@ debt.
 
 **Extraction status:** complete as a proposed corpus inventory. Exact source partitioning and
 disposition authoring cover all 133 documents and all source characters. The exit criterion remains
-open because four segments and all 1,386 norm records still require independent assurance. Corrections
+open because four segments and all 1,394 norm records still require independent assurance. Corrections
 found during assurance must be made in `segments/` and `source-records/`, followed by regeneration;
 generated `text-review/` and `norms/` files are never hand-edited.
 
@@ -638,7 +652,7 @@ No aggregate percentage replaces these measures.
 ## Rough effort
 
 The original estimates below are retained as planning history. Full-corpus extraction established
-an actual inventory of 1,386 proposed norms, so remaining effort is driven by independent legal
+an actual inventory of 1,394 proposed norms, so remaining effort is driven by independent legal
 assurance, many-to-many implementation mapping, and behavioral proof rather than extraction volume:
 
 | Work | Estimate |
@@ -656,12 +670,12 @@ The original total was roughly **6–10 person-weeks**. It must not be used as a
 estimate: several infrastructure and authoring stages are complete, while the unexpectedly large
 norm inventory makes assurance and mapping more substantial than the original pilot could measure.
 A new forecast should be based on measured review and reconciliation throughput from representative
-batches of the 1,386 records.
+batches of the 1,394 records.
 
 ## Immediate next action
 
 Continue the [granularity correction and completion queue](NORMATIVE-COVERAGE-GRANULARITY-AUDIT.md#correction-and-completion-queue)
-in source order, continuing with Article 60 after corrections through Article 59, and complete the
+in source order, continuing with Article 60a after corrections through Article 60, and complete the
 unflagged-source pass. Independently review the four proposed source segments in Annex VIII;
 exactly retained content still needs optional/conditional field semantics. Apply only confirmed
 user provenance to authored `segments/` records and regenerate derived artifacts. Keep codex audit

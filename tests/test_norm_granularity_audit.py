@@ -24,7 +24,7 @@ def test_pinned_corpus_triage_is_documented_without_mutating_review():
     assert bundle.model_dump() == before
     assert bundle.validated_documents == 133
     assert len(bundle.text_review.segments) == 1471
-    assert len(candidates) == 73
+    assert len(candidates) == 71
 
     segments = {s.segment_id: s for s in bundle.text_review.segments}
     for candidate in candidates:
@@ -42,6 +42,7 @@ def test_pinned_corpus_triage_is_documented_without_mutating_review():
         f"AIA-TEXT-A057-P{p:03}" for p in (5, 7, 8, 12, 20, 21, 24, 25, 26)
     }
     closed_by_splitting.add("AIA-TEXT-A058-P018")
+    closed_by_splitting |= {"AIA-TEXT-A060-P019", "AIA-TEXT-A060-P020"}
     assert set(ids) - closed_by_splitting == {candidate.segment_id for candidate in candidates}
 
     content_report = (root / "docs/NORMATIVE-COVERAGE-CONTENT-AUDIT.md").read_text()
@@ -56,7 +57,7 @@ def test_pinned_corpus_triage_is_documented_without_mutating_review():
         if norm.mandatory_content
     }
     assert len(content_rows) == 146  # Historical audit baseline.
-    assert len(expected_content) == 142
+    assert len(expected_content) == 139
     baseline_content = {norm_id: int(count) for norm_id, count, _ in content_rows}
     # Article 40's example is now nested in its proper deliverable, not a third requirement.
     baseline_content["AIA-NORM-A040-P2-RESOURCE-PERFORMANCE-DELIVERABLES"] = 2
@@ -78,4 +79,11 @@ def test_pinned_corpus_triage_is_documented_without_mutating_review():
     baseline_content["AIA-NORM-A057-P16-FINAL-SANDBOX-REPORT"] = 7
     # Article 59's public-interest areas are alternative eligibility grounds, not a checklist.
     baseline_content.pop("AIA-NORM-A059-P1-A-SUBSTANTIAL-PUBLIC-INTEREST")
+    # Article 60's registration routes are mutually exclusive gates, not three cumulative checks;
+    # its consent and incident duties are now separate norms instead of content items.
+    baseline_content.pop("AIA-NORM-A060-P4-C-REGISTER-TESTING")
+    baseline_content.pop("AIA-NORM-A060-P4-I-CONSENT-OR-SAFEGUARDS")
+    baseline_content.pop("AIA-NORM-A060-P7-INCIDENT-RESPONSE")
+    baseline_content["AIA-NORM-A060-P4-H-INFORM-AND-AGREE-ROLES"] = 2
+    baseline_content["AIA-NORM-A060-P6-CONFER-AND-USE-SURVEILLANCE-POWERS"] = 3
     assert baseline_content == expected_content
