@@ -58,12 +58,29 @@ records:
   verification_mode: not_assessed
 - norm_id: AIA-NORM-A058-P4-AGREE-REAL-WORLD-TESTING-SAFEGUARDS
   source: A058-P018
-  quote: Where national competent authorities consider authorising testing in real world conditions supervised within the framework of an AI regulatory sandbox to be established under this Article, they shall specifically agree the terms and conditions of such testing and, in particular, the appropriate safeguards with the participants, with a view to protecting fundamental rights, health and safety. Where appropriate, they shall cooperate with other national competent authorities with a view to ensuring consistent practices across the Union.
-  action: agree real-world testing terms and safeguards with participants and cooperate as appropriate for consistent Union practice
+  quote: Where national competent authorities consider authorising testing in real world conditions supervised within the framework of an AI regulatory sandbox to be established under this Article, they shall specifically agree the terms and conditions of such testing and, in particular, the appropriate safeguards with the participants, with a view to protecting fundamental rights, health and safety.
+  action: specifically agree real-world testing terms and conditions, in particular appropriate safeguards,
+    with participants to protect fundamental rights, health and safety
   subject_ref: national_competent_authority
   subject_category: public_authority
   conditions: [the authority considers authorising supervised real-world sandbox testing]
   mandatory_content: [testing terms and conditions, safeguards protecting fundamental rights health and safety]
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A058-P4-COOPERATE-ON-TESTING-PRACTICES
+  source: A058-P018
+  quote: Where appropriate, they shall cooperate with other national competent authorities with a view
+    to ensuring consistent practices across the Union.
+  action: cooperate with other national competent authorities to ensure consistent real-world sandbox
+    testing practices across the Union
+  subject_ref: national_competent_authority
+  subject_category: public_authority
+  conditions:
+  - the authority considers authorising supervised real-world sandbox testing
+  - where appropriate
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required

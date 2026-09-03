@@ -178,14 +178,12 @@ norms:
   subjects:
   - subject_ref: national_competent_authority
     category: public_authority
-  action: agree real-world testing terms and safeguards with participants and cooperate as appropriate
-    for consistent Union practice
+  action: specifically agree real-world testing terms and conditions, in particular appropriate safeguards,
+    with participants to protect fundamental rights, health and safety
   norm_text: Where national competent authorities consider authorising testing in real world conditions
     supervised within the framework of an AI regulatory sandbox to be established under this Article,
     they shall specifically agree the terms and conditions of such testing and, in particular, the appropriate
     safeguards with the participants, with a view to protecting fundamental rights, health and safety.
-    Where appropriate, they shall cooperate with other national competent authorities with a view to ensuring
-    consistent practices across the Union.
   detection_channels:
   - semantic_legal_effect
   - shall_token
@@ -199,6 +197,44 @@ norms:
   mandatory_content:
   - testing terms and conditions
   - safeguards protecting fundamental rights health and safety
+  dependencies: []
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_refs: []
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A058-P4-COOPERATE-ON-TESTING-PRACTICES
+  act_version_date: '2026-07-27'
+  kind: obligation
+  subjects:
+  - subject_ref: national_competent_authority
+    category: public_authority
+  action: cooperate with other national competent authorities to ensure consistent real-world sandbox
+    testing practices across the Union
+  norm_text: Where appropriate, they shall cooperate with other national competent authorities with a
+    view to ensuring consistent practices across the Union.
+  detection_channels:
+  - semantic_legal_effect
+  - shall_token
+  primary_spans:
+  - AIA-TEXT-A058-P018
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions:
+  - the authority considers authorising supervised real-world sandbox testing
+  - where appropriate
+  exceptions: []
+  mandatory_content: []
   dependencies: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.

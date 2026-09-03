@@ -28,7 +28,7 @@ independently triggered notifications, optional Board powers summarised as dutie
 information missing the no-detriment/no-justification safeguards.
 
 Reproduce the live read-only candidate list, source hashes and full scan denominator (after the
-corrections below, 74 candidates remain; a disappearing signal is not independent norm approval):
+corrections below, 73 candidates remain; a disappearing signal is not independent norm approval):
 
 ```sh
 uv run python scripts/audit_norm_granularity.py --act-version 2026-07-27
@@ -191,17 +191,18 @@ modal/list scan. Source references identify full norm records in `source-records
 | 46 | Split paragraph 2's refusal response into immediate stopping of use and immediate discarding of all results and outputs. The actor and refusal trigger are identical; urgent-use permission and the other paragraphs are unchanged. | Fourteen proposed norms instead of thirteen; regressions check both actions, timing, shared condition and actor, source links and separate permission. |
 | 50 | Expanded paragraph 1's obvious-interaction exception to the reasonably well-informed, observant and circumspect person test, considering circumstances and context. Paragraph 2 now explicitly includes content specificities/limitations, implementation costs and generally acknowledged state of the art, including the possible reflection in technical standards. | Still eleven proposed norms; regressions preserve marking/detectability, existing exceptions, implementation links and user-approved source provenance. The three factors qualify technical-solution qualities, not exemptions from marking. |
 | 57 | Split the nine flagged segments and the requested-proof/exit-report content finding by actor, trigger and legal effect. Establishment, access, testing, suspension and support remain powers/permissions rather than duties; report use, notification, publication and annual/final reporting are distinct. Retained the different liability and two no-fine conditions, including the pinned text's prospective-provider condition for the AI Act protection. Nearby source checks also separated EDPS reference substitution, provider evidence use from surveillance/notified-body consideration, and optional joint-sandbox support. P006 is now a normative qualifier preserving Member State competence, linked to the AI Office power. | Fifty proposed norms instead of twenty-two; twelve focused semantic regressions plus source-link, metric and audit reconciliation checks. Codex changed P006's disposition; no user verification or runtime coverage is claimed. |
+| 58 | Split paragraph 4's agreement of testing terms/safeguards with participants from cooperation with other national competent authorities. Both retain the supervised real-world sandbox testing context; only cooperation has the additional where-appropriate condition. The two safeguards content groups still qualify one agreement duty. Paragraphs 1–3 are unchanged. | Six proposed norms instead of five; regression checks cover distinct recipients/actions, conditions, exact quotes, source linkage and unchanged review/runtime boundaries. |
 
-The original 88-row ledger above remains a historical audit baseline. Article 31's five and
-Article 57's nine split candidate segments no longer trigger the scanner, leaving 74 live signals.
-The current inventory has 1,385 proposed norms and 1,471 segments. The 216 implementation-debt
-records remain unchanged: the 38 norms added since baseline concern actors outside supported
-reporting roles (36), or no-product-action enforcement consequences (two). Source approvals have
-not been relabelled as norm approvals. The Article 57 mitigation proposition preserves the
-supervisory requirement for adequate mitigation; it does not assign a new operational product
-action or turn suspension into a duty. This actor interpretation remains subject to independent
-norm review, as do the other corrections.
-Next recorded correction: Article 58. Articles 47–49 and 51–56 have no open recorded correction
+The original 88-row ledger above remains a historical audit baseline. Article 31's five,
+Article 57's nine and Article 58's one split candidate segments no longer trigger the scanner,
+leaving 73 live signals. The current inventory has 1,386 proposed norms and 1,471 segments.
+The 216 implementation-debt records remain unchanged: the 39 norms added since baseline concern
+actors outside supported reporting roles (37), or no-product-action enforcement consequences (two).
+Source approvals have not been relabelled as norm approvals. The Article 57 mitigation proposition
+preserves the supervisory requirement for adequate mitigation; it does not assign a new operational
+product action or turn suspension into a duty. This actor interpretation remains subject to
+independent norm review, as do the other corrections.
+Next recorded correction: Article 59. Articles 47–49 and 51–56 have no open recorded correction
 in these ledgers. The Article 50 corrections do not remove their heuristic scan signals; a signal
 is not a finding or an approval status.
 

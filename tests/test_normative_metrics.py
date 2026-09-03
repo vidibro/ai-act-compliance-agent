@@ -1660,15 +1660,15 @@ def test_inventory_cannot_be_misreported_as_independently_approved(metrics):
     assert metrics.needs_review_characters == 0
     assert metrics.review_statuses == {
         "approved": 1467,
-        "proposed": 1389,
+        "proposed": 1390,
     }
     assert metrics.timed_review_records == 0
-    assert metrics.total_review_records == 2857
+    assert metrics.total_review_records == 2858
 
 
 def test_semantic_pass_finds_propositions_a_shall_scan_misses(metrics):
     assert metrics.shall_vs_semantic_disagreements == 530
-    assert metrics.shall_token_candidate_recall == pytest.approx(855 / 1385)
+    assert metrics.shall_token_candidate_recall == pytest.approx(856 / 1386)
     assert "AIA-NORM-A011-P1-SIMPLIFY" in metrics.semantic_norms_without_shall_token
     assert "AIA-NORM-A043-P5-AMEND" in metrics.semantic_norms_without_shall_token
     assert "AIA-NORM-A060-P4-PERMISSION" in metrics.semantic_norms_without_shall_token
@@ -1676,12 +1676,12 @@ def test_semantic_pass_finds_propositions_a_shall_scan_misses(metrics):
 
 
 def test_metrics_expose_many_to_many_and_implementation_debt(metrics):
-    assert metrics.normative_segments_with_multiple_norms == 314
+    assert metrics.normative_segments_with_multiple_norms == 315
     assert metrics.mapping_shape.one_norm_to_one_target == 26
     assert metrics.mapping_shape.many_norms_to_one_target == 348
     assert metrics.mapping_shape.one_norm_to_many_targets == 0
     assert metrics.mapping_shape.many_to_many == 15
-    assert metrics.mapping_shape.unmapped == 996
+    assert metrics.mapping_shape.unmapped == 997
     assert metrics.semantic_vs_existing_implementation_disagreements == 233
     assert metrics.semantic_norms_without_existing_implementation == [
         "AIA-NORM-A002-P1-A-PROVIDER",
@@ -3029,7 +3029,7 @@ def test_article_fifty_eight_extracts_sandbox_implementing_arrangements():
     assert len(segments) == 19
     assert all(segment.review.status.value == "approved" for segment in segments)
     assert all(segment.review.verified_by == "codex" for segment in segments)
-    assert len(norms) == 5
+    assert len(norms) == 6
     assert all(norm.implementation_mode.value == "none_required" for norm in norms.values())
     arrangements = norms["AIA-NORM-A058-P1-DETAILED-SANDBOX-ARRANGEMENTS"]
     outcomes = norms["AIA-NORM-A058-P2-MINIMUM-IMPLEMENTING-ACT-OUTCOMES"]
@@ -3037,6 +3037,36 @@ def test_article_fifty_eight_extracts_sandbox_implementing_arrangements():
     assert len(arrangements.qualifier_spans) == 4
     assert len(outcomes.mandatory_content) == 9
     assert len(outcomes.qualifier_spans) == 9
+
+    safeguards = norms["AIA-NORM-A058-P4-AGREE-REAL-WORLD-TESTING-SAFEGUARDS"]
+    cooperation = norms["AIA-NORM-A058-P4-COOPERATE-ON-TESTING-PRACTICES"]
+    testing_context = "the authority considers authorising supervised real-world sandbox testing"
+    assert safeguards.conditions == [testing_context]
+    assert cooperation.conditions == [testing_context, "where appropriate"]
+    assert safeguards.kind.value == cooperation.kind.value == "obligation"
+    assert safeguards.subjects == cooperation.subjects
+    assert safeguards.subjects[0].subject_ref == "national_competent_authority"
+    assert safeguards.subjects[0].category.value == "public_authority"
+    assert "with participants" in safeguards.action
+    assert "protect fundamental rights, health and safety" in safeguards.action
+    assert "cooperate" not in safeguards.action
+    assert safeguards.mandatory_content == [
+        "testing terms and conditions", "safeguards protecting fundamental rights health and safety"
+    ]
+    assert "other national competent authorities" in cooperation.action
+    assert "consistent real-world sandbox testing practices across the Union" in cooperation.action
+    assert "agree" not in cooperation.action
+    assert not cooperation.mandatory_content
+    assert "Where appropriate" not in safeguards.norm_text
+    assert cooperation.norm_text == (
+        "Where appropriate, they shall cooperate with other national competent authorities "
+        "with a view to ensuring consistent practices across the Union."
+    )
+    assert safeguards.primary_spans == cooperation.primary_spans == ["AIA-TEXT-A058-P018"]
+    assert segments[-1].norm_ids == [safeguards.norm_id, cooperation.norm_id]
+    assert all(norm.review.status.value == "proposed" for norm in norms.values())
+    assert all(norm.product_scope.value == "outside_supported_actor" for norm in norms.values())
+    assert all(not norm.implementation_refs for norm in norms.values())
 
 
 def test_article_fifty_nine_extracts_conditional_sandbox_data_processing():

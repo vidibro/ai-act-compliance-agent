@@ -49,7 +49,13 @@ seven content groups, explicitly including relevant application/revision of the 
 delegated/implementing acts, and application of other supervised Union law. Publication and
 Commission consideration are separate duties; the four interface content groups remain separate
 from conditional coordination. The live inventory now has 143 populated content lists. The
-146-row table below remains the historical baseline; subsequent articles' findings remain pending.
+146-row table below remains the historical baseline.
+
+Article 58's paragraph 4 finding is also corrected: agreeing terms and safeguards with participants
+is separate from cooperation with other national authorities, which additionally applies only where
+appropriate. The two existing content groups remain part of the single agreement duty, not two
+separate actions. Its paragraph 1 retain decision and paragraph 2 content list are unchanged; the
+live inventory still has 143 populated content lists. Subsequent articles' findings remain pending.
 
 | Norm | Content entries | Decision | Finding / treatment |
 |---|---:|---|---|
