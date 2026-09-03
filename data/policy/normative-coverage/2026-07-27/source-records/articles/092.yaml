@@ -2,11 +2,20 @@ records:
 - norm_id: AIA-NORM-A092-P1-CONDUCT-GPAI-EVALUATION
   source: A092-P001
   quote: The AI Office, after consulting the Board, may conduct evaluations of the general-purpose AI model concerned
-  action: after Board consultation evaluate a GPAI model for provider compliance or Union-level systemic risk under the enacted triggers
+  action: conduct evaluations of the general-purpose AI model concerned, after consulting the Board,
+    for either enacted purpose
   subject_ref: ai_office
   subject_category: union_institution_or_body
   kind: power
-  mandatory_content: [provider-compliance assessment when Article 91 information is insufficient, Union-level systemic-risk investigation particularly following an Article 90 qualified alert]
+  conditions:
+  - the AI Office has consulted the Board
+  - operator: any_of
+    operands:
+    - to assess compliance of the provider with obligations under this Regulation, where the
+      information gathered pursuant to Article 91 is insufficient
+    - to investigate systemic risks at Union level of general-purpose AI models with systemic risk,
+      in particular following a qualified alert from the scientific panel in accordance with
+      Article 90(1), point (a)
   qualifier_spans: [A092-P002, A092-P003]
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.

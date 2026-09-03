@@ -213,6 +213,7 @@ modal/list scan. Source references identify full norm records in `source-records
 | 79 | Split paragraph 5 into taking the provisional measures, conditioned on the operator's failure to act within the paragraph 2 period, and notifying the Commission and the other Member States without undue delay. Paragraph 6's notification now enumerates the five detail groups and the four non-compliance grounds separately. Paragraph 8 separates deemed justification, the preserved Article 18 procedural rights and the 30-day period for Article 5 non-compliance. | Seventeen proposed norms instead of fourteen; regressions cover the trigger, the deadline that belongs to the notification, the nine content entries and the three distinct consequences. Implementation debt is unchanged. |
 | 82 | Split paragraph 5 into the immediate communication of the decision to the Member States concerned and the relevant operators and the separate duty to inform the other Member States, which the source does not put under the same immediacy requirement. Paragraph 3's report is unchanged. | Seven proposed norms instead of six; regressions cover the recipients and the deadline that belongs only to the first duty. Implementation debt is unchanged. |
 | 85 | Split paragraph 2 into taking complaints into account when conducting market surveillance activities and handling them in line with the dedicated procedures the authorities established for them. | Three proposed norms instead of two; regressions cover both actions and the unchanged complaint entitlement. Implementation debt is unchanged. |
+| 92 | Expanded paragraph 1's evaluation power into two explicit alternative purposes: assessing provider compliance where the Article 91 information is insufficient, and investigating Union-level systemic risks of general-purpose AI models with systemic risk, in particular following an Article 90(1), point (a) qualified alert. Board consultation remains a separate shared condition. Paragraph 8's implementing-act duty is unchanged. | Still fourteen proposed norms; regressions cover the AND/OR structure and both enacted limits. Implementation debt is unchanged. |
 
 The original 88-row ledger above remains a historical audit baseline. Article 31's five,
 Article 57's nine, Article 58's one, Article 60's two, Article 60a's one, Article 61's one,
@@ -227,7 +228,7 @@ Source approvals have not been relabelled as norm approvals. The Article 57 miti
 preserves the supervisory requirement for adequate mitigation; it does not assign a new operational
 product action or turn suspension into a duty. This actor interpretation remains subject to
 independent norm review, as do the other corrections.
-Next recorded correction: Article 92. Articles 47–49 and 51–56 have no open recorded correction
+Next recorded correction: Article 95. Articles 47–49 and 51–56 have no open recorded correction
 in these ledgers. The Article 50 corrections do not remove their heuristic scan signals; a signal
 is not a finding or an approval status.
 

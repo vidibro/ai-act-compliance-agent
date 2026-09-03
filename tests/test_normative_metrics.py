@@ -4356,7 +4356,15 @@ def test_article_ninety_two_maps_gpai_model_access():
     assert norms["AIA-NORM-A092-P5-PROVIDE-MODEL-ACCESS"].implementation_refs == [
         "AIA-GP-A92-5"
     ]
-    assert len(norms["AIA-NORM-A092-P1-CONDUCT-GPAI-EVALUATION"].mandatory_content) == 2
+    # The two evaluation purposes are alternatives, each keeping its own enacted limits.
+    evaluation = norms["AIA-NORM-A092-P1-CONDUCT-GPAI-EVALUATION"]
+    assert not evaluation.mandatory_content
+    assert evaluation.conditions[0] == "the AI Office has consulted the Board"
+    purposes = evaluation.conditions[1]
+    assert isinstance(purposes, ConditionGroup) and purposes.operator == "any_of"
+    assert "Article 91 is insufficient" in purposes.operands[0]
+    assert "general-purpose AI models with systemic risk" in purposes.operands[1]
+    assert "Article 90(1), point (a)" in purposes.operands[1]
 
 
 def test_article_ninety_three_extracts_commission_measure_powers():

@@ -623,7 +623,13 @@ Article 85 now separates taking complaints into account when conducting market s
 from handling them under the authorities' dedicated procedures. Its two norms became three,
 taking the corpus to 1,473; content lists stay at 133, the detector drops to 47 candidates and
 implementation debt stays at 222.
-Next recorded correction: Article 92. Articles 47–49 and 51–56 have no open recorded finding in
+
+Article 92's evaluation power now states its two alternative purposes explicitly, keeping the
+systemic-risk limit and the Article 90(1), point (a) alert reference inside the second branch
+and Board consultation as a shared condition. Its norm count is unchanged, the corpus stays at
+1,473 and populated content lists drop to 132; the detector and implementation debt are
+unchanged.
+Next recorded correction: Article 95. Articles 47–49 and 51–56 have no open recorded finding in
 these ledgers.
 
 Correct the recorded defects and complete the unflagged-source semantic audit before declaring
@@ -793,7 +799,7 @@ batches of the 1,473 records.
 ## Immediate next action
 
 Continue the [granularity correction and completion queue](NORMATIVE-COVERAGE-GRANULARITY-AUDIT.md#correction-and-completion-queue)
-in source order, continuing with Article 92 after corrections through Article 85, and complete the
+in source order, continuing with Article 95 after corrections through Article 92, and complete the
 unflagged-source pass. Independently review the four proposed source segments in Annex VIII;
 exactly retained content still needs optional/conditional field semantics. Apply only confirmed
 user provenance to authored `segments/` records and regenerate derived artifacts. Keep codex audit

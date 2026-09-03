@@ -72,7 +72,7 @@ def test_pinned_corpus_triage_is_documented_without_mutating_review():
         if norm.mandatory_content
     }
     assert len(content_rows) == 146  # Historical audit baseline.
-    assert len(expected_content) == 133
+    assert len(expected_content) == 132
     baseline_content = {norm_id: int(count) for norm_id, count, _ in content_rows}
     # Article 40's example is now nested in its proper deliverable, not a third requirement.
     baseline_content["AIA-NORM-A040-P2-RESOURCE-PERFORMANCE-DELIVERABLES"] = 2
@@ -148,4 +148,6 @@ def test_pinned_corpus_triage_is_documented_without_mutating_review():
     baseline_content.pop("AIA-NORM-A078-P3-KEEP-DOCUMENTATION-AND-ENABLE-ACCESS")
     # Article 79's notification now enumerates the detailed non-compliance grounds.
     baseline_content["AIA-NORM-A079-P6-NOTIFICATION-CONTENT"] = 9
+    # Article 92's two evaluation purposes are alternatives, not cumulative contents.
+    baseline_content.pop("AIA-NORM-A092-P1-CONDUCT-GPAI-EVALUATION")
     assert baseline_content == expected_content

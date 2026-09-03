@@ -178,8 +178,13 @@ Article 79's notification-content finding is now corrected with its two recorded
 splits: the five detail groups and the four non-compliance grounds are separate entries, and
 the provisional measures, their notification, deemed justification, the preserved Article 18
 procedural rights and the shortened Article 5 period are separate norms. The live inventory
-still has 133 populated content lists, now across 1,471 proposed norms. Subsequent articles'
-findings remain pending.
+still has 133 populated content lists, now across 1,471 proposed norms.
+
+Article 92's evaluation finding is now corrected: the two purposes are alternative conditions
+carrying the systemic-risk limit and the Article 90(1), point (a) alert reference, rather than
+two contents of every evaluation. Board consultation remains a separate shared condition. The
+live inventory has 132 populated content lists across 1,473 proposed norms. Subsequent
+articles' findings remain pending.
 
 | Norm | Content entries | Decision | Finding / treatment |
 |---|---:|---|---|
