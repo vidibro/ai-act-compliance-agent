@@ -28,7 +28,7 @@ independently triggered notifications, optional Board powers summarised as dutie
 information missing the no-detriment/no-justification safeguards.
 
 Reproduce the live read-only candidate list, source hashes and full scan denominator (after the
-corrections below, 65 candidates remain; a disappearing signal is not independent norm approval):
+corrections below, 63 candidates remain; a disappearing signal is not independent norm approval):
 
 ```sh
 uv run python scripts/audit_norm_granularity.py --act-version 2026-07-27
@@ -202,21 +202,22 @@ modal/list scan. Source references identify full norm records in `source-records
 | 67 | Split paragraph 6 into drawing up the rules of procedure, electing two co-chairs under the paragraph 2 criteria and the two-year renewable co-chair term; paragraph 7 into the required two annual meetings and the optional invitation of experts and stakeholders; and paragraph 10 into preparing the annual activity report and making it publicly available. Paragraph 2's balance requirement is unchanged. | Fourteen proposed norms instead of ten; regressions cover the three paragraph 6 effects, the duty/power split on meetings and the separate publication action. Implementation debt is unchanged. |
 | 68 | Split the scientific panel's advice-and-support duty and its GPAI support task into their lettered and numbered actions, keeping the request trigger on market surveillance support, the Article 74(11) without-prejudice limit and the Article 90 qualification on alerts. The expert protections became four norms: impartiality and objectivity, confidentiality, the prohibition on seeking or taking instructions and the published declaration of interests; the AI Office's conflict-management duty was already separate. | Nineteen proposed norms instead of eight; regressions cover the child links, the request trigger, the typed prohibition and the separate AI Office duty. Implementation debt is unchanged. |
 | 70 | Split paragraph 1 into the Member State designation duty, the authorities' independent and impartial exercise of powers, the prohibition on incompatible member action and the permission to consolidate tasks while those principles are observed. Paragraph 2 separates the Commission communication, the 2 August 2025 public contact information and the single-point-of-contact designation and notification. Paragraph 3 separates Member State resourcing, the authorities' permanently available expert personnel and the annual reassessment. | Eighteen proposed norms instead of eleven; regressions cover the duty-holders, the typed prohibition and permission, the deadline that belongs to one disclosure only and the seven expertise fields. Implementation debt is unchanged. |
+| 71 | Split paragraph 1 into database set-up and maintenance, expert consultation when setting the functional specifications and Board consultation when updating them. Paragraph 4 now carries the Article 49 public-access duty with both excluded sections as exceptions, the enacted "should" for navigable machine-readable presentation as a separate non-duty consequence, and the Article 60 restriction with its provider-consent exception. Paragraph 6 separates controllership from operator support. Paragraph 5 is unchanged. | Thirteen proposed norms instead of eight; regressions cover the two consultation stages, both access regimes and their exceptions, the preserved "should" and the separate support duty. Implementation debt is unchanged. |
 
 The original 88-row ledger above remains a historical audit baseline. Article 31's five,
 Article 57's nine, Article 58's one, Article 60's two, Article 60a's one, Article 61's one,
-Article 67's two and Article 70's two split candidate segments no longer trigger the scanner,
-leaving 65 live signals. The current inventory has 1,446 proposed norms and 1,471 segments. Implementation debt rose from 216 to 222
+Article 67's two, Article 70's two and Article 71's two split candidate segments no longer
+trigger the scanner, leaving 63 live signals. The current inventory has 1,451 proposed norms and 1,471 segments. Implementation debt rose from 216 to 222
 records: six separated provider duties in Articles 60 and 61 are in-scope propositions that no
-existing rule covers, which the previous combined checklists concealed. Of the other 93 norms
-added since baseline, 89 concern actors outside supported reporting roles, three are
+existing rule covers, which the previous combined checklists concealed. Of the other 98 norms
+added since baseline, 94 concern actors outside supported reporting roles, three are
 no-product-action consequences, and one is the Article 60(4)(h) roles agreement already carried
 by the existing report-only obligation.
 Source approvals have not been relabelled as norm approvals. The Article 57 mitigation proposition
 preserves the supervisory requirement for adequate mitigation; it does not assign a new operational
 product action or turn suspension into a duty. This actor interpretation remains subject to
 independent norm review, as do the other corrections.
-Next recorded correction: Article 71. Articles 47–49 and 51–56 have no open recorded correction
+Next recorded correction: Article 72. Articles 47–49 and 51–56 have no open recorded correction
 in these ledgers. The Article 50 corrections do not remove their heuristic scan signals; a signal
 is not a finding or an approval status.
 

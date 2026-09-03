@@ -24,7 +24,7 @@ def test_pinned_corpus_triage_is_documented_without_mutating_review():
     assert bundle.model_dump() == before
     assert bundle.validated_documents == 133
     assert len(bundle.text_review.segments) == 1471
-    assert len(candidates) == 65
+    assert len(candidates) == 63
 
     segments = {s.segment_id: s for s in bundle.text_review.segments}
     for candidate in candidates:
@@ -47,6 +47,7 @@ def test_pinned_corpus_triage_is_documented_without_mutating_review():
     closed_by_splitting.add("AIA-TEXT-A061-P007")
     closed_by_splitting |= {"AIA-TEXT-A067-P006", "AIA-TEXT-A067-P010"}
     closed_by_splitting |= {"AIA-TEXT-A070-P001", "AIA-TEXT-A070-P003"}
+    closed_by_splitting |= {"AIA-TEXT-A071-P001", "AIA-TEXT-A071-P004"}
     assert set(ids) - closed_by_splitting == {candidate.segment_id for candidate in candidates}
 
     content_report = (root / "docs/NORMATIVE-COVERAGE-CONTENT-AUDIT.md").read_text()
@@ -61,7 +62,7 @@ def test_pinned_corpus_triage_is_documented_without_mutating_review():
         if norm.mandatory_content
     }
     assert len(content_rows) == 146  # Historical audit baseline.
-    assert len(expected_content) == 130
+    assert len(expected_content) == 129
     baseline_content = {norm_id: int(count) for norm_id, count, _ in content_rows}
     # Article 40's example is now nested in its proper deliverable, not a third requirement.
     baseline_content["AIA-NORM-A040-P2-RESOURCE-PERFORMANCE-DELIVERABLES"] = 2
@@ -113,4 +114,9 @@ def test_pinned_corpus_triage_is_documented_without_mutating_review():
     baseline_content["AIA-NORM-A070-P2-AUTHORITY-AND-CONTACT-DISCLOSURES"] = 3
     baseline_content["AIA-NORM-A070-P3-ADEQUATE-RESOURCES-AND-COMPETENCE"] = 4
     baseline_content["AIA-NORM-A070-P3-PERMANENT-EXPERT-PERSONNEL"] = 7
+    # Article 71 separates the database stages, access regimes and controllership.
+    baseline_content["AIA-NORM-A071-P1-SET-UP-AND-MAINTAIN-DATABASE"] = 2
+    baseline_content.pop("AIA-NORM-A071-P4-DATABASE-ACCESS-RULES")
+    baseline_content.pop("AIA-NORM-A071-P6-CONTROLLER-AND-OPERATOR-SUPPORT")
+    baseline_content["AIA-NORM-A071-P6-OPERATOR-SUPPORT"] = 2
     assert baseline_content == expected_content

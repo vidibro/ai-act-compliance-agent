@@ -126,7 +126,13 @@ splits. Designation keeps the two required authority types; the Commission commu
 identity, tasks and subsequent changes; resourcing keeps the four adequacy requirements; and
 the seven personnel expertise fields move to the authorities' own staffing duty. The
 2 August 2025 deadline now belongs only to the public contact information. The live inventory
-has 130 populated content lists across 1,446 proposed norms. Subsequent articles' findings
+has 130 populated content lists across 1,446 proposed norms.
+
+Article 71's controllership finding is now corrected with its two recorded segment splits.
+Database set-up keeps the two registered-system categories; the two specification
+consultations, the two access regimes and the operator-support duty are separate norms, and
+the paragraph 4 exclusions are now exceptions rather than checklist prose. The live inventory
+has 129 populated content lists across 1,451 proposed norms. Subsequent articles' findings
 remain pending.
 
 | Norm | Content entries | Decision | Finding / treatment |

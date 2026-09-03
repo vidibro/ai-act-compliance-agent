@@ -47,6 +47,8 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A071-P1-SET-UP-AND-MAINTAIN-DATABASE
+  - AIA-NORM-A071-P1-CONSULT-EXPERTS-ON-SPECIFICATIONS
+  - AIA-NORM-A071-P1-CONSULT-BOARD-ON-UPDATES
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -128,6 +130,8 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A071-P4-DATABASE-ACCESS-RULES
+  - AIA-NORM-A071-P4-NAVIGABLE-MACHINE-READABLE
+  - AIA-NORM-A071-P4-RESTRICTED-ARTICLE-60-ACCESS
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -181,6 +185,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A071-P6-CONTROLLER-AND-OPERATOR-SUPPORT
+  - AIA-NORM-A071-P6-OPERATOR-SUPPORT
   - AIA-NORM-A071-P6-DATABASE-ACCESSIBILITY
   review:
     status: approved

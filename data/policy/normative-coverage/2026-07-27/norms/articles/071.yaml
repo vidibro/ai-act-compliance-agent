@@ -6,15 +6,13 @@ norms:
   subjects:
   - subject_ref: commission
     category: union_institution_or_body
-  action: collaboratively establish and maintain the EU database and consult experts and the Board on
-    initial and updated specifications
+  action: set up and maintain the EU database, in collaboration with the Member States, containing the
+    paragraph 2 and 3 information on the enacted registered systems
   norm_text: The Commission shall, in collaboration with the Member States, set up and maintain an EU
     database containing information referred to in paragraphs 2 and 3 of this Article concerning high-risk
     AI systems referred to in Article 6(2) which are registered in accordance with Articles 49 and 60
     and AI systems that are not considered as high-risk pursuant to Article 6(3) and which are registered
-    in accordance with Article 6(4) and Article 49. When setting the functional specifications of such
-    database, the Commission shall consult the relevant experts, and when updating the functional specifications
-    of such database, the Commission shall consult the Board.
+    in accordance with Article 6(4) and Article 49.
   detection_channels:
   - semantic_legal_effect
   - shall_token
@@ -25,10 +23,81 @@ norms:
   conditions: []
   exceptions: []
   mandatory_content:
-  - Article 6(2) high-risk systems registered under Articles 49 and 60
-  - Article 6(3) non-high-risk systems registered under Articles 6(4) and 49
-  - expert consultation on initial specifications
-  - Board consultation on updated specifications
+  - Article 6(2) high-risk AI systems registered in accordance with Articles 49 and 60
+  - Article 6(3) systems not considered high-risk, registered in accordance with Article 6(4) and Article
+    49
+  dependencies: []
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_refs: []
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A071-P1-CONSULT-EXPERTS-ON-SPECIFICATIONS
+  act_version_date: '2026-07-27'
+  kind: obligation
+  subjects:
+  - subject_ref: commission
+    category: union_institution_or_body
+  action: consult the relevant experts when setting the database's functional specifications
+  norm_text: When setting the functional specifications of such database, the Commission shall consult
+    the relevant experts
+  detection_channels:
+  - semantic_legal_effect
+  - shall_token
+  primary_spans:
+  - AIA-TEXT-A071-P001
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions:
+  - the Commission is setting the functional specifications of the database
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_refs: []
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A071-P1-CONSULT-BOARD-ON-UPDATES
+  act_version_date: '2026-07-27'
+  kind: obligation
+  subjects:
+  - subject_ref: commission
+    category: union_institution_or_body
+  action: consult the Board when updating the database's functional specifications
+  norm_text: when updating the functional specifications of such database, the Commission shall consult
+    the Board.
+  detection_channels:
+  - semantic_legal_effect
+  - shall_token
+  primary_spans:
+  - AIA-TEXT-A071-P001
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions:
+  - the Commission is updating the functional specifications of the database
+  exceptions: []
+  mandatory_content: []
   dependencies: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -160,14 +229,11 @@ norms:
   subjects:
   - subject_ref: commission
     category: union_institution_or_body
-  action: apply public restricted and consent-based database access rules with user-friendly navigable
-    machine-readable presentation
+  action: keep the information registered under Article 49 accessible and publicly available in a user-friendly
+    manner
   norm_text: With the exception of the section referred to in Article 49(4) and Article 60(4), point (c),
     the information contained in the EU database registered in accordance with Article 49 shall be accessible
-    and publicly available in a user-friendly manner. The information should be easily navigable and machine-readable.
-    The information registered in accordance with Article 60 shall be accessible only to market surveillance
-    authorities and the Commission, unless the prospective provider or provider has given consent for
-    also making the information accessible the public.
+    and publicly available in a user-friendly manner.
   detection_channels:
   - semantic_legal_effect
   - shall_token
@@ -176,11 +242,83 @@ norms:
   qualifier_spans: []
   effective_date_spans: []
   conditions: []
+  exceptions:
+  - the section referred to in Article 49(4)
+  - the section referred to in Article 60(4), point (c)
+  mandatory_content: []
+  dependencies: []
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_refs: []
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A071-P4-NAVIGABLE-MACHINE-READABLE
+  act_version_date: '2026-07-27'
+  kind: legal_consequence
+  subjects:
+  - subject_ref: commission
+    category: union_institution_or_body
+  action: the information should be easily navigable and machine-readable
+  norm_text: The information should be easily navigable and machine-readable.
+  detection_channels:
+  - semantic_legal_effect
+  - deeming_or_consequence
+  primary_spans:
+  - AIA-TEXT-A071-P004
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions: []
   exceptions: []
-  mandatory_content:
-  - public user-friendly Article 49 information except restricted sections
-  - easily navigable machine-readable information
-  - Article 60 access limited to surveillance authorities and Commission absent provider consent
+  mandatory_content: []
+  dependencies: []
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_refs: []
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A071-P4-RESTRICTED-ARTICLE-60-ACCESS
+  act_version_date: '2026-07-27'
+  kind: obligation
+  subjects:
+  - subject_ref: commission
+    category: union_institution_or_body
+  action: keep the information registered under Article 60 accessible only to market surveillance authorities
+    and the Commission
+  norm_text: The information registered in accordance with Article 60 shall be accessible only to market
+    surveillance authorities and the Commission, unless the prospective provider or provider has given
+    consent for also making the information accessible the public.
+  detection_channels:
+  - semantic_legal_effect
+  - shall_token
+  primary_spans:
+  - AIA-TEXT-A071-P004
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions: []
+  exceptions:
+  - the prospective provider or provider has given consent for also making the information accessible
+    the public
+  mandatory_content: []
   dependencies: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -239,13 +377,49 @@ norms:
     elapsed_seconds: null
 - norm_id: AIA-NORM-A071-P6-CONTROLLER-AND-OPERATOR-SUPPORT
   act_version_date: '2026-07-27'
+  kind: legal_consequence
+  subjects:
+  - subject_ref: commission
+    category: union_institution_or_body
+  action: be the controller of the EU database
+  norm_text: The Commission shall be the controller of the EU database.
+  detection_channels:
+  - semantic_legal_effect
+  - shall_token
+  - deeming_or_consequence
+  primary_spans:
+  - AIA-TEXT-A071-P006
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions: []
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_refs: []
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A071-P6-OPERATOR-SUPPORT
+  act_version_date: '2026-07-27'
   kind: obligation
   subjects:
   - subject_ref: commission
     category: union_institution_or_body
-  action: act as EU database controller and provide operators adequate technical and administrative support
-  norm_text: The Commission shall be the controller of the EU database. It shall make available to providers,
-    prospective providers and deployers adequate technical and administrative support.
+  action: make adequate technical and administrative support available to providers, prospective providers
+    and deployers
+  norm_text: It shall make available to providers, prospective providers and deployers adequate technical
+    and administrative support.
   detection_channels:
   - semantic_legal_effect
   - shall_token
@@ -256,7 +430,6 @@ norms:
   conditions: []
   exceptions: []
   mandatory_content:
-  - database controllership
   - adequate technical support
   - adequate administrative support
   dependencies: []

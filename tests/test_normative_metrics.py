@@ -1661,15 +1661,15 @@ def test_inventory_cannot_be_misreported_as_independently_approved(metrics):
     assert metrics.needs_review_characters == 0
     assert metrics.review_statuses == {
         "approved": 1467,
-        "proposed": 1450,
+        "proposed": 1455,
     }
     assert metrics.timed_review_records == 0
-    assert metrics.total_review_records == 2918
+    assert metrics.total_review_records == 2923
 
 
 def test_semantic_pass_finds_propositions_a_shall_scan_misses(metrics):
-    assert metrics.shall_vs_semantic_disagreements == 570
-    assert metrics.shall_token_candidate_recall == pytest.approx(876 / 1446)
+    assert metrics.shall_vs_semantic_disagreements == 571
+    assert metrics.shall_token_candidate_recall == pytest.approx(880 / 1451)
     assert "AIA-NORM-A011-P1-SIMPLIFY" in metrics.semantic_norms_without_shall_token
     assert "AIA-NORM-A043-P5-AMEND" in metrics.semantic_norms_without_shall_token
     assert "AIA-NORM-A060-P4-PERMISSION" in metrics.semantic_norms_without_shall_token
@@ -1677,12 +1677,12 @@ def test_semantic_pass_finds_propositions_a_shall_scan_misses(metrics):
 
 
 def test_metrics_expose_many_to_many_and_implementation_debt(metrics):
-    assert metrics.normative_segments_with_multiple_norms == 356
+    assert metrics.normative_segments_with_multiple_norms == 358
     assert metrics.mapping_shape.one_norm_to_one_target == 26
     assert metrics.mapping_shape.many_norms_to_one_target == 349
     assert metrics.mapping_shape.one_norm_to_many_targets == 0
     assert metrics.mapping_shape.many_to_many == 15
-    assert metrics.mapping_shape.unmapped == 1056
+    assert metrics.mapping_shape.unmapped == 1061
     assert metrics.semantic_vs_existing_implementation_disagreements == 239
     assert metrics.semantic_norms_without_existing_implementation == [
         "AIA-NORM-A002-P1-A-PROVIDER",
@@ -3792,10 +3792,49 @@ def test_article_seventy_one_extracts_database_and_data_entry_duties():
     assert len(segments) == 7
     assert all(segment.review.status.value == "approved" for segment in segments)
     assert all(segment.review.verified_by == "codex" for segment in segments)
-    assert len(norms) == 8
+    assert len(norms) == 13
     assert sum(norm.implementation_mode.value == "missing" for norm in norms.values()) == 3
-    assert len(norms["AIA-NORM-A071-P4-DATABASE-ACCESS-RULES"].mandatory_content) == 3
     assert len(norms["AIA-NORM-A071-P5-DATABASE-DATA-MINIMISATION"].mandatory_content) == 2
+
+    # Setting up the database and the two consultations happen at different stages.
+    setup = norms["AIA-NORM-A071-P1-SET-UP-AND-MAINTAIN-DATABASE"]
+    experts = norms["AIA-NORM-A071-P1-CONSULT-EXPERTS-ON-SPECIFICATIONS"]
+    board = norms["AIA-NORM-A071-P1-CONSULT-BOARD-ON-UPDATES"]
+    assert len(setup.mandatory_content) == 2
+    assert experts.conditions == [
+        "the Commission is setting the functional specifications of the database"
+    ]
+    assert board.conditions == [
+        "the Commission is updating the functional specifications of the database"
+    ]
+
+    # Article 49 and Article 60 information follow different access regimes.
+    public = norms["AIA-NORM-A071-P4-DATABASE-ACCESS-RULES"]
+    restricted = norms["AIA-NORM-A071-P4-RESTRICTED-ARTICLE-60-ACCESS"]
+    presentation = norms["AIA-NORM-A071-P4-NAVIGABLE-MACHINE-READABLE"]
+    assert not public.mandatory_content
+    assert public.exceptions == [
+        "the section referred to in Article 49(4)",
+        "the section referred to in Article 60(4), point (c)",
+    ]
+    assert restricted.exceptions == [
+        "the prospective provider or provider has given consent for also making the information "
+        "accessible the public"
+    ]
+    # The enacted "should" is preserved rather than promoted to a duty.
+    assert presentation.kind.value == "legal_consequence"
+    assert presentation.action.startswith("the information should be")
+
+    # Controllership is a legal consequence; the support duty is a separate action.
+    controller = norms["AIA-NORM-A071-P6-CONTROLLER-AND-OPERATOR-SUPPORT"]
+    support = norms["AIA-NORM-A071-P6-OPERATOR-SUPPORT"]
+    assert controller.kind.value == "legal_consequence"
+    assert not controller.mandatory_content
+    assert support.mandatory_content == [
+        "adequate technical support",
+        "adequate administrative support",
+    ]
+    assert all(norm.review.status.value == "proposed" for norm in norms.values())
 
 
 def test_article_seventy_two_maps_post_market_monitoring_effects():
