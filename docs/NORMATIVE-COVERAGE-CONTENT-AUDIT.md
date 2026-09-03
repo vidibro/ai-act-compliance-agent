@@ -119,8 +119,15 @@ Article 68's three findings are now corrected. The panel's advice-and-support du
 GPAI support task keep their qualifier spans but no longer carry content lists: each
 supported task is a separate norm with its own trigger and limits. The expert protections
 became four norms, and the existing AI Office conflict-management duty was not duplicated.
-The live inventory has 129 populated content lists across 1,439 proposed norms. Subsequent
-articles' findings remain pending.
+The live inventory has 129 populated content lists across 1,439 proposed norms.
+
+Article 70's disclosure finding is now corrected together with its two recorded segment
+splits. Designation keeps the two required authority types; the Commission communication keeps
+identity, tasks and subsequent changes; resourcing keeps the four adequacy requirements; and
+the seven personnel expertise fields move to the authorities' own staffing duty. The
+2 August 2025 deadline now belongs only to the public contact information. The live inventory
+has 130 populated content lists across 1,446 proposed norms. Subsequent articles' findings
+remain pending.
 
 | Norm | Content entries | Decision | Finding / treatment |
 |---|---:|---|---|

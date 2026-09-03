@@ -4,22 +4,15 @@ norms:
   act_version_date: '2026-07-27'
   kind: obligation
   subjects:
-  - subject_ref: member_state_and_national_competent_authority
-    category: public_authority
-  action: designate notifying and surveillance authorities and safeguard their independent impartial objective
-    operation and member conduct
+  - subject_ref: member_state
+    category: member_state
+  action: establish or designate at least one notifying authority and at least one market surveillance
+    authority as national competent authorities for the purposes of this Regulation
   norm_text: Each Member State shall establish or designate as national competent authorities at least
     one notifying authority and at least one market surveillance authority for the purposes of this Regulation.
-    Those national competent authorities shall exercise their powers independently, impartially and without
-    bias so as to safeguard the objectivity of their activities and tasks, and to ensure the application
-    and implementation of this Regulation. The members of those authorities shall refrain from any action
-    incompatible with their duties. Provided that those principles are observed, such activities and tasks
-    may be performed by one or more designated authorities, in accordance with the organisational needs
-    of the Member State.
   detection_channels:
   - semantic_legal_effect
   - shall_token
-  - other_modal
   primary_spans:
   - AIA-TEXT-A070-P001
   qualifier_spans: []
@@ -29,9 +22,115 @@ norms:
   mandatory_content:
   - at least one notifying authority
   - at least one market surveillance authority
-  - independent impartial unbiased exercise of powers
-  - no member action incompatible with duties
-  - consolidation only while governance principles remain observed
+  dependencies: []
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_refs: []
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A070-P1-INDEPENDENT-EXERCISE-OF-POWERS
+  act_version_date: '2026-07-27'
+  kind: obligation
+  subjects:
+  - subject_ref: national_competent_authority
+    category: public_authority
+  action: exercise the authority's powers independently, impartially and without bias so as to safeguard
+    the objectivity of its activities and tasks and to ensure the application and implementation of this
+    Regulation
+  norm_text: Those national competent authorities shall exercise their powers independently, impartially
+    and without bias so as to safeguard the objectivity of their activities and tasks, and to ensure the
+    application and implementation of this Regulation.
+  detection_channels:
+  - semantic_legal_effect
+  - shall_token
+  primary_spans:
+  - AIA-TEXT-A070-P001
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions: []
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_refs: []
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A070-P1-MEMBER-CONDUCT
+  act_version_date: '2026-07-27'
+  kind: prohibition
+  subjects:
+  - subject_ref: national_competent_authority_member
+    category: public_authority
+  action: refrain from any action incompatible with the member's duties
+  norm_text: The members of those authorities shall refrain from any action incompatible with their duties.
+  detection_channels:
+  - semantic_legal_effect
+  - shall_token
+  primary_spans:
+  - AIA-TEXT-A070-P001
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions: []
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_refs: []
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A070-P1-ORGANISATIONAL-FLEXIBILITY
+  act_version_date: '2026-07-27'
+  kind: permission
+  subjects:
+  - subject_ref: member_state
+    category: member_state
+  action: have the activities and tasks performed by one or more designated authorities according to the
+    Member State's organisational needs
+  norm_text: Provided that those principles are observed, such activities and tasks may be performed by
+    one or more designated authorities, in accordance with the organisational needs of the Member State.
+  detection_channels:
+  - semantic_legal_effect
+  - other_modal
+  primary_spans:
+  - AIA-TEXT-A070-P001
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions:
+  - the independence, impartiality, objectivity and member-conduct principles are observed
+  exceptions: []
+  mandatory_content: []
   dependencies: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -54,15 +153,11 @@ norms:
   subjects:
   - subject_ref: member_state
     category: member_state
-  action: disclose authority identities tasks changes and contacts and designate and notify the single
-    point of contact
+  action: communicate to the Commission the identity and tasks of the notifying and market surveillance
+    authorities, and any subsequent changes to them
   norm_text: Member States shall communicate to the Commission the identity of the notifying authorities
     and the market surveillance authorities and the tasks of those authorities, as well as any subsequent
-    changes thereto. Member States shall make publicly available information on how competent authorities
-    and single points of contact can be contacted, through electronic communication means by 2 August
-    2025. Member States shall designate a market surveillance authority to act as the single point of
-    contact for this Regulation, and shall notify the Commission of the identity of the single point of
-    contact.
+    changes thereto.
   detection_channels:
   - semantic_legal_effect
   - shall_token
@@ -73,10 +168,82 @@ norms:
   conditions: []
   exceptions: []
   mandatory_content:
-  - authority identities tasks and changes communicated to the Commission
-  - electronic public contact information by 2 August 2025
-  - market surveillance authority designated as single point of contact
-  - single-point identity notified to the Commission
+  - identity of the notifying authorities and the market surveillance authorities
+  - tasks of those authorities
+  - any subsequent changes to that identity or those tasks
+  dependencies: []
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_refs: []
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A070-P2-PUBLISH-CONTACT-INFORMATION
+  act_version_date: '2026-07-27'
+  kind: obligation
+  subjects:
+  - subject_ref: member_state
+    category: member_state
+  action: make information on how to contact the competent authorities and single points of contact publicly
+    available through electronic communication means by 2 August 2025
+  norm_text: Member States shall make publicly available information on how competent authorities and
+    single points of contact can be contacted, through electronic communication means by 2 August 2025.
+  detection_channels:
+  - semantic_legal_effect
+  - shall_token
+  primary_spans:
+  - AIA-TEXT-A070-P002
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions: []
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_refs: []
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A070-P2-DESIGNATE-SINGLE-POINT-OF-CONTACT
+  act_version_date: '2026-07-27'
+  kind: obligation
+  subjects:
+  - subject_ref: member_state
+    category: member_state
+  action: designate a market surveillance authority as the single point of contact for this Regulation
+    and notify the Commission of its identity
+  norm_text: Member States shall designate a market surveillance authority to act as the single point
+    of contact for this Regulation, and shall notify the Commission of the identity of the single point
+    of contact.
+  detection_channels:
+  - semantic_legal_effect
+  - shall_token
+  primary_spans:
+  - AIA-TEXT-A070-P002
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions: []
+  exceptions: []
+  mandatory_content: []
   dependencies: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -133,8 +300,8 @@ norms:
   subjects:
   - subject_ref: member_state
     category: member_state
-  action: provide and annually assess adequate authority resources infrastructure staffing and multidisciplinary
-    expertise
+  action: ensure the national competent authorities are provided with adequate technical, financial and
+    human resources and with infrastructure to fulfil their tasks effectively
   norm_text: Member States shall ensure that their national competent authorities are provided with adequate
     technical, financial and human resources, and with infrastructure to fulfil their tasks effectively
     under this Regulation. In particular, the national competent authorities shall have a sufficient number
@@ -153,11 +320,90 @@ norms:
   conditions: []
   exceptions: []
   mandatory_content:
-  - technical financial and human resources
-  - effective-task infrastructure
-  - sufficient permanent personnel
-  - enacted AI data privacy cybersecurity rights safety standards and legal expertise
-  - annual assessment and necessary update
+  - adequate technical resources
+  - adequate financial resources
+  - adequate human resources
+  - infrastructure to fulfil the tasks effectively
+  dependencies: []
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_refs: []
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A070-P3-PERMANENT-EXPERT-PERSONNEL
+  act_version_date: '2026-07-27'
+  kind: obligation
+  subjects:
+  - subject_ref: national_competent_authority
+    category: public_authority
+  action: keep a sufficient number of personnel permanently available whose competences and expertise
+    cover every enacted field
+  norm_text: the national competent authorities shall have a sufficient number of personnel permanently
+    available whose competences and expertise shall include an in-depth understanding of AI technologies,
+    data and data computing, personal data protection, cybersecurity, fundamental rights, health and safety
+    risks and knowledge of existing standards and legal requirements.
+  detection_channels:
+  - semantic_legal_effect
+  - shall_token
+  primary_spans:
+  - AIA-TEXT-A070-P003
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions: []
+  exceptions: []
+  mandatory_content:
+  - in-depth understanding of AI technologies
+  - data and data computing
+  - personal data protection
+  - cybersecurity
+  - fundamental rights
+  - health and safety risks
+  - knowledge of existing standards and legal requirements
+  dependencies: []
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_refs: []
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A070-P3-ANNUAL-REASSESSMENT
+  act_version_date: '2026-07-27'
+  kind: obligation
+  subjects:
+  - subject_ref: member_state
+    category: member_state
+  action: assess the paragraph 3 competence and resource requirements annually and update them where necessary
+  norm_text: Member States shall assess and, if necessary, update competence and resource requirements
+    referred to in this paragraph on an annual basis.
+  detection_channels:
+  - semantic_legal_effect
+  - shall_token
+  primary_spans:
+  - AIA-TEXT-A070-P003
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions: []
+  exceptions: []
+  mandatory_content: []
   dependencies: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.

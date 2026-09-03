@@ -1,11 +1,52 @@
 records:
 - norm_id: AIA-NORM-A070-P1-DESIGNATE-AND-SAFEGUARD-AUTHORITIES
   source: A070-P001
-  quote: Each Member State shall establish or designate as national competent authorities at least one notifying authority and at least one market surveillance authority for the purposes of this Regulation. Those national competent authorities shall exercise their powers independently, impartially and without bias so as to safeguard the objectivity of their activities and tasks, and to ensure the application and implementation of this Regulation. The members of those authorities shall refrain from any action incompatible with their duties. Provided that those principles are observed, such activities and tasks may be performed by one or more designated authorities, in accordance with the organisational needs of the Member State.
-  action: designate notifying and surveillance authorities and safeguard their independent impartial objective operation and member conduct
-  subject_ref: member_state_and_national_competent_authority
+  quote: Each Member State shall establish or designate as national competent authorities at least one notifying authority and at least one market surveillance authority for the purposes of this Regulation.
+  action: establish or designate at least one notifying authority and at least one market
+    surveillance authority as national competent authorities for the purposes of this Regulation
+  subject_ref: member_state
+  subject_category: member_state
+  mandatory_content: [at least one notifying authority, at least one market surveillance authority]
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A070-P1-INDEPENDENT-EXERCISE-OF-POWERS
+  source: A070-P001
+  quote: Those national competent authorities shall exercise their powers independently, impartially and without bias so as to safeguard the objectivity of their activities and tasks, and to ensure the application and implementation of this Regulation.
+  action: exercise the authority's powers independently, impartially and without bias so as to
+    safeguard the objectivity of its activities and tasks and to ensure the application and
+    implementation of this Regulation
+  subject_ref: national_competent_authority
   subject_category: public_authority
-  mandatory_content: [at least one notifying authority, at least one market surveillance authority, independent impartial unbiased exercise of powers, no member action incompatible with duties, consolidation only while governance principles remain observed]
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A070-P1-MEMBER-CONDUCT
+  source: A070-P001
+  quote: The members of those authorities shall refrain from any action incompatible with their duties.
+  action: refrain from any action incompatible with the member's duties
+  subject_ref: national_competent_authority_member
+  subject_category: public_authority
+  kind: prohibition
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A070-P1-ORGANISATIONAL-FLEXIBILITY
+  source: A070-P001
+  quote: Provided that those principles are observed, such activities and tasks may be performed by one or more designated authorities, in accordance with the organisational needs of the Member State.
+  action: have the activities and tasks performed by one or more designated authorities according to
+    the Member State's organisational needs
+  subject_ref: member_state
+  subject_category: member_state
+  kind: permission
+  conditions:
+  - the independence, impartiality, objectivity and member-conduct principles are observed
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -13,11 +54,37 @@ records:
   verification_mode: not_assessed
 - norm_id: AIA-NORM-A070-P2-AUTHORITY-AND-CONTACT-DISCLOSURES
   source: A070-P002
-  quote: Member States shall communicate to the Commission the identity of the notifying authorities and the market surveillance authorities and the tasks of those authorities, as well as any subsequent changes thereto. Member States shall make publicly available information on how competent authorities and single points of contact can be contacted, through electronic communication means by 2 August 2025. Member States shall designate a market surveillance authority to act as the single point of contact for this Regulation, and shall notify the Commission of the identity of the single point of contact.
-  action: disclose authority identities tasks changes and contacts and designate and notify the single point of contact
+  quote: Member States shall communicate to the Commission the identity of the notifying authorities and the market surveillance authorities and the tasks of those authorities, as well as any subsequent changes thereto.
+  action: communicate to the Commission the identity and tasks of the notifying and market
+    surveillance authorities, and any subsequent changes to them
   subject_ref: member_state
   subject_category: member_state
-  mandatory_content: [authority identities tasks and changes communicated to the Commission, electronic public contact information by 2 August 2025, market surveillance authority designated as single point of contact, single-point identity notified to the Commission]
+  mandatory_content: [identity of the notifying authorities and the market surveillance authorities,
+    tasks of those authorities, any subsequent changes to that identity or those tasks]
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A070-P2-PUBLISH-CONTACT-INFORMATION
+  source: A070-P002
+  quote: Member States shall make publicly available information on how competent authorities and single points of contact can be contacted, through electronic communication means by 2 August 2025.
+  action: make information on how to contact the competent authorities and single points of contact
+    publicly available through electronic communication means by 2 August 2025
+  subject_ref: member_state
+  subject_category: member_state
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A070-P2-DESIGNATE-SINGLE-POINT-OF-CONTACT
+  source: A070-P002
+  quote: Member States shall designate a market surveillance authority to act as the single point of contact for this Regulation, and shall notify the Commission of the identity of the single point of contact.
+  action: designate a market surveillance authority as the single point of contact for this
+    Regulation and notify the Commission of its identity
+  subject_ref: member_state
+  subject_category: member_state
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -37,10 +104,39 @@ records:
 - norm_id: AIA-NORM-A070-P3-ADEQUATE-RESOURCES-AND-COMPETENCE
   source: A070-P003
   quote: Member States shall ensure that their national competent authorities are provided with adequate technical, financial and human resources, and with infrastructure to fulfil their tasks effectively under this Regulation. In particular, the national competent authorities shall have a sufficient number of personnel permanently available whose competences and expertise shall include an in-depth understanding of AI technologies, data and data computing, personal data protection, cybersecurity, fundamental rights, health and safety risks and knowledge of existing standards and legal requirements. Member States shall assess and, if necessary, update competence and resource requirements referred to in this paragraph on an annual basis.
-  action: provide and annually assess adequate authority resources infrastructure staffing and multidisciplinary expertise
+  action: ensure the national competent authorities are provided with adequate technical, financial
+    and human resources and with infrastructure to fulfil their tasks effectively
   subject_ref: member_state
   subject_category: member_state
-  mandatory_content: [technical financial and human resources, effective-task infrastructure, sufficient permanent personnel, enacted AI data privacy cybersecurity rights safety standards and legal expertise, annual assessment and necessary update]
+  mandatory_content: [adequate technical resources, adequate financial resources, adequate human
+    resources, infrastructure to fulfil the tasks effectively]
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A070-P3-PERMANENT-EXPERT-PERSONNEL
+  source: A070-P003
+  quote: the national competent authorities shall have a sufficient number of personnel permanently available whose competences and expertise shall include an in-depth understanding of AI technologies, data and data computing, personal data protection, cybersecurity, fundamental rights, health and safety risks and knowledge of existing standards and legal requirements.
+  action: keep a sufficient number of personnel permanently available whose competences and expertise
+    cover every enacted field
+  subject_ref: national_competent_authority
+  subject_category: public_authority
+  mandatory_content: [in-depth understanding of AI technologies, data and data computing, personal
+    data protection, cybersecurity, fundamental rights, health and safety risks, knowledge of
+    existing standards and legal requirements]
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A070-P3-ANNUAL-REASSESSMENT
+  source: A070-P003
+  quote: Member States shall assess and, if necessary, update competence and resource requirements referred to in this paragraph on an annual basis.
+  action: assess the paragraph 3 competence and resource requirements annually and update them where
+    necessary
+  subject_ref: member_state
+  subject_category: member_state
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required

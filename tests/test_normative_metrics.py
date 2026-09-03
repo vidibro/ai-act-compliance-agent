@@ -1661,15 +1661,15 @@ def test_inventory_cannot_be_misreported_as_independently_approved(metrics):
     assert metrics.needs_review_characters == 0
     assert metrics.review_statuses == {
         "approved": 1467,
-        "proposed": 1443,
+        "proposed": 1450,
     }
     assert metrics.timed_review_records == 0
-    assert metrics.total_review_records == 2911
+    assert metrics.total_review_records == 2918
 
 
 def test_semantic_pass_finds_propositions_a_shall_scan_misses(metrics):
-    assert metrics.shall_vs_semantic_disagreements == 569
-    assert metrics.shall_token_candidate_recall == pytest.approx(870 / 1439)
+    assert metrics.shall_vs_semantic_disagreements == 570
+    assert metrics.shall_token_candidate_recall == pytest.approx(876 / 1446)
     assert "AIA-NORM-A011-P1-SIMPLIFY" in metrics.semantic_norms_without_shall_token
     assert "AIA-NORM-A043-P5-AMEND" in metrics.semantic_norms_without_shall_token
     assert "AIA-NORM-A060-P4-PERMISSION" in metrics.semantic_norms_without_shall_token
@@ -1677,12 +1677,12 @@ def test_semantic_pass_finds_propositions_a_shall_scan_misses(metrics):
 
 
 def test_metrics_expose_many_to_many_and_implementation_debt(metrics):
-    assert metrics.normative_segments_with_multiple_norms == 354
+    assert metrics.normative_segments_with_multiple_norms == 356
     assert metrics.mapping_shape.one_norm_to_one_target == 26
     assert metrics.mapping_shape.many_norms_to_one_target == 349
     assert metrics.mapping_shape.one_norm_to_many_targets == 0
     assert metrics.mapping_shape.many_to_many == 15
-    assert metrics.mapping_shape.unmapped == 1049
+    assert metrics.mapping_shape.unmapped == 1056
     assert metrics.semantic_vs_existing_implementation_disagreements == 239
     assert metrics.semantic_norms_without_existing_implementation == [
         "AIA-NORM-A002-P1-A-PROVIDER",
@@ -3732,10 +3732,48 @@ def test_article_seventy_extracts_national_authority_governance():
     assert len(segments) == 10
     assert all(segment.review.status.value == "approved" for segment in segments)
     assert all(segment.review.verified_by == "codex" for segment in segments)
-    assert len(norms) == 11
+    assert len(norms) == 18
     assert all(norm.product_scope.value == "outside_supported_actor" for norm in norms.values())
+
+    # Designation binds the Member State; independence and member conduct bind the authorities.
+    designate = norms["AIA-NORM-A070-P1-DESIGNATE-AND-SAFEGUARD-AUTHORITIES"]
+    independence = norms["AIA-NORM-A070-P1-INDEPENDENT-EXERCISE-OF-POWERS"]
+    conduct = norms["AIA-NORM-A070-P1-MEMBER-CONDUCT"]
+    flexibility = norms["AIA-NORM-A070-P1-ORGANISATIONAL-FLEXIBILITY"]
+    assert designate.subjects[0].subject_ref == "member_state"
+    assert designate.mandatory_content == [
+        "at least one notifying authority",
+        "at least one market surveillance authority",
+    ]
+    assert independence.subjects[0].subject_ref == "national_competent_authority"
+    assert conduct.kind.value == "prohibition"
+    # Consolidating the tasks is permitted only while those principles are observed.
+    assert flexibility.kind.value == "permission"
+    assert flexibility.conditions == [
+        "the independence, impartiality, objectivity and member-conduct principles are observed"
+    ]
+
+    # The disclosure stages have different deadlines and recipients.
+    communicate = norms["AIA-NORM-A070-P2-AUTHORITY-AND-CONTACT-DISCLOSURES"]
+    contacts = norms["AIA-NORM-A070-P2-PUBLISH-CONTACT-INFORMATION"]
+    point = norms["AIA-NORM-A070-P2-DESIGNATE-SINGLE-POINT-OF-CONTACT"]
+    assert len(communicate.mandatory_content) == 3
+    assert "2 August 2025" in contacts.action
+    assert "2 August 2025" not in communicate.action
+    assert "single point of contact" in point.action
+    # The Commission's list publication was already a separate norm.
+    assert norms["AIA-NORM-A070-P2-PUBLISH-CONTACT-LIST"].subjects[0].subject_ref == "commission"
+
+    # Resourcing, staffing and the annual reassessment differ in duty-holder or timing.
     resources = norms["AIA-NORM-A070-P3-ADEQUATE-RESOURCES-AND-COMPETENCE"]
-    assert len(resources.mandatory_content) == 5
+    personnel = norms["AIA-NORM-A070-P3-PERMANENT-EXPERT-PERSONNEL"]
+    annual = norms["AIA-NORM-A070-P3-ANNUAL-REASSESSMENT"]
+    assert len(resources.mandatory_content) == 4
+    assert personnel.subjects[0].subject_ref == "national_competent_authority"
+    assert len(personnel.mandatory_content) == 7
+    assert annual.subjects[0].subject_ref == "member_state"
+    assert "annually" in annual.action
+    assert all(norm.review.status.value == "proposed" for norm in norms.values())
 
 
 def test_article_seventy_one_extracts_database_and_data_entry_duties():
