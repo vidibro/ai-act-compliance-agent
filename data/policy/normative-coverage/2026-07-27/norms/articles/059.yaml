@@ -74,14 +74,23 @@ norms:
   - AIA-TEXT-A059-P006
   - AIA-TEXT-A059-P007
   effective_date_spans: []
-  conditions: []
+  conditions:
+  - operator: all_of
+    operands:
+    - the AI system is developed for safeguarding substantial public interest by a public authority or
+      another natural or legal person
+    - operator: any_of
+      operands:
+      - public safety and public health, including disease detection, diagnosis prevention, control and
+        treatment and improvement of health care systems
+      - a high level of protection and improvement of the quality of the environment, protection of biodiversity,
+        protection against pollution, green transition measures, climate change mitigation and adaptation
+        measures
+      - energy sustainability
+      - safety and resilience of transport systems and mobility, critical infrastructure and networks
+      - efficiency and quality of public administration and public services
   exceptions: []
-  mandatory_content:
-  - public safety or public health
-  - environmental protection or green transition
-  - energy sustainability
-  - transport mobility infrastructure or network safety and resilience
-  - public-administration or public-service efficiency and quality
+  mandatory_content: []
   dependencies: []
   product_scope: in_scope
   product_scope_reason: ''

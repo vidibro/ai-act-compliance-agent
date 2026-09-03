@@ -481,8 +481,17 @@ other national competent authorities, retaining the shared testing context and c
 additional where-appropriate condition. Its five norms became six, taking the corpus to 1,386;
 all remain proposed, with source review provenance and implementation debt unchanged. Focused
 regressions preserve actors, recipients, triggers, content and source links. The live detector now
-has 73 candidates; the inventory still has 143 populated content lists.
-Next recorded correction: Article 59. Articles 47–49 and 51–56 have no open recorded finding in
+has 73 candidates; at this checkpoint the inventory had 143 populated content lists.
+
+Article 59's public-interest criterion now preserves the shared purpose/development-actor premise
+AND one or more of five full enacted areas. Public-health examples and environmental details are
+retained inside their respective areas, not flattened into cumulative duties. These alternatives
+are stored as conditions rather than mandatory content. Article 59 retains 13 proposed norms and
+the corpus total remains 1,386; source approvals, the 73 detector candidates and implementation
+debt are unchanged. There are now 142 populated content lists. Regressions check the grouped logic,
+exact source details and the parent permission's continued linkage to all ten lettered conditions.
+This is not independent norm approval or executable implementation of those conditions.
+Next recorded correction: Article 60. Articles 47–49 and 51–56 have no open recorded finding in
 these ledgers.
 
 Correct the recorded defects and complete the unflagged-source semantic audit before declaring
@@ -652,7 +661,7 @@ batches of the 1,386 records.
 ## Immediate next action
 
 Continue the [granularity correction and completion queue](NORMATIVE-COVERAGE-GRANULARITY-AUDIT.md#correction-and-completion-queue)
-in source order, continuing with Article 59 after corrections through Article 58, and complete the
+in source order, continuing with Article 60 after corrections through Article 59, and complete the
 unflagged-source pass. Independently review the four proposed source segments in Annex VIII;
 exactly retained content still needs optional/conditional field semantics. Apply only confirmed
 user provenance to authored `segments/` records and regenerate derived artifacts. Keep codex audit

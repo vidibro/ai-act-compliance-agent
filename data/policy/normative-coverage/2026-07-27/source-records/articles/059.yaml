@@ -15,7 +15,21 @@ records:
   action: develop the sandbox AI system to safeguard substantial public interest in at least one enacted field
   subject_ref: prospective_provider
   subject_category: supported_operator
-  mandatory_content: [public safety or public health, environmental protection or green transition, energy sustainability, transport mobility infrastructure or network safety and resilience, public-administration or public-service efficiency and quality]
+  conditions:
+  - operator: all_of
+    operands:
+    - the AI system is developed for safeguarding substantial public interest by a public authority
+      or another natural or legal person
+    - operator: any_of
+      operands:
+      - public safety and public health, including disease detection, diagnosis prevention, control
+        and treatment and improvement of health care systems
+      - a high level of protection and improvement of the quality of the environment, protection
+        of biodiversity, protection against pollution, green transition measures, climate change
+        mitigation and adaptation measures
+      - energy sustainability
+      - safety and resilience of transport systems and mobility, critical infrastructure and networks
+      - efficiency and quality of public administration and public services
   qualifier_spans: [A059-P003, A059-P004, A059-P005, A059-P006, A059-P007]
   verification_mode: not_assessed
 - norm_id: AIA-NORM-A059-P1-B-DATA-NECESSITY

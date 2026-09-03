@@ -56,7 +56,7 @@ def test_pinned_corpus_triage_is_documented_without_mutating_review():
         if norm.mandatory_content
     }
     assert len(content_rows) == 146  # Historical audit baseline.
-    assert len(expected_content) == 143
+    assert len(expected_content) == 142
     baseline_content = {norm_id: int(count) for norm_id, count, _ in content_rows}
     # Article 40's example is now nested in its proper deliverable, not a third requirement.
     baseline_content["AIA-NORM-A040-P2-RESOURCE-PERFORMANCE-DELIVERABLES"] = 2
@@ -76,4 +76,6 @@ def test_pinned_corpus_triage_is_documented_without_mutating_review():
     baseline_content["AIA-NORM-A057-P7-EXIT-REPORT"] = 3
     baseline_content["AIA-NORM-A057-P16-SANDBOX-REPORTING"] = 7
     baseline_content["AIA-NORM-A057-P16-FINAL-SANDBOX-REPORT"] = 7
+    # Article 59's public-interest areas are alternative eligibility grounds, not a checklist.
+    baseline_content.pop("AIA-NORM-A059-P1-A-SUBSTANTIAL-PUBLIC-INTEREST")
     assert baseline_content == expected_content

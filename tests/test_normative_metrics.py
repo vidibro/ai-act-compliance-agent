@@ -10,6 +10,7 @@ import pytest
 
 from aiact.norm_loader import load_normative_coverage
 from aiact.norm_metrics import measure_normative_coverage
+from aiact.schemas.norm import ConditionGroup
 from aiact.text_segments import corpus_documents, group_segments, load_source_body
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -3091,7 +3092,55 @@ def test_article_fifty_nine_extracts_conditional_sandbox_data_processing():
     assert permission.kind.value == "permission"
     assert len(permission.qualifier_spans) == 10
     assert len(public_interest.qualifier_spans) == 5
-    assert len(public_interest.mandatory_content) == 5
+    assert not public_interest.mandatory_content
+    assert public_interest.kind.value == "obligation"
+    assert public_interest.subjects[0].subject_ref == "prospective_provider"
+    assert public_interest.primary_spans == ["AIA-TEXT-A059-P002"]
+    assert public_interest.qualifier_spans == [f"AIA-TEXT-A059-P{n:03}" for n in range(3, 8)]
+    assert len(public_interest.conditions) == 1
+    requirement = public_interest.conditions[0]
+    assert isinstance(requirement, ConditionGroup) and requirement.operator == "all_of"
+    assert len(requirement.operands) == 2
+    purpose, areas = requirement.operands
+    assert purpose == (
+        "the AI system is developed for safeguarding substantial public interest by a public "
+        "authority or another natural or legal person"
+    )
+    assert isinstance(areas, ConditionGroup) and areas.operator == "any_of"
+    # Only the five enacted areas are alternatives. Their detail, including the health examples,
+    # remains within each area instead of becoming extra alternatives or cumulative obligations.
+    assert areas.operands == [
+        "public safety and public health, including disease detection, diagnosis prevention, "
+        "control and treatment and improvement of health care systems",
+        "a high level of protection and improvement of the quality of the environment, protection "
+        "of biodiversity, protection against pollution, green transition measures, climate change "
+        "mitigation and adaptation measures",
+        "energy sustainability",
+        "safety and resilience of transport systems and mobility, critical infrastructure "
+        "and networks",
+        "efficiency and quality of public administration and public services",
+    ]
+    for area, span_id in zip(areas.operands, public_interest.qualifier_spans, strict=True):
+        segment = next(segment for segment in segments if segment.segment_id == span_id)
+        assert area in segment.text
+        assert segment.norm_ids == [public_interest.norm_id]
+    assert permission.conditions == [
+        "the personal data were lawfully collected for other purposes",
+        "processing occurs in an AI regulatory sandbox",
+        "every Article 59(1) condition is met",
+    ]
+    # The parent permission still requires all ten lettered conditions, not any one of them.
+    # Each has a child norm; expanding (a) does not duplicate the other conditions at the parent.
+    for span_id in permission.qualifier_spans:
+        segment = next(segment for segment in segments if segment.segment_id == span_id)
+        assert permission.norm_id in segment.norm_ids
+        children = [norm_id for norm_id in segment.norm_ids if norm_id != permission.norm_id]
+        assert len(children) == 1
+        assert norms[children[0]].primary_spans == [span_id]
+    assert "every Article 59(1) condition" in (
+        norms["AIA-NORM-A059-P2-LAW-ENFORCEMENT-LEGAL-BASIS"].action
+    )
+    assert all(norm.review.status.value == "proposed" for norm in norms.values())
     assert sum(norm.implementation_mode.value == "missing" for norm in norms.values()) == 11
     assert norms["AIA-NORM-A059-P2-LAW-ENFORCEMENT-LEGAL-BASIS"].product_scope.value == (
         "outside_supported_actor"

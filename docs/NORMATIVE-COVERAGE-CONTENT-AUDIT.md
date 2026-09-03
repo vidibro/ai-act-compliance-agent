@@ -55,7 +55,17 @@ Article 58's paragraph 4 finding is also corrected: agreeing terms and safeguard
 is separate from cooperation with other national authorities, which additionally applies only where
 appropriate. The two existing content groups remain part of the single agreement duty, not two
 separate actions. Its paragraph 1 retain decision and paragraph 2 content list are unchanged; the
-live inventory still has 143 populated content lists. Subsequent articles' findings remain pending.
+inventory remained at 143 populated content lists at that checkpoint.
+
+Article 59's public-interest finding is now corrected. The shared substantial-public-interest
+purpose and enacted development actors are retained alongside an explicit `any_of` group containing
+the five full areas. Public-health examples remain inside the first area; environmental quality,
+biodiversity, pollution, green transition and climate mitigation/adaptation remain inside the second.
+The list is no longer stored as five mandatory content checks, so the live inventory has 142
+populated content lists. Article 59 still has 13 proposed norms: the parent permission continues
+to require every lettered condition, and those ten child norms remain linked individually. This
+focused correction does not independently approve the norms or complete their runtime mapping.
+Subsequent articles' findings remain pending.
 
 | Norm | Content entries | Decision | Finding / treatment |
 |---|---:|---|---|
