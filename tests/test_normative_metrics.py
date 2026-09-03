@@ -1661,15 +1661,15 @@ def test_inventory_cannot_be_misreported_as_independently_approved(metrics):
     assert metrics.needs_review_characters == 0
     assert metrics.review_statuses == {
         "approved": 1467,
-        "proposed": 1477,
+        "proposed": 1481,
     }
     assert metrics.timed_review_records == 0
-    assert metrics.total_review_records == 2945
+    assert metrics.total_review_records == 2949
 
 
 def test_semantic_pass_finds_propositions_a_shall_scan_misses(metrics):
     assert metrics.shall_vs_semantic_disagreements == 571
-    assert metrics.shall_token_candidate_recall == pytest.approx(902 / 1473)
+    assert metrics.shall_token_candidate_recall == pytest.approx(906 / 1477)
     assert "AIA-NORM-A011-P1-SIMPLIFY" in metrics.semantic_norms_without_shall_token
     assert "AIA-NORM-A043-P5-AMEND" in metrics.semantic_norms_without_shall_token
     assert "AIA-NORM-A060-P4-PERMISSION" in metrics.semantic_norms_without_shall_token
@@ -1677,12 +1677,12 @@ def test_semantic_pass_finds_propositions_a_shall_scan_misses(metrics):
 
 
 def test_metrics_expose_many_to_many_and_implementation_debt(metrics):
-    assert metrics.normative_segments_with_multiple_norms == 374
+    assert metrics.normative_segments_with_multiple_norms == 376
     assert metrics.mapping_shape.one_norm_to_one_target == 25
     assert metrics.mapping_shape.many_norms_to_one_target == 353
     assert metrics.mapping_shape.one_norm_to_many_targets == 0
     assert metrics.mapping_shape.many_to_many == 15
-    assert metrics.mapping_shape.unmapped == 1080
+    assert metrics.mapping_shape.unmapped == 1084
     assert metrics.semantic_vs_existing_implementation_disagreements == 239
     assert metrics.semantic_norms_without_existing_implementation == [
         "AIA-NORM-A002-P1-A-PROVIDER",
@@ -4402,8 +4402,21 @@ def test_article_ninety_five_extracts_voluntary_code_framework():
     }
 
     assert len(norms) == 4
+    # The five topics are examples of what a code may contain, not five operator duties.
     facilitated = norms["AIA-NORM-A095-P2-FACILITATE-SPECIFIC-REQUIREMENT-CODES"]
-    assert len(facilitated.mandatory_content) == 5
+    assert len(facilitated.mandatory_content) == 1
+    elements = facilitated.mandatory_content[0]
+    assert "such as, but not limited to" in elements
+    for phrase in (
+        "ethical guidelines for trustworthy AI",
+        "environmental sustainability",
+        "promoting AI literacy",
+        "diverse design of AI systems",
+        "gender equality",
+    ):
+        assert phrase in elements
+    assert "not exhaustive" in facilitated.action
+    assert "voluntary" in facilitated.action
     assert norms["AIA-NORM-A095-P3-DRAW-UP-VOLUNTARY-CODES"].kind.value == "power"
 
 
@@ -4419,12 +4432,43 @@ def test_articles_ninety_six_to_ninety_eight_extract_institutional_procedures():
     }
 
     assert {article: len(norms) for article, norms in by_article.items()} == {
-        "096": 5,
-        "097": 8,
+        "096": 6,
+        "097": 11,
         "098": 2,
     }
-    assert len(by_article["096"][0].mandatory_content) == 7
-    assert sum(norm.kind.value == "power" for norm in by_article["097"]) == 2
+    by_id = {norm.norm_id: norm for norms in by_article.values() for norm in norms}
+
+    # The 1 August 2027 deadline belongs to point (g), not to the whole guideline duty.
+    guidelines = by_id["AIA-NORM-A096-P1-DEVELOP-IMPLEMENTATION-GUIDELINES"]
+    publication = by_id["AIA-NORM-A096-P1-G-PUBLISH-COMPLEMENTARITY-GUIDELINES"]
+    assert len(guidelines.mandatory_content) == 7
+    assert not guidelines.effective_date_spans
+    assert "1 August 2027" not in guidelines.action
+    assert publication.effective_date_spans == ["AIA-TEXT-A096-P008"]
+    assert "1 August 2027" in publication.action
+
+    # Revocation, its effect and the preservation of acts already in force are distinct.
+    revoke = by_id["AIA-NORM-A097-P3-REVOKE-DELEGATION"]
+    ends = by_id["AIA-NORM-A097-P3-REVOCATION-ENDS-DELEGATION"]
+    preserved = by_id["AIA-NORM-A097-P3-PRESERVE-ACTS-IN-FORCE"]
+    assert revoke.kind.value == "power"
+    assert ends.kind.value == preserved.kind.value == "legal_consequence"
+    # The actual date alternatives replace the earlier "prospective" summary.
+    assert "the day following publication" in ends.action
+    assert "later date specified" in ends.action
+    assert "already in force" in preserved.action
+
+    # Entry into force has two alternatives; the extension is a separate power.
+    entry = by_id["AIA-NORM-A097-P6-DELEGATED-ACT-ENTRY-CONDITION"]
+    extension = by_id["AIA-NORM-A097-P6-EXTEND-OBJECTION-PERIOD"]
+    assert len(entry.conditions) == 1
+    alternatives = entry.conditions[0]
+    assert isinstance(alternatives, ConditionGroup) and alternatives.operator == "any_of"
+    assert "no objection has been expressed" in alternatives.operands[0]
+    assert "will not object" in alternatives.operands[1]
+    assert extension.kind.value == "power"
+    assert extension.conditions == ["the European Parliament or the Council takes the initiative"]
+    assert sum(norm.kind.value == "power" for norm in by_article["097"]) == 3
     assert all(norm.product_scope.value == "outside_supported_actor" for norm in by_article["098"])
 
 

@@ -183,8 +183,14 @@ still has 133 populated content lists, now across 1,471 proposed norms.
 Article 92's evaluation finding is now corrected: the two purposes are alternative conditions
 carrying the systemic-risk limit and the Article 90(1), point (a) alert reference, rather than
 two contents of every evaluation. Board consultation remains a separate shared condition. The
-live inventory has 132 populated content lists across 1,473 proposed norms. Subsequent
-articles' findings remain pending.
+live inventory has 132 populated content lists across 1,473 proposed norms.
+
+Article 95's and Article 96's findings are now corrected. Article 95 keeps one non-exhaustive
+scope entry quoting all five enacted examples, so they are not five operator duties. Article 96
+enumerates the seven guideline subjects and moves point (g)'s 1 August 2027 publication into
+its own norm. Article 97's two recorded segment splits are applied at the same time. The live
+inventory has 132 populated content lists across 1,477 proposed norms. Subsequent articles'
+findings remain pending.
 
 | Norm | Content entries | Decision | Finding / treatment |
 |---|---:|---|---|

@@ -6,8 +6,10 @@ norms:
   subjects:
   - subject_ref: commission
     category: union_institution_or_body
-  action: develop practical implementation guidelines covering the specified subjects
-  norm_text: The Commission shall develop guidelines on the practical implementation of this Regulation
+  action: develop guidelines on the practical implementation of this Regulation, in particular on the
+    enacted subjects
+  norm_text: 'The Commission shall develop guidelines on the practical implementation of this Regulation,
+    and in particular on:'
   detection_channels:
   - semantic_legal_effect
   - shall_token
@@ -22,18 +24,57 @@ norms:
   - AIA-TEXT-A096-P006
   - AIA-TEXT-A096-P007
   - AIA-TEXT-A096-P008
+  effective_date_spans: []
+  conditions: []
+  exceptions: []
+  mandatory_content:
+  - the application of the requirements and obligations referred to in Articles 8 to 15 and in Articles
+    25 and 26
+  - the prohibited practices referred to in Article 5
+  - the practical implementation of the provisions related to substantial modification
+  - the practical implementation of transparency obligations laid down in Article 50
+  - detailed information on the relationship of this Regulation with the Union harmonisation legislation
+    listed in Annex I, as well as with other relevant Union law, including as regards consistency in their
+    enforcement
+  - the application of the definition of an AI system as set out in Article 3, point (1)
+  - the practical implementation of Article 8(2), Article 9(10) and Article 17(3) in accordance with the
+    principle of complementarity and proportionality
+  dependencies: []
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_refs: []
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A096-P1-G-PUBLISH-COMPLEMENTARITY-GUIDELINES
+  act_version_date: '2026-07-27'
+  kind: obligation
+  subjects:
+  - subject_ref: commission
+    category: union_institution_or_body
+  action: publish the point (g) guidelines on the practical implementation of Article 8(2), Article 9(10)
+    and Article 17(3) by 1 August 2027
+  norm_text: such guidelines shall be published by 1 August 2027.
+  detection_channels:
+  - semantic_legal_effect
+  - shall_token
+  primary_spans:
+  - AIA-TEXT-A096-P008
+  qualifier_spans: []
   effective_date_spans:
   - AIA-TEXT-A096-P008
   conditions: []
   exceptions: []
-  mandatory_content:
-  - Articles 8 to 15 and 25 and 26 requirements and obligations
-  - Article 5 prohibited practices
-  - substantial modification
-  - Article 50 transparency obligations
-  - relationship with Annex I harmonisation legislation and other Union law
-  - Article 3 point 1 AI-system definition
-  - complementary and proportionate implementation of Articles 8(2) 9(10) and 17(3)
+  mandatory_content: []
   dependencies: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.

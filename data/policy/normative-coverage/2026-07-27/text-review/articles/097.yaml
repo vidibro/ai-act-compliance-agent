@@ -105,6 +105,8 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A097-P3-REVOKE-DELEGATION
+  - AIA-NORM-A097-P3-REVOCATION-ENDS-DELEGATION
+  - AIA-NORM-A097-P3-PRESERVE-ACTS-IN-FORCE
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -186,6 +188,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A097-P6-DELEGATED-ACT-ENTRY-CONDITION
+  - AIA-NORM-A097-P6-EXTEND-OBJECTION-PERIOD
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass

@@ -12,11 +12,24 @@ records:
   verification_mode: not_assessed
 - norm_id: AIA-NORM-A095-P2-FACILITATE-SPECIFIC-REQUIREMENT-CODES
   source: A095-P002
-  quote: The AI Office and the Member States shall facilitate the drawing up of codes of conduct concerning the voluntary application, including by deployers, of specific requirements to all AI systems, on the basis of clear objectives and key performance indicators to measure the achievement of those objectives
-  action: facilitate objective-led KPI-measured codes for voluntary application of specific requirements to all AI systems
+  quote: 'The AI Office and the Member States shall facilitate the drawing up of codes of conduct concerning the voluntary application, including by deployers, of specific requirements to all AI systems, on the basis of clear objectives and key performance indicators to measure the achievement of those objectives, including elements such as, but not limited to:'
+  action: facilitate the drawing up of codes of conduct for the voluntary application of specific
+    requirements to all AI systems, on the basis of clear objectives and key performance indicators;
+    the elements listed are examples and are not exhaustive, and applying the requirements stays
+    voluntary
   subject_ref: ai_office_and_member_states
   subject_category: public_authority
-  mandatory_content: [applicable trustworthy-AI ethical-guideline elements, environmental sustainability impact minimisation including energy efficiency, AI literacy promotion, inclusive diverse design teams and stakeholder participation, vulnerable-person accessibility and gender-equality impact prevention]
+  mandatory_content:
+  - clear objectives and key performance indicators to measure the achievement of those objectives,
+    including elements such as, but not limited to, applicable elements provided for in Union
+    ethical guidelines for trustworthy AI; assessing and minimising the impact of AI systems on
+    environmental sustainability, including as regards energy-efficient programming and techniques
+    for the efficient design, training and use of AI; promoting AI literacy, in particular that of
+    persons dealing with the development, operation and use of AI; facilitating an inclusive and
+    diverse design of AI systems, including through inclusive and diverse development teams and the
+    promotion of stakeholders' participation; and assessing and preventing the negative impact of AI
+    systems on vulnerable persons or groups of vulnerable persons, including as regards accessibility
+    for persons with a disability, as well as on gender equality
   qualifier_spans: [A095-P003, A095-P004, A095-P005, A095-P006, A095-P007]
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.

@@ -28,7 +28,7 @@ independently triggered notifications, optional Board powers summarised as dutie
 information missing the no-detriment/no-justification safeguards.
 
 Reproduce the live read-only candidate list, source hashes and full scan denominator (after the
-corrections below, 47 candidates remain; a disappearing signal is not independent norm approval):
+corrections below, 45 candidates remain; a disappearing signal is not independent norm approval):
 
 ```sh
 uv run python scripts/audit_norm_granularity.py --act-version 2026-07-27
@@ -214,12 +214,15 @@ modal/list scan. Source references identify full norm records in `source-records
 | 82 | Split paragraph 5 into the immediate communication of the decision to the Member States concerned and the relevant operators and the separate duty to inform the other Member States, which the source does not put under the same immediacy requirement. Paragraph 3's report is unchanged. | Seven proposed norms instead of six; regressions cover the recipients and the deadline that belongs only to the first duty. Implementation debt is unchanged. |
 | 85 | Split paragraph 2 into taking complaints into account when conducting market surveillance activities and handling them in line with the dedicated procedures the authorities established for them. | Three proposed norms instead of two; regressions cover both actions and the unchanged complaint entitlement. Implementation debt is unchanged. |
 | 92 | Expanded paragraph 1's evaluation power into two explicit alternative purposes: assessing provider compliance where the Article 91 information is insufficient, and investigating Union-level systemic risks of general-purpose AI models with systemic risk, in particular following an Article 90(1), point (a) qualified alert. Board consultation remains a separate shared condition. Paragraph 8's implementing-act duty is unchanged. | Still fourteen proposed norms; regressions cover the AND/OR structure and both enacted limits. Implementation debt is unchanged. |
+| 95 | Paragraph 2's five topics are now one non-exhaustive scope entry quoting each enacted example in full, and the action states that the list is not exhaustive and that applying the requirements stays voluntary. | Still four proposed norms; regressions cover the "such as, but not limited to" wording, all five examples and the voluntary framing. Implementation debt is unchanged. |
+| 96 | Paragraph 1's seven guideline subjects are enumerated in full, and point (g)'s 1 August 2027 publication became its own norm so the deadline no longer applies to the whole guideline duty. | Six proposed norms instead of five; regressions cover the seven subjects and the deadline scope. Implementation debt is unchanged. |
+| 97 | Split paragraph 3 into the revocation power, the decision's effect on the delegation with its day-after-publication or later-specified date, and the preservation of delegated acts already in force. Paragraph 6 now carries both entry-into-force alternatives, including early joint non-objection, and the separate power to extend the objection period by three months. | Eleven proposed norms instead of eight; regressions cover the three paragraph 3 effects, the alternative conditions and the extension power. Implementation debt is unchanged. |
 
 The original 88-row ledger above remains a historical audit baseline. Article 31's five,
 Article 57's nine, Article 58's one, Article 60's two, Article 60a's one, Article 61's one,
 Article 67's two, Article 70's two, Article 71's two, Article 73's three, Article 74's
-three and Article 75's two, Article 75c's one, Article 77's one, Article 78's two, Article 79's two, Article 82's one and Article 85's one split candidate segments no longer
-trigger the scanner, leaving 47 live signals. The current inventory has 1,473 proposed norms and 1,471 segments. Implementation debt rose from 216 to 222 records: six
+three and Article 75's two, Article 75c's one, Article 77's one, Article 78's two, Article 79's two, Article 82's one, Article 85's one and Article 97's two split candidate segments no longer
+trigger the scanner, leaving 45 live signals. The current inventory has 1,477 proposed norms and 1,471 segments. Implementation debt rose from 216 to 222 records: six
 separated provider duties in Articles 60 and 61 are in-scope propositions that no existing rule
 covers, which the previous combined checklists concealed. Every other norm added since baseline
 either addresses an actor outside the supported reporting roles, states a no-product-action
@@ -228,7 +231,7 @@ Source approvals have not been relabelled as norm approvals. The Article 57 miti
 preserves the supervisory requirement for adequate mitigation; it does not assign a new operational
 product action or turn suspension into a duty. This actor interpretation remains subject to
 independent norm review, as do the other corrections.
-Next recorded correction: Article 95. Articles 47–49 and 51–56 have no open recorded correction
+Next recorded correction: Article 99. Articles 47–49 and 51–56 have no open recorded correction
 in these ledgers. The Article 50 corrections do not remove their heuristic scan signals; a signal
 is not a finding or an approval status.
 

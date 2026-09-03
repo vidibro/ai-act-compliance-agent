@@ -24,7 +24,7 @@ def test_pinned_corpus_triage_is_documented_without_mutating_review():
     assert bundle.model_dump() == before
     assert bundle.validated_documents == 133
     assert len(bundle.text_review.segments) == 1471
-    assert len(candidates) == 47
+    assert len(candidates) == 45
 
     segments = {s.segment_id: s for s in bundle.text_review.segments}
     for candidate in candidates:
@@ -58,6 +58,7 @@ def test_pinned_corpus_triage_is_documented_without_mutating_review():
     closed_by_splitting |= {"AIA-TEXT-A079-P007", "AIA-TEXT-A079-P014"}
     closed_by_splitting.add("AIA-TEXT-A082-P005")
     closed_by_splitting.add("AIA-TEXT-A085-P002")
+    closed_by_splitting |= {"AIA-TEXT-A097-P003", "AIA-TEXT-A097-P006"}
     assert set(ids) - closed_by_splitting == {candidate.segment_id for candidate in candidates}
 
     content_report = (root / "docs/NORMATIVE-COVERAGE-CONTENT-AUDIT.md").read_text()
@@ -150,4 +151,6 @@ def test_pinned_corpus_triage_is_documented_without_mutating_review():
     baseline_content["AIA-NORM-A079-P6-NOTIFICATION-CONTENT"] = 9
     # Article 92's two evaluation purposes are alternatives, not cumulative contents.
     baseline_content.pop("AIA-NORM-A092-P1-CONDUCT-GPAI-EVALUATION")
+    # Article 95's five topics are examples inside one non-exhaustive scope entry.
+    baseline_content["AIA-NORM-A095-P2-FACILITATE-SPECIFIC-REQUIREMENT-CODES"] = 1
     assert baseline_content == expected_content

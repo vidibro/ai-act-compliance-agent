@@ -143,10 +143,83 @@ norms:
   subjects:
   - subject_ref: european_parliament_or_council
     category: union_institution_or_body
-  action: revoke a specified delegation with prospective effect while preserving acts already in force
+  action: revoke at any time the delegation of power referred to in the enacted provisions
   norm_text: may be revoked at any time by the European Parliament or by the Council
   detection_channels:
   - semantic_legal_effect
+  primary_spans:
+  - AIA-TEXT-A097-P003
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions: []
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_refs: []
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A097-P3-REVOCATION-ENDS-DELEGATION
+  act_version_date: '2026-07-27'
+  kind: legal_consequence
+  subjects:
+  - subject_ref: european_parliament_or_council
+    category: union_institution_or_body
+  action: end the delegation of power specified in the revocation decision, with effect the day following
+    publication in the Official Journal of the European Union or on a later date specified in the decision
+  norm_text: A decision of revocation shall put an end to the delegation of power specified in that decision.
+    It shall take effect the day following that of its publication in the Official Journal of the European
+    Union or at a later date specified therein.
+  detection_channels:
+  - semantic_legal_effect
+  - shall_token
+  - deeming_or_consequence
+  primary_spans:
+  - AIA-TEXT-A097-P003
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions: []
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_refs: []
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A097-P3-PRESERVE-ACTS-IN-FORCE
+  act_version_date: '2026-07-27'
+  kind: legal_consequence
+  subjects:
+  - subject_ref: european_parliament_or_council
+    category: union_institution_or_body
+  action: preserve the validity of any delegated acts already in force
+  norm_text: It shall not affect the validity of any delegated acts already in force.
+  detection_channels:
+  - semantic_legal_effect
+  - shall_token
+  - deeming_or_consequence
   primary_spans:
   - AIA-TEXT-A097-P003
   qualifier_spans: []
@@ -244,8 +317,13 @@ norms:
   subjects:
   - subject_ref: delegated_act
     category: other
-  action: condition delegated-act entry into force on absence of a timely Parliament or Council objection
-  norm_text: shall enter into force only if no objection has been expressed
+  action: enter into force only where neither the European Parliament nor the Council objects within three
+    months of notification, or where both inform the Commission before that period expires that they will
+    not object
+  norm_text: shall enter into force only if no objection has been expressed by either the European Parliament
+    or the Council within a period of three months of notification of that act to the European Parliament
+    and the Council or if, before the expiry of that period, the European Parliament and the Council have
+    both informed the Commission that they will not object.
   detection_channels:
   - semantic_legal_effect
   - shall_token
@@ -254,7 +332,13 @@ norms:
   - AIA-TEXT-A097-P006
   qualifier_spans: []
   effective_date_spans: []
-  conditions: []
+  conditions:
+  - operator: any_of
+    operands:
+    - no objection has been expressed by either the European Parliament or the Council within a period
+      of three months of notification of that act to them
+    - before the expiry of that period, the European Parliament and the Council have both informed the
+      Commission that they will not object
   exceptions: []
   mandatory_content: []
   dependencies: []
@@ -263,6 +347,42 @@ norms:
   implementation_mode: none_required
   implementation_refs: []
   implementation_reason: No product implementation is required.
+  verification_mode: not_assessed
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A097-P6-EXTEND-OBJECTION-PERIOD
+  act_version_date: '2026-07-27'
+  kind: power
+  subjects:
+  - subject_ref: european_parliament_or_council
+    category: union_institution_or_body
+  action: extend the objection period by three months
+  norm_text: That period shall be extended by three months at the initiative of the European Parliament
+    or of the Council.
+  detection_channels:
+  - semantic_legal_effect
+  - shall_token
+  primary_spans:
+  - AIA-TEXT-A097-P006
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions:
+  - the European Parliament or the Council takes the initiative
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_refs: []
+  implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_assessed
   review:
     status: proposed
