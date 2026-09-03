@@ -56,9 +56,9 @@ records:
 - norm_id: AIA-NORM-A046-P2-REFUSAL-RESPONSE
   source: A046-P002
   quote: If the authorisation referred to in paragraph 1 is refused, the use of the high-risk AI system
-    shall be stopped with immediate effect and all the results and outputs of such use shall be immediately
-    discarded.
-  action: immediately stop use and discard every result and output when urgent-use authorisation is refused
+    shall be stopped with immediate effect
+  action: stop use of the high-risk AI system with immediate effect when the paragraph 1 authorisation
+    requested for urgent use under paragraph 2 is refused
   subject_ref: law_enforcement_or_civil_protection_authority
   subject_category: public_authority
   product_scope: outside_supported_actor
@@ -66,9 +66,22 @@ records:
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_assessed
-  mandatory_content:
-  - immediately stop system use
-  - immediately discard all results and outputs
+  conditions:
+  - the paragraph 1 authorisation requested for urgent use under paragraph 2 is refused
+- norm_id: AIA-NORM-A046-P2-DISCARD-RESULTS-AND-OUTPUTS
+  source: A046-P002
+  quote: all the results and outputs of such use shall be immediately discarded.
+  action: immediately discard all results and outputs of the urgent use of the high-risk AI system
+    when the paragraph 1 authorisation requested under paragraph 2 is refused
+  subject_ref: law_enforcement_or_civil_protection_authority
+  subject_category: public_authority
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+  conditions:
+  - the paragraph 1 authorisation requested for urgent use under paragraph 2 is refused
 - norm_id: AIA-NORM-A046-P3-NOTIFY-AUTHORISATION
   source: A046-P003
   quote: The market surveillance authority shall inform the Commission and the other Member States of

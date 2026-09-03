@@ -1660,15 +1660,15 @@ def test_inventory_cannot_be_misreported_as_independently_approved(metrics):
     assert metrics.needs_review_characters == 0
     assert metrics.review_statuses == {
         "approved": 1467,
-        "proposed": 1360,
+        "proposed": 1361,
     }
     assert metrics.timed_review_records == 0
-    assert metrics.total_review_records == 2828
+    assert metrics.total_review_records == 2829
 
 
 def test_semantic_pass_finds_propositions_a_shall_scan_misses(metrics):
     assert metrics.shall_vs_semantic_disagreements == 524
-    assert metrics.shall_token_candidate_recall == pytest.approx(832 / 1356)
+    assert metrics.shall_token_candidate_recall == pytest.approx(833 / 1357)
     assert "AIA-NORM-A011-P1-SIMPLIFY" in metrics.semantic_norms_without_shall_token
     assert "AIA-NORM-A043-P5-AMEND" in metrics.semantic_norms_without_shall_token
     assert "AIA-NORM-A060-P4-PERMISSION" in metrics.semantic_norms_without_shall_token
@@ -1681,7 +1681,7 @@ def test_metrics_expose_many_to_many_and_implementation_debt(metrics):
     assert metrics.mapping_shape.many_norms_to_one_target == 348
     assert metrics.mapping_shape.one_norm_to_many_targets == 0
     assert metrics.mapping_shape.many_to_many == 15
-    assert metrics.mapping_shape.unmapped == 967
+    assert metrics.mapping_shape.unmapped == 968
     assert metrics.semantic_vs_existing_implementation_disagreements == 233
     assert metrics.semantic_norms_without_existing_implementation == [
         "AIA-NORM-A002-P1-A-PROVIDER",
@@ -2608,13 +2608,32 @@ def test_article_forty_six_preserves_derogation_lifecycle():
     assert len(segments) == 8
     assert all(segment.review.status.value == "approved" for segment in segments)
     assert all(segment.review.verified_by == "codex" for segment in segments)
-    assert len(norms) == 13
+    assert len(norms) == 14
     authorisation = norms["AIA-NORM-A046-P1-DEROGATION-AUTHORISATION"]
     assert authorisation.kind.value == "power"
     assert authorisation.qualifier_spans == ["AIA-TEXT-A046-P003"]
     assert len(authorisation.conditions) == 3
     refusal = norms["AIA-NORM-A046-P2-REFUSAL-RESPONSE"]
-    assert len(refusal.mandatory_content) == 2
+    discard = norms["AIA-NORM-A046-P2-DISCARD-RESULTS-AND-OUTPUTS"]
+    assert refusal.conditions == discard.conditions == [
+        "the paragraph 1 authorisation requested for urgent use under paragraph 2 is refused"
+    ]
+    assert refusal.subjects == discard.subjects
+    assert refusal.subjects[0].subject_ref == "law_enforcement_or_civil_protection_authority"
+    assert "stop use" in refusal.action and "immediate effect" in refusal.action
+    assert "discard" not in refusal.action
+    assert "immediately discard all results and outputs" in discard.action
+    assert "stop use" not in discard.action
+    for obligation in (refusal, discard):
+        assert obligation.kind.value == "obligation"
+        assert obligation.primary_spans == ["AIA-TEXT-A046-P002"]
+        assert obligation.mandatory_content == []  # Actions are separate norms, not payload items.
+        assert obligation.review.status.value == "proposed"
+        assert obligation.implementation_mode.value == "none_required"
+    permission = norms["AIA-NORM-A046-P2-URGENT-USE-PERMISSION"]
+    assert permission.kind.value == "permission"
+    assert len(permission.conditions) == 2
+    assert "without undue delay" in permission.conditions[1]
     missing = [norm for norm in norms.values() if norm.implementation_mode.value == "missing"]
     assert {norm.norm_id for norm in missing} == {
         "AIA-NORM-A046-P1-COMPLETE-ASSESSMENT-PROMPTLY",

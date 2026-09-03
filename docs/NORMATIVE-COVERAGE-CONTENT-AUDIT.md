@@ -33,7 +33,8 @@ table retains its original three-entry baseline for traceability; see the applie
 section of the granularity ledger. Article 45's paragraph 1 and 2 findings are also corrected:
 event-based notifications are separated from request-only disclosures. Event categories are stored
 as `any_of` conditions, not cumulative mandatory contents. The new paragraph 1 activity-disclosure
-norm carries two content groups; the live number of populated content lists is now 145, while the
+norm carries two content groups. Article 46's paragraph 2 actions are now two separate norms rather
+than two content items; the live number of populated content lists is now 144, while the
 146-row table below remains the historical baseline. Paragraph 3's corresponding negative/positive
 result split was found during the Article 45 source check and is recorded in the granularity ledger.
 Other rows in this content register remain pending.

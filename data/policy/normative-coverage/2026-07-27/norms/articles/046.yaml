@@ -127,10 +127,10 @@ norms:
   subjects:
   - subject_ref: law_enforcement_or_civil_protection_authority
     category: public_authority
-  action: immediately stop use and discard every result and output when urgent-use authorisation is refused
+  action: stop use of the high-risk AI system with immediate effect when the paragraph 1 authorisation
+    requested for urgent use under paragraph 2 is refused
   norm_text: If the authorisation referred to in paragraph 1 is refused, the use of the high-risk AI system
-    shall be stopped with immediate effect and all the results and outputs of such use shall be immediately
-    discarded.
+    shall be stopped with immediate effect
   detection_channels:
   - semantic_legal_effect
   - shall_token
@@ -138,11 +138,46 @@ norms:
   - AIA-TEXT-A046-P002
   qualifier_spans: []
   effective_date_spans: []
-  conditions: []
+  conditions:
+  - the paragraph 1 authorisation requested for urgent use under paragraph 2 is refused
   exceptions: []
-  mandatory_content:
-  - immediately stop system use
-  - immediately discard all results and outputs
+  mandatory_content: []
+  dependencies: []
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_refs: []
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A046-P2-DISCARD-RESULTS-AND-OUTPUTS
+  act_version_date: '2026-07-27'
+  kind: obligation
+  subjects:
+  - subject_ref: law_enforcement_or_civil_protection_authority
+    category: public_authority
+  action: immediately discard all results and outputs of the urgent use of the high-risk AI system when
+    the paragraph 1 authorisation requested under paragraph 2 is refused
+  norm_text: all the results and outputs of such use shall be immediately discarded.
+  detection_channels:
+  - semantic_legal_effect
+  - shall_token
+  primary_spans:
+  - AIA-TEXT-A046-P002
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions:
+  - the paragraph 1 authorisation requested for urgent use under paragraph 2 is refused
+  exceptions: []
+  mandatory_content: []
   dependencies: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.

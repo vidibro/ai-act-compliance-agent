@@ -188,12 +188,13 @@ modal/list scan. Source references identify full norm records in `source-records
 | 41 | Preserved the standardisation request AND one of four defects AND no published reference AND none expected within a reasonable period. | Nested-condition regression; the provision remains a power. |
 | 43 | Explicit Annex III point 1 scope, alternative Annex VII triggers, and the Article 74(8)/(9) exception to provider choice of notified body. | Route/exception regression; no runtime rules changed. |
 | 45 | Split event-based and request-only disclosures in paragraphs 1 and 2; the same source-linked issue in paragraph 3 was also split into negative-result and requested positive-result sharing. Event categories are explicit alternatives, not mandatory payload lists; paragraph 4 is unchanged. | Seven proposed norms instead of four; regression checks cover request triggers, recipients, all event categories and the narrower adverse QMS outcomes. |
+| 46 | Split paragraph 2's refusal response into immediate stopping of use and immediate discarding of all results and outputs. The actor and refusal trigger are identical; urgent-use permission and the other paragraphs are unchanged. | Fourteen proposed norms instead of thirteen; regressions check both actions, timing, shared condition and actor, source links and separate permission. |
 
 The original 88-row ledger above remains a historical audit baseline. Article 31's five split
-segments no longer trigger the scanner. The current inventory has 1,356 proposed norms and 1,471
-segments; the 216 implementation-debt records remain unchanged because the nine new norms concern
-unsupported notified-body actors. Source approvals have not been relabelled as norm approvals.
-Next recorded correction: Article 46.
+segments no longer trigger the scanner. The current inventory has 1,357 proposed norms and 1,471
+segments; the 216 implementation-debt records remain unchanged because the ten new norms concern
+actors outside supported reporting roles. Source approvals have not been relabelled as norm approvals.
+Next recorded correction: Article 50; Articles 47–49 have no open recorded correction in these ledgers.
 
 Committed separately on 2026-09-03: shared condition mechanism `62c3011`; Article 3 `9fd7c58`;
 Article 6 `b31b780`; Article 31 `7282527`; Article 40 `856707c`; Article 41 `d8ec444`;
