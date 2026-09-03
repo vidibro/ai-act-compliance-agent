@@ -1,0 +1,58 @@
+"""Snapshot-specific audit reconciliation, separate from the reusable scanner tests."""
+
+import hashlib
+import re
+from pathlib import Path
+
+from aiact.norm_granularity import scan_granularity
+from aiact.norm_loader import load_normative_coverage
+
+
+def test_pinned_corpus_triage_is_documented_without_mutating_review():
+    root = Path(__file__).resolve().parents[1]
+    policy = root / "data/policy"
+    coverage = policy / "normative-coverage/2026-07-27"
+    bundle = load_normative_coverage(
+        coverage / "text-review",
+        coverage / "norms",
+        articles_root=policy / "articles",
+        annexes_root=policy / "annexes",
+        guidance_root=policy / "guidance",
+    )
+    before = bundle.model_dump()
+    candidates = scan_granularity(bundle)
+    assert bundle.model_dump() == before
+    assert bundle.validated_documents == 133
+    assert len(bundle.text_review.segments) == 1471
+    assert len(candidates) == 83
+
+    segments = {s.segment_id: s for s in bundle.text_review.segments}
+    for candidate in candidates:
+        source = segments[candidate.segment_id]
+        assert candidate.source_sha256 == hashlib.sha256(source.text.encode()).hexdigest()
+        assert candidate.norm_ids == tuple(source.norm_ids)
+
+    report = (root / "docs/NORMATIVE-COVERAGE-GRANULARITY-AUDIT.md").read_text()
+    rows = re.findall(r"^\| (AIA-TEXT-\S+) \| (retain|split|expand) \|", report, re.MULTILINE)
+    ids = [segment_id for segment_id, _ in rows]
+    assert len(ids) == len(set(ids)), "Document each triage candidate exactly once"
+    # Keep the audit baseline: splitting a norm can remove its original scan signal.
+    closed_by_splitting = {f"AIA-TEXT-A031-P{p:03}" for p in (5, 6, 7, 11, 12)}
+    assert set(ids) - closed_by_splitting == {candidate.segment_id for candidate in candidates}
+
+    content_report = (root / "docs/NORMATIVE-COVERAGE-CONTENT-AUDIT.md").read_text()
+    content_rows = re.findall(
+        r"^\| (AIA-NORM-\S+) \| (\d+) \| (split|expand|existing|no additional finding) \|",
+        content_report,
+        re.MULTILINE,
+    )
+    expected_content = {
+        norm.norm_id: len(norm.mandatory_content)
+        for norm in bundle.norm_inventory.norms
+        if norm.mandatory_content
+    }
+    assert len(content_rows) == len(expected_content) == 146
+    baseline_content = {norm_id: int(count) for norm_id, count, _ in content_rows}
+    # Article 40's example is now nested in its proper deliverable, not a third requirement.
+    baseline_content["AIA-NORM-A040-P2-RESOURCE-PERFORMANCE-DELIVERABLES"] = 2
+    assert baseline_content == expected_content

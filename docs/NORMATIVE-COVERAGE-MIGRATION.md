@@ -347,19 +347,19 @@ Measure:
 
 **Full-corpus proposed extraction 2026-08-28:** the representative pilot was expanded, in source
 order, into a complete proposed inventory. It now partitions all 133 source bodies in the pinned
-corpus into 1,471 exact segments. It proposes 1,347 norms across 132 documents; Article 1 supplies
+corpus into 1,471 exact segments. It now proposes 1,353 norms across 132 documents; Article 1 supplies
 reviewed subject-matter context without an atomic norm. No article or annex remains as `needs_review`
 debt, and structural headings remain separately identified.
 The reproducible measurements are in the versioned
 [`report.md`](../data/policy/normative-coverage/2026-07-27/report.md). The extraction added loader-validated exact
 `norm_text`, candidate-detection provenance, and review timing fields. Its semantic pass found 524 of
-1,347 proposed propositions whose exact operative quote contains no `shall` token. No source characters
+1,353 proposed propositions whose exact operative quote contains no `shall` token. No source characters
 remain marked `needs_review`.
 
 Of the 1,471 segments, 1,467 are approved and four remain `proposed`: Annex VIII. The
 Article 5 heading, all Article 50 and Article 113 segments, and the 27 finer-grained Annex IV
 segments were independently confirmed on
-2026-09-02. Their linked norm records, like all 1,347 extracted
+2026-09-02. Their linked norm records, like all 1,353 extracted
 norms, remain `proposed`; approving a source segment does not independently approve the legal
 propositions extracted from it. Elapsed review time was not captured. The remaining assurance
 boundary is independent approval of the proposed segments and norms, followed by implementation
@@ -433,14 +433,36 @@ implementation reference. Of those, 17 are intentionally `carried_by_other_norm`
 `missing` and four are `unresolved`. The resulting 216 implementation-debt records are mapping and
 design candidates, not a forecast of 216 new rules.
 
-**Granularity audit started 2026-09-02:** a corpus-wide heuristic pass identified 84 segments with
-either an internal enumerated list or multiple modal clauses represented by no more than one norm.
-The internal-list cases in Article 43(1), Article 113(c), and Annex VIII already preserve their
-routes or exact checklist items. Annex IV did not: items 1 and 2 were split into their lettered
-subitems and the carried technical-documentation norm was expanded from nine headings to 26
-concrete content requirements. The remaining multi-modal candidates require explicit semantic
-adjudication; modal-token counts alone cannot decide whether a lifecycle requirement should remain
-compound or be split.
+**Granularity audit checkpoint 2026-09-02:** Annex IV items 1 and 2 were split into lettered
+subitems, its carried technical-documentation norm was expanded from nine headings to 26 concrete
+content requirements, and the user confirmed its source review in commit `0951522`.
+A reproducible read-only scan now visits all 133 documents / 1,471 segments and flags 88 candidates.
+Full source-to-norm comparison of those candidates recommends 46 splits, eight expansions and 34
+retentions; four additional qualifier defects were identified outside the detector. The
+[source-ordered audit ledger](NORMATIVE-COVERAGE-GRANULARITY-AUDIT.md) records each decision and the
+remaining work. Problems include combined duty-holders, powers summarised as duties, missing
+qualifiers, and conditional checklist fields treated as universally mandatory. These findings
+initially left the 1,347 proposed norms and implementation-debt counts unchanged. A second pass
+compared all 146 populated content lists: the [content audit register](NORMATIVE-COVERAGE-CONTENT-AUDIT.md)
+adds 19 split proposals and 12 expansions at norm level, with 38 references to existing decisions
+and 77 records without additional focused findings. Do not add these norm-level counts to the
+segment counts as if they measured the same thing.
+
+**First correction batch:** Articles 3 and 6 now preserve explicit nested AND/OR conditions;
+Article 31's five recorded compound segments were decomposed, increasing its norms from 13 to 19
+and the corpus from 1,347 to 1,353. Existing IDs retain a narrowed original duty; six new IDs cover
+the separated duties. All remain proposed. The live detector now flags 83 segments; the historical
+88-row ledger is preserved. No new user approval or runtime integration is claimed. The remaining
+216 implementation-debt records are unchanged. Articles 40, 41 and 43 have also been corrected:
+illustrative resource reductions no longer form a third deliverable, common-specification conditions
+preserve explicit AND/OR structure, and Annex III point 1 scope and the special-authority route are
+explicit. Next recorded correction: Article 45.
+
+Correct the recorded defects and complete the unflagged-source semantic audit before declaring
+extraction complete or compiling new runtime rules. A full-corpus heuristic scan is not a full
+semantic audit; neither modal counts nor exact source-span retention proves that each legal effect
+is represented. Norm splitting must follow independent applicability/action/actor/verification,
+not merely produce one norm per verb or checklist item.
 
 ### Phase 4 — link the current implementation in shadow mode
 
@@ -468,7 +490,7 @@ debt.
 
 **Extraction status:** complete as a proposed corpus inventory. Exact source partitioning and
 disposition authoring cover all 133 documents and all source characters. The exit criterion remains
-open because four segments and all 1,347 norm records still require independent assurance. Corrections
+open because four segments and all 1,353 norm records still require independent assurance. Corrections
 found during assurance must be made in `segments/` and `source-records/`, followed by regeneration;
 generated `text-review/` and `norms/` files are never hand-edited.
 
@@ -580,7 +602,7 @@ No aggregate percentage replaces these measures.
 ## Rough effort
 
 The original estimates below are retained as planning history. Full-corpus extraction established
-an actual inventory of 1,347 proposed norms, so remaining effort is driven by independent legal
+an actual inventory of 1,353 proposed norms, so remaining effort is driven by independent legal
 assurance, many-to-many implementation mapping, and behavioral proof rather than extraction volume:
 
 | Work | Estimate |
@@ -598,13 +620,15 @@ The original total was roughly **6–10 person-weeks**. It must not be used as a
 estimate: several infrastructure and authoring stages are complete, while the unexpectedly large
 norm inventory makes assurance and mapping more substantial than the original pilot could measure.
 A new forecast should be based on measured review and reconciliation throughput from representative
-batches of the 1,347 records.
+batches of the 1,353 records.
 
 ## Immediate next action
 
-Independently review the four proposed source segments in Annex VIII.
-Apply confirmed review provenance to authored
-`segments/` records and regenerate the derived artifacts. Then audit representative high-risk norm
-batches and measure throughput before committing to a full norm-review estimate. In parallel with
-that assurance work, resolve the four `unresolved` implementation modes and begin the Phase 4
-norm-to-runtime reconciliation in shadow mode.
+Continue the [granularity correction and completion queue](NORMATIVE-COVERAGE-GRANULARITY-AUDIT.md#correction-and-completion-queue)
+in source order, continuing with Article 45 after the Article 3, 6, 31, 40, 41 and 43 corrections, and complete the
+unflagged-source pass. Independently review the four proposed source segments in Annex VIII;
+exactly retained content still needs optional/conditional field semantics. Apply only confirmed
+user provenance to authored `segments/` records and regenerate derived artifacts. Keep codex audit
+findings distinct from user approvals. Measure norm-review throughput and resolve the four
+`unresolved` implementation modes alongside assurance work; do not compile new runtime rules from
+known defective norm records.

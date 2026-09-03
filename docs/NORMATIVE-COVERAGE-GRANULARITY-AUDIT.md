@@ -1,0 +1,202 @@
+# Normative coverage granularity audit
+
+**Snapshot:** `2026-07-27`; **audit date:** 2026-09-02; **reviewer:** codex.
+**Source baseline:** `0951522` (confirmed Annex IV checklist and segmentation).
+**Status:** candidate triage and populated-content-list pass completed; corrections and the rest
+of the unflagged-source audit remain open.
+
+## Boundary and method
+
+The scanner visits all 133 documents and all 1,471 segments, including approved segments. It
+flags internal enumerations and multiple modal signals linked to at most one norm. Full text of
+each flagged segment and its linked norm actions, subjects, kinds, content, conditions and
+exceptions were compared against the [atomicity contract](NORMATIVE-COVERAGE-SCOPE.md#atomicity-rules).
+This is a pinned-source comparison, not verification of the latest external legislation.
+
+The original space-delimited exploratory scan found 84 candidates before the Annex IV split,
+82 afterwards. Word-boundary/whitespace-aware matching adds six previously missed candidates,
+giving **88 baseline candidates**. This change is detector sensitivity, not six newly discovered norms.
+The focused comparison recommends **46 splits, eight expansions and 34 retentions**, plus four
+additional qualifier corrections outside the detector. These are segment-level decisions, not
+counts of new norms; one split may require several records.
+
+A second pass compared all 146 populated norm content lists against their linked source. The
+[content audit register](NORMATIVE-COVERAGE-CONTENT-AUDIT.md) records 19 additional split proposals,
+12 expansions, 38 references to existing decisions and 77 records with no additional focused
+finding. Those are norm-level rows, not an extension of the 88-segment denominator. Examples include
+independently triggered notifications, optional Board powers summarised as duties, and consent
+information missing the no-detriment/no-justification safeguards.
+
+Reproduce the live read-only candidate list, source hashes and full scan denominator (after the
+corrections below, 83 candidates remain; a disappearing signal is not independent norm approval):
+
+```sh
+uv run python scripts/audit_norm_granularity.py --act-version 2026-07-27
+```
+
+No scanner result approves a segment or norm. The decisions below are proposed correction
+directions, not user verification and not changes to enacted text. `retain` means no split is
+recommended for the focused granularity question, not that all legal fields or implementations
+have been independently approved. A compound action summary alone does not establish atomicity.
+
+- `split`: actor, action, trigger, recipient, deadline, or legal effect varies independently.
+- `expand`: the existing decomposition can remain, but concrete qualifiers/content need explicit
+  representation or tests; source-span retention alone is insufficient.
+- `retain`: repeated signals describe one decision, its content, or an associated qualification.
+
+The scanner is not a completeness gate: unnumbered content, inline enumerations, implicit norms,
+single-modal lists already divided into separate segments, and errors in multi-norm segments may
+be unflagged. All unflagged source remains subject to the independent norm-review phase. The
+additional source-linked checks below demonstrate why regex-only sign-off would be unsafe.
+
+## Candidate decisions, in source order
+
+IDs resolve in the versioned `text-review/articles/` and `text-review/annexes/` shards. Norm IDs
+for each row are listed by the scanner and in the segment's `norm_ids`.
+
+| Segment | Decision | Rationale / required change |
+|---|---|---|
+| AIA-TEXT-A006-P006 | retain | Assessment being required is the factual premise of one classification exclusion, not a second duty. |
+| AIA-TEXT-A027-P001 | retain | One FRIA action with six content groups and the qualifying-deployer/excluded-area gate represented. |
+| AIA-TEXT-A031-P001 | retain | One eligibility package expressly enumerates establishment and legal personality. |
+| AIA-TEXT-A031-P005 | split | Separate direct system involvement, party representation and the general conflict prohibition; consultancy qualifies the latter. |
+| AIA-TEXT-A031-P006 | split | Independent operation and the duty to document/implement impartiality structures are separately assessable actions. |
+| AIA-TEXT-A031-P007 | split | Body procedures and staff secrecy have different duty-holders and different disclosure exceptions; current `exceptions` is empty. |
+| AIA-TEXT-A031-P011 | split | Competence to evaluate outsourced work differs from permanent availability of multidisciplinary staff. |
+| AIA-TEXT-A031-P012 | split | Article 38 coordination and participation/representation/currency in standardisation are independent obligations. |
+| AIA-TEXT-A043-P1 | expand | Four norms and four mandatory-route conditions preserve the list structure. Explicitly retain Annex III point 1 scope and the special-authority exception to free notified-body choice. |
+| AIA-TEXT-A048-P003 | retain | One marking obligation with its nature-dependent alternative location explicitly retained in the action. |
+| AIA-TEXT-A050-P1 | expand | Keep the disclosure norm and exceptions; spell out the reasonably well-informed, observant and circumspect person/context test rather than just “obvious interaction”. |
+| AIA-TEXT-A050-P2 | expand | Marking/detectability and solution qualities are represented, but content limitations, implementation costs and acknowledged state of the art are not explicit in the checklist. |
+| AIA-TEXT-A050-P6 | retain | One cumulative-operation savings proposition for the listed other duties. |
+| AIA-TEXT-A057-P005 | split | Optional sandbox-establishment power, statutory reference substitution and subsequent cooperation/access duties are different effects and stages. |
+| AIA-TEXT-A057-P007 | split | Member State resource duties, authority cooperation/participation permission, preservation of other sandboxes and inter-sandbox coordination must not share one duty-holder/action. |
+| AIA-TEXT-A057-P008 | split | Controlled sandbox operation, permission for supervised real-world testing and conditional incorporation of testing plans have different applicability. |
+| AIA-TEXT-A057-P012 | split | Access is an authorisation, not a duty to access; considering reports is a duty, and public release has a separate two-party consent gate. |
+| AIA-TEXT-A057-P020 | split | Preserve existing powers; distinguish mitigation, conditional suspension power, notification duty and lawful exercise of supervisory discretion. Current action turns suspension power into a duty. |
+| AIA-TEXT-A057-P021 | split | Liability survives independently of the AI Act no-fine protection and the other-law no-fine protection, whose conditions differ. |
+| AIA-TEXT-A057-P024 | split | Authorities notify and may request support; the AI Office publishes/updates the list. Different actors and legal effects. |
+| AIA-TEXT-A057-P025 | split | Separate annual/final reporting stages, online publication and Commission consideration. The last duty is currently attributed to the national authority. |
+| AIA-TEXT-A057-P026 | split | Providing the interface and proactively coordinating where relevant are distinct actions with different applicability. |
+| AIA-TEXT-A058-P001 | retain | One implementing-act obligation whose four common-principle content groups are enumerated. |
+| AIA-TEXT-A058-P018 | split | Agreeing safeguards with participants and conditional cooperation with other authorities have different recipients. |
+| AIA-TEXT-A060-P002 | retain | One implementing-act action with the Article 98(2) adoption procedure as its qualifier. |
+| AIA-TEXT-A060-P019 | split | Member States confer powers; surveillance authorities use them. One combined subject loses the bilateral allocation. |
+| AIA-TEXT-A060-P020 | split | Article 73 reporting, immediate mitigation, conditional suspension/termination and recall on termination do not always share a trigger or deadline. |
+| AIA-TEXT-A060A-P005 | retain | One framework-content requirement with four structured content groups. |
+| AIA-TEXT-A060A-P010 | split | Sectoral compliance duty and the limitation on sectoral requirements obstructing Article 60a are different legal effects. |
+| AIA-TEXT-A061-P007 | split | Documenting/dating consent and supplying a copy to a subject/representative are distinct actions and recipients, despite all three being listed. |
+| AIA-TEXT-A065-P008 | retain | One two-thirds-majority adoption action with five explicit rules-of-procedure content groups. |
+| AIA-TEXT-A067-P002 | retain | Three dimensions qualify one balanced forum-membership requirement. |
+| AIA-TEXT-A067-P006 | split | Adopting rules, electing co-chairs and the term/renewal limit are independently meaningful. |
+| AIA-TEXT-A067-P010 | split | Preparing an annual report and making it public are separately assessable actions. |
+| AIA-TEXT-A068-P001 | retain | One panel-establishment implementing act with an adoption-procedure qualifier. |
+| AIA-TEXT-A068-P002 | retain | One expert-selection requirement with three explicit eligibility conditions. |
+| AIA-TEXT-A068-P006 | retain | Needs, consultation and gender/geographic balance qualify one panel-composition decision. |
+| AIA-TEXT-A070-P001 | split | State designation, authority independence, member conduct and conditional organisational flexibility bind different actors or have different effects. |
+| AIA-TEXT-A070-P003 | split | State resourcing, authority staffing and annual State reassessment differ in duty-holder and timing. |
+| AIA-TEXT-A071-P001 | split | Database operation, expert consultation on initial specifications and Board consultation on updates have distinct stages/recipients. |
+| AIA-TEXT-A071-P004 | split | Article 49 public access and Article 60 restricted/consented access apply to different datasets; preserve the restricted sections and the source's “should” wording. |
+| AIA-TEXT-A071-P005 | retain | Necessity limit and required registrant details are represented as one database-content constraint. |
+| AIA-TEXT-A072-P002 | retain | One lifetime monitoring function with explicit collection/analysis, relevant interaction analysis and the sensitive-operational-data exclusion. |
+| AIA-TEXT-A073-P007 | split | Incident investigation/risk assessment and corrective action have separately verifiable outcomes; a single checklist must not substitute for action-level mapping. |
+| AIA-TEXT-A073-P008 | split | General investigation cooperation and the prohibition on evidence-affecting alteration before notification have different conditions and legal effects. |
+| AIA-TEXT-A073-P010 | split | Seven-day measures and the separate imported notification procedure need separate action mapping. |
+| AIA-TEXT-A073-P012 | retain | One medical-device incident-reporting rule with restricted incident scope and designated recipient. |
+| AIA-TEXT-A074-P004 | split | Competition-information reporting and prohibited-practice reporting have different contents and recipients. |
+| AIA-TEXT-A074-P007 | retain | Exclusion of the Act procedure and replacement by equivalent sectoral procedure form one substitution. |
+| AIA-TEXT-A074-P012 | split | State designation of eligible authorities differs from the non-interference constraint on surveillance activities affecting judicial authorities. |
+| AIA-TEXT-A074-P015 | split | Authorities/Commission have a joint-activity power; the AI Office owes coordination support. Current obligation label conflates them. |
+| AIA-TEXT-A075-P008 | retain | One competence rule states both role branches and the narrower same-undertaking deployer gate. |
+| AIA-TEXT-A075-P015 | split | Cooperation with the AI Office and notification of the Board/other authorities have different recipients and verification. |
+| AIA-TEXT-A075-P016 | expand | Keep the qualified request power and three content groups; explicitly retain that the request must be duly reasoned. |
+| AIA-TEXT-A075-P021 | split | Initial response has an undue-delay/four-month deadline; periodic updates and final outcome arise only when powers are exercised. |
+| AIA-TEXT-A075C-P018 | expand | Preserve the effectiveness/proportionality rule, but explicitly represent income/turnover basis, reference year, daily calculation and decision-appointed start date. |
+| AIA-TEXT-A075C-P021 | retain | One five-year limitation rule with ordinary and continuing/repeated-infringement start alternatives. |
+| AIA-TEXT-A075C-P022 | retain | Period and final-decision start date form one enforcement-limitation rule. |
+| AIA-TEXT-A075C-P023 | retain | One implementing-act content requirement for limitation and interruption rules. |
+| AIA-TEXT-A075C-P024 | retain | Immediate effect qualifies the required no-grounds closure decision. |
+| AIA-TEXT-A076-P002 | retain | Coordinated authority and article-reference substitutions apply together to Article 60a testing. |
+| AIA-TEXT-A077-P003 | retain | Reciprocal assistance and necessary information exchange specify one cooperation relationship. |
+| AIA-TEXT-A077-P004 | split | Initial identification/publication deadline, notification and continuing updates are distinct stages/recipients. |
+| AIA-TEXT-A078-P008 | split | Consultation before security-sensitive disclosure does not override the separate exclusion of sensitive operational data from exchange. |
+| AIA-TEXT-A078-P009 | split | Premises retention, immediate access/copy on request and security-clearance restriction have distinct triggers and duty-holder roles. |
+| AIA-TEXT-A078-P010 | retain | One savings clause preserves the listed exchange/warning and criminal-law obligations. |
+| AIA-TEXT-A079-P007 | split | Taking provisional measures and promptly notifying other institutions are separate actions. |
+| AIA-TEXT-A079-P008 | expand | Retain one notification-content norm, but enumerate the detailed non-compliance grounds rather than the broad combined final content label. |
+| AIA-TEXT-A079-P014 | split | Deemed justification and its alternative clocks must not swallow the separate preservation of operator procedural rights. |
+| AIA-TEXT-A082-P003 | retain | Immediate notification and four explicit content groups describe one report. |
+| AIA-TEXT-A082-P005 | split | Immediate communication to concerned States/operators and informing other States have different recipients; do not silently extend the first deadline to the second duty. |
+| AIA-TEXT-A085-P002 | split | Considering complaints in surveillance and handling them under dedicated procedures are independently verifiable actions. |
+| AIA-TEXT-A092-P008 | retain | One implementing-act obligation with its evaluation content and examination-procedure qualifier. |
+| AIA-TEXT-A097-P003 | split | Revocation power, termination/effective-date consequences and preservation of existing acts are distinct legal effects; “prospective” omits the actual date alternatives. |
+| AIA-TEXT-A097-P006 | split | Entry-into-force alternatives and extension at Parliament/Council initiative require separate explicit treatment; early joint non-objection and extension are absent from the action summary. |
+| AIA-TEXT-A098-P001 | retain | Committee status qualifies the same assistance arrangement; no list is being hidden. |
+| AIA-TEXT-A099-P002 | split | Initial penalty-rule notification and subsequent amendment notification have different triggers/deadlines. |
+| AIA-TEXT-A099-P016 | retain | One fine-decision consideration requirement with ten structured factor groups. |
+| AIA-TEXT-A100-P001 | retain | Fine power is conditioned on a seven-group decision checklist; this row does not approve the checklist's implementation. |
+| AIA-TEXT-A100-P011 | split | Hearing the investigated body, limiting decision grounds and involving complainants have different protections and applicability. |
+| AIA-TEXT-A100-P012 | split | General defence safeguards and qualified party entitlement to file access need distinct legal-effect/subject representation. |
+| AIA-TEXT-A100-P013 | split | Allocation of revenue to the Union budget and protection of the fined body's operation are distinct consequences/constraints. |
+| AIA-TEXT-A101-P006 | expand | Keep one fine-amount determination, but enumerate nature/gravity/duration, proportionality/appropriateness and Article 93(3)/Article 56 commitments explicitly. |
+| AIA-TEXT-A101-P011 | retain | One implementing-act obligation with content and Article 98(2) adoption procedure. |
+| AIA-TEXT-A113-C | retain | Two route/date norms already exist; both now explicitly exclude Article 6(5). |
+| AIA-TEXT-ANNEX-VIII-A | expand | All 13 entries are retained exactly. Nevertheless item 13 is optional, item 12 contains a non-disclosure requirement, and some fields are conditional: they must not become 13 unconditional mandatory checks. |
+| AIA-TEXT-ANNEX-VIII-B | retain | Nine concrete fields, including conditional representative information, are retained exactly; no heading-only collapse. |
+| AIA-TEXT-ANNEX-VIII-C | retain | Five concrete fields are retained exactly, including the applicability qualifier for the data-protection impact assessment. |
+
+## Additional source-linked checks beyond the detector
+
+These findings are separate from the 88-segment denominator and must not be hidden by a clean
+modal/list scan. Source references identify full norm records in `source-records/` and `norms/`.
+
+| Norm / area | Finding | Required treatment |
+|---|---|---|
+| AIA-NORM-A003-D061-WIDESPREAD-INFRINGEMENT | The two broad conditions hide point (a)'s at-least-two-other-Member-States threshold and the three origin/establishment branches. | Keep the definition but explicitly encode the nested alternatives and thresholds. |
+| AIA-NORM-A006-P3-INSIGNIFICANT-RISK-EXCEPTION | Four alternatives are combined into one condition string; the pattern-detection alternative compresses the proper-human-review qualification. | Preserve the no-significant-risk AND at-least-one-of-four structure, with each alternative and its qualification explicit. Do not flatten OR into four cumulative duties. |
+| AIA-NORM-A041-P1-ADOPT-COMMON-SPECIFICATIONS | Point (a) has four alternatives; point (b) requires both no published reference AND no reference expected within a reasonable period. The current compressed wording is ambiguous. | Represent the conjunctions and alternatives explicitly, keeping one conditioned power. |
+| AIA-NORM-A075-P1-COMPETENCE | “Subject to the enacted exclusions” hides all four point (a) exclusions; the norm links their source segments but does not enumerate them. | Explicitly list the Annex I, Annex III point 2, qualifying institutional-provider, and administration-of-justice exclusions, scoped to point (a), not point (b). |
+| AIA-NORM-A059-P1-CONDITIONAL-FURTHER-PROCESSING | The chapeau says every condition applies, but (a)–(j) also have separate linked norms. | No heading-only omission established at the parent level. Audit the child norms and executable conjunction separately; do not duplicate them just to increase the parent's list length. |
+| Annex V | All eight declaration-content items and their subdetails/qualifiers are present in the content list. | No Annex IV-style heading-only collapse found in this comparison. |
+| Annex IX | All five registration-content items are present. | No heading-only content omission found; initial submission versus maintenance still needs runtime mapping. |
+| Annex XI | Section 1 has 11 content entries; Section 2 has four concrete evaluation/testing/architecture entries. | Content groups are represented. Section 2 is still packed into one source line and should be split for review ergonomics; counts do not prove implementation. |
+| Annex XII | Eleven lettered requirements and their subdetails are represented; the 13 qualifier spans also include two group introductions. | Do not misclassify 13 spans versus 11 content items as two missing requirements. |
+
+## Correction and completion queue
+
+1. Address `split` and `expand` rows in both audit registers in source order, preserving old norm identity/history when a
+   proposition is replaced, and fixing subject/kind/conditions rather than merely multiplying IDs.
+2. Apply the four additional qualifier findings in source order too; these start at Article 3.
+3. Reassess source-segment approval only if its disposition or represented legal effect changes;
+   never label a codex correction as independently verified by the user.
+4. Edit only authored `segments/` and `source-records/`; regenerate derived artifacts. Give every
+   correction a focused semantic regression assertion, not just a norm-count assertion.
+5. Complete the remaining unflagged-source pass, including requirements not represented in any
+   content list, implicit legal effects and cross-reference conditions. All 146 populated lists
+   have received a focused source comparison, not independent norm approval. A full-corpus scan
+   is not a full-corpus semantic audit.
+6. Reconcile these findings before declaring extraction complete or compiling new runtime rules.
+
+## Applied corrections
+
+| Article | Applied change | Assurance |
+|---|---|---|
+| 3 | Expanded definition 61 into explicit alternative cross-border routes: two other Member States with three origin/establishment connections, OR concurrent common-feature infringement by the same operator in at least three Member States. | Nested-condition regression; norm remains proposed. |
+| 6 | Explicit shared risk premise AND one of four alternatives, including proper human review; linked the profiling override as an exception. | Nested-condition and source-provenance regressions; norm remains proposed. |
+| 31 | Split paragraphs 5, 6, 7, 11 and 12 by independent action/actor. Distinguished legal-disclosure and notifying-authority exceptions. Added six norms, retaining existing IDs for narrowed original duties. | Action, actor and exception regressions; all 19 Article 31 norms remain proposed. |
+| 40 | Kept two deliverable groups; resource/energy reduction is explicitly an example within the reporting/documentation group, not a third mandatory deliverable. | Content-semantic regression; norm remains proposed. |
+| 41 | Preserved the standardisation request AND one of four defects AND no published reference AND none expected within a reasonable period. | Nested-condition regression; the provision remains a power. |
+| 43 | Explicit Annex III point 1 scope, alternative Annex VII triggers, and the Article 74(8)/(9) exception to provider choice of notified body. | Route/exception regression; no runtime rules changed. |
+
+The original 88-row ledger above remains a historical audit baseline. Article 31's five split
+segments no longer trigger the scanner. The current inventory has 1,353 proposed norms and 1,471
+segments; the 216 implementation-debt records remain unchanged because the six new norms concern
+unsupported notified-body actors. Source approvals have not been relabelled as norm approvals.
+Next recorded correction: Article 45.
+
+Committed separately on 2026-09-03: shared condition mechanism `62c3011`; Article 3 `9fd7c58`;
+Article 6 `b31b780`; Article 31 `7282527`; Article 40 `856707c`; Article 41 `d8ec444`;
+Article 43 `f7ec5e9`. Article-specific regression tests accompany their commits. The final combined
+builder, extraction, loader, scanner and correction test run passed 75 tests; Ruff and builder
+`--check` also passed. Three previously confirmed baseline mypy errors in the builder remain
+outside this correction batch. These checks do not confer independent legal approval.
