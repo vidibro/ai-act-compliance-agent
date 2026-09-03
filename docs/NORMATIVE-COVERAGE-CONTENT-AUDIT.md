@@ -39,7 +39,17 @@ than two content items; the live number of populated content lists is now 144, w
 result split was found during the Article 45 source check and is recorded in the granularity ledger.
 Article 50's marking norm now has six content entries rather than three, explicitly carrying the
 three considerations for technical-solution qualities. They are not new marking exemptions, and
-the number of populated content lists remains 144. Other rows in this content register remain pending.
+the number of populated content lists remained 144 at that checkpoint.
+
+Article 57's recorded findings are now corrected: establishment and resourcing no longer carry
+independent actions as content items; real-world testing permission and the conditional plan duty
+are separate from the four-part controlled-environment specification. Requested written proof is
+separate from the exit report and its three content groups. Annual and final reports each retain
+seven content groups, explicitly including relevant application/revision of the Regulation and its
+delegated/implementing acts, and application of other supervised Union law. Publication and
+Commission consideration are separate duties; the four interface content groups remain separate
+from conditional coordination. The live inventory now has 143 populated content lists. The
+146-row table below remains the historical baseline; subsequent articles' findings remain pending.
 
 | Norm | Content entries | Decision | Finding / treatment |
 |---|---:|---|---|

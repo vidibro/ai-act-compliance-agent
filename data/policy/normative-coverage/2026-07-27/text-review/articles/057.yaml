@@ -122,6 +122,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A057-P3-EDPS-SANDBOX
+  - AIA-NORM-A057-P3-EDPS-AUTHORITY-REFERENCES
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -151,6 +152,9 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A057-P3A-AI-OFFICE-SANDBOX
+  - AIA-NORM-A057-P3A-AI-OFFICE-AUTHORITY-REFERENCES
+  - AIA-NORM-A057-P3A-COOPERATE-WITH-AUTHORITIES
+  - AIA-NORM-A057-P3A-PRIORITY-ACCESS
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -173,9 +177,10 @@ segments:
     AI systems under their supervision.
 
     '
-  disposition: context_only
-  disposition_reason: Preserves Member State sandbox competence and creates no independent action.
-  norm_ids: []
+  disposition: normative
+  disposition_reason: Qualifies the AI Office establishment power by preserving Member State sandbox competence.
+  norm_ids:
+  - AIA-NORM-A057-P3A-AI-OFFICE-SANDBOX
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -206,6 +211,10 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A057-P4-RESOURCE-AND-AUTHORITY-COORDINATION
+  - AIA-NORM-A057-P4-AUTHORITY-COOPERATION
+  - AIA-NORM-A057-P4-INVOLVE-ECOSYSTEM-ACTORS
+  - AIA-NORM-A057-P4-PRESERVE-OTHER-SANDBOXES
+  - AIA-NORM-A057-P4-INTER-SANDBOX-COOPERATION
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -236,6 +245,8 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A057-P5-CONTROLLED-SANDBOX-LIFECYCLE
+  - AIA-NORM-A057-P5-SUPERVISED-REAL-WORLD-TESTING
+  - AIA-NORM-A057-P5-INCORPORATE-TESTING-PLAN
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -321,7 +332,10 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A057-P7-SANDBOX-EVIDENCE-PACKAGE
+  - AIA-NORM-A057-P7-EXIT-REPORT
   - AIA-NORM-A057-P7-EVIDENTIARY-USE
+  - AIA-NORM-A057-P7-SURVEILLANCE-EVIDENCE-CONSIDERATION
+  - AIA-NORM-A057-P7-NOTIFIED-BODY-EVIDENCE-CONSIDERATION
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -351,6 +365,8 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A057-P8-EXIT-REPORT-ACCESS
+  - AIA-NORM-A057-P8-CONSIDER-EXIT-REPORTS
+  - AIA-NORM-A057-P8-PUBLIC-EXIT-REPORT
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -559,7 +575,11 @@ segments:
   disposition: normative
   disposition_reason: ''
   norm_ids:
+  - AIA-NORM-A057-P11-PRESERVE-SUPERVISORY-POWERS
   - AIA-NORM-A057-P11-SUPERVISORY-MITIGATION-WORKFLOW
+  - AIA-NORM-A057-P11-SUSPEND-TESTING-OR-PARTICIPATION
+  - AIA-NORM-A057-P11-NOTIFY-SUSPENSION
+  - AIA-NORM-A057-P11-LAWFUL-SUPERVISORY-DISCRETION
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -592,6 +612,8 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A057-P12-LIABILITY-AND-FINE-SAFE-HARBOUR
+  - AIA-NORM-A057-P12-AI-ACT-NO-FINE-PROTECTION
+  - AIA-NORM-A057-P12-OTHER-LAW-NO-FINE-PROTECTION
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -644,6 +666,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A057-P14-COORDINATE-SANDBOX-ACTIVITIES
+  - AIA-NORM-A057-P14-SUPPORT-JOINT-SANDBOXES
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -671,6 +694,8 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A057-P15-NOTIFY-AND-LIST-SANDBOXES
+  - AIA-NORM-A057-P15-REQUEST-SUPPORT
+  - AIA-NORM-A057-P15-PUBLIC-SANDBOX-LIST
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -703,6 +728,9 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A057-P16-SANDBOX-REPORTING
+  - AIA-NORM-A057-P16-FINAL-SANDBOX-REPORT
+  - AIA-NORM-A057-P16-PUBLISH-ANNUAL-REPORTS
+  - AIA-NORM-A057-P16-COMMISSION-REPORT-CONSIDERATION
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -732,6 +760,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A057-P17-SINGLE-INFORMATION-INTERFACE
+  - AIA-NORM-A057-P17-PROACTIVE-AUTHORITY-COORDINATION
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass

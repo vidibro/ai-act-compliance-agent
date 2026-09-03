@@ -24,7 +24,7 @@ def test_pinned_corpus_triage_is_documented_without_mutating_review():
     assert bundle.model_dump() == before
     assert bundle.validated_documents == 133
     assert len(bundle.text_review.segments) == 1471
-    assert len(candidates) == 83
+    assert len(candidates) == 74
 
     segments = {s.segment_id: s for s in bundle.text_review.segments}
     for candidate in candidates:
@@ -38,6 +38,9 @@ def test_pinned_corpus_triage_is_documented_without_mutating_review():
     assert len(ids) == len(set(ids)), "Document each triage candidate exactly once"
     # Keep the audit baseline: splitting a norm can remove its original scan signal.
     closed_by_splitting = {f"AIA-TEXT-A031-P{p:03}" for p in (5, 6, 7, 11, 12)}
+    closed_by_splitting |= {
+        f"AIA-TEXT-A057-P{p:03}" for p in (5, 7, 8, 12, 20, 21, 24, 25, 26)
+    }
     assert set(ids) - closed_by_splitting == {candidate.segment_id for candidate in candidates}
 
     content_report = (root / "docs/NORMATIVE-COVERAGE-CONTENT-AUDIT.md").read_text()
@@ -52,7 +55,7 @@ def test_pinned_corpus_triage_is_documented_without_mutating_review():
         if norm.mandatory_content
     }
     assert len(content_rows) == 146  # Historical audit baseline.
-    assert len(expected_content) == 144
+    assert len(expected_content) == 143
     baseline_content = {norm_id: int(count) for norm_id, count, _ in content_rows}
     # Article 40's example is now nested in its proper deliverable, not a third requirement.
     baseline_content["AIA-NORM-A040-P2-RESOURCE-PERFORMANCE-DELIVERABLES"] = 2
@@ -64,4 +67,12 @@ def test_pinned_corpus_triage_is_documented_without_mutating_review():
     baseline_content.pop("AIA-NORM-A046-P2-REFUSAL-RESPONSE")
     # Article 50 now explicitly carries all three technical-solution consideration factors.
     baseline_content["AIA-NORM-A050-P2-MARK-DETECT"] = 6
+    # Article 57 separates powers/actions and the two reporting stages.
+    baseline_content.pop("AIA-NORM-A057-P3A-AI-OFFICE-SANDBOX")
+    baseline_content.pop("AIA-NORM-A057-P4-RESOURCE-AND-AUTHORITY-COORDINATION")
+    baseline_content["AIA-NORM-A057-P5-CONTROLLED-SANDBOX-LIFECYCLE"] = 4
+    baseline_content.pop("AIA-NORM-A057-P7-SANDBOX-EVIDENCE-PACKAGE")
+    baseline_content["AIA-NORM-A057-P7-EXIT-REPORT"] = 3
+    baseline_content["AIA-NORM-A057-P16-SANDBOX-REPORTING"] = 7
+    baseline_content["AIA-NORM-A057-P16-FINAL-SANDBOX-REPORT"] = 7
     assert baseline_content == expected_content
