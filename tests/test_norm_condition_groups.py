@@ -144,3 +144,18 @@ def test_article_forty_preserves_illustrative_deliverable(corrected_bundle):
     assert (
         resource.mandatory_content[1] == "energy-efficient development of general-purpose AI models"
     )
+
+
+def test_article_forty_one_preserves_standardisation_conditions(corrected_bundle):
+    norms = {n.norm_id: n for n in corrected_bundle.norm_inventory.norms}
+    power = norms["AIA-NORM-A041-P1-ADOPT-COMMON-SPECIFICATIONS"]
+    assert power.kind.value == "power"
+    root = power.conditions[0]
+    assert root.operator == "all_of" and len(root.operands) == 4
+    assert "Article 10(1)" in root.operands[0]
+    alternatives = root.operands[1]
+    assert alternatives.operator == "any_of" and len(alternatives.operands) == 4
+    assert "deadline" in alternatives.operands[1]
+    assert "fundamental rights" in alternatives.operands[2]
+    assert "no reference" in root.operands[2]
+    assert "no such reference is expected" in root.operands[3]

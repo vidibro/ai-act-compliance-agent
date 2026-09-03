@@ -2434,7 +2434,8 @@ def test_article_forty_one_preserves_common_specification_workflow():
         "AIA-TEXT-A041-P006",
         "AIA-TEXT-A041-P007",
     ]
-    assert len(power.conditions) == 2
+    assert len(power.conditions) == 1
+    assert power.conditions[0].operator == "all_of"
     presumption = norms["AIA-NORM-A041-P3-COMMON-SPECIFICATION-PRESUMPTION"]
     justification = norms["AIA-NORM-A041-P5-JUSTIFY-EQUIVALENT-SOLUTIONS"]
     assert presumption.implementation_mode.value == "missing"

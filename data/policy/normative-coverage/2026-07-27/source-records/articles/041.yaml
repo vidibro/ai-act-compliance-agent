@@ -22,9 +22,21 @@ records:
   - A041-P006
   - A041-P007
   conditions:
-  - the Commission requested a relevant harmonised standard and the request was unaccepted, late, insufficient
-    on fundamental-rights concerns, or not complied with
-  - no covering harmonised-standard reference has been published or is expected within a reasonable period
+  - operator: all_of
+    operands:
+    - the Commission has requested one or more European standardisation organisations, pursuant to
+      Article 10(1) of Regulation (EU) No 1025/2012, to draft a harmonised standard for Chapter III Section 2
+      requirements or, as applicable, Chapter V Sections 2 and 3 obligations
+    - operator: any_of
+      operands:
+      - the request has not been accepted by any of the European standardisation organisations
+      - the harmonised standards addressing the request are not delivered within the deadline set in
+        accordance with Article 10(1) of Regulation (EU) No 1025/2012
+      - the relevant harmonised standards insufficiently address fundamental rights concerns
+      - the harmonised standards do not comply with the request
+    - no reference to harmonised standards covering those requirements or obligations has been published
+      in the Official Journal of the European Union in accordance with Regulation (EU) No 1025/2012
+    - no such reference is expected to be published within a reasonable period
 - norm_id: AIA-NORM-A041-P1-CONSULT-ADVISORY-FORUM
   source: A041-P008
   quote: When drafting the common specifications, the Commission shall consult the advisory forum referred
