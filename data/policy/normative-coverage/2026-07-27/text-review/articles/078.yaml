@@ -232,6 +232,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A078-P3-RESTRICT-CONFIDENTIAL-DISCLOSURE
+  - AIA-NORM-A078-P3-EXCLUDE-SENSITIVE-OPERATIONAL-DATA
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -262,6 +263,8 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A078-P3-KEEP-DOCUMENTATION-AND-ENABLE-ACCESS
+  - AIA-NORM-A078-P3-ENABLE-IMMEDIATE-ACCESS
+  - AIA-NORM-A078-P3-SECURITY-CLEARED-ACCESS-ONLY
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass

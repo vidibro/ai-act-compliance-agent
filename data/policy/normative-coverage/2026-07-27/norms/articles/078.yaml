@@ -23,15 +23,19 @@ norms:
   - AIA-TEXT-A078-P006
   effective_date_spans: []
   conditions: []
-  exceptions: []
+  exceptions:
+  - point (a) only, the cases referred to in Article 5 of Directive (EU) 2016/943
   mandatory_content:
-  - intellectual property confidential business information trade secrets and source code subject to the
-    enacted exception
-  - effective inspections investigations and audits
+  - the intellectual property rights and confidential business information or trade secrets of a natural
+    or legal person, including source code
+  - effective inspections, investigations and audits
   - public and national security
   - criminal and administrative proceedings
   - classified information
-  dependencies: []
+  dependencies:
+  - dependency_ref: Article 5 of Directive (EU) 2016/943
+    resolution: external_recorded
+    detail: The trade-secret exception to point (a) is defined by that Directive, not by this Regulation.
   product_scope: outside_supported_actor
   product_scope_reason: The cross-actor confidentiality rule is represented at specific supported-operator
     receipt points rather than reported here generically.
@@ -161,11 +165,50 @@ norms:
   subjects:
   - subject_ref: national_competent_authority_and_commission
     category: public_authority
-  action: withhold security-jeopardising confidential information absent prior originating-authority and
-    deployer consultation and exclude sensitive operational data from exchange
+  action: disclose confidentially exchanged information only after prior consultation of the originating
+    national competent authority and the deployer
   norm_text: information exchanged on a confidential basis between the national competent authorities
     or between national competent authorities and the Commission shall not be disclosed without prior
     consultation of the originating national competent authority and the deployer
+  detection_channels:
+  - semantic_legal_effect
+  - shall_token
+  primary_spans:
+  - AIA-TEXT-A078-P008
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions:
+  - the high-risk AI systems referred to in point 1, 6 or 7 of Annex III are used by law enforcement,
+    border control, immigration or asylum authorities
+  - the disclosure would jeopardise public and national security interests
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_refs: []
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A078-P3-EXCLUDE-SENSITIVE-OPERATIONAL-DATA
+  act_version_date: '2026-07-27'
+  kind: prohibition
+  subjects:
+  - subject_ref: national_competent_authority_and_commission
+    category: public_authority
+  action: exclude sensitive operational data on the activities of law enforcement, border control, immigration
+    or asylum authorities from the exchange of information
+  norm_text: This exchange of information shall not cover sensitive operational data in relation to the
+    activities of law enforcement, border control, immigration or asylum authorities.
   detection_channels:
   - semantic_legal_effect
   - shall_token
@@ -198,12 +241,9 @@ norms:
   subjects:
   - subject_ref: law_enforcement_immigration_or_asylum_authority_provider
     category: supported_operator
-  action: keep Annex IV documentation on the provider authority's premises and enable immediate cleared-staff
-    authority access or copying on request
+  action: keep the Annex IV technical documentation within the premises of the authority
   norm_text: the technical documentation referred to in Annex IV shall remain within the premises of those
-    authorities. Those authorities shall ensure that the market surveillance authorities referred to in
-    Article 74(8) and (9), as applicable, can, upon request, immediately access the documentation or obtain
-    a copy thereof.
+    authorities.
   detection_channels:
   - semantic_legal_effect
   - shall_token
@@ -212,12 +252,11 @@ norms:
   - AIA-TEXT-A078-P009
   qualifier_spans: []
   effective_date_spans: []
-  conditions: []
+  conditions:
+  - the law enforcement, immigration or asylum authority is the provider of a high-risk AI system referred
+    to in point 1, 6 or 7 of Annex III
   exceptions: []
-  mandatory_content:
-  - documentation remains within provider-authority premises
-  - immediate access or copy on request
-  - access limited to appropriately security-cleared market-authority staff
+  mandatory_content: []
   dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -226,6 +265,84 @@ norms:
   - AIA-PO-A78-3
   implementation_reason: ''
   verification_mode: listed_for_confirmation
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A078-P3-ENABLE-IMMEDIATE-ACCESS
+  act_version_date: '2026-07-27'
+  kind: obligation
+  subjects:
+  - subject_ref: law_enforcement_immigration_or_asylum_authority_provider
+    category: supported_operator
+  action: ensure the applicable Article 74(8) and (9) market surveillance authorities can, upon request,
+    immediately access the documentation or obtain a copy of it
+  norm_text: Those authorities shall ensure that the market surveillance authorities referred to in Article
+    74(8) and (9), as applicable, can, upon request, immediately access the documentation or obtain a
+    copy thereof.
+  detection_channels:
+  - semantic_legal_effect
+  - shall_token
+  - existing_implementation
+  primary_spans:
+  - AIA-TEXT-A078-P009
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions:
+  - the law enforcement, immigration or asylum authority is the provider of a high-risk AI system referred
+    to in point 1, 6 or 7 of Annex III
+  - the market surveillance authority requests access or a copy
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: in_scope
+  product_scope_reason: ''
+  implementation_mode: compliance_rule
+  implementation_refs:
+  - AIA-PO-A78-3
+  implementation_reason: ''
+  verification_mode: listed_for_confirmation
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A078-P3-SECURITY-CLEARED-ACCESS-ONLY
+  act_version_date: '2026-07-27'
+  kind: prohibition
+  subjects:
+  - subject_ref: market_surveillance_authority
+    category: public_authority
+  action: allow only market surveillance authority staff holding the appropriate level of security clearance
+    to access the documentation or any copy of it
+  norm_text: Only staff of the market surveillance authority holding the appropriate level of security
+    clearance shall be allowed to access that documentation or any copy thereof.
+  detection_channels:
+  - semantic_legal_effect
+  - shall_token
+  primary_spans:
+  - AIA-TEXT-A078-P009
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions: []
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_refs: []
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
   review:
     status: proposed
     extracted_by: semantic-legal-effect-pass

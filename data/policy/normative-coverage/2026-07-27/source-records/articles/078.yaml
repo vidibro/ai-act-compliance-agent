@@ -5,7 +5,20 @@ records:
   action: protect confidentiality of task-related information and data under Union or national law
   subject_ref: persons_involved_in_regulation_application
   subject_category: other
-  mandatory_content: [intellectual property confidential business information trade secrets and source code subject to the enacted exception, effective inspections investigations and audits, public and national security, criminal and administrative proceedings, classified information]
+  mandatory_content:
+  - the intellectual property rights and confidential business information or trade secrets of a
+    natural or legal person, including source code
+  - effective inspections, investigations and audits
+  - public and national security
+  - criminal and administrative proceedings
+  - classified information
+  exceptions:
+  - point (a) only, the cases referred to in Article 5 of Directive (EU) 2016/943
+  dependencies:
+  - dependency_ref: Article 5 of Directive (EU) 2016/943
+    resolution: external_recorded
+    detail: The trade-secret exception to point (a) is defined by that Directive, not by this
+      Regulation.
   qualifier_spans: [A078-P002, A078-P003, A078-P004, A078-P005, A078-P006]
   product_scope: outside_supported_actor
   product_scope_reason: The cross-actor confidentiality rule is represented at specific supported-operator receipt points rather than reported here generically.
@@ -48,9 +61,27 @@ records:
 - norm_id: AIA-NORM-A078-P3-RESTRICT-CONFIDENTIAL-DISCLOSURE
   source: A078-P008
   quote: information exchanged on a confidential basis between the national competent authorities or between national competent authorities and the Commission shall not be disclosed without prior consultation of the originating national competent authority and the deployer
-  action: withhold security-jeopardising confidential information absent prior originating-authority and deployer consultation and exclude sensitive operational data from exchange
+  action: disclose confidentially exchanged information only after prior consultation of the
+    originating national competent authority and the deployer
   subject_ref: national_competent_authority_and_commission
   subject_category: public_authority
+  conditions:
+  - the high-risk AI systems referred to in point 1, 6 or 7 of Annex III are used by law enforcement,
+    border control, immigration or asylum authorities
+  - the disclosure would jeopardise public and national security interests
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A078-P3-EXCLUDE-SENSITIVE-OPERATIONAL-DATA
+  source: A078-P008
+  quote: This exchange of information shall not cover sensitive operational data in relation to the activities of law enforcement, border control, immigration or asylum authorities.
+  action: exclude sensitive operational data on the activities of law enforcement, border control,
+    immigration or asylum authorities from the exchange of information
+  subject_ref: national_competent_authority_and_commission
+  subject_category: public_authority
+  kind: prohibition
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -58,13 +89,41 @@ records:
   verification_mode: not_assessed
 - norm_id: AIA-NORM-A078-P3-KEEP-DOCUMENTATION-AND-ENABLE-ACCESS
   source: A078-P009
-  quote: the technical documentation referred to in Annex IV shall remain within the premises of those authorities. Those authorities shall ensure that the market surveillance authorities referred to in Article 74(8) and (9), as applicable, can, upon request, immediately access the documentation or obtain a copy thereof.
-  action: keep Annex IV documentation on the provider authority's premises and enable immediate cleared-staff authority access or copying on request
+  quote: the technical documentation referred to in Annex IV shall remain within the premises of those authorities.
+  action: keep the Annex IV technical documentation within the premises of the authority
   subject_ref: law_enforcement_immigration_or_asylum_authority_provider
   subject_category: supported_operator
-  mandatory_content: [documentation remains within provider-authority premises, immediate access or copy on request, access limited to appropriately security-cleared market-authority staff]
+  conditions:
+  - the law enforcement, immigration or asylum authority is the provider of a high-risk AI system
+    referred to in point 1, 6 or 7 of Annex III
   implementation_refs: [AIA-PO-A78-3]
   verification_mode: listed_for_confirmation
+- norm_id: AIA-NORM-A078-P3-ENABLE-IMMEDIATE-ACCESS
+  source: A078-P009
+  quote: Those authorities shall ensure that the market surveillance authorities referred to in Article 74(8) and (9), as applicable, can, upon request, immediately access the documentation or obtain a copy thereof.
+  action: ensure the applicable Article 74(8) and (9) market surveillance authorities can, upon
+    request, immediately access the documentation or obtain a copy of it
+  subject_ref: law_enforcement_immigration_or_asylum_authority_provider
+  subject_category: supported_operator
+  conditions:
+  - the law enforcement, immigration or asylum authority is the provider of a high-risk AI system
+    referred to in point 1, 6 or 7 of Annex III
+  - the market surveillance authority requests access or a copy
+  implementation_refs: [AIA-PO-A78-3]
+  verification_mode: listed_for_confirmation
+- norm_id: AIA-NORM-A078-P3-SECURITY-CLEARED-ACCESS-ONLY
+  source: A078-P009
+  quote: Only staff of the market surveillance authority holding the appropriate level of security clearance shall be allowed to access that documentation or any copy thereof.
+  action: allow only market surveillance authority staff holding the appropriate level of security
+    clearance to access the documentation or any copy of it
+  subject_ref: market_surveillance_authority
+  subject_category: public_authority
+  kind: prohibition
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
 - norm_id: AIA-NORM-A078-P4-PRESERVE-EXCHANGE-AND-CRIMINAL-LAW-DUTIES
   source: A078-P010
   quote: Paragraphs 1, 2 and 3 shall not affect the rights or obligations of the Commission, Member States and their relevant authorities, as well as those of notified bodies, with regard to the exchange of information and the dissemination of warnings

@@ -24,7 +24,7 @@ def test_pinned_corpus_triage_is_documented_without_mutating_review():
     assert bundle.model_dump() == before
     assert bundle.validated_documents == 133
     assert len(bundle.text_review.segments) == 1471
-    assert len(candidates) == 53
+    assert len(candidates) == 51
 
     segments = {s.segment_id: s for s in bundle.text_review.segments}
     for candidate in candidates:
@@ -54,6 +54,7 @@ def test_pinned_corpus_triage_is_documented_without_mutating_review():
     # The Article 75c expansion also separated the conditional ceiling, closing its signal.
     closed_by_splitting.add("AIA-TEXT-A075C-P018")
     closed_by_splitting.add("AIA-TEXT-A077-P004")
+    closed_by_splitting |= {"AIA-TEXT-A078-P008", "AIA-TEXT-A078-P009"}
     assert set(ids) - closed_by_splitting == {candidate.segment_id for candidate in candidates}
 
     content_report = (root / "docs/NORMATIVE-COVERAGE-CONTENT-AUDIT.md").read_text()
@@ -68,7 +69,7 @@ def test_pinned_corpus_triage_is_documented_without_mutating_review():
         if norm.mandatory_content
     }
     assert len(content_rows) == 146  # Historical audit baseline.
-    assert len(expected_content) == 134
+    assert len(expected_content) == 133
     baseline_content = {norm_id: int(count) for norm_id, count, _ in content_rows}
     # Article 40's example is now nested in its proper deliverable, not a third requirement.
     baseline_content["AIA-NORM-A040-P2-RESOURCE-PERFORMANCE-DELIVERABLES"] = 2
@@ -140,4 +141,6 @@ def test_pinned_corpus_triage_is_documented_without_mutating_review():
     baseline_content["AIA-NORM-A075C-P5-PENALTY-PAYMENT-CEILING"] = 4
     # Article 77 keeps only identification and publication under the deadline.
     baseline_content["AIA-NORM-A077-P2-IDENTIFY-PUBLISH-NOTIFY-AND-UPDATE"] = 2
+    # Article 78's premises, access and clearance rules are three norms.
+    baseline_content.pop("AIA-NORM-A078-P3-KEEP-DOCUMENTATION-AND-ENABLE-ACCESS")
     assert baseline_content == expected_content

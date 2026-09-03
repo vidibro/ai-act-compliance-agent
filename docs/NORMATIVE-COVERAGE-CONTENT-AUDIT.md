@@ -166,7 +166,14 @@ lists across 1,463 proposed norms.
 Article 76's retain decision needed no change. Article 77's paragraph 2 now keeps only
 identification and publication under the 2 November 2024 deadline; notification and keeping
 the list up to date are separate norms. The live inventory still has 134 populated content
-lists, now across 1,465 proposed norms. Subsequent articles' findings remain pending.
+lists, now across 1,465 proposed norms.
+
+Article 78's confidentiality finding is now corrected together with its two recorded segment
+splits. Paragraph 1 enumerates the five protected interests and carries the Article 5 of
+Directive (EU) 2016/943 exception scoped to point (a), recorded as an external dependency. The
+premises, access and security-clearance rules are separate norms rather than three content
+items. The live inventory has 133 populated content lists across 1,468 proposed norms.
+Subsequent articles' findings remain pending.
 
 | Norm | Content entries | Decision | Finding / treatment |
 |---|---:|---|---|

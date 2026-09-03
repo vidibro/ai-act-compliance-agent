@@ -1661,15 +1661,15 @@ def test_inventory_cannot_be_misreported_as_independently_approved(metrics):
     assert metrics.needs_review_characters == 0
     assert metrics.review_statuses == {
         "approved": 1467,
-        "proposed": 1469,
+        "proposed": 1472,
     }
     assert metrics.timed_review_records == 0
-    assert metrics.total_review_records == 2937
+    assert metrics.total_review_records == 2940
 
 
 def test_semantic_pass_finds_propositions_a_shall_scan_misses(metrics):
     assert metrics.shall_vs_semantic_disagreements == 571
-    assert metrics.shall_token_candidate_recall == pytest.approx(894 / 1465)
+    assert metrics.shall_token_candidate_recall == pytest.approx(897 / 1468)
     assert "AIA-NORM-A011-P1-SIMPLIFY" in metrics.semantic_norms_without_shall_token
     assert "AIA-NORM-A043-P5-AMEND" in metrics.semantic_norms_without_shall_token
     assert "AIA-NORM-A060-P4-PERMISSION" in metrics.semantic_norms_without_shall_token
@@ -1677,12 +1677,12 @@ def test_semantic_pass_finds_propositions_a_shall_scan_misses(metrics):
 
 
 def test_metrics_expose_many_to_many_and_implementation_debt(metrics):
-    assert metrics.normative_segments_with_multiple_norms == 368
-    assert metrics.mapping_shape.one_norm_to_one_target == 26
-    assert metrics.mapping_shape.many_norms_to_one_target == 351
+    assert metrics.normative_segments_with_multiple_norms == 370
+    assert metrics.mapping_shape.one_norm_to_one_target == 25
+    assert metrics.mapping_shape.many_norms_to_one_target == 353
     assert metrics.mapping_shape.one_norm_to_many_targets == 0
     assert metrics.mapping_shape.many_to_many == 15
-    assert metrics.mapping_shape.unmapped == 1073
+    assert metrics.mapping_shape.unmapped == 1075
     assert metrics.semantic_vs_existing_implementation_disagreements == 239
     assert metrics.semantic_norms_without_existing_implementation == [
         "AIA-NORM-A002-P1-A-PROVIDER",
@@ -4086,10 +4086,35 @@ def test_article_seventy_eight_maps_the_special_provider_confidentiality_rule():
         if norm.norm_id.startswith("AIA-NORM-A078-")
     }
 
-    assert len(norms) == 8
+    assert len(norms) == 11
     provider = norms["AIA-NORM-A078-P3-KEEP-DOCUMENTATION-AND-ENABLE-ACCESS"]
-    assert provider.implementation_refs == ["AIA-PO-A78-3"]
-    assert len(provider.mandatory_content) == 3
+    access = norms["AIA-NORM-A078-P3-ENABLE-IMMEDIATE-ACCESS"]
+    clearance = norms["AIA-NORM-A078-P3-SECURITY-CLEARED-ACCESS-ONLY"]
+    assert provider.implementation_refs == access.implementation_refs == ["AIA-PO-A78-3"]
+    assert not provider.mandatory_content
+    # Only the access duty is request-triggered, and the clearance limit binds the authority.
+    assert len(provider.conditions) == 1
+    assert access.conditions[-1] == "the market surveillance authority requests access or a copy"
+    assert clearance.subjects[0].subject_ref == "market_surveillance_authority"
+    assert clearance.kind.value == "prohibition"
+
+    # The Article 5 trade-secret exception is scoped to point (a) and recorded as a dependency.
+    confidentiality = norms["AIA-NORM-A078-P1-PROTECT-CONFIDENTIALITY"]
+    assert len(confidentiality.mandatory_content) == 5
+    assert confidentiality.exceptions == [
+        "point (a) only, the cases referred to in Article 5 of Directive (EU) 2016/943"
+    ]
+    assert [dependency.dependency_ref for dependency in confidentiality.dependencies] == [
+        "Article 5 of Directive (EU) 2016/943"
+    ]
+
+    # Consultation before disclosure does not override the separate sensitive-data exclusion.
+    disclosure = norms["AIA-NORM-A078-P3-RESTRICT-CONFIDENTIAL-DISCLOSURE"]
+    sensitive = norms["AIA-NORM-A078-P3-EXCLUDE-SENSITIVE-OPERATIONAL-DATA"]
+    assert len(disclosure.conditions) == 2
+    assert sensitive.kind.value == "prohibition"
+    assert not sensitive.conditions
+    assert all(norm.review.status.value == "proposed" for norm in norms.values())
 
 
 def test_article_seventy_nine_maps_operator_enforcement_duties():
