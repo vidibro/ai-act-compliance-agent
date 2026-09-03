@@ -6,8 +6,8 @@ norms:
   subjects:
   - subject_ref: notified_body
     category: notified_or_conformity_body
-  action: inform the notifying authority of the complete enacted certificate, notification, request, and
-    activity information
+  action: inform the notifying authority of each listed issuance, adverse decision, notification-related
+    circumstance or information-request event without requiring a prior request for disclosure
   norm_text: Notified bodies shall inform the notifying authority of the following
   detection_channels:
   - semantic_legal_effect
@@ -20,17 +20,59 @@ norms:
   - AIA-TEXT-A045-P003
   - AIA-TEXT-A045-P004
   - AIA-TEXT-A045-P005
+  effective_date_spans: []
+  conditions:
+  - operator: any_of
+    operands:
+    - the notified body has issued an Annex VII Union technical documentation assessment certificate,
+      a supplement to such a certificate or a quality management system approval
+    - the notified body has refused, restricted, suspended or withdrawn an Annex VII Union technical documentation
+      assessment certificate or quality management system approval
+    - circumstances affect the scope of or conditions for notification
+    - the notified body has received a market-surveillance-authority information request regarding conformity
+      assessment activities
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_refs: []
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A045-P1-DISCLOSE-ACTIVITIES-ON-REQUEST
+  act_version_date: '2026-07-27'
+  kind: obligation
+  subjects:
+  - subject_ref: notified_body
+    category: notified_or_conformity_body
+  action: inform the notifying authority on request about conformity assessment activities within the
+    notification scope and other activities performed, including cross-border activities and subcontracting
+  norm_text: Notified bodies shall inform the notifying authority of the following
+  detection_channels:
+  - semantic_legal_effect
+  - shall_token
+  - cross_reference_structure
+  primary_spans:
+  - AIA-TEXT-A045-P001
+  qualifier_spans:
   - AIA-TEXT-A045-P006
   effective_date_spans: []
-  conditions: []
+  conditions:
+  - the notifying authority requests information about the notified body's activities
   exceptions: []
   mandatory_content:
-  - Annex VII technical-documentation certificates, supplements, and quality-management approvals issued
-  - refusals, restrictions, suspensions, or withdrawals of those certificates or approvals
-  - circumstances affecting notification scope or conditions
-  - market-surveillance-authority information requests concerning conformity-assessment activities
-  - on request, in-scope conformity-assessment activities and other activities including cross-border
-    work and subcontracting
+  - conformity assessment activities performed within the scope of the notification
+  - other activities performed, including cross-border activities and subcontracting
   dependencies: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -53,7 +95,8 @@ norms:
   subjects:
   - subject_ref: notified_body
     category: notified_or_conformity_body
-  action: inform other notified bodies of the enacted approval and certificate outcomes
+  action: inform other notified bodies of each listed adverse quality-management approval or technical-documentation
+    certificate outcome without requiring a prior request for disclosure
   norm_text: Each notified body shall inform the other notified bodies of
   detection_channels:
   - semantic_legal_effect
@@ -65,12 +108,58 @@ norms:
   - AIA-TEXT-A045-P008
   - AIA-TEXT-A045-P009
   effective_date_spans: []
-  conditions: []
+  conditions:
+  - operator: any_of
+    operands:
+    - the notified body has refused, suspended or withdrawn a quality management system approval
+    - the notified body has refused, withdrawn, suspended or otherwise restricted a Union technical documentation
+      assessment certificate or supplement
   exceptions: []
-  mandatory_content:
-  - quality-management approvals refused, suspended, or withdrawn and, on request, approvals issued
-  - technical-documentation certificates or supplements refused, withdrawn, suspended, or restricted and,
-    on request, those issued
+  mandatory_content: []
+  dependencies: []
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_refs: []
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A045-P2-DISCLOSE-ISSUED-APPROVALS-ON-REQUEST
+  act_version_date: '2026-07-27'
+  kind: obligation
+  subjects:
+  - subject_ref: notified_body
+    category: notified_or_conformity_body
+  action: inform other notified bodies, upon request, of the quality-system approvals or Union technical
+    documentation assessment certificates and supplements that the notified body has issued
+  norm_text: Each notified body shall inform the other notified bodies of
+  detection_channels:
+  - semantic_legal_effect
+  - shall_token
+  - cross_reference_structure
+  primary_spans:
+  - AIA-TEXT-A045-P007
+  qualifier_spans:
+  - AIA-TEXT-A045-P008
+  - AIA-TEXT-A045-P009
+  effective_date_spans: []
+  conditions:
+  - operator: any_of
+    operands:
+    - another notified body requests information about quality-system approvals that the notified body
+      has issued
+    - another notified body requests information about Union technical documentation assessment certificates
+      or supplements that the notified body has issued
+  exceptions: []
+  mandatory_content: []
   dependencies: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -93,8 +182,9 @@ norms:
   subjects:
   - subject_ref: notified_body
     category: notified_or_conformity_body
-  action: share relevant negative and, on request, positive assessment-result information with similarly
-    active notified bodies
+  action: provide relevant information on issues relating to negative conformity assessment results to
+    other notified bodies carrying out similar conformity assessment activities covering the same types
+    of AI systems, without requiring a prior request
   norm_text: Each notified body shall provide the other notified bodies carrying out similar conformity
     assessment activities covering the same types of AI systems with relevant information on issues relating
     to negative and, on request, positive conformity assessment results.
@@ -105,7 +195,52 @@ norms:
   - AIA-TEXT-A045-P010
   qualifier_spans: []
   effective_date_spans: []
-  conditions: []
+  conditions:
+  - the information concerns issues relating to negative conformity assessment results
+  - the recipient is another notified body carrying out similar conformity assessment activities covering
+    the same types of AI systems
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_refs: []
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A045-P3-SHARE-POSITIVE-RESULTS-ON-REQUEST
+  act_version_date: '2026-07-27'
+  kind: obligation
+  subjects:
+  - subject_ref: notified_body
+    category: notified_or_conformity_body
+  action: provide relevant information on issues relating to positive conformity assessment results, on
+    request, to other notified bodies carrying out similar conformity assessment activities covering the
+    same types of AI systems
+  norm_text: Each notified body shall provide the other notified bodies carrying out similar conformity
+    assessment activities covering the same types of AI systems with relevant information on issues relating
+    to negative and, on request, positive conformity assessment results.
+  detection_channels:
+  - semantic_legal_effect
+  - shall_token
+  primary_spans:
+  - AIA-TEXT-A045-P010
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions:
+  - the information concerns issues relating to positive conformity assessment results
+  - the recipient is another notified body carrying out similar conformity assessment activities covering
+    the same types of AI systems
+  - that recipient requests the information
   exceptions: []
   mandatory_content: []
   dependencies: []

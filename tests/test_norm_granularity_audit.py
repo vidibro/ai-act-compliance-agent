@@ -51,8 +51,13 @@ def test_pinned_corpus_triage_is_documented_without_mutating_review():
         for norm in bundle.norm_inventory.norms
         if norm.mandatory_content
     }
-    assert len(content_rows) == len(expected_content) == 146
+    assert len(content_rows) == 146  # Historical audit baseline.
+    assert len(expected_content) == 145
     baseline_content = {norm_id: int(count) for norm_id, count, _ in content_rows}
     # Article 40's example is now nested in its proper deliverable, not a third requirement.
     baseline_content["AIA-NORM-A040-P2-RESOURCE-PERFORMANCE-DELIVERABLES"] = 2
+    # Article 45's event lists became alternative conditions, not mandatory content.
+    baseline_content.pop("AIA-NORM-A045-P1-INFORM-NOTIFYING-AUTHORITY")
+    baseline_content.pop("AIA-NORM-A045-P2-INFORM-OTHER-NOTIFIED-BODIES")
+    baseline_content["AIA-NORM-A045-P1-DISCLOSE-ACTIVITIES-ON-REQUEST"] = 2
     assert baseline_content == expected_content

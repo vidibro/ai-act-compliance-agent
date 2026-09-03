@@ -41,6 +41,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A045-P1-INFORM-NOTIFYING-AUTHORITY
+  - AIA-NORM-A045-P1-DISCLOSE-ACTIVITIES-ON-REQUEST
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -166,7 +167,7 @@ segments:
   disposition: normative
   disposition_reason: ''
   norm_ids:
-  - AIA-NORM-A045-P1-INFORM-NOTIFYING-AUTHORITY
+  - AIA-NORM-A045-P1-DISCLOSE-ACTIVITIES-ON-REQUEST
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -191,6 +192,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A045-P2-INFORM-OTHER-NOTIFIED-BODIES
+  - AIA-NORM-A045-P2-DISCLOSE-ISSUED-APPROVALS-ON-REQUEST
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -216,6 +218,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A045-P2-INFORM-OTHER-NOTIFIED-BODIES
+  - AIA-NORM-A045-P2-DISCLOSE-ISSUED-APPROVALS-ON-REQUEST
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -242,6 +245,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A045-P2-INFORM-OTHER-NOTIFIED-BODIES
+  - AIA-NORM-A045-P2-DISCLOSE-ISSUED-APPROVALS-ON-REQUEST
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -268,6 +272,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A045-P3-SHARE-ASSESSMENT-RESULTS
+  - AIA-NORM-A045-P3-SHARE-POSITIVE-RESULTS-ON-REQUEST
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass

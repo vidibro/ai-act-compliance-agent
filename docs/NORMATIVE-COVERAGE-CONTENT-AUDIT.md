@@ -30,7 +30,13 @@ order; norms and unflagged sources outside this focused pass remain subject to i
 **Applied after the baseline:** Article 40's resource-performance norm now has two content entries:
 energy/resource reduction is an example within the first, not a separate third requirement. The
 table retains its original three-entry baseline for traceability; see the applied-corrections
-section of the granularity ledger. Other rows in this content register remain pending.
+section of the granularity ledger. Article 45's paragraph 1 and 2 findings are also corrected:
+event-based notifications are separated from request-only disclosures. Event categories are stored
+as `any_of` conditions, not cumulative mandatory contents. The new paragraph 1 activity-disclosure
+norm carries two content groups; the live number of populated content lists is now 145, while the
+146-row table below remains the historical baseline. Paragraph 3's corresponding negative/positive
+result split was found during the Article 45 source check and is recorded in the granularity ledger.
+Other rows in this content register remain pending.
 
 | Norm | Content entries | Decision | Finding / treatment |
 |---|---:|---|---|

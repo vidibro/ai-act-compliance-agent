@@ -1660,15 +1660,15 @@ def test_inventory_cannot_be_misreported_as_independently_approved(metrics):
     assert metrics.needs_review_characters == 0
     assert metrics.review_statuses == {
         "approved": 1467,
-        "proposed": 1357,
+        "proposed": 1360,
     }
     assert metrics.timed_review_records == 0
-    assert metrics.total_review_records == 2825
+    assert metrics.total_review_records == 2828
 
 
 def test_semantic_pass_finds_propositions_a_shall_scan_misses(metrics):
     assert metrics.shall_vs_semantic_disagreements == 524
-    assert metrics.shall_token_candidate_recall == pytest.approx(829 / 1353)
+    assert metrics.shall_token_candidate_recall == pytest.approx(832 / 1356)
     assert "AIA-NORM-A011-P1-SIMPLIFY" in metrics.semantic_norms_without_shall_token
     assert "AIA-NORM-A043-P5-AMEND" in metrics.semantic_norms_without_shall_token
     assert "AIA-NORM-A060-P4-PERMISSION" in metrics.semantic_norms_without_shall_token
@@ -1676,12 +1676,12 @@ def test_semantic_pass_finds_propositions_a_shall_scan_misses(metrics):
 
 
 def test_metrics_expose_many_to_many_and_implementation_debt(metrics):
-    assert metrics.normative_segments_with_multiple_norms == 298
+    assert metrics.normative_segments_with_multiple_norms == 303
     assert metrics.mapping_shape.one_norm_to_one_target == 26
     assert metrics.mapping_shape.many_norms_to_one_target == 348
     assert metrics.mapping_shape.one_norm_to_many_targets == 0
     assert metrics.mapping_shape.many_to_many == 15
-    assert metrics.mapping_shape.unmapped == 964
+    assert metrics.mapping_shape.unmapped == 967
     assert metrics.semantic_vs_existing_implementation_disagreements == 233
     assert metrics.semantic_norms_without_existing_implementation == [
         "AIA-NORM-A002-P1-A-PROVIDER",
@@ -2527,7 +2527,7 @@ def test_article_forty_four_separates_certificate_status_effects():
     assert len(extension.conditions) == 2
 
 
-def test_article_forty_five_keeps_notification_lists_atomic():
+def test_article_forty_five_separates_event_notices_from_request_only_disclosures():
     bundle = load_normative_coverage()
     segments = [
         segment
@@ -2543,14 +2543,53 @@ def test_article_forty_five_keeps_notification_lists_atomic():
     assert len(segments) == 12
     assert all(segment.review.status.value == "approved" for segment in segments)
     assert all(segment.review.verified_by == "codex" for segment in segments)
-    assert len(norms) == 4
+    assert len(norms) == 7
     assert all(norm.kind.value == "obligation" for norm in norms.values())
+    assert all(norm.review.status.value == "proposed" for norm in norms.values())
+    assert all(norm.product_scope.value == "outside_supported_actor" for norm in norms.values())
+    assert all(norm.implementation_mode.value == "none_required" for norm in norms.values())
     authority = norms["AIA-NORM-A045-P1-INFORM-NOTIFYING-AUTHORITY"]
-    assert len(authority.qualifier_spans) == 5
-    assert len(authority.mandatory_content) == 5
+    assert authority.qualifier_spans == [f"AIA-TEXT-A045-P{p:03}" for p in range(2, 6)]
+    assert authority.mandatory_content == []  # Events are alternatives, not cumulative content.
+    events = authority.conditions[0]
+    assert events.operator == "any_of" and len(events.operands) == 4
+    assert "supplement" in events.operands[0]
+    assert "restricted" in events.operands[1]
+    assert "circumstances" in events.operands[2]
+    assert "received a market-surveillance-authority information request" in events.operands[3]
+    activities = norms["AIA-NORM-A045-P1-DISCLOSE-ACTIVITIES-ON-REQUEST"]
+    assert activities.qualifier_spans == ["AIA-TEXT-A045-P006"]
+    assert "notifying authority requests" in activities.conditions[0]
+    assert activities.mandatory_content == [
+        "conformity assessment activities performed within the scope of the notification",
+        "other activities performed, including cross-border activities and subcontracting",
+    ]
     peers = norms["AIA-NORM-A045-P2-INFORM-OTHER-NOTIFIED-BODIES"]
     assert len(peers.qualifier_spans) == 2
-    assert len(peers.mandatory_content) == 2
+    adverse = peers.conditions[0]
+    assert adverse.operator == "any_of" and len(adverse.operands) == 2
+    assert (
+        "refused, suspended or withdrawn a quality management system approval"
+        in adverse.operands[0]
+    )
+    assert "restricted" not in adverse.operands[0]  # Paragraph 2(a) does not list restriction.
+    assert "restricted" in adverse.operands[1] and "supplement" in adverse.operands[1]
+    assert peers.mandatory_content == []
+    issued = norms["AIA-NORM-A045-P2-DISCLOSE-ISSUED-APPROVALS-ON-REQUEST"]
+    assert issued.conditions[0].operator == "any_of"
+    assert len(issued.conditions[0].operands) == 2
+    assert all("requests information" in item for item in issued.conditions[0].operands)
+    negative = norms["AIA-NORM-A045-P3-SHARE-ASSESSMENT-RESULTS"]
+    positive = norms["AIA-NORM-A045-P3-SHARE-POSITIVE-RESULTS-ON-REQUEST"]
+    assert "negative" in negative.conditions[0] and "positive" in positive.conditions[0]
+    assert negative.conditions[1] == positive.conditions[1]
+    assert "similar conformity assessment activities" in negative.conditions[1]
+    assert "same types of AI systems" in negative.conditions[1]
+    assert len(negative.conditions) == 2
+    assert positive.conditions[2] == "that recipient requests the information"
+    assert norms["AIA-NORM-A045-P4-CONFIDENTIALITY"].action == (
+        "safeguard obtained information confidentiality under Article 78"
+    )
 
 
 def test_article_forty_six_preserves_derogation_lifecycle():

@@ -2,8 +2,8 @@ records:
 - norm_id: AIA-NORM-A045-P1-INFORM-NOTIFYING-AUTHORITY
   source: A045-P001
   quote: Notified bodies shall inform the notifying authority of the following
-  action: inform the notifying authority of the complete enacted certificate, notification, request, and
-    activity information
+  action: inform the notifying authority of each listed issuance, adverse decision, notification-related
+    circumstance or information-request event without requiring a prior request for disclosure
   subject_ref: notified_body
   subject_category: notified_or_conformity_body
   product_scope: outside_supported_actor
@@ -16,18 +16,40 @@ records:
   - A045-P003
   - A045-P004
   - A045-P005
+  conditions:
+  - operator: any_of
+    operands:
+    - the notified body has issued an Annex VII Union technical documentation assessment certificate,
+      a supplement to such a certificate or a quality management system approval
+    - the notified body has refused, restricted, suspended or withdrawn an Annex VII Union technical
+      documentation assessment certificate or quality management system approval
+    - circumstances affect the scope of or conditions for notification
+    - the notified body has received a market-surveillance-authority information request regarding
+      conformity assessment activities
+- norm_id: AIA-NORM-A045-P1-DISCLOSE-ACTIVITIES-ON-REQUEST
+  source: A045-P001
+  quote: Notified bodies shall inform the notifying authority of the following
+  action: inform the notifying authority on request about conformity assessment activities within the
+    notification scope and other activities performed, including cross-border activities and subcontracting
+  subject_ref: notified_body
+  subject_category: notified_or_conformity_body
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+  qualifier_spans:
   - A045-P006
+  conditions:
+  - the notifying authority requests information about the notified body's activities
   mandatory_content:
-  - Annex VII technical-documentation certificates, supplements, and quality-management approvals issued
-  - refusals, restrictions, suspensions, or withdrawals of those certificates or approvals
-  - circumstances affecting notification scope or conditions
-  - market-surveillance-authority information requests concerning conformity-assessment activities
-  - on request, in-scope conformity-assessment activities and other activities including cross-border
-    work and subcontracting
+  - conformity assessment activities performed within the scope of the notification
+  - other activities performed, including cross-border activities and subcontracting
 - norm_id: AIA-NORM-A045-P2-INFORM-OTHER-NOTIFIED-BODIES
   source: A045-P007
   quote: Each notified body shall inform the other notified bodies of
-  action: inform other notified bodies of the enacted approval and certificate outcomes
+  action: inform other notified bodies of each listed adverse quality-management approval or
+    technical-documentation certificate outcome without requiring a prior request for disclosure
   subject_ref: notified_body
   subject_category: notified_or_conformity_body
   product_scope: outside_supported_actor
@@ -38,17 +60,17 @@ records:
   qualifier_spans:
   - A045-P008
   - A045-P009
-  mandatory_content:
-  - quality-management approvals refused, suspended, or withdrawn and, on request, approvals issued
-  - technical-documentation certificates or supplements refused, withdrawn, suspended, or restricted and,
-    on request, those issued
-- norm_id: AIA-NORM-A045-P3-SHARE-ASSESSMENT-RESULTS
-  source: A045-P010
-  quote: Each notified body shall provide the other notified bodies carrying out similar conformity assessment
-    activities covering the same types of AI systems with relevant information on issues relating to negative
-    and, on request, positive conformity assessment results.
-  action: share relevant negative and, on request, positive assessment-result information with similarly
-    active notified bodies
+  conditions:
+  - operator: any_of
+    operands:
+    - the notified body has refused, suspended or withdrawn a quality management system approval
+    - the notified body has refused, withdrawn, suspended or otherwise restricted a Union technical
+      documentation assessment certificate or supplement
+- norm_id: AIA-NORM-A045-P2-DISCLOSE-ISSUED-APPROVALS-ON-REQUEST
+  source: A045-P007
+  quote: Each notified body shall inform the other notified bodies of
+  action: inform other notified bodies, upon request, of the quality-system approvals or Union technical
+    documentation assessment certificates and supplements that the notified body has issued
   subject_ref: notified_body
   subject_category: notified_or_conformity_body
   product_scope: outside_supported_actor
@@ -56,6 +78,55 @@ records:
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_assessed
+  qualifier_spans:
+  - A045-P008
+  - A045-P009
+  conditions:
+  - operator: any_of
+    operands:
+    - another notified body requests information about quality-system approvals that the notified body
+      has issued
+    - another notified body requests information about Union technical documentation assessment
+      certificates or supplements that the notified body has issued
+- norm_id: AIA-NORM-A045-P3-SHARE-ASSESSMENT-RESULTS
+  source: A045-P010
+  quote: Each notified body shall provide the other notified bodies carrying out similar conformity assessment
+    activities covering the same types of AI systems with relevant information on issues relating to negative
+    and, on request, positive conformity assessment results.
+  action: provide relevant information on issues relating to negative conformity assessment results
+    to other notified bodies carrying out similar conformity assessment activities covering the same
+    types of AI systems, without requiring a prior request
+  conditions:
+  - the information concerns issues relating to negative conformity assessment results
+  - the recipient is another notified body carrying out similar conformity assessment activities
+    covering the same types of AI systems
+  subject_ref: notified_body
+  subject_category: notified_or_conformity_body
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A045-P3-SHARE-POSITIVE-RESULTS-ON-REQUEST
+  source: A045-P010
+  quote: Each notified body shall provide the other notified bodies carrying out similar conformity assessment
+    activities covering the same types of AI systems with relevant information on issues relating to negative
+    and, on request, positive conformity assessment results.
+  action: provide relevant information on issues relating to positive conformity assessment results,
+    on request, to other notified bodies carrying out similar conformity assessment activities covering
+    the same types of AI systems
+  subject_ref: notified_body
+  subject_category: notified_or_conformity_body
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+  conditions:
+  - the information concerns issues relating to positive conformity assessment results
+  - the recipient is another notified body carrying out similar conformity assessment activities
+    covering the same types of AI systems
+  - that recipient requests the information
 - norm_id: AIA-NORM-A045-P4-CONFIDENTIALITY
   source: A045-P011
   quote: Notified bodies shall safeguard the confidentiality of the information that they obtain, in accordance
