@@ -283,9 +283,10 @@ norms:
   subjects:
   - subject_ref: ai_office
     category: union_institution_or_body
-  action: include the generally required and request-type-specific information and send the territorial
-    authority a copy
-  norm_text: the AI Office shall state the legal basis and the purpose of the request
+  action: state the legal basis and purpose of the request, specify the information required and set the
+    period for providing it
+  norm_text: the AI Office shall state the legal basis and the purpose of the request, specify what information
+    is required, and set the period within which the information is to be provided.
   detection_channels:
   - semantic_legal_effect
   - shall_token
@@ -296,12 +297,129 @@ norms:
   conditions: []
   exceptions: []
   mandatory_content:
-  - legal basis and purpose
-  - required information
-  - response period
-  - simple-request voluntariness correctness and potential fines
-  - decision-request fines and judicial-review right
-  - copy to the operator's territorial market-surveillance authority
+  - the legal basis and the purpose of the request
+  - what information is required
+  - the period within which the information is to be provided
+  dependencies: []
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_refs: []
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A075A-P3-SIMPLE-REQUEST-ADDITIONS
+  act_version_date: '2026-07-27'
+  kind: obligation
+  subjects:
+  - subject_ref: ai_office
+    category: union_institution_or_body
+  action: additionally indicate, for a simple request, that there is no obligation to provide the information
+    and that a voluntary reply must be correct and not misleading, and indicate the potential Article
+    99(5) fines
+  norm_text: Where the request is a simple request, the AI Office shall additionally indicate that although
+    there is no obligation to provide the information requested, in the case of a voluntary reply, the
+    information must be correct and not misleading, and indicate the potential fines provided for in Article
+    99(5) for supplying incorrect or misleading information.
+  detection_channels:
+  - semantic_legal_effect
+  - shall_token
+  primary_spans:
+  - AIA-TEXT-A075A-P005
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions:
+  - the request is a simple request
+  exceptions: []
+  mandatory_content:
+  - that there is no obligation to provide the information requested, but a voluntary reply must be correct
+    and not misleading
+  - the potential fines provided for in Article 99(5) for supplying incorrect or misleading information
+  dependencies: []
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_refs: []
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A075A-P3-DECISION-REQUEST-ADDITIONS
+  act_version_date: '2026-07-27'
+  kind: obligation
+  subjects:
+  - subject_ref: ai_office
+    category: union_institution_or_body
+  action: additionally indicate, for a request made by decision, the Article 99(5) fines for supplying
+    incorrect, incomplete or misleading information and the right to have the decision reviewed by the
+    Court of Justice of the European Union
+  norm_text: Where the request is made by decision, the AI Office shall additionally indicate the fines
+    provided for in Article 99(5) for supplying incorrect, incomplete or misleading information and indicate
+    the right to have the decision reviewed by the Court of Justice of the European Union.
+  detection_channels:
+  - semantic_legal_effect
+  - shall_token
+  primary_spans:
+  - AIA-TEXT-A075A-P005
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions:
+  - the request is made by decision
+  exceptions: []
+  mandatory_content:
+  - the fines provided for in Article 99(5) for supplying incorrect, incomplete or misleading information
+  - the right to have the decision reviewed by the Court of Justice of the European Union
+  dependencies: []
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_refs: []
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A075A-P3-SEND-COPY-TO-TERRITORIAL-AUTHORITY
+  act_version_date: '2026-07-27'
+  kind: obligation
+  subjects:
+  - subject_ref: ai_office
+    category: union_institution_or_body
+  action: send a copy of the request to the market surveillance authority of the Member State in whose
+    territory the operator or its legal representative is situated
+  norm_text: The AI Office shall send a copy of the request to the market surveillance authority of the
+    Member State in the territory of which the operator or its legal representative is situated.
+  detection_channels:
+  - semantic_legal_effect
+  - shall_token
+  primary_spans:
+  - AIA-TEXT-A075A-P005
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions: []
+  exceptions: []
+  mandatory_content: []
   dependencies: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.

@@ -4,7 +4,7 @@
 
 **Act version:** 2026-07-27
 
-The inventory contains 133 complete source-body partitions, 1471 exact segments, and 1459 proposed atomic norms. Every stored article and annex is present. Proposed
+The inventory contains 133 complete source-body partitions, 1471 exact segments, and 1462 proposed atomic norms. Every stored article and annex is present. Proposed
 norms have been extracted from 132 documents; the remaining
 work is retained explicitly rather than omitted. The inventory is not consumed by classification,
 rule selection, judging, or reporting.
@@ -113,7 +113,7 @@ rule selection, judging, or reporting.
 - article 73: 16
 - article 74: 17
 - article 75: 27
-- article 75a: 21
+- article 75a: 24
 - article 75b: 3
 - article 75c: 18
 - article 75d: 8
@@ -853,7 +853,7 @@ rule selection, judging, or reporting.
 - AIA-TEXT-A075A-P002: 3
 - AIA-TEXT-A075A-P003: 1
 - AIA-TEXT-A075A-P004: 1
-- AIA-TEXT-A075A-P005: 2
+- AIA-TEXT-A075A-P005: 5
 - AIA-TEXT-A075A-P006: 2
 - AIA-TEXT-A075A-P007: 1
 - AIA-TEXT-A075A-P013: 1
@@ -1130,11 +1130,11 @@ rule selection, judging, or reporting.
 - Semantic candidates a shall-token pass missed: 571
 - Shall-token candidate recall: 60.9%
 - In-scope semantic candidates absent from existing implementation: 239
-- Detection-channel counts: cross_reference_structure=486, deeming_or_consequence=275, existing_implementation=392, other_modal=156, semantic_legal_effect=1459, shall_token=888
-- Mapping shapes, by norm: one-to-one=26, many-to-one=351, one-to-many=0, many-to-many=15, unmapped=1067
+- Detection-channel counts: cross_reference_structure=486, deeming_or_consequence=275, existing_implementation=392, other_modal=156, semantic_legal_effect=1462, shall_token=891
+- Mapping shapes, by norm: one-to-one=26, many-to-one=351, one-to-many=0, many-to-many=15, unmapped=1070
 - Implementation debt candidates: 222
 - Interpretive links to non-binding guidance: 1
-- Review records with measured elapsed time: 0/2931
+- Review records with measured elapsed time: 0/2934
 
 ## Findings
 

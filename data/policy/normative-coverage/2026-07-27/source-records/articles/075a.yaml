@@ -96,11 +96,66 @@ records:
   verification_mode: not_assessed
 - norm_id: AIA-NORM-A075A-P3-INFORMATION-REQUEST-CONTENT
   source: A075A-P005
-  quote: the AI Office shall state the legal basis and the purpose of the request
-  action: include the generally required and request-type-specific information and send the territorial authority a copy
+  quote: the AI Office shall state the legal basis and the purpose of the request, specify what information is required, and set the period within which the information is to be provided.
+  action: state the legal basis and purpose of the request, specify the information required and set
+    the period for providing it
   subject_ref: ai_office
   subject_category: union_institution_or_body
-  mandatory_content: [legal basis and purpose, required information, response period, simple-request voluntariness correctness and potential fines, decision-request fines and judicial-review right, copy to the operator's territorial market-surveillance authority]
+  mandatory_content:
+  - the legal basis and the purpose of the request
+  - what information is required
+  - the period within which the information is to be provided
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A075A-P3-SIMPLE-REQUEST-ADDITIONS
+  source: A075A-P005
+  quote: Where the request is a simple request, the AI Office shall additionally indicate that although there is no obligation to provide the information requested, in the case of a voluntary reply, the information must be correct and not misleading, and indicate the potential fines provided for in Article 99(5) for supplying incorrect or misleading information.
+  action: additionally indicate, for a simple request, that there is no obligation to provide the
+    information and that a voluntary reply must be correct and not misleading, and indicate the
+    potential Article 99(5) fines
+  subject_ref: ai_office
+  subject_category: union_institution_or_body
+  conditions:
+  - the request is a simple request
+  mandatory_content:
+  - that there is no obligation to provide the information requested, but a voluntary reply must be
+    correct and not misleading
+  - the potential fines provided for in Article 99(5) for supplying incorrect or misleading
+    information
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A075A-P3-DECISION-REQUEST-ADDITIONS
+  source: A075A-P005
+  quote: Where the request is made by decision, the AI Office shall additionally indicate the fines provided for in Article 99(5) for supplying incorrect, incomplete or misleading information and indicate the right to have the decision reviewed by the Court of Justice of the European Union.
+  action: additionally indicate, for a request made by decision, the Article 99(5) fines for
+    supplying incorrect, incomplete or misleading information and the right to have the decision
+    reviewed by the Court of Justice of the European Union
+  subject_ref: ai_office
+  subject_category: union_institution_or_body
+  conditions:
+  - the request is made by decision
+  mandatory_content:
+  - the fines provided for in Article 99(5) for supplying incorrect, incomplete or misleading
+    information
+  - the right to have the decision reviewed by the Court of Justice of the European Union
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A075A-P3-SEND-COPY-TO-TERRITORIAL-AUTHORITY
+  source: A075A-P005
+  quote: The AI Office shall send a copy of the request to the market surveillance authority of the Member State in the territory of which the operator or its legal representative is situated.
+  action: send a copy of the request to the market surveillance authority of the Member State in
+    whose territory the operator or its legal representative is situated
+  subject_ref: ai_office
+  subject_category: union_institution_or_body
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required

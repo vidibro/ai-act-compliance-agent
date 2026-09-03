@@ -150,7 +150,13 @@ point (a) exclusions in its exceptions, scoped to that point rather than to the 
 online platform branch. The assessment request keeps its three content items and records the
 duly-reasoned requirement, and the four-month reply is separate from the conditional updates
 on major developments and outcome. The live inventory has 131 populated content lists across
-1,459 proposed norms. Subsequent articles' findings remain pending.
+1,459 proposed norms.
+
+Article 75a's request-content finding is now corrected. Three fields apply to every request;
+the simple-request and decision-request additions are separate conditional duties with their
+own content; and sending a copy to the territorial market surveillance authority is an action
+rather than a request field. The live inventory has 133 populated content lists across 1,462
+proposed norms. Subsequent articles' findings remain pending.
 
 | Norm | Content entries | Decision | Finding / treatment |
 |---|---:|---|---|

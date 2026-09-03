@@ -65,7 +65,7 @@ def test_pinned_corpus_triage_is_documented_without_mutating_review():
         if norm.mandatory_content
     }
     assert len(content_rows) == 146  # Historical audit baseline.
-    assert len(expected_content) == 131
+    assert len(expected_content) == 133
     baseline_content = {norm_id: int(count) for norm_id, count, _ in content_rows}
     # Article 40's example is now nested in its proper deliverable, not a third requirement.
     baseline_content["AIA-NORM-A040-P2-RESOURCE-PERFORMANCE-DELIVERABLES"] = 2
@@ -129,4 +129,8 @@ def test_pinned_corpus_triage_is_documented_without_mutating_review():
     # Article 75 separates the initial four-month reply from the later proceeding updates.
     baseline_content["AIA-NORM-A075-P2A-RESPOND-AND-UPDATE"] = 1
     baseline_content["AIA-NORM-A075-P2A-UPDATE-ON-PROCEEDINGS"] = 2
+    # Article 75a separates common request fields, the two branches and the copy action.
+    baseline_content["AIA-NORM-A075A-P3-INFORMATION-REQUEST-CONTENT"] = 3
+    baseline_content["AIA-NORM-A075A-P3-SIMPLE-REQUEST-ADDITIONS"] = 2
+    baseline_content["AIA-NORM-A075A-P3-DECISION-REQUEST-ADDITIONS"] = 2
     assert baseline_content == expected_content

@@ -1661,15 +1661,15 @@ def test_inventory_cannot_be_misreported_as_independently_approved(metrics):
     assert metrics.needs_review_characters == 0
     assert metrics.review_statuses == {
         "approved": 1467,
-        "proposed": 1463,
+        "proposed": 1466,
     }
     assert metrics.timed_review_records == 0
-    assert metrics.total_review_records == 2931
+    assert metrics.total_review_records == 2934
 
 
 def test_semantic_pass_finds_propositions_a_shall_scan_misses(metrics):
     assert metrics.shall_vs_semantic_disagreements == 571
-    assert metrics.shall_token_candidate_recall == pytest.approx(888 / 1459)
+    assert metrics.shall_token_candidate_recall == pytest.approx(891 / 1462)
     assert "AIA-NORM-A011-P1-SIMPLIFY" in metrics.semantic_norms_without_shall_token
     assert "AIA-NORM-A043-P5-AMEND" in metrics.semantic_norms_without_shall_token
     assert "AIA-NORM-A060-P4-PERMISSION" in metrics.semantic_norms_without_shall_token
@@ -1682,7 +1682,7 @@ def test_metrics_expose_many_to_many_and_implementation_debt(metrics):
     assert metrics.mapping_shape.many_norms_to_one_target == 351
     assert metrics.mapping_shape.one_norm_to_many_targets == 0
     assert metrics.mapping_shape.many_to_many == 15
-    assert metrics.mapping_shape.unmapped == 1067
+    assert metrics.mapping_shape.unmapped == 1070
     assert metrics.semantic_vs_existing_implementation_disagreements == 239
     assert metrics.semantic_norms_without_existing_implementation == [
         "AIA-NORM-A002-P1-A-PROVIDER",
@@ -4435,12 +4435,29 @@ def test_articles_seventy_five_a_and_b_extract_ai_office_enforcement_powers():
         if norm.norm_id.startswith("AIA-NORM-A075B-")
     ]
 
-    assert len(article_a) == 21
+    assert len(article_a) == 24
     assert len(article_b) == 3
     assert len(article_a["AIA-NORM-A075A-P4-INSPECTION-POWERS"].mandatory_content) == 5
     assert article_a["AIA-NORM-A075A-P3-VOLUNTARY-REPLY-CORRECTNESS"].implementation_mode.value == (
         "missing"
     )
+
+    # Common request fields, the two request-type branches and the copy are separate.
+    common = article_a["AIA-NORM-A075A-P3-INFORMATION-REQUEST-CONTENT"]
+    simple = article_a["AIA-NORM-A075A-P3-SIMPLE-REQUEST-ADDITIONS"]
+    decision = article_a["AIA-NORM-A075A-P3-DECISION-REQUEST-ADDITIONS"]
+    copy = article_a["AIA-NORM-A075A-P3-SEND-COPY-TO-TERRITORIAL-AUTHORITY"]
+    assert len(common.mandatory_content) == 3
+    assert not common.conditions
+    assert simple.conditions == ["the request is a simple request"]
+    assert decision.conditions == ["the request is made by decision"]
+    assert "no obligation to provide the information" in simple.mandatory_content[0]
+    assert "incorrect, incomplete or misleading" in decision.mandatory_content[0]
+    assert "Court of Justice" in decision.mandatory_content[1]
+    # Sending the copy is an action, not a field of the request.
+    assert not copy.mandatory_content
+    assert "market surveillance authority" in copy.action
+    assert all(norm.review.status.value == "proposed" for norm in article_a.values())
 
 
 def test_articles_seventy_five_c_and_d_extract_penalties_and_safeguards():
