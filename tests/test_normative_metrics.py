@@ -1661,15 +1661,15 @@ def test_inventory_cannot_be_misreported_as_independently_approved(metrics):
     assert metrics.needs_review_characters == 0
     assert metrics.review_statuses == {
         "approved": 1467,
-        "proposed": 1398,
+        "proposed": 1400,
     }
     assert metrics.timed_review_records == 0
-    assert metrics.total_review_records == 2866
+    assert metrics.total_review_records == 2868
 
 
 def test_semantic_pass_finds_propositions_a_shall_scan_misses(metrics):
-    assert metrics.shall_vs_semantic_disagreements == 533
-    assert metrics.shall_token_candidate_recall == pytest.approx(861 / 1394)
+    assert metrics.shall_vs_semantic_disagreements == 534
+    assert metrics.shall_token_candidate_recall == pytest.approx(862 / 1396)
     assert "AIA-NORM-A011-P1-SIMPLIFY" in metrics.semantic_norms_without_shall_token
     assert "AIA-NORM-A043-P5-AMEND" in metrics.semantic_norms_without_shall_token
     assert "AIA-NORM-A060-P4-PERMISSION" in metrics.semantic_norms_without_shall_token
@@ -1677,12 +1677,12 @@ def test_semantic_pass_finds_propositions_a_shall_scan_misses(metrics):
 
 
 def test_metrics_expose_many_to_many_and_implementation_debt(metrics):
-    assert metrics.normative_segments_with_multiple_norms == 317
+    assert metrics.normative_segments_with_multiple_norms == 319
     assert metrics.mapping_shape.one_norm_to_one_target == 26
     assert metrics.mapping_shape.many_norms_to_one_target == 349
     assert metrics.mapping_shape.one_norm_to_many_targets == 0
     assert metrics.mapping_shape.many_to_many == 15
-    assert metrics.mapping_shape.unmapped == 1004
+    assert metrics.mapping_shape.unmapped == 1006
     assert metrics.semantic_vs_existing_implementation_disagreements == 238
     assert metrics.semantic_norms_without_existing_implementation == [
         "AIA-NORM-A002-P1-A-PROVIDER",
@@ -3312,11 +3312,34 @@ def test_article_sixty_a_extracts_section_b_testing_framework():
     assert len(segments) == 11
     assert all(segment.review.status.value == "approved" for segment in segments)
     assert all(segment.review.verified_by == "codex" for segment in segments)
-    assert len(norms) == 9
+    assert len(norms) == 11
     framework = norms["AIA-NORM-A060A-P5-FRAMEWORK-REQUIREMENTS"]
     assert len(framework.qualifier_spans) == 4
     assert len(framework.mandatory_content) == 4
     assert sum(norm.implementation_mode.value == "missing" for norm in norms.values()) == 3
+
+    # Close good-faith cooperation is owed by every framework State; removing practical obstacles
+    # additionally depends on that removal being necessary.
+    cooperate = norms["AIA-NORM-A060A-P4-COOPERATE-AND-REMOVE-OBSTACLES"]
+    obstacles = norms["AIA-NORM-A060A-P4-REMOVE-PRACTICAL-OBSTACLES"]
+    adopted = "the Member State has adopted a real-world testing framework"
+    assert cooperate.conditions == [adopted]
+    assert obstacles.conditions == [
+        adopted,
+        "removal is necessary to successfully implement the framework and test Section B "
+        "AI-enabled products",
+    ]
+    assert "physical public infrastructure" in obstacles.action
+
+    # Sectoral compliance is an operator duty; the second sentence limits those requirements.
+    comply = norms["AIA-NORM-A060A-P6-COMPLY-WITH-SECTORAL-LAW"]
+    limit = norms["AIA-NORM-A060A-P6-SECTORAL-REQUIREMENTS-DO-NOT-OBSTRUCT"]
+    assert comply.kind.value == "obligation"
+    assert comply.implementation_mode.value == "missing"
+    assert limit.kind.value == "legal_consequence"
+    assert limit.product_scope.value == "no_product_action"
+    assert "to the extent necessary to enable the paragraph 1 testing" in limit.action
+    assert all(norm.review.status.value == "proposed" for norm in norms.values())
 
 
 def test_article_sixty_one_extracts_informed_consent_requirements():

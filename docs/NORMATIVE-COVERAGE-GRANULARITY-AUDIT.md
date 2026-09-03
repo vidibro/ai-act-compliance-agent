@@ -28,7 +28,7 @@ independently triggered notifications, optional Board powers summarised as dutie
 information missing the no-detriment/no-justification safeguards.
 
 Reproduce the live read-only candidate list, source hashes and full scan denominator (after the
-corrections below, 71 candidates remain; a disappearing signal is not independent norm approval):
+corrections below, 70 candidates remain; a disappearing signal is not independent norm approval):
 
 ```sh
 uv run python scripts/audit_norm_granularity.py --act-version 2026-07-27
@@ -194,20 +194,22 @@ modal/list scan. Source references identify full norm records in `source-records
 | 58 | Split paragraph 4's agreement of testing terms/safeguards with participants from cooperation with other national competent authorities. Both retain the supervised real-world sandbox testing context; only cooperation has the additional where-appropriate condition. The two safeguards content groups still qualify one agreement duty. Paragraphs 1–3 are unchanged. | Six proposed norms instead of five; regression checks cover distinct recipients/actions, conditions, exact quotes, source linkage and unchanged review/runtime boundaries. |
 | 59 | Expanded paragraph 1(a)'s five public-interest areas into an explicit alternative group under the shared substantial-public-interest purpose and enacted development actors. Preserved all health examples and environmental, energy, transport/infrastructure and public-service details without inventing cumulative checks. The parent permission still requires all ten lettered conditions, each linked to its child norm. | Still thirteen proposed norms; regression checks cover AND/OR structure, exact source details, parent/child links and unchanged source-review and implementation boundaries. The live inventory has 142 populated content lists, not 143. |
 | 60 | Split paragraph 6 into Member State conferral and market surveillance authority use of the powers, and paragraph 7 into Article 73 reporting, immediate mitigation, the conditional suspension/termination duty and the prompt-recall procedure. Paragraph 4(h) separates informing participating deployers from the jointly concluded roles agreement; 4(i) separates Article 61 consent from the law-enforcement substitute's no-negative-effect and post-test deletion duties, which require both law-enforcement context AND that seeking consent would prevent testing. 4(c)'s three registration routes became mutually exclusive `any_of` gates with their exact Annex III scopes, identifiers and information sources, and its truncated quote now covers the whole point. A nearby source check also separated the subject's withdrawal right from the separate deletion request. | Thirty-two proposed norms instead of twenty-four; three focused semantic regressions plus metric and audit reconciliation. Implementation debt rises to 221 because five separated provider duties have no existing rule; the ledger's earlier count hid them inside two checklists. No user verification or runtime coverage is claimed. |
+| 60a | Split paragraph 6's operator duty to comply with the Section B harmonisation provisions from the separate limitation preventing those requirements from obstructing Article 60a testing. A nearby source check also separated the unconditional duty to ensure close good-faith authority cooperation from the removal of practical obstacles, which applies only where that removal is necessary. Paragraph 5's framework-content requirement is unchanged. | Eleven proposed norms instead of nine; regressions cover the differing conditions, kinds, product scope and the retained framework content. Implementation debt is unchanged because both separated effects fall outside the supported reporting surface. |
 
 The original 88-row ledger above remains a historical audit baseline. Article 31's five,
-Article 57's nine, Article 58's one and Article 60's two split candidate segments no longer trigger
-the scanner, leaving 71 live signals. The current inventory has 1,394 proposed norms and 1,471
-segments. Implementation debt rose from 216 to 221 records: Article 60's five separated
-provider duties are in-scope propositions that no existing rule covers, which the previous
-combined checklists concealed. Of the other 42 norms added since baseline, 39 concern actors
-outside supported reporting roles, two are no-product-action enforcement consequences, and one
-is the Article 60(4)(h) roles agreement already carried by the existing report-only obligation.
+Article 57's nine, Article 58's one, Article 60's two and Article 60a's one split candidate
+segments no longer trigger the scanner, leaving 70 live signals. The current inventory has
+1,396 proposed norms and 1,471 segments. Implementation debt rose from 216 to 221 records:
+Article 60's five separated provider duties are in-scope propositions that no existing rule
+covers, which the previous
+combined checklists concealed. Of the other 44 norms added since baseline, 40 concern actors
+outside supported reporting roles, three are no-product-action consequences, and one is the
+Article 60(4)(h) roles agreement already carried by the existing report-only obligation.
 Source approvals have not been relabelled as norm approvals. The Article 57 mitigation proposition
 preserves the supervisory requirement for adequate mitigation; it does not assign a new operational
 product action or turn suspension into a duty. This actor interpretation remains subject to
 independent norm review, as do the other corrections.
-Next recorded correction: Article 60a. Articles 47–49 and 51–56 have no open recorded correction
+Next recorded correction: Article 61. Articles 47–49 and 51–56 have no open recorded correction
 in these ledgers. The Article 50 corrections do not remove their heuristic scan signals; a signal
 is not a finding or an approval status.
 

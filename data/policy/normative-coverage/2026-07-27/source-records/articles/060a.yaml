@@ -48,10 +48,29 @@ records:
   verification_mode: not_assessed
 - norm_id: AIA-NORM-A060A-P4-COOPERATE-AND-REMOVE-OBSTACLES
   source: A060A-P004
-  quote: Member States that have adopted real-world testing frameworks shall ensure that the relevant national competent authorities, relevant authorities and public authorities responsible for the management and operation of infrastructure and products covered by Union harmonisation legislation listed in Section B of Annex I cooperate closely with each other in good faith and remove any practical obstacles, including on procedural rules providing access to physical public infrastructure, where this is necessary, to successfully implement those real-world testing frameworks and test AI-enabled products covered by Union harmonisation legislation listed in Section B of Annex I.
-  action: ensure good-faith authority cooperation and removal of practical obstacles needed to implement frameworks and test Section B products
+  quote: Member States that have adopted real-world testing frameworks shall ensure that the relevant national competent authorities, relevant authorities and public authorities responsible for the management and operation of infrastructure and products covered by Union harmonisation legislation listed in Section B of Annex I cooperate closely with each other in good faith
+  action: ensure that the relevant national competent, relevant and infrastructure or product
+    authorities cooperate closely with each other in good faith
   subject_ref: member_state
   subject_category: member_state
+  conditions: [the Member State has adopted a real-world testing framework]
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A060A-P4-REMOVE-PRACTICAL-OBSTACLES
+  source: A060A-P004
+  quote: remove any practical obstacles, including on procedural rules providing access to physical public infrastructure, where this is necessary, to successfully implement those real-world testing frameworks and test AI-enabled products covered by Union harmonisation legislation listed in Section B of Annex I.
+  action: ensure that those authorities remove any practical obstacles, including on procedural rules
+    providing access to physical public infrastructure, to implementing the frameworks and testing
+    Section B AI-enabled products
+  subject_ref: member_state
+  subject_category: member_state
+  conditions:
+  - the Member State has adopted a real-world testing framework
+  - removal is necessary to successfully implement the framework and test Section B AI-enabled
+    products
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -86,8 +105,23 @@ records:
   verification_mode: not_assessed
 - norm_id: AIA-NORM-A060A-P6-COMPLY-WITH-SECTORAL-LAW
   source: A060A-P010
-  quote: The real-world testing shall comply with the applicable provisions laid down in the Union harmonisation legislation listed in Section B of Annex I. Any requirements laid down in those provisions shall not affect the application of this Article to the extent necessary to enable the testing referred to in paragraph 1.
-  action: comply with applicable Section B harmonisation provisions while applying Article 60a to the extent necessary to enable its testing
+  quote: The real-world testing shall comply with the applicable provisions laid down in the Union harmonisation legislation listed in Section B of Annex I.
+  action: comply with the applicable provisions of the Section B Union harmonisation legislation when
+    conducting the real-world testing
   subject_ref: provider_or_prospective_provider
   subject_category: supported_operator
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A060A-P6-SECTORAL-REQUIREMENTS-DO-NOT-OBSTRUCT
+  source: A060A-P010
+  quote: Any requirements laid down in those provisions shall not affect the application of this Article to the extent necessary to enable the testing referred to in paragraph 1.
+  action: keep the Section B requirements from affecting the application of Article 60a to the extent
+    necessary to enable the paragraph 1 testing
+  subject_ref: provider_or_prospective_provider
+  subject_category: supported_operator
+  kind: legal_consequence
+  product_scope: no_product_action
+  product_scope_reason: Limits the effect of other applicable law rather than creating an independent
+    product action.
+  implementation_mode: none_required
+  implementation_reason: No independent product action is required.
   verification_mode: not_assessed

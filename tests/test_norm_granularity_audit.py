@@ -24,7 +24,7 @@ def test_pinned_corpus_triage_is_documented_without_mutating_review():
     assert bundle.model_dump() == before
     assert bundle.validated_documents == 133
     assert len(bundle.text_review.segments) == 1471
-    assert len(candidates) == 71
+    assert len(candidates) == 70
 
     segments = {s.segment_id: s for s in bundle.text_review.segments}
     for candidate in candidates:
@@ -43,6 +43,7 @@ def test_pinned_corpus_triage_is_documented_without_mutating_review():
     }
     closed_by_splitting.add("AIA-TEXT-A058-P018")
     closed_by_splitting |= {"AIA-TEXT-A060-P019", "AIA-TEXT-A060-P020"}
+    closed_by_splitting.add("AIA-TEXT-A060A-P010")
     assert set(ids) - closed_by_splitting == {candidate.segment_id for candidate in candidates}
 
     content_report = (root / "docs/NORMATIVE-COVERAGE-CONTENT-AUDIT.md").read_text()

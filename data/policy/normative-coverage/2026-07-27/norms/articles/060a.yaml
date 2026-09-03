@@ -152,15 +152,12 @@ norms:
   subjects:
   - subject_ref: member_state
     category: member_state
-  action: ensure good-faith authority cooperation and removal of practical obstacles needed to implement
-    frameworks and test Section B products
+  action: ensure that the relevant national competent, relevant and infrastructure or product authorities
+    cooperate closely with each other in good faith
   norm_text: Member States that have adopted real-world testing frameworks shall ensure that the relevant
     national competent authorities, relevant authorities and public authorities responsible for the management
     and operation of infrastructure and products covered by Union harmonisation legislation listed in
-    Section B of Annex I cooperate closely with each other in good faith and remove any practical obstacles,
-    including on procedural rules providing access to physical public infrastructure, where this is necessary,
-    to successfully implement those real-world testing frameworks and test AI-enabled products covered
-    by Union harmonisation legislation listed in Section B of Annex I.
+    Section B of Annex I cooperate closely with each other in good faith
   detection_channels:
   - semantic_legal_effect
   - shall_token
@@ -168,7 +165,48 @@ norms:
   - AIA-TEXT-A060A-P004
   qualifier_spans: []
   effective_date_spans: []
-  conditions: []
+  conditions:
+  - the Member State has adopted a real-world testing framework
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_refs: []
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A060A-P4-REMOVE-PRACTICAL-OBSTACLES
+  act_version_date: '2026-07-27'
+  kind: obligation
+  subjects:
+  - subject_ref: member_state
+    category: member_state
+  action: ensure that those authorities remove any practical obstacles, including on procedural rules
+    providing access to physical public infrastructure, to implementing the frameworks and testing Section
+    B AI-enabled products
+  norm_text: remove any practical obstacles, including on procedural rules providing access to physical
+    public infrastructure, where this is necessary, to successfully implement those real-world testing
+    frameworks and test AI-enabled products covered by Union harmonisation legislation listed in Section
+    B of Annex I.
+  detection_channels:
+  - semantic_legal_effect
+  primary_spans:
+  - AIA-TEXT-A060A-P004
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions:
+  - the Member State has adopted a real-world testing framework
+  - removal is necessary to successfully implement the framework and test Section B AI-enabled products
   exceptions: []
   mandatory_content: []
   dependencies: []
@@ -312,12 +350,10 @@ norms:
   subjects:
   - subject_ref: provider_or_prospective_provider
     category: supported_operator
-  action: comply with applicable Section B harmonisation provisions while applying Article 60a to the
-    extent necessary to enable its testing
+  action: comply with the applicable provisions of the Section B Union harmonisation legislation when
+    conducting the real-world testing
   norm_text: The real-world testing shall comply with the applicable provisions laid down in the Union
-    harmonisation legislation listed in Section B of Annex I. Any requirements laid down in those provisions
-    shall not affect the application of this Article to the extent necessary to enable the testing referred
-    to in paragraph 1.
+    harmonisation legislation listed in Section B of Annex I.
   detection_channels:
   - semantic_legal_effect
   - shall_token
@@ -334,6 +370,44 @@ norms:
   implementation_mode: missing
   implementation_refs: []
   implementation_reason: ''
+  verification_mode: not_assessed
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A060A-P6-SECTORAL-REQUIREMENTS-DO-NOT-OBSTRUCT
+  act_version_date: '2026-07-27'
+  kind: legal_consequence
+  subjects:
+  - subject_ref: provider_or_prospective_provider
+    category: supported_operator
+  action: keep the Section B requirements from affecting the application of Article 60a to the extent
+    necessary to enable the paragraph 1 testing
+  norm_text: Any requirements laid down in those provisions shall not affect the application of this Article
+    to the extent necessary to enable the testing referred to in paragraph 1.
+  detection_channels:
+  - semantic_legal_effect
+  - shall_token
+  - deeming_or_consequence
+  primary_spans:
+  - AIA-TEXT-A060A-P010
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions: []
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: no_product_action
+  product_scope_reason: Limits the effect of other applicable law rather than creating an independent
+    product action.
+  implementation_mode: none_required
+  implementation_refs: []
+  implementation_reason: No independent product action is required.
   verification_mode: not_assessed
   review:
     status: proposed

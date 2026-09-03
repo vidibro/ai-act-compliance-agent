@@ -76,7 +76,12 @@ enforcement AND that seeking consent would prevent testing, so law-enforcement s
 not activate them. Paragraph 7's compound content list also became four norms, and paragraph 6's
 combined content list is now the Member State conferral duty's three powers. The live inventory has
 139 populated content lists and 1,394 proposed norms; the 146-row table below remains the
-historical baseline. Subsequent articles' findings remain pending.
+historical baseline.
+
+Article 60a's framework-content requirement keeps its four groups. Its recorded segment finding and
+a nearby cooperation defect were corrected without touching any content list, so the live inventory
+still has 139 populated lists across 1,396 proposed norms. Subsequent articles' findings remain
+pending.
 
 | Norm | Content entries | Decision | Finding / treatment |
 |---|---:|---|---|
