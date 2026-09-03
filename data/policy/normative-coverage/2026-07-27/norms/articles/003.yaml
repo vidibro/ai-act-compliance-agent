@@ -2494,8 +2494,30 @@ norms:
   - AIA-TEXT-A003-P075
   effective_date_spans: []
   conditions:
-  - cross-border collective harm satisfying point (a) and one of its establishment or origin connections
-  - or concurrent harm with common features by the same operator in at least three Member States
+  - operator: all_of
+    operands:
+    - an act or omission is contrary to Union law protecting the interest of individuals
+    - operator: any_of
+      operands:
+      - operator: any_of
+        operands:
+        - the act or omission has harmed or is likely to harm the collective interests of individuals
+          residing in at least two Member States other than the Member State in which the act or omission
+          originated or took place
+        - the act or omission has harmed or is likely to harm the collective interests of individuals
+          residing in at least two Member States other than the Member State in which the provider concerned
+          or, where applicable, its authorised representative is located or established
+        - the act or omission has harmed or is likely to harm the collective interests of individuals
+          residing in at least two Member States other than the Member State in which the deployer is
+          established, when the infringement is committed by the deployer
+      - operator: all_of
+        operands:
+        - the act or omission has caused, causes or is likely to cause harm to the collective interests
+          of individuals
+        - the infringement has common features, including the same unlawful practice or the same interest
+          being infringed
+        - the infringement is occurring concurrently, committed by the same operator, in at least three
+          Member States
   exceptions: []
   mandatory_content: []
   dependencies: []

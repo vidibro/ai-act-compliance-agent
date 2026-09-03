@@ -47,3 +47,28 @@ def corrected_bundle():
         annexes_root=policy / "annexes",
         guidance_root=policy / "guidance",
     )
+
+
+def test_article_three_preserves_both_routes_and_cross_border_threshold(corrected_bundle):
+    norm = next(
+        n
+        for n in corrected_bundle.norm_inventory.norms
+        if n.norm_id.endswith("A003-D061-WIDESPREAD-INFRINGEMENT")
+    )
+    root = norm.conditions[0]
+    assert isinstance(root, ConditionGroup) and root.operator == "all_of"
+    assert "contrary to Union law" in root.operands[0]
+    routes = root.operands[1]
+    assert isinstance(routes, ConditionGroup) and routes.operator == "any_of"
+    assert len(routes.operands) == 2
+    connections, concurrent = routes.operands
+    assert connections.operator == "any_of" and len(connections.operands) == 3
+    assert all("at least two Member States other than" in item for item in connections.operands)
+    assert "originated or took place" in connections.operands[0]
+    assert "authorised representative" in connections.operands[1]
+    assert "when the infringement is committed by the deployer" in connections.operands[2]
+    assert concurrent.operator == "all_of" and len(concurrent.operands) == 3
+    assert "common features" in concurrent.operands[1]
+    assert "same operator, in at least three" in concurrent.operands[2]
+    assert norm.kind.value == "definition"
+    assert norm.review.status.value == "proposed"
