@@ -1661,15 +1661,15 @@ def test_inventory_cannot_be_misreported_as_independently_approved(metrics):
     assert metrics.needs_review_characters == 0
     assert metrics.review_statuses == {
         "approved": 1467,
-        "proposed": 1432,
+        "proposed": 1443,
     }
     assert metrics.timed_review_records == 0
-    assert metrics.total_review_records == 2900
+    assert metrics.total_review_records == 2911
 
 
 def test_semantic_pass_finds_propositions_a_shall_scan_misses(metrics):
-    assert metrics.shall_vs_semantic_disagreements == 561
-    assert metrics.shall_token_candidate_recall == pytest.approx(867 / 1428)
+    assert metrics.shall_vs_semantic_disagreements == 569
+    assert metrics.shall_token_candidate_recall == pytest.approx(870 / 1439)
     assert "AIA-NORM-A011-P1-SIMPLIFY" in metrics.semantic_norms_without_shall_token
     assert "AIA-NORM-A043-P5-AMEND" in metrics.semantic_norms_without_shall_token
     assert "AIA-NORM-A060-P4-PERMISSION" in metrics.semantic_norms_without_shall_token
@@ -1677,12 +1677,12 @@ def test_semantic_pass_finds_propositions_a_shall_scan_misses(metrics):
 
 
 def test_metrics_expose_many_to_many_and_implementation_debt(metrics):
-    assert metrics.normative_segments_with_multiple_norms == 346
+    assert metrics.normative_segments_with_multiple_norms == 354
     assert metrics.mapping_shape.one_norm_to_one_target == 26
     assert metrics.mapping_shape.many_norms_to_one_target == 349
     assert metrics.mapping_shape.one_norm_to_many_targets == 0
     assert metrics.mapping_shape.many_to_many == 15
-    assert metrics.mapping_shape.unmapped == 1038
+    assert metrics.mapping_shape.unmapped == 1049
     assert metrics.semantic_vs_existing_implementation_disagreements == 239
     assert metrics.semantic_norms_without_existing_implementation == [
         "AIA-NORM-A002-P1-A-PROVIDER",
@@ -3661,12 +3661,39 @@ def test_article_sixty_eight_extracts_scientific_panel_safeguards():
     assert len(segments) == 19
     assert all(segment.review.status.value == "approved" for segment in segments)
     assert all(segment.review.verified_by == "codex" for segment in segments)
-    assert len(norms) == 8
+    assert len(norms) == 19
     tasks = norms["AIA-NORM-A068-P3-ADVISE-AND-SUPPORT-AI-OFFICE"]
     gpai = norms["AIA-NORM-A068-P3-A-GPAI-SUPPORT-TASKS"]
     assert len(tasks.qualifier_spans) == 4
     assert len(gpai.qualifier_spans) == 5
-    assert len(norms["AIA-NORM-A068-P4-EXPERT-INTEGRITY-AND-DISCLOSURE"].mandatory_content) == 4
+    # Each supported task is a separate action, so neither parent keeps a checklist.
+    assert not tasks.mandatory_content
+    assert not gpai.mandatory_content
+    for parent in (tasks, gpai):
+        for span_id in parent.qualifier_spans:
+            segment = next(s for s in segments if s.segment_id == span_id)
+            children = [n for n in segment.norm_ids if n != parent.norm_id]
+            assert children
+            assert all(norms[child].primary_spans == [span_id] for child in children)
+
+    # Only support for the market surveillance authorities is request-triggered.
+    assert norms["AIA-NORM-A068-P3-B-SUPPORT-SURVEILLANCE-AUTHORITIES"].conditions == [
+        "the market surveillance authorities request the support"
+    ]
+    cross_border = norms["AIA-NORM-A068-P3-C-SUPPORT-CROSS-BORDER-SURVEILLANCE"]
+    assert not cross_border.conditions
+    assert "without prejudice" in cross_border.action
+    # Article 90 qualifies the alert task specifically.
+    assert "Article 90" in norms["AIA-NORM-A068-P3-A-I-ALERT-SYSTEMIC-RISK"].action
+
+    # The four expert protections are distinct, and the prohibition is typed as one.
+    integrity = norms["AIA-NORM-A068-P4-EXPERT-INTEGRITY-AND-DISCLOSURE"]
+    assert not integrity.mandatory_content
+    assert norms["AIA-NORM-A068-P4-NO-INSTRUCTIONS"].kind.value == "prohibition"
+    assert "publicly available" in norms["AIA-NORM-A068-P4-DECLARATION-OF-INTERESTS"].action
+    # The AI Office conflict-management duty stays a separate norm rather than being duplicated.
+    assert norms["AIA-NORM-A068-P4-MANAGE-CONFLICTS"].subjects[0].subject_ref == "ai_office"
+    assert all(norm.review.status.value == "proposed" for norm in norms.values())
 
 
 def test_article_sixty_nine_extracts_member_state_expert_access():

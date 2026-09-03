@@ -37,11 +37,46 @@ records:
 - norm_id: AIA-NORM-A068-P3-ADVISE-AND-SUPPORT-AI-OFFICE
   source: A068-P007
   quote: 'The scientific panel shall advise and support the AI Office, in particular with regard to the following tasks:'
-  action: advise and support the AI Office across every enacted GPAI surveillance and safeguard task
+  action: advise and support the AI Office, in particular on the enacted tasks
   subject_ref: scientific_panel
   subject_category: union_institution_or_body
-  mandatory_content: [GPAI implementation and enforcement support, requested market-surveillance support, cross-border surveillance support without prejudicing authority powers, Union safeguard-procedure support]
   qualifier_spans: [A068-P008, A068-P014, A068-P015, A068-P016]
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A068-P3-B-SUPPORT-SURVEILLANCE-AUTHORITIES
+  source: A068-P014
+  quote: supporting the work of market surveillance authorities, at their request;
+  action: support the work of market surveillance authorities
+  subject_ref: scientific_panel
+  subject_category: union_institution_or_body
+  conditions: [the market surveillance authorities request the support]
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A068-P3-C-SUPPORT-CROSS-BORDER-SURVEILLANCE
+  source: A068-P015
+  quote: supporting cross-border market surveillance activities as referred to in Article 74(11), without prejudice to the powers of market surveillance authorities;
+  action: support the Article 74(11) cross-border market surveillance activities without prejudice to
+    the powers of the market surveillance authorities
+  subject_ref: scientific_panel
+  subject_category: union_institution_or_body
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A068-P3-D-SUPPORT-SAFEGUARD-PROCEDURE
+  source: A068-P016
+  quote: supporting the AI Office in carrying out its duties in the context of the Union safeguard procedure pursuant to Article 81.
+  action: support the AI Office in carrying out its duties under the Article 81 Union safeguard
+    procedure
+  subject_ref: scientific_panel
+  subject_category: union_institution_or_body
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -50,11 +85,68 @@ records:
 - norm_id: AIA-NORM-A068-P3-A-GPAI-SUPPORT-TASKS
   source: A068-P008
   quote: 'supporting the implementation and enforcement of this Regulation as regards general-purpose AI models and systems, in particular by:'
-  action: perform every enacted GPAI risk alert evaluation classification and tooling support task
+  action: support the implementation and enforcement of this Regulation as regards general-purpose AI
+    models and systems, in particular through the enacted tasks
   subject_ref: scientific_panel
   subject_category: union_institution_or_body
-  mandatory_content: [Article 90 systemic-risk alerts, capability-evaluation tools methodologies and benchmarks, systemic-risk GPAI model classification advice, other GPAI model and system classification advice, tools and templates]
   qualifier_spans: [A068-P009, A068-P010, A068-P011, A068-P012, A068-P013]
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A068-P3-A-I-ALERT-SYSTEMIC-RISK
+  source: A068-P009
+  quote: alerting the AI Office of possible systemic risks at Union level of general-purpose AI models, in accordance with Article 90;
+  action: alert the AI Office of possible Union-level systemic risks of general-purpose AI models in
+    accordance with Article 90
+  subject_ref: scientific_panel
+  subject_category: union_institution_or_body
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A068-P3-A-II-EVALUATION-TOOLS
+  source: A068-P010
+  quote: contributing to the development of tools and methodologies for evaluating capabilities of general-purpose AI models and systems, including through benchmarks;
+  action: contribute to developing tools and methodologies, including benchmarks, for evaluating the
+    capabilities of general-purpose AI models and systems
+  subject_ref: scientific_panel
+  subject_category: union_institution_or_body
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A068-P3-A-III-SYSTEMIC-RISK-CLASSIFICATION-ADVICE
+  source: A068-P011
+  quote: providing advice on the classification of general-purpose AI models with systemic risk;
+  action: advise on the classification of general-purpose AI models with systemic risk
+  subject_ref: scientific_panel
+  subject_category: union_institution_or_body
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A068-P3-A-IV-MODEL-CLASSIFICATION-ADVICE
+  source: A068-P012
+  quote: providing advice on the classification of various general-purpose AI models and systems;
+  action: advise on the classification of various general-purpose AI models and systems
+  subject_ref: scientific_panel
+  subject_category: union_institution_or_body
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A068-P3-A-V-TOOLS-AND-TEMPLATES
+  source: A068-P013
+  quote: contributing to the development of tools and templates;
+  action: contribute to the development of tools and templates
+  subject_ref: scientific_panel
+  subject_category: union_institution_or_body
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -62,11 +154,45 @@ records:
   verification_mode: not_assessed
 - norm_id: AIA-NORM-A068-P4-EXPERT-INTEGRITY-AND-DISCLOSURE
   source: A068-P017
-  quote: The experts on the scientific panel shall perform their tasks with impartiality and objectivity, and shall ensure the confidentiality of information and data obtained in carrying out their tasks and activities. They shall neither seek nor take instructions from anyone when exercising their tasks under paragraph 3. Each expert shall draw up a declaration of interests, which shall be made publicly available.
-  action: perform panel tasks impartially objectively confidentially and independently and publish a declaration of interests
+  quote: The experts on the scientific panel shall perform their tasks with impartiality and objectivity
+  action: perform the panel's tasks with impartiality and objectivity
   subject_ref: scientific_panel_expert
   subject_category: external_private_party
-  mandatory_content: [impartiality and objectivity, information and data confidentiality, no sought or accepted instructions, public declaration of interests]
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A068-P4-ENSURE-CONFIDENTIALITY
+  source: A068-P017
+  quote: shall ensure the confidentiality of information and data obtained in carrying out their tasks and activities.
+  action: ensure the confidentiality of information and data obtained in carrying out the panel's
+    tasks and activities
+  subject_ref: scientific_panel_expert
+  subject_category: external_private_party
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A068-P4-NO-INSTRUCTIONS
+  source: A068-P017
+  quote: They shall neither seek nor take instructions from anyone when exercising their tasks under paragraph 3.
+  action: neither seek nor take instructions from anyone when exercising the paragraph 3 tasks
+  subject_ref: scientific_panel_expert
+  subject_category: external_private_party
+  kind: prohibition
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A068-P4-DECLARATION-OF-INTERESTS
+  source: A068-P017
+  quote: Each expert shall draw up a declaration of interests, which shall be made publicly available.
+  action: draw up a declaration of interests that is made publicly available
+  subject_ref: scientific_panel_expert
+  subject_category: external_private_party
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required

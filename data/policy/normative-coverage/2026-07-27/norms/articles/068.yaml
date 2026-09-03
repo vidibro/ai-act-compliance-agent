@@ -124,7 +124,7 @@ norms:
   subjects:
   - subject_ref: scientific_panel
     category: union_institution_or_body
-  action: advise and support the AI Office across every enacted GPAI surveillance and safeguard task
+  action: advise and support the AI Office, in particular on the enacted tasks
   norm_text: 'The scientific panel shall advise and support the AI Office, in particular with regard to
     the following tasks:'
   detection_channels:
@@ -141,11 +141,110 @@ norms:
   effective_date_spans: []
   conditions: []
   exceptions: []
-  mandatory_content:
-  - GPAI implementation and enforcement support
-  - requested market-surveillance support
-  - cross-border surveillance support without prejudicing authority powers
-  - Union safeguard-procedure support
+  mandatory_content: []
+  dependencies: []
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_refs: []
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A068-P3-B-SUPPORT-SURVEILLANCE-AUTHORITIES
+  act_version_date: '2026-07-27'
+  kind: obligation
+  subjects:
+  - subject_ref: scientific_panel
+    category: union_institution_or_body
+  action: support the work of market surveillance authorities
+  norm_text: supporting the work of market surveillance authorities, at their request;
+  detection_channels:
+  - semantic_legal_effect
+  primary_spans:
+  - AIA-TEXT-A068-P014
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions:
+  - the market surveillance authorities request the support
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_refs: []
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A068-P3-C-SUPPORT-CROSS-BORDER-SURVEILLANCE
+  act_version_date: '2026-07-27'
+  kind: obligation
+  subjects:
+  - subject_ref: scientific_panel
+    category: union_institution_or_body
+  action: support the Article 74(11) cross-border market surveillance activities without prejudice to
+    the powers of the market surveillance authorities
+  norm_text: supporting cross-border market surveillance activities as referred to in Article 74(11),
+    without prejudice to the powers of market surveillance authorities;
+  detection_channels:
+  - semantic_legal_effect
+  primary_spans:
+  - AIA-TEXT-A068-P015
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions: []
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_refs: []
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A068-P3-D-SUPPORT-SAFEGUARD-PROCEDURE
+  act_version_date: '2026-07-27'
+  kind: obligation
+  subjects:
+  - subject_ref: scientific_panel
+    category: union_institution_or_body
+  action: support the AI Office in carrying out its duties under the Article 81 Union safeguard procedure
+  norm_text: supporting the AI Office in carrying out its duties in the context of the Union safeguard
+    procedure pursuant to Article 81.
+  detection_channels:
+  - semantic_legal_effect
+  primary_spans:
+  - AIA-TEXT-A068-P016
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions: []
+  exceptions: []
+  mandatory_content: []
   dependencies: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -168,7 +267,8 @@ norms:
   subjects:
   - subject_ref: scientific_panel
     category: union_institution_or_body
-  action: perform every enacted GPAI risk alert evaluation classification and tooling support task
+  action: support the implementation and enforcement of this Regulation as regards general-purpose AI
+    models and systems, in particular through the enacted tasks
   norm_text: 'supporting the implementation and enforcement of this Regulation as regards general-purpose
     AI models and systems, in particular by:'
   detection_channels:
@@ -185,12 +285,176 @@ norms:
   effective_date_spans: []
   conditions: []
   exceptions: []
-  mandatory_content:
-  - Article 90 systemic-risk alerts
-  - capability-evaluation tools methodologies and benchmarks
-  - systemic-risk GPAI model classification advice
-  - other GPAI model and system classification advice
-  - tools and templates
+  mandatory_content: []
+  dependencies: []
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_refs: []
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A068-P3-A-I-ALERT-SYSTEMIC-RISK
+  act_version_date: '2026-07-27'
+  kind: obligation
+  subjects:
+  - subject_ref: scientific_panel
+    category: union_institution_or_body
+  action: alert the AI Office of possible Union-level systemic risks of general-purpose AI models in accordance
+    with Article 90
+  norm_text: alerting the AI Office of possible systemic risks at Union level of general-purpose AI models,
+    in accordance with Article 90;
+  detection_channels:
+  - semantic_legal_effect
+  primary_spans:
+  - AIA-TEXT-A068-P009
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions: []
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_refs: []
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A068-P3-A-II-EVALUATION-TOOLS
+  act_version_date: '2026-07-27'
+  kind: obligation
+  subjects:
+  - subject_ref: scientific_panel
+    category: union_institution_or_body
+  action: contribute to developing tools and methodologies, including benchmarks, for evaluating the capabilities
+    of general-purpose AI models and systems
+  norm_text: contributing to the development of tools and methodologies for evaluating capabilities of
+    general-purpose AI models and systems, including through benchmarks;
+  detection_channels:
+  - semantic_legal_effect
+  primary_spans:
+  - AIA-TEXT-A068-P010
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions: []
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_refs: []
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A068-P3-A-III-SYSTEMIC-RISK-CLASSIFICATION-ADVICE
+  act_version_date: '2026-07-27'
+  kind: obligation
+  subjects:
+  - subject_ref: scientific_panel
+    category: union_institution_or_body
+  action: advise on the classification of general-purpose AI models with systemic risk
+  norm_text: providing advice on the classification of general-purpose AI models with systemic risk;
+  detection_channels:
+  - semantic_legal_effect
+  primary_spans:
+  - AIA-TEXT-A068-P011
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions: []
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_refs: []
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A068-P3-A-IV-MODEL-CLASSIFICATION-ADVICE
+  act_version_date: '2026-07-27'
+  kind: obligation
+  subjects:
+  - subject_ref: scientific_panel
+    category: union_institution_or_body
+  action: advise on the classification of various general-purpose AI models and systems
+  norm_text: providing advice on the classification of various general-purpose AI models and systems;
+  detection_channels:
+  - semantic_legal_effect
+  primary_spans:
+  - AIA-TEXT-A068-P012
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions: []
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_refs: []
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A068-P3-A-V-TOOLS-AND-TEMPLATES
+  act_version_date: '2026-07-27'
+  kind: obligation
+  subjects:
+  - subject_ref: scientific_panel
+    category: union_institution_or_body
+  action: contribute to the development of tools and templates
+  norm_text: contributing to the development of tools and templates;
+  detection_channels:
+  - semantic_legal_effect
+  primary_spans:
+  - AIA-TEXT-A068-P013
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions: []
+  exceptions: []
+  mandatory_content: []
   dependencies: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -213,13 +477,8 @@ norms:
   subjects:
   - subject_ref: scientific_panel_expert
     category: external_private_party
-  action: perform panel tasks impartially objectively confidentially and independently and publish a declaration
-    of interests
-  norm_text: The experts on the scientific panel shall perform their tasks with impartiality and objectivity,
-    and shall ensure the confidentiality of information and data obtained in carrying out their tasks
-    and activities. They shall neither seek nor take instructions from anyone when exercising their tasks
-    under paragraph 3. Each expert shall draw up a declaration of interests, which shall be made publicly
-    available.
+  action: perform the panel's tasks with impartiality and objectivity
+  norm_text: The experts on the scientific panel shall perform their tasks with impartiality and objectivity
   detection_channels:
   - semantic_legal_effect
   - shall_token
@@ -229,11 +488,112 @@ norms:
   effective_date_spans: []
   conditions: []
   exceptions: []
-  mandatory_content:
-  - impartiality and objectivity
-  - information and data confidentiality
-  - no sought or accepted instructions
-  - public declaration of interests
+  mandatory_content: []
+  dependencies: []
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_refs: []
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A068-P4-ENSURE-CONFIDENTIALITY
+  act_version_date: '2026-07-27'
+  kind: obligation
+  subjects:
+  - subject_ref: scientific_panel_expert
+    category: external_private_party
+  action: ensure the confidentiality of information and data obtained in carrying out the panel's tasks
+    and activities
+  norm_text: shall ensure the confidentiality of information and data obtained in carrying out their tasks
+    and activities.
+  detection_channels:
+  - semantic_legal_effect
+  - shall_token
+  primary_spans:
+  - AIA-TEXT-A068-P017
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions: []
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_refs: []
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A068-P4-NO-INSTRUCTIONS
+  act_version_date: '2026-07-27'
+  kind: prohibition
+  subjects:
+  - subject_ref: scientific_panel_expert
+    category: external_private_party
+  action: neither seek nor take instructions from anyone when exercising the paragraph 3 tasks
+  norm_text: They shall neither seek nor take instructions from anyone when exercising their tasks under
+    paragraph 3.
+  detection_channels:
+  - semantic_legal_effect
+  - shall_token
+  primary_spans:
+  - AIA-TEXT-A068-P017
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions: []
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_refs: []
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A068-P4-DECLARATION-OF-INTERESTS
+  act_version_date: '2026-07-27'
+  kind: obligation
+  subjects:
+  - subject_ref: scientific_panel_expert
+    category: external_private_party
+  action: draw up a declaration of interests that is made publicly available
+  norm_text: Each expert shall draw up a declaration of interests, which shall be made publicly available.
+  detection_channels:
+  - semantic_legal_effect
+  - shall_token
+  primary_spans:
+  - AIA-TEXT-A068-P017
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions: []
+  exceptions: []
+  mandatory_content: []
   dependencies: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.

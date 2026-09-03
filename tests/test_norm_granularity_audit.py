@@ -60,7 +60,7 @@ def test_pinned_corpus_triage_is_documented_without_mutating_review():
         if norm.mandatory_content
     }
     assert len(content_rows) == 146  # Historical audit baseline.
-    assert len(expected_content) == 132
+    assert len(expected_content) == 129
     baseline_content = {norm_id: int(count) for norm_id, count, _ in content_rows}
     # Article 40's example is now nested in its proper deliverable, not a third requirement.
     baseline_content["AIA-NORM-A040-P2-RESOURCE-PERFORMANCE-DELIVERABLES"] = 2
@@ -103,4 +103,8 @@ def test_pinned_corpus_triage_is_documented_without_mutating_review():
     baseline_content.pop("AIA-NORM-A067-P6-RULES-AND-COCHAIRS")
     baseline_content.pop("AIA-NORM-A067-P7-MEETINGS-AND-INVITATIONS")
     baseline_content.pop("AIA-NORM-A067-P10-ANNUAL-PUBLIC-REPORT")
+    # Article 68's panel tasks and expert protections are separate norms.
+    baseline_content.pop("AIA-NORM-A068-P3-ADVISE-AND-SUPPORT-AI-OFFICE")
+    baseline_content.pop("AIA-NORM-A068-P3-A-GPAI-SUPPORT-TASKS")
+    baseline_content.pop("AIA-NORM-A068-P4-EXPERT-INTEGRITY-AND-DISCLOSURE")
     assert baseline_content == expected_content

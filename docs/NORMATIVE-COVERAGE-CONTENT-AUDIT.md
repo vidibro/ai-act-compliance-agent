@@ -113,7 +113,14 @@ The rules of procedure, the co-chair election, the co-chair term, the two requir
 meetings, the optional invitation of experts, the annual report and its publication are now
 separate norms, so three content lists disappear. Paragraph 2's balance requirement and
 paragraph 5's permanent members are unchanged. The live inventory has 132 populated content
-lists across 1,428 proposed norms. Subsequent articles' findings remain pending.
+lists across 1,428 proposed norms.
+
+Article 68's three findings are now corrected. The panel's advice-and-support duty and its
+GPAI support task keep their qualifier spans but no longer carry content lists: each
+supported task is a separate norm with its own trigger and limits. The expert protections
+became four norms, and the existing AI Office conflict-management duty was not duplicated.
+The live inventory has 129 populated content lists across 1,439 proposed norms. Subsequent
+articles' findings remain pending.
 
 | Norm | Content entries | Decision | Finding / treatment |
 |---|---:|---|---|

@@ -242,6 +242,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A068-P3-A-GPAI-SUPPORT-TASKS
+  - AIA-NORM-A068-P3-A-I-ALERT-SYSTEMIC-RISK
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -267,6 +268,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A068-P3-A-GPAI-SUPPORT-TASKS
+  - AIA-NORM-A068-P3-A-II-EVALUATION-TOOLS
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -292,6 +294,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A068-P3-A-GPAI-SUPPORT-TASKS
+  - AIA-NORM-A068-P3-A-III-SYSTEMIC-RISK-CLASSIFICATION-ADVICE
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -317,6 +320,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A068-P3-A-GPAI-SUPPORT-TASKS
+  - AIA-NORM-A068-P3-A-IV-MODEL-CLASSIFICATION-ADVICE
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -341,6 +345,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A068-P3-A-GPAI-SUPPORT-TASKS
+  - AIA-NORM-A068-P3-A-V-TOOLS-AND-TEMPLATES
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -365,6 +370,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A068-P3-ADVISE-AND-SUPPORT-AI-OFFICE
+  - AIA-NORM-A068-P3-B-SUPPORT-SURVEILLANCE-AUTHORITIES
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -390,6 +396,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A068-P3-ADVISE-AND-SUPPORT-AI-OFFICE
+  - AIA-NORM-A068-P3-C-SUPPORT-CROSS-BORDER-SURVEILLANCE
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -415,6 +422,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A068-P3-ADVISE-AND-SUPPORT-AI-OFFICE
+  - AIA-NORM-A068-P3-D-SUPPORT-SAFEGUARD-PROCEDURE
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -444,6 +452,9 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A068-P4-EXPERT-INTEGRITY-AND-DISCLOSURE
+  - AIA-NORM-A068-P4-ENSURE-CONFIDENTIALITY
+  - AIA-NORM-A068-P4-NO-INSTRUCTIONS
+  - AIA-NORM-A068-P4-DECLARATION-OF-INTERESTS
   - AIA-NORM-A068-P4-MANAGE-CONFLICTS
   review:
     status: approved
