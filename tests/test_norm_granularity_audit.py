@@ -24,7 +24,7 @@ def test_pinned_corpus_triage_is_documented_without_mutating_review():
     assert bundle.model_dump() == before
     assert bundle.validated_documents == 133
     assert len(bundle.text_review.segments) == 1471
-    assert len(candidates) == 51
+    assert len(candidates) == 49
 
     segments = {s.segment_id: s for s in bundle.text_review.segments}
     for candidate in candidates:
@@ -55,6 +55,7 @@ def test_pinned_corpus_triage_is_documented_without_mutating_review():
     closed_by_splitting.add("AIA-TEXT-A075C-P018")
     closed_by_splitting.add("AIA-TEXT-A077-P004")
     closed_by_splitting |= {"AIA-TEXT-A078-P008", "AIA-TEXT-A078-P009"}
+    closed_by_splitting |= {"AIA-TEXT-A079-P007", "AIA-TEXT-A079-P014"}
     assert set(ids) - closed_by_splitting == {candidate.segment_id for candidate in candidates}
 
     content_report = (root / "docs/NORMATIVE-COVERAGE-CONTENT-AUDIT.md").read_text()
@@ -143,4 +144,6 @@ def test_pinned_corpus_triage_is_documented_without_mutating_review():
     baseline_content["AIA-NORM-A077-P2-IDENTIFY-PUBLISH-NOTIFY-AND-UPDATE"] = 2
     # Article 78's premises, access and clearance rules are three norms.
     baseline_content.pop("AIA-NORM-A078-P3-KEEP-DOCUMENTATION-AND-ENABLE-ACCESS")
+    # Article 79's notification now enumerates the detailed non-compliance grounds.
+    baseline_content["AIA-NORM-A079-P6-NOTIFICATION-CONTENT"] = 9
     assert baseline_content == expected_content

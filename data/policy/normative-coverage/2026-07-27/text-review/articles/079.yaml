@@ -209,6 +209,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A079-P5-TAKE-AND-NOTIFY-PROVISIONAL-MEASURES
+  - AIA-NORM-A079-P5-NOTIFY-PROVISIONAL-MEASURES
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -394,6 +395,8 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A079-P8-DEEM-MEASURE-JUSTIFIED
+  - AIA-NORM-A079-P8-PRESERVE-OPERATOR-PROCEDURAL-RIGHTS
+  - AIA-NORM-A079-P8-SHORTENED-ARTICLE-5-PERIOD
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass

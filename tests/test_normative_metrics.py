@@ -1661,15 +1661,15 @@ def test_inventory_cannot_be_misreported_as_independently_approved(metrics):
     assert metrics.needs_review_characters == 0
     assert metrics.review_statuses == {
         "approved": 1467,
-        "proposed": 1472,
+        "proposed": 1475,
     }
     assert metrics.timed_review_records == 0
-    assert metrics.total_review_records == 2940
+    assert metrics.total_review_records == 2943
 
 
 def test_semantic_pass_finds_propositions_a_shall_scan_misses(metrics):
     assert metrics.shall_vs_semantic_disagreements == 571
-    assert metrics.shall_token_candidate_recall == pytest.approx(897 / 1468)
+    assert metrics.shall_token_candidate_recall == pytest.approx(900 / 1471)
     assert "AIA-NORM-A011-P1-SIMPLIFY" in metrics.semantic_norms_without_shall_token
     assert "AIA-NORM-A043-P5-AMEND" in metrics.semantic_norms_without_shall_token
     assert "AIA-NORM-A060-P4-PERMISSION" in metrics.semantic_norms_without_shall_token
@@ -1677,12 +1677,12 @@ def test_semantic_pass_finds_propositions_a_shall_scan_misses(metrics):
 
 
 def test_metrics_expose_many_to_many_and_implementation_debt(metrics):
-    assert metrics.normative_segments_with_multiple_norms == 370
+    assert metrics.normative_segments_with_multiple_norms == 372
     assert metrics.mapping_shape.one_norm_to_one_target == 25
     assert metrics.mapping_shape.many_norms_to_one_target == 353
     assert metrics.mapping_shape.one_norm_to_many_targets == 0
     assert metrics.mapping_shape.many_to_many == 15
-    assert metrics.mapping_shape.unmapped == 1075
+    assert metrics.mapping_shape.unmapped == 1078
     assert metrics.semantic_vs_existing_implementation_disagreements == 239
     assert metrics.semantic_norms_without_existing_implementation == [
         "AIA-NORM-A002-P1-A-PROVIDER",
@@ -4125,10 +4125,39 @@ def test_article_seventy_nine_maps_operator_enforcement_duties():
         if norm.norm_id.startswith("AIA-NORM-A079-")
     }
 
-    assert len(norms) == 14
+    assert len(norms) == 17
     mapped = [norm for norm in norms.values() if norm.implementation_refs == ["AIA-ALL-A79"]]
     assert len(mapped) == 2
-    assert len(norms["AIA-NORM-A079-P6-NOTIFICATION-CONTENT"].mandatory_content) == 5
+
+    # Taking provisional measures and notifying them are separate actions.
+    measures = norms["AIA-NORM-A079-P5-TAKE-AND-NOTIFY-PROVISIONAL-MEASURES"]
+    notify = norms["AIA-NORM-A079-P5-NOTIFY-PROVISIONAL-MEASURES"]
+    assert measures.conditions == [
+        "the operator does not take adequate corrective action within the period referred to in "
+        "paragraph 2"
+    ]
+    assert "without undue delay" in notify.action
+    assert "without undue delay" not in measures.action
+
+    # The notification enumerates the detailed grounds instead of one combined label.
+    content = norms["AIA-NORM-A079-P6-NOTIFICATION-CONTENT"].mandatory_content
+    assert len(content) == 9
+    assert content[5].endswith("referred to in Article 5")
+    assert "Chapter III, Section 2" in content[6]
+    assert "Articles 40 and 41" in content[7]
+    assert content[8].endswith("non-compliance with Article 50")
+
+    # Deemed justification, the preserved procedural rights and the shorter clock are distinct.
+    deemed = norms["AIA-NORM-A079-P8-DEEM-MEASURE-JUSTIFIED"]
+    rights = norms["AIA-NORM-A079-P8-PRESERVE-OPERATOR-PROCEDURAL-RIGHTS"]
+    shortened = norms["AIA-NORM-A079-P8-SHORTENED-ARTICLE-5-PERIOD"]
+    assert "three months" in deemed.action and "30 days" in deemed.action
+    assert "Article 18 of Regulation (EU)" in rights.action
+    assert "30 days" in shortened.action
+    assert all(
+        norm.kind.value == "legal_consequence" for norm in (deemed, rights, shortened)
+    )
+    assert all(norm.review.status.value == "proposed" for norm in norms.values())
 
 
 def test_article_eighty_maps_reclassified_provider_correction():

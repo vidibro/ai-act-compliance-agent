@@ -173,7 +173,13 @@ splits. Paragraph 1 enumerates the five protected interests and carries the Arti
 Directive (EU) 2016/943 exception scoped to point (a), recorded as an external dependency. The
 premises, access and security-clearance rules are separate norms rather than three content
 items. The live inventory has 133 populated content lists across 1,468 proposed norms.
-Subsequent articles' findings remain pending.
+
+Article 79's notification-content finding is now corrected with its two recorded segment
+splits: the five detail groups and the four non-compliance grounds are separate entries, and
+the provisional measures, their notification, deemed justification, the preserved Article 18
+procedural rights and the shortened Article 5 period are separate norms. The live inventory
+still has 133 populated content lists, now across 1,471 proposed norms. Subsequent articles'
+findings remain pending.
 
 | Norm | Content entries | Decision | Finding / treatment |
 |---|---:|---|---|

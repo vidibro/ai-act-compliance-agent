@@ -336,12 +336,47 @@ norms:
   subjects:
   - subject_ref: market_surveillance_authority
     category: public_authority
-  action: take appropriate provisional restriction withdrawal or recall measures and promptly notify the
-    Commission and Member States
+  action: take all appropriate provisional measures to prohibit or restrict the system's being made available
+    or put into service, to withdraw the product or standalone AI system, or to recall it
   norm_text: "the market surveillance authority shall take all appropriate provisional measures to prohibit\
     \ or restrict the AI system\u2019s being made available on its national market or put into service,\
-    \ to withdraw the product or the standalone AI system from that market or to recall it. That authority\
-    \ shall without undue delay notify the Commission and the other Member States of those measures."
+    \ to withdraw the product or the standalone AI system from that market or to recall it."
+  detection_channels:
+  - semantic_legal_effect
+  - shall_token
+  primary_spans:
+  - AIA-TEXT-A079-P007
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions:
+  - the operator does not take adequate corrective action within the period referred to in paragraph 2
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_refs: []
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A079-P5-NOTIFY-PROVISIONAL-MEASURES
+  act_version_date: '2026-07-27'
+  kind: obligation
+  subjects:
+  - subject_ref: market_surveillance_authority
+    category: public_authority
+  action: notify the Commission and the other Member States of those measures without undue delay
+  norm_text: That authority shall without undue delay notify the Commission and the other Member States
+    of those measures.
   detection_channels:
   - semantic_legal_effect
   - shall_token
@@ -392,11 +427,18 @@ norms:
   conditions: []
   exceptions: []
   mandatory_content:
-  - system identification origin and supply chain
-  - alleged non-compliance and risk
-  - nature and duration of national measures
-  - operator arguments
-  - Article 5 Chapter III Section 2 standards or Article 50 ground
+  - the information necessary for the identification of the non-compliant AI system
+  - the origin of the AI system and the supply chain
+  - the nature of the non-compliance alleged and the risk involved
+  - the nature and duration of the national measures taken
+  - the arguments put forward by the relevant operator
+  - whether the non-compliance is due to non-compliance with the prohibition of the AI practices referred
+    to in Article 5
+  - whether it is due to a failure of a high-risk AI system to meet requirements set out in Chapter III,
+    Section 2
+  - whether it is due to shortcomings in the harmonised standards or common specifications referred to
+    in Articles 40 and 41 conferring a presumption of conformity
+  - whether it is due to non-compliance with Article 50
   dependencies: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -457,9 +499,83 @@ norms:
   subjects:
   - subject_ref: authority_applying_article_79
     category: public_authority
-  action: deem an unopposed provisional measure justified after three months or 30 days for Article 5
-    non-compliance
+  action: deem the provisional measure justified when no objection is raised within three months of receipt
+    of the paragraph 5 notification, or within 30 days where the non-compliance concerns the Article 5
+    prohibition
   norm_text: that measure shall be deemed justified.
+  detection_channels:
+  - semantic_legal_effect
+  - shall_token
+  - deeming_or_consequence
+  primary_spans:
+  - AIA-TEXT-A079-P014
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions: []
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: no_product_action
+  product_scope_reason: This procedural consequence creates no independent product action.
+  implementation_mode: none_required
+  implementation_refs: []
+  implementation_reason: No independent product action arises.
+  verification_mode: not_assessed
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A079-P8-PRESERVE-OPERATOR-PROCEDURAL-RIGHTS
+  act_version_date: '2026-07-27'
+  kind: legal_consequence
+  subjects:
+  - subject_ref: authority_applying_article_79
+    category: public_authority
+  action: preserve the concerned operator's procedural rights under Article 18 of Regulation (EU) 2019/1020
+  norm_text: This shall be without prejudice to the procedural rights of the concerned operator in accordance
+    with Article 18 of Regulation (EU) 2019/1020.
+  detection_channels:
+  - semantic_legal_effect
+  - shall_token
+  - deeming_or_consequence
+  primary_spans:
+  - AIA-TEXT-A079-P014
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions: []
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: no_product_action
+  product_scope_reason: This procedural consequence creates no independent product action.
+  implementation_mode: none_required
+  implementation_refs: []
+  implementation_reason: No independent product action arises.
+  verification_mode: not_assessed
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A079-P8-SHORTENED-ARTICLE-5-PERIOD
+  act_version_date: '2026-07-27'
+  kind: legal_consequence
+  subjects:
+  - subject_ref: authority_applying_article_79
+    category: public_authority
+  action: reduce the three-month objection period to 30 days where the non-compliance concerns the prohibition
+    of the AI practices referred to in Article 5
+  norm_text: The three-month period referred to in this paragraph shall be reduced to 30 days in the event
+    of non-compliance with the prohibition of the AI practices referred to in Article 5 of this Regulation.
   detection_channels:
   - semantic_legal_effect
   - shall_token
