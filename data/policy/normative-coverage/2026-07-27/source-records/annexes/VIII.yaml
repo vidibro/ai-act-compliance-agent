@@ -2,16 +2,23 @@ records:
 - norm_id: AIA-NORM-ANNEX-VIII-A
   source: ANNEX-VIII-A
   quote: The following information shall be provided and thereafter kept up to date
-  action: submit and maintain the Section A provider registration information
+  action: submit and maintain the Section A provider registration information; entries 2, 3, 8 and 9
+    apply only where their enacted condition is met, entry 12 is withheld for the enacted
+    law-enforcement, migration, asylum and border-control systems, and entry 13 is optional
   subject_ref: provider
   subject_category: supported_operator
   implementation_mode: unresolved
   verification_mode: unresolved
+  exceptions:
+  - entry 12 only, the electronic instructions for use are not provided for high-risk AI systems in
+    the areas of law enforcement or migration, asylum and border control management referred to in
+    Annex III, points 1, 6 and 7
   mandatory_content_source: numbered_items
 - norm_id: AIA-NORM-ANNEX-VIII-B
   source: ANNEX-VIII-B
   quote: The following information shall be provided and thereafter kept up to date
-  action: submit and maintain the Section B not-high-risk registration information
+  action: submit and maintain the Section B not-high-risk registration information; entries 2 and 3
+    apply only where their enacted condition is met
   subject_ref: provider
   subject_category: supported_operator
   implementation_mode: unresolved

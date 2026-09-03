@@ -347,19 +347,19 @@ Measure:
 
 **Full-corpus proposed extraction 2026-08-28:** the representative pilot was expanded, in source
 order, into a complete proposed inventory. It now partitions all 133 source bodies in the pinned
-corpus into 1,471 exact segments. It now proposes 1,482 norms across 132 documents; Article 1 supplies
+corpus into 1,471 exact segments. It now proposes 1,483 norms across 132 documents; Article 1 supplies
 reviewed subject-matter context without an atomic norm. No article or annex remains as `needs_review`
 debt, and structural headings remain separately identified.
 The reproducible measurements are in the versioned
 [`report.md`](../data/policy/normative-coverage/2026-07-27/report.md). The extraction added loader-validated exact
 `norm_text`, candidate-detection provenance, and review timing fields. Its semantic pass found 572 of
-1,482 proposed propositions whose exact operative quote contains no `shall` token. No source characters
+1,483 proposed propositions whose exact operative quote contains no `shall` token. No source characters
 remain marked `needs_review`.
 
 Of the 1,471 segments, 1,467 are approved and four remain `proposed`: Annex VIII. The
 Article 5 heading, all Article 50 and Article 113 segments, and the 27 finer-grained Annex IV
 segments were independently confirmed on
-2026-09-02. Their linked norm records, like all 1,482 extracted
+2026-09-02. Their linked norm records, like all 1,483 extracted
 norms, remain `proposed`; approving a source segment does not independently approve the legal
 propositions extracted from it. Elapsed review time was not captured. The remaining assurance
 boundary is independent approval of the proposed segments and norms, followed by implementation
@@ -645,7 +645,17 @@ association, defence safeguard, file-access entitlement, budget allocation and t
 the fined body; and Article 101 enumerates the three fine-amount factors. The corpus is 1,482
 proposed norms with 133 populated content lists; the detector drops to 41 candidates and
 implementation debt stays at 222.
-Next recorded correction: Annex VII. Articles 47–49 and 51–56 have no open recorded finding in
+
+Annex VII and Annex VIII complete the recorded queue. The quality-management application asks
+for the provider's own identity and the representative's only where the representative lodges
+it; both assessment decisions may be notified to the provider or its authorised representative;
+and examining proposed changes is separate from notifying the decision. Annex VIII-A keeps its
+13 exact entries while recording the optional URL and the entry-12 non-disclosure requirement,
+and Annex VIII-B records its conditional entries. The corpus is 1,483 proposed norms with 133
+populated content lists, 41 detector candidates and 222 implementation-debt records.
+All recorded article and annex findings in both ledgers are now applied. What remains is the
+unflagged-source semantic review, independent approval of the four proposed Annex VIII segments
+and of every proposed norm, and the four unresolved implementation modes. Articles 47–49 and 51–56 have no open recorded finding in
 these ledgers.
 
 Correct the recorded defects and complete the unflagged-source semantic audit before declaring
@@ -680,7 +690,7 @@ debt.
 
 **Extraction status:** complete as a proposed corpus inventory. Exact source partitioning and
 disposition authoring cover all 133 documents and all source characters. The exit criterion remains
-open because four segments and all 1,482 norm records still require independent assurance. Corrections
+open because four segments and all 1,483 norm records still require independent assurance. Corrections
 found during assurance must be made in `segments/` and `source-records/`, followed by regeneration;
 generated `text-review/` and `norms/` files are never hand-edited.
 
@@ -792,7 +802,7 @@ No aggregate percentage replaces these measures.
 ## Rough effort
 
 The original estimates below are retained as planning history. Full-corpus extraction established
-an actual inventory of 1,482 proposed norms, so remaining effort is driven by independent legal
+an actual inventory of 1,483 proposed norms, so remaining effort is driven by independent legal
 assurance, many-to-many implementation mapping, and behavioral proof rather than extraction volume:
 
 | Work | Estimate |
@@ -810,12 +820,12 @@ The original total was roughly **6–10 person-weeks**. It must not be used as a
 estimate: several infrastructure and authoring stages are complete, while the unexpectedly large
 norm inventory makes assurance and mapping more substantial than the original pilot could measure.
 A new forecast should be based on measured review and reconciliation throughput from representative
-batches of the 1,482 records.
+batches of the 1,483 records.
 
 ## Immediate next action
 
 Continue the [granularity correction and completion queue](NORMATIVE-COVERAGE-GRANULARITY-AUDIT.md#correction-and-completion-queue)
-in source order, continuing with Annex VII after corrections through Article 101, and complete the
+in source order. Every recorded row is now applied, so the remaining work is the
 unflagged-source pass. Independently review the four proposed source segments in Annex VIII;
 exactly retained content still needs optional/conditional field semantics. Apply only confirmed
 user provenance to authored `segments/` records and regenerate derived artifacts. Keep codex audit

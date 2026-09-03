@@ -141,7 +141,7 @@ for each row are listed by the scanner and in the segment's `norm_ids`.
 | AIA-TEXT-A101-P006 | expand | Keep one fine-amount determination, but enumerate nature/gravity/duration, proportionality/appropriateness and Article 93(3)/Article 56 commitments explicitly. |
 | AIA-TEXT-A101-P011 | retain | One implementing-act obligation with content and Article 98(2) adoption procedure. |
 | AIA-TEXT-A113-C | retain | Two route/date norms already exist; both now explicitly exclude Article 6(5). |
-| AIA-TEXT-ANNEX-VIII-A | expand | All 13 entries are retained exactly. Nevertheless item 13 is optional, item 12 contains a non-disclosure requirement, and some fields are conditional: they must not become 13 unconditional mandatory checks. |
+| AIA-TEXT-ANNEX-VIII-A | expand | All 13 entries are retained exactly. Nevertheless item 13 is optional, item 12 contains a non-disclosure requirement, and some fields are conditional: they must not become 13 unconditional mandatory checks. **Applied:** the action records the conditional entries and the optional URL, and the non-disclosure requirement is now an explicit entry-12 exception. Section B's conditional entries are recorded the same way. The four Annex VIII segments remain `proposed`. |
 | AIA-TEXT-ANNEX-VIII-B | retain | Nine concrete fields, including conditional representative information, are retained exactly; no heading-only collapse. |
 | AIA-TEXT-ANNEX-VIII-C | retain | Five concrete fields are retained exactly, including the applicability qualifier for the data-protection impact assessment. |
 
@@ -220,12 +220,13 @@ modal/list scan. Source references identify full norm records in `source-records
 | 99 | Split paragraph 2 into the initial notification of the penalty rules by the date of entry into application and the without-delay notification of any subsequent amendment. Paragraph 4 now names Article 31, Article 33(1), (3) and (4) and Article 34 for notified bodies, states the EUR 15 000 000 or 3 % worldwide-turnover ceiling and its reference year, and records the Article 5 exclusion as an exception. | Fourteen proposed norms instead of thirteen; regressions cover the two triggers, the eight listed provisions, the ceiling and the Article 5 exception. Implementation debt is unchanged. |
 | 100 | Split paragraph 4 into the hearing opportunity, the limitation of decision grounds to commented elements and the close association of any complainants; paragraph 5 into the defence safeguard and the parties' file-access entitlement with its personal-data and business-secret limit; and paragraph 6 into the allocation of collected fines to the Union budget and the protection of the fined body's effective operation. | Eleven proposed norms instead of seven; regressions cover the three protections, the typed entitlement and the two consequences. Implementation debt is unchanged. |
 | 101 | Paragraph 1's fine-amount rule now enumerates nature, gravity and duration, the proportionality and appropriateness principles, and the Article 93(3) and Article 56 commitments. | Still seven proposed norms; a regression checks the three factors. Implementation debt is unchanged. |
+| Annex VII | Point 3.1's identity requirement now names the provider's own name and address and, separately, the authorised representative's only where the representative lodges the application. Both assessment decisions are notified to the provider or its authorised representative. Point 3.4 separates examining the proposed changes and deciding whether a reassessment is necessary from notifying that decision, which keeps the two notification content requirements. | Thirty-one proposed norms instead of thirty; regressions cover the conditional representative identity, both notification recipients and the separated change decision. Implementation debt is unchanged. |
 
 The original 88-row ledger above remains a historical audit baseline. Article 31's five,
 Article 57's nine, Article 58's one, Article 60's two, Article 60a's one, Article 61's one,
 Article 67's two, Article 70's two, Article 71's two, Article 73's three, Article 74's
 three and Article 75's two, Article 75c's one, Article 77's one, Article 78's two, Article 79's two, Article 82's one, Article 85's one, Article 97's two, Article 99's one and Article 100's three split candidate
-segments no longer trigger the scanner, leaving 41 live signals. The current inventory has 1,482
+segments no longer trigger the scanner, leaving 41 live signals. The current inventory has 1,483
 proposed norms and 1,471 segments. Implementation debt rose from 216 to 222 records: six
 separated provider duties in Articles 60 and 61 are in-scope propositions that no existing rule
 covers, which the previous combined checklists concealed. Every other norm added since baseline
@@ -235,7 +236,8 @@ Source approvals have not been relabelled as norm approvals. The Article 57 miti
 preserves the supervisory requirement for adequate mitigation; it does not assign a new operational
 product action or turn suspension into a duty. This actor interpretation remains subject to
 independent norm review, as do the other corrections.
-Next recorded correction: Annex VII. Articles 47–49 and 51–56 have no open recorded correction
+All recorded article and annex findings are now applied. The remaining work is the
+unflagged-source semantic review and independent approval. Articles 47–49 and 51–56 have no open recorded correction
 in these ledgers. The Article 50 corrections do not remove their heuristic scan signals; a signal
 is not a finding or an approval status.
 

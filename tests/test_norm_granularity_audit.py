@@ -157,4 +157,8 @@ def test_pinned_corpus_triage_is_documented_without_mutating_review():
     baseline_content["AIA-NORM-A095-P2-FACILITATE-SPECIFIC-REQUIREMENT-CODES"] = 1
     # Article 101 now enumerates the three fine-amount factors.
     baseline_content["AIA-NORM-A101-P1-FIX-FINE-AMOUNT"] = 3
+    # Annex VII splits the change decision from its notification and names the identities.
+    baseline_content["AIA-NORM-ANNEX-VII-QMS-APPLICATION"] = 7
+    baseline_content.pop("AIA-NORM-ANNEX-VII-QMS-CHANGE-DECISION")
+    baseline_content["AIA-NORM-ANNEX-VII-QMS-CHANGE-NOTIFICATION"] = 2
     assert baseline_content == expected_content

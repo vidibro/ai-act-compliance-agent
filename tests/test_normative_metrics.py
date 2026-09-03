@@ -1661,15 +1661,15 @@ def test_inventory_cannot_be_misreported_as_independently_approved(metrics):
     assert metrics.needs_review_characters == 0
     assert metrics.review_statuses == {
         "approved": 1467,
-        "proposed": 1486,
+        "proposed": 1487,
     }
     assert metrics.timed_review_records == 0
-    assert metrics.total_review_records == 2954
+    assert metrics.total_review_records == 2955
 
 
 def test_semantic_pass_finds_propositions_a_shall_scan_misses(metrics):
     assert metrics.shall_vs_semantic_disagreements == 571
-    assert metrics.shall_token_candidate_recall == pytest.approx(911 / 1482)
+    assert metrics.shall_token_candidate_recall == pytest.approx(912 / 1483)
     assert "AIA-NORM-A011-P1-SIMPLIFY" in metrics.semantic_norms_without_shall_token
     assert "AIA-NORM-A043-P5-AMEND" in metrics.semantic_norms_without_shall_token
     assert "AIA-NORM-A060-P4-PERMISSION" in metrics.semantic_norms_without_shall_token
@@ -1682,7 +1682,7 @@ def test_metrics_expose_many_to_many_and_implementation_debt(metrics):
     assert metrics.mapping_shape.many_norms_to_one_target == 353
     assert metrics.mapping_shape.one_norm_to_many_targets == 0
     assert metrics.mapping_shape.many_to_many == 15
-    assert metrics.mapping_shape.unmapped == 1089
+    assert metrics.mapping_shape.unmapped == 1090
     assert metrics.semantic_vs_existing_implementation_disagreements == 239
     assert metrics.semantic_norms_without_existing_implementation == [
         "AIA-NORM-A002-P1-A-PROVIDER",
@@ -4687,11 +4687,32 @@ def test_annex_inventory_keeps_external_actors_and_exact_mandatory_content():
     annex_vii = [
         norm for norm in norms.values() if norm.primary_spans[0].startswith("AIA-TEXT-ANNEX-VII-")
     ]
-    assert len(annex_vii) == 30
+    assert len(annex_vii) == 31
     assert {norm.subjects[0].category.value for norm in annex_vii} >= {
         "supported_operator",
         "notified_or_conformity_body",
     }
+
+    # The application asks for the provider's own identity, and the representative's only when
+    # the representative lodges it.
+    application = norms["AIA-NORM-ANNEX-VII-QMS-APPLICATION"]
+    assert application.mandatory_content[0] == "the name and address of the provider"
+    assert application.mandatory_content[1].startswith(
+        "if the application is lodged by an authorised representative"
+    )
+    assert len(application.mandatory_content) == 7
+    # Both decisions may be notified to the provider or its authorised representative.
+    for norm_id in ("AIA-NORM-ANNEX-VII-QMS-DECISION", "AIA-NORM-ANNEX-VII-DOC-DECISION"):
+        assert "provider or its authorised representative" in norms[norm_id].action
+    # Examining the proposed changes and notifying the decision are separate actions.
+    change = norms["AIA-NORM-ANNEX-VII-QMS-CHANGE-DECISION"]
+    notification = norms["AIA-NORM-ANNEX-VII-QMS-CHANGE-NOTIFICATION"]
+    assert not change.mandatory_content
+    assert "reassessment is necessary" in change.action
+    assert notification.mandatory_content == [
+        "the conclusions of the examination of the changes",
+        "the reasoned assessment decision",
+    ]
 
     section_a = norms["AIA-NORM-ANNEX-VIII-A"]
     assert len(section_a.mandatory_content) == 13
@@ -4699,6 +4720,15 @@ def test_annex_inventory_keeps_external_actors_and_exact_mandatory_content():
         "The name, address and contact details of the provider;"
     )
     assert all("Section A item" not in item for item in section_a.mandatory_content)
+    # The 13 entries are not 13 unconditional checks: one is optional and one is withheld.
+    assert section_a.mandatory_content[12].endswith("(optional).")
+    assert "entry 13 is optional" in section_a.action
+    assert section_a.exceptions == [
+        "entry 12 only, the electronic instructions for use are not provided for high-risk AI "
+        "systems in the areas of law enforcement or migration, asylum and border control "
+        "management referred to in Annex III, points 1, 6 and 7"
+    ]
+    assert "where their enacted condition is met" in norms["AIA-NORM-ANNEX-VIII-B"].action
 
     annex_four = norms["AIA-NORM-ANNEX-IV-CONTENT"]
     assert len(annex_four.mandatory_content) == 26
@@ -4783,7 +4813,7 @@ def test_annex_seven_completion_covers_change_control_and_certificate_content():
         if norm.norm_id.startswith("AIA-NORM-ANNEX-VII-")
     }
 
-    assert len(norms) == 30
+    assert len(norms) == 31
     assert len(norms["AIA-NORM-ANNEX-VII-CERTIFICATE-CONTENT"].mandatory_content) == 6
     assert norms["AIA-NORM-ANNEX-VII-INFORM-CHANGES"].subjects[0].subject_ref == "provider"
     assert norms["AIA-NORM-ANNEX-VII-ADDITIONAL-TESTS"].kind.value == "power"

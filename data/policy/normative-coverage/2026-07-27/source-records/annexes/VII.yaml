@@ -48,12 +48,15 @@ records:
   - AIA-PO-A43-3
   verification_mode: listed_for_confirmation
   mandatory_content:
-  - provider and representative identity
-  - covered systems
-  - technical documentation for every system
-  - Article 17 QMS documentation
-  - procedures maintaining QMS adequacy and effectiveness
-  - declaration no duplicate application
+  - the name and address of the provider
+  - if the application is lodged by an authorised representative, also their name and address
+  - the list of AI systems covered under the same quality management system
+  - the technical documentation for each AI system covered under the same quality management system
+  - the documentation concerning the quality management system, covering all the aspects listed under
+    Article 17
+  - a description of the procedures in place to ensure that the quality management system remains
+    adequate and effective
+  - a written declaration that the same application has not been lodged with any other notified body
 - norm_id: AIA-NORM-ANNEX-VII-QMS-MAINTAIN
   source: ANNEX-VII-I3
   quote: shall continue to be implemented and maintained by the provider
@@ -88,7 +91,8 @@ records:
 - norm_id: AIA-NORM-ANNEX-VII-QMS-DECISION
   source: ANNEX-VII-I3
   quote: The decision shall be notified to the provider or its authorised representative.
-  action: notify the provider of the quality-management assessment decision and reasons
+  action: notify the quality-management assessment decision to the provider or its authorised
+    representative
   subject_ref: notified_body
   subject_category: notified_or_conformity_body
   product_scope: outside_supported_actor
@@ -101,8 +105,20 @@ records:
   - reasoned assessment decision
 - norm_id: AIA-NORM-ANNEX-VII-QMS-CHANGE-DECISION
   source: ANNEX-VII-I3
-  quote: The proposed changes shall be examined by the notified body
-  action: examine proposed changes, decide whether reassessment is needed, and notify the provider
+  quote: The proposed changes shall be examined by the notified body, which shall decide whether the modified quality management system continues to satisfy the requirements referred to in point 3.2 or whether a reassessment is necessary.
+  action: examine the proposed changes and decide whether the modified quality management system
+    still satisfies the point 3.2 requirements or whether a reassessment is necessary
+  subject_ref: notified_body
+  subject_category: notified_or_conformity_body
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-ANNEX-VII-QMS-CHANGE-NOTIFICATION
+  source: ANNEX-VII-I3
+  quote: The notified body shall notify the provider of its decision. The notification shall contain the conclusions of the examination of the changes and the reasoned assessment decision.
+  action: notify the provider of that decision
   subject_ref: notified_body
   subject_category: notified_or_conformity_body
   product_scope: outside_supported_actor
@@ -111,8 +127,8 @@ records:
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_assessed
   mandatory_content:
-  - conclusions of the examination of the proposed changes
-  - reasoned assessment decision
+  - the conclusions of the examination of the changes
+  - the reasoned assessment decision
 - norm_id: AIA-NORM-ANNEX-VII-DOC-APPLICATION
   source: ANNEX-VII-I4
   quote: an application with a notified body of their choice shall be lodged by the provider for the assessment of the technical documentation
@@ -221,7 +237,8 @@ records:
 - norm_id: AIA-NORM-ANNEX-VII-DOC-DECISION
   source: ANNEX-VII-I4
   quote: The decision of the notified body shall be notified to the provider or its authorised representative.
-  action: notify the provider of the technical-documentation assessment decision
+  action: notify the technical-documentation assessment decision to the provider or its authorised
+    representative
   subject_ref: notified_body
   subject_category: notified_or_conformity_body
   product_scope: outside_supported_actor

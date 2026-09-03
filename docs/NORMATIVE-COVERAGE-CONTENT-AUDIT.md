@@ -195,7 +195,16 @@ Article 99's and Article 101's findings are now corrected alongside the Article 
 Article 100 segment splits. The operator fine names the notified-body provisions explicitly
 and states its ceiling, reference year and Article 5 exclusion; the fine-amount rule
 enumerates its three factors. The live inventory has 133 populated content lists across 1,482
-proposed norms. The remaining recorded findings are the Annex VII rows and Annex VIII-A.
+proposed norms.
+
+The Annex VII rows are now corrected: the quality-management application names the provider's
+own identity and the representative's only where the representative lodges it, both decisions
+are notified to the provider or its authorised representative, and the change examination is
+separate from its notification, which keeps the two content requirements. Annex VIII-A's 13
+entries stay exact, with the optional URL and the entry-12 non-disclosure requirement now
+recorded in the action and exceptions. Every recorded row in this register has been addressed;
+the unflagged-source review and independent norm approval remain open. The live inventory has
+133 populated content lists across 1,483 proposed norms.
 
 | Norm | Content entries | Decision | Finding / treatment |
 |---|---:|---|---|

@@ -4,7 +4,7 @@
 
 **Act version:** 2026-07-27
 
-The inventory contains 133 complete source-body partitions, 1471 exact segments, and 1482 proposed atomic norms. Every stored article and annex is present. Proposed
+The inventory contains 133 complete source-body partitions, 1471 exact segments, and 1483 proposed atomic norms. Every stored article and annex is present. Proposed
 norms have been extracted from 132 documents; the remaining
 work is retained explicitly rather than omitted. The inventory is not consumed by classification,
 rule selection, judging, or reporting.
@@ -18,7 +18,7 @@ rule selection, judging, or reporting.
 - annex IX: 1
 - annex V: 1
 - annex VI: 4
-- annex VII: 30
+- annex VII: 31
 - annex VIII: 3
 - annex X: 12
 - annex XI: 3
@@ -1093,7 +1093,7 @@ rule selection, judging, or reporting.
 - AIA-TEXT-ANNEX-VI-P004: 1
 - AIA-TEXT-ANNEX-VII-I1: 1
 - AIA-TEXT-ANNEX-VII-I2: 3
-- AIA-TEXT-ANNEX-VII-I3: 6
+- AIA-TEXT-ANNEX-VII-I3: 7
 - AIA-TEXT-ANNEX-VII-I4: 17
 - AIA-TEXT-ANNEX-VII-I5: 3
 - AIA-TEXT-ANNEX-VIII-A: 1
@@ -1131,11 +1131,11 @@ rule selection, judging, or reporting.
 - Semantic candidates a shall-token pass missed: 571
 - Shall-token candidate recall: 61.5%
 - In-scope semantic candidates absent from existing implementation: 239
-- Detection-channel counts: cross_reference_structure=486, deeming_or_consequence=280, existing_implementation=393, other_modal=156, semantic_legal_effect=1482, shall_token=911
-- Mapping shapes, by norm: one-to-one=25, many-to-one=353, one-to-many=0, many-to-many=15, unmapped=1089
+- Detection-channel counts: cross_reference_structure=486, deeming_or_consequence=280, existing_implementation=393, other_modal=156, semantic_legal_effect=1483, shall_token=912
+- Mapping shapes, by norm: one-to-one=25, many-to-one=353, one-to-many=0, many-to-many=15, unmapped=1090
 - Implementation debt candidates: 222
 - Interpretive links to non-binding guidance: 1
-- Review records with measured elapsed time: 0/2954
+- Review records with measured elapsed time: 0/2955
 
 ## Findings
 
