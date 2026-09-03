@@ -1661,15 +1661,15 @@ def test_inventory_cannot_be_misreported_as_independently_approved(metrics):
     assert metrics.needs_review_characters == 0
     assert metrics.review_statuses == {
         "approved": 1467,
-        "proposed": 1458,
+        "proposed": 1461,
     }
     assert metrics.timed_review_records == 0
-    assert metrics.total_review_records == 2926
+    assert metrics.total_review_records == 2929
 
 
 def test_semantic_pass_finds_propositions_a_shall_scan_misses(metrics):
     assert metrics.shall_vs_semantic_disagreements == 572
-    assert metrics.shall_token_candidate_recall == pytest.approx(882 / 1454)
+    assert metrics.shall_token_candidate_recall == pytest.approx(885 / 1457)
     assert "AIA-NORM-A011-P1-SIMPLIFY" in metrics.semantic_norms_without_shall_token
     assert "AIA-NORM-A043-P5-AMEND" in metrics.semantic_norms_without_shall_token
     assert "AIA-NORM-A060-P4-PERMISSION" in metrics.semantic_norms_without_shall_token
@@ -1677,12 +1677,12 @@ def test_semantic_pass_finds_propositions_a_shall_scan_misses(metrics):
 
 
 def test_metrics_expose_many_to_many_and_implementation_debt(metrics):
-    assert metrics.normative_segments_with_multiple_norms == 361
+    assert metrics.normative_segments_with_multiple_norms == 364
     assert metrics.mapping_shape.one_norm_to_one_target == 26
     assert metrics.mapping_shape.many_norms_to_one_target == 351
     assert metrics.mapping_shape.one_norm_to_many_targets == 0
     assert metrics.mapping_shape.many_to_many == 15
-    assert metrics.mapping_shape.unmapped == 1062
+    assert metrics.mapping_shape.unmapped == 1065
     assert metrics.semantic_vs_existing_implementation_disagreements == 239
     assert metrics.semantic_norms_without_existing_implementation == [
         "AIA-NORM-A002-P1-A-PROVIDER",
@@ -3933,11 +3933,37 @@ def test_article_seventy_four_maps_provider_access_duties():
         segment.review.status.value == "approved" and segment.review.verified_by == "codex"
         for segment in segments
     )
-    assert len(norms) == 14
+    assert len(norms) == 17
     documentation_access = norms["AIA-NORM-A074-P12-GRANT-DOCUMENTATION-AND-DATA-ACCESS"]
     source_code_access = norms["AIA-NORM-A074-P13-GRANT-SOURCE-CODE-ACCESS"]
     assert documentation_access.implementation_refs == ["AIA-PO-A74-12"]
     assert source_code_access.implementation_refs == ["AIA-PO-A74-13"]
+
+    # The two annual reports have different recipients and contents.
+    competition = norms["AIA-NORM-A074-P2-ANNUAL-SURVEILLANCE-REPORTING"]
+    practices = norms["AIA-NORM-A074-P2-ANNUAL-PROHIBITED-PRACTICE-REPORTING"]
+    assert "national competition authorities" in competition.action
+    assert "national competition authorities" not in practices.action
+    assert practices.mandatory_content == [
+        "use of prohibited practices that occurred during that year",
+        "measures taken",
+    ]
+
+    # Designation binds the Member State; the judicial-independence limit binds surveillance.
+    designate = norms["AIA-NORM-A074-P8-SENSITIVE-SECTOR-AUTHORITIES"]
+    judicial = norms["AIA-NORM-A074-P8-PRESERVE-JUDICIAL-INDEPENDENCE"]
+    assert designate.subjects[0].subject_ref == "member_state"
+    assert judicial.subjects[0].subject_ref == "market_surveillance_authority"
+    assert judicial.kind.value == "prohibition"
+
+    # Proposing joint activities is a power; the AI Office owes coordination support.
+    joint = norms["AIA-NORM-A074-P11-JOINT-ACTIVITIES"]
+    support = norms["AIA-NORM-A074-P11-AI-OFFICE-COORDINATION-SUPPORT"]
+    assert joint.kind.value == "power"
+    assert joint.subjects[0].subject_ref == "market_surveillance_authority_and_commission"
+    assert support.kind.value == "obligation"
+    assert support.subjects[0].subject_ref == "ai_office"
+    assert all(norm.review.status.value == "proposed" for norm in norms.values())
 
 
 def test_article_seventy_five_separates_provider_and_authority_effects():

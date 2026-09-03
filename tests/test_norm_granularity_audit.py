@@ -24,7 +24,7 @@ def test_pinned_corpus_triage_is_documented_without_mutating_review():
     assert bundle.model_dump() == before
     assert bundle.validated_documents == 133
     assert len(bundle.text_review.segments) == 1471
-    assert len(candidates) == 60
+    assert len(candidates) == 57
 
     segments = {s.segment_id: s for s in bundle.text_review.segments}
     for candidate in candidates:
@@ -49,6 +49,7 @@ def test_pinned_corpus_triage_is_documented_without_mutating_review():
     closed_by_splitting |= {"AIA-TEXT-A070-P001", "AIA-TEXT-A070-P003"}
     closed_by_splitting |= {"AIA-TEXT-A071-P001", "AIA-TEXT-A071-P004"}
     closed_by_splitting |= {f"AIA-TEXT-A073-P{p:03}" for p in (7, 8, 10)}
+    closed_by_splitting |= {f"AIA-TEXT-A074-P{p:03}" for p in (4, 12, 15)}
     assert set(ids) - closed_by_splitting == {candidate.segment_id for candidate in candidates}
 
     content_report = (root / "docs/NORMATIVE-COVERAGE-CONTENT-AUDIT.md").read_text()
@@ -63,7 +64,7 @@ def test_pinned_corpus_triage_is_documented_without_mutating_review():
         if norm.mandatory_content
     }
     assert len(content_rows) == 146  # Historical audit baseline.
-    assert len(expected_content) == 129
+    assert len(expected_content) == 130
     baseline_content = {norm_id: int(count) for norm_id, count, _ in content_rows}
     # Article 40's example is now nested in its proper deliverable, not a third requirement.
     baseline_content["AIA-NORM-A040-P2-RESOURCE-PERFORMANCE-DELIVERABLES"] = 2
@@ -122,4 +123,6 @@ def test_pinned_corpus_triage_is_documented_without_mutating_review():
     baseline_content["AIA-NORM-A071-P6-OPERATOR-SUPPORT"] = 2
     # Article 73 separates corrective action from the investigation it follows.
     baseline_content["AIA-NORM-A073-P6-INVESTIGATE-ASSESS-AND-CORRECT"] = 2
+    # Article 74's prohibited-practice report keeps its own two content items.
+    baseline_content["AIA-NORM-A074-P2-ANNUAL-PROHIBITED-PRACTICE-REPORTING"] = 2
     assert baseline_content == expected_content

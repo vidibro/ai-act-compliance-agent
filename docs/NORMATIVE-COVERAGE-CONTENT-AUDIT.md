@@ -138,7 +138,13 @@ Article 73's investigation finding is now corrected with its three recorded segm
 The investigation keeps its two content items; corrective action, the evidence-preservation
 prohibition and the Regulation (EU) 2019/1020 notification procedures are separate norms. The
 live inventory still has 129 populated content lists, now across 1,454 proposed norms.
-Subsequent articles' findings remain pending.
+
+Article 74's two no-additional-finding rows are unchanged, but its three recorded segment
+splits are applied: the two annual reports, the designation duty and the judicial-independence
+prohibition, and the joint-activity power and the AI Office's coordination support are now
+separate norms. The prohibited-practice report carries its own two content items, so the live
+inventory has 130 populated content lists across 1,457 proposed norms. Subsequent articles'
+findings remain pending.
 
 | Norm | Content entries | Decision | Finding / treatment |
 |---|---:|---|---|

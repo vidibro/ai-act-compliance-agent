@@ -15,10 +15,24 @@ records:
   verification_mode: not_assessed
 - norm_id: AIA-NORM-A074-P2-ANNUAL-SURVEILLANCE-REPORTING
   source: A074-P004
-  quote: As part of their reporting obligations under Article 34(4) of Regulation (EU) 2019/1020, the market surveillance authorities shall report annually to the Commission and relevant national competition authorities any information identified in the course of market surveillance activities that may be of potential interest for the application of Union law on competition rules. They shall also annually report to the Commission about the use of prohibited practices that occurred during that year and about the measures taken.
-  action: report annually on competition-relevant surveillance information prohibited practices and measures
+  quote: As part of their reporting obligations under Article 34(4) of Regulation (EU) 2019/1020, the market surveillance authorities shall report annually to the Commission and relevant national competition authorities any information identified in the course of market surveillance activities that may be of potential interest for the application of Union law on competition rules.
+  action: report annually to the Commission and the relevant national competition authorities any
+    surveillance information of potential interest for applying Union competition law
   subject_ref: market_surveillance_authority
   subject_category: public_authority
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A074-P2-ANNUAL-PROHIBITED-PRACTICE-REPORTING
+  source: A074-P004
+  quote: They shall also annually report to the Commission about the use of prohibited practices that occurred during that year and about the measures taken.
+  action: report annually to the Commission on the use of prohibited practices during that year and
+    on the measures taken
+  subject_ref: market_surveillance_authority
+  subject_category: public_authority
+  mandatory_content: [use of prohibited practices that occurred during that year, measures taken]
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -85,10 +99,25 @@ records:
   verification_mode: not_assessed
 - norm_id: AIA-NORM-A074-P8-SENSITIVE-SECTOR-AUTHORITIES
   source: A074-P012
-  quote: For high-risk AI systems listed in point 1 of Annex III to this Regulation, in so far as the systems are used for law enforcement purposes, border management and justice and democracy, and for high-risk AI systems listed in points 6, 7 and 8 of Annex III to this Regulation, Member States shall designate as market surveillance authorities for the purposes of this Regulation either the competent data protection supervisory authorities under Regulation (EU) 2016/679 or Directive (EU) 2016/680, or any other authority designated pursuant to the same conditions laid down in Articles 41 to 44 of Directive (EU) 2016/680. Market surveillance activities shall in no way affect the independence of judicial authorities, or otherwise interfere with their activities when acting in their judicial capacity.
-  action: designate eligible sensitive-sector authorities while preserving judicial independence
+  quote: For high-risk AI systems listed in point 1 of Annex III to this Regulation, in so far as the systems are used for law enforcement purposes, border management and justice and democracy, and for high-risk AI systems listed in points 6, 7 and 8 of Annex III to this Regulation, Member States shall designate as market surveillance authorities for the purposes of this Regulation either the competent data protection supervisory authorities under Regulation (EU) 2016/679 or Directive (EU) 2016/680, or any other authority designated pursuant to the same conditions laid down in Articles 41 to 44 of Directive (EU) 2016/680.
+  action: designate, for the enacted Annex III systems, either the competent data protection
+    supervisory authorities or another authority designated under the same Articles 41 to 44
+    conditions as market surveillance authorities
   subject_ref: member_state
   subject_category: member_state
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A074-P8-PRESERVE-JUDICIAL-INDEPENDENCE
+  source: A074-P012
+  quote: Market surveillance activities shall in no way affect the independence of judicial authorities, or otherwise interfere with their activities when acting in their judicial capacity.
+  action: conduct no market surveillance activity that affects the independence of judicial
+    authorities or otherwise interferes with their activities when acting in their judicial capacity
+  subject_ref: market_surveillance_authority
+  subject_category: public_authority
+  kind: prohibition
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -118,10 +147,23 @@ records:
   verification_mode: not_assessed
 - norm_id: AIA-NORM-A074-P11-JOINT-ACTIVITIES
   source: A074-P015
-  quote: Market surveillance authorities and the Commission shall be able to propose joint activities, including joint investigations, to be conducted by either market surveillance authorities or market surveillance authorities jointly with the Commission, that have the aim of promoting compliance, identifying non-compliance, raising awareness or providing guidance in relation to this Regulation with respect to specific categories of high-risk AI systems that are found to present a serious risk across two or more Member States in accordance with Article 9 of Regulation (EU) 2019/1020. The AI Office shall provide coordination support for joint investigations.
-  action: propose and coordinate cross-border joint compliance surveillance activities and investigations
-  subject_ref: market_surveillance_authority_commission_and_ai_office
+  quote: Market surveillance authorities and the Commission shall be able to propose joint activities, including joint investigations, to be conducted by either market surveillance authorities or market surveillance authorities jointly with the Commission, that have the aim of promoting compliance, identifying non-compliance, raising awareness or providing guidance in relation to this Regulation with respect to specific categories of high-risk AI systems that are found to present a serious risk across two or more Member States in accordance with Article 9 of Regulation (EU) 2019/1020.
+  action: propose joint activities, including joint investigations, on categories of high-risk AI
+    systems found to present a serious risk across two or more Member States
+  subject_ref: market_surveillance_authority_and_commission
   subject_category: public_authority
+  kind: power
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A074-P11-AI-OFFICE-COORDINATION-SUPPORT
+  source: A074-P015
+  quote: The AI Office shall provide coordination support for joint investigations.
+  action: provide coordination support for joint investigations
+  subject_ref: ai_office
+  subject_category: union_institution_or_body
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required

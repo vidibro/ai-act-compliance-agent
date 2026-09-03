@@ -47,13 +47,12 @@ norms:
   subjects:
   - subject_ref: market_surveillance_authority
     category: public_authority
-  action: report annually on competition-relevant surveillance information prohibited practices and measures
+  action: report annually to the Commission and the relevant national competition authorities any surveillance
+    information of potential interest for applying Union competition law
   norm_text: As part of their reporting obligations under Article 34(4) of Regulation (EU) 2019/1020,
     the market surveillance authorities shall report annually to the Commission and relevant national
     competition authorities any information identified in the course of market surveillance activities
-    that may be of potential interest for the application of Union law on competition rules. They shall
-    also annually report to the Commission about the use of prohibited practices that occurred during
-    that year and about the measures taken.
+    that may be of potential interest for the application of Union law on competition rules.
   detection_channels:
   - semantic_legal_effect
   - shall_token
@@ -65,6 +64,44 @@ norms:
   conditions: []
   exceptions: []
   mandatory_content: []
+  dependencies: []
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_refs: []
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A074-P2-ANNUAL-PROHIBITED-PRACTICE-REPORTING
+  act_version_date: '2026-07-27'
+  kind: obligation
+  subjects:
+  - subject_ref: market_surveillance_authority
+    category: public_authority
+  action: report annually to the Commission on the use of prohibited practices during that year and on
+    the measures taken
+  norm_text: They shall also annually report to the Commission about the use of prohibited practices that
+    occurred during that year and about the measures taken.
+  detection_channels:
+  - semantic_legal_effect
+  - shall_token
+  primary_spans:
+  - AIA-TEXT-A074-P004
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions: []
+  exceptions: []
+  mandatory_content:
+  - use of prohibited practices that occurred during that year
+  - measures taken
   dependencies: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -280,16 +317,52 @@ norms:
   subjects:
   - subject_ref: member_state
     category: member_state
-  action: designate eligible sensitive-sector authorities while preserving judicial independence
+  action: designate, for the enacted Annex III systems, either the competent data protection supervisory
+    authorities or another authority designated under the same Articles 41 to 44 conditions as market
+    surveillance authorities
   norm_text: For high-risk AI systems listed in point 1 of Annex III to this Regulation, in so far as
     the systems are used for law enforcement purposes, border management and justice and democracy, and
     for high-risk AI systems listed in points 6, 7 and 8 of Annex III to this Regulation, Member States
     shall designate as market surveillance authorities for the purposes of this Regulation either the
     competent data protection supervisory authorities under Regulation (EU) 2016/679 or Directive (EU)
     2016/680, or any other authority designated pursuant to the same conditions laid down in Articles
-    41 to 44 of Directive (EU) 2016/680. Market surveillance activities shall in no way affect the independence
-    of judicial authorities, or otherwise interfere with their activities when acting in their judicial
-    capacity.
+    41 to 44 of Directive (EU) 2016/680.
+  detection_channels:
+  - semantic_legal_effect
+  - shall_token
+  primary_spans:
+  - AIA-TEXT-A074-P012
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions: []
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_refs: []
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A074-P8-PRESERVE-JUDICIAL-INDEPENDENCE
+  act_version_date: '2026-07-27'
+  kind: prohibition
+  subjects:
+  - subject_ref: market_surveillance_authority
+    category: public_authority
+  action: conduct no market surveillance activity that affects the independence of judicial authorities
+    or otherwise interferes with their activities when acting in their judicial capacity
+  norm_text: Market surveillance activities shall in no way affect the independence of judicial authorities,
+    or otherwise interfere with their activities when acting in their judicial capacity.
   detection_channels:
   - semantic_legal_effect
   - shall_token
@@ -391,18 +464,52 @@ norms:
     elapsed_seconds: null
 - norm_id: AIA-NORM-A074-P11-JOINT-ACTIVITIES
   act_version_date: '2026-07-27'
-  kind: obligation
+  kind: power
   subjects:
-  - subject_ref: market_surveillance_authority_commission_and_ai_office
+  - subject_ref: market_surveillance_authority_and_commission
     category: public_authority
-  action: propose and coordinate cross-border joint compliance surveillance activities and investigations
+  action: propose joint activities, including joint investigations, on categories of high-risk AI systems
+    found to present a serious risk across two or more Member States
   norm_text: Market surveillance authorities and the Commission shall be able to propose joint activities,
     including joint investigations, to be conducted by either market surveillance authorities or market
     surveillance authorities jointly with the Commission, that have the aim of promoting compliance, identifying
     non-compliance, raising awareness or providing guidance in relation to this Regulation with respect
     to specific categories of high-risk AI systems that are found to present a serious risk across two
-    or more Member States in accordance with Article 9 of Regulation (EU) 2019/1020. The AI Office shall
-    provide coordination support for joint investigations.
+    or more Member States in accordance with Article 9 of Regulation (EU) 2019/1020.
+  detection_channels:
+  - semantic_legal_effect
+  - shall_token
+  primary_spans:
+  - AIA-TEXT-A074-P015
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions: []
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_refs: []
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A074-P11-AI-OFFICE-COORDINATION-SUPPORT
+  act_version_date: '2026-07-27'
+  kind: obligation
+  subjects:
+  - subject_ref: ai_office
+    category: union_institution_or_body
+  action: provide coordination support for joint investigations
+  norm_text: The AI Office shall provide coordination support for joint investigations.
   detection_channels:
   - semantic_legal_effect
   - shall_token
