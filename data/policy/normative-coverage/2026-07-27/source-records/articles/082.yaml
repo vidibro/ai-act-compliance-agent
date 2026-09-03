@@ -54,8 +54,20 @@ records:
   verification_mode: not_assessed
 - norm_id: AIA-NORM-A082-P5-COMMUNICATE-DECISION
   source: A082-P005
-  quote: The Commission shall immediately communicate its decision to the Member States concerned and to the relevant operators. It shall also inform the other Member States.
-  action: immediately communicate the decision to concerned Member States and operators and inform other Member States
+  quote: The Commission shall immediately communicate its decision to the Member States concerned and to the relevant operators.
+  action: immediately communicate the decision to the Member States concerned and to the relevant
+    operators
+  subject_ref: commission
+  subject_category: union_institution_or_body
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A082-P5-INFORM-OTHER-MEMBER-STATES
+  source: A082-P005
+  quote: It shall also inform the other Member States.
+  action: inform the other Member States of the decision
   subject_ref: commission
   subject_category: union_institution_or_body
   product_scope: outside_supported_actor

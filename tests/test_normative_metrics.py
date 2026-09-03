@@ -1661,15 +1661,15 @@ def test_inventory_cannot_be_misreported_as_independently_approved(metrics):
     assert metrics.needs_review_characters == 0
     assert metrics.review_statuses == {
         "approved": 1467,
-        "proposed": 1475,
+        "proposed": 1476,
     }
     assert metrics.timed_review_records == 0
-    assert metrics.total_review_records == 2943
+    assert metrics.total_review_records == 2944
 
 
 def test_semantic_pass_finds_propositions_a_shall_scan_misses(metrics):
     assert metrics.shall_vs_semantic_disagreements == 571
-    assert metrics.shall_token_candidate_recall == pytest.approx(900 / 1471)
+    assert metrics.shall_token_candidate_recall == pytest.approx(901 / 1472)
     assert "AIA-NORM-A011-P1-SIMPLIFY" in metrics.semantic_norms_without_shall_token
     assert "AIA-NORM-A043-P5-AMEND" in metrics.semantic_norms_without_shall_token
     assert "AIA-NORM-A060-P4-PERMISSION" in metrics.semantic_norms_without_shall_token
@@ -1677,12 +1677,12 @@ def test_semantic_pass_finds_propositions_a_shall_scan_misses(metrics):
 
 
 def test_metrics_expose_many_to_many_and_implementation_debt(metrics):
-    assert metrics.normative_segments_with_multiple_norms == 372
+    assert metrics.normative_segments_with_multiple_norms == 373
     assert metrics.mapping_shape.one_norm_to_one_target == 25
     assert metrics.mapping_shape.many_norms_to_one_target == 353
     assert metrics.mapping_shape.one_norm_to_many_targets == 0
     assert metrics.mapping_shape.many_to_many == 15
-    assert metrics.mapping_shape.unmapped == 1078
+    assert metrics.mapping_shape.unmapped == 1079
     assert metrics.semantic_vs_existing_implementation_disagreements == 239
     assert metrics.semantic_norms_without_existing_implementation == [
         "AIA-NORM-A002-P1-A-PROVIDER",
@@ -4198,11 +4198,20 @@ def test_article_eighty_two_maps_compliant_system_risk_correction():
         if norm.norm_id.startswith("AIA-NORM-A082-")
     }
 
-    assert len(norms) == 6
+    assert len(norms) == 7
     assert norms["AIA-NORM-A082-P2-CORRECT-ALL-UNION-SYSTEMS"].implementation_refs == [
         "AIA-ALL-A82"
     ]
     assert len(norms["AIA-NORM-A082-P3-INFORM-ABOUT-RISK-FINDING"].mandatory_content) == 4
+
+    # The immediate deadline covers the concerned States and operators, not the wider notice.
+    decision = norms["AIA-NORM-A082-P5-COMMUNICATE-DECISION"]
+    others = norms["AIA-NORM-A082-P5-INFORM-OTHER-MEMBER-STATES"]
+    assert "immediately" in decision.action
+    assert "immediately" not in others.action
+    assert "relevant operators" in decision.action
+    assert "other Member States" in others.action
+    assert all(norm.review.status.value == "proposed" for norm in norms.values())
 
 
 def test_article_eighty_three_keeps_formal_defects_as_one_enforcement_cycle():
