@@ -194,10 +194,8 @@ norms:
   subjects:
   - subject_ref: advisory_forum
     category: union_institution_or_body
-  action: adopt rules elect two balanced co-chairs and apply the enacted co-chair term
-  norm_text: The advisory forum shall draw up its rules of procedure. It shall elect two co-chairs from
-    among its members, in accordance with criteria set out in paragraph 2. The term of office of the co-chairs
-    shall be two years, renewable once.
+  action: draw up the advisory forum's rules of procedure
+  norm_text: The advisory forum shall draw up its rules of procedure.
   detection_channels:
   - semantic_legal_effect
   - shall_token
@@ -207,10 +205,77 @@ norms:
   effective_date_spans: []
   conditions: []
   exceptions: []
-  mandatory_content:
-  - rules of procedure
-  - two co-chairs elected under paragraph 2 criteria
-  - two-year co-chair term renewable once
+  mandatory_content: []
+  dependencies: []
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_refs: []
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A067-P6-ELECT-COCHAIRS
+  act_version_date: '2026-07-27'
+  kind: obligation
+  subjects:
+  - subject_ref: advisory_forum
+    category: union_institution_or_body
+  action: elect two co-chairs from among the forum's members in accordance with the paragraph 2 criteria
+  norm_text: It shall elect two co-chairs from among its members, in accordance with criteria set out
+    in paragraph 2.
+  detection_channels:
+  - semantic_legal_effect
+  - shall_token
+  primary_spans:
+  - AIA-TEXT-A067-P006
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions: []
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_refs: []
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A067-P6-COCHAIR-TERM
+  act_version_date: '2026-07-27'
+  kind: legal_consequence
+  subjects:
+  - subject_ref: advisory_forum
+    category: union_institution_or_body
+  action: hold the co-chair office for a two-year term, renewable once
+  norm_text: The term of office of the co-chairs shall be two years, renewable once.
+  detection_channels:
+  - semantic_legal_effect
+  - shall_token
+  - deeming_or_consequence
+  primary_spans:
+  - AIA-TEXT-A067-P006
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions: []
+  exceptions: []
+  mandatory_content: []
   dependencies: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -233,12 +298,44 @@ norms:
   subjects:
   - subject_ref: advisory_forum
     category: union_institution_or_body
-  action: meet at least twice yearly and invite experts and stakeholders as appropriate
-  norm_text: The advisory forum shall hold meetings at least twice a year. The advisory forum may invite
-    experts and other stakeholders to its meetings.
+  action: hold meetings at least twice a year
+  norm_text: The advisory forum shall hold meetings at least twice a year.
   detection_channels:
   - semantic_legal_effect
   - shall_token
+  primary_spans:
+  - AIA-TEXT-A067-P007
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions: []
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_refs: []
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A067-P7-INVITE-EXPERTS
+  act_version_date: '2026-07-27'
+  kind: power
+  subjects:
+  - subject_ref: advisory_forum
+    category: union_institution_or_body
+  action: invite experts and other stakeholders to the forum's meetings
+  norm_text: The advisory forum may invite experts and other stakeholders to its meetings.
+  detection_channels:
+  - semantic_legal_effect
   - other_modal
   primary_spans:
   - AIA-TEXT-A067-P007
@@ -246,8 +343,7 @@ norms:
   effective_date_spans: []
   conditions: []
   exceptions: []
-  mandatory_content:
-  - at least two meetings per year
+  mandatory_content: []
   dependencies: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -341,9 +437,8 @@ norms:
   subjects:
   - subject_ref: advisory_forum
     category: union_institution_or_body
-  action: prepare and publicly release an annual activity report
-  norm_text: The advisory forum shall prepare an annual report on its activities. That report shall be
-    made publicly available.
+  action: prepare an annual report on the forum's activities
+  norm_text: The advisory forum shall prepare an annual report on its activities.
   detection_channels:
   - semantic_legal_effect
   - shall_token
@@ -353,9 +448,41 @@ norms:
   effective_date_spans: []
   conditions: []
   exceptions: []
-  mandatory_content:
-  - annual activity report
-  - public availability
+  mandatory_content: []
+  dependencies: []
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_refs: []
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A067-P10-PUBLISH-ANNUAL-REPORT
+  act_version_date: '2026-07-27'
+  kind: obligation
+  subjects:
+  - subject_ref: advisory_forum
+    category: union_institution_or_body
+  action: make the annual activity report publicly available
+  norm_text: That report shall be made publicly available.
+  detection_channels:
+  - semantic_legal_effect
+  - shall_token
+  primary_spans:
+  - AIA-TEXT-A067-P010
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions: []
+  exceptions: []
+  mandatory_content: []
   dependencies: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.

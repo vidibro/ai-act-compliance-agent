@@ -171,6 +171,8 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A067-P6-RULES-AND-COCHAIRS
+  - AIA-NORM-A067-P6-ELECT-COCHAIRS
+  - AIA-NORM-A067-P6-COCHAIR-TERM
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -196,6 +198,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A067-P7-MEETINGS-AND-INVITATIONS
+  - AIA-NORM-A067-P7-INVITE-EXPERTS
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -271,6 +274,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A067-P10-ANNUAL-PUBLIC-REPORT
+  - AIA-NORM-A067-P10-PUBLISH-ANNUAL-REPORT
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass

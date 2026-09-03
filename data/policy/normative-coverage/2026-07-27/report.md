@@ -4,7 +4,7 @@
 
 **Act version:** 2026-07-27
 
-The inventory contains 133 complete source-body partitions, 1471 exact segments, and 1424 proposed atomic norms. Every stored article and annex is present. Proposed
+The inventory contains 133 complete source-body partitions, 1471 exact segments, and 1428 proposed atomic norms. Every stored article and annex is present. Proposed
 norms have been extracted from 132 documents; the remaining
 work is retained explicitly rather than omitted. The inventory is not consumed by classification,
 rule selection, judging, or reporting.
@@ -103,7 +103,7 @@ rule selection, judging, or reporting.
 - article 64: 3
 - article 65: 16
 - article 66: 17
-- article 67: 10
+- article 67: 14
 - article 68: 8
 - article 69: 3
 - article 7: 4
@@ -768,11 +768,11 @@ rule selection, judging, or reporting.
 - AIA-TEXT-A067-P003: 1
 - AIA-TEXT-A067-P004: 1
 - AIA-TEXT-A067-P005: 1
-- AIA-TEXT-A067-P006: 1
-- AIA-TEXT-A067-P007: 1
+- AIA-TEXT-A067-P006: 3
+- AIA-TEXT-A067-P007: 2
 - AIA-TEXT-A067-P008: 1
 - AIA-TEXT-A067-P009: 1
-- AIA-TEXT-A067-P010: 1
+- AIA-TEXT-A067-P010: 2
 - AIA-TEXT-A068-P001: 1
 - AIA-TEXT-A068-P002: 1
 - AIA-TEXT-A068-P006: 1
@@ -1118,15 +1118,15 @@ rule selection, judging, or reporting.
 - Characters displayed by the extraction pass: 394667
 - Independently approved characters: 390556
 - Characters deliberately left as review debt: 0
-- Normative segments supporting multiple propositions: 343
-- Semantic candidates a shall-token pass missed: 560
+- Normative segments supporting multiple propositions: 346
+- Semantic candidates a shall-token pass missed: 561
 - Shall-token candidate recall: 60.7%
 - In-scope semantic candidates absent from existing implementation: 239
-- Detection-channel counts: cross_reference_structure=486, deeming_or_consequence=272, existing_implementation=390, other_modal=156, semantic_legal_effect=1424, shall_token=864
-- Mapping shapes, by norm: one-to-one=26, many-to-one=349, one-to-many=0, many-to-many=15, unmapped=1034
+- Detection-channel counts: cross_reference_structure=486, deeming_or_consequence=273, existing_implementation=390, other_modal=156, semantic_legal_effect=1428, shall_token=867
+- Mapping shapes, by norm: one-to-one=26, many-to-one=349, one-to-many=0, many-to-many=15, unmapped=1038
 - Implementation debt candidates: 222
 - Interpretive links to non-binding guidance: 1
-- Review records with measured elapsed time: 0/2896
+- Review records with measured elapsed time: 0/2900
 
 ## Findings
 

@@ -24,7 +24,7 @@ def test_pinned_corpus_triage_is_documented_without_mutating_review():
     assert bundle.model_dump() == before
     assert bundle.validated_documents == 133
     assert len(bundle.text_review.segments) == 1471
-    assert len(candidates) == 69
+    assert len(candidates) == 67
 
     segments = {s.segment_id: s for s in bundle.text_review.segments}
     for candidate in candidates:
@@ -45,6 +45,7 @@ def test_pinned_corpus_triage_is_documented_without_mutating_review():
     closed_by_splitting |= {"AIA-TEXT-A060-P019", "AIA-TEXT-A060-P020"}
     closed_by_splitting.add("AIA-TEXT-A060A-P010")
     closed_by_splitting.add("AIA-TEXT-A061-P007")
+    closed_by_splitting |= {"AIA-TEXT-A067-P006", "AIA-TEXT-A067-P010"}
     assert set(ids) - closed_by_splitting == {candidate.segment_id for candidate in candidates}
 
     content_report = (root / "docs/NORMATIVE-COVERAGE-CONTENT-AUDIT.md").read_text()
@@ -59,7 +60,7 @@ def test_pinned_corpus_triage_is_documented_without_mutating_review():
         if norm.mandatory_content
     }
     assert len(content_rows) == 146  # Historical audit baseline.
-    assert len(expected_content) == 135
+    assert len(expected_content) == 132
     baseline_content = {norm_id: int(count) for norm_id, count, _ in content_rows}
     # Article 40's example is now nested in its proper deliverable, not a third requirement.
     baseline_content["AIA-NORM-A040-P2-RESOURCE-PERFORMANCE-DELIVERABLES"] = 2
@@ -98,4 +99,8 @@ def test_pinned_corpus_triage_is_documented_without_mutating_review():
     # Article 66's lettered tasks are powers; point (e) states one non-exhaustive scope.
     baseline_content.pop("AIA-NORM-A066-BOARD-ADVICE-AND-ASSISTANCE-TASKS")
     baseline_content["AIA-NORM-A066-E-RECOMMENDATION-AND-OPINION-TOPICS"] = 1
+    # Article 67's rules, meetings and reporting effects are separate norms.
+    baseline_content.pop("AIA-NORM-A067-P6-RULES-AND-COCHAIRS")
+    baseline_content.pop("AIA-NORM-A067-P7-MEETINGS-AND-INVITATIONS")
+    baseline_content.pop("AIA-NORM-A067-P10-ANNUAL-PUBLIC-REPORT")
     assert baseline_content == expected_content

@@ -1661,15 +1661,15 @@ def test_inventory_cannot_be_misreported_as_independently_approved(metrics):
     assert metrics.needs_review_characters == 0
     assert metrics.review_statuses == {
         "approved": 1467,
-        "proposed": 1428,
+        "proposed": 1432,
     }
     assert metrics.timed_review_records == 0
-    assert metrics.total_review_records == 2896
+    assert metrics.total_review_records == 2900
 
 
 def test_semantic_pass_finds_propositions_a_shall_scan_misses(metrics):
-    assert metrics.shall_vs_semantic_disagreements == 560
-    assert metrics.shall_token_candidate_recall == pytest.approx(864 / 1424)
+    assert metrics.shall_vs_semantic_disagreements == 561
+    assert metrics.shall_token_candidate_recall == pytest.approx(867 / 1428)
     assert "AIA-NORM-A011-P1-SIMPLIFY" in metrics.semantic_norms_without_shall_token
     assert "AIA-NORM-A043-P5-AMEND" in metrics.semantic_norms_without_shall_token
     assert "AIA-NORM-A060-P4-PERMISSION" in metrics.semantic_norms_without_shall_token
@@ -1677,12 +1677,12 @@ def test_semantic_pass_finds_propositions_a_shall_scan_misses(metrics):
 
 
 def test_metrics_expose_many_to_many_and_implementation_debt(metrics):
-    assert metrics.normative_segments_with_multiple_norms == 343
+    assert metrics.normative_segments_with_multiple_norms == 346
     assert metrics.mapping_shape.one_norm_to_one_target == 26
     assert metrics.mapping_shape.many_norms_to_one_target == 349
     assert metrics.mapping_shape.one_norm_to_many_targets == 0
     assert metrics.mapping_shape.many_to_many == 15
-    assert metrics.mapping_shape.unmapped == 1034
+    assert metrics.mapping_shape.unmapped == 1038
     assert metrics.semantic_vs_existing_implementation_disagreements == 239
     assert metrics.semantic_norms_without_existing_implementation == [
         "AIA-NORM-A002-P1-A-PROVIDER",
@@ -3613,10 +3613,36 @@ def test_article_sixty_seven_extracts_advisory_forum_governance():
     assert len(segments) == 11
     assert all(segment.review.status.value == "approved" for segment in segments)
     assert all(segment.review.verified_by == "codex" for segment in segments)
-    assert len(norms) == 10
+    assert len(norms) == 14
     assert all(norm.product_scope.value == "outside_supported_actor" for norm in norms.values())
     assert len(norms["AIA-NORM-A067-P2-BALANCED-MEMBERSHIP"].mandatory_content) == 3
     assert len(norms["AIA-NORM-A067-P5-PERMANENT-MEMBERS"].mandatory_content) == 5
+
+    # Rules, the election and the co-chair term are three effects on one span.
+    rules = norms["AIA-NORM-A067-P6-RULES-AND-COCHAIRS"]
+    election = norms["AIA-NORM-A067-P6-ELECT-COCHAIRS"]
+    term = norms["AIA-NORM-A067-P6-COCHAIR-TERM"]
+    assert not rules.mandatory_content
+    assert rules.kind.value == election.kind.value == "obligation"
+    assert term.kind.value == "legal_consequence"
+    assert "paragraph 2" in election.action
+    assert "renewable once" in term.action
+    assert {n.primary_spans[0] for n in (rules, election, term)} == {"AIA-TEXT-A067-P006"}
+
+    # Two meetings a year are required; inviting experts is not.
+    meetings = norms["AIA-NORM-A067-P7-MEETINGS-AND-INVITATIONS"]
+    invite = norms["AIA-NORM-A067-P7-INVITE-EXPERTS"]
+    assert meetings.kind.value == "obligation"
+    assert not meetings.mandatory_content
+    assert "at least twice a year" in meetings.action
+    assert invite.kind.value == "power"
+
+    # Preparing the annual report and publishing it are separately assessable.
+    report = norms["AIA-NORM-A067-P10-ANNUAL-PUBLIC-REPORT"]
+    publish = norms["AIA-NORM-A067-P10-PUBLISH-ANNUAL-REPORT"]
+    assert not report.mandatory_content
+    assert "publicly available" in publish.action
+    assert all(norm.review.status.value == "proposed" for norm in norms.values())
 
 
 def test_article_sixty_eight_extracts_scientific_panel_safeguards():

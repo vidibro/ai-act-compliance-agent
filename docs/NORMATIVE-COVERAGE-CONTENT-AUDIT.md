@@ -106,7 +106,14 @@ carries fifteen content items: the enumerated tasks are separate powers under th
 particular" sentence, each with its own norm. Point (e) keeps one content entry stating the
 non-exhaustive scope and naming all seven enacted topics inside it, so no opinion is required
 to cover all of them. The live inventory has 135 populated content lists across 1,424 proposed
-norms. Subsequent articles' findings remain pending.
+norms.
+
+Article 67's meetings finding is now corrected together with its two recorded segment splits.
+The rules of procedure, the co-chair election, the co-chair term, the two required annual
+meetings, the optional invitation of experts, the annual report and its publication are now
+separate norms, so three content lists disappear. Paragraph 2's balance requirement and
+paragraph 5's permanent members are unchanged. The live inventory has 132 populated content
+lists across 1,428 proposed norms. Subsequent articles' findings remain pending.
 
 | Norm | Content entries | Decision | Finding / treatment |
 |---|---:|---|---|

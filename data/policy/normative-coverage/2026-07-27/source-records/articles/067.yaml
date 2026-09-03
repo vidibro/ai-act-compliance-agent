@@ -58,11 +58,34 @@ records:
   verification_mode: not_assessed
 - norm_id: AIA-NORM-A067-P6-RULES-AND-COCHAIRS
   source: A067-P006
-  quote: The advisory forum shall draw up its rules of procedure. It shall elect two co-chairs from among its members, in accordance with criteria set out in paragraph 2. The term of office of the co-chairs shall be two years, renewable once.
-  action: adopt rules elect two balanced co-chairs and apply the enacted co-chair term
+  quote: The advisory forum shall draw up its rules of procedure.
+  action: draw up the advisory forum's rules of procedure
   subject_ref: advisory_forum
   subject_category: union_institution_or_body
-  mandatory_content: [rules of procedure, two co-chairs elected under paragraph 2 criteria, two-year co-chair term renewable once]
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A067-P6-ELECT-COCHAIRS
+  source: A067-P006
+  quote: It shall elect two co-chairs from among its members, in accordance with criteria set out in paragraph 2.
+  action: elect two co-chairs from among the forum's members in accordance with the paragraph 2
+    criteria
+  subject_ref: advisory_forum
+  subject_category: union_institution_or_body
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A067-P6-COCHAIR-TERM
+  source: A067-P006
+  quote: The term of office of the co-chairs shall be two years, renewable once.
+  action: hold the co-chair office for a two-year term, renewable once
+  subject_ref: advisory_forum
+  subject_category: union_institution_or_body
+  kind: legal_consequence
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -70,11 +93,22 @@ records:
   verification_mode: not_assessed
 - norm_id: AIA-NORM-A067-P7-MEETINGS-AND-INVITATIONS
   source: A067-P007
-  quote: The advisory forum shall hold meetings at least twice a year. The advisory forum may invite experts and other stakeholders to its meetings.
-  action: meet at least twice yearly and invite experts and stakeholders as appropriate
+  quote: The advisory forum shall hold meetings at least twice a year.
+  action: hold meetings at least twice a year
   subject_ref: advisory_forum
   subject_category: union_institution_or_body
-  mandatory_content: [at least two meetings per year]
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A067-P7-INVITE-EXPERTS
+  source: A067-P007
+  quote: The advisory forum may invite experts and other stakeholders to its meetings.
+  action: invite experts and other stakeholders to the forum's meetings
+  subject_ref: advisory_forum
+  subject_category: union_institution_or_body
+  kind: power
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -107,11 +141,21 @@ records:
   verification_mode: not_assessed
 - norm_id: AIA-NORM-A067-P10-ANNUAL-PUBLIC-REPORT
   source: A067-P010
-  quote: The advisory forum shall prepare an annual report on its activities. That report shall be made publicly available.
-  action: prepare and publicly release an annual activity report
+  quote: The advisory forum shall prepare an annual report on its activities.
+  action: prepare an annual report on the forum's activities
   subject_ref: advisory_forum
   subject_category: union_institution_or_body
-  mandatory_content: [annual activity report, public availability]
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A067-P10-PUBLISH-ANNUAL-REPORT
+  source: A067-P010
+  quote: That report shall be made publicly available.
+  action: make the annual activity report publicly available
+  subject_ref: advisory_forum
+  subject_category: union_institution_or_body
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
