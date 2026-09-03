@@ -143,8 +143,14 @@ Article 74's two no-additional-finding rows are unchanged, but its three recorde
 splits are applied: the two annual reports, the designation duty and the judicial-independence
 prohibition, and the joint-activity power and the AI Office's coordination support are now
 separate norms. The prohibited-practice report carries its own two content items, so the live
-inventory has 130 populated content lists across 1,457 proposed norms. Subsequent articles'
-findings remain pending.
+inventory has 130 populated content lists across 1,457 proposed norms.
+
+Article 75's three recorded rows are now corrected. The competence norm enumerates the four
+point (a) exclusions in its exceptions, scoped to that point rather than to the very large
+online platform branch. The assessment request keeps its three content items and records the
+duly-reasoned requirement, and the four-month reply is separate from the conditional updates
+on major developments and outcome. The live inventory has 131 populated content lists across
+1,459 proposed norms. Subsequent articles' findings remain pending.
 
 | Norm | Content entries | Decision | Finding / treatment |
 |---|---:|---|---|

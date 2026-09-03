@@ -6,7 +6,24 @@ records:
   subject_ref: ai_office
   subject_category: union_institution_or_body
   kind: legal_consequence
-  mandatory_content: [same-provider or same-undertaking general-purpose-model systems subject to the enacted exclusions, very large online platform or search-engine systems]
+  mandatory_content:
+  - AI systems based on general-purpose AI models where the model and the system are developed by
+    the same provider, or by providers forming part of the same undertaking as that provider, except
+    for AI systems related to products covered by the Annex I Union harmonisation legislation, AI
+    systems referred to in point 2 of Annex III, AI systems provided by law enforcement authorities,
+    border management authorities and financial institutions insofar as they fall under
+    Article 74(6), and AI systems referred to in point 8 of Annex III as regards the administration
+    of justice
+  - AI systems that constitute or that are integrated into a very large online platform or very
+    large online search engine designated in accordance with Regulation (EU) 2022/2065
+  exceptions:
+  - point (a) only, AI systems related to products covered by the Union harmonisation legislation
+    listed in Annex I
+  - point (a) only, AI systems referred to in point 2 of Annex III
+  - point (a) only, AI systems provided by law enforcement authorities, border management
+    authorities and financial institutions, insofar as those AI systems fall under Article 74(6)
+  - point (a) only, AI systems referred to in point 8 of Annex III as regards the administration of
+    justice
   qualifier_spans: [A075-P002, A075-P003, A075-P004, A075-P005, A075-P006, A075-P007]
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -174,10 +191,27 @@ records:
   verification_mode: listed_for_confirmation
 - norm_id: AIA-NORM-A075-P2-COOPERATE-ON-GPAI-SYSTEMS
   source: A075-P015
-  quote: they shall cooperate with the AI Office to carry out compliance evaluations, and shall inform the Board and other market surveillance authorities accordingly
-  action: cooperate on compliance evaluations and inform the Board and other authorities when directly deployable GPAI systems may be non-compliant
+  quote: they shall cooperate with the AI Office to carry out compliance evaluations
+  action: cooperate with the AI Office to carry out compliance evaluations
   subject_ref: market_surveillance_authority
   subject_category: public_authority
+  conditions:
+  - the authority has sufficient reason to consider that general-purpose AI systems usable
+    directly by deployers for at least one high-risk purpose are non-compliant
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A075-P2-INFORM-BOARD-AND-AUTHORITIES
+  source: A075-P015
+  quote: and shall inform the Board and other market surveillance authorities accordingly
+  action: inform the Board and the other market surveillance authorities accordingly
+  subject_ref: market_surveillance_authority
+  subject_category: public_authority
+  conditions:
+  - the authority has sufficient reason to consider that general-purpose AI systems usable
+    directly by deployers for at least one high-risk purpose are non-compliant
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -185,8 +219,10 @@ records:
   verification_mode: not_assessed
 - norm_id: AIA-NORM-A075-P2A-REQUEST-ASSESSMENT
   source: A075-P016
-  quote: it may request, through the relevant single point of contact designated in accordance with Article 70(2), the AI Office to assess the matter
-  action: request an AI Office assessment through the single point of contact on well-founded and sufficiently suspected infringement
+  quote: it may request, through the relevant single point of contact designated in accordance with Article 70(2), the AI Office to assess the matter in order to take the necessary supervisory and enforcement measures to ensure prompt compliance with this Regulation. Such a request shall be duly reasoned and shall include at least
+  action: request, through the relevant Article 70(2) single point of contact, a duly reasoned AI
+    Office assessment of the matter so that the necessary supervisory and enforcement measures ensure
+    prompt compliance
   subject_ref: market_surveillance_authority
   subject_category: public_authority
   kind: power
@@ -222,10 +258,28 @@ records:
 - norm_id: AIA-NORM-A075-P2A-RESPOND-AND-UPDATE
   source: A075-P021
   quote: The AI Office shall, without undue delay and in any event no later than four months following receipt of the request, inform the single point of contact of its intention to exercise its powers in accordance with Article 75a or of its reasons for not exercising its powers.
-  action: respond within four months and periodically report major developments and outcome when exercising Article 75a powers
+  action: inform the single point of contact, without undue delay and no later than four months after
+    receiving the request, of the intention to exercise the Article 75a powers or of the reasons for
+    not exercising them
   subject_ref: ai_office
   subject_category: union_institution_or_body
-  mandatory_content: [intention to exercise Article 75a powers or reasons not to do so, periodic major-development updates when powers are exercised, proceeding outcome without confidential information]
+  mandatory_content:
+  - the intention to exercise the Article 75a powers, or the reasons for not exercising them
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A075-P2A-UPDATE-ON-PROCEEDINGS
+  source: A075-P021
+  quote: If the AI Office decides to exercise its powers in accordance with Article 75a, it shall periodically inform that single point of contact about major developments in the proceedings and the outcome of such proceedings, without disclosing any confidential information.
+  action: periodically inform the single point of contact about major developments in the proceedings
+    and about their outcome, without disclosing any confidential information
+  subject_ref: ai_office
+  subject_category: union_institution_or_body
+  conditions:
+  - the AI Office decides to exercise its powers in accordance with Article 75a
+  mandatory_content: [major developments in the proceedings, the outcome of the proceedings]
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required

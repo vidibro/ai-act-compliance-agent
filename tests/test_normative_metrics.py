@@ -1661,15 +1661,15 @@ def test_inventory_cannot_be_misreported_as_independently_approved(metrics):
     assert metrics.needs_review_characters == 0
     assert metrics.review_statuses == {
         "approved": 1467,
-        "proposed": 1461,
+        "proposed": 1463,
     }
     assert metrics.timed_review_records == 0
-    assert metrics.total_review_records == 2929
+    assert metrics.total_review_records == 2931
 
 
 def test_semantic_pass_finds_propositions_a_shall_scan_misses(metrics):
-    assert metrics.shall_vs_semantic_disagreements == 572
-    assert metrics.shall_token_candidate_recall == pytest.approx(885 / 1457)
+    assert metrics.shall_vs_semantic_disagreements == 571
+    assert metrics.shall_token_candidate_recall == pytest.approx(888 / 1459)
     assert "AIA-NORM-A011-P1-SIMPLIFY" in metrics.semantic_norms_without_shall_token
     assert "AIA-NORM-A043-P5-AMEND" in metrics.semantic_norms_without_shall_token
     assert "AIA-NORM-A060-P4-PERMISSION" in metrics.semantic_norms_without_shall_token
@@ -1677,12 +1677,12 @@ def test_semantic_pass_finds_propositions_a_shall_scan_misses(metrics):
 
 
 def test_metrics_expose_many_to_many_and_implementation_debt(metrics):
-    assert metrics.normative_segments_with_multiple_norms == 364
+    assert metrics.normative_segments_with_multiple_norms == 366
     assert metrics.mapping_shape.one_norm_to_one_target == 26
     assert metrics.mapping_shape.many_norms_to_one_target == 351
     assert metrics.mapping_shape.one_norm_to_many_targets == 0
     assert metrics.mapping_shape.many_to_many == 15
-    assert metrics.mapping_shape.unmapped == 1065
+    assert metrics.mapping_shape.unmapped == 1067
     assert metrics.semantic_vs_existing_implementation_disagreements == 239
     assert metrics.semantic_norms_without_existing_implementation == [
         "AIA-NORM-A002-P1-A-PROVIDER",
@@ -3982,12 +3982,44 @@ def test_article_seventy_five_separates_provider_and_authority_effects():
     assert len(segments) == 23
     assert all(segment.review.status.value == "approved" for segment in segments)
     assert all(segment.review.verified_by == "codex" for segment in segments)
-    assert len(norms) == 25
+    assert len(norms) == 27
     assert norms["AIA-NORM-A075-P1A-REPORT-SERIOUS-INCIDENTS"].implementation_refs == [
         "AIA-PO-A75-1a"
     ]
     assert norms["AIA-NORM-A075-P1E-FEES"].implementation_refs == ["AIA-PO-A75-1E"]
-    assert len(norms["AIA-NORM-A075-P2A-REQUEST-ASSESSMENT"].mandatory_content) == 3
+
+    # The four exclusions belong to point (a) only, not to the platform branch in point (b).
+    competence = norms["AIA-NORM-A075-P1-COMPETENCE"]
+    assert len(competence.mandatory_content) == 2
+    assert all(item.startswith("point (a) only, ") for item in competence.exceptions)
+    assert len(competence.exceptions) == 4
+    assert "very large online platform" in competence.mandatory_content[1]
+    assert "very large online platform" not in " ".join(competence.exceptions)
+
+    # Cooperating with the AI Office and informing the Board are separate actions.
+    cooperate = norms["AIA-NORM-A075-P2-COOPERATE-ON-GPAI-SYSTEMS"]
+    inform = norms["AIA-NORM-A075-P2-INFORM-BOARD-AND-AUTHORITIES"]
+    assert cooperate.conditions == inform.conditions
+    assert "AI Office" in cooperate.action
+    assert "Board" in inform.action and "Board" not in cooperate.action
+
+    # The request power keeps its three content items and the duly-reasoned requirement.
+    request = norms["AIA-NORM-A075-P2A-REQUEST-ASSESSMENT"]
+    assert request.kind.value == "power"
+    assert len(request.mandatory_content) == 3
+    assert "duly reasoned" in request.action
+
+    # The four-month deadline applies to the initial reply, not to the later updates.
+    reply = norms["AIA-NORM-A075-P2A-RESPOND-AND-UPDATE"]
+    updates = norms["AIA-NORM-A075-P2A-UPDATE-ON-PROCEEDINGS"]
+    assert "four months" in reply.action
+    assert "four months" not in updates.action
+    assert updates.conditions == [
+        "the AI Office decides to exercise its powers in accordance with Article 75a"
+    ]
+    assert not reply.conditions
+    assert "without disclosing any confidential information" in updates.action
+    assert all(norm.review.status.value == "proposed" for norm in norms.values())
 
 
 def test_article_seventy_six_extracts_real_world_testing_supervision():
