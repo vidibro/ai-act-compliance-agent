@@ -13,8 +13,21 @@ records:
   verification_mode: not_assessed
 - norm_id: AIA-NORM-A085-P2-ACCOUNT-FOR-AND-HANDLE-COMPLAINTS
   source: A085-P002
-  quote: such complaints shall be taken into account for the purpose of conducting market surveillance activities, and shall be handled in line with the dedicated procedures established therefor by the market surveillance authorities.
-  action: take complaints into account in surveillance and handle them under dedicated authority procedures
+  quote: such complaints shall be taken into account for the purpose of conducting market surveillance activities
+  action: take such complaints into account for the purpose of conducting market surveillance
+    activities, in accordance with Regulation (EU) 2019/1020
+  subject_ref: market_surveillance_authority
+  subject_category: public_authority
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A085-P2-HANDLE-COMPLAINTS-UNDER-PROCEDURES
+  source: A085-P002
+  quote: and shall be handled in line with the dedicated procedures established therefor by the market surveillance authorities.
+  action: handle such complaints in line with the dedicated procedures the market surveillance
+    authorities established for them
   subject_ref: market_surveillance_authority
   subject_category: public_authority
   product_scope: outside_supported_actor
