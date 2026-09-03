@@ -10,7 +10,7 @@ from datetime import date
 from enum import StrEnum
 from typing import Literal
 
-from pydantic import BaseModel, Field, model_validator
+from pydantic import BaseModel, ConfigDict, Field, model_validator
 
 from aiact.schemas.interpretation import InterpretiveLink
 from aiact.schemas.review import ReviewRecord, ReviewStatus
@@ -179,6 +179,24 @@ class NormDependency(BaseModel):
         return self
 
 
+class ConditionGroup(BaseModel):
+    """Explicit legal conjunction/disjunction, not an executable runtime predicate.
+
+    Legacy prose conditions remain supported; no logical grouping is inferred from them.
+    """
+
+    model_config = ConfigDict(extra="forbid")
+
+    operator: Literal["all_of", "any_of"]
+    operands: list[str | ConditionGroup] = Field(min_length=2)
+
+    @model_validator(mode="after")
+    def _leaves_are_nonempty(self) -> ConditionGroup:
+        if any(isinstance(item, str) and not item.strip() for item in self.operands):
+            raise ValueError("condition operands must not be blank")
+        return self
+
+
 class Norm(BaseModel):
     norm_id: str = Field(pattern=r"^AIA-NORM-[A-Z0-9-]+$")
     act_version_date: date
@@ -191,7 +209,7 @@ class Norm(BaseModel):
     qualifier_spans: list[str] = []
     definition_spans: list[str] = []
     effective_date_spans: list[str] = []
-    conditions: list[str] = []
+    conditions: list[str | ConditionGroup] = []
     exceptions: list[str] = []
     mandatory_content: list[str] = []
     dependencies: list[NormDependency] = []

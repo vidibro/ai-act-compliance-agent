@@ -424,6 +424,12 @@ Examples of reasons not to split automatically:
 
 Atomicity is adjudicated from legal effect, not punctuation or occurrences of modal words.
 
+Condition groups may explicitly preserve conjunctions and alternatives using `operator: all_of`
+or `operator: any_of` with at least two `operands`, each a nonempty text premise or nested group.
+For example, a shared risk premise AND any of four qualifying uses remains one applicability norm,
+not four cumulative obligations. Legacy prose conditions remain supported without automatically
+inferring their logic. These groups record legal structure; they are not executable runtime predicates.
+
 ## Completion and assurance accounting
 
 Phase 0 fixes the following separate metrics:

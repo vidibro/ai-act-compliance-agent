@@ -17,6 +17,7 @@ from aiact.norm_metrics import measure_normative_coverage, render_coverage_markd
 from aiact.policy_loader import article_filename, source_body
 from aiact.schemas.interpretation import InterpretationTargetKind, InterpretiveLink
 from aiact.schemas.norm import (
+    ConditionGroup,
     DependencyResolution,
     ImplementationMode,
     NormDependency,
@@ -140,7 +141,7 @@ class NormSourceRecord(BaseModel):
     implementation_mode: ImplementationMode | None = None
     implementation_reason: str = ""
     verification_mode: VerificationMode | None = None
-    conditions: list[str] = []
+    conditions: list[str | ConditionGroup] = []
     exceptions: list[str] = []
     mandatory_content: list[str] = []
     mandatory_content_source: Literal["numbered_items"] | None = None
@@ -550,7 +551,7 @@ def _build_norms(
                 "primary_spans": [primary],
                 "qualifier_spans": [f"AIA-TEXT-{span}" for span in record.qualifier_spans],
                 "effective_date_spans": effective,
-                "conditions": record.conditions,
+                "conditions": record.model_dump(mode="json")["conditions"],
                 "exceptions": record.exceptions,
                 "mandatory_content": mandatory_content,
                 "dependencies": dependencies,
