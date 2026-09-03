@@ -1661,15 +1661,15 @@ def test_inventory_cannot_be_misreported_as_independently_approved(metrics):
     assert metrics.needs_review_characters == 0
     assert metrics.review_statuses == {
         "approved": 1467,
-        "proposed": 1413,
+        "proposed": 1428,
     }
     assert metrics.timed_review_records == 0
-    assert metrics.total_review_records == 2881
+    assert metrics.total_review_records == 2896
 
 
 def test_semantic_pass_finds_propositions_a_shall_scan_misses(metrics):
-    assert metrics.shall_vs_semantic_disagreements == 545
-    assert metrics.shall_token_candidate_recall == pytest.approx(864 / 1409)
+    assert metrics.shall_vs_semantic_disagreements == 560
+    assert metrics.shall_token_candidate_recall == pytest.approx(864 / 1424)
     assert "AIA-NORM-A011-P1-SIMPLIFY" in metrics.semantic_norms_without_shall_token
     assert "AIA-NORM-A043-P5-AMEND" in metrics.semantic_norms_without_shall_token
     assert "AIA-NORM-A060-P4-PERMISSION" in metrics.semantic_norms_without_shall_token
@@ -1677,12 +1677,12 @@ def test_semantic_pass_finds_propositions_a_shall_scan_misses(metrics):
 
 
 def test_metrics_expose_many_to_many_and_implementation_debt(metrics):
-    assert metrics.normative_segments_with_multiple_norms == 328
+    assert metrics.normative_segments_with_multiple_norms == 343
     assert metrics.mapping_shape.one_norm_to_one_target == 26
     assert metrics.mapping_shape.many_norms_to_one_target == 349
     assert metrics.mapping_shape.one_norm_to_many_targets == 0
     assert metrics.mapping_shape.many_to_many == 15
-    assert metrics.mapping_shape.unmapped == 1019
+    assert metrics.mapping_shape.unmapped == 1034
     assert metrics.semantic_vs_existing_implementation_disagreements == 239
     assert metrics.semantic_norms_without_existing_implementation == [
         "AIA-NORM-A002-P1-A-PROVIDER",
@@ -3555,13 +3555,46 @@ def test_article_sixty_six_preserves_the_board_task_hierarchy():
     assert len(segments) == 24
     assert all(segment.review.status.value == "approved" for segment in segments)
     assert all(segment.review.verified_by == "codex" for segment in segments)
-    assert len(norms) == 2
+    assert len(norms) == 17
     tasks = norms["AIA-NORM-A066-BOARD-ADVICE-AND-ASSISTANCE-TASKS"]
+    powers = norms["AIA-NORM-A066-ENUMERATED-TASK-POWERS"]
     opinions = norms["AIA-NORM-A066-E-RECOMMENDATION-AND-OPINION-TOPICS"]
-    assert len(tasks.qualifier_spans) == 15
-    assert len(tasks.mandatory_content) == 15
+
+    # The chapeau imposes one duty; the lettered list is what the Board "may in particular" do.
+    assert tasks.kind.value == "obligation"
+    assert not tasks.qualifier_spans
+    assert not tasks.mandatory_content
+    assert powers.kind.value == "power"
+    assert len(powers.qualifier_spans) == 15
+    assert "not exhaustive" in powers.action
+    for span_id in powers.qualifier_spans:
+        segment = next(s for s in segments if s.segment_id == span_id)
+        children = [n for n in segment.norm_ids if n != powers.norm_id]
+        assert len(children) == 1
+        child = norms[children[0]]
+        assert child.kind.value == "power"
+        assert child.primary_spans == [span_id]
+
+    # Point (e) is a power over any relevant matter; the seven topics are inclusions, not a
+    # seven-part checklist every opinion must satisfy.
+    assert opinions.kind.value == "power"
     assert len(opinions.qualifier_spans) == 7
-    assert len(opinions.mandatory_content) == 7
+    assert len(opinions.mandatory_content) == 1
+    scope = opinions.mandatory_content[0]
+    assert scope.startswith("any relevant matters related to the implementation")
+    assert "including" in scope
+    for phrase in (
+        "codes of conduct",
+        "Article 73 serious incident reports",
+        "Chapter III, Section 2",
+        "Articles 40 and 41",
+        "digital skills",
+        "AI value chains",
+        "revise Article 5 under Article 112",
+    ):
+        assert phrase in scope
+    assert all(norm.review.status.value == "proposed" for norm in norms.values())
+    assert all(norm.product_scope.value == "outside_supported_actor" for norm in norms.values())
 
 
 def test_article_sixty_seven_extracts_advisory_forum_governance():

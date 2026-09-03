@@ -347,19 +347,19 @@ Measure:
 
 **Full-corpus proposed extraction 2026-08-28:** the representative pilot was expanded, in source
 order, into a complete proposed inventory. It now partitions all 133 source bodies in the pinned
-corpus into 1,471 exact segments. It now proposes 1,409 norms across 132 documents; Article 1 supplies
+corpus into 1,471 exact segments. It now proposes 1,424 norms across 132 documents; Article 1 supplies
 reviewed subject-matter context without an atomic norm. No article or annex remains as `needs_review`
 debt, and structural headings remain separately identified.
 The reproducible measurements are in the versioned
 [`report.md`](../data/policy/normative-coverage/2026-07-27/report.md). The extraction added loader-validated exact
-`norm_text`, candidate-detection provenance, and review timing fields. Its semantic pass found 545 of
-1,409 proposed propositions whose exact operative quote contains no `shall` token. No source characters
+`norm_text`, candidate-detection provenance, and review timing fields. Its semantic pass found 560 of
+1,424 proposed propositions whose exact operative quote contains no `shall` token. No source characters
 remain marked `needs_review`.
 
 Of the 1,471 segments, 1,467 are approved and four remain `proposed`: Annex VIII. The
 Article 5 heading, all Article 50 and Article 113 segments, and the 27 finer-grained Annex IV
 segments were independently confirmed on
-2026-09-02. Their linked norm records, like all 1,409 extracted
+2026-09-02. Their linked norm records, like all 1,424 extracted
 norms, remain `proposed`; approving a source segment does not independently approve the legal
 propositions extracted from it. Elapsed review time was not captured. The remaining assurance
 boundary is independent approval of the proposed segments and norms, followed by implementation
@@ -525,7 +525,14 @@ Article 65 now separates the AI Office's secretariat, meeting-convening and agen
 the Chair's request triggering only the convening. Its fourteen norms became sixteen, taking the
 corpus to 1,409 and leaving 136 populated content lists; implementation debt and the 69 detector
 candidates are unchanged.
-Next recorded correction: Article 66. Articles 47–49 and 51–56 have no open recorded finding in
+
+Article 66 now distinguishes the Board's duty to advise and assist from the non-exhaustive list
+of tasks it may in particular perform, with a power norm per lettered task. Point (e) states one
+non-exhaustive scope covering every enacted topic instead of seven mandatory contents. Its two
+norms became seventeen, taking the corpus to 1,424 and leaving 135 populated content lists.
+Every Article 66 addressee is outside the supported reporting surface, so implementation debt
+stays at 222 and the detector at 69 candidates.
+Next recorded correction: Article 67. Articles 47–49 and 51–56 have no open recorded finding in
 these ledgers.
 
 Correct the recorded defects and complete the unflagged-source semantic audit before declaring
@@ -560,7 +567,7 @@ debt.
 
 **Extraction status:** complete as a proposed corpus inventory. Exact source partitioning and
 disposition authoring cover all 133 documents and all source characters. The exit criterion remains
-open because four segments and all 1,409 norm records still require independent assurance. Corrections
+open because four segments and all 1,424 norm records still require independent assurance. Corrections
 found during assurance must be made in `segments/` and `source-records/`, followed by regeneration;
 generated `text-review/` and `norms/` files are never hand-edited.
 
@@ -672,7 +679,7 @@ No aggregate percentage replaces these measures.
 ## Rough effort
 
 The original estimates below are retained as planning history. Full-corpus extraction established
-an actual inventory of 1,409 proposed norms, so remaining effort is driven by independent legal
+an actual inventory of 1,424 proposed norms, so remaining effort is driven by independent legal
 assurance, many-to-many implementation mapping, and behavioral proof rather than extraction volume:
 
 | Work | Estimate |
@@ -690,12 +697,12 @@ The original total was roughly **6–10 person-weeks**. It must not be used as a
 estimate: several infrastructure and authoring stages are complete, while the unexpectedly large
 norm inventory makes assurance and mapping more substantial than the original pilot could measure.
 A new forecast should be based on measured review and reconciliation throughput from representative
-batches of the 1,409 records.
+batches of the 1,424 records.
 
 ## Immediate next action
 
 Continue the [granularity correction and completion queue](NORMATIVE-COVERAGE-GRANULARITY-AUDIT.md#correction-and-completion-queue)
-in source order, continuing with Article 66 after corrections through Article 65, and complete the
+in source order, continuing with Article 67 after corrections through Article 66, and complete the
 unflagged-source pass. Independently review the four proposed source segments in Annex VIII;
 exactly retained content still needs optional/conditional field semantics. Apply only confirmed
 user provenance to authored `segments/` records and regenerate derived artifacts. Keep codex audit

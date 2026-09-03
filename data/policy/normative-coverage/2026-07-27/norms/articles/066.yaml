@@ -6,13 +6,47 @@ norms:
   subjects:
   - subject_ref: board
     category: union_institution_or_body
-  action: advise and assist the Commission and Member States through every enacted coordination expertise
-    guidance cooperation and support task
-  norm_text: 'The Board shall advise and assist the Commission and the Member States in order to facilitate
-    the consistent and effective application of this Regulation. To that end, the Board may in particular:'
+  action: advise and assist the Commission and the Member States in order to facilitate the consistent
+    and effective application of this Regulation
+  norm_text: The Board shall advise and assist the Commission and the Member States in order to facilitate
+    the consistent and effective application of this Regulation.
   detection_channels:
   - semantic_legal_effect
   - shall_token
+  primary_spans:
+  - AIA-TEXT-A066-P001
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions: []
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_refs: []
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A066-ENUMERATED-TASK-POWERS
+  act_version_date: '2026-07-27'
+  kind: power
+  subjects:
+  - subject_ref: board
+    category: union_institution_or_body
+  action: exercise, in particular, the enacted coordination, expertise, advice, cooperation and support
+    tasks to that end; the enumeration is not exhaustive and none of its entries is individually mandatory
+  norm_text: 'To that end, the Board may in particular:'
+  detection_channels:
+  - semantic_legal_effect
   - other_modal
   - cross_reference_structure
   primary_spans:
@@ -36,22 +70,499 @@ norms:
   effective_date_spans: []
   conditions: []
   exceptions: []
-  mandatory_content:
-  - coordinate national authorities and agreed joint surveillance activity
-  - collect and share expertise and best practices
-  - advise on Regulation implementation and GPAI enforcement
-  - harmonise national administrative practices
-  - issue recommendations and written opinions
-  - promote AI literacy and public understanding
-  - develop common criteria shared concepts and benchmarks
-  - cooperate with Union institutions bodies groups and networks
-  - support third-country and international cooperation
-  - develop implementation expertise and assess staff training needs
-  - support sandbox establishment cooperation and information-sharing
-  - advise on guidance documents
-  - advise on international AI matters
-  - opine on qualified GPAI alerts
-  - receive Member State opinions and enforcement experience
+  mandatory_content: []
+  dependencies: []
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_refs: []
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A066-A-TASK
+  act_version_date: '2026-07-27'
+  kind: power
+  subjects:
+  - subject_ref: board
+    category: union_institution_or_body
+  action: contribute to coordination among the national competent authorities and, with the agreement
+    of the market surveillance authorities concerned, support their Article 74(11) joint activities
+  norm_text: contribute to the coordination among national competent authorities responsible for the application
+    of this Regulation and, in cooperation with and subject to the agreement of the market surveillance
+    authorities concerned, support joint activities of market surveillance authorities referred to in
+    Article 74(11);
+  detection_channels:
+  - semantic_legal_effect
+  primary_spans:
+  - AIA-TEXT-A066-P002
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions: []
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_refs: []
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A066-B-TASK
+  act_version_date: '2026-07-27'
+  kind: power
+  subjects:
+  - subject_ref: board
+    category: union_institution_or_body
+  action: collect and share technical and regulatory expertise and best practices among Member States
+  norm_text: collect and share technical and regulatory expertise and best practices among Member States;
+  detection_channels:
+  - semantic_legal_effect
+  primary_spans:
+  - AIA-TEXT-A066-P003
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions: []
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_refs: []
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A066-C-TASK
+  act_version_date: '2026-07-27'
+  kind: power
+  subjects:
+  - subject_ref: board
+    category: union_institution_or_body
+  action: provide advice on implementing this Regulation, in particular on enforcing the rules on general-purpose
+    AI models
+  norm_text: provide advice on the implementation of this Regulation, in particular as regards the enforcement
+    of rules on general-purpose AI models;
+  detection_channels:
+  - semantic_legal_effect
+  primary_spans:
+  - AIA-TEXT-A066-P004
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions: []
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_refs: []
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A066-D-TASK
+  act_version_date: '2026-07-27'
+  kind: power
+  subjects:
+  - subject_ref: board
+    category: union_institution_or_body
+  action: contribute to harmonising national administrative practices, including on Article 46 derogations,
+    sandbox functioning and Articles 57, 59 and 60 real-world testing
+  norm_text: contribute to the harmonisation of administrative practices in the Member States, including
+    in relation to the derogation from the conformity assessment procedures referred to in Article 46,
+    the functioning of AI regulatory sandboxes, and testing in real world conditions referred to in Articles
+    57, 59 and 60;
+  detection_channels:
+  - semantic_legal_effect
+  primary_spans:
+  - AIA-TEXT-A066-P005
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions: []
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_refs: []
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A066-F-TASK
+  act_version_date: '2026-07-27'
+  kind: power
+  subjects:
+  - subject_ref: board
+    category: union_institution_or_body
+  action: support the Commission in promoting AI literacy and public awareness and understanding of the
+    benefits, risks, safeguards, rights and obligations of using AI systems
+  norm_text: support the Commission in promoting AI literacy, public awareness and understanding of the
+    benefits, risks, safeguards and rights and obligations in relation to the use of AI systems;
+  detection_channels:
+  - semantic_legal_effect
+  primary_spans:
+  - AIA-TEXT-A066-P014
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions: []
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_refs: []
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A066-G-TASK
+  act_version_date: '2026-07-27'
+  kind: power
+  subjects:
+  - subject_ref: board
+    category: union_institution_or_body
+  action: facilitate common criteria and a shared understanding of the Regulation's concepts among market
+    operators and competent authorities, including by contributing to benchmarks
+  norm_text: facilitate the development of common criteria and a shared understanding among market operators
+    and competent authorities of the relevant concepts provided for in this Regulation, including by contributing
+    to the development of benchmarks;
+  detection_channels:
+  - semantic_legal_effect
+  primary_spans:
+  - AIA-TEXT-A066-P015
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions: []
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_refs: []
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A066-H-TASK
+  act_version_date: '2026-07-27'
+  kind: power
+  subjects:
+  - subject_ref: board
+    category: union_institution_or_body
+  action: cooperate with other Union institutions, bodies, offices, agencies, expert groups and networks
+    in the enacted fields
+  norm_text: cooperate, as appropriate, with other Union institutions, bodies, offices and agencies, as
+    well as relevant Union expert groups and networks, in particular in the fields of product safety,
+    cybersecurity, competition, digital and media services, financial services, consumer protection, data
+    and fundamental rights protection;
+  detection_channels:
+  - semantic_legal_effect
+  primary_spans:
+  - AIA-TEXT-A066-P016
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions: []
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_refs: []
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A066-I-TASK
+  act_version_date: '2026-07-27'
+  kind: power
+  subjects:
+  - subject_ref: board
+    category: union_institution_or_body
+  action: contribute to effective cooperation with third-country competent authorities and international
+    organisations
+  norm_text: contribute to effective cooperation with the competent authorities of third countries and
+    with international organisations;
+  detection_channels:
+  - semantic_legal_effect
+  primary_spans:
+  - AIA-TEXT-A066-P017
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions: []
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_refs: []
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A066-J-TASK
+  act_version_date: '2026-07-27'
+  kind: power
+  subjects:
+  - subject_ref: board
+    category: union_institution_or_body
+  action: assist national competent authorities and the Commission in developing the organisational and
+    technical expertise the Regulation requires, including by assessing staff training needs
+  norm_text: assist national competent authorities and the Commission in developing the organisational
+    and technical expertise required for the implementation of this Regulation, including by contributing
+    to the assessment of training needs for staff of Member States involved in implementing this Regulation;
+  detection_channels:
+  - semantic_legal_effect
+  primary_spans:
+  - AIA-TEXT-A066-P018
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions: []
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_refs: []
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A066-K-TASK
+  act_version_date: '2026-07-27'
+  kind: power
+  subjects:
+  - subject_ref: board
+    category: union_institution_or_body
+  action: assist the AI Office in supporting national competent authorities on sandbox establishment and
+    development, and facilitate cooperation and information-sharing among sandboxes
+  norm_text: assist the AI Office in supporting national competent authorities in the establishment and
+    development of AI regulatory sandboxes, and facilitate cooperation and information-sharing among AI
+    regulatory sandboxes;
+  detection_channels:
+  - semantic_legal_effect
+  primary_spans:
+  - AIA-TEXT-A066-P019
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions: []
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_refs: []
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A066-L-TASK
+  act_version_date: '2026-07-27'
+  kind: power
+  subjects:
+  - subject_ref: board
+    category: union_institution_or_body
+  action: contribute to and advise on the development of guidance documents
+  norm_text: contribute to, and provide relevant advice on, the development of guidance documents;
+  detection_channels:
+  - semantic_legal_effect
+  primary_spans:
+  - AIA-TEXT-A066-P020
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions: []
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_refs: []
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A066-M-TASK
+  act_version_date: '2026-07-27'
+  kind: power
+  subjects:
+  - subject_ref: board
+    category: union_institution_or_body
+  action: advise the Commission on international AI matters
+  norm_text: advise the Commission in relation to international matters on AI;
+  detection_channels:
+  - semantic_legal_effect
+  primary_spans:
+  - AIA-TEXT-A066-P021
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions: []
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_refs: []
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A066-N-TASK
+  act_version_date: '2026-07-27'
+  kind: power
+  subjects:
+  - subject_ref: board
+    category: union_institution_or_body
+  action: provide the Commission with opinions on qualified alerts regarding general-purpose AI models
+  norm_text: provide opinions to the Commission on the qualified alerts regarding general-purpose AI models;
+  detection_channels:
+  - semantic_legal_effect
+  primary_spans:
+  - AIA-TEXT-A066-P022
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions: []
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_refs: []
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A066-O-TASK
+  act_version_date: '2026-07-27'
+  kind: power
+  subjects:
+  - subject_ref: board
+    category: union_institution_or_body
+  action: receive Member State opinions on qualified GPAI alerts and on national monitoring and enforcement
+    experience and practice
+  norm_text: receive opinions by the Member States on qualified alerts regarding general-purpose AI models,
+    and on national experiences and practices on the monitoring and enforcement of AI systems, in particular
+    systems integrating the general-purpose AI models.
+  detection_channels:
+  - semantic_legal_effect
+  primary_spans:
+  - AIA-TEXT-A066-P023
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions: []
+  exceptions: []
+  mandatory_content: []
   dependencies: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -74,8 +585,9 @@ norms:
   subjects:
   - subject_ref: board
     category: union_institution_or_body
-  action: issue requested or own-initiative recommendations and written opinions covering every enacted
-    implementation topic
+  action: issue recommendations and written opinions, at the Commission's request or on its own initiative,
+    on any relevant matter related to the implementation and the consistent and effective application
+    of this Regulation
   norm_text: 'at the request of the Commission or on its own initiative, issue recommendations and written
     opinions on any relevant matters related to the implementation of this Regulation and to its consistent
     and effective application, including:'
@@ -96,13 +608,15 @@ norms:
   conditions: []
   exceptions: []
   mandatory_content:
-  - codes of conduct codes of practice and Commission guidelines
-  - Regulation evaluation review incidents database acts and Annex I alignment
-  - Chapter III Section 2 technical specifications and standards
-  - harmonised standards and common specifications
-  - AI competitiveness uptake and skills trends
-  - AI value-chain and accountability trends
-  - possible Annex III and Article 5 amendment
+  - any relevant matters related to the implementation of this Regulation and to its consistent and effective
+    application, including codes of conduct, codes of practice and Commission guidelines; the Article
+    112 evaluation and review, Article 73 serious incident reports, the Article 71 EU database, preparation
+    of delegated or implementing acts and possible alignments with the Annex I Union harmonisation legislation;
+    technical specifications or existing standards for the Chapter III, Section 2 requirements; the use
+    of Articles 40 and 41 harmonised standards or common specifications; trends such as European global
+    competitiveness in AI, AI uptake in the Union and the development of digital skills; trends on the
+    evolving typology of AI value chains and their accountability implications; and the potential need
+    to amend Annex III under Article 7 or revise Article 5 under Article 112
   dependencies: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.

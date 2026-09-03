@@ -99,8 +99,14 @@ proposed norms.
 Article 65's secretariat finding is now corrected: providing the secretariat, convening
 meetings upon the Chair's request and preparing task-aligned agendas are three norms rather
 than three content items, and only convening carries the request trigger. The live inventory
-has 136 populated content lists across 1,409 proposed norms. Subsequent articles' findings
-remain pending.
+has 136 populated content lists across 1,409 proposed norms.
+
+Article 66's two findings are now corrected. The chapeau duty to advise and assist no longer
+carries fifteen content items: the enumerated tasks are separate powers under the "may in
+particular" sentence, each with its own norm. Point (e) keeps one content entry stating the
+non-exhaustive scope and naming all seven enacted topics inside it, so no opinion is required
+to cover all of them. The live inventory has 135 populated content lists across 1,424 proposed
+norms. Subsequent articles' findings remain pending.
 
 | Norm | Content entries | Decision | Finding / treatment |
 |---|---:|---|---|
