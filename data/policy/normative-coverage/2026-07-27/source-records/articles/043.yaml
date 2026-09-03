@@ -2,8 +2,12 @@ records:
 - norm_id: AIA-NORM-A043-P1-CHOOSE-CONFORMITY-ROUTE
   source: A043-P1
   quote: the provider shall opt for one of the following conformity assessment procedures based on
-  action: choose either Annex VI internal control or Annex VII notified-body assessment when the applicable
-    standards or common specifications were applied
+  action: choose either Annex VI internal control or Annex VII notified-body assessment for a high-risk
+    Annex III point 1 system when the applicable standards or common specifications were applied
+  conditions:
+  - the high-risk AI system is listed in point 1 of Annex III
+  - the provider has applied Article 40 harmonised standards or, where applicable, Article 41 common
+    specifications in demonstrating compliance with Section 2 requirements
   subject_ref: provider
   subject_category: supported_operator
   implementation_refs:
@@ -20,15 +24,30 @@ records:
   - AIA-PO-A43-1B
   verification_mode: listed_for_confirmation
   conditions:
-  - harmonised standards do not exist and common specifications are unavailable
-  - or the provider did not apply, or applied only part of, the harmonised standard
-  - or available common specifications were not applied
-  - or a harmonised standard was published with a restriction, for the restricted part
+  - operator: all_of
+    operands:
+    - the high-risk AI system is listed in point 1 of Annex III
+    - operator: any_of
+      operands:
+      - harmonised standards under Article 40 do not exist and Article 41 common specifications are unavailable
+      - the provider did not apply, or applied only part of, the harmonised standard
+      - available common specifications were not applied by the provider
+      - a harmonised standard was published with a restriction, only for the part that was restricted
 - norm_id: AIA-NORM-A043-P1-CHOOSE-NOTIFIED-BODY
   source: A043-P1
   quote: For the purposes of the conformity assessment procedure referred to in Annex VII, the provider
     may choose any of the notified bodies.
   action: choose any notified body for the Annex VII conformity-assessment procedure
+  conditions:
+  - the high-risk AI system is listed in point 1 of Annex III and is undergoing the Annex VII procedure
+  exceptions:
+  - where the system is intended to be put into service by law enforcement, immigration or asylum
+    authorities, or Union institutions, bodies, offices or agencies, the Article 74(8) or (9) market
+    surveillance authority, as applicable, shall act as the notified body
+  dependencies:
+  - dependency_ref: AIA-NORM-A043-P1-AUTHORITY-AS-NOTIFIED-BODY
+    resolution: internal_resolved
+    detail: The mandatory authority route limits the provider's choice of notified body.
   subject_ref: provider
   subject_category: supported_operator
   kind: permission
@@ -42,6 +61,10 @@ records:
     authority referred to in Article 74(8) or (9), as applicable, shall act as a notified body.
   action: act as the notified body for systems intended for the specified public-authority or Union-body
     use
+  conditions:
+  - the high-risk AI system is listed in point 1 of Annex III and is undergoing the Annex VII procedure
+  - the system is intended to be put into service by law enforcement, immigration or asylum authorities,
+    or Union institutions, bodies, offices or agencies
   subject_ref: market_surveillance_authority
   subject_category: public_authority
   product_scope: outside_supported_actor

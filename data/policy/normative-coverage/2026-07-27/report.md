@@ -1100,7 +1100,7 @@ rule selection, judging, or reporting.
 - Semantic candidates a shall-token pass missed: 524
 - Shall-token candidate recall: 61.3%
 - In-scope semantic candidates absent from existing implementation: 233
-- Detection-channel counts: cross_reference_structure=482, deeming_or_consequence=265, existing_implementation=389, other_modal=154, semantic_legal_effect=1353, shall_token=829
+- Detection-channel counts: cross_reference_structure=483, deeming_or_consequence=265, existing_implementation=389, other_modal=154, semantic_legal_effect=1353, shall_token=829
 - Mapping shapes, by norm: one-to-one=26, many-to-one=348, one-to-many=0, many-to-many=15, unmapped=964
 - Implementation debt candidates: 216
 - Interpretive links to non-binding guidance: 1

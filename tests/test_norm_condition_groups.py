@@ -159,3 +159,19 @@ def test_article_forty_one_preserves_standardisation_conditions(corrected_bundle
     assert "fundamental rights" in alternatives.operands[2]
     assert "no reference" in root.operands[2]
     assert "no such reference is expected" in root.operands[3]
+
+
+def test_article_forty_three_preserves_routes_and_exceptions(corrected_bundle):
+    norms = {n.norm_id: n for n in corrected_bundle.norm_inventory.norms}
+    required = norms["AIA-NORM-A043-P1-REQUIRED-ANNEX-VII-ROUTE"].conditions[0]
+    assert required.operator == "all_of"
+    assert "point 1 of Annex III" in required.operands[0]
+    assert required.operands[1].operator == "any_of"
+    assert len(required.operands[1].operands) == 4
+    assert "only for the part that was restricted" in required.operands[1].operands[3]
+    choice = norms["AIA-NORM-A043-P1-CHOOSE-NOTIFIED-BODY"]
+    assert choice.kind.value == "permission"
+    assert "point 1 of Annex III" in choice.conditions[0]
+    assert "law enforcement, immigration or asylum" in choice.exceptions[0]
+    assert "Article 74(8) or (9)" in choice.exceptions[0]
+    assert choice.dependencies[0].dependency_ref == "AIA-NORM-A043-P1-AUTHORITY-AS-NOTIFIED-BODY"

@@ -6,8 +6,8 @@ norms:
   subjects:
   - subject_ref: provider
     category: supported_operator
-  action: choose either Annex VI internal control or Annex VII notified-body assessment when the applicable
-    standards or common specifications were applied
+  action: choose either Annex VI internal control or Annex VII notified-body assessment for a high-risk
+    Annex III point 1 system when the applicable standards or common specifications were applied
   norm_text: the provider shall opt for one of the following conformity assessment procedures based on
   detection_channels:
   - semantic_legal_effect
@@ -17,7 +17,10 @@ norms:
   - AIA-TEXT-A043-P1
   qualifier_spans: []
   effective_date_spans: []
-  conditions: []
+  conditions:
+  - the high-risk AI system is listed in point 1 of Annex III
+  - the provider has applied Article 40 harmonised standards or, where applicable, Article 41 common specifications
+    in demonstrating compliance with Section 2 requirements
   exceptions: []
   mandatory_content: []
   dependencies: []
@@ -55,10 +58,15 @@ norms:
   qualifier_spans: []
   effective_date_spans: []
   conditions:
-  - harmonised standards do not exist and common specifications are unavailable
-  - or the provider did not apply, or applied only part of, the harmonised standard
-  - or available common specifications were not applied
-  - or a harmonised standard was published with a restriction, for the restricted part
+  - operator: all_of
+    operands:
+    - the high-risk AI system is listed in point 1 of Annex III
+    - operator: any_of
+      operands:
+      - harmonised standards under Article 40 do not exist and Article 41 common specifications are unavailable
+      - the provider did not apply, or applied only part of, the harmonised standard
+      - available common specifications were not applied by the provider
+      - a harmonised standard was published with a restriction, only for the part that was restricted
   exceptions: []
   mandatory_content: []
   dependencies: []
@@ -90,15 +98,23 @@ norms:
   detection_channels:
   - semantic_legal_effect
   - other_modal
+  - cross_reference_structure
   - existing_implementation
   primary_spans:
   - AIA-TEXT-A043-P1
   qualifier_spans: []
   effective_date_spans: []
-  conditions: []
-  exceptions: []
+  conditions:
+  - the high-risk AI system is listed in point 1 of Annex III and is undergoing the Annex VII procedure
+  exceptions:
+  - where the system is intended to be put into service by law enforcement, immigration or asylum authorities,
+    or Union institutions, bodies, offices or agencies, the Article 74(8) or (9) market surveillance authority,
+    as applicable, shall act as the notified body
   mandatory_content: []
-  dependencies: []
+  dependencies:
+  - dependency_ref: AIA-NORM-A043-P1-AUTHORITY-AS-NOTIFIED-BODY
+    resolution: internal_resolved
+    detail: The mandatory authority route limits the provider's choice of notified body.
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: compliance_rule
@@ -133,7 +149,10 @@ norms:
   - AIA-TEXT-A043-P1
   qualifier_spans: []
   effective_date_spans: []
-  conditions: []
+  conditions:
+  - the high-risk AI system is listed in point 1 of Annex III and is undergoing the Annex VII procedure
+  - the system is intended to be put into service by law enforcement, immigration or asylum authorities,
+    or Union institutions, bodies, offices or agencies
   exceptions: []
   mandatory_content: []
   dependencies: []
