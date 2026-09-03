@@ -72,3 +72,32 @@ def test_article_three_preserves_both_routes_and_cross_border_threshold(correcte
     assert "same operator, in at least three" in concurrent.operands[2]
     assert norm.kind.value == "definition"
     assert norm.review.status.value == "proposed"
+
+
+def test_article_six_keeps_four_alternatives_and_human_review_qualification(corrected_bundle):
+    norm = next(
+        n
+        for n in corrected_bundle.norm_inventory.norms
+        if n.norm_id.endswith("A006-P3-INSIGNIFICANT-RISK-EXCEPTION")
+    )
+    root = norm.conditions[0]
+    assert root.operator == "all_of" and len(root.operands) == 2
+    assert "does not pose a significant risk" in root.operands[0]
+    alternatives = root.operands[1]
+    assert alternatives.operator == "any_of" and len(alternatives.operands) == 4
+    assert "narrow procedural task" in alternatives.operands[0]
+    assert "previously completed human activity" in alternatives.operands[1]
+    patterns = alternatives.operands[2]
+    assert patterns.operator == "all_of" and len(patterns.operands) == 2
+    assert "deviations from prior decision-making patterns" in patterns.operands[0]
+    assert "without proper human review" in patterns.operands[1]
+    assert "preparatory task" in alternatives.operands[3]
+    assert "profiling of natural persons is always high-risk" in norm.exceptions[0]
+    assert "AIA-TEXT-A006-P014" in norm.qualifier_spans
+    assert norm.review.status.value == "proposed"
+    # Existing independent source approvals are not new norm approvals.
+    assert all(
+        s.review.verified_by == "vidibro"
+        for s in corrected_bundle.text_review.segments
+        if s.source.kind.value == "article" and s.source.document in {"3", "6"}
+    )

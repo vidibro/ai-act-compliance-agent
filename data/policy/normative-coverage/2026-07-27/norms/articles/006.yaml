@@ -240,14 +240,28 @@ norms:
   - AIA-TEXT-A006-P011
   - AIA-TEXT-A006-P012
   - AIA-TEXT-A006-P013
+  - AIA-TEXT-A006-P014
   effective_date_spans: []
   conditions:
-  - the system does not pose a significant risk of harm to natural persons' health, safety, or fundamental
-    rights, including by not materially influencing decision-making outcomes
-  - the system performs a narrow procedural task, improves a completed human activity, detects decision
-    patterns without improperly replacing or influencing the completed human assessment, or performs a
-    preparatory task for an Annex III assessment
-  exceptions: []
+  - operator: all_of
+    operands:
+    - the system does not pose a significant risk of harm to natural persons' health, safety, or fundamental
+      rights, including by not materially influencing the outcome of decision making
+    - operator: any_of
+      operands:
+      - the AI system is intended to perform a narrow procedural task
+      - the AI system is intended to improve the result of a previously completed human activity
+      - operator: all_of
+        operands:
+        - the AI system is intended to detect decision-making patterns or deviations from prior decision-making
+          patterns
+        - the AI system is not meant to replace or influence the previously completed human assessment
+          without proper human review
+      - the AI system is intended to perform a preparatory task to an assessment relevant for the purposes
+        of the use cases listed in Annex III
+  exceptions:
+  - an Annex III AI system performing profiling of natural persons is always high-risk, notwithstanding
+    this exception
   mandatory_content: []
   dependencies:
   - dependency_ref: AIA-NORM-A006-P2-ANNEX-III-HIGH-RISK

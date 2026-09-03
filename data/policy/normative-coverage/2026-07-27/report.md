@@ -1096,7 +1096,7 @@ rule selection, judging, or reporting.
 - Characters displayed by the extraction pass: 394667
 - Independently approved characters: 390556
 - Characters deliberately left as review debt: 0
-- Normative segments supporting multiple propositions: 292
+- Normative segments supporting multiple propositions: 293
 - Semantic candidates a shall-token pass missed: 524
 - Shall-token candidate recall: 61.1%
 - In-scope semantic candidates absent from existing implementation: 233
