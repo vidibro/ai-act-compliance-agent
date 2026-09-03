@@ -476,10 +476,8 @@ norms:
   subjects:
   - subject_ref: ai_office
     category: union_institution_or_body
-  action: provide the Board secretariat convene Chair-requested meetings and prepare task-aligned agendas
-  norm_text: The AI Office shall provide the secretariat for the Board, convene the meetings upon request
-    of the Chair, and prepare the agenda in accordance with the tasks of the Board pursuant to this Regulation
-    and its rules of procedure.
+  action: provide the secretariat for the Board
+  norm_text: The AI Office shall provide the secretariat for the Board
   detection_channels:
   - semantic_legal_effect
   - shall_token
@@ -489,10 +487,76 @@ norms:
   effective_date_spans: []
   conditions: []
   exceptions: []
-  mandatory_content:
-  - Board secretariat
-  - meetings convened on Chair request
-  - agendas aligned with Board tasks and rules
+  mandatory_content: []
+  dependencies: []
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_refs: []
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A065-P8-CONVENE-MEETINGS
+  act_version_date: '2026-07-27'
+  kind: obligation
+  subjects:
+  - subject_ref: ai_office
+    category: union_institution_or_body
+  action: convene the Board's meetings upon request of the Chair
+  norm_text: convene the meetings upon request of the Chair
+  detection_channels:
+  - semantic_legal_effect
+  primary_spans:
+  - AIA-TEXT-A065-P013
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions:
+  - the Chair requests the meeting
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_refs: []
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A065-P8-PREPARE-AGENDA
+  act_version_date: '2026-07-27'
+  kind: obligation
+  subjects:
+  - subject_ref: ai_office
+    category: union_institution_or_body
+  action: prepare the agenda in accordance with the Board's tasks under this Regulation and its rules
+    of procedure
+  norm_text: prepare the agenda in accordance with the tasks of the Board pursuant to this Regulation
+    and its rules of procedure.
+  detection_channels:
+  - semantic_legal_effect
+  primary_spans:
+  - AIA-TEXT-A065-P013
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions: []
+  exceptions: []
+  mandatory_content: []
   dependencies: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.

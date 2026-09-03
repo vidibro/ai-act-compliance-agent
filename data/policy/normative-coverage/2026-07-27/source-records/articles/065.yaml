@@ -152,11 +152,34 @@ records:
   verification_mode: not_assessed
 - norm_id: AIA-NORM-A065-P8-AI-OFFICE-SECRETARIAT
   source: A065-P013
-  quote: The AI Office shall provide the secretariat for the Board, convene the meetings upon request of the Chair, and prepare the agenda in accordance with the tasks of the Board pursuant to this Regulation and its rules of procedure.
-  action: provide the Board secretariat convene Chair-requested meetings and prepare task-aligned agendas
+  quote: The AI Office shall provide the secretariat for the Board
+  action: provide the secretariat for the Board
   subject_ref: ai_office
   subject_category: union_institution_or_body
-  mandatory_content: [Board secretariat, meetings convened on Chair request, agendas aligned with Board tasks and rules]
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A065-P8-CONVENE-MEETINGS
+  source: A065-P013
+  quote: convene the meetings upon request of the Chair
+  action: convene the Board's meetings upon request of the Chair
+  subject_ref: ai_office
+  subject_category: union_institution_or_body
+  conditions: [the Chair requests the meeting]
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_assessed
+- norm_id: AIA-NORM-A065-P8-PREPARE-AGENDA
+  source: A065-P013
+  quote: prepare the agenda in accordance with the tasks of the Board pursuant to this Regulation and its rules of procedure.
+  action: prepare the agenda in accordance with the Board's tasks under this Regulation and its rules
+    of procedure
+  subject_ref: ai_office
+  subject_category: union_institution_or_body
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required

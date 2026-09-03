@@ -94,7 +94,13 @@ qualifier spans but no longer carry a content list: each lettered action is a se
 with its own beneficiaries and conditions, including the non-preclusion rule inside point 1(a)
 and the where-appropriate establishment of new channels inside point 1(c). Paragraph 2's three
 fee factors are unchanged. The live inventory has 137 populated content lists across 1,407
-proposed norms. Subsequent articles' findings remain pending.
+proposed norms.
+
+Article 65's secretariat finding is now corrected: providing the secretariat, convening
+meetings upon the Chair's request and preparing task-aligned agendas are three norms rather
+than three content items, and only convening carries the request trigger. The live inventory
+has 136 populated content lists across 1,409 proposed norms. Subsequent articles' findings
+remain pending.
 
 | Norm | Content entries | Decision | Finding / treatment |
 |---|---:|---|---|

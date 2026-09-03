@@ -1661,15 +1661,15 @@ def test_inventory_cannot_be_misreported_as_independently_approved(metrics):
     assert metrics.needs_review_characters == 0
     assert metrics.review_statuses == {
         "approved": 1467,
-        "proposed": 1411,
+        "proposed": 1413,
     }
     assert metrics.timed_review_records == 0
-    assert metrics.total_review_records == 2879
+    assert metrics.total_review_records == 2881
 
 
 def test_semantic_pass_finds_propositions_a_shall_scan_misses(metrics):
-    assert metrics.shall_vs_semantic_disagreements == 543
-    assert metrics.shall_token_candidate_recall == pytest.approx(864 / 1407)
+    assert metrics.shall_vs_semantic_disagreements == 545
+    assert metrics.shall_token_candidate_recall == pytest.approx(864 / 1409)
     assert "AIA-NORM-A011-P1-SIMPLIFY" in metrics.semantic_norms_without_shall_token
     assert "AIA-NORM-A043-P5-AMEND" in metrics.semantic_norms_without_shall_token
     assert "AIA-NORM-A060-P4-PERMISSION" in metrics.semantic_norms_without_shall_token
@@ -1682,7 +1682,7 @@ def test_metrics_expose_many_to_many_and_implementation_debt(metrics):
     assert metrics.mapping_shape.many_norms_to_one_target == 349
     assert metrics.mapping_shape.one_norm_to_many_targets == 0
     assert metrics.mapping_shape.many_to_many == 15
-    assert metrics.mapping_shape.unmapped == 1017
+    assert metrics.mapping_shape.unmapped == 1019
     assert metrics.semantic_vs_existing_implementation_disagreements == 239
     assert metrics.semantic_norms_without_existing_implementation == [
         "AIA-NORM-A002-P1-A-PROVIDER",
@@ -3516,13 +3516,27 @@ def test_article_sixty_five_extracts_board_structure_and_operation():
     assert len(segments) == 14
     assert all(segment.review.status.value == "approved" for segment in segments)
     assert all(segment.review.verified_by == "codex" for segment in segments)
-    assert len(norms) == 14
+    assert len(norms) == 16
     assert all(norm.product_scope.value == "outside_supported_actor" for norm in norms.values())
     capabilities = norms["AIA-NORM-A065-P4-REPRESENTATIVE-CAPABILITIES"]
     assert len(capabilities.qualifier_spans) == 3
     assert len(capabilities.mandatory_content) == 3
     rules = norms["AIA-NORM-A065-P5-ADOPT-RULES-OF-PROCEDURE"]
     assert len(rules.mandatory_content) == 5
+
+    # Only convening the meetings is triggered by the Chair's request.
+    secretariat = norms["AIA-NORM-A065-P8-AI-OFFICE-SECRETARIAT"]
+    convene = norms["AIA-NORM-A065-P8-CONVENE-MEETINGS"]
+    agenda = norms["AIA-NORM-A065-P8-PREPARE-AGENDA"]
+    assert not secretariat.mandatory_content
+    assert not secretariat.conditions
+    assert convene.conditions == ["the Chair requests the meeting"]
+    assert not agenda.conditions
+    assert "rules of procedure" in agenda.action
+    assert all(
+        norm.subjects[0].subject_ref == "ai_office" for norm in (secretariat, convene, agenda)
+    )
+    assert all(norm.review.status.value == "proposed" for norm in norms.values())
 
 
 def test_article_sixty_six_preserves_the_board_task_hierarchy():

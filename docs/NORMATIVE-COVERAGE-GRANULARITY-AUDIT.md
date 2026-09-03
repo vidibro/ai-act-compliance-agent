@@ -197,21 +197,22 @@ modal/list scan. Source references identify full norm records in `source-records
 | 60a | Split paragraph 6's operator duty to comply with the Section B harmonisation provisions from the separate limitation preventing those requirements from obstructing Article 60a testing. A nearby source check also separated the unconditional duty to ensure close good-faith authority cooperation from the removal of practical obstacles, which applies only where that removal is necessary. Paragraph 5's framework-content requirement is unchanged. | Eleven proposed norms instead of nine; regressions cover the differing conditions, kinds, product scope and the retained framework content. Implementation debt is unchanged because both separated effects fall outside the supported reporting surface. |
 | 61 | Split paragraph 2 into dating and documenting the informed consent and the separate duty to give a copy to the subjects of testing or their legal representative. Paragraph 1's five information items now carry their full enacted detail, including the right to refuse and to withdraw at any time without any resulting detriment and without having to provide any justification, and the action states that the information must be concise, clear, relevant and understandable. | Three proposed norms instead of two; regressions check both actions, the recipient, the information qualities, each content item against its source span and unchanged review status. Implementation debt rises to 222 for the separated copy duty. |
 | 62 | Split both chapeau duties into their lettered actions: priority sandbox access and its non-preclusion rule for other eligible SMEs, tailored awareness and training, use of existing advice channels, the where-appropriate establishment of new ones, standardisation facilitation, Board-requested templates, the information platform, communication campaigns and procurement best-practice work. Paragraph 2's fee factors are unchanged. | Thirteen proposed norms instead of three; regressions cover each chapeau's child links, the differing conditions and the retained fee factors. Every addressee is outside the supported reporting surface, so implementation debt is unchanged. |
+| 65 | Split paragraph 8's AI Office content list into providing the Board secretariat, convening meetings upon the Chair's request and preparing agendas aligned with the Board's tasks and rules of procedure. Only convening carries the request trigger. Paragraph 5's rules-of-procedure content is unchanged. | Sixteen proposed norms instead of fourteen; regressions cover the three actions, the single request trigger and the unchanged addressee scope. Implementation debt is unchanged. |
 
 The original 88-row ledger above remains a historical audit baseline. Article 31's five,
 Article 57's nine, Article 58's one, Article 60's two, Article 60a's one and Article 61's one
 split candidate segments no longer trigger the scanner, leaving 69 live signals. The current
-inventory has 1,407 proposed norms and 1,471 segments. Implementation debt rose from 216 to 222
+inventory has 1,409 proposed norms and 1,471 segments. Implementation debt rose from 216 to 222
 records: six separated provider duties in Articles 60 and 61 are in-scope propositions that no
-existing rule covers, which the previous combined checklists concealed. Of the other 54 norms
-added since baseline, 50 concern actors outside supported reporting roles, three are
+existing rule covers, which the previous combined checklists concealed. Of the other 56 norms
+added since baseline, 52 concern actors outside supported reporting roles, three are
 no-product-action consequences, and one is the Article 60(4)(h) roles agreement already carried
 by the existing report-only obligation.
 Source approvals have not been relabelled as norm approvals. The Article 57 mitigation proposition
 preserves the supervisory requirement for adequate mitigation; it does not assign a new operational
 product action or turn suspension into a duty. This actor interpretation remains subject to
 independent norm review, as do the other corrections.
-Next recorded correction: Article 65. Articles 47–49 and 51–56 have no open recorded correction
+Next recorded correction: Article 66. Articles 47–49 and 51–56 have no open recorded correction
 in these ledgers. The Article 50 corrections do not remove their heuristic scan signals; a signal
 is not a finding or an approval status.
 
