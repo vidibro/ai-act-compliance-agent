@@ -28,11 +28,9 @@ segments:
     document: XI
     act_version_date: '2026-07-27'
   start: 143
-  end: 400
-  sha256: 0f4674f475644530aff060c8ac9fdd356adcd72b2ec48f7afd40ec2b4efd4d3b
-  text: 'Section 1Information to be provided by all providers of general-purpose AI models The technical
-    documentation referred to in Article 53(1), point (a) shall contain at least the following information
-    as appropriate to the size and risk profile of the model:
+  end: 153
+  sha256: fd7dfc555a909bb2347b8af13b5b542148aab29b824431e68c23f8bff515b457
+  text: 'Section 1
 
     '
   disposition: normative
@@ -53,10 +51,10 @@ segments:
     kind: annex
     document: XI
     act_version_date: '2026-07-27'
-  start: 400
-  end: 472
-  sha256: 5f726750211a70e07f50b05564fc77af5b8a37918cf3497af8e64a8e2bba190b
-  text: '    1. A general description of the general-purpose AI model including:
+  start: 153
+  end: 226
+  sha256: 9995a477bb8a9dfb08e7470a552babab4cbc1127dcf59a4899cd3defadc3fdc6
+  text: 'Information to be provided by all providers of general-purpose AI models
 
     '
   disposition: normative
@@ -77,11 +75,11 @@ segments:
     kind: annex
     document: XI
     act_version_date: '2026-07-27'
-  start: 472
-  end: 605
-  sha256: 623d40ab02b74afbe0ac02a82d96e5a99328b022d11d0ce5c2553fab4ce7923a
-  text: '            (a) the tasks that the model is intended to perform and the type and nature of AI
-    systems in which it can be integrated;
+  start: 226
+  end: 401
+  sha256: 0f49f106900926d89362f08c032533c05499877cafb06f1809d08200bfbc244e
+  text: 'The technical documentation referred to in Article 53(1), point (a) shall contain at least the
+    following information as appropriate to the size and risk profile of the model:
 
     '
   disposition: normative
@@ -102,10 +100,10 @@ segments:
     kind: annex
     document: XI
     act_version_date: '2026-07-27'
-  start: 605
-  end: 661
-  sha256: 62ddf22581d59a599b7fbc947647710ff557f49f4253b8103cbf216550029217
-  text: '            (b) the acceptable use policies applicable;
+  start: 401
+  end: 473
+  sha256: 5f726750211a70e07f50b05564fc77af5b8a37918cf3497af8e64a8e2bba190b
+  text: '    1. A general description of the general-purpose AI model including:
 
     '
   disposition: normative
@@ -126,10 +124,11 @@ segments:
     kind: annex
     document: XI
     act_version_date: '2026-07-27'
-  start: 661
-  end: 726
-  sha256: d7a201ad28f96982caa97ec293d6ebaa56e1fd262445de5a571662c03355c3b7
-  text: '            (c) the date of release and methods of distribution;
+  start: 473
+  end: 606
+  sha256: 623d40ab02b74afbe0ac02a82d96e5a99328b022d11d0ce5c2553fab4ce7923a
+  text: '            (a) the tasks that the model is intended to perform and the type and nature of AI
+    systems in which it can be integrated;
 
     '
   disposition: normative
@@ -150,10 +149,10 @@ segments:
     kind: annex
     document: XI
     act_version_date: '2026-07-27'
-  start: 726
-  end: 785
-  sha256: 764778f69824bfaa259eb8d85e6e6d61f29fdcd6d376197d617858bb2b1ffcfc
-  text: '            (d) the architecture and number of parameters;
+  start: 606
+  end: 662
+  sha256: 62ddf22581d59a599b7fbc947647710ff557f49f4253b8103cbf216550029217
+  text: '            (b) the acceptable use policies applicable;
 
     '
   disposition: normative
@@ -174,10 +173,10 @@ segments:
     kind: annex
     document: XI
     act_version_date: '2026-07-27'
-  start: 785
-  end: 867
-  sha256: 46e456dd6b5ede65ad2e7f739228269ea22b3ddd36889ee45e325c4bc9cfd1b5
-  text: '            (e) the modality (e.g. text, image) and format of inputs and outputs;
+  start: 662
+  end: 727
+  sha256: d7a201ad28f96982caa97ec293d6ebaa56e1fd262445de5a571662c03355c3b7
+  text: '            (c) the date of release and methods of distribution;
 
     '
   disposition: normative
@@ -198,10 +197,10 @@ segments:
     kind: annex
     document: XI
     act_version_date: '2026-07-27'
-  start: 867
-  end: 896
-  sha256: 339eb4d285f195c01b96e555582c4e7a39cf741ee79053fa62bf568f798f5f03
-  text: '            (f) the licence.
+  start: 727
+  end: 786
+  sha256: 764778f69824bfaa259eb8d85e6e6d61f29fdcd6d376197d617858bb2b1ffcfc
+  text: '            (d) the architecture and number of parameters;
 
     '
   disposition: normative
@@ -222,8 +221,56 @@ segments:
     kind: annex
     document: XI
     act_version_date: '2026-07-27'
-  start: 896
-  end: 1241
+  start: 786
+  end: 868
+  sha256: 46e456dd6b5ede65ad2e7f739228269ea22b3ddd36889ee45e325c4bc9cfd1b5
+  text: '            (e) the modality (e.g. text, image) and format of inputs and outputs;
+
+    '
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-ANNEX-XI-SECTION-1-TECHNICAL-DOCUMENTATION
+  review:
+    status: approved
+    extracted_by: semantic-legal-effect-pass
+    verified_by: codex
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- segment_id: AIA-TEXT-ANNEX-XI-P010
+  source:
+    kind: annex
+    document: XI
+    act_version_date: '2026-07-27'
+  start: 868
+  end: 897
+  sha256: 339eb4d285f195c01b96e555582c4e7a39cf741ee79053fa62bf568f798f5f03
+  text: '            (f) the licence.
+
+    '
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-ANNEX-XI-SECTION-1-TECHNICAL-DOCUMENTATION
+  review:
+    status: approved
+    extracted_by: semantic-legal-effect-pass
+    verified_by: codex
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- segment_id: AIA-TEXT-ANNEX-XI-P011
+  source:
+    kind: annex
+    document: XI
+    act_version_date: '2026-07-27'
+  start: 897
+  end: 1242
   sha256: 6cac77a96edf149513b4ff9979a3108a8fd5f672e840bef28eeb35b0f0a448c0
   text: '    2. A detailed description of the elements of the model referred to in point 1, and relevant
     information of the process for the development, including the following elements: With regard to point
@@ -245,13 +292,13 @@ segments:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
-- segment_id: AIA-TEXT-ANNEX-XI-P010
+- segment_id: AIA-TEXT-ANNEX-XI-P012
   source:
     kind: annex
     document: XI
     act_version_date: '2026-07-27'
-  start: 1241
-  end: 1401
+  start: 1242
+  end: 1402
   sha256: 5433b647dc9f34119801de9426e7e06f8500517a61ce97e9baedfa262239b3db
   text: '            (a) the technical means (e.g. instructions of use, infrastructure, tools) required
     for the general-purpose AI model to be integrated in AI systems;
@@ -270,13 +317,13 @@ segments:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
-- segment_id: AIA-TEXT-ANNEX-XI-P011
+- segment_id: AIA-TEXT-ANNEX-XI-P013
   source:
     kind: annex
     document: XI
     act_version_date: '2026-07-27'
-  start: 1401
-  end: 1701
+  start: 1402
+  end: 1702
   sha256: 00c2683490a3227a8904c90093c3a7b1d44c67d73a77fb73e01b8c0c90116540
   text: '            (b) the design specifications of the model and training process, including training
     methodologies and techniques, the key design choices including the rationale and assumptions made;
@@ -296,13 +343,13 @@ segments:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
-- segment_id: AIA-TEXT-ANNEX-XI-P012
+- segment_id: AIA-TEXT-ANNEX-XI-P014
   source:
     kind: annex
     document: XI
     act_version_date: '2026-07-27'
-  start: 1701
-  end: 2144
+  start: 1702
+  end: 2145
   sha256: fa8712a5bc45991d2685300b193e3d92ca3ca0534daebcf0c2a4bcf24efdd523
   text: '            (c) information on the data used for training, testing and validation, where applicable,
     including the type and provenance of data and curation methodologies (e.g. cleaning, filtering, etc.),
@@ -324,13 +371,13 @@ segments:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
-- segment_id: AIA-TEXT-ANNEX-XI-P013
+- segment_id: AIA-TEXT-ANNEX-XI-P015
   source:
     kind: annex
     document: XI
     act_version_date: '2026-07-27'
-  start: 2144
-  end: 2323
+  start: 2145
+  end: 2324
   sha256: ced2fabacccf258c893e0b0a371bd64d834a599343ddee04e5c947aff3918bf1
   text: '            (d) the computational resources used to train the model (e.g. number of floating
     point operations), training time, and other relevant details related to the training;
@@ -349,13 +396,13 @@ segments:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
-- segment_id: AIA-TEXT-ANNEX-XI-P014
+- segment_id: AIA-TEXT-ANNEX-XI-P016
   source:
     kind: annex
     document: XI
     act_version_date: '2026-07-27'
-  start: 2323
-  end: 2391
+  start: 2324
+  end: 2392
   sha256: 17de0100c5d942bd2365c32f8a0fa3a4126c240b60cb8815074de8ad2a93eb6c
   text: '            (e) known or estimated energy consumption of the model.
 
@@ -373,22 +420,15 @@ segments:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
-- segment_id: AIA-TEXT-ANNEX-XI-P015
+- segment_id: AIA-TEXT-ANNEX-XI-P017
   source:
     kind: annex
     document: XI
     act_version_date: '2026-07-27'
-  start: 2391
-  end: 3220
-  sha256: e9e83fbaedcaa27411fc34a94259ae91e2111f9918af8d7a9b9bb2dc33dfee08
-  text: 'Section 2Additional information to be provided by providers of general-purpose AI models with
-    systemic risk 1.A detailed description of the evaluation strategies, including evaluation results,
-    on the basis of available public evaluation protocols and tools or otherwise of other evaluation methodologies.
-    Evaluation strategies shall include evaluation criteria, metrics and the methodology on the identification
-    of limitations. 2.Where applicable, a detailed description of the measures put in place for the purpose
-    of conducting internal and/or external adversarial testing (e.g. red teaming), model adaptations,
-    including alignment and fine-tuning. 3.Where applicable, a detailed description of the system architecture
-    explaining how software components build or feed into each other and integrate into the overall processing.
+  start: 2392
+  end: 2402
+  sha256: ff4e19d419bd459abdf79824412b0d15c4b4009f1143c3299093e2f98650f443
+  text: 'Section 2
 
     '
   disposition: normative
@@ -396,6 +436,111 @@ segments:
   norm_ids:
   - AIA-NORM-ANNEX-XI-SECTION-2-SYSTEMIC-RISK-DOCUMENTATION
   - AIA-NORM-ANNEX-XI-SECTION-2-ADVERSARIAL-TESTING-AND-ADAPTATIONS
+  - AIA-NORM-ANNEX-XI-SECTION-2-SYSTEM-ARCHITECTURE
+  review:
+    status: approved
+    extracted_by: semantic-legal-effect-pass
+    verified_by: codex
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- segment_id: AIA-TEXT-ANNEX-XI-P018
+  source:
+    kind: annex
+    document: XI
+    act_version_date: '2026-07-27'
+  start: 2402
+  end: 2501
+  sha256: c256260ef5d93cfd9d1bf572e43d5bad7ed21a67ce24f4a5605a29bd11aea977
+  text: 'Additional information to be provided by providers of general-purpose AI models with systemic
+    risk
+
+    '
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-ANNEX-XI-SECTION-2-SYSTEMIC-RISK-DOCUMENTATION
+  - AIA-NORM-ANNEX-XI-SECTION-2-ADVERSARIAL-TESTING-AND-ADAPTATIONS
+  - AIA-NORM-ANNEX-XI-SECTION-2-SYSTEM-ARCHITECTURE
+  review:
+    status: approved
+    extracted_by: semantic-legal-effect-pass
+    verified_by: codex
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- segment_id: AIA-TEXT-ANNEX-XI-P019
+  source:
+    kind: annex
+    document: XI
+    act_version_date: '2026-07-27'
+  start: 2501
+  end: 2826
+  sha256: dd590c4843440a0f6de9e9138fe821f42cde6f447e534f9d6f56ba443af328b9
+  text: '    1. A detailed description of the evaluation strategies, including evaluation results, on
+    the basis of available public evaluation protocols and tools or otherwise of other evaluation methodologies.
+    Evaluation strategies shall include evaluation criteria, metrics and the methodology on the identification
+    of limitations.
+
+    '
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-ANNEX-XI-SECTION-2-SYSTEMIC-RISK-DOCUMENTATION
+  review:
+    status: approved
+    extracted_by: semantic-legal-effect-pass
+    verified_by: codex
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- segment_id: AIA-TEXT-ANNEX-XI-P020
+  source:
+    kind: annex
+    document: XI
+    act_version_date: '2026-07-27'
+  start: 2826
+  end: 3054
+  sha256: f9a7a8b687a22de9d75e683760fcc1ffe1a22a593f620bf69090ef6cae9ae76f
+  text: '    2. Where applicable, a detailed description of the measures put in place for the purpose
+    of conducting internal and/or external adversarial testing (e.g. red teaming), model adaptations,
+    including alignment and fine-tuning.
+
+    '
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-ANNEX-XI-SECTION-2-ADVERSARIAL-TESTING-AND-ADAPTATIONS
+  review:
+    status: approved
+    extracted_by: semantic-legal-effect-pass
+    verified_by: codex
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- segment_id: AIA-TEXT-ANNEX-XI-P021
+  source:
+    kind: annex
+    document: XI
+    act_version_date: '2026-07-27'
+  start: 3054
+  end: 3237
+  sha256: ad7310db475e1a683d88743f0fb15dd1aa514cd6beaa4ad059039cb527aac8d3
+  text: '    3. Where applicable, a detailed description of the system architecture explaining how software
+    components build or feed into each other and integrate into the overall processing.
+
+    '
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
   - AIA-NORM-ANNEX-XI-SECTION-2-SYSTEM-ARCHITECTURE
   review:
     status: approved

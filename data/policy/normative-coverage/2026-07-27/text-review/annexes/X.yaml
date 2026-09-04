@@ -6,10 +6,11 @@ segments:
     document: X
     act_version_date: '2026-07-27'
   start: 0
-  end: 102
-  sha256: 00d8187d107162d0c6afdced182f17f0e7f93faf92f1510247f752b4955016d3
-  text: 'ANNEX XUnion legislative acts on large-scale IT systems in the area of Freedom, Security and
-    Justice
+  end: 103
+  sha256: a200eca8b03af60a67abe4276651c0d362bcc8fcbf08988ec0f39b65143cb965
+  text: 'ANNEX X
+
+    Union legislative acts on large-scale IT systems in the area of Freedom, Security and Justice
 
 
     '
@@ -30,10 +31,10 @@ segments:
     kind: annex
     document: X
     act_version_date: '2026-07-27'
-  start: 102
-  end: 132
-  sha256: 4e2961758fa2862e6e0ed3a8ae47423a2e00f44fdc51ba448c48880bb88f0b7e
-  text: '1.Schengen Information System
+  start: 103
+  end: 134
+  sha256: 9fa5cd9d45476a4d25cff9f7892ab3e37385b438f62bf0d9904b30f8dec61a40
+  text: '1. Schengen Information System
 
     '
   disposition: context_only
@@ -53,8 +54,8 @@ segments:
     kind: annex
     document: X
     act_version_date: '2026-07-27'
-  start: 132
-  end: 367
+  start: 134
+  end: 369
   sha256: a270ba9693bd029801df8a011d3ef29cb1eee1bbc584e55ff1e540c3533ac8b8
   text: '    (a) Regulation (EU) 2018/1860 of the European Parliament and of the Council of 28 November
     2018 on the use of the Schengen Information System for the return of illegally staying third-country
@@ -79,8 +80,8 @@ segments:
     kind: annex
     document: X
     act_version_date: '2026-07-27'
-  start: 367
-  end: 730
+  start: 369
+  end: 732
   sha256: 50934144443a634823a9cd6756823b70948c6b6a85fb76fad22f5589a9ddfaf5
   text: '    (b) Regulation (EU) 2018/1861 of the European Parliament and of the Council of 28 November
     2018 on the establishment, operation and use of the Schengen Information System (SIS) in the field
@@ -106,8 +107,8 @@ segments:
     kind: annex
     document: X
     act_version_date: '2026-07-27'
-  start: 730
-  end: 1201
+  start: 732
+  end: 1203
   sha256: 7e964946f468d4d60980017d310bc2e36f791f84c0cb81cffe9708a3c58c0aa1
   text: '    (c) Regulation (EU) 2018/1862 of the European Parliament and of the Council of 28 November
     2018 on the establishment, operation and use of the Schengen Information System (SIS) in the field
@@ -134,10 +135,10 @@ segments:
     kind: annex
     document: X
     act_version_date: '2026-07-27'
-  start: 1201
-  end: 1227
-  sha256: a2275b6b82afc5ac5e00f54411dc0f2ffd8a0554f8ebb7bc7c1579126968a75b
-  text: '2.Visa Information System
+  start: 1203
+  end: 1230
+  sha256: 5ba942948c98e973bf410edebec55102819b3c7694d982f70e5b99aa1c97b90c
+  text: '2. Visa Information System
 
     '
   disposition: context_only
@@ -157,8 +158,8 @@ segments:
     kind: annex
     document: X
     act_version_date: '2026-07-27'
-  start: 1227
-  end: 1591
+  start: 1230
+  end: 1594
   sha256: 4fd64050e25f422f774f81bd1de5e77824285a733a0c147ab2f2ccd57eef1625
   text: '    (a) Regulation (EU) 2021/1133 of the European Parliament and of the Council of 7 July 2021
     amending Regulations (EU) No 603/2013, (EU) 2016/794, (EU) 2018/1862, (EU) 2019/816 and (EU) 2019/818
@@ -184,8 +185,8 @@ segments:
     kind: annex
     document: X
     act_version_date: '2026-07-27'
-  start: 1591
-  end: 2050
+  start: 1594
+  end: 2053
   sha256: 4889d3a319fcabc52c7427b78fa9e9a093cc1073bf8c5b4cd2809447bba04e97
   text: '    (b) Regulation (EU) 2021/1134 of the European Parliament and of the Council of 7 July 2021
     amending Regulations (EC) No 767/2008, (EC) No 810/2009, (EU) 2016/399, (EU) 2017/2226, (EU) 2018/1240,
@@ -212,11 +213,34 @@ segments:
     kind: annex
     document: X
     act_version_date: '2026-07-27'
-  start: 2050
-  end: 2861
-  sha256: 6284b5da217f7f0802742eb7eb44293b6b685403988de905f0d3c99155e07ac3
-  text: "3.Eurodac Regulation (EU) 2024/1358 of the European Parliament and of the Council of 14 May 2024\
-    \ on the establishment of \u2018Eurodac\u2019 for the comparison of biometric data in order to effectively\
+  start: 2053
+  end: 2064
+  sha256: ac77ed9f541b5543ce6e27db3eaca04f761c5e6049922358fded7e6a73a5820b
+  text: '3. Eurodac
+
+    '
+  disposition: context_only
+  disposition_reason: Category heading for the Eurodac instrument.
+  norm_ids: []
+  review:
+    status: approved
+    extracted_by: semantic-legal-effect-pass
+    verified_by: codex
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- segment_id: AIA-TEXT-ANNEX-X-P009
+  source:
+    kind: annex
+    document: X
+    act_version_date: '2026-07-27'
+  start: 2064
+  end: 2869
+  sha256: 12c055d344665c751a074e6e5c4596de65ba80ef0a0dcc5a9280cfa6f0a3ffd6
+  text: "    Regulation (EU) 2024/1358 of the European Parliament and of the Council of 14 May 2024 on\
+    \ the establishment of \u2018Eurodac\u2019 for the comparison of biometric data in order to effectively\
     \ apply Regulations (EU) 2024/1315 and (EU) 2024/1350 of the European Parliament and of the Council\
     \ and Council Directive 2001/55/EC and to identify illegally staying third-country nationals and stateless\
     \ persons and on requests for the comparison with Eurodac data by Member States\u2019 law enforcement\
@@ -236,18 +260,41 @@ segments:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
-- segment_id: AIA-TEXT-ANNEX-X-P009
+- segment_id: AIA-TEXT-ANNEX-X-P010
   source:
     kind: annex
     document: X
     act_version_date: '2026-07-27'
-  start: 2861
-  end: 3381
-  sha256: 5573804f01c3b11f28e85f461b8b889f5bd9704a0363569786b38aa85b30474b
-  text: '4.Entry/Exit System Regulation (EU) 2017/2226 of the European Parliament and of the Council of
-    30 November 2017 establishing an Entry/Exit System (EES) to register entry and exit data and refusal
-    of entry data of third-country nationals crossing the external borders of the Member States and determining
-    the conditions for access to the EES for law enforcement purposes, and amending the Convention implementing
+  start: 2869
+  end: 2890
+  sha256: a222c000872792e691a000d4b8ccbf11935c045d23218697ceb0b5b0f1d9bb8b
+  text: '4. Entry/Exit System
+
+    '
+  disposition: context_only
+  disposition_reason: Category heading for the Entry/Exit System instrument.
+  norm_ids: []
+  review:
+    status: approved
+    extracted_by: semantic-legal-effect-pass
+    verified_by: codex
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- segment_id: AIA-TEXT-ANNEX-X-P011
+  source:
+    kind: annex
+    document: X
+    act_version_date: '2026-07-27'
+  start: 2890
+  end: 3394
+  sha256: 16cf094bb8323bd009f40ea834adbd9680c8077cacfb978adf02289179fe1486
+  text: '    Regulation (EU) 2017/2226 of the European Parliament and of the Council of 30 November 2017
+    establishing an Entry/Exit System (EES) to register entry and exit data and refusal of entry data
+    of third-country nationals crossing the external borders of the Member States and determining the
+    conditions for access to the EES for law enforcement purposes, and amending the Convention implementing
     the Schengen Agreement and Regulations (EC) No 767/2008 and (EU) No 1077/2011 (OJ L 327, 9.12.2017,
     p. 20).
 
@@ -265,15 +312,15 @@ segments:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
-- segment_id: AIA-TEXT-ANNEX-X-P010
+- segment_id: AIA-TEXT-ANNEX-X-P012
   source:
     kind: annex
     document: X
     act_version_date: '2026-07-27'
-  start: 3381
-  end: 3436
-  sha256: 78b7466d1475e7bfe831af95841c1ab0ccf976d0bda2c6bb630ed4de58fb1147
-  text: '5.European Travel Information and Authorisation System
+  start: 3394
+  end: 3450
+  sha256: a6de2b96a384961cd402325a59dfd9edf777b9c3e63e9072ccdc3db813fb9f70
+  text: '5. European Travel Information and Authorisation System
 
     '
   disposition: context_only
@@ -288,13 +335,13 @@ segments:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
-- segment_id: AIA-TEXT-ANNEX-X-P011
+- segment_id: AIA-TEXT-ANNEX-X-P013
   source:
     kind: annex
     document: X
     act_version_date: '2026-07-27'
-  start: 3436
-  end: 3753
+  start: 3450
+  end: 3767
   sha256: 868ad5227093262e263fc0a1988def6ca18b5b3d2c42a90e8035731eada2c054
   text: '    (a) Regulation (EU) 2018/1240 of the European Parliament and of the Council of 12 September
     2018 establishing a European Travel Information and Authorisation System (ETIAS) and amending Regulations
@@ -315,13 +362,13 @@ segments:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
-- segment_id: AIA-TEXT-ANNEX-X-P012
+- segment_id: AIA-TEXT-ANNEX-X-P014
   source:
     kind: annex
     document: X
     act_version_date: '2026-07-27'
-  start: 3753
-  end: 4013
+  start: 3767
+  end: 4027
   sha256: c111b944fc7499175365d67ecc576a2514545d42d08a278e86398fd772f96052
   text: '    (b) Regulation (EU) 2018/1241 of the European Parliament and of the Council of 12 September
     2018 amending Regulation (EU) 2016/794 for the purpose of establishing a European Travel Information
@@ -341,16 +388,38 @@ segments:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
-- segment_id: AIA-TEXT-ANNEX-X-P013
+- segment_id: AIA-TEXT-ANNEX-X-P015
   source:
     kind: annex
     document: X
     act_version_date: '2026-07-27'
-  start: 4013
-  end: 4494
-  sha256: 95d56e416795c8823cc270eabc583e0449125afe6c88bc81e0b9a5243d073cb1
-  text: '6.European Criminal Records Information System on third-country nationals and stateless persons
-    Regulation (EU) 2019/816 of the European Parliament and of the Council of 17 April 2019 establishing
+  start: 4027
+  end: 4124
+  sha256: 098e1aab2fe0c20ba5400a5867681b7dc5d26a561f9cb3ceed9a21cc11120359
+  text: '6. European Criminal Records Information System on third-country nationals and stateless persons
+
+    '
+  disposition: context_only
+  disposition_reason: Category heading for the ECRIS-TCN instrument.
+  norm_ids: []
+  review:
+    status: approved
+    extracted_by: semantic-legal-effect-pass
+    verified_by: codex
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- segment_id: AIA-TEXT-ANNEX-X-P016
+  source:
+    kind: annex
+    document: X
+    act_version_date: '2026-07-27'
+  start: 4124
+  end: 4513
+  sha256: e9a0b127dc25ae3f6058802ac335423c66d6a96ead6a11f77c209a9ee592d577
+  text: '    Regulation (EU) 2019/816 of the European Parliament and of the Council of 17 April 2019 establishing
     a centralised system for the identification of Member States holding conviction information on third-country
     nationals and stateless persons (ECRIS-TCN) to supplement the European Criminal Records Information
     System and amending Regulation (EU) 2018/1726 (OJ L 135, 22.5.2019, p. 1).
@@ -369,15 +438,15 @@ segments:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
-- segment_id: AIA-TEXT-ANNEX-X-P014
+- segment_id: AIA-TEXT-ANNEX-X-P017
   source:
     kind: annex
     document: X
     act_version_date: '2026-07-27'
-  start: 4494
-  end: 4513
-  sha256: 7d8dce2769f947fef4ce0c4e5aa062de19a4e5dca3dcb4a9ca0cb67ae369a7d1
-  text: '7.Interoperability
+  start: 4513
+  end: 4533
+  sha256: 93f5996f43bcb18a690376ba979420c9c48269cd9b39ec1c8b70175b9233995b
+  text: '7. Interoperability
 
     '
   disposition: context_only
@@ -392,13 +461,13 @@ segments:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
-- segment_id: AIA-TEXT-ANNEX-X-P015
+- segment_id: AIA-TEXT-ANNEX-X-P018
   source:
     kind: annex
     document: X
     act_version_date: '2026-07-27'
-  start: 4513
-  end: 4971
+  start: 4533
+  end: 4991
   sha256: e917c92457f2f7744ffb9d48db88816f637e0cb8d699e2a54f2b1e6aa09abddd
   text: '    (a) Regulation (EU) 2019/817 of the European Parliament and of the Council of 20 May 2019
     on establishing a framework for interoperability between EU information systems in the field of borders
@@ -420,13 +489,13 @@ segments:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
-- segment_id: AIA-TEXT-ANNEX-X-P016
+- segment_id: AIA-TEXT-ANNEX-X-P019
   source:
     kind: annex
     document: X
     act_version_date: '2026-07-27'
-  start: 4971
-  end: 5319
+  start: 4991
+  end: 5339
   sha256: 67d1d81a5c7de3cd58358118f069b30e2f1064661535d763a27db6a302a4f74e
   text: '    (b) Regulation (EU) 2019/818 of the European Parliament and of the Council of 20 May 2019
     on establishing a framework for interoperability between EU information systems in the field of police

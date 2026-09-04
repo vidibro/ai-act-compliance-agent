@@ -347,7 +347,7 @@ Measure:
 
 **Full-corpus proposed extraction 2026-08-28:** the representative pilot was expanded, in source
 order, into a complete proposed inventory. It now partitions all 133 source bodies in the pinned
-corpus into 1,471 exact segments. It now proposes 1,487 norms across 132 documents; Article 1 supplies
+corpus into 1,505 exact segments. It now proposes 1,487 norms across 132 documents; Article 1 supplies
 reviewed subject-matter context without an atomic norm. No article or annex remains as `needs_review`
 debt, and structural headings remain separately identified.
 The reproducible measurements are in the versioned
@@ -356,7 +356,7 @@ The reproducible measurements are in the versioned
 1,487 proposed propositions whose exact operative quote contains no `shall` token. No source characters
 remain marked `needs_review`.
 
-Of the 1,471 segments, 1,467 are approved and four remain `proposed`: Annex VIII. The
+Of the 1,505 segments, 1,501 are approved and four remain `proposed`: Annex VIII. The
 Article 5 heading, all Article 50 and Article 113 segments, and the 27 finer-grained Annex IV
 segments were independently confirmed on
 2026-09-02. Their linked norm records, like all 1,487 extracted
@@ -669,8 +669,25 @@ other-methodology bases, while items 2 and 3 each carry their own where-applicab
 three remain carried by the Article 53(1)(a) Annex XI content norm, so implementation debt stays
 at 222 while in-scope norms without a direct implementation reference rise to 241. The corpus is
 1,487 proposed norms with 134 populated content lists. Section 2 is still one source segment;
-splitting that packed line would renumber every approved Annex XI span, and the comparable
-Annex IV re-segmentation carried user review provenance, so it remains an open decision. Articles 47–49 and 51–56 have no open recorded finding in
+that packed line is now split at source instead.
+
+**Formex rendering fix, 2026-09-04.** `_split` treated a `<GR.SEQ>` holding bare `<NP>` points
+as inline, so Annex XI Section 2, Annex I's two legislation lists and comparable blocks in
+Annexes VII, VIII, X and XIV collapsed onto one line each, with every label glued to its text
+(`1.A detailed description…`). The converter now renders numbered points as blocks, gives a
+grouped sequence's title its own line, and indents a category whose whole body is running text.
+The store was re-derived from the pinned 2026-07-27 manifestation: all 119 articles came back
+byte-identical, six annexes changed, and every one of them is identical to its predecessor once
+whitespace is removed — no enacted word was added, lost or altered.
+
+The corpus therefore partitions into 1,505 segments rather than 1,471, and each listed
+instrument, numbered point and section heading is now its own reviewable span. Annex I's 21
+instruments moved off two shared spans onto one each, qualified by the Section A or Section B
+heading they are listed under; Annex XI Section 2's three norms took the three item spans the
+granularity ledger had asked for. Norm, content-list, detector-candidate and implementation-debt
+totals are otherwise unchanged at 1,487 / 134 / 43 / 222. The 34 new segments inherit their
+document's `codex` provenance and `approved` status: the text behind them was already approved,
+but the cut points are new and have had no independent review. Articles 47–49 and 51–56 have no open recorded finding in
 these ledgers.
 
 Correct the recorded defects and complete the unflagged-source semantic audit before declaring

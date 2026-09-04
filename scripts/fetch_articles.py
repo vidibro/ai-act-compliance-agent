@@ -195,8 +195,17 @@ def _split(el: ET.Element, skip: set[str]) -> tuple[list[str], list[ET.Element]]
             continue
         # A child is a block if it IS one, or if it merely wraps one. Annexes nest
         # <P><LIST>…</LIST></P>, so treating a wrapper as inline would flatten a whole
-        # lettered list onto a single line and destroy the numbering.
-        if child.tag in _BLOCK or child.find("LIST") is not None or child.find("PARAG") is not None:
+        # lettered list onto a single line and destroy the numbering. <NP> is a numbered point in
+        # its own right: Annex XI Section 2 hangs its points straight off <GR.SEQ> with no <LIST>
+        # around them, and reading those as inline runs the whole section into one line with each
+        # label glued to its text ("1.A detailed description…").
+        if (
+            child.tag in _BLOCK
+            or child.tag == "NP"
+            or child.find("LIST") is not None
+            or child.find("PARAG") is not None
+            or child.find("NP") is not None
+        ):
             blocks.append(child)
         else:
             t = _inline(child)
@@ -223,10 +232,42 @@ def _render(el: ET.Element, indent: int) -> list[str]:
         no = holder.find("NO.P")
         label = _inline(no) if no is not None else ""
         return _labeled(holder, indent, label, {"NO.P"})
+    if el.tag == "NP":
+        no = el.find("NO.P")
+        label = _inline(no) if no is not None else ""
+        return _labeled(el, indent, label, {"NO.P"})
     if el.tag == "PARAG":
         no = el.find("NO.PARAG")
         label = _inline(no) if no is not None else ""
         return _labeled(el, indent, label, {"NO.PARAG"})
+    if el.tag == "GR.SEQ":
+        # A grouped sequence carries a <TITLE> of <TI>/<STI>, exactly like an annex. render_annex
+        # puts those on their own lines; concatenating them inline instead runs the two together
+        # ("Section 2Additional information…"), because Formex leaves no whitespace between them.
+        title = el.find("TITLE")
+        lines = []
+        if title is not None:
+            for tag in ("TI", "STI"):
+                sub = title.find(tag)
+                if sub is None:
+                    continue
+                # Annex X numbers its categories inside the title (<TI><NP><NO.P>3.</NO.P>Eurodac);
+                # rendering that as plain inline text loses the separator and yields "3.Eurodac".
+                np = sub.find("NP")
+                if np is not None:
+                    lines += _render(np, indent)
+                elif text := _inline(sub):
+                    lines.append("    " * indent + text)
+        parts, blocks = _split(el, {"TITLE"})
+        # Running text directly under the heading is the section's whole body when nothing else
+        # follows — Annex X lists categories 3, 4 and 6 as a single regulation this way, where the
+        # others use a lettered list — so indent it like those items. With blocks present that text
+        # is a chapeau introducing them and stays at the heading's level.
+        if intro := _normalise(" ".join(parts)):
+            lines.append("    " * (indent if blocks else indent + 1) + intro)
+        for block in blocks:
+            lines += _render(block, indent + 1)
+        return lines
     return _labeled(el, indent, "", set())
 
 
@@ -290,14 +331,19 @@ def render_annex(annex: ET.Element) -> tuple[str, str, str]:
     """
     title_el = annex.find("TITLE")
     ti = title_el.find("TI") if title_el is not None else None
-    heading = _inline(ti) if ti is not None else ""  # "ANNEX III"
+    # Most annexes put the number in <TI> and the subject in <STI>. Annex X instead nests both as
+    # two <P> elements inside <TI>, and flattening those inline runs them together
+    # ("ANNEX XUnion legislative acts…"), so take each paragraph as its own line.
+    ti_lines = [_inline(p) for p in ti.findall("P")] if ti is not None else []
+    ti_lines = [line for line in ti_lines if line] or ([_inline(ti)] if ti is not None else [])
+    heading = ti_lines[0] if ti_lines else ""  # "ANNEX III"
     m = re.search(r"ANNEX\s+([IVXL]+)", heading)
     roman = m.group(1) if m else ""
     sti = title_el.find("STI") if title_el is not None else None
-    title = _inline(sti) if sti is not None else ""
+    title = _inline(sti) if sti is not None else " ".join(ti_lines[1:])
 
-    lines = [heading]
-    if title:
+    lines = list(ti_lines)
+    if title and title not in ti_lines:
         lines.append(title)
     lines.append("")
     contents = annex.find("CONTENTS")

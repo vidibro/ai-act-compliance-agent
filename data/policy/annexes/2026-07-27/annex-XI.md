@@ -9,14 +9,16 @@ source: EUR-Lex Formex v4 XML (fmx4), Publications Office of the EU
 source_url: http://publications.europa.eu/resource/celex/02024R1689-20260727.ENG.fmx4
 authentic_pdf: https://eur-lex.europa.eu/legal-content/EN/TXT/PDF/?uri=CELEX:02024R1689-20260727
 act_version_date: 2026-07-27
-retrieved_at: 2026-08-20
-sha256: e2398d1f6549144dc8b23f704d1577778460690541e42135e17a649935bb3738
+retrieved_at: 2026-09-04
+sha256: c4b6b92170a1da45772b4821a2d89e01e2228db3054dd224ff9e31cb92282cf7
 ---
 
 ANNEX XI
 Technical documentation referred to in Article 53(1), point (a) — technical documentation for providers of general-purpose AI models
 
-Section 1Information to be provided by all providers of general-purpose AI models The technical documentation referred to in Article 53(1), point (a) shall contain at least the following information as appropriate to the size and risk profile of the model:
+Section 1
+Information to be provided by all providers of general-purpose AI models
+The technical documentation referred to in Article 53(1), point (a) shall contain at least the following information as appropriate to the size and risk profile of the model:
     1. A general description of the general-purpose AI model including:
             (a) the tasks that the model is intended to perform and the type and nature of AI systems in which it can be integrated;
             (b) the acceptable use policies applicable;
@@ -30,4 +32,8 @@ Section 1Information to be provided by all providers of general-purpose AI model
             (c) information on the data used for training, testing and validation, where applicable, including the type and provenance of data and curation methodologies (e.g. cleaning, filtering, etc.), the number of data points, their scope and main characteristics; how the data was obtained and selected as well as all other measures to detect the unsuitability of data sources and methods to detect identifiable biases, where applicable;
             (d) the computational resources used to train the model (e.g. number of floating point operations), training time, and other relevant details related to the training;
             (e) known or estimated energy consumption of the model.
-Section 2Additional information to be provided by providers of general-purpose AI models with systemic risk 1.A detailed description of the evaluation strategies, including evaluation results, on the basis of available public evaluation protocols and tools or otherwise of other evaluation methodologies. Evaluation strategies shall include evaluation criteria, metrics and the methodology on the identification of limitations. 2.Where applicable, a detailed description of the measures put in place for the purpose of conducting internal and/or external adversarial testing (e.g. red teaming), model adaptations, including alignment and fine-tuning. 3.Where applicable, a detailed description of the system architecture explaining how software components build or feed into each other and integrate into the overall processing.
+Section 2
+Additional information to be provided by providers of general-purpose AI models with systemic risk
+    1. A detailed description of the evaluation strategies, including evaluation results, on the basis of available public evaluation protocols and tools or otherwise of other evaluation methodologies. Evaluation strategies shall include evaluation criteria, metrics and the methodology on the identification of limitations.
+    2. Where applicable, a detailed description of the measures put in place for the purpose of conducting internal and/or external adversarial testing (e.g. red teaming), model adaptations, including alignment and fine-tuning.
+    3. Where applicable, a detailed description of the system architecture explaining how software components build or feed into each other and integrate into the overall processing.

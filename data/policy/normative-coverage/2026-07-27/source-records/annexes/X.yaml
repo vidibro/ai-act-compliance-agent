@@ -43,7 +43,7 @@ records:
   kind: applicability
   dependencies: *article111_dependency
 - norm_id: AIA-NORM-ANNEX-X-EURODAC
-  source: ANNEX-X-P008
+  source: ANNEX-X-P009
   quote: Regulation (EU) 2024/1358
   action: include Eurodac governed by Regulation (EU) 2024/1358 in the Annex X large-scale IT-system scope
   subject_ref: annex_x_large_scale_it_system
@@ -51,7 +51,7 @@ records:
   kind: applicability
   dependencies: *article111_dependency
 - norm_id: AIA-NORM-ANNEX-X-ENTRY-EXIT-SYSTEM
-  source: ANNEX-X-P009
+  source: ANNEX-X-P011
   quote: Regulation (EU) 2017/2226
   action: include the Entry/Exit System governed by Regulation (EU) 2017/2226 in the Annex X large-scale IT-system scope
   subject_ref: annex_x_large_scale_it_system
@@ -59,7 +59,7 @@ records:
   kind: applicability
   dependencies: *article111_dependency
 - norm_id: AIA-NORM-ANNEX-X-ETIAS
-  source: ANNEX-X-P011
+  source: ANNEX-X-P013
   quote: Regulation (EU) 2018/1240
   action: include ETIAS governed by Regulation (EU) 2018/1240 in the Annex X large-scale IT-system scope
   subject_ref: annex_x_large_scale_it_system
@@ -67,7 +67,7 @@ records:
   kind: applicability
   dependencies: *article111_dependency
 - norm_id: AIA-NORM-ANNEX-X-ETIAS-EUROPOL
-  source: ANNEX-X-P012
+  source: ANNEX-X-P014
   quote: Regulation (EU) 2018/1241
   action: include the ETIAS-related system governed by Regulation (EU) 2018/1241 in the Annex X large-scale IT-system scope
   subject_ref: annex_x_large_scale_it_system
@@ -75,7 +75,7 @@ records:
   kind: applicability
   dependencies: *article111_dependency
 - norm_id: AIA-NORM-ANNEX-X-ECRIS-TCN
-  source: ANNEX-X-P013
+  source: ANNEX-X-P016
   quote: Regulation (EU) 2019/816
   action: include ECRIS-TCN governed by Regulation (EU) 2019/816 in the Annex X large-scale IT-system scope
   subject_ref: annex_x_large_scale_it_system
@@ -83,7 +83,7 @@ records:
   kind: applicability
   dependencies: *article111_dependency
 - norm_id: AIA-NORM-ANNEX-X-INTEROPERABILITY-BORDERS-VISA
-  source: ANNEX-X-P015
+  source: ANNEX-X-P018
   quote: Regulation (EU) 2019/817
   action: include the borders-and-visa interoperability framework governed by Regulation (EU) 2019/817 in the Annex X large-scale IT-system scope
   subject_ref: annex_x_large_scale_it_system
@@ -91,7 +91,7 @@ records:
   kind: applicability
   dependencies: *article111_dependency
 - norm_id: AIA-NORM-ANNEX-X-INTEROPERABILITY-POLICE-ASYLUM-MIGRATION
-  source: ANNEX-X-P016
+  source: ANNEX-X-P019
   quote: Regulation (EU) 2019/818
   action: include the police, judicial-cooperation, asylum, and migration interoperability framework governed by Regulation (EU) 2019/818 in the Annex X large-scale IT-system scope
   subject_ref: annex_x_large_scale_it_system

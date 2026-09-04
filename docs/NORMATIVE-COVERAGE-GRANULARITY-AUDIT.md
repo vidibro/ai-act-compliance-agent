@@ -7,8 +7,11 @@ registers are applied. The unflagged-source semantic audit and independent appro
 
 ## Boundary and method
 
-The scanner visits all 133 documents and all 1,471 segments, including approved segments. It
-flags internal enumerations and multiple modal signals linked to at most one norm. Full text of
+The scanner visits all 133 documents and every segment, including approved ones. The audit ran
+against 1,471 segments; the corpus now partitions into 1,505 after a Formex rendering fix gave the
+numbered points of Annexes I, VII, VIII, X, XI and XIV their own lines. No enacted word changed —
+only spacing — but the finer partition is why two Annex VII rows below carry no historical decision.
+It flags internal enumerations and multiple modal signals linked to at most one norm. Full text of
 each flagged segment and its linked norm actions, subjects, kinds, content, conditions and
 exceptions were compared against the [atomicity contract](NORMATIVE-COVERAGE-SCOPE.md#atomicity-rules).
 This is a pinned-source comparison, not verification of the latest external legislation.
@@ -28,7 +31,7 @@ independently triggered notifications, optional Board powers summarised as dutie
 information missing the no-detriment/no-justification safeguards.
 
 Reproduce the live read-only candidate list, source hashes and full scan denominator (after the
-corrections below, 41 candidates remain; a disappearing signal is not independent norm approval):
+corrections below, 43 candidates remain; a disappearing signal is not independent norm approval):
 
 ```sh
 uv run python scripts/audit_norm_granularity.py --act-version 2026-07-27
@@ -141,6 +144,8 @@ for each row are listed by the scanner and in the segment's `norm_ids`.
 | AIA-TEXT-A101-P006 | expand | Keep one fine-amount determination, but enumerate nature/gravity/duration, proportionality/appropriateness and Article 93(3)/Article 56 commitments explicitly. |
 | AIA-TEXT-A101-P011 | retain | One implementing-act obligation with content and Article 98(2) adoption procedure. |
 | AIA-TEXT-A113-C | retain | Two route/date norms already exist; both now explicitly exclude Article 6(5). |
+| AIA-TEXT-ANNEX-VII-I3 | retain | New signal after the source re-render put points 3.1 to 3.4 on their own lines. Seven norms already carry the application, its content, assessment, maintenance, change examination and change notification; the enumeration is decomposed, not hidden. |
+| AIA-TEXT-ANNEX-VII-I4 | retain | Same detector sensitivity for point 4. Seventeen norms already cover the application, its content, assessment, certificate content, refusal, changes and surveillance. |
 | AIA-TEXT-ANNEX-VIII-A | expand | All 13 entries are retained exactly. Nevertheless item 13 is optional, item 12 contains a non-disclosure requirement, and some fields are conditional: they must not become 13 unconditional mandatory checks. **Applied:** the action records the conditional entries and the optional URL, and the non-disclosure requirement is now an explicit entry-12 exception. Section B's conditional entries are recorded the same way. The four Annex VIII segments remain `proposed`. |
 | AIA-TEXT-ANNEX-VIII-B | retain | Nine concrete fields, including conditional representative information, are retained exactly; no heading-only collapse. |
 | AIA-TEXT-ANNEX-VIII-C | retain | Five concrete fields are retained exactly, including the applicability qualifier for the data-protection impact assessment. |
@@ -232,7 +237,7 @@ Article 57's nine, Article 58's one, Article 60's two, Article 60a's one, Articl
 Article 67's two, Article 70's two, Article 71's two, Article 73's three, Article 74's
 three and Article 75's two, Article 75c's one, Article 77's one, Article 78's two, Article 79's two, Article 82's one, Article 85's one, Article 97's two, Article 99's one and Article 100's three split candidate
 segments no longer trigger the scanner, leaving 41 live signals. The current inventory has 1,487
-proposed norms and 1,471 segments. Implementation debt rose from 216 to 222 records: six
+proposed norms and 1,505 segments. Implementation debt rose from 216 to 222 records: six
 separated provider duties in Articles 60 and 61 are in-scope propositions that no existing rule
 covers, which the previous combined checklists concealed. Every other norm added since baseline
 either addresses an actor outside the supported reporting roles, states a no-product-action

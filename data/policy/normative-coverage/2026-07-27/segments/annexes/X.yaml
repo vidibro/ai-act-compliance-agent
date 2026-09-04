@@ -13,11 +13,23 @@ documents:
       disposition: context_only
       reason: Category heading for the Visa Information System instruments.
       verified_by: codex
+    P008:
+      disposition: context_only
+      reason: Category heading for the Eurodac instrument.
+      verified_by: codex
     P010:
+      disposition: context_only
+      reason: Category heading for the Entry/Exit System instrument.
+      verified_by: codex
+    P012:
       disposition: context_only
       reason: Category heading for the ETIAS instruments.
       verified_by: codex
-    P014:
+    P015:
+      disposition: context_only
+      reason: Category heading for the ECRIS-TCN instrument.
+      verified_by: codex
+    P017:
       disposition: context_only
       reason: Category heading for the interoperability instruments.
       verified_by: codex

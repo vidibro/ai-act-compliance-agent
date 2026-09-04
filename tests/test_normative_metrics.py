@@ -52,7 +52,7 @@ def test_inventory_partitions_the_complete_versioned_corpus(metrics):
     assert metrics.documents == 133
     assert metrics.documents_with_extracted_norms == 132
     assert metrics.documents_with_review_debt == 0
-    assert metrics.exact_source_characters == 394_667
+    assert metrics.exact_source_characters == 395_046
     assert set(metrics.norms_by_document) == {
         "annex I",
         "annex II",
@@ -1657,14 +1657,14 @@ def test_article_twenty_eight_is_complete_institutional_coverage():
 
 
 def test_inventory_cannot_be_misreported_as_independently_approved(metrics):
-    assert metrics.approved_characters == 390_556
+    assert metrics.approved_characters == 390_935
     assert metrics.needs_review_characters == 0
     assert metrics.review_statuses == {
-        "approved": 1467,
+        "approved": 1501,
         "proposed": 1491,
     }
     assert metrics.timed_review_records == 0
-    assert metrics.total_review_records == 2959
+    assert metrics.total_review_records == 2993
 
 
 def test_semantic_pass_finds_propositions_a_shall_scan_misses(metrics):
@@ -1677,7 +1677,7 @@ def test_semantic_pass_finds_propositions_a_shall_scan_misses(metrics):
 
 
 def test_metrics_expose_many_to_many_and_implementation_debt(metrics):
-    assert metrics.normative_segments_with_multiple_norms == 381
+    assert metrics.normative_segments_with_multiple_norms == 382
     assert metrics.mapping_shape.one_norm_to_one_target == 25
     assert metrics.mapping_shape.many_norms_to_one_target == 354
     assert metrics.mapping_shape.one_norm_to_many_targets == 0
@@ -4764,10 +4764,13 @@ def test_annex_one_extracts_each_harmonisation_instrument_and_its_uav_limit():
     }
 
     assert len(norms) == 21
-    assert {norm.primary_spans[0] for norm in norms.values()} == {
-        "AIA-TEXT-ANNEX-I-P001",
-        "AIA-TEXT-ANNEX-I-P002",
-    }
+    # One span per listed instrument, plus the Section A/B heading it is listed under.
+    section_a = {f"AIA-TEXT-ANNEX-I-P{n:03d}" for n in range(2, 14)}
+    section_b = {f"AIA-TEXT-ANNEX-I-P{n:03d}" for n in range(15, 24)}
+    assert {norm.primary_spans[0] for norm in norms.values()} == section_a | section_b
+    for norm in norms.values():
+        heading = "P001" if norm.primary_spans[0] in section_a else "P014"
+        assert norm.qualifier_spans == [f"AIA-TEXT-ANNEX-I-{heading}"]
     assert len(norms["AIA-NORM-ANNEX-I-20-UNMANNED-AIRCRAFT"].conditions) == 1
     assert all(norm.kind.value == "applicability" for norm in norms.values())
 
@@ -4869,7 +4872,7 @@ def test_annex_ten_extracts_twelve_large_scale_it_instruments():
         for segment in bundle.text_review.segments
         if segment.source.kind.value == "annex" and segment.source.document == "X"
     ]
-    assert sum(segment.disposition.value == "context_only" for segment in segments) == 4
+    assert sum(segment.disposition.value == "context_only" for segment in segments) == 7
 
 
 def test_annex_eleven_separates_general_and_systemic_risk_documentation():
@@ -4889,8 +4892,15 @@ def test_annex_eleven_separates_general_and_systemic_risk_documentation():
     testing = norms["AIA-NORM-ANNEX-XI-SECTION-2-ADVERSARIAL-TESTING-AND-ADAPTATIONS"]
     architecture = norms["AIA-NORM-ANNEX-XI-SECTION-2-SYSTEM-ARCHITECTURE"]
     systemic_risk = "the general-purpose AI model has systemic risk"
-    for norm in (evaluation, testing, architecture):
-        assert norm.primary_spans == ["AIA-TEXT-ANNEX-XI-P015"]
+    # Each item has its own span now that the source renders them as separate lines, and all three
+    # are qualified by the Section 2 heading that names the addressee and the systemic-risk gate.
+    for norm, span in (
+        (evaluation, "AIA-TEXT-ANNEX-XI-P019"),
+        (testing, "AIA-TEXT-ANNEX-XI-P020"),
+        (architecture, "AIA-TEXT-ANNEX-XI-P021"),
+    ):
+        assert norm.primary_spans == [span]
+        assert norm.qualifier_spans == ["AIA-TEXT-ANNEX-XI-P017", "AIA-TEXT-ANNEX-XI-P018"]
         assert norm.conditions[0] == systemic_risk
         assert norm.carried_by_norm_ids == ["AIA-NORM-A053-P1-A-ANNEX-XI-CONTENT"]
         assert norm.verification_mode.value == "judged_from_document"

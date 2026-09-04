@@ -4,7 +4,7 @@
 
 **Act version:** 2026-07-27
 
-The inventory contains 133 complete source-body partitions, 1471 exact segments, and 1487 proposed atomic norms. Every stored article and annex is present. Proposed
+The inventory contains 133 complete source-body partitions, 1505 exact segments, and 1487 proposed atomic norms. Every stored article and annex is present. Proposed
 norms have been extracted from 132 documents; the remaining
 work is retained explicitly rather than omitted. The inventory is not consumed by classification,
 rule selection, judging, or reporting.
@@ -1041,8 +1041,27 @@ rule selection, judging, or reporting.
 - AIA-TEXT-A113-D: 1
 - AIA-TEXT-A113-ENTRY: 1
 - AIA-TEXT-A113-GENERAL: 1
-- AIA-TEXT-ANNEX-I-P001: 12
-- AIA-TEXT-ANNEX-I-P002: 9
+- AIA-TEXT-ANNEX-I-P002: 1
+- AIA-TEXT-ANNEX-I-P003: 1
+- AIA-TEXT-ANNEX-I-P004: 1
+- AIA-TEXT-ANNEX-I-P005: 1
+- AIA-TEXT-ANNEX-I-P006: 1
+- AIA-TEXT-ANNEX-I-P007: 1
+- AIA-TEXT-ANNEX-I-P008: 1
+- AIA-TEXT-ANNEX-I-P009: 1
+- AIA-TEXT-ANNEX-I-P010: 1
+- AIA-TEXT-ANNEX-I-P011: 1
+- AIA-TEXT-ANNEX-I-P012: 1
+- AIA-TEXT-ANNEX-I-P013: 1
+- AIA-TEXT-ANNEX-I-P015: 1
+- AIA-TEXT-ANNEX-I-P016: 1
+- AIA-TEXT-ANNEX-I-P017: 1
+- AIA-TEXT-ANNEX-I-P018: 1
+- AIA-TEXT-ANNEX-I-P019: 1
+- AIA-TEXT-ANNEX-I-P020: 1
+- AIA-TEXT-ANNEX-I-P021: 1
+- AIA-TEXT-ANNEX-I-P022: 1
+- AIA-TEXT-ANNEX-I-P023: 1
 - AIA-TEXT-ANNEX-II-P002: 1
 - AIA-TEXT-ANNEX-II-P003: 1
 - AIA-TEXT-ANNEX-II-P004: 1
@@ -1104,30 +1123,32 @@ rule selection, judging, or reporting.
 - AIA-TEXT-ANNEX-X-P004: 1
 - AIA-TEXT-ANNEX-X-P006: 1
 - AIA-TEXT-ANNEX-X-P007: 1
-- AIA-TEXT-ANNEX-X-P008: 1
 - AIA-TEXT-ANNEX-X-P009: 1
 - AIA-TEXT-ANNEX-X-P011: 1
-- AIA-TEXT-ANNEX-X-P012: 1
 - AIA-TEXT-ANNEX-X-P013: 1
-- AIA-TEXT-ANNEX-X-P015: 1
+- AIA-TEXT-ANNEX-X-P014: 1
 - AIA-TEXT-ANNEX-X-P016: 1
-- AIA-TEXT-ANNEX-XI-P001: 1
-- AIA-TEXT-ANNEX-XI-P009: 1
-- AIA-TEXT-ANNEX-XI-P015: 3
+- AIA-TEXT-ANNEX-X-P018: 1
+- AIA-TEXT-ANNEX-X-P019: 1
+- AIA-TEXT-ANNEX-XI-P003: 1
+- AIA-TEXT-ANNEX-XI-P011: 1
+- AIA-TEXT-ANNEX-XI-P019: 1
+- AIA-TEXT-ANNEX-XI-P020: 1
+- AIA-TEXT-ANNEX-XI-P021: 1
 - AIA-TEXT-ANNEX-XII-P001: 1
 - AIA-TEXT-ANNEX-XIII-P001: 1
 - AIA-TEXT-ANNEX-XIII-P007: 1
-- AIA-TEXT-ANNEX-XIV-P002: 2
-- AIA-TEXT-ANNEX-XIV-P003: 14
-- AIA-TEXT-ANNEX-XIV-P004: 8
-- AIA-TEXT-ANNEX-XIV-P005: 1
+- AIA-TEXT-ANNEX-XIV-P003: 2
+- AIA-TEXT-ANNEX-XIV-P005: 14
+- AIA-TEXT-ANNEX-XIV-P007: 8
+- AIA-TEXT-ANNEX-XIV-P009: 1
 
-- Exact source characters partitioned: 394667
+- Exact source characters partitioned: 395046
 - Documents containing explicit review debt: 0
-- Characters displayed by the extraction pass: 394667
-- Independently approved characters: 390556
+- Characters displayed by the extraction pass: 395046
+- Independently approved characters: 390935
 - Characters deliberately left as review debt: 0
-- Normative segments supporting multiple propositions: 381
+- Normative segments supporting multiple propositions: 382
 - Semantic candidates a shall-token pass missed: 572
 - Shall-token candidate recall: 61.5%
 - In-scope semantic candidates absent from existing implementation: 241
@@ -1135,7 +1156,7 @@ rule selection, judging, or reporting.
 - Mapping shapes, by norm: one-to-one=25, many-to-one=354, one-to-many=0, many-to-many=15, unmapped=1093
 - Implementation debt candidates: 222
 - Interpretive links to non-binding guidance: 1
-- Review records with measured elapsed time: 0/2959
+- Review records with measured elapsed time: 0/2993
 
 ## Findings
 
@@ -1155,4 +1176,4 @@ rule selection, judging, or reporting.
 
 ## Review boundary
 
-Segment reviews covering 390556 source characters are independently approved. Approval applies to source coverage and segment dispositions; it does not by itself approve linked norm records. Remaining records are proposed findings or explicit `needs_review` debt. This report therefore does not claim legal completeness for the corpus.
+Segment reviews covering 390935 source characters are independently approved. Approval applies to source coverage and segment dispositions; it does not by itself approve linked norm records. Remaining records are proposed findings or explicit `needs_review` debt. This report therefore does not claim legal completeness for the corpus.

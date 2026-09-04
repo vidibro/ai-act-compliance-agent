@@ -23,8 +23,8 @@ def test_pinned_corpus_triage_is_documented_without_mutating_review():
     candidates = scan_granularity(bundle)
     assert bundle.model_dump() == before
     assert bundle.validated_documents == 133
-    assert len(bundle.text_review.segments) == 1471
-    assert len(candidates) == 41
+    assert len(bundle.text_review.segments) == 1505
+    assert len(candidates) == 43
 
     segments = {s.segment_id: s for s in bundle.text_review.segments}
     for candidate in candidates:

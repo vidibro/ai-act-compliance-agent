@@ -9,14 +9,15 @@ source: EUR-Lex Formex v4 XML (fmx4), Publications Office of the EU
 source_url: http://publications.europa.eu/resource/celex/02024R1689-20260727.ENG.fmx4
 authentic_pdf: https://eur-lex.europa.eu/legal-content/EN/TXT/PDF/?uri=CELEX:02024R1689-20260727
 act_version_date: 2026-07-27
-retrieved_at: 2026-08-20
-sha256: 890f090b05552d09565edcdd73f65f71e18ad6ebf64e7655b5626401362e3ec6
+retrieved_at: 2026-09-04
+sha256: 62f0aab9509df5d8c2c9ddb384d082276dde2a7040fcd8142c362a7375784575
 ---
 
 ANNEX VIII
 Information to be submitted upon the registration of high-risk AI systems in accordance with Article 49
 
-Section A — Information to be submitted by providers of high-risk AI systems in accordance with Article 49(1) The following information shall be provided and thereafter kept up to date with regard to high-risk AI systems to be registered in accordance with Article 49(1):
+Section A — Information to be submitted by providers of high-risk AI systems in accordance with Article 49(1)
+The following information shall be provided and thereafter kept up to date with regard to high-risk AI systems to be registered in accordance with Article 49(1):
     1. The name, address and contact details of the provider;
     2. Where submission of information is carried out by another person on behalf of the provider, the name, address and contact details of that person;
     3. The name, address and contact details of the authorised representative, where applicable;
@@ -30,7 +31,8 @@ Section A — Information to be submitted by providers of high-risk AI systems i
     11. A copy of the EU declaration of conformity referred to in Article 47;
     12. Electronic instructions for use; this information shall not be provided for high-risk AI systems in the areas of law enforcement or migration, asylum and border control management referred to in Annex III, points 1, 6 and 7;
     13. A URL for additional information (optional).
-Section B — Information to be submitted by providers of high-risk AI systems in accordance with Article 49(2) The following information shall be provided and thereafter kept up to date with regard to AI systems to be registered in accordance with Article 49(2):
+Section B — Information to be submitted by providers of high-risk AI systems in accordance with Article 49(2)
+The following information shall be provided and thereafter kept up to date with regard to AI systems to be registered in accordance with Article 49(2):
     1. The name, address and contact details of the provider;
     2. Where submission of information is carried out by another person on behalf of the provider, the name, address and contact details of that person;
     3. The name, address and contact details of the authorised representative, where applicable;
@@ -40,7 +42,8 @@ Section B — Information to be submitted by providers of high-risk AI systems i
     7. A short summary of the grounds on which the AI system is considered to be not-high-risk in application of the procedure under Article 6(3);
     8. The status of the AI system (on the market, or in service; no longer placed on the market/in service, recalled).
     9. Any Member States in which the AI system has been placed on the market, put into service or made available in the Union.
-Section C — Information to be submitted by deployers of high-risk AI systems in accordance with Article 49(3) The following information shall be provided and thereafter kept up to date with regard to high-risk AI systems to be registered in accordance with Article 49(3):
+Section C — Information to be submitted by deployers of high-risk AI systems in accordance with Article 49(3)
+The following information shall be provided and thereafter kept up to date with regard to high-risk AI systems to be registered in accordance with Article 49(3):
     1. The name, address and contact details of the deployer;
     2. The name, address and contact details of the person submitting information on behalf of the deployer;
     3. The URL of the entry of the AI system in the EU database by its provider;

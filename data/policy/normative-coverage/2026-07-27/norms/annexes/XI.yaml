@@ -15,10 +15,10 @@ norms:
   - shall_token
   - cross_reference_structure
   primary_spans:
-  - AIA-TEXT-ANNEX-XI-P001
-  qualifier_spans:
-  - AIA-TEXT-ANNEX-XI-P002
   - AIA-TEXT-ANNEX-XI-P003
+  qualifier_spans:
+  - AIA-TEXT-ANNEX-XI-P001
+  - AIA-TEXT-ANNEX-XI-P002
   - AIA-TEXT-ANNEX-XI-P004
   - AIA-TEXT-ANNEX-XI-P005
   - AIA-TEXT-ANNEX-XI-P006
@@ -30,6 +30,8 @@ norms:
   - AIA-TEXT-ANNEX-XI-P012
   - AIA-TEXT-ANNEX-XI-P013
   - AIA-TEXT-ANNEX-XI-P014
+  - AIA-TEXT-ANNEX-XI-P015
+  - AIA-TEXT-ANNEX-XI-P016
   effective_date_spans: []
   conditions: []
   exceptions: []
@@ -84,7 +86,7 @@ norms:
   - other_modal
   - existing_implementation
   primary_spans:
-  - AIA-TEXT-ANNEX-XI-P009
+  - AIA-TEXT-ANNEX-XI-P011
   qualifier_spans: []
   effective_date_spans: []
   conditions:
@@ -125,8 +127,10 @@ norms:
   - shall_token
   - cross_reference_structure
   primary_spans:
-  - AIA-TEXT-ANNEX-XI-P015
-  qualifier_spans: []
+  - AIA-TEXT-ANNEX-XI-P019
+  qualifier_spans:
+  - AIA-TEXT-ANNEX-XI-P017
+  - AIA-TEXT-ANNEX-XI-P018
   effective_date_spans: []
   conditions:
   - the general-purpose AI model has systemic risk
@@ -177,8 +181,10 @@ norms:
   - semantic_legal_effect
   - cross_reference_structure
   primary_spans:
-  - AIA-TEXT-ANNEX-XI-P015
-  qualifier_spans: []
+  - AIA-TEXT-ANNEX-XI-P020
+  qualifier_spans:
+  - AIA-TEXT-ANNEX-XI-P017
+  - AIA-TEXT-ANNEX-XI-P018
   effective_date_spans: []
   conditions:
   - the general-purpose AI model has systemic risk
@@ -224,8 +230,10 @@ norms:
   - semantic_legal_effect
   - cross_reference_structure
   primary_spans:
-  - AIA-TEXT-ANNEX-XI-P015
-  qualifier_spans: []
+  - AIA-TEXT-ANNEX-XI-P021
+  qualifier_spans:
+  - AIA-TEXT-ANNEX-XI-P017
+  - AIA-TEXT-ANNEX-XI-P018
   effective_date_spans: []
   conditions:
   - the general-purpose AI model has systemic risk
