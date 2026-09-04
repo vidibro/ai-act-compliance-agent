@@ -79,6 +79,13 @@ framed throughout as a **draft checklist for expert review, not a decision** (th
 > (`scripts/fetch_articles.py`), so ANY local divergence — including a stray whitespace edit — means
 > the file is no longer the fetched text and is refused. The hash covers the file body as written by
 > the fetch script, which is what keeps the generator and the loader agreeing on the same bytes.
+>
+> A hash binds a file to its own bytes, not to an act version, so it cannot detect a store rebuilt
+> from the wrong manifestation — the fetch script recomputes each hash from whatever it wrote.
+> `verify_manifestation` closes that gap before anything is written, refusing a Formex zip whose
+> layout (an OJ act ships `<ANNEX>` parts, a consolidation `<CONS.ANNEX>` elements) or whose article
+> and annex set does not match the version being fetched. Download caches are git-ignored: a cached
+> zip is one version's manifestation and must never be reused for another.
 
 ## Secret handling
 

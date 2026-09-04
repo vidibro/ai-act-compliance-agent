@@ -17,6 +17,8 @@ venv/
 .env
 .env.local
 
+.cache/
+
 # Local vector store / data artefacts (keep the directories, ignore contents)
 data/documents/*
 !data/documents/.gitkeep

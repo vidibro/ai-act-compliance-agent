@@ -51,7 +51,12 @@ Usage
 -----
     python scripts/fetch_articles.py                 # all articles
     python scripts/fetch_articles.py --articles 6,9,14,43
-    python scripts/fetch_articles.py --cache .cache/aiact.fmx.zip   # reuse a local download
+    python scripts/fetch_articles.py --version-date 2026-07-27 --cache .cache/aiact-2026-07-27.zip
+
+A cache holds ONE version's manifestation, so name the file after the version it came from and never
+share one between versions. `verify_manifestation` refuses a zip that is not the version being
+written — a cached download for another version used to rebuild the store from the wrong text with
+every integrity test still green, because each sha256 is recomputed from this script's own output.
 
 Standard library only — no third-party dependencies.
 """
@@ -346,6 +351,67 @@ def parse_articles(body_xml: bytes) -> dict[str, tuple[str, str]]:
     return articles
 
 
+def zip_layout(zip_bytes: bytes) -> str:
+    """Return "consolidated" if the zip carries <CONS.ANNEX> annexes, else "official-journal"."""
+    with zipfile.ZipFile(io.BytesIO(zip_bytes)) as zf:
+        for name in sorted(zf.namelist()):
+            if not name.endswith(".xml"):
+                continue
+            try:
+                root = ET.fromstring(zf.read(name))
+            except ET.ParseError:
+                continue
+            if next(root.iter("CONS.ANNEX"), None) is not None:
+                return "consolidated"
+    return "official-journal"
+
+
+def expected_layout(version: ActVersion) -> str:
+    return "consolidated" if version.celex.startswith("0") else "official-journal"
+
+
+def stored_ids(store_dir: Path, pattern: str) -> set[str]:
+    ids: set[str] = set()
+    for path in store_dir.glob(pattern.replace("{}", "*")):
+        m = re.fullmatch(pattern.replace("{}", r"(.+)"), path.name)
+        if m:
+            ids.add(m.group(1).lstrip("0") or "0")
+    return ids
+
+
+def verify_manifestation(
+    zip_bytes: bytes,
+    version: ActVersion,
+    version_date: str,
+    out_dir: Path,
+    annex_dir: Path,
+) -> None:
+    "Refuse a Formex zip that is not the requested version."
+    found, wanted = zip_layout(zip_bytes), expected_layout(version)
+    if found != wanted:
+        sys.exit(
+            f"Formex zip is a {found} manifestation, but act version {version_date} "
+            f"({version.celex}) is {wanted}. Refusing to write another version's text.\n"
+            f"Expected manifestation: {version.zip_url}"
+        )
+
+    articles = set(parse_articles(pick_body_xml(zip_bytes)))
+    annexes = set(parse_annexes(zip_bytes))
+    for label, parsed, stored in (
+        ("article", articles, stored_ids(out_dir, "article-{}.md")),
+        ("annex", annexes, stored_ids(annex_dir, "annex-{}.md")),
+    ):
+        lost = stored - parsed
+        if lost:
+            sys.exit(
+                f"Formex zip is missing {len(lost)} {label}(s) already stored for {version_date}: "
+                f"{', '.join(sorted(lost))}.\n"
+                f"That means the zip is not {version.celex} — a cached download for a different "
+                f"version, most likely. Delete the cache and re-fetch:\n"
+                f"  {version.zip_url}"
+            )
+
+
 def parse_annexes(zip_bytes: bytes) -> dict[str, tuple[str, str]]:
     """roman numeral -> (title, literal text).
 
@@ -480,6 +546,10 @@ def main() -> None:
             args.cache.parent.mkdir(parents=True, exist_ok=True)
             args.cache.write_bytes(zip_bytes)
 
+    out_dir = args.out_root / args.version_date
+    annex_dir = args.annex_root / args.version_date
+    verify_manifestation(zip_bytes, version, args.version_date, out_dir, annex_dir)
+
     articles = parse_articles(pick_body_xml(zip_bytes))
     print(f"Parsed {len(articles)} articles from Formex.")
 
@@ -488,7 +558,6 @@ def main() -> None:
     else:
         wanted = [x.strip() for x in args.articles.split(",") if x.strip()]
 
-    out_dir = args.out_root / args.version_date
     out_dir.mkdir(parents=True, exist_ok=True)
     written = skipped = missing = 0
     for n in wanted:
@@ -514,7 +583,6 @@ def main() -> None:
     # is the checklist Art. 11 points at. They are law, not appendix — stored on the same terms as
     # the articles so nothing is reasoned about from memory.
     annexes = parse_annexes(zip_bytes)
-    annex_dir = args.annex_root / args.version_date
     annex_dir.mkdir(parents=True, exist_ok=True)
     a_written = a_skipped = 0
     for roman in annexes:
