@@ -10,7 +10,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A091-P2-INITIATE-STRUCTURED-DIALOGUE
   source: A091-P002
   quote: Before sending the request for information, the AI Office may initiate a structured dialogue with the provider of the general-purpose AI model.
@@ -22,7 +22,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A091-P3-SCIENTIFIC-PANEL-INFORMATION-REQUEST
   source: A091-P003
   quote: the Commission may issue a request for information to a provider of a general-purpose AI model, where the access to information is necessary and proportionate for the fulfilment of the tasks of the scientific panel under Article 68(2).
@@ -34,7 +34,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A091-P4-INFORMATION-REQUEST-CONTENT
   source: A091-P004
   quote: The request for information shall state the legal basis and the purpose of the request, specify what information is required, set a period within which the information is to be provided, and indicate the fines provided for in Article 101 for supplying incorrect, incomplete or misleading information.
@@ -46,7 +46,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A091-P5-SUPPLY-REQUESTED-INFORMATION
   source: A091-P005
   quote: The provider of the general-purpose AI model concerned, or its representative shall supply the information requested.
@@ -54,7 +54,7 @@ records:
   subject_ref: gpai_provider_or_representative
   subject_category: supported_operator
   implementation_refs: [AIA-GP-A91-5]
-  verification_mode: listed_for_confirmation
+  verification_mode: reported_not_judged
 - norm_id: AIA-NORM-A091-P5-AUTHORISED-PERSON-SUPPLY
   source: A091-P005
   quote: the persons authorised to represent them by law or by their statutes, shall supply the information requested on behalf of the provider of the general-purpose AI model concerned.
@@ -65,7 +65,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A091-P5-LAWYER-SUPPLY-AND-CLIENT-RESPONSIBILITY
   source: A091-P005
   quote: Lawyers duly authorised to act may supply information on behalf of their clients. The clients shall nevertheless remain fully responsible if the information supplied is incomplete, incorrect or misleading.
@@ -77,4 +77,4 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported

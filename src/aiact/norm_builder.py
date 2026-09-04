@@ -466,7 +466,7 @@ def _resolved_verification(record: NormSourceRecord) -> VerificationMode:
         return record.verification_mode
     if record.product_scope is ProductScope.IN_SCOPE:
         return VerificationMode.UNRESOLVED
-    return VerificationMode.NOT_ASSESSED
+    return VerificationMode.NOT_REPORTED
 
 
 def _numbered_items(text: str) -> list[str]:

@@ -12,7 +12,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A036-P2-EXTENSION-PROCEDURES
   source: A036-P002
   quote: The procedures laid down in Articles 29 and 30 shall apply to extensions of the scope of the
@@ -25,7 +25,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A036-P2-OTHER-CHANGE-PROCEDURES
   source: A036-P003
   quote: For changes to the notification other than extensions of its scope, the procedures laid down
@@ -38,7 +38,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A036-P3-CEASING-BODY-NOTICE
   source: A036-P004
   quote: Where a notified body decides to cease its conformity assessment activities, it shall inform
@@ -52,7 +52,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
   conditions:
   - the notified body decides to cease conformity-assessment activities
 - norm_id: AIA-NORM-A036-P3-NINE-MONTH-CERTIFICATE-VALIDITY
@@ -69,7 +69,7 @@ records:
   product_scope_reason: Defines certificate validity rather than an operator compliance action.
   implementation_mode: none_required
   implementation_reason: No independent product action is required.
-  verification_mode: not_assessed
+  verification_mode: not_reported
   conditions:
   - another notified body confirms in writing that it assumes responsibility for the covered systems
 - norm_id: AIA-NORM-A036-P3-REPLACEMENT-ASSESSMENT
@@ -83,7 +83,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A036-P3-WITHDRAW-DESIGNATION
   source: A036-P004
   quote: Where the notified body has ceased its activity, the notifying authority shall withdraw the designation.
@@ -94,7 +94,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A036-P4-INVESTIGATE-FAILURE
   source: A036-P005
   quote: Where a notifying authority has sufficient reason to consider that a notified body no longer
@@ -108,7 +108,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A036-P4-INFORM-OBJECTIONS
   source: A036-P005
   quote: In that context, it shall inform the notified body concerned about the objections raised and
@@ -120,7 +120,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A036-P4-OPPORTUNITY-TO-RESPOND
   source: A036-P005
   quote: In that context, it shall inform the notified body concerned about the objections raised and
@@ -133,7 +133,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A036-P4-CORRECT-DESIGNATION
   source: A036-P005
   quote: If the notifying authority comes to the conclusion that the notified body no longer meets the
@@ -148,7 +148,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A036-P4-INFORM-COMMISSION-AND-STATES
   source: A036-P005
   quote: It shall immediately inform the Commission and the other Member States accordingly.
@@ -159,7 +159,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A036-P5-INFORM-PROVIDERS
   source: A036-P006
   quote: Where its designation has been suspended, restricted, or fully or partially withdrawn, the notified
@@ -171,7 +171,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A036-P6-PRESERVE-FILES
   source: A036-P007
   quote: In the event of the restriction, suspension or withdrawal of a designation, the notifying authority
@@ -185,7 +185,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A036-P6-MAKE-FILES-AVAILABLE
   source: A036-P007
   quote: In the event of the restriction, suspension or withdrawal of a designation, the notifying authority
@@ -200,7 +200,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A036-P7-A-ASSESS-CERTIFICATE-IMPACT
   source: A036-P009
   quote: assess the impact on the certificates issued by the notified body
@@ -211,7 +211,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
   qualifier_spans:
   - A036-P008
 - norm_id: AIA-NORM-A036-P7-B-REPORT-FINDINGS
@@ -226,7 +226,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
   qualifier_spans:
   - A036-P008
 - norm_id: AIA-NORM-A036-P7-C-CORRECT-UNDUE-CERTIFICATES
@@ -242,7 +242,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
   qualifier_spans:
   - A036-P008
 - norm_id: AIA-NORM-A036-P7-D-INFORM-CERTIFICATE-MEASURES
@@ -257,7 +257,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
   qualifier_spans:
   - A036-P008
 - norm_id: AIA-NORM-A036-P7-E-PROVIDE-CERTIFICATE-INFORMATION
@@ -273,7 +273,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
   qualifier_spans:
   - A036-P008
 - norm_id: AIA-NORM-A036-P7-E-MITIGATE-RISK
@@ -288,7 +288,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
   qualifier_spans:
   - A036-P008
 - norm_id: AIA-NORM-A036-P8-SUSPENSION-CERTIFICATE-VALIDITY
@@ -304,7 +304,7 @@ records:
   product_scope_reason: Defines certificate validity rather than an operator compliance action.
   implementation_mode: none_required
   implementation_reason: No independent product action is required.
-  verification_mode: not_assessed
+  verification_mode: not_reported
   qualifier_spans:
   - A036-P015
   - A036-P016
@@ -342,7 +342,7 @@ records:
   product_scope_reason: Defines certificate validity rather than an operator compliance action.
   implementation_mode: none_required
   implementation_reason: No independent product action is required.
-  verification_mode: not_assessed
+  verification_mode: not_reported
   qualifier_spans:
   - A036-P018
   - A036-P019
@@ -365,7 +365,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A036-P9-INFORM-STAKEHOLDERS
   source: A036-P021
   quote: The national competent authority or the notified body assuming the functions of the notified
@@ -379,4 +379,4 @@ records:
   product_scope_reason: The present product does not report compliance for these addressees.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported

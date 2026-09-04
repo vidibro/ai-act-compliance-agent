@@ -10,7 +10,7 @@ records:
   subject_category: supported_operator
   implementation_refs: &id001
   - AIA-DP-A26
-  verification_mode: listed_for_confirmation
+  verification_mode: reported_not_judged
 - norm_id: AIA-NORM-A026-P2-HUMAN-OVERSIGHT-ASSIGNMENT
   source: A026-P2
   quote: Deployers shall assign human oversight to natural persons who have the necessary competence,
@@ -19,7 +19,7 @@ records:
   subject_ref: deployer
   subject_category: supported_operator
   implementation_refs: *id001
-  verification_mode: listed_for_confirmation
+  verification_mode: reported_not_judged
   mandatory_content:
   - necessary competence
   - necessary training
@@ -38,7 +38,7 @@ records:
     action.
   implementation_mode: none_required
   implementation_reason: The preserved obligations are represented as external legal dependencies.
-  verification_mode: not_assessed
+  verification_mode: not_reported
   dependencies:
   - dependency_ref: other applicable deployer obligations under Union or national law
     resolution: external_recorded
@@ -57,7 +57,7 @@ records:
     an independent finding.
   implementation_mode: none_required
   implementation_reason: The freedom qualifies implementation of the mapped human-oversight duty.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A026-P4-INPUT-DATA-QUALITY
   source: A026-P4
   quote: to the extent the deployer exercises control over the input data, that deployer shall ensure
@@ -70,7 +70,7 @@ records:
   conditions:
   - the deployer exercises control over the input data
   implementation_refs: *id001
-  verification_mode: listed_for_confirmation
+  verification_mode: reported_not_judged
 - norm_id: AIA-NORM-A026-P5-MONITOR
   source: A026-P5
   quote: Deployers shall monitor the operation of the high-risk AI system
@@ -79,7 +79,7 @@ records:
   subject_category: supported_operator
   implementation_refs:
   - AIA-DP-A26
-  verification_mode: listed_for_confirmation
+  verification_mode: reported_not_judged
 - norm_id: AIA-NORM-A026-P5-INFORM-PROVIDER
   source: A026-P5
   quote: Deployers shall monitor the operation of the high-risk AI system on the basis of the instructions
@@ -89,7 +89,7 @@ records:
   subject_category: supported_operator
   implementation_refs:
   - AIA-DP-A26
-  verification_mode: listed_for_confirmation
+  verification_mode: reported_not_judged
 - norm_id: AIA-NORM-A026-P5-RISK-NOTIFY
   source: A026-P5
   quote: they shall, without undue delay, inform the provider or distributor and the relevant market surveillance
@@ -99,7 +99,7 @@ records:
   subject_category: supported_operator
   implementation_refs:
   - AIA-DP-A26
-  verification_mode: listed_for_confirmation
+  verification_mode: reported_not_judged
 - norm_id: AIA-NORM-A026-P5-SUSPEND
   source: A026-P5
   quote: shall suspend the use of that system
@@ -108,7 +108,7 @@ records:
   subject_category: supported_operator
   implementation_refs:
   - AIA-DP-A26
-  verification_mode: listed_for_confirmation
+  verification_mode: reported_not_judged
 - norm_id: AIA-NORM-A026-P5-INCIDENT
   source: A026-P5
   quote: they shall also immediately inform first the provider, and then the importer or distributor and
@@ -118,7 +118,7 @@ records:
   subject_category: supported_operator
   implementation_refs:
   - AIA-DP-A26
-  verification_mode: listed_for_confirmation
+  verification_mode: reported_not_judged
 - norm_id: AIA-NORM-A026-P5-FALLBACK
   source: A026-P5
   quote: If the deployer is not able to reach the provider, Article 73 shall apply mutatis mutandis.
@@ -128,7 +128,7 @@ records:
   kind: applicability
   implementation_refs:
   - AIA-DP-A26
-  verification_mode: listed_for_confirmation
+  verification_mode: reported_not_judged
 - norm_id: AIA-NORM-A026-P5-SENSITIVE
   source: A026-P5
   quote: This obligation shall not cover sensitive operational data
@@ -159,7 +159,7 @@ records:
   conditions: &id002
   - the automatically generated logs are under the deployer's control
   implementation_refs: *id001
-  verification_mode: listed_for_confirmation
+  verification_mode: reported_not_judged
 - norm_id: AIA-NORM-A026-P6-PURPOSE-APPROPRIATE-PERIOD
   source: A026-P6
   quote: for a period appropriate to the intended purpose of the high-risk AI system
@@ -168,7 +168,7 @@ records:
   subject_category: supported_operator
   conditions: *id002
   implementation_refs: *id001
-  verification_mode: listed_for_confirmation
+  verification_mode: reported_not_judged
 - norm_id: AIA-NORM-A026-P6-SIX-MONTH-MINIMUM
   source: A026-P6
   quote: of at least six months
@@ -177,7 +177,7 @@ records:
   subject_category: supported_operator
   conditions: *id002
   implementation_refs: *id001
-  verification_mode: listed_for_confirmation
+  verification_mode: reported_not_judged
 - norm_id: AIA-NORM-A026-P6-OTHER-LAW-PERIOD
   source: A026-P6
   quote: unless provided otherwise in applicable Union or national law, in particular in Union law on
@@ -204,7 +204,7 @@ records:
   - the deployer is a financial institution subject to internal-governance requirements under Union financial-services
     law
   implementation_refs: *id001
-  verification_mode: listed_for_confirmation
+  verification_mode: reported_not_judged
 - norm_id: AIA-NORM-A026-P7-INFORM-WORKERS
   source: A026-P7
   quote: "Before putting into service or using a high-risk AI system at the workplace, deployers who are\
@@ -217,7 +217,7 @@ records:
   conditions:
   - the deployer is an employer putting the high-risk system into service or using it at the workplace
   implementation_refs: *id001
-  verification_mode: listed_for_confirmation
+  verification_mode: reported_not_judged
 - norm_id: AIA-NORM-A026-P7-FOLLOW-WORKER-INFORMATION-RULES
   source: A026-P7
   quote: This information shall be provided, where applicable, in accordance with the rules and procedures
@@ -245,7 +245,7 @@ records:
   - the deployer is a public authority or a Union institution, body, office, or agency
   implementation_refs: &id003
   - AIA-DP-A26-8
-  verification_mode: listed_for_confirmation
+  verification_mode: reported_not_judged
 - norm_id: AIA-NORM-A026-P8-DO-NOT-USE-UNREGISTERED
   source: A026-P8
   quote: When such deployers find that the high-risk AI system that they envisage using has not been registered
@@ -258,7 +258,7 @@ records:
   - the deployer satisfies the Article 26(8) public-authority or Union-body condition
   - the envisaged system is not registered in the Article 71 EU database
   implementation_refs: *id003
-  verification_mode: listed_for_confirmation
+  verification_mode: reported_not_judged
 - norm_id: AIA-NORM-A026-P8-INFORM-UNREGISTERED
   source: A026-P8
   quote: shall inform the provider or the distributor
@@ -267,7 +267,7 @@ records:
   subject_category: supported_operator
   conditions: *id004
   implementation_refs: *id003
-  verification_mode: listed_for_confirmation
+  verification_mode: reported_not_judged
 - norm_id: AIA-NORM-A026-P9-USE-ARTICLE-13-IN-DPIA
   source: A026-P9
   quote: Where applicable, deployers of high-risk AI systems shall use the information provided under
@@ -280,7 +280,7 @@ records:
   - the deployer owes a DPIA under Article 35 GDPR or Article 27 of Directive (EU) 2016/680
   implementation_refs:
   - AIA-DP-A26-9
-  verification_mode: listed_for_confirmation
+  verification_mode: reported_not_judged
   dependencies:
   - dependency_ref: AIA-NORM-A013-P2-PROVIDE-INSTRUCTIONS
     resolution: internal_resolved
@@ -320,7 +320,7 @@ records:
   - initial identification of a potential suspect based on objective and verifiable facts directly linked
     to the offence
   implementation_refs: *id005
-  verification_mode: listed_for_confirmation
+  verification_mode: reported_not_judged
 - norm_id: AIA-NORM-A026-P10-STRICT-NECESSITY
   source: A026-P10
   quote: Each use shall be limited to what is strictly necessary for the investigation of a specific criminal
@@ -331,7 +331,7 @@ records:
   subject_category: supported_operator
   conditions: *id006
   implementation_refs: *id005
-  verification_mode: listed_for_confirmation
+  verification_mode: reported_not_judged
 - norm_id: AIA-NORM-A026-P10-STOP-ON-REJECTION
   source: A026-P10
   quote: If the authorisation requested pursuant to the first subparagraph is rejected, the use of the
@@ -343,7 +343,7 @@ records:
   conditions: &id007
   - the requested authorisation is rejected
   implementation_refs: *id005
-  verification_mode: listed_for_confirmation
+  verification_mode: reported_not_judged
 - norm_id: AIA-NORM-A026-P10-DELETE-ON-REJECTION
   source: A026-P10
   quote: the personal data linked to the use of the high-risk AI system for which the authorisation was
@@ -353,7 +353,7 @@ records:
   subject_category: supported_operator
   conditions: *id007
   implementation_refs: *id005
-  verification_mode: listed_for_confirmation
+  verification_mode: reported_not_judged
 - norm_id: AIA-NORM-A026-P10-PROHIBIT-UNTARGETED-USE
   source: A026-P10
   quote: In no case shall such high-risk AI system for post-remote biometric identification be used for
@@ -366,7 +366,7 @@ records:
   subject_category: supported_operator
   kind: prohibition
   implementation_refs: *id005
-  verification_mode: listed_for_confirmation
+  verification_mode: reported_not_judged
 - norm_id: AIA-NORM-A026-P10-NO-SOLE-OUTPUT-ADVERSE-DECISION
   source: A026-P10
   quote: It shall be ensured that no decision that produces an adverse legal effect on a person may be
@@ -378,7 +378,7 @@ records:
   subject_category: supported_operator
   kind: prohibition
   implementation_refs: *id005
-  verification_mode: listed_for_confirmation
+  verification_mode: reported_not_judged
 - norm_id: AIA-NORM-A026-P10-PRESERVE-BIOMETRIC-DATA-LAW
   source: A026-P10
   quote: This paragraph is without prejudice to Article 9 of Regulation (EU) 2016/679 and Article 10 of
@@ -402,7 +402,7 @@ records:
   subject_ref: post_remote_biometric_deployer
   subject_category: supported_operator
   implementation_refs: *id005
-  verification_mode: listed_for_confirmation
+  verification_mode: reported_not_judged
 - norm_id: AIA-NORM-A026-P10-MAKE-FILE-AVAILABLE
   source: A026-P10
   quote: shall be made available to the relevant market surveillance authority and the national data protection
@@ -414,7 +414,7 @@ records:
   conditions:
   - either specified authority requests the use record
   implementation_refs: *id005
-  verification_mode: listed_for_confirmation
+  verification_mode: reported_not_judged
 - norm_id: AIA-NORM-A026-P10-FILE-SENSITIVE-DATA-EXCLUSION
   source: A026-P10
   quote: excluding the disclosure of sensitive operational data related to law enforcement
@@ -446,7 +446,7 @@ records:
   subject_ref: post_remote_biometric_deployer
   subject_category: supported_operator
   implementation_refs: *id005
-  verification_mode: listed_for_confirmation
+  verification_mode: reported_not_judged
   mandatory_content:
   - report to the relevant market-surveillance authority
   - report to the national data-protection authority
@@ -481,7 +481,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A026-P11-PRESERVE-ARTICLE-50
   source: A026-P11
   quote: Without prejudice to Article 50 of this Regulation
@@ -505,7 +505,7 @@ records:
   exceptions:
   - law-enforcement use follows Article 13 of Directive (EU) 2016/680
   implementation_refs: *id008
-  verification_mode: listed_for_confirmation
+  verification_mode: reported_not_judged
 - norm_id: AIA-NORM-A026-P11-LAW-ENFORCEMENT-NOTICE
   source: A026-P11
   quote: For high-risk AI systems used for law enforcement purposes Article 13 of Directive (EU) 2016/680
@@ -531,4 +531,4 @@ records:
   subject_category: supported_operator
   implementation_refs:
   - AIA-DP-A26-12
-  verification_mode: listed_for_confirmation
+  verification_mode: reported_not_judged

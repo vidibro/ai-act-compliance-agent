@@ -12,7 +12,7 @@ records:
   subject_category: supported_operator
   implementation_refs:
   - AIA-PO-A43-1
-  verification_mode: listed_for_confirmation
+  verification_mode: reported_not_judged
 - norm_id: AIA-NORM-A043-P1-REQUIRED-ANNEX-VII-ROUTE
   source: A043-P1
   quote: the provider shall follow the conformity assessment procedure set out in Annex VII where
@@ -22,7 +22,7 @@ records:
   subject_category: supported_operator
   implementation_refs:
   - AIA-PO-A43-1B
-  verification_mode: listed_for_confirmation
+  verification_mode: reported_not_judged
   conditions:
   - operator: all_of
     operands:
@@ -53,7 +53,7 @@ records:
   kind: permission
   implementation_refs:
   - AIA-PO-A43-1B
-  verification_mode: listed_for_confirmation
+  verification_mode: reported_not_judged
 - norm_id: AIA-NORM-A043-P1-AUTHORITY-AS-NOTIFIED-BODY
   source: A043-P1
   quote: where the high-risk AI system is intended to be put into service by law enforcement, immigration
@@ -71,7 +71,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A043-P2-INTERNAL-CONTROL
   source: A043-P2
   quote: For high-risk AI systems referred to in points 2 to 8 of Annex III, providers shall follow the
@@ -83,7 +83,7 @@ records:
   subject_category: supported_operator
   implementation_refs:
   - AIA-PO-A43-2
-  verification_mode: listed_for_confirmation
+  verification_mode: reported_not_judged
 - norm_id: AIA-NORM-A043-P3-PROCEDURE
   source: A043-P3
   quote: shall follow the relevant conformity assessment procedure
@@ -92,7 +92,7 @@ records:
   subject_category: supported_operator
   implementation_refs:
   - AIA-PO-A43-3
-  verification_mode: listed_for_confirmation
+  verification_mode: reported_not_judged
 - norm_id: AIA-NORM-A043-P3-SECTION2
   source: A043-P3
   quote: shall be part of that assessment
@@ -101,7 +101,7 @@ records:
   subject_category: supported_operator
   implementation_refs:
   - AIA-PO-A43-3
-  verification_mode: listed_for_confirmation
+  verification_mode: reported_not_judged
 - norm_id: AIA-NORM-A043-P3-QMS
   source: A043-P3
   quote: Assessment of the quality management system set out in Article 17 shall also be undertaken
@@ -110,7 +110,7 @@ records:
   subject_category: supported_operator
   implementation_refs:
   - AIA-PO-A43-3
-  verification_mode: listed_for_confirmation
+  verification_mode: reported_not_judged
 - norm_id: AIA-NORM-A043-P3-ANNEXVII
   source: A043-P3
   quote: points 3, 4.3, 4.4. and 4.5, the fifth paragraph of point 4.6 and point 5 of Annex VII shall
@@ -120,7 +120,7 @@ records:
   subject_category: supported_operator
   implementation_refs:
   - AIA-PO-A43-3
-  verification_mode: listed_for_confirmation
+  verification_mode: reported_not_judged
   dependencies:
   - dependency_ref: AIA-TEXT-ANNEX-VII-I3
     resolution: internal_resolved
@@ -142,7 +142,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A043-P3-DESIGNATE
   source: A043-P3
   quote: shall apply for designation in accordance with Section 4 of this Chapter by 28 January 2028
@@ -153,7 +153,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A043-P3-OPTION
   source: A043-P3
   quote: that manufacturer may use that option only if it has also applied harmonised standards
@@ -163,7 +163,7 @@ records:
   kind: permission
   implementation_refs:
   - AIA-PO-A43-3
-  verification_mode: listed_for_confirmation
+  verification_mode: reported_not_judged
 - norm_id: AIA-NORM-A043-P3-NO-EFFECT
   source: A043-P3
   quote: does not affect the choice of the conformity assessment procedure
@@ -175,7 +175,7 @@ records:
   product_scope_reason: This proposition supplies applicability or content to operator norms.
   implementation_mode: none_required
   implementation_reason: Represented as a dependency rather than an independent finding.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A043-P3-NO-THIRD-PARTY
   source: A043-P3
   quote: are not required to choose a conformity assessment procedure involving third-party conformity
@@ -188,7 +188,7 @@ records:
   product_scope_reason: This proposition supplies applicability or content to operator norms.
   implementation_mode: none_required
   implementation_reason: Represented as a dependency rather than an independent finding.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A043-P3-DUAL
   source: A043-P3
   quote: shall follow the relevant conformity assessment procedure as required pursuant to the relevant
@@ -198,7 +198,7 @@ records:
   subject_category: supported_operator
   implementation_refs:
   - AIA-PO-A43-3
-  verification_mode: listed_for_confirmation
+  verification_mode: reported_not_judged
 - norm_id: AIA-NORM-A043-P4-NEW-ASSESSMENT
   source: A043-P4
   quote: High-risk AI systems that have already been subject to a conformity assessment procedure shall
@@ -211,7 +211,7 @@ records:
   subject_category: supported_operator
   implementation_refs:
   - AIA-PO-A43-4
-  verification_mode: listed_for_confirmation
+  verification_mode: reported_not_judged
 - norm_id: AIA-NORM-A043-P4-PREDETERMINED-CHANGE-EXCLUSION
   source: A043-P4
   quote: For high-risk AI systems that continue to learn after being placed on the market or put into
@@ -227,7 +227,7 @@ records:
   product_scope_reason: This proposition supplies applicability to the new-assessment obligation.
   implementation_mode: none_required
   implementation_reason: Represented as a dependency rather than an independent finding.
-  verification_mode: not_assessed
+  verification_mode: not_reported
   conditions:
   - the continuing-learning change and performance effect was predetermined at initial conformity assessment
   - the change is included in Annex IV point 2(f) technical documentation
@@ -242,7 +242,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A043-P6-AMEND
   source: A043-P6
   quote: The Commission is empowered to adopt delegated acts
@@ -254,7 +254,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A043-P6-DELEGATED-ACT-CRITERIA
   source: A043-P6
   quote: The Commission shall adopt such delegated acts taking into account the effectiveness of the conformity
@@ -269,7 +269,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
   mandatory_content:
   - Annex VI internal-control effectiveness in preventing or minimising health, safety, and fundamental-rights
     risks

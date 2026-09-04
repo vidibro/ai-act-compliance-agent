@@ -13,7 +13,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
   qualifier_spans:
   - A041-P002
   - A041-P003
@@ -48,7 +48,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A041-P1-EXAMINATION-PROCEDURE
   source: A041-P009
   quote: The implementing acts referred to in the first subparagraph of this paragraph shall be adopted
@@ -60,7 +60,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A041-P2-INFORM-STANDARDISATION-COMMITTEE
   source: A041-P010
   quote: Before preparing a draft implementing act, the Commission shall inform the committee referred
@@ -74,7 +74,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A041-P3-COMMON-SPECIFICATION-PRESUMPTION
   source: A041-P011
   quote: High-risk AI systems or general-purpose AI models which are in conformity with the common specifications
@@ -104,7 +104,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A041-P4-REPEAL-OVERLAPPING-SPECIFICATION
   source: A041-P012
   quote: When reference to a harmonised standard is published in the Official Journal of the European
@@ -118,7 +118,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A041-P5-JUSTIFY-EQUIVALENT-SOLUTIONS
   source: A041-P013
   quote: Where providers of high-risk AI systems or general-purpose AI models do not comply with the common
@@ -145,7 +145,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A041-P6-ASSESS-DEFICIENCY-INFORMATION
   source: A041-P014
   quote: The Commission shall assess that information and, if appropriate, amend the implementing act
@@ -157,7 +157,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A041-P6-AMEND-COMMON-SPECIFICATION
   source: A041-P014
   quote: The Commission shall assess that information and, if appropriate, amend the implementing act
@@ -169,4 +169,4 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported

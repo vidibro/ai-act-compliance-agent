@@ -9,7 +9,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A075C-P2-COMMUNICATE-PRELIMINARY-FINDINGS
   source: A075C-P002
   quote: the AI Office shall communicate its preliminary findings to the operator concerned
@@ -20,7 +20,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A075C-P2-EXPLAIN-CONTEMPLATED-MEASURES
   source: A075C-P002
   quote: the AI Office shall explain the measures that it is considering taking
@@ -31,7 +31,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A075C-P3-ORDER-COMPLIANCE-MEASURES
   source: A075C-P003
   quote: the AI Office shall, where relevant, order the operator concerned to take the necessary measures
@@ -42,7 +42,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A075C-P3-DESCRIBE-IMPLEMENTED-MEASURES
   source: A075C-P003
   quote: The operator concerned shall provide the AI Office with a description of the measures it has taken
@@ -53,7 +53,7 @@ records:
   product_scope_reason: This is an enforcement-response duty for a supported operator.
   implementation_mode: missing
   implementation_reason: No current rule represents this post-decision reporting duty.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A075C-P3-STRUCTURED-DIALOGUE
   source: A075C-P003
   quote: the AI Office may engage in a structured dialogue with the operator
@@ -65,7 +65,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A075C-P3-PROPOSE-COMMITMENTS
   source: A075C-P003
   quote: the operator may propose commitments in accordance with Article 75b
@@ -77,7 +77,7 @@ records:
   product_scope_reason: This is an optional procedural opportunity rather than a standing compliance duty.
   implementation_mode: none_required
   implementation_reason: No independent product action arises.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A075C-P4-IMPOSE-PENALTIES
   source: A075C-P004
   quote: may be accompanied by the imposition of penalties in accordance with Article 99(3) to (7)
@@ -89,7 +89,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A075C-P4-ARTICLE99-4-FINES
   source: A075C-P005
   quote: shall be subject to administrative fines as referred to in Article 99(4)
@@ -103,7 +103,7 @@ records:
   product_scope_reason: This is an enforcement consequence rather than an independent product action.
   implementation_mode: none_required
   implementation_reason: No independent product action arises.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A075C-P4-INFORMATION-FINE
   source: A075C-P009
   quote: shall be subject to administrative fines as referred to in Article 99(5)
@@ -115,7 +115,7 @@ records:
   product_scope_reason: This is an enforcement consequence rather than an independent product action.
   implementation_mode: none_required
   implementation_reason: No independent product action arises.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A075C-P5-IMPOSE-PERIODIC-PENALTIES
   source: A075C-P010
   quote: The AI Office may adopt a decision imposing periodic penalty payments
@@ -129,7 +129,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A075C-P5-PENALTY-PAYMENT-LIMITS
   source: A075C-P018
   quote: Those penalty payments shall be effective and proportionate
@@ -140,7 +140,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A075C-P5-PENALTY-PAYMENT-CEILING
   source: A075C-P018
   quote: and, where applicable, shall not exceed 5 % of the average daily income or worldwide annual turnover in the preceding financial year per day, calculated from the date appointed by the decision.
@@ -160,7 +160,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A075C-P6-JUDICIAL-REVIEW
   source: A075C-P019
   quote: shall have unlimited jurisdiction to review decisions of the AI Office
@@ -172,7 +172,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A075C-P7-ALLOCATE-FINE-FUNDS
   source: A075C-P020
   quote: shall contribute to the general budget of the Union
@@ -184,7 +184,7 @@ records:
   product_scope_reason: This institutional consequence is outside the supported operator surface.
   implementation_mode: none_required
   implementation_reason: No product implementation is required.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A075C-P8-FIVE-YEAR-INFRINGEMENT-LIMIT
   source: A075C-P021
   quote: shall be subject to a limitation period of five years
@@ -196,7 +196,7 @@ records:
   product_scope_reason: This institutional consequence is outside the supported operator surface.
   implementation_mode: none_required
   implementation_reason: No product implementation is required.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A075C-P8-FIVE-YEAR-DECISION-LIMIT
   source: A075C-P022
   quote: shall be subject to a limitation period of five years
@@ -208,7 +208,7 @@ records:
   product_scope_reason: This institutional consequence is outside the supported operator surface.
   implementation_mode: none_required
   implementation_reason: No product implementation is required.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A075C-P8-SPECIFY-LIMITATION-PERIODS
   source: A075C-P023
   quote: shall specify the first and second subparagraphs of this paragraph
@@ -219,7 +219,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A075C-P9-CLOSE-PROCEEDING
   source: A075C-P024
   quote: it shall close the proceeding by a decision
@@ -230,4 +230,4 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported

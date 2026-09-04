@@ -11,7 +11,7 @@ records:
   - "the automatically generated logs are under the provider\u2019s control"
   implementation_refs: &id001
   - AIA-PO-A19
-  verification_mode: listed_for_confirmation
+  verification_mode: reported_not_judged
   dependencies:
   - dependency_ref: AIA-NORM-A012-P1-AUTOMATIC-LOGGING
     resolution: internal_resolved
@@ -27,7 +27,7 @@ records:
   conditions:
   - "the automatically generated logs are under the provider\u2019s control"
   implementation_refs: *id001
-  verification_mode: listed_for_confirmation
+  verification_mode: reported_not_judged
 - norm_id: AIA-NORM-A019-P1-SIX-MONTH-MINIMUM
   source: A019-P001
   quote: the logs shall be kept for a period appropriate to the intended purpose of the high-risk AI system,
@@ -39,7 +39,7 @@ records:
   conditions:
   - "the automatically generated logs are under the provider\u2019s control"
   implementation_refs: *id001
-  verification_mode: listed_for_confirmation
+  verification_mode: reported_not_judged
 - norm_id: AIA-NORM-A019-P1-OTHER-LAW-PERIOD
   source: A019-P001
   quote: unless provided otherwise in the applicable Union or national law, in particular in Union law
@@ -66,4 +66,4 @@ records:
   - the provider is a financial institution subject to internal-governance requirements under Union financial-services
     law
   implementation_refs: *id001
-  verification_mode: listed_for_confirmation
+  verification_mode: reported_not_judged

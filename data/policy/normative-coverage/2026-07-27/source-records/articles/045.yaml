@@ -10,7 +10,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
   qualifier_spans:
   - A045-P002
   - A045-P003
@@ -37,7 +37,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
   qualifier_spans:
   - A045-P006
   conditions:
@@ -56,7 +56,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
   qualifier_spans:
   - A045-P008
   - A045-P009
@@ -77,7 +77,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
   qualifier_spans:
   - A045-P008
   - A045-P009
@@ -106,7 +106,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A045-P3-SHARE-POSITIVE-RESULTS-ON-REQUEST
   source: A045-P010
   quote: Each notified body shall provide the other notified bodies carrying out similar conformity assessment
@@ -121,7 +121,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
   conditions:
   - the information concerns issues relating to positive conformity assessment results
   - the recipient is another notified body carrying out similar conformity assessment activities
@@ -138,4 +138,4 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported

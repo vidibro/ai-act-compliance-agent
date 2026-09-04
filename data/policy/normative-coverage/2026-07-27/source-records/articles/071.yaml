@@ -14,7 +14,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A071-P1-CONSULT-EXPERTS-ON-SPECIFICATIONS
   source: A071-P001
   quote: When setting the functional specifications of such database, the Commission shall consult the relevant experts
@@ -27,7 +27,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A071-P1-CONSULT-BOARD-ON-UPDATES
   source: A071-P001
   quote: when updating the functional specifications of such database, the Commission shall consult the Board.
@@ -40,14 +40,14 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A071-P2-PROVIDER-ENTER-ANNEX-VIII-DATA
   source: A071-P002
   quote: The data listed in Sections A and B of Annex VIII shall be entered into the EU database by the provider or, where applicable, by the authorised representative.
   action: enter the applicable Annex VIII Sections A and B data into the EU database
   subject_ref: provider
   subject_category: supported_operator
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A071-P2-REPRESENTATIVE-ENTER-ANNEX-VIII-DATA
   source: A071-P002
   quote: The data listed in Sections A and B of Annex VIII shall be entered into the EU database by the provider or, where applicable, by the authorised representative.
@@ -55,7 +55,7 @@ records:
   subject_ref: authorised_representative
   subject_category: supported_operator
   conditions: [the authorised representative is applicable for the data entry]
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A071-P3-PUBLIC-DEPLOYER-ENTER-ANNEX-VIII-DATA
   source: A071-P003
   quote: The data listed in Section C of Annex VIII shall be entered into the EU database by the deployer who is, or who acts on behalf of, a public authority, agency or body, in accordance with Article 49(3) and (4).
@@ -63,7 +63,7 @@ records:
   subject_ref: public_authority_deployer
   subject_category: supported_operator
   conditions: [the deployer is or acts for a public authority agency or body]
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A071-P4-DATABASE-ACCESS-RULES
   source: A071-P004
   quote: With the exception of the section referred to in Article 49(4) and Article 60(4), point (c), the information contained in the EU database registered in accordance with Article 49 shall be accessible and publicly available in a user-friendly manner.
@@ -78,7 +78,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A071-P4-NAVIGABLE-MACHINE-READABLE
   source: A071-P004
   quote: The information should be easily navigable and machine-readable.
@@ -90,7 +90,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A071-P4-RESTRICTED-ARTICLE-60-ACCESS
   source: A071-P004
   quote: The information registered in accordance with Article 60 shall be accessible only to market surveillance authorities and the Commission, unless the prospective provider or provider has given consent for also making the information accessible the public.
@@ -105,7 +105,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A071-P5-DATABASE-DATA-MINIMISATION
   source: A071-P005
   quote: The EU database shall contain personal data only in so far as necessary for collecting and processing information in accordance with this Regulation. That information shall include the names and contact details of natural persons who are responsible for registering the system and have the legal authority to represent the provider or the deployer, as applicable.
@@ -117,7 +117,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A071-P6-CONTROLLER-AND-OPERATOR-SUPPORT
   source: A071-P006
   quote: The Commission shall be the controller of the EU database.
@@ -129,7 +129,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A071-P6-OPERATOR-SUPPORT
   source: A071-P006
   quote: It shall make available to providers, prospective providers and deployers adequate technical and administrative support.
@@ -142,7 +142,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A071-P6-DATABASE-ACCESSIBILITY
   source: A071-P006
   quote: The EU database shall comply with the applicable accessibility requirements.
@@ -153,4 +153,4 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported

@@ -9,7 +9,7 @@ records:
   product_scope_reason: This is a transitional compliance duty for operators of AI components in covered systems.
   implementation_mode: missing
   implementation_reason: No current rule represents this legacy-system transition.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A111-P1-ACCOUNT-FOR-REQUIREMENTS-IN-EVALUATION
   source: A111-P002
   quote: The requirements laid down in this Regulation shall be taken into account in the evaluation
@@ -20,7 +20,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A111-P2-LEGACY-HIGH-RISK-APPLICABILITY
   source: A111-P003
   quote: this Regulation shall apply to operators of high-risk AI systems
@@ -32,7 +32,7 @@ records:
   product_scope_reason: This proposition determines whether other operator obligations apply.
   implementation_mode: none_required
   implementation_reason: Represented as an applicability dependency rather than an independent finding.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A111-P2-PUBLIC-AUTHORITY-SYSTEM-COMPLIANCE
   source: A111-P003
   quote: the providers and deployers of high-risk AI systems intended to be used by public authorities shall take the necessary steps to comply
@@ -43,7 +43,7 @@ records:
   product_scope_reason: This is a transitional compliance duty for supported providers and deployers.
   implementation_mode: missing
   implementation_reason: Existing rules do not represent this public-authority-use transition date.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A111-P3-LEGACY-GPAI-COMPLIANCE
   source: A111-P004
   quote: shall take the necessary steps in order to comply with the obligations laid down in this Regulation by 2 August 2027
@@ -54,7 +54,7 @@ records:
   product_scope_reason: This is a transitional compliance duty for supported GPAI providers.
   implementation_mode: missing
   implementation_reason: Existing rules do not represent this legacy-model transition date.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A111-P4-LEGACY-SYNTHETIC-CONTENT-COMPLIANCE
   source: A111-P005
   quote: shall take the necessary steps in order to comply with Article 50(2) by 2 December 2026
@@ -65,4 +65,4 @@ records:
   product_scope_reason: This is a transitional compliance duty for supported providers.
   implementation_mode: missing
   implementation_reason: Existing Article 50 rules do not represent this legacy-system transition date.
-  verification_mode: not_assessed
+  verification_mode: not_reported

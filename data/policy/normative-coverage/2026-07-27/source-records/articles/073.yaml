@@ -6,7 +6,7 @@ records:
   subject_ref: provider
   subject_category: supported_operator
   implementation_refs: [AIA-ALL-A73]
-  verification_mode: listed_for_confirmation
+  verification_mode: reported_not_judged
 - norm_id: AIA-NORM-A073-P2-DEFAULT-REPORTING-DEADLINE
   source: A073-P002
   quote: The report referred to in paragraph 1 shall be made immediately after the provider has established a causal link between the AI system and the serious incident or the reasonable likelihood of such a link, and, in any event, not later than 15 days after the provider or, where applicable, the deployer, becomes aware of the serious incident.
@@ -15,7 +15,7 @@ records:
   subject_category: supported_operator
   qualifier_spans: [A073-P003]
   implementation_refs: [AIA-ALL-A73]
-  verification_mode: listed_for_confirmation
+  verification_mode: reported_not_judged
 - norm_id: AIA-NORM-A073-P3-TWO-DAY-DEADLINE
   source: A073-P004
   quote: Notwithstanding paragraph 2 of this Article, in the event of a widespread infringement or a serious incident as defined in Article 3, point (49)(b), the report referred to in paragraph 1 of this Article shall be provided immediately, and not later than two days after the provider or, where applicable, the deployer becomes aware of that incident.
@@ -23,7 +23,7 @@ records:
   subject_ref: provider_or_applicable_deployer
   subject_category: supported_operator
   implementation_refs: [AIA-ALL-A73]
-  verification_mode: listed_for_confirmation
+  verification_mode: reported_not_judged
 - norm_id: AIA-NORM-A073-P4-DEATH-DEADLINE
   source: A073-P005
   quote: Notwithstanding paragraph 2, in the event of the death of a person, the report shall be provided immediately after the provider or the deployer has established, or as soon as it suspects, a causal relationship between the high-risk AI system and the serious incident, but not later than 10 days after the date on which the provider or, where applicable, the deployer becomes aware of the serious incident.
@@ -31,7 +31,7 @@ records:
   subject_ref: provider_or_applicable_deployer
   subject_category: supported_operator
   implementation_refs: [AIA-ALL-A73]
-  verification_mode: listed_for_confirmation
+  verification_mode: reported_not_judged
 - norm_id: AIA-NORM-A073-P5-INITIAL-INCOMPLETE-REPORT
   source: A073-P006
   quote: Where necessary to ensure timely reporting, the provider or, where applicable, the deployer, may submit an initial report that is incomplete, followed by a complete report.
@@ -40,7 +40,7 @@ records:
   subject_category: supported_operator
   kind: permission
   implementation_refs: [AIA-ALL-A73]
-  verification_mode: listed_for_confirmation
+  verification_mode: reported_not_judged
 - norm_id: AIA-NORM-A073-P6-INVESTIGATE-ASSESS-AND-CORRECT
   source: A073-P007
   quote: Following the reporting of a serious incident pursuant to paragraph 1, the provider shall, without delay, perform the necessary investigations in relation to the serious incident and the AI system concerned. This shall include a risk assessment of the incident
@@ -53,7 +53,7 @@ records:
   mandatory_content: [necessary investigation of the serious incident and the AI system concerned,
     risk assessment of the incident]
   implementation_refs: [AIA-ALL-A73]
-  verification_mode: listed_for_confirmation
+  verification_mode: reported_not_judged
 - norm_id: AIA-NORM-A073-P6-CORRECTIVE-ACTION
   source: A073-P007
   quote: and corrective action.
@@ -63,7 +63,7 @@ records:
   conditions:
   - a serious incident has been reported pursuant to paragraph 1
   implementation_refs: [AIA-ALL-A73]
-  verification_mode: listed_for_confirmation
+  verification_mode: reported_not_judged
 - norm_id: AIA-NORM-A073-P6-COOPERATE-AND-PRESERVE-SYSTEM
   source: A073-P008
   quote: The provider shall cooperate with the competent authorities, and where relevant with the notified body concerned, during the investigations referred to in the first subparagraph
@@ -72,7 +72,7 @@ records:
   subject_ref: provider
   subject_category: supported_operator
   implementation_refs: [AIA-ALL-A73]
-  verification_mode: listed_for_confirmation
+  verification_mode: reported_not_judged
 - norm_id: AIA-NORM-A073-P6-NO-EVIDENCE-AFFECTING-ALTERATION
   source: A073-P008
   quote: shall not perform any investigation which involves altering the AI system concerned in a way which may affect any subsequent evaluation of the causes of the incident, prior to informing the competent authorities of such action.
@@ -83,7 +83,7 @@ records:
   subject_category: supported_operator
   kind: prohibition
   implementation_refs: [AIA-ALL-A73]
-  verification_mode: listed_for_confirmation
+  verification_mode: reported_not_judged
 - norm_id: AIA-NORM-A073-P7-INFORM-FUNDAMENTAL-RIGHTS-AUTHORITIES
   source: A073-P009
   quote: Upon receiving a notification related to a serious incident referred to in Article 3, point (49)(c), the relevant market surveillance authority shall inform the national public authorities or bodies referred to in Article 77(1).
@@ -94,7 +94,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A073-P7-COMMISSION-REPORTING-GUIDANCE
   source: A073-P009
   quote: The Commission shall develop dedicated guidance to facilitate compliance with the obligations set out in paragraph 1 of this Article. That guidance shall be issued by 2 August 2025, and shall be assessed regularly.
@@ -105,7 +105,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A073-P8-SEVEN-DAY-AUTHORITY-ACTION
   source: A073-P010
   quote: The market surveillance authority shall take appropriate measures, as provided for in Article 19 of Regulation (EU) 2019/1020, within seven days from the date it received the notification referred to in paragraph 1 of this Article
@@ -117,7 +117,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A073-P8-FOLLOW-NOTIFICATION-PROCEDURES
   source: A073-P010
   quote: and shall follow the notification procedures as provided in that Regulation.
@@ -128,7 +128,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A073-P9-EQUIVALENT-REPORTING-LIMIT
   source: A073-P011
   quote: For high-risk AI systems referred to in Annex III that are placed on the market or put into service by providers that are subject to Union legislative instruments laying down reporting obligations equivalent to those set out in this Regulation, the notification of serious incidents shall be limited to those referred to in Article 3, point (49)(c).
@@ -137,7 +137,7 @@ records:
   subject_category: supported_operator
   kind: legal_consequence
   implementation_refs: [AIA-ALL-A73]
-  verification_mode: listed_for_confirmation
+  verification_mode: reported_not_judged
 - norm_id: AIA-NORM-A073-P10-MEDICAL-DEVICE-REPORTING
   source: A073-P012
   quote: For high-risk AI systems which are safety components of devices, or are themselves devices, covered by Regulations (EU) 2017/745 and (EU) 2017/746, the notification of serious incidents shall be limited to those referred to in Article 3, point (49)(c) of this Regulation, and shall be made to the national competent authority chosen for that purpose by the Member States where the incident occurred.
@@ -145,7 +145,7 @@ records:
   subject_ref: provider_or_applicable_deployer
   subject_category: supported_operator
   implementation_refs: [AIA-ALL-A73-10]
-  verification_mode: listed_for_confirmation
+  verification_mode: reported_not_judged
 - norm_id: AIA-NORM-A073-P11-NOTIFY-COMMISSION
   source: A073-P013
   quote: National competent authorities shall immediately notify the Commission of any serious incident, whether or not they have taken action on it, in accordance with Article 20 of Regulation (EU) 2019/1020.
@@ -156,4 +156,4 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported

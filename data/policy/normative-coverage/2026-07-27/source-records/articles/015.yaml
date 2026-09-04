@@ -9,7 +9,7 @@ records:
   subject_category: supported_operator
   implementation_refs: &id001
   - AIA-HR-A15
-  verification_mode: judged_from_document
+  verification_mode: judged_by_gap_analysis
 - norm_id: AIA-NORM-A015-P1-ROBUSTNESS
   source: A015-P001
   quote: High-risk AI systems shall be designed and developed in such a way that they achieve an appropriate
@@ -19,7 +19,7 @@ records:
   subject_ref: provider
   subject_category: supported_operator
   implementation_refs: *id001
-  verification_mode: judged_from_document
+  verification_mode: judged_by_gap_analysis
 - norm_id: AIA-NORM-A015-P1-CYBERSECURITY
   source: A015-P001
   quote: High-risk AI systems shall be designed and developed in such a way that they achieve an appropriate
@@ -29,7 +29,7 @@ records:
   subject_ref: provider
   subject_category: supported_operator
   implementation_refs: *id001
-  verification_mode: judged_from_document
+  verification_mode: judged_by_gap_analysis
 - norm_id: AIA-NORM-A015-P1-LIFECYCLE-CONSISTENCY
   source: A015-P001
   quote: High-risk AI systems shall be designed and developed in such a way that they achieve an appropriate
@@ -40,7 +40,7 @@ records:
   subject_ref: provider
   subject_category: supported_operator
   implementation_refs: *id001
-  verification_mode: judged_from_document
+  verification_mode: judged_by_gap_analysis
 - norm_id: AIA-NORM-A015-P2-ENCOURAGE-MEASUREMENT
   source: A015-P002
   quote: the Commission shall, in cooperation with relevant stakeholders and organisations such as metrology
@@ -54,7 +54,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A015-P3-DECLARE-ACCURACY
   source: A015-P003
   quote: The levels of accuracy and the relevant accuracy metrics of high-risk AI systems shall be declared
@@ -63,7 +63,7 @@ records:
   subject_ref: provider
   subject_category: supported_operator
   implementation_refs: *id001
-  verification_mode: judged_from_document
+  verification_mode: judged_by_gap_analysis
   dependencies:
   - dependency_ref: AIA-NORM-A013-P2-PROVIDE-INSTRUCTIONS
     resolution: internal_resolved
@@ -76,7 +76,7 @@ records:
   subject_ref: provider
   subject_category: supported_operator
   implementation_refs: *id001
-  verification_mode: judged_from_document
+  verification_mode: judged_by_gap_analysis
   dependencies:
   - dependency_ref: AIA-NORM-A013-P2-PROVIDE-INSTRUCTIONS
     resolution: internal_resolved
@@ -91,7 +91,7 @@ records:
   subject_ref: provider
   subject_category: supported_operator
   implementation_refs: *id001
-  verification_mode: judged_from_document
+  verification_mode: judged_by_gap_analysis
 - norm_id: AIA-NORM-A015-P4-TECHNICAL-MEASURES
   source: A015-P004
   quote: Technical and organisational measures shall be taken in this regard.
@@ -99,7 +99,7 @@ records:
   subject_ref: provider
   subject_category: supported_operator
   implementation_refs: *id001
-  verification_mode: judged_from_document
+  verification_mode: judged_by_gap_analysis
 - norm_id: AIA-NORM-A015-P4-ORGANISATIONAL-MEASURES
   source: A015-P004
   quote: Technical and organisational measures shall be taken in this regard.
@@ -107,7 +107,7 @@ records:
   subject_ref: provider
   subject_category: supported_operator
   implementation_refs: *id001
-  verification_mode: judged_from_document
+  verification_mode: judged_by_gap_analysis
 - norm_id: AIA-NORM-A015-P4-REDUNDANCY
   source: A015-P005
   quote: The robustness of high-risk AI systems may be achieved through technical redundancy solutions,
@@ -130,7 +130,7 @@ records:
   conditions: &id002
   - the high-risk AI system continues to learn after market placement or being put into service
   implementation_refs: *id001
-  verification_mode: judged_from_document
+  verification_mode: judged_by_gap_analysis
 - norm_id: AIA-NORM-A015-P4-MITIGATE-FEEDBACK
   source: A015-P006
   quote: High-risk AI systems that continue to learn after being placed on the market or put into service
@@ -142,7 +142,7 @@ records:
   subject_category: supported_operator
   conditions: *id002
   implementation_refs: *id001
-  verification_mode: judged_from_document
+  verification_mode: judged_by_gap_analysis
 - norm_id: AIA-NORM-A015-P5-UNAUTHORISED-ALTERATION
   source: A015-P007
   quote: High-risk AI systems shall be resilient against attempts by unauthorised third parties to alter
@@ -152,7 +152,7 @@ records:
   subject_ref: provider
   subject_category: supported_operator
   implementation_refs: *id001
-  verification_mode: judged_from_document
+  verification_mode: judged_by_gap_analysis
 - norm_id: AIA-NORM-A015-P5-APPROPRIATE-SOLUTIONS
   source: A015-P008
   quote: The technical solutions aiming to ensure the cybersecurity of high-risk AI systems shall be appropriate
@@ -161,7 +161,7 @@ records:
   subject_ref: provider
   subject_category: supported_operator
   implementation_refs: *id001
-  verification_mode: judged_from_document
+  verification_mode: judged_by_gap_analysis
 - norm_id: AIA-NORM-A015-P5-DATA-POISONING
   source: A015-P009
   quote: The technical solutions to address AI specific vulnerabilities shall include, where appropriate,
@@ -176,7 +176,7 @@ records:
   conditions: &id003
   - measures addressing the AI-specific vulnerability are appropriate
   implementation_refs: *id001
-  verification_mode: judged_from_document
+  verification_mode: judged_by_gap_analysis
 - norm_id: AIA-NORM-A015-P5-MODEL-POISONING
   source: A015-P009
   quote: The technical solutions to address AI specific vulnerabilities shall include, where appropriate,
@@ -190,7 +190,7 @@ records:
   subject_category: supported_operator
   conditions: *id003
   implementation_refs: *id001
-  verification_mode: judged_from_document
+  verification_mode: judged_by_gap_analysis
 - norm_id: AIA-NORM-A015-P5-ADVERSARIAL-ATTACKS
   source: A015-P009
   quote: The technical solutions to address AI specific vulnerabilities shall include, where appropriate,
@@ -204,7 +204,7 @@ records:
   subject_category: supported_operator
   conditions: *id003
   implementation_refs: *id001
-  verification_mode: judged_from_document
+  verification_mode: judged_by_gap_analysis
 - norm_id: AIA-NORM-A015-P5-CONFIDENTIALITY-ATTACKS
   source: A015-P009
   quote: The technical solutions to address AI specific vulnerabilities shall include, where appropriate,
@@ -217,7 +217,7 @@ records:
   subject_category: supported_operator
   conditions: *id003
   implementation_refs: *id001
-  verification_mode: judged_from_document
+  verification_mode: judged_by_gap_analysis
 - norm_id: AIA-NORM-A015-P5-MODEL-FLAWS
   source: A015-P009
   quote: The technical solutions to address AI specific vulnerabilities shall include, where appropriate,
@@ -230,4 +230,4 @@ records:
   subject_category: supported_operator
   conditions: *id003
   implementation_refs: *id001
-  verification_mode: judged_from_document
+  verification_mode: judged_by_gap_analysis

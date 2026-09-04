@@ -22,7 +22,7 @@ records:
     in accordance with Article 60(4) point (c), and the contact details of the provider or its
     legal representative from whom further information can be obtained
   qualifier_spans: [A061-P002, A061-P003, A061-P004, A061-P005, A061-P006]
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A061-P2-DOCUMENT-AND-COPY-CONSENT
   source: A061-P007
   quote: The informed consent shall be dated and documented
@@ -30,7 +30,7 @@ records:
   subject_ref: provider_or_prospective_provider
   subject_category: supported_operator
   mandatory_content: [dated consent, documented consent]
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A061-P2-GIVE-CONSENT-COPY
   source: A061-P007
   quote: a copy shall be given to the subjects of testing or their legal representative.
@@ -38,4 +38,4 @@ records:
     representative
   subject_ref: provider_or_prospective_provider
   subject_category: supported_operator
-  verification_mode: not_assessed
+  verification_mode: not_reported

@@ -12,7 +12,7 @@ records:
   kind: obligation
   implementation_refs: &id001
   - AIA-HR-A10
-  verification_mode: judged_from_document
+  verification_mode: judged_by_gap_analysis
   dependencies:
   - dependency_ref: AIA-NORM-A004A-P1-HIGH-RISK-BIAS-DATA-PROCESSING
     resolution: internal_resolved
@@ -27,7 +27,7 @@ records:
   subject_category: supported_operator
   kind: obligation
   implementation_refs: *id001
-  verification_mode: judged_from_document
+  verification_mode: judged_by_gap_analysis
 - norm_id: AIA-NORM-A010-P2-A-DESIGN-CHOICES
   source: A010-P003
   quote: the relevant design choices
@@ -38,7 +38,7 @@ records:
   qualifier_spans: &id002
   - A010-P002
   implementation_refs: *id001
-  verification_mode: judged_from_document
+  verification_mode: judged_by_gap_analysis
 - norm_id: AIA-NORM-A010-P2-B-COLLECTION-ORIGIN
   source: A010-P004
   quote: data collection processes and the origin of data, and in the case of personal data, the original
@@ -50,7 +50,7 @@ records:
   kind: obligation
   qualifier_spans: *id002
   implementation_refs: *id001
-  verification_mode: judged_from_document
+  verification_mode: judged_by_gap_analysis
 - norm_id: AIA-NORM-A010-P2-C-DATA-PREPARATION
   source: A010-P005
   quote: relevant data-preparation processing operations, such as annotation, labelling, cleaning, updating,
@@ -62,7 +62,7 @@ records:
   kind: obligation
   qualifier_spans: *id002
   implementation_refs: *id001
-  verification_mode: judged_from_document
+  verification_mode: judged_by_gap_analysis
 - norm_id: AIA-NORM-A010-P2-D-ASSUMPTIONS
   source: A010-P006
   quote: the formulation of assumptions, in particular with respect to the information that the data are
@@ -73,7 +73,7 @@ records:
   kind: obligation
   qualifier_spans: *id002
   implementation_refs: *id001
-  verification_mode: judged_from_document
+  verification_mode: judged_by_gap_analysis
 - norm_id: AIA-NORM-A010-P2-E-AVAILABILITY-SUITABILITY
   source: A010-P007
   quote: an assessment of the availability, quantity and suitability of the data sets that are needed
@@ -83,7 +83,7 @@ records:
   kind: obligation
   qualifier_spans: *id002
   implementation_refs: *id001
-  verification_mode: judged_from_document
+  verification_mode: judged_by_gap_analysis
 - norm_id: AIA-NORM-A010-P2-F-EXAMINE-BIASES
   source: A010-P008
   quote: examination in view of possible biases that are likely to affect the health and safety of persons,
@@ -98,7 +98,7 @@ records:
   conditions:
   - give particular attention where data outputs influence inputs for future operations
   implementation_refs: *id001
-  verification_mode: judged_from_document
+  verification_mode: judged_by_gap_analysis
 - norm_id: AIA-NORM-A010-P2-G-MITIGATE-BIASES
   source: A010-P009
   quote: appropriate measures to detect, prevent and mitigate possible biases identified according to
@@ -110,7 +110,7 @@ records:
   kind: obligation
   qualifier_spans: *id002
   implementation_refs: *id001
-  verification_mode: judged_from_document
+  verification_mode: judged_by_gap_analysis
 - norm_id: AIA-NORM-A010-P2-H-DATA-GAPS
   source: A010-P010
   quote: the identification of relevant data gaps or shortcomings that prevent compliance with this Regulation,
@@ -121,7 +121,7 @@ records:
   kind: obligation
   qualifier_spans: *id002
   implementation_refs: *id001
-  verification_mode: judged_from_document
+  verification_mode: judged_by_gap_analysis
 - norm_id: AIA-NORM-A010-P3-RELEVANT
   source: A010-P011
   quote: Training, validation and testing data sets shall be relevant, sufficiently representative, and
@@ -131,7 +131,7 @@ records:
   subject_category: supported_operator
   kind: obligation
   implementation_refs: *id001
-  verification_mode: judged_from_document
+  verification_mode: judged_by_gap_analysis
 - norm_id: AIA-NORM-A010-P3-REPRESENTATIVE
   source: A010-P011
   quote: Training, validation and testing data sets shall be relevant, sufficiently representative, and
@@ -142,7 +142,7 @@ records:
   subject_category: supported_operator
   kind: obligation
   implementation_refs: *id001
-  verification_mode: judged_from_document
+  verification_mode: judged_by_gap_analysis
 - norm_id: AIA-NORM-A010-P3-FREE-OF-ERRORS
   source: A010-P011
   quote: Training, validation and testing data sets shall be relevant, sufficiently representative, and
@@ -153,7 +153,7 @@ records:
   subject_category: supported_operator
   kind: obligation
   implementation_refs: *id001
-  verification_mode: judged_from_document
+  verification_mode: judged_by_gap_analysis
 - norm_id: AIA-NORM-A010-P3-COMPLETE
   source: A010-P011
   quote: Training, validation and testing data sets shall be relevant, sufficiently representative, and
@@ -164,7 +164,7 @@ records:
   subject_category: supported_operator
   kind: obligation
   implementation_refs: *id001
-  verification_mode: judged_from_document
+  verification_mode: judged_by_gap_analysis
 - norm_id: AIA-NORM-A010-P3-STATISTICAL-PROPERTIES
   source: A010-P011
   quote: They shall have the appropriate statistical properties, including, where applicable, as regards
@@ -175,7 +175,7 @@ records:
   subject_category: supported_operator
   kind: obligation
   implementation_refs: *id001
-  verification_mode: judged_from_document
+  verification_mode: judged_by_gap_analysis
 - norm_id: AIA-NORM-A010-P3-COMBINED-DATASETS
   source: A010-P011
   quote: Those characteristics of the data sets may be met at the level of individual data sets or at
@@ -198,7 +198,7 @@ records:
   subject_category: supported_operator
   kind: obligation
   implementation_refs: *id001
-  verification_mode: judged_from_document
+  verification_mode: judged_by_gap_analysis
 - norm_id: AIA-NORM-A010-P5-SPECIAL-CATEGORY-PROCESSING
   source: A010-P013
   quote: the providers of such systems may exceptionally process special categories of personal data,
@@ -223,7 +223,7 @@ records:
   implementation_mode: carried_by_other_norm
   implementation_reason: Article 4a(1) carries the same exceptional high-risk bias-data-processing permission
     and conditions.
-  verification_mode: judged_from_document
+  verification_mode: judged_by_gap_analysis
 - norm_id: AIA-NORM-A010-P5-B-REUSE-SECURITY
   source: A010-P015
   quote: the special categories of personal data are subject to technical limitations on the re-use of
@@ -237,7 +237,7 @@ records:
   - A010-P013
   implementation_mode: carried_by_other_norm
   implementation_reason: Article 4a(1)(b) carries the same safeguard.
-  verification_mode: judged_from_document
+  verification_mode: judged_by_gap_analysis
 - norm_id: AIA-NORM-A010-P5-C-ACCESS-SAFEGUARDS
   source: A010-P016
   quote: the special categories of personal data are subject to measures to ensure that the personal data
@@ -253,7 +253,7 @@ records:
   - A010-P013
   implementation_mode: carried_by_other_norm
   implementation_reason: Article 4a(1)(c) carries the same safeguard.
-  verification_mode: judged_from_document
+  verification_mode: judged_by_gap_analysis
 - norm_id: AIA-NORM-A010-P5-D-NO-THIRD-PARTY-ACCESS
   source: A010-P017
   quote: the special categories of personal data are not to be transmitted, transferred or otherwise accessed
@@ -267,7 +267,7 @@ records:
   - A010-P013
   implementation_mode: carried_by_other_norm
   implementation_reason: Article 4a(1)(d) carries the same safeguard.
-  verification_mode: judged_from_document
+  verification_mode: judged_by_gap_analysis
 - norm_id: AIA-NORM-A010-P5-E-DELETE-DATA
   source: A010-P018
   quote: the special categories of personal data are deleted once the bias has been corrected or the personal
@@ -281,7 +281,7 @@ records:
   - A010-P013
   implementation_mode: carried_by_other_norm
   implementation_reason: Article 4a(1)(e) carries the same safeguard.
-  verification_mode: judged_from_document
+  verification_mode: judged_by_gap_analysis
 - norm_id: AIA-NORM-A010-P5-F-RECORD-NECESSITY
   source: A010-P019
   quote: the records of processing activities pursuant to Regulations (EU) 2016/679 and (EU) 2018/1725
@@ -297,7 +297,7 @@ records:
   - A010-P013
   implementation_mode: carried_by_other_norm
   implementation_reason: Article 4a(1)(f) carries the same recordkeeping safeguard.
-  verification_mode: judged_from_document
+  verification_mode: judged_by_gap_analysis
   dependencies:
   - dependency_ref: Regulation (EU) 2016/679; Regulation (EU) 2018/1725; Directive (EU) 2016/680
     resolution: external_recorded
@@ -316,7 +316,7 @@ records:
   conditions:
   - the high-risk AI system is developed without techniques involving training an AI model
   implementation_refs: *id001
-  verification_mode: judged_from_document
+  verification_mode: judged_by_gap_analysis
   dependencies:
   - dependency_ref: AIA-NORM-A004A-P1-HIGH-RISK-BIAS-DATA-PROCESSING
     resolution: internal_resolved

@@ -10,7 +10,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A060A-P2-ADOPT-TESTING-FRAMEWORK
   source: A060A-P002
   quote: Member States that choose to allow testing as referred to in paragraph 1 shall, individually or jointly, adopt frameworks for real-world testing.
@@ -22,7 +22,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A060A-P3-NOTIFY-FRAMEWORK
   source: A060A-P003
   quote: Each Member State shall notify the Commission of any real-world testing framework it adopts before implementing it.
@@ -33,7 +33,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A060A-P3-PRESERVE-COMMISSION-COMPETENCE
   source: A060A-P003
   quote: This shall not affect the competences of the Commission under the Union harmonisation legislation listed in Section B of Annex I.
@@ -45,7 +45,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A060A-P4-COOPERATE-AND-REMOVE-OBSTACLES
   source: A060A-P004
   quote: Member States that have adopted real-world testing frameworks shall ensure that the relevant national competent authorities, relevant authorities and public authorities responsible for the management and operation of infrastructure and products covered by Union harmonisation legislation listed in Section B of Annex I cooperate closely with each other in good faith
@@ -58,7 +58,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A060A-P4-REMOVE-PRACTICAL-OBSTACLES
   source: A060A-P004
   quote: remove any practical obstacles, including on procedural rules providing access to physical public infrastructure, where this is necessary, to successfully implement those real-world testing frameworks and test AI-enabled products covered by Union harmonisation legislation listed in Section B of Annex I.
@@ -75,7 +75,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A060A-P5-FRAMEWORK-REQUIREMENTS
   source: A060A-P005
   quote: The frameworks for real-world testing shall lay down the requirements under which testing in real-world conditions shall occur. Those frameworks shall
@@ -88,21 +88,21 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A060A-P5-A-AGREE-TESTING-PLAN
   source: A060A-P006
   quote: include the provision of a mandatory real-world testing plan to be agreed between the provider or prospective provider and the national competent authority or relevant authority in accordance with the Union harmonisation legislation listed in Section B of Annex I;
   action: agree a mandatory real-world testing plan with the competent or relevant authority under applicable Section B legislation
   subject_ref: provider_or_prospective_provider
   subject_category: supported_operator
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A060A-P5-B-COMPLY-WITH-INCORPORATED-SAFEGUARDS
   source: A060A-P007
   quote: ensure compliance with the requirements laid down in Article 60(2), (3), (4)(d)-(j) and (5)-(9), where any reference to market surveillance authorities in those provisions shall be read as a reference to the national competent authority or relevant authority, as appropriate in accordance with the Union harmonisation legislation listed in Section B of Annex I;
   action: comply with the incorporated Article 60 testing safeguards using the competent-authority substitution required by Section B legislation
   subject_ref: provider_or_prospective_provider
   subject_category: supported_operator
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A060A-P6-COMPLY-WITH-SECTORAL-LAW
   source: A060A-P010
   quote: The real-world testing shall comply with the applicable provisions laid down in the Union harmonisation legislation listed in Section B of Annex I.
@@ -110,7 +110,7 @@ records:
     conducting the real-world testing
   subject_ref: provider_or_prospective_provider
   subject_category: supported_operator
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A060A-P6-SECTORAL-REQUIREMENTS-DO-NOT-OBSTRUCT
   source: A060A-P010
   quote: Any requirements laid down in those provisions shall not affect the application of this Article to the extent necessary to enable the testing referred to in paragraph 1.
@@ -124,4 +124,4 @@ records:
     product action.
   implementation_mode: none_required
   implementation_reason: No independent product action is required.
-  verification_mode: not_assessed
+  verification_mode: not_reported

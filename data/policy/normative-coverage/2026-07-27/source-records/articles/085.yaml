@@ -10,7 +10,7 @@ records:
   product_scope_reason: This is a complainant entitlement rather than an operator product action.
   implementation_mode: none_required
   implementation_reason: No independent product action arises.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A085-P2-ACCOUNT-FOR-AND-HANDLE-COMPLAINTS
   source: A085-P002
   quote: such complaints shall be taken into account for the purpose of conducting market surveillance activities
@@ -22,7 +22,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A085-P2-HANDLE-COMPLAINTS-UNDER-PROCEDURES
   source: A085-P002
   quote: and shall be handled in line with the dedicated procedures established therefor by the market surveillance authorities.
@@ -34,4 +34,4 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported

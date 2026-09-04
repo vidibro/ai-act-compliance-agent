@@ -10,7 +10,7 @@ records:
   product_scope_reason: &outside_reason The present product does not report compliance for this addressee.
   implementation_mode: &none_required none_required
   implementation_reason: &outside_implementation Outside the supported operator reporting surface.
-  verification_mode: &not_assessed not_assessed
+  verification_mode: &not_reported not_reported
 - norm_id: AIA-NORM-ANNEX-XIV-CODES-SET-DESIGNATION-SCOPE
   source: ANNEX-XIV-P003
   quote: The list of codes, categories, and corresponding types of AI systems sets the scope of the designation of conformity assessment bodies notified under Article 30.
@@ -22,7 +22,7 @@ records:
   product_scope_reason: *outside_reason
   implementation_mode: *none_required
   implementation_reason: *outside_implementation
-  verification_mode: *not_assessed
+  verification_mode: *not_reported
   dependencies: &article30_dependency
   - dependency_ref: AIA-NORM-A030-P2-ELECTRONIC-NOTIFICATION
     resolution: internal_resolved
@@ -38,7 +38,7 @@ records:
   product_scope_reason: *outside_reason
   implementation_mode: *none_required
   implementation_reason: *outside_implementation
-  verification_mode: *not_assessed
+  verification_mode: *not_reported
   dependencies: *article30_dependency
 - norm_id: AIA-NORM-ANNEX-XIV-AIP-0103
   source: ANNEX-XIV-P005
@@ -51,7 +51,7 @@ records:
   product_scope_reason: *outside_reason
   implementation_mode: *none_required
   implementation_reason: *outside_implementation
-  verification_mode: *not_assessed
+  verification_mode: *not_reported
   dependencies: *article30_dependency
 - norm_id: AIA-NORM-ANNEX-XIV-AIP-0104
   source: ANNEX-XIV-P005
@@ -64,7 +64,7 @@ records:
   product_scope_reason: *outside_reason
   implementation_mode: *none_required
   implementation_reason: *outside_implementation
-  verification_mode: *not_assessed
+  verification_mode: *not_reported
   dependencies: *article30_dependency
 - norm_id: AIA-NORM-ANNEX-XIV-AIP-0105
   source: ANNEX-XIV-P005
@@ -77,7 +77,7 @@ records:
   product_scope_reason: *outside_reason
   implementation_mode: *none_required
   implementation_reason: *outside_implementation
-  verification_mode: *not_assessed
+  verification_mode: *not_reported
   dependencies: *article30_dependency
 - norm_id: AIA-NORM-ANNEX-XIV-AIP-0106
   source: ANNEX-XIV-P005
@@ -90,7 +90,7 @@ records:
   product_scope_reason: *outside_reason
   implementation_mode: *none_required
   implementation_reason: *outside_implementation
-  verification_mode: *not_assessed
+  verification_mode: *not_reported
   dependencies: *article30_dependency
 - norm_id: AIA-NORM-ANNEX-XIV-AIP-0107
   source: ANNEX-XIV-P005
@@ -103,7 +103,7 @@ records:
   product_scope_reason: *outside_reason
   implementation_mode: *none_required
   implementation_reason: *outside_implementation
-  verification_mode: *not_assessed
+  verification_mode: *not_reported
   dependencies: *article30_dependency
 - norm_id: AIA-NORM-ANNEX-XIV-AIP-0108
   source: ANNEX-XIV-P005
@@ -116,7 +116,7 @@ records:
   product_scope_reason: *outside_reason
   implementation_mode: *none_required
   implementation_reason: *outside_implementation
-  verification_mode: *not_assessed
+  verification_mode: *not_reported
   dependencies: *article30_dependency
 - norm_id: AIA-NORM-ANNEX-XIV-AIP-0109
   source: ANNEX-XIV-P005
@@ -129,7 +129,7 @@ records:
   product_scope_reason: *outside_reason
   implementation_mode: *none_required
   implementation_reason: *outside_implementation
-  verification_mode: *not_assessed
+  verification_mode: *not_reported
   dependencies: *article30_dependency
 - norm_id: AIA-NORM-ANNEX-XIV-AIP-0110
   source: ANNEX-XIV-P005
@@ -142,7 +142,7 @@ records:
   product_scope_reason: *outside_reason
   implementation_mode: *none_required
   implementation_reason: *outside_implementation
-  verification_mode: *not_assessed
+  verification_mode: *not_reported
   dependencies: *article30_dependency
 - norm_id: AIA-NORM-ANNEX-XIV-AIP-0111
   source: ANNEX-XIV-P005
@@ -155,7 +155,7 @@ records:
   product_scope_reason: *outside_reason
   implementation_mode: *none_required
   implementation_reason: *outside_implementation
-  verification_mode: *not_assessed
+  verification_mode: *not_reported
   dependencies: *article30_dependency
 - norm_id: AIA-NORM-ANNEX-XIV-AIP-0112
   source: ANNEX-XIV-P005
@@ -168,7 +168,7 @@ records:
   product_scope_reason: *outside_reason
   implementation_mode: *none_required
   implementation_reason: *outside_implementation
-  verification_mode: *not_assessed
+  verification_mode: *not_reported
   dependencies: *article30_dependency
 - norm_id: AIA-NORM-ANNEX-XIV-AIB-0201
   source: ANNEX-XIV-P005
@@ -181,7 +181,7 @@ records:
   product_scope_reason: *outside_reason
   implementation_mode: *none_required
   implementation_reason: *outside_implementation
-  verification_mode: *not_assessed
+  verification_mode: *not_reported
   dependencies: *article30_dependency
 - norm_id: AIA-NORM-ANNEX-XIV-AIB-0202
   source: ANNEX-XIV-P005
@@ -194,7 +194,7 @@ records:
   product_scope_reason: *outside_reason
   implementation_mode: *none_required
   implementation_reason: *outside_implementation
-  verification_mode: *not_assessed
+  verification_mode: *not_reported
   dependencies: *article30_dependency
 - norm_id: AIA-NORM-ANNEX-XIV-AIB-0203
   source: ANNEX-XIV-P005
@@ -207,7 +207,7 @@ records:
   product_scope_reason: *outside_reason
   implementation_mode: *none_required
   implementation_reason: *outside_implementation
-  verification_mode: *not_assessed
+  verification_mode: *not_reported
   dependencies: *article30_dependency
 - norm_id: AIA-NORM-ANNEX-XIV-AIH-0101
   source: ANNEX-XIV-P007
@@ -220,7 +220,7 @@ records:
   product_scope_reason: *outside_reason
   implementation_mode: *none_required
   implementation_reason: *outside_implementation
-  verification_mode: *not_assessed
+  verification_mode: *not_reported
   dependencies: *article30_dependency
 - norm_id: AIA-NORM-ANNEX-XIV-AIH-0201
   source: ANNEX-XIV-P007
@@ -233,7 +233,7 @@ records:
   product_scope_reason: *outside_reason
   implementation_mode: *none_required
   implementation_reason: *outside_implementation
-  verification_mode: *not_assessed
+  verification_mode: *not_reported
   dependencies: *article30_dependency
 - norm_id: AIA-NORM-ANNEX-XIV-AIH-0202
   source: ANNEX-XIV-P007
@@ -246,7 +246,7 @@ records:
   product_scope_reason: *outside_reason
   implementation_mode: *none_required
   implementation_reason: *outside_implementation
-  verification_mode: *not_assessed
+  verification_mode: *not_reported
   dependencies: *article30_dependency
 - norm_id: AIA-NORM-ANNEX-XIV-AIH-0203
   source: ANNEX-XIV-P007
@@ -259,7 +259,7 @@ records:
   product_scope_reason: *outside_reason
   implementation_mode: *none_required
   implementation_reason: *outside_implementation
-  verification_mode: *not_assessed
+  verification_mode: *not_reported
   dependencies: *article30_dependency
 - norm_id: AIA-NORM-ANNEX-XIV-AIH-0204
   source: ANNEX-XIV-P007
@@ -272,7 +272,7 @@ records:
   product_scope_reason: *outside_reason
   implementation_mode: *none_required
   implementation_reason: *outside_implementation
-  verification_mode: *not_assessed
+  verification_mode: *not_reported
   dependencies: *article30_dependency
 - norm_id: AIA-NORM-ANNEX-XIV-AIH-0205
   source: ANNEX-XIV-P007
@@ -287,7 +287,7 @@ records:
   product_scope_reason: *outside_reason
   implementation_mode: *none_required
   implementation_reason: *outside_implementation
-  verification_mode: *not_assessed
+  verification_mode: *not_reported
   dependencies: *article30_dependency
 - norm_id: AIA-NORM-ANNEX-XIV-AIH-0301
   source: ANNEX-XIV-P007
@@ -300,7 +300,7 @@ records:
   product_scope_reason: *outside_reason
   implementation_mode: *none_required
   implementation_reason: *outside_implementation
-  verification_mode: *not_assessed
+  verification_mode: *not_reported
   dependencies: *article30_dependency
 - norm_id: AIA-NORM-ANNEX-XIV-AIH-0401
   source: ANNEX-XIV-P007
@@ -315,7 +315,7 @@ records:
   product_scope_reason: *outside_reason
   implementation_mode: *none_required
   implementation_reason: *outside_implementation
-  verification_mode: *not_assessed
+  verification_mode: *not_reported
   dependencies: *article30_dependency
 - norm_id: AIA-NORM-ANNEX-XIV-USE-CODES-IN-APPLICATION
   source: ANNEX-XIV-P009
@@ -327,7 +327,7 @@ records:
   product_scope_reason: *outside_reason
   implementation_mode: *none_required
   implementation_reason: *outside_implementation
-  verification_mode: *not_assessed
+  verification_mode: *not_reported
   dependencies:
   - dependency_ref: AIA-NORM-A029-P1-SUBMIT-APPLICATION
     resolution: internal_resolved

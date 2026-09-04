@@ -10,7 +10,7 @@ records:
   - before making the high-risk AI system available on the market
   implementation_refs: &id002
   - AIA-DI-A24
-  verification_mode: listed_for_confirmation
+  verification_mode: reported_not_judged
 - norm_id: AIA-NORM-A024-P1-VERIFY-ACCOMPANYING-DOCUMENTS
   source: A024-P001
   quote: that it is accompanied by a copy of the EU declaration of conformity referred to in Article 47
@@ -21,7 +21,7 @@ records:
   subject_category: supported_operator
   conditions: *id001
   implementation_refs: *id002
-  verification_mode: listed_for_confirmation
+  verification_mode: reported_not_judged
   mandatory_content:
   - EU declaration of conformity
   - instructions for use
@@ -35,7 +35,7 @@ records:
   subject_category: supported_operator
   conditions: *id001
   implementation_refs: *id002
-  verification_mode: listed_for_confirmation
+  verification_mode: reported_not_judged
   mandatory_content:
   - provider identification under Article 16(b)
   - provider quality-management system under Article 16(c)
@@ -64,7 +64,7 @@ records:
   - the distributor considers or has reason to consider from its information that the system is not Section
     2 compliant
   implementation_refs: *id002
-  verification_mode: listed_for_confirmation
+  verification_mode: reported_not_judged
 - norm_id: AIA-NORM-A024-P2-INFORM-RISK
   source: A024-P002
   quote: where the high-risk AI system presents a risk within the meaning of Article 79(1), the distributor
@@ -75,7 +75,7 @@ records:
   conditions: &id003
   - the high-risk AI system presents a risk within the meaning of Article 79(1)
   implementation_refs: *id002
-  verification_mode: listed_for_confirmation
+  verification_mode: reported_not_judged
   dependencies:
   - dependency_ref: Article 79(1) of this Regulation
     resolution: unresolved
@@ -90,7 +90,7 @@ records:
   subject_ref: distributor
   subject_category: supported_operator
   implementation_refs: *id002
-  verification_mode: listed_for_confirmation
+  verification_mode: reported_not_judged
 - norm_id: AIA-NORM-A024-P4-CORRECTIVE-RESPONSE
   source: A024-P004
   quote: shall take the corrective actions necessary to bring that system into conformity with those requirements,
@@ -104,7 +104,7 @@ records:
   - the distributor considers or has reason to consider from its information that a system it made available
     is not Section 2 compliant
   implementation_refs: *id002
-  verification_mode: listed_for_confirmation
+  verification_mode: reported_not_judged
 - norm_id: AIA-NORM-A024-P4-NOTIFY-RISK
   source: A024-P004
   quote: Where the high-risk AI system presents a risk within the meaning of Article 79(1), the distributor
@@ -117,7 +117,7 @@ records:
   subject_category: supported_operator
   conditions: *id003
   implementation_refs: *id002
-  verification_mode: listed_for_confirmation
+  verification_mode: reported_not_judged
   mandatory_content:
   - notification to the provider or importer
   - notification to the authorities competent for the system
@@ -140,7 +140,7 @@ records:
   conditions:
   - a relevant competent authority makes a reasoned request
   implementation_refs: *id002
-  verification_mode: listed_for_confirmation
+  verification_mode: reported_not_judged
 - norm_id: AIA-NORM-A024-P6-COOPERATE
   source: A024-P006
   quote: Distributors shall cooperate with the relevant competent authorities in any action those authorities
@@ -151,4 +151,4 @@ records:
   subject_ref: distributor
   subject_category: supported_operator
   implementation_refs: *id002
-  verification_mode: listed_for_confirmation
+  verification_mode: reported_not_judged

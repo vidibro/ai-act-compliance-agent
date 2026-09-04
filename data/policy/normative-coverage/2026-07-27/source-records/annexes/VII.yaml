@@ -46,7 +46,7 @@ records:
   implementation_refs:
   - AIA-PO-A43-1B
   - AIA-PO-A43-3
-  verification_mode: listed_for_confirmation
+  verification_mode: reported_not_judged
   mandatory_content:
   - the name and address of the provider
   - if the application is lodged by an authorised representative, also their name and address
@@ -66,7 +66,7 @@ records:
   implementation_refs:
   - AIA-PO-A43-1B
   - AIA-PO-A43-3
-  verification_mode: listed_for_confirmation
+  verification_mode: reported_not_judged
 - norm_id: AIA-NORM-ANNEX-VII-QMS-CHANGE
   source: ANNEX-VII-I3
   quote: shall be brought to the attention of the notified body by the provider
@@ -76,7 +76,7 @@ records:
   implementation_refs:
   - AIA-PO-A43-1B
   - AIA-PO-A43-3
-  verification_mode: listed_for_confirmation
+  verification_mode: reported_not_judged
 - norm_id: AIA-NORM-ANNEX-VII-QMS-ASSESS
   source: ANNEX-VII-I3
   quote: The quality management system shall be assessed by the notified body
@@ -87,7 +87,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-ANNEX-VII-QMS-DECISION
   source: ANNEX-VII-I3
   quote: The decision shall be notified to the provider or its authorised representative.
@@ -99,7 +99,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
   mandatory_content:
   - conclusions of the quality-management-system assessment
   - reasoned assessment decision
@@ -114,7 +114,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-ANNEX-VII-QMS-CHANGE-NOTIFICATION
   source: ANNEX-VII-I3
   quote: The notified body shall notify the provider of its decision. The notification shall contain the conclusions of the examination of the changes and the reasoned assessment decision.
@@ -125,7 +125,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
   mandatory_content:
   - the conclusions of the examination of the changes
   - the reasoned assessment decision
@@ -166,7 +166,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-ANNEX-VII-DATA-ACCESS
   source: ANNEX-VII-I4
   quote: the notified body shall be granted full access to the training, validation, and testing data
@@ -177,7 +177,7 @@ records:
   implementation_refs:
   - AIA-PO-A43-1B
   - AIA-PO-A43-3
-  verification_mode: listed_for_confirmation
+  verification_mode: reported_not_judged
   conditions:
   - access is relevant and limited to what is necessary for the notified body to fulfil its tasks
   - any remote access is provided through an API or another relevant technical means or tool where appropriate
@@ -191,7 +191,7 @@ records:
   implementation_refs:
   - AIA-PO-A43-1B
   - AIA-PO-A43-3
-  verification_mode: listed_for_confirmation
+  verification_mode: reported_not_judged
   conditions:
   - notified body requires them
 - norm_id: AIA-NORM-ANNEX-VII-TESTS
@@ -204,7 +204,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-ANNEX-VII-MODEL-ACCESS
   source: ANNEX-VII-I4
   quote: the notified body shall also be granted access to the training and trained models
@@ -214,7 +214,7 @@ records:
   implementation_refs:
   - AIA-PO-A43-1B
   - AIA-PO-A43-3
-  verification_mode: listed_for_confirmation
+  verification_mode: reported_not_judged
   conditions:
   - access is necessary to assess compliance with Chapter III Section 2
   - all other reasonable means of verifying conformity have been exhausted and proved insufficient
@@ -233,7 +233,7 @@ records:
   implementation_refs:
   - AIA-PO-A43-1B
   - AIA-PO-A43-3
-  verification_mode: listed_for_confirmation
+  verification_mode: reported_not_judged
 - norm_id: AIA-NORM-ANNEX-VII-DOC-DECISION
   source: ANNEX-VII-I4
   quote: The decision of the notified body shall be notified to the provider or its authorised representative.
@@ -245,7 +245,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
   mandatory_content:
   - conclusions of the technical-documentation assessment
   - reasoned assessment decision
@@ -259,7 +259,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
   conditions:
   - the AI system conforms with Chapter III Section 2
 - norm_id: AIA-NORM-ANNEX-VII-CERTIFICATE-CONTENT
@@ -272,7 +272,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
   mandatory_content:
   - provider name and address
   - conclusions of the examination
@@ -291,7 +291,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-ANNEX-VII-DATA-REASONS
   source: ANNEX-VII-I4
   quote: shall contain specific considerations on the quality data used to train the AI system
@@ -302,7 +302,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
   conditions:
   - the AI system fails to meet the requirement relating to the data used to train it
   mandatory_content:
@@ -318,7 +318,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-ANNEX-VII-INFORM-CHANGES
   source: ANNEX-VII-I4
   quote: The provider shall inform such notified body of its intention to introduce any of the abovementioned changes, or if it otherwise becomes aware of the occurrence of such changes.
@@ -335,7 +335,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
   dependencies:
   - dependency_ref: AIA-NORM-A043-P4-NEW-ASSESSMENT
     resolution: internal_resolved
@@ -353,7 +353,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-ANNEX-VII-SURVEILLANCE
   source: ANNEX-VII-I5
   quote: the provider shall allow the notified body to access the premises
@@ -363,7 +363,7 @@ records:
   implementation_refs:
   - AIA-PO-A43-1B
   - AIA-PO-A43-3
-  verification_mode: listed_for_confirmation
+  verification_mode: reported_not_judged
 - norm_id: AIA-NORM-ANNEX-VII-AUDIT
   source: ANNEX-VII-I5
   quote: The notified body shall carry out periodic audits
@@ -374,7 +374,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-ANNEX-VII-ADDITIONAL-TESTS
   source: ANNEX-VII-I5
   quote: the notified body may carry out additional tests of the AI systems for which a Union technical documentation assessment certificate was issued.
@@ -388,4 +388,4 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported

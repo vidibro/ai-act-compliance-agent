@@ -21,7 +21,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A092-P2-APPOINT-INDEPENDENT-EXPERTS
   source: A092-P004
   quote: The Commission may decide to appoint independent experts to carry out evaluations on its behalf, including from the scientific panel established pursuant to Article 68. Independent experts appointed for this task shall meet the criteria outlined in Article 68(2).
@@ -33,7 +33,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A092-P3-REQUEST-MODEL-ACCESS
   source: A092-P005
   quote: the Commission may request access to the general-purpose AI model concerned through APIs or further appropriate technical means and tools, including source code.
@@ -45,7 +45,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A092-P4-ACCESS-REQUEST-CONTENT
   source: A092-P006
   quote: The request for access shall state the legal basis, the purpose and reasons of the request and set the period within which the access is to be provided, and the fines provided for in Article 101 for failure to provide access.
@@ -57,7 +57,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A092-P5-PROVIDE-MODEL-ACCESS
   source: A092-P007
   quote: The providers of the general-purpose AI model concerned or its representative shall supply the information requested.
@@ -65,7 +65,7 @@ records:
   subject_ref: gpai_provider_or_representative
   subject_category: supported_operator
   implementation_refs: [AIA-GP-A92-5]
-  verification_mode: listed_for_confirmation
+  verification_mode: reported_not_judged
 - norm_id: AIA-NORM-A092-P5-AUTHORISED-PERSON-PROVIDE-ACCESS
   source: A092-P007
   quote: the persons authorised to represent them by law or by their statutes, shall provide the access requested on behalf of the provider of the general-purpose AI model concerned.
@@ -76,7 +76,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A092-P6-ADOPT-EVALUATION-ARRANGEMENTS
   source: A092-P008
   quote: The Commission shall adopt implementing acts setting out the detailed arrangements and the conditions for the evaluations, including the detailed arrangements for involving independent experts, and the procedure for the selection thereof.
@@ -87,7 +87,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A092-P7-INITIATE-STRUCTURED-DIALOGUE
   source: A092-P009
   quote: Prior to requesting access to the general-purpose AI model concerned, the AI Office may initiate a structured dialogue with the provider of the general-purpose AI model
@@ -99,4 +99,4 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported

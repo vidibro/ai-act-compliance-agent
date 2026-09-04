@@ -12,7 +12,7 @@ records:
   - the provider is established in a third country
   implementation_refs: &id001
   - AIA-PO-A22
-  verification_mode: listed_for_confirmation
+  verification_mode: reported_not_judged
 - norm_id: AIA-NORM-A022-P2-ENABLE-REPRESENTATIVE
   source: A022-P002
   quote: The provider shall enable its authorised representative to perform the tasks specified in the
@@ -21,7 +21,7 @@ records:
   subject_ref: provider
   subject_category: supported_operator
   implementation_refs: *id001
-  verification_mode: listed_for_confirmation
+  verification_mode: reported_not_judged
 - norm_id: AIA-NORM-A022-P3-PERFORM-MANDATE
   source: A022-P003
   quote: The authorised representative shall perform the tasks specified in the mandate received from
@@ -31,7 +31,7 @@ records:
   subject_category: supported_operator
   implementation_refs: &id002
   - AIA-AR-A22
-  verification_mode: listed_for_confirmation
+  verification_mode: reported_not_judged
 - norm_id: AIA-NORM-A022-P3-PROVIDE-MANDATE
   source: A022-P003
   quote: It shall provide a copy of the mandate to the market surveillance authorities upon request, in
@@ -42,7 +42,7 @@ records:
   conditions: &id003
   - a market-surveillance authority requests a copy of the mandate
   implementation_refs: *id002
-  verification_mode: listed_for_confirmation
+  verification_mode: reported_not_judged
 - norm_id: AIA-NORM-A022-P3-MANDATE-LANGUAGE
   source: A022-P003
   quote: It shall provide a copy of the mandate to the market surveillance authorities upon request, in
@@ -53,7 +53,7 @@ records:
   subject_category: supported_operator
   conditions: *id003
   implementation_refs: *id002
-  verification_mode: listed_for_confirmation
+  verification_mode: reported_not_judged
 - norm_id: AIA-NORM-A022-P3-ADDRESSABLE
   source: A022-P003
   quote: The mandate shall empower the authorised representative to be addressed, in addition to or instead
@@ -64,7 +64,7 @@ records:
   subject_ref: authorised_representative
   subject_category: supported_operator
   implementation_refs: *id002
-  verification_mode: listed_for_confirmation
+  verification_mode: reported_not_judged
 - norm_id: AIA-NORM-A022-P3-A-VERIFY
   source: A022-P004
   quote: verify that the EU declaration of conformity referred to in Article 47 and the technical documentation
@@ -75,7 +75,7 @@ records:
   subject_ref: authorised_representative
   subject_category: supported_operator
   implementation_refs: *id002
-  verification_mode: listed_for_confirmation
+  verification_mode: reported_not_judged
   qualifier_spans: &id004
   - A022-P003
 - norm_id: AIA-NORM-A022-P3-B-KEEP-RECORDS
@@ -90,7 +90,7 @@ records:
   subject_ref: authorised_representative
   subject_category: supported_operator
   implementation_refs: *id002
-  verification_mode: listed_for_confirmation
+  verification_mode: reported_not_judged
   mandatory_content:
   - appointing provider contact details
   - EU declaration of conformity
@@ -109,7 +109,7 @@ records:
   conditions: &id005
   - a competent authority makes a reasoned request
   implementation_refs: *id002
-  verification_mode: listed_for_confirmation
+  verification_mode: reported_not_judged
   qualifier_spans: *id004
 - norm_id: AIA-NORM-A022-P3-C-PROVIDE-LOG-ACCESS
   source: A022-P006
@@ -122,7 +122,7 @@ records:
   - a competent authority makes a reasoned request
   - the applicable automatically generated logs are under the provider's control
   implementation_refs: *id002
-  verification_mode: listed_for_confirmation
+  verification_mode: reported_not_judged
   qualifier_spans: *id004
   dependencies:
   - dependency_ref: AIA-NORM-A012-P1-AUTOMATIC-LOGGING
@@ -139,7 +139,7 @@ records:
   subject_category: supported_operator
   conditions: *id005
   implementation_refs: *id002
-  verification_mode: listed_for_confirmation
+  verification_mode: reported_not_judged
   qualifier_spans: *id004
 - norm_id: AIA-NORM-A022-P3-E-REGISTER
   source: A022-P008
@@ -150,7 +150,7 @@ records:
   conditions:
   - Article 49(1) registration obligations apply to the representative
   implementation_refs: *id002
-  verification_mode: listed_for_confirmation
+  verification_mode: reported_not_judged
   qualifier_spans: *id004
 - norm_id: AIA-NORM-A022-P3-E-ENSURE-REGISTRATION-CORRECT
   source: A022-P008
@@ -162,7 +162,7 @@ records:
   conditions:
   - the provider carries out the registration itself
   implementation_refs: *id002
-  verification_mode: listed_for_confirmation
+  verification_mode: reported_not_judged
   qualifier_spans: *id004
 - norm_id: AIA-NORM-A022-P4-TERMINATE-MANDATE
   source: A022-P009
@@ -176,7 +176,7 @@ records:
   - the representative considers or has reason to consider that the provider is acting contrary to its
     obligations under the Regulation
   implementation_refs: *id002
-  verification_mode: listed_for_confirmation
+  verification_mode: reported_not_judged
 - norm_id: AIA-NORM-A022-P4-NOTIFY-TERMINATION
   source: A022-P009
   quote: In such a case, it shall immediately inform the relevant market surveillance authority, as well
@@ -188,4 +188,4 @@ records:
   subject_category: supported_operator
   conditions: *id006
   implementation_refs: *id002
-  verification_mode: listed_for_confirmation
+  verification_mode: reported_not_judged

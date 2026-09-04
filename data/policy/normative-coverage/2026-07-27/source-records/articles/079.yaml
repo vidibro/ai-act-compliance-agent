@@ -10,7 +10,7 @@ records:
   product_scope_reason: The definition controls enforcement procedure without creating an independent operator action.
   implementation_mode: none_required
   implementation_reason: No independent product action arises.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A079-P2-EVALUATE-RISK-SYSTEM
   source: A079-P002
   quote: it shall carry out an evaluation of the AI system concerned in respect of its compliance with all the requirements and obligations laid down in this Regulation.
@@ -21,7 +21,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A079-P2-ADDRESS-FUNDAMENTAL-RIGHTS-RISKS
   source: A079-P002
   quote: Particular attention shall be given to AI systems presenting a risk to vulnerable groups. Where risks to fundamental rights are identified, the market surveillance authority shall also inform and fully cooperate with the relevant national public authorities or bodies referred to in Article 77(1).
@@ -32,7 +32,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A079-P2-OPERATOR-COOPERATION
   source: A079-P002
   quote: The relevant operators shall cooperate as necessary with the market surveillance authority and with the other national public authorities or bodies referred to in Article 77(1).
@@ -40,7 +40,7 @@ records:
   subject_ref: operator
   subject_category: supported_operator
   implementation_refs: [AIA-ALL-A79]
-  verification_mode: listed_for_confirmation
+  verification_mode: reported_not_judged
 - norm_id: AIA-NORM-A079-P2-REQUIRE-CORRECTIVE-ACTION
   source: A079-P003
   quote: it shall without undue delay require the relevant operator to take all appropriate corrective actions to bring the AI system into compliance, to withdraw the AI system from the market, or to recall it
@@ -51,7 +51,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A079-P2-INFORM-NOTIFIED-BODY
   source: A079-P004
   quote: The market surveillance authority shall inform the relevant notified body accordingly.
@@ -62,7 +62,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A079-P2-APPLY-ARTICLE-18
   source: A079-P004
   quote: Article 18 of Regulation (EU) 2019/1020 shall apply to the measures referred to in the second subparagraph of this paragraph.
@@ -74,7 +74,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A079-P3-INFORM-CROSS-BORDER-NONCOMPLIANCE
   source: A079-P005
   quote: it shall inform the Commission and the other Member States without undue delay of the results of the evaluation and of the actions which it has required the operator to take.
@@ -85,7 +85,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A079-P4-CORRECT-ALL-UNION-SYSTEMS
   source: A079-P006
   quote: The operator shall ensure that all appropriate corrective action is taken in respect of all the AI systems concerned that it has made available on the Union market.
@@ -93,7 +93,7 @@ records:
   subject_ref: operator
   subject_category: supported_operator
   implementation_refs: [AIA-ALL-A79]
-  verification_mode: listed_for_confirmation
+  verification_mode: reported_not_judged
 - norm_id: AIA-NORM-A079-P5-TAKE-AND-NOTIFY-PROVISIONAL-MEASURES
   source: A079-P007
   quote: the market surveillance authority shall take all appropriate provisional measures to prohibit or restrict the AI system’s being made available on its national market or put into service, to withdraw the product or the standalone AI system from that market or to recall it.
@@ -108,7 +108,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A079-P5-NOTIFY-PROVISIONAL-MEASURES
   source: A079-P007
   quote: That authority shall without undue delay notify the Commission and the other Member States of those measures.
@@ -119,7 +119,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A079-P6-NOTIFICATION-CONTENT
   source: A079-P008
   quote: The notification referred to in paragraph 5 shall include all available details
@@ -144,7 +144,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A079-P7-OTHER-AUTHORITY-NOTIFICATION
   source: A079-P013
   quote: shall, without undue delay, inform the Commission and the other Member States of any measures adopted and of any additional information at their disposal relating to the non-compliance of the AI system concerned, and, in the event of disagreement with the notified national measure, of their objections.
@@ -155,7 +155,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A079-P8-DEEM-MEASURE-JUSTIFIED
   source: A079-P014
   quote: that measure shall be deemed justified.
@@ -169,7 +169,7 @@ records:
   product_scope_reason: This procedural consequence creates no independent product action.
   implementation_mode: none_required
   implementation_reason: No independent product action arises.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A079-P8-PRESERVE-OPERATOR-PROCEDURAL-RIGHTS
   source: A079-P014
   quote: This shall be without prejudice to the procedural rights of the concerned operator in accordance with Article 18 of Regulation (EU) 2019/1020.
@@ -182,7 +182,7 @@ records:
   product_scope_reason: This procedural consequence creates no independent product action.
   implementation_mode: none_required
   implementation_reason: No independent product action arises.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A079-P8-SHORTENED-ARTICLE-5-PERIOD
   source: A079-P014
   quote: The three-month period referred to in this paragraph shall be reduced to 30 days in the event of non-compliance with the prohibition of the AI practices referred to in Article 5 of this Regulation.
@@ -195,7 +195,7 @@ records:
   product_scope_reason: This procedural consequence creates no independent product action.
   implementation_mode: none_required
   implementation_reason: No independent product action arises.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A079-P9-TAKE-RESTRICTIVE-MEASURES
   source: A079-P015
   quote: The market surveillance authorities shall ensure that appropriate restrictive measures are taken in respect of the product or the AI system concerned, such as withdrawal of the product or the AI system from their market, without undue delay.
@@ -206,4 +206,4 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported

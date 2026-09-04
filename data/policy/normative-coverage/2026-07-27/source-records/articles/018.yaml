@@ -10,7 +10,7 @@ records:
   - A018-P001
   implementation_refs: &id002
   - AIA-PO-A18
-  verification_mode: listed_for_confirmation
+  verification_mode: reported_not_judged
   dependencies:
   - dependency_ref: AIA-NORM-A011-P1-DRAW
     resolution: internal_resolved
@@ -24,7 +24,7 @@ records:
   subject_category: supported_operator
   qualifier_spans: *id001
   implementation_refs: *id002
-  verification_mode: listed_for_confirmation
+  verification_mode: reported_not_judged
   dependencies:
   - dependency_ref: AIA-NORM-A017-P1-WRITTEN-DOCUMENTATION
     resolution: internal_resolved
@@ -40,7 +40,7 @@ records:
   conditions:
   - a notified body approved changes to the high-risk AI system
   implementation_refs: *id002
-  verification_mode: listed_for_confirmation
+  verification_mode: reported_not_judged
 - norm_id: AIA-NORM-A018-P1-D-NOTIFIED-BODY-DOCUMENTS
   source: A018-P005
   quote: the decisions and other documents issued by the notified bodies, where applicable
@@ -52,7 +52,7 @@ records:
   conditions:
   - a notified body issued decisions or other documents concerning the high-risk AI system
   implementation_refs: *id002
-  verification_mode: listed_for_confirmation
+  verification_mode: reported_not_judged
 - norm_id: AIA-NORM-A018-P1-E-EU-DECLARATION
   source: A018-P006
   quote: the EU declaration of conformity referred to in Article 47
@@ -62,7 +62,7 @@ records:
   subject_category: supported_operator
   qualifier_spans: *id001
   implementation_refs: *id002
-  verification_mode: listed_for_confirmation
+  verification_mode: reported_not_judged
   dependencies:
   - dependency_ref: Article 47 of this Regulation
     resolution: unresolved
@@ -81,7 +81,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A018-P3-FINANCIAL-DOCUMENTATION
   source: A018-P008
   quote: Providers that are financial institutions subject to requirements regarding their internal governance,
@@ -95,4 +95,4 @@ records:
   - the provider is a financial institution subject to internal-governance requirements under Union financial-services
     law
   implementation_refs: *id002
-  verification_mode: listed_for_confirmation
+  verification_mode: reported_not_judged

@@ -14,7 +14,7 @@ records:
   - registration occurs before placing on the market or putting into service
   implementation_refs:
   - AIA-PO-A49
-  verification_mode: listed_for_confirmation
+  verification_mode: reported_not_judged
 - norm_id: AIA-NORM-A049-P1-REPRESENTATIVE-REGISTER
   source: A049-P001
   quote: Before placing on the market or putting into service a high-risk AI system listed in Annex III,
@@ -31,7 +31,7 @@ records:
   - registration occurs before placing on the market or putting into service
   implementation_refs:
   - AIA-AR-A22
-  verification_mode: listed_for_confirmation
+  verification_mode: reported_not_judged
 - norm_id: AIA-NORM-A049-P2-PROVIDER-REGISTER-NON-HIGH-RISK
   source: A049-P002
   quote: Before placing on the market or putting into service an AI system for which the provider has
@@ -49,7 +49,7 @@ records:
   - AIA-NHR-A06-4
   implementation_reason: The Article 6(4) rule carries the provider limb of the Article 49(2) registration
     obligation.
-  verification_mode: listed_for_confirmation
+  verification_mode: reported_not_judged
 - norm_id: AIA-NORM-A049-P2-REPRESENTATIVE-REGISTER-NON-HIGH-RISK
   source: A049-P002
   quote: Before placing on the market or putting into service an AI system for which the provider has
@@ -66,7 +66,7 @@ records:
   - registration occurs before placing on the market or putting into service
   implementation_refs:
   - AIA-AR-A49-2
-  verification_mode: listed_for_confirmation
+  verification_mode: reported_not_judged
 - norm_id: AIA-NORM-A049-P3-DEPLOYER-REGISTER-USE
   source: A049-P003
   quote: Before putting into service or using a high-risk AI system listed in Annex III, with the exception
@@ -83,7 +83,7 @@ records:
   - registration occurs before putting into service or use
   implementation_refs:
   - AIA-DP-A49-3
-  verification_mode: listed_for_confirmation
+  verification_mode: reported_not_judged
 - norm_id: AIA-NORM-A049-P4-SECURE-NON-PUBLIC-SECTION
   source: A049-P004
   quote: For high-risk AI systems referred to in points 1, 6 and 7 of Annex III, in the areas of law enforcement,
@@ -98,7 +98,7 @@ records:
     management
   implementation_refs:
   - AIA-ALL-A49-4
-  verification_mode: listed_for_confirmation
+  verification_mode: reported_not_judged
 - norm_id: AIA-NORM-A049-P4-RESTRICTED-INFORMATION
   source: A049-P004
   quote: shall include only the following information, as applicable, referred to in
@@ -119,7 +119,7 @@ records:
   - A049-P008
   implementation_refs:
   - AIA-ALL-A49-4
-  verification_mode: listed_for_confirmation
+  verification_mode: reported_not_judged
 - norm_id: AIA-NORM-A049-P4-COMMISSION-ACCESS
   source: A049-P009
   quote: Only the Commission and national authorities referred to in Article 74(8) shall have access to
@@ -132,7 +132,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A049-P4-NATIONAL-AUTHORITY-ACCESS
   source: A049-P009
   quote: Only the Commission and national authorities referred to in Article 74(8) shall have access to
@@ -145,7 +145,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A049-P5-NATIONAL-REGISTRATION
   source: A049-P010
   quote: High-risk AI systems referred to in point 2 of Annex III shall be registered at national level.
@@ -156,4 +156,4 @@ records:
   - the high-risk system is referred to in Annex III point 2
   implementation_refs:
   - AIA-PO-A49-5
-  verification_mode: listed_for_confirmation
+  verification_mode: reported_not_judged

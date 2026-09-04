@@ -10,7 +10,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A029-P2-APPLICATION-CONTENT
   source: A029-P002
   quote: The application for notification shall be accompanied by a description of the conformity assessment
@@ -26,7 +26,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
   mandatory_content:
   - conformity assessment activities
   - conformity assessment modules
@@ -44,7 +44,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A029-P3-NONACCREDITED-EVIDENCE
   source: A029-P004
   quote: Where the conformity assessment body concerned cannot provide an accreditation certificate, it
@@ -60,7 +60,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A029-P4-REUSE-DESIGNATION-DOCUMENTS
   source: A029-P005
   quote: For notified bodies which are designated pursuant to any other Union harmonisation legislation,
@@ -75,7 +75,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A029-P4-SINGLE-APPLICATION
   source: A029-P006
   quote: Notified bodies, which are designated pursuant to any of the Union harmonisation legislation
@@ -92,7 +92,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A029-P4-UPDATE-DOCUMENTATION
   source: A029-P007
   quote: The notified body shall update the documentation referred to in paragraphs 2 and 3 of this Article
@@ -107,4 +107,4 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported

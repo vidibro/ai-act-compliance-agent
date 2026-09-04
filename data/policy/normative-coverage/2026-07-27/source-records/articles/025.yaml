@@ -19,7 +19,7 @@ records:
   implementation_mode: none_required
   implementation_reason: The existing Article 25 role-selection mechanism applies the provider duty set
     rather than producing a duplicate compliance finding.
-  verification_mode: resolved_from_description
+  verification_mode: answered_by_classification
 - norm_id: AIA-NORM-A025-P1-B-MODIFICATION-ROLE-TRANSFER
   source: A025-P003
   quote: they make a substantial modification to a high-risk AI system that has already been placed on
@@ -40,7 +40,7 @@ records:
   implementation_mode: none_required
   implementation_reason: The existing Article 25 role-selection mechanism applies the provider duty set
     rather than producing a duplicate compliance finding.
-  verification_mode: resolved_from_description
+  verification_mode: answered_by_classification
 - norm_id: AIA-NORM-A025-P1-C-PURPOSE-ROLE-TRANSFER
   source: A025-P004
   quote: they modify the intended purpose of an AI system, including a general-purpose AI system, which
@@ -62,7 +62,7 @@ records:
   implementation_mode: none_required
   implementation_reason: The existing Article 25 role-selection mechanism applies the provider duty set
     rather than producing a duplicate compliance finding.
-  verification_mode: resolved_from_description
+  verification_mode: answered_by_classification
 - norm_id: AIA-NORM-A025-P2-INITIAL-PROVIDER-STATUS-ENDS
   source: A025-P005
   quote: Where the circumstances referred to in paragraph 1 occur, the provider that initially placed
@@ -81,7 +81,7 @@ records:
   implementation_mode: none_required
   implementation_reason: The role-selection mechanism removes the initial provider's provider role and
     separately activates its surviving cooperation duties.
-  verification_mode: resolved_from_description
+  verification_mode: answered_by_classification
 - norm_id: AIA-NORM-A025-P2-COOPERATE
   source: A025-P006
   quote: That initial provider shall closely cooperate with new providers
@@ -93,7 +93,7 @@ records:
   - the initial provider clearly specified that its system must not be changed into a high-risk system
   implementation_refs: &id004
   - AIA-IP-A25-2
-  verification_mode: listed_for_confirmation
+  verification_mode: reported_not_judged
 - norm_id: AIA-NORM-A025-P2-PROVIDE-ASSISTANCE
   source: A025-P006
   quote: shall make available the necessary information and provide the reasonably expected technical
@@ -107,7 +107,7 @@ records:
   conditions: *id002
   exceptions: *id003
   implementation_refs: *id004
-  verification_mode: listed_for_confirmation
+  verification_mode: reported_not_judged
   mandatory_content:
   - technical documentation sufficient to assess Article 16 compliance
   - information about known limitations and failure modes
@@ -151,7 +151,7 @@ records:
   implementation_mode: none_required
   implementation_reason: The existing Article 25 role-selection mechanism applies the provider duty set
     rather than producing a duplicate compliance finding.
-  verification_mode: resolved_from_description
+  verification_mode: answered_by_classification
 - norm_id: AIA-NORM-A025-P3-B-PRODUCT-MANUFACTURER-ROLE
   source: A025-P014
   quote: the high-risk AI system is put into service under the name or trademark of the product manufacturer
@@ -172,7 +172,7 @@ records:
   implementation_mode: none_required
   implementation_reason: The existing Article 25 role-selection mechanism applies the provider duty set
     rather than producing a duplicate compliance finding.
-  verification_mode: resolved_from_description
+  verification_mode: answered_by_classification
 - norm_id: AIA-NORM-A025-P4-WRITTEN-AGREEMENT
   source: A025-P015
   quote: The provider of a high-risk AI system and the third party that supplies an AI system, AI model,
@@ -186,7 +186,7 @@ records:
   subject_category: supported_operator
   implementation_refs: &id006
   - AIA-PO-A25-4
-  verification_mode: listed_for_confirmation
+  verification_mode: reported_not_judged
   mandatory_content:
   - necessary information
   - necessary capabilities
@@ -219,7 +219,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A025-P4-AI-OFFICE-SECTOR-REQUIREMENTS
   source: A025-P016
   quote: When developing those voluntary model terms, the AI Office shall take into account possible contractual
@@ -233,7 +233,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A025-P4-AI-OFFICE-PUBLISH
   source: A025-P016
   quote: The voluntary model terms shall be published and be available free of charge in an easily usable
@@ -245,7 +245,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A025-P5-PROTECT-RIGHTS-AND-SECRETS
   source: A025-P017
   quote: Paragraphs 2 and 3 are without prejudice to the need to observe and protect intellectual property

@@ -6,7 +6,7 @@ records:
   subject_ref: deployer
   subject_category: supported_operator
   implementation_refs: [AIA-DP-A86]
-  verification_mode: listed_for_confirmation
+  verification_mode: reported_not_judged
 - norm_id: AIA-NORM-A086-P1-RIGHT-TO-EXPLANATION
   source: A086-P001
   quote: shall have the right to obtain from the deployer clear and meaningful explanations
@@ -18,7 +18,7 @@ records:
   product_scope_reason: This records the person's correlative entitlement; the deployer action is mapped separately.
   implementation_mode: none_required
   implementation_reason: No independent product action arises beyond the mapped deployer duty.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A086-P2-LEGAL-EXCEPTIONS
   source: A086-P002
   quote: Paragraph 1 shall not apply to the use of AI systems for which exceptions from, or restrictions to, the obligation under that paragraph follow from Union or national law in compliance with Union law.
@@ -30,7 +30,7 @@ records:
   product_scope_reason: This qualifies the mapped explanation duty rather than creating another action.
   implementation_mode: none_required
   implementation_reason: No independent product action arises.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A086-P3-SUBSIDIARY-RIGHT
   source: A086-P003
   quote: This Article shall apply only to the extent that the right referred to in paragraph 1 is not otherwise provided for under Union law.
@@ -42,4 +42,4 @@ records:
   product_scope_reason: This defines the right's legal boundary without creating another action.
   implementation_mode: none_required
   implementation_reason: No independent product action arises.
-  verification_mode: not_assessed
+  verification_mode: not_reported

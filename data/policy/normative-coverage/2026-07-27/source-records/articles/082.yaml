@@ -9,7 +9,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A082-P2-CORRECT-ALL-UNION-SYSTEMS
   source: A082-P002
   quote: The provider or other relevant operator shall ensure that corrective action is taken in respect of all the AI systems concerned that it has made available on the Union market within the timeline prescribed by the market surveillance authority
@@ -17,7 +17,7 @@ records:
   subject_ref: provider_or_other_relevant_operator
   subject_category: supported_operator
   implementation_refs: [AIA-ALL-A82]
-  verification_mode: listed_for_confirmation
+  verification_mode: reported_not_judged
 - norm_id: AIA-NORM-A082-P3-INFORM-ABOUT-RISK-FINDING
   source: A082-P003
   quote: The Member States shall immediately inform the Commission and the other Member States of a finding under paragraph 1.
@@ -29,7 +29,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A082-P4-CONSULT-AND-EVALUATE
   source: A082-P004
   quote: The Commission shall without undue delay enter into consultation with the Member States concerned and the relevant operators, and shall evaluate the national measures taken.
@@ -40,7 +40,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A082-P4-DECIDE-AND-PROPOSE
   source: A082-P004
   quote: the Commission shall decide whether the measure is justified and, where necessary, propose other appropriate measures.
@@ -51,7 +51,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A082-P5-COMMUNICATE-DECISION
   source: A082-P005
   quote: The Commission shall immediately communicate its decision to the Member States concerned and to the relevant operators.
@@ -63,7 +63,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A082-P5-INFORM-OTHER-MEMBER-STATES
   source: A082-P005
   quote: It shall also inform the other Member States.
@@ -74,4 +74,4 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported

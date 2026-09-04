@@ -9,7 +9,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A098-P2-EXAMINATION-PROCEDURE
   source: A098-P002
   quote: Article 5 of Regulation (EU) No 182/2011 shall apply
@@ -21,4 +21,4 @@ records:
   product_scope_reason: This institutional procedure is outside the supported operator surface.
   implementation_mode: none_required
   implementation_reason: No product implementation is required.
-  verification_mode: not_assessed
+  verification_mode: not_reported

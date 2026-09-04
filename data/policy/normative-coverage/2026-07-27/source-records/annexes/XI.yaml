@@ -7,7 +7,7 @@ records:
   subject_category: supported_operator
   implementation_mode: carried_by_other_norm
   implementation_reason: Carried by the Article 53(1)(a) Annex XI content norm.
-  verification_mode: judged_from_document
+  verification_mode: judged_by_gap_analysis
   mandatory_content:
   - tasks the model is intended to perform and the type and nature of AI systems into which it can be integrated
   - applicable acceptable-use policies
@@ -51,7 +51,7 @@ records:
   - the model's energy consumption is unknown
   implementation_refs:
   - AIA-GP-A53-1A
-  verification_mode: listed_for_confirmation
+  verification_mode: reported_not_judged
 - norm_id: AIA-NORM-ANNEX-XI-SECTION-2-SYSTEMIC-RISK-DOCUMENTATION
   source: ANNEX-XI-P019
   qualifier_spans: [ANNEX-XI-P017, ANNEX-XI-P018]
@@ -61,7 +61,7 @@ records:
   subject_category: supported_operator
   implementation_mode: carried_by_other_norm
   implementation_reason: Carried by the Article 53(1)(a) Annex XI content norm.
-  verification_mode: judged_from_document
+  verification_mode: judged_by_gap_analysis
   conditions:
   - the general-purpose AI model has systemic risk
   - operator: any_of
@@ -87,7 +87,7 @@ records:
   subject_category: supported_operator
   implementation_mode: carried_by_other_norm
   implementation_reason: Carried by the Article 53(1)(a) Annex XI content norm.
-  verification_mode: judged_from_document
+  verification_mode: judged_by_gap_analysis
   conditions:
   - the general-purpose AI model has systemic risk
   - where applicable
@@ -108,7 +108,7 @@ records:
   subject_category: supported_operator
   implementation_mode: carried_by_other_norm
   implementation_reason: Carried by the Article 53(1)(a) Annex XI content norm.
-  verification_mode: judged_from_document
+  verification_mode: judged_by_gap_analysis
   conditions:
   - the general-purpose AI model has systemic risk
   - where applicable

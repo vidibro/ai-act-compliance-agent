@@ -10,7 +10,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A076-P1A-ARTICLE-60A-SUBSTITUTIONS
   source: A076-P002
   quote: Where testing in real world conditions is based on Article 60a, any reference to a market surveillance authority in this Article shall be construed as a reference to the national competent authority or appropriate authority under the Union harmonisation legislation listed in Section B of Annex I, and references to Article 60 shall be construed as references to Article 60a, as appropriate.
@@ -22,7 +22,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A076-P2-VERIFY-SANDBOX-TESTING
   source: A076-P003
   quote: the market surveillance authorities shall verify the compliance with Article 60 as part of their supervisory role for the AI regulatory sandbox
@@ -33,7 +33,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A076-P2-ALLOW-DEROGATION
   source: A076-P003
   quote: Those authorities may, as appropriate, allow the testing in real world conditions to be conducted by the provider or prospective provider, in derogation from the conditions set out in Article 60(4), points (f) and (g).
@@ -45,7 +45,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A076-P3-INTERVENE-IN-TESTING
   source: A076-P004
   quote: it may take either of the following decisions on its territory, as appropriate
@@ -59,7 +59,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A076-P4-GIVE-GROUNDS-AND-CHALLENGE-ROUTE
   source: A076-P007
   quote: the decision or the objection shall indicate the grounds therefor and how the provider or prospective provider can challenge the decision or objection.
@@ -70,7 +70,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A076-P5-COMMUNICATE-GROUNDS
   source: A076-P008
   quote: it shall communicate the grounds therefor to the market surveillance authorities of other Member States in which the AI system has been tested in accordance with the testing plan.
@@ -81,4 +81,4 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported

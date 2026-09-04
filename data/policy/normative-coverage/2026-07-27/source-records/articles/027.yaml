@@ -17,7 +17,7 @@ records:
     III point 5(b) or 5(c)
   implementation_refs: &id004
   - AIA-DP-A27
-  verification_mode: listed_for_confirmation
+  verification_mode: reported_not_judged
   mandatory_content:
   - deployer processes and intended-purpose use
   - intended period and frequency of use
@@ -67,7 +67,7 @@ records:
   conditions:
   - during use, the deployer considers a paragraph 1 element changed or no longer current
   implementation_refs: *id002
-  verification_mode: listed_for_confirmation
+  verification_mode: reported_not_judged
 - norm_id: AIA-NORM-A027-P3-NOTIFY-RESULTS
   source: A027-P009
   quote: Once the assessment referred to in paragraph 1 of this Article has been performed, the deployer
@@ -81,7 +81,7 @@ records:
   - the Article 27(1) assessment has been performed
   implementation_refs: &id003
   - AIA-DP-A27-3
-  verification_mode: listed_for_confirmation
+  verification_mode: reported_not_judged
   mandatory_content:
   - assessment results
   - completed Article 27(5) template
@@ -127,7 +127,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A027-P5-TEMPLATE-DPIA-REUSE
   source: A027-P011
   quote: This template shall, where relevant, give deployers the possibility to include cross-references
@@ -142,4 +142,4 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported

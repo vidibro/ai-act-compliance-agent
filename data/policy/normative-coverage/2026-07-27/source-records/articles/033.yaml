@@ -12,7 +12,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
   conditions:
   - the notified body subcontracts conformity-assessment tasks or uses a subsidiary
 - norm_id: AIA-NORM-A033-P1-INFORM-NOTIFYING-AUTHORITY
@@ -28,7 +28,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
   conditions:
   - the notified body subcontracts conformity-assessment tasks or uses a subsidiary
 - norm_id: AIA-NORM-A033-P2-FULL-RESPONSIBILITY
@@ -42,7 +42,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A033-P3-PROVIDER-AGREEMENT
   source: A033-P003
   quote: Activities may be subcontracted or carried out by a subsidiary only with the agreement of the
@@ -55,7 +55,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
   conditions:
   - the provider agrees to the subcontracting or subsidiary arrangement
 - norm_id: AIA-NORM-A033-P3-PUBLISH-SUBSIDIARIES
@@ -68,7 +68,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A033-P4-RETAIN-SUBCONTRACTING-DOCUMENTS
   source: A033-P004
   quote: The relevant documents concerning the assessment of the qualifications of the subcontractor or
@@ -82,7 +82,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
   mandatory_content:
   - documents assessing the qualifications of the subcontractor or subsidiary
   - documents concerning work performed by the subcontractor or subsidiary under the Regulation

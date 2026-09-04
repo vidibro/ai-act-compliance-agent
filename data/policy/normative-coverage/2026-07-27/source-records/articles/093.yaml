@@ -12,7 +12,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A093-P2-INITIATE-STRUCTURED-DIALOGUE
   source: A093-P005
   quote: Before a measure is requested, the AI Office may initiate a structured dialogue with the provider of the general-purpose AI model.
@@ -24,7 +24,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A093-P3-MAKE-COMMITMENTS-BINDING
   source: A093-P006
   quote: the Commission may, by decision, make those commitments binding and declare that there are no further grounds for action.
@@ -36,4 +36,4 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported

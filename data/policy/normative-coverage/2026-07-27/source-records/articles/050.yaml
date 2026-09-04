@@ -9,7 +9,7 @@ records:
   subject_category: supported_operator
   implementation_refs:
   - AIA-TR-A50-1
-  verification_mode: judged_from_document
+  verification_mode: judged_by_gap_analysis
   exceptions:
   - interaction with an AI system is obvious from the point of view of a natural person who is reasonably
     well-informed, observant and circumspect, taking into account the circumstances and the context of use
@@ -28,7 +28,7 @@ records:
   subject_category: supported_operator
   implementation_refs:
   - AIA-TR-A50-2
-  verification_mode: judged_from_document
+  verification_mode: judged_by_gap_analysis
   mandatory_content:
   - machine-readable marking
   - detectability as artificial or manipulated
@@ -51,7 +51,7 @@ records:
   subject_category: supported_operator
   implementation_refs:
   - AIA-TR-A50-3
-  verification_mode: listed_for_confirmation
+  verification_mode: reported_not_judged
   exceptions:
   - biometric categorisation or emotion recognition permitted by law to detect, prevent, or
     investigate criminal offences, subject to safeguards for third-party rights and freedoms and
@@ -81,7 +81,7 @@ records:
   subject_category: supported_operator
   implementation_refs:
   - AIA-TR-A50-4
-  verification_mode: listed_for_confirmation
+  verification_mode: reported_not_judged
   conditions:
   - for evidently artistic, creative, satirical, fictional, or analogous works or programmes,
     disclosure is limited to an appropriate indication that does not hamper display or enjoyment
@@ -97,7 +97,7 @@ records:
   subject_category: supported_operator
   implementation_refs:
   - AIA-TR-A50-4
-  verification_mode: listed_for_confirmation
+  verification_mode: reported_not_judged
   exceptions:
   - use authorised by law to detect, prevent, investigate, or prosecute criminal offences
   - AI-generated content underwent human review or editorial control and a natural or legal person
@@ -128,7 +128,7 @@ records:
   product_scope_reason: This proposition supplies applicability or content to operator norms.
   implementation_mode: none_required
   implementation_reason: Represented as a dependency rather than an independent finding.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A050-P7-CODES
   source: A050-P7
   quote: The Commission shall encourage and facilitate the drawing up of codes of practice
@@ -139,7 +139,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A050-P7-ASSESS
   source: A050-P7
   quote: The Commission, taking utmost account of the opinion of the Board, shall assess
@@ -150,7 +150,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A050-P7-ACT
   source: A050-P7
   quote: the Commission may adopt an implementing act
@@ -162,4 +162,4 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported

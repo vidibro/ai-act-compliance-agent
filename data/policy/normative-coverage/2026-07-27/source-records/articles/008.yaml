@@ -12,7 +12,7 @@ records:
   implementation_mode: unresolved
   implementation_reason: The detailed Article 9 to 15 norms must be authored before this Section 2 chapeau
     can receive complete carrier links.
-  verification_mode: not_assessed
+  verification_mode: not_reported
   dependencies:
   - dependency_ref: Articles 9 to 15 of this Regulation
     resolution: unresolved
@@ -29,7 +29,7 @@ records:
   kind: obligation
   implementation_refs:
   - AIA-HR-A09
-  verification_mode: judged_from_document
+  verification_mode: judged_by_gap_analysis
   dependencies:
   - dependency_ref: Article 9 of this Regulation
     resolution: unresolved
@@ -49,7 +49,7 @@ records:
     listed in Annex I Section A apply
   implementation_refs:
   - AIA-PO-A08-2
-  verification_mode: listed_for_confirmation
+  verification_mode: reported_not_judged
   dependencies:
   - dependency_ref: Annex I, Section A, of this Regulation and the Union harmonisation legislation listed
       there

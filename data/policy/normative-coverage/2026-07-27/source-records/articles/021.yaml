@@ -14,7 +14,7 @@ records:
   - a competent authority makes a reasoned request
   implementation_refs: &id002
   - AIA-PO-A21
-  verification_mode: listed_for_confirmation
+  verification_mode: reported_not_judged
 - norm_id: AIA-NORM-A021-P1-AUTHORITY-LANGUAGE
   source: A021-P001
   quote: Providers of high-risk AI systems shall, upon a reasoned request by a competent authority, provide
@@ -28,7 +28,7 @@ records:
   subject_category: supported_operator
   conditions: *id001
   implementation_refs: *id002
-  verification_mode: listed_for_confirmation
+  verification_mode: reported_not_judged
 - norm_id: AIA-NORM-A021-P2-PROVIDE-LOG-ACCESS
   source: A021-P002
   quote: Upon a reasoned request by a competent authority, providers shall also give the requesting competent
@@ -43,7 +43,7 @@ records:
   - "the applicable automatically generated logs are under the provider\u2019s control"
   implementation_refs:
   - AIA-PO-A21-2
-  verification_mode: listed_for_confirmation
+  verification_mode: reported_not_judged
   dependencies:
   - dependency_ref: AIA-NORM-A012-P1-AUTOMATIC-LOGGING
     resolution: internal_resolved
@@ -59,7 +59,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
   dependencies:
   - dependency_ref: Article 78 of this Regulation
     resolution: unresolved

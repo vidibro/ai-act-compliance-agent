@@ -12,7 +12,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A037-P2-PROVIDE-NOTIFICATION-INFORMATION
   source: A037-P002
   quote: The notifying authority shall provide the Commission, on request, with all relevant information
@@ -24,7 +24,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
   mandatory_content:
   - notification information
   - information on maintaining notified-body competence
@@ -39,7 +39,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A037-P4-INFORM-NOTIFYING-STATE
   source: A037-P004
   quote: Where the Commission ascertains that a notified body does not meet or no longer meets the requirements
@@ -52,7 +52,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A037-P4-REQUEST-CORRECTIVE-MEASURES
   source: A037-P004
   quote: Where the Commission ascertains that a notified body does not meet or no longer meets the requirements
@@ -66,7 +66,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A037-P4-COMMISSION-DESIGNATION-POWER
   source: A037-P004
   quote: Where the Member State fails to take the necessary corrective measures, the Commission may, by
@@ -80,7 +80,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A037-P4-EXAMINATION-PROCEDURE
   source: A037-P004
   quote: That implementing act shall be adopted in accordance with the examination procedure referred
@@ -92,4 +92,4 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported

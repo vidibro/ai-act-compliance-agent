@@ -71,11 +71,34 @@ class ImplementationMode(StrEnum):
 
 
 class VerificationMode(StrEnum):
-    JUDGED_FROM_DOCUMENT = "judged_from_document"
-    RESOLVED_FROM_DESCRIPTION = "resolved_from_description"
-    LISTED_FOR_CONFIRMATION = "listed_for_confirmation"
+    """WHICH engine treats a norm, and what an absent fact produces there.
+
+    Ordered strongest treatment first. Both engines read the one submitted document, so the
+    distinction is not where the text comes from — it is what SILENCE means:
+
+    - `judged_by_gap_analysis` — the gap layer rules on the documentation. The document is itself
+      the compliance artefact, so silence is the finding: a `gap`, meaning WRITE THIS.
+    - `answered_by_classification` — the cascade answers one applicability question. Silence proves
+      nothing about the system, so the node abstains (`description_silent`) rather than deciding a
+      risk class on a fact the documentation never supplied.
+    - `reported_not_judged` — printed as owed, with no verdict: the duty applies, and nothing in a
+      document can evidence compliance with it.
+    - `reported_conditionally` — printed as conditional, with no verdict: whether the duty applies
+      at all turns on a fact about the duty-holder or on other law.
+    - `not_reported` — absent from the report. Correct for a norm binding someone the product does
+      not report for; an in-scope duty belongs in one of the two above instead.
+    - `unresolved` — no treatment approved yet. Visible debt, and the builder's default for an
+      in-scope norm, so it means unlabelled rather than undecidable.
+
+    Mislabelling across the first two inverts the report: an obligation marked as a classification
+    question hides a real gap, and a classification question marked as an obligation reports a gap
+    against a system whose tier was never determined."""
+
+    JUDGED_BY_GAP_ANALYSIS = "judged_by_gap_analysis"
+    ANSWERED_BY_CLASSIFICATION = "answered_by_classification"
+    REPORTED_NOT_JUDGED = "reported_not_judged"
     REPORTED_CONDITIONALLY = "reported_conditionally"
-    NOT_ASSESSED = "not_assessed"
+    NOT_REPORTED = "not_reported"
     UNRESOLVED = "unresolved"
 
 

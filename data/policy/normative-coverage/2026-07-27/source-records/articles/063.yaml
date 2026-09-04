@@ -7,7 +7,7 @@ records:
   subject_category: supported_operator
   kind: permission
   conditions: [the SME has no partner enterprise or linked enterprise within Recommendation 2003/361/EC, simplification is limited to elements identified by Commission guidance]
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A063-P1-COMMISSION-SIMPLIFICATION-GUIDANCE
   source: A063-P001
   quote: For that purpose, the Commission shall develop guidelines on the elements of the quality management system which may be complied with in a simplified manner considering the needs of SMEs, without affecting the level of protection or the need for compliance with the requirements in respect of high-risk AI systems.
@@ -18,7 +18,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A063-P2-NO-BROADER-EXEMPTION
   source: A063-P002
   quote: Paragraph 1 of this Article shall not be interpreted as exempting those operators from fulfilling any other requirements or obligations laid down in this Regulation, including those established in Articles 9, 10, 11, 12, 13, 14, 15, 72 and 73.
@@ -30,4 +30,4 @@ records:
   product_scope_reason: Limits the simplification's legal effect rather than creating an independent product action.
   implementation_mode: none_required
   implementation_reason: No independent product action is required.
-  verification_mode: not_assessed
+  verification_mode: not_reported

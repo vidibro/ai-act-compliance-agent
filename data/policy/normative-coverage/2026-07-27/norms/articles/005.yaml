@@ -493,7 +493,7 @@ norms:
   implementation_refs: []
   implementation_reason: The preserved GDPR rule is represented as a legal dependency rather than a standalone
     product rule.
-  verification_mode: not_assessed
+  verification_mode: not_reported
   review:
     status: proposed
     extracted_by: semantic-legal-effect-pass
@@ -1279,7 +1279,7 @@ norms:
   implementation_mode: none_required
   implementation_refs: []
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
   review:
     status: proposed
     extracted_by: semantic-legal-effect-pass
@@ -1317,7 +1317,7 @@ norms:
   implementation_mode: none_required
   implementation_refs: []
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
   review:
     status: proposed
     extracted_by: semantic-legal-effect-pass
@@ -1357,7 +1357,7 @@ norms:
   implementation_mode: none_required
   implementation_refs: []
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
   review:
     status: proposed
     extracted_by: semantic-legal-effect-pass
@@ -1392,7 +1392,7 @@ norms:
   implementation_mode: none_required
   implementation_refs: []
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
   review:
     status: proposed
     extracted_by: semantic-legal-effect-pass
@@ -1429,7 +1429,7 @@ norms:
   implementation_mode: none_required
   implementation_refs: []
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
   review:
     status: proposed
     extracted_by: semantic-legal-effect-pass
@@ -1468,7 +1468,7 @@ norms:
   implementation_mode: none_required
   implementation_refs: []
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
   review:
     status: proposed
     extracted_by: semantic-legal-effect-pass
@@ -1504,7 +1504,7 @@ norms:
   implementation_mode: none_required
   implementation_refs: []
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
   review:
     status: proposed
     extracted_by: semantic-legal-effect-pass
@@ -1540,7 +1540,7 @@ norms:
   implementation_mode: none_required
   implementation_refs: []
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
   review:
     status: proposed
     extracted_by: semantic-legal-effect-pass
@@ -1577,7 +1577,7 @@ norms:
   implementation_mode: none_required
   implementation_refs: []
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
   review:
     status: proposed
     extracted_by: semantic-legal-effect-pass
@@ -1613,7 +1613,7 @@ norms:
   implementation_mode: none_required
   implementation_refs: []
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
   review:
     status: proposed
     extracted_by: semantic-legal-effect-pass
@@ -1655,7 +1655,7 @@ norms:
   implementation_refs: []
   implementation_reason: The preserved external prohibitions are represented as legal dependencies rather
     than standalone product rules.
-  verification_mode: not_assessed
+  verification_mode: not_reported
   review:
     status: proposed
     extracted_by: semantic-legal-effect-pass

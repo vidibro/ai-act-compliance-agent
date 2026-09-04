@@ -12,7 +12,7 @@ records:
   - the general-purpose AI model meets or is known will meet the Article 51(1)(a) condition
   implementation_refs:
   - AIA-GP-A52-1
-  verification_mode: listed_for_confirmation
+  verification_mode: reported_not_judged
 - norm_id: AIA-NORM-A052-P1-NOTIFICATION-CONTENT
   source: A052-P001
   quote: That notification shall include the information necessary to demonstrate that the relevant requirement
@@ -26,7 +26,7 @@ records:
   - information necessary to demonstrate that the Article 51(1)(a) requirement has been met
   implementation_refs:
   - AIA-GP-A52-1
-  verification_mode: listed_for_confirmation
+  verification_mode: reported_not_judged
 - norm_id: AIA-NORM-A052-P1-DESIGNATE-UNNOTIFIED-MODEL
   source: A052-P001
   quote: If the Commission becomes aware of a general-purpose AI model presenting systemic risks of which
@@ -42,7 +42,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A052-P2-PRESENT-REBUTTAL
   source: A052-P002
   quote: The provider of a general-purpose AI model that meets the condition referred to in Article 51(1),
@@ -61,7 +61,7 @@ records:
   product_scope_reason: Grants an optional rebuttal procedure rather than imposing a compliance action.
   implementation_mode: none_required
   implementation_reason: No independent product action is required.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A052-P3-REJECT-UNSUBSTANTIATED-ARGUMENTS
   source: A052-P003
   quote: Where the Commission concludes that the arguments submitted pursuant to paragraph 2 are not sufficiently
@@ -78,7 +78,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A052-P3-SYSTEMIC-RISK-CONSEQUENCE
   source: A052-P003
   quote: the general-purpose AI model shall be considered to be a general-purpose AI model with systemic
@@ -107,7 +107,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A052-P4-AMEND-ANNEX-XIII
   source: A052-P005
   quote: The Commission is empowered to adopt delegated acts in accordance with Article 97 in order to
@@ -120,7 +120,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A052-P5-CONSIDER-REASSESSMENT-REQUEST
   source: A052-P006
   quote: Upon a reasoned request of a provider whose model has been designated as a general-purpose AI
@@ -134,7 +134,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A052-P5-REASSESS-DESIGNATION
   source: A052-P006
   quote: may decide to reassess whether the general-purpose AI model can still be considered to present
@@ -149,7 +149,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A052-P5-REQUEST-CONTENT
   source: A052-P006
   quote: Such a request shall contain objective, detailed and new reasons that have arisen since the designation
@@ -182,7 +182,7 @@ records:
   product_scope_reason: Grants a timed procedural option rather than imposing a compliance action.
   implementation_mode: none_required
   implementation_reason: No independent product action is required.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A052-P6-PUBLISH-LIST
   source: A052-P007
   quote: The Commission shall ensure that a list of general-purpose AI models with systemic risk is published
@@ -193,7 +193,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A052-P6-KEEP-LIST-CURRENT
   source: A052-P007
   quote: shall keep that list up to date
@@ -204,7 +204,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A052-P6-PROTECT-CONFIDENTIAL-INFORMATION
   source: A052-P007
   quote: without prejudice to the need to observe and protect intellectual property rights and confidential
@@ -219,4 +219,4 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported

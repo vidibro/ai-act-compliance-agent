@@ -233,7 +233,7 @@ records:
   implementation_mode: none_required
   implementation_reason: The preserved GDPR rule is represented as a legal dependency rather than a standalone
     product rule.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A005-P1A-MARKET-SERVICE-SCOPE
   source: A005-P019
   quote: 'the placing on the market or putting into service of an AI system that generates or manipulates
@@ -523,7 +523,7 @@ records:
     national rules determine whether covered use is permitted.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A005-P5-LAY-DOWN-RULES
   source: A005-P031
   quote: Member States concerned shall lay down in their national law the necessary detailed rules for
@@ -539,7 +539,7 @@ records:
     national rules govern covered use.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A005-P5-SPECIFY-OBJECTIVES
   source: A005-P031
   quote: Those rules shall also specify in respect of which of the objectives listed in paragraph 1, first
@@ -555,7 +555,7 @@ records:
     specified objectives constrain covered use.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A005-P5-NOTIFY-COMMISSION
   source: A005-P031
   quote: Member States shall notify those rules to the Commission at the latest 30 days following the
@@ -568,7 +568,7 @@ records:
   product_scope_reason: The present product does not report compliance for Member States.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A005-P5-MORE-RESTRICTIVE-LAWS
   source: A005-P031
   quote: Member States may introduce, in accordance with Union law, more restrictive laws on the use of
@@ -583,7 +583,7 @@ records:
     national law can constrain covered use.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A005-P6-SUBMIT-ANNUAL-REPORTS
   source: A005-P032
   quote: "National market surveillance authorities and the national data protection authorities of Member\
@@ -601,7 +601,7 @@ records:
   product_scope_reason: The present product does not report compliance for national supervisory authorities.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A005-P6-PROVIDE-TEMPLATE
   source: A005-P032
   quote: the Commission shall provide Member States and national market surveillance and data protection
@@ -615,7 +615,7 @@ records:
   product_scope_reason: The present product does not report compliance for the Commission.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A005-P6-TEMPLATE-CONTENT
   source: A005-P032
   quote: including information on the number of the decisions taken by competent judicial authorities
@@ -630,7 +630,7 @@ records:
   product_scope_reason: The present product does not report compliance for the Commission.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A005-P7-PUBLISH-ANNUAL-REPORTS
   source: A005-P033
   quote: The Commission shall publish annual reports on the use of real-time remote biometric identification
@@ -645,7 +645,7 @@ records:
   product_scope_reason: The present product does not report compliance for the Commission.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A005-P7-EXCLUDE-SENSITIVE-DATA
   source: A005-P033
   quote: Those annual reports shall not include sensitive operational data of the related law enforcement
@@ -659,7 +659,7 @@ records:
   product_scope_reason: The present product does not report compliance for the Commission.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A005-P8-OTHER-UNION-LAW
   source: A005-P034
   quote: This Article shall not affect the prohibitions that apply where an AI practice infringes other
@@ -678,4 +678,4 @@ records:
   implementation_mode: none_required
   implementation_reason: The preserved external prohibitions are represented as legal dependencies rather
     than standalone product rules.
-  verification_mode: not_assessed
+  verification_mode: not_reported

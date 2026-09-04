@@ -17,7 +17,7 @@ records:
   implementation_mode: none_required
   implementation_reason: Definitions are represented as legal dependencies rather than standalone product
     rules.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A003-D002-RISK
   source: A003-P003
   quote: "\u2018risk\u2019 means the combination of the probability of an occurrence of harm and the severity\
@@ -34,7 +34,7 @@ records:
   implementation_mode: none_required
   implementation_reason: Definitions are represented as legal dependencies rather than standalone product
     rules.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A003-D003-PROVIDER
   source: A003-P004
   quote: "\u2018provider\u2019 means a natural or legal person, public authority, agency or other body\
@@ -53,7 +53,7 @@ records:
   implementation_mode: none_required
   implementation_reason: Definitions are represented as legal dependencies rather than standalone product
     rules.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A003-D004-DEPLOYER
   source: A003-P005
   quote: "\u2018deployer\u2019 means a natural or legal person, public authority, agency or other body\
@@ -73,7 +73,7 @@ records:
   implementation_mode: none_required
   implementation_reason: Definitions are represented as legal dependencies rather than standalone product
     rules.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A003-D005-AUTHORISED-REPRESENTATIVE
   source: A003-P006
   quote: "\u2018authorised representative\u2019 means a natural or legal person located or established\
@@ -92,7 +92,7 @@ records:
   implementation_mode: none_required
   implementation_reason: Definitions are represented as legal dependencies rather than standalone product
     rules.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A003-D006-IMPORTER
   source: A003-P007
   quote: "\u2018importer\u2019 means a natural or legal person located or established in the Union that\
@@ -110,7 +110,7 @@ records:
   implementation_mode: none_required
   implementation_reason: Definitions are represented as legal dependencies rather than standalone product
     rules.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A003-D007-DISTRIBUTOR
   source: A003-P008
   quote: "\u2018distributor\u2019 means a natural or legal person in the supply chain, other than the\
@@ -127,7 +127,7 @@ records:
   implementation_mode: none_required
   implementation_reason: Definitions are represented as legal dependencies rather than standalone product
     rules.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A003-D008-OPERATOR
   source: A003-P009
   quote: "\u2018operator\u2019 means a provider, product manufacturer, deployer, authorised representative,\
@@ -144,7 +144,7 @@ records:
   implementation_mode: none_required
   implementation_reason: Definitions are represented as legal dependencies rather than standalone product
     rules.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A003-D009-PLACING-ON-THE-MARKET
   source: A003-P010
   quote: "\u2018placing on the market\u2019 means the first making available of an AI system or a general-purpose\
@@ -161,7 +161,7 @@ records:
   implementation_mode: none_required
   implementation_reason: Definitions are represented as legal dependencies rather than standalone product
     rules.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A003-D010-MAKING-AVAILABLE-ON-THE-MARKET
   source: A003-P011
   quote: "\u2018making available on the market\u2019 means the supply of an AI system or a general-purpose\
@@ -179,7 +179,7 @@ records:
   implementation_mode: none_required
   implementation_reason: Definitions are represented as legal dependencies rather than standalone product
     rules.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A003-D011-PUTTING-INTO-SERVICE
   source: A003-P012
   quote: "\u2018putting into service\u2019 means the supply of an AI system for first use directly to\
@@ -196,7 +196,7 @@ records:
   implementation_mode: none_required
   implementation_reason: Definitions are represented as legal dependencies rather than standalone product
     rules.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A003-D012-INTENDED-PURPOSE
   source: A003-P013
   quote: "\u2018intended purpose\u2019 means the use for which an AI system is intended by the provider,\
@@ -215,7 +215,7 @@ records:
   implementation_mode: none_required
   implementation_reason: Definitions are represented as legal dependencies rather than standalone product
     rules.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A003-D013-REASONABLY-FORESEEABLE-MISUSE
   source: A003-P014
   quote: "\u2018reasonably foreseeable misuse\u2019 means the use of an AI system in a way that is not\
@@ -233,7 +233,7 @@ records:
   implementation_mode: none_required
   implementation_reason: Definitions are represented as legal dependencies rather than standalone product
     rules.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A003-D014-SAFETY-COMPONENT
   source: A003-P015
   quote: "\u2018safety component\u2019 means a component of a product or of an AI system which fulfils\
@@ -253,7 +253,7 @@ records:
   implementation_mode: none_required
   implementation_reason: Definitions are represented as legal dependencies rather than standalone product
     rules.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A003-D014A-MICRO-SMALL-AND-MEDIUM-SIZED-ENTERPRISE
   source: A003-P016
   quote: "\u2018micro, small and medium-sized enterprise\u2019 or \u2018SME\u2019 means a micro, small\
@@ -274,7 +274,7 @@ records:
   implementation_mode: none_required
   implementation_reason: Definitions are represented as legal dependencies rather than standalone product
     rules.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A003-D014B-SMALL-MID-CAP-ENTERPRISE
   source: A003-P017
   quote: "\u2018small mid-cap enterprise\u2019 or \u2018SMC\u2019 means a small mid-cap enterprise as\
@@ -295,7 +295,7 @@ records:
   implementation_mode: none_required
   implementation_reason: Definitions are represented as legal dependencies rather than standalone product
     rules.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A003-D015-INSTRUCTIONS-FOR-USE
   source: A003-P018
   quote: "\u2018instructions for use\u2019 means the information provided by the provider to inform the\
@@ -312,7 +312,7 @@ records:
   implementation_mode: none_required
   implementation_reason: Definitions are represented as legal dependencies rather than standalone product
     rules.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A003-D016-RECALL-OF-AN-AI-SYSTEM
   source: A003-P019
   quote: "\u2018recall of an AI system\u2019 means any measure aiming to achieve the return to the provider\
@@ -329,7 +329,7 @@ records:
   implementation_mode: none_required
   implementation_reason: Definitions are represented as legal dependencies rather than standalone product
     rules.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A003-D017-WITHDRAWAL-OF-AN-AI-SYSTEM
   source: A003-P020
   quote: "\u2018withdrawal of an AI system\u2019 means any measure aiming to prevent an AI system in the\
@@ -346,7 +346,7 @@ records:
   implementation_mode: none_required
   implementation_reason: Definitions are represented as legal dependencies rather than standalone product
     rules.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A003-D018-PERFORMANCE-OF-AN-AI-SYSTEM
   source: A003-P021
   quote: "\u2018performance of an AI system\u2019 means the ability of an AI system to achieve its intended\
@@ -363,7 +363,7 @@ records:
   implementation_mode: none_required
   implementation_reason: Definitions are represented as legal dependencies rather than standalone product
     rules.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A003-D019-NOTIFYING-AUTHORITY
   source: A003-P022
   quote: "\u2018notifying authority\u2019 means the national authority responsible for setting up and\
@@ -381,7 +381,7 @@ records:
   implementation_mode: none_required
   implementation_reason: Definitions are represented as legal dependencies rather than standalone product
     rules.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A003-D020-CONFORMITY-ASSESSMENT
   source: A003-P023
   quote: "\u2018conformity assessment\u2019 means the process of demonstrating whether the requirements\
@@ -402,7 +402,7 @@ records:
   implementation_mode: none_required
   implementation_reason: Definitions are represented as legal dependencies rather than standalone product
     rules.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A003-D021-CONFORMITY-ASSESSMENT-BODY
   source: A003-P024
   quote: "\u2018conformity assessment body\u2019 means a body that performs third-party conformity assessment\
@@ -419,7 +419,7 @@ records:
   implementation_mode: none_required
   implementation_reason: Definitions are represented as legal dependencies rather than standalone product
     rules.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A003-D022-NOTIFIED-BODY
   source: A003-P025
   quote: "\u2018notified body\u2019 means a conformity assessment body notified in accordance with this\
@@ -440,7 +440,7 @@ records:
   implementation_mode: none_required
   implementation_reason: Definitions are represented as legal dependencies rather than standalone product
     rules.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A003-D023-SUBSTANTIAL-MODIFICATION
   source: A003-P026
   quote: "\u2018substantial modification\u2019 means a change to an AI system after its placing on the\
@@ -464,7 +464,7 @@ records:
   implementation_mode: none_required
   implementation_reason: Definitions are represented as legal dependencies rather than standalone product
     rules.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A003-D024-CE-MARKING
   source: A003-P027
   quote: "\u2018CE marking\u2019 means a marking by which a provider indicates that an AI system is in\
@@ -489,7 +489,7 @@ records:
   implementation_mode: none_required
   implementation_reason: Definitions are represented as legal dependencies rather than standalone product
     rules.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A003-D025-POST-MARKET-MONITORING-SYSTEM
   source: A003-P028
   quote: "\u2018post-market monitoring system\u2019 means all activities carried out by providers of AI\
@@ -508,7 +508,7 @@ records:
   implementation_mode: none_required
   implementation_reason: Definitions are represented as legal dependencies rather than standalone product
     rules.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A003-D026-MARKET-SURVEILLANCE-AUTHORITY
   source: A003-P029
   quote: "\u2018market surveillance authority\u2019 means the national authority carrying out the activities\
@@ -529,7 +529,7 @@ records:
   implementation_mode: none_required
   implementation_reason: Definitions are represented as legal dependencies rather than standalone product
     rules.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A003-D027-HARMONISED-STANDARD
   source: A003-P030
   quote: "\u2018harmonised standard\u2019 means a harmonised standard as defined in Article 2(1), point\
@@ -550,7 +550,7 @@ records:
   implementation_mode: none_required
   implementation_reason: Definitions are represented as legal dependencies rather than standalone product
     rules.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A003-D028-COMMON-SPECIFICATION
   source: A003-P031
   quote: "\u2018common specification\u2019 means a set of technical specifications as defined in Article\
@@ -572,7 +572,7 @@ records:
   implementation_mode: none_required
   implementation_reason: Definitions are represented as legal dependencies rather than standalone product
     rules.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A003-D029-TRAINING-DATA
   source: A003-P032
   quote: "\u2018training data\u2019 means data used for training an AI system through fitting its learnable\
@@ -589,7 +589,7 @@ records:
   implementation_mode: none_required
   implementation_reason: Definitions are represented as legal dependencies rather than standalone product
     rules.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A003-D030-VALIDATION-DATA
   source: A003-P033
   quote: "\u2018validation data\u2019 means data used for providing an evaluation of the trained AI system\
@@ -607,7 +607,7 @@ records:
   implementation_mode: none_required
   implementation_reason: Definitions are represented as legal dependencies rather than standalone product
     rules.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A003-D031-VALIDATION-DATA-SET
   source: A003-P034
   quote: "\u2018validation data set\u2019 means a separate data set or part of the training data set,\
@@ -624,7 +624,7 @@ records:
   implementation_mode: none_required
   implementation_reason: Definitions are represented as legal dependencies rather than standalone product
     rules.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A003-D032-TESTING-DATA
   source: A003-P035
   quote: "\u2018testing data\u2019 means data used for providing an independent evaluation of the AI system\
@@ -642,7 +642,7 @@ records:
   implementation_mode: none_required
   implementation_reason: Definitions are represented as legal dependencies rather than standalone product
     rules.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A003-D033-INPUT-DATA
   source: A003-P036
   quote: "\u2018input data\u2019 means data provided to or directly acquired by an AI system on the basis\
@@ -659,7 +659,7 @@ records:
   implementation_mode: none_required
   implementation_reason: Definitions are represented as legal dependencies rather than standalone product
     rules.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A003-D034-BIOMETRIC-DATA
   source: A003-P037
   quote: "\u2018biometric data\u2019 means personal data resulting from specific technical processing\
@@ -677,7 +677,7 @@ records:
   implementation_mode: none_required
   implementation_reason: Definitions are represented as legal dependencies rather than standalone product
     rules.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A003-D035-BIOMETRIC-IDENTIFICATION
   source: A003-P038
   quote: "\u2018biometric identification\u2019 means the automated recognition of physical, physiological,\
@@ -696,7 +696,7 @@ records:
   implementation_mode: none_required
   implementation_reason: Definitions are represented as legal dependencies rather than standalone product
     rules.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A003-D036-BIOMETRIC-VERIFICATION
   source: A003-P039
   quote: "\u2018biometric verification\u2019 means the automated, one-to-one verification, including authentication,\
@@ -714,7 +714,7 @@ records:
   implementation_mode: none_required
   implementation_reason: Definitions are represented as legal dependencies rather than standalone product
     rules.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A003-D037-SPECIAL-CATEGORIES-OF-PERSONAL-DATA
   source: A003-P040
   quote: "\u2018special categories of personal data\u2019 means the categories of personal data referred\
@@ -736,7 +736,7 @@ records:
   implementation_mode: none_required
   implementation_reason: Definitions are represented as legal dependencies rather than standalone product
     rules.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A003-D038-SENSITIVE-OPERATIONAL-DATA
   source: A003-P041
   quote: "\u2018sensitive operational data\u2019 means operational data related to activities of prevention,\
@@ -754,7 +754,7 @@ records:
   implementation_mode: none_required
   implementation_reason: Definitions are represented as legal dependencies rather than standalone product
     rules.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A003-D039-EMOTION-RECOGNITION-SYSTEM
   source: A003-P042
   quote: "\u2018emotion recognition system\u2019 means an AI system for the purpose of identifying or\
@@ -771,7 +771,7 @@ records:
   implementation_mode: none_required
   implementation_reason: Definitions are represented as legal dependencies rather than standalone product
     rules.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A003-D040-BIOMETRIC-CATEGORISATION-SYSTEM
   source: A003-P043
   quote: "\u2018biometric categorisation system\u2019 means an AI system for the purpose of assigning\
@@ -792,7 +792,7 @@ records:
   implementation_mode: none_required
   implementation_reason: Definitions are represented as legal dependencies rather than standalone product
     rules.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A003-D041-REMOTE-BIOMETRIC-IDENTIFICATION-SYSTEM
   source: A003-P044
   quote: "\u2018remote biometric identification system\u2019 means an AI system for the purpose of identifying\
@@ -810,7 +810,7 @@ records:
   implementation_mode: none_required
   implementation_reason: Definitions are represented as legal dependencies rather than standalone product
     rules.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A003-D042-REAL-TIME-REMOTE-BIOMETRIC-IDENTIFICATION-SYSTEM
   source: A003-P045
   quote: "\u2018real-time remote biometric identification system\u2019 means a remote biometric identification\
@@ -829,7 +829,7 @@ records:
   implementation_mode: none_required
   implementation_reason: Definitions are represented as legal dependencies rather than standalone product
     rules.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A003-D043-POST-REMOTE-BIOMETRIC-IDENTIFICATION-SYSTEM
   source: A003-P046
   quote: "\u2018post-remote biometric identification system\u2019 means a remote biometric identification\
@@ -846,7 +846,7 @@ records:
   implementation_mode: none_required
   implementation_reason: Definitions are represented as legal dependencies rather than standalone product
     rules.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A003-D044-PUBLICLY-ACCESSIBLE-SPACE
   source: A003-P047
   quote: "\u2018publicly accessible space\u2019 means any publicly or privately owned physical place accessible\
@@ -864,7 +864,7 @@ records:
   implementation_mode: none_required
   implementation_reason: Definitions are represented as legal dependencies rather than standalone product
     rules.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A003-D045-LAW-ENFORCEMENT-AUTHORITY
   source: A003-P048
   quote: "\u2018law enforcement authority\u2019 means:"
@@ -885,7 +885,7 @@ records:
   implementation_mode: none_required
   implementation_reason: Definitions are represented as legal dependencies rather than standalone product
     rules.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A003-D046-LAW-ENFORCEMENT
   source: A003-P051
   quote: "\u2018law enforcement\u2019 means activities carried out by law enforcement authorities or on\
@@ -904,7 +904,7 @@ records:
   implementation_mode: none_required
   implementation_reason: Definitions are represented as legal dependencies rather than standalone product
     rules.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A003-D047-AI-OFFICE
   source: A003-P052
   quote: "\u2018AI Office\u2019 means the Commission\u2019s function of contributing to the implementation,\
@@ -926,7 +926,7 @@ records:
   implementation_mode: none_required
   implementation_reason: Definitions are represented as legal dependencies rather than standalone product
     rules.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A003-D048-NATIONAL-COMPETENT-AUTHORITY
   source: A003-P053
   quote: "\u2018national competent authority\u2019 means a notifying authority or a market surveillance\
@@ -943,7 +943,7 @@ records:
   implementation_mode: none_required
   implementation_reason: Definitions are represented as legal dependencies rather than standalone product
     rules.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A003-D049-SERIOUS-INCIDENT
   source: A003-P054
   quote: "\u2018serious incident\u2019 means an incident or malfunctioning of an AI system that directly\
@@ -969,7 +969,7 @@ records:
   implementation_mode: none_required
   implementation_reason: Definitions are represented as legal dependencies rather than standalone product
     rules.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A003-D050-PERSONAL-DATA
   source: A003-P059
   quote: "\u2018personal data\u2019 means personal data as defined in Article 4, point (1), of Regulation\
@@ -990,7 +990,7 @@ records:
   implementation_mode: none_required
   implementation_reason: Definitions are represented as legal dependencies rather than standalone product
     rules.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A003-D051-NON-PERSONAL-DATA
   source: A003-P060
   quote: "\u2018non-personal data\u2019 means data other than personal data as defined in Article 4, point\
@@ -1011,7 +1011,7 @@ records:
   implementation_mode: none_required
   implementation_reason: Definitions are represented as legal dependencies rather than standalone product
     rules.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A003-D052-PROFILING
   source: A003-P061
   quote: "\u2018profiling\u2019 means profiling as defined in Article 4, point (4), of Regulation (EU)\
@@ -1032,7 +1032,7 @@ records:
   implementation_mode: none_required
   implementation_reason: Definitions are represented as legal dependencies rather than standalone product
     rules.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A003-D053-REAL-WORLD-TESTING-PLAN
   source: A003-P062
   quote: "\u2018real-world testing plan\u2019 means a document that describes the objectives, methodology,\
@@ -1050,7 +1050,7 @@ records:
   implementation_mode: none_required
   implementation_reason: Definitions are represented as legal dependencies rather than standalone product
     rules.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A003-D054-SANDBOX-PLAN
   source: A003-P063
   quote: "\u2018sandbox plan\u2019 means a document agreed between the participating provider and the\
@@ -1068,7 +1068,7 @@ records:
   implementation_mode: none_required
   implementation_reason: Definitions are represented as legal dependencies rather than standalone product
     rules.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A003-D055-AI-REGULATORY-SANDBOX
   source: A003-P064
   quote: "\u2018AI regulatory sandbox\u2019 means a controlled framework set up by a competent authority\
@@ -1087,7 +1087,7 @@ records:
   implementation_mode: none_required
   implementation_reason: Definitions are represented as legal dependencies rather than standalone product
     rules.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A003-D056-AI-LITERACY
   source: A003-P065
   quote: "\u2018AI literacy\u2019 means skills, knowledge and understanding that allow providers, deployers\
@@ -1106,7 +1106,7 @@ records:
   implementation_mode: none_required
   implementation_reason: Definitions are represented as legal dependencies rather than standalone product
     rules.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A003-D057-TESTING-IN-REAL-WORLD-CONDITIONS
   source: A003-P066
   quote: "\u2018testing in real-world conditions\u2019 means the temporary testing of an AI system for\
@@ -1129,7 +1129,7 @@ records:
   implementation_mode: none_required
   implementation_reason: Definitions are represented as legal dependencies rather than standalone product
     rules.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A003-D058-SUBJECT
   source: A003-P067
   quote: "\u2018subject\u2019, for the purpose of real-world testing, means a natural person who participates\
@@ -1146,7 +1146,7 @@ records:
   implementation_mode: none_required
   implementation_reason: Definitions are represented as legal dependencies rather than standalone product
     rules.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A003-D059-INFORMED-CONSENT
   source: A003-P068
   quote: "\u2018informed consent\u2019 means a subject\u2019s freely given, specific, unambiguous and\
@@ -1165,7 +1165,7 @@ records:
   implementation_mode: none_required
   implementation_reason: Definitions are represented as legal dependencies rather than standalone product
     rules.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A003-D060-DEEP-FAKE
   source: A003-P069
   quote: "\u2018deep fake\u2019 means AI-generated or manipulated image, audio or video content that resembles\
@@ -1183,7 +1183,7 @@ records:
   implementation_mode: none_required
   implementation_reason: Definitions are represented as legal dependencies rather than standalone product
     rules.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A003-D061-WIDESPREAD-INFRINGEMENT
   source: A003-P070
   quote: "\u2018widespread infringement\u2019 means any act or omission contrary to Union law protecting\
@@ -1230,7 +1230,7 @@ records:
   implementation_mode: none_required
   implementation_reason: Definitions are represented as legal dependencies rather than standalone product
     rules.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A003-D062-CRITICAL-INFRASTRUCTURE
   source: A003-P076
   quote: "\u2018critical infrastructure\u2019 means critical infrastructure as defined in Article 2, point\
@@ -1251,7 +1251,7 @@ records:
   implementation_mode: none_required
   implementation_reason: Definitions are represented as legal dependencies rather than standalone product
     rules.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A003-D063-GENERAL-PURPOSE-AI-MODEL
   source: A003-P077
   quote: "\u2018general-purpose AI model\u2019 means an AI model, including where such an AI model is\
@@ -1274,7 +1274,7 @@ records:
   implementation_mode: none_required
   implementation_reason: Definitions are represented as legal dependencies rather than standalone product
     rules.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A003-D064-HIGH-IMPACT-CAPABILITIES
   source: A003-P078
   quote: "\u2018high-impact capabilities\u2019 means capabilities that match or exceed the capabilities\
@@ -1291,7 +1291,7 @@ records:
   implementation_mode: none_required
   implementation_reason: Definitions are represented as legal dependencies rather than standalone product
     rules.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A003-D065-SYSTEMIC-RISK
   source: A003-P079
   quote: "\u2018systemic risk\u2019 means a risk that is specific to the high-impact capabilities of general-purpose\
@@ -1310,7 +1310,7 @@ records:
   implementation_mode: none_required
   implementation_reason: Definitions are represented as legal dependencies rather than standalone product
     rules.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A003-D066-GENERAL-PURPOSE-AI-SYSTEM
   source: A003-P080
   quote: "\u2018general-purpose AI system\u2019 means an AI system which is based on a general-purpose\
@@ -1328,7 +1328,7 @@ records:
   implementation_mode: none_required
   implementation_reason: Definitions are represented as legal dependencies rather than standalone product
     rules.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A003-D067-FLOATING-POINT-OPERATION
   source: A003-P081
   quote: "\u2018floating-point operation\u2019 means any mathematical operation or assignment involving\
@@ -1346,7 +1346,7 @@ records:
   implementation_mode: none_required
   implementation_reason: Definitions are represented as legal dependencies rather than standalone product
     rules.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A003-D068-DOWNSTREAM-PROVIDER
   source: A003-P082
   quote: "\u2018downstream provider\u2019 means a provider of an AI system, including a general-purpose\
@@ -1364,7 +1364,7 @@ records:
   implementation_mode: none_required
   implementation_reason: Definitions are represented as legal dependencies rather than standalone product
     rules.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A003-D047-AI-OFFICE-REFERENCE
   source: A003-P052
   quote: references in this Regulation to the AI Office shall be construed as references to the Commission
@@ -1378,7 +1378,7 @@ records:
   implementation_mode: none_required
   implementation_reason: The consequence is represented as a legal dependency rather than a standalone
     product rule.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A003-D048-EDPS-REFERENCE
   source: A003-P053
   quote: as regards AI systems put into service or used by Union institutions, agencies, offices and bodies,
@@ -1397,7 +1397,7 @@ records:
   implementation_mode: none_required
   implementation_reason: The consequence is represented as a legal dependency rather than a standalone
     product rule.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A003-D057-REAL-WORLD-TESTING-NON-MARKET-EFFECT
   source: A003-P066
   quote: it does not qualify as placing the AI system on the market or putting it into service within
@@ -1420,4 +1420,4 @@ records:
   implementation_mode: none_required
   implementation_reason: The consequence is represented as a legal dependency rather than a standalone
     product rule.
-  verification_mode: not_assessed
+  verification_mode: not_reported

@@ -7,7 +7,7 @@ records:
   subject_category: supported_operator
   implementation_refs:
   - AIA-HR-A11
-  verification_mode: judged_from_document
+  verification_mode: judged_by_gap_analysis
 - norm_id: AIA-NORM-A011-P1-UPDATE
   source: A011-P1
   quote: shall be kept up-to date
@@ -16,7 +16,7 @@ records:
   subject_category: supported_operator
   implementation_refs:
   - AIA-HR-A11
-  verification_mode: judged_from_document
+  verification_mode: judged_by_gap_analysis
 - norm_id: AIA-NORM-A011-P1-DEMONSTRATE
   source: A011-P1
   quote: shall be drawn up in such a way as to demonstrate that the high-risk AI system complies
@@ -26,7 +26,7 @@ records:
   subject_category: supported_operator
   implementation_refs:
   - AIA-HR-A11
-  verification_mode: judged_from_document
+  verification_mode: judged_by_gap_analysis
 - norm_id: AIA-NORM-A011-P1-ASSESSMENT-INFORMATION
   source: A011-P1
   quote: to provide national competent authorities and notified bodies with the necessary information
@@ -37,7 +37,7 @@ records:
   subject_category: supported_operator
   implementation_refs:
   - AIA-HR-A11
-  verification_mode: judged_from_document
+  verification_mode: judged_by_gap_analysis
 - norm_id: AIA-NORM-A011-P1-ANNEX-IV
   source: A011-P1
   quote: It shall contain, at a minimum, the elements set out in Annex IV.
@@ -46,7 +46,7 @@ records:
   subject_category: supported_operator
   implementation_refs:
   - AIA-HR-A11
-  verification_mode: judged_from_document
+  verification_mode: judged_by_gap_analysis
   dependencies:
   - dependency_ref: AIA-NORM-ANNEX-IV-CONTENT
     resolution: internal_resolved
@@ -71,7 +71,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A011-P1-USE-FORM
   source: A011-P1
   quote: it shall use the form referred to in this paragraph
@@ -80,7 +80,7 @@ records:
   subject_category: supported_operator
   implementation_refs:
   - AIA-HR-A11
-  verification_mode: judged_from_document
+  verification_mode: judged_by_gap_analysis
   conditions:
   - provider is an SME, start-up, or SMC and opts for simplified documentation
 - norm_id: AIA-NORM-A011-P1-ACCEPT-FORM
@@ -93,7 +93,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A011-P2-SINGLE-DOCUMENTATION-SET
   source: A011-P2
   quote: a single set of technical documentation shall be drawn up containing all the information set
@@ -107,7 +107,7 @@ records:
     Annex I, Section A
   implementation_refs:
   - AIA-HR-A11-2
-  verification_mode: judged_from_document
+  verification_mode: judged_by_gap_analysis
   dependencies:
   - dependency_ref: AIA-NORM-A011-P1-ANNEX-IV
     resolution: internal_resolved
@@ -127,4 +127,4 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported

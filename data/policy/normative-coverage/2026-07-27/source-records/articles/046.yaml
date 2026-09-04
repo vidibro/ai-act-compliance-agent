@@ -15,7 +15,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
   qualifier_spans:
   - A046-P003
   conditions:
@@ -48,7 +48,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
   conditions:
   - a duly justified public-security urgency or specific substantial imminent threat to life or physical
     safety exists
@@ -65,7 +65,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
   conditions:
   - the paragraph 1 authorisation requested for urgent use under paragraph 2 is refused
 - norm_id: AIA-NORM-A046-P2-DISCARD-RESULTS-AND-OUTPUTS
@@ -79,7 +79,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
   conditions:
   - the paragraph 1 authorisation requested for urgent use under paragraph 2 is refused
 - norm_id: AIA-NORM-A046-P3-NOTIFY-AUTHORISATION
@@ -93,7 +93,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A046-P3-SENSITIVE-DATA-EXCEPTION
   source: A046-P003
   quote: This obligation shall not cover sensitive operational data in relation to the activities of law-enforcement
@@ -106,7 +106,7 @@ records:
   product_scope_reason: Qualifies an institutional notification duty only.
   implementation_mode: none_required
   implementation_reason: No independent product action is required.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A046-P4-DEEMED-JUSTIFIED
   source: A046-P004
   quote: Where, within 15 calendar days of receipt of the information referred to in paragraph 3, no objection
@@ -122,7 +122,7 @@ records:
   product_scope_reason: Defines authorisation status rather than an operator compliance action.
   implementation_mode: none_required
   implementation_reason: No independent product action is required.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A046-P5-CONSULT-MEMBER-STATE
   source: A046-P005
   quote: the Commission shall, without delay, enter into consultations with the relevant Member State.
@@ -133,7 +133,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A046-P5-OPERATOR-HEARING
   source: A046-P005
   quote: The operators concerned shall be consulted and have the possibility to present their views.
@@ -145,7 +145,7 @@ records:
   product_scope_reason: Grants procedural participation rather than imposing a compliance action.
   implementation_mode: none_required
   implementation_reason: No independent product action is required.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A046-P5-DECIDE-JUSTIFICATION
   source: A046-P005
   quote: Having regard thereto, the Commission shall decide whether the authorisation is justified.
@@ -156,7 +156,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A046-P5-ADDRESS-DECISION
   source: A046-P005
   quote: The Commission shall address its decision to the Member State concerned and to the relevant operators.
@@ -167,7 +167,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A046-P6-WITHDRAW-UNJUSTIFIED-AUTHORISATION
   source: A046-P006
   quote: Where the Commission considers the authorisation unjustified, it shall be withdrawn by the market
@@ -179,7 +179,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A046-P7-SECTORAL-DEROGATIONS-ONLY
   source: A046-P007
   quote: For high-risk AI systems related to products covered by Union harmonisation legislation listed

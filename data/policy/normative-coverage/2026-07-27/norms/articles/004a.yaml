@@ -355,7 +355,7 @@ norms:
   implementation_refs: []
   implementation_reason: The no-obligation consequence is represented as a dependency rather than a standalone
     product rule.
-  verification_mode: not_assessed
+  verification_mode: not_reported
   review:
     status: proposed
     extracted_by: semantic-legal-effect-pass

@@ -10,7 +10,7 @@ records:
   - A055-P001
   implementation_refs:
   - AIA-GP-A55-1A
-  verification_mode: listed_for_confirmation
+  verification_mode: reported_not_judged
 - norm_id: AIA-NORM-A055-P1-A-CONDUCT-ADVERSARIAL-TESTING
   source: A055-P002
   quote: including conducting and documenting adversarial testing of the model with a view to identifying
@@ -20,7 +20,7 @@ records:
   subject_category: supported_operator
   implementation_refs:
   - AIA-GP-A55-1A
-  verification_mode: listed_for_confirmation
+  verification_mode: reported_not_judged
 - norm_id: AIA-NORM-A055-P1-A-DOCUMENT-ADVERSARIAL-TESTING
   source: A055-P002
   quote: including conducting and documenting adversarial testing of the model with a view to identifying
@@ -30,7 +30,7 @@ records:
   subject_category: supported_operator
   implementation_refs:
   - AIA-GP-A55-1A
-  verification_mode: listed_for_confirmation
+  verification_mode: reported_not_judged
 - norm_id: AIA-NORM-A055-P1-B-ASSESS-SYSTEMIC-RISKS
   source: A055-P003
   quote: assess and mitigate possible systemic risks at Union level, including their sources, that may
@@ -44,7 +44,7 @@ records:
   - A055-P001
   implementation_refs:
   - AIA-GP-A55-1B
-  verification_mode: listed_for_confirmation
+  verification_mode: reported_not_judged
 - norm_id: AIA-NORM-A055-P1-B-MITIGATE-SYSTEMIC-RISKS
   source: A055-P003
   quote: assess and mitigate possible systemic risks at Union level, including their sources, that may
@@ -56,7 +56,7 @@ records:
   subject_category: supported_operator
   implementation_refs:
   - AIA-GP-A55-1B
-  verification_mode: listed_for_confirmation
+  verification_mode: reported_not_judged
 - norm_id: AIA-NORM-A055-P1-C-TRACK-INCIDENTS
   source: A055-P004
   quote: keep track of, document, and report, without undue delay, to the AI Office and, as appropriate,
@@ -69,7 +69,7 @@ records:
   - A055-P001
   implementation_refs:
   - AIA-GP-A55-1C
-  verification_mode: listed_for_confirmation
+  verification_mode: reported_not_judged
 - norm_id: AIA-NORM-A055-P1-C-DOCUMENT-INCIDENTS
   source: A055-P004
   quote: keep track of, document, and report, without undue delay, to the AI Office and, as appropriate,
@@ -80,7 +80,7 @@ records:
   subject_category: supported_operator
   implementation_refs:
   - AIA-GP-A55-1C
-  verification_mode: listed_for_confirmation
+  verification_mode: reported_not_judged
 - norm_id: AIA-NORM-A055-P1-C-REPORT-INCIDENTS
   source: A055-P004
   quote: keep track of, document, and report, without undue delay, to the AI Office and, as appropriate,
@@ -95,7 +95,7 @@ records:
   - possible corrective measures
   implementation_refs:
   - AIA-GP-A55-1C
-  verification_mode: listed_for_confirmation
+  verification_mode: reported_not_judged
 - norm_id: AIA-NORM-A055-P1-D-MODEL-CYBERSECURITY
   source: A055-P005
   quote: ensure an adequate level of cybersecurity protection for the general-purpose AI model with systemic
@@ -107,7 +107,7 @@ records:
   - A055-P001
   implementation_refs:
   - AIA-GP-A55-1D
-  verification_mode: listed_for_confirmation
+  verification_mode: reported_not_judged
 - norm_id: AIA-NORM-A055-P1-D-INFRASTRUCTURE-CYBERSECURITY
   source: A055-P005
   quote: ensure an adequate level of cybersecurity protection for the general-purpose AI model with systemic
@@ -117,7 +117,7 @@ records:
   subject_category: supported_operator
   implementation_refs:
   - AIA-GP-A55-1D
-  verification_mode: listed_for_confirmation
+  verification_mode: reported_not_judged
 - norm_id: AIA-NORM-A055-P2-RELY-ON-CODES
   source: A055-P006
   quote: Providers of general-purpose AI models with systemic risk may rely on codes of practice within
@@ -132,7 +132,7 @@ records:
   product_scope_reason: Provides an optional compliance route rather than an additional product action.
   implementation_refs:
   - AIA-GP-A55-2
-  verification_mode: listed_for_confirmation
+  verification_mode: reported_not_judged
 - norm_id: AIA-NORM-A055-P2-HARMONISED-STANDARD-PRESUMPTION
   source: A055-P006
   quote: Compliance with European harmonised standards grants providers the presumption of conformity
@@ -145,7 +145,7 @@ records:
   product_scope_reason: Establishes an evidentiary consequence rather than an independent action.
   implementation_refs:
   - AIA-GP-A55-2
-  verification_mode: listed_for_confirmation
+  verification_mode: reported_not_judged
 - norm_id: AIA-NORM-A055-P2-ALTERNATIVE-COMPLIANCE
   source: A055-P006
   quote: Providers of general-purpose AI models with systemic risks who do not adhere to an approved code
@@ -158,7 +158,7 @@ records:
   - the provider neither adheres to an approved code nor complies with a covering harmonised standard
   implementation_refs:
   - AIA-GP-A55-2
-  verification_mode: listed_for_confirmation
+  verification_mode: reported_not_judged
 - norm_id: AIA-NORM-A055-P3-CONFIDENTIAL-TREATMENT
   source: A055-P007
   quote: Any information or documentation obtained pursuant to this Article, including trade secrets,
@@ -171,4 +171,4 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported

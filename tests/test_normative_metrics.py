@@ -274,7 +274,7 @@ def test_article_two_competence_limits_require_no_product_action():
     }
     assert all(norm.product_scope.value == "no_product_action" for norm in norms)
     assert all(norm.implementation_mode.value == "none_required" for norm in norms)
-    assert all(norm.verification_mode.value == "not_assessed" for norm in norms)
+    assert all(norm.verification_mode.value == "not_reported" for norm in norms)
 
 
 def test_article_two_military_exclusion_remains_implementation_debt():
@@ -358,7 +358,7 @@ def test_article_two_intermediary_liability_saving_clause_needs_no_product_actio
     assert norm.kind.value == "applicability"
     assert norm.product_scope.value == "no_product_action"
     assert norm.implementation_mode.value == "none_required"
-    assert norm.verification_mode.value == "not_assessed"
+    assert norm.verification_mode.value == "not_reported"
     assert norm.dependencies[0].dependency_ref == "Regulation (EU) 2022/2065, Chapter II"
 
 
@@ -2790,7 +2790,7 @@ def test_article_fifty_preserves_disclosure_test_and_technical_solution_qualifie
     for norm in (disclose, marking):
         assert norm.qualifier_spans == ["AIA-TEXT-A050-P5"]
         assert norm.review.status.value == "proposed"
-        assert norm.verification_mode.value == "judged_from_document"
+        assert norm.verification_mode.value == "judged_by_gap_analysis"
     article_segments = [
         s for s in bundle.text_review.segments
         if s.source.kind.value == "article" and s.source.document == "50"
@@ -4903,7 +4903,7 @@ def test_annex_eleven_separates_general_and_systemic_risk_documentation():
         assert norm.qualifier_spans == ["AIA-TEXT-ANNEX-XI-P017", "AIA-TEXT-ANNEX-XI-P018"]
         assert norm.conditions[0] == systemic_risk
         assert norm.carried_by_norm_ids == ["AIA-NORM-A053-P1-A-ANNEX-XI-CONTENT"]
-        assert norm.verification_mode.value == "judged_from_document"
+        assert norm.verification_mode.value == "judged_by_gap_analysis"
 
     # Item 1 is owed unconditionally; only items 2 and 3 carry the where-applicable gate.
     assert len(evaluation.conditions) == 2

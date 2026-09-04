@@ -36,7 +36,7 @@ norms:
   implementation_refs:
   - AIA-TR-A50-1
   implementation_reason: ''
-  verification_mode: judged_from_document
+  verification_mode: judged_by_gap_analysis
   review:
     status: proposed
     extracted_by: semantic-legal-effect-pass
@@ -86,7 +86,7 @@ norms:
   implementation_refs:
   - AIA-TR-A50-2
   implementation_reason: ''
-  verification_mode: judged_from_document
+  verification_mode: judged_by_gap_analysis
   review:
     status: proposed
     extracted_by: semantic-legal-effect-pass
@@ -127,7 +127,7 @@ norms:
   implementation_refs:
   - AIA-TR-A50-3
   implementation_reason: ''
-  verification_mode: listed_for_confirmation
+  verification_mode: reported_not_judged
   review:
     status: proposed
     extracted_by: semantic-legal-effect-pass
@@ -210,7 +210,7 @@ norms:
   implementation_refs:
   - AIA-TR-A50-4
   implementation_reason: ''
-  verification_mode: listed_for_confirmation
+  verification_mode: reported_not_judged
   review:
     status: proposed
     extracted_by: semantic-legal-effect-pass
@@ -251,7 +251,7 @@ norms:
   implementation_refs:
   - AIA-TR-A50-4
   implementation_reason: ''
-  verification_mode: listed_for_confirmation
+  verification_mode: reported_not_judged
   review:
     status: proposed
     extracted_by: semantic-legal-effect-pass
@@ -329,7 +329,7 @@ norms:
   implementation_mode: none_required
   implementation_refs: []
   implementation_reason: Represented as a dependency rather than an independent finding.
-  verification_mode: not_assessed
+  verification_mode: not_reported
   review:
     status: proposed
     extracted_by: semantic-legal-effect-pass
@@ -363,7 +363,7 @@ norms:
   implementation_mode: none_required
   implementation_refs: []
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
   review:
     status: proposed
     extracted_by: semantic-legal-effect-pass
@@ -397,7 +397,7 @@ norms:
   implementation_mode: none_required
   implementation_refs: []
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
   review:
     status: proposed
     extracted_by: semantic-legal-effect-pass
@@ -431,7 +431,7 @@ norms:
   implementation_mode: none_required
   implementation_refs: []
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
   review:
     status: proposed
     extracted_by: semantic-legal-effect-pass

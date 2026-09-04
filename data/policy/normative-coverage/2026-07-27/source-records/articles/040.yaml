@@ -32,7 +32,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A040-P2-RESOURCE-PERFORMANCE-DELIVERABLES
   source: A040-P002
   quote: "The standardisation request shall also ask for deliverables on reporting and documentation processes\
@@ -47,7 +47,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
   mandatory_content:
   - reporting and documentation processes to improve AI-system resource performance, such as reducing
     high-risk AI-system energy and other resource consumption during its lifecycle
@@ -64,7 +64,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A040-P2-SPECIFY-STANDARD-OBJECTIVES
   source: A040-P003
   quote: When issuing a standardisation request to European standardisation organisations, the Commission
@@ -81,7 +81,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
   mandatory_content:
   - clear standards
   - consistency with relevant sector standards
@@ -98,7 +98,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A040-P2-JOINT-COMPLIANCE-DELIVERABLES
   source: A040-P005
   quote: 'The Commission shall request, in accordance with Regulation (EU) No 1025/2012 of the European
@@ -120,7 +120,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A040-P3-STANDARDISATION-OBJECTIVES
   source: A040-P006
   quote: The participants in the standardisation process shall seek to promote investment and innovation
@@ -138,7 +138,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
   mandatory_content:
   - promote AI investment and innovation, including through legal certainty
   - promote Union-market competitiveness and growth

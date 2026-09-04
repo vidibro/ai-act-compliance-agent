@@ -11,7 +11,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A030-P2-ELECTRONIC-NOTIFICATION
   source: A030-P002
   quote: Notifying authorities shall notify the Commission and the other Member States, based on the list
@@ -26,7 +26,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A030-P2-AMEND-ANNEX-XIV
   source: A030-P003
   quote: The Commission is empowered to adopt delegated acts in accordance with Article 97 in order to
@@ -43,7 +43,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A030-P3-NOTIFICATION-CONTENT
   source: A030-P004
   quote: The notification referred to in paragraph 2 of this Article shall include full details of the
@@ -56,7 +56,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
   mandatory_content:
   - conformity assessment activities
   - conformity assessment modules
@@ -78,7 +78,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A030-P4-NO-OBJECTION-AUTHORISATION
   source: A030-P005
   quote: The conformity assessment body concerned may perform the activities of a notified body only where
@@ -97,7 +97,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A030-P5-CONSULT-ON-OBJECTIONS
   source: A030-P006
   quote: Where objections are raised, the Commission shall, without delay, enter into consultations with
@@ -111,7 +111,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A030-P5-DECIDE-AUTHORISATION
   source: A030-P006
   quote: In view thereof, the Commission shall decide whether the authorisation is justified.
@@ -123,7 +123,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A030-P5-ADDRESS-DECISION
   source: A030-P006
   quote: The Commission shall address its decision to the Member State concerned and to the relevant conformity
@@ -136,4 +136,4 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported

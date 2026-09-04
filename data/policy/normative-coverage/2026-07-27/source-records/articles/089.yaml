@@ -10,7 +10,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A089-P2-LODGE-DOWNSTREAM-COMPLAINT
   source: A089-P002
   quote: Downstream providers shall have the right to lodge a complaint alleging an infringement of this Regulation.
@@ -22,7 +22,7 @@ records:
   product_scope_reason: This is an optional procedural entitlement rather than a compliance action.
   implementation_mode: none_required
   implementation_reason: No independent mandatory product action arises.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A089-P2-COMPLAINT-CONTENT
   source: A089-P002
   quote: A complaint shall be duly reasoned and indicate at least
@@ -35,4 +35,4 @@ records:
   product_scope_reason: The content rule applies only when exercising the optional complaint entitlement.
   implementation_mode: none_required
   implementation_reason: No standing compliance action arises.
-  verification_mode: not_assessed
+  verification_mode: not_reported

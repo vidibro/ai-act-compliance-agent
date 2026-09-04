@@ -10,7 +10,7 @@ records:
   subject_category: supported_operator
   implementation_refs:
   - AIA-PO-A47
-  verification_mode: listed_for_confirmation
+  verification_mode: reported_not_judged
 - norm_id: AIA-NORM-A047-P1-RETAIN-DECLARATION
   source: A047-P001
   quote: The provider shall draw up a written machine readable, physical or electronically signed EU declaration
@@ -22,7 +22,7 @@ records:
   subject_category: supported_operator
   implementation_refs:
   - AIA-PO-A47
-  verification_mode: listed_for_confirmation
+  verification_mode: reported_not_judged
 - norm_id: AIA-NORM-A047-P1-IDENTIFY-SYSTEM
   source: A047-P001
   quote: The EU declaration of conformity shall identify the high-risk AI system for which it has been
@@ -32,7 +32,7 @@ records:
   subject_category: supported_operator
   implementation_refs:
   - AIA-PO-A47
-  verification_mode: listed_for_confirmation
+  verification_mode: reported_not_judged
 - norm_id: AIA-NORM-A047-P1-SUBMIT-ON-REQUEST
   source: A047-P001
   quote: A copy of the EU declaration of conformity shall be submitted to the relevant national competent
@@ -42,7 +42,7 @@ records:
   subject_category: supported_operator
   implementation_refs:
   - AIA-PO-A47
-  verification_mode: listed_for_confirmation
+  verification_mode: reported_not_judged
 - norm_id: AIA-NORM-A047-P2-STATE-SECTION-2-COMPLIANCE
   source: A047-P002
   quote: The EU declaration of conformity shall state that the high-risk AI system concerned meets the
@@ -52,7 +52,7 @@ records:
   subject_category: supported_operator
   implementation_refs:
   - AIA-PO-A47-2
-  verification_mode: listed_for_confirmation
+  verification_mode: reported_not_judged
 - norm_id: AIA-NORM-A047-P2-ANNEX-V-CONTENT
   source: A047-P002
   quote: The EU declaration of conformity shall contain the information set out in Annex V
@@ -61,7 +61,7 @@ records:
   subject_category: supported_operator
   implementation_refs:
   - AIA-PO-A47-2
-  verification_mode: listed_for_confirmation
+  verification_mode: reported_not_judged
   dependencies:
   - dependency_ref: AIA-TEXT-ANNEX-V-P002
     resolution: internal_resolved
@@ -97,7 +97,7 @@ records:
   subject_category: supported_operator
   implementation_refs:
   - AIA-PO-A47-2
-  verification_mode: listed_for_confirmation
+  verification_mode: reported_not_judged
 - norm_id: AIA-NORM-A047-P3-SINGLE-DECLARATION
   source: A047-P003
   quote: Where high-risk AI systems are subject to other Union harmonisation legislation which also requires
@@ -109,7 +109,7 @@ records:
   subject_category: supported_operator
   implementation_refs:
   - AIA-PO-A47-3
-  verification_mode: listed_for_confirmation
+  verification_mode: reported_not_judged
 - norm_id: AIA-NORM-A047-P3-IDENTIFY-LEGISLATION
   source: A047-P003
   quote: The declaration shall contain all the information required to identify the Union harmonisation
@@ -119,7 +119,7 @@ records:
   subject_category: supported_operator
   implementation_refs:
   - AIA-PO-A47-3
-  verification_mode: listed_for_confirmation
+  verification_mode: reported_not_judged
 - norm_id: AIA-NORM-A047-P4-ASSUME-RESPONSIBILITY
   source: A047-P004
   quote: By drawing up the EU declaration of conformity, the provider shall assume responsibility for
@@ -129,7 +129,7 @@ records:
   subject_category: supported_operator
   implementation_refs:
   - AIA-PO-A47-4
-  verification_mode: listed_for_confirmation
+  verification_mode: reported_not_judged
 - norm_id: AIA-NORM-A047-P4-KEEP-CURRENT
   source: A047-P004
   quote: The provider shall keep the EU declaration of conformity up-to-date as appropriate.
@@ -138,7 +138,7 @@ records:
   subject_category: supported_operator
   implementation_refs:
   - AIA-PO-A47-4
-  verification_mode: listed_for_confirmation
+  verification_mode: reported_not_judged
 - norm_id: AIA-NORM-A047-P5-AMEND-ANNEX-V
   source: A047-P005
   quote: The Commission is empowered to adopt delegated acts in accordance with Article 97 in order to
@@ -152,4 +152,4 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported

@@ -9,7 +9,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A080-P2-REQUIRE-COMPLIANCE-AND-CORRECTION
   source: A080-P002
   quote: it shall without undue delay require the relevant provider to take all necessary actions to bring the AI system into compliance with the requirements and obligations laid down in this Regulation, as well as take appropriate corrective action within a period the market surveillance authority may prescribe.
@@ -20,7 +20,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A080-P3-INFORM-CROSS-BORDER-USE
   source: A080-P003
   quote: it shall inform the Commission and the other Member States without undue delay of the results of the evaluation and of the actions which it has required the provider to take.
@@ -31,7 +31,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A080-P4-BRING-SYSTEM-INTO-COMPLIANCE
   source: A080-P004
   quote: The provider shall ensure that all necessary action is taken to bring the AI system into compliance with the requirements and obligations laid down in this Regulation.
@@ -39,7 +39,7 @@ records:
   subject_ref: provider
   subject_category: supported_operator
   implementation_refs: [AIA-PO-A20]
-  verification_mode: listed_for_confirmation
+  verification_mode: reported_not_judged
 - norm_id: AIA-NORM-A080-P4-NONCOMPLIANCE-FINE
   source: A080-P004
   quote: the provider shall be subject to fines in accordance with Article 99.
@@ -51,7 +51,7 @@ records:
   product_scope_reason: The penalty enforces the compliance duty without adding an independent product action.
   implementation_mode: none_required
   implementation_reason: No independent product action arises.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A080-P5-CORRECT-ALL-UNION-SYSTEMS
   source: A080-P005
   quote: The provider shall ensure that all appropriate corrective action is taken in respect of all the AI systems concerned that it has made available on the Union market.
@@ -59,7 +59,7 @@ records:
   subject_ref: provider
   subject_category: supported_operator
   implementation_refs: [AIA-PO-A20]
-  verification_mode: listed_for_confirmation
+  verification_mode: reported_not_judged
 - norm_id: AIA-NORM-A080-P6-APPLY-ARTICLE-79-ESCALATION
   source: A080-P006
   quote: Article 79(5) to (9) shall apply.
@@ -71,7 +71,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A080-P7-CIRCUMVENTION-FINE
   source: A080-P007
   quote: the provider shall be subject to fines in accordance with Article 99.
@@ -83,7 +83,7 @@ records:
   product_scope_reason: The penalty enforces the Article 6 classification duty without adding an independent product action.
   implementation_mode: none_required
   implementation_reason: No independent product action arises.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A080-P8-PERFORM-MONITORING-CHECKS
   source: A080-P008
   quote: market surveillance authorities may perform appropriate checks, taking into account in particular information stored in the EU database referred to in Article 71 of this Regulation.
@@ -95,4 +95,4 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported

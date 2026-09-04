@@ -10,7 +10,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A075A-P1-RECLAIM-ENFORCEMENT-COSTS
   source: A075A-P001
   quote: The AI Office shall be authorised to fully reclaim from the relevant operator the totality of the costs
@@ -22,7 +22,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A075A-P1-APPLY-ARTICLE17
   source: A075A-P001
   quote: Article 17 of Regulation (EU) 2019/1020 shall apply mutatis mutandis
@@ -34,7 +34,7 @@ records:
   product_scope_reason: This institutional procedure is outside the supported operator surface.
   implementation_mode: none_required
   implementation_reason: No product implementation is required.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A075A-P2-START-INVESTIGATION
   source: A075A-P002
   quote: it may adopt a decision to start an investigation into that non-compliance
@@ -46,7 +46,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A075A-P2-NOTIFY-INVESTIGATION
   source: A075A-P002
   quote: the AI Office shall notify the operator of the AI system concerned
@@ -57,7 +57,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A075A-P2-EXERCISE-POWERS-PREINVESTIGATION
   source: A075A-P002
   quote: The AI Office may exercise the powers referred to in paragraph 1 of this Article on its own initiative or following a complaint
@@ -69,7 +69,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A075A-P2-MSA-REQUEST-ASSESSMENT
   source: A075A-P003
   quote: it may send a request to the AI Office to assess the matter
@@ -81,7 +81,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A075A-P3-REQUEST-INFORMATION
   source: A075A-P004
   quote: The AI Office may exercise the powers listed
@@ -93,7 +93,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A075A-P3-INFORMATION-REQUEST-CONTENT
   source: A075A-P005
   quote: the AI Office shall state the legal basis and the purpose of the request, specify what information is required, and set the period within which the information is to be provided.
@@ -109,7 +109,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A075A-P3-SIMPLE-REQUEST-ADDITIONS
   source: A075A-P005
   quote: Where the request is a simple request, the AI Office shall additionally indicate that although there is no obligation to provide the information requested, in the case of a voluntary reply, the information must be correct and not misleading, and indicate the potential fines provided for in Article 99(5) for supplying incorrect or misleading information.
@@ -129,7 +129,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A075A-P3-DECISION-REQUEST-ADDITIONS
   source: A075A-P005
   quote: Where the request is made by decision, the AI Office shall additionally indicate the fines provided for in Article 99(5) for supplying incorrect, incomplete or misleading information and indicate the right to have the decision reviewed by the Court of Justice of the European Union.
@@ -148,7 +148,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A075A-P3-SEND-COPY-TO-TERRITORIAL-AUTHORITY
   source: A075A-P005
   quote: The AI Office shall send a copy of the request to the market surveillance authority of the Member State in the territory of which the operator or its legal representative is situated.
@@ -160,7 +160,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A075A-P3-VOLUNTARY-REPLY-CORRECTNESS
   source: A075A-P005
   quote: in the case of a voluntary reply, the information must be correct and not misleading
@@ -171,7 +171,7 @@ records:
   product_scope_reason: This is a conditional information-quality duty for supported operators.
   implementation_mode: missing
   implementation_reason: No current rule represents this conditional response duty.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A075A-P4-CONDUCT-INSPECTIONS
   source: A075A-P006
   quote: the AI Office may conduct all necessary remote or on-site inspections
@@ -183,7 +183,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A075A-P4-INSPECTION-NOTICES
   source: A075A-P006
   quote: the AI Office shall inform the provider concerned of the subject matter and purpose of the investigation
@@ -194,7 +194,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A075A-P4-INSPECTION-POWERS
   source: A075A-P007
   quote: the officials of the AI Office shall be empowered to
@@ -208,7 +208,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A075A-P4-ASSIST-OBSTRUCTED-INSPECTION
   source: A075A-P013
   quote: the national competent authority of the Member State concerned shall afford it the necessary assistance
@@ -219,7 +219,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A075A-P4-APPLY-JUDICIAL-AUTHORISATION
   source: A075A-P014
   quote: the AI Office shall apply for such an authorisation
@@ -230,7 +230,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A075A-P4-JUDICIAL-AUTHORISATION-REVIEW
   source: A075A-P014
   quote: the national judicial authority shall promptly verify that the coercive measures envisaged are neither arbitrary nor excessive
@@ -241,7 +241,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A075A-P5-MSA-FACT-FINDING
   source: A075A-P015
   quote: may in its own territory carry out any investigation, inspection or other fact-finding measure
@@ -253,7 +253,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A075A-P6-ADDITIONAL-OPERATOR-ORDERS
   source: A075A-P016
   quote: the AI Office, in the exercise of its competences referred to in Article 75(1), may
@@ -267,7 +267,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A075A-P7-APPOINT-EXPERTS
   source: A075A-P019
   quote: the AI Office may appoint independent external experts and auditors
@@ -279,7 +279,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A075A-P7-SHARE-MONITORING-INFORMATION
   source: A075A-P019
   quote: Information obtained as a result of such monitoring actions shall be shared with the relevant competent authorities
@@ -290,7 +290,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A075A-P8-PURPOSE-LIMIT-INFORMATION
   source: A075A-P020
   quote: shall be used only for the purpose of this Regulation
@@ -301,4 +301,4 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported

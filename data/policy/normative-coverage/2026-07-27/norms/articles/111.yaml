@@ -26,7 +26,7 @@ norms:
   implementation_mode: missing
   implementation_refs: []
   implementation_reason: No current rule represents this legacy-system transition.
-  verification_mode: not_assessed
+  verification_mode: not_reported
   review:
     status: proposed
     extracted_by: semantic-legal-effect-pass
@@ -60,7 +60,7 @@ norms:
   implementation_mode: none_required
   implementation_refs: []
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
   review:
     status: proposed
     extracted_by: semantic-legal-effect-pass
@@ -96,7 +96,7 @@ norms:
   implementation_mode: none_required
   implementation_refs: []
   implementation_reason: Represented as an applicability dependency rather than an independent finding.
-  verification_mode: not_assessed
+  verification_mode: not_reported
   review:
     status: proposed
     extracted_by: semantic-legal-effect-pass
@@ -132,7 +132,7 @@ norms:
   implementation_mode: missing
   implementation_refs: []
   implementation_reason: Existing rules do not represent this public-authority-use transition date.
-  verification_mode: not_assessed
+  verification_mode: not_reported
   review:
     status: proposed
     extracted_by: semantic-legal-effect-pass
@@ -167,7 +167,7 @@ norms:
   implementation_mode: missing
   implementation_refs: []
   implementation_reason: Existing rules do not represent this legacy-model transition date.
-  verification_mode: not_assessed
+  verification_mode: not_reported
   review:
     status: proposed
     extracted_by: semantic-legal-effect-pass
@@ -202,7 +202,7 @@ norms:
   implementation_mode: missing
   implementation_refs: []
   implementation_reason: Existing Article 50 rules do not represent this legacy-system transition date.
-  verification_mode: not_assessed
+  verification_mode: not_reported
   review:
     status: proposed
     extracted_by: semantic-legal-effect-pass

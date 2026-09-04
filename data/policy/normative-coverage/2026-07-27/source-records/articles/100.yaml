@@ -12,7 +12,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A100-P2-ARTICLE5-FINE
   source: A100-P009
   quote: shall be subject to administrative fines of up to EUR 1500000
@@ -24,7 +24,7 @@ records:
   product_scope_reason: This enforcement consequence is outside the supported operator surface.
   implementation_mode: none_required
   implementation_reason: No product implementation is required.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A100-P3-OTHER-REQUIREMENT-FINE
   source: A100-P010
   quote: shall be subject to administrative fines of up to EUR 750000
@@ -36,7 +36,7 @@ records:
   product_scope_reason: This enforcement consequence is outside the supported operator surface.
   implementation_mode: none_required
   implementation_reason: No product implementation is required.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A100-P4-HEARING-RIGHTS
   source: A100-P011
   quote: shall give the Union institution, body, office or agency which is the subject of the proceedings conducted by the European Data Protection Supervisor the opportunity of being heard on the matter regarding the possible infringement.
@@ -50,7 +50,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A100-P4-DECISION-GROUNDS
   source: A100-P011
   quote: The European Data Protection Supervisor shall base his or her decisions only on elements and circumstances on which the parties concerned have been able to comment.
@@ -62,7 +62,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A100-P4-ASSOCIATE-COMPLAINANTS
   source: A100-P011
   quote: Complainants, if any, shall be associated closely with the proceedings.
@@ -75,7 +75,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A100-P5-DEFENCE-AND-FILE-ACCESS
   source: A100-P012
   quote: The rights of defence of the parties concerned shall be fully respected in the proceedings.
@@ -86,7 +86,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A100-P5-FILE-ACCESS-ENTITLEMENT
   source: A100-P012
   quote: They shall be entitled to have access to the European Data Protection Supervisor’s file, subject to the legitimate interest of individuals or undertakings in the protection of their personal data or business secrets.
@@ -101,7 +101,7 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A100-P6-FINE-FUNDS-AND-OPERATION
   source: A100-P013
   quote: Funds collected by imposition of fines in this Article shall contribute to the general budget of the Union
@@ -114,7 +114,7 @@ records:
   product_scope_reason: This institutional consequence is outside the supported operator surface.
   implementation_mode: none_required
   implementation_reason: No product implementation is required.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A100-P6-PRESERVE-FINED-BODY-OPERATION
   source: A100-P013
   quote: The fines shall not affect the effective operation of the Union institution, body, office or agency fined.
@@ -127,7 +127,7 @@ records:
   product_scope_reason: This institutional consequence is outside the supported operator surface.
   implementation_mode: none_required
   implementation_reason: No product implementation is required.
-  verification_mode: not_assessed
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A100-P7-ANNUAL-FINE-NOTIFICATION
   source: A100-P014
   quote: shall, on an annual basis, notify the Commission
@@ -138,4 +138,4 @@ records:
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_assessed
+  verification_mode: not_reported

@@ -361,14 +361,23 @@ cannot form a cycle.
 
 `VerificationMode` records the strongest treatment the application performs:
 
-- `judged_from_document` — documentation is evaluated and receives a verdict;
-- `resolved_from_description` — applicability is answered from the submitted system description;
-- `listed_for_confirmation` — the obligation is shown but requires external or human confirmation;
-- `reported_conditionally` — shown with an unresolved condition about the duty-holder or facts;
-- `not_assessed` — intentionally not decided by the application;
+- `judged_by_gap_analysis` — documentation is evaluated and receives a verdict;
+- `answered_by_classification` — applicability is answered from the submitted system description;
+- `reported_not_judged` — the obligation is shown as owed, with no verdict;
+- `reported_conditionally` — shown as conditional, with an unresolved condition about the
+  duty-holder or facts;
+- `not_reported` — absent from the report, because the norm binds someone the product does not
+  report for;
 - `unresolved` — verification treatment has not been approved.
 
 This field prevents `reported_not_judged` from being mistaken for a passed check.
+
+Both engines read the one submitted document, so the first two differ in what SILENCE means, not in
+where the text comes from. The document is itself the compliance artefact an obligation demands, so
+an absent fact is a `gap` finding; an absent fact proves nothing about what a system *is*, so the
+cascade abstains rather than deciding a risk class the documentation never supported. Crossing the
+two inverts the report: a hidden gap in one direction, a gap reported against an undetermined tier
+in the other.
 
 ### Review status
 
