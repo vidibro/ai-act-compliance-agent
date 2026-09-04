@@ -10,10 +10,17 @@ import pytest
 
 from aiact.norm_loader import load_normative_coverage
 from aiact.norm_metrics import measure_normative_coverage
-from aiact.schemas.norm import ConditionGroup
+from aiact.schemas.norm import (
+    ConditionGroup,
+    ImplementationMode,
+    ProductScope,
+    VerificationMode,
+)
 from aiact.text_segments import corpus_documents, group_segments, load_source_body
 
 ROOT = Path(__file__).resolve().parents[1]
+
+UNCARRIED_UNREPORTED_NORMS = {"AIA-NORM-A008-P1-COMPLY-SECTION-REQUIREMENTS"}
 
 
 @pytest.fixture(scope="module")
@@ -36,6 +43,53 @@ def test_generated_coverage_artifacts_are_reproducible():
         text=True,
     )
     assert completed.returncode == 0, completed.stderr or completed.stdout
+
+
+def test_an_in_scope_duty_is_never_dropped_from_the_report():
+    """An in-scope norm binds the reader, so omitting it understates what they owe.
+
+    `not_reported` belongs to norms binding someone the product does not report for. The one
+    in-scope exception is a norm another norm already reports, which is a presentation choice
+    rather than a silence."""
+    bundle = load_normative_coverage()
+    unreported = [
+        norm
+        for norm in bundle.norm_inventory.norms
+        if norm.product_scope is ProductScope.IN_SCOPE
+        and norm.verification_mode is VerificationMode.NOT_REPORTED
+    ]
+    carried = [
+        norm
+        for norm in unreported
+        if norm.implementation_mode is ImplementationMode.CARRIED_BY_OTHER_NORM
+    ]
+
+    assert {norm.norm_id for norm in unreported} - {
+        norm.norm_id for norm in carried
+    } == UNCARRIED_UNREPORTED_NORMS
+    assert all(norm.carried_by_norm_ids for norm in carried)
+
+
+def test_a_carried_norm_names_a_carrier_that_is_itself_reported():
+    """Carrying only relocates a duty. A carrier that is itself unreported hides both norms, which
+    the carried norm's own status cannot reveal."""
+    bundle = load_normative_coverage()
+    by_id = {norm.norm_id: norm for norm in bundle.norm_inventory.norms}
+    carried = [
+        norm
+        for norm in bundle.norm_inventory.norms
+        if norm.product_scope is ProductScope.IN_SCOPE
+        and norm.implementation_mode is ImplementationMode.CARRIED_BY_OTHER_NORM
+    ]
+
+    assert carried
+    for norm in carried:
+        assert norm.carried_by_norm_ids, norm.norm_id
+        for carrier_id in norm.carried_by_norm_ids:
+            carrier = by_id[carrier_id]
+            assert carrier.verification_mode is not VerificationMode.NOT_REPORTED, (
+                f"{norm.norm_id} is carried by {carrier_id}, which is itself not reported"
+            )
 
 
 def test_inventory_partitions_the_complete_versioned_corpus(metrics):
