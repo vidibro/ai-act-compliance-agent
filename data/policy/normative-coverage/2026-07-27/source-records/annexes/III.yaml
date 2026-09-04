@@ -8,6 +8,7 @@ records:
   subject_ref: remote_biometric_identification_system
   subject_category: other
   kind: applicability
+  verification_mode: answered_by_classification
   qualifier_spans:
   - ANNEX-III-P001
   - ANNEX-III-P002
@@ -28,6 +29,7 @@ records:
   subject_ref: biometric_categorisation_system
   subject_category: other
   kind: applicability
+  verification_mode: answered_by_classification
   qualifier_spans:
   - ANNEX-III-P001
   - ANNEX-III-P002
@@ -44,6 +46,7 @@ records:
   subject_ref: emotion_recognition_system
   subject_category: other
   kind: applicability
+  verification_mode: answered_by_classification
   qualifier_spans:
   - ANNEX-III-P001
   - ANNEX-III-P002
@@ -62,6 +65,7 @@ records:
   subject_ref: critical_infrastructure_ai_system
   subject_category: other
   kind: applicability
+  verification_mode: answered_by_classification
   qualifier_spans:
   - ANNEX-III-P001
   dependencies:
@@ -80,6 +84,7 @@ records:
   subject_ref: education_access_ai_system
   subject_category: other
   kind: applicability
+  verification_mode: answered_by_classification
   qualifier_spans:
   - ANNEX-III-P001
   - ANNEX-III-P007
@@ -97,6 +102,7 @@ records:
   subject_ref: learning_outcome_ai_system
   subject_category: other
   kind: applicability
+  verification_mode: answered_by_classification
   qualifier_spans:
   - ANNEX-III-P001
   - ANNEX-III-P007
@@ -114,6 +120,7 @@ records:
   subject_ref: education_level_ai_system
   subject_category: other
   kind: applicability
+  verification_mode: answered_by_classification
   qualifier_spans:
   - ANNEX-III-P001
   - ANNEX-III-P007
@@ -130,6 +137,7 @@ records:
   subject_ref: student_test_monitoring_ai_system
   subject_category: other
   kind: applicability
+  verification_mode: answered_by_classification
   qualifier_spans:
   - ANNEX-III-P001
   - ANNEX-III-P007
@@ -146,6 +154,7 @@ records:
   subject_ref: recruitment_ai_system
   subject_category: other
   kind: applicability
+  verification_mode: answered_by_classification
   qualifier_spans:
   - ANNEX-III-P001
   - ANNEX-III-P012
@@ -164,6 +173,7 @@ records:
   subject_ref: worker_management_ai_system
   subject_category: other
   kind: applicability
+  verification_mode: answered_by_classification
   qualifier_spans:
   - ANNEX-III-P001
   - ANNEX-III-P012
@@ -181,6 +191,7 @@ records:
   subject_ref: essential_public_benefits_ai_system
   subject_category: other
   kind: applicability
+  verification_mode: answered_by_classification
   qualifier_spans:
   - ANNEX-III-P001
   - ANNEX-III-P015
@@ -197,6 +208,7 @@ records:
   subject_ref: creditworthiness_ai_system
   subject_category: other
   kind: applicability
+  verification_mode: answered_by_classification
   qualifier_spans:
   - ANNEX-III-P001
   - ANNEX-III-P015
@@ -215,6 +227,7 @@ records:
   subject_ref: life_health_insurance_ai_system
   subject_category: other
   kind: applicability
+  verification_mode: answered_by_classification
   qualifier_spans:
   - ANNEX-III-P001
   - ANNEX-III-P015
@@ -232,6 +245,7 @@ records:
   subject_ref: emergency_response_ai_system
   subject_category: other
   kind: applicability
+  verification_mode: answered_by_classification
   qualifier_spans:
   - ANNEX-III-P001
   - ANNEX-III-P015
@@ -249,6 +263,7 @@ records:
   subject_ref: crime_victim_risk_ai_system
   subject_category: other
   kind: applicability
+  verification_mode: answered_by_classification
   qualifier_spans:
   - ANNEX-III-P001
   - ANNEX-III-P020
@@ -266,6 +281,7 @@ records:
   subject_ref: law_enforcement_polygraph_ai_system
   subject_category: other
   kind: applicability
+  verification_mode: answered_by_classification
   qualifier_spans:
   - ANNEX-III-P001
   - ANNEX-III-P020
@@ -285,6 +301,7 @@ records:
   subject_ref: evidence_reliability_ai_system
   subject_category: other
   kind: applicability
+  verification_mode: answered_by_classification
   qualifier_spans:
   - ANNEX-III-P001
   - ANNEX-III-P020
@@ -306,6 +323,7 @@ records:
   subject_ref: offending_risk_ai_system
   subject_category: other
   kind: applicability
+  verification_mode: answered_by_classification
   qualifier_spans:
   - ANNEX-III-P001
   - ANNEX-III-P020
@@ -330,6 +348,7 @@ records:
   subject_ref: law_enforcement_profiling_ai_system
   subject_category: other
   kind: applicability
+  verification_mode: answered_by_classification
   qualifier_spans:
   - ANNEX-III-P001
   - ANNEX-III-P020
@@ -351,6 +370,7 @@ records:
   subject_ref: border_polygraph_ai_system
   subject_category: other
   kind: applicability
+  verification_mode: answered_by_classification
   qualifier_spans:
   - ANNEX-III-P001
   - ANNEX-III-P026
@@ -371,6 +391,7 @@ records:
   subject_ref: border_risk_ai_system
   subject_category: other
   kind: applicability
+  verification_mode: answered_by_classification
   qualifier_spans:
   - ANNEX-III-P001
   - ANNEX-III-P026
@@ -392,6 +413,7 @@ records:
   subject_ref: asylum_visa_residence_ai_system
   subject_category: other
   kind: applicability
+  verification_mode: answered_by_classification
   qualifier_spans:
   - ANNEX-III-P001
   - ANNEX-III-P026
@@ -412,6 +434,7 @@ records:
   subject_ref: border_identification_ai_system
   subject_category: other
   kind: applicability
+  verification_mode: answered_by_classification
   qualifier_spans:
   - ANNEX-III-P001
   - ANNEX-III-P026
@@ -433,6 +456,7 @@ records:
   subject_ref: justice_ai_system
   subject_category: other
   kind: applicability
+  verification_mode: answered_by_classification
   qualifier_spans:
   - ANNEX-III-P001
   - ANNEX-III-P031
@@ -452,6 +476,7 @@ records:
   subject_ref: election_influence_ai_system
   subject_category: other
   kind: applicability
+  verification_mode: answered_by_classification
   qualifier_spans:
   - ANNEX-III-P001
   - ANNEX-III-P031

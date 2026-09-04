@@ -16,6 +16,7 @@ records:
     harmonisation legislation listed in Annex I
   - the relevant product is required to undergo third-party conformity assessment for market placement
     or putting into service under that Annex I legislation
+  verification_mode: answered_by_classification
   dependencies:
   - dependency_ref: AIA-NORM-A003-D014-SAFETY-COMPONENT
     resolution: internal_resolved
@@ -37,6 +38,7 @@ records:
   conditions:
   - the system is used solely for non-safety aspects of user assistance, performance optimisation, service
     efficiency, automation, convenience, or quality control
+  verification_mode: answered_by_classification
   dependencies:
   - dependency_ref: AIA-NORM-A003-D014-SAFETY-COMPONENT
     resolution: internal_resolved
@@ -52,6 +54,7 @@ records:
   kind: applicability
   conditions:
   - failure or malfunction of the AI system would endanger health and safety
+  verification_mode: answered_by_classification
   dependencies:
   - dependency_ref: AIA-NORM-A003-D014-SAFETY-COMPONENT
     resolution: internal_resolved
@@ -69,6 +72,7 @@ records:
   kind: applicability
   conditions:
   - third-party conformity assessment is required solely because of risks unrelated to health and safety
+  verification_mode: answered_by_classification
 - norm_id: AIA-NORM-A006-P2-ANNEX-III-HIGH-RISK
   source: A006-P007
   quote: AI systems referred to in Annex III shall be considered to be high-risk.
@@ -76,6 +80,7 @@ records:
   subject_ref: annex_iii_ai_system
   subject_category: other
   kind: applicability
+  verification_mode: answered_by_classification
   dependencies:
   - dependency_ref: Annex III of this Regulation
     resolution: unresolved
@@ -117,6 +122,7 @@ records:
   exceptions:
   - an Annex III AI system performing profiling of natural persons is always high-risk, notwithstanding
     this exception
+  verification_mode: answered_by_classification
   dependencies:
   - dependency_ref: AIA-NORM-A006-P2-ANNEX-III-HIGH-RISK
     resolution: internal_resolved
@@ -131,6 +137,7 @@ records:
   kind: applicability
   conditions:
   - the AI system performs profiling of natural persons
+  verification_mode: answered_by_classification
   dependencies:
   - dependency_ref: AIA-NORM-A003-D052-PROFILING
     resolution: internal_resolved
@@ -149,6 +156,7 @@ records:
   kind: obligation
   conditions:
   - the provider considers an Annex III AI system not to be high-risk under Article 6(3)
+  verification_mode: judged_by_gap_analysis
   dependencies:
   - dependency_ref: AIA-NORM-A006-P3-INSIGNIFICANT-RISK-EXCEPTION
     resolution: internal_resolved
@@ -162,6 +170,7 @@ records:
   kind: obligation
   conditions:
   - the provider concludes that an Annex III AI system is not high-risk under Article 6(3)
+  verification_mode: reported_not_judged
   dependencies:
   - dependency_ref: Article 49(2) of this Regulation
     resolution: unresolved
@@ -177,6 +186,7 @@ records:
   kind: obligation
   conditions:
   - a national competent authority requests the documentation
+  verification_mode: reported_not_judged
 - norm_id: AIA-NORM-A006-P5-PROVIDE-GUIDELINES
   source: A006-P016
   quote: "The Commission shall, after consulting the European Artificial Intelligence Board (the \u2018\
