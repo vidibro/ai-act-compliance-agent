@@ -14,6 +14,7 @@ records:
   - dependency_ref: AIA-NORM-A043-P2-INTERNAL-CONTROL
     resolution: internal_resolved
     detail: Article 43(2) requires the Annex VI route for the specified Annex III systems.
+  verification_mode: reported_conditionally
 - norm_id: AIA-NORM-ANNEX-VI-P2-VERIFY-QMS
   source: ANNEX-VI-P002
   quote: The provider verifies that the established quality management system is in compliance with the requirements of Article 17.
@@ -27,6 +28,7 @@ records:
   - dependency_ref: AIA-NORM-A043-P2-INTERNAL-CONTROL
     resolution: internal_resolved
     detail: Article 43(2) determines when the Annex VI procedure applies.
+  verification_mode: judged_by_gap_analysis
 - norm_id: AIA-NORM-ANNEX-VI-P3-EXAMINE-TECHNICAL-DOCUMENTATION
   source: ANNEX-VI-P003
   quote: The provider examines the information contained in the technical documentation in order to assess the compliance of the AI system with the relevant essential requirements set out in Chapter III, Section 2.
@@ -37,6 +39,7 @@ records:
   - dependency_ref: AIA-NORM-A043-P2-INTERNAL-CONTROL
     resolution: internal_resolved
     detail: Article 43(2) determines when the Annex VI procedure applies.
+  verification_mode: judged_by_gap_analysis
 - norm_id: AIA-NORM-ANNEX-VI-P4-VERIFY-CONSISTENCY
   source: ANNEX-VI-P004
   quote: The provider also verifies that the design and development process of the AI system and its post-market monitoring as referred to in Article 72 is consistent with the technical documentation.
@@ -50,3 +53,4 @@ records:
   - dependency_ref: AIA-NORM-A043-P2-INTERNAL-CONTROL
     resolution: internal_resolved
     detail: Article 43(2) determines when the Annex VI procedure applies.
+  verification_mode: judged_by_gap_analysis

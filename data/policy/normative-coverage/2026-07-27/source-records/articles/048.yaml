@@ -7,7 +7,7 @@ records:
   subject_ref: provider
   subject_category: supported_operator
   implementation_mode: missing
-  verification_mode: unresolved
+  verification_mode: judged_by_gap_analysis
 - norm_id: AIA-NORM-A048-P2-DIGITAL-CE-MARKING
   source: A048-P002
   quote: For high-risk AI systems provided digitally, a digital CE marking shall be used, only if it can
@@ -74,6 +74,6 @@ records:
   subject_ref: provider
   subject_category: supported_operator
   implementation_mode: missing
-  verification_mode: unresolved
+  verification_mode: reported_conditionally
   conditions:
   - other applicable Union law also provides for affixing the CE marking

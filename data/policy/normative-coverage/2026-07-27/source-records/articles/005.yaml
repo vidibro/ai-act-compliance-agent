@@ -13,6 +13,7 @@ records:
   subject_ref: operator
   subject_category: supported_operator
   kind: prohibition
+  verification_mode: answered_by_classification
   qualifier_spans:
   - A005-P001
   conditions:
@@ -33,6 +34,7 @@ records:
   subject_ref: operator
   subject_category: supported_operator
   kind: prohibition
+  verification_mode: answered_by_classification
   qualifier_spans:
   - A005-P001
   conditions:
@@ -53,6 +55,7 @@ records:
   subject_ref: operator
   subject_category: supported_operator
   kind: prohibition
+  verification_mode: answered_by_classification
   qualifier_spans:
   - A005-P001
   - A005-P018
@@ -80,6 +83,7 @@ records:
   subject_ref: operator
   subject_category: supported_operator
   kind: prohibition
+  verification_mode: answered_by_classification
   qualifier_spans:
   - A005-P001
   - A005-P018
@@ -111,6 +115,7 @@ records:
   subject_ref: operator
   subject_category: supported_operator
   kind: prohibition
+  verification_mode: answered_by_classification
   qualifier_spans:
   - A005-P001
   - A005-P007
@@ -131,6 +136,7 @@ records:
   subject_ref: operator
   subject_category: supported_operator
   kind: prohibition
+  verification_mode: answered_by_classification
   qualifier_spans:
   - A005-P001
   exceptions:
@@ -146,6 +152,7 @@ records:
   subject_ref: operator
   subject_category: supported_operator
   kind: prohibition
+  verification_mode: answered_by_classification
   qualifier_spans:
   - A005-P001
 - norm_id: AIA-NORM-A005-P1-F-WORKPLACE-EDUCATION-EMOTION-INFERENCE
@@ -159,6 +166,7 @@ records:
   subject_ref: operator
   subject_category: supported_operator
   kind: prohibition
+  verification_mode: answered_by_classification
   qualifier_spans:
   - A005-P001
   exceptions:
@@ -174,6 +182,7 @@ records:
   subject_ref: operator
   subject_category: supported_operator
   kind: prohibition
+  verification_mode: answered_by_classification
   qualifier_spans:
   - A005-P001
   exceptions:
@@ -193,6 +202,7 @@ records:
   subject_ref: law_enforcement_authority
   subject_category: public_authority
   kind: prohibition
+  verification_mode: answered_by_classification
   qualifier_spans:
   - A005-P001
   - A005-P014
@@ -244,6 +254,7 @@ records:
   subject_ref: provider
   subject_category: supported_operator
   kind: applicability
+  verification_mode: answered_by_classification
   qualifier_spans:
   - A005-P018
   - A005-P020
@@ -270,6 +281,7 @@ records:
   subject_ref: deployer
   subject_category: supported_operator
   kind: applicability
+  verification_mode: answered_by_classification
   qualifier_spans:
   - A005-P018
   conditions:
@@ -292,6 +304,7 @@ records:
   subject_ref: intimate_material_manipulation
   subject_category: other
   kind: legal_consequence
+  verification_mode: answered_by_classification
   conditions:
   - the manipulation does not increase exposure of any depicted intimate parts
   - the manipulation does not alter the nature of depicted sexually explicit activities
@@ -308,6 +321,7 @@ records:
   subject_ref: law_enforcement_authority
   subject_category: public_authority
   kind: obligation
+  verification_mode: reported_not_judged
   dependencies:
   - dependency_ref: AIA-NORM-A005-P1-H-REAL-TIME-RBI
     resolution: internal_resolved
@@ -320,6 +334,7 @@ records:
   subject_ref: law_enforcement_authority
   subject_category: public_authority
   kind: obligation
+  verification_mode: reported_not_judged
   qualifier_spans:
   - A005-P025
   - A005-P026
@@ -344,6 +359,7 @@ records:
   subject_ref: law_enforcement_authority
   subject_category: public_authority
   kind: obligation
+  verification_mode: reported_conditionally
   dependencies:
   - dependency_ref: national law authorising real-time remote biometric identification use
     resolution: national_or_factual
@@ -358,6 +374,7 @@ records:
   subject_ref: law_enforcement_authority
   subject_category: public_authority
   kind: obligation
+  verification_mode: judged_by_gap_analysis
   dependencies:
   - dependency_ref: Article 27 of this Regulation
     resolution: unresolved
@@ -373,6 +390,7 @@ records:
   subject_ref: law_enforcement_authority
   subject_category: public_authority
   kind: obligation
+  verification_mode: reported_not_judged
   exceptions:
   - in a duly justified urgent case, use may begin before registration
   conditions:
@@ -393,6 +411,7 @@ records:
   subject_ref: law_enforcement_authority
   subject_category: public_authority
   kind: obligation
+  verification_mode: reported_not_judged
   dependencies:
   - dependency_ref: national law referred to in Article 5(5) of this Regulation
     resolution: national_or_factual
@@ -406,6 +425,7 @@ records:
   subject_ref: law_enforcement_authority
   subject_category: public_authority
   kind: permission
+  verification_mode: reported_conditionally
   conditions:
   - the situation of urgency is duly justified
   - request authorisation without undue delay and no later than 24 hours after use commences
@@ -416,6 +436,7 @@ records:
   subject_ref: law_enforcement_authority
   subject_category: public_authority
   kind: obligation
+  verification_mode: reported_not_judged
   conditions:
   - the requested authorisation is rejected
 - norm_id: AIA-NORM-A005-P3-DELETE-ON-REJECTION
@@ -427,6 +448,7 @@ records:
   subject_ref: law_enforcement_authority
   subject_category: public_authority
   kind: obligation
+  verification_mode: reported_not_judged
   conditions:
   - the requested authorisation is rejected
 - norm_id: AIA-NORM-A005-P3-RESTRICT-AUTHORISATION
@@ -443,6 +465,7 @@ records:
   subject_ref: authorising_authority
   subject_category: public_authority
   kind: power
+  verification_mode: reported_conditionally
   conditions:
   - the use pursues an Article 5(1)(h) objective identified in the request
   - objective evidence or clear indications establish necessity and proportionality
@@ -459,6 +482,7 @@ records:
   subject_ref: authorising_authority
   subject_category: public_authority
   kind: obligation
+  verification_mode: reported_conditionally
   dependencies:
   - dependency_ref: AIA-NORM-A005-P2-CONSIDER-IMPACTS
     resolution: internal_resolved
@@ -473,6 +497,7 @@ records:
   subject_ref: decision_maker
   subject_category: public_authority
   kind: prohibition
+  verification_mode: reported_not_judged
 - norm_id: AIA-NORM-A005-P4-NOTIFY-AUTHORITIES
   source: A005-P030
   quote: "each use of a \u2018 real-time \u2019 remote biometric identification system in publicly accessible\
@@ -484,6 +509,7 @@ records:
   subject_ref: law_enforcement_authority
   subject_category: public_authority
   kind: obligation
+  verification_mode: reported_not_judged
   dependencies:
   - dependency_ref: national rules referred to in Article 5(5) of this Regulation
     resolution: national_or_factual
@@ -495,6 +521,7 @@ records:
   subject_ref: law_enforcement_authority
   subject_category: public_authority
   kind: obligation
+  verification_mode: reported_not_judged
   dependencies:
   - dependency_ref: Article 5(6) of this Regulation
     resolution: unresolved
@@ -507,6 +534,7 @@ records:
   subject_ref: law_enforcement_authority
   subject_category: public_authority
   kind: prohibition
+  verification_mode: reported_not_judged
 - norm_id: AIA-NORM-A005-P5-AUTHORISE-USE
   source: A005-P031
   quote: "A Member State may decide to provide for the possibility to fully or partially authorise the\

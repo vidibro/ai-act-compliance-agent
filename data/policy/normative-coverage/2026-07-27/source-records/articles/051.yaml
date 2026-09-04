@@ -14,7 +14,7 @@ records:
   - appropriate technical tools and methodologies, including indicators and benchmarks, establish high-impact
     capabilities
   implementation_mode: missing
-  verification_mode: unresolved
+  verification_mode: answered_by_classification
 - norm_id: AIA-NORM-A051-P1-B-EQUIVALENT-SYSTEMIC-RISK
   source: A051-P003
   quote: based on a decision of the Commission, ex officio or following a qualified alert from the scientific
@@ -32,7 +32,7 @@ records:
     equivalent capabilities or impact
   - the Commission has regard to the Annex XIII criteria
   implementation_mode: missing
-  verification_mode: unresolved
+  verification_mode: answered_by_classification
 - norm_id: AIA-NORM-A051-P2-COMPUTE-PRESUMPTION
   source: A051-P004
   quote: A general-purpose AI model shall be presumed to have high impact capabilities pursuant to paragraph
@@ -46,7 +46,7 @@ records:
   conditions:
   - cumulative training computation measured in floating-point operations exceeds 10^25
   implementation_mode: missing
-  verification_mode: unresolved
+  verification_mode: answered_by_classification
 - norm_id: AIA-NORM-A051-P3-AMEND-THRESHOLDS
   source: A051-P005
   quote: The Commission shall adopt delegated acts in accordance with Article 97 to amend the thresholds

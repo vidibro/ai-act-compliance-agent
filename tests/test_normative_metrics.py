@@ -349,7 +349,7 @@ def test_article_two_military_exclusion_remains_implementation_debt():
     assert norm.kind.value == "applicability"
     assert norm.product_scope.value == "in_scope"
     assert norm.implementation_mode.value == "missing"
-    assert norm.verification_mode.value == "unresolved"
+    assert norm.verification_mode.value == "answered_by_classification"
 
 
 def test_article_two_military_output_exclusion_remains_separate_norm():
@@ -370,7 +370,7 @@ def test_article_two_military_output_exclusion_remains_separate_norm():
     assert norm.kind.value == "applicability"
     assert norm.product_scope.value == "in_scope"
     assert norm.implementation_mode.value == "missing"
-    assert norm.verification_mode.value == "unresolved"
+    assert norm.verification_mode.value == "answered_by_classification"
 
 
 def test_article_two_international_cooperation_exclusion_is_in_scope():
@@ -391,7 +391,7 @@ def test_article_two_international_cooperation_exclusion_is_in_scope():
     assert norm.kind.value == "applicability"
     assert norm.product_scope.value == "in_scope"
     assert norm.implementation_mode.value == "missing"
-    assert norm.verification_mode.value == "unresolved"
+    assert norm.verification_mode.value == "answered_by_classification"
 
 
 def test_article_two_intermediary_liability_saving_clause_needs_no_product_action():

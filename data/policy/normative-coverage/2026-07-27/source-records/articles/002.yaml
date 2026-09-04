@@ -9,6 +9,7 @@ records:
   subject_ref: provider
   subject_category: supported_operator
   kind: applicability
+  verification_mode: answered_by_classification
   qualifier_spans:
   - A002-P001
 - norm_id: AIA-NORM-A002-P1-B-DEPLOYER
@@ -18,6 +19,7 @@ records:
   subject_ref: deployer
   subject_category: supported_operator
   kind: applicability
+  verification_mode: answered_by_classification
   qualifier_spans:
   - A002-P001
 - norm_id: AIA-NORM-A002-P1-C-THIRD-COUNTRY-OUTPUT
@@ -29,6 +31,7 @@ records:
   subject_ref: provider_or_deployer
   subject_category: supported_operator
   kind: applicability
+  verification_mode: answered_by_classification
   qualifier_spans:
   - A002-P001
 - norm_id: AIA-NORM-A002-P1-D-IMPORT-DISTRIBUTE
@@ -38,6 +41,7 @@ records:
   subject_ref: importer_or_distributor
   subject_category: supported_operator
   kind: applicability
+  verification_mode: answered_by_classification
   qualifier_spans:
   - A002-P001
 - norm_id: AIA-NORM-A002-P1-E-PRODUCT-MANUFACTURER
@@ -49,6 +53,7 @@ records:
   subject_ref: product_manufacturer
   subject_category: supported_operator
   kind: applicability
+  verification_mode: answered_by_classification
   qualifier_spans:
   - A002-P001
 - norm_id: AIA-NORM-A002-P1-F-AUTHORISED-REPRESENTATIVE
@@ -58,6 +63,7 @@ records:
   subject_ref: authorised_representative
   subject_category: supported_operator
   kind: applicability
+  verification_mode: answered_by_classification
   qualifier_spans:
   - A002-P001
 - norm_id: AIA-NORM-A002-P1-G-AFFECTED-PERSON
@@ -67,6 +73,7 @@ records:
   subject_ref: affected_person
   subject_category: natural_person
   kind: applicability
+  verification_mode: answered_by_classification
   qualifier_spans:
   - A002-P001
 - norm_id: AIA-NORM-A002-P2-SECTION-B-LIMIT
@@ -79,6 +86,7 @@ records:
   subject_ref: annex_i_section_b_high_risk_system
   subject_category: other
   kind: applicability
+  verification_mode: reported_conditionally
   conditions:
   - the system is classified as high-risk under Article 6(1)
   - the related product is covered by Union harmonisation legislation listed in Annex I Section B
@@ -91,6 +99,7 @@ records:
   subject_ref: annex_i_section_b_high_risk_system
   subject_category: other
   kind: applicability
+  verification_mode: reported_conditionally
   conditions:
   - the AI Act high-risk requirements are integrated into the applicable Union harmonisation legislation
 - norm_id: AIA-NORM-A002-P3-OUTSIDE-UNION-LAW
@@ -132,6 +141,7 @@ records:
   subject_ref: military_defence_or_national_security_ai_system
   subject_category: other
   kind: applicability
+  verification_mode: answered_by_classification
   conditions:
   - the AI system is placed on the market, put into service, or used exclusively for military, defence,
     or national-security purposes
@@ -146,6 +156,7 @@ records:
   subject_ref: third_country_military_defence_or_national_security_ai_system
   subject_category: other
   kind: applicability
+  verification_mode: answered_by_classification
   conditions:
   - the AI system is not placed on the market or put into service in the Union
   - the AI system output is used in the Union exclusively for military, defence, or national-security
@@ -165,6 +176,7 @@ records:
   subject_ref: third_country_public_authority_or_international_organisation
   subject_category: other
   kind: applicability
+  verification_mode: answered_by_classification
   conditions:
   - the public authority is in a third country or the subject is an international organisation otherwise
     falling within Article 2(1)
@@ -202,6 +214,7 @@ records:
   subject_ref: scientific_research_and_development_ai_system_or_model
   subject_category: other
   kind: applicability
+  verification_mode: answered_by_classification
   conditions:
   - the AI system or AI model, including its output, is specifically developed for scientific research
     and development
@@ -262,6 +275,7 @@ records:
   subject_ref: pre_market_ai_research_testing_or_development_activity
   subject_category: other
   kind: applicability
+  verification_mode: answered_by_classification
   conditions:
   - the activity concerns an AI system or AI model
   - the activity occurs before the system or model is placed on the market or put into service
@@ -292,6 +306,7 @@ records:
   subject_ref: real_world_testing_activity
   subject_category: other
   kind: applicability
+  verification_mode: answered_by_classification
   dependencies:
   - dependency_ref: AIA-NORM-A002-P8-PRE-MARKET-RD-EXCLUSION
     resolution: internal_resolved
@@ -324,6 +339,7 @@ records:
   subject_ref: natural_person_deployer
   subject_category: supported_operator
   kind: applicability
+  verification_mode: answered_by_classification
   conditions:
   - the deployer is a natural person
   - the AI system is used in the course of a purely personal activity
@@ -367,6 +383,7 @@ records:
   subject_ref: free_and_open_source_ai_system
   subject_category: other
   kind: applicability
+  verification_mode: answered_by_classification
   conditions:
   - the AI system is released under a free and open-source licence
   exceptions:
@@ -391,6 +408,7 @@ records:
   subject_ref: article_6_1_high_risk_ai_system
   subject_category: other
   kind: permission
+  verification_mode: reported_conditionally
   qualifier_spans:
   - A002-P023
   - A002-P024

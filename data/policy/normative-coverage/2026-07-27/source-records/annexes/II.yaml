@@ -6,6 +6,7 @@ records:
   subject_ref: article_5_remote_biometric_identification_use
   subject_category: other
   kind: applicability
+  verification_mode: answered_by_classification
   qualifier_spans: &chapeau
   - ANNEX-II-P001
   dependencies: &article5_dependency
@@ -19,6 +20,7 @@ records:
   subject_ref: article_5_remote_biometric_identification_use
   subject_category: other
   kind: applicability
+  verification_mode: answered_by_classification
   qualifier_spans: *chapeau
   dependencies: *article5_dependency
 - norm_id: AIA-NORM-ANNEX-II-03-CHILD-SEXUAL-EXPLOITATION
@@ -28,6 +30,7 @@ records:
   subject_ref: article_5_remote_biometric_identification_use
   subject_category: other
   kind: applicability
+  verification_mode: answered_by_classification
   qualifier_spans: *chapeau
   dependencies: *article5_dependency
 - norm_id: AIA-NORM-ANNEX-II-04-DRUG-TRAFFICKING
@@ -37,6 +40,7 @@ records:
   subject_ref: article_5_remote_biometric_identification_use
   subject_category: other
   kind: applicability
+  verification_mode: answered_by_classification
   qualifier_spans: *chapeau
   dependencies: *article5_dependency
 - norm_id: AIA-NORM-ANNEX-II-05-WEAPONS-TRAFFICKING
@@ -46,6 +50,7 @@ records:
   subject_ref: article_5_remote_biometric_identification_use
   subject_category: other
   kind: applicability
+  verification_mode: answered_by_classification
   qualifier_spans: *chapeau
   dependencies: *article5_dependency
 - norm_id: AIA-NORM-ANNEX-II-06-MURDER-BODILY-INJURY
@@ -55,6 +60,7 @@ records:
   subject_ref: article_5_remote_biometric_identification_use
   subject_category: other
   kind: applicability
+  verification_mode: answered_by_classification
   qualifier_spans: *chapeau
   dependencies: *article5_dependency
 - norm_id: AIA-NORM-ANNEX-II-07-HUMAN-ORGANS
@@ -64,6 +70,7 @@ records:
   subject_ref: article_5_remote_biometric_identification_use
   subject_category: other
   kind: applicability
+  verification_mode: answered_by_classification
   qualifier_spans: *chapeau
   dependencies: *article5_dependency
 - norm_id: AIA-NORM-ANNEX-II-08-NUCLEAR-MATERIALS
@@ -73,6 +80,7 @@ records:
   subject_ref: article_5_remote_biometric_identification_use
   subject_category: other
   kind: applicability
+  verification_mode: answered_by_classification
   qualifier_spans: *chapeau
   dependencies: *article5_dependency
 - norm_id: AIA-NORM-ANNEX-II-09-KIDNAPPING-HOSTAGE-TAKING
@@ -82,6 +90,7 @@ records:
   subject_ref: article_5_remote_biometric_identification_use
   subject_category: other
   kind: applicability
+  verification_mode: answered_by_classification
   qualifier_spans: *chapeau
   dependencies: *article5_dependency
 - norm_id: AIA-NORM-ANNEX-II-10-ICC-CRIMES
@@ -91,6 +100,7 @@ records:
   subject_ref: article_5_remote_biometric_identification_use
   subject_category: other
   kind: applicability
+  verification_mode: answered_by_classification
   qualifier_spans: *chapeau
   dependencies: *article5_dependency
 - norm_id: AIA-NORM-ANNEX-II-11-AIRCRAFT-SHIP-SEIZURE
@@ -100,6 +110,7 @@ records:
   subject_ref: article_5_remote_biometric_identification_use
   subject_category: other
   kind: applicability
+  verification_mode: answered_by_classification
   qualifier_spans: *chapeau
   dependencies: *article5_dependency
 - norm_id: AIA-NORM-ANNEX-II-12-RAPE
@@ -109,6 +120,7 @@ records:
   subject_ref: article_5_remote_biometric_identification_use
   subject_category: other
   kind: applicability
+  verification_mode: answered_by_classification
   qualifier_spans: *chapeau
   dependencies: *article5_dependency
 - norm_id: AIA-NORM-ANNEX-II-13-ENVIRONMENTAL-CRIME
@@ -118,6 +130,7 @@ records:
   subject_ref: article_5_remote_biometric_identification_use
   subject_category: other
   kind: applicability
+  verification_mode: answered_by_classification
   qualifier_spans: *chapeau
   dependencies: *article5_dependency
 - norm_id: AIA-NORM-ANNEX-II-14-ROBBERY
@@ -127,6 +140,7 @@ records:
   subject_ref: article_5_remote_biometric_identification_use
   subject_category: other
   kind: applicability
+  verification_mode: answered_by_classification
   qualifier_spans: *chapeau
   dependencies: *article5_dependency
 - norm_id: AIA-NORM-ANNEX-II-15-SABOTAGE
@@ -136,6 +150,7 @@ records:
   subject_ref: article_5_remote_biometric_identification_use
   subject_category: other
   kind: applicability
+  verification_mode: answered_by_classification
   qualifier_spans: *chapeau
   dependencies: *article5_dependency
 - norm_id: AIA-NORM-ANNEX-II-16-CRIMINAL-ORGANISATION
@@ -145,5 +160,6 @@ records:
   subject_ref: article_5_remote_biometric_identification_use
   subject_category: other
   kind: applicability
+  verification_mode: answered_by_classification
   qualifier_spans: *chapeau
   dependencies: *article5_dependency

@@ -23,7 +23,7 @@ records:
   subject_category: supported_operator
   kind: legal_consequence
   implementation_mode: missing
-  verification_mode: unresolved
+  verification_mode: reported_conditionally
 - norm_id: AIA-NORM-A044-P2-EXTEND-CERTIFICATE
   source: A044-P002
   quote: At the request of the provider, the validity of a certificate may be extended for further periods,
@@ -35,7 +35,7 @@ records:
   subject_category: supported_operator
   kind: entitlement
   implementation_mode: missing
-  verification_mode: unresolved
+  verification_mode: reported_conditionally
   conditions:
   - the provider requests the extension
   - applicable conformity-assessment procedures are used for reassessment
@@ -48,7 +48,7 @@ records:
   subject_category: supported_operator
   kind: legal_consequence
   implementation_mode: missing
-  verification_mode: unresolved
+  verification_mode: reported_conditionally
   conditions:
   - the underlying certificate remains valid
 - norm_id: AIA-NORM-A044-P3-CERTIFICATE-MEASURE
@@ -77,7 +77,7 @@ records:
   subject_category: supported_operator
   kind: legal_consequence
   implementation_mode: missing
-  verification_mode: unresolved
+  verification_mode: reported_conditionally
 - norm_id: AIA-NORM-A044-P3-GIVE-REASONS
   source: A044-P003
   quote: The notified body shall give reasons for its decision.

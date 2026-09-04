@@ -35,6 +35,7 @@ records:
   - dependency_ref: Regulation (EU) 2016/679; Regulation (EU) 2018/1725; Directive (EU) 2016/680
     resolution: external_recorded
     detail: The exceptional processing remains additional to the applicable external data-protection instruments.
+  verification_mode: reported_conditionally
 - norm_id: AIA-NORM-A004A-P1-B-REUSE-SECURITY
   source: A004A-P003
   quote: the special categories of personal data are subject to technical limitations on the re-use of
@@ -49,6 +50,7 @@ records:
   - A004A-P010
   conditions:
   - special-category personal data is processed under the Article 4a(1) or Article 4a(2) exceptional permission
+  verification_mode: judged_by_gap_analysis
 - norm_id: AIA-NORM-A004A-P1-C-ACCESS-SAFEGUARDS
   source: A004A-P004
   quote: the special categories of personal data are subject to measures to ensure that the personal data
@@ -65,6 +67,7 @@ records:
   - A004A-P010
   conditions:
   - special-category personal data is processed under the Article 4a(1) or Article 4a(2) exceptional permission
+  verification_mode: judged_by_gap_analysis
 - norm_id: AIA-NORM-A004A-P1-D-NO-THIRD-PARTY-ACCESS
   source: A004A-P005
   quote: the special categories of personal data are not transmitted, transferred or otherwise accessed
@@ -79,6 +82,7 @@ records:
   - A004A-P010
   conditions:
   - special-category personal data is processed under the Article 4a(1) or Article 4a(2) exceptional permission
+  verification_mode: judged_by_gap_analysis
 - norm_id: AIA-NORM-A004A-P1-E-DELETE-DATA
   source: A004A-P006
   quote: the special categories of personal data are deleted once the bias has been corrected or the personal
@@ -93,6 +97,7 @@ records:
   - A004A-P010
   conditions:
   - special-category personal data is processed under the Article 4a(1) or Article 4a(2) exceptional permission
+  verification_mode: judged_by_gap_analysis
 - norm_id: AIA-NORM-A004A-P1-F-RECORD-NECESSITY
   source: A004A-P007
   quote: the records of processing activities pursuant to Regulations (EU) 2016/679 and (EU) 2018/1725
@@ -114,6 +119,7 @@ records:
     resolution: external_recorded
     detail: The reasons must be included in processing records maintained under the applicable external
       instruments.
+  verification_mode: judged_by_gap_analysis
 - norm_id: AIA-NORM-A004A-P2-OTHER-SYSTEM-BIAS-DATA-PROCESSING
   source: A004A-P008
   quote: Providers and deployers of other AI systems and models and deployers of high-risk AI systems
@@ -150,6 +156,7 @@ records:
   - dependency_ref: AIA-NORM-A004A-P1-F-RECORD-NECESSITY
     resolution: internal_resolved
     detail: Article 4a(2)(b) imports this paragraph 1 safeguard.
+  verification_mode: reported_conditionally
 - norm_id: AIA-NORM-A004A-P2-NO-BIAS-DETECTION-DUTY
   source: A004A-P011
   quote: This paragraph does not create any obligation to conduct such bias detection and correction.

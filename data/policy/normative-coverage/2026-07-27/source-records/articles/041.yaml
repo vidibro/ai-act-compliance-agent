@@ -88,7 +88,7 @@ records:
   subject_category: other
   kind: legal_consequence
   implementation_mode: missing
-  verification_mode: unresolved
+  verification_mode: reported_conditionally
   conditions:
   - the system or model conforms to the relevant common specification or part
   - the common specification covers the relevant requirement or obligation
@@ -130,7 +130,7 @@ records:
   subject_ref: provider
   subject_category: supported_operator
   implementation_mode: missing
-  verification_mode: unresolved
+  verification_mode: judged_by_gap_analysis
   conditions:
   - the provider does not comply with the paragraph 1 common specifications
 - norm_id: AIA-NORM-A041-P6-MEMBER-STATE-NOTICE
