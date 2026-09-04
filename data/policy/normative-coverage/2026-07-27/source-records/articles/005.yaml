@@ -323,11 +323,11 @@ records:
   qualifier_spans:
   - A005-P025
   - A005-P026
-  conditions:
-  - consider the nature of the situation and the seriousness, probability, and scale of harm if the system
-    is not used
-  - consider the seriousness, probability, and scale of consequences for the rights and freedoms of all
-    persons concerned
+  mandatory_content:
+  - the nature of the situation giving rise to the possible use, in particular the seriousness, probability
+    and scale of the harm that would be caused if the system were not used
+  - the consequences of the use of the system for the rights and freedoms of all persons concerned, in
+    particular the seriousness, probability and scale of those consequences
   dependencies:
   - dependency_ref: AIA-NORM-A005-P1-H-REAL-TIME-RBI
     resolution: internal_resolved

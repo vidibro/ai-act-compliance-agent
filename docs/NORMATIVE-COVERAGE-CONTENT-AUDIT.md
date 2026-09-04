@@ -211,6 +211,14 @@ its three numbered items are now three norms, because item 1 is unconditional wh
 and 3 each carry a where-applicable gate. The live inventory has 134 populated content lists
 across 1,487 proposed norms.
 
+Article 5(2)'s consideration duty is corrected from an unflagged source: its quote is the bare
+chapeau `it shall take into account the following elements:`, and points (a) and (b) were stored
+as paraphrased conditions. They state what must be taken into account, not when the duty applies,
+so they are now two verbatim content entries and the condition list is empty. A sweep for the same
+shape — a chapeau quote with no content list — returned twelve other norms, all correct: their
+enumerated items are genuine alternative conditions, exceptions, or sibling norms. The live
+inventory has 135 populated content lists across 1,487 proposed norms.
+
 | Norm | Content entries | Decision | Finding / treatment |
 |---|---:|---|---|
 | AIA-NORM-A002-P13-COMMISSION-DELEGATED-ACTS | 4 | no additional finding | Compared linked source and content list; no additional focused content/granularity finding. Not independent norm approval. |
