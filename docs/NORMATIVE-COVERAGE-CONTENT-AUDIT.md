@@ -206,6 +206,11 @@ recorded in the action and exceptions. Every recorded row in this register has b
 the unflagged-source review and independent norm approval remain open. The live inventory has
 133 populated content lists across 1,483 proposed norms.
 
+Annex XI Section 2's row is also corrected beyond its original no-additional-finding reading:
+its three numbered items are now three norms, because item 1 is unconditional while items 2
+and 3 each carry a where-applicable gate. The live inventory has 134 populated content lists
+across 1,487 proposed norms.
+
 | Norm | Content entries | Decision | Finding / treatment |
 |---|---:|---|---|
 | AIA-NORM-A002-P13-COMMISSION-DELEGATED-ACTS | 4 | no additional finding | Compared linked source and content list; no additional focused content/granularity finding. Not independent norm approval. |

@@ -114,10 +114,65 @@ norms:
   subjects:
   - subject_ref: provider
     category: supported_operator
-  action: include the additional Annex XI Section 2 evaluation, adversarial-testing, adaptation, and architecture
-    information in technical documentation for a GPAI model with systemic risk
-  norm_text: Additional information to be provided by providers of general-purpose AI models with systemic
-    risk
+  action: include a detailed description of the evaluation strategies, with their results, in the technical
+    documentation for a general-purpose AI model with systemic risk
+  norm_text: A detailed description of the evaluation strategies, including evaluation results, on the
+    basis of available public evaluation protocols and tools or otherwise of other evaluation methodologies.
+    Evaluation strategies shall include evaluation criteria, metrics and the methodology on the identification
+    of limitations.
+  detection_channels:
+  - semantic_legal_effect
+  - shall_token
+  - cross_reference_structure
+  primary_spans:
+  - AIA-TEXT-ANNEX-XI-P015
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions:
+  - the general-purpose AI model has systemic risk
+  - operator: any_of
+    operands:
+    - the evaluation strategies are described on the basis of available public evaluation protocols and
+      tools
+    - the evaluation strategies are described on the basis of other evaluation methodologies
+  exceptions: []
+  mandatory_content:
+  - a detailed description of the evaluation strategies, including evaluation results
+  - evaluation criteria
+  - metrics
+  - the methodology on the identification of limitations
+  dependencies:
+  - dependency_ref: AIA-NORM-A053-P1-A-ANNEX-XI-CONTENT
+    resolution: internal_resolved
+    detail: Article 53(1)(a) assigns the Annex XI minimum-content duty to GPAI model providers.
+  product_scope: in_scope
+  product_scope_reason: ''
+  implementation_mode: carried_by_other_norm
+  implementation_refs: []
+  implementation_reason: Carried by the Article 53(1)(a) Annex XI content norm.
+  verification_mode: judged_from_document
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+  carried_by_norm_ids:
+  - AIA-NORM-A053-P1-A-ANNEX-XI-CONTENT
+- norm_id: AIA-NORM-ANNEX-XI-SECTION-2-ADVERSARIAL-TESTING-AND-ADAPTATIONS
+  act_version_date: '2026-07-27'
+  kind: obligation
+  subjects:
+  - subject_ref: provider
+    category: supported_operator
+  action: include a detailed description of the adversarial-testing measures and the model adaptations
+    in the technical documentation for a general-purpose AI model with systemic risk
+  norm_text: Where applicable, a detailed description of the measures put in place for the purpose of
+    conducting internal and/or external adversarial testing (e.g. red teaming), model adaptations, including
+    alignment and fine-tuning.
   detection_channels:
   - semantic_legal_effect
   - cross_reference_structure
@@ -127,15 +182,56 @@ norms:
   effective_date_spans: []
   conditions:
   - the general-purpose AI model has systemic risk
+  - where applicable
   exceptions: []
   mandatory_content:
-  - detailed evaluation strategies and results based on available public evaluation protocols and tools
-    or other evaluation methodologies
-  - evaluation criteria, metrics, and methodology for identifying limitations
-  - where applicable, measures for internal or external adversarial testing and model adaptations including
-    alignment and fine-tuning
-  - where applicable, system architecture explaining component relationships and integration into overall
-    processing
+  - the measures put in place for the purpose of conducting internal and/or external adversarial testing
+    (e.g. red teaming)
+  - model adaptations, including alignment and fine-tuning
+  dependencies:
+  - dependency_ref: AIA-NORM-A053-P1-A-ANNEX-XI-CONTENT
+    resolution: internal_resolved
+    detail: Article 53(1)(a) assigns the Annex XI minimum-content duty to GPAI model providers.
+  product_scope: in_scope
+  product_scope_reason: ''
+  implementation_mode: carried_by_other_norm
+  implementation_refs: []
+  implementation_reason: Carried by the Article 53(1)(a) Annex XI content norm.
+  verification_mode: judged_from_document
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+  carried_by_norm_ids:
+  - AIA-NORM-A053-P1-A-ANNEX-XI-CONTENT
+- norm_id: AIA-NORM-ANNEX-XI-SECTION-2-SYSTEM-ARCHITECTURE
+  act_version_date: '2026-07-27'
+  kind: obligation
+  subjects:
+  - subject_ref: provider
+    category: supported_operator
+  action: include a detailed description of the system architecture, explaining how software components
+    build or feed into each other and integrate into the overall processing, in the technical documentation
+    for a general-purpose AI model with systemic risk
+  norm_text: Where applicable, a detailed description of the system architecture explaining how software
+    components build or feed into each other and integrate into the overall processing.
+  detection_channels:
+  - semantic_legal_effect
+  - cross_reference_structure
+  primary_spans:
+  - AIA-TEXT-ANNEX-XI-P015
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions:
+  - the general-purpose AI model has systemic risk
+  - where applicable
+  exceptions: []
+  mandatory_content: []
   dependencies:
   - dependency_ref: AIA-NORM-A053-P1-A-ANNEX-XI-CONTENT
     resolution: internal_resolved

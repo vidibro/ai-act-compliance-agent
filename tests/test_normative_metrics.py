@@ -1661,15 +1661,15 @@ def test_inventory_cannot_be_misreported_as_independently_approved(metrics):
     assert metrics.needs_review_characters == 0
     assert metrics.review_statuses == {
         "approved": 1467,
-        "proposed": 1489,
+        "proposed": 1491,
     }
     assert metrics.timed_review_records == 0
-    assert metrics.total_review_records == 2957
+    assert metrics.total_review_records == 2959
 
 
 def test_semantic_pass_finds_propositions_a_shall_scan_misses(metrics):
-    assert metrics.shall_vs_semantic_disagreements == 571
-    assert metrics.shall_token_candidate_recall == pytest.approx(914 / 1485)
+    assert metrics.shall_vs_semantic_disagreements == 572
+    assert metrics.shall_token_candidate_recall == pytest.approx(915 / 1487)
     assert "AIA-NORM-A011-P1-SIMPLIFY" in metrics.semantic_norms_without_shall_token
     assert "AIA-NORM-A043-P5-AMEND" in metrics.semantic_norms_without_shall_token
     assert "AIA-NORM-A060-P4-PERMISSION" in metrics.semantic_norms_without_shall_token
@@ -1677,13 +1677,13 @@ def test_semantic_pass_finds_propositions_a_shall_scan_misses(metrics):
 
 
 def test_metrics_expose_many_to_many_and_implementation_debt(metrics):
-    assert metrics.normative_segments_with_multiple_norms == 380
+    assert metrics.normative_segments_with_multiple_norms == 381
     assert metrics.mapping_shape.one_norm_to_one_target == 25
     assert metrics.mapping_shape.many_norms_to_one_target == 354
     assert metrics.mapping_shape.one_norm_to_many_targets == 0
     assert metrics.mapping_shape.many_to_many == 15
-    assert metrics.mapping_shape.unmapped == 1091
-    assert metrics.semantic_vs_existing_implementation_disagreements == 239
+    assert metrics.mapping_shape.unmapped == 1093
+    assert metrics.semantic_vs_existing_implementation_disagreements == 241
     assert metrics.semantic_norms_without_existing_implementation == [
         "AIA-NORM-A002-P1-A-PROVIDER",
         "AIA-NORM-A002-P1-B-DEPLOYER",
@@ -1922,6 +1922,8 @@ def test_metrics_expose_many_to_many_and_implementation_debt(metrics):
         "AIA-NORM-ANNEX-X-VIS-ACCESS-CONDITIONS",
         "AIA-NORM-ANNEX-X-VIS-REFORM",
         "AIA-NORM-ANNEX-XI-SECTION-1-TECHNICAL-DOCUMENTATION",
+        "AIA-NORM-ANNEX-XI-SECTION-2-ADVERSARIAL-TESTING-AND-ADAPTATIONS",
+        "AIA-NORM-ANNEX-XI-SECTION-2-SYSTEM-ARCHITECTURE",
         "AIA-NORM-ANNEX-XI-SECTION-2-SYSTEMIC-RISK-DOCUMENTATION",
         "AIA-NORM-ANNEX-XII-DOWNSTREAM-TRANSPARENCY-INFORMATION",
     ]
@@ -4878,12 +4880,48 @@ def test_annex_eleven_separates_general_and_systemic_risk_documentation():
         if norm.norm_id.startswith("AIA-NORM-ANNEX-XI-")
     }
 
-    assert len(norms) == 3
+    assert len(norms) == 5
     assert len(norms["AIA-NORM-ANNEX-XI-SECTION-1-TECHNICAL-DOCUMENTATION"].mandatory_content) == 11
-    systemic = norms["AIA-NORM-ANNEX-XI-SECTION-2-SYSTEMIC-RISK-DOCUMENTATION"]
-    assert len(systemic.mandatory_content) == 4
-    assert systemic.conditions == ["the general-purpose AI model has systemic risk"]
     assert norms["AIA-NORM-ANNEX-XI-ENERGY-ESTIMATE-BASIS"].kind.value == "permission"
+
+    # Section 2's three numbered items differ in applicability, so each is its own norm.
+    evaluation = norms["AIA-NORM-ANNEX-XI-SECTION-2-SYSTEMIC-RISK-DOCUMENTATION"]
+    testing = norms["AIA-NORM-ANNEX-XI-SECTION-2-ADVERSARIAL-TESTING-AND-ADAPTATIONS"]
+    architecture = norms["AIA-NORM-ANNEX-XI-SECTION-2-SYSTEM-ARCHITECTURE"]
+    systemic_risk = "the general-purpose AI model has systemic risk"
+    for norm in (evaluation, testing, architecture):
+        assert norm.primary_spans == ["AIA-TEXT-ANNEX-XI-P015"]
+        assert norm.conditions[0] == systemic_risk
+        assert norm.carried_by_norm_ids == ["AIA-NORM-A053-P1-A-ANNEX-XI-CONTENT"]
+        assert norm.verification_mode.value == "judged_from_document"
+
+    # Item 1 is owed unconditionally; only items 2 and 3 carry the where-applicable gate.
+    assert len(evaluation.conditions) == 2
+    bases = evaluation.conditions[1]
+    assert isinstance(bases, ConditionGroup) and bases.operator == "any_of"
+    assert bases.operands == [
+        "the evaluation strategies are described on the basis of available public evaluation "
+        "protocols and tools",
+        "the evaluation strategies are described on the basis of other evaluation methodologies",
+    ]
+    assert evaluation.mandatory_content == [
+        "a detailed description of the evaluation strategies, including evaluation results",
+        "evaluation criteria",
+        "metrics",
+        "the methodology on the identification of limitations",
+    ]
+    assert testing.conditions == [systemic_risk, "where applicable"]
+    assert architecture.conditions == [systemic_risk, "where applicable"]
+
+    # Red teaming stays an example and the and/or of internal and external testing survives.
+    assert testing.mandatory_content == [
+        "the measures put in place for the purpose of conducting internal and/or external "
+        "adversarial testing (e.g. red teaming)",
+        "model adaptations, including alignment and fine-tuning",
+    ]
+    assert not architecture.mandatory_content
+    assert "build or feed into each other" in architecture.action
+    assert all(norm.review.status.value == "proposed" for norm in norms.values())
 
 
 def test_annex_twelve_downstream_transparency_content_is_carried_by_article_fifty_three():

@@ -75,7 +75,7 @@ def test_pinned_corpus_triage_is_documented_without_mutating_review():
         if norm.mandatory_content
     }
     assert len(content_rows) == 146  # Historical audit baseline.
-    assert len(expected_content) == 133
+    assert len(expected_content) == 134
     baseline_content = {norm_id: int(count) for norm_id, count, _ in content_rows}
     # Article 40's example is now nested in its proper deliverable, not a third requirement.
     baseline_content["AIA-NORM-A040-P2-RESOURCE-PERFORMANCE-DELIVERABLES"] = 2
@@ -161,4 +161,6 @@ def test_pinned_corpus_triage_is_documented_without_mutating_review():
     baseline_content["AIA-NORM-ANNEX-VII-QMS-APPLICATION"] = 7
     baseline_content.pop("AIA-NORM-ANNEX-VII-QMS-CHANGE-DECISION")
     baseline_content["AIA-NORM-ANNEX-VII-QMS-CHANGE-NOTIFICATION"] = 2
+    # Annex XI Section 2's three numbered items are now three norms.
+    baseline_content["AIA-NORM-ANNEX-XI-SECTION-2-ADVERSARIAL-TESTING-AND-ADAPTATIONS"] = 2
     assert baseline_content == expected_content
