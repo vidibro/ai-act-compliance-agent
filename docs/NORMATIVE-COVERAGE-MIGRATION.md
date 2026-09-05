@@ -880,3 +880,16 @@ Nothing surfaces it. `PolicyRule.source` is a single `LegalSource`, so a verdict
 and the norm layer is not imported by the pipeline at all — this is a runtime change, not a ledger
 one. Closing it means giving a rule the provisions it answers to and rendering them together, which
 also serves `Report-surfacing coverage` above.
+
+### Open debt: one duty in several provisions has no recorded link
+
+The ledger can say a norm restates another (`carried_by_norm_ids`) or that two norms share a rule
+(`implementation_refs`). It cannot say that separate provisions impose one duty when neither holds.
+
+Four provisions require an EU-database registration — Article 6(4), Article 49(2) and Article 71(2)
+twice over. None carries another, none has a rule, and they sit in three files. They agree today
+only because one reviewer judged them alike; change one and nothing marks the others as drifted.
+
+Whoever closes this decides what the relation is called and whether it is derived from shared
+subject and action or authored. Until then, treat any claim that a group of norms is "consistent"
+as prose, not as a checked property.
