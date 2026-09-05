@@ -22,6 +22,9 @@ records:
   - the distortion causes a decision that would not otherwise have been taken
   - the decision causes or is reasonably likely to cause significant harm to that person, another person,
     or a group
+  implementation_mode: applicability_question
+  implementation_refs:
+  - AIA-CQ-PROHIBITED
 - norm_id: AIA-NORM-A005-P1-B-VULNERABILITY-EXPLOITATION
   source: A005-P003
   quote: the placing on the market, the putting into service or the use of an AI system that exploits
@@ -43,6 +46,9 @@ records:
     person or group member
   - the distortion causes or is reasonably likely to cause significant harm to that person or another
     person
+  implementation_mode: applicability_question
+  implementation_refs:
+  - AIA-CQ-PROHIBITED
 - norm_id: AIA-NORM-A005-P1-BA-NONCONSENSUAL-INTIMATE-MATERIAL
   source: A005-P004
   quote: "the placing on the market, the putting into service or the use of an AI system that generates\
@@ -73,6 +79,9 @@ records:
   exceptions:
   - manipulation that neither increases exposure of depicted intimate parts nor alters the nature of depicted
     sexually explicit activities does not constitute manipulation
+  implementation_mode: applicability_question
+  implementation_refs:
+  - AIA-CQ-PROHIBITED
 - norm_id: AIA-NORM-A005-P1-BB-DIRECTIVE-MATERIAL
   source: A005-P005
   quote: "the placing on the market, the putting into service or the use of an AI system that generates\
@@ -104,6 +113,9 @@ records:
   - dependency_ref: applicable national-law without-right defence
     resolution: national_or_factual
     detail: National law determines whether the express defence applies.
+  implementation_mode: applicability_question
+  implementation_refs:
+  - AIA-CQ-PROHIBITED
 - norm_id: AIA-NORM-A005-P1-C-SOCIAL-SCORING
   source: A005-P006
   quote: 'the placing on the market, the putting into service or the use of AI systems for the evaluation
@@ -125,6 +137,9 @@ records:
     or predicted personal or personality characteristics
   - the social score leads to treatment in an unrelated context or treatment that is unjustified or disproportionate
     to the social behaviour or its gravity
+  implementation_mode: applicability_question
+  implementation_refs:
+  - AIA-CQ-PROHIBITED
 - norm_id: AIA-NORM-A005-P1-D-CRIMINAL-RISK-PROFILING
   source: A005-P009
   quote: the placing on the market, the putting into service for this specific purpose, or the use of
@@ -142,6 +157,9 @@ records:
   exceptions:
   - an AI system supports a human assessment of a person's involvement in criminal activity already based
     on objective and verifiable facts directly linked to criminal activity
+  implementation_mode: applicability_question
+  implementation_refs:
+  - AIA-CQ-PROHIBITED
 - norm_id: AIA-NORM-A005-P1-E-UNTARGETED-FACIAL-SCRAPING
   source: A005-P010
   quote: the placing on the market, the putting into service for this specific purpose, or the use of
@@ -155,6 +173,9 @@ records:
   verification_mode: answered_by_classification
   qualifier_spans:
   - A005-P001
+  implementation_mode: applicability_question
+  implementation_refs:
+  - AIA-CQ-PROHIBITED
 - norm_id: AIA-NORM-A005-P1-F-WORKPLACE-EDUCATION-EMOTION-INFERENCE
   source: A005-P011
   quote: the placing on the market, the putting into service for this specific purpose, or the use of
@@ -171,6 +192,9 @@ records:
   - A005-P001
   exceptions:
   - the system is intended to be put in place or on the market for medical or safety reasons
+  implementation_mode: applicability_question
+  implementation_refs:
+  - AIA-CQ-PROHIBITED
 - norm_id: AIA-NORM-A005-P1-G-SENSITIVE-BIOMETRIC-CATEGORISATION
   source: A005-P012
   quote: the placing on the market, the putting into service for this specific purpose, or the use of
@@ -192,6 +216,9 @@ records:
   - dependency_ref: AIA-NORM-A003-D040-BIOMETRIC-CATEGORISATION-SYSTEM
     resolution: internal_resolved
     detail: Article 3(40) defines biometric categorisation systems.
+  implementation_mode: applicability_question
+  implementation_refs:
+  - AIA-CQ-PROHIBITED
 - norm_id: AIA-NORM-A005-P1-H-REAL-TIME-RBI
   source: A005-P013
   quote: "the use of \u2018real-time\u2019 remote biometric identification systems in publicly accessible\
@@ -224,6 +251,9 @@ records:
     resolution: unresolved
     detail: Point (h)(iii) depends on the offence list in Annex II, which has not yet been semantically
       reviewed.
+  implementation_mode: applicability_question
+  implementation_refs:
+  - AIA-CQ-PROHIBITED
 - norm_id: AIA-NORM-A005-P1-H-GDPR-SAVING
   source: A005-P017
   quote: Point (h) of the first subparagraph is without prejudice to Article 9 of Regulation (EU) 2016/679
@@ -271,6 +301,9 @@ records:
   - dependency_ref: AIA-NORM-A005-P1-BB-DIRECTIVE-MATERIAL
     resolution: internal_resolved
     detail: This norm limits market placement and service under point (bb).
+  implementation_mode: applicability_question
+  implementation_refs:
+  - AIA-CQ-PROHIBITED
 - norm_id: AIA-NORM-A005-P1A-DEPLOYER-USE-SCOPE
   source: A005-P022
   quote: the use of an AI system that generates or manipulates the material or performance referred to
@@ -294,6 +327,9 @@ records:
   - dependency_ref: AIA-NORM-A005-P1-BB-DIRECTIVE-MATERIAL
     resolution: internal_resolved
     detail: This norm limits use under point (bb).
+  implementation_mode: applicability_question
+  implementation_refs:
+  - AIA-CQ-PROHIBITED
 - norm_id: AIA-NORM-A005-P1B-NON-MANIPULATION
   source: A005-P023
   quote: For the purposes of paragraph 1, first subparagraph, point (ba), an AI system that manipulates
@@ -312,6 +348,9 @@ records:
   - dependency_ref: AIA-NORM-A005-P1-BA-NONCONSENSUAL-INTIMATE-MATERIAL
     resolution: internal_resolved
     detail: This consequence narrows what constitutes manipulation under point (ba).
+  implementation_mode: applicability_question
+  implementation_refs:
+  - AIA-CQ-PROHIBITED
 - norm_id: AIA-NORM-A005-P2-CONFIRM-TARGETED-IDENTITY
   source: A005-P024
   quote: shall be deployed for the purposes set out in that point only to confirm the identity of the

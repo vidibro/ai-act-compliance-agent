@@ -363,6 +363,11 @@ def test_yaml_inventory_shards_merge_metadata_lists_and_mappings(tmp_path):
 
 
 def test_versioned_implementation_targets_exist_in_the_pinned_policy_spec():
+    """Targets come in two families, each resolved against its own registry: an obligation is
+    implemented by a policy rule, an applicability question by a cascade node. Both must name
+    something that exists, or the norm claims an implementation it does not have."""
+    from aiact.classify.graph import QUESTIONS
+
     source_path = (
         ROOT / "data" / "policy" / "normative-coverage" / "2026-07-27" / "source-records"
     )
@@ -370,6 +375,9 @@ def test_versioned_implementation_targets_exist_in_the_pinned_policy_spec():
         load_yaml_mapping_or_shards(source_path, description="norm source inventory")
     )
     policy = load_policy_spec()
+    targets = set(source_inventory.implementation_targets)
+    questions = {target for target in targets if target.startswith("AIA-CQ-")}
 
     assert source_inventory.act_version_date == policy.act_version_date
-    assert set(source_inventory.implementation_targets) <= {rule.rule_id for rule in policy.rules}
+    assert targets - questions <= {rule.rule_id for rule in policy.rules}
+    assert questions == {f"AIA-CQ-{node.upper().replace('_', '-')}" for node in QUESTIONS}

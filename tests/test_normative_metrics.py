@@ -7,6 +7,7 @@ import sys
 from pathlib import Path
 
 import pytest
+import yaml
 
 from aiact.norm_loader import load_normative_coverage
 from aiact.norm_metrics import measure_normative_coverage
@@ -43,6 +44,47 @@ def test_generated_coverage_artifacts_are_reproducible():
         text=True,
     )
     assert completed.returncode == 0, completed.stderr or completed.stdout
+
+
+def test_every_classification_question_target_names_a_cascade_node():
+    """`applicability_question` claims the cascade decides a norm, so the claim must be checkable.
+
+    The manifest declares one `AIA-CQ-` target per cascade node. Holding the two sets equal means a
+    norm cannot point at a question that was renamed or deleted, and a new node cannot be added
+    without deciding which norms it answers."""
+    from aiact.classify.graph import QUESTIONS
+
+    manifest = yaml.safe_load(
+        (
+            ROOT
+            / "data/policy/normative-coverage/2026-07-27/source-records/manifest.yaml"
+        ).read_text()
+    )
+    declared = {t for t in manifest["implementation_targets"] if t.startswith("AIA-CQ-")}
+
+    assert declared == {f"AIA-CQ-{node.upper().replace('_', '-')}" for node in QUESTIONS}
+
+
+def test_a_classification_answered_norm_points_at_a_cascade_node():
+    """The two columns must agree: a norm the cascade answers is implemented by a question, and a
+    norm implemented by a question is one the cascade answers."""
+    bundle = load_normative_coverage()
+    in_scope = [
+        norm
+        for norm in bundle.norm_inventory.norms
+        if norm.product_scope is ProductScope.IN_SCOPE
+    ]
+    by_question = [
+        norm
+        for norm in in_scope
+        if norm.implementation_mode is ImplementationMode.APPLICABILITY_QUESTION
+    ]
+
+    assert by_question
+    for norm in by_question:
+        assert norm.verification_mode is VerificationMode.ANSWERED_BY_CLASSIFICATION, norm.norm_id
+        assert norm.implementation_refs, norm.norm_id
+        assert all(ref.startswith("AIA-CQ-") for ref in norm.implementation_refs), norm.norm_id
 
 
 def test_an_in_scope_duty_is_never_dropped_from_the_report():
@@ -284,7 +326,7 @@ def test_article_two_scope_chapeau_qualifies_seven_applicability_norms():
         assert norm.kind.value == "applicability"
         assert norm.primary_spans == [f"AIA-TEXT-A002-P{index:03d}"]
         assert norm.qualifier_spans == ["AIA-TEXT-A002-P001"]
-        assert norm.implementation_mode.value == "missing"
+        assert norm.implementation_mode.value == "applicability_question"
 
 
 def test_article_two_section_b_limit_has_two_applicability_norms():
@@ -348,7 +390,7 @@ def test_article_two_military_exclusion_remains_implementation_debt():
     assert segment.norm_ids == [norm.norm_id]
     assert norm.kind.value == "applicability"
     assert norm.product_scope.value == "in_scope"
-    assert norm.implementation_mode.value == "missing"
+    assert norm.implementation_mode.value == "applicability_question"
     assert norm.verification_mode.value == "answered_by_classification"
 
 
@@ -369,7 +411,7 @@ def test_article_two_military_output_exclusion_remains_separate_norm():
     assert segment.norm_ids == [norm.norm_id]
     assert norm.kind.value == "applicability"
     assert norm.product_scope.value == "in_scope"
-    assert norm.implementation_mode.value == "missing"
+    assert norm.implementation_mode.value == "applicability_question"
     assert norm.verification_mode.value == "answered_by_classification"
 
 
@@ -390,7 +432,7 @@ def test_article_two_international_cooperation_exclusion_is_in_scope():
     assert segment.norm_ids == [norm.norm_id]
     assert norm.kind.value == "applicability"
     assert norm.product_scope.value == "in_scope"
-    assert norm.implementation_mode.value == "missing"
+    assert norm.implementation_mode.value == "applicability_question"
     assert norm.verification_mode.value == "answered_by_classification"
 
 
@@ -1732,31 +1774,16 @@ def test_semantic_pass_finds_propositions_a_shall_scan_misses(metrics):
 
 def test_metrics_expose_many_to_many_and_implementation_debt(metrics):
     assert metrics.normative_segments_with_multiple_norms == 382
-    assert metrics.mapping_shape.one_norm_to_one_target == 25
-    assert metrics.mapping_shape.many_norms_to_one_target == 354
-    assert metrics.mapping_shape.one_norm_to_many_targets == 0
-    assert metrics.mapping_shape.many_to_many == 15
-    assert metrics.mapping_shape.unmapped == 1093
-    assert metrics.semantic_vs_existing_implementation_disagreements == 241
+    assert metrics.mapping_shape.one_norm_to_one_target == 26
+    assert metrics.mapping_shape.many_norms_to_one_target == 451
+    assert metrics.mapping_shape.one_norm_to_many_targets == 1
+    assert metrics.mapping_shape.many_to_many == 16
+    assert metrics.mapping_shape.unmapped == 993
+    assert metrics.semantic_vs_existing_implementation_disagreements == 141
     assert metrics.semantic_norms_without_existing_implementation == [
-        "AIA-NORM-A002-P1-A-PROVIDER",
-        "AIA-NORM-A002-P1-B-DEPLOYER",
-        "AIA-NORM-A002-P1-C-THIRD-COUNTRY-OUTPUT",
-        "AIA-NORM-A002-P1-D-IMPORT-DISTRIBUTE",
-        "AIA-NORM-A002-P1-E-PRODUCT-MANUFACTURER",
-        "AIA-NORM-A002-P1-F-AUTHORISED-REPRESENTATIVE",
-        "AIA-NORM-A002-P1-G-AFFECTED-PERSON",
-        "AIA-NORM-A002-P10-PERSONAL-USE-DEPLOYER-EXCLUSION",
-        "AIA-NORM-A002-P12-OPEN-SOURCE-AI-SYSTEM-EXCLUSION",
         "AIA-NORM-A002-P13-LIMIT-HIGH-RISK-REQUIREMENTS",
         "AIA-NORM-A002-P2-INTEGRATED-SANDBOX-PROVISIONS",
         "AIA-NORM-A002-P2-SECTION-B-LIMIT",
-        "AIA-NORM-A002-P3-MILITARY-EXCLUSION",
-        "AIA-NORM-A002-P3-MILITARY-OUTPUT-EXCLUSION",
-        "AIA-NORM-A002-P4-INTERNATIONAL-COOPERATION-EXCLUSION",
-        "AIA-NORM-A002-P6-SCIENTIFIC-RD-EXCLUSION",
-        "AIA-NORM-A002-P8-PRE-MARKET-RD-EXCLUSION",
-        "AIA-NORM-A002-P8-REAL-WORLD-TESTING-CARVEOUT",
         "AIA-NORM-A004-P1-AI-LITERACY-MEASURES",
         "AIA-NORM-A004A-P1-B-REUSE-SECURITY",
         "AIA-NORM-A004A-P1-C-ACCESS-SAFEGUARDS",
@@ -1765,19 +1792,6 @@ def test_metrics_expose_many_to_many_and_implementation_debt(metrics):
         "AIA-NORM-A004A-P1-F-RECORD-NECESSITY",
         "AIA-NORM-A004A-P1-HIGH-RISK-BIAS-DATA-PROCESSING",
         "AIA-NORM-A004A-P2-OTHER-SYSTEM-BIAS-DATA-PROCESSING",
-        "AIA-NORM-A005-P1-A-MANIPULATIVE-TECHNIQUES",
-        "AIA-NORM-A005-P1-B-VULNERABILITY-EXPLOITATION",
-        "AIA-NORM-A005-P1-BA-NONCONSENSUAL-INTIMATE-MATERIAL",
-        "AIA-NORM-A005-P1-BB-DIRECTIVE-MATERIAL",
-        "AIA-NORM-A005-P1-C-SOCIAL-SCORING",
-        "AIA-NORM-A005-P1-D-CRIMINAL-RISK-PROFILING",
-        "AIA-NORM-A005-P1-E-UNTARGETED-FACIAL-SCRAPING",
-        "AIA-NORM-A005-P1-F-WORKPLACE-EDUCATION-EMOTION-INFERENCE",
-        "AIA-NORM-A005-P1-G-SENSITIVE-BIOMETRIC-CATEGORISATION",
-        "AIA-NORM-A005-P1-H-REAL-TIME-RBI",
-        "AIA-NORM-A005-P1A-DEPLOYER-USE-SCOPE",
-        "AIA-NORM-A005-P1A-MARKET-SERVICE-SCOPE",
-        "AIA-NORM-A005-P1B-NON-MANIPULATION",
         "AIA-NORM-A005-P2-COMPLETE-FRIA",
         "AIA-NORM-A005-P2-CONFIRM-TARGETED-IDENTITY",
         "AIA-NORM-A005-P2-CONSIDER-IMPACTS",
@@ -1793,13 +1807,6 @@ def test_metrics_expose_many_to_many_and_implementation_debt(metrics):
         "AIA-NORM-A005-P4-EXCLUDE-SENSITIVE-DATA",
         "AIA-NORM-A005-P4-NOTIFICATION-CONTENT",
         "AIA-NORM-A005-P4-NOTIFY-AUTHORITIES",
-        "AIA-NORM-A006-P1-ANNEX-I-HIGH-RISK",
-        "AIA-NORM-A006-P1A-NON-SAFETY-ASSISTANCE",
-        "AIA-NORM-A006-P1B-HEALTH-SAFETY-OVERRIDE",
-        "AIA-NORM-A006-P1C-NON-SAFETY-ASSESSMENT",
-        "AIA-NORM-A006-P2-ANNEX-III-HIGH-RISK",
-        "AIA-NORM-A006-P3-INSIGNIFICANT-RISK-EXCEPTION",
-        "AIA-NORM-A006-P3-PROFILING-OVERRIDE",
         "AIA-NORM-A006-P4-DOCUMENT-ASSESSMENT",
         "AIA-NORM-A006-P4-PROVIDE-ASSESSMENT",
         "AIA-NORM-A006-P4-REGISTER-SYSTEM",
@@ -1833,9 +1840,6 @@ def test_metrics_expose_many_to_many_and_implementation_debt(metrics):
         "AIA-NORM-A048-P5-OTHER-LAW-COMPLIANCE",
         "AIA-NORM-A050-P3-DATA",
         "AIA-NORM-A050-P5-MANNER",
-        "AIA-NORM-A051-P1-A-HIGH-IMPACT-SYSTEMIC-RISK",
-        "AIA-NORM-A051-P1-B-EQUIVALENT-SYSTEMIC-RISK",
-        "AIA-NORM-A051-P2-COMPUTE-PRESUMPTION",
         "AIA-NORM-A052-P3-SYSTEMIC-RISK-CONSEQUENCE",
         "AIA-NORM-A052-P5-REQUEST-CONTENT",
         "AIA-NORM-A059-P1-A-SUBSTANTIAL-PUBLIC-INTEREST",
@@ -1884,68 +1888,6 @@ def test_metrics_expose_many_to_many_and_implementation_debt(metrics):
         "AIA-NORM-A111-P2-PUBLIC-AUTHORITY-SYSTEM-COMPLIANCE",
         "AIA-NORM-A111-P3-LEGACY-GPAI-COMPLIANCE",
         "AIA-NORM-A111-P4-LEGACY-SYNTHETIC-CONTENT-COMPLIANCE",
-        "AIA-NORM-ANNEX-I-01-MACHINERY-DIRECTIVE",
-        "AIA-NORM-ANNEX-I-02-TOY-SAFETY",
-        "AIA-NORM-ANNEX-I-03-RECREATIONAL-CRAFT",
-        "AIA-NORM-ANNEX-I-04-LIFTS",
-        "AIA-NORM-ANNEX-I-05-EXPLOSIVE-ATMOSPHERES",
-        "AIA-NORM-ANNEX-I-06-RADIO-EQUIPMENT",
-        "AIA-NORM-ANNEX-I-07-PRESSURE-EQUIPMENT",
-        "AIA-NORM-ANNEX-I-08-CABLEWAYS",
-        "AIA-NORM-ANNEX-I-09-PERSONAL-PROTECTIVE-EQUIPMENT",
-        "AIA-NORM-ANNEX-I-10-GAS-APPLIANCES",
-        "AIA-NORM-ANNEX-I-11-MEDICAL-DEVICES",
-        "AIA-NORM-ANNEX-I-12-IN-VITRO-DIAGNOSTICS",
-        "AIA-NORM-ANNEX-I-13-AVIATION-SECURITY",
-        "AIA-NORM-ANNEX-I-14-L-CATEGORY-VEHICLES",
-        "AIA-NORM-ANNEX-I-15-AGRICULTURAL-FORESTRY-VEHICLES",
-        "AIA-NORM-ANNEX-I-16-MARINE-EQUIPMENT",
-        "AIA-NORM-ANNEX-I-17-RAIL-INTEROPERABILITY",
-        "AIA-NORM-ANNEX-I-18-MOTOR-VEHICLE-APPROVAL",
-        "AIA-NORM-ANNEX-I-19-MOTOR-VEHICLE-GENERAL-SAFETY",
-        "AIA-NORM-ANNEX-I-20-UNMANNED-AIRCRAFT",
-        "AIA-NORM-ANNEX-I-21-MACHINERY-REGULATION",
-        "AIA-NORM-ANNEX-II-01-TERRORISM",
-        "AIA-NORM-ANNEX-II-02-HUMAN-TRAFFICKING",
-        "AIA-NORM-ANNEX-II-03-CHILD-SEXUAL-EXPLOITATION",
-        "AIA-NORM-ANNEX-II-04-DRUG-TRAFFICKING",
-        "AIA-NORM-ANNEX-II-05-WEAPONS-TRAFFICKING",
-        "AIA-NORM-ANNEX-II-06-MURDER-BODILY-INJURY",
-        "AIA-NORM-ANNEX-II-07-HUMAN-ORGANS",
-        "AIA-NORM-ANNEX-II-08-NUCLEAR-MATERIALS",
-        "AIA-NORM-ANNEX-II-09-KIDNAPPING-HOSTAGE-TAKING",
-        "AIA-NORM-ANNEX-II-10-ICC-CRIMES",
-        "AIA-NORM-ANNEX-II-11-AIRCRAFT-SHIP-SEIZURE",
-        "AIA-NORM-ANNEX-II-12-RAPE",
-        "AIA-NORM-ANNEX-II-13-ENVIRONMENTAL-CRIME",
-        "AIA-NORM-ANNEX-II-14-ROBBERY",
-        "AIA-NORM-ANNEX-II-15-SABOTAGE",
-        "AIA-NORM-ANNEX-II-16-CRIMINAL-ORGANISATION",
-        "AIA-NORM-ANNEX-III-1A-REMOTE-BIOMETRIC-IDENTIFICATION",
-        "AIA-NORM-ANNEX-III-1B-BIOMETRIC-CATEGORISATION",
-        "AIA-NORM-ANNEX-III-1C-EMOTION-RECOGNITION",
-        "AIA-NORM-ANNEX-III-2-CRITICAL-INFRASTRUCTURE",
-        "AIA-NORM-ANNEX-III-3A-EDUCATION-ACCESS",
-        "AIA-NORM-ANNEX-III-3B-LEARNING-OUTCOMES",
-        "AIA-NORM-ANNEX-III-3C-EDUCATION-LEVEL",
-        "AIA-NORM-ANNEX-III-3D-TEST-BEHAVIOUR",
-        "AIA-NORM-ANNEX-III-4A-RECRUITMENT",
-        "AIA-NORM-ANNEX-III-4B-WORKER-MANAGEMENT",
-        "AIA-NORM-ANNEX-III-5A-ESSENTIAL-BENEFITS",
-        "AIA-NORM-ANNEX-III-5B-CREDITWORTHINESS",
-        "AIA-NORM-ANNEX-III-5C-LIFE-HEALTH-INSURANCE",
-        "AIA-NORM-ANNEX-III-5D-EMERGENCY-RESPONSE",
-        "AIA-NORM-ANNEX-III-6A-VICTIM-RISK",
-        "AIA-NORM-ANNEX-III-6B-LAW-ENFORCEMENT-POLYGRAPH",
-        "AIA-NORM-ANNEX-III-6C-EVIDENCE-RELIABILITY",
-        "AIA-NORM-ANNEX-III-6D-OFFENDING-RISK",
-        "AIA-NORM-ANNEX-III-6E-LAW-ENFORCEMENT-PROFILING",
-        "AIA-NORM-ANNEX-III-7A-BORDER-POLYGRAPH",
-        "AIA-NORM-ANNEX-III-7B-BORDER-RISK",
-        "AIA-NORM-ANNEX-III-7C-ASYLUM-VISA-RESIDENCE",
-        "AIA-NORM-ANNEX-III-7D-BORDER-IDENTIFICATION",
-        "AIA-NORM-ANNEX-III-8A-JUSTICE",
-        "AIA-NORM-ANNEX-III-8B-ELECTION-INFLUENCE",
         "AIA-NORM-ANNEX-IV-CONTENT",
         "AIA-NORM-ANNEX-IX-REGISTRATION-INFORMATION",
         "AIA-NORM-ANNEX-V-DECLARATION-CONTENT",
@@ -1982,24 +1924,9 @@ def test_metrics_expose_many_to_many_and_implementation_debt(metrics):
         "AIA-NORM-ANNEX-XII-DOWNSTREAM-TRANSPARENCY-INFORMATION",
     ]
     assert metrics.implementation_debt_norm_ids == [
-        "AIA-NORM-A002-P1-A-PROVIDER",
-        "AIA-NORM-A002-P1-B-DEPLOYER",
-        "AIA-NORM-A002-P1-C-THIRD-COUNTRY-OUTPUT",
-        "AIA-NORM-A002-P1-D-IMPORT-DISTRIBUTE",
-        "AIA-NORM-A002-P1-E-PRODUCT-MANUFACTURER",
-        "AIA-NORM-A002-P1-F-AUTHORISED-REPRESENTATIVE",
-        "AIA-NORM-A002-P1-G-AFFECTED-PERSON",
-        "AIA-NORM-A002-P10-PERSONAL-USE-DEPLOYER-EXCLUSION",
-        "AIA-NORM-A002-P12-OPEN-SOURCE-AI-SYSTEM-EXCLUSION",
         "AIA-NORM-A002-P13-LIMIT-HIGH-RISK-REQUIREMENTS",
         "AIA-NORM-A002-P2-INTEGRATED-SANDBOX-PROVISIONS",
         "AIA-NORM-A002-P2-SECTION-B-LIMIT",
-        "AIA-NORM-A002-P3-MILITARY-EXCLUSION",
-        "AIA-NORM-A002-P3-MILITARY-OUTPUT-EXCLUSION",
-        "AIA-NORM-A002-P4-INTERNATIONAL-COOPERATION-EXCLUSION",
-        "AIA-NORM-A002-P6-SCIENTIFIC-RD-EXCLUSION",
-        "AIA-NORM-A002-P8-PRE-MARKET-RD-EXCLUSION",
-        "AIA-NORM-A002-P8-REAL-WORLD-TESTING-CARVEOUT",
         "AIA-NORM-A004-P1-AI-LITERACY-MEASURES",
         "AIA-NORM-A004A-P1-B-REUSE-SECURITY",
         "AIA-NORM-A004A-P1-C-ACCESS-SAFEGUARDS",
@@ -2008,19 +1935,6 @@ def test_metrics_expose_many_to_many_and_implementation_debt(metrics):
         "AIA-NORM-A004A-P1-F-RECORD-NECESSITY",
         "AIA-NORM-A004A-P1-HIGH-RISK-BIAS-DATA-PROCESSING",
         "AIA-NORM-A004A-P2-OTHER-SYSTEM-BIAS-DATA-PROCESSING",
-        "AIA-NORM-A005-P1-A-MANIPULATIVE-TECHNIQUES",
-        "AIA-NORM-A005-P1-B-VULNERABILITY-EXPLOITATION",
-        "AIA-NORM-A005-P1-BA-NONCONSENSUAL-INTIMATE-MATERIAL",
-        "AIA-NORM-A005-P1-BB-DIRECTIVE-MATERIAL",
-        "AIA-NORM-A005-P1-C-SOCIAL-SCORING",
-        "AIA-NORM-A005-P1-D-CRIMINAL-RISK-PROFILING",
-        "AIA-NORM-A005-P1-E-UNTARGETED-FACIAL-SCRAPING",
-        "AIA-NORM-A005-P1-F-WORKPLACE-EDUCATION-EMOTION-INFERENCE",
-        "AIA-NORM-A005-P1-G-SENSITIVE-BIOMETRIC-CATEGORISATION",
-        "AIA-NORM-A005-P1-H-REAL-TIME-RBI",
-        "AIA-NORM-A005-P1A-DEPLOYER-USE-SCOPE",
-        "AIA-NORM-A005-P1A-MARKET-SERVICE-SCOPE",
-        "AIA-NORM-A005-P1B-NON-MANIPULATION",
         "AIA-NORM-A005-P2-COMPLETE-FRIA",
         "AIA-NORM-A005-P2-CONFIRM-TARGETED-IDENTITY",
         "AIA-NORM-A005-P2-CONSIDER-IMPACTS",
@@ -2036,13 +1950,6 @@ def test_metrics_expose_many_to_many_and_implementation_debt(metrics):
         "AIA-NORM-A005-P4-EXCLUDE-SENSITIVE-DATA",
         "AIA-NORM-A005-P4-NOTIFICATION-CONTENT",
         "AIA-NORM-A005-P4-NOTIFY-AUTHORITIES",
-        "AIA-NORM-A006-P1-ANNEX-I-HIGH-RISK",
-        "AIA-NORM-A006-P1A-NON-SAFETY-ASSISTANCE",
-        "AIA-NORM-A006-P1B-HEALTH-SAFETY-OVERRIDE",
-        "AIA-NORM-A006-P1C-NON-SAFETY-ASSESSMENT",
-        "AIA-NORM-A006-P2-ANNEX-III-HIGH-RISK",
-        "AIA-NORM-A006-P3-INSIGNIFICANT-RISK-EXCEPTION",
-        "AIA-NORM-A006-P3-PROFILING-OVERRIDE",
         "AIA-NORM-A006-P4-DOCUMENT-ASSESSMENT",
         "AIA-NORM-A006-P4-PROVIDE-ASSESSMENT",
         "AIA-NORM-A006-P4-REGISTER-SYSTEM",
@@ -2065,9 +1972,6 @@ def test_metrics_expose_many_to_many_and_implementation_debt(metrics):
         "AIA-NORM-A048-P1-GENERAL-CE-PRINCIPLES",
         "AIA-NORM-A048-P5-OTHER-LAW-COMPLIANCE",
         "AIA-NORM-A050-P3-DATA",
-        "AIA-NORM-A051-P1-A-HIGH-IMPACT-SYSTEMIC-RISK",
-        "AIA-NORM-A051-P1-B-EQUIVALENT-SYSTEMIC-RISK",
-        "AIA-NORM-A051-P2-COMPUTE-PRESUMPTION",
         "AIA-NORM-A052-P3-SYSTEMIC-RISK-CONSEQUENCE",
         "AIA-NORM-A052-P5-REQUEST-CONTENT",
         "AIA-NORM-A059-P1-A-SUBSTANTIAL-PUBLIC-INTEREST",
@@ -2116,68 +2020,6 @@ def test_metrics_expose_many_to_many_and_implementation_debt(metrics):
         "AIA-NORM-A111-P2-PUBLIC-AUTHORITY-SYSTEM-COMPLIANCE",
         "AIA-NORM-A111-P3-LEGACY-GPAI-COMPLIANCE",
         "AIA-NORM-A111-P4-LEGACY-SYNTHETIC-CONTENT-COMPLIANCE",
-        "AIA-NORM-ANNEX-I-01-MACHINERY-DIRECTIVE",
-        "AIA-NORM-ANNEX-I-02-TOY-SAFETY",
-        "AIA-NORM-ANNEX-I-03-RECREATIONAL-CRAFT",
-        "AIA-NORM-ANNEX-I-04-LIFTS",
-        "AIA-NORM-ANNEX-I-05-EXPLOSIVE-ATMOSPHERES",
-        "AIA-NORM-ANNEX-I-06-RADIO-EQUIPMENT",
-        "AIA-NORM-ANNEX-I-07-PRESSURE-EQUIPMENT",
-        "AIA-NORM-ANNEX-I-08-CABLEWAYS",
-        "AIA-NORM-ANNEX-I-09-PERSONAL-PROTECTIVE-EQUIPMENT",
-        "AIA-NORM-ANNEX-I-10-GAS-APPLIANCES",
-        "AIA-NORM-ANNEX-I-11-MEDICAL-DEVICES",
-        "AIA-NORM-ANNEX-I-12-IN-VITRO-DIAGNOSTICS",
-        "AIA-NORM-ANNEX-I-13-AVIATION-SECURITY",
-        "AIA-NORM-ANNEX-I-14-L-CATEGORY-VEHICLES",
-        "AIA-NORM-ANNEX-I-15-AGRICULTURAL-FORESTRY-VEHICLES",
-        "AIA-NORM-ANNEX-I-16-MARINE-EQUIPMENT",
-        "AIA-NORM-ANNEX-I-17-RAIL-INTEROPERABILITY",
-        "AIA-NORM-ANNEX-I-18-MOTOR-VEHICLE-APPROVAL",
-        "AIA-NORM-ANNEX-I-19-MOTOR-VEHICLE-GENERAL-SAFETY",
-        "AIA-NORM-ANNEX-I-20-UNMANNED-AIRCRAFT",
-        "AIA-NORM-ANNEX-I-21-MACHINERY-REGULATION",
-        "AIA-NORM-ANNEX-II-01-TERRORISM",
-        "AIA-NORM-ANNEX-II-02-HUMAN-TRAFFICKING",
-        "AIA-NORM-ANNEX-II-03-CHILD-SEXUAL-EXPLOITATION",
-        "AIA-NORM-ANNEX-II-04-DRUG-TRAFFICKING",
-        "AIA-NORM-ANNEX-II-05-WEAPONS-TRAFFICKING",
-        "AIA-NORM-ANNEX-II-06-MURDER-BODILY-INJURY",
-        "AIA-NORM-ANNEX-II-07-HUMAN-ORGANS",
-        "AIA-NORM-ANNEX-II-08-NUCLEAR-MATERIALS",
-        "AIA-NORM-ANNEX-II-09-KIDNAPPING-HOSTAGE-TAKING",
-        "AIA-NORM-ANNEX-II-10-ICC-CRIMES",
-        "AIA-NORM-ANNEX-II-11-AIRCRAFT-SHIP-SEIZURE",
-        "AIA-NORM-ANNEX-II-12-RAPE",
-        "AIA-NORM-ANNEX-II-13-ENVIRONMENTAL-CRIME",
-        "AIA-NORM-ANNEX-II-14-ROBBERY",
-        "AIA-NORM-ANNEX-II-15-SABOTAGE",
-        "AIA-NORM-ANNEX-II-16-CRIMINAL-ORGANISATION",
-        "AIA-NORM-ANNEX-III-1A-REMOTE-BIOMETRIC-IDENTIFICATION",
-        "AIA-NORM-ANNEX-III-1B-BIOMETRIC-CATEGORISATION",
-        "AIA-NORM-ANNEX-III-1C-EMOTION-RECOGNITION",
-        "AIA-NORM-ANNEX-III-2-CRITICAL-INFRASTRUCTURE",
-        "AIA-NORM-ANNEX-III-3A-EDUCATION-ACCESS",
-        "AIA-NORM-ANNEX-III-3B-LEARNING-OUTCOMES",
-        "AIA-NORM-ANNEX-III-3C-EDUCATION-LEVEL",
-        "AIA-NORM-ANNEX-III-3D-TEST-BEHAVIOUR",
-        "AIA-NORM-ANNEX-III-4A-RECRUITMENT",
-        "AIA-NORM-ANNEX-III-4B-WORKER-MANAGEMENT",
-        "AIA-NORM-ANNEX-III-5A-ESSENTIAL-BENEFITS",
-        "AIA-NORM-ANNEX-III-5B-CREDITWORTHINESS",
-        "AIA-NORM-ANNEX-III-5C-LIFE-HEALTH-INSURANCE",
-        "AIA-NORM-ANNEX-III-5D-EMERGENCY-RESPONSE",
-        "AIA-NORM-ANNEX-III-6A-VICTIM-RISK",
-        "AIA-NORM-ANNEX-III-6B-LAW-ENFORCEMENT-POLYGRAPH",
-        "AIA-NORM-ANNEX-III-6C-EVIDENCE-RELIABILITY",
-        "AIA-NORM-ANNEX-III-6D-OFFENDING-RISK",
-        "AIA-NORM-ANNEX-III-6E-LAW-ENFORCEMENT-PROFILING",
-        "AIA-NORM-ANNEX-III-7A-BORDER-POLYGRAPH",
-        "AIA-NORM-ANNEX-III-7B-BORDER-RISK",
-        "AIA-NORM-ANNEX-III-7C-ASYLUM-VISA-RESIDENCE",
-        "AIA-NORM-ANNEX-III-7D-BORDER-IDENTIFICATION",
-        "AIA-NORM-ANNEX-III-8A-JUSTICE",
-        "AIA-NORM-ANNEX-III-8B-ELECTION-INFLUENCE",
         "AIA-NORM-ANNEX-VI-P1-PROCEDURE-CONTENT",
         "AIA-NORM-ANNEX-VI-P2-VERIFY-QMS",
         "AIA-NORM-ANNEX-VI-P3-EXAMINE-TECHNICAL-DOCUMENTATION",
@@ -2876,7 +2718,9 @@ def test_article_fifty_one_extracts_systemic_risk_classification_gates():
     assert len(segments[5].norm_ids) == 2
     classification = [norm for norm in norms.values() if norm.kind.value == "applicability"]
     assert len(classification) == 3
-    assert all(norm.implementation_mode.value == "missing" for norm in classification)
+    assert all(
+        norm.implementation_mode.value == "applicability_question" for norm in classification
+    )
     delegated_acts = [
         norm for norm in norms.values() if norm.subjects[0].subject_ref == "commission"
     ]

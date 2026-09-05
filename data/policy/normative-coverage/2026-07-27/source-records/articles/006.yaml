@@ -25,6 +25,10 @@ records:
     resolution: unresolved
     detail: Annex I and the referenced legislation determine the covered products and conformity-assessment
       requirements.
+  implementation_mode: applicability_question
+  implementation_refs:
+  - AIA-CQ-ANNEX-I
+  - AIA-CQ-THIRD-PARTY-ASSESSMENT
 - norm_id: AIA-NORM-A006-P1A-NON-SAFETY-ASSISTANCE
   source: A006-P004
   quote: AI systems that are solely used for non-safety related aspects of user assistance, performance
@@ -43,6 +47,9 @@ records:
   - dependency_ref: AIA-NORM-A003-D014-SAFETY-COMPONENT
     resolution: internal_resolved
     detail: Article 3(14) defines safety component.
+  implementation_mode: applicability_question
+  implementation_refs:
+  - AIA-CQ-ANNEX-I
 - norm_id: AIA-NORM-A006-P1B-HEALTH-SAFETY-OVERRIDE
   source: A006-P005
   quote: AI systems the failure or malfunctioning of which would endanger health and safety shall qualify
@@ -59,6 +66,9 @@ records:
   - dependency_ref: AIA-NORM-A003-D014-SAFETY-COMPONENT
     resolution: internal_resolved
     detail: Article 3(14) defines safety component.
+  implementation_mode: applicability_question
+  implementation_refs:
+  - AIA-CQ-ANNEX-I
 - norm_id: AIA-NORM-A006-P1C-NON-SAFETY-ASSESSMENT
   source: A006-P006
   quote: A product that is required to undergo a third-party conformity assessment solely due to risks
@@ -73,6 +83,9 @@ records:
   conditions:
   - third-party conformity assessment is required solely because of risks unrelated to health and safety
   verification_mode: answered_by_classification
+  implementation_mode: applicability_question
+  implementation_refs:
+  - AIA-CQ-THIRD-PARTY-ASSESSMENT
 - norm_id: AIA-NORM-A006-P2-ANNEX-III-HIGH-RISK
   source: A006-P007
   quote: AI systems referred to in Annex III shall be considered to be high-risk.
@@ -85,6 +98,9 @@ records:
   - dependency_ref: Annex III of this Regulation
     resolution: unresolved
     detail: Annex III supplies the high-risk use-case areas and has not yet been semantically reviewed.
+  implementation_mode: applicability_question
+  implementation_refs:
+  - AIA-CQ-ANNEX-III
 - norm_id: AIA-NORM-A006-P3-INSIGNIFICANT-RISK-EXCEPTION
   source: A006-P008
   quote: an AI system referred to in Annex III shall not be considered to be high-risk where it does not
@@ -127,6 +143,10 @@ records:
   - dependency_ref: AIA-NORM-A006-P2-ANNEX-III-HIGH-RISK
     resolution: internal_resolved
     detail: This norm derogates from the Annex III high-risk classification.
+  implementation_mode: applicability_question
+  implementation_refs:
+  - AIA-CQ-DEROGATION
+  - AIA-CQ-SIGNIFICANT-RISK
 - norm_id: AIA-NORM-A006-P3-PROFILING-OVERRIDE
   source: A006-P014
   quote: an AI system referred to in Annex III shall always be considered to be high-risk where the AI
@@ -145,6 +165,9 @@ records:
   - dependency_ref: AIA-NORM-A006-P3-INSIGNIFICANT-RISK-EXCEPTION
     resolution: internal_resolved
     detail: Profiling overrides the Article 6(3) insignificant-risk exception.
+  implementation_mode: applicability_question
+  implementation_refs:
+  - AIA-CQ-PROFILING
 - norm_id: AIA-NORM-A006-P4-DOCUMENT-ASSESSMENT
   source: A006-P015
   quote: A provider who considers that an AI system referred to in Annex III is not high-risk shall document

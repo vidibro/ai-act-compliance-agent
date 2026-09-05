@@ -12,6 +12,9 @@ records:
   verification_mode: answered_by_classification
   qualifier_spans:
   - A002-P001
+  implementation_mode: applicability_question
+  implementation_refs:
+  - AIA-CQ-TERRITORIAL
 - norm_id: AIA-NORM-A002-P1-B-DEPLOYER
   source: A002-P003
   quote: deployers of AI systems that have their place of establishment or are located within the Union
@@ -22,6 +25,9 @@ records:
   verification_mode: answered_by_classification
   qualifier_spans:
   - A002-P001
+  implementation_mode: applicability_question
+  implementation_refs:
+  - AIA-CQ-TERRITORIAL
 - norm_id: AIA-NORM-A002-P1-C-THIRD-COUNTRY-OUTPUT
   source: A002-P004
   quote: providers and deployers of AI systems that have their place of establishment or are located in
@@ -34,6 +40,9 @@ records:
   verification_mode: answered_by_classification
   qualifier_spans:
   - A002-P001
+  implementation_mode: applicability_question
+  implementation_refs:
+  - AIA-CQ-TERRITORIAL
 - norm_id: AIA-NORM-A002-P1-D-IMPORT-DISTRIBUTE
   source: A002-P005
   quote: importers and distributors of AI systems
@@ -44,6 +53,9 @@ records:
   verification_mode: answered_by_classification
   qualifier_spans:
   - A002-P001
+  implementation_mode: applicability_question
+  implementation_refs:
+  - AIA-CQ-TERRITORIAL
 - norm_id: AIA-NORM-A002-P1-E-PRODUCT-MANUFACTURER
   source: A002-P006
   quote: product manufacturers placing on the market or putting into service an AI system together with
@@ -56,6 +68,9 @@ records:
   verification_mode: answered_by_classification
   qualifier_spans:
   - A002-P001
+  implementation_mode: applicability_question
+  implementation_refs:
+  - AIA-CQ-TERRITORIAL
 - norm_id: AIA-NORM-A002-P1-F-AUTHORISED-REPRESENTATIVE
   source: A002-P007
   quote: authorised representatives of providers, which are not established in the Union
@@ -66,6 +81,9 @@ records:
   verification_mode: answered_by_classification
   qualifier_spans:
   - A002-P001
+  implementation_mode: applicability_question
+  implementation_refs:
+  - AIA-CQ-TERRITORIAL
 - norm_id: AIA-NORM-A002-P1-G-AFFECTED-PERSON
   source: A002-P008
   quote: affected persons that are located in the Union
@@ -76,6 +94,9 @@ records:
   verification_mode: answered_by_classification
   qualifier_spans:
   - A002-P001
+  implementation_mode: applicability_question
+  implementation_refs:
+  - AIA-CQ-TERRITORIAL
 - norm_id: AIA-NORM-A002-P2-SECTION-B-LIMIT
   source: A002-P009
   quote: For AI systems classified as high-risk AI systems in accordance with Article 6(1) related to
@@ -146,6 +167,9 @@ records:
   - the AI system is placed on the market, put into service, or used exclusively for military, defence,
     or national-security purposes
   - the exclusion applies regardless of the type of entity carrying out those activities
+  implementation_mode: applicability_question
+  implementation_refs:
+  - AIA-CQ-SCOPE
 - norm_id: AIA-NORM-A002-P3-MILITARY-OUTPUT-EXCLUSION
   source: A002-P012
   quote: This Regulation does not apply to AI systems which are not placed on the market or put into service
@@ -162,6 +186,9 @@ records:
   - the AI system output is used in the Union exclusively for military, defence, or national-security
     purposes
   - the exclusion applies regardless of the type of entity carrying out those activities
+  implementation_mode: applicability_question
+  implementation_refs:
+  - AIA-CQ-SCOPE
 - norm_id: AIA-NORM-A002-P4-INTERNATIONAL-COOPERATION-EXCLUSION
   source: A002-P013
   quote: This Regulation applies neither to public authorities in a third country nor to international
@@ -185,6 +212,9 @@ records:
   - the cooperation or agreement is with the Union or one or more Member States
   - the third country or international organisation provides adequate safeguards for individual fundamental
     rights and freedoms
+  implementation_mode: applicability_question
+  implementation_refs:
+  - AIA-CQ-SCOPE
 - norm_id: AIA-NORM-A002-P5-INTERMEDIARY-LIABILITY-SAVING
   source: A002-P014
   quote: This Regulation shall not affect the application of the provisions on the liability of providers
@@ -219,6 +249,9 @@ records:
   - the AI system or AI model, including its output, is specifically developed for scientific research
     and development
   - it is put into service solely for scientific research and development
+  implementation_mode: applicability_question
+  implementation_refs:
+  - AIA-CQ-SCOPE
 - norm_id: AIA-NORM-A002-P7-DATA-PROTECTION-APPLICATION
   source: A002-P016
   quote: Union law on the protection of personal data, privacy and the confidentiality of communications
@@ -279,6 +312,9 @@ records:
   conditions:
   - the activity concerns an AI system or AI model
   - the activity occurs before the system or model is placed on the market or put into service
+  implementation_mode: applicability_question
+  implementation_refs:
+  - AIA-CQ-SCOPE
 - norm_id: AIA-NORM-A002-P8-RD-UNION-LAW-COMPLIANCE
   source: A002-P017
   quote: Such activities shall be conducted in accordance with applicable Union law.
@@ -311,6 +347,9 @@ records:
   - dependency_ref: AIA-NORM-A002-P8-PRE-MARKET-RD-EXCLUSION
     resolution: internal_resolved
     detail: This norm limits the exclusion stated earlier in the same paragraph.
+  implementation_mode: applicability_question
+  implementation_refs:
+  - AIA-CQ-SCOPE
 - norm_id: AIA-NORM-A002-P9-CONSUMER-PRODUCT-SAFETY-SAVING
   source: A002-P018
   quote: This Regulation is without prejudice to the rules laid down by other Union legal acts related
@@ -344,6 +383,9 @@ records:
   - the deployer is a natural person
   - the AI system is used in the course of a purely personal activity
   - the activity is non-professional
+  implementation_mode: applicability_question
+  implementation_refs:
+  - AIA-CQ-SCOPE
 - norm_id: AIA-NORM-A002-P11-MORE-FAVOURABLE-WORKER-RULES
   source: A002-P020
   quote: This Regulation does not preclude the Union or Member States from maintaining or introducing
@@ -398,6 +440,9 @@ records:
   - dependency_ref: Article 50 of this Regulation
     resolution: unresolved
     detail: Article 50 determines one exception but has not yet been completely semantically reviewed.
+  implementation_mode: applicability_question
+  implementation_refs:
+  - AIA-CQ-SCOPE
 - norm_id: AIA-NORM-A002-P13-LIMIT-HIGH-RISK-REQUIREMENTS
   source: A002-P022
   quote: For high-risk AI systems referred to in Article 6(1), the application of specific requirements

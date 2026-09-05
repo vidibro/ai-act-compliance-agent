@@ -14,6 +14,7 @@ norms:
   - semantic_legal_effect
   - deeming_or_consequence
   - cross_reference_structure
+  - existing_implementation
   primary_spans:
   - AIA-TEXT-A051-P002
   qualifier_spans:
@@ -27,8 +28,9 @@ norms:
   dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
-  implementation_mode: missing
-  implementation_refs: []
+  implementation_mode: applicability_question
+  implementation_refs:
+  - AIA-CQ-SYSTEMIC-RISK
   implementation_reason: ''
   verification_mode: answered_by_classification
   review:
@@ -55,6 +57,7 @@ norms:
   - semantic_legal_effect
   - deeming_or_consequence
   - cross_reference_structure
+  - existing_implementation
   primary_spans:
   - AIA-TEXT-A051-P003
   qualifier_spans:
@@ -69,8 +72,9 @@ norms:
   dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
-  implementation_mode: missing
-  implementation_refs: []
+  implementation_mode: applicability_question
+  implementation_refs:
+  - AIA-CQ-SYSTEMIC-RISK
   implementation_reason: ''
   verification_mode: answered_by_classification
   review:
@@ -97,6 +101,7 @@ norms:
   - semantic_legal_effect
   - shall_token
   - deeming_or_consequence
+  - existing_implementation
   primary_spans:
   - AIA-TEXT-A051-P004
   qualifier_spans: []
@@ -108,8 +113,9 @@ norms:
   dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
-  implementation_mode: missing
-  implementation_refs: []
+  implementation_mode: applicability_question
+  implementation_refs:
+  - AIA-CQ-SYSTEMIC-RISK
   implementation_reason: ''
   verification_mode: answered_by_classification
   review:

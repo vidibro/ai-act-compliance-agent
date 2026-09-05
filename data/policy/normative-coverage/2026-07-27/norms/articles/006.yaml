@@ -15,6 +15,7 @@ norms:
   - shall_token
   - deeming_or_consequence
   - cross_reference_structure
+  - existing_implementation
   primary_spans:
   - AIA-TEXT-A006-P001
   qualifier_spans:
@@ -38,8 +39,10 @@ norms:
       requirements.
   product_scope: in_scope
   product_scope_reason: ''
-  implementation_mode: missing
-  implementation_refs: []
+  implementation_mode: applicability_question
+  implementation_refs:
+  - AIA-CQ-ANNEX-I
+  - AIA-CQ-THIRD-PARTY-ASSESSMENT
   implementation_reason: ''
   verification_mode: answered_by_classification
   review:
@@ -67,6 +70,7 @@ norms:
   - shall_token
   - deeming_or_consequence
   - cross_reference_structure
+  - existing_implementation
   primary_spans:
   - AIA-TEXT-A006-P004
   qualifier_spans: []
@@ -82,8 +86,9 @@ norms:
     detail: Article 3(14) defines safety component.
   product_scope: in_scope
   product_scope_reason: ''
-  implementation_mode: missing
-  implementation_refs: []
+  implementation_mode: applicability_question
+  implementation_refs:
+  - AIA-CQ-ANNEX-I
   implementation_reason: ''
   verification_mode: answered_by_classification
   review:
@@ -110,6 +115,7 @@ norms:
   - shall_token
   - deeming_or_consequence
   - cross_reference_structure
+  - existing_implementation
   primary_spans:
   - AIA-TEXT-A006-P005
   qualifier_spans: []
@@ -124,8 +130,9 @@ norms:
     detail: Article 3(14) defines safety component.
   product_scope: in_scope
   product_scope_reason: ''
-  implementation_mode: missing
-  implementation_refs: []
+  implementation_mode: applicability_question
+  implementation_refs:
+  - AIA-CQ-ANNEX-I
   implementation_reason: ''
   verification_mode: answered_by_classification
   review:
@@ -153,6 +160,7 @@ norms:
   - semantic_legal_effect
   - shall_token
   - deeming_or_consequence
+  - existing_implementation
   primary_spans:
   - AIA-TEXT-A006-P006
   qualifier_spans: []
@@ -164,8 +172,9 @@ norms:
   dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
-  implementation_mode: missing
-  implementation_refs: []
+  implementation_mode: applicability_question
+  implementation_refs:
+  - AIA-CQ-THIRD-PARTY-ASSESSMENT
   implementation_reason: ''
   verification_mode: answered_by_classification
   review:
@@ -190,6 +199,7 @@ norms:
   - shall_token
   - deeming_or_consequence
   - cross_reference_structure
+  - existing_implementation
   primary_spans:
   - AIA-TEXT-A006-P007
   qualifier_spans: []
@@ -203,8 +213,9 @@ norms:
     detail: Annex III supplies the high-risk use-case areas and has not yet been semantically reviewed.
   product_scope: in_scope
   product_scope_reason: ''
-  implementation_mode: missing
-  implementation_refs: []
+  implementation_mode: applicability_question
+  implementation_refs:
+  - AIA-CQ-ANNEX-III
   implementation_reason: ''
   verification_mode: answered_by_classification
   review:
@@ -232,6 +243,7 @@ norms:
   - shall_token
   - deeming_or_consequence
   - cross_reference_structure
+  - existing_implementation
   primary_spans:
   - AIA-TEXT-A006-P008
   qualifier_spans:
@@ -269,8 +281,10 @@ norms:
     detail: This norm derogates from the Annex III high-risk classification.
   product_scope: in_scope
   product_scope_reason: ''
-  implementation_mode: missing
-  implementation_refs: []
+  implementation_mode: applicability_question
+  implementation_refs:
+  - AIA-CQ-DEROGATION
+  - AIA-CQ-SIGNIFICANT-RISK
   implementation_reason: ''
   verification_mode: answered_by_classification
   review:
@@ -296,6 +310,7 @@ norms:
   - shall_token
   - deeming_or_consequence
   - cross_reference_structure
+  - existing_implementation
   primary_spans:
   - AIA-TEXT-A006-P014
   qualifier_spans: []
@@ -313,8 +328,9 @@ norms:
     detail: Profiling overrides the Article 6(3) insignificant-risk exception.
   product_scope: in_scope
   product_scope_reason: ''
-  implementation_mode: missing
-  implementation_refs: []
+  implementation_mode: applicability_question
+  implementation_refs:
+  - AIA-CQ-PROFILING
   implementation_reason: ''
   verification_mode: answered_by_classification
   review:

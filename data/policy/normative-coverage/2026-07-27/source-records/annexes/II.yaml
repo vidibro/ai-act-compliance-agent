@@ -13,6 +13,9 @@ records:
   - dependency_ref: AIA-NORM-A005-P1-H-REAL-TIME-RBI
     resolution: internal_resolved
     detail: Article 5(1)(h)(iii) gives legal effect to the Annex II offence list within the real-time remote-biometric-identification exception.
+  implementation_mode: applicability_question
+  implementation_refs:
+  - AIA-CQ-PROHIBITED
 - norm_id: AIA-NORM-ANNEX-II-02-HUMAN-TRAFFICKING
   source: ANNEX-II-P003
   quote: trafficking in human beings
@@ -23,6 +26,9 @@ records:
   verification_mode: answered_by_classification
   qualifier_spans: *chapeau
   dependencies: *article5_dependency
+  implementation_mode: applicability_question
+  implementation_refs:
+  - AIA-CQ-PROHIBITED
 - norm_id: AIA-NORM-ANNEX-II-03-CHILD-SEXUAL-EXPLOITATION
   source: ANNEX-II-P004
   quote: sexual exploitation of children, and child pornography
@@ -33,6 +39,9 @@ records:
   verification_mode: answered_by_classification
   qualifier_spans: *chapeau
   dependencies: *article5_dependency
+  implementation_mode: applicability_question
+  implementation_refs:
+  - AIA-CQ-PROHIBITED
 - norm_id: AIA-NORM-ANNEX-II-04-DRUG-TRAFFICKING
   source: ANNEX-II-P005
   quote: illicit trafficking in narcotic drugs or psychotropic substances
@@ -43,6 +52,9 @@ records:
   verification_mode: answered_by_classification
   qualifier_spans: *chapeau
   dependencies: *article5_dependency
+  implementation_mode: applicability_question
+  implementation_refs:
+  - AIA-CQ-PROHIBITED
 - norm_id: AIA-NORM-ANNEX-II-05-WEAPONS-TRAFFICKING
   source: ANNEX-II-P006
   quote: illicit trafficking in weapons, munitions or explosives
@@ -53,6 +65,9 @@ records:
   verification_mode: answered_by_classification
   qualifier_spans: *chapeau
   dependencies: *article5_dependency
+  implementation_mode: applicability_question
+  implementation_refs:
+  - AIA-CQ-PROHIBITED
 - norm_id: AIA-NORM-ANNEX-II-06-MURDER-BODILY-INJURY
   source: ANNEX-II-P007
   quote: murder, grievous bodily injury
@@ -63,6 +78,9 @@ records:
   verification_mode: answered_by_classification
   qualifier_spans: *chapeau
   dependencies: *article5_dependency
+  implementation_mode: applicability_question
+  implementation_refs:
+  - AIA-CQ-PROHIBITED
 - norm_id: AIA-NORM-ANNEX-II-07-HUMAN-ORGANS
   source: ANNEX-II-P008
   quote: illicit trade in human organs or tissue
@@ -73,6 +91,9 @@ records:
   verification_mode: answered_by_classification
   qualifier_spans: *chapeau
   dependencies: *article5_dependency
+  implementation_mode: applicability_question
+  implementation_refs:
+  - AIA-CQ-PROHIBITED
 - norm_id: AIA-NORM-ANNEX-II-08-NUCLEAR-MATERIALS
   source: ANNEX-II-P009
   quote: illicit trafficking in nuclear or radioactive materials
@@ -83,6 +104,9 @@ records:
   verification_mode: answered_by_classification
   qualifier_spans: *chapeau
   dependencies: *article5_dependency
+  implementation_mode: applicability_question
+  implementation_refs:
+  - AIA-CQ-PROHIBITED
 - norm_id: AIA-NORM-ANNEX-II-09-KIDNAPPING-HOSTAGE-TAKING
   source: ANNEX-II-P010
   quote: kidnapping, illegal restraint or hostage-taking
@@ -93,6 +117,9 @@ records:
   verification_mode: answered_by_classification
   qualifier_spans: *chapeau
   dependencies: *article5_dependency
+  implementation_mode: applicability_question
+  implementation_refs:
+  - AIA-CQ-PROHIBITED
 - norm_id: AIA-NORM-ANNEX-II-10-ICC-CRIMES
   source: ANNEX-II-P011
   quote: crimes within the jurisdiction of the International Criminal Court
@@ -103,6 +130,9 @@ records:
   verification_mode: answered_by_classification
   qualifier_spans: *chapeau
   dependencies: *article5_dependency
+  implementation_mode: applicability_question
+  implementation_refs:
+  - AIA-CQ-PROHIBITED
 - norm_id: AIA-NORM-ANNEX-II-11-AIRCRAFT-SHIP-SEIZURE
   source: ANNEX-II-P012
   quote: unlawful seizure of aircraft or ships
@@ -113,6 +143,9 @@ records:
   verification_mode: answered_by_classification
   qualifier_spans: *chapeau
   dependencies: *article5_dependency
+  implementation_mode: applicability_question
+  implementation_refs:
+  - AIA-CQ-PROHIBITED
 - norm_id: AIA-NORM-ANNEX-II-12-RAPE
   source: ANNEX-II-P013
   quote: rape
@@ -123,6 +156,9 @@ records:
   verification_mode: answered_by_classification
   qualifier_spans: *chapeau
   dependencies: *article5_dependency
+  implementation_mode: applicability_question
+  implementation_refs:
+  - AIA-CQ-PROHIBITED
 - norm_id: AIA-NORM-ANNEX-II-13-ENVIRONMENTAL-CRIME
   source: ANNEX-II-P014
   quote: environmental crime
@@ -133,6 +169,9 @@ records:
   verification_mode: answered_by_classification
   qualifier_spans: *chapeau
   dependencies: *article5_dependency
+  implementation_mode: applicability_question
+  implementation_refs:
+  - AIA-CQ-PROHIBITED
 - norm_id: AIA-NORM-ANNEX-II-14-ROBBERY
   source: ANNEX-II-P015
   quote: organised or armed robbery
@@ -143,6 +182,9 @@ records:
   verification_mode: answered_by_classification
   qualifier_spans: *chapeau
   dependencies: *article5_dependency
+  implementation_mode: applicability_question
+  implementation_refs:
+  - AIA-CQ-PROHIBITED
 - norm_id: AIA-NORM-ANNEX-II-15-SABOTAGE
   source: ANNEX-II-P016
   quote: sabotage
@@ -153,6 +195,9 @@ records:
   verification_mode: answered_by_classification
   qualifier_spans: *chapeau
   dependencies: *article5_dependency
+  implementation_mode: applicability_question
+  implementation_refs:
+  - AIA-CQ-PROHIBITED
 - norm_id: AIA-NORM-ANNEX-II-16-CRIMINAL-ORGANISATION
   source: ANNEX-II-P017
   quote: participation in a criminal organisation involved in one or more of the offences listed above
@@ -163,3 +208,6 @@ records:
   verification_mode: answered_by_classification
   qualifier_spans: *chapeau
   dependencies: *article5_dependency
+  implementation_mode: applicability_question
+  implementation_refs:
+  - AIA-CQ-PROHIBITED

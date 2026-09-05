@@ -15,6 +15,7 @@ norms:
   - semantic_legal_effect
   - deeming_or_consequence
   - cross_reference_structure
+  - existing_implementation
   primary_spans:
   - AIA-TEXT-A002-P002
   qualifier_spans:
@@ -26,8 +27,9 @@ norms:
   dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
-  implementation_mode: missing
-  implementation_refs: []
+  implementation_mode: applicability_question
+  implementation_refs:
+  - AIA-CQ-TERRITORIAL
   implementation_reason: ''
   verification_mode: answered_by_classification
   review:
@@ -52,6 +54,7 @@ norms:
   - semantic_legal_effect
   - deeming_or_consequence
   - cross_reference_structure
+  - existing_implementation
   primary_spans:
   - AIA-TEXT-A002-P003
   qualifier_spans:
@@ -63,8 +66,9 @@ norms:
   dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
-  implementation_mode: missing
-  implementation_refs: []
+  implementation_mode: applicability_question
+  implementation_refs:
+  - AIA-CQ-TERRITORIAL
   implementation_reason: ''
   verification_mode: answered_by_classification
   review:
@@ -90,6 +94,7 @@ norms:
   - semantic_legal_effect
   - deeming_or_consequence
   - cross_reference_structure
+  - existing_implementation
   primary_spans:
   - AIA-TEXT-A002-P004
   qualifier_spans:
@@ -101,8 +106,9 @@ norms:
   dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
-  implementation_mode: missing
-  implementation_refs: []
+  implementation_mode: applicability_question
+  implementation_refs:
+  - AIA-CQ-TERRITORIAL
   implementation_reason: ''
   verification_mode: answered_by_classification
   review:
@@ -126,6 +132,7 @@ norms:
   - semantic_legal_effect
   - deeming_or_consequence
   - cross_reference_structure
+  - existing_implementation
   primary_spans:
   - AIA-TEXT-A002-P005
   qualifier_spans:
@@ -137,8 +144,9 @@ norms:
   dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
-  implementation_mode: missing
-  implementation_refs: []
+  implementation_mode: applicability_question
+  implementation_refs:
+  - AIA-CQ-TERRITORIAL
   implementation_reason: ''
   verification_mode: answered_by_classification
   review:
@@ -164,6 +172,7 @@ norms:
   - semantic_legal_effect
   - deeming_or_consequence
   - cross_reference_structure
+  - existing_implementation
   primary_spans:
   - AIA-TEXT-A002-P006
   qualifier_spans:
@@ -175,8 +184,9 @@ norms:
   dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
-  implementation_mode: missing
-  implementation_refs: []
+  implementation_mode: applicability_question
+  implementation_refs:
+  - AIA-CQ-TERRITORIAL
   implementation_reason: ''
   verification_mode: answered_by_classification
   review:
@@ -200,6 +210,7 @@ norms:
   - semantic_legal_effect
   - deeming_or_consequence
   - cross_reference_structure
+  - existing_implementation
   primary_spans:
   - AIA-TEXT-A002-P007
   qualifier_spans:
@@ -211,8 +222,9 @@ norms:
   dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
-  implementation_mode: missing
-  implementation_refs: []
+  implementation_mode: applicability_question
+  implementation_refs:
+  - AIA-CQ-TERRITORIAL
   implementation_reason: ''
   verification_mode: answered_by_classification
   review:
@@ -236,6 +248,7 @@ norms:
   - semantic_legal_effect
   - deeming_or_consequence
   - cross_reference_structure
+  - existing_implementation
   primary_spans:
   - AIA-TEXT-A002-P008
   qualifier_spans:
@@ -247,8 +260,9 @@ norms:
   dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
-  implementation_mode: missing
-  implementation_refs: []
+  implementation_mode: applicability_question
+  implementation_refs:
+  - AIA-CQ-TERRITORIAL
   implementation_reason: ''
   verification_mode: answered_by_classification
   review:
@@ -426,6 +440,7 @@ norms:
   detection_channels:
   - semantic_legal_effect
   - deeming_or_consequence
+  - existing_implementation
   primary_spans:
   - AIA-TEXT-A002-P011
   qualifier_spans: []
@@ -439,8 +454,9 @@ norms:
   dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
-  implementation_mode: missing
-  implementation_refs: []
+  implementation_mode: applicability_question
+  implementation_refs:
+  - AIA-CQ-SCOPE
   implementation_reason: ''
   verification_mode: answered_by_classification
   review:
@@ -466,6 +482,7 @@ norms:
   detection_channels:
   - semantic_legal_effect
   - deeming_or_consequence
+  - existing_implementation
   primary_spans:
   - AIA-TEXT-A002-P012
   qualifier_spans: []
@@ -480,8 +497,9 @@ norms:
   dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
-  implementation_mode: missing
-  implementation_refs: []
+  implementation_mode: applicability_question
+  implementation_refs:
+  - AIA-CQ-SCOPE
   implementation_reason: ''
   verification_mode: answered_by_classification
   review:
@@ -511,6 +529,7 @@ norms:
   detection_channels:
   - semantic_legal_effect
   - deeming_or_consequence
+  - existing_implementation
   primary_spans:
   - AIA-TEXT-A002-P013
   qualifier_spans: []
@@ -528,8 +547,9 @@ norms:
   dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
-  implementation_mode: missing
-  implementation_refs: []
+  implementation_mode: applicability_question
+  implementation_refs:
+  - AIA-CQ-SCOPE
   implementation_reason: ''
   verification_mode: answered_by_classification
   review:
@@ -597,6 +617,7 @@ norms:
   detection_channels:
   - semantic_legal_effect
   - deeming_or_consequence
+  - existing_implementation
   primary_spans:
   - AIA-TEXT-A002-P015
   qualifier_spans: []
@@ -610,8 +631,9 @@ norms:
   dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
-  implementation_mode: missing
-  implementation_refs: []
+  implementation_mode: applicability_question
+  implementation_refs:
+  - AIA-CQ-SCOPE
   implementation_reason: ''
   verification_mode: answered_by_classification
   review:
@@ -727,6 +749,7 @@ norms:
   detection_channels:
   - semantic_legal_effect
   - deeming_or_consequence
+  - existing_implementation
   primary_spans:
   - AIA-TEXT-A002-P017
   qualifier_spans: []
@@ -739,8 +762,9 @@ norms:
   dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
-  implementation_mode: missing
-  implementation_refs: []
+  implementation_mode: applicability_question
+  implementation_refs:
+  - AIA-CQ-SCOPE
   implementation_reason: ''
   verification_mode: answered_by_classification
   review:
@@ -807,6 +831,7 @@ norms:
   - shall_token
   - deeming_or_consequence
   - cross_reference_structure
+  - existing_implementation
   primary_spans:
   - AIA-TEXT-A002-P017
   qualifier_spans: []
@@ -820,8 +845,9 @@ norms:
     detail: This norm limits the exclusion stated earlier in the same paragraph.
   product_scope: in_scope
   product_scope_reason: ''
-  implementation_mode: missing
-  implementation_refs: []
+  implementation_mode: applicability_question
+  implementation_refs:
+  - AIA-CQ-SCOPE
   implementation_reason: ''
   verification_mode: answered_by_classification
   review:
@@ -887,6 +913,7 @@ norms:
   detection_channels:
   - semantic_legal_effect
   - deeming_or_consequence
+  - existing_implementation
   primary_spans:
   - AIA-TEXT-A002-P019
   qualifier_spans: []
@@ -900,8 +927,9 @@ norms:
   dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
-  implementation_mode: missing
-  implementation_refs: []
+  implementation_mode: applicability_question
+  implementation_refs:
+  - AIA-CQ-SCOPE
   implementation_reason: ''
   verification_mode: answered_by_classification
   review:
@@ -999,6 +1027,7 @@ norms:
   - semantic_legal_effect
   - deeming_or_consequence
   - cross_reference_structure
+  - existing_implementation
   primary_spans:
   - AIA-TEXT-A002-P021
   qualifier_spans: []
@@ -1020,8 +1049,9 @@ norms:
     detail: Article 50 determines one exception but has not yet been completely semantically reviewed.
   product_scope: in_scope
   product_scope_reason: ''
-  implementation_mode: missing
-  implementation_refs: []
+  implementation_mode: applicability_question
+  implementation_refs:
+  - AIA-CQ-SCOPE
   implementation_reason: ''
   verification_mode: answered_by_classification
   review:

@@ -18,6 +18,7 @@ norms:
   detection_channels:
   - semantic_legal_effect
   - cross_reference_structure
+  - existing_implementation
   primary_spans:
   - AIA-TEXT-A005-P002
   qualifier_spans:
@@ -34,8 +35,9 @@ norms:
   dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
-  implementation_mode: missing
-  implementation_refs: []
+  implementation_mode: applicability_question
+  implementation_refs:
+  - AIA-CQ-PROHIBITED
   implementation_reason: ''
   verification_mode: answered_by_classification
   review:
@@ -63,6 +65,7 @@ norms:
   detection_channels:
   - semantic_legal_effect
   - cross_reference_structure
+  - existing_implementation
   primary_spans:
   - AIA-TEXT-A005-P003
   qualifier_spans:
@@ -79,8 +82,9 @@ norms:
   dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
-  implementation_mode: missing
-  implementation_refs: []
+  implementation_mode: applicability_question
+  implementation_refs:
+  - AIA-CQ-PROHIBITED
   implementation_reason: ''
   verification_mode: answered_by_classification
   review:
@@ -108,6 +112,7 @@ norms:
   detection_channels:
   - semantic_legal_effect
   - cross_reference_structure
+  - existing_implementation
   primary_spans:
   - AIA-TEXT-A005-P004
   qualifier_spans:
@@ -132,8 +137,9 @@ norms:
   dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
-  implementation_mode: missing
-  implementation_refs: []
+  implementation_mode: applicability_question
+  implementation_refs:
+  - AIA-CQ-PROHIBITED
   implementation_reason: ''
   verification_mode: answered_by_classification
   review:
@@ -159,6 +165,7 @@ norms:
   detection_channels:
   - semantic_legal_effect
   - cross_reference_structure
+  - existing_implementation
   primary_spans:
   - AIA-TEXT-A005-P005
   qualifier_spans:
@@ -185,8 +192,9 @@ norms:
     detail: National law determines whether the express defence applies.
   product_scope: in_scope
   product_scope_reason: ''
-  implementation_mode: missing
-  implementation_refs: []
+  implementation_mode: applicability_question
+  implementation_refs:
+  - AIA-CQ-PROHIBITED
   implementation_reason: ''
   verification_mode: answered_by_classification
   review:
@@ -213,6 +221,7 @@ norms:
   detection_channels:
   - semantic_legal_effect
   - cross_reference_structure
+  - existing_implementation
   primary_spans:
   - AIA-TEXT-A005-P006
   qualifier_spans:
@@ -230,8 +239,9 @@ norms:
   dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
-  implementation_mode: missing
-  implementation_refs: []
+  implementation_mode: applicability_question
+  implementation_refs:
+  - AIA-CQ-PROHIBITED
   implementation_reason: ''
   verification_mode: answered_by_classification
   review:
@@ -258,6 +268,7 @@ norms:
   detection_channels:
   - semantic_legal_effect
   - cross_reference_structure
+  - existing_implementation
   primary_spans:
   - AIA-TEXT-A005-P009
   qualifier_spans:
@@ -271,8 +282,9 @@ norms:
   dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
-  implementation_mode: missing
-  implementation_refs: []
+  implementation_mode: applicability_question
+  implementation_refs:
+  - AIA-CQ-PROHIBITED
   implementation_reason: ''
   verification_mode: answered_by_classification
   review:
@@ -298,6 +310,7 @@ norms:
   detection_channels:
   - semantic_legal_effect
   - cross_reference_structure
+  - existing_implementation
   primary_spans:
   - AIA-TEXT-A005-P010
   qualifier_spans:
@@ -309,8 +322,9 @@ norms:
   dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
-  implementation_mode: missing
-  implementation_refs: []
+  implementation_mode: applicability_question
+  implementation_refs:
+  - AIA-CQ-PROHIBITED
   implementation_reason: ''
   verification_mode: answered_by_classification
   review:
@@ -337,6 +351,7 @@ norms:
   detection_channels:
   - semantic_legal_effect
   - cross_reference_structure
+  - existing_implementation
   primary_spans:
   - AIA-TEXT-A005-P011
   qualifier_spans:
@@ -349,8 +364,9 @@ norms:
   dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
-  implementation_mode: missing
-  implementation_refs: []
+  implementation_mode: applicability_question
+  implementation_refs:
+  - AIA-CQ-PROHIBITED
   implementation_reason: ''
   verification_mode: answered_by_classification
   review:
@@ -377,6 +393,7 @@ norms:
   detection_channels:
   - semantic_legal_effect
   - cross_reference_structure
+  - existing_implementation
   primary_spans:
   - AIA-TEXT-A005-P012
   qualifier_spans:
@@ -393,8 +410,9 @@ norms:
     detail: Article 3(40) defines biometric categorisation systems.
   product_scope: in_scope
   product_scope_reason: ''
-  implementation_mode: missing
-  implementation_refs: []
+  implementation_mode: applicability_question
+  implementation_refs:
+  - AIA-CQ-PROHIBITED
   implementation_reason: ''
   verification_mode: answered_by_classification
   review:
@@ -420,6 +438,7 @@ norms:
   detection_channels:
   - semantic_legal_effect
   - cross_reference_structure
+  - existing_implementation
   primary_spans:
   - AIA-TEXT-A005-P013
   qualifier_spans:
@@ -448,8 +467,9 @@ norms:
       reviewed.
   product_scope: in_scope
   product_scope_reason: ''
-  implementation_mode: missing
-  implementation_refs: []
+  implementation_mode: applicability_question
+  implementation_refs:
+  - AIA-CQ-PROHIBITED
   implementation_reason: ''
   verification_mode: answered_by_classification
   review:
@@ -518,6 +538,7 @@ norms:
   - semantic_legal_effect
   - deeming_or_consequence
   - cross_reference_structure
+  - existing_implementation
   primary_spans:
   - AIA-TEXT-A005-P019
   qualifier_spans:
@@ -541,8 +562,9 @@ norms:
     detail: This norm limits market placement and service under point (bb).
   product_scope: in_scope
   product_scope_reason: ''
-  implementation_mode: missing
-  implementation_refs: []
+  implementation_mode: applicability_question
+  implementation_refs:
+  - AIA-CQ-PROHIBITED
   implementation_reason: ''
   verification_mode: answered_by_classification
   review:
@@ -569,6 +591,7 @@ norms:
   - semantic_legal_effect
   - deeming_or_consequence
   - cross_reference_structure
+  - existing_implementation
   primary_spans:
   - AIA-TEXT-A005-P022
   qualifier_spans:
@@ -588,8 +611,9 @@ norms:
     detail: This norm limits use under point (bb).
   product_scope: in_scope
   product_scope_reason: ''
-  implementation_mode: missing
-  implementation_refs: []
+  implementation_mode: applicability_question
+  implementation_refs:
+  - AIA-CQ-PROHIBITED
   implementation_reason: ''
   verification_mode: answered_by_classification
   review:
@@ -617,6 +641,7 @@ norms:
   - shall_token
   - deeming_or_consequence
   - cross_reference_structure
+  - existing_implementation
   primary_spans:
   - AIA-TEXT-A005-P023
   qualifier_spans: []
@@ -632,8 +657,9 @@ norms:
     detail: This consequence narrows what constitutes manipulation under point (ba).
   product_scope: in_scope
   product_scope_reason: ''
-  implementation_mode: missing
-  implementation_refs: []
+  implementation_mode: applicability_question
+  implementation_refs:
+  - AIA-CQ-PROHIBITED
   implementation_reason: ''
   verification_mode: answered_by_classification
   review:

@@ -12,6 +12,9 @@ records:
   - dependency_ref: AIA-NORM-A006-P1-ANNEX-I-HIGH-RISK
     resolution: internal_resolved
     detail: Article 6(1) gives high-risk legal effect to the Annex I product listing when its cumulative conditions are met.
+  implementation_mode: applicability_question
+  implementation_refs:
+  - AIA-CQ-ANNEX-I
 - norm_id: AIA-NORM-ANNEX-I-02-TOY-SAFETY
   source: ANNEX-I-P003
   qualifier_spans: [ANNEX-I-P001]
@@ -22,6 +25,9 @@ records:
   kind: applicability
   verification_mode: answered_by_classification
   dependencies: *article6_dependency
+  implementation_mode: applicability_question
+  implementation_refs:
+  - AIA-CQ-ANNEX-I
 - norm_id: AIA-NORM-ANNEX-I-03-RECREATIONAL-CRAFT
   source: ANNEX-I-P004
   qualifier_spans: [ANNEX-I-P001]
@@ -32,6 +38,9 @@ records:
   kind: applicability
   verification_mode: answered_by_classification
   dependencies: *article6_dependency
+  implementation_mode: applicability_question
+  implementation_refs:
+  - AIA-CQ-ANNEX-I
 - norm_id: AIA-NORM-ANNEX-I-04-LIFTS
   source: ANNEX-I-P005
   qualifier_spans: [ANNEX-I-P001]
@@ -42,6 +51,9 @@ records:
   kind: applicability
   verification_mode: answered_by_classification
   dependencies: *article6_dependency
+  implementation_mode: applicability_question
+  implementation_refs:
+  - AIA-CQ-ANNEX-I
 - norm_id: AIA-NORM-ANNEX-I-05-EXPLOSIVE-ATMOSPHERES
   source: ANNEX-I-P006
   qualifier_spans: [ANNEX-I-P001]
@@ -52,6 +64,9 @@ records:
   kind: applicability
   verification_mode: answered_by_classification
   dependencies: *article6_dependency
+  implementation_mode: applicability_question
+  implementation_refs:
+  - AIA-CQ-ANNEX-I
 - norm_id: AIA-NORM-ANNEX-I-06-RADIO-EQUIPMENT
   source: ANNEX-I-P007
   qualifier_spans: [ANNEX-I-P001]
@@ -62,6 +77,9 @@ records:
   kind: applicability
   verification_mode: answered_by_classification
   dependencies: *article6_dependency
+  implementation_mode: applicability_question
+  implementation_refs:
+  - AIA-CQ-ANNEX-I
 - norm_id: AIA-NORM-ANNEX-I-07-PRESSURE-EQUIPMENT
   source: ANNEX-I-P008
   qualifier_spans: [ANNEX-I-P001]
@@ -72,6 +90,9 @@ records:
   kind: applicability
   verification_mode: answered_by_classification
   dependencies: *article6_dependency
+  implementation_mode: applicability_question
+  implementation_refs:
+  - AIA-CQ-ANNEX-I
 - norm_id: AIA-NORM-ANNEX-I-08-CABLEWAYS
   source: ANNEX-I-P009
   qualifier_spans: [ANNEX-I-P001]
@@ -82,6 +103,9 @@ records:
   kind: applicability
   verification_mode: answered_by_classification
   dependencies: *article6_dependency
+  implementation_mode: applicability_question
+  implementation_refs:
+  - AIA-CQ-ANNEX-I
 - norm_id: AIA-NORM-ANNEX-I-09-PERSONAL-PROTECTIVE-EQUIPMENT
   source: ANNEX-I-P010
   qualifier_spans: [ANNEX-I-P001]
@@ -92,6 +116,9 @@ records:
   kind: applicability
   verification_mode: answered_by_classification
   dependencies: *article6_dependency
+  implementation_mode: applicability_question
+  implementation_refs:
+  - AIA-CQ-ANNEX-I
 - norm_id: AIA-NORM-ANNEX-I-10-GAS-APPLIANCES
   source: ANNEX-I-P011
   qualifier_spans: [ANNEX-I-P001]
@@ -102,6 +129,9 @@ records:
   kind: applicability
   verification_mode: answered_by_classification
   dependencies: *article6_dependency
+  implementation_mode: applicability_question
+  implementation_refs:
+  - AIA-CQ-ANNEX-I
 - norm_id: AIA-NORM-ANNEX-I-11-MEDICAL-DEVICES
   source: ANNEX-I-P012
   qualifier_spans: [ANNEX-I-P001]
@@ -112,6 +142,9 @@ records:
   kind: applicability
   verification_mode: answered_by_classification
   dependencies: *article6_dependency
+  implementation_mode: applicability_question
+  implementation_refs:
+  - AIA-CQ-ANNEX-I
 - norm_id: AIA-NORM-ANNEX-I-12-IN-VITRO-DIAGNOSTICS
   source: ANNEX-I-P013
   qualifier_spans: [ANNEX-I-P001]
@@ -122,6 +155,9 @@ records:
   kind: applicability
   verification_mode: answered_by_classification
   dependencies: *article6_dependency
+  implementation_mode: applicability_question
+  implementation_refs:
+  - AIA-CQ-ANNEX-I
 - norm_id: AIA-NORM-ANNEX-I-13-AVIATION-SECURITY
   source: ANNEX-I-P015
   qualifier_spans: [ANNEX-I-P014]
@@ -132,6 +168,9 @@ records:
   kind: applicability
   verification_mode: answered_by_classification
   dependencies: *article6_dependency
+  implementation_mode: applicability_question
+  implementation_refs:
+  - AIA-CQ-ANNEX-I
 - norm_id: AIA-NORM-ANNEX-I-14-L-CATEGORY-VEHICLES
   source: ANNEX-I-P016
   qualifier_spans: [ANNEX-I-P014]
@@ -142,6 +181,9 @@ records:
   kind: applicability
   verification_mode: answered_by_classification
   dependencies: *article6_dependency
+  implementation_mode: applicability_question
+  implementation_refs:
+  - AIA-CQ-ANNEX-I
 - norm_id: AIA-NORM-ANNEX-I-15-AGRICULTURAL-FORESTRY-VEHICLES
   source: ANNEX-I-P017
   qualifier_spans: [ANNEX-I-P014]
@@ -152,6 +194,9 @@ records:
   kind: applicability
   verification_mode: answered_by_classification
   dependencies: *article6_dependency
+  implementation_mode: applicability_question
+  implementation_refs:
+  - AIA-CQ-ANNEX-I
 - norm_id: AIA-NORM-ANNEX-I-16-MARINE-EQUIPMENT
   source: ANNEX-I-P018
   qualifier_spans: [ANNEX-I-P014]
@@ -162,6 +207,9 @@ records:
   kind: applicability
   verification_mode: answered_by_classification
   dependencies: *article6_dependency
+  implementation_mode: applicability_question
+  implementation_refs:
+  - AIA-CQ-ANNEX-I
 - norm_id: AIA-NORM-ANNEX-I-17-RAIL-INTEROPERABILITY
   source: ANNEX-I-P019
   qualifier_spans: [ANNEX-I-P014]
@@ -172,6 +220,9 @@ records:
   kind: applicability
   verification_mode: answered_by_classification
   dependencies: *article6_dependency
+  implementation_mode: applicability_question
+  implementation_refs:
+  - AIA-CQ-ANNEX-I
 - norm_id: AIA-NORM-ANNEX-I-18-MOTOR-VEHICLE-APPROVAL
   source: ANNEX-I-P020
   qualifier_spans: [ANNEX-I-P014]
@@ -182,6 +233,9 @@ records:
   kind: applicability
   verification_mode: answered_by_classification
   dependencies: *article6_dependency
+  implementation_mode: applicability_question
+  implementation_refs:
+  - AIA-CQ-ANNEX-I
 - norm_id: AIA-NORM-ANNEX-I-19-MOTOR-VEHICLE-GENERAL-SAFETY
   source: ANNEX-I-P021
   qualifier_spans: [ANNEX-I-P014]
@@ -192,6 +246,9 @@ records:
   kind: applicability
   verification_mode: answered_by_classification
   dependencies: *article6_dependency
+  implementation_mode: applicability_question
+  implementation_refs:
+  - AIA-CQ-ANNEX-I
 - norm_id: AIA-NORM-ANNEX-I-20-UNMANNED-AIRCRAFT
   source: ANNEX-I-P022
   qualifier_spans: [ANNEX-I-P014]
@@ -204,6 +261,9 @@ records:
   conditions:
   - the product concerns the design, production, or placing on the market of unmanned aircraft referred to in Article 2(1)(a) or (b) of Regulation (EU) 2018/1139, or their engines, propellers, parts, or remote-control equipment
   dependencies: *article6_dependency
+  implementation_mode: applicability_question
+  implementation_refs:
+  - AIA-CQ-ANNEX-I
 - norm_id: AIA-NORM-ANNEX-I-21-MACHINERY-REGULATION
   source: ANNEX-I-P023
   qualifier_spans: [ANNEX-I-P014]
@@ -214,3 +274,6 @@ records:
   kind: applicability
   verification_mode: answered_by_classification
   dependencies: *article6_dependency
+  implementation_mode: applicability_question
+  implementation_refs:
+  - AIA-CQ-ANNEX-I
