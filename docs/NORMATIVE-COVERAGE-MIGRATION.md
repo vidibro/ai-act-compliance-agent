@@ -862,6 +862,21 @@ is applied. The remaining work is the unflagged-source semantic pass, which a he
 close. Independently review the four proposed source segments in Annex VIII;
 exactly retained content still needs optional/conditional field semantics. Apply only confirmed
 user provenance to authored `segments/` records and regenerate derived artifacts. Keep codex audit
-findings distinct from user approvals. Measure norm-review throughput and resolve the four
+findings distinct from user approvals. Measure norm-review throughput and resolve the remaining
 `unresolved` implementation modes alongside assurance work; do not compile new runtime rules from
 known defective norm records.
+
+### Open debt: a shared requirement cites only one provision
+
+Where several provisions state the same requirement, a report should say so — breaching one
+Section 2 duty ordinarily breaches Article 8(1) and Article 16(a) with it, and a reader planning
+remediation needs every provision they answer to.
+
+The ledger records the overlap: `carried_by_norm_ids` names the carrier for 20 restatements, and
+65 of the 91 policy rules are the implementation target of more than one norm, covering 369 norms
+in all. `AIA-HR-A09` alone carries norms from Articles 8, 9 and 16.
+
+Nothing surfaces it. `PolicyRule.source` is a single `LegalSource`, so a verdict cites one article,
+and the norm layer is not imported by the pipeline at all — this is a runtime change, not a ledger
+one. Closing it means giving a rule the provisions it answers to and rendering them together, which
+also serves `Report-surfacing coverage` above.

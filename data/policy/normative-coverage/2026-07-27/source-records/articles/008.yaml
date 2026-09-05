@@ -9,15 +9,15 @@ records:
   subject_ref: provider
   subject_category: supported_operator
   kind: obligation
-  implementation_mode: unresolved
-  implementation_reason: The detailed Article 9 to 15 norms must be authored before this Section 2 chapeau
-    can receive complete carrier links.
+  implementation_mode: carried_by_other_norm
+  implementation_reason: The Article 16(a) provider duty states the same Section 2 compliance requirement
+    and carries the substantive checks, so reporting both would duplicate every Section 2 finding.
   verification_mode: not_reported
   dependencies:
   - dependency_ref: Articles 9 to 15 of this Regulation
     resolution: unresolved
-    detail: Articles 9 to 15 supply the detailed high-risk AI-system requirements and have not all been
-      semantically reviewed.
+    detail: Articles 9 to 15 supply the detailed high-risk AI-system requirements. All are reviewed;
+      the reference names a range of articles rather than one norm, so it resolves to no single target.
 - norm_id: AIA-NORM-A008-P1-CONSIDER-RISK-MANAGEMENT
   source: A008-P001
   quote: The risk management system referred to in Article 9 shall be taken into account when ensuring

@@ -21,7 +21,7 @@ from aiact.text_segments import corpus_documents, group_segments, load_source_bo
 
 ROOT = Path(__file__).resolve().parents[1]
 
-UNCARRIED_UNREPORTED_NORMS = {"AIA-NORM-A008-P1-COMPLY-SECTION-REQUIREMENTS"}
+UNCARRIED_UNREPORTED_NORMS: set[str] = set()
 
 
 @pytest.fixture(scope="module")
@@ -897,9 +897,9 @@ def test_article_eight_links_product_compliance_without_overclaiming_carriers():
     assert len(norms) == 4
     assert sum(norm.kind.value == "obligation" for norm in norms.values()) == 3
     assert sum(norm.kind.value == "permission" for norm in norms.values()) == 1
-    assert norms["AIA-NORM-A008-P1-COMPLY-SECTION-REQUIREMENTS"].implementation_mode.value == (
-        "unresolved"
-    )
+    chapeau = norms["AIA-NORM-A008-P1-COMPLY-SECTION-REQUIREMENTS"]
+    assert chapeau.implementation_mode.value == "carried_by_other_norm"
+    assert chapeau.carried_by_norm_ids == ["AIA-NORM-A016-A-SECTION-2-COMPLIANCE"]
     assert norms["AIA-NORM-A008-P2-ENSURE-PRODUCT-COMPLIANCE"].implementation_refs == [
         "AIA-PO-A08-2"
     ]
@@ -1953,7 +1953,6 @@ def test_metrics_expose_many_to_many_and_implementation_debt(metrics):
         "AIA-NORM-A006-P4-DOCUMENT-ASSESSMENT",
         "AIA-NORM-A006-P4-PROVIDE-ASSESSMENT",
         "AIA-NORM-A006-P4-REGISTER-SYSTEM",
-        "AIA-NORM-A008-P1-COMPLY-SECTION-REQUIREMENTS",
         "AIA-NORM-A011-P1-SIMPLIFY",
         "AIA-NORM-A025-P5-PROTECT-RIGHTS-AND-SECRETS",
         "AIA-NORM-A036-P8-B-PROVIDER-REPLACEMENT-CONFIRMATION",
