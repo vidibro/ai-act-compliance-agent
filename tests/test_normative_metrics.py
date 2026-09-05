@@ -1808,12 +1808,12 @@ def test_semantic_pass_finds_propositions_a_shall_scan_misses(metrics):
 
 def test_metrics_expose_many_to_many_and_implementation_debt(metrics):
     assert metrics.normative_segments_with_multiple_norms == 382
-    assert metrics.mapping_shape.one_norm_to_one_target == 29
-    assert metrics.mapping_shape.many_norms_to_one_target == 454
+    assert metrics.mapping_shape.one_norm_to_one_target == 30
+    assert metrics.mapping_shape.many_norms_to_one_target == 459
     assert metrics.mapping_shape.one_norm_to_many_targets == 1
     assert metrics.mapping_shape.many_to_many == 16
-    assert metrics.mapping_shape.unmapped == 987
-    assert metrics.semantic_vs_existing_implementation_disagreements == 135
+    assert metrics.mapping_shape.unmapped == 981
+    assert metrics.semantic_vs_existing_implementation_disagreements == 129
     assert metrics.semantic_norms_without_existing_implementation == [
         "AIA-NORM-A002-P13-LIMIT-HIGH-RISK-REQUIREMENTS",
         "AIA-NORM-A002-P2-INTEGRATED-SANDBOX-PROVISIONS",
@@ -1910,9 +1910,6 @@ def test_metrics_expose_many_to_many_and_implementation_debt(metrics):
         "AIA-NORM-A061-P2-DOCUMENT-AND-COPY-CONSENT",
         "AIA-NORM-A061-P2-GIVE-CONSENT-COPY",
         "AIA-NORM-A063-P1-SIMPLIFIED-SME-QUALITY-MANAGEMENT",
-        "AIA-NORM-A071-P2-PROVIDER-ENTER-ANNEX-VIII-DATA",
-        "AIA-NORM-A071-P2-REPRESENTATIVE-ENTER-ANNEX-VIII-DATA",
-        "AIA-NORM-A071-P3-PUBLIC-DEPLOYER-ENTER-ANNEX-VIII-DATA",
         "AIA-NORM-A075A-P3-VOLUNTARY-REPLY-CORRECTNESS",
         "AIA-NORM-A075C-P3-DESCRIBE-IMPLEMENTED-MEASURES",
         "AIA-NORM-A111-P1-BRING-LARGE-SCALE-IT-INTO-COMPLIANCE",
@@ -1930,9 +1927,6 @@ def test_metrics_expose_many_to_many_and_implementation_debt(metrics):
         "AIA-NORM-ANNEX-VII-OVERVIEW-QMS-EXAMINATION",
         "AIA-NORM-ANNEX-VII-OVERVIEW-QMS-SURVEILLANCE",
         "AIA-NORM-ANNEX-VII-PROCEDURE-COMPOSITION",
-        "AIA-NORM-ANNEX-VIII-A",
-        "AIA-NORM-ANNEX-VIII-B",
-        "AIA-NORM-ANNEX-VIII-C",
         "AIA-NORM-ANNEX-X-ECRIS-TCN",
         "AIA-NORM-ANNEX-X-ENTRY-EXIT-SYSTEM",
         "AIA-NORM-ANNEX-X-ETIAS",
@@ -2034,9 +2028,6 @@ def test_metrics_expose_many_to_many_and_implementation_debt(metrics):
         "AIA-NORM-A061-P2-DOCUMENT-AND-COPY-CONSENT",
         "AIA-NORM-A061-P2-GIVE-CONSENT-COPY",
         "AIA-NORM-A063-P1-SIMPLIFIED-SME-QUALITY-MANAGEMENT",
-        "AIA-NORM-A071-P2-PROVIDER-ENTER-ANNEX-VIII-DATA",
-        "AIA-NORM-A071-P2-REPRESENTATIVE-ENTER-ANNEX-VIII-DATA",
-        "AIA-NORM-A071-P3-PUBLIC-DEPLOYER-ENTER-ANNEX-VIII-DATA",
         "AIA-NORM-A075A-P3-VOLUNTARY-REPLY-CORRECTNESS",
         "AIA-NORM-A075C-P3-DESCRIBE-IMPLEMENTED-MEASURES",
         "AIA-NORM-A111-P1-BRING-LARGE-SCALE-IT-INTO-COMPLIANCE",
@@ -2051,9 +2042,6 @@ def test_metrics_expose_many_to_many_and_implementation_debt(metrics):
         "AIA-NORM-ANNEX-VII-OVERVIEW-QMS-EXAMINATION",
         "AIA-NORM-ANNEX-VII-OVERVIEW-QMS-SURVEILLANCE",
         "AIA-NORM-ANNEX-VII-PROCEDURE-COMPOSITION",
-        "AIA-NORM-ANNEX-VIII-A",
-        "AIA-NORM-ANNEX-VIII-B",
-        "AIA-NORM-ANNEX-VIII-C",
         "AIA-NORM-ANNEX-X-ECRIS-TCN",
         "AIA-NORM-ANNEX-X-ENTRY-EXIT-SYSTEM",
         "AIA-NORM-ANNEX-X-ETIAS",
@@ -3717,7 +3705,9 @@ def test_article_seventy_one_extracts_database_and_data_entry_duties():
     assert all(segment.review.status.value == "approved" for segment in segments)
     assert all(segment.review.verified_by == "codex" for segment in segments)
     assert len(norms) == 13
-    assert sum(norm.implementation_mode.value == "missing" for norm in norms.values()) == 3
+    entry = [norm for norm in norms.values() if "ENTER-ANNEX-VIII-DATA" in norm.norm_id]
+    assert len(entry) == 3
+    assert all(norm.implementation_mode.value == "compliance_rule" for norm in entry)
     assert len(norms["AIA-NORM-A071-P5-DATABASE-DATA-MINIMISATION"].mandatory_content) == 2
 
     # Setting up the database and the two consultations happen at different stages.

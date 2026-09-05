@@ -7,7 +7,8 @@ records:
     law-enforcement, migration, asylum and border-control systems, and entry 13 is optional
   subject_ref: provider
   subject_category: supported_operator
-  implementation_mode: unresolved
+  implementation_refs:
+  - AIA-PO-A71-2
   verification_mode: reported_not_judged
   exceptions:
   - entry 12 only, the electronic instructions for use are not provided for high-risk AI systems in
@@ -21,7 +22,8 @@ records:
     apply only where their enacted condition is met
   subject_ref: provider
   subject_category: supported_operator
-  implementation_mode: unresolved
+  implementation_refs:
+  - AIA-NHR-A71-2
   verification_mode: reported_not_judged
   mandatory_content_source: numbered_items
 - norm_id: AIA-NORM-ANNEX-VIII-C
@@ -30,6 +32,7 @@ records:
   action: submit and maintain the Section C deployer registration information
   subject_ref: deployer
   subject_category: supported_operator
-  implementation_mode: unresolved
+  implementation_refs:
+  - AIA-DP-A71-3
   verification_mode: reported_not_judged
   mandatory_content_source: numbered_items

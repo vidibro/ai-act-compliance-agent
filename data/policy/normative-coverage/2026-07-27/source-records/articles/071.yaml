@@ -47,6 +47,8 @@ records:
   action: enter the applicable Annex VIII Sections A and B data into the EU database
   subject_ref: provider
   subject_category: supported_operator
+  implementation_refs:
+  - AIA-PO-A71-2
   verification_mode: reported_not_judged
 - norm_id: AIA-NORM-A071-P2-REPRESENTATIVE-ENTER-ANNEX-VIII-DATA
   source: A071-P002
@@ -55,6 +57,8 @@ records:
   subject_ref: authorised_representative
   subject_category: supported_operator
   conditions: [the authorised representative is applicable for the data entry]
+  implementation_refs:
+  - AIA-PO-A71-2
   verification_mode: reported_not_judged
 - norm_id: AIA-NORM-A071-P3-PUBLIC-DEPLOYER-ENTER-ANNEX-VIII-DATA
   source: A071-P003
@@ -63,6 +67,8 @@ records:
   subject_ref: public_authority_deployer
   subject_category: supported_operator
   conditions: [the deployer is or acts for a public authority agency or body]
+  implementation_refs:
+  - AIA-DP-A71-3
   verification_mode: reported_not_judged
 - norm_id: AIA-NORM-A071-P4-DATABASE-ACCESS-RULES
   source: A071-P004

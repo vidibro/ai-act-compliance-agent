@@ -1151,10 +1151,10 @@ rule selection, judging, or reporting.
 - Normative segments supporting multiple propositions: 382
 - Semantic candidates a shall-token pass missed: 572
 - Shall-token candidate recall: 61.5%
-- In-scope semantic candidates absent from existing implementation: 135
-- Detection-channel counts: cross_reference_structure=488, deeming_or_consequence=280, existing_implementation=500, other_modal=156, semantic_legal_effect=1487, shall_token=915
-- Mapping shapes, by norm: one-to-one=29, many-to-one=454, one-to-many=1, many-to-many=16, unmapped=987
-- Implementation debt candidates: 114
+- In-scope semantic candidates absent from existing implementation: 129
+- Detection-channel counts: cross_reference_structure=488, deeming_or_consequence=280, existing_implementation=506, other_modal=156, semantic_legal_effect=1487, shall_token=915
+- Mapping shapes, by norm: one-to-one=30, many-to-one=459, one-to-many=1, many-to-many=16, unmapped=981
+- Implementation debt candidates: 108
 - Interpretive links to non-binding guidance: 1
 - Review records with measured elapsed time: 0/2993
 

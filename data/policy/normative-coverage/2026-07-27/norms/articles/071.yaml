@@ -126,6 +126,7 @@ norms:
   detection_channels:
   - semantic_legal_effect
   - shall_token
+  - existing_implementation
   primary_spans:
   - AIA-TEXT-A071-P002
   qualifier_spans: []
@@ -136,8 +137,9 @@ norms:
   dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
-  implementation_mode: missing
-  implementation_refs: []
+  implementation_mode: compliance_rule
+  implementation_refs:
+  - AIA-PO-A71-2
   implementation_reason: ''
   verification_mode: reported_not_judged
   review:
@@ -162,6 +164,7 @@ norms:
   detection_channels:
   - semantic_legal_effect
   - shall_token
+  - existing_implementation
   primary_spans:
   - AIA-TEXT-A071-P002
   qualifier_spans: []
@@ -173,8 +176,9 @@ norms:
   dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
-  implementation_mode: missing
-  implementation_refs: []
+  implementation_mode: compliance_rule
+  implementation_refs:
+  - AIA-PO-A71-2
   implementation_reason: ''
   verification_mode: reported_not_judged
   review:
@@ -199,6 +203,7 @@ norms:
   detection_channels:
   - semantic_legal_effect
   - shall_token
+  - existing_implementation
   primary_spans:
   - AIA-TEXT-A071-P003
   qualifier_spans: []
@@ -210,8 +215,9 @@ norms:
   dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
-  implementation_mode: missing
-  implementation_refs: []
+  implementation_mode: compliance_rule
+  implementation_refs:
+  - AIA-DP-A71-3
   implementation_reason: ''
   verification_mode: reported_not_judged
   review:
