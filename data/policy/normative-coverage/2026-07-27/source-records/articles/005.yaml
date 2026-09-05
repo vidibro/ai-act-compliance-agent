@@ -413,11 +413,13 @@ records:
   subject_ref: law_enforcement_authority
   subject_category: public_authority
   kind: obligation
-  verification_mode: judged_by_gap_analysis
+  verification_mode: reported_not_judged
   dependencies:
   - dependency_ref: Article 27 of this Regulation
     resolution: unresolved
     detail: Article 27 defines the impact-assessment requirements and has not yet been semantically reviewed.
+  implementation_refs:
+  - AIA-DP-A05-2
 - norm_id: AIA-NORM-A005-P2-REGISTER-SYSTEM
   source: A005-P027
   quote: "The use of the \u2018 real-time \u2019 remote biometric identification system in publicly accessible\

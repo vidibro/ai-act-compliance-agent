@@ -247,7 +247,7 @@ norms:
   - AIA-PO-A43-4
   implementation_reason: The route-specific Article 43 rules carry the substantive conformity-assessment
     findings.
-  verification_mode: judged_by_gap_analysis
+  verification_mode: reported_not_judged
   review:
     status: proposed
     extracted_by: semantic-legal-effect-pass
@@ -285,7 +285,7 @@ norms:
   - AIA-PO-A47
   - AIA-PO-A47-4
   implementation_reason: The Article 47 rules carry the substantive declaration findings.
-  verification_mode: judged_by_gap_analysis
+  verification_mode: reported_not_judged
   review:
     status: proposed
     extracted_by: semantic-legal-effect-pass
@@ -325,7 +325,7 @@ norms:
   implementation_refs:
   - AIA-PO-A48
   implementation_reason: The Article 48 rule carries the substantive CE-marking finding.
-  verification_mode: judged_by_gap_analysis
+  verification_mode: reported_not_judged
   review:
     status: proposed
     extracted_by: semantic-legal-effect-pass
@@ -362,7 +362,7 @@ norms:
   implementation_refs:
   - AIA-PO-A49
   implementation_reason: The Article 49 rule carries the substantive registration finding.
-  verification_mode: judged_by_gap_analysis
+  verification_mode: reported_not_judged
   review:
     status: proposed
     extracted_by: semantic-legal-effect-pass

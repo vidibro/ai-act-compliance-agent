@@ -814,6 +814,7 @@ norms:
   - semantic_legal_effect
   - shall_token
   - cross_reference_structure
+  - existing_implementation
   primary_spans:
   - AIA-TEXT-A005-P027
   qualifier_spans: []
@@ -827,10 +828,11 @@ norms:
     detail: Article 27 defines the impact-assessment requirements and has not yet been semantically reviewed.
   product_scope: in_scope
   product_scope_reason: ''
-  implementation_mode: missing
-  implementation_refs: []
+  implementation_mode: compliance_rule
+  implementation_refs:
+  - AIA-DP-A05-2
   implementation_reason: ''
-  verification_mode: judged_by_gap_analysis
+  verification_mode: reported_not_judged
   review:
     status: proposed
     extracted_by: semantic-legal-effect-pass

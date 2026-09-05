@@ -22,10 +22,11 @@ norms:
   dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
-  implementation_mode: missing
+  implementation_mode: carried_by_other_norm
   implementation_refs: []
-  implementation_reason: ''
-  verification_mode: judged_by_gap_analysis
+  implementation_reason: The Article 48(3) affixing norm carries the CE-marking check; Article 48(1) states
+    the general principles that check applies, not a separate requirement.
+  verification_mode: not_reported
   review:
     status: proposed
     extracted_by: semantic-legal-effect-pass
@@ -35,6 +36,8 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  carried_by_norm_ids:
+  - AIA-NORM-A048-P3-AFFIX-CE-MARKING
 - norm_id: AIA-NORM-A048-P2-DIGITAL-CE-MARKING
   act_version_date: '2026-07-27'
   kind: obligation

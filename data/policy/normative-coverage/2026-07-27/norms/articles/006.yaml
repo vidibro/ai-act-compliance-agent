@@ -356,6 +356,7 @@ norms:
   - semantic_legal_effect
   - shall_token
   - cross_reference_structure
+  - existing_implementation
   primary_spans:
   - AIA-TEXT-A006-P015
   qualifier_spans: []
@@ -370,8 +371,9 @@ norms:
     detail: Article 6(3) supplies the substantive basis for the assessment.
   product_scope: in_scope
   product_scope_reason: ''
-  implementation_mode: missing
-  implementation_refs: []
+  implementation_mode: compliance_rule
+  implementation_refs:
+  - AIA-NHR-A06-4
   implementation_reason: ''
   verification_mode: judged_by_gap_analysis
   review:

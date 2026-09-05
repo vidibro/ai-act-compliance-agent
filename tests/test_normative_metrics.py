@@ -11,6 +11,7 @@ import yaml
 
 from aiact.norm_loader import load_normative_coverage
 from aiact.norm_metrics import measure_normative_coverage
+from aiact.policy_loader import load_policy_spec
 from aiact.schemas.norm import (
     ConditionGroup,
     ImplementationMode,
@@ -85,6 +86,39 @@ def test_a_classification_answered_norm_points_at_a_cascade_node():
         assert norm.verification_mode is VerificationMode.ANSWERED_BY_CLASSIFICATION, norm.norm_id
         assert norm.implementation_refs, norm.norm_id
         assert all(ref.startswith("AIA-CQ-") for ref in norm.implementation_refs), norm.norm_id
+
+
+def test_a_norm_agrees_with_the_document_verifiability_of_its_rules():
+    """A rule's `document_verifiable` already decides how the gap layer treats it: true reaches the
+    judge, false is reported as an outstanding confirmation. A norm naming that rule must say the
+    same thing, or the ledger promises a verdict the pipeline never produces.
+
+    `reported_conditionally` is exempt: a carve-out is shown conditionally whatever its rule does.
+    So is a norm whose rules disagree with each other, which the mapping does not forbid."""
+    bundle = load_normative_coverage()
+    verifiable = {rule.rule_id: rule.document_verifiable for rule in load_policy_spec().rules}
+    judged = {
+        VerificationMode.JUDGED_BY_GAP_ANALYSIS,
+        VerificationMode.REPORTED_NOT_JUDGED,
+    }
+
+    for norm in bundle.norm_inventory.norms:
+        if norm.product_scope is not ProductScope.IN_SCOPE:
+            continue
+        if norm.verification_mode not in judged:
+            continue
+        rules = [ref for ref in norm.implementation_refs if ref in verifiable]
+        if not rules or len({verifiable[ref] for ref in rules}) != 1:
+            continue
+        expected = (
+            VerificationMode.JUDGED_BY_GAP_ANALYSIS
+            if verifiable[rules[0]]
+            else VerificationMode.REPORTED_NOT_JUDGED
+        )
+        assert norm.verification_mode is expected, (
+            f"{norm.norm_id} is {norm.verification_mode.value} but {rules} are "
+            f"document_verifiable={verifiable[rules[0]]}"
+        )
 
 
 def test_an_in_scope_duty_is_never_dropped_from_the_report():
@@ -622,7 +656,7 @@ def test_article_four_literacy_norm_keeps_context_and_individual_guarantee_limit
 
     assert norm.subjects[0].subject_ref == "provider_or_deployer"
     assert norm.product_scope.value == "in_scope"
-    assert norm.implementation_mode.value == "missing"
+    assert norm.implementation_mode.value == "compliance_rule"
     assert len(norm.conditions) == 3
     assert norm.exceptions == [
         "the obligation does not require a guaranteed specific AI-literacy level for any "
@@ -1774,17 +1808,16 @@ def test_semantic_pass_finds_propositions_a_shall_scan_misses(metrics):
 
 def test_metrics_expose_many_to_many_and_implementation_debt(metrics):
     assert metrics.normative_segments_with_multiple_norms == 382
-    assert metrics.mapping_shape.one_norm_to_one_target == 26
-    assert metrics.mapping_shape.many_norms_to_one_target == 451
+    assert metrics.mapping_shape.one_norm_to_one_target == 29
+    assert metrics.mapping_shape.many_norms_to_one_target == 454
     assert metrics.mapping_shape.one_norm_to_many_targets == 1
     assert metrics.mapping_shape.many_to_many == 16
-    assert metrics.mapping_shape.unmapped == 993
-    assert metrics.semantic_vs_existing_implementation_disagreements == 141
+    assert metrics.mapping_shape.unmapped == 987
+    assert metrics.semantic_vs_existing_implementation_disagreements == 135
     assert metrics.semantic_norms_without_existing_implementation == [
         "AIA-NORM-A002-P13-LIMIT-HIGH-RISK-REQUIREMENTS",
         "AIA-NORM-A002-P2-INTEGRATED-SANDBOX-PROVISIONS",
         "AIA-NORM-A002-P2-SECTION-B-LIMIT",
-        "AIA-NORM-A004-P1-AI-LITERACY-MEASURES",
         "AIA-NORM-A004A-P1-B-REUSE-SECURITY",
         "AIA-NORM-A004A-P1-C-ACCESS-SAFEGUARDS",
         "AIA-NORM-A004A-P1-D-NO-THIRD-PARTY-ACCESS",
@@ -1792,7 +1825,6 @@ def test_metrics_expose_many_to_many_and_implementation_debt(metrics):
         "AIA-NORM-A004A-P1-F-RECORD-NECESSITY",
         "AIA-NORM-A004A-P1-HIGH-RISK-BIAS-DATA-PROCESSING",
         "AIA-NORM-A004A-P2-OTHER-SYSTEM-BIAS-DATA-PROCESSING",
-        "AIA-NORM-A005-P2-COMPLETE-FRIA",
         "AIA-NORM-A005-P2-CONFIRM-TARGETED-IDENTITY",
         "AIA-NORM-A005-P2-CONSIDER-IMPACTS",
         "AIA-NORM-A005-P2-NATIONAL-SAFEGUARDS",
@@ -1807,7 +1839,6 @@ def test_metrics_expose_many_to_many_and_implementation_debt(metrics):
         "AIA-NORM-A005-P4-EXCLUDE-SENSITIVE-DATA",
         "AIA-NORM-A005-P4-NOTIFICATION-CONTENT",
         "AIA-NORM-A005-P4-NOTIFY-AUTHORITIES",
-        "AIA-NORM-A006-P4-DOCUMENT-ASSESSMENT",
         "AIA-NORM-A006-P4-PROVIDE-ASSESSMENT",
         "AIA-NORM-A006-P4-REGISTER-SYSTEM",
         "AIA-NORM-A008-P1-COMPLY-SECTION-REQUIREMENTS",
@@ -1826,7 +1857,6 @@ def test_metrics_expose_many_to_many_and_implementation_debt(metrics):
         "AIA-NORM-A036-P8-B-PROVIDER-REPLACEMENT-CONFIRMATION",
         "AIA-NORM-A040-P1-HARMONISED-STANDARD-PRESUMPTION",
         "AIA-NORM-A041-P3-COMMON-SPECIFICATION-PRESUMPTION",
-        "AIA-NORM-A041-P5-JUSTIFY-EQUIVALENT-SOLUTIONS",
         "AIA-NORM-A042-P1-REPRESENTATIVE-DATA-PRESUMPTION",
         "AIA-NORM-A042-P2-CYBERSECURITY-CERTIFICATE-PRESUMPTION",
         "AIA-NORM-A042-P3-CYBER-RESILIENCE-DEEMING",
@@ -1838,6 +1868,7 @@ def test_metrics_expose_many_to_many_and_implementation_debt(metrics):
         "AIA-NORM-A046-P7-SECTORAL-DEROGATIONS-ONLY",
         "AIA-NORM-A048-P1-GENERAL-CE-PRINCIPLES",
         "AIA-NORM-A048-P5-OTHER-LAW-COMPLIANCE",
+        "AIA-NORM-A049-P2-PROVIDER-REGISTER-NON-HIGH-RISK",
         "AIA-NORM-A050-P3-DATA",
         "AIA-NORM-A050-P5-MANNER",
         "AIA-NORM-A052-P3-SYSTEMIC-RISK-CONSEQUENCE",
@@ -1892,9 +1923,6 @@ def test_metrics_expose_many_to_many_and_implementation_debt(metrics):
         "AIA-NORM-ANNEX-IX-REGISTRATION-INFORMATION",
         "AIA-NORM-ANNEX-V-DECLARATION-CONTENT",
         "AIA-NORM-ANNEX-VI-P1-PROCEDURE-CONTENT",
-        "AIA-NORM-ANNEX-VI-P2-VERIFY-QMS",
-        "AIA-NORM-ANNEX-VI-P3-EXAMINE-TECHNICAL-DOCUMENTATION",
-        "AIA-NORM-ANNEX-VI-P4-VERIFY-CONSISTENCY",
         "AIA-NORM-ANNEX-VII-DOC-APPLICATION",
         "AIA-NORM-ANNEX-VII-DOC-APPLICATION-CONTENT",
         "AIA-NORM-ANNEX-VII-INFORM-CHANGES",
@@ -1927,7 +1955,6 @@ def test_metrics_expose_many_to_many_and_implementation_debt(metrics):
         "AIA-NORM-A002-P13-LIMIT-HIGH-RISK-REQUIREMENTS",
         "AIA-NORM-A002-P2-INTEGRATED-SANDBOX-PROVISIONS",
         "AIA-NORM-A002-P2-SECTION-B-LIMIT",
-        "AIA-NORM-A004-P1-AI-LITERACY-MEASURES",
         "AIA-NORM-A004A-P1-B-REUSE-SECURITY",
         "AIA-NORM-A004A-P1-C-ACCESS-SAFEGUARDS",
         "AIA-NORM-A004A-P1-D-NO-THIRD-PARTY-ACCESS",
@@ -1935,7 +1962,6 @@ def test_metrics_expose_many_to_many_and_implementation_debt(metrics):
         "AIA-NORM-A004A-P1-F-RECORD-NECESSITY",
         "AIA-NORM-A004A-P1-HIGH-RISK-BIAS-DATA-PROCESSING",
         "AIA-NORM-A004A-P2-OTHER-SYSTEM-BIAS-DATA-PROCESSING",
-        "AIA-NORM-A005-P2-COMPLETE-FRIA",
         "AIA-NORM-A005-P2-CONFIRM-TARGETED-IDENTITY",
         "AIA-NORM-A005-P2-CONSIDER-IMPACTS",
         "AIA-NORM-A005-P2-NATIONAL-SAFEGUARDS",
@@ -1950,7 +1976,6 @@ def test_metrics_expose_many_to_many_and_implementation_debt(metrics):
         "AIA-NORM-A005-P4-EXCLUDE-SENSITIVE-DATA",
         "AIA-NORM-A005-P4-NOTIFICATION-CONTENT",
         "AIA-NORM-A005-P4-NOTIFY-AUTHORITIES",
-        "AIA-NORM-A006-P4-DOCUMENT-ASSESSMENT",
         "AIA-NORM-A006-P4-PROVIDE-ASSESSMENT",
         "AIA-NORM-A006-P4-REGISTER-SYSTEM",
         "AIA-NORM-A011-P1-SIMPLIFY",
@@ -1958,7 +1983,6 @@ def test_metrics_expose_many_to_many_and_implementation_debt(metrics):
         "AIA-NORM-A036-P8-B-PROVIDER-REPLACEMENT-CONFIRMATION",
         "AIA-NORM-A040-P1-HARMONISED-STANDARD-PRESUMPTION",
         "AIA-NORM-A041-P3-COMMON-SPECIFICATION-PRESUMPTION",
-        "AIA-NORM-A041-P5-JUSTIFY-EQUIVALENT-SOLUTIONS",
         "AIA-NORM-A042-P1-REPRESENTATIVE-DATA-PRESUMPTION",
         "AIA-NORM-A042-P2-CYBERSECURITY-CERTIFICATE-PRESUMPTION",
         "AIA-NORM-A042-P3-CYBER-RESILIENCE-DEEMING",
@@ -1968,8 +1992,8 @@ def test_metrics_expose_many_to_many_and_implementation_debt(metrics):
         "AIA-NORM-A044-P3-CORRECTIVE-ACTION-EXCEPTION",
         "AIA-NORM-A046-P1-COMPLETE-ASSESSMENT-PROMPTLY",
         "AIA-NORM-A046-P7-SECTORAL-DEROGATIONS-ONLY",
-        "AIA-NORM-A048-P1-GENERAL-CE-PRINCIPLES",
         "AIA-NORM-A048-P5-OTHER-LAW-COMPLIANCE",
+        "AIA-NORM-A049-P2-PROVIDER-REGISTER-NON-HIGH-RISK",
         "AIA-NORM-A050-P3-DATA",
         "AIA-NORM-A052-P3-SYSTEMIC-RISK-CONSEQUENCE",
         "AIA-NORM-A052-P5-REQUEST-CONTENT",
@@ -2020,9 +2044,6 @@ def test_metrics_expose_many_to_many_and_implementation_debt(metrics):
         "AIA-NORM-A111-P3-LEGACY-GPAI-COMPLIANCE",
         "AIA-NORM-A111-P4-LEGACY-SYNTHETIC-CONTENT-COMPLIANCE",
         "AIA-NORM-ANNEX-VI-P1-PROCEDURE-CONTENT",
-        "AIA-NORM-ANNEX-VI-P2-VERIFY-QMS",
-        "AIA-NORM-ANNEX-VI-P3-EXAMINE-TECHNICAL-DOCUMENTATION",
-        "AIA-NORM-ANNEX-VI-P4-VERIFY-CONSISTENCY",
         "AIA-NORM-ANNEX-VII-DOC-APPLICATION",
         "AIA-NORM-ANNEX-VII-DOC-APPLICATION-CONTENT",
         "AIA-NORM-ANNEX-VII-INFORM-CHANGES",
@@ -2349,7 +2370,8 @@ def test_article_forty_one_preserves_common_specification_workflow():
     presumption = norms["AIA-NORM-A041-P3-COMMON-SPECIFICATION-PRESUMPTION"]
     justification = norms["AIA-NORM-A041-P5-JUSTIFY-EQUIVALENT-SOLUTIONS"]
     assert presumption.implementation_mode.value == "missing"
-    assert justification.implementation_mode.value == "missing"
+    assert justification.implementation_mode.value == "compliance_rule"
+    assert justification.implementation_refs == ["AIA-PO-A41-5"]
 
 
 def test_article_forty_two_keeps_three_conformity_presumptions_distinct():
@@ -2604,10 +2626,9 @@ def test_article_forty_eight_maps_ce_marking_duties():
     assert len(mapped) == 5
     assert all(norm.implementation_mode.value == "compliance_rule" for norm in mapped)
     missing = [norm for norm in norms.values() if norm.implementation_mode.value == "missing"]
-    assert {norm.norm_id for norm in missing} == {
-        "AIA-NORM-A048-P1-GENERAL-CE-PRINCIPLES",
-        "AIA-NORM-A048-P5-OTHER-LAW-COMPLIANCE",
-    }
+    assert {norm.norm_id for norm in missing} == {"AIA-NORM-A048-P5-OTHER-LAW-COMPLIANCE"}
+    principles = norms["AIA-NORM-A048-P1-GENERAL-CE-PRINCIPLES"]
+    assert principles.carried_by_norm_ids == ["AIA-NORM-A048-P3-AFFIX-CE-MARKING"]
     digital_marking = norms["AIA-NORM-A048-P2-DIGITAL-CE-MARKING"]
     assert len(digital_marking.conditions) == 1
 
@@ -2632,8 +2653,12 @@ def test_article_forty_nine_maps_registration_routes_and_restricted_content():
     assert [len(segments[index].norm_ids) for index in (1, 2, 4, 9)] == [2, 2, 2, 2]
     assert all(segments[index].disposition.value == "normative" for index in range(5, 9))
     mapped = [norm for norm in norms.values() if norm.implementation_refs]
-    assert len(mapped) == 8
+    assert len(mapped) == 7
     assert all(norm.implementation_mode.value == "compliance_rule" for norm in mapped)
+    # The Art. 6(4) rule evidences the documented assessment, not this database entry.
+    provider_entry = norms["AIA-NORM-A049-P2-PROVIDER-REGISTER-NON-HIGH-RISK"]
+    assert provider_entry.implementation_mode.value == "missing"
+    assert provider_entry.verification_mode.value == "reported_not_judged"
     restricted = norms["AIA-NORM-A049-P4-RESTRICTED-INFORMATION"]
     assert len(restricted.mandatory_content) == 4
     assert len(restricted.qualifier_spans) == 4

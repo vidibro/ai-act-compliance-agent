@@ -45,10 +45,9 @@ records:
   conditions:
   - the provider concluded under Article 6(3) that the system is not high-risk
   - registration occurs before placing on the market or putting into service
-  implementation_refs:
-  - AIA-NHR-A06-4
-  implementation_reason: The Article 6(4) rule carries the provider limb of the Article 49(2) registration
-    obligation.
+  implementation_mode: missing
+  implementation_reason: Article 6(4)'s rule evidences the documented assessment, not this EU-database
+    entry, which no submitted document can show.
   verification_mode: reported_not_judged
 - norm_id: AIA-NORM-A049-P2-REPRESENTATIVE-REGISTER-NON-HIGH-RISK
   source: A049-P002

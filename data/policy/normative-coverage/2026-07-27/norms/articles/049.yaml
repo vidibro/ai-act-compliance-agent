@@ -100,7 +100,6 @@ norms:
   detection_channels:
   - semantic_legal_effect
   - shall_token
-  - existing_implementation
   primary_spans:
   - AIA-TEXT-A049-P002
   qualifier_spans: []
@@ -113,11 +112,10 @@ norms:
   dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
-  implementation_mode: compliance_rule
-  implementation_refs:
-  - AIA-NHR-A06-4
-  implementation_reason: The Article 6(4) rule carries the provider limb of the Article 49(2) registration
-    obligation.
+  implementation_mode: missing
+  implementation_refs: []
+  implementation_reason: Article 6(4)'s rule evidences the documented assessment, not this EU-database
+    entry, which no submitted document can show.
   verification_mode: reported_not_judged
   review:
     status: proposed

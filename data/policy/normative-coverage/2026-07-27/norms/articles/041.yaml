@@ -296,6 +296,7 @@ norms:
   detection_channels:
   - semantic_legal_effect
   - shall_token
+  - existing_implementation
   primary_spans:
   - AIA-TEXT-A041-P013
   qualifier_spans: []
@@ -307,10 +308,11 @@ norms:
   dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
-  implementation_mode: missing
-  implementation_refs: []
+  implementation_mode: compliance_rule
+  implementation_refs:
+  - AIA-PO-A41-5
   implementation_reason: ''
-  verification_mode: judged_by_gap_analysis
+  verification_mode: reported_not_judged
   review:
     status: proposed
     extracted_by: semantic-legal-effect-pass

@@ -184,6 +184,8 @@ records:
   - dependency_ref: AIA-NORM-A006-P3-INSIGNIFICANT-RISK-EXCEPTION
     resolution: internal_resolved
     detail: Article 6(3) supplies the substantive basis for the assessment.
+  implementation_refs:
+  - AIA-NHR-A06-4
 - norm_id: AIA-NORM-A006-P4-REGISTER-SYSTEM
   source: A006-P015
   quote: Such provider shall be subject to the registration obligation set out in Article 49(2).
