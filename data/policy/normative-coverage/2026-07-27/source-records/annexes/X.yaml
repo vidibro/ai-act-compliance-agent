@@ -10,7 +10,7 @@ records:
   - dependency_ref: AIA-NORM-A111-P1-BRING-LARGE-SCALE-IT-INTO-COMPLIANCE
     resolution: internal_resolved
     detail: Article 111(1) gives compliance-transition legal effect to the Annex X list.
-  verification_mode: answered_by_classification
+  verification_mode: reported_conditionally
 - norm_id: AIA-NORM-ANNEX-X-SIS-BORDER-CHECKS
   source: ANNEX-X-P003
   quote: Regulation (EU) 2018/1861
@@ -19,7 +19,7 @@ records:
   subject_category: other
   kind: applicability
   dependencies: *article111_dependency
-  verification_mode: answered_by_classification
+  verification_mode: reported_conditionally
 - norm_id: AIA-NORM-ANNEX-X-SIS-POLICE-JUDICIAL
   source: ANNEX-X-P004
   quote: Regulation (EU) 2018/1862
@@ -28,7 +28,7 @@ records:
   subject_category: other
   kind: applicability
   dependencies: *article111_dependency
-  verification_mode: answered_by_classification
+  verification_mode: reported_conditionally
 - norm_id: AIA-NORM-ANNEX-X-VIS-ACCESS-CONDITIONS
   source: ANNEX-X-P006
   quote: Regulation (EU) 2021/1133
@@ -37,7 +37,7 @@ records:
   subject_category: other
   kind: applicability
   dependencies: *article111_dependency
-  verification_mode: answered_by_classification
+  verification_mode: reported_conditionally
 - norm_id: AIA-NORM-ANNEX-X-VIS-REFORM
   source: ANNEX-X-P007
   quote: Regulation (EU) 2021/1134
@@ -46,7 +46,7 @@ records:
   subject_category: other
   kind: applicability
   dependencies: *article111_dependency
-  verification_mode: answered_by_classification
+  verification_mode: reported_conditionally
 - norm_id: AIA-NORM-ANNEX-X-EURODAC
   source: ANNEX-X-P009
   quote: Regulation (EU) 2024/1358
@@ -55,7 +55,7 @@ records:
   subject_category: other
   kind: applicability
   dependencies: *article111_dependency
-  verification_mode: answered_by_classification
+  verification_mode: reported_conditionally
 - norm_id: AIA-NORM-ANNEX-X-ENTRY-EXIT-SYSTEM
   source: ANNEX-X-P011
   quote: Regulation (EU) 2017/2226
@@ -64,7 +64,7 @@ records:
   subject_category: other
   kind: applicability
   dependencies: *article111_dependency
-  verification_mode: answered_by_classification
+  verification_mode: reported_conditionally
 - norm_id: AIA-NORM-ANNEX-X-ETIAS
   source: ANNEX-X-P013
   quote: Regulation (EU) 2018/1240
@@ -73,7 +73,7 @@ records:
   subject_category: other
   kind: applicability
   dependencies: *article111_dependency
-  verification_mode: answered_by_classification
+  verification_mode: reported_conditionally
 - norm_id: AIA-NORM-ANNEX-X-ETIAS-EUROPOL
   source: ANNEX-X-P014
   quote: Regulation (EU) 2018/1241
@@ -82,7 +82,7 @@ records:
   subject_category: other
   kind: applicability
   dependencies: *article111_dependency
-  verification_mode: answered_by_classification
+  verification_mode: reported_conditionally
 - norm_id: AIA-NORM-ANNEX-X-ECRIS-TCN
   source: ANNEX-X-P016
   quote: Regulation (EU) 2019/816
@@ -91,7 +91,7 @@ records:
   subject_category: other
   kind: applicability
   dependencies: *article111_dependency
-  verification_mode: answered_by_classification
+  verification_mode: reported_conditionally
 - norm_id: AIA-NORM-ANNEX-X-INTEROPERABILITY-BORDERS-VISA
   source: ANNEX-X-P018
   quote: Regulation (EU) 2019/817
@@ -100,7 +100,7 @@ records:
   subject_category: other
   kind: applicability
   dependencies: *article111_dependency
-  verification_mode: answered_by_classification
+  verification_mode: reported_conditionally
 - norm_id: AIA-NORM-ANNEX-X-INTEROPERABILITY-POLICE-ASYLUM-MIGRATION
   source: ANNEX-X-P019
   quote: Regulation (EU) 2019/818
@@ -109,4 +109,4 @@ records:
   subject_category: other
   kind: applicability
   dependencies: *article111_dependency
-  verification_mode: answered_by_classification
+  verification_mode: reported_conditionally
