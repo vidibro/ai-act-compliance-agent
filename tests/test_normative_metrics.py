@@ -1787,11 +1787,15 @@ def test_article_twenty_eight_is_complete_institutional_coverage():
 
 
 def test_inventory_cannot_be_misreported_as_independently_approved(metrics):
-    assert metrics.approved_characters == 390_935
+    """Approved text is now the whole corpus, which is the number most likely to be quoted as
+    though the Act were covered. Every norm read out of that text is still `proposed`, so the two
+    counts are asserted together: character coverage is a statement about reading the source, not
+    about the propositions extracted from it."""
+    assert metrics.approved_characters == metrics.exact_source_characters == 395_046
     assert metrics.needs_review_characters == 0
     assert metrics.review_statuses == {
-        "approved": 1501,
-        "proposed": 1491,
+        "approved": 1505,
+        "proposed": 1487,
     }
     assert metrics.timed_review_records == 0
     assert metrics.total_review_records == 2993
