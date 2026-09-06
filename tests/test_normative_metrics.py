@@ -1798,8 +1798,8 @@ def test_inventory_cannot_be_misreported_as_independently_approved(metrics):
     assert metrics.approved_characters == metrics.exact_source_characters == 395_046
     assert metrics.needs_review_characters == 0
     assert metrics.review_statuses == {
-        "approved": 1644,
-        "proposed": 1348,
+        "approved": 1652,
+        "proposed": 1340,
     }
     assert metrics.timed_review_records == 0
     assert metrics.total_review_records == 2993
@@ -4852,7 +4852,12 @@ def test_annex_eleven_separates_general_and_systemic_risk_documentation():
     ]
     assert not architecture.mandatory_content
     assert "build or feed into each other" in architecture.action
-    assert all(norm.review.status.value == "proposed" for norm in norms.values())
+    # The four obligation norms were reviewed against their spans; the Section 1 energy permission
+    # is not a gap-judged obligation and was never part of that pass.
+    reviewed = {k: v for k, v in norms.items() if k != "AIA-NORM-ANNEX-XI-ENERGY-ESTIMATE-BASIS"}
+    assert all(norm.review.status.value == "approved" for norm in reviewed.values())
+    assert all(norm.review.verified_by == "vidibro" for norm in reviewed.values())
+    assert norms["AIA-NORM-ANNEX-XI-ENERGY-ESTIMATE-BASIS"].review.status.value == "proposed"
 
 
 def test_annex_twelve_downstream_transparency_content_is_carried_by_article_fifty_three():

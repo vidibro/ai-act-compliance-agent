@@ -40,6 +40,7 @@ records:
   - dependency_ref: AIA-NORM-A053-P1-A-ANNEX-XI-CONTENT
     resolution: internal_resolved
     detail: Article 53(1)(a) assigns the Annex XI minimum-content duty to GPAI model providers.
+  verified_by: vidibro
 - norm_id: AIA-NORM-ANNEX-XI-ENERGY-ESTIMATE-BASIS
   source: ANNEX-XI-P011
   quote: where the energy consumption of the model is unknown, the energy consumption may be based on information about computational resources used
@@ -78,6 +79,7 @@ records:
   - dependency_ref: AIA-NORM-A053-P1-A-ANNEX-XI-CONTENT
     resolution: internal_resolved
     detail: Article 53(1)(a) assigns the Annex XI minimum-content duty to GPAI model providers.
+  verified_by: vidibro
 - norm_id: AIA-NORM-ANNEX-XI-SECTION-2-ADVERSARIAL-TESTING-AND-ADAPTATIONS
   source: ANNEX-XI-P020
   qualifier_spans: [ANNEX-XI-P017, ANNEX-XI-P018]
@@ -99,6 +101,7 @@ records:
   - dependency_ref: AIA-NORM-A053-P1-A-ANNEX-XI-CONTENT
     resolution: internal_resolved
     detail: Article 53(1)(a) assigns the Annex XI minimum-content duty to GPAI model providers.
+  verified_by: vidibro
 - norm_id: AIA-NORM-ANNEX-XI-SECTION-2-SYSTEM-ARCHITECTURE
   source: ANNEX-XI-P021
   qualifier_spans: [ANNEX-XI-P017, ANNEX-XI-P018]
@@ -116,6 +119,7 @@ records:
   - dependency_ref: AIA-NORM-A053-P1-A-ANNEX-XI-CONTENT
     resolution: internal_resolved
     detail: Article 53(1)(a) assigns the Annex XI minimum-content duty to GPAI model providers.
+  verified_by: vidibro
 carried_by:
   AIA-NORM-ANNEX-XI-SECTION-1-TECHNICAL-DOCUMENTATION:
   - AIA-NORM-A053-P1-A-ANNEX-XI-CONTENT
