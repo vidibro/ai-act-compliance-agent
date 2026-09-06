@@ -125,7 +125,7 @@ def test_shipped_spec_loads():
     # only rules besides Art. 25(2) whose activation is decided by a question rather than by the
     # classification: the duties exist for a provider that elects to trial the system on live
     # inputs before placing it on the market, and for nobody else.
-    assert len(spec.rules) == 106
+    assert len(spec.rules) == 109
 
 
 # How many articles each fetched version holds. KEYED BY VERSION EVEN WHILE ONE IS FETCHED, because
@@ -441,11 +441,12 @@ def test_provider_process_obligations_are_not_document_verifiable():
 
 def test_high_risk_requirements_are_document_verifiable():
     spec = _spec()
-    # Ten: Arts. 9 to 15 whole, plus the three paragraphs a whole-article citation does not reach —
-    # Art. 11(2)'s single documentation set, Art. 12(3)'s biometric logging minimum and Art. 13(3)'s
-    # instructions-for-use contents, each judged on its own terms.
+    # Thirteen: Arts. 9 to 15 whole, plus the paragraphs a whole-article citation does not reach —
+    # Art. 11(2)'s single documentation set and Art. 13(3)'s instructions-for-use contents, each
+    # judged on its own terms, and Art. 12(3)'s biometric logging minimum as one rule per lettered
+    # record so a missing record is named rather than folded into one verdict over the list.
     reqs = [r for r in spec.rules if r.rule_id.startswith("AIA-HR-")]
-    assert len(reqs) == 10
+    assert len(reqs) == 13
     assert all(r.document_verifiable for r in reqs)
 
 

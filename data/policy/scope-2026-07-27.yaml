@@ -436,9 +436,11 @@ article_rulings:
       that rule's `qualified_by`, because a system that logs nothing at all breaches 12(1) and the
       finding belongs there.
     3: >-
-      RULE AIA-HR-A12-3 — the four records an Annex III point 1(a) remote biometric identification
-      log must hold: the period of each use, the reference database, the input data that matched,
-      and the persons who verified the result under Art. 14(5). Gated to the biometrics area.
+      One rule per record an Annex III point 1(a) remote biometric identification log must hold, so
+      a missing record is named rather than folded into a single verdict over the list:
+      AIA-HR-A12-3A the period of each use, AIA-HR-A12-3B the reference database, AIA-HR-A12-3C the
+      input data that matched, and AIA-HR-A12-3D the persons who verified the result under
+      Art. 14(5). All four gated to the biometrics area.
   13:
     1: RULE AIA-HR-A13 — the system must be transparent enough for a deployer to interpret its output.
     2: RULE AIA-HR-A13 — the quality the instructions must have, supplied to 13(1) as its qualifier.

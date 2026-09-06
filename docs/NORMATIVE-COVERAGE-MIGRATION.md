@@ -761,7 +761,10 @@ At migration start the golden sets exercise 9 of 14 document-verifiable rules. T
 set is:
 
 - `AIA-HR-A11-2`
-- `AIA-HR-A12-3`
+- `AIA-HR-A12-3A`
+- `AIA-HR-A12-3B`
+- `AIA-HR-A12-3C`
+- `AIA-HR-A12-3D`
 - `AIA-NHR-A06-4`
 - `AIA-TR-A50-1`
 - `AIA-TR-A50-2`
@@ -894,27 +897,44 @@ Whoever closes this decides what the relation is called and whether it is derive
 subject and action or authored. Until then, treat any claim that a group of norms is "consistent"
 as prose, not as a checked property.
 
-### Open debt: an annex checklist is judged as one verdict
+### Open debt: a checklist is judged as one verdict
 
-Four annex content lists reach the judge as a whole annex in `annex_context` under a single
-`completeness` rule, so 56 required items produce four findings between them:
+`select_rules` splits by `document_verifiable`, and only that arm reaches the judge
+(`gap/graph.py`), which emits one `Finding` per rule. Verdict granularity is therefore rule
+granularity, and 14 rules carry every judged verdict the product can produce.
 
-| Annex | Items | Rule | Annex text in context |
-|---|---:|---|---:|
-| IV — technical documentation | 26 | `AIA-HR-A11` | 5901 characters |
-| XI Section 1 — GPAI documentation | 11 | `AIA-GP-A53-1A` | 3236 |
-| XII — downstream transparency | 11 | `AIA-GP-A53-1B` | 1624 |
-| V — EU declaration of conformity | 8 | `AIA-PO-A47-2` | 1423 |
+Three of those 14 checked a list, each returning one verdict over items a provider satisfies
+separately. Article 12(3) is split; two remain:
+
+| Rule | What it checks | Groups | Norms behind it |
+|---|---|---:|---:|
+| `AIA-HR-A11` | Annex IV technical documentation, 26 items in 5901 characters of `annex_context` | 9 | 8 |
+| `AIA-HR-A13-3` | Article 13(3)(a) to (f), the instructions-for-use content | 6 | 18 |
+
+`AIA-HR-A12-3` is now `AIA-HR-A12-3A` to `-3D`, one per lettered point, each resolving its own
+enacted text through `source.point` and judged `presence` rather than the list's `completeness`.
+It is the shape the remaining two should follow.
 
 A technical file with thorough risk management and no post-market monitoring plan earns one `gap`
-over the whole of Annex IV. The provider is told the annex is unsatisfied, not which group to
-write, which is the difference between a finding and an instruction.
+over the whole of Annex IV. The provider learns the annex is unsatisfied, not which group to write
+— the difference between a finding and an instruction.
 
 The norms are not the problem and splitting them would not help: one provider drawing up one
-document is one duty, and verdict granularity belongs to `PolicyRule`, which the norm layer does
-not reach. The fix is a rule per annex group, each carrying its own slice of `annex_context`; the
-norms' `mandatory_content` already holds the items those rules would check. This changes what the
-product asserts, so it needs golden-set cases before it ships.
+document is one duty, and `PolicyRule` owns verdict granularity while the norm layer does not reach
+the pipeline. The fix is a rule per group, each carrying its own slice of the enacted list.
 
-Annex VIII is deliberately not in this table. Its sections are a database form, checked as a unit
-and never document-judged, so a single completeness verdict is the right shape there.
+**Deliberately excluded.** The five `substance` rules behind the largest norm counts — `AIA-HR-A09`
+with 32 norms, `AIA-HR-A15` with 20, `AIA-HR-A10` with 19, `AIA-HR-A14` with 15, `AIA-HR-A13` with
+11 — judge a system, not a list. Whether a risk management system is adequate is one holistic
+question, and 32 verdicts in its place would be noise. Changing those is a product decision, not
+this defect.
+
+The other 17 rules carrying `annex_context` are `document_verifiable: false`. They never reach the
+judge; they print as outstanding confirmations, where one line per registration or declaration is
+the right shape. That includes Annex V, Annex XI Section 1, Annex XII and every Annex VIII section.
+
+**Sizing what is left.** About 15 sub-rules replace 2, and 26 norms repoint their
+`implementation_refs`. Unlike Article 12(3), which no golden case names, the golden set carries 64
+references each to `AIA-HR-A11` and `AIA-HR-A13-3` across the main, held-out and ablation files,
+including `__present_but_inadequate` and `__removed` cases that must be re-cut per group. Ship the
+golden-set cases with the split, never after it.

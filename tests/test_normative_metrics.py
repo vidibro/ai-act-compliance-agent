@@ -1066,10 +1066,14 @@ def test_article_twelve_separates_general_and_biometric_logging_requirements():
     assert len(general) == 4
     assert len(biometric) == 4
     assert all(norms[norm_id].implementation_refs == ["AIA-HR-A12"] for norm_id in general)
-    assert all(
-        norms[norm_id].implementation_refs == ["AIA-HR-A12-3"]
-        for norm_id in biometric
-    )
+    # One rule per lettered record, so a missing record is named rather than folded into a single
+    # verdict over the list.
+    assert {norm_id: norms[norm_id].implementation_refs for norm_id in biometric} == {
+        "AIA-NORM-A012-P3-A-USE-PERIOD": ["AIA-HR-A12-3A"],
+        "AIA-NORM-A012-P3-B-REFERENCE-DATABASE": ["AIA-HR-A12-3B"],
+        "AIA-NORM-A012-P3-C-MATCHED-INPUT": ["AIA-HR-A12-3C"],
+        "AIA-NORM-A012-P3-D-RESULT-VERIFIERS": ["AIA-HR-A12-3D"],
+    }
     assert all(
         norms[norm_id].qualifier_spans == ["AIA-TEXT-A012-P002"]
         for norm_id in general
@@ -1228,7 +1232,7 @@ def test_article_sixteen_reuses_substantive_rules_without_duplicate_targets():
     assert norms["AIA-NORM-A016-L-ACCESSIBILITY"].implementation_refs == [
         "AIA-PO-A16-L"
     ]
-    assert len(norms["AIA-NORM-A016-A-SECTION-2-COMPLIANCE"].implementation_refs) == 11
+    assert len(norms["AIA-NORM-A016-A-SECTION-2-COMPLIANCE"].implementation_refs) == 14
     assert len(norms["AIA-NORM-A016-F-CONFORMITY-ASSESSMENT"].implementation_refs) == 6
     corrective = norms["AIA-NORM-A016-J-CORRECTIVE-ACTION"]
     assert corrective.implementation_mode.value == "carried_by_other_norm"

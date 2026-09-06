@@ -343,18 +343,19 @@ rules:
   # THE BIOMETRIC MINIMUM. AIA-HR-A12 asks what the logs must be able to record for any high-risk
   # system; for a remote biometric identification system Art. 12(3) names four specific records, and
   # they are the ones that make an identification auditable after the fact.
-  - rule_id: AIA-HR-A12-3
+  - rule_id: AIA-HR-A12-3A
     source:
       instrument: "Regulation (EU) 2024/1689"
       article: 12
-      paragraph: 3 # the minimum logging for Annex III point 1(a) systems
+      paragraph: 3
+      point: "a" # the period of each use
       act_version_date: 2026-07-27
     applies_to_risk_class: [high_risk]
     applies_to_role: [provider]
     # NO `annex: III`. The paragraph points at Annex III point 1(a) and the rule is already gated
     # to that area, so the judge is not being asked which area this is — it is being asked whether
-    # four named records are in the logs. Supplying the whole Annex would add some 7 600 characters
-    # of areas the question does not turn on to every biometric judgement.
+    # one named record is in the logs. Supplying the whole Annex would add some 7 600 characters of
+    # areas the question does not turn on to every biometric judgement.
     #
     # ANNEX III POINT 1(a) ONLY — remote biometric identification. `biometrics` is this ruleset's
     # name for the whole of point 1, so the rule is selected for categorisation and emotion
@@ -369,21 +370,140 @@ rules:
       owe Art. 12(1) and (2) through AIA-HR-A12. Point 1(a) also excludes verification whose sole
       purpose is confirming a person is who they claim to be, which is outside the area altogether.
     obligation_status: mandatory
-    check_type: completeness
+    check_type: presence
     evidence_expected: >-
-      Four specific records, described as things the logs actually hold: the PERIOD of each use,
-      with a start date and time and an end date and time; the REFERENCE DATABASE the input data
-      was checked against; the INPUT DATA for which the search produced a match; and the IDENTITY
-      of the natural persons who verified the result under Art. 14(5). The fourth is the one most
-      often missing, and it is the one that ties the Art. 14(5) two-person verification to a named
-      individual after the fact — a log that records the match but not who confirmed it leaves the
-      oversight requirement unevidenced. "Comprehensive audit logging" without these four is not
-      this paragraph.
+      The PERIOD of each use held in the logs: a start date and time AND an end date and time for
+      every use. A single timestamp per event, or an aggregate figure for hours used, is not this
+      point — the paragraph asks when each use began and when it ended.
       TWO ROUTES PRESUME THIS SATISFIED, to the extent they cover it: conformity with a HARMONISED
       STANDARD whose reference is published in the Official Journal (Art. 40(1)), or with a COMMON
       SPECIFICATION the Commission has adopted (Art. 41(3)). Documentation that names the standard
-      applied, and the parts of it applied, is answering this requirement through that route rather
-      than avoiding it.
+      applied, and the parts of it applied, is answering this requirement through that route.
+    document_verifiable: true
+    effective_date_by_route:
+      annex_iii: 2027-12-02
+      annex_i: 2028-08-02
+    status: active
+
+  - rule_id: AIA-HR-A12-3B
+    source:
+      instrument: "Regulation (EU) 2024/1689"
+      article: 12
+      paragraph: 3
+      point: "b" # the reference database checked against
+      act_version_date: 2026-07-27
+    applies_to_risk_class: [high_risk]
+    applies_to_role: [provider]
+    # NO `annex: III`. The paragraph points at Annex III point 1(a) and the rule is already gated
+    # to that area, so the judge is not being asked which area this is — it is being asked whether
+    # one named record is in the logs. Supplying the whole Annex would add some 7 600 characters of
+    # areas the question does not turn on to every biometric judgement.
+    #
+    # ANNEX III POINT 1(a) ONLY — remote biometric identification. `biometrics` is this ruleset's
+    # name for the whole of point 1, so the rule is selected for categorisation and emotion
+    # recognition systems too, which point 1(a) does not reach. Over-inclusive within one area, and
+    # said so in the condition rather than dropped: the alternative is an area vocabulary that
+    # splits point 1 three ways for this one paragraph.
+    applies_to_annex_iii_area: [biometrics]
+    activation_condition: >-
+      Art. 12(3) binds systems referred to in point 1(a) of Annex III — REMOTE BIOMETRIC
+      IDENTIFICATION. A biometric categorisation system under point 1(b) or an emotion recognition
+      system under point 1(c) is in the same area and is not reached by this paragraph; both still
+      owe Art. 12(1) and (2) through AIA-HR-A12. Point 1(a) also excludes verification whose sole
+      purpose is confirming a person is who they claim to be, which is outside the area altogether.
+    obligation_status: mandatory
+    check_type: presence
+    evidence_expected: >-
+      The REFERENCE DATABASE the input data was checked against, named in the logs. A description
+      of matching that never identifies what was matched against does not answer this point.
+      TWO ROUTES PRESUME THIS SATISFIED, to the extent they cover it: conformity with a HARMONISED
+      STANDARD whose reference is published in the Official Journal (Art. 40(1)), or with a COMMON
+      SPECIFICATION the Commission has adopted (Art. 41(3)). Documentation that names the standard
+      applied, and the parts of it applied, is answering this requirement through that route.
+    document_verifiable: true
+    effective_date_by_route:
+      annex_iii: 2027-12-02
+      annex_i: 2028-08-02
+    status: active
+
+  - rule_id: AIA-HR-A12-3C
+    source:
+      instrument: "Regulation (EU) 2024/1689"
+      article: 12
+      paragraph: 3
+      point: "c" # the input data behind a match
+      act_version_date: 2026-07-27
+    applies_to_risk_class: [high_risk]
+    applies_to_role: [provider]
+    # NO `annex: III`. The paragraph points at Annex III point 1(a) and the rule is already gated
+    # to that area, so the judge is not being asked which area this is — it is being asked whether
+    # one named record is in the logs. Supplying the whole Annex would add some 7 600 characters of
+    # areas the question does not turn on to every biometric judgement.
+    #
+    # ANNEX III POINT 1(a) ONLY — remote biometric identification. `biometrics` is this ruleset's
+    # name for the whole of point 1, so the rule is selected for categorisation and emotion
+    # recognition systems too, which point 1(a) does not reach. Over-inclusive within one area, and
+    # said so in the condition rather than dropped: the alternative is an area vocabulary that
+    # splits point 1 three ways for this one paragraph.
+    applies_to_annex_iii_area: [biometrics]
+    activation_condition: >-
+      Art. 12(3) binds systems referred to in point 1(a) of Annex III — REMOTE BIOMETRIC
+      IDENTIFICATION. A biometric categorisation system under point 1(b) or an emotion recognition
+      system under point 1(c) is in the same area and is not reached by this paragraph; both still
+      owe Art. 12(1) and (2) through AIA-HR-A12. Point 1(a) also excludes verification whose sole
+      purpose is confirming a person is who they claim to be, which is outside the area altogether.
+    obligation_status: mandatory
+    check_type: presence
+    evidence_expected: >-
+      The INPUT DATA for which the search produced a match, held in the logs — the specific data
+      behind each match, not a count of matches or a summary of match rates.
+      TWO ROUTES PRESUME THIS SATISFIED, to the extent they cover it: conformity with a HARMONISED
+      STANDARD whose reference is published in the Official Journal (Art. 40(1)), or with a COMMON
+      SPECIFICATION the Commission has adopted (Art. 41(3)). Documentation that names the standard
+      applied, and the parts of it applied, is answering this requirement through that route.
+    document_verifiable: true
+    effective_date_by_route:
+      annex_iii: 2027-12-02
+      annex_i: 2028-08-02
+    status: active
+
+  - rule_id: AIA-HR-A12-3D
+    source:
+      instrument: "Regulation (EU) 2024/1689"
+      article: 12
+      paragraph: 3
+      point: "d" # who verified the result under Art. 14(5)
+      act_version_date: 2026-07-27
+    applies_to_risk_class: [high_risk]
+    applies_to_role: [provider]
+    # NO `annex: III`. The paragraph points at Annex III point 1(a) and the rule is already gated
+    # to that area, so the judge is not being asked which area this is — it is being asked whether
+    # one named record is in the logs. Supplying the whole Annex would add some 7 600 characters of
+    # areas the question does not turn on to every biometric judgement.
+    #
+    # ANNEX III POINT 1(a) ONLY — remote biometric identification. `biometrics` is this ruleset's
+    # name for the whole of point 1, so the rule is selected for categorisation and emotion
+    # recognition systems too, which point 1(a) does not reach. Over-inclusive within one area, and
+    # said so in the condition rather than dropped: the alternative is an area vocabulary that
+    # splits point 1 three ways for this one paragraph.
+    applies_to_annex_iii_area: [biometrics]
+    activation_condition: >-
+      Art. 12(3) binds systems referred to in point 1(a) of Annex III — REMOTE BIOMETRIC
+      IDENTIFICATION. A biometric categorisation system under point 1(b) or an emotion recognition
+      system under point 1(c) is in the same area and is not reached by this paragraph; both still
+      owe Art. 12(1) and (2) through AIA-HR-A12. Point 1(a) also excludes verification whose sole
+      purpose is confirming a person is who they claim to be, which is outside the area altogether.
+    obligation_status: mandatory
+    check_type: presence
+    evidence_expected: >-
+      The IDENTITY of the natural persons involved in verifying the result, as referred to in
+      Art. 14(5). This is the record most often missing, and the one that ties the two-person
+      verification to named individuals after the fact: logs holding the match but not who
+      confirmed it leave the Art. 14(5) oversight unevidenced.
+      TWO ROUTES PRESUME THIS SATISFIED, to the extent they cover it: conformity with a HARMONISED
+      STANDARD whose reference is published in the Official Journal (Art. 40(1)), or with a COMMON
+      SPECIFICATION the Commission has adopted (Art. 41(3)). Documentation that names the standard
+      applied, and the parts of it applied, is answering this requirement through that route.
     document_verifiable: true
     effective_date_by_route:
       annex_iii: 2027-12-02
@@ -1579,7 +1699,8 @@ rules:
     # which qualifies only when used FOR those purposes — and `AnnexIIIArea` records the listed
     # area, not the sector a system is deployed in, so nothing in this ruleset tells a police
     # face-matching system from a workplace sign-in one. `biometrics` is named anyway, on the same
-    # terms as AIA-HR-A12-3: the rule is selected for every biometric system and the sector limit
+    # terms as AIA-HR-A12-3A to -3D: the rule is selected for every biometric system and the sector
+    # limit
     # is stated in `activation_condition`, where the reader can apply it. The alternative gates the
     # rule out of the only area where the reader has to decide anything, and a duty withheld from
     # the party who owes it is not the safe direction.

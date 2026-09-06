@@ -74,7 +74,7 @@ records:
   - the high-risk AI system is a remote biometric identification system referred to in Annex III, point
     1(a)
   implementation_refs:
-  - AIA-HR-A12-3
+  - AIA-HR-A12-3A
   verification_mode: judged_by_gap_analysis
   verified_by: vidibro
 - norm_id: AIA-NORM-A012-P3-B-REFERENCE-DATABASE
@@ -89,7 +89,7 @@ records:
   - the high-risk AI system is a remote biometric identification system referred to in Annex III, point
     1(a)
   implementation_refs:
-  - AIA-HR-A12-3
+  - AIA-HR-A12-3B
   verification_mode: judged_by_gap_analysis
   verified_by: vidibro
 - norm_id: AIA-NORM-A012-P3-C-MATCHED-INPUT
@@ -104,7 +104,7 @@ records:
   - the high-risk AI system is a remote biometric identification system referred to in Annex III, point
     1(a)
   implementation_refs:
-  - AIA-HR-A12-3
+  - AIA-HR-A12-3C
   verification_mode: judged_by_gap_analysis
   verified_by: vidibro
 - norm_id: AIA-NORM-A012-P3-D-RESULT-VERIFIERS
@@ -120,7 +120,7 @@ records:
   - the high-risk AI system is a remote biometric identification system referred to in Annex III, point
     1(a)
   implementation_refs:
-  - AIA-HR-A12-3
+  - AIA-HR-A12-3D
   verification_mode: judged_by_gap_analysis
   dependencies:
   - dependency_ref: Article 14(5) of this Regulation
