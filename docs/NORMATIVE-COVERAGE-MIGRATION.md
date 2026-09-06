@@ -893,3 +893,28 @@ only because one reviewer judged them alike; change one and nothing marks the ot
 Whoever closes this decides what the relation is called and whether it is derived from shared
 subject and action or authored. Until then, treat any claim that a group of norms is "consistent"
 as prose, not as a checked property.
+
+### Open debt: an annex checklist is judged as one verdict
+
+Four annex content lists reach the judge as a whole annex in `annex_context` under a single
+`completeness` rule, so 56 required items produce four findings between them:
+
+| Annex | Items | Rule | Annex text in context |
+|---|---:|---|---:|
+| IV — technical documentation | 26 | `AIA-HR-A11` | 5901 characters |
+| XI Section 1 — GPAI documentation | 11 | `AIA-GP-A53-1A` | 3236 |
+| XII — downstream transparency | 11 | `AIA-GP-A53-1B` | 1624 |
+| V — EU declaration of conformity | 8 | `AIA-PO-A47-2` | 1423 |
+
+A technical file with thorough risk management and no post-market monitoring plan earns one `gap`
+over the whole of Annex IV. The provider is told the annex is unsatisfied, not which group to
+write, which is the difference between a finding and an instruction.
+
+The norms are not the problem and splitting them would not help: one provider drawing up one
+document is one duty, and verdict granularity belongs to `PolicyRule`, which the norm layer does
+not reach. The fix is a rule per annex group, each carrying its own slice of `annex_context`; the
+norms' `mandatory_content` already holds the items those rules would check. This changes what the
+product asserts, so it needs golden-set cases before it ships.
+
+Annex VIII is deliberately not in this table. Its sections are a database form, checked as a unit
+and never document-judged, so a single completeness verdict is the right shape there.
