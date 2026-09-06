@@ -10,6 +10,7 @@ records:
   implementation_refs: &id001
   - AIA-HR-A13
   verification_mode: judged_by_gap_analysis
+  verified_by: vidibro
 - norm_id: AIA-NORM-A013-P1-APPROPRIATE-TRANSPARENCY
   source: A013-P001
   quote: An appropriate type and degree of transparency shall be ensured with a view to achieving compliance
@@ -20,6 +21,7 @@ records:
   subject_category: supported_operator
   implementation_refs: *id001
   verification_mode: judged_by_gap_analysis
+  verified_by: vidibro
 - norm_id: AIA-NORM-A013-P2-PROVIDE-INSTRUCTIONS
   source: A013-P002
   quote: High-risk AI systems shall be accompanied by instructions for use in an appropriate digital format
@@ -31,6 +33,7 @@ records:
   subject_category: supported_operator
   implementation_refs: *id001
   verification_mode: judged_by_gap_analysis
+  verified_by: vidibro
 - norm_id: AIA-NORM-A013-P2-CONCISE
   source: A013-P002
   quote: High-risk AI systems shall be accompanied by instructions for use in an appropriate digital format
@@ -41,6 +44,7 @@ records:
   subject_category: supported_operator
   implementation_refs: *id001
   verification_mode: judged_by_gap_analysis
+  verified_by: vidibro
 - norm_id: AIA-NORM-A013-P2-COMPLETE
   source: A013-P002
   quote: High-risk AI systems shall be accompanied by instructions for use in an appropriate digital format
@@ -51,6 +55,7 @@ records:
   subject_category: supported_operator
   implementation_refs: *id001
   verification_mode: judged_by_gap_analysis
+  verified_by: vidibro
 - norm_id: AIA-NORM-A013-P2-CORRECT
   source: A013-P002
   quote: High-risk AI systems shall be accompanied by instructions for use in an appropriate digital format
@@ -61,6 +66,7 @@ records:
   subject_category: supported_operator
   implementation_refs: *id001
   verification_mode: judged_by_gap_analysis
+  verified_by: vidibro
 - norm_id: AIA-NORM-A013-P2-CLEAR
   source: A013-P002
   quote: High-risk AI systems shall be accompanied by instructions for use in an appropriate digital format
@@ -71,6 +77,7 @@ records:
   subject_category: supported_operator
   implementation_refs: *id001
   verification_mode: judged_by_gap_analysis
+  verified_by: vidibro
 - norm_id: AIA-NORM-A013-P2-RELEVANT
   source: A013-P002
   quote: High-risk AI systems shall be accompanied by instructions for use in an appropriate digital format
@@ -81,6 +88,7 @@ records:
   subject_category: supported_operator
   implementation_refs: *id001
   verification_mode: judged_by_gap_analysis
+  verified_by: vidibro
 - norm_id: AIA-NORM-A013-P2-ACCESSIBLE
   source: A013-P002
   quote: High-risk AI systems shall be accompanied by instructions for use in an appropriate digital format
@@ -91,6 +99,7 @@ records:
   subject_category: supported_operator
   implementation_refs: *id001
   verification_mode: judged_by_gap_analysis
+  verified_by: vidibro
 - norm_id: AIA-NORM-A013-P2-COMPREHENSIBLE
   source: A013-P002
   quote: High-risk AI systems shall be accompanied by instructions for use in an appropriate digital format
@@ -101,6 +110,7 @@ records:
   subject_category: supported_operator
   implementation_refs: *id001
   verification_mode: judged_by_gap_analysis
+  verified_by: vidibro
 - norm_id: AIA-NORM-A013-P3-A-CONTACT-DETAILS
   source: A013-P004
   quote: the identity and the contact details of the provider and, where applicable, of its authorised
@@ -114,6 +124,7 @@ records:
   implementation_refs: &id003
   - AIA-HR-A13-3
   verification_mode: judged_by_gap_analysis
+  verified_by: vidibro
 - norm_id: AIA-NORM-A013-P3-B-PERFORMANCE-CHARACTERISTICS
   source: A013-P005
   quote: the characteristics, capabilities and limitations of performance of the high-risk AI system
@@ -124,6 +135,7 @@ records:
   qualifier_spans: *id002
   implementation_refs: *id003
   verification_mode: judged_by_gap_analysis
+  verified_by: vidibro
 - norm_id: AIA-NORM-A013-P3-B-I-INTENDED-PURPOSE
   source: A013-P006
   quote: its intended purpose
@@ -135,6 +147,7 @@ records:
   - A013-P005
   implementation_refs: *id003
   verification_mode: judged_by_gap_analysis
+  verified_by: vidibro
 - norm_id: AIA-NORM-A013-P3-B-II-EXPECTED-PERFORMANCE
   source: A013-P007
   quote: the level of accuracy, including its metrics, robustness and cybersecurity referred to in Article
@@ -153,6 +166,7 @@ records:
     resolution: unresolved
     detail: Article 15 supplies the referenced accuracy, robustness, and cybersecurity requirements and
       has not yet been semantically reviewed.
+  verified_by: vidibro
 - norm_id: AIA-NORM-A013-P3-B-II-AFFECTING-CIRCUMSTANCES
   source: A013-P007
   quote: the level of accuracy, including its metrics, robustness and cybersecurity referred to in Article
@@ -166,6 +180,7 @@ records:
   qualifier_spans: *id004
   implementation_refs: *id003
   verification_mode: judged_by_gap_analysis
+  verified_by: vidibro
 - norm_id: AIA-NORM-A013-P3-B-III-RISK-CIRCUMSTANCES
   source: A013-P008
   quote: any known or foreseeable circumstance, related to the use of the high-risk AI system in accordance
@@ -178,6 +193,7 @@ records:
   qualifier_spans: *id004
   implementation_refs: *id003
   verification_mode: judged_by_gap_analysis
+  verified_by: vidibro
 - norm_id: AIA-NORM-A013-P3-B-IV-EXPLAIN-OUTPUT
   source: A013-P009
   quote: where applicable, the technical capabilities and characteristics of the high-risk AI system to
@@ -190,6 +206,7 @@ records:
   - the system has technical capabilities or characteristics relevant to explaining its output
   implementation_refs: *id003
   verification_mode: judged_by_gap_analysis
+  verified_by: vidibro
 - norm_id: AIA-NORM-A013-P3-B-V-GROUP-PERFORMANCE
   source: A013-P010
   quote: when appropriate, its performance regarding specific persons or groups of persons on which the
@@ -203,6 +220,7 @@ records:
   - information about performance for intended persons or groups is appropriate
   implementation_refs: *id003
   verification_mode: judged_by_gap_analysis
+  verified_by: vidibro
 - norm_id: AIA-NORM-A013-P3-B-VI-INPUT-DATA
   source: A013-P011
   quote: when appropriate, specifications for the input data, or any other relevant information in terms
@@ -217,6 +235,7 @@ records:
   - input-data specifications or dataset information is appropriate for the intended purpose
   implementation_refs: *id003
   verification_mode: judged_by_gap_analysis
+  verified_by: vidibro
 - norm_id: AIA-NORM-A013-P3-B-VII-INTERPRET-OUTPUT
   source: A013-P012
   quote: where applicable, information to enable deployers to interpret the output of the high-risk AI
@@ -229,6 +248,7 @@ records:
   - information is applicable to deployer interpretation and appropriate use of system outputs
   implementation_refs: *id003
   verification_mode: judged_by_gap_analysis
+  verified_by: vidibro
 - norm_id: AIA-NORM-A013-P3-C-PREDETERMINED-CHANGES
   source: A013-P013
   quote: the changes to the high-risk AI system and its performance which have been pre-determined by
@@ -241,6 +261,7 @@ records:
   - the provider predetermined changes to the system or its performance at the initial conformity assessment
   implementation_refs: *id003
   verification_mode: judged_by_gap_analysis
+  verified_by: vidibro
 - norm_id: AIA-NORM-A013-P3-D-HUMAN-OVERSIGHT
   source: A013-P014
   quote: the human oversight measures referred to in Article 14, including the technical measures put
@@ -256,6 +277,7 @@ records:
     resolution: unresolved
     detail: Article 14 supplies the referenced human-oversight requirements and has not yet been semantically
       reviewed.
+  verified_by: vidibro
 - norm_id: AIA-NORM-A013-P3-D-OUTPUT-INTERPRETATION-MEASURES
   source: A013-P014
   quote: the human oversight measures referred to in Article 14, including the technical measures put
@@ -266,6 +288,7 @@ records:
   qualifier_spans: *id002
   implementation_refs: *id003
   verification_mode: judged_by_gap_analysis
+  verified_by: vidibro
 - norm_id: AIA-NORM-A013-P3-E-RESOURCES
   source: A013-P015
   quote: the computational and hardware resources needed, the expected lifetime of the high-risk AI system
@@ -277,6 +300,7 @@ records:
   qualifier_spans: *id002
   implementation_refs: *id003
   verification_mode: judged_by_gap_analysis
+  verified_by: vidibro
 - norm_id: AIA-NORM-A013-P3-E-EXPECTED-LIFETIME
   source: A013-P015
   quote: the computational and hardware resources needed, the expected lifetime of the high-risk AI system
@@ -288,6 +312,7 @@ records:
   qualifier_spans: *id002
   implementation_refs: *id003
   verification_mode: judged_by_gap_analysis
+  verified_by: vidibro
 - norm_id: AIA-NORM-A013-P3-E-MAINTENANCE
   source: A013-P015
   quote: the computational and hardware resources needed, the expected lifetime of the high-risk AI system
@@ -300,6 +325,7 @@ records:
   qualifier_spans: *id002
   implementation_refs: *id003
   verification_mode: judged_by_gap_analysis
+  verified_by: vidibro
 - norm_id: AIA-NORM-A013-P3-F-LOG-MECHANISMS
   source: A013-P016
   quote: where relevant, a description of the mechanisms included within the high-risk AI system that
@@ -317,3 +343,4 @@ records:
   - dependency_ref: AIA-NORM-A012-P1-AUTOMATIC-LOGGING
     resolution: internal_resolved
     detail: Article 12 supplies the automatic-logging requirement whose mechanisms are described here.
+  verified_by: vidibro

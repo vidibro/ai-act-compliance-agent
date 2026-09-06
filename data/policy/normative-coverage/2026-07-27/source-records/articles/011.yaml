@@ -8,6 +8,7 @@ records:
   implementation_refs:
   - AIA-HR-A11
   verification_mode: judged_by_gap_analysis
+  verified_by: vidibro
 - norm_id: AIA-NORM-A011-P1-UPDATE
   source: A011-P1
   quote: shall be kept up-to date
@@ -17,6 +18,7 @@ records:
   implementation_refs:
   - AIA-HR-A11
   verification_mode: judged_by_gap_analysis
+  verified_by: vidibro
 - norm_id: AIA-NORM-A011-P1-DEMONSTRATE
   source: A011-P1
   quote: shall be drawn up in such a way as to demonstrate that the high-risk AI system complies
@@ -27,6 +29,7 @@ records:
   implementation_refs:
   - AIA-HR-A11
   verification_mode: judged_by_gap_analysis
+  verified_by: vidibro
 - norm_id: AIA-NORM-A011-P1-ASSESSMENT-INFORMATION
   source: A011-P1
   quote: to provide national competent authorities and notified bodies with the necessary information
@@ -38,6 +41,7 @@ records:
   implementation_refs:
   - AIA-HR-A11
   verification_mode: judged_by_gap_analysis
+  verified_by: vidibro
 - norm_id: AIA-NORM-A011-P1-ANNEX-IV
   source: A011-P1
   quote: It shall contain, at a minimum, the elements set out in Annex IV.
@@ -51,6 +55,7 @@ records:
   - dependency_ref: AIA-NORM-ANNEX-IV-CONTENT
     resolution: internal_resolved
     detail: Annex IV supplies the mandatory content.
+  verified_by: vidibro
 - norm_id: AIA-NORM-A011-P1-SIMPLIFY
   source: A011-P1
   quote: may provide the elements of the technical documentation specified in Annex IV in a simplified
@@ -84,6 +89,7 @@ records:
   verification_mode: judged_by_gap_analysis
   conditions:
   - provider is an SME, start-up, or SMC and opts for simplified documentation
+  verified_by: vidibro
 - norm_id: AIA-NORM-A011-P1-ACCEPT-FORM
   source: A011-P1
   quote: Notified bodies shall accept the form
@@ -117,6 +123,7 @@ records:
   - dependency_ref: Annex I, Section A Union harmonisation legislation
     resolution: external_recorded
     detail: The applicable sectoral legal act supplies the additional information that must be included.
+  verified_by: vidibro
 - norm_id: AIA-NORM-A011-P3-AMEND
   source: A011-P3
   quote: The Commission is empowered to adopt delegated acts

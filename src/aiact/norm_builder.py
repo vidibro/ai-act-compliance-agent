@@ -148,6 +148,7 @@ class NormSourceRecord(BaseModel):
     dependencies: list[NormDependency] = []
     qualifier_spans: list[str] = []
     effective_date_spans: list[str] = []
+    verified_by: str = ""
 
 
 class NormSourceInventory(BaseModel):
@@ -561,7 +562,12 @@ def _build_norms(
                 "implementation_refs": record.implementation_refs,
                 "implementation_reason": record.implementation_reason,
                 "verification_mode": _resolved_verification(record).value,
-                "review": _review(reviewed, "proposed", True),
+                "review": _review(
+                    reviewed,
+                    "approved" if record.verified_by.strip() else "proposed",
+                    True,
+                    record.verified_by,
+                ),
             }
         )
 

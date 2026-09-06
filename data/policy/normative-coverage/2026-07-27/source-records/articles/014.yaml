@@ -11,6 +11,7 @@ records:
   implementation_refs: &id001
   - AIA-HR-A14
   verification_mode: judged_by_gap_analysis
+  verified_by: vidibro
 - norm_id: AIA-NORM-A014-P2-RISK-PREVENTION
   source: A014-P002
   quote: Human oversight shall aim to prevent or minimise the risks to health, safety or fundamental rights
@@ -23,6 +24,7 @@ records:
   subject_category: supported_operator
   implementation_refs: *id001
   verification_mode: judged_by_gap_analysis
+  verified_by: vidibro
 - norm_id: AIA-NORM-A014-P3-COMMENSURATE-MEASURES
   source: A014-P003
   quote: The oversight measures shall be commensurate with the risks, level of autonomy and context of
@@ -33,6 +35,7 @@ records:
   subject_category: supported_operator
   implementation_refs: *id001
   verification_mode: judged_by_gap_analysis
+  verified_by: vidibro
 - norm_id: AIA-NORM-A014-P3-MEASURE-ROUTES
   source: A014-P003
   quote: shall be ensured through either one or both of the following types of measures
@@ -46,6 +49,7 @@ records:
   - A014-P005
   implementation_refs: *id001
   verification_mode: judged_by_gap_analysis
+  verified_by: vidibro
 - norm_id: AIA-NORM-A014-P4-A-UNDERSTAND-CAPABILITIES
   source: A014-P007
   quote: to properly understand the relevant capacities and limitations of the high-risk AI system and
@@ -58,6 +62,7 @@ records:
   - A014-P006
   implementation_refs: *id001
   verification_mode: judged_by_gap_analysis
+  verified_by: vidibro
 - norm_id: AIA-NORM-A014-P4-A-MONITOR-OPERATION
   source: A014-P007
   quote: to properly understand the relevant capacities and limitations of the high-risk AI system and
@@ -70,6 +75,7 @@ records:
   qualifier_spans: *id002
   implementation_refs: *id001
   verification_mode: judged_by_gap_analysis
+  verified_by: vidibro
 - norm_id: AIA-NORM-A014-P4-B-AUTOMATION-BIAS
   source: A014-P008
   quote: to remain aware of the possible tendency of automatically relying or over-relying on the output
@@ -82,6 +88,7 @@ records:
   qualifier_spans: *id002
   implementation_refs: *id001
   verification_mode: judged_by_gap_analysis
+  verified_by: vidibro
 - norm_id: AIA-NORM-A014-P4-C-INTERPRET-OUTPUT
   source: A014-P009
   quote: "to correctly interpret the high-risk AI system\u2019s output, taking into account, for example,\
@@ -93,6 +100,7 @@ records:
   qualifier_spans: *id002
   implementation_refs: *id001
   verification_mode: judged_by_gap_analysis
+  verified_by: vidibro
 - norm_id: AIA-NORM-A014-P4-D-DECLINE-USE
   source: A014-P010
   quote: to decide, in any particular situation, not to use the high-risk AI system or to otherwise disregard,
@@ -103,6 +111,7 @@ records:
   qualifier_spans: *id002
   implementation_refs: *id001
   verification_mode: judged_by_gap_analysis
+  verified_by: vidibro
 - norm_id: AIA-NORM-A014-P4-D-CONTROL-OUTPUT
   source: A014-P010
   quote: to decide, in any particular situation, not to use the high-risk AI system or to otherwise disregard,
@@ -113,6 +122,7 @@ records:
   qualifier_spans: *id002
   implementation_refs: *id001
   verification_mode: judged_by_gap_analysis
+  verified_by: vidibro
 - norm_id: AIA-NORM-A014-P4-E-INTERVENE
   source: A014-P011
   quote: "to intervene in the operation of the high-risk AI system or interrupt the system through a \u2018\
@@ -123,6 +133,7 @@ records:
   qualifier_spans: *id002
   implementation_refs: *id001
   verification_mode: judged_by_gap_analysis
+  verified_by: vidibro
 - norm_id: AIA-NORM-A014-P4-E-SAFE-STOP
   source: A014-P011
   quote: "to intervene in the operation of the high-risk AI system or interrupt the system through a \u2018\
@@ -134,6 +145,7 @@ records:
   qualifier_spans: *id002
   implementation_refs: *id001
   verification_mode: judged_by_gap_analysis
+  verified_by: vidibro
 - norm_id: AIA-NORM-A014-P5-TWO-PERSON-VERIFICATION
   source: A014-P012
   quote: no action or decision is taken by the deployer on the basis of the identification resulting from
@@ -148,6 +160,7 @@ records:
     1(a)
   implementation_refs: *id001
   verification_mode: judged_by_gap_analysis
+  verified_by: vidibro
 - norm_id: AIA-NORM-A014-P5-DISPROPORTIONATE-EXCEPTION
   source: A014-P013
   quote: The requirement for a separate verification by at least two natural persons shall not apply to

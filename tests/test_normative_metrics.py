@@ -1794,8 +1794,8 @@ def test_inventory_cannot_be_misreported_as_independently_approved(metrics):
     assert metrics.approved_characters == metrics.exact_source_characters == 395_046
     assert metrics.needs_review_characters == 0
     assert metrics.review_statuses == {
-        "approved": 1505,
-        "proposed": 1487,
+        "approved": 1644,
+        "proposed": 1348,
     }
     assert metrics.timed_review_records == 0
     assert metrics.total_review_records == 2993
@@ -2701,7 +2701,8 @@ def test_article_fifty_preserves_disclosure_test_and_technical_solution_qualifie
     assert marking.primary_spans == ["AIA-TEXT-A050-P2"]
     for norm in (disclose, marking):
         assert norm.qualifier_spans == ["AIA-TEXT-A050-P5"]
-        assert norm.review.status.value == "proposed"
+        assert norm.review.status.value == "approved"
+        assert norm.review.verified_by == "vidibro"
         assert norm.verification_mode.value == "judged_by_gap_analysis"
     article_segments = [
         s for s in bundle.text_review.segments

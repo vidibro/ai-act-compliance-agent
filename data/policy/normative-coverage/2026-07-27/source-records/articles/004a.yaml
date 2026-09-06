@@ -51,6 +51,7 @@ records:
   conditions:
   - special-category personal data is processed under the Article 4a(1) or Article 4a(2) exceptional permission
   verification_mode: judged_by_gap_analysis
+  verified_by: vidibro
 - norm_id: AIA-NORM-A004A-P1-C-ACCESS-SAFEGUARDS
   source: A004A-P004
   quote: the special categories of personal data are subject to measures to ensure that the personal data
@@ -68,6 +69,7 @@ records:
   conditions:
   - special-category personal data is processed under the Article 4a(1) or Article 4a(2) exceptional permission
   verification_mode: judged_by_gap_analysis
+  verified_by: vidibro
 - norm_id: AIA-NORM-A004A-P1-D-NO-THIRD-PARTY-ACCESS
   source: A004A-P005
   quote: the special categories of personal data are not transmitted, transferred or otherwise accessed
@@ -83,6 +85,7 @@ records:
   conditions:
   - special-category personal data is processed under the Article 4a(1) or Article 4a(2) exceptional permission
   verification_mode: judged_by_gap_analysis
+  verified_by: vidibro
 - norm_id: AIA-NORM-A004A-P1-E-DELETE-DATA
   source: A004A-P006
   quote: the special categories of personal data are deleted once the bias has been corrected or the personal
@@ -98,6 +101,7 @@ records:
   conditions:
   - special-category personal data is processed under the Article 4a(1) or Article 4a(2) exceptional permission
   verification_mode: judged_by_gap_analysis
+  verified_by: vidibro
 - norm_id: AIA-NORM-A004A-P1-F-RECORD-NECESSITY
   source: A004A-P007
   quote: the records of processing activities pursuant to Regulations (EU) 2016/679 and (EU) 2018/1725
@@ -120,6 +124,7 @@ records:
     detail: The reasons must be included in processing records maintained under the applicable external
       instruments.
   verification_mode: judged_by_gap_analysis
+  verified_by: vidibro
 - norm_id: AIA-NORM-A004A-P2-OTHER-SYSTEM-BIAS-DATA-PROCESSING
   source: A004A-P008
   quote: Providers and deployers of other AI systems and models and deployers of high-risk AI systems

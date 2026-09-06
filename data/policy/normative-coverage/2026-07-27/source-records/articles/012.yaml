@@ -9,6 +9,7 @@ records:
   implementation_refs:
   - AIA-HR-A12
   verification_mode: judged_by_gap_analysis
+  verified_by: vidibro
 - norm_id: AIA-NORM-A012-P2-A-RISK-MODIFICATION-EVENTS
   source: A012-P003
   quote: identifying situations that may result in the high-risk AI system presenting a risk within the
@@ -26,6 +27,7 @@ records:
   - dependency_ref: Article 79(1) of this Regulation
     resolution: unresolved
     detail: Article 79(1) defines the referenced risk situation and has not yet been semantically reviewed.
+  verified_by: vidibro
 - norm_id: AIA-NORM-A012-P2-B-POST-MARKET-EVENTS
   source: A012-P004
   quote: facilitating the post-market monitoring referred to in Article 72
@@ -42,6 +44,7 @@ records:
     resolution: unresolved
     detail: Article 72 supplies the post-market monitoring requirements and has not yet been semantically
       reviewed.
+  verified_by: vidibro
 - norm_id: AIA-NORM-A012-P2-C-OPERATION-MONITORING-EVENTS
   source: A012-P005
   quote: monitoring the operation of high-risk AI systems referred to in Article 26(5)
@@ -57,6 +60,7 @@ records:
   - dependency_ref: AIA-NORM-A026-P5-MONITOR
     resolution: internal_resolved
     detail: Article 26(5) supplies the deployer monitoring activity that the logging capability supports.
+  verified_by: vidibro
 - norm_id: AIA-NORM-A012-P3-A-USE-PERIOD
   source: A012-P007
   quote: recording of the period of each use of the system (start date and time and end date and time
@@ -72,6 +76,7 @@ records:
   implementation_refs:
   - AIA-HR-A12-3
   verification_mode: judged_by_gap_analysis
+  verified_by: vidibro
 - norm_id: AIA-NORM-A012-P3-B-REFERENCE-DATABASE
   source: A012-P008
   quote: the reference database against which input data has been checked by the system
@@ -86,6 +91,7 @@ records:
   implementation_refs:
   - AIA-HR-A12-3
   verification_mode: judged_by_gap_analysis
+  verified_by: vidibro
 - norm_id: AIA-NORM-A012-P3-C-MATCHED-INPUT
   source: A012-P009
   quote: the input data for which the search has led to a match
@@ -100,6 +106,7 @@ records:
   implementation_refs:
   - AIA-HR-A12-3
   verification_mode: judged_by_gap_analysis
+  verified_by: vidibro
 - norm_id: AIA-NORM-A012-P3-D-RESULT-VERIFIERS
   source: A012-P010
   quote: the identification of the natural persons involved in the verification of the results, as referred
@@ -120,3 +127,4 @@ records:
     resolution: unresolved
     detail: Article 14(5) defines the referenced result-verification safeguards and has not yet been semantically
       reviewed.
+  verified_by: vidibro
