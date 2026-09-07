@@ -619,7 +619,6 @@ def test_the_annex_iii_areas_nothing_measures_are_declared(cases):
     unmeasured = {
         AnnexIIIArea.CRITICAL_INFRASTRUCTURE,
         AnnexIIIArea.EDUCATION,
-        AnnexIIIArea.LAW_ENFORCEMENT,
         AnnexIIIArea.JUSTICE_DEMOCRACY,
     }
     measured = {c.expected_annex_iii_area for c in cases.cases} - {None}

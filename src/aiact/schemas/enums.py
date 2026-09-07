@@ -354,8 +354,9 @@ class ProhibitedPractice(StrEnum):
     Every point carries an exception or a qualifier, and several of them are where the real
     argument lives: (d) does not reach a system supporting a human assessment already grounded in
     objective facts, (f) does not reach medical or safety uses, (g) does not reach the labelling of
-    lawfully acquired datasets, and (h) is lifted for three named law-enforcement objectives. A bare
-    `true` cannot say which of those was considered."""
+    lawfully acquired datasets nor categorisation in the area of law enforcement, and (h) is lifted
+    for three named law-enforcement objectives. A bare `true` cannot say which of those was
+    considered."""
 
     SUBLIMINAL_MANIPULATION = "subliminal_manipulation"
     """5(1)(a). Subliminal, purposefully manipulative or deceptive techniques that materially
@@ -409,8 +410,10 @@ class ProhibitedPractice(StrEnum):
 
     BIOMETRIC_CATEGORISATION_SENSITIVE = "biometric_categorisation_sensitive"
     """5(1)(g). Biometric categorisation deducing race, political opinions, trade union membership,
-    religious or philosophical beliefs, sex life or sexual orientation. Does not cover labelling or
-    filtering of lawfully acquired biometric datasets."""
+    religious or philosophical beliefs, sex life or sexual orientation — categorised FROM biometric
+    data, though the attribute inferred need not itself be biometric. Two carve-outs sit in the same
+    sentence: labelling or filtering of lawfully acquired biometric datasets, and categorising of
+    biometric data in the area of law enforcement."""
 
     REALTIME_REMOTE_BIOMETRIC_IDENTIFICATION = "realtime_remote_biometric_identification"
     """5(1)(h). 'Real-time' remote biometric identification in publicly accessible spaces for law

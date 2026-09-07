@@ -86,6 +86,44 @@ cases:
       Differs from cv_parsing_fields by a single sentence. The decisive fact is buried in an
       otherwise identical parsing description — a keyword checker sees the same words in both.
 
+  # --- NOT PROHIBITED — the Art. 5(1)(g) carve-out the prohibition names in its own sentence ----
+  - case_id: police_dataset_categorisation
+    description: >-
+      A tool used by a national police force's forensic unit to sort its lawfully held custody
+      photograph archive. It groups face images by apparent ethnicity so investigators can retrieve
+      comparison sets. It produces no assessment of any individual and is not used to screen or
+      target people.
+    expected_risk_class: high_risk
+    expected_is_ai_system: true
+    is_ai_basis: >-
+      Infers an attribute from face images that no input field states — a derivation, not a lookup.
+    expected_prohibited_practice: null
+    expected_annex_i_product: null
+    expected_annex_iii_area: law_enforcement
+    expected_performs_profiling: false
+    expected_derogation: preparatory_task
+    expected_poses_significant_risk: true
+    expected_deployer_type: public_body
+    expected_provider_reallocation: null
+    expected_real_world_testing: not_stated
+    expected_transparency_duties: []
+    transparency_basis: >-
+      Art. 50 does not attach. The tool neither interacts with natural persons nor generates
+      synthetic content, and Art. 50(3) binds deployers of emotion recognition or biometric
+      CATEGORISATION systems, whose duty to inform is disapplied for systems permitted by law to
+      detect, prevent or investigate criminal offences.
+    decisive_fact: >-
+      Art. 5(1)(g) prohibits inferring race from biometric data, but the SAME SENTENCE carves out
+      labelling or filtering of lawfully acquired biometric datasets and categorising of biometric
+      data in the area of law enforcement. Both limbs are met, so (g) is not engaged. The system
+      stays a biometric Annex III use case and is judged under Art. 6, not withdrawn under Art. 5.
+    difficulty: buried
+    notes: >-
+      The false-positive guard for (g), paired with the false-negative guard in
+      synthetic_minor_livestream. Every surface word — face images, ethnicity, police — points at
+      the prohibition, and the carve-out is the last clause of the point. A classifier reading only
+      the practice's name answers prohibited and tells a lawful forensic unit to withdraw.
+
   # --- PROHIBITED (Art. 5)(bb) — the limb the plain-language name does not cover ---------------
   - case_id: synthetic_minor_livestream
     description: >-
