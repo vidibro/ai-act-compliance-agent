@@ -1798,8 +1798,8 @@ def test_inventory_cannot_be_misreported_as_independently_approved(metrics):
     assert metrics.approved_characters == metrics.exact_source_characters == 395_046
     assert metrics.needs_review_characters == 0
     assert metrics.review_statuses == {
-        "approved": 1844,
-        "proposed": 1148,
+        "approved": 1902,
+        "proposed": 1090,
     }
     assert metrics.timed_review_records == 0
     assert metrics.total_review_records == 2993

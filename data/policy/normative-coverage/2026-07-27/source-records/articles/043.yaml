@@ -13,6 +13,7 @@ records:
   implementation_refs:
   - AIA-PO-A43-1
   verification_mode: reported_not_judged
+  verified_by: vidibro
 - norm_id: AIA-NORM-A043-P1-REQUIRED-ANNEX-VII-ROUTE
   source: A043-P1
   quote: the provider shall follow the conformity assessment procedure set out in Annex VII where
@@ -33,6 +34,7 @@ records:
       - the provider did not apply, or applied only part of, the harmonised standard
       - available common specifications were not applied by the provider
       - a harmonised standard was published with a restriction, only for the part that was restricted
+  verified_by: vidibro
 - norm_id: AIA-NORM-A043-P1-CHOOSE-NOTIFIED-BODY
   source: A043-P1
   quote: For the purposes of the conformity assessment procedure referred to in Annex VII, the provider
@@ -54,6 +56,7 @@ records:
   implementation_refs:
   - AIA-PO-A43-1B
   verification_mode: reported_not_judged
+  verified_by: vidibro
 - norm_id: AIA-NORM-A043-P1-AUTHORITY-AS-NOTIFIED-BODY
   source: A043-P1
   quote: where the high-risk AI system is intended to be put into service by law enforcement, immigration
@@ -84,6 +87,7 @@ records:
   implementation_refs:
   - AIA-PO-A43-2
   verification_mode: reported_not_judged
+  verified_by: vidibro
 - norm_id: AIA-NORM-A043-P3-PROCEDURE
   source: A043-P3
   quote: shall follow the relevant conformity assessment procedure

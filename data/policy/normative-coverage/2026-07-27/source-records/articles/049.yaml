@@ -15,6 +15,7 @@ records:
   implementation_refs:
   - AIA-PO-A49
   verification_mode: reported_not_judged
+  verified_by: vidibro
 - norm_id: AIA-NORM-A049-P1-REPRESENTATIVE-REGISTER
   source: A049-P001
   quote: Before placing on the market or putting into service a high-risk AI system listed in Annex III,
@@ -32,6 +33,7 @@ records:
   implementation_refs:
   - AIA-AR-A22
   verification_mode: reported_not_judged
+  verified_by: vidibro
 - norm_id: AIA-NORM-A049-P2-PROVIDER-REGISTER-NON-HIGH-RISK
   source: A049-P002
   quote: Before placing on the market or putting into service an AI system for which the provider has
@@ -49,6 +51,7 @@ records:
   implementation_reason: Article 6(4)'s rule evidences the documented assessment, not this EU-database
     entry, which no submitted document can show.
   verification_mode: reported_not_judged
+  verified_by: vidibro
 - norm_id: AIA-NORM-A049-P2-REPRESENTATIVE-REGISTER-NON-HIGH-RISK
   source: A049-P002
   quote: Before placing on the market or putting into service an AI system for which the provider has
@@ -66,6 +69,7 @@ records:
   implementation_refs:
   - AIA-AR-A49-2
   verification_mode: reported_not_judged
+  verified_by: vidibro
 - norm_id: AIA-NORM-A049-P3-DEPLOYER-REGISTER-USE
   source: A049-P003
   quote: Before putting into service or using a high-risk AI system listed in Annex III, with the exception
@@ -83,6 +87,7 @@ records:
   implementation_refs:
   - AIA-DP-A49-3
   verification_mode: reported_not_judged
+  verified_by: vidibro
 - norm_id: AIA-NORM-A049-P4-SECURE-NON-PUBLIC-SECTION
   source: A049-P004
   quote: For high-risk AI systems referred to in points 1, 6 and 7 of Annex III, in the areas of law enforcement,
@@ -156,3 +161,4 @@ records:
   implementation_refs:
   - AIA-PO-A49-5
   verification_mode: reported_not_judged
+  verified_by: vidibro

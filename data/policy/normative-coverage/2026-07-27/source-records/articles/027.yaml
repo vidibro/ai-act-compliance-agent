@@ -32,6 +32,7 @@ records:
   - A027-P005
   - A027-P006
   - A027-P007
+  verified_by: vidibro
 - norm_id: AIA-NORM-A027-P2-FIRST-USE
   source: A027-P008
   quote: The obligation laid down in paragraph 1 applies to the first use of the high-risk AI system.
@@ -43,6 +44,7 @@ records:
   implementation_refs: &id002
   - AIA-DP-A27-2
   verification_mode: reported_conditionally
+  verified_by: vidibro
 - norm_id: AIA-NORM-A027-P2-RELY-ON-PREVIOUS-ASSESSMENT
   source: A027-P008
   quote: The deployer may, in similar cases, rely on previously conducted fundamental rights impact assessments
@@ -55,6 +57,7 @@ records:
   - the prior or provider assessment concerns a similar case
   implementation_refs: *id002
   verification_mode: reported_conditionally
+  verified_by: vidibro
 - norm_id: AIA-NORM-A027-P2-UPDATE
   source: A027-P008
   quote: If, during the use of the high-risk AI system, the deployer considers that any of the elements
@@ -68,6 +71,7 @@ records:
   - during use, the deployer considers a paragraph 1 element changed or no longer current
   implementation_refs: *id002
   verification_mode: reported_not_judged
+  verified_by: vidibro
 - norm_id: AIA-NORM-A027-P3-NOTIFY-RESULTS
   source: A027-P009
   quote: Once the assessment referred to in paragraph 1 of this Article has been performed, the deployer
@@ -85,6 +89,7 @@ records:
   mandatory_content:
   - assessment results
   - completed Article 27(5) template
+  verified_by: vidibro
 - norm_id: AIA-NORM-A027-P3-ARTICLE-46-EXEMPTION
   source: A027-P009
   quote: In the case referred to in Article 46(1), deployers may be exempt from that obligation to notify.
@@ -96,6 +101,7 @@ records:
   - the deployment falls within Article 46(1)
   implementation_refs: *id003
   verification_mode: reported_conditionally
+  verified_by: vidibro
 - norm_id: AIA-NORM-A027-P4-INCORPORATE-DPIA
   source: A027-P010
   quote: If any of the obligations laid down in this Article is already met through the data protection
@@ -115,6 +121,7 @@ records:
   - dependency_ref: Article 35 of Regulation (EU) 2016/679 or Article 27 of Directive (EU) 2016/680
     resolution: external_recorded
     detail: The external instruments define the DPIA whose relevant content may be reused.
+  verified_by: vidibro
 - norm_id: AIA-NORM-A027-P5-AI-OFFICE-TEMPLATE
   source: A027-P011
   quote: The AI Office shall develop a template for a questionnaire, including through an automated tool,

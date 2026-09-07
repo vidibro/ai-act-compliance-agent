@@ -10,6 +10,7 @@ records:
   implementation_reason: The Article 48(3) affixing norm carries the CE-marking check; Article 48(1)
     states the general principles that check applies, not a separate requirement.
   verification_mode: not_reported
+  verified_by: vidibro
 - norm_id: AIA-NORM-A048-P2-DIGITAL-CE-MARKING
   source: A048-P002
   quote: For high-risk AI systems provided digitally, a digital CE marking shall be used, only if it can
@@ -24,6 +25,7 @@ records:
   conditions:
   - the marking is easily accessible through the system interface, a machine-readable code, or other electronic
     means
+  verified_by: vidibro
 - norm_id: AIA-NORM-A048-P3-AFFIX-CE-MARKING
   source: A048-P003
   quote: The CE marking shall be affixed visibly, legibly and indelibly for high-risk AI systems. Where
@@ -36,6 +38,7 @@ records:
   implementation_refs:
   - AIA-PO-A48
   verification_mode: reported_not_judged
+  verified_by: vidibro
 - norm_id: AIA-NORM-A048-P4-FOLLOW-WITH-BODY-NUMBER
   source: A048-P004
   quote: Where applicable, the CE marking shall be followed by the identification number of the notified
@@ -86,3 +89,4 @@ records:
   verification_mode: reported_conditionally
   conditions:
   - other applicable Union law also provides for affixing the CE marking
+  verified_by: vidibro

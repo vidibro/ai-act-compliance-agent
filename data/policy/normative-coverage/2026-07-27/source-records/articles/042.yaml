@@ -14,6 +14,7 @@ records:
   conditions:
   - training and testing data reflect the intended geographical, behavioural, contextual, or functional
     setting
+  verified_by: vidibro
 - norm_id: AIA-NORM-A042-P2-CYBERSECURITY-CERTIFICATE-PRESUMPTION
   source: A042-P002
   quote: High-risk AI systems that have been certified or for which a statement of conformity has been
@@ -32,6 +33,7 @@ records:
   - a Regulation 2019/881 cybersecurity certificate or conformity statement covers the relevant Article
     15 requirements
   - references to the cybersecurity scheme have been published in the Official Journal
+  verified_by: vidibro
 - norm_id: AIA-NORM-A042-P3-CYBER-RESILIENCE-DEEMING
   source: A042-P003
   quote: Where high-risk AI systems fall within the scope of Regulation (EU) 2024/2847 and the conditions
@@ -47,3 +49,4 @@ records:
   conditions:
   - the system falls within Regulation 2024/2847
   - the conditions in Article 12(1) of Regulation 2024/2847 are fulfilled
+  verified_by: vidibro

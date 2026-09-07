@@ -92,6 +92,7 @@ records:
   conditions:
   - the system or model conforms to the relevant common specification or part
   - the common specification covers the relevant requirement or obligation
+  verified_by: vidibro
 - norm_id: AIA-NORM-A041-P4-ASSESS-HARMONISED-STANDARD
   source: A041-P012
   quote: Where a harmonised standard is adopted by a European standardisation organisation and proposed
@@ -134,6 +135,7 @@ records:
   - the provider does not comply with the paragraph 1 common specifications
   implementation_refs:
   - AIA-PO-A41-5
+  verified_by: vidibro
 - norm_id: AIA-NORM-A041-P6-MEMBER-STATE-NOTICE
   source: A041-P014
   quote: Where a Member State considers that a common specification does not entirely meet the requirements
