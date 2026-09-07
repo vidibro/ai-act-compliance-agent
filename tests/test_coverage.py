@@ -1142,3 +1142,77 @@ def test_no_ruling_says_a_chapter_is_unmodelled_while_its_rules_exist(spec):
                 where = f"Art. {article}({para})" if para is not None else f"Art. {article}"
                 stale.append(f"{where} calls {sorted(named)} unmodelled, and rules cite them")
     assert not stale, "\n".join(stale)
+
+
+def test_every_legal_enum_still_matches_the_enacted_list_it_names():
+    """An enum that enumerates an enacted list must have one member per item in that list.
+
+    Membership was correct when each enum was written, and nothing has held it there since: an
+    amendment adding an Annex III area or an Art. 5 point would leave the enum short, every value
+    still parsing and every existing case still passing. The norm inventory partitions the same
+    enacted text, so it is the second opinion — counted here against each enum that names a closed
+    list. A failure means the Act moved: add the member, then the rule, prompt and case behind it.
+
+    Prose is not checked. `child_sexual_abuse_material` shipped naming only half of what Art. 2 of
+    Directive 2011/93/EU defines while its membership was right, and no count would have caught it.
+    """
+    from aiact.norm_loader import load_normative_coverage
+    from aiact.schemas.enums import (
+        AnnexIIIArea,
+        AnnexIProduct,
+        DerogationCondition,
+        ProhibitedPractice,
+        ScopeExclusion,
+    )
+    from aiact.schemas.norm import ConditionGroup, NormKind
+
+    norms = load_normative_coverage().norm_inventory.norms
+    by_id = {norm.norm_id: norm for norm in norms}
+
+    def under(prefix: str) -> list:
+        return [n for n in norms if n.norm_id.startswith(prefix)]
+
+    # Art. 5(1). The Art. 5(1)(h) GDPR saving sits under the same prefix and bans nothing, so the
+    # comparison is against the prohibitions rather than everything the paragraph carries.
+    banned = [n for n in under("AIA-NORM-A005-P1-") if n.kind is NormKind.PROHIBITION]
+    assert len(ProhibitedPractice) == len(banned), (
+        f"{len(ProhibitedPractice)} prohibited practices for {len(banned)} Art. 5(1) prohibitions"
+    )
+
+    # Annex III, one area per numbered point.
+    areas = {
+        n.norm_id.removeprefix("AIA-NORM-ANNEX-III-").split("-")[0].rstrip("ABCDE")
+        for n in under("AIA-NORM-ANNEX-III-")
+    }
+    assert len(AnnexIIIArea) == len(areas), (
+        f"{len(AnnexIIIArea)} Annex III areas for {sorted(areas)} enacted points"
+    )
+
+    # Annex I, one member per listed instrument.
+    assert len(AnnexIProduct) == len(under("AIA-NORM-ANNEX-I-")), (
+        f"{len(AnnexIProduct)} Annex I products for "
+        f"{len(under('AIA-NORM-ANNEX-I-'))} listed instruments"
+    )
+
+    # Art. 2, one member per paragraph that excludes something.
+    excluding = {
+        re.match(r"P(\d+)", n.norm_id.removeprefix("AIA-NORM-A002-")).group(1)
+        for n in under("AIA-NORM-A002-")
+        if "EXCLUSION" in n.norm_id or "CARVEOUT" in n.norm_id
+    }
+    assert {m.paragraph for m in ScopeExclusion} == excluding, (
+        f"ScopeExclusion covers {sorted(m.paragraph for m in ScopeExclusion)}, "
+        f"Art. 2 excludes in {sorted(excluding, key=int)}"
+    )
+
+    # Art. 6(3), one member per limb of the derogation's own any_of.
+    derogation = by_id["AIA-NORM-A006-P3-INSIGNIFICANT-RISK-EXCEPTION"].conditions[0]
+    assert isinstance(derogation, ConditionGroup)
+    limbs = next(
+        operand for operand in derogation.operands if isinstance(operand, ConditionGroup)
+    )
+    assert limbs.operator == "any_of"
+    assert len(DerogationCondition) == len(limbs.operands), (
+        f"{len(DerogationCondition)} derogation conditions for "
+        f"{len(limbs.operands)} Art. 6(3) limbs"
+    )
