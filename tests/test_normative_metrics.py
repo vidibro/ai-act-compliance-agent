@@ -1806,9 +1806,12 @@ def test_inventory_cannot_be_misreported_as_independently_approved(metrics):
 
 
 def test_semantic_pass_finds_propositions_a_shall_scan_misses(metrics):
-    assert metrics.shall_vs_semantic_disagreements == 572
-    assert metrics.shall_token_candidate_recall == pytest.approx(915 / 1487)
+    assert metrics.shall_vs_semantic_disagreements == 573
+    assert metrics.shall_token_candidate_recall == pytest.approx(914 / 1487)
     assert "AIA-NORM-A011-P1-SIMPLIFY" in metrics.semantic_norms_without_shall_token
+    # Art. 26(5)'s informing limb: the paragraph's only `shall` governs the monitoring limb
+    # before it, so the duty to inform the provider carries no modal of its own.
+    assert "AIA-NORM-A026-P5-INFORM-PROVIDER" in metrics.semantic_norms_without_shall_token
     assert "AIA-NORM-A043-P5-AMEND" in metrics.semantic_norms_without_shall_token
     assert "AIA-NORM-A060-P4-PERMISSION" in metrics.semantic_norms_without_shall_token
     assert "AIA-NORM-A075-P1E-WITHDRAW" in metrics.semantic_norms_without_shall_token

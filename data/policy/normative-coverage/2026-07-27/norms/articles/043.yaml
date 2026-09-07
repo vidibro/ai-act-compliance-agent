@@ -226,7 +226,9 @@ norms:
   - AIA-TEXT-A043-P3
   qualifier_spans: []
   effective_date_spans: []
-  conditions: []
+  conditions:
+  - the high-risk AI system is covered by Union harmonisation legislation listed in Section A of Annex
+    I
   exceptions: []
   mandatory_content: []
   dependencies: []
@@ -262,7 +264,9 @@ norms:
   - AIA-TEXT-A043-P3
   qualifier_spans: []
   effective_date_spans: []
-  conditions: []
+  conditions:
+  - the high-risk AI system is covered by Union harmonisation legislation listed in Section A of Annex
+    I
   exceptions: []
   mandatory_content: []
   dependencies: []
@@ -298,7 +302,9 @@ norms:
   - AIA-TEXT-A043-P3
   qualifier_spans: []
   effective_date_spans: []
-  conditions: []
+  conditions:
+  - the high-risk AI system is covered by Union harmonisation legislation listed in Section A of Annex
+    I
   exceptions: []
   mandatory_content: []
   dependencies: []
@@ -336,7 +342,9 @@ norms:
   - AIA-TEXT-A043-P3
   qualifier_spans: []
   effective_date_spans: []
-  conditions: []
+  conditions:
+  - the high-risk AI system is covered by Union harmonisation legislation listed in Section A of Annex
+    I
   exceptions: []
   mandatory_content: []
   dependencies:
@@ -380,7 +388,10 @@ norms:
   - AIA-TEXT-A043-P3
   qualifier_spans: []
   effective_date_spans: []
-  conditions: []
+  conditions:
+  - the body has been notified under Union harmonisation legislation listed in Section A of Annex I
+  - the body's compliance with Article 31(4), (5), (10) and (11) has been assessed in the context of the
+    notification procedure in accordance with the relevant Union harmonisation legislation
   exceptions: []
   mandatory_content: []
   dependencies: []
@@ -414,7 +425,8 @@ norms:
   - AIA-TEXT-A043-P3
   qualifier_spans: []
   effective_date_spans: []
-  conditions: []
+  conditions:
+  - the body has been notified under Union harmonisation legislation listed in Section A of Annex I
   exceptions: []
   mandatory_content: []
   dependencies: []
@@ -449,7 +461,11 @@ norms:
   - AIA-TEXT-A043-P3
   qualifier_spans: []
   effective_date_spans: []
-  conditions: []
+  conditions:
+  - Union harmonisation legislation listed in Section A of Annex I gives the product manufacturer an option
+    to rely on a conformity assessment not involving a third party
+  - the manufacturer has applied harmonised standards ensuring compliance with all the requirements of
+    that legislation
   exceptions: []
   mandatory_content: []
   dependencies: []
@@ -484,7 +500,9 @@ norms:
   - AIA-TEXT-A043-P3
   qualifier_spans: []
   effective_date_spans: []
-  conditions: []
+  conditions:
+  - the product is covered by Union harmonisation legislation listed in Section A of Annex I
+  - the product is classified as a high-risk AI system under Article 6(1)
   exceptions: []
   mandatory_content: []
   dependencies: []
@@ -519,7 +537,10 @@ norms:
   - AIA-TEXT-A043-P3
   qualifier_spans: []
   effective_date_spans: []
-  conditions: []
+  conditions:
+  - the product is covered by Union harmonisation legislation listed in Section A of Annex I
+  - the product includes a high-risk AI system as a safety component
+  - third-party conformity assessment is not required by that Union harmonisation legislation
   exceptions: []
   mandatory_content: []
   dependencies: []
@@ -555,7 +576,10 @@ norms:
   - AIA-TEXT-A043-P3
   qualifier_spans: []
   effective_date_spans: []
-  conditions: []
+  conditions:
+  - the high-risk AI system is covered by Union harmonisation legislation listed in Section A of Annex
+    I
+  - the high-risk AI system also falls within one of the categories listed in Annex III
   exceptions: []
   mandatory_content: []
   dependencies: []

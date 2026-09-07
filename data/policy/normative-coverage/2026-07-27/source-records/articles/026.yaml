@@ -73,8 +73,9 @@ records:
   verification_mode: reported_not_judged
 - norm_id: AIA-NORM-A026-P5-MONITOR
   source: A026-P5
-  quote: Deployers shall monitor the operation of the high-risk AI system
-  action: monitor system operation using the instructions for use
+  quote: Deployers shall monitor the operation of the high-risk AI system on the basis of the instructions
+    for use
+  action: monitor system operation on the basis of the instructions for use
   subject_ref: deployer
   subject_category: supported_operator
   implementation_refs:
@@ -82,11 +83,12 @@ records:
   verification_mode: reported_not_judged
 - norm_id: AIA-NORM-A026-P5-INFORM-PROVIDER
   source: A026-P5
-  quote: Deployers shall monitor the operation of the high-risk AI system on the basis of the instructions
-    for use and, where relevant, inform providers in accordance with Article 72.
+  quote: where relevant, inform providers in accordance with Article 72
   action: inform the provider where monitoring makes that relevant
   subject_ref: deployer
   subject_category: supported_operator
+  conditions:
+  - monitoring makes informing the provider relevant
   implementation_refs:
   - AIA-DP-A26
   verification_mode: reported_not_judged
@@ -97,6 +99,9 @@ records:
   action: notify the provider or distributor and market-surveillance authority of an Article 79(1) risk
   subject_ref: deployer
   subject_category: supported_operator
+  conditions:
+  - the deployer has reason to consider that use in accordance with the instructions may result in the
+    AI system presenting a risk within the meaning of Article 79(1)
   implementation_refs:
   - AIA-DP-A26
   verification_mode: reported_not_judged
@@ -106,6 +111,9 @@ records:
   action: suspend use when compliant use may present an Article 79(1) risk
   subject_ref: deployer
   subject_category: supported_operator
+  conditions:
+  - the deployer has reason to consider that use in accordance with the instructions may result in the
+    AI system presenting a risk within the meaning of Article 79(1)
   implementation_refs:
   - AIA-DP-A26
   verification_mode: reported_not_judged
@@ -116,6 +124,8 @@ records:
   action: report an identified serious incident in the enacted sequence
   subject_ref: deployer
   subject_category: supported_operator
+  conditions:
+  - the deployer has identified a serious incident
   implementation_refs:
   - AIA-DP-A26
   verification_mode: reported_not_judged
@@ -126,26 +136,37 @@ records:
   subject_ref: deployer
   subject_category: supported_operator
   kind: applicability
+  conditions:
+  - the deployer is not able to reach the provider
   implementation_refs:
   - AIA-DP-A26
   verification_mode: reported_not_judged
 - norm_id: AIA-NORM-A026-P5-SENSITIVE
   source: A026-P5
-  quote: This obligation shall not cover sensitive operational data
+  quote: This obligation shall not cover sensitive operational data of deployers of AI systems which are
+    law enforcement authorities.
   action: exclude sensitive operational data of law-enforcement deployers
   subject_ref: deployer
   subject_category: supported_operator
   kind: applicability
+  conditions:
+  - the deployer is a law enforcement authority
   implementation_refs:
   - AIA-DP-A26
   verification_mode: reported_conditionally
 - norm_id: AIA-NORM-A026-P5-FINANCIAL
   source: A026-P5
-  quote: shall be deemed to be fulfilled by complying with the rules on internal governance arrangements
+  quote: For deployers that are financial institutions subject to requirements regarding their internal
+    governance, arrangements or processes under Union financial services law, the monitoring obligation
+    set out in the first subparagraph shall be deemed to be fulfilled by complying with the rules on internal
+    governance arrangements, processes and mechanisms pursuant to the relevant financial service law.
   action: deem financial institutions compliant through relevant financial-services governance rules
   subject_ref: financial_institution_deployer
   subject_category: supported_operator
   kind: legal_consequence
+  conditions:
+  - the deployer is a financial institution subject to requirements regarding its internal governance,
+    arrangements or processes under Union financial services law
   implementation_refs:
   - AIA-DP-A26
   verification_mode: reported_conditionally
