@@ -86,6 +86,38 @@ cases:
       Differs from cv_parsing_fields by a single sentence. The decisive fact is buried in an
       otherwise identical parsing description — a keyword checker sees the same words in both.
 
+  # --- PROHIBITED (Art. 5)(bb) — the limb the plain-language name does not cover ---------------
+  - case_id: synthetic_minor_livestream
+    description: >-
+      A hosted service that renders a continuous synthetic video stream to a viewer in real time,
+      following typed direction. Its published purpose is generating sexually explicit depictions
+      of minors on demand. Nothing is stored: each session is rendered live and discarded.
+    expected_risk_class: prohibited
+    expected_is_ai_system: true
+    is_ai_basis: >-
+      Generates video content from typed direction — an inference from input to synthetic output,
+      not retrieval of stored footage.
+    expected_prohibited_practice: child_sexual_abuse_material
+    expected_transparency_duties: [synthetic_content_marking]
+    transparency_basis: >-
+      Art. 50(2) binds providers of systems generating synthetic video to mark outputs in a
+      machine-readable format detectable as artificially generated. It attaches to the system type,
+      so it stands beside the Art. 5 prohibition rather than being displaced by it; the streaming
+      form does not reach 50(2)'s carve-out for assistive editing that leaves input semantics
+      intact.
+    decisive_fact: >-
+      Art. 5(1)(bb) reaches material or a PERFORMANCE within Art. 2, points (c) and (e), of
+      Directive 2011/93/EU. Point (e) is a live exhibition, expressly including one carried by
+      information and communication technology, so a real-time stream is caught even though nothing
+      is stored. Art. 5(1a) is satisfied on its first limb: this is the system's intended purpose.
+    difficulty: buried
+    notes: >-
+      Guards the half of (bb) that the practice's own name loses. `child_sexual_abuse_material`
+      reads as stored files, and a classifier leaning on the name rather than the enacted text
+      would answer none for a stream that persists nothing. The "nothing is stored" sentence is the
+      trap. Prohibited from 2 December 2026 under `applies_from`, which changes the report's note
+      and not the class.
+
   # --- PROHIBITED (Art. 5) — the clean, defensible case ---------------------------------------
   - case_id: emotion_monitoring_employees
     description: >-
