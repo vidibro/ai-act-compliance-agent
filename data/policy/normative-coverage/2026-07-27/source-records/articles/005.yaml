@@ -574,6 +574,9 @@ records:
   action: include at least the information specified in Article 5(6) in each use notification
   subject_ref: law_enforcement_authority
   subject_category: public_authority
+  conditions:
+  - a use of a real-time remote biometric identification system in publicly accessible spaces for
+    law enforcement purposes is notified under Article 5(4)
   kind: obligation
   verification_mode: reported_not_judged
   dependencies:
@@ -587,6 +590,9 @@ records:
   action: exclude sensitive operational data from each use notification
   subject_ref: law_enforcement_authority
   subject_category: public_authority
+  conditions:
+  - a use of a real-time remote biometric identification system in publicly accessible spaces for
+    law enforcement purposes is notified under Article 5(4)
   kind: prohibition
   verification_mode: reported_not_judged
 - norm_id: AIA-NORM-A005-P5-AUTHORISE-USE

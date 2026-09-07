@@ -389,6 +389,9 @@ records:
     missing-person link
   subject_ref: law_enforcement_deployer
   subject_category: supported_operator
+  conditions:
+  - the deployer uses a high-risk AI system for post-remote biometric identification for law
+    enforcement purposes
   kind: prohibition
   implementation_refs: *id005
   verification_mode: reported_not_judged
@@ -401,6 +404,9 @@ records:
     system's output
   subject_ref: law_enforcement_deployer
   subject_category: supported_operator
+  conditions:
+  - the deployer uses a high-risk AI system for post-remote biometric identification for law
+    enforcement purposes
   kind: prohibition
   implementation_refs: *id005
   verification_mode: reported_not_judged
@@ -426,6 +432,9 @@ records:
     of purpose or deployer
   subject_ref: post_remote_biometric_deployer
   subject_category: supported_operator
+  conditions:
+  - the deployer uses a high-risk AI system for post-remote biometric identification for law
+    enforcement purposes
   implementation_refs: *id005
   verification_mode: reported_not_judged
 - norm_id: AIA-NORM-A026-P10-MAKE-FILE-AVAILABLE
@@ -446,6 +455,10 @@ records:
   action: exclude sensitive law-enforcement operational data when making the police-file record available
   subject_ref: post_remote_biometric_deployer
   subject_category: supported_operator
+  conditions:
+  - the deployer uses a high-risk AI system for post-remote biometric identification for law
+    enforcement purposes
+  - the use is documented in the police file and made available on request under Article 26(10)
   kind: applicability
   implementation_refs: *id005
   verification_mode: reported_conditionally
@@ -481,6 +494,10 @@ records:
   action: exclude sensitive law-enforcement operational data from the annual reports
   subject_ref: post_remote_biometric_deployer
   subject_category: supported_operator
+  conditions:
+  - the deployer uses a high-risk AI system for post-remote biometric identification for law
+    enforcement purposes
+  - annual reports are submitted under Article 26(10)
   kind: applicability
   implementation_refs: *id005
   verification_mode: reported_conditionally
@@ -490,6 +507,10 @@ records:
   action: aggregate annual reports across multiple deployments
   subject_ref: post_remote_biometric_deployer
   subject_category: supported_operator
+  conditions:
+  - the deployer uses a high-risk AI system for post-remote biometric identification for law
+    enforcement purposes
+  - annual reports are submitted under Article 26(10)
   kind: permission
   implementation_refs: *id005
   verification_mode: reported_conditionally

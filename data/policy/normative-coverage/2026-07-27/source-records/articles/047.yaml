@@ -117,6 +117,9 @@ records:
   action: include all information needed to identify every Union harmonisation law covered
   subject_ref: provider
   subject_category: supported_operator
+  conditions:
+  - the high-risk AI system is subject to other Union harmonisation legislation which also requires
+    an EU declaration of conformity
   implementation_refs:
   - AIA-PO-A47-3
   verification_mode: reported_not_judged

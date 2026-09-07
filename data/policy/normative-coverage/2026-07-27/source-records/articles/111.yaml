@@ -5,6 +5,10 @@ records:
   action: bring pre-2-August-2027 Annex X large-scale IT system AI components into AI Act compliance by 31 December 2030
   subject_ref: annex_x_large_scale_it_system_operator
   subject_category: supported_operator
+  conditions:
+  - the AI system is a component of a large-scale IT system established by a legal act listed in
+    Annex X
+  - the system was placed on the market or put into service before 2 August 2027
   product_scope: in_scope
   product_scope_reason: This is a transitional compliance duty for operators of AI components in covered systems.
   implementation_mode: missing
@@ -39,6 +43,8 @@ records:
   action: bring legacy high-risk systems intended for public-authority use into compliance by 2 August 2030
   subject_ref: high_risk_provider_and_deployer
   subject_category: supported_operator
+  conditions:
+  - the high-risk AI system is intended to be used by public authorities
   product_scope: in_scope
   product_scope_reason: This is a transitional compliance duty for supported providers and deployers.
   implementation_mode: missing

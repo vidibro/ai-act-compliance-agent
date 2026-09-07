@@ -16,7 +16,10 @@ norms:
   - AIA-TEXT-A111-P001
   qualifier_spans: []
   effective_date_spans: []
-  conditions: []
+  conditions:
+  - the AI system is a component of a large-scale IT system established by a legal act listed in Annex
+    X
+  - the system was placed on the market or put into service before 2 August 2027
   exceptions: []
   mandatory_content: []
   dependencies: []
@@ -123,7 +126,8 @@ norms:
   - AIA-TEXT-A111-P003
   qualifier_spans: []
   effective_date_spans: []
-  conditions: []
+  conditions:
+  - the high-risk AI system is intended to be used by public authorities
   exceptions: []
   mandatory_content: []
   dependencies: []

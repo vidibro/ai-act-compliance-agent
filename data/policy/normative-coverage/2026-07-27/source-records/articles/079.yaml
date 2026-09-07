@@ -39,6 +39,8 @@ records:
   action: cooperate as necessary with market surveillance and fundamental-rights authorities during an Article 79 evaluation
   subject_ref: operator
   subject_category: supported_operator
+  conditions:
+  - the market surveillance authority is carrying out an Article 79(2) evaluation of the AI system
   implementation_refs: [AIA-ALL-A79]
   verification_mode: reported_not_judged
 - norm_id: AIA-NORM-A079-P2-REQUIRE-CORRECTIVE-ACTION

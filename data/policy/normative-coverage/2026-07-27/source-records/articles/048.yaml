@@ -43,6 +43,8 @@ records:
   action: place the responsible notified body's identification number after the CE marking where applicable
   subject_ref: provider
   subject_category: supported_operator
+  conditions:
+  - a notified body was responsible for the Article 43 conformity assessment procedures
   implementation_refs:
   - AIA-PO-A48-4
   verification_mode: reported_not_judged
@@ -54,6 +56,8 @@ records:
     or authorised representative
   subject_ref: provider
   subject_category: supported_operator
+  conditions:
+  - a notified body was responsible for the Article 43 conformity assessment procedures
   implementation_refs:
   - AIA-PO-A48-4
   verification_mode: reported_not_judged
@@ -64,6 +68,9 @@ records:
   action: include the notified-body number in promotional material claiming CE-marking compliance
   subject_ref: provider
   subject_category: supported_operator
+  conditions:
+  - a notified body was responsible for the Article 43 conformity assessment procedures
+  - promotional material mentions that the high-risk AI system fulfils the CE marking requirements
   implementation_refs:
   - AIA-PO-A48-4
   verification_mode: reported_not_judged

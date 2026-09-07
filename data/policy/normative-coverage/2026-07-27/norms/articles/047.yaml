@@ -347,7 +347,9 @@ norms:
   - AIA-TEXT-A047-P003
   qualifier_spans: []
   effective_date_spans: []
-  conditions: []
+  conditions:
+  - the high-risk AI system is subject to other Union harmonisation legislation which also requires an
+    EU declaration of conformity
   exceptions: []
   mandatory_content: []
   dependencies: []
