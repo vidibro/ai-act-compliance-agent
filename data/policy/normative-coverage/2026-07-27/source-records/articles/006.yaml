@@ -29,6 +29,7 @@ records:
   implementation_refs:
   - AIA-CQ-ANNEX-I
   - AIA-CQ-THIRD-PARTY-ASSESSMENT
+  verified_by: vidibro
 - norm_id: AIA-NORM-A006-P1A-NON-SAFETY-ASSISTANCE
   source: A006-P004
   quote: AI systems that are solely used for non-safety related aspects of user assistance, performance
@@ -50,6 +51,7 @@ records:
   implementation_mode: applicability_question
   implementation_refs:
   - AIA-CQ-ANNEX-I
+  verified_by: vidibro
 - norm_id: AIA-NORM-A006-P1B-HEALTH-SAFETY-OVERRIDE
   source: A006-P005
   quote: AI systems the failure or malfunctioning of which would endanger health and safety shall qualify
@@ -69,6 +71,7 @@ records:
   implementation_mode: applicability_question
   implementation_refs:
   - AIA-CQ-ANNEX-I
+  verified_by: vidibro
 - norm_id: AIA-NORM-A006-P1C-NON-SAFETY-ASSESSMENT
   source: A006-P006
   quote: A product that is required to undergo a third-party conformity assessment solely due to risks
@@ -86,6 +89,7 @@ records:
   implementation_mode: applicability_question
   implementation_refs:
   - AIA-CQ-THIRD-PARTY-ASSESSMENT
+  verified_by: vidibro
 - norm_id: AIA-NORM-A006-P2-ANNEX-III-HIGH-RISK
   source: A006-P007
   quote: AI systems referred to in Annex III shall be considered to be high-risk.
@@ -101,6 +105,7 @@ records:
   implementation_mode: applicability_question
   implementation_refs:
   - AIA-CQ-ANNEX-III
+  verified_by: vidibro
 - norm_id: AIA-NORM-A006-P3-INSIGNIFICANT-RISK-EXCEPTION
   source: A006-P008
   quote: an AI system referred to in Annex III shall not be considered to be high-risk where it does not
@@ -147,6 +152,7 @@ records:
   implementation_refs:
   - AIA-CQ-DEROGATION
   - AIA-CQ-SIGNIFICANT-RISK
+  verified_by: vidibro
 - norm_id: AIA-NORM-A006-P3-PROFILING-OVERRIDE
   source: A006-P014
   quote: an AI system referred to in Annex III shall always be considered to be high-risk where the AI
@@ -168,6 +174,7 @@ records:
   implementation_mode: applicability_question
   implementation_refs:
   - AIA-CQ-PROFILING
+  verified_by: vidibro
 - norm_id: AIA-NORM-A006-P4-DOCUMENT-ASSESSMENT
   source: A006-P015
   quote: A provider who considers that an AI system referred to in Annex III is not high-risk shall document

@@ -94,8 +94,11 @@ def test_article_six_keeps_four_alternatives_and_human_review_qualification(corr
     assert "preparatory task" in alternatives.operands[3]
     assert "profiling of natural persons is always high-risk" in norm.exceptions[0]
     assert "AIA-TEXT-A006-P014" in norm.qualifier_spans
-    assert norm.review.status.value == "proposed"
-    # Existing independent source approvals are not new norm approvals.
+    # The norm and its spans carry separate approvals, taken at different times against different
+    # questions: the spans that this is the enacted text, the norm that these four alternatives are
+    # what it says. Neither implies the other, which is why both are asserted here.
+    assert norm.review.status.value == "approved"
+    assert norm.review.verified_by == "vidibro"
     assert all(
         s.review.verified_by == "vidibro"
         for s in corrected_bundle.text_review.segments
