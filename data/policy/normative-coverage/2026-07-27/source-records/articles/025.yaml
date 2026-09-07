@@ -94,6 +94,7 @@ records:
   implementation_refs: &id004
   - AIA-IP-A25-2
   verification_mode: reported_not_judged
+  verified_by: vidibro
 - norm_id: AIA-NORM-A025-P2-PROVIDE-ASSISTANCE
   source: A025-P006
   quote: shall make available the necessary information and provide the reasonably expected technical
@@ -117,6 +118,7 @@ records:
   - A025-P008
   - A025-P009
   - A025-P010
+  verified_by: vidibro
 - norm_id: AIA-NORM-A025-P2-NO-COOPERATION-DUTY
   source: A025-P011
   quote: This paragraph shall not apply in cases where the initial provider has clearly specified that
@@ -131,6 +133,7 @@ records:
   - the initial provider clearly specified that its AI system must not be changed into a high-risk system
   implementation_refs: *id004
   verification_mode: reported_conditionally
+  verified_by: vidibro
 - norm_id: AIA-NORM-A025-P3-A-PRODUCT-MANUFACTURER-ROLE
   source: A025-P013
   quote: the high-risk AI system is placed on the market together with the product under the name or trademark
@@ -193,6 +196,7 @@ records:
   - necessary technical access
   - other necessary assistance
   - generally acknowledged state-of-the-art basis
+  verified_by: vidibro
 - norm_id: AIA-NORM-A025-P4-OPEN-SOURCE-EXCEPTION
   source: A025-P015
   quote: This paragraph shall not apply to third parties making accessible to the public tools, services,
@@ -206,6 +210,7 @@ records:
   - general-purpose AI models remain subject to the written-agreement duty
   implementation_refs: *id006
   verification_mode: reported_conditionally
+  verified_by: vidibro
 - norm_id: AIA-NORM-A025-P4-AI-OFFICE-MODEL-TERMS
   source: A025-P016
   quote: The AI Office may develop and recommend voluntary model terms for contracts between providers
@@ -263,3 +268,4 @@ records:
       law
     resolution: external_recorded
     detail: The referenced external law defines the protected rights and information.
+  verified_by: vidibro

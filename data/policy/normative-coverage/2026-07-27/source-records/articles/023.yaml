@@ -14,6 +14,7 @@ records:
   verification_mode: reported_not_judged
   qualifier_spans: &id003
   - A023-P001
+  verified_by: vidibro
 - norm_id: AIA-NORM-A023-P1-B-VERIFY-TECHNICAL-DOCUMENTATION
   source: A023-P003
   quote: the provider has drawn up the technical documentation in accordance with Article 11 and Annex
@@ -30,6 +31,7 @@ records:
   - dependency_ref: AIA-NORM-A011-P1-ANNEX-IV
     resolution: internal_resolved
     detail: Article 11(1) and Annex IV supply the referenced technical-documentation requirements.
+  verified_by: vidibro
 - norm_id: AIA-NORM-A023-P1-C-VERIFY-MARKING-AND-DOCUMENTS
   source: A023-P004
   quote: the system bears the required CE marking and is accompanied by the EU declaration of conformity
@@ -46,6 +48,7 @@ records:
   - EU declaration of conformity
   - instructions for use
   qualifier_spans: *id003
+  verified_by: vidibro
 - norm_id: AIA-NORM-A023-P1-D-VERIFY-REPRESENTATIVE
   source: A023-P005
   quote: the provider has appointed an authorised representative in accordance with Article 22(1)
@@ -61,6 +64,7 @@ records:
   - dependency_ref: AIA-NORM-A022-P1-APPOINT-REPRESENTATIVE
     resolution: internal_resolved
     detail: Article 22(1) supplies the referenced appointment requirement.
+  verified_by: vidibro
 - norm_id: AIA-NORM-A023-P2-WITHHOLD-NONCONFORMING-SYSTEM
   source: A023-P006
   quote: Where an importer has sufficient reason to consider that a high-risk AI system is not in conformity
@@ -75,6 +79,7 @@ records:
     falsified
   implementation_refs: *id002
   verification_mode: reported_not_judged
+  verified_by: vidibro
 - norm_id: AIA-NORM-A023-P2-INFORM-RISK
   source: A023-P006
   quote: Where the high-risk AI system presents a risk within the meaning of Article 79(1), the importer
@@ -96,6 +101,7 @@ records:
   - dependency_ref: Article 79(1) of this Regulation
     resolution: unresolved
     detail: Article 79(1) defines the referenced risk situation and has not yet been semantically reviewed.
+  verified_by: vidibro
 - norm_id: AIA-NORM-A023-P3-IDENTIFY-IMPORTER
   source: A023-P007
   quote: Importers shall indicate their name, registered trade name or registered trade mark, and the
@@ -110,6 +116,7 @@ records:
   mandatory_content:
   - importer name and registered trade name or trade mark
   - importer contact address
+  verified_by: vidibro
 - norm_id: AIA-NORM-A023-P4-PRESERVE-COMPLIANCE
   source: A023-P008
   quote: Importers shall ensure that, while a high-risk AI system is under their responsibility, storage
@@ -121,6 +128,7 @@ records:
   subject_category: supported_operator
   implementation_refs: *id002
   verification_mode: reported_not_judged
+  verified_by: vidibro
 - norm_id: AIA-NORM-A023-P5-KEEP-DOCUMENTS
   source: A023-P009
   quote: Importers shall keep, for a period of 10 years after the high-risk AI system has been placed
@@ -136,6 +144,7 @@ records:
   - notified-body certificate where applicable
   - instructions for use
   - EU declaration of conformity
+  verified_by: vidibro
 - norm_id: AIA-NORM-A023-P6-PROVIDE-CONFORMITY-INFORMATION
   source: A023-P010
   quote: Importers shall provide the relevant competent authorities, upon a reasoned request, with all
@@ -150,6 +159,7 @@ records:
   - a relevant competent authority makes a reasoned request
   implementation_refs: *id002
   verification_mode: reported_not_judged
+  verified_by: vidibro
 - norm_id: AIA-NORM-A023-P6-AUTHORITY-LANGUAGE
   source: A023-P010
   quote: Importers shall provide the relevant competent authorities, upon a reasoned request, with all
@@ -162,6 +172,7 @@ records:
   conditions: *id004
   implementation_refs: *id002
   verification_mode: reported_not_judged
+  verified_by: vidibro
 - norm_id: AIA-NORM-A023-P6-TECHNICAL-DOCUMENTATION-AVAILABLE
   source: A023-P010
   quote: For this purpose, they shall also ensure that the technical documentation can be made available
@@ -172,6 +183,7 @@ records:
   conditions: *id004
   implementation_refs: *id002
   verification_mode: reported_not_judged
+  verified_by: vidibro
 - norm_id: AIA-NORM-A023-P7-COOPERATE
   source: A023-P011
   quote: Importers shall cooperate with the relevant competent authorities in any action those authorities

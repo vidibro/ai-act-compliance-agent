@@ -11,6 +11,7 @@ records:
   implementation_refs: &id001
   - AIA-DP-A26
   verification_mode: reported_not_judged
+  verified_by: vidibro
 - norm_id: AIA-NORM-A026-P2-HUMAN-OVERSIGHT-ASSIGNMENT
   source: A026-P2
   quote: Deployers shall assign human oversight to natural persons who have the necessary competence,
@@ -25,6 +26,7 @@ records:
   - necessary training
   - necessary authority
   - necessary support
+  verified_by: vidibro
 - norm_id: AIA-NORM-A026-P3-PRESERVE-OTHER-OBLIGATIONS
   source: A026-P3
   quote: The obligations set out in paragraphs 1 and 2, are without prejudice to other deployer obligations
@@ -71,6 +73,7 @@ records:
   - the deployer exercises control over the input data
   implementation_refs: *id001
   verification_mode: reported_not_judged
+  verified_by: vidibro
 - norm_id: AIA-NORM-A026-P5-MONITOR
   source: A026-P5
   quote: Deployers shall monitor the operation of the high-risk AI system on the basis of the instructions
@@ -226,6 +229,7 @@ records:
     law
   implementation_refs: *id001
   verification_mode: reported_not_judged
+  verified_by: vidibro
 - norm_id: AIA-NORM-A026-P7-INFORM-WORKERS
   source: A026-P7
   quote: "Before putting into service or using a high-risk AI system at the workplace, deployers who are\

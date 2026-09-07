@@ -16,6 +16,7 @@ records:
   - dependency_ref: AIA-NORM-A012-P1-AUTOMATIC-LOGGING
     resolution: internal_resolved
     detail: Article 12(1) supplies the referenced automatic-logging requirement.
+  verified_by: vidibro
 - norm_id: AIA-NORM-A019-P1-PURPOSE-APPROPRIATE-PERIOD
   source: A019-P001
   quote: the logs shall be kept for a period appropriate to the intended purpose of the high-risk AI system,
@@ -28,6 +29,7 @@ records:
   - "the automatically generated logs are under the provider\u2019s control"
   implementation_refs: *id001
   verification_mode: reported_not_judged
+  verified_by: vidibro
 - norm_id: AIA-NORM-A019-P1-SIX-MONTH-MINIMUM
   source: A019-P001
   quote: the logs shall be kept for a period appropriate to the intended purpose of the high-risk AI system,
@@ -40,6 +42,7 @@ records:
   - "the automatically generated logs are under the provider\u2019s control"
   implementation_refs: *id001
   verification_mode: reported_not_judged
+  verified_by: vidibro
 - norm_id: AIA-NORM-A019-P1-OTHER-LAW-PERIOD
   source: A019-P001
   quote: unless provided otherwise in the applicable Union or national law, in particular in Union law
@@ -52,6 +55,7 @@ records:
   - applicable Union or national law provides a different retention period
   implementation_refs: *id001
   verification_mode: reported_conditionally
+  verified_by: vidibro
 - norm_id: AIA-NORM-A019-P2-FINANCIAL-DOCUMENTATION
   source: A019-P002
   quote: Providers that are financial institutions subject to requirements regarding their internal governance,
@@ -67,3 +71,4 @@ records:
     law
   implementation_refs: *id001
   verification_mode: reported_not_judged
+  verified_by: vidibro

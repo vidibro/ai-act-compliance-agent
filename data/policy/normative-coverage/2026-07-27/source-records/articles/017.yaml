@@ -9,6 +9,7 @@ records:
   implementation_refs: &id001
   - AIA-PO-A17
   verification_mode: reported_not_judged
+  verified_by: vidibro
 - norm_id: AIA-NORM-A017-P1-SYSTEMATIC-DOCUMENTATION
   source: A017-P001
   quote: That system shall be documented in a systematic and orderly manner in the form of written policies,
@@ -18,6 +19,7 @@ records:
   subject_category: supported_operator
   implementation_refs: *id001
   verification_mode: reported_not_judged
+  verified_by: vidibro
 - norm_id: AIA-NORM-A017-P1-WRITTEN-DOCUMENTATION
   source: A017-P001
   quote: That system shall be documented in a systematic and orderly manner in the form of written policies,
@@ -27,6 +29,7 @@ records:
   subject_category: supported_operator
   implementation_refs: *id001
   verification_mode: reported_not_judged
+  verified_by: vidibro
 - norm_id: AIA-NORM-A017-P1-A-REGULATORY-STRATEGY
   source: A017-P002
   quote: a strategy for regulatory compliance, including compliance with conformity assessment procedures
@@ -39,6 +42,7 @@ records:
   - A017-P001
   implementation_refs: *id001
   verification_mode: reported_not_judged
+  verified_by: vidibro
 - norm_id: AIA-NORM-A017-P1-B-DESIGN-PROCESSES
   source: A017-P003
   quote: techniques, procedures and systematic actions to be used for the design, design control and design
@@ -50,6 +54,7 @@ records:
   qualifier_spans: *id002
   implementation_refs: *id001
   verification_mode: reported_not_judged
+  verified_by: vidibro
 - norm_id: AIA-NORM-A017-P1-C-DEVELOPMENT-PROCESSES
   source: A017-P004
   quote: techniques, procedures and systematic actions to be used for the development, quality control
@@ -61,6 +66,7 @@ records:
   qualifier_spans: *id002
   implementation_refs: *id001
   verification_mode: reported_not_judged
+  verified_by: vidibro
 - norm_id: AIA-NORM-A017-P1-D-TESTING-PROCESSES
   source: A017-P005
   quote: examination, test and validation procedures to be carried out before, during and after the development
@@ -72,6 +78,7 @@ records:
   qualifier_spans: *id002
   implementation_refs: *id001
   verification_mode: reported_not_judged
+  verified_by: vidibro
 - norm_id: AIA-NORM-A017-P1-E-SPECIFICATIONS
   source: A017-P006
   quote: technical specifications, including standards, to be applied and, where the relevant harmonised
@@ -84,6 +91,7 @@ records:
   qualifier_spans: *id002
   implementation_refs: *id001
   verification_mode: reported_not_judged
+  verified_by: vidibro
 - norm_id: AIA-NORM-A017-P1-F-DATA-MANAGEMENT
   source: A017-P007
   quote: systems and procedures for data management, including data acquisition, data collection, data
@@ -97,6 +105,7 @@ records:
   qualifier_spans: *id002
   implementation_refs: *id001
   verification_mode: reported_not_judged
+  verified_by: vidibro
 - norm_id: AIA-NORM-A017-P1-G-RISK-MANAGEMENT
   source: A017-P008
   quote: the risk management system referred to in Article 9
@@ -110,6 +119,7 @@ records:
   - dependency_ref: AIA-NORM-A009-P1-ESTABLISH
     resolution: internal_resolved
     detail: Article 9 supplies the referenced risk-management-system obligation.
+  verified_by: vidibro
 - norm_id: AIA-NORM-A017-P1-H-POST-MARKET-MONITORING
   source: A017-P009
   quote: the setting-up, implementation and maintenance of a post-market monitoring system, in accordance
@@ -126,6 +136,7 @@ records:
     resolution: unresolved
     detail: Article 72 supplies the post-market monitoring requirements and has not yet been semantically
       reviewed.
+  verified_by: vidibro
 - norm_id: AIA-NORM-A017-P1-I-INCIDENT-REPORTING
   source: A017-P010
   quote: procedures related to the reporting of a serious incident in accordance with Article 73
@@ -140,6 +151,7 @@ records:
     resolution: unresolved
     detail: Article 73 supplies the serious-incident reporting requirements and has not yet been semantically
       reviewed.
+  verified_by: vidibro
 - norm_id: AIA-NORM-A017-P1-J-COMMUNICATION
   source: A017-P011
   quote: the handling of communication with national competent authorities, other relevant authorities,
@@ -152,6 +164,7 @@ records:
   qualifier_spans: *id002
   implementation_refs: *id001
   verification_mode: reported_not_judged
+  verified_by: vidibro
 - norm_id: AIA-NORM-A017-P1-K-RECORD-KEEPING
   source: A017-P012
   quote: systems and procedures for record-keeping of all relevant documentation and information
@@ -161,6 +174,7 @@ records:
   qualifier_spans: *id002
   implementation_refs: *id001
   verification_mode: reported_not_judged
+  verified_by: vidibro
 - norm_id: AIA-NORM-A017-P1-L-RESOURCE-MANAGEMENT
   source: A017-P013
   quote: resource management, including security-of-supply related measures
@@ -170,6 +184,7 @@ records:
   qualifier_spans: *id002
   implementation_refs: *id001
   verification_mode: reported_not_judged
+  verified_by: vidibro
 - norm_id: AIA-NORM-A017-P1-M-ACCOUNTABILITY
   source: A017-P014
   quote: an accountability framework setting out the responsibilities of the management and other staff
@@ -181,6 +196,7 @@ records:
   qualifier_spans: *id002
   implementation_refs: *id001
   verification_mode: reported_not_judged
+  verified_by: vidibro
 - norm_id: AIA-NORM-A017-P2-PROPORTIONATE-IMPLEMENTATION
   source: A017-P015
   quote: "The implementation of the aspects referred to in paragraph 1 shall be proportionate to the size\
@@ -192,6 +208,7 @@ records:
   subject_category: supported_operator
   implementation_refs: *id001
   verification_mode: reported_not_judged
+  verified_by: vidibro
 - norm_id: AIA-NORM-A017-P2-RIGOUR-PROTECTION
   source: A017-P015
   quote: Providers shall, in any event, respect the degree of rigour and the level of protection required
@@ -202,6 +219,7 @@ records:
   subject_category: supported_operator
   implementation_refs: *id001
   verification_mode: reported_not_judged
+  verified_by: vidibro
 - norm_id: AIA-NORM-A017-P3-SECTORAL-INTEGRATION
   source: A017-P016
   quote: Providers of high-risk AI systems that are subject to obligations regarding quality management
@@ -217,6 +235,7 @@ records:
     Union law
   implementation_refs: *id001
   verification_mode: reported_conditionally
+  verified_by: vidibro
 - norm_id: AIA-NORM-A017-P4-FINANCIAL-DEEMING
   source: A017-P017
   quote: the obligation to put in place a quality management system, with the exception of paragraph 1,
@@ -235,6 +254,7 @@ records:
   - Article 17(1)(g), (h), and (i) remain independently required
   implementation_refs: *id001
   verification_mode: reported_conditionally
+  verified_by: vidibro
 - norm_id: AIA-NORM-A017-P4-HARMONISED-STANDARDS
   source: A017-P017
   quote: To that end, any harmonised standards referred to in Article 40 shall be taken into account.
@@ -247,3 +267,4 @@ records:
     obligation
   implementation_refs: *id001
   verification_mode: reported_not_judged
+  verified_by: vidibro
