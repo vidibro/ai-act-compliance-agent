@@ -53,6 +53,8 @@ records:
   action: supply information requested by the Commission
   subject_ref: gpai_provider_or_representative
   subject_category: supported_operator
+  conditions:
+  - the Commission issued a request for information under Article 91(1) or Article 91(3)
   implementation_refs: [AIA-GP-A91-5]
   verification_mode: reported_not_judged
 - norm_id: AIA-NORM-A091-P5-AUTHORISED-PERSON-SUPPLY
@@ -66,15 +68,27 @@ records:
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
-- norm_id: AIA-NORM-A091-P5-LAWYER-SUPPLY-AND-CLIENT-RESPONSIBILITY
+- norm_id: AIA-NORM-A091-P5-LAWYER-SUPPLY
   source: A091-P005
-  quote: Lawyers duly authorised to act may supply information on behalf of their clients. The clients shall nevertheless remain fully responsible if the information supplied is incomplete, incorrect or misleading.
-  action: permit authorised lawyers to supply information while retaining client responsibility for incomplete incorrect or misleading information
-  subject_ref: lawyer_and_client
+  quote: Lawyers duly authorised to act may supply information on behalf of their clients.
+  action: supply the requested information on behalf of a client
+  subject_ref: duly_authorised_lawyer
   subject_category: external_private_party
-  kind: legal_consequence
+  kind: permission
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
+- norm_id: AIA-NORM-A091-P5-CLIENT-REMAINS-RESPONSIBLE
+  source: A091-P005
+  quote: The clients shall nevertheless remain fully responsible if the information supplied is incomplete, incorrect or misleading.
+  action: remain fully responsible for information a lawyer supplied on the client's behalf
+  subject_ref: gpai_provider_client
+  subject_category: supported_operator
+  kind: legal_consequence
+  conditions:
+  - a duly authorised lawyer supplied the information on the client's behalf
+  - the information supplied is incomplete, incorrect or misleading
+  implementation_refs: [AIA-GP-A91-5]
+  verification_mode: reported_not_judged

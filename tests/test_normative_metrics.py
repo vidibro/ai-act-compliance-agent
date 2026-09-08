@@ -4292,9 +4292,11 @@ def test_article_ninety_two_maps_gpai_model_access():
     }
 
     assert len(norms) == 8
-    assert norms["AIA-NORM-A092-P5-PROVIDE-MODEL-ACCESS"].implementation_refs == [
-        "AIA-GP-A92-5"
-    ]
+    # Paragraph 5 binds the provider to "supply the information requested" while the rest of the
+    # Article speaks of access; the norm tracks the enacted words rather than the Article's subject.
+    supply = norms["AIA-NORM-A092-P5-SUPPLY-REQUESTED-INFORMATION"]
+    assert supply.implementation_refs == ["AIA-GP-A92-5"]
+    assert "supply the information requested" in supply.norm_text
     # The two evaluation purposes are alternatives, each keeping its own enacted limits.
     evaluation = norms["AIA-NORM-A092-P1-CONDUCT-GPAI-EVALUATION"]
     assert not evaluation.mandatory_content

@@ -8,20 +8,33 @@ norms:
     category: supported_operator
   action: provide a clear meaningful explanation of the AI system's decision-making role and the decision's
     main elements to an eligible affected person
-  norm_text: shall have the right to obtain from the deployer clear and meaningful explanations of the
-    role of the AI system in the decision-making procedure and the main elements of the decision taken.
+  norm_text: Any affected person subject to a decision which is taken by the deployer on the basis of
+    the output from a high-risk AI system listed in Annex III, with the exception of systems listed under
+    point 2 thereof, and which produces legal effects or similarly significantly affects that person in
+    a way that they consider to have an adverse impact on their health, safety or fundamental rights shall
+    have the right to obtain from the deployer clear and meaningful explanations of the role of the AI
+    system in the decision-making procedure and the main elements of the decision taken.
   detection_channels:
   - semantic_legal_effect
   - shall_token
+  - cross_reference_structure
   - existing_implementation
   primary_spans:
   - AIA-TEXT-A086-P001
   qualifier_spans: []
   effective_date_spans: []
-  conditions: []
-  exceptions: []
+  conditions:
+  - the deployer took a decision on the basis of output from a high-risk AI system listed in Annex III
+  - the decision produces legal effects on the affected person or similarly significantly affects them
+  - the affected person considers the decision to have an adverse impact on their health, safety or fundamental
+    rights
+  exceptions:
+  - the system is listed under point 2 of Annex III
   mandatory_content: []
-  dependencies: []
+  dependencies:
+  - dependency_ref: AIA-NORM-A006-P2-ANNEX-III-HIGH-RISK
+    resolution: internal_resolved
+    detail: Annex III supplies the high-risk system classes this right attaches to.
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: compliance_rule

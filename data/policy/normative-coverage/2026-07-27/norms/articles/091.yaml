@@ -167,7 +167,8 @@ norms:
   - AIA-TEXT-A091-P005
   qualifier_spans: []
   effective_date_spans: []
-  conditions: []
+  conditions:
+  - the Commission issued a request for information under Article 91(1) or Article 91(3)
   exceptions: []
   mandatory_content: []
   dependencies: []
@@ -222,22 +223,17 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
-- norm_id: AIA-NORM-A091-P5-LAWYER-SUPPLY-AND-CLIENT-RESPONSIBILITY
+- norm_id: AIA-NORM-A091-P5-LAWYER-SUPPLY
   act_version_date: '2026-07-27'
-  kind: legal_consequence
+  kind: permission
   subjects:
-  - subject_ref: lawyer_and_client
+  - subject_ref: duly_authorised_lawyer
     category: external_private_party
-  action: permit authorised lawyers to supply information while retaining client responsibility for incomplete
-    incorrect or misleading information
-  norm_text: Lawyers duly authorised to act may supply information on behalf of their clients. The clients
-    shall nevertheless remain fully responsible if the information supplied is incomplete, incorrect or
-    misleading.
+  action: supply the requested information on behalf of a client
+  norm_text: Lawyers duly authorised to act may supply information on behalf of their clients.
   detection_channels:
   - semantic_legal_effect
-  - shall_token
   - other_modal
-  - deeming_or_consequence
   primary_spans:
   - AIA-TEXT-A091-P005
   qualifier_spans: []
@@ -252,6 +248,46 @@ norms:
   implementation_refs: []
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A091-P5-CLIENT-REMAINS-RESPONSIBLE
+  act_version_date: '2026-07-27'
+  kind: legal_consequence
+  subjects:
+  - subject_ref: gpai_provider_client
+    category: supported_operator
+  action: remain fully responsible for information a lawyer supplied on the client's behalf
+  norm_text: The clients shall nevertheless remain fully responsible if the information supplied is incomplete,
+    incorrect or misleading.
+  detection_channels:
+  - semantic_legal_effect
+  - shall_token
+  - deeming_or_consequence
+  - existing_implementation
+  primary_spans:
+  - AIA-TEXT-A091-P005
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions:
+  - a duly authorised lawyer supplied the information on the client's behalf
+  - the information supplied is incomplete, incorrect or misleading
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: in_scope
+  product_scope_reason: ''
+  implementation_mode: compliance_rule
+  implementation_refs:
+  - AIA-GP-A91-5
+  implementation_reason: ''
+  verification_mode: reported_not_judged
   review:
     status: proposed
     extracted_by: semantic-legal-effect-pass

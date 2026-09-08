@@ -58,12 +58,14 @@ records:
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
-- norm_id: AIA-NORM-A092-P5-PROVIDE-MODEL-ACCESS
+- norm_id: AIA-NORM-A092-P5-SUPPLY-REQUESTED-INFORMATION
   source: A092-P007
   quote: The providers of the general-purpose AI model concerned or its representative shall supply the information requested.
-  action: provide the model access requested by the Commission
+  action: supply the information requested following a Commission request for model access
   subject_ref: gpai_provider_or_representative
   subject_category: supported_operator
+  conditions:
+  - the Commission requested access to the model under Article 92(3)
   implementation_refs: [AIA-GP-A92-5]
   verification_mode: reported_not_judged
 - norm_id: AIA-NORM-A092-P5-AUTHORISED-PERSON-PROVIDE-ACCESS
