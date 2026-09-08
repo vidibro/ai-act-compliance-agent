@@ -74,7 +74,7 @@ def test_pinned_corpus_triage_is_documented_without_mutating_review():
         if norm.mandatory_content
     }
     assert len(content_rows) == 146  # Historical audit baseline.
-    assert len(expected_content) == 135
+    assert len(expected_content) == 136
     baseline_content = {norm_id: int(count) for norm_id, count, _ in content_rows}
     baseline_content["AIA-NORM-A005-P2-CONSIDER-IMPACTS"] = 2
     baseline_content["AIA-NORM-A040-P2-RESOURCE-PERFORMANCE-DELIVERABLES"] = 2
@@ -123,6 +123,7 @@ def test_pinned_corpus_triage_is_documented_without_mutating_review():
     baseline_content["AIA-NORM-A075A-P3-INFORMATION-REQUEST-CONTENT"] = 3
     baseline_content["AIA-NORM-A075A-P3-SIMPLE-REQUEST-ADDITIONS"] = 2
     baseline_content["AIA-NORM-A075A-P3-DECISION-REQUEST-ADDITIONS"] = 2
+    baseline_content["AIA-NORM-A075C-P3-ORDER-COMPLIANCE-MEASURES"] = 2
     baseline_content["AIA-NORM-A075C-P5-PENALTY-PAYMENT-CEILING"] = 4
     baseline_content["AIA-NORM-A077-P2-IDENTIFY-PUBLISH-NOTIFY-AND-UPDATE"] = 2
     baseline_content.pop("AIA-NORM-A078-P3-KEEP-DOCUMENTATION-AND-ENABLE-ACCESS")

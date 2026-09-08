@@ -30,6 +30,20 @@ def metrics():
     return measure_normative_coverage(load_normative_coverage())
 
 
+def assert_extraction_never_approves(norms):
+    """Approval is a separate human act, so extraction alone must not produce it.
+
+    Pinning each norm to `proposed` would expire the moment a reviewer signs one off. What holds
+    for the life of the corpus is the separation: the semantic pass extracts, and only a verifier
+    who is not that pass can approve.
+    """
+    for norm in norms:
+        assert norm.review.extracted_by == "semantic-legal-effect-pass"
+        if norm.review.status.value == "approved":
+            assert norm.review.verified_by
+            assert norm.review.verified_by != norm.review.extracted_by
+
+
 def test_generated_coverage_artifacts_are_reproducible():
     completed = subprocess.run(
         [
@@ -1792,22 +1806,22 @@ def test_article_twenty_eight_is_complete_institutional_coverage():
 
 def test_inventory_cannot_be_misreported_as_independently_approved(metrics):
     """Approved text is now the whole corpus, which is the number most likely to be quoted as
-    though the Act were covered. Every norm read out of that text is still `proposed`, so the two
-    counts are asserted together: character coverage is a statement about reading the source, not
-    about the propositions extracted from it."""
+    though the Act were covered. Norm approval is counted separately and trails it, so the two are
+    asserted together: character coverage is a statement about reading the source, not about the
+    propositions extracted from it."""
     assert metrics.approved_characters == metrics.exact_source_characters == 395_046
     assert metrics.needs_review_characters == 0
     assert metrics.review_statuses == {
-        "approved": 1902,
-        "proposed": 1090,
+        "approved": 2117,
+        "proposed": 877,
     }
     assert metrics.timed_review_records == 0
-    assert metrics.total_review_records == 2993
+    assert metrics.total_review_records == 2995
 
 
 def test_semantic_pass_finds_propositions_a_shall_scan_misses(metrics):
-    assert metrics.shall_vs_semantic_disagreements == 573
-    assert metrics.shall_token_candidate_recall == pytest.approx(914 / 1487)
+    assert metrics.shall_vs_semantic_disagreements == 574
+    assert metrics.shall_token_candidate_recall == pytest.approx(915 / 1489)
     assert "AIA-NORM-A011-P1-SIMPLIFY" in metrics.semantic_norms_without_shall_token
     # Art. 26(5)'s informing limb: the paragraph's only `shall` governs the monitoring limb
     # before it, so the duty to inform the provider carries no modal of its own.
@@ -1819,8 +1833,10 @@ def test_semantic_pass_finds_propositions_a_shall_scan_misses(metrics):
 
 def test_metrics_expose_many_to_many_and_implementation_debt(metrics):
     assert metrics.normative_segments_with_multiple_norms == 382
-    assert metrics.mapping_shape.one_norm_to_one_target == 30
-    assert metrics.mapping_shape.many_norms_to_one_target == 459
+    # `AIA-GP-A91-5` and `AIA-PO-A75-1a` each carry two norms since Article 91(5) was split by
+    # addressee and Article 75(1a)'s procedure sentence gained its own norm.
+    assert metrics.mapping_shape.one_norm_to_one_target == 28
+    assert metrics.mapping_shape.many_norms_to_one_target == 463
     assert metrics.mapping_shape.one_norm_to_many_targets == 1
     assert metrics.mapping_shape.many_to_many == 16
     assert metrics.mapping_shape.unmapped == 981
@@ -2476,7 +2492,7 @@ def test_article_forty_five_separates_event_notices_from_request_only_disclosure
     assert all(segment.review.verified_by == "codex" for segment in segments)
     assert len(norms) == 7
     assert all(norm.kind.value == "obligation" for norm in norms.values())
-    assert all(norm.review.status.value == "proposed" for norm in norms.values())
+    assert_extraction_never_approves(norms.values())
     assert all(norm.product_scope.value == "outside_supported_actor" for norm in norms.values())
     assert all(norm.implementation_mode.value == "none_required" for norm in norms.values())
     authority = norms["AIA-NORM-A045-P1-INFORM-NOTIFYING-AUTHORITY"]
@@ -2559,7 +2575,6 @@ def test_article_forty_six_preserves_derogation_lifecycle():
         assert obligation.kind.value == "obligation"
         assert obligation.primary_spans == ["AIA-TEXT-A046-P002"]
         assert obligation.mandatory_content == []  # Actions are separate norms, not payload items.
-        assert obligation.review.status.value == "proposed"
         assert obligation.implementation_mode.value == "none_required"
     permission = norms["AIA-NORM-A046-P2-URGENT-USE-PERMISSION"]
     assert permission.kind.value == "permission"
@@ -3001,7 +3016,7 @@ def test_article_fifty_eight_extracts_sandbox_implementing_arrangements():
     )
     assert safeguards.primary_spans == cooperation.primary_spans == ["AIA-TEXT-A058-P018"]
     assert segments[-1].norm_ids == [safeguards.norm_id, cooperation.norm_id]
-    assert all(norm.review.status.value == "proposed" for norm in norms.values())
+    assert_extraction_never_approves(norms.values())
     assert all(norm.product_scope.value == "outside_supported_actor" for norm in norms.values())
     assert all(not norm.implementation_refs for norm in norms.values())
 
@@ -3076,7 +3091,7 @@ def test_article_fifty_nine_extracts_conditional_sandbox_data_processing():
     assert "every Article 59(1) condition" in (
         norms["AIA-NORM-A059-P2-LAW-ENFORCEMENT-LEGAL-BASIS"].action
     )
-    assert all(norm.review.status.value == "proposed" for norm in norms.values())
+    assert_extraction_never_approves(norms.values())
     assert sum(norm.implementation_mode.value == "missing" for norm in norms.values()) == 11
     assert norms["AIA-NORM-A059-P2-LAW-ENFORCEMENT-LEGAL-BASIS"].product_scope.value == (
         "outside_supported_actor"
@@ -3107,7 +3122,7 @@ def test_article_sixty_extracts_real_world_testing_lifecycle():
     assert len(permission.qualifier_spans) == 11
     assert len(permission.mandatory_content) == 11
     assert sum(norm.implementation_mode.value == "missing" for norm in norms.values()) == 19
-    assert all(norm.review.status.value == "proposed" for norm in norms.values())
+    assert_extraction_never_approves(norms.values())
 
 
 def test_article_sixty_registration_routes_are_alternatives_not_a_checklist():
@@ -3265,7 +3280,7 @@ def test_article_sixty_a_extracts_section_b_testing_framework():
     assert limit.kind.value == "legal_consequence"
     assert limit.product_scope.value == "no_product_action"
     assert "to the extent necessary to enable the paragraph 1 testing" in limit.action
-    assert all(norm.review.status.value == "proposed" for norm in norms.values())
+    assert_extraction_never_approves(norms.values())
 
 
 def test_article_sixty_one_extracts_informed_consent_requirements():
@@ -3309,7 +3324,7 @@ def test_article_sixty_one_extracts_informed_consent_requirements():
     assert not copy.mandatory_content
     assert "subjects of testing or their legal representative" in copy.action
     assert document.primary_spans == copy.primary_spans == ["AIA-TEXT-A061-P007"]
-    assert all(norm.review.status.value == "proposed" for norm in norms.values())
+    assert_extraction_never_approves(norms.values())
 
 
 def test_article_sixty_two_extracts_sme_support_measures():
@@ -3375,7 +3390,7 @@ def test_article_sixty_two_extracts_sme_support_measures():
         "market size",
         "other relevant indicators",
     ]
-    assert all(norm.review.status.value == "proposed" for norm in norms.values())
+    assert_extraction_never_approves(norms.values())
 
 
 def test_article_sixty_three_limits_the_sme_derogation():
@@ -3460,7 +3475,7 @@ def test_article_sixty_five_extracts_board_structure_and_operation():
     assert all(
         norm.subjects[0].subject_ref == "ai_office" for norm in (secretariat, convene, agenda)
     )
-    assert all(norm.review.status.value == "proposed" for norm in norms.values())
+    assert_extraction_never_approves(norms.values())
 
 
 def test_article_sixty_six_preserves_the_board_task_hierarchy():
@@ -3517,7 +3532,7 @@ def test_article_sixty_six_preserves_the_board_task_hierarchy():
         "revise Article 5 under Article 112",
     ):
         assert phrase in scope
-    assert all(norm.review.status.value == "proposed" for norm in norms.values())
+    assert_extraction_never_approves(norms.values())
     assert all(norm.product_scope.value == "outside_supported_actor" for norm in norms.values())
 
 
@@ -3566,7 +3581,7 @@ def test_article_sixty_seven_extracts_advisory_forum_governance():
     publish = norms["AIA-NORM-A067-P10-PUBLISH-ANNUAL-REPORT"]
     assert not report.mandatory_content
     assert "publicly available" in publish.action
-    assert all(norm.review.status.value == "proposed" for norm in norms.values())
+    assert_extraction_never_approves(norms.values())
 
 
 def test_article_sixty_eight_extracts_scientific_panel_safeguards():
@@ -3617,7 +3632,7 @@ def test_article_sixty_eight_extracts_scientific_panel_safeguards():
     assert "publicly available" in norms["AIA-NORM-A068-P4-DECLARATION-OF-INTERESTS"].action
     # The AI Office conflict-management duty stays a separate norm rather than being duplicated.
     assert norms["AIA-NORM-A068-P4-MANAGE-CONFLICTS"].subjects[0].subject_ref == "ai_office"
-    assert all(norm.review.status.value == "proposed" for norm in norms.values())
+    assert_extraction_never_approves(norms.values())
 
 
 def test_article_sixty_nine_extracts_member_state_expert_access():
@@ -3697,7 +3712,7 @@ def test_article_seventy_extracts_national_authority_governance():
     assert len(personnel.mandatory_content) == 7
     assert annual.subjects[0].subject_ref == "member_state"
     assert "annually" in annual.action
-    assert all(norm.review.status.value == "proposed" for norm in norms.values())
+    assert_extraction_never_approves(norms.values())
 
 
 def test_article_seventy_one_extracts_database_and_data_entry_duties():
@@ -3760,7 +3775,7 @@ def test_article_seventy_one_extracts_database_and_data_entry_duties():
         "adequate technical support",
         "adequate administrative support",
     ]
-    assert all(norm.review.status.value == "proposed" for norm in norms.values())
+    assert_extraction_never_approves(norms.values())
 
 
 def test_article_seventy_two_maps_post_market_monitoring_effects():
@@ -3845,7 +3860,7 @@ def test_article_seventy_three_maps_complete_incident_lifecycle():
     procedures = norms["AIA-NORM-A073-P8-FOLLOW-NOTIFICATION-PROCEDURES"]
     assert "seven days" in measures.action
     assert "seven days" not in procedures.action
-    assert all(norm.review.status.value == "proposed" for norm in norms.values())
+    assert_extraction_never_approves(norms.values())
 
 
 def test_article_seventy_four_maps_provider_access_duties():
@@ -3895,7 +3910,7 @@ def test_article_seventy_four_maps_provider_access_duties():
     assert joint.subjects[0].subject_ref == "market_surveillance_authority_and_commission"
     assert support.kind.value == "obligation"
     assert support.subjects[0].subject_ref == "ai_office"
-    assert all(norm.review.status.value == "proposed" for norm in norms.values())
+    assert_extraction_never_approves(norms.values())
 
 
 def test_article_seventy_five_separates_provider_and_authority_effects():
@@ -3914,7 +3929,7 @@ def test_article_seventy_five_separates_provider_and_authority_effects():
     assert len(segments) == 23
     assert all(segment.review.status.value == "approved" for segment in segments)
     assert all(segment.review.verified_by == "codex" for segment in segments)
-    assert len(norms) == 27
+    assert len(norms) == 28
     assert norms["AIA-NORM-A075-P1A-REPORT-SERIOUS-INCIDENTS"].implementation_refs == [
         "AIA-PO-A75-1a"
     ]
@@ -3951,7 +3966,7 @@ def test_article_seventy_five_separates_provider_and_authority_effects():
     ]
     assert not reply.conditions
     assert "without disclosing any confidential information" in updates.action
-    assert all(norm.review.status.value == "proposed" for norm in norms.values())
+    assert_extraction_never_approves(norms.values())
 
 
 def test_article_seventy_six_extracts_real_world_testing_supervision():
@@ -4007,7 +4022,7 @@ def test_article_seventy_seven_extracts_fundamental_rights_cooperation():
     assert "2 November 2024" not in maintain.action
     assert "other Member States" in notify.action
     assert "up to date" in maintain.action
-    assert all(norm.review.status.value == "proposed" for norm in norms.values())
+    assert_extraction_never_approves(norms.values())
 
 
 def test_article_seventy_eight_maps_the_special_provider_confidentiality_rule():
@@ -4046,7 +4061,7 @@ def test_article_seventy_eight_maps_the_special_provider_confidentiality_rule():
     assert len(disclosure.conditions) == 2
     assert sensitive.kind.value == "prohibition"
     assert not sensitive.conditions
-    assert all(norm.review.status.value == "proposed" for norm in norms.values())
+    assert_extraction_never_approves(norms.values())
 
 
 def test_article_seventy_nine_maps_operator_enforcement_duties():
@@ -4089,7 +4104,7 @@ def test_article_seventy_nine_maps_operator_enforcement_duties():
     assert all(
         norm.kind.value == "legal_consequence" for norm in (deemed, rights, shortened)
     )
-    assert all(norm.review.status.value == "proposed" for norm in norms.values())
+    assert_extraction_never_approves(norms.values())
 
 
 def test_article_eighty_maps_reclassified_provider_correction():
@@ -4150,7 +4165,7 @@ def test_article_eighty_two_maps_compliant_system_risk_correction():
     assert "immediately" not in others.action
     assert "relevant operators" in decision.action
     assert "other Member States" in others.action
-    assert all(norm.review.status.value == "proposed" for norm in norms.values())
+    assert_extraction_never_approves(norms.values())
 
 
 def test_article_eighty_three_keeps_formal_defects_as_one_enforcement_cycle():
@@ -4198,7 +4213,7 @@ def test_article_eighty_five_extracts_complaint_entitlement_and_handling():
     assert "market surveillance activities" in consider.action
     assert "dedicated procedures" in handle.action
     assert "dedicated procedures" not in consider.action
-    assert all(norm.review.status.value == "proposed" for norm in norms.values())
+    assert_extraction_never_approves(norms.values())
 
 
 def test_article_eighty_six_maps_the_deployer_explanation_duty():
@@ -4276,10 +4291,16 @@ def test_article_ninety_one_maps_gpai_information_supply():
         if norm.norm_id.startswith("AIA-NORM-A091-")
     }
 
-    assert len(norms) == 7
+    assert len(norms) == 8
     assert norms["AIA-NORM-A091-P5-SUPPLY-REQUESTED-INFORMATION"].implementation_refs == [
         "AIA-GP-A91-5"
     ]
+    # Paragraph 5's last two sentences bind different actors: the lawyer may supply, the client
+    # stays liable. Only the second reaches a supported operator, so they are separate norms.
+    assert norms["AIA-NORM-A091-P5-LAWYER-SUPPLY"].product_scope.value == "outside_supported_actor"
+    client = norms["AIA-NORM-A091-P5-CLIENT-REMAINS-RESPONSIBLE"]
+    assert client.product_scope.value == "in_scope"
+    assert client.subjects[0].category.value == "supported_operator"
     assert len(norms["AIA-NORM-A091-P4-INFORMATION-REQUEST-CONTENT"].mandatory_content) == 4
 
 
@@ -4586,7 +4607,7 @@ def test_articles_seventy_five_a_and_b_extract_ai_office_enforcement_powers():
     # Sending the copy is an action, not a field of the request.
     assert not copy.mandatory_content
     assert "market surveillance authority" in copy.action
-    assert all(norm.review.status.value == "proposed" for norm in article_a.values())
+    assert_extraction_never_approves(article_a.values())
 
 
 def test_articles_seventy_five_c_and_d_extract_penalties_and_safeguards():
@@ -4862,7 +4883,7 @@ def test_annex_eleven_separates_general_and_systemic_risk_documentation():
     reviewed = {k: v for k, v in norms.items() if k != "AIA-NORM-ANNEX-XI-ENERGY-ESTIMATE-BASIS"}
     assert all(norm.review.status.value == "approved" for norm in reviewed.values())
     assert all(norm.review.verified_by == "vidibro" for norm in reviewed.values())
-    assert norms["AIA-NORM-ANNEX-XI-ENERGY-ESTIMATE-BASIS"].review.status.value == "proposed"
+    assert_extraction_never_approves(norms.values())
 
 
 def test_annex_twelve_downstream_transparency_content_is_carried_by_article_fifty_three():
