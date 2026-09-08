@@ -30,6 +30,18 @@ def metrics():
     return measure_normative_coverage(load_normative_coverage())
 
 
+def assert_segments_are_independently_approved(segments):
+    """Segments carry a human sign-off from someone other than the extraction pass.
+
+    Naming the verifier would pin who happened to do the reading, which changes when segments are
+    re-read. What must hold is the separation itself.
+    """
+    for segment in segments:
+        assert segment.review.status.value == "approved"
+        assert segment.review.verified_by
+        assert segment.review.verified_by != segment.review.extracted_by
+
+
 def assert_extraction_never_approves(norms):
     """Approval is a separate human act, so extraction alone must not produce it.
 
@@ -1797,8 +1809,7 @@ def test_article_twenty_eight_is_complete_institutional_coverage():
     ]
 
     assert len(segments) == 13
-    assert all(segment.review.status.value == "approved" for segment in segments)
-    assert all(segment.review.verified_by == "codex" for segment in segments)
+    assert_segments_are_independently_approved(segments)
     assert len(norms) == 17
     assert all(norm.product_scope.value == "outside_supported_actor" for norm in norms)
     assert all(norm.implementation_mode.value == "none_required" for norm in norms)
@@ -1812,16 +1823,16 @@ def test_inventory_cannot_be_misreported_as_independently_approved(metrics):
     assert metrics.approved_characters == metrics.exact_source_characters == 395_046
     assert metrics.needs_review_characters == 0
     assert metrics.review_statuses == {
-        "approved": 2117,
-        "proposed": 877,
+        "approved": 2139,
+        "proposed": 856,
     }
     assert metrics.timed_review_records == 0
-    assert metrics.total_review_records == 2995
+    assert metrics.total_review_records == 2996
 
 
 def test_semantic_pass_finds_propositions_a_shall_scan_misses(metrics):
     assert metrics.shall_vs_semantic_disagreements == 574
-    assert metrics.shall_token_candidate_recall == pytest.approx(915 / 1489)
+    assert metrics.shall_token_candidate_recall == pytest.approx(916 / 1490)
     assert "AIA-NORM-A011-P1-SIMPLIFY" in metrics.semantic_norms_without_shall_token
     # Art. 26(5)'s informing limb: the paragraph's only `shall` governs the monitoring limb
     # before it, so the duty to inform the provider carries no modal of its own.
@@ -1838,9 +1849,12 @@ def test_metrics_expose_many_to_many_and_implementation_debt(metrics):
     assert metrics.mapping_shape.one_norm_to_one_target == 28
     assert metrics.mapping_shape.many_norms_to_one_target == 463
     assert metrics.mapping_shape.one_norm_to_many_targets == 1
-    assert metrics.mapping_shape.many_to_many == 16
-    assert metrics.mapping_shape.unmapped == 981
-    assert metrics.semantic_vs_existing_implementation_disagreements == 129
+    # Annex VII point 5.2's second sentence gained its own norm and point 4.7's duty to inform the
+    # notified body gained the refs its siblings already carried, so `AIA-PO-A43-1B` and
+    # `AIA-PO-A43-3` each pick up two more of the norms they shared.
+    assert metrics.mapping_shape.many_to_many == 18
+    assert metrics.mapping_shape.unmapped == 980
+    assert metrics.semantic_vs_existing_implementation_disagreements == 128
     assert metrics.semantic_norms_without_existing_implementation == [
         "AIA-NORM-A002-P13-LIMIT-HIGH-RISK-REQUIREMENTS",
         "AIA-NORM-A002-P2-INTEGRATED-SANDBOX-PROVISIONS",
@@ -1949,7 +1963,6 @@ def test_metrics_expose_many_to_many_and_implementation_debt(metrics):
         "AIA-NORM-ANNEX-VI-P1-PROCEDURE-CONTENT",
         "AIA-NORM-ANNEX-VII-DOC-APPLICATION",
         "AIA-NORM-ANNEX-VII-DOC-APPLICATION-CONTENT",
-        "AIA-NORM-ANNEX-VII-INFORM-CHANGES",
         "AIA-NORM-ANNEX-VII-OVERVIEW-DOCUMENTATION-EXAMINATION",
         "AIA-NORM-ANNEX-VII-OVERVIEW-QMS-EXAMINATION",
         "AIA-NORM-ANNEX-VII-OVERVIEW-QMS-SURVEILLANCE",
@@ -2064,7 +2077,6 @@ def test_metrics_expose_many_to_many_and_implementation_debt(metrics):
         "AIA-NORM-ANNEX-VI-P1-PROCEDURE-CONTENT",
         "AIA-NORM-ANNEX-VII-DOC-APPLICATION",
         "AIA-NORM-ANNEX-VII-DOC-APPLICATION-CONTENT",
-        "AIA-NORM-ANNEX-VII-INFORM-CHANGES",
         "AIA-NORM-ANNEX-VII-OVERVIEW-DOCUMENTATION-EXAMINATION",
         "AIA-NORM-ANNEX-VII-OVERVIEW-QMS-EXAMINATION",
         "AIA-NORM-ANNEX-VII-OVERVIEW-QMS-SURVEILLANCE",
@@ -2111,8 +2123,7 @@ def test_article_thirty_two_creates_a_conditional_conformity_presumption():
     )
 
     assert len(segments) == 2
-    assert all(segment.review.status.value == "approved" for segment in segments)
-    assert all(segment.review.verified_by == "codex" for segment in segments)
+    assert_segments_are_independently_approved(segments)
     assert segments[1].norm_ids == [norm.norm_id]
     assert norm.kind.value == "legal_consequence"
     assert norm.primary_spans == ["AIA-TEXT-A032-P001"]
@@ -2134,8 +2145,7 @@ def test_article_thirty_three_separates_subcontracting_legal_effects():
     }
 
     assert len(segments) == 5
-    assert all(segment.review.status.value == "approved" for segment in segments)
-    assert all(segment.review.verified_by == "codex" for segment in segments)
+    assert_segments_are_independently_approved(segments)
     assert len(norms) == 6
     assert sum(norm.kind.value == "obligation" for norm in norms.values()) == 5
     assert sum(norm.kind.value == "permission" for norm in norms.values()) == 1
@@ -2163,8 +2173,7 @@ def test_article_thirty_four_separates_operational_obligations():
     }
 
     assert len(segments) == 4
-    assert all(segment.review.status.value == "approved" for segment in segments)
-    assert all(segment.review.verified_by == "codex" for segment in segments)
+    assert_segments_are_independently_approved(segments)
     assert len(norms) == 5
     assert all(norm.kind.value == "obligation" for norm in norms.values())
     assert len(segments[2].norm_ids) == 3
@@ -2193,8 +2202,7 @@ def test_article_thirty_five_keeps_publication_and_currency_separate():
     }
 
     assert len(segments) == 3
-    assert all(segment.review.status.value == "approved" for segment in segments)
-    assert all(segment.review.verified_by == "codex" for segment in segments)
+    assert_segments_are_independently_approved(segments)
     assert len(norms) == 3
     assert len(segments[2].norm_ids) == 2
     assert all(norm.kind.value == "obligation" for norm in norms.values())
@@ -2224,8 +2232,7 @@ def test_article_thirty_six_preserves_certificate_change_workflows():
     }
 
     assert len(segments) == 22
-    assert all(segment.review.status.value == "approved" for segment in segments)
-    assert all(segment.review.verified_by == "codex" for segment in segments)
+    assert_segments_are_independently_approved(segments)
     assert len(norms) == 26
     assert sum(norm.kind.value == "obligation" for norm in norms.values()) == 19
     assert sum(norm.kind.value == "legal_consequence" for norm in norms.values()) == 3
@@ -2262,8 +2269,7 @@ def test_article_thirty_seven_separates_challenge_and_escalation_effects():
     }
 
     assert len(segments) == 5
-    assert all(segment.review.status.value == "approved" for segment in segments)
-    assert all(segment.review.verified_by == "codex" for segment in segments)
+    assert_segments_are_independently_approved(segments)
     assert len(norms) == 7
     assert sum(norm.kind.value == "obligation" for norm in norms.values()) == 6
     assert sum(norm.kind.value == "power" for norm in norms.values()) == 1
@@ -2290,8 +2296,7 @@ def test_article_thirty_eight_captures_coordination_duties():
     ]
 
     assert len(segments) == 4
-    assert all(segment.review.status.value == "approved" for segment in segments)
-    assert all(segment.review.verified_by == "codex" for segment in segments)
+    assert_segments_are_independently_approved(segments)
     assert len(norms) == 3
     assert all(norm.kind.value == "obligation" for norm in norms)
     assert all(norm.product_scope.value == "outside_supported_actor" for norm in norms)
@@ -2315,8 +2320,7 @@ def test_article_thirty_nine_is_one_conditional_third_country_permission():
     )
 
     assert len(segments) == 2
-    assert all(segment.review.status.value == "approved" for segment in segments)
-    assert all(segment.review.verified_by == "codex" for segment in segments)
+    assert_segments_are_independently_approved(segments)
     assert segments[1].norm_ids == [norm.norm_id]
     assert norm.kind.value == "permission"
     assert len(norm.conditions) == 2
@@ -2337,8 +2341,7 @@ def test_article_forty_separates_presumption_and_standardisation_duties():
     }
 
     assert len(segments) == 7
-    assert all(segment.review.status.value == "approved" for segment in segments)
-    assert all(segment.review.verified_by == "codex" for segment in segments)
+    assert_segments_are_independently_approved(segments)
     assert len(norms) == 8
     assert sum(norm.kind.value == "obligation" for norm in norms.values()) == 7
     assert sum(norm.kind.value == "legal_consequence" for norm in norms.values()) == 1
@@ -2365,8 +2368,7 @@ def test_article_forty_one_preserves_common_specification_workflow():
     }
 
     assert len(segments) == 15
-    assert all(segment.review.status.value == "approved" for segment in segments)
-    assert all(segment.review.verified_by == "codex" for segment in segments)
+    assert_segments_are_independently_approved(segments)
     assert len(norms) == 11
     assert sum(norm.kind.value == "obligation" for norm in norms.values()) == 9
     assert sum(norm.kind.value == "power" for norm in norms.values()) == 1
@@ -2403,8 +2405,7 @@ def test_article_forty_two_keeps_three_conformity_presumptions_distinct():
     ]
 
     assert len(segments) == 4
-    assert all(segment.review.status.value == "approved" for segment in segments)
-    assert all(segment.review.verified_by == "codex" for segment in segments)
+    assert_segments_are_independently_approved(segments)
     assert len(norms) == 3
     assert all(norm.kind.value == "legal_consequence" for norm in norms)
     assert all(norm.product_scope.value == "in_scope" for norm in norms)
@@ -2426,8 +2427,7 @@ def test_article_forty_three_reconciles_all_conformity_routes():
     }
 
     assert len(segments) == 7
-    assert all(segment.review.status.value == "approved" for segment in segments)
-    assert all(segment.review.verified_by == "codex" for segment in segments)
+    assert_segments_are_independently_approved(segments)
     assert len(norms) == 20
     assert len(segments[1].norm_ids) == 4
     assert len(segments[3].norm_ids) == 10
@@ -2461,8 +2461,7 @@ def test_article_forty_four_separates_certificate_status_effects():
     }
 
     assert len(segments) == 5
-    assert all(segment.review.status.value == "approved" for segment in segments)
-    assert all(segment.review.verified_by == "codex" for segment in segments)
+    assert_segments_are_independently_approved(segments)
     assert len(norms) == 8
     assert len(segments[2].norm_ids) == 3
     assert len(segments[3].norm_ids) == 3
@@ -2488,8 +2487,7 @@ def test_article_forty_five_separates_event_notices_from_request_only_disclosure
     }
 
     assert len(segments) == 12
-    assert all(segment.review.status.value == "approved" for segment in segments)
-    assert all(segment.review.verified_by == "codex" for segment in segments)
+    assert_segments_are_independently_approved(segments)
     assert len(norms) == 7
     assert all(norm.kind.value == "obligation" for norm in norms.values())
     assert_extraction_never_approves(norms.values())
@@ -2553,8 +2551,7 @@ def test_article_forty_six_preserves_derogation_lifecycle():
     }
 
     assert len(segments) == 8
-    assert all(segment.review.status.value == "approved" for segment in segments)
-    assert all(segment.review.verified_by == "codex" for segment in segments)
+    assert_segments_are_independently_approved(segments)
     assert len(norms) == 14
     authorisation = norms["AIA-NORM-A046-P1-DEROGATION-AUTHORISATION"]
     assert authorisation.kind.value == "power"
@@ -2601,8 +2598,7 @@ def test_article_forty_seven_maps_complete_declaration_workflow():
     }
 
     assert len(segments) == 6
-    assert all(segment.review.status.value == "approved" for segment in segments)
-    assert all(segment.review.verified_by == "codex" for segment in segments)
+    assert_segments_are_independently_approved(segments)
     assert len(norms) == 12
     assert len(segments[1].norm_ids) == 4
     assert len(segments[2].norm_ids) == 3
@@ -2632,8 +2628,7 @@ def test_article_forty_eight_maps_ce_marking_duties():
     }
 
     assert len(segments) == 6
-    assert all(segment.review.status.value == "approved" for segment in segments)
-    assert all(segment.review.verified_by == "codex" for segment in segments)
+    assert_segments_are_independently_approved(segments)
     assert len(norms) == 7
     assert len(segments[4].norm_ids) == 3
     mapped = [norm for norm in norms.values() if norm.implementation_refs]
@@ -2661,8 +2656,7 @@ def test_article_forty_nine_maps_registration_routes_and_restricted_content():
     }
 
     assert len(segments) == 11
-    assert all(segment.review.status.value == "approved" for segment in segments)
-    assert all(segment.review.verified_by == "codex" for segment in segments)
+    assert_segments_are_independently_approved(segments)
     assert len(norms) == 10
     assert [len(segments[index].norm_ids) for index in (1, 2, 4, 9)] == [2, 2, 2, 2]
     assert all(segments[index].disposition.value == "normative" for index in range(5, 9))
@@ -2750,8 +2744,7 @@ def test_article_fifty_one_extracts_systemic_risk_classification_gates():
     }
 
     assert len(segments) == 6
-    assert all(segment.review.status.value == "approved" for segment in segments)
-    assert all(segment.review.verified_by == "codex" for segment in segments)
+    assert_segments_are_independently_approved(segments)
     assert len(norms) == 5
     assert len(segments[1].norm_ids) == 2
     assert len(segments[5].norm_ids) == 2
@@ -2785,8 +2778,7 @@ def test_article_fifty_two_separates_notification_and_reassessment_procedure():
     }
 
     assert len(segments) == 8
-    assert all(segment.review.status.value == "approved" for segment in segments)
-    assert all(segment.review.verified_by == "codex" for segment in segments)
+    assert_segments_are_independently_approved(segments)
     assert len(norms) == 15
     assert [len(segments[index].norm_ids) for index in (1, 3, 6, 7)] == [3, 2, 4, 3]
     mapped = [norm for norm in norms.values() if norm.implementation_refs]
@@ -2822,8 +2814,7 @@ def test_article_fifty_three_maps_provider_duties_and_open_source_carveout():
     }
 
     assert len(segments) == 14
-    assert all(segment.review.status.value == "approved" for segment in segments)
-    assert all(segment.review.verified_by == "codex" for segment in segments)
+    assert_segments_are_independently_approved(segments)
     assert len(norms) == 20
     mapped = [norm for norm in norms.values() if norm.implementation_refs]
     assert len(mapped) == 18
@@ -2858,8 +2849,7 @@ def test_article_fifty_four_maps_representative_mandate_lifecycle():
     }
 
     assert len(segments) == 11
-    assert all(segment.review.status.value == "approved" for segment in segments)
-    assert all(segment.review.verified_by == "codex" for segment in segments)
+    assert_segments_are_independently_approved(segments)
     assert len(norms) == 13
     assert all(norm.implementation_refs for norm in norms.values())
     assert not [norm for norm in norms.values() if norm.implementation_mode.value == "missing"]
@@ -2889,8 +2879,7 @@ def test_article_fifty_five_maps_systemic_risk_provider_controls():
     }
 
     assert len(segments) == 8
-    assert all(segment.review.status.value == "approved" for segment in segments)
-    assert all(segment.review.verified_by == "codex" for segment in segments)
+    assert_segments_are_independently_approved(segments)
     assert len(norms) == 14
     mapped = [norm for norm in norms.values() if norm.implementation_refs]
     assert len(mapped) == 13
@@ -2922,8 +2911,7 @@ def test_article_fifty_six_extracts_institutional_code_governance():
     ]
 
     assert len(segments) == 15
-    assert all(segment.review.status.value == "approved" for segment in segments)
-    assert all(segment.review.verified_by == "codex" for segment in segments)
+    assert_segments_are_independently_approved(segments)
     assert len(norms) == 21
     assert all(norm.implementation_mode.value == "none_required" for norm in norms)
     assert not [norm for norm in norms if norm.implementation_refs]
@@ -2947,8 +2935,7 @@ def test_article_fifty_seven_extracts_complete_sandbox_lifecycle():
     }
 
     assert len(segments) == 27
-    assert all(segment.review.status.value == "approved" for segment in segments)
-    assert all(segment.review.verified_by == "codex" for segment in segments)
+    assert_segments_are_independently_approved(segments)
     assert segments[6].disposition.value == "normative"
     assert segments[6].norm_ids == ["AIA-NORM-A057-P3A-AI-OFFICE-SANDBOX"]
     assert len(norms) == 50
@@ -2979,8 +2966,7 @@ def test_article_fifty_eight_extracts_sandbox_implementing_arrangements():
     }
 
     assert len(segments) == 19
-    assert all(segment.review.status.value == "approved" for segment in segments)
-    assert all(segment.review.verified_by == "codex" for segment in segments)
+    assert_segments_are_independently_approved(segments)
     assert len(norms) == 6
     assert all(norm.implementation_mode.value == "none_required" for norm in norms.values())
     arrangements = norms["AIA-NORM-A058-P1-DETAILED-SANDBOX-ARRANGEMENTS"]
@@ -3035,8 +3021,7 @@ def test_article_fifty_nine_extracts_conditional_sandbox_data_processing():
     }
 
     assert len(segments) == 19
-    assert all(segment.review.status.value == "approved" for segment in segments)
-    assert all(segment.review.verified_by == "codex" for segment in segments)
+    assert_segments_are_independently_approved(segments)
     assert len(norms) == 13
     permission = norms["AIA-NORM-A059-P1-CONDITIONAL-FURTHER-PROCESSING"]
     public_interest = norms["AIA-NORM-A059-P1-A-SUBSTANTIAL-PUBLIC-INTEREST"]
@@ -3115,8 +3100,7 @@ def test_article_sixty_extracts_real_world_testing_lifecycle():
     }
 
     assert len(segments) == 23
-    assert all(segment.review.status.value == "approved" for segment in segments)
-    assert all(segment.review.verified_by == "codex" for segment in segments)
+    assert_segments_are_independently_approved(segments)
     assert len(norms) == 32
     permission = norms["AIA-NORM-A060-P4-PERMISSION"]
     assert len(permission.qualifier_spans) == 11
@@ -3251,8 +3235,7 @@ def test_article_sixty_a_extracts_section_b_testing_framework():
     }
 
     assert len(segments) == 11
-    assert all(segment.review.status.value == "approved" for segment in segments)
-    assert all(segment.review.verified_by == "codex" for segment in segments)
+    assert_segments_are_independently_approved(segments)
     assert len(norms) == 11
     framework = norms["AIA-NORM-A060A-P5-FRAMEWORK-REQUIREMENTS"]
     assert len(framework.qualifier_spans) == 4
@@ -3297,8 +3280,7 @@ def test_article_sixty_one_extracts_informed_consent_requirements():
     }
 
     assert len(segments) == 8
-    assert all(segment.review.status.value == "approved" for segment in segments)
-    assert all(segment.review.verified_by == "codex" for segment in segments)
+    assert_segments_are_independently_approved(segments)
     assert len(norms) == 3
     consent = norms["AIA-NORM-A061-P1-OBTAIN-INFORMED-CONSENT"]
     assert len(consent.qualifier_spans) == 5
@@ -3341,8 +3323,7 @@ def test_article_sixty_two_extracts_sme_support_measures():
     }
 
     assert len(segments) == 12
-    assert all(segment.review.status.value == "approved" for segment in segments)
-    assert all(segment.review.verified_by == "codex" for segment in segments)
+    assert_segments_are_independently_approved(segments)
     assert len(norms) == 13
     assert all(norm.product_scope.value == "outside_supported_actor" for norm in norms.values())
     member_state = norms["AIA-NORM-A062-P1-MEMBER-STATE-SME-SUPPORT"]
@@ -3407,8 +3388,7 @@ def test_article_sixty_three_limits_the_sme_derogation():
     }
 
     assert len(segments) == 3
-    assert all(segment.review.status.value == "approved" for segment in segments)
-    assert all(segment.review.verified_by == "codex" for segment in segments)
+    assert_segments_are_independently_approved(segments)
     assert len(norms) == 3
     assert norms["AIA-NORM-A063-P1-SIMPLIFIED-SME-QUALITY-MANAGEMENT"].kind.value == (
         "permission"
@@ -3432,8 +3412,7 @@ def test_article_sixty_four_extracts_ai_office_support_duties():
     ]
 
     assert len(segments) == 4
-    assert all(segment.review.status.value == "approved" for segment in segments)
-    assert all(segment.review.verified_by == "codex" for segment in segments)
+    assert_segments_are_independently_approved(segments)
     assert len(norms) == 3
     assert all(norm.product_scope.value == "outside_supported_actor" for norm in norms)
     assert all(norm.implementation_mode.value == "none_required" for norm in norms)
@@ -3453,8 +3432,7 @@ def test_article_sixty_five_extracts_board_structure_and_operation():
     }
 
     assert len(segments) == 14
-    assert all(segment.review.status.value == "approved" for segment in segments)
-    assert all(segment.review.verified_by == "codex" for segment in segments)
+    assert_segments_are_independently_approved(segments)
     assert len(norms) == 16
     assert all(norm.product_scope.value == "outside_supported_actor" for norm in norms.values())
     capabilities = norms["AIA-NORM-A065-P4-REPRESENTATIVE-CAPABILITIES"]
@@ -3492,8 +3470,7 @@ def test_article_sixty_six_preserves_the_board_task_hierarchy():
     }
 
     assert len(segments) == 24
-    assert all(segment.review.status.value == "approved" for segment in segments)
-    assert all(segment.review.verified_by == "codex" for segment in segments)
+    assert_segments_are_independently_approved(segments)
     assert len(norms) == 17
     tasks = norms["AIA-NORM-A066-BOARD-ADVICE-AND-ASSISTANCE-TASKS"]
     powers = norms["AIA-NORM-A066-ENUMERATED-TASK-POWERS"]
@@ -3550,8 +3527,7 @@ def test_article_sixty_seven_extracts_advisory_forum_governance():
     }
 
     assert len(segments) == 11
-    assert all(segment.review.status.value == "approved" for segment in segments)
-    assert all(segment.review.verified_by == "codex" for segment in segments)
+    assert_segments_are_independently_approved(segments)
     assert len(norms) == 14
     assert all(norm.product_scope.value == "outside_supported_actor" for norm in norms.values())
     assert len(norms["AIA-NORM-A067-P2-BALANCED-MEMBERSHIP"].mandatory_content) == 3
@@ -3598,8 +3574,7 @@ def test_article_sixty_eight_extracts_scientific_panel_safeguards():
     }
 
     assert len(segments) == 19
-    assert all(segment.review.status.value == "approved" for segment in segments)
-    assert all(segment.review.verified_by == "codex" for segment in segments)
+    assert_segments_are_independently_approved(segments)
     assert len(norms) == 19
     tasks = norms["AIA-NORM-A068-P3-ADVISE-AND-SUPPORT-AI-OFFICE"]
     gpai = norms["AIA-NORM-A068-P3-A-GPAI-SUPPORT-TASKS"]
@@ -3649,8 +3624,7 @@ def test_article_sixty_nine_extracts_member_state_expert_access():
     ]
 
     assert len(segments) == 4
-    assert all(segment.review.status.value == "approved" for segment in segments)
-    assert all(segment.review.verified_by == "codex" for segment in segments)
+    assert_segments_are_independently_approved(segments)
     assert len(norms) == 3
     assert all(norm.product_scope.value == "outside_supported_actor" for norm in norms)
 
@@ -3669,8 +3643,7 @@ def test_article_seventy_extracts_national_authority_governance():
     }
 
     assert len(segments) == 10
-    assert all(segment.review.status.value == "approved" for segment in segments)
-    assert all(segment.review.verified_by == "codex" for segment in segments)
+    assert_segments_are_independently_approved(segments)
     assert len(norms) == 18
     assert all(norm.product_scope.value == "outside_supported_actor" for norm in norms.values())
 
@@ -3729,8 +3702,7 @@ def test_article_seventy_one_extracts_database_and_data_entry_duties():
     }
 
     assert len(segments) == 7
-    assert all(segment.review.status.value == "approved" for segment in segments)
-    assert all(segment.review.verified_by == "codex" for segment in segments)
+    assert_segments_are_independently_approved(segments)
     assert len(norms) == 13
     entry = [norm for norm in norms.values() if "ENTER-ANNEX-VIII-DATA" in norm.norm_id]
     assert len(entry) == 3
@@ -3792,8 +3764,7 @@ def test_article_seventy_two_maps_post_market_monitoring_effects():
     }
 
     assert len(segments) == 6
-    assert all(segment.review.status.value == "approved" for segment in segments)
-    assert all(segment.review.verified_by == "codex" for segment in segments)
+    assert_segments_are_independently_approved(segments)
     assert len(norms) == 6
     provider_norms = [
         norm for norm in norms.values() if norm.subjects[0].category.value == "supported_operator"
@@ -3823,8 +3794,7 @@ def test_article_seventy_three_maps_complete_incident_lifecycle():
     }
 
     assert len(segments) == 14
-    assert all(segment.review.status.value == "approved" for segment in segments)
-    assert all(segment.review.verified_by == "codex" for segment in segments)
+    assert_segments_are_independently_approved(segments)
     assert len(norms) == 16
     default_mapped = [
         norm for norm in norms.values() if norm.implementation_refs == ["AIA-ALL-A73"]
@@ -3876,10 +3846,7 @@ def test_article_seventy_four_maps_provider_access_duties():
         if norm.norm_id.startswith("AIA-NORM-A074-")
     }
     assert len(segments) == 21
-    assert all(
-        segment.review.status.value == "approved" and segment.review.verified_by == "codex"
-        for segment in segments
-    )
+    assert_segments_are_independently_approved(segments)
     assert len(norms) == 17
     documentation_access = norms["AIA-NORM-A074-P12-GRANT-DOCUMENTATION-AND-DATA-ACCESS"]
     source_code_access = norms["AIA-NORM-A074-P13-GRANT-SOURCE-CODE-ACCESS"]
@@ -3927,8 +3894,7 @@ def test_article_seventy_five_separates_provider_and_authority_effects():
     }
 
     assert len(segments) == 23
-    assert all(segment.review.status.value == "approved" for segment in segments)
-    assert all(segment.review.verified_by == "codex" for segment in segments)
+    assert_segments_are_independently_approved(segments)
     assert len(norms) == 28
     assert norms["AIA-NORM-A075-P1A-REPORT-SERIOUS-INCIDENTS"].implementation_refs == [
         "AIA-PO-A75-1a"
@@ -3983,8 +3949,7 @@ def test_article_seventy_six_extracts_real_world_testing_supervision():
     }
 
     assert len(segments) == 9
-    assert all(segment.review.status.value == "approved" for segment in segments)
-    assert all(segment.review.verified_by == "codex" for segment in segments)
+    assert_segments_are_independently_approved(segments)
     assert len(norms) == 7
     assert all(norm.product_scope.value == "outside_supported_actor" for norm in norms.values())
     assert len(norms["AIA-NORM-A076-P3-INTERVENE-IN-TESTING"].mandatory_content) == 2
@@ -4004,8 +3969,7 @@ def test_article_seventy_seven_extracts_fundamental_rights_cooperation():
     }
 
     assert len(segments) == 7
-    assert all(segment.review.status.value == "approved" for segment in segments)
-    assert all(segment.review.verified_by == "codex" for segment in segments)
+    assert_segments_are_independently_approved(segments)
     assert len(norms) == 9
     assert all(norm.product_scope.value == "outside_supported_actor" for norm in norms.values())
 
@@ -4649,7 +4613,7 @@ def test_annex_inventory_keeps_external_actors_and_exact_mandatory_content():
     annex_vii = [
         norm for norm in norms.values() if norm.primary_spans[0].startswith("AIA-TEXT-ANNEX-VII-")
     ]
-    assert len(annex_vii) == 31
+    assert len(annex_vii) == 32
     assert {norm.subjects[0].category.value for norm in annex_vii} >= {
         "supported_operator",
         "notified_or_conformity_body",
@@ -4778,7 +4742,7 @@ def test_annex_seven_completion_covers_change_control_and_certificate_content():
         if norm.norm_id.startswith("AIA-NORM-ANNEX-VII-")
     }
 
-    assert len(norms) == 31
+    assert len(norms) == 32
     assert len(norms["AIA-NORM-ANNEX-VII-CERTIFICATE-CONTENT"].mandatory_content) == 6
     assert norms["AIA-NORM-ANNEX-VII-INFORM-CHANGES"].subjects[0].subject_ref == "provider"
     assert norms["AIA-NORM-ANNEX-VII-ADDITIONAL-TESTS"].kind.value == "power"
