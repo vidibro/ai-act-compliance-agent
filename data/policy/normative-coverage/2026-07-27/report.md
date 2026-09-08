@@ -4,7 +4,7 @@
 
 **Act version:** 2026-07-27
 
-The inventory contains 133 complete source-body partitions, 1505 exact segments, and 1489 proposed atomic norms. Every stored article and annex is present. Proposed
+The inventory contains 133 complete source-body partitions, 1505 exact segments, and 1490 proposed atomic norms. Every stored article and annex is present. Proposed
 norms have been extracted from 132 documents; the remaining
 work is retained explicitly rather than omitted. The inventory is not consumed by classification,
 rule selection, judging, or reporting.
@@ -18,7 +18,7 @@ rule selection, judging, or reporting.
 - annex IX: 1
 - annex V: 1
 - annex VI: 4
-- annex VII: 31
+- annex VII: 32
 - annex VIII: 3
 - annex X: 12
 - annex XI: 5
@@ -1114,7 +1114,7 @@ rule selection, judging, or reporting.
 - AIA-TEXT-ANNEX-VII-I2: 3
 - AIA-TEXT-ANNEX-VII-I3: 7
 - AIA-TEXT-ANNEX-VII-I4: 17
-- AIA-TEXT-ANNEX-VII-I5: 3
+- AIA-TEXT-ANNEX-VII-I5: 4
 - AIA-TEXT-ANNEX-VIII-A: 1
 - AIA-TEXT-ANNEX-VIII-B: 1
 - AIA-TEXT-ANNEX-VIII-C: 1
@@ -1151,12 +1151,12 @@ rule selection, judging, or reporting.
 - Normative segments supporting multiple propositions: 382
 - Semantic candidates a shall-token pass missed: 574
 - Shall-token candidate recall: 61.5%
-- In-scope semantic candidates absent from existing implementation: 129
-- Detection-channel counts: cross_reference_structure=492, deeming_or_consequence=281, existing_implementation=508, other_modal=156, semantic_legal_effect=1489, shall_token=915
-- Mapping shapes, by norm: one-to-one=28, many-to-one=463, one-to-many=1, many-to-many=16, unmapped=981
-- Implementation debt candidates: 108
+- In-scope semantic candidates absent from existing implementation: 128
+- Detection-channel counts: cross_reference_structure=492, deeming_or_consequence=281, existing_implementation=510, other_modal=156, semantic_legal_effect=1490, shall_token=916
+- Mapping shapes, by norm: one-to-one=28, many-to-one=463, one-to-many=1, many-to-many=18, unmapped=980
+- Implementation debt candidates: 107
 - Interpretive links to non-binding guidance: 1
-- Review records with measured elapsed time: 0/2995
+- Review records with measured elapsed time: 0/2996
 
 ## Findings
 

@@ -1,7 +1,7 @@
 records:
 - norm_id: AIA-NORM-ANNEX-VII-PROCEDURE-COMPOSITION
   source: ANNEX-VII-I1
-  quote: is the conformity assessment procedure based on points 2 to 5
+  quote: Conformity based on an assessment of the quality management system and an assessment of the technical documentation is the conformity assessment procedure based on points 2 to 5.
   action: define the Annex VII conformity-assessment procedure as comprising points 2 to 5
   subject_ref: annex_vii_conformity_assessment
   subject_category: other
@@ -47,6 +47,8 @@ records:
   action: complete the Annex VII quality-management application
   subject_ref: provider
   subject_category: supported_operator
+  conditions:
+  - the provider lodges an application for assessment of the quality management system
   implementation_refs:
   - AIA-PO-A43-1B
   - AIA-PO-A43-3
@@ -63,20 +65,26 @@ records:
   - a written declaration that the same application has not been lodged with any other notified body
 - norm_id: AIA-NORM-ANNEX-VII-QMS-MAINTAIN
   source: ANNEX-VII-I3
-  quote: shall continue to be implemented and maintained by the provider
-  action: continue implementing and maintaining the approved quality-management system
+  quote: The quality management system as approved shall continue to be implemented and maintained by the provider so that it remains adequate and efficient.
+  action: continue implementing and maintaining the approved quality-management system so that it
+    remains adequate and efficient
   subject_ref: provider
   subject_category: supported_operator
+  conditions:
+  - the notified body approved the quality management system
   implementation_refs:
   - AIA-PO-A43-1B
   - AIA-PO-A43-3
   verification_mode: reported_not_judged
 - norm_id: AIA-NORM-ANNEX-VII-QMS-CHANGE
   source: ANNEX-VII-I3
-  quote: shall be brought to the attention of the notified body by the provider
+  quote: Any intended change to the approved quality management system or the list of AI systems covered by the latter shall be brought to the attention of the notified body by the provider.
   action: notify the notified body of intended QMS or covered-system-list changes
   subject_ref: provider
   subject_category: supported_operator
+  conditions:
+  - the notified body approved the quality management system
+  - the provider intends to change that system or the list of AI systems it covers
   implementation_refs:
   - AIA-PO-A43-1B
   - AIA-PO-A43-3
@@ -153,6 +161,8 @@ records:
   action: include all three point 4.2 items in the technical-documentation assessment application
   subject_ref: provider
   subject_category: supported_operator
+  conditions:
+  - the provider lodges the point 4.1 application for assessment of the technical documentation
   mandatory_content:
   - provider name and address
   - written declaration that the same application has not been lodged with another notified body
@@ -231,11 +241,13 @@ records:
     detail: Model access remains subject to the applicable external Union-law protections.
 - norm_id: AIA-NORM-ANNEX-VII-RETRAIN
   source: ANNEX-VII-I4
-  quote: re-training of the AI system will be needed prior to the application for a new conformity assessment
+  quote: Where the AI system does not meet the requirement relating to the data used to train it, re-training of the AI system will be needed prior to the application for a new conformity assessment.
   action: retrain before reapplying where training data fail the requirement
   subject_ref: provider
   subject_category: supported_operator
   kind: legal_consequence
+  conditions:
+  - the AI system does not meet the requirement relating to the data used to train it
   implementation_refs:
   - AIA-PO-A43-1B
   - AIA-PO-A43-3
@@ -331,6 +343,12 @@ records:
   action: inform the certificate-issuing notified body of intended or discovered changes that could affect compliance or intended purpose
   subject_ref: provider
   subject_category: supported_operator
+  conditions:
+  - a notified body issued a Union technical documentation assessment certificate for the AI system
+  - the change could affect the AI system's compliance with the requirements or its intended purpose
+  implementation_refs:
+  - AIA-PO-A43-1B
+  - AIA-PO-A43-3
   verification_mode: reported_not_judged
 - norm_id: AIA-NORM-ANNEX-VII-CHANGE-ROUTE-DECISION
   source: ANNEX-VII-I4
@@ -363,10 +381,25 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-ANNEX-VII-SURVEILLANCE
   source: ANNEX-VII-I5
-  quote: the provider shall allow the notified body to access the premises
-  action: allow surveillance access to premises and share all necessary information
+  quote: For assessment purposes, the provider shall allow the notified body to access the premises where the design, development, testing of the AI systems is taking place.
+  action: allow the notified body to access the premises where the AI systems are designed, developed
+    and tested
   subject_ref: provider
   subject_category: supported_operator
+  conditions:
+  - the notified body carries out point 5 surveillance of the approved quality management system
+  implementation_refs:
+  - AIA-PO-A43-1B
+  - AIA-PO-A43-3
+  verification_mode: reported_not_judged
+- norm_id: AIA-NORM-ANNEX-VII-SURVEILLANCE-SHARE-INFORMATION
+  source: ANNEX-VII-I5
+  quote: The provider shall further share with the notified body all necessary information.
+  action: share all information the notified body needs for surveillance
+  subject_ref: provider
+  subject_category: supported_operator
+  conditions:
+  - the notified body carries out point 5 surveillance of the approved quality management system
   implementation_refs:
   - AIA-PO-A43-1B
   - AIA-PO-A43-3
