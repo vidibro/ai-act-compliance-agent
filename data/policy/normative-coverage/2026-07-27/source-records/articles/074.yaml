@@ -177,6 +177,7 @@ records:
   subject_category: supported_operator
   implementation_refs: [AIA-PO-A74-12]
   verification_mode: reported_not_judged
+  verified_by: vidibro
 - norm_id: AIA-NORM-A074-P13-GRANT-SOURCE-CODE-ACCESS
   source: A074-P017
   quote: 'Market surveillance authorities shall be granted access to the source code of the high-risk AI system upon a reasoned request and only when both of the following conditions are fulfilled:'
@@ -187,6 +188,7 @@ records:
   qualifier_spans: [A074-P018, A074-P019]
   implementation_refs: [AIA-PO-A74-13]
   verification_mode: reported_not_judged
+  verified_by: vidibro
 - norm_id: AIA-NORM-A074-P14-ARTICLE-78-CONFIDENTIALITY
   source: A074-P020
   quote: Any information or documentation obtained by market surveillance authorities shall be treated in accordance with the confidentiality obligations set out in Article 78.

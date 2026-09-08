@@ -8,6 +8,7 @@ records:
   kind: permission
   conditions: [the system is listed in Annex III or covered by Annex I Section A legislation, Article 60 and the testing plan are followed, Article 5 prohibitions remain observed]
   verification_mode: reported_conditionally
+  verified_by: vidibro
 - norm_id: AIA-NORM-A060-P1-COMMISSION-PLAN-ACTS
   source: A060-P002
   quote: The Commission shall, by means of implementing acts, specify the detailed elements of the real-world testing plan. Those implementing acts shall be adopted in accordance with the examination procedure referred to in Article 98(2).
@@ -39,6 +40,7 @@ records:
   subject_category: supported_operator
   kind: permission
   verification_mode: reported_conditionally
+  verified_by: vidibro
 - norm_id: AIA-NORM-A060-P3-PRESERVE-ETHICAL-REVIEW
   source: A060-P005
   quote: The testing of high-risk AI systems in real world conditions under this Article shall be without prejudice to any ethical review that is required by Union or national law.
@@ -62,6 +64,7 @@ records:
   implementation_refs: [AIA-PO-A60-4]
   verification_mode: reported_not_judged
   mandatory_content: [testing plan submitted, authority approval or applicable tacit approval, correct registration route, Union establishment or representative, third-country transfer safeguards, six-month limit and extension process, vulnerable-subject protection, participating deployer information instructions and agreement, informed consent or law-enforcement substitute safeguards, qualified effective oversight, reversible and disregardable outputs]
+  verified_by: vidibro
 - norm_id: AIA-NORM-A060-P4-A-SUBMIT-TESTING-PLAN
   source: A060-P007
   quote: the provider or prospective provider has drawn up a real-world testing plan and submitted it to the market surveillance authority in the Member State where the testing in real world conditions is to be conducted;
@@ -69,6 +72,7 @@ records:
   subject_ref: provider_or_prospective_provider
   subject_category: supported_operator
   verification_mode: reported_conditionally
+  verified_by: vidibro
 - norm_id: AIA-NORM-A060-P4-B-APPROVAL-AND-TACIT-EFFECT
   source: A060-P008
   quote: the market surveillance authority in the Member State where the testing in real world conditions is to be conducted has approved the testing in real world conditions and the real-world testing plan; where the market surveillance authority has not provided an answer within 30 days, the testing in real world conditions and the real-world testing plan shall be understood to have been approved; where national law does not provide for a tacit approval, the testing in real world conditions shall remain subject to an authorisation;
@@ -77,6 +81,7 @@ records:
   subject_category: supported_operator
   conditions: [testing and its plan are approved, or the authority is silent for 30 days and national law permits tacit approval]
   verification_mode: reported_conditionally
+  verified_by: vidibro
 - norm_id: AIA-NORM-A060-P4-C-REGISTER-TESTING
   source: A060-P009
   quote: the provider or prospective provider, with the exception of providers or prospective providers of high-risk AI systems referred to in points 1, 6 and 7 of Annex III in the areas of law enforcement, migration, asylum and border control management, and high-risk AI systems referred to in point 2 of Annex III has registered the testing in real world conditions in accordance with Article 71(4) with a Union-wide unique single identification number and with the information specified in Annex IX; the provider or prospective provider of high-risk AI systems referred to in points 1, 6 and 7 of Annex III in the areas of law enforcement, migration, asylum and border control management, has registered the testing in real-world conditions in the secure non-public section of the EU database according to Article 49(4), point (d), with a Union-wide unique single identification number and with the information specified therein; the provider or prospective provider of high-risk AI systems referred to in point 2 of Annex III has registered the testing in real-world conditions in accordance with Article 49(5);
@@ -106,6 +111,7 @@ records:
       - the system is a high-risk AI system referred to in point 2 of Annex III
       - the testing is registered in accordance with Article 49(5)
   verification_mode: reported_conditionally
+  verified_by: vidibro
 - norm_id: AIA-NORM-A060-P4-D-UNION-ESTABLISHMENT
   source: A060-P010
   quote: the provider or prospective provider conducting the testing in real world conditions is established in the Union or has appointed a legal representative who is established in the Union;
@@ -113,6 +119,7 @@ records:
   subject_ref: provider_or_prospective_provider
   subject_category: supported_operator
   verification_mode: reported_conditionally
+  verified_by: vidibro
 - norm_id: AIA-NORM-A060-P4-E-TRANSFER-SAFEGUARDS
   source: A060-P011
   quote: data collected and processed for the purpose of the testing in real world conditions shall be transferred to third countries only provided that appropriate and applicable safeguards under Union law are implemented;
@@ -120,6 +127,7 @@ records:
   subject_ref: provider_or_prospective_provider
   subject_category: supported_operator
   verification_mode: reported_conditionally
+  verified_by: vidibro
 - norm_id: AIA-NORM-A060-P4-F-DURATION-LIMIT
   source: A060-P012
   quote: the testing in real world conditions does not last longer than necessary to achieve its objectives and in any case not longer than six months
@@ -127,6 +135,7 @@ records:
   subject_ref: provider_or_prospective_provider
   subject_category: supported_operator
   verification_mode: reported_conditionally
+  verified_by: vidibro
 - norm_id: AIA-NORM-A060-P4-EXTEND
   source: A060-P012
   quote: may be extended for an additional period of six months, subject to prior notification by the provider or prospective provider to the market surveillance authority, accompanied by an explanation of the need for such an extension;
@@ -137,6 +146,7 @@ records:
   implementation_refs: [AIA-PO-A60-4]
   verification_mode: reported_not_judged
   conditions: [prior authority notification, explanation of need]
+  verified_by: vidibro
 - norm_id: AIA-NORM-A060-P4-G-PROTECT-VULNERABLE-SUBJECTS
   source: A060-P013
   quote: the subjects of the testing in real world conditions who are persons belonging to vulnerable groups due to their age or disability, are appropriately protected;
@@ -144,6 +154,7 @@ records:
   subject_ref: provider_or_prospective_provider
   subject_category: supported_operator
   verification_mode: reported_conditionally
+  verified_by: vidibro
 - norm_id: AIA-NORM-A060-P4-H-INFORM-AND-AGREE-ROLES
   source: A060-P014
   quote: where a provider or prospective provider organises the testing in real world conditions in cooperation with one or more deployers or prospective deployers, the latter have been informed of all aspects of the testing that are relevant to their decision to participate, and given the relevant instructions for use of the AI system referred to in Article 13;
@@ -157,6 +168,7 @@ records:
     Article 13 instructions for use of the AI system]
   implementation_refs: [AIA-PO-A60-4]
   verification_mode: reported_not_judged
+  verified_by: vidibro
 - norm_id: AIA-NORM-A060-P4-H-CONCLUDE-ROLES-AGREEMENT
   source: A060-P014
   quote: the provider or prospective provider and the deployer or prospective deployer shall conclude an agreement specifying their roles and responsibilities with a view to ensuring compliance with the provisions for testing in real world conditions under this Regulation and under other applicable Union and national law;
@@ -169,6 +181,7 @@ records:
     in cooperation with one or more deployers or prospective deployers]
   implementation_refs: [AIA-PO-A60-4]
   verification_mode: reported_not_judged
+  verified_by: vidibro
 - norm_id: AIA-NORM-A060-P4-I-CONSENT-OR-SAFEGUARDS
   source: A060-P015
   quote: the subjects of the testing in real world conditions have given informed consent in accordance with Article 61
@@ -178,6 +191,7 @@ records:
   exceptions: [law-enforcement testing where seeking informed consent would prevent the AI system
     from being tested]
   verification_mode: reported_conditionally
+  verified_by: vidibro
 - norm_id: AIA-NORM-A060-P4-I-NO-NEGATIVE-EFFECT
   source: A060-P015
   quote: in the case of law enforcement, where the seeking of informed consent would prevent the AI system from being tested, the testing itself and the outcome of the testing in the real world conditions shall not have any negative effect on the subjects
@@ -189,6 +203,7 @@ records:
   - the testing is in the case of law enforcement
   - seeking informed consent would prevent the AI system from being tested
   verification_mode: reported_conditionally
+  verified_by: vidibro
 - norm_id: AIA-NORM-A060-P4-I-DELETE-SUBJECT-DATA
   source: A060-P015
   quote: their personal data shall be deleted after the test is performed;
@@ -200,6 +215,7 @@ records:
   - the testing is in the case of law enforcement
   - seeking informed consent would prevent the AI system from being tested
   verification_mode: reported_conditionally
+  verified_by: vidibro
 - norm_id: AIA-NORM-A060-P4-J-QUALIFIED-OVERSIGHT
   source: A060-P016
   quote: the testing in real world conditions is effectively overseen by the provider or prospective provider, as well as by deployers or prospective deployers through persons who are suitably qualified in the relevant field and have the necessary capacity, training and authority to perform their tasks;
@@ -207,6 +223,7 @@ records:
   subject_ref: provider_and_deployer
   subject_category: supported_operator
   verification_mode: reported_conditionally
+  verified_by: vidibro
 - norm_id: AIA-NORM-A060-P4-K-REVERSIBLE-OUTPUTS
   source: A060-P017
   quote: the predictions, recommendations or decisions of the AI system can be effectively reversed and disregarded.
@@ -214,6 +231,7 @@ records:
   subject_ref: provider_or_prospective_provider
   subject_category: supported_operator
   verification_mode: reported_conditionally
+  verified_by: vidibro
 - norm_id: AIA-NORM-A060-P5-WITHDRAW-AND-DELETE
   source: A060-P018
   quote: Any subjects of the testing in real world conditions, or their legally designated representative, as appropriate, may, without any resulting detriment and without having to provide any justification, withdraw from the testing at any time by revoking their informed consent
@@ -289,6 +307,7 @@ records:
   subject_category: supported_operator
   conditions: [a serious incident is identified in the course of the testing in real world conditions]
   verification_mode: reported_conditionally
+  verified_by: vidibro
 - norm_id: AIA-NORM-A060-P7-IMMEDIATE-MITIGATION
   source: A060-P020
   quote: The provider or prospective provider shall adopt immediate mitigation measures
@@ -297,6 +316,7 @@ records:
   subject_category: supported_operator
   conditions: [a serious incident is identified in the course of the testing in real world conditions]
   verification_mode: reported_conditionally
+  verified_by: vidibro
 - norm_id: AIA-NORM-A060-P7-SUSPEND-OR-TERMINATE
   source: A060-P020
   quote: or, failing that, shall suspend the testing in real world conditions until such mitigation takes place, or otherwise terminate it.
@@ -308,6 +328,7 @@ records:
   - a serious incident is identified in the course of the testing in real world conditions
   - immediate mitigation measures are not adopted
   verification_mode: reported_conditionally
+  verified_by: vidibro
 - norm_id: AIA-NORM-A060-P7-RECALL-PROCEDURE
   source: A060-P020
   quote: The provider or prospective provider shall establish a procedure for the prompt recall of the AI system upon such termination of the testing in real world conditions.
@@ -316,6 +337,7 @@ records:
   subject_ref: provider_or_prospective_provider
   subject_category: supported_operator
   verification_mode: reported_conditionally
+  verified_by: vidibro
 - norm_id: AIA-NORM-A060-P8-NOTIFY-OUTCOMES
   source: A060-P021
   quote: Providers or prospective providers shall notify the national market surveillance authority in the Member State where the testing in real world conditions is to be conducted of the suspension or termination of the testing in real world conditions and of the final outcomes.
@@ -323,6 +345,7 @@ records:
   subject_ref: provider_or_prospective_provider
   subject_category: supported_operator
   verification_mode: reported_conditionally
+  verified_by: vidibro
 - norm_id: AIA-NORM-A060-P9-TESTING-LIABILITY
   source: A060-P022
   quote: The provider or prospective provider shall be liable under applicable Union and national liability law for any damage caused in the course of their testing in real world conditions.

@@ -304,6 +304,7 @@ records:
     resolution: unresolved
     detail: Article 60 supplies the requirements for testing in real-world conditions but has only been
       partially semantically reviewed.
+  verified_by: vidibro
 - norm_id: AIA-NORM-A009-P8-DEVELOPMENT-TESTING
   source: A009-P017
   quote: The testing of high-risk AI systems shall be performed, as appropriate, at any time throughout
@@ -378,3 +379,4 @@ records:
     Union law
   implementation_refs: *id001
   verification_mode: reported_conditionally
+  verified_by: vidibro

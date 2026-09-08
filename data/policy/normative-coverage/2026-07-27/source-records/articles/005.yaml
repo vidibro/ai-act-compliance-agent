@@ -480,6 +480,7 @@ records:
   - dependency_ref: national law referred to in Article 5(5) of this Regulation
     resolution: national_or_factual
     detail: National law supplies the detailed rules for requesting and granting authorisation.
+  verified_by: vidibro
 - norm_id: AIA-NORM-A005-P3-URGENT-USE
   source: A005-P028
   quote: in a duly justified situation of urgency, the use of such system may be commenced without an
@@ -498,6 +499,7 @@ records:
   - dependency_ref: AIA-NORM-A005-P1-H-REAL-TIME-RBI
     resolution: internal_resolved
     detail: Article 5(1)(h) supplies the law-enforcement objectives that bring a use within this paragraph.
+  verified_by: vidibro
 - norm_id: AIA-NORM-A005-P3-STOP-ON-REJECTION
   source: A005-P028
   quote: If such authorisation is rejected, the use shall be stopped with immediate effect
@@ -513,6 +515,7 @@ records:
   - dependency_ref: AIA-NORM-A005-P1-H-REAL-TIME-RBI
     resolution: internal_resolved
     detail: Article 5(1)(h) supplies the law-enforcement objectives that bring a use within this paragraph.
+  verified_by: vidibro
 - norm_id: AIA-NORM-A005-P3-DELETE-ON-REJECTION
   source: A005-P028
   quote: all the data, as well as the results and outputs of that use shall be immediately discarded and
@@ -530,6 +533,7 @@ records:
   - dependency_ref: AIA-NORM-A005-P1-H-REAL-TIME-RBI
     resolution: internal_resolved
     detail: Article 5(1)(h) supplies the law-enforcement objectives that bring a use within this paragraph.
+  verified_by: vidibro
 - norm_id: AIA-NORM-A005-P3-RESTRICT-AUTHORISATION
   source: A005-P029
   quote: "The competent judicial authority or an independent administrative authority whose decision is\

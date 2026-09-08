@@ -127,6 +127,7 @@ records:
   kind: permission
   implementation_refs: *id001
   verification_mode: reported_conditionally
+  verified_by: vidibro
 - norm_id: AIA-NORM-A015-P4-FEEDBACK-RISK
   source: A015-P006
   quote: High-risk AI systems that continue to learn after being placed on the market or put into service
