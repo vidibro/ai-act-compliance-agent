@@ -13,6 +13,7 @@ records:
     resolution: internal_resolved
     detail: Article 43(1) determines when providers must use the Annex VII procedure.
   verification_mode: reported_conditionally
+  verified_by: vidibro
 - norm_id: AIA-NORM-ANNEX-VII-OVERVIEW-QMS-EXAMINATION
   source: ANNEX-VII-I2
   quote: The approved quality management system for the design, development and testing of AI systems pursuant to Article 17 shall be examined in accordance with point 3
@@ -25,6 +26,7 @@ records:
     resolution: internal_resolved
     detail: Article 17 establishes the quality management system examined by point 3.
   verification_mode: reported_conditionally
+  verified_by: vidibro
 - norm_id: AIA-NORM-ANNEX-VII-OVERVIEW-QMS-SURVEILLANCE
   source: ANNEX-VII-I2
   quote: shall be subject to surveillance as specified in point 5
@@ -33,6 +35,7 @@ records:
   subject_category: other
   kind: applicability
   verification_mode: reported_conditionally
+  verified_by: vidibro
 - norm_id: AIA-NORM-ANNEX-VII-OVERVIEW-DOCUMENTATION-EXAMINATION
   source: ANNEX-VII-I2
   quote: The technical documentation of the AI system shall be examined in accordance with point 4.
@@ -41,6 +44,7 @@ records:
   subject_category: other
   kind: applicability
   verification_mode: reported_conditionally
+  verified_by: vidibro
 - norm_id: AIA-NORM-ANNEX-VII-QMS-APPLICATION
   source: ANNEX-VII-I3
   quote: The application of the provider shall include
@@ -63,6 +67,7 @@ records:
   - a description of the procedures in place to ensure that the quality management system remains
     adequate and effective
   - a written declaration that the same application has not been lodged with any other notified body
+  verified_by: vidibro
 - norm_id: AIA-NORM-ANNEX-VII-QMS-MAINTAIN
   source: ANNEX-VII-I3
   quote: The quality management system as approved shall continue to be implemented and maintained by the provider so that it remains adequate and efficient.
@@ -76,6 +81,7 @@ records:
   - AIA-PO-A43-1B
   - AIA-PO-A43-3
   verification_mode: reported_not_judged
+  verified_by: vidibro
 - norm_id: AIA-NORM-ANNEX-VII-QMS-CHANGE
   source: ANNEX-VII-I3
   quote: Any intended change to the approved quality management system or the list of AI systems covered by the latter shall be brought to the attention of the notified body by the provider.
@@ -89,6 +95,7 @@ records:
   - AIA-PO-A43-1B
   - AIA-PO-A43-3
   verification_mode: reported_not_judged
+  verified_by: vidibro
 - norm_id: AIA-NORM-ANNEX-VII-QMS-ASSESS
   source: ANNEX-VII-I3
   quote: The quality management system shall be assessed by the notified body
@@ -155,6 +162,7 @@ records:
     resolution: internal_resolved
     detail: Article 43(1) preserves the provider's choice of notified body for the Annex VII procedure.
   verification_mode: reported_not_judged
+  verified_by: vidibro
 - norm_id: AIA-NORM-ANNEX-VII-DOC-APPLICATION-CONTENT
   source: ANNEX-VII-I4
   quote: 'The application shall include:'
@@ -172,6 +180,7 @@ records:
     resolution: internal_resolved
     detail: Annex IV defines the technical documentation included in the application.
   verification_mode: reported_not_judged
+  verified_by: vidibro
 - norm_id: AIA-NORM-ANNEX-VII-DOC-EXAMINE
   source: ANNEX-VII-I4
   quote: The technical documentation shall be examined by the notified body.
@@ -198,6 +207,7 @@ records:
   - access is relevant and limited to what is necessary for the notified body to fulfil its tasks
   - any remote access is provided through an API or another relevant technical means or tool where appropriate
   - applicable security safeguards are observed
+  verified_by: vidibro
 - norm_id: AIA-NORM-ANNEX-VII-EVIDENCE
   source: ANNEX-VII-I4
   quote: the provider supply further evidence or carry out further tests
@@ -210,6 +220,7 @@ records:
   verification_mode: reported_not_judged
   conditions:
   - notified body requires them
+  verified_by: vidibro
 - norm_id: AIA-NORM-ANNEX-VII-TESTS
   source: ANNEX-VII-I4
   quote: the notified body shall itself directly carry out adequate tests
@@ -239,6 +250,7 @@ records:
   - dependency_ref: existing Union law on intellectual-property and trade-secret protection
     resolution: external_recorded
     detail: Model access remains subject to the applicable external Union-law protections.
+  verified_by: vidibro
 - norm_id: AIA-NORM-ANNEX-VII-RETRAIN
   source: ANNEX-VII-I4
   quote: Where the AI system does not meet the requirement relating to the data used to train it, re-training of the AI system will be needed prior to the application for a new conformity assessment.
@@ -252,6 +264,7 @@ records:
   - AIA-PO-A43-1B
   - AIA-PO-A43-3
   verification_mode: reported_not_judged
+  verified_by: vidibro
 - norm_id: AIA-NORM-ANNEX-VII-DOC-DECISION
   source: ANNEX-VII-I4
   quote: The decision of the notified body shall be notified to the provider or its authorised representative.
@@ -350,6 +363,7 @@ records:
   - AIA-PO-A43-1B
   - AIA-PO-A43-3
   verification_mode: reported_not_judged
+  verified_by: vidibro
 - norm_id: AIA-NORM-ANNEX-VII-CHANGE-ROUTE-DECISION
   source: ANNEX-VII-I4
   quote: The intended changes shall be assessed by the notified body, which shall decide whether those changes require a new conformity assessment in accordance with Article 43(4) or whether they could be addressed by means of a supplement to the Union technical documentation assessment certificate.
@@ -392,6 +406,7 @@ records:
   - AIA-PO-A43-1B
   - AIA-PO-A43-3
   verification_mode: reported_not_judged
+  verified_by: vidibro
 - norm_id: AIA-NORM-ANNEX-VII-SURVEILLANCE-SHARE-INFORMATION
   source: ANNEX-VII-I5
   quote: The provider shall further share with the notified body all necessary information.
@@ -404,6 +419,7 @@ records:
   - AIA-PO-A43-1B
   - AIA-PO-A43-3
   verification_mode: reported_not_judged
+  verified_by: vidibro
 - norm_id: AIA-NORM-ANNEX-VII-AUDIT
   source: ANNEX-VII-I5
   quote: The notified body shall carry out periodic audits
