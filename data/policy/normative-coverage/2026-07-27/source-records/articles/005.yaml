@@ -466,7 +466,12 @@ records:
   subject_category: public_authority
   kind: obligation
   verification_mode: reported_not_judged
+  conditions:
+  - the use pursues an Article 5(1)(h) objective and is subject to the Article 5(2) conditions
   dependencies:
+  - dependency_ref: AIA-NORM-A005-P1-H-REAL-TIME-RBI
+    resolution: internal_resolved
+    detail: Article 5(1)(h) supplies the law-enforcement objectives that bring a use within this paragraph.
   - dependency_ref: national law referred to in Article 5(5) of this Regulation
     resolution: national_or_factual
     detail: National law supplies the detailed rules for requesting and granting authorisation.
@@ -481,8 +486,13 @@ records:
   kind: permission
   verification_mode: reported_conditionally
   conditions:
+  - the use pursues an Article 5(1)(h) objective and is subject to the Article 5(2) conditions
   - the situation of urgency is duly justified
   - request authorisation without undue delay and no later than 24 hours after use commences
+  dependencies:
+  - dependency_ref: AIA-NORM-A005-P1-H-REAL-TIME-RBI
+    resolution: internal_resolved
+    detail: Article 5(1)(h) supplies the law-enforcement objectives that bring a use within this paragraph.
 - norm_id: AIA-NORM-A005-P3-STOP-ON-REJECTION
   source: A005-P028
   quote: If such authorisation is rejected, the use shall be stopped with immediate effect
@@ -492,7 +502,12 @@ records:
   kind: obligation
   verification_mode: reported_not_judged
   conditions:
+  - the use pursues an Article 5(1)(h) objective and is subject to the Article 5(2) conditions
   - the requested authorisation is rejected
+  dependencies:
+  - dependency_ref: AIA-NORM-A005-P1-H-REAL-TIME-RBI
+    resolution: internal_resolved
+    detail: Article 5(1)(h) supplies the law-enforcement objectives that bring a use within this paragraph.
 - norm_id: AIA-NORM-A005-P3-DELETE-ON-REJECTION
   source: A005-P028
   quote: all the data, as well as the results and outputs of that use shall be immediately discarded and
@@ -504,7 +519,12 @@ records:
   kind: obligation
   verification_mode: reported_not_judged
   conditions:
+  - the use pursues an Article 5(1)(h) objective and is subject to the Article 5(2) conditions
   - the requested authorisation is rejected
+  dependencies:
+  - dependency_ref: AIA-NORM-A005-P1-H-REAL-TIME-RBI
+    resolution: internal_resolved
+    detail: Article 5(1)(h) supplies the law-enforcement objectives that bring a use within this paragraph.
 - norm_id: AIA-NORM-A005-P3-RESTRICT-AUTHORISATION
   source: A005-P029
   quote: "The competent judicial authority or an independent administrative authority whose decision is\
@@ -554,10 +574,10 @@ records:
   verification_mode: reported_not_judged
 - norm_id: AIA-NORM-A005-P4-NOTIFY-AUTHORITIES
   source: A005-P030
-  quote: "each use of a \u2018 real-time \u2019 remote biometric identification system in publicly accessible\
-    \ spaces for law enforcement purposes shall be notified to the relevant market surveillance authority\
-    \ and the national data protection authority in accordance with the national rules referred to in\
-    \ paragraph 5."
+  quote: "Without prejudice to paragraph 3, each use of a \u2018 real-time \u2019 remote biometric identification\
+    \ system in publicly accessible spaces for law enforcement purposes shall be notified to the relevant\
+    \ market surveillance authority and the national data protection authority in accordance with the\
+    \ national rules referred to in paragraph 5."
   action: notify the relevant market-surveillance authority and national data-protection authority of
     each covered use in accordance with applicable national rules
   subject_ref: law_enforcement_authority

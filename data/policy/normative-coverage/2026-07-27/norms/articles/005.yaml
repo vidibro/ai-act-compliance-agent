@@ -907,10 +907,14 @@ norms:
   - AIA-TEXT-A005-P028
   qualifier_spans: []
   effective_date_spans: []
-  conditions: []
+  conditions:
+  - the use pursues an Article 5(1)(h) objective and is subject to the Article 5(2) conditions
   exceptions: []
   mandatory_content: []
   dependencies:
+  - dependency_ref: AIA-NORM-A005-P1-H-REAL-TIME-RBI
+    resolution: internal_resolved
+    detail: Article 5(1)(h) supplies the law-enforcement objectives that bring a use within this paragraph.
   - dependency_ref: national law referred to in Article 5(5) of this Regulation
     resolution: national_or_factual
     detail: National law supplies the detailed rules for requesting and granting authorisation.
@@ -942,16 +946,21 @@ norms:
   detection_channels:
   - semantic_legal_effect
   - other_modal
+  - cross_reference_structure
   primary_spans:
   - AIA-TEXT-A005-P028
   qualifier_spans: []
   effective_date_spans: []
   conditions:
+  - the use pursues an Article 5(1)(h) objective and is subject to the Article 5(2) conditions
   - the situation of urgency is duly justified
   - request authorisation without undue delay and no later than 24 hours after use commences
   exceptions: []
   mandatory_content: []
-  dependencies: []
+  dependencies:
+  - dependency_ref: AIA-NORM-A005-P1-H-REAL-TIME-RBI
+    resolution: internal_resolved
+    detail: Article 5(1)(h) supplies the law-enforcement objectives that bring a use within this paragraph.
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: missing
@@ -978,15 +987,20 @@ norms:
   detection_channels:
   - semantic_legal_effect
   - shall_token
+  - cross_reference_structure
   primary_spans:
   - AIA-TEXT-A005-P028
   qualifier_spans: []
   effective_date_spans: []
   conditions:
+  - the use pursues an Article 5(1)(h) objective and is subject to the Article 5(2) conditions
   - the requested authorisation is rejected
   exceptions: []
   mandatory_content: []
-  dependencies: []
+  dependencies:
+  - dependency_ref: AIA-NORM-A005-P1-H-REAL-TIME-RBI
+    resolution: internal_resolved
+    detail: Article 5(1)(h) supplies the law-enforcement objectives that bring a use within this paragraph.
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: missing
@@ -1015,15 +1029,20 @@ norms:
   detection_channels:
   - semantic_legal_effect
   - shall_token
+  - cross_reference_structure
   primary_spans:
   - AIA-TEXT-A005-P028
   qualifier_spans: []
   effective_date_spans: []
   conditions:
+  - the use pursues an Article 5(1)(h) objective and is subject to the Article 5(2) conditions
   - the requested authorisation is rejected
   exceptions: []
   mandatory_content: []
-  dependencies: []
+  dependencies:
+  - dependency_ref: AIA-NORM-A005-P1-H-REAL-TIME-RBI
+    resolution: internal_resolved
+    detail: Article 5(1)(h) supplies the law-enforcement objectives that bring a use within this paragraph.
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: missing
@@ -1171,10 +1190,10 @@ norms:
     category: public_authority
   action: notify the relevant market-surveillance authority and national data-protection authority of
     each covered use in accordance with applicable national rules
-  norm_text: "each use of a \u2018 real-time \u2019 remote biometric identification system in publicly\
-    \ accessible spaces for law enforcement purposes shall be notified to the relevant market surveillance\
-    \ authority and the national data protection authority in accordance with the national rules referred\
-    \ to in paragraph 5."
+  norm_text: "Without prejudice to paragraph 3, each use of a \u2018 real-time \u2019 remote biometric\
+    \ identification system in publicly accessible spaces for law enforcement purposes shall be notified\
+    \ to the relevant market surveillance authority and the national data protection authority in accordance\
+    \ with the national rules referred to in paragraph 5."
   detection_channels:
   - semantic_legal_effect
   - shall_token
