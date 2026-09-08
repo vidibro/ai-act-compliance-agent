@@ -6,8 +6,8 @@ norms:
   subjects:
   - subject_ref: annex_x_large_scale_it_system
     category: other
-  action: include the Schengen Information System governed by Regulation (EU) 2018/1860 in the Annex X
-    large-scale IT-system scope
+  action: "names Regulation (EU) 2018/1860 (Schengen Information System \u2014 return of illegally staying\
+    \ third-country nationals) as an Annex X large-scale IT system"
   norm_text: Regulation (EU) 2018/1860
   detection_channels:
   - semantic_legal_effect
@@ -45,8 +45,8 @@ norms:
   subjects:
   - subject_ref: annex_x_large_scale_it_system
     category: other
-  action: include the Schengen Information System governed by Regulation (EU) 2018/1861 in the Annex X
-    large-scale IT-system scope
+  action: "names Regulation (EU) 2018/1861 (Schengen Information System \u2014 border checks) as an Annex\
+    \ X large-scale IT system"
   norm_text: Regulation (EU) 2018/1861
   detection_channels:
   - semantic_legal_effect
@@ -84,8 +84,8 @@ norms:
   subjects:
   - subject_ref: annex_x_large_scale_it_system
     category: other
-  action: include the Schengen Information System governed by Regulation (EU) 2018/1862 in the Annex X
-    large-scale IT-system scope
+  action: "names Regulation (EU) 2018/1862 (Schengen Information System \u2014 police and judicial cooperation)\
+    \ as an Annex X large-scale IT system"
   norm_text: Regulation (EU) 2018/1862
   detection_channels:
   - semantic_legal_effect
@@ -123,8 +123,8 @@ norms:
   subjects:
   - subject_ref: annex_x_large_scale_it_system
     category: other
-  action: include the Visa Information System governed by Regulation (EU) 2021/1133 in the Annex X large-scale
-    IT-system scope
+  action: "names Regulation (EU) 2021/1133 (Visa Information System \u2014 access to other EU information\
+    \ systems) as an Annex X large-scale IT system"
   norm_text: Regulation (EU) 2021/1133
   detection_channels:
   - semantic_legal_effect
@@ -162,8 +162,8 @@ norms:
   subjects:
   - subject_ref: annex_x_large_scale_it_system
     category: other
-  action: include the Visa Information System governed by Regulation (EU) 2021/1134 in the Annex X large-scale
-    IT-system scope
+  action: "names Regulation (EU) 2021/1134 (Visa Information System \u2014 reform) as an Annex X large-scale\
+    \ IT system"
   norm_text: Regulation (EU) 2021/1134
   detection_channels:
   - semantic_legal_effect
@@ -201,7 +201,7 @@ norms:
   subjects:
   - subject_ref: annex_x_large_scale_it_system
     category: other
-  action: include Eurodac governed by Regulation (EU) 2024/1358 in the Annex X large-scale IT-system scope
+  action: names Regulation (EU) 2024/1358 (Eurodac) as an Annex X large-scale IT system
   norm_text: Regulation (EU) 2024/1358
   detection_channels:
   - semantic_legal_effect
@@ -239,8 +239,7 @@ norms:
   subjects:
   - subject_ref: annex_x_large_scale_it_system
     category: other
-  action: include the Entry/Exit System governed by Regulation (EU) 2017/2226 in the Annex X large-scale
-    IT-system scope
+  action: names Regulation (EU) 2017/2226 (Entry/Exit System) as an Annex X large-scale IT system
   norm_text: Regulation (EU) 2017/2226
   detection_channels:
   - semantic_legal_effect
@@ -278,7 +277,8 @@ norms:
   subjects:
   - subject_ref: annex_x_large_scale_it_system
     category: other
-  action: include ETIAS governed by Regulation (EU) 2018/1240 in the Annex X large-scale IT-system scope
+  action: names Regulation (EU) 2018/1240 (European Travel Information and Authorisation System) as an
+    Annex X large-scale IT system
   norm_text: Regulation (EU) 2018/1240
   detection_channels:
   - semantic_legal_effect
@@ -316,8 +316,8 @@ norms:
   subjects:
   - subject_ref: annex_x_large_scale_it_system
     category: other
-  action: include the ETIAS-related system governed by Regulation (EU) 2018/1241 in the Annex X large-scale
-    IT-system scope
+  action: "names Regulation (EU) 2018/1241 (European Travel Information and Authorisation System \u2014\
+    \ Europol) as an Annex X large-scale IT system"
   norm_text: Regulation (EU) 2018/1241
   detection_channels:
   - semantic_legal_effect
@@ -355,8 +355,7 @@ norms:
   subjects:
   - subject_ref: annex_x_large_scale_it_system
     category: other
-  action: include ECRIS-TCN governed by Regulation (EU) 2019/816 in the Annex X large-scale IT-system
-    scope
+  action: names Regulation (EU) 2019/816 (ECRIS-TCN) as an Annex X large-scale IT system
   norm_text: Regulation (EU) 2019/816
   detection_channels:
   - semantic_legal_effect
@@ -394,8 +393,8 @@ norms:
   subjects:
   - subject_ref: annex_x_large_scale_it_system
     category: other
-  action: include the borders-and-visa interoperability framework governed by Regulation (EU) 2019/817
-    in the Annex X large-scale IT-system scope
+  action: "names Regulation (EU) 2019/817 (interoperability \u2014 borders and visa) as an Annex X large-scale\
+    \ IT system"
   norm_text: Regulation (EU) 2019/817
   detection_channels:
   - semantic_legal_effect
@@ -433,8 +432,8 @@ norms:
   subjects:
   - subject_ref: annex_x_large_scale_it_system
     category: other
-  action: include the police, judicial-cooperation, asylum, and migration interoperability framework governed
-    by Regulation (EU) 2019/818 in the Annex X large-scale IT-system scope
+  action: "names Regulation (EU) 2019/818 (interoperability \u2014 police and judicial cooperation, asylum\
+    \ and migration) as an Annex X large-scale IT system"
   norm_text: Regulation (EU) 2019/818
   detection_channels:
   - semantic_legal_effect

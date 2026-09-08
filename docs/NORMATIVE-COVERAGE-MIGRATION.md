@@ -938,3 +938,23 @@ the right shape. That includes Annex V, Annex XI Section 1, Annex XII and every 
 references each to `AIA-HR-A11` and `AIA-HR-A13-3` across the main, held-out and ablation files,
 including `__present_but_inadequate` and `__removed` cases that must be re-cut per group. Ship the
 golden-set cases with the split, never after it.
+
+### Open debt: a conditional duty does not print the list its condition names
+
+`AIA-NORM-A111-P1-BRING-LARGE-SCALE-IT-INTO-COMPLIANCE` is `reported_conditionally`, and its
+condition reads *the AI system is a component of a large-scale IT system established by a legal act
+listed in Annex X*. The report prints the condition. It does not print Annex X, so a reader cannot
+tell whether the condition is met without leaving the report and opening the Act.
+
+Annex X is a bibliography — twelve citations, no verb and no addressee — held as twelve
+`applicability` norms, each declaring `AIA-NORM-A111-P1-BRING-LARGE-SCALE-IT-INTO-COMPLIANCE` as a
+resolved dependency. The text the reader needs is therefore already in the store and already linked;
+nothing prints it.
+
+The fix belongs to the report, not the norm layer: where a conditional finding's condition names an
+enumerated annex, render that annex's entries under the finding. Promoting the twelve to obligations
+would be wrong — it prints twelve entries carrying no duty beside the one duty that applies.
+
+Article 111(1) is the case in hand. `AIA-NORM-A006-P2-ANNEX-III-HIGH-RISK` over Annex III is the
+same shape and matters more, since Annex III decides the high-risk tier rather than a transition
+date.
