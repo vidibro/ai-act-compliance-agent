@@ -4,7 +4,7 @@
 
 **Act version:** 2026-07-27
 
-The inventory contains 133 complete source-body partitions, 1505 exact segments, and 1487 proposed atomic norms. Every stored article and annex is present. Proposed
+The inventory contains 133 complete source-body partitions, 1505 exact segments, and 1488 proposed atomic norms. Every stored article and annex is present. Proposed
 norms have been extracted from 132 documents; the remaining
 work is retained explicitly rather than omitted. The inventory is not consumed by classification,
 rule selection, judging, or reporting.
@@ -112,7 +112,7 @@ rule selection, judging, or reporting.
 - article 72: 6
 - article 73: 16
 - article 74: 17
-- article 75: 27
+- article 75: 28
 - article 75a: 24
 - article 75b: 3
 - article 75c: 19
@@ -838,7 +838,7 @@ rule selection, judging, or reporting.
 - AIA-TEXT-A074-P020: 1
 - AIA-TEXT-A075-P001: 1
 - AIA-TEXT-A075-P008: 1
-- AIA-TEXT-A075-P009: 2
+- AIA-TEXT-A075-P009: 3
 - AIA-TEXT-A075-P010: 2
 - AIA-TEXT-A075-P011: 1
 - AIA-TEXT-A075-P012: 2
@@ -1152,11 +1152,11 @@ rule selection, judging, or reporting.
 - Semantic candidates a shall-token pass missed: 573
 - Shall-token candidate recall: 61.5%
 - In-scope semantic candidates absent from existing implementation: 129
-- Detection-channel counts: cross_reference_structure=491, deeming_or_consequence=280, existing_implementation=506, other_modal=156, semantic_legal_effect=1487, shall_token=914
-- Mapping shapes, by norm: one-to-one=30, many-to-one=459, one-to-many=1, many-to-many=16, unmapped=981
+- Detection-channel counts: cross_reference_structure=491, deeming_or_consequence=281, existing_implementation=507, other_modal=156, semantic_legal_effect=1488, shall_token=915
+- Mapping shapes, by norm: one-to-one=29, many-to-one=461, one-to-many=1, many-to-many=16, unmapped=981
 - Implementation debt candidates: 108
 - Interpretive links to non-binding guidance: 1
-- Review records with measured elapsed time: 0/2993
+- Review records with measured elapsed time: 0/2994
 
 ## Findings
 

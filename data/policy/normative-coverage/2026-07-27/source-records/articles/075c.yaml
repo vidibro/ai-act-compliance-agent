@@ -34,8 +34,11 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A075C-P3-ORDER-COMPLIANCE-MEASURES
   source: A075C-P003
-  quote: the AI Office shall, where relevant, order the operator concerned to take the necessary measures
+  quote: the AI Office shall, where relevant, order the operator concerned to take the necessary measures to ensure compliance with the relevant provisions of this Regulation within a reasonable period specified therein and to provide information on the measures that that operator intends to take to comply with the decision.
   action: order necessary compliance measures within a reasonable specified period and information about intended measures
+  mandatory_content:
+  - the necessary measures to ensure compliance within a reasonable period specified in the decision
+  - information on the measures the operator intends to take to comply with the decision
   subject_ref: ai_office
   subject_category: union_institution_or_body
   product_scope: outside_supported_actor
@@ -45,10 +48,14 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A075C-P3-DESCRIBE-IMPLEMENTED-MEASURES
   source: A075C-P003
-  quote: The operator concerned shall provide the AI Office with a description of the measures it has taken
-  action: describe implemented measures ensuring compliance with the AI Office decision
+  quote: The operator concerned shall provide the AI Office with a description of the measures it has taken to ensure compliance with the decision upon their implementation.
+  action: describe implemented measures ensuring compliance with the AI Office decision, once they
+    are implemented
   subject_ref: article_75_operator
   subject_category: supported_operator
+  conditions:
+  - an Article 75c(1) decision ordered the operator to take measures
+  - the measures have been implemented
   product_scope: in_scope
   product_scope_reason: This is an enforcement-response duty for a supported operator.
   implementation_mode: missing

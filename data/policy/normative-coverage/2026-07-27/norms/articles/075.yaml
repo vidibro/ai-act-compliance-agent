@@ -101,10 +101,10 @@ norms:
   subjects:
   - subject_ref: provider
     category: supported_operator
-  action: report serious incidents for high-risk systems under AI Office competence to the AI Office using
-    the Article 73(2) to (9) procedure
-  norm_text: providers of high-risk AI systems subject to the competence of the AI Office pursuant to
-    paragraph 1 of this Article shall report any serious incidents to the AI Office
+  action: report serious incidents to the AI Office rather than through the Article 73 route
+  norm_text: By way of derogation from Article 73, providers of high-risk AI systems subject to the competence
+    of the AI Office pursuant to paragraph 1 of this Article shall report any serious incidents to the
+    AI Office
   detection_channels:
   - semantic_legal_effect
   - shall_token
@@ -113,7 +113,46 @@ norms:
   - AIA-TEXT-A075-P009
   qualifier_spans: []
   effective_date_spans: []
-  conditions: []
+  conditions:
+  - the high-risk AI system is subject to the competence of the AI Office pursuant to Article 75(1)
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: in_scope
+  product_scope_reason: ''
+  implementation_mode: compliance_rule
+  implementation_refs:
+  - AIA-PO-A75-1a
+  implementation_reason: ''
+  verification_mode: reported_not_judged
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A075-P1A-APPLY-ARTICLE-73-PROCEDURE
+  act_version_date: '2026-07-27'
+  kind: applicability
+  subjects:
+  - subject_ref: provider
+    category: supported_operator
+  action: follow the Article 73(2) to (9) reporting procedure when reporting to the AI Office
+  norm_text: Article 73 (2) to (9), shall apply mutatis mutandis.
+  detection_channels:
+  - semantic_legal_effect
+  - shall_token
+  - deeming_or_consequence
+  - existing_implementation
+  primary_spans:
+  - AIA-TEXT-A075-P009
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions:
+  - a serious incident is reported to the AI Office under Article 75(1a)
   exceptions: []
   mandatory_content: []
   dependencies: []

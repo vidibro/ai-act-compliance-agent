@@ -958,3 +958,60 @@ would be wrong — it prints twelve entries carrying no duty beside the one duty
 Article 111(1) is the case in hand. `AIA-NORM-A006-P2-ANNEX-III-HIGH-RISK` over Annex III is the
 same shape and matters more, since Annex III decides the high-risk tier rather than a transition
 date.
+
+### Open debt: a paragraph letter reads as an article letter
+
+Norm ids append the paragraph to the article: `AIA-NORM-A075-P1A-…` is Article 75, paragraph 1a.
+Article 75 is followed by Articles 75a to 75d, whose norms are `AIA-NORM-A075A-…` to
+`AIA-NORM-A075D-…`. The two families differ by one character in a position no reader watches:
+
+| Norm id | Provision |
+|---|---|
+| `AIA-NORM-A075-P1A-REPORT-SERIOUS-INCIDENTS` | Article 75(1a) |
+| `AIA-NORM-A075A-P3-VOLUNTARY-REPLY-CORRECTNESS` | Article 75a(3) |
+| `AIA-NORM-A075-P1C-…` | Article 75(1c) |
+| `AIA-NORM-A075C-P3-DESCRIBE-IMPLEMENTED-MEASURES` | Article 75c(3) |
+
+Paragraphs 1a to 1e all collide this way with Articles 75a to 75d. Nothing is ambiguous to the
+loader — the strings are distinct and each resolves to one span — but a reader searching for "75c"
+finds paragraph 1c, and a norm can be reviewed against the wrong article without any check firing.
+Article 4a and Article 60a are the same shape with no lettered paragraphs to collide with yet.
+
+Renaming touches every id in the store and every `implementation_refs` and golden reference that
+names one, so it is not a small change. A separator that cannot be misread — `A075-P1a` against
+`A075a`, or a delimiter before the paragraph — is the fix.
+
+### Open debt: what an authority may do to the reader is never reported
+
+`product_scope: outside_supported_actor` holds 698 norms, all `not_reported`. The value means the
+duty binds someone the product does not report compliance for, and the report is written for
+providers, deployers and the other supported operators. So a market surveillance authority's power
+to order a recall, an AI Office investigation, a notified body's duty to give reasons for refusing
+a certificate, and a provider's right of appeal against it are all held in the store and none of
+them reach the reader.
+
+Most of the 698 are institutional plumbing — Commission delegated acts, Board composition, Member
+State notification procedure, notified-body internal organisation. **91** mention an operator role
+in their action or enacted text, and those are the ones whose exercise lands on the reader:
+
+| Provisions | Norms |
+|---|---:|
+| Annex VII and Articles 31, 34, 36 — notified body duties owed to the provider | ~17 |
+| Articles 74 to 76 and 79 to 82, 91 to 93 — market surveillance powers over the system | ~25 |
+| Articles 75a and 75c — AI Office investigation, orders and penalties | 10 |
+| Articles 56, 57, 62 — sandbox and SME support the reader can claim | ~16 |
+| Scattered | ~23 |
+
+Re-labelling them `in_scope` would be wrong: that value means a duty OF a supported operator, and
+using it here puts these norms in the approval denominator, the implementation-debt list and the
+gap layer's reach, and breaks the invariant that an in-scope norm is never `not_reported`. The
+shape is a separate `ProductScope` value — binds another actor, but its exercise falls on the
+reader — reported as `reported_not_judged` in its own section.
+
+That section carries two kinds that read differently and should be labelled apart: what an
+authority MAY DO to the reader, and what the reader MAY REQUIRE of it. The second half — decision
+reasons, appeal routes, sandbox access — is closer to a right than a duty and is the more useful of
+the two.
+
+Cost: the enum value, a builder default, a metrics split, the report section, and 91 norms to
+re-scope and review.

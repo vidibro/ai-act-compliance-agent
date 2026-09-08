@@ -112,6 +112,9 @@ norms:
   action: order necessary compliance measures within a reasonable specified period and information about
     intended measures
   norm_text: the AI Office shall, where relevant, order the operator concerned to take the necessary measures
+    to ensure compliance with the relevant provisions of this Regulation within a reasonable period specified
+    therein and to provide information on the measures that that operator intends to take to comply with
+    the decision.
   detection_channels:
   - semantic_legal_effect
   - shall_token
@@ -121,7 +124,9 @@ norms:
   effective_date_spans: []
   conditions: []
   exceptions: []
-  mandatory_content: []
+  mandatory_content:
+  - the necessary measures to ensure compliance within a reasonable period specified in the decision
+  - information on the measures the operator intends to take to comply with the decision
   dependencies: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -144,9 +149,10 @@ norms:
   subjects:
   - subject_ref: article_75_operator
     category: supported_operator
-  action: describe implemented measures ensuring compliance with the AI Office decision
+  action: describe implemented measures ensuring compliance with the AI Office decision, once they are
+    implemented
   norm_text: The operator concerned shall provide the AI Office with a description of the measures it
-    has taken
+    has taken to ensure compliance with the decision upon their implementation.
   detection_channels:
   - semantic_legal_effect
   - shall_token
@@ -154,7 +160,9 @@ norms:
   - AIA-TEXT-A075C-P003
   qualifier_spans: []
   effective_date_spans: []
-  conditions: []
+  conditions:
+  - an Article 75c(1) decision ordered the operator to take measures
+  - the measures have been implemented
   exceptions: []
   mandatory_content: []
   dependencies: []

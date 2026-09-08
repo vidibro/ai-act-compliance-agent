@@ -167,6 +167,8 @@ records:
   action: ensure any voluntary response to a simple AI Office request is correct and not misleading
   subject_ref: requested_operator
   subject_category: supported_operator
+  conditions:
+  - the AI Office requested the information by simple request rather than by decision
   product_scope: in_scope
   product_scope_reason: This is a conditional information-quality duty for supported operators.
   implementation_mode: missing

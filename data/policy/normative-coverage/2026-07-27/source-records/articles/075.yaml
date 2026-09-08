@@ -44,10 +44,23 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A075-P1A-REPORT-SERIOUS-INCIDENTS
   source: A075-P009
-  quote: providers of high-risk AI systems subject to the competence of the AI Office pursuant to paragraph 1 of this Article shall report any serious incidents to the AI Office
-  action: report serious incidents for high-risk systems under AI Office competence to the AI Office using the Article 73(2) to (9) procedure
+  quote: By way of derogation from Article 73, providers of high-risk AI systems subject to the competence of the AI Office pursuant to paragraph 1 of this Article shall report any serious incidents to the AI Office
+  action: report serious incidents to the AI Office rather than through the Article 73 route
   subject_ref: provider
   subject_category: supported_operator
+  conditions:
+  - the high-risk AI system is subject to the competence of the AI Office pursuant to Article 75(1)
+  implementation_refs: [AIA-PO-A75-1a]
+  verification_mode: reported_not_judged
+- norm_id: AIA-NORM-A075-P1A-APPLY-ARTICLE-73-PROCEDURE
+  source: A075-P009
+  quote: Article 73 (2) to (9), shall apply mutatis mutandis.
+  action: follow the Article 73(2) to (9) reporting procedure when reporting to the AI Office
+  subject_ref: provider
+  subject_category: supported_operator
+  kind: applicability
+  conditions:
+  - a serious incident is reported to the AI Office under Article 75(1a)
   implementation_refs: [AIA-PO-A75-1a]
   verification_mode: reported_not_judged
 - norm_id: AIA-NORM-A075-P1A-TRANSMIT-INCIDENT-INFORMATION
