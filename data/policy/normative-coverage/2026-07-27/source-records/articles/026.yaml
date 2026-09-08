@@ -418,6 +418,7 @@ records:
   kind: prohibition
   implementation_refs: *id005
   verification_mode: reported_not_judged
+  verified_by: vidibro
 - norm_id: AIA-NORM-A026-P10-NO-SOLE-OUTPUT-ADVERSE-DECISION
   source: A026-P10
   quote: It shall be ensured that no decision that produces an adverse legal effect on a person may be
@@ -461,6 +462,7 @@ records:
     enforcement purposes
   implementation_refs: *id005
   verification_mode: reported_not_judged
+  verified_by: vidibro
 - norm_id: AIA-NORM-A026-P10-MAKE-FILE-AVAILABLE
   source: A026-P10
   quote: shall be made available to the relevant market surveillance authority and the national data protection
@@ -487,6 +489,7 @@ records:
   kind: applicability
   implementation_refs: *id005
   verification_mode: reported_conditionally
+  verified_by: vidibro
 - norm_id: AIA-NORM-A026-P10-PRESERVE-SUPERVISORY-POWERS
   source: A026-P10
   quote: This subparagraph shall be without prejudice to the powers conferred by Directive (EU) 2016/680
@@ -528,6 +531,7 @@ records:
   kind: applicability
   implementation_refs: *id005
   verification_mode: reported_conditionally
+  verified_by: vidibro
 - norm_id: AIA-NORM-A026-P10-AGGREGATE-REPORTS
   source: A026-P10
   quote: The reports may be aggregated to cover more than one deployment.
@@ -541,6 +545,7 @@ records:
   kind: permission
   implementation_refs: *id005
   verification_mode: reported_conditionally
+  verified_by: vidibro
 - norm_id: AIA-NORM-A026-P10-MEMBER-STATE-STRICTER-LAW
   source: A026-P10
   quote: Member States may introduce, in accordance with Union law, more restrictive laws on the use of

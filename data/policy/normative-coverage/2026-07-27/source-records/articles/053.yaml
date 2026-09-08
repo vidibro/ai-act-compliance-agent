@@ -12,6 +12,7 @@ records:
   implementation_refs:
   - AIA-GP-A53-1A
   verification_mode: reported_not_judged
+  verified_by: vidibro
 - norm_id: AIA-NORM-A053-P1-A-ANNEX-XI-CONTENT
   source: A053-P002
   quote: which shall contain, at a minimum, the information set out in Annex XI
@@ -23,6 +24,7 @@ records:
   implementation_refs:
   - AIA-GP-A53-1A
   verification_mode: reported_not_judged
+  verified_by: vidibro
 - norm_id: AIA-NORM-A053-P1-A-PROVIDE-ON-REQUEST
   source: A053-P002
   quote: for the purpose of providing it, upon request, to the AI Office and the national competent authorities
@@ -35,6 +37,7 @@ records:
   implementation_refs:
   - AIA-GP-A53-1A
   verification_mode: reported_not_judged
+  verified_by: vidibro
 - norm_id: AIA-NORM-A053-P1-B-DRAW-KEEP-DOWNSTREAM-DOCUMENTATION
   source: A053-P003
   quote: draw up, keep up-to-date and make available information and documentation to providers of AI
@@ -47,6 +50,7 @@ records:
   implementation_refs:
   - AIA-GP-A53-1B
   verification_mode: reported_not_judged
+  verified_by: vidibro
 - norm_id: AIA-NORM-A053-P1-B-MAKE-AVAILABLE
   source: A053-P003
   quote: draw up, keep up-to-date and make available information and documentation to providers of AI
@@ -57,6 +61,7 @@ records:
   implementation_refs:
   - AIA-GP-A53-1B
   verification_mode: reported_not_judged
+  verified_by: vidibro
 - norm_id: AIA-NORM-A053-P1-B-PROTECT-RIGHTS
   source: A053-P003
   quote: Without prejudice to the need to observe and protect intellectual property rights and confidential
@@ -68,6 +73,7 @@ records:
   implementation_refs:
   - AIA-GP-A53-1B
   verification_mode: reported_not_judged
+  verified_by: vidibro
 - norm_id: AIA-NORM-A053-P1-B-ENABLE-DOWNSTREAM-COMPLIANCE
   source: A053-P004
   quote: enable providers of AI systems to have a good understanding of the capabilities and limitations
@@ -81,6 +87,7 @@ records:
   implementation_refs:
   - AIA-GP-A53-1B
   verification_mode: reported_not_judged
+  verified_by: vidibro
 - norm_id: AIA-NORM-A053-P1-B-ANNEX-XII-CONTENT
   source: A053-P005
   quote: contain, at a minimum, the elements set out in Annex XII
@@ -94,6 +101,7 @@ records:
   implementation_refs:
   - AIA-GP-A53-1B
   verification_mode: reported_not_judged
+  verified_by: vidibro
 - norm_id: AIA-NORM-A053-P1-C-COPYRIGHT-POLICY
   source: A053-P006
   quote: put in place a policy to comply with Union law on copyright and related rights
@@ -105,6 +113,7 @@ records:
   implementation_refs:
   - AIA-GP-A53-1C
   verification_mode: reported_not_judged
+  verified_by: vidibro
 - norm_id: AIA-NORM-A053-P1-C-RIGHTS-RESERVATION
   source: A053-P006
   quote: identify and comply with, including through state-of-the-art technologies, a reservation of rights
@@ -115,6 +124,7 @@ records:
   implementation_refs:
   - AIA-GP-A53-1C
   verification_mode: reported_not_judged
+  verified_by: vidibro
 - norm_id: AIA-NORM-A053-P1-D-PUBLIC-TRAINING-SUMMARY
   source: A053-P007
   quote: draw up and make publicly available a sufficiently detailed summary about the content used for
@@ -127,6 +137,7 @@ records:
   implementation_refs:
   - AIA-GP-A53-1D
   verification_mode: reported_not_judged
+  verified_by: vidibro
 - norm_id: AIA-NORM-A053-P2-OPEN-SOURCE-EXCEPTION
   source: A053-P008
   quote: The obligations set out in paragraph 1, points (a) and (b), shall not apply to providers of AI
@@ -145,6 +156,7 @@ records:
   - AIA-GP-A53-1B
   implementation_reason: Both rules encode this exception in their activation conditions.
   verification_mode: reported_not_judged
+  verified_by: vidibro
 - norm_id: AIA-NORM-A053-P2-SYSTEMIC-RISK-OVERRIDE
   source: A053-P008
   quote: This exception shall not apply to general-purpose AI models with systemic risks.
@@ -159,6 +171,7 @@ records:
   - AIA-GP-A53-1B
   implementation_reason: Both rules disapply the open-source exception for systemic-risk models.
   verification_mode: reported_not_judged
+  verified_by: vidibro
 - norm_id: AIA-NORM-A053-P3-COOPERATE
   source: A053-P009
   quote: Providers of general-purpose AI models shall cooperate as necessary with the Commission and the
@@ -170,6 +183,7 @@ records:
   implementation_refs:
   - AIA-GP-A53-3
   verification_mode: reported_not_judged
+  verified_by: vidibro
 - norm_id: AIA-NORM-A053-P4-RELY-ON-CODES
   source: A053-P010
   quote: Providers of general-purpose AI models may rely on codes of practice within the meaning of Article
@@ -213,6 +227,7 @@ records:
   implementation_refs:
   - AIA-GP-A53-4
   verification_mode: reported_not_judged
+  verified_by: vidibro
 - norm_id: AIA-NORM-A053-P5-DETAIL-METHODOLOGIES
   source: A053-P011
   quote: the Commission is empowered to adopt delegated acts in accordance with Article 97 to detail measurement
@@ -253,3 +268,4 @@ records:
   implementation_refs:
   - AIA-PO-A53-7
   verification_mode: reported_not_judged
+  verified_by: vidibro

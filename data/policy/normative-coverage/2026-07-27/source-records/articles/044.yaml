@@ -24,6 +24,7 @@ records:
   kind: legal_consequence
   implementation_mode: missing
   verification_mode: reported_conditionally
+  verified_by: vidibro
 - norm_id: AIA-NORM-A044-P2-EXTEND-CERTIFICATE
   source: A044-P002
   quote: At the request of the provider, the validity of a certificate may be extended for further periods,
@@ -39,6 +40,7 @@ records:
   conditions:
   - the provider requests the extension
   - applicable conformity-assessment procedures are used for reassessment
+  verified_by: vidibro
 - norm_id: AIA-NORM-A044-P2-SUPPLEMENT-VALIDITY
   source: A044-P002
   quote: Any supplement to a certificate shall remain valid, provided that the certificate which it supplements
@@ -51,6 +53,7 @@ records:
   verification_mode: reported_conditionally
   conditions:
   - the underlying certificate remains valid
+  verified_by: vidibro
 - norm_id: AIA-NORM-A044-P3-CERTIFICATE-MEASURE
   source: A044-P003
   quote: Where a notified body finds that an AI system no longer meets the requirements set out in Section
@@ -80,6 +83,7 @@ records:
   kind: legal_consequence
   implementation_mode: missing
   verification_mode: reported_conditionally
+  verified_by: vidibro
 - norm_id: AIA-NORM-A044-P3-GIVE-REASONS
   source: A044-P003
   quote: The notified body shall give reasons for its decision.

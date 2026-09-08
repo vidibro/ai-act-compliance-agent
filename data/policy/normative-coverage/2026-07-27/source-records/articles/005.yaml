@@ -378,6 +378,7 @@ records:
   - dependency_ref: AIA-NORM-A005-P1-H-REAL-TIME-RBI
     resolution: internal_resolved
     detail: The obligation applies to use under an Article 5(1)(h) exception.
+  verified_by: vidibro
 - norm_id: AIA-NORM-A005-P2-CONSIDER-IMPACTS
   source: A005-P024
   quote: 'it shall take into account the following elements:'
@@ -399,6 +400,7 @@ records:
   - dependency_ref: AIA-NORM-A005-P1-H-REAL-TIME-RBI
     resolution: internal_resolved
     detail: The assessment applies to use under an Article 5(1)(h) exception.
+  verified_by: vidibro
 - norm_id: AIA-NORM-A005-P2-NATIONAL-SAFEGUARDS
   source: A005-P027
   quote: "the use of \u2018 real-time \u2019 remote biometric identification systems in publicly accessible\
@@ -416,6 +418,7 @@ records:
   - dependency_ref: national law authorising real-time remote biometric identification use
     resolution: national_or_factual
     detail: Applicable national law supplies the required safeguards, conditions, and use limitations.
+  verified_by: vidibro
 - norm_id: AIA-NORM-A005-P2-COMPLETE-FRIA
   source: A005-P027
   quote: "The use of the \u2018 real-time \u2019 remote biometric identification system in publicly accessible\
@@ -433,6 +436,7 @@ records:
     detail: Article 27 defines the impact-assessment requirements and has not yet been semantically reviewed.
   implementation_refs:
   - AIA-DP-A05-2
+  verified_by: vidibro
 - norm_id: AIA-NORM-A005-P2-REGISTER-SYSTEM
   source: A005-P027
   quote: "The use of the \u2018 real-time \u2019 remote biometric identification system in publicly accessible\
@@ -453,6 +457,7 @@ records:
   - dependency_ref: Article 49 of this Regulation
     resolution: unresolved
     detail: Article 49 defines the EU-database registration and has not yet been semantically reviewed.
+  verified_by: vidibro
 - norm_id: AIA-NORM-A005-P3-PRIOR-AUTHORISATION
   source: A005-P028
   quote: "each use for the purposes of law enforcement of a \u2018 real-time \u2019 remote biometric identification\
@@ -548,6 +553,7 @@ records:
   - dependency_ref: AIA-NORM-A005-P1-H-REAL-TIME-RBI
     resolution: internal_resolved
     detail: Article 5(1)(h) supplies the permitted law-enforcement objectives.
+  verified_by: vidibro
 - norm_id: AIA-NORM-A005-P3-CONSIDER-P2-ELEMENTS
   source: A005-P029
   quote: In deciding on the request, that authority shall take into account the elements referred to in
@@ -562,6 +568,7 @@ records:
     resolution: internal_resolved
     detail: The referenced norm records the non-use harm and rights-and-freedoms consequences that must
       be considered.
+  verified_by: vidibro
 - norm_id: AIA-NORM-A005-P3-NO-SOLE-OUTPUT-ADVERSE-DECISION
   source: A005-P029
   quote: "No decision that produces an adverse legal effect on a person may be taken based solely on the\
@@ -572,6 +579,7 @@ records:
   subject_category: public_authority
   kind: prohibition
   verification_mode: reported_not_judged
+  verified_by: vidibro
 - norm_id: AIA-NORM-A005-P4-NOTIFY-AUTHORITIES
   source: A005-P030
   quote: "Without prejudice to paragraph 3, each use of a \u2018 real-time \u2019 remote biometric identification\
@@ -588,6 +596,7 @@ records:
   - dependency_ref: national rules referred to in Article 5(5) of this Regulation
     resolution: national_or_factual
     detail: National law supplies the detailed notification rules.
+  verified_by: vidibro
 - norm_id: AIA-NORM-A005-P4-NOTIFICATION-CONTENT
   source: A005-P030
   quote: The notification shall, as a minimum, contain the information specified under paragraph 6
@@ -604,6 +613,7 @@ records:
     resolution: unresolved
     detail: Article 5(6) supplies the minimum notification information and has not yet been semantically
       reviewed.
+  verified_by: vidibro
 - norm_id: AIA-NORM-A005-P4-EXCLUDE-SENSITIVE-DATA
   source: A005-P030
   quote: shall not include sensitive operational data.
@@ -615,6 +625,7 @@ records:
     law enforcement purposes is notified under Article 5(4)
   kind: prohibition
   verification_mode: reported_not_judged
+  verified_by: vidibro
 - norm_id: AIA-NORM-A005-P5-AUTHORISE-USE
   source: A005-P031
   quote: "A Member State may decide to provide for the possibility to fully or partially authorise the\

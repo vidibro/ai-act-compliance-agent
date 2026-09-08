@@ -13,6 +13,7 @@ records:
   implementation_refs:
   - AIA-GP-A54-1
   verification_mode: reported_not_judged
+  verified_by: vidibro
 - norm_id: AIA-NORM-A054-P2-ENABLE-REPRESENTATIVE
   source: A054-P002
   quote: The provider shall enable its authorised representative to perform the tasks specified in the
@@ -23,6 +24,7 @@ records:
   implementation_refs:
   - AIA-GP-A54-2
   verification_mode: reported_not_judged
+  verified_by: vidibro
 - norm_id: AIA-NORM-A054-P3-PERFORM-MANDATE
   source: A054-P003
   quote: The authorised representative shall perform the tasks specified in the mandate received from
@@ -33,6 +35,7 @@ records:
   implementation_refs:
   - AIA-GPAR-A54-3
   verification_mode: reported_not_judged
+  verified_by: vidibro
 - norm_id: AIA-NORM-A054-P3-PROVIDE-MANDATE
   source: A054-P003
   quote: It shall provide a copy of the mandate to the AI Office upon request, in one of the official
@@ -45,6 +48,7 @@ records:
   implementation_refs:
   - AIA-GPAR-A54-3
   verification_mode: reported_not_judged
+  verified_by: vidibro
 - norm_id: AIA-NORM-A054-P3-A-VERIFY-COMPLIANCE
   source: A054-P004
   quote: verify that the technical documentation specified in Annex XI has been drawn up and all obligations
@@ -58,6 +62,7 @@ records:
   implementation_refs:
   - AIA-GPAR-A54-3
   verification_mode: reported_not_judged
+  verified_by: vidibro
 - norm_id: AIA-NORM-A054-P3-B-RETAIN-DOCUMENTATION
   source: A054-P005
   quote: keep a copy of the technical documentation specified in Annex XI at the disposal of the AI Office
@@ -75,6 +80,7 @@ records:
   implementation_refs:
   - AIA-GPAR-A54-3
   verification_mode: reported_not_judged
+  verified_by: vidibro
 - norm_id: AIA-NORM-A054-P3-C-PROVIDE-COMPLIANCE-INFORMATION
   source: A054-P006
   quote: provide the AI Office, upon a reasoned request, with all the information and documentation, including
@@ -90,6 +96,7 @@ records:
   implementation_refs:
   - AIA-GPAR-A54-3
   verification_mode: reported_not_judged
+  verified_by: vidibro
 - norm_id: AIA-NORM-A054-P3-D-COOPERATE
   source: A054-P007
   quote: cooperate with the AI Office and competent authorities, upon a reasoned request, in any action
@@ -106,6 +113,7 @@ records:
   implementation_refs:
   - AIA-GPAR-A54-3
   verification_mode: reported_not_judged
+  verified_by: vidibro
 - norm_id: AIA-NORM-A054-P4-AUTHORITY-ADDRESS-TERM
   source: A054-P008
   quote: The mandate shall empower the authorised representative to be addressed, in addition to or instead
@@ -118,6 +126,7 @@ records:
   implementation_refs:
   - AIA-GP-A54-4
   verification_mode: reported_not_judged
+  verified_by: vidibro
 - norm_id: AIA-NORM-A054-P5-TERMINATE-MANDATE
   source: A054-P009
   quote: The authorised representative shall terminate the mandate if it considers or has reason to consider
@@ -130,6 +139,7 @@ records:
   implementation_refs:
   - AIA-GPAR-A54-5
   verification_mode: reported_not_judged
+  verified_by: vidibro
 - norm_id: AIA-NORM-A054-P5-NOTIFY-TERMINATION
   source: A054-P009
   quote: In such a case, it shall also immediately inform the AI Office about the termination of the mandate
@@ -145,6 +155,7 @@ records:
   implementation_refs:
   - AIA-GPAR-A54-5
   verification_mode: reported_not_judged
+  verified_by: vidibro
 - norm_id: AIA-NORM-A054-P6-OPEN-SOURCE-EXCEPTION
   source: A054-P010
   quote: The obligation set out in this Article shall not apply to providers of general-purpose AI models
@@ -166,6 +177,7 @@ records:
   - AIA-GPAR-A54-5
   implementation_reason: Each Article 54 rule encodes this exception in its activation condition.
   verification_mode: reported_not_judged
+  verified_by: vidibro
 - norm_id: AIA-NORM-A054-P6-SYSTEMIC-RISK-OVERRIDE
   source: A054-P010
   quote: unless the general-purpose AI models present systemic risks.
@@ -183,3 +195,4 @@ records:
   - AIA-GPAR-A54-5
   implementation_reason: Each Article 54 rule disapplies the open-source exception for systemic-risk models.
   verification_mode: reported_not_judged
+  verified_by: vidibro
