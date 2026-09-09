@@ -17,6 +17,7 @@ segments:
   disposition: structural
   disposition_reason: ''
   norm_ids: []
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -40,6 +41,7 @@ segments:
   disposition: context_only
   disposition_reason: Category heading for the Schengen Information System instruments.
   norm_ids: []
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -66,6 +68,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-ANNEX-X-SIS-RETURN
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -93,6 +96,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-ANNEX-X-SIS-BORDER-CHECKS
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -121,6 +125,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-ANNEX-X-SIS-POLICE-JUDICIAL
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -144,6 +149,7 @@ segments:
   disposition: context_only
   disposition_reason: Category heading for the Visa Information System instruments.
   norm_ids: []
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -171,6 +177,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-ANNEX-X-VIS-ACCESS-CONDITIONS
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -199,6 +206,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-ANNEX-X-VIS-REFORM
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -222,6 +230,7 @@ segments:
   disposition: context_only
   disposition_reason: Category heading for the Eurodac instrument.
   norm_ids: []
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -251,6 +260,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-ANNEX-X-EURODAC
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -274,6 +284,7 @@ segments:
   disposition: context_only
   disposition_reason: Category heading for the Entry/Exit System instrument.
   norm_ids: []
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -303,6 +314,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-ANNEX-X-ENTRY-EXIT-SYSTEM
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -326,6 +338,7 @@ segments:
   disposition: context_only
   disposition_reason: Category heading for the ETIAS instruments.
   norm_ids: []
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -353,6 +366,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-ANNEX-X-ETIAS
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -379,6 +393,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-ANNEX-X-ETIAS-EUROPOL
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -402,6 +417,7 @@ segments:
   disposition: context_only
   disposition_reason: Category heading for the ECRIS-TCN instrument.
   norm_ids: []
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -429,6 +445,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-ANNEX-X-ECRIS-TCN
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -452,6 +469,7 @@ segments:
   disposition: context_only
   disposition_reason: Category heading for the interoperability instruments.
   norm_ids: []
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -480,6 +498,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-ANNEX-X-INTEROPERABILITY-BORDERS-VISA
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -507,6 +526,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-ANNEX-X-INTEROPERABILITY-POLICE-ASYLUM-MIGRATION
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass

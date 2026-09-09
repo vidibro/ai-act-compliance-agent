@@ -17,6 +17,7 @@ segments:
   disposition: structural
   disposition_reason: ''
   norm_ids: []
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -46,6 +47,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A004A-P1-HIGH-RISK-BIAS-DATA-PROCESSING
+  qualifying_norm_ids:
   - AIA-NORM-A004A-P1-B-REUSE-SECURITY
   - AIA-NORM-A004A-P1-C-ACCESS-SAFEGUARDS
   - AIA-NORM-A004A-P1-D-NO-THIRD-PARTY-ACCESS
@@ -74,7 +76,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A004A-P1-HIGH-RISK-BIAS-DATA-PROCESSING
   review:
     status: approved
@@ -101,8 +104,9 @@ segments:
   disposition: normative
   disposition_reason: ''
   norm_ids:
-  - AIA-NORM-A004A-P1-HIGH-RISK-BIAS-DATA-PROCESSING
   - AIA-NORM-A004A-P1-B-REUSE-SECURITY
+  qualifying_norm_ids:
+  - AIA-NORM-A004A-P1-HIGH-RISK-BIAS-DATA-PROCESSING
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -129,8 +133,9 @@ segments:
   disposition: normative
   disposition_reason: ''
   norm_ids:
-  - AIA-NORM-A004A-P1-HIGH-RISK-BIAS-DATA-PROCESSING
   - AIA-NORM-A004A-P1-C-ACCESS-SAFEGUARDS
+  qualifying_norm_ids:
+  - AIA-NORM-A004A-P1-HIGH-RISK-BIAS-DATA-PROCESSING
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -155,8 +160,9 @@ segments:
   disposition: normative
   disposition_reason: ''
   norm_ids:
-  - AIA-NORM-A004A-P1-HIGH-RISK-BIAS-DATA-PROCESSING
   - AIA-NORM-A004A-P1-D-NO-THIRD-PARTY-ACCESS
+  qualifying_norm_ids:
+  - AIA-NORM-A004A-P1-HIGH-RISK-BIAS-DATA-PROCESSING
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -181,8 +187,9 @@ segments:
   disposition: normative
   disposition_reason: ''
   norm_ids:
-  - AIA-NORM-A004A-P1-HIGH-RISK-BIAS-DATA-PROCESSING
   - AIA-NORM-A004A-P1-E-DELETE-DATA
+  qualifying_norm_ids:
+  - AIA-NORM-A004A-P1-HIGH-RISK-BIAS-DATA-PROCESSING
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -209,8 +216,9 @@ segments:
   disposition: normative
   disposition_reason: ''
   norm_ids:
-  - AIA-NORM-A004A-P1-HIGH-RISK-BIAS-DATA-PROCESSING
   - AIA-NORM-A004A-P1-F-RECORD-NECESSITY
+  qualifying_norm_ids:
+  - AIA-NORM-A004A-P1-HIGH-RISK-BIAS-DATA-PROCESSING
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -236,6 +244,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A004A-P2-OTHER-SYSTEM-BIAS-DATA-PROCESSING
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -261,7 +270,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A004A-P2-OTHER-SYSTEM-BIAS-DATA-PROCESSING
   review:
     status: approved
@@ -285,7 +295,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A004A-P1-B-REUSE-SECURITY
   - AIA-NORM-A004A-P1-C-ACCESS-SAFEGUARDS
   - AIA-NORM-A004A-P1-D-NO-THIRD-PARTY-ACCESS
@@ -316,6 +327,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A004A-P2-NO-BIAS-DETECTION-DUTY
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass

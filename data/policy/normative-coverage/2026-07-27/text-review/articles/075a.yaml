@@ -17,6 +17,7 @@ segments:
   disposition: structural
   disposition_reason: ''
   norm_ids: []
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -49,6 +50,7 @@ segments:
   - AIA-NORM-A075A-P1-MARKET-SURVEILLANCE-POWERS
   - AIA-NORM-A075A-P1-RECLAIM-ENFORCEMENT-COSTS
   - AIA-NORM-A075A-P1-APPLY-ARTICLE17
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -82,6 +84,7 @@ segments:
   - AIA-NORM-A075A-P2-START-INVESTIGATION
   - AIA-NORM-A075A-P2-NOTIFY-INVESTIGATION
   - AIA-NORM-A075A-P2-EXERCISE-POWERS-PREINVESTIGATION
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -108,6 +111,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A075A-P2-MSA-REQUEST-ASSESSMENT
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -133,6 +137,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A075A-P3-REQUEST-INFORMATION
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -171,6 +176,7 @@ segments:
   - AIA-NORM-A075A-P3-DECISION-REQUEST-ADDITIONS
   - AIA-NORM-A075A-P3-SEND-COPY-TO-TERRITORIAL-AUTHORITY
   - AIA-NORM-A075A-P3-VOLUNTARY-REPLY-CORRECTNESS
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -203,6 +209,7 @@ segments:
   norm_ids:
   - AIA-NORM-A075A-P4-CONDUCT-INSPECTIONS
   - AIA-NORM-A075A-P4-INSPECTION-NOTICES
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -227,6 +234,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A075A-P4-INSPECTION-POWERS
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -250,7 +258,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A075A-P4-INSPECTION-POWERS
   review:
     status: approved
@@ -275,7 +284,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A075A-P4-INSPECTION-POWERS
   review:
     status: approved
@@ -299,7 +309,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A075A-P4-INSPECTION-POWERS
   review:
     status: approved
@@ -325,7 +336,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A075A-P4-INSPECTION-POWERS
   review:
     status: approved
@@ -350,7 +362,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A075A-P4-INSPECTION-POWERS
   review:
     status: approved
@@ -379,6 +392,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A075A-P4-ASSIST-OBSTRUCTED-INSPECTION
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -416,6 +430,7 @@ segments:
   norm_ids:
   - AIA-NORM-A075A-P4-APPLY-JUDICIAL-AUTHORISATION
   - AIA-NORM-A075A-P4-JUDICIAL-AUTHORISATION-REVIEW
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -445,6 +460,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A075A-P5-MSA-FACT-FINDING
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -470,6 +486,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A075A-P6-ADDITIONAL-OPERATOR-ORDERS
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -492,7 +509,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A075A-P6-ADDITIONAL-OPERATOR-ORDERS
   review:
     status: approved
@@ -517,7 +535,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A075A-P6-ADDITIONAL-OPERATOR-ORDERS
   review:
     status: approved
@@ -547,6 +566,7 @@ segments:
   norm_ids:
   - AIA-NORM-A075A-P7-APPOINT-EXPERTS
   - AIA-NORM-A075A-P7-SHARE-MONITORING-INFORMATION
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -572,6 +592,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A075A-P8-PURPOSE-LIMIT-INFORMATION
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass

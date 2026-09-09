@@ -17,6 +17,7 @@ segments:
   disposition: structural
   disposition_reason: ''
   norm_ids: []
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -42,6 +43,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A113-ENTRY
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -66,6 +68,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A113-GENERAL
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -89,6 +92,7 @@ segments:
   disposition: structural
   disposition_reason: ''
   norm_ids: []
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -116,6 +120,7 @@ segments:
   norm_ids:
   - AIA-NORM-A113-A-EARLY
   - AIA-NORM-A113-A-LATE
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -141,6 +146,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A113-B
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -167,6 +173,7 @@ segments:
   norm_ids:
   - AIA-NORM-A113-C-ANNEXIII
   - AIA-NORM-A113-C-ANNEXI
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -191,6 +198,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A113-D
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass

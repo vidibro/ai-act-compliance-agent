@@ -17,6 +17,7 @@ segments:
   disposition: structural
   disposition_reason: ''
   norm_ids: []
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -44,6 +45,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A078-P1-PROTECT-CONFIDENTIALITY
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -71,7 +73,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A078-P1-PROTECT-CONFIDENTIALITY
   review:
     status: approved
@@ -96,7 +99,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A078-P1-PROTECT-CONFIDENTIALITY
   review:
     status: approved
@@ -120,7 +124,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A078-P1-PROTECT-CONFIDENTIALITY
   review:
     status: approved
@@ -144,7 +149,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A078-P1-PROTECT-CONFIDENTIALITY
   review:
     status: approved
@@ -168,7 +174,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A078-P1-PROTECT-CONFIDENTIALITY
   review:
     status: approved
@@ -202,6 +209,7 @@ segments:
   - AIA-NORM-A078-P2-REQUEST-ONLY-NECESSARY-DATA
   - AIA-NORM-A078-P2-PROTECT-OBTAINED-DATA
   - AIA-NORM-A078-P2-DELETE-UNNEEDED-DATA
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -233,6 +241,7 @@ segments:
   norm_ids:
   - AIA-NORM-A078-P3-RESTRICT-CONFIDENTIAL-DISCLOSURE
   - AIA-NORM-A078-P3-EXCLUDE-SENSITIVE-OPERATIONAL-DATA
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -265,6 +274,7 @@ segments:
   - AIA-NORM-A078-P3-KEEP-DOCUMENTATION-AND-ENABLE-ACCESS
   - AIA-NORM-A078-P3-ENABLE-IMMEDIATE-ACCESS
   - AIA-NORM-A078-P3-SECURITY-CLEARED-ACCESS-ONLY
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -293,6 +303,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A078-P4-PRESERVE-EXCHANGE-AND-CRIMINAL-LAW-DUTIES
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -320,6 +331,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A078-P5-EXCHANGE-WITH-THIRD-COUNTRY-REGULATORS
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass

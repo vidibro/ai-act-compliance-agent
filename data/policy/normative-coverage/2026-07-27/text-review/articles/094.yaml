@@ -17,6 +17,7 @@ segments:
   disposition: structural
   disposition_reason: ''
   norm_ids: []
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -43,6 +44,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A094-GPAI-PROCEDURAL-RIGHTS
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass

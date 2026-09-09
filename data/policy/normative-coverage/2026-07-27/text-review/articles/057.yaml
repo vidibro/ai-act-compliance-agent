@@ -17,6 +17,7 @@ segments:
   disposition: structural
   disposition_reason: ''
   norm_ids: []
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -45,6 +46,7 @@ segments:
   norm_ids:
   - AIA-NORM-A057-P1-ESTABLISH-NATIONAL-SANDBOX
   - AIA-NORM-A057-P1-COMMISSION-SUPPORT
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -71,6 +73,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A057-P1-EQUIVALENT-PARTICIPATION
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -96,6 +99,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A057-P2-ADDITIONAL-SANDBOXES
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -123,6 +127,7 @@ segments:
   norm_ids:
   - AIA-NORM-A057-P3-EDPS-SANDBOX
   - AIA-NORM-A057-P3-EDPS-AUTHORITY-REFERENCES
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -155,6 +160,7 @@ segments:
   - AIA-NORM-A057-P3A-AI-OFFICE-AUTHORITY-REFERENCES
   - AIA-NORM-A057-P3A-COOPERATE-WITH-AUTHORITIES
   - AIA-NORM-A057-P3A-PRIORITY-ACCESS
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -179,7 +185,8 @@ segments:
     '
   disposition: normative
   disposition_reason: Qualifies the AI Office establishment power by preserving Member State sandbox competence.
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A057-P3A-AI-OFFICE-SANDBOX
   review:
     status: approved
@@ -215,6 +222,7 @@ segments:
   - AIA-NORM-A057-P4-INVOLVE-ECOSYSTEM-ACTORS
   - AIA-NORM-A057-P4-PRESERVE-OTHER-SANDBOXES
   - AIA-NORM-A057-P4-INTER-SANDBOX-COOPERATION
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -247,6 +255,7 @@ segments:
   - AIA-NORM-A057-P5-CONTROLLED-SANDBOX-LIFECYCLE
   - AIA-NORM-A057-P5-SUPERVISED-REAL-WORLD-TESTING
   - AIA-NORM-A057-P5-INCORPORATE-TESTING-PLAN
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -275,6 +284,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A057-P6-GUIDANCE-SUPERVISION-SUPPORT
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -301,6 +311,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A057-P7-REGULATORY-EXPECTATIONS-GUIDANCE
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -336,6 +347,7 @@ segments:
   - AIA-NORM-A057-P7-EVIDENTIARY-USE
   - AIA-NORM-A057-P7-SURVEILLANCE-EVIDENCE-CONSIDERATION
   - AIA-NORM-A057-P7-NOTIFIED-BODY-EVIDENCE-CONSIDERATION
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -367,6 +379,7 @@ segments:
   - AIA-NORM-A057-P8-EXIT-REPORT-ACCESS
   - AIA-NORM-A057-P8-CONSIDER-EXIT-REPORTS
   - AIA-NORM-A057-P8-PUBLIC-EXIT-REPORT
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -391,6 +404,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A057-P9-SANDBOX-OBJECTIVES
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -414,7 +428,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A057-P9-SANDBOX-OBJECTIVES
   review:
     status: approved
@@ -439,7 +454,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A057-P9-SANDBOX-OBJECTIVES
   review:
     status: approved
@@ -464,7 +480,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A057-P9-SANDBOX-OBJECTIVES
   review:
     status: approved
@@ -488,7 +505,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A057-P9-SANDBOX-OBJECTIVES
   review:
     status: approved
@@ -513,7 +531,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A057-P9-SANDBOX-OBJECTIVES
   review:
     status: approved
@@ -544,6 +563,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A057-P10-ASSOCIATE-SPECIALIST-AUTHORITIES
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -580,6 +600,7 @@ segments:
   - AIA-NORM-A057-P11-SUSPEND-TESTING-OR-PARTICIPATION
   - AIA-NORM-A057-P11-NOTIFY-SUSPENSION
   - AIA-NORM-A057-P11-LAWFUL-SUPERVISORY-DISCRETION
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -614,6 +635,7 @@ segments:
   - AIA-NORM-A057-P12-LIABILITY-AND-FINE-SAFE-HARBOUR
   - AIA-NORM-A057-P12-AI-ACT-NO-FINE-PROTECTION
   - AIA-NORM-A057-P12-OTHER-LAW-NO-FINE-PROTECTION
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -639,6 +661,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A057-P13-CROSS-BORDER-DESIGN
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -667,6 +690,7 @@ segments:
   norm_ids:
   - AIA-NORM-A057-P14-COORDINATE-SANDBOX-ACTIVITIES
   - AIA-NORM-A057-P14-SUPPORT-JOINT-SANDBOXES
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -696,6 +720,7 @@ segments:
   - AIA-NORM-A057-P15-NOTIFY-AND-LIST-SANDBOXES
   - AIA-NORM-A057-P15-REQUEST-SUPPORT
   - AIA-NORM-A057-P15-PUBLIC-SANDBOX-LIST
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -731,6 +756,7 @@ segments:
   - AIA-NORM-A057-P16-FINAL-SANDBOX-REPORT
   - AIA-NORM-A057-P16-PUBLISH-ANNUAL-REPORTS
   - AIA-NORM-A057-P16-COMMISSION-REPORT-CONSIDERATION
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -761,6 +787,7 @@ segments:
   norm_ids:
   - AIA-NORM-A057-P17-SINGLE-INFORMATION-INTERFACE
   - AIA-NORM-A057-P17-PROACTIVE-AUTHORITY-COORDINATION
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass

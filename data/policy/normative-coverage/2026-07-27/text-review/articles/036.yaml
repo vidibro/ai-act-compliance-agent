@@ -17,6 +17,7 @@ segments:
   disposition: structural
   disposition_reason: ''
   norm_ids: []
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -43,6 +44,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A036-P1-NOTIFY-CHANGES
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -68,6 +70,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A036-P2-EXTENSION-PROCEDURES
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -93,6 +96,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A036-P2-OTHER-CHANGE-PROCEDURES
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -126,6 +130,7 @@ segments:
   - AIA-NORM-A036-P3-NINE-MONTH-CERTIFICATE-VALIDITY
   - AIA-NORM-A036-P3-REPLACEMENT-ASSESSMENT
   - AIA-NORM-A036-P3-WITHDRAW-DESIGNATION
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -162,6 +167,7 @@ segments:
   - AIA-NORM-A036-P4-OPPORTUNITY-TO-RESPOND
   - AIA-NORM-A036-P4-CORRECT-DESIGNATION
   - AIA-NORM-A036-P4-INFORM-COMMISSION-AND-STATES
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -187,6 +193,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A036-P5-INFORM-PROVIDERS
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -215,6 +222,7 @@ segments:
   norm_ids:
   - AIA-NORM-A036-P6-PRESERVE-FILES
   - AIA-NORM-A036-P6-MAKE-FILES-AVAILABLE
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -238,7 +246,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A036-P7-A-ASSESS-CERTIFICATE-IMPACT
   - AIA-NORM-A036-P7-B-REPORT-FINDINGS
   - AIA-NORM-A036-P7-C-CORRECT-UNDUE-CERTIFICATES
@@ -269,6 +278,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A036-P7-A-ASSESS-CERTIFICATE-IMPACT
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -294,6 +304,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A036-P7-B-REPORT-FINDINGS
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -320,6 +331,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A036-P7-C-CORRECT-UNDUE-CERTIFICATES
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -345,6 +357,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A036-P7-D-INFORM-CERTIFICATE-MEASURES
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -373,6 +386,7 @@ segments:
   norm_ids:
   - AIA-NORM-A036-P7-E-PROVIDE-CERTIFICATE-INFORMATION
   - AIA-NORM-A036-P7-E-MITIGATE-RISK
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -398,6 +412,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A036-P8-SUSPENSION-CERTIFICATE-VALIDITY
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -423,7 +438,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A036-P8-SUSPENSION-CERTIFICATE-VALIDITY
   review:
     status: approved
@@ -457,8 +473,9 @@ segments:
   disposition: normative
   disposition_reason: ''
   norm_ids:
-  - AIA-NORM-A036-P8-SUSPENSION-CERTIFICATE-VALIDITY
   - AIA-NORM-A036-P8-B-PROVIDER-REPLACEMENT-CONFIRMATION
+  qualifying_norm_ids:
+  - AIA-NORM-A036-P8-SUSPENSION-CERTIFICATE-VALIDITY
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -484,6 +501,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A036-P9-WITHDRAWAL-CERTIFICATE-VALIDITY
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -509,7 +527,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A036-P9-WITHDRAWAL-CERTIFICATE-VALIDITY
   review:
     status: approved
@@ -534,7 +553,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A036-P9-WITHDRAWAL-CERTIFICATE-VALIDITY
   review:
     status: approved
@@ -563,6 +583,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A036-P9-EXTEND-PROVISIONAL-VALIDITY
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -589,6 +610,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A036-P9-INFORM-STAKEHOLDERS
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass

@@ -17,6 +17,7 @@ segments:
   disposition: structural
   disposition_reason: ''
   norm_ids: []
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -49,6 +50,7 @@ segments:
   norm_ids:
   - AIA-NORM-A046-P1-DEROGATION-AUTHORISATION
   - AIA-NORM-A046-P1-COMPLETE-ASSESSMENT-PROMPTLY
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -81,6 +83,7 @@ segments:
   - AIA-NORM-A046-P2-URGENT-USE-PERMISSION
   - AIA-NORM-A046-P2-REFUSAL-RESPONSE
   - AIA-NORM-A046-P2-DISCARD-RESULTS-AND-OUTPUTS
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -108,9 +111,10 @@ segments:
   disposition: normative
   disposition_reason: ''
   norm_ids:
-  - AIA-NORM-A046-P1-DEROGATION-AUTHORISATION
   - AIA-NORM-A046-P3-NOTIFY-AUTHORISATION
   - AIA-NORM-A046-P3-SENSITIVE-DATA-EXCEPTION
+  qualifying_norm_ids:
+  - AIA-NORM-A046-P1-DEROGATION-AUTHORISATION
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -138,6 +142,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A046-P4-DEEMED-JUSTIFIED
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -173,6 +178,7 @@ segments:
   - AIA-NORM-A046-P5-OPERATOR-HEARING
   - AIA-NORM-A046-P5-DECIDE-JUSTIFICATION
   - AIA-NORM-A046-P5-ADDRESS-DECISION
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -198,6 +204,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A046-P6-WITHDRAW-UNJUSTIFIED-AUTHORISATION
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -224,6 +231,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A046-P7-SECTORAL-DEROGATIONS-ONLY
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass

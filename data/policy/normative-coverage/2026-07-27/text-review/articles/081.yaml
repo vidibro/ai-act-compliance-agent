@@ -17,6 +17,7 @@ segments:
   disposition: structural
   disposition_reason: ''
   norm_ids: []
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -55,6 +56,7 @@ segments:
   - AIA-NORM-A081-P1-DECIDE-JUSTIFICATION
   - AIA-NORM-A081-P1-NOTIFY-DECISION
   - AIA-NORM-A081-P1-INFORM-OTHER-AUTHORITIES
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -85,6 +87,7 @@ segments:
   norm_ids:
   - AIA-NORM-A081-P2-TAKE-JUSTIFIED-RESTRICTIONS
   - AIA-NORM-A081-P2-WITHDRAW-UNJUSTIFIED-MEASURE
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -112,6 +115,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A081-P3-APPLY-STANDARDS-PROCEDURE
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass

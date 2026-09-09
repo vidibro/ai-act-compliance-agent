@@ -17,6 +17,7 @@ segments:
   disposition: structural
   disposition_reason: ''
   norm_ids: []
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -45,6 +46,7 @@ segments:
   norm_ids:
   - AIA-NORM-A088-P1-EXCLUSIVE-ENFORCEMENT-POWERS
   - AIA-NORM-A088-P1-ENTRUST-AI-OFFICE
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -71,6 +73,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A088-P2-REQUEST-COMMISSION-ASSISTANCE
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass

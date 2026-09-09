@@ -17,6 +17,7 @@ segments:
   disposition: structural
   disposition_reason: ''
   norm_ids: []
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -44,6 +45,7 @@ segments:
   disposition: context_only
   disposition_reason: Describes the Regulation's purpose without creating an independent legal proposition.
   norm_ids: []
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -67,6 +69,7 @@ segments:
   disposition: context_only
   disposition_reason: Introduces the subject-matter list without creating an independent legal proposition.
   norm_ids: []
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -91,6 +94,7 @@ segments:
   disposition: context_only
   disposition_reason: Announces the category of market and use rules that later provisions create.
   norm_ids: []
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -114,6 +118,7 @@ segments:
   disposition: context_only
   disposition_reason: Announces that prohibitions exist without itself prohibiting a practice.
   norm_ids: []
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -138,6 +143,7 @@ segments:
   disposition: context_only
   disposition_reason: Announces high-risk requirements without stating an operative requirement.
   norm_ids: []
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -161,6 +167,7 @@ segments:
   disposition: context_only
   disposition_reason: Announces the category of transparency rules that later provisions create.
   norm_ids: []
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -184,6 +191,7 @@ segments:
   disposition: context_only
   disposition_reason: Announces the category of general-purpose AI model rules that later provisions create.
   norm_ids: []
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -207,6 +215,7 @@ segments:
   disposition: context_only
   disposition_reason: Announces monitoring, governance, and enforcement rules created elsewhere.
   norm_ids: []
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -231,6 +240,7 @@ segments:
   disposition: context_only
   disposition_reason: Announces innovation-support measures without creating an independent action.
   norm_ids: []
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass

@@ -17,6 +17,7 @@ segments:
   disposition: structural
   disposition_reason: ''
   norm_ids: []
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -42,6 +43,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A034-P1-VERIFY-CONFORMITY
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -72,8 +74,8 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A034-P2-AVOID-UNNECESSARY-BURDENS
-  - AIA-NORM-A034-P2-PROPORTIONALITY-FACTORS
   - AIA-NORM-A034-P2-PRESERVE-RIGOUR-AND-PROTECTION
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -99,6 +101,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A034-P3-PROVIDE-DOCUMENTATION
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass

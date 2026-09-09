@@ -17,6 +17,7 @@ segments:
   disposition: structural
   disposition_reason: ''
   norm_ids: []
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -39,7 +40,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A016-A-SECTION-2-COMPLIANCE
   - AIA-NORM-A016-B-PROVIDER-IDENTIFICATION
   - AIA-NORM-A016-C-QUALITY-MANAGEMENT
@@ -77,6 +79,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A016-A-SECTION-2-COMPLIANCE
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -103,6 +106,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A016-B-PROVIDER-IDENTIFICATION
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -127,6 +131,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A016-C-QUALITY-MANAGEMENT
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -151,6 +156,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A016-D-KEEP-DOCUMENTATION
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -176,6 +182,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A016-E-KEEP-LOGS
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -201,6 +208,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A016-F-CONFORMITY-ASSESSMENT
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -225,6 +233,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A016-G-EU-DECLARATION
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -251,6 +260,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A016-H-CE-MARKING
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -275,6 +285,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A016-I-REGISTRATION
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -300,6 +311,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A016-J-CORRECTIVE-ACTION
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -325,6 +337,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A016-K-DEMONSTRATE-CONFORMITY
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -350,6 +363,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A016-L-ACCESSIBILITY
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass

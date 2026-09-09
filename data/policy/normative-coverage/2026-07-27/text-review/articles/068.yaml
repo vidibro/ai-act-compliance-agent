@@ -17,6 +17,7 @@ segments:
   disposition: structural
   disposition_reason: ''
   norm_ids: []
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -42,6 +43,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A068-P1-ESTABLISH-SCIENTIFIC-PANEL
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -68,6 +70,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A068-P2-SELECT-QUALIFIED-INDEPENDENT-EXPERTS
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -91,7 +94,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A068-P2-SELECT-QUALIFIED-INDEPENDENT-EXPERTS
   review:
     status: approved
@@ -115,7 +119,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A068-P2-SELECT-QUALIFIED-INDEPENDENT-EXPERTS
   review:
     status: approved
@@ -139,7 +144,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A068-P2-SELECT-QUALIFIED-INDEPENDENT-EXPERTS
   review:
     status: approved
@@ -166,6 +172,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A068-P2-PANEL-SIZE-AND-REPRESENTATION
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -191,6 +198,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A068-P3-ADVISE-AND-SUPPORT-AI-OFFICE
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -215,8 +223,9 @@ segments:
   disposition: normative
   disposition_reason: ''
   norm_ids:
-  - AIA-NORM-A068-P3-ADVISE-AND-SUPPORT-AI-OFFICE
   - AIA-NORM-A068-P3-A-GPAI-SUPPORT-TASKS
+  qualifying_norm_ids:
+  - AIA-NORM-A068-P3-ADVISE-AND-SUPPORT-AI-OFFICE
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -241,8 +250,9 @@ segments:
   disposition: normative
   disposition_reason: ''
   norm_ids:
-  - AIA-NORM-A068-P3-A-GPAI-SUPPORT-TASKS
   - AIA-NORM-A068-P3-A-I-ALERT-SYSTEMIC-RISK
+  qualifying_norm_ids:
+  - AIA-NORM-A068-P3-A-GPAI-SUPPORT-TASKS
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -267,8 +277,9 @@ segments:
   disposition: normative
   disposition_reason: ''
   norm_ids:
-  - AIA-NORM-A068-P3-A-GPAI-SUPPORT-TASKS
   - AIA-NORM-A068-P3-A-II-EVALUATION-TOOLS
+  qualifying_norm_ids:
+  - AIA-NORM-A068-P3-A-GPAI-SUPPORT-TASKS
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -293,8 +304,9 @@ segments:
   disposition: normative
   disposition_reason: ''
   norm_ids:
-  - AIA-NORM-A068-P3-A-GPAI-SUPPORT-TASKS
   - AIA-NORM-A068-P3-A-III-SYSTEMIC-RISK-CLASSIFICATION-ADVICE
+  qualifying_norm_ids:
+  - AIA-NORM-A068-P3-A-GPAI-SUPPORT-TASKS
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -319,8 +331,9 @@ segments:
   disposition: normative
   disposition_reason: ''
   norm_ids:
-  - AIA-NORM-A068-P3-A-GPAI-SUPPORT-TASKS
   - AIA-NORM-A068-P3-A-IV-MODEL-CLASSIFICATION-ADVICE
+  qualifying_norm_ids:
+  - AIA-NORM-A068-P3-A-GPAI-SUPPORT-TASKS
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -344,8 +357,9 @@ segments:
   disposition: normative
   disposition_reason: ''
   norm_ids:
-  - AIA-NORM-A068-P3-A-GPAI-SUPPORT-TASKS
   - AIA-NORM-A068-P3-A-V-TOOLS-AND-TEMPLATES
+  qualifying_norm_ids:
+  - AIA-NORM-A068-P3-A-GPAI-SUPPORT-TASKS
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -369,8 +383,9 @@ segments:
   disposition: normative
   disposition_reason: ''
   norm_ids:
-  - AIA-NORM-A068-P3-ADVISE-AND-SUPPORT-AI-OFFICE
   - AIA-NORM-A068-P3-B-SUPPORT-SURVEILLANCE-AUTHORITIES
+  qualifying_norm_ids:
+  - AIA-NORM-A068-P3-ADVISE-AND-SUPPORT-AI-OFFICE
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -395,8 +410,9 @@ segments:
   disposition: normative
   disposition_reason: ''
   norm_ids:
-  - AIA-NORM-A068-P3-ADVISE-AND-SUPPORT-AI-OFFICE
   - AIA-NORM-A068-P3-C-SUPPORT-CROSS-BORDER-SURVEILLANCE
+  qualifying_norm_ids:
+  - AIA-NORM-A068-P3-ADVISE-AND-SUPPORT-AI-OFFICE
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -421,8 +437,9 @@ segments:
   disposition: normative
   disposition_reason: ''
   norm_ids:
-  - AIA-NORM-A068-P3-ADVISE-AND-SUPPORT-AI-OFFICE
   - AIA-NORM-A068-P3-D-SUPPORT-SAFEGUARD-PROCEDURE
+  qualifying_norm_ids:
+  - AIA-NORM-A068-P3-ADVISE-AND-SUPPORT-AI-OFFICE
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -456,6 +473,7 @@ segments:
   - AIA-NORM-A068-P4-NO-INSTRUCTIONS
   - AIA-NORM-A068-P4-DECLARATION-OF-INTERESTS
   - AIA-NORM-A068-P4-MANAGE-CONFLICTS
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -482,6 +500,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A068-P5-ALERT-AND-ASSISTANCE-ARRANGEMENTS
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass

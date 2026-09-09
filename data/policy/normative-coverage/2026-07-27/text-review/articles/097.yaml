@@ -17,6 +17,7 @@ segments:
   disposition: structural
   disposition_reason: ''
   norm_ids: []
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -42,6 +43,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A097-P1-CONFER-DELEGATED-POWER
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -75,6 +77,7 @@ segments:
   - AIA-NORM-A097-P2-DELEGATION-PERIODS
   - AIA-NORM-A097-P2-DELEGATION-REPORT
   - AIA-NORM-A097-P2-TACIT-EXTENSION
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -107,6 +110,7 @@ segments:
   - AIA-NORM-A097-P3-REVOKE-DELEGATION
   - AIA-NORM-A097-P3-REVOCATION-ENDS-DELEGATION
   - AIA-NORM-A097-P3-PRESERVE-ACTS-IN-FORCE
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -133,6 +137,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A097-P4-CONSULT-MEMBER-STATE-EXPERTS
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -158,6 +163,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A097-P5-NOTIFY-DELEGATED-ACT
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -189,6 +195,7 @@ segments:
   norm_ids:
   - AIA-NORM-A097-P6-DELEGATED-ACT-ENTRY-CONDITION
   - AIA-NORM-A097-P6-EXTEND-OBJECTION-PERIOD
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass

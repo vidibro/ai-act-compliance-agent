@@ -17,6 +17,7 @@ segments:
   disposition: structural
   disposition_reason: ''
   norm_ids: []
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -48,6 +49,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A077-P1-REQUEST-AND-ACCESS-INFORMATION
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -75,6 +77,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A077-P1A-GRANT-INFORMATION-ACCESS
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -104,6 +107,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A077-P1B-COOPERATE-AND-ASSIST
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -132,6 +136,7 @@ segments:
   - AIA-NORM-A077-P2-IDENTIFY-PUBLISH-NOTIFY-AND-UPDATE
   - AIA-NORM-A077-P2-NOTIFY-LIST
   - AIA-NORM-A077-P2-KEEP-LIST-UP-TO-DATE
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -162,6 +167,7 @@ segments:
   norm_ids:
   - AIA-NORM-A077-P3-REQUEST-TECHNICAL-TESTING
   - AIA-NORM-A077-P3-ORGANISE-TESTING
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -188,6 +194,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A077-P4-TREAT-INFORMATION-CONFIDENTIALLY
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass

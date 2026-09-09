@@ -17,6 +17,7 @@ segments:
   disposition: structural
   disposition_reason: ''
   norm_ids: []
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -43,6 +44,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A054-P1-APPOINT-REPRESENTATIVE
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -68,6 +70,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A054-P2-ENABLE-REPRESENTATIVE
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -96,6 +99,7 @@ segments:
   norm_ids:
   - AIA-NORM-A054-P3-PERFORM-MANDATE
   - AIA-NORM-A054-P3-PROVIDE-MANDATE
+  qualifying_norm_ids:
   - AIA-NORM-A054-P3-A-VERIFY-COMPLIANCE
   - AIA-NORM-A054-P3-B-RETAIN-DOCUMENTATION
   - AIA-NORM-A054-P3-C-PROVIDE-COMPLIANCE-INFORMATION
@@ -126,6 +130,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A054-P3-A-VERIFY-COMPLIANCE
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -153,6 +158,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A054-P3-B-RETAIN-DOCUMENTATION
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -179,6 +185,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A054-P3-C-PROVIDE-COMPLIANCE-INFORMATION
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -205,6 +212,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A054-P3-D-COOPERATE
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -231,6 +239,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A054-P4-AUTHORITY-ADDRESS-TERM
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -259,6 +268,7 @@ segments:
   norm_ids:
   - AIA-NORM-A054-P5-TERMINATE-MANDATE
   - AIA-NORM-A054-P5-NOTIFY-TERMINATION
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -288,6 +298,7 @@ segments:
   norm_ids:
   - AIA-NORM-A054-P6-OPEN-SOURCE-EXCEPTION
   - AIA-NORM-A054-P6-SYSTEMIC-RISK-OVERRIDE
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass

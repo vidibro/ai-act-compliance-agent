@@ -17,6 +17,7 @@ segments:
   disposition: structural
   disposition_reason: ''
   norm_ids: []
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -42,10 +43,8 @@ segments:
   disposition: normative
   disposition_reason: ''
   norm_ids:
-  - AIA-NORM-A015-P1-ACCURACY
-  - AIA-NORM-A015-P1-ROBUSTNESS
-  - AIA-NORM-A015-P1-CYBERSECURITY
-  - AIA-NORM-A015-P1-LIFECYCLE-CONSISTENCY
+  - AIA-NORM-A015-P1-PERFORMANCE-AND-LIFECYCLE-CONSISTENCY
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -73,6 +72,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A015-P2-ENCOURAGE-MEASUREMENT
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -97,8 +97,8 @@ segments:
   disposition: normative
   disposition_reason: ''
   norm_ids:
-  - AIA-NORM-A015-P3-DECLARE-ACCURACY
-  - AIA-NORM-A015-P3-DECLARE-METRICS
+  - AIA-NORM-A015-P3-DECLARE-ACCURACY-AND-METRICS
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -126,8 +126,8 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A015-P4-RESILIENCE
-  - AIA-NORM-A015-P4-TECHNICAL-MEASURES
-  - AIA-NORM-A015-P4-ORGANISATIONAL-MEASURES
+  - AIA-NORM-A015-P4-TECHNICAL-AND-ORGANISATIONAL-MEASURES
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -153,6 +153,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A015-P4-REDUNDANCY
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -179,8 +180,8 @@ segments:
   disposition: normative
   disposition_reason: ''
   norm_ids:
-  - AIA-NORM-A015-P4-FEEDBACK-RISK
-  - AIA-NORM-A015-P4-MITIGATE-FEEDBACK
+  - AIA-NORM-A015-P4-FEEDBACK-LOOP-RISK-AND-MITIGATION
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -206,6 +207,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A015-P5-UNAUTHORISED-ALTERATION
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -231,6 +233,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A015-P5-APPROPRIATE-SOLUTIONS
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -263,6 +266,7 @@ segments:
   - AIA-NORM-A015-P5-ADVERSARIAL-ATTACKS
   - AIA-NORM-A015-P5-CONFIDENTIALITY-ATTACKS
   - AIA-NORM-A015-P5-MODEL-FLAWS
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass

@@ -17,6 +17,7 @@ segments:
   disposition: structural
   disposition_reason: ''
   norm_ids: []
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -39,7 +40,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A108-ARTICLE17-ACCOUNT-FOR-HIGH-RISK-REQUIREMENTS
   - AIA-NORM-A108-ARTICLE19-ACCOUNT-FOR-HIGH-RISK-REQUIREMENTS
   - AIA-NORM-A108-ARTICLE43-ACCOUNT-FOR-HIGH-RISK-REQUIREMENTS
@@ -76,6 +78,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A108-ARTICLE17-ACCOUNT-FOR-HIGH-RISK-REQUIREMENTS
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -101,6 +104,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A108-ARTICLE19-ACCOUNT-FOR-HIGH-RISK-REQUIREMENTS
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -126,6 +130,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A108-ARTICLE43-ACCOUNT-FOR-HIGH-RISK-REQUIREMENTS
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -151,6 +156,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A108-ARTICLE47-ACCOUNT-FOR-HIGH-RISK-REQUIREMENTS
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -176,6 +182,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A108-ARTICLE57-ACCOUNT-FOR-HIGH-RISK-REQUIREMENTS
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -201,6 +208,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A108-ARTICLE58-ACCOUNT-FOR-HIGH-RISK-REQUIREMENTS
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass

@@ -17,6 +17,7 @@ segments:
   disposition: structural
   disposition_reason: ''
   norm_ids: []
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -42,6 +43,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A069-P1-CALL-UPON-PANEL-EXPERTS
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -68,6 +70,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A069-P2-MEMBER-STATE-EXPERT-FEES
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -95,6 +98,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A069-P3-FACILITATE-AND-COORDINATE-ACCESS
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass

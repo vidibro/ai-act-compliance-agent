@@ -17,6 +17,7 @@ segments:
   disposition: structural
   disposition_reason: ''
   norm_ids: []
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -43,6 +44,22 @@ segments:
   norm_ids:
   - AIA-NORM-A066-BOARD-ADVICE-AND-ASSISTANCE-TASKS
   - AIA-NORM-A066-ENUMERATED-TASK-POWERS
+  qualifying_norm_ids:
+  - AIA-NORM-A066-A-TASK
+  - AIA-NORM-A066-B-TASK
+  - AIA-NORM-A066-C-TASK
+  - AIA-NORM-A066-D-TASK
+  - AIA-NORM-A066-F-TASK
+  - AIA-NORM-A066-G-TASK
+  - AIA-NORM-A066-H-TASK
+  - AIA-NORM-A066-I-TASK
+  - AIA-NORM-A066-J-TASK
+  - AIA-NORM-A066-K-TASK
+  - AIA-NORM-A066-L-TASK
+  - AIA-NORM-A066-M-TASK
+  - AIA-NORM-A066-N-TASK
+  - AIA-NORM-A066-O-TASK
+  - AIA-NORM-A066-E-RECOMMENDATION-AND-OPINION-TOPICS
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -69,8 +86,9 @@ segments:
   disposition: normative
   disposition_reason: ''
   norm_ids:
-  - AIA-NORM-A066-ENUMERATED-TASK-POWERS
   - AIA-NORM-A066-A-TASK
+  qualifying_norm_ids:
+  - AIA-NORM-A066-ENUMERATED-TASK-POWERS
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -95,8 +113,9 @@ segments:
   disposition: normative
   disposition_reason: ''
   norm_ids:
-  - AIA-NORM-A066-ENUMERATED-TASK-POWERS
   - AIA-NORM-A066-B-TASK
+  qualifying_norm_ids:
+  - AIA-NORM-A066-ENUMERATED-TASK-POWERS
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -121,8 +140,9 @@ segments:
   disposition: normative
   disposition_reason: ''
   norm_ids:
-  - AIA-NORM-A066-ENUMERATED-TASK-POWERS
   - AIA-NORM-A066-C-TASK
+  qualifying_norm_ids:
+  - AIA-NORM-A066-ENUMERATED-TASK-POWERS
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -149,8 +169,9 @@ segments:
   disposition: normative
   disposition_reason: ''
   norm_ids:
-  - AIA-NORM-A066-ENUMERATED-TASK-POWERS
   - AIA-NORM-A066-D-TASK
+  qualifying_norm_ids:
+  - AIA-NORM-A066-ENUMERATED-TASK-POWERS
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -176,8 +197,9 @@ segments:
   disposition: normative
   disposition_reason: ''
   norm_ids:
-  - AIA-NORM-A066-ENUMERATED-TASK-POWERS
   - AIA-NORM-A066-E-RECOMMENDATION-AND-OPINION-TOPICS
+  qualifying_norm_ids:
+  - AIA-NORM-A066-ENUMERATED-TASK-POWERS
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -199,7 +221,8 @@ segments:
     \ pursuant to this Regulation, as well as of the Commission\u2019s guidelines;\n"
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A066-E-RECOMMENDATION-AND-OPINION-TOPICS
   review:
     status: approved
@@ -226,7 +249,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A066-E-RECOMMENDATION-AND-OPINION-TOPICS
   review:
     status: approved
@@ -251,7 +275,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A066-E-RECOMMENDATION-AND-OPINION-TOPICS
   review:
     status: approved
@@ -276,7 +301,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A066-E-RECOMMENDATION-AND-OPINION-TOPICS
   review:
     status: approved
@@ -301,7 +327,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A066-E-RECOMMENDATION-AND-OPINION-TOPICS
   review:
     status: approved
@@ -326,7 +353,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A066-E-RECOMMENDATION-AND-OPINION-TOPICS
   review:
     status: approved
@@ -352,7 +380,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A066-E-RECOMMENDATION-AND-OPINION-TOPICS
   review:
     status: approved
@@ -378,8 +407,9 @@ segments:
   disposition: normative
   disposition_reason: ''
   norm_ids:
-  - AIA-NORM-A066-ENUMERATED-TASK-POWERS
   - AIA-NORM-A066-F-TASK
+  qualifying_norm_ids:
+  - AIA-NORM-A066-ENUMERATED-TASK-POWERS
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -405,8 +435,9 @@ segments:
   disposition: normative
   disposition_reason: ''
   norm_ids:
-  - AIA-NORM-A066-ENUMERATED-TASK-POWERS
   - AIA-NORM-A066-G-TASK
+  qualifying_norm_ids:
+  - AIA-NORM-A066-ENUMERATED-TASK-POWERS
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -433,8 +464,9 @@ segments:
   disposition: normative
   disposition_reason: ''
   norm_ids:
-  - AIA-NORM-A066-ENUMERATED-TASK-POWERS
   - AIA-NORM-A066-H-TASK
+  qualifying_norm_ids:
+  - AIA-NORM-A066-ENUMERATED-TASK-POWERS
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -459,8 +491,9 @@ segments:
   disposition: normative
   disposition_reason: ''
   norm_ids:
-  - AIA-NORM-A066-ENUMERATED-TASK-POWERS
   - AIA-NORM-A066-I-TASK
+  qualifying_norm_ids:
+  - AIA-NORM-A066-ENUMERATED-TASK-POWERS
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -486,8 +519,9 @@ segments:
   disposition: normative
   disposition_reason: ''
   norm_ids:
-  - AIA-NORM-A066-ENUMERATED-TASK-POWERS
   - AIA-NORM-A066-J-TASK
+  qualifying_norm_ids:
+  - AIA-NORM-A066-ENUMERATED-TASK-POWERS
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -513,8 +547,9 @@ segments:
   disposition: normative
   disposition_reason: ''
   norm_ids:
-  - AIA-NORM-A066-ENUMERATED-TASK-POWERS
   - AIA-NORM-A066-K-TASK
+  qualifying_norm_ids:
+  - AIA-NORM-A066-ENUMERATED-TASK-POWERS
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -538,8 +573,9 @@ segments:
   disposition: normative
   disposition_reason: ''
   norm_ids:
-  - AIA-NORM-A066-ENUMERATED-TASK-POWERS
   - AIA-NORM-A066-L-TASK
+  qualifying_norm_ids:
+  - AIA-NORM-A066-ENUMERATED-TASK-POWERS
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -563,8 +599,9 @@ segments:
   disposition: normative
   disposition_reason: ''
   norm_ids:
-  - AIA-NORM-A066-ENUMERATED-TASK-POWERS
   - AIA-NORM-A066-M-TASK
+  qualifying_norm_ids:
+  - AIA-NORM-A066-ENUMERATED-TASK-POWERS
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -589,8 +626,9 @@ segments:
   disposition: normative
   disposition_reason: ''
   norm_ids:
-  - AIA-NORM-A066-ENUMERATED-TASK-POWERS
   - AIA-NORM-A066-N-TASK
+  qualifying_norm_ids:
+  - AIA-NORM-A066-ENUMERATED-TASK-POWERS
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -616,8 +654,9 @@ segments:
   disposition: normative
   disposition_reason: ''
   norm_ids:
-  - AIA-NORM-A066-ENUMERATED-TASK-POWERS
   - AIA-NORM-A066-O-TASK
+  qualifying_norm_ids:
+  - AIA-NORM-A066-ENUMERATED-TASK-POWERS
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass

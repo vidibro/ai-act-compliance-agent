@@ -17,6 +17,7 @@ segments:
   disposition: structural
   disposition_reason: ''
   norm_ids: []
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -58,6 +59,7 @@ segments:
   - AIA-NORM-A011-P1-FORM
   - AIA-NORM-A011-P1-USE-FORM
   - AIA-NORM-A011-P1-ACCEPT-FORM
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -85,6 +87,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A011-P2-SINGLE-DOCUMENTATION-SET
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -112,6 +115,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A011-P3-AMEND
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass

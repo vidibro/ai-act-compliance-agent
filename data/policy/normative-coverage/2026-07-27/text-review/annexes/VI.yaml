@@ -17,6 +17,7 @@ segments:
   disposition: structural
   disposition_reason: ''
   norm_ids: []
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -42,6 +43,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-ANNEX-VI-P1-PROCEDURE-CONTENT
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -66,8 +68,9 @@ segments:
   disposition: normative
   disposition_reason: ''
   norm_ids:
-  - AIA-NORM-ANNEX-VI-P1-PROCEDURE-CONTENT
   - AIA-NORM-ANNEX-VI-P2-VERIFY-QMS
+  qualifying_norm_ids:
+  - AIA-NORM-ANNEX-VI-P1-PROCEDURE-CONTENT
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -93,8 +96,9 @@ segments:
   disposition: normative
   disposition_reason: ''
   norm_ids:
-  - AIA-NORM-ANNEX-VI-P1-PROCEDURE-CONTENT
   - AIA-NORM-ANNEX-VI-P3-EXAMINE-TECHNICAL-DOCUMENTATION
+  qualifying_norm_ids:
+  - AIA-NORM-ANNEX-VI-P1-PROCEDURE-CONTENT
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -119,8 +123,9 @@ segments:
   disposition: normative
   disposition_reason: ''
   norm_ids:
-  - AIA-NORM-ANNEX-VI-P1-PROCEDURE-CONTENT
   - AIA-NORM-ANNEX-VI-P4-VERIFY-CONSISTENCY
+  qualifying_norm_ids:
+  - AIA-NORM-ANNEX-VI-P1-PROCEDURE-CONTENT
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass

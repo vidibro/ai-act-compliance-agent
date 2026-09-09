@@ -18,6 +18,7 @@ segments:
   disposition: structural
   disposition_reason: ''
   norm_ids: []
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -46,6 +47,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A080-P1-EVALUATE-CLASSIFICATION
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -74,6 +76,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A080-P2-REQUIRE-COMPLIANCE-AND-CORRECTION
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -101,6 +104,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A080-P3-INFORM-CROSS-BORDER-USE
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -130,6 +134,7 @@ segments:
   norm_ids:
   - AIA-NORM-A080-P4-BRING-SYSTEM-INTO-COMPLIANCE
   - AIA-NORM-A080-P4-NONCOMPLIANCE-FINE
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -155,6 +160,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A080-P5-CORRECT-ALL-UNION-SYSTEMS
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -180,6 +186,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A080-P6-APPLY-ARTICLE-79-ESCALATION
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -207,6 +214,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A080-P7-CIRCUMVENTION-FINE
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -234,6 +242,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A080-P8-PERFORM-MONITORING-CHECKS
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass

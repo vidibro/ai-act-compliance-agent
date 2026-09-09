@@ -17,6 +17,7 @@ segments:
   disposition: structural
   disposition_reason: ''
   norm_ids: []
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -42,7 +43,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A110-REPRESENTATIVE-ACTIONS-APPLICABILITY
   review:
     status: approved
@@ -70,6 +72,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A110-REPRESENTATIVE-ACTIONS-APPLICABILITY
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass

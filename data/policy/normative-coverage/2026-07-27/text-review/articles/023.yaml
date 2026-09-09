@@ -17,6 +17,7 @@ segments:
   disposition: structural
   disposition_reason: ''
   norm_ids: []
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -40,7 +41,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A023-P1-A-VERIFY-CONFORMITY-ASSESSMENT
   - AIA-NORM-A023-P1-B-VERIFY-TECHNICAL-DOCUMENTATION
   - AIA-NORM-A023-P1-C-VERIFY-MARKING-AND-DOCUMENTS
@@ -70,6 +72,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A023-P1-A-VERIFY-CONFORMITY-ASSESSMENT
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -95,6 +98,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A023-P1-B-VERIFY-TECHNICAL-DOCUMENTATION
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -120,6 +124,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A023-P1-C-VERIFY-MARKING-AND-DOCUMENTS
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -145,6 +150,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A023-P1-D-VERIFY-REPRESENTATIVE
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -174,6 +180,7 @@ segments:
   norm_ids:
   - AIA-NORM-A023-P2-WITHHOLD-NONCONFORMING-SYSTEM
   - AIA-NORM-A023-P2-INFORM-RISK
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -200,6 +207,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A023-P3-IDENTIFY-IMPORTER
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -226,6 +234,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A023-P4-PRESERVE-COMPLIANCE
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -252,6 +261,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A023-P5-KEEP-DOCUMENTS
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -280,8 +290,8 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A023-P6-PROVIDE-CONFORMITY-INFORMATION
-  - AIA-NORM-A023-P6-AUTHORITY-LANGUAGE
   - AIA-NORM-A023-P6-TECHNICAL-DOCUMENTATION-AVAILABLE
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -308,6 +318,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A023-P7-COOPERATE
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass

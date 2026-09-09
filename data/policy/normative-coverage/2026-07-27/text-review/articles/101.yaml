@@ -17,6 +17,7 @@ segments:
   disposition: structural
   disposition_reason: ''
   norm_ids: []
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -43,6 +44,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A101-P1-IMPOSE-GPAI-FINES
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -65,7 +67,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A101-P1-IMPOSE-GPAI-FINES
   review:
     status: approved
@@ -90,7 +93,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A101-P1-IMPOSE-GPAI-FINES
   review:
     status: approved
@@ -114,7 +118,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A101-P1-IMPOSE-GPAI-FINES
   review:
     status: approved
@@ -140,7 +145,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A101-P1-IMPOSE-GPAI-FINES
   review:
     status: approved
@@ -169,6 +175,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A101-P1-FIX-FINE-AMOUNT
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -195,6 +202,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A101-P2-PRELIMINARY-FINDINGS-AND-HEARING
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -219,6 +227,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A101-P3-FINE-QUALITY
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -244,6 +253,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A101-P4-COMMUNICATE-FINES-TO-BOARD
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -269,6 +279,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A101-P5-JUDICIAL-REVIEW
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -296,6 +307,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A101-P6-ADOPT-FINE-PROCEDURES
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass

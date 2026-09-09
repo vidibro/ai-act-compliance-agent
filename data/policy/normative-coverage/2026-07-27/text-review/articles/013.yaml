@@ -17,6 +17,7 @@ segments:
   disposition: structural
   disposition_reason: ''
   norm_ids: []
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -44,6 +45,7 @@ segments:
   norm_ids:
   - AIA-NORM-A013-P1-TRANSPARENT-OPERATION
   - AIA-NORM-A013-P1-APPROPRIATE-TRANSPARENCY
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -70,13 +72,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A013-P2-PROVIDE-INSTRUCTIONS
-  - AIA-NORM-A013-P2-CONCISE
-  - AIA-NORM-A013-P2-COMPLETE
-  - AIA-NORM-A013-P2-CORRECT
-  - AIA-NORM-A013-P2-CLEAR
-  - AIA-NORM-A013-P2-RELEVANT
-  - AIA-NORM-A013-P2-ACCESSIBLE
-  - AIA-NORM-A013-P2-COMPREHENSIBLE
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -99,12 +95,12 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A013-P3-A-CONTACT-DETAILS
   - AIA-NORM-A013-P3-B-PERFORMANCE-CHARACTERISTICS
   - AIA-NORM-A013-P3-B-I-INTENDED-PURPOSE
-  - AIA-NORM-A013-P3-B-II-EXPECTED-PERFORMANCE
-  - AIA-NORM-A013-P3-B-II-AFFECTING-CIRCUMSTANCES
+  - AIA-NORM-A013-P3-B-II-PERFORMANCE-AND-AFFECTING-CIRCUMSTANCES
   - AIA-NORM-A013-P3-B-III-RISK-CIRCUMSTANCES
   - AIA-NORM-A013-P3-B-IV-EXPLAIN-OUTPUT
   - AIA-NORM-A013-P3-B-V-GROUP-PERFORMANCE
@@ -112,10 +108,7 @@ segments:
   - AIA-NORM-A013-P3-B-VII-INTERPRET-OUTPUT
   - AIA-NORM-A013-P3-C-PREDETERMINED-CHANGES
   - AIA-NORM-A013-P3-D-HUMAN-OVERSIGHT
-  - AIA-NORM-A013-P3-D-OUTPUT-INTERPRETATION-MEASURES
-  - AIA-NORM-A013-P3-E-RESOURCES
-  - AIA-NORM-A013-P3-E-EXPECTED-LIFETIME
-  - AIA-NORM-A013-P3-E-MAINTENANCE
+  - AIA-NORM-A013-P3-E-RESOURCES-LIFETIME-AND-MAINTENANCE
   - AIA-NORM-A013-P3-F-LOG-MECHANISMS
   review:
     status: approved
@@ -142,6 +135,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A013-P3-A-CONTACT-DETAILS
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -167,9 +161,9 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A013-P3-B-PERFORMANCE-CHARACTERISTICS
+  qualifying_norm_ids:
   - AIA-NORM-A013-P3-B-I-INTENDED-PURPOSE
-  - AIA-NORM-A013-P3-B-II-EXPECTED-PERFORMANCE
-  - AIA-NORM-A013-P3-B-II-AFFECTING-CIRCUMSTANCES
+  - AIA-NORM-A013-P3-B-II-PERFORMANCE-AND-AFFECTING-CIRCUMSTANCES
   - AIA-NORM-A013-P3-B-III-RISK-CIRCUMSTANCES
   - AIA-NORM-A013-P3-B-IV-EXPLAIN-OUTPUT
   - AIA-NORM-A013-P3-B-V-GROUP-PERFORMANCE
@@ -199,6 +193,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A013-P3-B-I-INTENDED-PURPOSE
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -225,8 +220,8 @@ segments:
   disposition: normative
   disposition_reason: ''
   norm_ids:
-  - AIA-NORM-A013-P3-B-II-EXPECTED-PERFORMANCE
-  - AIA-NORM-A013-P3-B-II-AFFECTING-CIRCUMSTANCES
+  - AIA-NORM-A013-P3-B-II-PERFORMANCE-AND-AFFECTING-CIRCUMSTANCES
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -253,6 +248,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A013-P3-B-III-RISK-CIRCUMSTANCES
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -278,6 +274,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A013-P3-B-IV-EXPLAIN-OUTPUT
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -303,6 +300,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A013-P3-B-V-GROUP-PERFORMANCE
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -329,6 +327,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A013-P3-B-VI-INPUT-DATA
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -354,6 +353,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A013-P3-B-VII-INTERPRET-OUTPUT
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -379,6 +379,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A013-P3-C-PREDETERMINED-CHANGES
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -404,7 +405,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A013-P3-D-HUMAN-OVERSIGHT
-  - AIA-NORM-A013-P3-D-OUTPUT-INTERPRETATION-MEASURES
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -430,9 +431,8 @@ segments:
   disposition: normative
   disposition_reason: ''
   norm_ids:
-  - AIA-NORM-A013-P3-E-RESOURCES
-  - AIA-NORM-A013-P3-E-EXPECTED-LIFETIME
-  - AIA-NORM-A013-P3-E-MAINTENANCE
+  - AIA-NORM-A013-P3-E-RESOURCES-LIFETIME-AND-MAINTENANCE
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -459,6 +459,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A013-P3-F-LOG-MECHANISMS
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass

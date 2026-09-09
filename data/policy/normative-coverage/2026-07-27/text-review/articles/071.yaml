@@ -17,6 +17,7 @@ segments:
   disposition: structural
   disposition_reason: ''
   norm_ids: []
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -49,6 +50,7 @@ segments:
   - AIA-NORM-A071-P1-SET-UP-AND-MAINTAIN-DATABASE
   - AIA-NORM-A071-P1-CONSULT-EXPERTS-ON-SPECIFICATIONS
   - AIA-NORM-A071-P1-CONSULT-BOARD-ON-UPDATES
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -75,6 +77,7 @@ segments:
   norm_ids:
   - AIA-NORM-A071-P2-PROVIDER-ENTER-ANNEX-VIII-DATA
   - AIA-NORM-A071-P2-REPRESENTATIVE-ENTER-ANNEX-VIII-DATA
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -101,6 +104,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A071-P3-PUBLIC-DEPLOYER-ENTER-ANNEX-VIII-DATA
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -132,6 +136,7 @@ segments:
   - AIA-NORM-A071-P4-DATABASE-ACCESS-RULES
   - AIA-NORM-A071-P4-NAVIGABLE-MACHINE-READABLE
   - AIA-NORM-A071-P4-RESTRICTED-ARTICLE-60-ACCESS
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -159,6 +164,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A071-P5-DATABASE-DATA-MINIMISATION
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -187,6 +193,7 @@ segments:
   - AIA-NORM-A071-P6-CONTROLLER-AND-OPERATOR-SUPPORT
   - AIA-NORM-A071-P6-OPERATOR-SUPPORT
   - AIA-NORM-A071-P6-DATABASE-ACCESSIBILITY
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass

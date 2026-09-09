@@ -17,6 +17,7 @@ segments:
   disposition: structural
   disposition_reason: ''
   norm_ids: []
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -42,6 +43,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A092-P1-CONDUCT-GPAI-EVALUATION
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -65,7 +67,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A092-P1-CONDUCT-GPAI-EVALUATION
   review:
     status: approved
@@ -91,7 +94,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A092-P1-CONDUCT-GPAI-EVALUATION
   review:
     status: approved
@@ -119,6 +123,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A092-P2-APPOINT-INDEPENDENT-EXPERTS
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -145,6 +150,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A092-P3-REQUEST-MODEL-ACCESS
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -171,6 +177,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A092-P4-ACCESS-REQUEST-CONTENT
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -199,6 +206,7 @@ segments:
   norm_ids:
   - AIA-NORM-A092-P5-SUPPLY-REQUESTED-INFORMATION
   - AIA-NORM-A092-P5-AUTHORISED-PERSON-PROVIDE-ACCESS
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -226,6 +234,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A092-P6-ADOPT-EVALUATION-ARRANGEMENTS
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -253,6 +262,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A092-P7-INITIATE-STRUCTURED-DIALOGUE
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass

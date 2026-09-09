@@ -17,6 +17,7 @@ segments:
   disposition: structural
   disposition_reason: ''
   norm_ids: []
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -43,6 +44,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A044-P1-CERTIFICATE-LANGUAGE
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -74,6 +76,7 @@ segments:
   - AIA-NORM-A044-P2-CERTIFICATE-VALIDITY-PERIOD
   - AIA-NORM-A044-P2-EXTEND-CERTIFICATE
   - AIA-NORM-A044-P2-SUPPLEMENT-VALIDITY
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -104,6 +107,7 @@ segments:
   - AIA-NORM-A044-P3-CERTIFICATE-MEASURE
   - AIA-NORM-A044-P3-CORRECTIVE-ACTION-EXCEPTION
   - AIA-NORM-A044-P3-GIVE-REASONS
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -129,6 +133,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A044-P3-APPEAL-PROCEDURE
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass

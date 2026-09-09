@@ -17,6 +17,7 @@ segments:
   disposition: structural
   disposition_reason: ''
   norm_ids: []
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -46,6 +47,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A004-P1-AI-LITERACY-MEASURES
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -74,6 +76,7 @@ segments:
   norm_ids:
   - AIA-NORM-A004-P2-SUPPORT-PROVIDERS-DEPLOYERS
   - AIA-NORM-A004-P2-PUBLISH-PRACTICAL-EXAMPLES
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -100,6 +103,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A004-P3-BOARD-RECOMMENDATIONS
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass

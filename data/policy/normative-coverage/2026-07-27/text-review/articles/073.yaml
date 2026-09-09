@@ -17,6 +17,7 @@ segments:
   disposition: structural
   disposition_reason: ''
   norm_ids: []
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -42,6 +43,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A073-P1-REPORT-SERIOUS-INCIDENT
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -69,6 +71,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A073-P2-DEFAULT-REPORTING-DEADLINE
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -92,7 +95,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A073-P2-DEFAULT-REPORTING-DEADLINE
   review:
     status: approved
@@ -121,6 +125,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A073-P3-TWO-DAY-DEADLINE
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -149,6 +154,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A073-P4-DEATH-DEADLINE
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -174,6 +180,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A073-P5-INITIAL-INCOMPLETE-REPORT
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -201,6 +208,7 @@ segments:
   norm_ids:
   - AIA-NORM-A073-P6-INVESTIGATE-ASSESS-AND-CORRECT
   - AIA-NORM-A073-P6-CORRECTIVE-ACTION
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -230,6 +238,7 @@ segments:
   norm_ids:
   - AIA-NORM-A073-P6-COOPERATE-AND-PRESERVE-SYSTEM
   - AIA-NORM-A073-P6-NO-EVIDENCE-AFFECTING-ALTERATION
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -259,6 +268,7 @@ segments:
   norm_ids:
   - AIA-NORM-A073-P7-INFORM-FUNDAMENTAL-RIGHTS-AUTHORITIES
   - AIA-NORM-A073-P7-COMMISSION-REPORTING-GUIDANCE
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -287,6 +297,7 @@ segments:
   norm_ids:
   - AIA-NORM-A073-P8-SEVEN-DAY-AUTHORITY-ACTION
   - AIA-NORM-A073-P8-FOLLOW-NOTIFICATION-PROCEDURES
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -314,6 +325,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A073-P9-EQUIVALENT-REPORTING-LIMIT
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -342,6 +354,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A073-P10-MEDICAL-DEVICE-REPORTING
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -367,6 +380,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A073-P11-NOTIFY-COMMISSION
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass

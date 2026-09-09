@@ -17,6 +17,7 @@ segments:
   disposition: structural
   disposition_reason: ''
   norm_ids: []
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -40,11 +41,12 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A055-P1-A-EVALUATE-MODEL
-  - AIA-NORM-A055-P1-B-ASSESS-SYSTEMIC-RISKS
-  - AIA-NORM-A055-P1-C-TRACK-INCIDENTS
-  - AIA-NORM-A055-P1-D-MODEL-CYBERSECURITY
+  - AIA-NORM-A055-P1-B-ASSESS-AND-MITIGATE-SYSTEMIC-RISKS
+  - AIA-NORM-A055-P1-C-TRACK-DOCUMENT-AND-REPORT-INCIDENTS
+  - AIA-NORM-A055-P1-D-MODEL-AND-INFRASTRUCTURE-CYBERSECURITY
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -71,8 +73,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A055-P1-A-EVALUATE-MODEL
-  - AIA-NORM-A055-P1-A-CONDUCT-ADVERSARIAL-TESTING
-  - AIA-NORM-A055-P1-A-DOCUMENT-ADVERSARIAL-TESTING
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -98,8 +99,8 @@ segments:
   disposition: normative
   disposition_reason: ''
   norm_ids:
-  - AIA-NORM-A055-P1-B-ASSESS-SYSTEMIC-RISKS
-  - AIA-NORM-A055-P1-B-MITIGATE-SYSTEMIC-RISKS
+  - AIA-NORM-A055-P1-B-ASSESS-AND-MITIGATE-SYSTEMIC-RISKS
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -125,9 +126,8 @@ segments:
   disposition: normative
   disposition_reason: ''
   norm_ids:
-  - AIA-NORM-A055-P1-C-TRACK-INCIDENTS
-  - AIA-NORM-A055-P1-C-DOCUMENT-INCIDENTS
-  - AIA-NORM-A055-P1-C-REPORT-INCIDENTS
+  - AIA-NORM-A055-P1-C-TRACK-DOCUMENT-AND-REPORT-INCIDENTS
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -152,8 +152,8 @@ segments:
   disposition: normative
   disposition_reason: ''
   norm_ids:
-  - AIA-NORM-A055-P1-D-MODEL-CYBERSECURITY
-  - AIA-NORM-A055-P1-D-INFRASTRUCTURE-CYBERSECURITY
+  - AIA-NORM-A055-P1-D-MODEL-AND-INFRASTRUCTURE-CYBERSECURITY
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -186,6 +186,7 @@ segments:
   - AIA-NORM-A055-P2-RELY-ON-CODES
   - AIA-NORM-A055-P2-HARMONISED-STANDARD-PRESUMPTION
   - AIA-NORM-A055-P2-ALTERNATIVE-COMPLIANCE
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -211,6 +212,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A055-P3-CONFIDENTIAL-TREATMENT
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass

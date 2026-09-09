@@ -17,6 +17,7 @@ segments:
   disposition: structural
   disposition_reason: ''
   norm_ids: []
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -44,8 +45,8 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A017-P1-QMS
-  - AIA-NORM-A017-P1-SYSTEMATIC-DOCUMENTATION
-  - AIA-NORM-A017-P1-WRITTEN-DOCUMENTATION
+  - AIA-NORM-A017-P1-SYSTEMATIC-WRITTEN-DOCUMENTATION
+  qualifying_norm_ids:
   - AIA-NORM-A017-P1-A-REGULATORY-STRATEGY
   - AIA-NORM-A017-P1-B-DESIGN-PROCESSES
   - AIA-NORM-A017-P1-C-DEVELOPMENT-PROCESSES
@@ -84,6 +85,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A017-P1-A-REGULATORY-STRATEGY
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -109,6 +111,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A017-P1-B-DESIGN-PROCESSES
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -134,6 +137,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A017-P1-C-DEVELOPMENT-PROCESSES
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -160,6 +164,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A017-P1-D-TESTING-PROCESSES
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -187,6 +192,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A017-P1-E-SPECIFICATIONS
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -214,6 +220,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A017-P1-F-DATA-MANAGEMENT
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -238,6 +245,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A017-P1-G-RISK-MANAGEMENT
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -263,6 +271,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A017-P1-H-POST-MARKET-MONITORING
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -288,6 +297,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A017-P1-I-INCIDENT-REPORTING
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -314,6 +324,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A017-P1-J-COMMUNICATION
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -338,6 +349,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A017-P1-K-RECORD-KEEPING
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -362,6 +374,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A017-P1-L-RESOURCE-MANAGEMENT
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -387,6 +400,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A017-P1-M-ACCOUNTABILITY
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -413,6 +427,7 @@ segments:
   norm_ids:
   - AIA-NORM-A017-P2-PROPORTIONATE-IMPLEMENTATION
   - AIA-NORM-A017-P2-RIGOUR-PROTECTION
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -439,6 +454,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A017-P3-SECTORAL-INTEGRATION
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -469,6 +485,7 @@ segments:
   norm_ids:
   - AIA-NORM-A017-P4-FINANCIAL-DEEMING
   - AIA-NORM-A017-P4-HARMONISED-STANDARDS
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass

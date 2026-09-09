@@ -17,6 +17,7 @@ segments:
   disposition: structural
   disposition_reason: ''
   norm_ids: []
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -39,7 +40,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-ANNEX-I-01-MACHINERY-DIRECTIVE
   - AIA-NORM-ANNEX-I-02-TOY-SAFETY
   - AIA-NORM-ANNEX-I-03-RECREATIONAL-CRAFT
@@ -77,6 +79,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-ANNEX-I-01-MACHINERY-DIRECTIVE
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -102,6 +105,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-ANNEX-I-02-TOY-SAFETY
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -128,6 +132,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-ANNEX-I-03-RECREATIONAL-CRAFT
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -154,6 +159,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-ANNEX-I-04-LIFTS
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -180,6 +186,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-ANNEX-I-05-EXPLOSIVE-ATMOSPHERES
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -206,6 +213,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-ANNEX-I-06-RADIO-EQUIPMENT
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -232,6 +240,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-ANNEX-I-07-PRESSURE-EQUIPMENT
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -257,6 +266,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-ANNEX-I-08-CABLEWAYS
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -283,6 +293,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-ANNEX-I-09-PERSONAL-PROTECTIVE-EQUIPMENT
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -308,6 +319,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-ANNEX-I-10-GAS-APPLIANCES
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -334,6 +346,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-ANNEX-I-11-MEDICAL-DEVICES
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -360,6 +373,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-ANNEX-I-12-IN-VITRO-DIAGNOSTICS
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -382,7 +396,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-ANNEX-I-13-AVIATION-SECURITY
   - AIA-NORM-ANNEX-I-14-L-CATEGORY-VEHICLES
   - AIA-NORM-ANNEX-I-15-AGRICULTURAL-FORESTRY-VEHICLES
@@ -418,6 +433,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-ANNEX-I-13-AVIATION-SECURITY
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -444,6 +460,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-ANNEX-I-14-L-CATEGORY-VEHICLES
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -470,6 +487,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-ANNEX-I-15-AGRICULTURAL-FORESTRY-VEHICLES
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -495,6 +513,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-ANNEX-I-16-MARINE-EQUIPMENT
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -520,6 +539,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-ANNEX-I-17-RAIL-INTEROPERABILITY
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -547,6 +567,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-ANNEX-I-18-MOTOR-VEHICLE-APPROVAL
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -580,6 +601,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-ANNEX-I-19-MOTOR-VEHICLE-GENERAL-SAFETY
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -612,6 +634,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-ANNEX-I-20-UNMANNED-AIRCRAFT
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -638,6 +661,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-ANNEX-I-21-MACHINERY-REGULATION
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass

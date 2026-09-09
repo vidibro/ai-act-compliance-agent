@@ -17,6 +17,7 @@ segments:
   disposition: structural
   disposition_reason: ''
   norm_ids: []
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -41,7 +42,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A025-P1-A-NAME-ROLE-TRANSFER
   - AIA-NORM-A025-P1-B-MODIFICATION-ROLE-TRANSFER
   - AIA-NORM-A025-P1-C-PURPOSE-ROLE-TRANSFER
@@ -71,6 +73,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A025-P1-A-NAME-ROLE-TRANSFER
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -97,6 +100,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A025-P1-B-MODIFICATION-ROLE-TRANSFER
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -124,6 +128,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A025-P1-C-PURPOSE-ROLE-TRANSFER
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -150,6 +155,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A025-P2-INITIAL-PROVIDER-STATUS-ENDS
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -178,6 +184,7 @@ segments:
   norm_ids:
   - AIA-NORM-A025-P2-COOPERATE
   - AIA-NORM-A025-P2-PROVIDE-ASSISTANCE
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -201,7 +208,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A025-P2-PROVIDE-ASSISTANCE
   review:
     status: approved
@@ -226,7 +234,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A025-P2-PROVIDE-ASSISTANCE
   review:
     status: approved
@@ -250,7 +259,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A025-P2-PROVIDE-ASSISTANCE
   review:
     status: approved
@@ -275,7 +285,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A025-P2-PROVIDE-ASSISTANCE
   review:
     status: approved
@@ -303,6 +314,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A025-P2-NO-COOPERATION-DUTY
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -328,7 +340,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A025-P3-A-PRODUCT-MANUFACTURER-ROLE
   - AIA-NORM-A025-P3-B-PRODUCT-MANUFACTURER-ROLE
   review:
@@ -356,6 +369,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A025-P3-A-PRODUCT-MANUFACTURER-ROLE
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -381,6 +395,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A025-P3-B-PRODUCT-MANUFACTURER-ROLE
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -412,6 +427,7 @@ segments:
   norm_ids:
   - AIA-NORM-A025-P4-WRITTEN-AGREEMENT
   - AIA-NORM-A025-P4-OPEN-SOURCE-EXCEPTION
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -443,6 +459,7 @@ segments:
   - AIA-NORM-A025-P4-AI-OFFICE-MODEL-TERMS
   - AIA-NORM-A025-P4-AI-OFFICE-SECTOR-REQUIREMENTS
   - AIA-NORM-A025-P4-AI-OFFICE-PUBLISH
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -469,6 +486,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A025-P5-PROTECT-RIGHTS-AND-SECRETS
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass

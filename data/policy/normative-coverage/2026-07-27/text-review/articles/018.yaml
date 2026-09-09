@@ -17,6 +17,7 @@ segments:
   disposition: structural
   disposition_reason: ''
   norm_ids: []
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -40,7 +41,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A018-P1-A-TECHNICAL-DOCUMENTATION
   - AIA-NORM-A018-P1-B-QMS-DOCUMENTATION
   - AIA-NORM-A018-P1-C-APPROVED-CHANGES
@@ -70,6 +72,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A018-P1-A-TECHNICAL-DOCUMENTATION
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -95,6 +98,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A018-P1-B-QMS-DOCUMENTATION
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -119,6 +123,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A018-P1-C-APPROVED-CHANGES
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -143,6 +148,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A018-P1-D-NOTIFIED-BODY-DOCUMENTS
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -167,6 +173,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A018-P1-E-EU-DECLARATION
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -194,6 +201,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A018-P2-MEMBER-STATE-CONDITIONS
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -220,6 +228,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A018-P3-FINANCIAL-DOCUMENTATION
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass

@@ -13,6 +13,7 @@ segments:
   disposition: structural
   disposition_reason: ''
   norm_ids: []
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -35,7 +36,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-ANNEX-XI-SECTION-1-TECHNICAL-DOCUMENTATION
   review:
     status: approved
@@ -59,7 +61,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-ANNEX-XI-SECTION-1-TECHNICAL-DOCUMENTATION
   review:
     status: approved
@@ -86,6 +89,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-ANNEX-XI-SECTION-1-TECHNICAL-DOCUMENTATION
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -108,7 +112,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-ANNEX-XI-SECTION-1-TECHNICAL-DOCUMENTATION
   review:
     status: approved
@@ -133,7 +138,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-ANNEX-XI-SECTION-1-TECHNICAL-DOCUMENTATION
   review:
     status: approved
@@ -157,7 +163,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-ANNEX-XI-SECTION-1-TECHNICAL-DOCUMENTATION
   review:
     status: approved
@@ -181,7 +188,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-ANNEX-XI-SECTION-1-TECHNICAL-DOCUMENTATION
   review:
     status: approved
@@ -205,7 +213,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-ANNEX-XI-SECTION-1-TECHNICAL-DOCUMENTATION
   review:
     status: approved
@@ -229,7 +238,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-ANNEX-XI-SECTION-1-TECHNICAL-DOCUMENTATION
   review:
     status: approved
@@ -253,7 +263,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-ANNEX-XI-SECTION-1-TECHNICAL-DOCUMENTATION
   review:
     status: approved
@@ -281,8 +292,9 @@ segments:
   disposition: normative
   disposition_reason: ''
   norm_ids:
-  - AIA-NORM-ANNEX-XI-SECTION-1-TECHNICAL-DOCUMENTATION
   - AIA-NORM-ANNEX-XI-ENERGY-ESTIMATE-BASIS
+  qualifying_norm_ids:
+  - AIA-NORM-ANNEX-XI-SECTION-1-TECHNICAL-DOCUMENTATION
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -306,7 +318,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-ANNEX-XI-SECTION-1-TECHNICAL-DOCUMENTATION
   review:
     status: approved
@@ -332,7 +345,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-ANNEX-XI-SECTION-1-TECHNICAL-DOCUMENTATION
   review:
     status: approved
@@ -360,7 +374,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-ANNEX-XI-SECTION-1-TECHNICAL-DOCUMENTATION
   review:
     status: approved
@@ -385,7 +400,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-ANNEX-XI-SECTION-1-TECHNICAL-DOCUMENTATION
   review:
     status: approved
@@ -409,7 +425,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-ANNEX-XI-SECTION-1-TECHNICAL-DOCUMENTATION
   review:
     status: approved
@@ -433,7 +450,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-ANNEX-XI-SECTION-2-SYSTEMIC-RISK-DOCUMENTATION
   - AIA-NORM-ANNEX-XI-SECTION-2-ADVERSARIAL-TESTING-AND-ADAPTATIONS
   - AIA-NORM-ANNEX-XI-SECTION-2-SYSTEM-ARCHITECTURE
@@ -460,7 +478,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-ANNEX-XI-SECTION-2-SYSTEMIC-RISK-DOCUMENTATION
   - AIA-NORM-ANNEX-XI-SECTION-2-ADVERSARIAL-TESTING-AND-ADAPTATIONS
   - AIA-NORM-ANNEX-XI-SECTION-2-SYSTEM-ARCHITECTURE
@@ -491,6 +510,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-ANNEX-XI-SECTION-2-SYSTEMIC-RISK-DOCUMENTATION
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -517,6 +537,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-ANNEX-XI-SECTION-2-ADVERSARIAL-TESTING-AND-ADAPTATIONS
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -542,6 +563,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-ANNEX-XI-SECTION-2-SYSTEM-ARCHITECTURE
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass

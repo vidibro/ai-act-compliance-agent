@@ -17,6 +17,7 @@ segments:
   disposition: structural
   disposition_reason: ''
   norm_ids: []
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -43,6 +44,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A006-P1-ANNEX-I-HIGH-RISK
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -66,7 +68,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A006-P1-ANNEX-I-HIGH-RISK
   review:
     status: approved
@@ -93,7 +96,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A006-P1-ANNEX-I-HIGH-RISK
   review:
     status: approved
@@ -121,6 +125,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A006-P1A-NON-SAFETY-ASSISTANCE
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -146,6 +151,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A006-P1B-HEALTH-SAFETY-OVERRIDE
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -173,6 +179,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A006-P1C-NON-SAFETY-ASSESSMENT
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -198,6 +205,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A006-P2-ANNEX-III-HIGH-RISK
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -224,6 +232,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A006-P3-INSIGNIFICANT-RISK-EXCEPTION
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -246,7 +255,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A006-P3-INSIGNIFICANT-RISK-EXCEPTION
   review:
     status: approved
@@ -270,7 +280,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A006-P3-INSIGNIFICANT-RISK-EXCEPTION
   review:
     status: approved
@@ -294,7 +305,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A006-P3-INSIGNIFICANT-RISK-EXCEPTION
   review:
     status: approved
@@ -320,7 +332,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A006-P3-INSIGNIFICANT-RISK-EXCEPTION
   review:
     status: approved
@@ -345,7 +358,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A006-P3-INSIGNIFICANT-RISK-EXCEPTION
   review:
     status: approved
@@ -371,8 +385,9 @@ segments:
   disposition: normative
   disposition_reason: ''
   norm_ids:
-  - AIA-NORM-A006-P3-INSIGNIFICANT-RISK-EXCEPTION
   - AIA-NORM-A006-P3-PROFILING-OVERRIDE
+  qualifying_norm_ids:
+  - AIA-NORM-A006-P3-INSIGNIFICANT-RISK-EXCEPTION
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -402,6 +417,7 @@ segments:
   - AIA-NORM-A006-P4-DOCUMENT-ASSESSMENT
   - AIA-NORM-A006-P4-REGISTER-SYSTEM
   - AIA-NORM-A006-P4-PROVIDE-ASSESSMENT
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -428,6 +444,7 @@ segments:
   norm_ids:
   - AIA-NORM-A006-P5-PROVIDE-GUIDELINES
   - AIA-NORM-A006-P5-PROVIDE-EXAMPLES
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -456,6 +473,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A006-P6-AMEND-EXCEPTIONS
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -483,6 +501,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A006-P7-DELETE-EXCEPTIONS
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -513,6 +532,7 @@ segments:
   - AIA-NORM-A006-P8-NO-REDUCED-PROTECTION
   - AIA-NORM-A006-P8-ENSURE-CONSISTENCY
   - AIA-NORM-A006-P8-CONSIDER-DEVELOPMENTS
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass

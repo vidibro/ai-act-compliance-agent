@@ -17,6 +17,7 @@ segments:
   disposition: structural
   disposition_reason: ''
   norm_ids: []
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -48,6 +49,7 @@ segments:
   norm_ids:
   - AIA-NORM-A099-P1-ESTABLISH-PENALTIES
   - AIA-NORM-A099-P1-ACCOUNT-FOR-SMALL-BUSINESSES
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -75,6 +77,7 @@ segments:
   norm_ids:
   - AIA-NORM-A099-P2-NOTIFY-PENALTY-RULES
   - AIA-NORM-A099-P2-NOTIFY-PENALTY-AMENDMENTS
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -101,6 +104,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A099-P3-ARTICLE5-FINE
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -128,6 +132,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A099-P4-OPERATOR-FINE
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -150,7 +155,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A099-P4-OPERATOR-FINE
   review:
     status: approved
@@ -174,7 +180,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A099-P4-OPERATOR-FINE
   review:
     status: approved
@@ -198,7 +205,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A099-P4-OPERATOR-FINE
   review:
     status: approved
@@ -222,7 +230,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A099-P4-OPERATOR-FINE
   review:
     status: approved
@@ -246,7 +255,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A099-P4-OPERATOR-FINE
   review:
     status: approved
@@ -270,7 +280,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A099-P4-OPERATOR-FINE
   review:
     status: approved
@@ -295,7 +306,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A099-P4-OPERATOR-FINE
   review:
     status: approved
@@ -319,7 +331,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A099-P4-OPERATOR-FINE
   review:
     status: approved
@@ -348,6 +361,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A099-P5-INFORMATION-FINE
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -373,6 +387,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A099-P6-SME-FINE-CAP
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -398,6 +413,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A099-P6A-SMC-FINE-CAP
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -424,6 +440,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A099-P7-CONSIDER-FINE-CIRCUMSTANCES
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -448,7 +465,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A099-P7-CONSIDER-FINE-CIRCUMSTANCES
   review:
     status: approved
@@ -473,7 +491,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A099-P7-CONSIDER-FINE-CIRCUMSTANCES
   review:
     status: approved
@@ -499,7 +518,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A099-P7-CONSIDER-FINE-CIRCUMSTANCES
   review:
     status: approved
@@ -523,7 +543,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A099-P7-CONSIDER-FINE-CIRCUMSTANCES
   review:
     status: approved
@@ -548,7 +569,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A099-P7-CONSIDER-FINE-CIRCUMSTANCES
   review:
     status: approved
@@ -573,7 +595,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A099-P7-CONSIDER-FINE-CIRCUMSTANCES
   review:
     status: approved
@@ -598,7 +621,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A099-P7-CONSIDER-FINE-CIRCUMSTANCES
   review:
     status: approved
@@ -623,7 +647,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A099-P7-CONSIDER-FINE-CIRCUMSTANCES
   review:
     status: approved
@@ -647,7 +672,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A099-P7-CONSIDER-FINE-CIRCUMSTANCES
   review:
     status: approved
@@ -671,7 +697,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A099-P7-CONSIDER-FINE-CIRCUMSTANCES
   review:
     status: approved
@@ -698,6 +725,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A099-P8-PUBLIC-BODY-FINE-RULES
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -725,6 +753,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A099-P9-EQUIVALENT-FINE-EFFECT
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -750,6 +779,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A099-P10-PROCEDURAL-SAFEGUARDS
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -776,6 +806,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A099-P11-ANNUAL-FINE-REPORT
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass

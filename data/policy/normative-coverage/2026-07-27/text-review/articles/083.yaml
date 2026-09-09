@@ -17,6 +17,7 @@ segments:
   disposition: structural
   disposition_reason: ''
   norm_ids: []
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -43,6 +44,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A083-P1-REQUIRE-END-TO-FORMAL-NONCOMPLIANCE
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -65,7 +67,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A083-P1-REQUIRE-END-TO-FORMAL-NONCOMPLIANCE
   review:
     status: approved
@@ -89,7 +92,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A083-P1-REQUIRE-END-TO-FORMAL-NONCOMPLIANCE
   review:
     status: approved
@@ -113,7 +117,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A083-P1-REQUIRE-END-TO-FORMAL-NONCOMPLIANCE
   review:
     status: approved
@@ -138,7 +143,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A083-P1-REQUIRE-END-TO-FORMAL-NONCOMPLIANCE
   review:
     status: approved
@@ -163,7 +169,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A083-P1-REQUIRE-END-TO-FORMAL-NONCOMPLIANCE
   review:
     status: approved
@@ -187,7 +194,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A083-P1-REQUIRE-END-TO-FORMAL-NONCOMPLIANCE
   review:
     status: approved
@@ -211,7 +219,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A083-P1-REQUIRE-END-TO-FORMAL-NONCOMPLIANCE
   review:
     status: approved
@@ -240,6 +249,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A083-P2-RESTRICT-PERSISTENT-NONCOMPLIANCE
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass

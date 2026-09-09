@@ -17,6 +17,7 @@ segments:
   disposition: structural
   disposition_reason: ''
   norm_ids: []
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -43,6 +44,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A042-P1-REPRESENTATIVE-DATA-PRESUMPTION
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -71,6 +73,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A042-P2-CYBERSECURITY-CERTIFICATE-PRESUMPTION
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -97,6 +100,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A042-P3-CYBER-RESILIENCE-DEEMING
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass

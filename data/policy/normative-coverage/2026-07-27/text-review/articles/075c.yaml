@@ -17,6 +17,7 @@ segments:
   disposition: structural
   disposition_reason: ''
   norm_ids: []
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -43,6 +44,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A075C-P1-ESTABLISH-NONCOMPLIANCE
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -71,6 +73,7 @@ segments:
   norm_ids:
   - AIA-NORM-A075C-P2-COMMUNICATE-PRELIMINARY-FINDINGS
   - AIA-NORM-A075C-P2-EXPLAIN-CONTEMPLATED-MEASURES
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -105,6 +108,7 @@ segments:
   - AIA-NORM-A075C-P3-DESCRIBE-IMPLEMENTED-MEASURES
   - AIA-NORM-A075C-P3-STRUCTURED-DIALOGUE
   - AIA-NORM-A075C-P3-PROPOSE-COMMITMENTS
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -132,6 +136,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A075C-P4-IMPOSE-PENALTIES
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -157,6 +162,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A075C-P4-ARTICLE99-4-FINES
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -180,7 +186,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A075C-P4-ARTICLE99-4-FINES
   review:
     status: approved
@@ -206,7 +213,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A075C-P4-ARTICLE99-4-FINES
   review:
     status: approved
@@ -231,7 +239,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A075C-P4-ARTICLE99-4-FINES
   review:
     status: approved
@@ -258,6 +267,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A075C-P4-INFORMATION-FINE
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -283,6 +293,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A075C-P5-IMPOSE-PERIODIC-PENALTIES
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -305,7 +316,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A075C-P5-IMPOSE-PERIODIC-PENALTIES
   review:
     status: approved
@@ -330,7 +342,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A075C-P5-IMPOSE-PERIODIC-PENALTIES
   review:
     status: approved
@@ -354,7 +367,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A075C-P5-IMPOSE-PERIODIC-PENALTIES
   review:
     status: approved
@@ -379,7 +393,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A075C-P5-IMPOSE-PERIODIC-PENALTIES
   review:
     status: approved
@@ -404,7 +419,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A075C-P5-IMPOSE-PERIODIC-PENALTIES
   review:
     status: approved
@@ -429,7 +445,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A075C-P5-IMPOSE-PERIODIC-PENALTIES
   review:
     status: approved
@@ -453,7 +470,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A075C-P5-IMPOSE-PERIODIC-PENALTIES
   review:
     status: approved
@@ -482,6 +500,7 @@ segments:
   norm_ids:
   - AIA-NORM-A075C-P5-PENALTY-PAYMENT-LIMITS
   - AIA-NORM-A075C-P5-PENALTY-PAYMENT-CEILING
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -508,6 +527,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A075C-P6-JUDICIAL-REVIEW
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -533,6 +553,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A075C-P7-ALLOCATE-FINE-FUNDS
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -560,6 +581,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A075C-P8-FIVE-YEAR-INFRINGEMENT-LIMIT
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -586,6 +608,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A075C-P8-FIVE-YEAR-DECISION-LIMIT
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -611,6 +634,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A075C-P8-SPECIFY-LIMITATION-PERIODS
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -636,6 +660,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A075C-P9-CLOSE-PROCEEDING
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass

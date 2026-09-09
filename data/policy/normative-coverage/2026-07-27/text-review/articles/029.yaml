@@ -17,6 +17,7 @@ segments:
   disposition: structural
   disposition_reason: ''
   norm_ids: []
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -42,6 +43,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A029-P1-SUBMIT-APPLICATION
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -70,6 +72,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A029-P2-APPLICATION-CONTENT
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -95,6 +98,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A029-P2-EXISTING-DESIGNATION-DOCUMENTS
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -121,6 +125,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A029-P3-NONACCREDITED-EVIDENCE
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -147,6 +152,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A029-P4-REUSE-DESIGNATION-DOCUMENTS
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -174,6 +180,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A029-P4-SINGLE-APPLICATION
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -201,6 +208,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A029-P4-UPDATE-DOCUMENTATION
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass

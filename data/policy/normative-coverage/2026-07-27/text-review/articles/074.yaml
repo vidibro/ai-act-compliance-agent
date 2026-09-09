@@ -17,6 +17,7 @@ segments:
   disposition: structural
   disposition_reason: ''
   norm_ids: []
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -42,6 +43,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A074-P1-APPLY-MARKET-SURVEILLANCE-REGULATION
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -65,7 +67,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A074-P1-APPLY-MARKET-SURVEILLANCE-REGULATION
   review:
     status: approved
@@ -90,7 +93,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A074-P1-APPLY-MARKET-SURVEILLANCE-REGULATION
   review:
     status: approved
@@ -122,6 +126,7 @@ segments:
   norm_ids:
   - AIA-NORM-A074-P2-ANNUAL-SURVEILLANCE-REPORTING
   - AIA-NORM-A074-P2-ANNUAL-PROHIBITED-PRACTICE-REPORTING
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -149,6 +154,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A074-P3-SECTORAL-SURVEILLANCE-AUTHORITY
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -174,7 +180,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A074-P3-SECTORAL-SURVEILLANCE-AUTHORITY
   review:
     status: approved
@@ -203,6 +210,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A074-P4-USE-EQUIVALENT-SECTORAL-PROCEDURES
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -230,6 +238,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A074-P5-REMOTE-SURVEILLANCE-POWERS
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -258,6 +267,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A074-P6-FINANCIAL-SUPERVISOR-AUTHORITY
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -284,6 +294,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A074-P7-COORDINATED-FINANCIAL-DEROGATION
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -311,7 +322,8 @@ segments:
   disposition: normative
   disposition_reason: ''
   norm_ids:
-  - AIA-NORM-A074-P7-COORDINATED-FINANCIAL-DEROGATION
+  - AIA-NORM-A074-P7-REPORT-PRUDENTIALLY-RELEVANT-INFORMATION
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -344,6 +356,7 @@ segments:
   norm_ids:
   - AIA-NORM-A074-P8-SENSITIVE-SECTOR-AUTHORITIES
   - AIA-NORM-A074-P8-PRESERVE-JUDICIAL-INDEPENDENCE
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -370,6 +383,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A074-P9-EDPS-SURVEILLANCE
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -397,6 +411,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A074-P10-FACILITATE-NATIONAL-COORDINATION
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -428,6 +443,7 @@ segments:
   norm_ids:
   - AIA-NORM-A074-P11-JOINT-ACTIVITIES
   - AIA-NORM-A074-P11-AI-OFFICE-COORDINATION-SUPPORT
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -457,6 +473,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A074-P12-GRANT-DOCUMENTATION-AND-DATA-ACCESS
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -482,6 +499,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A074-P13-GRANT-SOURCE-CODE-ACCESS
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -505,7 +523,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A074-P13-GRANT-SOURCE-CODE-ACCESS
   review:
     status: approved
@@ -530,7 +549,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A074-P13-GRANT-SOURCE-CODE-ACCESS
   review:
     status: approved
@@ -557,6 +577,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A074-P14-ARTICLE-78-CONFIDENTIALITY
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass

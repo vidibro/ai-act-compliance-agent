@@ -17,6 +17,7 @@ segments:
   disposition: structural
   disposition_reason: ''
   norm_ids: []
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -45,6 +46,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A095-P1-ENCOURAGE-NON-HIGH-RISK-CODES
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -72,6 +74,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A095-P2-FACILITATE-SPECIFIC-REQUIREMENT-CODES
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -94,7 +97,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A095-P2-FACILITATE-SPECIFIC-REQUIREMENT-CODES
   review:
     status: approved
@@ -120,7 +124,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A095-P2-FACILITATE-SPECIFIC-REQUIREMENT-CODES
   review:
     status: approved
@@ -145,7 +150,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A095-P2-FACILITATE-SPECIFIC-REQUIREMENT-CODES
   review:
     status: approved
@@ -169,7 +175,8 @@ segments:
     \ participation in that process;\n"
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A095-P2-FACILITATE-SPECIFIC-REQUIREMENT-CODES
   review:
     status: approved
@@ -195,7 +202,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A095-P2-FACILITATE-SPECIFIC-REQUIREMENT-CODES
   review:
     status: approved
@@ -225,6 +233,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A095-P3-DRAW-UP-VOLUNTARY-CODES
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -251,6 +260,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A095-P4-ACCOUNT-FOR-SMALL-BUSINESS-NEEDS
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
