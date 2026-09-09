@@ -390,13 +390,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
-- norm_id: AIA-NORM-A010-P3-RELEVANT
+- norm_id: AIA-NORM-A010-P3-DATASET-QUALITY
   act_version_date: '2026-07-27'
   kind: obligation
   subjects:
   - subject_ref: provider
     category: supported_operator
-  action: ensure training, validation, and testing datasets are relevant to the intended purpose
+  action: ensure training, validation, and testing datasets are relevant and sufficiently representative,
+    and to the best extent possible free of errors and complete, in view of the intended purpose
   norm_text: Training, validation and testing data sets shall be relevant, sufficiently representative,
     and to the best extent possible, free of errors and complete in view of the intended purpose.
   detection_channels:
@@ -409,121 +410,11 @@ norms:
   effective_date_spans: []
   conditions: []
   exceptions: []
-  mandatory_content: []
-  dependencies: []
-  product_scope: in_scope
-  product_scope_reason: ''
-  implementation_mode: compliance_rule
-  implementation_refs:
-  - AIA-HR-A10
-  implementation_reason: ''
-  verification_mode: judged_by_gap_analysis
-  review:
-    status: approved
-    extracted_by: semantic-legal-effect-pass
-    verified_by: vidibro
-    review_run_id: normative-coverage-2026-08-28
-    presentation_mode: exact-source-slice
-    display_chunks: 1
-    fully_displayed: true
-    elapsed_seconds: null
-- norm_id: AIA-NORM-A010-P3-REPRESENTATIVE
-  act_version_date: '2026-07-27'
-  kind: obligation
-  subjects:
-  - subject_ref: provider
-    category: supported_operator
-  action: ensure training, validation, and testing datasets are sufficiently representative for the intended
-    purpose
-  norm_text: Training, validation and testing data sets shall be relevant, sufficiently representative,
-    and to the best extent possible, free of errors and complete in view of the intended purpose.
-  detection_channels:
-  - semantic_legal_effect
-  - shall_token
-  - existing_implementation
-  primary_spans:
-  - AIA-TEXT-A010-P011
-  qualifier_spans: []
-  effective_date_spans: []
-  conditions: []
-  exceptions: []
-  mandatory_content: []
-  dependencies: []
-  product_scope: in_scope
-  product_scope_reason: ''
-  implementation_mode: compliance_rule
-  implementation_refs:
-  - AIA-HR-A10
-  implementation_reason: ''
-  verification_mode: judged_by_gap_analysis
-  review:
-    status: approved
-    extracted_by: semantic-legal-effect-pass
-    verified_by: vidibro
-    review_run_id: normative-coverage-2026-08-28
-    presentation_mode: exact-source-slice
-    display_chunks: 1
-    fully_displayed: true
-    elapsed_seconds: null
-- norm_id: AIA-NORM-A010-P3-FREE-OF-ERRORS
-  act_version_date: '2026-07-27'
-  kind: obligation
-  subjects:
-  - subject_ref: provider
-    category: supported_operator
-  action: keep training, validation, and testing datasets free of errors to the best extent possible for
-    the intended purpose
-  norm_text: Training, validation and testing data sets shall be relevant, sufficiently representative,
-    and to the best extent possible, free of errors and complete in view of the intended purpose.
-  detection_channels:
-  - semantic_legal_effect
-  - shall_token
-  - existing_implementation
-  primary_spans:
-  - AIA-TEXT-A010-P011
-  qualifier_spans: []
-  effective_date_spans: []
-  conditions: []
-  exceptions: []
-  mandatory_content: []
-  dependencies: []
-  product_scope: in_scope
-  product_scope_reason: ''
-  implementation_mode: compliance_rule
-  implementation_refs:
-  - AIA-HR-A10
-  implementation_reason: ''
-  verification_mode: judged_by_gap_analysis
-  review:
-    status: approved
-    extracted_by: semantic-legal-effect-pass
-    verified_by: vidibro
-    review_run_id: normative-coverage-2026-08-28
-    presentation_mode: exact-source-slice
-    display_chunks: 1
-    fully_displayed: true
-    elapsed_seconds: null
-- norm_id: AIA-NORM-A010-P3-COMPLETE
-  act_version_date: '2026-07-27'
-  kind: obligation
-  subjects:
-  - subject_ref: provider
-    category: supported_operator
-  action: keep training, validation, and testing datasets complete to the best extent possible for the
-    intended purpose
-  norm_text: Training, validation and testing data sets shall be relevant, sufficiently representative,
-    and to the best extent possible, free of errors and complete in view of the intended purpose.
-  detection_channels:
-  - semantic_legal_effect
-  - shall_token
-  - existing_implementation
-  primary_spans:
-  - AIA-TEXT-A010-P011
-  qualifier_spans: []
-  effective_date_spans: []
-  conditions: []
-  exceptions: []
-  mandatory_content: []
+  mandatory_content:
+  - relevant in view of the intended purpose
+  - sufficiently representative in view of the intended purpose
+  - to the best extent possible, free of errors in view of the intended purpose
+  - to the best extent possible, complete in view of the intended purpose
   dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -664,8 +555,11 @@ norms:
     category: supported_operator
   action: exceptionally process special-category personal data where strictly necessary for bias detection
     and correction in high-risk AI systems
-  norm_text: the providers of such systems may exceptionally process special categories of personal data,
-    subject to appropriate safeguards for the fundamental rights and freedoms of natural persons.
+  norm_text: To the extent that it is strictly necessary for the purpose of ensuring bias detection and
+    correction in relation to the high-risk AI systems in accordance with paragraph (2), points (f) and
+    (g) of this Article, the providers of such systems may exceptionally process special categories of
+    personal data, subject to appropriate safeguards for the fundamental rights and freedoms of natural
+    persons.
   detection_channels:
   - semantic_legal_effect
   - other_modal

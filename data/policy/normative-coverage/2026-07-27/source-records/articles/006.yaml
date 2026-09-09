@@ -1,10 +1,12 @@
 records:
 - norm_id: AIA-NORM-A006-P1-ANNEX-I-HIGH-RISK
   source: A006-P001
-  quote: that AI system shall be considered to be high-risk where both of the following conditions are
-    fulfilled
-  action: classify an AI system as high-risk when both the Annex I product or safety-component condition
-    and the third-party conformity-assessment condition are fulfilled
+  quote: Irrespective of whether an AI system is placed on the market or put into service independently
+    of the products referred to in points (a) and (b), that AI system shall be considered to be high-risk
+    where both of the following conditions are fulfilled
+  action: classify an AI system as high-risk, regardless of whether it is placed on the market or put
+    into service independently of the relevant product, when both the Annex I product or safety-component
+    condition and the third-party conformity-assessment condition are fulfilled
   subject_ref: ai_system
   subject_category: other
   kind: applicability
@@ -54,8 +56,8 @@ records:
   verified_by: vidibro
 - norm_id: AIA-NORM-A006-P1B-HEALTH-SAFETY-OVERRIDE
   source: A006-P005
-  quote: AI systems the failure or malfunctioning of which would endanger health and safety shall qualify
-    as safety components.
+  quote: Notwithstanding paragraph 1a, AI systems the failure or malfunctioning of which would endanger
+    health and safety shall qualify as safety components.
   action: classify an AI system as a safety component when its failure or malfunction would endanger health
     and safety
   subject_ref: ai_system
@@ -68,6 +70,9 @@ records:
   - dependency_ref: AIA-NORM-A003-D014-SAFETY-COMPONENT
     resolution: internal_resolved
     detail: Article 3(14) defines safety component.
+  - dependency_ref: AIA-NORM-A006-P1A-NON-SAFETY-ASSISTANCE
+    resolution: internal_resolved
+    detail: This health-and-safety rule overrides the paragraph 1a non-safety exclusion.
   implementation_mode: applicability_question
   implementation_refs:
   - AIA-CQ-ANNEX-I
@@ -259,7 +264,9 @@ records:
   source: A006-P017
   quote: The Commission is empowered to adopt delegated acts in accordance with Article 97 in order to
     amend paragraph 3, second subparagraph, of this Article by adding new conditions to those laid down
-    therein, or by modifying them
+    therein, or by modifying them, where there is concrete and reliable evidence of the existence of AI
+    systems that fall under the scope of Annex III, but do not pose a significant risk of harm to the
+    health, safety or fundamental rights of natural persons.
   action: adopt Article 97 delegated acts adding or modifying Article 6(3) exception conditions when supported
     by concrete and reliable evidence
   subject_ref: commission
@@ -277,10 +284,13 @@ records:
   - dependency_ref: Article 97 of this Regulation
     resolution: unresolved
     detail: Article 97 supplies the delegated-act procedure and has not yet been semantically reviewed.
+  verified_by: vidibro
 - norm_id: AIA-NORM-A006-P7-DELETE-EXCEPTIONS
   source: A006-P018
   quote: The Commission shall adopt delegated acts in accordance with Article 97 in order to amend paragraph
-    3, second subparagraph, of this Article by deleting any of the conditions laid down therein
+    3, second subparagraph, of this Article by deleting any of the conditions laid down therein, where
+    there is concrete and reliable evidence that this is necessary to maintain the level of protection
+    of health, safety and fundamental rights provided for by this Regulation.
   action: adopt Article 97 delegated acts deleting Article 6(3) exception conditions when necessary to
     maintain the required protection
   subject_ref: commission
@@ -298,6 +308,7 @@ records:
   - dependency_ref: Article 97 of this Regulation
     resolution: unresolved
     detail: Article 97 supplies the delegated-act procedure and has not yet been semantically reviewed.
+  verified_by: vidibro
 - norm_id: AIA-NORM-A006-P8-NO-REDUCED-PROTECTION
   source: A006-P019
   quote: Any amendment to the conditions laid down in paragraph 3, second subparagraph, adopted in accordance

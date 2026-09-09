@@ -39,8 +39,10 @@ records:
   verified_by: vidibro
 - norm_id: AIA-NORM-A008-P2-ENSURE-PRODUCT-COMPLIANCE
   source: A008-P002
-  quote: providers shall be responsible for ensuring that their product is fully compliant with all applicable
-    requirements under applicable Union harmonisation legislation.
+  quote: Where a product contains an AI system, to which the requirements of this Regulation as well as
+    requirements of the Union harmonisation legislation listed in Section A of Annex I apply, providers
+    shall be responsible for ensuring that their product is fully compliant with all applicable requirements
+    under applicable Union harmonisation legislation.
   action: ensure a product containing an AI system fully complies with every applicable requirement under
     the relevant Union harmonisation legislation
   subject_ref: provider
@@ -60,7 +62,9 @@ records:
   verified_by: vidibro
 - norm_id: AIA-NORM-A008-P2-INTEGRATE-COMPLIANCE-PROCESSES
   source: A008-P002
-  quote: providers shall have a choice of integrating, as appropriate, the necessary testing and reporting
+  quote: In ensuring the compliance of high-risk AI systems referred to in paragraph 1 with the requirements
+    set out in this Section, and in order to ensure consistency, avoid duplication and minimise additional
+    burdens, providers shall have a choice of integrating, as appropriate, the necessary testing and reporting
     processes, information and documentation they provide with regard to their product into documentation
     and procedures that already exist and are required under the Union harmonisation legislation listed
     in Section A of Annex I.
@@ -70,6 +74,8 @@ records:
   subject_category: supported_operator
   kind: permission
   conditions:
+  - the product contains an AI system to which both this Regulation and Union harmonisation legislation
+    listed in Annex I Section A apply
   - integration is appropriate for ensuring consistency, avoiding duplication, and minimising additional
     burdens
   implementation_refs:

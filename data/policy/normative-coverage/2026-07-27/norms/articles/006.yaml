@@ -6,10 +6,12 @@ norms:
   subjects:
   - subject_ref: ai_system
     category: other
-  action: classify an AI system as high-risk when both the Annex I product or safety-component condition
-    and the third-party conformity-assessment condition are fulfilled
-  norm_text: that AI system shall be considered to be high-risk where both of the following conditions
-    are fulfilled
+  action: classify an AI system as high-risk, regardless of whether it is placed on the market or put
+    into service independently of the relevant product, when both the Annex I product or safety-component
+    condition and the third-party conformity-assessment condition are fulfilled
+  norm_text: Irrespective of whether an AI system is placed on the market or put into service independently
+    of the products referred to in points (a) and (b), that AI system shall be considered to be high-risk
+    where both of the following conditions are fulfilled
   detection_channels:
   - semantic_legal_effect
   - shall_token
@@ -108,8 +110,8 @@ norms:
     category: other
   action: classify an AI system as a safety component when its failure or malfunction would endanger health
     and safety
-  norm_text: AI systems the failure or malfunctioning of which would endanger health and safety shall
-    qualify as safety components.
+  norm_text: Notwithstanding paragraph 1a, AI systems the failure or malfunctioning of which would endanger
+    health and safety shall qualify as safety components.
   detection_channels:
   - semantic_legal_effect
   - shall_token
@@ -128,6 +130,9 @@ norms:
   - dependency_ref: AIA-NORM-A003-D014-SAFETY-COMPONENT
     resolution: internal_resolved
     detail: Article 3(14) defines safety component.
+  - dependency_ref: AIA-NORM-A006-P1A-NON-SAFETY-ASSISTANCE
+    resolution: internal_resolved
+    detail: This health-and-safety rule overrides the paragraph 1a non-safety exclusion.
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: applicability_question
@@ -547,7 +552,9 @@ norms:
     by concrete and reliable evidence
   norm_text: The Commission is empowered to adopt delegated acts in accordance with Article 97 in order
     to amend paragraph 3, second subparagraph, of this Article by adding new conditions to those laid
-    down therein, or by modifying them
+    down therein, or by modifying them, where there is concrete and reliable evidence of the existence
+    of AI systems that fall under the scope of Annex III, but do not pose a significant risk of harm to
+    the health, safety or fundamental rights of natural persons.
   detection_channels:
   - semantic_legal_effect
   - other_modal
@@ -572,9 +579,9 @@ norms:
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
   review:
-    status: proposed
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
     display_chunks: 1
@@ -589,7 +596,9 @@ norms:
   action: adopt Article 97 delegated acts deleting Article 6(3) exception conditions when necessary to
     maintain the required protection
   norm_text: The Commission shall adopt delegated acts in accordance with Article 97 in order to amend
-    paragraph 3, second subparagraph, of this Article by deleting any of the conditions laid down therein
+    paragraph 3, second subparagraph, of this Article by deleting any of the conditions laid down therein,
+    where there is concrete and reliable evidence that this is necessary to maintain the level of protection
+    of health, safety and fundamental rights provided for by this Regulation.
   detection_channels:
   - semantic_legal_effect
   - shall_token
@@ -614,9 +623,9 @@ norms:
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
   review:
-    status: proposed
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
     display_chunks: 1

@@ -132,50 +132,20 @@ records:
   implementation_refs: *id001
   verification_mode: judged_by_gap_analysis
   verified_by: vidibro
-- norm_id: AIA-NORM-A010-P3-RELEVANT
+- norm_id: AIA-NORM-A010-P3-DATASET-QUALITY
   source: A010-P011
   quote: Training, validation and testing data sets shall be relevant, sufficiently representative, and
     to the best extent possible, free of errors and complete in view of the intended purpose.
-  action: ensure training, validation, and testing datasets are relevant to the intended purpose
+  action: ensure training, validation, and testing datasets are relevant and sufficiently representative,
+    and to the best extent possible free of errors and complete, in view of the intended purpose
   subject_ref: provider
   subject_category: supported_operator
   kind: obligation
-  implementation_refs: *id001
-  verification_mode: judged_by_gap_analysis
-  verified_by: vidibro
-- norm_id: AIA-NORM-A010-P3-REPRESENTATIVE
-  source: A010-P011
-  quote: Training, validation and testing data sets shall be relevant, sufficiently representative, and
-    to the best extent possible, free of errors and complete in view of the intended purpose.
-  action: ensure training, validation, and testing datasets are sufficiently representative for the intended
-    purpose
-  subject_ref: provider
-  subject_category: supported_operator
-  kind: obligation
-  implementation_refs: *id001
-  verification_mode: judged_by_gap_analysis
-  verified_by: vidibro
-- norm_id: AIA-NORM-A010-P3-FREE-OF-ERRORS
-  source: A010-P011
-  quote: Training, validation and testing data sets shall be relevant, sufficiently representative, and
-    to the best extent possible, free of errors and complete in view of the intended purpose.
-  action: keep training, validation, and testing datasets free of errors to the best extent possible for
-    the intended purpose
-  subject_ref: provider
-  subject_category: supported_operator
-  kind: obligation
-  implementation_refs: *id001
-  verification_mode: judged_by_gap_analysis
-  verified_by: vidibro
-- norm_id: AIA-NORM-A010-P3-COMPLETE
-  source: A010-P011
-  quote: Training, validation and testing data sets shall be relevant, sufficiently representative, and
-    to the best extent possible, free of errors and complete in view of the intended purpose.
-  action: keep training, validation, and testing datasets complete to the best extent possible for the
-    intended purpose
-  subject_ref: provider
-  subject_category: supported_operator
-  kind: obligation
+  mandatory_content:
+  - relevant in view of the intended purpose
+  - sufficiently representative in view of the intended purpose
+  - to the best extent possible, free of errors in view of the intended purpose
+  - to the best extent possible, complete in view of the intended purpose
   implementation_refs: *id001
   verification_mode: judged_by_gap_analysis
   verified_by: vidibro
@@ -218,7 +188,9 @@ records:
   verified_by: vidibro
 - norm_id: AIA-NORM-A010-P5-SPECIAL-CATEGORY-PROCESSING
   source: A010-P013
-  quote: the providers of such systems may exceptionally process special categories of personal data,
+  quote: To the extent that it is strictly necessary for the purpose of ensuring bias detection and correction
+    in relation to the high-risk AI systems in accordance with paragraph (2), points (f) and (g) of this
+    Article, the providers of such systems may exceptionally process special categories of personal data,
     subject to appropriate safeguards for the fundamental rights and freedoms of natural persons.
   action: exceptionally process special-category personal data where strictly necessary for bias detection
     and correction in high-risk AI systems
