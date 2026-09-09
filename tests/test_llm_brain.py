@@ -139,9 +139,7 @@ def test_every_answer_type_parses_to_the_type_its_callers_narrow_to(answer_type,
 
 @pytest.mark.parametrize(("answer_type", "raw", "expected"), _ROUND_TRIPS)
 def test_every_answer_type_can_be_asked(answer_type, raw, expected):
-    """The other half, and the half that fails LOUDLY: `_answer_instructions` builds the prompt, so
-    a missing branch raises ValueError out of `decide` — which catches only Unanswerable — and kills
-    the run before the model is ever called. `real_world_testing` did exactly that."""
+    """A missing branch raises ValueError, which `decide` does not catch, killing the run."""
     assert _answer_instructions(answer_type)
 
 
@@ -353,10 +351,7 @@ def _fenced_description(question: Question, description: str) -> tuple[str, str]
 
 
 def test_a_description_cannot_close_the_block_it_sits_in():
-    """A `\"\"\"` in the description used to close the block early, after which a document could
-    append a second Question/description pair the model could not tell from the real one. The
-    enum parsing bounds what an injected answer can be; this is what keeps the model reading ONE
-    question about ONE text, which is the property the rest of the design rests on."""
+    """A description containing the delimiter must not be able to append a second question."""
     prompt, marker = _fenced_description(a_question(), _BREAKOUT)
     assert marker not in _BREAKOUT
     inside = prompt.split(f"<<DESCRIPTION {marker}>>", 1)[1]
@@ -369,9 +364,7 @@ def test_the_marker_differs_between_calls():
 
 
 def test_the_cached_prefix_carries_no_marker():
-    """The marker must stay in the VOLATILE half. A nonce in the stable prefix differs on every
-    call, so the prefix never matches and prompt caching silently stops paying — a cost taken on
-    every run to fence enacted law that no adversary writes."""
+    """A nonce in the stable prefix differs every call, so prompt caching stops paying."""
     question = dataclasses.replace(a_question(), context="Article 3(1) ... verbatim law ...")
     brain = LLMBrain(model="anthropic/claude-opus-4-8")
     first = brain._user_content(question, "doc one")

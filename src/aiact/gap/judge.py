@@ -103,7 +103,6 @@ _SYSTEM_PROMPT = (
     "EXISTS, the pointer is legitimate drafting — the content is in the document even when it is "
     "not among your excerpts, and you must not hold that against the provider. Do not second-guess "
     "either marking from the excerpts alone."
-    # The excerpts, the section list and the resolved references are all the provider's own text.
     "\n\n" + DATA_NOT_INSTRUCTIONS
 )
 

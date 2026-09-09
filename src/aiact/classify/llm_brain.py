@@ -83,7 +83,6 @@ _SYSTEM_PROMPT = (
     "the facts but the legal conclusion is genuinely arguable, give your best reading and lower "
     "your confidence — that is a judgement, and making it is your job. Declining is a useful "
     "answer; a confident wrong one is the worst outcome. "
-    # The description is third-party text, so the turn says so where the model reads instructions.
     + DATA_NOT_INSTRUCTIONS
     + " Reply with a single JSON object and nothing else."
 )
@@ -193,11 +192,7 @@ def _answer_instructions(answer_type: str) -> str:
         )
     if answer_type == "real_world_testing":
         stages = ", ".join(t.value for t in RealWorldTesting)
-        # No UNKNOWN branch, for the reason `deployer_type` has none: `not_stated` IS the record of
-        # silence. And it is the ordinary answer here — a technical file describes a system, not a
-        # testing programme — so the alternative is not offered, because `none` withholds four
-        # obligations and must rest on the text ruling a live trial out rather than never raising
-        # it.
+        # No UNKNOWN branch: `not_stated` IS the record of silence, and the ordinary answer here.
         return (
             f'set "value" to one of [{stages}] — use "not_stated" when the description says '
             f'nothing either way, which is the ordinary case; use "none" ONLY where the text '
@@ -427,8 +422,7 @@ class LLMBrain:
             else ""
         )
         stable = law + guidance
-        # Fenced with a per-call marker, unlike the law above: this is the one part of the prompt
-        # the tool does not author.
+        # Only the description is fenced: the law above is trusted and stays in the cached prefix.
         marker = new_marker(description)
         task = (
             f"Question: {question.text}\n\n"
