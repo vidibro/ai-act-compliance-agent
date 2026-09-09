@@ -36,6 +36,17 @@ merges them sends people to fix the wrong thing.
 EVIDENCE_QUOTE_MAX = 300  # force citing a pinpoint excerpt, not dumping a section
 
 
+def _check_not_raw_text(v: Any) -> Any:
+    """Every node's value is a bool, an enum member, a list of them, or None. A bare `str` is text
+    that reached a verdict unparsed — the enum members are StrEnum, so this tests the exact type."""
+    if type(v) is str:
+        raise ValueError(
+            f"Answer.value must be parsed, not raw text (got {v[:60]!r}). A node's value is a "
+            f"bool, an enum member, a list of them, or None."
+        )
+    return v
+
+
 def _check_quote_length(v: str | None) -> str | None:
     if v is not None and len(v) > EVIDENCE_QUOTE_MAX:
         raise ValueError(
@@ -103,6 +114,7 @@ class Answer(BaseModel):
     # this node — present so the verdict can record it rested on Commission interpretation, not law
 
     _quote_length = field_validator("evidence_quote")(_check_quote_length)
+    _value_parsed = field_validator("value")(_check_not_raw_text)
 
 
 _T = TypeVar("_T")

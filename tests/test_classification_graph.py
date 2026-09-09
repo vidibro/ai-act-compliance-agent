@@ -280,7 +280,7 @@ def test_only_an_explicit_finding_clears_a_system_on_territory():
     exclusion, no area, no ban. Here the unsafe reading is the one that clears a system entirely,
     so it must be stated to be reached: an unanswered or unrecognised value leaves the Regulation
     applying, exactly as `_scope_exclusion` does."""
-    for value in (None, "somewhere else", True):
+    for value in (None, AnnexIIIArea.EMPLOYMENT, True):  # unanswered, wrong type, wrong type
         brain = ScriptedBrain(
             {
                 "is_ai": True,

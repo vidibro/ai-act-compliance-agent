@@ -264,7 +264,39 @@ def _parse_duties(value: object) -> list[TransparencyDuty]:
     return sorted(duties, key=lambda d: (d.paragraph, d.value))
 
 
+VALUE_TYPES: dict[str, type | tuple[type, ...]] = {
+    "bool": bool,
+    "annex_area": AnnexIIIArea,
+    "annex_i_product": AnnexIProduct,
+    "derogation": DerogationCondition,
+    "transparency_duties": list,
+    "territorial_link": TerritorialLink,
+    "gpai_status": GpaiStatus,
+    "systemic_risk": SystemicRisk,
+    "open_source_release": OpenSourceRelease,
+    "prohibited_practice": ProhibitedPractice,
+    "deployer_type": DeployerType,
+    "real_world_testing": RealWorldTesting,
+    "provider_reallocation": ProviderReallocation,
+    "scope_exclusion": ScopeExclusion,
+}
+"""What each answer_type must parse to. Callers narrow by type, so a branch returning the wrong one
+disappears at every call site instead of raising."""
+
+
 def _parse_value(answer_type: str, value: object) -> object:
+    """`_read_value`, checked against VALUE_TYPES. TypeError is a bug here, never a model failure,
+    so it must not be caught as an abstention."""
+    parsed = _read_value(answer_type, value)
+    expected = VALUE_TYPES[answer_type]
+    if parsed is not None and not isinstance(parsed, expected):
+        raise TypeError(
+            f"{answer_type} parsed to {type(parsed).__name__}, expected {expected}"
+        )
+    return parsed
+
+
+def _read_value(answer_type: str, value: object) -> object:
     """Turn the model's raw JSON value into the typed value the schema expects.
 
     `None` here is a REAL ANSWER, not missing data: at the annex_iii node it means 'no Annex III

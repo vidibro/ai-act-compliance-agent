@@ -14,9 +14,11 @@ import types
 from datetime import date
 
 import pytest
+from pydantic import ValidationError
 
 from aiact.classify.graph import QUESTIONS
 from aiact.classify.llm_brain import (
+    VALUE_TYPES,
     LLMBrain,
     Unanswerable,
     _answer_instructions,
@@ -26,21 +28,11 @@ from aiact.classify.llm_brain import (
 from aiact.gap.roles import QUESTIONS as ROLE_QUESTIONS
 from aiact.schemas.enums import (
     AnnexIIIArea,
-    AnnexIProduct,
-    DeployerType,
     DerogationCondition,
-    GpaiStatus,
-    OpenSourceRelease,
-    ProhibitedPractice,
-    ProviderReallocation,
-    RealWorldTesting,
-    ScopeExclusion,
-    SystemicRisk,
-    TerritorialLink,
     TransparencyDuty,
 )
 from aiact.schemas.policy import LegalSource
-from aiact.schemas.question import Question
+from aiact.schemas.question import Answer, Question
 
 
 def a_question(node_id: str = "profiling", answer_type: str = "bool") -> Question:
@@ -114,22 +106,16 @@ def test_known_enum_values_parse():
     )
 
 
-_ROUND_TRIPS = [
-    ("bool", True, bool),
-    ("annex_area", "employment", AnnexIIIArea),
-    ("annex_i_product", next(iter(AnnexIProduct)).value, AnnexIProduct),
-    ("derogation", "narrow_procedural_task", DerogationCondition),
-    ("transparency_duties", [next(iter(TransparencyDuty)).value], list),
-    ("territorial_link", next(iter(TerritorialLink)).value, TerritorialLink),
-    ("gpai_status", next(iter(GpaiStatus)).value, GpaiStatus),
-    ("systemic_risk", next(iter(SystemicRisk)).value, SystemicRisk),
-    ("open_source_release", next(iter(OpenSourceRelease)).value, OpenSourceRelease),
-    ("prohibited_practice", next(iter(ProhibitedPractice)).value, ProhibitedPractice),
-    ("deployer_type", "public_body", DeployerType),
-    ("real_world_testing", next(iter(RealWorldTesting)).value, RealWorldTesting),
-    ("provider_reallocation", next(iter(ProviderReallocation)).value, ProviderReallocation),
-    ("scope_exclusion", next(iter(ScopeExclusion)).value, ScopeExclusion),
-]
+def _a_valid_reply(expected: type | tuple[type, ...]) -> object:
+    """One value a model may legitimately send for an answer_type expecting `expected`."""
+    if expected is bool:
+        return True
+    if expected is list:
+        return [next(iter(TransparencyDuty)).value]
+    return next(iter(expected)).value  # type: ignore[call-overload]
+
+
+_ROUND_TRIPS = [(name, _a_valid_reply(t), t) for name, t in VALUE_TYPES.items()]
 
 
 @pytest.mark.parametrize(("answer_type", "raw", "expected"), _ROUND_TRIPS)
@@ -143,11 +129,39 @@ def test_every_answer_type_can_be_asked(answer_type, raw, expected):
     assert _answer_instructions(answer_type)
 
 
-def test_every_answer_type_is_round_tripped():
-    """The table above must cover every branch, or the next one added escapes the check."""
-    covered = {answer_type for answer_type, _, _ in _ROUND_TRIPS}
+def test_every_answer_type_declares_a_value_type():
     declared = {q.answer_type for q in (*QUESTIONS.values(), *ROLE_QUESTIONS.values())}
-    assert declared <= covered, f"no round-trip case for {declared - covered}"
+    assert declared <= set(VALUE_TYPES), f"no value type for {declared - set(VALUE_TYPES)}"
+
+
+def test_a_branch_returning_the_wrong_type_raises(monkeypatch):
+    """The failure this replaces was silent: callers narrow by type, so a wrong one reads as
+    'not answered' at every call site."""
+    monkeypatch.setitem(VALUE_TYPES, "bool", AnnexIIIArea)
+    with pytest.raises(TypeError):
+        _parse_value("bool", True)
+
+
+def test_a_raw_string_cannot_reach_a_verdict():
+    """The schema backstop, for any path that does not go through _parse_value."""
+    with pytest.raises(ValidationError):
+        Answer(
+            value='set "value" to one of [public_body, ...]',
+            reasoning="",
+            confidence="high",
+            source=a_question().source,
+        )
+
+
+def test_enum_members_are_still_accepted():
+    """The enums are StrEnum, so the backstop must test the exact type, not isinstance."""
+    answer = Answer(
+        value=AnnexIIIArea.EMPLOYMENT,
+        reasoning="",
+        confidence="high",
+        source=a_question().source,
+    )
+    assert answer.value is AnnexIIIArea.EMPLOYMENT
 
 
 @pytest.mark.parametrize(
