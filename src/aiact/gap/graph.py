@@ -34,6 +34,7 @@ from langgraph.graph import END, START, StateGraph
 from pydantic import BaseModel, ConfigDict, Field
 
 from aiact.brain import Brain
+from aiact.document import check_size
 from aiact.gap import roles as role_questions
 from aiact.gap.judge import LLMJudge
 from aiact.gap.rules import ActiveRules, roles_with_rules, select_rules
@@ -269,6 +270,7 @@ def analyse(
 
     `questions` defaults to the context-free constant; pass `gap.roles.load_questions()` to anchor
     the question in the verbatim Articles, which any real review should do."""
+    check_size(document)
     graph = build_graph(spec, judge or LLMJudge(), brain, max_workers, questions)
     with trace_run(f"gap:{system_id}", session_id=system_id):
         out = graph.invoke(

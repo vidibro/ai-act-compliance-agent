@@ -62,6 +62,10 @@ class Settings(BaseSettings):
     # Vector store (Chroma, local). Retrieval indexes the document being CHECKED, not the law.
     chroma_path: str = "./chroma"
 
+    # Largest document either layer will read, in characters. ~12x the longest golden-set document,
+    # so a real Annex IV file clears it. 0 disables the check.
+    max_document_chars: int = 300_000
+
     # Policy / reproducibility.
     act_version_date: date = date(2026, 7, 27)
     policy_spec_path: str = "./data/policy/spec.yaml"
