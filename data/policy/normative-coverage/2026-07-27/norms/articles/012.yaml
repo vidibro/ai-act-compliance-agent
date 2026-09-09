@@ -7,8 +7,8 @@ norms:
   - subject_ref: provider
     category: supported_operator
   action: ensure the high-risk AI system automatically records event logs throughout its lifetime
-  norm_text: shall technically allow for the automatic recording of events (logs) over the lifetime of
-    the system
+  norm_text: High-risk AI systems shall technically allow for the automatic recording of events (logs)
+    over the lifetime of the system.
   detection_channels:
   - semantic_legal_effect
   - shall_token

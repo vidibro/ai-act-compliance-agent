@@ -10,21 +10,12 @@ records:
   - AIA-PO-A17
   verification_mode: reported_not_judged
   verified_by: vidibro
-- norm_id: AIA-NORM-A017-P1-SYSTEMATIC-DOCUMENTATION
+- norm_id: AIA-NORM-A017-P1-SYSTEMATIC-WRITTEN-DOCUMENTATION
   source: A017-P001
   quote: That system shall be documented in a systematic and orderly manner in the form of written policies,
     procedures and instructions
-  action: document the quality-management system systematically and orderly
-  subject_ref: provider
-  subject_category: supported_operator
-  implementation_refs: *id001
-  verification_mode: reported_not_judged
-  verified_by: vidibro
-- norm_id: AIA-NORM-A017-P1-WRITTEN-DOCUMENTATION
-  source: A017-P001
-  quote: That system shall be documented in a systematic and orderly manner in the form of written policies,
-    procedures and instructions
-  action: document the quality-management system through written policies, procedures, and instructions
+  action: document the quality-management system systematically and orderly through written policies,
+    procedures, and instructions
   subject_ref: provider
   subject_category: supported_operator
   implementation_refs: *id001
@@ -116,7 +107,7 @@ records:
   implementation_refs: *id001
   verification_mode: reported_not_judged
   dependencies:
-  - dependency_ref: AIA-NORM-A009-P1-ESTABLISH
+  - dependency_ref: AIA-NORM-A009-P1-ESTABLISH-IMPLEMENT-DOCUMENT-AND-MAINTAIN
     resolution: internal_resolved
     detail: Article 9 supplies the referenced risk-management-system obligation.
   verified_by: vidibro

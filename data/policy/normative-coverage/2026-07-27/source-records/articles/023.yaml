@@ -152,24 +152,11 @@ records:
     the conformity of a high-risk AI system with the requirements set out in Section 2 in a language which
     can be easily understood by them.
   action: provide requesting competent authorities with all information and documentation necessary to
-    demonstrate Section 2 conformity
+    demonstrate Section 2 conformity in a language easily understood by them
   subject_ref: importer
   subject_category: supported_operator
   conditions: &id004
   - a relevant competent authority makes a reasoned request
-  implementation_refs: *id002
-  verification_mode: reported_not_judged
-  verified_by: vidibro
-- norm_id: AIA-NORM-A023-P6-AUTHORITY-LANGUAGE
-  source: A023-P010
-  quote: Importers shall provide the relevant competent authorities, upon a reasoned request, with all
-    the necessary information and documentation, including that referred to in paragraph 5, to demonstrate
-    the conformity of a high-risk AI system with the requirements set out in Section 2 in a language which
-    can be easily understood by them.
-  action: provide the requested conformity material in a language easily understood by the relevant authorities
-  subject_ref: importer
-  subject_category: supported_operator
-  conditions: *id004
   implementation_refs: *id002
   verification_mode: reported_not_judged
   verified_by: vidibro

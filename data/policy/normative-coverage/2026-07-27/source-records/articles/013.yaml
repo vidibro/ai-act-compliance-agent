@@ -28,86 +28,17 @@ records:
     or otherwise that include concise, complete, correct and clear information that is relevant, accessible
     and comprehensible to deployers.
   action: accompany the high-risk AI system with instructions for use in an appropriate digital or other
-    format
+    format containing concise, complete, correct, clear, relevant, accessible, and comprehensible information
   subject_ref: provider
   subject_category: supported_operator
-  implementation_refs: *id001
-  verification_mode: judged_by_gap_analysis
-  verified_by: vidibro
-- norm_id: AIA-NORM-A013-P2-CONCISE
-  source: A013-P002
-  quote: High-risk AI systems shall be accompanied by instructions for use in an appropriate digital format
-    or otherwise that include concise, complete, correct and clear information that is relevant, accessible
-    and comprehensible to deployers.
-  action: ensure the instructions provide concise information
-  subject_ref: provider
-  subject_category: supported_operator
-  implementation_refs: *id001
-  verification_mode: judged_by_gap_analysis
-  verified_by: vidibro
-- norm_id: AIA-NORM-A013-P2-COMPLETE
-  source: A013-P002
-  quote: High-risk AI systems shall be accompanied by instructions for use in an appropriate digital format
-    or otherwise that include concise, complete, correct and clear information that is relevant, accessible
-    and comprehensible to deployers.
-  action: ensure the instructions provide complete information
-  subject_ref: provider
-  subject_category: supported_operator
-  implementation_refs: *id001
-  verification_mode: judged_by_gap_analysis
-  verified_by: vidibro
-- norm_id: AIA-NORM-A013-P2-CORRECT
-  source: A013-P002
-  quote: High-risk AI systems shall be accompanied by instructions for use in an appropriate digital format
-    or otherwise that include concise, complete, correct and clear information that is relevant, accessible
-    and comprehensible to deployers.
-  action: ensure the instructions provide correct information
-  subject_ref: provider
-  subject_category: supported_operator
-  implementation_refs: *id001
-  verification_mode: judged_by_gap_analysis
-  verified_by: vidibro
-- norm_id: AIA-NORM-A013-P2-CLEAR
-  source: A013-P002
-  quote: High-risk AI systems shall be accompanied by instructions for use in an appropriate digital format
-    or otherwise that include concise, complete, correct and clear information that is relevant, accessible
-    and comprehensible to deployers.
-  action: ensure the instructions provide clear information
-  subject_ref: provider
-  subject_category: supported_operator
-  implementation_refs: *id001
-  verification_mode: judged_by_gap_analysis
-  verified_by: vidibro
-- norm_id: AIA-NORM-A013-P2-RELEVANT
-  source: A013-P002
-  quote: High-risk AI systems shall be accompanied by instructions for use in an appropriate digital format
-    or otherwise that include concise, complete, correct and clear information that is relevant, accessible
-    and comprehensible to deployers.
-  action: ensure the instructions provide information relevant to deployers
-  subject_ref: provider
-  subject_category: supported_operator
-  implementation_refs: *id001
-  verification_mode: judged_by_gap_analysis
-  verified_by: vidibro
-- norm_id: AIA-NORM-A013-P2-ACCESSIBLE
-  source: A013-P002
-  quote: High-risk AI systems shall be accompanied by instructions for use in an appropriate digital format
-    or otherwise that include concise, complete, correct and clear information that is relevant, accessible
-    and comprehensible to deployers.
-  action: ensure the instructions provide information accessible to deployers
-  subject_ref: provider
-  subject_category: supported_operator
-  implementation_refs: *id001
-  verification_mode: judged_by_gap_analysis
-  verified_by: vidibro
-- norm_id: AIA-NORM-A013-P2-COMPREHENSIBLE
-  source: A013-P002
-  quote: High-risk AI systems shall be accompanied by instructions for use in an appropriate digital format
-    or otherwise that include concise, complete, correct and clear information that is relevant, accessible
-    and comprehensible to deployers.
-  action: ensure the instructions provide information comprehensible to deployers
-  subject_ref: provider
-  subject_category: supported_operator
+  mandatory_content:
+  - concise information
+  - complete information
+  - correct information
+  - clear information
+  - information relevant to deployers
+  - information accessible to deployers
+  - information comprehensible to deployers
   implementation_refs: *id001
   verification_mode: judged_by_gap_analysis
   verified_by: vidibro
@@ -148,17 +79,20 @@ records:
   implementation_refs: *id003
   verification_mode: judged_by_gap_analysis
   verified_by: vidibro
-- norm_id: AIA-NORM-A013-P3-B-II-EXPECTED-PERFORMANCE
+- norm_id: AIA-NORM-A013-P3-B-II-PERFORMANCE-AND-AFFECTING-CIRCUMSTANCES
   source: A013-P007
   quote: the level of accuracy, including its metrics, robustness and cybersecurity referred to in Article
     15 against which the high-risk AI system has been tested and validated and which can be expected,
     and any known and foreseeable circumstances that may have an impact on that expected level of accuracy,
     robustness and cybersecurity
-  action: include tested, validated, and expected accuracy levels and metrics, robustness, and cybersecurity
-    in the instructions
+  action: include tested, validated, and expected accuracy levels and metrics, robustness and cybersecurity,
+    plus known and foreseeable circumstances that may affect that expected performance
   subject_ref: provider
   subject_category: supported_operator
   qualifier_spans: *id004
+  mandatory_content:
+  - tested, validated, and expected accuracy levels and metrics, robustness, and cybersecurity
+  - known and foreseeable circumstances that may affect that expected performance
   implementation_refs: *id003
   verification_mode: judged_by_gap_analysis
   dependencies:
@@ -166,20 +100,6 @@ records:
     resolution: unresolved
     detail: Article 15 supplies the referenced accuracy, robustness, and cybersecurity requirements and
       has not yet been semantically reviewed.
-  verified_by: vidibro
-- norm_id: AIA-NORM-A013-P3-B-II-AFFECTING-CIRCUMSTANCES
-  source: A013-P007
-  quote: the level of accuracy, including its metrics, robustness and cybersecurity referred to in Article
-    15 against which the high-risk AI system has been tested and validated and which can be expected,
-    and any known and foreseeable circumstances that may have an impact on that expected level of accuracy,
-    robustness and cybersecurity
-  action: include known and foreseeable circumstances that may affect expected accuracy, robustness, or
-    cybersecurity
-  subject_ref: provider
-  subject_category: supported_operator
-  qualifier_spans: *id004
-  implementation_refs: *id003
-  verification_mode: judged_by_gap_analysis
   verified_by: vidibro
 - norm_id: AIA-NORM-A013-P3-B-III-RISK-CIRCUMSTANCES
   source: A013-P008
@@ -266,10 +186,14 @@ records:
   source: A013-P014
   quote: the human oversight measures referred to in Article 14, including the technical measures put
     in place to facilitate the interpretation of the outputs of the high-risk AI systems by the deployers
-  action: include the Article 14 human-oversight measures in the instructions
+  action: include the Article 14 human-oversight measures, including technical measures facilitating deployer
+    interpretation of high-risk AI-system outputs, in the instructions
   subject_ref: provider
   subject_category: supported_operator
   qualifier_spans: *id002
+  mandatory_content:
+  - Article 14 human-oversight measures
+  - technical measures facilitating deployer interpretation of high-risk AI-system outputs
   implementation_refs: *id003
   verification_mode: judged_by_gap_analysis
   dependencies:
@@ -278,51 +202,20 @@ records:
     detail: Article 14 supplies the referenced human-oversight requirements and has not yet been semantically
       reviewed.
   verified_by: vidibro
-- norm_id: AIA-NORM-A013-P3-D-OUTPUT-INTERPRETATION-MEASURES
-  source: A013-P014
-  quote: the human oversight measures referred to in Article 14, including the technical measures put
-    in place to facilitate the interpretation of the outputs of the high-risk AI systems by the deployers
-  action: include technical measures that help deployers interpret high-risk system outputs
-  subject_ref: provider
-  subject_category: supported_operator
-  qualifier_spans: *id002
-  implementation_refs: *id003
-  verification_mode: judged_by_gap_analysis
-  verified_by: vidibro
-- norm_id: AIA-NORM-A013-P3-E-RESOURCES
+- norm_id: AIA-NORM-A013-P3-E-RESOURCES-LIFETIME-AND-MAINTENANCE
   source: A013-P015
   quote: the computational and hardware resources needed, the expected lifetime of the high-risk AI system
     and any necessary maintenance and care measures, including their frequency, to ensure the proper functioning
     of that AI system, including as regards software updates
-  action: include the computational and hardware resources needed by the system
+  action: include the needed computational and hardware resources, expected system lifetime, and necessary
+    maintenance and care measures, their frequency, and software-update needs for proper functioning
   subject_ref: provider
   subject_category: supported_operator
   qualifier_spans: *id002
-  implementation_refs: *id003
-  verification_mode: judged_by_gap_analysis
-  verified_by: vidibro
-- norm_id: AIA-NORM-A013-P3-E-EXPECTED-LIFETIME
-  source: A013-P015
-  quote: the computational and hardware resources needed, the expected lifetime of the high-risk AI system
-    and any necessary maintenance and care measures, including their frequency, to ensure the proper functioning
-    of that AI system, including as regards software updates
-  action: include the expected lifetime of the system
-  subject_ref: provider
-  subject_category: supported_operator
-  qualifier_spans: *id002
-  implementation_refs: *id003
-  verification_mode: judged_by_gap_analysis
-  verified_by: vidibro
-- norm_id: AIA-NORM-A013-P3-E-MAINTENANCE
-  source: A013-P015
-  quote: the computational and hardware resources needed, the expected lifetime of the high-risk AI system
-    and any necessary maintenance and care measures, including their frequency, to ensure the proper functioning
-    of that AI system, including as regards software updates
-  action: include necessary maintenance and care measures, their frequency, and software-update needs
-    for proper functioning
-  subject_ref: provider
-  subject_category: supported_operator
-  qualifier_spans: *id002
+  mandatory_content:
+  - needed computational and hardware resources
+  - expected lifetime of the high-risk AI system
+  - necessary maintenance and care measures, including their frequency and software-update needs
   implementation_refs: *id003
   verification_mode: judged_by_gap_analysis
   verified_by: vidibro

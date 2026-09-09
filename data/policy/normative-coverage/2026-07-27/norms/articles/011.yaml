@@ -193,10 +193,11 @@ norms:
   - subject_ref: provider
     category: supported_operator
   action: use the simplified-documentation option
-  norm_text: may provide the elements of the technical documentation specified in Annex IV in a simplified
-    manner
+  norm_text: SMEs, including start-ups, and SMCs, may provide the elements of the technical documentation
+    specified in Annex IV in a simplified manner.
   detection_channels:
   - semantic_legal_effect
+  - other_modal
   primary_spans:
   - AIA-TEXT-A011-P1
   qualifier_spans: []
@@ -227,8 +228,10 @@ norms:
   subjects:
   - subject_ref: commission
     category: union_institution_or_body
-  action: establish a simplified technical-documentation form
-  norm_text: the Commission shall establish a simplified technical documentation form
+  action: establish a simplified technical-documentation form targeted at the needs of SMEs, start-ups,
+    and SMCs
+  norm_text: To that end, the Commission shall establish a simplified technical documentation form targeted
+    at the needs of SMEs, including start-ups, and SMCs.
   detection_channels:
   - semantic_legal_effect
   - shall_token
@@ -247,9 +250,9 @@ norms:
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
   review:
-    status: proposed
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
     display_chunks: 1
@@ -262,7 +265,8 @@ norms:
   - subject_ref: provider
     category: supported_operator
   action: use the Commission form when taking the simplified-documentation option
-  norm_text: it shall use the form referred to in this paragraph
+  norm_text: Where an SME, including a start-up, or an SMC, opts to provide the information required in
+    Annex IV in a simplified manner, it shall use the form referred to in this paragraph.
   detection_channels:
   - semantic_legal_effect
   - shall_token
@@ -299,7 +303,7 @@ norms:
   - subject_ref: notified_body
     category: notified_or_conformity_body
   action: accept the simplified form for conformity assessment
-  norm_text: Notified bodies shall accept the form
+  norm_text: Notified bodies shall accept the form for the purposes of the conformity assessment.
   detection_channels:
   - semantic_legal_effect
   - shall_token
@@ -318,9 +322,9 @@ norms:
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
   review:
-    status: proposed
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
     display_chunks: 1
@@ -334,8 +338,10 @@ norms:
     category: supported_operator
   action: draw up one technical-documentation set containing both the Article 11(1) information and the
     information required by the applicable Annex I Section A legislation
-  norm_text: a single set of technical documentation shall be drawn up containing all the information
-    set out in paragraph 1, as well as the information required under those legal acts
+  norm_text: Where a high-risk AI system related to a product covered by the Union harmonisation legislation
+    listed in Section A of Annex I is placed on the market or put into service, a single set of technical
+    documentation shall be drawn up containing all the information set out in paragraph 1, as well as
+    the information required under those legal acts
   detection_channels:
   - semantic_legal_effect
   - shall_token
@@ -380,19 +386,30 @@ norms:
   subjects:
   - subject_ref: commission
     category: union_institution_or_body
-  action: adopt delegated acts amending Annex IV
-  norm_text: The Commission is empowered to adopt delegated acts
+  action: adopt Article 97 delegated acts amending Annex IV where necessary in light of technical progress
+    to preserve all information needed to assess Section 2 compliance
+  norm_text: The Commission is empowered to adopt delegated acts in accordance with Article 97 in order
+    to amend Annex IV, where necessary, to ensure that, in light of technical progress, the technical
+    documentation provides all the information necessary to assess the compliance of the system with the
+    requirements set out in this Section.
   detection_channels:
   - semantic_legal_effect
   - other_modal
+  - cross_reference_structure
   primary_spans:
   - AIA-TEXT-A011-P3
   qualifier_spans: []
   effective_date_spans: []
-  conditions: []
+  conditions:
+  - an Annex IV amendment is necessary in light of technical progress to ensure the technical documentation
+    provides all information needed to assess Section 2 compliance
   exceptions: []
   mandatory_content: []
-  dependencies: []
+  dependencies:
+  - dependency_ref: Article 97 of this Regulation
+    resolution: unresolved
+    detail: Article 97 supplies a multi-norm delegated-act procedure that is recorded elsewhere in this
+      inventory.
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -400,9 +417,9 @@ norms:
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
   review:
-    status: proposed
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
     display_chunks: 1

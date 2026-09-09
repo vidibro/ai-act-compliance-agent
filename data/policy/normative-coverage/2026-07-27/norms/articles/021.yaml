@@ -7,48 +7,7 @@ norms:
   - subject_ref: provider
     category: supported_operator
   action: provide a requesting competent authority with all information and documentation necessary to
-    demonstrate Section 2 conformity
-  norm_text: Providers of high-risk AI systems shall, upon a reasoned request by a competent authority,
-    provide that authority all the information and documentation necessary to demonstrate the conformity
-    of the high-risk AI system with the requirements set out in Section 2, in a language which can be
-    easily understood by the authority in one of the official languages of the institutions of the Union
-    as indicated by the Member State concerned.
-  detection_channels:
-  - semantic_legal_effect
-  - shall_token
-  - existing_implementation
-  primary_spans:
-  - AIA-TEXT-A021-P001
-  qualifier_spans: []
-  effective_date_spans: []
-  conditions:
-  - a competent authority makes a reasoned request
-  exceptions: []
-  mandatory_content: []
-  dependencies: []
-  product_scope: in_scope
-  product_scope_reason: ''
-  implementation_mode: compliance_rule
-  implementation_refs:
-  - AIA-PO-A21
-  implementation_reason: ''
-  verification_mode: reported_not_judged
-  review:
-    status: approved
-    extracted_by: semantic-legal-effect-pass
-    verified_by: vidibro
-    review_run_id: normative-coverage-2026-08-28
-    presentation_mode: exact-source-slice
-    display_chunks: 1
-    fully_displayed: true
-    elapsed_seconds: null
-- norm_id: AIA-NORM-A021-P1-AUTHORITY-LANGUAGE
-  act_version_date: '2026-07-27'
-  kind: obligation
-  subjects:
-  - subject_ref: provider
-    category: supported_operator
-  action: provide the requested material in an easily understood official EU-institution language indicated
+    demonstrate Section 2 conformity, in an easily understood official EU-institution language indicated
     by the relevant Member State
   norm_text: Providers of high-risk AI systems shall, upon a reasoned request by a competent authority,
     provide that authority all the information and documentation necessary to demonstrate the conformity

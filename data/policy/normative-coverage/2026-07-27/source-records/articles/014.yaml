@@ -50,29 +50,17 @@ records:
   implementation_refs: *id001
   verification_mode: judged_by_gap_analysis
   verified_by: vidibro
-- norm_id: AIA-NORM-A014-P4-A-UNDERSTAND-CAPABILITIES
+- norm_id: AIA-NORM-A014-P4-A-UNDERSTAND-AND-MONITOR
   source: A014-P007
   quote: to properly understand the relevant capacities and limitations of the high-risk AI system and
     be able to duly monitor its operation, including in view of detecting and addressing anomalies, dysfunctions
     and unexpected performance
-  action: "enable assigned overseers to understand the system\u2019s relevant capabilities and limitations"
+  action: "enable assigned overseers to understand the system\u2019s relevant capabilities and limitations,
+    monitor its operation, and detect and address anomalies, dysfunctions, and unexpected performance"
   subject_ref: provider
   subject_category: supported_operator
   qualifier_spans: &id002
   - A014-P006
-  implementation_refs: *id001
-  verification_mode: judged_by_gap_analysis
-  verified_by: vidibro
-- norm_id: AIA-NORM-A014-P4-A-MONITOR-OPERATION
-  source: A014-P007
-  quote: to properly understand the relevant capacities and limitations of the high-risk AI system and
-    be able to duly monitor its operation, including in view of detecting and addressing anomalies, dysfunctions
-    and unexpected performance
-  action: enable assigned overseers to monitor operation and detect and address anomalies, dysfunctions,
-    and unexpected performance
-  subject_ref: provider
-  subject_category: supported_operator
-  qualifier_spans: *id002
   implementation_refs: *id001
   verification_mode: judged_by_gap_analysis
   verified_by: vidibro
@@ -101,45 +89,24 @@ records:
   implementation_refs: *id001
   verification_mode: judged_by_gap_analysis
   verified_by: vidibro
-- norm_id: AIA-NORM-A014-P4-D-DECLINE-USE
+- norm_id: AIA-NORM-A014-P4-D-DECLINE-USE-OR-CONTROL-OUTPUT
   source: A014-P010
   quote: to decide, in any particular situation, not to use the high-risk AI system or to otherwise disregard,
     override or reverse the output of the high-risk AI system
-  action: enable assigned overseers to decide not to use the system in a particular situation
+  action: enable assigned overseers to decide not to use the system in a particular situation or otherwise
+    disregard, override, or reverse its output
   subject_ref: provider
   subject_category: supported_operator
   qualifier_spans: *id002
   implementation_refs: *id001
   verification_mode: judged_by_gap_analysis
   verified_by: vidibro
-- norm_id: AIA-NORM-A014-P4-D-CONTROL-OUTPUT
-  source: A014-P010
-  quote: to decide, in any particular situation, not to use the high-risk AI system or to otherwise disregard,
-    override or reverse the output of the high-risk AI system
-  action: enable assigned overseers to disregard, override, or reverse system outputs
-  subject_ref: provider
-  subject_category: supported_operator
-  qualifier_spans: *id002
-  implementation_refs: *id001
-  verification_mode: judged_by_gap_analysis
-  verified_by: vidibro
-- norm_id: AIA-NORM-A014-P4-E-INTERVENE
+- norm_id: AIA-NORM-A014-P4-E-INTERVENE-OR-SAFE-STOP
   source: A014-P011
   quote: "to intervene in the operation of the high-risk AI system or interrupt the system through a \u2018\
     stop\u2019 button or a similar procedure that allows the system to come to a halt in a safe state"
-  action: enable assigned overseers to intervene in system operation
-  subject_ref: provider
-  subject_category: supported_operator
-  qualifier_spans: *id002
-  implementation_refs: *id001
-  verification_mode: judged_by_gap_analysis
-  verified_by: vidibro
-- norm_id: AIA-NORM-A014-P4-E-SAFE-STOP
-  source: A014-P011
-  quote: "to intervene in the operation of the high-risk AI system or interrupt the system through a \u2018\
-    stop\u2019 button or a similar procedure that allows the system to come to a halt in a safe state"
-  action: enable assigned overseers to interrupt the system through a stop control or similar procedure
-    that brings it to a safe halt
+  action: enable assigned overseers to intervene in system operation or interrupt it through a stop control
+    or similar procedure that brings it to a safe halt
   subject_ref: provider
   subject_category: supported_operator
   qualifier_spans: *id002
@@ -148,9 +115,11 @@ records:
   verified_by: vidibro
 - norm_id: AIA-NORM-A014-P5-TWO-PERSON-VERIFICATION
   source: A014-P012
-  quote: no action or decision is taken by the deployer on the basis of the identification resulting from
-    the system unless that identification has been separately verified and confirmed by at least two natural
-    persons with the necessary competence, training and authority
+  quote: For high-risk AI systems referred to in point 1(a) of Annex III, the measures referred to in
+    paragraph 3 of this Article shall be such as to ensure that, in addition, no action or decision is
+    taken by the deployer on the basis of the identification resulting from the system unless that identification
+    has been separately verified and confirmed by at least two natural persons with the necessary competence,
+    training and authority.
   action: ensure no deployer action or decision relies on a system identification unless at least two
     competent, trained, and authorised natural persons separately verify and confirm it
   subject_ref: provider

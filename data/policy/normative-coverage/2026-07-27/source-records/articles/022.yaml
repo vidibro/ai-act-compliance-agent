@@ -40,22 +40,11 @@ records:
   quote: It shall provide a copy of the mandate to the market surveillance authorities upon request, in
     one of the official languages of the institutions of the Union, as indicated by the competent authority.
   action: provide a copy of the mandate to market-surveillance authorities on request
+    in an official EU-institution language indicated by the competent authority
   subject_ref: authorised_representative
   subject_category: supported_operator
   conditions: &id003
   - a market-surveillance authority requests a copy of the mandate
-  implementation_refs: *id002
-  verification_mode: reported_not_judged
-  verified_by: vidibro
-- norm_id: AIA-NORM-A022-P3-MANDATE-LANGUAGE
-  source: A022-P003
-  quote: It shall provide a copy of the mandate to the market surveillance authorities upon request, in
-    one of the official languages of the institutions of the Union, as indicated by the competent authority.
-  action: provide the requested mandate copy in an official EU-institution language indicated by the competent
-    authority
-  subject_ref: authorised_representative
-  subject_category: supported_operator
-  conditions: *id003
   implementation_refs: *id002
   verification_mode: reported_not_judged
   verified_by: vidibro
