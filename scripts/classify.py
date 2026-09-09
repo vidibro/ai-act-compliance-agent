@@ -29,6 +29,7 @@ from aiact.eval.classification_score import score_case, score_run  # noqa: E402
 from aiact.eval.node_score import score_node_run  # noqa: E402
 from aiact.gap import roles as role_questions  # noqa: E402
 from aiact.schemas.enums import AnnexIIIArea, DerogationCondition  # noqa: E402
+from aiact.scrubbing import install_excepthook  # noqa: E402
 from aiact.tracing import enable_tracing  # noqa: E402
 from aiact.usage import PRICES_AS_OF  # noqa: E402
 
@@ -196,6 +197,7 @@ def main() -> None:
     from dotenv import load_dotenv
 
     load_dotenv()
+    install_excepthook()  # scrub the keys just loaded out of any traceback
 
     ap = argparse.ArgumentParser(description="Classify a use case through the M3 graph.")
     g = ap.add_mutually_exclusive_group(required=True)
