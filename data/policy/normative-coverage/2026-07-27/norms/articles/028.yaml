@@ -189,9 +189,10 @@ norms:
   subjects:
   - subject_ref: notifying_authority
     category: public_authority
-  action: refrain from offering or providing conformity-assessment-body activities
+  action: refrain from offering or providing conformity-assessment-body activities or consultancy services
+    on a commercial or competitive basis
   norm_text: Notifying authorities shall offer or provide neither any activities that conformity assessment
-    bodies perform
+    bodies perform, nor any consultancy services on a commercial or competitive basis.
   detection_channels:
   - semantic_legal_effect
   - shall_token
@@ -201,40 +202,9 @@ norms:
   effective_date_spans: []
   conditions: []
   exceptions: []
-  mandatory_content: []
-  dependencies: []
-  product_scope: outside_supported_actor
-  product_scope_reason: The present product does not report compliance for this addressee.
-  implementation_mode: none_required
-  implementation_refs: []
-  implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_reported
-  review:
-    status: proposed
-    extracted_by: semantic-legal-effect-pass
-    verified_by: ''
-    review_run_id: normative-coverage-2026-08-28
-    presentation_mode: exact-source-slice
-    display_chunks: 1
-    fully_displayed: true
-    elapsed_seconds: null
-- norm_id: AIA-NORM-A028-P5-NO-CONSULTANCY
-  act_version_date: '2026-07-27'
-  kind: prohibition
-  subjects:
-  - subject_ref: notifying_authority
-    category: public_authority
-  action: refrain from commercial or competitive consultancy services
-  norm_text: nor any consultancy services on a commercial or competitive basis
-  detection_channels:
-  - semantic_legal_effect
-  primary_spans:
-  - AIA-TEXT-A028-P005
-  qualifier_spans: []
-  effective_date_spans: []
-  conditions: []
-  exceptions: []
-  mandatory_content: []
+  mandatory_content:
+  - do not offer or provide activities performed by conformity-assessment bodies
+  - do not offer or provide consultancy services on a commercial or competitive basis
   dependencies: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -391,9 +361,9 @@ norms:
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
   review:
-    status: proposed
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
     display_chunks: 1

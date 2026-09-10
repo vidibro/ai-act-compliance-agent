@@ -210,8 +210,10 @@ norms:
   - AIA-TEXT-A046-P003
   qualifier_spans: []
   effective_date_spans: []
-  conditions: []
-  exceptions: []
+  conditions:
+  - the market-surveillance authority has issued an authorisation under paragraph 1 or 2
+  exceptions:
+  - sensitive operational data relating to law-enforcement activities
   mandatory_content: []
   dependencies: []
   product_scope: outside_supported_actor
@@ -285,7 +287,9 @@ norms:
   - AIA-TEXT-A046-P004
   qualifier_spans: []
   effective_date_spans: []
-  conditions: []
+  conditions:
+  - neither a Member State nor the Commission raises an objection within 15 calendar days after receiving
+    the paragraph 3 information
   exceptions: []
   mandatory_content: []
   dependencies: []
@@ -319,7 +323,14 @@ norms:
   - AIA-TEXT-A046-P005
   qualifier_spans: []
   effective_date_spans: []
-  conditions: []
+  conditions:
+  - operator: any_of
+    operands:
+    - within 15 calendar days after the paragraph 3 notification, a Member State objects to an authorisation
+      issued by another Member State's market-surveillance authority
+    - the Commission considers the authorisation contrary to Union law
+    - the Commission considers unfounded the Member State's conclusion that the system complies with Section
+      2
   exceptions: []
   mandatory_content: []
   dependencies: []
@@ -353,7 +364,8 @@ norms:
   - AIA-TEXT-A046-P005
   qualifier_spans: []
   effective_date_spans: []
-  conditions: []
+  conditions:
+  - the Commission conducts consultations under paragraph 5 about the authorisation
   exceptions: []
   mandatory_content: []
   dependencies: []
@@ -387,7 +399,8 @@ norms:
   - AIA-TEXT-A046-P005
   qualifier_spans: []
   effective_date_spans: []
-  conditions: []
+  conditions:
+  - the Commission has considered the consultation and the concerned operators' views
   exceptions: []
   mandatory_content: []
   dependencies: []
@@ -422,7 +435,8 @@ norms:
   - AIA-TEXT-A046-P005
   qualifier_spans: []
   effective_date_spans: []
-  conditions: []
+  conditions:
+  - the Commission has decided whether the authorisation is justified
   exceptions: []
   mandatory_content: []
   dependencies: []
@@ -457,7 +471,8 @@ norms:
   - AIA-TEXT-A046-P006
   qualifier_spans: []
   effective_date_spans: []
-  conditions: []
+  conditions:
+  - the Commission considers the authorisation unjustified
   exceptions: []
   mandatory_content: []
   dependencies: []

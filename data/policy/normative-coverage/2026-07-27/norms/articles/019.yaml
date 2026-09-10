@@ -52,7 +52,8 @@ norms:
   action: "retain controlled logs for a period appropriate to the system\u2019s intended purpose and for\
     \ at least six months"
   norm_text: the logs shall be kept for a period appropriate to the intended purpose of the high-risk
-    AI system, of at least six months
+    AI system, of at least six months, unless provided otherwise in the applicable Union or national law,
+    in particular in Union law on the protection of personal data
   detection_channels:
   - semantic_legal_effect
   - shall_token
@@ -74,48 +75,6 @@ norms:
   - AIA-PO-A19
   implementation_reason: ''
   verification_mode: reported_not_judged
-  review:
-    status: approved
-    extracted_by: semantic-legal-effect-pass
-    verified_by: vidibro
-    review_run_id: normative-coverage-2026-08-28
-    presentation_mode: exact-source-slice
-    display_chunks: 1
-    fully_displayed: true
-    elapsed_seconds: null
-- norm_id: AIA-NORM-A019-P1-OTHER-LAW-PERIOD
-  act_version_date: '2026-07-27'
-  kind: applicability
-  subjects:
-  - subject_ref: provider
-    category: supported_operator
-  action: apply a different log-retention period where applicable Union or national law provides one
-  norm_text: unless provided otherwise in the applicable Union or national law, in particular in Union
-    law on the protection of personal data
-  detection_channels:
-  - semantic_legal_effect
-  - deeming_or_consequence
-  - cross_reference_structure
-  - existing_implementation
-  primary_spans:
-  - AIA-TEXT-A019-P001
-  qualifier_spans: []
-  effective_date_spans: []
-  conditions:
-  - applicable Union or national law provides a different retention period
-  exceptions: []
-  mandatory_content: []
-  dependencies:
-  - dependency_ref: AIA-NORM-A019-P1-RETENTION-PERIOD
-    resolution: internal_resolved
-    detail: The external-law period overrides the ordinary purpose-appropriate six-month-minimum rule.
-  product_scope: in_scope
-  product_scope_reason: ''
-  implementation_mode: compliance_rule
-  implementation_refs:
-  - AIA-PO-A19
-  implementation_reason: ''
-  verification_mode: reported_conditionally
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass

@@ -62,8 +62,8 @@ records:
     listed in paragraphs 1 and 2 of this Article, as well as to supplement benchmarks and indicators in
     light of evolving technological developments, such as algorithmic improvements or increased hardware
     efficiency, when necessary, for these thresholds to reflect the state of the art.
-  action: adopt Article 97 delegated acts amending Article 51 thresholds when necessary to reflect the
-    state of the art
+  action: adopt Article 97 delegated acts amending Article 51 thresholds and supplementing benchmarks
+    and indicators when necessary for the thresholds to reflect the state of the art
   subject_ref: commission
   subject_category: union_institution_or_body
   conditions:
@@ -74,21 +74,8 @@ records:
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
-- norm_id: AIA-NORM-A051-P3-SUPPLEMENT-BENCHMARKS
-  source: A051-P005
-  quote: The Commission shall adopt delegated acts in accordance with Article 97 to amend the thresholds
-    listed in paragraphs 1 and 2 of this Article, as well as to supplement benchmarks and indicators in
-    light of evolving technological developments, such as algorithmic improvements or increased hardware
-    efficiency, when necessary, for these thresholds to reflect the state of the art.
-  action: adopt Article 97 delegated acts supplementing benchmarks and indicators when necessary to reflect
-    the state of the art
-  subject_ref: commission
-  subject_category: union_institution_or_body
-  conditions:
-  - supplementation is necessary in light of technological developments such as algorithmic improvements
-    or increased hardware efficiency
-  product_scope: outside_supported_actor
-  product_scope_reason: The present product does not report compliance for this addressee.
-  implementation_mode: none_required
-  implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_reported
+  mandatory_content:
+  - amend the thresholds listed in Article 51(1) and (2)
+  - supplement benchmarks and indicators in light of evolving technological developments, such as algorithmic
+    improvements or increased hardware efficiency
+  verified_by: vidibro

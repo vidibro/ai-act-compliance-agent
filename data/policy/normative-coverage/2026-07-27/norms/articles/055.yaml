@@ -6,9 +6,11 @@ norms:
   subjects:
   - subject_ref: provider
     category: supported_operator
-  action: evaluate the model using standardised state-of-the-art protocols and tools
+  action: evaluate the model using standardised state-of-the-art protocols and tools, including conducting
+    and documenting adversarial testing to identify and mitigate systemic risks
   norm_text: perform model evaluation in accordance with standardised protocols and tools reflecting the
-    state of the art
+    state of the art, including conducting and documenting adversarial testing of the model with a view
+    to identifying and mitigating systemic risks
   detection_channels:
   - semantic_legal_effect
   - cross_reference_structure
@@ -20,7 +22,9 @@ norms:
   effective_date_spans: []
   conditions: []
   exceptions: []
-  mandatory_content: []
+  mandatory_content:
+  - conduct adversarial testing of the model with a view to identifying and mitigating systemic risks
+  - document adversarial testing of the model with a view to identifying and mitigating systemic risks
   dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -38,86 +42,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
-- norm_id: AIA-NORM-A055-P1-A-CONDUCT-ADVERSARIAL-TESTING
+- norm_id: AIA-NORM-A055-P1-B-ASSESS-AND-MITIGATE-SYSTEMIC-RISKS
   act_version_date: '2026-07-27'
   kind: obligation
   subjects:
   - subject_ref: provider
     category: supported_operator
-  action: conduct adversarial testing aimed at identifying and mitigating systemic risks
-  norm_text: including conducting and documenting adversarial testing of the model with a view to identifying
-    and mitigating systemic risks
-  detection_channels:
-  - semantic_legal_effect
-  - existing_implementation
-  primary_spans:
-  - AIA-TEXT-A055-P002
-  qualifier_spans: []
-  effective_date_spans: []
-  conditions: []
-  exceptions: []
-  mandatory_content: []
-  dependencies: []
-  product_scope: in_scope
-  product_scope_reason: ''
-  implementation_mode: compliance_rule
-  implementation_refs:
-  - AIA-GP-A55-1A
-  implementation_reason: ''
-  verification_mode: reported_not_judged
-  review:
-    status: approved
-    extracted_by: semantic-legal-effect-pass
-    verified_by: vidibro
-    review_run_id: normative-coverage-2026-08-28
-    presentation_mode: exact-source-slice
-    display_chunks: 1
-    fully_displayed: true
-    elapsed_seconds: null
-- norm_id: AIA-NORM-A055-P1-A-DOCUMENT-ADVERSARIAL-TESTING
-  act_version_date: '2026-07-27'
-  kind: obligation
-  subjects:
-  - subject_ref: provider
-    category: supported_operator
-  action: document adversarial testing aimed at identifying and mitigating systemic risks
-  norm_text: including conducting and documenting adversarial testing of the model with a view to identifying
-    and mitigating systemic risks
-  detection_channels:
-  - semantic_legal_effect
-  - existing_implementation
-  primary_spans:
-  - AIA-TEXT-A055-P002
-  qualifier_spans: []
-  effective_date_spans: []
-  conditions: []
-  exceptions: []
-  mandatory_content: []
-  dependencies: []
-  product_scope: in_scope
-  product_scope_reason: ''
-  implementation_mode: compliance_rule
-  implementation_refs:
-  - AIA-GP-A55-1A
-  implementation_reason: ''
-  verification_mode: reported_not_judged
-  review:
-    status: approved
-    extracted_by: semantic-legal-effect-pass
-    verified_by: vidibro
-    review_run_id: normative-coverage-2026-08-28
-    presentation_mode: exact-source-slice
-    display_chunks: 1
-    fully_displayed: true
-    elapsed_seconds: null
-- norm_id: AIA-NORM-A055-P1-B-ASSESS-SYSTEMIC-RISKS
-  act_version_date: '2026-07-27'
-  kind: obligation
-  subjects:
-  - subject_ref: provider
-    category: supported_operator
-  action: assess possible Union-level systemic risks and their sources across development, market placement,
-    and use
+  action: assess and mitigate possible Union-level systemic risks and their sources across development,
+    market placement, and use
   norm_text: assess and mitigate possible systemic risks at Union level, including their sources, that
     may stem from the development, the placing on the market, or the use of general-purpose AI models
     with systemic risk
@@ -151,52 +83,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
-- norm_id: AIA-NORM-A055-P1-B-MITIGATE-SYSTEMIC-RISKS
+- norm_id: AIA-NORM-A055-P1-C-TRACK-DOCUMENT-AND-REPORT-INCIDENTS
   act_version_date: '2026-07-27'
   kind: obligation
   subjects:
   - subject_ref: provider
     category: supported_operator
-  action: mitigate possible Union-level systemic risks and their sources across development, market placement,
-    and use
-  norm_text: assess and mitigate possible systemic risks at Union level, including their sources, that
-    may stem from the development, the placing on the market, or the use of general-purpose AI models
-    with systemic risk
-  detection_channels:
-  - semantic_legal_effect
-  - other_modal
-  - existing_implementation
-  primary_spans:
-  - AIA-TEXT-A055-P003
-  qualifier_spans: []
-  effective_date_spans: []
-  conditions: []
-  exceptions: []
-  mandatory_content: []
-  dependencies: []
-  product_scope: in_scope
-  product_scope_reason: ''
-  implementation_mode: compliance_rule
-  implementation_refs:
-  - AIA-GP-A55-1B
-  implementation_reason: ''
-  verification_mode: reported_not_judged
-  review:
-    status: approved
-    extracted_by: semantic-legal-effect-pass
-    verified_by: vidibro
-    review_run_id: normative-coverage-2026-08-28
-    presentation_mode: exact-source-slice
-    display_chunks: 1
-    fully_displayed: true
-    elapsed_seconds: null
-- norm_id: AIA-NORM-A055-P1-C-TRACK-INCIDENTS
-  act_version_date: '2026-07-27'
-  kind: obligation
-  subjects:
-  - subject_ref: provider
-    category: supported_operator
-  action: keep track of relevant serious-incident information and possible corrective measures
+  action: keep track of and document relevant serious-incident information and possible corrective measures,
+    and report them without undue delay to the AI Office and, as appropriate, national competent authorities
   norm_text: keep track of, document, and report, without undue delay, to the AI Office and, as appropriate,
     to national competent authorities, relevant information about serious incidents and possible corrective
     measures to address them
@@ -208,81 +102,6 @@ norms:
   - AIA-TEXT-A055-P004
   qualifier_spans:
   - AIA-TEXT-A055-P001
-  effective_date_spans: []
-  conditions: []
-  exceptions: []
-  mandatory_content: []
-  dependencies: []
-  product_scope: in_scope
-  product_scope_reason: ''
-  implementation_mode: compliance_rule
-  implementation_refs:
-  - AIA-GP-A55-1C
-  implementation_reason: ''
-  verification_mode: reported_not_judged
-  review:
-    status: approved
-    extracted_by: semantic-legal-effect-pass
-    verified_by: vidibro
-    review_run_id: normative-coverage-2026-08-28
-    presentation_mode: exact-source-slice
-    display_chunks: 1
-    fully_displayed: true
-    elapsed_seconds: null
-- norm_id: AIA-NORM-A055-P1-C-DOCUMENT-INCIDENTS
-  act_version_date: '2026-07-27'
-  kind: obligation
-  subjects:
-  - subject_ref: provider
-    category: supported_operator
-  action: document relevant serious incidents and possible corrective measures
-  norm_text: keep track of, document, and report, without undue delay, to the AI Office and, as appropriate,
-    to national competent authorities, relevant information about serious incidents and possible corrective
-    measures to address them
-  detection_channels:
-  - semantic_legal_effect
-  - existing_implementation
-  primary_spans:
-  - AIA-TEXT-A055-P004
-  qualifier_spans: []
-  effective_date_spans: []
-  conditions: []
-  exceptions: []
-  mandatory_content: []
-  dependencies: []
-  product_scope: in_scope
-  product_scope_reason: ''
-  implementation_mode: compliance_rule
-  implementation_refs:
-  - AIA-GP-A55-1C
-  implementation_reason: ''
-  verification_mode: reported_not_judged
-  review:
-    status: approved
-    extracted_by: semantic-legal-effect-pass
-    verified_by: vidibro
-    review_run_id: normative-coverage-2026-08-28
-    presentation_mode: exact-source-slice
-    display_chunks: 1
-    fully_displayed: true
-    elapsed_seconds: null
-- norm_id: AIA-NORM-A055-P1-C-REPORT-INCIDENTS
-  act_version_date: '2026-07-27'
-  kind: obligation
-  subjects:
-  - subject_ref: provider
-    category: supported_operator
-  action: report serious-incident information and possible corrective measures without undue delay to
-    the AI Office and appropriate national authorities
-  norm_text: keep track of, document, and report, without undue delay, to the AI Office and, as appropriate,
-    to national competent authorities, relevant information about serious incidents and possible corrective
-    measures to address them
-  detection_channels:
-  - semantic_legal_effect
-  - existing_implementation
-  primary_spans:
-  - AIA-TEXT-A055-P004
-  qualifier_spans: []
   effective_date_spans: []
   conditions: []
   exceptions: []
@@ -306,13 +125,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
-- norm_id: AIA-NORM-A055-P1-D-MODEL-CYBERSECURITY
+- norm_id: AIA-NORM-A055-P1-D-MODEL-AND-INFRASTRUCTURE-CYBERSECURITY
   act_version_date: '2026-07-27'
   kind: obligation
   subjects:
   - subject_ref: provider
     category: supported_operator
-  action: ensure adequate cybersecurity protection for the systemic-risk general-purpose AI model
+  action: ensure adequate cybersecurity protection for the systemic-risk general-purpose AI model and
+    its physical infrastructure
   norm_text: ensure an adequate level of cybersecurity protection for the general-purpose AI model with
     systemic risk and the physical infrastructure of the model.
   detection_channels:
@@ -323,42 +143,6 @@ norms:
   - AIA-TEXT-A055-P005
   qualifier_spans:
   - AIA-TEXT-A055-P001
-  effective_date_spans: []
-  conditions: []
-  exceptions: []
-  mandatory_content: []
-  dependencies: []
-  product_scope: in_scope
-  product_scope_reason: ''
-  implementation_mode: compliance_rule
-  implementation_refs:
-  - AIA-GP-A55-1D
-  implementation_reason: ''
-  verification_mode: reported_not_judged
-  review:
-    status: approved
-    extracted_by: semantic-legal-effect-pass
-    verified_by: vidibro
-    review_run_id: normative-coverage-2026-08-28
-    presentation_mode: exact-source-slice
-    display_chunks: 1
-    fully_displayed: true
-    elapsed_seconds: null
-- norm_id: AIA-NORM-A055-P1-D-INFRASTRUCTURE-CYBERSECURITY
-  act_version_date: '2026-07-27'
-  kind: obligation
-  subjects:
-  - subject_ref: provider
-    category: supported_operator
-  action: ensure adequate cybersecurity protection for the model's physical infrastructure
-  norm_text: ensure an adequate level of cybersecurity protection for the general-purpose AI model with
-    systemic risk and the physical infrastructure of the model.
-  detection_channels:
-  - semantic_legal_effect
-  - existing_implementation
-  primary_spans:
-  - AIA-TEXT-A055-P005
-  qualifier_spans: []
   effective_date_spans: []
   conditions: []
   exceptions: []

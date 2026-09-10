@@ -607,8 +607,10 @@ records:
   verified_by: vidibro
 - norm_id: AIA-NORM-A005-P4-NOTIFICATION-CONTENT
   source: A005-P030
-  quote: The notification shall, as a minimum, contain the information specified under paragraph 6
-  action: include at least the information specified in Article 5(6) in each use notification
+  quote: The notification shall, as a minimum, contain the information specified under paragraph 6 and
+    shall not include sensitive operational data.
+  action: include at least the Article 5(6) information in each use notification while excluding sensitive
+    operational data
   subject_ref: law_enforcement_authority
   subject_category: public_authority
   conditions:
@@ -621,18 +623,9 @@ records:
     resolution: unresolved
     detail: Article 5(6) supplies the minimum notification information and has not yet been semantically
       reviewed.
-  verified_by: vidibro
-- norm_id: AIA-NORM-A005-P4-EXCLUDE-SENSITIVE-DATA
-  source: A005-P030
-  quote: shall not include sensitive operational data.
-  action: exclude sensitive operational data from each use notification
-  subject_ref: law_enforcement_authority
-  subject_category: public_authority
-  conditions:
-  - a use of a real-time remote biometric identification system in publicly accessible spaces for
-    law enforcement purposes is notified under Article 5(4)
-  kind: prohibition
-  verification_mode: reported_not_judged
+  mandatory_content:
+  - include at least the information specified in Article 5(6)
+  - exclude sensitive operational data
   verified_by: vidibro
 - norm_id: AIA-NORM-A005-P5-AUTHORISE-USE
   source: A005-P031
@@ -732,32 +725,24 @@ records:
 - norm_id: AIA-NORM-A005-P6-PROVIDE-TEMPLATE
   source: A005-P032
   quote: the Commission shall provide Member States and national market surveillance and data protection
-    authorities with a template
+    authorities with a template, including information on the number of the decisions taken by competent
+    judicial authorities or an independent administrative authority whose decision is binding upon requests
+    for authorisations in accordance with paragraph 3 and their result.
   action: provide Member States and national market-surveillance and data-protection authorities with
-    an annual-reporting template
+    an annual-reporting template that includes the number and outcomes of decisions on Article 5(3)
+    authorisation requests
   subject_ref: commission
   subject_category: union_institution_or_body
   kind: obligation
+  mandatory_content:
+  - the number of decisions on Article 5(3) authorisation requests
+  - the outcomes of those decisions
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for the Commission.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
-- norm_id: AIA-NORM-A005-P6-TEMPLATE-CONTENT
-  source: A005-P032
-  quote: including information on the number of the decisions taken by competent judicial authorities
-    or an independent administrative authority whose decision is binding upon requests for authorisations
-    in accordance with paragraph 3 and their result.
-  action: include in the reporting template the number and outcomes of decisions on Article 5(3) authorisation
-    requests
-  subject_ref: commission
-  subject_category: union_institution_or_body
-  kind: obligation
-  product_scope: outside_supported_actor
-  product_scope_reason: The present product does not report compliance for the Commission.
-  implementation_mode: none_required
-  implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_reported
+  verified_by: vidibro
 - norm_id: AIA-NORM-A005-P7-PUBLISH-ANNUAL-REPORTS
   source: A005-P033
   quote: The Commission shall publish annual reports on the use of real-time remote biometric identification

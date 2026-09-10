@@ -2,45 +2,28 @@ records:
 - norm_id: AIA-NORM-A055-P1-A-EVALUATE-MODEL
   source: A055-P002
   quote: perform model evaluation in accordance with standardised protocols and tools reflecting the state
-    of the art
-  action: evaluate the model using standardised state-of-the-art protocols and tools
+    of the art, including conducting and documenting adversarial testing of the model with a view to identifying
+    and mitigating systemic risks
+  action: evaluate the model using standardised state-of-the-art protocols and tools, including conducting
+    and documenting adversarial testing to identify and mitigate systemic risks
   subject_ref: provider
   subject_category: supported_operator
   qualifier_spans:
   - A055-P001
+  mandatory_content:
+  - conduct adversarial testing of the model with a view to identifying and mitigating systemic risks
+  - document adversarial testing of the model with a view to identifying and mitigating systemic risks
   implementation_refs:
   - AIA-GP-A55-1A
   verification_mode: reported_not_judged
   verified_by: vidibro
-- norm_id: AIA-NORM-A055-P1-A-CONDUCT-ADVERSARIAL-TESTING
-  source: A055-P002
-  quote: including conducting and documenting adversarial testing of the model with a view to identifying
-    and mitigating systemic risks
-  action: conduct adversarial testing aimed at identifying and mitigating systemic risks
-  subject_ref: provider
-  subject_category: supported_operator
-  implementation_refs:
-  - AIA-GP-A55-1A
-  verification_mode: reported_not_judged
-  verified_by: vidibro
-- norm_id: AIA-NORM-A055-P1-A-DOCUMENT-ADVERSARIAL-TESTING
-  source: A055-P002
-  quote: including conducting and documenting adversarial testing of the model with a view to identifying
-    and mitigating systemic risks
-  action: document adversarial testing aimed at identifying and mitigating systemic risks
-  subject_ref: provider
-  subject_category: supported_operator
-  implementation_refs:
-  - AIA-GP-A55-1A
-  verification_mode: reported_not_judged
-  verified_by: vidibro
-- norm_id: AIA-NORM-A055-P1-B-ASSESS-SYSTEMIC-RISKS
+- norm_id: AIA-NORM-A055-P1-B-ASSESS-AND-MITIGATE-SYSTEMIC-RISKS
   source: A055-P003
   quote: assess and mitigate possible systemic risks at Union level, including their sources, that may
     stem from the development, the placing on the market, or the use of general-purpose AI models with
     systemic risk
-  action: assess possible Union-level systemic risks and their sources across development, market placement,
-    and use
+  action: assess and mitigate possible Union-level systemic risks and their sources across development,
+    market placement, and use
   subject_ref: provider
   subject_category: supported_operator
   qualifier_spans:
@@ -49,54 +32,17 @@ records:
   - AIA-GP-A55-1B
   verification_mode: reported_not_judged
   verified_by: vidibro
-- norm_id: AIA-NORM-A055-P1-B-MITIGATE-SYSTEMIC-RISKS
-  source: A055-P003
-  quote: assess and mitigate possible systemic risks at Union level, including their sources, that may
-    stem from the development, the placing on the market, or the use of general-purpose AI models with
-    systemic risk
-  action: mitigate possible Union-level systemic risks and their sources across development, market placement,
-    and use
-  subject_ref: provider
-  subject_category: supported_operator
-  implementation_refs:
-  - AIA-GP-A55-1B
-  verification_mode: reported_not_judged
-  verified_by: vidibro
-- norm_id: AIA-NORM-A055-P1-C-TRACK-INCIDENTS
+- norm_id: AIA-NORM-A055-P1-C-TRACK-DOCUMENT-AND-REPORT-INCIDENTS
   source: A055-P004
   quote: keep track of, document, and report, without undue delay, to the AI Office and, as appropriate,
     to national competent authorities, relevant information about serious incidents and possible corrective
     measures to address them
-  action: keep track of relevant serious-incident information and possible corrective measures
+  action: keep track of and document relevant serious-incident information and possible corrective measures,
+    and report them without undue delay to the AI Office and, as appropriate, national competent authorities
   subject_ref: provider
   subject_category: supported_operator
   qualifier_spans:
   - A055-P001
-  implementation_refs:
-  - AIA-GP-A55-1C
-  verification_mode: reported_not_judged
-  verified_by: vidibro
-- norm_id: AIA-NORM-A055-P1-C-DOCUMENT-INCIDENTS
-  source: A055-P004
-  quote: keep track of, document, and report, without undue delay, to the AI Office and, as appropriate,
-    to national competent authorities, relevant information about serious incidents and possible corrective
-    measures to address them
-  action: document relevant serious incidents and possible corrective measures
-  subject_ref: provider
-  subject_category: supported_operator
-  implementation_refs:
-  - AIA-GP-A55-1C
-  verification_mode: reported_not_judged
-  verified_by: vidibro
-- norm_id: AIA-NORM-A055-P1-C-REPORT-INCIDENTS
-  source: A055-P004
-  quote: keep track of, document, and report, without undue delay, to the AI Office and, as appropriate,
-    to national competent authorities, relevant information about serious incidents and possible corrective
-    measures to address them
-  action: report serious-incident information and possible corrective measures without undue delay to
-    the AI Office and appropriate national authorities
-  subject_ref: provider
-  subject_category: supported_operator
   mandatory_content:
   - relevant serious-incident information
   - possible corrective measures
@@ -104,26 +50,16 @@ records:
   - AIA-GP-A55-1C
   verification_mode: reported_not_judged
   verified_by: vidibro
-- norm_id: AIA-NORM-A055-P1-D-MODEL-CYBERSECURITY
+- norm_id: AIA-NORM-A055-P1-D-MODEL-AND-INFRASTRUCTURE-CYBERSECURITY
   source: A055-P005
   quote: ensure an adequate level of cybersecurity protection for the general-purpose AI model with systemic
     risk and the physical infrastructure of the model.
-  action: ensure adequate cybersecurity protection for the systemic-risk general-purpose AI model
+  action: ensure adequate cybersecurity protection for the systemic-risk general-purpose AI model and
+    its physical infrastructure
   subject_ref: provider
   subject_category: supported_operator
   qualifier_spans:
   - A055-P001
-  implementation_refs:
-  - AIA-GP-A55-1D
-  verification_mode: reported_not_judged
-  verified_by: vidibro
-- norm_id: AIA-NORM-A055-P1-D-INFRASTRUCTURE-CYBERSECURITY
-  source: A055-P005
-  quote: ensure an adequate level of cybersecurity protection for the general-purpose AI model with systemic
-    risk and the physical infrastructure of the model.
-  action: ensure adequate cybersecurity protection for the model's physical infrastructure
-  subject_ref: provider
-  subject_category: supported_operator
   implementation_refs:
   - AIA-GP-A55-1D
   verification_mode: reported_not_judged

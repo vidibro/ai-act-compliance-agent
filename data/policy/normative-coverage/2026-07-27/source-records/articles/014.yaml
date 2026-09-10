@@ -28,27 +28,20 @@ records:
 - norm_id: AIA-NORM-A014-P3-COMMENSURATE-MEASURES
   source: A014-P003
   quote: The oversight measures shall be commensurate with the risks, level of autonomy and context of
-    use of the high-risk AI system
-  action: "make human-oversight measures commensurate with the system\u2019s risks, autonomy, and context\
-    \ of use"
+    use of the high-risk AI system, and shall be ensured through either one or both of the following types
+    of measures
+  action: make human-oversight measures commensurate with the system's risks, autonomy and context of
+    use and ensure them through either or both Article 14(3) measure routes
   subject_ref: provider
   subject_category: supported_operator
   implementation_refs: *id001
   verification_mode: judged_by_gap_analysis
-  verified_by: vidibro
-- norm_id: AIA-NORM-A014-P3-MEASURE-ROUTES
-  source: A014-P003
-  quote: shall be ensured through either one or both of the following types of measures
-  action: ensure oversight through technically feasible measures identified and built into the system
-    before market placement or service, measures identified before placement or service for deployer implementation,
-    or both
-  subject_ref: provider
-  subject_category: supported_operator
   qualifier_spans:
   - A014-P004
   - A014-P005
-  implementation_refs: *id001
-  verification_mode: judged_by_gap_analysis
+  mandatory_content:
+  - make the oversight measures commensurate with the system's risks, autonomy and context of use
+  - ensure oversight through either or both types of measures specified in Article 14(3)
   verified_by: vidibro
 - norm_id: AIA-NORM-A014-P4-A-UNDERSTAND-AND-MONITOR
   source: A014-P007

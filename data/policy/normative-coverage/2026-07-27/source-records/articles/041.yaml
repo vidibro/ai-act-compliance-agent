@@ -24,14 +24,14 @@ records:
   conditions:
   - operator: all_of
     operands:
-    - the Commission has requested one or more European standardisation organisations, pursuant to
-      Article 10(1) of Regulation (EU) No 1025/2012, to draft a harmonised standard for Chapter III Section 2
+    - the Commission has requested one or more European standardisation organisations, pursuant to Article
+      10(1) of Regulation (EU) No 1025/2012, to draft a harmonised standard for Chapter III Section 2
       requirements or, as applicable, Chapter V Sections 2 and 3 obligations
     - operator: any_of
       operands:
       - the request has not been accepted by any of the European standardisation organisations
-      - the harmonised standards addressing the request are not delivered within the deadline set in
-        accordance with Article 10(1) of Regulation (EU) No 1025/2012
+      - the harmonised standards addressing the request are not delivered within the deadline set in accordance
+        with Article 10(1) of Regulation (EU) No 1025/2012
       - the relevant harmonised standards insufficiently address fundamental rights concerns
       - the harmonised standards do not comply with the request
     - no reference to harmonised standards covering those requirements or obligations has been published
@@ -49,6 +49,9 @@ records:
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
+  conditions:
+  - the Commission is drafting common specifications under paragraph 1
+  verified_by: vidibro
 - norm_id: AIA-NORM-A041-P1-EXAMINATION-PROCEDURE
   source: A041-P009
   quote: The implementing acts referred to in the first subparagraph of this paragraph shall be adopted
@@ -106,6 +109,10 @@ records:
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
+  conditions:
+  - a European standardisation organisation has adopted a harmonised standard and proposed publication
+    of its reference in the Official Journal of the European Union
+  verified_by: vidibro
 - norm_id: AIA-NORM-A041-P4-REPEAL-OVERLAPPING-SPECIFICATION
   source: A041-P012
   quote: When reference to a harmonised standard is published in the Official Journal of the European
@@ -120,6 +127,9 @@ records:
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
+  conditions:
+  - the reference to a harmonised standard is published in the Official Journal of the European Union
+  verified_by: vidibro
 - norm_id: AIA-NORM-A041-P5-JUSTIFY-EQUIVALENT-SOLUTIONS
   source: A041-P013
   quote: Where providers of high-risk AI systems or general-purpose AI models do not comply with the common
@@ -149,11 +159,16 @@ records:
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
+  conditions:
+  - the Member State considers that a common specification does not entirely meet Chapter III Section
+    2 requirements or, as applicable, Chapter V Sections 2 and 3 obligations
+  verified_by: vidibro
 - norm_id: AIA-NORM-A041-P6-ASSESS-DEFICIENCY-INFORMATION
   source: A041-P014
   quote: The Commission shall assess that information and, if appropriate, amend the implementing act
     establishing the common specification concerned.
-  action: assess Member-State information about a deficient common specification
+  action: assess Member-State information about a deficient common specification and, if appropriate,
+    amend the implementing act establishing it
   subject_ref: commission
   subject_category: union_institution_or_body
   product_scope: outside_supported_actor
@@ -161,15 +176,10 @@ records:
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
-- norm_id: AIA-NORM-A041-P6-AMEND-COMMON-SPECIFICATION
-  source: A041-P014
-  quote: The Commission shall assess that information and, if appropriate, amend the implementing act
-    establishing the common specification concerned.
-  action: amend the common-specification implementing act where appropriate after assessment
-  subject_ref: commission
-  subject_category: union_institution_or_body
-  product_scope: outside_supported_actor
-  product_scope_reason: The present product does not report compliance for this addressee.
-  implementation_mode: none_required
-  implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_reported
+  conditions:
+  - a Member State has submitted detailed information that a common specification does not entirely meet
+    the applicable requirements or obligations
+  mandatory_content:
+  - assess the Member State's information
+  - if appropriate after that assessment, amend the implementing act establishing the common specification
+  verified_by: vidibro

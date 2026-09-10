@@ -473,10 +473,12 @@ norms:
   - subject_ref: commission
     category: union_institution_or_body
   action: provide Article 96 guidelines on the practical implementation of Article 6 by 2 February 2026
-    after consulting the AI Board
+    after consulting the AI Board, together with a comprehensive list of practical high-risk and non-high-risk
+    AI-system use cases
   norm_text: "The Commission shall, after consulting the European Artificial Intelligence Board (the \u2018\
     \ Board \u2019), and no later than 2 February 2026, provide guidelines specifying the practical implementation\
-    \ of this Article in line with Article 96"
+    \ of this Article in line with Article 96 together with a comprehensive list of practical examples\
+    \ of use cases of AI systems that are high-risk and not high-risk."
   detection_channels:
   - semantic_legal_effect
   - shall_token
@@ -487,46 +489,13 @@ norms:
   effective_date_spans: []
   conditions: []
   exceptions: []
-  mandatory_content: []
+  mandatory_content:
+  - a comprehensive list of practical examples of high-risk AI-system use cases
+  - a comprehensive list of practical examples of non-high-risk AI-system use cases
   dependencies:
   - dependency_ref: Article 96 of this Regulation
     resolution: unresolved
     detail: Article 96 governs Commission guidelines and has not yet been semantically reviewed.
-  product_scope: outside_supported_actor
-  product_scope_reason: The present product does not report compliance for the Commission.
-  implementation_mode: none_required
-  implementation_refs: []
-  implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_reported
-  review:
-    status: proposed
-    extracted_by: semantic-legal-effect-pass
-    verified_by: ''
-    review_run_id: normative-coverage-2026-08-28
-    presentation_mode: exact-source-slice
-    display_chunks: 1
-    fully_displayed: true
-    elapsed_seconds: null
-- norm_id: AIA-NORM-A006-P5-PROVIDE-EXAMPLES
-  act_version_date: '2026-07-27'
-  kind: obligation
-  subjects:
-  - subject_ref: commission
-    category: union_institution_or_body
-  action: provide a comprehensive list of practical high-risk and non-high-risk AI-system use cases with
-    the Article 6 guidelines
-  norm_text: together with a comprehensive list of practical examples of use cases of AI systems that
-    are high-risk and not high-risk.
-  detection_channels:
-  - semantic_legal_effect
-  primary_spans:
-  - AIA-TEXT-A006-P016
-  qualifier_spans: []
-  effective_date_spans: []
-  conditions: []
-  exceptions: []
-  mandatory_content: []
-  dependencies: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for the Commission.
   implementation_mode: none_required
@@ -637,46 +606,14 @@ norms:
   subjects:
   - subject_ref: commission
     category: union_institution_or_body
-  action: prohibit Article 6(3) condition amendments from decreasing the Regulation's overall protection
-    of health, safety, and fundamental rights
+  action: ensure Article 6(3) condition amendments do not decrease the Regulation's overall protection
+    of health, safety and fundamental rights, remain consistent with Article 7(1) delegated acts, and
+    account for market and technological developments
   norm_text: Any amendment to the conditions laid down in paragraph 3, second subparagraph, adopted in
     accordance with paragraphs 6 and 7 of this Article shall not decrease the overall level of protection
-    of health, safety and fundamental rights provided for by this Regulation
-  detection_channels:
-  - semantic_legal_effect
-  - shall_token
-  primary_spans:
-  - AIA-TEXT-A006-P019
-  qualifier_spans: []
-  effective_date_spans: []
-  conditions: []
-  exceptions: []
-  mandatory_content: []
-  dependencies: []
-  product_scope: outside_supported_actor
-  product_scope_reason: The present product does not report compliance for the Commission.
-  implementation_mode: none_required
-  implementation_refs: []
-  implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_reported
-  review:
-    status: proposed
-    extracted_by: semantic-legal-effect-pass
-    verified_by: ''
-    review_run_id: normative-coverage-2026-08-28
-    presentation_mode: exact-source-slice
-    display_chunks: 1
-    fully_displayed: true
-    elapsed_seconds: null
-- norm_id: AIA-NORM-A006-P8-ENSURE-CONSISTENCY
-  act_version_date: '2026-07-27'
-  kind: obligation
-  subjects:
-  - subject_ref: commission
-    category: union_institution_or_body
-  action: ensure Article 6(3) condition amendments remain consistent with delegated acts adopted under
-    Article 7(1)
-  norm_text: shall ensure consistency with the delegated acts adopted pursuant to Article 7(1)
+    of health, safety and fundamental rights provided for by this Regulation and shall ensure consistency
+    with the delegated acts adopted pursuant to Article 7(1), and take account of market and technological
+    developments.
   detection_channels:
   - semantic_legal_effect
   - shall_token
@@ -687,44 +624,14 @@ norms:
   effective_date_spans: []
   conditions: []
   exceptions: []
-  mandatory_content: []
+  mandatory_content:
+  - do not decrease the overall protection of health, safety and fundamental rights
+  - consistency with Article 7(1) delegated acts
+  - account for market and technological developments
   dependencies:
   - dependency_ref: Article 7(1) of this Regulation
     resolution: unresolved
     detail: Article 7(1) governs related delegated acts and has not yet been semantically reviewed.
-  product_scope: outside_supported_actor
-  product_scope_reason: The present product does not report compliance for the Commission.
-  implementation_mode: none_required
-  implementation_refs: []
-  implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_reported
-  review:
-    status: proposed
-    extracted_by: semantic-legal-effect-pass
-    verified_by: ''
-    review_run_id: normative-coverage-2026-08-28
-    presentation_mode: exact-source-slice
-    display_chunks: 1
-    fully_displayed: true
-    elapsed_seconds: null
-- norm_id: AIA-NORM-A006-P8-CONSIDER-DEVELOPMENTS
-  act_version_date: '2026-07-27'
-  kind: obligation
-  subjects:
-  - subject_ref: commission
-    category: union_institution_or_body
-  action: take market and technological developments into account when amending Article 6(3) conditions
-  norm_text: take account of market and technological developments.
-  detection_channels:
-  - semantic_legal_effect
-  primary_spans:
-  - AIA-TEXT-A006-P019
-  qualifier_spans: []
-  effective_date_spans: []
-  conditions: []
-  exceptions: []
-  mandatory_content: []
-  dependencies: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for the Commission.
   implementation_mode: none_required

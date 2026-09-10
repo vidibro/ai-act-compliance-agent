@@ -115,7 +115,8 @@ norms:
   subjects:
   - subject_ref: commission
     category: union_institution_or_body
-  action: inform the notifying Member State when a notified body fails notification requirements
+  action: inform the notifying Member State that a notified body fails notification requirements and request
+    necessary corrective measures, including suspension or withdrawal where necessary
   norm_text: Where the Commission ascertains that a notified body does not meet or no longer meets the
     requirements for its notification, it shall inform the notifying Member State accordingly and request
     it to take the necessary corrective measures, including the suspension or withdrawal of the notification
@@ -127,47 +128,13 @@ norms:
   - AIA-TEXT-A037-P004
   qualifier_spans: []
   effective_date_spans: []
-  conditions: []
+  conditions:
+  - the Commission ascertains that a notified body does not meet or no longer meets its notification requirements
   exceptions: []
-  mandatory_content: []
-  dependencies: []
-  product_scope: outside_supported_actor
-  product_scope_reason: The present product does not report compliance for this addressee.
-  implementation_mode: none_required
-  implementation_refs: []
-  implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_reported
-  review:
-    status: proposed
-    extracted_by: semantic-legal-effect-pass
-    verified_by: ''
-    review_run_id: normative-coverage-2026-08-28
-    presentation_mode: exact-source-slice
-    display_chunks: 1
-    fully_displayed: true
-    elapsed_seconds: null
-- norm_id: AIA-NORM-A037-P4-REQUEST-CORRECTIVE-MEASURES
-  act_version_date: '2026-07-27'
-  kind: obligation
-  subjects:
-  - subject_ref: commission
-    category: union_institution_or_body
-  action: request necessary Member-State corrective measures, including suspension or withdrawal where
-    necessary
-  norm_text: Where the Commission ascertains that a notified body does not meet or no longer meets the
-    requirements for its notification, it shall inform the notifying Member State accordingly and request
-    it to take the necessary corrective measures, including the suspension or withdrawal of the notification
-    if necessary.
-  detection_channels:
-  - semantic_legal_effect
-  - shall_token
-  primary_spans:
-  - AIA-TEXT-A037-P004
-  qualifier_spans: []
-  effective_date_spans: []
-  conditions: []
-  exceptions: []
-  mandatory_content: []
+  mandatory_content:
+  - inform the notifying Member State accordingly
+  - request the Member State to take necessary corrective measures, including suspension or withdrawal
+    of the notification if necessary
   dependencies: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.

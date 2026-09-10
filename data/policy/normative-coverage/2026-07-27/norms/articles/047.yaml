@@ -7,7 +7,8 @@ norms:
   - subject_ref: provider
     category: supported_operator
   action: draw up a written machine-readable, physical, or electronically signed declaration for each
-    high-risk system
+    high-risk system and keep it available to national competent authorities for 10 years after market
+    placement or service
   norm_text: The provider shall draw up a written machine readable, physical or electronically signed
     EU declaration of conformity for each high-risk AI system, and keep it at the disposal of the national
     competent authorities for 10 years after the high-risk AI system has been placed on the market or
@@ -22,47 +23,10 @@ norms:
   effective_date_spans: []
   conditions: []
   exceptions: []
-  mandatory_content: []
-  dependencies: []
-  product_scope: in_scope
-  product_scope_reason: ''
-  implementation_mode: compliance_rule
-  implementation_refs:
-  - AIA-PO-A47
-  implementation_reason: ''
-  verification_mode: reported_not_judged
-  review:
-    status: approved
-    extracted_by: semantic-legal-effect-pass
-    verified_by: vidibro
-    review_run_id: normative-coverage-2026-08-28
-    presentation_mode: exact-source-slice
-    display_chunks: 1
-    fully_displayed: true
-    elapsed_seconds: null
-- norm_id: AIA-NORM-A047-P1-RETAIN-DECLARATION
-  act_version_date: '2026-07-27'
-  kind: obligation
-  subjects:
-  - subject_ref: provider
-    category: supported_operator
-  action: retain the declaration for national competent authorities for 10 years after market placement
-    or service
-  norm_text: The provider shall draw up a written machine readable, physical or electronically signed
-    EU declaration of conformity for each high-risk AI system, and keep it at the disposal of the national
-    competent authorities for 10 years after the high-risk AI system has been placed on the market or
-    put into service.
-  detection_channels:
-  - semantic_legal_effect
-  - shall_token
-  - existing_implementation
-  primary_spans:
-  - AIA-TEXT-A047-P001
-  qualifier_spans: []
-  effective_date_spans: []
-  conditions: []
-  exceptions: []
-  mandatory_content: []
+  mandatory_content:
+  - draw up the declaration in the prescribed written, machine-readable, physical or electronically signed
+    form
+  - keep it at the disposal of national competent authorities for 10 years after market placement or service
   dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -197,8 +161,11 @@ norms:
   subjects:
   - subject_ref: provider
     category: supported_operator
-  action: include every information item required by Annex V in the declaration
-  norm_text: The EU declaration of conformity shall contain the information set out in Annex V
+  action: include every Annex V information item in the declaration and translate it into an easily understood
+    language for authorities in every Member State where the system is placed on the market or made available
+  norm_text: The EU declaration of conformity shall contain the information set out in Annex V, and shall
+    be translated into a language that can be easily understood by the national competent authorities
+    of the Member States in which the high-risk AI system is placed on the market or made available.
   detection_channels:
   - semantic_legal_effect
   - shall_token
@@ -210,7 +177,10 @@ norms:
   effective_date_spans: []
   conditions: []
   exceptions: []
-  mandatory_content: []
+  mandatory_content:
+  - contain the information set out in Annex V
+  - use a language easily understood by competent authorities in every Member State where the system is
+    marketed or made available
   dependencies:
   - dependency_ref: AIA-TEXT-ANNEX-V-P002
     resolution: internal_resolved
@@ -236,45 +206,6 @@ norms:
   - dependency_ref: AIA-TEXT-ANNEX-V-P009
     resolution: internal_resolved
     detail: Annex V item 8.
-  product_scope: in_scope
-  product_scope_reason: ''
-  implementation_mode: compliance_rule
-  implementation_refs:
-  - AIA-PO-A47-2
-  implementation_reason: ''
-  verification_mode: reported_not_judged
-  review:
-    status: approved
-    extracted_by: semantic-legal-effect-pass
-    verified_by: vidibro
-    review_run_id: normative-coverage-2026-08-28
-    presentation_mode: exact-source-slice
-    display_chunks: 1
-    fully_displayed: true
-    elapsed_seconds: null
-- norm_id: AIA-NORM-A047-P2-TRANSLATE-DECLARATION
-  act_version_date: '2026-07-27'
-  kind: obligation
-  subjects:
-  - subject_ref: provider
-    category: supported_operator
-  action: translate the declaration into an easily understood language for authorities in every market
-    state
-  norm_text: shall be translated into a language that can be easily understood by the national competent
-    authorities of the Member States in which the high-risk AI system is placed on the market or made
-    available.
-  detection_channels:
-  - semantic_legal_effect
-  - shall_token
-  - existing_implementation
-  primary_spans:
-  - AIA-TEXT-A047-P002
-  qualifier_spans: []
-  effective_date_spans: []
-  conditions: []
-  exceptions: []
-  mandatory_content: []
-  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: compliance_rule

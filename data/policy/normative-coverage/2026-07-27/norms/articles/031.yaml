@@ -367,9 +367,9 @@ norms:
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
   review:
-    status: proposed
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
     display_chunks: 1
@@ -488,10 +488,11 @@ norms:
   - subject_ref: conformity_assessment_body_and_personnel
     category: notified_or_conformity_body
   action: prohibit the conformity assessment body, its top-level management and assessment personnel from
-    direct involvement in high-risk AI-system design, development, marketing or use
+    direct involvement in high-risk AI-system design, development, marketing or use and from representing
+    parties engaged in those activities
   norm_text: Neither a conformity assessment body, its top-level management nor the personnel responsible
     for carrying out its conformity assessment tasks shall be directly involved in the design, development,
-    marketing or use of high-risk AI systems
+    marketing or use of high-risk AI systems, nor shall they represent the parties engaged in those activities.
   detection_channels:
   - semantic_legal_effect
   - shall_token
@@ -501,42 +502,9 @@ norms:
   effective_date_spans: []
   conditions: []
   exceptions: []
-  mandatory_content: []
-  dependencies: []
-  product_scope: outside_supported_actor
-  product_scope_reason: The present product does not report compliance for this addressee.
-  implementation_mode: none_required
-  implementation_refs: []
-  implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_reported
-  review:
-    status: proposed
-    extracted_by: semantic-legal-effect-pass
-    verified_by: ''
-    review_run_id: normative-coverage-2026-08-28
-    presentation_mode: exact-source-slice
-    display_chunks: 1
-    fully_displayed: true
-    elapsed_seconds: null
-- norm_id: AIA-NORM-A031-P5-PARTY-REPRESENTATION-PROHIBITED
-  act_version_date: '2026-07-27'
-  kind: prohibition
-  subjects:
-  - subject_ref: conformity_assessment_body_and_personnel
-    category: notified_or_conformity_body
-  action: prohibit the conformity assessment body, its top-level management and assessment personnel from
-    representing parties engaged in high-risk AI-system design, development, marketing or use
-  norm_text: nor shall they represent the parties engaged in those activities.
-  detection_channels:
-  - semantic_legal_effect
-  - shall_token
-  primary_spans:
-  - AIA-TEXT-A031-P005
-  qualifier_spans: []
-  effective_date_spans: []
-  conditions: []
-  exceptions: []
-  mandatory_content: []
+  mandatory_content:
+  - no direct involvement in designing, developing, marketing or using high-risk AI systems
+  - no representation of parties engaged in those activities
   dependencies: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.

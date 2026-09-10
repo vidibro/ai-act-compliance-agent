@@ -219,48 +219,11 @@ norms:
   - subject_ref: registering_operator
     category: supported_operator
   action: lodge the applicable registration in a secure non-public section of the Article 71 EU database
-  norm_text: For high-risk AI systems referred to in points 1, 6 and 7 of Annex III, in the areas of law
-    enforcement, migration, asylum and border control management, the registration referred to in paragraphs
-    1, 2 and 3 of this Article shall be in a secure non-public section of the EU database referred to
-    in Article 71
-  detection_channels:
-  - semantic_legal_effect
-  - shall_token
-  - existing_implementation
-  primary_spans:
-  - AIA-TEXT-A049-P004
-  qualifier_spans: []
-  effective_date_spans: []
-  conditions:
-  - the system falls within Annex III point 1, 6 or 7 in law enforcement, migration, asylum, or border-control
-    management
-  exceptions: []
-  mandatory_content: []
-  dependencies: []
-  product_scope: in_scope
-  product_scope_reason: ''
-  implementation_mode: compliance_rule
-  implementation_refs:
-  - AIA-ALL-A49-4
-  implementation_reason: ''
-  verification_mode: reported_not_judged
-  review:
-    status: approved
-    extracted_by: semantic-legal-effect-pass
-    verified_by: vidibro
-    review_run_id: normative-coverage-2026-08-28
-    presentation_mode: exact-source-slice
-    display_chunks: 1
-    fully_displayed: true
-    elapsed_seconds: null
-- norm_id: AIA-NORM-A049-P4-RESTRICTED-INFORMATION
-  act_version_date: '2026-07-27'
-  kind: obligation
-  subjects:
-  - subject_ref: registering_operator
-    category: supported_operator
-  action: limit the secure-section registration to the enacted Annex VIII and Annex IX information
-  norm_text: shall include only the following information, as applicable, referred to in
+    and limit it to the enacted Annex VIII and Annex IX information
+  norm_text: 'For high-risk AI systems referred to in points 1, 6 and 7 of Annex III, in the areas of
+    law enforcement, migration, asylum and border control management, the registration referred to in
+    paragraphs 1, 2 and 3 of this Article shall be in a secure non-public section of the EU database referred
+    to in Article 71 and shall include only the following information, as applicable, referred to in:'
   detection_channels:
   - semantic_legal_effect
   - shall_token
@@ -275,9 +238,11 @@ norms:
   - AIA-TEXT-A049-P008
   effective_date_spans: []
   conditions:
-  - the secure non-public registration rule in Article 49(4) applies
+  - the system falls within Annex III point 1, 6 or 7 in law enforcement, migration, asylum, or border-control
+    management
   exceptions: []
   mandatory_content:
+  - use the secure non-public section of the Article 71 EU database
   - Annex VIII Section A points 1 to 10, except points 6, 8, and 9
   - Annex VIII Section B points 1 to 5 and points 8 and 9
   - Annex VIII Section C points 1 to 3

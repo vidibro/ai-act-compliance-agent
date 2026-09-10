@@ -190,9 +190,11 @@ records:
   source: A031-P005
   quote: Neither a conformity assessment body, its top-level management nor the personnel
     responsible for carrying out its conformity assessment tasks shall be directly involved in the
-    design, development, marketing or use of high-risk AI systems
+    design, development, marketing or use of high-risk AI systems, nor shall they represent the parties
+    engaged in those activities.
   action: prohibit the conformity assessment body, its top-level management and assessment personnel
-    from direct involvement in high-risk AI-system design, development, marketing or use
+    from direct involvement in high-risk AI-system design, development, marketing or use and from representing
+    parties engaged in those activities
   subject_ref: conformity_assessment_body_and_personnel
   subject_category: notified_or_conformity_body
   kind: prohibition
@@ -201,19 +203,10 @@ records:
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
-- norm_id: AIA-NORM-A031-P5-PARTY-REPRESENTATION-PROHIBITED
-  source: A031-P005
-  quote: "nor shall they represent the parties engaged in those activities."
-  action: prohibit the conformity assessment body, its top-level management and assessment personnel
-    from representing parties engaged in high-risk AI-system design, development, marketing or use
-  subject_ref: conformity_assessment_body_and_personnel
-  subject_category: notified_or_conformity_body
-  kind: prohibition
-  product_scope: outside_supported_actor
-  product_scope_reason: The present product does not report compliance for this addressee.
-  implementation_mode: none_required
-  implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_reported
+  mandatory_content:
+  - no direct involvement in designing, developing, marketing or using high-risk AI systems
+  - no representation of parties engaged in those activities
+  verified_by: vidibro
 - norm_id: AIA-NORM-A031-P6-INDEPENDENT-OPERATION
   source: A031-P006
   quote: Notified bodies shall be organised and operated so as to safeguard the independence,

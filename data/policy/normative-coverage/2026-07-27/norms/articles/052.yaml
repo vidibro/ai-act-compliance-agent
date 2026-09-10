@@ -461,9 +461,12 @@ norms:
   subjects:
   - subject_ref: commission
     category: union_institution_or_body
-  action: ensure publication of a list of general-purpose AI models with systemic risk
+  action: ensure publication of a current list of general-purpose AI models with systemic risk while observing
+    and protecting intellectual-property rights, confidential business information, and trade secrets
   norm_text: The Commission shall ensure that a list of general-purpose AI models with systemic risk is
-    published
+    published and shall keep that list up to date, without prejudice to the need to observe and protect
+    intellectual property rights and confidential business information or trade secrets in accordance
+    with Union and national law.
   detection_channels:
   - semantic_legal_effect
   - shall_token
@@ -473,77 +476,11 @@ norms:
   effective_date_spans: []
   conditions: []
   exceptions: []
-  mandatory_content: []
-  dependencies: []
-  product_scope: outside_supported_actor
-  product_scope_reason: The present product does not report compliance for this addressee.
-  implementation_mode: none_required
-  implementation_refs: []
-  implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_reported
-  review:
-    status: proposed
-    extracted_by: semantic-legal-effect-pass
-    verified_by: ''
-    review_run_id: normative-coverage-2026-08-28
-    presentation_mode: exact-source-slice
-    display_chunks: 1
-    fully_displayed: true
-    elapsed_seconds: null
-- norm_id: AIA-NORM-A052-P6-KEEP-LIST-CURRENT
-  act_version_date: '2026-07-27'
-  kind: obligation
-  subjects:
-  - subject_ref: commission
-    category: union_institution_or_body
-  action: keep the systemic-risk model list up to date
-  norm_text: shall keep that list up to date
-  detection_channels:
-  - semantic_legal_effect
-  - shall_token
-  primary_spans:
-  - AIA-TEXT-A052-P007
-  qualifier_spans: []
-  effective_date_spans: []
-  conditions: []
-  exceptions: []
-  mandatory_content: []
-  dependencies: []
-  product_scope: outside_supported_actor
-  product_scope_reason: The present product does not report compliance for this addressee.
-  implementation_mode: none_required
-  implementation_refs: []
-  implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_reported
-  review:
-    status: proposed
-    extracted_by: semantic-legal-effect-pass
-    verified_by: ''
-    review_run_id: normative-coverage-2026-08-28
-    presentation_mode: exact-source-slice
-    display_chunks: 1
-    fully_displayed: true
-    elapsed_seconds: null
-- norm_id: AIA-NORM-A052-P6-PROTECT-CONFIDENTIAL-INFORMATION
-  act_version_date: '2026-07-27'
-  kind: obligation
-  subjects:
-  - subject_ref: commission
-    category: union_institution_or_body
-  action: observe and protect intellectual-property rights, confidential business information, and trade
-    secrets when publishing and updating the list
-  norm_text: without prejudice to the need to observe and protect intellectual property rights and confidential
-    business information or trade secrets in accordance with Union and national law.
-  detection_channels:
-  - semantic_legal_effect
-  primary_spans:
-  - AIA-TEXT-A052-P007
-  qualifier_spans: []
-  effective_date_spans: []
-  conditions:
-  - the Commission publishes or updates the systemic-risk model list
-  exceptions: []
-  mandatory_content: []
+  mandatory_content:
+  - keep the published list up to date
+  - observe and protect intellectual-property rights in accordance with Union and national law
+  - observe and protect confidential business information and trade secrets in accordance with Union and
+    national law
   dependencies: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
