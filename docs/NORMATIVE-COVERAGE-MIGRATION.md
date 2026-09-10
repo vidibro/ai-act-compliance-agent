@@ -1017,3 +1017,28 @@ the two.
 
 Cost: the enum value, a builder default, a metrics split, the report section, and 91 norms to
 re-scope and review.
+
+### Closed: a segment's `norm_ids` claimed norms whose words it did not contain
+
+`norm_ids` on a `TextReviewSegment` once meant "norms that reference this span in any role". The
+builder appended a norm for every linked span — primary, qualifier and effective-date alike — so a
+chapeau listed norms drawn from its siblings. `AIA-TEXT-A005-P001` is the clearest case: 51
+characters reading `1. The following AI practices shall be prohibited:`, listing all ten Article
+5(1) prohibitions, containing none of them. 353 segments were in that state, every one a stem whose
+list lives elsewhere — the Article 3 definitions chapeau alone named 70 norms.
+
+Quote containment was, and still is, checked only against the primary span, which is correct: a
+qualifier is not meant to contain the quote. But that left `norm_ids` free to assert a link the
+segment's own text could not support, with nothing to detect it. A reviewer reading segments found
+it, not a check.
+
+The field is now split by role. `norm_ids` holds norms whose `primary_spans` contains the segment,
+so every id names a norm whose `norm_text` is a substring of that segment's `text`.
+`qualifying_norm_ids` holds norms that reference it as `qualifier_spans`, `definition_spans` or
+`effective_date_spans`. `norm_loader` compares each field against its own map rather than one
+conflated set, and the normative-segment validator requires at least one norm across both lists —
+a chapeau legitimately has none of its own.
+
+The invariant worth keeping: **a segment may not list a norm under `norm_ids` unless that norm's
+enacted words are inside it.** Provenance that cannot be read back from the text it names is not
+provenance.
