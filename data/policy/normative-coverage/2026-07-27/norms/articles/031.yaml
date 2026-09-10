@@ -354,7 +354,10 @@ norms:
   qualifier_spans: []
   effective_date_spans: []
   conditions: []
-  exceptions: []
+  exceptions:
+  - liability is assumed by the Member State in which the notified body is established in accordance with
+    national law
+  - that Member State is itself directly responsible for the conformity assessment
   mandatory_content: []
   dependencies: []
   product_scope: outside_supported_actor
