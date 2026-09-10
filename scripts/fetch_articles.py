@@ -615,7 +615,12 @@ def main() -> None:
         # "9" -> article-009.md, "4a" -> article-004a.md. Zero-padding the numeric part keeps the
         # directory in the Act's own order, and the suffix keeps 4a distinct from 4 on disk as well
         # as in memory.
-        num, suffix = re.match(r"(\d+)([a-z]*)", n).groups()
+        parsed = re.match(r"(\d+)([a-z]*)", n)
+        if parsed is None:
+            print(f"  ! article {n} has no parsable number")
+            missing += 1
+            continue
+        num, suffix = parsed.groups()
         path = out_dir / f"article-{int(num):03d}{suffix}.md"
         if write_article(path, n, title, body, args.version_date, version):
             written += 1

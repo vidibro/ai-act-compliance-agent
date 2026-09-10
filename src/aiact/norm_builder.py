@@ -649,8 +649,10 @@ def _render_sharded_artifacts(
             width=100,
         )
     }
+    review_segments = text_review["segments"]
+    assert isinstance(review_segments, list)
     segments_by_document: dict[tuple[str, str], list[dict[str, object]]] = {}
-    for segment in text_review["segments"]:
+    for segment in review_segments:
         assert isinstance(segment, dict)
         source = segment["source"]
         assert isinstance(source, dict)
@@ -675,10 +677,12 @@ def _render_sharded_artifacts(
             str(segment["source"]["kind"]),
             str(segment["source"]["document"]),
         )
-        for segment in text_review["segments"]
+        for segment in review_segments
     }
+    inventory_norms = norm_inventory["norms"]
+    assert isinstance(inventory_norms, list)
     norms_by_document: dict[tuple[str, str], list[dict[str, object]]] = {}
-    for norm in norm_inventory["norms"]:
+    for norm in inventory_norms:
         assert isinstance(norm, dict)
         primary_spans = norm["primary_spans"]
         assert isinstance(primary_spans, list)
