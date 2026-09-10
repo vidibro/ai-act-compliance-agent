@@ -3347,6 +3347,15 @@ def test_article_fifty_nine_extracts_conditional_sandbox_data_processing():
         "processing occurs in an AI regulatory sandbox",
         "every Article 59(1) condition is met",
     ]
+    assert permission.condition_norm_ids == [
+        norm_id
+        for norm_id in norms
+        if norm_id.startswith("AIA-NORM-A059-P1-") and norm_id != permission.norm_id
+    ]
+    assert all(
+        norms[norm_id].condition_of_norm_ids == [permission.norm_id]
+        for norm_id in permission.condition_norm_ids
+    )
     # The parent permission still requires all ten lettered conditions, not any one of them.
     # Each has a child norm; expanding (a) does not duplicate the other conditions at the parent.
     for span_id in permission.qualifier_spans:
@@ -3385,6 +3394,15 @@ def test_article_sixty_extracts_real_world_testing_lifecycle():
     assert_segments_are_independently_approved(segments)
     assert len(norms) == 30
     permission = norms["AIA-NORM-A060-P4-PERMISSION"]
+    assert permission.condition_norm_ids == [
+        norm_id
+        for norm_id in norms
+        if norm_id.startswith("AIA-NORM-A060-P4-") and norm_id != permission.norm_id
+    ]
+    assert all(
+        norms[norm_id].condition_of_norm_ids == [permission.norm_id]
+        for norm_id in permission.condition_norm_ids
+    )
     assert len(permission.qualifier_spans) == 11
     assert len(permission.mandatory_content) == 11
     assert sum(norm.implementation_mode.value == "missing" for norm in norms.values()) == 18

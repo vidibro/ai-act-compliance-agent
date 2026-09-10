@@ -45,10 +45,7 @@ class DivisionSource(BaseModel):
     def _review_metadata_matches_disposition(self) -> DivisionSource:
         if self.verified_by.strip() and self.disposition is SegmentDisposition.NEEDS_REVIEW:
             raise ValueError("review-debt division cannot have a verifier")
-        if (
-            self.disposition is SegmentDisposition.CONTEXT_ONLY
-            and not self.reason.strip()
-        ):
+        if self.disposition is SegmentDisposition.CONTEXT_ONLY and not self.reason.strip():
             raise ValueError("context-only division requires a reason")
         return self
 
@@ -62,10 +59,7 @@ class ParagraphOverride(BaseModel):
     def _review_metadata_matches_disposition(self) -> ParagraphOverride:
         if self.verified_by.strip() and self.disposition is SegmentDisposition.NEEDS_REVIEW:
             raise ValueError("review-debt paragraph cannot have a verifier")
-        if (
-            self.disposition is SegmentDisposition.CONTEXT_ONLY
-            and not self.reason.strip()
-        ):
+        if self.disposition is SegmentDisposition.CONTEXT_ONLY and not self.reason.strip():
             raise ValueError("context-only paragraph requires a reason")
         return self
 
@@ -146,6 +140,7 @@ class NormSourceRecord(BaseModel):
     mandatory_content: list[str] = []
     mandatory_content_source: Literal["numbered_items"] | None = None
     dependencies: list[NormDependency] = []
+    condition_norm_ids: list[str] = []
     qualifier_spans: list[str] = []
     effective_date_spans: list[str] = []
     verified_by: str = ""
@@ -404,11 +399,7 @@ def _build_segments(
             is_debt = division.disposition is SegmentDisposition.NEEDS_REVIEW
             verified_by = division.verified_by or document.verified_by
             review_status = (
-                "needs_review"
-                if is_debt
-                else "approved"
-                if verified_by.strip()
-                else "proposed"
+                "needs_review" if is_debt else "approved" if verified_by.strip() else "proposed"
             )
             segments.append(
                 {
@@ -505,6 +496,11 @@ def _build_norms(
         unknown_rules = sorted(set(record.implementation_refs) - known_rule_ids)
         if unknown_rules:
             raise ValueError(f"{record.norm_id}: unknown implementation rule(s) {unknown_rules}")
+        unknown_conditions = sorted(set(record.condition_norm_ids) - known_norm_ids)
+        if unknown_conditions:
+            raise ValueError(f"{record.norm_id}: unknown condition norm(s) {unknown_conditions}")
+        if record.norm_id in record.condition_norm_ids:
+            raise ValueError(f"{record.norm_id}: a norm cannot be its own condition")
         for span, link_field in [
             (primary, "norm_ids"),
             *((span, "qualifying_norm_ids") for span in [*qualifiers, *effective]),
@@ -542,43 +538,50 @@ def _build_norms(
             if not mandatory_content:
                 raise ValueError(f"{record.norm_id}: no numbered mandatory-content items found")
 
-        norms.append(
-            {
-                "norm_id": record.norm_id,
-                "act_version_date": version_text,
-                "kind": record.kind.value,
-                "subjects": [
-                    {
-                        "subject_ref": record.subject_ref,
-                        "category": record.subject_category.value,
-                    }
-                ],
-                "action": record.action,
-                "norm_text": record.quote,
-                "detection_channels": _detection_channels(record),
-                "primary_spans": [primary],
-                "qualifier_spans": qualifiers,
-                "effective_date_spans": effective,
-                "conditions": record.model_dump(mode="json")["conditions"],
-                "exceptions": record.exceptions,
-                "mandatory_content": mandatory_content,
-                "dependencies": dependencies,
-                "product_scope": record.product_scope.value,
-                "product_scope_reason": record.product_scope_reason,
-                "implementation_mode": _resolved_mode(record).value,
-                "implementation_refs": record.implementation_refs,
-                "implementation_reason": record.implementation_reason,
-                "verification_mode": _resolved_verification(record).value,
-                "review": _review(
-                    reviewed,
-                    "approved" if record.verified_by.strip() else "proposed",
-                    True,
-                    record.verified_by,
-                ),
-            }
-        )
+        norm: dict[str, object] = {
+            "norm_id": record.norm_id,
+            "act_version_date": version_text,
+            "kind": record.kind.value,
+            "subjects": [
+                {
+                    "subject_ref": record.subject_ref,
+                    "category": record.subject_category.value,
+                }
+            ],
+            "action": record.action,
+            "norm_text": record.quote,
+            "detection_channels": _detection_channels(record),
+            "primary_spans": [primary],
+            "qualifier_spans": qualifiers,
+            "effective_date_spans": effective,
+            "conditions": record.model_dump(mode="json")["conditions"],
+            "exceptions": record.exceptions,
+            "mandatory_content": mandatory_content,
+            "dependencies": dependencies,
+            "product_scope": record.product_scope.value,
+            "product_scope_reason": record.product_scope_reason,
+            "implementation_mode": _resolved_mode(record).value,
+            "implementation_refs": record.implementation_refs,
+            "implementation_reason": record.implementation_reason,
+            "verification_mode": _resolved_verification(record).value,
+            "review": _review(
+                reviewed,
+                "approved" if record.verified_by.strip() else "proposed",
+                True,
+                record.verified_by,
+            ),
+        }
+        if record.condition_norm_ids:
+            norm["condition_norm_ids"] = record.condition_norm_ids
+        norms.append(norm)
 
     norms_by_id = {str(norm["norm_id"]): norm for norm in norms}
+    for norm in norms:
+        for condition_id in norm.get("condition_norm_ids", []):
+            condition = norms_by_id[str(condition_id)]
+            parents = condition.setdefault("condition_of_norm_ids", [])
+            assert isinstance(parents, list)
+            parents.append(norm["norm_id"])
     for norm_id, carriers in source_inventory.carried_by.items():
         if norm_id not in norms_by_id:
             raise ValueError(f"carried_by references unknown source norm {norm_id}")

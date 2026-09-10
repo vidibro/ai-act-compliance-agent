@@ -139,6 +139,26 @@ def load_normative_coverage(
         unknown_carriers = [n for n in norm.carried_by_norm_ids if n not in norms_by_id]
         if unknown_carriers:
             raise ValueError(f"{norm.norm_id} is carried by unknown norm(s): {unknown_carriers}")
+        unknown_conditions = [n for n in norm.condition_norm_ids if n not in norms_by_id]
+        if unknown_conditions:
+            raise ValueError(
+                f"{norm.norm_id} has unknown condition norm(s): {unknown_conditions}"
+            )
+        for condition_id in norm.condition_norm_ids:
+            if norm.norm_id not in norms_by_id[condition_id].condition_of_norm_ids:
+                raise ValueError(
+                    f"{norm.norm_id} condition relation to {condition_id} is not reciprocal"
+                )
+        unknown_condition_parents = [n for n in norm.condition_of_norm_ids if n not in norms_by_id]
+        if unknown_condition_parents:
+            raise ValueError(
+                f"{norm.norm_id} has unknown condition parent norm(s): {unknown_condition_parents}"
+            )
+        for parent_id in norm.condition_of_norm_ids:
+            if norm.norm_id not in norms_by_id[parent_id].condition_norm_ids:
+                raise ValueError(
+                    f"{norm.norm_id} condition parent relation from {parent_id} is not reciprocal"
+                )
         unknown_successors = [n for n in norm.superseded_by_norm_ids if n not in norms_by_id]
         if unknown_successors:
             raise ValueError(

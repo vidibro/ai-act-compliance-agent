@@ -51,6 +51,17 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  condition_norm_ids:
+  - AIA-NORM-A059-P1-A-SUBSTANTIAL-PUBLIC-INTEREST
+  - AIA-NORM-A059-P1-B-DATA-NECESSITY
+  - AIA-NORM-A059-P1-C-MONITOR-AND-MITIGATE-RISKS
+  - AIA-NORM-A059-P1-D-ISOLATED-PROTECTED-ENVIRONMENT
+  - AIA-NORM-A059-P1-E-SHARING-RESTRICTIONS
+  - AIA-NORM-A059-P1-F-NO-DATA-SUBJECT-EFFECT
+  - AIA-NORM-A059-P1-G-PROTECT-AND-DELETE-DATA
+  - AIA-NORM-A059-P1-H-KEEP-PROCESSING-LOGS
+  - AIA-NORM-A059-P1-I-DOCUMENT-TRAINING-TESTING-VALIDATION
+  - AIA-NORM-A059-P1-J-PUBLISH-PROJECT-SUMMARY
 - norm_id: AIA-NORM-A059-P1-A-SUBSTANTIAL-PUBLIC-INTEREST
   act_version_date: '2026-07-27'
   kind: obligation
@@ -107,6 +118,8 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  condition_of_norm_ids:
+  - AIA-NORM-A059-P1-CONDITIONAL-FURTHER-PROCESSING
 - norm_id: AIA-NORM-A059-P1-B-DATA-NECESSITY
   act_version_date: '2026-07-27'
   kind: obligation
@@ -144,6 +157,8 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  condition_of_norm_ids:
+  - AIA-NORM-A059-P1-CONDITIONAL-FURTHER-PROCESSING
 - norm_id: AIA-NORM-A059-P1-C-MONITOR-AND-MITIGATE-RISKS
   act_version_date: '2026-07-27'
   kind: obligation
@@ -185,6 +200,8 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  condition_of_norm_ids:
+  - AIA-NORM-A059-P1-CONDITIONAL-FURTHER-PROCESSING
 - norm_id: AIA-NORM-A059-P1-D-ISOLATED-PROTECTED-ENVIRONMENT
   act_version_date: '2026-07-27'
   kind: obligation
@@ -221,6 +238,8 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  condition_of_norm_ids:
+  - AIA-NORM-A059-P1-CONDITIONAL-FURTHER-PROCESSING
 - norm_id: AIA-NORM-A059-P1-E-SHARING-RESTRICTIONS
   act_version_date: '2026-07-27'
   kind: obligation
@@ -256,6 +275,8 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  condition_of_norm_ids:
+  - AIA-NORM-A059-P1-CONDITIONAL-FURTHER-PROCESSING
 - norm_id: AIA-NORM-A059-P1-F-NO-DATA-SUBJECT-EFFECT
   act_version_date: '2026-07-27'
   kind: obligation
@@ -292,6 +313,8 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  condition_of_norm_ids:
+  - AIA-NORM-A059-P1-CONDITIONAL-FURTHER-PROCESSING
 - norm_id: AIA-NORM-A059-P1-G-PROTECT-AND-DELETE-DATA
   act_version_date: '2026-07-27'
   kind: obligation
@@ -328,6 +351,8 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  condition_of_norm_ids:
+  - AIA-NORM-A059-P1-CONDITIONAL-FURTHER-PROCESSING
 - norm_id: AIA-NORM-A059-P1-H-KEEP-PROCESSING-LOGS
   act_version_date: '2026-07-27'
   kind: obligation
@@ -363,6 +388,8 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  condition_of_norm_ids:
+  - AIA-NORM-A059-P1-CONDITIONAL-FURTHER-PROCESSING
 - norm_id: AIA-NORM-A059-P1-I-DOCUMENT-TRAINING-TESTING-VALIDATION
   act_version_date: '2026-07-27'
   kind: obligation
@@ -401,6 +428,8 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  condition_of_norm_ids:
+  - AIA-NORM-A059-P1-CONDITIONAL-FURTHER-PROCESSING
 - norm_id: AIA-NORM-A059-P1-J-PUBLISH-PROJECT-SUMMARY
   act_version_date: '2026-07-27'
   kind: obligation
@@ -443,6 +472,8 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  condition_of_norm_ids:
+  - AIA-NORM-A059-P1-CONDITIONAL-FURTHER-PROCESSING
 - norm_id: AIA-NORM-A059-P2-LAW-ENFORCEMENT-LEGAL-BASIS
   act_version_date: '2026-07-27'
   kind: obligation
