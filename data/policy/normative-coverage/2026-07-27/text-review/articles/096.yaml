@@ -17,6 +17,7 @@ segments:
   disposition: structural
   disposition_reason: ''
   norm_ids: []
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -42,6 +43,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A096-P1-DEVELOP-IMPLEMENTATION-GUIDELINES
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -65,7 +67,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A096-P1-DEVELOP-IMPLEMENTATION-GUIDELINES
   review:
     status: approved
@@ -89,7 +92,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A096-P1-DEVELOP-IMPLEMENTATION-GUIDELINES
   review:
     status: approved
@@ -113,7 +117,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A096-P1-DEVELOP-IMPLEMENTATION-GUIDELINES
   review:
     status: approved
@@ -137,7 +142,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A096-P1-DEVELOP-IMPLEMENTATION-GUIDELINES
   review:
     status: approved
@@ -163,7 +169,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A096-P1-DEVELOP-IMPLEMENTATION-GUIDELINES
   review:
     status: approved
@@ -188,7 +195,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A096-P1-DEVELOP-IMPLEMENTATION-GUIDELINES
   review:
     status: approved
@@ -217,8 +225,9 @@ segments:
   disposition: normative
   disposition_reason: ''
   norm_ids:
-  - AIA-NORM-A096-P1-DEVELOP-IMPLEMENTATION-GUIDELINES
   - AIA-NORM-A096-P1-G-PUBLISH-COMPLEMENTARITY-GUIDELINES
+  qualifying_norm_ids:
+  - AIA-NORM-A096-P1-DEVELOP-IMPLEMENTATION-GUIDELINES
   - AIA-NORM-A096-P1-G-PUBLISH-COMPLEMENTARITY-GUIDELINES
   review:
     status: approved
@@ -247,6 +256,7 @@ segments:
   norm_ids:
   - AIA-NORM-A096-P1-INVOLVE-BOARD
   - AIA-NORM-A096-P1-ATTEND-AFFECTED-NEEDS
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -274,6 +284,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A096-P1-ACCOUNT-FOR-STATE-OF-ART
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -299,6 +310,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A096-P2-UPDATE-GUIDELINES
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass

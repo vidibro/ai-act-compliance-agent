@@ -7,28 +7,14 @@ records:
     understood by the authority in one of the official languages of the institutions of the Union as indicated
     by the Member State concerned.
   action: provide a requesting competent authority with all information and documentation necessary to
-    demonstrate Section 2 conformity
-  subject_ref: provider
-  subject_category: supported_operator
-  conditions: &id001
-  - a competent authority makes a reasoned request
-  implementation_refs: &id002
-  - AIA-PO-A21
-  verification_mode: reported_not_judged
-  verified_by: vidibro
-- norm_id: AIA-NORM-A021-P1-AUTHORITY-LANGUAGE
-  source: A021-P001
-  quote: Providers of high-risk AI systems shall, upon a reasoned request by a competent authority, provide
-    that authority all the information and documentation necessary to demonstrate the conformity of the
-    high-risk AI system with the requirements set out in Section 2, in a language which can be easily
-    understood by the authority in one of the official languages of the institutions of the Union as indicated
-    by the Member State concerned.
-  action: provide the requested material in an easily understood official EU-institution language indicated
+    demonstrate Section 2 conformity, in an easily understood official EU-institution language indicated
     by the relevant Member State
   subject_ref: provider
   subject_category: supported_operator
-  conditions: *id001
-  implementation_refs: *id002
+  conditions:
+  - a competent authority makes a reasoned request
+  implementation_refs: &id002
+  - AIA-PO-A21
   verification_mode: reported_not_judged
   verified_by: vidibro
 - norm_id: AIA-NORM-A021-P2-PROVIDE-LOG-ACCESS

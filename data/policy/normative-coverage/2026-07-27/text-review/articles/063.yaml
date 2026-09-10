@@ -17,6 +17,7 @@ segments:
   disposition: structural
   disposition_reason: ''
   norm_ids: []
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -47,6 +48,7 @@ segments:
   norm_ids:
   - AIA-NORM-A063-P1-SIMPLIFIED-SME-QUALITY-MANAGEMENT
   - AIA-NORM-A063-P1-COMMISSION-SIMPLIFICATION-GUIDANCE
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -73,6 +75,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A063-P2-NO-BROADER-EXEMPTION
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass

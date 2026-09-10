@@ -18,6 +18,7 @@ segments:
   disposition: structural
   disposition_reason: ''
   norm_ids: []
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -45,6 +46,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A111-P1-BRING-LARGE-SCALE-IT-INTO-COMPLIANCE
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -71,6 +73,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A111-P1-ACCOUNT-FOR-REQUIREMENTS-IN-EVALUATION
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -102,6 +105,7 @@ segments:
   norm_ids:
   - AIA-NORM-A111-P2-LEGACY-HIGH-RISK-APPLICABILITY
   - AIA-NORM-A111-P2-PUBLIC-AUTHORITY-SYSTEM-COMPLIANCE
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -128,6 +132,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A111-P3-LEGACY-GPAI-COMPLIANCE
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -154,6 +159,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A111-P4-LEGACY-SYNTHETIC-CONTENT-COMPLIANCE
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass

@@ -17,29 +17,19 @@ records:
     resolution: internal_resolved
     detail: Article 12(1) supplies the referenced automatic-logging requirement.
   verified_by: vidibro
-- norm_id: AIA-NORM-A019-P1-PURPOSE-APPROPRIATE-PERIOD
+- norm_id: AIA-NORM-A019-P1-RETENTION-PERIOD
   source: A019-P001
   quote: the logs shall be kept for a period appropriate to the intended purpose of the high-risk AI system,
-    of at least six months, unless provided otherwise in the applicable Union or national law, in particular
-    in Union law on the protection of personal data.
-  action: "retain controlled logs for a period appropriate to the system\u2019s intended purpose"
+    of at least six months
+  action: "retain controlled logs for a period appropriate to the system\u2019s intended purpose and for at
+    least six months"
   subject_ref: provider
   subject_category: supported_operator
   conditions:
   - "the automatically generated logs are under the provider\u2019s control"
-  implementation_refs: *id001
-  verification_mode: reported_not_judged
-  verified_by: vidibro
-- norm_id: AIA-NORM-A019-P1-SIX-MONTH-MINIMUM
-  source: A019-P001
-  quote: the logs shall be kept for a period appropriate to the intended purpose of the high-risk AI system,
-    of at least six months, unless provided otherwise in the applicable Union or national law, in particular
-    in Union law on the protection of personal data.
-  action: retain controlled logs for at least six months
-  subject_ref: provider
-  subject_category: supported_operator
-  conditions:
-  - "the automatically generated logs are under the provider\u2019s control"
+  exceptions:
+  - applicable Union or national law, particularly personal-data law, provides a different retention
+    period
   implementation_refs: *id001
   verification_mode: reported_not_judged
   verified_by: vidibro
@@ -53,6 +43,10 @@ records:
   kind: applicability
   conditions:
   - applicable Union or national law provides a different retention period
+  dependencies:
+  - dependency_ref: AIA-NORM-A019-P1-RETENTION-PERIOD
+    resolution: internal_resolved
+    detail: The external-law period overrides the ordinary purpose-appropriate six-month-minimum rule.
   implementation_refs: *id001
   verification_mode: reported_conditionally
   verified_by: vidibro

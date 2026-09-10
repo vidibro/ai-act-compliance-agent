@@ -264,9 +264,12 @@ norms:
   norm_text: the placing on the market, the putting into service for this specific purpose, or the use
     of an AI system for making risk assessments of natural persons in order to assess or predict the risk
     of a natural person committing a criminal offence, based solely on the profiling of a natural person
-    or on assessing their personality traits and characteristics
+    or on assessing their personality traits and characteristics; this prohibition shall not apply to
+    AI systems used to support the human assessment of the involvement of a person in a criminal activity,
+    which is already based on objective and verifiable facts directly linked to a criminal activity
   detection_channels:
   - semantic_legal_effect
+  - shall_token
   - cross_reference_structure
   - existing_implementation
   primary_spans:
@@ -389,7 +392,9 @@ norms:
   norm_text: the placing on the market, the putting into service for this specific purpose, or the use
     of biometric categorisation systems that categorise individually natural persons based on their biometric
     data to deduce or infer their race, political opinions, trade union membership, religious or philosophical
-    beliefs, sex life or sexual orientation
+    beliefs, sex life or sexual orientation; this prohibition does not cover any labelling or filtering
+    of lawfully acquired biometric datasets, such as images, based on biometric data or categorizing of
+    biometric data in the area of law enforcement
   detection_channels:
   - semantic_legal_effect
   - cross_reference_structure
@@ -850,13 +855,12 @@ norms:
     category: public_authority
   action: register the real-time remote biometric identification system in the EU database before authorisation,
     or without undue delay after urgent use begins
-  norm_text: "The use of the \u2018 real-time \u2019 remote biometric identification system in publicly\
-    \ accessible spaces shall be authorised only if the law enforcement authority has completed a fundamental\
-    \ rights impact assessment as provided for in Article 27 and has registered the system in the EU database\
-    \ according to Article 49."
+  norm_text: has registered the system in the EU database according to Article 49. However, in duly justified
+    cases of urgency, the use of such systems may be commenced without the registration in the EU database,
+    provided that such registration is completed without undue delay.
   detection_channels:
   - semantic_legal_effect
-  - shall_token
+  - other_modal
   - cross_reference_structure
   primary_spans:
   - AIA-TEXT-A005-P027

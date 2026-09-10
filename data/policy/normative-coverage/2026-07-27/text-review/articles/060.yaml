@@ -17,6 +17,7 @@ segments:
   disposition: structural
   disposition_reason: ''
   norm_ids: []
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -45,6 +46,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A060-P1-REAL-WORLD-TESTING-PERMISSION
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -71,6 +73,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A060-P1-COMMISSION-PLAN-ACTS
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -97,6 +100,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A060-P1-PRESERVE-PRODUCT-TESTING-LAW
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -124,6 +128,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A060-P2-PREMARKET-TESTING-PERMISSION
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -149,6 +154,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A060-P3-PRESERVE-ETHICAL-REVIEW
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -174,6 +180,22 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A060-P4-PERMISSION
+  qualifying_norm_ids:
+  - AIA-NORM-A060-P4-A-SUBMIT-TESTING-PLAN
+  - AIA-NORM-A060-P4-B-APPROVAL-AND-TACIT-EFFECT
+  - AIA-NORM-A060-P4-C-REGISTER-TESTING
+  - AIA-NORM-A060-P4-D-UNION-ESTABLISHMENT
+  - AIA-NORM-A060-P4-E-TRANSFER-SAFEGUARDS
+  - AIA-NORM-A060-P4-F-DURATION-LIMIT
+  - AIA-NORM-A060-P4-EXTEND
+  - AIA-NORM-A060-P4-G-PROTECT-VULNERABLE-SUBJECTS
+  - AIA-NORM-A060-P4-H-INFORM-AND-AGREE-ROLES
+  - AIA-NORM-A060-P4-H-CONCLUDE-ROLES-AGREEMENT
+  - AIA-NORM-A060-P4-I-CONSENT-OR-SAFEGUARDS
+  - AIA-NORM-A060-P4-I-NO-NEGATIVE-EFFECT
+  - AIA-NORM-A060-P4-I-DELETE-SUBJECT-DATA
+  - AIA-NORM-A060-P4-J-QUALIFIED-OVERSIGHT
+  - AIA-NORM-A060-P4-K-REVERSIBLE-OUTPUTS
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -199,8 +221,9 @@ segments:
   disposition: normative
   disposition_reason: ''
   norm_ids:
-  - AIA-NORM-A060-P4-PERMISSION
   - AIA-NORM-A060-P4-A-SUBMIT-TESTING-PLAN
+  qualifying_norm_ids:
+  - AIA-NORM-A060-P4-PERMISSION
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -229,8 +252,9 @@ segments:
   disposition: normative
   disposition_reason: ''
   norm_ids:
-  - AIA-NORM-A060-P4-PERMISSION
   - AIA-NORM-A060-P4-B-APPROVAL-AND-TACIT-EFFECT
+  qualifying_norm_ids:
+  - AIA-NORM-A060-P4-PERMISSION
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -265,8 +289,9 @@ segments:
   disposition: normative
   disposition_reason: ''
   norm_ids:
-  - AIA-NORM-A060-P4-PERMISSION
   - AIA-NORM-A060-P4-C-REGISTER-TESTING
+  qualifying_norm_ids:
+  - AIA-NORM-A060-P4-PERMISSION
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -291,8 +316,9 @@ segments:
   disposition: normative
   disposition_reason: ''
   norm_ids:
-  - AIA-NORM-A060-P4-PERMISSION
   - AIA-NORM-A060-P4-D-UNION-ESTABLISHMENT
+  qualifying_norm_ids:
+  - AIA-NORM-A060-P4-PERMISSION
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -318,8 +344,9 @@ segments:
   disposition: normative
   disposition_reason: ''
   norm_ids:
-  - AIA-NORM-A060-P4-PERMISSION
   - AIA-NORM-A060-P4-E-TRANSFER-SAFEGUARDS
+  qualifying_norm_ids:
+  - AIA-NORM-A060-P4-PERMISSION
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -346,9 +373,10 @@ segments:
   disposition: normative
   disposition_reason: ''
   norm_ids:
-  - AIA-NORM-A060-P4-PERMISSION
   - AIA-NORM-A060-P4-F-DURATION-LIMIT
   - AIA-NORM-A060-P4-EXTEND
+  qualifying_norm_ids:
+  - AIA-NORM-A060-P4-PERMISSION
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -373,8 +401,9 @@ segments:
   disposition: normative
   disposition_reason: ''
   norm_ids:
-  - AIA-NORM-A060-P4-PERMISSION
   - AIA-NORM-A060-P4-G-PROTECT-VULNERABLE-SUBJECTS
+  qualifying_norm_ids:
+  - AIA-NORM-A060-P4-PERMISSION
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -404,9 +433,10 @@ segments:
   disposition: normative
   disposition_reason: ''
   norm_ids:
-  - AIA-NORM-A060-P4-PERMISSION
   - AIA-NORM-A060-P4-H-INFORM-AND-AGREE-ROLES
   - AIA-NORM-A060-P4-H-CONCLUDE-ROLES-AGREEMENT
+  qualifying_norm_ids:
+  - AIA-NORM-A060-P4-PERMISSION
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -434,10 +464,11 @@ segments:
   disposition: normative
   disposition_reason: ''
   norm_ids:
-  - AIA-NORM-A060-P4-PERMISSION
   - AIA-NORM-A060-P4-I-CONSENT-OR-SAFEGUARDS
   - AIA-NORM-A060-P4-I-NO-NEGATIVE-EFFECT
   - AIA-NORM-A060-P4-I-DELETE-SUBJECT-DATA
+  qualifying_norm_ids:
+  - AIA-NORM-A060-P4-PERMISSION
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -463,8 +494,9 @@ segments:
   disposition: normative
   disposition_reason: ''
   norm_ids:
-  - AIA-NORM-A060-P4-PERMISSION
   - AIA-NORM-A060-P4-J-QUALIFIED-OVERSIGHT
+  qualifying_norm_ids:
+  - AIA-NORM-A060-P4-PERMISSION
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -489,8 +521,9 @@ segments:
   disposition: normative
   disposition_reason: ''
   norm_ids:
-  - AIA-NORM-A060-P4-PERMISSION
   - AIA-NORM-A060-P4-K-REVERSIBLE-OUTPUTS
+  qualifying_norm_ids:
+  - AIA-NORM-A060-P4-PERMISSION
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -521,6 +554,7 @@ segments:
   - AIA-NORM-A060-P5-WITHDRAW-AND-DELETE
   - AIA-NORM-A060-P5-REQUEST-DATA-DELETION
   - AIA-NORM-A060-P5-PRIOR-ACTIVITIES-UNAFFECTED
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -550,6 +584,7 @@ segments:
   norm_ids:
   - AIA-NORM-A060-P6-CONFER-AND-USE-SURVEILLANCE-POWERS
   - AIA-NORM-A060-P6-USE-SURVEILLANCE-POWERS
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -582,6 +617,7 @@ segments:
   - AIA-NORM-A060-P7-IMMEDIATE-MITIGATION
   - AIA-NORM-A060-P7-SUSPEND-OR-TERMINATE
   - AIA-NORM-A060-P7-RECALL-PROCEDURE
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -608,6 +644,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A060-P8-NOTIFY-OUTCOMES
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -633,6 +670,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A060-P9-TESTING-LIABILITY
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass

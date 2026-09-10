@@ -17,6 +17,7 @@ segments:
   disposition: structural
   disposition_reason: ''
   norm_ids: []
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -43,6 +44,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A014-P1-EFFECTIVE-OVERSIGHT
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -70,6 +72,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A014-P2-RISK-PREVENTION
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -97,6 +100,7 @@ segments:
   norm_ids:
   - AIA-NORM-A014-P3-COMMENSURATE-MEASURES
   - AIA-NORM-A014-P3-MEASURE-ROUTES
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -120,7 +124,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A014-P3-MEASURE-ROUTES
   review:
     status: approved
@@ -145,7 +150,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A014-P3-MEASURE-ROUTES
   review:
     status: approved
@@ -171,15 +177,13 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
-  - AIA-NORM-A014-P4-A-UNDERSTAND-CAPABILITIES
-  - AIA-NORM-A014-P4-A-MONITOR-OPERATION
+  norm_ids: []
+  qualifying_norm_ids:
+  - AIA-NORM-A014-P4-A-UNDERSTAND-AND-MONITOR
   - AIA-NORM-A014-P4-B-AUTOMATION-BIAS
   - AIA-NORM-A014-P4-C-INTERPRET-OUTPUT
-  - AIA-NORM-A014-P4-D-DECLINE-USE
-  - AIA-NORM-A014-P4-D-CONTROL-OUTPUT
-  - AIA-NORM-A014-P4-E-INTERVENE
-  - AIA-NORM-A014-P4-E-SAFE-STOP
+  - AIA-NORM-A014-P4-D-DECLINE-USE-OR-CONTROL-OUTPUT
+  - AIA-NORM-A014-P4-E-INTERVENE-OR-SAFE-STOP
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -205,8 +209,8 @@ segments:
   disposition: normative
   disposition_reason: ''
   norm_ids:
-  - AIA-NORM-A014-P4-A-UNDERSTAND-CAPABILITIES
-  - AIA-NORM-A014-P4-A-MONITOR-OPERATION
+  - AIA-NORM-A014-P4-A-UNDERSTAND-AND-MONITOR
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -233,6 +237,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A014-P4-B-AUTOMATION-BIAS
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -256,6 +261,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A014-P4-C-INTERPRET-OUTPUT
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -280,8 +286,8 @@ segments:
   disposition: normative
   disposition_reason: ''
   norm_ids:
-  - AIA-NORM-A014-P4-D-DECLINE-USE
-  - AIA-NORM-A014-P4-D-CONTROL-OUTPUT
+  - AIA-NORM-A014-P4-D-DECLINE-USE-OR-CONTROL-OUTPUT
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -305,8 +311,8 @@ segments:
   disposition: normative
   disposition_reason: ''
   norm_ids:
-  - AIA-NORM-A014-P4-E-INTERVENE
-  - AIA-NORM-A014-P4-E-SAFE-STOP
+  - AIA-NORM-A014-P4-E-INTERVENE-OR-SAFE-STOP
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -335,6 +341,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A014-P5-TWO-PERSON-VERIFICATION
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -361,6 +368,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A014-P5-DISPROPORTIONATE-EXCEPTION
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass

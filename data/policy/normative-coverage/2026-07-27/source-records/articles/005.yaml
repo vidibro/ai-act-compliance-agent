@@ -150,7 +150,9 @@ records:
   quote: the placing on the market, the putting into service for this specific purpose, or the use of
     an AI system for making risk assessments of natural persons in order to assess or predict the risk
     of a natural person committing a criminal offence, based solely on the profiling of a natural person
-    or on assessing their personality traits and characteristics
+    or on assessing their personality traits and characteristics; this prohibition shall not apply to
+    AI systems used to support the human assessment of the involvement of a person in a criminal activity,
+    which is already based on objective and verifiable facts directly linked to a criminal activity
   action: prohibit placing on the market, putting into service for the purpose, or using AI systems to
     assess or predict criminal-offence risk based solely on profiling or personality traits and characteristics
   subject_ref: operator
@@ -208,7 +210,9 @@ records:
   quote: the placing on the market, the putting into service for this specific purpose, or the use of
     biometric categorisation systems that categorise individually natural persons based on their biometric
     data to deduce or infer their race, political opinions, trade union membership, religious or philosophical
-    beliefs, sex life or sexual orientation
+    beliefs, sex life or sexual orientation; this prohibition does not cover any labelling or filtering
+    of lawfully acquired biometric datasets, such as images, based on biometric data or categorizing of
+    biometric data in the area of law enforcement
   action: prohibit placing on the market, putting into service for the purpose, or using biometric categorisation
     systems to infer the listed sensitive characteristics of individuals
   subject_ref: operator
@@ -439,10 +443,10 @@ records:
   verified_by: vidibro
 - norm_id: AIA-NORM-A005-P2-REGISTER-SYSTEM
   source: A005-P027
-  quote: "The use of the \u2018 real-time \u2019 remote biometric identification system in publicly accessible\
-    \ spaces shall be authorised only if the law enforcement authority has completed a fundamental rights\
-    \ impact assessment as provided for in Article 27 and has registered the system in the EU database\
-    \ according to Article 49."
+  quote: "has registered the system in the EU database\
+    \ according to Article 49. However, in duly justified cases of urgency, the use of such systems may\
+    \ be commenced without the registration in the EU database, provided that such registration is completed\
+    \ without undue delay."
   action: register the real-time remote biometric identification system in the EU database before authorisation,
     or without undue delay after urgent use begins
   subject_ref: law_enforcement_authority

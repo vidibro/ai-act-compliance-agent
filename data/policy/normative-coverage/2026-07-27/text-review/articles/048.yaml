@@ -17,6 +17,7 @@ segments:
   disposition: structural
   disposition_reason: ''
   norm_ids: []
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -42,6 +43,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A048-P1-GENERAL-CE-PRINCIPLES
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -68,6 +70,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A048-P2-DIGITAL-CE-MARKING
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -94,6 +97,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A048-P3-AFFIX-CE-MARKING
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -123,6 +127,7 @@ segments:
   - AIA-NORM-A048-P4-FOLLOW-WITH-BODY-NUMBER
   - AIA-NORM-A048-P4-AFFIX-BODY-NUMBER
   - AIA-NORM-A048-P4-PROMOTIONAL-BODY-NUMBER
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -149,6 +154,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A048-P5-OTHER-LAW-COMPLIANCE
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass

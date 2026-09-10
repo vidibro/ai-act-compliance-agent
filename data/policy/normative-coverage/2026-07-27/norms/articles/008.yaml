@@ -96,8 +96,10 @@ norms:
     category: supported_operator
   action: ensure a product containing an AI system fully complies with every applicable requirement under
     the relevant Union harmonisation legislation
-  norm_text: providers shall be responsible for ensuring that their product is fully compliant with all
-    applicable requirements under applicable Union harmonisation legislation.
+  norm_text: Where a product contains an AI system, to which the requirements of this Regulation as well
+    as requirements of the Union harmonisation legislation listed in Section A of Annex I apply, providers
+    shall be responsible for ensuring that their product is fully compliant with all applicable requirements
+    under applicable Union harmonisation legislation.
   detection_channels:
   - semantic_legal_effect
   - shall_token
@@ -141,7 +143,9 @@ norms:
     category: supported_operator
   action: integrate AI testing, reporting, information, and documentation into existing product documentation
     and procedures required by Annex I Section A legislation
-  norm_text: providers shall have a choice of integrating, as appropriate, the necessary testing and reporting
+  norm_text: In ensuring the compliance of high-risk AI systems referred to in paragraph 1 with the requirements
+    set out in this Section, and in order to ensure consistency, avoid duplication and minimise additional
+    burdens, providers shall have a choice of integrating, as appropriate, the necessary testing and reporting
     processes, information and documentation they provide with regard to their product into documentation
     and procedures that already exist and are required under the Union harmonisation legislation listed
     in Section A of Annex I.
@@ -155,6 +159,8 @@ norms:
   qualifier_spans: []
   effective_date_spans: []
   conditions:
+  - the product contains an AI system to which both this Regulation and Union harmonisation legislation
+    listed in Annex I Section A apply
   - integration is appropriate for ensuring consistency, avoiding duplication, and minimising additional
     burdens
   exceptions: []

@@ -17,6 +17,7 @@ segments:
   disposition: structural
   disposition_reason: ''
   norm_ids: []
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -48,6 +49,7 @@ segments:
   - AIA-NORM-A052-P1-NOTIFY-COMMISSION
   - AIA-NORM-A052-P1-NOTIFICATION-CONTENT
   - AIA-NORM-A052-P1-DESIGNATE-UNNOTIFIED-MODEL
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -76,6 +78,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A052-P2-PRESENT-REBUTTAL
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -105,6 +108,7 @@ segments:
   norm_ids:
   - AIA-NORM-A052-P3-REJECT-UNSUBSTANTIATED-ARGUMENTS
   - AIA-NORM-A052-P3-SYSTEMIC-RISK-CONSEQUENCE
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -131,6 +135,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A052-P4-DESIGNATE-SYSTEMIC-RISK
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -156,6 +161,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A052-P4-AMEND-ANNEX-XIII
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -190,6 +196,7 @@ segments:
   - AIA-NORM-A052-P5-REASSESS-DESIGNATION
   - AIA-NORM-A052-P5-REQUEST-CONTENT
   - AIA-NORM-A052-P5-REQUEST-AFTER-SIX-MONTHS
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -219,6 +226,7 @@ segments:
   - AIA-NORM-A052-P6-PUBLISH-LIST
   - AIA-NORM-A052-P6-KEEP-LIST-CURRENT
   - AIA-NORM-A052-P6-PROTECT-CONFIDENTIAL-INFORMATION
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass

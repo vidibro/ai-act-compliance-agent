@@ -17,6 +17,7 @@ segments:
   disposition: structural
   disposition_reason: ''
   norm_ids: []
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -45,6 +46,7 @@ segments:
   norm_ids:
   - AIA-NORM-A028-P1-DESIGNATE-AUTHORITY
   - AIA-NORM-A028-P1-COOPERATIVE-PROCEDURES
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -71,6 +73,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A028-P2-ACCREDITATION-BODY-OPTION
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -97,6 +100,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A028-P3-INDEPENDENCE-SAFEGUARDS
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -123,6 +127,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A028-P4-SEPARATE-DECISION-MAKERS
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -149,6 +154,7 @@ segments:
   norm_ids:
   - AIA-NORM-A028-P5-NO-CONFORMITY-ACTIVITIES
   - AIA-NORM-A028-P5-NO-CONSULTANCY
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -174,6 +180,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A028-P6-CONFIDENTIALITY
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -202,6 +209,7 @@ segments:
   norm_ids:
   - AIA-NORM-A028-P7-ADEQUATE-PERSONNEL
   - AIA-NORM-A028-P7-PERSONNEL-EXPERTISE
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -235,6 +243,7 @@ segments:
   norm_ids:
   - AIA-NORM-A028-P8-SINGLE-APPLICATION
   - AIA-NORM-A028-P8-COOPERATE-IN-ASSESSMENTS
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -263,6 +272,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A028-P8-EXISTING-BODY-ACCESS
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -292,6 +302,7 @@ segments:
   norm_ids:
   - AIA-NORM-A028-P8-APPLY-ONCE
   - AIA-NORM-A028-P8-DESIGNATION-ACROSS-LEGISLATION
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -319,6 +330,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A028-P8-UNIFIED-PROCEDURE-CHARACTERISTICS
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -346,6 +358,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A028-P9-DEFAULT-NOTIFYING-AUTHORITY
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass

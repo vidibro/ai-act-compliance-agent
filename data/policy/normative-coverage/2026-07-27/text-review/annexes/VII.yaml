@@ -18,6 +18,7 @@ segments:
   disposition: structural
   disposition_reason: ''
   norm_ids: []
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -42,6 +43,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-ANNEX-VII-PROCEDURE-COMPOSITION
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -66,10 +68,11 @@ segments:
   disposition: normative
   disposition_reason: ''
   norm_ids:
-  - AIA-NORM-ANNEX-VII-PROCEDURE-COMPOSITION
   - AIA-NORM-ANNEX-VII-OVERVIEW-QMS-EXAMINATION
   - AIA-NORM-ANNEX-VII-OVERVIEW-QMS-SURVEILLANCE
   - AIA-NORM-ANNEX-VII-OVERVIEW-DOCUMENTATION-EXAMINATION
+  qualifying_norm_ids:
+  - AIA-NORM-ANNEX-VII-PROCEDURE-COMPOSITION
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -117,6 +120,7 @@ segments:
   - AIA-NORM-ANNEX-VII-QMS-DECISION
   - AIA-NORM-ANNEX-VII-QMS-CHANGE-DECISION
   - AIA-NORM-ANNEX-VII-QMS-CHANGE-NOTIFICATION
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -201,6 +205,7 @@ segments:
   - AIA-NORM-ANNEX-VII-INFORM-CHANGES
   - AIA-NORM-ANNEX-VII-CHANGE-ROUTE-DECISION
   - AIA-NORM-ANNEX-VII-ISSUE-SUPPLEMENT
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -234,6 +239,7 @@ segments:
   - AIA-NORM-ANNEX-VII-SURVEILLANCE-SHARE-INFORMATION
   - AIA-NORM-ANNEX-VII-AUDIT
   - AIA-NORM-ANNEX-VII-ADDITIONAL-TESTS
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass

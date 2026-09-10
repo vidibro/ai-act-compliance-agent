@@ -18,6 +18,7 @@ segments:
   disposition: structural
   disposition_reason: ''
   norm_ids: []
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -44,6 +45,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A059-P1-CONDITIONAL-FURTHER-PROCESSING
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -68,8 +70,9 @@ segments:
   disposition: normative
   disposition_reason: ''
   norm_ids:
-  - AIA-NORM-A059-P1-CONDITIONAL-FURTHER-PROCESSING
   - AIA-NORM-A059-P1-A-SUBSTANTIAL-PUBLIC-INTEREST
+  qualifying_norm_ids:
+  - AIA-NORM-A059-P1-CONDITIONAL-FURTHER-PROCESSING
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -93,7 +96,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A059-P1-A-SUBSTANTIAL-PUBLIC-INTEREST
   review:
     status: approved
@@ -119,7 +123,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A059-P1-A-SUBSTANTIAL-PUBLIC-INTEREST
   review:
     status: approved
@@ -143,7 +148,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A059-P1-A-SUBSTANTIAL-PUBLIC-INTEREST
   review:
     status: approved
@@ -168,7 +174,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A059-P1-A-SUBSTANTIAL-PUBLIC-INTEREST
   review:
     status: approved
@@ -192,7 +199,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A059-P1-A-SUBSTANTIAL-PUBLIC-INTEREST
   review:
     status: approved
@@ -219,8 +227,9 @@ segments:
   disposition: normative
   disposition_reason: ''
   norm_ids:
-  - AIA-NORM-A059-P1-CONDITIONAL-FURTHER-PROCESSING
   - AIA-NORM-A059-P1-B-DATA-NECESSITY
+  qualifying_norm_ids:
+  - AIA-NORM-A059-P1-CONDITIONAL-FURTHER-PROCESSING
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -247,8 +256,9 @@ segments:
   disposition: normative
   disposition_reason: ''
   norm_ids:
-  - AIA-NORM-A059-P1-CONDITIONAL-FURTHER-PROCESSING
   - AIA-NORM-A059-P1-C-MONITOR-AND-MITIGATE-RISKS
+  qualifying_norm_ids:
+  - AIA-NORM-A059-P1-CONDITIONAL-FURTHER-PROCESSING
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -274,8 +284,9 @@ segments:
   disposition: normative
   disposition_reason: ''
   norm_ids:
-  - AIA-NORM-A059-P1-CONDITIONAL-FURTHER-PROCESSING
   - AIA-NORM-A059-P1-D-ISOLATED-PROTECTED-ENVIRONMENT
+  qualifying_norm_ids:
+  - AIA-NORM-A059-P1-CONDITIONAL-FURTHER-PROCESSING
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -300,8 +311,9 @@ segments:
   disposition: normative
   disposition_reason: ''
   norm_ids:
-  - AIA-NORM-A059-P1-CONDITIONAL-FURTHER-PROCESSING
   - AIA-NORM-A059-P1-E-SHARING-RESTRICTIONS
+  qualifying_norm_ids:
+  - AIA-NORM-A059-P1-CONDITIONAL-FURTHER-PROCESSING
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -327,8 +339,9 @@ segments:
   disposition: normative
   disposition_reason: ''
   norm_ids:
-  - AIA-NORM-A059-P1-CONDITIONAL-FURTHER-PROCESSING
   - AIA-NORM-A059-P1-F-NO-DATA-SUBJECT-EFFECT
+  qualifying_norm_ids:
+  - AIA-NORM-A059-P1-CONDITIONAL-FURTHER-PROCESSING
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -354,8 +367,9 @@ segments:
   disposition: normative
   disposition_reason: ''
   norm_ids:
-  - AIA-NORM-A059-P1-CONDITIONAL-FURTHER-PROCESSING
   - AIA-NORM-A059-P1-G-PROTECT-AND-DELETE-DATA
+  qualifying_norm_ids:
+  - AIA-NORM-A059-P1-CONDITIONAL-FURTHER-PROCESSING
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -381,8 +395,9 @@ segments:
   disposition: normative
   disposition_reason: ''
   norm_ids:
-  - AIA-NORM-A059-P1-CONDITIONAL-FURTHER-PROCESSING
   - AIA-NORM-A059-P1-H-KEEP-PROCESSING-LOGS
+  qualifying_norm_ids:
+  - AIA-NORM-A059-P1-CONDITIONAL-FURTHER-PROCESSING
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -408,8 +423,9 @@ segments:
   disposition: normative
   disposition_reason: ''
   norm_ids:
-  - AIA-NORM-A059-P1-CONDITIONAL-FURTHER-PROCESSING
   - AIA-NORM-A059-P1-I-DOCUMENT-TRAINING-TESTING-VALIDATION
+  qualifying_norm_ids:
+  - AIA-NORM-A059-P1-CONDITIONAL-FURTHER-PROCESSING
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -436,8 +452,9 @@ segments:
   disposition: normative
   disposition_reason: ''
   norm_ids:
-  - AIA-NORM-A059-P1-CONDITIONAL-FURTHER-PROCESSING
   - AIA-NORM-A059-P1-J-PUBLISH-PROJECT-SUMMARY
+  qualifying_norm_ids:
+  - AIA-NORM-A059-P1-CONDITIONAL-FURTHER-PROCESSING
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -466,6 +483,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A059-P2-LAW-ENFORCEMENT-LEGAL-BASIS
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -494,6 +512,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A059-P3-PRESERVE-OTHER-DATA-LAW
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass

@@ -17,6 +17,7 @@ segments:
   disposition: structural
   disposition_reason: ''
   norm_ids: []
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -42,6 +43,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A072-P1-ESTABLISH-AND-DOCUMENT-MONITORING
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -72,6 +74,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A072-P2-OPERATE-LIFETIME-MONITORING
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -101,6 +104,7 @@ segments:
   - AIA-NORM-A072-P3-PLAN-AND-TECHNICAL-DOCUMENTATION
   - AIA-NORM-A072-P3-PLAN-IN-TECHNICAL-DOCUMENTATION
   - AIA-NORM-A072-P3-COMMISSION-PLAN-GUIDANCE
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -130,6 +134,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A072-P4-INTEGRATE-EXISTING-MONITORING
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -155,7 +160,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A072-P4-INTEGRATE-EXISTING-MONITORING
   review:
     status: approved

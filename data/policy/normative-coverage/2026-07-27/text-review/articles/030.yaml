@@ -17,6 +17,7 @@ segments:
   disposition: structural
   disposition_reason: ''
   norm_ids: []
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -42,6 +43,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A030-P1-ARTICLE-31-GATE
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -69,6 +71,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A030-P2-ELECTRONIC-NOTIFICATION
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -97,6 +100,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A030-P2-AMEND-ANNEX-XIV
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -128,6 +132,7 @@ segments:
   norm_ids:
   - AIA-NORM-A030-P3-NOTIFICATION-CONTENT
   - AIA-NORM-A030-P3-NONACCREDITED-EVIDENCE
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -156,6 +161,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A030-P4-NO-OBJECTION-AUTHORISATION
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -185,6 +191,7 @@ segments:
   - AIA-NORM-A030-P5-CONSULT-ON-OBJECTIONS
   - AIA-NORM-A030-P5-DECIDE-AUTHORISATION
   - AIA-NORM-A030-P5-ADDRESS-DECISION
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass

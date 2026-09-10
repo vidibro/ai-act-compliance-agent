@@ -17,6 +17,7 @@ segments:
   disposition: structural
   disposition_reason: ''
   norm_ids: []
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -45,6 +46,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A100-P1-IMPOSE-UNION-BODY-FINES
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -69,7 +71,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A100-P1-IMPOSE-UNION-BODY-FINES
   review:
     status: approved
@@ -94,7 +97,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A100-P1-IMPOSE-UNION-BODY-FINES
   review:
     status: approved
@@ -119,7 +123,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A100-P1-IMPOSE-UNION-BODY-FINES
   review:
     status: approved
@@ -146,7 +151,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A100-P1-IMPOSE-UNION-BODY-FINES
   review:
     status: approved
@@ -170,7 +176,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A100-P1-IMPOSE-UNION-BODY-FINES
   review:
     status: approved
@@ -196,7 +203,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A100-P1-IMPOSE-UNION-BODY-FINES
   review:
     status: approved
@@ -220,7 +228,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A100-P1-IMPOSE-UNION-BODY-FINES
   review:
     status: approved
@@ -247,6 +256,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A100-P2-ARTICLE5-FINE
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -272,6 +282,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A100-P3-OTHER-REQUIREMENT-FINE
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -303,6 +314,7 @@ segments:
   - AIA-NORM-A100-P4-HEARING-RIGHTS
   - AIA-NORM-A100-P4-DECISION-GROUNDS
   - AIA-NORM-A100-P4-ASSOCIATE-COMPLAINANTS
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -329,6 +341,7 @@ segments:
   norm_ids:
   - AIA-NORM-A100-P5-DEFENCE-AND-FILE-ACCESS
   - AIA-NORM-A100-P5-FILE-ACCESS-ENTITLEMENT
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -356,6 +369,7 @@ segments:
   norm_ids:
   - AIA-NORM-A100-P6-FINE-FUNDS-AND-OPERATION
   - AIA-NORM-A100-P6-PRESERVE-FINED-BODY-OPERATION
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -382,6 +396,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A100-P7-ANNUAL-FINE-NOTIFICATION
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass

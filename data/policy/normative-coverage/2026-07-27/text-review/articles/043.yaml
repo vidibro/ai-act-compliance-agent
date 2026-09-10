@@ -17,6 +17,7 @@ segments:
   disposition: structural
   disposition_reason: ''
   norm_ids: []
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -60,6 +61,7 @@ segments:
   - AIA-NORM-A043-P1-REQUIRED-ANNEX-VII-ROUTE
   - AIA-NORM-A043-P1-CHOOSE-NOTIFIED-BODY
   - AIA-NORM-A043-P1-AUTHORITY-AS-NOTIFIED-BODY
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -86,6 +88,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A043-P2-INTERNAL-CONTROL
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -146,7 +149,7 @@ segments:
   - AIA-NORM-A043-P3-OPTION
   - AIA-NORM-A043-P3-NO-EFFECT
   - AIA-NORM-A043-P3-NO-THIRD-PARTY
-  - AIA-NORM-A043-P3-DUAL
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -177,6 +180,7 @@ segments:
   norm_ids:
   - AIA-NORM-A043-P4-NEW-ASSESSMENT
   - AIA-NORM-A043-P4-PREDETERMINED-CHANGE-EXCLUSION
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -202,6 +206,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A043-P5-AMEND
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -233,6 +238,7 @@ segments:
   norm_ids:
   - AIA-NORM-A043-P6-AMEND
   - AIA-NORM-A043-P6-DELEGATED-ACT-CRITERIA
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass

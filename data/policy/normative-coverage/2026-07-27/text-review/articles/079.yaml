@@ -17,6 +17,7 @@ segments:
   disposition: structural
   disposition_reason: ''
   norm_ids: []
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -41,6 +42,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A079-P1-RISK-DEFINITION
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -74,6 +76,7 @@ segments:
   - AIA-NORM-A079-P2-EVALUATE-RISK-SYSTEM
   - AIA-NORM-A079-P2-ADDRESS-FUNDAMENTAL-RIGHTS-RISKS
   - AIA-NORM-A079-P2-OPERATOR-COOPERATION
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -104,6 +107,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A079-P2-REQUIRE-CORRECTIVE-ACTION
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -131,6 +135,7 @@ segments:
   norm_ids:
   - AIA-NORM-A079-P2-INFORM-NOTIFIED-BODY
   - AIA-NORM-A079-P2-APPLY-ARTICLE-18
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -157,6 +162,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A079-P3-INFORM-CROSS-BORDER-NONCOMPLIANCE
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -182,6 +188,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A079-P4-CORRECT-ALL-UNION-SYSTEMS
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -210,6 +217,7 @@ segments:
   norm_ids:
   - AIA-NORM-A079-P5-TAKE-AND-NOTIFY-PROVISIONAL-MEASURES
   - AIA-NORM-A079-P5-NOTIFY-PROVISIONAL-MEASURES
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -239,6 +247,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A079-P6-NOTIFICATION-CONTENT
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -261,7 +270,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A079-P6-NOTIFICATION-CONTENT
   review:
     status: approved
@@ -286,7 +296,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A079-P6-NOTIFICATION-CONTENT
   review:
     status: approved
@@ -311,7 +322,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A079-P6-NOTIFICATION-CONTENT
   review:
     status: approved
@@ -335,7 +347,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A079-P6-NOTIFICATION-CONTENT
   review:
     status: approved
@@ -365,6 +378,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A079-P7-OTHER-AUTHORITY-NOTIFICATION
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -397,6 +411,7 @@ segments:
   - AIA-NORM-A079-P8-DEEM-MEASURE-JUSTIFIED
   - AIA-NORM-A079-P8-PRESERVE-OPERATOR-PROCEDURAL-RIGHTS
   - AIA-NORM-A079-P8-SHORTENED-ARTICLE-5-PERIOD
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -423,6 +438,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A079-P9-TAKE-RESTRICTIVE-MEASURES
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass

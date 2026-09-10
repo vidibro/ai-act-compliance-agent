@@ -17,6 +17,7 @@ segments:
   disposition: structural
   disposition_reason: ''
   norm_ids: []
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -43,6 +44,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A056-P1-FACILITATE-CODES
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -68,6 +70,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A056-P2-CODE-COVERAGE
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -91,7 +94,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A056-P2-CODE-COVERAGE
   review:
     status: approved
@@ -115,7 +119,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A056-P2-CODE-COVERAGE
   review:
     status: approved
@@ -140,7 +145,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A056-P2-CODE-COVERAGE
   review:
     status: approved
@@ -169,8 +175,9 @@ segments:
   disposition: normative
   disposition_reason: ''
   norm_ids:
-  - AIA-NORM-A056-P2-CODE-COVERAGE
   - AIA-NORM-A056-P2-D-PROPORTIONATE-MEASURES
+  qualifying_norm_ids:
+  - AIA-NORM-A056-P2-CODE-COVERAGE
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -199,6 +206,7 @@ segments:
   norm_ids:
   - AIA-NORM-A056-P3-INVITE-PARTICIPANTS
   - AIA-NORM-A056-P3-STAKEHOLDER-SUPPORT
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -227,6 +235,7 @@ segments:
   norm_ids:
   - AIA-NORM-A056-P4-OBJECTIVES-AND-COMMITMENTS
   - AIA-NORM-A056-P4-INTERESTED-PARTIES
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -255,6 +264,7 @@ segments:
   norm_ids:
   - AIA-NORM-A056-P5-PARTICIPANT-REPORTING
   - AIA-NORM-A056-P5-CAPACITY-SENSITIVE-METRICS
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -287,6 +297,7 @@ segments:
   - AIA-NORM-A056-P6-ASSESS-COVERAGE
   - AIA-NORM-A056-P6-COMMISSION-MONITOR-EVALUATE
   - AIA-NORM-A056-P6-PUBLISH-ASSESSMENT
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -315,6 +326,7 @@ segments:
   norm_ids:
   - AIA-NORM-A056-P7-INVITE-ADHERENCE
   - AIA-NORM-A056-P7-LIMITED-ADHERENCE
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -342,6 +354,7 @@ segments:
   norm_ids:
   - AIA-NORM-A056-P8-REVIEW-ADAPT-CODES
   - AIA-NORM-A056-P8-ASSESS-STANDARDS
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -368,6 +381,7 @@ segments:
   norm_ids:
   - AIA-NORM-A056-P9-CODES-DEADLINE
   - AIA-NORM-A056-P9-TAKE-STEPS
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -397,6 +411,7 @@ segments:
   norm_ids:
   - AIA-NORM-A056-P9-COMMON-RULES
   - AIA-NORM-A056-P9-EXAMINATION-PROCEDURE
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass

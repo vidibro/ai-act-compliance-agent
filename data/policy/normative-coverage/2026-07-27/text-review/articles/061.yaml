@@ -17,6 +17,7 @@ segments:
   disposition: structural
   disposition_reason: ''
   norm_ids: []
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -44,6 +45,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A061-P1-OBTAIN-INFORMED-CONSENT
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -67,7 +69,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A061-P1-OBTAIN-INFORMED-CONSENT
   review:
     status: approved
@@ -90,7 +93,8 @@ segments:
     \ including the expected duration of the subject or subjects\u2019 participation;\n"
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A061-P1-OBTAIN-INFORMED-CONSENT
   review:
     status: approved
@@ -116,7 +120,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A061-P1-OBTAIN-INFORMED-CONSENT
   review:
     status: approved
@@ -141,7 +146,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A061-P1-OBTAIN-INFORMED-CONSENT
   review:
     status: approved
@@ -167,7 +173,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A061-P1-OBTAIN-INFORMED-CONSENT
   review:
     status: approved
@@ -195,6 +202,7 @@ segments:
   norm_ids:
   - AIA-NORM-A061-P2-DOCUMENT-AND-COPY-CONSENT
   - AIA-NORM-A061-P2-GIVE-CONSENT-COPY
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass

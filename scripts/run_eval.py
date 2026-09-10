@@ -108,6 +108,7 @@ def main() -> None:
         reference_path=golden.reference_path,
         act_version_date=golden.act_version_date,
         spec_version=golden.spec_version,
+        annex_iii_area=golden.annex_iii_area,
         cases=cases,
     )
     if args.checker == "judge":

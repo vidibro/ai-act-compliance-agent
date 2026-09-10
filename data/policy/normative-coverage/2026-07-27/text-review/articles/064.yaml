@@ -17,6 +17,7 @@ segments:
   disposition: structural
   disposition_reason: ''
   norm_ids: []
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -42,6 +43,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A064-P1-DEVELOP-UNION-AI-EXPERTISE
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -67,6 +69,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A064-P2-FACILITATE-AI-OFFICE-TASKS
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -92,6 +95,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A064-P3-ADEQUATE-AI-OFFICE-RESOURCES
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass

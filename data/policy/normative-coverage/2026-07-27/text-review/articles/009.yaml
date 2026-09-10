@@ -17,6 +17,7 @@ segments:
   disposition: structural
   disposition_reason: ''
   norm_ids: []
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -41,10 +42,8 @@ segments:
   disposition: normative
   disposition_reason: ''
   norm_ids:
-  - AIA-NORM-A009-P1-ESTABLISH
-  - AIA-NORM-A009-P1-IMPLEMENT
-  - AIA-NORM-A009-P1-DOCUMENT
-  - AIA-NORM-A009-P1-MAINTAIN
+  - AIA-NORM-A009-P1-ESTABLISH-IMPLEMENT-DOCUMENT-AND-MAINTAIN
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -71,8 +70,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A009-P2-LIFECYCLE-PROCESS
-  - AIA-NORM-A009-P2-REVIEW
-  - AIA-NORM-A009-P2-UPDATE
+  qualifying_norm_ids:
   - AIA-NORM-A009-P2-A-IDENTIFY-ANALYSE
   - AIA-NORM-A009-P2-B-ESTIMATE-EVALUATE
   - AIA-NORM-A009-P2-C-POST-MARKET-RISKS
@@ -103,6 +101,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A009-P2-A-IDENTIFY-ANALYSE
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -129,6 +128,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A009-P2-B-ESTIMATE-EVALUATE
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -154,6 +154,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A009-P2-C-POST-MARKET-RISKS
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -179,6 +180,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A009-P2-D-ADOPT-MEASURES
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -205,6 +207,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A009-P3-MITIGABLE-RISK-SCOPE
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -232,6 +235,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A009-P4-CONSIDER-INTERACTIONS
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -257,8 +261,8 @@ segments:
   disposition: normative
   disposition_reason: ''
   norm_ids:
-  - AIA-NORM-A009-P5-HAZARD-RESIDUAL-RISK
-  - AIA-NORM-A009-P5-OVERALL-RESIDUAL-RISK
+  - AIA-NORM-A009-P5-ACCEPTABLE-RESIDUAL-RISK
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -281,7 +285,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A009-P5-A-DESIGN-RISK-REDUCTION
   - AIA-NORM-A009-P5-B-MITIGATION-CONTROLS
   - AIA-NORM-A009-P5-C-PROVIDE-INFORMATION
@@ -311,6 +316,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A009-P5-A-DESIGN-RISK-REDUCTION
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -336,6 +342,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A009-P5-B-MITIGATION-CONTROLS
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -362,6 +369,7 @@ segments:
   norm_ids:
   - AIA-NORM-A009-P5-C-PROVIDE-INFORMATION
   - AIA-NORM-A009-P5-C-TRAIN-DEPLOYERS
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -388,6 +396,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A009-P5-CONSIDER-DEPLOYER-CONTEXT
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -414,8 +423,8 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A009-P6-TEST-FOR-MEASURES
-  - AIA-NORM-A009-P6-TEST-PERFORMANCE
-  - AIA-NORM-A009-P6-TEST-COMPLIANCE
+  - AIA-NORM-A009-P6-TEST-PERFORMANCE-AND-COMPLIANCE
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -441,6 +450,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A009-P7-REAL-WORLD-TESTING
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -467,9 +477,9 @@ segments:
   disposition: normative
   disposition_reason: ''
   norm_ids:
-  - AIA-NORM-A009-P8-DEVELOPMENT-TESTING
-  - AIA-NORM-A009-P8-PRE-MARKET-TESTING
+  - AIA-NORM-A009-P8-DEVELOPMENT-AND-PRE-MARKET-TESTING
   - AIA-NORM-A009-P8-METRICS-THRESHOLDS
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -495,8 +505,8 @@ segments:
   disposition: normative
   disposition_reason: ''
   norm_ids:
-  - AIA-NORM-A009-P9-UNDER-18-IMPACT
-  - AIA-NORM-A009-P9-VULNERABLE-GROUPS
+  - AIA-NORM-A009-P9-VULNERABLE-PERSON-IMPACTS
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -524,6 +534,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A009-P10-INTEGRATE-RISK-PROCESSES
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass

@@ -17,6 +17,7 @@ segments:
   disposition: structural
   disposition_reason: ''
   norm_ids: []
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -46,6 +47,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A040-P1-HARMONISED-STANDARD-PRESUMPTION
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -78,6 +80,7 @@ segments:
   - AIA-NORM-A040-P2-ISSUE-STANDARDISATION-REQUESTS
   - AIA-NORM-A040-P2-RESOURCE-PERFORMANCE-DELIVERABLES
   - AIA-NORM-A040-P2-CONSULT-STAKEHOLDERS
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -107,6 +110,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A040-P2-SPECIFY-STANDARD-OBJECTIVES
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -133,6 +137,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A040-P2-REQUEST-EFFORT-EVIDENCE
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -167,6 +172,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A040-P2-JOINT-COMPLIANCE-DELIVERABLES
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -197,6 +203,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A040-P3-STANDARDISATION-OBJECTIVES
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass

@@ -17,6 +17,7 @@ segments:
   disposition: structural
   disposition_reason: ''
   norm_ids: []
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -39,7 +40,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A005-P1-A-MANIPULATIVE-TECHNIQUES
   - AIA-NORM-A005-P1-B-VULNERABILITY-EXPLOITATION
   - AIA-NORM-A005-P1-BA-NONCONSENSUAL-INTIMATE-MATERIAL
@@ -78,6 +80,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A005-P1-A-MANIPULATIVE-TECHNIQUES
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -106,6 +109,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A005-P1-B-VULNERABILITY-EXPLOITATION
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -132,6 +136,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A005-P1-BA-NONCONSENSUAL-INTIMATE-MATERIAL
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -157,6 +162,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A005-P1-BB-DIRECTIVE-MATERIAL
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -184,6 +190,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A005-P1-C-SOCIAL-SCORING
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -208,7 +215,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A005-P1-C-SOCIAL-SCORING
   review:
     status: approved
@@ -233,7 +241,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A005-P1-C-SOCIAL-SCORING
   review:
     status: approved
@@ -264,6 +273,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A005-P1-D-CRIMINAL-RISK-PROFILING
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -290,6 +300,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A005-P1-E-UNTARGETED-FACIAL-SCRAPING
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -317,6 +328,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A005-P1-F-WORKPLACE-EDUCATION-EMOTION-INFERENCE
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -346,6 +358,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A005-P1-G-SENSITIVE-BIOMETRIC-CATEGORISATION
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -370,6 +383,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A005-P1-H-REAL-TIME-RBI
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -393,7 +407,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A005-P1-H-REAL-TIME-RBI
   review:
     status: approved
@@ -419,7 +434,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A005-P1-H-REAL-TIME-RBI
   review:
     status: approved
@@ -446,7 +462,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A005-P1-H-REAL-TIME-RBI
   review:
     status: approved
@@ -473,6 +490,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A005-P1-H-GDPR-SAVING
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -495,7 +513,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A005-P1-BA-NONCONSENSUAL-INTIMATE-MATERIAL
   - AIA-NORM-A005-P1-BB-DIRECTIVE-MATERIAL
   - AIA-NORM-A005-P1A-MARKET-SERVICE-SCOPE
@@ -525,9 +544,10 @@ segments:
   disposition: normative
   disposition_reason: ''
   norm_ids:
+  - AIA-NORM-A005-P1A-MARKET-SERVICE-SCOPE
+  qualifying_norm_ids:
   - AIA-NORM-A005-P1-BA-NONCONSENSUAL-INTIMATE-MATERIAL
   - AIA-NORM-A005-P1-BB-DIRECTIVE-MATERIAL
-  - AIA-NORM-A005-P1A-MARKET-SERVICE-SCOPE
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -551,7 +571,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A005-P1-BA-NONCONSENSUAL-INTIMATE-MATERIAL
   - AIA-NORM-A005-P1-BB-DIRECTIVE-MATERIAL
   - AIA-NORM-A005-P1A-MARKET-SERVICE-SCOPE
@@ -579,7 +600,8 @@ segments:
     \ taking into account reasonably foreseeable misuse, and to correct observed or reported misuse;\n"
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A005-P1-BA-NONCONSENSUAL-INTIMATE-MATERIAL
   - AIA-NORM-A005-P1-BB-DIRECTIVE-MATERIAL
   - AIA-NORM-A005-P1A-MARKET-SERVICE-SCOPE
@@ -608,9 +630,10 @@ segments:
   disposition: normative
   disposition_reason: ''
   norm_ids:
+  - AIA-NORM-A005-P1A-DEPLOYER-USE-SCOPE
+  qualifying_norm_ids:
   - AIA-NORM-A005-P1-BA-NONCONSENSUAL-INTIMATE-MATERIAL
   - AIA-NORM-A005-P1-BB-DIRECTIVE-MATERIAL
-  - AIA-NORM-A005-P1A-DEPLOYER-USE-SCOPE
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -636,8 +659,9 @@ segments:
   disposition: normative
   disposition_reason: ''
   norm_ids:
-  - AIA-NORM-A005-P1-BA-NONCONSENSUAL-INTIMATE-MATERIAL
   - AIA-NORM-A005-P1B-NON-MANIPULATION
+  qualifying_norm_ids:
+  - AIA-NORM-A005-P1-BA-NONCONSENSUAL-INTIMATE-MATERIAL
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -665,6 +689,7 @@ segments:
   norm_ids:
   - AIA-NORM-A005-P2-CONFIRM-TARGETED-IDENTITY
   - AIA-NORM-A005-P2-CONSIDER-IMPACTS
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -688,7 +713,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A005-P2-CONSIDER-IMPACTS
   review:
     status: approved
@@ -713,7 +739,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A005-P2-CONSIDER-IMPACTS
   review:
     status: approved
@@ -749,6 +776,7 @@ segments:
   - AIA-NORM-A005-P2-NATIONAL-SAFEGUARDS
   - AIA-NORM-A005-P2-COMPLETE-FRIA
   - AIA-NORM-A005-P2-REGISTER-SYSTEM
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -783,6 +811,7 @@ segments:
   - AIA-NORM-A005-P3-URGENT-USE
   - AIA-NORM-A005-P3-STOP-ON-REJECTION
   - AIA-NORM-A005-P3-DELETE-ON-REJECTION
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -816,6 +845,7 @@ segments:
   - AIA-NORM-A005-P3-RESTRICT-AUTHORISATION
   - AIA-NORM-A005-P3-CONSIDER-P2-ELEMENTS
   - AIA-NORM-A005-P3-NO-SOLE-OUTPUT-ADVERSE-DECISION
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -844,6 +874,7 @@ segments:
   - AIA-NORM-A005-P4-NOTIFY-AUTHORITIES
   - AIA-NORM-A005-P4-NOTIFICATION-CONTENT
   - AIA-NORM-A005-P4-EXCLUDE-SENSITIVE-DATA
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -881,6 +912,7 @@ segments:
   - AIA-NORM-A005-P5-SPECIFY-OBJECTIVES
   - AIA-NORM-A005-P5-NOTIFY-COMMISSION
   - AIA-NORM-A005-P5-MORE-RESTRICTIVE-LAWS
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -912,6 +944,7 @@ segments:
   - AIA-NORM-A005-P6-SUBMIT-ANNUAL-REPORTS
   - AIA-NORM-A005-P6-PROVIDE-TEMPLATE
   - AIA-NORM-A005-P6-TEMPLATE-CONTENT
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -940,6 +973,7 @@ segments:
   norm_ids:
   - AIA-NORM-A005-P7-PUBLISH-ANNUAL-REPORTS
   - AIA-NORM-A005-P7-EXCLUDE-SENSITIVE-DATA
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -965,6 +999,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A005-P8-OTHER-UNION-LAW
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass

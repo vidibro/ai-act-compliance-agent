@@ -17,6 +17,7 @@ segments:
   disposition: structural
   disposition_reason: ''
   norm_ids: []
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -43,6 +44,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A037-P1-INVESTIGATE-COMPETENCE-DOUBTS
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -68,6 +70,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A037-P2-PROVIDE-NOTIFICATION-INFORMATION
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -93,6 +96,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A037-P3-PROTECT-INVESTIGATION-INFORMATION
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -125,6 +129,7 @@ segments:
   - AIA-NORM-A037-P4-REQUEST-CORRECTIVE-MEASURES
   - AIA-NORM-A037-P4-COMMISSION-DESIGNATION-POWER
   - AIA-NORM-A037-P4-EXAMINATION-PROCEDURE
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass

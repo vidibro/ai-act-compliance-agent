@@ -385,47 +385,7 @@ norms:
   - subject_ref: importer
     category: supported_operator
   action: provide requesting competent authorities with all information and documentation necessary to
-    demonstrate Section 2 conformity
-  norm_text: Importers shall provide the relevant competent authorities, upon a reasoned request, with
-    all the necessary information and documentation, including that referred to in paragraph 5, to demonstrate
-    the conformity of a high-risk AI system with the requirements set out in Section 2 in a language which
-    can be easily understood by them.
-  detection_channels:
-  - semantic_legal_effect
-  - shall_token
-  - existing_implementation
-  primary_spans:
-  - AIA-TEXT-A023-P010
-  qualifier_spans: []
-  effective_date_spans: []
-  conditions:
-  - a relevant competent authority makes a reasoned request
-  exceptions: []
-  mandatory_content: []
-  dependencies: []
-  product_scope: in_scope
-  product_scope_reason: ''
-  implementation_mode: compliance_rule
-  implementation_refs:
-  - AIA-IM-A23
-  implementation_reason: ''
-  verification_mode: reported_not_judged
-  review:
-    status: approved
-    extracted_by: semantic-legal-effect-pass
-    verified_by: vidibro
-    review_run_id: normative-coverage-2026-08-28
-    presentation_mode: exact-source-slice
-    display_chunks: 1
-    fully_displayed: true
-    elapsed_seconds: null
-- norm_id: AIA-NORM-A023-P6-AUTHORITY-LANGUAGE
-  act_version_date: '2026-07-27'
-  kind: obligation
-  subjects:
-  - subject_ref: importer
-    category: supported_operator
-  action: provide the requested conformity material in a language easily understood by the relevant authorities
+    demonstrate Section 2 conformity in a language easily understood by them
   norm_text: Importers shall provide the relevant competent authorities, upon a reasoned request, with
     all the necessary information and documentation, including that referred to in paragraph 5, to demonstrate
     the conformity of a high-risk AI system with the requirements set out in Section 2 in a language which

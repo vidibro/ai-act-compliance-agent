@@ -17,6 +17,7 @@ segments:
   disposition: structural
   disposition_reason: ''
   norm_ids: []
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -45,7 +46,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A021-P1-PROVIDE-CONFORMITY-INFORMATION
-  - AIA-NORM-A021-P1-AUTHORITY-LANGUAGE
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -72,6 +73,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A021-P2-PROVIDE-LOG-ACCESS
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -97,6 +99,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A021-P3-CONFIDENTIALITY
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass

@@ -58,8 +58,8 @@ records:
   verified_by: vidibro
 - norm_id: AIA-NORM-A011-P1-SIMPLIFY
   source: A011-P1
-  quote: may provide the elements of the technical documentation specified in Annex IV in a simplified
-    manner
+  quote: SMEs, including start-ups, and SMCs, may provide the elements of the technical documentation
+    specified in Annex IV in a simplified manner.
   action: use the simplified-documentation option
   subject_ref: provider
   subject_category: supported_operator
@@ -70,8 +70,10 @@ records:
   verified_by: vidibro
 - norm_id: AIA-NORM-A011-P1-FORM
   source: A011-P1
-  quote: the Commission shall establish a simplified technical documentation form
-  action: establish a simplified technical-documentation form
+  quote: To that end, the Commission shall establish a simplified technical documentation form targeted
+    at the needs of SMEs, including start-ups, and SMCs.
+  action: establish a simplified technical-documentation form targeted at the needs of SMEs, start-ups,
+    and SMCs
   subject_ref: commission
   subject_category: union_institution_or_body
   product_scope: outside_supported_actor
@@ -79,9 +81,11 @@ records:
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
+  verified_by: vidibro
 - norm_id: AIA-NORM-A011-P1-USE-FORM
   source: A011-P1
-  quote: it shall use the form referred to in this paragraph
+  quote: Where an SME, including a start-up, or an SMC, opts to provide the information required in Annex
+    IV in a simplified manner, it shall use the form referred to in this paragraph.
   action: use the Commission form when taking the simplified-documentation option
   subject_ref: provider
   subject_category: supported_operator
@@ -93,7 +97,7 @@ records:
   verified_by: vidibro
 - norm_id: AIA-NORM-A011-P1-ACCEPT-FORM
   source: A011-P1
-  quote: Notified bodies shall accept the form
+  quote: Notified bodies shall accept the form for the purposes of the conformity assessment.
   action: accept the simplified form for conformity assessment
   subject_ref: notified_body
   subject_category: notified_or_conformity_body
@@ -102,10 +106,13 @@ records:
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
+  verified_by: vidibro
 - norm_id: AIA-NORM-A011-P2-SINGLE-DOCUMENTATION-SET
   source: A011-P2
-  quote: a single set of technical documentation shall be drawn up containing all the information set
-    out in paragraph 1, as well as the information required under those legal acts
+  quote: Where a high-risk AI system related to a product covered by the Union harmonisation legislation
+    listed in Section A of Annex I is placed on the market or put into service, a single set of technical
+    documentation shall be drawn up containing all the information set out in paragraph 1, as well as
+    the information required under those legal acts
   action: draw up one technical-documentation set containing both the Article 11(1) information and the
     information required by the applicable Annex I Section A legislation
   subject_ref: provider
@@ -127,13 +134,26 @@ records:
   verified_by: vidibro
 - norm_id: AIA-NORM-A011-P3-AMEND
   source: A011-P3
-  quote: The Commission is empowered to adopt delegated acts
-  action: adopt delegated acts amending Annex IV
+  quote: The Commission is empowered to adopt delegated acts in accordance with Article 97 in order to
+    amend Annex IV, where necessary, to ensure that, in light of technical progress, the technical documentation
+    provides all the information necessary to assess the compliance of the system with the requirements
+    set out in this Section.
+  action: adopt Article 97 delegated acts amending Annex IV where necessary in light of technical progress
+    to preserve all information needed to assess Section 2 compliance
   subject_ref: commission
   subject_category: union_institution_or_body
   kind: power
+  conditions:
+  - an Annex IV amendment is necessary in light of technical progress to ensure the technical documentation
+    provides all information needed to assess Section 2 compliance
+  dependencies:
+  - dependency_ref: Article 97 of this Regulation
+    resolution: unresolved
+    detail: Article 97 supplies a multi-norm delegated-act procedure that is recorded elsewhere in this
+      inventory.
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
+  verified_by: vidibro

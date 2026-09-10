@@ -17,6 +17,7 @@ segments:
   disposition: structural
   disposition_reason: ''
   norm_ids: []
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -41,6 +42,13 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A062-P1-MEMBER-STATE-SME-SUPPORT
+  qualifying_norm_ids:
+  - AIA-NORM-A062-P1-A-PRIORITY-SANDBOX-ACCESS
+  - AIA-NORM-A062-P1-A-PRESERVE-OTHER-SME-ACCESS
+  - AIA-NORM-A062-P1-B-AWARENESS-AND-TRAINING
+  - AIA-NORM-A062-P1-C-USE-EXISTING-CHANNELS
+  - AIA-NORM-A062-P1-C-ESTABLISH-NEW-CHANNELS
+  - AIA-NORM-A062-P1-D-FACILITATE-STANDARDISATION-PARTICIPATION
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -68,9 +76,10 @@ segments:
   disposition: normative
   disposition_reason: ''
   norm_ids:
-  - AIA-NORM-A062-P1-MEMBER-STATE-SME-SUPPORT
   - AIA-NORM-A062-P1-A-PRIORITY-SANDBOX-ACCESS
   - AIA-NORM-A062-P1-A-PRESERVE-OTHER-SME-ACCESS
+  qualifying_norm_ids:
+  - AIA-NORM-A062-P1-MEMBER-STATE-SME-SUPPORT
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -96,8 +105,9 @@ segments:
   disposition: normative
   disposition_reason: ''
   norm_ids:
-  - AIA-NORM-A062-P1-MEMBER-STATE-SME-SUPPORT
   - AIA-NORM-A062-P1-B-AWARENESS-AND-TRAINING
+  qualifying_norm_ids:
+  - AIA-NORM-A062-P1-MEMBER-STATE-SME-SUPPORT
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -124,9 +134,10 @@ segments:
   disposition: normative
   disposition_reason: ''
   norm_ids:
-  - AIA-NORM-A062-P1-MEMBER-STATE-SME-SUPPORT
   - AIA-NORM-A062-P1-C-USE-EXISTING-CHANNELS
   - AIA-NORM-A062-P1-C-ESTABLISH-NEW-CHANNELS
+  qualifying_norm_ids:
+  - AIA-NORM-A062-P1-MEMBER-STATE-SME-SUPPORT
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -151,8 +162,9 @@ segments:
   disposition: normative
   disposition_reason: ''
   norm_ids:
-  - AIA-NORM-A062-P1-MEMBER-STATE-SME-SUPPORT
   - AIA-NORM-A062-P1-D-FACILITATE-STANDARDISATION-PARTICIPATION
+  qualifying_norm_ids:
+  - AIA-NORM-A062-P1-MEMBER-STATE-SME-SUPPORT
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -179,6 +191,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A062-P2-PROPORTIONATE-SME-FEES
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -203,6 +216,11 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A062-P3-AI-OFFICE-SUPPORT
+  qualifying_norm_ids:
+  - AIA-NORM-A062-P3-A-PROVIDE-TEMPLATES
+  - AIA-NORM-A062-P3-B-INFORMATION-PLATFORM
+  - AIA-NORM-A062-P3-C-COMMUNICATION-CAMPAIGNS
+  - AIA-NORM-A062-P3-D-PROCUREMENT-BEST-PRACTICES
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -227,8 +245,9 @@ segments:
   disposition: normative
   disposition_reason: ''
   norm_ids:
-  - AIA-NORM-A062-P3-AI-OFFICE-SUPPORT
   - AIA-NORM-A062-P3-A-PROVIDE-TEMPLATES
+  qualifying_norm_ids:
+  - AIA-NORM-A062-P3-AI-OFFICE-SUPPORT
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -253,8 +272,9 @@ segments:
   disposition: normative
   disposition_reason: ''
   norm_ids:
-  - AIA-NORM-A062-P3-AI-OFFICE-SUPPORT
   - AIA-NORM-A062-P3-B-INFORMATION-PLATFORM
+  qualifying_norm_ids:
+  - AIA-NORM-A062-P3-AI-OFFICE-SUPPORT
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -279,8 +299,9 @@ segments:
   disposition: normative
   disposition_reason: ''
   norm_ids:
-  - AIA-NORM-A062-P3-AI-OFFICE-SUPPORT
   - AIA-NORM-A062-P3-C-COMMUNICATION-CAMPAIGNS
+  qualifying_norm_ids:
+  - AIA-NORM-A062-P3-AI-OFFICE-SUPPORT
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -305,8 +326,9 @@ segments:
   disposition: normative
   disposition_reason: ''
   norm_ids:
-  - AIA-NORM-A062-P3-AI-OFFICE-SUPPORT
   - AIA-NORM-A062-P3-D-PROCUREMENT-BEST-PRACTICES
+  qualifying_norm_ids:
+  - AIA-NORM-A062-P3-AI-OFFICE-SUPPORT
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass

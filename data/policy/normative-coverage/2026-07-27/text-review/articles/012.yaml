@@ -17,6 +17,7 @@ segments:
   disposition: structural
   disposition_reason: ''
   norm_ids: []
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -42,6 +43,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A012-P1-AUTOMATIC-LOGGING
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -66,7 +68,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A012-P2-A-RISK-MODIFICATION-EVENTS
   - AIA-NORM-A012-P2-B-POST-MARKET-EVENTS
   - AIA-NORM-A012-P2-C-OPERATION-MONITORING-EVENTS
@@ -95,6 +98,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A012-P2-A-RISK-MODIFICATION-EVENTS
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -119,6 +123,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A012-P2-B-POST-MARKET-EVENTS
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -143,6 +148,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A012-P2-C-OPERATION-MONITORING-EVENTS
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -166,7 +172,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A012-P3-A-USE-PERIOD
   - AIA-NORM-A012-P3-B-REFERENCE-DATABASE
   - AIA-NORM-A012-P3-C-MATCHED-INPUT
@@ -196,6 +203,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A012-P3-A-USE-PERIOD
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -220,6 +228,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A012-P3-B-REFERENCE-DATABASE
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -244,6 +253,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A012-P3-C-MATCHED-INPUT
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -269,6 +279,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A012-P3-D-RESULT-VERIFIERS
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass

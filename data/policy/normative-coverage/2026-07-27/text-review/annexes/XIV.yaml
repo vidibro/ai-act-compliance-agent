@@ -15,6 +15,7 @@ segments:
   disposition: structural
   disposition_reason: ''
   norm_ids: []
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -39,6 +40,7 @@ segments:
   disposition: context_only
   disposition_reason: Annex title describing the Article 30 notification-purpose scope.
   norm_ids: []
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -62,6 +64,7 @@ segments:
   disposition: context_only
   disposition_reason: Section heading introducing the conformity-assessment code framework.
   norm_ids: []
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -92,6 +95,7 @@ segments:
   norm_ids:
   - AIA-NORM-ANNEX-XIV-DESIGNATED-BODIES-ONLY
   - AIA-NORM-ANNEX-XIV-CODES-SET-DESIGNATION-SCOPE
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -115,6 +119,7 @@ segments:
   disposition: context_only
   disposition_reason: Section heading introducing the code and category list.
   norm_ids: []
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -160,6 +165,7 @@ segments:
   - AIA-NORM-ANNEX-XIV-AIB-0201
   - AIA-NORM-ANNEX-XIV-AIB-0202
   - AIA-NORM-ANNEX-XIV-AIB-0203
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -183,6 +189,7 @@ segments:
   disposition: context_only
   disposition_reason: Section heading introducing the AI technology-specific codes.
   norm_ids: []
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -222,6 +229,7 @@ segments:
   - AIA-NORM-ANNEX-XIV-AIH-0205
   - AIA-NORM-ANNEX-XIV-AIH-0301
   - AIA-NORM-ANNEX-XIV-AIH-0401
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -245,6 +253,7 @@ segments:
   disposition: context_only
   disposition_reason: Section heading introducing the designation-application requirement.
   norm_ids: []
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -271,6 +280,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-ANNEX-XIV-USE-CODES-IN-APPLICATION
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass

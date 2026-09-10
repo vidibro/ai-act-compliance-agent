@@ -17,6 +17,7 @@ segments:
   disposition: structural
   disposition_reason: ''
   norm_ids: []
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -43,6 +44,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A026-P1-INSTRUCTION-COMPLIANT-USE
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -68,6 +70,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A026-P2-HUMAN-OVERSIGHT-ASSIGNMENT
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -93,6 +96,7 @@ segments:
   norm_ids:
   - AIA-NORM-A026-P3-PRESERVE-OTHER-OBLIGATIONS
   - AIA-NORM-A026-P3-RESOURCE-ORGANISATION-FREEDOM
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -119,6 +123,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A026-P4-INPUT-DATA-QUALITY
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -161,6 +166,7 @@ segments:
   - AIA-NORM-A026-P5-FALLBACK
   - AIA-NORM-A026-P5-SENSITIVE
   - AIA-NORM-A026-P5-FINANCIAL
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -193,6 +199,7 @@ segments:
   - AIA-NORM-A026-P6-SIX-MONTH-MINIMUM
   - AIA-NORM-A026-P6-OTHER-LAW-PERIOD
   - AIA-NORM-A026-P6-FINANCIAL-DOCUMENTATION
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -220,6 +227,7 @@ segments:
   norm_ids:
   - AIA-NORM-A026-P7-INFORM-WORKERS
   - AIA-NORM-A026-P7-FOLLOW-WORKER-INFORMATION-RULES
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -250,6 +258,7 @@ segments:
   - AIA-NORM-A026-P8-REGISTER
   - AIA-NORM-A026-P8-DO-NOT-USE-UNREGISTERED
   - AIA-NORM-A026-P8-INFORM-UNREGISTERED
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -276,6 +285,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A026-P9-USE-ARTICLE-13-IN-DPIA
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -340,6 +350,7 @@ segments:
   - AIA-NORM-A026-P10-REPORT-SENSITIVE-DATA-EXCLUSION
   - AIA-NORM-A026-P10-AGGREGATE-REPORTS
   - AIA-NORM-A026-P10-MEMBER-STATE-STRICTER-LAW
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -369,6 +380,7 @@ segments:
   - AIA-NORM-A026-P11-PRESERVE-ARTICLE-50
   - AIA-NORM-A026-P11-INFORM-NATURAL-PERSONS
   - AIA-NORM-A026-P11-LAW-ENFORCEMENT-NOTICE
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -394,6 +406,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A026-P12-COOPERATE
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass

@@ -37,50 +37,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
-- norm_id: AIA-NORM-A017-P1-SYSTEMATIC-DOCUMENTATION
+- norm_id: AIA-NORM-A017-P1-SYSTEMATIC-WRITTEN-DOCUMENTATION
   act_version_date: '2026-07-27'
   kind: obligation
   subjects:
   - subject_ref: provider
     category: supported_operator
-  action: document the quality-management system systematically and orderly
-  norm_text: That system shall be documented in a systematic and orderly manner in the form of written
-    policies, procedures and instructions
-  detection_channels:
-  - semantic_legal_effect
-  - shall_token
-  - existing_implementation
-  primary_spans:
-  - AIA-TEXT-A017-P001
-  qualifier_spans: []
-  effective_date_spans: []
-  conditions: []
-  exceptions: []
-  mandatory_content: []
-  dependencies: []
-  product_scope: in_scope
-  product_scope_reason: ''
-  implementation_mode: compliance_rule
-  implementation_refs:
-  - AIA-PO-A17
-  implementation_reason: ''
-  verification_mode: reported_not_judged
-  review:
-    status: approved
-    extracted_by: semantic-legal-effect-pass
-    verified_by: vidibro
-    review_run_id: normative-coverage-2026-08-28
-    presentation_mode: exact-source-slice
-    display_chunks: 1
-    fully_displayed: true
-    elapsed_seconds: null
-- norm_id: AIA-NORM-A017-P1-WRITTEN-DOCUMENTATION
-  act_version_date: '2026-07-27'
-  kind: obligation
-  subjects:
-  - subject_ref: provider
-    category: supported_operator
-  action: document the quality-management system through written policies, procedures, and instructions
+  action: document the quality-management system systematically and orderly through written policies,
+    procedures, and instructions
   norm_text: That system shall be documented in a systematic and orderly manner in the form of written
     policies, procedures and instructions
   detection_channels:
@@ -369,7 +333,7 @@ norms:
   exceptions: []
   mandatory_content: []
   dependencies:
-  - dependency_ref: AIA-NORM-A009-P1-ESTABLISH
+  - dependency_ref: AIA-NORM-A009-P1-ESTABLISH-IMPLEMENT-DOCUMENT-AND-MAINTAIN
     resolution: internal_resolved
     detail: Article 9 supplies the referenced risk-management-system obligation.
   product_scope: in_scope

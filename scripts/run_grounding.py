@@ -34,12 +34,14 @@ from aiact.eval.grounding import Grounding, ReasoningGrader, report  # noqa: E40
 from aiact.gap.judge import LLMJudge  # noqa: E402
 from aiact.llm import flatten  # noqa: E402
 from aiact.policy_loader import load_policy_spec  # noqa: E402
-from aiact.schemas.eval import GoldenSet  # noqa: E402
+from aiact.schemas.eval import GoldenSet, Split  # noqa: E402
 from aiact.scrubbing import install_excepthook  # noqa: E402
 from aiact.tracing import trace_run  # noqa: E402
 
 
-def grade_classification(grader: ReasoningGrader, split: str, cases_path: Path) -> list[Grounding]:
+def grade_classification(
+    grader: ReasoningGrader, split: Split, cases_path: Path
+) -> list[Grounding]:
     """Every cascade answer, against the prompt that produced it.
 
     Abstentions are skipped: their `reasoning` is OUR sentence about why the model declined, not
@@ -74,7 +76,7 @@ def grade_classification(grader: ReasoningGrader, split: str, cases_path: Path) 
 
 
 def grade_gap(
-    grader: ReasoningGrader, split: str, golden_path: Path, spec_path: Path
+    grader: ReasoningGrader, split: Split, golden_path: Path, spec_path: Path
 ) -> list[Grounding]:
     """Every rule verdict, against the prompt that produced it.
 

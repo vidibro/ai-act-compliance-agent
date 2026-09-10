@@ -17,6 +17,7 @@ segments:
   disposition: structural
   disposition_reason: ''
   norm_ids: []
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -42,6 +43,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A090-P1-ISSUE-QUALIFIED-ALERT
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -64,7 +66,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A090-P1-ISSUE-QUALIFIED-ALERT
   review:
     status: approved
@@ -88,7 +91,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A090-P1-ISSUE-QUALIFIED-ALERT
   review:
     status: approved
@@ -117,6 +121,7 @@ segments:
   norm_ids:
   - AIA-NORM-A090-P2-ASSESS-ALERT
   - AIA-NORM-A090-P2-INFORM-BOARD-OF-MEASURES
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -141,6 +146,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A090-P3-QUALIFIED-ALERT-CONTENT
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -164,7 +170,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A090-P3-QUALIFIED-ALERT-CONTENT
   review:
     status: approved
@@ -189,7 +196,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A090-P3-QUALIFIED-ALERT-CONTENT
   review:
     status: approved
@@ -214,7 +222,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A090-P3-QUALIFIED-ALERT-CONTENT
   review:
     status: approved

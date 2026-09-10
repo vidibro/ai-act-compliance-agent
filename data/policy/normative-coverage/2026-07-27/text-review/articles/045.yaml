@@ -17,6 +17,7 @@ segments:
   disposition: structural
   disposition_reason: ''
   norm_ids: []
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -42,6 +43,7 @@ segments:
   norm_ids:
   - AIA-NORM-A045-P1-INFORM-NOTIFYING-AUTHORITY
   - AIA-NORM-A045-P1-DISCLOSE-ACTIVITIES-ON-REQUEST
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -66,7 +68,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A045-P1-INFORM-NOTIFYING-AUTHORITY
   review:
     status: approved
@@ -92,7 +95,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A045-P1-INFORM-NOTIFYING-AUTHORITY
   review:
     status: approved
@@ -116,7 +120,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A045-P1-INFORM-NOTIFYING-AUTHORITY
   review:
     status: approved
@@ -141,7 +146,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A045-P1-INFORM-NOTIFYING-AUTHORITY
   review:
     status: approved
@@ -166,7 +172,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A045-P1-DISCLOSE-ACTIVITIES-ON-REQUEST
   review:
     status: approved
@@ -193,6 +200,7 @@ segments:
   norm_ids:
   - AIA-NORM-A045-P2-INFORM-OTHER-NOTIFIED-BODIES
   - AIA-NORM-A045-P2-DISCLOSE-ISSUED-APPROVALS-ON-REQUEST
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -216,7 +224,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A045-P2-INFORM-OTHER-NOTIFIED-BODIES
   - AIA-NORM-A045-P2-DISCLOSE-ISSUED-APPROVALS-ON-REQUEST
   review:
@@ -243,7 +252,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A045-P2-INFORM-OTHER-NOTIFIED-BODIES
   - AIA-NORM-A045-P2-DISCLOSE-ISSUED-APPROVALS-ON-REQUEST
   review:
@@ -273,6 +283,7 @@ segments:
   norm_ids:
   - AIA-NORM-A045-P3-SHARE-ASSESSMENT-RESULTS
   - AIA-NORM-A045-P3-SHARE-POSITIVE-RESULTS-ON-REQUEST
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -298,6 +309,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A045-P4-CONFIDENTIALITY
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass

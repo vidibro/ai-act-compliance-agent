@@ -17,6 +17,7 @@ segments:
   disposition: structural
   disposition_reason: ''
   norm_ids: []
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -49,6 +50,7 @@ segments:
   - AIA-NORM-A047-P1-RETAIN-DECLARATION
   - AIA-NORM-A047-P1-IDENTIFY-SYSTEM
   - AIA-NORM-A047-P1-SUBMIT-ON-REQUEST
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -79,6 +81,7 @@ segments:
   - AIA-NORM-A047-P2-STATE-SECTION-2-COMPLIANCE
   - AIA-NORM-A047-P2-ANNEX-V-CONTENT
   - AIA-NORM-A047-P2-TRANSLATE-DECLARATION
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -108,6 +111,7 @@ segments:
   norm_ids:
   - AIA-NORM-A047-P3-SINGLE-DECLARATION
   - AIA-NORM-A047-P3-IDENTIFY-LEGISLATION
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -135,6 +139,7 @@ segments:
   norm_ids:
   - AIA-NORM-A047-P4-ASSUME-RESPONSIBILITY
   - AIA-NORM-A047-P4-KEEP-CURRENT
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -161,6 +166,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A047-P5-AMEND-ANNEX-V
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass

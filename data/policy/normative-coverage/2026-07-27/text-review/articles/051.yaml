@@ -17,6 +17,7 @@ segments:
   disposition: structural
   disposition_reason: ''
   norm_ids: []
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -40,7 +41,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A051-P1-A-HIGH-IMPACT-SYSTEMIC-RISK
   - AIA-NORM-A051-P1-B-EQUIVALENT-SYSTEMIC-RISK
   review:
@@ -68,6 +70,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A051-P1-A-HIGH-IMPACT-SYSTEMIC-RISK
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -94,6 +97,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A051-P1-B-EQUIVALENT-SYSTEMIC-RISK
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -120,6 +124,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A051-P2-COMPUTE-PRESUMPTION
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -148,6 +153,7 @@ segments:
   norm_ids:
   - AIA-NORM-A051-P3-AMEND-THRESHOLDS
   - AIA-NORM-A051-P3-SUPPLEMENT-BENCHMARKS
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass

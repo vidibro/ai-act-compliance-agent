@@ -144,6 +144,11 @@ records:
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
+  exceptions:
+  - liability is assumed by the Member State in which the notified body is established in accordance
+    with national law
+  - that Member State is itself directly responsible for the conformity assessment
+  verified_by: vidibro
 - norm_id: AIA-NORM-A031-P10-INTEGRITY-AND-COMPETENCE
   source: A031-P010
   quote: Notified bodies shall be capable of carrying out all their tasks under this Regulation with the

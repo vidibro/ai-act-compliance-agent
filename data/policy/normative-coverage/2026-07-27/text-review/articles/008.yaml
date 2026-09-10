@@ -17,6 +17,7 @@ segments:
   disposition: structural
   disposition_reason: ''
   norm_ids: []
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -45,6 +46,7 @@ segments:
   norm_ids:
   - AIA-NORM-A008-P1-COMPLY-SECTION-REQUIREMENTS
   - AIA-NORM-A008-P1-CONSIDER-RISK-MANAGEMENT
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -78,6 +80,7 @@ segments:
   norm_ids:
   - AIA-NORM-A008-P2-ENSURE-PRODUCT-COMPLIANCE
   - AIA-NORM-A008-P2-INTEGRATE-COMPLIANCE-PROCESSES
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass

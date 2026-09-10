@@ -17,6 +17,7 @@ segments:
   disposition: structural
   disposition_reason: ''
   norm_ids: []
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -44,6 +45,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A010-P1-QUALIFY-DATASETS
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -70,6 +72,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A010-P2-GOVERN-DATASETS
+  qualifying_norm_ids:
   - AIA-NORM-A010-P2-A-DESIGN-CHOICES
   - AIA-NORM-A010-P2-B-COLLECTION-ORIGIN
   - AIA-NORM-A010-P2-C-DATA-PREPARATION
@@ -102,6 +105,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A010-P2-A-DESIGN-CHOICES
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -127,6 +131,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A010-P2-B-COLLECTION-ORIGIN
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -152,6 +157,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A010-P2-C-DATA-PREPARATION
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -177,6 +183,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A010-P2-D-ASSUMPTIONS
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -202,6 +209,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A010-P2-E-AVAILABILITY-SUITABILITY
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -228,6 +236,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A010-P2-F-EXAMINE-BIASES
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -253,6 +262,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A010-P2-G-MITIGATE-BIASES
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -278,6 +288,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A010-P2-H-DATA-GAPS
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -306,12 +317,10 @@ segments:
   disposition: normative
   disposition_reason: ''
   norm_ids:
-  - AIA-NORM-A010-P3-RELEVANT
-  - AIA-NORM-A010-P3-REPRESENTATIVE
-  - AIA-NORM-A010-P3-FREE-OF-ERRORS
-  - AIA-NORM-A010-P3-COMPLETE
+  - AIA-NORM-A010-P3-DATASET-QUALITY
   - AIA-NORM-A010-P3-STATISTICAL-PROPERTIES
   - AIA-NORM-A010-P3-COMBINED-DATASETS
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -338,6 +347,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A010-P4-INTENDED-SETTING
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -368,6 +378,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A010-P5-SPECIAL-CATEGORY-PROCESSING
+  qualifying_norm_ids:
   - AIA-NORM-A010-P5-B-REUSE-SECURITY
   - AIA-NORM-A010-P5-C-ACCESS-SAFEGUARDS
   - AIA-NORM-A010-P5-D-NO-THIRD-PARTY-ACCESS
@@ -396,7 +407,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A010-P5-SPECIAL-CATEGORY-PROCESSING
   review:
     status: approved
@@ -423,8 +435,9 @@ segments:
   disposition: normative
   disposition_reason: ''
   norm_ids:
-  - AIA-NORM-A010-P5-SPECIAL-CATEGORY-PROCESSING
   - AIA-NORM-A010-P5-B-REUSE-SECURITY
+  qualifying_norm_ids:
+  - AIA-NORM-A010-P5-SPECIAL-CATEGORY-PROCESSING
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -451,8 +464,9 @@ segments:
   disposition: normative
   disposition_reason: ''
   norm_ids:
-  - AIA-NORM-A010-P5-SPECIAL-CATEGORY-PROCESSING
   - AIA-NORM-A010-P5-C-ACCESS-SAFEGUARDS
+  qualifying_norm_ids:
+  - AIA-NORM-A010-P5-SPECIAL-CATEGORY-PROCESSING
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -477,8 +491,9 @@ segments:
   disposition: normative
   disposition_reason: ''
   norm_ids:
-  - AIA-NORM-A010-P5-SPECIAL-CATEGORY-PROCESSING
   - AIA-NORM-A010-P5-D-NO-THIRD-PARTY-ACCESS
+  qualifying_norm_ids:
+  - AIA-NORM-A010-P5-SPECIAL-CATEGORY-PROCESSING
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -503,8 +518,9 @@ segments:
   disposition: normative
   disposition_reason: ''
   norm_ids:
-  - AIA-NORM-A010-P5-SPECIAL-CATEGORY-PROCESSING
   - AIA-NORM-A010-P5-E-DELETE-DATA
+  qualifying_norm_ids:
+  - AIA-NORM-A010-P5-SPECIAL-CATEGORY-PROCESSING
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -531,8 +547,9 @@ segments:
   disposition: normative
   disposition_reason: ''
   norm_ids:
-  - AIA-NORM-A010-P5-SPECIAL-CATEGORY-PROCESSING
   - AIA-NORM-A010-P5-F-RECORD-NECESSITY
+  qualifying_norm_ids:
+  - AIA-NORM-A010-P5-SPECIAL-CATEGORY-PROCESSING
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -559,6 +576,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A010-P6-TESTING-DATA-ONLY
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass

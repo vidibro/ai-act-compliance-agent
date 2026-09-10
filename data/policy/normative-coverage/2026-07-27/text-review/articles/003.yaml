@@ -17,6 +17,7 @@ segments:
   disposition: structural
   disposition_reason: ''
   norm_ids: []
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -39,7 +40,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A003-D001-AI-SYSTEM
   - AIA-NORM-A003-D002-RISK
   - AIA-NORM-A003-D003-PROVIDER
@@ -135,6 +137,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A003-D001-AI-SYSTEM
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -158,6 +161,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A003-D002-RISK
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -183,6 +187,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A003-D003-PROVIDER
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -207,6 +212,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A003-D004-DEPLOYER
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -232,6 +238,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A003-D005-AUTHORISED-REPRESENTATIVE
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -256,6 +263,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A003-D006-IMPORTER
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -279,6 +287,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A003-D007-DISTRIBUTOR
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -302,6 +311,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A003-D008-OPERATOR
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -325,6 +335,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A003-D009-PLACING-ON-THE-MARKET
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -349,6 +360,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A003-D010-MAKING-AVAILABLE-ON-THE-MARKET
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -372,6 +384,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A003-D011-PUTTING-INTO-SERVICE
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -397,6 +410,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A003-D012-INTENDED-PURPOSE
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -421,6 +435,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A003-D013-REASONABLY-FORESEEABLE-MISUSE
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -447,6 +462,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A003-D014-SAFETY-COMPONENT
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -470,6 +486,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A003-D014A-MICRO-SMALL-AND-MEDIUM-SIZED-ENTERPRISE
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -493,6 +510,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A003-D014B-SMALL-MID-CAP-ENTERPRISE
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -516,6 +534,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A003-D015-INSTRUCTIONS-FOR-USE
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -539,6 +558,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A003-D016-RECALL-OF-AN-AI-SYSTEM
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -562,6 +582,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A003-D017-WITHDRAWAL-OF-AN-AI-SYSTEM
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -585,6 +606,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A003-D018-PERFORMANCE-OF-AN-AI-SYSTEM
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -609,6 +631,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A003-D019-NOTIFYING-AUTHORITY
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -632,6 +655,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A003-D020-CONFORMITY-ASSESSMENT
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -655,6 +679,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A003-D021-CONFORMITY-ASSESSMENT-BODY
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -678,6 +703,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A003-D022-NOTIFIED-BODY
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -704,6 +730,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A003-D023-SUBSTANTIAL-MODIFICATION
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -728,6 +755,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A003-D024-CE-MARKING
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -753,6 +781,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A003-D025-POST-MARKET-MONITORING-SYSTEM
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -776,6 +805,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A003-D026-MARKET-SURVEILLANCE-AUTHORITY
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -799,6 +829,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A003-D027-HARMONISED-STANDARD
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -823,6 +854,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A003-D028-COMMON-SPECIFICATION
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -846,6 +878,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A003-D029-TRAINING-DATA
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -870,6 +903,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A003-D030-VALIDATION-DATA
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -893,6 +927,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A003-D031-VALIDATION-DATA-SET
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -917,6 +952,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A003-D032-TESTING-DATA
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -940,6 +976,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A003-D033-INPUT-DATA
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -964,6 +1001,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A003-D034-BIOMETRIC-DATA
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -989,6 +1027,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A003-D035-BIOMETRIC-IDENTIFICATION
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -1013,6 +1052,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A003-D036-BIOMETRIC-VERIFICATION
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -1037,6 +1077,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A003-D037-SPECIAL-CATEGORIES-OF-PERSONAL-DATA
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -1061,6 +1102,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A003-D038-SENSITIVE-OPERATIONAL-DATA
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -1084,6 +1126,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A003-D039-EMOTION-RECOGNITION-SYSTEM
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -1108,6 +1151,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A003-D040-BIOMETRIC-CATEGORISATION-SYSTEM
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -1133,6 +1177,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A003-D041-REMOTE-BIOMETRIC-IDENTIFICATION-SYSTEM
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -1158,6 +1203,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A003-D042-REAL-TIME-REMOTE-BIOMETRIC-IDENTIFICATION-SYSTEM
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -1181,6 +1227,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A003-D043-POST-REMOTE-BIOMETRIC-IDENTIFICATION-SYSTEM
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -1205,6 +1252,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A003-D044-PUBLICLY-ACCESSIBLE-SPACE
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -1227,6 +1275,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A003-D045-LAW-ENFORCEMENT-AUTHORITY
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -1251,7 +1300,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A003-D045-LAW-ENFORCEMENT-AUTHORITY
   review:
     status: approved
@@ -1278,7 +1328,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A003-D045-LAW-ENFORCEMENT-AUTHORITY
   review:
     status: approved
@@ -1305,6 +1356,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A003-D046-LAW-ENFORCEMENT
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -1331,6 +1383,7 @@ segments:
   norm_ids:
   - AIA-NORM-A003-D047-AI-OFFICE
   - AIA-NORM-A003-D047-AI-OFFICE-REFERENCE
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -1357,6 +1410,7 @@ segments:
   norm_ids:
   - AIA-NORM-A003-D048-NATIONAL-COMPETENT-AUTHORITY
   - AIA-NORM-A003-D048-EDPS-REFERENCE
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -1380,6 +1434,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A003-D049-SERIOUS-INCIDENT
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -1400,7 +1455,8 @@ segments:
   text: "            (a) the death of a person, or serious harm to a person\u2019s health;\n"
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A003-D049-SERIOUS-INCIDENT
   review:
     status: approved
@@ -1425,7 +1481,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A003-D049-SERIOUS-INCIDENT
   review:
     status: approved
@@ -1450,7 +1507,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A003-D049-SERIOUS-INCIDENT
   review:
     status: approved
@@ -1474,7 +1532,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A003-D049-SERIOUS-INCIDENT
   review:
     status: approved
@@ -1499,6 +1558,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A003-D050-PERSONAL-DATA
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -1522,6 +1582,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A003-D051-NON-PERSONAL-DATA
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -1545,6 +1606,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A003-D052-PROFILING
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -1569,6 +1631,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A003-D053-REAL-WORLD-TESTING-PLAN
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -1593,6 +1656,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A003-D054-SANDBOX-PLAN
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -1618,6 +1682,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A003-D055-AI-REGULATORY-SANDBOX
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -1643,6 +1708,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A003-D056-AI-LITERACY
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -1671,6 +1737,7 @@ segments:
   norm_ids:
   - AIA-NORM-A003-D057-TESTING-IN-REAL-WORLD-CONDITIONS
   - AIA-NORM-A003-D057-REAL-WORLD-TESTING-NON-MARKET-EFFECT
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -1694,6 +1761,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A003-D058-SUBJECT
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -1719,6 +1787,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A003-D059-INFORMED-CONSENT
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -1743,6 +1812,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A003-D060-DEEP-FAKE
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -1766,6 +1836,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A003-D061-WIDESPREAD-INFRINGEMENT
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -1789,7 +1860,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A003-D061-WIDESPREAD-INFRINGEMENT
   review:
     status: approved
@@ -1813,7 +1885,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A003-D061-WIDESPREAD-INFRINGEMENT
   review:
     status: approved
@@ -1838,7 +1911,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A003-D061-WIDESPREAD-INFRINGEMENT
   review:
     status: approved
@@ -1863,7 +1937,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A003-D061-WIDESPREAD-INFRINGEMENT
   review:
     status: approved
@@ -1890,7 +1965,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A003-D061-WIDESPREAD-INFRINGEMENT
   review:
     status: approved
@@ -1915,6 +1991,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A003-D062-CRITICAL-INFRASTRUCTURE
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -1942,6 +2019,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A003-D063-GENERAL-PURPOSE-AI-MODEL
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -1965,6 +2043,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A003-D064-HIGH-IMPACT-CAPABILITIES
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -1991,6 +2070,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A003-D065-SYSTEMIC-RISK
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -2015,6 +2095,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A003-D066-GENERAL-PURPOSE-AI-SYSTEM
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -2039,6 +2120,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A003-D067-FLOATING-POINT-OPERATION
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -2063,6 +2145,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A003-D068-DOWNSTREAM-PROVIDER
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass

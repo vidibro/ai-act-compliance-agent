@@ -17,6 +17,7 @@ segments:
   disposition: structural
   disposition_reason: ''
   norm_ids: []
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -39,10 +40,15 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A053-P1-A-DRAW-KEEP-DOCUMENTATION
-  - AIA-NORM-A053-P1-B-DRAW-KEEP-DOWNSTREAM-DOCUMENTATION
+  - AIA-NORM-A053-P1-A-ANNEX-XI-CONTENT
+  - AIA-NORM-A053-P1-A-PROVIDE-ON-REQUEST
+  - AIA-NORM-A053-P1-B-DRAW-KEEP-AND-MAKE-AVAILABLE-DOCUMENTATION
+  - AIA-NORM-A053-P1-B-PROTECT-RIGHTS
   - AIA-NORM-A053-P1-C-COPYRIGHT-POLICY
+  - AIA-NORM-A053-P1-C-RIGHTS-RESERVATION
   - AIA-NORM-A053-P1-D-PUBLIC-TRAINING-SUMMARY
   review:
     status: approved
@@ -73,6 +79,7 @@ segments:
   - AIA-NORM-A053-P1-A-DRAW-KEEP-DOCUMENTATION
   - AIA-NORM-A053-P1-A-ANNEX-XI-CONTENT
   - AIA-NORM-A053-P1-A-PROVIDE-ON-REQUEST
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -100,8 +107,9 @@ segments:
   disposition: normative
   disposition_reason: ''
   norm_ids:
-  - AIA-NORM-A053-P1-B-DRAW-KEEP-DOWNSTREAM-DOCUMENTATION
-  - AIA-NORM-A053-P1-B-MAKE-AVAILABLE
+  - AIA-NORM-A053-P1-B-DRAW-KEEP-AND-MAKE-AVAILABLE-DOCUMENTATION
+  - AIA-NORM-A053-P1-B-PROTECT-RIGHTS
+  qualifying_norm_ids:
   - AIA-NORM-A053-P1-B-PROTECT-RIGHTS
   - AIA-NORM-A053-P1-B-ENABLE-DOWNSTREAM-COMPLIANCE
   - AIA-NORM-A053-P1-B-ANNEX-XII-CONTENT
@@ -131,6 +139,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A053-P1-B-ENABLE-DOWNSTREAM-COMPLIANCE
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -155,6 +164,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A053-P1-B-ANNEX-XII-CONTENT
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -182,6 +192,7 @@ segments:
   norm_ids:
   - AIA-NORM-A053-P1-C-COPYRIGHT-POLICY
   - AIA-NORM-A053-P1-C-RIGHTS-RESERVATION
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -207,6 +218,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A053-P1-D-PUBLIC-TRAINING-SUMMARY
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -236,6 +248,7 @@ segments:
   norm_ids:
   - AIA-NORM-A053-P2-OPEN-SOURCE-EXCEPTION
   - AIA-NORM-A053-P2-SYSTEMIC-RISK-OVERRIDE
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -262,6 +275,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A053-P3-COOPERATE
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -294,6 +308,7 @@ segments:
   - AIA-NORM-A053-P4-RELY-ON-CODES
   - AIA-NORM-A053-P4-HARMONISED-STANDARD-PRESUMPTION
   - AIA-NORM-A053-P4-ALTERNATIVE-COMPLIANCE
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -320,6 +335,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A053-P5-DETAIL-METHODOLOGIES
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -345,6 +361,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A053-P6-AMEND-ANNEXES
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -370,6 +387,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A053-P7-CONFIDENTIAL-TREATMENT
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass

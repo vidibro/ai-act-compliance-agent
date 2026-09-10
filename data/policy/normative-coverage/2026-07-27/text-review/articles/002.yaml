@@ -17,6 +17,7 @@ segments:
   disposition: structural
   disposition_reason: ''
   norm_ids: []
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -39,7 +40,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A002-P1-A-PROVIDER
   - AIA-NORM-A002-P1-B-DEPLOYER
   - AIA-NORM-A002-P1-C-THIRD-COUNTRY-OUTPUT
@@ -73,6 +75,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A002-P1-A-PROVIDER
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -98,6 +101,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A002-P1-B-DEPLOYER
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -123,6 +127,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A002-P1-C-THIRD-COUNTRY-OUTPUT
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -147,6 +152,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A002-P1-D-IMPORT-DISTRIBUTE
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -172,6 +178,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A002-P1-E-PRODUCT-MANUFACTURER
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -196,6 +203,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A002-P1-F-AUTHORISED-REPRESENTATIVE
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -220,6 +228,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A002-P1-G-AFFECTED-PERSON
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -249,6 +258,7 @@ segments:
   norm_ids:
   - AIA-NORM-A002-P2-SECTION-B-LIMIT
   - AIA-NORM-A002-P2-INTEGRATED-SANDBOX-PROVISIONS
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -276,6 +286,7 @@ segments:
   norm_ids:
   - AIA-NORM-A002-P3-OUTSIDE-UNION-LAW
   - AIA-NORM-A002-P3-NATIONAL-SECURITY-COMPETENCE
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -302,6 +313,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A002-P3-MILITARY-EXCLUSION
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -328,6 +340,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A002-P3-MILITARY-OUTPUT-EXCLUSION
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -357,6 +370,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A002-P4-INTERNATIONAL-COOPERATION-EXCLUSION
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -382,6 +396,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A002-P5-INTERMEDIARY-LIABILITY-SAVING
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -407,6 +422,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A002-P6-SCIENTIFIC-RD-EXCLUSION
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -435,6 +451,7 @@ segments:
   norm_ids:
   - AIA-NORM-A002-P7-DATA-PROTECTION-APPLICATION
   - AIA-NORM-A002-P7-PRIVACY-LAW-SAVING
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -464,6 +481,7 @@ segments:
   - AIA-NORM-A002-P8-PRE-MARKET-RD-EXCLUSION
   - AIA-NORM-A002-P8-RD-UNION-LAW-COMPLIANCE
   - AIA-NORM-A002-P8-REAL-WORLD-TESTING-CARVEOUT
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -489,6 +507,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A002-P9-CONSUMER-PRODUCT-SAFETY-SAVING
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -514,6 +533,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A002-P10-PERSONAL-USE-DEPLOYER-EXCLUSION
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -542,6 +562,7 @@ segments:
   norm_ids:
   - AIA-NORM-A002-P11-MORE-FAVOURABLE-WORKER-RULES
   - AIA-NORM-A002-P11-MORE-FAVOURABLE-COLLECTIVE-AGREEMENTS
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -568,6 +589,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A002-P12-OPEN-SOURCE-AI-SYSTEM-EXCLUSION
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -594,6 +616,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A002-P13-LIMIT-HIGH-RISK-REQUIREMENTS
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -618,7 +641,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A002-P13-LIMIT-HIGH-RISK-REQUIREMENTS
   review:
     status: approved
@@ -643,7 +667,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A002-P13-LIMIT-HIGH-RISK-REQUIREMENTS
   review:
     status: approved
@@ -672,6 +697,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A002-P13-COMMISSION-DELEGATED-ACTS
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass

@@ -18,6 +18,7 @@ segments:
   disposition: structural
   disposition_reason: ''
   norm_ids: []
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -46,6 +47,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A060A-P1-ALLOW-SECTION-B-TESTING
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -71,6 +73,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A060A-P2-ADOPT-TESTING-FRAMEWORK
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -98,6 +101,7 @@ segments:
   norm_ids:
   - AIA-NORM-A060A-P3-NOTIFY-FRAMEWORK
   - AIA-NORM-A060A-P3-PRESERVE-COMMISSION-COMPETENCE
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -129,6 +133,7 @@ segments:
   norm_ids:
   - AIA-NORM-A060A-P4-COOPERATE-AND-REMOVE-OBSTACLES
   - AIA-NORM-A060A-P4-REMOVE-PRACTICAL-OBSTACLES
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -154,6 +159,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A060A-P5-FRAMEWORK-REQUIREMENTS
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -179,8 +185,9 @@ segments:
   disposition: normative
   disposition_reason: ''
   norm_ids:
-  - AIA-NORM-A060A-P5-FRAMEWORK-REQUIREMENTS
   - AIA-NORM-A060A-P5-A-AGREE-TESTING-PLAN
+  qualifying_norm_ids:
+  - AIA-NORM-A060A-P5-FRAMEWORK-REQUIREMENTS
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -207,8 +214,9 @@ segments:
   disposition: normative
   disposition_reason: ''
   norm_ids:
-  - AIA-NORM-A060A-P5-FRAMEWORK-REQUIREMENTS
   - AIA-NORM-A060A-P5-B-COMPLY-WITH-INCORPORATED-SAFEGUARDS
+  qualifying_norm_ids:
+  - AIA-NORM-A060A-P5-FRAMEWORK-REQUIREMENTS
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -231,7 +239,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A060A-P5-FRAMEWORK-REQUIREMENTS
   review:
     status: approved
@@ -255,7 +264,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A060A-P5-FRAMEWORK-REQUIREMENTS
   review:
     status: approved
@@ -285,6 +295,7 @@ segments:
   norm_ids:
   - AIA-NORM-A060A-P6-COMPLY-WITH-SECTORAL-LAW
   - AIA-NORM-A060A-P6-SECTORAL-REQUIREMENTS-DO-NOT-OBSTRUCT
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass

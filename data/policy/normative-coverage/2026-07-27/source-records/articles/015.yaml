@@ -1,48 +1,20 @@
 records:
-- norm_id: AIA-NORM-A015-P1-ACCURACY
+- norm_id: AIA-NORM-A015-P1-PERFORMANCE-AND-LIFECYCLE-CONSISTENCY
   source: A015-P001
   quote: High-risk AI systems shall be designed and developed in such a way that they achieve an appropriate
     level of accuracy, robustness, and cybersecurity, and that they perform consistently in those respects
     throughout their lifecycle.
-  action: design and develop the high-risk AI system to achieve an appropriate level of accuracy
+  action: design and develop the high-risk AI system to achieve appropriate accuracy, robustness, and
+    cybersecurity and perform consistently in those respects throughout its lifecycle
   subject_ref: provider
   subject_category: supported_operator
+  mandatory_content:
+  - appropriate accuracy
+  - appropriate robustness
+  - appropriate cybersecurity
+  - consistent performance in those respects throughout the lifecycle
   implementation_refs: &id001
   - AIA-HR-A15
-  verification_mode: judged_by_gap_analysis
-  verified_by: vidibro
-- norm_id: AIA-NORM-A015-P1-ROBUSTNESS
-  source: A015-P001
-  quote: High-risk AI systems shall be designed and developed in such a way that they achieve an appropriate
-    level of accuracy, robustness, and cybersecurity, and that they perform consistently in those respects
-    throughout their lifecycle.
-  action: design and develop the high-risk AI system to achieve an appropriate level of robustness
-  subject_ref: provider
-  subject_category: supported_operator
-  implementation_refs: *id001
-  verification_mode: judged_by_gap_analysis
-  verified_by: vidibro
-- norm_id: AIA-NORM-A015-P1-CYBERSECURITY
-  source: A015-P001
-  quote: High-risk AI systems shall be designed and developed in such a way that they achieve an appropriate
-    level of accuracy, robustness, and cybersecurity, and that they perform consistently in those respects
-    throughout their lifecycle.
-  action: design and develop the high-risk AI system to achieve an appropriate level of cybersecurity
-  subject_ref: provider
-  subject_category: supported_operator
-  implementation_refs: *id001
-  verification_mode: judged_by_gap_analysis
-  verified_by: vidibro
-- norm_id: AIA-NORM-A015-P1-LIFECYCLE-CONSISTENCY
-  source: A015-P001
-  quote: High-risk AI systems shall be designed and developed in such a way that they achieve an appropriate
-    level of accuracy, robustness, and cybersecurity, and that they perform consistently in those respects
-    throughout their lifecycle.
-  action: maintain consistent accuracy, robustness, and cybersecurity performance throughout the system
-    lifecycle
-  subject_ref: provider
-  subject_category: supported_operator
-  implementation_refs: *id001
   verification_mode: judged_by_gap_analysis
   verified_by: vidibro
 - norm_id: AIA-NORM-A015-P2-ENCOURAGE-MEASUREMENT
@@ -59,25 +31,12 @@ records:
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
-- norm_id: AIA-NORM-A015-P3-DECLARE-ACCURACY
+- norm_id: AIA-NORM-A015-P3-DECLARE-ACCURACY-AND-METRICS
   source: A015-P003
   quote: The levels of accuracy and the relevant accuracy metrics of high-risk AI systems shall be declared
     in the accompanying instructions of use.
-  action: "declare the system\u2019s accuracy levels in the accompanying instructions for use"
-  subject_ref: provider
-  subject_category: supported_operator
-  implementation_refs: *id001
-  verification_mode: judged_by_gap_analysis
-  dependencies:
-  - dependency_ref: AIA-NORM-A013-P2-PROVIDE-INSTRUCTIONS
-    resolution: internal_resolved
-    detail: Article 13 supplies the obligation to accompany the system with instructions for use.
-  verified_by: vidibro
-- norm_id: AIA-NORM-A015-P3-DECLARE-METRICS
-  source: A015-P003
-  quote: The levels of accuracy and the relevant accuracy metrics of high-risk AI systems shall be declared
-    in the accompanying instructions of use.
-  action: declare the relevant accuracy metrics in the accompanying instructions for use
+  action: declare the high-risk AI system's accuracy levels and relevant accuracy metrics in the accompanying
+    instructions for use
   subject_ref: provider
   subject_category: supported_operator
   implementation_refs: *id001
@@ -99,19 +58,10 @@ records:
   implementation_refs: *id001
   verification_mode: judged_by_gap_analysis
   verified_by: vidibro
-- norm_id: AIA-NORM-A015-P4-TECHNICAL-MEASURES
+- norm_id: AIA-NORM-A015-P4-TECHNICAL-AND-ORGANISATIONAL-MEASURES
   source: A015-P004
   quote: Technical and organisational measures shall be taken in this regard.
-  action: apply technical measures supporting resilience to errors, faults, and inconsistencies
-  subject_ref: provider
-  subject_category: supported_operator
-  implementation_refs: *id001
-  verification_mode: judged_by_gap_analysis
-  verified_by: vidibro
-- norm_id: AIA-NORM-A015-P4-ORGANISATIONAL-MEASURES
-  source: A015-P004
-  quote: Technical and organisational measures shall be taken in this regard.
-  action: apply organisational measures supporting resilience to errors, faults, and inconsistencies
+  action: apply technical and organisational measures supporting resilience to errors, faults, and inconsistencies
   subject_ref: provider
   subject_category: supported_operator
   implementation_refs: *id001
@@ -128,30 +78,18 @@ records:
   implementation_refs: *id001
   verification_mode: reported_conditionally
   verified_by: vidibro
-- norm_id: AIA-NORM-A015-P4-FEEDBACK-RISK
+- norm_id: AIA-NORM-A015-P4-FEEDBACK-LOOP-RISK-AND-MITIGATION
   source: A015-P006
   quote: High-risk AI systems that continue to learn after being placed on the market or put into service
     shall be developed in such a way as to eliminate or reduce as far as possible the risk of possibly
     biased outputs influencing input for future operations (feedback loops), and as to ensure that any
     such feedback loops are duly addressed with appropriate mitigation measures.
-  action: eliminate or minimise the risk of biased outputs influencing input for future operations
+  action: eliminate or minimise the risk of biased-output feedback loops and address any such loops with
+    appropriate mitigation measures
   subject_ref: provider
   subject_category: supported_operator
-  conditions: &id002
+  conditions:
   - the high-risk AI system continues to learn after market placement or being put into service
-  implementation_refs: *id001
-  verification_mode: judged_by_gap_analysis
-  verified_by: vidibro
-- norm_id: AIA-NORM-A015-P4-MITIGATE-FEEDBACK
-  source: A015-P006
-  quote: High-risk AI systems that continue to learn after being placed on the market or put into service
-    shall be developed in such a way as to eliminate or reduce as far as possible the risk of possibly
-    biased outputs influencing input for future operations (feedback loops), and as to ensure that any
-    such feedback loops are duly addressed with appropriate mitigation measures.
-  action: address feedback loops with appropriate mitigation measures
-  subject_ref: provider
-  subject_category: supported_operator
-  conditions: *id002
   implementation_refs: *id001
   verification_mode: judged_by_gap_analysis
   verified_by: vidibro

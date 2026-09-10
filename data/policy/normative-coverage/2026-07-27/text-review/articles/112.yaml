@@ -17,6 +17,7 @@ segments:
   disposition: structural
   disposition_reason: ''
   norm_ids: []
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -46,6 +47,7 @@ segments:
   norm_ids:
   - AIA-NORM-A112-P1-ANNUAL-AMENDMENT-ASSESSMENT
   - AIA-NORM-A112-P1-SUBMIT-ASSESSMENT-FINDINGS
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -71,6 +73,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A112-P2-FOUR-YEAR-EVALUATION
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -94,7 +97,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A112-P2-FOUR-YEAR-EVALUATION
   review:
     status: approved
@@ -119,7 +123,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A112-P2-FOUR-YEAR-EVALUATION
   review:
     status: approved
@@ -143,7 +148,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A112-P2-FOUR-YEAR-EVALUATION
   review:
     status: approved
@@ -176,6 +182,7 @@ segments:
   - AIA-NORM-A112-P3-REGULATION-REVIEW-REPORT
   - AIA-NORM-A112-P3-ACCOMPANY-AMENDMENT-PROPOSAL
   - AIA-NORM-A112-P3-PUBLISH-REPORTS
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -200,6 +207,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A112-P4-REPORT-ATTENTION-AREAS
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -223,7 +231,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A112-P4-REPORT-ATTENTION-AREAS
   review:
     status: approved
@@ -248,7 +257,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A112-P4-REPORT-ATTENTION-AREAS
   review:
     status: approved
@@ -273,7 +283,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A112-P4-REPORT-ATTENTION-AREAS
   review:
     status: approved
@@ -298,7 +309,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A112-P4-REPORT-ATTENTION-AREAS
   review:
     status: approved
@@ -329,6 +341,7 @@ segments:
   norm_ids:
   - AIA-NORM-A112-P5-EVALUATE-AI-OFFICE
   - AIA-NORM-A112-P5-REPORT-AI-OFFICE-EVALUATION
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -359,6 +372,7 @@ segments:
   - AIA-NORM-A112-P6-REVIEW-ENERGY-STANDARDISATION
   - AIA-NORM-A112-P6-SUBMIT-STANDARDISATION-REPORT
   - AIA-NORM-A112-P6-PUBLISH-STANDARDISATION-REPORT
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -386,6 +400,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A112-P7-EVALUATE-VOLUNTARY-CODES
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -411,6 +426,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A112-P8-PROVIDE-REVIEW-INFORMATION
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -437,6 +453,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A112-P9-ACCOUNT-FOR-INSTITUTIONAL-POSITIONS
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -463,6 +480,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A112-P10-SUBMIT-AMENDMENT-PROPOSALS
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -490,6 +508,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A112-P11-DEVELOP-RISK-EVALUATION-METHODOLOGY
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -513,7 +532,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A112-P11-DEVELOP-RISK-EVALUATION-METHODOLOGY
   review:
     status: approved
@@ -537,7 +557,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A112-P11-DEVELOP-RISK-EVALUATION-METHODOLOGY
   review:
     status: approved
@@ -562,7 +583,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A112-P11-DEVELOP-RISK-EVALUATION-METHODOLOGY
   review:
     status: approved
@@ -591,6 +613,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A112-P12-ACCOUNT-FOR-SECTOR-SPECIFICITIES
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -621,6 +644,7 @@ segments:
   norm_ids:
   - AIA-NORM-A112-P13-ASSESS-ENFORCEMENT
   - AIA-NORM-A112-P13-ACCOMPANY-ENFORCEMENT-PROPOSAL
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass

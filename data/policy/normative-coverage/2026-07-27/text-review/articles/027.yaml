@@ -17,6 +17,7 @@ segments:
   disposition: structural
   disposition_reason: ''
   norm_ids: []
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -46,6 +47,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A027-P1-PERFORM-FRIA
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -67,7 +69,8 @@ segments:
     \ be used in line with its intended purpose;\n"
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A027-P1-PERFORM-FRIA
   review:
     status: approved
@@ -92,7 +95,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A027-P1-PERFORM-FRIA
   review:
     status: approved
@@ -117,7 +121,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A027-P1-PERFORM-FRIA
   review:
     status: approved
@@ -143,7 +148,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A027-P1-PERFORM-FRIA
   review:
     status: approved
@@ -168,7 +174,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A027-P1-PERFORM-FRIA
   review:
     status: approved
@@ -193,7 +200,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A027-P1-PERFORM-FRIA
   review:
     status: approved
@@ -225,6 +233,7 @@ segments:
   - AIA-NORM-A027-P2-FIRST-USE
   - AIA-NORM-A027-P2-RELY-ON-PREVIOUS-ASSESSMENT
   - AIA-NORM-A027-P2-UPDATE
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -253,6 +262,7 @@ segments:
   norm_ids:
   - AIA-NORM-A027-P3-NOTIFY-RESULTS
   - AIA-NORM-A027-P3-ARTICLE-46-EXEMPTION
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -281,6 +291,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A027-P4-INCORPORATE-DPIA
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -310,6 +321,7 @@ segments:
   norm_ids:
   - AIA-NORM-A027-P5-AI-OFFICE-TEMPLATE
   - AIA-NORM-A027-P5-TEMPLATE-DPIA-REUSE
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass

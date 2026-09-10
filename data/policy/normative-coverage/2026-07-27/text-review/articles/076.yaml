@@ -17,6 +17,7 @@ segments:
   disposition: structural
   disposition_reason: ''
   norm_ids: []
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -42,6 +43,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A076-P1-SUPERVISION-POWERS
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -69,6 +71,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A076-P1A-ARTICLE-60A-SUBSTITUTIONS
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -98,6 +101,7 @@ segments:
   norm_ids:
   - AIA-NORM-A076-P2-VERIFY-SANDBOX-TESTING
   - AIA-NORM-A076-P2-ALLOW-DEROGATION
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -125,6 +129,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A076-P3-INTERVENE-IN-TESTING
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -147,7 +152,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A076-P3-INTERVENE-IN-TESTING
   review:
     status: approved
@@ -172,7 +178,8 @@ segments:
     '
   disposition: normative
   disposition_reason: ''
-  norm_ids:
+  norm_ids: []
+  qualifying_norm_ids:
   - AIA-NORM-A076-P3-INTERVENE-IN-TESTING
   review:
     status: approved
@@ -201,6 +208,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A076-P4-GIVE-GROUNDS-AND-CHALLENGE-ROUTE
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -227,6 +235,7 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A076-P5-COMMUNICATE-GROUNDS
+  qualifying_norm_ids: []
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
