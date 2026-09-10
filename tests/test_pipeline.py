@@ -21,6 +21,7 @@ from aiact.policy_loader import load_policy_spec
 from aiact.schemas.enums import (
     ActorRole,
     AnnexIIIArea,
+    DerogationCondition,
     GpaiStatus,
     ProhibitedPractice,
     RiskClass,
@@ -131,7 +132,7 @@ def test_a_not_high_risk_use_case_still_owes_article_6_4(spec):
         prohibited=None,
         annex_iii=AnnexIIIArea.EMPLOYMENT,
         profiling=False,
-        derogation="narrow_procedural_task",
+        derogation=DerogationCondition.NARROW_PROCEDURAL_TASK,
         significant_risk=False,
     )
     judge = StubJudge()
