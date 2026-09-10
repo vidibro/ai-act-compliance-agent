@@ -8,9 +8,13 @@ norms:
     category: union_institution_or_body
   action: promptly consult the relevant authority and operators and evaluate an objected-to or Union-law-inconsistent
     national measure
-  norm_text: the Commission shall without undue delay enter into consultation with the market surveillance
-    authority of the relevant Member State and the operator or operators, and shall evaluate the national
-    measure.
+  norm_text: Where, within three months of receipt of the notification referred to in Article 79(5), or
+    within 30 days in the case of non-compliance with the prohibition of the AI practices referred to
+    in Article 5, objections are raised by the market surveillance authority of a Member State to a measure
+    taken by another market surveillance authority, or where the Commission considers the measure to be
+    contrary to Union law, the Commission shall without undue delay enter into consultation with the market
+    surveillance authority of the relevant Member State and the operator or operators, and shall evaluate
+    the national measure.
   detection_channels:
   - semantic_legal_effect
   - shall_token
@@ -18,7 +22,19 @@ norms:
   - AIA-TEXT-A081-P001
   qualifier_spans: []
   effective_date_spans: []
-  conditions: []
+  conditions:
+  - operator: any_of
+    operands:
+    - operator: all_of
+      operands:
+      - a Member State market-surveillance authority objects to a measure taken by another market-surveillance
+        authority
+      - operator: any_of
+        operands:
+        - the objection is raised within three months after receipt of the Article 79(5) notification
+        - the objection concerns Article 5 prohibited-practice non-compliance and is raised within 30
+          days after receipt of the Article 79(5) notification
+    - the Commission considers the measure contrary to Union law
   exceptions: []
   mandatory_content: []
   dependencies: []
@@ -55,7 +71,8 @@ norms:
   - AIA-TEXT-A081-P001
   qualifier_spans: []
   effective_date_spans: []
-  conditions: []
+  conditions:
+  - the decision is based on the results of the evaluation
   exceptions: []
   mandatory_content: []
   dependencies: []
@@ -89,7 +106,8 @@ norms:
   - AIA-TEXT-A081-P001
   qualifier_spans: []
   effective_date_spans: []
-  conditions: []
+  conditions:
+  - the Commission has decided whether the national measure is justified
   exceptions: []
   mandatory_content: []
   dependencies: []
@@ -150,9 +168,10 @@ norms:
     category: member_state
   action: take appropriate restrictions without undue delay and inform the Commission when the national
     measure is justified
-  norm_text: all Member States shall ensure that they take appropriate restrictive measures in respect
-    of the AI system concerned, such as requiring the withdrawal of the AI system from their market without
-    undue delay, and shall inform the Commission accordingly.
+  norm_text: Where the Commission considers the measure taken by the relevant Member State to be justified,
+    all Member States shall ensure that they take appropriate restrictive measures in respect of the AI
+    system concerned, such as requiring the withdrawal of the AI system from their market without undue
+    delay, and shall inform the Commission accordingly.
   detection_channels:
   - semantic_legal_effect
   - shall_token
@@ -160,7 +179,8 @@ norms:
   - AIA-TEXT-A081-P002
   qualifier_spans: []
   effective_date_spans: []
-  conditions: []
+  conditions:
+  - the Commission considers the measure taken by the relevant Member State justified
   exceptions: []
   mandatory_content: []
   dependencies: []
@@ -186,7 +206,8 @@ norms:
   - subject_ref: member_state
     category: member_state
   action: withdraw an unjustified national measure and inform the Commission
-  norm_text: the Member State concerned shall withdraw the measure and shall inform the Commission accordingly.
+  norm_text: Where the Commission considers the national measure to be unjustified, the Member State concerned
+    shall withdraw the measure and shall inform the Commission accordingly.
   detection_channels:
   - semantic_legal_effect
   - shall_token
@@ -194,7 +215,8 @@ norms:
   - AIA-TEXT-A081-P002
   qualifier_spans: []
   effective_date_spans: []
-  conditions: []
+  conditions:
+  - the Commission considers the national measure unjustified
   exceptions: []
   mandatory_content: []
   dependencies: []
@@ -221,8 +243,10 @@ norms:
     category: union_institution_or_body
   action: apply the Regulation 1025/2012 Article 11 procedure when justified non-compliance arises from
     standards or common specifications
-  norm_text: the Commission shall apply the procedure provided for in Article 11 of Regulation (EU) No
-    1025/2012.
+  norm_text: Where the national measure is considered justified and the non-compliance of the AI system
+    is attributed to shortcomings in the harmonised standards or common specifications referred to in
+    Articles 40 and 41 of this Regulation, the Commission shall apply the procedure provided for in Article
+    11 of Regulation (EU) No 1025/2012.
   detection_channels:
   - semantic_legal_effect
   - shall_token
@@ -231,7 +255,12 @@ norms:
   - AIA-TEXT-A081-P003
   qualifier_spans: []
   effective_date_spans: []
-  conditions: []
+  conditions:
+  - operator: all_of
+    operands:
+    - the national measure is considered justified
+    - the AI system's non-compliance is attributed to shortcomings in the Article 40 or 41 harmonised
+      standards or common specifications
   exceptions: []
   mandatory_content: []
   dependencies: []

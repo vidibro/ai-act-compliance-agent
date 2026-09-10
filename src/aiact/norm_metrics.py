@@ -259,7 +259,7 @@ rule selection, judging, or reporting.
 - Characters displayed by the extraction pass: {metrics.fully_displayed_characters}
 - Independently approved characters: {metrics.approved_characters}
 - Characters deliberately left as review debt: {metrics.needs_review_characters}
-- Normative segments supporting multiple propositions: {multi_norm_segments}
+- Normative segments yielding multiple propositions: {multi_norm_segments}
 - Semantic candidates a shall-token pass missed: {metrics.shall_vs_semantic_disagreements}
 - Shall-token candidate recall: {metrics.shall_token_candidate_recall:.1%}
 - In-scope semantic candidates absent from existing implementation: {implementation_disagreements}

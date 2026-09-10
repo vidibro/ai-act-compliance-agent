@@ -1,8 +1,11 @@
 records:
 - norm_id: AIA-NORM-A075D-P1-APPLY-PROCEDURAL-RIGHTS
   source: A075D-P001
-  quote: Article 18 of Regulation (EU) 2019/1020 shall apply mutatis mutandis
-  action: apply Regulation 2019/1020 Article 18 procedural rights with necessary adaptations while preserving more specific rights
+  quote: "Article 18 of Regulation (EU) 2019/1020 shall apply mutatis mutandis to operators subject to\
+    \ the AI Office\u2019s competence pursuant to Article 75(1) of this Regulation, without prejudice\
+    \ to more specific procedural rights provided for in this Regulation."
+  action: apply Regulation 2019/1020 Article 18 procedural rights with necessary adaptations while preserving
+    more specific rights
   subject_ref: article_75_operator
   subject_category: supported_operator
   kind: applicability
@@ -13,7 +16,8 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A075D-P2-RESPECT-DEFENCE-AND-FILE-RIGHTS
   source: A075D-P002
-  quote: The rights of defence and of access to the file of operators falling within the scope of Article 75(1) shall be fully respected
+  quote: The rights of defence and of access to the file of operators falling within the scope of Article
+    75(1) shall be fully respected in proceedings.
   action: fully respect Article 75(1) operators' defence and file-access rights in proceedings
   subject_ref: ai_office
   subject_category: union_institution_or_body
@@ -24,8 +28,10 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A075D-P2-NEGOTIATED-FILE-ACCESS
   source: A075D-P002
-  quote: those operators shall be entitled to have access to the AI Office file under the terms of a negotiated disclosure
-  action: access the AI Office file through negotiated disclosure subject to legitimate business-secret interests and stated confidentiality exclusions
+  quote: those operators shall be entitled to have access to the AI Office file under the terms of a negotiated
+    disclosure
+  action: access the AI Office file through negotiated disclosure subject to legitimate business-secret
+    interests and stated confidentiality exclusions
   subject_ref: article_75_operator
   subject_category: supported_operator
   kind: entitlement
@@ -34,6 +40,12 @@ records:
   implementation_mode: none_required
   implementation_reason: No independent product action arises.
   verification_mode: not_reported
+  conditions:
+  - adoption of an Article 75c(1) decision is possible
+  exceptions:
+  - confidential information and internal documents of the AI Office, the Board, competent market-surveillance
+    authorities or other Member-State public authorities
+  - correspondence between the AI Office and those authorities
 - norm_id: AIA-NORM-A075D-P2-SET-DISCLOSURE-TERMS
   source: A075D-P002
   quote: The AI Office shall have the power to adopt decisions setting out such terms of disclosure
@@ -46,9 +58,12 @@ records:
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
+  conditions:
+  - the parties disagree about negotiated-disclosure terms
 - norm_id: AIA-NORM-A075D-P2-DISCLOSE-INFRINGEMENT-EVIDENCE
   source: A075D-P002
-  quote: Nothing in this paragraph shall prevent the AI Office from disclosing and using information necessary to prove an infringement
+  quote: Nothing in this paragraph shall prevent the AI Office from disclosing and using information necessary
+    to prove an infringement.
   action: disclose and use information necessary to prove an infringement despite file-access restrictions
   subject_ref: ai_office
   subject_category: union_institution_or_body
@@ -60,7 +75,8 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A075D-P3-ADOPT-FILE-ACCESS-ARRANGEMENTS
   source: A075D-P003
-  quote: The Commission may adopt implementing acts concerning the practical arrangements for access to the file
+  quote: The Commission may adopt implementing acts concerning the practical arrangements for access to
+    the file and the negotiated disclosure of information provided for in paragraph 2.
   action: adopt implementing acts on file access and negotiated disclosure arrangements
   subject_ref: commission
   subject_category: union_institution_or_body
@@ -72,7 +88,9 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A075D-P4-PUBLISH-DECISIONS
   source: A075D-P004
-  quote: The AI Office shall publish the decisions it adopts pursuant to Articles 75b and 75c
+  quote: The AI Office shall publish the decisions it adopts pursuant to Articles 75b and 75c. Such publication
+    shall state the names of the parties and the main content of the decision, including any penalties
+    imposed.
   action: publish Article 75b and 75c decisions with party names decision substance and imposed penalties
   subject_ref: ai_office
   subject_category: union_institution_or_body
@@ -83,7 +101,8 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A075D-P4-PROTECT-CONFIDENTIAL-INFORMATION
   source: A075D-P004
-  quote: The publication shall have regard to the rights and legitimate interests of any person concerned in the protection of their confidential information
+  quote: The publication shall have regard to the rights and legitimate interests of any person concerned
+    in the protection of their confidential information.
   action: protect affected persons' confidentiality rights and legitimate interests when publishing decisions
   subject_ref: ai_office
   subject_category: union_institution_or_body

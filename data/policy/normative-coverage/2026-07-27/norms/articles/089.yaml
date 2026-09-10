@@ -8,9 +8,9 @@ norms:
     category: union_institution_or_body
   action: take necessary actions monitoring GPAI-provider compliance and adherence to approved codes of
     practice
-  norm_text: the AI Office may take the necessary actions to monitor the effective implementation and
-    compliance with this Regulation by providers of general-purpose AI models, including their adherence
-    to approved codes of practice.
+  norm_text: For the purpose of carrying out the tasks assigned to it under this Section, the AI Office
+    may take the necessary actions to monitor the effective implementation and compliance with this Regulation
+    by providers of general-purpose AI models, including their adherence to approved codes of practice.
   detection_channels:
   - semantic_legal_effect
   - other_modal
@@ -18,7 +18,8 @@ norms:
   - AIA-TEXT-A089-P001
   qualifier_spans: []
   effective_date_spans: []
-  conditions: []
+  conditions:
+  - the action serves performance of the AI Office's tasks under this Section
   exceptions: []
   mandatory_content: []
   dependencies: []
@@ -91,7 +92,8 @@ norms:
   - AIA-TEXT-A089-P004
   - AIA-TEXT-A089-P005
   effective_date_spans: []
-  conditions: []
+  conditions:
+  - a downstream provider exercises its entitlement to lodge a complaint
   exceptions: []
   mandatory_content:
   - GPAI provider point of contact

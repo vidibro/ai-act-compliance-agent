@@ -53,9 +53,11 @@ norms:
     and selection criteria;
   detection_channels:
   - semantic_legal_effect
+  - cross_reference_structure
   primary_spans:
   - AIA-TEXT-A062-P002
-  qualifier_spans: []
+  qualifier_spans:
+  - AIA-TEXT-A062-P001
   effective_date_spans: []
   conditions:
   - the SME or start-up has a registered office or a branch in the Union
@@ -92,9 +94,11 @@ norms:
   - semantic_legal_effect
   - shall_token
   - deeming_or_consequence
+  - cross_reference_structure
   primary_spans:
   - AIA-TEXT-A062-P002
-  qualifier_spans: []
+  qualifier_spans:
+  - AIA-TEXT-A062-P001
   effective_date_spans: []
   conditions:
   - the other SMEs or start-ups also fulfil the eligibility conditions and selection criteria
@@ -128,9 +132,11 @@ norms:
     tailored to the needs of SMEs including start-ups, deployers and, as appropriate, local public authorities;
   detection_channels:
   - semantic_legal_effect
+  - cross_reference_structure
   primary_spans:
   - AIA-TEXT-A062-P003
-  qualifier_spans: []
+  qualifier_spans:
+  - AIA-TEXT-A062-P001
   effective_date_spans: []
   conditions: []
   exceptions: []
@@ -163,9 +169,11 @@ norms:
   norm_text: utilise existing dedicated channels
   detection_channels:
   - semantic_legal_effect
+  - cross_reference_structure
   primary_spans:
   - AIA-TEXT-A062-P004
-  qualifier_spans: []
+  qualifier_spans:
+  - AIA-TEXT-A062-P001
   effective_date_spans: []
   conditions: []
   exceptions: []
@@ -198,9 +206,11 @@ norms:
     about the implementation of this Regulation, including as regards participation in AI regulatory sandboxes;
   detection_channels:
   - semantic_legal_effect
+  - cross_reference_structure
   primary_spans:
   - AIA-TEXT-A062-P004
-  qualifier_spans: []
+  qualifier_spans:
+  - AIA-TEXT-A062-P001
   effective_date_spans: []
   conditions:
   - where appropriate
@@ -234,9 +244,11 @@ norms:
     development process.
   detection_channels:
   - semantic_legal_effect
+  - cross_reference_structure
   primary_spans:
   - AIA-TEXT-A062-P005
-  qualifier_spans: []
+  qualifier_spans:
+  - AIA-TEXT-A062-P001
   effective_date_spans: []
   conditions: []
   exceptions: []
@@ -348,9 +360,11 @@ norms:
     Board in its request;
   detection_channels:
   - semantic_legal_effect
+  - cross_reference_structure
   primary_spans:
   - AIA-TEXT-A062-P008
-  qualifier_spans: []
+  qualifier_spans:
+  - AIA-TEXT-A062-P007
   effective_date_spans: []
   conditions:
   - the Board specifies the areas in its request
@@ -384,9 +398,11 @@ norms:
     to this Regulation for all operators across the Union;
   detection_channels:
   - semantic_legal_effect
+  - cross_reference_structure
   primary_spans:
   - AIA-TEXT-A062-P009
-  qualifier_spans: []
+  qualifier_spans:
+  - AIA-TEXT-A062-P007
   effective_date_spans: []
   conditions: []
   exceptions: []
@@ -419,9 +435,11 @@ norms:
     from this Regulation;
   detection_channels:
   - semantic_legal_effect
+  - cross_reference_structure
   primary_spans:
   - AIA-TEXT-A062-P010
-  qualifier_spans: []
+  qualifier_spans:
+  - AIA-TEXT-A062-P007
   effective_date_spans: []
   conditions: []
   exceptions: []
@@ -453,9 +471,11 @@ norms:
     relation to AI systems.
   detection_channels:
   - semantic_legal_effect
+  - cross_reference_structure
   primary_spans:
   - AIA-TEXT-A062-P011
-  qualifier_spans: []
+  qualifier_spans:
+  - AIA-TEXT-A062-P007
   effective_date_spans: []
   conditions: []
   exceptions: []

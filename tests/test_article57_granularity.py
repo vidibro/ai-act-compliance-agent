@@ -214,18 +214,15 @@ def test_notification_support_requests_and_public_list_belong_to_the_right_actor
     assert "planned and existing" in listing.action
 
 
-def test_reporting_stages_publication_and_commission_use_are_separate(norms):
+def test_reporting_lifecycle_publication_and_commission_use_are_separate(norms):
     annual = norms["P16-SANDBOX-REPORTING"]
-    final = norms["P16-FINAL-SANDBOX-REPORT"]
     publication = norms["P16-PUBLISH-ANNUAL-REPORTS"]
     consideration = norms["P16-COMMISSION-REPORT-CONSIDERATION"]
     assert "from one year after sandbox establishment" in annual.action
     assert "every year thereafter until termination" in annual.action
-    assert "final sandbox report" in final.action
+    assert "final report" in annual.action
     assert "AI Office and the Board" in annual.action
-    assert "AI Office and the Board" in final.action
-    assert annual.mandatory_content == final.mandatory_content
-    assert len(annual.mandatory_content) == 7
+    assert len(annual.mandatory_content) == 8
     assert annual.mandatory_content[:5] == [
         "implementation progress and results",
         "best practices",
@@ -237,7 +234,8 @@ def test_reporting_stages_publication_and_commission_use_are_separate(norms):
     assert "delegated and implementing acts" in annual.mandatory_content[5]
     assert "where relevant" in annual.mandatory_content[6]
     assert "other Union law supervised" in annual.mandatory_content[6]
-    assert publication.subjects == annual.subjects == final.subjects
+    assert annual.mandatory_content[7] == "submit a final report when the sandbox terminates"
+    assert publication.subjects == annual.subjects
     assert annual.subjects[0].subject_ref == "national_competent_authority"
     assert "annual sandbox reports or abstracts" in publication.action
     assert "online" in publication.action
@@ -261,7 +259,7 @@ def test_information_interface_does_not_swallow_conditional_coordination(norms):
 
 
 def test_corrections_remain_proposed_and_do_not_invent_runtime_coverage(norms):
-    assert len(norms) == 50
+    assert len(norms) == 49
     for norm in norms.values():
         assert norm.review.status.value == "proposed"
         assert norm.implementation_mode.value == "none_required"

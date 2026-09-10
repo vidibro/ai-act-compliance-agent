@@ -1,8 +1,15 @@
 records:
 - norm_id: AIA-NORM-A081-P1-CONSULT-AND-EVALUATE
   source: A081-P001
-  quote: the Commission shall without undue delay enter into consultation with the market surveillance authority of the relevant Member State and the operator or operators, and shall evaluate the national measure.
-  action: promptly consult the relevant authority and operators and evaluate an objected-to or Union-law-inconsistent national measure
+  quote: Where, within three months of receipt of the notification referred to in Article 79(5), or within
+    30 days in the case of non-compliance with the prohibition of the AI practices referred to in Article
+    5, objections are raised by the market surveillance authority of a Member State to a measure taken
+    by another market surveillance authority, or where the Commission considers the measure to be contrary
+    to Union law, the Commission shall without undue delay enter into consultation with the market surveillance
+    authority of the relevant Member State and the operator or operators, and shall evaluate the national
+    measure.
+  action: promptly consult the relevant authority and operators and evaluate an objected-to or Union-law-inconsistent
+    national measure
   subject_ref: commission
   subject_category: union_institution_or_body
   product_scope: outside_supported_actor
@@ -10,10 +17,26 @@ records:
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
+  conditions:
+  - operator: any_of
+    operands:
+    - operator: all_of
+      operands:
+      - a Member State market-surveillance authority objects to a measure taken by another market-surveillance
+        authority
+      - operator: any_of
+        operands:
+        - the objection is raised within three months after receipt of the Article 79(5) notification
+        - the objection concerns Article 5 prohibited-practice non-compliance and is raised within 30
+          days after receipt of the Article 79(5) notification
+    - the Commission considers the measure contrary to Union law
 - norm_id: AIA-NORM-A081-P1-DECIDE-JUSTIFICATION
   source: A081-P001
-  quote: the Commission shall, within six months, or within 60 days in the case of non-compliance with the prohibition of the AI practices referred to in Article 5, starting from the notification referred to in Article 79(5), decide whether the national measure is justified
-  action: decide whether the national measure is justified within six months or 60 days for Article 5 non-compliance
+  quote: the Commission shall, within six months, or within 60 days in the case of non-compliance with
+    the prohibition of the AI practices referred to in Article 5, starting from the notification referred
+    to in Article 79(5), decide whether the national measure is justified
+  action: decide whether the national measure is justified within six months or 60 days for Article 5
+    non-compliance
   subject_ref: commission
   subject_category: union_institution_or_body
   product_scope: outside_supported_actor
@@ -21,6 +44,8 @@ records:
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
+  conditions:
+  - the decision is based on the results of the evaluation
 - norm_id: AIA-NORM-A081-P1-NOTIFY-DECISION
   source: A081-P001
   quote: shall notify its decision to the market surveillance authority of the Member State concerned.
@@ -32,6 +57,8 @@ records:
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
+  conditions:
+  - the Commission has decided whether the national measure is justified
 - norm_id: AIA-NORM-A081-P1-INFORM-OTHER-AUTHORITIES
   source: A081-P001
   quote: The Commission shall also inform all other market surveillance authorities of its decision.
@@ -45,8 +72,12 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A081-P2-TAKE-JUSTIFIED-RESTRICTIONS
   source: A081-P002
-  quote: all Member States shall ensure that they take appropriate restrictive measures in respect of the AI system concerned, such as requiring the withdrawal of the AI system from their market without undue delay, and shall inform the Commission accordingly.
-  action: take appropriate restrictions without undue delay and inform the Commission when the national measure is justified
+  quote: Where the Commission considers the measure taken by the relevant Member State to be justified,
+    all Member States shall ensure that they take appropriate restrictive measures in respect of the AI
+    system concerned, such as requiring the withdrawal of the AI system from their market without undue
+    delay, and shall inform the Commission accordingly.
+  action: take appropriate restrictions without undue delay and inform the Commission when the national
+    measure is justified
   subject_ref: member_state
   subject_category: member_state
   product_scope: outside_supported_actor
@@ -54,9 +85,12 @@ records:
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
+  conditions:
+  - the Commission considers the measure taken by the relevant Member State justified
 - norm_id: AIA-NORM-A081-P2-WITHDRAW-UNJUSTIFIED-MEASURE
   source: A081-P002
-  quote: the Member State concerned shall withdraw the measure and shall inform the Commission accordingly.
+  quote: Where the Commission considers the national measure to be unjustified, the Member State concerned
+    shall withdraw the measure and shall inform the Commission accordingly.
   action: withdraw an unjustified national measure and inform the Commission
   subject_ref: member_state
   subject_category: member_state
@@ -65,10 +99,16 @@ records:
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
+  conditions:
+  - the Commission considers the national measure unjustified
 - norm_id: AIA-NORM-A081-P3-APPLY-STANDARDS-PROCEDURE
   source: A081-P003
-  quote: the Commission shall apply the procedure provided for in Article 11 of Regulation (EU) No 1025/2012.
-  action: apply the Regulation 1025/2012 Article 11 procedure when justified non-compliance arises from standards or common specifications
+  quote: Where the national measure is considered justified and the non-compliance of the AI system is
+    attributed to shortcomings in the harmonised standards or common specifications referred to in Articles
+    40 and 41 of this Regulation, the Commission shall apply the procedure provided for in Article 11
+    of Regulation (EU) No 1025/2012.
+  action: apply the Regulation 1025/2012 Article 11 procedure when justified non-compliance arises from
+    standards or common specifications
   subject_ref: commission
   subject_category: union_institution_or_body
   kind: applicability
@@ -77,3 +117,9 @@ records:
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
+  conditions:
+  - operator: all_of
+    operands:
+    - the national measure is considered justified
+    - the AI system's non-compliance is attributed to shortcomings in the Article 40 or 41 harmonised
+      standards or common specifications

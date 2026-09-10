@@ -1,8 +1,12 @@
 records:
 - norm_id: AIA-NORM-A112-P1-ANNUAL-AMENDMENT-ASSESSMENT
   source: A112-P001
-  quote: The Commission shall assess the need for amendment
-  action: assess annually the need to amend Annex III and Article 5 lists through the Article 97 delegation period
+  quote: The Commission shall assess the need for amendment of the list set out in Annex III and of the
+    list of prohibited AI practices laid down in Article 5, once a year following the entry into force
+    of this Regulation, and until the end of the period of the delegation of power laid down in Article
+    97.
+  action: assess annually the need to amend Annex III and Article 5 lists through the Article 97 delegation
+    period
   subject_ref: commission
   subject_category: union_institution_or_body
   product_scope: outside_supported_actor
@@ -12,7 +16,8 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A112-P1-SUBMIT-ASSESSMENT-FINDINGS
   source: A112-P001
-  quote: The Commission shall submit the findings of that assessment to the European Parliament and the Council
+  quote: The Commission shall submit the findings of that assessment to the European Parliament and the
+    Council.
   action: submit the annual Annex III and Article 5 amendment assessment findings to Parliament and Council
   subject_ref: commission
   subject_category: union_institution_or_body
@@ -23,12 +28,20 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A112-P2-FOUR-YEAR-EVALUATION
   source: A112-P002
-  quote: the Commission shall evaluate and report to the European Parliament and to the Council
-  action: evaluate and report by 2 August 2028 and every four years on specified Annex III transparency and governance amendments
+  quote: By 2 August 2028 and every four years thereafter, the Commission shall evaluate and report to
+    the European Parliament and to the Council on the following
+  action: evaluate and report by 2 August 2028 and every four years on specified Annex III transparency
+    and governance amendments
   subject_ref: commission
   subject_category: union_institution_or_body
-  mandatory_content: [extending or adding Annex III area headings, amending Article 50 additional-transparency systems, improving supervision and governance effectiveness]
-  qualifier_spans: [A112-P003, A112-P004, A112-P005]
+  mandatory_content:
+  - extending or adding Annex III area headings
+  - amending Article 50 additional-transparency systems
+  - improving supervision and governance effectiveness
+  qualifier_spans:
+  - A112-P003
+  - A112-P004
+  - A112-P005
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -36,8 +49,12 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A112-P3-REGULATION-REVIEW-REPORT
   source: A112-P006
-  quote: the Commission shall submit a report on the evaluation and review of this Regulation
-  action: submit a public four-year Regulation review report assessing enforcement structure and possible need for a Union agency
+  quote: By 2 August 2029 and every four years thereafter, the Commission shall submit a report on the
+    evaluation and review of this Regulation to the European Parliament and to the Council. The report
+    shall include an assessment with regard to the structure of enforcement and the possible need for
+    a Union agency to resolve any identified shortcomings.
+  action: submit a public four-year Regulation review report assessing enforcement structure and possible
+    need for a Union agency
   subject_ref: commission
   subject_category: union_institution_or_body
   product_scope: outside_supported_actor
@@ -47,7 +64,8 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A112-P3-ACCOMPANY-AMENDMENT-PROPOSAL
   source: A112-P006
-  quote: shall, where appropriate, be accompanied by a proposal for amendment of this Regulation
+  quote: On the basis of the findings, that report shall, where appropriate, be accompanied by a proposal
+    for amendment of this Regulation.
   action: accompany the review report with an AI Act amendment proposal when its findings make that appropriate
   subject_ref: commission
   subject_category: union_institution_or_body
@@ -56,6 +74,8 @@ records:
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
+  conditions:
+  - the report's findings make an amendment proposal appropriate
 - norm_id: AIA-NORM-A112-P3-PUBLISH-REPORTS
   source: A112-P006
   quote: The reports shall be made public
@@ -69,12 +89,21 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A112-P4-REPORT-ATTENTION-AREAS
   source: A112-P007
-  quote: shall pay specific attention to the following
-  action: address the specified authority-resource penalty standardisation and market-entry matters in paragraph 2 reports
+  quote: The reports referred to in paragraph 2 shall pay specific attention to the following
+  action: address the specified authority-resource penalty standardisation and market-entry matters in
+    paragraph 2 reports
   subject_ref: commission
   subject_category: union_institution_or_body
-  mandatory_content: [national competent authority financial technical and human resources, Member-State penalties and administrative fines, adopted harmonised standards and common specifications, post-application market entrants and their SME share]
-  qualifier_spans: [A112-P008, A112-P009, A112-P010, A112-P011]
+  mandatory_content:
+  - national competent authority financial technical and human resources
+  - Member-State penalties and administrative fines
+  - adopted harmonised standards and common specifications
+  - post-application market entrants and their SME share
+  qualifier_spans:
+  - A112-P008
+  - A112-P009
+  - A112-P010
+  - A112-P011
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -82,8 +111,12 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A112-P5-EVALUATE-AI-OFFICE
   source: A112-P012
-  quote: the Commission shall evaluate the functioning of the AI Office
-  action: evaluate by 2 August 2028 the AI Office's functioning powers competences status and resource needs
+  quote: By 2 August 2028, the Commission shall evaluate the functioning of the AI Office, whether the
+    AI Office has been given sufficient powers and competences to fulfil its tasks, and whether it would
+    be relevant and needed for the proper implementation and enforcement of this Regulation to upgrade
+    the AI Office and its enforcement competences and to increase its resources.
+  action: evaluate by 2 August 2028 the AI Office's functioning powers competences status and resource
+    needs
   subject_ref: commission
   subject_category: union_institution_or_body
   product_scope: outside_supported_actor
@@ -93,7 +126,8 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A112-P5-REPORT-AI-OFFICE-EVALUATION
   source: A112-P012
-  quote: The Commission shall submit a report on its evaluation
+  quote: The Commission shall submit a report on its evaluation to the European Parliament and to the
+    Council.
   action: submit the AI Office evaluation report to Parliament and Council
   subject_ref: commission
   subject_category: union_institution_or_body
@@ -104,8 +138,12 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A112-P6-REVIEW-ENERGY-STANDARDISATION
   source: A112-P013
-  quote: the Commission shall submit a report on the review of the progress on the development of standardisation deliverables
-  action: review and report every four years from 2 August 2028 on energy-efficient GPAI standardisation and the need for further measures
+  quote: By 2 August 2028 and every four years thereafter, the Commission shall submit a report on the
+    review of the progress on the development of standardisation deliverables on the energy-efficient
+    development of general-purpose AI models, and asses the need for further measures or actions, including
+    binding measures or actions.
+  action: review and report every four years from 2 August 2028 on energy-efficient GPAI standardisation
+    and the need for further measures
   subject_ref: commission
   subject_category: union_institution_or_body
   product_scope: outside_supported_actor
@@ -115,30 +153,26 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A112-P6-SUBMIT-STANDARDISATION-REPORT
   source: A112-P013
-  quote: The report shall be submitted to the European Parliament and to the Council
-  action: submit the energy-efficient GPAI standardisation report to Parliament and Council
+  quote: The report shall be submitted to the European Parliament and to the Council, and it shall be made public
+  action: submit the energy-efficient GPAI standardisation report to Parliament and Council and make it public
   subject_ref: commission
   subject_category: union_institution_or_body
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_reported
-- norm_id: AIA-NORM-A112-P6-PUBLISH-STANDARDISATION-REPORT
-  source: A112-P013
-  quote: it shall be made public
-  action: make the energy-efficient GPAI standardisation report public
-  subject_ref: commission
-  subject_category: union_institution_or_body
-  product_scope: outside_supported_actor
-  product_scope_reason: The present product does not report compliance for this addressee.
-  implementation_mode: none_required
-  implementation_reason: Outside the supported operator reporting surface.
+  mandatory_content:
+  - submission of the report to the European Parliament and Council
+  - publication of the report
   verification_mode: not_reported
 - norm_id: AIA-NORM-A112-P7-EVALUATE-VOLUNTARY-CODES
   source: A112-P014
-  quote: the Commission shall evaluate the impact and effectiveness of voluntary codes of conduct
-  action: evaluate every three years from 2 August 2028 the impact and effectiveness of voluntary non-high-risk AI codes
+  quote: By 2 August 2028 and every three years thereafter, the Commission shall evaluate the impact and
+    effectiveness of voluntary codes of conduct to foster the application of the requirements set out
+    in Chapter III, Section 2 for AI systems other than high-risk AI systems and possibly other additional
+    requirements for AI systems other than high-risk AI systems, including as regards environmental sustainability.
+  action: evaluate every three years from 2 August 2028 the impact and effectiveness of voluntary non-high-risk
+    AI codes
   subject_ref: commission
   subject_category: union_institution_or_body
   product_scope: outside_supported_actor
@@ -148,7 +182,8 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A112-P8-PROVIDE-REVIEW-INFORMATION
   source: A112-P015
-  quote: shall provide the Commission with information upon its request and without undue delay
+  quote: For the purposes of paragraphs 1 to 7, the Board, the Member States and national competent authorities
+    shall provide the Commission with information upon its request and without undue delay.
   action: provide requested information without undue delay for Article 112 evaluations and reviews
   subject_ref: board_member_states_and_national_competent_authorities
   subject_category: public_authority
@@ -157,10 +192,15 @@ records:
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
+  conditions:
+  - the Commission requests the information for a paragraph 1 to 7 evaluation or review
 - norm_id: AIA-NORM-A112-P9-ACCOUNT-FOR-INSTITUTIONAL-POSITIONS
   source: A112-P016
-  quote: the Commission shall take into account the positions and findings
-  action: account for positions and findings of the Board Parliament Council and other relevant bodies or sources in Article 112 reviews
+  quote: In carrying out the evaluations and reviews referred to in paragraphs 1 to 7, the Commission
+    shall take into account the positions and findings of the Board, of the European Parliament, of the
+    Council, and of other relevant bodies or sources.
+  action: account for positions and findings of the Board Parliament Council and other relevant bodies
+    or sources in Article 112 reviews
   subject_ref: commission
   subject_category: union_institution_or_body
   product_scope: outside_supported_actor
@@ -168,10 +208,13 @@ records:
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
+  conditions:
+  - the Commission is carrying out a paragraph 1 to 7 evaluation or review
 - norm_id: AIA-NORM-A112-P10-SUBMIT-AMENDMENT-PROPOSALS
   source: A112-P017
   quote: The Commission shall, if necessary, submit appropriate proposals to amend this Regulation
-  action: submit necessary AI Act amendment proposals considering technological health safety fundamental-rights and information-society developments
+  action: submit necessary AI Act amendment proposals considering technological health safety fundamental-rights
+    and information-society developments
   subject_ref: commission
   subject_category: union_institution_or_body
   product_scope: outside_supported_actor
@@ -179,14 +222,25 @@ records:
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
+  conditions:
+  - the Commission considers amendment necessary
 - norm_id: AIA-NORM-A112-P11-DEVELOP-RISK-EVALUATION-METHODOLOGY
   source: A112-P018
-  quote: the AI Office shall undertake to develop an objective and participative methodology
+  quote: To guide the evaluations and reviews referred to in paragraphs 1 to 7 of this Article, the AI
+    Office shall undertake to develop an objective and participative methodology for the evaluation of
+    risk levels based on the criteria outlined in the relevant Articles and the inclusion of new systems
+    in
   action: develop an objective participative methodology for risk-level evaluation and list inclusion
   subject_ref: ai_office
   subject_category: union_institution_or_body
-  mandatory_content: [Annex III systems and area headings, Article 5 prohibited practices, Article 50 additional-transparency systems]
-  qualifier_spans: [A112-P019, A112-P020, A112-P021]
+  mandatory_content:
+  - Annex III systems and area headings
+  - Article 5 prohibited practices
+  - Article 50 additional-transparency systems
+  qualifier_spans:
+  - A112-P019
+  - A112-P020
+  - A112-P021
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -194,8 +248,12 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A112-P12-ACCOUNT-FOR-SECTOR-SPECIFICITIES
   source: A112-P022
-  quote: shall take into account the regulatory specificities of each sector
-  action: account for sector regulatory specificities and existing governance conformity-assessment and enforcement structures in relevant amendments and acts
+  quote: Any amendment to this Regulation pursuant to paragraph 10, or relevant delegated or implementing
+    acts, which concerns sectoral Union harmonisation legislation listed in Section B of Annex I shall
+    take into account the regulatory specificities of each sector, and the existing governance, conformity
+    assessment and enforcement mechanisms and authorities established therein.
+  action: account for sector regulatory specificities and existing governance conformity-assessment and
+    enforcement structures in relevant amendments and acts
   subject_ref: union_rulemaker
   subject_category: union_institution_or_body
   product_scope: outside_supported_actor
@@ -203,10 +261,16 @@ records:
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
+  conditions:
+  - a paragraph 10 amendment or relevant delegated or implementing act concerns sectoral Union harmonisation
+    legislation listed in Section B of Annex I
 - norm_id: AIA-NORM-A112-P13-ASSESS-ENFORCEMENT
   source: A112-P023
-  quote: the Commission shall carry out an assessment of the enforcement of this Regulation and shall report on it
-  action: assess AI Act enforcement by 2 August 2031 and report to Parliament Council and the European Economic and Social Committee
+  quote: By 2 August 2031, the Commission shall carry out an assessment of the enforcement of this Regulation
+    and shall report on it to the European Parliament, the Council and the European Economic and Social
+    Committee, taking into account the first years of application of this Regulation.
+  action: assess AI Act enforcement by 2 August 2031 and report to Parliament Council and the European
+    Economic and Social Committee
   subject_ref: commission
   subject_category: union_institution_or_body
   product_scope: outside_supported_actor
@@ -216,8 +280,11 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A112-P13-ACCOMPANY-ENFORCEMENT-PROPOSAL
   source: A112-P023
-  quote: shall, where appropriate, be accompanied by a proposal for amendment of this Regulation
-  action: accompany the enforcement report when appropriate with an amendment proposal addressing enforcement structure and possible Union agency need
+  quote: On the basis of the findings, that report shall, where appropriate, be accompanied by a proposal
+    for amendment of this Regulation with regard to the structure of enforcement and the need for a Union
+    agency to resolve any identified shortcomings.
+  action: accompany the enforcement report when appropriate with an amendment proposal addressing enforcement
+    structure and possible Union agency need
   subject_ref: commission
   subject_category: union_institution_or_body
   product_scope: outside_supported_actor
@@ -225,3 +292,5 @@ records:
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
+  conditions:
+  - the enforcement assessment findings make an amendment proposal appropriate

@@ -99,7 +99,6 @@ segments:
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-A014-P3-COMMENSURATE-MEASURES
-  - AIA-NORM-A014-P3-MEASURE-ROUTES
   qualifying_norm_ids: []
   review:
     status: approved
@@ -126,7 +125,7 @@ segments:
   disposition_reason: ''
   norm_ids: []
   qualifying_norm_ids:
-  - AIA-NORM-A014-P3-MEASURE-ROUTES
+  - AIA-NORM-A014-P3-COMMENSURATE-MEASURES
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -152,7 +151,7 @@ segments:
   disposition_reason: ''
   norm_ids: []
   qualifying_norm_ids:
-  - AIA-NORM-A014-P3-MEASURE-ROUTES
+  - AIA-NORM-A014-P3-COMMENSURATE-MEASURES
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass

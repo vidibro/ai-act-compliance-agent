@@ -8,9 +8,11 @@ norms:
     category: public_authority
   action: evaluate a reasonably suspected non-high-risk classification under Article 6(3) and Commission
     guidelines
-  norm_text: the market surveillance authority shall carry out an evaluation of the AI system concerned
-    in respect of its classification as a high-risk AI system based on the conditions set out in Article
-    6(3) and the Commission guidelines.
+  norm_text: Where a market surveillance authority has sufficient reason to consider that an AI system
+    classified by the provider as non-high-risk pursuant to Article 6(3) is indeed high-risk, the market
+    surveillance authority shall carry out an evaluation of the AI system concerned in respect of its
+    classification as a high-risk AI system based on the conditions set out in Article 6(3) and the Commission
+    guidelines.
   detection_channels:
   - semantic_legal_effect
   - shall_token
@@ -18,7 +20,9 @@ norms:
   - AIA-TEXT-A080-P001
   qualifier_spans: []
   effective_date_spans: []
-  conditions: []
+  conditions:
+  - the authority has sufficient reason to consider that a system classified by its provider as non-high-risk
+    under Article 6(3) is actually high-risk
   exceptions: []
   mandatory_content: []
   dependencies: []
@@ -44,10 +48,11 @@ norms:
   - subject_ref: market_surveillance_authority
     category: public_authority
   action: require necessary compliance and corrective action without undue delay within a prescribed period
-  norm_text: it shall without undue delay require the relevant provider to take all necessary actions
-    to bring the AI system into compliance with the requirements and obligations laid down in this Regulation,
-    as well as take appropriate corrective action within a period the market surveillance authority may
-    prescribe.
+  norm_text: Where, in the course of that evaluation, the market surveillance authority finds that the
+    AI system concerned is high-risk, it shall without undue delay require the relevant provider to take
+    all necessary actions to bring the AI system into compliance with the requirements and obligations
+    laid down in this Regulation, as well as take appropriate corrective action within a period the market
+    surveillance authority may prescribe.
   detection_channels:
   - semantic_legal_effect
   - shall_token
@@ -56,7 +61,8 @@ norms:
   - AIA-TEXT-A080-P002
   qualifier_spans: []
   effective_date_spans: []
-  conditions: []
+  conditions:
+  - the Article 80 evaluation finds that the AI system is high-risk
   exceptions: []
   mandatory_content: []
   dependencies: []
@@ -83,8 +89,10 @@ norms:
     category: public_authority
   action: promptly inform the Commission and other Member States of cross-border evaluation results and
     required provider action
-  norm_text: it shall inform the Commission and the other Member States without undue delay of the results
-    of the evaluation and of the actions which it has required the provider to take.
+  norm_text: Where the market surveillance authority considers that the use of the AI system concerned
+    is not restricted to its national territory, it shall inform the Commission and the other Member States
+    without undue delay of the results of the evaluation and of the actions which it has required the
+    provider to take.
   detection_channels:
   - semantic_legal_effect
   - shall_token
@@ -92,7 +100,9 @@ norms:
   - AIA-TEXT-A080-P003
   qualifier_spans: []
   effective_date_spans: []
-  conditions: []
+  conditions:
+  - the market-surveillance authority considers that use of the AI system is not restricted to its national
+    territory
   exceptions: []
   mandatory_content: []
   dependencies: []
@@ -156,7 +166,9 @@ norms:
   - subject_ref: provider
     category: supported_operator
   action: incur Article 99 fines for failure to comply within the prescribed period
-  norm_text: the provider shall be subject to fines in accordance with Article 99.
+  norm_text: Where the provider of an AI system concerned does not bring the AI system into compliance
+    with those requirements and obligations within the period referred to in paragraph 2 of this Article,
+    the provider shall be subject to fines in accordance with Article 99.
   detection_channels:
   - semantic_legal_effect
   - shall_token
@@ -165,7 +177,8 @@ norms:
   - AIA-TEXT-A080-P004
   qualifier_spans: []
   effective_date_spans: []
-  conditions: []
+  conditions:
+  - the provider does not bring the AI system into compliance within the Article 80(2) period
   exceptions: []
   mandatory_content: []
   dependencies: []
@@ -266,7 +279,10 @@ norms:
     category: supported_operator
   action: incur Article 99 fines for intentional non-high-risk misclassification used to circumvent Chapter
     III Section 2
-  norm_text: the provider shall be subject to fines in accordance with Article 99.
+  norm_text: Where, in the course of the evaluation pursuant to paragraph 1 of this Article, the market
+    surveillance authority establishes that the AI system was misclassified by the provider as non-high-risk
+    in order to circumvent the application of requirements in Chapter III, Section 2, the provider shall
+    be subject to fines in accordance with Article 99.
   detection_channels:
   - semantic_legal_effect
   - shall_token
@@ -275,7 +291,9 @@ norms:
   - AIA-TEXT-A080-P007
   qualifier_spans: []
   effective_date_spans: []
-  conditions: []
+  conditions:
+  - the Article 80(1) evaluation establishes intentional non-high-risk misclassification to circumvent
+    Chapter III Section 2 requirements
   exceptions: []
   mandatory_content: []
   dependencies: []
@@ -302,8 +320,10 @@ norms:
   - subject_ref: market_surveillance_authority
     category: public_authority
   action: perform appropriate classification checks with particular account taken of EU database information
-  norm_text: market surveillance authorities may perform appropriate checks, taking into account in particular
-    information stored in the EU database referred to in Article 71 of this Regulation.
+  norm_text: In exercising their power to monitor the application of this Article, and in accordance with
+    Article 11 of Regulation (EU) 2019/1020, market surveillance authorities may perform appropriate checks,
+    taking into account in particular information stored in the EU database referred to in Article 71
+    of this Regulation.
   detection_channels:
   - semantic_legal_effect
   - other_modal

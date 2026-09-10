@@ -114,16 +114,27 @@ def load_normative_coverage(
     segments_by_id = {segment.segment_id: segment for segment in text_review.segments}
     norms_by_id = {norm.norm_id: norm for norm in norm_inventory.norms}
 
-    linked_from_norms: dict[str, set[str]] = {segment_id: set() for segment_id in segments_by_id}
+    primary_links: dict[str, set[str]] = {segment_id: set() for segment_id in segments_by_id}
+    qualifying_links: dict[str, set[str]] = {segment_id: set() for segment_id in segments_by_id}
     for norm in norm_inventory.norms:
         unknown = [span for span in norm.all_spans if span not in segments_by_id]
         if unknown:
             raise ValueError(f"{norm.norm_id} references unknown segment(s): {unknown}")
-        for span in norm.all_spans:
-            linked_from_norms[span].add(norm.norm_id)
-        if not any(norm.norm_text in segments_by_id[span].text for span in norm.primary_spans):
+        for span in norm.primary_spans:
+            primary_links[span].add(norm.norm_id)
+        for span in [
+            *norm.qualifier_spans,
+            *norm.definition_spans,
+            *norm.effective_date_spans,
+        ]:
+            qualifying_links[span].add(norm.norm_id)
+        nonmatching_primary_spans = [
+            span for span in norm.primary_spans if norm.norm_text not in segments_by_id[span].text
+        ]
+        if nonmatching_primary_spans:
             raise ValueError(
-                f"{norm.norm_id} norm_text is not an exact substring of any primary span"
+                f"{norm.norm_id} norm_text is not an exact substring of primary span(s): "
+                f"{nonmatching_primary_spans}"
             )
         unknown_carriers = [n for n in norm.carried_by_norm_ids if n not in norms_by_id]
         if unknown_carriers:
@@ -144,12 +155,19 @@ def load_normative_coverage(
                     )
 
     for segment in text_review.segments:
-        declared = set(segment.norm_ids)
-        actual = linked_from_norms[segment.segment_id]
-        if declared != actual:
+        declared_primary = set(segment.norm_ids)
+        actual_primary = primary_links[segment.segment_id]
+        if declared_primary != actual_primary:
             raise ValueError(
-                f"{segment.segment_id} norm links disagree: segment declares "
-                f"{sorted(declared)}, norms link {sorted(actual)}"
+                f"{segment.segment_id} primary norm links disagree: segment declares "
+                f"{sorted(declared_primary)}, norms link {sorted(actual_primary)}"
+            )
+        declared_qualifying = set(segment.qualifying_norm_ids)
+        actual_qualifying = qualifying_links[segment.segment_id]
+        if declared_qualifying != actual_qualifying:
+            raise ValueError(
+                f"{segment.segment_id} qualifying norm links disagree: segment declares "
+                f"{sorted(declared_qualifying)}, norms link {sorted(actual_qualifying)}"
             )
 
     _assert_no_carried_cycles(norm_inventory)

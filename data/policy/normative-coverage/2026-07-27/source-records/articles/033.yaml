@@ -1,9 +1,8 @@
 records:
 - norm_id: AIA-NORM-A033-P1-SUBCONTRACTOR-ARTICLE-31-COMPLIANCE
   source: A033-P001
-  quote: Where a notified body subcontracts specific tasks connected with the conformity assessment or
-    has recourse to a subsidiary, it shall ensure that the subcontractor or the subsidiary meets the requirements
-    laid down in Article 31, and shall inform the notifying authority accordingly.
+  quote: it shall ensure that the subcontractor or the subsidiary meets the requirements laid down in
+    Article 31
   action: ensure subcontractors and subsidiaries used for conformity-assessment tasks meet Article 31
     requirements
   subject_ref: notified_body
@@ -17,9 +16,7 @@ records:
   - the notified body subcontracts conformity-assessment tasks or uses a subsidiary
 - norm_id: AIA-NORM-A033-P1-INFORM-NOTIFYING-AUTHORITY
   source: A033-P001
-  quote: Where a notified body subcontracts specific tasks connected with the conformity assessment or
-    has recourse to a subsidiary, it shall ensure that the subcontractor or the subsidiary meets the requirements
-    laid down in Article 31, and shall inform the notifying authority accordingly.
+  quote: shall inform the notifying authority accordingly.
   action: inform the notifying authority when using a subcontractor or subsidiary for conformity-assessment
     tasks
   subject_ref: notified_body

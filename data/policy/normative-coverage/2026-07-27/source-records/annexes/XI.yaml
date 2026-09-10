@@ -1,23 +1,29 @@
 records:
 - norm_id: AIA-NORM-ANNEX-XI-SECTION-1-TECHNICAL-DOCUMENTATION
   source: ANNEX-XI-P003
-  quote: shall contain at least the following information as appropriate to the size and risk profile of the model
-  action: include all applicable Annex XI Section 1 information in the general-purpose AI model technical documentation, proportionate to model size and risk profile
+  quote: shall contain at least the following information as appropriate to the size and risk profile
+    of the model
+  action: include all applicable Annex XI Section 1 information in the general-purpose AI model technical
+    documentation, proportionate to model size and risk profile
   subject_ref: provider
   subject_category: supported_operator
   implementation_mode: carried_by_other_norm
   implementation_reason: Carried by the Article 53(1)(a) Annex XI content norm.
   verification_mode: judged_by_gap_analysis
   mandatory_content:
-  - tasks the model is intended to perform and the type and nature of AI systems into which it can be integrated
+  - tasks the model is intended to perform and the type and nature of AI systems into which it can be
+    integrated
   - applicable acceptable-use policies
   - release date and distribution methods
   - architecture and number of parameters
   - input and output modalities and formats
   - licence
   - technical means required to integrate the model into AI systems
-  - model and training-process design specifications, including methodologies, techniques, key choices, rationales, assumptions, optimisation objectives, and parameter relevance as applicable
-  - applicable information on training, testing, and validation data, including type, provenance, curation, data-point count, scope, characteristics, acquisition and selection, unsuitable-source detection, and identifiable-bias detection
+  - model and training-process design specifications, including methodologies, techniques, key choices,
+    rationales, assumptions, optimisation objectives, and parameter relevance as applicable
+  - applicable information on training, testing, and validation data, including type, provenance, curation,
+    data-point count, scope, characteristics, acquisition and selection, unsuitable-source detection,
+    and identifiable-bias detection
   - computational resources, training time, and other relevant training details
   - known or estimated model energy consumption
   qualifier_spans:
@@ -37,13 +43,13 @@ records:
   - ANNEX-XI-P015
   - ANNEX-XI-P016
   dependencies:
-  - dependency_ref: AIA-NORM-A053-P1-A-ANNEX-XI-CONTENT
+  - dependency_ref: AIA-NORM-A053-P1-A-DRAW-KEEP-DOCUMENTATION
     resolution: internal_resolved
     detail: Article 53(1)(a) assigns the Annex XI minimum-content duty to GPAI model providers.
-  verified_by: vidibro
 - norm_id: AIA-NORM-ANNEX-XI-ENERGY-ESTIMATE-BASIS
   source: ANNEX-XI-P011
-  quote: where the energy consumption of the model is unknown, the energy consumption may be based on information about computational resources used
+  quote: With regard to point (e), where the energy consumption of the model is unknown, the energy consumption
+    may be based on information about computational resources used.
   action: base unknown model energy consumption on information about computational resources used
   subject_ref: provider
   subject_category: supported_operator
@@ -53,12 +59,17 @@ records:
   implementation_refs:
   - AIA-GP-A53-1A
   verification_mode: reported_not_judged
-  verified_by: vidibro
 - norm_id: AIA-NORM-ANNEX-XI-SECTION-2-SYSTEMIC-RISK-DOCUMENTATION
   source: ANNEX-XI-P019
-  qualifier_spans: [ANNEX-XI-P017, ANNEX-XI-P018]
-  quote: A detailed description of the evaluation strategies, including evaluation results, on the basis of available public evaluation protocols and tools or otherwise of other evaluation methodologies. Evaluation strategies shall include evaluation criteria, metrics and the methodology on the identification of limitations.
-  action: include a detailed description of the evaluation strategies, with their results, in the technical documentation for a general-purpose AI model with systemic risk
+  qualifier_spans:
+  - ANNEX-XI-P017
+  - ANNEX-XI-P018
+  quote: A detailed description of the evaluation strategies, including evaluation results, on the basis
+    of available public evaluation protocols and tools or otherwise of other evaluation methodologies.
+    Evaluation strategies shall include evaluation criteria, metrics and the methodology on the identification
+    of limitations.
+  action: include a detailed description of the evaluation strategies, with their results, in the technical
+    documentation for a general-purpose AI model with systemic risk
   subject_ref: provider
   subject_category: supported_operator
   implementation_mode: carried_by_other_norm
@@ -68,8 +79,8 @@ records:
   - the general-purpose AI model has systemic risk
   - operator: any_of
     operands:
-    - the evaluation strategies are described on the basis of available public evaluation protocols
-      and tools
+    - the evaluation strategies are described on the basis of available public evaluation protocols and
+      tools
     - the evaluation strategies are described on the basis of other evaluation methodologies
   mandatory_content:
   - a detailed description of the evaluation strategies, including evaluation results
@@ -77,15 +88,19 @@ records:
   - metrics
   - the methodology on the identification of limitations
   dependencies:
-  - dependency_ref: AIA-NORM-A053-P1-A-ANNEX-XI-CONTENT
+  - dependency_ref: AIA-NORM-A053-P1-A-DRAW-KEEP-DOCUMENTATION
     resolution: internal_resolved
     detail: Article 53(1)(a) assigns the Annex XI minimum-content duty to GPAI model providers.
-  verified_by: vidibro
 - norm_id: AIA-NORM-ANNEX-XI-SECTION-2-ADVERSARIAL-TESTING-AND-ADAPTATIONS
   source: ANNEX-XI-P020
-  qualifier_spans: [ANNEX-XI-P017, ANNEX-XI-P018]
-  quote: Where applicable, a detailed description of the measures put in place for the purpose of conducting internal and/or external adversarial testing (e.g. red teaming), model adaptations, including alignment and fine-tuning.
-  action: include a detailed description of the adversarial-testing measures and the model adaptations in the technical documentation for a general-purpose AI model with systemic risk
+  qualifier_spans:
+  - ANNEX-XI-P017
+  - ANNEX-XI-P018
+  quote: Where applicable, a detailed description of the measures put in place for the purpose of conducting
+    internal and/or external adversarial testing (e.g. red teaming), model adaptations, including alignment
+    and fine-tuning.
+  action: include a detailed description of the adversarial-testing measures and the model adaptations
+    in the technical documentation for a general-purpose AI model with systemic risk
   subject_ref: provider
   subject_category: supported_operator
   implementation_mode: carried_by_other_norm
@@ -95,19 +110,23 @@ records:
   - the general-purpose AI model has systemic risk
   - where applicable
   mandatory_content:
-  - the measures put in place for the purpose of conducting internal and/or external adversarial
-    testing (e.g. red teaming)
+  - the measures put in place for the purpose of conducting internal and/or external adversarial testing
+    (e.g. red teaming)
   - model adaptations, including alignment and fine-tuning
   dependencies:
-  - dependency_ref: AIA-NORM-A053-P1-A-ANNEX-XI-CONTENT
+  - dependency_ref: AIA-NORM-A053-P1-A-DRAW-KEEP-DOCUMENTATION
     resolution: internal_resolved
     detail: Article 53(1)(a) assigns the Annex XI minimum-content duty to GPAI model providers.
-  verified_by: vidibro
 - norm_id: AIA-NORM-ANNEX-XI-SECTION-2-SYSTEM-ARCHITECTURE
   source: ANNEX-XI-P021
-  qualifier_spans: [ANNEX-XI-P017, ANNEX-XI-P018]
-  quote: Where applicable, a detailed description of the system architecture explaining how software components build or feed into each other and integrate into the overall processing.
-  action: include a detailed description of the system architecture, explaining how software components build or feed into each other and integrate into the overall processing, in the technical documentation for a general-purpose AI model with systemic risk
+  qualifier_spans:
+  - ANNEX-XI-P017
+  - ANNEX-XI-P018
+  quote: Where applicable, a detailed description of the system architecture explaining how software components
+    build or feed into each other and integrate into the overall processing.
+  action: include a detailed description of the system architecture, explaining how software components
+    build or feed into each other and integrate into the overall processing, in the technical documentation
+    for a general-purpose AI model with systemic risk
   subject_ref: provider
   subject_category: supported_operator
   implementation_mode: carried_by_other_norm
@@ -117,16 +136,15 @@ records:
   - the general-purpose AI model has systemic risk
   - where applicable
   dependencies:
-  - dependency_ref: AIA-NORM-A053-P1-A-ANNEX-XI-CONTENT
+  - dependency_ref: AIA-NORM-A053-P1-A-DRAW-KEEP-DOCUMENTATION
     resolution: internal_resolved
     detail: Article 53(1)(a) assigns the Annex XI minimum-content duty to GPAI model providers.
-  verified_by: vidibro
 carried_by:
   AIA-NORM-ANNEX-XI-SECTION-1-TECHNICAL-DOCUMENTATION:
-  - AIA-NORM-A053-P1-A-ANNEX-XI-CONTENT
+  - AIA-NORM-A053-P1-A-DRAW-KEEP-DOCUMENTATION
   AIA-NORM-ANNEX-XI-SECTION-2-SYSTEMIC-RISK-DOCUMENTATION:
-  - AIA-NORM-A053-P1-A-ANNEX-XI-CONTENT
+  - AIA-NORM-A053-P1-A-DRAW-KEEP-DOCUMENTATION
   AIA-NORM-ANNEX-XI-SECTION-2-ADVERSARIAL-TESTING-AND-ADAPTATIONS:
-  - AIA-NORM-A053-P1-A-ANNEX-XI-CONTENT
+  - AIA-NORM-A053-P1-A-DRAW-KEEP-DOCUMENTATION
   AIA-NORM-ANNEX-XI-SECTION-2-SYSTEM-ARCHITECTURE:
-  - AIA-NORM-A053-P1-A-ANNEX-XI-CONTENT
+  - AIA-NORM-A053-P1-A-DRAW-KEEP-DOCUMENTATION

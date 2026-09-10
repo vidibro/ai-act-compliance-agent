@@ -6,9 +6,11 @@ norms:
   subjects:
   - subject_ref: commission
     category: union_institution_or_body
-  action: fine a GPAI provider up to the specified ceiling for intentional or negligent listed conduct
+  action: fine a GPAI provider up to 3 % of preceding-year worldwide annual turnover or EUR 15 000 000,
+    whichever is higher, for intentional or negligent listed conduct
   norm_text: The Commission may impose on providers of general-purpose AI models fines not exceeding 3
-    %
+    % of their annual total worldwide turnover in the preceding financial year or EUR 15000000, whichever
+    is higher., when the Commission finds that the provider intentionally or negligently
   detection_channels:
   - semantic_legal_effect
   - other_modal
@@ -21,13 +23,17 @@ norms:
   - AIA-TEXT-A101-P004
   - AIA-TEXT-A101-P005
   effective_date_spans: []
-  conditions: []
+  conditions:
+  - the Commission finds that the provider acted intentionally or negligently
+  - operator: any_of
+    operands:
+    - the provider infringed relevant provisions of this Regulation
+    - the provider failed to comply with an Article 91 document or information request or supplied incorrect,
+      incomplete, or misleading information
+    - the provider failed to comply with a measure requested under Article 93
+    - the provider failed to make available access to the general-purpose AI model for an Article 92 evaluation
   exceptions: []
-  mandatory_content:
-  - infringing relevant AI Act provisions
-  - failing an Article 91 request or supplying incorrect incomplete or misleading information
-  - failing an Article 93 measure
-  - failing to provide Article 92 evaluation access
+  mandatory_content: []
   dependencies: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -93,7 +99,9 @@ norms:
     category: union_institution_or_body
   action: communicate preliminary findings and give the GPAI provider an opportunity to be heard before
     a fine decision
-  norm_text: the Commission shall communicate its preliminary findings
+  norm_text: Before adopting the decision pursuant to paragraph 1, the Commission shall communicate its
+    preliminary findings to the provider of the general-purpose AI model and give it an opportunity to
+    be heard.
   detection_channels:
   - semantic_legal_effect
   - shall_token
@@ -101,7 +109,8 @@ norms:
   - AIA-TEXT-A101-P007
   qualifier_spans: []
   effective_date_spans: []
-  conditions: []
+  conditions:
+  - the Commission intends to adopt a paragraph 1 fine decision
   exceptions: []
   mandatory_content: []
   dependencies: []
@@ -197,10 +206,11 @@ norms:
     category: union_institution_or_body
   action: review and cancel reduce or increase Commission fines with unlimited jurisdiction
   norm_text: The Court of Justice of the European Union shall have unlimited jurisdiction to review decisions
-    of the Commission
+    of the Commission fixing a fine under this Article. It may cancel, reduce or increase the fine imposed.
   detection_channels:
   - semantic_legal_effect
   - shall_token
+  - other_modal
   primary_spans:
   - AIA-TEXT-A101-P010
   qualifier_spans: []
@@ -233,7 +243,9 @@ norms:
   action: adopt implementing acts establishing arrangements and safeguards for Article 101 fine proceedings
     through the Article 98(2) examination procedure
   norm_text: The Commission shall adopt implementing acts containing detailed arrangements and procedural
-    safeguards
+    safeguards for proceedings in view of the possible adoption of decisions pursuant to paragraph 1 of
+    this Article. Those implementing acts shall be adopted in accordance with the examination procedure
+    referred to in Article 98(2).
   detection_channels:
   - semantic_legal_effect
   - shall_token

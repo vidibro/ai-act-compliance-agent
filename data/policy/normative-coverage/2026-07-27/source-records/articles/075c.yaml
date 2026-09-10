@@ -1,7 +1,9 @@
 records:
 - norm_id: AIA-NORM-A075C-P1-ESTABLISH-NONCOMPLIANCE
   source: A075C-P001
-  quote: it shall adopt a decision establishing such non-compliance
+  quote: Where the AI Office finds that an operator falling within the scope of Article 75(1) does not
+    comply with the relevant provisions of this Regulation or with commitments made binding pursuant to
+    Article 75b, it shall adopt a decision establishing such non-compliance.
   action: adopt a decision establishing detected AI Act or binding-commitment non-compliance
   subject_ref: ai_office
   subject_category: union_institution_or_body
@@ -10,9 +12,15 @@ records:
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
+  conditions:
+  - operator: any_of
+    operands:
+    - an Article 75(1) operator does not comply with relevant provisions of the Regulation
+    - an Article 75(1) operator does not comply with commitments made binding under Article 75b
 - norm_id: AIA-NORM-A075C-P2-COMMUNICATE-PRELIMINARY-FINDINGS
   source: A075C-P002
-  quote: the AI Office shall communicate its preliminary findings to the operator concerned
+  quote: Before adopting a decision pursuant to paragraph 1, the AI Office shall communicate its preliminary
+    findings to the operator concerned.
   action: communicate preliminary findings before adopting a non-compliance decision
   subject_ref: ai_office
   subject_category: union_institution_or_body
@@ -21,10 +29,15 @@ records:
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
+  conditions:
+  - before the AI Office adopts an Article 75c(1) decision
 - norm_id: AIA-NORM-A075C-P2-EXPLAIN-CONTEMPLATED-MEASURES
   source: A075C-P002
-  quote: the AI Office shall explain the measures that it is considering taking
-  action: explain contemplated AI Office measures and measures the operator should take in the preliminary findings
+  quote: In the preliminary findings, the AI Office shall explain the measures that it is considering
+    taking, or that it considers that the operator concerned should take, in order to effectively address
+    the preliminary findings.
+  action: explain contemplated AI Office measures and measures the operator should take in the preliminary
+    findings
   subject_ref: ai_office
   subject_category: union_institution_or_body
   product_scope: outside_supported_actor
@@ -32,10 +45,16 @@ records:
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
+  conditions:
+  - the AI Office communicates preliminary findings under Article 75c(2)
 - norm_id: AIA-NORM-A075C-P3-ORDER-COMPLIANCE-MEASURES
   source: A075C-P003
-  quote: the AI Office shall, where relevant, order the operator concerned to take the necessary measures to ensure compliance with the relevant provisions of this Regulation within a reasonable period specified therein and to provide information on the measures that that operator intends to take to comply with the decision.
-  action: order necessary compliance measures within a reasonable specified period and information about intended measures
+  quote: In the decision pursuant to paragraph 1 of this Article, the AI Office shall, where relevant,
+    order the operator concerned to take the necessary measures to ensure compliance with the relevant
+    provisions of this Regulation within a reasonable period specified therein and to provide information
+    on the measures that that operator intends to take to comply with the decision.
+  action: order necessary compliance measures within a reasonable specified period and information about
+    intended measures
   mandatory_content:
   - the necessary measures to ensure compliance within a reasonable period specified in the decision
   - information on the measures the operator intends to take to comply with the decision
@@ -46,11 +65,14 @@ records:
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
+  conditions:
+  - the requirement is relevant to the Article 75c(1) decision
 - norm_id: AIA-NORM-A075C-P3-DESCRIBE-IMPLEMENTED-MEASURES
   source: A075C-P003
-  quote: The operator concerned shall provide the AI Office with a description of the measures it has taken to ensure compliance with the decision upon their implementation.
-  action: describe implemented measures ensuring compliance with the AI Office decision, once they
-    are implemented
+  quote: The operator concerned shall provide the AI Office with a description of the measures it has
+    taken to ensure compliance with the decision upon their implementation.
+  action: describe implemented measures ensuring compliance with the AI Office decision, once they are
+    implemented
   subject_ref: article_75_operator
   subject_category: supported_operator
   conditions:
@@ -64,7 +86,8 @@ records:
   verified_by: vidibro
 - norm_id: AIA-NORM-A075C-P3-STRUCTURED-DIALOGUE
   source: A075C-P003
-  quote: the AI Office may engage in a structured dialogue with the operator
+  quote: Prior to requesting any measure, the AI Office may engage in a structured dialogue with the operator
+    of the AI system in question.
   action: conduct a structured dialogue before requesting a measure
   subject_ref: ai_office
   subject_category: union_institution_or_body
@@ -76,7 +99,7 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A075C-P3-PROPOSE-COMMITMENTS
   source: A075C-P003
-  quote: the operator may propose commitments in accordance with Article 75b
+  quote: During this dialogue, the operator may propose commitments in accordance with Article 75b.
   action: propose Article 75b commitments during structured dialogue
   subject_ref: article_75_operator
   subject_category: supported_operator
@@ -86,9 +109,14 @@ records:
   implementation_mode: none_required
   implementation_reason: No independent product action arises.
   verification_mode: not_reported
+  conditions:
+  - the operator is participating in the structured dialogue described in Article 75c(3)
 - norm_id: AIA-NORM-A075C-P4-IMPOSE-PENALTIES
   source: A075C-P004
-  quote: may be accompanied by the imposition of penalties in accordance with Article 99(3) to (7)
+  quote: A decision adopted pursuant to paragraph 1 of this Article may be accompanied by the imposition
+    of penalties in accordance with Article 99(3) to (7), which provisions shall apply mutatis mutandis
+    to the AI Office in the execution of its supervision and enforcement tasks referred to in Article
+    75(1).
   action: accompany a non-compliance decision with Article 99 penalties adapted to AI Office enforcement
   subject_ref: ai_office
   subject_category: union_institution_or_body
@@ -100,13 +128,21 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A075C-P4-ARTICLE99-4-FINES
   source: A075C-P005
-  quote: shall be subject to administrative fines as referred to in Article 99(4)
-  action: expose listed infringements decision breaches and binding-commitment breaches to Article 99(4) fines
+  quote: 'In particular, the following shall be subject to administrative fines as referred to in Article
+    99(4):'
+  action: expose listed infringements decision breaches and binding-commitment breaches to Article 99(4)
+    fines
   subject_ref: article_75_operator
   subject_category: supported_operator
   kind: legal_consequence
-  mandatory_content: [infringement of any applicable AI Act provision, failure to comply with specified decisions or measures, failure to comply with a binding Article 75b commitment]
-  qualifier_spans: [A075C-P006, A075C-P007, A075C-P008]
+  mandatory_content:
+  - infringement of any applicable AI Act provision
+  - failure to comply with specified decisions or measures
+  - failure to comply with a binding Article 75b commitment
+  qualifier_spans:
+  - A075C-P006
+  - A075C-P007
+  - A075C-P008
   product_scope: no_product_action
   product_scope_reason: This is an enforcement consequence rather than an independent product action.
   implementation_mode: none_required
@@ -114,8 +150,10 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A075C-P4-INFORMATION-FINE
   source: A075C-P009
-  quote: shall be subject to administrative fines as referred to in Article 99(5)
-  action: expose incorrect incomplete or misleading requested information supplied to the AI Office to Article 99(5) fines
+  quote: The supply of incorrect, incomplete or misleading information to the AI Office in reply to a
+    request shall be subject to administrative fines as referred to in Article 99(5).
+  action: expose incorrect incomplete or misleading requested information supplied to the AI Office to
+    Article 99(5) fines
   subject_ref: article_75_operator
   subject_category: supported_operator
   kind: legal_consequence
@@ -124,15 +162,33 @@ records:
   implementation_mode: none_required
   implementation_reason: No independent product action arises.
   verification_mode: not_reported
+  conditions:
+  - incorrect, incomplete or misleading information is supplied to the AI Office in reply to a request
 - norm_id: AIA-NORM-A075C-P5-IMPOSE-PERIODIC-PENALTIES
   source: A075C-P010
-  quote: The AI Office may adopt a decision imposing periodic penalty payments
-  action: impose periodic penalty payments compelling specified investigation information inspection correction and compliance conduct
+  quote: 'The AI Office may adopt a decision imposing periodic penalty payments to compel the operators
+    subject to its competence pursuant to Article 75(1) to the following:'
+  action: impose periodic penalty payments compelling specified investigation information inspection correction
+    and compliance conduct
   subject_ref: ai_office
   subject_category: union_institution_or_body
   kind: power
-  mandatory_content: [submit to investigation, comply with a decided information request, submit to a decided inspection, provide correct or complete inspection answers, comply with ordered corrective actions, comply with binding commitments, comply with an Article 75c(1) decision]
-  qualifier_spans: [A075C-P011, A075C-P012, A075C-P013, A075C-P014, A075C-P015, A075C-P016, A075C-P017]
+  mandatory_content:
+  - submit to investigation
+  - comply with a decided information request
+  - submit to a decided inspection
+  - provide correct or complete inspection answers
+  - comply with ordered corrective actions
+  - comply with binding commitments
+  - comply with an Article 75c(1) decision
+  qualifier_spans:
+  - A075C-P011
+  - A075C-P012
+  - A075C-P013
+  - A075C-P014
+  - A075C-P015
+  - A075C-P016
+  - A075C-P017
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -140,8 +196,12 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A075C-P5-PENALTY-PAYMENT-LIMITS
   source: A075C-P018
-  quote: Those penalty payments shall be effective and proportionate
-  action: make the periodic penalty payments effective and proportionate
+  quote: Those penalty payments shall be effective and proportionate, and, where applicable, shall not
+    exceed 5 % of the average daily income or worldwide annual turnover in the preceding financial year
+    per day, calculated from the date appointed by the decision.
+  action: make periodic penalty payments effective and proportionate and, where applicable, keep them
+    within 5 % of average daily income or worldwide annual turnover in the preceding financial year per
+    day from the date appointed by the decision
   subject_ref: ai_office
   subject_category: union_institution_or_body
   product_scope: outside_supported_actor
@@ -149,30 +209,19 @@ records:
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
-- norm_id: AIA-NORM-A075C-P5-PENALTY-PAYMENT-CEILING
-  source: A075C-P018
-  quote: and, where applicable, shall not exceed 5 % of the average daily income or worldwide annual turnover in the preceding financial year per day, calculated from the date appointed by the decision.
-  action: keep the periodic penalty payment within 5 % of the average daily income or worldwide
-    annual turnover in the preceding financial year, per day, counted from the date appointed by the
-    decision
-  subject_ref: ai_office
-  subject_category: union_institution_or_body
-  conditions:
-  - the ceiling is applicable
   mandatory_content:
+  - make the penalty payments effective and proportionate
   - the basis is the average daily income or worldwide annual turnover
   - the reference period is the preceding financial year
   - the ceiling of 5 % applies per day
   - the days are counted from the date appointed by the decision
-  product_scope: outside_supported_actor
-  product_scope_reason: The present product does not report compliance for this addressee.
-  implementation_mode: none_required
-  implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_reported
 - norm_id: AIA-NORM-A075C-P6-JUDICIAL-REVIEW
   source: A075C-P019
-  quote: shall have unlimited jurisdiction to review decisions of the AI Office
-  action: review and cancel reduce or increase AI Office fines and periodic penalty payments with unlimited jurisdiction
+  quote: The Court of Justice of the European Union shall have unlimited jurisdiction to review decisions
+    of the AI Office fixing a fine or periodic penalty payment pursuant to this Article. It may cancel,
+    reduce or increase the fine or periodic penalty payment imposed.
+  action: review and cancel reduce or increase AI Office fines and periodic penalty payments with unlimited
+    jurisdiction
   subject_ref: court_of_justice_of_the_european_union
   subject_category: union_institution_or_body
   kind: power
@@ -183,7 +232,8 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A075C-P7-ALLOCATE-FINE-FUNDS
   source: A075C-P020
-  quote: shall contribute to the general budget of the Union
+  quote: Funds collected through the imposition of fines or periodic penalty payments pursuant to this
+    Article shall contribute to the general budget of the Union.
   action: allocate Article 75c fine and periodic-payment funds to the Union general budget
   subject_ref: union_enforcement_framework
   subject_category: union_institution_or_body
@@ -195,8 +245,12 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A075C-P8-FIVE-YEAR-INFRINGEMENT-LIMIT
   source: A075C-P021
-  quote: shall be subject to a limitation period of five years
-  action: apply a five-year infringement limitation period from commission or cessation for continuing or repeated infringements
+  quote: The powers conferred on the AI Office by this Article shall be subject to a limitation period
+    of five years. The limitation period shall begin to run on the day on which the infringement is committed.
+    However, in the case of continuing or repeated infringements, the limitation period shall begin to
+    run on the day on which the infringement ceases.
+  action: apply a five-year infringement limitation period from commission or cessation for continuing
+    or repeated infringements
   subject_ref: ai_office_enforcement_power
   subject_category: union_institution_or_body
   kind: legal_consequence
@@ -207,7 +261,9 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A075C-P8-FIVE-YEAR-DECISION-LIMIT
   source: A075C-P022
-  quote: shall be subject to a limitation period of five years
+  quote: The power of the AI Office to enforce decisions taken pursuant to this Article shall be subject
+    to a limitation period of five years. The limitation period shall begin to run on the day on which
+    the decision becomes final.
   action: apply a five-year final-decision enforcement limitation period
   subject_ref: ai_office_decision_enforcement_power
   subject_category: union_institution_or_body
@@ -219,8 +275,10 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A075C-P8-SPECIFY-LIMITATION-PERIODS
   source: A075C-P023
-  quote: shall specify the first and second subparagraphs of this paragraph
-  action: specify infringement and decision-enforcement limitation rules including interruption circumstances in the Article 75d(3) implementing act
+  quote: The implementing act referred to in Article 75d(3) shall specify the first and second subparagraphs
+    of this paragraph, including the circumstances in which the limitation periods shall be interrupted.
+  action: specify infringement and decision-enforcement limitation rules including interruption circumstances
+    in the Article 75d(3) implementing act
   subject_ref: commission
   subject_category: union_institution_or_body
   product_scope: outside_supported_actor
@@ -230,7 +288,8 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A075C-P9-CLOSE-PROCEEDING
   source: A075C-P024
-  quote: it shall close the proceeding by a decision
+  quote: Where the AI Office determines that there are no grounds to adopt a decision of non-compliance,
+    it shall close the proceeding by a decision. That decision shall apply with immediate effect.
   action: close proceedings immediately by decision when no grounds for non-compliance exist
   subject_ref: ai_office
   subject_category: union_institution_or_body
@@ -239,3 +298,5 @@ records:
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
+  conditions:
+  - the AI Office determines there are no grounds to adopt a non-compliance decision

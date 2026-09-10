@@ -1,21 +1,45 @@
 records:
 - norm_id: AIA-NORM-A083-P1-REQUIRE-END-TO-FORMAL-NONCOMPLIANCE
   source: A083-P001
-  quote: it shall require the relevant provider to put an end to the non-compliance concerned, within a period it may prescribe
+  quote: Where the market surveillance authority of a Member State makes one of the following findings,
+    it shall require the relevant provider to put an end to the non-compliance concerned, within a period
+    it may prescribe
   action: require the provider to end identified formal non-compliance within a prescribed period
   subject_ref: market_surveillance_authority
   subject_category: public_authority
-  mandatory_content: [CE marking affixed contrary to Article 48, CE marking absent, EU declaration of conformity absent, EU declaration of conformity incorrect, EU database registration absent, applicable authorised representative absent, technical documentation unavailable]
-  qualifier_spans: [A083-P002, A083-P003, A083-P004, A083-P005, A083-P006, A083-P007, A083-P008]
+  mandatory_content: []
+  qualifier_spans:
+  - A083-P002
+  - A083-P003
+  - A083-P004
+  - A083-P005
+  - A083-P006
+  - A083-P007
+  - A083-P008
   product_scope: outside_supported_actor
-  product_scope_reason: The formal defects are already represented by their underlying operator duties; this provision governs authority enforcement.
+  product_scope_reason: The formal defects are already represented by their underlying operator duties;
+    this provision governs authority enforcement.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
+  conditions:
+  - operator: any_of
+    operands:
+    - the CE marking has been affixed in violation of Article 48
+    - the CE marking has not been affixed
+    - the Article 47 EU declaration of conformity has not been drawn up
+    - the Article 47 EU declaration of conformity has not been drawn up correctly
+    - the Article 71 EU-database registration has not been carried out
+    - no authorised representative has been appointed where one is applicable
+    - technical documentation is not available
 - norm_id: AIA-NORM-A083-P2-RESTRICT-PERSISTENT-NONCOMPLIANCE
   source: A083-P009
-  quote: the market surveillance authority of the Member State concerned shall take appropriate and proportionate measures to restrict or prohibit the high-risk AI system being made available on the market or to ensure that it is recalled or withdrawn from the market without delay.
-  action: take proportionate restriction prohibition recall or withdrawal measures without delay when formal non-compliance persists
+  quote: Where the non-compliance referred to in paragraph 1 persists, the market surveillance authority
+    of the Member State concerned shall take appropriate and proportionate measures to restrict or prohibit
+    the high-risk AI system being made available on the market or to ensure that it is recalled or withdrawn
+    from the market without delay.
+  action: take proportionate restriction prohibition recall or withdrawal measures without delay when
+    formal non-compliance persists
   subject_ref: market_surveillance_authority
   subject_category: public_authority
   product_scope: outside_supported_actor
@@ -23,3 +47,5 @@ records:
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
+  conditions:
+  - the formal non-compliance referred to in paragraph 1 persists

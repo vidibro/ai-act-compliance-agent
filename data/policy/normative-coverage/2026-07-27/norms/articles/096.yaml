@@ -63,7 +63,11 @@ norms:
     category: union_institution_or_body
   action: publish the point (g) guidelines on the practical implementation of Article 8(2), Article 9(10)
     and Article 17(3) by 1 August 2027
-  norm_text: such guidelines shall be published by 1 August 2027.
+  norm_text: the practical implementation of Article 8(2), Article 9(10) and Article 17(3) in accordance
+    with the principle of complementarity and proportionality, with a view to ensuring consistency, avoiding
+    duplication and minimising additional burdens when complying with the requirements of this Regulation
+    and the requirements of the Union harmonisation legislation listed in Section A of Annex I; such guidelines
+    shall be published by 1 August 2027.
   detection_channels:
   - semantic_legal_effect
   - shall_token
@@ -97,8 +101,11 @@ norms:
   subjects:
   - subject_ref: commission
     category: union_institution_or_body
-  action: involve the Board when issuing the implementation guidelines
-  norm_text: the Commission shall involve the Board
+  action: involve the Board and pay particular attention to the specified affected groups' needs when
+    issuing implementation guidelines
+  norm_text: When issuing such guidelines, the Commission shall involve the Board and pay particular attention
+    to the needs of SMEs, including start-ups, and SMCs, of local public authorities and of the sectors
+    most likely to be affected by this Regulation.
   detection_channels:
   - semantic_legal_effect
   - shall_token
@@ -106,43 +113,14 @@ norms:
   - AIA-TEXT-A096-P009
   qualifier_spans: []
   effective_date_spans: []
-  conditions: []
+  conditions:
+  - the Commission is issuing the implementation guidelines
   exceptions: []
-  mandatory_content: []
-  dependencies: []
-  product_scope: outside_supported_actor
-  product_scope_reason: The present product does not report compliance for this addressee.
-  implementation_mode: none_required
-  implementation_refs: []
-  implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_reported
-  review:
-    status: proposed
-    extracted_by: semantic-legal-effect-pass
-    verified_by: ''
-    review_run_id: normative-coverage-2026-08-28
-    presentation_mode: exact-source-slice
-    display_chunks: 1
-    fully_displayed: true
-    elapsed_seconds: null
-- norm_id: AIA-NORM-A096-P1-ATTEND-AFFECTED-NEEDS
-  act_version_date: '2026-07-27'
-  kind: obligation
-  subjects:
-  - subject_ref: commission
-    category: union_institution_or_body
-  action: pay particular attention to affected small-business local-authority and sector needs when issuing
-    guidelines
-  norm_text: pay particular attention to the needs of SMEs
-  detection_channels:
-  - semantic_legal_effect
-  primary_spans:
-  - AIA-TEXT-A096-P009
-  qualifier_spans: []
-  effective_date_spans: []
-  conditions: []
-  exceptions: []
-  mandatory_content: []
+  mandatory_content:
+  - involve the Board
+  - pay particular attention to the needs of SMEs, including start-ups, and SMCs
+  - pay particular attention to the needs of local public authorities
+  - pay particular attention to the needs of sectors most likely to be affected by the Regulation
   dependencies: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -166,7 +144,10 @@ norms:
   - subject_ref: commission
     category: union_institution_or_body
   action: account for AI state of the art and relevant standards specifications when preparing guidelines
-  norm_text: shall take due account of the generally acknowledged state of the art on AI
+  norm_text: The guidelines referred to in the first subparagraph of this paragraph shall take due account
+    of the generally acknowledged state of the art on AI, as well as of relevant harmonised standards
+    and common specifications that are referred to in Articles 40 and 41, or of those harmonised standards
+    or technical specifications that are set out pursuant to Union harmonisation law.
   detection_channels:
   - semantic_legal_effect
   - shall_token
@@ -200,7 +181,8 @@ norms:
   - subject_ref: commission
     category: union_institution_or_body
   action: update adopted guidelines when necessary on request or on the Commission's initiative
-  norm_text: the Commission shall update guidelines previously adopted when deemed necessary
+  norm_text: At the request of the Member States or the AI Office, or on its own initiative, the Commission
+    shall update guidelines previously adopted when deemed necessary.
   detection_channels:
   - semantic_legal_effect
   - shall_token
@@ -208,7 +190,13 @@ norms:
   - AIA-TEXT-A096-P011
   qualifier_spans: []
   effective_date_spans: []
-  conditions: []
+  conditions:
+  - the Commission deems an update necessary
+  - operator: any_of
+    operands:
+    - Member States request the update
+    - the AI Office requests the update
+    - the Commission acts on its own initiative
   exceptions: []
   mandatory_content: []
   dependencies: []

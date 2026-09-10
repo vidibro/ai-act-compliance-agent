@@ -8,7 +8,10 @@ norms:
     category: supported_operator
   action: bring pre-2-August-2027 Annex X large-scale IT system AI components into AI Act compliance by
     31 December 2030
-  norm_text: shall be brought into compliance with this Regulation by 31 December 2030
+  norm_text: Without prejudice to the application of Article 5 as referred to in Article 113(3), point
+    (a), AI systems which are components of the large-scale IT systems established by the legal acts listed
+    in Annex X that have been placed on the market or put into service before 2 August 2027 shall be brought
+    into compliance with this Regulation by 31 December 2030.
   detection_channels:
   - semantic_legal_effect
   - shall_token
@@ -20,7 +23,8 @@ norms:
   - the AI system is a component of a large-scale IT system established by a legal act listed in Annex
     X
   - the system was placed on the market or put into service before 2 August 2027
-  exceptions: []
+  exceptions:
+  - application of Article 5 under Article 113(3)(a) is unaffected
   mandatory_content: []
   dependencies: []
   product_scope: in_scope
@@ -31,9 +35,9 @@ norms:
   implementation_reason: No current rule represents this legacy-system transition.
   verification_mode: reported_conditionally
   review:
-    status: approved
+    status: proposed
     extracted_by: semantic-legal-effect-pass
-    verified_by: vidibro
+    verified_by: ''
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
     display_chunks: 1
@@ -81,7 +85,11 @@ norms:
     category: other
   action: apply the Regulation to legacy high-risk systems other than paragraph 1 systems only when their
     design changes significantly from the Chapter III application date
-  norm_text: this Regulation shall apply to operators of high-risk AI systems
+  norm_text: Without prejudice to the application of Article 5 as referred to in Article 113, third paragraph,
+    point (a), this Regulation shall apply to operators of high-risk AI systems, other than the systems
+    referred to in paragraph 1 of this Article, that have been placed on the market or put into service
+    before the date of application of Chapter III referred to in Article 113, only if, as from that date,
+    those systems are subject to significant changes in their designs.
   detection_channels:
   - semantic_legal_effect
   - shall_token
@@ -90,8 +98,13 @@ norms:
   - AIA-TEXT-A111-P003
   qualifier_spans: []
   effective_date_spans: []
-  conditions: []
-  exceptions: []
+  conditions:
+  - the high-risk AI system was placed on the market or put into service before Chapter III's Article
+    113 application date
+  - from that date, the system is subject to significant design changes
+  exceptions:
+  - the paragraph 1 large-scale IT systems are excluded
+  - application of Article 5 under Article 113 third paragraph point (a) is unaffected
   mandatory_content: []
   dependencies: []
   product_scope: dependency_only
@@ -117,8 +130,9 @@ norms:
     category: supported_operator
   action: bring legacy high-risk systems intended for public-authority use into compliance by 2 August
     2030
-  norm_text: the providers and deployers of high-risk AI systems intended to be used by public authorities
-    shall take the necessary steps to comply
+  norm_text: In any case, the providers and deployers of high-risk AI systems intended to be used by public
+    authorities shall take the necessary steps to comply with the requirements and obligations laid down
+    in this Regulation by 2 August 2030.
   detection_channels:
   - semantic_legal_effect
   - shall_token
@@ -138,9 +152,9 @@ norms:
   implementation_reason: Existing rules do not represent this public-authority-use transition date.
   verification_mode: reported_conditionally
   review:
-    status: approved
+    status: proposed
     extracted_by: semantic-legal-effect-pass
-    verified_by: vidibro
+    verified_by: ''
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
     display_chunks: 1
@@ -153,8 +167,9 @@ norms:
   - subject_ref: gpai_provider
     category: supported_operator
   action: bring GPAI models placed on the market before 2 August 2025 into compliance by 2 August 2027
-  norm_text: shall take the necessary steps in order to comply with the obligations laid down in this
-    Regulation by 2 August 2027
+  norm_text: Providers of general-purpose AI models that have been placed on the market before 2 August
+    2025 shall take the necessary steps in order to comply with the obligations laid down in this Regulation
+    by 2 August 2027.
   detection_channels:
   - semantic_legal_effect
   - shall_token
@@ -162,7 +177,8 @@ norms:
   - AIA-TEXT-A111-P004
   qualifier_spans: []
   effective_date_spans: []
-  conditions: []
+  conditions:
+  - the general-purpose AI model was placed on the market before 2 August 2025
   exceptions: []
   mandatory_content: []
   dependencies: []
@@ -173,9 +189,9 @@ norms:
   implementation_reason: Existing rules do not represent this legacy-model transition date.
   verification_mode: reported_conditionally
   review:
-    status: approved
+    status: proposed
     extracted_by: semantic-legal-effect-pass
-    verified_by: vidibro
+    verified_by: ''
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
     display_chunks: 1
@@ -189,7 +205,9 @@ norms:
     category: supported_operator
   action: bring pre-2-August-2026 synthetic-content-generating AI systems into Article 50(2) compliance
     by 2 December 2026
-  norm_text: shall take the necessary steps in order to comply with Article 50(2) by 2 December 2026
+  norm_text: Providers of AI systems, including general-purpose AI systems, generating synthetic audio,
+    image, video or text content, that have been placed on the market before 2 August 2026 shall take
+    the necessary steps in order to comply with Article 50(2) by 2 December 2026.
   detection_channels:
   - semantic_legal_effect
   - shall_token
@@ -197,7 +215,9 @@ norms:
   - AIA-TEXT-A111-P005
   qualifier_spans: []
   effective_date_spans: []
-  conditions: []
+  conditions:
+  - the AI system generates synthetic audio, image, video, or text content
+  - the AI system was placed on the market before 2 August 2026
   exceptions: []
   mandatory_content: []
   dependencies: []
@@ -208,9 +228,9 @@ norms:
   implementation_reason: Existing Article 50 rules do not represent this legacy-system transition date.
   verification_mode: reported_conditionally
   review:
-    status: approved
+    status: proposed
     extracted_by: semantic-legal-effect-pass
-    verified_by: vidibro
+    verified_by: ''
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
     display_chunks: 1

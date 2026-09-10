@@ -6,59 +6,30 @@ norms:
   subjects:
   - subject_ref: provider
     category: supported_operator
-  action: draw up and keep current technical documentation covering model training, testing, and evaluation
-    results
+  action: draw up and keep current model technical documentation covering training, testing and evaluation,
+    containing at least the Annex XI information, for provision on request to the AI Office and national
+    competent authorities
   norm_text: draw up and keep up-to-date the technical documentation of the model, including its training
-    and testing process and the results of its evaluation
+    and testing process and the results of its evaluation, which shall contain, at a minimum, the information
+    set out in Annex XI for the purpose of providing it, upon request, to the AI Office and the national
+    competent authorities
   detection_channels:
   - semantic_legal_effect
+  - shall_token
   - cross_reference_structure
   - existing_implementation
   primary_spans:
   - AIA-TEXT-A053-P002
   qualifier_spans:
   - AIA-TEXT-A053-P001
-  effective_date_spans: []
-  conditions: []
-  exceptions: []
-  mandatory_content: []
-  dependencies: []
-  product_scope: in_scope
-  product_scope_reason: ''
-  implementation_mode: compliance_rule
-  implementation_refs:
-  - AIA-GP-A53-1A
-  implementation_reason: ''
-  verification_mode: reported_not_judged
-  review:
-    status: approved
-    extracted_by: semantic-legal-effect-pass
-    verified_by: vidibro
-    review_run_id: normative-coverage-2026-08-28
-    presentation_mode: exact-source-slice
-    display_chunks: 1
-    fully_displayed: true
-    elapsed_seconds: null
-- norm_id: AIA-NORM-A053-P1-A-ANNEX-XI-CONTENT
-  act_version_date: '2026-07-27'
-  kind: obligation
-  subjects:
-  - subject_ref: provider
-    category: supported_operator
-  action: include at least all Annex XI information in the model technical documentation
-  norm_text: which shall contain, at a minimum, the information set out in Annex XI
-  detection_channels:
-  - semantic_legal_effect
-  - shall_token
-  - existing_implementation
-  primary_spans:
-  - AIA-TEXT-A053-P002
-  qualifier_spans: []
   effective_date_spans: []
   conditions: []
   exceptions: []
   mandatory_content:
+  - draw up and keep the technical documentation up to date
+  - cover model training, testing and evaluation results
   - the information set out in Annex XI
+  - provide it upon request to the AI Office and national competent authorities
   dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -68,59 +39,22 @@ norms:
   implementation_reason: ''
   verification_mode: reported_not_judged
   review:
-    status: approved
+    status: proposed
     extracted_by: semantic-legal-effect-pass
-    verified_by: vidibro
+    verified_by: ''
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
-- norm_id: AIA-NORM-A053-P1-A-PROVIDE-ON-REQUEST
+- norm_id: AIA-NORM-A053-P1-B-DRAW-KEEP-AND-MAKE-AVAILABLE-DOCUMENTATION
   act_version_date: '2026-07-27'
   kind: obligation
   subjects:
   - subject_ref: provider
     category: supported_operator
-  action: provide the model technical documentation to the AI Office and national competent authorities
-    on request
-  norm_text: for the purpose of providing it, upon request, to the AI Office and the national competent
-    authorities
-  detection_channels:
-  - semantic_legal_effect
-  - existing_implementation
-  primary_spans:
-  - AIA-TEXT-A053-P002
-  qualifier_spans: []
-  effective_date_spans: []
-  conditions:
-  - the AI Office or a national competent authority requests the documentation
-  exceptions: []
-  mandatory_content: []
-  dependencies: []
-  product_scope: in_scope
-  product_scope_reason: ''
-  implementation_mode: compliance_rule
-  implementation_refs:
-  - AIA-GP-A53-1A
-  implementation_reason: ''
-  verification_mode: reported_not_judged
-  review:
-    status: approved
-    extracted_by: semantic-legal-effect-pass
-    verified_by: vidibro
-    review_run_id: normative-coverage-2026-08-28
-    presentation_mode: exact-source-slice
-    display_chunks: 1
-    fully_displayed: true
-    elapsed_seconds: null
-- norm_id: AIA-NORM-A053-P1-B-DRAW-KEEP-DOWNSTREAM-DOCUMENTATION
-  act_version_date: '2026-07-27'
-  kind: obligation
-  subjects:
-  - subject_ref: provider
-    category: supported_operator
-  action: draw up and keep current information and documentation for intended downstream integrators
+  action: draw up, keep current, and make available information and documentation to providers intending
+    to integrate the model into their AI systems
   norm_text: draw up, keep up-to-date and make available information and documentation to providers of
     AI systems who intend to integrate the general-purpose AI model into their AI systems.
   detection_channels:
@@ -144,45 +78,9 @@ norms:
   implementation_reason: ''
   verification_mode: reported_not_judged
   review:
-    status: approved
+    status: proposed
     extracted_by: semantic-legal-effect-pass
-    verified_by: vidibro
-    review_run_id: normative-coverage-2026-08-28
-    presentation_mode: exact-source-slice
-    display_chunks: 1
-    fully_displayed: true
-    elapsed_seconds: null
-- norm_id: AIA-NORM-A053-P1-B-MAKE-AVAILABLE
-  act_version_date: '2026-07-27'
-  kind: obligation
-  subjects:
-  - subject_ref: provider
-    category: supported_operator
-  action: make the information and documentation available to providers intending to integrate the model
-  norm_text: draw up, keep up-to-date and make available information and documentation to providers of
-    AI systems who intend to integrate the general-purpose AI model into their AI systems.
-  detection_channels:
-  - semantic_legal_effect
-  - existing_implementation
-  primary_spans:
-  - AIA-TEXT-A053-P003
-  qualifier_spans: []
-  effective_date_spans: []
-  conditions: []
-  exceptions: []
-  mandatory_content: []
-  dependencies: []
-  product_scope: in_scope
-  product_scope_reason: ''
-  implementation_mode: compliance_rule
-  implementation_refs:
-  - AIA-GP-A53-1B
-  implementation_reason: ''
-  verification_mode: reported_not_judged
-  review:
-    status: approved
-    extracted_by: semantic-legal-effect-pass
-    verified_by: vidibro
+    verified_by: ''
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
     display_chunks: 1
@@ -200,10 +98,13 @@ norms:
     business information or trade secrets in accordance with Union and national law
   detection_channels:
   - semantic_legal_effect
+  - cross_reference_structure
   - existing_implementation
   primary_spans:
   - AIA-TEXT-A053-P003
-  qualifier_spans: []
+  qualifier_spans:
+  - AIA-TEXT-A053-P001
+  - AIA-TEXT-A053-P003
   effective_date_spans: []
   conditions: []
   exceptions: []
@@ -217,9 +118,9 @@ norms:
   implementation_reason: ''
   verification_mode: reported_not_judged
   review:
-    status: approved
+    status: proposed
     extracted_by: semantic-legal-effect-pass
-    verified_by: vidibro
+    verified_by: ''
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
     display_chunks: 1
@@ -350,10 +251,12 @@ norms:
     of rights expressed pursuant to Article 4(3) of Directive (EU) 2019/790
   detection_channels:
   - semantic_legal_effect
+  - cross_reference_structure
   - existing_implementation
   primary_spans:
   - AIA-TEXT-A053-P006
-  qualifier_spans: []
+  qualifier_spans:
+  - AIA-TEXT-A053-P001
   effective_date_spans: []
   conditions: []
   exceptions: []
@@ -367,9 +270,9 @@ norms:
   implementation_reason: ''
   verification_mode: reported_not_judged
   review:
-    status: approved
+    status: proposed
     extracted_by: semantic-legal-effect-pass
-    verified_by: vidibro
+    verified_by: ''
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
     display_chunks: 1

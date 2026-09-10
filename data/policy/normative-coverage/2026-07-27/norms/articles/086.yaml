@@ -67,8 +67,13 @@ norms:
   - AIA-TEXT-A086-P001
   qualifier_spans: []
   effective_date_spans: []
-  conditions: []
-  exceptions: []
+  conditions:
+  - the deployer took a decision on the basis of output from a high-risk AI system listed in Annex III
+  - the decision produces legal effects on the affected person or similarly significantly affects them
+  - the affected person considers the decision to have an adverse impact on their health, safety or fundamental
+    rights
+  exceptions:
+  - the system is listed under point 2 of Annex III
   mandatory_content: []
   dependencies: []
   product_scope: no_product_action

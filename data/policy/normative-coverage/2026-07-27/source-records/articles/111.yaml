@@ -1,20 +1,26 @@
 records:
 - norm_id: AIA-NORM-A111-P1-BRING-LARGE-SCALE-IT-INTO-COMPLIANCE
   source: A111-P001
-  quote: shall be brought into compliance with this Regulation by 31 December 2030
-  action: bring pre-2-August-2027 Annex X large-scale IT system AI components into AI Act compliance by 31 December 2030
+  quote: Without prejudice to the application of Article 5 as referred to in Article 113(3), point (a),
+    AI systems which are components of the large-scale IT systems established by the legal acts listed
+    in Annex X that have been placed on the market or put into service before 2 August 2027 shall be brought
+    into compliance with this Regulation by 31 December 2030.
+  action: bring pre-2-August-2027 Annex X large-scale IT system AI components into AI Act compliance by
+    31 December 2030
   subject_ref: annex_x_large_scale_it_system_operator
   subject_category: supported_operator
   conditions:
-  - the AI system is a component of a large-scale IT system established by a legal act listed in
-    Annex X
+  - the AI system is a component of a large-scale IT system established by a legal act listed in Annex
+    X
   - the system was placed on the market or put into service before 2 August 2027
   product_scope: in_scope
-  product_scope_reason: This is a transitional compliance duty for operators of AI components in covered systems.
+  product_scope_reason: This is a transitional compliance duty for operators of AI components in covered
+    systems.
   implementation_mode: missing
   implementation_reason: No current rule represents this legacy-system transition.
   verification_mode: reported_conditionally
-  verified_by: vidibro
+  exceptions:
+  - application of Article 5 under Article 113(3)(a) is unaffected
 - norm_id: AIA-NORM-A111-P1-ACCOUNT-FOR-REQUIREMENTS-IN-EVALUATION
   source: A111-P002
   quote: The requirements laid down in this Regulation shall be taken into account in the evaluation
@@ -28,8 +34,13 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A111-P2-LEGACY-HIGH-RISK-APPLICABILITY
   source: A111-P003
-  quote: this Regulation shall apply to operators of high-risk AI systems
-  action: apply the Regulation to legacy high-risk systems other than paragraph 1 systems only when their design changes significantly from the Chapter III application date
+  quote: Without prejudice to the application of Article 5 as referred to in Article 113, third paragraph,
+    point (a), this Regulation shall apply to operators of high-risk AI systems, other than the systems
+    referred to in paragraph 1 of this Article, that have been placed on the market or put into service
+    before the date of application of Chapter III referred to in Article 113, only if, as from that date,
+    those systems are subject to significant changes in their designs.
+  action: apply the Regulation to legacy high-risk systems other than paragraph 1 systems only when their
+    design changes significantly from the Chapter III application date
   subject_ref: regulation
   subject_category: other
   kind: applicability
@@ -38,10 +49,20 @@ records:
   implementation_mode: none_required
   implementation_reason: Represented as an applicability dependency rather than an independent finding.
   verification_mode: not_reported
+  conditions:
+  - the high-risk AI system was placed on the market or put into service before Chapter III's Article
+    113 application date
+  - from that date, the system is subject to significant design changes
+  exceptions:
+  - the paragraph 1 large-scale IT systems are excluded
+  - application of Article 5 under Article 113 third paragraph point (a) is unaffected
 - norm_id: AIA-NORM-A111-P2-PUBLIC-AUTHORITY-SYSTEM-COMPLIANCE
   source: A111-P003
-  quote: the providers and deployers of high-risk AI systems intended to be used by public authorities shall take the necessary steps to comply
-  action: bring legacy high-risk systems intended for public-authority use into compliance by 2 August 2030
+  quote: In any case, the providers and deployers of high-risk AI systems intended to be used by public
+    authorities shall take the necessary steps to comply with the requirements and obligations laid down
+    in this Regulation by 2 August 2030.
+  action: bring legacy high-risk systems intended for public-authority use into compliance by 2 August
+    2030
   subject_ref: high_risk_provider_and_deployer
   subject_category: supported_operator
   conditions:
@@ -51,10 +72,11 @@ records:
   implementation_mode: missing
   implementation_reason: Existing rules do not represent this public-authority-use transition date.
   verification_mode: reported_conditionally
-  verified_by: vidibro
 - norm_id: AIA-NORM-A111-P3-LEGACY-GPAI-COMPLIANCE
   source: A111-P004
-  quote: shall take the necessary steps in order to comply with the obligations laid down in this Regulation by 2 August 2027
+  quote: Providers of general-purpose AI models that have been placed on the market before 2 August 2025
+    shall take the necessary steps in order to comply with the obligations laid down in this Regulation
+    by 2 August 2027.
   action: bring GPAI models placed on the market before 2 August 2025 into compliance by 2 August 2027
   subject_ref: gpai_provider
   subject_category: supported_operator
@@ -63,11 +85,15 @@ records:
   implementation_mode: missing
   implementation_reason: Existing rules do not represent this legacy-model transition date.
   verification_mode: reported_conditionally
-  verified_by: vidibro
+  conditions:
+  - the general-purpose AI model was placed on the market before 2 August 2025
 - norm_id: AIA-NORM-A111-P4-LEGACY-SYNTHETIC-CONTENT-COMPLIANCE
   source: A111-P005
-  quote: shall take the necessary steps in order to comply with Article 50(2) by 2 December 2026
-  action: bring pre-2-August-2026 synthetic-content-generating AI systems into Article 50(2) compliance by 2 December 2026
+  quote: Providers of AI systems, including general-purpose AI systems, generating synthetic audio, image,
+    video or text content, that have been placed on the market before 2 August 2026 shall take the necessary
+    steps in order to comply with Article 50(2) by 2 December 2026.
+  action: bring pre-2-August-2026 synthetic-content-generating AI systems into Article 50(2) compliance
+    by 2 December 2026
   subject_ref: synthetic_content_ai_provider
   subject_category: supported_operator
   product_scope: in_scope
@@ -75,4 +101,6 @@ records:
   implementation_mode: missing
   implementation_reason: Existing Article 50 rules do not represent this legacy-system transition date.
   verification_mode: reported_conditionally
-  verified_by: vidibro
+  conditions:
+  - the AI system generates synthetic audio, image, video, or text content
+  - the AI system was placed on the market before 2 August 2026

@@ -1,7 +1,8 @@
 records:
 - norm_id: AIA-NORM-A088-P1-EXCLUSIVE-ENFORCEMENT-POWERS
   source: A088-P001
-  quote: The Commission shall have exclusive powers to supervise and enforce Chapter V, taking into account the procedural guarantees under Article 94.
+  quote: The Commission shall have exclusive powers to supervise and enforce Chapter V, taking into account
+    the procedural guarantees under Article 94.
   action: exercise exclusive Chapter V supervision and enforcement powers subject to Article 94 guarantees
   subject_ref: commission
   subject_category: union_institution_or_body
@@ -13,8 +14,11 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A088-P1-ENTRUST-AI-OFFICE
   source: A088-P001
-  quote: The Commission shall entrust the implementation of these tasks to the AI Office, without prejudice to the powers of organisation of the Commission and the division of competences between Member States and the Union based on the Treaties.
-  action: entrust Chapter V supervision and enforcement implementation to the AI Office within enacted competence boundaries
+  quote: The Commission shall entrust the implementation of these tasks to the AI Office, without prejudice
+    to the powers of organisation of the Commission and the division of competences between Member States
+    and the Union based on the Treaties.
+  action: entrust Chapter V supervision and enforcement implementation to the AI Office within enacted
+    competence boundaries
   subject_ref: commission
   subject_category: union_institution_or_body
   product_scope: outside_supported_actor
@@ -22,10 +26,16 @@ records:
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
+  exceptions:
+  - the Commission's powers of organisation are unaffected
+  - the Treaty-based division of competences between Member States and the Union is unaffected
 - norm_id: AIA-NORM-A088-P2-REQUEST-COMMISSION-ASSISTANCE
   source: A088-P002
-  quote: market surveillance authorities may request the Commission to exercise the powers laid down in this Section, where that is necessary and proportionate to assist with the fulfilment of their tasks under this Regulation.
-  action: request necessary proportionate Commission exercise of Section powers to assist surveillance tasks
+  quote: Without prejudice to Article 75(3), market surveillance authorities may request the Commission
+    to exercise the powers laid down in this Section, where that is necessary and proportionate to assist
+    with the fulfilment of their tasks under this Regulation.
+  action: request necessary proportionate Commission exercise of Section powers to assist surveillance
+    tasks
   subject_ref: market_surveillance_authority
   subject_category: public_authority
   kind: power
@@ -34,3 +44,6 @@ records:
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
+  conditions:
+  - exercising the Section powers is necessary and proportionate to assist fulfilment of the authority's
+    tasks under this Regulation

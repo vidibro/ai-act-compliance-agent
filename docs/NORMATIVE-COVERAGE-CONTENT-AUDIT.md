@@ -219,6 +219,93 @@ shape — a chapeau quote with no content list — returned twelve other norms, 
 enumerated items are genuine alternative conditions, exceptions, or sibling norms. The live
 inventory has 135 populated content lists across 1,487 proposed norms.
 
+Article 55(1)(a)'s model-evaluation requirement is corrected after the full-text validity review.
+The former conduct-testing and document-testing siblings repeated the same incomplete `including`
+fragment. They are now two explicit contents of one complete model-evaluation norm, preserving the
+state-of-the-art protocols-and-tools requirement and the systemic-risk purpose without overlapping
+norm text.
+
+The same correction is applied to points (b), (c), and (d). Their coordinated verbs and objects
+form one complete requirement per lettered point; they are no longer duplicated as sibling norms
+with identical enacted text.
+
+Article 9's identical-text groups were then reviewed. Six composite requirements are consolidated:
+the paragraph 1 risk-management-system lifecycle, paragraph 2's iterative lifecycle and review
+cycle, paragraph 5's hazard and overall residual-risk acceptance, paragraph 6's two testing
+outcomes, paragraph 8's development and pre-market timing, and paragraph 9's affected-person
+consideration. Paragraph 5(c)'s information and conditional training duties remain separate, but
+now use non-overlapping exact source slices.
+
+Article 10(3)'s four dataset-quality records are consolidated into one requirement with four
+explicit qualities. Relevance, sufficient representativeness, best-possible freedom from errors,
+and best-possible completeness qualify the same datasets in view of the same intended purpose.
+
+Article 13's four identical-text groups are consolidated by provision: paragraph 2's instruction
+delivery and seven information qualities; point 3(b)(ii)'s performance information and affecting
+circumstances; point 3(d)'s oversight measures and included interpretation measures; and point
+3(e)'s resources, lifetime, and maintenance information. Each is now one complete information
+requirement with explicit contents rather than overlapping sibling norms.
+
+Article 14(4)'s points (a), (d), and (e) are each restored to one complete oversight capability.
+Understanding and monitoring are coordinated in point (a); points (d) and (e) state alternative
+ways an overseer must be enabled to control use, output, or operation.
+
+Article 15's shared performance, accuracy-disclosure, resilience-measure, and feedback-loop groups
+are consolidated into complete requirements. The five point 5 threat categories remain separate:
+each retains the complete prevention-to-control cycle and represents a distinct attack class.
+
+Article 17(1)'s systematic/orderly and written-policy documentation records are consolidated: the
+second phrase specifies the form of the same quality-management-system documentation duty.
+
+Article 19(1)'s purpose-appropriate period and six-month minimum are one ordinary retention rule.
+The different-period rule supplied by other Union or national law is its exception, not a separate
+applicability norm.
+
+Articles 21(1), 22(3), and 23(6) now keep each enacted language requirement with the material that
+must be supplied. The language does not create an independently triggered disclosure.
+
+Article 34(2)'s proportionality factors now qualify its single unnecessary-burden duty. Article
+53(1)(b)'s drawing-up, updating, and availability verbs likewise remain together as one downstream-
+documentation requirement.
+
+A corpus-wide duplicate-evidence review then distinguished duplicated norms from legitimate shared
+evidence. Independent actions in Articles 33, 36, 37, 41, 47, 51, and 57 now cite their own exact
+operative clauses; the Article 5 registration, Article 70 resources, and Article 113 Annex I records
+no longer contain their sibling requirements. Article 43's special Annex III/Section A record was
+removed because the general Section A procedure norm already applies to that subset. Shared evidence
+is retained where it represents different actors, a correlative duty and entitlement, a chapeau with
+distinct list items, or the five separately classified Article 15 threat categories. The resulting
+inventory had 1,442 proposed norms and 141 populated content lists.
+
+A following grammatical-fragment pass applied the Article 26(6) retention treatment across the
+corpus. Required template content in Article 5(6), guideline examples in Article 6(5), the two
+protections in Article 26(3), Article 44(3)'s corrective-action exception, Article 52(6)'s
+publication/update/confidentiality clauses, Article 54(6)'s systemic-risk override, and Article
+56(4)'s interested-party clause now remain inside their complete parent norms. Article 55(1)'s
+lettered duties likewise retain coordinated verbs and required sub-actions in one norm per point.
+The final coordinated-clause check also consolidated the paired entitlements in Article 60(5),
+Article 73(8)'s measures and notification procedure, Article 75(2)'s cooperation and notice,
+Article 77(2)'s list notification and maintenance, Article 85(2)'s complaint treatment, and Article
+99(2)'s initial and subsequent-amendment notification lifecycle. The resulting inventory has 1,427
+norms.
+
+The follow-up full-sentence pass consolidated another 21 records into their governing requirements.
+It covered Article 2's collective-agreement qualification; Article 6's consistency and development
+considerations; Article 11's documentation lifecycle and conformity-demonstration information;
+Articles 20 and 26's coordinated investigation, monitoring, notification and sensitive-data clauses;
+the paired clauses in Articles 28, 31, 36, 37, 41, 47, 51 and 57; Article 60's alternative incident
+mitigation response; Article 60a's cooperation and obstacle-removal requirement; Article 75c's
+periodic-payment ceiling; and Article 96's Board and affected-group considerations. Each retained norm
+now quotes the complete enacted construction and exposes its constituent requirements as mandatory
+content or exceptions. The resulting inventory has 1,406 norms.
+
+A subject-continuity pass then found 15 more records that were not independent propositions: their
+quotes began with a coordinated verb, pronoun, or dependent phrase whose grammatical subject lived
+in a sibling record. These were consolidated across Articles 3, 5, 6, 14, 26, 43, 47, 49, 53, 68,
+78 and 112 and Annex VII. The retained records quote the complete enacted construction and preserve
+each constituent requirement in `mandatory_content` or dependencies. The resulting inventory has
+1,391 norms.
+
 | Norm | Content entries | Decision | Finding / treatment |
 |---|---:|---|---|
 | AIA-NORM-A002-P13-COMMISSION-DELEGATED-ACTS | 4 | no additional finding | Compared linked source and content list; no additional focused content/granularity finding. Not independent norm approval. |
@@ -262,7 +349,7 @@ inventory has 135 populated content lists across 1,487 proposed norms.
 | AIA-NORM-A053-P1-B-ANNEX-XII-CONTENT | 1 | no additional finding | Compared linked source and content list; no additional focused content/granularity finding. Not independent norm approval. |
 | AIA-NORM-A054-P3-B-RETAIN-DOCUMENTATION | 2 | no additional finding | Compared linked source and content list; no additional focused content/granularity finding. Not independent norm approval. |
 | AIA-NORM-A054-P5-NOTIFY-TERMINATION | 2 | no additional finding | Compared linked source and content list; no additional focused content/granularity finding. Not independent norm approval. |
-| AIA-NORM-A055-P1-C-REPORT-INCIDENTS | 2 | no additional finding | Compared linked source and content list; no additional focused content/granularity finding. Not independent norm approval. |
+| AIA-NORM-A055-P1-C-TRACK-DOCUMENT-AND-REPORT-INCIDENTS | 2 | existing | Tracking, documenting, and reporting are the coordinated actions of one lettered duty. |
 | AIA-NORM-A056-P2-CODE-COVERAGE | 4 | no additional finding | Compared linked source and content list; no additional focused content/granularity finding. Not independent norm approval. |
 | AIA-NORM-A056-P2-D-PROPORTIONATE-MEASURES | 3 | no additional finding | Compared linked source and content list; no additional focused content/granularity finding. Not independent norm approval. |
 | AIA-NORM-A057-P3A-AI-OFFICE-SANDBOX | 2 | existing | See segment-ledger decision for AIA-TEXT-A057-P005. |
@@ -315,7 +402,7 @@ inventory has 135 populated content lists across 1,487 proposed norms.
 | AIA-NORM-A071-P5-DATABASE-DATA-MINIMISATION | 2 | existing | See segment-ledger decision for AIA-TEXT-A071-P005. |
 | AIA-NORM-A071-P6-CONTROLLER-AND-OPERATOR-SUPPORT | 3 | split | Controller status and support provision are different legal effects. Keep existing separate database-accessibility coverage. |
 | AIA-NORM-A072-P2-OPERATE-LIFETIME-MONITORING | 3 | existing | See segment-ledger decision for AIA-TEXT-A072-P002. |
-| AIA-NORM-A073-P6-INVESTIGATE-ASSESS-AND-CORRECT | 3 | existing | See segment-ledger decision for AIA-TEXT-A073-P007. |
+| AIA-NORM-A073-P6-RISK-ASSESSMENT-AND-CORRECTIVE-ACTION | 2 | split | The investigation is the first-sentence duty; risk assessment and corrective action are the two required contents of the second-sentence duty. |
 | AIA-NORM-A074-P1-APPLY-MARKET-SURVEILLANCE-REGULATION | 2 | no additional finding | Compared linked source and content list; no additional focused content/granularity finding. Not independent norm approval. |
 | AIA-NORM-A074-P13-GRANT-SOURCE-CODE-ACCESS | 2 | no additional finding | Compared linked source and content list; no additional focused content/granularity finding. Not independent norm approval. |
 | AIA-NORM-A075-P1-COMPETENCE | 2 | existing | See the four-exclusion correction in the additional source-linked findings; this is the same finding, not an extra defect. |

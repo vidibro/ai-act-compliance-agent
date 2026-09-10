@@ -237,7 +237,8 @@ norms:
   - AIA-TEXT-A036-P004
   qualifier_spans: []
   effective_date_spans: []
-  conditions: []
+  conditions:
+  - the notified body has ceased its activity
   exceptions: []
   mandatory_content: []
   dependencies: []
@@ -274,7 +275,9 @@ norms:
   - AIA-TEXT-A036-P005
   qualifier_spans: []
   effective_date_spans: []
-  conditions: []
+  conditions:
+  - the notifying authority has sufficient reason to consider that the notified body no longer meets Article
+    31 requirements or is failing to fulfil its obligations
   exceptions: []
   mandatory_content: []
   dependencies: []
@@ -309,7 +312,8 @@ norms:
   - AIA-TEXT-A036-P005
   qualifier_spans: []
   effective_date_spans: []
-  conditions: []
+  conditions:
+  - the objections arise in the notifying authority's investigation of the notified body
   exceptions: []
   mandatory_content: []
   dependencies: []
@@ -344,7 +348,8 @@ norms:
   - AIA-TEXT-A036-P005
   qualifier_spans: []
   effective_date_spans: []
-  conditions: []
+  conditions:
+  - the objections arise in the notifying authority's investigation of the notified body
   exceptions: []
   mandatory_content: []
   dependencies: []
@@ -382,7 +387,9 @@ norms:
   - AIA-TEXT-A036-P005
   qualifier_spans: []
   effective_date_spans: []
-  conditions: []
+  conditions:
+  - the notifying authority concludes that the notified body no longer meets Article 31 requirements or
+    is failing to fulfil its obligations
   exceptions: []
   mandatory_content: []
   dependencies: []
@@ -416,7 +423,8 @@ norms:
   - AIA-TEXT-A036-P005
   qualifier_spans: []
   effective_date_spans: []
-  conditions: []
+  conditions:
+  - the notifying authority has restricted, suspended or withdrawn the notified body's designation
   exceptions: []
   mandatory_content: []
   dependencies: []
@@ -451,7 +459,8 @@ norms:
   - AIA-TEXT-A036-P006
   qualifier_spans: []
   effective_date_spans: []
-  conditions: []
+  conditions:
+  - the notified body's designation has been suspended, restricted, or fully or partially withdrawn
   exceptions: []
   mandatory_content: []
   dependencies: []
@@ -476,11 +485,11 @@ norms:
   subjects:
   - subject_ref: notifying_authority
     category: public_authority
-  action: take appropriate steps to preserve the affected notified body's files
-  norm_text: In the event of the restriction, suspension or withdrawal of a designation, the notifying
-    authority shall take appropriate steps to ensure that the files of the notified body concerned are
-    kept, and to make them available to notifying authorities in other Member States and to market surveillance
-    authorities at their request.
+  action: take appropriate steps to preserve the affected notified body's files and make them available
+    on request to other Member States' notifying authorities and market-surveillance authorities
+  norm_text: the notifying authority shall take appropriate steps to ensure that the files of the notified
+    body concerned are kept, and to make them available to notifying authorities in other Member States
+    and to market surveillance authorities at their request.
   detection_channels:
   - semantic_legal_effect
   - shall_token
@@ -488,47 +497,13 @@ norms:
   - AIA-TEXT-A036-P007
   qualifier_spans: []
   effective_date_spans: []
-  conditions: []
+  conditions:
+  - the notified body's designation has been restricted, suspended or withdrawn
   exceptions: []
-  mandatory_content: []
-  dependencies: []
-  product_scope: outside_supported_actor
-  product_scope_reason: The present product does not report compliance for this addressee.
-  implementation_mode: none_required
-  implementation_refs: []
-  implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_reported
-  review:
-    status: proposed
-    extracted_by: semantic-legal-effect-pass
-    verified_by: ''
-    review_run_id: normative-coverage-2026-08-28
-    presentation_mode: exact-source-slice
-    display_chunks: 1
-    fully_displayed: true
-    elapsed_seconds: null
-- norm_id: AIA-NORM-A036-P6-MAKE-FILES-AVAILABLE
-  act_version_date: '2026-07-27'
-  kind: obligation
-  subjects:
-  - subject_ref: notifying_authority
-    category: public_authority
-  action: make the affected notified body's files available to other notifying and market-surveillance
-    authorities on request
-  norm_text: In the event of the restriction, suspension or withdrawal of a designation, the notifying
-    authority shall take appropriate steps to ensure that the files of the notified body concerned are
-    kept, and to make them available to notifying authorities in other Member States and to market surveillance
-    authorities at their request.
-  detection_channels:
-  - semantic_legal_effect
-  - shall_token
-  primary_spans:
-  - AIA-TEXT-A036-P007
-  qualifier_spans: []
-  effective_date_spans: []
-  conditions: []
-  exceptions: []
-  mandatory_content: []
+  mandatory_content:
+  - ensure that the affected notified body's files are kept
+  - make the files available when requested by another Member State's notifying authority or a market-surveillance
+    authority
   dependencies: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -561,7 +536,8 @@ norms:
   qualifier_spans:
   - AIA-TEXT-A036-P008
   effective_date_spans: []
-  conditions: []
+  conditions:
+  - the notified body's designation has been restricted, suspended or withdrawn
   exceptions: []
   mandatory_content: []
   dependencies: []
@@ -598,7 +574,8 @@ norms:
   qualifier_spans:
   - AIA-TEXT-A036-P008
   effective_date_spans: []
-  conditions: []
+  conditions:
+  - the notified body's designation has been restricted, suspended or withdrawn
   exceptions: []
   mandatory_content: []
   dependencies: []
@@ -636,7 +613,8 @@ norms:
   qualifier_spans:
   - AIA-TEXT-A036-P008
   effective_date_spans: []
-  conditions: []
+  conditions:
+  - the notified body's designation has been restricted, suspended or withdrawn
   exceptions: []
   mandatory_content: []
   dependencies: []
@@ -673,7 +651,8 @@ norms:
   qualifier_spans:
   - AIA-TEXT-A036-P008
   effective_date_spans: []
-  conditions: []
+  conditions:
+  - the notified body's designation has been restricted, suspended or withdrawn
   exceptions: []
   mandatory_content: []
   dependencies: []
@@ -711,7 +690,8 @@ norms:
   qualifier_spans:
   - AIA-TEXT-A036-P008
   effective_date_spans: []
-  conditions: []
+  conditions:
+  - the notified body's designation has been restricted, suspended or withdrawn
   exceptions: []
   mandatory_content: []
   dependencies: []
@@ -749,7 +729,9 @@ norms:
   qualifier_spans:
   - AIA-TEXT-A036-P008
   effective_date_spans: []
-  conditions: []
+  conditions:
+  - the notified body's designation has been restricted, suspended or withdrawn
+  - appropriate measures are necessary to avoid a potential risk to health, safety or fundamental rights
   exceptions: []
   mandatory_content: []
   dependencies: []
@@ -790,11 +772,22 @@ norms:
   - AIA-TEXT-A036-P016
   effective_date_spans: []
   conditions:
-  - the notifying authority confirms within one month that affected certificates pose no health, safety,
-    or fundamental-rights risk and provides a remediation timeline
-  - alternatively, the notifying authority confirms no relevant certificates will be issued, amended,
-    or reissued and states whether the notified body can support existing certificates
-  exceptions: []
+  - the notified body's designation has been suspended or restricted
+  - operator: any_of
+    operands:
+    - operator: all_of
+      operands:
+      - the notifying authority confirms within one month that affected certificates pose no health, safety
+        or fundamental-rights risk
+      - the notifying authority provides a timeline for actions to remedy the suspension or restriction
+    - operator: all_of
+      operands:
+      - the notifying authority confirms no certificates relevant to the suspension will be issued, amended
+        or reissued during the suspension or restriction
+      - the notifying authority states whether the notified body can continue to monitor and remain responsible
+        for existing certificates during the suspension or restriction
+  exceptions:
+  - certificates that were unduly issued
   mandatory_content: []
   dependencies: []
   product_scope: no_product_action

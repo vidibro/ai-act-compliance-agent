@@ -112,7 +112,7 @@ def test_article_thirty_one_separates_actions_actors_and_exceptions(corrected_bu
         for n in corrected_bundle.norm_inventory.norms
         if n.norm_id.startswith("AIA-NORM-A031-")
     }
-    assert len(norms) == 19
+    assert len(norms) == 18
     assert norms["P7-CONFIDENTIALITY-AND-SECRECY"].exceptions == ["disclosure required by law"]
     staff = norms["P7-STAFF-PROFESSIONAL-SECRECY"]
     assert staff.subjects[0].subject_ref == "notified_body_staff"
@@ -120,10 +120,13 @@ def test_article_thirty_one_separates_actions_actors_and_exceptions(corrected_bu
     assert "disclosure required by law" not in staff.exceptions
     for suffix in (
         "P5-DIRECT-INVOLVEMENT-PROHIBITED",
-        "P5-PARTY-REPRESENTATION-PROHIBITED",
         "P5-CONFLICTING-ACTIVITIES-PROHIBITED",
     ):
         assert norms[suffix].kind.value == "prohibition"
+    assert norms["P5-DIRECT-INVOLVEMENT-PROHIBITED"].mandatory_content == [
+        "no direct involvement in designing, developing, marketing or using high-risk AI systems",
+        "no representation of parties engaged in those activities",
+    ]
     assert "consultancy" in norms["P5-CONFLICTING-ACTIVITIES-PROHIBITED"].action
     assert "independence, objectivity" in norms["P6-INDEPENDENT-OPERATION"].action
     assert "document and implement" in norms["P6-IMPARTIALITY-SYSTEM"].action
@@ -134,7 +137,17 @@ def test_article_thirty_one_separates_actions_actors_and_exceptions(corrected_bu
     )
     assert "Article 38" in norms["P12-COORDINATION-AND-STANDARDS"].action
     assert "or ensure awareness" in norms["P12-STANDARDISATION-OR-STANDARDS-CURRENCY"].action
-    assert all(n.review.status.value == "proposed" for n in norms.values())
+    for suffix in (
+        "P5-DIRECT-INVOLVEMENT-PROHIBITED",
+        "P9-LIABILITY-INSURANCE",
+    ):
+        assert norms[suffix].review.status.value == "approved"
+    assert all(
+        n.review.status.value == "proposed"
+        for suffix, n in norms.items()
+        if suffix
+        not in {"P5-DIRECT-INVOLVEMENT-PROHIBITED", "P9-LIABILITY-INSURANCE"}
+    )
     assert all(n.implementation_mode.value == "none_required" for n in norms.values())
 
 

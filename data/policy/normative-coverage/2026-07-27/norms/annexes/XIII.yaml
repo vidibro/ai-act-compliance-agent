@@ -65,8 +65,8 @@ norms:
     category: other
   action: presume that a GPAI model has high internal-market impact due to reach once it is available
     to at least 10,000 registered Union business users
-  norm_text: shall be presumed when it has been made available to at least 10000 registered business users
-    established in the Union
+  norm_text: whether it has a high impact on the internal market due to its reach, which shall be presumed
+    when it has been made available to at least 10000 registered business users established in the Union;
   detection_channels:
   - semantic_legal_effect
   - shall_token

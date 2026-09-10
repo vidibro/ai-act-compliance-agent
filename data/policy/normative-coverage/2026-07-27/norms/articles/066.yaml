@@ -101,9 +101,11 @@ norms:
     Article 74(11);
   detection_channels:
   - semantic_legal_effect
+  - cross_reference_structure
   primary_spans:
   - AIA-TEXT-A066-P002
-  qualifier_spans: []
+  qualifier_spans:
+  - AIA-TEXT-A066-P001
   effective_date_spans: []
   conditions: []
   exceptions: []
@@ -134,9 +136,11 @@ norms:
   norm_text: collect and share technical and regulatory expertise and best practices among Member States;
   detection_channels:
   - semantic_legal_effect
+  - cross_reference_structure
   primary_spans:
   - AIA-TEXT-A066-P003
-  qualifier_spans: []
+  qualifier_spans:
+  - AIA-TEXT-A066-P001
   effective_date_spans: []
   conditions: []
   exceptions: []
@@ -169,9 +173,11 @@ norms:
     of rules on general-purpose AI models;
   detection_channels:
   - semantic_legal_effect
+  - cross_reference_structure
   primary_spans:
   - AIA-TEXT-A066-P004
-  qualifier_spans: []
+  qualifier_spans:
+  - AIA-TEXT-A066-P001
   effective_date_spans: []
   conditions: []
   exceptions: []
@@ -206,9 +212,11 @@ norms:
     57, 59 and 60;
   detection_channels:
   - semantic_legal_effect
+  - cross_reference_structure
   primary_spans:
   - AIA-TEXT-A066-P005
-  qualifier_spans: []
+  qualifier_spans:
+  - AIA-TEXT-A066-P001
   effective_date_spans: []
   conditions: []
   exceptions: []
@@ -241,9 +249,11 @@ norms:
     benefits, risks, safeguards and rights and obligations in relation to the use of AI systems;
   detection_channels:
   - semantic_legal_effect
+  - cross_reference_structure
   primary_spans:
   - AIA-TEXT-A066-P014
-  qualifier_spans: []
+  qualifier_spans:
+  - AIA-TEXT-A066-P001
   effective_date_spans: []
   conditions: []
   exceptions: []
@@ -277,9 +287,11 @@ norms:
     to the development of benchmarks;
   detection_channels:
   - semantic_legal_effect
+  - cross_reference_structure
   primary_spans:
   - AIA-TEXT-A066-P015
-  qualifier_spans: []
+  qualifier_spans:
+  - AIA-TEXT-A066-P001
   effective_date_spans: []
   conditions: []
   exceptions: []
@@ -314,9 +326,11 @@ norms:
     and fundamental rights protection;
   detection_channels:
   - semantic_legal_effect
+  - cross_reference_structure
   primary_spans:
   - AIA-TEXT-A066-P016
-  qualifier_spans: []
+  qualifier_spans:
+  - AIA-TEXT-A066-P001
   effective_date_spans: []
   conditions: []
   exceptions: []
@@ -349,9 +363,11 @@ norms:
     with international organisations;
   detection_channels:
   - semantic_legal_effect
+  - cross_reference_structure
   primary_spans:
   - AIA-TEXT-A066-P017
-  qualifier_spans: []
+  qualifier_spans:
+  - AIA-TEXT-A066-P001
   effective_date_spans: []
   conditions: []
   exceptions: []
@@ -385,9 +401,11 @@ norms:
     to the assessment of training needs for staff of Member States involved in implementing this Regulation;
   detection_channels:
   - semantic_legal_effect
+  - cross_reference_structure
   primary_spans:
   - AIA-TEXT-A066-P018
-  qualifier_spans: []
+  qualifier_spans:
+  - AIA-TEXT-A066-P001
   effective_date_spans: []
   conditions: []
   exceptions: []
@@ -421,9 +439,11 @@ norms:
     regulatory sandboxes;
   detection_channels:
   - semantic_legal_effect
+  - cross_reference_structure
   primary_spans:
   - AIA-TEXT-A066-P019
-  qualifier_spans: []
+  qualifier_spans:
+  - AIA-TEXT-A066-P001
   effective_date_spans: []
   conditions: []
   exceptions: []
@@ -454,9 +474,11 @@ norms:
   norm_text: contribute to, and provide relevant advice on, the development of guidance documents;
   detection_channels:
   - semantic_legal_effect
+  - cross_reference_structure
   primary_spans:
   - AIA-TEXT-A066-P020
-  qualifier_spans: []
+  qualifier_spans:
+  - AIA-TEXT-A066-P001
   effective_date_spans: []
   conditions: []
   exceptions: []
@@ -487,9 +509,11 @@ norms:
   norm_text: advise the Commission in relation to international matters on AI;
   detection_channels:
   - semantic_legal_effect
+  - cross_reference_structure
   primary_spans:
   - AIA-TEXT-A066-P021
-  qualifier_spans: []
+  qualifier_spans:
+  - AIA-TEXT-A066-P001
   effective_date_spans: []
   conditions: []
   exceptions: []
@@ -520,9 +544,11 @@ norms:
   norm_text: provide opinions to the Commission on the qualified alerts regarding general-purpose AI models;
   detection_channels:
   - semantic_legal_effect
+  - cross_reference_structure
   primary_spans:
   - AIA-TEXT-A066-P022
-  qualifier_spans: []
+  qualifier_spans:
+  - AIA-TEXT-A066-P001
   effective_date_spans: []
   conditions: []
   exceptions: []
@@ -556,9 +582,11 @@ norms:
     systems integrating the general-purpose AI models.
   detection_channels:
   - semantic_legal_effect
+  - cross_reference_structure
   primary_spans:
   - AIA-TEXT-A066-P023
-  qualifier_spans: []
+  qualifier_spans:
+  - AIA-TEXT-A066-P001
   effective_date_spans: []
   conditions: []
   exceptions: []
@@ -597,6 +625,7 @@ norms:
   primary_spans:
   - AIA-TEXT-A066-P006
   qualifier_spans:
+  - AIA-TEXT-A066-P001
   - AIA-TEXT-A066-P007
   - AIA-TEXT-A066-P008
   - AIA-TEXT-A066-P009

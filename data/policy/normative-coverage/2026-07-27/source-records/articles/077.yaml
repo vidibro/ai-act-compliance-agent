@@ -1,8 +1,14 @@
 records:
 - norm_id: AIA-NORM-A077-P1-REQUEST-AND-ACCESS-INFORMATION
   source: A077-P001
-  quote: shall have the power to request and access any information or documentation created or maintained from the relevant market surveillance authority pursuant to this Regulation in accessible language and machine-readable format by electronic means
-  action: request and electronically access necessary authority-held information in accessible machine-readable form within the body's mandate
+  quote: National public authorities or bodies which supervise or enforce the respect of obligations under
+    Union law protecting fundamental rights, including the right to non-discrimination, shall have the
+    power to request and access any information or documentation created or maintained from the relevant
+    market surveillance authority pursuant to this Regulation in accessible language and machine-readable
+    format by electronic means where access to that information or documentation is necessary for effectively
+    fulfilling their mandates within the limits of their jurisdiction.
+  action: request and electronically access necessary authority-held information in accessible machine-readable
+    form within the body's mandate
   subject_ref: fundamental_rights_authority
   subject_category: public_authority
   kind: power
@@ -11,10 +17,17 @@ records:
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
+  conditions:
+  - access is necessary for the authority or body to fulfil its fundamental-rights mandate effectively
+    within its jurisdiction
 - norm_id: AIA-NORM-A077-P1A-GRANT-INFORMATION-ACCESS
   source: A077-P002
-  quote: the market surveillance authority shall grant the relevant public authority or body referred to in paragraph 1 access to such information or documentation, including by requesting such information or documentation from the provider or the deployer, where necessary and without undue delay.
-  action: grant necessary information access without undue delay including by obtaining it from a provider or deployer
+  quote: Subject to the conditions specified in this Article, the market surveillance authority shall
+    grant the relevant public authority or body referred to in paragraph 1 access to such information
+    or documentation, including by requesting such information or documentation from the provider or the
+    deployer, where necessary and without undue delay.
+  action: grant necessary information access without undue delay including by obtaining it from a provider
+    or deployer
   subject_ref: market_surveillance_authority
   subject_category: public_authority
   product_scope: outside_supported_actor
@@ -22,10 +35,15 @@ records:
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
+  conditions:
+  - the conditions specified in Article 77 are met
 - norm_id: AIA-NORM-A077-P1B-COOPERATE-AND-ASSIST
   source: A077-P003
-  quote: Market surveillance authorities and public authorities or bodies referred to in paragraph 1 shall cooperate closely and provide each other with the mutual assistance necessary to fulfil their respective mandates
-  action: cooperate closely exchange necessary information and provide mutual assistance while respecting respective mandates and independence
+  quote: Market surveillance authorities and public authorities or bodies referred to in paragraph 1 shall
+    cooperate closely and provide each other with the mutual assistance necessary to fulfil their respective
+    mandates
+  action: cooperate closely exchange necessary information and provide mutual assistance while respecting
+    respective mandates and independence
   subject_ref: market_surveillance_and_fundamental_rights_authorities
   subject_category: public_authority
   product_scope: outside_supported_actor
@@ -35,9 +53,10 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A077-P2-IDENTIFY-PUBLISH-NOTIFY-AND-UPDATE
   source: A077-P004
-  quote: By 2 November 2024, each Member State shall identify the public authorities or bodies referred to in paragraph 1 and make a list of them publicly available.
-  action: identify the paragraph 1 public authorities or bodies and make a list of them publicly
-    available by 2 November 2024
+  quote: By 2 November 2024, each Member State shall identify the public authorities or bodies referred
+    to in paragraph 1 and make a list of them publicly available.
+  action: identify the paragraph 1 public authorities or bodies and make a list of them publicly available
+    by 2 November 2024
   subject_ref: member_state
   subject_category: member_state
   mandatory_content:
@@ -50,8 +69,9 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A077-P2-NOTIFY-LIST
   source: A077-P004
-  quote: Member States shall notify the list to the Commission and to the other Member States
-  action: notify the list to the Commission and to the other Member States
+  quote: Member States shall notify the list to the Commission and to the other Member States, and shall
+    keep the list up to date.
+  action: notify the list to the Commission and other Member States and keep it up to date
   subject_ref: member_state
   subject_category: member_state
   product_scope: outside_supported_actor
@@ -59,21 +79,17 @@ records:
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
-- norm_id: AIA-NORM-A077-P2-KEEP-LIST-UP-TO-DATE
-  source: A077-P004
-  quote: and shall keep the list up to date.
-  action: keep the list up to date
-  subject_ref: member_state
-  subject_category: member_state
-  product_scope: outside_supported_actor
-  product_scope_reason: The present product does not report compliance for this addressee.
-  implementation_mode: none_required
-  implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_reported
+  mandatory_content:
+  - notify the Commission and other Member States
+  - keep the list up to date
 - norm_id: AIA-NORM-A077-P3-REQUEST-TECHNICAL-TESTING
   source: A077-P005
-  quote: the public authority or body referred to in paragraph 1 may make a reasoned request to the market surveillance authority, to organise testing of the high-risk AI system through technical means.
-  action: make a reasoned technical-testing request when documentation cannot establish a fundamental-rights infringement
+  quote: Where the documentation referred to in paragraph 1 is insufficient to ascertain whether an infringement
+    of obligations under Union law protecting fundamental rights has occurred, the public authority or
+    body referred to in paragraph 1 may make a reasoned request to the market surveillance authority,
+    to organise testing of the high-risk AI system through technical means.
+  action: make a reasoned technical-testing request when documentation cannot establish a fundamental-rights
+    infringement
   subject_ref: fundamental_rights_authority
   subject_category: public_authority
   kind: power
@@ -82,9 +98,13 @@ records:
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
+  conditions:
+  - paragraph 1 documentation is insufficient to determine whether Union fundamental-rights obligations
+    were infringed
 - norm_id: AIA-NORM-A077-P3-ORGANISE-TESTING
   source: A077-P005
-  quote: The market surveillance authority shall organise the testing with the close involvement of the requesting public authority or body within a reasonable time following the request.
+  quote: The market surveillance authority shall organise the testing with the close involvement of the
+    requesting public authority or body within a reasonable time following the request.
   action: organise requested technical testing within a reasonable time with close requesting-body involvement
   subject_ref: market_surveillance_authority
   subject_category: public_authority
@@ -95,7 +115,9 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A077-P4-TREAT-INFORMATION-CONFIDENTIALLY
   source: A077-P006
-  quote: Any information or documentation obtained by the national public authorities or bodies referred to in paragraph 1 of this Article pursuant to this Article shall be treated in accordance with the confidentiality obligations set out in Article 78.
+  quote: Any information or documentation obtained by the national public authorities or bodies referred
+    to in paragraph 1 of this Article pursuant to this Article shall be treated in accordance with the
+    confidentiality obligations set out in Article 78.
   action: treat information and documentation obtained under Article 77 according to Article 78 confidentiality
   subject_ref: fundamental_rights_authority
   subject_category: public_authority

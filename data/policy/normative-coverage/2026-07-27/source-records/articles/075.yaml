@@ -1,30 +1,35 @@
 records:
 - norm_id: AIA-NORM-A075-P1-COMPETENCE
   source: A075-P001
-  quote: 'The AI Office shall be exclusively competent for the supervision and enforcement of the obligations under this Regulation in relation to the following AI systems:'
+  quote: 'The AI Office shall be exclusively competent for the supervision and enforcement of the obligations
+    under this Regulation in relation to the following AI systems:'
   action: hold exclusive supervision and enforcement competence for the listed systems
   subject_ref: ai_office
   subject_category: union_institution_or_body
   kind: legal_consequence
   mandatory_content:
-  - AI systems based on general-purpose AI models where the model and the system are developed by
-    the same provider, or by providers forming part of the same undertaking as that provider, except
-    for AI systems related to products covered by the Annex I Union harmonisation legislation, AI
-    systems referred to in point 2 of Annex III, AI systems provided by law enforcement authorities,
-    border management authorities and financial institutions insofar as they fall under
-    Article 74(6), and AI systems referred to in point 8 of Annex III as regards the administration
-    of justice
-  - AI systems that constitute or that are integrated into a very large online platform or very
-    large online search engine designated in accordance with Regulation (EU) 2022/2065
+  - AI systems based on general-purpose AI models where the model and the system are developed by the
+    same provider, or by providers forming part of the same undertaking as that provider, except for AI
+    systems related to products covered by the Annex I Union harmonisation legislation, AI systems referred
+    to in point 2 of Annex III, AI systems provided by law enforcement authorities, border management
+    authorities and financial institutions insofar as they fall under Article 74(6), and AI systems referred
+    to in point 8 of Annex III as regards the administration of justice
+  - AI systems that constitute or that are integrated into a very large online platform or very large
+    online search engine designated in accordance with Regulation (EU) 2022/2065
   exceptions:
-  - point (a) only, AI systems related to products covered by the Union harmonisation legislation
-    listed in Annex I
+  - point (a) only, AI systems related to products covered by the Union harmonisation legislation listed
+    in Annex I
   - point (a) only, AI systems referred to in point 2 of Annex III
-  - point (a) only, AI systems provided by law enforcement authorities, border management
-    authorities and financial institutions, insofar as those AI systems fall under Article 74(6)
-  - point (a) only, AI systems referred to in point 8 of Annex III as regards the administration of
-    justice
-  qualifier_spans: [A075-P002, A075-P003, A075-P004, A075-P005, A075-P006, A075-P007]
+  - point (a) only, AI systems provided by law enforcement authorities, border management authorities
+    and financial institutions, insofar as those AI systems fall under Article 74(6)
+  - point (a) only, AI systems referred to in point 8 of Annex III as regards the administration of justice
+  qualifier_spans:
+  - A075-P002
+  - A075-P003
+  - A075-P004
+  - A075-P005
+  - A075-P006
+  - A075-P007
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -32,8 +37,11 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A075-P1-COMPETENCE-ADDRESSEES
   source: A075-P008
-  quote: The exclusive competence referred to in the first subparagraph shall apply to the providers of those systems. It shall apply to the deployers of those systems only when they are also the provider or form part of the same undertaking as the provider.
-  action: apply the AI Office's exclusive competence to providers and only to deployers that are the provider or in its undertaking
+  quote: The exclusive competence referred to in the first subparagraph shall apply to the providers of
+    those systems. It shall apply to the deployers of those systems only when they are also the provider
+    or form part of the same undertaking as the provider.
+  action: apply the AI Office's exclusive competence to providers and only to deployers that are the provider
+    or in its undertaking
   subject_ref: ai_office
   subject_category: union_institution_or_body
   kind: applicability
@@ -44,13 +52,16 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A075-P1A-REPORT-SERIOUS-INCIDENTS
   source: A075-P009
-  quote: By way of derogation from Article 73, providers of high-risk AI systems subject to the competence of the AI Office pursuant to paragraph 1 of this Article shall report any serious incidents to the AI Office
+  quote: By way of derogation from Article 73, providers of high-risk AI systems subject to the competence
+    of the AI Office pursuant to paragraph 1 of this Article shall report any serious incidents to the
+    AI Office
   action: report serious incidents to the AI Office rather than through the Article 73 route
   subject_ref: provider
   subject_category: supported_operator
   conditions:
   - the high-risk AI system is subject to the competence of the AI Office pursuant to Article 75(1)
-  implementation_refs: [AIA-PO-A75-1a]
+  implementation_refs:
+  - AIA-PO-A75-1a
   verification_mode: reported_not_judged
   verified_by: vidibro
 - norm_id: AIA-NORM-A075-P1A-APPLY-ARTICLE-73-PROCEDURE
@@ -62,13 +73,16 @@ records:
   kind: applicability
   conditions:
   - a serious incident is reported to the AI Office under Article 75(1a)
-  implementation_refs: [AIA-PO-A75-1a]
+  implementation_refs:
+  - AIA-PO-A75-1a
   verification_mode: reported_not_judged
   verified_by: vidibro
 - norm_id: AIA-NORM-A075-P1A-TRANSMIT-INCIDENT-INFORMATION
   source: A075-P009
-  quote: The AI Office shall promptly transmit the relevant information to the market surveillance authority of the Member State in the territory of which the provider or its legal representative is situated.
-  action: promptly transmit relevant incident information to the territorially competent market surveillance authority
+  quote: The AI Office shall promptly transmit the relevant information to the market surveillance authority
+    of the Member State in the territory of which the provider or its legal representative is situated.
+  action: promptly transmit relevant incident information to the territorially competent market surveillance
+    authority
   subject_ref: ai_office
   subject_category: union_institution_or_body
   product_scope: outside_supported_actor
@@ -78,8 +92,12 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A075-P1B-COOPERATE-AND-ASSIST
   source: A075-P010
-  quote: The authorities involved in the application of this Regulation shall cooperate actively with the AI Office and provide the AI Office the necessary assistance for the exercise of its powers
-  action: actively cooperate with and provide necessary assistance to the AI Office including for territorial inspections and enforcement
+  quote: The authorities involved in the application of this Regulation shall cooperate actively with
+    the AI Office and provide the AI Office the necessary assistance for the exercise of its powers, including,
+    where necessary, in connection with inspections or other enforcement measures carried out in the territory
+    of a Member State.
+  action: actively cooperate with and provide necessary assistance to the AI Office including for territorial
+    inspections and enforcement
   subject_ref: authorities_involved_in_application
   subject_category: public_authority
   product_scope: outside_supported_actor
@@ -89,7 +107,9 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A075-P1B-AUTHORITY-POWERS
   source: A075-P010
-  quote: those authorities shall enjoy the powers provided for pursuant to this Regulation and Regulation (EU) 2019/1020
+  quote: To that end, those authorities shall enjoy the powers provided for pursuant to this Regulation
+    and Regulation (EU) 2019/1020, and where relevant and limited to what is necessary to fulfil their
+    tasks under this paragraph, in accordance with the applicable national procedures.
   action: exercise the enacted powers only as relevant and necessary under applicable national procedures
   subject_ref: authorities_involved_in_application
   subject_category: public_authority
@@ -99,9 +119,13 @@ records:
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
+  conditions:
+  - the authorities assist the AI Office under Article 75(1b)
 - norm_id: AIA-NORM-A075-P1C-ASSIST-PUBLIC-DATA-ACTION
   source: A075-P011
-  quote: the AI Office shall be assisted by the relevant market surveillance authority
+  quote: "When taking investigatory or enforcement action in the territory of a Member State that involves\
+    \ access to a public authority\u2019s data or AI system, the AI Office shall be assisted by the relevant\
+    \ market surveillance authority."
   action: assist AI Office territorial action involving access to a public authority's data or AI system
   subject_ref: market_surveillance_authority
   subject_category: public_authority
@@ -110,10 +134,17 @@ records:
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
+  conditions:
+  - the AI Office takes investigatory or enforcement action in a Member State involving access to a public
+    authority's data or AI system
 - norm_id: AIA-NORM-A075-P1D-NOTIFY-MARKET-AUTHORITY
   source: A075-P012
-  quote: the AI Office shall, without undue delay, notify the market surveillance authority competent for that market of its intention to take such a decision
-  action: notify the competent market authority without undue delay before a prohibition restriction withdrawal or recall decision
+  quote: Before taking a decision that would have the effect of prohibiting or restricting the AI system
+    being made available or put into service on a national market, or a decision to withdraw or recall
+    the AI system from such market, the AI Office shall, without undue delay, notify the market surveillance
+    authority competent for that market of its intention to take such a decision.
+  action: notify the competent market authority without undue delay before a prohibition restriction withdrawal
+    or recall decision
   subject_ref: ai_office
   subject_category: union_institution_or_body
   product_scope: outside_supported_actor
@@ -121,9 +152,12 @@ records:
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
+  conditions:
+  - before the AI Office takes a national-market prohibition, restriction, withdrawal or recall decision
 - norm_id: AIA-NORM-A075-P1D-CONSULT-AUTHORITIES
   source: A075-P012
-  quote: The AI Office shall consult the authorities involved in the application of this Regulation, where appropriate, on any matter relating to the application and enforcement of this Regulation.
+  quote: The AI Office shall consult the authorities involved in the application of this Regulation, where
+    appropriate, on any matter relating to the application and enforcement of this Regulation.
   action: consult involved authorities where appropriate on application and enforcement matters
   subject_ref: ai_office
   subject_category: union_institution_or_body
@@ -134,7 +168,9 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A075-P1E-RESPONSIBLE
   source: A075-P013
-  quote: The AI Office shall be responsible for conformity assessments and tests
+  quote: The AI Office shall be responsible for conformity assessments and tests of AI systems referred
+    to in paragraph 1 of this Article that are classified as high-risk and subject to a third-party conformity
+    assessment pursuant to Article 43 before such AI systems are placed on the market or put into service.
   action: take responsibility for third-party conformity assessments and tests of paragraph 1 systems
   subject_ref: ai_office
   subject_category: union_institution_or_body
@@ -143,9 +179,14 @@ records:
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
+  conditions:
+  - an Article 75(1) AI system is classified as high-risk and subject to third-party conformity assessment
+    under Article 43 before market placement or putting into service
 - norm_id: AIA-NORM-A075-P1E-VERIFY
   source: A075-P013
-  quote: Those tests and assessments shall verify that the systems comply
+  quote: Those tests and assessments shall verify that the systems comply with the relevant requirements
+    of this Regulation and may be placed on the market or put into service in the Union in accordance
+    with this Regulation.
   action: verify regulatory conformity and market eligibility
   subject_ref: ai_office
   subject_category: union_institution_or_body
@@ -154,6 +195,8 @@ records:
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
+  conditions:
+  - the AI Office performs paragraph 1e conformity assessments or tests
 - norm_id: AIA-NORM-A075-P1E-ENTRUST
   source: A075-P013
   quote: The Commission shall entrust the performance of those tests or assessments to notified bodies
@@ -176,9 +219,12 @@ records:
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
+  conditions:
+  - the Commission entrusts paragraph 1e tests or assessments to the notified body
 - norm_id: AIA-NORM-A075-P1E-WITHDRAW
   source: A075-P013
-  quote: the Commission may withdraw the delegation with immediate effect
+  quote: If a notified body to which the Commission has delegated tasks under this paragraph does not
+    perform those tasks adequately, the Commission may withdraw the delegation with immediate effect.
   action: withdraw an inadequately performed delegation immediately
   subject_ref: commission
   subject_category: union_institution_or_body
@@ -188,68 +234,77 @@ records:
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
+  conditions:
+  - the notified body does not adequately perform the paragraph 1e tasks delegated to it
 - norm_id: AIA-NORM-A075-P1E-FEES
   source: A075-P014
-  quote: The fees for testing and assessment activities shall be levied on the provider
+  quote: The fees for testing and assessment activities shall be levied on the provider of a high-risk
+    AI system who has applied for a third-party conformity assessment to the Commission.
   action: bear testing and assessment fees
   subject_ref: provider
   subject_category: supported_operator
-  implementation_refs: [AIA-PO-A75-1E]
+  implementation_refs:
+  - AIA-PO-A75-1E
   verification_mode: reported_not_judged
-  verified_by: vidibro
 - norm_id: AIA-NORM-A075-P1E-PAY
   source: A075-P014
-  quote: The provider shall pay the costs related to the services
+  quote: The provider shall pay the costs related to the services entrusted by the Commission to the notified
+    bodies in accordance with this Article directly to the notified body.
   action: pay entrusted-service costs directly to the notified body
   subject_ref: provider
   subject_category: supported_operator
-  implementation_refs: [AIA-PO-A75-1E]
+  implementation_refs:
+  - AIA-PO-A75-1E
   verification_mode: reported_not_judged
-  verified_by: vidibro
 - norm_id: AIA-NORM-A075-P2-COOPERATE-ON-GPAI-SYSTEMS
   source: A075-P015
-  quote: they shall cooperate with the AI Office to carry out compliance evaluations
-  action: cooperate with the AI Office to carry out compliance evaluations
+  quote: they shall cooperate with the AI Office to carry out compliance evaluations, and shall inform
+    the Board and other market surveillance authorities accordingly.
+  action: cooperate with the AI Office to carry out compliance evaluations and inform the Board and other
+    market surveillance authorities accordingly
   subject_ref: market_surveillance_authority
   subject_category: public_authority
   conditions:
-  - the authority has sufficient reason to consider that general-purpose AI systems usable
-    directly by deployers for at least one high-risk purpose are non-compliant
+  - the authority has sufficient reason to consider that general-purpose AI systems usable directly by
+    deployers for at least one high-risk purpose are non-compliant
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
-- norm_id: AIA-NORM-A075-P2-INFORM-BOARD-AND-AUTHORITIES
-  source: A075-P015
-  quote: and shall inform the Board and other market surveillance authorities accordingly
-  action: inform the Board and the other market surveillance authorities accordingly
-  subject_ref: market_surveillance_authority
-  subject_category: public_authority
-  conditions:
-  - the authority has sufficient reason to consider that general-purpose AI systems usable
-    directly by deployers for at least one high-risk purpose are non-compliant
-  product_scope: outside_supported_actor
-  product_scope_reason: The present product does not report compliance for this addressee.
-  implementation_mode: none_required
-  implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_reported
+  mandatory_content:
+  - cooperate with the AI Office on compliance evaluations
+  - inform the Board and other market surveillance authorities accordingly
 - norm_id: AIA-NORM-A075-P2A-REQUEST-ASSESSMENT
   source: A075-P016
-  quote: it may request, through the relevant single point of contact designated in accordance with Article 70(2), the AI Office to assess the matter in order to take the necessary supervisory and enforcement measures to ensure prompt compliance with this Regulation. Such a request shall be duly reasoned and shall include at least
-  action: request, through the relevant Article 70(2) single point of contact, a duly reasoned AI
-    Office assessment of the matter so that the necessary supervisory and enforcement measures ensure
-    prompt compliance
+  quote: Where a market surveillance authority has well-founded and sufficient reasons to suspect that
+    a provider or a deployer of an AI system referred to in paragraph 1 of this Article has infringed
+    this Regulation, it may request, through the relevant single point of contact designated in accordance
+    with Article 70(2), the AI Office to assess the matter in order to take the necessary supervisory
+    and enforcement measures to ensure prompt compliance with this Regulation. Such a request shall be
+    duly reasoned and shall include at least
+  action: request, through the relevant Article 70(2) single point of contact, a duly reasoned AI Office
+    assessment of the matter so that the necessary supervisory and enforcement measures ensure prompt
+    compliance
   subject_ref: market_surveillance_authority
   subject_category: public_authority
   kind: power
-  mandatory_content: [provider or deployer name, relevant facts allegedly infringed provisions reasons and any negative effects, requesting authority]
-  qualifier_spans: [A075-P017, A075-P018, A075-P019]
+  mandatory_content:
+  - provider or deployer name
+  - relevant facts allegedly infringed provisions reasons and any negative effects
+  - requesting authority
+  qualifier_spans:
+  - A075-P017
+  - A075-P018
+  - A075-P019
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
+  conditions:
+  - the market-surveillance authority has well-founded and sufficient reasons to suspect that a provider
+    or deployer of an Article 75(1) system infringed the Regulation
 - norm_id: AIA-NORM-A075-P2A-ACCOUNT-FOR-REQUEST
   source: A075-P020
   quote: The AI Office shall take utmost account of the request
@@ -263,7 +318,8 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A075-P2A-ASSIST-AI-OFFICE
   source: A075-P020
-  quote: the market surveillance authority shall cooperate actively and provide the AI Office the necessary assistance for the exercise of its powers
+  quote: the market surveillance authority shall cooperate actively and provide the AI Office the necessary
+    assistance for the exercise of its powers
   action: actively cooperate with and provide necessary assistance to the AI Office on the requested assessment
   subject_ref: market_surveillance_authority
   subject_category: public_authority
@@ -272,12 +328,16 @@ records:
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
+  conditions:
+  - the market-surveillance authority has made an Article 75(2a) assessment request
 - norm_id: AIA-NORM-A075-P2A-RESPOND-AND-UPDATE
   source: A075-P021
-  quote: The AI Office shall, without undue delay and in any event no later than four months following receipt of the request, inform the single point of contact of its intention to exercise its powers in accordance with Article 75a or of its reasons for not exercising its powers.
+  quote: The AI Office shall, without undue delay and in any event no later than four months following
+    receipt of the request, inform the single point of contact of its intention to exercise its powers
+    in accordance with Article 75a or of its reasons for not exercising its powers.
   action: inform the single point of contact, without undue delay and no later than four months after
-    receiving the request, of the intention to exercise the Article 75a powers or of the reasons for
-    not exercising them
+    receiving the request, of the intention to exercise the Article 75a powers or of the reasons for not
+    exercising them
   subject_ref: ai_office
   subject_category: union_institution_or_body
   mandatory_content:
@@ -289,14 +349,18 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A075-P2A-UPDATE-ON-PROCEEDINGS
   source: A075-P021
-  quote: If the AI Office decides to exercise its powers in accordance with Article 75a, it shall periodically inform that single point of contact about major developments in the proceedings and the outcome of such proceedings, without disclosing any confidential information.
+  quote: If the AI Office decides to exercise its powers in accordance with Article 75a, it shall periodically
+    inform that single point of contact about major developments in the proceedings and the outcome of
+    such proceedings, without disclosing any confidential information.
   action: periodically inform the single point of contact about major developments in the proceedings
     and about their outcome, without disclosing any confidential information
   subject_ref: ai_office
   subject_category: union_institution_or_body
   conditions:
   - the AI Office decides to exercise its powers in accordance with Article 75a
-  mandatory_content: [major developments in the proceedings, the outcome of the proceedings]
+  mandatory_content:
+  - major developments in the proceedings
+  - the outcome of the proceedings
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -304,8 +368,12 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A075-P3-REQUEST-INFORMATION-ACCESS
   source: A075-P022
-  quote: it may submit a reasoned request to the AI Office, by which access to that information shall be enforced
-  action: submit a reasoned request to enforce access after appropriate efforts fail to obtain GPAI-model information needed to conclude an investigation
+  quote: Where a market surveillance authority is unable to conclude its investigation of the high-risk
+    AI system because of its inability to access certain information related to the general-purpose AI
+    model despite having made all appropriate efforts to obtain that information, it may submit a reasoned
+    request to the AI Office, by which access to that information shall be enforced.
+  action: submit a reasoned request to enforce access after appropriate efforts fail to obtain GPAI-model
+    information needed to conclude an investigation
   subject_ref: market_surveillance_authority
   subject_category: public_authority
   kind: power
@@ -314,9 +382,14 @@ records:
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
+  conditions:
+  - the market-surveillance authority cannot conclude its high-risk-system investigation because it cannot
+    access general-purpose-model information despite all appropriate efforts to obtain it
 - norm_id: AIA-NORM-A075-P3-SUPPLY-INFORMATION
   source: A075-P022
-  quote: the AI Office shall supply to the applicant authority without delay, and in any event within 30 days, any information that the AI Office considers to be relevant
+  quote: In that case, the AI Office shall supply to the applicant authority without delay, and in any
+    event within 30 days, any information that the AI Office considers to be relevant in order to establish
+    whether a high-risk AI system is non-compliant.
   action: supply relevant requested compliance information without delay and within 30 days
   subject_ref: ai_office
   subject_category: union_institution_or_body
@@ -325,9 +398,13 @@ records:
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
+  conditions:
+  - the market-surveillance authority submits the reasoned information-access request described in Article
+    75(3)
 - norm_id: AIA-NORM-A075-P3-SAFEGUARD-CONFIDENTIALITY
   source: A075-P022
-  quote: Market surveillance authorities shall safeguard the confidentiality of the information that they obtain in accordance with Article 78 of this Regulation.
+  quote: Market surveillance authorities shall safeguard the confidentiality of the information that they
+    obtain in accordance with Article 78 of this Regulation.
   action: safeguard obtained information under Article 78 confidentiality
   subject_ref: market_surveillance_authority
   subject_category: public_authority

@@ -11,7 +11,8 @@ norms:
   norm_text: The AI Office and the Member States shall encourage and facilitate the drawing up of codes
     of conduct, including related governance mechanisms, intended to foster the voluntary application
     to AI systems, other than high-risk AI systems, of some or all of the requirements set out in Chapter
-    III, Section 2
+    III, Section 2 taking into account the available technical solutions and industry best practices allowing
+    for the application of such requirements.
   detection_channels:
   - semantic_legal_effect
   - shall_token
@@ -67,15 +68,8 @@ norms:
   conditions: []
   exceptions: []
   mandatory_content:
-  - clear objectives and key performance indicators to measure the achievement of those objectives, including
-    elements such as, but not limited to, applicable elements provided for in Union ethical guidelines
-    for trustworthy AI; assessing and minimising the impact of AI systems on environmental sustainability,
-    including as regards energy-efficient programming and techniques for the efficient design, training
-    and use of AI; promoting AI literacy, in particular that of persons dealing with the development,
-    operation and use of AI; facilitating an inclusive and diverse design of AI systems, including through
-    inclusive and diverse development teams and the promotion of stakeholders' participation; and assessing
-    and preventing the negative impact of AI systems on vulnerable persons or groups of vulnerable persons,
-    including as regards accessibility for persons with a disability, as well as on gender equality
+  - clear objectives
+  - key performance indicators measuring achievement of those objectives
   dependencies: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.

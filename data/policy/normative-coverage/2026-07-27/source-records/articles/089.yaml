@@ -1,8 +1,11 @@
 records:
 - norm_id: AIA-NORM-A089-P1-MONITOR-GPAI-COMPLIANCE
   source: A089-P001
-  quote: the AI Office may take the necessary actions to monitor the effective implementation and compliance with this Regulation by providers of general-purpose AI models, including their adherence to approved codes of practice.
-  action: take necessary actions monitoring GPAI-provider compliance and adherence to approved codes of practice
+  quote: For the purpose of carrying out the tasks assigned to it under this Section, the AI Office may
+    take the necessary actions to monitor the effective implementation and compliance with this Regulation
+    by providers of general-purpose AI models, including their adherence to approved codes of practice.
+  action: take necessary actions monitoring GPAI-provider compliance and adherence to approved codes of
+    practice
   subject_ref: ai_office
   subject_category: union_institution_or_body
   kind: power
@@ -11,9 +14,12 @@ records:
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
+  conditions:
+  - the action serves performance of the AI Office's tasks under this Section
 - norm_id: AIA-NORM-A089-P2-LODGE-DOWNSTREAM-COMPLAINT
   source: A089-P002
-  quote: Downstream providers shall have the right to lodge a complaint alleging an infringement of this Regulation.
+  quote: Downstream providers shall have the right to lodge a complaint alleging an infringement of this
+    Regulation.
   action: lodge a complaint alleging a GPAI provider's infringement of this Regulation
   subject_ref: downstream_provider
   subject_category: supported_operator
@@ -29,10 +35,18 @@ records:
   action: duly reason and include the minimum required information in a downstream-provider complaint
   subject_ref: downstream_provider
   subject_category: supported_operator
-  mandatory_content: [GPAI provider point of contact, relevant facts provisions and reasons supporting alleged infringement, any other information considered relevant including information gathered on the complainant's initiative]
-  qualifier_spans: [A089-P003, A089-P004, A089-P005]
+  mandatory_content:
+  - GPAI provider point of contact
+  - relevant facts provisions and reasons supporting alleged infringement
+  - any other information considered relevant including information gathered on the complainant's initiative
+  qualifier_spans:
+  - A089-P003
+  - A089-P004
+  - A089-P005
   product_scope: no_product_action
   product_scope_reason: The content rule applies only when exercising the optional complaint entitlement.
   implementation_mode: none_required
   implementation_reason: No standing compliance action arises.
   verification_mode: not_reported
+  conditions:
+  - a downstream provider exercises its entitlement to lodge a complaint

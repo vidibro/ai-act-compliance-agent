@@ -34,6 +34,7 @@ class NormKind(StrEnum):
     PERMISSION = "permission"
     ENTITLEMENT = "entitlement"
     POWER = "power"
+    RECOMMENDATION = "recommendation"
     APPLICABILITY = "applicability"
     DEFINITION = "definition"
     LEGAL_CONSEQUENCE = "legal_consequence"
@@ -142,15 +143,17 @@ class TextReviewSegment(BaseModel):
     disposition: SegmentDisposition
     disposition_reason: str = ""
     norm_ids: list[str] = []
+    qualifying_norm_ids: list[str] = []
     review: ReviewRecord
 
     @model_validator(mode="after")
     def _disposition_has_the_right_shape(self) -> TextReviewSegment:
         if self.end <= self.start:
             raise ValueError("segment end must be greater than start")
-        if self.disposition is SegmentDisposition.NORMATIVE and not self.norm_ids:
-            raise ValueError("normative segment requires at least one norm_id")
-        if self.disposition is not SegmentDisposition.NORMATIVE and self.norm_ids:
+        linked_norm_ids = [*self.norm_ids, *self.qualifying_norm_ids]
+        if self.disposition is SegmentDisposition.NORMATIVE and not linked_norm_ids:
+            raise ValueError("normative segment requires at least one linked norm_id")
+        if self.disposition is not SegmentDisposition.NORMATIVE and linked_norm_ids:
             raise ValueError("only normative segments may link norm_ids")
         if (
             self.disposition is SegmentDisposition.CONTEXT_ONLY

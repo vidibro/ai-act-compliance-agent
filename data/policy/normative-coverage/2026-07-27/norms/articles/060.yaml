@@ -21,8 +21,12 @@ norms:
   qualifier_spans: []
   effective_date_spans: []
   conditions:
-  - the system is listed in Annex III or covered by Annex I Section A legislation
-  - Article 60 and the testing plan are followed
+  - operator: any_of
+    operands:
+    - the high-risk AI system is listed in Annex III
+    - the high-risk AI system is covered by Union harmonisation legislation listed in Section A of Annex
+      I
+  - Article 60 and the real-world testing plan are followed
   - Article 5 prohibitions remain observed
   exceptions: []
   mandatory_content: []
@@ -34,9 +38,9 @@ norms:
   implementation_reason: ''
   verification_mode: reported_conditionally
   review:
-    status: approved
+    status: proposed
     extracted_by: semantic-legal-effect-pass
-    verified_by: vidibro
+    verified_by: ''
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
     display_chunks: 1
@@ -262,9 +266,11 @@ norms:
     is to be conducted;
   detection_channels:
   - semantic_legal_effect
+  - cross_reference_structure
   primary_spans:
   - AIA-TEXT-A060-P007
-  qualifier_spans: []
+  qualifier_spans:
+  - AIA-TEXT-A060-P006
   effective_date_spans: []
   conditions: []
   exceptions: []
@@ -277,9 +283,9 @@ norms:
   implementation_reason: ''
   verification_mode: reported_conditionally
   review:
-    status: approved
+    status: proposed
     extracted_by: semantic-legal-effect-pass
-    verified_by: vidibro
+    verified_by: ''
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
     display_chunks: 1
@@ -301,13 +307,20 @@ norms:
   detection_channels:
   - semantic_legal_effect
   - shall_token
+  - cross_reference_structure
   primary_spans:
   - AIA-TEXT-A060-P008
-  qualifier_spans: []
+  qualifier_spans:
+  - AIA-TEXT-A060-P006
   effective_date_spans: []
   conditions:
-  - testing and its plan are approved
-  - or the authority is silent for 30 days and national law permits tacit approval
+  - operator: any_of
+    operands:
+    - the market-surveillance authority approves the real-world testing and testing plan
+    - operator: all_of
+      operands:
+      - the market-surveillance authority does not answer within 30 days
+      - national law provides for tacit approval
   exceptions: []
   mandatory_content: []
   dependencies: []
@@ -318,9 +331,9 @@ norms:
   implementation_reason: ''
   verification_mode: reported_conditionally
   review:
-    status: approved
+    status: proposed
     extracted_by: semantic-legal-effect-pass
-    verified_by: vidibro
+    verified_by: ''
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
     display_chunks: 1
@@ -347,9 +360,11 @@ norms:
     2 of Annex III has registered the testing in real-world conditions in accordance with Article 49(5);
   detection_channels:
   - semantic_legal_effect
+  - cross_reference_structure
   primary_spans:
   - AIA-TEXT-A060-P009
-  qualifier_spans: []
+  qualifier_spans:
+  - AIA-TEXT-A060-P006
   effective_date_spans: []
   conditions:
   - operator: any_of
@@ -382,9 +397,9 @@ norms:
   implementation_reason: ''
   verification_mode: reported_conditionally
   review:
-    status: approved
+    status: proposed
     extracted_by: semantic-legal-effect-pass
-    verified_by: vidibro
+    verified_by: ''
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
     display_chunks: 1
@@ -401,11 +416,17 @@ norms:
     in the Union or has appointed a legal representative who is established in the Union;
   detection_channels:
   - semantic_legal_effect
+  - cross_reference_structure
   primary_spans:
   - AIA-TEXT-A060-P010
-  qualifier_spans: []
+  qualifier_spans:
+  - AIA-TEXT-A060-P006
   effective_date_spans: []
-  conditions: []
+  conditions:
+  - operator: any_of
+    operands:
+    - the provider or prospective provider conducting the testing is established in the Union
+    - the provider or prospective provider has appointed a legal representative established in the Union
   exceptions: []
   mandatory_content: []
   dependencies: []
@@ -416,9 +437,9 @@ norms:
   implementation_reason: ''
   verification_mode: reported_conditionally
   review:
-    status: approved
+    status: proposed
     extracted_by: semantic-legal-effect-pass
-    verified_by: vidibro
+    verified_by: ''
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
     display_chunks: 1
@@ -437,9 +458,11 @@ norms:
   detection_channels:
   - semantic_legal_effect
   - shall_token
+  - cross_reference_structure
   primary_spans:
   - AIA-TEXT-A060-P011
-  qualifier_spans: []
+  qualifier_spans:
+  - AIA-TEXT-A060-P006
   effective_date_spans: []
   conditions: []
   exceptions: []
@@ -452,9 +475,9 @@ norms:
   implementation_reason: ''
   verification_mode: reported_conditionally
   review:
-    status: approved
+    status: proposed
     extracted_by: semantic-legal-effect-pass
-    verified_by: vidibro
+    verified_by: ''
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
     display_chunks: 1
@@ -472,9 +495,11 @@ norms:
     and in any case not longer than six months
   detection_channels:
   - semantic_legal_effect
+  - cross_reference_structure
   primary_spans:
   - AIA-TEXT-A060-P012
-  qualifier_spans: []
+  qualifier_spans:
+  - AIA-TEXT-A060-P006
   effective_date_spans: []
   conditions: []
   exceptions: []
@@ -487,9 +512,9 @@ norms:
   implementation_reason: ''
   verification_mode: reported_conditionally
   review:
-    status: approved
+    status: proposed
     extracted_by: semantic-legal-effect-pass
-    verified_by: vidibro
+    verified_by: ''
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
     display_chunks: 1
@@ -507,10 +532,12 @@ norms:
     of the need for such an extension;
   detection_channels:
   - semantic_legal_effect
+  - cross_reference_structure
   - existing_implementation
   primary_spans:
   - AIA-TEXT-A060-P012
-  qualifier_spans: []
+  qualifier_spans:
+  - AIA-TEXT-A060-P006
   effective_date_spans: []
   conditions:
   - prior authority notification
@@ -526,9 +553,9 @@ norms:
   implementation_reason: ''
   verification_mode: reported_not_judged
   review:
-    status: approved
+    status: proposed
     extracted_by: semantic-legal-effect-pass
-    verified_by: vidibro
+    verified_by: ''
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
     display_chunks: 1
@@ -545,9 +572,11 @@ norms:
     groups due to their age or disability, are appropriately protected;
   detection_channels:
   - semantic_legal_effect
+  - cross_reference_structure
   primary_spans:
   - AIA-TEXT-A060-P013
-  qualifier_spans: []
+  qualifier_spans:
+  - AIA-TEXT-A060-P006
   effective_date_spans: []
   conditions: []
   exceptions: []
@@ -560,9 +589,9 @@ norms:
   implementation_reason: ''
   verification_mode: reported_conditionally
   review:
-    status: approved
+    status: proposed
     extracted_by: semantic-legal-effect-pass
-    verified_by: vidibro
+    verified_by: ''
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
     display_chunks: 1
@@ -582,10 +611,12 @@ norms:
     instructions for use of the AI system referred to in Article 13;
   detection_channels:
   - semantic_legal_effect
+  - cross_reference_structure
   - existing_implementation
   primary_spans:
   - AIA-TEXT-A060-P014
-  qualifier_spans: []
+  qualifier_spans:
+  - AIA-TEXT-A060-P006
   effective_date_spans: []
   conditions:
   - the provider or prospective provider organises the testing in real world conditions in cooperation
@@ -603,9 +634,9 @@ norms:
   implementation_reason: ''
   verification_mode: reported_not_judged
   review:
-    status: approved
+    status: proposed
     extracted_by: semantic-legal-effect-pass
-    verified_by: vidibro
+    verified_by: ''
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
     display_chunks: 1
@@ -627,10 +658,12 @@ norms:
   detection_channels:
   - semantic_legal_effect
   - shall_token
+  - cross_reference_structure
   - existing_implementation
   primary_spans:
   - AIA-TEXT-A060-P014
-  qualifier_spans: []
+  qualifier_spans:
+  - AIA-TEXT-A060-P006
   effective_date_spans: []
   conditions:
   - the provider or prospective provider organises the testing in real world conditions in cooperation
@@ -646,9 +679,9 @@ norms:
   implementation_reason: ''
   verification_mode: reported_not_judged
   review:
-    status: approved
+    status: proposed
     extracted_by: semantic-legal-effect-pass
-    verified_by: vidibro
+    verified_by: ''
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
     display_chunks: 1
@@ -665,9 +698,11 @@ norms:
     with Article 61
   detection_channels:
   - semantic_legal_effect
+  - cross_reference_structure
   primary_spans:
   - AIA-TEXT-A060-P015
-  qualifier_spans: []
+  qualifier_spans:
+  - AIA-TEXT-A060-P006
   effective_date_spans: []
   conditions: []
   exceptions:
@@ -681,9 +716,9 @@ norms:
   implementation_reason: ''
   verification_mode: reported_conditionally
   review:
-    status: approved
+    status: proposed
     extracted_by: semantic-legal-effect-pass
-    verified_by: vidibro
+    verified_by: ''
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
     display_chunks: 1
@@ -703,9 +738,11 @@ norms:
   detection_channels:
   - semantic_legal_effect
   - shall_token
+  - cross_reference_structure
   primary_spans:
   - AIA-TEXT-A060-P015
-  qualifier_spans: []
+  qualifier_spans:
+  - AIA-TEXT-A060-P006
   effective_date_spans: []
   conditions:
   - the testing is in the case of law enforcement
@@ -720,9 +757,9 @@ norms:
   implementation_reason: ''
   verification_mode: reported_conditionally
   review:
-    status: approved
+    status: proposed
     extracted_by: semantic-legal-effect-pass
-    verified_by: vidibro
+    verified_by: ''
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
     display_chunks: 1
@@ -740,9 +777,11 @@ norms:
   detection_channels:
   - semantic_legal_effect
   - shall_token
+  - cross_reference_structure
   primary_spans:
   - AIA-TEXT-A060-P015
-  qualifier_spans: []
+  qualifier_spans:
+  - AIA-TEXT-A060-P006
   effective_date_spans: []
   conditions:
   - the testing is in the case of law enforcement
@@ -757,9 +796,9 @@ norms:
   implementation_reason: ''
   verification_mode: reported_conditionally
   review:
-    status: approved
+    status: proposed
     extracted_by: semantic-legal-effect-pass
-    verified_by: vidibro
+    verified_by: ''
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
     display_chunks: 1
@@ -778,9 +817,11 @@ norms:
     in the relevant field and have the necessary capacity, training and authority to perform their tasks;
   detection_channels:
   - semantic_legal_effect
+  - cross_reference_structure
   primary_spans:
   - AIA-TEXT-A060-P016
-  qualifier_spans: []
+  qualifier_spans:
+  - AIA-TEXT-A060-P006
   effective_date_spans: []
   conditions: []
   exceptions: []
@@ -793,9 +834,9 @@ norms:
   implementation_reason: ''
   verification_mode: reported_conditionally
   review:
-    status: approved
+    status: proposed
     extracted_by: semantic-legal-effect-pass
-    verified_by: vidibro
+    verified_by: ''
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
     display_chunks: 1
@@ -812,9 +853,11 @@ norms:
     and disregarded.
   detection_channels:
   - semantic_legal_effect
+  - cross_reference_structure
   primary_spans:
   - AIA-TEXT-A060-P017
-  qualifier_spans: []
+  qualifier_spans:
+  - AIA-TEXT-A060-P006
   effective_date_spans: []
   conditions: []
   exceptions: []
@@ -827,9 +870,9 @@ norms:
   implementation_reason: ''
   verification_mode: reported_conditionally
   review:
-    status: approved
+    status: proposed
     extracted_by: semantic-legal-effect-pass
-    verified_by: vidibro
+    verified_by: ''
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
     display_chunks: 1
@@ -842,43 +885,12 @@ norms:
   - subject_ref: testing_subject_or_representative
     category: natural_person
   action: withdraw from the testing at any time by revoking informed consent, without any resulting detriment
-    and without having to provide any justification
+    and without having to provide any justification, and request immediate and permanent deletion of the
+    subject's personal data
   norm_text: Any subjects of the testing in real world conditions, or their legally designated representative,
     as appropriate, may, without any resulting detriment and without having to provide any justification,
-    withdraw from the testing at any time by revoking their informed consent
-  detection_channels:
-  - semantic_legal_effect
-  primary_spans:
-  - AIA-TEXT-A060-P018
-  qualifier_spans: []
-  effective_date_spans: []
-  conditions: []
-  exceptions: []
-  mandatory_content: []
-  dependencies: []
-  product_scope: outside_supported_actor
-  product_scope_reason: The present product does not report compliance for this addressee.
-  implementation_mode: none_required
-  implementation_refs: []
-  implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_reported
-  review:
-    status: proposed
-    extracted_by: semantic-legal-effect-pass
-    verified_by: ''
-    review_run_id: normative-coverage-2026-08-28
-    presentation_mode: exact-source-slice
-    display_chunks: 1
-    fully_displayed: true
-    elapsed_seconds: null
-- norm_id: AIA-NORM-A060-P5-REQUEST-DATA-DELETION
-  act_version_date: '2026-07-27'
-  kind: entitlement
-  subjects:
-  - subject_ref: testing_subject_or_representative
-    category: natural_person
-  action: request the immediate and permanent deletion of the subject's personal data
-  norm_text: and may request the immediate and permanent deletion of their personal data.
+    withdraw from the testing at any time by revoking their informed consent and may request the immediate
+    and permanent deletion of their personal data.
   detection_channels:
   - semantic_legal_effect
   - other_modal
@@ -888,7 +900,9 @@ norms:
   effective_date_spans: []
   conditions: []
   exceptions: []
-  mandatory_content: []
+  mandatory_content:
+  - withdrawal at any time by revoking informed consent
+  - immediate and permanent deletion of the subject's personal data on request
   dependencies: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -1061,8 +1075,11 @@ norms:
   subjects:
   - subject_ref: provider_or_prospective_provider
     category: supported_operator
-  action: adopt immediate mitigation measures for the serious incident
-  norm_text: The provider or prospective provider shall adopt immediate mitigation measures
+  action: adopt immediate mitigation measures for the serious incident or, failing that, suspend testing
+    until mitigation takes place or terminate it
+  norm_text: The provider or prospective provider shall adopt immediate mitigation measures or, failing
+    that, shall suspend the testing in real world conditions until such mitigation takes place, or otherwise
+    terminate it.
   detection_channels:
   - semantic_legal_effect
   - shall_token
@@ -1073,7 +1090,10 @@ norms:
   conditions:
   - a serious incident is identified in the course of the testing in real world conditions
   exceptions: []
-  mandatory_content: []
+  mandatory_content:
+  - adopt immediate mitigation measures
+  - if immediate mitigation is not adopted, suspend testing until mitigation takes place or terminate
+    testing
   dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -1082,47 +1102,9 @@ norms:
   implementation_reason: ''
   verification_mode: reported_conditionally
   review:
-    status: approved
+    status: proposed
     extracted_by: semantic-legal-effect-pass
-    verified_by: vidibro
-    review_run_id: normative-coverage-2026-08-28
-    presentation_mode: exact-source-slice
-    display_chunks: 1
-    fully_displayed: true
-    elapsed_seconds: null
-- norm_id: AIA-NORM-A060-P7-SUSPEND-OR-TERMINATE
-  act_version_date: '2026-07-27'
-  kind: obligation
-  subjects:
-  - subject_ref: provider_or_prospective_provider
-    category: supported_operator
-  action: suspend the testing in real world conditions until mitigation takes place, or otherwise terminate
-    it
-  norm_text: or, failing that, shall suspend the testing in real world conditions until such mitigation
-    takes place, or otherwise terminate it.
-  detection_channels:
-  - semantic_legal_effect
-  - shall_token
-  primary_spans:
-  - AIA-TEXT-A060-P020
-  qualifier_spans: []
-  effective_date_spans: []
-  conditions:
-  - a serious incident is identified in the course of the testing in real world conditions
-  - immediate mitigation measures are not adopted
-  exceptions: []
-  mandatory_content: []
-  dependencies: []
-  product_scope: in_scope
-  product_scope_reason: ''
-  implementation_mode: missing
-  implementation_refs: []
-  implementation_reason: ''
-  verification_mode: reported_conditionally
-  review:
-    status: approved
-    extracted_by: semantic-legal-effect-pass
-    verified_by: vidibro
+    verified_by: ''
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
     display_chunks: 1

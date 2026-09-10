@@ -425,6 +425,7 @@ def _build_segments(
                     "disposition": division.disposition.value,
                     "disposition_reason": division.reason,
                     "norm_ids": [],
+                    "qualifying_norm_ids": [],
                     "review": _review(
                         reviewed,
                         review_status,
@@ -491,9 +492,11 @@ def _build_norms(
 
     for record in source_inventory.records:
         primary = f"AIA-TEXT-{record.source}"
-        spans = [primary, *(f"AIA-TEXT-{span}" for span in record.qualifier_spans)]
+        qualifiers = [f"AIA-TEXT-{span}" for span in record.qualifier_spans]
         effective = [f"AIA-TEXT-{span}" for span in record.effective_date_spans]
-        unknown_spans = [span for span in [*spans, *effective] if span not in segments_by_id]
+        unknown_spans = [
+            span for span in [primary, *qualifiers, *effective] if span not in segments_by_id
+        ]
         if unknown_spans:
             raise ValueError(f"{record.norm_id}: unknown source-record span(s) {unknown_spans}")
         primary_text = str(segments_by_id[primary]["text"])
@@ -502,13 +505,17 @@ def _build_norms(
         unknown_rules = sorted(set(record.implementation_refs) - known_rule_ids)
         if unknown_rules:
             raise ValueError(f"{record.norm_id}: unknown implementation rule(s) {unknown_rules}")
-        for span in [*spans, *effective]:
+        for span, link_field in [
+            (primary, "norm_ids"),
+            *((span, "qualifying_norm_ids") for span in [*qualifiers, *effective]),
+        ]:
             segment = segments_by_id[span]
             if segment["disposition"] != SegmentDisposition.NORMATIVE.value:
                 raise ValueError(f"{record.norm_id}: linked span {span} is not normative")
-            norm_ids = segment["norm_ids"]
+            norm_ids = segment[link_field]
             assert isinstance(norm_ids, list)
-            norm_ids.append(record.norm_id)
+            if record.norm_id not in norm_ids:
+                norm_ids.append(record.norm_id)
 
         dependencies = [
             {
@@ -550,7 +557,7 @@ def _build_norms(
                 "norm_text": record.quote,
                 "detection_channels": _detection_channels(record),
                 "primary_spans": [primary],
-                "qualifier_spans": [f"AIA-TEXT-{span}" for span in record.qualifier_spans],
+                "qualifier_spans": qualifiers,
                 "effective_date_spans": effective,
                 "conditions": record.model_dump(mode="json")["conditions"],
                 "exceptions": record.exceptions,

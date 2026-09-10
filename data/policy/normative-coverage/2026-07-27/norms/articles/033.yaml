@@ -8,9 +8,8 @@ norms:
     category: notified_or_conformity_body
   action: ensure subcontractors and subsidiaries used for conformity-assessment tasks meet Article 31
     requirements
-  norm_text: Where a notified body subcontracts specific tasks connected with the conformity assessment
-    or has recourse to a subsidiary, it shall ensure that the subcontractor or the subsidiary meets the
-    requirements laid down in Article 31, and shall inform the notifying authority accordingly.
+  norm_text: it shall ensure that the subcontractor or the subsidiary meets the requirements laid down
+    in Article 31
   detection_channels:
   - semantic_legal_effect
   - shall_token
@@ -46,9 +45,7 @@ norms:
     category: notified_or_conformity_body
   action: inform the notifying authority when using a subcontractor or subsidiary for conformity-assessment
     tasks
-  norm_text: Where a notified body subcontracts specific tasks connected with the conformity assessment
-    or has recourse to a subsidiary, it shall ensure that the subcontractor or the subsidiary meets the
-    requirements laid down in Article 31, and shall inform the notifying authority accordingly.
+  norm_text: shall inform the notifying authority accordingly.
   detection_channels:
   - semantic_legal_effect
   - shall_token

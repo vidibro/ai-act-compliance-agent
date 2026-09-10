@@ -1,24 +1,32 @@
 records:
 - norm_id: AIA-NORM-A096-P1-DEVELOP-IMPLEMENTATION-GUIDELINES
   source: A096-P001
-  quote: 'The Commission shall develop guidelines on the practical implementation of this Regulation, and in particular on:'
+  quote: 'The Commission shall develop guidelines on the practical implementation of this Regulation,
+    and in particular on:'
   action: develop guidelines on the practical implementation of this Regulation, in particular on the
     enacted subjects
   subject_ref: commission
   subject_category: union_institution_or_body
   mandatory_content:
-  - the application of the requirements and obligations referred to in Articles 8 to 15 and in
-    Articles 25 and 26
+  - the application of the requirements and obligations referred to in Articles 8 to 15 and in Articles
+    25 and 26
   - the prohibited practices referred to in Article 5
   - the practical implementation of the provisions related to substantial modification
   - the practical implementation of transparency obligations laid down in Article 50
-  - detailed information on the relationship of this Regulation with the Union harmonisation
-    legislation listed in Annex I, as well as with other relevant Union law, including as regards
-    consistency in their enforcement
+  - detailed information on the relationship of this Regulation with the Union harmonisation legislation
+    listed in Annex I, as well as with other relevant Union law, including as regards consistency in their
+    enforcement
   - the application of the definition of an AI system as set out in Article 3, point (1)
-  - the practical implementation of Article 8(2), Article 9(10) and Article 17(3) in accordance with
-    the principle of complementarity and proportionality
-  qualifier_spans: [A096-P002, A096-P003, A096-P004, A096-P005, A096-P006, A096-P007, A096-P008]
+  - the practical implementation of Article 8(2), Article 9(10) and Article 17(3) in accordance with the
+    principle of complementarity and proportionality
+  qualifier_spans:
+  - A096-P002
+  - A096-P003
+  - A096-P004
+  - A096-P005
+  - A096-P006
+  - A096-P007
+  - A096-P008
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -26,12 +34,17 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A096-P1-G-PUBLISH-COMPLEMENTARITY-GUIDELINES
   source: A096-P008
-  quote: such guidelines shall be published by 1 August 2027.
-  action: publish the point (g) guidelines on the practical implementation of Article 8(2),
-    Article 9(10) and Article 17(3) by 1 August 2027
+  quote: the practical implementation of Article 8(2), Article 9(10) and Article 17(3) in accordance with
+    the principle of complementarity and proportionality, with a view to ensuring consistency, avoiding
+    duplication and minimising additional burdens when complying with the requirements of this Regulation
+    and the requirements of the Union harmonisation legislation listed in Section A of Annex I; such guidelines
+    shall be published by 1 August 2027.
+  action: publish the point (g) guidelines on the practical implementation of Article 8(2), Article 9(10)
+    and Article 17(3) by 1 August 2027
   subject_ref: commission
   subject_category: union_institution_or_body
-  effective_date_spans: [A096-P008]
+  effective_date_spans:
+  - A096-P008
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -39,8 +52,11 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A096-P1-INVOLVE-BOARD
   source: A096-P009
-  quote: the Commission shall involve the Board
-  action: involve the Board when issuing the implementation guidelines
+  quote: When issuing such guidelines, the Commission shall involve the Board and pay particular attention
+    to the needs of SMEs, including start-ups, and SMCs, of local public authorities and of the sectors
+    most likely to be affected by this Regulation.
+  action: involve the Board and pay particular attention to the specified affected groups' needs when
+    issuing implementation guidelines
   subject_ref: commission
   subject_category: union_institution_or_body
   product_scope: outside_supported_actor
@@ -48,20 +64,19 @@ records:
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
-- norm_id: AIA-NORM-A096-P1-ATTEND-AFFECTED-NEEDS
-  source: A096-P009
-  quote: pay particular attention to the needs of SMEs
-  action: pay particular attention to affected small-business local-authority and sector needs when issuing guidelines
-  subject_ref: commission
-  subject_category: union_institution_or_body
-  product_scope: outside_supported_actor
-  product_scope_reason: The present product does not report compliance for this addressee.
-  implementation_mode: none_required
-  implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_reported
+  conditions:
+  - the Commission is issuing the implementation guidelines
+  mandatory_content:
+  - involve the Board
+  - pay particular attention to the needs of SMEs, including start-ups, and SMCs
+  - pay particular attention to the needs of local public authorities
+  - pay particular attention to the needs of sectors most likely to be affected by the Regulation
 - norm_id: AIA-NORM-A096-P1-ACCOUNT-FOR-STATE-OF-ART
   source: A096-P010
-  quote: shall take due account of the generally acknowledged state of the art on AI
+  quote: The guidelines referred to in the first subparagraph of this paragraph shall take due account
+    of the generally acknowledged state of the art on AI, as well as of relevant harmonised standards
+    and common specifications that are referred to in Articles 40 and 41, or of those harmonised standards
+    or technical specifications that are set out pursuant to Union harmonisation law.
   action: account for AI state of the art and relevant standards specifications when preparing guidelines
   subject_ref: commission
   subject_category: union_institution_or_body
@@ -72,7 +87,8 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A096-P2-UPDATE-GUIDELINES
   source: A096-P011
-  quote: the Commission shall update guidelines previously adopted when deemed necessary
+  quote: At the request of the Member States or the AI Office, or on its own initiative, the Commission
+    shall update guidelines previously adopted when deemed necessary.
   action: update adopted guidelines when necessary on request or on the Commission's initiative
   subject_ref: commission
   subject_category: union_institution_or_body
@@ -81,3 +97,10 @@ records:
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
+  conditions:
+  - the Commission deems an update necessary
+  - operator: any_of
+    operands:
+    - Member States request the update
+    - the AI Office requests the update
+    - the Commission acts on its own initiative

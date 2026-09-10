@@ -7,7 +7,9 @@ norms:
   - subject_ref: ai_office
     category: union_institution_or_body
   action: exercise the specified market-surveillance authority powers when supervising Article 75(1) systems
-  norm_text: the AI Office shall have all the powers of a market surveillance authority
+  norm_text: When exercising its tasks of supervision and enforcement laid down in Article 75(1) of this
+    Regulation, the AI Office shall have all the powers of a market surveillance authority provided for
+    in this Section and in Article 14(4) and Article 16(3) of Regulation (EU) 2019/1020.
   detection_channels:
   - semantic_legal_effect
   - shall_token
@@ -43,7 +45,9 @@ norms:
   action: reclaim all supervision and enforcement costs associated with non-compliance from the relevant
     operator
   norm_text: The AI Office shall be authorised to fully reclaim from the relevant operator the totality
-    of the costs
+    of the costs of its supervision and enforcement activities with respect to instances of non-compliance,
+    including costs for human and technical resources, in accordance with Article 15 of Regulation (EU)
+    2019/1020.
   detection_channels:
   - semantic_legal_effect
   - shall_token
@@ -77,7 +81,7 @@ norms:
   - subject_ref: ai_office_supervision
     category: union_institution_or_body
   action: apply Regulation 2019/1020 Article 17 with necessary adaptations to AI Office supervision
-  norm_text: Article 17 of Regulation (EU) 2019/1020 shall apply mutatis mutandis
+  norm_text: Article 17 of Regulation (EU) 2019/1020 shall apply mutatis mutandis.
   detection_channels:
   - semantic_legal_effect
   - shall_token
@@ -112,7 +116,10 @@ norms:
   - subject_ref: ai_office
     category: union_institution_or_body
   action: start an investigation where reasonable grounds indicate provider or deployer non-compliance
-  norm_text: it may adopt a decision to start an investigation into that non-compliance
+  norm_text: Where the AI Office has reasonable grounds to suspect non-compliance with this Regulation
+    by a provider or a deployer of an AI system referred to in Article 75(1) of this Regulation, it may
+    adopt a decision to start an investigation into that non-compliance in accordance with Article 14(4),
+    point (f) of Regulation (EU) 2019/1020.
   detection_channels:
   - semantic_legal_effect
   - other_modal
@@ -120,7 +127,9 @@ norms:
   - AIA-TEXT-A075A-P002
   qualifier_spans: []
   effective_date_spans: []
-  conditions: []
+  conditions:
+  - the AI Office has reasonable grounds to suspect non-compliance by a provider or deployer of an Article
+    75(1) AI system
   exceptions: []
   mandatory_content: []
   dependencies: []
@@ -146,7 +155,8 @@ norms:
   - subject_ref: ai_office
     category: union_institution_or_body
   action: notify the concerned AI-system operator when starting an investigation
-  norm_text: the AI Office shall notify the operator of the AI system concerned
+  norm_text: Upon starting such an investigation, the AI Office shall notify the operator of the AI system
+    concerned.
   detection_channels:
   - semantic_legal_effect
   - shall_token
@@ -154,7 +164,8 @@ norms:
   - AIA-TEXT-A075A-P002
   qualifier_spans: []
   effective_date_spans: []
-  conditions: []
+  conditions:
+  - the AI Office starts an investigation under Article 75a(2)
   exceptions: []
   mandatory_content: []
   dependencies: []
@@ -182,7 +193,8 @@ norms:
   action: exercise paragraph 1 powers on initiative or complaint including before formally starting an
     investigation
   norm_text: The AI Office may exercise the powers referred to in paragraph 1 of this Article on its own
-    initiative or following a complaint
+    initiative or following a complaint received pursuant to Article 85 of this Regulation, even before
+    starting an investigation pursuant to Article 14(4), point (f) of Regulation (EU) 2019/1020.
   detection_channels:
   - semantic_legal_effect
   - other_modal
@@ -216,7 +228,9 @@ norms:
   - subject_ref: market_surveillance_authority
     category: public_authority
   action: request AI Office assessment of suspected Article 75(1) provider or deployer non-compliance
-  norm_text: it may send a request to the AI Office to assess the matter
+  norm_text: Where a market surveillance authority has reason to suspect non-compliance with this Regulation
+    by a provider or a deployer of an AI system referred to in Article 75(1), it may send a request to
+    the AI Office to assess the matter.
   detection_channels:
   - semantic_legal_effect
   - other_modal
@@ -224,7 +238,9 @@ norms:
   - AIA-TEXT-A075A-P003
   qualifier_spans: []
   effective_date_spans: []
-  conditions: []
+  conditions:
+  - the market-surveillance authority has reason to suspect non-compliance by a provider or deployer of
+    an Article 75(1) AI system
   exceptions: []
   mandatory_content: []
   dependencies: []
@@ -250,7 +266,8 @@ norms:
   - subject_ref: ai_office
     category: union_institution_or_body
   action: exercise listed information and document powers by simple request or decision
-  norm_text: The AI Office may exercise the powers listed
+  norm_text: The AI Office may exercise the powers listed in Article 14(4), points (a), (b) and (c) of
+    Regulation (EU) 2019/1020 and Article 74(12) and (13) of this Regulation by simple request or by decision.
   detection_channels:
   - semantic_legal_effect
   - other_modal
@@ -285,8 +302,9 @@ norms:
     category: union_institution_or_body
   action: state the legal basis and purpose of the request, specify the information required and set the
     period for providing it
-  norm_text: the AI Office shall state the legal basis and the purpose of the request, specify what information
-    is required, and set the period within which the information is to be provided.
+  norm_text: When requesting information, the AI Office shall state the legal basis and the purpose of
+    the request, specify what information is required, and set the period within which the information
+    is to be provided.
   detection_channels:
   - semantic_legal_effect
   - shall_token
@@ -477,7 +495,9 @@ norms:
   - subject_ref: ai_office
     category: union_institution_or_body
   action: conduct necessary remote or on-site inspections for Section enforcement tasks
-  norm_text: the AI Office may conduct all necessary remote or on-site inspections
+  norm_text: In order to carry out the tasks assigned to it under this Section, the AI Office may conduct
+    all necessary remote or on-site inspections pursuant to the powers laid down in Article 14(4), points
+    (d) and (e) of Regulation (EU) 2019/1020 and Article 74(5) of this Regulation.
   detection_channels:
   - semantic_legal_effect
   - other_modal
@@ -512,8 +532,11 @@ norms:
     category: union_institution_or_body
   action: inform the provider about inspection subject purpose fines and review rights and inform the
     territorial authority before inspection
-  norm_text: the AI Office shall inform the provider concerned of the subject matter and purpose of the
-    investigation
+  norm_text: When conducting an inspection, the AI Office shall inform the provider concerned of the subject
+    matter and purpose of the investigation, the relevant fines referred to in Article 99(5) of this Regulation,
+    and the right to have the decision reviewed by the Court of Justice of the European Union. Prior to
+    conducting an inspection, the AI Office shall inform the market surveillance authority of the Member
+    State in the territory of which the operator or its legal representative is situated.
   detection_channels:
   - semantic_legal_effect
   - shall_token
@@ -548,7 +571,7 @@ norms:
     category: union_institution_or_body
   action: exercise the specified entry examination copying questioning recording and sealing powers during
     inspection
-  norm_text: the officials of the AI Office shall be empowered to
+  norm_text: 'During such an inspection, the officials of the AI Office shall be empowered to:'
   detection_channels:
   - semantic_legal_effect
   - shall_token
@@ -594,8 +617,10 @@ norms:
     category: public_authority
   action: provide necessary assistance including police-equivalent assistance where appropriate to overcome
     inspection obstruction
-  norm_text: the national competent authority of the Member State concerned shall afford it the necessary
-    assistance
+  norm_text: Where the AI Office finds that a natural or legal person opposes or obstructs an inspection,
+    the national competent authority of the Member State concerned shall afford it the necessary assistance,
+    requesting, where appropriate, the assistance of the police or an equivalent enforcement authority,
+    to enable it to conduct its on-site inspection.
   detection_channels:
   - semantic_legal_effect
   - shall_token
@@ -603,7 +628,8 @@ norms:
   - AIA-TEXT-A075A-P013
   qualifier_spans: []
   effective_date_spans: []
-  conditions: []
+  conditions:
+  - a natural or legal person opposes or obstructs an AI Office inspection
   exceptions: []
   mandatory_content: []
   dependencies: []
@@ -630,15 +656,19 @@ norms:
     category: union_institution_or_body
   action: apply for required judicial authorisation for an on-site inspection including precautionarily
     where appropriate
-  norm_text: the AI Office shall apply for such an authorisation
+  norm_text: Where an on-site inspection of business premises, land or property requires authorisation
+    by a judicial authority in accordance with national law, the AI Office shall apply for such an authorisation.
+    The AI Office may also apply for such authorisation as a precautionary measure.
   detection_channels:
   - semantic_legal_effect
   - shall_token
+  - other_modal
   primary_spans:
   - AIA-TEXT-A075A-P014
   qualifier_spans: []
   effective_date_spans: []
-  conditions: []
+  conditions:
+  - national law requires judicial authorisation for the on-site inspection
   exceptions: []
   mandatory_content: []
   dependencies: []
@@ -665,16 +695,27 @@ norms:
     category: public_authority
   action: promptly review requested coercive measures for non-arbitrariness and proportionality without
     reviewing investigation necessity or demanding the AI Office file
-  norm_text: the national judicial authority shall promptly verify that the coercive measures envisaged
-    are neither arbitrary nor excessive
+  norm_text: Where such an authorisation is applied for, the national judicial authority shall promptly
+    verify that the coercive measures envisaged are neither arbitrary nor excessive having regard to the
+    subject matter of the investigation or inspection and the documents provided by the AI Office with
+    the decision. In its verification of the proportionality of coercive measures, the national judicial
+    authority may ask the AI Office for detailed explanations, in particular relating to the grounds the
+    AI Office has for suspecting that an infringement of this Regulation has taken place and the seriousness
+    of the suspected infringement and, where relevant, the nature of the involvement of the person subject
+    to the coercive measures. The national judicial authority shall not review the necessity of the investigation
+    or inspection nor demand information from the case file of the AI Office. In accordance with the Treaties,
+    the legality of the decision of the AI Office is subject to review only by the Court of Justice of
+    the European Union.
   detection_channels:
   - semantic_legal_effect
   - shall_token
+  - other_modal
   primary_spans:
   - AIA-TEXT-A075A-P014
   qualifier_spans: []
   effective_date_spans: []
-  conditions: []
+  conditions:
+  - judicial authorisation for an AI Office inspection has been requested
   exceptions: []
   mandatory_content: []
   dependencies: []
@@ -700,14 +741,19 @@ norms:
   - subject_ref: member_state_market_surveillance_authority
     category: public_authority
   action: conduct requested territorial fact-finding for the AI Office under national-law powers
-  norm_text: may in its own territory carry out any investigation, inspection or other fact-finding measure
+  norm_text: At the request of the AI Office, the competent market surveillance authority of a Member
+    State may in its own territory carry out any investigation, inspection or other fact-finding measure
+    on behalf and for the account of the AI Office in order to establish whether there has been an infringement
+    of this Regulation.
   detection_channels:
   - semantic_legal_effect
+  - other_modal
   primary_spans:
   - AIA-TEXT-A075A-P015
   qualifier_spans: []
   effective_date_spans: []
-  conditions: []
+  conditions:
+  - the AI Office requests the fact-finding measure
   exceptions: []
   mandatory_content: []
   dependencies: []
@@ -734,7 +780,8 @@ norms:
     category: union_institution_or_body
   action: order system access and explanations and require retention of necessary compliance-assessment
     data and documents
-  norm_text: the AI Office, in the exercise of its competences referred to in Article 75(1), may
+  norm_text: 'In addition to the powers set out in paragraph 1 of this Article, the AI Office, in the
+    exercise of its competences referred to in Article 75(1), may:'
   detection_channels:
   - semantic_legal_effect
   - cross_reference_structure
@@ -772,7 +819,11 @@ norms:
   - subject_ref: ai_office
     category: union_institution_or_body
   action: appoint external and agreed Member-State experts teams and auditors for Article 75(1) monitoring
-  norm_text: the AI Office may appoint independent external experts and auditors
+  norm_text: "To assist it in monitoring the effective implementation and compliance with the relevant\
+    \ provisions of this Regulation and to provide it with specific expertise or knowledge in the exercise\
+    \ of its competences under Article 75(1), the AI Office may appoint independent external experts and\
+    \ auditors, as well as experts, investigative teams and auditors from the Member State\u2019s competent\
+    \ authorities with the agreement of the authority concerned."
   detection_channels:
   - semantic_legal_effect
   - other_modal
@@ -807,7 +858,7 @@ norms:
     category: union_institution_or_body
   action: share monitoring information with relevant Member-State competent authorities
   norm_text: Information obtained as a result of such monitoring actions shall be shared with the relevant
-    competent authorities
+    competent authorities of the Member States.
   detection_channels:
   - semantic_legal_effect
   - shall_token
@@ -841,7 +892,8 @@ norms:
   - subject_ref: article_75a_information_recipient
     category: public_authority
   action: use Article 75a information only for AI Act purposes
-  norm_text: shall be used only for the purpose of this Regulation
+  norm_text: Information collected pursuant to this Article shall be used only for the purpose of this
+    Regulation.
   detection_channels:
   - semantic_legal_effect
   - shall_token

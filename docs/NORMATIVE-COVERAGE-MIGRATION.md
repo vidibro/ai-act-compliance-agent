@@ -836,8 +836,10 @@ No aggregate percentage replaces these measures.
 
 ## Rough effort
 
-The original estimates below are retained as planning history. Full-corpus extraction established
-an actual inventory of 1,487 proposed norms, so remaining effort is driven by independent legal
+The original estimates below are retained as planning history. Full-corpus extraction and the
+subsequent overlap, full-sentence, and subject-continuity audits established an actual inventory of 1,391
+proposed norms, so remaining
+effort is driven by independent legal
 assurance, many-to-many implementation mapping, and behavioral proof rather than extraction volume:
 
 | Work | Estimate |
@@ -855,7 +857,7 @@ The original total was roughly **6–10 person-weeks**. It must not be used as a
 estimate: several infrastructure and authoring stages are complete, while the unexpectedly large
 norm inventory makes assurance and mapping more substantial than the original pilot could measure.
 A new forecast should be based on measured review and reconciliation throughput from representative
-batches of the 1,487 records.
+batches of the 1,391 records.
 
 ## Immediate next action
 
