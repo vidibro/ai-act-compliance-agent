@@ -183,12 +183,41 @@ anything classified.
 
 ## Personal data (PII)
 
-The intended input is a **functional description of a system**, which should contain no personal
-data. The tool neither needs nor asks for candidate records, real names, or biometric data — and
-several golden-set cases exist precisely to classify systems that *process* such data without the
-classifier ever seeing it. If a user pastes PII into a description, it will be sent to the LLM
-provider like any other input; the guidance is simply **don't** — describe the system, not its data
-subjects. A deployed version (M6/M9) should add input guidance and, where feasible, redaction.
+**There is no PII detection and no redaction, and that is a decision rather than a gap.** The
+reasoning is below, because the obvious control is the wrong one here and a later reader should not
+have to rediscover why.
+
+**Some personal data is REQUIRED CONTENT.** A compliant technical file necessarily carries contact
+details of natural persons, because the Act says it must: Art. 13(3)(a) requires the instructions
+for use to give "the identity and the contact details of the provider and, where applicable, of its
+authorised representative"; Art. 16(b) requires the provider's name and "the address at which they
+can be contacted"; and Annex VIII points 1 to 3 require the name, address and contact details of
+the provider, of the authorised representative, and of *"that person"* where someone submits on the
+provider's behalf. The most complete documentation therefore contains the most such data.
+
+Two consequences follow, and they rule out the two controls a reader would expect:
+
+- **Detection would invert the signal.** A check flagging names, emails or postal addresses fires
+  on every compliant document and hardest on the best ones. A warning that is right to ignore is
+  training to ignore warnings.
+- **Redaction would manufacture false findings.** Stripping the contact details hands the judge a
+  document that no longer satisfies Art. 13(3)(a) or Annex VIII, and it reports a GAP on an
+  obligation the real document met. A false PASS is this tool's most expensive error; a false GAP
+  caused by our own control is the second, and it would be entirely self-inflicted.
+
+**What the guidance is instead.** The distinction that matters is *whose* data it is — the people
+who build or deploy the system (required, expected, leave it alone) versus **the people the system
+is used on**. Candidate records, biometric samples, patient data and the like are never required in
+a technical file, and describing the system does not need them. Several golden-set cases exist
+precisely to classify systems that *process* such data without the classifier ever seeing any. So
+the rule for a user is narrow and stateable: **describe the system, not its data subjects** —
+contact details for the roles the Act names are expected and fine.
+
+No regex separates those two: an email is an email. The only signal that respects the Act is
+VOLUME — two contacts is Annex VIII, two hundred rows is a dataset sample — and if a guard is ever
+added it should be volume-triggered, warn-only, and must never alter the document.
+
+Whatever is sent reaches the configured LLM provider like any other input, under their terms.
 
 ## Supply chain
 
