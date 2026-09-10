@@ -190,6 +190,18 @@ def load_normative_coverage(
                 f"{sorted(declared_qualifying)}, norms link {sorted(actual_qualifying)}"
             )
 
+    # The relation is mutual by construction, so a norm naming a partner that does not name it
+    # back means the artefact was edited by hand rather than built.
+    for norm in norm_inventory.norms:
+        for partner_id in norm.parallel_norm_ids:
+            partner = norms_by_id.get(partner_id)
+            if partner is None:
+                raise ValueError(f"{norm.norm_id} is parallel to unknown norm {partner_id}")
+            if norm.norm_id not in partner.parallel_norm_ids:
+                raise ValueError(
+                    f"{norm.norm_id} names {partner_id} as a parallel duty but is not named back"
+                )
+
     _assert_no_carried_cycles(norm_inventory)
 
     for link in norm_inventory.interpretations:

@@ -247,6 +247,7 @@ class Norm(BaseModel):
     implementation_refs: list[str] = []
     carried_by_norm_ids: list[str] = []
     superseded_by_norm_ids: list[str] = []
+    parallel_norm_ids: list[str] = []
     implementation_reason: str = ""
     verification_mode: VerificationMode
     review: ReviewRecord
@@ -309,6 +310,10 @@ class Norm(BaseModel):
                 raise ValueError("a norm cannot supersede itself")
         elif self.superseded_by_norm_ids:
             raise ValueError("superseded_by_norm_ids requires review status superseded")
+        if self.norm_id in self.parallel_norm_ids:
+            raise ValueError("a norm cannot be parallel to itself")
+        if set(self.parallel_norm_ids) & set(self.carried_by_norm_ids):
+            raise ValueError("a carried norm is a restatement, not a parallel duty")
         if self.review.status is ReviewStatus.REJECTED:
             raise ValueError("rejected candidates belong in extraction history, not norm inventory")
         return self

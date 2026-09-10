@@ -886,7 +886,7 @@ and the norm layer is not imported by the pipeline at all — this is a runtime 
 one. Closing it means giving a rule the provisions it answers to and rendering them together, which
 also serves `Report-surfacing coverage` above.
 
-### Open debt: one duty in several provisions has no recorded link
+### Partly closed: one duty in several provisions has no recorded link
 
 The ledger can say a norm restates another (`carried_by_norm_ids`) or that two norms share a rule
 (`implementation_refs`). It cannot say that separate provisions impose one duty when neither holds.
@@ -895,9 +895,21 @@ Four provisions require an EU-database registration — Article 6(4), Article 49
 twice over. None carries another, none has a rule, and they sit in three files. They agree today
 only because one reviewer judged them alike; change one and nothing marks the others as drifted.
 
-Whoever closes this decides what the relation is called and whether it is derived from shared
-subject and action or authored. Until then, treat any claim that a group of norms is "consistent"
-as prose, not as a checked property.
+The relation is now `parallel_duties`, authored as groups in the source manifest and compiled onto
+each member as `parallel_norm_ids`. It is authored rather than derived: shared subject and action
+would have merged the Article 49(1) high-risk registration with the Article 49(2) registration of a
+system concluded NOT high-risk, which read alike and are different duties. A norm belongs to at most
+one group, a group needs two members, and a group may not overlap `carried_by_norm_ids` — a
+restatement is already covered there. The loader rejects a norm naming a partner that does not name
+it back.
+
+Two groups are authored: the high-risk registration duty across Articles 16(i), 22(3)(e), 26(8) and
+71(2) twice, and the non-high-risk registration duty across Articles 6(4) and 49(2) twice.
+
+What remains open is the rest of the corpus and the report. A token-overlap scan finds 63
+cross-provision pairs whose actions overlap by 60% or more, of which the Article 4a/10(5) sets are
+already `carried_by`; the others are unexamined. Nothing renders the relation either, so a reader
+still sees one provision per finding.
 
 ### Open debt: a checklist is judged as one verdict
 

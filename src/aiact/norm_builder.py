@@ -151,6 +151,7 @@ class NormSourceInventory(BaseModel):
     implementation_targets: list[str] = []
     records: list[NormSourceRecord] = []
     carried_by: dict[str, list[str]] = {}
+    parallel_duties: list[list[str]] = []
     interpretations: list[InterpretiveLink] = []
 
     @model_validator(mode="after")
@@ -167,6 +168,19 @@ class NormSourceInventory(BaseModel):
                 "norm source records reference undeclared implementation targets: "
                 f"{unknown_targets}"
             )
+        seen_parallel: set[str] = set()
+        for group in self.parallel_duties:
+            if len(group) < 2:
+                raise ValueError(f"a parallel-duty group needs at least two norms: {group}")
+            if len(group) != len(set(group)):
+                raise ValueError(f"a parallel-duty group repeats a norm: {group}")
+            unknown = sorted(set(group) - set(norm_ids))
+            if unknown:
+                raise ValueError(f"parallel_duties references unknown norm(s): {unknown}")
+            overlap = sorted(seen_parallel & set(group))
+            if overlap:
+                raise ValueError(f"a norm belongs to at most one parallel-duty group: {overlap}")
+            seen_parallel |= set(group)
         interpreted_rules = {
             target.target_id
             for link in self.interpretations
@@ -589,6 +603,9 @@ def _build_norms(
         if unknown_carriers:
             raise ValueError(f"{norm_id}: unknown carrier norm(s) {unknown_carriers}")
         norms_by_id[norm_id]["carried_by_norm_ids"] = carriers
+    for group in source_inventory.parallel_duties:
+        for norm_id in group:
+            norms_by_id[norm_id]["parallel_norm_ids"] = [n for n in group if n != norm_id]
     return norms
 
 

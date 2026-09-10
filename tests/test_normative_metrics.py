@@ -5229,3 +5229,36 @@ def test_annex_fourteen_extracts_atomic_designation_code_mappings():
         "conformity_assessment_body"
     )
     assert all(norm.product_scope.value == "outside_supported_actor" for norm in norms.values())
+
+
+def test_provisions_imposing_one_duty_name_each_other():
+    """Separate provisions can impose one duty without either restating the other.
+
+    `carried_by_norm_ids` says a norm restates another and should not be reported twice;
+    `implementation_refs` says two norms are checked by one rule. Neither holds for EU-database
+    registration, where the duty is written out again for each actor in its own article. Without a
+    third relation, the group agrees only because one reviewer read it that way, and a change to one
+    provision leaves the others silently adrift.
+    """
+    bundle = load_normative_coverage()
+    norms = {norm.norm_id: norm for norm in bundle.norm_inventory.norms}
+
+    high_risk = norms["AIA-NORM-A016-I-REGISTRATION"]
+    assert set(high_risk.parallel_norm_ids) == {
+        "AIA-NORM-A022-P3-E-REGISTER",
+        "AIA-NORM-A026-P8-REGISTER",
+        "AIA-NORM-A071-P2-PROVIDER-ENTER-ANNEX-VIII-DATA",
+        "AIA-NORM-A071-P2-REPRESENTATIVE-ENTER-ANNEX-VIII-DATA",
+    }
+    # Registering a system concluded NOT high-risk is a different duty in its own group.
+    assert "AIA-NORM-A006-P4-REGISTER-SYSTEM" not in high_risk.parallel_norm_ids
+    assert set(norms["AIA-NORM-A006-P4-REGISTER-SYSTEM"].parallel_norm_ids) == {
+        "AIA-NORM-A049-P2-PROVIDER-REGISTER-NON-HIGH-RISK",
+        "AIA-NORM-A049-P2-REPRESENTATIVE-REGISTER-NON-HIGH-RISK",
+    }
+
+    for norm in bundle.norm_inventory.norms:
+        for partner_id in norm.parallel_norm_ids:
+            assert norm.norm_id in norms[partner_id].parallel_norm_ids
+            # A restatement is already covered by `carried_by`; the two must not overlap.
+            assert partner_id not in norm.carried_by_norm_ids
