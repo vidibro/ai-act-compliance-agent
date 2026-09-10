@@ -41,7 +41,13 @@ from aiact.schemas.enums import (
     TerritorialLink,
     TransparencyDuty,
 )
-from aiact.schemas.question import AbstentionCause, Answer, Confidence, Question
+from aiact.schemas.question import (
+    AbstentionCause,
+    Answer,
+    Confidence,
+    Question,
+    clip_reasoning,
+)
 from aiact.tracing import current_metadata
 from aiact.usage import Usage
 
@@ -419,7 +425,7 @@ class LLMBrain:
         the other to re-run."""
         return Answer(
             value=None,
-            reasoning=f"Abstained on {question.node_id!r}: {why}.",
+            reasoning=clip_reasoning(f"Abstained on {question.node_id!r}: {why}."),
             confidence="low",
             source=question.source,
             node_id=question.node_id,
@@ -532,7 +538,7 @@ class LLMBrain:
 
         return Answer(
             value=value,
-            reasoning=(
+            reasoning=clip_reasoning(
                 str(data.get("reasoning", "")).strip()
                 or f"model answer for {question.node_id}"
             ),

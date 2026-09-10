@@ -35,6 +35,27 @@ merges them sends people to fix the wrong thing.
 
 EVIDENCE_QUOTE_MAX = 300  # force citing a pinpoint excerpt, not dumping a section
 
+REASONING_MAX = 400
+"""One sentence, which is what both prompts ask for. `reasoning` is the only free-text the model
+writes into a report, so an uncapped one lets a document plant a paragraph beside a verdict."""
+
+
+def clip_reasoning(text: str) -> str:
+    """`text` cut to REASONING_MAX, marked where it was cut. Used at every construction site: a
+    long reason must not turn a usable answer into a validation error."""
+    text = " ".join(text.split())
+    return text if len(text) <= REASONING_MAX else text[: REASONING_MAX - 1].rstrip() + "\u2026"
+
+
+def _check_reasoning_length(v: str) -> str:
+    if len(v) > REASONING_MAX:
+        raise ValueError(
+            f"reasoning must be under {REASONING_MAX} chars (got {len(v)}) — "
+            f"clip_reasoning() it at the call site."
+        )
+    return v
+
+
 
 def _check_not_raw_text(v: Any) -> Any:
     """Every node's value is a bool, an enum member, a list of them, or None. A bare `str` is text
@@ -114,6 +135,7 @@ class Answer(BaseModel):
     # this node — present so the verdict can record it rested on Commission interpretation, not law
 
     _quote_length = field_validator("evidence_quote")(_check_quote_length)
+    _reasoning_length = field_validator("reasoning")(_check_reasoning_length)
     _value_parsed = field_validator("value")(_check_not_raw_text)
 
 

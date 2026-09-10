@@ -45,7 +45,7 @@ from aiact.providers import ProviderProfile, gateway_kwargs, profile_for
 from aiact.retrieval.store import DocumentIndex, Hit, document_id
 from aiact.schemas.enums import CheckType, Verdict
 from aiact.schemas.policy import PolicyRule
-from aiact.schemas.question import Confidence
+from aiact.schemas.question import Confidence, clip_reasoning
 from aiact.tools.evidence import DEFAULT_K, find_evidence
 from aiact.tools.references import Reference, resolve_all
 from aiact.tracing import current_metadata
@@ -174,7 +174,7 @@ def _unsure(why: str, hits: tuple[Hit, ...] = (), prompt: str = "") -> Judgement
     """
     return Judgement(
         verdict=Verdict.NEEDS_REVIEW,
-        reasoning=why,
+        reasoning=clip_reasoning(why),
         evidence_quote=None,
         evidence_chunk_id=None,
         confidence="low",
@@ -363,7 +363,7 @@ class LLMJudge:
         if not rule.document_verifiable:
             return Judgement(
                 verdict=Verdict.NOT_APPLICABLE,
-                reasoning=(
+                reasoning=clip_reasoning(
                     f"{rule.rule_id} is a process obligation of the provider organisation, not a "
                     f"property of the technical documentation — confirm it separately."
                 ),
@@ -452,7 +452,7 @@ class LLMJudge:
 
         return Judgement(
             verdict=verdict,
-            reasoning=reasoning or f"model verdict for {rule.rule_id}",
+            reasoning=clip_reasoning(reasoning or f"model verdict for {rule.rule_id}"),
             evidence_quote=quote,
             evidence_chunk_id=chunk_id,
             confidence=confidence,
