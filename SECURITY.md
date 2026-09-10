@@ -84,11 +84,13 @@ can do is small and bounded, and here is why, cross-referenced to the code:
   cited by a verdict. A missing hash is also refused — deleting the line does not bypass the check.
   Covered by `tests/test_law_integrity.py` and `tests/test_guidance.py`.
 
-**Residual risk, stated plainly.** Injected text *can* still bias a single sub-answer — no prompt
-makes an LLM perfectly robust. That is precisely why low confidence routes to `needs_review`, why
-every verdict carries its evidence quote and citation for a human to check, and why the output is
-framed throughout as a **draft checklist for expert review, not a decision** (the disclaimer in
-`src/aiact/schemas/report.py` is attached to every report and must stay there).
+**Residual risk, stated plainly, and NOT YET MEASURED.** Injected text *can* still bias a single
+sub-answer — no prompt makes an LLM perfectly robust. How often it does is an open question here:
+the golden set contains no adversarial cases, so this section argues the bound rather than
+reporting one (debt tracked in `docs/ROADMAP.md`, M1). That is precisely why low confidence routes
+to `needs_review`, why every verdict carries its evidence quote and citation for a human to check,
+and why the output is framed throughout as a **draft checklist for expert review, not a decision**
+(the disclaimer in `src/aiact/schemas/report.py` is attached to every report and must stay there).
 
 > Note on the enacted-law store. Verification is byte-exact and deliberately unforgiving: the store
 > is machine-generated from the Official Journal and reproducible with one command
