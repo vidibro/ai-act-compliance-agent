@@ -178,7 +178,10 @@ norms:
   - AIA-TEXT-A074-P007
   qualifier_spans: []
   effective_date_spans: []
-  conditions: []
+  conditions:
+  - the AI system is related to a product covered by Union harmonisation legislation listed in Section
+    A of Annex I
+  - that legislation already provides procedures with the same objective and an equivalent level of protection
   exceptions: []
   mandatory_content: []
   dependencies: []
@@ -189,9 +192,9 @@ norms:
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
   review:
-    status: proposed
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
     display_chunks: 1
@@ -274,25 +277,24 @@ norms:
     elapsed_seconds: null
 - norm_id: AIA-NORM-A074-P7-COORDINATED-FINANCIAL-DEROGATION
   act_version_date: '2026-07-27'
-  kind: obligation
+  kind: permission
   subjects:
-  - subject_ref: member_state_and_financial_market_surveillance_authority
-    category: public_authority
-  action: designate another coordinated financial-sector surveillance authority and promptly report prudentially
-    relevant information to the ECB
+  - subject_ref: member_state
+    category: member_state
+  action: designate another relevant authority as the market-surveillance authority for the Regulation
   norm_text: By way of derogation from paragraph 6, in appropriate circumstances, and provided that coordination
     is ensured, another relevant authority may be identified by the Member State as market surveillance
     authority for the purposes of this Regulation.
   detection_channels:
   - semantic_legal_effect
   - other_modal
-  - cross_reference_structure
   primary_spans:
   - AIA-TEXT-A074-P010
-  qualifier_spans:
-  - AIA-TEXT-A074-P011
+  qualifier_spans: []
   effective_date_spans: []
-  conditions: []
+  conditions:
+  - the circumstances are appropriate
+  - coordination with the relevant financial supervisory authority is ensured
   exceptions: []
   mandatory_content: []
   dependencies: []
@@ -303,9 +305,50 @@ norms:
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
   review:
-    status: proposed
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- norm_id: AIA-NORM-A074-P7-REPORT-PRUDENTIALLY-RELEVANT-INFORMATION
+  act_version_date: '2026-07-27'
+  kind: recommendation
+  subjects:
+  - subject_ref: financial_market_surveillance_authority
+    category: public_authority
+  action: should report without delay to the European Central Bank market-surveillance information potentially
+    relevant to its prudential-supervision tasks
+  norm_text: National market surveillance authorities supervising regulated credit institutions regulated
+    under Directive 2013/36/EU, which are participating in the Single Supervisory Mechanism established
+    by Regulation (EU) No 1024/2013, should report, without delay, to the European Central Bank any information
+    identified in the course of their market surveillance activities that may be of potential interest
+    for the prudential supervisory tasks of the European Central Bank specified in that Regulation.
+  detection_channels:
+  - semantic_legal_effect
+  - other_modal
+  primary_spans:
+  - AIA-TEXT-A074-P011
+  qualifier_spans: []
+  effective_date_spans: []
+  conditions:
+  - the authority supervises regulated credit institutions under Directive 2013/36/EU that participate
+    in the Single Supervisory Mechanism
+  exceptions: []
+  mandatory_content: []
+  dependencies: []
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_refs: []
+  implementation_reason: This is a non-binding recommendation to a public authority.
+  verification_mode: not_reported
+  review:
+    status: approved
+    extracted_by: semantic-legal-effect-pass
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
     display_chunks: 1
@@ -406,8 +449,10 @@ norms:
   - AIA-TEXT-A074-P013
   qualifier_spans: []
   effective_date_spans: []
-  conditions: []
-  exceptions: []
+  conditions:
+  - a Union institution, body, office or agency falls within the scope of the Regulation
+  exceptions:
+  - the Court of Justice of the European Union acting in its judicial capacity
   mandatory_content: []
   dependencies: []
   product_scope: outside_supported_actor
@@ -417,9 +462,9 @@ norms:
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
   review:
-    status: proposed
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
     display_chunks: 1
@@ -558,7 +603,9 @@ norms:
   - AIA-TEXT-A074-P016
   qualifier_spans: []
   effective_date_spans: []
-  conditions: []
+  conditions:
+  - the access is relevant and limited to what is necessary for the market-surveillance authority to fulfil
+    its tasks
   exceptions: []
   mandatory_content: []
   dependencies: []
@@ -599,11 +646,12 @@ norms:
   - AIA-TEXT-A074-P018
   - AIA-TEXT-A074-P019
   effective_date_spans: []
-  conditions: []
+  conditions:
+  - source-code access is necessary for assessing conformity with Chapter III Section 2 requirements
+  - testing, auditing and verification procedures based on data and documentation provided by the provider
+    have been exhausted or proved insufficient
   exceptions: []
-  mandatory_content:
-  - source-code access is necessary for Chapter III Section 2 conformity assessment
-  - data and documentation testing auditing and verification are exhausted or insufficient
+  mandatory_content: []
   dependencies: []
   product_scope: in_scope
   product_scope_reason: ''

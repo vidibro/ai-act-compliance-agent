@@ -1,22 +1,36 @@
 records:
 - norm_id: AIA-NORM-A072-P1-ESTABLISH-AND-DOCUMENT-MONITORING
   source: A072-P001
-  quote: Providers shall establish and document a post-market monitoring system in a manner that is proportionate to the nature of the AI technologies and the risks of the high-risk AI system.
+  quote: Providers shall establish and document a post-market monitoring system in a manner that is proportionate
+    to the nature of the AI technologies and the risks of the high-risk AI system.
   action: establish and document a risk-proportionate post-market monitoring system
   subject_ref: provider
   subject_category: supported_operator
-  implementation_refs: [AIA-PO-A72]
+  implementation_refs:
+  - AIA-PO-A72
   verification_mode: reported_not_judged
   verified_by: vidibro
 - norm_id: AIA-NORM-A072-P2-OPERATE-LIFETIME-MONITORING
   source: A072-P002
-  quote: The post-market monitoring system shall actively and systematically collect, document and analyse relevant data which may be provided by deployers or which may be collected through other sources on the performance of high-risk AI systems throughout their lifetime, and which allow the provider to evaluate the continuous compliance of AI systems with the requirements set out in Chapter III, Section 2. Where relevant, post-market monitoring shall include an analysis of the interaction with other AI systems. This obligation shall not cover sensitive operational data of deployers which are law-enforcement authorities.
-  action: actively collect document and analyse lifetime performance and interaction data to evaluate continuous compliance while excluding protected law-enforcement data
+  quote: The post-market monitoring system shall actively and systematically collect, document and analyse
+    relevant data which may be provided by deployers or which may be collected through other sources on
+    the performance of high-risk AI systems throughout their lifetime, and which allow the provider to
+    evaluate the continuous compliance of AI systems with the requirements set out in Chapter III, Section
+    2. Where relevant, post-market monitoring shall include an analysis of the interaction with other
+    AI systems. This obligation shall not cover sensitive operational data of deployers which are law-enforcement
+    authorities.
+  action: actively collect document and analyse lifetime performance and interaction data to evaluate
+    continuous compliance while excluding protected law-enforcement data
   subject_ref: provider
   subject_category: supported_operator
-  mandatory_content: [active systematic lifetime data collection documentation and analysis, continuous Chapter III Section 2 compliance evaluation, relevant interaction analysis with other AI systems]
-  exceptions: [sensitive operational data of law-enforcement deployers]
-  implementation_refs: [AIA-PO-A72]
+  mandatory_content:
+  - active systematic lifetime data collection documentation and analysis
+  - continuous Chapter III Section 2 compliance evaluation
+  - relevant interaction analysis with other AI systems
+  exceptions:
+  - sensitive operational data of law-enforcement deployers
+  implementation_refs:
+  - AIA-PO-A72
   verification_mode: reported_not_judged
   verified_by: vidibro
 - norm_id: AIA-NORM-A072-P3-PLAN-AND-TECHNICAL-DOCUMENTATION
@@ -25,22 +39,26 @@ records:
   action: base the post-market monitoring system on a post-market monitoring plan
   subject_ref: provider
   subject_category: supported_operator
-  implementation_refs: [AIA-PO-A72]
+  implementation_refs:
+  - AIA-PO-A72
   verification_mode: reported_not_judged
   verified_by: vidibro
 - norm_id: AIA-NORM-A072-P3-PLAN-IN-TECHNICAL-DOCUMENTATION
   source: A072-P003
-  quote: The post-market monitoring plan shall be part of the technical documentation referred to in Annex IV.
-  action: include the post-market monitoring plan in the technical documentation referred to in
-    Annex IV
+  quote: The post-market monitoring plan shall be part of the technical documentation referred to in Annex
+    IV.
+  action: include the post-market monitoring plan in the technical documentation referred to in Annex
+    IV
   subject_ref: provider
   subject_category: supported_operator
-  implementation_refs: [AIA-PO-A72]
+  implementation_refs:
+  - AIA-PO-A72
   verification_mode: reported_not_judged
   verified_by: vidibro
 - norm_id: AIA-NORM-A072-P3-COMMISSION-PLAN-GUIDANCE
   source: A072-P003
-  quote: The Commission, taking utmost account of the opinion of the Board, shall adopt guidance, including a template, on the post-market monitoring plan by 2 September 2027.
+  quote: The Commission, taking utmost account of the opinion of the Board, shall adopt guidance, including
+    a template, on the post-market monitoring plan by 2 September 2027.
   action: adopt Board-informed plan guidance and a template by 2 September 2027
   subject_ref: commission
   subject_category: union_institution_or_body
@@ -51,13 +69,36 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A072-P4-INTEGRATE-EXISTING-MONITORING
   source: A072-P004
-  quote: For high-risk AI systems covered by the Union harmonisation legislation listed in Section A of Annex I, where a post-market monitoring system and plan are already established under that legislation, in order to ensure consistency, avoid duplications and minimise additional burdens, providers shall have a choice of integrating, as appropriate, the necessary elements described in paragraphs 1, 2 and 3 using the template referred in paragraph 3 into systems and plans already existing under that legislation, provided that it achieves an equivalent level of protection.
-  action: integrate Article 72 elements into an existing sectoral monitoring system and plan where equivalent protection is achieved
+  quote: For high-risk AI systems covered by the Union harmonisation legislation listed in Section A of
+    Annex I, where a post-market monitoring system and plan are already established under that legislation,
+    in order to ensure consistency, avoid duplications and minimise additional burdens, providers shall
+    have a choice of integrating, as appropriate, the necessary elements described in paragraphs 1, 2
+    and 3 using the template referred in paragraph 3 into systems and plans already existing under that
+    legislation, provided that it achieves an equivalent level of protection.
+  action: integrate Article 72 elements into an existing sectoral monitoring system and plan where equivalent
+    protection is achieved
   subject_ref: provider
   subject_category: supported_operator
   kind: permission
-  conditions: [a monitoring system and plan already exist under Annex I Section A legislation, the integration uses the paragraph 3 template as appropriate, the result achieves equivalent protection]
-  qualifier_spans: [A072-P005]
-  implementation_refs: [AIA-PO-A72]
+  conditions:
+  - operator: any_of
+    operands:
+    - operator: all_of
+      operands:
+      - the high-risk AI system is covered by Union harmonisation legislation listed in Section A of Annex
+        I
+      - a post-market monitoring system and plan are already established under that legislation
+    - operator: all_of
+      operands:
+      - the high-risk AI system is referred to in point 5 of Annex III
+      - the system is placed on the market or put into service by a financial institution
+      - the financial institution is subject to Union financial-services-law requirements concerning internal
+        governance, arrangements or processes
+  - the integration uses the paragraph 3 template as appropriate
+  - the result achieves an equivalent level of protection
+  qualifier_spans:
+  - A072-P005
+  implementation_refs:
+  - AIA-PO-A72
   verification_mode: reported_not_judged
   verified_by: vidibro
