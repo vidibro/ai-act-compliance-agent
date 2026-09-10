@@ -62,8 +62,7 @@ def test_an_unclipped_reason_is_refused(model):
 
 
 def test_a_model_paragraph_becomes_a_clipped_answer_not_a_crash(monkeypatch):
-    """End to end through decide(): an overlong reason must not turn a usable answer into an
-    exception halfway through a run."""
+    """An overlong reason must clip, not raise halfway through a run."""
     import sys
     import types
 

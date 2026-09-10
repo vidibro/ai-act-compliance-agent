@@ -36,13 +36,11 @@ merges them sends people to fix the wrong thing.
 EVIDENCE_QUOTE_MAX = 300  # force citing a pinpoint excerpt, not dumping a section
 
 REASONING_MAX = 400
-"""One sentence, which is what both prompts ask for. `reasoning` is the only free-text the model
-writes into a report, so an uncapped one lets a document plant a paragraph beside a verdict."""
+"""One sentence, which is what both prompts ask for."""
 
 
 def clip_reasoning(text: str) -> str:
-    """`text` cut to REASONING_MAX, marked where it was cut. Used at every construction site: a
-    long reason must not turn a usable answer into a validation error."""
+    """`text` cut to REASONING_MAX, marked where it was cut. Clip at every construction site."""
     text = " ".join(text.split())
     return text if len(text) <= REASONING_MAX else text[: REASONING_MAX - 1].rstrip() + "\u2026"
 
@@ -54,7 +52,6 @@ def _check_reasoning_length(v: str) -> str:
             f"clip_reasoning() it at the call site."
         )
     return v
-
 
 
 def _check_not_raw_text(v: Any) -> Any:

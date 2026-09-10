@@ -198,8 +198,7 @@ class Finding(BaseModel):
     @field_validator("reasoning")
     @classmethod
     def _reasoning_is_one_sentence(cls, v: str) -> str:
-        """The only free text a model writes into a report — clip_reasoning() it at the call
-        site rather than letting a document put a paragraph beside a verdict."""
+        """clip_reasoning() it at the call site."""
         if len(v) > REASONING_MAX:
             raise ValueError(f"reasoning must be under {REASONING_MAX} chars (got {len(v)}).")
         return v
