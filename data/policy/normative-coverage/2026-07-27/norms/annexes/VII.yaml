@@ -14,9 +14,9 @@ norms:
   - deeming_or_consequence
   - cross_reference_structure
   primary_spans:
-  - AIA-TEXT-ANNEX-VII-I1
+  - AIA-TEXT-ANNEX-VII-P002
   qualifier_spans:
-  - AIA-TEXT-ANNEX-VII-I2
+  - AIA-TEXT-ANNEX-VII-P004
   effective_date_spans: []
   conditions: []
   exceptions: []
@@ -57,7 +57,7 @@ norms:
   - deeming_or_consequence
   - cross_reference_structure
   primary_spans:
-  - AIA-TEXT-ANNEX-VII-I2
+  - AIA-TEXT-ANNEX-VII-P004
   qualifier_spans: []
   effective_date_spans: []
   conditions: []
@@ -97,7 +97,7 @@ norms:
   - shall_token
   - deeming_or_consequence
   primary_spans:
-  - AIA-TEXT-ANNEX-VII-I2
+  - AIA-TEXT-ANNEX-VII-P004
   qualifier_spans: []
   effective_date_spans: []
   conditions: []
@@ -130,10 +130,17 @@ norms:
   detection_channels:
   - semantic_legal_effect
   - shall_token
+  - cross_reference_structure
   - existing_implementation
   primary_spans:
-  - AIA-TEXT-ANNEX-VII-I3
-  qualifier_spans: []
+  - AIA-TEXT-ANNEX-VII-P006
+  qualifier_spans:
+  - AIA-TEXT-ANNEX-VII-P007
+  - AIA-TEXT-ANNEX-VII-P008
+  - AIA-TEXT-ANNEX-VII-P009
+  - AIA-TEXT-ANNEX-VII-P010
+  - AIA-TEXT-ANNEX-VII-P011
+  - AIA-TEXT-ANNEX-VII-P012
   effective_date_spans: []
   conditions:
   - the provider lodges an application for assessment of the quality management system
@@ -181,7 +188,7 @@ norms:
   - shall_token
   - existing_implementation
   primary_spans:
-  - AIA-TEXT-ANNEX-VII-I3
+  - AIA-TEXT-ANNEX-VII-P014
   qualifier_spans: []
   effective_date_spans: []
   conditions:
@@ -220,7 +227,7 @@ norms:
   - shall_token
   - existing_implementation
   primary_spans:
-  - AIA-TEXT-ANNEX-VII-I3
+  - AIA-TEXT-ANNEX-VII-P015
   qualifier_spans: []
   effective_date_spans: []
   conditions:
@@ -258,7 +265,7 @@ norms:
   - semantic_legal_effect
   - shall_token
   primary_spans:
-  - AIA-TEXT-ANNEX-VII-I3
+  - AIA-TEXT-ANNEX-VII-P013
   qualifier_spans: []
   effective_date_spans: []
   conditions: []
@@ -292,7 +299,7 @@ norms:
   - semantic_legal_effect
   - shall_token
   primary_spans:
-  - AIA-TEXT-ANNEX-VII-I3
+  - AIA-TEXT-ANNEX-VII-P013
   qualifier_spans: []
   effective_date_spans: []
   conditions: []
@@ -331,7 +338,7 @@ norms:
   - semantic_legal_effect
   - shall_token
   primary_spans:
-  - AIA-TEXT-ANNEX-VII-I3
+  - AIA-TEXT-ANNEX-VII-P015
   qualifier_spans: []
   effective_date_spans: []
   conditions: []
@@ -366,7 +373,7 @@ norms:
   - semantic_legal_effect
   - shall_token
   primary_spans:
-  - AIA-TEXT-ANNEX-VII-I3
+  - AIA-TEXT-ANNEX-VII-P015
   qualifier_spans: []
   effective_date_spans: []
   conditions: []
@@ -407,7 +414,7 @@ norms:
   - shall_token
   - cross_reference_structure
   primary_spans:
-  - AIA-TEXT-ANNEX-VII-I4
+  - AIA-TEXT-ANNEX-VII-P017
   qualifier_spans: []
   effective_date_spans: []
   conditions:
@@ -447,8 +454,11 @@ norms:
   - shall_token
   - cross_reference_structure
   primary_spans:
-  - AIA-TEXT-ANNEX-VII-I4
-  qualifier_spans: []
+  - AIA-TEXT-ANNEX-VII-P018
+  qualifier_spans:
+  - AIA-TEXT-ANNEX-VII-P019
+  - AIA-TEXT-ANNEX-VII-P020
+  - AIA-TEXT-ANNEX-VII-P021
   effective_date_spans: []
   conditions:
   - the provider lodges the point 4.1 application for assessment of the technical documentation
@@ -488,7 +498,7 @@ norms:
   - semantic_legal_effect
   - shall_token
   primary_spans:
-  - AIA-TEXT-ANNEX-VII-I4
+  - AIA-TEXT-ANNEX-VII-P022
   qualifier_spans: []
   effective_date_spans: []
   conditions: []
@@ -526,7 +536,7 @@ norms:
   - shall_token
   - existing_implementation
   primary_spans:
-  - AIA-TEXT-ANNEX-VII-I4
+  - AIA-TEXT-ANNEX-VII-P022
   qualifier_spans: []
   effective_date_spans: []
   conditions:
@@ -568,7 +578,7 @@ norms:
   - other_modal
   - existing_implementation
   primary_spans:
-  - AIA-TEXT-ANNEX-VII-I4
+  - AIA-TEXT-ANNEX-VII-P023
   qualifier_spans: []
   effective_date_spans: []
   conditions:
@@ -607,7 +617,7 @@ norms:
   - semantic_legal_effect
   - shall_token
   primary_spans:
-  - AIA-TEXT-ANNEX-VII-I4
+  - AIA-TEXT-ANNEX-VII-P023
   qualifier_spans: []
   effective_date_spans: []
   conditions:
@@ -649,7 +659,7 @@ norms:
   - cross_reference_structure
   - existing_implementation
   primary_spans:
-  - AIA-TEXT-ANNEX-VII-I4
+  - AIA-TEXT-ANNEX-VII-P024
   qualifier_spans: []
   effective_date_spans: []
   conditions:
@@ -694,7 +704,7 @@ norms:
   - deeming_or_consequence
   - existing_implementation
   primary_spans:
-  - AIA-TEXT-ANNEX-VII-I4
+  - AIA-TEXT-ANNEX-VII-P025
   qualifier_spans: []
   effective_date_spans: []
   conditions:
@@ -731,7 +741,7 @@ norms:
   - semantic_legal_effect
   - shall_token
   primary_spans:
-  - AIA-TEXT-ANNEX-VII-I4
+  - AIA-TEXT-ANNEX-VII-P025
   qualifier_spans: []
   effective_date_spans: []
   conditions: []
@@ -768,7 +778,7 @@ norms:
   - semantic_legal_effect
   - shall_token
   primary_spans:
-  - AIA-TEXT-ANNEX-VII-I4
+  - AIA-TEXT-ANNEX-VII-P025
   qualifier_spans: []
   effective_date_spans: []
   conditions:
@@ -808,7 +818,7 @@ norms:
   - semantic_legal_effect
   - shall_token
   primary_spans:
-  - AIA-TEXT-ANNEX-VII-I4
+  - AIA-TEXT-ANNEX-VII-P025
   qualifier_spans: []
   effective_date_spans: []
   conditions: []
@@ -850,7 +860,7 @@ norms:
   - semantic_legal_effect
   - shall_token
   primary_spans:
-  - AIA-TEXT-ANNEX-VII-I4
+  - AIA-TEXT-ANNEX-VII-P025
   qualifier_spans: []
   effective_date_spans: []
   conditions:
@@ -887,7 +897,7 @@ norms:
   - semantic_legal_effect
   - shall_token
   primary_spans:
-  - AIA-TEXT-ANNEX-VII-I4
+  - AIA-TEXT-ANNEX-VII-P025
   qualifier_spans: []
   effective_date_spans: []
   conditions:
@@ -926,7 +936,7 @@ norms:
   - semantic_legal_effect
   - shall_token
   primary_spans:
-  - AIA-TEXT-ANNEX-VII-I4
+  - AIA-TEXT-ANNEX-VII-P026
   qualifier_spans: []
   effective_date_spans: []
   conditions: []
@@ -963,7 +973,7 @@ norms:
   - shall_token
   - existing_implementation
   primary_spans:
-  - AIA-TEXT-ANNEX-VII-I4
+  - AIA-TEXT-ANNEX-VII-P026
   qualifier_spans: []
   effective_date_spans: []
   conditions:
@@ -1005,7 +1015,7 @@ norms:
   - shall_token
   - cross_reference_structure
   primary_spans:
-  - AIA-TEXT-ANNEX-VII-I4
+  - AIA-TEXT-ANNEX-VII-P026
   qualifier_spans: []
   effective_date_spans: []
   conditions: []
@@ -1045,7 +1055,7 @@ norms:
   - semantic_legal_effect
   - shall_token
   primary_spans:
-  - AIA-TEXT-ANNEX-VII-I4
+  - AIA-TEXT-ANNEX-VII-P026
   qualifier_spans: []
   effective_date_spans: []
   conditions:
@@ -1084,7 +1094,7 @@ norms:
   - shall_token
   - existing_implementation
   primary_spans:
-  - AIA-TEXT-ANNEX-VII-I5
+  - AIA-TEXT-ANNEX-VII-P029
   qualifier_spans: []
   effective_date_spans: []
   conditions:
@@ -1122,7 +1132,7 @@ norms:
   - shall_token
   - existing_implementation
   primary_spans:
-  - AIA-TEXT-ANNEX-VII-I5
+  - AIA-TEXT-ANNEX-VII-P029
   qualifier_spans: []
   effective_date_spans: []
   conditions:
@@ -1159,7 +1169,7 @@ norms:
   - semantic_legal_effect
   - shall_token
   primary_spans:
-  - AIA-TEXT-ANNEX-VII-I5
+  - AIA-TEXT-ANNEX-VII-P030
   qualifier_spans: []
   effective_date_spans: []
   conditions: []
@@ -1194,7 +1204,7 @@ norms:
   - semantic_legal_effect
   - other_modal
   primary_spans:
-  - AIA-TEXT-ANNEX-VII-I5
+  - AIA-TEXT-ANNEX-VII-P030
   qualifier_spans: []
   effective_date_spans: []
   conditions:

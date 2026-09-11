@@ -1,6 +1,24 @@
 documents:
 - kind: annex
   number: VII
+  segmentation: paragraphs
+  paragraph_disposition: normative
+  paragraph_reason: ''
+  paragraph_overrides:
+    P001:
+      disposition: structural
+    P003:
+      disposition: structural
+    P005:
+      disposition: structural
+    P016:
+      disposition: structural
+    P027:
+      disposition: structural
+    P028:
+      disposition: context_only
+      reason: States the purpose of surveillance but imposes no independent legal effect.
+      verified_by: vidibro
   verified_by: vidibro
   divisions:
   - label: HEAD

@@ -5091,13 +5091,28 @@ def test_annex_seven_completion_covers_change_control_and_certificate_content():
     ]
     assert len(norms["AIA-NORM-ANNEX-VII-MODEL-ACCESS"].conditions) == 3
     assert len(norms["AIA-NORM-ANNEX-VII-ADDITIONAL-TESTS"].conditions) == 2
-    assert {norm.primary_spans[0] for norm in norms.values()} == {
-        "AIA-TEXT-ANNEX-VII-I1",
-        "AIA-TEXT-ANNEX-VII-I2",
-        "AIA-TEXT-ANNEX-VII-I3",
-        "AIA-TEXT-ANNEX-VII-I4",
-        "AIA-TEXT-ANNEX-VII-I5",
+    primary_spans = {norm.primary_spans[0] for norm in norms.values()}
+    assert "AIA-TEXT-ANNEX-VII-I3" not in primary_spans
+    assert "AIA-TEXT-ANNEX-VII-I4" not in primary_spans
+    assert primary_spans == {
+        "AIA-TEXT-ANNEX-VII-P002",
+        "AIA-TEXT-ANNEX-VII-P004",
+        "AIA-TEXT-ANNEX-VII-P006",
+        "AIA-TEXT-ANNEX-VII-P013",
+        "AIA-TEXT-ANNEX-VII-P014",
+        "AIA-TEXT-ANNEX-VII-P015",
+        "AIA-TEXT-ANNEX-VII-P017",
+        "AIA-TEXT-ANNEX-VII-P018",
+        *{f"AIA-TEXT-ANNEX-VII-P{index:03d}" for index in range(22, 27)},
+        "AIA-TEXT-ANNEX-VII-P029",
+        "AIA-TEXT-ANNEX-VII-P030",
     }
+    assert norms["AIA-NORM-ANNEX-VII-QMS-APPLICATION"].qualifier_spans == [
+        f"AIA-TEXT-ANNEX-VII-P{index:03d}" for index in range(7, 13)
+    ]
+    assert norms["AIA-NORM-ANNEX-VII-DOC-APPLICATION-CONTENT"].qualifier_spans == [
+        f"AIA-TEXT-ANNEX-VII-P{index:03d}" for index in range(19, 22)
+    ]
 
 
 def test_annex_nine_registration_content_is_carried_by_article_sixty():

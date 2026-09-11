@@ -4,7 +4,7 @@
 
 **Act version:** 2026-07-27
 
-The inventory contains 133 complete source-body partitions, 1505 exact segments, and 1391 proposed atomic norms. Every stored article and annex is present. Proposed
+The inventory contains 133 complete source-body partitions, 1530 exact segments, and 1391 proposed atomic norms. Every stored article and annex is present. Proposed
 norms have been extracted from 132 documents; the remaining
 work is retained explicitly rather than omitted. The inventory is not consumed by classification,
 rule selection, judging, or reporting.
@@ -1111,11 +1111,21 @@ rule selection, judging, or reporting.
 - AIA-TEXT-ANNEX-VI-P002: 1
 - AIA-TEXT-ANNEX-VI-P003: 1
 - AIA-TEXT-ANNEX-VI-P004: 1
-- AIA-TEXT-ANNEX-VII-I1: 1
-- AIA-TEXT-ANNEX-VII-I2: 2
-- AIA-TEXT-ANNEX-VII-I3: 7
-- AIA-TEXT-ANNEX-VII-I4: 17
-- AIA-TEXT-ANNEX-VII-I5: 4
+- AIA-TEXT-ANNEX-VII-P002: 1
+- AIA-TEXT-ANNEX-VII-P004: 2
+- AIA-TEXT-ANNEX-VII-P006: 1
+- AIA-TEXT-ANNEX-VII-P013: 2
+- AIA-TEXT-ANNEX-VII-P014: 1
+- AIA-TEXT-ANNEX-VII-P015: 3
+- AIA-TEXT-ANNEX-VII-P017: 1
+- AIA-TEXT-ANNEX-VII-P018: 1
+- AIA-TEXT-ANNEX-VII-P022: 2
+- AIA-TEXT-ANNEX-VII-P023: 2
+- AIA-TEXT-ANNEX-VII-P024: 1
+- AIA-TEXT-ANNEX-VII-P025: 6
+- AIA-TEXT-ANNEX-VII-P026: 4
+- AIA-TEXT-ANNEX-VII-P029: 2
+- AIA-TEXT-ANNEX-VII-P030: 2
 - AIA-TEXT-ANNEX-VIII-A: 1
 - AIA-TEXT-ANNEX-VIII-B: 1
 - AIA-TEXT-ANNEX-VIII-C: 1
@@ -1149,15 +1159,15 @@ rule selection, judging, or reporting.
 - Characters displayed by the extraction pass: 395046
 - Independently approved characters: 395046
 - Characters deliberately left as review debt: 0
-- Normative segments yielding multiple propositions: 226
+- Normative segments yielding multiple propositions: 231
 - Semantic candidates a shall-token pass missed: 536
 - Shall-token candidate recall: 61.5%
 - In-scope semantic candidates absent from existing implementation: 124
-- Detection-channel counts: cross_reference_structure=525, deeming_or_consequence=270, existing_implementation=444, other_modal=167, semantic_legal_effect=1391, shall_token=855
+- Detection-channel counts: cross_reference_structure=526, deeming_or_consequence=270, existing_implementation=444, other_modal=167, semantic_legal_effect=1391, shall_token=855
 - Mapping shapes, by norm: one-to-one=35, many-to-one=391, one-to-many=1, many-to-many=17, unmapped=947
 - Implementation debt candidates: 103
 - Interpretive links to non-binding guidance: 1
-- Review records with measured elapsed time: 0/2897
+- Review records with measured elapsed time: 0/2922
 - Parallel-duty groups: 21, linking 63 norms
 
 ## Parallel duties
