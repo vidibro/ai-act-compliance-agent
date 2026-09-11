@@ -24,6 +24,13 @@ class MappingShape(BaseModel):
     unmapped: int
 
 
+class ParallelDutyGroup(BaseModel):
+    """Norms that impose one duty through separate provisions or on different actors."""
+
+    norm_ids: list[str]
+    provisions: list[str]
+
+
 class CoverageMetrics(BaseModel):
     act_version_date: date
     documents: int
@@ -54,6 +61,7 @@ class CoverageMetrics(BaseModel):
     total_review_records: int
     measured_review_seconds: float
     interpretive_links: int
+    parallel_duty_groups: list[ParallelDutyGroup]
 
 
 def _mapping_shape(bundle: NormativeCoverageBundle) -> MappingShape:
@@ -84,6 +92,22 @@ def _mapping_shape(bundle: NormativeCoverageBundle) -> MappingShape:
         many_to_many=many_many,
         unmapped=unmapped,
     )
+
+
+def _parallel_duty_groups(bundle: NormativeCoverageBundle) -> list[ParallelDutyGroup]:
+    norms_by_id = {norm.norm_id: norm for norm in bundle.norm_inventory.norms}
+    groups = {
+        tuple(sorted({norm.norm_id, *norm.parallel_norm_ids}))
+        for norm in bundle.norm_inventory.norms
+        if norm.parallel_norm_ids
+    }
+    return [
+        ParallelDutyGroup(
+            norm_ids=list(group),
+            provisions=[norms_by_id[norm_id].primary_spans[0] for norm_id in group],
+        )
+        for group in sorted(groups)
+    ]
 
 
 def measure_normative_coverage(bundle: NormativeCoverageBundle) -> CoverageMetrics:
@@ -188,6 +212,7 @@ def measure_normative_coverage(bundle: NormativeCoverageBundle) -> CoverageMetri
         total_review_records=len(reviews),
         measured_review_seconds=sum(timed),
         interpretive_links=len(bundle.norm_inventory.interpretations),
+        parallel_duty_groups=_parallel_duty_groups(bundle),
     )
 
 
@@ -212,6 +237,16 @@ def render_coverage_markdown(metrics: CoverageMetrics) -> str:
         f"many-to-one={mapping.many_norms_to_one_target}, "
         f"one-to-many={mapping.one_norm_to_many_targets}, "
         f"many-to-many={mapping.many_to_many}, unmapped={mapping.unmapped}"
+    )
+    parallel_groups = metrics.parallel_duty_groups
+    parallel_norms = sum(len(group.norm_ids) for group in parallel_groups)
+    parallel_duties = "\n".join(
+        f"{index}. {len(group.norm_ids)} norms\n"
+        + "\n".join(
+            f"   - `{norm_id}` — `{provision}`"
+            for norm_id, provision in zip(group.norm_ids, group.provisions, strict=True)
+        )
+        for index, group in enumerate(parallel_groups, start=1)
     )
     channel_counts = ", ".join(
         f"{channel}={count}" for channel, count in metrics.detection_channels.items()
@@ -268,6 +303,15 @@ rule selection, judging, or reporting.
 - Implementation debt candidates: {len(metrics.implementation_debt_norm_ids)}
 - Interpretive links to non-binding guidance: {metrics.interpretive_links}
 - Review records with measured elapsed time: {timed_reviews}
+- Parallel-duty groups: {len(parallel_groups)}, linking {parallel_norms} norms
+
+## Parallel duties
+
+Each group is one duty imposed through separate provisions or on different actors. Every norm in a
+group still applies; the group records that they must be kept consistent, which neither a
+restatement (`carried_by_norm_ids`) nor a shared rule (`implementation_refs`) expresses.
+
+{parallel_duties}
 
 ## Findings
 

@@ -10,7 +10,7 @@ import pytest
 import yaml
 
 from aiact.norm_loader import load_normative_coverage
-from aiact.norm_metrics import measure_normative_coverage
+from aiact.norm_metrics import measure_normative_coverage, render_coverage_markdown
 from aiact.policy_loader import load_policy_spec
 from aiact.schemas.norm import (
     ConditionGroup,
@@ -5257,8 +5257,51 @@ def test_provisions_imposing_one_duty_name_each_other():
         "AIA-NORM-A049-P2-REPRESENTATIVE-REGISTER-NON-HIGH-RISK",
     }
 
+    # The same sentence written twice for two actors is the clearest case in the Act: an importer
+    # duty in Article 23 and the matching distributor duty in Article 24.
+    for importer, distributor in (
+        (
+            "AIA-NORM-A023-P2-WITHHOLD-NONCONFORMING-SYSTEM",
+            "AIA-NORM-A024-P2-WITHHOLD-NONCONFORMING-SYSTEM",
+        ),
+        ("AIA-NORM-A023-P4-PRESERVE-COMPLIANCE", "AIA-NORM-A024-P3-PRESERVE-COMPLIANCE"),
+        ("AIA-NORM-A023-P7-COOPERATE", "AIA-NORM-A024-P6-COOPERATE"),
+    ):
+        assert norms[importer].parallel_norm_ids == [distributor]
+        assert norms[importer].subjects[0].subject_ref == "importer"
+        assert norms[distributor].subjects[0].subject_ref == "distributor"
+
     for norm in bundle.norm_inventory.norms:
         for partner_id in norm.parallel_norm_ids:
             assert norm.norm_id in norms[partner_id].parallel_norm_ids
             # A restatement is already covered by `carried_by`; the two must not overlap.
             assert partner_id not in norm.carried_by_norm_ids
+
+
+def test_report_lists_every_parallel_duty_group_with_its_provisions(metrics):
+    """The relation exists so a reader can see every provision a duty is written in.
+
+    A ledger link nothing renders leaves the reader exactly where the debt started: one provision
+    per finding. So the report must carry each group, and each member beside the span it rests on.
+    """
+    groups = metrics.parallel_duty_groups
+    linked = [norm_id for group in groups for norm_id in group.norm_ids]
+    assert len(groups) == 21
+    assert len(linked) == 63
+    assert len(linked) == len(set(linked)), "a norm belongs to at most one group"
+
+    registration = next(g for g in groups if "AIA-NORM-A016-I-REGISTRATION" in g.norm_ids)
+    assert dict(zip(registration.norm_ids, registration.provisions, strict=True)) == {
+        "AIA-NORM-A016-I-REGISTRATION": "AIA-TEXT-A016-P010",
+        "AIA-NORM-A022-P3-E-REGISTER": "AIA-TEXT-A022-P008",
+        "AIA-NORM-A026-P8-REGISTER": "AIA-TEXT-A026-P8",
+        "AIA-NORM-A071-P2-PROVIDER-ENTER-ANNEX-VIII-DATA": "AIA-TEXT-A071-P002",
+        "AIA-NORM-A071-P2-REPRESENTATIVE-ENTER-ANNEX-VIII-DATA": "AIA-TEXT-A071-P002",
+    }
+
+    report = render_coverage_markdown(metrics)
+    assert "- Parallel-duty groups: 21, linking 63 norms" in report
+    section = report.split("## Parallel duties", 1)[1].split("\n## ", 1)[0]
+    for group in groups:
+        for norm_id, provision in zip(group.norm_ids, group.provisions, strict=True):
+            assert f"`{norm_id}` — `{provision}`" in section

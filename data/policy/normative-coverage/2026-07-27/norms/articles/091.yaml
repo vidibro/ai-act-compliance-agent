@@ -72,6 +72,8 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  parallel_norm_ids:
+  - AIA-NORM-A093-P2-INITIATE-STRUCTURED-DIALOGUE
 - norm_id: AIA-NORM-A091-P3-SCIENTIFIC-PANEL-INFORMATION-REQUEST
   act_version_date: '2026-07-27'
   kind: power
@@ -153,6 +155,8 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  parallel_norm_ids:
+  - AIA-NORM-A092-P4-ACCESS-REQUEST-CONTENT
 - norm_id: AIA-NORM-A091-P5-SUPPLY-REQUESTED-INFORMATION
   act_version_date: '2026-07-27'
   kind: obligation
@@ -231,6 +235,8 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  parallel_norm_ids:
+  - AIA-NORM-A092-P5-AUTHORISED-PERSON-PROVIDE-ACCESS
 - norm_id: AIA-NORM-A091-P5-LAWYER-SUPPLY
   act_version_date: '2026-07-27'
   kind: permission

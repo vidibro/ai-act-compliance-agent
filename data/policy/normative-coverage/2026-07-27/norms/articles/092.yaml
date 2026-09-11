@@ -162,6 +162,8 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  parallel_norm_ids:
+  - AIA-NORM-A091-P4-INFORMATION-REQUEST-CONTENT
 - norm_id: AIA-NORM-A092-P5-SUPPLY-REQUESTED-INFORMATION
   act_version_date: '2026-07-27'
   kind: obligation
@@ -240,6 +242,8 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  parallel_norm_ids:
+  - AIA-NORM-A091-P5-AUTHORISED-PERSON-SUPPLY
 - norm_id: AIA-NORM-A092-P6-ADOPT-EVALUATION-ARRANGEMENTS
   act_version_date: '2026-07-27'
   kind: obligation

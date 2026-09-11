@@ -256,6 +256,9 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  parallel_norm_ids:
+  - AIA-NORM-A045-P4-CONFIDENTIALITY
+  - AIA-NORM-A075-P3-SAFEGUARD-CONFIDENTIALITY
 - norm_id: AIA-NORM-A028-P7-ADEQUATE-PERSONNEL
   act_version_date: '2026-07-27'
   kind: obligation

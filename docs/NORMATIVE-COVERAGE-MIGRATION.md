@@ -886,7 +886,7 @@ and the norm layer is not imported by the pipeline at all — this is a runtime 
 one. Closing it means giving a rule the provisions it answers to and rendering them together, which
 also serves `Report-surfacing coverage` above.
 
-### Partly closed: one duty in several provisions has no recorded link
+### Closed: one duty in several provisions has no recorded link
 
 The ledger can say a norm restates another (`carried_by_norm_ids`) or that two norms share a rule
 (`implementation_refs`). It cannot say that separate provisions impose one duty when neither holds.
@@ -903,13 +903,24 @@ one group, a group needs two members, and a group may not overlap `carried_by_no
 restatement is already covered there. The loader rejects a norm naming a partner that does not name
 it back.
 
-Two groups are authored: the high-risk registration duty across Articles 16(i), 22(3)(e), 26(8) and
-71(2) twice, and the non-high-risk registration duty across Articles 6(4) and 49(2) twice.
+Twenty-one groups are authored, covering 63 norms. They came from a token-overlap scan over norm
+actions, read one by one; the scan proposes, it does not decide. It also under-reports: the
+Commission's duty to account for Section 2 when amending sectoral law is written thirteen times and
+the scan surfaced eleven, because marine equipment and the Regulation 300/2008 rule-maker fell below
+the similarity threshold.
 
-What remains open is the rest of the corpus and the report. A token-overlap scan finds 63
-cross-provision pairs whose actions overlap by 60% or more, of which the Article 4a/10(5) sets are
-already `carried_by`; the others are unexamined. Nothing renders the relation either, so a reader
-still sees one provision per finding.
+Two kinds of candidate were rejected rather than linked. Articles 53 and 55 repeat four duties
+word for word — alternative compliance, harmonised-standard presumption, reliance on codes,
+confidential treatment — but a systemic-risk model provider is subject to both articles, so they are
+one rule shape over two obligation sets, not one duty. Others merely share phrasing: Article 5(3)
+governs real-time biometric identification and Article 26(10) post-remote, and Articles 40(1) and
+41(3) are alternative routes to a presumption rather than a single duty.
+
+`report.md` renders a Parallel duties section listing every group with each member beside its
+primary span, and a regression test fails if any group or member drops out of it. The coverage
+report is still not the product report: the pipeline does not import the norm layer, so a finding
+shown to a user still cites one provision. That is the same runtime change as `a shared requirement
+cites only one provision` above, and closes with it.
 
 ### Open debt: a checklist is judged as one verdict
 

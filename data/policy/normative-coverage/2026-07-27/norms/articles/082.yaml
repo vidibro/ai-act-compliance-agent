@@ -87,6 +87,9 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  parallel_norm_ids:
+  - AIA-NORM-A079-P4-CORRECT-ALL-UNION-SYSTEMS
+  - AIA-NORM-A080-P5-CORRECT-ALL-UNION-SYSTEMS
 - norm_id: AIA-NORM-A082-P3-INFORM-ABOUT-RISK-FINDING
   act_version_date: '2026-07-27'
   kind: obligation
