@@ -359,14 +359,9 @@ norms:
     category: supported_operator
   action: implement measures to prevent, detect, respond to, resolve, and control training-data-poisoning
     attacks
-  norm_text: The technical solutions to address AI specific vulnerabilities shall include, where appropriate,
-    measures to prevent, detect, respond to, resolve and control for attacks trying to manipulate the
-    training data set (data poisoning), or pre-trained components used in training (model poisoning),
-    inputs designed to cause the AI model to make a mistake (adversarial examples or model evasion), confidentiality
-    attacks or model flaws.
+  norm_text: attacks trying to manipulate the training data set (data poisoning)
   detection_channels:
   - semantic_legal_effect
-  - shall_token
   - existing_implementation
   primary_spans:
   - AIA-TEXT-A015-P009
@@ -401,14 +396,9 @@ norms:
     category: supported_operator
   action: implement measures to prevent, detect, respond to, resolve, and control attacks manipulating
     pre-trained training components
-  norm_text: The technical solutions to address AI specific vulnerabilities shall include, where appropriate,
-    measures to prevent, detect, respond to, resolve and control for attacks trying to manipulate the
-    training data set (data poisoning), or pre-trained components used in training (model poisoning),
-    inputs designed to cause the AI model to make a mistake (adversarial examples or model evasion), confidentiality
-    attacks or model flaws.
+  norm_text: pre-trained components used in training (model poisoning)
   detection_channels:
   - semantic_legal_effect
-  - shall_token
   - existing_implementation
   primary_spans:
   - AIA-TEXT-A015-P009
@@ -443,14 +433,9 @@ norms:
     category: supported_operator
   action: implement measures to prevent, detect, respond to, resolve, and control adversarial-example
     and model-evasion attacks
-  norm_text: The technical solutions to address AI specific vulnerabilities shall include, where appropriate,
-    measures to prevent, detect, respond to, resolve and control for attacks trying to manipulate the
-    training data set (data poisoning), or pre-trained components used in training (model poisoning),
-    inputs designed to cause the AI model to make a mistake (adversarial examples or model evasion), confidentiality
-    attacks or model flaws.
+  norm_text: inputs designed to cause the AI model to make a mistake (adversarial examples or model evasion)
   detection_channels:
   - semantic_legal_effect
-  - shall_token
   - existing_implementation
   primary_spans:
   - AIA-TEXT-A015-P009
@@ -484,14 +469,9 @@ norms:
   - subject_ref: provider
     category: supported_operator
   action: implement measures to prevent, detect, respond to, resolve, and control confidentiality attacks
-  norm_text: The technical solutions to address AI specific vulnerabilities shall include, where appropriate,
-    measures to prevent, detect, respond to, resolve and control for attacks trying to manipulate the
-    training data set (data poisoning), or pre-trained components used in training (model poisoning),
-    inputs designed to cause the AI model to make a mistake (adversarial examples or model evasion), confidentiality
-    attacks or model flaws.
+  norm_text: confidentiality attacks
   detection_channels:
   - semantic_legal_effect
-  - shall_token
   - existing_implementation
   primary_spans:
   - AIA-TEXT-A015-P009
@@ -525,14 +505,9 @@ norms:
   - subject_ref: provider
     category: supported_operator
   action: implement measures to prevent, detect, respond to, resolve, and control model flaws
-  norm_text: The technical solutions to address AI specific vulnerabilities shall include, where appropriate,
-    measures to prevent, detect, respond to, resolve and control for attacks trying to manipulate the
-    training data set (data poisoning), or pre-trained components used in training (model poisoning),
-    inputs designed to cause the AI model to make a mistake (adversarial examples or model evasion), confidentiality
-    attacks or model flaws.
+  norm_text: model flaws
   detection_channels:
   - semantic_legal_effect
-  - shall_token
   - existing_implementation
   primary_spans:
   - AIA-TEXT-A015-P009

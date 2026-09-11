@@ -1497,6 +1497,14 @@ def test_article_fifteen_combines_each_threat_with_the_full_mitigation_cycle():
         for norm_id in threats
     )
     assert all(len(norms[norm_id].conditions) == 1 for norm_id in threats)
+    assert {norms[norm_id].norm_text for norm_id in threats} == {
+        "attacks trying to manipulate the training data set (data poisoning)",
+        "pre-trained components used in training (model poisoning)",
+        "inputs designed to cause the AI model to make a mistake "
+        "(adversarial examples or model evasion)",
+        "confidentiality attacks",
+        "model flaws",
+    }
 
 
 def test_article_sixteen_reuses_substantive_rules_without_duplicate_targets():

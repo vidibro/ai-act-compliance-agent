@@ -116,11 +116,7 @@ records:
   verified_by: vidibro
 - norm_id: AIA-NORM-A015-P5-DATA-POISONING
   source: A015-P009
-  quote: The technical solutions to address AI specific vulnerabilities shall include, where appropriate,
-    measures to prevent, detect, respond to, resolve and control for attacks trying to manipulate the
-    training data set (data poisoning), or pre-trained components used in training (model poisoning),
-    inputs designed to cause the AI model to make a mistake (adversarial examples or model evasion), confidentiality
-    attacks or model flaws.
+  quote: attacks trying to manipulate the training data set (data poisoning)
   action: implement measures to prevent, detect, respond to, resolve, and control training-data-poisoning
     attacks
   subject_ref: provider
@@ -132,11 +128,7 @@ records:
   verified_by: vidibro
 - norm_id: AIA-NORM-A015-P5-MODEL-POISONING
   source: A015-P009
-  quote: The technical solutions to address AI specific vulnerabilities shall include, where appropriate,
-    measures to prevent, detect, respond to, resolve and control for attacks trying to manipulate the
-    training data set (data poisoning), or pre-trained components used in training (model poisoning),
-    inputs designed to cause the AI model to make a mistake (adversarial examples or model evasion), confidentiality
-    attacks or model flaws.
+  quote: pre-trained components used in training (model poisoning)
   action: implement measures to prevent, detect, respond to, resolve, and control attacks manipulating
     pre-trained training components
   subject_ref: provider
@@ -147,11 +139,7 @@ records:
   verified_by: vidibro
 - norm_id: AIA-NORM-A015-P5-ADVERSARIAL-ATTACKS
   source: A015-P009
-  quote: The technical solutions to address AI specific vulnerabilities shall include, where appropriate,
-    measures to prevent, detect, respond to, resolve and control for attacks trying to manipulate the
-    training data set (data poisoning), or pre-trained components used in training (model poisoning),
-    inputs designed to cause the AI model to make a mistake (adversarial examples or model evasion), confidentiality
-    attacks or model flaws.
+  quote: inputs designed to cause the AI model to make a mistake (adversarial examples or model evasion)
   action: implement measures to prevent, detect, respond to, resolve, and control adversarial-example
     and model-evasion attacks
   subject_ref: provider
@@ -162,11 +150,7 @@ records:
   verified_by: vidibro
 - norm_id: AIA-NORM-A015-P5-CONFIDENTIALITY-ATTACKS
   source: A015-P009
-  quote: The technical solutions to address AI specific vulnerabilities shall include, where appropriate,
-    measures to prevent, detect, respond to, resolve and control for attacks trying to manipulate the
-    training data set (data poisoning), or pre-trained components used in training (model poisoning),
-    inputs designed to cause the AI model to make a mistake (adversarial examples or model evasion), confidentiality
-    attacks or model flaws.
+  quote: confidentiality attacks
   action: implement measures to prevent, detect, respond to, resolve, and control confidentiality attacks
   subject_ref: provider
   subject_category: supported_operator
@@ -176,11 +160,7 @@ records:
   verified_by: vidibro
 - norm_id: AIA-NORM-A015-P5-MODEL-FLAWS
   source: A015-P009
-  quote: The technical solutions to address AI specific vulnerabilities shall include, where appropriate,
-    measures to prevent, detect, respond to, resolve and control for attacks trying to manipulate the
-    training data set (data poisoning), or pre-trained components used in training (model poisoning),
-    inputs designed to cause the AI model to make a mistake (adversarial examples or model evasion), confidentiality
-    attacks or model flaws.
+  quote: model flaws
   action: implement measures to prevent, detect, respond to, resolve, and control model flaws
   subject_ref: provider
   subject_category: supported_operator
