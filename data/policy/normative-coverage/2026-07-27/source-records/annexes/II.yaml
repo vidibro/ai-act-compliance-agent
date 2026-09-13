@@ -9,10 +9,6 @@ records:
   verification_mode: answered_by_classification
   qualifier_spans: &chapeau
   - ANNEX-II-P001
-  dependencies: &article5_dependency
-  - dependency_ref: AIA-NORM-A005-P1-H-REAL-TIME-RBI
-    resolution: internal_resolved
-    detail: Article 5(1)(h)(iii) gives legal effect to the Annex II offence list within the real-time remote-biometric-identification exception.
   implementation_mode: applicability_question
   implementation_refs:
   - AIA-CQ-PROHIBITED
@@ -26,7 +22,6 @@ records:
   kind: applicability
   verification_mode: answered_by_classification
   qualifier_spans: *chapeau
-  dependencies: *article5_dependency
   implementation_mode: applicability_question
   implementation_refs:
   - AIA-CQ-PROHIBITED
@@ -40,7 +35,6 @@ records:
   kind: applicability
   verification_mode: answered_by_classification
   qualifier_spans: *chapeau
-  dependencies: *article5_dependency
   implementation_mode: applicability_question
   implementation_refs:
   - AIA-CQ-PROHIBITED
@@ -54,7 +48,6 @@ records:
   kind: applicability
   verification_mode: answered_by_classification
   qualifier_spans: *chapeau
-  dependencies: *article5_dependency
   implementation_mode: applicability_question
   implementation_refs:
   - AIA-CQ-PROHIBITED
@@ -68,7 +61,6 @@ records:
   kind: applicability
   verification_mode: answered_by_classification
   qualifier_spans: *chapeau
-  dependencies: *article5_dependency
   implementation_mode: applicability_question
   implementation_refs:
   - AIA-CQ-PROHIBITED
@@ -82,7 +74,6 @@ records:
   kind: applicability
   verification_mode: answered_by_classification
   qualifier_spans: *chapeau
-  dependencies: *article5_dependency
   implementation_mode: applicability_question
   implementation_refs:
   - AIA-CQ-PROHIBITED
@@ -96,7 +87,6 @@ records:
   kind: applicability
   verification_mode: answered_by_classification
   qualifier_spans: *chapeau
-  dependencies: *article5_dependency
   implementation_mode: applicability_question
   implementation_refs:
   - AIA-CQ-PROHIBITED
@@ -110,7 +100,6 @@ records:
   kind: applicability
   verification_mode: answered_by_classification
   qualifier_spans: *chapeau
-  dependencies: *article5_dependency
   implementation_mode: applicability_question
   implementation_refs:
   - AIA-CQ-PROHIBITED
@@ -124,7 +113,6 @@ records:
   kind: applicability
   verification_mode: answered_by_classification
   qualifier_spans: *chapeau
-  dependencies: *article5_dependency
   implementation_mode: applicability_question
   implementation_refs:
   - AIA-CQ-PROHIBITED
@@ -138,7 +126,6 @@ records:
   kind: applicability
   verification_mode: answered_by_classification
   qualifier_spans: *chapeau
-  dependencies: *article5_dependency
   implementation_mode: applicability_question
   implementation_refs:
   - AIA-CQ-PROHIBITED
@@ -152,7 +139,6 @@ records:
   kind: applicability
   verification_mode: answered_by_classification
   qualifier_spans: *chapeau
-  dependencies: *article5_dependency
   implementation_mode: applicability_question
   implementation_refs:
   - AIA-CQ-PROHIBITED
@@ -166,7 +152,6 @@ records:
   kind: applicability
   verification_mode: answered_by_classification
   qualifier_spans: *chapeau
-  dependencies: *article5_dependency
   implementation_mode: applicability_question
   implementation_refs:
   - AIA-CQ-PROHIBITED
@@ -180,7 +165,6 @@ records:
   kind: applicability
   verification_mode: answered_by_classification
   qualifier_spans: *chapeau
-  dependencies: *article5_dependency
   implementation_mode: applicability_question
   implementation_refs:
   - AIA-CQ-PROHIBITED
@@ -194,7 +178,6 @@ records:
   kind: applicability
   verification_mode: answered_by_classification
   qualifier_spans: *chapeau
-  dependencies: *article5_dependency
   implementation_mode: applicability_question
   implementation_refs:
   - AIA-CQ-PROHIBITED
@@ -208,7 +191,6 @@ records:
   kind: applicability
   verification_mode: answered_by_classification
   qualifier_spans: *chapeau
-  dependencies: *article5_dependency
   implementation_mode: applicability_question
   implementation_refs:
   - AIA-CQ-PROHIBITED
@@ -222,7 +204,6 @@ records:
   kind: applicability
   verification_mode: answered_by_classification
   qualifier_spans: *chapeau
-  dependencies: *article5_dependency
   implementation_mode: applicability_question
   implementation_refs:
   - AIA-CQ-PROHIBITED

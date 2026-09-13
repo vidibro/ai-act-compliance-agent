@@ -15,7 +15,6 @@ norms:
   detection_channels:
   - semantic_legal_effect
   - shall_token
-  - cross_reference_structure
   - existing_implementation
   primary_spans:
   - AIA-TEXT-A010-P001
@@ -24,10 +23,7 @@ norms:
   conditions: []
   exceptions: []
   mandatory_content: []
-  dependencies:
-  - dependency_ref: AIA-NORM-A004A-P1-HIGH-RISK-BIAS-DATA-PROCESSING
-    resolution: internal_resolved
-    detail: Article 4a(1) supplies the special-category-data permission and its safeguard conditions.
+  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: compliance_rule
@@ -806,7 +802,6 @@ norms:
   - semantic_legal_effect
   - shall_token
   - deeming_or_consequence
-  - cross_reference_structure
   - existing_implementation
   primary_spans:
   - AIA-TEXT-A010-P020
@@ -816,11 +811,7 @@ norms:
   - the high-risk AI system is developed without techniques involving training an AI model
   exceptions: []
   mandatory_content: []
-  dependencies:
-  - dependency_ref: AIA-NORM-A004A-P1-HIGH-RISK-BIAS-DATA-PROCESSING
-    resolution: internal_resolved
-    detail: Article 4a(1) supplies the special-category-data quality criterion incorporated by Article
-      10(6).
+  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: compliance_rule

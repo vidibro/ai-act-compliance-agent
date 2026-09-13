@@ -17,7 +17,6 @@ norms:
   detection_channels:
   - semantic_legal_effect
   - shall_token
-  - cross_reference_structure
   - existing_implementation
   primary_spans:
   - AIA-TEXT-A086-P001
@@ -31,10 +30,7 @@ norms:
   exceptions:
   - the system is listed under point 2 of Annex III
   mandatory_content: []
-  dependencies:
-  - dependency_ref: AIA-NORM-A006-P2-ANNEX-III-HIGH-RISK
-    resolution: internal_resolved
-    detail: Annex III supplies the high-risk system classes this right attaches to.
+  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: compliance_rule

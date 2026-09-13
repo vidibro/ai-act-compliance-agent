@@ -388,6 +388,26 @@ def test_relation_schema_rejects_retired_factual_conditions_field():
         )
 
 
+def test_source_record_rejects_legacy_internal_norm_dependency():
+    with pytest.raises(ValueError, match="internal norm dependencies must use relies_on_norms"):
+        NormSourceRecord.model_validate(
+            {
+                "norm_id": "AIA-NORM-A001-P1-PARENT",
+                "source": "A001-P1",
+                "quote": "Parent requirement.",
+                "action": "meet the parent requirement",
+                "subject_ref": "provider",
+                "subject_category": "supported_operator",
+                "dependencies": [
+                    {
+                        "dependency_ref": "AIA-NORM-A001-P2-CHILD",
+                        "resolution": "internal_resolved",
+                    }
+                ],
+            }
+        )
+
+
 def test_document_verifier_approves_all_non_debt_segments(tmp_path):
     version = "2030-01-02"
     body = "Article 1\nPurpose\n\n1. Context only.\n"

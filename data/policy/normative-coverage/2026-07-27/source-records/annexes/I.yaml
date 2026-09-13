@@ -8,10 +8,6 @@ records:
   subject_category: other
   kind: applicability
   verification_mode: answered_by_classification
-  dependencies: &article6_dependency
-  - dependency_ref: AIA-NORM-A006-P1-ANNEX-I-HIGH-RISK
-    resolution: internal_resolved
-    detail: Article 6(1) gives high-risk legal effect to the Annex I product listing when its cumulative conditions are met.
   implementation_mode: applicability_question
   implementation_refs:
   - AIA-CQ-ANNEX-I
@@ -25,7 +21,6 @@ records:
   subject_category: other
   kind: applicability
   verification_mode: answered_by_classification
-  dependencies: *article6_dependency
   implementation_mode: applicability_question
   implementation_refs:
   - AIA-CQ-ANNEX-I
@@ -39,7 +34,6 @@ records:
   subject_category: other
   kind: applicability
   verification_mode: answered_by_classification
-  dependencies: *article6_dependency
   implementation_mode: applicability_question
   implementation_refs:
   - AIA-CQ-ANNEX-I
@@ -53,7 +47,6 @@ records:
   subject_category: other
   kind: applicability
   verification_mode: answered_by_classification
-  dependencies: *article6_dependency
   implementation_mode: applicability_question
   implementation_refs:
   - AIA-CQ-ANNEX-I
@@ -67,7 +60,6 @@ records:
   subject_category: other
   kind: applicability
   verification_mode: answered_by_classification
-  dependencies: *article6_dependency
   implementation_mode: applicability_question
   implementation_refs:
   - AIA-CQ-ANNEX-I
@@ -81,7 +73,6 @@ records:
   subject_category: other
   kind: applicability
   verification_mode: answered_by_classification
-  dependencies: *article6_dependency
   implementation_mode: applicability_question
   implementation_refs:
   - AIA-CQ-ANNEX-I
@@ -95,7 +86,6 @@ records:
   subject_category: other
   kind: applicability
   verification_mode: answered_by_classification
-  dependencies: *article6_dependency
   implementation_mode: applicability_question
   implementation_refs:
   - AIA-CQ-ANNEX-I
@@ -109,7 +99,6 @@ records:
   subject_category: other
   kind: applicability
   verification_mode: answered_by_classification
-  dependencies: *article6_dependency
   implementation_mode: applicability_question
   implementation_refs:
   - AIA-CQ-ANNEX-I
@@ -123,7 +112,6 @@ records:
   subject_category: other
   kind: applicability
   verification_mode: answered_by_classification
-  dependencies: *article6_dependency
   implementation_mode: applicability_question
   implementation_refs:
   - AIA-CQ-ANNEX-I
@@ -137,7 +125,6 @@ records:
   subject_category: other
   kind: applicability
   verification_mode: answered_by_classification
-  dependencies: *article6_dependency
   implementation_mode: applicability_question
   implementation_refs:
   - AIA-CQ-ANNEX-I
@@ -151,7 +138,6 @@ records:
   subject_category: other
   kind: applicability
   verification_mode: answered_by_classification
-  dependencies: *article6_dependency
   implementation_mode: applicability_question
   implementation_refs:
   - AIA-CQ-ANNEX-I
@@ -165,7 +151,6 @@ records:
   subject_category: other
   kind: applicability
   verification_mode: answered_by_classification
-  dependencies: *article6_dependency
   implementation_mode: applicability_question
   implementation_refs:
   - AIA-CQ-ANNEX-I
@@ -179,7 +164,6 @@ records:
   subject_category: other
   kind: applicability
   verification_mode: answered_by_classification
-  dependencies: *article6_dependency
   implementation_mode: applicability_question
   implementation_refs:
   - AIA-CQ-ANNEX-I
@@ -193,7 +177,6 @@ records:
   subject_category: other
   kind: applicability
   verification_mode: answered_by_classification
-  dependencies: *article6_dependency
   implementation_mode: applicability_question
   implementation_refs:
   - AIA-CQ-ANNEX-I
@@ -207,7 +190,6 @@ records:
   subject_category: other
   kind: applicability
   verification_mode: answered_by_classification
-  dependencies: *article6_dependency
   implementation_mode: applicability_question
   implementation_refs:
   - AIA-CQ-ANNEX-I
@@ -221,7 +203,6 @@ records:
   subject_category: other
   kind: applicability
   verification_mode: answered_by_classification
-  dependencies: *article6_dependency
   implementation_mode: applicability_question
   implementation_refs:
   - AIA-CQ-ANNEX-I
@@ -235,7 +216,6 @@ records:
   subject_category: other
   kind: applicability
   verification_mode: answered_by_classification
-  dependencies: *article6_dependency
   implementation_mode: applicability_question
   implementation_refs:
   - AIA-CQ-ANNEX-I
@@ -249,7 +229,6 @@ records:
   subject_category: other
   kind: applicability
   verification_mode: answered_by_classification
-  dependencies: *article6_dependency
   implementation_mode: applicability_question
   implementation_refs:
   - AIA-CQ-ANNEX-I
@@ -263,7 +242,6 @@ records:
   subject_category: other
   kind: applicability
   verification_mode: answered_by_classification
-  dependencies: *article6_dependency
   implementation_mode: applicability_question
   implementation_refs:
   - AIA-CQ-ANNEX-I
@@ -279,7 +257,6 @@ records:
   verification_mode: answered_by_classification
   conditions:
   - the product concerns the design, production, or placing on the market of unmanned aircraft referred to in Article 2(1)(a) or (b) of Regulation (EU) 2018/1139, or their engines, propellers, parts, or remote-control equipment
-  dependencies: *article6_dependency
   implementation_mode: applicability_question
   implementation_refs:
   - AIA-CQ-ANNEX-I
@@ -293,7 +270,6 @@ records:
   subject_category: other
   kind: applicability
   verification_mode: answered_by_classification
-  dependencies: *article6_dependency
   implementation_mode: applicability_question
   implementation_refs:
   - AIA-CQ-ANNEX-I

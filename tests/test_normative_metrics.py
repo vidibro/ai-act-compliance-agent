@@ -785,11 +785,12 @@ def test_article_four_a_second_permission_imports_safeguards_without_creating_bi
         "AIA-TEXT-A004A-P009",
         "AIA-TEXT-A004A-P010",
     ]
-    imported = {
-        dependency.dependency_ref
-        for dependency in permission.dependencies
-        if dependency.dependency_ref.startswith("AIA-NORM-A004A-P1-")
-    }
+    imported = set(
+        bundle.norm_inventory.target_norm_ids_for(
+            permission.norm_id, NormRelationKind.RELIES_ON_NORMS
+        )
+    )
+    imported = {norm_id for norm_id in imported if norm_id.startswith("AIA-NORM-A004A-P1-")}
     assert imported == {
         "AIA-NORM-A004A-P1-B-REUSE-SECURITY",
         "AIA-NORM-A004A-P1-C-ACCESS-SAFEGUARDS",
@@ -930,9 +931,10 @@ def test_article_six_norm_text_preserves_classification_scope_and_delegated_act_
     assert annex_i.norm_text.startswith("Irrespective of whether")
     assert "regardless of whether" in annex_i.action
     assert safety_override.norm_text.startswith("Notwithstanding paragraph 1a")
-    assert any(
-        dependency.dependency_ref == "AIA-NORM-A006-P1A-NON-SAFETY-ASSISTANCE"
-        for dependency in safety_override.dependencies
+    assert "AIA-NORM-A006-P1A-NON-SAFETY-ASSISTANCE" in (
+        bundle.norm_inventory.target_norm_ids_for(
+            safety_override.norm_id, NormRelationKind.RELIES_ON_NORMS
+        )
     )
     assert "concrete and reliable evidence" in add_conditions.norm_text
     assert "concrete and reliable evidence" in delete_conditions.norm_text
@@ -1005,7 +1007,11 @@ def test_article_twenty_six_preserves_structured_triggers_and_complete_log_reten
         "initial identification of a potential suspect based on objective and verifiable facts "
         "directly linked to the offence"
     ]
-    assert {dependency.dependency_ref for dependency in authorisation.dependencies} == {
+    assert set(
+        bundle.norm_inventory.target_norm_ids_for(
+            authorisation.norm_id, NormRelationKind.RELIES_ON_NORMS
+        )
+    ) == {
         "AIA-NORM-A026-P10-PRESERVE-DIRECTIVE-2016-680"
     }
     assert retention.norm_text.startswith("Deployers of high-risk AI systems shall keep")
@@ -1160,9 +1166,9 @@ def test_annex_three_supplies_twenty_five_article_six_classification_routes():
     assert len(norms) == 25
     assert all(norm.kind.value == "applicability" for norm in norms)
     assert all(
-        any(
-            dependency.dependency_ref == "AIA-NORM-A006-P2-ANNEX-III-HIGH-RISK"
-            for dependency in norm.dependencies
+        "AIA-NORM-A006-P2-ANNEX-III-HIGH-RISK"
+        in bundle.norm_inventory.target_norm_ids_for(
+            norm.norm_id, NormRelationKind.RELIES_ON_NORMS
         )
         for norm in norms
     )
@@ -1317,7 +1323,12 @@ def test_article_eleven_separates_documentation_content_and_assessment_duties():
     single_set = norms["AIA-NORM-A011-P2-SINGLE-DOCUMENTATION-SET"]
     assert single_set.primary_spans == ["AIA-TEXT-A011-P2"]
     assert single_set.implementation_refs == ["AIA-HR-A11-2"]
-    assert len(single_set.dependencies) == 2
+    assert bundle.norm_inventory.target_norm_ids_for(
+        single_set.norm_id, NormRelationKind.RELIES_ON_NORMS
+    ) == ["AIA-NORM-A011-P1-ANNEX-IV"]
+    assert [dependency.resolution.value for dependency in single_set.dependencies] == [
+        "external_recorded"
+    ]
 
 
 def test_article_twelve_separates_general_and_biometric_logging_requirements():

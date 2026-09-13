@@ -244,6 +244,1481 @@ norm_relations:
   - {relation_id: AIA-REL-PARALLEL-019, source_norm_id: AIA-NORM-A091-P4-INFORMATION-REQUEST-CONTENT, kind: parallel_norms, target_norm_ids: [AIA-NORM-A092-P4-ACCESS-REQUEST-CONTENT], legal_basis_spans: [AIA-TEXT-A091-P004, AIA-TEXT-A092-P006]}
   - {relation_id: AIA-REL-PARALLEL-020, source_norm_id: AIA-NORM-A091-P5-AUTHORISED-PERSON-SUPPLY, kind: parallel_norms, target_norm_ids: [AIA-NORM-A092-P5-AUTHORISED-PERSON-PROVIDE-ACCESS], legal_basis_spans: [AIA-TEXT-A091-P005, AIA-TEXT-A092-P007]}
   - {relation_id: AIA-REL-PARALLEL-021, source_norm_id: AIA-NORM-A019-P1-RETENTION-PERIOD, kind: parallel_norms, target_norm_ids: [AIA-NORM-A026-P6-KEEP-CONTROLLED-LOGS], legal_basis_spans: [AIA-TEXT-A019-P001, AIA-TEXT-A026-P6]}
+  - relation_id: AIA-REL-A002-P8-REAL-WORLD-TESTING-CARVEOUT-DEPENDENCY-01
+    source_norm_id: AIA-NORM-A002-P8-REAL-WORLD-TESTING-CARVEOUT
+    kind: relies_on_norms
+    target_norm_ids:
+    - AIA-NORM-A002-P8-PRE-MARKET-RD-EXCLUSION
+    legal_basis_spans:
+    - AIA-TEXT-A002-P017
+    detail: This norm limits the exclusion stated earlier in the same paragraph.
+  - relation_id: AIA-REL-A004-P2-SUPPORT-PROVIDERS-DEPLOYERS-DEPENDENCY-01
+    source_norm_id: AIA-NORM-A004-P2-SUPPORT-PROVIDERS-DEPLOYERS
+    kind: relies_on_norms
+    target_norm_ids:
+    - AIA-NORM-A004-P1-AI-LITERACY-MEASURES
+    legal_basis_spans:
+    - AIA-TEXT-A004-P002
+    detail: The supported efforts concern fulfilment of the Article 4(1) obligation.
+  - relation_id: AIA-REL-A004-P2-PUBLISH-PRACTICAL-EXAMPLES-DEPENDENCY-01
+    source_norm_id: AIA-NORM-A004-P2-PUBLISH-PRACTICAL-EXAMPLES
+    kind: relies_on_norms
+    target_norm_ids:
+    - AIA-NORM-A004-P1-AI-LITERACY-MEASURES
+    legal_basis_spans:
+    - AIA-TEXT-A004-P002
+    detail: The examples concern compliance with the Article 4(1) obligation.
+  - relation_id: AIA-REL-A004-P3-BOARD-RECOMMENDATIONS-DEPENDENCY-01
+    source_norm_id: AIA-NORM-A004-P3-BOARD-RECOMMENDATIONS
+    kind: relies_on_norms
+    target_norm_ids:
+    - AIA-NORM-A004-P1-AI-LITERACY-MEASURES
+    legal_basis_spans:
+    - AIA-TEXT-A004-P003
+    detail: The recommendations support promotion of the AI literacy required by Article 4(1).
+  - relation_id: AIA-REL-A004A-P1-HIGH-RISK-BIAS-DATA-PROCESSING-DEPENDENCY-02
+    source_norm_id: AIA-NORM-A004A-P1-HIGH-RISK-BIAS-DATA-PROCESSING
+    kind: relies_on_norms
+    target_norm_ids:
+    - AIA-NORM-A003-D037-SPECIAL-CATEGORIES-OF-PERSONAL-DATA
+    legal_basis_spans:
+    - AIA-TEXT-A004A-P001
+    detail: Article 3(37) defines the special categories of personal data covered by the permission.
+  - relation_id: AIA-REL-A004A-P2-OTHER-SYSTEM-BIAS-DATA-PROCESSING-DEPENDENCY-01
+    source_norm_id: AIA-NORM-A004A-P2-OTHER-SYSTEM-BIAS-DATA-PROCESSING
+    kind: relies_on_norms
+    target_norm_ids:
+    - AIA-NORM-A003-D037-SPECIAL-CATEGORIES-OF-PERSONAL-DATA
+    legal_basis_spans:
+    - AIA-TEXT-A004A-P008
+    detail: Article 3(37) defines the special categories of personal data covered by the permission.
+  - relation_id: AIA-REL-A004A-P2-OTHER-SYSTEM-BIAS-DATA-PROCESSING-DEPENDENCY-02
+    source_norm_id: AIA-NORM-A004A-P2-OTHER-SYSTEM-BIAS-DATA-PROCESSING
+    kind: relies_on_norms
+    target_norm_ids:
+    - AIA-NORM-A004A-P1-B-REUSE-SECURITY
+    legal_basis_spans:
+    - AIA-TEXT-A004A-P008
+    detail: Article 4a(2)(b) imports this paragraph 1 safeguard.
+  - relation_id: AIA-REL-A004A-P2-OTHER-SYSTEM-BIAS-DATA-PROCESSING-DEPENDENCY-03
+    source_norm_id: AIA-NORM-A004A-P2-OTHER-SYSTEM-BIAS-DATA-PROCESSING
+    kind: relies_on_norms
+    target_norm_ids:
+    - AIA-NORM-A004A-P1-C-ACCESS-SAFEGUARDS
+    legal_basis_spans:
+    - AIA-TEXT-A004A-P008
+    detail: Article 4a(2)(b) imports this paragraph 1 safeguard.
+  - relation_id: AIA-REL-A004A-P2-OTHER-SYSTEM-BIAS-DATA-PROCESSING-DEPENDENCY-04
+    source_norm_id: AIA-NORM-A004A-P2-OTHER-SYSTEM-BIAS-DATA-PROCESSING
+    kind: relies_on_norms
+    target_norm_ids:
+    - AIA-NORM-A004A-P1-D-NO-THIRD-PARTY-ACCESS
+    legal_basis_spans:
+    - AIA-TEXT-A004A-P008
+    detail: Article 4a(2)(b) imports this paragraph 1 safeguard.
+  - relation_id: AIA-REL-A004A-P2-OTHER-SYSTEM-BIAS-DATA-PROCESSING-DEPENDENCY-05
+    source_norm_id: AIA-NORM-A004A-P2-OTHER-SYSTEM-BIAS-DATA-PROCESSING
+    kind: relies_on_norms
+    target_norm_ids:
+    - AIA-NORM-A004A-P1-E-DELETE-DATA
+    legal_basis_spans:
+    - AIA-TEXT-A004A-P008
+    detail: Article 4a(2)(b) imports this paragraph 1 safeguard.
+  - relation_id: AIA-REL-A004A-P2-OTHER-SYSTEM-BIAS-DATA-PROCESSING-DEPENDENCY-06
+    source_norm_id: AIA-NORM-A004A-P2-OTHER-SYSTEM-BIAS-DATA-PROCESSING
+    kind: relies_on_norms
+    target_norm_ids:
+    - AIA-NORM-A004A-P1-F-RECORD-NECESSITY
+    legal_basis_spans:
+    - AIA-TEXT-A004A-P008
+    detail: Article 4a(2)(b) imports this paragraph 1 safeguard.
+  - relation_id: AIA-REL-A004A-P2-NO-BIAS-DETECTION-DUTY-DEPENDENCY-01
+    source_norm_id: AIA-NORM-A004A-P2-NO-BIAS-DETECTION-DUTY
+    kind: relies_on_norms
+    target_norm_ids:
+    - AIA-NORM-A004A-P2-OTHER-SYSTEM-BIAS-DATA-PROCESSING
+    legal_basis_spans:
+    - AIA-TEXT-A004A-P011
+    detail: The clause limits the legal effect of the Article 4a(2) permission.
+  - relation_id: AIA-REL-A005-P1-G-SENSITIVE-BIOMETRIC-CATEGORISATION-DEPENDENCY-01
+    source_norm_id: AIA-NORM-A005-P1-G-SENSITIVE-BIOMETRIC-CATEGORISATION
+    kind: relies_on_norms
+    target_norm_ids:
+    - AIA-NORM-A003-D040-BIOMETRIC-CATEGORISATION-SYSTEM
+    legal_basis_spans:
+    - AIA-TEXT-A005-P012
+    detail: Article 3(40) defines biometric categorisation systems.
+  - relation_id: AIA-REL-A005-P1-H-REAL-TIME-RBI-DEPENDENCY-01
+    source_norm_id: AIA-NORM-A005-P1-H-REAL-TIME-RBI
+    kind: relies_on_norms
+    target_norm_ids:
+    - AIA-NORM-A003-D042-REAL-TIME-REMOTE-BIOMETRIC-IDENTIFICATION-SYSTEM
+    legal_basis_spans:
+    - AIA-TEXT-A005-P013
+    detail: Article 3(42) defines a real-time remote biometric identification system.
+  - relation_id: AIA-REL-A005-P1-H-REAL-TIME-RBI-DEPENDENCY-02
+    source_norm_id: AIA-NORM-A005-P1-H-REAL-TIME-RBI
+    kind: relies_on_norms
+    target_norm_ids:
+    - AIA-NORM-A003-D044-PUBLICLY-ACCESSIBLE-SPACE
+    legal_basis_spans:
+    - AIA-TEXT-A005-P013
+    detail: Article 3(44) defines publicly accessible space.
+  - relation_id: AIA-REL-A005-P1A-MARKET-SERVICE-SCOPE-DEPENDENCY-01
+    source_norm_id: AIA-NORM-A005-P1A-MARKET-SERVICE-SCOPE
+    kind: relies_on_norms
+    target_norm_ids:
+    - AIA-NORM-A005-P1-BA-NONCONSENSUAL-INTIMATE-MATERIAL
+    legal_basis_spans:
+    - AIA-TEXT-A005-P019
+    detail: This norm limits market placement and service under point (ba).
+  - relation_id: AIA-REL-A005-P1A-MARKET-SERVICE-SCOPE-DEPENDENCY-02
+    source_norm_id: AIA-NORM-A005-P1A-MARKET-SERVICE-SCOPE
+    kind: relies_on_norms
+    target_norm_ids:
+    - AIA-NORM-A005-P1-BB-DIRECTIVE-MATERIAL
+    legal_basis_spans:
+    - AIA-TEXT-A005-P019
+    detail: This norm limits market placement and service under point (bb).
+  - relation_id: AIA-REL-A005-P1A-DEPLOYER-USE-SCOPE-DEPENDENCY-01
+    source_norm_id: AIA-NORM-A005-P1A-DEPLOYER-USE-SCOPE
+    kind: relies_on_norms
+    target_norm_ids:
+    - AIA-NORM-A005-P1-BA-NONCONSENSUAL-INTIMATE-MATERIAL
+    legal_basis_spans:
+    - AIA-TEXT-A005-P022
+    detail: This norm limits use under point (ba).
+  - relation_id: AIA-REL-A005-P1A-DEPLOYER-USE-SCOPE-DEPENDENCY-02
+    source_norm_id: AIA-NORM-A005-P1A-DEPLOYER-USE-SCOPE
+    kind: relies_on_norms
+    target_norm_ids:
+    - AIA-NORM-A005-P1-BB-DIRECTIVE-MATERIAL
+    legal_basis_spans:
+    - AIA-TEXT-A005-P022
+    detail: This norm limits use under point (bb).
+  - relation_id: AIA-REL-A005-P1B-NON-MANIPULATION-DEPENDENCY-01
+    source_norm_id: AIA-NORM-A005-P1B-NON-MANIPULATION
+    kind: relies_on_norms
+    target_norm_ids:
+    - AIA-NORM-A005-P1-BA-NONCONSENSUAL-INTIMATE-MATERIAL
+    legal_basis_spans:
+    - AIA-TEXT-A005-P023
+    detail: This consequence narrows what constitutes manipulation under point (ba).
+  - relation_id: AIA-REL-A005-P2-CONFIRM-TARGETED-IDENTITY-DEPENDENCY-01
+    source_norm_id: AIA-NORM-A005-P2-CONFIRM-TARGETED-IDENTITY
+    kind: relies_on_norms
+    target_norm_ids:
+    - AIA-NORM-A005-P1-H-REAL-TIME-RBI
+    legal_basis_spans:
+    - AIA-TEXT-A005-P024
+    detail: The obligation applies to use under an Article 5(1)(h) exception.
+  - relation_id: AIA-REL-A005-P2-CONSIDER-IMPACTS-DEPENDENCY-01
+    source_norm_id: AIA-NORM-A005-P2-CONSIDER-IMPACTS
+    kind: relies_on_norms
+    target_norm_ids:
+    - AIA-NORM-A005-P1-H-REAL-TIME-RBI
+    legal_basis_spans:
+    - AIA-TEXT-A005-P024
+    detail: The assessment applies to use under an Article 5(1)(h) exception.
+  - relation_id: AIA-REL-A005-P3-PRIOR-AUTHORISATION-DEPENDENCY-01
+    source_norm_id: AIA-NORM-A005-P3-PRIOR-AUTHORISATION
+    kind: relies_on_norms
+    target_norm_ids:
+    - AIA-NORM-A005-P1-H-REAL-TIME-RBI
+    legal_basis_spans:
+    - AIA-TEXT-A005-P028
+    detail: Article 5(1)(h) supplies the law-enforcement objectives that bring a use within this paragraph.
+  - relation_id: AIA-REL-A005-P3-URGENT-USE-DEPENDENCY-01
+    source_norm_id: AIA-NORM-A005-P3-URGENT-USE
+    kind: relies_on_norms
+    target_norm_ids:
+    - AIA-NORM-A005-P1-H-REAL-TIME-RBI
+    legal_basis_spans:
+    - AIA-TEXT-A005-P028
+    detail: Article 5(1)(h) supplies the law-enforcement objectives that bring a use within this paragraph.
+  - relation_id: AIA-REL-A005-P3-STOP-ON-REJECTION-DEPENDENCY-01
+    source_norm_id: AIA-NORM-A005-P3-STOP-ON-REJECTION
+    kind: relies_on_norms
+    target_norm_ids:
+    - AIA-NORM-A005-P1-H-REAL-TIME-RBI
+    legal_basis_spans:
+    - AIA-TEXT-A005-P028
+    detail: Article 5(1)(h) supplies the law-enforcement objectives that bring a use within this paragraph.
+  - relation_id: AIA-REL-A005-P3-DELETE-ON-REJECTION-DEPENDENCY-01
+    source_norm_id: AIA-NORM-A005-P3-DELETE-ON-REJECTION
+    kind: relies_on_norms
+    target_norm_ids:
+    - AIA-NORM-A005-P1-H-REAL-TIME-RBI
+    legal_basis_spans:
+    - AIA-TEXT-A005-P028
+    detail: Article 5(1)(h) supplies the law-enforcement objectives that bring a use within this paragraph.
+  - relation_id: AIA-REL-A005-P3-RESTRICT-AUTHORISATION-DEPENDENCY-01
+    source_norm_id: AIA-NORM-A005-P3-RESTRICT-AUTHORISATION
+    kind: relies_on_norms
+    target_norm_ids:
+    - AIA-NORM-A005-P1-H-REAL-TIME-RBI
+    legal_basis_spans:
+    - AIA-TEXT-A005-P029
+    detail: Article 5(1)(h) supplies the permitted law-enforcement objectives.
+  - relation_id: AIA-REL-A005-P3-CONSIDER-P2-ELEMENTS-DEPENDENCY-01
+    source_norm_id: AIA-NORM-A005-P3-CONSIDER-P2-ELEMENTS
+    kind: relies_on_norms
+    target_norm_ids:
+    - AIA-NORM-A005-P2-CONSIDER-IMPACTS
+    legal_basis_spans:
+    - AIA-TEXT-A005-P029
+    detail: The referenced norm records the non-use harm and rights-and-freedoms consequences that must
+      be considered.
+  - relation_id: AIA-REL-A006-P1-ANNEX-I-HIGH-RISK-DEPENDENCY-01
+    source_norm_id: AIA-NORM-A006-P1-ANNEX-I-HIGH-RISK
+    kind: relies_on_norms
+    target_norm_ids:
+    - AIA-NORM-A003-D014-SAFETY-COMPONENT
+    legal_basis_spans:
+    - AIA-TEXT-A006-P001
+    detail: Article 3(14) defines safety component.
+  - relation_id: AIA-REL-A006-P1A-NON-SAFETY-ASSISTANCE-DEPENDENCY-01
+    source_norm_id: AIA-NORM-A006-P1A-NON-SAFETY-ASSISTANCE
+    kind: relies_on_norms
+    target_norm_ids:
+    - AIA-NORM-A003-D014-SAFETY-COMPONENT
+    legal_basis_spans:
+    - AIA-TEXT-A006-P004
+    detail: Article 3(14) defines safety component.
+  - relation_id: AIA-REL-A006-P1B-HEALTH-SAFETY-OVERRIDE-DEPENDENCY-01
+    source_norm_id: AIA-NORM-A006-P1B-HEALTH-SAFETY-OVERRIDE
+    kind: relies_on_norms
+    target_norm_ids:
+    - AIA-NORM-A003-D014-SAFETY-COMPONENT
+    legal_basis_spans:
+    - AIA-TEXT-A006-P005
+    detail: Article 3(14) defines safety component.
+  - relation_id: AIA-REL-A006-P1B-HEALTH-SAFETY-OVERRIDE-DEPENDENCY-02
+    source_norm_id: AIA-NORM-A006-P1B-HEALTH-SAFETY-OVERRIDE
+    kind: relies_on_norms
+    target_norm_ids:
+    - AIA-NORM-A006-P1A-NON-SAFETY-ASSISTANCE
+    legal_basis_spans:
+    - AIA-TEXT-A006-P005
+    detail: This health-and-safety rule overrides the paragraph 1a non-safety exclusion.
+  - relation_id: AIA-REL-A006-P3-INSIGNIFICANT-RISK-EXCEPTION-DEPENDENCY-01
+    source_norm_id: AIA-NORM-A006-P3-INSIGNIFICANT-RISK-EXCEPTION
+    kind: relies_on_norms
+    target_norm_ids:
+    - AIA-NORM-A006-P2-ANNEX-III-HIGH-RISK
+    legal_basis_spans:
+    - AIA-TEXT-A006-P008
+    detail: This norm derogates from the Annex III high-risk classification.
+  - relation_id: AIA-REL-A006-P3-PROFILING-OVERRIDE-DEPENDENCY-01
+    source_norm_id: AIA-NORM-A006-P3-PROFILING-OVERRIDE
+    kind: relies_on_norms
+    target_norm_ids:
+    - AIA-NORM-A003-D052-PROFILING
+    legal_basis_spans:
+    - AIA-TEXT-A006-P014
+    detail: Article 3(52) defines profiling.
+  - relation_id: AIA-REL-A006-P3-PROFILING-OVERRIDE-DEPENDENCY-02
+    source_norm_id: AIA-NORM-A006-P3-PROFILING-OVERRIDE
+    kind: relies_on_norms
+    target_norm_ids:
+    - AIA-NORM-A006-P3-INSIGNIFICANT-RISK-EXCEPTION
+    legal_basis_spans:
+    - AIA-TEXT-A006-P014
+    detail: Profiling overrides the Article 6(3) insignificant-risk exception.
+  - relation_id: AIA-REL-A006-P4-DOCUMENT-ASSESSMENT-DEPENDENCY-01
+    source_norm_id: AIA-NORM-A006-P4-DOCUMENT-ASSESSMENT
+    kind: relies_on_norms
+    target_norm_ids:
+    - AIA-NORM-A006-P3-INSIGNIFICANT-RISK-EXCEPTION
+    legal_basis_spans:
+    - AIA-TEXT-A006-P015
+    detail: Article 6(3) supplies the substantive basis for the assessment.
+  - relation_id: AIA-REL-A007-P1-AMEND-ANNEX-III-DEPENDENCY-02
+    source_norm_id: AIA-NORM-A007-P1-AMEND-ANNEX-III
+    kind: relies_on_norms
+    target_norm_ids:
+    - AIA-NORM-A006-P2-ANNEX-III-HIGH-RISK
+    legal_basis_spans:
+    - AIA-TEXT-A007-P001
+    detail: Article 6(2) gives high-risk legal effect to the Annex III use-case list.
+  - relation_id: AIA-REL-A007-P3-REMOVE-ANNEX-III-USE-CASE-DEPENDENCY-02
+    source_norm_id: AIA-NORM-A007-P3-REMOVE-ANNEX-III-USE-CASE
+    kind: relies_on_norms
+    target_norm_ids:
+    - AIA-NORM-A007-P2-CONSIDER-RISK-CRITERIA
+    legal_basis_spans:
+    - AIA-TEXT-A007-P018
+    detail: Article 7(2) supplies the criteria used to determine whether significant risk remains.
+  - relation_id: AIA-REL-A010-P1-QUALIFY-DATASETS-DEPENDENCY-01
+    source_norm_id: AIA-NORM-A010-P1-QUALIFY-DATASETS
+    kind: relies_on_norms
+    target_norm_ids:
+    - AIA-NORM-A004A-P1-HIGH-RISK-BIAS-DATA-PROCESSING
+    legal_basis_spans:
+    - AIA-TEXT-A010-P001
+    detail: Article 4a(1) supplies the special-category-data permission and its safeguard conditions.
+  - relation_id: AIA-REL-A010-P6-TESTING-DATA-ONLY-DEPENDENCY-01
+    source_norm_id: AIA-NORM-A010-P6-TESTING-DATA-ONLY
+    kind: relies_on_norms
+    target_norm_ids:
+    - AIA-NORM-A004A-P1-HIGH-RISK-BIAS-DATA-PROCESSING
+    legal_basis_spans:
+    - AIA-TEXT-A010-P020
+    detail: Article 4a(1) supplies the special-category-data quality criterion incorporated by Article 10(6).
+  - relation_id: AIA-REL-A011-P1-ANNEX-IV-DEPENDENCY-01
+    source_norm_id: AIA-NORM-A011-P1-ANNEX-IV
+    kind: relies_on_norms
+    target_norm_ids:
+    - AIA-NORM-ANNEX-IV-CONTENT
+    legal_basis_spans:
+    - AIA-TEXT-A011-P1
+    detail: Annex IV supplies the mandatory content.
+  - relation_id: AIA-REL-A011-P2-SINGLE-DOCUMENTATION-SET-DEPENDENCY-01
+    source_norm_id: AIA-NORM-A011-P2-SINGLE-DOCUMENTATION-SET
+    kind: relies_on_norms
+    target_norm_ids:
+    - AIA-NORM-A011-P1-ANNEX-IV
+    legal_basis_spans:
+    - AIA-TEXT-A011-P2
+    detail: Article 11(1) supplies the AI Act information that must be included in the single documentation
+      set.
+  - relation_id: AIA-REL-A012-P2-C-OPERATION-MONITORING-EVENTS-DEPENDENCY-01
+    source_norm_id: AIA-NORM-A012-P2-C-OPERATION-MONITORING-EVENTS
+    kind: relies_on_norms
+    target_norm_ids:
+    - AIA-NORM-A026-P5-MONITOR
+    legal_basis_spans:
+    - AIA-TEXT-A012-P005
+    detail: Article 26(5) supplies the deployer monitoring activity that the logging capability supports.
+  - relation_id: AIA-REL-A013-P3-F-LOG-MECHANISMS-DEPENDENCY-01
+    source_norm_id: AIA-NORM-A013-P3-F-LOG-MECHANISMS
+    kind: relies_on_norms
+    target_norm_ids:
+    - AIA-NORM-A012-P1-AUTOMATIC-LOGGING
+    legal_basis_spans:
+    - AIA-TEXT-A013-P016
+    detail: Article 12 supplies the automatic-logging requirement whose mechanisms are described here.
+  - relation_id: AIA-REL-A015-P3-DECLARE-ACCURACY-AND-METRICS-DEPENDENCY-01
+    source_norm_id: AIA-NORM-A015-P3-DECLARE-ACCURACY-AND-METRICS
+    kind: relies_on_norms
+    target_norm_ids:
+    - AIA-NORM-A013-P2-PROVIDE-INSTRUCTIONS
+    legal_basis_spans:
+    - AIA-TEXT-A015-P003
+    detail: Article 13 supplies the obligation to accompany the system with instructions for use.
+  - relation_id: AIA-REL-A017-P1-G-RISK-MANAGEMENT-DEPENDENCY-01
+    source_norm_id: AIA-NORM-A017-P1-G-RISK-MANAGEMENT
+    kind: relies_on_norms
+    target_norm_ids:
+    - AIA-NORM-A009-P1-ESTABLISH-IMPLEMENT-DOCUMENT-AND-MAINTAIN
+    legal_basis_spans:
+    - AIA-TEXT-A017-P008
+    detail: Article 9 supplies the referenced risk-management-system obligation.
+  - relation_id: AIA-REL-A018-P1-A-TECHNICAL-DOCUMENTATION-DEPENDENCY-01
+    source_norm_id: AIA-NORM-A018-P1-A-TECHNICAL-DOCUMENTATION
+    kind: relies_on_norms
+    target_norm_ids:
+    - AIA-NORM-A011-P1-DRAW
+    legal_basis_spans:
+    - AIA-TEXT-A018-P002
+    detail: Article 11 supplies the referenced technical-documentation requirement.
+  - relation_id: AIA-REL-A018-P1-B-QMS-DOCUMENTATION-DEPENDENCY-01
+    source_norm_id: AIA-NORM-A018-P1-B-QMS-DOCUMENTATION
+    kind: relies_on_norms
+    target_norm_ids:
+    - AIA-NORM-A017-P1-SYSTEMATIC-WRITTEN-DOCUMENTATION
+    legal_basis_spans:
+    - AIA-TEXT-A018-P003
+    detail: Article 17 supplies the referenced quality-management-system documentation requirement.
+  - relation_id: AIA-REL-A019-P1-KEEP-CONTROLLED-LOGS-DEPENDENCY-01
+    source_norm_id: AIA-NORM-A019-P1-KEEP-CONTROLLED-LOGS
+    kind: relies_on_norms
+    target_norm_ids:
+    - AIA-NORM-A012-P1-AUTOMATIC-LOGGING
+    legal_basis_spans:
+    - AIA-TEXT-A019-P001
+    detail: Article 12(1) supplies the referenced automatic-logging requirement.
+  - relation_id: AIA-REL-A021-P2-PROVIDE-LOG-ACCESS-DEPENDENCY-01
+    source_norm_id: AIA-NORM-A021-P2-PROVIDE-LOG-ACCESS
+    kind: relies_on_norms
+    target_norm_ids:
+    - AIA-NORM-A012-P1-AUTOMATIC-LOGGING
+    legal_basis_spans:
+    - AIA-TEXT-A021-P002
+    detail: Article 12(1) supplies the referenced automatic-logging requirement.
+  - relation_id: AIA-REL-A022-P3-C-PROVIDE-LOG-ACCESS-DEPENDENCY-01
+    source_norm_id: AIA-NORM-A022-P3-C-PROVIDE-LOG-ACCESS
+    kind: relies_on_norms
+    target_norm_ids:
+    - AIA-NORM-A012-P1-AUTOMATIC-LOGGING
+    legal_basis_spans:
+    - AIA-TEXT-A022-P006
+    detail: Article 12(1) supplies the referenced automatic-logging requirement.
+  - relation_id: AIA-REL-A023-P1-B-VERIFY-TECHNICAL-DOCUMENTATION-DEPENDENCY-01
+    source_norm_id: AIA-NORM-A023-P1-B-VERIFY-TECHNICAL-DOCUMENTATION
+    kind: relies_on_norms
+    target_norm_ids:
+    - AIA-NORM-A011-P1-ANNEX-IV
+    legal_basis_spans:
+    - AIA-TEXT-A023-P003
+    detail: Article 11(1) and Annex IV supply the referenced technical-documentation requirements.
+  - relation_id: AIA-REL-A023-P1-D-VERIFY-REPRESENTATIVE-DEPENDENCY-01
+    source_norm_id: AIA-NORM-A023-P1-D-VERIFY-REPRESENTATIVE
+    kind: relies_on_norms
+    target_norm_ids:
+    - AIA-NORM-A022-P1-APPOINT-REPRESENTATIVE
+    legal_basis_spans:
+    - AIA-TEXT-A023-P005
+    detail: Article 22(1) supplies the referenced appointment requirement.
+  - relation_id: AIA-REL-A024-P1-VERIFY-OPERATOR-COMPLIANCE-DEPENDENCY-01
+    source_norm_id: AIA-NORM-A024-P1-VERIFY-OPERATOR-COMPLIANCE
+    kind: relies_on_norms
+    target_norm_ids:
+    - AIA-NORM-A016-B-PROVIDER-IDENTIFICATION
+    legal_basis_spans:
+    - AIA-TEXT-A024-P001
+    detail: Article 16(b) supplies the provider-identification requirement.
+  - relation_id: AIA-REL-A024-P1-VERIFY-OPERATOR-COMPLIANCE-DEPENDENCY-02
+    source_norm_id: AIA-NORM-A024-P1-VERIFY-OPERATOR-COMPLIANCE
+    kind: relies_on_norms
+    target_norm_ids:
+    - AIA-NORM-A016-C-QUALITY-MANAGEMENT
+    legal_basis_spans:
+    - AIA-TEXT-A024-P001
+    detail: Article 16(c) supplies the provider quality-management requirement.
+  - relation_id: AIA-REL-A024-P1-VERIFY-OPERATOR-COMPLIANCE-DEPENDENCY-03
+    source_norm_id: AIA-NORM-A024-P1-VERIFY-OPERATOR-COMPLIANCE
+    kind: relies_on_norms
+    target_norm_ids:
+    - AIA-NORM-A023-P3-IDENTIFY-IMPORTER
+    legal_basis_spans:
+    - AIA-TEXT-A024-P001
+    detail: Article 23(3) supplies the importer-identification requirement.
+  - relation_id: AIA-REL-A026-P9-USE-ARTICLE-13-IN-DPIA-DEPENDENCY-01
+    source_norm_id: AIA-NORM-A026-P9-USE-ARTICLE-13-IN-DPIA
+    kind: relies_on_norms
+    target_norm_ids:
+    - AIA-NORM-A013-P2-PROVIDE-INSTRUCTIONS
+    legal_basis_spans:
+    - AIA-TEXT-A026-P9
+    detail: Article 13 supplies the provider information used by the deployer.
+  - relation_id: AIA-REL-A026-P10-REQUEST-AUTHORISATION-DEPENDENCY-01
+    source_norm_id: AIA-NORM-A026-P10-REQUEST-AUTHORISATION
+    kind: relies_on_norms
+    target_norm_ids:
+    - AIA-NORM-A026-P10-PRESERVE-DIRECTIVE-2016-680
+    legal_basis_spans:
+    - AIA-TEXT-A026-P10
+    detail: The authorisation regime remains without prejudice to Directive (EU) 2016/680.
+  - relation_id: AIA-REL-A043-P1-CHOOSE-NOTIFIED-BODY-DEPENDENCY-01
+    source_norm_id: AIA-NORM-A043-P1-CHOOSE-NOTIFIED-BODY
+    kind: relies_on_norms
+    target_norm_ids:
+    - AIA-NORM-A043-P1-AUTHORITY-AS-NOTIFIED-BODY
+    legal_basis_spans:
+    - AIA-TEXT-A043-P1
+    detail: The mandatory authority route limits the provider's choice of notified body.
+  - relation_id: AIA-REL-A086-P1-PROVIDE-EXPLANATION-DEPENDENCY-01
+    source_norm_id: AIA-NORM-A086-P1-PROVIDE-EXPLANATION
+    kind: relies_on_norms
+    target_norm_ids:
+    - AIA-NORM-A006-P2-ANNEX-III-HIGH-RISK
+    legal_basis_spans:
+    - AIA-TEXT-A086-P001
+    detail: Annex III supplies the high-risk system classes this right attaches to.
+  - relation_id: AIA-REL-ANNEX-I-01-MACHINERY-DIRECTIVE-DEPENDENCY-01
+    source_norm_id: AIA-NORM-ANNEX-I-01-MACHINERY-DIRECTIVE
+    kind: relies_on_norms
+    target_norm_ids:
+    - AIA-NORM-A006-P1-ANNEX-I-HIGH-RISK
+    legal_basis_spans:
+    - AIA-TEXT-ANNEX-I-P002
+    detail: Article 6(1) gives high-risk legal effect to the Annex I product listing when its cumulative
+      conditions are met.
+  - relation_id: AIA-REL-ANNEX-I-02-TOY-SAFETY-DEPENDENCY-01
+    source_norm_id: AIA-NORM-ANNEX-I-02-TOY-SAFETY
+    kind: relies_on_norms
+    target_norm_ids:
+    - AIA-NORM-A006-P1-ANNEX-I-HIGH-RISK
+    legal_basis_spans:
+    - AIA-TEXT-ANNEX-I-P003
+    detail: Article 6(1) gives high-risk legal effect to the Annex I product listing when its cumulative
+      conditions are met.
+  - relation_id: AIA-REL-ANNEX-I-03-RECREATIONAL-CRAFT-DEPENDENCY-01
+    source_norm_id: AIA-NORM-ANNEX-I-03-RECREATIONAL-CRAFT
+    kind: relies_on_norms
+    target_norm_ids:
+    - AIA-NORM-A006-P1-ANNEX-I-HIGH-RISK
+    legal_basis_spans:
+    - AIA-TEXT-ANNEX-I-P004
+    detail: Article 6(1) gives high-risk legal effect to the Annex I product listing when its cumulative
+      conditions are met.
+  - relation_id: AIA-REL-ANNEX-I-04-LIFTS-DEPENDENCY-01
+    source_norm_id: AIA-NORM-ANNEX-I-04-LIFTS
+    kind: relies_on_norms
+    target_norm_ids:
+    - AIA-NORM-A006-P1-ANNEX-I-HIGH-RISK
+    legal_basis_spans:
+    - AIA-TEXT-ANNEX-I-P005
+    detail: Article 6(1) gives high-risk legal effect to the Annex I product listing when its cumulative
+      conditions are met.
+  - relation_id: AIA-REL-ANNEX-I-05-EXPLOSIVE-ATMOSPHERES-DEPENDENCY-01
+    source_norm_id: AIA-NORM-ANNEX-I-05-EXPLOSIVE-ATMOSPHERES
+    kind: relies_on_norms
+    target_norm_ids:
+    - AIA-NORM-A006-P1-ANNEX-I-HIGH-RISK
+    legal_basis_spans:
+    - AIA-TEXT-ANNEX-I-P006
+    detail: Article 6(1) gives high-risk legal effect to the Annex I product listing when its cumulative
+      conditions are met.
+  - relation_id: AIA-REL-ANNEX-I-06-RADIO-EQUIPMENT-DEPENDENCY-01
+    source_norm_id: AIA-NORM-ANNEX-I-06-RADIO-EQUIPMENT
+    kind: relies_on_norms
+    target_norm_ids:
+    - AIA-NORM-A006-P1-ANNEX-I-HIGH-RISK
+    legal_basis_spans:
+    - AIA-TEXT-ANNEX-I-P007
+    detail: Article 6(1) gives high-risk legal effect to the Annex I product listing when its cumulative
+      conditions are met.
+  - relation_id: AIA-REL-ANNEX-I-07-PRESSURE-EQUIPMENT-DEPENDENCY-01
+    source_norm_id: AIA-NORM-ANNEX-I-07-PRESSURE-EQUIPMENT
+    kind: relies_on_norms
+    target_norm_ids:
+    - AIA-NORM-A006-P1-ANNEX-I-HIGH-RISK
+    legal_basis_spans:
+    - AIA-TEXT-ANNEX-I-P008
+    detail: Article 6(1) gives high-risk legal effect to the Annex I product listing when its cumulative
+      conditions are met.
+  - relation_id: AIA-REL-ANNEX-I-08-CABLEWAYS-DEPENDENCY-01
+    source_norm_id: AIA-NORM-ANNEX-I-08-CABLEWAYS
+    kind: relies_on_norms
+    target_norm_ids:
+    - AIA-NORM-A006-P1-ANNEX-I-HIGH-RISK
+    legal_basis_spans:
+    - AIA-TEXT-ANNEX-I-P009
+    detail: Article 6(1) gives high-risk legal effect to the Annex I product listing when its cumulative
+      conditions are met.
+  - relation_id: AIA-REL-ANNEX-I-09-PERSONAL-PROTECTIVE-EQUIPMENT-DEPENDENCY-01
+    source_norm_id: AIA-NORM-ANNEX-I-09-PERSONAL-PROTECTIVE-EQUIPMENT
+    kind: relies_on_norms
+    target_norm_ids:
+    - AIA-NORM-A006-P1-ANNEX-I-HIGH-RISK
+    legal_basis_spans:
+    - AIA-TEXT-ANNEX-I-P010
+    detail: Article 6(1) gives high-risk legal effect to the Annex I product listing when its cumulative
+      conditions are met.
+  - relation_id: AIA-REL-ANNEX-I-10-GAS-APPLIANCES-DEPENDENCY-01
+    source_norm_id: AIA-NORM-ANNEX-I-10-GAS-APPLIANCES
+    kind: relies_on_norms
+    target_norm_ids:
+    - AIA-NORM-A006-P1-ANNEX-I-HIGH-RISK
+    legal_basis_spans:
+    - AIA-TEXT-ANNEX-I-P011
+    detail: Article 6(1) gives high-risk legal effect to the Annex I product listing when its cumulative
+      conditions are met.
+  - relation_id: AIA-REL-ANNEX-I-11-MEDICAL-DEVICES-DEPENDENCY-01
+    source_norm_id: AIA-NORM-ANNEX-I-11-MEDICAL-DEVICES
+    kind: relies_on_norms
+    target_norm_ids:
+    - AIA-NORM-A006-P1-ANNEX-I-HIGH-RISK
+    legal_basis_spans:
+    - AIA-TEXT-ANNEX-I-P012
+    detail: Article 6(1) gives high-risk legal effect to the Annex I product listing when its cumulative
+      conditions are met.
+  - relation_id: AIA-REL-ANNEX-I-12-IN-VITRO-DIAGNOSTICS-DEPENDENCY-01
+    source_norm_id: AIA-NORM-ANNEX-I-12-IN-VITRO-DIAGNOSTICS
+    kind: relies_on_norms
+    target_norm_ids:
+    - AIA-NORM-A006-P1-ANNEX-I-HIGH-RISK
+    legal_basis_spans:
+    - AIA-TEXT-ANNEX-I-P013
+    detail: Article 6(1) gives high-risk legal effect to the Annex I product listing when its cumulative
+      conditions are met.
+  - relation_id: AIA-REL-ANNEX-I-13-AVIATION-SECURITY-DEPENDENCY-01
+    source_norm_id: AIA-NORM-ANNEX-I-13-AVIATION-SECURITY
+    kind: relies_on_norms
+    target_norm_ids:
+    - AIA-NORM-A006-P1-ANNEX-I-HIGH-RISK
+    legal_basis_spans:
+    - AIA-TEXT-ANNEX-I-P015
+    detail: Article 6(1) gives high-risk legal effect to the Annex I product listing when its cumulative
+      conditions are met.
+  - relation_id: AIA-REL-ANNEX-I-14-L-CATEGORY-VEHICLES-DEPENDENCY-01
+    source_norm_id: AIA-NORM-ANNEX-I-14-L-CATEGORY-VEHICLES
+    kind: relies_on_norms
+    target_norm_ids:
+    - AIA-NORM-A006-P1-ANNEX-I-HIGH-RISK
+    legal_basis_spans:
+    - AIA-TEXT-ANNEX-I-P016
+    detail: Article 6(1) gives high-risk legal effect to the Annex I product listing when its cumulative
+      conditions are met.
+  - relation_id: AIA-REL-ANNEX-I-15-AGRICULTURAL-FORESTRY-VEHICLES-DEPENDENCY-01
+    source_norm_id: AIA-NORM-ANNEX-I-15-AGRICULTURAL-FORESTRY-VEHICLES
+    kind: relies_on_norms
+    target_norm_ids:
+    - AIA-NORM-A006-P1-ANNEX-I-HIGH-RISK
+    legal_basis_spans:
+    - AIA-TEXT-ANNEX-I-P017
+    detail: Article 6(1) gives high-risk legal effect to the Annex I product listing when its cumulative
+      conditions are met.
+  - relation_id: AIA-REL-ANNEX-I-16-MARINE-EQUIPMENT-DEPENDENCY-01
+    source_norm_id: AIA-NORM-ANNEX-I-16-MARINE-EQUIPMENT
+    kind: relies_on_norms
+    target_norm_ids:
+    - AIA-NORM-A006-P1-ANNEX-I-HIGH-RISK
+    legal_basis_spans:
+    - AIA-TEXT-ANNEX-I-P018
+    detail: Article 6(1) gives high-risk legal effect to the Annex I product listing when its cumulative
+      conditions are met.
+  - relation_id: AIA-REL-ANNEX-I-17-RAIL-INTEROPERABILITY-DEPENDENCY-01
+    source_norm_id: AIA-NORM-ANNEX-I-17-RAIL-INTEROPERABILITY
+    kind: relies_on_norms
+    target_norm_ids:
+    - AIA-NORM-A006-P1-ANNEX-I-HIGH-RISK
+    legal_basis_spans:
+    - AIA-TEXT-ANNEX-I-P019
+    detail: Article 6(1) gives high-risk legal effect to the Annex I product listing when its cumulative
+      conditions are met.
+  - relation_id: AIA-REL-ANNEX-I-18-MOTOR-VEHICLE-APPROVAL-DEPENDENCY-01
+    source_norm_id: AIA-NORM-ANNEX-I-18-MOTOR-VEHICLE-APPROVAL
+    kind: relies_on_norms
+    target_norm_ids:
+    - AIA-NORM-A006-P1-ANNEX-I-HIGH-RISK
+    legal_basis_spans:
+    - AIA-TEXT-ANNEX-I-P020
+    detail: Article 6(1) gives high-risk legal effect to the Annex I product listing when its cumulative
+      conditions are met.
+  - relation_id: AIA-REL-ANNEX-I-19-MOTOR-VEHICLE-GENERAL-SAFETY-DEPENDENCY-01
+    source_norm_id: AIA-NORM-ANNEX-I-19-MOTOR-VEHICLE-GENERAL-SAFETY
+    kind: relies_on_norms
+    target_norm_ids:
+    - AIA-NORM-A006-P1-ANNEX-I-HIGH-RISK
+    legal_basis_spans:
+    - AIA-TEXT-ANNEX-I-P021
+    detail: Article 6(1) gives high-risk legal effect to the Annex I product listing when its cumulative
+      conditions are met.
+  - relation_id: AIA-REL-ANNEX-I-20-UNMANNED-AIRCRAFT-DEPENDENCY-01
+    source_norm_id: AIA-NORM-ANNEX-I-20-UNMANNED-AIRCRAFT
+    kind: relies_on_norms
+    target_norm_ids:
+    - AIA-NORM-A006-P1-ANNEX-I-HIGH-RISK
+    legal_basis_spans:
+    - AIA-TEXT-ANNEX-I-P022
+    detail: Article 6(1) gives high-risk legal effect to the Annex I product listing when its cumulative
+      conditions are met.
+  - relation_id: AIA-REL-ANNEX-I-21-MACHINERY-REGULATION-DEPENDENCY-01
+    source_norm_id: AIA-NORM-ANNEX-I-21-MACHINERY-REGULATION
+    kind: relies_on_norms
+    target_norm_ids:
+    - AIA-NORM-A006-P1-ANNEX-I-HIGH-RISK
+    legal_basis_spans:
+    - AIA-TEXT-ANNEX-I-P023
+    detail: Article 6(1) gives high-risk legal effect to the Annex I product listing when its cumulative
+      conditions are met.
+  - relation_id: AIA-REL-ANNEX-II-01-TERRORISM-DEPENDENCY-01
+    source_norm_id: AIA-NORM-ANNEX-II-01-TERRORISM
+    kind: relies_on_norms
+    target_norm_ids:
+    - AIA-NORM-A005-P1-H-REAL-TIME-RBI
+    legal_basis_spans:
+    - AIA-TEXT-ANNEX-II-P002
+    detail: Article 5(1)(h)(iii) gives legal effect to the Annex II offence list within the real-time remote-biometric-identification
+      exception.
+  - relation_id: AIA-REL-ANNEX-II-02-HUMAN-TRAFFICKING-DEPENDENCY-01
+    source_norm_id: AIA-NORM-ANNEX-II-02-HUMAN-TRAFFICKING
+    kind: relies_on_norms
+    target_norm_ids:
+    - AIA-NORM-A005-P1-H-REAL-TIME-RBI
+    legal_basis_spans:
+    - AIA-TEXT-ANNEX-II-P003
+    detail: Article 5(1)(h)(iii) gives legal effect to the Annex II offence list within the real-time remote-biometric-identification
+      exception.
+  - relation_id: AIA-REL-ANNEX-II-03-CHILD-SEXUAL-EXPLOITATION-DEPENDENCY-01
+    source_norm_id: AIA-NORM-ANNEX-II-03-CHILD-SEXUAL-EXPLOITATION
+    kind: relies_on_norms
+    target_norm_ids:
+    - AIA-NORM-A005-P1-H-REAL-TIME-RBI
+    legal_basis_spans:
+    - AIA-TEXT-ANNEX-II-P004
+    detail: Article 5(1)(h)(iii) gives legal effect to the Annex II offence list within the real-time remote-biometric-identification
+      exception.
+  - relation_id: AIA-REL-ANNEX-II-04-DRUG-TRAFFICKING-DEPENDENCY-01
+    source_norm_id: AIA-NORM-ANNEX-II-04-DRUG-TRAFFICKING
+    kind: relies_on_norms
+    target_norm_ids:
+    - AIA-NORM-A005-P1-H-REAL-TIME-RBI
+    legal_basis_spans:
+    - AIA-TEXT-ANNEX-II-P005
+    detail: Article 5(1)(h)(iii) gives legal effect to the Annex II offence list within the real-time remote-biometric-identification
+      exception.
+  - relation_id: AIA-REL-ANNEX-II-05-WEAPONS-TRAFFICKING-DEPENDENCY-01
+    source_norm_id: AIA-NORM-ANNEX-II-05-WEAPONS-TRAFFICKING
+    kind: relies_on_norms
+    target_norm_ids:
+    - AIA-NORM-A005-P1-H-REAL-TIME-RBI
+    legal_basis_spans:
+    - AIA-TEXT-ANNEX-II-P006
+    detail: Article 5(1)(h)(iii) gives legal effect to the Annex II offence list within the real-time remote-biometric-identification
+      exception.
+  - relation_id: AIA-REL-ANNEX-II-06-MURDER-BODILY-INJURY-DEPENDENCY-01
+    source_norm_id: AIA-NORM-ANNEX-II-06-MURDER-BODILY-INJURY
+    kind: relies_on_norms
+    target_norm_ids:
+    - AIA-NORM-A005-P1-H-REAL-TIME-RBI
+    legal_basis_spans:
+    - AIA-TEXT-ANNEX-II-P007
+    detail: Article 5(1)(h)(iii) gives legal effect to the Annex II offence list within the real-time remote-biometric-identification
+      exception.
+  - relation_id: AIA-REL-ANNEX-II-07-HUMAN-ORGANS-DEPENDENCY-01
+    source_norm_id: AIA-NORM-ANNEX-II-07-HUMAN-ORGANS
+    kind: relies_on_norms
+    target_norm_ids:
+    - AIA-NORM-A005-P1-H-REAL-TIME-RBI
+    legal_basis_spans:
+    - AIA-TEXT-ANNEX-II-P008
+    detail: Article 5(1)(h)(iii) gives legal effect to the Annex II offence list within the real-time remote-biometric-identification
+      exception.
+  - relation_id: AIA-REL-ANNEX-II-08-NUCLEAR-MATERIALS-DEPENDENCY-01
+    source_norm_id: AIA-NORM-ANNEX-II-08-NUCLEAR-MATERIALS
+    kind: relies_on_norms
+    target_norm_ids:
+    - AIA-NORM-A005-P1-H-REAL-TIME-RBI
+    legal_basis_spans:
+    - AIA-TEXT-ANNEX-II-P009
+    detail: Article 5(1)(h)(iii) gives legal effect to the Annex II offence list within the real-time remote-biometric-identification
+      exception.
+  - relation_id: AIA-REL-ANNEX-II-09-KIDNAPPING-HOSTAGE-TAKING-DEPENDENCY-01
+    source_norm_id: AIA-NORM-ANNEX-II-09-KIDNAPPING-HOSTAGE-TAKING
+    kind: relies_on_norms
+    target_norm_ids:
+    - AIA-NORM-A005-P1-H-REAL-TIME-RBI
+    legal_basis_spans:
+    - AIA-TEXT-ANNEX-II-P010
+    detail: Article 5(1)(h)(iii) gives legal effect to the Annex II offence list within the real-time remote-biometric-identification
+      exception.
+  - relation_id: AIA-REL-ANNEX-II-10-ICC-CRIMES-DEPENDENCY-01
+    source_norm_id: AIA-NORM-ANNEX-II-10-ICC-CRIMES
+    kind: relies_on_norms
+    target_norm_ids:
+    - AIA-NORM-A005-P1-H-REAL-TIME-RBI
+    legal_basis_spans:
+    - AIA-TEXT-ANNEX-II-P011
+    detail: Article 5(1)(h)(iii) gives legal effect to the Annex II offence list within the real-time remote-biometric-identification
+      exception.
+  - relation_id: AIA-REL-ANNEX-II-11-AIRCRAFT-SHIP-SEIZURE-DEPENDENCY-01
+    source_norm_id: AIA-NORM-ANNEX-II-11-AIRCRAFT-SHIP-SEIZURE
+    kind: relies_on_norms
+    target_norm_ids:
+    - AIA-NORM-A005-P1-H-REAL-TIME-RBI
+    legal_basis_spans:
+    - AIA-TEXT-ANNEX-II-P012
+    detail: Article 5(1)(h)(iii) gives legal effect to the Annex II offence list within the real-time remote-biometric-identification
+      exception.
+  - relation_id: AIA-REL-ANNEX-II-12-RAPE-DEPENDENCY-01
+    source_norm_id: AIA-NORM-ANNEX-II-12-RAPE
+    kind: relies_on_norms
+    target_norm_ids:
+    - AIA-NORM-A005-P1-H-REAL-TIME-RBI
+    legal_basis_spans:
+    - AIA-TEXT-ANNEX-II-P013
+    detail: Article 5(1)(h)(iii) gives legal effect to the Annex II offence list within the real-time remote-biometric-identification
+      exception.
+  - relation_id: AIA-REL-ANNEX-II-13-ENVIRONMENTAL-CRIME-DEPENDENCY-01
+    source_norm_id: AIA-NORM-ANNEX-II-13-ENVIRONMENTAL-CRIME
+    kind: relies_on_norms
+    target_norm_ids:
+    - AIA-NORM-A005-P1-H-REAL-TIME-RBI
+    legal_basis_spans:
+    - AIA-TEXT-ANNEX-II-P014
+    detail: Article 5(1)(h)(iii) gives legal effect to the Annex II offence list within the real-time remote-biometric-identification
+      exception.
+  - relation_id: AIA-REL-ANNEX-II-14-ROBBERY-DEPENDENCY-01
+    source_norm_id: AIA-NORM-ANNEX-II-14-ROBBERY
+    kind: relies_on_norms
+    target_norm_ids:
+    - AIA-NORM-A005-P1-H-REAL-TIME-RBI
+    legal_basis_spans:
+    - AIA-TEXT-ANNEX-II-P015
+    detail: Article 5(1)(h)(iii) gives legal effect to the Annex II offence list within the real-time remote-biometric-identification
+      exception.
+  - relation_id: AIA-REL-ANNEX-II-15-SABOTAGE-DEPENDENCY-01
+    source_norm_id: AIA-NORM-ANNEX-II-15-SABOTAGE
+    kind: relies_on_norms
+    target_norm_ids:
+    - AIA-NORM-A005-P1-H-REAL-TIME-RBI
+    legal_basis_spans:
+    - AIA-TEXT-ANNEX-II-P016
+    detail: Article 5(1)(h)(iii) gives legal effect to the Annex II offence list within the real-time remote-biometric-identification
+      exception.
+  - relation_id: AIA-REL-ANNEX-II-16-CRIMINAL-ORGANISATION-DEPENDENCY-01
+    source_norm_id: AIA-NORM-ANNEX-II-16-CRIMINAL-ORGANISATION
+    kind: relies_on_norms
+    target_norm_ids:
+    - AIA-NORM-A005-P1-H-REAL-TIME-RBI
+    legal_basis_spans:
+    - AIA-TEXT-ANNEX-II-P017
+    detail: Article 5(1)(h)(iii) gives legal effect to the Annex II offence list within the real-time remote-biometric-identification
+      exception.
+  - relation_id: AIA-REL-ANNEX-III-1A-REMOTE-BIOMETRIC-IDENTIFICATION-DEPENDENCY-01
+    source_norm_id: AIA-NORM-ANNEX-III-1A-REMOTE-BIOMETRIC-IDENTIFICATION
+    kind: relies_on_norms
+    target_norm_ids:
+    - AIA-NORM-A006-P2-ANNEX-III-HIGH-RISK
+    legal_basis_spans:
+    - AIA-TEXT-ANNEX-III-P003
+    detail: Article 6(2) gives high-risk legal effect to the Annex III listing.
+  - relation_id: AIA-REL-ANNEX-III-1B-BIOMETRIC-CATEGORISATION-DEPENDENCY-01
+    source_norm_id: AIA-NORM-ANNEX-III-1B-BIOMETRIC-CATEGORISATION
+    kind: relies_on_norms
+    target_norm_ids:
+    - AIA-NORM-A006-P2-ANNEX-III-HIGH-RISK
+    legal_basis_spans:
+    - AIA-TEXT-ANNEX-III-P004
+    detail: Article 6(2) gives high-risk legal effect to the Annex III listing.
+  - relation_id: AIA-REL-ANNEX-III-1C-EMOTION-RECOGNITION-DEPENDENCY-01
+    source_norm_id: AIA-NORM-ANNEX-III-1C-EMOTION-RECOGNITION
+    kind: relies_on_norms
+    target_norm_ids:
+    - AIA-NORM-A006-P2-ANNEX-III-HIGH-RISK
+    legal_basis_spans:
+    - AIA-TEXT-ANNEX-III-P005
+    detail: Article 6(2) gives high-risk legal effect to the Annex III listing.
+  - relation_id: AIA-REL-ANNEX-III-2-CRITICAL-INFRASTRUCTURE-DEPENDENCY-01
+    source_norm_id: AIA-NORM-ANNEX-III-2-CRITICAL-INFRASTRUCTURE
+    kind: relies_on_norms
+    target_norm_ids:
+    - AIA-NORM-A003-D014-SAFETY-COMPONENT
+    legal_basis_spans:
+    - AIA-TEXT-ANNEX-III-P006
+    detail: Article 3(14) defines safety component.
+  - relation_id: AIA-REL-ANNEX-III-2-CRITICAL-INFRASTRUCTURE-DEPENDENCY-02
+    source_norm_id: AIA-NORM-ANNEX-III-2-CRITICAL-INFRASTRUCTURE
+    kind: relies_on_norms
+    target_norm_ids:
+    - AIA-NORM-A006-P2-ANNEX-III-HIGH-RISK
+    legal_basis_spans:
+    - AIA-TEXT-ANNEX-III-P006
+    detail: Article 6(2) gives high-risk legal effect to the Annex III listing.
+  - relation_id: AIA-REL-ANNEX-III-3A-EDUCATION-ACCESS-DEPENDENCY-01
+    source_norm_id: AIA-NORM-ANNEX-III-3A-EDUCATION-ACCESS
+    kind: relies_on_norms
+    target_norm_ids:
+    - AIA-NORM-A006-P2-ANNEX-III-HIGH-RISK
+    legal_basis_spans:
+    - AIA-TEXT-ANNEX-III-P008
+    detail: Article 6(2) gives high-risk legal effect to the Annex III listing.
+  - relation_id: AIA-REL-ANNEX-III-3B-LEARNING-OUTCOMES-DEPENDENCY-01
+    source_norm_id: AIA-NORM-ANNEX-III-3B-LEARNING-OUTCOMES
+    kind: relies_on_norms
+    target_norm_ids:
+    - AIA-NORM-A006-P2-ANNEX-III-HIGH-RISK
+    legal_basis_spans:
+    - AIA-TEXT-ANNEX-III-P009
+    detail: Article 6(2) gives high-risk legal effect to the Annex III listing.
+  - relation_id: AIA-REL-ANNEX-III-3C-EDUCATION-LEVEL-DEPENDENCY-01
+    source_norm_id: AIA-NORM-ANNEX-III-3C-EDUCATION-LEVEL
+    kind: relies_on_norms
+    target_norm_ids:
+    - AIA-NORM-A006-P2-ANNEX-III-HIGH-RISK
+    legal_basis_spans:
+    - AIA-TEXT-ANNEX-III-P010
+    detail: Article 6(2) gives high-risk legal effect to the Annex III listing.
+  - relation_id: AIA-REL-ANNEX-III-3D-TEST-BEHAVIOUR-DEPENDENCY-01
+    source_norm_id: AIA-NORM-ANNEX-III-3D-TEST-BEHAVIOUR
+    kind: relies_on_norms
+    target_norm_ids:
+    - AIA-NORM-A006-P2-ANNEX-III-HIGH-RISK
+    legal_basis_spans:
+    - AIA-TEXT-ANNEX-III-P011
+    detail: Article 6(2) gives high-risk legal effect to the Annex III listing.
+  - relation_id: AIA-REL-ANNEX-III-4A-RECRUITMENT-DEPENDENCY-01
+    source_norm_id: AIA-NORM-ANNEX-III-4A-RECRUITMENT
+    kind: relies_on_norms
+    target_norm_ids:
+    - AIA-NORM-A006-P2-ANNEX-III-HIGH-RISK
+    legal_basis_spans:
+    - AIA-TEXT-ANNEX-III-P013
+    detail: Article 6(2) gives high-risk legal effect to the Annex III listing.
+  - relation_id: AIA-REL-ANNEX-III-4B-WORKER-MANAGEMENT-DEPENDENCY-01
+    source_norm_id: AIA-NORM-ANNEX-III-4B-WORKER-MANAGEMENT
+    kind: relies_on_norms
+    target_norm_ids:
+    - AIA-NORM-A006-P2-ANNEX-III-HIGH-RISK
+    legal_basis_spans:
+    - AIA-TEXT-ANNEX-III-P014
+    detail: Article 6(2) gives high-risk legal effect to the Annex III listing.
+  - relation_id: AIA-REL-ANNEX-III-5A-ESSENTIAL-BENEFITS-DEPENDENCY-01
+    source_norm_id: AIA-NORM-ANNEX-III-5A-ESSENTIAL-BENEFITS
+    kind: relies_on_norms
+    target_norm_ids:
+    - AIA-NORM-A006-P2-ANNEX-III-HIGH-RISK
+    legal_basis_spans:
+    - AIA-TEXT-ANNEX-III-P016
+    detail: Article 6(2) gives high-risk legal effect to the Annex III listing.
+  - relation_id: AIA-REL-ANNEX-III-5B-CREDITWORTHINESS-DEPENDENCY-01
+    source_norm_id: AIA-NORM-ANNEX-III-5B-CREDITWORTHINESS
+    kind: relies_on_norms
+    target_norm_ids:
+    - AIA-NORM-A006-P2-ANNEX-III-HIGH-RISK
+    legal_basis_spans:
+    - AIA-TEXT-ANNEX-III-P017
+    detail: Article 6(2) gives high-risk legal effect to the Annex III listing.
+  - relation_id: AIA-REL-ANNEX-III-5C-LIFE-HEALTH-INSURANCE-DEPENDENCY-01
+    source_norm_id: AIA-NORM-ANNEX-III-5C-LIFE-HEALTH-INSURANCE
+    kind: relies_on_norms
+    target_norm_ids:
+    - AIA-NORM-A006-P2-ANNEX-III-HIGH-RISK
+    legal_basis_spans:
+    - AIA-TEXT-ANNEX-III-P018
+    detail: Article 6(2) gives high-risk legal effect to the Annex III listing.
+  - relation_id: AIA-REL-ANNEX-III-5D-EMERGENCY-RESPONSE-DEPENDENCY-01
+    source_norm_id: AIA-NORM-ANNEX-III-5D-EMERGENCY-RESPONSE
+    kind: relies_on_norms
+    target_norm_ids:
+    - AIA-NORM-A006-P2-ANNEX-III-HIGH-RISK
+    legal_basis_spans:
+    - AIA-TEXT-ANNEX-III-P019
+    detail: Article 6(2) gives high-risk legal effect to the Annex III listing.
+  - relation_id: AIA-REL-ANNEX-III-6A-VICTIM-RISK-DEPENDENCY-01
+    source_norm_id: AIA-NORM-ANNEX-III-6A-VICTIM-RISK
+    kind: relies_on_norms
+    target_norm_ids:
+    - AIA-NORM-A006-P2-ANNEX-III-HIGH-RISK
+    legal_basis_spans:
+    - AIA-TEXT-ANNEX-III-P021
+    detail: Article 6(2) gives high-risk legal effect to the Annex III listing.
+  - relation_id: AIA-REL-ANNEX-III-6B-LAW-ENFORCEMENT-POLYGRAPH-DEPENDENCY-01
+    source_norm_id: AIA-NORM-ANNEX-III-6B-LAW-ENFORCEMENT-POLYGRAPH
+    kind: relies_on_norms
+    target_norm_ids:
+    - AIA-NORM-A006-P2-ANNEX-III-HIGH-RISK
+    legal_basis_spans:
+    - AIA-TEXT-ANNEX-III-P022
+    detail: Article 6(2) gives high-risk legal effect to the Annex III listing.
+  - relation_id: AIA-REL-ANNEX-III-6C-EVIDENCE-RELIABILITY-DEPENDENCY-01
+    source_norm_id: AIA-NORM-ANNEX-III-6C-EVIDENCE-RELIABILITY
+    kind: relies_on_norms
+    target_norm_ids:
+    - AIA-NORM-A006-P2-ANNEX-III-HIGH-RISK
+    legal_basis_spans:
+    - AIA-TEXT-ANNEX-III-P023
+    detail: Article 6(2) gives high-risk legal effect to the Annex III listing.
+  - relation_id: AIA-REL-ANNEX-III-6D-OFFENDING-RISK-DEPENDENCY-02
+    source_norm_id: AIA-NORM-ANNEX-III-6D-OFFENDING-RISK
+    kind: relies_on_norms
+    target_norm_ids:
+    - AIA-NORM-A006-P2-ANNEX-III-HIGH-RISK
+    legal_basis_spans:
+    - AIA-TEXT-ANNEX-III-P024
+    detail: Article 6(2) gives high-risk legal effect to the Annex III listing.
+  - relation_id: AIA-REL-ANNEX-III-6E-LAW-ENFORCEMENT-PROFILING-DEPENDENCY-02
+    source_norm_id: AIA-NORM-ANNEX-III-6E-LAW-ENFORCEMENT-PROFILING
+    kind: relies_on_norms
+    target_norm_ids:
+    - AIA-NORM-A006-P2-ANNEX-III-HIGH-RISK
+    legal_basis_spans:
+    - AIA-TEXT-ANNEX-III-P025
+    detail: Article 6(2) gives high-risk legal effect to the Annex III listing.
+  - relation_id: AIA-REL-ANNEX-III-7A-BORDER-POLYGRAPH-DEPENDENCY-01
+    source_norm_id: AIA-NORM-ANNEX-III-7A-BORDER-POLYGRAPH
+    kind: relies_on_norms
+    target_norm_ids:
+    - AIA-NORM-A006-P2-ANNEX-III-HIGH-RISK
+    legal_basis_spans:
+    - AIA-TEXT-ANNEX-III-P027
+    detail: Article 6(2) gives high-risk legal effect to the Annex III listing.
+  - relation_id: AIA-REL-ANNEX-III-7B-BORDER-RISK-DEPENDENCY-01
+    source_norm_id: AIA-NORM-ANNEX-III-7B-BORDER-RISK
+    kind: relies_on_norms
+    target_norm_ids:
+    - AIA-NORM-A006-P2-ANNEX-III-HIGH-RISK
+    legal_basis_spans:
+    - AIA-TEXT-ANNEX-III-P028
+    detail: Article 6(2) gives high-risk legal effect to the Annex III listing.
+  - relation_id: AIA-REL-ANNEX-III-7C-ASYLUM-VISA-RESIDENCE-DEPENDENCY-01
+    source_norm_id: AIA-NORM-ANNEX-III-7C-ASYLUM-VISA-RESIDENCE
+    kind: relies_on_norms
+    target_norm_ids:
+    - AIA-NORM-A006-P2-ANNEX-III-HIGH-RISK
+    legal_basis_spans:
+    - AIA-TEXT-ANNEX-III-P029
+    detail: Article 6(2) gives high-risk legal effect to the Annex III listing.
+  - relation_id: AIA-REL-ANNEX-III-7D-BORDER-IDENTIFICATION-DEPENDENCY-01
+    source_norm_id: AIA-NORM-ANNEX-III-7D-BORDER-IDENTIFICATION
+    kind: relies_on_norms
+    target_norm_ids:
+    - AIA-NORM-A006-P2-ANNEX-III-HIGH-RISK
+    legal_basis_spans:
+    - AIA-TEXT-ANNEX-III-P030
+    detail: Article 6(2) gives high-risk legal effect to the Annex III listing.
+  - relation_id: AIA-REL-ANNEX-III-8A-JUSTICE-DEPENDENCY-01
+    source_norm_id: AIA-NORM-ANNEX-III-8A-JUSTICE
+    kind: relies_on_norms
+    target_norm_ids:
+    - AIA-NORM-A006-P2-ANNEX-III-HIGH-RISK
+    legal_basis_spans:
+    - AIA-TEXT-ANNEX-III-P032
+    detail: Article 6(2) gives high-risk legal effect to the Annex III listing.
+  - relation_id: AIA-REL-ANNEX-III-8B-ELECTION-INFLUENCE-DEPENDENCY-01
+    source_norm_id: AIA-NORM-ANNEX-III-8B-ELECTION-INFLUENCE
+    kind: relies_on_norms
+    target_norm_ids:
+    - AIA-NORM-A006-P2-ANNEX-III-HIGH-RISK
+    legal_basis_spans:
+    - AIA-TEXT-ANNEX-III-P033
+    detail: Article 6(2) gives high-risk legal effect to the Annex III listing.
+  - relation_id: AIA-REL-ANNEX-IX-REGISTRATION-INFORMATION-DEPENDENCY-01
+    source_norm_id: AIA-NORM-ANNEX-IX-REGISTRATION-INFORMATION
+    kind: relies_on_norms
+    target_norm_ids:
+    - AIA-NORM-A060-P4-C-REGISTER-TESTING
+    legal_basis_spans:
+    - AIA-TEXT-ANNEX-IX-P001
+    detail: Article 60(4)(c) assigns the Annex IX registration-content duty to the provider or prospective
+      provider.
+  - relation_id: AIA-REL-ANNEX-V-DECLARATION-CONTENT-DEPENDENCY-01
+    source_norm_id: AIA-NORM-ANNEX-V-DECLARATION-CONTENT
+    kind: relies_on_norms
+    target_norm_ids:
+    - AIA-NORM-A047-P2-ANNEX-V-CONTENT
+    legal_basis_spans:
+    - AIA-TEXT-ANNEX-V-P001
+    detail: Article 47(2) assigns the Annex V content duty to the provider.
+  - relation_id: AIA-REL-ANNEX-VI-P1-PROCEDURE-CONTENT-DEPENDENCY-01
+    source_norm_id: AIA-NORM-ANNEX-VI-P1-PROCEDURE-CONTENT
+    kind: relies_on_norms
+    target_norm_ids:
+    - AIA-NORM-A043-P2-INTERNAL-CONTROL
+    legal_basis_spans:
+    - AIA-TEXT-ANNEX-VI-P001
+    detail: Article 43(2) requires the Annex VI route for the specified Annex III systems.
+  - relation_id: AIA-REL-ANNEX-VI-P2-VERIFY-QMS-DEPENDENCY-01
+    source_norm_id: AIA-NORM-ANNEX-VI-P2-VERIFY-QMS
+    kind: relies_on_norms
+    target_norm_ids:
+    - AIA-NORM-A017-P1-QMS
+    legal_basis_spans:
+    - AIA-TEXT-ANNEX-VI-P002
+    detail: Article 17 establishes the provider's quality-management-system requirement.
+  - relation_id: AIA-REL-ANNEX-VI-P2-VERIFY-QMS-DEPENDENCY-02
+    source_norm_id: AIA-NORM-ANNEX-VI-P2-VERIFY-QMS
+    kind: relies_on_norms
+    target_norm_ids:
+    - AIA-NORM-A043-P2-INTERNAL-CONTROL
+    legal_basis_spans:
+    - AIA-TEXT-ANNEX-VI-P002
+    detail: Article 43(2) determines when the Annex VI procedure applies.
+  - relation_id: AIA-REL-ANNEX-VI-P3-EXAMINE-TECHNICAL-DOCUMENTATION-DEPENDENCY-01
+    source_norm_id: AIA-NORM-ANNEX-VI-P3-EXAMINE-TECHNICAL-DOCUMENTATION
+    kind: relies_on_norms
+    target_norm_ids:
+    - AIA-NORM-A043-P2-INTERNAL-CONTROL
+    legal_basis_spans:
+    - AIA-TEXT-ANNEX-VI-P003
+    detail: Article 43(2) determines when the Annex VI procedure applies.
+  - relation_id: AIA-REL-ANNEX-VI-P4-VERIFY-CONSISTENCY-DEPENDENCY-01
+    source_norm_id: AIA-NORM-ANNEX-VI-P4-VERIFY-CONSISTENCY
+    kind: relies_on_norms
+    target_norm_ids:
+    - AIA-NORM-A072-P1-ESTABLISH-AND-DOCUMENT-MONITORING
+    legal_basis_spans:
+    - AIA-TEXT-ANNEX-VI-P004
+    detail: Article 72 establishes and documents the post-market monitoring system referenced here.
+  - relation_id: AIA-REL-ANNEX-VI-P4-VERIFY-CONSISTENCY-DEPENDENCY-02
+    source_norm_id: AIA-NORM-ANNEX-VI-P4-VERIFY-CONSISTENCY
+    kind: relies_on_norms
+    target_norm_ids:
+    - AIA-NORM-A043-P2-INTERNAL-CONTROL
+    legal_basis_spans:
+    - AIA-TEXT-ANNEX-VI-P004
+    detail: Article 43(2) determines when the Annex VI procedure applies.
+  - relation_id: AIA-REL-ANNEX-VII-PROCEDURE-COMPOSITION-DEPENDENCY-01
+    source_norm_id: AIA-NORM-ANNEX-VII-PROCEDURE-COMPOSITION
+    kind: relies_on_norms
+    target_norm_ids:
+    - AIA-NORM-A043-P1-REQUIRED-ANNEX-VII-ROUTE
+    legal_basis_spans:
+    - AIA-TEXT-ANNEX-VII-P002
+    detail: Article 43(1) determines when providers must use the Annex VII procedure.
+  - relation_id: AIA-REL-ANNEX-VII-OVERVIEW-QMS-EXAMINATION-DEPENDENCY-01
+    source_norm_id: AIA-NORM-ANNEX-VII-OVERVIEW-QMS-EXAMINATION
+    kind: relies_on_norms
+    target_norm_ids:
+    - AIA-NORM-A017-P1-QMS
+    legal_basis_spans:
+    - AIA-TEXT-ANNEX-VII-P004
+    detail: Article 17 establishes the quality management system examined by point 3.
+  - relation_id: AIA-REL-ANNEX-VII-DOC-APPLICATION-DEPENDENCY-01
+    source_norm_id: AIA-NORM-ANNEX-VII-DOC-APPLICATION
+    kind: relies_on_norms
+    target_norm_ids:
+    - AIA-NORM-A043-P1-CHOOSE-NOTIFIED-BODY
+    legal_basis_spans:
+    - AIA-TEXT-ANNEX-VII-P017
+    detail: Article 43(1) preserves the provider's choice of notified body for the Annex VII procedure.
+  - relation_id: AIA-REL-ANNEX-VII-DOC-APPLICATION-CONTENT-DEPENDENCY-01
+    source_norm_id: AIA-NORM-ANNEX-VII-DOC-APPLICATION-CONTENT
+    kind: relies_on_norms
+    target_norm_ids:
+    - AIA-NORM-ANNEX-IV-CONTENT
+    legal_basis_spans:
+    - AIA-TEXT-ANNEX-VII-P018
+    detail: Annex IV defines the technical documentation included in the application.
+  - relation_id: AIA-REL-ANNEX-VII-CHANGE-ROUTE-DECISION-DEPENDENCY-01
+    source_norm_id: AIA-NORM-ANNEX-VII-CHANGE-ROUTE-DECISION
+    kind: relies_on_norms
+    target_norm_ids:
+    - AIA-NORM-A043-P4-NEW-ASSESSMENT
+    legal_basis_spans:
+    - AIA-TEXT-ANNEX-VII-P026
+    detail: Article 43(4) determines when a changed high-risk system requires a new conformity assessment.
+  - relation_id: AIA-REL-ANNEX-X-SIS-RETURN-DEPENDENCY-01
+    source_norm_id: AIA-NORM-ANNEX-X-SIS-RETURN
+    kind: relies_on_norms
+    target_norm_ids:
+    - AIA-NORM-A111-P1-BRING-LARGE-SCALE-IT-INTO-COMPLIANCE
+    legal_basis_spans:
+    - AIA-TEXT-ANNEX-X-P002
+    detail: Article 111(1) gives compliance-transition legal effect to the Annex X list.
+  - relation_id: AIA-REL-ANNEX-X-SIS-BORDER-CHECKS-DEPENDENCY-01
+    source_norm_id: AIA-NORM-ANNEX-X-SIS-BORDER-CHECKS
+    kind: relies_on_norms
+    target_norm_ids:
+    - AIA-NORM-A111-P1-BRING-LARGE-SCALE-IT-INTO-COMPLIANCE
+    legal_basis_spans:
+    - AIA-TEXT-ANNEX-X-P003
+    detail: Article 111(1) gives compliance-transition legal effect to the Annex X list.
+  - relation_id: AIA-REL-ANNEX-X-SIS-POLICE-JUDICIAL-DEPENDENCY-01
+    source_norm_id: AIA-NORM-ANNEX-X-SIS-POLICE-JUDICIAL
+    kind: relies_on_norms
+    target_norm_ids:
+    - AIA-NORM-A111-P1-BRING-LARGE-SCALE-IT-INTO-COMPLIANCE
+    legal_basis_spans:
+    - AIA-TEXT-ANNEX-X-P004
+    detail: Article 111(1) gives compliance-transition legal effect to the Annex X list.
+  - relation_id: AIA-REL-ANNEX-X-VIS-ACCESS-CONDITIONS-DEPENDENCY-01
+    source_norm_id: AIA-NORM-ANNEX-X-VIS-ACCESS-CONDITIONS
+    kind: relies_on_norms
+    target_norm_ids:
+    - AIA-NORM-A111-P1-BRING-LARGE-SCALE-IT-INTO-COMPLIANCE
+    legal_basis_spans:
+    - AIA-TEXT-ANNEX-X-P006
+    detail: Article 111(1) gives compliance-transition legal effect to the Annex X list.
+  - relation_id: AIA-REL-ANNEX-X-VIS-REFORM-DEPENDENCY-01
+    source_norm_id: AIA-NORM-ANNEX-X-VIS-REFORM
+    kind: relies_on_norms
+    target_norm_ids:
+    - AIA-NORM-A111-P1-BRING-LARGE-SCALE-IT-INTO-COMPLIANCE
+    legal_basis_spans:
+    - AIA-TEXT-ANNEX-X-P007
+    detail: Article 111(1) gives compliance-transition legal effect to the Annex X list.
+  - relation_id: AIA-REL-ANNEX-X-EURODAC-DEPENDENCY-01
+    source_norm_id: AIA-NORM-ANNEX-X-EURODAC
+    kind: relies_on_norms
+    target_norm_ids:
+    - AIA-NORM-A111-P1-BRING-LARGE-SCALE-IT-INTO-COMPLIANCE
+    legal_basis_spans:
+    - AIA-TEXT-ANNEX-X-P009
+    detail: Article 111(1) gives compliance-transition legal effect to the Annex X list.
+  - relation_id: AIA-REL-ANNEX-X-ENTRY-EXIT-SYSTEM-DEPENDENCY-01
+    source_norm_id: AIA-NORM-ANNEX-X-ENTRY-EXIT-SYSTEM
+    kind: relies_on_norms
+    target_norm_ids:
+    - AIA-NORM-A111-P1-BRING-LARGE-SCALE-IT-INTO-COMPLIANCE
+    legal_basis_spans:
+    - AIA-TEXT-ANNEX-X-P011
+    detail: Article 111(1) gives compliance-transition legal effect to the Annex X list.
+  - relation_id: AIA-REL-ANNEX-X-ETIAS-DEPENDENCY-01
+    source_norm_id: AIA-NORM-ANNEX-X-ETIAS
+    kind: relies_on_norms
+    target_norm_ids:
+    - AIA-NORM-A111-P1-BRING-LARGE-SCALE-IT-INTO-COMPLIANCE
+    legal_basis_spans:
+    - AIA-TEXT-ANNEX-X-P013
+    detail: Article 111(1) gives compliance-transition legal effect to the Annex X list.
+  - relation_id: AIA-REL-ANNEX-X-ETIAS-EUROPOL-DEPENDENCY-01
+    source_norm_id: AIA-NORM-ANNEX-X-ETIAS-EUROPOL
+    kind: relies_on_norms
+    target_norm_ids:
+    - AIA-NORM-A111-P1-BRING-LARGE-SCALE-IT-INTO-COMPLIANCE
+    legal_basis_spans:
+    - AIA-TEXT-ANNEX-X-P014
+    detail: Article 111(1) gives compliance-transition legal effect to the Annex X list.
+  - relation_id: AIA-REL-ANNEX-X-ECRIS-TCN-DEPENDENCY-01
+    source_norm_id: AIA-NORM-ANNEX-X-ECRIS-TCN
+    kind: relies_on_norms
+    target_norm_ids:
+    - AIA-NORM-A111-P1-BRING-LARGE-SCALE-IT-INTO-COMPLIANCE
+    legal_basis_spans:
+    - AIA-TEXT-ANNEX-X-P016
+    detail: Article 111(1) gives compliance-transition legal effect to the Annex X list.
+  - relation_id: AIA-REL-ANNEX-X-INTEROPERABILITY-BORDERS-VISA-DEPENDENCY-01
+    source_norm_id: AIA-NORM-ANNEX-X-INTEROPERABILITY-BORDERS-VISA
+    kind: relies_on_norms
+    target_norm_ids:
+    - AIA-NORM-A111-P1-BRING-LARGE-SCALE-IT-INTO-COMPLIANCE
+    legal_basis_spans:
+    - AIA-TEXT-ANNEX-X-P018
+    detail: Article 111(1) gives compliance-transition legal effect to the Annex X list.
+  - relation_id: AIA-REL-ANNEX-X-INTEROPERABILITY-POLICE-ASYLUM-MIGRATION-DEPENDENCY-01
+    source_norm_id: AIA-NORM-ANNEX-X-INTEROPERABILITY-POLICE-ASYLUM-MIGRATION
+    kind: relies_on_norms
+    target_norm_ids:
+    - AIA-NORM-A111-P1-BRING-LARGE-SCALE-IT-INTO-COMPLIANCE
+    legal_basis_spans:
+    - AIA-TEXT-ANNEX-X-P019
+    detail: Article 111(1) gives compliance-transition legal effect to the Annex X list.
+  - relation_id: AIA-REL-ANNEX-XI-SECTION-1-TECHNICAL-DOCUMENTATION-DEPENDENCY-01
+    source_norm_id: AIA-NORM-ANNEX-XI-SECTION-1-TECHNICAL-DOCUMENTATION
+    kind: relies_on_norms
+    target_norm_ids:
+    - AIA-NORM-A053-P1-A-DRAW-KEEP-DOCUMENTATION
+    legal_basis_spans:
+    - AIA-TEXT-ANNEX-XI-P003
+    detail: Article 53(1)(a) assigns the Annex XI minimum-content duty to GPAI model providers.
+  - relation_id: AIA-REL-ANNEX-XI-SECTION-2-SYSTEMIC-RISK-DOCUMENTATION-DEPENDENCY-01
+    source_norm_id: AIA-NORM-ANNEX-XI-SECTION-2-SYSTEMIC-RISK-DOCUMENTATION
+    kind: relies_on_norms
+    target_norm_ids:
+    - AIA-NORM-A053-P1-A-DRAW-KEEP-DOCUMENTATION
+    legal_basis_spans:
+    - AIA-TEXT-ANNEX-XI-P019
+    detail: Article 53(1)(a) assigns the Annex XI minimum-content duty to GPAI model providers.
+  - relation_id: AIA-REL-ANNEX-XI-SECTION-2-ADVERSARIAL-TESTING-AND-ADAPTATIONS-DEPENDENCY-01
+    source_norm_id: AIA-NORM-ANNEX-XI-SECTION-2-ADVERSARIAL-TESTING-AND-ADAPTATIONS
+    kind: relies_on_norms
+    target_norm_ids:
+    - AIA-NORM-A053-P1-A-DRAW-KEEP-DOCUMENTATION
+    legal_basis_spans:
+    - AIA-TEXT-ANNEX-XI-P020
+    detail: Article 53(1)(a) assigns the Annex XI minimum-content duty to GPAI model providers.
+  - relation_id: AIA-REL-ANNEX-XI-SECTION-2-SYSTEM-ARCHITECTURE-DEPENDENCY-01
+    source_norm_id: AIA-NORM-ANNEX-XI-SECTION-2-SYSTEM-ARCHITECTURE
+    kind: relies_on_norms
+    target_norm_ids:
+    - AIA-NORM-A053-P1-A-DRAW-KEEP-DOCUMENTATION
+    legal_basis_spans:
+    - AIA-TEXT-ANNEX-XI-P021
+    detail: Article 53(1)(a) assigns the Annex XI minimum-content duty to GPAI model providers.
+  - relation_id: AIA-REL-ANNEX-XII-DOWNSTREAM-TRANSPARENCY-INFORMATION-DEPENDENCY-01
+    source_norm_id: AIA-NORM-ANNEX-XII-DOWNSTREAM-TRANSPARENCY-INFORMATION
+    kind: relies_on_norms
+    target_norm_ids:
+    - AIA-NORM-A053-P1-B-ANNEX-XII-CONTENT
+    legal_basis_spans:
+    - AIA-TEXT-ANNEX-XII-P001
+    detail: Article 53(1)(b) assigns the Annex XII minimum-content duty to GPAI model providers supplying
+      downstream integrators.
+  - relation_id: AIA-REL-ANNEX-XIII-CONSIDER-SYSTEMIC-RISK-CRITERIA-DEPENDENCY-01
+    source_norm_id: AIA-NORM-ANNEX-XIII-CONSIDER-SYSTEMIC-RISK-CRITERIA
+    kind: relies_on_norms
+    target_norm_ids:
+    - AIA-NORM-A051-P1-B-EQUIVALENT-SYSTEMIC-RISK
+    legal_basis_spans:
+    - AIA-TEXT-ANNEX-XIII-P001
+    detail: Article 52(1) empowers designation of models with equivalent systemic-risk capabilities or impact
+      using Annex XIII criteria.
+  - relation_id: AIA-REL-ANNEX-XIII-TEN-THOUSAND-BUSINESS-USERS-PRESUMPTION-DEPENDENCY-01
+    source_norm_id: AIA-NORM-ANNEX-XIII-TEN-THOUSAND-BUSINESS-USERS-PRESUMPTION
+    kind: relies_on_norms
+    target_norm_ids:
+    - AIA-NORM-ANNEX-XIII-CONSIDER-SYSTEMIC-RISK-CRITERIA
+    legal_basis_spans:
+    - AIA-TEXT-ANNEX-XIII-P007
+    detail: The presumption supplies the threshold within the Annex XIII internal-market-impact criterion.
+  - relation_id: AIA-REL-ANNEX-XIV-CODES-SET-DESIGNATION-SCOPE-DEPENDENCY-01
+    source_norm_id: AIA-NORM-ANNEX-XIV-CODES-SET-DESIGNATION-SCOPE
+    kind: relies_on_norms
+    target_norm_ids:
+    - AIA-NORM-A030-P2-ELECTRONIC-NOTIFICATION
+    legal_basis_spans:
+    - AIA-TEXT-ANNEX-XIV-P003
+    detail: Article 30(2) requires notification using the Annex XIV codes, categories, and system types.
+  - relation_id: AIA-REL-ANNEX-XIV-AIP-0102-DEPENDENCY-01
+    source_norm_id: AIA-NORM-ANNEX-XIV-AIP-0102
+    kind: relies_on_norms
+    target_norm_ids:
+    - AIA-NORM-A030-P2-ELECTRONIC-NOTIFICATION
+    legal_basis_spans:
+    - AIA-TEXT-ANNEX-XIV-P005
+    detail: Article 30(2) requires notification using the Annex XIV codes, categories, and system types.
+  - relation_id: AIA-REL-ANNEX-XIV-AIP-0103-DEPENDENCY-01
+    source_norm_id: AIA-NORM-ANNEX-XIV-AIP-0103
+    kind: relies_on_norms
+    target_norm_ids:
+    - AIA-NORM-A030-P2-ELECTRONIC-NOTIFICATION
+    legal_basis_spans:
+    - AIA-TEXT-ANNEX-XIV-P005
+    detail: Article 30(2) requires notification using the Annex XIV codes, categories, and system types.
+  - relation_id: AIA-REL-ANNEX-XIV-AIP-0104-DEPENDENCY-01
+    source_norm_id: AIA-NORM-ANNEX-XIV-AIP-0104
+    kind: relies_on_norms
+    target_norm_ids:
+    - AIA-NORM-A030-P2-ELECTRONIC-NOTIFICATION
+    legal_basis_spans:
+    - AIA-TEXT-ANNEX-XIV-P005
+    detail: Article 30(2) requires notification using the Annex XIV codes, categories, and system types.
+  - relation_id: AIA-REL-ANNEX-XIV-AIP-0105-DEPENDENCY-01
+    source_norm_id: AIA-NORM-ANNEX-XIV-AIP-0105
+    kind: relies_on_norms
+    target_norm_ids:
+    - AIA-NORM-A030-P2-ELECTRONIC-NOTIFICATION
+    legal_basis_spans:
+    - AIA-TEXT-ANNEX-XIV-P005
+    detail: Article 30(2) requires notification using the Annex XIV codes, categories, and system types.
+  - relation_id: AIA-REL-ANNEX-XIV-AIP-0106-DEPENDENCY-01
+    source_norm_id: AIA-NORM-ANNEX-XIV-AIP-0106
+    kind: relies_on_norms
+    target_norm_ids:
+    - AIA-NORM-A030-P2-ELECTRONIC-NOTIFICATION
+    legal_basis_spans:
+    - AIA-TEXT-ANNEX-XIV-P005
+    detail: Article 30(2) requires notification using the Annex XIV codes, categories, and system types.
+  - relation_id: AIA-REL-ANNEX-XIV-AIP-0107-DEPENDENCY-01
+    source_norm_id: AIA-NORM-ANNEX-XIV-AIP-0107
+    kind: relies_on_norms
+    target_norm_ids:
+    - AIA-NORM-A030-P2-ELECTRONIC-NOTIFICATION
+    legal_basis_spans:
+    - AIA-TEXT-ANNEX-XIV-P005
+    detail: Article 30(2) requires notification using the Annex XIV codes, categories, and system types.
+  - relation_id: AIA-REL-ANNEX-XIV-AIP-0108-DEPENDENCY-01
+    source_norm_id: AIA-NORM-ANNEX-XIV-AIP-0108
+    kind: relies_on_norms
+    target_norm_ids:
+    - AIA-NORM-A030-P2-ELECTRONIC-NOTIFICATION
+    legal_basis_spans:
+    - AIA-TEXT-ANNEX-XIV-P005
+    detail: Article 30(2) requires notification using the Annex XIV codes, categories, and system types.
+  - relation_id: AIA-REL-ANNEX-XIV-AIP-0109-DEPENDENCY-01
+    source_norm_id: AIA-NORM-ANNEX-XIV-AIP-0109
+    kind: relies_on_norms
+    target_norm_ids:
+    - AIA-NORM-A030-P2-ELECTRONIC-NOTIFICATION
+    legal_basis_spans:
+    - AIA-TEXT-ANNEX-XIV-P005
+    detail: Article 30(2) requires notification using the Annex XIV codes, categories, and system types.
+  - relation_id: AIA-REL-ANNEX-XIV-AIP-0110-DEPENDENCY-01
+    source_norm_id: AIA-NORM-ANNEX-XIV-AIP-0110
+    kind: relies_on_norms
+    target_norm_ids:
+    - AIA-NORM-A030-P2-ELECTRONIC-NOTIFICATION
+    legal_basis_spans:
+    - AIA-TEXT-ANNEX-XIV-P005
+    detail: Article 30(2) requires notification using the Annex XIV codes, categories, and system types.
+  - relation_id: AIA-REL-ANNEX-XIV-AIP-0111-DEPENDENCY-01
+    source_norm_id: AIA-NORM-ANNEX-XIV-AIP-0111
+    kind: relies_on_norms
+    target_norm_ids:
+    - AIA-NORM-A030-P2-ELECTRONIC-NOTIFICATION
+    legal_basis_spans:
+    - AIA-TEXT-ANNEX-XIV-P005
+    detail: Article 30(2) requires notification using the Annex XIV codes, categories, and system types.
+  - relation_id: AIA-REL-ANNEX-XIV-AIP-0112-DEPENDENCY-01
+    source_norm_id: AIA-NORM-ANNEX-XIV-AIP-0112
+    kind: relies_on_norms
+    target_norm_ids:
+    - AIA-NORM-A030-P2-ELECTRONIC-NOTIFICATION
+    legal_basis_spans:
+    - AIA-TEXT-ANNEX-XIV-P005
+    detail: Article 30(2) requires notification using the Annex XIV codes, categories, and system types.
+  - relation_id: AIA-REL-ANNEX-XIV-AIB-0201-DEPENDENCY-01
+    source_norm_id: AIA-NORM-ANNEX-XIV-AIB-0201
+    kind: relies_on_norms
+    target_norm_ids:
+    - AIA-NORM-A030-P2-ELECTRONIC-NOTIFICATION
+    legal_basis_spans:
+    - AIA-TEXT-ANNEX-XIV-P005
+    detail: Article 30(2) requires notification using the Annex XIV codes, categories, and system types.
+  - relation_id: AIA-REL-ANNEX-XIV-AIB-0202-DEPENDENCY-01
+    source_norm_id: AIA-NORM-ANNEX-XIV-AIB-0202
+    kind: relies_on_norms
+    target_norm_ids:
+    - AIA-NORM-A030-P2-ELECTRONIC-NOTIFICATION
+    legal_basis_spans:
+    - AIA-TEXT-ANNEX-XIV-P005
+    detail: Article 30(2) requires notification using the Annex XIV codes, categories, and system types.
+  - relation_id: AIA-REL-ANNEX-XIV-AIB-0203-DEPENDENCY-01
+    source_norm_id: AIA-NORM-ANNEX-XIV-AIB-0203
+    kind: relies_on_norms
+    target_norm_ids:
+    - AIA-NORM-A030-P2-ELECTRONIC-NOTIFICATION
+    legal_basis_spans:
+    - AIA-TEXT-ANNEX-XIV-P005
+    detail: Article 30(2) requires notification using the Annex XIV codes, categories, and system types.
+  - relation_id: AIA-REL-ANNEX-XIV-AIH-0101-DEPENDENCY-01
+    source_norm_id: AIA-NORM-ANNEX-XIV-AIH-0101
+    kind: relies_on_norms
+    target_norm_ids:
+    - AIA-NORM-A030-P2-ELECTRONIC-NOTIFICATION
+    legal_basis_spans:
+    - AIA-TEXT-ANNEX-XIV-P007
+    detail: Article 30(2) requires notification using the Annex XIV codes, categories, and system types.
+  - relation_id: AIA-REL-ANNEX-XIV-AIH-0201-DEPENDENCY-01
+    source_norm_id: AIA-NORM-ANNEX-XIV-AIH-0201
+    kind: relies_on_norms
+    target_norm_ids:
+    - AIA-NORM-A030-P2-ELECTRONIC-NOTIFICATION
+    legal_basis_spans:
+    - AIA-TEXT-ANNEX-XIV-P007
+    detail: Article 30(2) requires notification using the Annex XIV codes, categories, and system types.
+  - relation_id: AIA-REL-ANNEX-XIV-AIH-0202-DEPENDENCY-01
+    source_norm_id: AIA-NORM-ANNEX-XIV-AIH-0202
+    kind: relies_on_norms
+    target_norm_ids:
+    - AIA-NORM-A030-P2-ELECTRONIC-NOTIFICATION
+    legal_basis_spans:
+    - AIA-TEXT-ANNEX-XIV-P007
+    detail: Article 30(2) requires notification using the Annex XIV codes, categories, and system types.
+  - relation_id: AIA-REL-ANNEX-XIV-AIH-0203-DEPENDENCY-01
+    source_norm_id: AIA-NORM-ANNEX-XIV-AIH-0203
+    kind: relies_on_norms
+    target_norm_ids:
+    - AIA-NORM-A030-P2-ELECTRONIC-NOTIFICATION
+    legal_basis_spans:
+    - AIA-TEXT-ANNEX-XIV-P007
+    detail: Article 30(2) requires notification using the Annex XIV codes, categories, and system types.
+  - relation_id: AIA-REL-ANNEX-XIV-AIH-0204-DEPENDENCY-01
+    source_norm_id: AIA-NORM-ANNEX-XIV-AIH-0204
+    kind: relies_on_norms
+    target_norm_ids:
+    - AIA-NORM-A030-P2-ELECTRONIC-NOTIFICATION
+    legal_basis_spans:
+    - AIA-TEXT-ANNEX-XIV-P007
+    detail: Article 30(2) requires notification using the Annex XIV codes, categories, and system types.
+  - relation_id: AIA-REL-ANNEX-XIV-AIH-0205-DEPENDENCY-01
+    source_norm_id: AIA-NORM-ANNEX-XIV-AIH-0205
+    kind: relies_on_norms
+    target_norm_ids:
+    - AIA-NORM-A030-P2-ELECTRONIC-NOTIFICATION
+    legal_basis_spans:
+    - AIA-TEXT-ANNEX-XIV-P007
+    detail: Article 30(2) requires notification using the Annex XIV codes, categories, and system types.
+  - relation_id: AIA-REL-ANNEX-XIV-AIH-0301-DEPENDENCY-01
+    source_norm_id: AIA-NORM-ANNEX-XIV-AIH-0301
+    kind: relies_on_norms
+    target_norm_ids:
+    - AIA-NORM-A030-P2-ELECTRONIC-NOTIFICATION
+    legal_basis_spans:
+    - AIA-TEXT-ANNEX-XIV-P007
+    detail: Article 30(2) requires notification using the Annex XIV codes, categories, and system types.
+  - relation_id: AIA-REL-ANNEX-XIV-AIH-0401-DEPENDENCY-01
+    source_norm_id: AIA-NORM-ANNEX-XIV-AIH-0401
+    kind: relies_on_norms
+    target_norm_ids:
+    - AIA-NORM-A030-P2-ELECTRONIC-NOTIFICATION
+    legal_basis_spans:
+    - AIA-TEXT-ANNEX-XIV-P007
+    detail: Article 30(2) requires notification using the Annex XIV codes, categories, and system types.
+  - relation_id: AIA-REL-ANNEX-XIV-USE-CODES-IN-APPLICATION-DEPENDENCY-01
+    source_norm_id: AIA-NORM-ANNEX-XIV-USE-CODES-IN-APPLICATION
+    kind: relies_on_norms
+    target_norm_ids:
+    - AIA-NORM-A029-P1-SUBMIT-APPLICATION
+    legal_basis_spans:
+    - AIA-TEXT-ANNEX-XIV-P009
+    detail: Article 29(1) requires the conformity-assessment body to submit its designation application.
+
 interpretations:
 - interpretation_id: AIA-INT-A050-P2-C2026-5054
   snippet_refs:

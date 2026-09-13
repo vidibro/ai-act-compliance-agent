@@ -90,7 +90,6 @@ norms:
     respective obligations as laid down in Article 16, points (b) and (c) and Article 23(3)
   detection_channels:
   - semantic_legal_effect
-  - cross_reference_structure
   - existing_implementation
   primary_spans:
   - AIA-TEXT-A024-P001
@@ -103,16 +102,7 @@ norms:
   - provider identification under Article 16(b)
   - provider quality-management system under Article 16(c)
   - importer identification under Article 23(3)
-  dependencies:
-  - dependency_ref: AIA-NORM-A016-B-PROVIDER-IDENTIFICATION
-    resolution: internal_resolved
-    detail: Article 16(b) supplies the provider-identification requirement.
-  - dependency_ref: AIA-NORM-A016-C-QUALITY-MANAGEMENT
-    resolution: internal_resolved
-    detail: Article 16(c) supplies the provider quality-management requirement.
-  - dependency_ref: AIA-NORM-A023-P3-IDENTIFY-IMPORTER
-    resolution: internal_resolved
-    detail: Article 23(3) supplies the importer-identification requirement.
+  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: compliance_rule

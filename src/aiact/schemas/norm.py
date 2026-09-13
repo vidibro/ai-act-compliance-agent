@@ -320,6 +320,11 @@ class NormDependency(BaseModel):
     @model_validator(mode="after")
     def _unresolved_or_missing_dependency_is_explained(self) -> NormDependency:
         if (
+            self.resolution is DependencyResolution.INTERNAL_RESOLVED
+            and self.dependency_ref.startswith("AIA-NORM-")
+        ):
+            raise ValueError("internal norm dependencies must use relies_on_norms")
+        if (
             self.resolution
             in {
                 DependencyResolution.MISSING,

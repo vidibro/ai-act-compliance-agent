@@ -24,10 +24,7 @@ norms:
   conditions: []
   exceptions: []
   mandatory_content: []
-  dependencies:
-  - dependency_ref: AIA-NORM-A043-P2-INTERNAL-CONTROL
-    resolution: internal_resolved
-    detail: Article 43(2) requires the Annex VI route for the specified Annex III systems.
+  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: missing
@@ -54,7 +51,6 @@ norms:
     the requirements of Article 17.
   detection_channels:
   - semantic_legal_effect
-  - cross_reference_structure
   - existing_implementation
   primary_spans:
   - AIA-TEXT-ANNEX-VI-P002
@@ -63,13 +59,7 @@ norms:
   conditions: []
   exceptions: []
   mandatory_content: []
-  dependencies:
-  - dependency_ref: AIA-NORM-A017-P1-QMS
-    resolution: internal_resolved
-    detail: Article 17 establishes the provider's quality-management-system requirement.
-  - dependency_ref: AIA-NORM-A043-P2-INTERNAL-CONTROL
-    resolution: internal_resolved
-    detail: Article 43(2) determines when the Annex VI procedure applies.
+  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: compliance_rule
@@ -99,7 +89,6 @@ norms:
     III, Section 2.
   detection_channels:
   - semantic_legal_effect
-  - cross_reference_structure
   - existing_implementation
   primary_spans:
   - AIA-TEXT-ANNEX-VI-P003
@@ -108,10 +97,7 @@ norms:
   conditions: []
   exceptions: []
   mandatory_content: []
-  dependencies:
-  - dependency_ref: AIA-NORM-A043-P2-INTERNAL-CONTROL
-    resolution: internal_resolved
-    detail: Article 43(2) determines when the Annex VI procedure applies.
+  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: compliance_rule
@@ -140,7 +126,6 @@ norms:
     post-market monitoring as referred to in Article 72 is consistent with the technical documentation.
   detection_channels:
   - semantic_legal_effect
-  - cross_reference_structure
   - existing_implementation
   primary_spans:
   - AIA-TEXT-ANNEX-VI-P004
@@ -149,13 +134,7 @@ norms:
   conditions: []
   exceptions: []
   mandatory_content: []
-  dependencies:
-  - dependency_ref: AIA-NORM-A072-P1-ESTABLISH-AND-DOCUMENT-MONITORING
-    resolution: internal_resolved
-    detail: Article 72 establishes and documents the post-market monitoring system referenced here.
-  - dependency_ref: AIA-NORM-A043-P2-INTERNAL-CONTROL
-    resolution: internal_resolved
-    detail: Article 43(2) determines when the Annex VI procedure applies.
+  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: compliance_rule

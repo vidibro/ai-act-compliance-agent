@@ -642,10 +642,7 @@ norms:
   - the system includes mechanisms relevant to deployer collection, storage, or interpretation of logs
   exceptions: []
   mandatory_content: []
-  dependencies:
-  - dependency_ref: AIA-NORM-A012-P1-AUTOMATIC-LOGGING
-    resolution: internal_resolved
-    detail: Article 12 supplies the automatic-logging requirement whose mechanisms are described here.
+  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: compliance_rule

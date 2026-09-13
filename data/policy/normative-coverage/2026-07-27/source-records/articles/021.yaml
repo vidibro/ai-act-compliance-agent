@@ -32,10 +32,6 @@ records:
   implementation_refs:
   - AIA-PO-A21-2
   verification_mode: reported_not_judged
-  dependencies:
-  - dependency_ref: AIA-NORM-A012-P1-AUTOMATIC-LOGGING
-    resolution: internal_resolved
-    detail: Article 12(1) supplies the referenced automatic-logging requirement.
   verified_by: vidibro
 - norm_id: AIA-NORM-A021-P3-CONFIDENTIALITY
   source: A021-P003

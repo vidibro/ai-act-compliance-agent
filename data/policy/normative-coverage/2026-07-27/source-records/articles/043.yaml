@@ -46,10 +46,6 @@ records:
   - where the system is intended to be put into service by law enforcement, immigration or asylum authorities,
     or Union institutions, bodies, offices or agencies, the Article 74(8) or (9) market surveillance authority,
     as applicable, shall act as the notified body
-  dependencies:
-  - dependency_ref: AIA-NORM-A043-P1-AUTHORITY-AS-NOTIFIED-BODY
-    resolution: internal_resolved
-    detail: The mandatory authority route limits the provider's choice of notified body.
   subject_ref: provider
   subject_category: supported_operator
   kind: permission

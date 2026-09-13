@@ -32,9 +32,6 @@ norms:
   exceptions: []
   mandatory_content: []
   dependencies:
-  - dependency_ref: AIA-NORM-A003-D014-SAFETY-COMPONENT
-    resolution: internal_resolved
-    detail: Article 3(14) defines safety component.
   - dependency_ref: Annex I of this Regulation and the Union harmonisation legislation listed there
     resolution: unresolved
     detail: Annex I and the referenced legislation determine the covered products and conformity-assessment
@@ -71,7 +68,6 @@ norms:
   - semantic_legal_effect
   - shall_token
   - deeming_or_consequence
-  - cross_reference_structure
   - existing_implementation
   primary_spans:
   - AIA-TEXT-A006-P004
@@ -82,10 +78,7 @@ norms:
     efficiency, automation, convenience, or quality control
   exceptions: []
   mandatory_content: []
-  dependencies:
-  - dependency_ref: AIA-NORM-A003-D014-SAFETY-COMPONENT
-    resolution: internal_resolved
-    detail: Article 3(14) defines safety component.
+  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: applicability_question
@@ -116,7 +109,6 @@ norms:
   - semantic_legal_effect
   - shall_token
   - deeming_or_consequence
-  - cross_reference_structure
   - existing_implementation
   primary_spans:
   - AIA-TEXT-A006-P005
@@ -126,13 +118,7 @@ norms:
   - failure or malfunction of the AI system would endanger health and safety
   exceptions: []
   mandatory_content: []
-  dependencies:
-  - dependency_ref: AIA-NORM-A003-D014-SAFETY-COMPONENT
-    resolution: internal_resolved
-    detail: Article 3(14) defines safety component.
-  - dependency_ref: AIA-NORM-A006-P1A-NON-SAFETY-ASSISTANCE
-    resolution: internal_resolved
-    detail: This health-and-safety rule overrides the paragraph 1a non-safety exclusion.
+  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: applicability_question
@@ -280,10 +266,7 @@ norms:
   - an Annex III AI system performing profiling of natural persons is always high-risk, notwithstanding
     this exception
   mandatory_content: []
-  dependencies:
-  - dependency_ref: AIA-NORM-A006-P2-ANNEX-III-HIGH-RISK
-    resolution: internal_resolved
-    detail: This norm derogates from the Annex III high-risk classification.
+  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: applicability_question
@@ -314,7 +297,6 @@ norms:
   - semantic_legal_effect
   - shall_token
   - deeming_or_consequence
-  - cross_reference_structure
   - existing_implementation
   primary_spans:
   - AIA-TEXT-A006-P014
@@ -324,13 +306,7 @@ norms:
   - the AI system performs profiling of natural persons
   exceptions: []
   mandatory_content: []
-  dependencies:
-  - dependency_ref: AIA-NORM-A003-D052-PROFILING
-    resolution: internal_resolved
-    detail: Article 3(52) defines profiling.
-  - dependency_ref: AIA-NORM-A006-P3-INSIGNIFICANT-RISK-EXCEPTION
-    resolution: internal_resolved
-    detail: Profiling overrides the Article 6(3) insignificant-risk exception.
+  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: applicability_question
@@ -360,7 +336,6 @@ norms:
   detection_channels:
   - semantic_legal_effect
   - shall_token
-  - cross_reference_structure
   - existing_implementation
   primary_spans:
   - AIA-TEXT-A006-P015
@@ -370,10 +345,7 @@ norms:
   - the provider considers an Annex III AI system not to be high-risk under Article 6(3)
   exceptions: []
   mandatory_content: []
-  dependencies:
-  - dependency_ref: AIA-NORM-A006-P3-INSIGNIFICANT-RISK-EXCEPTION
-    resolution: internal_resolved
-    detail: Article 6(3) supplies the substantive basis for the assessment.
+  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: compliance_rule

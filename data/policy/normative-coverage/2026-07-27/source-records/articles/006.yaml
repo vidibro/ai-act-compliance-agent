@@ -20,9 +20,6 @@ records:
     or putting into service under that Annex I legislation
   verification_mode: answered_by_classification
   dependencies:
-  - dependency_ref: AIA-NORM-A003-D014-SAFETY-COMPONENT
-    resolution: internal_resolved
-    detail: Article 3(14) defines safety component.
   - dependency_ref: Annex I of this Regulation and the Union harmonisation legislation listed there
     resolution: unresolved
     detail: Annex I and the referenced legislation determine the covered products and conformity-assessment
@@ -46,10 +43,6 @@ records:
   - the system is used solely for non-safety aspects of user assistance, performance optimisation, service
     efficiency, automation, convenience, or quality control
   verification_mode: answered_by_classification
-  dependencies:
-  - dependency_ref: AIA-NORM-A003-D014-SAFETY-COMPONENT
-    resolution: internal_resolved
-    detail: Article 3(14) defines safety component.
   implementation_mode: applicability_question
   implementation_refs:
   - AIA-CQ-ANNEX-I
@@ -66,13 +59,6 @@ records:
   conditions:
   - failure or malfunction of the AI system would endanger health and safety
   verification_mode: answered_by_classification
-  dependencies:
-  - dependency_ref: AIA-NORM-A003-D014-SAFETY-COMPONENT
-    resolution: internal_resolved
-    detail: Article 3(14) defines safety component.
-  - dependency_ref: AIA-NORM-A006-P1A-NON-SAFETY-ASSISTANCE
-    resolution: internal_resolved
-    detail: This health-and-safety rule overrides the paragraph 1a non-safety exclusion.
   implementation_mode: applicability_question
   implementation_refs:
   - AIA-CQ-ANNEX-I
@@ -149,10 +135,6 @@ records:
   - an Annex III AI system performing profiling of natural persons is always high-risk, notwithstanding
     this exception
   verification_mode: answered_by_classification
-  dependencies:
-  - dependency_ref: AIA-NORM-A006-P2-ANNEX-III-HIGH-RISK
-    resolution: internal_resolved
-    detail: This norm derogates from the Annex III high-risk classification.
   implementation_mode: applicability_question
   implementation_refs:
   - AIA-CQ-DEROGATION
@@ -169,13 +151,6 @@ records:
   conditions:
   - the AI system performs profiling of natural persons
   verification_mode: answered_by_classification
-  dependencies:
-  - dependency_ref: AIA-NORM-A003-D052-PROFILING
-    resolution: internal_resolved
-    detail: Article 3(52) defines profiling.
-  - dependency_ref: AIA-NORM-A006-P3-INSIGNIFICANT-RISK-EXCEPTION
-    resolution: internal_resolved
-    detail: Profiling overrides the Article 6(3) insignificant-risk exception.
   implementation_mode: applicability_question
   implementation_refs:
   - AIA-CQ-PROFILING
@@ -192,10 +167,6 @@ records:
   conditions:
   - the provider considers an Annex III AI system not to be high-risk under Article 6(3)
   verification_mode: judged_by_gap_analysis
-  dependencies:
-  - dependency_ref: AIA-NORM-A006-P3-INSIGNIFICANT-RISK-EXCEPTION
-    resolution: internal_resolved
-    detail: Article 6(3) supplies the substantive basis for the assessment.
   implementation_refs:
   - AIA-NHR-A06-4
   verified_by: vidibro

@@ -106,10 +106,6 @@ records:
   qualifier_spans: *id002
   implementation_refs: *id001
   verification_mode: reported_not_judged
-  dependencies:
-  - dependency_ref: AIA-NORM-A009-P1-ESTABLISH-IMPLEMENT-DOCUMENT-AND-MAINTAIN
-    resolution: internal_resolved
-    detail: Article 9 supplies the referenced risk-management-system obligation.
   verified_by: vidibro
 - norm_id: AIA-NORM-A017-P1-H-POST-MARKET-MONITORING
   source: A017-P009

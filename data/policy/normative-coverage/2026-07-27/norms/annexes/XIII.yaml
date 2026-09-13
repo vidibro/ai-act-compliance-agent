@@ -37,11 +37,7 @@ norms:
     autonomy, scalability, and tool access
   - high impact on the internal market due to reach
   - number of registered end-users
-  dependencies:
-  - dependency_ref: AIA-NORM-A051-P1-B-EQUIVALENT-SYSTEMIC-RISK
-    resolution: internal_resolved
-    detail: Article 52(1) empowers designation of models with equivalent systemic-risk capabilities or
-      impact using Annex XIII criteria.
+  dependencies: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for the Commission.
   implementation_mode: none_required
@@ -71,7 +67,6 @@ norms:
   - semantic_legal_effect
   - shall_token
   - deeming_or_consequence
-  - cross_reference_structure
   primary_spans:
   - AIA-TEXT-ANNEX-XIII-P007
   qualifier_spans: []
@@ -81,10 +76,7 @@ norms:
     Union
   exceptions: []
   mandatory_content: []
-  dependencies:
-  - dependency_ref: AIA-NORM-ANNEX-XIII-CONSIDER-SYSTEMIC-RISK-CRITERIA
-    resolution: internal_resolved
-    detail: The presumption supplies the threshold within the Annex XIII internal-market-impact criterion.
+  dependencies: []
   product_scope: dependency_only
   product_scope_reason: This presumption informs Commission designation without creating an independent
     operator action.

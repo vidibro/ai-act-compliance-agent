@@ -13,10 +13,6 @@ records:
   implementation_refs: &id001
   - AIA-HR-A10
   verification_mode: judged_by_gap_analysis
-  dependencies:
-  - dependency_ref: AIA-NORM-A004A-P1-HIGH-RISK-BIAS-DATA-PROCESSING
-    resolution: internal_resolved
-    detail: Article 4a(1) supplies the special-category-data permission and its safeguard conditions.
   verified_by: vidibro
 - norm_id: AIA-NORM-A010-P2-GOVERN-DATASETS
   source: A010-P002
@@ -312,9 +308,4 @@ records:
   - the high-risk AI system is developed without techniques involving training an AI model
   implementation_refs: *id001
   verification_mode: judged_by_gap_analysis
-  dependencies:
-  - dependency_ref: AIA-NORM-A004A-P1-HIGH-RISK-BIAS-DATA-PROCESSING
-    resolution: internal_resolved
-    detail: Article 4a(1) supplies the special-category-data quality criterion incorporated by Article
-      10(6).
   verified_by: vidibro

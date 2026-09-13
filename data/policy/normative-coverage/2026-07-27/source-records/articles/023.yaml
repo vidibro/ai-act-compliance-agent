@@ -27,10 +27,6 @@ records:
   implementation_refs: *id002
   verification_mode: reported_not_judged
   qualifier_spans: *id003
-  dependencies:
-  - dependency_ref: AIA-NORM-A011-P1-ANNEX-IV
-    resolution: internal_resolved
-    detail: Article 11(1) and Annex IV supply the referenced technical-documentation requirements.
   verified_by: vidibro
 - norm_id: AIA-NORM-A023-P1-C-VERIFY-MARKING-AND-DOCUMENTS
   source: A023-P004
@@ -60,10 +56,6 @@ records:
   implementation_refs: *id002
   verification_mode: reported_not_judged
   qualifier_spans: *id003
-  dependencies:
-  - dependency_ref: AIA-NORM-A022-P1-APPOINT-REPRESENTATIVE
-    resolution: internal_resolved
-    detail: Article 22(1) supplies the referenced appointment requirement.
   verified_by: vidibro
 - norm_id: AIA-NORM-A023-P2-WITHHOLD-NONCONFORMING-SYSTEM
   source: A023-P006

@@ -830,7 +830,6 @@ norms:
   - semantic_legal_effect
   - shall_token
   - deeming_or_consequence
-  - cross_reference_structure
   - existing_implementation
   primary_spans:
   - AIA-TEXT-A002-P017
@@ -839,10 +838,7 @@ norms:
   conditions: []
   exceptions: []
   mandatory_content: []
-  dependencies:
-  - dependency_ref: AIA-NORM-A002-P8-PRE-MARKET-RD-EXCLUSION
-    resolution: internal_resolved
-    detail: This norm limits the exclusion stated earlier in the same paragraph.
+  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: applicability_question

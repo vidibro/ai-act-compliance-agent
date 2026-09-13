@@ -31,9 +31,6 @@ norms:
   - dependency_ref: Article 97 of this Regulation
     resolution: unresolved
     detail: Article 97 supplies the delegated-act procedure and has not yet been semantically reviewed.
-  - dependency_ref: AIA-NORM-A006-P2-ANNEX-III-HIGH-RISK
-    resolution: internal_resolved
-    detail: Article 6(2) gives high-risk legal effect to the Annex III use-case list.
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for the Commission.
   implementation_mode: none_required
@@ -181,9 +178,6 @@ norms:
   - dependency_ref: Article 97 of this Regulation
     resolution: unresolved
     detail: Article 97 supplies the delegated-act procedure and has not yet been semantically reviewed.
-  - dependency_ref: AIA-NORM-A007-P2-CONSIDER-RISK-CRITERIA
-    resolution: internal_resolved
-    detail: Article 7(2) supplies the criteria used to determine whether significant risk remains.
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for the Commission.
   implementation_mode: none_required

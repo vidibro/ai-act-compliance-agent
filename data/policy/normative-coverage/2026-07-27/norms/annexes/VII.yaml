@@ -21,10 +21,7 @@ norms:
   conditions: []
   exceptions: []
   mandatory_content: []
-  dependencies:
-  - dependency_ref: AIA-NORM-A043-P1-REQUIRED-ANNEX-VII-ROUTE
-    resolution: internal_resolved
-    detail: Article 43(1) determines when providers must use the Annex VII procedure.
+  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: missing
@@ -55,7 +52,6 @@ norms:
   - semantic_legal_effect
   - shall_token
   - deeming_or_consequence
-  - cross_reference_structure
   primary_spans:
   - AIA-TEXT-ANNEX-VII-P004
   qualifier_spans: []
@@ -65,10 +61,7 @@ norms:
   mandatory_content:
   - examination of the approved quality management system under point 3
   - surveillance of that system under point 5
-  dependencies:
-  - dependency_ref: AIA-NORM-A017-P1-QMS
-    resolution: internal_resolved
-    detail: Article 17 establishes the quality management system examined by point 3.
+  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: missing
@@ -412,7 +405,6 @@ norms:
   detection_channels:
   - semantic_legal_effect
   - shall_token
-  - cross_reference_structure
   primary_spans:
   - AIA-TEXT-ANNEX-VII-P017
   qualifier_spans: []
@@ -422,10 +414,7 @@ norms:
   - the AI system is covered by the point 3 quality management system
   exceptions: []
   mandatory_content: []
-  dependencies:
-  - dependency_ref: AIA-NORM-A043-P1-CHOOSE-NOTIFIED-BODY
-    resolution: internal_resolved
-    detail: Article 43(1) preserves the provider's choice of notified body for the Annex VII procedure.
+  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: missing
@@ -467,10 +456,7 @@ norms:
   - provider name and address
   - written declaration that the same application has not been lodged with another notified body
   - Annex IV technical documentation
-  dependencies:
-  - dependency_ref: AIA-NORM-ANNEX-IV-CONTENT
-    resolution: internal_resolved
-    detail: Annex IV defines the technical documentation included in the application.
+  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: missing
@@ -1013,7 +999,6 @@ norms:
   detection_channels:
   - semantic_legal_effect
   - shall_token
-  - cross_reference_structure
   primary_spans:
   - AIA-TEXT-ANNEX-VII-P026
   qualifier_spans: []
@@ -1021,10 +1006,7 @@ norms:
   conditions: []
   exceptions: []
   mandatory_content: []
-  dependencies:
-  - dependency_ref: AIA-NORM-A043-P4-NEW-ASSESSMENT
-    resolution: internal_resolved
-    detail: Article 43(4) determines when a changed high-risk system requires a new conformity assessment.
+  dependencies: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required

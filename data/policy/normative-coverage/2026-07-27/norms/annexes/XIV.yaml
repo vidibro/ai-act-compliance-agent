@@ -50,7 +50,6 @@ norms:
   detection_channels:
   - semantic_legal_effect
   - deeming_or_consequence
-  - cross_reference_structure
   primary_spans:
   - AIA-TEXT-ANNEX-XIV-P003
   qualifier_spans: []
@@ -58,10 +57,7 @@ norms:
   conditions: []
   exceptions: []
   mandatory_content: []
-  dependencies:
-  - dependency_ref: AIA-NORM-A030-P2-ELECTRONIC-NOTIFICATION
-    resolution: internal_resolved
-    detail: Article 30(2) requires notification using the Annex XIV codes, categories, and system types.
+  dependencies: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -88,7 +84,6 @@ norms:
   detection_channels:
   - semantic_legal_effect
   - deeming_or_consequence
-  - cross_reference_structure
   primary_spans:
   - AIA-TEXT-ANNEX-XIV-P005
   qualifier_spans: []
@@ -96,10 +91,7 @@ norms:
   conditions: []
   exceptions: []
   mandatory_content: []
-  dependencies:
-  - dependency_ref: AIA-NORM-A030-P2-ELECTRONIC-NOTIFICATION
-    resolution: internal_resolved
-    detail: Article 30(2) requires notification using the Annex XIV codes, categories, and system types.
+  dependencies: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -126,7 +118,6 @@ norms:
   detection_channels:
   - semantic_legal_effect
   - deeming_or_consequence
-  - cross_reference_structure
   primary_spans:
   - AIA-TEXT-ANNEX-XIV-P005
   qualifier_spans: []
@@ -134,10 +125,7 @@ norms:
   conditions: []
   exceptions: []
   mandatory_content: []
-  dependencies:
-  - dependency_ref: AIA-NORM-A030-P2-ELECTRONIC-NOTIFICATION
-    resolution: internal_resolved
-    detail: Article 30(2) requires notification using the Annex XIV codes, categories, and system types.
+  dependencies: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -164,7 +152,6 @@ norms:
   detection_channels:
   - semantic_legal_effect
   - deeming_or_consequence
-  - cross_reference_structure
   primary_spans:
   - AIA-TEXT-ANNEX-XIV-P005
   qualifier_spans: []
@@ -172,10 +159,7 @@ norms:
   conditions: []
   exceptions: []
   mandatory_content: []
-  dependencies:
-  - dependency_ref: AIA-NORM-A030-P2-ELECTRONIC-NOTIFICATION
-    resolution: internal_resolved
-    detail: Article 30(2) requires notification using the Annex XIV codes, categories, and system types.
+  dependencies: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -202,7 +186,6 @@ norms:
   detection_channels:
   - semantic_legal_effect
   - deeming_or_consequence
-  - cross_reference_structure
   primary_spans:
   - AIA-TEXT-ANNEX-XIV-P005
   qualifier_spans: []
@@ -210,10 +193,7 @@ norms:
   conditions: []
   exceptions: []
   mandatory_content: []
-  dependencies:
-  - dependency_ref: AIA-NORM-A030-P2-ELECTRONIC-NOTIFICATION
-    resolution: internal_resolved
-    detail: Article 30(2) requires notification using the Annex XIV codes, categories, and system types.
+  dependencies: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -240,7 +220,6 @@ norms:
   detection_channels:
   - semantic_legal_effect
   - deeming_or_consequence
-  - cross_reference_structure
   primary_spans:
   - AIA-TEXT-ANNEX-XIV-P005
   qualifier_spans: []
@@ -248,10 +227,7 @@ norms:
   conditions: []
   exceptions: []
   mandatory_content: []
-  dependencies:
-  - dependency_ref: AIA-NORM-A030-P2-ELECTRONIC-NOTIFICATION
-    resolution: internal_resolved
-    detail: Article 30(2) requires notification using the Annex XIV codes, categories, and system types.
+  dependencies: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -278,7 +254,6 @@ norms:
   detection_channels:
   - semantic_legal_effect
   - deeming_or_consequence
-  - cross_reference_structure
   primary_spans:
   - AIA-TEXT-ANNEX-XIV-P005
   qualifier_spans: []
@@ -286,10 +261,7 @@ norms:
   conditions: []
   exceptions: []
   mandatory_content: []
-  dependencies:
-  - dependency_ref: AIA-NORM-A030-P2-ELECTRONIC-NOTIFICATION
-    resolution: internal_resolved
-    detail: Article 30(2) requires notification using the Annex XIV codes, categories, and system types.
+  dependencies: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -316,7 +288,6 @@ norms:
   detection_channels:
   - semantic_legal_effect
   - deeming_or_consequence
-  - cross_reference_structure
   primary_spans:
   - AIA-TEXT-ANNEX-XIV-P005
   qualifier_spans: []
@@ -324,10 +295,7 @@ norms:
   conditions: []
   exceptions: []
   mandatory_content: []
-  dependencies:
-  - dependency_ref: AIA-NORM-A030-P2-ELECTRONIC-NOTIFICATION
-    resolution: internal_resolved
-    detail: Article 30(2) requires notification using the Annex XIV codes, categories, and system types.
+  dependencies: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -354,7 +322,6 @@ norms:
   detection_channels:
   - semantic_legal_effect
   - deeming_or_consequence
-  - cross_reference_structure
   primary_spans:
   - AIA-TEXT-ANNEX-XIV-P005
   qualifier_spans: []
@@ -362,10 +329,7 @@ norms:
   conditions: []
   exceptions: []
   mandatory_content: []
-  dependencies:
-  - dependency_ref: AIA-NORM-A030-P2-ELECTRONIC-NOTIFICATION
-    resolution: internal_resolved
-    detail: Article 30(2) requires notification using the Annex XIV codes, categories, and system types.
+  dependencies: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -392,7 +356,6 @@ norms:
   detection_channels:
   - semantic_legal_effect
   - deeming_or_consequence
-  - cross_reference_structure
   primary_spans:
   - AIA-TEXT-ANNEX-XIV-P005
   qualifier_spans: []
@@ -400,10 +363,7 @@ norms:
   conditions: []
   exceptions: []
   mandatory_content: []
-  dependencies:
-  - dependency_ref: AIA-NORM-A030-P2-ELECTRONIC-NOTIFICATION
-    resolution: internal_resolved
-    detail: Article 30(2) requires notification using the Annex XIV codes, categories, and system types.
+  dependencies: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -430,7 +390,6 @@ norms:
   detection_channels:
   - semantic_legal_effect
   - deeming_or_consequence
-  - cross_reference_structure
   primary_spans:
   - AIA-TEXT-ANNEX-XIV-P005
   qualifier_spans: []
@@ -438,10 +397,7 @@ norms:
   conditions: []
   exceptions: []
   mandatory_content: []
-  dependencies:
-  - dependency_ref: AIA-NORM-A030-P2-ELECTRONIC-NOTIFICATION
-    resolution: internal_resolved
-    detail: Article 30(2) requires notification using the Annex XIV codes, categories, and system types.
+  dependencies: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -468,7 +424,6 @@ norms:
   detection_channels:
   - semantic_legal_effect
   - deeming_or_consequence
-  - cross_reference_structure
   primary_spans:
   - AIA-TEXT-ANNEX-XIV-P005
   qualifier_spans: []
@@ -476,10 +431,7 @@ norms:
   conditions: []
   exceptions: []
   mandatory_content: []
-  dependencies:
-  - dependency_ref: AIA-NORM-A030-P2-ELECTRONIC-NOTIFICATION
-    resolution: internal_resolved
-    detail: Article 30(2) requires notification using the Annex XIV codes, categories, and system types.
+  dependencies: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -506,7 +458,6 @@ norms:
   detection_channels:
   - semantic_legal_effect
   - deeming_or_consequence
-  - cross_reference_structure
   primary_spans:
   - AIA-TEXT-ANNEX-XIV-P005
   qualifier_spans: []
@@ -514,10 +465,7 @@ norms:
   conditions: []
   exceptions: []
   mandatory_content: []
-  dependencies:
-  - dependency_ref: AIA-NORM-A030-P2-ELECTRONIC-NOTIFICATION
-    resolution: internal_resolved
-    detail: Article 30(2) requires notification using the Annex XIV codes, categories, and system types.
+  dependencies: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -544,7 +492,6 @@ norms:
   detection_channels:
   - semantic_legal_effect
   - deeming_or_consequence
-  - cross_reference_structure
   primary_spans:
   - AIA-TEXT-ANNEX-XIV-P005
   qualifier_spans: []
@@ -552,10 +499,7 @@ norms:
   conditions: []
   exceptions: []
   mandatory_content: []
-  dependencies:
-  - dependency_ref: AIA-NORM-A030-P2-ELECTRONIC-NOTIFICATION
-    resolution: internal_resolved
-    detail: Article 30(2) requires notification using the Annex XIV codes, categories, and system types.
+  dependencies: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -582,7 +526,6 @@ norms:
   detection_channels:
   - semantic_legal_effect
   - deeming_or_consequence
-  - cross_reference_structure
   primary_spans:
   - AIA-TEXT-ANNEX-XIV-P005
   qualifier_spans: []
@@ -590,10 +533,7 @@ norms:
   conditions: []
   exceptions: []
   mandatory_content: []
-  dependencies:
-  - dependency_ref: AIA-NORM-A030-P2-ELECTRONIC-NOTIFICATION
-    resolution: internal_resolved
-    detail: Article 30(2) requires notification using the Annex XIV codes, categories, and system types.
+  dependencies: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -622,7 +562,6 @@ norms:
   detection_channels:
   - semantic_legal_effect
   - deeming_or_consequence
-  - cross_reference_structure
   primary_spans:
   - AIA-TEXT-ANNEX-XIV-P007
   qualifier_spans: []
@@ -630,10 +569,7 @@ norms:
   conditions: []
   exceptions: []
   mandatory_content: []
-  dependencies:
-  - dependency_ref: AIA-NORM-A030-P2-ELECTRONIC-NOTIFICATION
-    resolution: internal_resolved
-    detail: Article 30(2) requires notification using the Annex XIV codes, categories, and system types.
+  dependencies: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -660,7 +596,6 @@ norms:
   detection_channels:
   - semantic_legal_effect
   - deeming_or_consequence
-  - cross_reference_structure
   primary_spans:
   - AIA-TEXT-ANNEX-XIV-P007
   qualifier_spans: []
@@ -668,10 +603,7 @@ norms:
   conditions: []
   exceptions: []
   mandatory_content: []
-  dependencies:
-  - dependency_ref: AIA-NORM-A030-P2-ELECTRONIC-NOTIFICATION
-    resolution: internal_resolved
-    detail: Article 30(2) requires notification using the Annex XIV codes, categories, and system types.
+  dependencies: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -698,7 +630,6 @@ norms:
   detection_channels:
   - semantic_legal_effect
   - deeming_or_consequence
-  - cross_reference_structure
   primary_spans:
   - AIA-TEXT-ANNEX-XIV-P007
   qualifier_spans: []
@@ -706,10 +637,7 @@ norms:
   conditions: []
   exceptions: []
   mandatory_content: []
-  dependencies:
-  - dependency_ref: AIA-NORM-A030-P2-ELECTRONIC-NOTIFICATION
-    resolution: internal_resolved
-    detail: Article 30(2) requires notification using the Annex XIV codes, categories, and system types.
+  dependencies: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -736,7 +664,6 @@ norms:
   detection_channels:
   - semantic_legal_effect
   - deeming_or_consequence
-  - cross_reference_structure
   primary_spans:
   - AIA-TEXT-ANNEX-XIV-P007
   qualifier_spans: []
@@ -744,10 +671,7 @@ norms:
   conditions: []
   exceptions: []
   mandatory_content: []
-  dependencies:
-  - dependency_ref: AIA-NORM-A030-P2-ELECTRONIC-NOTIFICATION
-    resolution: internal_resolved
-    detail: Article 30(2) requires notification using the Annex XIV codes, categories, and system types.
+  dependencies: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -774,7 +698,6 @@ norms:
   detection_channels:
   - semantic_legal_effect
   - deeming_or_consequence
-  - cross_reference_structure
   primary_spans:
   - AIA-TEXT-ANNEX-XIV-P007
   qualifier_spans: []
@@ -782,10 +705,7 @@ norms:
   conditions: []
   exceptions: []
   mandatory_content: []
-  dependencies:
-  - dependency_ref: AIA-NORM-A030-P2-ELECTRONIC-NOTIFICATION
-    resolution: internal_resolved
-    detail: Article 30(2) requires notification using the Annex XIV codes, categories, and system types.
+  dependencies: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -813,7 +733,6 @@ norms:
   detection_channels:
   - semantic_legal_effect
   - deeming_or_consequence
-  - cross_reference_structure
   primary_spans:
   - AIA-TEXT-ANNEX-XIV-P007
   qualifier_spans: []
@@ -822,10 +741,7 @@ norms:
   exceptions:
   - AI systems covered by code AIH 0401
   mandatory_content: []
-  dependencies:
-  - dependency_ref: AIA-NORM-A030-P2-ELECTRONIC-NOTIFICATION
-    resolution: internal_resolved
-    detail: Article 30(2) requires notification using the Annex XIV codes, categories, and system types.
+  dependencies: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -852,7 +768,6 @@ norms:
   detection_channels:
   - semantic_legal_effect
   - deeming_or_consequence
-  - cross_reference_structure
   primary_spans:
   - AIA-TEXT-ANNEX-XIV-P007
   qualifier_spans: []
@@ -860,10 +775,7 @@ norms:
   conditions: []
   exceptions: []
   mandatory_content: []
-  dependencies:
-  - dependency_ref: AIA-NORM-A030-P2-ELECTRONIC-NOTIFICATION
-    resolution: internal_resolved
-    detail: Article 30(2) requires notification using the Annex XIV codes, categories, and system types.
+  dependencies: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -892,7 +804,6 @@ norms:
   detection_channels:
   - semantic_legal_effect
   - deeming_or_consequence
-  - cross_reference_structure
   primary_spans:
   - AIA-TEXT-ANNEX-XIV-P007
   qualifier_spans: []
@@ -901,10 +812,7 @@ norms:
   - the emerging AI technology is not covered by another Annex XIV code
   exceptions: []
   mandatory_content: []
-  dependencies:
-  - dependency_ref: AIA-NORM-A030-P2-ELECTRONIC-NOTIFICATION
-    resolution: internal_resolved
-    detail: Article 30(2) requires notification using the Annex XIV codes, categories, and system types.
+  dependencies: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -933,7 +841,6 @@ norms:
   detection_channels:
   - semantic_legal_effect
   - shall_token
-  - cross_reference_structure
   primary_spans:
   - AIA-TEXT-ANNEX-XIV-P009
   qualifier_spans: []
@@ -941,10 +848,7 @@ norms:
   conditions: []
   exceptions: []
   mandatory_content: []
-  dependencies:
-  - dependency_ref: AIA-NORM-A029-P1-SUBMIT-APPLICATION
-    resolution: internal_resolved
-    detail: Article 29(1) requires the conformity-assessment body to submit its designation application.
+  dependencies: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required

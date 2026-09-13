@@ -147,7 +147,7 @@ def test_repository_coverage_artifacts_load_without_touching_runtime():
     assert bundle.runtime_integrated is False
     assert bundle.text_review.corpus_complete is True
     assert bundle.validated_documents == 133
-    assert bundle.validated_segments == 1505
+    assert bundle.validated_segments == 1530
     assert bundle.validated_norms == 1391
 
 
@@ -305,15 +305,18 @@ def test_legacy_supersession_field_is_rejected(tmp_path):
         load(tmp_path, text, norms)
 
 
-def test_internal_dependency_must_resolve_to_a_norm_or_segment(tmp_path):
+def test_relies_on_norms_must_resolve_to_a_norm(tmp_path):
     _body, text, norms = one_document()
-    norms["norms"][0]["dependencies"] = [
+    norms["relations"] = [
         {
-            "dependency_ref": "AIA-NORM-032-MISSING",
-            "resolution": "internal_resolved",
+            "relation_id": "AIA-REL-032-A-RELIES",
+            "source_norm_id": "AIA-NORM-032-A",
+            "kind": "relies_on_norms",
+            "target_norm_ids": ["AIA-NORM-032-MISSING"],
+            "legal_basis_spans": ["AIA-TEXT-032-A"],
         }
     ]
-    with pytest.raises(ValueError, match="unresolved internal dependency"):
+    with pytest.raises(ValueError, match="unknown target norm"):
         load(tmp_path, text, norms)
 
 

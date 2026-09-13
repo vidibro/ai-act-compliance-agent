@@ -42,16 +42,6 @@ records:
   - provider identification under Article 16(b)
   - provider quality-management system under Article 16(c)
   - importer identification under Article 23(3)
-  dependencies:
-  - dependency_ref: AIA-NORM-A016-B-PROVIDER-IDENTIFICATION
-    resolution: internal_resolved
-    detail: Article 16(b) supplies the provider-identification requirement.
-  - dependency_ref: AIA-NORM-A016-C-QUALITY-MANAGEMENT
-    resolution: internal_resolved
-    detail: Article 16(c) supplies the provider quality-management requirement.
-  - dependency_ref: AIA-NORM-A023-P3-IDENTIFY-IMPORTER
-    resolution: internal_resolved
-    detail: Article 23(3) supplies the importer-identification requirement.
   verified_by: vidibro
 - norm_id: AIA-NORM-A024-P2-WITHHOLD-NONCONFORMING-SYSTEM
   source: A024-P002

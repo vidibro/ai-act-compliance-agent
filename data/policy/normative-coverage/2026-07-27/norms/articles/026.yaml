@@ -714,9 +714,6 @@ norms:
   exceptions: []
   mandatory_content: []
   dependencies:
-  - dependency_ref: AIA-NORM-A013-P2-PROVIDE-INSTRUCTIONS
-    resolution: internal_resolved
-    detail: Article 13 supplies the provider information used by the deployer.
   - dependency_ref: Article 35 of Regulation (EU) 2016/679 or Article 27 of Directive (EU) 2016/680
     resolution: external_recorded
     detail: The external data-protection instruments determine whether and how the DPIA obligation applies.
@@ -792,7 +789,6 @@ norms:
   detection_channels:
   - semantic_legal_effect
   - shall_token
-  - cross_reference_structure
   - existing_implementation
   primary_spans:
   - AIA-TEXT-A026-P10
@@ -805,10 +801,7 @@ norms:
   - initial identification of a potential suspect based on objective and verifiable facts directly linked
     to the offence
   mandatory_content: []
-  dependencies:
-  - dependency_ref: AIA-NORM-A026-P10-PRESERVE-DIRECTIVE-2016-680
-    resolution: internal_resolved
-    detail: The authorisation regime remains without prejudice to Directive (EU) 2016/680.
+  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: compliance_rule

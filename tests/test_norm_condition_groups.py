@@ -6,7 +6,7 @@ import pytest
 from pydantic import ValidationError
 
 from aiact.norm_loader import load_normative_coverage
-from aiact.schemas.norm import ConditionGroup
+from aiact.schemas.norm import ConditionGroup, NormRelationKind
 
 
 @pytest.mark.parametrize(
@@ -190,4 +190,6 @@ def test_article_forty_three_preserves_routes_and_exceptions(corrected_bundle):
     assert "point 1 of Annex III" in choice.conditions[0]
     assert "law enforcement, immigration or asylum" in choice.exceptions[0]
     assert "Article 74(8) or (9)" in choice.exceptions[0]
-    assert choice.dependencies[0].dependency_ref == "AIA-NORM-A043-P1-AUTHORITY-AS-NOTIFIED-BODY"
+    assert corrected_bundle.norm_inventory.target_norm_ids_for(
+        choice.norm_id, NormRelationKind.RELIES_ON_NORMS
+    ) == ["AIA-NORM-A043-P1-AUTHORITY-AS-NOTIFIED-BODY"]

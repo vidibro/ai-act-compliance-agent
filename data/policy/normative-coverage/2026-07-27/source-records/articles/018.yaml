@@ -11,10 +11,6 @@ records:
   implementation_refs: &id002
   - AIA-PO-A18
   verification_mode: reported_not_judged
-  dependencies:
-  - dependency_ref: AIA-NORM-A011-P1-DRAW
-    resolution: internal_resolved
-    detail: Article 11 supplies the referenced technical-documentation requirement.
   verified_by: vidibro
 - norm_id: AIA-NORM-A018-P1-B-QMS-DOCUMENTATION
   source: A018-P003
@@ -26,10 +22,6 @@ records:
   qualifier_spans: *id001
   implementation_refs: *id002
   verification_mode: reported_not_judged
-  dependencies:
-  - dependency_ref: AIA-NORM-A017-P1-SYSTEMATIC-WRITTEN-DOCUMENTATION
-    resolution: internal_resolved
-    detail: Article 17 supplies the referenced quality-management-system documentation requirement.
   verified_by: vidibro
 - norm_id: AIA-NORM-A018-P1-C-APPROVED-CHANGES
   source: A018-P004

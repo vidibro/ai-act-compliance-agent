@@ -61,7 +61,6 @@ norms:
   detection_channels:
   - semantic_legal_effect
   - shall_token
-  - cross_reference_structure
   primary_spans:
   - AIA-TEXT-A004-P002
   qualifier_spans: []
@@ -69,10 +68,7 @@ norms:
   conditions: []
   exceptions: []
   mandatory_content: []
-  dependencies:
-  - dependency_ref: AIA-NORM-A004-P1-AI-LITERACY-MEASURES
-    resolution: internal_resolved
-    detail: The supported efforts concern fulfilment of the Article 4(1) obligation.
+  dependencies: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for the Commission or Member States.
   implementation_mode: none_required
@@ -110,9 +106,6 @@ norms:
   exceptions: []
   mandatory_content: []
   dependencies:
-  - dependency_ref: AIA-NORM-A004-P1-AI-LITERACY-MEASURES
-    resolution: internal_resolved
-    detail: The examples concern compliance with the Article 4(1) obligation.
   - dependency_ref: Article 62(3), point (b), of this Regulation
     resolution: unresolved
     detail: The referenced single information platform provision has not yet been semantically reviewed.
@@ -145,7 +138,6 @@ norms:
   detection_channels:
   - semantic_legal_effect
   - shall_token
-  - cross_reference_structure
   primary_spans:
   - AIA-TEXT-A004-P003
   qualifier_spans: []
@@ -154,10 +146,7 @@ norms:
   - take European competence frameworks into account
   exceptions: []
   mandatory_content: []
-  dependencies:
-  - dependency_ref: AIA-NORM-A004-P1-AI-LITERACY-MEASURES
-    resolution: internal_resolved
-    detail: The recommendations support promotion of the AI literacy required by Article 4(1).
+  dependencies: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for the Board.
   implementation_mode: none_required

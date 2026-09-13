@@ -224,10 +224,6 @@ records:
   exceptions:
   - labelling or filtering lawfully acquired biometric datasets based on biometric data
   - categorising biometric data in the area of law enforcement
-  dependencies:
-  - dependency_ref: AIA-NORM-A003-D040-BIOMETRIC-CATEGORISATION-SYSTEM
-    resolution: internal_resolved
-    detail: Article 3(40) defines biometric categorisation systems.
   implementation_mode: applicability_question
   implementation_refs:
   - AIA-CQ-PROHIBITED
@@ -254,12 +250,6 @@ records:
   - localisation or identification of a criminal suspect for investigation, prosecution, or penalty execution
     concerning qualifying Annex II offences
   dependencies:
-  - dependency_ref: AIA-NORM-A003-D042-REAL-TIME-REMOTE-BIOMETRIC-IDENTIFICATION-SYSTEM
-    resolution: internal_resolved
-    detail: Article 3(42) defines a real-time remote biometric identification system.
-  - dependency_ref: AIA-NORM-A003-D044-PUBLICLY-ACCESSIBLE-SPACE
-    resolution: internal_resolved
-    detail: Article 3(44) defines publicly accessible space.
   - dependency_ref: Annex II of this Regulation
     resolution: unresolved
     detail: Point (h)(iii) depends on the offence list in Annex II, which has not yet been semantically
@@ -308,13 +298,6 @@ records:
   - or generation or manipulation is reasonably foreseeable and reproducible without significant technical
     modification and the system lacks reasonable and adequate safeguards to reliably prevent and correct
     it
-  dependencies:
-  - dependency_ref: AIA-NORM-A005-P1-BA-NONCONSENSUAL-INTIMATE-MATERIAL
-    resolution: internal_resolved
-    detail: This norm limits market placement and service under point (ba).
-  - dependency_ref: AIA-NORM-A005-P1-BB-DIRECTIVE-MATERIAL
-    resolution: internal_resolved
-    detail: This norm limits market placement and service under point (bb).
   implementation_mode: applicability_question
   implementation_refs:
   - AIA-CQ-PROHIBITED
@@ -335,13 +318,6 @@ records:
   conditions:
   - the deployer uses the system for the purpose of generating or manipulating the prohibited material
     or performance
-  dependencies:
-  - dependency_ref: AIA-NORM-A005-P1-BA-NONCONSENSUAL-INTIMATE-MATERIAL
-    resolution: internal_resolved
-    detail: This norm limits use under point (ba).
-  - dependency_ref: AIA-NORM-A005-P1-BB-DIRECTIVE-MATERIAL
-    resolution: internal_resolved
-    detail: This norm limits use under point (bb).
   implementation_mode: applicability_question
   implementation_refs:
   - AIA-CQ-PROHIBITED
@@ -360,10 +336,6 @@ records:
   conditions:
   - the manipulation does not increase exposure of any depicted intimate parts
   - the manipulation does not alter the nature of depicted sexually explicit activities
-  dependencies:
-  - dependency_ref: AIA-NORM-A005-P1-BA-NONCONSENSUAL-INTIMATE-MATERIAL
-    resolution: internal_resolved
-    detail: This consequence narrows what constitutes manipulation under point (ba).
   implementation_mode: applicability_question
   implementation_refs:
   - AIA-CQ-PROHIBITED
@@ -378,10 +350,6 @@ records:
   subject_category: public_authority
   kind: obligation
   verification_mode: reported_not_judged
-  dependencies:
-  - dependency_ref: AIA-NORM-A005-P1-H-REAL-TIME-RBI
-    resolution: internal_resolved
-    detail: The obligation applies to use under an Article 5(1)(h) exception.
   verified_by: vidibro
 - norm_id: AIA-NORM-A005-P2-CONSIDER-IMPACTS
   source: A005-P024
@@ -400,10 +368,6 @@ records:
     and scale of the harm that would be caused if the system were not used
   - the consequences of the use of the system for the rights and freedoms of all persons concerned, in
     particular the seriousness, probability and scale of those consequences
-  dependencies:
-  - dependency_ref: AIA-NORM-A005-P1-H-REAL-TIME-RBI
-    resolution: internal_resolved
-    detail: The assessment applies to use under an Article 5(1)(h) exception.
   verified_by: vidibro
 - norm_id: AIA-NORM-A005-P2-NATIONAL-SAFEGUARDS
   source: A005-P027
@@ -478,9 +442,6 @@ records:
   conditions:
   - the use pursues an Article 5(1)(h) objective and is subject to the Article 5(2) conditions
   dependencies:
-  - dependency_ref: AIA-NORM-A005-P1-H-REAL-TIME-RBI
-    resolution: internal_resolved
-    detail: Article 5(1)(h) supplies the law-enforcement objectives that bring a use within this paragraph.
   - dependency_ref: national law referred to in Article 5(5) of this Regulation
     resolution: national_or_factual
     detail: National law supplies the detailed rules for requesting and granting authorisation.
@@ -499,10 +460,6 @@ records:
   - the use pursues an Article 5(1)(h) objective and is subject to the Article 5(2) conditions
   - the situation of urgency is duly justified
   - request authorisation without undue delay and no later than 24 hours after use commences
-  dependencies:
-  - dependency_ref: AIA-NORM-A005-P1-H-REAL-TIME-RBI
-    resolution: internal_resolved
-    detail: Article 5(1)(h) supplies the law-enforcement objectives that bring a use within this paragraph.
   verified_by: vidibro
 - norm_id: AIA-NORM-A005-P3-STOP-ON-REJECTION
   source: A005-P028
@@ -515,10 +472,6 @@ records:
   conditions:
   - the use pursues an Article 5(1)(h) objective and is subject to the Article 5(2) conditions
   - the requested authorisation is rejected
-  dependencies:
-  - dependency_ref: AIA-NORM-A005-P1-H-REAL-TIME-RBI
-    resolution: internal_resolved
-    detail: Article 5(1)(h) supplies the law-enforcement objectives that bring a use within this paragraph.
   verified_by: vidibro
 - norm_id: AIA-NORM-A005-P3-DELETE-ON-REJECTION
   source: A005-P028
@@ -533,10 +486,6 @@ records:
   conditions:
   - the use pursues an Article 5(1)(h) objective and is subject to the Article 5(2) conditions
   - the requested authorisation is rejected
-  dependencies:
-  - dependency_ref: AIA-NORM-A005-P1-H-REAL-TIME-RBI
-    resolution: internal_resolved
-    detail: Article 5(1)(h) supplies the law-enforcement objectives that bring a use within this paragraph.
   verified_by: vidibro
 - norm_id: AIA-NORM-A005-P3-RESTRICT-AUTHORISATION
   source: A005-P029
@@ -557,10 +506,6 @@ records:
   - the use pursues an Article 5(1)(h) objective identified in the request
   - objective evidence or clear indications establish necessity and proportionality
   - the time period and geographic and personal scope are limited to what is strictly necessary
-  dependencies:
-  - dependency_ref: AIA-NORM-A005-P1-H-REAL-TIME-RBI
-    resolution: internal_resolved
-    detail: Article 5(1)(h) supplies the permitted law-enforcement objectives.
   verified_by: vidibro
 - norm_id: AIA-NORM-A005-P3-CONSIDER-P2-ELEMENTS
   source: A005-P029
@@ -571,11 +516,6 @@ records:
   subject_category: public_authority
   kind: obligation
   verification_mode: reported_conditionally
-  dependencies:
-  - dependency_ref: AIA-NORM-A005-P2-CONSIDER-IMPACTS
-    resolution: internal_resolved
-    detail: The referenced norm records the non-use harm and rights-and-freedoms consequences that must
-      be considered.
   verified_by: vidibro
 - norm_id: AIA-NORM-A005-P3-NO-SOLE-OUTPUT-ADVERSE-DECISION
   source: A005-P029

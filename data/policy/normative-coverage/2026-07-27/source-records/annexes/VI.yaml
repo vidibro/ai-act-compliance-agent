@@ -10,10 +10,6 @@ records:
   - ANNEX-VI-P002
   - ANNEX-VI-P003
   - ANNEX-VI-P004
-  dependencies:
-  - dependency_ref: AIA-NORM-A043-P2-INTERNAL-CONTROL
-    resolution: internal_resolved
-    detail: Article 43(2) requires the Annex VI route for the specified Annex III systems.
   verification_mode: reported_conditionally
   verified_by: vidibro
 - norm_id: AIA-NORM-ANNEX-VI-P2-VERIFY-QMS
@@ -22,13 +18,6 @@ records:
   action: verify that the established quality management system complies with Article 17
   subject_ref: provider
   subject_category: supported_operator
-  dependencies:
-  - dependency_ref: AIA-NORM-A017-P1-QMS
-    resolution: internal_resolved
-    detail: Article 17 establishes the provider's quality-management-system requirement.
-  - dependency_ref: AIA-NORM-A043-P2-INTERNAL-CONTROL
-    resolution: internal_resolved
-    detail: Article 43(2) determines when the Annex VI procedure applies.
   verification_mode: reported_not_judged
   implementation_refs:
   - AIA-PO-A17
@@ -39,10 +28,6 @@ records:
   action: examine the technical documentation to assess the AI system's compliance with the relevant Chapter III Section 2 requirements
   subject_ref: provider
   subject_category: supported_operator
-  dependencies:
-  - dependency_ref: AIA-NORM-A043-P2-INTERNAL-CONTROL
-    resolution: internal_resolved
-    detail: Article 43(2) determines when the Annex VI procedure applies.
   verification_mode: judged_by_gap_analysis
   implementation_refs:
   - AIA-HR-A11
@@ -53,13 +38,6 @@ records:
   action: verify that the AI system's design and development process and Article 72 post-market monitoring are consistent with its technical documentation
   subject_ref: provider
   subject_category: supported_operator
-  dependencies:
-  - dependency_ref: AIA-NORM-A072-P1-ESTABLISH-AND-DOCUMENT-MONITORING
-    resolution: internal_resolved
-    detail: Article 72 establishes and documents the post-market monitoring system referenced here.
-  - dependency_ref: AIA-NORM-A043-P2-INTERNAL-CONTROL
-    resolution: internal_resolved
-    detail: Article 43(2) determines when the Annex VI procedure applies.
   verification_mode: reported_not_judged
   implementation_refs:
   - AIA-PO-A72

@@ -141,10 +141,7 @@ norms:
   conditions: []
   exceptions: []
   mandatory_content: []
-  dependencies:
-  - dependency_ref: AIA-NORM-A026-P5-MONITOR
-    resolution: internal_resolved
-    detail: Article 26(5) supplies the deployer monitoring activity that the logging capability supports.
+  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: compliance_rule

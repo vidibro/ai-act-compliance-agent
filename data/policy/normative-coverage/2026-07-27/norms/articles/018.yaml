@@ -21,10 +21,7 @@ norms:
   conditions: []
   exceptions: []
   mandatory_content: []
-  dependencies:
-  - dependency_ref: AIA-NORM-A011-P1-DRAW
-    resolution: internal_resolved
-    detail: Article 11 supplies the referenced technical-documentation requirement.
+  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: compliance_rule
@@ -62,10 +59,7 @@ norms:
   conditions: []
   exceptions: []
   mandatory_content: []
-  dependencies:
-  - dependency_ref: AIA-NORM-A017-P1-SYSTEMATIC-WRITTEN-DOCUMENTATION
-    resolution: internal_resolved
-    detail: Article 17 supplies the referenced quality-management-system documentation requirement.
+  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: compliance_rule

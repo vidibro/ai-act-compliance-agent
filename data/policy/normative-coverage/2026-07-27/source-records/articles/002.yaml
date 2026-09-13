@@ -340,8 +340,7 @@ records:
   dependencies:
   - dependency_ref: applicable Union law governing the activity
     resolution: external_recorded
-    detail: The applicable Union-law requirements depend on the activity and are outside this enacted
-      corpus.
+    detail: The applicable Union-law requirements depend on the activity and are outside this enacted corpus.
   product_scope: no_product_action
   product_scope_reason: This general saving clause does not identify a concrete AI Act requirement that
     the product can assess.
@@ -357,10 +356,6 @@ records:
   subject_category: other
   kind: applicability
   verification_mode: answered_by_classification
-  dependencies:
-  - dependency_ref: AIA-NORM-A002-P8-PRE-MARKET-RD-EXCLUSION
-    resolution: internal_resolved
-    detail: This norm limits the exclusion stated earlier in the same paragraph.
   implementation_mode: applicability_question
   implementation_refs:
   - AIA-CQ-SCOPE

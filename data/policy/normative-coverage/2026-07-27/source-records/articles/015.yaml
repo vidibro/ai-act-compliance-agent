@@ -41,10 +41,6 @@ records:
   subject_category: supported_operator
   implementation_refs: *id001
   verification_mode: judged_by_gap_analysis
-  dependencies:
-  - dependency_ref: AIA-NORM-A013-P2-PROVIDE-INSTRUCTIONS
-    resolution: internal_resolved
-    detail: Article 13 supplies the obligation to accompany the system with instructions for use.
   verified_by: vidibro
 - norm_id: AIA-NORM-A015-P4-RESILIENCE
   source: A015-P004

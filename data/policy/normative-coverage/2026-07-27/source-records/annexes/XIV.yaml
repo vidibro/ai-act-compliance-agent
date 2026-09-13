@@ -23,10 +23,6 @@ records:
   implementation_mode: *none_required
   implementation_reason: *outside_implementation
   verification_mode: *not_reported
-  dependencies: &article30_dependency
-  - dependency_ref: AIA-NORM-A030-P2-ELECTRONIC-NOTIFICATION
-    resolution: internal_resolved
-    detail: Article 30(2) requires notification using the Annex XIV codes, categories, and system types.
 - norm_id: AIA-NORM-ANNEX-XIV-AIP-0102
   source: ANNEX-XIV-P005
   quote: AIP 0102AI systems subject to point 2 of Section A of Annex I
@@ -39,7 +35,6 @@ records:
   implementation_mode: *none_required
   implementation_reason: *outside_implementation
   verification_mode: *not_reported
-  dependencies: *article30_dependency
 - norm_id: AIA-NORM-ANNEX-XIV-AIP-0103
   source: ANNEX-XIV-P005
   quote: AIP 0103AI systems subject to point 3 of Section A of Annex I
@@ -52,7 +47,6 @@ records:
   implementation_mode: *none_required
   implementation_reason: *outside_implementation
   verification_mode: *not_reported
-  dependencies: *article30_dependency
 - norm_id: AIA-NORM-ANNEX-XIV-AIP-0104
   source: ANNEX-XIV-P005
   quote: AIP 0104AI systems subject to point 4 of Section A of Annex I
@@ -65,7 +59,6 @@ records:
   implementation_mode: *none_required
   implementation_reason: *outside_implementation
   verification_mode: *not_reported
-  dependencies: *article30_dependency
 - norm_id: AIA-NORM-ANNEX-XIV-AIP-0105
   source: ANNEX-XIV-P005
   quote: AIP 0105AI systems subject to point 5 of Section A of Annex I
@@ -78,7 +71,6 @@ records:
   implementation_mode: *none_required
   implementation_reason: *outside_implementation
   verification_mode: *not_reported
-  dependencies: *article30_dependency
 - norm_id: AIA-NORM-ANNEX-XIV-AIP-0106
   source: ANNEX-XIV-P005
   quote: AIP 0106AI systems subject to point 6 of Section A of Annex I
@@ -91,7 +83,6 @@ records:
   implementation_mode: *none_required
   implementation_reason: *outside_implementation
   verification_mode: *not_reported
-  dependencies: *article30_dependency
 - norm_id: AIA-NORM-ANNEX-XIV-AIP-0107
   source: ANNEX-XIV-P005
   quote: AIP 0107AI systems subject to point 7 of Section A of Annex I
@@ -104,7 +95,6 @@ records:
   implementation_mode: *none_required
   implementation_reason: *outside_implementation
   verification_mode: *not_reported
-  dependencies: *article30_dependency
 - norm_id: AIA-NORM-ANNEX-XIV-AIP-0108
   source: ANNEX-XIV-P005
   quote: AIP 0108AI systems subject to point 8 of Section A of Annex I
@@ -117,7 +107,6 @@ records:
   implementation_mode: *none_required
   implementation_reason: *outside_implementation
   verification_mode: *not_reported
-  dependencies: *article30_dependency
 - norm_id: AIA-NORM-ANNEX-XIV-AIP-0109
   source: ANNEX-XIV-P005
   quote: AIP 0109AI systems subject to point 9 of Section A of Annex I
@@ -130,7 +119,6 @@ records:
   implementation_mode: *none_required
   implementation_reason: *outside_implementation
   verification_mode: *not_reported
-  dependencies: *article30_dependency
 - norm_id: AIA-NORM-ANNEX-XIV-AIP-0110
   source: ANNEX-XIV-P005
   quote: AIP 0110AI systems subject to point 10 of Section A of Annex I
@@ -143,7 +131,6 @@ records:
   implementation_mode: *none_required
   implementation_reason: *outside_implementation
   verification_mode: *not_reported
-  dependencies: *article30_dependency
 - norm_id: AIA-NORM-ANNEX-XIV-AIP-0111
   source: ANNEX-XIV-P005
   quote: AIP 0111AI systems subject to point 11 of Section A of Annex I
@@ -156,7 +143,6 @@ records:
   implementation_mode: *none_required
   implementation_reason: *outside_implementation
   verification_mode: *not_reported
-  dependencies: *article30_dependency
 - norm_id: AIA-NORM-ANNEX-XIV-AIP-0112
   source: ANNEX-XIV-P005
   quote: AIP 0112AI systems subject to point 12 of Section A of Annex I
@@ -169,7 +155,6 @@ records:
   implementation_mode: *none_required
   implementation_reason: *outside_implementation
   verification_mode: *not_reported
-  dependencies: *article30_dependency
 - norm_id: AIA-NORM-ANNEX-XIV-AIB-0201
   source: ANNEX-XIV-P005
   quote: AIB 0201Remote biometric identification systems
@@ -182,7 +167,6 @@ records:
   implementation_mode: *none_required
   implementation_reason: *outside_implementation
   verification_mode: *not_reported
-  dependencies: *article30_dependency
 - norm_id: AIA-NORM-ANNEX-XIV-AIB-0202
   source: ANNEX-XIV-P005
   quote: AIB 0202Biometric categorisation AI systems
@@ -195,7 +179,6 @@ records:
   implementation_mode: *none_required
   implementation_reason: *outside_implementation
   verification_mode: *not_reported
-  dependencies: *article30_dependency
 - norm_id: AIA-NORM-ANNEX-XIV-AIB-0203
   source: ANNEX-XIV-P005
   quote: AIB 0203Emotion recognition AI systems
@@ -208,7 +191,6 @@ records:
   implementation_mode: *none_required
   implementation_reason: *outside_implementation
   verification_mode: *not_reported
-  dependencies: *article30_dependency
 - norm_id: AIA-NORM-ANNEX-XIV-AIH-0101
   source: ANNEX-XIV-P007
   quote: AIH 0101AI systems based on symbolic AI, expert and knowledge-based systems, and AI systems based on search and optimisation
@@ -221,7 +203,6 @@ records:
   implementation_mode: *none_required
   implementation_reason: *outside_implementation
   verification_mode: *not_reported
-  dependencies: *article30_dependency
 - norm_id: AIA-NORM-ANNEX-XIV-AIH-0201
   source: ANNEX-XIV-P007
   quote: AIH 0201AI systems that process structured data
@@ -234,7 +215,6 @@ records:
   implementation_mode: *none_required
   implementation_reason: *outside_implementation
   verification_mode: *not_reported
-  dependencies: *article30_dependency
 - norm_id: AIA-NORM-ANNEX-XIV-AIH-0202
   source: ANNEX-XIV-P007
   quote: AIH 0202AI systems that process signal and audio data
@@ -247,7 +227,6 @@ records:
   implementation_mode: *none_required
   implementation_reason: *outside_implementation
   verification_mode: *not_reported
-  dependencies: *article30_dependency
 - norm_id: AIA-NORM-ANNEX-XIV-AIH-0203
   source: ANNEX-XIV-P007
   quote: AIH 0203AI systems that process text data
@@ -260,7 +239,6 @@ records:
   implementation_mode: *none_required
   implementation_reason: *outside_implementation
   verification_mode: *not_reported
-  dependencies: *article30_dependency
 - norm_id: AIA-NORM-ANNEX-XIV-AIH-0204
   source: ANNEX-XIV-P007
   quote: AIH 0204AI systems that process image and video
@@ -273,7 +251,6 @@ records:
   implementation_mode: *none_required
   implementation_reason: *outside_implementation
   verification_mode: *not_reported
-  dependencies: *article30_dependency
 - norm_id: AIA-NORM-ANNEX-XIV-AIH-0205
   source: ANNEX-XIV-P007
   quote: AIH 0205AI systems that learn from their environment, excluding AI systems covered under AIH 0401
@@ -288,7 +265,6 @@ records:
   implementation_mode: *none_required
   implementation_reason: *outside_implementation
   verification_mode: *not_reported
-  dependencies: *article30_dependency
 - norm_id: AIA-NORM-ANNEX-XIV-AIH-0301
   source: ANNEX-XIV-P007
   quote: AIH 0301generative AI systems, including AI systems based on general-purpose AI models
@@ -301,7 +277,6 @@ records:
   implementation_mode: *none_required
   implementation_reason: *outside_implementation
   verification_mode: *not_reported
-  dependencies: *article30_dependency
 - norm_id: AIA-NORM-ANNEX-XIV-AIH-0401
   source: ANNEX-XIV-P007
   quote: AIH 0401AI systems based on other emerging AI technologies not covered by other codes, including Agentic AI
@@ -316,7 +291,6 @@ records:
   implementation_mode: *none_required
   implementation_reason: *outside_implementation
   verification_mode: *not_reported
-  dependencies: *article30_dependency
 - norm_id: AIA-NORM-ANNEX-XIV-USE-CODES-IN-APPLICATION
   source: ANNEX-XIV-P009
   quote: Conformity assessment bodies shall use the lists of codes, categories and corresponding types of AI systems set out in this Annex when specifying the types of AI systems in the application for designation referred to in Article 29.
@@ -328,7 +302,3 @@ records:
   implementation_mode: *none_required
   implementation_reason: *outside_implementation
   verification_mode: *not_reported
-  dependencies:
-  - dependency_ref: AIA-NORM-A029-P1-SUBMIT-APPLICATION
-    resolution: internal_resolved
-    detail: Article 29(1) requires the conformity-assessment body to submit its designation application.

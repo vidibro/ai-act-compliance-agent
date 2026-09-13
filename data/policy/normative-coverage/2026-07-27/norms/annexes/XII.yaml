@@ -47,11 +47,7 @@ norms:
   - input and output modalities, formats, and maximum sizes
   - applicable information on training, testing, and validation data, including type, provenance, and
     curation methodologies
-  dependencies:
-  - dependency_ref: AIA-NORM-A053-P1-B-ANNEX-XII-CONTENT
-    resolution: internal_resolved
-    detail: Article 53(1)(b) assigns the Annex XII minimum-content duty to GPAI model providers supplying
-      downstream integrators.
+  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: carried_by_other_norm

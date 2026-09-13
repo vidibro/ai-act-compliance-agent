@@ -21,10 +21,6 @@ records:
   implementation_refs:
   - AIA-DP-A86
   verification_mode: reported_not_judged
-  dependencies:
-  - dependency_ref: AIA-NORM-A006-P2-ANNEX-III-HIGH-RISK
-    resolution: internal_resolved
-    detail: Annex III supplies the high-risk system classes this right attaches to.
   verified_by: vidibro
 - norm_id: AIA-NORM-A086-P1-RIGHT-TO-EXPLANATION
   source: A086-P001

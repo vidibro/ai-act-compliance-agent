@@ -9,10 +9,6 @@ records:
   kind: applicability
   qualifier_spans:
   - ANNEX-VII-P004
-  dependencies:
-  - dependency_ref: AIA-NORM-A043-P1-REQUIRED-ANNEX-VII-ROUTE
-    resolution: internal_resolved
-    detail: Article 43(1) determines when providers must use the Annex VII procedure.
   verification_mode: reported_conditionally
   verified_by: vidibro
 - norm_id: AIA-NORM-ANNEX-VII-OVERVIEW-QMS-EXAMINATION
@@ -25,10 +21,6 @@ records:
   subject_ref: annex_vii_conformity_assessment
   subject_category: other
   kind: applicability
-  dependencies:
-  - dependency_ref: AIA-NORM-A017-P1-QMS
-    resolution: internal_resolved
-    detail: Article 17 establishes the quality management system examined by point 3.
   mandatory_content:
   - examination of the approved quality management system under point 3
   - surveillance of that system under point 5
@@ -169,10 +161,6 @@ records:
   conditions:
   - the provider intends to place the AI system on the market or put it into service
   - the AI system is covered by the point 3 quality management system
-  dependencies:
-  - dependency_ref: AIA-NORM-A043-P1-CHOOSE-NOTIFIED-BODY
-    resolution: internal_resolved
-    detail: Article 43(1) preserves the provider's choice of notified body for the Annex VII procedure.
   verification_mode: reported_not_judged
 - norm_id: AIA-NORM-ANNEX-VII-DOC-APPLICATION-CONTENT
   source: ANNEX-VII-P018
@@ -190,10 +178,6 @@ records:
   - provider name and address
   - written declaration that the same application has not been lodged with another notified body
   - Annex IV technical documentation
-  dependencies:
-  - dependency_ref: AIA-NORM-ANNEX-IV-CONTENT
-    resolution: internal_resolved
-    detail: Annex IV defines the technical documentation included in the application.
   verification_mode: reported_not_judged
   verified_by: vidibro
 - norm_id: AIA-NORM-ANNEX-VII-DOC-EXAMINE
@@ -417,10 +401,6 @@ records:
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
-  dependencies:
-  - dependency_ref: AIA-NORM-A043-P4-NEW-ASSESSMENT
-    resolution: internal_resolved
-    detail: Article 43(4) determines when a changed high-risk system requires a new conformity assessment.
 - norm_id: AIA-NORM-ANNEX-VII-ISSUE-SUPPLEMENT
   source: ANNEX-VII-P026
   quote: In the latter case, the notified body shall assess the changes, notify the provider of its decision

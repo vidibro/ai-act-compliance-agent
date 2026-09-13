@@ -93,7 +93,6 @@ norms:
   detection_channels:
   - semantic_legal_effect
   - shall_token
-  - cross_reference_structure
   - existing_implementation
   primary_spans:
   - AIA-TEXT-A015-P003
@@ -102,10 +101,7 @@ norms:
   conditions: []
   exceptions: []
   mandatory_content: []
-  dependencies:
-  - dependency_ref: AIA-NORM-A013-P2-PROVIDE-INSTRUCTIONS
-    resolution: internal_resolved
-    detail: Article 13 supplies the obligation to accompany the system with instructions for use.
+  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: compliance_rule

@@ -16,10 +16,6 @@ records:
   - the use is permitted under relevant Union or national law
   exceptions:
   - biometric verification used solely to confirm that a specific person is who they claim to be
-  dependencies:
-  - dependency_ref: AIA-NORM-A006-P2-ANNEX-III-HIGH-RISK
-    resolution: internal_resolved
-    detail: Article 6(2) gives high-risk legal effect to the Annex III listing.
   implementation_mode: applicability_question
   implementation_refs:
   - AIA-CQ-ANNEX-III
@@ -39,10 +35,6 @@ records:
   - ANNEX-III-P002
   conditions:
   - the use is permitted under relevant Union or national law
-  dependencies:
-  - dependency_ref: AIA-NORM-A006-P2-ANNEX-III-HIGH-RISK
-    resolution: internal_resolved
-    detail: Article 6(2) gives high-risk legal effect to the Annex III listing.
   implementation_mode: applicability_question
   implementation_refs:
   - AIA-CQ-ANNEX-III
@@ -60,10 +52,6 @@ records:
   - ANNEX-III-P002
   conditions:
   - the use is permitted under relevant Union or national law
-  dependencies:
-  - dependency_ref: AIA-NORM-A006-P2-ANNEX-III-HIGH-RISK
-    resolution: internal_resolved
-    detail: Article 6(2) gives high-risk legal effect to the Annex III listing.
   implementation_mode: applicability_question
   implementation_refs:
   - AIA-CQ-ANNEX-III
@@ -80,13 +68,6 @@ records:
   verification_mode: answered_by_classification
   qualifier_spans:
   - ANNEX-III-P001
-  dependencies:
-  - dependency_ref: AIA-NORM-A003-D014-SAFETY-COMPONENT
-    resolution: internal_resolved
-    detail: Article 3(14) defines safety component.
-  - dependency_ref: AIA-NORM-A006-P2-ANNEX-III-HIGH-RISK
-    resolution: internal_resolved
-    detail: Article 6(2) gives high-risk legal effect to the Annex III listing.
   implementation_mode: applicability_question
   implementation_refs:
   - AIA-CQ-ANNEX-III
@@ -104,10 +85,6 @@ records:
   qualifier_spans:
   - ANNEX-III-P001
   - ANNEX-III-P007
-  dependencies:
-  - dependency_ref: AIA-NORM-A006-P2-ANNEX-III-HIGH-RISK
-    resolution: internal_resolved
-    detail: Article 6(2) gives high-risk legal effect to the Annex III listing.
   implementation_mode: applicability_question
   implementation_refs:
   - AIA-CQ-ANNEX-III
@@ -126,10 +103,6 @@ records:
   qualifier_spans:
   - ANNEX-III-P001
   - ANNEX-III-P007
-  dependencies:
-  - dependency_ref: AIA-NORM-A006-P2-ANNEX-III-HIGH-RISK
-    resolution: internal_resolved
-    detail: Article 6(2) gives high-risk legal effect to the Annex III listing.
   implementation_mode: applicability_question
   implementation_refs:
   - AIA-CQ-ANNEX-III
@@ -148,10 +121,6 @@ records:
   qualifier_spans:
   - ANNEX-III-P001
   - ANNEX-III-P007
-  dependencies:
-  - dependency_ref: AIA-NORM-A006-P2-ANNEX-III-HIGH-RISK
-    resolution: internal_resolved
-    detail: Article 6(2) gives high-risk legal effect to the Annex III listing.
   implementation_mode: applicability_question
   implementation_refs:
   - AIA-CQ-ANNEX-III
@@ -169,10 +138,6 @@ records:
   qualifier_spans:
   - ANNEX-III-P001
   - ANNEX-III-P007
-  dependencies:
-  - dependency_ref: AIA-NORM-A006-P2-ANNEX-III-HIGH-RISK
-    resolution: internal_resolved
-    detail: Article 6(2) gives high-risk legal effect to the Annex III listing.
   implementation_mode: applicability_question
   implementation_refs:
   - AIA-CQ-ANNEX-III
@@ -190,10 +155,6 @@ records:
   qualifier_spans:
   - ANNEX-III-P001
   - ANNEX-III-P012
-  dependencies:
-  - dependency_ref: AIA-NORM-A006-P2-ANNEX-III-HIGH-RISK
-    resolution: internal_resolved
-    detail: Article 6(2) gives high-risk legal effect to the Annex III listing.
   implementation_mode: applicability_question
   implementation_refs:
   - AIA-CQ-ANNEX-III
@@ -213,10 +174,6 @@ records:
   qualifier_spans:
   - ANNEX-III-P001
   - ANNEX-III-P012
-  dependencies:
-  - dependency_ref: AIA-NORM-A006-P2-ANNEX-III-HIGH-RISK
-    resolution: internal_resolved
-    detail: Article 6(2) gives high-risk legal effect to the Annex III listing.
   implementation_mode: applicability_question
   implementation_refs:
   - AIA-CQ-ANNEX-III
@@ -235,10 +192,6 @@ records:
   qualifier_spans:
   - ANNEX-III-P001
   - ANNEX-III-P015
-  dependencies:
-  - dependency_ref: AIA-NORM-A006-P2-ANNEX-III-HIGH-RISK
-    resolution: internal_resolved
-    detail: Article 6(2) gives high-risk legal effect to the Annex III listing.
   implementation_mode: applicability_question
   implementation_refs:
   - AIA-CQ-ANNEX-III
@@ -258,10 +211,6 @@ records:
   - ANNEX-III-P015
   exceptions:
   - AI systems used to detect financial fraud
-  dependencies:
-  - dependency_ref: AIA-NORM-A006-P2-ANNEX-III-HIGH-RISK
-    resolution: internal_resolved
-    detail: Article 6(2) gives high-risk legal effect to the Annex III listing.
   implementation_mode: applicability_question
   implementation_refs:
   - AIA-CQ-ANNEX-III
@@ -279,10 +228,6 @@ records:
   qualifier_spans:
   - ANNEX-III-P001
   - ANNEX-III-P015
-  dependencies:
-  - dependency_ref: AIA-NORM-A006-P2-ANNEX-III-HIGH-RISK
-    resolution: internal_resolved
-    detail: Article 6(2) gives high-risk legal effect to the Annex III listing.
   implementation_mode: applicability_question
   implementation_refs:
   - AIA-CQ-ANNEX-III
@@ -301,10 +246,6 @@ records:
   qualifier_spans:
   - ANNEX-III-P001
   - ANNEX-III-P015
-  dependencies:
-  - dependency_ref: AIA-NORM-A006-P2-ANNEX-III-HIGH-RISK
-    resolution: internal_resolved
-    detail: Article 6(2) gives high-risk legal effect to the Annex III listing.
   implementation_mode: applicability_question
   implementation_refs:
   - AIA-CQ-ANNEX-III
@@ -325,10 +266,6 @@ records:
   - ANNEX-III-P020
   conditions:
   - the use is permitted under relevant Union or national law
-  dependencies:
-  - dependency_ref: AIA-NORM-A006-P2-ANNEX-III-HIGH-RISK
-    resolution: internal_resolved
-    detail: Article 6(2) gives high-risk legal effect to the Annex III listing.
   implementation_mode: applicability_question
   implementation_refs:
   - AIA-CQ-ANNEX-III
@@ -347,10 +284,6 @@ records:
   - ANNEX-III-P020
   conditions:
   - the use is permitted under relevant Union or national law
-  dependencies:
-  - dependency_ref: AIA-NORM-A006-P2-ANNEX-III-HIGH-RISK
-    resolution: internal_resolved
-    detail: Article 6(2) gives high-risk legal effect to the Annex III listing.
   implementation_mode: applicability_question
   implementation_refs:
   - AIA-CQ-ANNEX-III
@@ -371,10 +304,6 @@ records:
   - ANNEX-III-P020
   conditions:
   - the use is permitted under relevant Union or national law
-  dependencies:
-  - dependency_ref: AIA-NORM-A006-P2-ANNEX-III-HIGH-RISK
-    resolution: internal_resolved
-    detail: Article 6(2) gives high-risk legal effect to the Annex III listing.
   implementation_mode: applicability_question
   implementation_refs:
   - AIA-CQ-ANNEX-III
@@ -402,9 +331,6 @@ records:
   - dependency_ref: Article 3(4) of Directive (EU) 2016/680
     resolution: external_recorded
     detail: The external directive supplies the referenced profiling definition.
-  - dependency_ref: AIA-NORM-A006-P2-ANNEX-III-HIGH-RISK
-    resolution: internal_resolved
-    detail: Article 6(2) gives high-risk legal effect to the Annex III listing.
   implementation_mode: applicability_question
   implementation_refs:
   - AIA-CQ-ANNEX-III
@@ -430,9 +356,6 @@ records:
   - dependency_ref: Article 3(4) of Directive (EU) 2016/680
     resolution: external_recorded
     detail: The external directive supplies the referenced profiling definition.
-  - dependency_ref: AIA-NORM-A006-P2-ANNEX-III-HIGH-RISK
-    resolution: internal_resolved
-    detail: Article 6(2) gives high-risk legal effect to the Annex III listing.
   implementation_mode: applicability_question
   implementation_refs:
   - AIA-CQ-ANNEX-III
@@ -452,10 +375,6 @@ records:
   - ANNEX-III-P026
   conditions:
   - the use is permitted under relevant Union or national law
-  dependencies:
-  - dependency_ref: AIA-NORM-A006-P2-ANNEX-III-HIGH-RISK
-    resolution: internal_resolved
-    detail: Article 6(2) gives high-risk legal effect to the Annex III listing.
   implementation_mode: applicability_question
   implementation_refs:
   - AIA-CQ-ANNEX-III
@@ -477,10 +396,6 @@ records:
   - ANNEX-III-P026
   conditions:
   - the use is permitted under relevant Union or national law
-  dependencies:
-  - dependency_ref: AIA-NORM-A006-P2-ANNEX-III-HIGH-RISK
-    resolution: internal_resolved
-    detail: Article 6(2) gives high-risk legal effect to the Annex III listing.
   implementation_mode: applicability_question
   implementation_refs:
   - AIA-CQ-ANNEX-III
@@ -503,10 +418,6 @@ records:
   - ANNEX-III-P026
   conditions:
   - the use is permitted under relevant Union or national law
-  dependencies:
-  - dependency_ref: AIA-NORM-A006-P2-ANNEX-III-HIGH-RISK
-    resolution: internal_resolved
-    detail: Article 6(2) gives high-risk legal effect to the Annex III listing.
   implementation_mode: applicability_question
   implementation_refs:
   - AIA-CQ-ANNEX-III
@@ -530,10 +441,6 @@ records:
   - the use is permitted under relevant Union or national law
   exceptions:
   - verification of travel documents
-  dependencies:
-  - dependency_ref: AIA-NORM-A006-P2-ANNEX-III-HIGH-RISK
-    resolution: internal_resolved
-    detail: Article 6(2) gives high-risk legal effect to the Annex III listing.
   implementation_mode: applicability_question
   implementation_refs:
   - AIA-CQ-ANNEX-III
@@ -552,10 +459,6 @@ records:
   qualifier_spans:
   - ANNEX-III-P001
   - ANNEX-III-P031
-  dependencies:
-  - dependency_ref: AIA-NORM-A006-P2-ANNEX-III-HIGH-RISK
-    resolution: internal_resolved
-    detail: Article 6(2) gives high-risk legal effect to the Annex III listing.
   implementation_mode: applicability_question
   implementation_refs:
   - AIA-CQ-ANNEX-III
@@ -578,10 +481,6 @@ records:
   - ANNEX-III-P031
   exceptions:
   - administrative or logistical campaign tools whose outputs do not directly expose natural persons
-  dependencies:
-  - dependency_ref: AIA-NORM-A006-P2-ANNEX-III-HIGH-RISK
-    resolution: internal_resolved
-    detail: Article 6(2) gives high-risk legal effect to the Annex III listing.
   implementation_mode: applicability_question
   implementation_refs:
   - AIA-CQ-ANNEX-III

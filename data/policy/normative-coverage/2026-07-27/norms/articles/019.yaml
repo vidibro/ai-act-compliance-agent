@@ -13,7 +13,6 @@ norms:
   detection_channels:
   - semantic_legal_effect
   - shall_token
-  - cross_reference_structure
   - existing_implementation
   primary_spans:
   - AIA-TEXT-A019-P001
@@ -23,10 +22,7 @@ norms:
   - "the automatically generated logs are under the provider\u2019s control"
   exceptions: []
   mandatory_content: []
-  dependencies:
-  - dependency_ref: AIA-NORM-A012-P1-AUTOMATIC-LOGGING
-    resolution: internal_resolved
-    detail: Article 12(1) supplies the referenced automatic-logging requirement.
+  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: compliance_rule

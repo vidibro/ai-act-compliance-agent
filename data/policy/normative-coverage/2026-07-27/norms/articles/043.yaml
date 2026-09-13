@@ -98,7 +98,6 @@ norms:
   detection_channels:
   - semantic_legal_effect
   - other_modal
-  - cross_reference_structure
   - existing_implementation
   primary_spans:
   - AIA-TEXT-A043-P1
@@ -111,10 +110,7 @@ norms:
     or Union institutions, bodies, offices or agencies, the Article 74(8) or (9) market surveillance authority,
     as applicable, shall act as the notified body
   mandatory_content: []
-  dependencies:
-  - dependency_ref: AIA-NORM-A043-P1-AUTHORITY-AS-NOTIFIED-BODY
-    resolution: internal_resolved
-    detail: The mandatory authority route limits the provider's choice of notified body.
+  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: compliance_rule
