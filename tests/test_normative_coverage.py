@@ -296,12 +296,12 @@ def test_legacy_carried_norm_field_is_rejected(tmp_path):
         load(tmp_path, text, norms)
 
 
-def test_superseded_norm_must_name_an_existing_successor(tmp_path):
+def test_legacy_supersession_field_is_rejected(tmp_path):
     _body, text, norms = one_document()
     item = norms["norms"][0]
     item["review"]["status"] = "superseded"
     item["superseded_by_norm_ids"] = ["AIA-NORM-032-MISSING"]
-    with pytest.raises(ValueError, match="superseded by unknown norm"):
+    with pytest.raises(ValueError, match="superseded_by_norm_ids"):
         load(tmp_path, text, norms)
 
 

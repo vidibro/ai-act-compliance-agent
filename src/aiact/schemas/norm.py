@@ -309,7 +309,6 @@ class Norm(BaseModel):
     product_scope_reason: str = ""
     implementation_mode: ImplementationMode
     implementation_refs: list[str] = []
-    superseded_by_norm_ids: list[str] = []
     implementation_reason: str = ""
     verification_mode: VerificationMode
     review: ReviewRecord
@@ -350,13 +349,6 @@ class Norm(BaseModel):
         if self.implementation_mode is ImplementationMode.NONE_REQUIRED:
             if not self.implementation_reason.strip():
                 raise ValueError("none_required implementation requires a reason")
-        if self.review.status is ReviewStatus.SUPERSEDED:
-            if not self.superseded_by_norm_ids:
-                raise ValueError("superseded norm requires superseded_by_norm_ids")
-            if self.norm_id in self.superseded_by_norm_ids:
-                raise ValueError("a norm cannot supersede itself")
-        elif self.superseded_by_norm_ids:
-            raise ValueError("superseded_by_norm_ids requires review status superseded")
         if self.review.status is ReviewStatus.REJECTED:
             raise ValueError("rejected candidates belong in extraction history, not norm inventory")
         return self

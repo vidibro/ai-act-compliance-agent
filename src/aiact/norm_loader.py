@@ -160,11 +160,6 @@ def load_normative_coverage(
                 f"{norm.norm_id} norm_text is not an exact substring of primary span(s): "
                 f"{nonmatching_primary_spans}"
             )
-        unknown_successors = [n for n in norm.superseded_by_norm_ids if n not in norms_by_id]
-        if unknown_successors:
-            raise ValueError(
-                f"{norm.norm_id} is superseded by unknown norm(s): {unknown_successors}"
-            )
         for dependency in norm.dependencies:
             if dependency.resolution is DependencyResolution.INTERNAL_RESOLVED:
                 if dependency.dependency_ref not in norms_by_id and (
