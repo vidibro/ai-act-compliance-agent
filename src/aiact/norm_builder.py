@@ -677,24 +677,6 @@ def _build_relations(
     return relations
 
 
-def _apply_relation_projections(
-    norms: list[dict[str, object]], relations: list[dict[str, object]]
-) -> None:
-    """Expose legacy relation fields as generated compatibility projections only."""
-    norms_by_id = {str(norm["norm_id"]): norm for norm in norms}
-    for relation in relations:
-        if relation["kind"] != NormRelationKind.CONDITIONAL_ON_NORMS.value:
-            continue
-        source = norms_by_id[str(relation["source_norm_id"])]
-        targets = list(relation["target_norm_ids"])
-        source["condition_norm_ids"] = targets
-        for target_id in targets:
-            target = norms_by_id[str(target_id)]
-            parents = target.setdefault("condition_of_norm_ids", [])
-            assert isinstance(parents, list)
-            parents.append(source["norm_id"])
-
-
 def build_artifacts(
     reviewed: ReviewedDocumentInventory,
     source_inventory: NormSourceInventory,
@@ -704,7 +686,6 @@ def build_artifacts(
     segments = _build_segments(reviewed, paths)
     norms = _build_norms(reviewed, source_inventory, segments, paths)
     relations = _build_relations(source_inventory, segments)
-    _apply_relation_projections(norms, relations)
     return (
         {
             "act_version_date": reviewed.act_version_date.isoformat(),

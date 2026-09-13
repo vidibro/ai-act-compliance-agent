@@ -254,22 +254,6 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
-  condition_norm_ids:
-  - AIA-NORM-A060-P4-A-SUBMIT-TESTING-PLAN
-  - AIA-NORM-A060-P4-B-APPROVAL-AND-TACIT-EFFECT
-  - AIA-NORM-A060-P4-C-REGISTER-TESTING
-  - AIA-NORM-A060-P4-D-UNION-ESTABLISHMENT
-  - AIA-NORM-A060-P4-E-TRANSFER-SAFEGUARDS
-  - AIA-NORM-A060-P4-F-DURATION-LIMIT
-  - AIA-NORM-A060-P4-EXTEND
-  - AIA-NORM-A060-P4-G-PROTECT-VULNERABLE-SUBJECTS
-  - AIA-NORM-A060-P4-H-INFORM-AND-AGREE-ROLES
-  - AIA-NORM-A060-P4-H-CONCLUDE-ROLES-AGREEMENT
-  - AIA-NORM-A060-P4-I-CONSENT-OR-SAFEGUARDS
-  - AIA-NORM-A060-P4-I-NO-NEGATIVE-EFFECT
-  - AIA-NORM-A060-P4-I-DELETE-SUBJECT-DATA
-  - AIA-NORM-A060-P4-J-QUALIFIED-OVERSIGHT
-  - AIA-NORM-A060-P4-K-REVERSIBLE-OUTPUTS
 - norm_id: AIA-NORM-A060-P4-A-SUBMIT-TESTING-PLAN
   act_version_date: '2026-07-27'
   kind: obligation
@@ -307,8 +291,6 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
-  condition_of_norm_ids:
-  - AIA-NORM-A060-P4-PERMISSION
 - norm_id: AIA-NORM-A060-P4-B-APPROVAL-AND-TACIT-EFFECT
   act_version_date: '2026-07-27'
   kind: obligation
@@ -357,8 +339,6 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
-  condition_of_norm_ids:
-  - AIA-NORM-A060-P4-PERMISSION
 - norm_id: AIA-NORM-A060-P4-C-REGISTER-TESTING
   act_version_date: '2026-07-27'
   kind: obligation
@@ -425,8 +405,6 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
-  condition_of_norm_ids:
-  - AIA-NORM-A060-P4-PERMISSION
 - norm_id: AIA-NORM-A060-P4-D-UNION-ESTABLISHMENT
   act_version_date: '2026-07-27'
   kind: obligation
@@ -467,8 +445,6 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
-  condition_of_norm_ids:
-  - AIA-NORM-A060-P4-PERMISSION
 - norm_id: AIA-NORM-A060-P4-E-TRANSFER-SAFEGUARDS
   act_version_date: '2026-07-27'
   kind: obligation
@@ -507,8 +483,6 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
-  condition_of_norm_ids:
-  - AIA-NORM-A060-P4-PERMISSION
 - norm_id: AIA-NORM-A060-P4-F-DURATION-LIMIT
   act_version_date: '2026-07-27'
   kind: obligation
@@ -546,8 +520,6 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
-  condition_of_norm_ids:
-  - AIA-NORM-A060-P4-PERMISSION
 - norm_id: AIA-NORM-A060-P4-EXTEND
   act_version_date: '2026-07-27'
   kind: permission
@@ -589,8 +561,6 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
-  condition_of_norm_ids:
-  - AIA-NORM-A060-P4-PERMISSION
 - norm_id: AIA-NORM-A060-P4-G-PROTECT-VULNERABLE-SUBJECTS
   act_version_date: '2026-07-27'
   kind: obligation
@@ -627,8 +597,6 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
-  condition_of_norm_ids:
-  - AIA-NORM-A060-P4-PERMISSION
 - norm_id: AIA-NORM-A060-P4-H-INFORM-AND-AGREE-ROLES
   act_version_date: '2026-07-27'
   kind: obligation
@@ -674,8 +642,6 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
-  condition_of_norm_ids:
-  - AIA-NORM-A060-P4-PERMISSION
 - norm_id: AIA-NORM-A060-P4-H-CONCLUDE-ROLES-AGREEMENT
   act_version_date: '2026-07-27'
   kind: obligation
@@ -721,8 +687,6 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
-  condition_of_norm_ids:
-  - AIA-NORM-A060-P4-PERMISSION
 - norm_id: AIA-NORM-A060-P4-I-CONSENT-OR-SAFEGUARDS
   act_version_date: '2026-07-27'
   kind: obligation
@@ -760,8 +724,6 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
-  condition_of_norm_ids:
-  - AIA-NORM-A060-P4-PERMISSION
 - norm_id: AIA-NORM-A060-P4-I-NO-NEGATIVE-EFFECT
   act_version_date: '2026-07-27'
   kind: obligation
@@ -803,8 +765,6 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
-  condition_of_norm_ids:
-  - AIA-NORM-A060-P4-PERMISSION
 - norm_id: AIA-NORM-A060-P4-I-DELETE-SUBJECT-DATA
   act_version_date: '2026-07-27'
   kind: obligation
@@ -844,8 +804,6 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
-  condition_of_norm_ids:
-  - AIA-NORM-A060-P4-PERMISSION
 - norm_id: AIA-NORM-A060-P4-J-QUALIFIED-OVERSIGHT
   act_version_date: '2026-07-27'
   kind: obligation
@@ -884,8 +842,6 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
-  condition_of_norm_ids:
-  - AIA-NORM-A060-P4-PERMISSION
 - norm_id: AIA-NORM-A060-P4-K-REVERSIBLE-OUTPUTS
   act_version_date: '2026-07-27'
   kind: obligation
@@ -922,8 +878,6 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
-  condition_of_norm_ids:
-  - AIA-NORM-A060-P4-PERMISSION
 - norm_id: AIA-NORM-A060-P5-WITHDRAW-AND-DELETE
   act_version_date: '2026-07-27'
   kind: entitlement

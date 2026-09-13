@@ -111,11 +111,6 @@ def load_normative_coverage(
     segments_by_id = {segment.segment_id: segment for segment in text_review.segments}
     norms_by_id = {norm.norm_id: norm for norm in norm_inventory.norms}
 
-    # These compatibility fields must be derived from the canonical relation ledger.  Checking
-    # them here makes a hand-edited generated norm artifact fail instead of creating a second
-    # source of truth.
-    expected_conditions: dict[str, list[str]] = {norm_id: [] for norm_id in norms_by_id}
-    expected_condition_of: dict[str, list[str]] = {norm_id: [] for norm_id in norms_by_id}
     for relation in norm_inventory.relations:
         unknown_spans = [span for span in relation.legal_basis_spans if span not in segments_by_id]
         if unknown_spans:
@@ -140,18 +135,8 @@ def load_normative_coverage(
                 f"{relation.relation_id} references unknown target norm(s): {unknown_targets}"
             )
         if relation.kind is NormRelationKind.CONDITIONAL_ON_NORMS:
-            expected_conditions[relation.source_norm_id].extend(relation.target_norm_ids)
-            for target in relation.target_norm_ids:
-                expected_condition_of[target].append(relation.source_norm_id)
-    for norm in norm_inventory.norms:
-        if norm.condition_norm_ids != expected_conditions[norm.norm_id]:
-            raise ValueError(
-                f"{norm.norm_id} condition_norm_ids do not match canonical norm relations"
-            )
-        if norm.condition_of_norm_ids != expected_condition_of[norm.norm_id]:
-            raise ValueError(
-                f"{norm.norm_id} condition_of_norm_ids do not match canonical norm relations"
-            )
+            if relation.source_norm_id in relation.target_norm_ids:
+                raise ValueError(f"{relation.relation_id} makes a norm its own condition")
 
     primary_links: dict[str, set[str]] = {segment_id: set() for segment_id in segments_by_id}
     qualifying_links: dict[str, set[str]] = {segment_id: set() for segment_id in segments_by_id}
@@ -178,24 +163,6 @@ def load_normative_coverage(
         unknown_carriers = [n for n in norm.carried_by_norm_ids if n not in norms_by_id]
         if unknown_carriers:
             raise ValueError(f"{norm.norm_id} is carried by unknown norm(s): {unknown_carriers}")
-        unknown_conditions = [n for n in norm.condition_norm_ids if n not in norms_by_id]
-        if unknown_conditions:
-            raise ValueError(f"{norm.norm_id} has unknown condition norm(s): {unknown_conditions}")
-        for condition_id in norm.condition_norm_ids:
-            if norm.norm_id not in norms_by_id[condition_id].condition_of_norm_ids:
-                raise ValueError(
-                    f"{norm.norm_id} condition relation to {condition_id} is not reciprocal"
-                )
-        unknown_condition_parents = [n for n in norm.condition_of_norm_ids if n not in norms_by_id]
-        if unknown_condition_parents:
-            raise ValueError(
-                f"{norm.norm_id} has unknown condition parent norm(s): {unknown_condition_parents}"
-            )
-        for parent_id in norm.condition_of_norm_ids:
-            if norm.norm_id not in norms_by_id[parent_id].condition_norm_ids:
-                raise ValueError(
-                    f"{norm.norm_id} condition parent relation from {parent_id} is not reciprocal"
-                )
         unknown_successors = [n for n in norm.superseded_by_norm_ids if n not in norms_by_id]
         if unknown_successors:
             raise ValueError(

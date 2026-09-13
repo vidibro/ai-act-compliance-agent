@@ -15,6 +15,7 @@ from aiact.policy_loader import load_policy_spec
 from aiact.schemas.norm import (
     ConditionGroup,
     ImplementationMode,
+    NormRelationKind,
     ProductScope,
     VerificationMode,
 )
@@ -78,9 +79,9 @@ def test_segment_norm_linkages_are_unique():
 
     for segment in bundle.text_review.segments:
         assert len(segment.norm_ids) == len(set(segment.norm_ids)), segment.segment_id
-        assert len(segment.qualifying_norm_ids) == len(
-            set(segment.qualifying_norm_ids)
-        ), segment.segment_id
+        assert len(segment.qualifying_norm_ids) == len(set(segment.qualifying_norm_ids)), (
+            segment.segment_id
+        )
 
 
 def test_segment_primary_links_are_supported_by_the_segments_own_text():
@@ -102,8 +103,7 @@ def test_every_classification_question_target_names_a_cascade_node():
 
     manifest = yaml.safe_load(
         (
-            ROOT
-            / "data/policy/normative-coverage/2026-07-27/source-records/manifest.yaml"
+            ROOT / "data/policy/normative-coverage/2026-07-27/source-records/manifest.yaml"
         ).read_text()
     )
     declared = {t for t in manifest["implementation_targets"] if t.startswith("AIA-CQ-")}
@@ -116,9 +116,7 @@ def test_a_classification_answered_norm_points_at_a_cascade_node():
     norm implemented by a question is one the cascade answers."""
     bundle = load_normative_coverage()
     in_scope = [
-        norm
-        for norm in bundle.norm_inventory.norms
-        if norm.product_scope is ProductScope.IN_SCOPE
+        norm for norm in bundle.norm_inventory.norms if norm.product_scope is ProductScope.IN_SCOPE
     ]
     by_question = [
         norm
@@ -439,9 +437,7 @@ def test_article_two_competence_limits_require_no_product_action():
         for segment in bundle.text_review.segments
         if segment.segment_id == "AIA-TEXT-A002-P010"
     )
-    norms = [
-        norm for norm in bundle.norm_inventory.norms if norm.norm_id in segment.norm_ids
-    ]
+    norms = [norm for norm in bundle.norm_inventory.norms if norm.norm_id in segment.norm_ids]
 
     assert segment.disposition.value == "normative"
     assert {norm.norm_id for norm in norms} == {
@@ -546,9 +542,7 @@ def test_article_two_is_fully_reviewed_as_twenty_eight_atomic_norms():
         if segment.source.kind.value == "article" and segment.source.document == "2"
     ]
     norms = [
-        norm
-        for norm in bundle.norm_inventory.norms
-        if norm.norm_id.startswith("AIA-NORM-A002-")
+        norm for norm in bundle.norm_inventory.norms if norm.norm_id.startswith("AIA-NORM-A002-")
     ]
 
     assert len(segments) == 26
@@ -599,9 +593,7 @@ def test_article_three_is_fully_reviewed_as_definitions_and_embedded_consequence
         if segment.source.kind.value == "article" and segment.source.document == "3"
     ]
     norms = [
-        norm
-        for norm in bundle.norm_inventory.norms
-        if norm.norm_id.startswith("AIA-NORM-A003-")
+        norm for norm in bundle.norm_inventory.norms if norm.norm_id.startswith("AIA-NORM-A003-")
     ]
 
     assert len(segments) == 83
@@ -736,9 +728,7 @@ def test_article_four_a_is_fully_reviewed_as_permissions_safeguards_and_conseque
         if segment.source.kind.value == "article" and segment.source.document == "4a"
     ]
     norms = [
-        norm
-        for norm in bundle.norm_inventory.norms
-        if norm.norm_id.startswith("AIA-NORM-A004A-")
+        norm for norm in bundle.norm_inventory.norms if norm.norm_id.startswith("AIA-NORM-A004A-")
     ]
 
     assert len(segments) == 12
@@ -813,9 +803,7 @@ def test_article_five_is_fully_approved():
         if segment.source.kind.value == "article" and segment.source.document == "5"
     ]
     norms = [
-        norm
-        for norm in bundle.norm_inventory.norms
-        if norm.norm_id.startswith("AIA-NORM-A005-")
+        norm for norm in bundle.norm_inventory.norms if norm.norm_id.startswith("AIA-NORM-A005-")
     ]
 
     assert len(segments) == 35
@@ -910,9 +898,7 @@ def test_article_six_is_fully_approved_and_atomically_classified():
         if segment.source.kind.value == "article" and segment.source.document == "6"
     ]
     norms = [
-        norm
-        for norm in bundle.norm_inventory.norms
-        if norm.norm_id.startswith("AIA-NORM-A006-")
+        norm for norm in bundle.norm_inventory.norms if norm.norm_id.startswith("AIA-NORM-A006-")
     ]
 
     assert len(segments) == 20
@@ -1022,11 +1008,14 @@ def test_article_twenty_six_preserves_structured_triggers_and_complete_log_reten
         "applicable Union or national law, particularly personal-data law, provides a different "
         "retention period"
     ]
-    assert not {
-        "AIA-NORM-A026-P6-PURPOSE-APPROPRIATE-PERIOD",
-        "AIA-NORM-A026-P6-SIX-MONTH-MINIMUM",
-        "AIA-NORM-A026-P6-OTHER-LAW-PERIOD",
-    } & norms.keys()
+    assert (
+        not {
+            "AIA-NORM-A026-P6-PURPOSE-APPROPRIATE-PERIOD",
+            "AIA-NORM-A026-P6-SIX-MONTH-MINIMUM",
+            "AIA-NORM-A026-P6-OTHER-LAW-PERIOD",
+        }
+        & norms.keys()
+    )
 
 
 def test_article_twenty_eight_unified_application_norm_names_its_authority_and_gate():
@@ -1118,16 +1107,10 @@ def test_list_item_norms_retain_their_enacting_chapeaux():
     norms = {norm.norm_id: norm for norm in bundle.norm_inventory.norms}
 
     documentation = norms["AIA-NORM-A053-P1-B-DRAW-KEEP-AND-MAKE-AVAILABLE-DOCUMENTATION"]
-    assert documentation.qualifier_spans == [
-        "AIA-TEXT-A053-P001"
-    ]
+    assert documentation.qualifier_spans == ["AIA-TEXT-A053-P001"]
     incidents = norms["AIA-NORM-A055-P1-C-TRACK-DOCUMENT-AND-REPORT-INCIDENTS"]
-    assert incidents.qualifier_spans == [
-        "AIA-TEXT-A055-P001"
-    ]
-    assert norms["AIA-NORM-A060-P4-K-REVERSIBLE-OUTPUTS"].qualifier_spans == [
-        "AIA-TEXT-A060-P006"
-    ]
+    assert incidents.qualifier_spans == ["AIA-TEXT-A055-P001"]
+    assert norms["AIA-NORM-A060-P4-K-REVERSIBLE-OUTPUTS"].qualifier_spans == ["AIA-TEXT-A060-P006"]
     assert norms["AIA-NORM-A062-P1-D-FACILITATE-STANDARDISATION-PARTICIPATION"].qualifier_spans == [
         "AIA-TEXT-A062-P001"
     ]
@@ -1198,8 +1181,7 @@ def test_article_seven_constrains_annex_three_amendment_powers():
     assert sum(norm.kind.value == "power" for norm in norms.values()) == 2
     assert norms["AIA-NORM-A007-P2-CONSIDER-RISK-CRITERIA"].kind.value == "obligation"
     assert (
-        norms["AIA-NORM-A007-P2-ADVERSE-OUTCOME-NOT-REVERSIBLE"].kind.value
-        == "legal_consequence"
+        norms["AIA-NORM-A007-P2-ADVERSE-OUTCOME-NOT-REVERSIBLE"].kind.value == "legal_consequence"
     )
 
 
@@ -1238,9 +1220,7 @@ def test_article_nine_is_atomic_and_mapped_to_the_risk_management_rule():
         if segment.source.kind.value == "article" and segment.source.document == "9"
     ]
     norms = [
-        norm
-        for norm in bundle.norm_inventory.norms
-        if norm.norm_id.startswith("AIA-NORM-A009-")
+        norm for norm in bundle.norm_inventory.norms if norm.norm_id.startswith("AIA-NORM-A009-")
     ]
 
     assert len(segments) == 20
@@ -1280,16 +1260,10 @@ def test_article_ten_covers_dataset_quality_and_reuses_article_4a_safeguards():
             "AIA-NORM-A004A-P1-HIGH-RISK-BIAS-DATA-PROCESSING"
         ),
         "AIA-NORM-A010-P5-B-REUSE-SECURITY": "AIA-NORM-A004A-P1-B-REUSE-SECURITY",
-        "AIA-NORM-A010-P5-C-ACCESS-SAFEGUARDS": (
-            "AIA-NORM-A004A-P1-C-ACCESS-SAFEGUARDS"
-        ),
-        "AIA-NORM-A010-P5-D-NO-THIRD-PARTY-ACCESS": (
-            "AIA-NORM-A004A-P1-D-NO-THIRD-PARTY-ACCESS"
-        ),
+        "AIA-NORM-A010-P5-C-ACCESS-SAFEGUARDS": ("AIA-NORM-A004A-P1-C-ACCESS-SAFEGUARDS"),
+        "AIA-NORM-A010-P5-D-NO-THIRD-PARTY-ACCESS": ("AIA-NORM-A004A-P1-D-NO-THIRD-PARTY-ACCESS"),
         "AIA-NORM-A010-P5-E-DELETE-DATA": "AIA-NORM-A004A-P1-E-DELETE-DATA",
-        "AIA-NORM-A010-P5-F-RECORD-NECESSITY": (
-            "AIA-NORM-A004A-P1-F-RECORD-NECESSITY"
-        ),
+        "AIA-NORM-A010-P5-F-RECORD-NECESSITY": ("AIA-NORM-A004A-P1-F-RECORD-NECESSITY"),
     }
     for norm_id, carrier_id in carried_by.items():
         norm = norms[norm_id]
@@ -1298,8 +1272,7 @@ def test_article_ten_covers_dataset_quality_and_reuses_article_4a_safeguards():
 
     uniquely_implemented = set(norms) - set(carried_by)
     assert all(
-        norms[norm_id].implementation_refs == ["AIA-HR-A10"]
-        for norm_id in uniquely_implemented
+        norms[norm_id].implementation_refs == ["AIA-HR-A10"] for norm_id in uniquely_implemented
     )
 
 
@@ -1373,10 +1346,7 @@ def test_article_twelve_separates_general_and_biometric_logging_requirements():
         for norm_id in general
         if "-P2-" in norm_id
     )
-    assert all(
-        norms[norm_id].qualifier_spans == ["AIA-TEXT-A012-P006"]
-        for norm_id in biometric
-    )
+    assert all(norms[norm_id].qualifier_spans == ["AIA-TEXT-A012-P006"] for norm_id in biometric)
 
 
 def test_article_thirteen_keeps_instruction_requirements_complete_without_overlap():
@@ -1402,14 +1372,8 @@ def test_article_thirteen_keeps_instruction_requirements_complete_without_overla
     contents = set(norms) - transparency
     assert len(transparency) == 3
     assert len(contents) == 13
-    assert all(
-        norms[norm_id].implementation_refs == ["AIA-HR-A13"]
-        for norm_id in transparency
-    )
-    assert all(
-        norms[norm_id].implementation_refs == ["AIA-HR-A13-3"]
-        for norm_id in contents
-    )
+    assert all(norms[norm_id].implementation_refs == ["AIA-HR-A13"] for norm_id in transparency)
+    assert all(norms[norm_id].implementation_refs == ["AIA-HR-A13-3"] for norm_id in contents)
     assert all("AIA-TEXT-A013-P003" in norms[norm_id].qualifier_spans for norm_id in contents)
     nested_characteristics = {
         norm_id for norm_id in contents if "-P3-B-" in norm_id and "CHARACTERISTICS" not in norm_id
@@ -1417,8 +1381,7 @@ def test_article_thirteen_keeps_instruction_requirements_complete_without_overla
     assert len(nested_characteristics) == 7
     assert len(norms["AIA-NORM-A013-P2-PROVIDE-INSTRUCTIONS"].mandatory_content) == 7
     assert all(
-        "AIA-TEXT-A013-P005" in norms[norm_id].qualifier_spans
-        for norm_id in nested_characteristics
+        "AIA-TEXT-A013-P005" in norms[norm_id].qualifier_spans for norm_id in nested_characteristics
     )
 
 
@@ -1477,10 +1440,7 @@ def test_article_fifteen_combines_each_threat_with_the_full_mitigation_cycle():
     commission = norms["AIA-NORM-A015-P2-ENCOURAGE-MEASUREMENT"]
     assert commission.implementation_mode.value == "none_required"
     provider_norms = set(norms) - {commission.norm_id}
-    assert all(
-        norms[norm_id].implementation_refs == ["AIA-HR-A15"]
-        for norm_id in provider_norms
-    )
+    assert all(norms[norm_id].implementation_refs == ["AIA-HR-A15"] for norm_id in provider_norms)
 
     threats = {
         "AIA-NORM-A015-P5-DATA-POISONING",
@@ -1527,15 +1487,9 @@ def test_article_sixteen_reuses_substantive_rules_without_duplicate_targets():
     assert all(norm.kind.value == "obligation" for norm in norms.values())
     assert all(norm.qualifier_spans == ["AIA-TEXT-A016-P001"] for norm in norms.values())
 
-    assert norms["AIA-NORM-A016-B-PROVIDER-IDENTIFICATION"].implementation_refs == [
-        "AIA-PO-A16-B"
-    ]
-    assert norms["AIA-NORM-A016-K-DEMONSTRATE-CONFORMITY"].implementation_refs == [
-        "AIA-PO-A16-K"
-    ]
-    assert norms["AIA-NORM-A016-L-ACCESSIBILITY"].implementation_refs == [
-        "AIA-PO-A16-L"
-    ]
+    assert norms["AIA-NORM-A016-B-PROVIDER-IDENTIFICATION"].implementation_refs == ["AIA-PO-A16-B"]
+    assert norms["AIA-NORM-A016-K-DEMONSTRATE-CONFORMITY"].implementation_refs == ["AIA-PO-A16-K"]
+    assert norms["AIA-NORM-A016-L-ACCESSIBILITY"].implementation_refs == ["AIA-PO-A16-L"]
     assert len(norms["AIA-NORM-A016-A-SECTION-2-COMPLIANCE"].implementation_refs) == 14
     assert len(norms["AIA-NORM-A016-F-CONFORMITY-ASSESSMENT"].implementation_refs) == 6
     corrective = norms["AIA-NORM-A016-J-CORRECTIVE-ACTION"]
@@ -1566,9 +1520,7 @@ def test_article_seventeen_models_thirteen_qms_aspects_without_micro_splitting()
     assert all(norm.implementation_refs == ["AIA-PO-A17"] for norm in norms.values())
 
     aspect_ids = {
-        norm_id
-        for norm_id in norms
-        if any(f"-P1-{point}-" in norm_id for point in "ABCDEFGHIJKLM")
+        norm_id for norm_id in norms if any(f"-P1-{point}-" in norm_id for point in "ABCDEFGHIJKLM")
     }
     assert len(aspect_ids) == 13
     assert all(norms[norm_id].qualifier_spans == ["AIA-TEXT-A017-P001"] for norm_id in aspect_ids)
@@ -1603,17 +1555,11 @@ def test_article_eighteen_applies_one_retention_chapeau_to_five_document_types()
 
     retention = {norm_id for norm_id in norms if "-P1-" in norm_id}
     assert len(retention) == 5
-    assert all(
-        norms[norm_id].qualifier_spans == ["AIA-TEXT-A018-P001"]
-        for norm_id in retention
-    )
+    assert all(norms[norm_id].qualifier_spans == ["AIA-TEXT-A018-P001"] for norm_id in retention)
     member_state = norms["AIA-NORM-A018-P2-MEMBER-STATE-CONDITIONS"]
     assert member_state.implementation_mode.value == "none_required"
     provider_norms = set(norms) - {member_state.norm_id}
-    assert all(
-        norms[norm_id].implementation_refs == ["AIA-PO-A18"]
-        for norm_id in provider_norms
-    )
+    assert all(norms[norm_id].implementation_refs == ["AIA-PO-A18"] for norm_id in provider_norms)
 
     article_sixteen = next(
         norm
@@ -1651,9 +1597,7 @@ def test_article_nineteen_keeps_the_legal_exception_in_the_retention_rule():
     assert retention.exceptions
 
     article_sixteen = next(
-        norm
-        for norm in bundle.norm_inventory.norms
-        if norm.norm_id == "AIA-NORM-A016-E-KEEP-LOGS"
+        norm for norm in bundle.norm_inventory.norms if norm.norm_id == "AIA-NORM-A016-E-KEEP-LOGS"
     )
     assert article_sixteen.implementation_mode.value == "carried_by_other_norm"
     assert set(article_sixteen.carried_by_norm_ids) == paragraph_one
@@ -1683,14 +1627,10 @@ def test_article_twenty_keeps_alternative_corrective_outcomes_in_one_norm():
     assert len(paragraph_one) == 2
     assert len(paragraph_two) == 1
     assert all(norms[norm_id].implementation_refs == ["AIA-PO-A20"] for norm_id in paragraph_one)
-    assert all(
-        norms[norm_id].implementation_refs == ["AIA-PO-A20-2"]
-        for norm_id in paragraph_two
-    )
+    assert all(norms[norm_id].implementation_refs == ["AIA-PO-A20-2"] for norm_id in paragraph_two)
     response = norms["AIA-NORM-A020-P1-CORRECTIVE-RESPONSE"]
     assert all(
-        term in response.action
-        for term in ("conformity", "withdrawing", "disabling", "recalling")
+        term in response.action for term in ("conformity", "withdrawing", "disabling", "recalling")
     )
 
     article_sixteen = next(
@@ -1724,9 +1664,7 @@ def test_article_twenty_one_keeps_disclosure_language_with_the_requested_materia
     paragraph_one = {norm_id for norm_id in norms if "-P1-" in norm_id}
     assert len(paragraph_one) == 1
     assert all(norms[norm_id].implementation_refs == ["AIA-PO-A21"] for norm_id in paragraph_one)
-    assert norms["AIA-NORM-A021-P2-PROVIDE-LOG-ACCESS"].implementation_refs == [
-        "AIA-PO-A21-2"
-    ]
+    assert norms["AIA-NORM-A021-P2-PROVIDE-LOG-ACCESS"].implementation_refs == ["AIA-PO-A21-2"]
     confidentiality = norms["AIA-NORM-A021-P3-CONFIDENTIALITY"]
     assert confidentiality.subjects[0].category.value == "public_authority"
     assert confidentiality.implementation_mode.value == "none_required"
@@ -1755,35 +1693,24 @@ def test_article_twenty_two_separates_provider_and_representative_duties():
         "AIA-NORM-A022-P1-APPOINT-REPRESENTATIVE",
         "AIA-NORM-A022-P2-ENABLE-REPRESENTATIVE",
     }
-    assert all(
-        norms[norm_id].implementation_refs == ["AIA-PO-A22"]
-        for norm_id in provider_norms
-    )
+    assert all(norms[norm_id].implementation_refs == ["AIA-PO-A22"] for norm_id in provider_norms)
     representative_norms = set(norms) - provider_norms
     assert all(
-        norms[norm_id].implementation_refs == ["AIA-AR-A22"]
-        for norm_id in representative_norms
+        norms[norm_id].implementation_refs == ["AIA-AR-A22"] for norm_id in representative_norms
     )
 
     mandate_items = {
-        norm_id
-        for norm_id in norms
-        if any(f"-P3-{letter}-" in norm_id for letter in "ABCDE")
+        norm_id for norm_id in norms if any(f"-P3-{letter}-" in norm_id for letter in "ABCDE")
     }
     assert len(mandate_items) == 7
     assert all(
-        norms[norm_id].qualifier_spans == ["AIA-TEXT-A022-P003"]
-        for norm_id in mandate_items
+        norms[norm_id].qualifier_spans == ["AIA-TEXT-A022-P003"] for norm_id in mandate_items
     )
-    assert {
-        norm_id for norm_id in mandate_items if "-P3-C-" in norm_id
-    } == {
+    assert {norm_id for norm_id in mandate_items if "-P3-C-" in norm_id} == {
         "AIA-NORM-A022-P3-C-PROVIDE-CONFORMITY-INFORMATION",
         "AIA-NORM-A022-P3-C-PROVIDE-LOG-ACCESS",
     }
-    assert {
-        norm_id for norm_id in mandate_items if "-P3-E-" in norm_id
-    } == {
+    assert {norm_id for norm_id in mandate_items if "-P3-E-" in norm_id} == {
         "AIA-NORM-A022-P3-E-REGISTER",
         "AIA-NORM-A022-P3-E-ENSURE-REGISTRATION-CORRECT",
     }
@@ -1809,24 +1736,17 @@ def test_article_twenty_three_separates_importer_checks_and_responses():
     assert all(norm.kind.value == "obligation" for norm in norms.values())
     assert all(norm.implementation_refs == ["AIA-IM-A23"] for norm in norms.values())
 
-    pre_market_checks = {
-        norm_id for norm_id in norms if norm_id.startswith("AIA-NORM-A023-P1-")
-    }
+    pre_market_checks = {norm_id for norm_id in norms if norm_id.startswith("AIA-NORM-A023-P1-")}
     assert len(pre_market_checks) == 4
     assert all(
-        norms[norm_id].qualifier_spans == ["AIA-TEXT-A023-P001"]
-        for norm_id in pre_market_checks
+        norms[norm_id].qualifier_spans == ["AIA-TEXT-A023-P001"] for norm_id in pre_market_checks
     )
-    paragraph_two = {
-        norm_id for norm_id in norms if norm_id.startswith("AIA-NORM-A023-P2-")
-    }
+    paragraph_two = {norm_id for norm_id in norms if norm_id.startswith("AIA-NORM-A023-P2-")}
     assert paragraph_two == {
         "AIA-NORM-A023-P2-WITHHOLD-NONCONFORMING-SYSTEM",
         "AIA-NORM-A023-P2-INFORM-RISK",
     }
-    paragraph_six = {
-        norm_id for norm_id in norms if norm_id.startswith("AIA-NORM-A023-P6-")
-    }
+    paragraph_six = {norm_id for norm_id in norms if norm_id.startswith("AIA-NORM-A023-P6-")}
     assert paragraph_six == {
         "AIA-NORM-A023-P6-PROVIDE-CONFORMITY-INFORMATION",
         "AIA-NORM-A023-P6-TECHNICAL-DOCUMENTATION-AVAILABLE",
@@ -1854,24 +1774,18 @@ def test_article_twenty_four_separates_distributor_checks_and_responses():
     assert all(norm.kind.value == "obligation" for norm in norms.values())
     assert all(norm.implementation_refs == ["AIA-DI-A24"] for norm in norms.values())
 
-    paragraph_one = {
-        norm_id for norm_id in norms if norm_id.startswith("AIA-NORM-A024-P1-")
-    }
+    paragraph_one = {norm_id for norm_id in norms if norm_id.startswith("AIA-NORM-A024-P1-")}
     assert paragraph_one == {
         "AIA-NORM-A024-P1-VERIFY-CE-MARKING",
         "AIA-NORM-A024-P1-VERIFY-ACCOMPANYING-DOCUMENTS",
         "AIA-NORM-A024-P1-VERIFY-OPERATOR-COMPLIANCE",
     }
-    paragraph_two = {
-        norm_id for norm_id in norms if norm_id.startswith("AIA-NORM-A024-P2-")
-    }
+    paragraph_two = {norm_id for norm_id in norms if norm_id.startswith("AIA-NORM-A024-P2-")}
     assert paragraph_two == {
         "AIA-NORM-A024-P2-WITHHOLD-NONCONFORMING-SYSTEM",
         "AIA-NORM-A024-P2-INFORM-RISK",
     }
-    paragraph_four = {
-        norm_id for norm_id in norms if norm_id.startswith("AIA-NORM-A024-P4-")
-    }
+    paragraph_four = {norm_id for norm_id in norms if norm_id.startswith("AIA-NORM-A024-P4-")}
     assert paragraph_four == {
         "AIA-NORM-A024-P4-CORRECTIVE-RESPONSE",
         "AIA-NORM-A024-P4-NOTIFY-RISK",
@@ -1903,9 +1817,7 @@ def test_article_twenty_five_separates_role_transfer_from_surviving_duties():
     assert len(norms) == 15
 
     role_consequences = {
-        norm_id
-        for norm_id, norm in norms.items()
-        if norm.kind.value == "legal_consequence"
+        norm_id for norm_id, norm in norms.items() if norm.kind.value == "legal_consequence"
     }
     assert len(role_consequences) == 6
     assert all(
@@ -1915,9 +1827,7 @@ def test_article_twenty_five_separates_role_transfer_from_surviving_duties():
     )
 
     initial_provider_norms = {
-        norm_id
-        for norm_id, norm in norms.items()
-        if norm.implementation_refs == ["AIA-IP-A25-2"]
+        norm_id for norm_id, norm in norms.items() if norm.implementation_refs == ["AIA-IP-A25-2"]
     }
     assert initial_provider_norms == {
         "AIA-NORM-A025-P2-COOPERATE",
@@ -1934,17 +1844,13 @@ def test_article_twenty_five_separates_role_transfer_from_surviving_duties():
     ]
 
     agreement_norms = {
-        norm_id
-        for norm_id, norm in norms.items()
-        if norm.implementation_refs == ["AIA-PO-A25-4"]
+        norm_id for norm_id, norm in norms.items() if norm.implementation_refs == ["AIA-PO-A25-4"]
     }
     assert agreement_norms == {
         "AIA-NORM-A025-P4-WRITTEN-AGREEMENT",
         "AIA-NORM-A025-P4-OPEN-SOURCE-EXCEPTION",
     }
-    ai_office_norms = {
-        norm_id for norm_id in norms if "-AI-OFFICE-" in norm_id
-    }
+    ai_office_norms = {norm_id for norm_id in norms if "-AI-OFFICE-" in norm_id}
     assert len(ai_office_norms) == 3
     assert all(
         norms[norm_id].product_scope.value == "outside_supported_actor"
@@ -1973,11 +1879,7 @@ def test_article_twenty_six_models_core_and_specialised_deployer_duties():
     assert len(norms) == 34
 
     by_target = {
-        target: {
-            norm_id
-            for norm_id, norm in norms.items()
-            if norm.implementation_refs == [target]
-        }
+        target: {norm_id for norm_id, norm in norms.items() if norm.implementation_refs == [target]}
         for target in (
             "AIA-DP-A26",
             "AIA-DP-A26-8",
@@ -1994,28 +1896,18 @@ def test_article_twenty_six_models_core_and_specialised_deployer_duties():
     assert len(by_target["AIA-DP-A26-11"]) == 2
     assert len(by_target["AIA-DP-A26-12"]) == 1
 
-    paragraph_five = {
-        norm_id for norm_id in norms if norm_id.startswith("AIA-NORM-A026-P5-")
-    }
+    paragraph_five = {norm_id for norm_id in norms if norm_id.startswith("AIA-NORM-A026-P5-")}
     assert len(paragraph_five) == 6
-    paragraph_ten = {
-        norm_id for norm_id in norms if norm_id.startswith("AIA-NORM-A026-P10-")
-    }
+    paragraph_ten = {norm_id for norm_id in norms if norm_id.startswith("AIA-NORM-A026-P10-")}
     assert len(paragraph_ten) == 13
-    assert {
-        norm_id
-        for norm_id in paragraph_ten
-        if norms[norm_id].kind.value == "prohibition"
-    } == {
+    assert {norm_id for norm_id in paragraph_ten if norms[norm_id].kind.value == "prohibition"} == {
         "AIA-NORM-A026-P10-PROHIBIT-UNTARGETED-USE",
         "AIA-NORM-A026-P10-NO-SOLE-OUTPUT-ADVERSE-DECISION",
     }
     member_state_power = norms["AIA-NORM-A026-P10-MEMBER-STATE-STRICTER-LAW"]
     assert member_state_power.kind.value == "power"
     assert member_state_power.product_scope.value == "outside_supported_actor"
-    assert norms["AIA-NORM-A026-P8-DO-NOT-USE-UNREGISTERED"].kind.value == (
-        "prohibition"
-    )
+    assert norms["AIA-NORM-A026-P8-DO-NOT-USE-UNREGISTERED"].kind.value == ("prohibition")
 
 
 def test_article_twenty_seven_keeps_fria_contents_in_one_assessment_norm():
@@ -2049,11 +1941,7 @@ def test_article_twenty_seven_keeps_fria_contents_in_one_assessment_norm():
     ]
 
     by_target = {
-        target: {
-            norm_id
-            for norm_id, norm in norms.items()
-            if norm.implementation_refs == [target]
-        }
+        target: {norm_id for norm_id, norm in norms.items() if norm.implementation_refs == [target]}
         for target in ("AIA-DP-A27", "AIA-DP-A27-2", "AIA-DP-A27-3")
     }
     assert len(by_target["AIA-DP-A27"]) == 2
@@ -2061,9 +1949,7 @@ def test_article_twenty_seven_keeps_fria_contents_in_one_assessment_norm():
     assert len(by_target["AIA-DP-A27-3"]) == 2
 
     ai_office_norms = {
-        norm_id
-        for norm_id, norm in norms.items()
-        if norm.subjects[0].subject_ref == "ai_office"
+        norm_id for norm_id, norm in norms.items() if norm.subjects[0].subject_ref == "ai_office"
     }
     assert len(ai_office_norms) == 2
     assert all(
@@ -2080,9 +1966,7 @@ def test_article_twenty_eight_is_complete_institutional_coverage():
         if segment.source.kind.value == "article" and segment.source.document == "28"
     ]
     norms = [
-        norm
-        for norm in bundle.norm_inventory.norms
-        if norm.norm_id.startswith("AIA-NORM-A028-")
+        norm for norm in bundle.norm_inventory.norms if norm.norm_id.startswith("AIA-NORM-A028-")
     ]
 
     assert len(segments) == 13
@@ -2477,8 +2361,7 @@ def test_article_thirty_five_keeps_publication_and_currency_separate():
     assert len(segments[2].norm_ids) == 2
     assert all(norm.kind.value == "obligation" for norm in norms.values())
     assert all(
-        norm.subjects[0].category.value == "union_institution_or_body"
-        for norm in norms.values()
+        norm.subjects[0].category.value == "union_institution_or_body" for norm in norms.values()
     )
     publication = norms["AIA-NORM-A035-P2-PUBLISH-NOTIFIED-BODY-LIST"]
     assert publication.mandatory_content == [
@@ -2560,9 +2443,7 @@ def test_article_thirty_eight_captures_coordination_duties():
         if segment.source.kind.value == "article" and segment.source.document == "38"
     ]
     norms = [
-        norm
-        for norm in bundle.norm_inventory.norms
-        if norm.norm_id.startswith("AIA-NORM-A038-")
+        norm for norm in bundle.norm_inventory.norms if norm.norm_id.startswith("AIA-NORM-A038-")
     ]
 
     assert len(segments) == 4
@@ -2669,9 +2550,7 @@ def test_article_forty_two_keeps_three_conformity_presumptions_distinct():
         if segment.source.kind.value == "article" and segment.source.document == "42"
     ]
     norms = [
-        norm
-        for norm in bundle.norm_inventory.norms
-        if norm.norm_id.startswith("AIA-NORM-A042-")
+        norm for norm in bundle.norm_inventory.norms if norm.norm_id.startswith("AIA-NORM-A042-")
     ]
 
     assert len(segments) == 4
@@ -2703,15 +2582,9 @@ def test_article_forty_three_reconciles_all_conformity_routes():
     assert len(segments[3].norm_ids) == 8
     assert len(segments[4].norm_ids) == 2
     assert len(segments[6].norm_ids) == 2
-    assert norms["AIA-NORM-A043-P1-CHOOSE-CONFORMITY-ROUTE"].implementation_refs == [
-        "AIA-PO-A43-1"
-    ]
-    assert norms["AIA-NORM-A043-P2-INTERNAL-CONTROL"].implementation_refs == [
-        "AIA-PO-A43-2"
-    ]
-    assert norms["AIA-NORM-A043-P4-NEW-ASSESSMENT"].implementation_refs == [
-        "AIA-PO-A43-4"
-    ]
+    assert norms["AIA-NORM-A043-P1-CHOOSE-CONFORMITY-ROUTE"].implementation_refs == ["AIA-PO-A43-1"]
+    assert norms["AIA-NORM-A043-P2-INTERNAL-CONTROL"].implementation_refs == ["AIA-PO-A43-2"]
+    assert norms["AIA-NORM-A043-P4-NEW-ASSESSMENT"].implementation_refs == ["AIA-PO-A43-4"]
     exclusion = norms["AIA-NORM-A043-P4-PREDETERMINED-CHANGE-EXCLUSION"]
     assert exclusion.kind.value == "applicability"
     assert exclusion.product_scope.value == "dependency_only"
@@ -2831,9 +2704,11 @@ def test_article_forty_six_preserves_derogation_lifecycle():
     assert len(authorisation.conditions) == 3
     refusal = norms["AIA-NORM-A046-P2-REFUSAL-RESPONSE"]
     discard = norms["AIA-NORM-A046-P2-DISCARD-RESULTS-AND-OUTPUTS"]
-    assert refusal.conditions == discard.conditions == [
-        "the paragraph 1 authorisation requested for urgent use under paragraph 2 is refused"
-    ]
+    assert (
+        refusal.conditions
+        == discard.conditions
+        == ["the paragraph 1 authorisation requested for urgent use under paragraph 2 is refused"]
+    )
     assert refusal.subjects == discard.subjects
     assert refusal.subjects[0].subject_ref == "law_enforcement_or_civil_protection_authority"
     assert "stop use" in refusal.action and "immediate effect" in refusal.action
@@ -2993,7 +2868,8 @@ def test_article_fifty_preserves_disclosure_test_and_technical_solution_qualifie
         assert norm.review.verified_by == "vidibro"
         assert norm.verification_mode.value == "judged_by_gap_analysis"
     article_segments = [
-        s for s in bundle.text_review.segments
+        s
+        for s in bundle.text_review.segments
         if s.source.kind.value == "article" and s.source.document == "50"
     ]
     assert all(
@@ -3174,12 +3050,14 @@ def test_article_fifty_five_maps_systemic_risk_provider_controls():
     assert len(evaluation.mandatory_content) == 2
     assert "AIA-NORM-A055-P1-A-CONDUCT-ADVERSARIAL-TESTING" not in norms
     assert "AIA-NORM-A055-P1-A-DOCUMENT-ADVERSARIAL-TESTING" not in norms
-    assert "assess and mitigate" in norms[
-        "AIA-NORM-A055-P1-B-ASSESS-AND-MITIGATE-SYSTEMIC-RISKS"
-    ].action
-    assert "physical infrastructure" in norms[
-        "AIA-NORM-A055-P1-D-MODEL-AND-INFRASTRUCTURE-CYBERSECURITY"
-    ].action
+    assert (
+        "assess and mitigate"
+        in norms["AIA-NORM-A055-P1-B-ASSESS-AND-MITIGATE-SYSTEMIC-RISKS"].action
+    )
+    assert (
+        "physical infrastructure"
+        in norms["AIA-NORM-A055-P1-D-MODEL-AND-INFRASTRUCTURE-CYBERSECURITY"].action
+    )
     confidentiality = norms["AIA-NORM-A055-P3-CONFIDENTIAL-TREATMENT"]
     assert confidentiality.implementation_mode.value == "none_required"
 
@@ -3192,9 +3070,7 @@ def test_article_fifty_six_extracts_institutional_code_governance():
         if segment.source.kind.value == "article" and segment.source.document == "56"
     ]
     norms = [
-        norm
-        for norm in bundle.norm_inventory.norms
-        if norm.norm_id.startswith("AIA-NORM-A056-")
+        norm for norm in bundle.norm_inventory.norms if norm.norm_id.startswith("AIA-NORM-A056-")
     ]
 
     assert len(segments) == 15
@@ -3234,9 +3110,7 @@ def test_article_fifty_seven_extracts_complete_sandbox_lifecycle():
     assert len(objectives.mandatory_content) == 5
     assert len(objectives.qualifier_spans) == 5
     provider_consequences = [
-        norm
-        for norm in norms.values()
-        if norm.subjects[0].category.value == "supported_operator"
+        norm for norm in norms.values() if norm.subjects[0].category.value == "supported_operator"
     ]
     assert len(provider_consequences) == 4
     assert all(norm.product_scope.value == "no_product_action" for norm in provider_consequences)
@@ -3279,7 +3153,8 @@ def test_article_fifty_eight_extracts_sandbox_implementing_arrangements():
     assert "protect fundamental rights, health and safety" in safeguards.action
     assert "cooperate" not in safeguards.action
     assert safeguards.mandatory_content == [
-        "testing terms and conditions", "safeguards protecting fundamental rights health and safety"
+        "testing terms and conditions",
+        "safeguards protecting fundamental rights health and safety",
     ]
     assert "other national competent authorities" in cooperation.action
     assert "consistent real-world sandbox testing practices across the Union" in cooperation.action
@@ -3355,14 +3230,18 @@ def test_article_fifty_nine_extracts_conditional_sandbox_data_processing():
         "processing occurs in an AI regulatory sandbox",
         "every Article 59(1) condition is met",
     ]
-    assert permission.condition_norm_ids == [
+    condition_norm_ids = bundle.norm_inventory.target_norm_ids_for(
+        permission.norm_id, NormRelationKind.CONDITIONAL_ON_NORMS
+    )
+    assert condition_norm_ids == [
         norm_id
         for norm_id in norms
         if norm_id.startswith("AIA-NORM-A059-P1-") and norm_id != permission.norm_id
     ]
     assert all(
-        norms[norm_id].condition_of_norm_ids == [permission.norm_id]
-        for norm_id in permission.condition_norm_ids
+        bundle.norm_inventory.source_norm_ids_for(norm_id, NormRelationKind.CONDITIONAL_ON_NORMS)
+        == [permission.norm_id]
+        for norm_id in condition_norm_ids
     )
     # The parent permission still requires all ten lettered conditions, not any one of them.
     # Each has a child norm; expanding (a) does not duplicate the other conditions at the parent.
@@ -3402,14 +3281,18 @@ def test_article_sixty_extracts_real_world_testing_lifecycle():
     assert_segments_are_independently_approved(segments)
     assert len(norms) == 30
     permission = norms["AIA-NORM-A060-P4-PERMISSION"]
-    assert permission.condition_norm_ids == [
+    condition_norm_ids = bundle.norm_inventory.target_norm_ids_for(
+        permission.norm_id, NormRelationKind.CONDITIONAL_ON_NORMS
+    )
+    assert condition_norm_ids == [
         norm_id
         for norm_id in norms
         if norm_id.startswith("AIA-NORM-A060-P4-") and norm_id != permission.norm_id
     ]
     assert all(
-        norms[norm_id].condition_of_norm_ids == [permission.norm_id]
-        for norm_id in permission.condition_norm_ids
+        bundle.norm_inventory.source_norm_ids_for(norm_id, NormRelationKind.CONDITIONAL_ON_NORMS)
+        == [permission.norm_id]
+        for norm_id in condition_norm_ids
     )
     assert len(permission.qualifier_spans) == 11
     assert len(permission.mandatory_content) == 11
@@ -3691,9 +3574,7 @@ def test_article_sixty_three_limits_the_sme_derogation():
     assert len(segments) == 3
     assert_segments_are_independently_approved(segments)
     assert len(norms) == 3
-    assert norms["AIA-NORM-A063-P1-SIMPLIFIED-SME-QUALITY-MANAGEMENT"].kind.value == (
-        "permission"
-    )
+    assert norms["AIA-NORM-A063-P1-SIMPLIFIED-SME-QUALITY-MANAGEMENT"].kind.value == ("permission")
     assert norms["AIA-NORM-A063-P2-NO-BROADER-EXEMPTION"].product_scope.value == (
         "no_product_action"
     )
@@ -3707,9 +3588,7 @@ def test_article_sixty_four_extracts_ai_office_support_duties():
         if segment.source.kind.value == "article" and segment.source.document == "64"
     ]
     norms = [
-        norm
-        for norm in bundle.norm_inventory.norms
-        if norm.norm_id.startswith("AIA-NORM-A064-")
+        norm for norm in bundle.norm_inventory.norms if norm.norm_id.startswith("AIA-NORM-A064-")
     ]
 
     assert len(segments) == 4
@@ -3920,9 +3799,7 @@ def test_article_sixty_nine_extracts_member_state_expert_access():
         if segment.source.kind.value == "article" and segment.source.document == "69"
     ]
     norms = [
-        norm
-        for norm in bundle.norm_inventory.norms
-        if norm.norm_id.startswith("AIA-NORM-A069-")
+        norm for norm in bundle.norm_inventory.norms if norm.norm_id.startswith("AIA-NORM-A069-")
     ]
 
     assert len(segments) == 4
@@ -4372,9 +4249,7 @@ def test_article_seventy_nine_maps_operator_enforcement_duties():
     assert "three months" in deemed.action and "30 days" in deemed.action
     assert "Article 18 of Regulation (EU)" in rights.action
     assert "30 days" in shortened.action
-    assert all(
-        norm.kind.value == "legal_consequence" for norm in (deemed, rights, shortened)
-    )
+    assert all(norm.kind.value == "legal_consequence" for norm in (deemed, rights, shortened))
     assert_extraction_never_approves(norms.values())
 
 
@@ -4395,9 +4270,7 @@ def test_article_eighty_maps_reclassified_provider_correction():
 def test_article_eighty_one_extracts_union_safeguard_procedure():
     bundle = load_normative_coverage()
     norms = [
-        norm
-        for norm in bundle.norm_inventory.norms
-        if norm.norm_id.startswith("AIA-NORM-A081-")
+        norm for norm in bundle.norm_inventory.norms if norm.norm_id.startswith("AIA-NORM-A081-")
     ]
 
     assert len(norms) == 7
@@ -4459,9 +4332,7 @@ def test_article_eighty_three_keeps_formal_defects_as_one_enforcement_cycle():
 def test_article_eighty_four_extracts_testing_support_structure_duties():
     bundle = load_normative_coverage()
     norms = [
-        norm
-        for norm in bundle.norm_inventory.norms
-        if norm.norm_id.startswith("AIA-NORM-A084-")
+        norm for norm in bundle.norm_inventory.norms if norm.norm_id.startswith("AIA-NORM-A084-")
     ]
 
     assert len(norms) == 2
@@ -4498,18 +4369,14 @@ def test_article_eighty_six_maps_the_deployer_explanation_duty():
     }
 
     assert len(norms) == 4
-    assert norms["AIA-NORM-A086-P1-PROVIDE-EXPLANATION"].implementation_refs == [
-        "AIA-DP-A86"
-    ]
+    assert norms["AIA-NORM-A086-P1-PROVIDE-EXPLANATION"].implementation_refs == ["AIA-DP-A86"]
     assert norms["AIA-NORM-A086-P1-RIGHT-TO-EXPLANATION"].kind.value == "entitlement"
 
 
 def test_article_eighty_seven_applies_whistleblower_protection():
     bundle = load_normative_coverage()
     norms = [
-        norm
-        for norm in bundle.norm_inventory.norms
-        if norm.norm_id.startswith("AIA-NORM-A087-")
+        norm for norm in bundle.norm_inventory.norms if norm.norm_id.startswith("AIA-NORM-A087-")
     ]
 
     assert len(norms) == 1
@@ -4520,9 +4387,7 @@ def test_article_eighty_seven_applies_whistleblower_protection():
 def test_article_eighty_eight_extracts_gpai_enforcement_competence():
     bundle = load_normative_coverage()
     norms = [
-        norm
-        for norm in bundle.norm_inventory.norms
-        if norm.norm_id.startswith("AIA-NORM-A088-")
+        norm for norm in bundle.norm_inventory.norms if norm.norm_id.startswith("AIA-NORM-A088-")
     ]
 
     assert len(norms) == 3
@@ -4626,9 +4491,7 @@ def test_article_ninety_three_extracts_commission_measure_powers():
 def test_article_ninety_four_applies_gpai_procedural_rights():
     bundle = load_normative_coverage()
     norms = [
-        norm
-        for norm in bundle.norm_inventory.norms
-        if norm.norm_id.startswith("AIA-NORM-A094-")
+        norm for norm in bundle.norm_inventory.norms if norm.norm_id.startswith("AIA-NORM-A094-")
     ]
 
     assert len(norms) == 1
@@ -4750,8 +4613,7 @@ def test_articles_one_hundred_to_one_hundred_five_extract_enforcement_and_amendm
     bundle = load_normative_coverage()
     counts = {
         article: sum(
-            norm.norm_id.startswith(f"AIA-NORM-A{article}-")
-            for norm in bundle.norm_inventory.norms
+            norm.norm_id.startswith(f"AIA-NORM-A{article}-") for norm in bundle.norm_inventory.norms
         )
         for article in ("100", "101", "102", "103", "104", "105")
     }
@@ -4804,8 +4666,7 @@ def test_articles_one_hundred_six_to_one_hundred_ten_extract_amendments():
     bundle = load_normative_coverage()
     counts = {
         article: sum(
-            norm.norm_id.startswith(f"AIA-NORM-A{article}-")
-            for norm in bundle.norm_inventory.norms
+            norm.norm_id.startswith(f"AIA-NORM-A{article}-") for norm in bundle.norm_inventory.norms
         )
         for article in ("106", "107", "108", "109", "110")
     }
@@ -4830,9 +4691,7 @@ def test_article_one_hundred_eleven_extracts_transition_rules_and_debt():
 
     assert len(norms) == 6
     assert sum(norm.implementation_mode.value == "missing" for norm in norms.values()) == 4
-    assert norms["AIA-NORM-A111-P2-LEGACY-HIGH-RISK-APPLICABILITY"].kind.value == (
-        "applicability"
-    )
+    assert norms["AIA-NORM-A111-P2-LEGACY-HIGH-RISK-APPLICABILITY"].kind.value == ("applicability")
     legacy = norms["AIA-NORM-A111-P2-LEGACY-HIGH-RISK-APPLICABILITY"]
     assert len(legacy.conditions) == 2
     assert len(legacy.exceptions) == 2
@@ -4886,9 +4745,7 @@ def test_articles_seventy_five_a_and_b_extract_ai_office_enforcement_powers():
         if norm.norm_id.startswith("AIA-NORM-A075A-")
     }
     article_b = [
-        norm
-        for norm in bundle.norm_inventory.norms
-        if norm.norm_id.startswith("AIA-NORM-A075B-")
+        norm for norm in bundle.norm_inventory.norms if norm.norm_id.startswith("AIA-NORM-A075B-")
     ]
 
     assert len(article_a) == 24
@@ -5067,9 +4924,7 @@ def test_annex_six_internal_control_defines_and_applies_all_three_checks():
     assert len(norms) == 4
     procedure = norms["AIA-NORM-ANNEX-VI-P1-PROCEDURE-CONTENT"]
     assert procedure.kind.value == "applicability"
-    assert procedure.qualifier_spans == [
-        f"AIA-TEXT-ANNEX-VI-P{index:03d}" for index in range(2, 5)
-    ]
+    assert procedure.qualifier_spans == [f"AIA-TEXT-ANNEX-VI-P{index:03d}" for index in range(2, 5)]
     provider_checks = [norm for key, norm in norms.items() if "P1" not in key]
     assert all(norm.subjects[0].subject_ref == "provider" for norm in provider_checks)
 
@@ -5123,17 +4978,13 @@ def test_annex_nine_registration_content_is_carried_by_article_sixty():
     assert len(annex.mandatory_content) == 5
     assert annex.carried_by_norm_ids == ["AIA-NORM-A060-P4-C-REGISTER-TESTING"]
     assert annex.implementation_mode.value == "carried_by_other_norm"
-    assert annex.qualifier_spans == [
-        f"AIA-TEXT-ANNEX-IX-P{index:03d}" for index in range(2, 7)
-    ]
+    assert annex.qualifier_spans == [f"AIA-TEXT-ANNEX-IX-P{index:03d}" for index in range(2, 7)]
 
 
 def test_annex_ten_extracts_twelve_large_scale_it_instruments():
     bundle = load_normative_coverage()
     norms = [
-        norm
-        for norm in bundle.norm_inventory.norms
-        if norm.norm_id.startswith("AIA-NORM-ANNEX-X-")
+        norm for norm in bundle.norm_inventory.norms if norm.norm_id.startswith("AIA-NORM-ANNEX-X-")
     ]
 
     assert len(norms) == 12
@@ -5217,9 +5068,7 @@ def test_annex_twelve_downstream_transparency_content_is_carried_by_article_fift
 
     assert len(annex.mandatory_content) == 11
     assert annex.carried_by_norm_ids == ["AIA-NORM-A053-P1-B-ANNEX-XII-CONTENT"]
-    assert annex.qualifier_spans == [
-        f"AIA-TEXT-ANNEX-XII-P{index:03d}" for index in range(2, 15)
-    ]
+    assert annex.qualifier_spans == [f"AIA-TEXT-ANNEX-XII-P{index:03d}" for index in range(2, 15)]
 
 
 def test_annex_thirteen_separates_commission_criteria_from_the_user_presumption():

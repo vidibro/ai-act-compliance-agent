@@ -21,6 +21,7 @@ from aiact.norm_builder import (
 )
 from aiact.policy_loader import article_filename, load_policy_spec
 from aiact.schemas.norm import (
+    Norm,
     NormRelation,
     NormRelationKind,
     SegmentDisposition,
@@ -333,13 +334,16 @@ def test_condition_relationship_is_canonical_and_legacy_source_field_is_rejected
         configured_paths,
     )
     norms = {norm["norm_id"]: norm for norm in compiled["norms"]}
-    assert norms[parent.norm_id]["condition_norm_ids"] == [child.norm_id]
-    assert norms[child.norm_id]["condition_of_norm_ids"] == [parent.norm_id]
+    assert "condition_norm_ids" not in norms[parent.norm_id]
+    assert "condition_of_norm_ids" not in norms[child.norm_id]
+    assert compiled["relations"] == [relation.model_dump(mode="json")]
 
     with pytest.raises(ValueError, match="condition_norm_ids"):
         NormSourceRecord.model_validate(
             {**parent.model_dump(), "condition_norm_ids": [child.norm_id]}
         )
+    with pytest.raises(ValueError, match="condition_norm_ids"):
+        Norm.model_validate({**norms[parent.norm_id], "condition_norm_ids": [child.norm_id]})
 
 
 def test_document_verifier_approves_all_non_debt_segments(tmp_path):

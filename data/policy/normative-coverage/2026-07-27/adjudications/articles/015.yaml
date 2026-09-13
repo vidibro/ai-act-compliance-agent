@@ -5,24 +5,24 @@ source:
   document: "15"
 
 decisions:
-  - finding_id: AIA-VALID-B52FFD2399B2840D
+  - finding_id: AIA-VALID-135096E293C37A15
     target: AIA-NORM-A015-P2-ENCOURAGE-MEASUREMENT
     rule: fragment_without_qualifier_span
     source_ref: AIA-TEXT-A015-P002
     source_sha256: bff24aea566f7f7f2ed0b98be8eede65715eb5e9cfe8d7f8a8a2c19a50f42286
-    target_sha256: 9cfa824a9ee54ee36256a33702bc3a0ee3ced13dc076c012afe505847e95a278
+    target_sha256: d8ac0adbf9baca91d15b66777b1bcc079e20fd1ee2008278739543176cdc60c2
     decision: false_positive
     reason: >-
       The exact quotation begins mid-sentence with a lowercase article, but it contains the
       Commission duty-holder, shall modality, cooperation qualifier, action, and object.
     reviewed_by: vidibro
 
-  - finding_id: AIA-VALID-356EDDFC1007DE1A
+  - finding_id: AIA-VALID-9EC25FA4CC5D0B6C
     target: AIA-NORM-A015-P5-ADVERSARIAL-ATTACKS
     rule: fragment_without_qualifier_span
     source_ref: AIA-TEXT-A015-P009
     source_sha256: e0116a16909367bf6cd08fa25a324515584af4b9db2d3c84e904ff7ea287133e
-    target_sha256: c5023c1aeda9eb38e9813cd61e47ea0b76d39584e7f2f8774029000fa71f1c1d
+    target_sha256: 252697ee76d86dd268c47c6023a01bd4896ef478a91064aa178214ab5fabc422
     decision: accepted_with_basis
     reason: >-
       The threat target is separately checkable but inherits the shared cybersecurity action and
@@ -40,12 +40,12 @@ decisions:
           Section 2
     reviewed_by: vidibro
 
-  - finding_id: AIA-VALID-738713B209473BD8
+  - finding_id: AIA-VALID-6368468E67B41E10
     target: AIA-NORM-A015-P5-CONFIDENTIALITY-ATTACKS
     rule: fragment_without_qualifier_span
     source_ref: AIA-TEXT-A015-P009
     source_sha256: e0116a16909367bf6cd08fa25a324515584af4b9db2d3c84e904ff7ea287133e
-    target_sha256: a4f86cd43d45d831c64e8c364b808a9fa3bc43b17eeba887c048ca41f882a93a
+    target_sha256: a3254556e68f7cf09f0dafb2f574877935d4c33a3da4fb2c93bc24e5b3d3650f
     decision: accepted_with_basis
     reason: >-
       The threat target is separately checkable but inherits the shared cybersecurity action and
@@ -53,12 +53,12 @@ decisions:
     legal_basis: *article_15_threat_basis
     reviewed_by: vidibro
 
-  - finding_id: AIA-VALID-3C7DDD50AB3813CF
+  - finding_id: AIA-VALID-37D8E4202A80F45B
     target: AIA-NORM-A015-P5-DATA-POISONING
     rule: fragment_without_qualifier_span
     source_ref: AIA-TEXT-A015-P009
     source_sha256: e0116a16909367bf6cd08fa25a324515584af4b9db2d3c84e904ff7ea287133e
-    target_sha256: b9c283a2bb5f643eebda17002059a9427a3385fa182a36f32d688d8d3f0e9b4c
+    target_sha256: fc7817d3d2bc0d3a48809ec87657836c85cc28ddfa4e7d50781a5fd6adfaec94
     decision: accepted_with_basis
     reason: >-
       The threat target is separately checkable but inherits the shared cybersecurity action and
@@ -66,12 +66,12 @@ decisions:
     legal_basis: *article_15_threat_basis
     reviewed_by: vidibro
 
-  - finding_id: AIA-VALID-651BD3000C6DA919
+  - finding_id: AIA-VALID-9315A03614CD290E
     target: AIA-NORM-A015-P5-MODEL-FLAWS
     rule: fragment_without_qualifier_span
     source_ref: AIA-TEXT-A015-P009
     source_sha256: e0116a16909367bf6cd08fa25a324515584af4b9db2d3c84e904ff7ea287133e
-    target_sha256: f5f36290aed3ad5e37bc9f71c1191869cc325f2ee3aacc9a323f94d415727958
+    target_sha256: 55be08a4dd304688f0ea256d10e150a3f5e8b0800ea6b6f7c81c2168788fc039
     decision: accepted_with_basis
     reason: >-
       The threat target is separately checkable but inherits the shared cybersecurity action and
@@ -79,12 +79,12 @@ decisions:
     legal_basis: *article_15_threat_basis
     reviewed_by: vidibro
 
-  - finding_id: AIA-VALID-DE1F6B95C812C1F3
+  - finding_id: AIA-VALID-68BAAE428CB98553
     target: AIA-NORM-A015-P5-MODEL-POISONING
     rule: fragment_without_qualifier_span
     source_ref: AIA-TEXT-A015-P009
     source_sha256: e0116a16909367bf6cd08fa25a324515584af4b9db2d3c84e904ff7ea287133e
-    target_sha256: 6c02a827a83768988f49a2e66033ebd432ef2c5ae950b98e1f1120792084ec5c
+    target_sha256: 704f2cc322189019d1a19754eeb9588dbf351ef7eb652435411b199e0c02151e
     decision: accepted_with_basis
     reason: >-
       The threat target is separately checkable but inherits the shared cybersecurity action and

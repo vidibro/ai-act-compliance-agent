@@ -225,11 +225,13 @@ cross-reference in the Regulation.
 - `requires_external_requirements`: the AI Act creates a duty, but named external instruments supply
   its substantive requirements. Article 16(l) records the accessibility Directives without claiming
   that this project checks those Directives.
+- `conditional_on_norms`: a permission or conditional norm applies only when every named norm is
+  satisfied. Articles 59(1) and 60(4) are the first migration. This is the only representation of
+  those condition links; `Norm` does not carry copied condition-ID fields.
 
-Every relation has a stable ID, a source norm, exact legal-basis spans, and either an exact set of
-policy-rule targets or recorded external requirements. The builder rejects unknown sources, targets,
-or legal-basis spans; policy-rule relation targets must exactly equal the source norm's
-`implementation_refs`.
+Every relation has a stable ID, a source norm, exact legal-basis spans, and typed targets. The
+builder and loader reject unknown sources, targets, self-conditions, or non-normative legal-basis
+spans; policy-rule relation targets must exactly equal the source norm's `implementation_refs`.
 
 Traceability accepts exactly three implementations for an enforced compliance norm: one explicit
 criterion; one typed relation; or one unambiguous one-norm/one-rule mapping. Anything else fails the

@@ -282,6 +282,8 @@ class ConditionGroup(BaseModel):
 
 
 class Norm(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+
     norm_id: str = Field(pattern=r"^AIA-NORM-[A-Z0-9-]+$")
     act_version_date: date
     kind: NormKind
@@ -297,8 +299,6 @@ class Norm(BaseModel):
     exceptions: list[str] = []
     mandatory_content: list[str] = []
     dependencies: list[NormDependency] = []
-    condition_norm_ids: list[str] = []
-    condition_of_norm_ids: list[str] = []
     product_scope: ProductScope
     product_scope_reason: str = ""
     implementation_mode: ImplementationMode
@@ -327,12 +327,6 @@ class Norm(BaseModel):
             raise ValueError("norm_text must contain an exact enacted quotation")
         if len(self.detection_channels) != len(set(self.detection_channels)):
             raise ValueError("detection_channels must not contain duplicates")
-        if self.norm_id in self.condition_norm_ids or self.norm_id in self.condition_of_norm_ids:
-            raise ValueError("a norm cannot be its own condition parent or child")
-        if len(self.condition_norm_ids) != len(set(self.condition_norm_ids)):
-            raise ValueError("condition_norm_ids must not contain duplicates")
-        if len(self.condition_of_norm_ids) != len(set(self.condition_of_norm_ids)):
-            raise ValueError("condition_of_norm_ids must not contain duplicates")
         if self.product_scope not in {ProductScope.IN_SCOPE, ProductScope.UNRESOLVED}:
             if not self.product_scope_reason.strip():
                 raise ValueError(f"product_scope={self.product_scope.value} requires a reason")
@@ -382,6 +376,23 @@ class NormInventory(BaseModel):
     norms: list[Norm] = []
     relations: list[NormRelation] = []
     interpretations: list[InterpretiveLink] = []
+
+    def target_norm_ids_for(self, source_norm_id: str, kind: NormRelationKind) -> list[str]:
+        """Return canonical norm targets for the given reviewed relation kind."""
+        return [
+            target_norm_id
+            for relation in self.relations
+            if relation.source_norm_id == source_norm_id and relation.kind is kind
+            for target_norm_id in relation.target_norm_ids
+        ]
+
+    def source_norm_ids_for(self, target_norm_id: str, kind: NormRelationKind) -> list[str]:
+        """Return canonical relation sources that name this norm as a target."""
+        return [
+            relation.source_norm_id
+            for relation in self.relations
+            if relation.kind is kind and target_norm_id in relation.target_norm_ids
+        ]
 
     @model_validator(mode="after")
     def _ids_are_unique(self) -> NormInventory:

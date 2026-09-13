@@ -59,12 +59,12 @@ def test_article_fifteen_findings_are_stable_and_fully_adjudicated():
     findings = audit_norm_validity(bundle, scope={(SourceKind.ARTICLE, "15")})
 
     assert {finding.finding_id for finding in findings} == {
-        "AIA-VALID-B52FFD2399B2840D",
-        "AIA-VALID-356EDDFC1007DE1A",
-        "AIA-VALID-738713B209473BD8",
-        "AIA-VALID-3C7DDD50AB3813CF",
-        "AIA-VALID-651BD3000C6DA919",
-        "AIA-VALID-DE1F6B95C812C1F3",
+        "AIA-VALID-135096E293C37A15",
+        "AIA-VALID-9EC25FA4CC5D0B6C",
+        "AIA-VALID-6368468E67B41E10",
+        "AIA-VALID-37D8E4202A80F45B",
+        "AIA-VALID-9315A03614CD290E",
+        "AIA-VALID-68BAAE428CB98553",
         "AIA-VALID-EB70A75FE17CB5C0",
     }
     assert enforce_validity_adjudications(bundle, LEDGER) == (7, 7)
@@ -212,7 +212,7 @@ def _fixed_p2_ledger(tmp_path: Path) -> tuple[Path, Path, bytes, bytes]:
 
 def test_recorded_fix_applies_exact_patch_and_is_idempotent(tmp_path):
     ledger_path, target, _, after = _fixed_p2_ledger(tmp_path)
-    finding_id = "AIA-VALID-B52FFD2399B2840D"
+    finding_id = "AIA-VALID-135096E293C37A15"
 
     assert apply_recorded_fix(ledger_path, finding_id) == (target, True)
     assert target.read_bytes() == after
@@ -224,12 +224,12 @@ def test_recorded_fix_refuses_unknown_preimage(tmp_path):
     target.write_text("somebody changed this file\n", encoding="utf-8")
 
     with pytest.raises(ValueError, match="refuses unexpected preimage"):
-        apply_recorded_fix(ledger_path, "AIA-VALID-B52FFD2399B2840D")
+        apply_recorded_fix(ledger_path, "AIA-VALID-135096E293C37A15")
 
 
 def test_fixed_finding_must_be_absent_and_patch_must_be_applied(tmp_path):
     ledger_path, target, _, _ = _fixed_p2_ledger(tmp_path)
-    apply_recorded_fix(ledger_path, "AIA-VALID-B52FFD2399B2840D")
+    apply_recorded_fix(ledger_path, "AIA-VALID-135096E293C37A15")
     bundle = load_bundle().model_copy(deep=True)
     norm = next(
         item

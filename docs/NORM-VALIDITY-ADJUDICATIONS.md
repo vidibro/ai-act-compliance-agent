@@ -37,8 +37,11 @@ norms, but they do not determine whether an existing audit finding is closed.
    ```
 
 The audit derives each `finding_id` from its target, rule, source segment, source hash, and a
-canonical hash of the audited norm or linked norm quotations. Changing models does not change the
-ID when they produce the same record. Changing the enacted source or audited record does.
+canonical hash of the fields that the audit evaluates: norm text, action, qualifier spans,
+conditions, exceptions, mandatory content, and dependencies. Relation and reporting metadata are
+deliberately excluded: changing the implementation graph must not reopen a legal-content decision.
+Changing models does not change the ID when they produce the same audited record. Changing enacted
+source or audited legal content does.
 
 ## Decisions
 

@@ -228,9 +228,7 @@ def _finding(
     target_sha256: str,
     evidence: str,
 ) -> ValidityFinding:
-    identity = (
-        f"{target}\0{rule}\0{source_ref}\0{source_sha256}\0{target_sha256}"
-    ).encode()
+    identity = (f"{target}\0{rule}\0{source_ref}\0{source_sha256}\0{target_sha256}").encode()
     finding_id = f"AIA-VALID-{hashlib.sha256(identity).hexdigest()[:16].upper()}"
     return ValidityFinding(
         finding_id=finding_id,
@@ -244,9 +242,23 @@ def _finding(
 
 
 def _norm_sha256(norm: Norm) -> str:
-    canonical = json.dumps(
-        norm.model_dump(mode="json"), sort_keys=True, separators=(",", ":"), ensure_ascii=False
-    )
+    """Bind a finding to the fields this audit actually evaluates.
+
+    Relation-graph and reporting metadata must not invalidate a legal-content adjudication.
+    This deliberately selected payload is therefore a stable audit contract, rather than a dump
+    of the evolving ``Norm`` schema.
+    """
+    payload = {
+        "norm_id": norm.norm_id,
+        "norm_text": norm.norm_text,
+        "action": norm.action,
+        "qualifier_spans": norm.qualifier_spans,
+        "conditions": norm.conditions,
+        "exceptions": norm.exceptions,
+        "mandatory_content": norm.mandatory_content,
+        "dependencies": [dependency.model_dump(mode="json") for dependency in norm.dependencies],
+    }
+    canonical = json.dumps(payload, sort_keys=True, separators=(",", ":"), ensure_ascii=False)
     return hashlib.sha256(canonical.encode()).hexdigest()
 
 
@@ -276,9 +288,7 @@ def _replace_exact(content: str, patch: NormFixPatch, *, reverse: bool = False) 
     replacements = list(reversed(patch.replacements)) if reverse else patch.replacements
     for replacement in replacements:
         old, new = (
-            (replacement.new, replacement.old)
-            if reverse
-            else (replacement.old, replacement.new)
+            (replacement.new, replacement.old) if reverse else (replacement.old, replacement.new)
         )
         actual = content.count(old)
         if actual != replacement.expected_occurrences:
@@ -348,9 +358,7 @@ def apply_recorded_fix(ledger_path: Path, finding_id: str) -> tuple[Path, bool]:
     accepted, which makes the operation safe to repeat.
     """
     ledger = load_adjudication_ledger(ledger_path)
-    decision = next(
-        (item for item in ledger.decisions if item.finding_id == finding_id), None
-    )
+    decision = next((item for item in ledger.decisions if item.finding_id == finding_id), None)
     if decision is None:
         raise ValueError(f"unknown validity finding: {finding_id}")
     if decision.decision != "fixed":
@@ -427,12 +435,16 @@ def audit_norm_validity(
             rules: list[str] = []
             if quote and quote[0].islower() and not norm.qualifier_spans:
                 rules.append("fragment_without_qualifier_span")
-            if CONDITION.search(norm.norm_text) and not norm.conditions and not CONDITION.search(
-                norm.action
+            if (
+                CONDITION.search(norm.norm_text)
+                and not norm.conditions
+                and not CONDITION.search(norm.action)
             ):
                 rules.append("condition_not_structured_or_retained_in_action")
-            if EXCEPTION.search(norm.norm_text) and not norm.exceptions and not EXCEPTION.search(
-                semantic
+            if (
+                EXCEPTION.search(norm.norm_text)
+                and not norm.exceptions
+                and not EXCEPTION.search(semantic)
             ):
                 rules.append("exception_not_structured_or_retained")
             if DEADLINE.search(norm.norm_text) and not DEADLINE.search(semantic):
@@ -467,7 +479,9 @@ def _safe_shard_path(root: Path, relative: str) -> Path:
     if relative_path.is_absolute() or ".." in relative_path.parts:
         raise ValueError(f"unsafe validity adjudication shard path: {relative}")
     if len(relative_path.parts) != 2 or relative_path.parts[0] not in {"articles", "annexes"}:
-        raise ValueError(f"validity adjudication shard must be below articles/ or annexes/: {relative}")
+        raise ValueError(
+            f"validity adjudication shard must be below articles/ or annexes/: {relative}"
+        )
     if relative_path.suffix != ".yaml":
         raise ValueError(f"validity adjudication shard must be YAML: {relative}")
     return root / relative_path
@@ -495,8 +509,13 @@ def load_adjudication_ledger(path: Path) -> ValidityAdjudicationLedger:
     missing = sorted(declared - actual)
     unexpected = sorted(actual - declared)
     if missing or unexpected:
-        details = [*(f"missing {item}" for item in missing), *(f"undeclared {item}" for item in unexpected)]
-        raise ValueError("validity adjudication shard set differs from manifest: " + "; ".join(details))
+        details = [
+            *(f"missing {item}" for item in missing),
+            *(f"undeclared {item}" for item in unexpected),
+        ]
+        raise ValueError(
+            "validity adjudication shard set differs from manifest: " + "; ".join(details)
+        )
 
     decisions: list[ValidityAdjudication] = []
     shard_scope_by_finding: dict[str, AdjudicationScope] = {}
@@ -506,12 +525,22 @@ def load_adjudication_ledger(path: Path) -> ValidityAdjudicationLedger:
             _load_yaml(shard_path, description="validity adjudication shard")
         )
         if shard.act_version_date != manifest.act_version_date:
-            raise ValueError(f"validity adjudication shard version differs from manifest: {shard_path}")
-        if shard.source.kind != declared_shard.kind or shard.source.document != declared_shard.document:
-            raise ValueError(f"validity adjudication shard source differs from manifest: {shard_path}")
+            raise ValueError(
+                f"validity adjudication shard version differs from manifest: {shard_path}"
+            )
+        if (
+            shard.source.kind != declared_shard.kind
+            or shard.source.document != declared_shard.document
+        ):
+            raise ValueError(
+                f"validity adjudication shard source differs from manifest: {shard_path}"
+            )
         for decision in shard.decisions:
             if decision.finding_id in shard_scope_by_finding:
-                raise ValueError(f"duplicate validity adjudication finding_id across shards: {decision.finding_id}")
+                raise ValueError(
+                    "duplicate validity adjudication finding_id across shards: "
+                    f"{decision.finding_id}"
+                )
             decisions.append(decision)
             shard_scope_by_finding[decision.finding_id] = shard.source
     return ValidityAdjudicationLedger(
@@ -595,9 +624,7 @@ def enforce_validity_adjudications(
     if stale:
         raise ValueError(f"validity adjudications are stale or no longer produced: {stale}")
 
-    active_signatures = {
-        (finding.target, finding.rule, finding.source_ref) for finding in findings
-    }
+    active_signatures = {(finding.target, finding.rule, finding.source_ref) for finding in findings}
     for decision in ledger.decisions:
         if decision.decision != "fixed":
             continue
