@@ -124,6 +124,227 @@ relations:
   - AIA-TEXT-A016-P013
   detail: The two named Directives supply the substantive accessibility requirements; this Regulation
     records the provider duty but does not reproduce or independently check those requirements.
+- relation_id: AIA-REL-A048-P1-GENERAL-CE-PRINCIPLES-CARRIED-BY-NORMS
+  source_norm_id: AIA-NORM-A048-P1-GENERAL-CE-PRINCIPLES
+  kind: carried_by_norms
+  target_rule_ids: []
+  target_norm_ids:
+  - AIA-NORM-A048-P3-AFFIX-CE-MARKING
+  external_requirements: []
+  legal_basis_spans:
+  - AIA-TEXT-A048-P001
+  detail: ''
+- relation_id: AIA-REL-A008-P1-COMPLY-SECTION-REQUIREMENTS-CARRIED-BY-NORMS
+  source_norm_id: AIA-NORM-A008-P1-COMPLY-SECTION-REQUIREMENTS
+  kind: carried_by_norms
+  target_rule_ids: []
+  target_norm_ids:
+  - AIA-NORM-A016-A-SECTION-2-COMPLIANCE
+  external_requirements: []
+  legal_basis_spans:
+  - AIA-TEXT-A008-P001
+  detail: ''
+- relation_id: AIA-REL-A016-J-CORRECTIVE-ACTION-CARRIED-BY-NORMS
+  source_norm_id: AIA-NORM-A016-J-CORRECTIVE-ACTION
+  kind: carried_by_norms
+  target_rule_ids: []
+  target_norm_ids:
+  - AIA-NORM-A020-P1-CORRECTIVE-RESPONSE
+  - AIA-NORM-A020-P1-INFORM-SUPPLY-CHAIN
+  - AIA-NORM-A020-P2-INVESTIGATE-RISK
+  external_requirements: []
+  legal_basis_spans:
+  - AIA-TEXT-A016-P011
+  detail: ''
+- relation_id: AIA-REL-A016-E-KEEP-LOGS-CARRIED-BY-NORMS
+  source_norm_id: AIA-NORM-A016-E-KEEP-LOGS
+  kind: carried_by_norms
+  target_rule_ids: []
+  target_norm_ids:
+  - AIA-NORM-A019-P1-KEEP-CONTROLLED-LOGS
+  - AIA-NORM-A019-P1-RETENTION-PERIOD
+  external_requirements: []
+  legal_basis_spans:
+  - AIA-TEXT-A016-P006
+  detail: ''
+- relation_id: AIA-REL-A016-D-KEEP-DOCUMENTATION-CARRIED-BY-NORMS
+  source_norm_id: AIA-NORM-A016-D-KEEP-DOCUMENTATION
+  kind: carried_by_norms
+  target_rule_ids: []
+  target_norm_ids:
+  - AIA-NORM-A018-P1-A-TECHNICAL-DOCUMENTATION
+  - AIA-NORM-A018-P1-B-QMS-DOCUMENTATION
+  - AIA-NORM-A018-P1-C-APPROVED-CHANGES
+  - AIA-NORM-A018-P1-D-NOTIFIED-BODY-DOCUMENTS
+  - AIA-NORM-A018-P1-E-EU-DECLARATION
+  external_requirements: []
+  legal_basis_spans:
+  - AIA-TEXT-A016-P005
+  detail: ''
+- relation_id: AIA-REL-A016-C-QUALITY-MANAGEMENT-CARRIED-BY-NORMS
+  source_norm_id: AIA-NORM-A016-C-QUALITY-MANAGEMENT
+  kind: carried_by_norms
+  target_rule_ids: []
+  target_norm_ids:
+  - AIA-NORM-A017-P1-QMS
+  external_requirements: []
+  legal_basis_spans:
+  - AIA-TEXT-A016-P004
+  detail: ''
+- relation_id: AIA-REL-A010-P5-SPECIAL-CATEGORY-PROCESSING-CARRIED-BY-NORMS
+  source_norm_id: AIA-NORM-A010-P5-SPECIAL-CATEGORY-PROCESSING
+  kind: carried_by_norms
+  target_rule_ids: []
+  target_norm_ids:
+  - AIA-NORM-A004A-P1-HIGH-RISK-BIAS-DATA-PROCESSING
+  external_requirements: []
+  legal_basis_spans:
+  - AIA-TEXT-A010-P013
+  detail: ''
+- relation_id: AIA-REL-A010-P5-B-REUSE-SECURITY-CARRIED-BY-NORMS
+  source_norm_id: AIA-NORM-A010-P5-B-REUSE-SECURITY
+  kind: carried_by_norms
+  target_rule_ids: []
+  target_norm_ids:
+  - AIA-NORM-A004A-P1-B-REUSE-SECURITY
+  external_requirements: []
+  legal_basis_spans:
+  - AIA-TEXT-A010-P015
+  detail: ''
+- relation_id: AIA-REL-A010-P5-C-ACCESS-SAFEGUARDS-CARRIED-BY-NORMS
+  source_norm_id: AIA-NORM-A010-P5-C-ACCESS-SAFEGUARDS
+  kind: carried_by_norms
+  target_rule_ids: []
+  target_norm_ids:
+  - AIA-NORM-A004A-P1-C-ACCESS-SAFEGUARDS
+  external_requirements: []
+  legal_basis_spans:
+  - AIA-TEXT-A010-P016
+  detail: ''
+- relation_id: AIA-REL-A010-P5-D-NO-THIRD-PARTY-ACCESS-CARRIED-BY-NORMS
+  source_norm_id: AIA-NORM-A010-P5-D-NO-THIRD-PARTY-ACCESS
+  kind: carried_by_norms
+  target_rule_ids: []
+  target_norm_ids:
+  - AIA-NORM-A004A-P1-D-NO-THIRD-PARTY-ACCESS
+  external_requirements: []
+  legal_basis_spans:
+  - AIA-TEXT-A010-P017
+  detail: ''
+- relation_id: AIA-REL-A010-P5-E-DELETE-DATA-CARRIED-BY-NORMS
+  source_norm_id: AIA-NORM-A010-P5-E-DELETE-DATA
+  kind: carried_by_norms
+  target_rule_ids: []
+  target_norm_ids:
+  - AIA-NORM-A004A-P1-E-DELETE-DATA
+  external_requirements: []
+  legal_basis_spans:
+  - AIA-TEXT-A010-P018
+  detail: ''
+- relation_id: AIA-REL-A010-P5-F-RECORD-NECESSITY-CARRIED-BY-NORMS
+  source_norm_id: AIA-NORM-A010-P5-F-RECORD-NECESSITY
+  kind: carried_by_norms
+  target_rule_ids: []
+  target_norm_ids:
+  - AIA-NORM-A004A-P1-F-RECORD-NECESSITY
+  external_requirements: []
+  legal_basis_spans:
+  - AIA-TEXT-A010-P019
+  detail: ''
+- relation_id: AIA-REL-A050-P5-MANNER-CARRIED-BY-NORMS
+  source_norm_id: AIA-NORM-A050-P5-MANNER
+  kind: carried_by_norms
+  target_rule_ids: []
+  target_norm_ids:
+  - AIA-NORM-A050-P1-DISCLOSE
+  - AIA-NORM-A050-P2-MARK-DETECT
+  - AIA-NORM-A050-P3-INFORM
+  - AIA-NORM-A050-P4-DEEPFAKE
+  - AIA-NORM-A050-P4-TEXT
+  external_requirements: []
+  legal_basis_spans:
+  - AIA-TEXT-A050-P5
+  detail: ''
+- relation_id: AIA-REL-ANNEX-IV-CONTENT-CARRIED-BY-NORMS
+  source_norm_id: AIA-NORM-ANNEX-IV-CONTENT
+  kind: carried_by_norms
+  target_rule_ids: []
+  target_norm_ids:
+  - AIA-NORM-A011-P1-ANNEX-IV
+  external_requirements: []
+  legal_basis_spans:
+  - AIA-TEXT-ANNEX-IV-CHAPEAU
+  detail: ''
+- relation_id: AIA-REL-ANNEX-IX-REGISTRATION-INFORMATION-CARRIED-BY-NORMS
+  source_norm_id: AIA-NORM-ANNEX-IX-REGISTRATION-INFORMATION
+  kind: carried_by_norms
+  target_rule_ids: []
+  target_norm_ids:
+  - AIA-NORM-A060-P4-C-REGISTER-TESTING
+  external_requirements: []
+  legal_basis_spans:
+  - AIA-TEXT-ANNEX-IX-P001
+  detail: ''
+- relation_id: AIA-REL-ANNEX-V-DECLARATION-CONTENT-CARRIED-BY-NORMS
+  source_norm_id: AIA-NORM-ANNEX-V-DECLARATION-CONTENT
+  kind: carried_by_norms
+  target_rule_ids: []
+  target_norm_ids:
+  - AIA-NORM-A047-P2-ANNEX-V-CONTENT
+  external_requirements: []
+  legal_basis_spans:
+  - AIA-TEXT-ANNEX-V-P001
+  detail: ''
+- relation_id: AIA-REL-ANNEX-XI-SECTION-1-TECHNICAL-DOCUMENTATION-CARRIED-BY-NORMS
+  source_norm_id: AIA-NORM-ANNEX-XI-SECTION-1-TECHNICAL-DOCUMENTATION
+  kind: carried_by_norms
+  target_rule_ids: []
+  target_norm_ids:
+  - AIA-NORM-A053-P1-A-DRAW-KEEP-DOCUMENTATION
+  external_requirements: []
+  legal_basis_spans:
+  - AIA-TEXT-ANNEX-XI-P003
+  detail: ''
+- relation_id: AIA-REL-ANNEX-XI-SECTION-2-SYSTEMIC-RISK-DOCUMENTATION-CARRIED-BY-NORMS
+  source_norm_id: AIA-NORM-ANNEX-XI-SECTION-2-SYSTEMIC-RISK-DOCUMENTATION
+  kind: carried_by_norms
+  target_rule_ids: []
+  target_norm_ids:
+  - AIA-NORM-A053-P1-A-DRAW-KEEP-DOCUMENTATION
+  external_requirements: []
+  legal_basis_spans:
+  - AIA-TEXT-ANNEX-XI-P019
+  detail: ''
+- relation_id: AIA-REL-ANNEX-XI-SECTION-2-ADVERSARIAL-TESTING-AND-ADAPTATIONS-CARRIED-BY-NORMS
+  source_norm_id: AIA-NORM-ANNEX-XI-SECTION-2-ADVERSARIAL-TESTING-AND-ADAPTATIONS
+  kind: carried_by_norms
+  target_rule_ids: []
+  target_norm_ids:
+  - AIA-NORM-A053-P1-A-DRAW-KEEP-DOCUMENTATION
+  external_requirements: []
+  legal_basis_spans:
+  - AIA-TEXT-ANNEX-XI-P020
+  detail: ''
+- relation_id: AIA-REL-ANNEX-XI-SECTION-2-SYSTEM-ARCHITECTURE-CARRIED-BY-NORMS
+  source_norm_id: AIA-NORM-ANNEX-XI-SECTION-2-SYSTEM-ARCHITECTURE
+  kind: carried_by_norms
+  target_rule_ids: []
+  target_norm_ids:
+  - AIA-NORM-A053-P1-A-DRAW-KEEP-DOCUMENTATION
+  external_requirements: []
+  legal_basis_spans:
+  - AIA-TEXT-ANNEX-XI-P021
+  detail: ''
+- relation_id: AIA-REL-ANNEX-XII-DOWNSTREAM-TRANSPARENCY-INFORMATION-CARRIED-BY-NORMS
+  source_norm_id: AIA-NORM-ANNEX-XII-DOWNSTREAM-TRANSPARENCY-INFORMATION
+  kind: carried_by_norms
+  target_rule_ids: []
+  target_norm_ids:
+  - AIA-NORM-A053-P1-B-ANNEX-XII-CONTENT
+  external_requirements: []
+  legal_basis_spans:
+  - AIA-TEXT-ANNEX-XII-P001
+  detail: ''
 interpretations:
 - interpretation_id: AIA-INT-A050-P2-C2026-5054
   snippet_refs:

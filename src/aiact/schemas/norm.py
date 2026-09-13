@@ -126,6 +126,7 @@ class NormRelationKind(StrEnum):
     CARRIED_BY_POLICY_RULES = "carried_by_policy_rules"
     REQUIRES_EXTERNAL_REQUIREMENTS = "requires_external_requirements"
     CONDITIONAL_ON_NORMS = "conditional_on_norms"
+    CARRIED_BY_NORMS = "carried_by_norms"
 
 
 class NormRelation(BaseModel):
@@ -152,10 +153,13 @@ class NormRelation(BaseModel):
                 )
             if not self.detail.strip():
                 raise ValueError("requires_external_requirements requires detail")
-        elif self.kind is NormRelationKind.CONDITIONAL_ON_NORMS:
+        elif self.kind in {
+            NormRelationKind.CONDITIONAL_ON_NORMS,
+            NormRelationKind.CARRIED_BY_NORMS,
+        }:
             if has_rules or has_external or not has_norms:
                 raise ValueError(
-                    "conditional_on_norms needs target_norm_ids and no rule or external targets"
+                    f"{self.kind.value} needs target_norm_ids and no rule or external targets"
                 )
         elif not has_rules or has_norms or has_external:
             raise ValueError(
@@ -303,7 +307,6 @@ class Norm(BaseModel):
     product_scope_reason: str = ""
     implementation_mode: ImplementationMode
     implementation_refs: list[str] = []
-    carried_by_norm_ids: list[str] = []
     superseded_by_norm_ids: list[str] = []
     parallel_norm_ids: list[str] = []
     implementation_reason: str = ""
@@ -343,15 +346,6 @@ class Norm(BaseModel):
             raise ValueError(
                 f"implementation_mode={self.implementation_mode.value} requires implementation_refs"
             )
-        if self.implementation_mode is ImplementationMode.CARRIED_BY_OTHER_NORM:
-            if not self.carried_by_norm_ids:
-                raise ValueError("carried_by_other_norm requires carried_by_norm_ids")
-            if self.norm_id in self.carried_by_norm_ids:
-                raise ValueError("a norm cannot be carried by itself")
-        elif self.carried_by_norm_ids:
-            raise ValueError(
-                "carried_by_norm_ids requires implementation_mode=carried_by_other_norm"
-            )
         if self.implementation_mode is ImplementationMode.NONE_REQUIRED:
             if not self.implementation_reason.strip():
                 raise ValueError("none_required implementation requires a reason")
@@ -364,8 +358,6 @@ class Norm(BaseModel):
             raise ValueError("superseded_by_norm_ids requires review status superseded")
         if self.norm_id in self.parallel_norm_ids:
             raise ValueError("a norm cannot be parallel to itself")
-        if set(self.parallel_norm_ids) & set(self.carried_by_norm_ids):
-            raise ValueError("a carried norm is a restatement, not a parallel duty")
         if self.review.status is ReviewStatus.REJECTED:
             raise ValueError("rejected candidates belong in extraction history, not norm inventory")
         return self

@@ -25,6 +25,9 @@ records:
     resolution: internal_resolved
     detail: Article 60(4)(c) assigns the Annex IX registration-content duty to the provider or prospective provider.
   verified_by: vidibro
-carried_by:
-  AIA-NORM-ANNEX-IX-REGISTRATION-INFORMATION:
-  - AIA-NORM-A060-P4-C-REGISTER-TESTING
+norm_relations:
+- relation_id: AIA-REL-ANNEX-IX-REGISTRATION-INFORMATION-CARRIED-BY-NORMS
+  source_norm_id: AIA-NORM-ANNEX-IX-REGISTRATION-INFORMATION
+  kind: carried_by_norms
+  target_norm_ids: [AIA-NORM-A060-P4-C-REGISTER-TESTING]
+  legal_basis_spans: [AIA-TEXT-ANNEX-IX-P001]

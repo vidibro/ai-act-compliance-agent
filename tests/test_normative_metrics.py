@@ -186,7 +186,10 @@ def test_an_in_scope_duty_is_never_dropped_from_the_report():
     assert {norm.norm_id for norm in unreported} - {
         norm.norm_id for norm in carried
     } == UNCARRIED_UNREPORTED_NORMS
-    assert all(norm.carried_by_norm_ids for norm in carried)
+    assert all(
+        bundle.norm_inventory.target_norm_ids_for(norm.norm_id, NormRelationKind.CARRIED_BY_NORMS)
+        for norm in carried
+    )
 
 
 def test_a_carried_norm_names_a_carrier_that_is_itself_reported():
@@ -203,8 +206,12 @@ def test_a_carried_norm_names_a_carrier_that_is_itself_reported():
 
     assert carried
     for norm in carried:
-        assert norm.carried_by_norm_ids, norm.norm_id
-        for carrier_id in norm.carried_by_norm_ids:
+        assert bundle.norm_inventory.target_norm_ids_for(
+            norm.norm_id, NormRelationKind.CARRIED_BY_NORMS
+        ), norm.norm_id
+        for carrier_id in bundle.norm_inventory.target_norm_ids_for(
+            norm.norm_id, NormRelationKind.CARRIED_BY_NORMS
+        ):
             carrier = by_id[carrier_id]
             assert carrier.verification_mode is not VerificationMode.NOT_REPORTED, (
                 f"{norm.norm_id} is carried by {carrier_id}, which is itself not reported"
@@ -1206,7 +1213,9 @@ def test_article_eight_links_product_compliance_without_overclaiming_carriers():
     assert sum(norm.kind.value == "permission" for norm in norms.values()) == 1
     chapeau = norms["AIA-NORM-A008-P1-COMPLY-SECTION-REQUIREMENTS"]
     assert chapeau.implementation_mode.value == "carried_by_other_norm"
-    assert chapeau.carried_by_norm_ids == ["AIA-NORM-A016-A-SECTION-2-COMPLIANCE"]
+    assert bundle.norm_inventory.target_norm_ids_for(
+        chapeau.norm_id, NormRelationKind.CARRIED_BY_NORMS
+    ) == ["AIA-NORM-A016-A-SECTION-2-COMPLIANCE"]
     assert norms["AIA-NORM-A008-P2-ENSURE-PRODUCT-COMPLIANCE"].implementation_refs == [
         "AIA-PO-A08-2"
     ]
@@ -1268,7 +1277,9 @@ def test_article_ten_covers_dataset_quality_and_reuses_article_4a_safeguards():
     for norm_id, carrier_id in carried_by.items():
         norm = norms[norm_id]
         assert norm.implementation_mode.value == "carried_by_other_norm"
-        assert norm.carried_by_norm_ids == [carrier_id]
+        assert bundle.norm_inventory.target_norm_ids_for(
+            norm.norm_id, NormRelationKind.CARRIED_BY_NORMS
+        ) == [carrier_id]
 
     uniquely_implemented = set(norms) - set(carried_by)
     assert all(
@@ -1494,7 +1505,14 @@ def test_article_sixteen_reuses_substantive_rules_without_duplicate_targets():
     assert len(norms["AIA-NORM-A016-F-CONFORMITY-ASSESSMENT"].implementation_refs) == 6
     corrective = norms["AIA-NORM-A016-J-CORRECTIVE-ACTION"]
     assert corrective.implementation_mode.value == "carried_by_other_norm"
-    assert len(corrective.carried_by_norm_ids) == 3
+    assert (
+        len(
+            bundle.norm_inventory.target_norm_ids_for(
+                corrective.norm_id, NormRelationKind.CARRIED_BY_NORMS
+            )
+        )
+        == 3
+    )
 
 
 def test_article_seventeen_models_thirteen_qms_aspects_without_micro_splitting():
@@ -1531,7 +1549,9 @@ def test_article_seventeen_models_thirteen_qms_aspects_without_micro_splitting()
         if norm.norm_id == "AIA-NORM-A016-C-QUALITY-MANAGEMENT"
     )
     assert article_sixteen.implementation_mode.value == "carried_by_other_norm"
-    assert article_sixteen.carried_by_norm_ids == ["AIA-NORM-A017-P1-QMS"]
+    assert bundle.norm_inventory.target_norm_ids_for(
+        article_sixteen.norm_id, NormRelationKind.CARRIED_BY_NORMS
+    ) == ["AIA-NORM-A017-P1-QMS"]
 
 
 def test_article_eighteen_applies_one_retention_chapeau_to_five_document_types():
@@ -1567,7 +1587,14 @@ def test_article_eighteen_applies_one_retention_chapeau_to_five_document_types()
         if norm.norm_id == "AIA-NORM-A016-D-KEEP-DOCUMENTATION"
     )
     assert article_sixteen.implementation_mode.value == "carried_by_other_norm"
-    assert set(article_sixteen.carried_by_norm_ids) == retention
+    assert (
+        set(
+            bundle.norm_inventory.target_norm_ids_for(
+                article_sixteen.norm_id, NormRelationKind.CARRIED_BY_NORMS
+            )
+        )
+        == retention
+    )
 
 
 def test_article_nineteen_keeps_the_legal_exception_in_the_retention_rule():
@@ -1600,7 +1627,14 @@ def test_article_nineteen_keeps_the_legal_exception_in_the_retention_rule():
         norm for norm in bundle.norm_inventory.norms if norm.norm_id == "AIA-NORM-A016-E-KEEP-LOGS"
     )
     assert article_sixteen.implementation_mode.value == "carried_by_other_norm"
-    assert set(article_sixteen.carried_by_norm_ids) == paragraph_one
+    assert (
+        set(
+            bundle.norm_inventory.target_norm_ids_for(
+                article_sixteen.norm_id, NormRelationKind.CARRIED_BY_NORMS
+            )
+        )
+        == paragraph_one
+    )
 
 
 def test_article_twenty_keeps_alternative_corrective_outcomes_in_one_norm():
@@ -1639,7 +1673,11 @@ def test_article_twenty_keeps_alternative_corrective_outcomes_in_one_norm():
         if norm.norm_id == "AIA-NORM-A016-J-CORRECTIVE-ACTION"
     )
     assert article_sixteen.implementation_mode.value == "carried_by_other_norm"
-    assert set(article_sixteen.carried_by_norm_ids) == set(norms)
+    assert set(
+        bundle.norm_inventory.target_norm_ids_for(
+            article_sixteen.norm_id, NormRelationKind.CARRIED_BY_NORMS
+        )
+    ) == set(norms)
 
 
 def test_article_twenty_one_keeps_disclosure_language_with_the_requested_material():
@@ -1984,16 +2022,16 @@ def test_inventory_cannot_be_misreported_as_independently_approved(metrics):
     assert metrics.approved_characters == metrics.exact_source_characters == 395_046
     assert metrics.needs_review_characters == 0
     assert metrics.review_statuses == {
-        "approved": 2076,
-        "proposed": 820,
+        "approved": 2098,
+        "proposed": 823,
     }
     assert metrics.timed_review_records == 0
-    assert metrics.total_review_records == 2897
+    assert metrics.total_review_records == 2922
 
 
 def test_semantic_pass_finds_propositions_a_shall_scan_misses(metrics):
-    assert metrics.shall_vs_semantic_disagreements == 531
-    assert metrics.shall_token_candidate_recall == pytest.approx(860 / 1391)
+    assert metrics.shall_vs_semantic_disagreements == 536
+    assert metrics.shall_token_candidate_recall == pytest.approx(855 / 1391)
     assert "AIA-NORM-A011-P1-SIMPLIFY" in metrics.semantic_norms_without_shall_token
     # Art. 26(5)'s informing limb is retained as content of the complete monitoring norm.
     assert "AIA-NORM-A026-P5-INFORM-PROVIDER" not in metrics.semantic_norms_without_shall_token
@@ -2004,7 +2042,7 @@ def test_semantic_pass_finds_propositions_a_shall_scan_misses(metrics):
 
 def test_metrics_expose_many_to_many_and_implementation_debt(metrics):
     # Primary links measure norms yielded by a segment; qualifier-only chapeaux do not count.
-    assert metrics.normative_segments_with_multiple_norms == 226
+    assert metrics.normative_segments_with_multiple_norms == 231
     # `AIA-GP-A91-5` and `AIA-PO-A75-1a` each carry two norms since Article 91(5) was split by
     # addressee and Article 75(1a)'s procedure sentence gained its own norm.
     # Article 55(1)(a) is one model-evaluation norm rather than three overlapping records.
@@ -2784,7 +2822,9 @@ def test_article_forty_eight_maps_ce_marking_duties():
     missing = [norm for norm in norms.values() if norm.implementation_mode.value == "missing"]
     assert {norm.norm_id for norm in missing} == {"AIA-NORM-A048-P5-OTHER-LAW-COMPLIANCE"}
     principles = norms["AIA-NORM-A048-P1-GENERAL-CE-PRINCIPLES"]
-    assert principles.carried_by_norm_ids == ["AIA-NORM-A048-P3-AFFIX-CE-MARKING"]
+    assert bundle.norm_inventory.target_norm_ids_for(
+        principles.norm_id, NormRelationKind.CARRIED_BY_NORMS
+    ) == ["AIA-NORM-A048-P3-AFFIX-CE-MARKING"]
     digital_marking = norms["AIA-NORM-A048-P2-DIGITAL-CE-MARKING"]
     assert len(digital_marking.conditions) == 1
 
@@ -4906,7 +4946,9 @@ def test_annex_five_declaration_content_is_carried_by_article_forty_seven():
     article = norms["AIA-NORM-A047-P2-ANNEX-V-CONTENT"]
 
     assert len(annex.mandatory_content) == 8
-    assert annex.carried_by_norm_ids == [article.norm_id]
+    assert bundle.norm_inventory.target_norm_ids_for(
+        annex.norm_id, NormRelationKind.CARRIED_BY_NORMS
+    ) == [article.norm_id]
     assert annex.implementation_mode.value == "carried_by_other_norm"
     assert [dependency.dependency_ref for dependency in article.dependencies] == [
         f"AIA-TEXT-ANNEX-V-P{index:03d}" for index in range(2, 10)
@@ -4976,7 +5018,9 @@ def test_annex_nine_registration_content_is_carried_by_article_sixty():
     annex = norms["AIA-NORM-ANNEX-IX-REGISTRATION-INFORMATION"]
 
     assert len(annex.mandatory_content) == 5
-    assert annex.carried_by_norm_ids == ["AIA-NORM-A060-P4-C-REGISTER-TESTING"]
+    assert bundle.norm_inventory.target_norm_ids_for(
+        annex.norm_id, NormRelationKind.CARRIED_BY_NORMS
+    ) == ["AIA-NORM-A060-P4-C-REGISTER-TESTING"]
     assert annex.implementation_mode.value == "carried_by_other_norm"
     assert annex.qualifier_spans == [f"AIA-TEXT-ANNEX-IX-P{index:03d}" for index in range(2, 7)]
 
@@ -5024,7 +5068,9 @@ def test_annex_eleven_separates_general_and_systemic_risk_documentation():
         assert norm.primary_spans == [span]
         assert norm.qualifier_spans == ["AIA-TEXT-ANNEX-XI-P017", "AIA-TEXT-ANNEX-XI-P018"]
         assert norm.conditions[0] == systemic_risk
-        assert norm.carried_by_norm_ids == ["AIA-NORM-A053-P1-A-DRAW-KEEP-DOCUMENTATION"]
+        assert bundle.norm_inventory.target_norm_ids_for(
+            norm.norm_id, NormRelationKind.CARRIED_BY_NORMS
+        ) == ["AIA-NORM-A053-P1-A-DRAW-KEEP-DOCUMENTATION"]
         assert norm.verification_mode.value == "judged_by_gap_analysis"
 
     # Item 1 is owed unconditionally; only items 2 and 3 carry the where-applicable gate.
@@ -5056,8 +5102,8 @@ def test_annex_eleven_separates_general_and_systemic_risk_documentation():
     # The four obligation norms were reviewed against their spans; the Section 1 energy permission
     # is not a gap-judged obligation and was never part of that pass.
     reviewed = {k: v for k, v in norms.items() if k != "AIA-NORM-ANNEX-XI-ENERGY-ESTIMATE-BASIS"}
-    assert all(norm.review.status.value == "approved" for norm in reviewed.values())
-    assert all(norm.review.verified_by == "vidibro" for norm in reviewed.values())
+    assert all(norm.review.status.value == "proposed" for norm in reviewed.values())
+    assert all(not norm.review.verified_by for norm in reviewed.values())
     assert_extraction_never_approves(norms.values())
 
 
@@ -5067,7 +5113,9 @@ def test_annex_twelve_downstream_transparency_content_is_carried_by_article_fift
     annex = norms["AIA-NORM-ANNEX-XII-DOWNSTREAM-TRANSPARENCY-INFORMATION"]
 
     assert len(annex.mandatory_content) == 11
-    assert annex.carried_by_norm_ids == ["AIA-NORM-A053-P1-B-ANNEX-XII-CONTENT"]
+    assert bundle.norm_inventory.target_norm_ids_for(
+        annex.norm_id, NormRelationKind.CARRIED_BY_NORMS
+    ) == ["AIA-NORM-A053-P1-B-ANNEX-XII-CONTENT"]
     assert annex.qualifier_spans == [f"AIA-TEXT-ANNEX-XII-P{index:03d}" for index in range(2, 15)]
 
 
@@ -5106,7 +5154,7 @@ def test_annex_fourteen_extracts_atomic_designation_code_mappings():
 def test_provisions_imposing_one_duty_name_each_other():
     """Separate provisions can impose one duty without either restating the other.
 
-    `carried_by_norm_ids` says a norm restates another and should not be reported twice;
+    `carried_by_norms` says a norm restates another and should not be reported twice;
     `implementation_refs` says two norms are checked by one rule. Neither holds for EU-database
     registration, where the duty is written out again for each actor in its own article. Without a
     third relation, the group agrees only because one reviewer read it that way, and a change to one
@@ -5147,7 +5195,9 @@ def test_provisions_imposing_one_duty_name_each_other():
         for partner_id in norm.parallel_norm_ids:
             assert norm.norm_id in norms[partner_id].parallel_norm_ids
             # A restatement is already covered by `carried_by`; the two must not overlap.
-            assert partner_id not in norm.carried_by_norm_ids
+            assert partner_id not in bundle.norm_inventory.target_norm_ids_for(
+                norm.norm_id, NormRelationKind.CARRIED_BY_NORMS
+            )
 
 
 def test_report_lists_every_parallel_duty_group_with_its_provisions(metrics):

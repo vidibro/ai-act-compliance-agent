@@ -153,7 +153,6 @@ class NormSourceInventory(BaseModel):
     act_version_date: date
     implementation_targets: list[str] = []
     records: list[NormSourceRecord] = []
-    carried_by: dict[str, list[str]] = {}
     parallel_duties: list[list[str]] = []
     norm_relations: list[NormRelation] = []
     interpretations: list[InterpretiveLink] = []
@@ -616,13 +615,6 @@ def _build_norms(
         norms.append(norm)
 
     norms_by_id = {str(norm["norm_id"]): norm for norm in norms}
-    for norm_id, carriers in source_inventory.carried_by.items():
-        if norm_id not in norms_by_id:
-            raise ValueError(f"carried_by references unknown source norm {norm_id}")
-        unknown_carriers = sorted(set(carriers) - known_norm_ids)
-        if unknown_carriers:
-            raise ValueError(f"{norm_id}: unknown carrier norm(s) {unknown_carriers}")
-        norms_by_id[norm_id]["carried_by_norm_ids"] = carriers
     for group in source_inventory.parallel_duties:
         for norm_id in group:
             norms_by_id[norm_id]["parallel_norm_ids"] = [n for n in group if n != norm_id]

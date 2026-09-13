@@ -29,7 +29,7 @@ from aiact.yaml_loader import load_yaml_mapping_or_shards
 
 def _assert_no_carried_cycles(inventory: NormInventory) -> None:
     edges = {
-        norm.norm_id: norm.carried_by_norm_ids
+        norm.norm_id: inventory.target_norm_ids_for(norm.norm_id, NormRelationKind.CARRIED_BY_NORMS)
         for norm in inventory.norms
         if norm.implementation_mode is ImplementationMode.CARRIED_BY_OTHER_NORM
     }
@@ -160,9 +160,6 @@ def load_normative_coverage(
                 f"{norm.norm_id} norm_text is not an exact substring of primary span(s): "
                 f"{nonmatching_primary_spans}"
             )
-        unknown_carriers = [n for n in norm.carried_by_norm_ids if n not in norms_by_id]
-        if unknown_carriers:
-            raise ValueError(f"{norm.norm_id} is carried by unknown norm(s): {unknown_carriers}")
         unknown_successors = [n for n in norm.superseded_by_norm_ids if n not in norms_by_id]
         if unknown_successors:
             raise ValueError(

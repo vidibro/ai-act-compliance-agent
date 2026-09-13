@@ -128,8 +128,6 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
-  carried_by_norm_ids:
-  - AIA-NORM-A017-P1-QMS
 - norm_id: AIA-NORM-A016-D-KEEP-DOCUMENTATION
   act_version_date: '2026-07-27'
   kind: obligation
@@ -166,12 +164,6 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
-  carried_by_norm_ids:
-  - AIA-NORM-A018-P1-A-TECHNICAL-DOCUMENTATION
-  - AIA-NORM-A018-P1-B-QMS-DOCUMENTATION
-  - AIA-NORM-A018-P1-C-APPROVED-CHANGES
-  - AIA-NORM-A018-P1-D-NOTIFIED-BODY-DOCUMENTS
-  - AIA-NORM-A018-P1-E-EU-DECLARATION
 - norm_id: AIA-NORM-A016-E-KEEP-LOGS
   act_version_date: '2026-07-27'
   kind: obligation
@@ -210,9 +202,6 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
-  carried_by_norm_ids:
-  - AIA-NORM-A019-P1-KEEP-CONTROLLED-LOGS
-  - AIA-NORM-A019-P1-RETENTION-PERIOD
 - norm_id: AIA-NORM-A016-F-CONFORMITY-ASSESSMENT
   act_version_date: '2026-07-27'
   kind: obligation
@@ -414,10 +403,6 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
-  carried_by_norm_ids:
-  - AIA-NORM-A020-P1-CORRECTIVE-RESPONSE
-  - AIA-NORM-A020-P1-INFORM-SUPPLY-CHAIN
-  - AIA-NORM-A020-P2-INVESTIGATE-RISK
 - norm_id: AIA-NORM-A016-K-DEMONSTRATE-CONFORMITY
   act_version_date: '2026-07-27'
   kind: obligation

@@ -287,12 +287,12 @@ def test_qualifying_norm_cannot_be_declared_as_a_primary_link(tmp_path):
         load(tmp_path, text, norms)
 
 
-def test_carried_norm_must_exist(tmp_path):
+def test_legacy_carried_norm_field_is_rejected(tmp_path):
     _body, text, norms = one_document()
     item = norms["norms"][0]
     item["implementation_mode"] = "carried_by_other_norm"
     item["carried_by_norm_ids"] = ["AIA-NORM-032-MISSING"]
-    with pytest.raises(ValueError, match="carried by unknown norm"):
+    with pytest.raises(ValueError, match="carried_by_norm_ids"):
         load(tmp_path, text, norms)
 
 
@@ -321,11 +321,25 @@ def test_carried_norms_cannot_form_a_cycle(tmp_path):
     body, text, norms = one_document()
     first = norms["norms"][0]
     first["implementation_mode"] = "carried_by_other_norm"
-    first["carried_by_norm_ids"] = ["AIA-NORM-032-B"]
     second = norm("AIA-NORM-032-B", ["AIA-TEXT-032-A"])
     second["implementation_mode"] = "carried_by_other_norm"
-    second["carried_by_norm_ids"] = ["AIA-NORM-032-A"]
     norms["norms"].append(second)
+    norms["relations"] = [
+        {
+            "relation_id": "AIA-REL-032-A-CARRIED",
+            "source_norm_id": "AIA-NORM-032-A",
+            "kind": "carried_by_norms",
+            "target_norm_ids": ["AIA-NORM-032-B"],
+            "legal_basis_spans": ["AIA-TEXT-032-A"],
+        },
+        {
+            "relation_id": "AIA-REL-032-B-CARRIED",
+            "source_norm_id": "AIA-NORM-032-B",
+            "kind": "carried_by_norms",
+            "target_norm_ids": ["AIA-NORM-032-A"],
+            "legal_basis_spans": ["AIA-TEXT-032-A"],
+        },
+    ]
     text["segments"][0]["norm_ids"].append("AIA-NORM-032-B")
     assert text["segments"][0]["text"] == body[: len(body) // 2]
     with pytest.raises(ValueError, match="cycle"):

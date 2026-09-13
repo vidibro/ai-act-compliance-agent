@@ -309,7 +309,7 @@ rule selection, judging, or reporting.
 
 Each group is one duty imposed through separate provisions or on different actors. Every norm in a
 group still applies; the group records that they must be kept consistent, which neither a
-restatement (`carried_by_norm_ids`) nor a shared rule (`implementation_refs`) expresses.
+restatement (`carried_by_norms`) nor a shared rule (`implementation_refs`) expresses.
 
 {parallel_duties}
 
