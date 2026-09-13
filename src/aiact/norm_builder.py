@@ -10,7 +10,7 @@ from pathlib import Path
 from typing import Literal
 
 import yaml
-from pydantic import BaseModel, Field, model_validator
+from pydantic import BaseModel, ConfigDict, Field, model_validator
 
 from aiact.norm_loader import load_normative_coverage
 from aiact.norm_metrics import measure_normative_coverage, render_coverage_markdown
@@ -23,6 +23,7 @@ from aiact.schemas.norm import (
     NormDependency,
     NormKind,
     NormRelation,
+    NormRelationKind,
     ProductScope,
     SegmentDisposition,
     SourceKind,
@@ -123,6 +124,8 @@ class ReviewedDocumentInventory(BaseModel):
 class NormSourceRecord(BaseModel):
     """Reviewed authoring input from which a complete runtime-independent Norm is compiled."""
 
+    model_config = ConfigDict(extra="forbid")
+
     norm_id: str = Field(pattern=r"^AIA-NORM-[A-Z0-9-]+$")
     source: str = Field(pattern=r"^[A-Z0-9-]+$")
     quote: str = Field(min_length=1)
@@ -141,7 +144,6 @@ class NormSourceRecord(BaseModel):
     mandatory_content: list[str] = []
     mandatory_content_source: Literal["numbered_items"] | None = None
     dependencies: list[NormDependency] = []
-    condition_norm_ids: list[str] = []
     qualifier_spans: list[str] = []
     effective_date_spans: list[str] = []
     verified_by: str = ""
@@ -181,17 +183,21 @@ class NormSourceInventory(BaseModel):
                 f"norm relations reference unknown source norm(s): {unknown_relation_sources}"
             )
         unknown_relation_rules = sorted(
-            {
-                rule_id
-                for relation in self.norm_relations
-                for rule_id in relation.target_rule_ids
-            }
+            {rule_id for relation in self.norm_relations for rule_id in relation.target_rule_ids}
             - set(self.implementation_targets)
         )
         if unknown_relation_rules:
             raise ValueError(
                 f"norm relations reference undeclared implementation targets: "
                 f"{unknown_relation_rules}"
+            )
+        unknown_relation_norms = sorted(
+            {norm_id for relation in self.norm_relations for norm_id in relation.target_norm_ids}
+            - set(norm_ids)
+        )
+        if unknown_relation_norms:
+            raise ValueError(
+                f"norm relations reference unknown target norm(s): {unknown_relation_norms}"
             )
         seen_parallel: set[str] = set()
         for group in self.parallel_duties:
@@ -537,11 +543,6 @@ def _build_norms(
         unknown_rules = sorted(set(record.implementation_refs) - known_rule_ids)
         if unknown_rules:
             raise ValueError(f"{record.norm_id}: unknown implementation rule(s) {unknown_rules}")
-        unknown_conditions = sorted(set(record.condition_norm_ids) - known_norm_ids)
-        if unknown_conditions:
-            raise ValueError(f"{record.norm_id}: unknown condition norm(s) {unknown_conditions}")
-        if record.norm_id in record.condition_norm_ids:
-            raise ValueError(f"{record.norm_id}: a norm cannot be its own condition")
         for span, link_field in [
             (primary, "norm_ids"),
             *((span, "qualifying_norm_ids") for span in [*qualifiers, *effective]),
@@ -612,17 +613,9 @@ def _build_norms(
                 record.verified_by,
             ),
         }
-        if record.condition_norm_ids:
-            norm["condition_norm_ids"] = record.condition_norm_ids
         norms.append(norm)
 
     norms_by_id = {str(norm["norm_id"]): norm for norm in norms}
-    for norm in norms:
-        for condition_id in norm.get("condition_norm_ids", []):
-            condition = norms_by_id[str(condition_id)]
-            parents = condition.setdefault("condition_of_norm_ids", [])
-            assert isinstance(parents, list)
-            parents.append(norm["norm_id"])
     for norm_id, carriers in source_inventory.carried_by.items():
         if norm_id not in norms_by_id:
             raise ValueError(f"carried_by references unknown source norm {norm_id}")
@@ -648,9 +641,7 @@ def _build_relations(
         source = records[relation.source_norm_id]
         unknown_spans = sorted(set(relation.legal_basis_spans) - set(segments_by_id))
         if unknown_spans:
-            raise ValueError(
-                f"{relation.relation_id}: unknown legal-basis span(s) {unknown_spans}"
-            )
+            raise ValueError(f"{relation.relation_id}: unknown legal-basis span(s) {unknown_spans}")
         non_normative = sorted(
             span
             for span in relation.legal_basis_spans
@@ -667,6 +658,9 @@ def _build_relations(
                 f"{relation.relation_id}: target rules must exactly match "
                 f"{relation.source_norm_id}'s implementation_refs"
             )
+        if relation.kind is NormRelationKind.CONDITIONAL_ON_NORMS:
+            if relation.source_norm_id in relation.target_norm_ids:
+                raise ValueError(f"{relation.relation_id}: a norm cannot be its own condition")
         if relation.external_requirements:
             external_dependencies = {
                 dependency.dependency_ref
@@ -683,6 +677,24 @@ def _build_relations(
     return relations
 
 
+def _apply_relation_projections(
+    norms: list[dict[str, object]], relations: list[dict[str, object]]
+) -> None:
+    """Expose legacy relation fields as generated compatibility projections only."""
+    norms_by_id = {str(norm["norm_id"]): norm for norm in norms}
+    for relation in relations:
+        if relation["kind"] != NormRelationKind.CONDITIONAL_ON_NORMS.value:
+            continue
+        source = norms_by_id[str(relation["source_norm_id"])]
+        targets = list(relation["target_norm_ids"])
+        source["condition_norm_ids"] = targets
+        for target_id in targets:
+            target = norms_by_id[str(target_id)]
+            parents = target.setdefault("condition_of_norm_ids", [])
+            assert isinstance(parents, list)
+            parents.append(source["norm_id"])
+
+
 def build_artifacts(
     reviewed: ReviewedDocumentInventory,
     source_inventory: NormSourceInventory,
@@ -692,6 +704,7 @@ def build_artifacts(
     segments = _build_segments(reviewed, paths)
     norms = _build_norms(reviewed, source_inventory, segments, paths)
     relations = _build_relations(source_inventory, segments)
+    _apply_relation_projections(norms, relations)
     return (
         {
             "act_version_date": reviewed.act_version_date.isoformat(),

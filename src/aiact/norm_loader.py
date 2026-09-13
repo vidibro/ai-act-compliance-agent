@@ -15,6 +15,7 @@ from aiact.schemas.norm import (
     ImplementationMode,
     NormativeCoverageBundle,
     NormInventory,
+    NormRelationKind,
     TextReviewInventory,
 )
 from aiact.text_segments import (
@@ -57,14 +58,10 @@ def load_normative_coverage(
         Path(settings.policy_normative_coverage_path) / settings.act_version_date.isoformat()
     )
     text_path = (
-        Path(text_review_path)
-        if text_review_path is not None
-        else coverage_root / "text-review"
+        Path(text_review_path) if text_review_path is not None else coverage_root / "text-review"
     )
     norm_path = (
-        Path(norm_inventory_path)
-        if norm_inventory_path is not None
-        else coverage_root / "norms"
+        Path(norm_inventory_path) if norm_inventory_path is not None else coverage_root / "norms"
     )
     article_root = Path(articles_root or settings.policy_articles_path)
     annex_root = Path(annexes_root or settings.policy_annexes_path)
@@ -114,6 +111,48 @@ def load_normative_coverage(
     segments_by_id = {segment.segment_id: segment for segment in text_review.segments}
     norms_by_id = {norm.norm_id: norm for norm in norm_inventory.norms}
 
+    # These compatibility fields must be derived from the canonical relation ledger.  Checking
+    # them here makes a hand-edited generated norm artifact fail instead of creating a second
+    # source of truth.
+    expected_conditions: dict[str, list[str]] = {norm_id: [] for norm_id in norms_by_id}
+    expected_condition_of: dict[str, list[str]] = {norm_id: [] for norm_id in norms_by_id}
+    for relation in norm_inventory.relations:
+        unknown_spans = [span for span in relation.legal_basis_spans if span not in segments_by_id]
+        if unknown_spans:
+            raise ValueError(
+                f"{relation.relation_id} references unknown legal-basis span(s): {unknown_spans}"
+            )
+        non_normative_spans = [
+            span
+            for span in relation.legal_basis_spans
+            if segments_by_id[span].disposition.value != "normative"
+        ]
+        if non_normative_spans:
+            raise ValueError(
+                f"{relation.relation_id} legal-basis span(s) are not normative: "
+                f"{non_normative_spans}"
+            )
+        unknown_targets = [
+            target for target in relation.target_norm_ids if target not in norms_by_id
+        ]
+        if unknown_targets:
+            raise ValueError(
+                f"{relation.relation_id} references unknown target norm(s): {unknown_targets}"
+            )
+        if relation.kind is NormRelationKind.CONDITIONAL_ON_NORMS:
+            expected_conditions[relation.source_norm_id].extend(relation.target_norm_ids)
+            for target in relation.target_norm_ids:
+                expected_condition_of[target].append(relation.source_norm_id)
+    for norm in norm_inventory.norms:
+        if norm.condition_norm_ids != expected_conditions[norm.norm_id]:
+            raise ValueError(
+                f"{norm.norm_id} condition_norm_ids do not match canonical norm relations"
+            )
+        if norm.condition_of_norm_ids != expected_condition_of[norm.norm_id]:
+            raise ValueError(
+                f"{norm.norm_id} condition_of_norm_ids do not match canonical norm relations"
+            )
+
     primary_links: dict[str, set[str]] = {segment_id: set() for segment_id in segments_by_id}
     qualifying_links: dict[str, set[str]] = {segment_id: set() for segment_id in segments_by_id}
     for norm in norm_inventory.norms:
@@ -141,9 +180,7 @@ def load_normative_coverage(
             raise ValueError(f"{norm.norm_id} is carried by unknown norm(s): {unknown_carriers}")
         unknown_conditions = [n for n in norm.condition_norm_ids if n not in norms_by_id]
         if unknown_conditions:
-            raise ValueError(
-                f"{norm.norm_id} has unknown condition norm(s): {unknown_conditions}"
-            )
+            raise ValueError(f"{norm.norm_id} has unknown condition norm(s): {unknown_conditions}")
         for condition_id in norm.condition_norm_ids:
             if norm.norm_id not in norms_by_id[condition_id].condition_of_norm_ids:
                 raise ValueError(

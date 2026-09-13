@@ -125,6 +125,7 @@ class NormRelationKind(StrEnum):
     ALLOCATES_DUTY_TO_POLICY_RULES = "allocates_duty_to_policy_rules"
     CARRIED_BY_POLICY_RULES = "carried_by_policy_rules"
     REQUIRES_EXTERNAL_REQUIREMENTS = "requires_external_requirements"
+    CONDITIONAL_ON_NORMS = "conditional_on_norms"
 
 
 class NormRelation(BaseModel):
@@ -134,6 +135,7 @@ class NormRelation(BaseModel):
     source_norm_id: str = Field(pattern=r"^AIA-NORM-[A-Z0-9-]+$")
     kind: NormRelationKind
     target_rule_ids: list[str] = []
+    target_norm_ids: list[str] = []
     external_requirements: list[str] = []
     legal_basis_spans: list[str] = Field(min_length=1)
     detail: str = ""
@@ -141,20 +143,28 @@ class NormRelation(BaseModel):
     @model_validator(mode="after")
     def _target_matches_relation_kind(self) -> NormRelation:
         has_rules = bool(self.target_rule_ids)
+        has_norms = bool(self.target_norm_ids)
         has_external = bool(self.external_requirements)
         if self.kind is NormRelationKind.REQUIRES_EXTERNAL_REQUIREMENTS:
-            if has_rules or not has_external:
+            if has_rules or has_norms or not has_external:
                 raise ValueError(
                     "requires_external_requirements needs external_requirements and no target rules"
                 )
             if not self.detail.strip():
                 raise ValueError("requires_external_requirements requires detail")
-        elif not has_rules or has_external:
+        elif self.kind is NormRelationKind.CONDITIONAL_ON_NORMS:
+            if has_rules or has_external or not has_norms:
+                raise ValueError(
+                    "conditional_on_norms needs target_norm_ids and no rule or external targets"
+                )
+        elif not has_rules or has_norms or has_external:
             raise ValueError(
                 f"{self.kind.value} needs target_rule_ids and no external requirements"
             )
         if len(self.target_rule_ids) != len(set(self.target_rule_ids)):
             raise ValueError("norm relation target_rule_ids must not contain duplicates")
+        if len(self.target_norm_ids) != len(set(self.target_norm_ids)):
+            raise ValueError("norm relation target_norm_ids must not contain duplicates")
         if len(self.external_requirements) != len(set(self.external_requirements)):
             raise ValueError("norm relation external_requirements must not contain duplicates")
         return self

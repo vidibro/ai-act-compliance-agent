@@ -7,17 +7,6 @@ records:
   subject_category: supported_operator
   kind: permission
   conditions: [the personal data were lawfully collected for other purposes, processing occurs in an AI regulatory sandbox, every Article 59(1) condition is met]
-  condition_norm_ids:
-  - AIA-NORM-A059-P1-A-SUBSTANTIAL-PUBLIC-INTEREST
-  - AIA-NORM-A059-P1-B-DATA-NECESSITY
-  - AIA-NORM-A059-P1-C-MONITOR-AND-MITIGATE-RISKS
-  - AIA-NORM-A059-P1-D-ISOLATED-PROTECTED-ENVIRONMENT
-  - AIA-NORM-A059-P1-E-SHARING-RESTRICTIONS
-  - AIA-NORM-A059-P1-F-NO-DATA-SUBJECT-EFFECT
-  - AIA-NORM-A059-P1-G-PROTECT-AND-DELETE-DATA
-  - AIA-NORM-A059-P1-H-KEEP-PROCESSING-LOGS
-  - AIA-NORM-A059-P1-I-DOCUMENT-TRAINING-TESTING-VALIDATION
-  - AIA-NORM-A059-P1-J-PUBLISH-PROJECT-SUMMARY
   qualifier_spans: [A059-P002, A059-P008, A059-P009, A059-P010, A059-P011, A059-P012, A059-P013, A059-P014, A059-P015, A059-P016]
   verification_mode: reported_conditionally
   verified_by: vidibro

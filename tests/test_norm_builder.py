@@ -20,7 +20,13 @@ from aiact.norm_builder import (
     load_builder_inputs,
 )
 from aiact.policy_loader import article_filename, load_policy_spec
-from aiact.schemas.norm import SegmentDisposition, SourceKind, SubjectCategory
+from aiact.schemas.norm import (
+    NormRelation,
+    NormRelationKind,
+    SegmentDisposition,
+    SourceKind,
+    SubjectCategory,
+)
 from aiact.yaml_loader import load_yaml_mapping_or_shards
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -267,6 +273,75 @@ def test_reviewed_divisions_and_norm_sources_compile_without_version_specific_co
     assert norm["implementation_mode"] == "missing"
 
 
+def test_condition_relationship_is_canonical_and_legacy_source_field_is_rejected(tmp_path):
+    version = "2030-01-02"
+    body = (
+        "Article 1\nConditions\n\n1. A provider may act if condition A is met.\n2. Condition A.\n"
+    )
+    configured_paths = paths(tmp_path)
+    write_article(configured_paths.articles_root, version, "1", body)
+    (configured_paths.annexes_root / version).mkdir(parents=True)
+    reviewed = ReviewedDocumentInventory(
+        act_version_date=version,
+        review_run_id="condition-relation",
+        documents=[
+            DocumentSource(
+                kind=SourceKind.ARTICLE,
+                number="1",
+                divisions=[
+                    DivisionSource(
+                        label="HEAD", marker=None, disposition=SegmentDisposition.STRUCTURAL
+                    ),
+                    DivisionSource(
+                        label="P1", marker="1. ", disposition=SegmentDisposition.NORMATIVE
+                    ),
+                    DivisionSource(
+                        label="P2", marker="2. ", disposition=SegmentDisposition.NORMATIVE
+                    ),
+                ],
+            )
+        ],
+    )
+    parent = NormSourceRecord(
+        norm_id="AIA-NORM-A001-P1-PERMISSION",
+        source="A001-P1",
+        quote="may act if condition A is met",
+        action="act when condition A is met",
+        subject_ref="provider",
+        subject_category=SubjectCategory.SUPPORTED_OPERATOR,
+    )
+    child = NormSourceRecord(
+        norm_id="AIA-NORM-A001-P2-CONDITION",
+        source="A001-P2",
+        quote="Condition A.",
+        action="satisfy condition A",
+        subject_ref="provider",
+        subject_category=SubjectCategory.SUPPORTED_OPERATOR,
+    )
+    relation = NormRelation(
+        relation_id="AIA-REL-A001-P1-CONDITIONAL-ON-P2",
+        source_norm_id=parent.norm_id,
+        kind=NormRelationKind.CONDITIONAL_ON_NORMS,
+        target_norm_ids=[child.norm_id],
+        legal_basis_spans=["AIA-TEXT-A001-P1"],
+    )
+    _text, compiled = build_artifacts(
+        reviewed,
+        NormSourceInventory(
+            act_version_date=version, records=[parent, child], norm_relations=[relation]
+        ),
+        configured_paths,
+    )
+    norms = {norm["norm_id"]: norm for norm in compiled["norms"]}
+    assert norms[parent.norm_id]["condition_norm_ids"] == [child.norm_id]
+    assert norms[child.norm_id]["condition_of_norm_ids"] == [parent.norm_id]
+
+    with pytest.raises(ValueError, match="condition_norm_ids"):
+        NormSourceRecord.model_validate(
+            {**parent.model_dump(), "condition_norm_ids": [child.norm_id]}
+        )
+
+
 def test_document_verifier_approves_all_non_debt_segments(tmp_path):
     version = "2030-01-02"
     body = "Article 1\nPurpose\n\n1. Context only.\n"
@@ -373,9 +448,7 @@ def test_versioned_implementation_targets_exist_in_the_pinned_policy_spec():
     something that exists, or the norm claims an implementation it does not have."""
     from aiact.classify.graph import QUESTIONS
 
-    source_path = (
-        ROOT / "data" / "policy" / "normative-coverage" / "2026-07-27" / "source-records"
-    )
+    source_path = ROOT / "data" / "policy" / "normative-coverage" / "2026-07-27" / "source-records"
     source_inventory = NormSourceInventory.model_validate(
         load_yaml_mapping_or_shards(source_path, description="norm source inventory")
     )

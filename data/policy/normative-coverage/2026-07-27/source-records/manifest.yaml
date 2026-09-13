@@ -115,6 +115,43 @@ implementation_targets:
 - AIA-CQ-SIGNIFICANT-RISK
 - AIA-CQ-TRANSPARENCY
 norm_relations:
+  # Article 59(1)'s permission applies only if every numbered condition is met.
+  - relation_id: AIA-REL-A059-P1-CONDITIONAL-ON-ALL-CONDITIONS
+    source_norm_id: AIA-NORM-A059-P1-CONDITIONAL-FURTHER-PROCESSING
+    kind: conditional_on_norms
+    target_norm_ids:
+      - AIA-NORM-A059-P1-A-SUBSTANTIAL-PUBLIC-INTEREST
+      - AIA-NORM-A059-P1-B-DATA-NECESSITY
+      - AIA-NORM-A059-P1-C-MONITOR-AND-MITIGATE-RISKS
+      - AIA-NORM-A059-P1-D-ISOLATED-PROTECTED-ENVIRONMENT
+      - AIA-NORM-A059-P1-E-SHARING-RESTRICTIONS
+      - AIA-NORM-A059-P1-F-NO-DATA-SUBJECT-EFFECT
+      - AIA-NORM-A059-P1-G-PROTECT-AND-DELETE-DATA
+      - AIA-NORM-A059-P1-H-KEEP-PROCESSING-LOGS
+      - AIA-NORM-A059-P1-I-DOCUMENT-TRAINING-TESTING-VALIDATION
+      - AIA-NORM-A059-P1-J-PUBLISH-PROJECT-SUMMARY
+    legal_basis_spans: [AIA-TEXT-A059-P001]
+  # Article 60(4)'s permission applies only if every listed testing condition is met.
+  - relation_id: AIA-REL-A060-P4-CONDITIONAL-ON-ALL-CONDITIONS
+    source_norm_id: AIA-NORM-A060-P4-PERMISSION
+    kind: conditional_on_norms
+    target_norm_ids:
+      - AIA-NORM-A060-P4-A-SUBMIT-TESTING-PLAN
+      - AIA-NORM-A060-P4-B-APPROVAL-AND-TACIT-EFFECT
+      - AIA-NORM-A060-P4-C-REGISTER-TESTING
+      - AIA-NORM-A060-P4-D-UNION-ESTABLISHMENT
+      - AIA-NORM-A060-P4-E-TRANSFER-SAFEGUARDS
+      - AIA-NORM-A060-P4-F-DURATION-LIMIT
+      - AIA-NORM-A060-P4-EXTEND
+      - AIA-NORM-A060-P4-G-PROTECT-VULNERABLE-SUBJECTS
+      - AIA-NORM-A060-P4-H-INFORM-AND-AGREE-ROLES
+      - AIA-NORM-A060-P4-H-CONCLUDE-ROLES-AGREEMENT
+      - AIA-NORM-A060-P4-I-CONSENT-OR-SAFEGUARDS
+      - AIA-NORM-A060-P4-I-NO-NEGATIVE-EFFECT
+      - AIA-NORM-A060-P4-I-DELETE-SUBJECT-DATA
+      - AIA-NORM-A060-P4-J-QUALIFIED-OVERSIGHT
+      - AIA-NORM-A060-P4-K-REVERSIBLE-OUTPUTS
+    legal_basis_spans: [AIA-TEXT-A060-P006]
   # Article 16(a) assigns the provider duty for Section 2. The listed Section 2 rules already
   # perform the substantive checks, so this is an allocation relation rather than a fifteenth
   # criterion on each rule.
