@@ -114,6 +114,52 @@ class DependencyResolution(StrEnum):
     UNRESOLVED = "unresolved"
 
 
+class NormRelationKind(StrEnum):
+    """A legal effect that connects a norm to implementation elsewhere.
+
+    These are deliberately narrow, executable relation types. They are not a generic citation
+    graph: each says why a norm is represented without becoming another criterion of the target
+    rule.
+    """
+
+    ALLOCATES_DUTY_TO_POLICY_RULES = "allocates_duty_to_policy_rules"
+    CARRIED_BY_POLICY_RULES = "carried_by_policy_rules"
+    REQUIRES_EXTERNAL_REQUIREMENTS = "requires_external_requirements"
+
+
+class NormRelation(BaseModel):
+    """One reviewed internal or external implementation relation for a norm."""
+
+    relation_id: str = Field(pattern=r"^AIA-REL-[A-Z0-9-]+$")
+    source_norm_id: str = Field(pattern=r"^AIA-NORM-[A-Z0-9-]+$")
+    kind: NormRelationKind
+    target_rule_ids: list[str] = []
+    external_requirements: list[str] = []
+    legal_basis_spans: list[str] = Field(min_length=1)
+    detail: str = ""
+
+    @model_validator(mode="after")
+    def _target_matches_relation_kind(self) -> NormRelation:
+        has_rules = bool(self.target_rule_ids)
+        has_external = bool(self.external_requirements)
+        if self.kind is NormRelationKind.REQUIRES_EXTERNAL_REQUIREMENTS:
+            if has_rules or not has_external:
+                raise ValueError(
+                    "requires_external_requirements needs external_requirements and no target rules"
+                )
+            if not self.detail.strip():
+                raise ValueError("requires_external_requirements requires detail")
+        elif not has_rules or has_external:
+            raise ValueError(
+                f"{self.kind.value} needs target_rule_ids and no external requirements"
+            )
+        if len(self.target_rule_ids) != len(set(self.target_rule_ids)):
+            raise ValueError("norm relation target_rule_ids must not contain duplicates")
+        if len(self.external_requirements) != len(set(self.external_requirements)):
+            raise ValueError("norm relation external_requirements must not contain duplicates")
+        return self
+
+
 class CandidateDetectionChannel(StrEnum):
     """Why an extraction pass proposed a legal proposition.
 
@@ -324,14 +370,25 @@ class Norm(BaseModel):
 class NormInventory(BaseModel):
     act_version_date: date
     norms: list[Norm] = []
+    relations: list[NormRelation] = []
     interpretations: list[InterpretiveLink] = []
 
     @model_validator(mode="after")
     def _ids_are_unique(self) -> NormInventory:
         norm_ids = [n.norm_id for n in self.norms]
+        relation_ids = [relation.relation_id for relation in self.relations]
         interpretation_ids = [i.interpretation_id for i in self.interpretations]
         if len(norm_ids) != len(set(norm_ids)):
             raise ValueError("duplicate norm_id")
+        if len(relation_ids) != len(set(relation_ids)):
+            raise ValueError("duplicate norm relation_id")
+        unknown_relation_sources = sorted(
+            {relation.source_norm_id for relation in self.relations} - set(norm_ids)
+        )
+        if unknown_relation_sources:
+            raise ValueError(
+                f"norm relations reference unknown source norm(s): {unknown_relation_sources}"
+            )
         if len(interpretation_ids) != len(set(interpretation_ids)):
             raise ValueError("duplicate interpretation_id")
         return self

@@ -22,6 +22,7 @@ from aiact.schemas.norm import (
     ImplementationMode,
     NormDependency,
     NormKind,
+    NormRelation,
     ProductScope,
     SegmentDisposition,
     SourceKind,
@@ -152,6 +153,7 @@ class NormSourceInventory(BaseModel):
     records: list[NormSourceRecord] = []
     carried_by: dict[str, list[str]] = {}
     parallel_duties: list[list[str]] = []
+    norm_relations: list[NormRelation] = []
     interpretations: list[InterpretiveLink] = []
 
     @model_validator(mode="after")
@@ -167,6 +169,29 @@ class NormSourceInventory(BaseModel):
             raise ValueError(
                 "norm source records reference undeclared implementation targets: "
                 f"{unknown_targets}"
+            )
+        relation_ids = [relation.relation_id for relation in self.norm_relations]
+        if len(relation_ids) != len(set(relation_ids)):
+            raise ValueError("duplicate norm relation_id")
+        unknown_relation_sources = sorted(
+            {relation.source_norm_id for relation in self.norm_relations} - set(norm_ids)
+        )
+        if unknown_relation_sources:
+            raise ValueError(
+                f"norm relations reference unknown source norm(s): {unknown_relation_sources}"
+            )
+        unknown_relation_rules = sorted(
+            {
+                rule_id
+                for relation in self.norm_relations
+                for rule_id in relation.target_rule_ids
+            }
+            - set(self.implementation_targets)
+        )
+        if unknown_relation_rules:
+            raise ValueError(
+                f"norm relations reference undeclared implementation targets: "
+                f"{unknown_relation_rules}"
             )
         seen_parallel: set[str] = set()
         for group in self.parallel_duties:
@@ -611,6 +636,53 @@ def _build_norms(
     return norms
 
 
+def _build_relations(
+    source_inventory: NormSourceInventory,
+    segments: list[dict[str, object]],
+) -> list[dict[str, object]]:
+    """Compile reviewed norm relations and prove their targets are source-backed."""
+    records = {record.norm_id: record for record in source_inventory.records}
+    segments_by_id = {str(segment["segment_id"]): segment for segment in segments}
+    relations: list[dict[str, object]] = []
+    for relation in source_inventory.norm_relations:
+        source = records[relation.source_norm_id]
+        unknown_spans = sorted(set(relation.legal_basis_spans) - set(segments_by_id))
+        if unknown_spans:
+            raise ValueError(
+                f"{relation.relation_id}: unknown legal-basis span(s) {unknown_spans}"
+            )
+        non_normative = sorted(
+            span
+            for span in relation.legal_basis_spans
+            if segments_by_id[span]["disposition"] != SegmentDisposition.NORMATIVE.value
+        )
+        if non_normative:
+            raise ValueError(
+                f"{relation.relation_id}: legal-basis span(s) are not normative {non_normative}"
+            )
+        if relation.target_rule_ids and set(relation.target_rule_ids) != set(
+            source.implementation_refs
+        ):
+            raise ValueError(
+                f"{relation.relation_id}: target rules must exactly match "
+                f"{relation.source_norm_id}'s implementation_refs"
+            )
+        if relation.external_requirements:
+            external_dependencies = {
+                dependency.dependency_ref
+                for dependency in source.dependencies
+                if dependency.resolution is DependencyResolution.EXTERNAL_RECORDED
+            }
+            unknown_external = sorted(set(relation.external_requirements) - external_dependencies)
+            if unknown_external:
+                raise ValueError(
+                    f"{relation.relation_id}: external requirements are not recorded dependencies: "
+                    f"{unknown_external}"
+                )
+        relations.append(relation.model_dump(mode="json"))
+    return relations
+
+
 def build_artifacts(
     reviewed: ReviewedDocumentInventory,
     source_inventory: NormSourceInventory,
@@ -619,6 +691,7 @@ def build_artifacts(
     """Compile versioned reviewed inputs without reading or writing generated artifacts."""
     segments = _build_segments(reviewed, paths)
     norms = _build_norms(reviewed, source_inventory, segments, paths)
+    relations = _build_relations(source_inventory, segments)
     return (
         {
             "act_version_date": reviewed.act_version_date.isoformat(),
@@ -628,6 +701,7 @@ def build_artifacts(
         {
             "act_version_date": reviewed.act_version_date.isoformat(),
             "norms": norms,
+            "relations": relations,
             "interpretations": [
                 link.model_dump(mode="json") for link in source_inventory.interpretations
             ],

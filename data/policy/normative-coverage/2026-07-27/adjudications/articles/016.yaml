@@ -1,0 +1,10 @@
+schema_version: 1
+act_version_date: "2026-07-27"
+source:
+  kind: article
+  document: "16"
+
+# The structural validity audit currently produces no Article 16 findings. Keeping the empty shard
+# is intentional: index.yaml declares this document closed, so a future finding makes --check fail
+# until it receives an explicit decision here.
+decisions: []

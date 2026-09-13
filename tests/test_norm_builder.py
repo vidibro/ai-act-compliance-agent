@@ -68,7 +68,12 @@ def test_generic_builder_uses_input_version_and_discovers_its_complete_corpus(tm
 
     assert text["act_version_date"] == version
     assert text["corpus_complete"] is True
-    assert norms == {"act_version_date": version, "norms": [], "interpretations": []}
+    assert norms == {
+        "act_version_date": version,
+        "norms": [],
+        "relations": [],
+        "interpretations": [],
+    }
     assert [segment["segment_id"] for segment in text["segments"]] == [
         "AIA-TEXT-A004A-HEAD",
         "AIA-TEXT-A004A-P001",

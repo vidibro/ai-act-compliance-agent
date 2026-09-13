@@ -207,8 +207,35 @@ file. Report any pre-existing unrelated failures separately; do not weaken tests
 - Fixture: `data/golden_set/criteria/AIA-NORM-A015-P5-MODEL-FLAWS__omitted.md`. Tests:
   `tests/test_norm_traceability.py` (no model or network calls).
 
-Not yet done: a live-model measurement of the fixture, and retrieval per criterion (retrieval still
-queries by `evidence_expected` facets).
+One live run with `gemini-2.5-flash` returned `gap` for `MODEL-FLAWS` and `inadequate` for
+`AIA-HR-A15`; it is an evaluation observation, not a deterministic guarantee. Retrieval per
+criterion is still not implemented: retrieval queries by `evidence_expected` facets.
+
+## Typed norm relations
+
+The norm inventory also carries a small relation layer for legal effects that are neither an
+independent criterion nor an ordinary textual dependency. It intentionally does **not** model every
+cross-reference in the Regulation.
+
+- `allocates_duty_to_policy_rules`: a norm assigns responsibility for existing substantive rule
+  checks. Article 16(a) assigns the provider duty for the Section 2 rules; it is not an extra
+  criterion on each of those rules.
+- `carried_by_policy_rules`: existing substantive policy rules discharge the cross-reference norm.
+  Article 16(f)–(i) are the pilot examples.
+- `requires_external_requirements`: the AI Act creates a duty, but named external instruments supply
+  its substantive requirements. Article 16(l) records the accessibility Directives without claiming
+  that this project checks those Directives.
+
+Every relation has a stable ID, a source norm, exact legal-basis spans, and either an exact set of
+policy-rule targets or recorded external requirements. The builder rejects unknown sources, targets,
+or legal-basis spans; policy-rule relation targets must exactly equal the source norm's
+`implementation_refs`.
+
+Traceability accepts exactly three implementations for an enforced compliance norm: one explicit
+criterion; one typed relation; or one unambiguous one-norm/one-rule mapping. Anything else fails the
+strict build as an ambiguous missing criterion. Article 16 is now an enforced, zero-finding pilot:
+its empty decision shard is intentional and a future structural finding fails the build until it is
+explicitly adjudicated.
 
 ## Migration path to other Articles
 

@@ -124,6 +124,7 @@ def one_document() -> tuple[str, dict, dict]:
     norms = {
         "act_version_date": VERSION,
         "norms": [norm(norm_id, [first])],
+        "relations": [],
         "interpretations": [],
     }
     norms["norms"][0]["qualifier_spans"] = [second]

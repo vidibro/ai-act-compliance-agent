@@ -40,6 +40,9 @@ def copied_ledger(tmp_path: Path) -> tuple[Path, dict, dict]:
     (root / "articles").mkdir(parents=True)
     manifest = yaml.safe_load((LEDGER / "index.yaml").read_text(encoding="utf-8"))
     shard = yaml.safe_load(SHARD.read_text(encoding="utf-8"))
+    (root / "articles" / "016.yaml").write_text(
+        (LEDGER / "articles" / "016.yaml").read_text(encoding="utf-8"), encoding="utf-8"
+    )
     return root, manifest, shard
 
 
@@ -64,6 +67,14 @@ def test_article_fifteen_findings_are_stable_and_fully_adjudicated():
         "AIA-VALID-DE1F6B95C812C1F3",
         "AIA-VALID-EB70A75FE17CB5C0",
     }
+    assert enforce_validity_adjudications(bundle, LEDGER) == (7, 7)
+
+
+def test_article_sixteen_is_closed_with_an_explicit_empty_adjudication_shard():
+    bundle = load_bundle()
+
+    assert audit_norm_validity(bundle, scope={(SourceKind.ARTICLE, "16")}) == []
+    # Article 16 adds no findings or decisions, but it is still part of the enforced closed scope.
     assert enforce_validity_adjudications(bundle, LEDGER) == (7, 7)
 
 
@@ -118,7 +129,7 @@ def test_legal_basis_must_be_an_exact_source_quote(tmp_path):
 def test_manifest_rejects_an_undeclared_shard(tmp_path):
     root, manifest, shard = copied_ledger(tmp_path)
     write_ledger(root, manifest, shard)
-    (root / "articles" / "016.yaml").write_text(
+    (root / "articles" / "017.yaml").write_text(
         yaml.safe_dump(shard, sort_keys=False), encoding="utf-8"
     )
 
@@ -137,15 +148,17 @@ def test_manifest_rejects_a_shard_with_the_wrong_declared_source(tmp_path):
 
 def test_manifest_rejects_a_finding_duplicated_across_shards(tmp_path):
     root, manifest, shard = copied_ledger(tmp_path)
-    manifest["enforced_scope"].append({"kind": "article", "document": "16"})
-    manifest["shards"].append({"kind": "article", "document": "16", "file": "articles/016.yaml"})
+    manifest["enforced_scope"].append({"kind": "article", "document": "17"})
+    manifest["shards"].append({"kind": "article", "document": "17", "file": "articles/017.yaml"})
     write_ledger(root, manifest, shard)
-    duplicate = {**shard, "source": {"kind": "article", "document": "16"}}
-    (root / "articles" / "016.yaml").write_text(
+    duplicate = {**shard, "source": {"kind": "article", "document": "17"}}
+    (root / "articles" / "017.yaml").write_text(
         yaml.safe_dump(duplicate, sort_keys=False), encoding="utf-8"
     )
 
-    with pytest.raises(ValueError, match="duplicate validity adjudication finding_id across shards"):
+    with pytest.raises(
+        ValueError, match="duplicate validity adjudication finding_id across shards"
+    ):
         load_adjudication_ledger(root)
 
 
@@ -158,6 +171,8 @@ def _fixed_p2_ledger(tmp_path: Path) -> tuple[Path, Path, bytes, bytes]:
     target.write_bytes(before)
 
     manifest = yaml.safe_load((LEDGER / "index.yaml").read_text(encoding="utf-8"))
+    manifest["enforced_scope"] = [{"kind": "article", "document": "15"}]
+    manifest["shards"] = [{"kind": "article", "document": "15", "file": "articles/015.yaml"}]
     shard = yaml.safe_load(SHARD.read_text(encoding="utf-8"))
     fixed = next(
         item

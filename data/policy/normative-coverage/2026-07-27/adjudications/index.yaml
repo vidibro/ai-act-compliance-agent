@@ -5,8 +5,13 @@ act_version_date: "2026-07-27"
 enforced_scope:
   - kind: article
     document: "15"
+  - kind: article
+    document: "16"
 
 shards:
   - kind: article
     document: "15"
     file: articles/015.yaml
+  - kind: article
+    document: "16"
+    file: articles/016.yaml

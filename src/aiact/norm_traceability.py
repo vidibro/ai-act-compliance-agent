@@ -22,6 +22,7 @@ from aiact.schemas.norm import (
     ImplementationMode,
     Norm,
     NormativeCoverageBundle,
+    NormRelationKind,
     ProductScope,
     SourceKind,
     SubjectCategory,
@@ -63,13 +64,33 @@ def traceability_errors(
     norms = {norm.norm_id: norm for norm in bundle.norm_inventory.norms}
     rules = {rule.rule_id: rule for rule in spec.rules}
 
+    relation_targets_by_norm: dict[str, set[str]] = {}
+    for relation in bundle.norm_inventory.relations:
+        if relation.kind in {
+            NormRelationKind.ALLOCATES_DUTY_TO_POLICY_RULES,
+            NormRelationKind.CARRIED_BY_POLICY_RULES,
+        }:
+            relation_targets_by_norm.setdefault(relation.source_norm_id, set()).update(
+                relation.target_rule_ids
+            )
+
     def in_scope(norm: Norm) -> bool:
         source = segments[norm.primary_spans[0]].source
         return (source.kind, source.document) in scope
 
     errors: list[str] = []
 
-    # Norm -> rule: every enforced compliance norm is a criterion of every rule it names.
+    direct_norms_by_rule: dict[str, list[Norm]] = {}
+    for norm in norms.values():
+        if not in_scope(norm) or norm.implementation_mode is not ImplementationMode.COMPLIANCE_RULE:
+            continue
+        relation_targets = relation_targets_by_norm.get(norm.norm_id, set())
+        for rule_id in norm.implementation_refs:
+            if rule_id not in relation_targets:
+                direct_norms_by_rule.setdefault(rule_id, []).append(norm)
+
+    # Norm -> rule: every enforced compliance norm is either a criterion, a typed relation, or an
+    # unambiguous one-to-one rule. The last form needs no criterion container to preserve identity.
     for norm in sorted(norms.values(), key=lambda item: item.norm_id):
         if not in_scope(norm) or norm.implementation_mode is not ImplementationMode.COMPLIANCE_RULE:
             continue
@@ -79,7 +100,13 @@ def traceability_errors(
             rule = rules.get(rule_id)
             if rule is None:
                 errors.append(f"{norm.norm_id} names rule {rule_id}, which is not in the spec")
-            elif norm.norm_id not in {criterion.norm_id for criterion in rule.criteria}:
+            elif rule_id in relation_targets_by_norm.get(norm.norm_id, set()):
+                continue
+            elif norm.norm_id in {criterion.norm_id for criterion in rule.criteria}:
+                continue
+            elif not rule.criteria and direct_norms_by_rule.get(rule_id) == [norm]:
+                continue
+            else:
                 errors.append(f"{rule_id} omits criterion {norm.norm_id}, which names it")
 
     # Rule -> norm: every criterion resolves to one reconstructible norm that names the rule back.
@@ -123,6 +150,27 @@ def traceability_errors(
                 errors.append(
                     f"{rule.rule_id} criterion {target.norm_id} differs from its canonical norm"
                 )
+    for relation in sorted(bundle.norm_inventory.relations, key=lambda item: item.relation_id):
+        source = norms[relation.source_norm_id]
+        if not in_scope(source):
+            continue
+        if relation.kind in {
+            NormRelationKind.ALLOCATES_DUTY_TO_POLICY_RULES,
+            NormRelationKind.CARRIED_BY_POLICY_RULES,
+        }:
+            for rule_id in relation.target_rule_ids:
+                rule = rules.get(rule_id)
+                if rule is None:
+                    errors.append(
+                        f"{relation.relation_id} names rule {rule_id}, which is not in the spec"
+                    )
+                    continue
+                if source.norm_id in {criterion.norm_id for criterion in rule.criteria}:
+                    errors.append(
+                        f"{relation.relation_id} source {source.norm_id} is redundantly a "
+                        "criterion "
+                        f"of {rule_id}"
+                    )
     return errors
 
 

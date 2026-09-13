@@ -38,7 +38,7 @@ from aiact.schemas.classification import (
     UseCaseClassification,
 )
 from aiact.schemas.enums import AnnexIIIArea, RiskClass, Verdict
-from aiact.schemas.norm import ImplementationMode, SourceKind
+from aiact.schemas.norm import ImplementationMode, NormRelationKind, SourceKind
 from aiact.schemas.policy import LegalSource, PolicyRule, PolicyRuleset, RuleCriterion
 from aiact.schemas.report import (
     ComplianceReport,
@@ -56,6 +56,7 @@ FIXTURE = ROOT / "data" / "golden_set" / "criteria" / "AIA-NORM-A015-P5-MODEL-FL
 
 RULE = "AIA-HR-A15"
 MODEL_FLAWS = "AIA-NORM-A015-P5-MODEL-FLAWS"
+SECTION_2_ALLOCATION = "AIA-REL-A016-A-ALLOCATES-SECTION-2"
 SIBLING_THREATS = {
     "AIA-NORM-A015-P5-DATA-POISONING": "Data poisoning",
     "AIA-NORM-A015-P5-MODEL-POISONING": "Model poisoning",
@@ -180,6 +181,39 @@ def test_an_unadjudicated_fragment_cannot_be_a_criterion(bundle, spec, tmp_path)
     found = traceability_errors(bundle, spec, path)
     assert any(
         f"criterion {MODEL_FLAWS} cannot be reconstructed: validity finding" in e for e in found
+    )
+
+
+def test_article_sixteen_cross_references_are_typed_relations_not_hidden_criteria(bundle, spec):
+    relations = {relation.relation_id: relation for relation in bundle.norm_inventory.relations}
+    allocation = relations[SECTION_2_ALLOCATION]
+    source = next(
+        norm
+        for norm in bundle.norm_inventory.norms
+        if norm.norm_id == allocation.source_norm_id
+    )
+
+    assert allocation.kind is NormRelationKind.ALLOCATES_DUTY_TO_POLICY_RULES
+    assert set(allocation.target_rule_ids) == set(source.implementation_refs)
+    assert "AIA-HR-A15" in allocation.target_rule_ids
+    external = relations["AIA-REL-A016-L-REQUIRES-ACCESSIBILITY-DIRECTIVES"]
+    assert external.kind is NormRelationKind.REQUIRES_EXTERNAL_REQUIREMENTS
+    assert external.target_rule_ids == []
+    assert traceability_errors(bundle, spec, LEDGER) == []
+
+
+def test_article_sixteen_allocation_relation_cannot_be_deleted(bundle, spec):
+    broken = bundle.model_copy(deep=True)
+    broken.norm_inventory.relations = [
+        relation
+        for relation in broken.norm_inventory.relations
+        if relation.relation_id != SECTION_2_ALLOCATION
+    ]
+
+    errors = traceability_errors(broken, spec, LEDGER)
+    assert (
+        "AIA-HR-A15 omits criterion AIA-NORM-A016-A-SECTION-2-COMPLIANCE, which names it"
+        in errors
     )
 
 

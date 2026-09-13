@@ -114,6 +114,64 @@ implementation_targets:
 - AIA-CQ-DEROGATION
 - AIA-CQ-SIGNIFICANT-RISK
 - AIA-CQ-TRANSPARENCY
+norm_relations:
+  # Article 16(a) assigns the provider duty for Section 2. The listed Section 2 rules already
+  # perform the substantive checks, so this is an allocation relation rather than a fifteenth
+  # criterion on each rule.
+  - relation_id: AIA-REL-A016-A-ALLOCATES-SECTION-2
+    source_norm_id: AIA-NORM-A016-A-SECTION-2-COMPLIANCE
+    kind: allocates_duty_to_policy_rules
+    target_rule_ids:
+      - AIA-PO-A08-2
+      - AIA-HR-A09
+      - AIA-HR-A10
+      - AIA-HR-A11
+      - AIA-HR-A11-2
+      - AIA-HR-A12
+      - AIA-HR-A12-3A
+      - AIA-HR-A12-3B
+      - AIA-HR-A12-3C
+      - AIA-HR-A12-3D
+      - AIA-HR-A13
+      - AIA-HR-A13-3
+      - AIA-HR-A14
+      - AIA-HR-A15
+    legal_basis_spans: [AIA-TEXT-A016-P002]
+  - relation_id: AIA-REL-A016-F-CARRIED-BY-CONFORMITY-RULES
+    source_norm_id: AIA-NORM-A016-F-CONFORMITY-ASSESSMENT
+    kind: carried_by_policy_rules
+    target_rule_ids:
+      - AIA-PO-A43-1
+      - AIA-PO-A43-1A
+      - AIA-PO-A43-1B
+      - AIA-PO-A43-2
+      - AIA-PO-A43-3
+      - AIA-PO-A43-4
+    legal_basis_spans: [AIA-TEXT-A016-P007]
+  - relation_id: AIA-REL-A016-G-CARRIED-BY-DECLARATION-RULES
+    source_norm_id: AIA-NORM-A016-G-EU-DECLARATION
+    kind: carried_by_policy_rules
+    target_rule_ids: [AIA-PO-A47, AIA-PO-A47-4]
+    legal_basis_spans: [AIA-TEXT-A016-P008]
+  - relation_id: AIA-REL-A016-H-CARRIED-BY-CE-RULE
+    source_norm_id: AIA-NORM-A016-H-CE-MARKING
+    kind: carried_by_policy_rules
+    target_rule_ids: [AIA-PO-A48]
+    legal_basis_spans: [AIA-TEXT-A016-P009]
+  - relation_id: AIA-REL-A016-I-CARRIED-BY-REGISTRATION-RULE
+    source_norm_id: AIA-NORM-A016-I-REGISTRATION
+    kind: carried_by_policy_rules
+    target_rule_ids: [AIA-PO-A49]
+    legal_basis_spans: [AIA-TEXT-A016-P010]
+  - relation_id: AIA-REL-A016-L-REQUIRES-ACCESSIBILITY-DIRECTIVES
+    source_norm_id: AIA-NORM-A016-L-ACCESSIBILITY
+    kind: requires_external_requirements
+    external_requirements:
+      - Directive (EU) 2016/2102; Directive (EU) 2019/882
+    legal_basis_spans: [AIA-TEXT-A016-P013]
+    detail: >-
+      The two named Directives supply the substantive accessibility requirements; this Regulation
+      records the provider duty but does not reproduce or independently check those requirements.
 parallel_duties:
 - - AIA-NORM-A016-I-REGISTRATION
   - AIA-NORM-A022-P3-E-REGISTER
