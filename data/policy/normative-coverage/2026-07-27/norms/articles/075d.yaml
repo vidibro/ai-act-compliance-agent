@@ -8,7 +8,9 @@ norms:
     category: supported_operator
   action: apply Regulation 2019/1020 Article 18 procedural rights with necessary adaptations while preserving
     more specific rights
-  norm_text: Article 18 of Regulation (EU) 2019/1020 shall apply mutatis mutandis
+  norm_text: "Article 18 of Regulation (EU) 2019/1020 shall apply mutatis mutandis to operators subject\
+    \ to the AI Office\u2019s competence pursuant to Article 75(1) of this Regulation, without prejudice\
+    \ to more specific procedural rights provided for in this Regulation."
   detection_channels:
   - semantic_legal_effect
   - shall_token
@@ -44,7 +46,7 @@ norms:
     category: union_institution_or_body
   action: fully respect Article 75(1) operators' defence and file-access rights in proceedings
   norm_text: The rights of defence and of access to the file of operators falling within the scope of
-    Article 75(1) shall be fully respected
+    Article 75(1) shall be fully respected in proceedings.
   detection_channels:
   - semantic_legal_effect
   - shall_token
@@ -88,8 +90,12 @@ norms:
   - AIA-TEXT-A075D-P002
   qualifier_spans: []
   effective_date_spans: []
-  conditions: []
-  exceptions: []
+  conditions:
+  - adoption of an Article 75c(1) decision is possible
+  exceptions:
+  - confidential information and internal documents of the AI Office, the Board, competent market-surveillance
+    authorities or other Member-State public authorities
+  - correspondence between the AI Office and those authorities
   mandatory_content: []
   dependencies: []
   product_scope: no_product_action
@@ -122,7 +128,8 @@ norms:
   - AIA-TEXT-A075D-P002
   qualifier_spans: []
   effective_date_spans: []
-  conditions: []
+  conditions:
+  - the parties disagree about negotiated-disclosure terms
   exceptions: []
   mandatory_content: []
   dependencies: []
@@ -149,7 +156,7 @@ norms:
     category: union_institution_or_body
   action: disclose and use information necessary to prove an infringement despite file-access restrictions
   norm_text: Nothing in this paragraph shall prevent the AI Office from disclosing and using information
-    necessary to prove an infringement
+    necessary to prove an infringement.
   detection_channels:
   - semantic_legal_effect
   - shall_token
@@ -184,7 +191,7 @@ norms:
     category: union_institution_or_body
   action: adopt implementing acts on file access and negotiated disclosure arrangements
   norm_text: The Commission may adopt implementing acts concerning the practical arrangements for access
-    to the file
+    to the file and the negotiated disclosure of information provided for in paragraph 2.
   detection_channels:
   - semantic_legal_effect
   - other_modal
@@ -218,7 +225,9 @@ norms:
   - subject_ref: ai_office
     category: union_institution_or_body
   action: publish Article 75b and 75c decisions with party names decision substance and imposed penalties
-  norm_text: The AI Office shall publish the decisions it adopts pursuant to Articles 75b and 75c
+  norm_text: The AI Office shall publish the decisions it adopts pursuant to Articles 75b and 75c. Such
+    publication shall state the names of the parties and the main content of the decision, including any
+    penalties imposed.
   detection_channels:
   - semantic_legal_effect
   - shall_token
@@ -253,7 +262,7 @@ norms:
     category: union_institution_or_body
   action: protect affected persons' confidentiality rights and legitimate interests when publishing decisions
   norm_text: The publication shall have regard to the rights and legitimate interests of any person concerned
-    in the protection of their confidential information
+    in the protection of their confidential information.
   detection_channels:
   - semantic_legal_effect
   - shall_token

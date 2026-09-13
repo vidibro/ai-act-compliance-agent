@@ -1112,8 +1112,11 @@ records:
   quote: "\u2018testing in real-world conditions\u2019 means the temporary testing of an AI system for\
     \ its intended purpose in real-world conditions outside a laboratory or otherwise simulated environment,\
     \ with a view to gathering reliable and robust data and to assessing and verifying the conformity\
-    \ of the AI system with the requirements of this Regulation"
-  action: define testing in real-world conditions for the purposes of the Regulation
+    \ of the AI system with the requirements of this Regulation and it does not qualify as placing the\
+    \ AI system on the market or putting it into service within the meaning of this Regulation, provided\
+    \ that all the conditions laid down in Article 57 or 60 are fulfilled"
+  action: define testing in real-world conditions and, where all Article 57 or 60 conditions are fulfilled,
+    treat it as neither placing the AI system on the market nor putting it into service
   subject_ref: testing_in_real_world_conditions
   subject_category: other
   kind: definition
@@ -1123,6 +1126,9 @@ records:
   - dependency_ref: Articles 57 and 60 of this Regulation
     resolution: unresolved
     detail: The definition depends on conditions in provisions not yet semantically reviewed.
+  mandatory_content:
+  - define the temporary real-world testing activity and its evidentiary and conformity-assessment purposes
+  - provide that qualifying testing is neither placing the AI system on the market nor putting it into service
   product_scope: dependency_only
   product_scope_reason: This definition constrains downstream classification and norm interpretation but
     creates no independent product-facing action.
@@ -1130,6 +1136,7 @@ records:
   implementation_reason: Definitions are represented as legal dependencies rather than standalone product
     rules.
   verification_mode: not_reported
+  verified_by: vidibro
 - norm_id: AIA-NORM-A003-D058-SUBJECT
   source: A003-P067
   quote: "\u2018subject\u2019, for the purpose of real-world testing, means a natural person who participates\
@@ -1391,29 +1398,6 @@ records:
   kind: legal_consequence
   conditions:
   - the AI system is put into service or used by a Union institution, agency, office, or body
-  product_scope: dependency_only
-  product_scope_reason: This consequence affects downstream interpretation but creates no independent
-    product-facing action.
-  implementation_mode: none_required
-  implementation_reason: The consequence is represented as a legal dependency rather than a standalone
-    product rule.
-  verification_mode: not_reported
-- norm_id: AIA-NORM-A003-D057-REAL-WORLD-TESTING-NON-MARKET-EFFECT
-  source: A003-P066
-  quote: it does not qualify as placing the AI system on the market or putting it into service within
-    the meaning of this Regulation, provided that all the conditions laid down in Article 57 or 60 are
-    fulfilled
-  action: treat qualifying real-world testing as neither placing the AI system on the market nor putting
-    it into service
-  subject_ref: testing_in_real_world_conditions
-  subject_category: other
-  kind: legal_consequence
-  conditions:
-  - all applicable conditions in Article 57 or Article 60 are fulfilled
-  dependencies:
-  - dependency_ref: Articles 57 and 60 of this Regulation
-    resolution: unresolved
-    detail: The legal consequence depends on conditions in provisions not yet semantically reviewed.
   product_scope: dependency_only
   product_scope_reason: This consequence affects downstream interpretation but creates no independent
     product-facing action.

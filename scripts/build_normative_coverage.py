@@ -22,6 +22,8 @@ def paths_for_version(version: str) -> NormBuilderPaths:
         norm_output=source_root / "norms",
         report_output=source_root / "report.md",
         generated_by="src/aiact/norm_builder.py",
+        adjudications=source_root / "adjudications",
+        policy_spec=ROOT / "data" / "policy" / "spec.yaml",
     )
 
 

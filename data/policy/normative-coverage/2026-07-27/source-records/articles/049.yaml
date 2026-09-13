@@ -90,11 +90,13 @@ records:
   verified_by: vidibro
 - norm_id: AIA-NORM-A049-P4-SECURE-NON-PUBLIC-SECTION
   source: A049-P004
-  quote: For high-risk AI systems referred to in points 1, 6 and 7 of Annex III, in the areas of law enforcement,
+  quote: >-
+    For high-risk AI systems referred to in points 1, 6 and 7 of Annex III, in the areas of law enforcement,
     migration, asylum and border control management, the registration referred to in paragraphs 1, 2 and
     3 of this Article shall be in a secure non-public section of the EU database referred to in Article
-    71
+    71 and shall include only the following information, as applicable, referred to in:
   action: lodge the applicable registration in a secure non-public section of the Article 71 EU database
+    and limit it to the enacted Annex VIII and Annex IX information
   subject_ref: registering_operator
   subject_category: supported_operator
   conditions:
@@ -103,16 +105,8 @@ records:
   implementation_refs:
   - AIA-ALL-A49-4
   verification_mode: reported_not_judged
-  verified_by: vidibro
-- norm_id: AIA-NORM-A049-P4-RESTRICTED-INFORMATION
-  source: A049-P004
-  quote: shall include only the following information, as applicable, referred to in
-  action: limit the secure-section registration to the enacted Annex VIII and Annex IX information
-  subject_ref: registering_operator
-  subject_category: supported_operator
-  conditions:
-  - the secure non-public registration rule in Article 49(4) applies
   mandatory_content:
+  - use the secure non-public section of the Article 71 EU database
   - Annex VIII Section A points 1 to 10, except points 6, 8, and 9
   - Annex VIII Section B points 1 to 5 and points 8 and 9
   - Annex VIII Section C points 1 to 3
@@ -122,9 +116,6 @@ records:
   - A049-P006
   - A049-P007
   - A049-P008
-  implementation_refs:
-  - AIA-ALL-A49-4
-  verification_mode: reported_not_judged
   verified_by: vidibro
 - norm_id: AIA-NORM-A049-P4-COMMISSION-ACCESS
   source: A049-P009

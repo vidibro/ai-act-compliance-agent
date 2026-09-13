@@ -20,7 +20,8 @@ records:
 - norm_id: AIA-NORM-A019-P1-RETENTION-PERIOD
   source: A019-P001
   quote: the logs shall be kept for a period appropriate to the intended purpose of the high-risk AI system,
-    of at least six months
+    of at least six months, unless provided otherwise in the applicable Union or national law, in particular
+    in Union law on the protection of personal data
   action: "retain controlled logs for a period appropriate to the system\u2019s intended purpose and for at
     least six months"
   subject_ref: provider
@@ -32,23 +33,6 @@ records:
     period
   implementation_refs: *id001
   verification_mode: reported_not_judged
-  verified_by: vidibro
-- norm_id: AIA-NORM-A019-P1-OTHER-LAW-PERIOD
-  source: A019-P001
-  quote: unless provided otherwise in the applicable Union or national law, in particular in Union law
-    on the protection of personal data
-  action: apply a different log-retention period where applicable Union or national law provides one
-  subject_ref: provider
-  subject_category: supported_operator
-  kind: applicability
-  conditions:
-  - applicable Union or national law provides a different retention period
-  dependencies:
-  - dependency_ref: AIA-NORM-A019-P1-RETENTION-PERIOD
-    resolution: internal_resolved
-    detail: The external-law period overrides the ordinary purpose-appropriate six-month-minimum rule.
-  implementation_refs: *id001
-  verification_mode: reported_conditionally
   verified_by: vidibro
 - norm_id: AIA-NORM-A019-P2-FINANCIAL-DOCUMENTATION
   source: A019-P002

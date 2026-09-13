@@ -1,8 +1,13 @@
 records:
 - norm_id: AIA-NORM-A095-P1-ENCOURAGE-NON-HIGH-RISK-CODES
   source: A095-P001
-  quote: The AI Office and the Member States shall encourage and facilitate the drawing up of codes of conduct, including related governance mechanisms, intended to foster the voluntary application to AI systems, other than high-risk AI systems, of some or all of the requirements set out in Chapter III, Section 2
-  action: encourage and facilitate codes and governance mechanisms for voluntary Chapter III Section 2 application to non-high-risk systems
+  quote: The AI Office and the Member States shall encourage and facilitate the drawing up of codes of
+    conduct, including related governance mechanisms, intended to foster the voluntary application to
+    AI systems, other than high-risk AI systems, of some or all of the requirements set out in Chapter
+    III, Section 2 taking into account the available technical solutions and industry best practices allowing
+    for the application of such requirements.
+  action: encourage and facilitate codes and governance mechanisms for voluntary Chapter III Section 2
+    application to non-high-risk systems
   subject_ref: ai_office_and_member_states
   subject_category: public_authority
   product_scope: outside_supported_actor
@@ -12,25 +17,24 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A095-P2-FACILITATE-SPECIFIC-REQUIREMENT-CODES
   source: A095-P002
-  quote: 'The AI Office and the Member States shall facilitate the drawing up of codes of conduct concerning the voluntary application, including by deployers, of specific requirements to all AI systems, on the basis of clear objectives and key performance indicators to measure the achievement of those objectives, including elements such as, but not limited to:'
-  action: facilitate the drawing up of codes of conduct for the voluntary application of specific
-    requirements to all AI systems, on the basis of clear objectives and key performance indicators;
-    the elements listed are examples and are not exhaustive, and applying the requirements stays
-    voluntary
+  quote: 'The AI Office and the Member States shall facilitate the drawing up of codes of conduct concerning
+    the voluntary application, including by deployers, of specific requirements to all AI systems, on
+    the basis of clear objectives and key performance indicators to measure the achievement of those objectives,
+    including elements such as, but not limited to:'
+  action: facilitate the drawing up of codes of conduct for the voluntary application of specific requirements
+    to all AI systems, on the basis of clear objectives and key performance indicators; the elements listed
+    are examples and are not exhaustive, and applying the requirements stays voluntary
   subject_ref: ai_office_and_member_states
   subject_category: public_authority
   mandatory_content:
-  - clear objectives and key performance indicators to measure the achievement of those objectives,
-    including elements such as, but not limited to, applicable elements provided for in Union
-    ethical guidelines for trustworthy AI; assessing and minimising the impact of AI systems on
-    environmental sustainability, including as regards energy-efficient programming and techniques
-    for the efficient design, training and use of AI; promoting AI literacy, in particular that of
-    persons dealing with the development, operation and use of AI; facilitating an inclusive and
-    diverse design of AI systems, including through inclusive and diverse development teams and the
-    promotion of stakeholders' participation; and assessing and preventing the negative impact of AI
-    systems on vulnerable persons or groups of vulnerable persons, including as regards accessibility
-    for persons with a disability, as well as on gender equality
-  qualifier_spans: [A095-P003, A095-P004, A095-P005, A095-P006, A095-P007]
+  - clear objectives
+  - key performance indicators measuring achievement of those objectives
+  qualifier_spans:
+  - A095-P003
+  - A095-P004
+  - A095-P005
+  - A095-P006
+  - A095-P007
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -38,19 +42,27 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A095-P3-DRAW-UP-VOLUNTARY-CODES
   source: A095-P008
-  quote: Codes of conduct may be drawn up by individual providers or deployers of AI systems or by organisations representing them or by both, including with the involvement of any interested stakeholders and their representative organisations, including civil society organisations and academia. Codes of conduct may cover one or more AI systems taking into account the similarity of the intended purpose of the relevant systems.
-  action: draw up a voluntary code individually jointly or through representative organisations and cover one or more similarly purposed systems
+  quote: Codes of conduct may be drawn up by individual providers or deployers of AI systems or by organisations
+    representing them or by both, including with the involvement of any interested stakeholders and their
+    representative organisations, including civil society organisations and academia. Codes of conduct
+    may cover one or more AI systems taking into account the similarity of the intended purpose of the
+    relevant systems.
+  action: draw up a voluntary code individually jointly or through representative organisations and cover
+    one or more similarly purposed systems
   subject_ref: provider_deployer_or_representative_organisation
   subject_category: supported_operator
   kind: power
   product_scope: no_product_action
-  product_scope_reason: This is permission to participate in voluntary code development rather than a compliance obligation.
+  product_scope_reason: This is permission to participate in voluntary code development rather than a
+    compliance obligation.
   implementation_mode: none_required
   implementation_reason: No mandatory product action arises.
   verification_mode: not_reported
 - norm_id: AIA-NORM-A095-P4-ACCOUNT-FOR-SMALL-BUSINESS-NEEDS
   source: A095-P009
-  quote: The AI Office and the Member States shall take into account the specific interests and needs of SMEs, including start-ups, and SMCs, when encouraging and facilitating the drawing up of codes of conduct.
+  quote: The AI Office and the Member States shall take into account the specific interests and needs
+    of SMEs, including start-ups, and SMCs, when encouraging and facilitating the drawing up of codes
+    of conduct.
   action: account for SME start-up and SMC interests and needs when encouraging and facilitating codes
   subject_ref: ai_office_and_member_states
   subject_category: public_authority

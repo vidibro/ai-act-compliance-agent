@@ -1,8 +1,11 @@
 records:
 - norm_id: AIA-NORM-A091-P1-REQUEST-DOCUMENTATION-AND-INFORMATION
   source: A091-P001
-  quote: The Commission may request the provider of the general-purpose AI model concerned to provide the documentation drawn up by the provider in accordance with Articles 53 and 55, or any additional information that is necessary for the purpose of assessing compliance of the provider with this Regulation.
-  action: request Articles 53 and 55 documentation or other information necessary to assess GPAI-provider compliance
+  quote: The Commission may request the provider of the general-purpose AI model concerned to provide
+    the documentation drawn up by the provider in accordance with Articles 53 and 55, or any additional
+    information that is necessary for the purpose of assessing compliance of the provider with this Regulation.
+  action: request Articles 53 and 55 documentation or other information necessary to assess GPAI-provider
+    compliance
   subject_ref: commission
   subject_category: union_institution_or_body
   kind: power
@@ -13,7 +16,8 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A091-P2-INITIATE-STRUCTURED-DIALOGUE
   source: A091-P002
-  quote: Before sending the request for information, the AI Office may initiate a structured dialogue with the provider of the general-purpose AI model.
+  quote: Before sending the request for information, the AI Office may initiate a structured dialogue
+    with the provider of the general-purpose AI model.
   action: initiate structured dialogue with the GPAI provider before an information request
   subject_ref: ai_office
   subject_category: union_institution_or_body
@@ -25,8 +29,11 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A091-P3-SCIENTIFIC-PANEL-INFORMATION-REQUEST
   source: A091-P003
-  quote: the Commission may issue a request for information to a provider of a general-purpose AI model, where the access to information is necessary and proportionate for the fulfilment of the tasks of the scientific panel under Article 68(2).
-  action: issue a necessary proportionate information request on a duly substantiated scientific-panel request
+  quote: Upon a duly substantiated request from the scientific panel, the Commission may issue a request
+    for information to a provider of a general-purpose AI model, where the access to information is necessary
+    and proportionate for the fulfilment of the tasks of the scientific panel under Article 68(2).
+  action: issue a necessary proportionate information request on a duly substantiated scientific-panel
+    request
   subject_ref: commission
   subject_category: union_institution_or_body
   kind: power
@@ -35,13 +42,24 @@ records:
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
+  conditions:
+  - the scientific panel has made a duly substantiated request
+  - access to the information is necessary and proportionate for fulfilment of the scientific panel's
+    Article 68(2) tasks
 - norm_id: AIA-NORM-A091-P4-INFORMATION-REQUEST-CONTENT
   source: A091-P004
-  quote: The request for information shall state the legal basis and the purpose of the request, specify what information is required, set a period within which the information is to be provided, and indicate the fines provided for in Article 101 for supplying incorrect, incomplete or misleading information.
-  action: include the legal basis purpose required information response period and applicable Article 101 fines in an information request
+  quote: The request for information shall state the legal basis and the purpose of the request, specify
+    what information is required, set a period within which the information is to be provided, and indicate
+    the fines provided for in Article 101 for supplying incorrect, incomplete or misleading information.
+  action: include the legal basis purpose required information response period and applicable Article
+    101 fines in an information request
   subject_ref: commission
   subject_category: union_institution_or_body
-  mandatory_content: [legal basis and purpose, required information, response period, Article 101 fines for incorrect incomplete or misleading information]
+  mandatory_content:
+  - legal basis and purpose
+  - required information
+  - response period
+  - Article 101 fines for incorrect incomplete or misleading information
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -49,18 +67,22 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A091-P5-SUPPLY-REQUESTED-INFORMATION
   source: A091-P005
-  quote: The provider of the general-purpose AI model concerned, or its representative shall supply the information requested.
+  quote: The provider of the general-purpose AI model concerned, or its representative shall supply the
+    information requested.
   action: supply information requested by the Commission
   subject_ref: gpai_provider_or_representative
   subject_category: supported_operator
   conditions:
   - the Commission issued a request for information under Article 91(1) or Article 91(3)
-  implementation_refs: [AIA-GP-A91-5]
+  implementation_refs:
+  - AIA-GP-A91-5
   verification_mode: reported_not_judged
   verified_by: vidibro
 - norm_id: AIA-NORM-A091-P5-AUTHORISED-PERSON-SUPPLY
   source: A091-P005
-  quote: the persons authorised to represent them by law or by their statutes, shall supply the information requested on behalf of the provider of the general-purpose AI model concerned.
+  quote: In the case of legal persons, companies or firms, or where the provider has no legal personality,
+    the persons authorised to represent them by law or by their statutes, shall supply the information
+    requested on behalf of the provider of the general-purpose AI model concerned.
   action: supply requested information on behalf of a legal-person or non-legal-personality GPAI provider
   subject_ref: legally_or_statutorily_authorised_representative
   subject_category: external_private_party
@@ -69,6 +91,11 @@ records:
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
+  conditions:
+  - operator: any_of
+    operands:
+    - the provider is a legal person, company, or firm
+    - the provider has no legal personality
 - norm_id: AIA-NORM-A091-P5-LAWYER-SUPPLY
   source: A091-P005
   quote: Lawyers duly authorised to act may supply information on behalf of their clients.
@@ -83,7 +110,8 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A091-P5-CLIENT-REMAINS-RESPONSIBLE
   source: A091-P005
-  quote: The clients shall nevertheless remain fully responsible if the information supplied is incomplete, incorrect or misleading.
+  quote: The clients shall nevertheless remain fully responsible if the information supplied is incomplete,
+    incorrect or misleading.
   action: remain fully responsible for information a lawyer supplied on the client's behalf
   subject_ref: gpai_provider_client
   subject_category: supported_operator
@@ -91,6 +119,7 @@ records:
   conditions:
   - a duly authorised lawyer supplied the information on the client's behalf
   - the information supplied is incomplete, incorrect or misleading
-  implementation_refs: [AIA-GP-A91-5]
+  implementation_refs:
+  - AIA-GP-A91-5
   verification_mode: reported_not_judged
   verified_by: vidibro

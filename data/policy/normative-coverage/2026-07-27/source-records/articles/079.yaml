@@ -1,20 +1,28 @@
 records:
 - norm_id: AIA-NORM-A079-P1-RISK-DEFINITION
   source: A079-P001
-  quote: AI systems presenting a risk shall be understood as a ‘ product presenting a risk ’ as defined in Article 3, point 19 of Regulation (EU) 2019/1020, in so far as they present risks to the health or safety, or to fundamental rights, of persons.
-  action: treat an AI system risking health safety or fundamental rights as a Regulation 2019/1020 product presenting a risk
+  quote: "AI systems presenting a risk shall be understood as a \u2018 product presenting a risk \u2019\
+    \ as defined in Article 3, point 19 of Regulation (EU) 2019/1020, in so far as they present risks\
+    \ to the health or safety, or to fundamental rights, of persons."
+  action: treat an AI system risking health safety or fundamental rights as a Regulation 2019/1020 product
+    presenting a risk
   subject_ref: authority_applying_article_79
   subject_category: public_authority
   kind: definition
   product_scope: no_product_action
-  product_scope_reason: The definition controls enforcement procedure without creating an independent operator action.
+  product_scope_reason: The definition controls enforcement procedure without creating an independent
+    operator action.
   implementation_mode: none_required
   implementation_reason: No independent product action arises.
   verification_mode: not_reported
 - norm_id: AIA-NORM-A079-P2-EVALUATE-RISK-SYSTEM
   source: A079-P002
-  quote: it shall carry out an evaluation of the AI system concerned in respect of its compliance with all the requirements and obligations laid down in this Regulation.
-  action: evaluate all enacted requirements and obligations when sufficient reason indicates an AI system presents a risk
+  quote: Where the market surveillance authority of a Member State has sufficient reason to consider an
+    AI system to present a risk as referred to in paragraph 1 of this Article, it shall carry out an evaluation
+    of the AI system concerned in respect of its compliance with all the requirements and obligations
+    laid down in this Regulation.
+  action: evaluate all enacted requirements and obligations when sufficient reason indicates an AI system
+    presents a risk
   subject_ref: market_surveillance_authority
   subject_category: public_authority
   product_scope: outside_supported_actor
@@ -22,10 +30,16 @@ records:
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
+  conditions:
+  - the Member-State market-surveillance authority has sufficient reason to consider an AI system to present
+    an Article 79(1) risk
 - norm_id: AIA-NORM-A079-P2-ADDRESS-FUNDAMENTAL-RIGHTS-RISKS
   source: A079-P002
-  quote: Particular attention shall be given to AI systems presenting a risk to vulnerable groups. Where risks to fundamental rights are identified, the market surveillance authority shall also inform and fully cooperate with the relevant national public authorities or bodies referred to in Article 77(1).
-  action: prioritise vulnerable-group risks and cooperate with fundamental-rights bodies when such risks are identified
+  quote: Particular attention shall be given to AI systems presenting a risk to vulnerable groups. Where
+    risks to fundamental rights are identified, the market surveillance authority shall also inform and
+    fully cooperate with the relevant national public authorities or bodies referred to in Article 77(1).
+  action: prioritise vulnerable-group risks and cooperate with fundamental-rights bodies when such risks
+    are identified
   subject_ref: market_surveillance_authority
   subject_category: public_authority
   product_scope: outside_supported_actor
@@ -35,18 +49,27 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A079-P2-OPERATOR-COOPERATION
   source: A079-P002
-  quote: The relevant operators shall cooperate as necessary with the market surveillance authority and with the other national public authorities or bodies referred to in Article 77(1).
-  action: cooperate as necessary with market surveillance and fundamental-rights authorities during an Article 79 evaluation
+  quote: The relevant operators shall cooperate as necessary with the market surveillance authority and
+    with the other national public authorities or bodies referred to in Article 77(1).
+  action: cooperate as necessary with market surveillance and fundamental-rights authorities during an
+    Article 79 evaluation
   subject_ref: operator
   subject_category: supported_operator
   conditions:
   - the market surveillance authority is carrying out an Article 79(2) evaluation of the AI system
-  implementation_refs: [AIA-ALL-A79]
+  implementation_refs:
+  - AIA-ALL-A79
   verification_mode: reported_not_judged
   verified_by: vidibro
 - norm_id: AIA-NORM-A079-P2-REQUIRE-CORRECTIVE-ACTION
   source: A079-P003
-  quote: it shall without undue delay require the relevant operator to take all appropriate corrective actions to bring the AI system into compliance, to withdraw the AI system from the market, or to recall it
+  quote: Where, in the course of that evaluation, the market surveillance authority or, where applicable
+    the market surveillance authority in cooperation with the national public authority referred to in
+    Article 77(1), finds that the AI system does not comply with the requirements and obligations laid
+    down in this Regulation, it shall without undue delay require the relevant operator to take all appropriate
+    corrective actions to bring the AI system into compliance, to withdraw the AI system from the market,
+    or to recall it within a period the market surveillance authority may prescribe, and in any event
+    within the shorter of 15 working days, or as provided for in the relevant Union harmonisation legislation.
   action: require correction withdrawal or recall without undue delay within the shorter enacted deadline
   subject_ref: market_surveillance_authority
   subject_category: public_authority
@@ -55,6 +78,9 @@ records:
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
+  conditions:
+  - the Article 79 evaluation finds that the AI system does not comply with the Regulation's requirements
+    and obligations
 - norm_id: AIA-NORM-A079-P2-INFORM-NOTIFIED-BODY
   source: A079-P004
   quote: The market surveillance authority shall inform the relevant notified body accordingly.
@@ -68,7 +94,8 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A079-P2-APPLY-ARTICLE-18
   source: A079-P004
-  quote: Article 18 of Regulation (EU) 2019/1020 shall apply to the measures referred to in the second subparagraph of this paragraph.
+  quote: Article 18 of Regulation (EU) 2019/1020 shall apply to the measures referred to in the second
+    subparagraph of this paragraph.
   action: apply Regulation 2019/1020 Article 18 to paragraph 2 corrective measures
   subject_ref: market_surveillance_authority
   subject_category: public_authority
@@ -80,8 +107,11 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A079-P3-INFORM-CROSS-BORDER-NONCOMPLIANCE
   source: A079-P005
-  quote: it shall inform the Commission and the other Member States without undue delay of the results of the evaluation and of the actions which it has required the operator to take.
-  action: promptly inform the Commission and other Member States of cross-border evaluation results and required actions
+  quote: Where the market surveillance authority considers that the non-compliance is not restricted to
+    its national territory, it shall inform the Commission and the other Member States without undue delay
+    of the results of the evaluation and of the actions which it has required the operator to take.
+  action: promptly inform the Commission and other Member States of cross-border evaluation results and
+    required actions
   subject_ref: market_surveillance_authority
   subject_category: public_authority
   product_scope: outside_supported_actor
@@ -89,25 +119,33 @@ records:
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
+  conditions:
+  - the market-surveillance authority considers the non-compliance is not restricted to its national territory
 - norm_id: AIA-NORM-A079-P4-CORRECT-ALL-UNION-SYSTEMS
   source: A079-P006
-  quote: The operator shall ensure that all appropriate corrective action is taken in respect of all the AI systems concerned that it has made available on the Union market.
-  action: ensure appropriate corrective action across all concerned systems made available on the Union market
+  quote: The operator shall ensure that all appropriate corrective action is taken in respect of all the
+    AI systems concerned that it has made available on the Union market.
+  action: ensure appropriate corrective action across all concerned systems made available on the Union
+    market
   subject_ref: operator
   subject_category: supported_operator
-  implementation_refs: [AIA-ALL-A79]
+  implementation_refs:
+  - AIA-ALL-A79
   verification_mode: reported_not_judged
   verified_by: vidibro
 - norm_id: AIA-NORM-A079-P5-TAKE-AND-NOTIFY-PROVISIONAL-MEASURES
   source: A079-P007
-  quote: the market surveillance authority shall take all appropriate provisional measures to prohibit or restrict the AI system’s being made available on its national market or put into service, to withdraw the product or the standalone AI system from that market or to recall it.
-  action: take all appropriate provisional measures to prohibit or restrict the system's being made
-    available or put into service, to withdraw the product or standalone AI system, or to recall it
+  quote: "Where the operator of an AI system does not take adequate corrective action within the period\
+    \ referred to in paragraph 2, the market surveillance authority shall take all appropriate provisional\
+    \ measures to prohibit or restrict the AI system\u2019s being made available on its national market\
+    \ or put into service, to withdraw the product or the standalone AI system from that market or to\
+    \ recall it."
+  action: take all appropriate provisional measures to prohibit or restrict the system's being made available
+    or put into service, to withdraw the product or standalone AI system, or to recall it
   subject_ref: market_surveillance_authority
   subject_category: public_authority
   conditions:
-  - the operator does not take adequate corrective action within the period referred to in
-    paragraph 2
+  - the operator does not take adequate corrective action within the period referred to in paragraph 2
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -115,7 +153,8 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A079-P5-NOTIFY-PROVISIONAL-MEASURES
   source: A079-P007
-  quote: That authority shall without undue delay notify the Commission and the other Member States of those measures.
+  quote: That authority shall without undue delay notify the Commission and the other Member States of
+    those measures.
   action: notify the Commission and the other Member States of those measures without undue delay
   subject_ref: market_surveillance_authority
   subject_category: public_authority
@@ -127,7 +166,8 @@ records:
 - norm_id: AIA-NORM-A079-P6-NOTIFICATION-CONTENT
   source: A079-P008
   quote: The notification referred to in paragraph 5 shall include all available details
-  action: include identification supply-chain risk measure operator-argument and non-compliance-ground details in the paragraph 5 notification
+  action: include identification supply-chain risk measure operator-argument and non-compliance-ground
+    details in the paragraph 5 notification
   subject_ref: market_surveillance_authority
   subject_category: public_authority
   mandatory_content:
@@ -136,14 +176,18 @@ records:
   - the nature of the non-compliance alleged and the risk involved
   - the nature and duration of the national measures taken
   - the arguments put forward by the relevant operator
-  - whether the non-compliance is due to non-compliance with the prohibition of the AI practices
-    referred to in Article 5
-  - whether it is due to a failure of a high-risk AI system to meet requirements set out in
-    Chapter III, Section 2
-  - whether it is due to shortcomings in the harmonised standards or common specifications referred
-    to in Articles 40 and 41 conferring a presumption of conformity
+  - whether the non-compliance is due to non-compliance with the prohibition of the AI practices referred
+    to in Article 5
+  - whether it is due to a failure of a high-risk AI system to meet requirements set out in Chapter III,
+    Section 2
+  - whether it is due to shortcomings in the harmonised standards or common specifications referred to
+    in Articles 40 and 41 conferring a presumption of conformity
   - whether it is due to non-compliance with Article 50
-  qualifier_spans: [A079-P009, A079-P010, A079-P011, A079-P012]
+  qualifier_spans:
+  - A079-P009
+  - A079-P010
+  - A079-P011
+  - A079-P012
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -151,8 +195,13 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A079-P7-OTHER-AUTHORITY-NOTIFICATION
   source: A079-P013
-  quote: shall, without undue delay, inform the Commission and the other Member States of any measures adopted and of any additional information at their disposal relating to the non-compliance of the AI system concerned, and, in the event of disagreement with the notified national measure, of their objections.
-  action: promptly report adopted measures additional information and any objection to the notified national measure
+  quote: The market surveillance authorities other than the market surveillance authority of the Member
+    State initiating the procedure shall, without undue delay, inform the Commission and the other Member
+    States of any measures adopted and of any additional information at their disposal relating to the
+    non-compliance of the AI system concerned, and, in the event of disagreement with the notified national
+    measure, of their objections.
+  action: promptly report adopted measures additional information and any objection to the notified national
+    measure
   subject_ref: other_market_surveillance_authority
   subject_category: public_authority
   product_scope: outside_supported_actor
@@ -162,10 +211,13 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A079-P8-DEEM-MEASURE-JUSTIFIED
   source: A079-P014
-  quote: that measure shall be deemed justified.
-  action: deem the provisional measure justified when no objection is raised within three months of
-    receipt of the paragraph 5 notification, or within 30 days where the non-compliance concerns the
-    Article 5 prohibition
+  quote: Where, within three months of receipt of the notification referred to in paragraph 5 of this
+    Article, no objection has been raised by either a market surveillance authority of a Member State
+    or by the Commission in respect of a provisional measure taken by a market surveillance authority
+    of another Member State, that measure shall be deemed justified.
+  action: deem the provisional measure justified when no objection is raised within three months of receipt
+    of the paragraph 5 notification, or within 30 days where the non-compliance concerns the Article 5
+    prohibition
   subject_ref: authority_applying_article_79
   subject_category: public_authority
   kind: legal_consequence
@@ -174,11 +226,14 @@ records:
   implementation_mode: none_required
   implementation_reason: No independent product action arises.
   verification_mode: not_reported
+  conditions:
+  - no Member-State market-surveillance authority or the Commission objects within the applicable objection
+    period after receipt of the paragraph 5 notification
 - norm_id: AIA-NORM-A079-P8-PRESERVE-OPERATOR-PROCEDURAL-RIGHTS
   source: A079-P014
-  quote: This shall be without prejudice to the procedural rights of the concerned operator in accordance with Article 18 of Regulation (EU) 2019/1020.
-  action: preserve the concerned operator's procedural rights under Article 18 of Regulation (EU)
-    2019/1020
+  quote: This shall be without prejudice to the procedural rights of the concerned operator in accordance
+    with Article 18 of Regulation (EU) 2019/1020.
+  action: preserve the concerned operator's procedural rights under Article 18 of Regulation (EU) 2019/1020
   subject_ref: authority_applying_article_79
   subject_category: public_authority
   kind: legal_consequence
@@ -189,9 +244,10 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A079-P8-SHORTENED-ARTICLE-5-PERIOD
   source: A079-P014
-  quote: The three-month period referred to in this paragraph shall be reduced to 30 days in the event of non-compliance with the prohibition of the AI practices referred to in Article 5 of this Regulation.
-  action: reduce the three-month objection period to 30 days where the non-compliance concerns the
-    prohibition of the AI practices referred to in Article 5
+  quote: The three-month period referred to in this paragraph shall be reduced to 30 days in the event
+    of non-compliance with the prohibition of the AI practices referred to in Article 5 of this Regulation.
+  action: reduce the three-month objection period to 30 days where the non-compliance concerns the prohibition
+    of the AI practices referred to in Article 5
   subject_ref: authority_applying_article_79
   subject_category: public_authority
   kind: legal_consequence
@@ -202,7 +258,9 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A079-P9-TAKE-RESTRICTIVE-MEASURES
   source: A079-P015
-  quote: The market surveillance authorities shall ensure that appropriate restrictive measures are taken in respect of the product or the AI system concerned, such as withdrawal of the product or the AI system from their market, without undue delay.
+  quote: The market surveillance authorities shall ensure that appropriate restrictive measures are taken
+    in respect of the product or the AI system concerned, such as withdrawal of the product or the AI
+    system from their market, without undue delay.
   action: ensure appropriate restrictive measures including market withdrawal without undue delay
   subject_ref: market_surveillance_authority
   subject_category: public_authority

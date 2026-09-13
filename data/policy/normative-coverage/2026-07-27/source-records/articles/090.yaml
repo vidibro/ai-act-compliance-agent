@@ -1,21 +1,33 @@
 records:
 - norm_id: AIA-NORM-A090-P1-ISSUE-QUALIFIED-ALERT
   source: A090-P001
-  quote: The scientific panel may provide a qualified alert to the AI Office where it has reason to suspect that
-  action: provide a qualified alert when there is reason to suspect a concrete identifiable Union-level risk or Article 51 systemic-risk conditions
+  quote: The scientific panel may provide a qualified alert to the AI Office where it has reason to suspect
+    that
+  action: provide a qualified alert when there is reason to suspect a concrete identifiable Union-level
+    risk or Article 51 systemic-risk conditions
   subject_ref: scientific_panel
   subject_category: union_institution_or_body
   kind: power
-  mandatory_content: [concrete identifiable risk at Union level, Article 51 conditions]
-  qualifier_spans: [A090-P002, A090-P003]
+  mandatory_content: []
+  qualifier_spans:
+  - A090-P002
+  - A090-P003
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
+  conditions:
+  - operator: any_of
+    operands:
+    - the scientific panel has reason to suspect that a general-purpose AI model poses a concrete identifiable
+      risk at Union level
+    - the scientific panel has reason to suspect that a general-purpose AI model meets the conditions
+      referred to in Article 51
 - norm_id: AIA-NORM-A090-P2-ASSESS-ALERT
   source: A090-P004
-  quote: the Commission, through the AI Office and after having informed the Board, may exercise the powers laid down in this Section for the purpose of assessing the matter.
+  quote: Upon such qualified alert, the Commission, through the AI Office and after having informed the
+    Board, may exercise the powers laid down in this Section for the purpose of assessing the matter.
   action: after informing the Board exercise Section powers to assess a qualified alert
   subject_ref: commission_through_ai_office
   subject_category: union_institution_or_body
@@ -25,6 +37,9 @@ records:
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
+  conditions:
+  - the scientific panel has provided a qualified alert
+  - the Board has been informed
 - norm_id: AIA-NORM-A090-P2-INFORM-BOARD-OF-MEASURES
   source: A090-P004
   quote: The AI Office shall inform the Board of any measure according to Articles 91 to 94.
@@ -42,10 +57,18 @@ records:
   action: duly reason and include the minimum required information in a qualified alert
   subject_ref: scientific_panel
   subject_category: union_institution_or_body
-  mandatory_content: [systemic-risk GPAI provider point of contact, relevant facts and reasons for the alert, any other relevant information including information gathered on the panel's initiative]
-  qualifier_spans: [A090-P006, A090-P007, A090-P008]
+  mandatory_content:
+  - systemic-risk GPAI provider point of contact
+  - relevant facts and reasons for the alert
+  - any other relevant information including information gathered on the panel's initiative
+  qualifier_spans:
+  - A090-P006
+  - A090-P007
+  - A090-P008
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
+  conditions:
+  - the scientific panel provides a qualified alert

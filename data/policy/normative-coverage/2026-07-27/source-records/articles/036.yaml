@@ -95,6 +95,8 @@ records:
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
+  conditions:
+  - the notified body has ceased its activity
 - norm_id: AIA-NORM-A036-P4-INVESTIGATE-FAILURE
   source: A036-P005
   quote: Where a notifying authority has sufficient reason to consider that a notified body no longer
@@ -109,6 +111,9 @@ records:
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
+  conditions:
+  - the notifying authority has sufficient reason to consider that the notified body no longer meets Article
+    31 requirements or is failing to fulfil its obligations
 - norm_id: AIA-NORM-A036-P4-INFORM-OBJECTIONS
   source: A036-P005
   quote: In that context, it shall inform the notified body concerned about the objections raised and
@@ -121,6 +126,8 @@ records:
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
+  conditions:
+  - the objections arise in the notifying authority's investigation of the notified body
 - norm_id: AIA-NORM-A036-P4-OPPORTUNITY-TO-RESPOND
   source: A036-P005
   quote: In that context, it shall inform the notified body concerned about the objections raised and
@@ -134,6 +141,8 @@ records:
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
+  conditions:
+  - the objections arise in the notifying authority's investigation of the notified body
 - norm_id: AIA-NORM-A036-P4-CORRECT-DESIGNATION
   source: A036-P005
   quote: If the notifying authority comes to the conclusion that the notified body no longer meets the
@@ -149,6 +158,9 @@ records:
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
+  conditions:
+  - the notifying authority concludes that the notified body no longer meets Article 31 requirements or
+    is failing to fulfil its obligations
 - norm_id: AIA-NORM-A036-P4-INFORM-COMMISSION-AND-STATES
   source: A036-P005
   quote: It shall immediately inform the Commission and the other Member States accordingly.
@@ -160,6 +172,8 @@ records:
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
+  conditions:
+  - the notifying authority has restricted, suspended or withdrawn the notified body's designation
 - norm_id: AIA-NORM-A036-P5-INFORM-PROVIDERS
   source: A036-P006
   quote: Where its designation has been suspended, restricted, or fully or partially withdrawn, the notified
@@ -172,13 +186,15 @@ records:
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
+  conditions:
+  - the notified body's designation has been suspended, restricted, or fully or partially withdrawn
 - norm_id: AIA-NORM-A036-P6-PRESERVE-FILES
   source: A036-P007
-  quote: In the event of the restriction, suspension or withdrawal of a designation, the notifying authority
-    shall take appropriate steps to ensure that the files of the notified body concerned are kept, and
-    to make them available to notifying authorities in other Member States and to market surveillance
-    authorities at their request.
-  action: take appropriate steps to preserve the affected notified body's files
+  quote: the notifying authority shall take appropriate steps to ensure that the files of the notified
+    body concerned are kept, and to make them available to notifying authorities in other Member States
+    and to market surveillance authorities at their request.
+  action: take appropriate steps to preserve the affected notified body's files and make them available
+    on request to other Member States' notifying authorities and market-surveillance authorities
   subject_ref: notifying_authority
   subject_category: public_authority
   product_scope: outside_supported_actor
@@ -186,21 +202,12 @@ records:
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
-- norm_id: AIA-NORM-A036-P6-MAKE-FILES-AVAILABLE
-  source: A036-P007
-  quote: In the event of the restriction, suspension or withdrawal of a designation, the notifying authority
-    shall take appropriate steps to ensure that the files of the notified body concerned are kept, and
-    to make them available to notifying authorities in other Member States and to market surveillance
-    authorities at their request.
-  action: make the affected notified body's files available to other notifying and market-surveillance
-    authorities on request
-  subject_ref: notifying_authority
-  subject_category: public_authority
-  product_scope: outside_supported_actor
-  product_scope_reason: The present product does not report compliance for this addressee.
-  implementation_mode: none_required
-  implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_reported
+  conditions:
+  - the notified body's designation has been restricted, suspended or withdrawn
+  mandatory_content:
+  - ensure that the affected notified body's files are kept
+  - make the files available when requested by another Member State's notifying authority or a market-surveillance
+    authority
 - norm_id: AIA-NORM-A036-P7-A-ASSESS-CERTIFICATE-IMPACT
   source: A036-P009
   quote: assess the impact on the certificates issued by the notified body
@@ -214,6 +221,8 @@ records:
   verification_mode: not_reported
   qualifier_spans:
   - A036-P008
+  conditions:
+  - the notified body's designation has been restricted, suspended or withdrawn
 - norm_id: AIA-NORM-A036-P7-B-REPORT-FINDINGS
   source: A036-P010
   quote: submit a report on its findings to the Commission and the other Member States within three months
@@ -229,6 +238,8 @@ records:
   verification_mode: not_reported
   qualifier_spans:
   - A036-P008
+  conditions:
+  - the notified body's designation has been restricted, suspended or withdrawn
 - norm_id: AIA-NORM-A036-P7-C-CORRECT-UNDUE-CERTIFICATES
   source: A036-P011
   quote: require the notified body to suspend or withdraw, within a reasonable period of time determined
@@ -245,6 +256,8 @@ records:
   verification_mode: not_reported
   qualifier_spans:
   - A036-P008
+  conditions:
+  - the notified body's designation has been restricted, suspended or withdrawn
 - norm_id: AIA-NORM-A036-P7-D-INFORM-CERTIFICATE-MEASURES
   source: A036-P012
   quote: inform the Commission and the Member States about certificates the suspension or withdrawal of
@@ -260,6 +273,8 @@ records:
   verification_mode: not_reported
   qualifier_spans:
   - A036-P008
+  conditions:
+  - the notified body's designation has been restricted, suspended or withdrawn
 - norm_id: AIA-NORM-A036-P7-E-PROVIDE-CERTIFICATE-INFORMATION
   source: A036-P013
   quote: provide the national competent authorities of the Member State in which the provider has its
@@ -276,6 +291,8 @@ records:
   verification_mode: not_reported
   qualifier_spans:
   - A036-P008
+  conditions:
+  - the notified body's designation has been restricted, suspended or withdrawn
 - norm_id: AIA-NORM-A036-P7-E-MITIGATE-RISK
   source: A036-P013
   quote: that authority shall take the appropriate measures, where necessary, to avoid a potential risk
@@ -291,6 +308,9 @@ records:
   verification_mode: not_reported
   qualifier_spans:
   - A036-P008
+  conditions:
+  - the notified body's designation has been restricted, suspended or withdrawn
+  - appropriate measures are necessary to avoid a potential risk to health, safety or fundamental rights
 - norm_id: AIA-NORM-A036-P8-SUSPENSION-CERTIFICATE-VALIDITY
   source: A036-P014
   quote: With the exception of certificates unduly issued, and where a designation has been suspended
@@ -309,10 +329,22 @@ records:
   - A036-P015
   - A036-P016
   conditions:
-  - the notifying authority confirms within one month that affected certificates pose no health, safety,
-    or fundamental-rights risk and provides a remediation timeline
-  - alternatively, the notifying authority confirms no relevant certificates will be issued, amended,
-    or reissued and states whether the notified body can support existing certificates
+  - the notified body's designation has been suspended or restricted
+  - operator: any_of
+    operands:
+    - operator: all_of
+      operands:
+      - the notifying authority confirms within one month that affected certificates pose no health, safety
+        or fundamental-rights risk
+      - the notifying authority provides a timeline for actions to remedy the suspension or restriction
+    - operator: all_of
+      operands:
+      - the notifying authority confirms no certificates relevant to the suspension will be issued, amended
+        or reissued during the suspension or restriction
+      - the notifying authority states whether the notified body can continue to monitor and remain responsible
+        for existing certificates during the suspension or restriction
+  exceptions:
+  - certificates that were unduly issued
 - norm_id: AIA-NORM-A036-P8-B-PROVIDER-REPLACEMENT-CONFIRMATION
   source: A036-P016
   quote: in the event that the notifying authority determines that the notified body does not have the

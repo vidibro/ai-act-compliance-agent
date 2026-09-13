@@ -7,14 +7,19 @@ norms:
   - subject_ref: ai_office
     category: union_institution_or_body
   action: make offered compliance commitments binding and declare no further grounds for action
-  norm_text: the AI Office may, by decision, make those commitments binding on the operator concerned
+  norm_text: If, during proceedings under Article 75a(2), the operator concerned offers commitments to
+    ensure compliance with the relevant provisions of this Regulation, the AI Office may, by decision,
+    make those commitments binding on the operator concerned and declare that there are no further grounds
+    for action.
   detection_channels:
   - semantic_legal_effect
   primary_spans:
   - AIA-TEXT-A075B-P001
   qualifier_spans: []
   effective_date_spans: []
-  conditions: []
+  conditions:
+  - during Article 75a(2) proceedings, the operator offers commitments to ensure compliance with the relevant
+    provisions of the Regulation
   exceptions: []
   mandatory_content: []
   dependencies: []
@@ -33,6 +38,8 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  parallel_norm_ids:
+  - AIA-NORM-A093-P3-MAKE-COMMITMENTS-BINDING
 - norm_id: AIA-NORM-A075B-REOPEN-PROCEEDINGS
   act_version_date: '2026-07-27'
   kind: power
@@ -40,7 +47,7 @@ norms:
   - subject_ref: ai_office
     category: union_institution_or_body
   action: reopen proceedings on request or initiative for a listed change breach or information defect
-  norm_text: The AI Office may, upon request or on its own initiative, reopen the proceedings
+  norm_text: 'The AI Office may, upon request or on its own initiative, reopen the proceedings where:'
   detection_channels:
   - semantic_legal_effect
   - cross_reference_structure
@@ -80,7 +87,9 @@ norms:
   - subject_ref: ai_office
     category: union_institution_or_body
   action: reject commitments unable to ensure effective compliance through a reasoned concluding decision
-  norm_text: it shall reject those commitments in a reasoned decision
+  norm_text: Where the AI Office considers that the commitments offered by the operator concerned are
+    unable to ensure effective compliance with the relevant provisions of this Regulation, it shall reject
+    those commitments in a reasoned decision when concluding the proceedings.
   detection_channels:
   - semantic_legal_effect
   - shall_token
@@ -88,7 +97,8 @@ norms:
   - AIA-TEXT-A075B-P005
   qualifier_spans: []
   effective_date_spans: []
-  conditions: []
+  conditions:
+  - the AI Office considers the offered commitments unable to ensure effective compliance
   exceptions: []
   mandatory_content: []
   dependencies: []

@@ -1,30 +1,48 @@
 records:
 - norm_id: AIA-NORM-A101-P1-IMPOSE-GPAI-FINES
   source: A101-P001
-  quote: The Commission may impose on providers of general-purpose AI models fines not exceeding 3 %
-  action: fine a GPAI provider up to the specified ceiling for intentional or negligent listed conduct
+  quote: The Commission may impose on providers of general-purpose AI models fines not exceeding 3 % of
+    their annual total worldwide turnover in the preceding financial year or EUR 15000000, whichever is
+    higher., when the Commission finds that the provider intentionally or negligently
+  action: fine a GPAI provider up to 3 % of preceding-year worldwide annual turnover or EUR 15 000 000,
+    whichever is higher, for intentional or negligent listed conduct
   subject_ref: commission
   subject_category: union_institution_or_body
   kind: power
-  mandatory_content: [infringing relevant AI Act provisions, failing an Article 91 request or supplying incorrect incomplete or misleading information, failing an Article 93 measure, failing to provide Article 92 evaluation access]
-  qualifier_spans: [A101-P002, A101-P003, A101-P004, A101-P005]
+  mandatory_content: []
+  qualifier_spans:
+  - A101-P002
+  - A101-P003
+  - A101-P004
+  - A101-P005
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
+  conditions:
+  - the Commission finds that the provider acted intentionally or negligently
+  - operator: any_of
+    operands:
+    - the provider infringed relevant provisions of this Regulation
+    - the provider failed to comply with an Article 91 document or information request or supplied incorrect,
+      incomplete, or misleading information
+    - the provider failed to comply with a measure requested under Article 93
+    - the provider failed to make available access to the general-purpose AI model for an Article 92 evaluation
 - norm_id: AIA-NORM-A101-P1-FIX-FINE-AMOUNT
   source: A101-P006
-  quote: In fixing the amount of the fine or periodic penalty payment, regard shall be had to the nature, gravity and duration of the infringement, taking due account of the principles of proportionality and appropriateness. The Commission shall also into account commitments made in accordance with Article 93(3) or made in relevant codes of practice in accordance with Article 56.
-  action: fix the amount of the fine or periodic penalty payment having regard to every enacted
-    factor
+  quote: In fixing the amount of the fine or periodic penalty payment, regard shall be had to the nature,
+    gravity and duration of the infringement, taking due account of the principles of proportionality
+    and appropriateness. The Commission shall also into account commitments made in accordance with Article
+    93(3) or made in relevant codes of practice in accordance with Article 56.
+  action: fix the amount of the fine or periodic penalty payment having regard to every enacted factor
   subject_ref: commission
   subject_category: union_institution_or_body
   mandatory_content:
   - the nature, gravity and duration of the infringement
   - due account of the principles of proportionality and appropriateness
-  - commitments made in accordance with Article 93(3) or made in relevant codes of practice in
-    accordance with Article 56
+  - commitments made in accordance with Article 93(3) or made in relevant codes of practice in accordance
+    with Article 56
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -32,8 +50,10 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A101-P2-PRELIMINARY-FINDINGS-AND-HEARING
   source: A101-P007
-  quote: the Commission shall communicate its preliminary findings
-  action: communicate preliminary findings and give the GPAI provider an opportunity to be heard before a fine decision
+  quote: Before adopting the decision pursuant to paragraph 1, the Commission shall communicate its preliminary
+    findings to the provider of the general-purpose AI model and give it an opportunity to be heard.
+  action: communicate preliminary findings and give the GPAI provider an opportunity to be heard before
+    a fine decision
   subject_ref: commission
   subject_category: union_institution_or_body
   product_scope: outside_supported_actor
@@ -41,6 +61,8 @@ records:
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
+  conditions:
+  - the Commission intends to adopt a paragraph 1 fine decision
 - norm_id: AIA-NORM-A101-P3-FINE-QUALITY
   source: A101-P008
   quote: Fines imposed in accordance with this Article shall be effective, proportionate and dissuasive
@@ -65,7 +87,8 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A101-P5-JUDICIAL-REVIEW
   source: A101-P010
-  quote: The Court of Justice of the European Union shall have unlimited jurisdiction to review decisions of the Commission
+  quote: The Court of Justice of the European Union shall have unlimited jurisdiction to review decisions
+    of the Commission fixing a fine under this Article. It may cancel, reduce or increase the fine imposed.
   action: review and cancel reduce or increase Commission fines with unlimited jurisdiction
   subject_ref: court_of_justice_of_the_european_union
   subject_category: union_institution_or_body
@@ -77,8 +100,12 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A101-P6-ADOPT-FINE-PROCEDURES
   source: A101-P011
-  quote: The Commission shall adopt implementing acts containing detailed arrangements and procedural safeguards
-  action: adopt implementing acts establishing arrangements and safeguards for Article 101 fine proceedings through the Article 98(2) examination procedure
+  quote: The Commission shall adopt implementing acts containing detailed arrangements and procedural
+    safeguards for proceedings in view of the possible adoption of decisions pursuant to paragraph 1 of
+    this Article. Those implementing acts shall be adopted in accordance with the examination procedure
+    referred to in Article 98(2).
+  action: adopt implementing acts establishing arrangements and safeguards for Article 101 fine proceedings
+    through the Article 98(2) examination procedure
   subject_ref: commission
   subject_category: union_institution_or_body
   product_scope: outside_supported_actor

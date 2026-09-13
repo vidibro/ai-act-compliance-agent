@@ -219,9 +219,21 @@ norms:
   - AIA-TEXT-A072-P005
   effective_date_spans: []
   conditions:
-  - a monitoring system and plan already exist under Annex I Section A legislation
+  - operator: any_of
+    operands:
+    - operator: all_of
+      operands:
+      - the high-risk AI system is covered by Union harmonisation legislation listed in Section A of Annex
+        I
+      - a post-market monitoring system and plan are already established under that legislation
+    - operator: all_of
+      operands:
+      - the high-risk AI system is referred to in point 5 of Annex III
+      - the system is placed on the market or put into service by a financial institution
+      - the financial institution is subject to Union financial-services-law requirements concerning internal
+        governance, arrangements or processes
   - the integration uses the paragraph 3 template as appropriate
-  - the result achieves equivalent protection
+  - the result achieves an equivalent level of protection
   exceptions: []
   mandatory_content: []
   dependencies: []

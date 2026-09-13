@@ -1,0 +1,111 @@
+schema_version: 1
+act_version_date: "2026-07-27"
+source:
+  kind: article
+  document: "15"
+
+decisions:
+  - finding_id: AIA-VALID-B52FFD2399B2840D
+    target: AIA-NORM-A015-P2-ENCOURAGE-MEASUREMENT
+    rule: fragment_without_qualifier_span
+    source_ref: AIA-TEXT-A015-P002
+    source_sha256: bff24aea566f7f7f2ed0b98be8eede65715eb5e9cfe8d7f8a8a2c19a50f42286
+    target_sha256: 9cfa824a9ee54ee36256a33702bc3a0ee3ced13dc076c012afe505847e95a278
+    decision: false_positive
+    reason: >-
+      The exact quotation begins mid-sentence with a lowercase article, but it contains the
+      Commission duty-holder, shall modality, cooperation qualifier, action, and object.
+    reviewed_by: vidibro
+
+  - finding_id: AIA-VALID-356EDDFC1007DE1A
+    target: AIA-NORM-A015-P5-ADVERSARIAL-ATTACKS
+    rule: fragment_without_qualifier_span
+    source_ref: AIA-TEXT-A015-P009
+    source_sha256: e0116a16909367bf6cd08fa25a324515584af4b9db2d3c84e904ff7ea287133e
+    target_sha256: c5023c1aeda9eb38e9813cd61e47ea0b76d39584e7f2f8774029000fa71f1c1d
+    decision: accepted_with_basis
+    reason: >-
+      The threat target is separately checkable but inherits the shared cybersecurity action and
+      condition in Article 15(5), with the provider duty allocated by Article 16(a).
+    legal_basis: &article_15_threat_basis
+      - span_id: AIA-TEXT-A015-P009
+        source_sha256: e0116a16909367bf6cd08fa25a324515584af4b9db2d3c84e904ff7ea287133e
+        quote: >-
+          The technical solutions to address AI specific vulnerabilities shall include, where
+          appropriate, measures to prevent, detect, respond to, resolve and control for
+      - span_id: AIA-TEXT-A016-P002
+        source_sha256: 52af9e7538a3655cdf429103d5d0eef52973450d300eae9fa4f7af30cd04eb1f
+        quote: >-
+          ensure that their high-risk AI systems are compliant with the requirements set out in
+          Section 2
+    reviewed_by: vidibro
+
+  - finding_id: AIA-VALID-738713B209473BD8
+    target: AIA-NORM-A015-P5-CONFIDENTIALITY-ATTACKS
+    rule: fragment_without_qualifier_span
+    source_ref: AIA-TEXT-A015-P009
+    source_sha256: e0116a16909367bf6cd08fa25a324515584af4b9db2d3c84e904ff7ea287133e
+    target_sha256: a4f86cd43d45d831c64e8c364b808a9fa3bc43b17eeba887c048ca41f882a93a
+    decision: accepted_with_basis
+    reason: >-
+      The threat target is separately checkable but inherits the shared cybersecurity action and
+      condition in Article 15(5), with the provider duty allocated by Article 16(a).
+    legal_basis: *article_15_threat_basis
+    reviewed_by: vidibro
+
+  - finding_id: AIA-VALID-3C7DDD50AB3813CF
+    target: AIA-NORM-A015-P5-DATA-POISONING
+    rule: fragment_without_qualifier_span
+    source_ref: AIA-TEXT-A015-P009
+    source_sha256: e0116a16909367bf6cd08fa25a324515584af4b9db2d3c84e904ff7ea287133e
+    target_sha256: b9c283a2bb5f643eebda17002059a9427a3385fa182a36f32d688d8d3f0e9b4c
+    decision: accepted_with_basis
+    reason: >-
+      The threat target is separately checkable but inherits the shared cybersecurity action and
+      condition in Article 15(5), with the provider duty allocated by Article 16(a).
+    legal_basis: *article_15_threat_basis
+    reviewed_by: vidibro
+
+  - finding_id: AIA-VALID-651BD3000C6DA919
+    target: AIA-NORM-A015-P5-MODEL-FLAWS
+    rule: fragment_without_qualifier_span
+    source_ref: AIA-TEXT-A015-P009
+    source_sha256: e0116a16909367bf6cd08fa25a324515584af4b9db2d3c84e904ff7ea287133e
+    target_sha256: f5f36290aed3ad5e37bc9f71c1191869cc325f2ee3aacc9a323f94d415727958
+    decision: accepted_with_basis
+    reason: >-
+      The threat target is separately checkable but inherits the shared cybersecurity action and
+      condition in Article 15(5), with the provider duty allocated by Article 16(a).
+    legal_basis: *article_15_threat_basis
+    reviewed_by: vidibro
+
+  - finding_id: AIA-VALID-DE1F6B95C812C1F3
+    target: AIA-NORM-A015-P5-MODEL-POISONING
+    rule: fragment_without_qualifier_span
+    source_ref: AIA-TEXT-A015-P009
+    source_sha256: e0116a16909367bf6cd08fa25a324515584af4b9db2d3c84e904ff7ea287133e
+    target_sha256: 6c02a827a83768988f49a2e66033ebd432ef2c5ae950b98e1f1120792084ec5c
+    decision: accepted_with_basis
+    reason: >-
+      The threat target is separately checkable but inherits the shared cybersecurity action and
+      condition in Article 15(5), with the provider duty allocated by Article 16(a).
+    legal_basis: *article_15_threat_basis
+    reviewed_by: vidibro
+
+  - finding_id: AIA-VALID-EB70A75FE17CB5C0
+    target: AIA-TEXT-A015-P009
+    rule: uncovered_legal_effect_text
+    source_ref: AIA-TEXT-A015-P009
+    source_sha256: e0116a16909367bf6cd08fa25a324515584af4b9db2d3c84e904ff7ea287133e
+    target_sha256: b8931e0d8a10ed4d5a66bfc52de156f1b8dd016a13cddddddcc10aaa793c4933
+    decision: accepted_with_basis
+    reason: >-
+      The shared chapeau is represented through the complete action and condition inherited by
+      each of the five separately checkable threat norms; it is not an omitted sixth obligation.
+    legal_basis:
+      - span_id: AIA-TEXT-A015-P009
+        source_sha256: e0116a16909367bf6cd08fa25a324515584af4b9db2d3c84e904ff7ea287133e
+        quote: >-
+          The technical solutions to address AI specific vulnerabilities shall include, where
+          appropriate, measures to prevent, detect, respond to, resolve and control for
+    reviewed_by: vidibro

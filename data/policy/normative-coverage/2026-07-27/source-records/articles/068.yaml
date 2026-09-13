@@ -154,27 +154,21 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A068-P4-EXPERT-INTEGRITY-AND-DISCLOSURE
   source: A068-P017
-  quote: The experts on the scientific panel shall perform their tasks with impartiality and objectivity
-  action: perform the panel's tasks with impartiality and objectivity
+  quote: The experts on the scientific panel shall perform their tasks with impartiality and objectivity,
+    and shall ensure the confidentiality of information and data obtained in carrying out their tasks and activities.
+  action: perform the panel's tasks impartially and objectively and ensure the confidentiality of information
+    and data obtained in carrying out those tasks and activities
   subject_ref: scientific_panel_expert
   subject_category: external_private_party
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
+  mandatory_content:
+  - impartial and objective performance of panel tasks
+  - confidentiality of information and data obtained through panel tasks and activities
   verification_mode: not_reported
-- norm_id: AIA-NORM-A068-P4-ENSURE-CONFIDENTIALITY
-  source: A068-P017
-  quote: shall ensure the confidentiality of information and data obtained in carrying out their tasks and activities.
-  action: ensure the confidentiality of information and data obtained in carrying out the panel's
-    tasks and activities
-  subject_ref: scientific_panel_expert
-  subject_category: external_private_party
-  product_scope: outside_supported_actor
-  product_scope_reason: The present product does not report compliance for this addressee.
-  implementation_mode: none_required
-  implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_reported
+  verified_by: vidibro
 - norm_id: AIA-NORM-A068-P4-NO-INSTRUCTIONS
   source: A068-P017
   quote: They shall neither seek nor take instructions from anyone when exercising their tasks under paragraph 3.

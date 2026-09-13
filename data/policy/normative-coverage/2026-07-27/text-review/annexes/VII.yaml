@@ -28,17 +28,42 @@ segments:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
-- segment_id: AIA-TEXT-ANNEX-VII-I1
+- segment_id: AIA-TEXT-ANNEX-VII-P001
   source:
     kind: annex
     document: VII
     act_version_date: '2026-07-27'
   start: 127
+  end: 143
+  sha256: d56461554a5752f8a1507e08111b33d1e4dcdbc0d5d755fd1263a8b059cff215
+  text: '1. Introduction
+
+    '
+  disposition: structural
+  disposition_reason: ''
+  norm_ids: []
+  qualifying_norm_ids: []
+  review:
+    status: approved
+    extracted_by: semantic-legal-effect-pass
+    verified_by: vidibro
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- segment_id: AIA-TEXT-ANNEX-VII-P002
+  source:
+    kind: annex
+    document: VII
+    act_version_date: '2026-07-27'
+  start: 143
   end: 326
-  sha256: 95e3aa2ff569a9ee0b1d6c72e65f2cadc2ecd0021af0efbe254e2f297e468e8d
-  text: "1. Introduction\n    Conformity based on an assessment of the quality management system and an\
-    \ assessment of the technical documentation is the conformity assessment procedure based on points\
-    \ 2 to 5.\n"
+  sha256: 4bcda96f0ca6bf8ca1c62d978c0c8ad4ac4156c0440472f7a7a106af445068d6
+  text: '    Conformity based on an assessment of the quality management system and an assessment of the
+    technical documentation is the conformity assessment procedure based on points 2 to 5.
+
+    '
   disposition: normative
   disposition_reason: ''
   norm_ids:
@@ -53,23 +78,48 @@ segments:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
-- segment_id: AIA-TEXT-ANNEX-VII-I2
+- segment_id: AIA-TEXT-ANNEX-VII-P003
   source:
     kind: annex
     document: VII
     act_version_date: '2026-07-27'
   start: 326
+  end: 338
+  sha256: d4dcf94300d1e2be96bfb7a38e2701cdd95f8b24d39524114cb74e0bb67e61d7
+  text: '2. Overview
+
+    '
+  disposition: structural
+  disposition_reason: ''
+  norm_ids: []
+  qualifying_norm_ids: []
+  review:
+    status: approved
+    extracted_by: semantic-legal-effect-pass
+    verified_by: vidibro
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- segment_id: AIA-TEXT-ANNEX-VII-P004
+  source:
+    kind: annex
+    document: VII
+    act_version_date: '2026-07-27'
+  start: 338
   end: 656
-  sha256: 7910e83076de6044c172ba492ed2d4024f476695e40d7d46fc03d50574ec9613
-  text: "2. Overview\n    The approved quality management system for the design, development and testing\
-    \ of AI systems pursuant to Article 17 shall be examined in accordance with point 3 and shall be subject\
-    \ to surveillance as specified in point 5. The technical documentation of the AI system shall be examined\
-    \ in accordance with point 4.\n"
+  sha256: 3bd662e96a4462ab92729a8041da5a35e3be8e5344cb2f769652ab0d0ec341ea
+  text: '    The approved quality management system for the design, development and testing of AI systems
+    pursuant to Article 17 shall be examined in accordance with point 3 and shall be subject to surveillance
+    as specified in point 5. The technical documentation of the AI system shall be examined in accordance
+    with point 4.
+
+    '
   disposition: normative
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-ANNEX-VII-OVERVIEW-QMS-EXAMINATION
-  - AIA-NORM-ANNEX-VII-OVERVIEW-QMS-SURVEILLANCE
   - AIA-NORM-ANNEX-VII-OVERVIEW-DOCUMENTATION-EXAMINATION
   qualifying_norm_ids:
   - AIA-NORM-ANNEX-VII-PROCEDURE-COMPOSITION
@@ -82,42 +132,285 @@ segments:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
-- segment_id: AIA-TEXT-ANNEX-VII-I3
+- segment_id: AIA-TEXT-ANNEX-VII-P005
   source:
     kind: annex
     document: VII
     act_version_date: '2026-07-27'
   start: 656
-  end: 2616
-  sha256: 13d8323432fcec08603b056dd5c51a792a6979acbf70b65bac4650bcbef6d9d6
-  text: "3. Quality management system\n    3.1. The application of the provider shall include:\n     \
-    \       (a) the name and address of the provider and, if the application is lodged by an authorised\
-    \ representative, also their name and address;\n            (b) the list of AI systems covered under\
-    \ the same quality management system;\n            (c) the technical documentation for each AI system\
-    \ covered under the same quality management system;\n            (d) the documentation concerning\
-    \ the quality management system which shall cover all the aspects listed under Article 17;\n     \
-    \       (e) a description of the procedures in place to ensure that the quality management system\
-    \ remains adequate and effective;\n            (f) a written declaration that the same application\
-    \ has not been lodged with any other notified body.\n    3.2. The quality management system shall\
-    \ be assessed by the notified body, which shall determine whether it satisfies the requirements referred\
-    \ to in Article 17. The decision shall be notified to the provider or its authorised representative.\
-    \ The notification shall contain the conclusions of the assessment of the quality management system\
-    \ and the reasoned assessment decision.\n    3.3. The quality management system as approved shall\
-    \ continue to be implemented and maintained by the provider so that it remains adequate and efficient.\n\
-    \    3.4. Any intended change to the approved quality management system or the list of AI systems\
-    \ covered by the latter shall be brought to the attention of the notified body by the provider. The\
-    \ proposed changes shall be examined by the notified body, which shall decide whether the modified\
-    \ quality management system continues to satisfy the requirements referred to in point 3.2 or whether\
-    \ a reassessment is necessary. The notified body shall notify the provider of its decision. The notification\
-    \ shall contain the conclusions of the examination of the changes and the reasoned assessment decision.\n"
+  end: 685
+  sha256: 2584d325f0341332f210443c063d9de0187446dd903a42842736ca3f7725fd8c
+  text: '3. Quality management system
+
+    '
+  disposition: structural
+  disposition_reason: ''
+  norm_ids: []
+  qualifying_norm_ids: []
+  review:
+    status: approved
+    extracted_by: semantic-legal-effect-pass
+    verified_by: vidibro
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- segment_id: AIA-TEXT-ANNEX-VII-P006
+  source:
+    kind: annex
+    document: VII
+    act_version_date: '2026-07-27'
+  start: 685
+  end: 741
+  sha256: c4abeb2bdbc7c0560a07b6815f91a21ed826fa6720b8b2633c5c53e025468dd1
+  text: '    3.1. The application of the provider shall include:
+
+    '
   disposition: normative
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-ANNEX-VII-QMS-APPLICATION
-  - AIA-NORM-ANNEX-VII-QMS-MAINTAIN
-  - AIA-NORM-ANNEX-VII-QMS-CHANGE
+  qualifying_norm_ids: []
+  review:
+    status: approved
+    extracted_by: semantic-legal-effect-pass
+    verified_by: vidibro
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- segment_id: AIA-TEXT-ANNEX-VII-P007
+  source:
+    kind: annex
+    document: VII
+    act_version_date: '2026-07-27'
+  start: 741
+  end: 890
+  sha256: dbdf07e195b3bc89e69498cab6e4476625e5d1e3afaca05407a72557e4a5e12f
+  text: '            (a) the name and address of the provider and, if the application is lodged by an
+    authorised representative, also their name and address;
+
+    '
+  disposition: normative
+  disposition_reason: ''
+  norm_ids: []
+  qualifying_norm_ids:
+  - AIA-NORM-ANNEX-VII-QMS-APPLICATION
+  review:
+    status: approved
+    extracted_by: semantic-legal-effect-pass
+    verified_by: vidibro
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- segment_id: AIA-TEXT-ANNEX-VII-P008
+  source:
+    kind: annex
+    document: VII
+    act_version_date: '2026-07-27'
+  start: 890
+  end: 979
+  sha256: 8a13c338d54a8a67d3067dfe16697c89954ee0f7edbf20d61007352d09d50b34
+  text: '            (b) the list of AI systems covered under the same quality management system;
+
+    '
+  disposition: normative
+  disposition_reason: ''
+  norm_ids: []
+  qualifying_norm_ids:
+  - AIA-NORM-ANNEX-VII-QMS-APPLICATION
+  review:
+    status: approved
+    extracted_by: semantic-legal-effect-pass
+    verified_by: vidibro
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- segment_id: AIA-TEXT-ANNEX-VII-P009
+  source:
+    kind: annex
+    document: VII
+    act_version_date: '2026-07-27'
+  start: 979
+  end: 1092
+  sha256: 633b7a4831117419e3b75e0d934202fc6136d6660109d59420a75cfc2b77918b
+  text: '            (c) the technical documentation for each AI system covered under the same quality
+    management system;
+
+    '
+  disposition: normative
+  disposition_reason: ''
+  norm_ids: []
+  qualifying_norm_ids:
+  - AIA-NORM-ANNEX-VII-QMS-APPLICATION
+  review:
+    status: approved
+    extracted_by: semantic-legal-effect-pass
+    verified_by: vidibro
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- segment_id: AIA-TEXT-ANNEX-VII-P010
+  source:
+    kind: annex
+    document: VII
+    act_version_date: '2026-07-27'
+  start: 1092
+  end: 1226
+  sha256: c21514f886ae506db8df56b8692d465f7c747808ef30dd39dc505fe79afe71b1
+  text: '            (d) the documentation concerning the quality management system which shall cover
+    all the aspects listed under Article 17;
+
+    '
+  disposition: normative
+  disposition_reason: ''
+  norm_ids: []
+  qualifying_norm_ids:
+  - AIA-NORM-ANNEX-VII-QMS-APPLICATION
+  review:
+    status: approved
+    extracted_by: semantic-legal-effect-pass
+    verified_by: vidibro
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- segment_id: AIA-TEXT-ANNEX-VII-P011
+  source:
+    kind: annex
+    document: VII
+    act_version_date: '2026-07-27'
+  start: 1226
+  end: 1360
+  sha256: e4501a1ebf0e80f4836374dd8db8cd687d20e6975d49a15c6431d7a9229c4698
+  text: '            (e) a description of the procedures in place to ensure that the quality management
+    system remains adequate and effective;
+
+    '
+  disposition: normative
+  disposition_reason: ''
+  norm_ids: []
+  qualifying_norm_ids:
+  - AIA-NORM-ANNEX-VII-QMS-APPLICATION
+  review:
+    status: approved
+    extracted_by: semantic-legal-effect-pass
+    verified_by: vidibro
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- segment_id: AIA-TEXT-ANNEX-VII-P012
+  source:
+    kind: annex
+    document: VII
+    act_version_date: '2026-07-27'
+  start: 1360
+  end: 1474
+  sha256: 068145f9576630d909e1d26eb9beebba028bb2dfcf9fbbf74e0a7775ba4f1f53
+  text: '            (f) a written declaration that the same application has not been lodged with any
+    other notified body.
+
+    '
+  disposition: normative
+  disposition_reason: ''
+  norm_ids: []
+  qualifying_norm_ids:
+  - AIA-NORM-ANNEX-VII-QMS-APPLICATION
+  review:
+    status: approved
+    extracted_by: semantic-legal-effect-pass
+    verified_by: vidibro
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- segment_id: AIA-TEXT-ANNEX-VII-P013
+  source:
+    kind: annex
+    document: VII
+    act_version_date: '2026-07-27'
+  start: 1474
+  end: 1857
+  sha256: 17fcf97ac9ddc6cdb6ba9f87765f18d5e75608add45a8173eb1f12ea1edfa353
+  text: '    3.2. The quality management system shall be assessed by the notified body, which shall determine
+    whether it satisfies the requirements referred to in Article 17. The decision shall be notified to
+    the provider or its authorised representative. The notification shall contain the conclusions of the
+    assessment of the quality management system and the reasoned assessment decision.
+
+    '
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
   - AIA-NORM-ANNEX-VII-QMS-ASSESS
   - AIA-NORM-ANNEX-VII-QMS-DECISION
+  qualifying_norm_ids: []
+  review:
+    status: approved
+    extracted_by: semantic-legal-effect-pass
+    verified_by: vidibro
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- segment_id: AIA-TEXT-ANNEX-VII-P014
+  source:
+    kind: annex
+    document: VII
+    act_version_date: '2026-07-27'
+  start: 1857
+  end: 2015
+  sha256: 1e9b999ce8e430c4a9f7357a63878143eac06a532591112870997342a7f6a17c
+  text: '    3.3. The quality management system as approved shall continue to be implemented and maintained
+    by the provider so that it remains adequate and efficient.
+
+    '
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-ANNEX-VII-QMS-MAINTAIN
+  qualifying_norm_ids: []
+  review:
+    status: approved
+    extracted_by: semantic-legal-effect-pass
+    verified_by: vidibro
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- segment_id: AIA-TEXT-ANNEX-VII-P015
+  source:
+    kind: annex
+    document: VII
+    act_version_date: '2026-07-27'
+  start: 2015
+  end: 2616
+  sha256: 7341de04090d05b49c304fabc147d079f061e2b50622fdb9c6e81dbfeb4e0d05
+  text: '    3.4. Any intended change to the approved quality management system or the list of AI systems
+    covered by the latter shall be brought to the attention of the notified body by the provider. The
+    proposed changes shall be examined by the notified body, which shall decide whether the modified quality
+    management system continues to satisfy the requirements referred to in point 3.2 or whether a reassessment
+    is necessary. The notified body shall notify the provider of its decision. The notification shall
+    contain the conclusions of the examination of the changes and the reasoned assessment decision.
+
+    '
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
+  - AIA-NORM-ANNEX-VII-QMS-CHANGE
   - AIA-NORM-ANNEX-VII-QMS-CHANGE-DECISION
   - AIA-NORM-ANNEX-VII-QMS-CHANGE-NOTIFICATION
   qualifying_norm_ids: []
@@ -130,77 +423,316 @@ segments:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
-- segment_id: AIA-TEXT-ANNEX-VII-I4
+- segment_id: AIA-TEXT-ANNEX-VII-P016
   source:
     kind: annex
     document: VII
     act_version_date: '2026-07-27'
   start: 2616
-  end: 7205
-  sha256: dbed751d9ab518eb7a56e8d2694c57d17c81a87256997993fd38bd17b410ec96
-  text: "4. Control of the technical documentation.\n    4.1. In addition to the application referred\
-    \ to in point 3, an application with a notified body of their choice shall be lodged by the provider\
-    \ for the assessment of the technical documentation relating to the AI system which the provider intends\
-    \ to place on the market or put into service and which is covered by the quality management system\
-    \ referred to under point 3.\n    4.2. The application shall include:\n            (a) the name and\
-    \ address of the provider;\n            (b) a written declaration that the same application has not\
-    \ been lodged with any other notified body;\n            (c) the technical documentation referred\
-    \ to in Annex IV.\n    4.3. The technical documentation shall be examined by the notified body. Where\
-    \ relevant, and limited to what is necessary to fulfil its tasks, the notified body shall be granted\
-    \ full access to the training, validation, and testing data sets used, including, where appropriate\
-    \ and subject to security safeguards, through API or other relevant technical means and tools enabling\
-    \ remote access.\n    4.4. In examining the technical documentation, the notified body may require\
-    \ that the provider supply further evidence or carry out further tests so as to enable a proper assessment\
-    \ of the conformity of the AI system with the requirements set out in Chapter III, Section 2. Where\
-    \ the notified body is not satisfied with the tests carried out by the provider, the notified body\
-    \ shall itself directly carry out adequate tests, as appropriate.\n    4.5. Where necessary to assess\
-    \ the conformity of the high-risk AI system with the requirements set out in Chapter III, Section\
-    \ 2, after all other reasonable means to verify conformity have been exhausted and have proven to\
-    \ be insufficient, and upon a reasoned request, the notified body shall also be granted access to\
-    \ the training and trained models of the AI system, including its relevant parameters. Such access\
-    \ shall be subject to existing Union law on the protection of intellectual property and trade secrets.\n\
-    \    4.6. The decision of the notified body shall be notified to the provider or its authorised representative.\
-    \ The notification shall contain the conclusions of the assessment of the technical documentation\
-    \ and the reasoned assessment decision. Where the AI system is in conformity with the requirements\
-    \ set out in Chapter III, Section 2, the notified body shall issue a Union technical documentation\
-    \ assessment certificate. The certificate shall indicate the name and address of the provider, the\
-    \ conclusions of the examination, the conditions (if any) for its validity and the data necessary\
-    \ for the identification of the AI system. The certificate and its annexes shall contain all relevant\
-    \ information to allow the conformity of the AI system to be evaluated, and to allow for control of\
-    \ the AI system while in use, where applicable. Where the AI system is not in conformity with the\
-    \ requirements set out in Chapter III, Section 2, the notified body shall refuse to issue a Union\
-    \ technical documentation assessment certificate and shall inform the applicant accordingly, giving\
-    \ detailed reasons for its refusal. Where the AI system does not meet the requirement relating to\
-    \ the data used to train it, re-training of the AI system will be needed prior to the application\
-    \ for a new conformity assessment. In this case, the reasoned assessment decision of the notified\
-    \ body refusing to issue the Union technical documentation assessment certificate shall contain specific\
-    \ considerations on the quality data used to train the AI system, in particular on the reasons for\
-    \ non-compliance.\n    4.7. Any change to the AI system that could affect the compliance of the AI\
-    \ system with the requirements or its intended purpose shall be assessed by the notified body which\
-    \ issued the Union technical documentation assessment certificate. The provider shall inform such\
-    \ notified body of its intention to introduce any of the abovementioned changes, or if it otherwise\
-    \ becomes aware of the occurrence of such changes. The intended changes shall be assessed by the notified\
-    \ body, which shall decide whether those changes require a new conformity assessment in accordance\
-    \ with Article 43(4) or whether they could be addressed by means of a supplement to the Union technical\
-    \ documentation assessment certificate. In the latter case, the notified body shall assess the changes,\
-    \ notify the provider of its decision and, where the changes are approved, issue to the provider a\
-    \ supplement to the Union technical documentation assessment certificate.\n"
+  end: 2659
+  sha256: 37f913198189632b5c664794dc7a95d561fa370250f94ada628593a645e1ad4e
+  text: '4. Control of the technical documentation.
+
+    '
+  disposition: structural
+  disposition_reason: ''
+  norm_ids: []
+  qualifying_norm_ids: []
+  review:
+    status: approved
+    extracted_by: semantic-legal-effect-pass
+    verified_by: vidibro
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- segment_id: AIA-TEXT-ANNEX-VII-P017
+  source:
+    kind: annex
+    document: VII
+    act_version_date: '2026-07-27'
+  start: 2659
+  end: 3034
+  sha256: 780a309cedbc818cbbfa4dc016d4b3ea4ca00968f78c9c39f02efb6d28bc4446
+  text: '    4.1. In addition to the application referred to in point 3, an application with a notified
+    body of their choice shall be lodged by the provider for the assessment of the technical documentation
+    relating to the AI system which the provider intends to place on the market or put into service and
+    which is covered by the quality management system referred to under point 3.
+
+    '
   disposition: normative
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-ANNEX-VII-DOC-APPLICATION
+  qualifying_norm_ids: []
+  review:
+    status: approved
+    extracted_by: semantic-legal-effect-pass
+    verified_by: vidibro
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- segment_id: AIA-TEXT-ANNEX-VII-P018
+  source:
+    kind: annex
+    document: VII
+    act_version_date: '2026-07-27'
+  start: 3034
+  end: 3074
+  sha256: b2eea7111cbc23cb0e2d5878a197bbc36da0419148c3dd0afc9e1162f2925a04
+  text: '    4.2. The application shall include:
+
+    '
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
   - AIA-NORM-ANNEX-VII-DOC-APPLICATION-CONTENT
+  qualifying_norm_ids: []
+  review:
+    status: approved
+    extracted_by: semantic-legal-effect-pass
+    verified_by: vidibro
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- segment_id: AIA-TEXT-ANNEX-VII-P019
+  source:
+    kind: annex
+    document: VII
+    act_version_date: '2026-07-27'
+  start: 3074
+  end: 3128
+  sha256: 9354edcf20dfc80d9578332942fcf629aa291f984f19035ad6eb8c0021cfa461
+  text: '            (a) the name and address of the provider;
+
+    '
+  disposition: normative
+  disposition_reason: ''
+  norm_ids: []
+  qualifying_norm_ids:
+  - AIA-NORM-ANNEX-VII-DOC-APPLICATION-CONTENT
+  review:
+    status: approved
+    extracted_by: semantic-legal-effect-pass
+    verified_by: vidibro
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- segment_id: AIA-TEXT-ANNEX-VII-P020
+  source:
+    kind: annex
+    document: VII
+    act_version_date: '2026-07-27'
+  start: 3128
+  end: 3242
+  sha256: f46523b434f1935f27d977ef74b1c2331d0eec1d59d07a18a1e21bccb45d6874
+  text: '            (b) a written declaration that the same application has not been lodged with any
+    other notified body;
+
+    '
+  disposition: normative
+  disposition_reason: ''
+  norm_ids: []
+  qualifying_norm_ids:
+  - AIA-NORM-ANNEX-VII-DOC-APPLICATION-CONTENT
+  review:
+    status: approved
+    extracted_by: semantic-legal-effect-pass
+    verified_by: vidibro
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- segment_id: AIA-TEXT-ANNEX-VII-P021
+  source:
+    kind: annex
+    document: VII
+    act_version_date: '2026-07-27'
+  start: 3242
+  end: 3311
+  sha256: 90ec59c174013368d17c60adacd1aa08c613b0148b55324d99d58c44d31bc90c
+  text: '            (c) the technical documentation referred to in Annex IV.
+
+    '
+  disposition: normative
+  disposition_reason: ''
+  norm_ids: []
+  qualifying_norm_ids:
+  - AIA-NORM-ANNEX-VII-DOC-APPLICATION-CONTENT
+  review:
+    status: approved
+    extracted_by: semantic-legal-effect-pass
+    verified_by: vidibro
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- segment_id: AIA-TEXT-ANNEX-VII-P022
+  source:
+    kind: annex
+    document: VII
+    act_version_date: '2026-07-27'
+  start: 3311
+  end: 3707
+  sha256: 742a2d06b7e2520b2b6ea68361af0a034428c10fbb4be6188f7f6696690cb0ec
+  text: '    4.3. The technical documentation shall be examined by the notified body. Where relevant,
+    and limited to what is necessary to fulfil its tasks, the notified body shall be granted full access
+    to the training, validation, and testing data sets used, including, where appropriate and subject
+    to security safeguards, through API or other relevant technical means and tools enabling remote access.
+
+    '
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
   - AIA-NORM-ANNEX-VII-DOC-EXAMINE
   - AIA-NORM-ANNEX-VII-DATA-ACCESS
+  qualifying_norm_ids: []
+  review:
+    status: approved
+    extracted_by: semantic-legal-effect-pass
+    verified_by: vidibro
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- segment_id: AIA-TEXT-ANNEX-VII-P023
+  source:
+    kind: annex
+    document: VII
+    act_version_date: '2026-07-27'
+  start: 3707
+  end: 4152
+  sha256: d5f536433195715995a4fd53a165b36583d9ae1996b84217405bbf5d35b22483
+  text: '    4.4. In examining the technical documentation, the notified body may require that the provider
+    supply further evidence or carry out further tests so as to enable a proper assessment of the conformity
+    of the AI system with the requirements set out in Chapter III, Section 2. Where the notified body
+    is not satisfied with the tests carried out by the provider, the notified body shall itself directly
+    carry out adequate tests, as appropriate.
+
+    '
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
   - AIA-NORM-ANNEX-VII-EVIDENCE
   - AIA-NORM-ANNEX-VII-TESTS
+  qualifying_norm_ids: []
+  review:
+    status: approved
+    extracted_by: semantic-legal-effect-pass
+    verified_by: vidibro
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- segment_id: AIA-TEXT-ANNEX-VII-P024
+  source:
+    kind: annex
+    document: VII
+    act_version_date: '2026-07-27'
+  start: 4152
+  end: 4673
+  sha256: bc4224740e09306c4ad77803a14ddb939daf30bd0c091598dbdd169c0a1d7299
+  text: '    4.5. Where necessary to assess the conformity of the high-risk AI system with the requirements
+    set out in Chapter III, Section 2, after all other reasonable means to verify conformity have been
+    exhausted and have proven to be insufficient, and upon a reasoned request, the notified body shall
+    also be granted access to the training and trained models of the AI system, including its relevant
+    parameters. Such access shall be subject to existing Union law on the protection of intellectual property
+    and trade secrets.
+
+    '
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
   - AIA-NORM-ANNEX-VII-MODEL-ACCESS
+  qualifying_norm_ids: []
+  review:
+    status: approved
+    extracted_by: semantic-legal-effect-pass
+    verified_by: vidibro
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- segment_id: AIA-TEXT-ANNEX-VII-P025
+  source:
+    kind: annex
+    document: VII
+    act_version_date: '2026-07-27'
+  start: 4673
+  end: 6259
+  sha256: 1a3248f551953197c6a29cfcd002c9d31c7098e681c2a6887cacf2754a912414
+  text: '    4.6. The decision of the notified body shall be notified to the provider or its authorised
+    representative. The notification shall contain the conclusions of the assessment of the technical
+    documentation and the reasoned assessment decision. Where the AI system is in conformity with the
+    requirements set out in Chapter III, Section 2, the notified body shall issue a Union technical documentation
+    assessment certificate. The certificate shall indicate the name and address of the provider, the conclusions
+    of the examination, the conditions (if any) for its validity and the data necessary for the identification
+    of the AI system. The certificate and its annexes shall contain all relevant information to allow
+    the conformity of the AI system to be evaluated, and to allow for control of the AI system while in
+    use, where applicable. Where the AI system is not in conformity with the requirements set out in Chapter
+    III, Section 2, the notified body shall refuse to issue a Union technical documentation assessment
+    certificate and shall inform the applicant accordingly, giving detailed reasons for its refusal. Where
+    the AI system does not meet the requirement relating to the data used to train it, re-training of
+    the AI system will be needed prior to the application for a new conformity assessment. In this case,
+    the reasoned assessment decision of the notified body refusing to issue the Union technical documentation
+    assessment certificate shall contain specific considerations on the quality data used to train the
+    AI system, in particular on the reasons for non-compliance.
+
+    '
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
   - AIA-NORM-ANNEX-VII-RETRAIN
   - AIA-NORM-ANNEX-VII-DOC-DECISION
   - AIA-NORM-ANNEX-VII-CERTIFICATE
   - AIA-NORM-ANNEX-VII-CERTIFICATE-CONTENT
   - AIA-NORM-ANNEX-VII-REFUSE
   - AIA-NORM-ANNEX-VII-DATA-REASONS
+  qualifying_norm_ids: []
+  review:
+    status: approved
+    extracted_by: semantic-legal-effect-pass
+    verified_by: vidibro
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- segment_id: AIA-TEXT-ANNEX-VII-P026
+  source:
+    kind: annex
+    document: VII
+    act_version_date: '2026-07-27'
+  start: 6259
+  end: 7205
+  sha256: ca36c09c1e7a655efaebe0b916e69aa94e486c08869247a5fb699eb9a5b86914
+  text: '    4.7. Any change to the AI system that could affect the compliance of the AI system with the
+    requirements or its intended purpose shall be assessed by the notified body which issued the Union
+    technical documentation assessment certificate. The provider shall inform such notified body of its
+    intention to introduce any of the abovementioned changes, or if it otherwise becomes aware of the
+    occurrence of such changes. The intended changes shall be assessed by the notified body, which shall
+    decide whether those changes require a new conformity assessment in accordance with Article 43(4)
+    or whether they could be addressed by means of a supplement to the Union technical documentation assessment
+    certificate. In the latter case, the notified body shall assess the changes, notify the provider of
+    its decision and, where the changes are approved, issue to the provider a supplement to the Union
+    technical documentation assessment certificate.
+
+    '
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
   - AIA-NORM-ANNEX-VII-CHANGE-ASSESSMENT
   - AIA-NORM-ANNEX-VII-INFORM-CHANGES
   - AIA-NORM-ANNEX-VII-CHANGE-ROUTE-DECISION
@@ -215,28 +747,101 @@ segments:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
-- segment_id: AIA-TEXT-ANNEX-VII-I5
+- segment_id: AIA-TEXT-ANNEX-VII-P027
   source:
     kind: annex
     document: VII
     act_version_date: '2026-07-27'
   start: 7205
-  end: 8110
-  sha256: f42683129e137793d0c1645586596a6eeb880e2afd7d2c50af255674ac362b57
-  text: "5. Surveillance of the approved quality management system.\n    5.1. The purpose of the surveillance\
-    \ carried out by the notified body referred to in Point 3 is to make sure that the provider duly complies\
-    \ with the terms and conditions of the approved quality management system.\n    5.2. For assessment\
-    \ purposes, the provider shall allow the notified body to access the premises where the design, development,\
-    \ testing of the AI systems is taking place. The provider shall further share with the notified body\
-    \ all necessary information.\n    5.3. The notified body shall carry out periodic audits to make sure\
-    \ that the provider maintains and applies the quality management system and shall provide the provider\
-    \ with an audit report. In the context of those audits, the notified body may carry out additional\
-    \ tests of the AI systems for which a Union technical documentation assessment certificate was issued.\n"
+  end: 7264
+  sha256: 02c65b279deaab80cc7a5fbd0b583a96b958def22e22ab6d73562dac6dd7ad7c
+  text: '5. Surveillance of the approved quality management system.
+
+    '
+  disposition: structural
+  disposition_reason: ''
+  norm_ids: []
+  qualifying_norm_ids: []
+  review:
+    status: approved
+    extracted_by: semantic-legal-effect-pass
+    verified_by: vidibro
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- segment_id: AIA-TEXT-ANNEX-VII-P028
+  source:
+    kind: annex
+    document: VII
+    act_version_date: '2026-07-27'
+  start: 7264
+  end: 7482
+  sha256: 819d5f2d8e2d8f6514f5635528fcb8836cf4fe79ff5636b99ab244eee7d36338
+  text: '    5.1. The purpose of the surveillance carried out by the notified body referred to in Point
+    3 is to make sure that the provider duly complies with the terms and conditions of the approved quality
+    management system.
+
+    '
+  disposition: context_only
+  disposition_reason: States the purpose of surveillance but imposes no independent legal effect.
+  norm_ids: []
+  qualifying_norm_ids: []
+  review:
+    status: approved
+    extracted_by: semantic-legal-effect-pass
+    verified_by: vidibro
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- segment_id: AIA-TEXT-ANNEX-VII-P029
+  source:
+    kind: annex
+    document: VII
+    act_version_date: '2026-07-27'
+  start: 7482
+  end: 7739
+  sha256: c1d12bf6d830eefa8f45ecf85cf56618ac8a056c08a36aad3eaa221bca23bd56
+  text: '    5.2. For assessment purposes, the provider shall allow the notified body to access the premises
+    where the design, development, testing of the AI systems is taking place. The provider shall further
+    share with the notified body all necessary information.
+
+    '
   disposition: normative
   disposition_reason: ''
   norm_ids:
   - AIA-NORM-ANNEX-VII-SURVEILLANCE
   - AIA-NORM-ANNEX-VII-SURVEILLANCE-SHARE-INFORMATION
+  qualifying_norm_ids: []
+  review:
+    status: approved
+    extracted_by: semantic-legal-effect-pass
+    verified_by: vidibro
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+- segment_id: AIA-TEXT-ANNEX-VII-P030
+  source:
+    kind: annex
+    document: VII
+    act_version_date: '2026-07-27'
+  start: 7739
+  end: 8110
+  sha256: 945aaecdd8d4997763a3dce597c588a545e8ba3c24c196b2c92680f0221947f2
+  text: '    5.3. The notified body shall carry out periodic audits to make sure that the provider maintains
+    and applies the quality management system and shall provide the provider with an audit report. In
+    the context of those audits, the notified body may carry out additional tests of the AI systems for
+    which a Union technical documentation assessment certificate was issued.
+
+    '
+  disposition: normative
+  disposition_reason: ''
+  norm_ids:
   - AIA-NORM-ANNEX-VII-AUDIT
   - AIA-NORM-ANNEX-VII-ADDITIONAL-TESTS
   qualifying_norm_ids: []

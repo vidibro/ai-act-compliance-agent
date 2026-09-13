@@ -7,7 +7,8 @@ norms:
   - subject_ref: commission
     category: union_institution_or_body
   action: receive assistance from a Regulation 182/2011 committee
-  norm_text: The Commission shall be assisted by a committee
+  norm_text: The Commission shall be assisted by a committee. That committee shall be a committee within
+    the meaning of Regulation (EU) No 182/2011.
   detection_channels:
   - semantic_legal_effect
   - shall_token
@@ -41,7 +42,8 @@ norms:
   - subject_ref: committee_procedure
     category: union_institution_or_body
   action: apply the Regulation 182/2011 Article 5 examination procedure when Article 98(2) is referenced
-  norm_text: Article 5 of Regulation (EU) No 182/2011 shall apply
+  norm_text: Where reference is made to this paragraph, Article 5 of Regulation (EU) No 182/2011 shall
+    apply.
   detection_channels:
   - semantic_legal_effect
   - shall_token
@@ -50,7 +52,8 @@ norms:
   - AIA-TEXT-A098-P002
   qualifier_spans: []
   effective_date_spans: []
-  conditions: []
+  conditions:
+  - an enacted provision refers to Article 98(2)
   exceptions: []
   mandatory_content: []
   dependencies: []

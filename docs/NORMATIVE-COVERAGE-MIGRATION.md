@@ -836,8 +836,10 @@ No aggregate percentage replaces these measures.
 
 ## Rough effort
 
-The original estimates below are retained as planning history. Full-corpus extraction established
-an actual inventory of 1,487 proposed norms, so remaining effort is driven by independent legal
+The original estimates below are retained as planning history. Full-corpus extraction and the
+subsequent overlap, full-sentence, and subject-continuity audits established an actual inventory of 1,391
+proposed norms, so remaining
+effort is driven by independent legal
 assurance, many-to-many implementation mapping, and behavioral proof rather than extraction volume:
 
 | Work | Estimate |
@@ -855,7 +857,7 @@ The original total was roughly **6–10 person-weeks**. It must not be used as a
 estimate: several infrastructure and authoring stages are complete, while the unexpectedly large
 norm inventory makes assurance and mapping more substantial than the original pilot could measure.
 A new forecast should be based on measured review and reconciliation throughput from representative
-batches of the 1,487 records.
+batches of the 1,391 records.
 
 ## Immediate next action
 
@@ -884,7 +886,7 @@ and the norm layer is not imported by the pipeline at all — this is a runtime 
 one. Closing it means giving a rule the provisions it answers to and rendering them together, which
 also serves `Report-surfacing coverage` above.
 
-### Open debt: one duty in several provisions has no recorded link
+### Closed: one duty in several provisions has no recorded link
 
 The ledger can say a norm restates another (`carried_by_norm_ids`) or that two norms share a rule
 (`implementation_refs`). It cannot say that separate provisions impose one duty when neither holds.
@@ -893,9 +895,32 @@ Four provisions require an EU-database registration — Article 6(4), Article 49
 twice over. None carries another, none has a rule, and they sit in three files. They agree today
 only because one reviewer judged them alike; change one and nothing marks the others as drifted.
 
-Whoever closes this decides what the relation is called and whether it is derived from shared
-subject and action or authored. Until then, treat any claim that a group of norms is "consistent"
-as prose, not as a checked property.
+The relation is now `parallel_duties`, authored as groups in the source manifest and compiled onto
+each member as `parallel_norm_ids`. It is authored rather than derived: shared subject and action
+would have merged the Article 49(1) high-risk registration with the Article 49(2) registration of a
+system concluded NOT high-risk, which read alike and are different duties. A norm belongs to at most
+one group, a group needs two members, and a group may not overlap `carried_by_norm_ids` — a
+restatement is already covered there. The loader rejects a norm naming a partner that does not name
+it back.
+
+Twenty-one groups are authored, covering 63 norms. They came from a token-overlap scan over norm
+actions, read one by one; the scan proposes, it does not decide. It also under-reports: the
+Commission's duty to account for Section 2 when amending sectoral law is written thirteen times and
+the scan surfaced eleven, because marine equipment and the Regulation 300/2008 rule-maker fell below
+the similarity threshold.
+
+Two kinds of candidate were rejected rather than linked. Articles 53 and 55 repeat four duties
+word for word — alternative compliance, harmonised-standard presumption, reliance on codes,
+confidential treatment — but a systemic-risk model provider is subject to both articles, so they are
+one rule shape over two obligation sets, not one duty. Others merely share phrasing: Article 5(3)
+governs real-time biometric identification and Article 26(10) post-remote, and Articles 40(1) and
+41(3) are alternative routes to a presumption rather than a single duty.
+
+`report.md` renders a Parallel duties section listing every group with each member beside its
+primary span, and a regression test fails if any group or member drops out of it. The coverage
+report is still not the product report: the pipeline does not import the norm layer, so a finding
+shown to a user still cites one provision. That is the same runtime change as `a shared requirement
+cites only one provision` above, and closes with it.
 
 ### Open debt: a checklist is judged as one verdict
 
@@ -1015,3 +1040,28 @@ the two.
 
 Cost: the enum value, a builder default, a metrics split, the report section, and 91 norms to
 re-scope and review.
+
+### Closed: a segment's `norm_ids` claimed norms whose words it did not contain
+
+`norm_ids` on a `TextReviewSegment` once meant "norms that reference this span in any role". The
+builder appended a norm for every linked span — primary, qualifier and effective-date alike — so a
+chapeau listed norms drawn from its siblings. `AIA-TEXT-A005-P001` is the clearest case: 51
+characters reading `1. The following AI practices shall be prohibited:`, listing all ten Article
+5(1) prohibitions, containing none of them. 353 segments were in that state, every one a stem whose
+list lives elsewhere — the Article 3 definitions chapeau alone named 70 norms.
+
+Quote containment was, and still is, checked only against the primary span, which is correct: a
+qualifier is not meant to contain the quote. But that left `norm_ids` free to assert a link the
+segment's own text could not support, with nothing to detect it. A reviewer reading segments found
+it, not a check.
+
+The field is now split by role. `norm_ids` holds norms whose `primary_spans` contains the segment,
+so every id names a norm whose `norm_text` is a substring of that segment's `text`.
+`qualifying_norm_ids` holds norms that reference it as `qualifier_spans`, `definition_spans` or
+`effective_date_spans`. `norm_loader` compares each field against its own map rather than one
+conflated set, and the normative-segment validator requires at least one norm across both lists —
+a chapeau legitimately has none of its own.
+
+The invariant worth keeping: **a segment may not list a norm under `norm_ids` unless that norm's
+enacted words are inside it.** Provenance that cannot be read back from the text it names is not
+provenance.

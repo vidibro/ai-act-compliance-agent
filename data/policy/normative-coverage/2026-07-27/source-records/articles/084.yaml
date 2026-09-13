@@ -1,7 +1,8 @@
 records:
 - norm_id: AIA-NORM-A084-P1-DESIGNATE-TESTING-SUPPORT
   source: A084-P001
-  quote: The Commission shall designate one or more Union AI testing support structures to perform the tasks listed under Article 21(6) of Regulation (EU) 2019/1020 in the area of AI.
+  quote: The Commission shall designate one or more Union AI testing support structures to perform the
+    tasks listed under Article 21(6) of Regulation (EU) 2019/1020 in the area of AI.
   action: designate one or more Union structures for Regulation 2019/1020 Article 21(6) AI testing support
   subject_ref: commission
   subject_category: union_institution_or_body
@@ -12,8 +13,11 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A084-P2-PROVIDE-INDEPENDENT-ADVICE
   source: A084-P002
-  quote: Union AI testing support structures shall also provide independent technical or scientific advice at the request of the Board, the Commission, or of market surveillance authorities.
-  action: provide independent technical or scientific advice when requested by the Board Commission or market surveillance authorities
+  quote: Without prejudice to the tasks referred to in paragraph 1, Union AI testing support structures
+    shall also provide independent technical or scientific advice at the request of the Board, the Commission,
+    or of market surveillance authorities.
+  action: provide independent technical or scientific advice when requested by the Board Commission or
+    market surveillance authorities
   subject_ref: union_ai_testing_support_structure
   subject_category: union_institution_or_body
   product_scope: outside_supported_actor
@@ -21,3 +25,5 @@ records:
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
+  conditions:
+  - the Board, the Commission, or a market-surveillance authority requests the advice

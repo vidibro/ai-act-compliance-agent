@@ -46,8 +46,10 @@ norms:
     category: public_authority
   action: evaluate all enacted requirements and obligations when sufficient reason indicates an AI system
     presents a risk
-  norm_text: it shall carry out an evaluation of the AI system concerned in respect of its compliance
-    with all the requirements and obligations laid down in this Regulation.
+  norm_text: Where the market surveillance authority of a Member State has sufficient reason to consider
+    an AI system to present a risk as referred to in paragraph 1 of this Article, it shall carry out an
+    evaluation of the AI system concerned in respect of its compliance with all the requirements and obligations
+    laid down in this Regulation.
   detection_channels:
   - semantic_legal_effect
   - shall_token
@@ -55,7 +57,9 @@ norms:
   - AIA-TEXT-A079-P002
   qualifier_spans: []
   effective_date_spans: []
-  conditions: []
+  conditions:
+  - the Member-State market-surveillance authority has sufficient reason to consider an AI system to present
+    an Article 79(1) risk
   exceptions: []
   mandatory_content: []
   dependencies: []
@@ -158,17 +162,24 @@ norms:
   - subject_ref: market_surveillance_authority
     category: public_authority
   action: require correction withdrawal or recall without undue delay within the shorter enacted deadline
-  norm_text: it shall without undue delay require the relevant operator to take all appropriate corrective
-    actions to bring the AI system into compliance, to withdraw the AI system from the market, or to recall
-    it
+  norm_text: Where, in the course of that evaluation, the market surveillance authority or, where applicable
+    the market surveillance authority in cooperation with the national public authority referred to in
+    Article 77(1), finds that the AI system does not comply with the requirements and obligations laid
+    down in this Regulation, it shall without undue delay require the relevant operator to take all appropriate
+    corrective actions to bring the AI system into compliance, to withdraw the AI system from the market,
+    or to recall it within a period the market surveillance authority may prescribe, and in any event
+    within the shorter of 15 working days, or as provided for in the relevant Union harmonisation legislation.
   detection_channels:
   - semantic_legal_effect
   - shall_token
+  - other_modal
   primary_spans:
   - AIA-TEXT-A079-P003
   qualifier_spans: []
   effective_date_spans: []
-  conditions: []
+  conditions:
+  - the Article 79 evaluation finds that the AI system does not comply with the Regulation's requirements
+    and obligations
   exceptions: []
   mandatory_content: []
   dependencies: []
@@ -265,8 +276,9 @@ norms:
     category: public_authority
   action: promptly inform the Commission and other Member States of cross-border evaluation results and
     required actions
-  norm_text: it shall inform the Commission and the other Member States without undue delay of the results
-    of the evaluation and of the actions which it has required the operator to take.
+  norm_text: Where the market surveillance authority considers that the non-compliance is not restricted
+    to its national territory, it shall inform the Commission and the other Member States without undue
+    delay of the results of the evaluation and of the actions which it has required the operator to take.
   detection_channels:
   - semantic_legal_effect
   - shall_token
@@ -274,7 +286,8 @@ norms:
   - AIA-TEXT-A079-P005
   qualifier_spans: []
   effective_date_spans: []
-  conditions: []
+  conditions:
+  - the market-surveillance authority considers the non-compliance is not restricted to its national territory
   exceptions: []
   mandatory_content: []
   dependencies: []
@@ -293,6 +306,8 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  parallel_norm_ids:
+  - AIA-NORM-A080-P3-INFORM-CROSS-BORDER-USE
 - norm_id: AIA-NORM-A079-P4-CORRECT-ALL-UNION-SYSTEMS
   act_version_date: '2026-07-27'
   kind: obligation
@@ -331,6 +346,9 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  parallel_norm_ids:
+  - AIA-NORM-A080-P5-CORRECT-ALL-UNION-SYSTEMS
+  - AIA-NORM-A082-P2-CORRECT-ALL-UNION-SYSTEMS
 - norm_id: AIA-NORM-A079-P5-TAKE-AND-NOTIFY-PROVISIONAL-MEASURES
   act_version_date: '2026-07-27'
   kind: obligation
@@ -339,9 +357,11 @@ norms:
     category: public_authority
   action: take all appropriate provisional measures to prohibit or restrict the system's being made available
     or put into service, to withdraw the product or standalone AI system, or to recall it
-  norm_text: "the market surveillance authority shall take all appropriate provisional measures to prohibit\
-    \ or restrict the AI system\u2019s being made available on its national market or put into service,\
-    \ to withdraw the product or the standalone AI system from that market or to recall it."
+  norm_text: "Where the operator of an AI system does not take adequate corrective action within the period\
+    \ referred to in paragraph 2, the market surveillance authority shall take all appropriate provisional\
+    \ measures to prohibit or restrict the AI system\u2019s being made available on its national market\
+    \ or put into service, to withdraw the product or the standalone AI system from that market or to\
+    \ recall it."
   detection_channels:
   - semantic_legal_effect
   - shall_token
@@ -464,10 +484,11 @@ norms:
     category: public_authority
   action: promptly report adopted measures additional information and any objection to the notified national
     measure
-  norm_text: shall, without undue delay, inform the Commission and the other Member States of any measures
-    adopted and of any additional information at their disposal relating to the non-compliance of the
-    AI system concerned, and, in the event of disagreement with the notified national measure, of their
-    objections.
+  norm_text: The market surveillance authorities other than the market surveillance authority of the Member
+    State initiating the procedure shall, without undue delay, inform the Commission and the other Member
+    States of any measures adopted and of any additional information at their disposal relating to the
+    non-compliance of the AI system concerned, and, in the event of disagreement with the notified national
+    measure, of their objections.
   detection_channels:
   - semantic_legal_effect
   - shall_token
@@ -503,7 +524,10 @@ norms:
   action: deem the provisional measure justified when no objection is raised within three months of receipt
     of the paragraph 5 notification, or within 30 days where the non-compliance concerns the Article 5
     prohibition
-  norm_text: that measure shall be deemed justified.
+  norm_text: Where, within three months of receipt of the notification referred to in paragraph 5 of this
+    Article, no objection has been raised by either a market surveillance authority of a Member State
+    or by the Commission in respect of a provisional measure taken by a market surveillance authority
+    of another Member State, that measure shall be deemed justified.
   detection_channels:
   - semantic_legal_effect
   - shall_token
@@ -512,7 +536,9 @@ norms:
   - AIA-TEXT-A079-P014
   qualifier_spans: []
   effective_date_spans: []
-  conditions: []
+  conditions:
+  - no Member-State market-surveillance authority or the Commission objects within the applicable objection
+    period after receipt of the paragraph 5 notification
   exceptions: []
   mandatory_content: []
   dependencies: []

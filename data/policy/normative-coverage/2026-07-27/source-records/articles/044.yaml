@@ -65,24 +65,16 @@ records:
     timely corrective action restores compliance
   subject_ref: notified_body
   subject_category: notified_or_conformity_body
+  conditions:
+  - the notified body finds that the AI system no longer meets Chapter III Section 2 requirements
+  exceptions:
+  - the provider ensures compliance through appropriate corrective action within an appropriate deadline
+    set by the notified body
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
-- norm_id: AIA-NORM-A044-P3-CORRECTIVE-ACTION-EXCEPTION
-  source: A044-P003
-  quote: unless compliance with those requirements is ensured by appropriate corrective action taken by
-    the provider of the system within an appropriate deadline set by the notified body
-  action: avoid certificate suspension, withdrawal, or restriction by restoring compliance through appropriate
-    corrective action within the notified-body deadline
-  subject_ref: provider
-  subject_category: supported_operator
-  conditions:
-  - a notified body finds that the AI system no longer meets the requirements set out in Section 2
-  kind: legal_consequence
-  implementation_mode: missing
-  verification_mode: reported_conditionally
   verified_by: vidibro
 - norm_id: AIA-NORM-A044-P3-GIVE-REASONS
   source: A044-P003

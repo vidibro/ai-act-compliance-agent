@@ -7,7 +7,9 @@ norms:
   - subject_ref: ai_office
     category: union_institution_or_body
   action: adopt a decision establishing detected AI Act or binding-commitment non-compliance
-  norm_text: it shall adopt a decision establishing such non-compliance
+  norm_text: Where the AI Office finds that an operator falling within the scope of Article 75(1) does
+    not comply with the relevant provisions of this Regulation or with commitments made binding pursuant
+    to Article 75b, it shall adopt a decision establishing such non-compliance.
   detection_channels:
   - semantic_legal_effect
   - shall_token
@@ -15,7 +17,11 @@ norms:
   - AIA-TEXT-A075C-P001
   qualifier_spans: []
   effective_date_spans: []
-  conditions: []
+  conditions:
+  - operator: any_of
+    operands:
+    - an Article 75(1) operator does not comply with relevant provisions of the Regulation
+    - an Article 75(1) operator does not comply with commitments made binding under Article 75b
   exceptions: []
   mandatory_content: []
   dependencies: []
@@ -41,7 +47,8 @@ norms:
   - subject_ref: ai_office
     category: union_institution_or_body
   action: communicate preliminary findings before adopting a non-compliance decision
-  norm_text: the AI Office shall communicate its preliminary findings to the operator concerned
+  norm_text: Before adopting a decision pursuant to paragraph 1, the AI Office shall communicate its preliminary
+    findings to the operator concerned.
   detection_channels:
   - semantic_legal_effect
   - shall_token
@@ -49,7 +56,8 @@ norms:
   - AIA-TEXT-A075C-P002
   qualifier_spans: []
   effective_date_spans: []
-  conditions: []
+  conditions:
+  - before the AI Office adopts an Article 75c(1) decision
   exceptions: []
   mandatory_content: []
   dependencies: []
@@ -76,7 +84,9 @@ norms:
     category: union_institution_or_body
   action: explain contemplated AI Office measures and measures the operator should take in the preliminary
     findings
-  norm_text: the AI Office shall explain the measures that it is considering taking
+  norm_text: In the preliminary findings, the AI Office shall explain the measures that it is considering
+    taking, or that it considers that the operator concerned should take, in order to effectively address
+    the preliminary findings.
   detection_channels:
   - semantic_legal_effect
   - shall_token
@@ -84,7 +94,8 @@ norms:
   - AIA-TEXT-A075C-P002
   qualifier_spans: []
   effective_date_spans: []
-  conditions: []
+  conditions:
+  - the AI Office communicates preliminary findings under Article 75c(2)
   exceptions: []
   mandatory_content: []
   dependencies: []
@@ -111,10 +122,10 @@ norms:
     category: union_institution_or_body
   action: order necessary compliance measures within a reasonable specified period and information about
     intended measures
-  norm_text: the AI Office shall, where relevant, order the operator concerned to take the necessary measures
-    to ensure compliance with the relevant provisions of this Regulation within a reasonable period specified
-    therein and to provide information on the measures that that operator intends to take to comply with
-    the decision.
+  norm_text: In the decision pursuant to paragraph 1 of this Article, the AI Office shall, where relevant,
+    order the operator concerned to take the necessary measures to ensure compliance with the relevant
+    provisions of this Regulation within a reasonable period specified therein and to provide information
+    on the measures that that operator intends to take to comply with the decision.
   detection_channels:
   - semantic_legal_effect
   - shall_token
@@ -122,7 +133,8 @@ norms:
   - AIA-TEXT-A075C-P003
   qualifier_spans: []
   effective_date_spans: []
-  conditions: []
+  conditions:
+  - the requirement is relevant to the Article 75c(1) decision
   exceptions: []
   mandatory_content:
   - the necessary measures to ensure compliance within a reasonable period specified in the decision
@@ -188,7 +200,8 @@ norms:
   - subject_ref: ai_office
     category: union_institution_or_body
   action: conduct a structured dialogue before requesting a measure
-  norm_text: the AI Office may engage in a structured dialogue with the operator
+  norm_text: Prior to requesting any measure, the AI Office may engage in a structured dialogue with the
+    operator of the AI system in question.
   detection_channels:
   - semantic_legal_effect
   - other_modal
@@ -222,7 +235,7 @@ norms:
   - subject_ref: article_75_operator
     category: supported_operator
   action: propose Article 75b commitments during structured dialogue
-  norm_text: the operator may propose commitments in accordance with Article 75b
+  norm_text: During this dialogue, the operator may propose commitments in accordance with Article 75b.
   detection_channels:
   - semantic_legal_effect
   - other_modal
@@ -230,7 +243,8 @@ norms:
   - AIA-TEXT-A075C-P003
   qualifier_spans: []
   effective_date_spans: []
-  conditions: []
+  conditions:
+  - the operator is participating in the structured dialogue described in Article 75c(3)
   exceptions: []
   mandatory_content: []
   dependencies: []
@@ -256,9 +270,14 @@ norms:
   - subject_ref: ai_office
     category: union_institution_or_body
   action: accompany a non-compliance decision with Article 99 penalties adapted to AI Office enforcement
-  norm_text: may be accompanied by the imposition of penalties in accordance with Article 99(3) to (7)
+  norm_text: A decision adopted pursuant to paragraph 1 of this Article may be accompanied by the imposition
+    of penalties in accordance with Article 99(3) to (7), which provisions shall apply mutatis mutandis
+    to the AI Office in the execution of its supervision and enforcement tasks referred to in Article
+    75(1).
   detection_channels:
   - semantic_legal_effect
+  - shall_token
+  - other_modal
   primary_spans:
   - AIA-TEXT-A075C-P004
   qualifier_spans: []
@@ -290,7 +309,8 @@ norms:
     category: supported_operator
   action: expose listed infringements decision breaches and binding-commitment breaches to Article 99(4)
     fines
-  norm_text: shall be subject to administrative fines as referred to in Article 99(4)
+  norm_text: 'In particular, the following shall be subject to administrative fines as referred to in
+    Article 99(4):'
   detection_channels:
   - semantic_legal_effect
   - shall_token
@@ -333,7 +353,8 @@ norms:
     category: supported_operator
   action: expose incorrect incomplete or misleading requested information supplied to the AI Office to
     Article 99(5) fines
-  norm_text: shall be subject to administrative fines as referred to in Article 99(5)
+  norm_text: The supply of incorrect, incomplete or misleading information to the AI Office in reply to
+    a request shall be subject to administrative fines as referred to in Article 99(5).
   detection_channels:
   - semantic_legal_effect
   - shall_token
@@ -342,7 +363,8 @@ norms:
   - AIA-TEXT-A075C-P009
   qualifier_spans: []
   effective_date_spans: []
-  conditions: []
+  conditions:
+  - incorrect, incomplete or misleading information is supplied to the AI Office in reply to a request
   exceptions: []
   mandatory_content: []
   dependencies: []
@@ -369,7 +391,8 @@ norms:
     category: union_institution_or_body
   action: impose periodic penalty payments compelling specified investigation information inspection correction
     and compliance conduct
-  norm_text: The AI Office may adopt a decision imposing periodic penalty payments
+  norm_text: 'The AI Office may adopt a decision imposing periodic penalty payments to compel the operators
+    subject to its competence pursuant to Article 75(1) to the following:'
   detection_channels:
   - semantic_legal_effect
   - other_modal
@@ -417,8 +440,12 @@ norms:
   subjects:
   - subject_ref: ai_office
     category: union_institution_or_body
-  action: make the periodic penalty payments effective and proportionate
-  norm_text: Those penalty payments shall be effective and proportionate
+  action: make periodic penalty payments effective and proportionate and, where applicable, keep them
+    within 5 % of average daily income or worldwide annual turnover in the preceding financial year per
+    day from the date appointed by the decision
+  norm_text: Those penalty payments shall be effective and proportionate, and, where applicable, shall
+    not exceed 5 % of the average daily income or worldwide annual turnover in the preceding financial
+    year per day, calculated from the date appointed by the decision.
   detection_channels:
   - semantic_legal_effect
   - shall_token
@@ -428,44 +455,8 @@ norms:
   effective_date_spans: []
   conditions: []
   exceptions: []
-  mandatory_content: []
-  dependencies: []
-  product_scope: outside_supported_actor
-  product_scope_reason: The present product does not report compliance for this addressee.
-  implementation_mode: none_required
-  implementation_refs: []
-  implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_reported
-  review:
-    status: proposed
-    extracted_by: semantic-legal-effect-pass
-    verified_by: ''
-    review_run_id: normative-coverage-2026-08-28
-    presentation_mode: exact-source-slice
-    display_chunks: 1
-    fully_displayed: true
-    elapsed_seconds: null
-- norm_id: AIA-NORM-A075C-P5-PENALTY-PAYMENT-CEILING
-  act_version_date: '2026-07-27'
-  kind: obligation
-  subjects:
-  - subject_ref: ai_office
-    category: union_institution_or_body
-  action: keep the periodic penalty payment within 5 % of the average daily income or worldwide annual
-    turnover in the preceding financial year, per day, counted from the date appointed by the decision
-  norm_text: and, where applicable, shall not exceed 5 % of the average daily income or worldwide annual
-    turnover in the preceding financial year per day, calculated from the date appointed by the decision.
-  detection_channels:
-  - semantic_legal_effect
-  - shall_token
-  primary_spans:
-  - AIA-TEXT-A075C-P018
-  qualifier_spans: []
-  effective_date_spans: []
-  conditions:
-  - the ceiling is applicable
-  exceptions: []
   mandatory_content:
+  - make the penalty payments effective and proportionate
   - the basis is the average daily income or worldwide annual turnover
   - the reference period is the preceding financial year
   - the ceiling of 5 % applies per day
@@ -494,10 +485,13 @@ norms:
     category: union_institution_or_body
   action: review and cancel reduce or increase AI Office fines and periodic penalty payments with unlimited
     jurisdiction
-  norm_text: shall have unlimited jurisdiction to review decisions of the AI Office
+  norm_text: The Court of Justice of the European Union shall have unlimited jurisdiction to review decisions
+    of the AI Office fixing a fine or periodic penalty payment pursuant to this Article. It may cancel,
+    reduce or increase the fine or periodic penalty payment imposed.
   detection_channels:
   - semantic_legal_effect
   - shall_token
+  - other_modal
   primary_spans:
   - AIA-TEXT-A075C-P019
   qualifier_spans: []
@@ -528,7 +522,8 @@ norms:
   - subject_ref: union_enforcement_framework
     category: union_institution_or_body
   action: allocate Article 75c fine and periodic-payment funds to the Union general budget
-  norm_text: shall contribute to the general budget of the Union
+  norm_text: Funds collected through the imposition of fines or periodic penalty payments pursuant to
+    this Article shall contribute to the general budget of the Union.
   detection_channels:
   - semantic_legal_effect
   - shall_token
@@ -564,7 +559,10 @@ norms:
     category: union_institution_or_body
   action: apply a five-year infringement limitation period from commission or cessation for continuing
     or repeated infringements
-  norm_text: shall be subject to a limitation period of five years
+  norm_text: The powers conferred on the AI Office by this Article shall be subject to a limitation period
+    of five years. The limitation period shall begin to run on the day on which the infringement is committed.
+    However, in the case of continuing or repeated infringements, the limitation period shall begin to
+    run on the day on which the infringement ceases.
   detection_channels:
   - semantic_legal_effect
   - shall_token
@@ -599,7 +597,9 @@ norms:
   - subject_ref: ai_office_decision_enforcement_power
     category: union_institution_or_body
   action: apply a five-year final-decision enforcement limitation period
-  norm_text: shall be subject to a limitation period of five years
+  norm_text: The power of the AI Office to enforce decisions taken pursuant to this Article shall be subject
+    to a limitation period of five years. The limitation period shall begin to run on the day on which
+    the decision becomes final.
   detection_channels:
   - semantic_legal_effect
   - shall_token
@@ -635,7 +635,8 @@ norms:
     category: union_institution_or_body
   action: specify infringement and decision-enforcement limitation rules including interruption circumstances
     in the Article 75d(3) implementing act
-  norm_text: shall specify the first and second subparagraphs of this paragraph
+  norm_text: The implementing act referred to in Article 75d(3) shall specify the first and second subparagraphs
+    of this paragraph, including the circumstances in which the limitation periods shall be interrupted.
   detection_channels:
   - semantic_legal_effect
   - shall_token
@@ -669,7 +670,8 @@ norms:
   - subject_ref: ai_office
     category: union_institution_or_body
   action: close proceedings immediately by decision when no grounds for non-compliance exist
-  norm_text: it shall close the proceeding by a decision
+  norm_text: Where the AI Office determines that there are no grounds to adopt a decision of non-compliance,
+    it shall close the proceeding by a decision. That decision shall apply with immediate effect.
   detection_channels:
   - semantic_legal_effect
   - shall_token
@@ -677,7 +679,8 @@ norms:
   - AIA-TEXT-A075C-P024
   qualifier_spans: []
   effective_date_spans: []
-  conditions: []
+  conditions:
+  - the AI Office determines there are no grounds to adopt a non-compliance decision
   exceptions: []
   mandatory_content: []
   dependencies: []

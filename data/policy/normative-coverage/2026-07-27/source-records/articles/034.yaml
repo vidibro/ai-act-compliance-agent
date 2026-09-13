@@ -18,23 +18,9 @@ records:
     the degree of complexity of the high-risk AI system concerned, in particular in view of minimising
     administrative burdens and compliance costs for micro- and small enterprises within the meaning of
     Recommendation 2003/361/EC.
-  action: avoid imposing unnecessary burdens on providers when performing notified-body activities
-  subject_ref: notified_body
-  subject_category: notified_or_conformity_body
-  product_scope: outside_supported_actor
-  product_scope_reason: The present product does not report compliance for this addressee.
-  implementation_mode: none_required
-  implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_reported
-- norm_id: AIA-NORM-A034-P2-PROPORTIONALITY-FACTORS
-  source: A034-P002
-  quote: Notified bodies shall avoid unnecessary burdens for providers when performing their activities,
-    and take due account of the size of the provider, the sector in which it operates, its structure and
-    the degree of complexity of the high-risk AI system concerned, in particular in view of minimising
-    administrative burdens and compliance costs for micro- and small enterprises within the meaning of
-    Recommendation 2003/361/EC.
-  action: account for provider size, sector, structure, and system complexity to minimise administrative
-    burdens and compliance costs, particularly for micro and small enterprises
+  action: avoid unnecessary provider burdens and account for provider size, sector, structure, and system
+    complexity to minimise administrative burdens and compliance costs, particularly for micro and small
+    enterprises
   subject_ref: notified_body
   subject_category: notified_or_conformity_body
   product_scope: outside_supported_actor
@@ -47,6 +33,7 @@ records:
   - provider sector
   - provider structure
   - high-risk AI-system complexity
+  verified_by: vidibro
 - norm_id: AIA-NORM-A034-P2-PRESERVE-RIGOUR-AND-PROTECTION
   source: A034-P002
   quote: The notified body shall, nevertheless, respect the degree of rigour and the level of protection

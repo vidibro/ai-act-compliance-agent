@@ -2317,11 +2317,14 @@ norms:
   subjects:
   - subject_ref: testing_in_real_world_conditions
     category: other
-  action: define testing in real-world conditions for the purposes of the Regulation
+  action: define testing in real-world conditions and, where all Article 57 or 60 conditions are fulfilled,
+    treat it as neither placing the AI system on the market nor putting it into service
   norm_text: "\u2018testing in real-world conditions\u2019 means the temporary testing of an AI system\
     \ for its intended purpose in real-world conditions outside a laboratory or otherwise simulated environment,\
     \ with a view to gathering reliable and robust data and to assessing and verifying the conformity\
-    \ of the AI system with the requirements of this Regulation"
+    \ of the AI system with the requirements of this Regulation and it does not qualify as placing the\
+    \ AI system on the market or putting it into service within the meaning of this Regulation, provided\
+    \ that all the conditions laid down in Article 57 or 60 are fulfilled"
   detection_channels:
   - semantic_legal_effect
   - cross_reference_structure
@@ -2332,7 +2335,10 @@ norms:
   effective_date_spans: []
   conditions: []
   exceptions: []
-  mandatory_content: []
+  mandatory_content:
+  - define the temporary real-world testing activity and its evidentiary and conformity-assessment purposes
+  - provide that qualifying testing is neither placing the AI system on the market nor putting it into
+    service
   dependencies:
   - dependency_ref: Articles 57 and 60 of this Regulation
     resolution: unresolved
@@ -2346,9 +2352,9 @@ norms:
     rules.
   verification_mode: not_reported
   review:
-    status: proposed
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
     display_chunks: 1
@@ -2879,50 +2885,6 @@ norms:
   exceptions: []
   mandatory_content: []
   dependencies: []
-  product_scope: dependency_only
-  product_scope_reason: This consequence affects downstream interpretation but creates no independent
-    product-facing action.
-  implementation_mode: none_required
-  implementation_refs: []
-  implementation_reason: The consequence is represented as a legal dependency rather than a standalone
-    product rule.
-  verification_mode: not_reported
-  review:
-    status: proposed
-    extracted_by: semantic-legal-effect-pass
-    verified_by: ''
-    review_run_id: normative-coverage-2026-08-28
-    presentation_mode: exact-source-slice
-    display_chunks: 1
-    fully_displayed: true
-    elapsed_seconds: null
-- norm_id: AIA-NORM-A003-D057-REAL-WORLD-TESTING-NON-MARKET-EFFECT
-  act_version_date: '2026-07-27'
-  kind: legal_consequence
-  subjects:
-  - subject_ref: testing_in_real_world_conditions
-    category: other
-  action: treat qualifying real-world testing as neither placing the AI system on the market nor putting
-    it into service
-  norm_text: it does not qualify as placing the AI system on the market or putting it into service within
-    the meaning of this Regulation, provided that all the conditions laid down in Article 57 or 60 are
-    fulfilled
-  detection_channels:
-  - semantic_legal_effect
-  - deeming_or_consequence
-  - cross_reference_structure
-  primary_spans:
-  - AIA-TEXT-A003-P066
-  qualifier_spans: []
-  effective_date_spans: []
-  conditions:
-  - all applicable conditions in Article 57 or Article 60 are fulfilled
-  exceptions: []
-  mandatory_content: []
-  dependencies:
-  - dependency_ref: Articles 57 and 60 of this Regulation
-    resolution: unresolved
-    detail: The legal consequence depends on conditions in provisions not yet semantically reviewed.
   product_scope: dependency_only
   product_scope_reason: This consequence affects downstream interpretation but creates no independent
     product-facing action.

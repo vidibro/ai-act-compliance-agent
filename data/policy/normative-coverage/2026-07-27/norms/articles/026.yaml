@@ -86,9 +86,12 @@ norms:
   subjects:
   - subject_ref: deployer
     category: supported_operator
-  action: preserve other Union and national deployer obligations alongside Article 26(1) and (2)
-  norm_text: The obligations set out in paragraphs 1 and 2, are without prejudice to other deployer obligations
-    under Union or national law
+  action: preserve other Union and national deployer obligations and the deployer's freedom to organise
+    resources and activities used to implement provider-indicated human oversight alongside Article 26(1)
+    and (2)
+  norm_text: "The obligations set out in paragraphs 1 and 2, are without prejudice to other deployer obligations\
+    \ under Union or national law and to the deployer\u2019s freedom to organise its own resources and\
+    \ activities for the purpose of implementing the human oversight measures indicated by the provider."
   detection_channels:
   - semantic_legal_effect
   - deeming_or_consequence
@@ -99,7 +102,10 @@ norms:
   effective_date_spans: []
   conditions: []
   exceptions: []
-  mandatory_content: []
+  mandatory_content:
+  - other deployer obligations under Union or national law remain unaffected
+  - the deployer's freedom to organise resources and activities for implementing provider-indicated human
+    oversight remains unaffected
   dependencies:
   - dependency_ref: other applicable deployer obligations under Union or national law
     resolution: external_recorded
@@ -112,46 +118,9 @@ norms:
   implementation_reason: The preserved obligations are represented as external legal dependencies.
   verification_mode: not_reported
   review:
-    status: proposed
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
-    review_run_id: normative-coverage-2026-08-28
-    presentation_mode: exact-source-slice
-    display_chunks: 1
-    fully_displayed: true
-    elapsed_seconds: null
-- norm_id: AIA-NORM-A026-P3-RESOURCE-ORGANISATION-FREEDOM
-  act_version_date: '2026-07-27'
-  kind: legal_consequence
-  subjects:
-  - subject_ref: deployer
-    category: supported_operator
-  action: preserve the deployer's freedom to organise resources and activities used to implement provider-indicated
-    human oversight
-  norm_text: "and to the deployer\u2019s freedom to organise its own resources and activities for the\
-    \ purpose of implementing the human oversight measures indicated by the provider"
-  detection_channels:
-  - semantic_legal_effect
-  - deeming_or_consequence
-  primary_spans:
-  - AIA-TEXT-A026-P3
-  qualifier_spans: []
-  effective_date_spans: []
-  conditions: []
-  exceptions: []
-  mandatory_content: []
-  dependencies: []
-  product_scope: dependency_only
-  product_scope_reason: This clause limits how the oversight obligation is interpreted rather than creating
-    an independent finding.
-  implementation_mode: none_required
-  implementation_refs: []
-  implementation_reason: The freedom qualifies implementation of the mapped human-oversight duty.
-  verification_mode: not_reported
-  review:
-    status: proposed
-    extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
     display_chunks: 1
@@ -203,9 +172,10 @@ norms:
   subjects:
   - subject_ref: deployer
     category: supported_operator
-  action: monitor system operation on the basis of the instructions for use
+  action: monitor system operation on the basis of the instructions for use and, where relevant, inform
+    providers in accordance with Article 72
   norm_text: Deployers shall monitor the operation of the high-risk AI system on the basis of the instructions
-    for use
+    for use and, where relevant, inform providers in accordance with Article 72.
   detection_channels:
   - semantic_legal_effect
   - shall_token
@@ -216,43 +186,9 @@ norms:
   effective_date_spans: []
   conditions: []
   exceptions: []
-  mandatory_content: []
-  dependencies: []
-  product_scope: in_scope
-  product_scope_reason: ''
-  implementation_mode: compliance_rule
-  implementation_refs:
-  - AIA-DP-A26
-  implementation_reason: ''
-  verification_mode: reported_not_judged
-  review:
-    status: approved
-    extracted_by: semantic-legal-effect-pass
-    verified_by: vidibro
-    review_run_id: normative-coverage-2026-08-28
-    presentation_mode: exact-source-slice
-    display_chunks: 1
-    fully_displayed: true
-    elapsed_seconds: null
-- norm_id: AIA-NORM-A026-P5-INFORM-PROVIDER
-  act_version_date: '2026-07-27'
-  kind: obligation
-  subjects:
-  - subject_ref: deployer
-    category: supported_operator
-  action: inform the provider where monitoring makes that relevant
-  norm_text: where relevant, inform providers in accordance with Article 72
-  detection_channels:
-  - semantic_legal_effect
-  - existing_implementation
-  primary_spans:
-  - AIA-TEXT-A026-P5
-  qualifier_spans: []
-  effective_date_spans: []
-  conditions:
-  - monitoring makes informing the provider relevant
-  exceptions: []
-  mandatory_content: []
+  mandatory_content:
+  - monitor operation on the basis of the instructions for use
+  - where relevant, inform providers in accordance with Article 72
   dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -276,12 +212,16 @@ norms:
   subjects:
   - subject_ref: deployer
     category: supported_operator
-  action: notify the provider or distributor and market-surveillance authority of an Article 79(1) risk
-  norm_text: they shall, without undue delay, inform the provider or distributor and the relevant market
-    surveillance authority
+  action: without undue delay notify the provider or distributor and relevant market-surveillance authority
+    of an Article 79(1) risk and suspend use of the system
+  norm_text: Where deployers have reason to consider that the use of the high-risk AI system in accordance
+    with the instructions may result in that AI system presenting a risk within the meaning of Article
+    79(1), they shall, without undue delay, inform the provider or distributor and the relevant market
+    surveillance authority, and shall suspend the use of that system.
   detection_channels:
   - semantic_legal_effect
   - shall_token
+  - other_modal
   - existing_implementation
   primary_spans:
   - AIA-TEXT-A026-P5
@@ -291,45 +231,9 @@ norms:
   - the deployer has reason to consider that use in accordance with the instructions may result in the
     AI system presenting a risk within the meaning of Article 79(1)
   exceptions: []
-  mandatory_content: []
-  dependencies: []
-  product_scope: in_scope
-  product_scope_reason: ''
-  implementation_mode: compliance_rule
-  implementation_refs:
-  - AIA-DP-A26
-  implementation_reason: ''
-  verification_mode: reported_not_judged
-  review:
-    status: approved
-    extracted_by: semantic-legal-effect-pass
-    verified_by: vidibro
-    review_run_id: normative-coverage-2026-08-28
-    presentation_mode: exact-source-slice
-    display_chunks: 1
-    fully_displayed: true
-    elapsed_seconds: null
-- norm_id: AIA-NORM-A026-P5-SUSPEND
-  act_version_date: '2026-07-27'
-  kind: obligation
-  subjects:
-  - subject_ref: deployer
-    category: supported_operator
-  action: suspend use when compliant use may present an Article 79(1) risk
-  norm_text: shall suspend the use of that system
-  detection_channels:
-  - semantic_legal_effect
-  - shall_token
-  - existing_implementation
-  primary_spans:
-  - AIA-TEXT-A026-P5
-  qualifier_spans: []
-  effective_date_spans: []
-  conditions:
-  - the deployer has reason to consider that use in accordance with the instructions may result in the
-    AI system presenting a risk within the meaning of Article 79(1)
-  exceptions: []
-  mandatory_content: []
+  mandatory_content:
+  - without undue delay inform the provider or distributor and relevant market-surveillance authority
+  - suspend use of the system
   dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -547,6 +451,8 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  parallel_norm_ids:
+  - AIA-NORM-A019-P1-RETENTION-PERIOD
 - norm_id: AIA-NORM-A026-P6-FINANCIAL-DOCUMENTATION
   act_version_date: '2026-07-27'
   kind: obligation
@@ -709,6 +615,11 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  parallel_norm_ids:
+  - AIA-NORM-A016-I-REGISTRATION
+  - AIA-NORM-A022-P3-E-REGISTER
+  - AIA-NORM-A071-P2-PROVIDER-ENTER-ANNEX-VIII-DATA
+  - AIA-NORM-A071-P2-REPRESENTATIVE-ENTER-ANNEX-VIII-DATA
 - norm_id: AIA-NORM-A026-P8-DO-NOT-USE-UNREGISTERED
   act_version_date: '2026-07-27'
   kind: prohibition
@@ -1170,9 +1081,12 @@ norms:
   - subject_ref: post_remote_biometric_deployer
     category: supported_operator
   action: document every post-remote biometric-identification use in the relevant police file regardless
-    of purpose or deployer
+    of purpose or deployer and make that record available on request to the market-surveillance and national
+    data-protection authorities
   norm_text: Regardless of the purpose or deployer, each use of such high-risk AI systems shall be documented
-    in the relevant police file
+    in the relevant police file and shall be made available to the relevant market surveillance authority
+    and the national data protection authority upon request, excluding the disclosure of sensitive operational
+    data related to law enforcement.
   detection_channels:
   - semantic_legal_effect
   - shall_token
@@ -1184,8 +1098,11 @@ norms:
   conditions:
   - the deployer uses a high-risk AI system for post-remote biometric identification for law enforcement
     purposes
-  exceptions: []
-  mandatory_content: []
+  exceptions:
+  - sensitive operational data related to law enforcement must not be disclosed
+  mandatory_content:
+  - document each use in the relevant police file regardless of purpose or deployer
+  - make the record available to either specified authority upon request
   dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -1194,84 +1111,6 @@ norms:
   - AIA-DP-A26-10
   implementation_reason: ''
   verification_mode: reported_not_judged
-  review:
-    status: approved
-    extracted_by: semantic-legal-effect-pass
-    verified_by: vidibro
-    review_run_id: normative-coverage-2026-08-28
-    presentation_mode: exact-source-slice
-    display_chunks: 1
-    fully_displayed: true
-    elapsed_seconds: null
-- norm_id: AIA-NORM-A026-P10-MAKE-FILE-AVAILABLE
-  act_version_date: '2026-07-27'
-  kind: obligation
-  subjects:
-  - subject_ref: post_remote_biometric_deployer
-    category: supported_operator
-  action: make the police-file record available on request to the market-surveillance and national data-protection
-    authorities
-  norm_text: shall be made available to the relevant market surveillance authority and the national data
-    protection authority upon request
-  detection_channels:
-  - semantic_legal_effect
-  - shall_token
-  - existing_implementation
-  primary_spans:
-  - AIA-TEXT-A026-P10
-  qualifier_spans: []
-  effective_date_spans: []
-  conditions:
-  - either specified authority requests the use record
-  exceptions: []
-  mandatory_content: []
-  dependencies: []
-  product_scope: in_scope
-  product_scope_reason: ''
-  implementation_mode: compliance_rule
-  implementation_refs:
-  - AIA-DP-A26-10
-  implementation_reason: ''
-  verification_mode: reported_not_judged
-  review:
-    status: approved
-    extracted_by: semantic-legal-effect-pass
-    verified_by: vidibro
-    review_run_id: normative-coverage-2026-08-28
-    presentation_mode: exact-source-slice
-    display_chunks: 1
-    fully_displayed: true
-    elapsed_seconds: null
-- norm_id: AIA-NORM-A026-P10-FILE-SENSITIVE-DATA-EXCLUSION
-  act_version_date: '2026-07-27'
-  kind: applicability
-  subjects:
-  - subject_ref: post_remote_biometric_deployer
-    category: supported_operator
-  action: exclude sensitive law-enforcement operational data when making the police-file record available
-  norm_text: excluding the disclosure of sensitive operational data related to law enforcement
-  detection_channels:
-  - semantic_legal_effect
-  - deeming_or_consequence
-  - existing_implementation
-  primary_spans:
-  - AIA-TEXT-A026-P10
-  qualifier_spans: []
-  effective_date_spans: []
-  conditions:
-  - the deployer uses a high-risk AI system for post-remote biometric identification for law enforcement
-    purposes
-  - the use is documented in the police file and made available on request under Article 26(10)
-  exceptions: []
-  mandatory_content: []
-  dependencies: []
-  product_scope: in_scope
-  product_scope_reason: ''
-  implementation_mode: compliance_rule
-  implementation_refs:
-  - AIA-DP-A26-10
-  implementation_reason: ''
-  verification_mode: reported_conditionally
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -1331,7 +1170,8 @@ norms:
     category: supported_operator
   action: submit annual post-remote biometric-identification use reports to both specified authorities
   norm_text: Deployers shall submit annual reports to the relevant market surveillance and national data
-    protection authorities on their use of post-remote biometric identification systems
+    protection authorities on their use of post-remote biometric identification systems, excluding the
+    disclosure of sensitive operational data related to law enforcement.
   detection_channels:
   - semantic_legal_effect
   - shall_token
@@ -1341,7 +1181,8 @@ norms:
   qualifier_spans: []
   effective_date_spans: []
   conditions: []
-  exceptions: []
+  exceptions:
+  - sensitive operational data related to law enforcement must not be disclosed
   mandatory_content:
   - report to the relevant market-surveillance authority
   - report to the national data-protection authority
@@ -1353,45 +1194,6 @@ norms:
   - AIA-DP-A26-10
   implementation_reason: ''
   verification_mode: reported_not_judged
-  review:
-    status: approved
-    extracted_by: semantic-legal-effect-pass
-    verified_by: vidibro
-    review_run_id: normative-coverage-2026-08-28
-    presentation_mode: exact-source-slice
-    display_chunks: 1
-    fully_displayed: true
-    elapsed_seconds: null
-- norm_id: AIA-NORM-A026-P10-REPORT-SENSITIVE-DATA-EXCLUSION
-  act_version_date: '2026-07-27'
-  kind: applicability
-  subjects:
-  - subject_ref: post_remote_biometric_deployer
-    category: supported_operator
-  action: exclude sensitive law-enforcement operational data from the annual reports
-  norm_text: excluding the disclosure of sensitive operational data related to law enforcement
-  detection_channels:
-  - semantic_legal_effect
-  - deeming_or_consequence
-  - existing_implementation
-  primary_spans:
-  - AIA-TEXT-A026-P10
-  qualifier_spans: []
-  effective_date_spans: []
-  conditions:
-  - the deployer uses a high-risk AI system for post-remote biometric identification for law enforcement
-    purposes
-  - annual reports are submitted under Article 26(10)
-  exceptions: []
-  mandatory_content: []
-  dependencies: []
-  product_scope: in_scope
-  product_scope_reason: ''
-  implementation_mode: compliance_rule
-  implementation_refs:
-  - AIA-DP-A26-10
-  implementation_reason: ''
-  verification_mode: reported_conditionally
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -1476,42 +1278,6 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
-- norm_id: AIA-NORM-A026-P11-PRESERVE-ARTICLE-50
-  act_version_date: '2026-07-27'
-  kind: applicability
-  subjects:
-  - subject_ref: annex_iii_deployer
-    category: supported_operator
-  action: preserve applicable Article 50 transparency duties alongside Article 26(11)
-  norm_text: Without prejudice to Article 50 of this Regulation
-  detection_channels:
-  - semantic_legal_effect
-  - deeming_or_consequence
-  - existing_implementation
-  primary_spans:
-  - AIA-TEXT-A026-P11
-  qualifier_spans: []
-  effective_date_spans: []
-  conditions: []
-  exceptions: []
-  mandatory_content: []
-  dependencies: []
-  product_scope: in_scope
-  product_scope_reason: ''
-  implementation_mode: compliance_rule
-  implementation_refs:
-  - AIA-DP-A26-11
-  implementation_reason: ''
-  verification_mode: reported_conditionally
-  review:
-    status: approved
-    extracted_by: semantic-legal-effect-pass
-    verified_by: vidibro
-    review_run_id: normative-coverage-2026-08-28
-    presentation_mode: exact-source-slice
-    display_chunks: 1
-    fully_displayed: true
-    elapsed_seconds: null
 - norm_id: AIA-NORM-A026-P11-INFORM-NATURAL-PERSONS
   act_version_date: '2026-07-27'
   kind: obligation
@@ -1519,12 +1285,13 @@ norms:
   - subject_ref: annex_iii_deployer
     category: supported_operator
   action: inform natural persons that they are subject to Annex III high-risk-system use in decision-making
-  norm_text: deployers of high-risk AI systems referred to in Annex III that make decisions or assist
-    in making decisions related to natural persons shall inform the natural persons that they are subject
-    to the use of the high-risk AI system
+  norm_text: Without prejudice to Article 50 of this Regulation, deployers of high-risk AI systems referred
+    to in Annex III that make decisions or assist in making decisions related to natural persons shall
+    inform the natural persons that they are subject to the use of the high-risk AI system
   detection_channels:
   - semantic_legal_effect
   - shall_token
+  - cross_reference_structure
   - existing_implementation
   primary_spans:
   - AIA-TEXT-A026-P11
@@ -1535,7 +1302,10 @@ norms:
   exceptions:
   - law-enforcement use follows Article 13 of Directive (EU) 2016/680
   mandatory_content: []
-  dependencies: []
+  dependencies:
+  - dependency_ref: Article 50 of this Regulation
+    resolution: unresolved
+    detail: The Article 26(11) notice duty operates without prejudice to Article 50.
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: compliance_rule

@@ -81,3 +81,24 @@ def test_a_model_paragraph_becomes_a_clipped_answer_not_a_crash(monkeypatch):
 
     assert answer.value is True
     assert len(answer.reasoning) == REASONING_MAX
+
+
+def test_an_aggregate_of_many_failing_criteria_still_fits():
+    """Each criterion keeps its full reason in `Finding.criteria`; the rule summary is clipped."""
+    from types import SimpleNamespace
+
+    from aiact.gap.criteria import aggregate_reasoning
+    from aiact.schemas.report import CriterionFinding
+
+    criteria = [
+        CriterionFinding(
+            norm_id=f"AIA-NORM-{i}",
+            mandatory=True,
+            verdict=Verdict.GAP,
+            reasoning=clip_reasoning("r" * 1_000),
+            confidence="high",
+        )
+        for i in range(5)
+    ]
+    summary = aggregate_reasoning(SimpleNamespace(rule_id="AIA-HR-A15"), criteria)
+    assert len(summary) <= REASONING_MAX

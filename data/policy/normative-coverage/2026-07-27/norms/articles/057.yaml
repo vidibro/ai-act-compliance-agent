@@ -304,8 +304,7 @@ norms:
     where other Union-law compliance is supervised
   norm_text: That AI regulatory sandbox shall be implemented in close cooperation with relevant competent
     authorities, in particular where compliance with Union legislation other than this Regulation is supervised
-    in the AI regulatory sandbox, and shall provide priority access to SMEs, including start-ups, and
-    SMCs.
+    in the AI regulatory sandbox
   detection_channels:
   - semantic_legal_effect
   - shall_token
@@ -340,10 +339,7 @@ norms:
   - subject_ref: ai_office
     category: union_institution_or_body
   action: provide priority access to SMEs, including start-ups, and SMCs in the Union sandbox
-  norm_text: That AI regulatory sandbox shall be implemented in close cooperation with relevant competent
-    authorities, in particular where compliance with Union legislation other than this Regulation is supervised
-    in the AI regulatory sandbox, and shall provide priority access to SMEs, including start-ups, and
-    SMCs.
+  norm_text: shall provide priority access to SMEs, including start-ups, and SMCs.
   detection_channels:
   - semantic_legal_effect
   - shall_token
@@ -414,12 +410,10 @@ norms:
   - subject_ref: national_competent_authority
     category: public_authority
   action: cooperate with other relevant authorities
-  norm_text: Where appropriate, national competent authorities shall cooperate with other relevant authorities,
-    and may allow for the involvement of other actors within the AI ecosystem.
+  norm_text: Where appropriate, national competent authorities shall cooperate with other relevant authorities
   detection_channels:
   - semantic_legal_effect
   - shall_token
-  - other_modal
   primary_spans:
   - AIA-TEXT-A057-P007
   qualifier_spans: []
@@ -451,12 +445,9 @@ norms:
   - subject_ref: national_competent_authority
     category: public_authority
   action: allow involvement of other actors within the AI ecosystem
-  norm_text: Where appropriate, national competent authorities shall cooperate with other relevant authorities,
-    and may allow for the involvement of other actors within the AI ecosystem.
+  norm_text: may allow for the involvement of other actors within the AI ecosystem.
   detection_channels:
   - semantic_legal_effect
-  - shall_token
-  - other_modal
   primary_spans:
   - AIA-TEXT-A057-P007
   qualifier_spans: []
@@ -938,7 +929,6 @@ norms:
     78 confidentiality
   norm_text: Subject to the confidentiality provisions in Article 78, and with the agreement of the provider
     or prospective provider, the Commission and the Board shall be authorised to access the exit reports
-    and shall take them into account, as appropriate, when exercising their tasks under this Regulation.
   detection_channels:
   - semantic_legal_effect
   - shall_token
@@ -974,9 +964,7 @@ norms:
   - subject_ref: commission_and_board
     category: union_institution_or_body
   action: take exit reports into account when exercising tasks under this Regulation
-  norm_text: Subject to the confidentiality provisions in Article 78, and with the agreement of the provider
-    or prospective provider, the Commission and the Board shall be authorised to access the exit reports
-    and shall take them into account, as appropriate, when exercising their tasks under this Regulation.
+  norm_text: shall take them into account, as appropriate, when exercising their tasks under this Regulation.
   detection_channels:
   - semantic_legal_effect
   - shall_token
@@ -1214,8 +1202,7 @@ norms:
   action: temporarily or permanently suspend testing or participation in the sandbox if no effective mitigation
     is possible
   norm_text: National competent authorities shall have the power to temporarily or permanently suspend
-    the testing process, or the participation in the sandbox if no effective mitigation is possible, and
-    shall inform the AI Office of such decision.
+    the testing process, or the participation in the sandbox if no effective mitigation is possible
   detection_channels:
   - semantic_legal_effect
   - shall_token
@@ -1251,9 +1238,7 @@ norms:
   - subject_ref: national_competent_authority
     category: public_authority
   action: inform the AI Office of the suspension decision
-  norm_text: National competent authorities shall have the power to temporarily or permanently suspend
-    the testing process, or the participation in the sandbox if no effective mitigation is possible, and
-    shall inform the AI Office of such decision.
+  norm_text: shall inform the AI Office of such decision.
   detection_channels:
   - semantic_legal_effect
   - shall_token
@@ -1564,11 +1549,10 @@ norms:
     category: public_authority
   action: inform the AI Office and the Board of the establishment of a sandbox
   norm_text: National competent authorities shall inform the AI Office and the Board of the establishment
-    of a sandbox, and may ask them for support and guidance.
+    of a sandbox
   detection_channels:
   - semantic_legal_effect
   - shall_token
-  - other_modal
   primary_spans:
   - AIA-TEXT-A057-P024
   qualifier_spans: []
@@ -1599,12 +1583,9 @@ norms:
   - subject_ref: national_competent_authority
     category: public_authority
   action: ask the AI Office and the Board for support and guidance
-  norm_text: National competent authorities shall inform the AI Office and the Board of the establishment
-    of a sandbox, and may ask them for support and guidance.
+  norm_text: may ask them for support and guidance.
   detection_channels:
   - semantic_legal_effect
-  - shall_token
-  - other_modal
   primary_spans:
   - AIA-TEXT-A057-P024
   qualifier_spans: []
@@ -1672,14 +1653,10 @@ norms:
   - subject_ref: national_competent_authority
     category: public_authority
   action: submit annual reports to the AI Office and the Board from one year after sandbox establishment
-    and every year thereafter until termination
+    and every year thereafter until termination, followed by a final report
   norm_text: National competent authorities shall submit annual reports to the AI Office and to the Board,
     from one year after the establishment of the AI regulatory sandbox and every year thereafter until
-    its termination, and a final report. Those reports shall provide information on the progress and results
-    of the implementation of those sandboxes, including best practices, incidents, lessons learnt and
-    recommendations on their setup and, where relevant, on the application and possible revision of this
-    Regulation, including its delegated and implementing acts, and on the application of other Union law
-    supervised by the competent authorities within the sandbox.
+    its termination, and a final report.
   detection_channels:
   - semantic_legal_effect
   - shall_token
@@ -1699,55 +1676,7 @@ norms:
     its delegated and implementing acts
   - where relevant, recommendations on application of other Union law supervised by competent authorities
     within the sandbox
-  dependencies: []
-  product_scope: outside_supported_actor
-  product_scope_reason: The present product does not report compliance for this addressee.
-  implementation_mode: none_required
-  implementation_refs: []
-  implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_reported
-  review:
-    status: proposed
-    extracted_by: semantic-legal-effect-pass
-    verified_by: ''
-    review_run_id: normative-coverage-2026-08-28
-    presentation_mode: exact-source-slice
-    display_chunks: 1
-    fully_displayed: true
-    elapsed_seconds: null
-- norm_id: AIA-NORM-A057-P16-FINAL-SANDBOX-REPORT
-  act_version_date: '2026-07-27'
-  kind: obligation
-  subjects:
-  - subject_ref: national_competent_authority
-    category: public_authority
-  action: submit a final sandbox report to the AI Office and the Board
-  norm_text: National competent authorities shall submit annual reports to the AI Office and to the Board,
-    from one year after the establishment of the AI regulatory sandbox and every year thereafter until
-    its termination, and a final report. Those reports shall provide information on the progress and results
-    of the implementation of those sandboxes, including best practices, incidents, lessons learnt and
-    recommendations on their setup and, where relevant, on the application and possible revision of this
-    Regulation, including its delegated and implementing acts, and on the application of other Union law
-    supervised by the competent authorities within the sandbox.
-  detection_channels:
-  - semantic_legal_effect
-  - shall_token
-  primary_spans:
-  - AIA-TEXT-A057-P025
-  qualifier_spans: []
-  effective_date_spans: []
-  conditions: []
-  exceptions: []
-  mandatory_content:
-  - implementation progress and results
-  - best practices
-  - incidents
-  - lessons learnt
-  - recommendations on sandbox setup
-  - where relevant, recommendations on application and possible revision of this Regulation, including
-    its delegated and implementing acts
-  - where relevant, recommendations on application of other Union law supervised by competent authorities
-    within the sandbox
+  - submit a final report when the sandbox terminates
   dependencies: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.

@@ -1,8 +1,11 @@
 records:
 - norm_id: AIA-NORM-A085-P1-LODGE-COMPLAINT
   source: A085-P001
-  quote: any natural or legal person having grounds to consider that there has been an infringement of the provisions of this Regulation may submit complaints to the relevant market surveillance authority.
-  action: submit an infringement complaint to the relevant market surveillance authority without prejudice to other remedies
+  quote: Without prejudice to other administrative or judicial remedies, any natural or legal person having
+    grounds to consider that there has been an infringement of the provisions of this Regulation may submit
+    complaints to the relevant market surveillance authority.
+  action: submit an infringement complaint to the relevant market surveillance authority without prejudice
+    to other remedies
   subject_ref: natural_or_legal_person
   subject_category: natural_person
   kind: entitlement
@@ -11,11 +14,16 @@ records:
   implementation_mode: none_required
   implementation_reason: No independent product action arises.
   verification_mode: not_reported
+  conditions:
+  - the natural or legal person has grounds to consider that this Regulation has been infringed
 - norm_id: AIA-NORM-A085-P2-ACCOUNT-FOR-AND-HANDLE-COMPLAINTS
   source: A085-P002
-  quote: such complaints shall be taken into account for the purpose of conducting market surveillance activities
-  action: take such complaints into account for the purpose of conducting market surveillance
-    activities, in accordance with Regulation (EU) 2019/1020
+  quote: such complaints shall be taken into account for the purpose of conducting market surveillance
+    activities, and shall be handled in line with the dedicated procedures established therefor by the
+    market surveillance authorities.
+  action: take such complaints into account for the purpose of conducting market surveillance activities,
+    in accordance with Regulation (EU) 2019/1020, and handle them under the dedicated procedures established
+    by market surveillance authorities
   subject_ref: market_surveillance_authority
   subject_category: public_authority
   product_scope: outside_supported_actor
@@ -23,15 +31,6 @@ records:
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
-- norm_id: AIA-NORM-A085-P2-HANDLE-COMPLAINTS-UNDER-PROCEDURES
-  source: A085-P002
-  quote: and shall be handled in line with the dedicated procedures established therefor by the market surveillance authorities.
-  action: handle such complaints in line with the dedicated procedures the market surveillance
-    authorities established for them
-  subject_ref: market_surveillance_authority
-  subject_category: public_authority
-  product_scope: outside_supported_actor
-  product_scope_reason: The present product does not report compliance for this addressee.
-  implementation_mode: none_required
-  implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_reported
+  mandatory_content:
+  - take complaints into account in market surveillance activities
+  - handle complaints under the dedicated procedures established by market surveillance authorities

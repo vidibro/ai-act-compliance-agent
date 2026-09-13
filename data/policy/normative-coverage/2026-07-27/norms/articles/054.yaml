@@ -77,6 +77,8 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  parallel_norm_ids:
+  - AIA-NORM-A022-P2-ENABLE-REPRESENTATIVE
 - norm_id: AIA-NORM-A054-P3-PERFORM-MANDATE
   act_version_date: '2026-07-27'
   kind: obligation
@@ -393,6 +395,8 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  parallel_norm_ids:
+  - AIA-NORM-A022-P4-TERMINATE-MANDATE
 - norm_id: AIA-NORM-A054-P5-NOTIFY-TERMINATION
   act_version_date: '2026-07-27'
   kind: obligation
@@ -439,11 +443,13 @@ norms:
   subjects:
   - subject_ref: provider
     category: supported_operator
-  action: disapply Article 54 where every enacted free-and-open-source condition is met
+  action: disapply Article 54 where every enacted free-and-open-source condition is met, except for general-purpose
+    AI models presenting systemic risk
   norm_text: The obligation set out in this Article shall not apply to providers of general-purpose AI
     models that are released under a free and open-source licence that allows for the access, usage, modification,
     and distribution of the model, and whose parameters, including the weights, the information on the
-    model architecture, and the information on model usage, are made publicly available
+    model architecture, and the information on model usage, are made publicly available, unless the general-purpose
+    AI models present systemic risks.
   detection_channels:
   - semantic_legal_effect
   - shall_token
@@ -456,7 +462,8 @@ norms:
   conditions:
   - the licence permits access, usage, modification, and distribution
   - model parameters including weights, architecture information, and usage information are public
-  exceptions: []
+  exceptions:
+  - the general-purpose AI model presents systemic risk
   mandatory_content: []
   dependencies: []
   product_scope: in_scope
@@ -469,47 +476,6 @@ norms:
   - AIA-GP-A54-4
   - AIA-GPAR-A54-5
   implementation_reason: Each Article 54 rule encodes this exception in its activation condition.
-  verification_mode: reported_not_judged
-  review:
-    status: approved
-    extracted_by: semantic-legal-effect-pass
-    verified_by: vidibro
-    review_run_id: normative-coverage-2026-08-28
-    presentation_mode: exact-source-slice
-    display_chunks: 1
-    fully_displayed: true
-    elapsed_seconds: null
-- norm_id: AIA-NORM-A054-P6-SYSTEMIC-RISK-OVERRIDE
-  act_version_date: '2026-07-27'
-  kind: applicability
-  subjects:
-  - subject_ref: provider
-    category: supported_operator
-  action: restore Article 54 obligations for free-and-open-source models presenting systemic risk
-  norm_text: unless the general-purpose AI models present systemic risks.
-  detection_channels:
-  - semantic_legal_effect
-  - deeming_or_consequence
-  - existing_implementation
-  primary_spans:
-  - AIA-TEXT-A054-P010
-  qualifier_spans: []
-  effective_date_spans: []
-  conditions:
-  - the general-purpose AI model presents systemic risk
-  exceptions: []
-  mandatory_content: []
-  dependencies: []
-  product_scope: in_scope
-  product_scope_reason: ''
-  implementation_mode: compliance_rule
-  implementation_refs:
-  - AIA-GP-A54-1
-  - AIA-GP-A54-2
-  - AIA-GPAR-A54-3
-  - AIA-GP-A54-4
-  - AIA-GPAR-A54-5
-  implementation_reason: Each Article 54 rule disapplies the open-source exception for systemic-risk models.
   verification_mode: reported_not_judged
   review:
     status: approved

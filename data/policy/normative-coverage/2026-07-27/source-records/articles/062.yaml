@@ -2,11 +2,15 @@ records:
 - norm_id: AIA-NORM-A062-P1-MEMBER-STATE-SME-SUPPORT
   source: A062-P001
   quote: 'Member States shall undertake the following actions:'
-  action: undertake every enacted sandbox access, awareness, communication and standardisation
-    action for SMEs, start-ups, deployers, innovators and relevant authorities
+  action: undertake every enacted sandbox access, awareness, communication and standardisation action
+    for SMEs, start-ups, deployers, innovators and relevant authorities
   subject_ref: member_state
   subject_category: member_state
-  qualifier_spans: [A062-P002, A062-P003, A062-P004, A062-P005]
+  qualifier_spans:
+  - A062-P002
+  - A062-P003
+  - A062-P004
+  - A062-P005
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -14,9 +18,11 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A062-P1-A-PRIORITY-SANDBOX-ACCESS
   source: A062-P002
-  quote: provide SMEs, including start-ups, having a registered office or a branch in the Union, with priority access to the AI regulatory sandboxes, to the extent that they fulfil the eligibility conditions and selection criteria;
-  action: provide priority AI regulatory sandbox access to SMEs and start-ups with a registered
-    office or branch in the Union
+  quote: provide SMEs, including start-ups, having a registered office or a branch in the Union, with
+    priority access to the AI regulatory sandboxes, to the extent that they fulfil the eligibility conditions
+    and selection criteria;
+  action: provide priority AI regulatory sandbox access to SMEs and start-ups with a registered office
+    or branch in the Union
   subject_ref: member_state
   subject_category: member_state
   conditions:
@@ -27,23 +33,30 @@ records:
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
+  qualifier_spans:
+  - A062-P001
 - norm_id: AIA-NORM-A062-P1-A-PRESERVE-OTHER-SME-ACCESS
   source: A062-P002
-  quote: the priority access shall not preclude other SMEs, including start-ups, other than those referred to in this paragraph from access to the AI regulatory sandbox, provided that they also fulfil the eligibility conditions and selection criteria;
+  quote: the priority access shall not preclude other SMEs, including start-ups, other than those referred
+    to in this paragraph from access to the AI regulatory sandbox, provided that they also fulfil the
+    eligibility conditions and selection criteria;
   action: keep the priority access from precluding other SMEs and start-ups from sandbox access
   subject_ref: member_state
   subject_category: member_state
   kind: legal_consequence
-  conditions: [the other SMEs or start-ups also fulfil the eligibility conditions and selection
-    criteria]
+  conditions:
+  - the other SMEs or start-ups also fulfil the eligibility conditions and selection criteria
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
+  qualifier_spans:
+  - A062-P001
 - norm_id: AIA-NORM-A062-P1-B-AWARENESS-AND-TRAINING
   source: A062-P003
-  quote: organise specific awareness raising and training activities on the application of this Regulation tailored to the needs of SMEs including start-ups, deployers and, as appropriate, local public authorities;
+  quote: organise specific awareness raising and training activities on the application of this Regulation
+    tailored to the needs of SMEs including start-ups, deployers and, as appropriate, local public authorities;
   action: organise awareness-raising and training activities on applying this Regulation, tailored to
     the needs of SMEs, start-ups, deployers and, as appropriate, local public authorities
   subject_ref: member_state
@@ -53,12 +66,14 @@ records:
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
+  qualifier_spans:
+  - A062-P001
 - norm_id: AIA-NORM-A062-P1-C-USE-EXISTING-CHANNELS
   source: A062-P004
   quote: utilise existing dedicated channels
-  action: utilise existing dedicated channels to advise SMEs, start-ups, deployers, other innovators
-    and, as appropriate, local public authorities and answer their implementation queries, including
-    on sandbox participation
+  action: utilise existing dedicated channels to advise SMEs, start-ups, deployers, other innovators and,
+    as appropriate, local public authorities and answer their implementation queries, including on sandbox
+    participation
   subject_ref: member_state
   subject_category: member_state
   product_scope: outside_supported_actor
@@ -66,23 +81,31 @@ records:
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
+  qualifier_spans:
+  - A062-P001
 - norm_id: AIA-NORM-A062-P1-C-ESTABLISH-NEW-CHANNELS
   source: A062-P004
-  quote: where appropriate, establish new ones for communication with SMEs including start-ups, deployers, other innovators and, as appropriate, local public authorities to provide advice and respond to queries about the implementation of this Regulation, including as regards participation in AI regulatory sandboxes;
+  quote: where appropriate, establish new ones for communication with SMEs including start-ups, deployers,
+    other innovators and, as appropriate, local public authorities to provide advice and respond to queries
+    about the implementation of this Regulation, including as regards participation in AI regulatory sandboxes;
   action: establish new communication channels for that advice and query response
   subject_ref: member_state
   subject_category: member_state
-  conditions: [where appropriate]
+  conditions:
+  - where appropriate
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
+  qualifier_spans:
+  - A062-P001
 - norm_id: AIA-NORM-A062-P1-D-FACILITATE-STANDARDISATION-PARTICIPATION
   source: A062-P005
-  quote: facilitate the participation of SMEs and other relevant stakeholders in the standardisation development process.
-  action: facilitate SME and other relevant stakeholder participation in the standardisation
-    development process
+  quote: facilitate the participation of SMEs and other relevant stakeholders in the standardisation development
+    process.
+  action: facilitate SME and other relevant stakeholder participation in the standardisation development
+    process
   subject_ref: member_state
   subject_category: member_state
   product_scope: outside_supported_actor
@@ -90,13 +113,21 @@ records:
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
+  qualifier_spans:
+  - A062-P001
 - norm_id: AIA-NORM-A062-P2-PROPORTIONATE-SME-FEES
   source: A062-P006
-  quote: The specific interests and needs of the SME providers, including start-ups, shall be taken into account when setting the fees for conformity assessment under Article 43, reducing those fees proportionately to their size, market size and other relevant indicators.
-  action: account for SME provider interests and needs and proportionately reduce Article 43 conformity-assessment fees
+  quote: The specific interests and needs of the SME providers, including start-ups, shall be taken into
+    account when setting the fees for conformity assessment under Article 43, reducing those fees proportionately
+    to their size, market size and other relevant indicators.
+  action: account for SME provider interests and needs and proportionately reduce Article 43 conformity-assessment
+    fees
   subject_ref: conformity_assessment_fee_setter
   subject_category: notified_or_conformity_body
-  mandatory_content: [SME size, market size, other relevant indicators]
+  mandatory_content:
+  - SME size
+  - market size
+  - other relevant indicators
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -105,11 +136,15 @@ records:
 - norm_id: AIA-NORM-A062-P3-AI-OFFICE-SUPPORT
   source: A062-P007
   quote: 'The AI Office shall undertake the following actions:'
-  action: undertake every enacted template, information platform, awareness and procurement
-    best-practice action
+  action: undertake every enacted template, information platform, awareness and procurement best-practice
+    action
   subject_ref: ai_office
   subject_category: union_institution_or_body
-  qualifier_spans: [A062-P008, A062-P009, A062-P010, A062-P011]
+  qualifier_spans:
+  - A062-P008
+  - A062-P009
+  - A062-P010
+  - A062-P011
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -117,21 +152,26 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A062-P3-A-PROVIDE-TEMPLATES
   source: A062-P008
-  quote: provide standardised templates for areas covered by this Regulation, as specified by the Board in its request;
+  quote: provide standardised templates for areas covered by this Regulation, as specified by the Board
+    in its request;
   action: provide standardised templates for the areas covered by this Regulation
   subject_ref: ai_office
   subject_category: union_institution_or_body
-  conditions: [the Board specifies the areas in its request]
+  conditions:
+  - the Board specifies the areas in its request
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
+  qualifier_spans:
+  - A062-P007
 - norm_id: AIA-NORM-A062-P3-B-INFORMATION-PLATFORM
   source: A062-P009
-  quote: develop and maintain a single information platform providing easy to use information in relation to this Regulation for all operators across the Union;
-  action: develop and maintain a single information platform giving all operators across the Union
-    easy-to-use information on this Regulation
+  quote: develop and maintain a single information platform providing easy to use information in relation
+    to this Regulation for all operators across the Union;
+  action: develop and maintain a single information platform giving all operators across the Union easy-to-use
+    information on this Regulation
   subject_ref: ai_office
   subject_category: union_institution_or_body
   product_scope: outside_supported_actor
@@ -139,11 +179,14 @@ records:
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
+  qualifier_spans:
+  - A062-P007
 - norm_id: AIA-NORM-A062-P3-C-COMMUNICATION-CAMPAIGNS
   source: A062-P010
-  quote: organise appropriate communication campaigns to raise awareness about the obligations arising from this Regulation;
-  action: organise appropriate communication campaigns raising awareness of the obligations arising
-    from this Regulation
+  quote: organise appropriate communication campaigns to raise awareness about the obligations arising
+    from this Regulation;
+  action: organise appropriate communication campaigns raising awareness of the obligations arising from
+    this Regulation
   subject_ref: ai_office
   subject_category: union_institution_or_body
   product_scope: outside_supported_actor
@@ -151,11 +194,13 @@ records:
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
+  qualifier_spans:
+  - A062-P007
 - norm_id: AIA-NORM-A062-P3-D-PROCUREMENT-BEST-PRACTICES
   source: A062-P011
-  quote: evaluate and promote the convergence of best practices in public procurement procedures in relation to AI systems.
-  action: evaluate and promote convergence of best practices in public procurement procedures for AI
-    systems
+  quote: evaluate and promote the convergence of best practices in public procurement procedures in relation
+    to AI systems.
+  action: evaluate and promote convergence of best practices in public procurement procedures for AI systems
   subject_ref: ai_office
   subject_category: union_institution_or_body
   product_scope: outside_supported_actor
@@ -163,3 +208,5 @@ records:
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
+  qualifier_spans:
+  - A062-P007

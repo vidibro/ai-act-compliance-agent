@@ -1,7 +1,8 @@
 records:
 - norm_id: AIA-NORM-A098-P1-COMMITTEE-ASSISTANCE
   source: A098-P001
-  quote: The Commission shall be assisted by a committee
+  quote: The Commission shall be assisted by a committee. That committee shall be a committee within the
+    meaning of Regulation (EU) No 182/2011.
   action: receive assistance from a Regulation 182/2011 committee
   subject_ref: commission
   subject_category: union_institution_or_body
@@ -12,7 +13,7 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A098-P2-EXAMINATION-PROCEDURE
   source: A098-P002
-  quote: Article 5 of Regulation (EU) No 182/2011 shall apply
+  quote: Where reference is made to this paragraph, Article 5 of Regulation (EU) No 182/2011 shall apply.
   action: apply the Regulation 182/2011 Article 5 examination procedure when Article 98(2) is referenced
   subject_ref: committee_procedure
   subject_category: union_institution_or_body
@@ -22,3 +23,5 @@ records:
   implementation_mode: none_required
   implementation_reason: No product implementation is required.
   verification_mode: not_reported
+  conditions:
+  - an enacted provision refers to Article 98(2)

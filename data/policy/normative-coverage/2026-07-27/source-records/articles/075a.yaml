@@ -1,7 +1,9 @@
 records:
 - norm_id: AIA-NORM-A075A-P1-MARKET-SURVEILLANCE-POWERS
   source: A075A-P001
-  quote: the AI Office shall have all the powers of a market surveillance authority
+  quote: When exercising its tasks of supervision and enforcement laid down in Article 75(1) of this Regulation,
+    the AI Office shall have all the powers of a market surveillance authority provided for in this Section
+    and in Article 14(4) and Article 16(3) of Regulation (EU) 2019/1020.
   action: exercise the specified market-surveillance authority powers when supervising Article 75(1) systems
   subject_ref: ai_office
   subject_category: union_institution_or_body
@@ -13,8 +15,12 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A075A-P1-RECLAIM-ENFORCEMENT-COSTS
   source: A075A-P001
-  quote: The AI Office shall be authorised to fully reclaim from the relevant operator the totality of the costs
-  action: reclaim all supervision and enforcement costs associated with non-compliance from the relevant operator
+  quote: The AI Office shall be authorised to fully reclaim from the relevant operator the totality of
+    the costs of its supervision and enforcement activities with respect to instances of non-compliance,
+    including costs for human and technical resources, in accordance with Article 15 of Regulation (EU)
+    2019/1020.
+  action: reclaim all supervision and enforcement costs associated with non-compliance from the relevant
+    operator
   subject_ref: ai_office
   subject_category: union_institution_or_body
   kind: power
@@ -25,7 +31,7 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A075A-P1-APPLY-ARTICLE17
   source: A075A-P001
-  quote: Article 17 of Regulation (EU) 2019/1020 shall apply mutatis mutandis
+  quote: Article 17 of Regulation (EU) 2019/1020 shall apply mutatis mutandis.
   action: apply Regulation 2019/1020 Article 17 with necessary adaptations to AI Office supervision
   subject_ref: ai_office_supervision
   subject_category: union_institution_or_body
@@ -37,7 +43,10 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A075A-P2-START-INVESTIGATION
   source: A075A-P002
-  quote: it may adopt a decision to start an investigation into that non-compliance
+  quote: Where the AI Office has reasonable grounds to suspect non-compliance with this Regulation by
+    a provider or a deployer of an AI system referred to in Article 75(1) of this Regulation, it may adopt
+    a decision to start an investigation into that non-compliance in accordance with Article 14(4), point
+    (f) of Regulation (EU) 2019/1020.
   action: start an investigation where reasonable grounds indicate provider or deployer non-compliance
   subject_ref: ai_office
   subject_category: union_institution_or_body
@@ -47,9 +56,13 @@ records:
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
+  conditions:
+  - the AI Office has reasonable grounds to suspect non-compliance by a provider or deployer of an Article
+    75(1) AI system
 - norm_id: AIA-NORM-A075A-P2-NOTIFY-INVESTIGATION
   source: A075A-P002
-  quote: the AI Office shall notify the operator of the AI system concerned
+  quote: Upon starting such an investigation, the AI Office shall notify the operator of the AI system
+    concerned.
   action: notify the concerned AI-system operator when starting an investigation
   subject_ref: ai_office
   subject_category: union_institution_or_body
@@ -58,10 +71,15 @@ records:
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
+  conditions:
+  - the AI Office starts an investigation under Article 75a(2)
 - norm_id: AIA-NORM-A075A-P2-EXERCISE-POWERS-PREINVESTIGATION
   source: A075A-P002
-  quote: The AI Office may exercise the powers referred to in paragraph 1 of this Article on its own initiative or following a complaint
-  action: exercise paragraph 1 powers on initiative or complaint including before formally starting an investigation
+  quote: The AI Office may exercise the powers referred to in paragraph 1 of this Article on its own initiative
+    or following a complaint received pursuant to Article 85 of this Regulation, even before starting
+    an investigation pursuant to Article 14(4), point (f) of Regulation (EU) 2019/1020.
+  action: exercise paragraph 1 powers on initiative or complaint including before formally starting an
+    investigation
   subject_ref: ai_office
   subject_category: union_institution_or_body
   kind: power
@@ -72,7 +90,9 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A075A-P2-MSA-REQUEST-ASSESSMENT
   source: A075A-P003
-  quote: it may send a request to the AI Office to assess the matter
+  quote: Where a market surveillance authority has reason to suspect non-compliance with this Regulation
+    by a provider or a deployer of an AI system referred to in Article 75(1), it may send a request to
+    the AI Office to assess the matter.
   action: request AI Office assessment of suspected Article 75(1) provider or deployer non-compliance
   subject_ref: market_surveillance_authority
   subject_category: public_authority
@@ -82,9 +102,13 @@ records:
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
+  conditions:
+  - the market-surveillance authority has reason to suspect non-compliance by a provider or deployer of
+    an Article 75(1) AI system
 - norm_id: AIA-NORM-A075A-P3-REQUEST-INFORMATION
   source: A075A-P004
-  quote: The AI Office may exercise the powers listed
+  quote: The AI Office may exercise the powers listed in Article 14(4), points (a), (b) and (c) of Regulation
+    (EU) 2019/1020 and Article 74(12) and (13) of this Regulation by simple request or by decision.
   action: exercise listed information and document powers by simple request or decision
   subject_ref: ai_office
   subject_category: union_institution_or_body
@@ -96,9 +120,11 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A075A-P3-INFORMATION-REQUEST-CONTENT
   source: A075A-P005
-  quote: the AI Office shall state the legal basis and the purpose of the request, specify what information is required, and set the period within which the information is to be provided.
-  action: state the legal basis and purpose of the request, specify the information required and set
-    the period for providing it
+  quote: When requesting information, the AI Office shall state the legal basis and the purpose of the
+    request, specify what information is required, and set the period within which the information is
+    to be provided.
+  action: state the legal basis and purpose of the request, specify the information required and set the
+    period for providing it
   subject_ref: ai_office
   subject_category: union_institution_or_body
   mandatory_content:
@@ -112,19 +138,21 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A075A-P3-SIMPLE-REQUEST-ADDITIONS
   source: A075A-P005
-  quote: Where the request is a simple request, the AI Office shall additionally indicate that although there is no obligation to provide the information requested, in the case of a voluntary reply, the information must be correct and not misleading, and indicate the potential fines provided for in Article 99(5) for supplying incorrect or misleading information.
-  action: additionally indicate, for a simple request, that there is no obligation to provide the
-    information and that a voluntary reply must be correct and not misleading, and indicate the
-    potential Article 99(5) fines
+  quote: Where the request is a simple request, the AI Office shall additionally indicate that although
+    there is no obligation to provide the information requested, in the case of a voluntary reply, the
+    information must be correct and not misleading, and indicate the potential fines provided for in Article
+    99(5) for supplying incorrect or misleading information.
+  action: additionally indicate, for a simple request, that there is no obligation to provide the information
+    and that a voluntary reply must be correct and not misleading, and indicate the potential Article
+    99(5) fines
   subject_ref: ai_office
   subject_category: union_institution_or_body
   conditions:
   - the request is a simple request
   mandatory_content:
-  - that there is no obligation to provide the information requested, but a voluntary reply must be
-    correct and not misleading
-  - the potential fines provided for in Article 99(5) for supplying incorrect or misleading
-    information
+  - that there is no obligation to provide the information requested, but a voluntary reply must be correct
+    and not misleading
+  - the potential fines provided for in Article 99(5) for supplying incorrect or misleading information
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -132,17 +160,18 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A075A-P3-DECISION-REQUEST-ADDITIONS
   source: A075A-P005
-  quote: Where the request is made by decision, the AI Office shall additionally indicate the fines provided for in Article 99(5) for supplying incorrect, incomplete or misleading information and indicate the right to have the decision reviewed by the Court of Justice of the European Union.
-  action: additionally indicate, for a request made by decision, the Article 99(5) fines for
-    supplying incorrect, incomplete or misleading information and the right to have the decision
-    reviewed by the Court of Justice of the European Union
+  quote: Where the request is made by decision, the AI Office shall additionally indicate the fines provided
+    for in Article 99(5) for supplying incorrect, incomplete or misleading information and indicate the
+    right to have the decision reviewed by the Court of Justice of the European Union.
+  action: additionally indicate, for a request made by decision, the Article 99(5) fines for supplying
+    incorrect, incomplete or misleading information and the right to have the decision reviewed by the
+    Court of Justice of the European Union
   subject_ref: ai_office
   subject_category: union_institution_or_body
   conditions:
   - the request is made by decision
   mandatory_content:
-  - the fines provided for in Article 99(5) for supplying incorrect, incomplete or misleading
-    information
+  - the fines provided for in Article 99(5) for supplying incorrect, incomplete or misleading information
   - the right to have the decision reviewed by the Court of Justice of the European Union
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -151,9 +180,10 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A075A-P3-SEND-COPY-TO-TERRITORIAL-AUTHORITY
   source: A075A-P005
-  quote: The AI Office shall send a copy of the request to the market surveillance authority of the Member State in the territory of which the operator or its legal representative is situated.
-  action: send a copy of the request to the market surveillance authority of the Member State in
-    whose territory the operator or its legal representative is situated
+  quote: The AI Office shall send a copy of the request to the market surveillance authority of the Member
+    State in the territory of which the operator or its legal representative is situated.
+  action: send a copy of the request to the market surveillance authority of the Member State in whose
+    territory the operator or its legal representative is situated
   subject_ref: ai_office
   subject_category: union_institution_or_body
   product_scope: outside_supported_actor
@@ -177,7 +207,9 @@ records:
   verified_by: vidibro
 - norm_id: AIA-NORM-A075A-P4-CONDUCT-INSPECTIONS
   source: A075A-P006
-  quote: the AI Office may conduct all necessary remote or on-site inspections
+  quote: In order to carry out the tasks assigned to it under this Section, the AI Office may conduct
+    all necessary remote or on-site inspections pursuant to the powers laid down in Article 14(4), points
+    (d) and (e) of Regulation (EU) 2019/1020 and Article 74(5) of this Regulation.
   action: conduct necessary remote or on-site inspections for Section enforcement tasks
   subject_ref: ai_office
   subject_category: union_institution_or_body
@@ -189,8 +221,13 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A075A-P4-INSPECTION-NOTICES
   source: A075A-P006
-  quote: the AI Office shall inform the provider concerned of the subject matter and purpose of the investigation
-  action: inform the provider about inspection subject purpose fines and review rights and inform the territorial authority before inspection
+  quote: When conducting an inspection, the AI Office shall inform the provider concerned of the subject
+    matter and purpose of the investigation, the relevant fines referred to in Article 99(5) of this Regulation,
+    and the right to have the decision reviewed by the Court of Justice of the European Union. Prior to
+    conducting an inspection, the AI Office shall inform the market surveillance authority of the Member
+    State in the territory of which the operator or its legal representative is situated.
+  action: inform the provider about inspection subject purpose fines and review rights and inform the
+    territorial authority before inspection
   subject_ref: ai_office
   subject_category: union_institution_or_body
   product_scope: outside_supported_actor
@@ -200,13 +237,24 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A075A-P4-INSPECTION-POWERS
   source: A075A-P007
-  quote: the officials of the AI Office shall be empowered to
-  action: exercise the specified entry examination copying questioning recording and sealing powers during inspection
+  quote: 'During such an inspection, the officials of the AI Office shall be empowered to:'
+  action: exercise the specified entry examination copying questioning recording and sealing powers during
+    inspection
   subject_ref: ai_office_official
   subject_category: union_institution_or_body
   kind: power
-  mandatory_content: [enter Union business premises land or property, examine relevant books data and material, copy or extract records, request and record oral or written explanations, seal premises books or records as necessary]
-  qualifier_spans: [A075A-P008, A075A-P009, A075A-P010, A075A-P011, A075A-P012]
+  mandatory_content:
+  - enter Union business premises land or property
+  - examine relevant books data and material
+  - copy or extract records
+  - request and record oral or written explanations
+  - seal premises books or records as necessary
+  qualifier_spans:
+  - A075A-P008
+  - A075A-P009
+  - A075A-P010
+  - A075A-P011
+  - A075A-P012
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -214,8 +262,12 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A075A-P4-ASSIST-OBSTRUCTED-INSPECTION
   source: A075A-P013
-  quote: the national competent authority of the Member State concerned shall afford it the necessary assistance
-  action: provide necessary assistance including police-equivalent assistance where appropriate to overcome inspection obstruction
+  quote: Where the AI Office finds that a natural or legal person opposes or obstructs an inspection,
+    the national competent authority of the Member State concerned shall afford it the necessary assistance,
+    requesting, where appropriate, the assistance of the police or an equivalent enforcement authority,
+    to enable it to conduct its on-site inspection.
+  action: provide necessary assistance including police-equivalent assistance where appropriate to overcome
+    inspection obstruction
   subject_ref: national_competent_authority
   subject_category: public_authority
   product_scope: outside_supported_actor
@@ -223,10 +275,15 @@ records:
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
+  conditions:
+  - a natural or legal person opposes or obstructs an AI Office inspection
 - norm_id: AIA-NORM-A075A-P4-APPLY-JUDICIAL-AUTHORISATION
   source: A075A-P014
-  quote: the AI Office shall apply for such an authorisation
-  action: apply for required judicial authorisation for an on-site inspection including precautionarily where appropriate
+  quote: Where an on-site inspection of business premises, land or property requires authorisation by
+    a judicial authority in accordance with national law, the AI Office shall apply for such an authorisation.
+    The AI Office may also apply for such authorisation as a precautionary measure.
+  action: apply for required judicial authorisation for an on-site inspection including precautionarily
+    where appropriate
   subject_ref: ai_office
   subject_category: union_institution_or_body
   product_scope: outside_supported_actor
@@ -234,10 +291,23 @@ records:
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
+  conditions:
+  - national law requires judicial authorisation for the on-site inspection
 - norm_id: AIA-NORM-A075A-P4-JUDICIAL-AUTHORISATION-REVIEW
   source: A075A-P014
-  quote: the national judicial authority shall promptly verify that the coercive measures envisaged are neither arbitrary nor excessive
-  action: promptly review requested coercive measures for non-arbitrariness and proportionality without reviewing investigation necessity or demanding the AI Office file
+  quote: Where such an authorisation is applied for, the national judicial authority shall promptly verify
+    that the coercive measures envisaged are neither arbitrary nor excessive having regard to the subject
+    matter of the investigation or inspection and the documents provided by the AI Office with the decision.
+    In its verification of the proportionality of coercive measures, the national judicial authority may
+    ask the AI Office for detailed explanations, in particular relating to the grounds the AI Office has
+    for suspecting that an infringement of this Regulation has taken place and the seriousness of the
+    suspected infringement and, where relevant, the nature of the involvement of the person subject to
+    the coercive measures. The national judicial authority shall not review the necessity of the investigation
+    or inspection nor demand information from the case file of the AI Office. In accordance with the Treaties,
+    the legality of the decision of the AI Office is subject to review only by the Court of Justice of
+    the European Union.
+  action: promptly review requested coercive measures for non-arbitrariness and proportionality without
+    reviewing investigation necessity or demanding the AI Office file
   subject_ref: national_judicial_authority
   subject_category: public_authority
   product_scope: outside_supported_actor
@@ -245,9 +315,14 @@ records:
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
+  conditions:
+  - judicial authorisation for an AI Office inspection has been requested
 - norm_id: AIA-NORM-A075A-P5-MSA-FACT-FINDING
   source: A075A-P015
-  quote: may in its own territory carry out any investigation, inspection or other fact-finding measure
+  quote: At the request of the AI Office, the competent market surveillance authority of a Member State
+    may in its own territory carry out any investigation, inspection or other fact-finding measure on
+    behalf and for the account of the AI Office in order to establish whether there has been an infringement
+    of this Regulation.
   action: conduct requested territorial fact-finding for the AI Office under national-law powers
   subject_ref: member_state_market_surveillance_authority
   subject_category: public_authority
@@ -257,15 +332,23 @@ records:
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
+  conditions:
+  - the AI Office requests the fact-finding measure
 - norm_id: AIA-NORM-A075A-P6-ADDITIONAL-OPERATOR-ORDERS
   source: A075A-P016
-  quote: the AI Office, in the exercise of its competences referred to in Article 75(1), may
-  action: order system access and explanations and require retention of necessary compliance-assessment data and documents
+  quote: 'In addition to the powers set out in paragraph 1 of this Article, the AI Office, in the exercise
+    of its competences referred to in Article 75(1), may:'
+  action: order system access and explanations and require retention of necessary compliance-assessment
+    data and documents
   subject_ref: ai_office
   subject_category: union_institution_or_body
   kind: power
-  mandatory_content: [access to and explanations about AI systems, retention of necessary compliance-assessment data and documents]
-  qualifier_spans: [A075A-P017, A075A-P018]
+  mandatory_content:
+  - access to and explanations about AI systems
+  - retention of necessary compliance-assessment data and documents
+  qualifier_spans:
+  - A075A-P017
+  - A075A-P018
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -273,7 +356,11 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A075A-P7-APPOINT-EXPERTS
   source: A075A-P019
-  quote: the AI Office may appoint independent external experts and auditors
+  quote: "To assist it in monitoring the effective implementation and compliance with the relevant provisions\
+    \ of this Regulation and to provide it with specific expertise or knowledge in the exercise of its\
+    \ competences under Article 75(1), the AI Office may appoint independent external experts and auditors,\
+    \ as well as experts, investigative teams and auditors from the Member State\u2019s competent authorities\
+    \ with the agreement of the authority concerned."
   action: appoint external and agreed Member-State experts teams and auditors for Article 75(1) monitoring
   subject_ref: ai_office
   subject_category: union_institution_or_body
@@ -285,7 +372,8 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A075A-P7-SHARE-MONITORING-INFORMATION
   source: A075A-P019
-  quote: Information obtained as a result of such monitoring actions shall be shared with the relevant competent authorities
+  quote: Information obtained as a result of such monitoring actions shall be shared with the relevant
+    competent authorities of the Member States.
   action: share monitoring information with relevant Member-State competent authorities
   subject_ref: ai_office
   subject_category: union_institution_or_body
@@ -296,7 +384,7 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A075A-P8-PURPOSE-LIMIT-INFORMATION
   source: A075A-P020
-  quote: shall be used only for the purpose of this Regulation
+  quote: Information collected pursuant to this Article shall be used only for the purpose of this Regulation.
   action: use Article 75a information only for AI Act purposes
   subject_ref: article_75a_information_recipient
   subject_category: public_authority

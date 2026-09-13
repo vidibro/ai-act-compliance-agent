@@ -40,12 +40,15 @@ from dataclasses import dataclass
 from typing import Any
 
 from aiact.config import get_settings
+from aiact.gap.criteria import aggregate_confidence, aggregate_reasoning, settle
 from aiact.llm import DATA_NOT_INSTRUCTIONS, fence, flatten, new_marker, unfence, verbatim
 from aiact.providers import ProviderProfile, gateway_kwargs, profile_for
 from aiact.retrieval.store import DocumentIndex, Hit, document_id
 from aiact.schemas.enums import CheckType, Verdict
-from aiact.schemas.policy import PolicyRule
+from aiact.schemas.norm import ConditionGroup
+from aiact.schemas.policy import PolicyRule, RuleCriterion
 from aiact.schemas.question import Confidence, clip_reasoning
+from aiact.schemas.report import CriterionFinding
 from aiact.tools.evidence import DEFAULT_K, find_evidence
 from aiact.tools.references import Reference, resolve_all
 from aiact.tracing import current_metadata
@@ -152,6 +155,10 @@ class Judgement:
     """The excerpts the judge saw. Carried so a reviewer can check not just the verdict but what it
     was shown — a wrong verdict on the right passage and a wrong verdict on the wrong passage are
     different bugs, and only this tells them apart."""
+
+    criteria: tuple[CriterionFinding, ...] = ()
+    """One verdict per criterion, for a rule that declares criteria; `verdict` is then their
+    aggregate, computed in code. Empty for a rule judged as one obligation."""
 
     prompt: str = ""
     """The COMPLETE user turn this verdict came from — enacted text, rubric, document outline,
@@ -284,6 +291,7 @@ class LLMJudge:
             f"What documentation satisfying this looks like:\n"
             f'"""\n{rule.evidence_expected}\n"""\n\n'
             f"{rubric}\n\n"
+            f"{_criteria_block(rule)}"
         )
 
         excerpts = "\n\n".join(
@@ -339,7 +347,9 @@ class LLMJudge:
             f"merely restates the obligation in the obligation's own words scores HIGHLY in this "
             f"search while containing no substance at all — rank is not evidence.\n"
             f"{fence('EXCERPTS', excerpts, marker)}\n\n"
-            f'Answer as JSON with keys: "verdict" (one of "pass", "gap", "inadequate", '
+        )
+        fields = (
+            f'"verdict" (one of "pass", "gap", "inadequate", '
             f'"{UNSURE}"), "reasoning" (one sentence naming what is present or missing), '
             # One contiguous span from ONE excerpt: a quote stitched across excerpts reads as
             # verbatim evidence while matching nothing in the document.
@@ -347,8 +357,15 @@ class LLMJudge:
             f"{_EVIDENCE_MAX_LENGTH} characters — not a stitched-together summary, never a quote "
             f"of the enacted text, and null if nothing in the excerpts is responsive), "
             f'"evidence_chunk_id" (the id of that one excerpt, bare, like c012 — not a list and '
-            f'not in brackets), "confidence" (one of "high", "medium", "low").'
+            f'not in brackets), "confidence" (one of "high", "medium", "low")'
         )
+        if _judged(rule):
+            task += (
+                f'Answer as JSON with one key, "criteria": a list with exactly one object per '
+                f'criterion listed above, each with keys "norm_id" (copied exactly), {fields}.'
+            )
+        else:
+            task += f"Answer as JSON with keys: {fields}."
         if not self.profile.caches(stable):
             return stable + task
         return [
@@ -409,7 +426,63 @@ class LLMJudge:
                 f"{rule.rule_id}: expected a JSON object, got {type(data).__name__}.", hits, prompt
             )
 
+        if _judged(rule):
+            return self._to_criteria_judgement(rule, data, hits, document, prompt)
         return self._to_judgement(rule, data, hits, document, prompt)
+
+    def _to_criteria_judgement(
+        self,
+        rule: PolicyRule,
+        data: dict[str, Any],
+        hits: tuple[Hit, ...],
+        document: str,
+        prompt: str = "",
+    ) -> Judgement:
+        """Parse one verdict per criterion; the rule verdict is computed, never read.
+
+        Each entry goes through the same parsing as a whole-rule verdict, so an unreadable entry is
+        NEEDS_REVIEW for that criterion alone. An entry naming no declared criterion, or one named
+        twice, is discarded rather than trusted: the settled list is built from the rule."""
+        declared = {criterion.norm_id for criterion in rule.criteria if criterion.mandatory}
+        entries = data.get("criteria")
+        reported: dict[str, CriterionFinding] = {}
+        seen: set[str] = set()
+        for entry in entries if isinstance(entries, list) else []:
+            if not isinstance(entry, dict):
+                continue
+            norm_id = str(entry.get("norm_id", "")).strip()
+            if norm_id not in declared:
+                continue
+            if norm_id in seen:
+                reported.pop(norm_id, None)
+                continue
+            seen.add(norm_id)
+            one = self._to_judgement(rule, entry, hits, document, prompt, label=norm_id)
+            reported[norm_id] = CriterionFinding(
+                norm_id=norm_id,
+                mandatory=True,
+                verdict=one.verdict,
+                reasoning=one.reasoning,
+                evidence_quote=one.evidence_quote,
+                evidence_chunk_id=one.evidence_chunk_id,
+                confidence=one.confidence,
+            )
+        verdict, criteria = settle(rule, Verdict.NEEDS_REVIEW, reported.values())
+        # The rule-level quote points at an open criterion first: that is what a reader must fix.
+        quoted = [c for c in criteria if c.evidence_quote]
+        cited = next((c for c in quoted if c.verdict is not Verdict.PASS), None) or next(
+            iter(quoted), None
+        )
+        return Judgement(
+            verdict=verdict,
+            reasoning=aggregate_reasoning(rule, criteria),
+            evidence_quote=cited.evidence_quote if cited else None,
+            evidence_chunk_id=cited.evidence_chunk_id if cited else None,
+            confidence=aggregate_confidence(criteria),
+            hits=hits,
+            criteria=tuple(criteria),
+            prompt=prompt,
+        )
 
     def _to_judgement(
         self,
@@ -418,17 +491,19 @@ class LLMJudge:
         hits: tuple[Hit, ...],
         document: str,
         prompt: str = "",
+        label: str | None = None,
     ) -> Judgement:
+        label = label or rule.rule_id
         token = str(data.get("verdict", "")).strip().lower()
         if token == UNSURE:
             return _unsure(
-                f"{rule.rule_id}: the excerpts did not settle the question — "
+                f"{label}: the excerpts did not settle the question — "
                 f"{str(data.get('reasoning', '')).strip() or 'no reason given'}.",
                 hits,
             )
         verdict = _VERDICTS.get(token)
         if verdict is None:
-            return _unsure(f"{rule.rule_id}: {token!r} is not a verdict.", hits)
+            return _unsure(f"{label}: {token!r} is not a verdict.", hits)
 
         confidence: Confidence = data.get("confidence", "medium")
         if confidence not in ("high", "medium", "low"):
@@ -447,12 +522,12 @@ class LLMJudge:
             # Finding's own validator refuses this too; catching it here keeps the failure a
             # NEEDS_REVIEW rather than an exception halfway through a run.
             return _unsure(
-                f"{rule.rule_id}: a {verdict.value} verdict arrived with no reasoning.", hits
+                f"{label}: a {verdict.value} verdict arrived with no reasoning.", hits
             )
 
         return Judgement(
             verdict=verdict,
-            reasoning=clip_reasoning(reasoning or f"model verdict for {rule.rule_id}"),
+            reasoning=clip_reasoning(reasoning or f"model verdict for {label}"),
             evidence_quote=quote,
             evidence_chunk_id=chunk_id,
             confidence=confidence,
@@ -463,6 +538,51 @@ class LLMJudge:
     def check(self, rule: PolicyRule, document: str) -> Verdict:
         """The `Checker` protocol (eval/runner.py) — verdict only, for scoring."""
         return self.judge(rule, document).verdict
+
+
+def _judged(rule: PolicyRule) -> bool:
+    """Whether this rule is judged criterion by criterion."""
+    return any(criterion.mandatory for criterion in rule.criteria)
+
+
+def _condition_text(condition: str | ConditionGroup) -> str:
+    if isinstance(condition, str):
+        return condition
+    joiner = " AND " if condition.operator == "all_of" else " OR "
+    return "(" + joiner.join(_condition_text(item) for item in condition.operands) + ")"
+
+
+def _criterion_lines(criterion: RuleCriterion) -> str:
+    lines = [
+        f"- {criterion.norm_id}",
+        f"    duty-holder: {', '.join(criterion.subjects)}",
+        f"    must: {criterion.action}",
+        f'    enacted words: "{criterion.norm_text}"',
+    ]
+    lines += [f"    only where: {_condition_text(c)}" for c in criterion.conditions]
+    lines += [f"    except: {e}" for e in criterion.exceptions]
+    lines += [f"    must include: {m}" for m in criterion.mandatory_content]
+    return "\n".join(lines)
+
+
+def _criteria_block(rule: PolicyRule) -> str:
+    """The criteria the verdict is split into, each materialised from its canonical norm.
+
+    Listed so the model rules on each one against its own evidence. Evidence for one criterion is
+    never evidence for another: a document that covers four of five AI-specific attacks has said
+    nothing about the fifth."""
+    judged = [criterion for criterion in rule.criteria if criterion.mandatory]
+    if not judged:
+        return ""
+    listed = "\n".join(_criterion_lines(criterion) for criterion in judged)
+    return (
+        f"This obligation is judged as {len(judged)} SEPARATE CRITERIA. Rule on each one on its "
+        f"own evidence. A criterion passes only on evidence about THAT criterion — never because "
+        f"the section it would sit in exists, and never because a sibling criterion is met. Where "
+        f"the documentation itself establishes that a criterion's condition does not hold, that "
+        f"statement is its evidence: rule pass and quote it. Silence about the condition is not "
+        f"such evidence.\n{listed}\n\n"
+    )
 
 
 def outline(index: DocumentIndex) -> tuple[str, ...]:

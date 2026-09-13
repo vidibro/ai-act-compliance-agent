@@ -8,9 +8,12 @@ norms:
     category: public_authority
   action: request and electronically access necessary authority-held information in accessible machine-readable
     form within the body's mandate
-  norm_text: shall have the power to request and access any information or documentation created or maintained
-    from the relevant market surveillance authority pursuant to this Regulation in accessible language
-    and machine-readable format by electronic means
+  norm_text: National public authorities or bodies which supervise or enforce the respect of obligations
+    under Union law protecting fundamental rights, including the right to non-discrimination, shall have
+    the power to request and access any information or documentation created or maintained from the relevant
+    market surveillance authority pursuant to this Regulation in accessible language and machine-readable
+    format by electronic means where access to that information or documentation is necessary for effectively
+    fulfilling their mandates within the limits of their jurisdiction.
   detection_channels:
   - semantic_legal_effect
   - shall_token
@@ -18,7 +21,9 @@ norms:
   - AIA-TEXT-A077-P001
   qualifier_spans: []
   effective_date_spans: []
-  conditions: []
+  conditions:
+  - access is necessary for the authority or body to fulfil its fundamental-rights mandate effectively
+    within its jurisdiction
   exceptions: []
   mandatory_content: []
   dependencies: []
@@ -45,9 +50,10 @@ norms:
     category: public_authority
   action: grant necessary information access without undue delay including by obtaining it from a provider
     or deployer
-  norm_text: the market surveillance authority shall grant the relevant public authority or body referred
-    to in paragraph 1 access to such information or documentation, including by requesting such information
-    or documentation from the provider or the deployer, where necessary and without undue delay.
+  norm_text: Subject to the conditions specified in this Article, the market surveillance authority shall
+    grant the relevant public authority or body referred to in paragraph 1 access to such information
+    or documentation, including by requesting such information or documentation from the provider or the
+    deployer, where necessary and without undue delay.
   detection_channels:
   - semantic_legal_effect
   - shall_token
@@ -55,7 +61,8 @@ norms:
   - AIA-TEXT-A077-P002
   qualifier_spans: []
   effective_date_spans: []
-  conditions: []
+  conditions:
+  - the conditions specified in Article 77 are met
   exceptions: []
   mandatory_content: []
   dependencies: []
@@ -155,8 +162,9 @@ norms:
   subjects:
   - subject_ref: member_state
     category: member_state
-  action: notify the list to the Commission and to the other Member States
-  norm_text: Member States shall notify the list to the Commission and to the other Member States
+  action: notify the list to the Commission and other Member States and keep it up to date
+  norm_text: Member States shall notify the list to the Commission and to the other Member States, and
+    shall keep the list up to date.
   detection_channels:
   - semantic_legal_effect
   - shall_token
@@ -166,41 +174,9 @@ norms:
   effective_date_spans: []
   conditions: []
   exceptions: []
-  mandatory_content: []
-  dependencies: []
-  product_scope: outside_supported_actor
-  product_scope_reason: The present product does not report compliance for this addressee.
-  implementation_mode: none_required
-  implementation_refs: []
-  implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_reported
-  review:
-    status: proposed
-    extracted_by: semantic-legal-effect-pass
-    verified_by: ''
-    review_run_id: normative-coverage-2026-08-28
-    presentation_mode: exact-source-slice
-    display_chunks: 1
-    fully_displayed: true
-    elapsed_seconds: null
-- norm_id: AIA-NORM-A077-P2-KEEP-LIST-UP-TO-DATE
-  act_version_date: '2026-07-27'
-  kind: obligation
-  subjects:
-  - subject_ref: member_state
-    category: member_state
-  action: keep the list up to date
-  norm_text: and shall keep the list up to date.
-  detection_channels:
-  - semantic_legal_effect
-  - shall_token
-  primary_spans:
-  - AIA-TEXT-A077-P004
-  qualifier_spans: []
-  effective_date_spans: []
-  conditions: []
-  exceptions: []
-  mandatory_content: []
+  mandatory_content:
+  - notify the Commission and other Member States
+  - keep the list up to date
   dependencies: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -225,8 +201,10 @@ norms:
     category: public_authority
   action: make a reasoned technical-testing request when documentation cannot establish a fundamental-rights
     infringement
-  norm_text: the public authority or body referred to in paragraph 1 may make a reasoned request to the
-    market surveillance authority, to organise testing of the high-risk AI system through technical means.
+  norm_text: Where the documentation referred to in paragraph 1 is insufficient to ascertain whether an
+    infringement of obligations under Union law protecting fundamental rights has occurred, the public
+    authority or body referred to in paragraph 1 may make a reasoned request to the market surveillance
+    authority, to organise testing of the high-risk AI system through technical means.
   detection_channels:
   - semantic_legal_effect
   - other_modal
@@ -234,7 +212,9 @@ norms:
   - AIA-TEXT-A077-P005
   qualifier_spans: []
   effective_date_spans: []
-  conditions: []
+  conditions:
+  - paragraph 1 documentation is insufficient to determine whether Union fundamental-rights obligations
+    were infringed
   exceptions: []
   mandatory_content: []
   dependencies: []
@@ -324,3 +304,6 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  parallel_norm_ids:
+  - AIA-NORM-A021-P3-CONFIDENTIALITY
+  - AIA-NORM-A074-P14-ARTICLE-78-CONFIDENTIALITY

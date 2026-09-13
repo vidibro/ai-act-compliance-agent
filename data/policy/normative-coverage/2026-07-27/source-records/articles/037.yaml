@@ -44,8 +44,10 @@ records:
   source: A037-P004
   quote: Where the Commission ascertains that a notified body does not meet or no longer meets the requirements
     for its notification, it shall inform the notifying Member State accordingly and request it to take
-    the necessary corrective measures, including the suspension or withdrawal of the notification if necessary.
-  action: inform the notifying Member State when a notified body fails notification requirements
+    the necessary corrective measures, including the suspension or withdrawal of the notification if
+    necessary.
+  action: inform the notifying Member State that a notified body fails notification requirements and request
+    necessary corrective measures, including suspension or withdrawal where necessary
   subject_ref: commission
   subject_category: union_institution_or_body
   product_scope: outside_supported_actor
@@ -53,20 +55,13 @@ records:
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
-- norm_id: AIA-NORM-A037-P4-REQUEST-CORRECTIVE-MEASURES
-  source: A037-P004
-  quote: Where the Commission ascertains that a notified body does not meet or no longer meets the requirements
-    for its notification, it shall inform the notifying Member State accordingly and request it to take
-    the necessary corrective measures, including the suspension or withdrawal of the notification if necessary.
-  action: request necessary Member-State corrective measures, including suspension or withdrawal where
-    necessary
-  subject_ref: commission
-  subject_category: union_institution_or_body
-  product_scope: outside_supported_actor
-  product_scope_reason: The present product does not report compliance for this addressee.
-  implementation_mode: none_required
-  implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_reported
+  conditions:
+  - the Commission ascertains that a notified body does not meet or no longer meets its notification requirements
+  mandatory_content:
+  - inform the notifying Member State accordingly
+  - request the Member State to take necessary corrective measures, including suspension or withdrawal
+    of the notification if necessary
+  verified_by: vidibro
 - norm_id: AIA-NORM-A037-P4-COMMISSION-DESIGNATION-POWER
   source: A037-P004
   quote: Where the Member State fails to take the necessary corrective measures, the Commission may, by

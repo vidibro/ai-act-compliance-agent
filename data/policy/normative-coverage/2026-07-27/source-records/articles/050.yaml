@@ -3,7 +3,11 @@ records:
   source: A050-P1
   quote: Providers shall ensure that AI systems intended to interact directly with natural persons are
     designed and developed in such a way that the natural persons concerned are informed that they are
-    interacting with an AI system
+    interacting with an AI system, unless this is obvious from the point of view of a natural person who
+    is reasonably well-informed, observant and circumspect, taking into account the circumstances and
+    the context of use. This obligation shall not apply to AI systems authorised by law to detect, prevent,
+    investigate or prosecute criminal offences, subject to appropriate safeguards for the rights and freedoms
+    of third parties, unless those systems are available for the public to report a criminal offence.
   action: design direct-interaction systems to inform natural persons they are interacting with AI
   subject_ref: provider
   subject_category: supported_operator
@@ -12,10 +16,11 @@ records:
   verification_mode: judged_by_gap_analysis
   exceptions:
   - interaction with an AI system is obvious from the point of view of a natural person who is reasonably
-    well-informed, observant and circumspect, taking into account the circumstances and the context of use
-  - AI system authorised by law to detect, prevent, investigate, or prosecute criminal offences,
-    subject to safeguards for third-party rights and freedoms, unless the system is publicly
-    available for reporting a criminal offence
+    well-informed, observant and circumspect, taking into account the circumstances and the context of
+    use
+  - AI system authorised by law to detect, prevent, investigate, or prosecute criminal offences, subject
+    to safeguards for third-party rights and freedoms, unless the system is publicly available for reporting
+    a criminal offence
   qualifier_spans:
   - A050-P5
   verified_by: vidibro
@@ -23,7 +28,13 @@ records:
   source: A050-P2
   quote: Providers of AI systems, including general-purpose AI systems, generating synthetic audio, image,
     video or text content, shall ensure that the outputs of the AI system are marked in a machine-readable
-    format and detectable as artificially generated or manipulated.
+    format and detectable as artificially generated or manipulated. Providers shall ensure their technical
+    solutions are effective, interoperable, robust and reliable as far as this is technically feasible,
+    taking into account the specificities and limitations of various types of content, the costs of implementation
+    and the generally acknowledged state of the art, as may be reflected in relevant technical standards.
+    This obligation shall not apply to the extent the AI systems perform an assistive function for standard
+    editing or do not substantially alter the input data provided by the deployer or the semantics thereof,
+    or where authorised by law to detect, prevent, investigate or prosecute criminal offences.
   action: make synthetic outputs both machine-readably marked and detectable
   subject_ref: provider
   subject_category: supported_operator
@@ -55,9 +66,9 @@ records:
   - AIA-TR-A50-3
   verification_mode: reported_not_judged
   exceptions:
-  - biometric categorisation or emotion recognition permitted by law to detect, prevent, or
-    investigate criminal offences, subject to safeguards for third-party rights and freedoms and
-    in accordance with Union law
+  - biometric categorisation or emotion recognition permitted by law to detect, prevent, or investigate
+    criminal offences, subject to safeguards for third-party rights and freedoms and in accordance with
+    Union law
   qualifier_spans:
   - A050-P5
   verified_by: vidibro
@@ -73,14 +84,20 @@ records:
     resolution: external_recorded
     detail: Referenced instruments are outside the enacted corpus.
   exceptions:
-  - biometric categorisation or emotion recognition permitted by law to detect, prevent, or
-    investigate criminal offences, subject to safeguards for third-party rights and freedoms and
-    in accordance with Union law
+  - biometric categorisation or emotion recognition permitted by law to detect, prevent, or investigate
+    criminal offences, subject to safeguards for third-party rights and freedoms and in accordance with
+    Union law
   verification_mode: reported_conditionally
   verified_by: vidibro
 - norm_id: AIA-NORM-A050-P4-DEEPFAKE
   source: A050-P4
-  quote: shall disclose that the content has been artificially generated or manipulated
+  quote: Deployers of an AI system that generates or manipulates image, audio or video content constituting
+    a deep fake, shall disclose that the content has been artificially generated or manipulated. This
+    obligation shall not apply where the use is authorised by law to detect, prevent, investigate or prosecute
+    criminal offence. Where the content forms part of an evidently artistic, creative, satirical, fictional
+    or analogous work or programme, the transparency obligations set out in this paragraph are limited
+    to disclosure of the existence of such generated or manipulated content in an appropriate manner that
+    does not hamper the display or enjoyment of the work.
   action: disclose artificial generation or manipulation of deep-fake image, audio, or video
   subject_ref: deployer
   subject_category: supported_operator
@@ -88,8 +105,8 @@ records:
   - AIA-TR-A50-4
   verification_mode: reported_not_judged
   conditions:
-  - for evidently artistic, creative, satirical, fictional, or analogous works or programmes,
-    disclosure is limited to an appropriate indication that does not hamper display or enjoyment
+  - for evidently artistic, creative, satirical, fictional, or analogous works or programmes, disclosure
+    is limited to an appropriate indication that does not hamper display or enjoyment
   exceptions:
   - use authorised by law to detect, prevent, investigate, or prosecute criminal offences
   qualifier_spans:
@@ -97,7 +114,12 @@ records:
   verified_by: vidibro
 - norm_id: AIA-NORM-A050-P4-TEXT
   source: A050-P4
-  quote: shall disclose that the text has been artificially generated or manipulated
+  quote: Deployers of an AI system that generates or manipulates text which is published with the purpose
+    of informing the public on matters of public interest shall disclose that the text has been artificially
+    generated or manipulated. This obligation shall not apply where the use is authorised by law to detect,
+    prevent, investigate or prosecute criminal offences or where the AI-generated content has undergone
+    a process of human review or editorial control and where a natural or legal person holds editorial
+    responsibility for the publication of the content.
   action: disclose artificial generation or manipulation of public-interest text
   subject_ref: deployer
   subject_category: supported_operator
@@ -106,14 +128,16 @@ records:
   verification_mode: reported_not_judged
   exceptions:
   - use authorised by law to detect, prevent, investigate, or prosecute criminal offences
-  - AI-generated content underwent human review or editorial control and a natural or legal person
-    holds editorial responsibility for publication
+  - AI-generated content underwent human review or editorial control and a natural or legal person holds
+    editorial responsibility for publication
   qualifier_spans:
   - A050-P5
   verified_by: vidibro
 - norm_id: AIA-NORM-A050-P5-MANNER
   source: A050-P5
-  quote: shall be provided to the natural persons concerned in a clear and distinguishable manner
+  quote: The information referred to in paragraphs 1 to 4 shall be provided to the natural persons concerned
+    in a clear and distinguishable manner at the latest at the time of the first interaction or exposure.
+    The information shall conform to the applicable accessibility requirements.
   action: provide paragraphs 1 to 4 information clearly, distinguishably, on time, and accessibly
   subject_ref: provider_or_deployer
   subject_category: supported_operator
@@ -127,7 +151,9 @@ records:
   verified_by: vidibro
 - norm_id: AIA-NORM-A050-P6-CUMULATIVE
   source: A050-P6
-  quote: Paragraphs 1 to 4 shall not affect the requirements and obligations set out in Chapter III
+  quote: Paragraphs 1 to 4 shall not affect the requirements and obligations set out in Chapter III, and
+    shall be without prejudice to other transparency obligations laid down in Union or national law for
+    deployers of AI systems.
   action: preserve Chapter III and other transparency duties alongside Article 50
   subject_ref: provider_or_deployer
   subject_category: supported_operator
@@ -137,9 +163,12 @@ records:
   implementation_mode: none_required
   implementation_reason: Represented as a dependency rather than an independent finding.
   verification_mode: not_reported
+  verified_by: vidibro
 - norm_id: AIA-NORM-A050-P7-CODES
   source: A050-P7
-  quote: The Commission shall encourage and facilitate the drawing up of codes of practice
+  quote: The Commission shall encourage and facilitate the drawing up of codes of practice at Union level
+    to facilitate the effective implementation of the obligations regarding the detection, marking and
+    labelling of artificially generated or manipulated content.
   action: encourage and facilitate Union-level codes of practice
   subject_ref: commission
   subject_category: union_institution_or_body
@@ -148,9 +177,12 @@ records:
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
+  verified_by: vidibro
 - norm_id: AIA-NORM-A050-P7-ASSESS
   source: A050-P7
-  quote: The Commission, taking utmost account of the opinion of the Board, shall assess
+  quote: The Commission, taking utmost account of the opinion of the Board, shall assess whether adherence
+    to those codes of practice is adequate to ensure compliance with the obligations laid down in paragraphs
+    2 and 4 of this Article, in accordance with the procedure laid down in Article 56(6).
   action: assess whether code adherence adequately ensures compliance
   subject_ref: commission
   subject_category: union_institution_or_body
@@ -159,9 +191,12 @@ records:
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
+  verified_by: vidibro
 - norm_id: AIA-NORM-A050-P7-ACT
   source: A050-P7
-  quote: the Commission may adopt an implementing act
+  quote: If it deems the code of practice to be inadequate, the Commission may adopt an implementing act
+    specifying common rules for the implementation of those obligations in accordance with the examination
+    procedure laid down in Article 98(2).
   action: adopt common implementation rules if a code is inadequate
   subject_ref: commission
   subject_category: union_institution_or_body
@@ -171,3 +206,6 @@ records:
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
+  conditions:
+  - the Commission deems the code of practice inadequate
+  verified_by: vidibro

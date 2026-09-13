@@ -44,7 +44,7 @@ norms:
   - subject_ref: provider_or_applicable_deployer
     category: supported_operator
   action: report immediately after establishing a causal link or reasonable likelihood and no later than
-    15 days after awareness
+    15 days after awareness, taking account of the severity of the serious incident
   norm_text: The report referred to in paragraph 1 shall be made immediately after the provider has established
     a causal link between the AI system and the serious incident or the reasonable likelihood of such
     a link, and, in any event, not later than 15 days after the provider or, where applicable, the deployer,
@@ -71,9 +71,9 @@ norms:
   implementation_reason: ''
   verification_mode: reported_not_judged
   review:
-    status: approved
+    status: proposed
     extracted_by: semantic-legal-effect-pass
-    verified_by: vidibro
+    verified_by: ''
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
     display_chunks: 1
@@ -196,17 +196,17 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
-- norm_id: AIA-NORM-A073-P6-INVESTIGATE-ASSESS-AND-CORRECT
+- norm_id: AIA-NORM-A073-P6-INVESTIGATE
   act_version_date: '2026-07-27'
   kind: obligation
   subjects:
   - subject_ref: provider
     category: supported_operator
   action: perform, without delay, the necessary investigations into the serious incident and the AI system
-    concerned, including a risk assessment of the incident
+    concerned
   norm_text: Following the reporting of a serious incident pursuant to paragraph 1, the provider shall,
     without delay, perform the necessary investigations in relation to the serious incident and the AI
-    system concerned. This shall include a risk assessment of the incident
+    system concerned.
   detection_channels:
   - semantic_legal_effect
   - shall_token
@@ -220,7 +220,6 @@ norms:
   exceptions: []
   mandatory_content:
   - necessary investigation of the serious incident and the AI system concerned
-  - risk assessment of the incident
   dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -230,24 +229,25 @@ norms:
   implementation_reason: ''
   verification_mode: reported_not_judged
   review:
-    status: approved
+    status: proposed
     extracted_by: semantic-legal-effect-pass
-    verified_by: vidibro
+    verified_by: ''
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
-- norm_id: AIA-NORM-A073-P6-CORRECTIVE-ACTION
+- norm_id: AIA-NORM-A073-P6-RISK-ASSESSMENT-AND-CORRECTIVE-ACTION
   act_version_date: '2026-07-27'
   kind: obligation
   subjects:
   - subject_ref: provider
     category: supported_operator
-  action: take corrective action following the investigation of the reported serious incident
-  norm_text: and corrective action.
+  action: include a risk assessment of the reported serious incident and corrective action in the investigation
+  norm_text: This shall include a risk assessment of the incident, and corrective action.
   detection_channels:
   - semantic_legal_effect
+  - shall_token
   - existing_implementation
   primary_spans:
   - AIA-TEXT-A073-P007
@@ -256,7 +256,9 @@ norms:
   conditions:
   - a serious incident has been reported pursuant to paragraph 1
   exceptions: []
-  mandatory_content: []
+  mandatory_content:
+  - risk assessment of the incident
+  - corrective action
   dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -266,9 +268,9 @@ norms:
   implementation_reason: ''
   verification_mode: reported_not_judged
   review:
-    status: approved
+    status: proposed
     extracted_by: semantic-legal-effect-pass
-    verified_by: vidibro
+    verified_by: ''
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
     display_chunks: 1
@@ -431,10 +433,11 @@ norms:
   - subject_ref: market_surveillance_authority
     category: public_authority
   action: take the appropriate measures provided for in Article 19 of Regulation (EU) 2019/1020 within
-    seven days of receiving the paragraph 1 notification
+    seven days of receiving the paragraph 1 notification and follow that Regulation's notification procedures
   norm_text: The market surveillance authority shall take appropriate measures, as provided for in Article
     19 of Regulation (EU) 2019/1020, within seven days from the date it received the notification referred
-    to in paragraph 1 of this Article
+    to in paragraph 1 of this Article, and shall follow the notification procedures as provided in that
+    Regulation.
   detection_channels:
   - semantic_legal_effect
   - shall_token
@@ -444,41 +447,9 @@ norms:
   effective_date_spans: []
   conditions: []
   exceptions: []
-  mandatory_content: []
-  dependencies: []
-  product_scope: outside_supported_actor
-  product_scope_reason: The present product does not report compliance for this addressee.
-  implementation_mode: none_required
-  implementation_refs: []
-  implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_reported
-  review:
-    status: proposed
-    extracted_by: semantic-legal-effect-pass
-    verified_by: ''
-    review_run_id: normative-coverage-2026-08-28
-    presentation_mode: exact-source-slice
-    display_chunks: 1
-    fully_displayed: true
-    elapsed_seconds: null
-- norm_id: AIA-NORM-A073-P8-FOLLOW-NOTIFICATION-PROCEDURES
-  act_version_date: '2026-07-27'
-  kind: obligation
-  subjects:
-  - subject_ref: market_surveillance_authority
-    category: public_authority
-  action: follow the notification procedures provided in Regulation (EU) 2019/1020
-  norm_text: and shall follow the notification procedures as provided in that Regulation.
-  detection_channels:
-  - semantic_legal_effect
-  - shall_token
-  primary_spans:
-  - AIA-TEXT-A073-P010
-  qualifier_spans: []
-  effective_date_spans: []
-  conditions: []
-  exceptions: []
-  mandatory_content: []
+  mandatory_content:
+  - take the appropriate Article 19 measures within seven days
+  - follow the Regulation (EU) 2019/1020 notification procedures
   dependencies: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.

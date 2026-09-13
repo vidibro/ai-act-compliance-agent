@@ -1,13 +1,18 @@
 records:
 - norm_id: AIA-NORM-A074-P1-APPLY-MARKET-SURVEILLANCE-REGULATION
   source: A074-P001
-  quote: 'Regulation (EU) 2019/1020 shall apply to AI systems covered by this Regulation. For the purposes of the effective enforcement of this Regulation:'
+  quote: 'Regulation (EU) 2019/1020 shall apply to AI systems covered by this Regulation. For the purposes
+    of the effective enforcement of this Regulation:'
   action: apply Regulation 2019/1020 using the enacted expanded operator and product meanings
   subject_ref: market_surveillance_authority
   subject_category: public_authority
   kind: applicability
-  mandatory_content: [Article 2(1) operators treated as economic operators, in-scope AI systems treated as products]
-  qualifier_spans: [A074-P002, A074-P003]
+  mandatory_content:
+  - Article 2(1) operators treated as economic operators
+  - in-scope AI systems treated as products
+  qualifier_spans:
+  - A074-P002
+  - A074-P003
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -15,9 +20,12 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A074-P2-ANNUAL-SURVEILLANCE-REPORTING
   source: A074-P004
-  quote: As part of their reporting obligations under Article 34(4) of Regulation (EU) 2019/1020, the market surveillance authorities shall report annually to the Commission and relevant national competition authorities any information identified in the course of market surveillance activities that may be of potential interest for the application of Union law on competition rules.
-  action: report annually to the Commission and the relevant national competition authorities any
-    surveillance information of potential interest for applying Union competition law
+  quote: As part of their reporting obligations under Article 34(4) of Regulation (EU) 2019/1020, the
+    market surveillance authorities shall report annually to the Commission and relevant national competition
+    authorities any information identified in the course of market surveillance activities that may be
+    of potential interest for the application of Union law on competition rules.
+  action: report annually to the Commission and the relevant national competition authorities any surveillance
+    information of potential interest for applying Union competition law
   subject_ref: market_surveillance_authority
   subject_category: public_authority
   product_scope: outside_supported_actor
@@ -27,12 +35,15 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A074-P2-ANNUAL-PROHIBITED-PRACTICE-REPORTING
   source: A074-P004
-  quote: They shall also annually report to the Commission about the use of prohibited practices that occurred during that year and about the measures taken.
-  action: report annually to the Commission on the use of prohibited practices during that year and
-    on the measures taken
+  quote: They shall also annually report to the Commission about the use of prohibited practices that
+    occurred during that year and about the measures taken.
+  action: report annually to the Commission on the use of prohibited practices during that year and on
+    the measures taken
   subject_ref: market_surveillance_authority
   subject_category: public_authority
-  mandatory_content: [use of prohibited practices that occurred during that year, measures taken]
+  mandatory_content:
+  - use of prohibited practices that occurred during that year
+  - measures taken
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -40,11 +51,15 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A074-P3-SECTORAL-SURVEILLANCE-AUTHORITY
   source: A074-P005
-  quote: For high-risk AI systems related to products covered by the Union harmonisation legislation listed in Section A of Annex I, the market surveillance authority for the purposes of this Regulation shall be the authority responsible for market surveillance activities designated under those legal acts.
-  action: assign Section A product surveillance to the sectoral authority unless a coordinated alternative is designated
+  quote: For high-risk AI systems related to products covered by the Union harmonisation legislation listed
+    in Section A of Annex I, the market surveillance authority for the purposes of this Regulation shall
+    be the authority responsible for market surveillance activities designated under those legal acts.
+  action: assign Section A product surveillance to the sectoral authority unless a coordinated alternative
+    is designated
   subject_ref: member_state
   subject_category: member_state
-  qualifier_spans: [A074-P006]
+  qualifier_spans:
+  - A074-P006
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -52,8 +67,12 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A074-P4-USE-EQUIVALENT-SECTORAL-PROCEDURES
   source: A074-P007
-  quote: The procedures referred to in Articles 79 to 83 of this Regulation shall not apply to AI systems related to products covered by the Union harmonisation legislation listed in section A of Annex I, where such legal acts already provide for procedures ensuring an equivalent level of protection and having the same objective. In such cases, the relevant sectoral procedures shall apply instead.
-  action: substitute same-objective sectoral procedures providing equivalent protection for Articles 79 to 83
+  quote: The procedures referred to in Articles 79 to 83 of this Regulation shall not apply to AI systems
+    related to products covered by the Union harmonisation legislation listed in section A of Annex I,
+    where such legal acts already provide for procedures ensuring an equivalent level of protection and
+    having the same objective. In such cases, the relevant sectoral procedures shall apply instead.
+  action: substitute same-objective sectoral procedures providing equivalent protection for Articles 79
+    to 83
   subject_ref: market_surveillance_authority
   subject_category: public_authority
   kind: applicability
@@ -62,9 +81,17 @@ records:
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
+  conditions:
+  - the AI system is related to a product covered by Union harmonisation legislation listed in Section
+    A of Annex I
+  - that legislation already provides procedures with the same objective and an equivalent level of protection
+  verified_by: vidibro
 - norm_id: AIA-NORM-A074-P5-REMOTE-SURVEILLANCE-POWERS
   source: A074-P008
-  quote: Without prejudice to the powers of market surveillance authorities under Article 14 of Regulation (EU) 2019/1020, for the purpose of ensuring the effective enforcement of this Regulation, market surveillance authorities may exercise the powers referred to in Article 14(4), points (d) and (j), of that Regulation remotely, as appropriate.
+  quote: Without prejudice to the powers of market surveillance authorities under Article 14 of Regulation
+    (EU) 2019/1020, for the purpose of ensuring the effective enforcement of this Regulation, market surveillance
+    authorities may exercise the powers referred to in Article 14(4), points (d) and (j), of that Regulation
+    remotely, as appropriate.
   action: exercise Article 14(4)(d) and (j) surveillance powers remotely as appropriate
   subject_ref: market_surveillance_authority
   subject_category: public_authority
@@ -76,7 +103,11 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A074-P6-FINANCIAL-SUPERVISOR-AUTHORITY
   source: A074-P009
-  quote: For high-risk AI systems placed on the market, put into service, or used by financial institutions regulated by Union financial services law, the market surveillance authority for the purposes of this Regulation shall be the relevant national authority responsible for the financial supervision of those institutions under that legislation in so far as the placing on the market, putting into service, or the use of the AI system is in direct connection with the provision of those financial services.
+  quote: For high-risk AI systems placed on the market, put into service, or used by financial institutions
+    regulated by Union financial services law, the market surveillance authority for the purposes of this
+    Regulation shall be the relevant national authority responsible for the financial supervision of those
+    institutions under that legislation in so far as the placing on the market, putting into service,
+    or the use of the AI system is in direct connection with the provision of those financial services.
   action: assign directly connected financial-services AI surveillance to the relevant financial supervisor
   subject_ref: member_state
   subject_category: member_state
@@ -87,22 +118,54 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A074-P7-COORDINATED-FINANCIAL-DEROGATION
   source: A074-P010
-  quote: By way of derogation from paragraph 6, in appropriate circumstances, and provided that coordination is ensured, another relevant authority may be identified by the Member State as market surveillance authority for the purposes of this Regulation.
-  action: designate another coordinated financial-sector surveillance authority and promptly report prudentially relevant information to the ECB
-  subject_ref: member_state_and_financial_market_surveillance_authority
-  subject_category: public_authority
-  qualifier_spans: [A074-P011]
+  quote: By way of derogation from paragraph 6, in appropriate circumstances, and provided that coordination
+    is ensured, another relevant authority may be identified by the Member State as market surveillance
+    authority for the purposes of this Regulation.
+  action: designate another relevant authority as the market-surveillance authority for the Regulation
+  subject_ref: member_state
+  subject_category: member_state
+  qualifier_spans: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
+  kind: permission
+  conditions:
+  - the circumstances are appropriate
+  - coordination with the relevant financial supervisory authority is ensured
+  verified_by: vidibro
+- norm_id: AIA-NORM-A074-P7-REPORT-PRUDENTIALLY-RELEVANT-INFORMATION
+  source: A074-P011
+  quote: National market surveillance authorities supervising regulated credit institutions regulated
+    under Directive 2013/36/EU, which are participating in the Single Supervisory Mechanism established
+    by Regulation (EU) No 1024/2013, should report, without delay, to the European Central Bank any information
+    identified in the course of their market surveillance activities that may be of potential interest
+    for the prudential supervisory tasks of the European Central Bank specified in that Regulation.
+  action: should report without delay to the European Central Bank market-surveillance information potentially
+    relevant to its prudential-supervision tasks
+  subject_ref: financial_market_surveillance_authority
+  subject_category: public_authority
+  kind: recommendation
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_reason: This is a non-binding recommendation to a public authority.
+  conditions:
+  - the authority supervises regulated credit institutions under Directive 2013/36/EU that participate
+    in the Single Supervisory Mechanism
+  verified_by: vidibro
 - norm_id: AIA-NORM-A074-P8-SENSITIVE-SECTOR-AUTHORITIES
   source: A074-P012
-  quote: For high-risk AI systems listed in point 1 of Annex III to this Regulation, in so far as the systems are used for law enforcement purposes, border management and justice and democracy, and for high-risk AI systems listed in points 6, 7 and 8 of Annex III to this Regulation, Member States shall designate as market surveillance authorities for the purposes of this Regulation either the competent data protection supervisory authorities under Regulation (EU) 2016/679 or Directive (EU) 2016/680, or any other authority designated pursuant to the same conditions laid down in Articles 41 to 44 of Directive (EU) 2016/680.
-  action: designate, for the enacted Annex III systems, either the competent data protection
-    supervisory authorities or another authority designated under the same Articles 41 to 44
-    conditions as market surveillance authorities
+  quote: For high-risk AI systems listed in point 1 of Annex III to this Regulation, in so far as the
+    systems are used for law enforcement purposes, border management and justice and democracy, and for
+    high-risk AI systems listed in points 6, 7 and 8 of Annex III to this Regulation, Member States shall
+    designate as market surveillance authorities for the purposes of this Regulation either the competent
+    data protection supervisory authorities under Regulation (EU) 2016/679 or Directive (EU) 2016/680,
+    or any other authority designated pursuant to the same conditions laid down in Articles 41 to 44 of
+    Directive (EU) 2016/680.
+  action: designate, for the enacted Annex III systems, either the competent data protection supervisory
+    authorities or another authority designated under the same Articles 41 to 44 conditions as market
+    surveillance authorities
   subject_ref: member_state
   subject_category: member_state
   product_scope: outside_supported_actor
@@ -112,9 +175,10 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A074-P8-PRESERVE-JUDICIAL-INDEPENDENCE
   source: A074-P012
-  quote: Market surveillance activities shall in no way affect the independence of judicial authorities, or otherwise interfere with their activities when acting in their judicial capacity.
-  action: conduct no market surveillance activity that affects the independence of judicial
-    authorities or otherwise interferes with their activities when acting in their judicial capacity
+  quote: Market surveillance activities shall in no way affect the independence of judicial authorities,
+    or otherwise interfere with their activities when acting in their judicial capacity.
+  action: conduct no market surveillance activity that affects the independence of judicial authorities
+    or otherwise interferes with their activities when acting in their judicial capacity
   subject_ref: market_surveillance_authority
   subject_category: public_authority
   kind: prohibition
@@ -125,7 +189,9 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A074-P9-EDPS-SURVEILLANCE
   source: A074-P013
-  quote: Where Union institutions, bodies, offices or agencies fall within the scope of this Regulation, the European Data Protection Supervisor shall act as their market surveillance authority, except in relation to the Court of Justice of the European Union acting in its judicial capacity.
+  quote: Where Union institutions, bodies, offices or agencies fall within the scope of this Regulation,
+    the European Data Protection Supervisor shall act as their market surveillance authority, except in
+    relation to the Court of Justice of the European Union acting in its judicial capacity.
   action: supervise in-scope Union bodies except the Court acting judicially
   subject_ref: european_data_protection_supervisor
   subject_category: union_institution_or_body
@@ -134,9 +200,17 @@ records:
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
+  conditions:
+  - a Union institution, body, office or agency falls within the scope of the Regulation
+  exceptions:
+  - the Court of Justice of the European Union acting in its judicial capacity
+  verified_by: vidibro
 - norm_id: AIA-NORM-A074-P10-FACILITATE-NATIONAL-COORDINATION
   source: A074-P014
-  quote: Member States shall facilitate coordination between market surveillance authorities designated under this Regulation and other relevant national authorities or bodies which supervise the application of Union harmonisation legislation listed in Annex I, or in other Union law, that might be relevant for the high-risk AI systems referred to in Annex III.
+  quote: Member States shall facilitate coordination between market surveillance authorities designated
+    under this Regulation and other relevant national authorities or bodies which supervise the application
+    of Union harmonisation legislation listed in Annex I, or in other Union law, that might be relevant
+    for the high-risk AI systems referred to in Annex III.
   action: facilitate coordination between AI surveillance and other relevant national authorities
   subject_ref: member_state
   subject_category: member_state
@@ -147,9 +221,14 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A074-P11-JOINT-ACTIVITIES
   source: A074-P015
-  quote: Market surveillance authorities and the Commission shall be able to propose joint activities, including joint investigations, to be conducted by either market surveillance authorities or market surveillance authorities jointly with the Commission, that have the aim of promoting compliance, identifying non-compliance, raising awareness or providing guidance in relation to this Regulation with respect to specific categories of high-risk AI systems that are found to present a serious risk across two or more Member States in accordance with Article 9 of Regulation (EU) 2019/1020.
-  action: propose joint activities, including joint investigations, on categories of high-risk AI
-    systems found to present a serious risk across two or more Member States
+  quote: Market surveillance authorities and the Commission shall be able to propose joint activities,
+    including joint investigations, to be conducted by either market surveillance authorities or market
+    surveillance authorities jointly with the Commission, that have the aim of promoting compliance, identifying
+    non-compliance, raising awareness or providing guidance in relation to this Regulation with respect
+    to specific categories of high-risk AI systems that are found to present a serious risk across two
+    or more Member States in accordance with Article 9 of Regulation (EU) 2019/1020.
+  action: propose joint activities, including joint investigations, on categories of high-risk AI systems
+    found to present a serious risk across two or more Member States
   subject_ref: market_surveillance_authority_and_commission
   subject_category: public_authority
   kind: power
@@ -171,27 +250,47 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A074-P12-GRANT-DOCUMENTATION-AND-DATA-ACCESS
   source: A074-P016
-  quote: Without prejudice to the powers provided for under Regulation (EU) 2019/1020, and where relevant and limited to what is necessary to fulfil their tasks, the market surveillance authorities shall be granted full access by providers to the documentation as well as the training, validation and testing data sets used for the development of high-risk AI systems, including, where appropriate and subject to security safeguards, through application programming interfaces (API) or other relevant technical means and tools enabling remote access.
-  action: grant necessary full authority access to documentation and development data sets including safeguarded remote access where appropriate
+  quote: Without prejudice to the powers provided for under Regulation (EU) 2019/1020, and where relevant
+    and limited to what is necessary to fulfil their tasks, the market surveillance authorities shall
+    be granted full access by providers to the documentation as well as the training, validation and testing
+    data sets used for the development of high-risk AI systems, including, where appropriate and subject
+    to security safeguards, through application programming interfaces (API) or other relevant technical
+    means and tools enabling remote access.
+  action: grant necessary full authority access to documentation and development data sets including safeguarded
+    remote access where appropriate
   subject_ref: provider
   subject_category: supported_operator
-  implementation_refs: [AIA-PO-A74-12]
+  implementation_refs:
+  - AIA-PO-A74-12
   verification_mode: reported_not_judged
   verified_by: vidibro
+  conditions:
+  - the access is relevant and limited to what is necessary for the market-surveillance authority to fulfil
+    its tasks
 - norm_id: AIA-NORM-A074-P13-GRANT-SOURCE-CODE-ACCESS
   source: A074-P017
-  quote: 'Market surveillance authorities shall be granted access to the source code of the high-risk AI system upon a reasoned request and only when both of the following conditions are fulfilled:'
-  action: grant source-code access on a reasoned request only after both necessity and exhaustion conditions are met
+  quote: 'Market surveillance authorities shall be granted access to the source code of the high-risk
+    AI system upon a reasoned request and only when both of the following conditions are fulfilled:'
+  action: grant source-code access on a reasoned request only after both necessity and exhaustion conditions
+    are met
   subject_ref: provider
   subject_category: supported_operator
-  mandatory_content: [source-code access is necessary for Chapter III Section 2 conformity assessment, data and documentation testing auditing and verification are exhausted or insufficient]
-  qualifier_spans: [A074-P018, A074-P019]
-  implementation_refs: [AIA-PO-A74-13]
+  mandatory_content: []
+  qualifier_spans:
+  - A074-P018
+  - A074-P019
+  implementation_refs:
+  - AIA-PO-A74-13
   verification_mode: reported_not_judged
   verified_by: vidibro
+  conditions:
+  - source-code access is necessary for assessing conformity with Chapter III Section 2 requirements
+  - testing, auditing and verification procedures based on data and documentation provided by the provider
+    have been exhausted or proved insufficient
 - norm_id: AIA-NORM-A074-P14-ARTICLE-78-CONFIDENTIALITY
   source: A074-P020
-  quote: Any information or documentation obtained by market surveillance authorities shall be treated in accordance with the confidentiality obligations set out in Article 78.
+  quote: Any information or documentation obtained by market surveillance authorities shall be treated
+    in accordance with the confidentiality obligations set out in Article 78.
   action: treat obtained information and documentation under Article 78 confidentiality
   subject_ref: market_surveillance_authority
   subject_category: public_authority

@@ -6,8 +6,8 @@ records:
     Annex III point 1 system when the applicable standards or common specifications were applied
   conditions:
   - the high-risk AI system is listed in point 1 of Annex III
-  - the provider has applied Article 40 harmonised standards or, where applicable, Article 41 common
-    specifications in demonstrating compliance with Section 2 requirements
+  - the provider has applied Article 40 harmonised standards or, where applicable, Article 41 common specifications
+    in demonstrating compliance with Section 2 requirements
   subject_ref: provider
   subject_category: supported_operator
   implementation_refs:
@@ -43,9 +43,9 @@ records:
   conditions:
   - the high-risk AI system is listed in point 1 of Annex III and is undergoing the Annex VII procedure
   exceptions:
-  - where the system is intended to be put into service by law enforcement, immigration or asylum
-    authorities, or Union institutions, bodies, offices or agencies, the Article 74(8) or (9) market
-    surveillance authority, as applicable, shall act as the notified body
+  - where the system is intended to be put into service by law enforcement, immigration or asylum authorities,
+    or Union institutions, bodies, offices or agencies, the Article 74(8) or (9) market surveillance authority,
+    as applicable, shall act as the notified body
   dependencies:
   - dependency_ref: AIA-NORM-A043-P1-AUTHORITY-AS-NOTIFIED-BODY
     resolution: internal_resolved
@@ -95,8 +95,8 @@ records:
   subject_ref: provider
   subject_category: supported_operator
   conditions:
-  - the high-risk AI system is covered by Union harmonisation legislation listed in Section A of
-    Annex I
+  - the high-risk AI system is covered by Union harmonisation legislation listed in Section A of Annex
+    I
   implementation_refs:
   - AIA-PO-A43-3
   verification_mode: reported_not_judged
@@ -108,48 +108,69 @@ records:
   subject_ref: provider
   subject_category: supported_operator
   conditions:
-  - the high-risk AI system is covered by Union harmonisation legislation listed in Section A of
-    Annex I
+  - the high-risk AI system is covered by Union harmonisation legislation listed in Section A of Annex
+    I
   implementation_refs:
   - AIA-PO-A43-3
   verification_mode: reported_not_judged
   verified_by: vidibro
 - norm_id: AIA-NORM-A043-P3-QMS
   source: A043-P3
-  quote: Assessment of the quality management system set out in Article 17 shall also be undertaken
-  action: undertake assessment of the Article 17 quality-management system
+  quote: Assessment of the quality management system set out in Article 17 shall also be undertaken, and
+    points 3, 4.3, 4.4. and 4.5, the fifth paragraph of point 4.6 and point 5 of Annex VII shall apply.
+  action: undertake assessment of the Article 17 quality-management system and apply the specified Annex
+    VII procedural requirements
   subject_ref: provider
   subject_category: supported_operator
   conditions:
-  - the high-risk AI system is covered by Union harmonisation legislation listed in Section A of
-    Annex I
-  implementation_refs:
-  - AIA-PO-A43-3
-  verification_mode: reported_not_judged
-  verified_by: vidibro
-- norm_id: AIA-NORM-A043-P3-ANNEXVII
-  source: A043-P3
-  quote: points 3, 4.3, 4.4. and 4.5, the fifth paragraph of point 4.6 and point 5 of Annex VII shall
-    apply
-  action: apply the specified Annex VII procedural requirements
-  subject_ref: provider
-  subject_category: supported_operator
-  conditions:
-  - the high-risk AI system is covered by Union harmonisation legislation listed in Section A of
-    Annex I
+  - the high-risk AI system is covered by Union harmonisation legislation listed in Section A of Annex
+    I
   implementation_refs:
   - AIA-PO-A43-3
   verification_mode: reported_not_judged
   dependencies:
-  - dependency_ref: AIA-TEXT-ANNEX-VII-I3
+  - dependency_ref: AIA-TEXT-ANNEX-VII-P006
     resolution: internal_resolved
-    detail: Annex VII point 3 is imported in full.
-  - dependency_ref: AIA-TEXT-ANNEX-VII-I4
+    detail: Annex VII point 3.1 starts the imported quality-management-system procedure.
+  - dependency_ref: AIA-TEXT-ANNEX-VII-P013
     resolution: internal_resolved
-    detail: The specified point 4 subparagraphs are represented within this source segment.
-  - dependency_ref: AIA-TEXT-ANNEX-VII-I5
+    detail: Annex VII point 3.2 contains its assessment and decision procedure.
+  - dependency_ref: AIA-TEXT-ANNEX-VII-P014
     resolution: internal_resolved
-    detail: Annex VII point 5 is imported in full.
+    detail: Annex VII point 3.3 requires the approved quality management system to continue.
+  - dependency_ref: AIA-TEXT-ANNEX-VII-P015
+    resolution: internal_resolved
+    detail: Annex VII point 3.4 governs proposed changes to that system.
+  - dependency_ref: AIA-TEXT-ANNEX-VII-P017
+    resolution: internal_resolved
+    detail: Annex VII point 4.1 starts the technical-documentation assessment procedure.
+  - dependency_ref: AIA-TEXT-ANNEX-VII-P018
+    resolution: internal_resolved
+    detail: Annex VII point 4.2 requires the technical-documentation application content.
+  - dependency_ref: AIA-TEXT-ANNEX-VII-P022
+    resolution: internal_resolved
+    detail: Annex VII point 4.3 governs examination and dataset access.
+  - dependency_ref: AIA-TEXT-ANNEX-VII-P023
+    resolution: internal_resolved
+    detail: Annex VII point 4.4 governs evidence and adequate testing.
+  - dependency_ref: AIA-TEXT-ANNEX-VII-P024
+    resolution: internal_resolved
+    detail: Annex VII point 4.5 governs access to training and trained models.
+  - dependency_ref: AIA-TEXT-ANNEX-VII-P025
+    resolution: internal_resolved
+    detail: Annex VII point 4.6 governs decisions, certificates, refusal, and retraining.
+  - dependency_ref: AIA-TEXT-ANNEX-VII-P026
+    resolution: internal_resolved
+    detail: Annex VII point 4.7 governs changes to the AI system and certificate supplements.
+  - dependency_ref: AIA-TEXT-ANNEX-VII-P029
+    resolution: internal_resolved
+    detail: Annex VII point 5.2 governs surveillance access and information sharing.
+  - dependency_ref: AIA-TEXT-ANNEX-VII-P030
+    resolution: internal_resolved
+    detail: Annex VII point 5.3 governs periodic audits and additional testing.
+  mandatory_content:
+  - assess the Article 17 quality-management system
+  - apply the specified Annex VII procedural requirements
   verified_by: vidibro
 - norm_id: AIA-NORM-A043-P3-BODY-POWER
   source: A043-P3
@@ -160,8 +181,8 @@ records:
   kind: power
   conditions:
   - the body has been notified under Union harmonisation legislation listed in Section A of Annex I
-  - the body's compliance with Article 31(4), (5), (10) and (11) has been assessed in the context of
-    the notification procedure in accordance with the relevant Union harmonisation legislation
+  - the body's compliance with Article 31(4), (5), (10) and (11) has been assessed in the context of the
+    notification procedure in accordance with the relevant Union harmonisation legislation
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -188,8 +209,8 @@ records:
   subject_category: supported_operator
   kind: permission
   conditions:
-  - Union harmonisation legislation listed in Section A of Annex I gives the product manufacturer an
-    option to rely on a conformity assessment not involving a third party
+  - Union harmonisation legislation listed in Section A of Annex I gives the product manufacturer an option
+    to rely on a conformity assessment not involving a third party
   - the manufacturer has applied harmonised standards ensuring compliance with all the requirements of
     that legislation
   implementation_refs:
@@ -228,21 +249,6 @@ records:
   implementation_mode: none_required
   implementation_reason: Represented as a dependency rather than an independent finding.
   verification_mode: not_reported
-- norm_id: AIA-NORM-A043-P3-DUAL
-  source: A043-P3
-  quote: shall follow the relevant conformity assessment procedure as required pursuant to the relevant
-    Union harmonisation legislation
-  action: use the Section A Annex I procedure when the system is also in Annex III
-  subject_ref: provider
-  subject_category: supported_operator
-  conditions:
-  - the high-risk AI system is covered by Union harmonisation legislation listed in Section A of
-    Annex I
-  - the high-risk AI system also falls within one of the categories listed in Annex III
-  implementation_refs:
-  - AIA-PO-A43-3
-  verification_mode: reported_not_judged
-  verified_by: vidibro
 - norm_id: AIA-NORM-A043-P4-NEW-ASSESSMENT
   source: A043-P4
   quote: High-risk AI systems that have already been subject to a conformity assessment procedure shall
@@ -257,6 +263,9 @@ records:
   - AIA-PO-A43-4
   verification_mode: reported_not_judged
   verified_by: vidibro
+  conditions:
+  - the high-risk AI system has already undergone a conformity-assessment procedure
+  - the high-risk AI system is substantially modified
 - norm_id: AIA-NORM-A043-P4-PREDETERMINED-CHANGE-EXCLUSION
   source: A043-P4
   quote: For high-risk AI systems that continue to learn after being placed on the market or put into
@@ -278,7 +287,8 @@ records:
   - the change is included in Annex IV point 2(f) technical documentation
 - norm_id: AIA-NORM-A043-P5-AMEND
   source: A043-P5
-  quote: The Commission is empowered to adopt delegated acts
+  quote: The Commission is empowered to adopt delegated acts in accordance with Article 97 in order to
+    amend Annexes VI and VII by updating them in light of technical progress.
   action: amend Annexes VI and VII for technical progress
   subject_ref: commission
   subject_category: union_institution_or_body
@@ -288,9 +298,12 @@ records:
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
+  verified_by: vidibro
 - norm_id: AIA-NORM-A043-P6-AMEND
   source: A043-P6
-  quote: The Commission is empowered to adopt delegated acts
+  quote: The Commission is empowered to adopt delegated acts in accordance with Article 97 in order to
+    amend paragraphs 1 and 2 of this Article in order to subject high-risk AI systems referred to in points
+    2 to 8 of Annex III to the conformity assessment procedure referred to in Annex VII or parts thereof.
   action: move Annex III points 2 to 8 to some or all of the Annex VII procedure
   subject_ref: commission
   subject_category: union_institution_or_body
@@ -300,6 +313,7 @@ records:
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
+  verified_by: vidibro
 - norm_id: AIA-NORM-A043-P6-DELEGATED-ACT-CRITERIA
   source: A043-P6
   quote: The Commission shall adopt such delegated acts taking into account the effectiveness of the conformity

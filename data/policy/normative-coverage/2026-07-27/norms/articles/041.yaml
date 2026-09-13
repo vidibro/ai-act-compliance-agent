@@ -75,7 +75,8 @@ norms:
   - AIA-TEXT-A041-P008
   qualifier_spans: []
   effective_date_spans: []
-  conditions: []
+  conditions:
+  - the Commission is drafting common specifications under paragraph 1
   exceptions: []
   mandatory_content: []
   dependencies: []
@@ -86,9 +87,9 @@ norms:
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
   review:
-    status: proposed
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
     display_chunks: 1
@@ -129,6 +130,9 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  parallel_norm_ids:
+  - AIA-NORM-A056-P9-EXAMINATION-PROCEDURE
+  - AIA-NORM-A058-P1-EXAMINATION-PROCEDURE
 - norm_id: AIA-NORM-A041-P2-INFORM-STANDARDISATION-COMMITTEE
   act_version_date: '2026-07-27'
   kind: obligation
@@ -225,7 +229,9 @@ norms:
   - AIA-TEXT-A041-P012
   qualifier_spans: []
   effective_date_spans: []
-  conditions: []
+  conditions:
+  - a European standardisation organisation has adopted a harmonised standard and proposed publication
+    of its reference in the Official Journal of the European Union
   exceptions: []
   mandatory_content: []
   dependencies: []
@@ -236,9 +242,9 @@ norms:
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
   review:
-    status: proposed
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
     display_chunks: 1
@@ -262,7 +268,8 @@ norms:
   - AIA-TEXT-A041-P012
   qualifier_spans: []
   effective_date_spans: []
-  conditions: []
+  conditions:
+  - the reference to a harmonised standard is published in the Official Journal of the European Union
   exceptions: []
   mandatory_content: []
   dependencies: []
@@ -273,9 +280,9 @@ norms:
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
   review:
-    status: proposed
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
     display_chunks: 1
@@ -339,7 +346,9 @@ norms:
   - AIA-TEXT-A041-P014
   qualifier_spans: []
   effective_date_spans: []
-  conditions: []
+  conditions:
+  - the Member State considers that a common specification does not entirely meet Chapter III Section
+    2 requirements or, as applicable, Chapter V Sections 2 and 3 obligations
   exceptions: []
   mandatory_content: []
   dependencies: []
@@ -350,9 +359,9 @@ norms:
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
   review:
-    status: proposed
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
     display_chunks: 1
@@ -364,7 +373,8 @@ norms:
   subjects:
   - subject_ref: commission
     category: union_institution_or_body
-  action: assess Member-State information about a deficient common specification
+  action: assess Member-State information about a deficient common specification and, if appropriate,
+    amend the implementing act establishing it
   norm_text: The Commission shall assess that information and, if appropriate, amend the implementing
     act establishing the common specification concerned.
   detection_channels:
@@ -374,9 +384,13 @@ norms:
   - AIA-TEXT-A041-P014
   qualifier_spans: []
   effective_date_spans: []
-  conditions: []
+  conditions:
+  - a Member State has submitted detailed information that a common specification does not entirely meet
+    the applicable requirements or obligations
   exceptions: []
-  mandatory_content: []
+  mandatory_content:
+  - assess the Member State's information
+  - if appropriate after that assessment, amend the implementing act establishing the common specification
   dependencies: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -385,44 +399,9 @@ norms:
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
   review:
-    status: proposed
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
-    review_run_id: normative-coverage-2026-08-28
-    presentation_mode: exact-source-slice
-    display_chunks: 1
-    fully_displayed: true
-    elapsed_seconds: null
-- norm_id: AIA-NORM-A041-P6-AMEND-COMMON-SPECIFICATION
-  act_version_date: '2026-07-27'
-  kind: obligation
-  subjects:
-  - subject_ref: commission
-    category: union_institution_or_body
-  action: amend the common-specification implementing act where appropriate after assessment
-  norm_text: The Commission shall assess that information and, if appropriate, amend the implementing
-    act establishing the common specification concerned.
-  detection_channels:
-  - semantic_legal_effect
-  - shall_token
-  primary_spans:
-  - AIA-TEXT-A041-P014
-  qualifier_spans: []
-  effective_date_spans: []
-  conditions: []
-  exceptions: []
-  mandatory_content: []
-  dependencies: []
-  product_scope: outside_supported_actor
-  product_scope_reason: The present product does not report compliance for this addressee.
-  implementation_mode: none_required
-  implementation_refs: []
-  implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_reported
-  review:
-    status: proposed
-    extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
     display_chunks: 1

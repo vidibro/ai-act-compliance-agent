@@ -54,7 +54,9 @@ norms:
   qualifier_spans: []
   effective_date_spans: []
   conditions: []
-  exceptions: []
+  exceptions:
+  - the Commission's powers of organisation are unaffected
+  - the Treaty-based division of competences between Member States and the Union is unaffected
   mandatory_content: []
   dependencies: []
   product_scope: outside_supported_actor
@@ -80,9 +82,9 @@ norms:
     category: public_authority
   action: request necessary proportionate Commission exercise of Section powers to assist surveillance
     tasks
-  norm_text: market surveillance authorities may request the Commission to exercise the powers laid down
-    in this Section, where that is necessary and proportionate to assist with the fulfilment of their
-    tasks under this Regulation.
+  norm_text: Without prejudice to Article 75(3), market surveillance authorities may request the Commission
+    to exercise the powers laid down in this Section, where that is necessary and proportionate to assist
+    with the fulfilment of their tasks under this Regulation.
   detection_channels:
   - semantic_legal_effect
   - other_modal
@@ -90,7 +92,9 @@ norms:
   - AIA-TEXT-A088-P002
   qualifier_spans: []
   effective_date_spans: []
-  conditions: []
+  conditions:
+  - exercising the Section powers is necessary and proportionate to assist fulfilment of the authority's
+    tasks under this Regulation
   exceptions: []
   mandatory_content: []
   dependencies: []

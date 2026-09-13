@@ -50,6 +50,7 @@ def segment(
     end: int,
     segment_id: str,
     norm_ids: list[str] | None = None,
+    qualifying_norm_ids: list[str] | None = None,
 ) -> dict:
     text = body[start:end]
     return {
@@ -63,8 +64,9 @@ def segment(
         "end": end,
         "sha256": hashlib.sha256(text.encode()).hexdigest(),
         "text": text,
-        "disposition": "normative" if norm_ids else "structural",
+        "disposition": "normative" if norm_ids or qualifying_norm_ids else "structural",
         "norm_ids": norm_ids or [],
+        "qualifying_norm_ids": qualifying_norm_ids or [],
         "review": approved_review(),
     }
 
@@ -116,14 +118,15 @@ def one_document() -> tuple[str, dict, dict]:
         "corpus_complete": False,
         "segments": [
             segment(body, 0, split, first, [norm_id]),
-            segment(body, split, len(body), second, [norm_id]),
+            segment(body, split, len(body), second, qualifying_norm_ids=[norm_id]),
         ],
     }
     norms = {
         "act_version_date": VERSION,
-        "norms": [norm(norm_id, [first, second])],
+        "norms": [norm(norm_id, [first])],
         "interpretations": [],
     }
+    norms["norms"][0]["qualifier_spans"] = [second]
     return body, text, norms
 
 
@@ -144,7 +147,7 @@ def test_repository_coverage_artifacts_load_without_touching_runtime():
     assert bundle.text_review.corpus_complete is True
     assert bundle.validated_documents == 133
     assert bundle.validated_segments == 1505
-    assert bundle.validated_norms == 1490
+    assert bundle.validated_norms == 1391
 
 
 def test_exact_source_body_preserves_characters_that_rule_text_strips():
@@ -231,6 +234,18 @@ def test_norm_text_must_be_an_exact_quote_from_a_primary_span(tmp_path):
         load(tmp_path, text, norms)
 
 
+def test_norm_text_must_be_an_exact_quote_from_every_primary_span(tmp_path):
+    _body, text, norms = one_document()
+    norm_id = norms["norms"][0]["norm_id"]
+    norms["norms"][0]["primary_spans"].append("AIA-TEXT-032-B")
+    norms["norms"][0]["qualifier_spans"] = []
+    text["segments"][1]["qualifying_norm_ids"] = []
+    text["segments"][1]["norm_ids"] = [norm_id]
+
+    with pytest.raises(ValueError, match="not an exact substring of primary span"):
+        load(tmp_path, text, norms)
+
+
 def test_norm_detection_channels_are_unique():
     raw = norm("AIA-NORM-032-A", ["AIA-TEXT-032-A"])
     raw["detection_channels"] = ["semantic_legal_effect", "semantic_legal_effect"]
@@ -240,9 +255,34 @@ def test_norm_detection_channels_are_unique():
 
 def test_segment_and_norm_links_must_agree_in_both_directions(tmp_path):
     _body, text, norms = one_document()
-    text["segments"][1]["norm_ids"] = []
-    text["segments"][1]["disposition"] = "structural"
+    text["segments"][0]["norm_ids"].append("AIA-NORM-032-UNDECLARED")
     with pytest.raises(ValueError, match="norm links disagree"):
+        load(tmp_path, text, norms)
+
+
+def test_primary_and_qualifying_segment_links_must_agree_separately(tmp_path):
+    _body, text, norms = one_document()
+    norm_id = norms["norms"][0]["norm_id"]
+    norms["norms"][0]["primary_spans"] = ["AIA-TEXT-032-A"]
+    norms["norms"][0]["qualifier_spans"] = ["AIA-TEXT-032-B"]
+    text["segments"][1]["norm_ids"] = []
+    text["segments"][1]["qualifying_norm_ids"] = [norm_id]
+
+    bundle = load(tmp_path, text, norms)
+
+    assert bundle.text_review.segments[0].norm_ids == [norm_id]
+    assert bundle.text_review.segments[1].qualifying_norm_ids == [norm_id]
+
+
+def test_qualifying_norm_cannot_be_declared_as_a_primary_link(tmp_path):
+    _body, text, norms = one_document()
+    norm_id = norms["norms"][0]["norm_id"]
+    norms["norms"][0]["primary_spans"] = ["AIA-TEXT-032-A"]
+    norms["norms"][0]["qualifier_spans"] = ["AIA-TEXT-032-B"]
+    text["segments"][1]["norm_ids"] = [norm_id]
+    text["segments"][1]["qualifying_norm_ids"] = [norm_id]
+
+    with pytest.raises(ValueError, match="primary norm links disagree"):
         load(tmp_path, text, norms)
 
 
@@ -305,12 +345,15 @@ def test_approved_review_requires_the_whole_span_to_have_been_displayed():
         ReviewRecord.model_validate(raw)
 
 
-def test_a_normative_segment_requires_a_norm_link():
+def test_a_normative_segment_requires_a_norm_link_in_either_role():
     body = source_body(ARTICLE_PATH)
     raw = segment(body, 0, len(body), "AIA-TEXT-032-A")
     raw["disposition"] = "normative"
-    with pytest.raises(ValidationError, match="requires at least one norm_id"):
+    with pytest.raises(ValidationError, match="requires at least one linked norm_id"):
         TextReviewSegment.model_validate(raw)
+
+    raw["qualifying_norm_ids"] = ["AIA-NORM-032-A"]
+    assert TextReviewSegment.model_validate(raw).norm_ids == []
 
 
 def test_context_only_requires_a_reviewed_reason():

@@ -1234,8 +1234,10 @@ norms:
   subjects:
   - subject_ref: law_enforcement_authority
     category: public_authority
-  action: include at least the information specified in Article 5(6) in each use notification
+  action: include at least the Article 5(6) information in each use notification while excluding sensitive
+    operational data
   norm_text: The notification shall, as a minimum, contain the information specified under paragraph 6
+    and shall not include sensitive operational data.
   detection_channels:
   - semantic_legal_effect
   - shall_token
@@ -1248,48 +1250,14 @@ norms:
   - a use of a real-time remote biometric identification system in publicly accessible spaces for law
     enforcement purposes is notified under Article 5(4)
   exceptions: []
-  mandatory_content: []
+  mandatory_content:
+  - include at least the information specified in Article 5(6)
+  - exclude sensitive operational data
   dependencies:
   - dependency_ref: Article 5(6) of this Regulation
     resolution: unresolved
     detail: Article 5(6) supplies the minimum notification information and has not yet been semantically
       reviewed.
-  product_scope: in_scope
-  product_scope_reason: ''
-  implementation_mode: missing
-  implementation_refs: []
-  implementation_reason: ''
-  verification_mode: reported_not_judged
-  review:
-    status: approved
-    extracted_by: semantic-legal-effect-pass
-    verified_by: vidibro
-    review_run_id: normative-coverage-2026-08-28
-    presentation_mode: exact-source-slice
-    display_chunks: 1
-    fully_displayed: true
-    elapsed_seconds: null
-- norm_id: AIA-NORM-A005-P4-EXCLUDE-SENSITIVE-DATA
-  act_version_date: '2026-07-27'
-  kind: prohibition
-  subjects:
-  - subject_ref: law_enforcement_authority
-    category: public_authority
-  action: exclude sensitive operational data from each use notification
-  norm_text: shall not include sensitive operational data.
-  detection_channels:
-  - semantic_legal_effect
-  - shall_token
-  primary_spans:
-  - AIA-TEXT-A005-P030
-  qualifier_spans: []
-  effective_date_spans: []
-  conditions:
-  - a use of a real-time remote biometric identification system in publicly accessible spaces for law
-    enforcement purposes is notified under Article 5(4)
-  exceptions: []
-  mandatory_content: []
-  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: missing
@@ -1540,9 +1508,12 @@ norms:
   - subject_ref: commission
     category: union_institution_or_body
   action: provide Member States and national market-surveillance and data-protection authorities with
-    an annual-reporting template
+    an annual-reporting template that includes the number and outcomes of decisions on Article 5(3) authorisation
+    requests
   norm_text: the Commission shall provide Member States and national market surveillance and data protection
-    authorities with a template
+    authorities with a template, including information on the number of the decisions taken by competent
+    judicial authorities or an independent administrative authority whose decision is binding upon requests
+    for authorisations in accordance with paragraph 3 and their result.
   detection_channels:
   - semantic_legal_effect
   - shall_token
@@ -1552,7 +1523,9 @@ norms:
   effective_date_spans: []
   conditions: []
   exceptions: []
-  mandatory_content: []
+  mandatory_content:
+  - the number of decisions on Article 5(3) authorisation requests
+  - the outcomes of those decisions
   dependencies: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for the Commission.
@@ -1561,45 +1534,9 @@ norms:
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
   review:
-    status: proposed
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
-    review_run_id: normative-coverage-2026-08-28
-    presentation_mode: exact-source-slice
-    display_chunks: 1
-    fully_displayed: true
-    elapsed_seconds: null
-- norm_id: AIA-NORM-A005-P6-TEMPLATE-CONTENT
-  act_version_date: '2026-07-27'
-  kind: obligation
-  subjects:
-  - subject_ref: commission
-    category: union_institution_or_body
-  action: include in the reporting template the number and outcomes of decisions on Article 5(3) authorisation
-    requests
-  norm_text: including information on the number of the decisions taken by competent judicial authorities
-    or an independent administrative authority whose decision is binding upon requests for authorisations
-    in accordance with paragraph 3 and their result.
-  detection_channels:
-  - semantic_legal_effect
-  primary_spans:
-  - AIA-TEXT-A005-P032
-  qualifier_spans: []
-  effective_date_spans: []
-  conditions: []
-  exceptions: []
-  mandatory_content: []
-  dependencies: []
-  product_scope: outside_supported_actor
-  product_scope_reason: The present product does not report compliance for the Commission.
-  implementation_mode: none_required
-  implementation_refs: []
-  implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_reported
-  review:
-    status: proposed
-    extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
     display_chunks: 1

@@ -20,12 +20,19 @@ norms:
   - AIA-TEXT-A093-P003
   - AIA-TEXT-A093-P004
   effective_date_spans: []
-  conditions: []
+  conditions:
+  - the Commission considers the request necessary and appropriate
+  - operator: any_of
+    operands:
+    - the request is to take appropriate measures to comply with Articles 53 and 54
+    - operator: all_of
+      operands:
+      - the request is to implement mitigation measures
+      - an Article 92 evaluation has given rise to serious and substantiated concern about a systemic
+        risk at Union level
+    - the request is to restrict making the model available on the market, withdraw it, or recall it
   exceptions: []
-  mandatory_content:
-  - comply with Articles 53 and 54
-  - mitigate a serious substantiated Union-level systemic-risk concern arising from Article 92 evaluation
-  - restrict market availability withdraw or recall the model
+  mandatory_content: []
   dependencies: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -77,24 +84,29 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  parallel_norm_ids:
+  - AIA-NORM-A091-P2-INITIATE-STRUCTURED-DIALOGUE
 - norm_id: AIA-NORM-A093-P3-MAKE-COMMITMENTS-BINDING
   act_version_date: '2026-07-27'
-  kind: legal_consequence
+  kind: power
   subjects:
   - subject_ref: commission
     category: union_institution_or_body
   action: make offered systemic-risk mitigation commitments binding and declare no further grounds for
     action
-  norm_text: the Commission may, by decision, make those commitments binding and declare that there are
-    no further grounds for action.
+  norm_text: If, during the structured dialogue referred to in paragraph 2, the provider of the general-purpose
+    AI model with systemic risk offers commitments to implement mitigation measures to address a systemic
+    risk at Union level, the Commission may, by decision, make those commitments binding and declare that
+    there are no further grounds for action.
   detection_channels:
   - semantic_legal_effect
-  - deeming_or_consequence
   primary_spans:
   - AIA-TEXT-A093-P006
   qualifier_spans: []
   effective_date_spans: []
-  conditions: []
+  conditions:
+  - during the paragraph 2 structured dialogue, a provider of a general-purpose AI model with systemic
+    risk offers commitments to implement mitigation measures addressing a systemic risk at Union level
   exceptions: []
   mandatory_content: []
   dependencies: []
@@ -113,3 +125,5 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  parallel_norm_ids:
+  - AIA-NORM-A075B-MAKE-COMMITMENTS-BINDING

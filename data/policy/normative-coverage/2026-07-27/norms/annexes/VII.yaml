@@ -14,9 +14,9 @@ norms:
   - deeming_or_consequence
   - cross_reference_structure
   primary_spans:
-  - AIA-TEXT-ANNEX-VII-I1
+  - AIA-TEXT-ANNEX-VII-P002
   qualifier_spans:
-  - AIA-TEXT-ANNEX-VII-I2
+  - AIA-TEXT-ANNEX-VII-P004
   effective_date_spans: []
   conditions: []
   exceptions: []
@@ -46,21 +46,25 @@ norms:
   subjects:
   - subject_ref: annex_vii_conformity_assessment
     category: other
-  action: examine the approved Article 17 quality management system under Annex VII point 3
+  action: examine the approved Article 17 quality management system under Annex VII point 3 and subject
+    it to surveillance under point 5
   norm_text: The approved quality management system for the design, development and testing of AI systems
-    pursuant to Article 17 shall be examined in accordance with point 3
+    pursuant to Article 17 shall be examined in accordance with point 3 and shall be subject to surveillance
+    as specified in point 5
   detection_channels:
   - semantic_legal_effect
   - shall_token
   - deeming_or_consequence
   - cross_reference_structure
   primary_spans:
-  - AIA-TEXT-ANNEX-VII-I2
+  - AIA-TEXT-ANNEX-VII-P004
   qualifier_spans: []
   effective_date_spans: []
   conditions: []
   exceptions: []
-  mandatory_content: []
+  mandatory_content:
+  - examination of the approved quality management system under point 3
+  - surveillance of that system under point 5
   dependencies:
   - dependency_ref: AIA-NORM-A017-P1-QMS
     resolution: internal_resolved
@@ -72,44 +76,9 @@ norms:
   implementation_reason: ''
   verification_mode: reported_conditionally
   review:
-    status: approved
+    status: proposed
     extracted_by: semantic-legal-effect-pass
-    verified_by: vidibro
-    review_run_id: normative-coverage-2026-08-28
-    presentation_mode: exact-source-slice
-    display_chunks: 1
-    fully_displayed: true
-    elapsed_seconds: null
-- norm_id: AIA-NORM-ANNEX-VII-OVERVIEW-QMS-SURVEILLANCE
-  act_version_date: '2026-07-27'
-  kind: applicability
-  subjects:
-  - subject_ref: annex_vii_conformity_assessment
-    category: other
-  action: subject the approved quality management system to Annex VII point 5 surveillance
-  norm_text: shall be subject to surveillance as specified in point 5
-  detection_channels:
-  - semantic_legal_effect
-  - shall_token
-  - deeming_or_consequence
-  primary_spans:
-  - AIA-TEXT-ANNEX-VII-I2
-  qualifier_spans: []
-  effective_date_spans: []
-  conditions: []
-  exceptions: []
-  mandatory_content: []
-  dependencies: []
-  product_scope: in_scope
-  product_scope_reason: ''
-  implementation_mode: missing
-  implementation_refs: []
-  implementation_reason: ''
-  verification_mode: reported_conditionally
-  review:
-    status: approved
-    extracted_by: semantic-legal-effect-pass
-    verified_by: vidibro
+    verified_by: ''
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
     display_chunks: 1
@@ -128,7 +97,7 @@ norms:
   - shall_token
   - deeming_or_consequence
   primary_spans:
-  - AIA-TEXT-ANNEX-VII-I2
+  - AIA-TEXT-ANNEX-VII-P004
   qualifier_spans: []
   effective_date_spans: []
   conditions: []
@@ -161,10 +130,17 @@ norms:
   detection_channels:
   - semantic_legal_effect
   - shall_token
+  - cross_reference_structure
   - existing_implementation
   primary_spans:
-  - AIA-TEXT-ANNEX-VII-I3
-  qualifier_spans: []
+  - AIA-TEXT-ANNEX-VII-P006
+  qualifier_spans:
+  - AIA-TEXT-ANNEX-VII-P007
+  - AIA-TEXT-ANNEX-VII-P008
+  - AIA-TEXT-ANNEX-VII-P009
+  - AIA-TEXT-ANNEX-VII-P010
+  - AIA-TEXT-ANNEX-VII-P011
+  - AIA-TEXT-ANNEX-VII-P012
   effective_date_spans: []
   conditions:
   - the provider lodges an application for assessment of the quality management system
@@ -212,7 +188,7 @@ norms:
   - shall_token
   - existing_implementation
   primary_spans:
-  - AIA-TEXT-ANNEX-VII-I3
+  - AIA-TEXT-ANNEX-VII-P014
   qualifier_spans: []
   effective_date_spans: []
   conditions:
@@ -251,7 +227,7 @@ norms:
   - shall_token
   - existing_implementation
   primary_spans:
-  - AIA-TEXT-ANNEX-VII-I3
+  - AIA-TEXT-ANNEX-VII-P015
   qualifier_spans: []
   effective_date_spans: []
   conditions:
@@ -289,7 +265,7 @@ norms:
   - semantic_legal_effect
   - shall_token
   primary_spans:
-  - AIA-TEXT-ANNEX-VII-I3
+  - AIA-TEXT-ANNEX-VII-P013
   qualifier_spans: []
   effective_date_spans: []
   conditions: []
@@ -323,7 +299,7 @@ norms:
   - semantic_legal_effect
   - shall_token
   primary_spans:
-  - AIA-TEXT-ANNEX-VII-I3
+  - AIA-TEXT-ANNEX-VII-P013
   qualifier_spans: []
   effective_date_spans: []
   conditions: []
@@ -362,7 +338,7 @@ norms:
   - semantic_legal_effect
   - shall_token
   primary_spans:
-  - AIA-TEXT-ANNEX-VII-I3
+  - AIA-TEXT-ANNEX-VII-P015
   qualifier_spans: []
   effective_date_spans: []
   conditions: []
@@ -397,7 +373,7 @@ norms:
   - semantic_legal_effect
   - shall_token
   primary_spans:
-  - AIA-TEXT-ANNEX-VII-I3
+  - AIA-TEXT-ANNEX-VII-P015
   qualifier_spans: []
   effective_date_spans: []
   conditions: []
@@ -429,14 +405,16 @@ norms:
     category: supported_operator
   action: lodge an application with a notified body of the provider's choice for assessment of the technical
     documentation of the covered AI system
-  norm_text: an application with a notified body of their choice shall be lodged by the provider for the
-    assessment of the technical documentation
+  norm_text: In addition to the application referred to in point 3, an application with a notified body
+    of their choice shall be lodged by the provider for the assessment of the technical documentation
+    relating to the AI system which the provider intends to place on the market or put into service and
+    which is covered by the quality management system referred to under point 3.
   detection_channels:
   - semantic_legal_effect
   - shall_token
   - cross_reference_structure
   primary_spans:
-  - AIA-TEXT-ANNEX-VII-I4
+  - AIA-TEXT-ANNEX-VII-P017
   qualifier_spans: []
   effective_date_spans: []
   conditions:
@@ -455,9 +433,9 @@ norms:
   implementation_reason: ''
   verification_mode: reported_not_judged
   review:
-    status: approved
+    status: proposed
     extracted_by: semantic-legal-effect-pass
-    verified_by: vidibro
+    verified_by: ''
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
     display_chunks: 1
@@ -476,8 +454,11 @@ norms:
   - shall_token
   - cross_reference_structure
   primary_spans:
-  - AIA-TEXT-ANNEX-VII-I4
-  qualifier_spans: []
+  - AIA-TEXT-ANNEX-VII-P018
+  qualifier_spans:
+  - AIA-TEXT-ANNEX-VII-P019
+  - AIA-TEXT-ANNEX-VII-P020
+  - AIA-TEXT-ANNEX-VII-P021
   effective_date_spans: []
   conditions:
   - the provider lodges the point 4.1 application for assessment of the technical documentation
@@ -517,7 +498,7 @@ norms:
   - semantic_legal_effect
   - shall_token
   primary_spans:
-  - AIA-TEXT-ANNEX-VII-I4
+  - AIA-TEXT-ANNEX-VII-P022
   qualifier_spans: []
   effective_date_spans: []
   conditions: []
@@ -546,14 +527,16 @@ norms:
   - subject_ref: provider
     category: supported_operator
   action: grant the notified body necessary full dataset access
-  norm_text: the notified body shall be granted full access to the training, validation, and testing data
-    sets used
+  norm_text: Where relevant, and limited to what is necessary to fulfil its tasks, the notified body shall
+    be granted full access to the training, validation, and testing data sets used, including, where appropriate
+    and subject to security safeguards, through API or other relevant technical means and tools enabling
+    remote access.
   detection_channels:
   - semantic_legal_effect
   - shall_token
   - existing_implementation
   primary_spans:
-  - AIA-TEXT-ANNEX-VII-I4
+  - AIA-TEXT-ANNEX-VII-P022
   qualifier_spans: []
   effective_date_spans: []
   conditions:
@@ -572,9 +555,9 @@ norms:
   implementation_reason: ''
   verification_mode: reported_not_judged
   review:
-    status: approved
+    status: proposed
     extracted_by: semantic-legal-effect-pass
-    verified_by: vidibro
+    verified_by: ''
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
     display_chunks: 1
@@ -587,16 +570,20 @@ norms:
   - subject_ref: provider
     category: supported_operator
   action: supply further evidence or tests required for the conformity assessment
-  norm_text: the provider supply further evidence or carry out further tests
+  norm_text: In examining the technical documentation, the notified body may require that the provider
+    supply further evidence or carry out further tests so as to enable a proper assessment of the conformity
+    of the AI system with the requirements set out in Chapter III, Section 2.
   detection_channels:
   - semantic_legal_effect
+  - other_modal
   - existing_implementation
   primary_spans:
-  - AIA-TEXT-ANNEX-VII-I4
+  - AIA-TEXT-ANNEX-VII-P023
   qualifier_spans: []
   effective_date_spans: []
   conditions:
-  - notified body requires them
+  - the notified body requires the evidence or tests while examining the technical documentation
+  - the evidence or tests enable proper assessment of conformity with Chapter III Section 2
   exceptions: []
   mandatory_content: []
   dependencies: []
@@ -609,9 +596,9 @@ norms:
   implementation_reason: ''
   verification_mode: reported_not_judged
   review:
-    status: approved
+    status: proposed
     extracted_by: semantic-legal-effect-pass
-    verified_by: vidibro
+    verified_by: ''
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
     display_chunks: 1
@@ -624,15 +611,17 @@ norms:
   - subject_ref: notified_body
     category: notified_or_conformity_body
   action: carry out adequate tests when provider testing is unsatisfactory
-  norm_text: the notified body shall itself directly carry out adequate tests
+  norm_text: Where the notified body is not satisfied with the tests carried out by the provider, the
+    notified body shall itself directly carry out adequate tests, as appropriate.
   detection_channels:
   - semantic_legal_effect
   - shall_token
   primary_spans:
-  - AIA-TEXT-ANNEX-VII-I4
+  - AIA-TEXT-ANNEX-VII-P023
   qualifier_spans: []
   effective_date_spans: []
-  conditions: []
+  conditions:
+  - the notified body is not satisfied with the tests carried out by the provider
   exceptions: []
   mandatory_content: []
   dependencies: []
@@ -658,14 +647,19 @@ norms:
   - subject_ref: provider
     category: supported_operator
   action: grant reasoned and necessary model access after other means are exhausted
-  norm_text: the notified body shall also be granted access to the training and trained models
+  norm_text: Where necessary to assess the conformity of the high-risk AI system with the requirements
+    set out in Chapter III, Section 2, after all other reasonable means to verify conformity have been
+    exhausted and have proven to be insufficient, and upon a reasoned request, the notified body shall
+    also be granted access to the training and trained models of the AI system, including its relevant
+    parameters. Such access shall be subject to existing Union law on the protection of intellectual property
+    and trade secrets.
   detection_channels:
   - semantic_legal_effect
   - shall_token
   - cross_reference_structure
   - existing_implementation
   primary_spans:
-  - AIA-TEXT-ANNEX-VII-I4
+  - AIA-TEXT-ANNEX-VII-P024
   qualifier_spans: []
   effective_date_spans: []
   conditions:
@@ -687,9 +681,9 @@ norms:
   implementation_reason: ''
   verification_mode: reported_not_judged
   review:
-    status: approved
+    status: proposed
     extracted_by: semantic-legal-effect-pass
-    verified_by: vidibro
+    verified_by: ''
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
     display_chunks: 1
@@ -710,7 +704,7 @@ norms:
   - deeming_or_consequence
   - existing_implementation
   primary_spans:
-  - AIA-TEXT-ANNEX-VII-I4
+  - AIA-TEXT-ANNEX-VII-P025
   qualifier_spans: []
   effective_date_spans: []
   conditions:
@@ -747,7 +741,7 @@ norms:
   - semantic_legal_effect
   - shall_token
   primary_spans:
-  - AIA-TEXT-ANNEX-VII-I4
+  - AIA-TEXT-ANNEX-VII-P025
   qualifier_spans: []
   effective_date_spans: []
   conditions: []
@@ -778,12 +772,13 @@ norms:
   - subject_ref: notified_body
     category: notified_or_conformity_body
   action: issue the certificate where the system conforms
-  norm_text: the notified body shall issue a Union technical documentation assessment certificate
+  norm_text: Where the AI system is in conformity with the requirements set out in Chapter III, Section
+    2, the notified body shall issue a Union technical documentation assessment certificate.
   detection_channels:
   - semantic_legal_effect
   - shall_token
   primary_spans:
-  - AIA-TEXT-ANNEX-VII-I4
+  - AIA-TEXT-ANNEX-VII-P025
   qualifier_spans: []
   effective_date_spans: []
   conditions:
@@ -816,12 +811,14 @@ norms:
     control information in the Union technical-documentation assessment certificate and its annexes
   norm_text: The certificate shall indicate the name and address of the provider, the conclusions of the
     examination, the conditions (if any) for its validity and the data necessary for the identification
-    of the AI system.
+    of the AI system. The certificate and its annexes shall contain all relevant information to allow
+    the conformity of the AI system to be evaluated, and to allow for control of the AI system while in
+    use, where applicable.
   detection_channels:
   - semantic_legal_effect
   - shall_token
   primary_spans:
-  - AIA-TEXT-ANNEX-VII-I4
+  - AIA-TEXT-ANNEX-VII-P025
   qualifier_spans: []
   effective_date_spans: []
   conditions: []
@@ -856,16 +853,18 @@ norms:
   - subject_ref: notified_body
     category: notified_or_conformity_body
   action: refuse certification and give detailed reasons where the system does not conform
-  norm_text: the notified body shall refuse to issue a Union technical documentation assessment certificate
-    and shall inform the applicant accordingly
+  norm_text: Where the AI system is not in conformity with the requirements set out in Chapter III, Section
+    2, the notified body shall refuse to issue a Union technical documentation assessment certificate
+    and shall inform the applicant accordingly, giving detailed reasons for its refusal.
   detection_channels:
   - semantic_legal_effect
   - shall_token
   primary_spans:
-  - AIA-TEXT-ANNEX-VII-I4
+  - AIA-TEXT-ANNEX-VII-P025
   qualifier_spans: []
   effective_date_spans: []
-  conditions: []
+  conditions:
+  - the AI system does not conform with Chapter III Section 2
   exceptions: []
   mandatory_content: []
   dependencies: []
@@ -891,12 +890,14 @@ norms:
   - subject_ref: notified_body
     category: notified_or_conformity_body
   action: state specific training-data non-compliance considerations in the refusal decision
-  norm_text: shall contain specific considerations on the quality data used to train the AI system
+  norm_text: In this case, the reasoned assessment decision of the notified body refusing to issue the
+    Union technical documentation assessment certificate shall contain specific considerations on the
+    quality data used to train the AI system, in particular on the reasons for non-compliance.
   detection_channels:
   - semantic_legal_effect
   - shall_token
   primary_spans:
-  - AIA-TEXT-ANNEX-VII-I4
+  - AIA-TEXT-ANNEX-VII-P025
   qualifier_spans: []
   effective_date_spans: []
   conditions:
@@ -935,7 +936,7 @@ norms:
   - semantic_legal_effect
   - shall_token
   primary_spans:
-  - AIA-TEXT-ANNEX-VII-I4
+  - AIA-TEXT-ANNEX-VII-P026
   qualifier_spans: []
   effective_date_spans: []
   conditions: []
@@ -972,7 +973,7 @@ norms:
   - shall_token
   - existing_implementation
   primary_spans:
-  - AIA-TEXT-ANNEX-VII-I4
+  - AIA-TEXT-ANNEX-VII-P026
   qualifier_spans: []
   effective_date_spans: []
   conditions:
@@ -1014,7 +1015,7 @@ norms:
   - shall_token
   - cross_reference_structure
   primary_spans:
-  - AIA-TEXT-ANNEX-VII-I4
+  - AIA-TEXT-ANNEX-VII-P026
   qualifier_spans: []
   effective_date_spans: []
   conditions: []
@@ -1054,7 +1055,7 @@ norms:
   - semantic_legal_effect
   - shall_token
   primary_spans:
-  - AIA-TEXT-ANNEX-VII-I4
+  - AIA-TEXT-ANNEX-VII-P026
   qualifier_spans: []
   effective_date_spans: []
   conditions:
@@ -1093,7 +1094,7 @@ norms:
   - shall_token
   - existing_implementation
   primary_spans:
-  - AIA-TEXT-ANNEX-VII-I5
+  - AIA-TEXT-ANNEX-VII-P029
   qualifier_spans: []
   effective_date_spans: []
   conditions:
@@ -1131,7 +1132,7 @@ norms:
   - shall_token
   - existing_implementation
   primary_spans:
-  - AIA-TEXT-ANNEX-VII-I5
+  - AIA-TEXT-ANNEX-VII-P029
   qualifier_spans: []
   effective_date_spans: []
   conditions:
@@ -1168,7 +1169,7 @@ norms:
   - semantic_legal_effect
   - shall_token
   primary_spans:
-  - AIA-TEXT-ANNEX-VII-I5
+  - AIA-TEXT-ANNEX-VII-P030
   qualifier_spans: []
   effective_date_spans: []
   conditions: []
@@ -1197,16 +1198,17 @@ norms:
   - subject_ref: notified_body
     category: notified_or_conformity_body
   action: carry out additional tests during surveillance audits of certified AI systems
-  norm_text: the notified body may carry out additional tests of the AI systems for which a Union technical
-    documentation assessment certificate was issued.
+  norm_text: In the context of those audits, the notified body may carry out additional tests of the AI
+    systems for which a Union technical documentation assessment certificate was issued.
   detection_channels:
   - semantic_legal_effect
   - other_modal
   primary_spans:
-  - AIA-TEXT-ANNEX-VII-I5
+  - AIA-TEXT-ANNEX-VII-P030
   qualifier_spans: []
   effective_date_spans: []
   conditions:
+  - the notified body is conducting a periodic surveillance audit
   - the AI system has a Union technical-documentation assessment certificate
   exceptions: []
   mandatory_content: []

@@ -45,10 +45,7 @@ class DivisionSource(BaseModel):
     def _review_metadata_matches_disposition(self) -> DivisionSource:
         if self.verified_by.strip() and self.disposition is SegmentDisposition.NEEDS_REVIEW:
             raise ValueError("review-debt division cannot have a verifier")
-        if (
-            self.disposition is SegmentDisposition.CONTEXT_ONLY
-            and not self.reason.strip()
-        ):
+        if self.disposition is SegmentDisposition.CONTEXT_ONLY and not self.reason.strip():
             raise ValueError("context-only division requires a reason")
         return self
 
@@ -62,10 +59,7 @@ class ParagraphOverride(BaseModel):
     def _review_metadata_matches_disposition(self) -> ParagraphOverride:
         if self.verified_by.strip() and self.disposition is SegmentDisposition.NEEDS_REVIEW:
             raise ValueError("review-debt paragraph cannot have a verifier")
-        if (
-            self.disposition is SegmentDisposition.CONTEXT_ONLY
-            and not self.reason.strip()
-        ):
+        if self.disposition is SegmentDisposition.CONTEXT_ONLY and not self.reason.strip():
             raise ValueError("context-only paragraph requires a reason")
         return self
 
@@ -146,6 +140,7 @@ class NormSourceRecord(BaseModel):
     mandatory_content: list[str] = []
     mandatory_content_source: Literal["numbered_items"] | None = None
     dependencies: list[NormDependency] = []
+    condition_norm_ids: list[str] = []
     qualifier_spans: list[str] = []
     effective_date_spans: list[str] = []
     verified_by: str = ""
@@ -156,6 +151,7 @@ class NormSourceInventory(BaseModel):
     implementation_targets: list[str] = []
     records: list[NormSourceRecord] = []
     carried_by: dict[str, list[str]] = {}
+    parallel_duties: list[list[str]] = []
     interpretations: list[InterpretiveLink] = []
 
     @model_validator(mode="after")
@@ -172,6 +168,19 @@ class NormSourceInventory(BaseModel):
                 "norm source records reference undeclared implementation targets: "
                 f"{unknown_targets}"
             )
+        seen_parallel: set[str] = set()
+        for group in self.parallel_duties:
+            if len(group) < 2:
+                raise ValueError(f"a parallel-duty group needs at least two norms: {group}")
+            if len(group) != len(set(group)):
+                raise ValueError(f"a parallel-duty group repeats a norm: {group}")
+            unknown = sorted(set(group) - set(norm_ids))
+            if unknown:
+                raise ValueError(f"parallel_duties references unknown norm(s): {unknown}")
+            overlap = sorted(seen_parallel & set(group))
+            if overlap:
+                raise ValueError(f"a norm belongs to at most one parallel-duty group: {overlap}")
+            seen_parallel |= set(group)
         interpreted_rules = {
             target.target_id
             for link in self.interpretations
@@ -198,6 +207,8 @@ class NormBuilderPaths:
     norm_output: Path
     report_output: Path
     generated_by: str
+    adjudications: Path | None = None
+    policy_spec: Path | None = None
 
 
 def load_builder_inputs(
@@ -404,11 +415,7 @@ def _build_segments(
             is_debt = division.disposition is SegmentDisposition.NEEDS_REVIEW
             verified_by = division.verified_by or document.verified_by
             review_status = (
-                "needs_review"
-                if is_debt
-                else "approved"
-                if verified_by.strip()
-                else "proposed"
+                "needs_review" if is_debt else "approved" if verified_by.strip() else "proposed"
             )
             segments.append(
                 {
@@ -425,6 +432,7 @@ def _build_segments(
                     "disposition": division.disposition.value,
                     "disposition_reason": division.reason,
                     "norm_ids": [],
+                    "qualifying_norm_ids": [],
                     "review": _review(
                         reviewed,
                         review_status,
@@ -491,9 +499,11 @@ def _build_norms(
 
     for record in source_inventory.records:
         primary = f"AIA-TEXT-{record.source}"
-        spans = [primary, *(f"AIA-TEXT-{span}" for span in record.qualifier_spans)]
+        qualifiers = [f"AIA-TEXT-{span}" for span in record.qualifier_spans]
         effective = [f"AIA-TEXT-{span}" for span in record.effective_date_spans]
-        unknown_spans = [span for span in [*spans, *effective] if span not in segments_by_id]
+        unknown_spans = [
+            span for span in [primary, *qualifiers, *effective] if span not in segments_by_id
+        ]
         if unknown_spans:
             raise ValueError(f"{record.norm_id}: unknown source-record span(s) {unknown_spans}")
         primary_text = str(segments_by_id[primary]["text"])
@@ -502,13 +512,22 @@ def _build_norms(
         unknown_rules = sorted(set(record.implementation_refs) - known_rule_ids)
         if unknown_rules:
             raise ValueError(f"{record.norm_id}: unknown implementation rule(s) {unknown_rules}")
-        for span in [*spans, *effective]:
+        unknown_conditions = sorted(set(record.condition_norm_ids) - known_norm_ids)
+        if unknown_conditions:
+            raise ValueError(f"{record.norm_id}: unknown condition norm(s) {unknown_conditions}")
+        if record.norm_id in record.condition_norm_ids:
+            raise ValueError(f"{record.norm_id}: a norm cannot be its own condition")
+        for span, link_field in [
+            (primary, "norm_ids"),
+            *((span, "qualifying_norm_ids") for span in [*qualifiers, *effective]),
+        ]:
             segment = segments_by_id[span]
             if segment["disposition"] != SegmentDisposition.NORMATIVE.value:
                 raise ValueError(f"{record.norm_id}: linked span {span} is not normative")
-            norm_ids = segment["norm_ids"]
+            norm_ids = segment[link_field]
             assert isinstance(norm_ids, list)
-            norm_ids.append(record.norm_id)
+            if record.norm_id not in norm_ids:
+                norm_ids.append(record.norm_id)
 
         dependencies = [
             {
@@ -535,43 +554,50 @@ def _build_norms(
             if not mandatory_content:
                 raise ValueError(f"{record.norm_id}: no numbered mandatory-content items found")
 
-        norms.append(
-            {
-                "norm_id": record.norm_id,
-                "act_version_date": version_text,
-                "kind": record.kind.value,
-                "subjects": [
-                    {
-                        "subject_ref": record.subject_ref,
-                        "category": record.subject_category.value,
-                    }
-                ],
-                "action": record.action,
-                "norm_text": record.quote,
-                "detection_channels": _detection_channels(record),
-                "primary_spans": [primary],
-                "qualifier_spans": [f"AIA-TEXT-{span}" for span in record.qualifier_spans],
-                "effective_date_spans": effective,
-                "conditions": record.model_dump(mode="json")["conditions"],
-                "exceptions": record.exceptions,
-                "mandatory_content": mandatory_content,
-                "dependencies": dependencies,
-                "product_scope": record.product_scope.value,
-                "product_scope_reason": record.product_scope_reason,
-                "implementation_mode": _resolved_mode(record).value,
-                "implementation_refs": record.implementation_refs,
-                "implementation_reason": record.implementation_reason,
-                "verification_mode": _resolved_verification(record).value,
-                "review": _review(
-                    reviewed,
-                    "approved" if record.verified_by.strip() else "proposed",
-                    True,
-                    record.verified_by,
-                ),
-            }
-        )
+        norm: dict[str, object] = {
+            "norm_id": record.norm_id,
+            "act_version_date": version_text,
+            "kind": record.kind.value,
+            "subjects": [
+                {
+                    "subject_ref": record.subject_ref,
+                    "category": record.subject_category.value,
+                }
+            ],
+            "action": record.action,
+            "norm_text": record.quote,
+            "detection_channels": _detection_channels(record),
+            "primary_spans": [primary],
+            "qualifier_spans": qualifiers,
+            "effective_date_spans": effective,
+            "conditions": record.model_dump(mode="json")["conditions"],
+            "exceptions": record.exceptions,
+            "mandatory_content": mandatory_content,
+            "dependencies": dependencies,
+            "product_scope": record.product_scope.value,
+            "product_scope_reason": record.product_scope_reason,
+            "implementation_mode": _resolved_mode(record).value,
+            "implementation_refs": record.implementation_refs,
+            "implementation_reason": record.implementation_reason,
+            "verification_mode": _resolved_verification(record).value,
+            "review": _review(
+                reviewed,
+                "approved" if record.verified_by.strip() else "proposed",
+                True,
+                record.verified_by,
+            ),
+        }
+        if record.condition_norm_ids:
+            norm["condition_norm_ids"] = record.condition_norm_ids
+        norms.append(norm)
 
     norms_by_id = {str(norm["norm_id"]): norm for norm in norms}
+    for norm in norms:
+        for condition_id in norm.get("condition_norm_ids", []):
+            condition = norms_by_id[str(condition_id)]
+            parents = condition.setdefault("condition_of_norm_ids", [])
+            assert isinstance(parents, list)
+            parents.append(norm["norm_id"])
     for norm_id, carriers in source_inventory.carried_by.items():
         if norm_id not in norms_by_id:
             raise ValueError(f"carried_by references unknown source norm {norm_id}")
@@ -579,6 +605,9 @@ def _build_norms(
         if unknown_carriers:
             raise ValueError(f"{norm_id}: unknown carrier norm(s) {unknown_carriers}")
         norms_by_id[norm_id]["carried_by_norm_ids"] = carriers
+    for group in source_inventory.parallel_duties:
+        for norm_id in group:
+            norms_by_id[norm_id]["parallel_norm_ids"] = [n for n in group if n != norm_id]
     return norms
 
 
@@ -745,6 +774,22 @@ def run_builder(paths: NormBuilderPaths, *, check: bool) -> None:
         annexes_root=paths.annexes_root,
         guidance_root=paths.guidance_root,
     )
+    if check and paths.adjudications is not None:
+        from aiact.norm_validity import enforce_validity_adjudications
+
+        enforce_validity_adjudications(bundle, paths.adjudications)
+        if paths.policy_spec is not None:
+            from aiact.norm_traceability import enforce_norm_rule_traceability
+
+            enforce_norm_rule_traceability(
+                bundle,
+                paths.adjudications,
+                spec_path=paths.policy_spec,
+                articles_root=paths.articles_root,
+                annexes_root=paths.annexes_root,
+                guidance_root=paths.guidance_root,
+                norms_root=paths.norm_output,
+            )
     report = render_coverage_markdown(measure_normative_coverage(bundle))
     if check:
         if not paths.report_output.is_file() or (

@@ -43,8 +43,9 @@ norms:
     category: union_institution_or_body
   action: provide independent technical or scientific advice when requested by the Board Commission or
     market surveillance authorities
-  norm_text: Union AI testing support structures shall also provide independent technical or scientific
-    advice at the request of the Board, the Commission, or of market surveillance authorities.
+  norm_text: Without prejudice to the tasks referred to in paragraph 1, Union AI testing support structures
+    shall also provide independent technical or scientific advice at the request of the Board, the Commission,
+    or of market surveillance authorities.
   detection_channels:
   - semantic_legal_effect
   - shall_token
@@ -52,7 +53,8 @@ norms:
   - AIA-TEXT-A084-P002
   qualifier_spans: []
   effective_date_spans: []
-  conditions: []
+  conditions:
+  - the Board, the Commission, or a market-surveillance authority requests the advice
   exceptions: []
   mandatory_content: []
   dependencies: []

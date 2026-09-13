@@ -231,9 +231,11 @@ records:
   source: A006-P016
   quote: "The Commission shall, after consulting the European Artificial Intelligence Board (the \u2018\
     \ Board \u2019), and no later than 2 February 2026, provide guidelines specifying the practical implementation\
-    \ of this Article in line with Article 96"
+    \ of this Article in line with Article 96 together with a comprehensive list of practical examples\
+    \ of use cases of AI systems that are high-risk and not high-risk."
   action: provide Article 96 guidelines on the practical implementation of Article 6 by 2 February 2026
-    after consulting the AI Board
+    after consulting the AI Board, together with a comprehensive list of practical high-risk and non-high-risk
+    AI-system use cases
   subject_ref: commission
   subject_category: union_institution_or_body
   kind: obligation
@@ -242,24 +244,14 @@ records:
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
+  mandatory_content:
+  - a comprehensive list of practical examples of high-risk AI-system use cases
+  - a comprehensive list of practical examples of non-high-risk AI-system use cases
   dependencies:
   - dependency_ref: Article 96 of this Regulation
     resolution: unresolved
     detail: Article 96 governs Commission guidelines and has not yet been semantically reviewed.
-- norm_id: AIA-NORM-A006-P5-PROVIDE-EXAMPLES
-  source: A006-P016
-  quote: together with a comprehensive list of practical examples of use cases of AI systems that are
-    high-risk and not high-risk.
-  action: provide a comprehensive list of practical high-risk and non-high-risk AI-system use cases with
-    the Article 6 guidelines
-  subject_ref: commission
-  subject_category: union_institution_or_body
-  kind: obligation
-  product_scope: outside_supported_actor
-  product_scope_reason: The present product does not report compliance for the Commission.
-  implementation_mode: none_required
-  implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_reported
+  verified_by: vidibro
 - norm_id: AIA-NORM-A006-P6-AMEND-EXCEPTIONS
   source: A006-P017
   quote: The Commission is empowered to adopt delegated acts in accordance with Article 97 in order to
@@ -313,25 +305,14 @@ records:
   source: A006-P019
   quote: Any amendment to the conditions laid down in paragraph 3, second subparagraph, adopted in accordance
     with paragraphs 6 and 7 of this Article shall not decrease the overall level of protection of health,
-    safety and fundamental rights provided for by this Regulation
-  action: prohibit Article 6(3) condition amendments from decreasing the Regulation's overall protection
-    of health, safety, and fundamental rights
+    safety and fundamental rights provided for by this Regulation and shall ensure consistency with the
+    delegated acts adopted pursuant to Article 7(1), and take account of market and technological developments.
+  action: ensure Article 6(3) condition amendments do not decrease the Regulation's overall protection
+    of health, safety and fundamental rights, remain consistent with Article 7(1) delegated acts, and
+    account for market and technological developments
   subject_ref: commission
   subject_category: union_institution_or_body
   kind: prohibition
-  product_scope: outside_supported_actor
-  product_scope_reason: The present product does not report compliance for the Commission.
-  implementation_mode: none_required
-  implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_reported
-- norm_id: AIA-NORM-A006-P8-ENSURE-CONSISTENCY
-  source: A006-P019
-  quote: shall ensure consistency with the delegated acts adopted pursuant to Article 7(1)
-  action: ensure Article 6(3) condition amendments remain consistent with delegated acts adopted under
-    Article 7(1)
-  subject_ref: commission
-  subject_category: union_institution_or_body
-  kind: obligation
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for the Commission.
   implementation_mode: none_required
@@ -341,15 +322,8 @@ records:
   - dependency_ref: Article 7(1) of this Regulation
     resolution: unresolved
     detail: Article 7(1) governs related delegated acts and has not yet been semantically reviewed.
-- norm_id: AIA-NORM-A006-P8-CONSIDER-DEVELOPMENTS
-  source: A006-P019
-  quote: take account of market and technological developments.
-  action: take market and technological developments into account when amending Article 6(3) conditions
-  subject_ref: commission
-  subject_category: union_institution_or_body
-  kind: obligation
-  product_scope: outside_supported_actor
-  product_scope_reason: The present product does not report compliance for the Commission.
-  implementation_mode: none_required
-  implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_reported
+  mandatory_content:
+  - do not decrease the overall protection of health, safety and fundamental rights
+  - consistency with Article 7(1) delegated acts
+  - account for market and technological developments
+  verified_by: vidibro

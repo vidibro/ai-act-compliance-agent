@@ -36,6 +36,7 @@ from pydantic import BaseModel, ConfigDict, Field
 from aiact.brain import Brain
 from aiact.document import check_size
 from aiact.gap import roles as role_questions
+from aiact.gap.criteria import aggregate_confidence, aggregate_reasoning, settle
 from aiact.gap.judge import LLMJudge
 from aiact.gap.rules import ActiveRules, roles_with_rules, select_rules
 from aiact.schemas.classification import ClassificationResult
@@ -189,16 +190,25 @@ def build_graph(
         def judge_one(job: tuple[str, ActorRole, PolicyRule]) -> Finding:
             use_case_id, role, rule = job
             judgement = judge.judge(rule, state.document)
+            # An aggregate rule's verdict is recomputed here from its declared criteria, not taken
+            # from the judge: a criterion the judge skipped becomes NEEDS_REVIEW, not a silent pass.
+            verdict, criteria = settle(rule, judgement.verdict, judgement.criteria)
+            reasoning = judgement.reasoning
+            confidence = judgement.confidence
+            if criteria:
+                reasoning = aggregate_reasoning(rule, criteria)
+                confidence = aggregate_confidence(criteria)
             return Finding(
                 rule_id=rule.rule_id,
                 use_case_id=use_case_id,
                 role=role,
-                verdict=judgement.verdict,
+                verdict=verdict,
                 evidence_quote=judgement.evidence_quote,
                 evidence_chunk_id=judgement.evidence_chunk_id,
-                reasoning=judgement.reasoning,
+                reasoning=reasoning,
                 citation=rule.source,
-                confidence=judgement.confidence,
+                confidence=confidence,
+                criteria=criteria,
                 # What the judge was SHOWN, taken from the rule rather than from the reply: the
                 # model is not asked whether it leaned on the guidance, and a self-report would be
                 # the wrong evidence for it anyway. The claim this records is "interpretation was in

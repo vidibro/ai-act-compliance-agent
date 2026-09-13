@@ -2,28 +2,20 @@ records:
 - norm_id: AIA-NORM-A047-P1-DRAW-UP-DECLARATION
   source: A047-P001
   quote: The provider shall draw up a written machine readable, physical or electronically signed EU declaration
-    of conformity for each high-risk AI system, and keep it at the disposal of the national competent
-    authorities for 10 years after the high-risk AI system has been placed on the market or put into service.
+    of conformity for each high-risk AI system, and keep it at the disposal of the national competent authorities
+    for 10 years after the high-risk AI system has been placed on the market or put into service.
   action: draw up a written machine-readable, physical, or electronically signed declaration for each
-    high-risk system
+    high-risk system and keep it available to national competent authorities for 10 years after market
+    placement or service
   subject_ref: provider
   subject_category: supported_operator
   implementation_refs:
   - AIA-PO-A47
   verification_mode: reported_not_judged
-  verified_by: vidibro
-- norm_id: AIA-NORM-A047-P1-RETAIN-DECLARATION
-  source: A047-P001
-  quote: The provider shall draw up a written machine readable, physical or electronically signed EU declaration
-    of conformity for each high-risk AI system, and keep it at the disposal of the national competent
-    authorities for 10 years after the high-risk AI system has been placed on the market or put into service.
-  action: retain the declaration for national competent authorities for 10 years after market placement
-    or service
-  subject_ref: provider
-  subject_category: supported_operator
-  implementation_refs:
-  - AIA-PO-A47
-  verification_mode: reported_not_judged
+  mandatory_content:
+  - draw up the declaration in the prescribed written, machine-readable, physical or electronically signed
+    form
+  - keep it at the disposal of national competent authorities for 10 years after market placement or service
   verified_by: vidibro
 - norm_id: AIA-NORM-A047-P1-IDENTIFY-SYSTEM
   source: A047-P001
@@ -60,8 +52,11 @@ records:
   verified_by: vidibro
 - norm_id: AIA-NORM-A047-P2-ANNEX-V-CONTENT
   source: A047-P002
-  quote: The EU declaration of conformity shall contain the information set out in Annex V
-  action: include every information item required by Annex V in the declaration
+  quote: The EU declaration of conformity shall contain the information set out in Annex V, and shall
+    be translated into a language that can be easily understood by the national competent authorities
+    of the Member States in which the high-risk AI system is placed on the market or made available.
+  action: include every Annex V information item in the declaration and translate it into an easily understood
+    language for authorities in every Member State where the system is placed on the market or made available
   subject_ref: provider
   subject_category: supported_operator
   implementation_refs:
@@ -92,18 +87,10 @@ records:
   - dependency_ref: AIA-TEXT-ANNEX-V-P009
     resolution: internal_resolved
     detail: Annex V item 8.
-  verified_by: vidibro
-- norm_id: AIA-NORM-A047-P2-TRANSLATE-DECLARATION
-  source: A047-P002
-  quote: shall be translated into a language that can be easily understood by the national competent authorities
-    of the Member States in which the high-risk AI system is placed on the market or made available.
-  action: translate the declaration into an easily understood language for authorities in every market
-    state
-  subject_ref: provider
-  subject_category: supported_operator
-  implementation_refs:
-  - AIA-PO-A47-2
-  verification_mode: reported_not_judged
+  mandatory_content:
+  - contain the information set out in Annex V
+  - use a language easily understood by competent authorities in every Member State where the system is
+    marketed or made available
   verified_by: vidibro
 - norm_id: AIA-NORM-A047-P3-SINGLE-DECLARATION
   source: A047-P003
@@ -126,8 +113,8 @@ records:
   subject_ref: provider
   subject_category: supported_operator
   conditions:
-  - the high-risk AI system is subject to other Union harmonisation legislation which also requires
-    an EU declaration of conformity
+  - the high-risk AI system is subject to other Union harmonisation legislation which also requires an
+    EU declaration of conformity
   implementation_refs:
   - AIA-PO-A47-3
   verification_mode: reported_not_judged

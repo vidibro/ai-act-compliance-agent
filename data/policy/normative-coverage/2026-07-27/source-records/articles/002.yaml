@@ -406,9 +406,10 @@ records:
   source: A002-P020
   quote: This Regulation does not preclude the Union or Member States from maintaining or introducing
     laws, regulations or administrative provisions which are more favourable to workers in terms of protecting
-    their rights in respect of the use of AI systems by employers
+    their rights in respect of the use of AI systems by employers, or from encouraging or allowing the
+    application of collective agreements which are more favourable to workers.
   action: maintain or introduce laws, regulations, or administrative provisions that more favourably protect
-    workers regarding employers' use of AI systems
+    workers regarding employers' use of AI systems, or encourage or allow more favourable collective agreements
   subject_ref: union_or_member_state
   subject_category: other
   kind: permission
@@ -418,19 +419,10 @@ records:
   implementation_mode: none_required
   implementation_reason: The product does not implement Union or Member State legislative choices.
   verification_mode: not_reported
-- norm_id: AIA-NORM-A002-P11-MORE-FAVOURABLE-COLLECTIVE-AGREEMENTS
-  source: A002-P020
-  quote: encouraging or allowing the application of collective agreements which are more favourable to
-    workers
-  action: encourage or allow collective agreements that are more favourable to workers
-  subject_ref: union_or_member_state
-  subject_category: other
-  kind: permission
-  product_scope: no_product_action
-  product_scope_reason: This permission concerns labour-policy powers rather than a product-facing action.
-  implementation_mode: none_required
-  implementation_reason: The product does not implement Union or Member State collective-agreement policy.
-  verification_mode: not_reported
+  mandatory_content:
+  - maintain or introduce more favourable worker-protection provisions
+  - encourage or allow more favourable collective agreements
+  verified_by: vidibro
 - norm_id: AIA-NORM-A002-P12-OPEN-SOURCE-AI-SYSTEM-EXCLUSION
   source: A002-P021
   quote: This Regulation does not apply to AI systems released under free and open-source licences, unless

@@ -292,47 +292,10 @@ norms:
   subjects:
   - subject_ref: provider
     category: supported_operator
-  action: undertake assessment of the Article 17 quality-management system
-  norm_text: Assessment of the quality management system set out in Article 17 shall also be undertaken
-  detection_channels:
-  - semantic_legal_effect
-  - shall_token
-  - existing_implementation
-  primary_spans:
-  - AIA-TEXT-A043-P3
-  qualifier_spans: []
-  effective_date_spans: []
-  conditions:
-  - the high-risk AI system is covered by Union harmonisation legislation listed in Section A of Annex
-    I
-  exceptions: []
-  mandatory_content: []
-  dependencies: []
-  product_scope: in_scope
-  product_scope_reason: ''
-  implementation_mode: compliance_rule
-  implementation_refs:
-  - AIA-PO-A43-3
-  implementation_reason: ''
-  verification_mode: reported_not_judged
-  review:
-    status: approved
-    extracted_by: semantic-legal-effect-pass
-    verified_by: vidibro
-    review_run_id: normative-coverage-2026-08-28
-    presentation_mode: exact-source-slice
-    display_chunks: 1
-    fully_displayed: true
-    elapsed_seconds: null
-- norm_id: AIA-NORM-A043-P3-ANNEXVII
-  act_version_date: '2026-07-27'
-  kind: obligation
-  subjects:
-  - subject_ref: provider
-    category: supported_operator
-  action: apply the specified Annex VII procedural requirements
-  norm_text: points 3, 4.3, 4.4. and 4.5, the fifth paragraph of point 4.6 and point 5 of Annex VII shall
-    apply
+  action: undertake assessment of the Article 17 quality-management system and apply the specified Annex
+    VII procedural requirements
+  norm_text: Assessment of the quality management system set out in Article 17 shall also be undertaken,
+    and points 3, 4.3, 4.4. and 4.5, the fifth paragraph of point 4.6 and point 5 of Annex VII shall apply.
   detection_channels:
   - semantic_legal_effect
   - shall_token
@@ -346,17 +309,49 @@ norms:
   - the high-risk AI system is covered by Union harmonisation legislation listed in Section A of Annex
     I
   exceptions: []
-  mandatory_content: []
+  mandatory_content:
+  - assess the Article 17 quality-management system
+  - apply the specified Annex VII procedural requirements
   dependencies:
-  - dependency_ref: AIA-TEXT-ANNEX-VII-I3
+  - dependency_ref: AIA-TEXT-ANNEX-VII-P006
     resolution: internal_resolved
-    detail: Annex VII point 3 is imported in full.
-  - dependency_ref: AIA-TEXT-ANNEX-VII-I4
+    detail: Annex VII point 3.1 starts the imported quality-management-system procedure.
+  - dependency_ref: AIA-TEXT-ANNEX-VII-P013
     resolution: internal_resolved
-    detail: The specified point 4 subparagraphs are represented within this source segment.
-  - dependency_ref: AIA-TEXT-ANNEX-VII-I5
+    detail: Annex VII point 3.2 contains its assessment and decision procedure.
+  - dependency_ref: AIA-TEXT-ANNEX-VII-P014
     resolution: internal_resolved
-    detail: Annex VII point 5 is imported in full.
+    detail: Annex VII point 3.3 requires the approved quality management system to continue.
+  - dependency_ref: AIA-TEXT-ANNEX-VII-P015
+    resolution: internal_resolved
+    detail: Annex VII point 3.4 governs proposed changes to that system.
+  - dependency_ref: AIA-TEXT-ANNEX-VII-P017
+    resolution: internal_resolved
+    detail: Annex VII point 4.1 starts the technical-documentation assessment procedure.
+  - dependency_ref: AIA-TEXT-ANNEX-VII-P018
+    resolution: internal_resolved
+    detail: Annex VII point 4.2 requires the technical-documentation application content.
+  - dependency_ref: AIA-TEXT-ANNEX-VII-P022
+    resolution: internal_resolved
+    detail: Annex VII point 4.3 governs examination and dataset access.
+  - dependency_ref: AIA-TEXT-ANNEX-VII-P023
+    resolution: internal_resolved
+    detail: Annex VII point 4.4 governs evidence and adequate testing.
+  - dependency_ref: AIA-TEXT-ANNEX-VII-P024
+    resolution: internal_resolved
+    detail: Annex VII point 4.5 governs access to training and trained models.
+  - dependency_ref: AIA-TEXT-ANNEX-VII-P025
+    resolution: internal_resolved
+    detail: Annex VII point 4.6 governs decisions, certificates, refusal, and retraining.
+  - dependency_ref: AIA-TEXT-ANNEX-VII-P026
+    resolution: internal_resolved
+    detail: Annex VII point 4.7 governs changes to the AI system and certificate supplements.
+  - dependency_ref: AIA-TEXT-ANNEX-VII-P029
+    resolution: internal_resolved
+    detail: Annex VII point 5.2 governs surveillance access and information sharing.
+  - dependency_ref: AIA-TEXT-ANNEX-VII-P030
+    resolution: internal_resolved
+    detail: Annex VII point 5.3 governs periodic audits and additional testing.
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: compliance_rule
@@ -559,46 +554,6 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
-- norm_id: AIA-NORM-A043-P3-DUAL
-  act_version_date: '2026-07-27'
-  kind: obligation
-  subjects:
-  - subject_ref: provider
-    category: supported_operator
-  action: use the Section A Annex I procedure when the system is also in Annex III
-  norm_text: shall follow the relevant conformity assessment procedure as required pursuant to the relevant
-    Union harmonisation legislation
-  detection_channels:
-  - semantic_legal_effect
-  - shall_token
-  - existing_implementation
-  primary_spans:
-  - AIA-TEXT-A043-P3
-  qualifier_spans: []
-  effective_date_spans: []
-  conditions:
-  - the high-risk AI system is covered by Union harmonisation legislation listed in Section A of Annex
-    I
-  - the high-risk AI system also falls within one of the categories listed in Annex III
-  exceptions: []
-  mandatory_content: []
-  dependencies: []
-  product_scope: in_scope
-  product_scope_reason: ''
-  implementation_mode: compliance_rule
-  implementation_refs:
-  - AIA-PO-A43-3
-  implementation_reason: ''
-  verification_mode: reported_not_judged
-  review:
-    status: approved
-    extracted_by: semantic-legal-effect-pass
-    verified_by: vidibro
-    review_run_id: normative-coverage-2026-08-28
-    presentation_mode: exact-source-slice
-    display_chunks: 1
-    fully_displayed: true
-    elapsed_seconds: null
 - norm_id: AIA-NORM-A043-P4-NEW-ASSESSMENT
   act_version_date: '2026-07-27'
   kind: obligation
@@ -619,7 +574,9 @@ norms:
   - AIA-TEXT-A043-P4
   qualifier_spans: []
   effective_date_spans: []
-  conditions: []
+  conditions:
+  - the high-risk AI system has already undergone a conformity-assessment procedure
+  - the high-risk AI system is substantially modified
   exceptions: []
   mandatory_content: []
   dependencies: []
@@ -687,7 +644,8 @@ norms:
   - subject_ref: commission
     category: union_institution_or_body
   action: amend Annexes VI and VII for technical progress
-  norm_text: The Commission is empowered to adopt delegated acts
+  norm_text: The Commission is empowered to adopt delegated acts in accordance with Article 97 in order
+    to amend Annexes VI and VII by updating them in light of technical progress.
   detection_channels:
   - semantic_legal_effect
   - other_modal
@@ -706,9 +664,9 @@ norms:
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
   review:
-    status: proposed
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
     display_chunks: 1
@@ -721,7 +679,10 @@ norms:
   - subject_ref: commission
     category: union_institution_or_body
   action: move Annex III points 2 to 8 to some or all of the Annex VII procedure
-  norm_text: The Commission is empowered to adopt delegated acts
+  norm_text: The Commission is empowered to adopt delegated acts in accordance with Article 97 in order
+    to amend paragraphs 1 and 2 of this Article in order to subject high-risk AI systems referred to in
+    points 2 to 8 of Annex III to the conformity assessment procedure referred to in Annex VII or parts
+    thereof.
   detection_channels:
   - semantic_legal_effect
   - other_modal
@@ -740,9 +701,9 @@ norms:
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
   review:
-    status: proposed
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
     display_chunks: 1

@@ -133,8 +133,8 @@ norms:
   subjects:
   - subject_ref: commission
     category: union_institution_or_body
-  action: adopt Article 97 delegated acts amending Article 51 thresholds when necessary to reflect the
-    state of the art
+  action: adopt Article 97 delegated acts amending Article 51 thresholds and supplementing benchmarks
+    and indicators when necessary for the thresholds to reflect the state of the art
   norm_text: The Commission shall adopt delegated acts in accordance with Article 97 to amend the thresholds
     listed in paragraphs 1 and 2 of this Article, as well as to supplement benchmarks and indicators in
     light of evolving technological developments, such as algorithmic improvements or increased hardware
@@ -150,7 +150,10 @@ norms:
   - amendment is necessary for the thresholds to reflect the state of the art in light of technological
     developments
   exceptions: []
-  mandatory_content: []
+  mandatory_content:
+  - amend the thresholds listed in Article 51(1) and (2)
+  - supplement benchmarks and indicators in light of evolving technological developments, such as algorithmic
+    improvements or increased hardware efficiency
   dependencies: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -159,49 +162,9 @@ norms:
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
   review:
-    status: proposed
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
-    review_run_id: normative-coverage-2026-08-28
-    presentation_mode: exact-source-slice
-    display_chunks: 1
-    fully_displayed: true
-    elapsed_seconds: null
-- norm_id: AIA-NORM-A051-P3-SUPPLEMENT-BENCHMARKS
-  act_version_date: '2026-07-27'
-  kind: obligation
-  subjects:
-  - subject_ref: commission
-    category: union_institution_or_body
-  action: adopt Article 97 delegated acts supplementing benchmarks and indicators when necessary to reflect
-    the state of the art
-  norm_text: The Commission shall adopt delegated acts in accordance with Article 97 to amend the thresholds
-    listed in paragraphs 1 and 2 of this Article, as well as to supplement benchmarks and indicators in
-    light of evolving technological developments, such as algorithmic improvements or increased hardware
-    efficiency, when necessary, for these thresholds to reflect the state of the art.
-  detection_channels:
-  - semantic_legal_effect
-  - shall_token
-  primary_spans:
-  - AIA-TEXT-A051-P005
-  qualifier_spans: []
-  effective_date_spans: []
-  conditions:
-  - supplementation is necessary in light of technological developments such as algorithmic improvements
-    or increased hardware efficiency
-  exceptions: []
-  mandatory_content: []
-  dependencies: []
-  product_scope: outside_supported_actor
-  product_scope_reason: The present product does not report compliance for this addressee.
-  implementation_mode: none_required
-  implementation_refs: []
-  implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_reported
-  review:
-    status: proposed
-    extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
     display_chunks: 1

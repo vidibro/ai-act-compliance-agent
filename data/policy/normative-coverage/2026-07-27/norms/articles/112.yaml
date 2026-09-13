@@ -8,7 +8,10 @@ norms:
     category: union_institution_or_body
   action: assess annually the need to amend Annex III and Article 5 lists through the Article 97 delegation
     period
-  norm_text: The Commission shall assess the need for amendment
+  norm_text: The Commission shall assess the need for amendment of the list set out in Annex III and of
+    the list of prohibited AI practices laid down in Article 5, once a year following the entry into force
+    of this Regulation, and until the end of the period of the delegation of power laid down in Article
+    97.
   detection_channels:
   - semantic_legal_effect
   - shall_token
@@ -43,7 +46,7 @@ norms:
     category: union_institution_or_body
   action: submit the annual Annex III and Article 5 amendment assessment findings to Parliament and Council
   norm_text: The Commission shall submit the findings of that assessment to the European Parliament and
-    the Council
+    the Council.
   detection_channels:
   - semantic_legal_effect
   - shall_token
@@ -78,7 +81,8 @@ norms:
     category: union_institution_or_body
   action: evaluate and report by 2 August 2028 and every four years on specified Annex III transparency
     and governance amendments
-  norm_text: the Commission shall evaluate and report to the European Parliament and to the Council
+  norm_text: By 2 August 2028 and every four years thereafter, the Commission shall evaluate and report
+    to the European Parliament and to the Council on the following
   detection_channels:
   - semantic_legal_effect
   - shall_token
@@ -120,7 +124,10 @@ norms:
     category: union_institution_or_body
   action: submit a public four-year Regulation review report assessing enforcement structure and possible
     need for a Union agency
-  norm_text: the Commission shall submit a report on the evaluation and review of this Regulation
+  norm_text: By 2 August 2029 and every four years thereafter, the Commission shall submit a report on
+    the evaluation and review of this Regulation to the European Parliament and to the Council. The report
+    shall include an assessment with regard to the structure of enforcement and the possible need for
+    a Union agency to resolve any identified shortcomings.
   detection_channels:
   - semantic_legal_effect
   - shall_token
@@ -154,7 +161,8 @@ norms:
   - subject_ref: commission
     category: union_institution_or_body
   action: accompany the review report with an AI Act amendment proposal when its findings make that appropriate
-  norm_text: shall, where appropriate, be accompanied by a proposal for amendment of this Regulation
+  norm_text: On the basis of the findings, that report shall, where appropriate, be accompanied by a proposal
+    for amendment of this Regulation.
   detection_channels:
   - semantic_legal_effect
   - shall_token
@@ -162,7 +170,8 @@ norms:
   - AIA-TEXT-A112-P006
   qualifier_spans: []
   effective_date_spans: []
-  conditions: []
+  conditions:
+  - the report's findings make an amendment proposal appropriate
   exceptions: []
   mandatory_content: []
   dependencies: []
@@ -223,7 +232,7 @@ norms:
     category: union_institution_or_body
   action: address the specified authority-resource penalty standardisation and market-entry matters in
     paragraph 2 reports
-  norm_text: shall pay specific attention to the following
+  norm_text: The reports referred to in paragraph 2 shall pay specific attention to the following
   detection_channels:
   - semantic_legal_effect
   - shall_token
@@ -267,7 +276,10 @@ norms:
     category: union_institution_or_body
   action: evaluate by 2 August 2028 the AI Office's functioning powers competences status and resource
     needs
-  norm_text: the Commission shall evaluate the functioning of the AI Office
+  norm_text: By 2 August 2028, the Commission shall evaluate the functioning of the AI Office, whether
+    the AI Office has been given sufficient powers and competences to fulfil its tasks, and whether it
+    would be relevant and needed for the proper implementation and enforcement of this Regulation to upgrade
+    the AI Office and its enforcement competences and to increase its resources.
   detection_channels:
   - semantic_legal_effect
   - shall_token
@@ -301,7 +313,8 @@ norms:
   - subject_ref: commission
     category: union_institution_or_body
   action: submit the AI Office evaluation report to Parliament and Council
-  norm_text: The Commission shall submit a report on its evaluation
+  norm_text: The Commission shall submit a report on its evaluation to the European Parliament and to
+    the Council.
   detection_channels:
   - semantic_legal_effect
   - shall_token
@@ -336,8 +349,10 @@ norms:
     category: union_institution_or_body
   action: review and report every four years from 2 August 2028 on energy-efficient GPAI standardisation
     and the need for further measures
-  norm_text: the Commission shall submit a report on the review of the progress on the development of
-    standardisation deliverables
+  norm_text: By 2 August 2028 and every four years thereafter, the Commission shall submit a report on
+    the review of the progress on the development of standardisation deliverables on the energy-efficient
+    development of general-purpose AI models, and asses the need for further measures or actions, including
+    binding measures or actions.
   detection_channels:
   - semantic_legal_effect
   - shall_token
@@ -370,8 +385,10 @@ norms:
   subjects:
   - subject_ref: commission
     category: union_institution_or_body
-  action: submit the energy-efficient GPAI standardisation report to Parliament and Council
-  norm_text: The report shall be submitted to the European Parliament and to the Council
+  action: submit the energy-efficient GPAI standardisation report to Parliament and Council and make it
+    public
+  norm_text: The report shall be submitted to the European Parliament and to the Council, and it shall
+    be made public
   detection_channels:
   - semantic_legal_effect
   - shall_token
@@ -381,41 +398,9 @@ norms:
   effective_date_spans: []
   conditions: []
   exceptions: []
-  mandatory_content: []
-  dependencies: []
-  product_scope: outside_supported_actor
-  product_scope_reason: The present product does not report compliance for this addressee.
-  implementation_mode: none_required
-  implementation_refs: []
-  implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_reported
-  review:
-    status: proposed
-    extracted_by: semantic-legal-effect-pass
-    verified_by: ''
-    review_run_id: normative-coverage-2026-08-28
-    presentation_mode: exact-source-slice
-    display_chunks: 1
-    fully_displayed: true
-    elapsed_seconds: null
-- norm_id: AIA-NORM-A112-P6-PUBLISH-STANDARDISATION-REPORT
-  act_version_date: '2026-07-27'
-  kind: obligation
-  subjects:
-  - subject_ref: commission
-    category: union_institution_or_body
-  action: make the energy-efficient GPAI standardisation report public
-  norm_text: it shall be made public
-  detection_channels:
-  - semantic_legal_effect
-  - shall_token
-  primary_spans:
-  - AIA-TEXT-A112-P013
-  qualifier_spans: []
-  effective_date_spans: []
-  conditions: []
-  exceptions: []
-  mandatory_content: []
+  mandatory_content:
+  - submission of the report to the European Parliament and Council
+  - publication of the report
   dependencies: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -440,7 +425,10 @@ norms:
     category: union_institution_or_body
   action: evaluate every three years from 2 August 2028 the impact and effectiveness of voluntary non-high-risk
     AI codes
-  norm_text: the Commission shall evaluate the impact and effectiveness of voluntary codes of conduct
+  norm_text: By 2 August 2028 and every three years thereafter, the Commission shall evaluate the impact
+    and effectiveness of voluntary codes of conduct to foster the application of the requirements set
+    out in Chapter III, Section 2 for AI systems other than high-risk AI systems and possibly other additional
+    requirements for AI systems other than high-risk AI systems, including as regards environmental sustainability.
   detection_channels:
   - semantic_legal_effect
   - shall_token
@@ -474,7 +462,8 @@ norms:
   - subject_ref: board_member_states_and_national_competent_authorities
     category: public_authority
   action: provide requested information without undue delay for Article 112 evaluations and reviews
-  norm_text: shall provide the Commission with information upon its request and without undue delay
+  norm_text: For the purposes of paragraphs 1 to 7, the Board, the Member States and national competent
+    authorities shall provide the Commission with information upon its request and without undue delay.
   detection_channels:
   - semantic_legal_effect
   - shall_token
@@ -482,7 +471,8 @@ norms:
   - AIA-TEXT-A112-P015
   qualifier_spans: []
   effective_date_spans: []
-  conditions: []
+  conditions:
+  - the Commission requests the information for a paragraph 1 to 7 evaluation or review
   exceptions: []
   mandatory_content: []
   dependencies: []
@@ -509,7 +499,9 @@ norms:
     category: union_institution_or_body
   action: account for positions and findings of the Board Parliament Council and other relevant bodies
     or sources in Article 112 reviews
-  norm_text: the Commission shall take into account the positions and findings
+  norm_text: In carrying out the evaluations and reviews referred to in paragraphs 1 to 7, the Commission
+    shall take into account the positions and findings of the Board, of the European Parliament, of the
+    Council, and of other relevant bodies or sources.
   detection_channels:
   - semantic_legal_effect
   - shall_token
@@ -517,7 +509,8 @@ norms:
   - AIA-TEXT-A112-P016
   qualifier_spans: []
   effective_date_spans: []
-  conditions: []
+  conditions:
+  - the Commission is carrying out a paragraph 1 to 7 evaluation or review
   exceptions: []
   mandatory_content: []
   dependencies: []
@@ -552,7 +545,8 @@ norms:
   - AIA-TEXT-A112-P017
   qualifier_spans: []
   effective_date_spans: []
-  conditions: []
+  conditions:
+  - the Commission considers amendment necessary
   exceptions: []
   mandatory_content: []
   dependencies: []
@@ -578,7 +572,10 @@ norms:
   - subject_ref: ai_office
     category: union_institution_or_body
   action: develop an objective participative methodology for risk-level evaluation and list inclusion
-  norm_text: the AI Office shall undertake to develop an objective and participative methodology
+  norm_text: To guide the evaluations and reviews referred to in paragraphs 1 to 7 of this Article, the
+    AI Office shall undertake to develop an objective and participative methodology for the evaluation
+    of risk levels based on the criteria outlined in the relevant Articles and the inclusion of new systems
+    in
   detection_channels:
   - semantic_legal_effect
   - shall_token
@@ -620,7 +617,10 @@ norms:
     category: union_institution_or_body
   action: account for sector regulatory specificities and existing governance conformity-assessment and
     enforcement structures in relevant amendments and acts
-  norm_text: shall take into account the regulatory specificities of each sector
+  norm_text: Any amendment to this Regulation pursuant to paragraph 10, or relevant delegated or implementing
+    acts, which concerns sectoral Union harmonisation legislation listed in Section B of Annex I shall
+    take into account the regulatory specificities of each sector, and the existing governance, conformity
+    assessment and enforcement mechanisms and authorities established therein.
   detection_channels:
   - semantic_legal_effect
   - shall_token
@@ -628,7 +628,9 @@ norms:
   - AIA-TEXT-A112-P022
   qualifier_spans: []
   effective_date_spans: []
-  conditions: []
+  conditions:
+  - a paragraph 10 amendment or relevant delegated or implementing act concerns sectoral Union harmonisation
+    legislation listed in Section B of Annex I
   exceptions: []
   mandatory_content: []
   dependencies: []
@@ -655,8 +657,9 @@ norms:
     category: union_institution_or_body
   action: assess AI Act enforcement by 2 August 2031 and report to Parliament Council and the European
     Economic and Social Committee
-  norm_text: the Commission shall carry out an assessment of the enforcement of this Regulation and shall
-    report on it
+  norm_text: By 2 August 2031, the Commission shall carry out an assessment of the enforcement of this
+    Regulation and shall report on it to the European Parliament, the Council and the European Economic
+    and Social Committee, taking into account the first years of application of this Regulation.
   detection_channels:
   - semantic_legal_effect
   - shall_token
@@ -691,7 +694,9 @@ norms:
     category: union_institution_or_body
   action: accompany the enforcement report when appropriate with an amendment proposal addressing enforcement
     structure and possible Union agency need
-  norm_text: shall, where appropriate, be accompanied by a proposal for amendment of this Regulation
+  norm_text: On the basis of the findings, that report shall, where appropriate, be accompanied by a proposal
+    for amendment of this Regulation with regard to the structure of enforcement and the need for a Union
+    agency to resolve any identified shortcomings.
   detection_channels:
   - semantic_legal_effect
   - shall_token
@@ -699,7 +704,8 @@ norms:
   - AIA-TEXT-A112-P023
   qualifier_spans: []
   effective_date_spans: []
-  conditions: []
+  conditions:
+  - the enforcement assessment findings make an amendment proposal appropriate
   exceptions: []
   mandatory_content: []
   dependencies: []

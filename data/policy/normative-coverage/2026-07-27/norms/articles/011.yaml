@@ -7,7 +7,9 @@ norms:
   - subject_ref: provider
     category: supported_operator
   action: draw up technical documentation before placing the system on the market or putting it into service
-  norm_text: shall be drawn up before that system is placed on the market or put into service
+    and keep it up to date
+  norm_text: The technical documentation of a high-risk AI system shall be drawn up before that system
+    is placed on the market or put into service and shall be kept up-to date.
   detection_channels:
   - semantic_legal_effect
   - shall_token
@@ -18,43 +20,9 @@ norms:
   effective_date_spans: []
   conditions: []
   exceptions: []
-  mandatory_content: []
-  dependencies: []
-  product_scope: in_scope
-  product_scope_reason: ''
-  implementation_mode: compliance_rule
-  implementation_refs:
-  - AIA-HR-A11
-  implementation_reason: ''
-  verification_mode: judged_by_gap_analysis
-  review:
-    status: approved
-    extracted_by: semantic-legal-effect-pass
-    verified_by: vidibro
-    review_run_id: normative-coverage-2026-08-28
-    presentation_mode: exact-source-slice
-    display_chunks: 1
-    fully_displayed: true
-    elapsed_seconds: null
-- norm_id: AIA-NORM-A011-P1-UPDATE
-  act_version_date: '2026-07-27'
-  kind: obligation
-  subjects:
-  - subject_ref: provider
-    category: supported_operator
-  action: keep technical documentation up to date
-  norm_text: shall be kept up-to date
-  detection_channels:
-  - semantic_legal_effect
-  - shall_token
-  - existing_implementation
-  primary_spans:
-  - AIA-TEXT-A011-P1
-  qualifier_spans: []
-  effective_date_spans: []
-  conditions: []
-  exceptions: []
-  mandatory_content: []
+  mandatory_content:
+  - draw up the documentation before market placement or putting into service
+  - keep the documentation up to date
   dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
@@ -78,9 +46,12 @@ norms:
   subjects:
   - subject_ref: provider
     category: supported_operator
-  action: draw up documentation that demonstrates compliance with the requirements in Chapter III, Section
-    2
-  norm_text: shall be drawn up in such a way as to demonstrate that the high-risk AI system complies
+  action: draw up documentation that demonstrates compliance with Chapter III Section 2 and gives national
+    competent authorities and notified bodies the clear, comprehensive information needed to assess compliance
+  norm_text: That technical documentation shall be drawn up in such a way as to demonstrate that the high-risk
+    AI system complies with the requirements set out in this Section and to provide national competent
+    authorities and notified bodies with the necessary information in a clear and comprehensive form to
+    assess the compliance of the AI system with those requirements.
   detection_channels:
   - semantic_legal_effect
   - shall_token
@@ -91,44 +62,9 @@ norms:
   effective_date_spans: []
   conditions: []
   exceptions: []
-  mandatory_content: []
-  dependencies: []
-  product_scope: in_scope
-  product_scope_reason: ''
-  implementation_mode: compliance_rule
-  implementation_refs:
-  - AIA-HR-A11
-  implementation_reason: ''
-  verification_mode: judged_by_gap_analysis
-  review:
-    status: approved
-    extracted_by: semantic-legal-effect-pass
-    verified_by: vidibro
-    review_run_id: normative-coverage-2026-08-28
-    presentation_mode: exact-source-slice
-    display_chunks: 1
-    fully_displayed: true
-    elapsed_seconds: null
-- norm_id: AIA-NORM-A011-P1-ASSESSMENT-INFORMATION
-  act_version_date: '2026-07-27'
-  kind: obligation
-  subjects:
-  - subject_ref: provider
-    category: supported_operator
-  action: provide national competent authorities and notified bodies with the clear and comprehensive
-    information necessary to assess compliance
-  norm_text: to provide national competent authorities and notified bodies with the necessary information
-    in a clear and comprehensive form to assess the compliance of the AI system with those requirements
-  detection_channels:
-  - semantic_legal_effect
-  - existing_implementation
-  primary_spans:
-  - AIA-TEXT-A011-P1
-  qualifier_spans: []
-  effective_date_spans: []
-  conditions: []
-  exceptions: []
-  mandatory_content: []
+  mandatory_content:
+  - demonstrate compliance with Chapter III Section 2
+  - provide clear and comprehensive information needed to assess compliance
   dependencies: []
   product_scope: in_scope
   product_scope_reason: ''

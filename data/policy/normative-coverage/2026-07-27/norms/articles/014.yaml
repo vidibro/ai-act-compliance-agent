@@ -86,48 +86,11 @@ norms:
   subjects:
   - subject_ref: provider
     category: supported_operator
-  action: "make human-oversight measures commensurate with the system\u2019s risks, autonomy, and context\
-    \ of use"
+  action: make human-oversight measures commensurate with the system's risks, autonomy and context of
+    use and ensure them through either or both Article 14(3) measure routes
   norm_text: The oversight measures shall be commensurate with the risks, level of autonomy and context
-    of use of the high-risk AI system
-  detection_channels:
-  - semantic_legal_effect
-  - shall_token
-  - existing_implementation
-  primary_spans:
-  - AIA-TEXT-A014-P003
-  qualifier_spans: []
-  effective_date_spans: []
-  conditions: []
-  exceptions: []
-  mandatory_content: []
-  dependencies: []
-  product_scope: in_scope
-  product_scope_reason: ''
-  implementation_mode: compliance_rule
-  implementation_refs:
-  - AIA-HR-A14
-  implementation_reason: ''
-  verification_mode: judged_by_gap_analysis
-  review:
-    status: approved
-    extracted_by: semantic-legal-effect-pass
-    verified_by: vidibro
-    review_run_id: normative-coverage-2026-08-28
-    presentation_mode: exact-source-slice
-    display_chunks: 1
-    fully_displayed: true
-    elapsed_seconds: null
-- norm_id: AIA-NORM-A014-P3-MEASURE-ROUTES
-  act_version_date: '2026-07-27'
-  kind: obligation
-  subjects:
-  - subject_ref: provider
-    category: supported_operator
-  action: ensure oversight through technically feasible measures identified and built into the system
-    before market placement or service, measures identified before placement or service for deployer implementation,
-    or both
-  norm_text: shall be ensured through either one or both of the following types of measures
+    of use of the high-risk AI system, and shall be ensured through either one or both of the following
+    types of measures
   detection_channels:
   - semantic_legal_effect
   - shall_token
@@ -141,7 +104,9 @@ norms:
   effective_date_spans: []
   conditions: []
   exceptions: []
-  mandatory_content: []
+  mandatory_content:
+  - make the oversight measures commensurate with the system's risks, autonomy and context of use
+  - ensure oversight through either or both types of measures specified in Article 14(3)
   dependencies: []
   product_scope: in_scope
   product_scope_reason: ''

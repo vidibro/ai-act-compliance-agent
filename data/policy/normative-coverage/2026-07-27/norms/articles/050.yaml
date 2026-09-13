@@ -9,7 +9,12 @@ norms:
   action: design direct-interaction systems to inform natural persons they are interacting with AI
   norm_text: Providers shall ensure that AI systems intended to interact directly with natural persons
     are designed and developed in such a way that the natural persons concerned are informed that they
-    are interacting with an AI system
+    are interacting with an AI system, unless this is obvious from the point of view of a natural person
+    who is reasonably well-informed, observant and circumspect, taking into account the circumstances
+    and the context of use. This obligation shall not apply to AI systems authorised by law to detect,
+    prevent, investigate or prosecute criminal offences, subject to appropriate safeguards for the rights
+    and freedoms of third parties, unless those systems are available for the public to report a criminal
+    offence.
   detection_channels:
   - semantic_legal_effect
   - shall_token
@@ -55,10 +60,17 @@ norms:
   action: make synthetic outputs both machine-readably marked and detectable
   norm_text: Providers of AI systems, including general-purpose AI systems, generating synthetic audio,
     image, video or text content, shall ensure that the outputs of the AI system are marked in a machine-readable
-    format and detectable as artificially generated or manipulated.
+    format and detectable as artificially generated or manipulated. Providers shall ensure their technical
+    solutions are effective, interoperable, robust and reliable as far as this is technically feasible,
+    taking into account the specificities and limitations of various types of content, the costs of implementation
+    and the generally acknowledged state of the art, as may be reflected in relevant technical standards.
+    This obligation shall not apply to the extent the AI systems perform an assistive function for standard
+    editing or do not substantially alter the input data provided by the deployer or the semantics thereof,
+    or where authorised by law to detect, prevent, investigate or prosecute criminal offences.
   detection_channels:
   - semantic_legal_effect
   - shall_token
+  - other_modal
   - cross_reference_structure
   - existing_implementation
   primary_spans:
@@ -186,7 +198,13 @@ norms:
   - subject_ref: deployer
     category: supported_operator
   action: disclose artificial generation or manipulation of deep-fake image, audio, or video
-  norm_text: shall disclose that the content has been artificially generated or manipulated
+  norm_text: Deployers of an AI system that generates or manipulates image, audio or video content constituting
+    a deep fake, shall disclose that the content has been artificially generated or manipulated. This
+    obligation shall not apply where the use is authorised by law to detect, prevent, investigate or prosecute
+    criminal offence. Where the content forms part of an evidently artistic, creative, satirical, fictional
+    or analogous work or programme, the transparency obligations set out in this paragraph are limited
+    to disclosure of the existence of such generated or manipulated content in an appropriate manner that
+    does not hamper the display or enjoyment of the work.
   detection_channels:
   - semantic_legal_effect
   - shall_token
@@ -227,7 +245,12 @@ norms:
   - subject_ref: deployer
     category: supported_operator
   action: disclose artificial generation or manipulation of public-interest text
-  norm_text: shall disclose that the text has been artificially generated or manipulated
+  norm_text: Deployers of an AI system that generates or manipulates text which is published with the
+    purpose of informing the public on matters of public interest shall disclose that the text has been
+    artificially generated or manipulated. This obligation shall not apply where the use is authorised
+    by law to detect, prevent, investigate or prosecute criminal offences or where the AI-generated content
+    has undergone a process of human review or editorial control and where a natural or legal person holds
+    editorial responsibility for the publication of the content.
   detection_channels:
   - semantic_legal_effect
   - shall_token
@@ -268,7 +291,9 @@ norms:
   - subject_ref: provider_or_deployer
     category: supported_operator
   action: provide paragraphs 1 to 4 information clearly, distinguishably, on time, and accessibly
-  norm_text: shall be provided to the natural persons concerned in a clear and distinguishable manner
+  norm_text: The information referred to in paragraphs 1 to 4 shall be provided to the natural persons
+    concerned in a clear and distinguishable manner at the latest at the time of the first interaction
+    or exposure. The information shall conform to the applicable accessibility requirements.
   detection_channels:
   - semantic_legal_effect
   - shall_token
@@ -311,7 +336,9 @@ norms:
   - subject_ref: provider_or_deployer
     category: supported_operator
   action: preserve Chapter III and other transparency duties alongside Article 50
-  norm_text: Paragraphs 1 to 4 shall not affect the requirements and obligations set out in Chapter III
+  norm_text: Paragraphs 1 to 4 shall not affect the requirements and obligations set out in Chapter III,
+    and shall be without prejudice to other transparency obligations laid down in Union or national law
+    for deployers of AI systems.
   detection_channels:
   - semantic_legal_effect
   - shall_token
@@ -331,9 +358,9 @@ norms:
   implementation_reason: Represented as a dependency rather than an independent finding.
   verification_mode: not_reported
   review:
-    status: proposed
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
     display_chunks: 1
@@ -346,7 +373,9 @@ norms:
   - subject_ref: commission
     category: union_institution_or_body
   action: encourage and facilitate Union-level codes of practice
-  norm_text: The Commission shall encourage and facilitate the drawing up of codes of practice
+  norm_text: The Commission shall encourage and facilitate the drawing up of codes of practice at Union
+    level to facilitate the effective implementation of the obligations regarding the detection, marking
+    and labelling of artificially generated or manipulated content.
   detection_channels:
   - semantic_legal_effect
   - shall_token
@@ -365,9 +394,9 @@ norms:
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
   review:
-    status: proposed
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
     display_chunks: 1
@@ -380,7 +409,9 @@ norms:
   - subject_ref: commission
     category: union_institution_or_body
   action: assess whether code adherence adequately ensures compliance
-  norm_text: The Commission, taking utmost account of the opinion of the Board, shall assess
+  norm_text: The Commission, taking utmost account of the opinion of the Board, shall assess whether adherence
+    to those codes of practice is adequate to ensure compliance with the obligations laid down in paragraphs
+    2 and 4 of this Article, in accordance with the procedure laid down in Article 56(6).
   detection_channels:
   - semantic_legal_effect
   - shall_token
@@ -399,9 +430,9 @@ norms:
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
   review:
-    status: proposed
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
     display_chunks: 1
@@ -414,7 +445,9 @@ norms:
   - subject_ref: commission
     category: union_institution_or_body
   action: adopt common implementation rules if a code is inadequate
-  norm_text: the Commission may adopt an implementing act
+  norm_text: If it deems the code of practice to be inadequate, the Commission may adopt an implementing
+    act specifying common rules for the implementation of those obligations in accordance with the examination
+    procedure laid down in Article 98(2).
   detection_channels:
   - semantic_legal_effect
   - other_modal
@@ -422,7 +455,8 @@ norms:
   - AIA-TEXT-A050-P7
   qualifier_spans: []
   effective_date_spans: []
-  conditions: []
+  conditions:
+  - the Commission deems the code of practice inadequate
   exceptions: []
   mandatory_content: []
   dependencies: []
@@ -433,9 +467,9 @@ norms:
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
   review:
-    status: proposed
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
     display_chunks: 1

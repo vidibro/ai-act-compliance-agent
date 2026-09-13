@@ -20,11 +20,15 @@ norms:
   - AIA-TEXT-A090-P002
   - AIA-TEXT-A090-P003
   effective_date_spans: []
-  conditions: []
+  conditions:
+  - operator: any_of
+    operands:
+    - the scientific panel has reason to suspect that a general-purpose AI model poses a concrete identifiable
+      risk at Union level
+    - the scientific panel has reason to suspect that a general-purpose AI model meets the conditions
+      referred to in Article 51
   exceptions: []
-  mandatory_content:
-  - concrete identifiable risk at Union level
-  - Article 51 conditions
+  mandatory_content: []
   dependencies: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -48,8 +52,8 @@ norms:
   - subject_ref: commission_through_ai_office
     category: union_institution_or_body
   action: after informing the Board exercise Section powers to assess a qualified alert
-  norm_text: the Commission, through the AI Office and after having informed the Board, may exercise the
-    powers laid down in this Section for the purpose of assessing the matter.
+  norm_text: Upon such qualified alert, the Commission, through the AI Office and after having informed
+    the Board, may exercise the powers laid down in this Section for the purpose of assessing the matter.
   detection_channels:
   - semantic_legal_effect
   - other_modal
@@ -57,7 +61,9 @@ norms:
   - AIA-TEXT-A090-P004
   qualifier_spans: []
   effective_date_spans: []
-  conditions: []
+  conditions:
+  - the scientific panel has provided a qualified alert
+  - the Board has been informed
   exceptions: []
   mandatory_content: []
   dependencies: []
@@ -129,7 +135,8 @@ norms:
   - AIA-TEXT-A090-P007
   - AIA-TEXT-A090-P008
   effective_date_spans: []
-  conditions: []
+  conditions:
+  - the scientific panel provides a qualified alert
   exceptions: []
   mandatory_content:
   - systemic-risk GPAI provider point of contact

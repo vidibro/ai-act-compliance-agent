@@ -1,7 +1,9 @@
 """Schemas for exact text review and atomic legal propositions.
 
-These models do not participate in classification, rule selection, judging, or reporting. They
-form an independently validated assurance layer beneath those runtime paths.
+These models form an independently validated assurance layer beneath the runtime paths. They do
+not participate in classification or rule selection. Judging and reporting read them in one place
+only: a rule's `criteria` name norms by id, and the policy loader materialises each criterion from
+the generated norm it names.
 """
 
 from __future__ import annotations
@@ -34,6 +36,7 @@ class NormKind(StrEnum):
     PERMISSION = "permission"
     ENTITLEMENT = "entitlement"
     POWER = "power"
+    RECOMMENDATION = "recommendation"
     APPLICABILITY = "applicability"
     DEFINITION = "definition"
     LEGAL_CONSEQUENCE = "legal_consequence"
@@ -142,15 +145,17 @@ class TextReviewSegment(BaseModel):
     disposition: SegmentDisposition
     disposition_reason: str = ""
     norm_ids: list[str] = []
+    qualifying_norm_ids: list[str] = []
     review: ReviewRecord
 
     @model_validator(mode="after")
     def _disposition_has_the_right_shape(self) -> TextReviewSegment:
         if self.end <= self.start:
             raise ValueError("segment end must be greater than start")
-        if self.disposition is SegmentDisposition.NORMATIVE and not self.norm_ids:
-            raise ValueError("normative segment requires at least one norm_id")
-        if self.disposition is not SegmentDisposition.NORMATIVE and self.norm_ids:
+        linked_norm_ids = [*self.norm_ids, *self.qualifying_norm_ids]
+        if self.disposition is SegmentDisposition.NORMATIVE and not linked_norm_ids:
+            raise ValueError("normative segment requires at least one linked norm_id")
+        if self.disposition is not SegmentDisposition.NORMATIVE and linked_norm_ids:
             raise ValueError("only normative segments may link norm_ids")
         if (
             self.disposition is SegmentDisposition.CONTEXT_ONLY
@@ -236,12 +241,15 @@ class Norm(BaseModel):
     exceptions: list[str] = []
     mandatory_content: list[str] = []
     dependencies: list[NormDependency] = []
+    condition_norm_ids: list[str] = []
+    condition_of_norm_ids: list[str] = []
     product_scope: ProductScope
     product_scope_reason: str = ""
     implementation_mode: ImplementationMode
     implementation_refs: list[str] = []
     carried_by_norm_ids: list[str] = []
     superseded_by_norm_ids: list[str] = []
+    parallel_norm_ids: list[str] = []
     implementation_reason: str = ""
     verification_mode: VerificationMode
     review: ReviewRecord
@@ -263,6 +271,12 @@ class Norm(BaseModel):
             raise ValueError("norm_text must contain an exact enacted quotation")
         if len(self.detection_channels) != len(set(self.detection_channels)):
             raise ValueError("detection_channels must not contain duplicates")
+        if self.norm_id in self.condition_norm_ids or self.norm_id in self.condition_of_norm_ids:
+            raise ValueError("a norm cannot be its own condition parent or child")
+        if len(self.condition_norm_ids) != len(set(self.condition_norm_ids)):
+            raise ValueError("condition_norm_ids must not contain duplicates")
+        if len(self.condition_of_norm_ids) != len(set(self.condition_of_norm_ids)):
+            raise ValueError("condition_of_norm_ids must not contain duplicates")
         if self.product_scope not in {ProductScope.IN_SCOPE, ProductScope.UNRESOLVED}:
             if not self.product_scope_reason.strip():
                 raise ValueError(f"product_scope={self.product_scope.value} requires a reason")
@@ -298,6 +312,10 @@ class Norm(BaseModel):
                 raise ValueError("a norm cannot supersede itself")
         elif self.superseded_by_norm_ids:
             raise ValueError("superseded_by_norm_ids requires review status superseded")
+        if self.norm_id in self.parallel_norm_ids:
+            raise ValueError("a norm cannot be parallel to itself")
+        if set(self.parallel_norm_ids) & set(self.carried_by_norm_ids):
+            raise ValueError("a carried norm is a restatement, not a parallel duty")
         if self.review.status is ReviewStatus.REJECTED:
             raise ValueError("rejected candidates belong in extraction history, not norm inventory")
         return self

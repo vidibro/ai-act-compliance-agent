@@ -4,7 +4,7 @@
 
 **Act version:** 2026-07-27
 
-The inventory contains 133 complete source-body partitions, 1505 exact segments, and 1490 proposed atomic norms. Every stored article and annex is present. Proposed
+The inventory contains 133 complete source-body partitions, 1530 exact segments, and 1391 proposed atomic norms. Every stored article and annex is present. Proposed
 norms have been extracted from 132 documents; the remaining
 work is retained explicitly rather than omitted. The inventory is not consumed by classification,
 rule selection, judging, or reporting.
@@ -18,14 +18,14 @@ rule selection, judging, or reporting.
 - annex IX: 1
 - annex V: 1
 - annex VI: 4
-- annex VII: 32
+- annex VII: 31
 - annex VIII: 3
 - annex X: 12
 - annex XI: 5
 - annex XII: 1
 - annex XIII: 2
 - annex XIV: 25
-- article 10: 24
+- article 10: 21
 - article 100: 11
 - article 101: 7
 - article 102: 1
@@ -36,67 +36,67 @@ rule selection, judging, or reporting.
 - article 107: 1
 - article 108: 6
 - article 109: 1
-- article 11: 11
+- article 11: 9
 - article 110: 1
 - article 111: 6
-- article 112: 20
+- article 112: 19
 - article 113: 8
 - article 12: 8
-- article 13: 27
-- article 14: 14
-- article 15: 20
+- article 13: 16
+- article 14: 10
+- article 15: 14
 - article 16: 12
-- article 17: 21
+- article 17: 20
 - article 18: 7
-- article 19: 5
-- article 2: 28
-- article 20: 4
-- article 21: 4
-- article 22: 15
-- article 23: 13
+- article 19: 3
+- article 2: 27
+- article 20: 3
+- article 21: 3
+- article 22: 14
+- article 23: 12
 - article 24: 10
 - article 25: 15
-- article 26: 44
+- article 26: 34
 - article 27: 9
-- article 28: 17
+- article 28: 16
 - article 29: 7
-- article 3: 73
+- article 3: 72
 - article 30: 9
-- article 31: 19
+- article 31: 18
 - article 32: 1
 - article 33: 6
-- article 34: 5
+- article 34: 4
 - article 35: 3
-- article 36: 26
-- article 37: 7
+- article 36: 25
+- article 37: 6
 - article 38: 3
 - article 39: 1
 - article 4: 4
 - article 40: 8
-- article 41: 11
+- article 41: 10
 - article 42: 3
-- article 43: 20
-- article 44: 8
+- article 43: 18
+- article 44: 7
 - article 45: 7
 - article 46: 14
-- article 47: 12
+- article 47: 10
 - article 48: 7
-- article 49: 10
+- article 49: 9
 - article 4a: 8
-- article 5: 40
+- article 5: 38
 - article 50: 11
-- article 51: 5
-- article 52: 15
-- article 53: 20
-- article 54: 13
-- article 55: 14
-- article 56: 21
-- article 57: 50
+- article 51: 4
+- article 52: 13
+- article 53: 17
+- article 54: 12
+- article 55: 8
+- article 56: 20
+- article 57: 49
 - article 58: 6
 - article 59: 13
-- article 6: 17
-- article 60: 32
-- article 60a: 11
+- article 6: 14
+- article 60: 30
+- article 60a: 10
 - article 61: 3
 - article 62: 13
 - article 63: 3
@@ -104,22 +104,22 @@ rule selection, judging, or reporting.
 - article 65: 16
 - article 66: 17
 - article 67: 14
-- article 68: 19
+- article 68: 18
 - article 69: 3
 - article 7: 4
 - article 70: 18
 - article 71: 13
 - article 72: 6
-- article 73: 16
-- article 74: 17
-- article 75: 28
+- article 73: 15
+- article 74: 18
+- article 75: 27
 - article 75a: 24
 - article 75b: 3
-- article 75c: 19
+- article 75c: 18
 - article 75d: 8
 - article 76: 7
-- article 77: 9
-- article 78: 11
+- article 77: 8
+- article 78: 10
 - article 79: 17
 - article 8: 4
 - article 80: 9
@@ -127,22 +127,22 @@ rule selection, judging, or reporting.
 - article 82: 7
 - article 83: 2
 - article 84: 2
-- article 85: 3
+- article 85: 2
 - article 86: 4
 - article 87: 1
 - article 88: 3
 - article 89: 3
-- article 9: 30
+- article 9: 21
 - article 90: 4
 - article 91: 8
 - article 92: 8
 - article 93: 3
 - article 94: 1
 - article 95: 4
-- article 96: 6
+- article 96: 5
 - article 97: 11
 - article 98: 2
-- article 99: 14
+- article 99: 13
 
 ### Norms per extracted provision
 
@@ -164,7 +164,7 @@ rule selection, judging, or reporting.
 - AIA-TEXT-A002-P017: 3
 - AIA-TEXT-A002-P018: 1
 - AIA-TEXT-A002-P019: 1
-- AIA-TEXT-A002-P020: 2
+- AIA-TEXT-A002-P020: 1
 - AIA-TEXT-A002-P021: 1
 - AIA-TEXT-A002-P022: 1
 - AIA-TEXT-A002-P025: 1
@@ -226,7 +226,7 @@ rule selection, judging, or reporting.
 - AIA-TEXT-A003-P063: 1
 - AIA-TEXT-A003-P064: 1
 - AIA-TEXT-A003-P065: 1
-- AIA-TEXT-A003-P066: 2
+- AIA-TEXT-A003-P066: 1
 - AIA-TEXT-A003-P067: 1
 - AIA-TEXT-A003-P068: 1
 - AIA-TEXT-A003-P069: 1
@@ -267,9 +267,9 @@ rule selection, judging, or reporting.
 - AIA-TEXT-A005-P027: 3
 - AIA-TEXT-A005-P028: 4
 - AIA-TEXT-A005-P029: 3
-- AIA-TEXT-A005-P030: 3
+- AIA-TEXT-A005-P030: 2
 - AIA-TEXT-A005-P031: 5
-- AIA-TEXT-A005-P032: 3
+- AIA-TEXT-A005-P032: 2
 - AIA-TEXT-A005-P033: 2
 - AIA-TEXT-A005-P034: 1
 - AIA-TEXT-A006-P001: 1
@@ -280,33 +280,33 @@ rule selection, judging, or reporting.
 - AIA-TEXT-A006-P008: 1
 - AIA-TEXT-A006-P014: 1
 - AIA-TEXT-A006-P015: 3
-- AIA-TEXT-A006-P016: 2
+- AIA-TEXT-A006-P016: 1
 - AIA-TEXT-A006-P017: 1
 - AIA-TEXT-A006-P018: 1
-- AIA-TEXT-A006-P019: 3
+- AIA-TEXT-A006-P019: 1
 - AIA-TEXT-A007-P001: 1
 - AIA-TEXT-A007-P004: 1
 - AIA-TEXT-A007-P013: 1
 - AIA-TEXT-A007-P018: 1
 - AIA-TEXT-A008-P001: 2
 - AIA-TEXT-A008-P002: 2
-- AIA-TEXT-A009-P001: 4
-- AIA-TEXT-A009-P002: 3
+- AIA-TEXT-A009-P001: 1
+- AIA-TEXT-A009-P002: 1
 - AIA-TEXT-A009-P003: 1
 - AIA-TEXT-A009-P004: 1
 - AIA-TEXT-A009-P005: 1
 - AIA-TEXT-A009-P006: 1
 - AIA-TEXT-A009-P007: 1
 - AIA-TEXT-A009-P008: 1
-- AIA-TEXT-A009-P009: 2
+- AIA-TEXT-A009-P009: 1
 - AIA-TEXT-A009-P011: 1
 - AIA-TEXT-A009-P012: 1
 - AIA-TEXT-A009-P013: 2
 - AIA-TEXT-A009-P014: 1
-- AIA-TEXT-A009-P015: 3
+- AIA-TEXT-A009-P015: 2
 - AIA-TEXT-A009-P016: 1
-- AIA-TEXT-A009-P017: 3
-- AIA-TEXT-A009-P018: 2
+- AIA-TEXT-A009-P017: 2
+- AIA-TEXT-A009-P018: 1
 - AIA-TEXT-A009-P019: 1
 - AIA-TEXT-A010-P001: 1
 - AIA-TEXT-A010-P002: 1
@@ -318,7 +318,7 @@ rule selection, judging, or reporting.
 - AIA-TEXT-A010-P008: 1
 - AIA-TEXT-A010-P009: 1
 - AIA-TEXT-A010-P010: 1
-- AIA-TEXT-A010-P011: 6
+- AIA-TEXT-A010-P011: 3
 - AIA-TEXT-A010-P012: 1
 - AIA-TEXT-A010-P013: 1
 - AIA-TEXT-A010-P015: 1
@@ -327,7 +327,7 @@ rule selection, judging, or reporting.
 - AIA-TEXT-A010-P018: 1
 - AIA-TEXT-A010-P019: 1
 - AIA-TEXT-A010-P020: 1
-- AIA-TEXT-A011-P1: 9
+- AIA-TEXT-A011-P1: 7
 - AIA-TEXT-A011-P2: 1
 - AIA-TEXT-A011-P3: 1
 - AIA-TEXT-A012-P001: 1
@@ -339,36 +339,36 @@ rule selection, judging, or reporting.
 - AIA-TEXT-A012-P009: 1
 - AIA-TEXT-A012-P010: 1
 - AIA-TEXT-A013-P001: 2
-- AIA-TEXT-A013-P002: 8
+- AIA-TEXT-A013-P002: 1
 - AIA-TEXT-A013-P004: 1
 - AIA-TEXT-A013-P005: 1
 - AIA-TEXT-A013-P006: 1
-- AIA-TEXT-A013-P007: 2
+- AIA-TEXT-A013-P007: 1
 - AIA-TEXT-A013-P008: 1
 - AIA-TEXT-A013-P009: 1
 - AIA-TEXT-A013-P010: 1
 - AIA-TEXT-A013-P011: 1
 - AIA-TEXT-A013-P012: 1
 - AIA-TEXT-A013-P013: 1
-- AIA-TEXT-A013-P014: 2
-- AIA-TEXT-A013-P015: 3
+- AIA-TEXT-A013-P014: 1
+- AIA-TEXT-A013-P015: 1
 - AIA-TEXT-A013-P016: 1
 - AIA-TEXT-A014-P001: 1
 - AIA-TEXT-A014-P002: 1
-- AIA-TEXT-A014-P003: 2
-- AIA-TEXT-A014-P007: 2
+- AIA-TEXT-A014-P003: 1
+- AIA-TEXT-A014-P007: 1
 - AIA-TEXT-A014-P008: 1
 - AIA-TEXT-A014-P009: 1
-- AIA-TEXT-A014-P010: 2
-- AIA-TEXT-A014-P011: 2
+- AIA-TEXT-A014-P010: 1
+- AIA-TEXT-A014-P011: 1
 - AIA-TEXT-A014-P012: 1
 - AIA-TEXT-A014-P013: 1
-- AIA-TEXT-A015-P001: 4
+- AIA-TEXT-A015-P001: 1
 - AIA-TEXT-A015-P002: 1
-- AIA-TEXT-A015-P003: 2
-- AIA-TEXT-A015-P004: 3
+- AIA-TEXT-A015-P003: 1
+- AIA-TEXT-A015-P004: 2
 - AIA-TEXT-A015-P005: 1
-- AIA-TEXT-A015-P006: 2
+- AIA-TEXT-A015-P006: 1
 - AIA-TEXT-A015-P007: 1
 - AIA-TEXT-A015-P008: 1
 - AIA-TEXT-A015-P009: 5
@@ -384,7 +384,7 @@ rule selection, judging, or reporting.
 - AIA-TEXT-A016-P011: 1
 - AIA-TEXT-A016-P012: 1
 - AIA-TEXT-A016-P013: 1
-- AIA-TEXT-A017-P001: 3
+- AIA-TEXT-A017-P001: 2
 - AIA-TEXT-A017-P002: 1
 - AIA-TEXT-A017-P003: 1
 - AIA-TEXT-A017-P004: 1
@@ -408,16 +408,16 @@ rule selection, judging, or reporting.
 - AIA-TEXT-A018-P006: 1
 - AIA-TEXT-A018-P007: 1
 - AIA-TEXT-A018-P008: 1
-- AIA-TEXT-A019-P001: 4
+- AIA-TEXT-A019-P001: 2
 - AIA-TEXT-A019-P002: 1
 - AIA-TEXT-A020-P001: 2
-- AIA-TEXT-A020-P002: 2
-- AIA-TEXT-A021-P001: 2
+- AIA-TEXT-A020-P002: 1
+- AIA-TEXT-A021-P001: 1
 - AIA-TEXT-A021-P002: 1
 - AIA-TEXT-A021-P003: 1
 - AIA-TEXT-A022-P001: 1
 - AIA-TEXT-A022-P002: 1
-- AIA-TEXT-A022-P003: 4
+- AIA-TEXT-A022-P003: 3
 - AIA-TEXT-A022-P004: 1
 - AIA-TEXT-A022-P005: 1
 - AIA-TEXT-A022-P006: 2
@@ -432,7 +432,7 @@ rule selection, judging, or reporting.
 - AIA-TEXT-A023-P007: 1
 - AIA-TEXT-A023-P008: 1
 - AIA-TEXT-A023-P009: 1
-- AIA-TEXT-A023-P010: 3
+- AIA-TEXT-A023-P010: 2
 - AIA-TEXT-A023-P011: 1
 - AIA-TEXT-A024-P001: 3
 - AIA-TEXT-A024-P002: 2
@@ -452,14 +452,14 @@ rule selection, judging, or reporting.
 - AIA-TEXT-A025-P016: 3
 - AIA-TEXT-A025-P017: 1
 - AIA-TEXT-A026-P1: 1
-- AIA-TEXT-A026-P10: 16
-- AIA-TEXT-A026-P11: 3
+- AIA-TEXT-A026-P10: 13
+- AIA-TEXT-A026-P11: 2
 - AIA-TEXT-A026-P12: 1
 - AIA-TEXT-A026-P2: 1
-- AIA-TEXT-A026-P3: 2
+- AIA-TEXT-A026-P3: 1
 - AIA-TEXT-A026-P4: 1
-- AIA-TEXT-A026-P5: 8
-- AIA-TEXT-A026-P6: 5
+- AIA-TEXT-A026-P5: 6
+- AIA-TEXT-A026-P6: 2
 - AIA-TEXT-A026-P7: 2
 - AIA-TEXT-A026-P8: 3
 - AIA-TEXT-A026-P9: 1
@@ -472,7 +472,7 @@ rule selection, judging, or reporting.
 - AIA-TEXT-A028-P002: 1
 - AIA-TEXT-A028-P003: 1
 - AIA-TEXT-A028-P004: 1
-- AIA-TEXT-A028-P005: 2
+- AIA-TEXT-A028-P005: 1
 - AIA-TEXT-A028-P006: 1
 - AIA-TEXT-A028-P007: 2
 - AIA-TEXT-A028-P008: 2
@@ -497,7 +497,7 @@ rule selection, judging, or reporting.
 - AIA-TEXT-A031-P002: 1
 - AIA-TEXT-A031-P003: 1
 - AIA-TEXT-A031-P004: 2
-- AIA-TEXT-A031-P005: 3
+- AIA-TEXT-A031-P005: 2
 - AIA-TEXT-A031-P006: 2
 - AIA-TEXT-A031-P007: 2
 - AIA-TEXT-A031-P008: 1
@@ -511,7 +511,7 @@ rule selection, judging, or reporting.
 - AIA-TEXT-A033-P003: 2
 - AIA-TEXT-A033-P004: 1
 - AIA-TEXT-A034-P001: 1
-- AIA-TEXT-A034-P002: 3
+- AIA-TEXT-A034-P002: 2
 - AIA-TEXT-A034-P003: 1
 - AIA-TEXT-A035-P001: 1
 - AIA-TEXT-A035-P002: 2
@@ -521,7 +521,7 @@ rule selection, judging, or reporting.
 - AIA-TEXT-A036-P004: 4
 - AIA-TEXT-A036-P005: 5
 - AIA-TEXT-A036-P006: 1
-- AIA-TEXT-A036-P007: 2
+- AIA-TEXT-A036-P007: 1
 - AIA-TEXT-A036-P009: 1
 - AIA-TEXT-A036-P010: 1
 - AIA-TEXT-A036-P011: 1
@@ -535,7 +535,7 @@ rule selection, judging, or reporting.
 - AIA-TEXT-A037-P001: 1
 - AIA-TEXT-A037-P002: 1
 - AIA-TEXT-A037-P003: 1
-- AIA-TEXT-A037-P004: 4
+- AIA-TEXT-A037-P004: 3
 - AIA-TEXT-A038-P001: 1
 - AIA-TEXT-A038-P002: 1
 - AIA-TEXT-A038-P003: 1
@@ -553,19 +553,19 @@ rule selection, judging, or reporting.
 - AIA-TEXT-A041-P011: 1
 - AIA-TEXT-A041-P012: 2
 - AIA-TEXT-A041-P013: 1
-- AIA-TEXT-A041-P014: 3
+- AIA-TEXT-A041-P014: 2
 - AIA-TEXT-A042-P001: 1
 - AIA-TEXT-A042-P002: 1
 - AIA-TEXT-A042-P003: 1
 - AIA-TEXT-A043-P1: 4
 - AIA-TEXT-A043-P2: 1
-- AIA-TEXT-A043-P3: 10
+- AIA-TEXT-A043-P3: 8
 - AIA-TEXT-A043-P4: 2
 - AIA-TEXT-A043-P5: 1
 - AIA-TEXT-A043-P6: 2
 - AIA-TEXT-A044-P001: 1
 - AIA-TEXT-A044-P002: 3
-- AIA-TEXT-A044-P003: 3
+- AIA-TEXT-A044-P003: 2
 - AIA-TEXT-A044-P004: 1
 - AIA-TEXT-A045-P001: 2
 - AIA-TEXT-A045-P007: 2
@@ -578,8 +578,8 @@ rule selection, judging, or reporting.
 - AIA-TEXT-A046-P005: 4
 - AIA-TEXT-A046-P006: 1
 - AIA-TEXT-A046-P007: 1
-- AIA-TEXT-A047-P001: 4
-- AIA-TEXT-A047-P002: 3
+- AIA-TEXT-A047-P001: 3
+- AIA-TEXT-A047-P002: 2
 - AIA-TEXT-A047-P003: 2
 - AIA-TEXT-A047-P004: 2
 - AIA-TEXT-A047-P005: 1
@@ -591,7 +591,7 @@ rule selection, judging, or reporting.
 - AIA-TEXT-A049-P001: 2
 - AIA-TEXT-A049-P002: 2
 - AIA-TEXT-A049-P003: 1
-- AIA-TEXT-A049-P004: 2
+- AIA-TEXT-A049-P004: 1
 - AIA-TEXT-A049-P009: 2
 - AIA-TEXT-A049-P010: 1
 - AIA-TEXT-A050-P1: 1
@@ -604,16 +604,16 @@ rule selection, judging, or reporting.
 - AIA-TEXT-A051-P002: 1
 - AIA-TEXT-A051-P003: 1
 - AIA-TEXT-A051-P004: 1
-- AIA-TEXT-A051-P005: 2
+- AIA-TEXT-A051-P005: 1
 - AIA-TEXT-A052-P001: 3
 - AIA-TEXT-A052-P002: 1
 - AIA-TEXT-A052-P003: 2
 - AIA-TEXT-A052-P004: 1
 - AIA-TEXT-A052-P005: 1
 - AIA-TEXT-A052-P006: 4
-- AIA-TEXT-A052-P007: 3
-- AIA-TEXT-A053-P002: 3
-- AIA-TEXT-A053-P003: 3
+- AIA-TEXT-A052-P007: 1
+- AIA-TEXT-A053-P002: 1
+- AIA-TEXT-A053-P003: 2
 - AIA-TEXT-A053-P004: 1
 - AIA-TEXT-A053-P005: 1
 - AIA-TEXT-A053-P006: 2
@@ -633,18 +633,18 @@ rule selection, judging, or reporting.
 - AIA-TEXT-A054-P007: 1
 - AIA-TEXT-A054-P008: 1
 - AIA-TEXT-A054-P009: 2
-- AIA-TEXT-A054-P010: 2
-- AIA-TEXT-A055-P002: 3
-- AIA-TEXT-A055-P003: 2
-- AIA-TEXT-A055-P004: 3
-- AIA-TEXT-A055-P005: 2
+- AIA-TEXT-A054-P010: 1
+- AIA-TEXT-A055-P002: 1
+- AIA-TEXT-A055-P003: 1
+- AIA-TEXT-A055-P004: 1
+- AIA-TEXT-A055-P005: 1
 - AIA-TEXT-A055-P006: 3
 - AIA-TEXT-A055-P007: 1
 - AIA-TEXT-A056-P001: 1
 - AIA-TEXT-A056-P002: 1
 - AIA-TEXT-A056-P006: 1
 - AIA-TEXT-A056-P007: 2
-- AIA-TEXT-A056-P008: 2
+- AIA-TEXT-A056-P008: 1
 - AIA-TEXT-A056-P009: 2
 - AIA-TEXT-A056-P010: 4
 - AIA-TEXT-A056-P011: 2
@@ -669,7 +669,7 @@ rule selection, judging, or reporting.
 - AIA-TEXT-A057-P022: 1
 - AIA-TEXT-A057-P023: 2
 - AIA-TEXT-A057-P024: 3
-- AIA-TEXT-A057-P025: 4
+- AIA-TEXT-A057-P025: 3
 - AIA-TEXT-A057-P026: 2
 - AIA-TEXT-A058-P001: 1
 - AIA-TEXT-A058-P006: 1
@@ -706,15 +706,15 @@ rule selection, judging, or reporting.
 - AIA-TEXT-A060-P015: 3
 - AIA-TEXT-A060-P016: 1
 - AIA-TEXT-A060-P017: 1
-- AIA-TEXT-A060-P018: 3
+- AIA-TEXT-A060-P018: 2
 - AIA-TEXT-A060-P019: 2
-- AIA-TEXT-A060-P020: 4
+- AIA-TEXT-A060-P020: 3
 - AIA-TEXT-A060-P021: 1
 - AIA-TEXT-A060-P022: 1
 - AIA-TEXT-A060A-P001: 1
 - AIA-TEXT-A060A-P002: 1
 - AIA-TEXT-A060A-P003: 2
-- AIA-TEXT-A060A-P004: 2
+- AIA-TEXT-A060A-P004: 1
 - AIA-TEXT-A060A-P005: 1
 - AIA-TEXT-A060A-P006: 1
 - AIA-TEXT-A060A-P007: 1
@@ -786,7 +786,7 @@ rule selection, judging, or reporting.
 - AIA-TEXT-A068-P014: 1
 - AIA-TEXT-A068-P015: 1
 - AIA-TEXT-A068-P016: 1
-- AIA-TEXT-A068-P017: 5
+- AIA-TEXT-A068-P017: 4
 - AIA-TEXT-A068-P018: 1
 - AIA-TEXT-A069-P001: 1
 - AIA-TEXT-A069-P002: 1
@@ -818,7 +818,7 @@ rule selection, judging, or reporting.
 - AIA-TEXT-A073-P007: 2
 - AIA-TEXT-A073-P008: 2
 - AIA-TEXT-A073-P009: 2
-- AIA-TEXT-A073-P010: 2
+- AIA-TEXT-A073-P010: 1
 - AIA-TEXT-A073-P011: 1
 - AIA-TEXT-A073-P012: 1
 - AIA-TEXT-A073-P013: 1
@@ -829,6 +829,7 @@ rule selection, judging, or reporting.
 - AIA-TEXT-A074-P008: 1
 - AIA-TEXT-A074-P009: 1
 - AIA-TEXT-A074-P010: 1
+- AIA-TEXT-A074-P011: 1
 - AIA-TEXT-A074-P012: 2
 - AIA-TEXT-A074-P013: 1
 - AIA-TEXT-A074-P014: 1
@@ -844,7 +845,7 @@ rule selection, judging, or reporting.
 - AIA-TEXT-A075-P012: 2
 - AIA-TEXT-A075-P013: 5
 - AIA-TEXT-A075-P014: 2
-- AIA-TEXT-A075-P015: 2
+- AIA-TEXT-A075-P015: 1
 - AIA-TEXT-A075-P016: 1
 - AIA-TEXT-A075-P020: 2
 - AIA-TEXT-A075-P021: 2
@@ -871,7 +872,7 @@ rule selection, judging, or reporting.
 - AIA-TEXT-A075C-P005: 1
 - AIA-TEXT-A075C-P009: 1
 - AIA-TEXT-A075C-P010: 1
-- AIA-TEXT-A075C-P018: 2
+- AIA-TEXT-A075C-P018: 1
 - AIA-TEXT-A075C-P019: 1
 - AIA-TEXT-A075C-P020: 1
 - AIA-TEXT-A075C-P021: 1
@@ -891,11 +892,11 @@ rule selection, judging, or reporting.
 - AIA-TEXT-A077-P001: 1
 - AIA-TEXT-A077-P002: 1
 - AIA-TEXT-A077-P003: 1
-- AIA-TEXT-A077-P004: 3
+- AIA-TEXT-A077-P004: 2
 - AIA-TEXT-A077-P005: 2
 - AIA-TEXT-A077-P006: 1
 - AIA-TEXT-A078-P001: 1
-- AIA-TEXT-A078-P007: 3
+- AIA-TEXT-A078-P007: 2
 - AIA-TEXT-A078-P008: 2
 - AIA-TEXT-A078-P009: 3
 - AIA-TEXT-A078-P010: 1
@@ -932,7 +933,7 @@ rule selection, judging, or reporting.
 - AIA-TEXT-A084-P001: 1
 - AIA-TEXT-A084-P002: 1
 - AIA-TEXT-A085-P001: 1
-- AIA-TEXT-A085-P002: 2
+- AIA-TEXT-A085-P002: 1
 - AIA-TEXT-A086-P001: 2
 - AIA-TEXT-A086-P002: 1
 - AIA-TEXT-A086-P003: 1
@@ -966,7 +967,7 @@ rule selection, judging, or reporting.
 - AIA-TEXT-A095-P009: 1
 - AIA-TEXT-A096-P001: 1
 - AIA-TEXT-A096-P008: 1
-- AIA-TEXT-A096-P009: 2
+- AIA-TEXT-A096-P009: 1
 - AIA-TEXT-A096-P010: 1
 - AIA-TEXT-A096-P011: 1
 - AIA-TEXT-A097-P001: 1
@@ -978,7 +979,7 @@ rule selection, judging, or reporting.
 - AIA-TEXT-A098-P001: 1
 - AIA-TEXT-A098-P002: 1
 - AIA-TEXT-A099-P001: 2
-- AIA-TEXT-A099-P002: 2
+- AIA-TEXT-A099-P002: 1
 - AIA-TEXT-A099-P003: 1
 - AIA-TEXT-A099-P004: 1
 - AIA-TEXT-A099-P013: 1
@@ -1027,7 +1028,7 @@ rule selection, judging, or reporting.
 - AIA-TEXT-A112-P006: 3
 - AIA-TEXT-A112-P007: 1
 - AIA-TEXT-A112-P012: 2
-- AIA-TEXT-A112-P013: 3
+- AIA-TEXT-A112-P013: 2
 - AIA-TEXT-A112-P014: 1
 - AIA-TEXT-A112-P015: 1
 - AIA-TEXT-A112-P016: 1
@@ -1110,11 +1111,21 @@ rule selection, judging, or reporting.
 - AIA-TEXT-ANNEX-VI-P002: 1
 - AIA-TEXT-ANNEX-VI-P003: 1
 - AIA-TEXT-ANNEX-VI-P004: 1
-- AIA-TEXT-ANNEX-VII-I1: 1
-- AIA-TEXT-ANNEX-VII-I2: 3
-- AIA-TEXT-ANNEX-VII-I3: 7
-- AIA-TEXT-ANNEX-VII-I4: 17
-- AIA-TEXT-ANNEX-VII-I5: 4
+- AIA-TEXT-ANNEX-VII-P002: 1
+- AIA-TEXT-ANNEX-VII-P004: 2
+- AIA-TEXT-ANNEX-VII-P006: 1
+- AIA-TEXT-ANNEX-VII-P013: 2
+- AIA-TEXT-ANNEX-VII-P014: 1
+- AIA-TEXT-ANNEX-VII-P015: 3
+- AIA-TEXT-ANNEX-VII-P017: 1
+- AIA-TEXT-ANNEX-VII-P018: 1
+- AIA-TEXT-ANNEX-VII-P022: 2
+- AIA-TEXT-ANNEX-VII-P023: 2
+- AIA-TEXT-ANNEX-VII-P024: 1
+- AIA-TEXT-ANNEX-VII-P025: 6
+- AIA-TEXT-ANNEX-VII-P026: 4
+- AIA-TEXT-ANNEX-VII-P029: 2
+- AIA-TEXT-ANNEX-VII-P030: 2
 - AIA-TEXT-ANNEX-VIII-A: 1
 - AIA-TEXT-ANNEX-VIII-B: 1
 - AIA-TEXT-ANNEX-VIII-C: 1
@@ -1148,15 +1159,107 @@ rule selection, judging, or reporting.
 - Characters displayed by the extraction pass: 395046
 - Independently approved characters: 395046
 - Characters deliberately left as review debt: 0
-- Normative segments supporting multiple propositions: 382
-- Semantic candidates a shall-token pass missed: 574
+- Normative segments yielding multiple propositions: 231
+- Semantic candidates a shall-token pass missed: 536
 - Shall-token candidate recall: 61.5%
-- In-scope semantic candidates absent from existing implementation: 128
-- Detection-channel counts: cross_reference_structure=492, deeming_or_consequence=281, existing_implementation=510, other_modal=156, semantic_legal_effect=1490, shall_token=916
-- Mapping shapes, by norm: one-to-one=28, many-to-one=463, one-to-many=1, many-to-many=18, unmapped=980
-- Implementation debt candidates: 107
+- In-scope semantic candidates absent from existing implementation: 124
+- Detection-channel counts: cross_reference_structure=526, deeming_or_consequence=270, existing_implementation=444, other_modal=167, semantic_legal_effect=1391, shall_token=855
+- Mapping shapes, by norm: one-to-one=35, many-to-one=391, one-to-many=1, many-to-many=17, unmapped=947
+- Implementation debt candidates: 103
 - Interpretive links to non-binding guidance: 1
-- Review records with measured elapsed time: 0/2996
+- Review records with measured elapsed time: 0/2922
+- Parallel-duty groups: 21, linking 63 norms
+
+## Parallel duties
+
+Each group is one duty imposed through separate provisions or on different actors. Every norm in a
+group still applies; the group records that they must be kept consistent, which neither a
+restatement (`carried_by_norm_ids`) nor a shared rule (`implementation_refs`) expresses.
+
+1. 3 norms
+   - `AIA-NORM-A006-P4-REGISTER-SYSTEM` — `AIA-TEXT-A006-P015`
+   - `AIA-NORM-A049-P2-PROVIDER-REGISTER-NON-HIGH-RISK` — `AIA-TEXT-A049-P002`
+   - `AIA-NORM-A049-P2-REPRESENTATIVE-REGISTER-NON-HIGH-RISK` — `AIA-TEXT-A049-P002`
+2. 5 norms
+   - `AIA-NORM-A016-I-REGISTRATION` — `AIA-TEXT-A016-P010`
+   - `AIA-NORM-A022-P3-E-REGISTER` — `AIA-TEXT-A022-P008`
+   - `AIA-NORM-A026-P8-REGISTER` — `AIA-TEXT-A026-P8`
+   - `AIA-NORM-A071-P2-PROVIDER-ENTER-ANNEX-VIII-DATA` — `AIA-TEXT-A071-P002`
+   - `AIA-NORM-A071-P2-REPRESENTATIVE-ENTER-ANNEX-VIII-DATA` — `AIA-TEXT-A071-P002`
+3. 2 norms
+   - `AIA-NORM-A019-P1-RETENTION-PERIOD` — `AIA-TEXT-A019-P001`
+   - `AIA-NORM-A026-P6-KEEP-CONTROLLED-LOGS` — `AIA-TEXT-A026-P6`
+4. 4 norms
+   - `AIA-NORM-A021-P1-PROVIDE-CONFORMITY-INFORMATION` — `AIA-TEXT-A021-P001`
+   - `AIA-NORM-A022-P3-C-PROVIDE-CONFORMITY-INFORMATION` — `AIA-TEXT-A022-P006`
+   - `AIA-NORM-A023-P6-PROVIDE-CONFORMITY-INFORMATION` — `AIA-TEXT-A023-P010`
+   - `AIA-NORM-A024-P5-PROVIDE-ACTION-INFORMATION` — `AIA-TEXT-A024-P005`
+5. 2 norms
+   - `AIA-NORM-A021-P2-PROVIDE-LOG-ACCESS` — `AIA-TEXT-A021-P002`
+   - `AIA-NORM-A022-P3-C-PROVIDE-LOG-ACCESS` — `AIA-TEXT-A022-P006`
+6. 3 norms
+   - `AIA-NORM-A021-P3-CONFIDENTIALITY` — `AIA-TEXT-A021-P003`
+   - `AIA-NORM-A074-P14-ARTICLE-78-CONFIDENTIALITY` — `AIA-TEXT-A074-P020`
+   - `AIA-NORM-A077-P4-TREAT-INFORMATION-CONFIDENTIALLY` — `AIA-TEXT-A077-P006`
+7. 2 norms
+   - `AIA-NORM-A022-P2-ENABLE-REPRESENTATIVE` — `AIA-TEXT-A022-P002`
+   - `AIA-NORM-A054-P2-ENABLE-REPRESENTATIVE` — `AIA-TEXT-A054-P002`
+8. 2 norms
+   - `AIA-NORM-A022-P4-TERMINATE-MANDATE` — `AIA-TEXT-A022-P009`
+   - `AIA-NORM-A054-P5-TERMINATE-MANDATE` — `AIA-TEXT-A054-P009`
+9. 2 norms
+   - `AIA-NORM-A023-P2-WITHHOLD-NONCONFORMING-SYSTEM` — `AIA-TEXT-A023-P006`
+   - `AIA-NORM-A024-P2-WITHHOLD-NONCONFORMING-SYSTEM` — `AIA-TEXT-A024-P002`
+10. 2 norms
+   - `AIA-NORM-A023-P4-PRESERVE-COMPLIANCE` — `AIA-TEXT-A023-P008`
+   - `AIA-NORM-A024-P3-PRESERVE-COMPLIANCE` — `AIA-TEXT-A024-P003`
+11. 2 norms
+   - `AIA-NORM-A023-P7-COOPERATE` — `AIA-TEXT-A023-P011`
+   - `AIA-NORM-A024-P6-COOPERATE` — `AIA-TEXT-A024-P006`
+12. 3 norms
+   - `AIA-NORM-A028-P6-CONFIDENTIALITY` — `AIA-TEXT-A028-P006`
+   - `AIA-NORM-A045-P4-CONFIDENTIALITY` — `AIA-TEXT-A045-P011`
+   - `AIA-NORM-A075-P3-SAFEGUARD-CONFIDENTIALITY` — `AIA-TEXT-A075-P022`
+13. 2 norms
+   - `AIA-NORM-A030-P5-ADDRESS-DECISION` — `AIA-TEXT-A030-P006`
+   - `AIA-NORM-A046-P5-ADDRESS-DECISION` — `AIA-TEXT-A046-P005`
+14. 3 norms
+   - `AIA-NORM-A041-P1-EXAMINATION-PROCEDURE` — `AIA-TEXT-A041-P009`
+   - `AIA-NORM-A056-P9-EXAMINATION-PROCEDURE` — `AIA-TEXT-A056-P014`
+   - `AIA-NORM-A058-P1-EXAMINATION-PROCEDURE` — `AIA-TEXT-A058-P006`
+15. 2 norms
+   - `AIA-NORM-A075B-MAKE-COMMITMENTS-BINDING` — `AIA-TEXT-A075B-P001`
+   - `AIA-NORM-A093-P3-MAKE-COMMITMENTS-BINDING` — `AIA-TEXT-A093-P006`
+16. 2 norms
+   - `AIA-NORM-A079-P3-INFORM-CROSS-BORDER-NONCOMPLIANCE` — `AIA-TEXT-A079-P005`
+   - `AIA-NORM-A080-P3-INFORM-CROSS-BORDER-USE` — `AIA-TEXT-A080-P003`
+17. 3 norms
+   - `AIA-NORM-A079-P4-CORRECT-ALL-UNION-SYSTEMS` — `AIA-TEXT-A079-P006`
+   - `AIA-NORM-A080-P5-CORRECT-ALL-UNION-SYSTEMS` — `AIA-TEXT-A080-P005`
+   - `AIA-NORM-A082-P2-CORRECT-ALL-UNION-SYSTEMS` — `AIA-TEXT-A082-P002`
+18. 2 norms
+   - `AIA-NORM-A091-P2-INITIATE-STRUCTURED-DIALOGUE` — `AIA-TEXT-A091-P002`
+   - `AIA-NORM-A093-P2-INITIATE-STRUCTURED-DIALOGUE` — `AIA-TEXT-A093-P005`
+19. 2 norms
+   - `AIA-NORM-A091-P4-INFORMATION-REQUEST-CONTENT` — `AIA-TEXT-A091-P004`
+   - `AIA-NORM-A092-P4-ACCESS-REQUEST-CONTENT` — `AIA-TEXT-A092-P006`
+20. 2 norms
+   - `AIA-NORM-A091-P5-AUTHORISED-PERSON-SUPPLY` — `AIA-TEXT-A091-P005`
+   - `AIA-NORM-A092-P5-AUTHORISED-PERSON-PROVIDE-ACCESS` — `AIA-TEXT-A092-P007`
+21. 13 norms
+   - `AIA-NORM-A102-ACCOUNT-FOR-HIGH-RISK-REQUIREMENTS` — `AIA-TEXT-A102-P001`
+   - `AIA-NORM-A103-ACCOUNT-FOR-HIGH-RISK-REQUIREMENTS` — `AIA-TEXT-A103-P001`
+   - `AIA-NORM-A104-ACCOUNT-FOR-HIGH-RISK-REQUIREMENTS` — `AIA-TEXT-A104-P001`
+   - `AIA-NORM-A105-P5-ACCOUNT-FOR-HIGH-RISK-REQUIREMENTS` — `AIA-TEXT-A105-P002`
+   - `AIA-NORM-A106-P12-ACCOUNT-FOR-HIGH-RISK-REQUIREMENTS` — `AIA-TEXT-A106-P002`
+   - `AIA-NORM-A107-P4-ACCOUNT-FOR-HIGH-RISK-REQUIREMENTS` — `AIA-TEXT-A107-P002`
+   - `AIA-NORM-A108-ARTICLE17-ACCOUNT-FOR-HIGH-RISK-REQUIREMENTS` — `AIA-TEXT-A108-P002`
+   - `AIA-NORM-A108-ARTICLE19-ACCOUNT-FOR-HIGH-RISK-REQUIREMENTS` — `AIA-TEXT-A108-P003`
+   - `AIA-NORM-A108-ARTICLE43-ACCOUNT-FOR-HIGH-RISK-REQUIREMENTS` — `AIA-TEXT-A108-P004`
+   - `AIA-NORM-A108-ARTICLE47-ACCOUNT-FOR-HIGH-RISK-REQUIREMENTS` — `AIA-TEXT-A108-P005`
+   - `AIA-NORM-A108-ARTICLE57-ACCOUNT-FOR-HIGH-RISK-REQUIREMENTS` — `AIA-TEXT-A108-P006`
+   - `AIA-NORM-A108-ARTICLE58-ACCOUNT-FOR-HIGH-RISK-REQUIREMENTS` — `AIA-TEXT-A108-P007`
+   - `AIA-NORM-A109-P3-ACCOUNT-FOR-HIGH-RISK-REQUIREMENTS` — `AIA-TEXT-A109-P002`
 
 ## Findings
 

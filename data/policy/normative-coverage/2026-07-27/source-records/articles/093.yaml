@@ -2,20 +2,36 @@ records:
 - norm_id: AIA-NORM-A093-P1-REQUEST-GPAI-MEASURES
   source: A093-P001
   quote: Where necessary and appropriate, the Commission may request providers to
-  action: request necessary appropriate compliance mitigation or market-restriction measures from GPAI providers
+  action: request necessary appropriate compliance mitigation or market-restriction measures from GPAI
+    providers
   subject_ref: commission
   subject_category: union_institution_or_body
   kind: power
-  mandatory_content: [comply with Articles 53 and 54, mitigate a serious substantiated Union-level systemic-risk concern arising from Article 92 evaluation, restrict market availability withdraw or recall the model]
-  qualifier_spans: [A093-P002, A093-P003, A093-P004]
+  mandatory_content: []
+  qualifier_spans:
+  - A093-P002
+  - A093-P003
+  - A093-P004
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
+  conditions:
+  - the Commission considers the request necessary and appropriate
+  - operator: any_of
+    operands:
+    - the request is to take appropriate measures to comply with Articles 53 and 54
+    - operator: all_of
+      operands:
+      - the request is to implement mitigation measures
+      - an Article 92 evaluation has given rise to serious and substantiated concern about a systemic
+        risk at Union level
+    - the request is to restrict making the model available on the market, withdraw it, or recall it
 - norm_id: AIA-NORM-A093-P2-INITIATE-STRUCTURED-DIALOGUE
   source: A093-P005
-  quote: Before a measure is requested, the AI Office may initiate a structured dialogue with the provider of the general-purpose AI model.
+  quote: Before a measure is requested, the AI Office may initiate a structured dialogue with the provider
+    of the general-purpose AI model.
   action: initiate structured dialogue with the GPAI provider before requesting a measure
   subject_ref: ai_office
   subject_category: union_institution_or_body
@@ -27,13 +43,20 @@ records:
   verification_mode: not_reported
 - norm_id: AIA-NORM-A093-P3-MAKE-COMMITMENTS-BINDING
   source: A093-P006
-  quote: the Commission may, by decision, make those commitments binding and declare that there are no further grounds for action.
-  action: make offered systemic-risk mitigation commitments binding and declare no further grounds for action
+  quote: If, during the structured dialogue referred to in paragraph 2, the provider of the general-purpose
+    AI model with systemic risk offers commitments to implement mitigation measures to address a systemic
+    risk at Union level, the Commission may, by decision, make those commitments binding and declare that
+    there are no further grounds for action.
+  action: make offered systemic-risk mitigation commitments binding and declare no further grounds for
+    action
   subject_ref: commission
   subject_category: union_institution_or_body
-  kind: legal_consequence
+  kind: power
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
+  conditions:
+  - during the paragraph 2 structured dialogue, a provider of a general-purpose AI model with systemic
+    risk offers commitments to implement mitigation measures addressing a systemic risk at Union level

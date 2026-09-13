@@ -72,8 +72,9 @@ records:
 - norm_id: AIA-NORM-A028-P5-NO-CONFORMITY-ACTIVITIES
   source: A028-P005
   quote: Notifying authorities shall offer or provide neither any activities that conformity assessment
-    bodies perform
-  action: refrain from offering or providing conformity-assessment-body activities
+    bodies perform, nor any consultancy services on a commercial or competitive basis.
+  action: refrain from offering or providing conformity-assessment-body activities or consultancy services
+    on a commercial or competitive basis
   subject_ref: notifying_authority
   subject_category: public_authority
   kind: prohibition
@@ -82,18 +83,10 @@ records:
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
-- norm_id: AIA-NORM-A028-P5-NO-CONSULTANCY
-  source: A028-P005
-  quote: nor any consultancy services on a commercial or competitive basis
-  action: refrain from commercial or competitive consultancy services
-  subject_ref: notifying_authority
-  subject_category: public_authority
-  kind: prohibition
-  product_scope: outside_supported_actor
-  product_scope_reason: The present product does not report compliance for this addressee.
-  implementation_mode: none_required
-  implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_reported
+  mandatory_content:
+  - do not offer or provide activities performed by conformity-assessment bodies
+  - do not offer or provide consultancy services on a commercial or competitive basis
+  verified_by: vidibro
 - norm_id: AIA-NORM-A028-P6-CONFIDENTIALITY
   source: A028-P006
   quote: Notifying authorities shall safeguard the confidentiality of the information that they obtain,

@@ -948,10 +948,11 @@ norms:
   - subject_ref: union_or_member_state
     category: other
   action: maintain or introduce laws, regulations, or administrative provisions that more favourably protect
-    workers regarding employers' use of AI systems
+    workers regarding employers' use of AI systems, or encourage or allow more favourable collective agreements
   norm_text: This Regulation does not preclude the Union or Member States from maintaining or introducing
     laws, regulations or administrative provisions which are more favourable to workers in terms of protecting
-    their rights in respect of the use of AI systems by employers
+    their rights in respect of the use of AI systems by employers, or from encouraging or allowing the
+    application of collective agreements which are more favourable to workers.
   detection_channels:
   - semantic_legal_effect
   primary_spans:
@@ -960,7 +961,9 @@ norms:
   effective_date_spans: []
   conditions: []
   exceptions: []
-  mandatory_content: []
+  mandatory_content:
+  - maintain or introduce more favourable worker-protection provisions
+  - encourage or allow more favourable collective agreements
   dependencies: []
   product_scope: no_product_action
   product_scope_reason: This permission concerns legislative and administrative powers rather than a product-facing
@@ -970,43 +973,9 @@ norms:
   implementation_reason: The product does not implement Union or Member State legislative choices.
   verification_mode: not_reported
   review:
-    status: proposed
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
-    review_run_id: normative-coverage-2026-08-28
-    presentation_mode: exact-source-slice
-    display_chunks: 1
-    fully_displayed: true
-    elapsed_seconds: null
-- norm_id: AIA-NORM-A002-P11-MORE-FAVOURABLE-COLLECTIVE-AGREEMENTS
-  act_version_date: '2026-07-27'
-  kind: permission
-  subjects:
-  - subject_ref: union_or_member_state
-    category: other
-  action: encourage or allow collective agreements that are more favourable to workers
-  norm_text: encouraging or allowing the application of collective agreements which are more favourable
-    to workers
-  detection_channels:
-  - semantic_legal_effect
-  primary_spans:
-  - AIA-TEXT-A002-P020
-  qualifier_spans: []
-  effective_date_spans: []
-  conditions: []
-  exceptions: []
-  mandatory_content: []
-  dependencies: []
-  product_scope: no_product_action
-  product_scope_reason: This permission concerns labour-policy powers rather than a product-facing action.
-  implementation_mode: none_required
-  implementation_refs: []
-  implementation_reason: The product does not implement Union or Member State collective-agreement policy.
-  verification_mode: not_reported
-  review:
-    status: proposed
-    extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
     display_chunks: 1

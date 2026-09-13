@@ -218,7 +218,9 @@ norms:
   action: actively cooperate with and provide necessary assistance to the AI Office including for territorial
     inspections and enforcement
   norm_text: The authorities involved in the application of this Regulation shall cooperate actively with
-    the AI Office and provide the AI Office the necessary assistance for the exercise of its powers
+    the AI Office and provide the AI Office the necessary assistance for the exercise of its powers, including,
+    where necessary, in connection with inspections or other enforcement measures carried out in the territory
+    of a Member State.
   detection_channels:
   - semantic_legal_effect
   - shall_token
@@ -252,8 +254,9 @@ norms:
   - subject_ref: authorities_involved_in_application
     category: public_authority
   action: exercise the enacted powers only as relevant and necessary under applicable national procedures
-  norm_text: those authorities shall enjoy the powers provided for pursuant to this Regulation and Regulation
-    (EU) 2019/1020
+  norm_text: To that end, those authorities shall enjoy the powers provided for pursuant to this Regulation
+    and Regulation (EU) 2019/1020, and where relevant and limited to what is necessary to fulfil their
+    tasks under this paragraph, in accordance with the applicable national procedures.
   detection_channels:
   - semantic_legal_effect
   - shall_token
@@ -261,7 +264,8 @@ norms:
   - AIA-TEXT-A075-P010
   qualifier_spans: []
   effective_date_spans: []
-  conditions: []
+  conditions:
+  - the authorities assist the AI Office under Article 75(1b)
   exceptions: []
   mandatory_content: []
   dependencies: []
@@ -287,7 +291,9 @@ norms:
   - subject_ref: market_surveillance_authority
     category: public_authority
   action: assist AI Office territorial action involving access to a public authority's data or AI system
-  norm_text: the AI Office shall be assisted by the relevant market surveillance authority
+  norm_text: "When taking investigatory or enforcement action in the territory of a Member State that\
+    \ involves access to a public authority\u2019s data or AI system, the AI Office shall be assisted\
+    \ by the relevant market surveillance authority."
   detection_channels:
   - semantic_legal_effect
   - shall_token
@@ -295,7 +301,9 @@ norms:
   - AIA-TEXT-A075-P011
   qualifier_spans: []
   effective_date_spans: []
-  conditions: []
+  conditions:
+  - the AI Office takes investigatory or enforcement action in a Member State involving access to a public
+    authority's data or AI system
   exceptions: []
   mandatory_content: []
   dependencies: []
@@ -322,8 +330,10 @@ norms:
     category: union_institution_or_body
   action: notify the competent market authority without undue delay before a prohibition restriction withdrawal
     or recall decision
-  norm_text: the AI Office shall, without undue delay, notify the market surveillance authority competent
-    for that market of its intention to take such a decision
+  norm_text: Before taking a decision that would have the effect of prohibiting or restricting the AI
+    system being made available or put into service on a national market, or a decision to withdraw or
+    recall the AI system from such market, the AI Office shall, without undue delay, notify the market
+    surveillance authority competent for that market of its intention to take such a decision.
   detection_channels:
   - semantic_legal_effect
   - shall_token
@@ -331,7 +341,8 @@ norms:
   - AIA-TEXT-A075-P012
   qualifier_spans: []
   effective_date_spans: []
-  conditions: []
+  conditions:
+  - before the AI Office takes a national-market prohibition, restriction, withdrawal or recall decision
   exceptions: []
   mandatory_content: []
   dependencies: []
@@ -392,7 +403,9 @@ norms:
   - subject_ref: ai_office
     category: union_institution_or_body
   action: take responsibility for third-party conformity assessments and tests of paragraph 1 systems
-  norm_text: The AI Office shall be responsible for conformity assessments and tests
+  norm_text: The AI Office shall be responsible for conformity assessments and tests of AI systems referred
+    to in paragraph 1 of this Article that are classified as high-risk and subject to a third-party conformity
+    assessment pursuant to Article 43 before such AI systems are placed on the market or put into service.
   detection_channels:
   - semantic_legal_effect
   - shall_token
@@ -400,7 +413,9 @@ norms:
   - AIA-TEXT-A075-P013
   qualifier_spans: []
   effective_date_spans: []
-  conditions: []
+  conditions:
+  - an Article 75(1) AI system is classified as high-risk and subject to third-party conformity assessment
+    under Article 43 before market placement or putting into service
   exceptions: []
   mandatory_content: []
   dependencies: []
@@ -426,15 +441,19 @@ norms:
   - subject_ref: ai_office
     category: union_institution_or_body
   action: verify regulatory conformity and market eligibility
-  norm_text: Those tests and assessments shall verify that the systems comply
+  norm_text: Those tests and assessments shall verify that the systems comply with the relevant requirements
+    of this Regulation and may be placed on the market or put into service in the Union in accordance
+    with this Regulation.
   detection_channels:
   - semantic_legal_effect
   - shall_token
+  - other_modal
   primary_spans:
   - AIA-TEXT-A075-P013
   qualifier_spans: []
   effective_date_spans: []
-  conditions: []
+  conditions:
+  - the AI Office performs paragraph 1e conformity assessments or tests
   exceptions: []
   mandatory_content: []
   dependencies: []
@@ -502,7 +521,8 @@ norms:
   - AIA-TEXT-A075-P013
   qualifier_spans: []
   effective_date_spans: []
-  conditions: []
+  conditions:
+  - the Commission entrusts paragraph 1e tests or assessments to the notified body
   exceptions: []
   mandatory_content: []
   dependencies: []
@@ -528,7 +548,8 @@ norms:
   - subject_ref: commission
     category: union_institution_or_body
   action: withdraw an inadequately performed delegation immediately
-  norm_text: the Commission may withdraw the delegation with immediate effect
+  norm_text: If a notified body to which the Commission has delegated tasks under this paragraph does
+    not perform those tasks adequately, the Commission may withdraw the delegation with immediate effect.
   detection_channels:
   - semantic_legal_effect
   - other_modal
@@ -536,7 +557,8 @@ norms:
   - AIA-TEXT-A075-P013
   qualifier_spans: []
   effective_date_spans: []
-  conditions: []
+  conditions:
+  - the notified body does not adequately perform the paragraph 1e tasks delegated to it
   exceptions: []
   mandatory_content: []
   dependencies: []
@@ -562,7 +584,8 @@ norms:
   - subject_ref: provider
     category: supported_operator
   action: bear testing and assessment fees
-  norm_text: The fees for testing and assessment activities shall be levied on the provider
+  norm_text: The fees for testing and assessment activities shall be levied on the provider of a high-risk
+    AI system who has applied for a third-party conformity assessment to the Commission.
   detection_channels:
   - semantic_legal_effect
   - shall_token
@@ -583,9 +606,9 @@ norms:
   implementation_reason: ''
   verification_mode: reported_not_judged
   review:
-    status: approved
+    status: proposed
     extracted_by: semantic-legal-effect-pass
-    verified_by: vidibro
+    verified_by: ''
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
     display_chunks: 1
@@ -598,7 +621,8 @@ norms:
   - subject_ref: provider
     category: supported_operator
   action: pay entrusted-service costs directly to the notified body
-  norm_text: The provider shall pay the costs related to the services
+  norm_text: The provider shall pay the costs related to the services entrusted by the Commission to the
+    notified bodies in accordance with this Article directly to the notified body.
   detection_channels:
   - semantic_legal_effect
   - shall_token
@@ -619,9 +643,9 @@ norms:
   implementation_reason: ''
   verification_mode: reported_not_judged
   review:
-    status: approved
+    status: proposed
     extracted_by: semantic-legal-effect-pass
-    verified_by: vidibro
+    verified_by: ''
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
     display_chunks: 1
@@ -633,8 +657,10 @@ norms:
   subjects:
   - subject_ref: market_surveillance_authority
     category: public_authority
-  action: cooperate with the AI Office to carry out compliance evaluations
-  norm_text: they shall cooperate with the AI Office to carry out compliance evaluations
+  action: cooperate with the AI Office to carry out compliance evaluations and inform the Board and other
+    market surveillance authorities accordingly
+  norm_text: they shall cooperate with the AI Office to carry out compliance evaluations, and shall inform
+    the Board and other market surveillance authorities accordingly.
   detection_channels:
   - semantic_legal_effect
   - shall_token
@@ -646,43 +672,9 @@ norms:
   - the authority has sufficient reason to consider that general-purpose AI systems usable directly by
     deployers for at least one high-risk purpose are non-compliant
   exceptions: []
-  mandatory_content: []
-  dependencies: []
-  product_scope: outside_supported_actor
-  product_scope_reason: The present product does not report compliance for this addressee.
-  implementation_mode: none_required
-  implementation_refs: []
-  implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_reported
-  review:
-    status: proposed
-    extracted_by: semantic-legal-effect-pass
-    verified_by: ''
-    review_run_id: normative-coverage-2026-08-28
-    presentation_mode: exact-source-slice
-    display_chunks: 1
-    fully_displayed: true
-    elapsed_seconds: null
-- norm_id: AIA-NORM-A075-P2-INFORM-BOARD-AND-AUTHORITIES
-  act_version_date: '2026-07-27'
-  kind: obligation
-  subjects:
-  - subject_ref: market_surveillance_authority
-    category: public_authority
-  action: inform the Board and the other market surveillance authorities accordingly
-  norm_text: and shall inform the Board and other market surveillance authorities accordingly
-  detection_channels:
-  - semantic_legal_effect
-  - shall_token
-  primary_spans:
-  - AIA-TEXT-A075-P015
-  qualifier_spans: []
-  effective_date_spans: []
-  conditions:
-  - the authority has sufficient reason to consider that general-purpose AI systems usable directly by
-    deployers for at least one high-risk purpose are non-compliant
-  exceptions: []
-  mandatory_content: []
+  mandatory_content:
+  - cooperate with the AI Office on compliance evaluations
+  - inform the Board and other market surveillance authorities accordingly
   dependencies: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -708,10 +700,12 @@ norms:
   action: request, through the relevant Article 70(2) single point of contact, a duly reasoned AI Office
     assessment of the matter so that the necessary supervisory and enforcement measures ensure prompt
     compliance
-  norm_text: it may request, through the relevant single point of contact designated in accordance with
-    Article 70(2), the AI Office to assess the matter in order to take the necessary supervisory and enforcement
-    measures to ensure prompt compliance with this Regulation. Such a request shall be duly reasoned and
-    shall include at least
+  norm_text: Where a market surveillance authority has well-founded and sufficient reasons to suspect
+    that a provider or a deployer of an AI system referred to in paragraph 1 of this Article has infringed
+    this Regulation, it may request, through the relevant single point of contact designated in accordance
+    with Article 70(2), the AI Office to assess the matter in order to take the necessary supervisory
+    and enforcement measures to ensure prompt compliance with this Regulation. Such a request shall be
+    duly reasoned and shall include at least
   detection_channels:
   - semantic_legal_effect
   - shall_token
@@ -724,7 +718,9 @@ norms:
   - AIA-TEXT-A075-P018
   - AIA-TEXT-A075-P019
   effective_date_spans: []
-  conditions: []
+  conditions:
+  - the market-surveillance authority has well-founded and sufficient reasons to suspect that a provider
+    or deployer of an Article 75(1) system infringed the Regulation
   exceptions: []
   mandatory_content:
   - provider or deployer name
@@ -796,7 +792,8 @@ norms:
   - AIA-TEXT-A075-P020
   qualifier_spans: []
   effective_date_spans: []
-  conditions: []
+  conditions:
+  - the market-surveillance authority has made an Article 75(2a) assessment request
   exceptions: []
   mandatory_content: []
   dependencies: []
@@ -902,8 +899,10 @@ norms:
     category: public_authority
   action: submit a reasoned request to enforce access after appropriate efforts fail to obtain GPAI-model
     information needed to conclude an investigation
-  norm_text: it may submit a reasoned request to the AI Office, by which access to that information shall
-    be enforced
+  norm_text: Where a market surveillance authority is unable to conclude its investigation of the high-risk
+    AI system because of its inability to access certain information related to the general-purpose AI
+    model despite having made all appropriate efforts to obtain that information, it may submit a reasoned
+    request to the AI Office, by which access to that information shall be enforced.
   detection_channels:
   - semantic_legal_effect
   - shall_token
@@ -912,7 +911,9 @@ norms:
   - AIA-TEXT-A075-P022
   qualifier_spans: []
   effective_date_spans: []
-  conditions: []
+  conditions:
+  - the market-surveillance authority cannot conclude its high-risk-system investigation because it cannot
+    access general-purpose-model information despite all appropriate efforts to obtain it
   exceptions: []
   mandatory_content: []
   dependencies: []
@@ -938,8 +939,9 @@ norms:
   - subject_ref: ai_office
     category: union_institution_or_body
   action: supply relevant requested compliance information without delay and within 30 days
-  norm_text: the AI Office shall supply to the applicant authority without delay, and in any event within
-    30 days, any information that the AI Office considers to be relevant
+  norm_text: In that case, the AI Office shall supply to the applicant authority without delay, and in
+    any event within 30 days, any information that the AI Office considers to be relevant in order to
+    establish whether a high-risk AI system is non-compliant.
   detection_channels:
   - semantic_legal_effect
   - shall_token
@@ -947,7 +949,9 @@ norms:
   - AIA-TEXT-A075-P022
   qualifier_spans: []
   effective_date_spans: []
-  conditions: []
+  conditions:
+  - the market-surveillance authority submits the reasoned information-access request described in Article
+    75(3)
   exceptions: []
   mandatory_content: []
   dependencies: []
@@ -1001,6 +1005,9 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  parallel_norm_ids:
+  - AIA-NORM-A028-P6-CONFIDENTIALITY
+  - AIA-NORM-A045-P4-CONFIDENTIALITY
 - norm_id: AIA-NORM-A075-P3-APPLY-MUTUAL-ASSISTANCE-PROCEDURE
   act_version_date: '2026-07-27'
   kind: applicability

@@ -268,6 +268,11 @@ occurs inside one of the norm's primary spans. The quotation does not replace qu
 exception, dependency, or effective-date spans; it prevents a paraphrased `action` from being the
 only visible statement of what exact words the norm claims.
 
+Where one legal effect applies only if independently modelled norms are satisfied, the parent records
+those IDs in `condition_norm_ids`; generated child norms carry the reciprocal
+`condition_of_norm_ids`. This relationship is authored only for an enacted cumulative-condition
+structure. Shared articles, qualifiers, or nearby list items are not enough to infer it.
+
 Every proposed norm also records one or more candidate-detection channels. These are extraction
 provenance, not legal classifications:
 

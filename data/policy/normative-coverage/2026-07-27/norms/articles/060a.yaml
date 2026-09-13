@@ -153,11 +153,15 @@ norms:
   - subject_ref: member_state
     category: member_state
   action: ensure that the relevant national competent, relevant and infrastructure or product authorities
-    cooperate closely with each other in good faith
+    cooperate closely with each other in good faith and remove practical obstacles necessary to implement
+    real-world testing frameworks and test Section B AI-enabled products
   norm_text: Member States that have adopted real-world testing frameworks shall ensure that the relevant
     national competent authorities, relevant authorities and public authorities responsible for the management
     and operation of infrastructure and products covered by Union harmonisation legislation listed in
-    Section B of Annex I cooperate closely with each other in good faith
+    Section B of Annex I cooperate closely with each other in good faith and remove any practical obstacles,
+    including on procedural rules providing access to physical public infrastructure, where this is necessary,
+    to successfully implement those real-world testing frameworks and test AI-enabled products covered
+    by Union harmonisation legislation listed in Section B of Annex I.
   detection_channels:
   - semantic_legal_effect
   - shall_token
@@ -168,7 +172,10 @@ norms:
   conditions:
   - the Member State has adopted a real-world testing framework
   exceptions: []
-  mandatory_content: []
+  mandatory_content:
+  - ensure close and good-faith cooperation between all specified authorities
+  - where necessary, ensure removal of practical obstacles, including procedural barriers to accessing
+    physical public infrastructure
   dependencies: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -177,49 +184,9 @@ norms:
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
   review:
-    status: proposed
+    status: approved
     extracted_by: semantic-legal-effect-pass
-    verified_by: ''
-    review_run_id: normative-coverage-2026-08-28
-    presentation_mode: exact-source-slice
-    display_chunks: 1
-    fully_displayed: true
-    elapsed_seconds: null
-- norm_id: AIA-NORM-A060A-P4-REMOVE-PRACTICAL-OBSTACLES
-  act_version_date: '2026-07-27'
-  kind: obligation
-  subjects:
-  - subject_ref: member_state
-    category: member_state
-  action: ensure that those authorities remove any practical obstacles, including on procedural rules
-    providing access to physical public infrastructure, to implementing the frameworks and testing Section
-    B AI-enabled products
-  norm_text: remove any practical obstacles, including on procedural rules providing access to physical
-    public infrastructure, where this is necessary, to successfully implement those real-world testing
-    frameworks and test AI-enabled products covered by Union harmonisation legislation listed in Section
-    B of Annex I.
-  detection_channels:
-  - semantic_legal_effect
-  primary_spans:
-  - AIA-TEXT-A060A-P004
-  qualifier_spans: []
-  effective_date_spans: []
-  conditions:
-  - the Member State has adopted a real-world testing framework
-  - removal is necessary to successfully implement the framework and test Section B AI-enabled products
-  exceptions: []
-  mandatory_content: []
-  dependencies: []
-  product_scope: outside_supported_actor
-  product_scope_reason: The present product does not report compliance for this addressee.
-  implementation_mode: none_required
-  implementation_refs: []
-  implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_reported
-  review:
-    status: proposed
-    extracted_by: semantic-legal-effect-pass
-    verified_by: ''
+    verified_by: vidibro
     review_run_id: normative-coverage-2026-08-28
     presentation_mode: exact-source-slice
     display_chunks: 1
