@@ -31,7 +31,7 @@ import textwrap
 
 from aiact.schemas.enums import ActorRole, Verdict
 from aiact.schemas.policy import PolicyRule, PolicyRuleset
-from aiact.schemas.report import ComplianceReport
+from aiact.schemas.report import ComplianceReport, Finding
 
 _MARK = {
     Verdict.PASS: "ok  ",
@@ -106,6 +106,22 @@ def _outstanding_block(rule: PolicyRule) -> list[str]:
     return lines + _timing(rule)
 
 
+def _criteria_block(finding: Finding) -> list[str]:
+    """Every criterion of an aggregate rule, named by its norm, with its own verdict.
+
+    Each one is listed, passing or not, so a reader can see the rule was checked in full; a reason
+    is printed for each that did not pass, since that is what the reader must act on."""
+    if not finding.criteria:
+        return []
+    lines = ["       criteria:"]
+    for criterion in finding.criteria:
+        note = "" if criterion.mandatory else "   (not judged; cannot fail the rule)"
+        lines.append(f"         {_MARK[criterion.verdict]} {criterion.norm_id}{note}")
+        if criterion.mandatory and criterion.verdict is not Verdict.PASS:
+            lines += _wrapped("", criterion.reasoning, indent="              ")
+    return lines
+
+
 def render_report(report: ComplianceReport, spec: PolicyRuleset) -> str:
     """The whole report as text, grouped by the role that owes each obligation.
 
@@ -165,6 +181,7 @@ def render_report(report: ComplianceReport, spec: PolicyRuleset) -> str:
                 f"   [{finding.use_case_id}, {finding.confidence} confidence]"
             )
             out += _wrapped("", finding.reasoning)
+            out += _criteria_block(finding)
             if rule is not None:
                 out += _condition(rule) + _timing(rule)
         if outstanding:

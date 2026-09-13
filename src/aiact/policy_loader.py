@@ -26,7 +26,9 @@ import yaml
 
 from aiact.config import get_settings
 from aiact.guidance import load_snippet
-from aiact.schemas.policy import PolicyRuleset
+from aiact.schemas.norm import Norm
+from aiact.schemas.policy import PolicyRuleset, RuleCriterion
+from aiact.yaml_loader import load_yaml_mapping
 
 _FRONT_MATTER = re.compile(r"\A---\n(.*?)\n---\n+", re.S)
 # A consolidation inserts paragraphs without renumbering the ones after them, so a paragraph label
@@ -307,11 +309,96 @@ def source_body(path: Path, expected_version: str | None = None) -> str:
     return body
 
 
+def criterion_from_norm(norm: Norm) -> RuleCriterion:
+    """The criterion a rule judges for one canonical norm — every field copied, none authored."""
+    return RuleCriterion(
+        norm_id=norm.norm_id,
+        kind=norm.kind,
+        subjects=[subject.subject_ref for subject in norm.subjects],
+        action=norm.action,
+        norm_text=norm.norm_text,
+        conditions=list(norm.conditions),
+        exceptions=list(norm.exceptions),
+        mandatory_content=list(norm.mandatory_content),
+        source_spans=norm.all_spans,
+        verification_mode=norm.verification_mode,
+    )
+
+
+def load_norms_by_id(norms_root: Path, norm_ids: set[str], version: str) -> dict[str, Norm]:
+    """Read only the generated norm shards that hold `norm_ids`.
+
+    The whole inventory takes over a second to parse, and a spec is loaded far more often than a
+    criterion changes. A shard that does not contain an id as text cannot define it, so the text
+    test only skips work; every norm returned is still schema-validated."""
+    if not norm_ids:
+        return {}
+    if norms_root.is_file():
+        shards = [norms_root]
+    elif norms_root.is_dir():
+        shards = sorted(norms_root.rglob("*.yaml"))
+    else:
+        raise FileNotFoundError(f"No norm inventory at {norms_root} for rule criteria.")
+    found: dict[str, Norm] = {}
+    for shard in shards:
+        text = shard.read_text(encoding="utf-8")
+        if not any(f"norm_id: {norm_id}\n" in text for norm_id in norm_ids):
+            continue
+        for payload in load_yaml_mapping(shard, description="norm inventory shard").get(
+            "norms", []
+        ):
+            if payload.get("norm_id") not in norm_ids:
+                continue
+            norm = Norm.model_validate(payload)
+            if norm.norm_id in found:
+                raise ValueError(f"Norm {norm.norm_id} is defined twice under {norms_root}.")
+            if norm.act_version_date.isoformat() != version:
+                raise ValueError(
+                    f"Norm {norm.norm_id} uses Act version {norm.act_version_date}, but the spec "
+                    f"is pinned to {version}."
+                )
+            found[norm.norm_id] = norm
+    return found
+
+
+def _resolve_criteria(rules: list[dict[str, Any]], norms_root: Path, version: str) -> None:
+    """Replace each authored `{norm_id}` with the criterion its canonical norm defines."""
+    wanted: set[str] = set()
+    for rule in rules:
+        for entry in rule.get("criteria", []):
+            if not isinstance(entry, dict) or set(entry) != {"norm_id"}:
+                raise ValueError(
+                    f"Rule {rule.get('rule_id')!r} criteria entry {entry!r} must name only "
+                    f"`norm_id`. Its meaning is resolved from the norm inventory — a hand-written "
+                    f"action or condition would be a second source of truth."
+                )
+            wanted.add(str(entry["norm_id"]))
+    norms = load_norms_by_id(norms_root, wanted, version)
+    for rule in rules:
+        resolved = []
+        for entry in rule.get("criteria", []):
+            norm = norms.get(entry["norm_id"])
+            if norm is None:
+                raise ValueError(
+                    f"Rule {rule.get('rule_id')!r} names criterion {entry['norm_id']}, which is "
+                    f"not in the norm inventory at {norms_root}."
+                )
+            if rule.get("rule_id") not in norm.implementation_refs:
+                raise ValueError(
+                    f"Rule {rule.get('rule_id')!r} names criterion {norm.norm_id}, whose "
+                    f"implementation_refs {norm.implementation_refs} do not point back to it."
+                )
+            resolved.append(criterion_from_norm(norm).model_dump())
+        if resolved:
+            rule["criteria"] = resolved
+
+
 def load_policy_spec(
     path: str | Path | None = None,
     articles_root: str | Path | None = None,
     guidance_root: str | Path | None = None,
     annexes_root: str | Path | None = None,
+    norms_root: str | Path | None = None,
 ) -> PolicyRuleset:
     """Read the spec, resolve every rule's requirement from the article store, and validate.
 
@@ -434,6 +521,14 @@ def load_policy_spec(
         if chunks:
             rule["guidance_context"] = "\n\n".join(chunks)
             rule["guidance_sources"] = sources
+
+    # Pass 4 — materialise each criterion from the norm it names, on the same terms as the law.
+    norm_path = (
+        Path(norms_root)
+        if norms_root is not None
+        else Path(settings.policy_normative_coverage_path) / version_str / "norms"
+    )
+    _resolve_criteria(raw.get("rules", []), norm_path, version_str)
 
     spec = PolicyRuleset.model_validate(raw)
 

@@ -207,6 +207,8 @@ class NormBuilderPaths:
     norm_output: Path
     report_output: Path
     generated_by: str
+    adjudications: Path | None = None
+    policy_spec: Path | None = None
 
 
 def load_builder_inputs(
@@ -772,6 +774,22 @@ def run_builder(paths: NormBuilderPaths, *, check: bool) -> None:
         annexes_root=paths.annexes_root,
         guidance_root=paths.guidance_root,
     )
+    if check and paths.adjudications is not None:
+        from aiact.norm_validity import enforce_validity_adjudications
+
+        enforce_validity_adjudications(bundle, paths.adjudications)
+        if paths.policy_spec is not None:
+            from aiact.norm_traceability import enforce_norm_rule_traceability
+
+            enforce_norm_rule_traceability(
+                bundle,
+                paths.adjudications,
+                spec_path=paths.policy_spec,
+                articles_root=paths.articles_root,
+                annexes_root=paths.annexes_root,
+                guidance_root=paths.guidance_root,
+                norms_root=paths.norm_output,
+            )
     report = render_coverage_markdown(measure_normative_coverage(bundle))
     if check:
         if not paths.report_output.is_file() or (

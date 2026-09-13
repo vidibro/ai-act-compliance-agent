@@ -690,6 +690,24 @@ rules:
       annex_iii: 2027-12-02
       annex_i: 2028-08-02
     status: active
+    # Each Article 15 provider norm is judged and reported on its own; the rule passes only when
+    # every mandatory one does. Meaning is resolved from the norm inventory at load, and
+    # `build_normative_coverage.py --check` fails if this list and the norms' implementation_refs
+    # disagree in either direction.
+    criteria:
+      - norm_id: AIA-NORM-A015-P1-PERFORMANCE-AND-LIFECYCLE-CONSISTENCY
+      - norm_id: AIA-NORM-A015-P3-DECLARE-ACCURACY-AND-METRICS
+      - norm_id: AIA-NORM-A015-P4-RESILIENCE
+      - norm_id: AIA-NORM-A015-P4-TECHNICAL-AND-ORGANISATIONAL-MEASURES
+      - norm_id: AIA-NORM-A015-P4-REDUNDANCY
+      - norm_id: AIA-NORM-A015-P4-FEEDBACK-LOOP-RISK-AND-MITIGATION
+      - norm_id: AIA-NORM-A015-P5-UNAUTHORISED-ALTERATION
+      - norm_id: AIA-NORM-A015-P5-APPROPRIATE-SOLUTIONS
+      - norm_id: AIA-NORM-A015-P5-DATA-POISONING
+      - norm_id: AIA-NORM-A015-P5-MODEL-POISONING
+      - norm_id: AIA-NORM-A015-P5-ADVERSARIAL-ATTACKS
+      - norm_id: AIA-NORM-A015-P5-CONFIDENTIALITY-ATTACKS
+      - norm_id: AIA-NORM-A015-P5-MODEL-FLAWS
 
   # ------------------------------------------------------------------------------------------
   # Art. 16+ — provider obligations. Mostly PROCESS (NOT document-verifiable -> confirm

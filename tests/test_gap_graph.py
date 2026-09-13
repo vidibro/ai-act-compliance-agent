@@ -96,7 +96,10 @@ def a_classification(*use_cases: UseCaseClassification) -> ClassificationResult:
 
 
 class StubJudge:
-    """Returns a fixed verdict, and records what it was asked."""
+    """Returns a fixed verdict, and records what it was asked.
+
+    An aggregate rule gets the same verdict on every mandatory criterion, as LLMJudge would return
+    it; the graph recomputes the rule verdict from those."""
 
     def __init__(self, verdict: Verdict = Verdict.PASS) -> None:
         self.verdict = verdict
@@ -104,6 +107,7 @@ class StubJudge:
 
     def judge(self, rule, document):  # noqa: ANN001 - mirrors LLMJudge.judge
         from aiact.gap.judge import Judgement
+        from aiact.schemas.report import CriterionFinding
 
         self.asked.append(rule.rule_id)
         return Judgement(
@@ -112,6 +116,17 @@ class StubJudge:
             evidence_quote="A panel reviews every recommendation.",
             evidence_chunk_id="c000",
             confidence="high",
+            criteria=tuple(
+                CriterionFinding(
+                    norm_id=c.norm_id,
+                    mandatory=True,
+                    verdict=self.verdict,
+                    reasoning="stubbed",
+                    confidence="high",
+                )
+                for c in rule.criteria
+                if c.mandatory
+            ),
         )
 
 

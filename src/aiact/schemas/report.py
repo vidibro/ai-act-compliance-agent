@@ -2,8 +2,8 @@
 
 Cross-references are validated so a finding can never point at nothing:
   - use_case_id must match a use case in the report's ClassificationResult (always checked);
-  - rule_id must exist in the loaded PolicyRuleset (checked when the spec is supplied via the
-    validation context, e.g. ComplianceReport.model_validate(data, context={"policy_spec": spec})).
+  - rule_id must exist in the loaded PolicyRuleset when a persisted report is reloaded through
+    aiact.report_loader.load_compliance_report, which supplies the spec as validation context.
 """
 
 from __future__ import annotations
@@ -145,6 +145,56 @@ def _release_note(risk: SystemicRisk | None, release: OpenSourceRelease | None) 
     )
 
 
+_FAILING = (Verdict.GAP, Verdict.INADEQUATE)
+
+
+class CriterionFinding(BaseModel):
+    """The verdict on one criterion of an aggregate rule, named by its norm."""
+
+    norm_id: str
+    mandatory: bool
+    verdict: Verdict
+    reasoning: str
+    evidence_quote: str | None = None
+    evidence_chunk_id: str | None = None
+    confidence: Confidence
+
+    @model_validator(mode="after")
+    def _accusation_needs_reasoning(self) -> CriterionFinding:
+        if self.verdict in _FAILING and not self.reasoning.strip():
+            raise ValueError(
+                f"Criterion {self.norm_id}: verdict={self.verdict} requires non-empty reasoning."
+            )
+        if len(self.evidence_quote or "") > EVIDENCE_QUOTE_MAX:
+            raise ValueError(f"Criterion {self.norm_id}: evidence_quote exceeds the quote cap.")
+        return self
+
+
+def aggregate_criteria(criteria: list[CriterionFinding]) -> Verdict:
+    """The rule verdict its criteria allow. Only mandatory criteria count, and none is outvoted.
+
+      any gap or inadequate  -> failing: GAP when no mandatory criterion was addressed at all
+                                (none passed or was thin), otherwise INADEQUATE — the rule's
+                                content exists and falls short
+      else any needs_review  -> NEEDS_REVIEW
+      all pass               -> PASS
+      all not_applicable     -> NOT_APPLICABLE (the rule was not judged)
+      pass mixed with n/a    -> NEEDS_REVIEW: a mandatory criterion went unjudged"""
+    verdicts = [criterion.verdict for criterion in criteria if criterion.mandatory]
+    if not verdicts:
+        raise ValueError("an aggregate rule needs at least one mandatory criterion")
+    if any(verdict in _FAILING for verdict in verdicts):
+        addressed = any(verdict in (Verdict.PASS, Verdict.INADEQUATE) for verdict in verdicts)
+        return Verdict.INADEQUATE if addressed else Verdict.GAP
+    if Verdict.NEEDS_REVIEW in verdicts:
+        return Verdict.NEEDS_REVIEW
+    if all(verdict is Verdict.PASS for verdict in verdicts):
+        return Verdict.PASS
+    if all(verdict is Verdict.NOT_APPLICABLE for verdict in verdicts):
+        return Verdict.NOT_APPLICABLE
+    return Verdict.NEEDS_REVIEW
+
+
 class Finding(BaseModel):
     """The verdict on one PolicyRule for one use case.
 
@@ -180,10 +230,30 @@ class Finding(BaseModel):
     which is which cannot weigh it. Empty for almost every finding, which is what makes the
     non-empty ones worth noticing."""
 
+    criteria: list[CriterionFinding] = []
+    """One verdict per criterion of an aggregate rule, in the rule's order. Empty for a rule
+    judged as one obligation. When present, `verdict` must be what `aggregate_criteria` computes
+    from them, so a report cannot hold a passing rule over a failing criterion."""
+
     @property
     def rests_on_guidance(self) -> bool:
         """True when non-binding interpretation was in context for this verdict."""
         return bool(self.guidance)
+
+    @model_validator(mode="after")
+    def _aggregate_matches_its_criteria(self) -> Finding:
+        if not self.criteria:
+            return self
+        ids = [criterion.norm_id for criterion in self.criteria]
+        if len(ids) != len(set(ids)):
+            raise ValueError(f"Finding for rule {self.rule_id!r}: a criterion is reported twice.")
+        expected = aggregate_criteria(self.criteria)
+        if self.verdict is not expected:
+            raise ValueError(
+                f"Finding for rule {self.rule_id!r}: verdict={self.verdict} but its criteria "
+                f"aggregate to {expected}."
+            )
+        return self
 
     @field_validator("evidence_quote")
     @classmethod
@@ -607,12 +677,20 @@ class ComplianceReport(BaseModel):
 
         spec = (info.context or {}).get("policy_spec") if info.context else None
         if isinstance(spec, PolicyRuleset):
-            known_rules = {rule.rule_id for rule in spec.rules}
+            known_rules = {rule.rule_id: rule for rule in spec.rules}
             for finding in self.findings:
                 if finding.rule_id not in known_rules:
                     raise ValueError(
                         f"Finding references rule_id {finding.rule_id!r} not present in the "
                         f"loaded PolicyRuleset (spec_version={spec.spec_version})."
+                    )
+                # A dropped criterion would vanish from the report without a trace.
+                declared = [c.norm_id for c in known_rules[finding.rule_id].criteria]
+                reported = [c.norm_id for c in finding.criteria]
+                if declared != reported:
+                    raise ValueError(
+                        f"Finding for rule {finding.rule_id!r} reports criteria {reported}, but "
+                        f"the rule declares {declared}."
                     )
             for rule_id in [r for ids in self.not_document_verifiable.values() for r in ids]:
                 if rule_id not in known_rules:

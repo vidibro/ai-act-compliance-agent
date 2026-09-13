@@ -1,7 +1,9 @@
 """Schemas for exact text review and atomic legal propositions.
 
-These models do not participate in classification, rule selection, judging, or reporting. They
-form an independently validated assurance layer beneath those runtime paths.
+These models form an independently validated assurance layer beneath the runtime paths. They do
+not participate in classification or rule selection. Judging and reporting read them in one place
+only: a rule's `criteria` name norms by id, and the policy loader materialises each criterion from
+the generated norm it names.
 """
 
 from __future__ import annotations

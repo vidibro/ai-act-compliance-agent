@@ -1,0 +1,239 @@
+# Norm-to-rule traceability: implementation handoff
+
+## Goal
+
+Extend the existing deterministic norm-validity mechanism so it also proves that every accepted
+norm is implemented as a checkable compliance criterion.
+
+The complete chain must become:
+
+```text
+enacted text
+  -> structured norm
+  -> adjudicated norm-validity finding
+  -> policy-rule criterion
+  -> criterion verdict
+  -> named report result
+```
+
+Changing the model must not change which legal requirements exist, which rule implements them, or
+which criteria must be checked. A model may judge evidence for a criterion, but it may not invent,
+remove, merge, or silently skip criteria.
+
+## What already exists
+
+The current uncommitted work implements this reproducible flow:
+
+```text
+audit_norm_validity.py
+  -> adjudications/index.yaml + document shard
+  -> apply_norm_fixes.py (only for decision: fixed)
+  -> build_normative_coverage.py --check
+```
+
+See `docs/NORM-VALIDITY-ADJUDICATIONS.md`. Preserve that work. Do not replace it with another
+model-based audit.
+
+Article 15 is the enforced pilot. Its current audit has seven adjudicated findings. In particular,
+`AIA-NORM-A015-P5-MODEL-FLAWS` is intentionally retained as `accepted_with_basis` because its full
+meaning can be reconstructed from:
+
+- target text: `model flaws`;
+- structured action: implement measures to prevent, detect, respond to, resolve and control;
+- structured condition: measures addressing the AI-specific vulnerability are appropriate;
+- recorded Article 15(5) chapeau and Article 16(a) provider basis.
+
+This proves norm validity. It does **not** yet prove downstream implementation.
+
+Today all Article 15 provider norms point to the aggregate policy rule `AIA-HR-A15`. The rule's
+free-text `evidence_expected` mentions model flaws, but there is no machine-enforced inverse link
+from the rule to this norm and no separately reported model-flaws verdict. That is the next gap.
+
+## Adopted decision rule
+
+A norm is complete enough to retain when its complete legal effect can be assembled from its
+structured fields plus its hash-bound, exact legal basis.
+
+Retaining the norm is only half of the decision. A retained compliance norm is implemented only if
+all four checks below pass:
+
+1. **Reconstruction:** subject, action, object, conditions, exceptions and mandatory content can be
+   reconstructed from structured norm data plus recorded legal basis.
+2. **Traceability:** the norm points to a real policy rule and that rule explicitly points back to
+   the norm as a criterion.
+3. **Independent checkability:** the criterion receives its own evidence verdict. It cannot pass
+   merely because another criterion under the same aggregate rule passed.
+4. **Observable failure:** a targeted fixture that satisfies sibling criteria but omits this one
+   produces a failing/uncertain criterion result that names the omitted norm in the report.
+
+The deterministic machinery owns the first two checks and the presence/aggregation rules for the
+last two. A semantic evidence judge may still be model-based. Its uncertainty must be returned as
+`unsure`; determinism must not be claimed for the legal meaning of arbitrary product documents.
+
+## Pilot design for Article 15
+
+Keep `AIA-HR-A15` as the user-facing aggregate rule, but give it explicit subcriteria. Use norm IDs
+as the stable criterion IDs. Do not manually duplicate action and condition prose in `spec.yaml` if
+they can be materialised from the normative-coverage inventory; duplicated prose creates a second
+source of truth.
+
+Conceptually:
+
+```yaml
+- rule_id: AIA-HR-A15
+  # existing fields remain
+  criteria:
+    - norm_id: AIA-NORM-A015-P5-DATA-POISONING
+    - norm_id: AIA-NORM-A015-P5-MODEL-POISONING
+    - norm_id: AIA-NORM-A015-P5-ADVERSARIAL-ATTACKS
+    - norm_id: AIA-NORM-A015-P5-CONFIDENTIALITY-ATTACKS
+    - norm_id: AIA-NORM-A015-P5-MODEL-FLAWS
+    # Include every other Article 15 provider norm whose implementation_refs contains AIA-HR-A15.
+```
+
+At load/build time, resolve each `norm_id` to the canonical generated norm and derive its subject,
+kind, action, text/object, conditions, exceptions, mandatory content and source spans. Never ask a
+model to perform this mapping.
+
+The strict validator must fail for Article 15 when any of these is true:
+
+- a norm says `implementation_refs: [AIA-HR-A15]` but the rule omits that norm from `criteria`;
+- the rule names a missing norm;
+- the rule names a norm that does not point back to that rule;
+- the same norm is listed twice;
+- a criterion cannot be reconstructed from canonical structured data and accepted legal basis;
+- the judge or report silently drops an applicable criterion;
+- the aggregate rule is `pass` while any mandatory criterion is `gap`, `inadequate`, or `unsure`.
+
+Use a conservative aggregate rule:
+
+```text
+all criteria pass                  -> aggregate pass
+one or more gap/inadequate         -> aggregate failing result
+no failure, but one or more unsure -> aggregate unsure
+```
+
+Do not let an average, majority, confidence score, or a sibling criterion hide a failed criterion.
+
+## Required Article 15 behavioural fixture
+
+Add one focused fixture for `AIA-NORM-A015-P5-MODEL-FLAWS`:
+
+- it provides credible evidence for the other Article 15 cybersecurity threat controls;
+- it says nothing substantive about detecting, preventing, responding to, resolving or controlling
+  model flaws;
+- expected model-flaws criterion verdict: `gap` or `inadequate`, according to the fixture wording;
+- expected aggregate `AIA-HR-A15` verdict: not `pass`;
+- the generated report must contain the exact norm ID and a reason identifying model-flaw controls.
+
+Also add a deterministic unit test with a stub criterion judge. Return `pass` for every sibling and
+`gap` for model flaws. This test must prove aggregation and report preservation without calling an
+LLM. A separate golden/evaluation test may measure a real model, but it must not be the sole
+enforcement mechanism.
+
+## Suggested implementation order
+
+1. Read the policy, norm, finding/report, judge and golden-set schemas before editing.
+2. Add the smallest backward-compatible criterion schema. Existing rules without criteria must
+   continue to load while Article 15 is the pilot, unless a deliberate migration covers them all.
+3. Add Article 15 criterion references to `data/policy/spec.yaml`.
+4. Extend `build_normative_coverage.py --check` (prefer a reusable module, not logic embedded only
+   in the CLI) with the bidirectional norm-to-rule checks.
+5. Make evidence judgment operate per criterion for the pilot and implement conservative aggregate
+   status.
+6. Preserve criterion results in the report. Keep the aggregate rule result for compatibility.
+7. Add the model-flaws omission fixture and deterministic stub-judge test.
+8. Run focused tests, lint, type checking, the Article 15 audit and the strict coverage check.
+
+Do not begin by rewriting all policy rules. Complete and verify Article 15 first.
+
+## Acceptance criteria
+
+The work is complete only when all of these statements are demonstrated by automated tests:
+
+- Every Article 15 norm implemented by `AIA-HR-A15` has exactly one explicit criterion.
+- Every Article 15 criterion resolves to exactly one canonical norm that points back to the rule.
+- `AIA-NORM-A015-P5-MODEL-FLAWS` is materialised with the full mitigation action and its condition,
+  despite its two-word source slice.
+- Deleting its criterion makes `build_normative_coverage.py --check` fail.
+- A stub judge returning a model-flaws gap cannot yield aggregate `pass`.
+- The report names `AIA-NORM-A015-P5-MODEL-FLAWS` and preserves its verdict/reason.
+- The targeted omission fixture cannot pass Article 15 merely because sibling controls are present.
+- Existing norm-validity adjudication tests continue to pass.
+- No test needs a live model or network call to prove the structural guarantees.
+
+## Verification commands
+
+Use the repository's virtual environment:
+
+```sh
+.venv/bin/python scripts/audit_norm_validity.py --act-version 2026-07-27 --article 15
+.venv/bin/python scripts/build_normative_coverage.py --act-version 2026-07-27 --check
+.venv/bin/pytest tests/test_norm_validity.py tests/test_norm_builder.py tests/test_normative_metrics.py
+.venv/bin/pytest tests/test_policy_loader.py tests/test_gap_judge.py tests/test_gap_graph.py tests/test_schemas.py
+.venv/bin/pytest tests/test_golden_set.py
+```
+
+Run Ruff and mypy using the repository's established commands/configuration on every changed Python
+file. Report any pre-existing unrelated failures separately; do not weaken tests to obtain green.
+
+## Pilot implementation (Article 15)
+
+- `data/policy/spec.yaml`: `AIA-HR-A15` lists its 13 Article 15 provider norms under `criteria`,
+  as `norm_id` only.
+- `src/aiact/policy_loader.py`: resolves each criterion from the generated `norms/` shards into a
+  `RuleCriterion` (subjects, kind, action, text, conditions, exceptions, mandatory content, spans,
+  verification mode). Any hand-written field, a missing norm, a norm that does not point back, or a
+  duplicate fails the load.
+- `RuleCriterion.mandatory` is derived: an obligation or prohibition that is
+  `judged_by_gap_analysis`. `AIA-NORM-A015-P4-REDUNDANCY` (a permission, reported conditionally) is
+  listed and reported as not judged, and cannot fail the rule.
+- `src/aiact/norm_traceability.py`: the bidirectional check run by
+  `build_normative_coverage.py --check`. Its scope is the validity ledger's `enforced_scope`,
+  because a criterion can be reconstructed only from an adjudicated norm.
+- `src/aiact/gap/judge.py`: an aggregate rule is judged in one model call that returns one verdict
+  per mandatory criterion. The rule verdict is computed in code (`gap/criteria.py`,
+  `schemas/report.py:aggregate_criteria`), never read from the model. A criterion the reply omits,
+  repeats, or answers unreadably becomes `needs_review`.
+- Aggregation: any `gap`/`inadequate` fails the rule — `gap` if no mandatory criterion was
+  addressed, otherwise `inadequate`. No failure but any `needs_review` gives `needs_review`. Only all
+  `pass` gives `pass`. `Finding` refuses a verdict that disagrees with its criteria, and
+  `ComplianceReport` refuses a finding whose criteria differ from the rule's when reloaded through
+  `aiact.report_loader.load_compliance_report(path, spec)`. That is the required entry point for a
+  persisted JSON report: it supplies the authoritative policy spec as validation context, so a
+  report with a silently dropped criterion is rejected.
+- The report lists every criterion by norm ID with its own verdict, and the reason for each one
+  that did not pass.
+- Fixture: `data/golden_set/criteria/AIA-NORM-A015-P5-MODEL-FLAWS__omitted.md`. Tests:
+  `tests/test_norm_traceability.py` (no model or network calls).
+
+Not yet done: a live-model measurement of the fixture, and retrieval per criterion (retrieval still
+queries by `evidence_expected` facets).
+
+## Migration path to other Articles
+
+1. Decide the Article's validity findings, add its document shard, and declare it in
+   `adjudications/index.yaml` under `enforced_scope`.
+   From then on the strict build also requires each of its compliance norms to be a criterion of
+   every rule it names, so steps 1 and 2 land together.
+2. Add `criteria` to each rule its norms name, then run the strict build.
+3. Before adding Article 16: `AIA-NORM-A016-A-SECTION-2-COMPLIANCE` names every Section 2 rule
+   (including `AIA-HR-A15`) as the provider-allocation basis, not as a separate duty. It needs its
+   own relation (for example a basis link, or `carried_by_other_norm`) rather than becoming a
+   criterion of fourteen rules.
+4. Rules with a single norm need no criteria. Criteria pay off where one rule aggregates several
+   separately breachable duties.
+
+## Guardrails for the next model
+
+- Inspect `git status` first. The norm-validity implementation is uncommitted user work.
+- Do not discard, reset, or rewrite the current adjudication mechanism.
+- Treat `.cache/aiact-2026-07-27.fmx.zip` and its extracted canonical Article source as the pinned
+  legal ground truth.
+- Do not decide validity from the short `norm_text` alone.
+- Do not treat `MODEL-FLAWS` as a risk-classification branch. Classification activates high-risk
+  obligations; model flaws is a provider-compliance criterion after activation.
+- Do not claim that stable IDs or deterministic validators prove a contested legal interpretation.
+  They prove that the same recorded interpretation is applied reproducibly.
+- Stop after the Article 15 pilot is fully tested and explain the migration path before expanding
+  to every Article.

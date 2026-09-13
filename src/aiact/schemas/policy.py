@@ -10,7 +10,7 @@ import warnings
 from datetime import date
 from typing import Literal
 
-from pydantic import BaseModel, field_validator, model_validator
+from pydantic import BaseModel, ConfigDict, Field, field_validator, model_validator
 
 from aiact.schemas.enums import (
     ActorRole,
@@ -22,6 +22,7 @@ from aiact.schemas.enums import (
     RiskClass,
     TransparencyDuty,
 )
+from aiact.schemas.norm import ConditionGroup, NormKind, VerificationMode
 
 
 class LegalSource(BaseModel):
@@ -84,6 +85,38 @@ class GuidanceSource(BaseModel):
                 "interpretation; enacted law is cited with LegalSource, not this."
             )
         return v
+
+
+class RuleCriterion(BaseModel):
+    """One separately judged norm inside an aggregate rule.
+
+    A rule AUTHORS only `norm_id`. Every other field is materialised at load from the canonical
+    generated norm, as `requirement` is from the article store, so the criterion's meaning has one
+    source of truth and a model never maps a rule onto the law."""
+
+    model_config = ConfigDict(frozen=True)
+
+    norm_id: str = Field(pattern=r"^AIA-NORM-[A-Z0-9-]+$")
+    kind: NormKind
+    subjects: list[str] = Field(min_length=1)
+    action: str = Field(min_length=1)
+    norm_text: str = Field(min_length=1)
+    conditions: list[str | ConditionGroup]
+    exceptions: list[str]
+    mandatory_content: list[str]
+    source_spans: list[str] = Field(min_length=1)
+    verification_mode: VerificationMode
+
+    @property
+    def mandatory(self) -> bool:
+        """Whether the rule can pass only if this criterion passes.
+
+        Derived, never authored: a duty the gap layer judges. A permission or a duty reported
+        without a verdict is listed with its rule but cannot fail it."""
+        return (
+            self.kind in {NormKind.OBLIGATION, NormKind.PROHIBITION}
+            and self.verification_mode is VerificationMode.JUDGED_BY_GAP_ANALYSIS
+        )
 
 
 class PolicyRule(BaseModel):
@@ -283,6 +316,27 @@ class PolicyRule(BaseModel):
 
     Filled by the loader, like `requirement` and `guidance_context`; a rule hand-writing it fails
     the load."""
+
+    criteria: list[RuleCriterion] = []
+    """The norms this rule implements, each judged and reported separately.
+
+    Empty is the ordinary case: the rule is judged as one obligation. A non-empty list makes the
+    rule an AGGREGATE — its verdict is computed from the criteria, and passes only when every
+    mandatory criterion passes. The loader resolves each entry from the canonical norm inventory,
+    and `build_normative_coverage.py --check` proves the list matches the norms that point back."""
+
+    @model_validator(mode="after")
+    def _criteria_are_unique_and_decidable(self) -> PolicyRule:
+        ids = [criterion.norm_id for criterion in self.criteria]
+        duplicates = sorted({norm_id for norm_id in ids if ids.count(norm_id) > 1})
+        if duplicates:
+            raise ValueError(f"PolicyRule {self.rule_id!r}: duplicate criteria {duplicates}")
+        if self.criteria and not any(criterion.mandatory for criterion in self.criteria):
+            raise ValueError(
+                f"PolicyRule {self.rule_id!r}: criteria has no mandatory criterion, so nothing "
+                f"could ever fail the rule."
+            )
+        return self
 
     obligation_status: ObligationStatus
     check_type: CheckType
