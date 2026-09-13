@@ -127,6 +127,7 @@ class NormRelationKind(StrEnum):
     REQUIRES_EXTERNAL_REQUIREMENTS = "requires_external_requirements"
     CONDITIONAL_ON_NORMS = "conditional_on_norms"
     CARRIED_BY_NORMS = "carried_by_norms"
+    PARALLEL_NORMS = "parallel_norms"
 
 
 class NormRelation(BaseModel):
@@ -156,6 +157,7 @@ class NormRelation(BaseModel):
         elif self.kind in {
             NormRelationKind.CONDITIONAL_ON_NORMS,
             NormRelationKind.CARRIED_BY_NORMS,
+            NormRelationKind.PARALLEL_NORMS,
         }:
             if has_rules or has_external or not has_norms:
                 raise ValueError(
@@ -308,7 +310,6 @@ class Norm(BaseModel):
     implementation_mode: ImplementationMode
     implementation_refs: list[str] = []
     superseded_by_norm_ids: list[str] = []
-    parallel_norm_ids: list[str] = []
     implementation_reason: str = ""
     verification_mode: VerificationMode
     review: ReviewRecord
@@ -356,8 +357,6 @@ class Norm(BaseModel):
                 raise ValueError("a norm cannot supersede itself")
         elif self.superseded_by_norm_ids:
             raise ValueError("superseded_by_norm_ids requires review status superseded")
-        if self.norm_id in self.parallel_norm_ids:
-            raise ValueError("a norm cannot be parallel to itself")
         if self.review.status is ReviewStatus.REJECTED:
             raise ValueError("rejected candidates belong in extraction history, not norm inventory")
         return self
@@ -385,6 +384,14 @@ class NormInventory(BaseModel):
             for relation in self.relations
             if relation.kind is kind and target_norm_id in relation.target_norm_ids
         ]
+
+    def parallel_norm_ids_for(self, norm_id: str) -> list[str]:
+        for relation in self.relations:
+            if relation.kind is NormRelationKind.PARALLEL_NORMS:
+                members = [relation.source_norm_id, *relation.target_norm_ids]
+                if norm_id in members:
+                    return [member for member in members if member != norm_id]
+        return []
 
     @model_validator(mode="after")
     def _ids_are_unique(self) -> NormInventory:

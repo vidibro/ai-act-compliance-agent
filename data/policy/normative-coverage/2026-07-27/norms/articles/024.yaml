@@ -171,8 +171,6 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
-  parallel_norm_ids:
-  - AIA-NORM-A023-P2-WITHHOLD-NONCONFORMING-SYSTEM
 - norm_id: AIA-NORM-A024-P2-INFORM-RISK
   act_version_date: '2026-07-27'
   kind: obligation
@@ -254,8 +252,6 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
-  parallel_norm_ids:
-  - AIA-NORM-A023-P4-PRESERVE-COMPLIANCE
 - norm_id: AIA-NORM-A024-P4-CORRECTIVE-RESPONSE
   act_version_date: '2026-07-27'
   kind: obligation
@@ -387,10 +383,6 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
-  parallel_norm_ids:
-  - AIA-NORM-A021-P1-PROVIDE-CONFORMITY-INFORMATION
-  - AIA-NORM-A022-P3-C-PROVIDE-CONFORMITY-INFORMATION
-  - AIA-NORM-A023-P6-PROVIDE-CONFORMITY-INFORMATION
 - norm_id: AIA-NORM-A024-P6-COOPERATE
   act_version_date: '2026-07-27'
   kind: obligation
@@ -430,5 +422,3 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
-  parallel_norm_ids:
-  - AIA-NORM-A023-P7-COOPERATE

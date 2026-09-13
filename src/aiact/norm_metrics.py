@@ -97,9 +97,9 @@ def _mapping_shape(bundle: NormativeCoverageBundle) -> MappingShape:
 def _parallel_duty_groups(bundle: NormativeCoverageBundle) -> list[ParallelDutyGroup]:
     norms_by_id = {norm.norm_id: norm for norm in bundle.norm_inventory.norms}
     groups = {
-        tuple(sorted({norm.norm_id, *norm.parallel_norm_ids}))
-        for norm in bundle.norm_inventory.norms
-        if norm.parallel_norm_ids
+        tuple(sorted([relation.source_norm_id, *relation.target_norm_ids]))
+        for relation in bundle.norm_inventory.relations
+        if relation.kind.value == "parallel_norms"
     }
     return [
         ParallelDutyGroup(

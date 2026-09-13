@@ -191,17 +191,17 @@ def load_normative_coverage(
                 f"{sorted(declared_qualifying)}, norms link {sorted(actual_qualifying)}"
             )
 
-    # The relation is mutual by construction, so a norm naming a partner that does not name it
-    # back means the artefact was edited by hand rather than built.
-    for norm in norm_inventory.norms:
-        for partner_id in norm.parallel_norm_ids:
-            partner = norms_by_id.get(partner_id)
-            if partner is None:
-                raise ValueError(f"{norm.norm_id} is parallel to unknown norm {partner_id}")
-            if norm.norm_id not in partner.parallel_norm_ids:
-                raise ValueError(
-                    f"{norm.norm_id} names {partner_id} as a parallel duty but is not named back"
-                )
+    seen_parallel: set[str] = set()
+    for relation in norm_inventory.relations:
+        if relation.kind is not NormRelationKind.PARALLEL_NORMS:
+            continue
+        members = [relation.source_norm_id, *relation.target_norm_ids]
+        if len(members) < 2 or len(members) != len(set(members)):
+            raise ValueError(f"{relation.relation_id} must name distinct parallel norms")
+        overlap = set(members) & seen_parallel
+        if overlap:
+            raise ValueError(f"parallel norm relation overlap: {sorted(overlap)}")
+        seen_parallel.update(members)
 
     _assert_no_carried_cycles(norm_inventory)
 

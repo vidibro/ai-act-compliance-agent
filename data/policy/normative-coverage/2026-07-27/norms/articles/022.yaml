@@ -77,8 +77,6 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
-  parallel_norm_ids:
-  - AIA-NORM-A054-P2-ENABLE-REPRESENTATIVE
 - norm_id: AIA-NORM-A022-P3-PERFORM-MANDATE
   act_version_date: '2026-07-27'
   kind: obligation
@@ -321,10 +319,6 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
-  parallel_norm_ids:
-  - AIA-NORM-A021-P1-PROVIDE-CONFORMITY-INFORMATION
-  - AIA-NORM-A023-P6-PROVIDE-CONFORMITY-INFORMATION
-  - AIA-NORM-A024-P5-PROVIDE-ACTION-INFORMATION
 - norm_id: AIA-NORM-A022-P3-C-PROVIDE-LOG-ACCESS
   act_version_date: '2026-07-27'
   kind: obligation
@@ -368,8 +362,6 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
-  parallel_norm_ids:
-  - AIA-NORM-A021-P2-PROVIDE-LOG-ACCESS
 - norm_id: AIA-NORM-A022-P3-D-COOPERATE
   act_version_date: '2026-07-27'
   kind: obligation
@@ -449,11 +441,6 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
-  parallel_norm_ids:
-  - AIA-NORM-A016-I-REGISTRATION
-  - AIA-NORM-A026-P8-REGISTER
-  - AIA-NORM-A071-P2-PROVIDER-ENTER-ANNEX-VIII-DATA
-  - AIA-NORM-A071-P2-REPRESENTATIVE-ENTER-ANNEX-VIII-DATA
 - norm_id: AIA-NORM-A022-P3-E-ENSURE-REGISTRATION-CORRECT
   act_version_date: '2026-07-27'
   kind: obligation
@@ -533,8 +520,6 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
-  parallel_norm_ids:
-  - AIA-NORM-A054-P5-TERMINATE-MANDATE
 - norm_id: AIA-NORM-A022-P4-NOTIFY-TERMINATION
   act_version_date: '2026-07-27'
   kind: obligation

@@ -5164,15 +5164,17 @@ def test_provisions_imposing_one_duty_name_each_other():
     norms = {norm.norm_id: norm for norm in bundle.norm_inventory.norms}
 
     high_risk = norms["AIA-NORM-A016-I-REGISTRATION"]
-    assert set(high_risk.parallel_norm_ids) == {
+    assert set(bundle.norm_inventory.parallel_norm_ids_for(high_risk.norm_id)) == {
         "AIA-NORM-A022-P3-E-REGISTER",
         "AIA-NORM-A026-P8-REGISTER",
         "AIA-NORM-A071-P2-PROVIDER-ENTER-ANNEX-VIII-DATA",
         "AIA-NORM-A071-P2-REPRESENTATIVE-ENTER-ANNEX-VIII-DATA",
     }
     # Registering a system concluded NOT high-risk is a different duty in its own group.
-    assert "AIA-NORM-A006-P4-REGISTER-SYSTEM" not in high_risk.parallel_norm_ids
-    assert set(norms["AIA-NORM-A006-P4-REGISTER-SYSTEM"].parallel_norm_ids) == {
+    assert "AIA-NORM-A006-P4-REGISTER-SYSTEM" not in bundle.norm_inventory.parallel_norm_ids_for(
+        high_risk.norm_id
+    )
+    assert set(bundle.norm_inventory.parallel_norm_ids_for("AIA-NORM-A006-P4-REGISTER-SYSTEM")) == {
         "AIA-NORM-A049-P2-PROVIDER-REGISTER-NON-HIGH-RISK",
         "AIA-NORM-A049-P2-REPRESENTATIVE-REGISTER-NON-HIGH-RISK",
     }
@@ -5187,13 +5189,13 @@ def test_provisions_imposing_one_duty_name_each_other():
         ("AIA-NORM-A023-P4-PRESERVE-COMPLIANCE", "AIA-NORM-A024-P3-PRESERVE-COMPLIANCE"),
         ("AIA-NORM-A023-P7-COOPERATE", "AIA-NORM-A024-P6-COOPERATE"),
     ):
-        assert norms[importer].parallel_norm_ids == [distributor]
+        assert bundle.norm_inventory.parallel_norm_ids_for(importer) == [distributor]
         assert norms[importer].subjects[0].subject_ref == "importer"
         assert norms[distributor].subjects[0].subject_ref == "distributor"
 
     for norm in bundle.norm_inventory.norms:
-        for partner_id in norm.parallel_norm_ids:
-            assert norm.norm_id in norms[partner_id].parallel_norm_ids
+        for partner_id in bundle.norm_inventory.parallel_norm_ids_for(norm.norm_id):
+            assert norm.norm_id in bundle.norm_inventory.parallel_norm_ids_for(partner_id)
             # A restatement is already covered by `carried_by`; the two must not overlap.
             assert partner_id not in bundle.norm_inventory.target_norm_ids_for(
                 norm.norm_id, NormRelationKind.CARRIED_BY_NORMS
