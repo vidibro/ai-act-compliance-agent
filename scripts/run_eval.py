@@ -34,6 +34,7 @@ from aiact.policy_loader import (  # noqa: E402
     load_policy_spec,
 )
 from aiact.schemas.eval import GoldenSet  # noqa: E402
+from aiact.scrubbing import install_excepthook  # noqa: E402
 from aiact.tracing import trace_run  # noqa: E402
 
 _TITLE = re.compile(r"^title:\s*(.*)$", re.M)
@@ -112,6 +113,7 @@ def main() -> None:
     )
     if args.checker == "judge":
         load_dotenv()  # the CLI boundary owns .env; the library stays free of it
+        install_excepthook()  # scrub the keys just loaded out of any traceback
         # Named before it is widened to Checker: `model` belongs to the LLM judge, not to every
         # checker — a keyword baseline calls no model and should not have to claim one.
         judge = LLMJudge(model=args.model, reference_content=not args.no_reference_content)

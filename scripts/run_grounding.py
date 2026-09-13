@@ -35,6 +35,7 @@ from aiact.gap.judge import LLMJudge  # noqa: E402
 from aiact.llm import flatten  # noqa: E402
 from aiact.policy_loader import load_policy_spec  # noqa: E402
 from aiact.schemas.eval import GoldenSet, Split  # noqa: E402
+from aiact.scrubbing import install_excepthook  # noqa: E402
 from aiact.tracing import trace_run  # noqa: E402
 
 
@@ -125,6 +126,7 @@ def main() -> None:
     args = ap.parse_args()
 
     load_dotenv()
+    install_excepthook()  # scrub the keys just loaded out of any traceback
     grader = ReasoningGrader(model=args.model)
     with trace_run(f"grounding:{args.layer}", session_id=f"grounding-{args.split}"):
         if args.layer == "classify":

@@ -272,10 +272,7 @@ _BREAKOUT = (
 
 
 def test_a_document_cannot_close_the_block_it_sits_in(judge):
-    """The excerpts are the provider's own words. With a fixed `\"\"\"` delimiter a chunk containing
-    one closed the block early and everything after it read as the prompt's own voice — enough to
-    append a second, fully-formed set of excerpts. The marker is minted per call, so a document
-    written before it existed cannot contain it."""
+    """A chunk containing the delimiter must not be able to close the block it sits in."""
     prompt = str(judge._user_content(a_rule(), (a_hit(body=_BREAKOUT),)))
     opener = next(line for line in prompt.splitlines() if line.startswith("<<EXCERPTS "))
     marker = opener.removeprefix("<<EXCERPTS ").removesuffix(">>")
@@ -286,16 +283,14 @@ def test_a_document_cannot_close_the_block_it_sits_in(judge):
 
 
 def test_every_untrusted_block_is_fenced(judge):
-    """Three blocks come from the document — the excerpts, its section list, and the sections its
-    cross-references resolve to. Fencing only the excerpts would leave two ways in."""
+    """Excerpts, section list and resolved cross-references all come from the document."""
     prompt = str(judge._user_content(a_rule(), (a_hit(),), outline=("Doc > Human oversight",)))
     for label in ("EXCERPTS", "SECTIONS"):
         assert f"<<{label} " in prompt and f"<<END {label} " in prompt
 
 
 def test_the_marker_differs_between_calls(judge):
-    """A marker reused across calls is a fixed delimiter with extra steps: it would eventually
-    appear in a document, and a caller who saw one prompt could forge the next."""
+    """A marker reused across calls is a fixed delimiter with extra steps."""
     markers = {
         line for _ in range(3)
         for line in str(judge._user_content(a_rule(), (a_hit(),))).splitlines()

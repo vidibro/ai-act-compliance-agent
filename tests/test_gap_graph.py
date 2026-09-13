@@ -488,7 +488,7 @@ def test_a_reallocation_that_cannot_be_cited_is_not_reported_as_one(spec):
     """Narrowing by TYPE, not by truthiness — the same discipline the cascade's own helpers follow.
     A brain putting an unrecognised value here has named no limb, and a reallocation nobody can
     cite is one the reader cannot check or contest."""
-    report = _report(spec, RiskClass.HIGH_RISK, "we rebadged it")
+    report = _report(spec, RiskClass.HIGH_RISK, RiskClass.HIGH_RISK)  # not an Art. 25 limb
 
     assert report.becomes_provider is None
     assert report.provider_reallocation_note is None

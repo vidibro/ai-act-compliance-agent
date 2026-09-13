@@ -124,6 +124,7 @@ from pydantic import BaseModel
 from aiact.anchoring import Provisions, anchor_questions
 from aiact.brain import Brain
 from aiact.config import get_settings
+from aiact.document import check_size
 from aiact.schemas.classification import (
     ClassificationEvidence,
     ClassificationResult,
@@ -1716,6 +1717,7 @@ def classify(
     questions: dict[str, Question] | None = None,
 ) -> ClassificationResult:
     """Run the cascade on one use-case description and return its ClassificationResult."""
+    check_size(description)
     compiled_graph = build_graph(brain, questions)
     # One trace per run, grouping each node's LLM call as a span — the decision path, made visible
     # in Langfuse. A strict no-op without keys (and for the deterministic ScriptedBrain, which makes

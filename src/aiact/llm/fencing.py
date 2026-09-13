@@ -1,17 +1,14 @@
+"""Fencing untrusted text, so a document cannot forge the turn around it."""
 
 from __future__ import annotations
 
 import secrets
 
-_MARKER_BYTES = 8  # 64 bits — a document cannot contain what did not exist when it was written
+_MARKER_BYTES = 8
 
 
 def new_marker(*texts: str) -> str:
-    """A marker appearing in none of `texts`.
-
-    The collision it rules out is not realistic — it is a 64-bit token against text a person wrote
-    — but the check is one substring scan and turns "overwhelmingly unlikely" into "checked".
-    """
+    """A marker appearing in none of `texts`, minted per call."""
     while True:
         marker = secrets.token_hex(_MARKER_BYTES)
         if not any(marker in text for text in texts):
@@ -19,11 +16,7 @@ def new_marker(*texts: str) -> str:
 
 
 def fence(label: str, text: str, marker: str) -> str:
-    """`text`, wrapped so its end is unambiguous.
-
-    The label names what the block holds, for a reader of the prompt and for the model; the marker
-    is what makes the closing line unforgeable.
-    """
+    """`text`, wrapped so its end is unambiguous."""
     return f"<<{label} {marker}>>\n{text}\n<<END {label} {marker}>>"
 
 

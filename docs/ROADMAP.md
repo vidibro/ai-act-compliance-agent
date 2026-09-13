@@ -278,6 +278,22 @@ without waiting on sourcing and anonymisation.
 > pages carry **cross-sell noise from adjacent high-risk products**, a false-positive trap the
 > synthetic set does not exercise. Full findings in that directory's README.
 
+#### 🔴 DEBT — adversarial (prompt-injection) cases are not authored
+
+`SECURITY.md` claims an injected document can bias **one** node's sub-answer and cannot reach the
+verdict. The second half is deterministic and already proven by the `ScriptedBrain` routing tests;
+the first half is a claim about a model and is currently **argued in prose, with no number behind
+it**. The cases that would measure it do not exist.
+
+**They belong in the PER-NODE eval, not end to end.** An end-to-end case asserts the risk class did
+not move, which passes whenever any other node dominates the route — green while the injection
+fully succeeded on the node it targeted. The per-node form is a **paired case** (same document,
+clean and injected) scored on whether the targeted node's answer moves, which yields a flip rate:
+the number `SECURITY.md` is missing.
+
+**Blocked on the ruleset, deliberately.** Deferred with the rest of the Layer 2 authoring — see the
+coverage gaps above — and to be picked up once the rule ids stop moving.
+
 #### ✅ Resolved — "workplace" (Art. 5 emotion recognition) DOES cover hiring
 
 The prohibited-practice ban on emotion recognition covers "workplace and education". Question was: does a recruitment / pre-employment interview count as "workplace"? **Resolved yes**, per the **Commission Guidelines on prohibited AI practices, C(2025) 5052 final (29 July 2025)** — "workplace" is to be interpreted broadly and expressly covers recruitment and hiring; the Guidelines give video-interview emotion analysis as a prohibited example. So `emotion_screening_candidates` is `prohibited`, not `needs_review`. (Note the version: C(2025) 5052 final, 29 Jul 2025, is the *finalised* guidelines — it supersedes C(2025) 884 final, 4 Feb 2025, which was only the *approval of the draft content*. Cite 5052.) The label carries a `guidance_refs` id into the new guidance store (`data/policy/guidance/`), which records the verbatim passage; a loader check makes a dangling or drifted citation fail.

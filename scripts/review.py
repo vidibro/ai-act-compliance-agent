@@ -21,6 +21,7 @@ from dotenv import load_dotenv  # noqa: E402
 from aiact.pipeline import review  # noqa: E402
 from aiact.policy_loader import load_policy_spec  # noqa: E402
 from aiact.reporting import render_report  # noqa: E402
+from aiact.scrubbing import install_excepthook  # noqa: E402
 from aiact.tracing import enable_tracing  # noqa: E402
 
 
@@ -32,6 +33,7 @@ def main() -> None:
     args = parser.parse_args()
 
     load_dotenv()  # the CLI boundary owns .env; the library stays free of it
+    install_excepthook()  # scrub the keys just loaded out of any traceback
     from aiact.classify.llm_brain import LLMBrain  # lazy: importing needs no API stack
 
     text = args.document.read_text(encoding="utf-8")

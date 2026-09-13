@@ -47,7 +47,7 @@ from aiact.retrieval.store import DocumentIndex, Hit, document_id
 from aiact.schemas.enums import CheckType, Verdict
 from aiact.schemas.norm import ConditionGroup
 from aiact.schemas.policy import PolicyRule, RuleCriterion
-from aiact.schemas.question import Confidence
+from aiact.schemas.question import Confidence, clip_reasoning
 from aiact.schemas.report import CriterionFinding
 from aiact.tools.evidence import DEFAULT_K, find_evidence
 from aiact.tools.references import Reference, resolve_all
@@ -106,7 +106,6 @@ _SYSTEM_PROMPT = (
     "EXISTS, the pointer is legitimate drafting — the content is in the document even when it is "
     "not among your excerpts, and you must not hold that against the provider. Do not second-guess "
     "either marking from the excerpts alone."
-    # The excerpts, the section list and the resolved references are all the provider's own text.
     "\n\n" + DATA_NOT_INSTRUCTIONS
 )
 
@@ -182,7 +181,7 @@ def _unsure(why: str, hits: tuple[Hit, ...] = (), prompt: str = "") -> Judgement
     """
     return Judgement(
         verdict=Verdict.NEEDS_REVIEW,
-        reasoning=why,
+        reasoning=clip_reasoning(why),
         evidence_quote=None,
         evidence_chunk_id=None,
         confidence="low",
@@ -381,7 +380,7 @@ class LLMJudge:
         if not rule.document_verifiable:
             return Judgement(
                 verdict=Verdict.NOT_APPLICABLE,
-                reasoning=(
+                reasoning=clip_reasoning(
                     f"{rule.rule_id} is a process obligation of the provider organisation, not a "
                     f"property of the technical documentation — confirm it separately."
                 ),
@@ -528,7 +527,7 @@ class LLMJudge:
 
         return Judgement(
             verdict=verdict,
-            reasoning=reasoning or f"model verdict for {label}",
+            reasoning=clip_reasoning(reasoning or f"model verdict for {label}"),
             evidence_quote=quote,
             evidence_chunk_id=chunk_id,
             confidence=confidence,

@@ -25,7 +25,7 @@ from aiact.schemas.enums import (
     Verdict,
 )
 from aiact.schemas.policy import GuidanceSource, LegalSource, PolicyRuleset
-from aiact.schemas.question import EVIDENCE_QUOTE_MAX, Answer, Confidence
+from aiact.schemas.question import EVIDENCE_QUOTE_MAX, REASONING_MAX, Answer, Confidence
 
 # Modelled on the European Commission's own wording for their AI Act Compliance Checker, with a
 # second paragraph this tool owes its own users: Art. 6(1) settles a system's risk class by
@@ -263,6 +263,14 @@ class Finding(BaseModel):
                 f"evidence_quote must be under {EVIDENCE_QUOTE_MAX} chars "
                 f"(got {len(v)}) — cite a pinpoint excerpt, do not dump a section."
             )
+        return v
+
+    @field_validator("reasoning")
+    @classmethod
+    def _reasoning_is_one_sentence(cls, v: str) -> str:
+        """clip_reasoning() it at the call site."""
+        if len(v) > REASONING_MAX:
+            raise ValueError(f"reasoning must be under {REASONING_MAX} chars (got {len(v)}).")
         return v
 
     @model_validator(mode="after")

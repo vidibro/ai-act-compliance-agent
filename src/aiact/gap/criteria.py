@@ -12,7 +12,7 @@ from collections.abc import Iterable
 
 from aiact.schemas.enums import Verdict
 from aiact.schemas.policy import PolicyRule
-from aiact.schemas.question import Confidence
+from aiact.schemas.question import Confidence, clip_reasoning
 from aiact.schemas.report import CriterionFinding, aggregate_criteria
 
 _CONFIDENCE_ORDER: dict[Confidence, int] = {"low": 0, "medium": 1, "high": 2}
@@ -89,9 +89,12 @@ def aggregate_reasoning(rule: PolicyRule, criteria: list[CriterionFinding]) -> s
     mandatory = [c for c in criteria if c.mandatory]
     open_items = [c for c in mandatory if c.verdict is not Verdict.PASS]
     if not open_items:
-        return f"All {len(mandatory)} mandatory criteria of {rule.rule_id} pass."
+        return clip_reasoning(f"All {len(mandatory)} mandatory criteria of {rule.rule_id} pass.")
     listed = "; ".join(f"{c.norm_id} ({c.verdict.value}): {c.reasoning}" for c in open_items)
-    return f"{len(open_items)} of {len(mandatory)} mandatory criteria do not pass — {listed}"
+    # Clipped: each criterion keeps its full reason in `Finding.criteria`, which the report prints.
+    return clip_reasoning(
+        f"{len(open_items)} of {len(mandatory)} mandatory criteria do not pass — {listed}"
+    )
 
 
 def aggregate_confidence(criteria: list[CriterionFinding]) -> Confidence:

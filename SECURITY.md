@@ -46,6 +46,22 @@ can do is small and bounded, and here is why, cross-referenced to the code:
   most, push **one** node's sub-answer — it cannot make the system do anything, because there is
   nothing to do.
 
+- **The document cannot forge the turn around it.** Untrusted text is fenced with a marker minted
+  per call from `secrets` and checked against the text it wraps (`src/aiact/llm/fencing.py`), so a
+  document written before the marker existed cannot close the block early and append a second
+  question of its own. Both layers fence: the description in `llm_brain._user_content`, and the
+  excerpts, section list and resolved cross-references in `gap/judge._user_content`. The enacted law
+  and guidance are not fenced — they are hash-verified and sit in the cached prefix, which a
+  per-call marker would invalidate. Both system prompts state that fenced text is data, never
+  instructions. Covered by `tests/test_llm_brain.py` and `tests/test_gap_judge.py`.
+
+- **A parsed answer is checked against the type its callers expect.** Every `answer_type` declares
+  its result type (`VALUE_TYPES` in `llm_brain.py`) and `_parse_value` verifies its own return, so a
+  branch producing the wrong type raises instead of disappearing at every call site — callers narrow
+  by type, which turns a parse bug into a silently missing answer. `Answer.value` additionally
+  refuses a bare `str`: every node's value is a bool, an enum member, a list of them, or `None`, so
+  raw model text cannot reach a verdict unparsed.
+
 - **The graph, not the model, owns the routing and the verdict.** The legal cascade and the final
   risk class are computed by deterministic code (`decide_risk_class` in `classify.py`), from the
   bounded sub-answers. Injected text cannot reach that logic. And the assembled
@@ -68,11 +84,13 @@ can do is small and bounded, and here is why, cross-referenced to the code:
   cited by a verdict. A missing hash is also refused — deleting the line does not bypass the check.
   Covered by `tests/test_law_integrity.py` and `tests/test_guidance.py`.
 
-**Residual risk, stated plainly.** Injected text *can* still bias a single sub-answer — no prompt
-makes an LLM perfectly robust. That is precisely why low confidence routes to `needs_review`, why
-every verdict carries its evidence quote and citation for a human to check, and why the output is
-framed throughout as a **draft checklist for expert review, not a decision** (the disclaimer in
-`src/aiact/schemas/report.py` is attached to every report and must stay there).
+**Residual risk, stated plainly, and NOT YET MEASURED.** Injected text *can* still bias a single
+sub-answer — no prompt makes an LLM perfectly robust. How often it does is an open question here:
+the golden set contains no adversarial cases, so this section argues the bound rather than
+reporting one (debt tracked in `docs/ROADMAP.md`, M1). That is precisely why low confidence routes
+to `needs_review`, why every verdict carries its evidence quote and citation for a human to check,
+and why the output is framed throughout as a **draft checklist for expert review, not a decision**
+(the disclaimer in `src/aiact/schemas/report.py` is attached to every report and must stay there).
 
 > Note on the enacted-law store. Verification is byte-exact and deliberately unforgiving: the store
 > is machine-generated from the Official Journal and reproducible with one command
@@ -99,7 +117,29 @@ framed throughout as a **draft checklist for expert review, not a decision** (th
   allow-list — `trace_id`, the run name, `session_id`, the node id, and fixed tags
   (`current_metadata` in `src/aiact/tracing.py`) — and carries no secret. Tracing is also a strict
   no-op without keys (no import, no network), so the default posture ships nothing anywhere.
+- **A test run reaches no backend, including the operator's own.** `litellm` calls `load_dotenv()`
+  when imported, and python-dotenv walks *up* from site-packages — so on a developer machine whose
+  `.env` holds real Langfuse keys, importing it mid-suite switched tracing on and traced the test
+  corpus to that project. `tests/conftest.py` now neutralises `load_dotenv` for the session before
+  anything imports `litellm`, and strips the keys per test as a second net;
+  `tests/test_env_isolation.py` imports `litellm` mid-test and asserts tracing stays off. The
+  no-op guarantee above is a property of *unconfigured* environments; this is what makes it hold in
+  *configured* ones.
 - The maintainer's own keys are single-operator: running the tool spends the operator's LLM budget.
+- **Uncaught tracebacks are scrubbed at the CLI boundary.** Each CLI installs
+  `install_excepthook()` (`src/aiact/scrubbing.py`) immediately after `load_dotenv()`, so any
+  credential that call just put in the environment is redacted from a traceback before it is
+  printed. Redaction is by exact value for anything the environment names as a credential
+  (`*_API_KEY`, `*_SECRET_KEY`, `*_TOKEN`, `*PASSWORD`, `*CREDENTIALS`) plus a conservative pattern
+  for vendor key shapes, which is what will cover a BYOK key that lives on a request rather than in
+  the environment. Covered by `tests/test_scrubbing.py`, including a real subprocess whose
+  traceback is checked for the key.
+
+  This is **defence in depth, not a fix for a known leak**: LiteLLM's exceptions were probed across
+  connection, authentication, bad-parameter and proxy failures, and none carried the key — not in
+  the message, the `__dict__`, the `__cause__`/`__context__` chain, the formatted traceback, or the
+  request headers hanging off the response. The hook exists because that is a property of the
+  current version of a fast-moving dependency, not a guarantee it offers.
 
 **Planned (BYOK, M9 — not yet built):**
 
@@ -107,8 +147,12 @@ framed throughout as a **draft checklist for expert review, not a decision** (th
   LiteLLM call and **never persisted, never written to the vector store, never logged, never placed
   in trace metadata**. Config may be cached, but a secret must not be — keys live on the request,
   not on a process-global `Settings`.
-- Keys scrubbed from error messages and stack traces before they leave the process.
-- A test will assert the caller's key never appears in trace metadata, logs, or the vector store.
+- ~~Keys scrubbed from error messages and stack traces before they leave the process.~~ **Built**
+  — see below; the per-request half is already supported (`scrub(text, extra=<the caller's key>)`).
+- ~~A test will assert the caller's key never appears in trace metadata, logs, or the vector
+  store.~~ **Partly built** — `tests/test_scrubbing.py` asserts it for trace metadata. The vector
+  store holds only the document being checked, so that half becomes meaningful once a key travels
+  on a request.
 
 Until that lands, do not run this as a shared/multi-tenant service — the current model assumes one
 trusting operator.
@@ -124,6 +168,15 @@ trusting operator.
   particular, retrieval is entirely local: embeddings are computed on this machine by a bundled
   ONNX model, so the document is never sent anywhere to be indexed or searched.
 
+**How much leaves is bounded.** Both entry points refuse a document over
+`AIACT_MAX_DOCUMENT_CHARS` (default 300,000 — about twelve times the longest document in the golden
+set) before any model call, so a wrong paste or a runaway extraction fails immediately instead of
+being disclosed to the provider and billed. The multiplier is the reason the cap is worth having:
+seventeen questions are each sent the whole document, while the judge reads only retrieved excerpts
+and so costs the same whatever the length. The refusal states the size and the limit and nothing
+else — the sender of a document is not always the operator, and over HTTP is the party this threat
+model calls untrusted. See `src/aiact/document.py`.
+
 **Data sensitivity is a design control, not just hygiene.** The project rule that **no vendor name
 sits next to a legal verdict** — descriptions are anonymised function descriptions — is a security
 and legal-risk control: it keeps identifiable "company X is high-risk / prohibited" statements out
@@ -132,12 +185,41 @@ anything classified.
 
 ## Personal data (PII)
 
-The intended input is a **functional description of a system**, which should contain no personal
-data. The tool neither needs nor asks for candidate records, real names, or biometric data — and
-several golden-set cases exist precisely to classify systems that *process* such data without the
-classifier ever seeing it. If a user pastes PII into a description, it will be sent to the LLM
-provider like any other input; the guidance is simply **don't** — describe the system, not its data
-subjects. A deployed version (M6/M9) should add input guidance and, where feasible, redaction.
+**There is no PII detection and no redaction, and that is a decision rather than a gap.** The
+reasoning is below, because the obvious control is the wrong one here and a later reader should not
+have to rediscover why.
+
+**Some personal data is REQUIRED CONTENT.** A compliant technical file necessarily carries contact
+details of natural persons, because the Act says it must: Art. 13(3)(a) requires the instructions
+for use to give "the identity and the contact details of the provider and, where applicable, of its
+authorised representative"; Art. 16(b) requires the provider's name and "the address at which they
+can be contacted"; and Annex VIII points 1 to 3 require the name, address and contact details of
+the provider, of the authorised representative, and of *"that person"* where someone submits on the
+provider's behalf. The most complete documentation therefore contains the most such data.
+
+Two consequences follow, and they rule out the two controls a reader would expect:
+
+- **Detection would invert the signal.** A check flagging names, emails or postal addresses fires
+  on every compliant document and hardest on the best ones. A warning that is right to ignore is
+  training to ignore warnings.
+- **Redaction would manufacture false findings.** Stripping the contact details hands the judge a
+  document that no longer satisfies Art. 13(3)(a) or Annex VIII, and it reports a GAP on an
+  obligation the real document met. A false PASS is this tool's most expensive error; a false GAP
+  caused by our own control is the second, and it would be entirely self-inflicted.
+
+**What the guidance is instead.** The distinction that matters is *whose* data it is — the people
+who build or deploy the system (required, expected, leave it alone) versus **the people the system
+is used on**. Candidate records, biometric samples, patient data and the like are never required in
+a technical file, and describing the system does not need them. Several golden-set cases exist
+precisely to classify systems that *process* such data without the classifier ever seeing any. So
+the rule for a user is narrow and stateable: **describe the system, not its data subjects** —
+contact details for the roles the Act names are expected and fine.
+
+No regex separates those two: an email is an email. The only signal that respects the Act is
+VOLUME — two contacts is Annex VIII, two hundred rows is a dataset sample — and if a guard is ever
+added it should be volume-triggered, warn-only, and must never alter the document.
+
+Whatever is sent reaches the configured LLM provider like any other input, under their terms.
 
 ## Supply chain
 
