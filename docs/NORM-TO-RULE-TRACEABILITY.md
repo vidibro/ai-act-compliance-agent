@@ -222,12 +222,20 @@ cross-reference in the Regulation.
   criterion on each of those rules.
 - `carried_by_policy_rules`: existing substantive policy rules discharge the cross-reference norm.
   Article 16(f)–(i) are the pilot examples.
-- `requires_external_requirements`: the AI Act creates a duty, but named external instruments supply
+- `subject_to_external_requirements`: the AI Act creates a duty, but named external instruments supply
   its substantive requirements. Article 16(l) records the accessibility Directives without claiming
   that this project checks those Directives.
 - `conditional_on_norms`: a permission or conditional norm applies only when every named norm is
   satisfied. Articles 59(1) and 60(4) are the first migration. This is the only representation of
   those condition links; `Norm` does not carry copied condition-ID fields.
+- `relies_on_norms`: one norm relies on another AI Act norm. The target must be a norm ID, never a
+  source span.
+- `interpreted_by_commission_guidance`: a Commission-guidance snippet supplies a recorded
+  interpretation; it does not create a new legal duty.
+- `out_of_scope_regulation`: an external regulatory regime affects the norm, but its requirements
+  are outside this AI Act implementation.
+- `unresolved_dependency` and `missing_dependency`: visible extraction debt. Both require a written
+  explanation and cannot pretend to have a target.
 
 Every relation has a stable ID, a source norm, exact legal-basis spans, and typed targets. The
 builder and loader reject unknown sources, targets, self-conditions, or non-normative legal-basis

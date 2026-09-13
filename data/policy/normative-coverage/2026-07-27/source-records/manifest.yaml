@@ -202,7 +202,7 @@ norm_relations:
     legal_basis_spans: [AIA-TEXT-A016-P010]
   - relation_id: AIA-REL-A016-L-REQUIRES-ACCESSIBILITY-DIRECTIVES
     source_norm_id: AIA-NORM-A016-L-ACCESSIBILITY
-    kind: requires_external_requirements
+    kind: subject_to_external_requirements
     external_requirements:
       - Directive (EU) 2016/2102; Directive (EU) 2019/882
     legal_basis_spans: [AIA-TEXT-A016-P013]

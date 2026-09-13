@@ -346,6 +346,48 @@ def test_condition_relationship_is_canonical_and_legacy_source_field_is_rejected
         Norm.model_validate({**norms[parent.norm_id], "condition_norm_ids": [child.norm_id]})
 
 
+@pytest.mark.parametrize(
+    ("kind", "targets"),
+    [
+        (NormRelationKind.RELIES_ON_NORMS, {"target_norm_ids": ["AIA-NORM-A001-P2-CHILD"]}),
+        (
+            NormRelationKind.INTERPRETED_BY_COMMISSION_GUIDANCE,
+            {"guidance_refs": ["C-2025-5052/example"]},
+        ),
+        (
+            NormRelationKind.OUT_OF_SCOPE_REGULATION,
+            {"external_regulations": ["national procurement law"]},
+        ),
+        (NormRelationKind.UNRESOLVED_DEPENDENCY, {"detail": "Target is not yet identified."}),
+        (NormRelationKind.MISSING_DEPENDENCY, {"detail": "Required target is absent."}),
+    ],
+)
+def test_dependency_relation_kinds_have_only_their_declared_target(kind, targets):
+    relation = NormRelation(
+        relation_id="AIA-REL-A001-P1-DEPENDENCY",
+        source_norm_id="AIA-NORM-A001-P1-PARENT",
+        kind=kind,
+        legal_basis_spans=["AIA-TEXT-A001-P1"],
+        **targets,
+    )
+
+    assert relation.kind is kind
+
+
+def test_relation_schema_rejects_retired_factual_conditions_field():
+    with pytest.raises(ValueError, match="factual_conditions"):
+        NormRelation.model_validate(
+            {
+                "relation_id": "AIA-REL-A001-P1-DEPENDENCY",
+                "source_norm_id": "AIA-NORM-A001-P1-PARENT",
+                "kind": "relies_on_norms",
+                "target_norm_ids": ["AIA-NORM-A001-P2-CHILD"],
+                "legal_basis_spans": ["AIA-TEXT-A001-P1"],
+                "factual_conditions": [],
+            }
+        )
+
+
 def test_document_verifier_approves_all_non_debt_segments(tmp_path):
     version = "2030-01-02"
     body = "Article 1\nPurpose\n\n1. Context only.\n"

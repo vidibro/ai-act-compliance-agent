@@ -197,7 +197,7 @@ def test_article_sixteen_cross_references_are_typed_relations_not_hidden_criteri
     assert set(allocation.target_rule_ids) == set(source.implementation_refs)
     assert "AIA-HR-A15" in allocation.target_rule_ids
     external = relations["AIA-REL-A016-L-REQUIRES-ACCESSIBILITY-DIRECTIVES"]
-    assert external.kind is NormRelationKind.REQUIRES_EXTERNAL_REQUIREMENTS
+    assert external.kind is NormRelationKind.SUBJECT_TO_EXTERNAL_REQUIREMENTS
     assert external.target_rule_ids == []
     assert traceability_errors(bundle, spec, LEDGER) == []
 

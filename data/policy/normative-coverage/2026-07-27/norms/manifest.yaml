@@ -17,6 +17,8 @@ relations:
   - AIA-NORM-A059-P1-I-DOCUMENT-TRAINING-TESTING-VALIDATION
   - AIA-NORM-A059-P1-J-PUBLISH-PROJECT-SUMMARY
   external_requirements: []
+  guidance_refs: []
+  external_regulations: []
   legal_basis_spans:
   - AIA-TEXT-A059-P001
   detail: ''
@@ -41,6 +43,8 @@ relations:
   - AIA-NORM-A060-P4-J-QUALIFIED-OVERSIGHT
   - AIA-NORM-A060-P4-K-REVERSIBLE-OUTPUTS
   external_requirements: []
+  guidance_refs: []
+  external_regulations: []
   legal_basis_spans:
   - AIA-TEXT-A060-P006
   detail: ''
@@ -64,6 +68,8 @@ relations:
   - AIA-HR-A15
   target_norm_ids: []
   external_requirements: []
+  guidance_refs: []
+  external_regulations: []
   legal_basis_spans:
   - AIA-TEXT-A016-P002
   detail: ''
@@ -79,6 +85,8 @@ relations:
   - AIA-PO-A43-4
   target_norm_ids: []
   external_requirements: []
+  guidance_refs: []
+  external_regulations: []
   legal_basis_spans:
   - AIA-TEXT-A016-P007
   detail: ''
@@ -90,6 +98,8 @@ relations:
   - AIA-PO-A47-4
   target_norm_ids: []
   external_requirements: []
+  guidance_refs: []
+  external_regulations: []
   legal_basis_spans:
   - AIA-TEXT-A016-P008
   detail: ''
@@ -100,6 +110,8 @@ relations:
   - AIA-PO-A48
   target_norm_ids: []
   external_requirements: []
+  guidance_refs: []
+  external_regulations: []
   legal_basis_spans:
   - AIA-TEXT-A016-P009
   detail: ''
@@ -110,16 +122,20 @@ relations:
   - AIA-PO-A49
   target_norm_ids: []
   external_requirements: []
+  guidance_refs: []
+  external_regulations: []
   legal_basis_spans:
   - AIA-TEXT-A016-P010
   detail: ''
 - relation_id: AIA-REL-A016-L-REQUIRES-ACCESSIBILITY-DIRECTIVES
   source_norm_id: AIA-NORM-A016-L-ACCESSIBILITY
-  kind: requires_external_requirements
+  kind: subject_to_external_requirements
   target_rule_ids: []
   target_norm_ids: []
   external_requirements:
   - Directive (EU) 2016/2102; Directive (EU) 2019/882
+  guidance_refs: []
+  external_regulations: []
   legal_basis_spans:
   - AIA-TEXT-A016-P013
   detail: The two named Directives supply the substantive accessibility requirements; this Regulation
@@ -131,6 +147,8 @@ relations:
   target_norm_ids:
   - AIA-NORM-A048-P3-AFFIX-CE-MARKING
   external_requirements: []
+  guidance_refs: []
+  external_regulations: []
   legal_basis_spans:
   - AIA-TEXT-A048-P001
   detail: ''
@@ -141,6 +159,8 @@ relations:
   target_norm_ids:
   - AIA-NORM-A016-A-SECTION-2-COMPLIANCE
   external_requirements: []
+  guidance_refs: []
+  external_regulations: []
   legal_basis_spans:
   - AIA-TEXT-A008-P001
   detail: ''
@@ -153,6 +173,8 @@ relations:
   - AIA-NORM-A020-P1-INFORM-SUPPLY-CHAIN
   - AIA-NORM-A020-P2-INVESTIGATE-RISK
   external_requirements: []
+  guidance_refs: []
+  external_regulations: []
   legal_basis_spans:
   - AIA-TEXT-A016-P011
   detail: ''
@@ -164,6 +186,8 @@ relations:
   - AIA-NORM-A019-P1-KEEP-CONTROLLED-LOGS
   - AIA-NORM-A019-P1-RETENTION-PERIOD
   external_requirements: []
+  guidance_refs: []
+  external_regulations: []
   legal_basis_spans:
   - AIA-TEXT-A016-P006
   detail: ''
@@ -178,6 +202,8 @@ relations:
   - AIA-NORM-A018-P1-D-NOTIFIED-BODY-DOCUMENTS
   - AIA-NORM-A018-P1-E-EU-DECLARATION
   external_requirements: []
+  guidance_refs: []
+  external_regulations: []
   legal_basis_spans:
   - AIA-TEXT-A016-P005
   detail: ''
@@ -188,6 +214,8 @@ relations:
   target_norm_ids:
   - AIA-NORM-A017-P1-QMS
   external_requirements: []
+  guidance_refs: []
+  external_regulations: []
   legal_basis_spans:
   - AIA-TEXT-A016-P004
   detail: ''
@@ -198,6 +226,8 @@ relations:
   target_norm_ids:
   - AIA-NORM-A004A-P1-HIGH-RISK-BIAS-DATA-PROCESSING
   external_requirements: []
+  guidance_refs: []
+  external_regulations: []
   legal_basis_spans:
   - AIA-TEXT-A010-P013
   detail: ''
@@ -208,6 +238,8 @@ relations:
   target_norm_ids:
   - AIA-NORM-A004A-P1-B-REUSE-SECURITY
   external_requirements: []
+  guidance_refs: []
+  external_regulations: []
   legal_basis_spans:
   - AIA-TEXT-A010-P015
   detail: ''
@@ -218,6 +250,8 @@ relations:
   target_norm_ids:
   - AIA-NORM-A004A-P1-C-ACCESS-SAFEGUARDS
   external_requirements: []
+  guidance_refs: []
+  external_regulations: []
   legal_basis_spans:
   - AIA-TEXT-A010-P016
   detail: ''
@@ -228,6 +262,8 @@ relations:
   target_norm_ids:
   - AIA-NORM-A004A-P1-D-NO-THIRD-PARTY-ACCESS
   external_requirements: []
+  guidance_refs: []
+  external_regulations: []
   legal_basis_spans:
   - AIA-TEXT-A010-P017
   detail: ''
@@ -238,6 +274,8 @@ relations:
   target_norm_ids:
   - AIA-NORM-A004A-P1-E-DELETE-DATA
   external_requirements: []
+  guidance_refs: []
+  external_regulations: []
   legal_basis_spans:
   - AIA-TEXT-A010-P018
   detail: ''
@@ -248,6 +286,8 @@ relations:
   target_norm_ids:
   - AIA-NORM-A004A-P1-F-RECORD-NECESSITY
   external_requirements: []
+  guidance_refs: []
+  external_regulations: []
   legal_basis_spans:
   - AIA-TEXT-A010-P019
   detail: ''
@@ -262,6 +302,8 @@ relations:
   - AIA-NORM-A050-P4-DEEPFAKE
   - AIA-NORM-A050-P4-TEXT
   external_requirements: []
+  guidance_refs: []
+  external_regulations: []
   legal_basis_spans:
   - AIA-TEXT-A050-P5
   detail: ''
@@ -272,6 +314,8 @@ relations:
   target_norm_ids:
   - AIA-NORM-A011-P1-ANNEX-IV
   external_requirements: []
+  guidance_refs: []
+  external_regulations: []
   legal_basis_spans:
   - AIA-TEXT-ANNEX-IV-CHAPEAU
   detail: ''
@@ -285,6 +329,8 @@ relations:
   - AIA-NORM-A071-P2-PROVIDER-ENTER-ANNEX-VIII-DATA
   - AIA-NORM-A071-P2-REPRESENTATIVE-ENTER-ANNEX-VIII-DATA
   external_requirements: []
+  guidance_refs: []
+  external_regulations: []
   legal_basis_spans:
   - AIA-TEXT-A016-P010
   - AIA-TEXT-A022-P008
@@ -300,6 +346,8 @@ relations:
   - AIA-NORM-A049-P2-PROVIDER-REGISTER-NON-HIGH-RISK
   - AIA-NORM-A049-P2-REPRESENTATIVE-REGISTER-NON-HIGH-RISK
   external_requirements: []
+  guidance_refs: []
+  external_regulations: []
   legal_basis_spans:
   - AIA-TEXT-A006-P015
   - AIA-TEXT-A049-P002
@@ -314,6 +362,8 @@ relations:
   - AIA-NORM-A023-P6-PROVIDE-CONFORMITY-INFORMATION
   - AIA-NORM-A024-P5-PROVIDE-ACTION-INFORMATION
   external_requirements: []
+  guidance_refs: []
+  external_regulations: []
   legal_basis_spans:
   - AIA-TEXT-A021-P001
   - AIA-TEXT-A022-P006
@@ -327,6 +377,8 @@ relations:
   target_norm_ids:
   - AIA-NORM-A022-P3-C-PROVIDE-LOG-ACCESS
   external_requirements: []
+  guidance_refs: []
+  external_regulations: []
   legal_basis_spans:
   - AIA-TEXT-A021-P002
   - AIA-TEXT-A022-P006
@@ -338,6 +390,8 @@ relations:
   target_norm_ids:
   - AIA-NORM-A054-P2-ENABLE-REPRESENTATIVE
   external_requirements: []
+  guidance_refs: []
+  external_regulations: []
   legal_basis_spans:
   - AIA-TEXT-A022-P002
   - AIA-TEXT-A054-P002
@@ -349,6 +403,8 @@ relations:
   target_norm_ids:
   - AIA-NORM-A054-P5-TERMINATE-MANDATE
   external_requirements: []
+  guidance_refs: []
+  external_regulations: []
   legal_basis_spans:
   - AIA-TEXT-A022-P009
   - AIA-TEXT-A054-P009
@@ -360,6 +416,8 @@ relations:
   target_norm_ids:
   - AIA-NORM-A024-P2-WITHHOLD-NONCONFORMING-SYSTEM
   external_requirements: []
+  guidance_refs: []
+  external_regulations: []
   legal_basis_spans:
   - AIA-TEXT-A023-P006
   - AIA-TEXT-A024-P002
@@ -371,6 +429,8 @@ relations:
   target_norm_ids:
   - AIA-NORM-A024-P3-PRESERVE-COMPLIANCE
   external_requirements: []
+  guidance_refs: []
+  external_regulations: []
   legal_basis_spans:
   - AIA-TEXT-A023-P008
   - AIA-TEXT-A024-P003
@@ -382,6 +442,8 @@ relations:
   target_norm_ids:
   - AIA-NORM-A024-P6-COOPERATE
   external_requirements: []
+  guidance_refs: []
+  external_regulations: []
   legal_basis_spans:
   - AIA-TEXT-A023-P011
   - AIA-TEXT-A024-P006
@@ -394,6 +456,8 @@ relations:
   - AIA-NORM-A080-P5-CORRECT-ALL-UNION-SYSTEMS
   - AIA-NORM-A082-P2-CORRECT-ALL-UNION-SYSTEMS
   external_requirements: []
+  guidance_refs: []
+  external_regulations: []
   legal_basis_spans:
   - AIA-TEXT-A079-P006
   - AIA-TEXT-A080-P005
@@ -417,6 +481,8 @@ relations:
   - AIA-NORM-A108-ARTICLE58-ACCOUNT-FOR-HIGH-RISK-REQUIREMENTS
   - AIA-NORM-A109-P3-ACCOUNT-FOR-HIGH-RISK-REQUIREMENTS
   external_requirements: []
+  guidance_refs: []
+  external_regulations: []
   legal_basis_spans:
   - AIA-TEXT-A102-P001
   - AIA-TEXT-A103-P001
@@ -440,6 +506,8 @@ relations:
   - AIA-NORM-A074-P14-ARTICLE-78-CONFIDENTIALITY
   - AIA-NORM-A077-P4-TREAT-INFORMATION-CONFIDENTIALLY
   external_requirements: []
+  guidance_refs: []
+  external_regulations: []
   legal_basis_spans:
   - AIA-TEXT-A021-P003
   - AIA-TEXT-A074-P020
@@ -453,6 +521,8 @@ relations:
   - AIA-NORM-A045-P4-CONFIDENTIALITY
   - AIA-NORM-A075-P3-SAFEGUARD-CONFIDENTIALITY
   external_requirements: []
+  guidance_refs: []
+  external_regulations: []
   legal_basis_spans:
   - AIA-TEXT-A028-P006
   - AIA-TEXT-A045-P011
@@ -466,6 +536,8 @@ relations:
   - AIA-NORM-A056-P9-EXAMINATION-PROCEDURE
   - AIA-NORM-A058-P1-EXAMINATION-PROCEDURE
   external_requirements: []
+  guidance_refs: []
+  external_regulations: []
   legal_basis_spans:
   - AIA-TEXT-A041-P009
   - AIA-TEXT-A056-P014
@@ -478,6 +550,8 @@ relations:
   target_norm_ids:
   - AIA-NORM-A046-P5-ADDRESS-DECISION
   external_requirements: []
+  guidance_refs: []
+  external_regulations: []
   legal_basis_spans:
   - AIA-TEXT-A030-P006
   - AIA-TEXT-A046-P005
@@ -489,6 +563,8 @@ relations:
   target_norm_ids:
   - AIA-NORM-A093-P3-MAKE-COMMITMENTS-BINDING
   external_requirements: []
+  guidance_refs: []
+  external_regulations: []
   legal_basis_spans:
   - AIA-TEXT-A075B-P001
   - AIA-TEXT-A093-P006
@@ -500,6 +576,8 @@ relations:
   target_norm_ids:
   - AIA-NORM-A080-P3-INFORM-CROSS-BORDER-USE
   external_requirements: []
+  guidance_refs: []
+  external_regulations: []
   legal_basis_spans:
   - AIA-TEXT-A079-P005
   - AIA-TEXT-A080-P003
@@ -511,6 +589,8 @@ relations:
   target_norm_ids:
   - AIA-NORM-A093-P2-INITIATE-STRUCTURED-DIALOGUE
   external_requirements: []
+  guidance_refs: []
+  external_regulations: []
   legal_basis_spans:
   - AIA-TEXT-A091-P002
   - AIA-TEXT-A093-P005
@@ -522,6 +602,8 @@ relations:
   target_norm_ids:
   - AIA-NORM-A092-P4-ACCESS-REQUEST-CONTENT
   external_requirements: []
+  guidance_refs: []
+  external_regulations: []
   legal_basis_spans:
   - AIA-TEXT-A091-P004
   - AIA-TEXT-A092-P006
@@ -533,6 +615,8 @@ relations:
   target_norm_ids:
   - AIA-NORM-A092-P5-AUTHORISED-PERSON-PROVIDE-ACCESS
   external_requirements: []
+  guidance_refs: []
+  external_regulations: []
   legal_basis_spans:
   - AIA-TEXT-A091-P005
   - AIA-TEXT-A092-P007
@@ -544,6 +628,8 @@ relations:
   target_norm_ids:
   - AIA-NORM-A026-P6-KEEP-CONTROLLED-LOGS
   external_requirements: []
+  guidance_refs: []
+  external_regulations: []
   legal_basis_spans:
   - AIA-TEXT-A019-P001
   - AIA-TEXT-A026-P6
@@ -555,6 +641,8 @@ relations:
   target_norm_ids:
   - AIA-NORM-A060-P4-C-REGISTER-TESTING
   external_requirements: []
+  guidance_refs: []
+  external_regulations: []
   legal_basis_spans:
   - AIA-TEXT-ANNEX-IX-P001
   detail: ''
@@ -565,6 +653,8 @@ relations:
   target_norm_ids:
   - AIA-NORM-A047-P2-ANNEX-V-CONTENT
   external_requirements: []
+  guidance_refs: []
+  external_regulations: []
   legal_basis_spans:
   - AIA-TEXT-ANNEX-V-P001
   detail: ''
@@ -575,6 +665,8 @@ relations:
   target_norm_ids:
   - AIA-NORM-A053-P1-A-DRAW-KEEP-DOCUMENTATION
   external_requirements: []
+  guidance_refs: []
+  external_regulations: []
   legal_basis_spans:
   - AIA-TEXT-ANNEX-XI-P003
   detail: ''
@@ -585,6 +677,8 @@ relations:
   target_norm_ids:
   - AIA-NORM-A053-P1-A-DRAW-KEEP-DOCUMENTATION
   external_requirements: []
+  guidance_refs: []
+  external_regulations: []
   legal_basis_spans:
   - AIA-TEXT-ANNEX-XI-P019
   detail: ''
@@ -595,6 +689,8 @@ relations:
   target_norm_ids:
   - AIA-NORM-A053-P1-A-DRAW-KEEP-DOCUMENTATION
   external_requirements: []
+  guidance_refs: []
+  external_regulations: []
   legal_basis_spans:
   - AIA-TEXT-ANNEX-XI-P020
   detail: ''
@@ -605,6 +701,8 @@ relations:
   target_norm_ids:
   - AIA-NORM-A053-P1-A-DRAW-KEEP-DOCUMENTATION
   external_requirements: []
+  guidance_refs: []
+  external_regulations: []
   legal_basis_spans:
   - AIA-TEXT-ANNEX-XI-P021
   detail: ''
@@ -615,6 +713,8 @@ relations:
   target_norm_ids:
   - AIA-NORM-A053-P1-B-ANNEX-XII-CONTENT
   external_requirements: []
+  guidance_refs: []
+  external_regulations: []
   legal_basis_spans:
   - AIA-TEXT-ANNEX-XII-P001
   detail: ''

@@ -124,14 +124,21 @@ class NormRelationKind(StrEnum):
 
     ALLOCATES_DUTY_TO_POLICY_RULES = "allocates_duty_to_policy_rules"
     CARRIED_BY_POLICY_RULES = "carried_by_policy_rules"
-    REQUIRES_EXTERNAL_REQUIREMENTS = "requires_external_requirements"
+    SUBJECT_TO_EXTERNAL_REQUIREMENTS = "subject_to_external_requirements"
     CONDITIONAL_ON_NORMS = "conditional_on_norms"
     CARRIED_BY_NORMS = "carried_by_norms"
     PARALLEL_NORMS = "parallel_norms"
+    RELIES_ON_NORMS = "relies_on_norms"
+    INTERPRETED_BY_COMMISSION_GUIDANCE = "interpreted_by_commission_guidance"
+    OUT_OF_SCOPE_REGULATION = "out_of_scope_regulation"
+    UNRESOLVED_DEPENDENCY = "unresolved_dependency"
+    MISSING_DEPENDENCY = "missing_dependency"
 
 
 class NormRelation(BaseModel):
     """One reviewed internal or external implementation relation for a norm."""
+
+    model_config = ConfigDict(extra="forbid")
 
     relation_id: str = Field(pattern=r"^AIA-REL-[A-Z0-9-]+$")
     source_norm_id: str = Field(pattern=r"^AIA-NORM-[A-Z0-9-]+$")
@@ -139,6 +146,8 @@ class NormRelation(BaseModel):
     target_rule_ids: list[str] = []
     target_norm_ids: list[str] = []
     external_requirements: list[str] = []
+    guidance_refs: list[str] = []
+    external_regulations: list[str] = []
     legal_basis_spans: list[str] = Field(min_length=1)
     detail: str = ""
 
@@ -147,23 +156,70 @@ class NormRelation(BaseModel):
         has_rules = bool(self.target_rule_ids)
         has_norms = bool(self.target_norm_ids)
         has_external = bool(self.external_requirements)
-        if self.kind is NormRelationKind.REQUIRES_EXTERNAL_REQUIREMENTS:
-            if has_rules or has_norms or not has_external:
+        has_guidance = bool(self.guidance_refs)
+        has_external_regulations = bool(self.external_regulations)
+        if self.kind is NormRelationKind.SUBJECT_TO_EXTERNAL_REQUIREMENTS:
+            if (
+                has_rules
+                or has_norms
+                or has_guidance
+                or has_external_regulations
+                or not has_external
+            ):
                 raise ValueError(
-                    "requires_external_requirements needs external_requirements and no target rules"
+                    "subject_to_external_requirements needs external_requirements "
+                    "and no target rules"
                 )
             if not self.detail.strip():
-                raise ValueError("requires_external_requirements requires detail")
+                raise ValueError("subject_to_external_requirements requires detail")
         elif self.kind in {
             NormRelationKind.CONDITIONAL_ON_NORMS,
             NormRelationKind.CARRIED_BY_NORMS,
             NormRelationKind.PARALLEL_NORMS,
+            NormRelationKind.RELIES_ON_NORMS,
         }:
-            if has_rules or has_external or not has_norms:
+            if (
+                has_rules
+                or has_external
+                or has_guidance
+                or has_external_regulations
+                or not has_norms
+            ):
                 raise ValueError(
                     f"{self.kind.value} needs target_norm_ids and no rule or external targets"
                 )
-        elif not has_rules or has_norms or has_external:
+        elif self.kind is NormRelationKind.INTERPRETED_BY_COMMISSION_GUIDANCE:
+            if (
+                has_rules
+                or has_norms
+                or has_external
+                or has_external_regulations
+                or not has_guidance
+            ):
+                raise ValueError("interpreted_by_commission_guidance needs guidance_refs only")
+        elif self.kind is NormRelationKind.OUT_OF_SCOPE_REGULATION:
+            if (
+                has_rules
+                or has_norms
+                or has_external
+                or has_guidance
+                or not has_external_regulations
+            ):
+                raise ValueError("out_of_scope_regulation needs external_regulations only")
+        elif self.kind in {
+            NormRelationKind.UNRESOLVED_DEPENDENCY,
+            NormRelationKind.MISSING_DEPENDENCY,
+        }:
+            if (
+                has_rules
+                or has_norms
+                or has_external
+                or has_guidance
+                or has_external_regulations
+                or not self.detail.strip()
+            ):
+                raise ValueError(f"{self.kind.value} needs detail only")
+        elif not has_rules or has_norms or has_external or has_guidance or has_external_regulations:
             raise ValueError(
                 f"{self.kind.value} needs target_rule_ids and no external requirements"
             )
@@ -171,6 +227,12 @@ class NormRelation(BaseModel):
             raise ValueError("norm relation target_rule_ids must not contain duplicates")
         if len(self.target_norm_ids) != len(set(self.target_norm_ids)):
             raise ValueError("norm relation target_norm_ids must not contain duplicates")
+        for name, values in (
+            ("guidance_refs", self.guidance_refs),
+            ("external_regulations", self.external_regulations),
+        ):
+            if len(values) != len(set(values)):
+                raise ValueError(f"norm relation {name} must not contain duplicates")
         if len(self.external_requirements) != len(set(self.external_requirements)):
             raise ValueError("norm relation external_requirements must not contain duplicates")
         return self
