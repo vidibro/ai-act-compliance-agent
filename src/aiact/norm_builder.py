@@ -19,7 +19,6 @@ from aiact.schemas.interpretation import InterpretationTargetKind, InterpretiveL
 from aiact.schemas.norm import (
     ConditionGroup,
     ImplementationMode,
-    NormDependency,
     NormKind,
     NormRelation,
     NormRelationKind,
@@ -142,7 +141,6 @@ class NormSourceRecord(BaseModel):
     exceptions: list[str] = []
     mandatory_content: list[str] = []
     mandatory_content_source: Literal["numbered_items"] | None = None
-    dependencies: list[NormDependency] = []
     qualifier_spans: list[str] = []
     effective_date_spans: list[str] = []
     verified_by: str = ""
@@ -468,7 +466,7 @@ def _detection_channels(record: NormSourceRecord) -> list[str]:
         channels.append("other_modal")
     if record.kind in {NormKind.LEGAL_CONSEQUENCE, NormKind.APPLICABILITY}:
         channels.append("deeming_or_consequence")
-    if record.dependencies or record.qualifier_spans:
+    if record.qualifier_spans:
         channels.append("cross_reference_structure")
     if record.implementation_refs:
         channels.append("existing_implementation")
@@ -538,14 +536,6 @@ def _build_norms(
             if record.norm_id not in norm_ids:
                 norm_ids.append(record.norm_id)
 
-        dependencies = [
-            {
-                "dependency_ref": dependency.dependency_ref,
-                "resolution": dependency.resolution.value,
-                "detail": dependency.detail,
-            }
-            for dependency in record.dependencies
-        ]
         mandatory_content = list(record.mandatory_content)
         if record.mandatory_content_source == "numbered_items":
             mandatory_content = _numbered_items(primary_text)
@@ -571,7 +561,6 @@ def _build_norms(
             "conditions": record.model_dump(mode="json")["conditions"],
             "exceptions": record.exceptions,
             "mandatory_content": mandatory_content,
-            "dependencies": dependencies,
             "product_scope": record.product_scope.value,
             "product_scope_reason": record.product_scope_reason,
             "implementation_mode": _resolved_mode(record).value,

@@ -25,7 +25,6 @@ norms:
   mandatory_content:
   - conduct adversarial testing of the model with a view to identifying and mitigating systemic risks
   - document adversarial testing of the model with a view to identifying and mitigating systemic risks
-  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: compliance_rule
@@ -66,7 +65,6 @@ norms:
   conditions: []
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: compliance_rule
@@ -108,7 +106,6 @@ norms:
   mandatory_content:
   - relevant serious-incident information
   - possible corrective measures
-  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: compliance_rule
@@ -147,7 +144,6 @@ norms:
   conditions: []
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: compliance_rule
@@ -186,7 +182,6 @@ norms:
   conditions: []
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: no_product_action
   product_scope_reason: Provides an optional compliance route rather than an additional product action.
   implementation_mode: compliance_rule
@@ -223,7 +218,6 @@ norms:
   conditions: []
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: no_product_action
   product_scope_reason: Establishes an evidentiary consequence rather than an independent action.
   implementation_mode: compliance_rule
@@ -262,7 +256,6 @@ norms:
   - the provider neither adheres to an approved code nor complies with a covering harmonised standard
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: compliance_rule
@@ -299,7 +292,6 @@ norms:
   conditions: []
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required

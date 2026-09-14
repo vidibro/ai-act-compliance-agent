@@ -14,7 +14,6 @@ norms:
   detection_channels:
   - semantic_legal_effect
   - shall_token
-  - cross_reference_structure
   primary_spans:
   - AIA-TEXT-A008-P001
   qualifier_spans: []
@@ -22,11 +21,6 @@ norms:
   conditions: []
   exceptions: []
   mandatory_content: []
-  dependencies:
-  - dependency_ref: Articles 9 to 15 of this Regulation
-    resolution: unresolved
-    detail: Articles 9 to 15 supply the detailed high-risk AI-system requirements. All are reviewed; the
-      reference names a range of articles rather than one norm, so it resolves to no single target.
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: carried_by_other_norm
@@ -56,7 +50,6 @@ norms:
   detection_channels:
   - semantic_legal_effect
   - shall_token
-  - cross_reference_structure
   - existing_implementation
   primary_spans:
   - AIA-TEXT-A008-P001
@@ -65,11 +58,6 @@ norms:
   conditions: []
   exceptions: []
   mandatory_content: []
-  dependencies:
-  - dependency_ref: Article 9 of this Regulation
-    resolution: unresolved
-    detail: Article 9 supplies the detailed risk-management-system requirements and has not yet been semantically
-      reviewed.
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: compliance_rule
@@ -101,7 +89,6 @@ norms:
   detection_channels:
   - semantic_legal_effect
   - shall_token
-  - cross_reference_structure
   - existing_implementation
   primary_spans:
   - AIA-TEXT-A008-P002
@@ -112,11 +99,6 @@ norms:
     listed in Annex I Section A apply
   exceptions: []
   mandatory_content: []
-  dependencies:
-  - dependency_ref: Annex I, Section A, of this Regulation and the Union harmonisation legislation listed
-      there
-    resolution: unresolved
-    detail: The relevant external legislation supplies the applicable product requirements.
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: compliance_rule
@@ -150,7 +132,6 @@ norms:
   detection_channels:
   - semantic_legal_effect
   - shall_token
-  - cross_reference_structure
   - existing_implementation
   primary_spans:
   - AIA-TEXT-A008-P002
@@ -163,12 +144,6 @@ norms:
     burdens
   exceptions: []
   mandatory_content: []
-  dependencies:
-  - dependency_ref: Annex I, Section A, of this Regulation and the Union harmonisation legislation listed
-      there
-    resolution: unresolved
-    detail: The relevant external legislation supplies the existing product documentation and procedures
-      into which AI compliance work may be integrated.
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: compliance_rule

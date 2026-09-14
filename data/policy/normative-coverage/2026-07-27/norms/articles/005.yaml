@@ -32,7 +32,6 @@ norms:
     or a group
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: applicability_question
@@ -79,7 +78,6 @@ norms:
     person
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: applicability_question
@@ -134,7 +132,6 @@ norms:
   - manipulation that neither increases exposure of depicted intimate parts nor alters the nature of depicted
     sexually explicit activities does not constitute manipulation
   mandatory_content: []
-  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: applicability_question
@@ -183,7 +180,6 @@ norms:
   exceptions:
   - a without-right defence applies under national law
   mandatory_content: []
-  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: applicability_question
@@ -230,7 +226,6 @@ norms:
     to the social behaviour or its gravity
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: applicability_question
@@ -276,7 +271,6 @@ norms:
   - an AI system supports a human assessment of a person's involvement in criminal activity already based
     on objective and verifiable facts directly linked to criminal activity
   mandatory_content: []
-  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: applicability_question
@@ -316,7 +310,6 @@ norms:
   conditions: []
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: applicability_question
@@ -358,7 +351,6 @@ norms:
   exceptions:
   - the system is intended to be put in place or on the market for medical or safety reasons
   mandatory_content: []
-  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: applicability_question
@@ -403,7 +395,6 @@ norms:
   - labelling or filtering lawfully acquired biometric datasets based on biometric data
   - categorising biometric data in the area of law enforcement
   mandatory_content: []
-  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: applicability_question
@@ -450,11 +441,6 @@ norms:
   - localisation or identification of a criminal suspect for investigation, prosecution, or penalty execution
     concerning qualifying Annex II offences
   mandatory_content: []
-  dependencies:
-  - dependency_ref: Annex II of this Regulation
-    resolution: unresolved
-    detail: Point (h)(iii) depends on the offence list in Annex II, which has not yet been semantically
-      reviewed.
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: applicability_question
@@ -491,7 +477,6 @@ norms:
   conditions: []
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: dependency_only
   product_scope_reason: This saving clause constrains interpretation without creating an independent AI
     Act product action.
@@ -539,7 +524,6 @@ norms:
     it
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: applicability_question
@@ -582,7 +566,6 @@ norms:
     or performance
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: applicability_question
@@ -624,7 +607,6 @@ norms:
   - the manipulation does not alter the nature of depicted sexually explicit activities
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: applicability_question
@@ -661,7 +643,6 @@ norms:
   conditions: []
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: missing
@@ -703,7 +684,6 @@ norms:
     and scale of the harm that would be caused if the system were not used
   - the consequences of the use of the system for the rights and freedoms of all persons concerned, in
     particular the seriousness, probability and scale of those consequences
-  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: missing
@@ -742,7 +722,6 @@ norms:
   conditions: []
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: missing
@@ -772,7 +751,6 @@ norms:
   detection_channels:
   - semantic_legal_effect
   - shall_token
-  - cross_reference_structure
   - existing_implementation
   primary_spans:
   - AIA-TEXT-A005-P027
@@ -781,10 +759,6 @@ norms:
   conditions: []
   exceptions: []
   mandatory_content: []
-  dependencies:
-  - dependency_ref: Article 27 of this Regulation
-    resolution: unresolved
-    detail: Article 27 defines the impact-assessment requirements and has not yet been semantically reviewed.
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: compliance_rule
@@ -815,7 +789,6 @@ norms:
   detection_channels:
   - semantic_legal_effect
   - other_modal
-  - cross_reference_structure
   primary_spans:
   - AIA-TEXT-A005-P027
   qualifier_spans: []
@@ -825,10 +798,6 @@ norms:
   exceptions:
   - in a duly justified urgent case, use may begin before registration
   mandatory_content: []
-  dependencies:
-  - dependency_ref: Article 49 of this Regulation
-    resolution: unresolved
-    detail: Article 49 defines the EU-database registration and has not yet been semantically reviewed.
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: missing
@@ -868,7 +837,6 @@ norms:
   - the use pursues an Article 5(1)(h) objective and is subject to the Article 5(2) conditions
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: missing
@@ -907,7 +875,6 @@ norms:
   - request authorisation without undue delay and no later than 24 hours after use commences
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: missing
@@ -943,7 +910,6 @@ norms:
   - the requested authorisation is rejected
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: missing
@@ -981,7 +947,6 @@ norms:
   - the requested authorisation is rejected
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: missing
@@ -1025,7 +990,6 @@ norms:
   - the time period and geographic and personal scope are limited to what is strictly necessary
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: missing
@@ -1060,7 +1024,6 @@ norms:
   conditions: []
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: missing
@@ -1096,7 +1059,6 @@ norms:
   conditions: []
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: missing
@@ -1134,7 +1096,6 @@ norms:
   conditions: []
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: missing
@@ -1163,7 +1124,6 @@ norms:
   detection_channels:
   - semantic_legal_effect
   - shall_token
-  - cross_reference_structure
   primary_spans:
   - AIA-TEXT-A005-P030
   qualifier_spans: []
@@ -1175,11 +1135,6 @@ norms:
   mandatory_content:
   - include at least the information specified in Article 5(6)
   - exclude sensitive operational data
-  dependencies:
-  - dependency_ref: Article 5(6) of this Regulation
-    resolution: unresolved
-    detail: Article 5(6) supplies the minimum notification information and has not yet been semantically
-      reviewed.
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: missing
@@ -1217,7 +1172,6 @@ norms:
   conditions: []
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for Member States, although their
     national rules determine whether covered use is permitted.
@@ -1255,7 +1209,6 @@ norms:
   conditions: []
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for Member States, although their
     national rules govern covered use.
@@ -1295,7 +1248,6 @@ norms:
   conditions: []
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for Member States, although the
     specified objectives constrain covered use.
@@ -1331,7 +1283,6 @@ norms:
   conditions: []
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for Member States.
   implementation_mode: none_required
@@ -1367,7 +1318,6 @@ norms:
   conditions: []
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for Member States, although stricter
     national law can constrain covered use.
@@ -1407,7 +1357,6 @@ norms:
   - the authority has been notified of covered use pursuant to Article 5(4)
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for national supervisory authorities.
   implementation_mode: none_required
@@ -1448,7 +1397,6 @@ norms:
   mandatory_content:
   - the number of decisions on Article 5(3) authorisation requests
   - the outcomes of those decisions
-  dependencies: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for the Commission.
   implementation_mode: none_required
@@ -1485,7 +1433,6 @@ norms:
   conditions: []
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for the Commission.
   implementation_mode: none_required
@@ -1521,7 +1468,6 @@ norms:
   conditions: []
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for the Commission.
   implementation_mode: none_required
@@ -1557,7 +1503,6 @@ norms:
   conditions: []
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: dependency_only
   product_scope_reason: This saving clause constrains legal interpretation without creating an independent
     AI Act product action.

@@ -23,7 +23,6 @@ norms:
   - before placing the high-risk AI system on the market
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: compliance_rule
@@ -63,7 +62,6 @@ norms:
   - before placing the high-risk AI system on the market
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: compliance_rule
@@ -106,7 +104,6 @@ norms:
   - required CE marking
   - EU declaration of conformity
   - instructions for use
-  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: compliance_rule
@@ -145,7 +142,6 @@ norms:
   - before placing the high-risk AI system on the market
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: compliance_rule
@@ -186,7 +182,6 @@ norms:
     falsified
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: compliance_rule
@@ -217,7 +212,6 @@ norms:
   detection_channels:
   - semantic_legal_effect
   - shall_token
-  - cross_reference_structure
   - existing_implementation
   primary_spans:
   - AIA-TEXT-A023-P006
@@ -230,10 +224,6 @@ norms:
   - provider notification
   - authorised-representative notification
   - market-surveillance-authority notification
-  dependencies:
-  - dependency_ref: Article 79(1) of this Regulation
-    resolution: unresolved
-    detail: Article 79(1) defines the referenced risk situation and has not yet been semantically reviewed.
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: compliance_rule
@@ -274,7 +264,6 @@ norms:
   mandatory_content:
   - importer name and registered trade name or trade mark
   - importer contact address
-  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: compliance_rule
@@ -313,7 +302,6 @@ norms:
   conditions: []
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: compliance_rule
@@ -355,7 +343,6 @@ norms:
   - notified-body certificate where applicable
   - instructions for use
   - EU declaration of conformity
-  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: compliance_rule
@@ -396,7 +383,6 @@ norms:
   - a relevant competent authority makes a reasoned request
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: compliance_rule
@@ -434,7 +420,6 @@ norms:
   - a relevant competent authority makes a reasoned request
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: compliance_rule
@@ -473,7 +458,6 @@ norms:
   conditions: []
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: compliance_rule

@@ -106,12 +106,6 @@ class VerificationMode(StrEnum):
     UNRESOLVED = "unresolved"
 
 
-class DependencyResolution(StrEnum):
-    GUIDANCE_LINKED = "guidance_linked"
-    MISSING = "missing"
-    UNRESOLVED = "unresolved"
-
-
 class NormRelationKind(StrEnum):
     """A legal effect that connects a norm to implementation elsewhere.
 
@@ -318,25 +312,6 @@ class NormSubject(BaseModel):
     category: SubjectCategory
 
 
-class NormDependency(BaseModel):
-    dependency_ref: str = Field(min_length=1)
-    resolution: DependencyResolution
-    detail: str = ""
-
-    @model_validator(mode="after")
-    def _unresolved_or_missing_dependency_is_explained(self) -> NormDependency:
-        if (
-            self.resolution
-            in {
-                DependencyResolution.MISSING,
-                DependencyResolution.UNRESOLVED,
-            }
-            and not self.detail.strip()
-        ):
-            raise ValueError(f"dependency {self.resolution.value} requires detail")
-        return self
-
-
 class ConditionGroup(BaseModel):
     """Explicit legal conjunction/disjunction, not an executable runtime predicate.
 
@@ -372,7 +347,6 @@ class Norm(BaseModel):
     conditions: list[str | ConditionGroup] = []
     exceptions: list[str] = []
     mandatory_content: list[str] = []
-    dependencies: list[NormDependency] = []
     product_scope: ProductScope
     product_scope_reason: str = ""
     implementation_mode: ImplementationMode

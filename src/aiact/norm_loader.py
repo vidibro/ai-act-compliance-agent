@@ -11,7 +11,6 @@ from pathlib import Path
 from aiact.config import get_settings
 from aiact.guidance import load_snippet
 from aiact.schemas.norm import (
-    DependencyResolution,
     ImplementationMode,
     NormativeCoverageBundle,
     NormInventory,
@@ -196,21 +195,6 @@ def load_normative_coverage(
             raise ValueError(f"{link.interpretation_id} references unknown norm(s): {unknown}")
         for ref in link.snippet_refs:
             load_snippet(ref, guidance_root)
-
-    guidance_refs_by_norm: dict[str, set[str]] = {norm_id: set() for norm_id in norms_by_id}
-    for link in norm_inventory.interpretations:
-        for norm_id in link.norm_ids:
-            guidance_refs_by_norm[norm_id].update(link.snippet_refs)
-    for norm in norm_inventory.norms:
-        for dependency in norm.dependencies:
-            if (
-                dependency.resolution is DependencyResolution.GUIDANCE_LINKED
-                and dependency.dependency_ref not in guidance_refs_by_norm[norm.norm_id]
-            ):
-                raise ValueError(
-                    f"{norm.norm_id} declares guidance-linked dependency "
-                    f"{dependency.dependency_ref!r} without a matching interpretive link"
-                )
 
     return NormativeCoverageBundle(
         text_review=text_review,

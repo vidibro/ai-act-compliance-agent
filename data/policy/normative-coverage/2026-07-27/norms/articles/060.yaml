@@ -30,7 +30,6 @@ norms:
   - Article 5 prohibitions remain observed
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: missing
@@ -67,7 +66,6 @@ norms:
   conditions: []
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -104,7 +102,6 @@ norms:
   conditions: []
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: no_product_action
   product_scope_reason: Preserves other applicable law rather than creating an independent product action.
   implementation_mode: none_required
@@ -141,7 +138,6 @@ norms:
   conditions: []
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: missing
@@ -177,7 +173,6 @@ norms:
   conditions: []
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: no_product_action
   product_scope_reason: Preserves an independently applicable review requirement rather than creating
     a new one.
@@ -237,7 +232,6 @@ norms:
   - informed consent or law-enforcement substitute safeguards
   - qualified effective oversight
   - reversible and disregardable outputs
-  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: compliance_rule
@@ -275,7 +269,6 @@ norms:
   conditions: []
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: missing
@@ -323,7 +316,6 @@ norms:
       - national law provides for tacit approval
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: missing
@@ -389,7 +381,6 @@ norms:
       - the testing is registered in accordance with Article 49(5)
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: missing
@@ -429,7 +420,6 @@ norms:
     - the provider or prospective provider has appointed a legal representative established in the Union
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: missing
@@ -467,7 +457,6 @@ norms:
   conditions: []
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: missing
@@ -504,7 +493,6 @@ norms:
   conditions: []
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: missing
@@ -544,7 +532,6 @@ norms:
   - explanation of need
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: compliance_rule
@@ -581,7 +568,6 @@ norms:
   conditions: []
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: missing
@@ -625,7 +611,6 @@ norms:
   mandatory_content:
   - all aspects of the testing relevant to the deployer's decision to participate
   - Article 13 instructions for use of the AI system
-  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: compliance_rule
@@ -670,7 +655,6 @@ norms:
     with one or more deployers or prospective deployers
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: compliance_rule
@@ -708,7 +692,6 @@ norms:
   exceptions:
   - law-enforcement testing where seeking informed consent would prevent the AI system from being tested
   mandatory_content: []
-  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: missing
@@ -749,7 +732,6 @@ norms:
   - seeking informed consent would prevent the AI system from being tested
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: missing
@@ -788,7 +770,6 @@ norms:
   - seeking informed consent would prevent the AI system from being tested
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: missing
@@ -826,7 +807,6 @@ norms:
   conditions: []
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: missing
@@ -862,7 +842,6 @@ norms:
   conditions: []
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: missing
@@ -903,7 +882,6 @@ norms:
   mandatory_content:
   - withdrawal at any time by revoking informed consent
   - immediate and permanent deletion of the subject's personal data on request
-  dependencies: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -938,7 +916,6 @@ norms:
   conditions: []
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: no_product_action
   product_scope_reason: Defines a withdrawal consequence rather than an independent product action.
   implementation_mode: none_required
@@ -980,7 +957,6 @@ norms:
   - power to carry out unannounced remote or on-site inspections
   - power to perform checks on the conduct of the testing in real world conditions and the related high-risk
     AI systems
-  dependencies: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -1016,7 +992,6 @@ norms:
   conditions: []
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -1053,7 +1028,6 @@ norms:
   - a serious incident is identified in the course of the testing in real world conditions
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: missing
@@ -1094,7 +1068,6 @@ norms:
   - adopt immediate mitigation measures
   - if immediate mitigation is not adopted, suspend testing until mitigation takes place or terminate
     testing
-  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: missing
@@ -1130,7 +1103,6 @@ norms:
   conditions: []
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: missing
@@ -1166,7 +1138,6 @@ norms:
   conditions: []
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: missing
@@ -1202,7 +1173,6 @@ norms:
   conditions: []
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: no_product_action
   product_scope_reason: Establishes liability consequences rather than an independent product action.
   implementation_mode: none_required

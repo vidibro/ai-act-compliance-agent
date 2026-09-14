@@ -31,11 +31,6 @@ norms:
     or putting into service under that Annex I legislation
   exceptions: []
   mandatory_content: []
-  dependencies:
-  - dependency_ref: Annex I of this Regulation and the Union harmonisation legislation listed there
-    resolution: unresolved
-    detail: Annex I and the referenced legislation determine the covered products and conformity-assessment
-      requirements.
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: applicability_question
@@ -78,7 +73,6 @@ norms:
     efficiency, automation, convenience, or quality control
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: applicability_question
@@ -118,7 +112,6 @@ norms:
   - failure or malfunction of the AI system would endanger health and safety
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: applicability_question
@@ -160,7 +153,6 @@ norms:
   - third-party conformity assessment is required solely because of risks unrelated to health and safety
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: applicability_question
@@ -189,7 +181,6 @@ norms:
   - semantic_legal_effect
   - shall_token
   - deeming_or_consequence
-  - cross_reference_structure
   - existing_implementation
   primary_spans:
   - AIA-TEXT-A006-P007
@@ -198,10 +189,6 @@ norms:
   conditions: []
   exceptions: []
   mandatory_content: []
-  dependencies:
-  - dependency_ref: Annex III of this Regulation
-    resolution: unresolved
-    detail: Annex III supplies the high-risk use-case areas and has not yet been semantically reviewed.
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: applicability_question
@@ -266,7 +253,6 @@ norms:
   - an Annex III AI system performing profiling of natural persons is always high-risk, notwithstanding
     this exception
   mandatory_content: []
-  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: applicability_question
@@ -306,7 +292,6 @@ norms:
   - the AI system performs profiling of natural persons
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: applicability_question
@@ -345,7 +330,6 @@ norms:
   - the provider considers an Annex III AI system not to be high-risk under Article 6(3)
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: compliance_rule
@@ -373,7 +357,6 @@ norms:
   detection_channels:
   - semantic_legal_effect
   - shall_token
-  - cross_reference_structure
   primary_spans:
   - AIA-TEXT-A006-P015
   qualifier_spans: []
@@ -382,11 +365,6 @@ norms:
   - the provider concludes that an Annex III AI system is not high-risk under Article 6(3)
   exceptions: []
   mandatory_content: []
-  dependencies:
-  - dependency_ref: Article 49(2) of this Regulation
-    resolution: unresolved
-    detail: Article 49(2) supplies the detailed registration obligation and has not yet been semantically
-      reviewed.
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: missing
@@ -422,7 +400,6 @@ norms:
   - a national competent authority requests the documentation
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: missing
@@ -454,7 +431,6 @@ norms:
   detection_channels:
   - semantic_legal_effect
   - shall_token
-  - cross_reference_structure
   primary_spans:
   - AIA-TEXT-A006-P016
   qualifier_spans: []
@@ -464,10 +440,6 @@ norms:
   mandatory_content:
   - a comprehensive list of practical examples of high-risk AI-system use cases
   - a comprehensive list of practical examples of non-high-risk AI-system use cases
-  dependencies:
-  - dependency_ref: Article 96 of this Regulation
-    resolution: unresolved
-    detail: Article 96 governs Commission guidelines and has not yet been semantically reviewed.
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for the Commission.
   implementation_mode: none_required
@@ -499,7 +471,6 @@ norms:
   detection_channels:
   - semantic_legal_effect
   - other_modal
-  - cross_reference_structure
   primary_spans:
   - AIA-TEXT-A006-P017
   qualifier_spans: []
@@ -509,10 +480,6 @@ norms:
     of harm to natural persons' health, safety, or fundamental rights
   exceptions: []
   mandatory_content: []
-  dependencies:
-  - dependency_ref: Article 97 of this Regulation
-    resolution: unresolved
-    detail: Article 97 supplies the delegated-act procedure and has not yet been semantically reviewed.
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for the Commission.
   implementation_mode: none_required
@@ -543,7 +510,6 @@ norms:
   detection_channels:
   - semantic_legal_effect
   - shall_token
-  - cross_reference_structure
   primary_spans:
   - AIA-TEXT-A006-P018
   qualifier_spans: []
@@ -553,10 +519,6 @@ norms:
     and fundamental rights
   exceptions: []
   mandatory_content: []
-  dependencies:
-  - dependency_ref: Article 97 of this Regulation
-    resolution: unresolved
-    detail: Article 97 supplies the delegated-act procedure and has not yet been semantically reviewed.
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for the Commission.
   implementation_mode: none_required
@@ -589,7 +551,6 @@ norms:
   detection_channels:
   - semantic_legal_effect
   - shall_token
-  - cross_reference_structure
   primary_spans:
   - AIA-TEXT-A006-P019
   qualifier_spans: []
@@ -600,10 +561,6 @@ norms:
   - do not decrease the overall protection of health, safety and fundamental rights
   - consistency with Article 7(1) delegated acts
   - account for market and technological developments
-  dependencies:
-  - dependency_ref: Article 7(1) of this Regulation
-    resolution: unresolved
-    detail: Article 7(1) governs related delegated acts and has not yet been semantically reviewed.
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for the Commission.
   implementation_mode: none_required

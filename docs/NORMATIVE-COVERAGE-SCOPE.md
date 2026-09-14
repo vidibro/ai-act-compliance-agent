@@ -400,18 +400,14 @@ not count as independent-review coverage.
 
 ### Dependency resolution
 
-`DependencyResolution` has these values:
+There is no legacy dependency field. Every relationship is a typed canonical norm relation:
+`relies_on_norms`, `subject_to_external_requirements`,
+`interpreted_by_commission_guidance`, `national_law_regulation`, `unresolved_dependency`, or
+`missing_dependency`. The last two are visible debt and must carry a written explanation.
 
-- `guidance_linked` — a separately stored non-binding guidance snippet and its `InterpretiveLink`
-  are available;
-- `missing` — a dependency necessary for the product's interpretation is neither available nor
-  honestly bounded;
-- `unresolved` — not yet decided.
-
-Relations that previously used `internal_resolved`, `external_recorded`, or
-`national_or_factual` are now canonical typed norm relations. In particular,
-`national_law_regulation` is a targetless report boundary: it says the norm must be aligned with
-applicable national law, but this project neither selects a country nor assesses that law.
+In particular, `national_law_regulation` is a targetless report boundary: it says the norm must be
+aligned with applicable national law, but this project neither selects a country nor assesses that
+law.
 
 ## Atomicity rules
 

@@ -95,11 +95,6 @@ records:
   - known and foreseeable circumstances that may affect that expected performance
   implementation_refs: *id003
   verification_mode: judged_by_gap_analysis
-  dependencies:
-  - dependency_ref: Article 15 of this Regulation
-    resolution: unresolved
-    detail: Article 15 supplies the referenced accuracy, robustness, and cybersecurity requirements and
-      has not yet been semantically reviewed.
   verified_by: vidibro
 - norm_id: AIA-NORM-A013-P3-B-III-RISK-CIRCUMSTANCES
   source: A013-P008
@@ -196,11 +191,6 @@ records:
   - technical measures facilitating deployer interpretation of high-risk AI-system outputs
   implementation_refs: *id003
   verification_mode: judged_by_gap_analysis
-  dependencies:
-  - dependency_ref: Article 14 of this Regulation
-    resolution: unresolved
-    detail: Article 14 supplies the referenced human-oversight requirements and has not yet been semantically
-      reviewed.
   verified_by: vidibro
 - norm_id: AIA-NORM-A013-P3-E-RESOURCES-LIFETIME-AND-MAINTENANCE
   source: A013-P015

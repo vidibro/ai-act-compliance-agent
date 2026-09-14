@@ -468,10 +468,6 @@ records:
   - the Annex III high-risk system makes or assists decisions related to natural persons
   exceptions:
   - law-enforcement use follows Article 13 of Directive (EU) 2016/680
-  dependencies:
-  - dependency_ref: Article 50 of this Regulation
-    resolution: unresolved
-    detail: The Article 26(11) notice duty operates without prejudice to Article 50.
   implementation_refs: &id008
   - AIA-DP-A26-11
   verification_mode: reported_not_judged

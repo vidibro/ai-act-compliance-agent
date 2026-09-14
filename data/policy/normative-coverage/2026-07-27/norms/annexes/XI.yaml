@@ -51,7 +51,6 @@ norms:
     and identifiable-bias detection
   - computational resources, training time, and other relevant training details
   - known or estimated model energy consumption
-  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: carried_by_other_norm
@@ -88,7 +87,6 @@ norms:
   - the model's energy consumption is unknown
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: compliance_rule
@@ -140,7 +138,6 @@ norms:
   - evaluation criteria
   - metrics
   - the methodology on the identification of limitations
-  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: carried_by_other_norm
@@ -184,7 +181,6 @@ norms:
   - the measures put in place for the purpose of conducting internal and/or external adversarial testing
     (e.g. red teaming)
   - model adaptations, including alignment and fine-tuning
-  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: carried_by_other_norm
@@ -225,7 +221,6 @@ norms:
   - where applicable
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: carried_by_other_norm

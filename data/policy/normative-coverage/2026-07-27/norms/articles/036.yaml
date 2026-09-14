@@ -21,7 +21,6 @@ norms:
   conditions: []
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -57,7 +56,6 @@ norms:
   conditions: []
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -93,7 +91,6 @@ norms:
   conditions: []
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -131,7 +128,6 @@ norms:
   - the notified body decides to cease conformity-assessment activities
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -170,7 +166,6 @@ norms:
   - another notified body confirms in writing that it assumes responsibility for the covered systems
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: no_product_action
   product_scope_reason: Defines certificate validity rather than an operator compliance action.
   implementation_mode: none_required
@@ -205,7 +200,6 @@ norms:
   conditions: []
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -241,7 +235,6 @@ norms:
   - the notified body has ceased its activity
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -280,7 +273,6 @@ norms:
     31 requirements or is failing to fulfil its obligations
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -316,7 +308,6 @@ norms:
   - the objections arise in the notifying authority's investigation of the notified body
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -352,7 +343,6 @@ norms:
   - the objections arise in the notifying authority's investigation of the notified body
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -392,7 +382,6 @@ norms:
     is failing to fulfil its obligations
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -427,7 +416,6 @@ norms:
   - the notifying authority has restricted, suspended or withdrawn the notified body's designation
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -463,7 +451,6 @@ norms:
   - the notified body's designation has been suspended, restricted, or fully or partially withdrawn
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -504,7 +491,6 @@ norms:
   - ensure that the affected notified body's files are kept
   - make the files available when requested by another Member State's notifying authority or a market-surveillance
     authority
-  dependencies: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -540,7 +526,6 @@ norms:
   - the notified body's designation has been restricted, suspended or withdrawn
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -578,7 +563,6 @@ norms:
   - the notified body's designation has been restricted, suspended or withdrawn
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -617,7 +601,6 @@ norms:
   - the notified body's designation has been restricted, suspended or withdrawn
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -655,7 +638,6 @@ norms:
   - the notified body's designation has been restricted, suspended or withdrawn
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -694,7 +676,6 @@ norms:
   - the notified body's designation has been restricted, suspended or withdrawn
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -734,7 +715,6 @@ norms:
   - appropriate measures are necessary to avoid a potential risk to health, safety or fundamental rights
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -789,7 +769,6 @@ norms:
   exceptions:
   - certificates that were unduly issued
   mandatory_content: []
-  dependencies: []
   product_scope: no_product_action
   product_scope_reason: Defines certificate validity rather than an operator compliance action.
   implementation_mode: none_required
@@ -830,7 +809,6 @@ norms:
   - the notifying authority determines the original notified body cannot support existing certificates
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: missing
@@ -874,7 +852,6 @@ norms:
     12 months of withdrawal
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: no_product_action
   product_scope_reason: Defines certificate validity rather than an operator compliance action.
   implementation_mode: none_required
@@ -912,7 +889,6 @@ norms:
   conditions: []
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -949,7 +925,6 @@ norms:
   conditions: []
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for these addressees.
   implementation_mode: none_required

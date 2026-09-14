@@ -418,29 +418,15 @@ def test_interpretive_link_resolves_verified_guidance_and_norm(tmp_path):
     assert bundle.norm_inventory.interpretations[0].binding is False
 
 
-def test_guidance_linked_dependency_requires_an_interpretive_link(tmp_path):
+def test_generated_norm_rejects_legacy_dependencies_field(tmp_path):
     _body, text, norms = one_document()
     norms["norms"][0]["dependencies"] = [
         {
             "dependency_ref": "C-2025-5052/workplace-covers-recruitment",
-            "resolution": "guidance_linked",
+            "resolution": "unresolved",
         }
     ]
-    with pytest.raises(ValueError, match="without a matching interpretive link"):
-        load(tmp_path, text, norms)
-
-
-def test_guidance_dependency_must_match_the_linked_snippet(tmp_path):
-    _body, text, norms = one_document()
-    norm_id = norms["norms"][0]["norm_id"]
-    norms["norms"][0]["dependencies"] = [
-        {
-            "dependency_ref": "C-2026-5054/synthetic-content-disclosure",
-            "resolution": "guidance_linked",
-        }
-    ]
-    norms["interpretations"] = [interpretation(norm_id)]
-    with pytest.raises(ValueError, match="without a matching interpretive link"):
+    with pytest.raises(ValueError, match="dependencies"):
         load(tmp_path, text, norms)
 
 

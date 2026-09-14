@@ -46,14 +46,6 @@ records:
   implementation_refs: &id004
   - AIA-PO-A20-2
   verification_mode: reported_not_judged
-  dependencies:
-  - dependency_ref: Article 79(1) of this Regulation
-    resolution: unresolved
-    detail: Article 79(1) defines the referenced risk situation and has not yet been semantically reviewed.
-  - dependency_ref: Article 44 of this Regulation
-    resolution: unresolved
-    detail: Article 44 supplies the referenced certification framework and has not yet been semantically
-      reviewed.
   mandatory_content:
   - investigate the causes, collaborating with the reporting deployer where applicable
   - inform the competent market-surveillance authorities of the nature of the non-compliance and relevant

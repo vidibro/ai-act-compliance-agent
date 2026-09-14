@@ -21,10 +21,6 @@ records:
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
-  dependencies:
-  - dependency_ref: Article 97 of this Regulation
-    resolution: unresolved
-    detail: Article 97 supplies the delegated-act procedure and has not yet been semantically reviewed.
 - norm_id: AIA-NORM-A007-P2-CONSIDER-RISK-CRITERIA
   source: A007-P004
   quote: the Commission shall take into account the following criteria
@@ -103,7 +99,3 @@ records:
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
-  dependencies:
-  - dependency_ref: Article 97 of this Regulation
-    resolution: unresolved
-    detail: Article 97 supplies the delegated-act procedure and has not yet been semantically reviewed.

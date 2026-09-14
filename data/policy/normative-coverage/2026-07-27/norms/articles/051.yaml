@@ -25,7 +25,6 @@ norms:
     capabilities
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: applicability_question
@@ -69,7 +68,6 @@ norms:
   - the Commission has regard to the Annex XIII criteria
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: applicability_question
@@ -110,7 +108,6 @@ norms:
   - cumulative training computation measured in floating-point operations exceeds 10^25
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: applicability_question
@@ -154,7 +151,6 @@ norms:
   - amend the thresholds listed in Article 51(1) and (2)
   - supplement benchmarks and indicators in light of evolving technological developments, such as algorithmic
     improvements or increased hardware efficiency
-  dependencies: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required

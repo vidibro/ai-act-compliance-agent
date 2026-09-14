@@ -23,7 +23,6 @@ norms:
   mandatory_content:
   - draw up the documentation before market placement or putting into service
   - keep the documentation up to date
-  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: compliance_rule
@@ -65,7 +64,6 @@ norms:
   mandatory_content:
   - demonstrate compliance with Chapter III Section 2
   - provide clear and comprehensive information needed to assess compliance
-  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: compliance_rule
@@ -101,7 +99,6 @@ norms:
   conditions: []
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: compliance_rule
@@ -138,7 +135,6 @@ norms:
   - provider is an SME, start-up, or SMC
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: missing
@@ -174,7 +170,6 @@ norms:
   conditions: []
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -211,7 +206,6 @@ norms:
   - provider is an SME, start-up, or SMC and opts for simplified documentation
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: compliance_rule
@@ -246,7 +240,6 @@ norms:
   conditions: []
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -287,7 +280,6 @@ norms:
     Annex I, Section A
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: compliance_rule
@@ -319,7 +311,6 @@ norms:
   detection_channels:
   - semantic_legal_effect
   - other_modal
-  - cross_reference_structure
   primary_spans:
   - AIA-TEXT-A011-P3
   qualifier_spans: []
@@ -329,11 +320,6 @@ norms:
     provides all information needed to assess Section 2 compliance
   exceptions: []
   mandatory_content: []
-  dependencies:
-  - dependency_ref: Article 97 of this Regulation
-    resolution: unresolved
-    detail: Article 97 supplies a multi-norm delegated-act procedure that is recorded elsewhere in this
-      inventory.
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required

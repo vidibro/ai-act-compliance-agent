@@ -26,7 +26,6 @@ norms:
   exceptions:
   - application of Article 5 under Article 113(3)(a) is unaffected
   mandatory_content: []
-  dependencies: []
   product_scope: in_scope
   product_scope_reason: This is a transitional compliance duty for operators of AI components in covered
     systems.
@@ -61,7 +60,6 @@ norms:
   conditions: []
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -106,7 +104,6 @@ norms:
   - the paragraph 1 large-scale IT systems are excluded
   - application of Article 5 under Article 113 third paragraph point (a) is unaffected
   mandatory_content: []
-  dependencies: []
   product_scope: dependency_only
   product_scope_reason: This proposition determines whether other operator obligations apply.
   implementation_mode: none_required
@@ -144,7 +141,6 @@ norms:
   - the high-risk AI system is intended to be used by public authorities
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: in_scope
   product_scope_reason: This is a transitional compliance duty for supported providers and deployers.
   implementation_mode: missing
@@ -181,7 +177,6 @@ norms:
   - the general-purpose AI model was placed on the market before 2 August 2025
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: in_scope
   product_scope_reason: This is a transitional compliance duty for supported GPAI providers.
   implementation_mode: missing
@@ -220,7 +215,6 @@ norms:
   - the AI system was placed on the market before 2 August 2026
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: in_scope
   product_scope_reason: This is a transitional compliance duty for supported providers.
   implementation_mode: missing

@@ -22,7 +22,6 @@ norms:
   conditions: []
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: compliance_rule
@@ -63,7 +62,6 @@ norms:
   - necessary training
   - necessary authority
   - necessary support
-  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: compliance_rule
@@ -105,7 +103,6 @@ norms:
   - other deployer obligations under Union or national law remain unaffected
   - the deployer's freedom to organise resources and activities for implementing provider-indicated human
     oversight remains unaffected
-  dependencies: []
   product_scope: dependency_only
   product_scope_reason: This saving clause preserves external duties without creating an independent product
     action.
@@ -145,7 +142,6 @@ norms:
   - the deployer exercises control over the input data
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: compliance_rule
@@ -185,7 +181,6 @@ norms:
   mandatory_content:
   - monitor operation on the basis of the instructions for use
   - where relevant, inform providers in accordance with Article 72
-  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: compliance_rule
@@ -230,7 +225,6 @@ norms:
   mandatory_content:
   - without undue delay inform the provider or distributor and relevant market-surveillance authority
   - suspend use of the system
-  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: compliance_rule
@@ -269,7 +263,6 @@ norms:
   - the deployer has identified a serious incident
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: compliance_rule
@@ -307,7 +300,6 @@ norms:
   - the deployer is not able to reach the provider
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: compliance_rule
@@ -346,7 +338,6 @@ norms:
   - the deployer is a law enforcement authority
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: compliance_rule
@@ -388,7 +379,6 @@ norms:
     arrangements or processes under Union financial services law
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: compliance_rule
@@ -430,7 +420,6 @@ norms:
   exceptions:
   - applicable Union or national law, particularly personal-data law, provides a different retention period
   mandatory_content: []
-  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: compliance_rule
@@ -471,7 +460,6 @@ norms:
     law
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: compliance_rule
@@ -511,7 +499,6 @@ norms:
   - the deployer is an employer putting the high-risk system into service or using it at the workplace
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: compliance_rule
@@ -550,7 +537,6 @@ norms:
   - Union or national worker-information rules and practices apply
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: compliance_rule
@@ -588,7 +574,6 @@ norms:
   - the deployer is a public authority or a Union institution, body, office, or agency
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: compliance_rule
@@ -627,7 +612,6 @@ norms:
   - the envisaged system is not registered in the Article 71 EU database
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: compliance_rule
@@ -665,7 +649,6 @@ norms:
   - the envisaged system is not registered in the Article 71 EU database
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: compliance_rule
@@ -704,7 +687,6 @@ norms:
   - the deployer owes a DPIA under Article 35 GDPR or Article 27 of Directive (EU) 2016/680
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: compliance_rule
@@ -741,7 +723,6 @@ norms:
   conditions: []
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: compliance_rule
@@ -785,7 +766,6 @@ norms:
   - initial identification of a potential suspect based on objective and verifiable facts directly linked
     to the offence
   mandatory_content: []
-  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: compliance_rule
@@ -825,7 +805,6 @@ norms:
     suspected or convicted of a criminal offence
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: compliance_rule
@@ -864,7 +843,6 @@ norms:
   - the requested authorisation is rejected
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: compliance_rule
@@ -902,7 +880,6 @@ norms:
   - the requested authorisation is rejected
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: compliance_rule
@@ -944,7 +921,6 @@ norms:
     purposes
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: compliance_rule
@@ -986,7 +962,6 @@ norms:
     purposes
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: compliance_rule
@@ -1023,7 +998,6 @@ norms:
   conditions: []
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: compliance_rule
@@ -1069,7 +1043,6 @@ norms:
   mandatory_content:
   - document each use in the relevant police file regardless of purpose or deployer
   - make the record available to either specified authority upon request
-  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: compliance_rule
@@ -1107,7 +1080,6 @@ norms:
   conditions: []
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: compliance_rule
@@ -1148,7 +1120,6 @@ norms:
   mandatory_content:
   - report to the relevant market-surveillance authority
   - report to the national data-protection authority
-  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: compliance_rule
@@ -1187,7 +1158,6 @@ norms:
   - annual reports are submitted under Article 26(10)
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: compliance_rule
@@ -1224,7 +1194,6 @@ norms:
   conditions: []
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -1253,7 +1222,6 @@ norms:
   detection_channels:
   - semantic_legal_effect
   - shall_token
-  - cross_reference_structure
   - existing_implementation
   primary_spans:
   - AIA-TEXT-A026-P11
@@ -1264,10 +1232,6 @@ norms:
   exceptions:
   - law-enforcement use follows Article 13 of Directive (EU) 2016/680
   mandatory_content: []
-  dependencies:
-  - dependency_ref: Article 50 of this Regulation
-    resolution: unresolved
-    detail: The Article 26(11) notice duty operates without prejudice to Article 50.
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: compliance_rule
@@ -1306,7 +1270,6 @@ norms:
   - the high-risk system is used for law-enforcement purposes
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: compliance_rule
@@ -1343,7 +1306,6 @@ norms:
   conditions: []
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: compliance_rule

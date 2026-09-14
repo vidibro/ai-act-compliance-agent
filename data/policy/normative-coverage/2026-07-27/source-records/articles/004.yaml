@@ -47,10 +47,6 @@ records:
   subject_ref: commission
   subject_category: union_institution_or_body
   kind: obligation
-  dependencies:
-  - dependency_ref: Article 62(3), point (b), of this Regulation
-    resolution: unresolved
-    detail: The referenced single information platform provision has not yet been semantically reviewed.
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for the Commission.
   implementation_mode: none_required

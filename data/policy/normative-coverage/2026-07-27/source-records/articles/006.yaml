@@ -19,11 +19,6 @@ records:
   - the relevant product is required to undergo third-party conformity assessment for market placement
     or putting into service under that Annex I legislation
   verification_mode: answered_by_classification
-  dependencies:
-  - dependency_ref: Annex I of this Regulation and the Union harmonisation legislation listed there
-    resolution: unresolved
-    detail: Annex I and the referenced legislation determine the covered products and conformity-assessment
-      requirements.
   implementation_mode: applicability_question
   implementation_refs:
   - AIA-CQ-ANNEX-I
@@ -89,10 +84,6 @@ records:
   subject_category: other
   kind: applicability
   verification_mode: answered_by_classification
-  dependencies:
-  - dependency_ref: Annex III of this Regulation
-    resolution: unresolved
-    detail: Annex III supplies the high-risk use-case areas and has not yet been semantically reviewed.
   implementation_mode: applicability_question
   implementation_refs:
   - AIA-CQ-ANNEX-III
@@ -180,11 +171,6 @@ records:
   conditions:
   - the provider concludes that an Annex III AI system is not high-risk under Article 6(3)
   verification_mode: reported_not_judged
-  dependencies:
-  - dependency_ref: Article 49(2) of this Regulation
-    resolution: unresolved
-    detail: Article 49(2) supplies the detailed registration obligation and has not yet been semantically
-      reviewed.
   verified_by: vidibro
 - norm_id: AIA-NORM-A006-P4-PROVIDE-ASSESSMENT
   source: A006-P015
@@ -218,10 +204,6 @@ records:
   mandatory_content:
   - a comprehensive list of practical examples of high-risk AI-system use cases
   - a comprehensive list of practical examples of non-high-risk AI-system use cases
-  dependencies:
-  - dependency_ref: Article 96 of this Regulation
-    resolution: unresolved
-    detail: Article 96 governs Commission guidelines and has not yet been semantically reviewed.
   verified_by: vidibro
 - norm_id: AIA-NORM-A006-P6-AMEND-EXCEPTIONS
   source: A006-P017
@@ -243,10 +225,6 @@ records:
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
-  dependencies:
-  - dependency_ref: Article 97 of this Regulation
-    resolution: unresolved
-    detail: Article 97 supplies the delegated-act procedure and has not yet been semantically reviewed.
   verified_by: vidibro
 - norm_id: AIA-NORM-A006-P7-DELETE-EXCEPTIONS
   source: A006-P018
@@ -267,10 +245,6 @@ records:
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
-  dependencies:
-  - dependency_ref: Article 97 of this Regulation
-    resolution: unresolved
-    detail: Article 97 supplies the delegated-act procedure and has not yet been semantically reviewed.
   verified_by: vidibro
 - norm_id: AIA-NORM-A006-P8-NO-REDUCED-PROTECTION
   source: A006-P019
@@ -289,10 +263,6 @@ records:
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
-  dependencies:
-  - dependency_ref: Article 7(1) of this Regulation
-    resolution: unresolved
-    detail: Article 7(1) governs related delegated acts and has not yet been semantically reviewed.
   mandatory_content:
   - do not decrease the overall protection of health, safety and fundamental rights
   - consistency with Article 7(1) delegated acts

@@ -25,7 +25,6 @@ norms:
     put into service is non-conforming
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: compliance_rule
@@ -65,7 +64,6 @@ norms:
     put into service is non-conforming
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: compliance_rule
@@ -100,7 +98,6 @@ norms:
   detection_channels:
   - semantic_legal_effect
   - shall_token
-  - cross_reference_structure
   - existing_implementation
   primary_spans:
   - AIA-TEXT-A020-P002
@@ -114,14 +111,6 @@ norms:
   - inform the competent market-surveillance authorities of the nature of the non-compliance and relevant
     corrective action
   - where applicable, also inform the notified body that issued the Article 44 certificate
-  dependencies:
-  - dependency_ref: Article 79(1) of this Regulation
-    resolution: unresolved
-    detail: Article 79(1) defines the referenced risk situation and has not yet been semantically reviewed.
-  - dependency_ref: Article 44 of this Regulation
-    resolution: unresolved
-    detail: Article 44 supplies the referenced certification framework and has not yet been semantically
-      reviewed.
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: compliance_rule

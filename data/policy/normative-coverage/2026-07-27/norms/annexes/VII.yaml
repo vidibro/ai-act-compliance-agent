@@ -21,7 +21,6 @@ norms:
   conditions: []
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: missing
@@ -61,7 +60,6 @@ norms:
   mandatory_content:
   - examination of the approved quality management system under point 3
   - surveillance of that system under point 5
-  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: missing
@@ -96,7 +94,6 @@ norms:
   conditions: []
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: missing
@@ -148,7 +145,6 @@ norms:
   - a description of the procedures in place to ensure that the quality management system remains adequate
     and effective
   - a written declaration that the same application has not been lodged with any other notified body
-  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: compliance_rule
@@ -188,7 +184,6 @@ norms:
   - the notified body approved the quality management system
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: compliance_rule
@@ -228,7 +223,6 @@ norms:
   - the provider intends to change that system or the list of AI systems it covers
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: compliance_rule
@@ -264,7 +258,6 @@ norms:
   conditions: []
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -300,7 +293,6 @@ norms:
   mandatory_content:
   - conclusions of the quality-management-system assessment
   - reasoned assessment decision
-  dependencies: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -337,7 +329,6 @@ norms:
   conditions: []
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -374,7 +365,6 @@ norms:
   mandatory_content:
   - the conclusions of the examination of the changes
   - the reasoned assessment decision
-  dependencies: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -414,7 +404,6 @@ norms:
   - the AI system is covered by the point 3 quality management system
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: missing
@@ -456,7 +445,6 @@ norms:
   - provider name and address
   - written declaration that the same application has not been lodged with another notified body
   - Annex IV technical documentation
-  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: missing
@@ -490,7 +478,6 @@ norms:
   conditions: []
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -531,7 +518,6 @@ norms:
   - applicable security safeguards are observed
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: compliance_rule
@@ -572,7 +558,6 @@ norms:
   - the evidence or tests enable proper assessment of conformity with Chapter III Section 2
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: compliance_rule
@@ -610,7 +595,6 @@ norms:
   - the notified body is not satisfied with the tests carried out by the provider
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -653,7 +637,6 @@ norms:
   - the notified body makes a reasoned request
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: compliance_rule
@@ -693,7 +676,6 @@ norms:
   - the AI system does not meet the requirement relating to the data used to train it
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: compliance_rule
@@ -731,7 +713,6 @@ norms:
   mandatory_content:
   - conclusions of the technical-documentation assessment
   - reasoned assessment decision
-  dependencies: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -767,7 +748,6 @@ norms:
   - the AI system conforms with Chapter III Section 2
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -812,7 +792,6 @@ norms:
   - data necessary to identify the AI system
   - all relevant information needed to evaluate the AI system's conformity
   - all relevant information needed to control the AI system while in use, where applicable
-  dependencies: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -849,7 +828,6 @@ norms:
   - the AI system does not conform with Chapter III Section 2
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -888,7 +866,6 @@ norms:
   mandatory_content:
   - specific considerations on the quality of the training data
   - reasons for non-compliance
-  dependencies: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -924,7 +901,6 @@ norms:
   conditions: []
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -963,7 +939,6 @@ norms:
   - the change could affect the AI system's compliance with the requirements or its intended purpose
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: compliance_rule
@@ -1002,7 +977,6 @@ norms:
   conditions: []
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -1041,7 +1015,6 @@ norms:
   - issuance of the supplement requires approval of the change
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -1079,7 +1052,6 @@ norms:
   - the notified body carries out point 5 surveillance of the approved quality management system
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: compliance_rule
@@ -1117,7 +1089,6 @@ norms:
   - the notified body carries out point 5 surveillance of the approved quality management system
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: compliance_rule
@@ -1153,7 +1124,6 @@ norms:
   conditions: []
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -1190,7 +1160,6 @@ norms:
   - the AI system has a Union technical-documentation assessment certificate
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required

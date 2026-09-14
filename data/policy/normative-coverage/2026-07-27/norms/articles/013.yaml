@@ -22,7 +22,6 @@ norms:
   conditions: []
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: compliance_rule
@@ -60,7 +59,6 @@ norms:
   conditions: []
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: compliance_rule
@@ -106,7 +104,6 @@ norms:
   - information relevant to deployers
   - information accessible to deployers
   - information comprehensible to deployers
-  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: compliance_rule
@@ -145,7 +142,6 @@ norms:
   conditions: []
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: compliance_rule
@@ -183,7 +179,6 @@ norms:
   conditions: []
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: compliance_rule
@@ -221,7 +216,6 @@ norms:
   conditions: []
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: compliance_rule
@@ -266,11 +260,6 @@ norms:
   mandatory_content:
   - tested, validated, and expected accuracy levels and metrics, robustness, and cybersecurity
   - known and foreseeable circumstances that may affect that expected performance
-  dependencies:
-  - dependency_ref: Article 15 of this Regulation
-    resolution: unresolved
-    detail: Article 15 supplies the referenced accuracy, robustness, and cybersecurity requirements and
-      has not yet been semantically reviewed.
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: compliance_rule
@@ -312,7 +301,6 @@ norms:
   conditions: []
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: compliance_rule
@@ -352,7 +340,6 @@ norms:
   - the system has technical capabilities or characteristics relevant to explaining its output
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: compliance_rule
@@ -393,7 +380,6 @@ norms:
   - information about performance for intended persons or groups is appropriate
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: compliance_rule
@@ -435,7 +421,6 @@ norms:
   - input-data specifications or dataset information is appropriate for the intended purpose
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: compliance_rule
@@ -475,7 +460,6 @@ norms:
   - information is applicable to deployer interpretation and appropriate use of system outputs
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: compliance_rule
@@ -514,7 +498,6 @@ norms:
   - the provider predetermined changes to the system or its performance at the initial conformity assessment
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: compliance_rule
@@ -555,11 +538,6 @@ norms:
   mandatory_content:
   - Article 14 human-oversight measures
   - technical measures facilitating deployer interpretation of high-risk AI-system outputs
-  dependencies:
-  - dependency_ref: Article 14 of this Regulation
-    resolution: unresolved
-    detail: Article 14 supplies the referenced human-oversight requirements and has not yet been semantically
-      reviewed.
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: compliance_rule
@@ -602,7 +580,6 @@ norms:
   - needed computational and hardware resources
   - expected lifetime of the high-risk AI system
   - necessary maintenance and care measures, including their frequency and software-update needs
-  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: compliance_rule
@@ -642,7 +619,6 @@ norms:
   - the system includes mechanisms relevant to deployer collection, storage, or interpretation of logs
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: compliance_rule

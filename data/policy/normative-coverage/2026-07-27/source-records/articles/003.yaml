@@ -384,10 +384,6 @@ records:
   kind: definition
   qualifier_spans:
   - A003-P001
-  dependencies:
-  - dependency_ref: Chapter III, Section 2 of this Regulation
-    resolution: unresolved
-    detail: The referenced high-risk requirements have not all been semantically reviewed.
   product_scope: dependency_only
   product_scope_reason: This definition constrains downstream classification and norm interpretation but
     creates no independent product-facing action.
@@ -442,10 +438,6 @@ records:
   kind: definition
   qualifier_spans:
   - A003-P001
-  dependencies:
-  - dependency_ref: Chapter III, Section 2 of this Regulation
-    resolution: unresolved
-    detail: The referenced high-risk requirements have not all been semantically reviewed.
   product_scope: dependency_only
   product_scope_reason: This definition constrains downstream classification and norm interpretation but
     creates no independent product-facing action.
@@ -464,10 +456,6 @@ records:
   kind: definition
   qualifier_spans:
   - A003-P001
-  dependencies:
-  - dependency_ref: Chapter III, Section 2 of this Regulation
-    resolution: unresolved
-    detail: The referenced high-risk requirements have not all been semantically reviewed.
   product_scope: dependency_only
   product_scope_reason: This definition constrains downstream classification and norm interpretation but
     creates no independent product-facing action.
@@ -1075,10 +1063,6 @@ records:
   kind: definition
   qualifier_spans:
   - A003-P001
-  dependencies:
-  - dependency_ref: Articles 57 and 60 of this Regulation
-    resolution: unresolved
-    detail: The definition depends on conditions in provisions not yet semantically reviewed.
   mandatory_content:
   - define the temporary real-world testing activity and its evidentiary and conformity-assessment purposes
   - provide that qualifying testing is neither placing the AI system on the market nor putting it into service

@@ -395,11 +395,8 @@ def test_relation_schema_rejects_retired_factual_conditions_field():
         )
 
 
-@pytest.mark.parametrize(
-    "resolution", ["internal_resolved", "external_recorded", "national_or_factual"]
-)
-def test_source_record_rejects_retired_dependency_resolutions(resolution):
-    with pytest.raises(ValueError, match=resolution):
+def test_source_record_rejects_legacy_dependencies_field():
+    with pytest.raises(ValueError, match="dependencies"):
         NormSourceRecord.model_validate(
             {
                 "norm_id": "AIA-NORM-A001-P1-PARENT",
@@ -411,7 +408,7 @@ def test_source_record_rejects_retired_dependency_resolutions(resolution):
                 "dependencies": [
                     {
                         "dependency_ref": "AIA-NORM-A001-P2-CHILD",
-                        "resolution": resolution,
+                        "resolution": "unresolved",
                     }
                 ],
             }

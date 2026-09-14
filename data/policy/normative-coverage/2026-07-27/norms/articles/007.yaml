@@ -27,10 +27,6 @@ norms:
     Annex III high-risk use case
   exceptions: []
   mandatory_content: []
-  dependencies:
-  - dependency_ref: Article 97 of this Regulation
-    resolution: unresolved
-    detail: Article 97 supplies the delegated-act procedure and has not yet been semantically reviewed.
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for the Commission.
   implementation_mode: none_required
@@ -91,7 +87,6 @@ norms:
     minimise risk
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for the Commission.
   implementation_mode: none_required
@@ -128,7 +123,6 @@ norms:
   conditions: []
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: dependency_only
   product_scope_reason: This assessment rule constrains the Commission's Annex III amendment analysis
     without creating an independent product-facing action.
@@ -174,10 +168,6 @@ norms:
     law
   exceptions: []
   mandatory_content: []
-  dependencies:
-  - dependency_ref: Article 97 of this Regulation
-    resolution: unresolved
-    detail: Article 97 supplies the delegated-act procedure and has not yet been semantically reviewed.
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for the Commission.
   implementation_mode: none_required

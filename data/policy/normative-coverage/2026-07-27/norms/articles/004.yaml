@@ -30,7 +30,6 @@ norms:
   - the obligation does not require a guaranteed specific AI-literacy level for any particular individual
     among the covered staff or other persons
   mandatory_content: []
-  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: compliance_rule
@@ -68,7 +67,6 @@ norms:
   conditions: []
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for the Commission or Member States.
   implementation_mode: none_required
@@ -97,7 +95,6 @@ norms:
   detection_channels:
   - semantic_legal_effect
   - shall_token
-  - cross_reference_structure
   primary_spans:
   - AIA-TEXT-A004-P002
   qualifier_spans: []
@@ -105,10 +102,6 @@ norms:
   conditions: []
   exceptions: []
   mandatory_content: []
-  dependencies:
-  - dependency_ref: Article 62(3), point (b), of this Regulation
-    resolution: unresolved
-    detail: The referenced single information platform provision has not yet been semantically reviewed.
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for the Commission.
   implementation_mode: none_required
@@ -146,7 +139,6 @@ norms:
   - take European competence frameworks into account
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for the Board.
   implementation_mode: none_required

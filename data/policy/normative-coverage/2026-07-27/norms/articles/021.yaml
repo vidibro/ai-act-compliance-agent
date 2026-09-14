@@ -26,7 +26,6 @@ norms:
   - a competent authority makes a reasoned request
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: compliance_rule
@@ -67,7 +66,6 @@ norms:
   - "the applicable automatically generated logs are under the provider\u2019s control"
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: compliance_rule
@@ -96,7 +94,6 @@ norms:
   detection_channels:
   - semantic_legal_effect
   - shall_token
-  - cross_reference_structure
   primary_spans:
   - AIA-TEXT-A021-P003
   qualifier_spans: []
@@ -104,10 +101,6 @@ norms:
   conditions: []
   exceptions: []
   mandatory_content: []
-  dependencies:
-  - dependency_ref: Article 78 of this Regulation
-    resolution: unresolved
-    detail: Article 78 supplies the confidentiality obligations and has not yet been semantically reviewed.
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required

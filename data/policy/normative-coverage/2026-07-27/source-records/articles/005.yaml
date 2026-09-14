@@ -242,11 +242,6 @@ records:
   - prevention of the specified substantial and imminent safety threat or terrorist-attack threat
   - localisation or identification of a criminal suspect for investigation, prosecution, or penalty execution
     concerning qualifying Annex II offences
-  dependencies:
-  - dependency_ref: Annex II of this Regulation
-    resolution: unresolved
-    detail: Point (h)(iii) depends on the offence list in Annex II, which has not yet been semantically
-      reviewed.
   implementation_mode: applicability_question
   implementation_refs:
   - AIA-CQ-PROHIBITED
@@ -383,10 +378,6 @@ records:
   subject_category: public_authority
   kind: obligation
   verification_mode: reported_not_judged
-  dependencies:
-  - dependency_ref: Article 27 of this Regulation
-    resolution: unresolved
-    detail: Article 27 defines the impact-assessment requirements and has not yet been semantically reviewed.
   implementation_refs:
   - AIA-DP-A05-2
   verified_by: vidibro
@@ -406,10 +397,6 @@ records:
   - in a duly justified urgent case, use may begin before registration
   conditions:
   - when urgent use begins before registration, complete registration without undue delay
-  dependencies:
-  - dependency_ref: Article 49 of this Regulation
-    resolution: unresolved
-    detail: Article 49 defines the EU-database registration and has not yet been semantically reviewed.
   verified_by: vidibro
 - norm_id: AIA-NORM-A005-P3-PRIOR-AUTHORISATION
   source: A005-P028
@@ -535,11 +522,6 @@ records:
     law enforcement purposes is notified under Article 5(4)
   kind: obligation
   verification_mode: reported_not_judged
-  dependencies:
-  - dependency_ref: Article 5(6) of this Regulation
-    resolution: unresolved
-    detail: Article 5(6) supplies the minimum notification information and has not yet been semantically
-      reviewed.
   mandatory_content:
   - include at least the information specified in Article 5(6)
   - exclude sensitive operational data

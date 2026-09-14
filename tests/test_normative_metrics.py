@@ -101,6 +101,29 @@ def test_national_law_relations_are_targetless_report_boundaries(metrics):
         assert norm_id in report
 
 
+def test_unresolved_dependencies_are_canonical_targetless_relations():
+    """No norm retains the old free-form dependency field after migration."""
+    bundle = load_normative_coverage()
+    relations = [
+        relation
+        for relation in bundle.norm_inventory.relations
+        if relation.kind is NormRelationKind.UNRESOLVED_DEPENDENCY
+    ]
+
+    assert len(relations) == 47
+    assert len({relation.relation_id for relation in relations}) == 47
+    assert all(relation.detail.startswith("Unresolved reference: ") for relation in relations)
+    assert all(
+        not (
+            relation.target_rule_ids
+            or relation.target_norm_ids
+            or relation.external_requirements
+            or relation.guidance_refs
+        )
+        for relation in relations
+    )
+
+
 def test_segment_primary_links_are_supported_by_the_segments_own_text():
     bundle = load_normative_coverage()
     norms = {norm.norm_id: norm for norm in bundle.norm_inventory.norms}
@@ -2654,7 +2677,6 @@ def test_article_forty_three_reconciles_all_conformity_routes():
     assert norms["AIA-NORM-A043-P2-INTERNAL-CONTROL"].implementation_refs == ["AIA-PO-A43-2"]
     assert norms["AIA-NORM-A043-P4-NEW-ASSESSMENT"].implementation_refs == ["AIA-PO-A43-4"]
     qms = norms["AIA-NORM-A043-P3-QMS"]
-    assert qms.dependencies == []
     assert len(
         bundle.norm_inventory.target_norm_ids_for(qms.norm_id, NormRelationKind.RELIES_ON_NORMS)
     ) == 28
@@ -4984,7 +5006,6 @@ def test_annex_five_declaration_content_is_carried_by_article_forty_seven():
         annex.norm_id, NormRelationKind.CARRIED_BY_NORMS
     ) == [article.norm_id]
     assert annex.implementation_mode.value == "carried_by_other_norm"
-    assert article.dependencies == []
     assert bundle.norm_inventory.target_norm_ids_for(
         article.norm_id, NormRelationKind.RELIES_ON_NORMS
     ) == [annex.norm_id]

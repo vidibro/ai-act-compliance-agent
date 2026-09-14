@@ -24,7 +24,6 @@ norms:
   conditions: []
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: applicability_question
@@ -63,7 +62,6 @@ norms:
   conditions: []
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: applicability_question
@@ -103,7 +101,6 @@ norms:
   conditions: []
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: applicability_question
@@ -141,7 +138,6 @@ norms:
   conditions: []
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: applicability_question
@@ -181,7 +177,6 @@ norms:
   conditions: []
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: applicability_question
@@ -219,7 +214,6 @@ norms:
   conditions: []
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: applicability_question
@@ -257,7 +251,6 @@ norms:
   conditions: []
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: applicability_question
@@ -298,7 +291,6 @@ norms:
   - the related product is covered by Union harmonisation legislation listed in Annex I Section B
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: missing
@@ -336,7 +328,6 @@ norms:
   - the AI Act high-risk requirements are integrated into the applicable Union harmonisation legislation
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: missing
@@ -370,7 +361,6 @@ norms:
   conditions: []
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: no_product_action
   product_scope_reason: This constitutional boundary creates no independent product-facing action.
   implementation_mode: none_required
@@ -408,7 +398,6 @@ norms:
   conditions: []
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: no_product_action
   product_scope_reason: This saving clause preserves Member State competence without creating an independent
     product-facing action.
@@ -451,7 +440,6 @@ norms:
   - the exclusion applies regardless of the type of entity carrying out those activities
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: applicability_question
@@ -494,7 +482,6 @@ norms:
   - the exclusion applies regardless of the type of entity carrying out those activities
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: applicability_question
@@ -544,7 +531,6 @@ norms:
     rights and freedoms
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: applicability_question
@@ -582,7 +568,6 @@ norms:
   conditions: []
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: no_product_action
   product_scope_reason: This saving clause preserves another legal regime without creating an independent
     product-facing classification or action.
@@ -624,7 +609,6 @@ norms:
   - it is put into service solely for scientific research and development
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: applicability_question
@@ -662,7 +646,6 @@ norms:
   conditions: []
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: no_product_action
   product_scope_reason: This clause confirms the continued application of external law without creating
     an independent product-facing action.
@@ -694,7 +677,6 @@ norms:
   - semantic_legal_effect
   - shall_token
   - deeming_or_consequence
-  - cross_reference_structure
   primary_spans:
   - AIA-TEXT-A002-P016
   qualifier_spans: []
@@ -703,10 +685,6 @@ norms:
   - the saving clause is without prejudice to Articles 4a and 59 of the Regulation
   exceptions: []
   mandatory_content: []
-  dependencies:
-  - dependency_ref: Articles 4a and 59 of this Regulation
-    resolution: unresolved
-    detail: The saving clause is expressly qualified by these provisions.
   product_scope: no_product_action
   product_scope_reason: This saving clause preserves other legal regimes without creating an independent
     product-facing action.
@@ -747,7 +725,6 @@ norms:
   - the activity occurs before the system or model is placed on the market or put into service
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: applicability_question
@@ -783,7 +760,6 @@ norms:
   conditions: []
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: no_product_action
   product_scope_reason: This general saving clause does not identify a concrete AI Act requirement that
     the product can assess.
@@ -821,7 +797,6 @@ norms:
   conditions: []
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: applicability_question
@@ -857,7 +832,6 @@ norms:
   conditions: []
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: no_product_action
   product_scope_reason: This saving clause preserves other legal regimes without creating an independent
     product-facing action.
@@ -899,7 +873,6 @@ norms:
   - the activity is non-professional
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: applicability_question
@@ -939,7 +912,6 @@ norms:
   mandatory_content:
   - maintain or introduce more favourable worker-protection provisions
   - encourage or allow more favourable collective agreements
-  dependencies: []
   product_scope: no_product_action
   product_scope_reason: This permission concerns legislative and administrative powers rather than a product-facing
     action.
@@ -970,7 +942,6 @@ norms:
   detection_channels:
   - semantic_legal_effect
   - deeming_or_consequence
-  - cross_reference_structure
   - existing_implementation
   primary_spans:
   - AIA-TEXT-A002-P021
@@ -983,14 +954,6 @@ norms:
   - the system falls under Article 5
   - the system falls under Article 50
   mandatory_content: []
-  dependencies:
-  - dependency_ref: Article 5 of this Regulation
-    resolution: unresolved
-    detail: Article 5 determines one exception to the exclusion and has not yet been semantically reviewed
-      in this inventory.
-  - dependency_ref: Article 50 of this Regulation
-    resolution: unresolved
-    detail: Article 50 determines one exception but has not yet been completely semantically reviewed.
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: applicability_question
@@ -1034,11 +997,6 @@ norms:
   - the limitation does not reduce the overall level of protection provided by the Regulation
   exceptions: []
   mandatory_content: []
-  dependencies:
-  - dependency_ref: Article 6(1), Articles 9 to 15 and 17 to 25, and Annex I Section A of this Regulation
-    resolution: unresolved
-    detail: These provisions define the affected systems, limitable requirements, and relevant harmonisation
-      legislation and are not all semantically reviewed yet.
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: missing
@@ -1069,7 +1027,6 @@ norms:
   - semantic_legal_effect
   - shall_token
   - other_modal
-  - cross_reference_structure
   primary_spans:
   - AIA-TEXT-A002-P025
   qualifier_spans: []
@@ -1083,10 +1040,6 @@ norms:
   - the requirements or obligations that may be limited
   - the conditions under which the limitation applies
   - the scope of the limitation
-  dependencies:
-  - dependency_ref: Article 97 of this Regulation
-    resolution: unresolved
-    detail: Article 97 supplies the delegated-act procedure and has not yet been semantically reviewed.
   product_scope: no_product_action
   product_scope_reason: This is a legislative task for the Commission rather than an independent product-facing
     action.

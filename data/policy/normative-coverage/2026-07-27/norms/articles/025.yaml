@@ -24,7 +24,6 @@ norms:
     into service
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: dependency_only
   product_scope_reason: This proposition reallocates the provider role and thereby determines which operator
     owes the Article 16 duties.
@@ -67,7 +66,6 @@ norms:
     high-risk under Article 6
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: dependency_only
   product_scope_reason: This proposition reallocates the provider role and thereby determines which operator
     owes the Article 16 duties.
@@ -111,7 +109,6 @@ norms:
     so that it becomes high-risk under Article 6
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: dependency_only
   product_scope_reason: This proposition reallocates the provider role and thereby determines which operator
     owes the Article 16 duties.
@@ -152,7 +149,6 @@ norms:
   - an Article 25(1) provider-role transfer occurs
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: dependency_only
   product_scope_reason: This consequence determines the parties' respective roles and the resulting allocation
     of operator duties.
@@ -191,7 +187,6 @@ norms:
   exceptions:
   - the initial provider clearly specified that its system must not be changed into a high-risk system
   mandatory_content: []
-  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: compliance_rule
@@ -241,7 +236,6 @@ norms:
   - technical documentation sufficient to assess Article 16 compliance
   - information about known limitations and failure modes
   - targeted technical access, including for testing and validation
-  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: compliance_rule
@@ -282,7 +276,6 @@ norms:
   - the initial provider clearly specified that its AI system must not be changed into a high-risk system
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: compliance_rule
@@ -323,7 +316,6 @@ norms:
   - the system is marketed with the product under the product manufacturer's name or trademark
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: dependency_only
   product_scope_reason: This proposition assigns the provider role and thereby determines which operator
     owes the Article 16 duties.
@@ -366,7 +358,6 @@ norms:
     placement
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: dependency_only
   product_scope_reason: This proposition assigns the provider role and thereby determines which operator
     owes the Article 16 duties.
@@ -413,7 +404,6 @@ norms:
   - necessary technical access
   - other necessary assistance
   - generally acknowledged state-of-the-art basis
-  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: compliance_rule
@@ -453,7 +443,6 @@ norms:
   exceptions:
   - general-purpose AI models remain subject to the written-agreement duty
   mandatory_content: []
-  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: compliance_rule
@@ -490,7 +479,6 @@ norms:
   conditions: []
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -526,7 +514,6 @@ norms:
   - the AI Office develops voluntary model terms
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -561,7 +548,6 @@ norms:
   conditions: []
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -597,7 +583,6 @@ norms:
   conditions: []
   exceptions: []
   mandatory_content: []
-  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: missing

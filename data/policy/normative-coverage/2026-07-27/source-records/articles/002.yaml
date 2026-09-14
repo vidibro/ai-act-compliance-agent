@@ -289,10 +289,6 @@ records:
   kind: applicability
   conditions:
   - the saving clause is without prejudice to Articles 4a and 59 of the Regulation
-  dependencies:
-  - dependency_ref: Articles 4a and 59 of this Regulation
-    resolution: unresolved
-    detail: The saving clause is expressly qualified by these provisions.
   product_scope: no_product_action
   product_scope_reason: This saving clause preserves other legal regimes without creating an independent
     product-facing action.
@@ -415,14 +411,6 @@ records:
   - the system is placed on the market or put into service as a high-risk AI system
   - the system falls under Article 5
   - the system falls under Article 50
-  dependencies:
-  - dependency_ref: Article 5 of this Regulation
-    resolution: unresolved
-    detail: Article 5 determines one exception to the exclusion and has not yet been semantically reviewed
-      in this inventory.
-  - dependency_ref: Article 50 of this Regulation
-    resolution: unresolved
-    detail: Article 50 determines one exception but has not yet been completely semantically reviewed.
   implementation_mode: applicability_question
   implementation_refs:
   - AIA-CQ-SCOPE
@@ -445,11 +433,6 @@ records:
   - Union harmonisation legislation listed in Annex I Section A provides an equivalent or higher level
     of health, safety, or fundamental-rights protection for the requirement concerned
   - the limitation does not reduce the overall level of protection provided by the Regulation
-  dependencies:
-  - dependency_ref: Article 6(1), Articles 9 to 15 and 17 to 25, and Annex I Section A of this Regulation
-    resolution: unresolved
-    detail: These provisions define the affected systems, limitable requirements, and relevant harmonisation
-      legislation and are not all semantically reviewed yet.
   verified_by: vidibro
 - norm_id: AIA-NORM-A002-P13-COMMISSION-DELEGATED-ACTS
   source: A002-P025
@@ -469,10 +452,6 @@ records:
   - the requirements or obligations that may be limited
   - the conditions under which the limitation applies
   - the scope of the limitation
-  dependencies:
-  - dependency_ref: Article 97 of this Regulation
-    resolution: unresolved
-    detail: Article 97 supplies the delegated-act procedure and has not yet been semantically reviewed.
   product_scope: no_product_action
   product_scope_reason: This is a legislative task for the Commission rather than an independent product-facing
     action.

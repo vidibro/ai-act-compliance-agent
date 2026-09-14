@@ -13,11 +13,6 @@ records:
   implementation_reason: The Article 16(a) provider duty states the same Section 2 compliance requirement
     and carries the substantive checks, so reporting both would duplicate every Section 2 finding.
   verification_mode: not_reported
-  dependencies:
-  - dependency_ref: Articles 9 to 15 of this Regulation
-    resolution: unresolved
-    detail: Articles 9 to 15 supply the detailed high-risk AI-system requirements. All are reviewed; the
-      reference names a range of articles rather than one norm, so it resolves to no single target.
   verified_by: vidibro
 - norm_id: AIA-NORM-A008-P1-CONSIDER-RISK-MANAGEMENT
   source: A008-P001
@@ -31,11 +26,6 @@ records:
   implementation_refs:
   - AIA-HR-A09
   verification_mode: judged_by_gap_analysis
-  dependencies:
-  - dependency_ref: Article 9 of this Regulation
-    resolution: unresolved
-    detail: Article 9 supplies the detailed risk-management-system requirements and has not yet been semantically
-      reviewed.
   verified_by: vidibro
 - norm_id: AIA-NORM-A008-P2-ENSURE-PRODUCT-COMPLIANCE
   source: A008-P002
@@ -54,11 +44,6 @@ records:
   implementation_refs:
   - AIA-PO-A08-2
   verification_mode: reported_not_judged
-  dependencies:
-  - dependency_ref: Annex I, Section A, of this Regulation and the Union harmonisation legislation listed
-      there
-    resolution: unresolved
-    detail: The relevant external legislation supplies the applicable product requirements.
   verified_by: vidibro
 - norm_id: AIA-NORM-A008-P2-INTEGRATE-COMPLIANCE-PROCESSES
   source: A008-P002
@@ -81,10 +66,4 @@ records:
   implementation_refs:
   - AIA-PO-A08-2
   verification_mode: reported_conditionally
-  dependencies:
-  - dependency_ref: Annex I, Section A, of this Regulation and the Union harmonisation legislation listed
-      there
-    resolution: unresolved
-    detail: The relevant external legislation supplies the existing product documentation and procedures
-      into which AI compliance work may be integrated.
   verified_by: vidibro

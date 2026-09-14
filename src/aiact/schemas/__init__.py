@@ -49,11 +49,9 @@ from aiact.schemas.interpretation import (
 )
 from aiact.schemas.norm import (
     CandidateDetectionChannel,
-    DependencyResolution,
     ImplementationMode,
     Norm,
     NormativeCoverageBundle,
-    NormDependency,
     NormInventory,
     NormKind,
     NormSubject,
@@ -102,10 +100,8 @@ __all__ = [
     "InterpretiveEffect",
     "InterpretiveLink",
     "CandidateDetectionChannel",
-    "DependencyResolution",
     "ImplementationMode",
     "Norm",
-    "NormDependency",
     "NormInventory",
     "NormKind",
     "NormSubject",

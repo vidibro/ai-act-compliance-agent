@@ -200,7 +200,7 @@ def _semantic_text(norm: Norm) -> str:
         json.dumps(dumped["conditions"], ensure_ascii=False),
         json.dumps(dumped["exceptions"], ensure_ascii=False),
         json.dumps(dumped["mandatory_content"], ensure_ascii=False),
-        json.dumps(dumped["dependencies"], ensure_ascii=False),
+        "[]",  # Legacy dependency payload, fixed empty after canonical relation migration.
     ]
     return " ".join(parts)
 
@@ -256,7 +256,9 @@ def _norm_sha256(norm: Norm) -> str:
         "conditions": norm.conditions,
         "exceptions": norm.exceptions,
         "mandatory_content": norm.mandatory_content,
-        "dependencies": [dependency.model_dump(mode="json") for dependency in norm.dependencies],
+        # Preserve the published adjudication hash contract while dependencies are represented
+        # only by relations and therefore intentionally excluded from legal-content review.
+        "dependencies": [],
     }
     canonical = json.dumps(payload, sort_keys=True, separators=(",", ":"), ensure_ascii=False)
     return hashlib.sha256(canonical.encode()).hexdigest()
