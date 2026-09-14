@@ -29,9 +29,6 @@ records:
     resolution: unresolved
     detail: The bias-detection and correction purpose depends on Article 10, which has not yet been semantically
       reviewed.
-  - dependency_ref: Regulation (EU) 2016/679; Regulation (EU) 2018/1725; Directive (EU) 2016/680
-    resolution: external_recorded
-    detail: The exceptional processing remains additional to the applicable external data-protection instruments.
   verification_mode: reported_conditionally
   verified_by: vidibro
 - norm_id: AIA-NORM-A004A-P1-B-REUSE-SECURITY
@@ -116,11 +113,6 @@ records:
   - A004A-P010
   conditions:
   - special-category personal data is processed under the Article 4a(1) or Article 4a(2) exceptional permission
-  dependencies:
-  - dependency_ref: Regulation (EU) 2016/679; Regulation (EU) 2018/1725; Directive (EU) 2016/680
-    resolution: external_recorded
-    detail: The reasons must be included in processing records maintained under the applicable external
-      instruments.
   verification_mode: judged_by_gap_analysis
   verified_by: vidibro
 - norm_id: AIA-NORM-A004A-P2-OTHER-SYSTEM-BIAS-DATA-PROCESSING

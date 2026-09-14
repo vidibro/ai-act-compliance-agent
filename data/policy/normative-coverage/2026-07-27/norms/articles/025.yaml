@@ -590,7 +590,6 @@ norms:
     national law.
   detection_channels:
   - semantic_legal_effect
-  - cross_reference_structure
   primary_spans:
   - AIA-TEXT-A025-P017
   qualifier_spans: []
@@ -598,11 +597,7 @@ norms:
   conditions: []
   exceptions: []
   mandatory_content: []
-  dependencies:
-  - dependency_ref: applicable Union and national intellectual-property, confidentiality, and trade-secret
-      law
-    resolution: external_recorded
-    detail: The referenced external law defines the protected rights and information.
+  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: missing

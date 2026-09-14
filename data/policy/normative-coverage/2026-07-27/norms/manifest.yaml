@@ -2995,6 +2995,476 @@ relations:
   legal_basis_spans:
   - AIA-TEXT-A047-P002
   detail: Article 47(2) requires the declaration to contain the Annex V content.
+- relation_id: AIA-REL-A002-P5-INTERMEDIARY-LIABILITY-SAVING-EXTERNAL-REQUIREMENT-01
+  source_norm_id: AIA-NORM-A002-P5-INTERMEDIARY-LIABILITY-SAVING
+  kind: subject_to_external_requirements
+  target_rule_ids: []
+  target_norm_ids: []
+  external_requirements:
+  - Regulation (EU) 2022/2065, Chapter II
+  guidance_refs: []
+  external_regulations: []
+  legal_basis_spans:
+  - AIA-TEXT-A002-P014
+  detail: The preserved intermediary-service liability rules are outside the enacted corpus.
+- relation_id: AIA-REL-A002-P7-DATA-PROTECTION-APPLICATION-EXTERNAL-REQUIREMENT-01
+  source_norm_id: AIA-NORM-A002-P7-DATA-PROTECTION-APPLICATION
+  kind: subject_to_external_requirements
+  target_rule_ids: []
+  target_norm_ids: []
+  external_requirements:
+  - Union data-protection, privacy, and communications-confidentiality law
+  guidance_refs: []
+  external_regulations: []
+  legal_basis_spans:
+  - AIA-TEXT-A002-P016
+  detail: The applicable external legal regimes are not fully contained in the enacted corpus.
+- relation_id: AIA-REL-A002-P7-PRIVACY-LAW-SAVING-EXTERNAL-REQUIREMENT-01
+  source_norm_id: AIA-NORM-A002-P7-PRIVACY-LAW-SAVING
+  kind: subject_to_external_requirements
+  target_rule_ids: []
+  target_norm_ids: []
+  external_requirements:
+  - Regulation (EU) 2016/679; Regulation (EU) 2018/1725; Directive 2002/58/EC; Directive (EU) 2016/680
+  guidance_refs: []
+  external_regulations: []
+  legal_basis_spans:
+  - AIA-TEXT-A002-P016
+  detail: The preserved data-protection and privacy instruments are outside the enacted corpus.
+- relation_id: AIA-REL-A002-P8-RD-UNION-LAW-COMPLIANCE-EXTERNAL-REQUIREMENT-01
+  source_norm_id: AIA-NORM-A002-P8-RD-UNION-LAW-COMPLIANCE
+  kind: subject_to_external_requirements
+  target_rule_ids: []
+  target_norm_ids: []
+  external_requirements:
+  - applicable Union law governing the activity
+  guidance_refs: []
+  external_regulations: []
+  legal_basis_spans:
+  - AIA-TEXT-A002-P017
+  detail: The applicable Union-law requirements depend on the activity and are outside this enacted corpus.
+- relation_id: AIA-REL-A002-P9-CONSUMER-PRODUCT-SAFETY-SAVING-EXTERNAL-REQUIREMENT-01
+  source_norm_id: AIA-NORM-A002-P9-CONSUMER-PRODUCT-SAFETY-SAVING
+  kind: subject_to_external_requirements
+  target_rule_ids: []
+  target_norm_ids: []
+  external_requirements:
+  - other Union legal acts related to consumer protection and product safety
+  guidance_refs: []
+  external_regulations: []
+  legal_basis_spans:
+  - AIA-TEXT-A002-P018
+  detail: The preserved Union-law rules are outside this enacted corpus.
+- relation_id: AIA-REL-A003-D014A-MICRO-SMALL-AND-MEDIUM-SIZED-ENTERPRISE-EXTERNAL-REQUIREMENT-01
+  source_norm_id: AIA-NORM-A003-D014A-MICRO-SMALL-AND-MEDIUM-SIZED-ENTERPRISE
+  kind: subject_to_external_requirements
+  target_rule_ids: []
+  target_norm_ids: []
+  external_requirements:
+  - Article 2 of the Annex to Recommendation 2003/361/EC
+  guidance_refs: []
+  external_regulations: []
+  legal_basis_spans:
+  - AIA-TEXT-A003-P016
+  detail: The SME definition is imported from an external Commission recommendation.
+- relation_id: AIA-REL-A003-D014B-SMALL-MID-CAP-ENTERPRISE-EXTERNAL-REQUIREMENT-01
+  source_norm_id: AIA-NORM-A003-D014B-SMALL-MID-CAP-ENTERPRISE
+  kind: subject_to_external_requirements
+  target_rule_ids: []
+  target_norm_ids: []
+  external_requirements:
+  - point (2) of the Annex to Recommendation (EU) 2025/1099
+  guidance_refs: []
+  external_regulations: []
+  legal_basis_spans:
+  - AIA-TEXT-A003-P017
+  detail: The SMC definition is imported from an external Commission recommendation.
+- relation_id: AIA-REL-A003-D022-NOTIFIED-BODY-EXTERNAL-REQUIREMENT-01
+  source_norm_id: AIA-NORM-A003-D022-NOTIFIED-BODY
+  kind: subject_to_external_requirements
+  target_rule_ids: []
+  target_norm_ids: []
+  external_requirements:
+  - other relevant Union harmonisation legislation
+  guidance_refs: []
+  external_regulations: []
+  legal_basis_spans:
+  - AIA-TEXT-A003-P025
+  detail: The notification definition also depends on external harmonisation legislation.
+- relation_id: AIA-REL-A003-D024-CE-MARKING-EXTERNAL-REQUIREMENT-02
+  source_norm_id: AIA-NORM-A003-D024-CE-MARKING
+  kind: subject_to_external_requirements
+  target_rule_ids: []
+  target_norm_ids: []
+  external_requirements:
+  - applicable Union harmonisation legislation providing for CE marking
+  guidance_refs: []
+  external_regulations: []
+  legal_basis_spans:
+  - AIA-TEXT-A003-P027
+  detail: The definition also depends on external harmonisation legislation.
+- relation_id: AIA-REL-A003-D026-MARKET-SURVEILLANCE-AUTHORITY-EXTERNAL-REQUIREMENT-01
+  source_norm_id: AIA-NORM-A003-D026-MARKET-SURVEILLANCE-AUTHORITY
+  kind: subject_to_external_requirements
+  target_rule_ids: []
+  target_norm_ids: []
+  external_requirements:
+  - Regulation (EU) 2019/1020
+  guidance_refs: []
+  external_regulations: []
+  legal_basis_spans:
+  - AIA-TEXT-A003-P029
+  detail: The authority activities and measures are defined by an external regulation.
+- relation_id: AIA-REL-A003-D027-HARMONISED-STANDARD-EXTERNAL-REQUIREMENT-01
+  source_norm_id: AIA-NORM-A003-D027-HARMONISED-STANDARD
+  kind: subject_to_external_requirements
+  target_rule_ids: []
+  target_norm_ids: []
+  external_requirements:
+  - Article 2(1), point (c), of Regulation (EU) No 1025/2012
+  guidance_refs: []
+  external_regulations: []
+  legal_basis_spans:
+  - AIA-TEXT-A003-P030
+  detail: The harmonised-standard definition is imported from an external regulation.
+- relation_id: AIA-REL-A003-D028-COMMON-SPECIFICATION-EXTERNAL-REQUIREMENT-01
+  source_norm_id: AIA-NORM-A003-D028-COMMON-SPECIFICATION
+  kind: subject_to_external_requirements
+  target_rule_ids: []
+  target_norm_ids: []
+  external_requirements:
+  - Article 2, point (4), of Regulation (EU) No 1025/2012
+  guidance_refs: []
+  external_regulations: []
+  legal_basis_spans:
+  - AIA-TEXT-A003-P031
+  detail: The technical-specification concept is imported from an external regulation.
+- relation_id: AIA-REL-A003-D037-SPECIAL-CATEGORIES-OF-PERSONAL-DATA-EXTERNAL-REQUIREMENT-01
+  source_norm_id: AIA-NORM-A003-D037-SPECIAL-CATEGORIES-OF-PERSONAL-DATA
+  kind: subject_to_external_requirements
+  target_rule_ids: []
+  target_norm_ids: []
+  external_requirements:
+  - Regulation (EU) 2016/679; Directive (EU) 2016/680; Regulation (EU) 2018/1725
+  guidance_refs: []
+  external_regulations: []
+  legal_basis_spans:
+  - AIA-TEXT-A003-P040
+  detail: The special-category definition imports categories from external data-protection instruments.
+- relation_id: AIA-REL-A003-D047-AI-OFFICE-EXTERNAL-REQUIREMENT-01
+  source_norm_id: AIA-NORM-A003-D047-AI-OFFICE
+  kind: subject_to_external_requirements
+  target_rule_ids: []
+  target_norm_ids: []
+  external_requirements:
+  - Commission Decision of 24 January 2024 establishing the AI Office
+  guidance_refs: []
+  external_regulations: []
+  legal_basis_spans:
+  - AIA-TEXT-A003-P052
+  detail: The AI Office function is provided for in an external Commission decision.
+- relation_id: AIA-REL-A003-D050-PERSONAL-DATA-EXTERNAL-REQUIREMENT-01
+  source_norm_id: AIA-NORM-A003-D050-PERSONAL-DATA
+  kind: subject_to_external_requirements
+  target_rule_ids: []
+  target_norm_ids: []
+  external_requirements:
+  - Article 4, point (1), of Regulation (EU) 2016/679
+  guidance_refs: []
+  external_regulations: []
+  legal_basis_spans:
+  - AIA-TEXT-A003-P059
+  detail: The personal-data definition is imported from the GDPR.
+- relation_id: AIA-REL-A003-D051-NON-PERSONAL-DATA-EXTERNAL-REQUIREMENT-01
+  source_norm_id: AIA-NORM-A003-D051-NON-PERSONAL-DATA
+  kind: subject_to_external_requirements
+  target_rule_ids: []
+  target_norm_ids: []
+  external_requirements:
+  - Article 4, point (1), of Regulation (EU) 2016/679
+  guidance_refs: []
+  external_regulations: []
+  legal_basis_spans:
+  - AIA-TEXT-A003-P060
+  detail: The definition is the complement of the GDPR personal-data definition.
+- relation_id: AIA-REL-A003-D052-PROFILING-EXTERNAL-REQUIREMENT-01
+  source_norm_id: AIA-NORM-A003-D052-PROFILING
+  kind: subject_to_external_requirements
+  target_rule_ids: []
+  target_norm_ids: []
+  external_requirements:
+  - Article 4, point (4), of Regulation (EU) 2016/679
+  guidance_refs: []
+  external_regulations: []
+  legal_basis_spans:
+  - AIA-TEXT-A003-P061
+  detail: The profiling definition is imported from the GDPR.
+- relation_id: AIA-REL-A003-D062-CRITICAL-INFRASTRUCTURE-EXTERNAL-REQUIREMENT-01
+  source_norm_id: AIA-NORM-A003-D062-CRITICAL-INFRASTRUCTURE
+  kind: subject_to_external_requirements
+  target_rule_ids: []
+  target_norm_ids: []
+  external_requirements:
+  - Article 2, point (4), of Directive (EU) 2022/2557
+  guidance_refs: []
+  external_regulations: []
+  legal_basis_spans:
+  - AIA-TEXT-A003-P076
+  detail: The critical-infrastructure definition is imported from an external directive.
+- relation_id: AIA-REL-A004A-P1-HIGH-RISK-BIAS-DATA-PROCESSING-EXTERNAL-REQUIREMENT-02
+  source_norm_id: AIA-NORM-A004A-P1-HIGH-RISK-BIAS-DATA-PROCESSING
+  kind: subject_to_external_requirements
+  target_rule_ids: []
+  target_norm_ids: []
+  external_requirements:
+  - Regulation (EU) 2016/679; Regulation (EU) 2018/1725; Directive (EU) 2016/680
+  guidance_refs: []
+  external_regulations: []
+  legal_basis_spans:
+  - AIA-TEXT-A004A-P001
+  detail: The exceptional processing remains additional to the applicable external data-protection instruments.
+- relation_id: AIA-REL-A004A-P1-F-RECORD-NECESSITY-EXTERNAL-REQUIREMENT-01
+  source_norm_id: AIA-NORM-A004A-P1-F-RECORD-NECESSITY
+  kind: subject_to_external_requirements
+  target_rule_ids: []
+  target_norm_ids: []
+  external_requirements:
+  - Regulation (EU) 2016/679; Regulation (EU) 2018/1725; Directive (EU) 2016/680
+  guidance_refs: []
+  external_regulations: []
+  legal_basis_spans:
+  - AIA-TEXT-A004A-P007
+  detail: The reasons must be included in processing records maintained under the applicable external
+    instruments.
+- relation_id: AIA-REL-A005-P1-BB-DIRECTIVE-MATERIAL-EXTERNAL-REQUIREMENT-01
+  source_norm_id: AIA-NORM-A005-P1-BB-DIRECTIVE-MATERIAL
+  kind: subject_to_external_requirements
+  target_rule_ids: []
+  target_norm_ids: []
+  external_requirements:
+  - Article 2, points (c) and (e), of Directive 2011/93/EU
+  guidance_refs: []
+  external_regulations: []
+  legal_basis_spans:
+  - AIA-TEXT-A005-P005
+  detail: The prohibited material and performance are defined by the external directive.
+- relation_id: AIA-REL-A005-P1-H-GDPR-SAVING-EXTERNAL-REQUIREMENT-01
+  source_norm_id: AIA-NORM-A005-P1-H-GDPR-SAVING
+  kind: subject_to_external_requirements
+  target_rule_ids: []
+  target_norm_ids: []
+  external_requirements:
+  - Article 9 of Regulation (EU) 2016/679
+  guidance_refs: []
+  external_regulations: []
+  legal_basis_spans:
+  - AIA-TEXT-A005-P017
+  detail: The saving clause preserves the external GDPR rule.
+- relation_id: AIA-REL-A005-P8-OTHER-UNION-LAW-EXTERNAL-REQUIREMENT-01
+  source_norm_id: AIA-NORM-A005-P8-OTHER-UNION-LAW
+  kind: subject_to_external_requirements
+  target_rule_ids: []
+  target_norm_ids: []
+  external_requirements:
+  - applicable prohibitions under other Union law
+  guidance_refs: []
+  external_regulations: []
+  legal_basis_spans:
+  - AIA-TEXT-A005-P034
+  detail: The saving clause preserves prohibitions arising under other Union law.
+- relation_id: AIA-REL-A010-P5-F-RECORD-NECESSITY-EXTERNAL-REQUIREMENT-01
+  source_norm_id: AIA-NORM-A010-P5-F-RECORD-NECESSITY
+  kind: subject_to_external_requirements
+  target_rule_ids: []
+  target_norm_ids: []
+  external_requirements:
+  - Regulation (EU) 2016/679; Regulation (EU) 2018/1725; Directive (EU) 2016/680
+  guidance_refs: []
+  external_regulations: []
+  legal_basis_spans:
+  - AIA-TEXT-A010-P019
+  detail: The reasons must be included in processing records maintained under the applicable external
+    instruments.
+- relation_id: AIA-REL-A011-P2-SINGLE-DOCUMENTATION-SET-EXTERNAL-REQUIREMENT-01
+  source_norm_id: AIA-NORM-A011-P2-SINGLE-DOCUMENTATION-SET
+  kind: subject_to_external_requirements
+  target_rule_ids: []
+  target_norm_ids: []
+  external_requirements:
+  - Annex I, Section A Union harmonisation legislation
+  guidance_refs: []
+  external_regulations: []
+  legal_basis_spans:
+  - AIA-TEXT-A011-P2
+  detail: The applicable sectoral legal act supplies the additional information that must be included.
+- relation_id: AIA-REL-A025-P5-PROTECT-RIGHTS-AND-SECRETS-EXTERNAL-REQUIREMENT-01
+  source_norm_id: AIA-NORM-A025-P5-PROTECT-RIGHTS-AND-SECRETS
+  kind: subject_to_external_requirements
+  target_rule_ids: []
+  target_norm_ids: []
+  external_requirements:
+  - applicable Union and national intellectual-property, confidentiality, and trade-secret law
+  guidance_refs: []
+  external_regulations: []
+  legal_basis_spans:
+  - AIA-TEXT-A025-P017
+  detail: The referenced external law defines the protected rights and information.
+- relation_id: AIA-REL-A026-P3-PRESERVE-OTHER-OBLIGATIONS-EXTERNAL-REQUIREMENT-01
+  source_norm_id: AIA-NORM-A026-P3-PRESERVE-OTHER-OBLIGATIONS
+  kind: subject_to_external_requirements
+  target_rule_ids: []
+  target_norm_ids: []
+  external_requirements:
+  - other applicable deployer obligations under Union or national law
+  guidance_refs: []
+  external_regulations: []
+  legal_basis_spans:
+  - AIA-TEXT-A026-P3
+  detail: The preserved obligations arise outside this Article.
+- relation_id: AIA-REL-A026-P7-FOLLOW-WORKER-INFORMATION-RULES-EXTERNAL-REQUIREMENT-01
+  source_norm_id: AIA-NORM-A026-P7-FOLLOW-WORKER-INFORMATION-RULES
+  kind: subject_to_external_requirements
+  target_rule_ids: []
+  target_norm_ids: []
+  external_requirements:
+  - applicable Union and national worker-information law and practice
+  guidance_refs: []
+  external_regulations: []
+  legal_basis_spans:
+  - AIA-TEXT-A026-P7
+  detail: External law and practice determine the applicable notice procedure.
+- relation_id: AIA-REL-A026-P9-USE-ARTICLE-13-IN-DPIA-EXTERNAL-REQUIREMENT-01
+  source_norm_id: AIA-NORM-A026-P9-USE-ARTICLE-13-IN-DPIA
+  kind: subject_to_external_requirements
+  target_rule_ids: []
+  target_norm_ids: []
+  external_requirements:
+  - Article 35 of Regulation (EU) 2016/679 or Article 27 of Directive (EU) 2016/680
+  guidance_refs: []
+  external_regulations: []
+  legal_basis_spans:
+  - AIA-TEXT-A026-P9
+  detail: The external data-protection instruments determine whether and how the DPIA obligation applies.
+- relation_id: AIA-REL-A026-P10-PRESERVE-DIRECTIVE-2016-680-EXTERNAL-REQUIREMENT-01
+  source_norm_id: AIA-NORM-A026-P10-PRESERVE-DIRECTIVE-2016-680
+  kind: subject_to_external_requirements
+  target_rule_ids: []
+  target_norm_ids: []
+  external_requirements:
+  - Directive (EU) 2016/680
+  guidance_refs: []
+  external_regulations: []
+  legal_basis_spans:
+  - AIA-TEXT-A026-P10
+  detail: The Directive's requirements continue to apply alongside Article 26(10).
+- relation_id: AIA-REL-A026-P10-PRESERVE-BIOMETRIC-DATA-LAW-EXTERNAL-REQUIREMENT-01
+  source_norm_id: AIA-NORM-A026-P10-PRESERVE-BIOMETRIC-DATA-LAW
+  kind: subject_to_external_requirements
+  target_rule_ids: []
+  target_norm_ids: []
+  external_requirements:
+  - Article 9 of Regulation (EU) 2016/679 and Article 10 of Directive (EU) 2016/680
+  guidance_refs: []
+  external_regulations: []
+  legal_basis_spans:
+  - AIA-TEXT-A026-P10
+  detail: The external instruments continue to govern biometric-data processing.
+- relation_id: AIA-REL-A026-P10-PRESERVE-SUPERVISORY-POWERS-EXTERNAL-REQUIREMENT-01
+  source_norm_id: AIA-NORM-A026-P10-PRESERVE-SUPERVISORY-POWERS
+  kind: subject_to_external_requirements
+  target_rule_ids: []
+  target_norm_ids: []
+  external_requirements:
+  - supervisory-authority powers under Directive (EU) 2016/680
+  guidance_refs: []
+  external_regulations: []
+  legal_basis_spans:
+  - AIA-TEXT-A026-P10
+  detail: The external Directive defines the preserved supervisory powers.
+- relation_id: AIA-REL-A026-P11-LAW-ENFORCEMENT-NOTICE-EXTERNAL-REQUIREMENT-01
+  source_norm_id: AIA-NORM-A026-P11-LAW-ENFORCEMENT-NOTICE
+  kind: subject_to_external_requirements
+  target_rule_ids: []
+  target_norm_ids: []
+  external_requirements:
+  - Article 13 of Directive (EU) 2016/680
+  guidance_refs: []
+  external_regulations: []
+  legal_basis_spans:
+  - AIA-TEXT-A026-P11
+  detail: The external Directive supplies the applicable law-enforcement notice regime.
+- relation_id: AIA-REL-A027-P4-INCORPORATE-DPIA-EXTERNAL-REQUIREMENT-01
+  source_norm_id: AIA-NORM-A027-P4-INCORPORATE-DPIA
+  kind: subject_to_external_requirements
+  target_rule_ids: []
+  target_norm_ids: []
+  external_requirements:
+  - Article 35 of Regulation (EU) 2016/679 or Article 27 of Directive (EU) 2016/680
+  guidance_refs: []
+  external_regulations: []
+  legal_basis_spans:
+  - AIA-TEXT-A027-P010
+  detail: The external instruments define the DPIA whose relevant content may be reused.
+- relation_id: AIA-REL-A050-P3-DATA-EXTERNAL-REQUIREMENT-01
+  source_norm_id: AIA-NORM-A050-P3-DATA
+  kind: subject_to_external_requirements
+  target_rule_ids: []
+  target_norm_ids: []
+  external_requirements:
+  - Regulation (EU) 2016/679; Regulation (EU) 2018/1725; Directive (EU) 2016/680
+  guidance_refs: []
+  external_regulations: []
+  legal_basis_spans:
+  - AIA-TEXT-A050-P3
+  detail: Referenced instruments are outside the enacted corpus.
+- relation_id: AIA-REL-A078-P1-PROTECT-CONFIDENTIALITY-EXTERNAL-REQUIREMENT-01
+  source_norm_id: AIA-NORM-A078-P1-PROTECT-CONFIDENTIALITY
+  kind: subject_to_external_requirements
+  target_rule_ids: []
+  target_norm_ids: []
+  external_requirements:
+  - Article 5 of Directive (EU) 2016/943
+  guidance_refs: []
+  external_regulations: []
+  legal_basis_spans:
+  - AIA-TEXT-A078-P001
+  detail: The trade-secret exception to point (a) is defined by that Directive, not by this Regulation.
+- relation_id: AIA-REL-ANNEX-III-6D-OFFENDING-RISK-EXTERNAL-REQUIREMENT-01
+  source_norm_id: AIA-NORM-ANNEX-III-6D-OFFENDING-RISK
+  kind: subject_to_external_requirements
+  target_rule_ids: []
+  target_norm_ids: []
+  external_requirements:
+  - Article 3(4) of Directive (EU) 2016/680
+  guidance_refs: []
+  external_regulations: []
+  legal_basis_spans:
+  - AIA-TEXT-ANNEX-III-P024
+  detail: The external directive supplies the referenced profiling definition.
+- relation_id: AIA-REL-ANNEX-III-6E-LAW-ENFORCEMENT-PROFILING-EXTERNAL-REQUIREMENT-01
+  source_norm_id: AIA-NORM-ANNEX-III-6E-LAW-ENFORCEMENT-PROFILING
+  kind: subject_to_external_requirements
+  target_rule_ids: []
+  target_norm_ids: []
+  external_requirements:
+  - Article 3(4) of Directive (EU) 2016/680
+  guidance_refs: []
+  external_regulations: []
+  legal_basis_spans:
+  - AIA-TEXT-ANNEX-III-P025
+  detail: The external directive supplies the referenced profiling definition.
+- relation_id: AIA-REL-ANNEX-VII-MODEL-ACCESS-EXTERNAL-REQUIREMENT-01
+  source_norm_id: AIA-NORM-ANNEX-VII-MODEL-ACCESS
+  kind: subject_to_external_requirements
+  target_rule_ids: []
+  target_norm_ids: []
+  external_requirements:
+  - existing Union law on intellectual-property and trade-secret protection
+  guidance_refs: []
+  external_regulations: []
+  legal_basis_spans:
+  - AIA-TEXT-ANNEX-VII-P024
+  detail: Model access remains subject to the applicable external Union-law protections.
 - relation_id: AIA-REL-ANNEX-IX-REGISTRATION-INFORMATION-CARRIED-BY-NORMS
   source_norm_id: AIA-NORM-ANNEX-IX-REGISTRATION-INFORMATION
   kind: carried_by_norms

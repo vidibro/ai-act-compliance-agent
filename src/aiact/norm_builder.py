@@ -18,7 +18,6 @@ from aiact.policy_loader import article_filename, source_body
 from aiact.schemas.interpretation import InterpretationTargetKind, InterpretiveLink
 from aiact.schemas.norm import (
     ConditionGroup,
-    DependencyResolution,
     ImplementationMode,
     NormDependency,
     NormKind,
@@ -623,18 +622,6 @@ def _build_relations(
         if relation.kind is NormRelationKind.CONDITIONAL_ON_NORMS:
             if relation.source_norm_id in relation.target_norm_ids:
                 raise ValueError(f"{relation.relation_id}: a norm cannot be its own condition")
-        if relation.external_requirements:
-            external_dependencies = {
-                dependency.dependency_ref
-                for dependency in source.dependencies
-                if dependency.resolution is DependencyResolution.EXTERNAL_RECORDED
-            }
-            unknown_external = sorted(set(relation.external_requirements) - external_dependencies)
-            if unknown_external:
-                raise ValueError(
-                    f"{relation.relation_id}: external requirements are not recorded dependencies: "
-                    f"{unknown_external}"
-                )
         relations.append(relation.model_dump(mode="json"))
     return relations
 

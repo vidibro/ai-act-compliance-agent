@@ -48,10 +48,6 @@ records:
   - other deployer obligations under Union or national law remain unaffected
   - the deployer's freedom to organise resources and activities for implementing provider-indicated human
     oversight remains unaffected
-  dependencies:
-  - dependency_ref: other applicable deployer obligations under Union or national law
-    resolution: external_recorded
-    detail: The preserved obligations arise outside this Article.
   verified_by: vidibro
 - norm_id: AIA-NORM-A026-P4-INPUT-DATA-QUALITY
   source: A026-P4
@@ -219,10 +215,6 @@ records:
   - Union or national worker-information rules and practices apply
   implementation_refs: *id001
   verification_mode: reported_conditionally
-  dependencies:
-  - dependency_ref: applicable Union and national worker-information law and practice
-    resolution: external_recorded
-    detail: External law and practice determine the applicable notice procedure.
   verified_by: vidibro
 - norm_id: AIA-NORM-A026-P8-REGISTER
   source: A026-P8
@@ -274,10 +266,6 @@ records:
   implementation_refs:
   - AIA-DP-A26-9
   verification_mode: reported_not_judged
-  dependencies:
-  - dependency_ref: Article 35 of Regulation (EU) 2016/679 or Article 27 of Directive (EU) 2016/680
-    resolution: external_recorded
-    detail: The external data-protection instruments determine whether and how the DPIA obligation applies.
   verified_by: vidibro
 - norm_id: AIA-NORM-A026-P10-PRESERVE-DIRECTIVE-2016-680
   source: A026-P10
@@ -290,10 +278,6 @@ records:
   implementation_refs: &id005
   - AIA-DP-A26-10
   verification_mode: reported_conditionally
-  dependencies:
-  - dependency_ref: Directive (EU) 2016/680
-    resolution: external_recorded
-    detail: The Directive's requirements continue to apply alongside Article 26(10).
   verified_by: vidibro
 - norm_id: AIA-NORM-A026-P10-REQUEST-AUTHORISATION
   source: A026-P10
@@ -393,10 +377,6 @@ records:
   kind: applicability
   implementation_refs: *id005
   verification_mode: reported_conditionally
-  dependencies:
-  - dependency_ref: Article 9 of Regulation (EU) 2016/679 and Article 10 of Directive (EU) 2016/680
-    resolution: external_recorded
-    detail: The external instruments continue to govern biometric-data processing.
   verified_by: vidibro
 - norm_id: AIA-NORM-A026-P10-DOCUMENT-EACH-USE
   source: A026-P10
@@ -430,10 +410,6 @@ records:
   kind: applicability
   implementation_refs: *id005
   verification_mode: reported_conditionally
-  dependencies:
-  - dependency_ref: supervisory-authority powers under Directive (EU) 2016/680
-    resolution: external_recorded
-    detail: The external Directive defines the preserved supervisory powers.
   verified_by: vidibro
 - norm_id: AIA-NORM-A026-P10-ANNUAL-REPORTS
   source: A026-P10
@@ -512,10 +488,6 @@ records:
   - the high-risk system is used for law-enforcement purposes
   implementation_refs: *id008
   verification_mode: reported_conditionally
-  dependencies:
-  - dependency_ref: Article 13 of Directive (EU) 2016/680
-    resolution: external_recorded
-    detail: The external Directive supplies the applicable law-enforcement notice regime.
   verified_by: vidibro
 - norm_id: AIA-NORM-A026-P12-COOPERATE
   source: A026-P12

@@ -161,7 +161,6 @@ norms:
   detection_channels:
   - semantic_legal_effect
   - shall_token
-  - cross_reference_structure
   primary_spans:
   - AIA-TEXT-A050-P3
   qualifier_spans: []
@@ -172,10 +171,7 @@ norms:
     criminal offences, subject to safeguards for third-party rights and freedoms and in accordance with
     Union law
   mandatory_content: []
-  dependencies:
-  - dependency_ref: Regulation (EU) 2016/679; Regulation (EU) 2018/1725; Directive (EU) 2016/680
-    resolution: external_recorded
-    detail: Referenced instruments are outside the enacted corpus.
+  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: missing

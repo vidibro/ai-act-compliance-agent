@@ -106,7 +106,6 @@ class VerificationMode(StrEnum):
 
 
 class DependencyResolution(StrEnum):
-    EXTERNAL_RECORDED = "external_recorded"
     GUIDANCE_LINKED = "guidance_linked"
     NATIONAL_OR_FACTUAL = "national_or_factual"
     MISSING = "missing"
@@ -428,6 +427,18 @@ class NormInventory(BaseModel):
             for relation in self.relations
             if relation.source_norm_id == source_norm_id and relation.kind is kind
             for target_norm_id in relation.target_norm_ids
+        ]
+
+    def external_requirements_for(self, source_norm_id: str) -> list[str]:
+        """Return external requirements canonically linked from one norm."""
+        return [
+            requirement
+            for relation in self.relations
+            if (
+                relation.source_norm_id == source_norm_id
+                and relation.kind is NormRelationKind.SUBJECT_TO_EXTERNAL_REQUIREMENTS
+            )
+            for requirement in relation.external_requirements
         ]
 
     def source_norm_ids_for(self, target_norm_id: str, kind: NormRelationKind) -> list[str]:

@@ -741,10 +741,7 @@ norms:
   - offending or reoffending risk is not assessed solely from profiling under Directive (EU) 2016/680
   exceptions: []
   mandatory_content: []
-  dependencies:
-  - dependency_ref: Article 3(4) of Directive (EU) 2016/680
-    resolution: external_recorded
-    detail: The external directive supplies the referenced profiling definition.
+  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: applicability_question
@@ -788,10 +785,7 @@ norms:
   - the use is permitted under relevant Union or national law
   exceptions: []
   mandatory_content: []
-  dependencies:
-  - dependency_ref: Article 3(4) of Directive (EU) 2016/680
-    resolution: external_recorded
-    detail: The external directive supplies the referenced profiling definition.
+  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: applicability_question

@@ -538,7 +538,9 @@ def test_article_two_intermediary_liability_saving_clause_needs_no_product_actio
     assert norm.product_scope.value == "no_product_action"
     assert norm.implementation_mode.value == "none_required"
     assert norm.verification_mode.value == "not_reported"
-    assert norm.dependencies[0].dependency_ref == "Regulation (EU) 2022/2065, Chapter II"
+    assert bundle.norm_inventory.external_requirements_for(norm.norm_id) == [
+        "Regulation (EU) 2022/2065, Chapter II"
+    ]
 
 
 def test_article_two_is_fully_reviewed_as_twenty_eight_atomic_norms():
@@ -1326,8 +1328,8 @@ def test_article_eleven_separates_documentation_content_and_assessment_duties():
     assert bundle.norm_inventory.target_norm_ids_for(
         single_set.norm_id, NormRelationKind.RELIES_ON_NORMS
     ) == ["AIA-NORM-A011-P1-ANNEX-IV"]
-    assert [dependency.resolution.value for dependency in single_set.dependencies] == [
-        "external_recorded"
+    assert bundle.norm_inventory.external_requirements_for(single_set.norm_id) == [
+        "Annex I, Section A Union harmonisation legislation"
     ]
 
 
@@ -4254,7 +4256,7 @@ def test_article_seventy_eight_maps_the_special_provider_confidentiality_rule():
     assert confidentiality.exceptions == [
         "point (a) only, the cases referred to in Article 5 of Directive (EU) 2016/943"
     ]
-    assert [dependency.dependency_ref for dependency in confidentiality.dependencies] == [
+    assert bundle.norm_inventory.external_requirements_for(confidentiality.norm_id) == [
         "Article 5 of Directive (EU) 2016/943"
     ]
 

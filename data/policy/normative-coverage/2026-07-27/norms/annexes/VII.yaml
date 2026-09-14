@@ -642,7 +642,6 @@ norms:
   detection_channels:
   - semantic_legal_effect
   - shall_token
-  - cross_reference_structure
   - existing_implementation
   primary_spans:
   - AIA-TEXT-ANNEX-VII-P024
@@ -654,10 +653,7 @@ norms:
   - the notified body makes a reasoned request
   exceptions: []
   mandatory_content: []
-  dependencies:
-  - dependency_ref: existing Union law on intellectual-property and trade-secret protection
-    resolution: external_recorded
-    detail: Model access remains subject to the applicable external Union-law protections.
+  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: compliance_rule

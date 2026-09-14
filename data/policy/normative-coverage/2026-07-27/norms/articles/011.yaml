@@ -277,7 +277,6 @@ norms:
   detection_channels:
   - semantic_legal_effect
   - shall_token
-  - cross_reference_structure
   - existing_implementation
   primary_spans:
   - AIA-TEXT-A011-P2
@@ -288,10 +287,7 @@ norms:
     Annex I, Section A
   exceptions: []
   mandatory_content: []
-  dependencies:
-  - dependency_ref: Annex I, Section A Union harmonisation legislation
-    resolution: external_recorded
-    detail: The applicable sectoral legal act supplies the additional information that must be included.
+  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: compliance_rule

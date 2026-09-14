@@ -95,7 +95,6 @@ norms:
   detection_channels:
   - semantic_legal_effect
   - deeming_or_consequence
-  - cross_reference_structure
   primary_spans:
   - AIA-TEXT-A026-P3
   qualifier_spans: []
@@ -106,10 +105,7 @@ norms:
   - other deployer obligations under Union or national law remain unaffected
   - the deployer's freedom to organise resources and activities for implementing provider-indicated human
     oversight remains unaffected
-  dependencies:
-  - dependency_ref: other applicable deployer obligations under Union or national law
-    resolution: external_recorded
-    detail: The preserved obligations arise outside this Article.
+  dependencies: []
   product_scope: dependency_only
   product_scope_reason: This saving clause preserves external duties without creating an independent product
     action.
@@ -545,7 +541,6 @@ norms:
   detection_channels:
   - semantic_legal_effect
   - shall_token
-  - cross_reference_structure
   - existing_implementation
   primary_spans:
   - AIA-TEXT-A026-P7
@@ -555,10 +550,7 @@ norms:
   - Union or national worker-information rules and practices apply
   exceptions: []
   mandatory_content: []
-  dependencies:
-  - dependency_ref: applicable Union and national worker-information law and practice
-    resolution: external_recorded
-    detail: External law and practice determine the applicable notice procedure.
+  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: compliance_rule
@@ -703,7 +695,6 @@ norms:
   detection_channels:
   - semantic_legal_effect
   - shall_token
-  - cross_reference_structure
   - existing_implementation
   primary_spans:
   - AIA-TEXT-A026-P9
@@ -713,10 +704,7 @@ norms:
   - the deployer owes a DPIA under Article 35 GDPR or Article 27 of Directive (EU) 2016/680
   exceptions: []
   mandatory_content: []
-  dependencies:
-  - dependency_ref: Article 35 of Regulation (EU) 2016/679 or Article 27 of Directive (EU) 2016/680
-    resolution: external_recorded
-    detail: The external data-protection instruments determine whether and how the DPIA obligation applies.
+  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: compliance_rule
@@ -745,7 +733,6 @@ norms:
   detection_channels:
   - semantic_legal_effect
   - deeming_or_consequence
-  - cross_reference_structure
   - existing_implementation
   primary_spans:
   - AIA-TEXT-A026-P10
@@ -754,10 +741,7 @@ norms:
   conditions: []
   exceptions: []
   mandatory_content: []
-  dependencies:
-  - dependency_ref: Directive (EU) 2016/680
-    resolution: external_recorded
-    detail: The Directive's requirements continue to apply alongside Article 26(10).
+  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: compliance_rule
@@ -1031,7 +1015,6 @@ norms:
   detection_channels:
   - semantic_legal_effect
   - deeming_or_consequence
-  - cross_reference_structure
   - existing_implementation
   primary_spans:
   - AIA-TEXT-A026-P10
@@ -1040,10 +1023,7 @@ norms:
   conditions: []
   exceptions: []
   mandatory_content: []
-  dependencies:
-  - dependency_ref: Article 9 of Regulation (EU) 2016/679 and Article 10 of Directive (EU) 2016/680
-    resolution: external_recorded
-    detail: The external instruments continue to govern biometric-data processing.
+  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: compliance_rule
@@ -1119,7 +1099,6 @@ norms:
   - semantic_legal_effect
   - shall_token
   - deeming_or_consequence
-  - cross_reference_structure
   - existing_implementation
   primary_spans:
   - AIA-TEXT-A026-P10
@@ -1128,10 +1107,7 @@ norms:
   conditions: []
   exceptions: []
   mandatory_content: []
-  dependencies:
-  - dependency_ref: supervisory-authority powers under Directive (EU) 2016/680
-    resolution: external_recorded
-    detail: The external Directive defines the preserved supervisory powers.
+  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: compliance_rule
@@ -1321,7 +1297,6 @@ norms:
   - semantic_legal_effect
   - shall_token
   - deeming_or_consequence
-  - cross_reference_structure
   - existing_implementation
   primary_spans:
   - AIA-TEXT-A026-P11
@@ -1331,10 +1306,7 @@ norms:
   - the high-risk system is used for law-enforcement purposes
   exceptions: []
   mandatory_content: []
-  dependencies:
-  - dependency_ref: Article 13 of Directive (EU) 2016/680
-    resolution: external_recorded
-    detail: The external Directive supplies the applicable law-enforcement notice regime.
+  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: compliance_rule

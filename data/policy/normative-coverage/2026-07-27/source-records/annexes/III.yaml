@@ -327,10 +327,6 @@ records:
   conditions:
   - the use is permitted under relevant Union or national law
   - offending or reoffending risk is not assessed solely from profiling under Directive (EU) 2016/680
-  dependencies:
-  - dependency_ref: Article 3(4) of Directive (EU) 2016/680
-    resolution: external_recorded
-    detail: The external directive supplies the referenced profiling definition.
   implementation_mode: applicability_question
   implementation_refs:
   - AIA-CQ-ANNEX-III
@@ -352,10 +348,6 @@ records:
   - ANNEX-III-P020
   conditions:
   - the use is permitted under relevant Union or national law
-  dependencies:
-  - dependency_ref: Article 3(4) of Directive (EU) 2016/680
-    resolution: external_recorded
-    detail: The external directive supplies the referenced profiling definition.
   implementation_mode: applicability_question
   implementation_refs:
   - AIA-CQ-ANNEX-III

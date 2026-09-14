@@ -110,9 +110,6 @@ records:
   exceptions:
   - a without-right defence applies under national law
   dependencies:
-  - dependency_ref: Article 2, points (c) and (e), of Directive 2011/93/EU
-    resolution: external_recorded
-    detail: The prohibited material and performance are defined by the external directive.
   - dependency_ref: applicable national-law without-right defence
     resolution: national_or_factual
     detail: National law determines whether the express defence applies.
@@ -267,10 +264,6 @@ records:
   subject_ref: non_law_enforcement_biometric_data_processing
   subject_category: other
   kind: legal_consequence
-  dependencies:
-  - dependency_ref: Article 9 of Regulation (EU) 2016/679
-    resolution: external_recorded
-    detail: The saving clause preserves the external GDPR rule.
   product_scope: dependency_only
   product_scope_reason: This saving clause constrains interpretation without creating an independent AI
     Act product action.
@@ -720,10 +713,6 @@ records:
   subject_ref: ai_practice_subject_to_other_union_law
   subject_category: other
   kind: legal_consequence
-  dependencies:
-  - dependency_ref: applicable prohibitions under other Union law
-    resolution: external_recorded
-    detail: The saving clause preserves prohibitions arising under other Union law.
   product_scope: dependency_only
   product_scope_reason: This saving clause constrains legal interpretation without creating an independent
     AI Act product action.

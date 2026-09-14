@@ -32,10 +32,7 @@ norms:
   - public and national security
   - criminal and administrative proceedings
   - classified information
-  dependencies:
-  - dependency_ref: Article 5 of Directive (EU) 2016/943
-    resolution: external_recorded
-    detail: The trade-secret exception to point (a) is defined by that Directive, not by this Regulation.
+  dependencies: []
   product_scope: outside_supported_actor
   product_scope_reason: The cross-actor confidentiality rule is represented at specific supported-operator
     receipt points rather than reported here generically.

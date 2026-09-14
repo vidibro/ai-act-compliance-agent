@@ -184,9 +184,6 @@ norms:
   - a without-right defence applies under national law
   mandatory_content: []
   dependencies:
-  - dependency_ref: Article 2, points (c) and (e), of Directive 2011/93/EU
-    resolution: external_recorded
-    detail: The prohibited material and performance are defined by the external directive.
   - dependency_ref: applicable national-law without-right defence
     resolution: national_or_factual
     detail: National law determines whether the express defence applies.
@@ -490,7 +487,6 @@ norms:
   detection_channels:
   - semantic_legal_effect
   - deeming_or_consequence
-  - cross_reference_structure
   primary_spans:
   - AIA-TEXT-A005-P017
   qualifier_spans: []
@@ -498,10 +494,7 @@ norms:
   conditions: []
   exceptions: []
   mandatory_content: []
-  dependencies:
-  - dependency_ref: Article 9 of Regulation (EU) 2016/679
-    resolution: external_recorded
-    detail: The saving clause preserves the external GDPR rule.
+  dependencies: []
   product_scope: dependency_only
   product_scope_reason: This saving clause constrains interpretation without creating an independent AI
     Act product action.
@@ -1572,7 +1565,6 @@ norms:
   - semantic_legal_effect
   - shall_token
   - deeming_or_consequence
-  - cross_reference_structure
   primary_spans:
   - AIA-TEXT-A005-P034
   qualifier_spans: []
@@ -1580,10 +1572,7 @@ norms:
   conditions: []
   exceptions: []
   mandatory_content: []
-  dependencies:
-  - dependency_ref: applicable prohibitions under other Union law
-    resolution: external_recorded
-    detail: The saving clause preserves prohibitions arising under other Union law.
+  dependencies: []
   product_scope: dependency_only
   product_scope_reason: This saving clause constrains legal interpretation without creating an independent
     AI Act product action.

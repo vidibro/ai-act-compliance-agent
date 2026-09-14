@@ -79,10 +79,6 @@ records:
   action: process personal data under the referenced data-protection instruments
   subject_ref: deployer
   subject_category: supported_operator
-  dependencies:
-  - dependency_ref: Regulation (EU) 2016/679; Regulation (EU) 2018/1725; Directive (EU) 2016/680
-    resolution: external_recorded
-    detail: Referenced instruments are outside the enacted corpus.
   exceptions:
   - biometric categorisation or emotion recognition permitted by law to detect, prevent, or investigate
     criminal offences, subject to safeguards for third-party rights and freedoms and in accordance with
