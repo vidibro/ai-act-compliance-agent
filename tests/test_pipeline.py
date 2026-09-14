@@ -334,3 +334,33 @@ def test_the_report_can_name_which_point_banned_the_practice(spec):
 
     assert practice is ProhibitedPractice.CHILD_SEXUAL_ABUSE_MATERIAL
     assert practice.point == "bb"
+
+
+def test_article_5_national_law_boundaries_are_shown_in_the_report(spec):
+    """The app names the boundary, but never pretends to decide a Member State's law."""
+    bb = review(
+        DOCUMENT,
+        spec,
+        a_brain(prohibited=ProhibitedPractice.CHILD_SEXUAL_ABUSE_MATERIAL),
+        judge=StubJudge(),
+    )
+    realtime = review(
+        DOCUMENT,
+        spec,
+        a_brain(prohibited=ProhibitedPractice.REALTIME_REMOTE_BIOMETRIC_IDENTIFICATION),
+        judge=StubJudge(),
+    )
+
+    assert "without right" in (bb.scope_note or "")
+    assert "does not identify or assess" in (bb.scope_note or "")
+    authorisation_detail = (
+        "National law supplies the detailed rules for requesting and granting authorisation."
+    )
+    assert authorisation_detail in (realtime.scope_note or "")
+    assert "does not identify or assess" in (realtime.scope_note or "")
+    assert {notice.norm_id for notice in spec.national_law_notices} == {
+        "AIA-NORM-A005-P1-BB-DIRECTIVE-MATERIAL",
+        "AIA-NORM-A005-P2-NATIONAL-SAFEGUARDS",
+        "AIA-NORM-A005-P3-PRIOR-AUTHORISATION",
+        "AIA-NORM-A005-P4-NOTIFY-AUTHORITIES",
+    }

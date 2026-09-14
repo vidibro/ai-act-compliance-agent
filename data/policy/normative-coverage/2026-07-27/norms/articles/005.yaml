@@ -183,10 +183,7 @@ norms:
   exceptions:
   - a without-right defence applies under national law
   mandatory_content: []
-  dependencies:
-  - dependency_ref: applicable national-law without-right defence
-    resolution: national_or_factual
-    detail: National law determines whether the express defence applies.
+  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: applicability_question
@@ -738,7 +735,6 @@ norms:
   detection_channels:
   - semantic_legal_effect
   - shall_token
-  - cross_reference_structure
   primary_spans:
   - AIA-TEXT-A005-P027
   qualifier_spans: []
@@ -746,10 +742,7 @@ norms:
   conditions: []
   exceptions: []
   mandatory_content: []
-  dependencies:
-  - dependency_ref: national law authorising real-time remote biometric identification use
-    resolution: national_or_factual
-    detail: Applicable national law supplies the required safeguards, conditions, and use limitations.
+  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: missing
@@ -867,7 +860,6 @@ norms:
   detection_channels:
   - semantic_legal_effect
   - shall_token
-  - cross_reference_structure
   primary_spans:
   - AIA-TEXT-A005-P028
   qualifier_spans: []
@@ -876,10 +868,7 @@ norms:
   - the use pursues an Article 5(1)(h) objective and is subject to the Article 5(2) conditions
   exceptions: []
   mandatory_content: []
-  dependencies:
-  - dependency_ref: national law referred to in Article 5(5) of this Regulation
-    resolution: national_or_factual
-    detail: National law supplies the detailed rules for requesting and granting authorisation.
+  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: missing
@@ -1138,7 +1127,6 @@ norms:
   detection_channels:
   - semantic_legal_effect
   - shall_token
-  - cross_reference_structure
   primary_spans:
   - AIA-TEXT-A005-P030
   qualifier_spans: []
@@ -1146,10 +1134,7 @@ norms:
   conditions: []
   exceptions: []
   mandatory_content: []
-  dependencies:
-  - dependency_ref: national rules referred to in Article 5(5) of this Regulation
-    resolution: national_or_factual
-    detail: National law supplies the detailed notification rules.
+  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: missing

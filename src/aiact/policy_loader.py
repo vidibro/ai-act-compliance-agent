@@ -26,7 +26,7 @@ import yaml
 
 from aiact.config import get_settings
 from aiact.guidance import load_snippet
-from aiact.schemas.norm import Norm
+from aiact.schemas.norm import Norm, NormRelation, NormRelationKind
 from aiact.schemas.policy import PolicyRuleset, RuleCriterion
 from aiact.yaml_loader import load_yaml_mapping
 
@@ -393,6 +393,36 @@ def _resolve_criteria(rules: list[dict[str, Any]], norms_root: Path, version: st
             rule["criteria"] = resolved
 
 
+def _national_law_notices(norms_root: Path, version: str) -> list[dict[str, object]]:
+    """Materialise report notices from canonical targetless national-law relations.
+
+    The policy spec does not author these messages. Their legal boundary and the classification
+    routes that activate it live together on the reviewed norm relation, so a runtime report cannot
+    quietly retain a stale paraphrase after that relation changes.
+    """
+    manifest = norms_root if norms_root.is_file() else norms_root / "manifest.yaml"
+    payload = load_yaml_mapping(manifest, description="norm inventory manifest")
+    artifact_version = str(payload.get("act_version_date", ""))
+    if artifact_version != version:
+        raise ValueError(
+            f"Norm inventory at {norms_root} uses Act version {artifact_version!r}, but the spec "
+            f"is pinned to {version!r}."
+        )
+    notices = []
+    for raw_relation in payload.get("relations", []):
+        relation = NormRelation.model_validate(raw_relation)
+        if relation.kind is not NormRelationKind.NATIONAL_LAW_REGULATION:
+            continue
+        notices.append(
+            {
+                "norm_id": relation.source_norm_id,
+                "prohibited_practices": relation.report_for_prohibited_practices,
+                "detail": relation.detail,
+            }
+        )
+    return notices
+
+
 def load_policy_spec(
     path: str | Path | None = None,
     articles_root: str | Path | None = None,
@@ -420,6 +450,12 @@ def load_policy_spec(
 
     with spec_path.open(encoding="utf-8") as f:
         raw: dict[str, Any] = yaml.safe_load(f)
+
+    if "national_law_notices" in raw:
+        raise ValueError(
+            "Policy spec hand-writes `national_law_notices`. They are materialised from canonical "
+            "national_law_regulation norm relations."
+        )
 
     version = raw.get("act_version_date")
     if version is None:
@@ -529,6 +565,7 @@ def load_policy_spec(
         else Path(settings.policy_normative_coverage_path) / version_str / "norms"
     )
     _resolve_criteria(raw.get("rules", []), norm_path, version_str)
+    raw["national_law_notices"] = _national_law_notices(norm_path, version_str)
 
     spec = PolicyRuleset.model_validate(raw)
 

@@ -402,14 +402,16 @@ not count as independent-review coverage.
 
 `DependencyResolution` has these values:
 
-- `internal_resolved` — points to reviewed spans or norms in this corpus;
-- `external_recorded` — the external source is identified but not stored and analysed;
 - `guidance_linked` — a separately stored non-binding guidance snippet and its `InterpretiveLink`
   are available;
-- `national_or_factual` — resolution depends on national law, an authority, or external facts;
 - `missing` — a dependency necessary for the product's interpretation is neither available nor
   honestly bounded;
 - `unresolved` — not yet decided.
+
+Relations that previously used `internal_resolved`, `external_recorded`, or
+`national_or_factual` are now canonical typed norm relations. In particular,
+`national_law_regulation` is a targetless report boundary: it says the norm must be aligned with
+applicable national law, but this project neither selects a country nor assesses that law.
 
 ## Atomicity rules
 

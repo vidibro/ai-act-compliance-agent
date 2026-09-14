@@ -26,7 +26,7 @@ from aiact.gap import roles as role_questions
 from aiact.gap.graph import DEFAULT_WORKERS, analyse
 from aiact.gap.judge import LLMJudge
 from aiact.schemas.classification import ClassificationResult
-from aiact.schemas.enums import RiskClass
+from aiact.schemas.enums import ProhibitedPractice, RiskClass
 from aiact.schemas.policy import PolicyRuleset
 from aiact.schemas.question import Question
 from aiact.schemas.report import ComplianceReport, ReportSummary
@@ -38,8 +38,22 @@ _PROHIBITED_NOTE = (
     "It may not. Withdraw the practice."
 )
 
+def _national_law_note(spec: PolicyRuleset, practice: ProhibitedPractice | None) -> str:
+    details = [
+        notice.detail
+        for notice in spec.national_law_notices
+        if practice in notice.prohibited_practices
+    ]
+    if not details:
+        return ""
+    return (
+        "National-law alignment required: this application does not identify or assess applicable "
+        "national law. "
+        + " ".join(details)
+    )
 
-def _prohibited_note(classification: ClassificationResult) -> str:
+
+def _prohibited_note(spec: PolicyRuleset, classification: ClassificationResult) -> str:
     """The Art. 5 note, plus the date the ban bites where that is not yet.
 
     Art. 5 applied from 2 February 2025 and for a long time that was true of every point in it, so
@@ -50,8 +64,17 @@ def _prohibited_note(classification: ClassificationResult) -> str:
     the verdict stands and the note says when.
     """
     practice = classification.prohibited_practice
+    national_law_note = _national_law_note(spec, practice)
+    if practice is ProhibitedPractice.REALTIME_REMOTE_BIOMETRIC_IDENTIFICATION:
+        return (
+            "Art. 5(1)(h) prohibits this practice unless it is strictly necessary for one of its "
+            "named law-enforcement objectives and a Member State authorises it under Art. 5(5). "
+            "The Article 5 conditions listed in this report remain mandatory; Chapter III was not "
+            "checked because documentation cannot make an otherwise prohibited practice lawful. "
+            f"{national_law_note}"
+        )
     if practice is None or practice.applies_from <= datetime.now(UTC).date():
-        return _PROHIBITED_NOTE
+        return " ".join(part for part in (_PROHIBITED_NOTE, national_law_note) if part)
     return (
         f"No obligation check was run: Art. 5(1)({practice.point}) prohibits this practice from "
         f"{practice.applies_from.isoformat()}. That date has NOT passed — the prohibition is "
@@ -59,7 +82,7 @@ def _prohibited_note(classification: ClassificationResult) -> str:
         f"under this Regulation today and will be on that date without any further step. Chapter "
         f"III is not checked against it: it sets out how a PERMITTED high-risk system must be "
         f"built, and no documentation makes a practice that is about to be banned shippable. "
-        f"Treat this as a withdrawal deadline, not a gap to close."
+        f"Treat this as a withdrawal deadline, not a gap to close. {national_law_note}"
     )
 _OUT_OF_SCOPE_NOTE = (
     "No obligation check was run, and none is owed: Art. 2 withholds this Regulation from the "
@@ -226,7 +249,7 @@ def review(
     # needs both halves at once: the practice is prohibited unless the national authorisation
     # exists, and if it does, these are the conditions Art. 5 itself attaches to it.
     if prohibited:
-        return report.model_copy(update={"scope_note": _prohibited_note(classification)})
+        return report.model_copy(update={"scope_note": _prohibited_note(spec, classification)})
 
     # A model's obligations are listed and none is judged, so its findings list is empty for a
     # reason that has nothing to do with the documentation. Said here, because an empty findings

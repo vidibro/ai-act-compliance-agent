@@ -14,6 +14,7 @@ from typing import Literal
 
 from pydantic import BaseModel, ConfigDict, Field, model_validator
 
+from aiact.schemas.enums import ProhibitedPractice
 from aiact.schemas.interpretation import InterpretiveLink
 from aiact.schemas.review import ReviewRecord, ReviewStatus
 
@@ -107,7 +108,6 @@ class VerificationMode(StrEnum):
 
 class DependencyResolution(StrEnum):
     GUIDANCE_LINKED = "guidance_linked"
-    NATIONAL_OR_FACTUAL = "national_or_factual"
     MISSING = "missing"
     UNRESOLVED = "unresolved"
 
@@ -128,7 +128,7 @@ class NormRelationKind(StrEnum):
     PARALLEL_NORMS = "parallel_norms"
     RELIES_ON_NORMS = "relies_on_norms"
     INTERPRETED_BY_COMMISSION_GUIDANCE = "interpreted_by_commission_guidance"
-    OUT_OF_SCOPE_REGULATION = "out_of_scope_regulation"
+    NATIONAL_LAW_REGULATION = "national_law_regulation"
     UNRESOLVED_DEPENDENCY = "unresolved_dependency"
     MISSING_DEPENDENCY = "missing_dependency"
 
@@ -145,7 +145,7 @@ class NormRelation(BaseModel):
     target_norm_ids: list[str] = []
     external_requirements: list[str] = []
     guidance_refs: list[str] = []
-    external_regulations: list[str] = []
+    report_for_prohibited_practices: list[ProhibitedPractice] = []
     legal_basis_spans: list[str] = Field(min_length=1)
     detail: str = ""
 
@@ -155,13 +155,13 @@ class NormRelation(BaseModel):
         has_norms = bool(self.target_norm_ids)
         has_external = bool(self.external_requirements)
         has_guidance = bool(self.guidance_refs)
-        has_external_regulations = bool(self.external_regulations)
+        has_report_practices = bool(self.report_for_prohibited_practices)
         if self.kind is NormRelationKind.SUBJECT_TO_EXTERNAL_REQUIREMENTS:
             if (
                 has_rules
                 or has_norms
                 or has_guidance
-                or has_external_regulations
+                or has_report_practices
                 or not has_external
             ):
                 raise ValueError(
@@ -180,7 +180,7 @@ class NormRelation(BaseModel):
                 has_rules
                 or has_external
                 or has_guidance
-                or has_external_regulations
+                or has_report_practices
                 or not has_norms
             ):
                 raise ValueError(
@@ -191,19 +191,22 @@ class NormRelation(BaseModel):
                 has_rules
                 or has_norms
                 or has_external
-                or has_external_regulations
+                or has_report_practices
                 or not has_guidance
             ):
                 raise ValueError("interpreted_by_commission_guidance needs guidance_refs only")
-        elif self.kind is NormRelationKind.OUT_OF_SCOPE_REGULATION:
+        elif self.kind is NormRelationKind.NATIONAL_LAW_REGULATION:
             if (
                 has_rules
                 or has_norms
                 or has_external
                 or has_guidance
-                or not has_external_regulations
+                or not has_report_practices
+                or not self.detail.strip()
             ):
-                raise ValueError("out_of_scope_regulation needs external_regulations only")
+                raise ValueError(
+                    "national_law_regulation needs detail and report_for_prohibited_practices only"
+                )
         elif self.kind in {
             NormRelationKind.UNRESOLVED_DEPENDENCY,
             NormRelationKind.MISSING_DEPENDENCY,
@@ -213,11 +216,11 @@ class NormRelation(BaseModel):
                 or has_norms
                 or has_external
                 or has_guidance
-                or has_external_regulations
+                or has_report_practices
                 or not self.detail.strip()
             ):
                 raise ValueError(f"{self.kind.value} needs detail only")
-        elif not has_rules or has_norms or has_external or has_guidance or has_external_regulations:
+        elif not has_rules or has_norms or has_external or has_guidance or has_report_practices:
             raise ValueError(
                 f"{self.kind.value} needs target_rule_ids and no external requirements"
             )
@@ -227,12 +230,17 @@ class NormRelation(BaseModel):
             raise ValueError("norm relation target_norm_ids must not contain duplicates")
         for name, values in (
             ("guidance_refs", self.guidance_refs),
-            ("external_regulations", self.external_regulations),
         ):
             if len(values) != len(set(values)):
                 raise ValueError(f"norm relation {name} must not contain duplicates")
         if len(self.external_requirements) != len(set(self.external_requirements)):
             raise ValueError("norm relation external_requirements must not contain duplicates")
+        if len(self.report_for_prohibited_practices) != len(
+            set(self.report_for_prohibited_practices)
+        ):
+            raise ValueError(
+                "norm relation report_for_prohibited_practices must not contain duplicates"
+            )
         return self
 
 

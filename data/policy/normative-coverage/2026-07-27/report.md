@@ -6,8 +6,9 @@
 
 The inventory contains 133 complete source-body partitions, 1530 exact segments, and 1391 proposed atomic norms. Every stored article and annex is present. Proposed
 norms have been extracted from 132 documents; the remaining
-work is retained explicitly rather than omitted. The inventory is not consumed by classification,
-rule selection, judging, or reporting.
+work is retained explicitly rather than omitted. The inventory does not decide classification,
+rule selection, or judging. It does materialise rule criteria and report-only legal boundaries into
+the policy spec, so those report elements remain traceable to reviewed norms.
 
 ## Coverage measurements
 
@@ -1163,12 +1164,13 @@ rule selection, judging, or reporting.
 - Semantic candidates a shall-token pass missed: 536
 - Shall-token candidate recall: 61.5%
 - In-scope semantic candidates absent from existing implementation: 124
-- Detection-channel counts: cross_reference_structure=438, deeming_or_consequence=270, existing_implementation=444, other_modal=167, semantic_legal_effect=1391, shall_token=855
+- Detection-channel counts: cross_reference_structure=435, deeming_or_consequence=270, existing_implementation=444, other_modal=167, semantic_legal_effect=1391, shall_token=855
 - Mapping shapes, by norm: one-to-one=35, many-to-one=391, one-to-many=1, many-to-many=17, unmapped=947
 - Implementation debt candidates: 103
 - Interpretive links to non-binding guidance: 1
 - Review records with measured elapsed time: 0/2922
 - Parallel-duty groups: 21, linking 63 norms
+- National-law alignment notices: 4
 
 ## Parallel duties
 
@@ -1260,6 +1262,17 @@ restatement (`carried_by_norms`) nor a shared rule (`implementation_refs`) expre
    - `AIA-NORM-A108-ARTICLE57-ACCOUNT-FOR-HIGH-RISK-REQUIREMENTS` — `AIA-TEXT-A108-P006`
    - `AIA-NORM-A108-ARTICLE58-ACCOUNT-FOR-HIGH-RISK-REQUIREMENTS` — `AIA-TEXT-A108-P007`
    - `AIA-NORM-A109-P3-ACCOUNT-FOR-HIGH-RISK-REQUIREMENTS` — `AIA-TEXT-A109-P002`
+
+## National-law alignment
+
+The following AI Act norms require alignment with applicable national law. This project records
+that boundary and reports it; it does not select a country, identify national legislation, or assess
+compliance with national law.
+
+- `AIA-NORM-A005-P1-BB-DIRECTIVE-MATERIAL` (AIA-REL-A005-P1-BB-NATIONAL-LAW): Applicable national law determines whether the Article 5(1)(bb) ‘without right’ defence applies.
+- `AIA-NORM-A005-P2-NATIONAL-SAFEGUARDS` (AIA-REL-A005-P2-NATIONAL-SAFEGUARDS-NATIONAL-LAW): Applicable national law supplies the required safeguards, conditions, and use limitations.
+- `AIA-NORM-A005-P3-PRIOR-AUTHORISATION` (AIA-REL-A005-P3-PRIOR-AUTHORISATION-NATIONAL-LAW): National law supplies the detailed rules for requesting and granting authorisation.
+- `AIA-NORM-A005-P4-NOTIFY-AUTHORITIES` (AIA-REL-A005-P4-NOTIFY-AUTHORITIES-NATIONAL-LAW): National law supplies the detailed notification rules.
 
 ## Findings
 

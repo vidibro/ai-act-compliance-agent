@@ -84,6 +84,23 @@ def test_segment_norm_linkages_are_unique():
         )
 
 
+def test_national_law_relations_are_targetless_report_boundaries(metrics):
+    """They name a national-law limit without inventing a country or a national statute."""
+    expected = {
+        "AIA-NORM-A005-P1-BB-DIRECTIVE-MATERIAL",
+        "AIA-NORM-A005-P2-NATIONAL-SAFEGUARDS",
+        "AIA-NORM-A005-P3-PRIOR-AUTHORISATION",
+        "AIA-NORM-A005-P4-NOTIFY-AUTHORITIES",
+    }
+    assert {notice.norm_id for notice in metrics.national_law_alignments} == expected
+    assert all(notice.detail for notice in metrics.national_law_alignments)
+
+    report = render_coverage_markdown(metrics)
+    assert "## National-law alignment" in report
+    for norm_id in expected:
+        assert norm_id in report
+
+
 def test_segment_primary_links_are_supported_by_the_segments_own_text():
     bundle = load_normative_coverage()
     norms = {norm.norm_id: norm for norm in bundle.norm_inventory.norms}

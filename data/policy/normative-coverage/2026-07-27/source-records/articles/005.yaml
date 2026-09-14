@@ -109,10 +109,6 @@ records:
   - the relevant placing, service, or use condition in Article 5(1a) is satisfied
   exceptions:
   - a without-right defence applies under national law
-  dependencies:
-  - dependency_ref: applicable national-law without-right defence
-    resolution: national_or_factual
-    detail: National law determines whether the express defence applies.
   implementation_mode: applicability_question
   implementation_refs:
   - AIA-CQ-PROHIBITED
@@ -375,10 +371,6 @@ records:
   subject_category: public_authority
   kind: obligation
   verification_mode: reported_conditionally
-  dependencies:
-  - dependency_ref: national law authorising real-time remote biometric identification use
-    resolution: national_or_factual
-    detail: Applicable national law supplies the required safeguards, conditions, and use limitations.
   verified_by: vidibro
 - norm_id: AIA-NORM-A005-P2-COMPLETE-FRIA
   source: A005-P027
@@ -434,10 +426,6 @@ records:
   verification_mode: reported_not_judged
   conditions:
   - the use pursues an Article 5(1)(h) objective and is subject to the Article 5(2) conditions
-  dependencies:
-  - dependency_ref: national law referred to in Article 5(5) of this Regulation
-    resolution: national_or_factual
-    detail: National law supplies the detailed rules for requesting and granting authorisation.
   verified_by: vidibro
 - norm_id: AIA-NORM-A005-P3-URGENT-USE
   source: A005-P028
@@ -533,10 +521,6 @@ records:
   subject_category: public_authority
   kind: obligation
   verification_mode: reported_not_judged
-  dependencies:
-  - dependency_ref: national rules referred to in Article 5(5) of this Regulation
-    resolution: national_or_factual
-    detail: National law supplies the detailed notification rules.
   verified_by: vidibro
 - norm_id: AIA-NORM-A005-P4-NOTIFICATION-CONTENT
   source: A005-P030

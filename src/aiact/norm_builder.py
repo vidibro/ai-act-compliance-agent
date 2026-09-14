@@ -622,7 +622,13 @@ def _build_relations(
         if relation.kind is NormRelationKind.CONDITIONAL_ON_NORMS:
             if relation.source_norm_id in relation.target_norm_ids:
                 raise ValueError(f"{relation.relation_id}: a norm cannot be its own condition")
-        relations.append(relation.model_dump(mode="json"))
+        payload = relation.model_dump(mode="json")
+        # This activation list belongs only to report-only national-law boundaries. Omitting its
+        # default keeps every other generated relation stable and makes an accidental activation
+        # visible in review.
+        if not relation.report_for_prohibited_practices:
+            payload.pop("report_for_prohibited_practices")
+        relations.append(payload)
     return relations
 
 

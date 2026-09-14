@@ -2110,6 +2110,35 @@ norm_relations:
     - AIA-TEXT-ANNEX-VII-P024
     detail: Model access remains subject to the applicable external Union-law protections.
 
+  - relation_id: AIA-REL-A005-P1-BB-NATIONAL-LAW
+    source_norm_id: AIA-NORM-A005-P1-BB-DIRECTIVE-MATERIAL
+    kind: national_law_regulation
+    report_for_prohibited_practices:
+    - child_sexual_abuse_material
+    legal_basis_spans: [AIA-TEXT-A005-P005]
+    detail: Applicable national law determines whether the Article 5(1)(bb) ‘without right’ defence applies.
+  - relation_id: AIA-REL-A005-P2-NATIONAL-SAFEGUARDS-NATIONAL-LAW
+    source_norm_id: AIA-NORM-A005-P2-NATIONAL-SAFEGUARDS
+    kind: national_law_regulation
+    report_for_prohibited_practices:
+    - realtime_remote_biometric_identification
+    legal_basis_spans: [AIA-TEXT-A005-P027]
+    detail: Applicable national law supplies the required safeguards, conditions, and use limitations.
+  - relation_id: AIA-REL-A005-P3-PRIOR-AUTHORISATION-NATIONAL-LAW
+    source_norm_id: AIA-NORM-A005-P3-PRIOR-AUTHORISATION
+    kind: national_law_regulation
+    report_for_prohibited_practices:
+    - realtime_remote_biometric_identification
+    legal_basis_spans: [AIA-TEXT-A005-P028]
+    detail: National law supplies the detailed rules for requesting and granting authorisation.
+  - relation_id: AIA-REL-A005-P4-NOTIFY-AUTHORITIES-NATIONAL-LAW
+    source_norm_id: AIA-NORM-A005-P4-NOTIFY-AUTHORITIES
+    kind: national_law_regulation
+    report_for_prohibited_practices:
+    - realtime_remote_biometric_identification
+    legal_basis_spans: [AIA-TEXT-A005-P030]
+    detail: National law supplies the detailed notification rules.
+
 interpretations:
 - interpretation_id: AIA-INT-A050-P2-C2026-5054
   snippet_refs:

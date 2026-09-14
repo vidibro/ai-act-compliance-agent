@@ -232,8 +232,10 @@ cross-reference in the Regulation.
   source span.
 - `interpreted_by_commission_guidance`: a Commission-guidance snippet supplies a recorded
   interpretation; it does not create a new legal duty.
-- `out_of_scope_regulation`: an external regulatory regime affects the norm, but its requirements
-  are outside this AI Act implementation.
+- `national_law_regulation`: applicable national law affects the norm. It has no country or legal
+  instrument target: the generated report must say that alignment is required, while this project
+  does not identify or assess national law. Its explicit `report_for_prohibited_practices` activation
+  is materialised into the live report from the relation itself; the policy spec cannot hand-write it.
 - `unresolved_dependency` and `missing_dependency`: visible extraction debt. Both require a written
   explanation and cannot pretend to have a target.
 

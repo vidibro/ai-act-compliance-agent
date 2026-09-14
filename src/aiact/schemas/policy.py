@@ -468,6 +468,14 @@ class PolicyRule(BaseModel):
         return self
 
 
+class NationalLawNotice(BaseModel):
+    """A canonical national-law boundary materialised for a live report."""
+
+    norm_id: str = Field(pattern=r"^AIA-NORM-[A-Z0-9-]+$")
+    prohibited_practices: list[ProhibitedPractice] = Field(min_length=1)
+    detail: str = Field(min_length=1)
+
+
 class PolicyRuleset(BaseModel):
     """The full loaded ruleset for one pinned version of the Regulation."""
 
@@ -475,3 +483,4 @@ class PolicyRuleset(BaseModel):
     act_version_date: date
     source_note: str  # provenance: derived from EC Compliance Checker
     rules: list[PolicyRule]
+    national_law_notices: list[NationalLawNotice] = []

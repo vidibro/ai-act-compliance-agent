@@ -11,6 +11,7 @@ from aiact.schemas.norm import (
     CandidateDetectionChannel,
     ImplementationMode,
     NormativeCoverageBundle,
+    NormRelationKind,
     ProductScope,
 )
 from aiact.schemas.review import ReviewStatus
@@ -29,6 +30,14 @@ class ParallelDutyGroup(BaseModel):
 
     norm_ids: list[str]
     provisions: list[str]
+
+
+class NationalLawAlignment(BaseModel):
+    """A report-only boundary: this implementation does not assess Member State law."""
+
+    relation_id: str
+    norm_id: str
+    detail: str
 
 
 class CoverageMetrics(BaseModel):
@@ -62,6 +71,7 @@ class CoverageMetrics(BaseModel):
     measured_review_seconds: float
     interpretive_links: int
     parallel_duty_groups: list[ParallelDutyGroup]
+    national_law_alignments: list[NationalLawAlignment]
 
 
 def _mapping_shape(bundle: NormativeCoverageBundle) -> MappingShape:
@@ -107,6 +117,19 @@ def _parallel_duty_groups(bundle: NormativeCoverageBundle) -> list[ParallelDutyG
             provisions=[norms_by_id[norm_id].primary_spans[0] for norm_id in group],
         )
         for group in sorted(groups)
+    ]
+
+
+def _national_law_alignments(bundle: NormativeCoverageBundle) -> list[NationalLawAlignment]:
+    """The explicit boundaries the report must show rather than silently ignore."""
+    return [
+        NationalLawAlignment(
+            relation_id=relation.relation_id,
+            norm_id=relation.source_norm_id,
+            detail=relation.detail,
+        )
+        for relation in bundle.norm_inventory.relations
+        if relation.kind is NormRelationKind.NATIONAL_LAW_REGULATION
     ]
 
 
@@ -213,6 +236,7 @@ def measure_normative_coverage(bundle: NormativeCoverageBundle) -> CoverageMetri
         measured_review_seconds=sum(timed),
         interpretive_links=len(bundle.norm_inventory.interpretations),
         parallel_duty_groups=_parallel_duty_groups(bundle),
+        national_law_alignments=_national_law_alignments(bundle),
     )
 
 
@@ -248,6 +272,10 @@ def render_coverage_markdown(metrics: CoverageMetrics) -> str:
         )
         for index, group in enumerate(parallel_groups, start=1)
     )
+    national_law_alignments = "\n".join(
+        f"- `{notice.norm_id}` ({notice.relation_id}): {notice.detail}"
+        for notice in metrics.national_law_alignments
+    )
     channel_counts = ", ".join(
         f"{channel}={count}" for channel, count in metrics.detection_channels.items()
     )
@@ -278,8 +306,9 @@ def render_coverage_markdown(metrics: CoverageMetrics) -> str:
 
 The inventory contains {inventory_summary}. Every stored article and annex is present. Proposed
 norms have been extracted from {metrics.documents_with_extracted_norms} documents; the remaining
-work is retained explicitly rather than omitted. The inventory is not consumed by classification,
-rule selection, judging, or reporting.
+work is retained explicitly rather than omitted. The inventory does not decide classification,
+rule selection, or judging. It does materialise rule criteria and report-only legal boundaries into
+the policy spec, so those report elements remain traceable to reviewed norms.
 
 ## Coverage measurements
 
@@ -304,6 +333,7 @@ rule selection, judging, or reporting.
 - Interpretive links to non-binding guidance: {metrics.interpretive_links}
 - Review records with measured elapsed time: {timed_reviews}
 - Parallel-duty groups: {len(parallel_groups)}, linking {parallel_norms} norms
+- National-law alignment notices: {len(metrics.national_law_alignments)}
 
 ## Parallel duties
 
@@ -312,6 +342,14 @@ group still applies; the group records that they must be kept consistent, which 
 restatement (`carried_by_norms`) nor a shared rule (`implementation_refs`) expresses.
 
 {parallel_duties}
+
+## National-law alignment
+
+The following AI Act norms require alignment with applicable national law. This project records
+that boundary and reports it; it does not select a country, identify national legislation, or assess
+compliance with national law.
+
+{national_law_alignments}
 
 ## Findings
 

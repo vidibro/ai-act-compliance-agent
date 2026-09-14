@@ -336,7 +336,9 @@ def test_condition_relationship_is_canonical_and_legacy_source_field_is_rejected
     norms = {norm["norm_id"]: norm for norm in compiled["norms"]}
     assert "condition_norm_ids" not in norms[parent.norm_id]
     assert "condition_of_norm_ids" not in norms[child.norm_id]
-    assert compiled["relations"] == [relation.model_dump(mode="json")]
+    expected_relation = relation.model_dump(mode="json")
+    expected_relation.pop("report_for_prohibited_practices")
+    assert compiled["relations"] == [expected_relation]
 
     with pytest.raises(ValueError, match="condition_norm_ids"):
         NormSourceRecord.model_validate(
@@ -355,8 +357,13 @@ def test_condition_relationship_is_canonical_and_legacy_source_field_is_rejected
             {"guidance_refs": ["C-2025-5052/example"]},
         ),
         (
-            NormRelationKind.OUT_OF_SCOPE_REGULATION,
-            {"external_regulations": ["national procurement law"]},
+            NormRelationKind.NATIONAL_LAW_REGULATION,
+            {
+                "report_for_prohibited_practices": [
+                    "realtime_remote_biometric_identification"
+                ],
+                "detail": "Applicable national law supplies the detailed rules.",
+            },
         ),
         (NormRelationKind.UNRESOLVED_DEPENDENCY, {"detail": "Target is not yet identified."}),
         (NormRelationKind.MISSING_DEPENDENCY, {"detail": "Required target is absent."}),
@@ -388,7 +395,9 @@ def test_relation_schema_rejects_retired_factual_conditions_field():
         )
 
 
-@pytest.mark.parametrize("resolution", ["internal_resolved", "external_recorded"])
+@pytest.mark.parametrize(
+    "resolution", ["internal_resolved", "external_recorded", "national_or_factual"]
+)
 def test_source_record_rejects_retired_dependency_resolutions(resolution):
     with pytest.raises(ValueError, match=resolution):
         NormSourceRecord.model_validate(
