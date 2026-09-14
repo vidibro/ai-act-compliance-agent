@@ -510,7 +510,6 @@ def _build_norms(
     version_text = reviewed.act_version_date.isoformat()
     segments_by_id = {str(segment["segment_id"]): segment for segment in segments}
     known_rule_ids = set(source_inventory.implementation_targets)
-    known_norm_ids = {record.norm_id for record in source_inventory.records}
     norms: list[dict[str, object]] = []
 
     for record in source_inventory.records:
@@ -548,17 +547,6 @@ def _build_norms(
             }
             for dependency in record.dependencies
         ]
-        for dependency in dependencies:
-            if (
-                dependency["resolution"] == DependencyResolution.INTERNAL_RESOLVED.value
-                and dependency["dependency_ref"] not in known_norm_ids
-                and dependency["dependency_ref"] not in segments_by_id
-            ):
-                raise ValueError(
-                    f"{record.norm_id}: internal dependency "
-                    f"{dependency['dependency_ref']} is unknown"
-                )
-
         mandatory_content = list(record.mandatory_content)
         if record.mandatory_content_source == "numbered_items":
             mandatory_content = _numbered_items(primary_text)

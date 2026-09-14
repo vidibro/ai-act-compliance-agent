@@ -2634,6 +2634,11 @@ def test_article_forty_three_reconciles_all_conformity_routes():
     assert norms["AIA-NORM-A043-P1-CHOOSE-CONFORMITY-ROUTE"].implementation_refs == ["AIA-PO-A43-1"]
     assert norms["AIA-NORM-A043-P2-INTERNAL-CONTROL"].implementation_refs == ["AIA-PO-A43-2"]
     assert norms["AIA-NORM-A043-P4-NEW-ASSESSMENT"].implementation_refs == ["AIA-PO-A43-4"]
+    qms = norms["AIA-NORM-A043-P3-QMS"]
+    assert qms.dependencies == []
+    assert len(
+        bundle.norm_inventory.target_norm_ids_for(qms.norm_id, NormRelationKind.RELIES_ON_NORMS)
+    ) == 28
     exclusion = norms["AIA-NORM-A043-P4-PREDETERMINED-CHANGE-EXCLUSION"]
     assert exclusion.kind.value == "applicability"
     assert exclusion.product_scope.value == "dependency_only"
@@ -2804,10 +2809,9 @@ def test_article_forty_seven_maps_complete_declaration_workflow():
     assert len(mapped) == 9
     assert all(norm.implementation_mode.value == "compliance_rule" for norm in mapped)
     annex_content = norms["AIA-NORM-A047-P2-ANNEX-V-CONTENT"]
-    assert len(annex_content.dependencies) == 8
-    assert {dependency.resolution.value for dependency in annex_content.dependencies} == {
-        "internal_resolved"
-    }
+    assert bundle.norm_inventory.target_norm_ids_for(
+        annex_content.norm_id, NormRelationKind.RELIES_ON_NORMS
+    ) == ["AIA-NORM-ANNEX-V-DECLARATION-CONTENT"]
 
 
 def test_article_forty_eight_maps_ce_marking_duties():
@@ -4961,9 +4965,10 @@ def test_annex_five_declaration_content_is_carried_by_article_forty_seven():
         annex.norm_id, NormRelationKind.CARRIED_BY_NORMS
     ) == [article.norm_id]
     assert annex.implementation_mode.value == "carried_by_other_norm"
-    assert [dependency.dependency_ref for dependency in article.dependencies] == [
-        f"AIA-TEXT-ANNEX-V-P{index:03d}" for index in range(2, 10)
-    ]
+    assert article.dependencies == []
+    assert bundle.norm_inventory.target_norm_ids_for(
+        article.norm_id, NormRelationKind.RELIES_ON_NORMS
+    ) == [annex.norm_id]
 
 
 def test_annex_six_internal_control_defines_and_applies_all_three_checks():

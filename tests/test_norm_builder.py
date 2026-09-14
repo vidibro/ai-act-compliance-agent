@@ -388,8 +388,8 @@ def test_relation_schema_rejects_retired_factual_conditions_field():
         )
 
 
-def test_source_record_rejects_legacy_internal_norm_dependency():
-    with pytest.raises(ValueError, match="internal norm dependencies must use relies_on_norms"):
+def test_source_record_rejects_retired_internal_dependency_resolution():
+    with pytest.raises(ValueError, match="internal_resolved"):
         NormSourceRecord.model_validate(
             {
                 "norm_id": "AIA-NORM-A001-P1-PARENT",

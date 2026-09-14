@@ -295,7 +295,6 @@ norms:
   detection_channels:
   - semantic_legal_effect
   - shall_token
-  - cross_reference_structure
   - existing_implementation
   primary_spans:
   - AIA-TEXT-A043-P3
@@ -308,46 +307,7 @@ norms:
   mandatory_content:
   - assess the Article 17 quality-management system
   - apply the specified Annex VII procedural requirements
-  dependencies:
-  - dependency_ref: AIA-TEXT-ANNEX-VII-P006
-    resolution: internal_resolved
-    detail: Annex VII point 3.1 starts the imported quality-management-system procedure.
-  - dependency_ref: AIA-TEXT-ANNEX-VII-P013
-    resolution: internal_resolved
-    detail: Annex VII point 3.2 contains its assessment and decision procedure.
-  - dependency_ref: AIA-TEXT-ANNEX-VII-P014
-    resolution: internal_resolved
-    detail: Annex VII point 3.3 requires the approved quality management system to continue.
-  - dependency_ref: AIA-TEXT-ANNEX-VII-P015
-    resolution: internal_resolved
-    detail: Annex VII point 3.4 governs proposed changes to that system.
-  - dependency_ref: AIA-TEXT-ANNEX-VII-P017
-    resolution: internal_resolved
-    detail: Annex VII point 4.1 starts the technical-documentation assessment procedure.
-  - dependency_ref: AIA-TEXT-ANNEX-VII-P018
-    resolution: internal_resolved
-    detail: Annex VII point 4.2 requires the technical-documentation application content.
-  - dependency_ref: AIA-TEXT-ANNEX-VII-P022
-    resolution: internal_resolved
-    detail: Annex VII point 4.3 governs examination and dataset access.
-  - dependency_ref: AIA-TEXT-ANNEX-VII-P023
-    resolution: internal_resolved
-    detail: Annex VII point 4.4 governs evidence and adequate testing.
-  - dependency_ref: AIA-TEXT-ANNEX-VII-P024
-    resolution: internal_resolved
-    detail: Annex VII point 4.5 governs access to training and trained models.
-  - dependency_ref: AIA-TEXT-ANNEX-VII-P025
-    resolution: internal_resolved
-    detail: Annex VII point 4.6 governs decisions, certificates, refusal, and retraining.
-  - dependency_ref: AIA-TEXT-ANNEX-VII-P026
-    resolution: internal_resolved
-    detail: Annex VII point 4.7 governs changes to the AI system and certificate supplements.
-  - dependency_ref: AIA-TEXT-ANNEX-VII-P029
-    resolution: internal_resolved
-    detail: Annex VII point 5.2 governs surveillance access and information sharing.
-  - dependency_ref: AIA-TEXT-ANNEX-VII-P030
-    resolution: internal_resolved
-    detail: Annex VII point 5.3 governs periodic audits and additional testing.
+  dependencies: []
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: compliance_rule
