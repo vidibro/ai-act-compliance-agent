@@ -26,9 +26,16 @@ import yaml
 
 from aiact.config import get_settings
 from aiact.guidance import load_snippet
-from aiact.schemas.norm import Norm, NormRelation, NormRelationKind
-from aiact.schemas.policy import PolicyRuleset, RuleCriterion
-from aiact.yaml_loader import load_yaml_mapping
+from aiact.schemas.norm import (
+    ImplementationMode,
+    Norm,
+    NormKind,
+    NormRelation,
+    NormRelationKind,
+    ProductScope,
+)
+from aiact.schemas.policy import PolicyRuleset, ReportNorm, RuleCriterion
+from aiact.yaml_loader import load_yaml_mapping, load_yaml_mapping_or_shards
 
 _FRONT_MATTER = re.compile(r"\A---\n(.*?)\n---\n+", re.S)
 # A consolidation inserts paragraphs without renumbering the ones after them, so a paragraph label
@@ -325,6 +332,21 @@ def criterion_from_norm(norm: Norm) -> RuleCriterion:
     )
 
 
+def report_norm_from_norm(norm: Norm) -> ReportNorm:
+    """The report-only projection of a canonical permission or legal consequence."""
+    return ReportNorm(
+        norm_id=norm.norm_id,
+        kind=norm.kind,
+        subjects=[subject.subject_ref for subject in norm.subjects],
+        action=norm.action,
+        norm_text=norm.norm_text,
+        conditions=list(norm.conditions),
+        exceptions=list(norm.exceptions),
+        source_spans=norm.all_spans,
+        activation_rule_ids=list(norm.implementation_refs),
+    )
+
+
 def load_norms_by_id(norms_root: Path, norm_ids: set[str], version: str) -> dict[str, Norm]:
     """Read only the generated norm shards that hold `norm_ids`.
 
@@ -423,6 +445,37 @@ def _national_law_notices(norms_root: Path, version: str) -> list[dict[str, obje
     return notices
 
 
+def _report_norms(norms_root: Path, version: str) -> list[dict[str, object]]:
+    """Materialise permissions and legal effects that the report must show but never judge.
+
+    The marker is intentionally narrow: only ``report_only`` norms participate.  This makes a
+    new permission visible debt until its author explicitly chooses its report treatment, instead
+    of silently adding every historical permission in the inventory to live reports.
+    """
+    payload = load_yaml_mapping_or_shards(norms_root, description="norm inventory")
+    artifact_version = str(payload.get("act_version_date", ""))
+    if artifact_version != version:
+        raise ValueError(
+            f"Norm inventory at {norms_root} uses Act version {artifact_version!r}, but the spec "
+            f"is pinned to {version!r}."
+        )
+    projected = []
+    for raw_norm in payload.get("norms", []):
+        norm = Norm.model_validate(raw_norm)
+        if norm.act_version_date.isoformat() != version:
+            raise ValueError(
+                f"Norm {norm.norm_id} uses Act version {norm.act_version_date}, but the spec is "
+                f"pinned to {version}."
+            )
+        if (
+            norm.product_scope is ProductScope.IN_SCOPE
+            and norm.implementation_mode is ImplementationMode.REPORT_ONLY
+            and norm.kind in {NormKind.PERMISSION, NormKind.LEGAL_CONSEQUENCE}
+        ):
+            projected.append(report_norm_from_norm(norm).model_dump())
+    return sorted(projected, key=lambda item: str(item["norm_id"]))
+
+
 def load_policy_spec(
     path: str | Path | None = None,
     articles_root: str | Path | None = None,
@@ -455,6 +508,11 @@ def load_policy_spec(
         raise ValueError(
             "Policy spec hand-writes `national_law_notices`. They are materialised from canonical "
             "national_law_regulation norm relations."
+        )
+    if "report_norms" in raw:
+        raise ValueError(
+            "Policy spec hand-writes `report_norms`. They are materialised from canonical "
+            "report_only permission and legal_consequence norms."
         )
 
     version = raw.get("act_version_date")
@@ -566,6 +624,7 @@ def load_policy_spec(
     )
     _resolve_criteria(raw.get("rules", []), norm_path, version_str)
     raw["national_law_notices"] = _national_law_notices(norm_path, version_str)
+    raw["report_norms"] = _report_norms(norm_path, version_str)
 
     spec = PolicyRuleset.model_validate(raw)
 

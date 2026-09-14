@@ -664,7 +664,7 @@ norms:
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
-  implementation_mode: compliance_rule
+  implementation_mode: report_only
   implementation_refs:
   - AIA-PO-A17
   implementation_reason: ''
@@ -707,7 +707,7 @@ norms:
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
-  implementation_mode: compliance_rule
+  implementation_mode: report_only
   implementation_refs:
   - AIA-PO-A17
   implementation_reason: ''
@@ -747,7 +747,7 @@ norms:
   product_scope_reason: ''
   implementation_mode: compliance_rule
   implementation_refs:
-  - AIA-PO-A17
+  - AIA-PO-A17-4
   implementation_reason: ''
   verification_mode: reported_not_judged
   review:

@@ -320,6 +320,20 @@ class ComplianceReport(BaseModel):
     spec. `aiact.reporting.render_report` resolves each id and renders those beside it; any other
     consumer must do the same, and `tests/test_reporting.py` holds the shipped renderer to it."""
 
+    permissions: dict[ActorRole, list[str]] = {}
+    """Canonical permission norm ids, keyed by the active duty-holder role.
+
+    These are allowed implementation routes, not a conclusion that the reader has used one.  They
+    are separate from findings so a permission can never make an obligation pass or fail.
+    """
+
+    legal_consequences: dict[ActorRole, list[str]] = {}
+    """Canonical legal-effect norm ids, keyed by the active duty-holder role.
+
+    This includes conditional deeming and reliefs.  The renderer shows their conditions and
+    exceptions; the product does not decide that a reader qualifies from silence in a document.
+    """
+
     deployer_type: Answer | None = None
     """What kind of organisation deploys the system — read from the documentation, where it says.
 
@@ -706,4 +720,23 @@ class ComplianceReport(BaseModel):
                         f"not_document_verifiable references rule_id {rule_id!r} not present "
                         f"in the loaded PolicyRuleset (spec_version={spec.spec_version})."
                     )
+            report_norms = {norm.norm_id: norm for norm in spec.report_norms}
+            for field_name, expected_kind in (
+                ("permissions", "permission"),
+                ("legal_consequences", "legal_consequence"),
+            ):
+                for norm_id in [
+                    norm_id for ids in getattr(self, field_name).values() for norm_id in ids
+                ]:
+                    norm = report_norms.get(norm_id)
+                    if norm is None:
+                        raise ValueError(
+                            f"{field_name} references norm_id {norm_id!r} not present in the "
+                            f"loaded PolicyRuleset (spec_version={spec.spec_version})."
+                        )
+                    if norm.kind.value != expected_kind:
+                        raise ValueError(
+                            f"{field_name} references {norm_id!r} of kind {norm.kind.value}, "
+                            f"not {expected_kind}."
+                        )
         return self

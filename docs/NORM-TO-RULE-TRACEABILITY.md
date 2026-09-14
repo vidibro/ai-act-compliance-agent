@@ -11,14 +11,35 @@ The complete chain must become:
 enacted text
   -> structured norm
   -> adjudicated norm-validity finding
-  -> policy-rule criterion
-  -> criterion verdict
-  -> named report result
+  -> obligation criterion -> criterion verdict -> named report result
+     OR report-only permission/legal effect -> named report result
 ```
 
 Changing the model must not change which legal requirements exist, which rule implements them, or
 which criteria must be checked. A model may judge evidence for a criterion, but it may not invent,
 remove, merge, or silently skip criteria.
+
+## Deterministic rule grouping
+
+A policy rule is a group of norms, not a free-text summary. The loader resolves every listed norm
+from the canonical inventory and rejects a group that mixes any of these properties:
+
+1. **Legal kind:** one rule contains one `NormKind`. Obligations/prohibitions are judged rules;
+   permissions and legal consequences are never criterion members.
+2. **Duty-holder:** all criteria name the same subject set. Different actors get separate rules and
+   separate report sections.
+3. **Assessment treatment:** all criteria use one verification mode. A rule is either judged or
+   reported for separate confirmation; it cannot combine those two answers.
+
+The rule itself owns the remaining shared properties: its activation gate, expected evidence,
+effective date and outcome. Norms may share a rule only when that one activation and one evidence
+check really apply to all of them. If either differs, make another rule.
+
+`permission` and `legal_consequence` norms with `implementation_mode: report_only` are instead
+materialised into `PolicyRuleset.report_norms`. They retain canonical action, conditions,
+exceptions, source spans and activating rule ids. The strict build checks this link both ways, and
+the report renders them under **permitted implementation routes** or **conditional legal effects**.
+They neither pass nor fail an obligation.
 
 ## What already exists
 
@@ -43,11 +64,9 @@ meaning can be reconstructed from:
 - structured condition: measures addressing the AI-specific vulnerability are appropriate;
 - recorded Article 15(5) chapeau and Article 16(a) provider basis.
 
-This proves norm validity. It does **not** yet prove downstream implementation.
-
-Today all Article 15 provider norms point to the aggregate policy rule `AIA-HR-A15`. The rule's
-free-text `evidence_expected` mentions model flaws, but there is no machine-enforced inverse link
-from the rule to this norm and no separately reported model-flaws verdict. That is the next gap.
+This proves norm validity. Article 15's twelve obligation norms now point to the aggregate policy
+rule `AIA-HR-A15` and each gets its own verdict. Its technical-redundancy permission is a canonical
+report-only route instead.
 
 ## Adopted decision rule
 
@@ -88,7 +107,7 @@ Conceptually:
     - norm_id: AIA-NORM-A015-P5-ADVERSARIAL-ATTACKS
     - norm_id: AIA-NORM-A015-P5-CONFIDENTIALITY-ATTACKS
     - norm_id: AIA-NORM-A015-P5-MODEL-FLAWS
-    # Include every other Article 15 provider norm whose implementation_refs contains AIA-HR-A15.
+    # Include only obligations/prohibitions with the same subject and verification treatment.
 ```
 
 At load/build time, resolve each `norm_id` to the canonical generated norm and derive its subject,

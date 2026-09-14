@@ -44,6 +44,9 @@ def copied_ledger(tmp_path: Path) -> tuple[Path, dict, dict]:
     (root / "articles" / "016.yaml").write_text(
         (LEDGER / "articles" / "016.yaml").read_text(encoding="utf-8"), encoding="utf-8"
     )
+    (root / "articles" / "017.yaml").write_text(
+        (LEDGER / "articles" / "017.yaml").read_text(encoding="utf-8"), encoding="utf-8"
+    )
     return root, manifest, shard
 
 
@@ -78,7 +81,7 @@ def test_article_fifteen_findings_are_stable_and_fully_adjudicated():
         "AIA-VALID-68BAAE428CB98553",
         "AIA-VALID-EB70A75FE17CB5C0",
     }
-    assert enforce_validity_adjudications(bundle, LEDGER) == (7, 7)
+    assert enforce_validity_adjudications(bundle, LEDGER) == (10, 10)
 
 
 def test_article_sixteen_is_closed_with_an_explicit_empty_adjudication_shard():
@@ -90,7 +93,22 @@ def test_article_sixteen_is_closed_with_an_explicit_empty_adjudication_shard():
         bundle, scope={(SourceKind.ARTICLE, "16")}
     )
     # Article 16 adds no decisions, but its hash-bound audit proves that the zero is current.
-    assert enforce_validity_adjudications(bundle, LEDGER) == (7, 7)
+    assert enforce_validity_adjudications(bundle, LEDGER) == (10, 10)
+
+
+def test_article_seventeen_findings_are_recorded_in_its_own_shard():
+    bundle = load_bundle()
+
+    findings = audit_norm_validity(bundle, scope={(SourceKind.ARTICLE, "17")})
+    assert {finding.finding_id for finding in findings} == {
+        "AIA-VALID-61D9AC963E66CBF0",
+        "AIA-VALID-C96B327A7FEA05BA",
+        "AIA-VALID-87FF392123F03574",
+    }
+    ledger = load_adjudication_ledger(LEDGER)
+    assert ledger.audit_by_scope[(SourceKind.ARTICLE, "17")] == audit_attestation(
+        bundle, scope={(SourceKind.ARTICLE, "17")}
+    )
 
 
 def test_missing_adjudication_fails_closed(tmp_path):
@@ -144,7 +162,7 @@ def test_legal_basis_must_be_an_exact_source_quote(tmp_path):
 def test_manifest_rejects_an_undeclared_shard(tmp_path):
     root, manifest, shard = copied_ledger(tmp_path)
     write_ledger(root, manifest, shard)
-    (root / "articles" / "017.yaml").write_text(
+    (root / "articles" / "018.yaml").write_text(
         yaml.safe_dump(shard, sort_keys=False), encoding="utf-8"
     )
 
@@ -163,11 +181,11 @@ def test_manifest_rejects_a_shard_with_the_wrong_declared_source(tmp_path):
 
 def test_manifest_rejects_a_finding_duplicated_across_shards(tmp_path):
     root, manifest, shard = copied_ledger(tmp_path)
-    manifest["enforced_scope"].append({"kind": "article", "document": "17"})
-    manifest["shards"].append({"kind": "article", "document": "17", "file": "articles/017.yaml"})
+    manifest["enforced_scope"].append({"kind": "article", "document": "18"})
+    manifest["shards"].append({"kind": "article", "document": "18", "file": "articles/018.yaml"})
     write_ledger(root, manifest, shard)
-    duplicate = {**shard, "source": {"kind": "article", "document": "17"}}
-    (root / "articles" / "017.yaml").write_text(
+    duplicate = {**shard, "source": {"kind": "article", "document": "18"}}
+    (root / "articles" / "018.yaml").write_text(
         yaml.safe_dump(duplicate, sort_keys=False), encoding="utf-8"
     )
 

@@ -68,7 +68,7 @@ from aiact.schemas.norm_review import (
     NormCandidate,
     NormCandidateRun,
 )
-from aiact.schemas.policy import GuidanceSource, LegalSource, PolicyRule, PolicyRuleset
+from aiact.schemas.policy import GuidanceSource, LegalSource, PolicyRule, PolicyRuleset, ReportNorm
 from aiact.schemas.question import Answer, Question
 from aiact.schemas.report import DISCLAIMER, ComplianceReport, Finding, ReportSummary
 from aiact.schemas.review import ReviewRecord, ReviewStatus
@@ -118,6 +118,7 @@ __all__ = [
     "NormCandidateRun",
     # policy
     "GuidanceSource",
+    "ReportNorm",
     "LegalSource",
     "PolicyRule",
     "PolicyRuleset",

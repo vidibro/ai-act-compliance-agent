@@ -241,6 +241,13 @@ def test_process_obligations_are_reported_but_never_judged(spec):
     )
     outstanding = report.not_document_verifiable
     assert "AIA-PO-A17" in outstanding[ActorRole.PROVIDER]
+    assert report.permissions[ActorRole.PROVIDER] == [
+        "AIA-NORM-A015-P4-REDUNDANCY",
+        "AIA-NORM-A017-P3-SECTORAL-INTEGRATION",
+    ]
+    assert report.legal_consequences[ActorRole.PROVIDER] == [
+        "AIA-NORM-A017-P4-FINANCIAL-DEEMING"
+    ]
     assert "AIA-PO-A17" not in judge.asked
     # Grouped by who owes them: a provider cannot confirm that a deployer informed its workers.
     assert outstanding[ActorRole.DEPLOYER] == [

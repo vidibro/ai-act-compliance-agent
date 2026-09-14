@@ -17,11 +17,12 @@ from __future__ import annotations
 from pathlib import Path
 
 from aiact.norm_validity import audit_norm_validity, load_adjudication_ledger
-from aiact.policy_loader import criterion_from_norm, load_policy_spec
+from aiact.policy_loader import criterion_from_norm, load_policy_spec, report_norm_from_norm
 from aiact.schemas.norm import (
     ImplementationMode,
     Norm,
     NormativeCoverageBundle,
+    NormKind,
     NormRelationKind,
     ProductScope,
     SourceKind,
@@ -50,6 +51,24 @@ def _reconstruction_errors(norm: Norm) -> list[str]:
     return errors
 
 
+def _report_reconstruction_errors(norm: Norm) -> list[str]:
+    """Structured fields a report-only permission or legal effect needs."""
+    errors = []
+    if norm.review.status is not ReviewStatus.APPROVED:
+        errors.append(f"review status is {norm.review.status.value}, not approved")
+    if norm.implementation_mode is not ImplementationMode.REPORT_ONLY:
+        errors.append(f"implementation_mode is {norm.implementation_mode.value}")
+    if norm.product_scope is not ProductScope.IN_SCOPE:
+        errors.append(f"product_scope is {norm.product_scope.value}")
+    if norm.kind not in {NormKind.PERMISSION, NormKind.LEGAL_CONSEQUENCE}:
+        errors.append(f"kind is {norm.kind.value}, not reportable")
+    if norm.verification_mode is VerificationMode.UNRESOLVED:
+        errors.append("verification_mode is unresolved")
+    if any(subject.category is SubjectCategory.UNRESOLVED for subject in norm.subjects):
+        errors.append("a subject is unresolved")
+    return errors
+
+
 def traceability_errors(
     bundle: NormativeCoverageBundle,
     spec: PolicyRuleset,
@@ -63,6 +82,7 @@ def traceability_errors(
     segments = {segment.segment_id: segment for segment in bundle.text_review.segments}
     norms = {norm.norm_id: norm for norm in bundle.norm_inventory.norms}
     rules = {rule.rule_id: rule for rule in spec.rules}
+    report_norms = {report_norm.norm_id: report_norm for report_norm in spec.report_norms}
 
     relation_targets_by_norm: dict[str, set[str]] = {}
     for relation in bundle.norm_inventory.relations:
@@ -79,6 +99,31 @@ def traceability_errors(
         return (source.kind, source.document) in scope
 
     errors: list[str] = []
+
+    # Report-only permissions and legal effects are not criteria: their presence tells a reader
+    # what is allowed or what relief applies, never whether an obligation passed.  They still need
+    # an exact bidirectional activation link, or a permissive route could silently disappear.
+    for norm in sorted(norms.values(), key=lambda item: item.norm_id):
+        if not in_scope(norm) or norm.review.status is ReviewStatus.SUPERSEDED:
+            continue
+        if norm.implementation_mode is not ImplementationMode.REPORT_ONLY:
+            continue
+        if norm.kind not in {NormKind.PERMISSION, NormKind.LEGAL_CONSEQUENCE}:
+            errors.append(
+                f"{norm.norm_id} is report_only but has non-reportable kind {norm.kind.value}"
+            )
+            continue
+        projection = report_norms.get(norm.norm_id)
+        if projection is None:
+            errors.append(f"{norm.norm_id} has no materialised report norm")
+            continue
+        if list(projection.activation_rule_ids) != list(norm.implementation_refs):
+            errors.append(
+                f"{norm.norm_id} report activation rules {projection.activation_rule_ids} differ "
+                f"from canonical implementation_refs {norm.implementation_refs}"
+            )
+        for problem in _report_reconstruction_errors(norm):
+            errors.append(f"{norm.norm_id} cannot be materialised as a report norm: {problem}")
 
     direct_norms_by_rule: dict[str, list[Norm]] = {}
     for norm in norms.values():
@@ -203,6 +248,26 @@ def traceability_errors(
                 errors.append(
                     f"{rule.rule_id} criterion {target.norm_id} differs from its canonical norm"
                 )
+    # And the reverse direction: each materialised entry must still be the exact canonical norm.
+    for report_norm in sorted(spec.report_norms, key=lambda item: item.norm_id):
+        target = norms.get(report_norm.norm_id)
+        if target is None:
+            errors.append(f"report norm {report_norm.norm_id} names a missing canonical norm")
+            continue
+        if not in_scope(target):
+            errors.append(
+                f"report norm {report_norm.norm_id} cannot be reconstructed: its document is "
+                "outside the adjudicated validity scope"
+            )
+            continue
+        for problem in _report_reconstruction_errors(target):
+            errors.append(
+                f"report norm {report_norm.norm_id} cannot be reconstructed: {problem}"
+            )
+        if report_norm != report_norm_from_norm(target):
+            errors.append(
+                f"report norm {report_norm.norm_id} differs from its canonical norm"
+            )
     for relation in sorted(bundle.norm_inventory.relations, key=lambda item: item.relation_id):
         source = norms[relation.source_norm_id]
         if not in_scope(source):

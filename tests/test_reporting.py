@@ -153,6 +153,23 @@ def test_every_condition_the_spec_writes_reaches_the_reader(spec):
         )
 
 
+def test_permissions_and_legal_effects_are_rendered_outside_the_verdict_list(spec):
+    report = _report(spec, {}).model_copy(
+        update={
+            "permissions": {ActorRole.PROVIDER: ["AIA-NORM-A015-P4-REDUNDANCY"]},
+            "legal_consequences": {
+                ActorRole.PROVIDER: ["AIA-NORM-A017-P4-FINANCIAL-DEEMING"]
+            },
+        }
+    )
+    text = render_report(report, spec)
+    assert "permitted implementation routes:" in text
+    assert "AIA-NORM-A015-P4-REDUNDANCY" in text
+    assert "conditional legal effects:" in text
+    assert "AIA-NORM-A017-P4-FINANCIAL-DEEMING" in text
+    assert "Article 17(1)(g), (h), and (i) remain independently required" in text
+
+
 def test_an_obligation_nobody_judged_still_says_what_would_satisfy_it(spec):
     """`evidence_expected` reaches the judge only for `document_verifiable: true` rules — the judge
     returns NOT_APPLICABLE before building a prompt otherwise. For every process obligation it is

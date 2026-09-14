@@ -659,8 +659,7 @@ rules:
       accuracy" with no numbers is INADEQUATE, not a pass. ROBUSTNESS is resilience to errors,
       faults or inconsistencies arising in the system or its environment, in particular from
       interaction with natural persons or other systems, addressed by technical AND organisational
-      measures, and may be achieved through technical REDUNDANCY solutions including BACKUP OR FAIL-
-      SAFE PLANS. A system that CONTINUES TO LEARN after being placed on the market owes one thing
+      measures. A system that CONTINUES TO LEARN after being placed on the market owes one thing
       more, and it is a duty a document can breach while satisfying everything above: it must be
       developed so as to eliminate or reduce as far as possible the risk of biased outputs
       influencing input for future operations (FEEDBACK LOOPS), and to ensure any such feedback
@@ -699,7 +698,6 @@ rules:
       - norm_id: AIA-NORM-A015-P3-DECLARE-ACCURACY-AND-METRICS
       - norm_id: AIA-NORM-A015-P4-RESILIENCE
       - norm_id: AIA-NORM-A015-P4-TECHNICAL-AND-ORGANISATIONAL-MEASURES
-      - norm_id: AIA-NORM-A015-P4-REDUNDANCY
       - norm_id: AIA-NORM-A015-P4-FEEDBACK-LOOP-RISK-AND-MITIGATION
       - norm_id: AIA-NORM-A015-P5-UNAUTHORISED-ALTERATION
       - norm_id: AIA-NORM-A015-P5-APPROPRIATE-SOLUTIONS
@@ -820,18 +818,53 @@ rules:
       customers and OTHER INTERESTED PARTIES; (k) record-keeping of all relevant documentation; (l)
       resource management including security of supply; (m) an accountability framework naming what
       management and staff are responsible for. An organisational system rather than a property of
-      the system's technical documentation — confirm separately. TWO THINGS NARROW THIS, and a
-      provider that already runs a quality system should read them before building a second. Art.
-      17(3): a provider subject to quality management obligations under SECTORAL UNION LAW may
-      include the thirteen aspects in that system — one system, not two. Art. 17(4) goes further for
-      a provider that is a FINANCIAL INSTITUTION subject to internal governance requirements under
-      Union financial services law: complying with those rules DEEMS this obligation fulfilled,
-      EXCEPT for points (g), (h) and (i), which stay owed in their own right — the Art. 9 risk
-      management system, the Art. 72 post-market monitoring system and Art. 73 serious-incident
-      reporting. And Art. 17(2) scales the effort to the size of the organisation, an SME or SMC
-      included, while expressly holding the degree of rigour and the level of protection constant: a
-      smaller provider does less work, not less well.
+      the system's technical documentation — confirm separately. Art. 17(2) scales the effort to
+      the size of the organisation, an SME or SMC included, while expressly holding the degree of
+      rigour and the level of protection constant: a smaller provider does less work, not less well.
     document_verifiable: false
+    effective_date_by_route:
+      annex_iii: 2027-12-02
+      annex_i: 2028-08-02
+    status: active
+    # Article 17(1)-(2) is one homogeneous set of obligations. Permissions and legal effects from
+    # (3)-(4) are materialised separately as report norms, never as non-judged criteria.
+    criteria:
+      - norm_id: AIA-NORM-A017-P1-QMS
+      - norm_id: AIA-NORM-A017-P1-SYSTEMATIC-WRITTEN-DOCUMENTATION
+      - norm_id: AIA-NORM-A017-P1-A-REGULATORY-STRATEGY
+      - norm_id: AIA-NORM-A017-P1-B-DESIGN-PROCESSES
+      - norm_id: AIA-NORM-A017-P1-C-DEVELOPMENT-PROCESSES
+      - norm_id: AIA-NORM-A017-P1-D-TESTING-PROCESSES
+      - norm_id: AIA-NORM-A017-P1-E-SPECIFICATIONS
+      - norm_id: AIA-NORM-A017-P1-F-DATA-MANAGEMENT
+      - norm_id: AIA-NORM-A017-P1-G-RISK-MANAGEMENT
+      - norm_id: AIA-NORM-A017-P1-H-POST-MARKET-MONITORING
+      - norm_id: AIA-NORM-A017-P1-I-INCIDENT-REPORTING
+      - norm_id: AIA-NORM-A017-P1-J-COMMUNICATION
+      - norm_id: AIA-NORM-A017-P1-K-RECORD-KEEPING
+      - norm_id: AIA-NORM-A017-P1-L-RESOURCE-MANAGEMENT
+      - norm_id: AIA-NORM-A017-P1-M-ACCOUNTABILITY
+      - norm_id: AIA-NORM-A017-P2-PROPORTIONATE-IMPLEMENTATION
+      - norm_id: AIA-NORM-A017-P2-RIGOUR-PROTECTION
+
+  - rule_id: AIA-PO-A17-4
+    source:
+      instrument: "Regulation (EU) 2024/1689"
+      article: 17
+      paragraph: 4
+      act_version_date: 2026-07-27
+    applies_to_risk_class: [high_risk]
+    applies_to_role: [provider]
+    obligation_status: mandatory
+    check_type: presence
+    evidence_expected: >-
+      Where a financial-institution provider relies on the Article 17(4) governance route, confirm
+      that applicable Article 40 harmonised standards were taken into account. This conditional
+      operational duty is not established by the submitted technical documentation alone.
+    document_verifiable: false
+    activation_condition: >-
+      Applies only where the provider relies on Union financial-services governance compliance to
+      fulfil the Article 17 quality-management-system obligation.
     effective_date_by_route:
       annex_iii: 2027-12-02
       annex_i: 2028-08-02

@@ -87,6 +87,8 @@ def settle_criteria(
 def aggregate_reasoning(rule: PolicyRule, criteria: list[CriterionFinding]) -> str:
     """Name every mandatory criterion that stops the rule passing, with its own reason."""
     mandatory = [c for c in criteria if c.mandatory]
+    if not mandatory:
+        return f"All {len(criteria)} criteria of {rule.rule_id} are reported, not document-judged."
     open_items = [c for c in mandatory if c.verdict is not Verdict.PASS]
     if not open_items:
         return clip_reasoning(f"All {len(mandatory)} mandatory criteria of {rule.rule_id} pass.")
@@ -109,6 +111,11 @@ def settle(
     """The rule verdict and its criteria. A rule without criteria keeps the verdict it was given."""
     if not rule.criteria:
         return verdict, []
+    if not any(criterion.mandatory for criterion in rule.criteria):
+        # A non-document-verifiable aggregate still needs every norm listed in the report. It is
+        # not a model verdict, so it must never become a pass merely because no criterion is
+        # document-judged.
+        return Verdict.NOT_APPLICABLE, not_judged(rule)
     whole = Verdict.NOT_APPLICABLE if verdict is Verdict.NOT_APPLICABLE else None
     criteria = settle_criteria(rule, reported, whole_rule=whole)
     return aggregate_criteria(criteria), criteria

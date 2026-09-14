@@ -18,7 +18,7 @@ def load_compliance_report(path: str | Path, spec: PolicyRuleset) -> ComplianceR
 
     ``spec`` is required rather than loaded implicitly: the caller chooses the same pinned policy
     version used to create the report. The report schema then verifies every reported rule and its
-    complete, ordered criterion list.
+    complete, ordered criterion list, plus every permission and legal-effect norm.
     """
     return ComplianceReport.model_validate_json(
         Path(path).read_bytes(), context={"policy_spec": spec}

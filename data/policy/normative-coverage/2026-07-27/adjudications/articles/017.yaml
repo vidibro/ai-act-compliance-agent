@@ -1,0 +1,69 @@
+schema_version: 1
+act_version_date: "2026-07-27"
+source:
+  kind: article
+  document: "17"
+
+audit:
+  audit_schema_version: 1
+  segments_scanned: 18
+  norms_scanned: 20
+  finding_count: 3
+  audit_sha256: 553ca10f264313820f14289c7115be07b25d94f9e6be47c0600eb3e2e9be3f3e
+
+decisions:
+  - finding_id: AIA-VALID-61D9AC963E66CBF0
+    target: AIA-TEXT-A017-P001
+    rule: uncovered_legal_effect_text
+    source_ref: AIA-TEXT-A017-P001
+    source_sha256: d39a07bc42814385339109428ee65f49da7d3f8d14d51c94afd8b2a4c5355eba
+    target_sha256: 14c91de78ec72fd911fa4111710c8b937a7aa8792034284fcc62be568db4aac5
+    decision: accepted_with_basis
+    reason: >-
+      The two general QMS norms record the system and its written documentation, while the
+      thirteen point norms are qualified by this chapeau. “Shall include at least” introduces
+      that complete mandatory list; it is not a separate provider action.
+    legal_basis:
+      - span_id: AIA-TEXT-A017-P001
+        source_sha256: d39a07bc42814385339109428ee65f49da7d3f8d14d51c94afd8b2a4c5355eba
+        quote: >-
+          That system shall be documented in a systematic and orderly manner in the form of
+          written policies, procedures and instructions, and shall include at least the following
+          aspects:
+    reviewed_by: vidibro
+
+  - finding_id: AIA-VALID-C96B327A7FEA05BA
+    target: AIA-NORM-A017-P2-PROPORTIONATE-IMPLEMENTATION
+    rule: condition_not_structured_or_retained_in_action
+    source_ref: AIA-TEXT-A017-P015
+    source_sha256: 510f9c76714481f23e99914760fc62ee46091684dd2c70c256a34fb8f2bdd05a
+    target_sha256: 46f1cc11f8ca4a4091b7a936b9dd09bd4f3edf32c7bed6ccf681bd952da7a5f1
+    decision: false_positive
+    reason: >-
+      “In particular, if the provider is an SME” identifies where proportional implementation is
+      especially relevant; it does not make the proportionality obligation conditional. The action
+      retains proportionality and expressly names SMEs, start-ups and SMCs.
+    reviewed_by: vidibro
+
+  - finding_id: AIA-VALID-87FF392123F03574
+    target: AIA-NORM-A017-P4-FINANCIAL-DEEMING
+    rule: fragment_without_qualifier_span
+    source_ref: AIA-TEXT-A017-P017
+    source_sha256: d41d3cac84501cac7b0999fbed08417d53d7e5772289a62c91b9fb6500ee0a54
+    target_sha256: 9b39e60d64750a5419c0d65382e037822452ba85491d54e1e54ecbe0483a4e04
+    decision: accepted_with_basis
+    reason: >-
+      The norm’s structured condition retains the financial-institution gate and its exception
+      retains points (g), (h) and (i). Together with the recorded legal basis, they reconstruct the
+      complete deeming rule despite the atomic quotation beginning after the subject.
+    legal_basis:
+      - span_id: AIA-TEXT-A017-P017
+        source_sha256: d41d3cac84501cac7b0999fbed08417d53d7e5772289a62c91b9fb6500ee0a54
+        quote: >-
+          For providers that are financial institutions subject to requirements regarding their
+          internal governance, arrangements or processes under Union financial services law, the
+          obligation to put in place a quality management system, with the exception of paragraph
+          1, points (g), (h) and (i) of this Article, shall be deemed to be fulfilled by complying
+          with the rules on internal governance arrangements or processes pursuant to the relevant
+          Union financial services law.
+    reviewed_by: vidibro

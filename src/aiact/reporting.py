@@ -30,7 +30,7 @@ from __future__ import annotations
 import textwrap
 
 from aiact.schemas.enums import ActorRole, Verdict
-from aiact.schemas.policy import PolicyRule, PolicyRuleset
+from aiact.schemas.policy import PolicyRule, PolicyRuleset, ReportNorm
 from aiact.schemas.report import ComplianceReport, Finding
 
 _MARK = {
@@ -106,6 +106,30 @@ def _outstanding_block(rule: PolicyRule) -> list[str]:
     return lines + _timing(rule)
 
 
+def _condition_text(condition: object) -> str:
+    """Render structured legal condition groups without pretending they are runtime predicates."""
+    if isinstance(condition, str):
+        return condition
+    operator = getattr(condition, "operator", None)
+    operands = getattr(condition, "operands", None)
+    if operator in {"all_of", "any_of"} and isinstance(operands, list):
+        joiner = " AND " if operator == "all_of" else " OR "
+        return "(" + joiner.join(_condition_text(item) for item in operands) + ")"
+    return str(condition)
+
+
+def _report_norm_block(norm: ReportNorm) -> list[str]:
+    """One canonical permission or legal effect, with its route and limits."""
+    lines = [f"  --  {norm.norm_id}"]
+    lines += _wrapped("means:", norm.action)
+    for condition in norm.conditions:
+        lines += _wrapped("if:", _condition_text(condition))
+    for exception in norm.exceptions:
+        lines += _wrapped("except:", exception)
+    lines += _wrapped("basis:", ", ".join(norm.source_spans))
+    return lines
+
+
 def _criteria_block(finding: Finding) -> list[str]:
     """Every criterion of an aggregate rule, named by its norm, with its own verdict.
 
@@ -128,6 +152,7 @@ def render_report(report: ComplianceReport, spec: PolicyRuleset) -> str:
     Grouped by WHO OWES it, because a provider cannot act on a deployer's duty and a flat list
     invites them to try."""
     by_id = {rule.rule_id: rule for rule in spec.rules}
+    report_norms = {norm.norm_id: norm for norm in spec.report_norms}
     out: list[str] = [
         f"risk class : {report.classification.overall_risk_class.value}",
         f"reasoning  : {report.classification.reasoning}",
@@ -165,7 +190,9 @@ def render_report(report: ComplianceReport, spec: PolicyRuleset) -> str:
     for role in ActorRole:
         findings = [f for f in report.findings if f.role == role]
         outstanding = report.not_document_verifiable.get(role, [])
-        if not findings and not outstanding:
+        permissions = report.permissions.get(role, [])
+        legal_consequences = report.legal_consequences.get(role, [])
+        if not findings and not outstanding and not permissions and not legal_consequences:
             continue
         out.append(f"--- {role.value} ---")
         for finding in findings:
@@ -189,6 +216,16 @@ def render_report(report: ComplianceReport, spec: PolicyRuleset) -> str:
             for rule_id in outstanding:
                 rule = by_id.get(rule_id)
                 out += _outstanding_block(rule) if rule else [f"  --  {rule_id}"]
+        if permissions:
+            out.append("  permitted implementation routes:")
+            for norm_id in permissions:
+                norm = report_norms.get(norm_id)
+                out += _report_norm_block(norm) if norm else [f"  --  {norm_id}"]
+        if legal_consequences:
+            out.append("  conditional legal effects:")
+            for norm_id in legal_consequences:
+                norm = report_norms.get(norm_id)
+                out += _report_norm_block(norm) if norm else [f"  --  {norm_id}"]
         counts = (report.summary.per_role or {}).get(role)
         if counts is not None:
             out.append(

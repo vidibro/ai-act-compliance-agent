@@ -55,6 +55,7 @@ SPEC = POLICY / "spec.yaml"
 FIXTURE = ROOT / "data" / "golden_set" / "criteria" / "AIA-NORM-A015-P5-MODEL-FLAWS__omitted.md"
 
 RULE = "AIA-HR-A15"
+ARTICLE_17_RULE = "AIA-PO-A17"
 MODEL_FLAWS = "AIA-NORM-A015-P5-MODEL-FLAWS"
 SECTION_2_ALLOCATION = "AIA-REL-A016-A-ALLOCATES-SECTION-2"
 SIBLING_THREATS = {
@@ -86,6 +87,10 @@ def a15(spec: PolicyRuleset) -> PolicyRule:
     return next(rule for rule in spec.rules if rule.rule_id == RULE)
 
 
+def a17(spec: PolicyRuleset) -> PolicyRule:
+    return next(rule for rule in spec.rules if rule.rule_id == ARTICLE_17_RULE)
+
+
 def with_criteria(spec: PolicyRuleset, criteria: list[RuleCriterion]) -> PolicyRuleset:
     """The spec with AIA-HR-A15's criteria replaced, unvalidated, to test the checker itself."""
     rules = [
@@ -108,7 +113,7 @@ def test_every_article_15_norm_implemented_by_the_rule_is_exactly_one_criterion(
     }
     listed = [criterion.norm_id for criterion in a15(spec).criteria]
 
-    assert len(implemented) == 13
+    assert len(implemented) == 12
     assert len(listed) == len(set(listed))
     assert set(listed) == implemented
 
@@ -135,11 +140,28 @@ def test_model_flaws_is_materialised_with_its_full_action_and_condition(spec):
     assert criterion.source_spans == ["AIA-TEXT-A015-P009"]
 
 
-def test_a_permission_is_listed_but_cannot_fail_the_rule(spec):
+def test_permissions_are_materialised_separately_from_obligation_criteria(spec):
     redundancy = next(
-        c for c in a15(spec).criteria if c.norm_id == "AIA-NORM-A015-P4-REDUNDANCY"
+        norm for norm in spec.report_norms if norm.norm_id == "AIA-NORM-A015-P4-REDUNDANCY"
     )
-    assert not redundancy.mandatory
+    assert redundancy.kind.value == "permission"
+    assert redundancy.activation_rule_ids == [RULE]
+    assert redundancy.norm_id not in {criterion.norm_id for criterion in a15(spec).criteria}
+
+
+def test_missing_report_norm_fails_the_bidirectional_strict_check(bundle, spec):
+    broken = spec.model_copy(
+        update={
+            "report_norms": [
+                norm
+                for norm in spec.report_norms
+                if norm.norm_id != "AIA-NORM-A015-P4-REDUNDANCY"
+            ]
+        }
+    )
+    assert "AIA-NORM-A015-P4-REDUNDANCY has no materialised report norm" in traceability_errors(
+        bundle, broken, LEDGER
+    )
 
 
 def test_the_checker_names_each_broken_link(bundle, spec):
@@ -280,6 +302,35 @@ def test_article_sixteen_norm_carried_duty_cannot_be_deleted(bundle, spec):
         "AIA-NORM-A016-C-QUALITY-MANAGEMENT carried_by_other_norm requires exactly one "
         "carried_by_norms relation, found 0"
     ) in traceability_errors(broken, spec, LEDGER)
+
+
+def test_article_seventeen_groups_only_homogeneous_qms_obligations(bundle, spec):
+    segments = {segment.segment_id: segment for segment in bundle.text_review.segments}
+    implemented = {
+        norm.norm_id
+        for norm in bundle.norm_inventory.norms
+        if segments[norm.primary_spans[0]].source.kind is SourceKind.ARTICLE
+        and segments[norm.primary_spans[0]].source.document == "17"
+        and norm.implementation_mode is ImplementationMode.COMPLIANCE_RULE
+        and ARTICLE_17_RULE in norm.implementation_refs
+    }
+    rule = a17(spec)
+
+    assert len(implemented) == 17
+    assert {criterion.norm_id for criterion in rule.criteria} == implemented
+    assert not any(criterion.mandatory for criterion in rule.criteria)
+    verdict, reported = settle(rule, Verdict.PASS, ())
+    assert verdict is Verdict.NOT_APPLICABLE
+    assert len(reported) == 17
+    assert all(item.verdict is Verdict.NOT_APPLICABLE and not item.mandatory for item in reported)
+    projected = {norm.norm_id: norm for norm in spec.report_norms}
+    assert projected["AIA-NORM-A017-P3-SECTORAL-INTEGRATION"].kind.value == "permission"
+    assert projected["AIA-NORM-A017-P4-FINANCIAL-DEEMING"].kind.value == "legal_consequence"
+    assert all(
+        criterion.kind.value == "obligation" and criterion.subjects == ["provider"]
+        for criterion in rule.criteria
+    )
+    assert traceability_errors(bundle, spec, LEDGER) == []
 
 
 def test_deleting_the_model_flaws_criterion_fails_the_strict_build(tmp_path):
@@ -605,7 +656,7 @@ def test_the_judge_rules_per_criterion_and_computes_the_rule(spec, llm_judge, mo
     assert judgement.verdict is Verdict.INADEQUATE
     assert by_id[MODEL_FLAWS].verdict is Verdict.GAP
     assert by_id[MODEL_FLAWS].reasoning == MODEL_FLAWS_REASON
-    assert by_id["AIA-NORM-A015-P4-REDUNDANCY"].verdict is Verdict.NOT_APPLICABLE
+    assert "AIA-NORM-A015-P4-REDUNDANCY" not in by_id
     # The prompt carries the materialised criterion, not only the two-word slice.
     prompt = json.loads(sent[0])[1]["content"]
     prompt = prompt if isinstance(prompt, str) else "".join(p["text"] for p in prompt)

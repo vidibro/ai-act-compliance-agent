@@ -119,6 +119,28 @@ class RuleCriterion(BaseModel):
         )
 
 
+class ReportNorm(BaseModel):
+    """A permission or legal effect rendered from one canonical norm.
+
+    This is deliberately not authored in ``spec.yaml``.  The loader materialises it from a norm
+    marked ``report_only`` and retains the rule(s) that activate its report.  Thus an allowed route
+    or legal relief has the same single source of truth as an obligation, but cannot be mistaken
+    for a criterion whose failure decides a compliance verdict.
+    """
+
+    model_config = ConfigDict(frozen=True)
+
+    norm_id: str = Field(pattern=r"^AIA-NORM-[A-Z0-9-]+$")
+    kind: Literal[NormKind.PERMISSION, NormKind.LEGAL_CONSEQUENCE]
+    subjects: list[str] = Field(min_length=1)
+    action: str = Field(min_length=1)
+    norm_text: str = Field(min_length=1)
+    conditions: list[str | ConditionGroup]
+    exceptions: list[str]
+    source_spans: list[str] = Field(min_length=1)
+    activation_rule_ids: list[str] = Field(min_length=1)
+
+
 class PolicyRule(BaseModel):
     """One obligation the documentation is checked against."""
 
@@ -322,8 +344,10 @@ class PolicyRule(BaseModel):
 
     Empty is the ordinary case: the rule is judged as one obligation. A non-empty list makes the
     rule an AGGREGATE — its verdict is computed from the criteria, and passes only when every
-    mandatory criterion passes. The loader resolves each entry from the canonical norm inventory,
-    and `build_normative_coverage.py --check` proves the list matches the norms that point back."""
+    mandatory criterion passes. A non-document-verifiable rule may instead have a reported-only
+    list: all criteria are then `not_applicable`, so it cannot manufacture a pass. The loader
+    resolves each entry from the canonical norm inventory, and `build_normative_coverage.py
+    --check` proves the list matches the norms that point back."""
 
     @model_validator(mode="after")
     def _criteria_are_unique_and_decidable(self) -> PolicyRule:
@@ -331,10 +355,35 @@ class PolicyRule(BaseModel):
         duplicates = sorted({norm_id for norm_id in ids if ids.count(norm_id) > 1})
         if duplicates:
             raise ValueError(f"PolicyRule {self.rule_id!r}: duplicate criteria {duplicates}")
-        if self.criteria and not any(criterion.mandatory for criterion in self.criteria):
+        kinds = {criterion.kind for criterion in self.criteria}
+        if len(kinds) > 1:
             raise ValueError(
-                f"PolicyRule {self.rule_id!r}: criteria has no mandatory criterion, so nothing "
-                f"could ever fail the rule."
+                f"PolicyRule {self.rule_id!r}: criteria mix norm kinds "
+                f"{sorted(kind.value for kind in kinds)}. A rule implements one legal kind; "
+                "permissions and legal consequences are report norms."
+            )
+        verification_modes = {criterion.verification_mode for criterion in self.criteria}
+        if len(verification_modes) > 1:
+            raise ValueError(
+                f"PolicyRule {self.rule_id!r}: criteria mix verification modes "
+                f"{sorted(mode.value for mode in verification_modes)}. A rule has one "
+                "deterministic "
+                "assessment treatment."
+            )
+        subject_sets = {tuple(criterion.subjects) for criterion in self.criteria}
+        if len(subject_sets) > 1:
+            raise ValueError(
+                f"PolicyRule {self.rule_id!r}: criteria name different subjects. Split rules by "
+                "duty-holder before they reach the report."
+            )
+        if (
+            self.criteria
+            and self.document_verifiable
+            and not any(criterion.mandatory for criterion in self.criteria)
+        ):
+            raise ValueError(
+                f"PolicyRule {self.rule_id!r}: document-verifiable criteria has no mandatory "
+                "criterion, so nothing could ever fail the rule."
             )
         return self
 
@@ -484,3 +533,19 @@ class PolicyRuleset(BaseModel):
     source_note: str  # provenance: derived from EC Compliance Checker
     rules: list[PolicyRule]
     national_law_notices: list[NationalLawNotice] = []
+    report_norms: list[ReportNorm] = []
+
+    @model_validator(mode="after")
+    def _report_norms_are_unique_and_target_live_rules(self) -> PolicyRuleset:
+        ids = [norm.norm_id for norm in self.report_norms]
+        duplicates = sorted({norm_id for norm_id in ids if ids.count(norm_id) > 1})
+        if duplicates:
+            raise ValueError(f"PolicyRuleset: duplicate report norm ids {duplicates}")
+        known_rules = {rule.rule_id for rule in self.rules}
+        for norm in self.report_norms:
+            missing = sorted(set(norm.activation_rule_ids) - known_rules)
+            if missing:
+                raise ValueError(
+                    f"Report norm {norm.norm_id!r} names absent activation rule(s) {missing}"
+                )
+        return self

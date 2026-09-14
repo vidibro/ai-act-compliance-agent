@@ -41,6 +41,7 @@ from aiact.gap.judge import LLMJudge
 from aiact.gap.rules import ActiveRules, roles_with_rules, select_rules
 from aiact.schemas.classification import ClassificationResult
 from aiact.schemas.enums import ActorRole, ProviderReallocation, RealWorldTesting, Verdict
+from aiact.schemas.norm import NormKind
 from aiact.schemas.policy import PolicyRule, PolicyRuleset
 from aiact.schemas.question import Answer, Question, narrow
 from aiact.schemas.report import ComplianceReport, Finding, ReportSummary
@@ -231,6 +232,25 @@ def build_graph(
                 if rule.rule_id not in ids:
                     ids.append(rule.rule_id)
         outstanding = {role: sorted(ids) for role, ids in outstanding.items() if ids}
+        permissions: dict[ActorRole, list[str]] = {}
+        legal_consequences: dict[ActorRole, list[str]] = {}
+        for active in state.active:
+            active_rule_ids = {rule.rule_id for rule in active.all_rules}
+            for report_norm in spec.report_norms:
+                if not active_rule_ids.intersection(report_norm.activation_rule_ids):
+                    continue
+                destination = (
+                    permissions
+                    if report_norm.kind is NormKind.PERMISSION
+                    else legal_consequences
+                )
+                ids = destination.setdefault(active.role, [])
+                if report_norm.norm_id not in ids:
+                    ids.append(report_norm.norm_id)
+        permissions = {role: sorted(ids) for role, ids in permissions.items() if ids}
+        legal_consequences = {
+            role: sorted(ids) for role, ids in legal_consequences.items() if ids
+        }
         return {
             "report": ComplianceReport(
                 system_id=state.system_id,
@@ -240,6 +260,8 @@ def build_graph(
                 classification=state.classification,
                 findings=state.findings,
                 not_document_verifiable=outstanding,
+                permissions=permissions,
+                legal_consequences=legal_consequences,
                 provider_reallocation=state.provider_reallocation,
                 deployer_type=state.deployer_type,
                 real_world_testing=state.real_world_testing,

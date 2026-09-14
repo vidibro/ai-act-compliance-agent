@@ -210,7 +210,9 @@ records:
   conditions:
   - the provider is subject to quality-management-system or equivalent obligations under relevant sectoral
     Union law
-  implementation_refs: *id001
+  implementation_mode: report_only
+  implementation_refs:
+  - AIA-PO-A17
   verification_mode: reported_conditionally
   verified_by: vidibro
 - norm_id: AIA-NORM-A017-P4-FINANCIAL-DEEMING
@@ -229,7 +231,9 @@ records:
     law
   exceptions:
   - Article 17(1)(g), (h), and (i) remain independently required
-  implementation_refs: *id001
+  implementation_mode: report_only
+  implementation_refs:
+  - AIA-PO-A17
   verification_mode: reported_conditionally
   verified_by: vidibro
 - norm_id: AIA-NORM-A017-P4-HARMONISED-STANDARDS
@@ -242,6 +246,7 @@ records:
   conditions:
   - the provider relies on Union financial-services governance compliance to fulfil the Article 17 QMS
     obligation
-  implementation_refs: *id001
+  implementation_refs:
+  - AIA-PO-A17-4
   verification_mode: reported_not_judged
   verified_by: vidibro
