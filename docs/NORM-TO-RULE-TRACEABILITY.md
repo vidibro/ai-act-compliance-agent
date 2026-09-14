@@ -256,10 +256,11 @@ explicitly adjudicated.
    From then on the strict build also requires each of its compliance norms to be a criterion of
    every rule it names, so steps 1 and 2 land together.
 2. Add `criteria` to each rule its norms name, then run the strict build.
-3. Before adding Article 16: `AIA-NORM-A016-A-SECTION-2-COMPLIANCE` names every Section 2 rule
-   (including `AIA-HR-A15`) as the provider-allocation basis, not as a separate duty. It needs its
-   own relation (for example a basis link, or `carried_by_other_norm`) rather than becoming a
-   criterion of fourteen rules.
+3. Article 16 is the reference case for cross-references. `AIA-NORM-A016-A-SECTION-2-COMPLIANCE`
+   names every Section 2 rule (including `AIA-HR-A15`) as the provider-allocation basis, not as a
+   separate duty. It is an allocation relation rather than a criterion of fourteen rules. Its other
+   cross-references are either carried by named policy rules or by named substantive norms, which
+   must themselves resolve to policy rules.
 4. Rules with a single norm need no criteria. Criteria pay off where one rule aggregates several
    separately breachable duties.
 

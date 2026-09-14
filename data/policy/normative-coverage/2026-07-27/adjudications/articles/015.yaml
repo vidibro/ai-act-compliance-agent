@@ -4,6 +4,13 @@ source:
   kind: article
   document: "15"
 
+audit:
+  audit_schema_version: 1
+  segments_scanned: 10
+  norms_scanned: 14
+  finding_count: 7
+  audit_sha256: feaac117f9cdce4fc68c1a882c75d01b030df8dc74f0d337279d239955e8706b
+
 decisions:
   - finding_id: AIA-VALID-135096E293C37A15
     target: AIA-NORM-A015-P2-ENCOURAGE-MEASUREMENT

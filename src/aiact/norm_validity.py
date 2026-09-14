@@ -138,12 +138,23 @@ class ValidityAdjudicationManifest(BaseModel):
         return self
 
 
+class ValidityAuditAttestation(BaseModel):
+    """A reproducible record that a document's structural audit was actually run."""
+
+    audit_schema_version: Literal[1]
+    segments_scanned: int = Field(ge=0)
+    norms_scanned: int = Field(ge=0)
+    finding_count: int = Field(ge=0)
+    audit_sha256: str = Field(pattern=r"^[0-9a-f]{64}$")
+
+
 class ValidityAdjudicationShard(BaseModel):
     """The decisions for one article or annex, loaded only through the manifest."""
 
     schema_version: Literal[1]
     act_version_date: str = Field(pattern=r"^\d{4}-\d{2}-\d{2}$")
     source: AdjudicationScope
+    audit: ValidityAuditAttestation
     decisions: list[ValidityAdjudication] = Field(default_factory=list)
 
     @model_validator(mode="after")
@@ -159,6 +170,9 @@ class ValidityAdjudicationLedger(BaseModel):
     enforced_scope: list[AdjudicationScope] = Field(min_length=1)
     decisions: list[ValidityAdjudication] = Field(default_factory=list)
     shard_scope_by_finding: dict[str, AdjudicationScope] = Field(default_factory=dict, exclude=True)
+    audit_by_scope: dict[tuple[SourceKind, str], ValidityAuditAttestation] = Field(
+        default_factory=dict, exclude=True
+    )
 
     @model_validator(mode="after")
     def _decisions_are_unique(self) -> ValidityAdjudicationLedger:
@@ -466,6 +480,52 @@ def audit_norm_validity(
     return sorted(findings, key=lambda item: (item.source_ref, item.target, item.rule))
 
 
+def audit_attestation(
+    bundle: NormativeCoverageBundle,
+    *,
+    scope: set[tuple[SourceKind, str]],
+) -> ValidityAuditAttestation:
+    """Return the exact, hash-bound result of one deterministic structural audit.
+
+    A document with zero findings still needs this record. Otherwise an empty `decisions` list
+    cannot distinguish “audited cleanly” from “never audited”. The snapshot binds every scanned
+    segment and the legal-content fields of every scanned norm, so a later edit requires a fresh
+    audit even when the heuristic happens to produce zero findings again.
+    """
+    segments = [
+        segment
+        for segment in bundle.text_review.segments
+        if (segment.source.kind, segment.source.document) in scope
+    ]
+    segments_by_id = {segment.segment_id: segment for segment in segments}
+    norms = [
+        norm
+        for norm in bundle.norm_inventory.norms
+        if (segments_by_id.get(norm.primary_spans[0]) is not None)
+    ]
+    findings = audit_norm_validity(bundle, scope=scope)
+    snapshot = {
+        "audit_schema_version": 1,
+        "segments": [
+            {"segment_id": segment.segment_id, "sha256": segment.sha256}
+            for segment in sorted(segments, key=lambda item: item.segment_id)
+        ],
+        "norms": [
+            {"norm_id": norm.norm_id, "sha256": _norm_sha256(norm)}
+            for norm in sorted(norms, key=lambda item: item.norm_id)
+        ],
+        "findings": [finding.as_dict() for finding in findings],
+    }
+    encoded = json.dumps(snapshot, sort_keys=True, separators=(",", ":"), ensure_ascii=False)
+    return ValidityAuditAttestation(
+        audit_schema_version=1,
+        segments_scanned=len(segments),
+        norms_scanned=len(norms),
+        finding_count=len(findings),
+        audit_sha256=hashlib.sha256(encoded.encode()).hexdigest(),
+    )
+
+
 def _load_yaml(path: Path, *, description: str) -> dict:
     try:
         payload = yaml.safe_load(path.read_text(encoding="utf-8"))
@@ -521,6 +581,7 @@ def load_adjudication_ledger(path: Path) -> ValidityAdjudicationLedger:
 
     decisions: list[ValidityAdjudication] = []
     shard_scope_by_finding: dict[str, AdjudicationScope] = {}
+    audit_by_scope: dict[tuple[SourceKind, str], ValidityAuditAttestation] = {}
     for declared_shard in sorted(manifest.shards, key=lambda item: item.file):
         shard_path = _safe_shard_path(path, declared_shard.file)
         shard = ValidityAdjudicationShard.model_validate(
@@ -537,6 +598,7 @@ def load_adjudication_ledger(path: Path) -> ValidityAdjudicationLedger:
             raise ValueError(
                 f"validity adjudication shard source differs from manifest: {shard_path}"
             )
+        audit_by_scope[(shard.source.kind, shard.source.document)] = shard.audit
         for decision in shard.decisions:
             if decision.finding_id in shard_scope_by_finding:
                 raise ValueError(
@@ -550,6 +612,7 @@ def load_adjudication_ledger(path: Path) -> ValidityAdjudicationLedger:
         enforced_scope=manifest.enforced_scope,
         decisions=decisions,
         shard_scope_by_finding=shard_scope_by_finding,
+        audit_by_scope=audit_by_scope,
     )
 
 
@@ -566,6 +629,18 @@ def enforce_validity_adjudications(
             f"coverage uses {version}"
         )
     scope = {(item.kind, item.document) for item in ledger.enforced_scope}
+    for item in ledger.enforced_scope:
+        document_scope = {(item.kind, item.document)}
+        recorded_audit = ledger.audit_by_scope.get((item.kind, item.document))
+        if recorded_audit is None:
+            raise ValueError(
+                f"validity adjudication {item.kind.value}/{item.document} lacks audit attestation"
+            )
+        current_audit = audit_attestation(bundle, scope=document_scope)
+        if recorded_audit != current_audit:
+            raise ValueError(
+                f"validity audit attestation is stale for {item.kind.value}/{item.document}"
+            )
     findings = audit_norm_validity(bundle, scope=scope)
     findings_by_id = {finding.finding_id: finding for finding in findings}
     decisions_by_id = {decision.finding_id: decision for decision in ledger.decisions}

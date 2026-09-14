@@ -11,6 +11,7 @@ import yaml
 from aiact.norm_loader import load_normative_coverage
 from aiact.norm_validity import (
     apply_recorded_fix,
+    audit_attestation,
     audit_norm_validity,
     enforce_validity_adjudications,
     load_adjudication_ledger,
@@ -54,6 +55,16 @@ def write_ledger(root: Path, manifest: dict, shard: dict) -> Path:
     return root
 
 
+def refresh_article_fifteen_audit(root: Path, bundle) -> None:
+    """A recorded fix changes the audited norm snapshot and therefore requires a fresh audit."""
+    shard_path = root / "articles" / "015.yaml"
+    shard = yaml.safe_load(shard_path.read_text(encoding="utf-8"))
+    shard["audit"] = audit_attestation(
+        bundle, scope={(SourceKind.ARTICLE, "15")}
+    ).model_dump(mode="json")
+    shard_path.write_text(yaml.safe_dump(shard, sort_keys=False), encoding="utf-8")
+
+
 def test_article_fifteen_findings_are_stable_and_fully_adjudicated():
     bundle = load_bundle()
     findings = audit_norm_validity(bundle, scope={(SourceKind.ARTICLE, "15")})
@@ -74,7 +85,11 @@ def test_article_sixteen_is_closed_with_an_explicit_empty_adjudication_shard():
     bundle = load_bundle()
 
     assert audit_norm_validity(bundle, scope={(SourceKind.ARTICLE, "16")}) == []
-    # Article 16 adds no findings or decisions, but it is still part of the enforced closed scope.
+    ledger = load_adjudication_ledger(LEDGER)
+    assert ledger.audit_by_scope[(SourceKind.ARTICLE, "16")] == audit_attestation(
+        bundle, scope={(SourceKind.ARTICLE, "16")}
+    )
+    # Article 16 adds no decisions, but its hash-bound audit proves that the zero is current.
     assert enforce_validity_adjudications(bundle, LEDGER) == (7, 7)
 
 
@@ -107,7 +122,7 @@ def test_changed_norm_record_requires_a_new_adjudication():
     )
     norm.action = f"{norm.action} with a changed interpretation"
 
-    with pytest.raises(ValueError, match="lack adjudication"):
+    with pytest.raises(ValueError, match="audit attestation is stale"):
         enforce_validity_adjudications(bundle, LEDGER)
 
 
@@ -237,9 +252,11 @@ def test_fixed_finding_must_be_absent_and_patch_must_be_applied(tmp_path):
         if item.norm_id == "AIA-NORM-A015-P2-ENCOURAGE-MEASUREMENT"
     )
     norm.qualifier_spans = [norm.primary_spans[0]]
+    refresh_article_fifteen_audit(ledger_path, bundle)
 
     assert enforce_validity_adjudications(bundle, ledger_path) == (6, 7)
 
     norm.qualifier_spans = []
+    refresh_article_fifteen_audit(ledger_path, bundle)
     with pytest.raises(ValueError, match="fixed are still active"):
         enforce_validity_adjudications(bundle, ledger_path)

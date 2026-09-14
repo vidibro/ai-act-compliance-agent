@@ -7,9 +7,9 @@ unchanged. It reads the rule side from the loaded policy spec, so the check sees
 judge will be shown.
 
 The scope is the validity ledger's `enforced_scope`, because a criterion is reconstructible only
-from an adjudicated norm. A norm outside it may still point at a rule — the Article 16(a) umbrella
-duty names every Section 2 rule — and is not required to be one of that rule's criteria until its
-document is adjudicated.
+from an adjudicated norm. A cross-reference norm may instead be discharged by a typed relation:
+Article 16(a), for example, allocates the provider duty to the existing Section 2 rules, while
+Article 16(c) is carried by Article 17's substantive norm.
 """
 
 from __future__ import annotations
@@ -89,6 +89,27 @@ def traceability_errors(
             if rule_id not in relation_targets:
                 direct_norms_by_rule.setdefault(rule_id, []).append(norm)
 
+    carried_relations_by_source: dict[str, list] = {}
+    for relation in bundle.norm_inventory.relations:
+        if relation.kind is NormRelationKind.CARRIED_BY_NORMS:
+            carried_relations_by_source.setdefault(relation.source_norm_id, []).append(relation)
+
+    def resolved_rule_ids(norm_id: str, path: tuple[str, ...] = ()) -> set[str]:
+        """Policy rules reached by a norm-carried duty, following its reviewed chain."""
+        if norm_id in path:
+            return set()
+        target = norms[norm_id]
+        if target.implementation_mode is ImplementationMode.COMPLIANCE_RULE:
+            return set(target.implementation_refs)
+        relations = carried_relations_by_source.get(norm_id, [])
+        if target.implementation_mode is not ImplementationMode.CARRIED_BY_OTHER_NORM or len(
+            relations
+        ) != 1:
+            return set()
+        return set().union(
+            *(resolved_rule_ids(child, (*path, norm_id)) for child in relations[0].target_norm_ids)
+        )
+
     # Norm -> rule: every enforced compliance norm is either a criterion, a typed relation, or an
     # unambiguous one-to-one rule. The last form needs no criterion container to preserve identity.
     for norm in sorted(norms.values(), key=lambda item: item.norm_id):
@@ -108,6 +129,38 @@ def traceability_errors(
                 continue
             else:
                 errors.append(f"{rule_id} omits criterion {norm.norm_id}, which names it")
+
+    # A norm marked as carried by another norm is not an implementation gap we report twice.
+    # It still needs one explicit, live path to a policy rule.  Without this check Article 16(c),
+    # (d), (e), or (j) could lose its relation and silently disappear from the report.
+    for norm in sorted(norms.values(), key=lambda item: item.norm_id):
+        if (
+            not in_scope(norm)
+            or norm.implementation_mode is not ImplementationMode.CARRIED_BY_OTHER_NORM
+            or norm.review.status is ReviewStatus.SUPERSEDED
+        ):
+            continue
+        relations = carried_relations_by_source.get(norm.norm_id, [])
+        if len(relations) != 1:
+            errors.append(
+                f"{norm.norm_id} carried_by_other_norm requires exactly one carried_by_norms "
+                f"relation, found {len(relations)}"
+            )
+            continue
+        relation = relations[0]
+        for target_id in relation.target_norm_ids:
+            reached = resolved_rule_ids(target_id)
+            if not reached:
+                errors.append(
+                    f"{relation.relation_id} target {target_id} does not resolve to a policy rule"
+                )
+                continue
+            for rule_id in sorted(reached):
+                if rule_id not in rules:
+                    errors.append(
+                        f"{relation.relation_id} target {target_id} resolves to missing rule "
+                        f"{rule_id}"
+                    )
 
     # Rule -> norm: every criterion resolves to one reconstructible norm that names the rule back.
     decisions: dict[str, list[str]] = {}

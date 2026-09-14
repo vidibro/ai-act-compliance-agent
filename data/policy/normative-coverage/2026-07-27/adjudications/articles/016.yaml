@@ -4,7 +4,13 @@ source:
   kind: article
   document: "16"
 
-# The structural validity audit currently produces no Article 16 findings. Keeping the empty shard
-# is intentional: index.yaml declares this document closed, so a future finding makes --check fail
-# until it receives an explicit decision here.
+# This is a hash-bound zero-finding audit record, not a blank placeholder. The strict build
+# recomputes it and fails if a scanned Article 16 segment or norm changes, or if a finding appears.
+audit:
+  audit_schema_version: 1
+  segments_scanned: 14
+  norms_scanned: 12
+  finding_count: 0
+  audit_sha256: 40cba1644c4824d594e97cdd5f7061a676fd0a2c667f865df3975a8707ee6f75
+
 decisions: []

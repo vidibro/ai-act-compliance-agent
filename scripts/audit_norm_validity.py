@@ -9,7 +9,7 @@ from pathlib import Path
 from build_normative_coverage import paths_for_version
 
 from aiact.norm_builder import build_artifacts, load_builder_inputs
-from aiact.norm_validity import audit_norm_validity
+from aiact.norm_validity import audit_attestation, audit_norm_validity
 from aiact.schemas.norm import (
     NormativeCoverageBundle,
     NormInventory,
@@ -40,6 +40,7 @@ def audit(version: str, articles: set[str] | None = None) -> dict[str, object]:
         else None
     )
     findings = audit_norm_validity(bundle, scope=scope)
+    attestation = audit_attestation(bundle, scope=scope or documents)
     segments = {segment.segment_id: segment for segment in bundle.text_review.segments}
     norms_in_scope = [
         norm
@@ -64,6 +65,7 @@ def audit(version: str, articles: set[str] | None = None) -> dict[str, object]:
         "segments_scanned": len(segments_in_scope),
         "norms_scanned": len(norms_in_scope),
         "finding_count": len(findings),
+        "audit_attestation": attestation.model_dump(mode="json"),
         "findings": [finding.as_dict() for finding in findings],
     }
 

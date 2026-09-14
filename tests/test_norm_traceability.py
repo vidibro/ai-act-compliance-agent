@@ -186,16 +186,66 @@ def test_an_unadjudicated_fragment_cannot_be_a_criterion(bundle, spec, tmp_path)
 
 def test_article_sixteen_cross_references_are_typed_relations_not_hidden_criteria(bundle, spec):
     relations = {relation.relation_id: relation for relation in bundle.norm_inventory.relations}
+    norms = {norm.norm_id: norm for norm in bundle.norm_inventory.norms}
     allocation = relations[SECTION_2_ALLOCATION]
-    source = next(
-        norm
-        for norm in bundle.norm_inventory.norms
-        if norm.norm_id == allocation.source_norm_id
-    )
+    source = norms[allocation.source_norm_id]
 
     assert allocation.kind is NormRelationKind.ALLOCATES_DUTY_TO_POLICY_RULES
     assert set(allocation.target_rule_ids) == set(source.implementation_refs)
     assert "AIA-HR-A15" in allocation.target_rule_ids
+
+    # Article 16 is the hard reference case. Every one of its twelve duties has exactly one
+    # explicit handling path; none is an untracked duplicate of a rule-level finding.
+    direct = {
+        "AIA-NORM-A016-B-PROVIDER-IDENTIFICATION": "AIA-PO-A16-B",
+        "AIA-NORM-A016-K-DEMONSTRATE-CONFORMITY": "AIA-PO-A16-K",
+        "AIA-NORM-A016-L-ACCESSIBILITY": "AIA-PO-A16-L",
+    }
+    policy_relation_sources = {
+        relation.source_norm_id
+        for relation in relations.values()
+        if relation.kind
+        in {
+            NormRelationKind.ALLOCATES_DUTY_TO_POLICY_RULES,
+            NormRelationKind.CARRIED_BY_POLICY_RULES,
+        }
+    }
+    assert {
+        norm_id
+        for norm_id, norm in norms.items()
+        if norm_id.startswith("AIA-NORM-A016-")
+        and norm.implementation_mode is ImplementationMode.COMPLIANCE_RULE
+        and len(norm.implementation_refs) == 1
+        and norm_id not in policy_relation_sources
+    } == set(direct)
+    assert {norm_id: norms[norm_id].implementation_refs for norm_id in direct} == {
+        norm_id: [rule_id] for norm_id, rule_id in direct.items()
+    }
+
+    carried_by_rules = {
+        "AIA-NORM-A016-F-CONFORMITY-ASSESSMENT",
+        "AIA-NORM-A016-G-EU-DECLARATION",
+        "AIA-NORM-A016-H-CE-MARKING",
+        "AIA-NORM-A016-I-REGISTRATION",
+    }
+    assert {
+        relation.source_norm_id
+        for relation in relations.values()
+        if relation.kind is NormRelationKind.CARRIED_BY_POLICY_RULES
+    } & set(norms) >= carried_by_rules
+
+    carried_by_norms = {
+        "AIA-NORM-A016-C-QUALITY-MANAGEMENT",
+        "AIA-NORM-A016-D-KEEP-DOCUMENTATION",
+        "AIA-NORM-A016-E-KEEP-LOGS",
+        "AIA-NORM-A016-J-CORRECTIVE-ACTION",
+    }
+    assert {
+        relation.source_norm_id
+        for relation in relations.values()
+        if relation.kind is NormRelationKind.CARRIED_BY_NORMS
+    } & set(norms) >= carried_by_norms
+
     external = relations["AIA-REL-A016-L-REQUIRES-ACCESSIBILITY-DIRECTIVES"]
     assert external.kind is NormRelationKind.SUBJECT_TO_EXTERNAL_REQUIREMENTS
     assert external.target_rule_ids == []
@@ -215,6 +265,21 @@ def test_article_sixteen_allocation_relation_cannot_be_deleted(bundle, spec):
         "AIA-HR-A15 omits criterion AIA-NORM-A016-A-SECTION-2-COMPLIANCE, which names it"
         in errors
     )
+
+
+def test_article_sixteen_norm_carried_duty_cannot_be_deleted(bundle, spec):
+    relation_id = "AIA-REL-A016-C-QUALITY-MANAGEMENT-CARRIED-BY-NORMS"
+    broken = bundle.model_copy(deep=True)
+    broken.norm_inventory.relations = [
+        relation
+        for relation in broken.norm_inventory.relations
+        if relation.relation_id != relation_id
+    ]
+
+    assert (
+        "AIA-NORM-A016-C-QUALITY-MANAGEMENT carried_by_other_norm requires exactly one "
+        "carried_by_norms relation, found 0"
+    ) in traceability_errors(broken, spec, LEDGER)
 
 
 def test_deleting_the_model_flaws_criterion_fails_the_strict_build(tmp_path):
