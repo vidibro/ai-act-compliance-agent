@@ -100,6 +100,23 @@ def traceability_errors(
 
     errors: list[str] = []
 
+    # A permission or legal consequence has no pass/fail answer.  If it were allowed to use a
+    # compliance-rule mode, a future author could put it in a standalone rule and omit it from the
+    # reader-facing "allowed" / "legal effect" sections.  Enforce the canonical split before
+    # checking either projection direction.
+    for norm in sorted(norms.values(), key=lambda item: item.norm_id):
+        if not in_scope(norm) or norm.review.status is ReviewStatus.SUPERSEDED:
+            continue
+        if (
+            norm.kind in {NormKind.PERMISSION, NormKind.LEGAL_CONSEQUENCE}
+            and norm.implementation_mode is not ImplementationMode.REPORT_ONLY
+        ):
+            errors.append(
+                f"{norm.norm_id} is {norm.kind.value} in enforced scope but "
+                f"implementation_mode is {norm.implementation_mode.value}; permissions and "
+                "legal consequences must be report_only"
+            )
+
     # Report-only permissions and legal effects are not criteria: their presence tells a reader
     # what is allowed or what relief applies, never whether an obligation passed.  They still need
     # an exact bidirectional activation link, or a permissive route could silently disappear.

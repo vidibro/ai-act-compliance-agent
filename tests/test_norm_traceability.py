@@ -164,6 +164,23 @@ def test_missing_report_norm_fails_the_bidirectional_strict_check(bundle, spec):
     )
 
 
+def test_in_scope_permission_cannot_be_hidden_in_a_compliance_rule(bundle, spec):
+    """Permissions and legal effects have one mandatory, report-only implementation path."""
+    norm_id = "AIA-NORM-A015-P4-REDUNDANCY"
+    broken = bundle.model_copy(deep=True)
+    broken.norm_inventory.norms = [
+        norm.model_copy(update={"implementation_mode": ImplementationMode.COMPLIANCE_RULE})
+        if norm.norm_id == norm_id
+        else norm
+        for norm in broken.norm_inventory.norms
+    ]
+
+    assert (
+        f"{norm_id} is permission in enforced scope but implementation_mode is compliance_rule; "
+        "permissions and legal consequences must be report_only"
+    ) in traceability_errors(broken, spec, LEDGER)
+
+
 def test_the_checker_names_each_broken_link(bundle, spec):
     criteria = a15(spec).criteria
     model_flaws = next(c for c in criteria if c.norm_id == MODEL_FLAWS)
