@@ -120,6 +120,16 @@ implementation_targets:
 - AIA-CQ-SIGNIFICANT-RISK
 - AIA-CQ-TRANSPARENCY
 norm_relations:
+  # Article 59's optional personal-data route is available only inside the Article 3(55)
+  # controlled framework.  The permission therefore relies on that definition; this is a legal
+  # dependency, not an additional Article 59 condition or a rule of its own.
+  - relation_id: AIA-REL-A059-P1-SANDBOX-DEFINITION-DEPENDENCY-01
+    source_norm_id: AIA-NORM-A059-P1-CONDITIONAL-FURTHER-PROCESSING
+    kind: relies_on_norms
+    target_norm_ids:
+      - AIA-NORM-A003-D055-AI-REGULATORY-SANDBOX
+    legal_basis_spans: [AIA-TEXT-A059-P001]
+    detail: Article 3(55) defines the AI regulatory sandbox in which Article 59(1) permits the processing.
   # Article 59(1)'s permission applies only if every numbered condition is met.
   - relation_id: AIA-REL-A059-P1-CONDITIONAL-ON-ALL-CONDITIONS
     source_norm_id: AIA-NORM-A059-P1-CONDITIONAL-FURTHER-PROCESSING
