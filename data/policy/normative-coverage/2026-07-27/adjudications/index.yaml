@@ -4,6 +4,8 @@ act_version_date: "2026-07-27"
 # The complete closed scope. Each declared document has exactly one decision shard below.
 enforced_scope:
   - kind: article
+    document: "1"
+  - kind: article
     document: "15"
   - kind: article
     document: "16"
@@ -13,6 +15,9 @@ enforced_scope:
     document: "18"
 
 shards:
+  - kind: article
+    document: "1"
+    file: articles/001.yaml
   - kind: article
     document: "15"
     file: articles/015.yaml
