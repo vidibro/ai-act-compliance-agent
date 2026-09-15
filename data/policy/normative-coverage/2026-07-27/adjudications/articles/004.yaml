@@ -1,0 +1,38 @@
+schema_version: 1
+act_version_date: "2026-07-27"
+source:
+  kind: article
+  document: "4"
+
+# Article 4(1) is the provider and deployer AI-literacy duty carried by AIA-ALL-A04. Paragraphs 2
+# and 3 are Commission, Member State and Board duties outside the supported report actors.
+audit:
+  audit_schema_version: 1
+  segments_scanned: 4
+  norms_scanned: 4
+  finding_count: 1
+  audit_sha256: 0a2e56777a85983f95f62ccaf93174a62b665b0c97fbe5dcaf87f9c17f7ac6f5
+
+decisions:
+  - finding_id: AIA-VALID-703E31C51690F78F
+    target: AIA-NORM-A004-P2-PUBLISH-PRACTICAL-EXAMPLES
+    rule: fragment_without_qualifier_span
+    source_ref: AIA-TEXT-A004-P002
+    source_sha256: 31435497fa34cfde21fcdc93137021b81bae6a09a02197d9dd3e5a869a424299
+    target_sha256: beb793cbb0c501e8cfe71fd7695205f9a36105a14d31efc884d370c2abc7d02a
+    decision: accepted_with_basis
+    reason: >-
+      The atomic quotation begins after “For that purpose,” and cites “that obligation”. Both
+      point back to the first sentence of the same paragraph, recorded below: the purpose is to
+      support providers and deployers, and the obligation is Article 4(1). The action names the
+      Article 4(1) obligation and the canonical relies_on_norms relation targets
+      AIA-NORM-A004-P1-AI-LITERACY-MEASURES. The Commission duty is not conditioned by the omitted
+      words, so the fields and this basis reconstruct its complete effect.
+    legal_basis:
+      - span_id: AIA-TEXT-A004-P002
+        source_sha256: 31435497fa34cfde21fcdc93137021b81bae6a09a02197d9dd3e5a869a424299
+        quote: >-
+          The Commission and the Member States shall support and facilitate the efforts of
+          providers and deployers of AI systems, in particular SMEs, in fulfilling their obligation
+          under paragraph 1 of this Article. For that purpose, the Commission shall publish
+    reviewed_by: vidibro

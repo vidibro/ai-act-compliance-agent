@@ -88,7 +88,7 @@ def test_article_fifteen_findings_are_stable_and_fully_adjudicated():
         "AIA-VALID-68BAAE428CB98553",
         "AIA-VALID-EB70A75FE17CB5C0",
     }
-    assert enforce_validity_adjudications(bundle, LEDGER) == (36, 37)
+    assert enforce_validity_adjudications(bundle, LEDGER) == (37, 38)
 
 
 def test_article_sixteen_is_closed_with_an_explicit_empty_adjudication_shard():
@@ -100,7 +100,7 @@ def test_article_sixteen_is_closed_with_an_explicit_empty_adjudication_shard():
         bundle, scope={(SourceKind.ARTICLE, "16")}
     )
     # Article 16 adds no decisions, but its hash-bound audit proves that the zero is current.
-    assert enforce_validity_adjudications(bundle, LEDGER) == (36, 37)
+    assert enforce_validity_adjudications(bundle, LEDGER) == (37, 38)
 
 
 def test_article_seventeen_findings_are_recorded_in_its_own_shard():
@@ -137,6 +137,17 @@ def test_article_three_definition_findings_are_recorded_in_its_own_shard():
     ledger = load_adjudication_ledger(LEDGER)
     assert ledger.audit_by_scope[(SourceKind.ARTICLE, "3")] == audit_attestation(
         bundle, scope={(SourceKind.ARTICLE, "3")}
+    )
+
+
+def test_article_four_literacy_finding_is_recorded_in_its_own_shard():
+    bundle = load_bundle()
+    findings = audit_norm_validity(bundle, scope={(SourceKind.ARTICLE, "4")})
+
+    assert {finding.finding_id for finding in findings} == {"AIA-VALID-703E31C51690F78F"}
+    ledger = load_adjudication_ledger(LEDGER)
+    assert ledger.audit_by_scope[(SourceKind.ARTICLE, "4")] == audit_attestation(
+        bundle, scope={(SourceKind.ARTICLE, "4")}
     )
 
 
