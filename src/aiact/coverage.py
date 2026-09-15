@@ -4,7 +4,7 @@ ONE PARTITION over `provisions.all_provisions()`. Each address gets exactly one 
 statuses are exhaustive by construction — the last of them, UNACCOUNTED, is the failure state and
 the reason the enum has six values rather than four.
 
-    CHECKED      a rule tests documentation against it, and names the rule
+    CHECKED      a rule tests documentation against it; the supporting rule is derived from policy
     ASKED        the classification cascade decides it, and names the node
     NOT_OWED     it creates no duty for the roles this tool reports for, and says why
     OWED         it creates a duty this tool does not check yet, declared as a debt
@@ -32,20 +32,10 @@ from aiact.provisions import Provision, all_provisions
 
 CASCADE_PREFIX = "CASCADE "
 
-# A division inside an article a rule cites WHOLE. The rule's requirement text already contains it
-# and the judge sees it, so it is checked — but under a verdict shared with the article's other
-# paragraphs, which says nothing about this one. Writing the ruling out is what turns "the rule
-# covers the article" into "someone read this paragraph and confirmed the rule reaches it".
-RULE_PREFIX = "RULE "
-
-
-def rule_ids(reason: str) -> list[str]:
-    """Every rule a `RULE ...` ruling names, in the order it names them.
-
-    A provision may be checked by more than one rule — Art. 50(5) conditions all four transparency
-    duties — and each named rule is a claim that the rule exists and reaches the provision. The
-    sibling of `cascade_nodes`, and split the same way."""
-    return _named(reason[len(RULE_PREFIX) :])
+# A division can be checked by a rule that cites its whole article, supplies it as a qualifier, or
+# carries its Annex.  The scope ledger records only that legal conclusion.  The actual rule links
+# are derived from the policy spec below, so a prose sentence cannot become a second mapping layer.
+CHECKED_PREFIX = "CHECKED "
 
 
 def _named(claimed: str) -> list[str]:
@@ -89,6 +79,36 @@ class Coverage:
     def is_individual(self) -> bool:
         """True where someone ruled on THIS provision rather than on the document around it."""
         return self.status in (Status.CHECKED, Status.ASKED, Status.NOT_OWED, Status.OWED)
+
+
+def supporting_rules(spec: Any, provision: Provision) -> tuple[str, ...]:
+    """Rule ids whose loaded legal context contains `provision`.
+
+    This is the one machine-readable answer to "which rule checks this division?"  A scope
+    ruling may say only `CHECKED — ...`; it never repeats rule ids.  The function deliberately
+    follows the three ways the policy loader supplies legal text to a rule: its direct source,
+    `qualified_by`, and its Annex context.
+    """
+    matches: list[str] = []
+    for rule in spec.rules:
+        source = rule.source
+        if provision.kind == "annex":
+            if source.annex == provision.document:
+                matches.append(rule.rule_id)
+            continue
+
+        if source.article == provision.document:
+            cited_division = source.paragraph if source.paragraph is not None else source.point
+            if cited_division is None or cited_division == provision.division:
+                matches.append(rule.rule_id)
+                continue
+        if any(
+            qualifier.get("article") == provision.document
+            and qualifier.get("paragraph") == provision.division
+            for qualifier in rule.qualified_by
+        ):
+            matches.append(rule.rule_id)
+    return tuple(matches)
 
 
 def _cited_addresses(spec: Any) -> tuple[dict[tuple[str, str], str], dict[str, str]]:
@@ -178,8 +198,8 @@ def classify_coverage(
             reason = reasons[key]
             if reason.startswith(CASCADE_PREFIX):
                 status, detail = Status.ASKED, " ".join(cascade_nodes(reason))
-            elif reason.startswith(RULE_PREFIX):
-                status, detail = Status.CHECKED, " ".join(rule_ids(reason))
+            elif reason.startswith(CHECKED_PREFIX):
+                status, detail = Status.CHECKED, " ".join(supporting_rules(spec, provision))
             else:
                 status, detail = Status.NOT_OWED, reason
         elif key in owed:
