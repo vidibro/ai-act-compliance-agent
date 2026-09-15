@@ -16,6 +16,7 @@ norms:
   - semantic_legal_effect
   - other_modal
   - cross_reference_structure
+  - existing_implementation
   primary_spans:
   - AIA-TEXT-A004A-P001
   qualifier_spans:
@@ -37,8 +38,9 @@ norms:
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
-  implementation_mode: missing
-  implementation_refs: []
+  implementation_mode: report_only
+  implementation_refs:
+  - AIA-HR-A10
   implementation_reason: ''
   verification_mode: reported_conditionally
   review:
@@ -63,6 +65,7 @@ norms:
   detection_channels:
   - semantic_legal_effect
   - cross_reference_structure
+  - existing_implementation
   primary_spans:
   - AIA-TEXT-A004A-P003
   qualifier_spans:
@@ -75,10 +78,11 @@ norms:
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
-  implementation_mode: missing
-  implementation_refs: []
+  implementation_mode: compliance_rule
+  implementation_refs:
+  - AIA-ALL-A04A
   implementation_reason: ''
-  verification_mode: judged_by_gap_analysis
+  verification_mode: reported_conditionally
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -103,6 +107,7 @@ norms:
   detection_channels:
   - semantic_legal_effect
   - cross_reference_structure
+  - existing_implementation
   primary_spans:
   - AIA-TEXT-A004A-P004
   qualifier_spans:
@@ -115,10 +120,11 @@ norms:
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
-  implementation_mode: missing
-  implementation_refs: []
+  implementation_mode: compliance_rule
+  implementation_refs:
+  - AIA-ALL-A04A
   implementation_reason: ''
-  verification_mode: judged_by_gap_analysis
+  verification_mode: reported_conditionally
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -141,6 +147,7 @@ norms:
   detection_channels:
   - semantic_legal_effect
   - cross_reference_structure
+  - existing_implementation
   primary_spans:
   - AIA-TEXT-A004A-P005
   qualifier_spans:
@@ -153,10 +160,11 @@ norms:
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
-  implementation_mode: missing
-  implementation_refs: []
+  implementation_mode: compliance_rule
+  implementation_refs:
+  - AIA-ALL-A04A
   implementation_reason: ''
-  verification_mode: judged_by_gap_analysis
+  verification_mode: reported_conditionally
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -179,6 +187,7 @@ norms:
   detection_channels:
   - semantic_legal_effect
   - cross_reference_structure
+  - existing_implementation
   primary_spans:
   - AIA-TEXT-A004A-P006
   qualifier_spans:
@@ -191,10 +200,11 @@ norms:
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
-  implementation_mode: missing
-  implementation_refs: []
+  implementation_mode: compliance_rule
+  implementation_refs:
+  - AIA-ALL-A04A
   implementation_reason: ''
-  verification_mode: judged_by_gap_analysis
+  verification_mode: reported_conditionally
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -219,6 +229,7 @@ norms:
   detection_channels:
   - semantic_legal_effect
   - cross_reference_structure
+  - existing_implementation
   primary_spans:
   - AIA-TEXT-A004A-P007
   qualifier_spans:
@@ -231,10 +242,11 @@ norms:
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
-  implementation_mode: missing
-  implementation_refs: []
+  implementation_mode: compliance_rule
+  implementation_refs:
+  - AIA-ALL-A04A
   implementation_reason: ''
-  verification_mode: judged_by_gap_analysis
+  verification_mode: reported_conditionally
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -258,6 +270,7 @@ norms:
   - semantic_legal_effect
   - other_modal
   - cross_reference_structure
+  - existing_implementation
   primary_spans:
   - AIA-TEXT-A004A-P008
   qualifier_spans:
@@ -273,8 +286,9 @@ norms:
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
-  implementation_mode: missing
-  implementation_refs: []
+  implementation_mode: report_only
+  implementation_refs:
+  - AIA-ALL-A04A
   implementation_reason: ''
   verification_mode: reported_conditionally
   review:

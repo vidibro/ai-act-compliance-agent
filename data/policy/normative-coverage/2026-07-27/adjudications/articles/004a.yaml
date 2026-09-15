@@ -1,0 +1,35 @@
+schema_version: 1
+act_version_date: "2026-07-27"
+source:
+  kind: article
+  document: "4a"
+
+audit:
+  audit_schema_version: 1
+  segments_scanned: 12
+  norms_scanned: 8
+  finding_count: 1
+  audit_sha256: dffcb02bec8062693a2d886e4188aa3e1dbaf07dfb0802f07bac3a3e05d05f0f
+
+decisions:
+  - finding_id: AIA-VALID-B5BAD92714FABB3B
+    target: AIA-TEXT-A004A-P001
+    rule: uncovered_legal_effect_text
+    source_ref: AIA-TEXT-A004A-P001
+    source_sha256: 717e906870c4ba0d2b8c255c497c122ba9c32473edd7a6e5a95e11771a0523bd
+    target_sha256: 52cd8e92926d527fcecc9dd7d338e49d736987271d3b56da5febc9f836215468
+    decision: accepted_with_basis
+    reason: >-
+      This is the chapeau to the exceptional-processing route, not a further action or a separate
+      duty-holder. Condition (a) is retained in the permission's structured conditions; conditions
+      (b) to (f) are the five separately structured safeguard norms. The recorded external-law
+      relation preserves the "in addition to" boundary. Together they reconstruct the complete
+      legal effect of the chapeau.
+    legal_basis:
+      - span_id: AIA-TEXT-A004A-P001
+        source_sha256: 717e906870c4ba0d2b8c255c497c122ba9c32473edd7a6e5a95e11771a0523bd
+        quote: >-
+          In addition to the provisions set out in Regulations (EU) 2016/679 and (EU) 2018/1725
+          and Directive (EU) 2016/680, as applicable, all the following conditions shall be met in
+          order for such processing to occur:
+    reviewed_by: vidibro

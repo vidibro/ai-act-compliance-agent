@@ -810,7 +810,29 @@ def test_article_four_a_high_risk_permission_carries_all_six_qualifier_spans():
     ]
     assert len(norm.conditions) == 4
     assert norm.product_scope.value == "in_scope"
-    assert norm.implementation_mode.value == "missing"
+    assert norm.implementation_mode.value == "report_only"
+    assert norm.implementation_refs == ["AIA-HR-A10"]
+    assert bundle.norm_inventory.target_norm_ids_for(
+        norm.norm_id, NormRelationKind.CONDITIONAL_ON_NORMS
+    ) == [
+        "AIA-NORM-A004A-P1-B-REUSE-SECURITY",
+        "AIA-NORM-A004A-P1-C-ACCESS-SAFEGUARDS",
+        "AIA-NORM-A004A-P1-D-NO-THIRD-PARTY-ACCESS",
+        "AIA-NORM-A004A-P1-E-DELETE-DATA",
+        "AIA-NORM-A004A-P1-F-RECORD-NECESSITY",
+    ]
+    external = [
+        relation
+        for relation in bundle.norm_inventory.relations
+        if relation.source_norm_id == norm.norm_id
+        and relation.kind is NormRelationKind.SUBJECT_TO_EXTERNAL_REQUIREMENTS
+    ]
+    assert len(external) == 1
+    assert external[0].external_requirements == [
+        "Regulation (EU) 2016/679",
+        "Regulation (EU) 2018/1725",
+        "Directive (EU) 2016/680",
+    ]
 
 
 def test_article_four_a_second_permission_imports_safeguards_without_creating_bias_duty():
@@ -827,19 +849,21 @@ def test_article_four_a_second_permission_imports_safeguards_without_creating_bi
         "AIA-TEXT-A004A-P009",
         "AIA-TEXT-A004A-P010",
     ]
-    imported = set(
-        bundle.norm_inventory.target_norm_ids_for(
-            permission.norm_id, NormRelationKind.RELIES_ON_NORMS
-        )
+    assert permission.implementation_mode.value == "report_only"
+    assert permission.implementation_refs == ["AIA-ALL-A04A"]
+    imported = bundle.norm_inventory.target_norm_ids_for(
+        permission.norm_id, NormRelationKind.CONDITIONAL_ON_NORMS
     )
-    imported = {norm_id for norm_id in imported if norm_id.startswith("AIA-NORM-A004A-P1-")}
-    assert imported == {
+    assert imported == [
         "AIA-NORM-A004A-P1-B-REUSE-SECURITY",
         "AIA-NORM-A004A-P1-C-ACCESS-SAFEGUARDS",
         "AIA-NORM-A004A-P1-D-NO-THIRD-PARTY-ACCESS",
         "AIA-NORM-A004A-P1-E-DELETE-DATA",
         "AIA-NORM-A004A-P1-F-RECORD-NECESSITY",
-    }
+    ]
+    safeguards = [norm for norm in norms.values() if norm.kind.value == "obligation"]
+    assert all(norm.implementation_refs == ["AIA-ALL-A04A"] for norm in safeguards)
+    assert all(norm.verification_mode.value == "reported_conditionally" for norm in safeguards)
     assert consequence.kind.value == "legal_consequence"
     assert consequence.product_scope.value == "dependency_only"
     assert consequence.implementation_mode.value == "none_required"

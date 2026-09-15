@@ -2828,6 +2828,50 @@ rules:
     status: active
 
   # ------------------------------------------------------------------------------------------
+  # Art. 4a — SPECIAL-CATEGORY DATA FOR BIAS DETECTION AND CORRECTION.
+  #
+  # This is a conditional processing route, not a requirement to perform bias detection.  The
+  # safeguards apply only where a provider or deployer actually uses that route; the present
+  # classification has no factual question that could establish that.  Report the route and its
+  # safeguards for separate confirmation instead of calling a missing statement in a technical
+  # file a compliance gap.
+  # ------------------------------------------------------------------------------------------
+  - rule_id: AIA-ALL-A04A
+    source:
+      instrument: "Regulation (EU) 2024/1689"
+      article: 4a
+      paragraph: 1
+      act_version_date: 2026-07-27
+    applies_to_risk_class: [high_risk, not_high_risk, minimal]
+    applies_to_role: [provider, deployer]
+    activation_condition: >-
+      Applies only where the operator exceptionally processes special categories of personal data
+      for bias detection and correction under Article 4a(1) or 4a(2). Article 4a does not require
+      an operator to conduct that processing. Where the route is used, the applicable Union
+      data-protection regime continues to apply in addition to these safeguards.
+    obligation_status: mandatory
+    check_type: presence
+    evidence_expected: >-
+      Confirm separately, if special-category personal data is processed for bias detection and
+      correction: technical limits on reuse; state-of-the-art security and privacy-preserving
+      measures including pseudonymisation; safeguards, documented access controls and
+      confidentiality; no third-party access; deletion when the bias is corrected or retention
+      ends; and records explaining strict necessity and why other data would not work. This report
+      does not determine whether the exceptional processing is taking place or whether it complies
+      with the applicable GDPR, Union-institution, or law-enforcement data-protection regime.
+    document_verifiable: false
+    effective_date: 2025-02-02
+    status: active
+    # One legal kind, one subject set and one non-judged treatment. The canonical norms supply the
+    # exact safeguard text, conditions and source spans; the policy spec owns no duplicate list.
+    criteria:
+      - norm_id: AIA-NORM-A004A-P1-B-REUSE-SECURITY
+      - norm_id: AIA-NORM-A004A-P1-C-ACCESS-SAFEGUARDS
+      - norm_id: AIA-NORM-A004A-P1-D-NO-THIRD-PARTY-ACCESS
+      - norm_id: AIA-NORM-A004A-P1-E-DELETE-DATA
+      - norm_id: AIA-NORM-A004A-P1-F-RECORD-NECESSITY
+
+  # ------------------------------------------------------------------------------------------
   # Art. 50 — TRANSPARENCY. The only rules here that do not gate on a risk class, because Art. 50
   # does not: it cuts ACROSS the Art. 6 tiers, and it is ADDITIVE to them. Art. 50(6) says so in
   # terms — paragraphs 1 to 4 "shall not affect the requirements and obligations set out in

@@ -88,7 +88,7 @@ def test_article_fifteen_findings_are_stable_and_fully_adjudicated():
         "AIA-VALID-68BAAE428CB98553",
         "AIA-VALID-EB70A75FE17CB5C0",
     }
-    assert enforce_validity_adjudications(bundle, LEDGER) == (37, 38)
+    assert enforce_validity_adjudications(bundle, LEDGER) == (38, 39)
 
 
 def test_article_sixteen_is_closed_with_an_explicit_empty_adjudication_shard():
@@ -100,7 +100,7 @@ def test_article_sixteen_is_closed_with_an_explicit_empty_adjudication_shard():
         bundle, scope={(SourceKind.ARTICLE, "16")}
     )
     # Article 16 adds no decisions, but its hash-bound audit proves that the zero is current.
-    assert enforce_validity_adjudications(bundle, LEDGER) == (37, 38)
+    assert enforce_validity_adjudications(bundle, LEDGER) == (38, 39)
 
 
 def test_article_seventeen_findings_are_recorded_in_its_own_shard():

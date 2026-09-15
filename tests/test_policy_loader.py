@@ -69,7 +69,8 @@ def test_shipped_spec_loads():
     assert spec.spec_version == "0.8.0"
     # 7 Art.9-15 + 16 provider obligations + 1 Art.6(4) + Art.4 (provider AND deployer)
     # + 9 deployer (Arts. 26-27, 49(3), 86) + 3 supply-chain (Arts. 22-24) + 1 initial provider
-    # (Art. 25(2)). Art. 43 is three rules and Art. 49 two, because both send different systems to
+    # (Art. 25(2)). Article 4a adds one conditional safeguard rule. Art. 43 is three rules and
+    # Art. 49 two, because both send different systems to
     # different law — see applies_to_route and applies_to_annex_iii_area. Art. 16 is three, one per
     # point that cross-references nothing. Plus 4 Art. 50 transparency rules, the only ones that
     # gate on a duty instead of a tier; Art. 75(1a), which redirects the Art. 73 report to the AI
@@ -127,7 +128,7 @@ def test_shipped_spec_loads():
     # only rules besides Art. 25(2) whose activation is decided by a question rather than by the
     # classification: the duties exist for a provider that elects to trial the system on live
     # inputs before placing it on the market, and for nobody else.
-    assert len(spec.rules) == 114
+    assert len(spec.rules) == 115
 
 
 # How many articles each fetched version holds. KEYED BY VERSION EVEN WHILE ONE IS FETCHED, because
@@ -598,9 +599,33 @@ def test_both_duty_holders_are_covered():
     }
     assert "AIA-DP-A26" in by_role[ActorRole.DEPLOYER]
     assert "AIA-DP-A27" in by_role[ActorRole.DEPLOYER]
-    # Art. 4 binds both — the only rule here that does.
+    # Articles 4 and 4a bind both roles.
     assert "AIA-ALL-A04" in by_role[ActorRole.PROVIDER]
     assert "AIA-ALL-A04" in by_role[ActorRole.DEPLOYER]
+    assert "AIA-ALL-A04A" in by_role[ActorRole.PROVIDER]
+    assert "AIA-ALL-A04A" in by_role[ActorRole.DEPLOYER]
+
+
+def test_article_four_a_reports_its_conditional_route_without_judging_it():
+    spec = _spec()
+    safeguards = next(rule for rule in spec.rules if rule.rule_id == "AIA-ALL-A04A")
+
+    assert safeguards.document_verifiable is False
+    assert [criterion.norm_id for criterion in safeguards.criteria] == [
+        "AIA-NORM-A004A-P1-B-REUSE-SECURITY",
+        "AIA-NORM-A004A-P1-C-ACCESS-SAFEGUARDS",
+        "AIA-NORM-A004A-P1-D-NO-THIRD-PARTY-ACCESS",
+        "AIA-NORM-A004A-P1-E-DELETE-DATA",
+        "AIA-NORM-A004A-P1-F-RECORD-NECESSITY",
+    ]
+    assert not any(criterion.mandatory for criterion in safeguards.criteria)
+    report_norms = {norm.norm_id: norm for norm in spec.report_norms}
+    assert report_norms["AIA-NORM-A004A-P1-HIGH-RISK-BIAS-DATA-PROCESSING"].activation_rule_ids == [
+        "AIA-HR-A10"
+    ]
+    assert report_norms[
+        "AIA-NORM-A004A-P2-OTHER-SYSTEM-BIAS-DATA-PROCESSING"
+    ].activation_rule_ids == ["AIA-ALL-A04A"]
 
 
 def test_substance_rules_are_document_verifiable():
