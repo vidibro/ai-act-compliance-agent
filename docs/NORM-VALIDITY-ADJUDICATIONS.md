@@ -26,8 +26,9 @@ norms, but they do not determine whether an existing audit finding is closed.
    ```
 
    The command edits the canonical file under `source-records/`, rebuilds generated artifacts,
-   reruns the audit, and runs the strict build. If verification fails, it restores the original
-   canonical file and generated artifacts.
+   refreshes that document's hash-bound audit attestation, and runs the strict build. If
+   verification fails, it restores the original canonical file, audit attestation, and generated
+   artifacts.
 
 5. Enforce the complete closed decision set at any later time:
 

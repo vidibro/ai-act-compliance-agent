@@ -262,12 +262,13 @@ def _norm_sha256(norm: Norm) -> str:
     This deliberately selected payload is therefore a stable audit contract, rather than a dump
     of the evolving ``Norm`` schema.
     """
+    canonical_norm = norm.model_dump(mode="json")
     payload = {
         "norm_id": norm.norm_id,
         "norm_text": norm.norm_text,
         "action": norm.action,
         "qualifier_spans": norm.qualifier_spans,
-        "conditions": norm.conditions,
+        "conditions": canonical_norm["conditions"],
         "exceptions": norm.exceptions,
         "mandatory_content": norm.mandatory_content,
         # Preserve the published adjudication hash contract while dependencies are represented

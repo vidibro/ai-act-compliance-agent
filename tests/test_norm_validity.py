@@ -38,15 +38,22 @@ def load_bundle():
 def copied_ledger(tmp_path: Path) -> tuple[Path, dict, dict]:
     """A writable manifest/shard pair for one test's isolated mutation."""
     root = tmp_path / "adjudications"
-    (root / "articles").mkdir(parents=True)
     manifest = yaml.safe_load((LEDGER / "index.yaml").read_text(encoding="utf-8"))
     shard = yaml.safe_load(SHARD.read_text(encoding="utf-8"))
-    (root / "articles" / "016.yaml").write_text(
-        (LEDGER / "articles" / "016.yaml").read_text(encoding="utf-8"), encoding="utf-8"
-    )
-    (root / "articles" / "017.yaml").write_text(
-        (LEDGER / "articles" / "017.yaml").read_text(encoding="utf-8"), encoding="utf-8"
-    )
+    for declared in manifest["shards"]:
+        source = LEDGER / declared["file"]
+        target = root / declared["file"]
+        target.parent.mkdir(parents=True, exist_ok=True)
+        target.write_text(source.read_text(encoding="utf-8"), encoding="utf-8")
+    for source in (LEDGER.parent / "fixes").glob("*.patch.yaml"):
+        target = root.parent / "fixes" / source.name
+        target.parent.mkdir(parents=True, exist_ok=True)
+        target.write_bytes(source.read_bytes())
+        patch = yaml.safe_load(source.read_text(encoding="utf-8"))
+        canonical_target = LEDGER.parent / patch["target_file"]
+        copied_target = root.parent / patch["target_file"]
+        copied_target.parent.mkdir(parents=True, exist_ok=True)
+        copied_target.write_bytes(canonical_target.read_bytes())
     return root, manifest, shard
 
 
@@ -81,7 +88,7 @@ def test_article_fifteen_findings_are_stable_and_fully_adjudicated():
         "AIA-VALID-68BAAE428CB98553",
         "AIA-VALID-EB70A75FE17CB5C0",
     }
-    assert enforce_validity_adjudications(bundle, LEDGER) == (10, 10)
+    assert enforce_validity_adjudications(bundle, LEDGER) == (10, 11)
 
 
 def test_article_sixteen_is_closed_with_an_explicit_empty_adjudication_shard():
@@ -93,7 +100,7 @@ def test_article_sixteen_is_closed_with_an_explicit_empty_adjudication_shard():
         bundle, scope={(SourceKind.ARTICLE, "16")}
     )
     # Article 16 adds no decisions, but its hash-bound audit proves that the zero is current.
-    assert enforce_validity_adjudications(bundle, LEDGER) == (10, 10)
+    assert enforce_validity_adjudications(bundle, LEDGER) == (10, 11)
 
 
 def test_article_seventeen_findings_are_recorded_in_its_own_shard():
@@ -109,6 +116,14 @@ def test_article_seventeen_findings_are_recorded_in_its_own_shard():
     assert ledger.audit_by_scope[(SourceKind.ARTICLE, "17")] == audit_attestation(
         bundle, scope={(SourceKind.ARTICLE, "17")}
     )
+
+
+def test_audit_hashes_nested_structured_conditions_as_canonical_json():
+    bundle = load_bundle()
+
+    # Article 3 includes nested all-of/any-of condition groups. The audit must remain fully
+    # deterministic rather than failing to serialize those structured legal conditions.
+    audit_norm_validity(bundle, scope={(SourceKind.ARTICLE, "3")})
 
 
 def test_missing_adjudication_fails_closed(tmp_path):
@@ -162,7 +177,7 @@ def test_legal_basis_must_be_an_exact_source_quote(tmp_path):
 def test_manifest_rejects_an_undeclared_shard(tmp_path):
     root, manifest, shard = copied_ledger(tmp_path)
     write_ledger(root, manifest, shard)
-    (root / "articles" / "018.yaml").write_text(
+    (root / "articles" / "019.yaml").write_text(
         yaml.safe_dump(shard, sort_keys=False), encoding="utf-8"
     )
 
@@ -181,11 +196,11 @@ def test_manifest_rejects_a_shard_with_the_wrong_declared_source(tmp_path):
 
 def test_manifest_rejects_a_finding_duplicated_across_shards(tmp_path):
     root, manifest, shard = copied_ledger(tmp_path)
-    manifest["enforced_scope"].append({"kind": "article", "document": "18"})
-    manifest["shards"].append({"kind": "article", "document": "18", "file": "articles/018.yaml"})
+    manifest["enforced_scope"].append({"kind": "article", "document": "19"})
+    manifest["shards"].append({"kind": "article", "document": "19", "file": "articles/019.yaml"})
     write_ledger(root, manifest, shard)
-    duplicate = {**shard, "source": {"kind": "article", "document": "18"}}
-    (root / "articles" / "018.yaml").write_text(
+    duplicate = {**shard, "source": {"kind": "article", "document": "19"}}
+    (root / "articles" / "019.yaml").write_text(
         yaml.safe_dump(duplicate, sort_keys=False), encoding="utf-8"
     )
 

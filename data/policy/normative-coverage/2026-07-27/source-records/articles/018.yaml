@@ -68,6 +68,9 @@ records:
     or ceases its activity prior to the end of that period.
   action: determine conditions preserving authority access to Article 18(1) documentation after a locally
     established provider or authorised representative becomes bankrupt or ceases activity early
+  conditions:
+  - a locally established provider or authorised representative becomes bankrupt or ceases activity before
+    the ten-year period ends
   subject_ref: member_state
   subject_category: member_state
   product_scope: outside_supported_actor
@@ -87,6 +90,7 @@ records:
   conditions:
   - the provider is a financial institution subject to internal-governance requirements under Union financial-services
     law
-  implementation_refs: *id002
+  implementation_refs:
+  - AIA-PO-A18-3
   verification_mode: reported_not_judged
   verified_by: vidibro

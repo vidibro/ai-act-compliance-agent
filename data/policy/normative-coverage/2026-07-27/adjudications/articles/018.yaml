@@ -1,0 +1,26 @@
+schema_version: 1
+act_version_date: '2026-07-27'
+source:
+  kind: article
+  document: '18'
+audit:
+  audit_schema_version: 1
+  segments_scanned: 9
+  norms_scanned: 7
+  finding_count: 0
+  audit_sha256: 391d4eb08284626ffed2e67a19a86e28d697356296ad4adb3aed7bc28577d779
+decisions:
+- finding_id: AIA-VALID-774F8A5B5EBFD65D
+  target: AIA-NORM-A018-P2-MEMBER-STATE-CONDITIONS
+  rule: condition_not_structured_or_retained_in_action
+  source_ref: AIA-TEXT-A018-P007
+  source_sha256: 3c1979078a2199b5f1268d3a77074443b9da4f3163101445400da81b190df9e4
+  target_sha256: a2b7dcbedf26e257c1b49ac63ec3fef86676979f0d6804e3c8a8713dfc6d92ba
+  decision: fixed
+  reason: The local bankruptcy-or-cessation trigger is a separate condition of the
+    Member State duty. Record it explicitly so the norm reconstructs the complete
+    scope without relying on a paraphrase in the action.
+  fix:
+    patch_file: fixes/AIA-VALID-774F8A5B5EBFD65D.patch.yaml
+    patch_sha256: 65006dbd83d280ca97f9a7aec6fcb7ad9075f98086d9a3cca036eb684907a3fe
+  reviewed_by: vidibro

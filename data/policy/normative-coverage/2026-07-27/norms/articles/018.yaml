@@ -206,7 +206,9 @@ norms:
   - AIA-TEXT-A018-P007
   qualifier_spans: []
   effective_date_spans: []
-  conditions: []
+  conditions:
+  - a locally established provider or authorised representative becomes bankrupt or ceases activity before
+    the ten-year period ends
   exceptions: []
   mandatory_content: []
   product_scope: outside_supported_actor
@@ -252,7 +254,7 @@ norms:
   product_scope_reason: ''
   implementation_mode: compliance_rule
   implementation_refs:
-  - AIA-PO-A18
+  - AIA-PO-A18-3
   implementation_reason: ''
   verification_mode: reported_not_judged
   review:

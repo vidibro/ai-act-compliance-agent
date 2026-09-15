@@ -4,12 +4,16 @@ from __future__ import annotations
 
 import argparse
 import hashlib
+from pathlib import Path
 
+import yaml
 from build_normative_coverage import paths_for_version
 
 from aiact.norm_builder import build_artifacts, load_builder_inputs, run_builder
 from aiact.norm_validity import (
+    ValidityAdjudicationLedger,
     apply_recorded_fix,
+    audit_attestation,
     audit_norm_validity,
     enforce_validity_adjudications,
     load_adjudication_ledger,
@@ -34,6 +38,32 @@ def _build_current_bundle(version: str) -> NormativeCoverageBundle:
         validated_segments=len(text_review.segments),
         validated_norms=len(norm_inventory.norms),
     )
+
+
+def _refresh_decision_shard_audit(
+    *,
+    ledger_path: Path,
+    ledger: ValidityAdjudicationLedger,
+    finding_id: str,
+    bundle: NormativeCoverageBundle,
+) -> tuple[Path, bytes]:
+    """Replace only the repaired document's attestation with its rebuilt deterministic snapshot."""
+    scope = ledger.shard_scope_by_finding[finding_id]
+    manifest_path = ledger_path / "index.yaml"
+    manifest = yaml.safe_load(manifest_path.read_text(encoding="utf-8"))
+    declared = next(
+        item
+        for item in manifest["shards"]
+        if item["kind"] == scope.kind.value and item["document"] == scope.document
+    )
+    shard_path = ledger_path / declared["file"]
+    before = shard_path.read_bytes()
+    shard = yaml.safe_load(before)
+    shard["audit"] = audit_attestation(
+        bundle, scope={(scope.kind, scope.document)}
+    ).model_dump(mode="json")
+    shard_path.write_text(yaml.safe_dump(shard, sort_keys=False), encoding="utf-8")
+    return shard_path, before
 
 
 def apply_and_verify(version: str, finding_id: str) -> tuple[str, bool]:
@@ -78,12 +108,21 @@ def apply_and_verify(version: str, finding_id: str) -> tuple[str, bool]:
             raise ValueError(f"validity finding {finding_id} no longer matches its decision")
 
     target, changed = apply_recorded_fix(paths.adjudications, finding_id)
+    original_shard: tuple[Path, bytes] | None = None
     try:
         updated_bundle = _build_current_bundle(version)
+        original_shard = _refresh_decision_shard_audit(
+            ledger_path=paths.adjudications,
+            ledger=ledger,
+            finding_id=finding_id,
+            bundle=updated_bundle,
+        )
         enforce_validity_adjudications(updated_bundle, paths.adjudications)
         run_builder(paths, check=False)
         run_builder(paths, check=True)
     except Exception:
+        if original_shard is not None:
+            original_shard[0].write_bytes(original_shard[1])
         if changed and original is not None:
             target.write_bytes(original)
             run_builder(paths, check=False)

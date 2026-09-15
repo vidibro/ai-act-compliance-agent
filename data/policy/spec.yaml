@@ -887,18 +887,44 @@ rules:
       the documentation of changes APPROVED BY NOTIFIED BODIES, where applicable; the decisions and
       other documents issued by the notified bodies; and the Art. 47 EU declaration of conformity. A
       retention process at the provider, not observable from the technical documentation — confirm
-      separately. Art. 18(3) narrows where ONE OF THE FIVE lives rather than whether it is kept: a
-      provider that is a FINANCIAL INSTITUTION subject to internal governance requirements under
-      Union financial services law maintains THE ART. 11 TECHNICAL DOCUMENTATION — point (a), and
-      that alone — as part of the documentation it already keeps under that law. The quality
-      management documentation, the approved changes, the notified body decisions and the EU
-      declaration of conformity are not relocated by that paragraph, and the ten-year availability
-      to national competent authorities is unchanged for all five.
+      separately.
     document_verifiable: false
     effective_date_by_route:
       annex_iii: 2027-12-02
       annex_i: 2028-08-02
     status: active
+    criteria:
+      - norm_id: AIA-NORM-A018-P1-A-TECHNICAL-DOCUMENTATION
+      - norm_id: AIA-NORM-A018-P1-B-QMS-DOCUMENTATION
+      - norm_id: AIA-NORM-A018-P1-C-APPROVED-CHANGES
+      - norm_id: AIA-NORM-A018-P1-D-NOTIFIED-BODY-DOCUMENTS
+      - norm_id: AIA-NORM-A018-P1-E-EU-DECLARATION
+
+  - rule_id: AIA-PO-A18-3
+    source:
+      instrument: "Regulation (EU) 2024/1689"
+      article: 18
+      paragraph: 3
+      act_version_date: 2026-07-27
+    applies_to_risk_class: [high_risk]
+    applies_to_role: [provider]
+    obligation_status: mandatory
+    check_type: presence
+    evidence_expected: >-
+      Where the provider is a financial institution subject to Union financial-services internal
+      governance requirements, maintain the Article 11 technical documentation as part of the
+      documentation kept under that law. This is a separate operational retention route; confirm
+      it separately.
+    document_verifiable: false
+    activation_condition: >-
+      Applies only to a financial-institution provider subject to internal-governance requirements
+      under Union financial-services law.
+    effective_date_by_route:
+      annex_iii: 2027-12-02
+      annex_i: 2028-08-02
+    status: active
+    criteria:
+      - norm_id: AIA-NORM-A018-P3-FINANCIAL-DOCUMENTATION
 
   - rule_id: AIA-PO-A19
     source:

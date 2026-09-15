@@ -1,0 +1,18 @@
+schema_version: 1
+finding_id: AIA-VALID-774F8A5B5EBFD65D
+target_file: source-records/articles/018.yaml
+before_sha256: 6924ef716078e2b7d9cfae755189360415cfdf039cd9ff795c7523d643d70087
+after_sha256: 114497431eff72b3c90d35300773435b3eeb6e3e5d4425f04ef9739f47753a42
+replacements:
+  - old: |2-
+        action: determine conditions preserving authority access to Article 18(1) documentation after a locally
+          established provider or authorised representative becomes bankrupt or ceases activity early
+        subject_ref: member_state
+    new: |2-
+        action: determine conditions preserving authority access to Article 18(1) documentation after a locally
+          established provider or authorised representative becomes bankrupt or ceases activity early
+        conditions:
+        - a locally established provider or authorised representative becomes bankrupt or ceases activity before
+          the ten-year period ends
+        subject_ref: member_state
+    expected_occurrences: 1
