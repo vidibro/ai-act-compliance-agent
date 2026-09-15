@@ -16,6 +16,7 @@ from __future__ import annotations
 
 from pathlib import Path
 
+from aiact.classify.graph import QUESTIONS
 from aiact.norm_validity import audit_norm_validity, load_adjudication_ledger
 from aiact.policy_loader import criterion_from_norm, load_policy_spec, report_norm_from_norm
 from aiact.schemas.norm import (
@@ -99,6 +100,38 @@ def traceability_errors(
         return (source.kind, source.document) in scope
 
     errors: list[str] = []
+    classification_question_ids = {
+        f"AIA-CQ-{question_id.upper().replace('_', '-')}" for question_id in QUESTIONS
+    }
+
+    # Enforced scope means every live in-scope norm has a decided implementation path.  `missing`
+    # and `unresolved` are authoring debt states, never valid runtime treatments.
+    for norm in sorted(norms.values(), key=lambda item: item.norm_id):
+        if not in_scope(norm) or norm.review.status is ReviewStatus.SUPERSEDED:
+            continue
+        if norm.implementation_mode in {
+            ImplementationMode.MISSING,
+            ImplementationMode.UNRESOLVED,
+        }:
+            errors.append(
+                f"{norm.norm_id} is in enforced scope but implementation_mode is "
+                f"{norm.implementation_mode.value}"
+            )
+        if norm.implementation_mode is ImplementationMode.APPLICABILITY_QUESTION:
+            if norm.kind is not NormKind.APPLICABILITY:
+                errors.append(
+                    f"{norm.norm_id} is an applicability_question but kind is {norm.kind.value}"
+                )
+            if norm.verification_mode is not VerificationMode.ANSWERED_BY_CLASSIFICATION:
+                errors.append(
+                    f"{norm.norm_id} is an applicability_question but verification_mode is "
+                    f"{norm.verification_mode.value}"
+                )
+            unknown_questions = sorted(set(norm.implementation_refs) - classification_question_ids)
+            if unknown_questions:
+                errors.append(
+                    f"{norm.norm_id} names unknown classification question(s) {unknown_questions}"
+                )
 
     # A permission or legal consequence has no pass/fail answer.  If it were allowed to use a
     # compliance-rule mode, a future author could put it in a standalone rule and omit it from the
@@ -109,6 +142,7 @@ def traceability_errors(
             continue
         if (
             norm.kind in {NormKind.PERMISSION, NormKind.LEGAL_CONSEQUENCE}
+            and norm.product_scope is ProductScope.IN_SCOPE
             and norm.implementation_mode is not ImplementationMode.REPORT_ONLY
         ):
             errors.append(

@@ -41,9 +41,10 @@ exceptions, source spans and activating rule ids. The strict build checks this l
 the report renders them under **permitted implementation routes** or **conditional legal effects**.
 They neither pass nor fail an obligation.
 
-For every live norm in the adjudicated enforced scope, this is mandatory: the strict build rejects
-a `permission` or `legal_consequence` whose implementation mode is anything other than
-`report_only`. It therefore cannot be hidden in a standalone compliance rule.
+For every live, `in_scope` norm in the adjudicated enforced scope, this is mandatory: the strict
+build rejects a `permission` or `legal_consequence` whose implementation mode is anything other
+than `report_only`. It therefore cannot be hidden in a standalone compliance rule. A permission
+outside the product's surface remains explicitly `none_required` with its recorded reason.
 
 ## What already exists
 

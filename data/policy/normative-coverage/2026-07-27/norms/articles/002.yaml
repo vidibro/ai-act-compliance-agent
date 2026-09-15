@@ -282,6 +282,7 @@ norms:
   - semantic_legal_effect
   - shall_token
   - deeming_or_consequence
+  - existing_implementation
   primary_spans:
   - AIA-TEXT-A002-P009
   qualifier_spans: []
@@ -293,10 +294,12 @@ norms:
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
-  implementation_mode: missing
-  implementation_refs: []
+  implementation_mode: applicability_question
+  implementation_refs:
+  - AIA-CQ-ANNEX-I
+  - AIA-CQ-THIRD-PARTY-ASSESSMENT
   implementation_reason: ''
-  verification_mode: reported_conditionally
+  verification_mode: answered_by_classification
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -328,12 +331,14 @@ norms:
   - the AI Act high-risk requirements are integrated into the applicable Union harmonisation legislation
   exceptions: []
   mandatory_content: []
-  product_scope: in_scope
-  product_scope_reason: ''
-  implementation_mode: missing
+  product_scope: no_product_action
+  product_scope_reason: This boundary governs Articles 57 to 59 regulatory-sandbox provisions, which this
+    product does not currently implement or report.
+  implementation_mode: none_required
   implementation_refs: []
-  implementation_reason: ''
-  verification_mode: reported_conditionally
+  implementation_reason: The product cannot determine whether another Union instrument has integrated
+    the AI Act's high-risk requirements and has no Articles 57 to 59 reporting surface.
+  verification_mode: not_reported
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -985,6 +990,7 @@ norms:
   - semantic_legal_effect
   - other_modal
   - cross_reference_structure
+  - existing_implementation
   primary_spans:
   - AIA-TEXT-A002-P022
   qualifier_spans:
@@ -999,8 +1005,36 @@ norms:
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
-  implementation_mode: missing
-  implementation_refs: []
+  implementation_mode: report_only
+  implementation_refs:
+  - AIA-HR-A09
+  - AIA-HR-A10
+  - AIA-HR-A11
+  - AIA-HR-A11-2
+  - AIA-HR-A12
+  - AIA-HR-A12-3A
+  - AIA-HR-A12-3B
+  - AIA-HR-A12-3C
+  - AIA-HR-A12-3D
+  - AIA-HR-A13
+  - AIA-HR-A13-3
+  - AIA-HR-A14
+  - AIA-HR-A15
+  - AIA-PO-A17
+  - AIA-PO-A17-4
+  - AIA-PO-A18
+  - AIA-PO-A18-3
+  - AIA-PO-A19
+  - AIA-PO-A20
+  - AIA-PO-A20-2
+  - AIA-PO-A21
+  - AIA-PO-A21-2
+  - AIA-PO-A22
+  - AIA-AR-A22
+  - AIA-IM-A23
+  - AIA-DI-A24
+  - AIA-IP-A25-2
+  - AIA-PO-A25-4
   implementation_reason: ''
   verification_mode: reported_conditionally
   review:

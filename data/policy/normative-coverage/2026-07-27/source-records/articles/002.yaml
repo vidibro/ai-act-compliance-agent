@@ -114,10 +114,14 @@ records:
   subject_ref: annex_i_section_b_high_risk_system
   subject_category: other
   kind: applicability
-  verification_mode: reported_conditionally
   conditions:
   - the system is classified as high-risk under Article 6(1)
   - the related product is covered by Union harmonisation legislation listed in Annex I Section B
+  implementation_mode: applicability_question
+  implementation_refs:
+  - AIA-CQ-ANNEX-I
+  - AIA-CQ-THIRD-PARTY-ASSESSMENT
+  verification_mode: answered_by_classification
   verified_by: vidibro
 - norm_id: AIA-NORM-A002-P2-INTEGRATED-SANDBOX-PROVISIONS
   source: A002-P009
@@ -128,9 +132,17 @@ records:
   subject_ref: annex_i_section_b_high_risk_system
   subject_category: other
   kind: applicability
-  verification_mode: reported_conditionally
   conditions:
   - the AI Act high-risk requirements are integrated into the applicable Union harmonisation legislation
+  product_scope: no_product_action
+  product_scope_reason: >-
+    This boundary governs Articles 57 to 59 regulatory-sandbox provisions, which this product does
+    not currently implement or report.
+  implementation_mode: none_required
+  implementation_reason: >-
+    The product cannot determine whether another Union instrument has integrated the AI Act's
+    high-risk requirements and has no Articles 57 to 59 reporting surface.
+  verification_mode: not_reported
   verified_by: vidibro
 - norm_id: AIA-NORM-A002-P3-OUTSIDE-UNION-LAW
   source: A002-P010
@@ -433,6 +445,36 @@ records:
   - Union harmonisation legislation listed in Annex I Section A provides an equivalent or higher level
     of health, safety, or fundamental-rights protection for the requirement concerned
   - the limitation does not reduce the overall level of protection provided by the Regulation
+  implementation_mode: report_only
+  implementation_refs:
+  - AIA-HR-A09
+  - AIA-HR-A10
+  - AIA-HR-A11
+  - AIA-HR-A11-2
+  - AIA-HR-A12
+  - AIA-HR-A12-3A
+  - AIA-HR-A12-3B
+  - AIA-HR-A12-3C
+  - AIA-HR-A12-3D
+  - AIA-HR-A13
+  - AIA-HR-A13-3
+  - AIA-HR-A14
+  - AIA-HR-A15
+  - AIA-PO-A17
+  - AIA-PO-A17-4
+  - AIA-PO-A18
+  - AIA-PO-A18-3
+  - AIA-PO-A19
+  - AIA-PO-A20
+  - AIA-PO-A20-2
+  - AIA-PO-A21
+  - AIA-PO-A21-2
+  - AIA-PO-A22
+  - AIA-AR-A22
+  - AIA-IM-A23
+  - AIA-DI-A24
+  - AIA-IP-A25-2
+  - AIA-PO-A25-4
   verified_by: vidibro
 - norm_id: AIA-NORM-A002-P13-COMMISSION-DELEGATED-ACTS
   source: A002-P025

@@ -164,6 +164,21 @@ def test_missing_report_norm_fails_the_bidirectional_strict_check(bundle, spec):
     )
 
 
+def test_enforced_norm_cannot_keep_an_undecided_implementation_mode(bundle, spec):
+    norm_id = "AIA-NORM-A015-P5-MODEL-FLAWS"
+    broken = bundle.model_copy(deep=True)
+    broken.norm_inventory.norms = [
+        norm.model_copy(update={"implementation_mode": ImplementationMode.MISSING})
+        if norm.norm_id == norm_id
+        else norm
+        for norm in broken.norm_inventory.norms
+    ]
+
+    assert (
+        f"{norm_id} is in enforced scope but implementation_mode is missing"
+    ) in traceability_errors(broken, spec, LEDGER)
+
+
 def test_in_scope_permission_cannot_be_hidden_in_a_compliance_rule(bundle, spec):
     """Permissions and legal effects have one mandatory, report-only implementation path."""
     norm_id = "AIA-NORM-A015-P4-REDUNDANCY"
