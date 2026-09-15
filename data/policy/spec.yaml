@@ -821,6 +821,9 @@ rules:
       the system's technical documentation — confirm separately. Art. 17(2) scales the effort to
       the size of the organisation, an SME or SMC included, while expressly holding the degree of
       rigour and the level of protection constant: a smaller provider does less work, not less well.
+      Article 17(3) allows a provider already subject to sectoral Union quality-management
+      obligations to include these aspects in that existing system; it does not remove the aspects
+      themselves.
     document_verifiable: false
     effective_date_by_route:
       annex_iii: 2027-12-02
@@ -2016,6 +2019,91 @@ rules:
       it was.
     status: active
 
+
+  # ------------------------------------------------------------------------------------------
+  # Art. 59 — SANDBOX PERSONAL-DATA ROUTE. The permission in paragraph 1 is report-only: it
+  # allows further processing only if every separate condition below is met. Those conditions
+  # are grouped by the actor the canonical norm names, never flattened into one provider rule.
+  - rule_id: AIA-PP-A59-P1
+    source:
+      instrument: "Regulation (EU) 2024/1689"
+      article: 59
+      paragraph: 1
+      act_version_date: 2026-07-27
+    applies_to_risk_class: [high_risk, not_high_risk, minimal]
+    applies_to_role: [prospective_provider]
+    activation_condition: >-
+      Applies only where a prospective provider uses Article 59(1)'s AI regulatory-sandbox route
+      to further process personal data lawfully collected for another purpose. Every listed
+      condition must be met before that processing is allowed.
+    obligation_status: mandatory
+    check_type: completeness
+    evidence_expected: >-
+      Confirmation that the Article 59(1) sandbox route is being used and that each applicable
+      condition is met: substantial public interest, data necessity, risk controls, a protected
+      environment, no effect on data subjects, deletion, logs, and Annex IV documentation. These
+      are contingent operational facts, not a verdict inferred from a technical file.
+    document_verifiable: false
+    effective_date: 2026-08-02
+    status: active
+    criteria:
+      - norm_id: AIA-NORM-A059-P1-A-SUBSTANTIAL-PUBLIC-INTEREST
+      - norm_id: AIA-NORM-A059-P1-B-DATA-NECESSITY
+      - norm_id: AIA-NORM-A059-P1-C-MONITOR-AND-MITIGATE-RISKS
+      - norm_id: AIA-NORM-A059-P1-D-ISOLATED-PROTECTED-ENVIRONMENT
+      - norm_id: AIA-NORM-A059-P1-F-NO-DATA-SUBJECT-EFFECT
+      - norm_id: AIA-NORM-A059-P1-G-PROTECT-AND-DELETE-DATA
+      - norm_id: AIA-NORM-A059-P1-H-KEEP-PROCESSING-LOGS
+      - norm_id: AIA-NORM-A059-P1-I-DOCUMENT-TRAINING-TESTING-VALIDATION
+
+  - rule_id: AIA-PO-A59-P1-E
+    source:
+      instrument: "Regulation (EU) 2024/1689"
+      article: 59
+      paragraph: 1
+      point: e
+      act_version_date: 2026-07-27
+    applies_to_risk_class: [high_risk, not_high_risk, minimal]
+    applies_to_role: [provider]
+    activation_condition: >-
+      Applies only where the provider uses Article 59(1)'s AI regulatory-sandbox route to further
+      process personal data lawfully collected for another purpose.
+    obligation_status: mandatory
+    check_type: presence
+    evidence_expected: >-
+      Confirmation that originally collected data are further shared only under Union
+      data-protection law and that personal data created in the sandbox are never shared outside it.
+      This is a conditional operational fact, not a verdict inferred from a technical file.
+    document_verifiable: false
+    effective_date: 2026-08-02
+    status: active
+    criteria:
+      - norm_id: AIA-NORM-A059-P1-E-SHARING-RESTRICTIONS
+
+  - rule_id: AIA-SP-A59-P1-J
+    source:
+      instrument: "Regulation (EU) 2024/1689"
+      article: 59
+      paragraph: 1
+      point: j
+      act_version_date: 2026-07-27
+    applies_to_risk_class: [high_risk, not_high_risk, minimal]
+    applies_to_role: [sandbox_participant]
+    activation_condition: >-
+      Applies only where the sandbox participant uses Article 59(1)'s AI regulatory-sandbox route
+      to further process personal data lawfully collected for another purpose.
+    obligation_status: mandatory
+    check_type: presence
+    evidence_expected: >-
+      A short public project summary stating the sandbox AI project's objectives and expected
+      results, published on the competent authority's website, without protected sensitive
+      operational data. This is a conditional operational fact, not a verdict inferred from a
+      technical file.
+    document_verifiable: false
+    effective_date: 2026-08-02
+    status: active
+    criteria:
+      - norm_id: AIA-NORM-A059-P1-J-PUBLISH-PROJECT-SUMMARY
 
   # ------------------------------------------------------------------------------------------
   # Arts. 60-61 — TESTING IN REAL WORLD CONDITIONS. An elective route, and the only block of

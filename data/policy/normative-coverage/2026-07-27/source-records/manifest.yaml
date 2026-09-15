@@ -85,7 +85,10 @@ implementation_targets:
 - AIA-PO-A49
 - AIA-PO-A49-5
 - AIA-PO-A53-7
+- AIA-PO-A59-P1-E
 - AIA-PO-A60-4
+- AIA-PP-A59-P1
+- AIA-SP-A59-P1-J
 - AIA-PO-A72
 - AIA-PO-A74-12
 - AIA-PO-A74-13
@@ -133,6 +136,15 @@ norm_relations:
       - AIA-NORM-A059-P1-I-DOCUMENT-TRAINING-TESTING-VALIDATION
       - AIA-NORM-A059-P1-J-PUBLISH-PROJECT-SUMMARY
     legal_basis_spans: [AIA-TEXT-A059-P001]
+  - relation_id: AIA-REL-A059-P3-PRESERVE-OTHER-DATA-LAW-EXTERNAL-REQUIREMENT-01
+    source_norm_id: AIA-NORM-A059-P3-PRESERVE-OTHER-DATA-LAW
+    kind: subject_to_external_requirements
+    external_requirements:
+      - applicable Union and national personal-data-processing law
+    legal_basis_spans: [AIA-TEXT-A059-P018]
+    detail: >-
+      Article 59(3) preserves applicable external restrictions and lawful bases for personal-data
+      processing; it does not create an independently checkable AI Act product action.
   # Article 60(4)'s permission applies only if every listed testing condition is met.
   - relation_id: AIA-REL-A060-P4-CONDITIONAL-ON-ALL-CONDITIONS
     source_norm_id: AIA-NORM-A060-P4-PERMISSION

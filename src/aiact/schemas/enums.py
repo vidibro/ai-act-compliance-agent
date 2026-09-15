@@ -486,6 +486,14 @@ class ActorRole(StrEnum):
     """Art. 3(3). Develops the system, or has it developed, and places it on the market /
     puts it into service under its own name or trademark. Bears the heaviest obligations."""
 
+    PROSPECTIVE_PROVIDER = "prospective_provider"
+    """A person or organisation preparing to become a provider through an AI regulatory sandbox.
+
+    This is not a second Art. 3(3) provider status. Articles 58–59 address the party before market
+    placement, and assigning those conditional sandbox duties to ``provider`` would name the wrong
+    duty-holder in the report.
+    """
+
     INITIAL_PROVIDER = "initial_provider"
     """Art. 25(2). The party that placed the system on the market BEFORE Art. 25 moved the provider
     role to someone else — and which, on that paragraph's own words, "shall no longer be considered
@@ -501,6 +509,13 @@ class ActorRole(StrEnum):
     It holds exactly one rule, and holds it only where a reallocation actually occurred. A high-risk
     system whose provider never changed has no initial provider distinct from its provider, so the
     role is selected for and comes back empty."""
+
+    SANDBOX_PARTICIPANT = "sandbox_participant"
+    """A participant in an AI regulatory sandbox where the Act assigns the duty to the participant.
+
+    It remains distinct from the provider: an Article 59 condition can bind the participant who
+    develops the sandbox project even before that party becomes the system's provider.
+    """
 
     DEPLOYER = "deployer"
     """Art. 3(4). Uses the system under its own authority in a professional capacity.

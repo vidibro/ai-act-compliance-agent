@@ -19,12 +19,14 @@
 # what is still dismissed that way, and it now counts ZERO: every address in the stored text —
 # article divisions and annex items alike — carries a ruling written for it.
 #
-# SCOPE: obligations of every role the Act binds — provider, deployer, importer, distributor and
-# authorised representative — on BOTH TRACKS. The Art. 6 track for a high-risk AI system is the
-# larger one, and Art. 4 binds provider and deployer at every governed tier. CHAPTER V IS CARRIED
-# TOO: Arts. 52 to 55 and the Commission-request duties of Arts. 91 and 92 are rules gated on
-# `gpai_model`, which a general-purpose AI model reaches instead of a risk tier. Every exclusion is
-# recorded below rather than assumed.
+# SCOPE: obligations of every current report actor — provider, prospective provider, sandbox
+# participant, deployer, importer, distributor and authorised representative — on BOTH TRACKS. The
+# Art. 6 track for a high-risk AI system is the larger one, and Art. 4 binds provider and deployer
+# at every governed tier. The two sandbox actors appear only for the conditional Article 59 route;
+# they are not silently folded into the provider. CHAPTER V IS CARRIED TOO: Arts. 52 to 55 and the
+# Commission-request duties of Arts. 91 and 92 are rules gated on `gpai_model`, which a
+# general-purpose AI model reaches instead of a risk tier. Every exclusion is recorded below rather
+# than assumed.
 #
 # The ruleset was authored against the EMPLOYMENT area (Annex III(4)) and most of it generalises
 # untouched: Arts. 9-15 and 16-21 bind every high-risk system whatever the area. Where the law is
@@ -494,8 +496,8 @@ article_rulings:
       exception of paragraph 1, points (g), (h) and (i)", so the risk management system, the
       post-market monitoring system and the serious-incident reporting procedures are still owed
       under Art. 17(1) by a financial institution that complies with its sectoral governance rules
-      in full. AIA-PO-A17 renders the exception, which is what keeps the relief from clearing
-      someone who is not cleared.
+      in full. AIA-PO-A17-4 renders the financial-institution route, while AIA-PO-A17 keeps the
+      three excepted Article 17(1) duties visible.
   18:
     2: Member State duty to keep documentation available where a provider goes insolvent. Not a provider duty.
     3: >-
@@ -504,7 +506,8 @@ article_rulings:
       technical documentation as part of" that documentation, where the genuine reliefs nearby say
       "may include" (Art. 17(3)) or "shall be deemed to be fulfilled" (Art. 17(4)). It settles
       WHERE the file lives and relieves nothing, and it moves point (a) alone — the other four
-      Art. 18(1) documents stay where they were. AIA-PO-A18 renders it.
+      Art. 18(1) documents stay where they were. AIA-PO-A18-3 renders it; AIA-PO-A18 retains the
+      other four documents.
   19:
     2: >-
       Financial institutions keep logs under financial services law. A DIRECTION rather than an
@@ -1049,7 +1052,8 @@ article_rulings:
       the ten cumulative conditions in points (a)-(j) — a substantial public interest area, necessity,
       an isolated environment, deletion on exit, an Annex IV description of the process, a published
       project summary. Read as a duty it would be a heavy one; read as it is written it is the price
-      of an option, and it is owed only by a provider who takes the sandbox route.
+      of an option, and it is owed only by the actors who take the sandbox route. AIA-PP-A59-P1,
+      AIA-PO-A59-P1-E, and AIA-SP-A59-P1-J render the conditions by their actual duty-holder.
     2: >-
       The same conditions for law enforcement processing, plus a specific Union or national legal
       basis. A permission on stricter terms.
@@ -2439,20 +2443,11 @@ role_mentions:
     A relief: a provider already subject to quality management obligations under sectoral Union law
     may include the Art. 17(1) aspects in that system. One quality system, not two. AIA-PO-A17
     carries the duty and this narrows how it may be met.
-  "17(4)": >-
-    A deeming provision for a provider that is a financial institution: complying with internal
-    governance rules under Union financial services law satisfies the quality management obligation
-    except for points (g), (h) and (i). Narrower than 17(3) — it discharges the duty rather than
-    permitting a shared system — and it is still not a duty of its own.
   "18(2)": >-
     A duty on each MEMBER STATE to set the conditions under which the documentation stays available
     to authorities where the provider or its authorised representative goes bankrupt or ceases
     activity. Both are named as the party whose failure triggers the arrangement; neither owes
     anything under this paragraph, and AIA-PO-A18 carries the provider's own keeping duty.
-  "18(3)": >-
-    A provider that is a financial institution keeps the technical documentation as part of the
-    documentation it already maintains under Union financial services law. One file, not two —
-    the same relief as 17(3), on Art. 18's duty, which AIA-PO-A18 carries.
   "19(2)": >-
     The same relief on Art. 19: a provider that is a financial institution keeps the automatically
     generated logs within the documentation held under Union financial services law. AIA-PO-A19
@@ -2703,11 +2698,6 @@ role_mentions:
   "58(3)": >-
     Prospective providers, in particular SMEs and start-ups, SHALL BE DIRECTED to pre-deployment
     and value-adding services. The authority directs; the provider receives, and owes nothing.
-  "59(1)": >-
-    A conditional permission to further process lawfully collected personal data inside a sandbox,
-    on ten cumulative conditions. The provider is named as a party that may develop such a system;
-    the conditions gate a permission, and a provider that cannot meet them simply may not process
-    the data.
   # --- Arts. 60, 60a and 61 — testing in real world conditions. AN OPEN SCOPE LIMIT, and these
   # entries do not close it: the duties in 60(4), 60(7), 60(8) and 61 are real and owed by a
   # provider that takes this route, and no rule carries them. The entries say what the words do and

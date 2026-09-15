@@ -145,10 +145,11 @@ def test_only_the_rules_for_this_risk_class_activate(spec):
     # confidence.
     assert sorted(r.rule_id for r in minimal.all_rules) == [
         "AIA-ALL-A04",
-        "AIA-ALL-A75c-3",
-        "AIA-ALL-A79",
-        "AIA-PO-A53-7",
-    ]
+            "AIA-ALL-A75c-3",
+            "AIA-ALL-A79",
+            "AIA-PO-A53-7",
+            "AIA-PO-A59-P1-E",
+        ]
 
 
 def test_an_out_of_scope_use_case_owes_nothing_at_all(spec):
@@ -242,6 +243,7 @@ def test_process_obligations_are_reported_but_never_judged(spec):
     outstanding = report.not_document_verifiable
     assert "AIA-PO-A17" in outstanding[ActorRole.PROVIDER]
     assert report.permissions[ActorRole.PROVIDER] == [
+        "AIA-NORM-A002-P13-LIMIT-HIGH-RISK-REQUIREMENTS",
         "AIA-NORM-A015-P4-REDUNDANCY",
         "AIA-NORM-A017-P3-SECTORAL-INTEGRATION",
     ]
@@ -375,7 +377,9 @@ def test_the_covered_roles_come_from_the_spec(spec):
     the spec looking covered while activating for nobody."""
     assert roles_with_rules(spec) == [
         ActorRole.PROVIDER,
+        ActorRole.PROSPECTIVE_PROVIDER,
         ActorRole.INITIAL_PROVIDER,
+        ActorRole.SANDBOX_PARTICIPANT,
         ActorRole.DEPLOYER,
         ActorRole.IMPORTER,
         ActorRole.DISTRIBUTOR,
@@ -427,6 +431,22 @@ def test_the_report_lists_every_role_the_act_binds(spec):
     # here it did not. Which roles the ruleset covers is settled by the coverage ledger before
     # shipping, not narrated in the report — see test_policy_loader.
     assert set(outstanding) == set(roles_with_rules(spec)) - {ActorRole.INITIAL_PROVIDER}
+
+
+def test_article_59_permission_is_rendered_only_for_its_prospective_provider(spec):
+    """A permission can activate through duties held by several roles without changing its owner."""
+    report = analyse(
+        DOCUMENT,
+        a_classification(a_use_case("scoring", RiskClass.HIGH_RISK)),
+        spec,
+        brain=ScriptedBrain({}),
+        judge=StubJudge(),  # type: ignore[arg-type]
+        max_workers=1,
+    )
+    permission = "AIA-NORM-A059-P1-CONDITIONAL-FURTHER-PROCESSING"
+    assert permission in report.permissions[ActorRole.PROSPECTIVE_PROVIDER]
+    assert permission not in report.permissions.get(ActorRole.PROVIDER, [])
+    assert permission not in report.permissions.get(ActorRole.SANDBOX_PARTICIPANT, [])
 
 
 # --- Art. 25 — the one question about WHO rather than WHAT ---------------------------------------

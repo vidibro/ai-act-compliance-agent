@@ -239,6 +239,19 @@ def build_graph(
             for report_norm in spec.report_norms:
                 if not active_rule_ids.intersection(report_norm.activation_rule_ids):
                     continue
+                # Activation tells us WHEN the permission or legal consequence becomes relevant;
+                # its canonical subject tells us WHO receives it in the report.  They usually
+                # coincide, but Article 59's prospective-provider permission is conditioned by
+                # duties split across a prospective provider, a provider, and a sandbox
+                # participant. Rendering it under every activating duty-holder would silently
+                # change who is allowed to use the route.
+                exact_subject_roles = {
+                    ActorRole(subject)
+                    for subject in report_norm.subjects
+                    if subject in {role.value for role in ActorRole}
+                }
+                if exact_subject_roles and active.role not in exact_subject_roles:
+                    continue
                 destination = (
                     permissions
                     if report_norm.kind is NormKind.PERMISSION
