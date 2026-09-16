@@ -176,6 +176,26 @@ def test_article_eight_materialises_the_sectoral_integration_permission(bundle, 
     assert traceability_errors(bundle, spec, LEDGER) == []
 
 
+def test_article_nine_separates_its_eighteen_duties_from_scope_and_permission_entries(bundle, spec):
+    rule = next(rule for rule in spec.rules if rule.rule_id == "AIA-HR-A09")
+    assert len(rule.criteria) == 19
+
+    norms = {norm.norm_id: norm for norm in bundle.norm_inventory.norms}
+    assert (
+        norms["AIA-NORM-A009-P3-MITIGABLE-RISK-SCOPE"].implementation_mode
+        is ImplementationMode.REPORT_ONLY
+    )
+    assert (
+        norms["AIA-NORM-A009-P7-REAL-WORLD-TESTING"].implementation_mode
+        is ImplementationMode.REPORT_ONLY
+    )
+    assert (
+        norms["AIA-NORM-A009-P10-INTEGRATE-RISK-PROCESSES"].implementation_mode
+        is ImplementationMode.REPORT_ONLY
+    )
+    assert traceability_errors(bundle, spec, LEDGER) == []
+
+
 def test_article_ten_has_thirteen_provider_obligation_criteria_and_reachable_carried_permission(
     bundle, spec
 ):

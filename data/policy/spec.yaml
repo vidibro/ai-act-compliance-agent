@@ -160,6 +160,30 @@ rules:
       annex_iii: 2027-12-02
       annex_i: 2028-08-02
     status: active
+    # Article 9 has one provider duty: run a risk-management system.  Its eighteen mandatory
+    # Article 9 elements plus Article 8's sectoral duty are judged separately, so an omission
+    # cannot disappear in the rule-level result.
+    # The risk-scope limit and the two elective routes are materialised as report-only norms.
+    criteria:
+      - norm_id: AIA-NORM-A008-P1-CONSIDER-RISK-MANAGEMENT
+      - norm_id: AIA-NORM-A009-P1-ESTABLISH-IMPLEMENT-DOCUMENT-AND-MAINTAIN
+      - norm_id: AIA-NORM-A009-P2-LIFECYCLE-PROCESS
+      - norm_id: AIA-NORM-A009-P2-A-IDENTIFY-ANALYSE
+      - norm_id: AIA-NORM-A009-P2-B-ESTIMATE-EVALUATE
+      - norm_id: AIA-NORM-A009-P2-C-POST-MARKET-RISKS
+      - norm_id: AIA-NORM-A009-P2-D-ADOPT-MEASURES
+      - norm_id: AIA-NORM-A009-P4-CONSIDER-INTERACTIONS
+      - norm_id: AIA-NORM-A009-P5-ACCEPTABLE-RESIDUAL-RISK
+      - norm_id: AIA-NORM-A009-P5-A-DESIGN-RISK-REDUCTION
+      - norm_id: AIA-NORM-A009-P5-B-MITIGATION-CONTROLS
+      - norm_id: AIA-NORM-A009-P5-C-PROVIDE-INFORMATION
+      - norm_id: AIA-NORM-A009-P5-C-TRAIN-DEPLOYERS
+      - norm_id: AIA-NORM-A009-P5-CONSIDER-DEPLOYER-CONTEXT
+      - norm_id: AIA-NORM-A009-P6-TEST-FOR-MEASURES
+      - norm_id: AIA-NORM-A009-P6-TEST-PERFORMANCE-AND-COMPLIANCE
+      - norm_id: AIA-NORM-A009-P8-DEVELOPMENT-AND-PRE-MARKET-TESTING
+      - norm_id: AIA-NORM-A009-P8-METRICS-THRESHOLDS
+      - norm_id: AIA-NORM-A009-P9-VULNERABLE-PERSON-IMPACTS
 
   - rule_id: AIA-HR-A10
     source:

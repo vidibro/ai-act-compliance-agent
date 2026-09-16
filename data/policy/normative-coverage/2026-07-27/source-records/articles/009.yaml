@@ -97,8 +97,9 @@ records:
   subject_ref: article_9_risk
   subject_category: other
   kind: applicability
+  implementation_mode: report_only
   implementation_refs: *id001
-  verification_mode: judged_by_gap_analysis
+  verification_mode: reported_not_judged
   verified_by: vidibro
 - norm_id: AIA-NORM-A009-P4-CONSIDER-INTERACTIONS
   source: A009-P008
@@ -232,6 +233,7 @@ records:
   kind: permission
   conditions:
   - real-world testing complies with Article 60
+  implementation_mode: report_only
   implementation_refs: *id001
   verification_mode: reported_conditionally
   verified_by: vidibro
@@ -286,6 +288,7 @@ records:
   conditions:
   - the provider is already subject to internal risk-management-process requirements under other relevant
     Union law
+  implementation_mode: report_only
   implementation_refs: *id001
   verification_mode: reported_conditionally
   verified_by: vidibro
