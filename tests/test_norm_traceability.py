@@ -302,6 +302,17 @@ def test_article_twenty_three_makes_each_importer_duty_a_criterion(bundle, spec)
     assert traceability_errors(bundle, spec, LEDGER) == []
 
 
+def test_article_twenty_four_makes_each_distributor_duty_a_criterion(bundle, spec):
+    rule = next(rule for rule in spec.rules if rule.rule_id == "AIA-DI-A24")
+    assert len(rule.criteria) == 10
+    assert {criterion.norm_id for criterion in rule.criteria} == {
+        norm.norm_id
+        for norm in bundle.norm_inventory.norms
+        if norm.norm_id.startswith("AIA-NORM-A024-")
+    }
+    assert traceability_errors(bundle, spec, LEDGER) == []
+
+
 def test_article_ten_has_thirteen_provider_obligation_criteria_and_reachable_carried_permission(
     bundle, spec
 ):

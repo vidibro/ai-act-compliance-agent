@@ -213,7 +213,9 @@ norms:
   - AIA-TEXT-A024-P003
   qualifier_spans: []
   effective_date_spans: []
-  conditions: []
+  conditions:
+  - the high-risk AI system is under the distributor's responsibility
+  - storage or transport conditions are applicable
   exceptions: []
   mandatory_content: []
   product_scope: in_scope

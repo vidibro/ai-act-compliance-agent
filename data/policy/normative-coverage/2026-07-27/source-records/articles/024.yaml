@@ -80,6 +80,9 @@ records:
     the system is under the distributor's responsibility
   subject_ref: distributor
   subject_category: supported_operator
+  conditions:
+  - the high-risk AI system is under the distributor's responsibility
+  - storage or transport conditions are applicable
   implementation_refs: *id002
   verification_mode: reported_not_judged
   verified_by: vidibro

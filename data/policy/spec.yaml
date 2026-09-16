@@ -3846,6 +3846,17 @@ rules:
       annex_iii: 2027-12-02
       annex_i: 2028-08-02
     status: active
+    criteria:
+      - norm_id: AIA-NORM-A024-P1-VERIFY-CE-MARKING
+      - norm_id: AIA-NORM-A024-P1-VERIFY-ACCOMPANYING-DOCUMENTS
+      - norm_id: AIA-NORM-A024-P1-VERIFY-OPERATOR-COMPLIANCE
+      - norm_id: AIA-NORM-A024-P2-WITHHOLD-NONCONFORMING-SYSTEM
+      - norm_id: AIA-NORM-A024-P2-INFORM-RISK
+      - norm_id: AIA-NORM-A024-P3-PRESERVE-COMPLIANCE
+      - norm_id: AIA-NORM-A024-P4-CORRECTIVE-RESPONSE
+      - norm_id: AIA-NORM-A024-P4-NOTIFY-RISK
+      - norm_id: AIA-NORM-A024-P5-PROVIDE-ACTION-INFORMATION
+      - norm_id: AIA-NORM-A024-P6-COOPERATE
 
   # ------------------------------------------------------------------------------------------
   # Art. 86 — the DEPLOYER's duty to explain a decision to the person it was taken about. Held

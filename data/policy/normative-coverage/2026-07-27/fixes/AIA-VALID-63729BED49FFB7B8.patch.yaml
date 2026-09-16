@@ -1,0 +1,9 @@
+schema_version: 1
+finding_id: AIA-VALID-63729BED49FFB7B8
+target_file: source-records/articles/024.yaml
+before_sha256: a5221b86bb38d7009f4735b4cecdcae3fed72914622fdb0a0aabc7b15b8eafff
+after_sha256: 18761219b62348210afca8d3451e309edd2c11ffacf9d301bceedb245850f39c
+replacements:
+  - old: "  action: ensure applicable storage and transport conditions do not jeopardise Section 2 compliance while\n    the system is under the distributor's responsibility\n  subject_ref: distributor\n  subject_category: supported_operator\n  implementation_refs: *id002"
+    new: "  action: ensure applicable storage and transport conditions do not jeopardise Section 2 compliance while\n    the system is under the distributor's responsibility\n  subject_ref: distributor\n  subject_category: supported_operator\n  conditions:\n  - the high-risk AI system is under the distributor's responsibility\n  - storage or transport conditions are applicable\n  implementation_refs: *id002"
+    expected_occurrences: 1

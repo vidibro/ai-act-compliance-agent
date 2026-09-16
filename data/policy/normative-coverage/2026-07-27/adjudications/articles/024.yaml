@@ -1,0 +1,92 @@
+schema_version: 1
+act_version_date: "2026-07-27"
+source:
+  kind: article
+  document: "24"
+audit:
+  audit_schema_version: 1
+  segments_scanned: 7
+  norms_scanned: 10
+  finding_count: 4
+  audit_sha256: 29b814fe291a5460b6da69ccc281efdb1893d99f91608c8227a9db737b222fa1
+decisions:
+  - finding_id: AIA-VALID-B71C206EA220FC8A
+    target: AIA-NORM-A024-P1-VERIFY-ACCOMPANYING-DOCUMENTS
+    rule: fragment_without_qualifier_span
+    source_ref: AIA-TEXT-A024-P001
+    source_sha256: f777a48eb0a82d7a02f336fc26f3803f096a57cd76b1be6047ed494b1a6a65ba
+    target_sha256: 57f53d864250056f120209e6ffc6e5f9656c97820d6e832aeabd2c785af11ba5
+    decision: accepted_with_basis
+    reason: >-
+      The canonical norm retains the distributor, pre-market condition, verification action, and
+      both mandatory accompanying documents. The leading “that” only joins this item to the
+      already-recorded verification verb; it adds no separate condition or duty.
+    legal_basis:
+      - span_id: AIA-TEXT-A024-P001
+        source_sha256: f777a48eb0a82d7a02f336fc26f3803f096a57cd76b1be6047ed494b1a6a65ba
+        quote: "that it is accompanied by a copy of the EU declaration of conformity referred to in Article 47 and instructions for use"
+    reviewed_by: vidibro
+  - finding_id: AIA-VALID-946E85650B0AA4EC
+    target: AIA-NORM-A024-P1-VERIFY-OPERATOR-COMPLIANCE
+    rule: fragment_without_qualifier_span
+    source_ref: AIA-TEXT-A024-P001
+    source_sha256: f777a48eb0a82d7a02f336fc26f3803f096a57cd76b1be6047ed494b1a6a65ba
+    target_sha256: 27e5bdf23711f8c8b1c97b5a05d221bdce6b0b66bec7db007c5404f239d0cd62
+    decision: accepted_with_basis
+    reason: >-
+      The canonical norm retains the distributor and pre-market verification duty, with every one
+      of the three exhaustive Article 16(b), 16(c), and 23(3) checks as mandatory content. The
+      leading “that” merely shares the recorded verification verb.
+    legal_basis:
+      - span_id: AIA-TEXT-A024-P001
+        source_sha256: f777a48eb0a82d7a02f336fc26f3803f096a57cd76b1be6047ed494b1a6a65ba
+        quote: "that the provider and the importer of that system, as applicable, have complied with their respective obligations as laid down in Article 16, points (b) and (c) and Article 23(3)"
+    reviewed_by: vidibro
+  - finding_id: AIA-VALID-332B5BFC3925B813
+    target: AIA-NORM-A024-P2-INFORM-RISK
+    rule: fragment_without_qualifier_span
+    source_ref: AIA-TEXT-A024-P002
+    source_sha256: 0a9ef7ff3a2cce77f01dc42c26dfe5885cee4900bb1ca38dc6aeb2c3eef0a92a
+    target_sha256: 6318944bffca49b7cb02b8fc056acbc6eba94620cc57f07967017a8fd7bb5ea5
+    decision: accepted_with_basis
+    reason: >-
+      The canonical norm retains the Article 79(1) risk trigger, notification action, and the
+      applicable provider-or-importer recipient. The fragment is a complete conditional duty when
+      assembled from those fields and its recorded legal span.
+    legal_basis:
+      - span_id: AIA-TEXT-A024-P002
+        source_sha256: 0a9ef7ff3a2cce77f01dc42c26dfe5885cee4900bb1ca38dc6aeb2c3eef0a92a
+        quote: "where the high-risk AI system presents a risk within the meaning of Article 79(1), the distributor shall inform the provider or the importer of the system, as applicable, to that effect"
+    reviewed_by: vidibro
+  - finding_id: AIA-VALID-F67496A9B784CBD5
+    target: AIA-NORM-A024-P4-CORRECTIVE-RESPONSE
+    rule: fragment_without_qualifier_span
+    source_ref: AIA-TEXT-A024-P004
+    source_sha256: 20aa331a960d7dfb2f378a1d54b60ab73f368bcc3cf38834154044cd7f02cfeb
+    target_sha256: f6d939ba557526f3f16ab49ddcebe15b7d397d3d64b081e139376c0c8da909f5
+    decision: accepted_with_basis
+    reason: >-
+      The canonical action retains every allowed corrective route: the distributor acts itself to
+      restore conformity, withdraw, or recall; alternatively it ensures an appropriate operator
+      does so. Its separate condition retains the reason-to-consider trigger. No qualifier is
+      missing from the assembled duty.
+    legal_basis:
+      - span_id: AIA-TEXT-A024-P004
+        source_sha256: 20aa331a960d7dfb2f378a1d54b60ab73f368bcc3cf38834154044cd7f02cfeb
+        quote: "shall take the corrective actions necessary to bring that system into conformity with those requirements, to withdraw it or recall it, or shall ensure that the provider, the importer or any relevant operator, as appropriate, takes those corrective actions"
+    reviewed_by: vidibro
+  - finding_id: AIA-VALID-63729BED49FFB7B8
+    target: AIA-NORM-A024-P3-PRESERVE-COMPLIANCE
+    rule: condition_not_structured_or_retained_in_action
+    source_ref: AIA-TEXT-A024-P003
+    source_sha256: f9be7a66b78fa89d4d0374506ba3fd6078a4dbd7ceb128eeef43ed343299ede9
+    target_sha256: 866fe00340f6b2d542cf0d0841486c9b0a9dcf2e91a8fe4c14f01d3642f8d27c
+    decision: fixed
+    reason: >-
+      The canonical source record now retains both the importer-responsibility trigger and the
+      “where applicable” storage-or-transport qualifier as structured conditions. The exact patch
+      binds the audit finding to that correction.
+    fix:
+      patch_file: fixes/AIA-VALID-63729BED49FFB7B8.patch.yaml
+      patch_sha256: 390a267ec4c0797b91b3b655fd4131f0a9a2a76ed464c0d9e5a75652e3fbd244
+    reviewed_by: vidibro
