@@ -18,6 +18,8 @@ enforced_scope:
   - kind: article
     document: "6"
   - kind: article
+    document: "7"
+  - kind: article
     document: "10"
   - kind: article
     document: "15"
@@ -52,6 +54,9 @@ shards:
   - kind: article
     document: "6"
     file: articles/006.yaml
+  - kind: article
+    document: "7"
+    file: articles/007.yaml
   - kind: article
     document: "10"
     file: articles/010.yaml

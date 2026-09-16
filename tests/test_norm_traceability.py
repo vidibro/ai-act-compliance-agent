@@ -148,6 +148,21 @@ def test_article_six_separates_document_and_process_duties(bundle, spec):
     assert traceability_errors(bundle, spec, LEDGER) == []
 
 
+def test_article_seven_is_recorded_as_commission_amendment_law_not_product_rules(bundle, spec):
+    """Article 7 may change Annex III later; it creates no live supported-operator duty."""
+    segments = {segment.segment_id: segment for segment in bundle.text_review.segments}
+    article_seven = [
+        norm
+        for norm in bundle.norm_inventory.norms
+        if segments[norm.primary_spans[0]].source.kind is SourceKind.ARTICLE
+        and segments[norm.primary_spans[0]].source.document == "7"
+    ]
+    assert {norm.implementation_mode for norm in article_seven} == {
+        ImplementationMode.NONE_REQUIRED
+    }
+    assert traceability_errors(bundle, spec, LEDGER) == []
+
+
 def test_article_ten_has_thirteen_provider_obligation_criteria_and_reachable_carried_permission(
     bundle, spec
 ):
