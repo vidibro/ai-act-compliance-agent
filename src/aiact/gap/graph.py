@@ -41,7 +41,7 @@ from aiact.gap.judge import LLMJudge
 from aiact.gap.rules import ActiveRules, roles_with_rules, select_rules
 from aiact.schemas.classification import ClassificationResult
 from aiact.schemas.enums import ActorRole, ProviderReallocation, RealWorldTesting, Verdict
-from aiact.schemas.norm import NormKind
+from aiact.schemas.norm import NormKind, SubjectCategory
 from aiact.schemas.policy import PolicyRule, PolicyRuleset
 from aiact.schemas.question import Answer, Question, narrow
 from aiact.schemas.report import ComplianceReport, Finding, ReportSummary
@@ -228,6 +228,8 @@ def build_graph(
         outstanding: dict[ActorRole, list[str]] = {}
         for active in state.active:
             for rule in active.not_document_verifiable + active.postponed:
+                if rule.report_as_public_authority_notice:
+                    continue
                 ids = outstanding.setdefault(active.role, [])
                 if rule.rule_id not in ids:
                     ids.append(rule.rule_id)
@@ -235,10 +237,15 @@ def build_graph(
         permissions: dict[ActorRole, list[str]] = {}
         legal_consequences: dict[ActorRole, list[str]] = {}
         conditional_applicability: dict[ActorRole, list[str]] = {}
+        public_authority_statements: list[str] = []
         for active in state.active:
             active_rule_ids = {rule.rule_id for rule in active.all_rules}
             for report_norm in spec.report_norms:
                 if not active_rule_ids.intersection(report_norm.activation_rule_ids):
+                    continue
+                if SubjectCategory.PUBLIC_AUTHORITY in report_norm.subject_categories:
+                    if report_norm.norm_id not in public_authority_statements:
+                        public_authority_statements.append(report_norm.norm_id)
                     continue
                 # Activation tells us WHEN the non-judged statement becomes relevant;
                 # its canonical subject tells us WHO receives it in the report.  They usually
@@ -272,6 +279,7 @@ def build_graph(
         conditional_applicability = {
             role: sorted(ids) for role, ids in conditional_applicability.items() if ids
         }
+        public_authority_statements.sort()
         return {
             "report": ComplianceReport(
                 system_id=state.system_id,
@@ -284,6 +292,7 @@ def build_graph(
                 permissions=permissions,
                 legal_consequences=legal_consequences,
                 conditional_applicability=conditional_applicability,
+                public_authority_statements=public_authority_statements,
                 provider_reallocation=state.provider_reallocation,
                 deployer_type=state.deployer_type,
                 real_world_testing=state.real_world_testing,

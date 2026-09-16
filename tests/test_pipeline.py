@@ -155,12 +155,15 @@ def test_a_minimal_system_still_owes_article_4(spec):
     assert report.summary.total_applicable == 0
     assert report.not_document_verifiable[ActorRole.PROVIDER] == [
         "AIA-ALL-A04",
+        "AIA-ALL-A04A",
         "AIA-ALL-A75c-3",
         "AIA-ALL-A79",
         "AIA-PO-A53-7",
+        "AIA-PO-A59-P1-E",
     ]
     assert report.not_document_verifiable[ActorRole.DEPLOYER] == [
         "AIA-ALL-A04",
+        "AIA-ALL-A04A",
         "AIA-ALL-A75c-3",
         "AIA-ALL-A79",
     ]
@@ -208,6 +211,7 @@ def test_the_report_covers_both_duty_holders(spec):
     assert "AIA-PO-A17" in outstanding[ActorRole.PROVIDER]
     assert outstanding[ActorRole.DEPLOYER] == [
         "AIA-ALL-A04",
+        "AIA-ALL-A04A",
         "AIA-ALL-A73",
         "AIA-ALL-A73-10",
         "AIA-ALL-A75c-3",
@@ -364,3 +368,34 @@ def test_article_5_national_law_boundaries_are_shown_in_the_report(spec):
         "AIA-NORM-A005-P3-PRIOR-AUTHORISATION",
         "AIA-NORM-A005-P4-NOTIFY-AUTHORITIES",
     }
+
+
+def test_article_5_public_authority_statements_are_not_mislabelled_as_deployer_duties(spec):
+    report = review(
+        DOCUMENT,
+        spec,
+        a_brain(prohibited=ProhibitedPractice.REALTIME_REMOTE_BIOMETRIC_IDENTIFICATION),
+        judge=StubJudge(),
+    )
+
+    assert report.public_authority_statements == [
+        "AIA-NORM-A005-P2-COMPLETE-FRIA",
+        "AIA-NORM-A005-P2-CONFIRM-TARGETED-IDENTITY",
+        "AIA-NORM-A005-P2-CONSIDER-IMPACTS",
+        "AIA-NORM-A005-P2-NATIONAL-SAFEGUARDS",
+        "AIA-NORM-A005-P2-REGISTER-SYSTEM",
+        "AIA-NORM-A005-P3-CONSIDER-P2-ELEMENTS",
+        "AIA-NORM-A005-P3-DELETE-ON-REJECTION",
+        "AIA-NORM-A005-P3-NO-SOLE-OUTPUT-ADVERSE-DECISION",
+        "AIA-NORM-A005-P3-PRIOR-AUTHORISATION",
+        "AIA-NORM-A005-P3-RESTRICT-AUTHORISATION",
+        "AIA-NORM-A005-P3-STOP-ON-REJECTION",
+        "AIA-NORM-A005-P3-URGENT-USE",
+        "AIA-NORM-A005-P4-NOTIFICATION-CONTENT",
+        "AIA-NORM-A005-P4-NOTIFY-AUTHORITIES",
+    ]
+    assert not {
+        "AIA-DP-A05-2",
+        "AIA-DP-A05-3",
+        "AIA-DP-A05-4",
+    } & set(report.not_document_verifiable.get(ActorRole.DEPLOYER, []))

@@ -29,7 +29,6 @@ from aiact.guidance import load_snippet
 from aiact.schemas.norm import (
     ImplementationMode,
     Norm,
-    NormKind,
     NormRelation,
     NormRelationKind,
     ProductScope,
@@ -333,11 +332,12 @@ def criterion_from_norm(norm: Norm) -> RuleCriterion:
 
 
 def report_norm_from_norm(norm: Norm) -> ReportNorm:
-    """The report-only projection of a canonical permission or legal consequence."""
+    """The report-only projection of a canonical non-judged statement."""
     return ReportNorm(
         norm_id=norm.norm_id,
         kind=norm.kind,
         subjects=[subject.subject_ref for subject in norm.subjects],
+        subject_categories=[subject.category for subject in norm.subjects],
         action=norm.action,
         norm_text=norm.norm_text,
         conditions=list(norm.conditions),
@@ -470,8 +470,6 @@ def _report_norms(norms_root: Path, version: str) -> list[dict[str, object]]:
         if (
             norm.product_scope is ProductScope.IN_SCOPE
             and norm.implementation_mode is ImplementationMode.REPORT_ONLY
-            and norm.kind
-            in {NormKind.PERMISSION, NormKind.LEGAL_CONSEQUENCE, NormKind.APPLICABILITY}
         ):
             projected.append(report_norm_from_norm(norm).model_dump())
     return sorted(projected, key=lambda item: str(item["norm_id"]))

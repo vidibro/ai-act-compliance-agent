@@ -163,6 +163,9 @@ def test_permissions_and_legal_effects_are_rendered_outside_the_verdict_list(spe
             "conditional_applicability": {
                 ActorRole.PROVIDER: ["AIA-NORM-A010-P6-TESTING-DATA-ONLY"]
             },
+            "public_authority_statements": [
+                "AIA-NORM-A005-P2-CONFIRM-TARGETED-IDENTITY"
+            ],
         }
     )
     text = render_report(report, spec)
@@ -177,6 +180,8 @@ def test_permissions_and_legal_effects_are_rendered_outside_the_verdict_list(spe
         "limit the Article 10(2) to (4) and Article 4a(1) requirements to testing datasets"
         in text
     )
+    assert "public authority (not a report actor)" in text
+    assert "AIA-NORM-A005-P2-CONFIRM-TARGETED-IDENTITY" in text
 
 
 def test_an_obligation_nobody_judged_still_says_what_would_satisfy_it(spec):

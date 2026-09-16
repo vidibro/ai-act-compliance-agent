@@ -22,7 +22,7 @@ from aiact.schemas.enums import (
     RiskClass,
     TransparencyDuty,
 )
-from aiact.schemas.norm import ConditionGroup, NormKind, VerificationMode
+from aiact.schemas.norm import ConditionGroup, NormKind, SubjectCategory, VerificationMode
 
 
 class LegalSource(BaseModel):
@@ -131,8 +131,9 @@ class ReportNorm(BaseModel):
     model_config = ConfigDict(frozen=True)
 
     norm_id: str = Field(pattern=r"^AIA-NORM-[A-Z0-9-]+$")
-    kind: Literal[NormKind.PERMISSION, NormKind.LEGAL_CONSEQUENCE, NormKind.APPLICABILITY]
+    kind: NormKind
     subjects: list[str] = Field(min_length=1)
+    subject_categories: list[SubjectCategory] = Field(min_length=1)
     action: str = Field(min_length=1)
     norm_text: str = Field(min_length=1)
     conditions: list[str | ConditionGroup]
@@ -391,6 +392,8 @@ class PolicyRule(BaseModel):
     check_type: CheckType
     evidence_expected: str  # what in the documentation would satisfy this
     document_verifiable: bool  # see model_validator below
+    report_as_public_authority_notice: bool = False
+    """Render activated public-authority norms separately, never as a provider/deployer duty."""
     effective_date: date | None = None
     """WHEN this obligation starts to apply, where that does not depend on the Art. 6 route."""
 

@@ -24,6 +24,7 @@ from aiact.schemas.enums import (
     TransparencyDuty,
     Verdict,
 )
+from aiact.schemas.norm import SubjectCategory
 from aiact.schemas.policy import GuidanceSource, LegalSource, PolicyRuleset
 from aiact.schemas.question import EVIDENCE_QUOTE_MAX, REASONING_MAX, Answer, Confidence
 
@@ -340,6 +341,14 @@ class ComplianceReport(BaseModel):
     These state a condition that narrows a rule's scope. They are shown without a verdict: silence
     in a document does not prove the condition applies. Keeping them outside findings prevents a
     scope limit from changing the verdict of the obligations it limits.
+    """
+
+    public_authority_statements: list[str] = []
+    """Canonical public-authority norm ids relevant to the selected system.
+
+    Public authorities are not report actors yet. Their duties, permissions, prohibitions and
+    powers are therefore shown in a separate section rather than being mislabelled as a generic
+    provider or deployer duty. They have no verdict.
     """
 
     deployer_type: Answer | None = None
@@ -748,4 +757,16 @@ class ComplianceReport(BaseModel):
                             f"{field_name} references {norm_id!r} of kind {norm.kind.value}, "
                             f"not {expected_kind}."
                         )
+            for norm_id in self.public_authority_statements:
+                norm = report_norms.get(norm_id)
+                if norm is None:
+                    raise ValueError(
+                        f"public_authority_statements references norm_id {norm_id!r} not present "
+                        f"in the loaded PolicyRuleset (spec_version={spec.spec_version})."
+                    )
+                if SubjectCategory.PUBLIC_AUTHORITY not in norm.subject_categories:
+                    raise ValueError(
+                        f"public_authority_statements references {norm_id!r}, which has no "
+                        "public-authority subject."
+                    )
         return self

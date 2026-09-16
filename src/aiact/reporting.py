@@ -180,6 +180,14 @@ def render_report(report: ComplianceReport, spec: PolicyRuleset) -> str:
     if report.chapter_v_gate_note:
         out += _wrapped("!!", report.chapter_v_gate_note, indent="") + [""]
 
+    if report.public_authority_statements:
+        out.append("--- public authority (not a report actor) ---")
+        out.append("  duties, permissions and powers relevant to this system:")
+        for norm_id in report.public_authority_statements:
+            norm = report_norms.get(norm_id)
+            out += _report_norm_block(norm) if norm else [f"  --  {norm_id}"]
+        out.append("")
+
     # Art. 50 sits beside the tier, not inside it, and splits by duty-holder.
     for role, duties in report.classification.transparency_duties_by_role.items():
         cites = ", ".join(f"Art. 50({d.paragraph}) {d.value}" for d in duties)

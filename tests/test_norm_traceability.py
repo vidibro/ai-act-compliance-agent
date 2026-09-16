@@ -154,6 +154,24 @@ def test_article_ten_has_thirteen_provider_obligation_criteria_and_reachable_car
     assert traceability_errors(bundle, spec, LEDGER) == []
 
 
+def test_article_five_public_authority_norms_are_reported_without_becoming_report_actors(
+    bundle, spec
+):
+    statements = [
+        norm
+        for norm in spec.report_norms
+        if norm.norm_id.startswith("AIA-NORM-A005-P2-")
+        or norm.norm_id.startswith("AIA-NORM-A005-P3-")
+        or norm.norm_id.startswith("AIA-NORM-A005-P4-")
+    ]
+    assert len(statements) == 14
+    assert all(
+        "public_authority" in {category.value for category in norm.subject_categories}
+        for norm in statements
+    )
+    assert traceability_errors(bundle, spec, LEDGER) == []
+
+
 def test_model_flaws_is_materialised_with_its_full_action_and_condition(spec):
     criterion = next(c for c in a15(spec).criteria if c.norm_id == MODEL_FLAWS)
 

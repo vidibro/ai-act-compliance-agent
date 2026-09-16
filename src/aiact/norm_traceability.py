@@ -61,7 +61,13 @@ def _report_reconstruction_errors(norm: Norm) -> list[str]:
         errors.append(f"implementation_mode is {norm.implementation_mode.value}")
     if norm.product_scope is not ProductScope.IN_SCOPE:
         errors.append(f"product_scope is {norm.product_scope.value}")
-    if norm.kind not in {NormKind.PERMISSION, NormKind.LEGAL_CONSEQUENCE, NormKind.APPLICABILITY}:
+    if norm.kind not in {
+        NormKind.PERMISSION,
+        NormKind.LEGAL_CONSEQUENCE,
+        NormKind.APPLICABILITY,
+    } and not any(
+        subject.category is SubjectCategory.PUBLIC_AUTHORITY for subject in norm.subjects
+    ):
         errors.append(f"kind is {norm.kind.value}, not reportable")
     if norm.verification_mode is VerificationMode.UNRESOLVED:
         errors.append("verification_mode is unresolved")
@@ -118,10 +124,9 @@ def traceability_errors(
                 f"{norm.implementation_mode.value}"
             )
         if norm.implementation_mode is ImplementationMode.APPLICABILITY_QUESTION:
-            if norm.kind is not NormKind.APPLICABILITY:
-                errors.append(
-                    f"{norm.norm_id} is an applicability_question but kind is {norm.kind.value}"
-                )
+            # `applicability_question` describes the implementation path, not the legal effect.
+            # Article 5's classification questions determine whether prohibitions and a saving
+            # clause apply; forcing them to `kind: applicability` would erase that distinction.
             if norm.verification_mode is not VerificationMode.ANSWERED_BY_CLASSIFICATION:
                 errors.append(
                     f"{norm.norm_id} is an applicability_question but verification_mode is "
@@ -143,6 +148,7 @@ def traceability_errors(
         if (
             norm.kind in {NormKind.PERMISSION, NormKind.LEGAL_CONSEQUENCE}
             and norm.product_scope is ProductScope.IN_SCOPE
+            and norm.implementation_mode is not ImplementationMode.APPLICABILITY_QUESTION
             and norm.implementation_mode
             not in {ImplementationMode.REPORT_ONLY, ImplementationMode.CARRIED_BY_OTHER_NORM}
         ):
@@ -164,7 +170,9 @@ def traceability_errors(
             NormKind.PERMISSION,
             NormKind.LEGAL_CONSEQUENCE,
             NormKind.APPLICABILITY,
-        }:
+        } and not any(
+            subject.category is SubjectCategory.PUBLIC_AUTHORITY for subject in norm.subjects
+        ):
             errors.append(
                 f"{norm.norm_id} is report_only but has non-reportable kind {norm.kind.value}"
             )
