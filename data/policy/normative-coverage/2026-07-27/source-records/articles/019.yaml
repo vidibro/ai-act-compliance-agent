@@ -43,6 +43,7 @@ records:
   conditions:
   - the provider is a financial institution subject to internal-governance requirements under Union financial-services
     law
-  implementation_refs: *id001
+  implementation_refs:
+  - AIA-PO-A19-2
   verification_mode: reported_not_judged
   verified_by: vidibro

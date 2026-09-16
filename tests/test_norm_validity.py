@@ -222,6 +222,18 @@ def test_article_fourteen_fixed_condition_is_closed_in_its_own_shard():
     )
 
 
+def test_article_nineteen_retention_finding_is_recorded_in_its_own_shard():
+    bundle = load_bundle()
+    findings = audit_norm_validity(bundle, scope={(SourceKind.ARTICLE, "19")})
+    assert {finding.finding_id for finding in findings} == {
+        "AIA-VALID-89C0BE07A90B8058"
+    }
+    ledger = load_adjudication_ledger(LEDGER)
+    assert ledger.audit_by_scope[(SourceKind.ARTICLE, "19")] == audit_attestation(
+        bundle, scope={(SourceKind.ARTICLE, "19")}
+    )
+
+
 def test_article_seventeen_findings_are_recorded_in_its_own_shard():
     bundle = load_bundle()
 

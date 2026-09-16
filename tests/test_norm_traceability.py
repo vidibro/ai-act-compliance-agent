@@ -241,6 +241,15 @@ def test_article_fourteen_separates_oversight_duties_from_its_scope_exception(bu
     assert traceability_errors(bundle, spec, LEDGER) == []
 
 
+def test_article_nineteen_maps_each_log_retention_duty_to_a_criterion(bundle, spec):
+    rules = {rule.rule_id: rule for rule in spec.rules}
+    assert len(rules["AIA-PO-A19"].criteria) == 2
+    assert [criterion.norm_id for criterion in rules["AIA-PO-A19-2"].criteria] == [
+        "AIA-NORM-A019-P2-FINANCIAL-DOCUMENTATION"
+    ]
+    assert traceability_errors(bundle, spec, LEDGER) == []
+
+
 def test_article_ten_has_thirteen_provider_obligation_criteria_and_reachable_carried_permission(
     bundle, spec
 ):

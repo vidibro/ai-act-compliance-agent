@@ -1028,16 +1028,40 @@ rules:
       are under the provider's control, for a period appropriate to the intended purpose and AT
       LEAST SIX MONTHS — unless Union or national law provides otherwise, in particular data
       protection law. Distinct from Art. 12, which is the system's capability to generate the logs
-      and IS document-verifiable; this is what happens to them afterwards — confirm separately. Art.
-      19(2) narrows where they live rather than whether they are kept: a provider that is a
-      FINANCIAL INSTITUTION subject to internal governance requirements under Union financial
-      services law maintains these logs as part of the documentation it already keeps under that
-      law. The retention period is unchanged.
+      and IS document-verifiable; this is what happens to them afterwards — confirm separately.
     document_verifiable: false
     effective_date_by_route:
       annex_iii: 2027-12-02
       annex_i: 2028-08-02
     status: active
+    criteria:
+      - norm_id: AIA-NORM-A019-P1-KEEP-CONTROLLED-LOGS
+      - norm_id: AIA-NORM-A019-P1-RETENTION-PERIOD
+
+  - rule_id: AIA-PO-A19-2
+    source:
+      instrument: "Regulation (EU) 2024/1689"
+      article: 19
+      paragraph: 2
+      act_version_date: 2026-07-27
+    applies_to_risk_class: [high_risk]
+    applies_to_role: [provider]
+    activation_condition: >-
+      The provider is a financial institution subject to Union financial-services-law requirements
+      concerning internal governance, arrangements, or processes.
+    obligation_status: mandatory
+    check_type: presence
+    evidence_expected: >-
+      Maintain the automatically generated high-risk-system logs as part of the documentation kept
+      under the applicable Union financial-services law. This is an operational placement duty, not
+      one inferred from the submitted technical documentation — confirm separately.
+    document_verifiable: false
+    effective_date_by_route:
+      annex_iii: 2027-12-02
+      annex_i: 2028-08-02
+    status: active
+    criteria:
+      - norm_id: AIA-NORM-A019-P2-FINANCIAL-DOCUMENTATION
 
   - rule_id: AIA-PO-A20
     source:

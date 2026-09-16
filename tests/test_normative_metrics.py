@@ -1704,7 +1704,9 @@ def test_article_nineteen_keeps_the_legal_exception_in_the_retention_rule():
     assert all(segment.review.verified_by == "vidibro" for segment in segments)
     assert len(norms) == 3
     assert sum(norm.kind.value == "obligation" for norm in norms.values()) == 3
-    assert all(norm.implementation_refs == ["AIA-PO-A19"] for norm in norms.values())
+    assert norms["AIA-NORM-A019-P1-KEEP-CONTROLLED-LOGS"].implementation_refs == ["AIA-PO-A19"]
+    assert norms["AIA-NORM-A019-P1-RETENTION-PERIOD"].implementation_refs == ["AIA-PO-A19"]
+    assert norms["AIA-NORM-A019-P2-FINANCIAL-DOCUMENTATION"].implementation_refs == ["AIA-PO-A19-2"]
 
     paragraph_one = {norm_id for norm_id in norms if "-P1-" in norm_id}
     assert len(paragraph_one) == 2
