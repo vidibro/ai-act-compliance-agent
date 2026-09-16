@@ -149,17 +149,19 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
-- norm_id: AIA-NORM-A022-P3-ADDRESSABLE
+- norm_id: AIA-NORM-A022-P3-MANDATE-EMPOWER-TASKS
   act_version_date: '2026-07-27'
   kind: obligation
   subjects:
-  - subject_ref: authorised_representative
+  - subject_ref: provider
     category: supported_operator
-  action: ensure the mandate empowers competent authorities to address the representative alongside or
-    instead of the provider on all compliance issues
-  norm_text: The mandate shall empower the authorised representative to be addressed, in addition to or
-    instead of the provider, by the competent authorities, on all issues related to ensuring compliance
-    with this Regulation.
+  action: ensure the written mandate empowers the authorised representative to perform every Article 22(3)(a)
+    to (e) task and to be addressed by competent authorities on all compliance issues alongside or instead
+    of the provider
+  norm_text: 'For the purposes of this Regulation, the mandate shall empower the authorised representative
+    to carry out the following tasks: The mandate shall empower the authorised representative to be addressed,
+    in addition to or instead of the provider, by the competent authorities, on all issues related to
+    ensuring compliance with this Regulation.'
   detection_channels:
   - semantic_legal_effect
   - shall_token
@@ -168,14 +170,22 @@ norms:
   - AIA-TEXT-A022-P003
   qualifier_spans: []
   effective_date_spans: []
-  conditions: []
+  conditions:
+  - the provider appoints an authorised representative under Article 22(1)
   exceptions: []
-  mandatory_content: []
+  mandatory_content:
+  - authority to verify the declaration, technical documentation, and conformity assessment
+  - authority to keep the enacted records available for the enacted period
+  - authority to provide enacted conformity information and log access on request
+  - authority to cooperate with competent authorities on request
+  - authority to comply with or ensure applicable registration obligations
+  - authority to be addressed by competent authorities on all compliance issues alongside or instead of
+    the provider
   product_scope: in_scope
   product_scope_reason: ''
   implementation_mode: compliance_rule
   implementation_refs:
-  - AIA-AR-A22
+  - AIA-PO-A22
   implementation_reason: ''
   verification_mode: reported_not_judged
   review:
@@ -233,7 +243,8 @@ norms:
   - subject_ref: authorised_representative
     category: supported_operator
   action: keep the listed provider, conformity, technical, and applicable certification records available
-    to the specified authorities for 10 years
+    to the specified authorities for 10 years after the high-risk AI system is placed on the market or
+    put into service
   norm_text: keep at the disposal of the competent authorities and national authorities or bodies referred
     to in Article 74(10), for a period of 10 years after the high-risk AI system has been placed on the
     market or put into service, the contact details of the provider that appointed the authorised representative,
@@ -248,7 +259,9 @@ norms:
   qualifier_spans:
   - AIA-TEXT-A022-P003
   effective_date_spans: []
-  conditions: []
+  conditions:
+  - the 10-year retention period begins after the high-risk AI system is placed on the market or put into
+    service
   exceptions: []
   mandatory_content:
   - appointing provider contact details

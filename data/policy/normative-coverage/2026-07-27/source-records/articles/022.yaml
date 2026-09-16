@@ -48,17 +48,29 @@ records:
   implementation_refs: *id002
   verification_mode: reported_not_judged
   verified_by: vidibro
-- norm_id: AIA-NORM-A022-P3-ADDRESSABLE
+- norm_id: AIA-NORM-A022-P3-MANDATE-EMPOWER-TASKS
   source: A022-P003
-  quote: The mandate shall empower the authorised representative to be addressed, in addition to or instead
-    of the provider, by the competent authorities, on all issues related to ensuring compliance with this
-    Regulation.
-  action: ensure the mandate empowers competent authorities to address the representative alongside or
-    instead of the provider on all compliance issues
-  subject_ref: authorised_representative
+  quote: >-
+    For the purposes of this Regulation, the mandate shall empower the authorised representative to
+    carry out the following tasks: The mandate shall empower the authorised representative to be addressed,
+    in addition to or instead of the provider, by the competent authorities, on all issues related to ensuring
+    compliance with this Regulation.
+  action: ensure the written mandate empowers the authorised representative to perform every Article 22(3)(a)
+    to (e) task and to be addressed by competent authorities on all compliance issues alongside or instead
+    of the provider
+  subject_ref: provider
   subject_category: supported_operator
-  implementation_refs: *id002
+  conditions:
+  - the provider appoints an authorised representative under Article 22(1)
+  implementation_refs: *id001
   verification_mode: reported_not_judged
+  mandatory_content:
+  - authority to verify the declaration, technical documentation, and conformity assessment
+  - authority to keep the enacted records available for the enacted period
+  - authority to provide enacted conformity information and log access on request
+  - authority to cooperate with competent authorities on request
+  - authority to comply with or ensure applicable registration obligations
+  - authority to be addressed by competent authorities on all compliance issues alongside or instead of the provider
   verified_by: vidibro
 - norm_id: AIA-NORM-A022-P3-A-VERIFY
   source: A022-P004
@@ -82,9 +94,12 @@ records:
     a copy of the EU declaration of conformity referred to in Article 47, the technical documentation
     and, if applicable, the certificate issued by the notified body
   action: keep the listed provider, conformity, technical, and applicable certification records available
-    to the specified authorities for 10 years
+    to the specified authorities for 10 years after the high-risk AI system is placed on the market or put
+    into service
   subject_ref: authorised_representative
   subject_category: supported_operator
+  conditions:
+  - the 10-year retention period begins after the high-risk AI system is placed on the market or put into service
   implementation_refs: *id002
   verification_mode: reported_not_judged
   mandatory_content:
@@ -189,3 +204,17 @@ records:
   implementation_refs: *id002
   verification_mode: reported_not_judged
   verified_by: vidibro
+norm_relations:
+- relation_id: AIA-REL-A022-P3-MANDATE-EMPOWER-TASKS-RELIES-ON-NORMS
+  source_norm_id: AIA-NORM-A022-P3-MANDATE-EMPOWER-TASKS
+  kind: relies_on_norms
+  target_norm_ids:
+  - AIA-NORM-A022-P3-A-VERIFY
+  - AIA-NORM-A022-P3-B-KEEP-RECORDS
+  - AIA-NORM-A022-P3-C-PROVIDE-CONFORMITY-INFORMATION
+  - AIA-NORM-A022-P3-C-PROVIDE-LOG-ACCESS
+  - AIA-NORM-A022-P3-D-COOPERATE
+  - AIA-NORM-A022-P3-E-REGISTER
+  - AIA-NORM-A022-P3-E-ENSURE-REGISTRATION-CORRECT
+  legal_basis_spans: [AIA-TEXT-A022-P003]
+  detail: The provider's mandate must give the representative powers matching each enumerated Article 22(3) task.

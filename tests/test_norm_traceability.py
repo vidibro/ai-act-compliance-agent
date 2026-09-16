@@ -266,6 +266,31 @@ def test_article_twenty_one_reports_receiving_authority_confidentiality(bundle, 
     assert traceability_errors(bundle, spec, LEDGER) == []
 
 
+def test_article_twenty_two_separates_mandate_content_from_representative_tasks(bundle, spec):
+    rules = {rule.rule_id: rule for rule in spec.rules}
+    assert [criterion.norm_id for criterion in rules["AIA-PO-A22"].criteria] == [
+        "AIA-NORM-A022-P1-APPOINT-REPRESENTATIVE",
+        "AIA-NORM-A022-P2-ENABLE-REPRESENTATIVE",
+        "AIA-NORM-A022-P3-MANDATE-EMPOWER-TASKS",
+    ]
+    representative_criteria = [criterion.norm_id for criterion in rules["AIA-AR-A22"].criteria]
+    assert "AIA-NORM-A022-P3-MANDATE-EMPOWER-TASKS" not in representative_criteria
+    assert len(representative_criteria) == 11
+    task_set = bundle.norm_inventory.target_norm_ids_for(
+        "AIA-NORM-A022-P3-MANDATE-EMPOWER-TASKS", NormRelationKind.RELIES_ON_NORMS
+    )
+    assert task_set == [
+        "AIA-NORM-A022-P3-A-VERIFY",
+        "AIA-NORM-A022-P3-B-KEEP-RECORDS",
+        "AIA-NORM-A022-P3-C-PROVIDE-CONFORMITY-INFORMATION",
+        "AIA-NORM-A022-P3-C-PROVIDE-LOG-ACCESS",
+        "AIA-NORM-A022-P3-D-COOPERATE",
+        "AIA-NORM-A022-P3-E-REGISTER",
+        "AIA-NORM-A022-P3-E-ENSURE-REGISTRATION-CORRECT",
+    ]
+    assert traceability_errors(bundle, spec, LEDGER) == []
+
+
 def test_article_ten_has_thirteen_provider_obligation_criteria_and_reachable_carried_permission(
     bundle, spec
 ):

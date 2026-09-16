@@ -1796,7 +1796,7 @@ def test_article_twenty_one_keeps_disclosure_language_with_the_requested_materia
     assert norms["AIA-NORM-A021-P2-PROVIDE-LOG-ACCESS"].implementation_refs == ["AIA-PO-A21-2"]
     confidentiality = norms["AIA-NORM-A021-P3-CONFIDENTIALITY"]
     assert confidentiality.subjects[0].category.value == "public_authority"
-    assert confidentiality.implementation_mode.value == "none_required"
+    assert confidentiality.implementation_mode.value == "report_only"
 
 
 def test_article_twenty_two_separates_provider_and_representative_duties():
@@ -1821,6 +1821,7 @@ def test_article_twenty_two_separates_provider_and_representative_duties():
     provider_norms = {
         "AIA-NORM-A022-P1-APPOINT-REPRESENTATIVE",
         "AIA-NORM-A022-P2-ENABLE-REPRESENTATIVE",
+        "AIA-NORM-A022-P3-MANDATE-EMPOWER-TASKS",
     }
     assert all(norms[norm_id].implementation_refs == ["AIA-PO-A22"] for norm_id in provider_norms)
     representative_norms = set(norms) - provider_norms

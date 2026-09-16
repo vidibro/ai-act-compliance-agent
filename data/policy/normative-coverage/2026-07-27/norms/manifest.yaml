@@ -3774,6 +3774,24 @@ relations:
   - AIA-TEXT-A026-P11
   detail: 'Unresolved reference: Article 50 of this Regulation. The Article 26(11) notice duty operates
     without prejudice to Article 50.'
+- relation_id: AIA-REL-A022-P3-MANDATE-EMPOWER-TASKS-RELIES-ON-NORMS
+  source_norm_id: AIA-NORM-A022-P3-MANDATE-EMPOWER-TASKS
+  kind: relies_on_norms
+  target_rule_ids: []
+  target_norm_ids:
+  - AIA-NORM-A022-P3-A-VERIFY
+  - AIA-NORM-A022-P3-B-KEEP-RECORDS
+  - AIA-NORM-A022-P3-C-PROVIDE-CONFORMITY-INFORMATION
+  - AIA-NORM-A022-P3-C-PROVIDE-LOG-ACCESS
+  - AIA-NORM-A022-P3-D-COOPERATE
+  - AIA-NORM-A022-P3-E-REGISTER
+  - AIA-NORM-A022-P3-E-ENSURE-REGISTRATION-CORRECT
+  external_requirements: []
+  guidance_refs: []
+  legal_basis_spans:
+  - AIA-TEXT-A022-P003
+  detail: The provider's mandate must give the representative powers matching each enumerated Article
+    22(3) task.
 - relation_id: AIA-REL-ANNEX-IX-REGISTRATION-INFORMATION-CARRIED-BY-NORMS
   source_norm_id: AIA-NORM-ANNEX-IX-REGISTRATION-INFORMATION
   kind: carried_by_norms

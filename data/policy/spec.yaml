@@ -3654,7 +3654,8 @@ rules:
     status: active
 
   # ART. 22 BINDS TWO PARTIES, and only one of them is the representative. Paragraphs (1) and (2)
-  # are duties of the PROVIDER — appoint a representative, then enable it to do the job — while
+  # are duties of the PROVIDER — appoint a representative, enable it to do the job, and ensure the
+  # mandate empowers its statutory task set — while
   # (3) to (5) are the representative's own, which AIA-AR-A22 carries. One rule for both would file
   # the appointment under the party being appointed, and a third-country provider reading its own
   # column would never see the duty that applies before it may sell at all.
@@ -3674,8 +3675,8 @@ rules:
       appoints no representative and owes nothing here. Where the provider is established is not
       stated in a description of the system, so the obligation is listed with this condition
       attached rather than asserted of every provider or dropped.
-    # 22(2) is the other half of the same duty and is supplied rather than cited: the finding
-    # belongs to the appointment, and a representative left without documents fails both.
+    # 22(2) enables the representative, and 22(3) specifies the mandate's compulsory task set:
+    # a representative left without those powers fails the provider's appointment arrangement too.
     qualified_by:
       - article: 22
         paragraph: 2
@@ -3687,14 +3688,20 @@ rules:
       placing it, not a formality to follow. And evidence under Art. 22(2) that the provider ENABLES
       that representative to perform the tasks in the mandate: giving it the technical documentation
       and the declaration of conformity to hold, answering its requests, and keeping it able to
-      cooperate with authorities. A representative appointed on paper and left without the documents
-      it must produce does not satisfy the second half. An organisational arrangement, not visible
-      in the technical documentation — confirm separately.
+      cooperate with authorities. The mandate itself must empower it to perform every Art. 22(3)(a)
+      to (e) task and to be addressed by competent authorities on every compliance issue alongside
+      or instead of the provider. A representative appointed on paper without those powers does not
+      satisfy the arrangement. An organisational arrangement, not visible in the technical
+      documentation — confirm separately.
     document_verifiable: false
     effective_date_by_route:
       annex_iii: 2027-12-02
       annex_i: 2028-08-02
     status: active
+    criteria:
+      - norm_id: AIA-NORM-A022-P1-APPOINT-REPRESENTATIVE
+      - norm_id: AIA-NORM-A022-P2-ENABLE-REPRESENTATIVE
+      - norm_id: AIA-NORM-A022-P3-MANDATE-EMPOWER-TASKS
 
   - rule_id: AIA-AR-A22
     source:
@@ -3710,11 +3717,8 @@ rules:
       are carried by AIA-PO-A22. Art. 22(3) OPENS WITH TWO DUTIES BEFORE THE MANDATE LIST. Perform
       the tasks specified in the mandate; and PROVIDE A COPY OF THE MANDATE to the market
       surveillance authorities upon request, in one of the official languages of the institutions of
-      the Union AS INDICATED BY THE COMPETENT AUTHORITY. THE MANDATE ITSELF MUST EMPOWER five tasks,
-      and one thing beyond them: it shall empower the representative TO BE ADDRESSED, IN ADDITION TO
-      OR INSTEAD OF THE PROVIDER, BY THE COMPETENT AUTHORITIES on all issues related to compliance
-      with this Regulation. A mandate drafted to cover only (a) to (e) is short of what the
-      paragraph requires. (a) verify that the Art. 47 EU declaration of conformity and the Art. 11
+      the Union AS INDICATED BY THE COMPETENT AUTHORITY. (a) verify that the Art. 47 EU declaration
+      of conformity and the Art. 11
       technical documentation have been drawn up and that an appropriate conformity assessment was
       carried out. (b) keep at the disposal of the competent authorities AND the national
       authorities or bodies referred to in Art. 74(10), for TEN YEARS after the system was placed on
@@ -3738,6 +3742,18 @@ rules:
       annex_iii: 2027-12-02
       annex_i: 2028-08-02
     status: active
+    criteria:
+      - norm_id: AIA-NORM-A022-P3-PERFORM-MANDATE
+      - norm_id: AIA-NORM-A022-P3-PROVIDE-MANDATE
+      - norm_id: AIA-NORM-A022-P3-A-VERIFY
+      - norm_id: AIA-NORM-A022-P3-B-KEEP-RECORDS
+      - norm_id: AIA-NORM-A022-P3-C-PROVIDE-CONFORMITY-INFORMATION
+      - norm_id: AIA-NORM-A022-P3-C-PROVIDE-LOG-ACCESS
+      - norm_id: AIA-NORM-A022-P3-D-COOPERATE
+      - norm_id: AIA-NORM-A022-P3-E-REGISTER
+      - norm_id: AIA-NORM-A022-P3-E-ENSURE-REGISTRATION-CORRECT
+      - norm_id: AIA-NORM-A022-P4-TERMINATE-MANDATE
+      - norm_id: AIA-NORM-A022-P4-NOTIFY-TERMINATION
 
   - rule_id: AIA-IM-A23
     source:
