@@ -212,6 +212,17 @@ def test_article_eleven_separates_the_simplified_documentation_permission(bundle
     assert traceability_errors(bundle, spec, LEDGER) == []
 
 
+def test_article_twelve_maps_each_general_logging_duty_to_a_criterion(bundle, spec):
+    rule = next(rule for rule in spec.rules if rule.rule_id == "AIA-HR-A12")
+    assert [criterion.norm_id for criterion in rule.criteria] == [
+        "AIA-NORM-A012-P1-AUTOMATIC-LOGGING",
+        "AIA-NORM-A012-P2-A-RISK-MODIFICATION-EVENTS",
+        "AIA-NORM-A012-P2-B-POST-MARKET-EVENTS",
+        "AIA-NORM-A012-P2-C-OPERATION-MONITORING-EVENTS",
+    ]
+    assert traceability_errors(bundle, spec, LEDGER) == []
+
+
 def test_article_ten_has_thirteen_provider_obligation_criteria_and_reachable_carried_permission(
     bundle, spec
 ):

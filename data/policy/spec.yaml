@@ -345,6 +345,12 @@ rules:
       annex_iii: 2027-12-02
       annex_i: 2028-08-02
     status: active
+    # The general logging capability and each of its three mandatory purposes are distinct checks.
+    criteria:
+      - norm_id: AIA-NORM-A012-P1-AUTOMATIC-LOGGING
+      - norm_id: AIA-NORM-A012-P2-A-RISK-MODIFICATION-EVENTS
+      - norm_id: AIA-NORM-A012-P2-B-POST-MARKET-EVENTS
+      - norm_id: AIA-NORM-A012-P2-C-OPERATION-MONITORING-EVENTS
 
   # ONE FILE, NOT TWO. AIA-HR-A11 carries 11(1) — draw the documentation up, keep it current, cover
   # Annex IV — and an Annex I Section A provider satisfying it with a separate AI annex bolted to a

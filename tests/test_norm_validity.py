@@ -195,6 +195,15 @@ def test_article_eleven_is_closed_with_an_explicit_empty_adjudication_shard():
     )
 
 
+def test_article_twelve_is_closed_with_an_explicit_empty_adjudication_shard():
+    bundle = load_bundle()
+    assert audit_norm_validity(bundle, scope={(SourceKind.ARTICLE, "12")}) == []
+    ledger = load_adjudication_ledger(LEDGER)
+    assert ledger.audit_by_scope[(SourceKind.ARTICLE, "12")] == audit_attestation(
+        bundle, scope={(SourceKind.ARTICLE, "12")}
+    )
+
+
 def test_article_seventeen_findings_are_recorded_in_its_own_shard():
     bundle = load_bundle()
 
