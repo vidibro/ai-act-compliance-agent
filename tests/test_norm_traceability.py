@@ -291,6 +291,17 @@ def test_article_twenty_two_separates_mandate_content_from_representative_tasks(
     assert traceability_errors(bundle, spec, LEDGER) == []
 
 
+def test_article_twenty_three_makes_each_importer_duty_a_criterion(bundle, spec):
+    rule = next(rule for rule in spec.rules if rule.rule_id == "AIA-IM-A23")
+    assert len(rule.criteria) == 12
+    assert {criterion.norm_id for criterion in rule.criteria} == {
+        norm.norm_id
+        for norm in bundle.norm_inventory.norms
+        if norm.norm_id.startswith("AIA-NORM-A023-")
+    }
+    assert traceability_errors(bundle, spec, LEDGER) == []
+
+
 def test_article_ten_has_thirteen_provider_obligation_criteria_and_reachable_carried_permission(
     bundle, spec
 ):

@@ -299,7 +299,9 @@ norms:
   - AIA-TEXT-A023-P008
   qualifier_spans: []
   effective_date_spans: []
-  conditions: []
+  conditions:
+  - the high-risk AI system is under the importer's responsibility
+  - storage or transport conditions are applicable
   exceptions: []
   mandatory_content: []
   product_scope: in_scope
@@ -337,7 +339,9 @@ norms:
   - AIA-TEXT-A023-P009
   qualifier_spans: []
   effective_date_spans: []
-  conditions: []
+  conditions:
+  - the 10-year retention period begins after the high-risk AI system is placed on the market or put into
+    service
   exceptions: []
   mandatory_content:
   - notified-body certificate where applicable

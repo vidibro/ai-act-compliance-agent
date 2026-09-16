@@ -114,6 +114,9 @@ records:
     the system is under the importer's responsibility
   subject_ref: importer
   subject_category: supported_operator
+  conditions:
+  - the high-risk AI system is under the importer's responsibility
+  - storage or transport conditions are applicable
   implementation_refs: *id002
   verification_mode: reported_not_judged
   verified_by: vidibro
@@ -126,6 +129,8 @@ records:
     placement or putting into service
   subject_ref: importer
   subject_category: supported_operator
+  conditions:
+  - the 10-year retention period begins after the high-risk AI system is placed on the market or put into service
   implementation_refs: *id002
   verification_mode: reported_not_judged
   mandatory_content:
