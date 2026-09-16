@@ -220,6 +220,23 @@ rules:
       annex_iii: 2027-12-02
       annex_i: 2028-08-02
     status: active
+    # Article 10(1)–(4) is one homogeneous, document-verifiable provider obligation. The
+    # permission in (3), the special-category-data route in (5), and the testing-data scope
+    # relief in (6) are materialised separately as report material, never pass/fail criteria.
+    criteria:
+      - norm_id: AIA-NORM-A010-P1-QUALIFY-DATASETS
+      - norm_id: AIA-NORM-A010-P2-GOVERN-DATASETS
+      - norm_id: AIA-NORM-A010-P2-A-DESIGN-CHOICES
+      - norm_id: AIA-NORM-A010-P2-B-COLLECTION-ORIGIN
+      - norm_id: AIA-NORM-A010-P2-C-DATA-PREPARATION
+      - norm_id: AIA-NORM-A010-P2-D-ASSUMPTIONS
+      - norm_id: AIA-NORM-A010-P2-E-AVAILABILITY-SUITABILITY
+      - norm_id: AIA-NORM-A010-P2-F-EXAMINE-BIASES
+      - norm_id: AIA-NORM-A010-P2-G-MITIGATE-BIASES
+      - norm_id: AIA-NORM-A010-P2-H-DATA-GAPS
+      - norm_id: AIA-NORM-A010-P3-DATASET-QUALITY
+      - norm_id: AIA-NORM-A010-P3-STATISTICAL-PROPERTIES
+      - norm_id: AIA-NORM-A010-P4-INTENDED-SETTING
 
   - rule_id: AIA-HR-A11
     source:

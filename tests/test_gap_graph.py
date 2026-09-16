@@ -145,7 +145,8 @@ def test_only_the_rules_for_this_risk_class_activate(spec):
     # confidence.
     assert sorted(r.rule_id for r in minimal.all_rules) == [
         "AIA-ALL-A04",
-            "AIA-ALL-A75c-3",
+        "AIA-ALL-A04A",
+        "AIA-ALL-A75c-3",
             "AIA-ALL-A79",
             "AIA-PO-A53-7",
             "AIA-PO-A59-P1-E",
@@ -172,6 +173,7 @@ def test_each_role_gets_its_own_obligations(spec):
     assert "AIA-HR-A14" in provider_ids and "AIA-HR-A14" not in deployer_ids
     assert deployer_ids == {
         "AIA-ALL-A04",
+        "AIA-ALL-A04A",
         "AIA-ALL-A73",
         "AIA-ALL-A73-10",
         "AIA-ALL-A75c-3",
@@ -196,8 +198,9 @@ def test_each_role_gets_its_own_obligations(spec):
     # EVENT: the report is the provider's under 73(1), and Art. 26(5) hands it to a deployer that
     # has identified a serious incident and cannot reach the provider.
     assert provider_ids & deployer_ids == {
-        "AIA-ALL-A04",
-        "AIA-ALL-A73",
+            "AIA-ALL-A04",
+            "AIA-ALL-A04A",
+            "AIA-ALL-A73",
         "AIA-ALL-A73-10",
         "AIA-ALL-A75c-3",
         "AIA-ALL-A79",
@@ -244,16 +247,23 @@ def test_process_obligations_are_reported_but_never_judged(spec):
     assert "AIA-PO-A17" in outstanding[ActorRole.PROVIDER]
     assert report.permissions[ActorRole.PROVIDER] == [
         "AIA-NORM-A002-P13-LIMIT-HIGH-RISK-REQUIREMENTS",
+        "AIA-NORM-A004A-P1-HIGH-RISK-BIAS-DATA-PROCESSING",
+        "AIA-NORM-A004A-P2-OTHER-SYSTEM-BIAS-DATA-PROCESSING",
+        "AIA-NORM-A010-P3-COMBINED-DATASETS",
         "AIA-NORM-A015-P4-REDUNDANCY",
         "AIA-NORM-A017-P3-SECTORAL-INTEGRATION",
     ]
     assert report.legal_consequences[ActorRole.PROVIDER] == [
         "AIA-NORM-A017-P4-FINANCIAL-DEEMING"
     ]
+    assert report.conditional_applicability[ActorRole.PROVIDER] == [
+        "AIA-NORM-A010-P6-TESTING-DATA-ONLY"
+    ]
     assert "AIA-PO-A17" not in judge.asked
     # Grouped by who owes them: a provider cannot confirm that a deployer informed its workers.
     assert outstanding[ActorRole.DEPLOYER] == [
         "AIA-ALL-A04",
+        "AIA-ALL-A04A",
         "AIA-ALL-A73",
         "AIA-ALL-A73-10",
         "AIA-ALL-A75c-3",

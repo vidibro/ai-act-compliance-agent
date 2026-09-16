@@ -55,6 +55,7 @@ SPEC = POLICY / "spec.yaml"
 FIXTURE = ROOT / "data" / "golden_set" / "criteria" / "AIA-NORM-A015-P5-MODEL-FLAWS__omitted.md"
 
 RULE = "AIA-HR-A15"
+ARTICLE_10_RULE = "AIA-HR-A10"
 ARTICLE_17_RULE = "AIA-PO-A17"
 MODEL_FLAWS = "AIA-NORM-A015-P5-MODEL-FLAWS"
 SECTION_2_ALLOCATION = "AIA-REL-A016-A-ALLOCATES-SECTION-2"
@@ -85,6 +86,10 @@ def spec() -> PolicyRuleset:
 
 def a15(spec: PolicyRuleset) -> PolicyRule:
     return next(rule for rule in spec.rules if rule.rule_id == RULE)
+
+
+def a10(spec: PolicyRuleset) -> PolicyRule:
+    return next(rule for rule in spec.rules if rule.rule_id == ARTICLE_10_RULE)
 
 
 def a17(spec: PolicyRuleset) -> PolicyRule:
@@ -122,6 +127,30 @@ def test_every_criterion_resolves_to_one_norm_that_points_back(bundle, spec):
     norms = {norm.norm_id: norm for norm in bundle.norm_inventory.norms}
     for criterion in a15(spec).criteria:
         assert RULE in norms[criterion.norm_id].implementation_refs
+    assert traceability_errors(bundle, spec, LEDGER) == []
+
+
+def test_article_ten_has_thirteen_provider_obligation_criteria_and_reachable_carried_permission(
+    bundle, spec
+):
+    """Article 10(5) reaches Article 4a's report route without becoming a false pass/fail duty."""
+    listed = [criterion.norm_id for criterion in a10(spec).criteria]
+    assert len(listed) == 13
+    assert all(norm_id.startswith("AIA-NORM-A010-") for norm_id in listed)
+
+    norms = {norm.norm_id: norm for norm in bundle.norm_inventory.norms}
+    special_data = norms["AIA-NORM-A010-P5-SPECIAL-CATEGORY-PROCESSING"]
+    assert special_data.implementation_mode is ImplementationMode.CARRIED_BY_OTHER_NORM
+    carrier_id = bundle.norm_inventory.target_norm_ids_for(
+        special_data.norm_id, NormRelationKind.CARRIED_BY_NORMS
+    )
+    assert carrier_id == ["AIA-NORM-A004A-P1-HIGH-RISK-BIAS-DATA-PROCESSING"]
+    assert norms[carrier_id[0]].implementation_mode is ImplementationMode.REPORT_ONLY
+    testing_data_limit = next(
+        norm for norm in spec.report_norms if norm.norm_id == "AIA-NORM-A010-P6-TESTING-DATA-ONLY"
+    )
+    assert testing_data_limit.kind.value == "applicability"
+    assert testing_data_limit.activation_rule_ids == [ARTICLE_10_RULE]
     assert traceability_errors(bundle, spec, LEDGER) == []
 
 
@@ -192,7 +221,7 @@ def test_in_scope_permission_cannot_be_hidden_in_a_compliance_rule(bundle, spec)
 
     assert (
         f"{norm_id} is permission in enforced scope but implementation_mode is compliance_rule; "
-        "permissions and legal consequences must be report_only"
+        "permissions and legal consequences must be report_only or carried_by_other_norm"
     ) in traceability_errors(broken, spec, LEDGER)
 
 

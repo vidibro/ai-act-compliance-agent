@@ -160,6 +160,9 @@ def test_permissions_and_legal_effects_are_rendered_outside_the_verdict_list(spe
             "legal_consequences": {
                 ActorRole.PROVIDER: ["AIA-NORM-A017-P4-FINANCIAL-DEEMING"]
             },
+            "conditional_applicability": {
+                ActorRole.PROVIDER: ["AIA-NORM-A010-P6-TESTING-DATA-ONLY"]
+            },
         }
     )
     text = render_report(report, spec)
@@ -168,6 +171,12 @@ def test_permissions_and_legal_effects_are_rendered_outside_the_verdict_list(spe
     assert "conditional legal effects:" in text
     assert "AIA-NORM-A017-P4-FINANCIAL-DEEMING" in text
     assert "Article 17(1)(g), (h), and (i) remain independently required" in text
+    assert "conditional scope limits:" in text
+    assert "AIA-NORM-A010-P6-TESTING-DATA-ONLY" in text
+    assert (
+        "limit the Article 10(2) to (4) and Article 4a(1) requirements to testing datasets"
+        in text
+    )
 
 
 def test_an_obligation_nobody_judged_still_says_what_would_satisfy_it(spec):

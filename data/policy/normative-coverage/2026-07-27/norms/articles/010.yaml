@@ -477,7 +477,7 @@ norms:
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
-  implementation_mode: compliance_rule
+  implementation_mode: report_only
   implementation_refs:
   - AIA-HR-A10
   implementation_reason: ''
@@ -569,7 +569,7 @@ norms:
   implementation_refs: []
   implementation_reason: Article 4a(1) carries the same exceptional high-risk bias-data-processing permission
     and conditions.
-  verification_mode: judged_by_gap_analysis
+  verification_mode: reported_conditionally
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -605,7 +605,7 @@ norms:
   implementation_mode: carried_by_other_norm
   implementation_refs: []
   implementation_reason: Article 4a(1)(b) carries the same safeguard.
-  verification_mode: judged_by_gap_analysis
+  verification_mode: reported_conditionally
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -643,7 +643,7 @@ norms:
   implementation_mode: carried_by_other_norm
   implementation_refs: []
   implementation_reason: Article 4a(1)(c) carries the same safeguard.
-  verification_mode: judged_by_gap_analysis
+  verification_mode: reported_conditionally
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -679,7 +679,7 @@ norms:
   implementation_mode: carried_by_other_norm
   implementation_refs: []
   implementation_reason: Article 4a(1)(d) carries the same safeguard.
-  verification_mode: judged_by_gap_analysis
+  verification_mode: reported_conditionally
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -715,7 +715,7 @@ norms:
   implementation_mode: carried_by_other_norm
   implementation_refs: []
   implementation_reason: Article 4a(1)(e) carries the same safeguard.
-  verification_mode: judged_by_gap_analysis
+  verification_mode: reported_conditionally
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -753,7 +753,7 @@ norms:
   implementation_mode: carried_by_other_norm
   implementation_refs: []
   implementation_reason: Article 4a(1)(f) carries the same recordkeeping safeguard.
-  verification_mode: judged_by_gap_analysis
+  verification_mode: reported_conditionally
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -789,11 +789,11 @@ norms:
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
-  implementation_mode: compliance_rule
+  implementation_mode: report_only
   implementation_refs:
   - AIA-HR-A10
   implementation_reason: ''
-  verification_mode: judged_by_gap_analysis
+  verification_mode: reported_conditionally
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass

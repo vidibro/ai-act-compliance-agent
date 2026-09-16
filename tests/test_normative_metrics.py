@@ -1353,10 +1353,22 @@ def test_article_ten_covers_dataset_quality_and_reuses_article_4a_safeguards():
             norm.norm_id, NormRelationKind.CARRIED_BY_NORMS
         ) == [carrier_id]
 
-    uniquely_implemented = set(norms) - set(carried_by)
+    uniquely_implemented = set(norms) - set(carried_by) - {
+        "AIA-NORM-A010-P3-COMBINED-DATASETS",
+        "AIA-NORM-A010-P6-TESTING-DATA-ONLY",
+    }
     assert all(
         norms[norm_id].implementation_refs == ["AIA-HR-A10"] for norm_id in uniquely_implemented
     )
+    assert norms["AIA-NORM-A010-P3-COMBINED-DATASETS"].implementation_mode.value == "report_only"
+    assert norms["AIA-NORM-A010-P6-TESTING-DATA-ONLY"].implementation_mode.value == "report_only"
+    testing_data_limit = next(
+        relation
+        for relation in bundle.norm_inventory.relations
+        if relation.source_norm_id == "AIA-NORM-A010-P6-TESTING-DATA-ONLY"
+        and relation.kind is NormRelationKind.CARRIED_BY_POLICY_RULES
+    )
+    assert testing_data_limit.target_rule_ids == ["AIA-HR-A10"]
 
 
 def test_article_eleven_separates_documentation_content_and_assessment_duties():

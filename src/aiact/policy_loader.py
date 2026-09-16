@@ -446,7 +446,7 @@ def _national_law_notices(norms_root: Path, version: str) -> list[dict[str, obje
 
 
 def _report_norms(norms_root: Path, version: str) -> list[dict[str, object]]:
-    """Materialise permissions and legal effects that the report must show but never judge.
+    """Materialise non-judged legal statements that the report must show.
 
     The marker is intentionally narrow: only ``report_only`` norms participate.  This makes a
     new permission visible debt until its author explicitly chooses its report treatment, instead
@@ -470,7 +470,8 @@ def _report_norms(norms_root: Path, version: str) -> list[dict[str, object]]:
         if (
             norm.product_scope is ProductScope.IN_SCOPE
             and norm.implementation_mode is ImplementationMode.REPORT_ONLY
-            and norm.kind in {NormKind.PERMISSION, NormKind.LEGAL_CONSEQUENCE}
+            and norm.kind
+            in {NormKind.PERMISSION, NormKind.LEGAL_CONSEQUENCE, NormKind.APPLICABILITY}
         ):
             projected.append(report_norm_from_norm(norm).model_dump())
     return sorted(projected, key=lambda item: str(item["norm_id"]))

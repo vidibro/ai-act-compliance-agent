@@ -334,6 +334,14 @@ class ComplianceReport(BaseModel):
     exceptions; the product does not decide that a reader qualifies from silence in a document.
     """
 
+    conditional_applicability: dict[ActorRole, list[str]] = {}
+    """Canonical applicability norm ids, keyed by the active duty-holder role.
+
+    These state a condition that narrows a rule's scope. They are shown without a verdict: silence
+    in a document does not prove the condition applies. Keeping them outside findings prevents a
+    scope limit from changing the verdict of the obligations it limits.
+    """
+
     deployer_type: Answer | None = None
     """What kind of organisation deploys the system — read from the documentation, where it says.
 
@@ -724,6 +732,7 @@ class ComplianceReport(BaseModel):
             for field_name, expected_kind in (
                 ("permissions", "permission"),
                 ("legal_consequences", "legal_consequence"),
+                ("conditional_applicability", "applicability"),
             ):
                 for norm_id in [
                     norm_id for ids in getattr(self, field_name).values() for norm_id in ids

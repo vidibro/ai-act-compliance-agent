@@ -192,7 +192,14 @@ def render_report(report: ComplianceReport, spec: PolicyRuleset) -> str:
         outstanding = report.not_document_verifiable.get(role, [])
         permissions = report.permissions.get(role, [])
         legal_consequences = report.legal_consequences.get(role, [])
-        if not findings and not outstanding and not permissions and not legal_consequences:
+        conditional_applicability = report.conditional_applicability.get(role, [])
+        if (
+            not findings
+            and not outstanding
+            and not permissions
+            and not legal_consequences
+            and not conditional_applicability
+        ):
             continue
         out.append(f"--- {role.value} ---")
         for finding in findings:
@@ -224,6 +231,11 @@ def render_report(report: ComplianceReport, spec: PolicyRuleset) -> str:
         if legal_consequences:
             out.append("  conditional legal effects:")
             for norm_id in legal_consequences:
+                norm = report_norms.get(norm_id)
+                out += _report_norm_block(norm) if norm else [f"  --  {norm_id}"]
+        if conditional_applicability:
+            out.append("  conditional scope limits:")
+            for norm_id in conditional_applicability:
                 norm = report_norms.get(norm_id)
                 out += _report_norm_block(norm) if norm else [f"  --  {norm_id}"]
         counts = (report.summary.per_role or {}).get(role)

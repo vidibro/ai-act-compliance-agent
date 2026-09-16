@@ -166,6 +166,7 @@ records:
   subject_ref: provider
   subject_category: supported_operator
   kind: permission
+  implementation_mode: report_only
   implementation_refs: *id001
   verification_mode: reported_conditionally
   verified_by: vidibro
@@ -208,7 +209,7 @@ records:
   implementation_mode: carried_by_other_norm
   implementation_reason: Article 4a(1) carries the same exceptional high-risk bias-data-processing permission
     and conditions.
-  verification_mode: judged_by_gap_analysis
+  verification_mode: reported_conditionally
   verified_by: vidibro
 - norm_id: AIA-NORM-A010-P5-B-REUSE-SECURITY
   source: A010-P015
@@ -223,7 +224,7 @@ records:
   - A010-P013
   implementation_mode: carried_by_other_norm
   implementation_reason: Article 4a(1)(b) carries the same safeguard.
-  verification_mode: judged_by_gap_analysis
+  verification_mode: reported_conditionally
   verified_by: vidibro
 - norm_id: AIA-NORM-A010-P5-C-ACCESS-SAFEGUARDS
   source: A010-P016
@@ -240,7 +241,7 @@ records:
   - A010-P013
   implementation_mode: carried_by_other_norm
   implementation_reason: Article 4a(1)(c) carries the same safeguard.
-  verification_mode: judged_by_gap_analysis
+  verification_mode: reported_conditionally
   verified_by: vidibro
 - norm_id: AIA-NORM-A010-P5-D-NO-THIRD-PARTY-ACCESS
   source: A010-P017
@@ -255,7 +256,7 @@ records:
   - A010-P013
   implementation_mode: carried_by_other_norm
   implementation_reason: Article 4a(1)(d) carries the same safeguard.
-  verification_mode: judged_by_gap_analysis
+  verification_mode: reported_conditionally
   verified_by: vidibro
 - norm_id: AIA-NORM-A010-P5-E-DELETE-DATA
   source: A010-P018
@@ -270,7 +271,7 @@ records:
   - A010-P013
   implementation_mode: carried_by_other_norm
   implementation_reason: Article 4a(1)(e) carries the same safeguard.
-  verification_mode: judged_by_gap_analysis
+  verification_mode: reported_conditionally
   verified_by: vidibro
 - norm_id: AIA-NORM-A010-P5-F-RECORD-NECESSITY
   source: A010-P019
@@ -287,7 +288,7 @@ records:
   - A010-P013
   implementation_mode: carried_by_other_norm
   implementation_reason: Article 4a(1)(f) carries the same recordkeeping safeguard.
-  verification_mode: judged_by_gap_analysis
+  verification_mode: reported_conditionally
   verified_by: vidibro
 - norm_id: AIA-NORM-A010-P6-TESTING-DATA-ONLY
   source: A010-P020
@@ -301,6 +302,7 @@ records:
   kind: applicability
   conditions:
   - the high-risk AI system is developed without techniques involving training an AI model
+  implementation_mode: report_only
   implementation_refs: *id001
-  verification_mode: judged_by_gap_analysis
+  verification_mode: reported_conditionally
   verified_by: vidibro

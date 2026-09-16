@@ -234,12 +234,13 @@ def build_graph(
         outstanding = {role: sorted(ids) for role, ids in outstanding.items() if ids}
         permissions: dict[ActorRole, list[str]] = {}
         legal_consequences: dict[ActorRole, list[str]] = {}
+        conditional_applicability: dict[ActorRole, list[str]] = {}
         for active in state.active:
             active_rule_ids = {rule.rule_id for rule in active.all_rules}
             for report_norm in spec.report_norms:
                 if not active_rule_ids.intersection(report_norm.activation_rule_ids):
                     continue
-                # Activation tells us WHEN the permission or legal consequence becomes relevant;
+                # Activation tells us WHEN the non-judged statement becomes relevant;
                 # its canonical subject tells us WHO receives it in the report.  They usually
                 # coincide, but Article 59's prospective-provider permission is conditioned by
                 # duties split across a prospective provider, a provider, and a sandbox
@@ -255,7 +256,11 @@ def build_graph(
                 destination = (
                     permissions
                     if report_norm.kind is NormKind.PERMISSION
-                    else legal_consequences
+                    else (
+                        legal_consequences
+                        if report_norm.kind is NormKind.LEGAL_CONSEQUENCE
+                        else conditional_applicability
+                    )
                 )
                 ids = destination.setdefault(active.role, [])
                 if report_norm.norm_id not in ids:
@@ -263,6 +268,9 @@ def build_graph(
         permissions = {role: sorted(ids) for role, ids in permissions.items() if ids}
         legal_consequences = {
             role: sorted(ids) for role, ids in legal_consequences.items() if ids
+        }
+        conditional_applicability = {
+            role: sorted(ids) for role, ids in conditional_applicability.items() if ids
         }
         return {
             "report": ComplianceReport(
@@ -275,6 +283,7 @@ def build_graph(
                 not_document_verifiable=outstanding,
                 permissions=permissions,
                 legal_consequences=legal_consequences,
+                conditional_applicability=conditional_applicability,
                 provider_reallocation=state.provider_reallocation,
                 deployer_type=state.deployer_type,
                 real_world_testing=state.real_world_testing,

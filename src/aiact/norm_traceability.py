@@ -53,7 +53,7 @@ def _reconstruction_errors(norm: Norm) -> list[str]:
 
 
 def _report_reconstruction_errors(norm: Norm) -> list[str]:
-    """Structured fields a report-only permission or legal effect needs."""
+    """Structured fields a report-only legal statement needs."""
     errors = []
     if norm.review.status is not ReviewStatus.APPROVED:
         errors.append(f"review status is {norm.review.status.value}, not approved")
@@ -61,7 +61,7 @@ def _report_reconstruction_errors(norm: Norm) -> list[str]:
         errors.append(f"implementation_mode is {norm.implementation_mode.value}")
     if norm.product_scope is not ProductScope.IN_SCOPE:
         errors.append(f"product_scope is {norm.product_scope.value}")
-    if norm.kind not in {NormKind.PERMISSION, NormKind.LEGAL_CONSEQUENCE}:
+    if norm.kind not in {NormKind.PERMISSION, NormKind.LEGAL_CONSEQUENCE, NormKind.APPLICABILITY}:
         errors.append(f"kind is {norm.kind.value}, not reportable")
     if norm.verification_mode is VerificationMode.UNRESOLVED:
         errors.append("verification_mode is unresolved")
@@ -133,33 +133,38 @@ def traceability_errors(
                     f"{norm.norm_id} names unknown classification question(s) {unknown_questions}"
                 )
 
-    # A permission or legal consequence has no pass/fail answer.  If it were allowed to use a
-    # compliance-rule mode, a future author could put it in a standalone rule and omit it from the
-    # reader-facing "allowed" / "legal effect" sections.  Enforce the canonical split before
-    # checking either projection direction.
+    # A permission or legal consequence has no pass/fail answer.  A norm may either materialise
+    # directly as report-only, or be an exact duplicate carried by such a norm.  It can never use
+    # a compliance rule: that would allow a reader-facing allowed/legal-effect route to disappear
+    # into a pass/fail result.
     for norm in sorted(norms.values(), key=lambda item: item.norm_id):
         if not in_scope(norm) or norm.review.status is ReviewStatus.SUPERSEDED:
             continue
         if (
             norm.kind in {NormKind.PERMISSION, NormKind.LEGAL_CONSEQUENCE}
             and norm.product_scope is ProductScope.IN_SCOPE
-            and norm.implementation_mode is not ImplementationMode.REPORT_ONLY
+            and norm.implementation_mode
+            not in {ImplementationMode.REPORT_ONLY, ImplementationMode.CARRIED_BY_OTHER_NORM}
         ):
             errors.append(
                 f"{norm.norm_id} is {norm.kind.value} in enforced scope but "
                 f"implementation_mode is {norm.implementation_mode.value}; permissions and "
-                "legal consequences must be report_only"
+                "legal consequences must be report_only or carried_by_other_norm"
             )
 
-    # Report-only permissions and legal effects are not criteria: their presence tells a reader
-    # what is allowed or what relief applies, never whether an obligation passed.  They still need
-    # an exact bidirectional activation link, or a permissive route could silently disappear.
+    # Report-only legal statements are not criteria: they tell a reader what is allowed, what
+    # relief applies, or when a rule is narrowed, never whether an obligation passed. They still
+    # need an exact bidirectional activation link, or could silently disappear.
     for norm in sorted(norms.values(), key=lambda item: item.norm_id):
         if not in_scope(norm) or norm.review.status is ReviewStatus.SUPERSEDED:
             continue
         if norm.implementation_mode is not ImplementationMode.REPORT_ONLY:
             continue
-        if norm.kind not in {NormKind.PERMISSION, NormKind.LEGAL_CONSEQUENCE}:
+        if norm.kind not in {
+            NormKind.PERMISSION,
+            NormKind.LEGAL_CONSEQUENCE,
+            NormKind.APPLICABILITY,
+        }:
             errors.append(
                 f"{norm.norm_id} is report_only but has non-reportable kind {norm.kind.value}"
             )
@@ -195,7 +200,10 @@ def traceability_errors(
         if norm_id in path:
             return set()
         target = norms[norm_id]
-        if target.implementation_mode is ImplementationMode.COMPLIANCE_RULE:
+        if target.implementation_mode in {
+            ImplementationMode.COMPLIANCE_RULE,
+            ImplementationMode.REPORT_ONLY,
+        }:
             return set(target.implementation_refs)
         relations = carried_relations_by_source.get(norm_id, [])
         if target.implementation_mode is not ImplementationMode.CARRIED_BY_OTHER_NORM or len(
@@ -205,6 +213,48 @@ def traceability_errors(
         return set().union(
             *(resolved_rule_ids(child, (*path, norm_id)) for child in relations[0].target_norm_ids)
         )
+
+    def report_only_carrier_ids(norm_id: str, path: tuple[str, ...] = ()) -> set[str]:
+        """Canonical reader-facing norms reached by a carried permission/effect."""
+        if norm_id in path:
+            return set()
+        target = norms[norm_id]
+        if target.implementation_mode is ImplementationMode.REPORT_ONLY:
+            return {norm_id}
+        relations = carried_relations_by_source.get(norm_id, [])
+        if target.implementation_mode is not ImplementationMode.CARRIED_BY_OTHER_NORM or len(
+            relations
+        ) != 1:
+            return set()
+        return set().union(
+            *(
+                report_only_carrier_ids(child, (*path, norm_id))
+                for child in relations[0].target_norm_ids
+            )
+        )
+
+    # A carried permission or legal effect is valid only when its one canonical chain ends in a
+    # materialised report-only norm.  This preserves one report entry while making disappearance
+    # impossible.
+    for norm in sorted(norms.values(), key=lambda item: item.norm_id):
+        if (
+            not in_scope(norm)
+            or norm.review.status is ReviewStatus.SUPERSEDED
+            or norm.kind not in {NormKind.PERMISSION, NormKind.LEGAL_CONSEQUENCE}
+            or norm.implementation_mode is not ImplementationMode.CARRIED_BY_OTHER_NORM
+        ):
+            continue
+        relations = carried_relations_by_source.get(norm.norm_id, [])
+        if len(relations) != 1:
+            errors.append(
+                f"{norm.norm_id} carried permission/legal consequence requires exactly one "
+                f"carried_by_norms relation, found {len(relations)}"
+            )
+        elif not report_only_carrier_ids(norm.norm_id):
+            errors.append(
+                f"{norm.norm_id} carried permission/legal consequence does not resolve to a "
+                "report_only norm"
+            )
 
     # Norm -> rule: every enforced compliance norm is either a criterion, a typed relation, or an
     # unambiguous one-to-one rule. The last form needs no criterion container to preserve identity.

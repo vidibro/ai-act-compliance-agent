@@ -120,18 +120,18 @@ class RuleCriterion(BaseModel):
 
 
 class ReportNorm(BaseModel):
-    """A permission or legal effect rendered from one canonical norm.
+    """A non-judged report statement rendered from one canonical norm.
 
     This is deliberately not authored in ``spec.yaml``.  The loader materialises it from a norm
     marked ``report_only`` and retains the rule(s) that activate its report.  Thus an allowed route
-    or legal relief has the same single source of truth as an obligation, but cannot be mistaken
-    for a criterion whose failure decides a compliance verdict.
+    legal relief, or scope limit has the same single source of truth as an obligation, but cannot
+    be mistaken for a criterion whose failure decides a compliance verdict.
     """
 
     model_config = ConfigDict(frozen=True)
 
     norm_id: str = Field(pattern=r"^AIA-NORM-[A-Z0-9-]+$")
-    kind: Literal[NormKind.PERMISSION, NormKind.LEGAL_CONSEQUENCE]
+    kind: Literal[NormKind.PERMISSION, NormKind.LEGAL_CONSEQUENCE, NormKind.APPLICABILITY]
     subjects: list[str] = Field(min_length=1)
     action: str = Field(min_length=1)
     norm_text: str = Field(min_length=1)
