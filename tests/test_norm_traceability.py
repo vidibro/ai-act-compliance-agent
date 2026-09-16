@@ -163,6 +163,19 @@ def test_article_seven_is_recorded_as_commission_amendment_law_not_product_rules
     assert traceability_errors(bundle, spec, LEDGER) == []
 
 
+def test_article_eight_materialises_the_sectoral_integration_permission(bundle, spec):
+    """An optional integration route must not disappear into its Article 8(2) obligation rule."""
+    norms = {norm.norm_id: norm for norm in bundle.norm_inventory.norms}
+    permission_id = "AIA-NORM-A008-P2-INTEGRATE-COMPLIANCE-PROCESSES"
+    assert norms[permission_id].implementation_mode is ImplementationMode.REPORT_ONLY
+    report_norm = next(item for item in spec.report_norms if item.norm_id == permission_id)
+    assert report_norm.activation_rule_ids == ["AIA-PO-A08-2"]
+    assert norms["AIA-NORM-A008-P2-ENSURE-PRODUCT-COMPLIANCE"].implementation_mode is (
+        ImplementationMode.COMPLIANCE_RULE
+    )
+    assert traceability_errors(bundle, spec, LEDGER) == []
+
+
 def test_article_ten_has_thirteen_provider_obligation_criteria_and_reachable_carried_permission(
     bundle, spec
 ):

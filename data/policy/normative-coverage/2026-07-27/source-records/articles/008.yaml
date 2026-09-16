@@ -41,6 +41,7 @@ records:
   conditions:
   - the product contains an AI system to which both this Regulation and Union harmonisation legislation
     listed in Annex I Section A apply
+  implementation_mode: compliance_rule
   implementation_refs:
   - AIA-PO-A08-2
   verification_mode: reported_not_judged
@@ -63,6 +64,7 @@ records:
     listed in Annex I Section A apply
   - integration is appropriate for ensuring consistency, avoiding duplication, and minimising additional
     burdens
+  implementation_mode: report_only
   implementation_refs:
   - AIA-PO-A08-2
   verification_mode: reported_conditionally
