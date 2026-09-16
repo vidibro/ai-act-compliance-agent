@@ -1,0 +1,9 @@
+schema_version: 1
+finding_id: AIA-VALID-83E43D172407920D
+target_file: source-records/articles/014.yaml
+before_sha256: 69cf8048931999f1db6e417b674cdc6518895ac3400e67b86aa779705ac54412
+after_sha256: 2e50bd53b14abf3eda4466a64c7a85881ca776b0ddc3eef1982965eabc66a949
+replacements:
+  - old: "  action: design human oversight to prevent or minimise health, safety, and fundamental-rights risks arising\n    from intended use or reasonably foreseeable misuse, including residual risks"
+    new: "  action: design human oversight to prevent or minimise health, safety, and fundamental-rights risks that\n    emerge when the system is used for its intended purpose or under reasonably foreseeable misuse, including risks that persist despite other Section 2 requirements"
+    expected_occurrences: 1

@@ -44,8 +44,9 @@ norms:
   subjects:
   - subject_ref: provider
     category: supported_operator
-  action: design human oversight to prevent or minimise health, safety, and fundamental-rights risks arising
-    from intended use or reasonably foreseeable misuse, including residual risks
+  action: design human oversight to prevent or minimise health, safety, and fundamental-rights risks that
+    emerge when the system is used for its intended purpose or under reasonably foreseeable misuse, including
+    risks that persist despite other Section 2 requirements
   norm_text: Human oversight shall aim to prevent or minimise the risks to health, safety or fundamental
     rights that may emerge when a high-risk AI system is used in accordance with its intended purpose
     or under conditions of reasonably foreseeable misuse, in particular where such risks persist despite
@@ -383,7 +384,7 @@ norms:
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
-  implementation_mode: compliance_rule
+  implementation_mode: report_only
   implementation_refs:
   - AIA-HR-A14
   implementation_reason: ''

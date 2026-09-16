@@ -18,8 +18,8 @@ records:
     that may emerge when a high-risk AI system is used in accordance with its intended purpose or under
     conditions of reasonably foreseeable misuse, in particular where such risks persist despite the application
     of other requirements set out in this Section.
-  action: design human oversight to prevent or minimise health, safety, and fundamental-rights risks arising
-    from intended use or reasonably foreseeable misuse, including residual risks
+  action: design human oversight to prevent or minimise health, safety, and fundamental-rights risks that
+    emerge when the system is used for its intended purpose or under reasonably foreseeable misuse, including risks that persist despite other Section 2 requirements
   subject_ref: provider
   subject_category: supported_operator
   implementation_refs: *id001
@@ -136,6 +136,7 @@ records:
   conditions:
   - the high-risk AI system is used for law enforcement, migration, border control, or asylum
   - Union or national law considers two-person verification disproportionate for that use
+  implementation_mode: report_only
   implementation_refs: *id001
   verification_mode: reported_conditionally
   verified_by: vidibro

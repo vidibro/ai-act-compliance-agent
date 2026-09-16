@@ -230,6 +230,17 @@ def test_article_thirteen_maps_transparency_and_instruction_contents_separately(
     assert traceability_errors(bundle, spec, LEDGER) == []
 
 
+def test_article_fourteen_separates_oversight_duties_from_its_scope_exception(bundle, spec):
+    rule = next(rule for rule in spec.rules if rule.rule_id == "AIA-HR-A14")
+    assert len(rule.criteria) == 9
+    norms = {norm.norm_id: norm for norm in bundle.norm_inventory.norms}
+    assert (
+        norms["AIA-NORM-A014-P5-DISPROPORTIONATE-EXCEPTION"].implementation_mode
+        is ImplementationMode.REPORT_ONLY
+    )
+    assert traceability_errors(bundle, spec, LEDGER) == []
+
+
 def test_article_ten_has_thirteen_provider_obligation_criteria_and_reachable_carried_permission(
     bundle, spec
 ):
