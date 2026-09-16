@@ -127,6 +127,7 @@ norms:
   detection_channels:
   - semantic_legal_effect
   - other_modal
+  - existing_implementation
   primary_spans:
   - AIA-TEXT-A011-P1
   qualifier_spans: []
@@ -137,8 +138,9 @@ norms:
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
-  implementation_mode: missing
-  implementation_refs: []
+  implementation_mode: report_only
+  implementation_refs:
+  - AIA-HR-A11
   implementation_reason: ''
   verification_mode: reported_conditionally
   review:

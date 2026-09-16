@@ -196,6 +196,22 @@ def test_article_nine_separates_its_eighteen_duties_from_scope_and_permission_en
     assert traceability_errors(bundle, spec, LEDGER) == []
 
 
+def test_article_eleven_separates_the_simplified_documentation_permission(bundle, spec):
+    rule = next(rule for rule in spec.rules if rule.rule_id == "AIA-HR-A11")
+    assert [criterion.norm_id for criterion in rule.criteria] == [
+        "AIA-NORM-A011-P1-DRAW",
+        "AIA-NORM-A011-P1-DEMONSTRATE",
+        "AIA-NORM-A011-P1-ANNEX-IV",
+        "AIA-NORM-A011-P1-USE-FORM",
+    ]
+    norms = {norm.norm_id: norm for norm in bundle.norm_inventory.norms}
+    assert (
+        norms["AIA-NORM-A011-P1-SIMPLIFY"].implementation_mode
+        is ImplementationMode.REPORT_ONLY
+    )
+    assert traceability_errors(bundle, spec, LEDGER) == []
+
+
 def test_article_ten_has_thirteen_provider_obligation_criteria_and_reachable_carried_permission(
     bundle, spec
 ):
