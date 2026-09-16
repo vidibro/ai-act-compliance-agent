@@ -250,6 +250,13 @@ def test_article_nineteen_maps_each_log_retention_duty_to_a_criterion(bundle, sp
     assert traceability_errors(bundle, spec, LEDGER) == []
 
 
+def test_article_twenty_separates_corrective_response_from_risk_investigation(bundle, spec):
+    rules = {rule.rule_id: rule for rule in spec.rules}
+    assert len(rules["AIA-PO-A20"].criteria) == 2
+    assert rules["AIA-PO-A20-2"].criteria == []
+    assert traceability_errors(bundle, spec, LEDGER) == []
+
+
 def test_article_ten_has_thirteen_provider_obligation_criteria_and_reachable_carried_permission(
     bundle, spec
 ):
