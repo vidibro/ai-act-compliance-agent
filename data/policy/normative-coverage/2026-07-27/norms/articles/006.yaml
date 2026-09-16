@@ -357,6 +357,7 @@ norms:
   detection_channels:
   - semantic_legal_effect
   - shall_token
+  - existing_implementation
   primary_spans:
   - AIA-TEXT-A006-P015
   qualifier_spans: []
@@ -367,8 +368,9 @@ norms:
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
-  implementation_mode: missing
-  implementation_refs: []
+  implementation_mode: compliance_rule
+  implementation_refs:
+  - AIA-NHR-A06-4-REGISTER
   implementation_reason: ''
   verification_mode: reported_not_judged
   review:
@@ -392,6 +394,7 @@ norms:
   detection_channels:
   - semantic_legal_effect
   - shall_token
+  - existing_implementation
   primary_spans:
   - AIA-TEXT-A006-P015
   qualifier_spans: []
@@ -402,8 +405,9 @@ norms:
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
-  implementation_mode: missing
-  implementation_refs: []
+  implementation_mode: compliance_rule
+  implementation_refs:
+  - AIA-NHR-A06-4-PROVIDE-ASSESSMENT
   implementation_reason: ''
   verification_mode: reported_not_judged
   review:

@@ -171,6 +171,9 @@ records:
   conditions:
   - the provider concludes that an Annex III AI system is not high-risk under Article 6(3)
   verification_mode: reported_not_judged
+  implementation_mode: compliance_rule
+  implementation_refs:
+  - AIA-NHR-A06-4-REGISTER
   verified_by: vidibro
 - norm_id: AIA-NORM-A006-P4-PROVIDE-ASSESSMENT
   source: A006-P015
@@ -183,6 +186,9 @@ records:
   conditions:
   - a national competent authority requests the documentation
   verification_mode: reported_not_judged
+  implementation_mode: compliance_rule
+  implementation_refs:
+  - AIA-NHR-A06-4-PROVIDE-ASSESSMENT
   verified_by: vidibro
 - norm_id: AIA-NORM-A006-P5-PROVIDE-GUIDELINES
   source: A006-P016

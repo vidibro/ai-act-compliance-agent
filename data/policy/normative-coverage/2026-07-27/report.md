@@ -1163,10 +1163,10 @@ the policy spec, so those report elements remain traceable to reviewed norms.
 - Normative segments yielding multiple propositions: 231
 - Semantic candidates a shall-token pass missed: 536
 - Shall-token candidate recall: 61.5%
-- In-scope semantic candidates absent from existing implementation: 90
-- Detection-channel counts: cross_reference_structure=410, deeming_or_consequence=270, existing_implementation=477, other_modal=167, semantic_legal_effect=1391, shall_token=855
-- Mapping shapes, by norm: one-to-one=31, many-to-one=425, one-to-many=1, many-to-many=20, unmapped=914
-- Implementation debt candidates: 69
+- In-scope semantic candidates absent from existing implementation: 88
+- Detection-channel counts: cross_reference_structure=410, deeming_or_consequence=270, existing_implementation=479, other_modal=167, semantic_legal_effect=1391, shall_token=855
+- Mapping shapes, by norm: one-to-one=33, many-to-one=425, one-to-many=1, many-to-many=20, unmapped=912
+- Implementation debt candidates: 67
 - Interpretive links to non-binding guidance: 1
 - Review records with measured elapsed time: 0/2922
 - Parallel-duty groups: 21, linking 63 norms

@@ -130,6 +130,24 @@ def test_every_criterion_resolves_to_one_norm_that_points_back(bundle, spec):
     assert traceability_errors(bundle, spec, LEDGER) == []
 
 
+def test_article_six_separates_document_and_process_duties(bundle, spec):
+    """Each Article 6(4) provider duty has one deterministic, distinct implementation path."""
+    norms = {norm.norm_id: norm for norm in bundle.norm_inventory.norms}
+    expected = {
+        "AIA-NORM-A006-P4-DOCUMENT-ASSESSMENT": "AIA-NHR-A06-4",
+        "AIA-NORM-A006-P4-REGISTER-SYSTEM": "AIA-NHR-A06-4-REGISTER",
+        "AIA-NORM-A006-P4-PROVIDE-ASSESSMENT": "AIA-NHR-A06-4-PROVIDE-ASSESSMENT",
+    }
+    assert {
+        norm_id: norms[norm_id].implementation_refs for norm_id in expected
+    } == {norm_id: [rule_id] for norm_id, rule_id in expected.items()}
+    assert all(
+        next(rule for rule in spec.rules if rule.rule_id == rule_id).criteria == []
+        for rule_id in expected.values()
+    )
+    assert traceability_errors(bundle, spec, LEDGER) == []
+
+
 def test_article_ten_has_thirteen_provider_obligation_criteria_and_reachable_carried_permission(
     bundle, spec
 ):

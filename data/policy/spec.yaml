@@ -1890,7 +1890,7 @@ rules:
       the date the Article gives and says plainly that it looks inverted.
     status: active
 
-  # WHAT THE REGISTRATION CONSISTS OF. AIA-PO-A49, AIA-DP-A49-3 and AIA-NHR-A06-4 carry the duty to
+  # WHAT THE REGISTRATION CONSISTS OF. AIA-PO-A49, AIA-DP-A49-3 and AIA-NHR-A06-4-REGISTER carry the duty to
   # register; Art. 71(2) and (3) say what has to be entered. The split between them is by party,
   # and it is not the split Art. 49 uses: 71(2) is the provider's Sections A and B, 71(3) is the
   # public-authority deployer's Section C.
@@ -2765,14 +2765,15 @@ rules:
     status: active
 
   # ------------------------------------------------------------------------------------------
-  # Art. 6(4) — obligation attaching to NOT-HIGH-RISK (derogated) Annex III systems.
-  # Shows that risk-class filtering is real: this rule never applies to a high_risk use case.
+  # Art. 6(4) — duty to document a NOT-HIGH-RISK (derogated) Annex III assessment.
+  # The registration and disclosure-on-request limbs are distinct process rules below: they have
+  # different evidence and cannot be hidden in this document check.
   # ------------------------------------------------------------------------------------------
   - rule_id: AIA-NHR-A06-4
     source:
       instrument: "Regulation (EU) 2024/1689"
       article: 6
-      paragraph: 4 # document the not-high-risk assessment + register under Art. 49(2)
+      paragraph: 4 # document the not-high-risk assessment
       act_version_date: 2026-07-27
     applies_to_risk_class: [not_high_risk]
     applies_to_role: [provider]
@@ -2787,7 +2788,9 @@ rules:
     evidence_expected: >-
       A documented not-high-risk assessment: which Art. 6(3) derogation condition is relied upon and
       why the system does not pose a significant risk. The reasoning IS expected in the
-      documentation, hence document-verifiable.
+      documentation, hence document-verifiable. Registration and production to an authority on
+      request are separate process duties, reported under AIA-NHR-A06-4-REGISTER and
+      AIA-NHR-A06-4-PROVIDE-ASSESSMENT.
     document_verifiable: true
     effective_date: 2027-12-02
     effective_date_note: >-
@@ -2803,6 +2806,57 @@ rules:
       which was not moved — so on the text that registration is already due, sixteen months before
       the assessment it registers. A provider relying on an Art. 6(3) derogation should take advice
       on which date binds them rather than the later one by default.
+    status: active
+
+  # The remaining Art. 6(4) limbs have the same risk and duty-holder gate as the assessment, but
+  # their evidence is an external act or a later response, not the assessment document itself.
+  - rule_id: AIA-NHR-A06-4-REGISTER
+    source:
+      instrument: "Regulation (EU) 2024/1689"
+      article: 6
+      paragraph: 4
+      act_version_date: 2026-07-27
+    applies_to_risk_class: [not_high_risk]
+    applies_to_role: [provider]
+    qualified_by:
+      - article: 49
+        paragraph: 2
+    obligation_status: mandatory
+    check_type: presence
+    evidence_expected: >-
+      Registration of the provider and the Annex III system in the EU database under Article 49(2),
+      after the provider concludes under Article 6(3) that the system is not high-risk. This is an
+      external registry action, not evidence that can be verified from the supplied documentation;
+      confirm it separately.
+    document_verifiable: false
+    effective_date: 2027-12-02
+    effective_date_note: >-
+      This follows the same contested Article 6(4) reading as AIA-NHR-A06-4. Article 49(2) is in
+      Section 5 and otherwise applies from 2 August 2026, but the registration is triggered by the
+      Article 6(3) conclusion. A provider relying on the derogation should take advice rather than
+      treat the later date as certain.
+    status: active
+
+  - rule_id: AIA-NHR-A06-4-PROVIDE-ASSESSMENT
+    source:
+      instrument: "Regulation (EU) 2024/1689"
+      article: 6
+      paragraph: 4
+      act_version_date: 2026-07-27
+    applies_to_risk_class: [not_high_risk]
+    applies_to_role: [provider]
+    obligation_status: mandatory
+    check_type: presence
+    evidence_expected: >-
+      A process for providing the documented Article 6(3) non-high-risk assessment when a national
+      competent authority requests it. Whether a request was received and answered is not
+      verifiable from the supplied system documentation; confirm separately.
+    document_verifiable: false
+    effective_date: 2027-12-02
+    effective_date_note: >-
+      This follows the same contested Article 6(4) reading as AIA-NHR-A06-4: the duty attaches to
+      a provider's Article 6(3) conclusion, although the alternative reading is that it applies
+      from the general date of 2 August 2026.
     status: active
 
   # ------------------------------------------------------------------------------------------
