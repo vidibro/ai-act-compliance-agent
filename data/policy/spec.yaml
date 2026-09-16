@@ -604,6 +604,10 @@ rules:
       annex_iii: 2027-12-02
       annex_i: 2028-08-02
     status: active
+    criteria:
+      - norm_id: AIA-NORM-A013-P1-TRANSPARENT-OPERATION
+      - norm_id: AIA-NORM-A013-P1-APPROPRIATE-TRANSPARENCY
+      - norm_id: AIA-NORM-A013-P2-PROVIDE-INSTRUCTIONS
 
   # THE CONTENTS OF THE INSTRUCTIONS. AIA-HR-A13 asks whether the system is transparent and its
   # instructions fit to be read; Art. 13(3) is a list of six items the instructions "shall contain
@@ -654,6 +658,20 @@ rules:
       annex_iii: 2027-12-02
       annex_i: 2028-08-02
     status: active
+    criteria:
+      - norm_id: AIA-NORM-A013-P3-A-CONTACT-DETAILS
+      - norm_id: AIA-NORM-A013-P3-B-PERFORMANCE-CHARACTERISTICS
+      - norm_id: AIA-NORM-A013-P3-B-I-INTENDED-PURPOSE
+      - norm_id: AIA-NORM-A013-P3-B-II-PERFORMANCE-AND-AFFECTING-CIRCUMSTANCES
+      - norm_id: AIA-NORM-A013-P3-B-III-RISK-CIRCUMSTANCES
+      - norm_id: AIA-NORM-A013-P3-B-IV-EXPLAIN-OUTPUT
+      - norm_id: AIA-NORM-A013-P3-B-V-GROUP-PERFORMANCE
+      - norm_id: AIA-NORM-A013-P3-B-VI-INPUT-DATA
+      - norm_id: AIA-NORM-A013-P3-B-VII-INTERPRET-OUTPUT
+      - norm_id: AIA-NORM-A013-P3-C-PREDETERMINED-CHANGES
+      - norm_id: AIA-NORM-A013-P3-D-HUMAN-OVERSIGHT
+      - norm_id: AIA-NORM-A013-P3-E-RESOURCES-LIFETIME-AND-MAINTENANCE
+      - norm_id: AIA-NORM-A013-P3-F-LOG-MECHANISMS
 
   - rule_id: AIA-HR-A14
     source:

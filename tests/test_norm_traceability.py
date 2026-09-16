@@ -223,6 +223,13 @@ def test_article_twelve_maps_each_general_logging_duty_to_a_criterion(bundle, sp
     assert traceability_errors(bundle, spec, LEDGER) == []
 
 
+def test_article_thirteen_maps_transparency_and_instruction_contents_separately(bundle, spec):
+    rules = {rule.rule_id: rule for rule in spec.rules}
+    assert len(rules["AIA-HR-A13"].criteria) == 3
+    assert len(rules["AIA-HR-A13-3"].criteria) == 13
+    assert traceability_errors(bundle, spec, LEDGER) == []
+
+
 def test_article_ten_has_thirteen_provider_obligation_criteria_and_reachable_carried_permission(
     bundle, spec
 ):
