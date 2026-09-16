@@ -40,8 +40,9 @@ records:
   action: treat information obtained under Article 21 according to the Article 78 confidentiality obligations
   subject_ref: competent_authority
   subject_category: public_authority
-  product_scope: outside_supported_actor
-  product_scope_reason: The present product does not report compliance for this addressee.
-  implementation_mode: none_required
-  implementation_reason: Outside the supported operator reporting surface.
-  verification_mode: not_reported
+  implementation_mode: report_only
+  implementation_refs:
+  - AIA-PO-A21
+  - AIA-PO-A21-2
+  verification_mode: reported_not_judged
+  verified_by: vidibro

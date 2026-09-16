@@ -257,6 +257,15 @@ def test_article_twenty_separates_corrective_response_from_risk_investigation(bu
     assert traceability_errors(bundle, spec, LEDGER) == []
 
 
+def test_article_twenty_one_reports_receiving_authority_confidentiality(bundle, spec):
+    norms = {norm.norm_id: norm for norm in bundle.norm_inventory.norms}
+    norm_id = "AIA-NORM-A021-P3-CONFIDENTIALITY"
+    assert norms[norm_id].implementation_mode is ImplementationMode.REPORT_ONLY
+    report_norm = next(item for item in spec.report_norms if item.norm_id == norm_id)
+    assert report_norm.activation_rule_ids == ["AIA-PO-A21", "AIA-PO-A21-2"]
+    assert traceability_errors(bundle, spec, LEDGER) == []
+
+
 def test_article_ten_has_thirteen_provider_obligation_criteria_and_reachable_carried_permission(
     bundle, spec
 ):
