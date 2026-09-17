@@ -9,7 +9,9 @@ records:
   subject_ref: high_risk_ai_system
   subject_category: other
   kind: legal_consequence
-  implementation_mode: missing
+  implementation_mode: report_only
+  implementation_refs:
+  - AIA-HR-A10
   verification_mode: reported_conditionally
   conditions:
   - training and testing data reflect the intended geographical, behavioural, contextual, or functional
@@ -27,7 +29,9 @@ records:
   subject_ref: high_risk_ai_system
   subject_category: other
   kind: legal_consequence
-  implementation_mode: missing
+  implementation_mode: report_only
+  implementation_refs:
+  - AIA-HR-A15
   verification_mode: reported_conditionally
   conditions:
   - a Regulation 2019/881 cybersecurity certificate or conformity statement covers the relevant Article
@@ -44,7 +48,9 @@ records:
   subject_ref: high_risk_ai_system
   subject_category: other
   kind: legal_consequence
-  implementation_mode: missing
+  implementation_mode: report_only
+  implementation_refs:
+  - AIA-HR-A15
   verification_mode: reported_conditionally
   conditions:
   - the system falls within Regulation 2024/2847

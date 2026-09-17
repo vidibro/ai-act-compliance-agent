@@ -2096,6 +2096,22 @@ norm_relations:
     legal_basis_spans:
     - AIA-TEXT-A027-P010
     detail: The external instruments define the DPIA whose relevant content may be reused.
+  - relation_id: AIA-REL-A042-P2-CYBERSECURITY-CERTIFICATE-PRESUMPTION-EXTERNAL-REQUIREMENT-01
+    source_norm_id: AIA-NORM-A042-P2-CYBERSECURITY-CERTIFICATE-PRESUMPTION
+    kind: subject_to_external_requirements
+    external_requirements:
+    - a cybersecurity certification scheme under Regulation (EU) 2019/881 whose reference is published in the Official Journal
+    legal_basis_spans:
+    - AIA-TEXT-A042-P002
+    detail: The external certification scheme and Official Journal publication determine whether this Article 15 presumption applies.
+  - relation_id: AIA-REL-A042-P3-CYBER-RESILIENCE-DEEMING-EXTERNAL-REQUIREMENT-01
+    source_norm_id: AIA-NORM-A042-P3-CYBER-RESILIENCE-DEEMING
+    kind: subject_to_external_requirements
+    external_requirements:
+    - Regulation (EU) 2024/2847 Article 12(1)
+    legal_basis_spans:
+    - AIA-TEXT-A042-P003
+    detail: The external Regulation and its Article 12(1) conditions determine whether this Article 15 deeming effect applies.
   - relation_id: AIA-REL-A050-P3-DATA-EXTERNAL-REQUIREMENT-01
     source_norm_id: AIA-NORM-A050-P3-DATA
     kind: subject_to_external_requirements

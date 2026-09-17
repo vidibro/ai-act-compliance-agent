@@ -386,6 +386,20 @@ def test_article_twenty_seven_keeps_fria_duties_separate_from_permissions(bundle
     assert traceability_errors(bundle, spec, LEDGER) == []
 
 
+def test_article_forty_two_reports_presumptions_against_the_affected_rules(bundle, spec):
+    norms = {norm.norm_id: norm for norm in bundle.norm_inventory.norms}
+    expected_activation = {
+        "AIA-NORM-A042-P1-REPRESENTATIVE-DATA-PRESUMPTION": ["AIA-HR-A10"],
+        "AIA-NORM-A042-P2-CYBERSECURITY-CERTIFICATE-PRESUMPTION": ["AIA-HR-A15"],
+        "AIA-NORM-A042-P3-CYBER-RESILIENCE-DEEMING": ["AIA-HR-A15"],
+    }
+    projected = {item.norm_id: item for item in spec.report_norms}
+    for norm_id, rule_ids in expected_activation.items():
+        assert norms[norm_id].implementation_mode is ImplementationMode.REPORT_ONLY
+        assert projected[norm_id].activation_rule_ids == rule_ids
+    assert traceability_errors(bundle, spec, LEDGER) == []
+
+
 def test_article_ten_has_thirteen_provider_obligation_criteria_and_reachable_carried_permission(
     bundle, spec
 ):

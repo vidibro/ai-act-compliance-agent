@@ -15,6 +15,7 @@ norms:
   - semantic_legal_effect
   - shall_token
   - deeming_or_consequence
+  - existing_implementation
   primary_spans:
   - AIA-TEXT-A042-P001
   qualifier_spans: []
@@ -26,8 +27,9 @@ norms:
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
-  implementation_mode: missing
-  implementation_refs: []
+  implementation_mode: report_only
+  implementation_refs:
+  - AIA-HR-A10
   implementation_reason: ''
   verification_mode: reported_conditionally
   review:
@@ -56,6 +58,7 @@ norms:
   - semantic_legal_effect
   - shall_token
   - deeming_or_consequence
+  - existing_implementation
   primary_spans:
   - AIA-TEXT-A042-P002
   qualifier_spans: []
@@ -68,8 +71,9 @@ norms:
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
-  implementation_mode: missing
-  implementation_refs: []
+  implementation_mode: report_only
+  implementation_refs:
+  - AIA-HR-A15
   implementation_reason: ''
   verification_mode: reported_conditionally
   review:
@@ -96,6 +100,7 @@ norms:
   - semantic_legal_effect
   - shall_token
   - deeming_or_consequence
+  - existing_implementation
   primary_spans:
   - AIA-TEXT-A042-P003
   qualifier_spans: []
@@ -107,8 +112,9 @@ norms:
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
-  implementation_mode: missing
-  implementation_refs: []
+  implementation_mode: report_only
+  implementation_refs:
+  - AIA-HR-A15
   implementation_reason: ''
   verification_mode: reported_conditionally
   review:
