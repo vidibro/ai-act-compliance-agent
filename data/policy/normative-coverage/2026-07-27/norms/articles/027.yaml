@@ -82,9 +82,9 @@ norms:
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
-  implementation_mode: compliance_rule
+  implementation_mode: report_only
   implementation_refs:
-  - AIA-DP-A27-2
+  - AIA-DP-A27
   implementation_reason: ''
   verification_mode: reported_conditionally
   review:
@@ -118,9 +118,9 @@ norms:
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
-  implementation_mode: compliance_rule
+  implementation_mode: report_only
   implementation_refs:
-  - AIA-DP-A27-2
+  - AIA-DP-A27
   implementation_reason: ''
   verification_mode: reported_conditionally
   review:
@@ -235,7 +235,7 @@ norms:
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
-  implementation_mode: compliance_rule
+  implementation_mode: report_only
   implementation_refs:
   - AIA-DP-A27-3
   implementation_reason: ''
@@ -274,7 +274,7 @@ norms:
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
-  implementation_mode: compliance_rule
+  implementation_mode: report_only
   implementation_refs:
   - AIA-DP-A27
   implementation_reason: ''

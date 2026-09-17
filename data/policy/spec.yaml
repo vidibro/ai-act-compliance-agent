@@ -3610,6 +3610,8 @@ rules:
       annex_iii: 2027-12-02
       annex_i: 2028-08-02
     status: active
+    criteria:
+      - norm_id: AIA-NORM-A027-P1-PERFORM-FRIA
 
   # ------------------------------------------------------------------------------------------
   # Art. 25(2) — the duty that survives losing the provider role, and the only rule in this spec
@@ -3672,6 +3674,8 @@ rules:
       annex_iii: 2027-12-02
       annex_i: 2028-08-02
     status: active
+    criteria:
+      - norm_id: AIA-NORM-A027-P2-UPDATE
 
   - rule_id: AIA-DP-A27-3
     source:
@@ -3714,6 +3718,8 @@ rules:
       annex_iii: 2027-12-02
       annex_i: 2028-08-02
     status: active
+    criteria:
+      - norm_id: AIA-NORM-A027-P3-NOTIFY-RESULTS
 
   - rule_id: AIA-IP-A25-2
     source:

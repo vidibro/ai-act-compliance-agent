@@ -2097,8 +2097,8 @@ def test_article_twenty_seven_keeps_fria_contents_in_one_assessment_norm():
         target: {norm_id for norm_id, norm in norms.items() if norm.implementation_refs == [target]}
         for target in ("AIA-DP-A27", "AIA-DP-A27-2", "AIA-DP-A27-3")
     }
-    assert len(by_target["AIA-DP-A27"]) == 2
-    assert len(by_target["AIA-DP-A27-2"]) == 3
+    assert len(by_target["AIA-DP-A27"]) == 4
+    assert len(by_target["AIA-DP-A27-2"]) == 1
     assert len(by_target["AIA-DP-A27-3"]) == 2
 
     ai_office_norms = {

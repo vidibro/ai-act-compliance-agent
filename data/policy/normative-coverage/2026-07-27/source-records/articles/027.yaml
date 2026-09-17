@@ -41,8 +41,9 @@ records:
   subject_category: supported_operator
   kind: applicability
   conditions: *id001
+  implementation_mode: report_only
   implementation_refs: &id002
-  - AIA-DP-A27-2
+  - AIA-DP-A27
   verification_mode: reported_conditionally
   verified_by: vidibro
 - norm_id: AIA-NORM-A027-P2-RELY-ON-PREVIOUS-ASSESSMENT
@@ -55,6 +56,7 @@ records:
   kind: permission
   conditions:
   - the prior or provider assessment concerns a similar case
+  implementation_mode: report_only
   implementation_refs: *id002
   verification_mode: reported_conditionally
   verified_by: vidibro
@@ -69,7 +71,8 @@ records:
   subject_category: supported_operator
   conditions:
   - during use, the deployer considers a paragraph 1 element changed or no longer current
-  implementation_refs: *id002
+  implementation_refs:
+  - AIA-DP-A27-2
   verification_mode: reported_not_judged
   verified_by: vidibro
 - norm_id: AIA-NORM-A027-P3-NOTIFY-RESULTS
@@ -99,6 +102,7 @@ records:
   kind: permission
   conditions:
   - the deployment falls within Article 46(1)
+  implementation_mode: report_only
   implementation_refs: *id003
   verification_mode: reported_conditionally
   verified_by: vidibro
@@ -115,6 +119,7 @@ records:
   kind: permission
   conditions:
   - an applicable DPIA already meets an Article 27 obligation
+  implementation_mode: report_only
   implementation_refs: *id004
   verification_mode: reported_conditionally
   verified_by: vidibro

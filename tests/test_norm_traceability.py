@@ -365,6 +365,27 @@ def test_article_twenty_six_splits_distinct_deployer_duties_into_criteria(bundle
     assert traceability_errors(bundle, spec, LEDGER) == []
 
 
+def test_article_twenty_seven_keeps_fria_duties_separate_from_permissions(bundle, spec):
+    rules = {rule.rule_id: rule for rule in spec.rules}
+    assert {
+        rule_id: [criterion.norm_id for criterion in rules[rule_id].criteria]
+        for rule_id in ("AIA-DP-A27", "AIA-DP-A27-2", "AIA-DP-A27-3")
+    } == {
+        "AIA-DP-A27": ["AIA-NORM-A027-P1-PERFORM-FRIA"],
+        "AIA-DP-A27-2": ["AIA-NORM-A027-P2-UPDATE"],
+        "AIA-DP-A27-3": ["AIA-NORM-A027-P3-NOTIFY-RESULTS"],
+    }
+    norms = {norm.norm_id: norm for norm in bundle.norm_inventory.norms}
+    for norm_id in (
+        "AIA-NORM-A027-P2-FIRST-USE",
+        "AIA-NORM-A027-P2-RELY-ON-PREVIOUS-ASSESSMENT",
+        "AIA-NORM-A027-P3-ARTICLE-46-EXEMPTION",
+        "AIA-NORM-A027-P4-INCORPORATE-DPIA",
+    ):
+        assert norms[norm_id].implementation_mode is ImplementationMode.REPORT_ONLY
+    assert traceability_errors(bundle, spec, LEDGER) == []
+
+
 def test_article_ten_has_thirteen_provider_obligation_criteria_and_reachable_carried_permission(
     bundle, spec
 ):

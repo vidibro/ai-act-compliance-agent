@@ -314,6 +314,15 @@ def test_article_twenty_six_duties_and_incident_fix_are_recorded():
     )
 
 
+def test_article_twenty_seven_is_closed_with_an_explicit_empty_adjudication_shard():
+    bundle = load_bundle()
+    assert audit_norm_validity(bundle, scope={(SourceKind.ARTICLE, "27")}) == []
+    ledger = load_adjudication_ledger(LEDGER)
+    assert ledger.audit_by_scope[(SourceKind.ARTICLE, "27")] == audit_attestation(
+        bundle, scope={(SourceKind.ARTICLE, "27")}
+    )
+
+
 def test_article_seventeen_findings_are_recorded_in_its_own_shard():
     bundle = load_bundle()
 
