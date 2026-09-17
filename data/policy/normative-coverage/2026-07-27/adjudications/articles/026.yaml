@@ -1,0 +1,155 @@
+schema_version: 1
+act_version_date: "2026-07-27"
+source:
+  kind: article
+  document: "26"
+audit:
+  audit_schema_version: 1
+  segments_scanned: 13
+  norms_scanned: 34
+  finding_count: 8
+  audit_sha256: 2114f036ceb898b675fb05fc30d1d23e9bd41da33bb91ff26915ae22b5c7ad12
+decisions:
+  - finding_id: AIA-VALID-696BF1694FA2020C
+    target: AIA-NORM-A026-P10-DELETE-ON-REJECTION
+    rule: fragment_without_qualifier_span
+    source_ref: AIA-TEXT-A026-P10
+    source_sha256: 02396e047cae8b9a492cf58b2642fc52114462a04f71b01c88b05403ee9874be
+    target_sha256: 853b9575925311a198d205e9e8e47e3bd3dc4ff35459d91c4bcda75652e38082
+    decision: accepted_with_basis
+    reason: >-
+      The deletion action is conditional on authorisation refusal through its shared structured
+      condition with the preceding stop-use duty. Together with the recorded legal span, the norm
+      reconstructs the complete duty; the fragment introduces no further qualifier.
+    legal_basis:
+      - span_id: AIA-TEXT-A026-P10
+        source_sha256: 02396e047cae8b9a492cf58b2642fc52114462a04f71b01c88b05403ee9874be
+        quote: "If the authorisation requested pursuant to the first subparagraph is rejected, the use of the post-remote biometric identification system linked to that requested authorisation shall be stopped with immediate effect and the personal data linked to the use of the high-risk AI system for which the authorisation was requested shall be deleted."
+    reviewed_by: vidibro
+  - finding_id: AIA-VALID-0166D938B7FF3472
+    target: AIA-NORM-A026-P10-PRESERVE-BIOMETRIC-DATA-LAW
+    rule: exception_not_structured_or_retained
+    source_ref: AIA-TEXT-A026-P10
+    source_sha256: 02396e047cae8b9a492cf58b2642fc52114462a04f71b01c88b05403ee9874be
+    target_sha256: 6406f28b8357925cbeac5e2c3db8aa86530944f88665360a620b366577f606fa
+    decision: accepted_with_basis
+    reason: >-
+      This is an applicability statement, not an exception to an Article 26 duty. Its canonical
+      external-requirement relation records the GDPR and Directive provisions, and the report
+      presents them conditionally without attempting to assess that outside law.
+    legal_basis:
+      - span_id: AIA-TEXT-A026-P10
+        source_sha256: 02396e047cae8b9a492cf58b2642fc52114462a04f71b01c88b05403ee9874be
+        quote: "This paragraph is without prejudice to Article 9 of Regulation (EU) 2016/679 and Article 10 of Directive (EU) 2016/680 for the processing of biometric data."
+    reviewed_by: vidibro
+  - finding_id: AIA-VALID-CAAE613AF39C23F1
+    target: AIA-NORM-A026-P10-PRESERVE-DIRECTIVE-2016-680
+    rule: exception_not_structured_or_retained
+    source_ref: AIA-TEXT-A026-P10
+    source_sha256: 02396e047cae8b9a492cf58b2642fc52114462a04f71b01c88b05403ee9874be
+    target_sha256: 7095e58912f8e4f7f79745359831c814365a72ea8ac50f5007e2c3be8297dd57
+    decision: accepted_with_basis
+    reason: >-
+      This applicability norm is linked to the continuing Directive (EU) 2016/680 requirements
+      through a typed external relation and is reported conditionally. It does not silently remove
+      any Article 26 duty or claim to assess the Directive.
+    legal_basis:
+      - span_id: AIA-TEXT-A026-P10
+        source_sha256: 02396e047cae8b9a492cf58b2642fc52114462a04f71b01c88b05403ee9874be
+        quote: "Without prejudice to Directive (EU) 2016/680,"
+    reviewed_by: vidibro
+  - finding_id: AIA-VALID-ED05F819E579B6E6
+    target: AIA-NORM-A026-P10-PRESERVE-SUPERVISORY-POWERS
+    rule: exception_not_structured_or_retained
+    source_ref: AIA-TEXT-A026-P10
+    source_sha256: 02396e047cae8b9a492cf58b2642fc52114462a04f71b01c88b05403ee9874be
+    target_sha256: 42aa04d38bfe68d7a4bba9bea1b5da1e83f518af7bfa70adb8e0f993d1bb0ef8
+    decision: accepted_with_basis
+    reason: >-
+      This applicability norm retains the preserved supervisory powers in a typed external
+      relation and is reported conditionally. The saving clause does not create an unstructured
+      exception to the deployer's Article 26 duties.
+    legal_basis:
+      - span_id: AIA-TEXT-A026-P10
+        source_sha256: 02396e047cae8b9a492cf58b2642fc52114462a04f71b01c88b05403ee9874be
+        quote: "This subparagraph shall be without prejudice to the powers conferred by Directive (EU) 2016/680 on supervisory authorities."
+    reviewed_by: vidibro
+  - finding_id: AIA-VALID-53A0A965B90B54FC
+    target: AIA-NORM-A026-P10-REQUEST-AUTHORISATION
+    rule: fragment_without_qualifier_span
+    source_ref: AIA-TEXT-A026-P10
+    source_sha256: 02396e047cae8b9a492cf58b2642fc52114462a04f71b01c88b05403ee9874be
+    target_sha256: 47a1548c78164fc7a570af60390183500e4ad2c1c39ea9d3e0002beacea6b354
+    decision: accepted_with_basis
+    reason: >-
+      The canonical action retains the qualifying authority and both timing routes; its structured
+      condition limits it to the targeted criminal-investigation use and its exception retains the
+      initial-identification case. The assembled norm is a complete conditional duty.
+    legal_basis:
+      - span_id: AIA-TEXT-A026-P10
+        source_sha256: 02396e047cae8b9a492cf58b2642fc52114462a04f71b01c88b05403ee9874be
+        quote: "the deployer of a high-risk AI system for post-remote biometric identification shall request an authorisation, ex ante, or without undue delay and no later than 48 hours, by a judicial authority or an administrative authority whose decision is binding and subject to judicial review, for the use of that system"
+    reviewed_by: vidibro
+  - finding_id: AIA-VALID-B0247D44F2A88999
+    target: AIA-NORM-A026-P3-PRESERVE-OTHER-OBLIGATIONS
+    rule: exception_not_structured_or_retained
+    source_ref: AIA-TEXT-A026-P3
+    source_sha256: a5a30df7d6435af4f2d7def143c0dea7119a3217040bdd0eb210df92215c3f0a
+    target_sha256: 8223e0837f3b7ca993f01668c54c7043e4ee27371ad37d2868f697b0c495a5f0
+    decision: accepted_with_basis
+    reason: >-
+      This saving clause is a report-only external dependency. Its typed relation records that
+      separate Union or national deployer obligations continue to apply; it neither changes nor
+      substitutes the Article 26(1) and (2) duties.
+    legal_basis:
+      - span_id: AIA-TEXT-A026-P3
+        source_sha256: a5a30df7d6435af4f2d7def143c0dea7119a3217040bdd0eb210df92215c3f0a
+        quote: "The obligations set out in paragraphs 1 and 2, are without prejudice to other deployer obligations under Union or national law and to the deployer’s freedom to organise its own resources and activities for the purpose of implementing the human oversight measures indicated by the provider."
+    reviewed_by: vidibro
+  - finding_id: AIA-VALID-EA5E7ECE09FA3EB6
+    target: AIA-NORM-A026-P4-INPUT-DATA-QUALITY
+    rule: fragment_without_qualifier_span
+    source_ref: AIA-TEXT-A026-P4
+    source_sha256: 7c2ca1b729a2cd1f982c905a02e1ce8799d863124a56846b6ed79ffe3a1356e7
+    target_sha256: 3dc77dc0773c4764fa739fd8b9b89a8bf9c8dc1a58636c398cc921a34651b5e9
+    decision: accepted_with_basis
+    reason: >-
+      The norm keeps the deployer's control-over-input-data condition and its action contains both
+      required qualities, relevance and sufficient representativeness in view of intended purpose.
+      The leading wording adds no missing qualifier.
+    legal_basis:
+      - span_id: AIA-TEXT-A026-P4
+        source_sha256: 7c2ca1b729a2cd1f982c905a02e1ce8799d863124a56846b6ed79ffe3a1356e7
+        quote: "to the extent the deployer exercises control over the input data, that deployer shall ensure that input data is relevant and sufficiently representative in view of the intended purpose of the high-risk AI system"
+    reviewed_by: vidibro
+  - finding_id: AIA-VALID-495FB7D7B6530BC7
+    target: AIA-NORM-A026-P8-INFORM-UNREGISTERED
+    rule: fragment_without_qualifier_span
+    source_ref: AIA-TEXT-A026-P8
+    source_sha256: f255e9e355d16de9ff26bcb5e93f30d0dede0be438f85d5e8617c4fc83e64c96
+    target_sha256: 6c90a20676eb34c3226d599ef0145d38d03b3076fb7d837f6249813eb9100632
+    decision: accepted_with_basis
+    reason: >-
+      The norm shares the public-authority-or-Union-body and unregistered-system conditions with
+      the preceding prohibition, and its action names both possible recipients. It reconstructs a
+      complete conditional notification duty.
+    legal_basis:
+      - span_id: AIA-TEXT-A026-P8
+        source_sha256: f255e9e355d16de9ff26bcb5e93f30d0dede0be438f85d5e8617c4fc83e64c96
+        quote: "shall inform the provider or the distributor."
+    reviewed_by: vidibro
+  - finding_id: AIA-VALID-9A38D9F5ADC2296C
+    target: AIA-NORM-A026-P5-INCIDENT
+    rule: deadline_not_structured_or_retained
+    source_ref: AIA-TEXT-A026-P5
+    source_sha256: d3b489936bbcc3185c1893f6fe4dd7c2efa1cb051daeb1a4021af4368f8a1392
+    target_sha256: 5f750d28b297f0b14d9bef524de450988453d5d57cd09ac3a28ba51a03f4d6f2
+    decision: fixed
+    reason: >-
+      The canonical action now retains the immediate timing and mandatory recipient sequence:
+      provider first, then importer or distributor and market-surveillance authorities. The exact
+      patch proves the source-record correction.
+    fix:
+      patch_file: fixes/AIA-VALID-9A38D9F5ADC2296C.patch.yaml
+      patch_sha256: e51397d602434dfcee27d7882be49cffa3c39911fac271c84b8867d0141f29ed
+    reviewed_by: vidibro

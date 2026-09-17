@@ -103,7 +103,7 @@ records:
   quote: Where deployers have identified a serious incident, they shall also immediately inform first
     the provider, and then the importer or distributor and the relevant market surveillance authorities
     of that incident.
-  action: report an identified serious incident in the enacted sequence
+  action: immediately inform first the provider, then the importer or distributor and relevant market-surveillance authorities, of an identified serious incident
   subject_ref: deployer
   subject_category: supported_operator
   conditions:
@@ -121,6 +121,7 @@ records:
   kind: applicability
   conditions:
   - the deployer is not able to reach the provider
+  implementation_mode: report_only
   implementation_refs:
   - AIA-DP-A26
   verification_mode: reported_not_judged
@@ -135,6 +136,7 @@ records:
   kind: applicability
   conditions:
   - the deployer is a law enforcement authority
+  implementation_mode: report_only
   implementation_refs:
   - AIA-DP-A26
   verification_mode: reported_conditionally
@@ -152,6 +154,7 @@ records:
   conditions:
   - the deployer is a financial institution subject to requirements regarding its internal governance,
     arrangements or processes under Union financial services law
+  implementation_mode: report_only
   implementation_refs:
   - AIA-DP-A26
   verification_mode: reported_conditionally
@@ -186,7 +189,8 @@ records:
   conditions:
   - the deployer is a financial institution subject to internal-governance requirements under Union financial-services
     law
-  implementation_refs: *id001
+  implementation_refs:
+  - AIA-DP-A26-6
   verification_mode: reported_not_judged
   verified_by: vidibro
 - norm_id: AIA-NORM-A026-P7-INFORM-WORKERS
@@ -200,7 +204,8 @@ records:
   subject_category: supported_operator
   conditions:
   - the deployer is an employer putting the high-risk system into service or using it at the workplace
-  implementation_refs: *id001
+  implementation_refs:
+  - AIA-DP-A26-7
   verification_mode: reported_not_judged
   verified_by: vidibro
 - norm_id: AIA-NORM-A026-P7-FOLLOW-WORKER-INFORMATION-RULES
@@ -213,7 +218,9 @@ records:
   subject_category: supported_operator
   conditions:
   - Union or national worker-information rules and practices apply
-  implementation_refs: *id001
+  implementation_mode: report_only
+  implementation_refs:
+  - AIA-DP-A26-7
   verification_mode: reported_conditionally
   verified_by: vidibro
 - norm_id: AIA-NORM-A026-P8-REGISTER
@@ -240,7 +247,8 @@ records:
   conditions: &id004
   - the deployer satisfies the Article 26(8) public-authority or Union-body condition
   - the envisaged system is not registered in the Article 71 EU database
-  implementation_refs: *id003
+  implementation_refs:
+  - AIA-DP-A26-8-UNREGISTERED-PROHIBITION
   verification_mode: reported_not_judged
   verified_by: vidibro
 - norm_id: AIA-NORM-A026-P8-INFORM-UNREGISTERED
@@ -250,7 +258,8 @@ records:
   subject_ref: public_authority_or_union_body_deployer
   subject_category: supported_operator
   conditions: *id004
-  implementation_refs: *id003
+  implementation_refs:
+  - AIA-DP-A26-8-UNREGISTERED-NOTICE
   verification_mode: reported_not_judged
   verified_by: vidibro
 - norm_id: AIA-NORM-A026-P9-USE-ARTICLE-13-IN-DPIA
@@ -275,6 +284,7 @@ records:
   subject_ref: post_remote_biometric_deployer
   subject_category: supported_operator
   kind: applicability
+  implementation_mode: report_only
   implementation_refs: &id005
   - AIA-DP-A26-10
   verification_mode: reported_conditionally
@@ -348,7 +358,8 @@ records:
   - the deployer uses a high-risk AI system for post-remote biometric identification for law
     enforcement purposes
   kind: prohibition
-  implementation_refs: *id005
+  implementation_refs:
+  - AIA-DP-A26-10-LAW-ENFORCEMENT
   verification_mode: reported_not_judged
   verified_by: vidibro
 - norm_id: AIA-NORM-A026-P10-NO-SOLE-OUTPUT-ADVERSE-DECISION
@@ -364,7 +375,8 @@ records:
   - the deployer uses a high-risk AI system for post-remote biometric identification for law
     enforcement purposes
   kind: prohibition
-  implementation_refs: *id005
+  implementation_refs:
+  - AIA-DP-A26-10-LAW-ENFORCEMENT
   verification_mode: reported_not_judged
   verified_by: vidibro
 - norm_id: AIA-NORM-A026-P10-PRESERVE-BIOMETRIC-DATA-LAW
@@ -375,6 +387,7 @@ records:
   subject_ref: post_remote_biometric_deployer
   subject_category: supported_operator
   kind: applicability
+  implementation_mode: report_only
   implementation_refs: *id005
   verification_mode: reported_conditionally
   verified_by: vidibro
@@ -408,6 +421,7 @@ records:
   subject_ref: post_remote_biometric_deployer
   subject_category: supported_operator
   kind: applicability
+  implementation_mode: report_only
   implementation_refs: *id005
   verification_mode: reported_conditionally
   verified_by: vidibro
@@ -438,6 +452,7 @@ records:
     enforcement purposes
   - annual reports are submitted under Article 26(10)
   kind: permission
+  implementation_mode: report_only
   implementation_refs: *id005
   verification_mode: reported_conditionally
   verified_by: vidibro
@@ -482,6 +497,7 @@ records:
   kind: applicability
   conditions:
   - the high-risk system is used for law-enforcement purposes
+  implementation_mode: report_only
   implementation_refs: *id008
   verification_mode: reported_conditionally
   verified_by: vidibro

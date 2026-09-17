@@ -3249,15 +3249,73 @@ rules:
       annex_iii: 2027-12-02
       annex_i: 2028-08-02
     status: active
+    criteria:
+      - norm_id: AIA-NORM-A026-P1-INSTRUCTION-COMPLIANT-USE
+      - norm_id: AIA-NORM-A026-P2-HUMAN-OVERSIGHT-ASSIGNMENT
+      - norm_id: AIA-NORM-A026-P4-INPUT-DATA-QUALITY
+      - norm_id: AIA-NORM-A026-P5-MONITOR
+      - norm_id: AIA-NORM-A026-P5-RISK-NOTIFY
+      - norm_id: AIA-NORM-A026-P5-INCIDENT
+      - norm_id: AIA-NORM-A026-P6-KEEP-CONTROLLED-LOGS
 
-  # SIX RULES FOR ONE ARTICLE, and the split is the Act's rather than a preference. Art. 26 runs to
-  # twelve paragraphs and four of them narrow the duty — to public-authority deployers, to Annex III
-  # systems, to post-remote biometric identification. A narrowing is stated on the rule,
+  - rule_id: AIA-DP-A26-6
+    source:
+      instrument: "Regulation (EU) 2024/1689"
+      article: 26
+      paragraph: 6
+      act_version_date: 2026-07-27
+    applies_to_risk_class: [high_risk]
+    applies_to_role: [deployer]
+    activation_condition: >-
+      The deployer is a financial institution subject to Union financial-services internal-governance
+      requirements.
+    obligation_status: mandatory
+    check_type: presence
+    evidence_expected: >-
+      Automatically generated high-risk-system logs maintained as part of the documentation kept
+      under the applicable Union financial-services law. This is the financial-institution limb of
+      Art. 26(6), distinct from the ordinary deployer's six-month minimum retention duty.
+    document_verifiable: false
+    effective_date_by_route:
+      annex_iii: 2027-12-02
+      annex_i: 2028-08-02
+    status: active
+    criteria:
+      - norm_id: AIA-NORM-A026-P6-FINANCIAL-DOCUMENTATION
+
+  - rule_id: AIA-DP-A26-7
+    source:
+      instrument: "Regulation (EU) 2024/1689"
+      article: 26
+      paragraph: 7
+      act_version_date: 2026-07-27
+    applies_to_risk_class: [high_risk]
+    applies_to_role: [deployer]
+    activation_condition: >-
+      The deployer is an employer and puts the high-risk system into service or uses it at the
+      workplace.
+    obligation_status: mandatory
+    check_type: presence
+    evidence_expected: >-
+      Before workplace service or use, inform workers' representatives and affected workers that
+      they will be subject to the high-risk AI system. Applicable Union or national worker-notice
+      rules remain a separately reported condition.
+    document_verifiable: false
+    effective_date_by_route:
+      annex_iii: 2027-12-02
+      annex_i: 2028-08-02
+    status: active
+    criteria:
+      - norm_id: AIA-NORM-A026-P7-INFORM-WORKERS
+
+  # ELEVEN RULES FOR ONE ARTICLE, and the split is the Act's rather than a preference. Art. 26 runs to
+  # twelve paragraphs and several duties narrow by deployer type, workplace use, public authority,
+  # Annex III systems, or post-remote biometric identification. A narrowing is stated on the rule,
   # in `activation_condition` or a gate, and the report renders it beside the obligation; folded
   # into one rule's evidence text it becomes a sentence a reader has to notice and apply to
   # themselves. Art. 26(12) carries no narrowing and is separate for the other reason a rule earns
   # its own entry: it is answered by whoever handles an authority, not by whoever operates the
-  # system. AIA-DP-A26 keeps the six paragraphs that bind every deployer alike.
+  # system. AIA-DP-A26 keeps the core duties that bind every deployer alike.
   - rule_id: AIA-DP-A26-8
     source:
       instrument: "Regulation (EU) 2024/1689"
@@ -3275,19 +3333,63 @@ rules:
     obligation_status: mandatory
     check_type: presence
     evidence_expected: >-
-      TWO DUTIES, and the second is a prohibition. First, compliance with the Art. 49 registration
-      obligations, which for this deployer is Art. 49(3) and AIA-DP-A49-3. Second, and independent
-      of it: where such a deployer finds that the high-risk system it ENVISAGES USING has not been
-      registered in the EU database, IT SHALL NOT USE THAT SYSTEM, and shall inform the provider or
-      the distributor. So a check of the EU database before deployment is the practical
-      requirement, and finding the system absent stops the deployment rather than merely
-      generating a report. An act against a registry and a decision not to deploy, neither visible
-      in a technical file — confirm separately.
+      Compliance with the Art. 49 registration obligations, which for this deployer is Art. 49(3)
+      and AIA-DP-A49-3. This is distinct from the unregistered-system prohibition and notice.
     document_verifiable: false
     effective_date_by_route:
       annex_iii: 2027-12-02
       annex_i: 2028-08-02
     status: active
+    criteria:
+      - norm_id: AIA-NORM-A026-P8-REGISTER
+
+  - rule_id: AIA-DP-A26-8-UNREGISTERED-PROHIBITION
+    source:
+      instrument: "Regulation (EU) 2024/1689"
+      article: 26
+      paragraph: 8
+      act_version_date: 2026-07-27
+    applies_to_risk_class: [high_risk]
+    applies_to_role: [deployer]
+    activation_condition: >-
+      The deployer is a public authority or a Union institution, body, office, or agency and finds
+      that the high-risk system it envisages using is not registered in the Article 71 EU database.
+    obligation_status: mandatory
+    check_type: presence
+    evidence_expected: >-
+      Do not use the unregistered high-risk AI system. This is independent of the related Article
+      49 registration duty and is assessed separately because it is a prohibition.
+    document_verifiable: false
+    effective_date_by_route:
+      annex_iii: 2027-12-02
+      annex_i: 2028-08-02
+    status: active
+    criteria:
+      - norm_id: AIA-NORM-A026-P8-DO-NOT-USE-UNREGISTERED
+
+  - rule_id: AIA-DP-A26-8-UNREGISTERED-NOTICE
+    source:
+      instrument: "Regulation (EU) 2024/1689"
+      article: 26
+      paragraph: 8
+      act_version_date: 2026-07-27
+    applies_to_risk_class: [high_risk]
+    applies_to_role: [deployer]
+    activation_condition: >-
+      The deployer is a public authority or a Union institution, body, office, or agency and finds
+      that the high-risk system it envisages using is not registered in the Article 71 EU database.
+    obligation_status: mandatory
+    check_type: presence
+    evidence_expected: >-
+      Inform the provider or distributor that the envisaged high-risk AI system is not registered
+      in the Article 71 EU database.
+    document_verifiable: false
+    effective_date_by_route:
+      annex_iii: 2027-12-02
+      annex_i: 2028-08-02
+    status: active
+    criteria:
+      - norm_id: AIA-NORM-A026-P8-INFORM-UNREGISTERED
 
   - rule_id: AIA-DP-A26-9
     source:
@@ -3318,6 +3420,8 @@ rules:
       annex_iii: 2027-12-02
       annex_i: 2028-08-02
     status: active
+    criteria:
+      - norm_id: AIA-NORM-A026-P9-USE-ARTICLE-13-IN-DPIA
 
   # THE POST-REMOTE BIOMETRIC IDENTIFICATION REGIME, which is one paragraph and six subparagraphs
   # and the densest passage in the Article. Its own rule because it reaches one kind of system used
@@ -3351,10 +3455,6 @@ rules:
       necessary for the investigation of a SPECIFIC criminal offence.
       IF THE AUTHORISATION IS REFUSED, use stops with immediate effect AND the personal data linked
       to that use is DELETED. Deletion is a separate duty from stopping.
-      Never used for law enforcement purposes in an UNTARGETED way, with no link to a criminal
-      offence, criminal proceeding, genuine and present or genuine and foreseeable threat of one, or
-      the search for a specific missing person. And no decision producing an adverse legal effect on
-      a person may be taken by law enforcement based SOLELY on such a system's output.
       REGARDLESS OF PURPOSE OR DEPLOYER, each use is documented in the relevant police file and made
       available to the market surveillance authority and the national data protection authority on
       request, excluding sensitive operational law-enforcement data. And ANNUAL REPORTS go to both
@@ -3368,6 +3468,38 @@ rules:
       annex_iii: 2027-12-02
       annex_i: 2028-08-02
     status: active
+    criteria:
+      - norm_id: AIA-NORM-A026-P10-REQUEST-AUTHORISATION
+      - norm_id: AIA-NORM-A026-P10-STRICT-NECESSITY
+      - norm_id: AIA-NORM-A026-P10-STOP-ON-REJECTION
+      - norm_id: AIA-NORM-A026-P10-DELETE-ON-REJECTION
+      - norm_id: AIA-NORM-A026-P10-DOCUMENT-EACH-USE
+      - norm_id: AIA-NORM-A026-P10-ANNUAL-REPORTS
+
+  - rule_id: AIA-DP-A26-10-LAW-ENFORCEMENT
+    source:
+      instrument: "Regulation (EU) 2024/1689"
+      article: 26
+      paragraph: 10
+      act_version_date: 2026-07-27
+    applies_to_risk_class: [high_risk]
+    applies_to_role: [deployer]
+    applies_to_annex_iii_area: [biometrics, law_enforcement]
+    activation_condition: >-
+      A law-enforcement deployer uses a high-risk system for post-remote biometric identification.
+    obligation_status: mandatory
+    check_type: presence
+    evidence_expected: >-
+      Never use post-remote biometric identification in an untargeted way, and never take a
+      decision with an adverse legal effect on a person based solely on that system's output.
+    document_verifiable: false
+    effective_date_by_route:
+      annex_iii: 2027-12-02
+      annex_i: 2028-08-02
+    status: active
+    criteria:
+      - norm_id: AIA-NORM-A026-P10-PROHIBIT-UNTARGETED-USE
+      - norm_id: AIA-NORM-A026-P10-NO-SOLE-OUTPUT-ADVERSE-DECISION
 
   - rule_id: AIA-DP-A26-11
     source:
@@ -3401,6 +3533,8 @@ rules:
       annex_iii: 2027-12-02
       annex_i: 2028-08-02
     status: active
+    criteria:
+      - norm_id: AIA-NORM-A026-P11-INFORM-NATURAL-PERSONS
 
   - rule_id: AIA-DP-A26-12
     source:
@@ -3425,6 +3559,8 @@ rules:
       annex_iii: 2027-12-02
       annex_i: 2028-08-02
     status: active
+    criteria:
+      - norm_id: AIA-NORM-A026-P12-COOPERATE
 
   - rule_id: AIA-DP-A27
     source:

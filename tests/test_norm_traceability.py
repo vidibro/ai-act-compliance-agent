@@ -334,6 +334,37 @@ def test_article_twenty_five_reports_external_law_constraint_from_role_transfer(
     assert traceability_errors(bundle, spec, LEDGER) == []
 
 
+def test_article_twenty_six_splits_distinct_deployer_duties_into_criteria(bundle, spec):
+    rules = {rule.rule_id: rule for rule in spec.rules}
+    expected = {
+        "AIA-DP-A26": 7,
+        "AIA-DP-A26-6": 1,
+        "AIA-DP-A26-7": 1,
+        "AIA-DP-A26-8": 1,
+        "AIA-DP-A26-8-UNREGISTERED-PROHIBITION": 1,
+        "AIA-DP-A26-8-UNREGISTERED-NOTICE": 1,
+        "AIA-DP-A26-9": 1,
+        "AIA-DP-A26-10": 6,
+        "AIA-DP-A26-10-LAW-ENFORCEMENT": 2,
+        "AIA-DP-A26-11": 1,
+        "AIA-DP-A26-12": 1,
+    }
+    assert {rule_id: len(rules[rule_id].criteria) for rule_id in expected} == expected
+
+    norms = {norm.norm_id: norm for norm in bundle.norm_inventory.norms}
+    for norm_id in (
+        "AIA-NORM-A026-P5-FALLBACK",
+        "AIA-NORM-A026-P5-SENSITIVE",
+        "AIA-NORM-A026-P5-FINANCIAL",
+        "AIA-NORM-A026-P7-FOLLOW-WORKER-INFORMATION-RULES",
+        "AIA-NORM-A026-P10-PRESERVE-DIRECTIVE-2016-680",
+        "AIA-NORM-A026-P10-PRESERVE-BIOMETRIC-DATA-LAW",
+        "AIA-NORM-A026-P10-PRESERVE-SUPERVISORY-POWERS",
+    ):
+        assert norms[norm_id].implementation_mode is ImplementationMode.REPORT_ONLY
+    assert traceability_errors(bundle, spec, LEDGER) == []
+
+
 def test_article_ten_has_thirteen_provider_obligation_criteria_and_reachable_carried_permission(
     bundle, spec
 ):

@@ -2025,17 +2025,27 @@ def test_article_twenty_six_models_core_and_specialised_deployer_duties():
         target: {norm_id for norm_id, norm in norms.items() if norm.implementation_refs == [target]}
         for target in (
             "AIA-DP-A26",
+            "AIA-DP-A26-6",
+            "AIA-DP-A26-7",
             "AIA-DP-A26-8",
+            "AIA-DP-A26-8-UNREGISTERED-PROHIBITION",
+            "AIA-DP-A26-8-UNREGISTERED-NOTICE",
             "AIA-DP-A26-9",
             "AIA-DP-A26-10",
+            "AIA-DP-A26-10-LAW-ENFORCEMENT",
             "AIA-DP-A26-11",
             "AIA-DP-A26-12",
         )
     }
-    assert len(by_target["AIA-DP-A26"]) == 13
-    assert len(by_target["AIA-DP-A26-8"]) == 3
+    assert len(by_target["AIA-DP-A26"]) == 10
+    assert len(by_target["AIA-DP-A26-6"]) == 1
+    assert len(by_target["AIA-DP-A26-7"]) == 2
+    assert len(by_target["AIA-DP-A26-8"]) == 1
+    assert len(by_target["AIA-DP-A26-8-UNREGISTERED-PROHIBITION"]) == 1
+    assert len(by_target["AIA-DP-A26-8-UNREGISTERED-NOTICE"]) == 1
     assert len(by_target["AIA-DP-A26-9"]) == 1
-    assert len(by_target["AIA-DP-A26-10"]) == 12
+    assert len(by_target["AIA-DP-A26-10"]) == 10
+    assert len(by_target["AIA-DP-A26-10-LAW-ENFORCEMENT"]) == 2
     assert len(by_target["AIA-DP-A26-11"]) == 2
     assert len(by_target["AIA-DP-A26-12"]) == 1
 

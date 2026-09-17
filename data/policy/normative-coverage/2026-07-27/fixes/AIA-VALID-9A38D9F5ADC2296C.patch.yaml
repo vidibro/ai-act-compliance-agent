@@ -1,0 +1,9 @@
+schema_version: 1
+finding_id: AIA-VALID-9A38D9F5ADC2296C
+target_file: source-records/articles/026.yaml
+before_sha256: 4918ad076c4c03e15fdf754ff23b12ab2a590cf61eba6d5fd5882e7ebb5575de
+after_sha256: 65dad98c0a54b3d7c79abeb31780a28b0eb6a498bb60dfe556d8e65a14606b28
+replacements:
+  - old: "  action: report an identified serious incident to the provider, importer or distributor, and relevant market-surveillance authorities"
+    new: "  action: immediately inform first the provider, then the importer or distributor and relevant market-surveillance authorities, of an identified serious incident"
+    expected_occurrences: 1

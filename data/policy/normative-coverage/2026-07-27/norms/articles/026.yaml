@@ -247,7 +247,8 @@ norms:
   subjects:
   - subject_ref: deployer
     category: supported_operator
-  action: report an identified serious incident in the enacted sequence
+  action: immediately inform first the provider, then the importer or distributor and relevant market-surveillance
+    authorities, of an identified serious incident
   norm_text: Where deployers have identified a serious incident, they shall also immediately inform first
     the provider, and then the importer or distributor and the relevant market surveillance authorities
     of that incident.
@@ -302,7 +303,7 @@ norms:
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
-  implementation_mode: compliance_rule
+  implementation_mode: report_only
   implementation_refs:
   - AIA-DP-A26
   implementation_reason: ''
@@ -340,7 +341,7 @@ norms:
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
-  implementation_mode: compliance_rule
+  implementation_mode: report_only
   implementation_refs:
   - AIA-DP-A26
   implementation_reason: ''
@@ -381,7 +382,7 @@ norms:
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
-  implementation_mode: compliance_rule
+  implementation_mode: report_only
   implementation_refs:
   - AIA-DP-A26
   implementation_reason: ''
@@ -464,7 +465,7 @@ norms:
   product_scope_reason: ''
   implementation_mode: compliance_rule
   implementation_refs:
-  - AIA-DP-A26
+  - AIA-DP-A26-6
   implementation_reason: ''
   verification_mode: reported_not_judged
   review:
@@ -503,7 +504,7 @@ norms:
   product_scope_reason: ''
   implementation_mode: compliance_rule
   implementation_refs:
-  - AIA-DP-A26
+  - AIA-DP-A26-7
   implementation_reason: ''
   verification_mode: reported_not_judged
   review:
@@ -539,9 +540,9 @@ norms:
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
-  implementation_mode: compliance_rule
+  implementation_mode: report_only
   implementation_refs:
-  - AIA-DP-A26
+  - AIA-DP-A26-7
   implementation_reason: ''
   verification_mode: reported_conditionally
   review:
@@ -616,7 +617,7 @@ norms:
   product_scope_reason: ''
   implementation_mode: compliance_rule
   implementation_refs:
-  - AIA-DP-A26-8
+  - AIA-DP-A26-8-UNREGISTERED-PROHIBITION
   implementation_reason: ''
   verification_mode: reported_not_judged
   review:
@@ -653,7 +654,7 @@ norms:
   product_scope_reason: ''
   implementation_mode: compliance_rule
   implementation_refs:
-  - AIA-DP-A26-8
+  - AIA-DP-A26-8-UNREGISTERED-NOTICE
   implementation_reason: ''
   verification_mode: reported_not_judged
   review:
@@ -725,7 +726,7 @@ norms:
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
-  implementation_mode: compliance_rule
+  implementation_mode: report_only
   implementation_refs:
   - AIA-DP-A26-10
   implementation_reason: ''
@@ -925,7 +926,7 @@ norms:
   product_scope_reason: ''
   implementation_mode: compliance_rule
   implementation_refs:
-  - AIA-DP-A26-10
+  - AIA-DP-A26-10-LAW-ENFORCEMENT
   implementation_reason: ''
   verification_mode: reported_not_judged
   review:
@@ -966,7 +967,7 @@ norms:
   product_scope_reason: ''
   implementation_mode: compliance_rule
   implementation_refs:
-  - AIA-DP-A26-10
+  - AIA-DP-A26-10-LAW-ENFORCEMENT
   implementation_reason: ''
   verification_mode: reported_not_judged
   review:
@@ -1000,7 +1001,7 @@ norms:
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
-  implementation_mode: compliance_rule
+  implementation_mode: report_only
   implementation_refs:
   - AIA-DP-A26-10
   implementation_reason: ''
@@ -1082,7 +1083,7 @@ norms:
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
-  implementation_mode: compliance_rule
+  implementation_mode: report_only
   implementation_refs:
   - AIA-DP-A26-10
   implementation_reason: ''
@@ -1160,7 +1161,7 @@ norms:
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
-  implementation_mode: compliance_rule
+  implementation_mode: report_only
   implementation_refs:
   - AIA-DP-A26-10
   implementation_reason: ''
@@ -1272,7 +1273,7 @@ norms:
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
-  implementation_mode: compliance_rule
+  implementation_mode: report_only
   implementation_refs:
   - AIA-DP-A26-11
   implementation_reason: ''
