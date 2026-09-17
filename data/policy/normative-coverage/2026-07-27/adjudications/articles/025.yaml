@@ -1,0 +1,29 @@
+schema_version: 1
+act_version_date: "2026-07-27"
+source:
+  kind: article
+  document: "25"
+audit:
+  audit_schema_version: 1
+  segments_scanned: 18
+  norms_scanned: 15
+  finding_count: 1
+  audit_sha256: 418e4ef74d7013ceb77d5f644c0647deda776b0000d7ad66a8ded094537a4ff5
+decisions:
+  - finding_id: AIA-VALID-0AA79DC2690256EC
+    target: AIA-NORM-A025-P5-PROTECT-RIGHTS-AND-SECRETS
+    rule: exception_not_structured_or_retained
+    source_ref: AIA-TEXT-A025-P017
+    source_sha256: e2ddad11e401df9774dd6fcc311a970ae7dbbeaf165558784d440d58149f2fdc
+    target_sha256: 6bcbd532ab01c2604e64b626db6718da26f329c1afaa93c82d7bef5f4b7a1b42
+    decision: accepted_with_basis
+    reason: >-
+      The canonical norm retains the Article 25(2) and (3) scope in its action and records the
+      external Union-and-national-law constraint in a typed relation. “Without prejudice” does
+      not create an optional exception; it preserves that separate protection duty, which the
+      report now materialises conditionally without attempting to assess external law.
+    legal_basis:
+      - span_id: AIA-TEXT-A025-P017
+        source_sha256: e2ddad11e401df9774dd6fcc311a970ae7dbbeaf165558784d440d58149f2fdc
+        quote: "Paragraphs 2 and 3 are without prejudice to the need to observe and protect intellectual property rights, confidential business information and trade secrets in accordance with Union and national law."
+    reviewed_by: vidibro

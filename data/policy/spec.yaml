@@ -3615,6 +3615,9 @@ rules:
       annex_iii: 2027-12-02
       annex_i: 2028-08-02
     status: active
+    criteria:
+      - norm_id: AIA-NORM-A025-P2-COOPERATE
+      - norm_id: AIA-NORM-A025-P2-PROVIDE-ASSISTANCE
 
   # ------------------------------------------------------------------------------------------
   # Arts. 22-24 — the SUPPLY-CHAIN roles. Not a lesser tier of duty: an importer that places a
@@ -3652,6 +3655,8 @@ rules:
       annex_iii: 2027-12-02
       annex_i: 2028-08-02
     status: active
+    criteria:
+      - norm_id: AIA-NORM-A025-P4-WRITTEN-AGREEMENT
 
   # ART. 22 BINDS TWO PARTIES, and only one of them is the representative. Paragraphs (1) and (2)
   # are duties of the PROVIDER — appoint a representative, enable it to do the job, and ensure the

@@ -1957,12 +1957,14 @@ def test_article_twenty_five_separates_role_transfer_from_surviving_duties():
     )
 
     initial_provider_norms = {
-        norm_id for norm_id, norm in norms.items() if norm.implementation_refs == ["AIA-IP-A25-2"]
+        norm_id
+        for norm_id, norm in norms.items()
+        if norm.implementation_refs == ["AIA-IP-A25-2"]
+        and norm.implementation_mode.value == "compliance_rule"
     }
     assert initial_provider_norms == {
         "AIA-NORM-A025-P2-COOPERATE",
         "AIA-NORM-A025-P2-PROVIDE-ASSISTANCE",
-        "AIA-NORM-A025-P2-NO-COOPERATION-DUTY",
     }
     assistance = norms["AIA-NORM-A025-P2-PROVIDE-ASSISTANCE"]
     assert len(assistance.mandatory_content) == 3
@@ -1974,11 +1976,13 @@ def test_article_twenty_five_separates_role_transfer_from_surviving_duties():
     ]
 
     agreement_norms = {
-        norm_id for norm_id, norm in norms.items() if norm.implementation_refs == ["AIA-PO-A25-4"]
+        norm_id
+        for norm_id, norm in norms.items()
+        if norm.implementation_refs == ["AIA-PO-A25-4"]
+        and norm.implementation_mode.value == "compliance_rule"
     }
     assert agreement_norms == {
         "AIA-NORM-A025-P4-WRITTEN-AGREEMENT",
-        "AIA-NORM-A025-P4-OPEN-SOURCE-EXCEPTION",
     }
     ai_office_norms = {norm_id for norm_id in norms if "-AI-OFFICE-" in norm_id}
     assert len(ai_office_norms) == 3
@@ -1987,7 +1991,16 @@ def test_article_twenty_five_separates_role_transfer_from_surviving_duties():
         for norm_id in ai_office_norms
     )
     protection = norms["AIA-NORM-A025-P5-PROTECT-RIGHTS-AND-SECRETS"]
-    assert protection.implementation_mode.value == "missing"
+    assert protection.implementation_mode.value == "report_only"
+    assert protection.implementation_refs == ["AIA-IP-A25-2"]
+    assert (
+        norms["AIA-NORM-A025-P2-NO-COOPERATION-DUTY"].implementation_mode.value
+        == "report_only"
+    )
+    assert (
+        norms["AIA-NORM-A025-P4-OPEN-SOURCE-EXCEPTION"].implementation_mode.value
+        == "report_only"
+    )
 
 
 def test_article_twenty_six_models_core_and_specialised_deployer_duties():

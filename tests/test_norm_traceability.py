@@ -313,6 +313,27 @@ def test_article_twenty_four_makes_each_distributor_duty_a_criterion(bundle, spe
     assert traceability_errors(bundle, spec, LEDGER) == []
 
 
+def test_article_twenty_five_reports_external_law_constraint_from_role_transfer(bundle, spec):
+    norms = {norm.norm_id: norm for norm in bundle.norm_inventory.norms}
+    protection_id = "AIA-NORM-A025-P5-PROTECT-RIGHTS-AND-SECRETS"
+    protection = norms[protection_id]
+    assert protection.implementation_mode is ImplementationMode.REPORT_ONLY
+    assert protection.implementation_refs == ["AIA-IP-A25-2"]
+    assert protection.verification_mode.value == "reported_conditionally"
+    report_norm = next(item for item in spec.report_norms if item.norm_id == protection_id)
+    assert report_norm.activation_rule_ids == ["AIA-IP-A25-2"]
+    relation = next(
+        relation
+        for relation in bundle.norm_inventory.relations
+        if relation.source_norm_id == protection_id
+        and relation.kind is NormRelationKind.SUBJECT_TO_EXTERNAL_REQUIREMENTS
+    )
+    assert relation.external_requirements == [
+        "applicable Union and national intellectual-property, confidentiality, and trade-secret law"
+    ]
+    assert traceability_errors(bundle, spec, LEDGER) == []
+
+
 def test_article_ten_has_thirteen_provider_obligation_criteria_and_reachable_carried_permission(
     bundle, spec
 ):

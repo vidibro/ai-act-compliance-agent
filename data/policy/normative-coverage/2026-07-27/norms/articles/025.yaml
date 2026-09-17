@@ -278,7 +278,7 @@ norms:
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
-  implementation_mode: compliance_rule
+  implementation_mode: report_only
   implementation_refs:
   - AIA-IP-A25-2
   implementation_reason: ''
@@ -445,7 +445,7 @@ norms:
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
-  implementation_mode: compliance_rule
+  implementation_mode: report_only
   implementation_refs:
   - AIA-PO-A25-4
   implementation_reason: ''
@@ -576,6 +576,7 @@ norms:
     national law.
   detection_channels:
   - semantic_legal_effect
+  - existing_implementation
   primary_spans:
   - AIA-TEXT-A025-P017
   qualifier_spans: []
@@ -585,10 +586,12 @@ norms:
   mandatory_content: []
   product_scope: in_scope
   product_scope_reason: ''
-  implementation_mode: missing
-  implementation_refs: []
-  implementation_reason: No existing product rule independently carries this protection constraint.
-  verification_mode: reported_not_judged
+  implementation_mode: report_only
+  implementation_refs:
+  - AIA-IP-A25-2
+  implementation_reason: Article 25(2)'s role-transfer rule is active whenever paragraphs 2 or 3 make
+    this external-law protection constraint relevant.
+  verification_mode: reported_conditionally
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass

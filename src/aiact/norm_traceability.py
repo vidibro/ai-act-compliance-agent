@@ -52,7 +52,9 @@ def _reconstruction_errors(norm: Norm) -> list[str]:
     return errors
 
 
-def _report_reconstruction_errors(norm: Norm) -> list[str]:
+def _report_reconstruction_errors(
+    norm: Norm, *, external_conditional_obligation: bool
+) -> list[str]:
     """Structured fields a report-only legal statement needs."""
     errors = []
     if norm.review.status is not ReviewStatus.APPROVED:
@@ -65,7 +67,7 @@ def _report_reconstruction_errors(norm: Norm) -> list[str]:
         NormKind.PERMISSION,
         NormKind.LEGAL_CONSEQUENCE,
         NormKind.APPLICABILITY,
-    } and not any(
+    } and not external_conditional_obligation and not any(
         subject.category is SubjectCategory.PUBLIC_AUTHORITY for subject in norm.subjects
     ):
         errors.append(f"kind is {norm.kind.value}, not reportable")
@@ -92,6 +94,7 @@ def traceability_errors(
     report_norms = {report_norm.norm_id: report_norm for report_norm in spec.report_norms}
 
     relation_targets_by_norm: dict[str, set[str]] = {}
+    external_conditional_obligation_ids: set[str] = set()
     for relation in bundle.norm_inventory.relations:
         if relation.kind in {
             NormRelationKind.ALLOCATES_DUTY_TO_POLICY_RULES,
@@ -100,6 +103,8 @@ def traceability_errors(
             relation_targets_by_norm.setdefault(relation.source_norm_id, set()).update(
                 relation.target_rule_ids
             )
+        if relation.kind is NormRelationKind.SUBJECT_TO_EXTERNAL_REQUIREMENTS:
+            external_conditional_obligation_ids.add(relation.source_norm_id)
 
     def in_scope(norm: Norm) -> bool:
         source = segments[norm.primary_spans[0]].source
@@ -166,11 +171,16 @@ def traceability_errors(
             continue
         if norm.implementation_mode is not ImplementationMode.REPORT_ONLY:
             continue
+        external_conditional_obligation = (
+            norm.kind is NormKind.OBLIGATION
+            and norm.verification_mode is VerificationMode.REPORTED_CONDITIONALLY
+            and norm.norm_id in external_conditional_obligation_ids
+        )
         if norm.kind not in {
             NormKind.PERMISSION,
             NormKind.LEGAL_CONSEQUENCE,
             NormKind.APPLICABILITY,
-        } and not any(
+        } and not external_conditional_obligation and not any(
             subject.category is SubjectCategory.PUBLIC_AUTHORITY for subject in norm.subjects
         ):
             errors.append(
@@ -186,7 +196,9 @@ def traceability_errors(
                 f"{norm.norm_id} report activation rules {projection.activation_rule_ids} differ "
                 f"from canonical implementation_refs {norm.implementation_refs}"
             )
-        for problem in _report_reconstruction_errors(norm):
+        for problem in _report_reconstruction_errors(
+            norm, external_conditional_obligation=external_conditional_obligation
+        ):
             errors.append(f"{norm.norm_id} cannot be materialised as a report norm: {problem}")
 
     direct_norms_by_rule: dict[str, list[Norm]] = {}
@@ -369,7 +381,14 @@ def traceability_errors(
                 "outside the adjudicated validity scope"
             )
             continue
-        for problem in _report_reconstruction_errors(target):
+        external_conditional_obligation = (
+            target.kind is NormKind.OBLIGATION
+            and target.verification_mode is VerificationMode.REPORTED_CONDITIONALLY
+            and target.norm_id in external_conditional_obligation_ids
+        )
+        for problem in _report_reconstruction_errors(
+            target, external_conditional_obligation=external_conditional_obligation
+        ):
             errors.append(
                 f"report norm {report_norm.norm_id} cannot be reconstructed: {problem}"
             )
