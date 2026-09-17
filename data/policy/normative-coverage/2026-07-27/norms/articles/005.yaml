@@ -3,9 +3,10 @@ norms:
 - norm_id: AIA-NORM-A005-P1-A-MANIPULATIVE-TECHNIQUES
   act_version_date: '2026-07-27'
   kind: prohibition
-  subjects:
-  - subject_ref: operator
+  actors:
+  - actor_ref: operator
     category: supported_operator
+  targets: []
   action: prohibit placing on the market, putting into service, or using AI systems employing subliminal,
     purposefully manipulative, or deceptive techniques that materially distort decisions and cause or
     are reasonably likely to cause significant harm
@@ -51,9 +52,10 @@ norms:
 - norm_id: AIA-NORM-A005-P1-B-VULNERABILITY-EXPLOITATION
   act_version_date: '2026-07-27'
   kind: prohibition
-  subjects:
-  - subject_ref: operator
+  actors:
+  - actor_ref: operator
     category: supported_operator
+  targets: []
   action: prohibit placing on the market, putting into service, or using AI systems that exploit vulnerabilities
     and materially distort behaviour in a significantly harmful or likely harmful manner
   norm_text: the placing on the market, the putting into service or the use of an AI system that exploits
@@ -97,9 +99,10 @@ norms:
 - norm_id: AIA-NORM-A005-P1-BA-NONCONSENSUAL-INTIMATE-MATERIAL
   act_version_date: '2026-07-27'
   kind: prohibition
-  subjects:
-  - subject_ref: operator
+  actors:
+  - actor_ref: operator
     category: supported_operator
+  targets: []
   action: prohibit qualifying placement, service, or use of AI systems generating or manipulating realistic
     intimate or sexually explicit material of an identifiable natural person without explicit consent
   norm_text: "the placing on the market, the putting into service or the use of an AI system that generates\
@@ -151,9 +154,10 @@ norms:
 - norm_id: AIA-NORM-A005-P1-BB-DIRECTIVE-MATERIAL
   act_version_date: '2026-07-27'
   kind: prohibition
-  subjects:
-  - subject_ref: operator
+  actors:
+  - actor_ref: operator
     category: supported_operator
+  targets: []
   action: prohibit qualifying placement, service, or use of AI systems generating or manipulating material
     or performances covered by Directive 2011/93/EU
   norm_text: "the placing on the market, the putting into service or the use of an AI system that generates\
@@ -199,9 +203,10 @@ norms:
 - norm_id: AIA-NORM-A005-P1-C-SOCIAL-SCORING
   act_version_date: '2026-07-27'
   kind: prohibition
-  subjects:
-  - subject_ref: operator
+  actors:
+  - actor_ref: operator
     category: supported_operator
+  targets: []
   action: prohibit placing on the market, putting into service, or using AI systems for social scoring
     that leads to either prohibited form of detrimental or unfavourable treatment
   norm_text: 'the placing on the market, the putting into service or the use of AI systems for the evaluation
@@ -245,9 +250,10 @@ norms:
 - norm_id: AIA-NORM-A005-P1-D-CRIMINAL-RISK-PROFILING
   act_version_date: '2026-07-27'
   kind: prohibition
-  subjects:
-  - subject_ref: operator
+  actors:
+  - actor_ref: operator
     category: supported_operator
+  targets: []
   action: prohibit placing on the market, putting into service for the purpose, or using AI systems to
     assess or predict criminal-offence risk based solely on profiling or personality traits and characteristics
   norm_text: the placing on the market, the putting into service for this specific purpose, or the use
@@ -290,9 +296,10 @@ norms:
 - norm_id: AIA-NORM-A005-P1-E-UNTARGETED-FACIAL-SCRAPING
   act_version_date: '2026-07-27'
   kind: prohibition
-  subjects:
-  - subject_ref: operator
+  actors:
+  - actor_ref: operator
     category: supported_operator
+  targets: []
   action: prohibit placing on the market, putting into service for the purpose, or using AI systems that
     create or expand facial-recognition databases through untargeted scraping from the internet or CCTV
   norm_text: the placing on the market, the putting into service for this specific purpose, or the use
@@ -329,9 +336,10 @@ norms:
 - norm_id: AIA-NORM-A005-P1-F-WORKPLACE-EDUCATION-EMOTION-INFERENCE
   act_version_date: '2026-07-27'
   kind: prohibition
-  subjects:
-  - subject_ref: operator
+  actors:
+  - actor_ref: operator
     category: supported_operator
+  targets: []
   action: prohibit placing on the market, putting into service for the purpose, or using AI systems to
     infer emotions in workplaces or educational institutions
   norm_text: the placing on the market, the putting into service for this specific purpose, or the use
@@ -370,9 +378,10 @@ norms:
 - norm_id: AIA-NORM-A005-P1-G-SENSITIVE-BIOMETRIC-CATEGORISATION
   act_version_date: '2026-07-27'
   kind: prohibition
-  subjects:
-  - subject_ref: operator
+  actors:
+  - actor_ref: operator
     category: supported_operator
+  targets: []
   action: prohibit placing on the market, putting into service for the purpose, or using biometric categorisation
     systems to infer the listed sensitive characteristics of individuals
   norm_text: the placing on the market, the putting into service for this specific purpose, or the use
@@ -414,9 +423,10 @@ norms:
 - norm_id: AIA-NORM-A005-P1-H-REAL-TIME-RBI
   act_version_date: '2026-07-27'
   kind: prohibition
-  subjects:
-  - subject_ref: law_enforcement_authority
+  actors:
+  - actor_ref: law_enforcement_authority
     category: public_authority
+  targets: []
   action: prohibit law-enforcement use of real-time remote biometric identification in publicly accessible
     spaces unless strictly necessary for a listed objective
   norm_text: "the use of \u2018real-time\u2019 remote biometric identification systems in publicly accessible\
@@ -460,9 +470,9 @@ norms:
 - norm_id: AIA-NORM-A005-P1-H-GDPR-SAVING
   act_version_date: '2026-07-27'
   kind: legal_consequence
-  subjects:
-  - subject_ref: non_law_enforcement_biometric_data_processing
-    category: other
+  actors: []
+  targets:
+  - target_ref: non_law_enforcement_biometric_data_processing
   action: preserve GDPR Article 9 for biometric-data processing conducted for purposes other than law
     enforcement
   norm_text: Point (h) of the first subparagraph is without prejudice to Article 9 of Regulation (EU)
@@ -497,9 +507,10 @@ norms:
 - norm_id: AIA-NORM-A005-P1A-MARKET-SERVICE-SCOPE
   act_version_date: '2026-07-27'
   kind: applicability
-  subjects:
-  - subject_ref: provider
+  actors:
+  - actor_ref: provider
     category: supported_operator
+  targets: []
   action: limit the point (ba) and (bb) market-placement and putting-into-service prohibitions to the
     two specified system-purpose or foreseeable-outcome cases
   norm_text: 'the placing on the market or putting into service of an AI system that generates or manipulates
@@ -543,9 +554,10 @@ norms:
 - norm_id: AIA-NORM-A005-P1A-DEPLOYER-USE-SCOPE
   act_version_date: '2026-07-27'
   kind: applicability
-  subjects:
-  - subject_ref: deployer
+  actors:
+  - actor_ref: deployer
     category: supported_operator
+  targets: []
   action: limit the point (ba) and (bb) use prohibitions to purposeful generation or manipulation by the
     deployer
   norm_text: the use of an AI system that generates or manipulates the material or performance referred
@@ -585,9 +597,9 @@ norms:
 - norm_id: AIA-NORM-A005-P1B-NON-MANIPULATION
   act_version_date: '2026-07-27'
   kind: legal_consequence
-  subjects:
-  - subject_ref: intimate_material_manipulation
-    category: other
+  actors: []
+  targets:
+  - target_ref: intimate_material_manipulation
   action: treat manipulation as outside point (ba) where it neither increases intimate-part exposure nor
     alters the nature of depicted sexually explicit activities
   norm_text: For the purposes of paragraph 1, first subparagraph, point (ba), an AI system that manipulates
@@ -626,9 +638,10 @@ norms:
 - norm_id: AIA-NORM-A005-P2-CONFIRM-TARGETED-IDENTITY
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: law_enforcement_authority
+  actors:
+  - actor_ref: law_enforcement_authority
     category: public_authority
+  targets: []
   action: deploy real-time remote biometric identification for a permitted Article 5(1)(h) objective only
     to confirm the specifically targeted individual's identity
   norm_text: shall be deployed for the purposes set out in that point only to confirm the identity of
@@ -663,9 +676,10 @@ norms:
 - norm_id: AIA-NORM-A005-P2-CONSIDER-IMPACTS
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: law_enforcement_authority
+  actors:
+  - actor_ref: law_enforcement_authority
     category: public_authority
+  targets: []
   action: consider both the non-use harm and the rights-and-freedoms consequences before using real-time
     remote biometric identification
   norm_text: 'it shall take into account the following elements:'
@@ -706,9 +720,10 @@ norms:
 - norm_id: AIA-NORM-A005-P2-NATIONAL-SAFEGUARDS
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: law_enforcement_authority
+  actors:
+  - actor_ref: law_enforcement_authority
     category: public_authority
+  targets: []
   action: comply with necessary and proportionate national-law safeguards and conditions, particularly
     temporal, geographic, and personal limits
   norm_text: "the use of \u2018 real-time \u2019 remote biometric identification systems in publicly accessible\
@@ -746,9 +761,10 @@ norms:
 - norm_id: AIA-NORM-A005-P2-COMPLETE-FRIA
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: law_enforcement_authority
+  actors:
+  - actor_ref: law_enforcement_authority
     category: public_authority
+  targets: []
   action: complete an Article 27 fundamental-rights impact assessment before authorisation of real-time
     remote biometric identification use
   norm_text: "The use of the \u2018 real-time \u2019 remote biometric identification system in publicly\
@@ -784,9 +800,10 @@ norms:
 - norm_id: AIA-NORM-A005-P2-REGISTER-SYSTEM
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: law_enforcement_authority
+  actors:
+  - actor_ref: law_enforcement_authority
     category: public_authority
+  targets: []
   action: register the real-time remote biometric identification system in the EU database before authorisation,
     or without undue delay after urgent use begins
   norm_text: has registered the system in the EU database according to Article 49. However, in duly justified
@@ -824,9 +841,10 @@ norms:
 - norm_id: AIA-NORM-A005-P3-PRIOR-AUTHORISATION
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: law_enforcement_authority
+  actors:
+  - actor_ref: law_enforcement_authority
     category: public_authority
+  targets: []
   action: obtain prior judicial or binding independent-administrative authorisation, upon a reasoned request
     and under applicable national rules, for each covered use
   norm_text: "each use for the purposes of law enforcement of a \u2018 real-time \u2019 remote biometric\
@@ -865,9 +883,10 @@ norms:
 - norm_id: AIA-NORM-A005-P3-URGENT-USE
   act_version_date: '2026-07-27'
   kind: permission
-  subjects:
-  - subject_ref: law_enforcement_authority
+  actors:
+  - actor_ref: law_enforcement_authority
     category: public_authority
+  targets: []
   action: commence urgent use without prior authorisation
   norm_text: in a duly justified situation of urgency, the use of such system may be commenced without
     an authorisation provided that such authorisation is requested without undue delay, at the latest
@@ -905,9 +924,10 @@ norms:
 - norm_id: AIA-NORM-A005-P3-STOP-ON-REJECTION
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: law_enforcement_authority
+  actors:
+  - actor_ref: law_enforcement_authority
     category: public_authority
+  targets: []
   action: stop the use immediately if authorisation is rejected
   norm_text: If such authorisation is rejected, the use shall be stopped with immediate effect
   detection_channels:
@@ -942,9 +962,10 @@ norms:
 - norm_id: AIA-NORM-A005-P3-DELETE-ON-REJECTION
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: law_enforcement_authority
+  actors:
+  - actor_ref: law_enforcement_authority
     category: public_authority
+  targets: []
   action: immediately discard and delete all data, results, and outputs from the use if authorisation
     is rejected
   norm_text: all the data, as well as the results and outputs of that use shall be immediately discarded
@@ -981,9 +1002,10 @@ norms:
 - norm_id: AIA-NORM-A005-P3-RESTRICT-AUTHORISATION
   act_version_date: '2026-07-27'
   kind: power
-  subjects:
-  - subject_ref: authorising_authority
+  actors:
+  - actor_ref: authorising_authority
     category: public_authority
+  targets: []
   action: grant authorisation only on objective evidence or clear indications that the requested use is
     necessary, proportionate, and strictly limited in time and geographic and personal scope
   norm_text: "The competent judicial authority or an independent administrative authority whose decision\
@@ -1026,9 +1048,10 @@ norms:
 - norm_id: AIA-NORM-A005-P3-CONSIDER-P2-ELEMENTS
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: authorising_authority
+  actors:
+  - actor_ref: authorising_authority
     category: public_authority
+  targets: []
   action: take the Article 5(2) elements into account when deciding an authorisation request
   norm_text: In deciding on the request, that authority shall take into account the elements referred
     to in paragraph 2.
@@ -1062,9 +1085,10 @@ norms:
 - norm_id: AIA-NORM-A005-P3-NO-SOLE-OUTPUT-ADVERSE-DECISION
   act_version_date: '2026-07-27'
   kind: prohibition
-  subjects:
-  - subject_ref: decision_maker
+  actors:
+  - actor_ref: decision_maker
     category: public_authority
+  targets: []
   action: prohibit decisions producing an adverse legal effect on a person based solely on real-time remote
     biometric identification output
   norm_text: "No decision that produces an adverse legal effect on a person may be taken based solely\
@@ -1099,9 +1123,10 @@ norms:
 - norm_id: AIA-NORM-A005-P4-NOTIFY-AUTHORITIES
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: law_enforcement_authority
+  actors:
+  - actor_ref: law_enforcement_authority
     category: public_authority
+  targets: []
   action: notify the relevant market-surveillance authority and national data-protection authority of
     each covered use in accordance with applicable national rules
   norm_text: "Without prejudice to paragraph 3, each use of a \u2018 real-time \u2019 remote biometric\
@@ -1138,9 +1163,10 @@ norms:
 - norm_id: AIA-NORM-A005-P4-NOTIFICATION-CONTENT
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: law_enforcement_authority
+  actors:
+  - actor_ref: law_enforcement_authority
     category: public_authority
+  targets: []
   action: include at least the Article 5(6) information in each use notification while excluding sensitive
     operational data
   norm_text: The notification shall, as a minimum, contain the information specified under paragraph 6
@@ -1179,9 +1205,10 @@ norms:
 - norm_id: AIA-NORM-A005-P5-AUTHORISE-USE
   act_version_date: '2026-07-27'
   kind: power
-  subjects:
-  - subject_ref: member_state
+  actors:
+  - actor_ref: member_state
     category: member_state
+  targets: []
   action: provide for full or partial authorisation of covered real-time remote biometric identification
     use within the limits and conditions of Article 5(1)(h), (2), and (3)
   norm_text: "A Member State may decide to provide for the possibility to fully or partially authorise\
@@ -1217,9 +1244,10 @@ norms:
 - norm_id: AIA-NORM-A005-P5-LAY-DOWN-RULES
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: member_state
+  actors:
+  - actor_ref: member_state
     category: member_state
+  targets: []
   action: lay down national rules for the request, issuance, exercise, supervision, and reporting of Article
     5(3) authorisations
   norm_text: Member States concerned shall lay down in their national law the necessary detailed rules
@@ -1254,9 +1282,10 @@ norms:
 - norm_id: AIA-NORM-A005-P5-SPECIFY-OBJECTIVES
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: member_state
+  actors:
+  - actor_ref: member_state
     category: member_state
+  targets: []
   action: specify in national rules the objectives and qualifying criminal offences for which competent
     authorities may receive authorisation
   norm_text: Those rules shall also specify in respect of which of the objectives listed in paragraph
@@ -1293,9 +1322,10 @@ norms:
 - norm_id: AIA-NORM-A005-P5-NOTIFY-COMMISSION
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: member_state
+  actors:
+  - actor_ref: member_state
     category: member_state
+  targets: []
   action: notify the Commission of the national rules no later than 30 days after their adoption
   norm_text: Member States shall notify those rules to the Commission at the latest 30 days following
     the adoption thereof.
@@ -1327,9 +1357,10 @@ norms:
 - norm_id: AIA-NORM-A005-P5-MORE-RESTRICTIVE-LAWS
   act_version_date: '2026-07-27'
   kind: power
-  subjects:
-  - subject_ref: member_state
+  actors:
+  - actor_ref: member_state
     category: member_state
+  targets: []
   action: introduce more restrictive laws on remote biometric identification use in accordance with Union
     law
   norm_text: Member States may introduce, in accordance with Union law, more restrictive laws on the use
@@ -1363,9 +1394,10 @@ norms:
 - norm_id: AIA-NORM-A005-P6-SUBMIT-ANNUAL-REPORTS
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: national_market_surveillance_and_data_protection_authorities
+  actors:
+  - actor_ref: national_market_surveillance_and_data_protection_authorities
     category: public_authority
+  targets: []
   action: submit annual reports to the Commission on notified real-time remote biometric identification
     use
   norm_text: "National market surveillance authorities and the national data protection authorities of\
@@ -1401,9 +1433,10 @@ norms:
 - norm_id: AIA-NORM-A005-P6-PROVIDE-TEMPLATE
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: commission
+  actors:
+  - actor_ref: commission
     category: union_institution_or_body
+  targets: []
   action: provide Member States and national market-surveillance and data-protection authorities with
     an annual-reporting template that includes the number and outcomes of decisions on Article 5(3) authorisation
     requests
@@ -1441,9 +1474,10 @@ norms:
 - norm_id: AIA-NORM-A005-P7-PUBLISH-ANNUAL-REPORTS
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: commission
+  actors:
+  - actor_ref: commission
     category: union_institution_or_body
+  targets: []
   action: publish annual reports on covered real-time remote biometric identification use using aggregated
     Member State data from Article 5(6) reports
   norm_text: The Commission shall publish annual reports on the use of real-time remote biometric identification
@@ -1477,9 +1511,10 @@ norms:
 - norm_id: AIA-NORM-A005-P7-EXCLUDE-SENSITIVE-DATA
   act_version_date: '2026-07-27'
   kind: prohibition
-  subjects:
-  - subject_ref: commission
+  actors:
+  - actor_ref: commission
     category: union_institution_or_body
+  targets: []
   action: exclude sensitive operational data about related law-enforcement activities from the Commission's
     annual reports
   norm_text: Those annual reports shall not include sensitive operational data of the related law enforcement
@@ -1512,9 +1547,9 @@ norms:
 - norm_id: AIA-NORM-A005-P8-OTHER-UNION-LAW
   act_version_date: '2026-07-27'
   kind: legal_consequence
-  subjects:
-  - subject_ref: ai_practice_subject_to_other_union_law
-    category: other
+  actors: []
+  targets:
+  - target_ref: ai_practice_subject_to_other_union_law
   action: preserve prohibitions under other Union law where an AI practice infringes that law
   norm_text: This Article shall not affect the prohibitions that apply where an AI practice infringes
     other Union law.

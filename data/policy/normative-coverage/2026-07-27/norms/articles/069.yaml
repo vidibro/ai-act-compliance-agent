@@ -3,9 +3,10 @@ norms:
 - norm_id: AIA-NORM-A069-P1-CALL-UPON-PANEL-EXPERTS
   act_version_date: '2026-07-27'
   kind: power
-  subjects:
-  - subject_ref: member_state
+  actors:
+  - actor_ref: member_state
     category: member_state
+  targets: []
   action: call upon scientific-panel experts for Regulation enforcement support
   norm_text: Member States may call upon experts of the scientific panel to support their enforcement
     activities under this Regulation.
@@ -37,9 +38,10 @@ norms:
 - norm_id: AIA-NORM-A069-P2-MEMBER-STATE-EXPERT-FEES
   act_version_date: '2026-07-27'
   kind: legal_consequence
-  subjects:
-  - subject_ref: member_state
+  actors:
+  - actor_ref: member_state
     category: member_state
+  targets: []
   action: pay required expert advice and support fees at the Commission-equivalent remuneration rate
   norm_text: The Member States may be required to pay fees for the advice and support provided by the
     experts at a rate equivalent to the remuneration fees applicable to the Commission pursuant to the
@@ -73,9 +75,10 @@ norms:
 - norm_id: AIA-NORM-A069-P3-FACILITATE-AND-COORDINATE-ACCESS
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: commission
+  actors:
+  - actor_ref: commission
     category: union_institution_or_body
+  targets: []
   action: facilitate timely Member State expert access and efficiently coordinate expert and Union AI
     testing support for maximum added value
   norm_text: The Commission shall facilitate timely access to the experts by the Member States, as needed,

@@ -3,9 +3,9 @@ norms:
 - norm_id: AIA-NORM-A006-P1-ANNEX-I-HIGH-RISK
   act_version_date: '2026-07-27'
   kind: applicability
-  subjects:
-  - subject_ref: ai_system
-    category: other
+  actors: []
+  targets:
+  - target_ref: ai_system
   action: classify an AI system as high-risk, regardless of whether it is placed on the market or put
     into service independently of the relevant product, when both the Annex I product or safety-component
     condition and the third-party conformity-assessment condition are fulfilled
@@ -51,9 +51,9 @@ norms:
 - norm_id: AIA-NORM-A006-P1A-NON-SAFETY-ASSISTANCE
   act_version_date: '2026-07-27'
   kind: applicability
-  subjects:
-  - subject_ref: ai_system
-    category: other
+  actors: []
+  targets:
+  - target_ref: ai_system
   action: exclude AI systems used solely for the listed non-safety functions from qualification as safety
     components
   norm_text: AI systems that are solely used for non-safety related aspects of user assistance, performance
@@ -92,9 +92,9 @@ norms:
 - norm_id: AIA-NORM-A006-P1B-HEALTH-SAFETY-OVERRIDE
   act_version_date: '2026-07-27'
   kind: applicability
-  subjects:
-  - subject_ref: ai_system
-    category: other
+  actors: []
+  targets:
+  - target_ref: ai_system
   action: classify an AI system as a safety component when its failure or malfunction would endanger health
     and safety
   norm_text: Notwithstanding paragraph 1a, AI systems the failure or malfunctioning of which would endanger
@@ -131,9 +131,9 @@ norms:
 - norm_id: AIA-NORM-A006-P1C-NON-SAFETY-ASSESSMENT
   act_version_date: '2026-07-27'
   kind: applicability
-  subjects:
-  - subject_ref: ai_system_or_product
-    category: other
+  actors: []
+  targets:
+  - target_ref: ai_system_or_product
   action: exclude a third-party conformity assessment required solely for non-health-and-safety risks
     from satisfying Article 6(1)(b)
   norm_text: A product that is required to undergo a third-party conformity assessment solely due to risks
@@ -172,9 +172,9 @@ norms:
 - norm_id: AIA-NORM-A006-P2-ANNEX-III-HIGH-RISK
   act_version_date: '2026-07-27'
   kind: applicability
-  subjects:
-  - subject_ref: annex_iii_ai_system
-    category: other
+  actors: []
+  targets:
+  - target_ref: annex_iii_ai_system
   action: classify AI systems referred to in Annex III as high-risk
   norm_text: AI systems referred to in Annex III shall be considered to be high-risk.
   detection_channels:
@@ -208,9 +208,9 @@ norms:
 - norm_id: AIA-NORM-A006-P3-INSIGNIFICANT-RISK-EXCEPTION
   act_version_date: '2026-07-27'
   kind: applicability
-  subjects:
-  - subject_ref: annex_iii_ai_system
-    category: other
+  actors: []
+  targets:
+  - target_ref: annex_iii_ai_system
   action: exclude an Annex III AI system from high-risk classification when it poses no significant harm
     risk and satisfies at least one listed condition
   norm_text: an AI system referred to in Annex III shall not be considered to be high-risk where it does
@@ -273,9 +273,9 @@ norms:
 - norm_id: AIA-NORM-A006-P3-PROFILING-OVERRIDE
   act_version_date: '2026-07-27'
   kind: applicability
-  subjects:
-  - subject_ref: annex_iii_ai_system
-    category: other
+  actors: []
+  targets:
+  - target_ref: annex_iii_ai_system
   action: classify an Annex III AI system as high-risk whenever it profiles natural persons
   norm_text: an AI system referred to in Annex III shall always be considered to be high-risk where the
     AI system performs profiling of natural persons.
@@ -311,9 +311,10 @@ norms:
 - norm_id: AIA-NORM-A006-P4-DOCUMENT-ASSESSMENT
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: provider
+  actors:
+  - actor_ref: provider
     category: supported_operator
+  targets: []
   action: document the Article 6(3) non-high-risk assessment before placing the system on the market or
     putting it into service
   norm_text: A provider who considers that an AI system referred to in Annex III is not high-risk shall
@@ -349,9 +350,10 @@ norms:
 - norm_id: AIA-NORM-A006-P4-REGISTER-SYSTEM
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: provider
+  actors:
+  - actor_ref: provider
     category: supported_operator
+  targets: []
   action: register the provider and non-high-risk system as required by Article 49(2)
   norm_text: Such provider shall be subject to the registration obligation set out in Article 49(2).
   detection_channels:
@@ -385,9 +387,10 @@ norms:
 - norm_id: AIA-NORM-A006-P4-PROVIDE-ASSESSMENT
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: provider
+  actors:
+  - actor_ref: provider
     category: supported_operator
+  targets: []
   action: provide the documented non-high-risk assessment to national competent authorities upon request
   norm_text: Upon request of national competent authorities, the provider shall provide the documentation
     of the assessment.
@@ -422,9 +425,10 @@ norms:
 - norm_id: AIA-NORM-A006-P5-PROVIDE-GUIDELINES
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: commission
+  actors:
+  - actor_ref: commission
     category: union_institution_or_body
+  targets: []
   action: provide Article 96 guidelines on the practical implementation of Article 6 by 2 February 2026
     after consulting the AI Board, together with a comprehensive list of practical high-risk and non-high-risk
     AI-system use cases
@@ -462,9 +466,10 @@ norms:
 - norm_id: AIA-NORM-A006-P6-AMEND-EXCEPTIONS
   act_version_date: '2026-07-27'
   kind: power
-  subjects:
-  - subject_ref: commission
+  actors:
+  - actor_ref: commission
     category: union_institution_or_body
+  targets: []
   action: adopt Article 97 delegated acts adding or modifying Article 6(3) exception conditions when supported
     by concrete and reliable evidence
   norm_text: The Commission is empowered to adopt delegated acts in accordance with Article 97 in order
@@ -502,9 +507,10 @@ norms:
 - norm_id: AIA-NORM-A006-P7-DELETE-EXCEPTIONS
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: commission
+  actors:
+  - actor_ref: commission
     category: union_institution_or_body
+  targets: []
   action: adopt Article 97 delegated acts deleting Article 6(3) exception conditions when necessary to
     maintain the required protection
   norm_text: The Commission shall adopt delegated acts in accordance with Article 97 in order to amend
@@ -541,9 +547,10 @@ norms:
 - norm_id: AIA-NORM-A006-P8-NO-REDUCED-PROTECTION
   act_version_date: '2026-07-27'
   kind: prohibition
-  subjects:
-  - subject_ref: commission
+  actors:
+  - actor_ref: commission
     category: union_institution_or_body
+  targets: []
   action: ensure Article 6(3) condition amendments do not decrease the Regulation's overall protection
     of health, safety and fundamental rights, remain consistent with Article 7(1) delegated acts, and
     account for market and technological developments

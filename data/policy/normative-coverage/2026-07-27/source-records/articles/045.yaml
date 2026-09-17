@@ -4,8 +4,10 @@ records:
   quote: Notified bodies shall inform the notifying authority of the following
   action: inform the notifying authority of each listed issuance, adverse decision, notification-related
     circumstance or information-request event without requiring a prior request for disclosure
-  subject_ref: notified_body
-  subject_category: notified_or_conformity_body
+  actors:
+  - actor_ref: notified_body
+    category: notified_or_conformity_body
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -31,8 +33,10 @@ records:
   quote: Notified bodies shall inform the notifying authority of the following
   action: inform the notifying authority on request about conformity assessment activities within the
     notification scope and other activities performed, including cross-border activities and subcontracting
-  subject_ref: notified_body
-  subject_category: notified_or_conformity_body
+  actors:
+  - actor_ref: notified_body
+    category: notified_or_conformity_body
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -50,8 +54,10 @@ records:
   quote: Each notified body shall inform the other notified bodies of
   action: inform other notified bodies of each listed adverse quality-management approval or
     technical-documentation certificate outcome without requiring a prior request for disclosure
-  subject_ref: notified_body
-  subject_category: notified_or_conformity_body
+  actors:
+  - actor_ref: notified_body
+    category: notified_or_conformity_body
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -71,8 +77,10 @@ records:
   quote: Each notified body shall inform the other notified bodies of
   action: inform other notified bodies, upon request, of the quality-system approvals or Union technical
     documentation assessment certificates and supplements that the notified body has issued
-  subject_ref: notified_body
-  subject_category: notified_or_conformity_body
+  actors:
+  - actor_ref: notified_body
+    category: notified_or_conformity_body
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -100,8 +108,10 @@ records:
   - the information concerns issues relating to negative conformity assessment results
   - the recipient is another notified body carrying out similar conformity assessment activities
     covering the same types of AI systems
-  subject_ref: notified_body
-  subject_category: notified_or_conformity_body
+  actors:
+  - actor_ref: notified_body
+    category: notified_or_conformity_body
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -115,8 +125,10 @@ records:
   action: provide relevant information on issues relating to positive conformity assessment results,
     on request, to other notified bodies carrying out similar conformity assessment activities covering
     the same types of AI systems
-  subject_ref: notified_body
-  subject_category: notified_or_conformity_body
+  actors:
+  - actor_ref: notified_body
+    category: notified_or_conformity_body
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -132,8 +144,10 @@ records:
   quote: Notified bodies shall safeguard the confidentiality of the information that they obtain, in accordance
     with Article 78.
   action: safeguard obtained information confidentiality under Article 78
-  subject_ref: notified_body
-  subject_category: notified_or_conformity_body
+  actors:
+  - actor_ref: notified_body
+    category: notified_or_conformity_body
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required

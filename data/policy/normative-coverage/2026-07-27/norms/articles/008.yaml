@@ -3,9 +3,10 @@ norms:
 - norm_id: AIA-NORM-A008-P1-COMPLY-SECTION-REQUIREMENTS
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: provider
+  actors:
+  - actor_ref: provider
     category: supported_operator
+  targets: []
   action: ensure high-risk AI systems comply with the Section 2 requirements while considering intended
     purpose and the generally acknowledged state of the art
   norm_text: High-risk AI systems shall comply with the requirements laid down in this Section, taking
@@ -40,9 +41,10 @@ norms:
 - norm_id: AIA-NORM-A008-P1-CONSIDER-RISK-MANAGEMENT
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: provider
+  actors:
+  - actor_ref: provider
     category: supported_operator
+  targets: []
   action: take the Article 9 risk-management system into account when ensuring compliance with the Section
     2 requirements
   norm_text: The risk management system referred to in Article 9 shall be taken into account when ensuring
@@ -77,9 +79,10 @@ norms:
 - norm_id: AIA-NORM-A008-P2-ENSURE-PRODUCT-COMPLIANCE
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: provider
+  actors:
+  - actor_ref: provider
     category: supported_operator
+  targets: []
   action: ensure a product containing an AI system fully complies with every applicable requirement under
     the relevant Union harmonisation legislation
   norm_text: Where a product contains an AI system, to which the requirements of this Regulation as well
@@ -118,9 +121,10 @@ norms:
 - norm_id: AIA-NORM-A008-P2-INTEGRATE-COMPLIANCE-PROCESSES
   act_version_date: '2026-07-27'
   kind: permission
-  subjects:
-  - subject_ref: provider
+  actors:
+  - actor_ref: provider
     category: supported_operator
+  targets: []
   action: integrate AI testing, reporting, information, and documentation into existing product documentation
     and procedures required by Annex I Section A legislation
   norm_text: In ensuring the compliance of high-risk AI systems referred to in paragraph 1 with the requirements

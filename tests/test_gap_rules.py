@@ -689,7 +689,7 @@ _GENERAL_DATE = date(2026, 8, 2)
 def test_chapter_iii_obligations_start_on_the_route_s_date(spec):
     """Every rule citing Arts. 6-27 carries both dates, and resolves to the right one per door."""
     split = [r for r in spec.rules if r.source.article in _ROUTE_SPLIT_ARTICLES]
-    assert len(split) == 42, "Arts. 6-27 should be the whole of Chapter III Sections 1-3"
+    assert len(split) == 50, "Arts. 6-27 should be the whole of Chapter III Sections 1-3"
     for rule in split:
         if rule.rule_id in {
             "AIA-NHR-A06-4",

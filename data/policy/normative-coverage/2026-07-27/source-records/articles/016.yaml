@@ -4,8 +4,10 @@ records:
   quote: ensure that their high-risk AI systems are compliant with the requirements set out in Section
     2
   action: ensure high-risk AI systems comply with the requirements in Chapter III, Section 2
-  subject_ref: provider
-  subject_category: supported_operator
+  actors:
+  - actor_ref: provider
+    category: supported_operator
+  targets: []
   qualifier_spans: &id001
   - A016-P001
   implementation_refs:
@@ -34,8 +36,10 @@ records:
     at which they can be contacted
   action: "display the provider\u2019s name, registered trade name or registered trade mark, and contact\
     \ address on the system or, when that is not possible, on its packaging or accompanying documentation"
-  subject_ref: provider
-  subject_category: supported_operator
+  actors:
+  - actor_ref: provider
+    category: supported_operator
+  targets: []
   qualifier_spans: *id001
   implementation_refs:
   - AIA-PO-A16-B
@@ -45,8 +49,10 @@ records:
   source: A016-P004
   quote: have a quality management system in place which complies with Article 17
   action: maintain a quality-management system complying with Article 17
-  subject_ref: provider
-  subject_category: supported_operator
+  actors:
+  - actor_ref: provider
+    category: supported_operator
+  targets: []
   qualifier_spans: *id001
   implementation_mode: carried_by_other_norm
   implementation_reason: The principal Article 17 quality-management-system norm carries this cross-reference
@@ -57,8 +63,10 @@ records:
   source: A016-P005
   quote: keep the documentation referred to in Article 18
   action: keep the documentation required by Article 18
-  subject_ref: provider
-  subject_category: supported_operator
+  actors:
+  - actor_ref: provider
+    category: supported_operator
+  targets: []
   qualifier_spans: *id001
   implementation_mode: carried_by_other_norm
   implementation_reason: The five Article 18(1) retention norms collectively carry this cross-reference
@@ -71,8 +79,10 @@ records:
     as referred to in Article 19
   action: "keep automatically generated high-risk-system logs when they are under the provider\u2019s\
     \ control"
-  subject_ref: provider
-  subject_category: supported_operator
+  actors:
+  - actor_ref: provider
+    category: supported_operator
+  targets: []
   qualifier_spans: *id001
   conditions:
   - "the automatically generated logs are under the provider\u2019s control"
@@ -86,8 +96,10 @@ records:
     referred to in Article 43, prior to its being placed on the market or put into service
   action: ensure the system completes the applicable Article 43 conformity-assessment procedure before
     market placement or being put into service
-  subject_ref: provider
-  subject_category: supported_operator
+  actors:
+  - actor_ref: provider
+    category: supported_operator
+  targets: []
   qualifier_spans: *id001
   implementation_refs:
   - AIA-PO-A43-1
@@ -104,8 +116,10 @@ records:
   source: A016-P008
   quote: draw up an EU declaration of conformity in accordance with Article 47
   action: draw up the Article 47 EU declaration of conformity
-  subject_ref: provider
-  subject_category: supported_operator
+  actors:
+  - actor_ref: provider
+    category: supported_operator
+  targets: []
   qualifier_spans: *id001
   implementation_refs:
   - AIA-PO-A47
@@ -120,8 +134,10 @@ records:
     Article 48
   action: affix the CE marking to the system or, when that is not possible, its packaging or accompanying
     documentation in accordance with Article 48
-  subject_ref: provider
-  subject_category: supported_operator
+  actors:
+  - actor_ref: provider
+    category: supported_operator
+  targets: []
   qualifier_spans: *id001
   implementation_refs:
   - AIA-PO-A48
@@ -132,8 +148,10 @@ records:
   source: A016-P010
   quote: comply with the registration obligations referred to in Article 49(1)
   action: comply with the Article 49(1) registration obligations
-  subject_ref: provider
-  subject_category: supported_operator
+  actors:
+  - actor_ref: provider
+    category: supported_operator
+  targets: []
   qualifier_spans: *id001
   implementation_refs:
   - AIA-PO-A49
@@ -144,8 +162,10 @@ records:
   source: A016-P011
   quote: take the necessary corrective actions and provide information as required in Article 20
   action: take necessary corrective actions and provide the information required by Article 20
-  subject_ref: provider
-  subject_category: supported_operator
+  actors:
+  - actor_ref: provider
+    category: supported_operator
+  targets: []
   qualifier_spans: *id001
   implementation_mode: carried_by_other_norm
   implementation_reason: The four Article 20 norms collectively carry this corrective-action and information
@@ -158,8 +178,10 @@ records:
     high-risk AI system with the requirements set out in Section 2
   action: demonstrate system conformity with Section 2 upon a reasoned request from a national competent
     authority
-  subject_ref: provider
-  subject_category: supported_operator
+  actors:
+  - actor_ref: provider
+    category: supported_operator
+  targets: []
   qualifier_spans: *id001
   conditions:
   - a national competent authority makes a reasoned request
@@ -173,8 +195,10 @@ records:
     Directives (EU) 2016/2102 and (EU) 2019/882
   action: ensure the high-risk AI system complies with the applicable accessibility requirements in Directives
     (EU) 2016/2102 and (EU) 2019/882
-  subject_ref: provider
-  subject_category: supported_operator
+  actors:
+  - actor_ref: provider
+    category: supported_operator
+  targets: []
   qualifier_spans: *id001
   implementation_refs:
   - AIA-PO-A16-L

@@ -6,8 +6,10 @@ records:
     this Regulation, provided that they meet the requirements laid down in Article 31 or they ensure an
     equivalent level of compliance.
   action: authorise an eligible third-country conformity-assessment body to perform notified-body activities
-  subject_ref: third_country_conformity_assessment_body
-  subject_category: notified_or_conformity_body
+  actors:
+  - actor_ref: third_country_conformity_assessment_body
+    category: notified_or_conformity_body
+  targets: []
   kind: permission
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.

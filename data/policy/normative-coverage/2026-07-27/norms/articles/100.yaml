@@ -3,9 +3,10 @@ norms:
 - norm_id: AIA-NORM-A100-P1-IMPOSE-UNION-BODY-FINES
   act_version_date: '2026-07-27'
   kind: power
-  subjects:
-  - subject_ref: european_data_protection_supervisor
+  actors:
+  - actor_ref: european_data_protection_supervisor
     category: union_institution_or_body
+  targets: []
   action: impose administrative fines on in-scope Union institutions bodies offices and agencies after
     considering all relevant circumstances and specified factors
   norm_text: The European Data Protection Supervisor may impose administrative fines on Union institutions,
@@ -57,9 +58,10 @@ norms:
 - norm_id: AIA-NORM-A100-P2-ARTICLE5-FINE
   act_version_date: '2026-07-27'
   kind: legal_consequence
-  subjects:
-  - subject_ref: infringing_union_institution_or_body
+  actors:
+  - actor_ref: infringing_union_institution_or_body
     category: union_institution_or_body
+  targets: []
   action: expose Union-body Article 5 non-compliance to a fine up to EUR 1500000
   norm_text: Non-compliance with the prohibition of the AI practices referred to in Article 5 shall be
     subject to administrative fines of up to EUR 1500000.
@@ -94,9 +96,10 @@ norms:
 - norm_id: AIA-NORM-A100-P3-OTHER-REQUIREMENT-FINE
   act_version_date: '2026-07-27'
   kind: legal_consequence
-  subjects:
-  - subject_ref: infringing_union_institution_or_body
+  actors:
+  - actor_ref: infringing_union_institution_or_body
     category: union_institution_or_body
+  targets: []
   action: expose other Union-body AI Act non-compliance to a fine up to EUR 750000
   norm_text: The non-compliance of the AI system with any requirements or obligations under this Regulation,
     other than those laid down in Article 5, shall be subject to administrative fines of up to EUR 750000.
@@ -131,9 +134,10 @@ norms:
 - norm_id: AIA-NORM-A100-P4-HEARING-RIGHTS
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: european_data_protection_supervisor
+  actors:
+  - actor_ref: european_data_protection_supervisor
     category: union_institution_or_body
+  targets: []
   action: give the Union institution, body, office or agency subject to the proceedings the opportunity
     of being heard on the possible infringement before taking a decision
   norm_text: Before taking decisions pursuant to this Article, the European Data Protection Supervisor
@@ -169,9 +173,10 @@ norms:
 - norm_id: AIA-NORM-A100-P4-DECISION-GROUNDS
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: european_data_protection_supervisor
+  actors:
+  - actor_ref: european_data_protection_supervisor
     category: union_institution_or_body
+  targets: []
   action: base the decision only on elements and circumstances on which the parties concerned have been
     able to comment
   norm_text: The European Data Protection Supervisor shall base his or her decisions only on elements
@@ -204,9 +209,10 @@ norms:
 - norm_id: AIA-NORM-A100-P4-ASSOCIATE-COMPLAINANTS
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: european_data_protection_supervisor
+  actors:
+  - actor_ref: european_data_protection_supervisor
     category: union_institution_or_body
+  targets: []
   action: associate any complainants closely with the proceedings
   norm_text: Complainants, if any, shall be associated closely with the proceedings.
   detection_channels:
@@ -238,9 +244,10 @@ norms:
 - norm_id: AIA-NORM-A100-P5-DEFENCE-AND-FILE-ACCESS
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: european_data_protection_supervisor
+  actors:
+  - actor_ref: european_data_protection_supervisor
     category: union_institution_or_body
+  targets: []
   action: fully respect the rights of defence of the parties concerned in the proceedings
   norm_text: The rights of defence of the parties concerned shall be fully respected in the proceedings.
   detection_channels:
@@ -271,9 +278,10 @@ norms:
 - norm_id: AIA-NORM-A100-P5-FILE-ACCESS-ENTITLEMENT
   act_version_date: '2026-07-27'
   kind: entitlement
-  subjects:
-  - subject_ref: party_concerned_in_article_100_proceedings
+  actors:
+  - actor_ref: party_concerned_in_article_100_proceedings
     category: union_institution_or_body
+  targets: []
   action: have access to the European Data Protection Supervisor's file
   norm_text: "They shall be entitled to have access to the European Data Protection Supervisor\u2019s\
     \ file, subject to the legitimate interest of individuals or undertakings in the protection of their\
@@ -309,9 +317,10 @@ norms:
 - norm_id: AIA-NORM-A100-P6-FINE-FUNDS-AND-OPERATION
   act_version_date: '2026-07-27'
   kind: legal_consequence
-  subjects:
-  - subject_ref: union_budget_and_enforcement_framework
+  actors:
+  - actor_ref: union_budget_and_enforcement_framework
     category: union_institution_or_body
+  targets: []
   action: contribute the funds collected by imposing Article 100 fines to the general budget of the Union
   norm_text: Funds collected by imposition of fines in this Article shall contribute to the general budget
     of the Union
@@ -344,9 +353,10 @@ norms:
 - norm_id: AIA-NORM-A100-P6-PRESERVE-FINED-BODY-OPERATION
   act_version_date: '2026-07-27'
   kind: legal_consequence
-  subjects:
-  - subject_ref: union_budget_and_enforcement_framework
+  actors:
+  - actor_ref: union_budget_and_enforcement_framework
     category: union_institution_or_body
+  targets: []
   action: keep the fines from affecting the effective operation of the Union institution, body, office
     or agency fined
   norm_text: The fines shall not affect the effective operation of the Union institution, body, office
@@ -380,9 +390,10 @@ norms:
 - norm_id: AIA-NORM-A100-P7-ANNUAL-FINE-NOTIFICATION
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: european_data_protection_supervisor
+  actors:
+  - actor_ref: european_data_protection_supervisor
     category: union_institution_or_body
+  targets: []
   action: notify the Commission annually of Article 100 fines and initiated proceedings
   norm_text: The European Data Protection Supervisor shall, on an annual basis, notify the Commission
     of the administrative fines it has imposed pursuant to this Article and of any litigation or judicial

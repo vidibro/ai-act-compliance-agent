@@ -3,9 +3,10 @@ norms:
 - norm_id: AIA-NORM-A092-P1-CONDUCT-GPAI-EVALUATION
   act_version_date: '2026-07-27'
   kind: power
-  subjects:
-  - subject_ref: ai_office
+  actors:
+  - actor_ref: ai_office
     category: union_institution_or_body
+  targets: []
   action: conduct evaluations of the general-purpose AI model concerned, after consulting the Board, for
     either enacted purpose
   norm_text: The AI Office, after consulting the Board, may conduct evaluations of the general-purpose
@@ -49,9 +50,10 @@ norms:
 - norm_id: AIA-NORM-A092-P2-APPOINT-INDEPENDENT-EXPERTS
   act_version_date: '2026-07-27'
   kind: power
-  subjects:
-  - subject_ref: commission
+  actors:
+  - actor_ref: commission
     category: union_institution_or_body
+  targets: []
   action: appoint Article 68(2)-qualified independent experts to carry out evaluations for the Commission
   norm_text: The Commission may decide to appoint independent experts to carry out evaluations on its
     behalf, including from the scientific panel established pursuant to Article 68. Independent experts
@@ -85,9 +87,10 @@ norms:
 - norm_id: AIA-NORM-A092-P3-REQUEST-MODEL-ACCESS
   act_version_date: '2026-07-27'
   kind: power
-  subjects:
-  - subject_ref: commission
+  actors:
+  - actor_ref: commission
     category: union_institution_or_body
+  targets: []
   action: request access to the GPAI model through APIs source code or other appropriate technical means
   norm_text: For the purposes of paragraph 1, the Commission may request access to the general-purpose
     AI model concerned through APIs or further appropriate technical means and tools, including source
@@ -121,9 +124,10 @@ norms:
 - norm_id: AIA-NORM-A092-P4-ACCESS-REQUEST-CONTENT
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: commission
+  actors:
+  - actor_ref: commission
     category: union_institution_or_body
+  targets: []
   action: include legal basis purpose reasons access period and applicable Article 101 fines in a model-access
     request
   norm_text: The request for access shall state the legal basis, the purpose and reasons of the request
@@ -161,9 +165,10 @@ norms:
 - norm_id: AIA-NORM-A092-P5-SUPPLY-REQUESTED-INFORMATION
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: gpai_provider_or_representative
+  actors:
+  - actor_ref: gpai_provider_or_representative
     category: supported_operator
+  targets: []
   action: supply the information requested following a Commission request for model access
   norm_text: The providers of the general-purpose AI model concerned or its representative shall supply
     the information requested.
@@ -198,9 +203,10 @@ norms:
 - norm_id: AIA-NORM-A092-P5-AUTHORISED-PERSON-PROVIDE-ACCESS
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: legally_or_statutorily_authorised_representative
+  actors:
+  - actor_ref: legally_or_statutorily_authorised_representative
     category: external_private_party
+  targets: []
   action: provide requested model access on behalf of a legal-person or non-legal-personality GPAI provider
   norm_text: In the case of legal persons, companies or firms, or where the provider has no legal personality,
     the persons authorised to represent them by law or by their statutes, shall provide the access requested
@@ -237,9 +243,10 @@ norms:
 - norm_id: AIA-NORM-A092-P6-ADOPT-EVALUATION-ARRANGEMENTS
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: commission
+  actors:
+  - actor_ref: commission
     category: union_institution_or_body
+  targets: []
   action: adopt evaluation arrangements conditions and independent-expert selection procedures through
     the Article 98(2) examination procedure
   norm_text: The Commission shall adopt implementing acts setting out the detailed arrangements and the
@@ -274,9 +281,10 @@ norms:
 - norm_id: AIA-NORM-A092-P7-INITIATE-STRUCTURED-DIALOGUE
   act_version_date: '2026-07-27'
   kind: power
-  subjects:
-  - subject_ref: ai_office
+  actors:
+  - actor_ref: ai_office
     category: union_institution_or_body
+  targets: []
   action: initiate pre-access dialogue about internal testing safeguards procedures and systemic-risk
     mitigations
   norm_text: Prior to requesting access to the general-purpose AI model concerned, the AI Office may initiate

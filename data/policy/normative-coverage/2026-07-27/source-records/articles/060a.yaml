@@ -3,8 +3,10 @@ records:
   source: A060A-P001
   quote: Member States may allow, in accordance with this Article, the testing of high-risk AI systems in real world conditions outside AI regulatory sandboxes by providers or prospective providers of AI enabled products covered by the Union harmonisation legislation listed in Section B of Annex I, with a view to assessing and verifying the conformity of those systems with the requirements laid down in Articles 8 to 15.
   action: allow Article 60a real-world testing of Section B AI-enabled products to assess Articles 8 to 15 conformity
-  subject_ref: member_state
-  subject_category: member_state
+  actors:
+  - actor_ref: member_state
+    category: member_state
+  targets: []
   kind: power
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -15,8 +17,10 @@ records:
   source: A060A-P002
   quote: Member States that choose to allow testing as referred to in paragraph 1 shall, individually or jointly, adopt frameworks for real-world testing.
   action: adopt an individual or joint real-world testing framework when allowing Article 60a testing
-  subject_ref: member_state
-  subject_category: member_state
+  actors:
+  - actor_ref: member_state
+    category: member_state
+  targets: []
   conditions: [the Member State chooses to allow Article 60a testing]
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -27,8 +31,10 @@ records:
   source: A060A-P003
   quote: Each Member State shall notify the Commission of any real-world testing framework it adopts before implementing it.
   action: notify the Commission of an adopted testing framework before implementation
-  subject_ref: member_state
-  subject_category: member_state
+  actors:
+  - actor_ref: member_state
+    category: member_state
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -38,8 +44,10 @@ records:
   source: A060A-P003
   quote: This shall not affect the competences of the Commission under the Union harmonisation legislation listed in Section B of Annex I.
   action: preserve Commission competences under Section B harmonisation legislation
-  subject_ref: commission
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: commission
+    category: union_institution_or_body
+  targets: []
   kind: legal_consequence
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -58,8 +66,10 @@ records:
   action: ensure that the relevant national competent, relevant and infrastructure or product
     authorities cooperate closely with each other in good faith and remove practical obstacles necessary
     to implement real-world testing frameworks and test Section B AI-enabled products
-  subject_ref: member_state
-  subject_category: member_state
+  actors:
+  - actor_ref: member_state
+    category: member_state
+  targets: []
   conditions: [the Member State has adopted a real-world testing framework]
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -75,8 +85,10 @@ records:
   source: A060A-P005
   quote: The frameworks for real-world testing shall lay down the requirements under which testing in real-world conditions shall occur. Those frameworks shall
   action: make every enacted plan compliance governance and protection element part of the real-world testing framework
-  subject_ref: member_state
-  subject_category: member_state
+  actors:
+  - actor_ref: member_state
+    category: member_state
+  targets: []
   mandatory_content: [mandatory agreed testing plan, incorporated Article 60 safeguards, effective governance and accountability, high protection of health safety and fundamental rights]
   qualifier_spans: [A060A-P006, A060A-P007, A060A-P008, A060A-P009]
   product_scope: outside_supported_actor
@@ -88,16 +100,20 @@ records:
   source: A060A-P006
   quote: include the provision of a mandatory real-world testing plan to be agreed between the provider or prospective provider and the national competent authority or relevant authority in accordance with the Union harmonisation legislation listed in Section B of Annex I;
   action: agree a mandatory real-world testing plan with the competent or relevant authority under applicable Section B legislation
-  subject_ref: provider_or_prospective_provider
-  subject_category: supported_operator
+  actors:
+  - actor_ref: provider_or_prospective_provider
+    category: supported_operator
+  targets: []
   verification_mode: reported_conditionally
   verified_by: vidibro
 - norm_id: AIA-NORM-A060A-P5-B-COMPLY-WITH-INCORPORATED-SAFEGUARDS
   source: A060A-P007
   quote: ensure compliance with the requirements laid down in Article 60(2), (3), (4)(d)-(j) and (5)-(9), where any reference to market surveillance authorities in those provisions shall be read as a reference to the national competent authority or relevant authority, as appropriate in accordance with the Union harmonisation legislation listed in Section B of Annex I;
   action: comply with the incorporated Article 60 testing safeguards using the competent-authority substitution required by Section B legislation
-  subject_ref: provider_or_prospective_provider
-  subject_category: supported_operator
+  actors:
+  - actor_ref: provider_or_prospective_provider
+    category: supported_operator
+  targets: []
   verification_mode: reported_conditionally
   verified_by: vidibro
 - norm_id: AIA-NORM-A060A-P6-COMPLY-WITH-SECTORAL-LAW
@@ -105,8 +121,10 @@ records:
   quote: The real-world testing shall comply with the applicable provisions laid down in the Union harmonisation legislation listed in Section B of Annex I.
   action: comply with the applicable provisions of the Section B Union harmonisation legislation when
     conducting the real-world testing
-  subject_ref: provider_or_prospective_provider
-  subject_category: supported_operator
+  actors:
+  - actor_ref: provider_or_prospective_provider
+    category: supported_operator
+  targets: []
   verification_mode: reported_conditionally
   verified_by: vidibro
 - norm_id: AIA-NORM-A060A-P6-SECTORAL-REQUIREMENTS-DO-NOT-OBSTRUCT
@@ -114,8 +132,10 @@ records:
   quote: Any requirements laid down in those provisions shall not affect the application of this Article to the extent necessary to enable the testing referred to in paragraph 1.
   action: keep the Section B requirements from affecting the application of Article 60a to the extent
     necessary to enable the paragraph 1 testing
-  subject_ref: provider_or_prospective_provider
-  subject_category: supported_operator
+  actors:
+  - actor_ref: provider_or_prospective_provider
+    category: supported_operator
+  targets: []
   kind: legal_consequence
   product_scope: no_product_action
   product_scope_reason: Limits the effect of other applicable law rather than creating an independent

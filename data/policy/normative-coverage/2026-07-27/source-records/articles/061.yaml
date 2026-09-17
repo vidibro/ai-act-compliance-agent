@@ -5,8 +5,10 @@ records:
   action: obtain freely given informed consent from the testing subjects before their participation
     in Article 60 testing, after duly informing them with concise, clear, relevant and understandable
     information on every enacted matter
-  subject_ref: provider_or_prospective_provider
-  subject_category: supported_operator
+  actors:
+  - actor_ref: provider_or_prospective_provider
+    category: supported_operator
+  targets: []
   mandatory_content:
   - the nature and objectives of the testing in real world conditions and the possible
     inconvenience that may be linked to their participation
@@ -28,8 +30,10 @@ records:
   source: A061-P007
   quote: The informed consent shall be dated and documented
   action: date and document the informed consent
-  subject_ref: provider_or_prospective_provider
-  subject_category: supported_operator
+  actors:
+  - actor_ref: provider_or_prospective_provider
+    category: supported_operator
+  targets: []
   mandatory_content: [dated consent, documented consent]
   verification_mode: reported_conditionally
   verified_by: vidibro
@@ -38,7 +42,9 @@ records:
   quote: a copy shall be given to the subjects of testing or their legal representative.
   action: give a copy of the informed consent to the subjects of testing or their legal
     representative
-  subject_ref: provider_or_prospective_provider
-  subject_category: supported_operator
+  actors:
+  - actor_ref: provider_or_prospective_provider
+    category: supported_operator
+  targets: []
   verification_mode: reported_conditionally
   verified_by: vidibro

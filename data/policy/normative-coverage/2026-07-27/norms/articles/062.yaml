@@ -3,9 +3,10 @@ norms:
 - norm_id: AIA-NORM-A062-P1-MEMBER-STATE-SME-SUPPORT
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: member_state
+  actors:
+  - actor_ref: member_state
     category: member_state
+  targets: []
   action: undertake every enacted sandbox access, awareness, communication and standardisation action
     for SMEs, start-ups, deployers, innovators and relevant authorities
   norm_text: 'Member States shall undertake the following actions:'
@@ -42,9 +43,10 @@ norms:
 - norm_id: AIA-NORM-A062-P1-A-PRIORITY-SANDBOX-ACCESS
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: member_state
+  actors:
+  - actor_ref: member_state
     category: member_state
+  targets: []
   action: provide priority AI regulatory sandbox access to SMEs and start-ups with a registered office
     or branch in the Union
   norm_text: provide SMEs, including start-ups, having a registered office or a branch in the Union, with
@@ -81,9 +83,10 @@ norms:
 - norm_id: AIA-NORM-A062-P1-A-PRESERVE-OTHER-SME-ACCESS
   act_version_date: '2026-07-27'
   kind: legal_consequence
-  subjects:
-  - subject_ref: member_state
+  actors:
+  - actor_ref: member_state
     category: member_state
+  targets: []
   action: keep the priority access from precluding other SMEs and start-ups from sandbox access
   norm_text: the priority access shall not preclude other SMEs, including start-ups, other than those
     referred to in this paragraph from access to the AI regulatory sandbox, provided that they also fulfil
@@ -120,9 +123,10 @@ norms:
 - norm_id: AIA-NORM-A062-P1-B-AWARENESS-AND-TRAINING
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: member_state
+  actors:
+  - actor_ref: member_state
     category: member_state
+  targets: []
   action: organise awareness-raising and training activities on applying this Regulation, tailored to
     the needs of SMEs, start-ups, deployers and, as appropriate, local public authorities
   norm_text: organise specific awareness raising and training activities on the application of this Regulation
@@ -156,9 +160,10 @@ norms:
 - norm_id: AIA-NORM-A062-P1-C-USE-EXISTING-CHANNELS
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: member_state
+  actors:
+  - actor_ref: member_state
     category: member_state
+  targets: []
   action: utilise existing dedicated channels to advise SMEs, start-ups, deployers, other innovators and,
     as appropriate, local public authorities and answer their implementation queries, including on sandbox
     participation
@@ -192,9 +197,10 @@ norms:
 - norm_id: AIA-NORM-A062-P1-C-ESTABLISH-NEW-CHANNELS
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: member_state
+  actors:
+  - actor_ref: member_state
     category: member_state
+  targets: []
   action: establish new communication channels for that advice and query response
   norm_text: where appropriate, establish new ones for communication with SMEs including start-ups, deployers,
     other innovators and, as appropriate, local public authorities to provide advice and respond to queries
@@ -229,9 +235,10 @@ norms:
 - norm_id: AIA-NORM-A062-P1-D-FACILITATE-STANDARDISATION-PARTICIPATION
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: member_state
+  actors:
+  - actor_ref: member_state
     category: member_state
+  targets: []
   action: facilitate SME and other relevant stakeholder participation in the standardisation development
     process
   norm_text: facilitate the participation of SMEs and other relevant stakeholders in the standardisation
@@ -265,9 +272,10 @@ norms:
 - norm_id: AIA-NORM-A062-P2-PROPORTIONATE-SME-FEES
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: conformity_assessment_fee_setter
+  actors:
+  - actor_ref: conformity_assessment_fee_setter
     category: notified_or_conformity_body
+  targets: []
   action: account for SME provider interests and needs and proportionately reduce Article 43 conformity-assessment
     fees
   norm_text: The specific interests and needs of the SME providers, including start-ups, shall be taken
@@ -304,9 +312,10 @@ norms:
 - norm_id: AIA-NORM-A062-P3-AI-OFFICE-SUPPORT
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: ai_office
+  actors:
+  - actor_ref: ai_office
     category: union_institution_or_body
+  targets: []
   action: undertake every enacted template, information platform, awareness and procurement best-practice
     action
   norm_text: 'The AI Office shall undertake the following actions:'
@@ -343,9 +352,10 @@ norms:
 - norm_id: AIA-NORM-A062-P3-A-PROVIDE-TEMPLATES
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: ai_office
+  actors:
+  - actor_ref: ai_office
     category: union_institution_or_body
+  targets: []
   action: provide standardised templates for the areas covered by this Regulation
   norm_text: provide standardised templates for areas covered by this Regulation, as specified by the
     Board in its request;
@@ -379,9 +389,10 @@ norms:
 - norm_id: AIA-NORM-A062-P3-B-INFORMATION-PLATFORM
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: ai_office
+  actors:
+  - actor_ref: ai_office
     category: union_institution_or_body
+  targets: []
   action: develop and maintain a single information platform giving all operators across the Union easy-to-use
     information on this Regulation
   norm_text: develop and maintain a single information platform providing easy to use information in relation
@@ -415,9 +426,10 @@ norms:
 - norm_id: AIA-NORM-A062-P3-C-COMMUNICATION-CAMPAIGNS
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: ai_office
+  actors:
+  - actor_ref: ai_office
     category: union_institution_or_body
+  targets: []
   action: organise appropriate communication campaigns raising awareness of the obligations arising from
     this Regulation
   norm_text: organise appropriate communication campaigns to raise awareness about the obligations arising
@@ -451,9 +463,10 @@ norms:
 - norm_id: AIA-NORM-A062-P3-D-PROCUREMENT-BEST-PRACTICES
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: ai_office
+  actors:
+  - actor_ref: ai_office
     category: union_institution_or_body
+  targets: []
   action: evaluate and promote convergence of best practices in public procurement procedures for AI systems
   norm_text: evaluate and promote the convergence of best practices in public procurement procedures in
     relation to AI systems.

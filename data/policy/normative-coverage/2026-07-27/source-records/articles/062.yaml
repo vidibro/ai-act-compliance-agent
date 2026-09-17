@@ -4,8 +4,10 @@ records:
   quote: 'Member States shall undertake the following actions:'
   action: undertake every enacted sandbox access, awareness, communication and standardisation action
     for SMEs, start-ups, deployers, innovators and relevant authorities
-  subject_ref: member_state
-  subject_category: member_state
+  actors:
+  - actor_ref: member_state
+    category: member_state
+  targets: []
   qualifier_spans:
   - A062-P002
   - A062-P003
@@ -23,8 +25,10 @@ records:
     and selection criteria;
   action: provide priority AI regulatory sandbox access to SMEs and start-ups with a registered office
     or branch in the Union
-  subject_ref: member_state
-  subject_category: member_state
+  actors:
+  - actor_ref: member_state
+    category: member_state
+  targets: []
   conditions:
   - the SME or start-up has a registered office or a branch in the Union
   - the SME or start-up fulfils the sandbox eligibility conditions and selection criteria
@@ -41,8 +45,10 @@ records:
     to in this paragraph from access to the AI regulatory sandbox, provided that they also fulfil the
     eligibility conditions and selection criteria;
   action: keep the priority access from precluding other SMEs and start-ups from sandbox access
-  subject_ref: member_state
-  subject_category: member_state
+  actors:
+  - actor_ref: member_state
+    category: member_state
+  targets: []
   kind: legal_consequence
   conditions:
   - the other SMEs or start-ups also fulfil the eligibility conditions and selection criteria
@@ -59,8 +65,10 @@ records:
     tailored to the needs of SMEs including start-ups, deployers and, as appropriate, local public authorities;
   action: organise awareness-raising and training activities on applying this Regulation, tailored to
     the needs of SMEs, start-ups, deployers and, as appropriate, local public authorities
-  subject_ref: member_state
-  subject_category: member_state
+  actors:
+  - actor_ref: member_state
+    category: member_state
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -74,8 +82,10 @@ records:
   action: utilise existing dedicated channels to advise SMEs, start-ups, deployers, other innovators and,
     as appropriate, local public authorities and answer their implementation queries, including on sandbox
     participation
-  subject_ref: member_state
-  subject_category: member_state
+  actors:
+  - actor_ref: member_state
+    category: member_state
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -89,8 +99,10 @@ records:
     other innovators and, as appropriate, local public authorities to provide advice and respond to queries
     about the implementation of this Regulation, including as regards participation in AI regulatory sandboxes;
   action: establish new communication channels for that advice and query response
-  subject_ref: member_state
-  subject_category: member_state
+  actors:
+  - actor_ref: member_state
+    category: member_state
+  targets: []
   conditions:
   - where appropriate
   product_scope: outside_supported_actor
@@ -106,8 +118,10 @@ records:
     process.
   action: facilitate SME and other relevant stakeholder participation in the standardisation development
     process
-  subject_ref: member_state
-  subject_category: member_state
+  actors:
+  - actor_ref: member_state
+    category: member_state
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -122,8 +136,10 @@ records:
     to their size, market size and other relevant indicators.
   action: account for SME provider interests and needs and proportionately reduce Article 43 conformity-assessment
     fees
-  subject_ref: conformity_assessment_fee_setter
-  subject_category: notified_or_conformity_body
+  actors:
+  - actor_ref: conformity_assessment_fee_setter
+    category: notified_or_conformity_body
+  targets: []
   mandatory_content:
   - SME size
   - market size
@@ -138,8 +154,10 @@ records:
   quote: 'The AI Office shall undertake the following actions:'
   action: undertake every enacted template, information platform, awareness and procurement best-practice
     action
-  subject_ref: ai_office
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: ai_office
+    category: union_institution_or_body
+  targets: []
   qualifier_spans:
   - A062-P008
   - A062-P009
@@ -155,8 +173,10 @@ records:
   quote: provide standardised templates for areas covered by this Regulation, as specified by the Board
     in its request;
   action: provide standardised templates for the areas covered by this Regulation
-  subject_ref: ai_office
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: ai_office
+    category: union_institution_or_body
+  targets: []
   conditions:
   - the Board specifies the areas in its request
   product_scope: outside_supported_actor
@@ -172,8 +192,10 @@ records:
     to this Regulation for all operators across the Union;
   action: develop and maintain a single information platform giving all operators across the Union easy-to-use
     information on this Regulation
-  subject_ref: ai_office
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: ai_office
+    category: union_institution_or_body
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -187,8 +209,10 @@ records:
     from this Regulation;
   action: organise appropriate communication campaigns raising awareness of the obligations arising from
     this Regulation
-  subject_ref: ai_office
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: ai_office
+    category: union_institution_or_body
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -201,8 +225,10 @@ records:
   quote: evaluate and promote the convergence of best practices in public procurement procedures in relation
     to AI systems.
   action: evaluate and promote convergence of best practices in public procurement procedures for AI systems
-  subject_ref: ai_office
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: ai_office
+    category: union_institution_or_body
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required

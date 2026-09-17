@@ -4,8 +4,10 @@ records:
   quote: Providers of high-risk AI systems placed on the Union market shall report any serious incident
     to the market surveillance authorities of the Member States where that incident occurred.
   action: report every serious incident to the market surveillance authority where it occurred
-  subject_ref: provider
-  subject_category: supported_operator
+  actors:
+  - actor_ref: provider
+    category: supported_operator
+  targets: []
   implementation_refs:
   - AIA-ALL-A73
   verification_mode: reported_not_judged
@@ -18,8 +20,10 @@ records:
     becomes aware of the serious incident.
   action: report immediately after establishing a causal link or reasonable likelihood and no later than
     15 days after awareness, taking account of the severity of the serious incident
-  subject_ref: provider_or_applicable_deployer
-  subject_category: supported_operator
+  actors:
+  - actor_ref: provider_or_applicable_deployer
+    category: supported_operator
+  targets: []
   qualifier_spans:
   - A073-P003
   implementation_refs:
@@ -33,8 +37,10 @@ records:
     the deployer becomes aware of that incident.
   action: report a widespread infringement or Article 3(49)(b) incident immediately and within two days
     of awareness
-  subject_ref: provider_or_applicable_deployer
-  subject_category: supported_operator
+  actors:
+  - actor_ref: provider_or_applicable_deployer
+    category: supported_operator
+  targets: []
   implementation_refs:
   - AIA-ALL-A73
   verification_mode: reported_not_judged
@@ -47,8 +53,10 @@ records:
     after the date on which the provider or, where applicable, the deployer becomes aware of the serious
     incident.
   action: report a death immediately on established or suspected causality and within ten days of awareness
-  subject_ref: provider_or_applicable_deployer
-  subject_category: supported_operator
+  actors:
+  - actor_ref: provider_or_applicable_deployer
+    category: supported_operator
+  targets: []
   implementation_refs:
   - AIA-ALL-A73
   verification_mode: reported_not_judged
@@ -58,8 +66,10 @@ records:
   quote: Where necessary to ensure timely reporting, the provider or, where applicable, the deployer,
     may submit an initial report that is incomplete, followed by a complete report.
   action: submit an initial incomplete report followed by a complete report where needed for timeliness
-  subject_ref: provider_or_applicable_deployer
-  subject_category: supported_operator
+  actors:
+  - actor_ref: provider_or_applicable_deployer
+    category: supported_operator
+  targets: []
   kind: permission
   implementation_refs:
   - AIA-ALL-A73
@@ -72,8 +82,10 @@ records:
     concerned.
   action: perform, without delay, the necessary investigations into the serious incident and the AI system
     concerned
-  subject_ref: provider
-  subject_category: supported_operator
+  actors:
+  - actor_ref: provider
+    category: supported_operator
+  targets: []
   conditions:
   - a serious incident has been reported pursuant to paragraph 1
   mandatory_content:
@@ -85,8 +97,10 @@ records:
   source: A073-P007
   quote: This shall include a risk assessment of the incident, and corrective action.
   action: include a risk assessment of the reported serious incident and corrective action in the investigation
-  subject_ref: provider
-  subject_category: supported_operator
+  actors:
+  - actor_ref: provider
+    category: supported_operator
+  targets: []
   conditions:
   - a serious incident has been reported pursuant to paragraph 1
   mandatory_content:
@@ -101,8 +115,10 @@ records:
     body concerned, during the investigations referred to in the first subparagraph
   action: cooperate with the competent authorities, and where relevant with the notified body concerned,
     during the first-subparagraph investigations
-  subject_ref: provider
-  subject_category: supported_operator
+  actors:
+  - actor_ref: provider
+    category: supported_operator
+  targets: []
   implementation_refs:
   - AIA-ALL-A73
   verification_mode: reported_not_judged
@@ -114,8 +130,10 @@ records:
     authorities of such action.
   action: perform no investigation that alters the AI system concerned in a way which may affect any subsequent
     evaluation of the causes of the incident before informing the competent authorities of such action
-  subject_ref: provider
-  subject_category: supported_operator
+  actors:
+  - actor_ref: provider
+    category: supported_operator
+  targets: []
   kind: prohibition
   implementation_refs:
   - AIA-ALL-A73
@@ -127,8 +145,10 @@ records:
     the relevant market surveillance authority shall inform the national public authorities or bodies
     referred to in Article 77(1).
   action: inform Article 77(1) authorities of Article 3(49)(c) incident notifications
-  subject_ref: market_surveillance_authority
-  subject_category: public_authority
+  actors:
+  - actor_ref: market_surveillance_authority
+    category: public_authority
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -140,8 +160,10 @@ records:
     set out in paragraph 1 of this Article. That guidance shall be issued by 2 August 2025, and shall
     be assessed regularly.
   action: issue incident-reporting guidance by 2 August 2025 and assess it regularly
-  subject_ref: commission
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: commission
+    category: union_institution_or_body
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -155,8 +177,10 @@ records:
     Regulation.
   action: take the appropriate measures provided for in Article 19 of Regulation (EU) 2019/1020 within
     seven days of receiving the paragraph 1 notification and follow that Regulation's notification procedures
-  subject_ref: market_surveillance_authority
-  subject_category: public_authority
+  actors:
+  - actor_ref: market_surveillance_authority
+    category: public_authority
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -172,8 +196,10 @@ records:
     to those set out in this Regulation, the notification of serious incidents shall be limited to those
     referred to in Article 3, point (49)(c).
   action: limit reporting to Article 3(49)(c) incidents where equivalent Union reporting legislation applies
-  subject_ref: provider
-  subject_category: supported_operator
+  actors:
+  - actor_ref: provider
+    category: supported_operator
+  targets: []
   kind: legal_consequence
   implementation_refs:
   - AIA-ALL-A73
@@ -187,8 +213,10 @@ records:
     competent authority chosen for that purpose by the Member States where the incident occurred.
   action: limit covered medical-device reports to Article 3(49)(c) incidents and send them to the designated
     national competent authority
-  subject_ref: provider_or_applicable_deployer
-  subject_category: supported_operator
+  actors:
+  - actor_ref: provider_or_applicable_deployer
+    category: supported_operator
+  targets: []
   implementation_refs:
   - AIA-ALL-A73-10
   verification_mode: reported_not_judged
@@ -199,8 +227,10 @@ records:
     whether or not they have taken action on it, in accordance with Article 20 of Regulation (EU) 2019/1020.
   action: immediately notify the Commission of every serious incident under Article 20 regardless of action
     taken
-  subject_ref: national_competent_authority
-  subject_category: public_authority
+  actors:
+  - actor_ref: national_competent_authority
+    category: public_authority
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required

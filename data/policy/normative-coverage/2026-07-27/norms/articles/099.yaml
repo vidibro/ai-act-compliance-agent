@@ -3,9 +3,10 @@ norms:
 - norm_id: AIA-NORM-A099-P1-ESTABLISH-PENALTIES
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: member_state
+  actors:
+  - actor_ref: member_state
     category: member_state
+  targets: []
   action: establish and effectively implement effective proportionate and dissuasive infringement penalties
     and enforcement measures
   norm_text: In accordance with the terms and conditions laid down in this Regulation, Member States shall
@@ -43,9 +44,10 @@ norms:
 - norm_id: AIA-NORM-A099-P1-ACCOUNT-FOR-SMALL-BUSINESSES
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: member_state
+  actors:
+  - actor_ref: member_state
     category: member_state
+  targets: []
   action: account for SME start-up and SMC interests and economic viability when imposing penalties
   norm_text: The Member States shall take into account the interests of SMEs, including start-ups, and
     SMCs, and their economic viability when imposing penalties.
@@ -77,9 +79,10 @@ norms:
 - norm_id: AIA-NORM-A099-P2-NOTIFY-PENALTY-RULES
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: member_state
+  actors:
+  - actor_ref: member_state
     category: member_state
+  targets: []
   action: notify the Commission of the paragraph 1 rules on penalties and other enforcement measures,
     without delay and at the latest by the date of entry into application, and notify it without delay
     of subsequent amendments
@@ -117,9 +120,10 @@ norms:
 - norm_id: AIA-NORM-A099-P3-ARTICLE5-FINE
   act_version_date: '2026-07-27'
   kind: legal_consequence
-  subjects:
-  - subject_ref: infringing_operator
+  actors:
+  - actor_ref: infringing_operator
     category: supported_operator
+  targets: []
   action: expose Article 5 prohibited-practice non-compliance to a fine up to EUR 35 000 000 or, for an
     undertaking, 7 % of preceding-year worldwide annual turnover, whichever is higher
   norm_text: Non-compliance with the prohibition of the AI practices referred to in Article 5 shall be
@@ -155,9 +159,9 @@ norms:
 - norm_id: AIA-NORM-A099-P4-OPERATOR-FINE
   act_version_date: '2026-07-27'
   kind: legal_consequence
-  subjects:
-  - subject_ref: infringing_operator_or_notified_body
-    category: other
+  actors: []
+  targets:
+  - target_ref: infringing_operator_or_notified_body
   action: expose non-compliance with the enacted operator and notified-body provisions, other than those
     laid down in Article 5, to administrative fines of up to EUR 15 000 000 or, for an undertaking, up
     to 3 % of its total worldwide annual turnover for the preceding financial year, whichever is higher
@@ -214,9 +218,9 @@ norms:
 - norm_id: AIA-NORM-A099-P5-INFORMATION-FINE
   act_version_date: '2026-07-27'
   kind: legal_consequence
-  subjects:
-  - subject_ref: information_supplier
-    category: other
+  actors: []
+  targets:
+  - target_ref: information_supplier
   action: expose an incorrect incomplete or misleading requested reply to a fine up to EUR 7 500 000 or,
     for an undertaking, 1 % of preceding-year worldwide annual turnover, whichever is higher
   norm_text: The supply of incorrect, incomplete or misleading information to notified bodies or national
@@ -254,9 +258,10 @@ norms:
 - norm_id: AIA-NORM-A099-P6-SME-FINE-CAP
   act_version_date: '2026-07-27'
   kind: legal_consequence
-  subjects:
-  - subject_ref: enforcing_authority
+  actors:
+  - actor_ref: enforcing_authority
     category: public_authority
+  targets: []
   action: cap SME and start-up fines at the lower applicable percentage or amount
   norm_text: In the case of SMEs, including start-ups, each fine referred to in this Article shall be
     up to the percentages or amount referred to in paragraphs 3, 4 and 5, whichever thereof is lower.
@@ -290,9 +295,10 @@ norms:
 - norm_id: AIA-NORM-A099-P6A-SMC-FINE-CAP
   act_version_date: '2026-07-27'
   kind: legal_consequence
-  subjects:
-  - subject_ref: enforcing_authority
+  actors:
+  - actor_ref: enforcing_authority
     category: public_authority
+  targets: []
   action: cap SMC fines under paragraphs 4 and 5 at the lower applicable percentage or amount
   norm_text: In the case of SMCs, each fine referred to in paragraphs 4 and 5 shall be up to the percentages
     or amount referred therein, whichever is lower.
@@ -326,9 +332,10 @@ norms:
 - norm_id: AIA-NORM-A099-P7-CONSIDER-FINE-CIRCUMSTANCES
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: enforcing_authority
+  actors:
+  - actor_ref: enforcing_authority
     category: public_authority
+  targets: []
   action: consider all relevant circumstances and the specified factors when deciding whether and how
     much to fine
   norm_text: all relevant circumstances of the specific situation shall be taken into account
@@ -381,9 +388,10 @@ norms:
 - norm_id: AIA-NORM-A099-P8-PUBLIC-BODY-FINE-RULES
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: member_state
+  actors:
+  - actor_ref: member_state
     category: member_state
+  targets: []
   action: establish the extent to which administrative fines apply to domestic public authorities and
     bodies
   norm_text: Each Member State shall lay down rules on to what extent administrative fines may be imposed
@@ -417,9 +425,10 @@ norms:
 - norm_id: AIA-NORM-A099-P9-EQUIVALENT-FINE-EFFECT
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: member_state
+  actors:
+  - actor_ref: member_state
     category: member_state
+  targets: []
   action: ensure court-imposed or other-body-imposed fine rules have equivalent effect
   norm_text: Depending on the legal system of the Member States, the rules on administrative fines may
     be applied in such a manner that the fines are imposed by competent national courts or by other bodies,
@@ -455,9 +464,10 @@ norms:
 - norm_id: AIA-NORM-A099-P10-PROCEDURAL-SAFEGUARDS
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: enforcing_authority
+  actors:
+  - actor_ref: enforcing_authority
     category: public_authority
+  targets: []
   action: exercise Article 99 powers subject to effective remedies due process and other appropriate safeguards
   norm_text: The exercise of powers under this Article shall be subject to appropriate procedural safeguards
     in accordance with Union and national law, including effective judicial remedies and due process.
@@ -489,9 +499,10 @@ norms:
 - norm_id: AIA-NORM-A099-P11-ANNUAL-FINE-REPORT
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: member_state
+  actors:
+  - actor_ref: member_state
     category: member_state
+  targets: []
   action: report annually to the Commission on Article 99 fines and related proceedings
   norm_text: Member States shall, on an annual basis, report to the Commission about the administrative
     fines they have issued during that year, in accordance with this Article, and about any related litigation

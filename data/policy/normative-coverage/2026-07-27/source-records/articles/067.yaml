@@ -3,8 +3,10 @@ records:
   source: A067-P001
   quote: An advisory forum shall be established to provide technical expertise and advise the Board and the Commission, and to contribute to their tasks under this Regulation.
   action: establish an advisory forum supporting the Board and Commission with expertise advice and task contributions
-  subject_ref: commission
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: commission
+    category: union_institution_or_body
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -14,8 +16,10 @@ records:
   source: A067-P002
   quote: The membership of the advisory forum shall represent a balanced selection of stakeholders, including industry, start-ups, SMEs, civil society and academia. The membership of the advisory forum shall be balanced with regard to commercial and non-commercial interests and, within the category of commercial interests, with regard to SMEs and other undertakings.
   action: maintain balanced stakeholder commercial and undertaking representation in forum membership
-  subject_ref: commission
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: commission
+    category: union_institution_or_body
+  targets: []
   mandatory_content: [industry start-ups SMEs civil society and academia, commercial and non-commercial interests, SMEs and other undertakings within commercial interests]
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -26,8 +30,10 @@ records:
   source: A067-P003
   quote: The Commission shall appoint the members of the advisory forum, in accordance with the criteria set out in paragraph 2, from amongst stakeholders with recognised expertise in the field of AI.
   action: appoint AI-expert forum members under the paragraph 2 balance criteria
-  subject_ref: commission
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: commission
+    category: union_institution_or_body
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -37,8 +43,10 @@ records:
   source: A067-P004
   quote: The term of office of the members of the advisory forum shall be two years, which may be extended by up to no more than four years.
   action: set forum member terms at two years with extension limited to four additional years
-  subject_ref: commission
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: commission
+    category: union_institution_or_body
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -48,8 +56,10 @@ records:
   source: A067-P005
   quote: The Fundamental Rights Agency, ENISA, the European Committee for Standardization (CEN), the European Committee for Electrotechnical Standardization (CENELEC), and the European Telecommunications Standards Institute (ETSI) shall be permanent members of the advisory forum.
   action: include every enacted Union and standardisation body as a permanent forum member
-  subject_ref: advisory_forum
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: advisory_forum
+    category: union_institution_or_body
+  targets: []
   mandatory_content: [Fundamental Rights Agency, ENISA, CEN, CENELEC, ETSI]
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -60,8 +70,10 @@ records:
   source: A067-P006
   quote: The advisory forum shall draw up its rules of procedure.
   action: draw up the advisory forum's rules of procedure
-  subject_ref: advisory_forum
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: advisory_forum
+    category: union_institution_or_body
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -72,8 +84,10 @@ records:
   quote: It shall elect two co-chairs from among its members, in accordance with criteria set out in paragraph 2.
   action: elect two co-chairs from among the forum's members in accordance with the paragraph 2
     criteria
-  subject_ref: advisory_forum
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: advisory_forum
+    category: union_institution_or_body
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -83,8 +97,10 @@ records:
   source: A067-P006
   quote: The term of office of the co-chairs shall be two years, renewable once.
   action: hold the co-chair office for a two-year term, renewable once
-  subject_ref: advisory_forum
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: advisory_forum
+    category: union_institution_or_body
+  targets: []
   kind: legal_consequence
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -95,8 +111,10 @@ records:
   source: A067-P007
   quote: The advisory forum shall hold meetings at least twice a year.
   action: hold meetings at least twice a year
-  subject_ref: advisory_forum
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: advisory_forum
+    category: union_institution_or_body
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -106,8 +124,10 @@ records:
   source: A067-P007
   quote: The advisory forum may invite experts and other stakeholders to its meetings.
   action: invite experts and other stakeholders to the forum's meetings
-  subject_ref: advisory_forum
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: advisory_forum
+    category: union_institution_or_body
+  targets: []
   kind: power
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -118,8 +138,10 @@ records:
   source: A067-P008
   quote: The advisory forum may prepare opinions, recommendations and written contributions at the request of the Board or the Commission.
   action: prepare requested opinions recommendations and written contributions
-  subject_ref: advisory_forum
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: advisory_forum
+    category: union_institution_or_body
+  targets: []
   kind: power
   conditions: [the Board or Commission requests the contribution]
   product_scope: outside_supported_actor
@@ -131,8 +153,10 @@ records:
   source: A067-P009
   quote: The advisory forum may establish standing or temporary sub-groups as appropriate for the purpose of examining specific questions related to the objectives of this Regulation.
   action: establish standing or temporary subgroups to examine Regulation-objective questions
-  subject_ref: advisory_forum
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: advisory_forum
+    category: union_institution_or_body
+  targets: []
   kind: power
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -143,8 +167,10 @@ records:
   source: A067-P010
   quote: The advisory forum shall prepare an annual report on its activities.
   action: prepare an annual report on the forum's activities
-  subject_ref: advisory_forum
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: advisory_forum
+    category: union_institution_or_body
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -154,8 +180,10 @@ records:
   source: A067-P010
   quote: That report shall be made publicly available.
   action: make the annual activity report publicly available
-  subject_ref: advisory_forum
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: advisory_forum
+    category: union_institution_or_body
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required

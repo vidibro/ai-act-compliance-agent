@@ -3,9 +3,10 @@ norms:
 - norm_id: AIA-NORM-A035-P1-ASSIGN-SINGLE-IDENTIFICATION-NUMBER
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: commission
+  actors:
+  - actor_ref: commission
     category: union_institution_or_body
+  targets: []
   action: assign one identification number to each notified body even when it is notified under multiple
     Union acts
   norm_text: The Commission shall assign a single identification number to each notified body, even where
@@ -38,9 +39,10 @@ norms:
 - norm_id: AIA-NORM-A035-P2-PUBLISH-NOTIFIED-BODY-LIST
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: commission
+  actors:
+  - actor_ref: commission
     category: union_institution_or_body
+  targets: []
   action: publish the list of bodies notified under the Regulation with their identification numbers and
     notified activities
   norm_text: The Commission shall make publicly available the list of the bodies notified under this Regulation,
@@ -76,9 +78,10 @@ norms:
 - norm_id: AIA-NORM-A035-P2-KEEP-LIST-CURRENT
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: commission
+  actors:
+  - actor_ref: commission
     category: union_institution_or_body
+  targets: []
   action: keep the notified-body list up to date
   norm_text: The Commission shall ensure that the list is kept up to date.
   detection_channels:

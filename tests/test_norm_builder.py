@@ -21,12 +21,13 @@ from aiact.norm_builder import (
 )
 from aiact.policy_loader import article_filename, load_policy_spec
 from aiact.schemas.norm import (
+    ActorCategory,
     Norm,
+    NormActor,
     NormRelation,
     NormRelationKind,
     SegmentDisposition,
     SourceKind,
-    SubjectCategory,
 )
 from aiact.yaml_loader import load_yaml_mapping_or_shards
 
@@ -257,8 +258,9 @@ def test_reviewed_divisions_and_norm_sources_compile_without_version_specific_co
                 source="A001-P1",
                 quote="shall keep a record",
                 action="keep a record",
-                subject_ref="provider",
-                subject_category=SubjectCategory.SUPPORTED_OPERATOR,
+                actors=[
+                    NormActor(actor_ref="provider", category=ActorCategory.SUPPORTED_OPERATOR)
+                ],
             )
         ],
     )
@@ -308,16 +310,14 @@ def test_condition_relationship_is_canonical_and_legacy_source_field_is_rejected
         source="A001-P1",
         quote="may act if condition A is met",
         action="act when condition A is met",
-        subject_ref="provider",
-        subject_category=SubjectCategory.SUPPORTED_OPERATOR,
+        actors=[NormActor(actor_ref="provider", category=ActorCategory.SUPPORTED_OPERATOR)],
     )
     child = NormSourceRecord(
         norm_id="AIA-NORM-A001-P2-CONDITION",
         source="A001-P2",
         quote="Condition A.",
         action="satisfy condition A",
-        subject_ref="provider",
-        subject_category=SubjectCategory.SUPPORTED_OPERATOR,
+        actors=[NormActor(actor_ref="provider", category=ActorCategory.SUPPORTED_OPERATOR)],
     )
     relation = NormRelation(
         relation_id="AIA-REL-A001-P1-CONDITIONAL-ON-P2",
@@ -403,8 +403,7 @@ def test_source_record_rejects_legacy_dependencies_field():
                 "source": "A001-P1",
                 "quote": "Parent requirement.",
                 "action": "meet the parent requirement",
-                "subject_ref": "provider",
-                "subject_category": "supported_operator",
+                "actors": [{"actor_ref": "provider", "category": "supported_operator"}],
                 "dependencies": [
                     {
                         "dependency_ref": "AIA-NORM-A001-P2-CHILD",
@@ -413,6 +412,33 @@ def test_source_record_rejects_legacy_dependencies_field():
                 ],
             }
         )
+
+
+def test_source_record_rejects_retired_mixed_subject_fields():
+    with pytest.raises(ValueError, match="subject_ref"):
+        NormSourceRecord.model_validate(
+            {
+                "norm_id": "AIA-NORM-A001-P1-PARENT",
+                "source": "A001-P1",
+                "quote": "Parent requirement.",
+                "action": "meet the parent requirement",
+                "subject_ref": "provider",
+                "subject_category": "supported_operator",
+            }
+        )
+
+
+def test_target_only_source_record_does_not_invent_an_actor():
+    record = NormSourceRecord(
+        norm_id="AIA-NORM-A001-P1-CLASSIFICATION",
+        source="A001-P1",
+        quote="An AI system is classified.",
+        action="classify the AI system",
+        targets=[{"target_ref": "ai_system"}],
+    )
+
+    assert record.actors == []
+    assert [target.target_ref for target in record.targets] == ["ai_system"]
 
 
 def test_document_verifier_approves_all_non_debt_segments(tmp_path):

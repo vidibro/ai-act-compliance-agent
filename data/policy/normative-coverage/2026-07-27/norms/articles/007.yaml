@@ -3,9 +3,10 @@ norms:
 - norm_id: AIA-NORM-A007-P1-AMEND-ANNEX-III
   act_version_date: '2026-07-27'
   kind: power
-  subjects:
-  - subject_ref: commission
+  actors:
+  - actor_ref: commission
     category: union_institution_or_body
+  targets: []
   action: adopt Article 97 delegated acts adding or modifying Annex III high-risk use cases when both
     statutory conditions are fulfilled
   norm_text: The Commission is empowered to adopt delegated acts in accordance with Article 97 to amend
@@ -45,9 +46,10 @@ norms:
 - norm_id: AIA-NORM-A007-P2-CONSIDER-RISK-CRITERIA
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: commission
+  actors:
+  - actor_ref: commission
     category: union_institution_or_body
+  targets: []
   action: take every Article 7(2) criterion into account when assessing whether an Annex III amendment
     meets Article 7(1)(b)
   norm_text: the Commission shall take into account the following criteria
@@ -105,9 +107,9 @@ norms:
 - norm_id: AIA-NORM-A007-P2-ADVERSE-OUTCOME-NOT-REVERSIBLE
   act_version_date: '2026-07-27'
   kind: legal_consequence
-  subjects:
-  - subject_ref: annex_iii_amendment_risk_assessment
-    category: other
+  actors: []
+  targets:
+  - target_ref: annex_iii_amendment_risk_assessment
   action: treat outcomes adversely affecting health, safety, or fundamental rights as not easily corrigible
     or reversible in the Article 7 assessment
   norm_text: outcomes having an adverse impact on health, safety or fundamental rights, shall not be considered
@@ -143,9 +145,10 @@ norms:
 - norm_id: AIA-NORM-A007-P3-REMOVE-ANNEX-III-USE-CASE
   act_version_date: '2026-07-27'
   kind: power
-  subjects:
-  - subject_ref: commission
+  actors:
+  - actor_ref: commission
     category: union_institution_or_body
+  targets: []
   action: adopt Article 97 delegated acts removing Annex III high-risk use cases when both statutory conditions
     are fulfilled
   norm_text: The Commission is empowered to adopt delegated acts in accordance with Article 97 to amend

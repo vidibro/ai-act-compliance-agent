@@ -9,8 +9,9 @@ records:
     requirements or obligations.
   action: presume covered Chapter III Section 2 or Chapter V Sections 2 and 3 conformity from compliance
     with published harmonised standards
-  subject_ref: high_risk_ai_system_or_general_purpose_ai_model
-  subject_category: other
+  actors: []
+  targets:
+  - target_ref: high_risk_ai_system_or_general_purpose_ai_model
   kind: legal_consequence
   implementation_mode: missing
   verification_mode: reported_conditionally
@@ -27,8 +28,10 @@ records:
     and 3, of this Regulation.
   action: issue without undue delay standardisation requests covering all relevant Chapter III and Chapter
     V requirements and obligations
-  subject_ref: commission
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: commission
+    category: union_institution_or_body
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -42,8 +45,10 @@ records:
     \ of general-purpose AI models."
   action: request reporting and documentation deliverables improving system resource performance and energy-efficient
     GPAI development
-  subject_ref: commission
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: commission
+    category: union_institution_or_body
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -59,8 +64,10 @@ records:
     stakeholders, including the advisory forum.
   action: consult the Board and relevant stakeholders, including the advisory forum, when preparing a
     standardisation request
-  subject_ref: commission
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: commission
+    category: union_institution_or_body
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -76,8 +83,10 @@ records:
     in this Regulation.
   action: specify clarity, cross-sector consistency, and Regulation-compliance objectives in standardisation
     requests
-  subject_ref: commission
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: commission
+    category: union_institution_or_body
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -93,8 +102,10 @@ records:
     their best efforts to fulfil the objectives referred to in the first and the second subparagraph of
     this paragraph in accordance with Article 24 of Regulation (EU) No 1025/2012.
   action: request evidence of standardisation organisations' best efforts to fulfil the paragraph 2 objectives
-  subject_ref: commission
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: commission
+    category: union_institution_or_body
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -115,8 +126,10 @@ records:
     laid down in the Union harmonisation legislation listed in Annex I to this Regulation.'
   action: request without undue delay deliverables facilitating joint AI Act and Annex I harmonisation-law
     compliance and conformity presumptions
-  subject_ref: commission
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: commission
+    category: union_institution_or_body
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -133,8 +146,10 @@ records:
     with Articles 5, 6, and 7 of Regulation (EU) No 1025/2012.
   action: pursue the enacted investment, innovation, cooperation, standards, and inclusive-governance
     objectives in the standardisation process
-  subject_ref: standardisation_participant
-  subject_category: other
+  actors:
+  - actor_ref: standardisation_participant
+    category: external_private_party
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required

@@ -3,9 +3,10 @@ norms:
 - norm_id: AIA-NORM-A056-P1-FACILITATE-CODES
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: ai_office
+  actors:
+  - actor_ref: ai_office
     category: union_institution_or_body
+  targets: []
   action: encourage and facilitate Union-level codes of practice supporting proper application while considering
     international approaches
   norm_text: The AI Office shall encourage and facilitate the drawing up of codes of practice at Union
@@ -39,9 +40,10 @@ norms:
 - norm_id: AIA-NORM-A056-P2-CODE-COVERAGE
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: ai_office_and_board
+  actors:
+  - actor_ref: ai_office_and_board
     category: union_institution_or_body
+  targets: []
   action: aim to ensure codes cover Articles 53 and 55 and every listed implementation issue
   norm_text: The AI Office and the Board shall aim to ensure that the codes of practice cover at least
     the obligations provided for in Articles 53 and 55, including the following issues
@@ -82,9 +84,10 @@ norms:
 - norm_id: AIA-NORM-A056-P2-D-PROPORTIONATE-MEASURES
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: ai_office_and_board
+  actors:
+  - actor_ref: ai_office_and_board
     category: union_institution_or_body
+  targets: []
   action: make code measures proportionate and responsive to severity, probability, and AI-value-chain
     emergence challenges
   norm_text: which shall be proportionate to the risks, take into consideration their severity and probability
@@ -122,9 +125,10 @@ norms:
 - norm_id: AIA-NORM-A056-P3-INVITE-PARTICIPANTS
   act_version_date: '2026-07-27'
   kind: power
-  subjects:
-  - subject_ref: ai_office
+  actors:
+  - actor_ref: ai_office
     category: union_institution_or_body
+  targets: []
   action: invite general-purpose-model providers and relevant national authorities to draw up codes
   norm_text: The AI Office may invite all providers of general-purpose AI models, as well as relevant
     national competent authorities, to participate in the drawing-up of codes of practice.
@@ -156,9 +160,10 @@ norms:
 - norm_id: AIA-NORM-A056-P3-STAKEHOLDER-SUPPORT
   act_version_date: '2026-07-27'
   kind: permission
-  subjects:
-  - subject_ref: relevant_stakeholder
-    category: other
+  actors:
+  - actor_ref: relevant_stakeholder
+    category: external_private_party
+  targets: []
   action: support the code-drawing process
   norm_text: Civil society organisations, industry, academia and other relevant stakeholders, such as
     downstream providers and independent experts, may support the process.
@@ -190,9 +195,10 @@ norms:
 - norm_id: AIA-NORM-A056-P4-OBJECTIVES-AND-COMMITMENTS
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: ai_office_and_board
+  actors:
+  - actor_ref: ai_office_and_board
     category: union_institution_or_body
+  targets: []
   action: aim to ensure codes state objectives, contain commitments, measures, and appropriate indicators
     to achieve them, and account for the needs and interests of all interested parties, including affected
     persons
@@ -233,9 +239,10 @@ norms:
 - norm_id: AIA-NORM-A056-P5-PARTICIPANT-REPORTING
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: ai_office
+  actors:
+  - actor_ref: ai_office
     category: union_institution_or_body
+  targets: []
   action: aim to ensure regular participant reporting on commitments, measures, outcomes, and appropriate
     indicators
   norm_text: The AI Office shall aim to ensure that participants to the codes of practice report regularly
@@ -269,9 +276,10 @@ norms:
 - norm_id: AIA-NORM-A056-P5-CAPACITY-SENSITIVE-METRICS
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: ai_office
+  actors:
+  - actor_ref: ai_office
     category: union_institution_or_body
+  targets: []
   action: make indicators and reporting commitments reflect participant size and capacity differences
   norm_text: Key performance indicators and reporting commitments shall reflect differences in size and
     capacity between various participants.
@@ -303,9 +311,10 @@ norms:
 - norm_id: AIA-NORM-A056-P6-JOINT-MONITOR-EVALUATE
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: commission_and_board
+  actors:
+  - actor_ref: commission_and_board
     category: union_institution_or_body
+  targets: []
   action: regularly monitor and evaluate participant achievement and codes' contribution to proper application
   norm_text: The Commission and the Board shall regularly monitor and evaluate the achievement of the
     objectives of the codes of practice by the participants and their contribution to the proper application
@@ -338,9 +347,10 @@ norms:
 - norm_id: AIA-NORM-A056-P6-ASSESS-COVERAGE
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: commission
+  actors:
+  - actor_ref: commission
     category: union_institution_or_body
+  targets: []
   action: assess Article 53 and 55 coverage while taking utmost account of the Board's opinion
   norm_text: The Commission, taking utmost account of the opinion of the Board, shall assess whether the
     codes of practice cover the obligations provided for in Articles 53 and 55
@@ -372,9 +382,10 @@ norms:
 - norm_id: AIA-NORM-A056-P6-COMMISSION-MONITOR-EVALUATE
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: commission
+  actors:
+  - actor_ref: commission
     category: union_institution_or_body
+  targets: []
   action: regularly monitor and evaluate achievement of code objectives
   norm_text: shall regularly monitor and evaluate the achievement of their objectives.
   detection_channels:
@@ -405,9 +416,10 @@ norms:
 - norm_id: AIA-NORM-A056-P6-PUBLISH-ASSESSMENT
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: commission
+  actors:
+  - actor_ref: commission
     category: union_institution_or_body
+  targets: []
   action: publish the assessment of code adequacy
   norm_text: The Commission shall publish its assessment of the adequacy of the codes of practice.
   detection_channels:
@@ -438,9 +450,10 @@ norms:
 - norm_id: AIA-NORM-A056-P7-INVITE-ADHERENCE
   act_version_date: '2026-07-27'
   kind: power
-  subjects:
-  - subject_ref: ai_office
+  actors:
+  - actor_ref: ai_office
     category: union_institution_or_body
+  targets: []
   action: invite all general-purpose-model providers to adhere to codes of practice
   norm_text: The AI Office may invite all providers of general-purpose AI models to adhere to the codes
     of practice.
@@ -472,9 +485,10 @@ norms:
 - norm_id: AIA-NORM-A056-P7-LIMITED-ADHERENCE
   act_version_date: '2026-07-27'
   kind: permission
-  subjects:
-  - subject_ref: provider
+  actors:
+  - actor_ref: provider
     category: supported_operator
+  targets: []
   action: limit adherence to Article 53 for non-systemic-risk models unless the provider opts into the
     full code
   norm_text: For providers of general-purpose AI models not presenting systemic risks this adherence may
@@ -508,9 +522,10 @@ norms:
 - norm_id: AIA-NORM-A056-P8-REVIEW-ADAPT-CODES
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: ai_office
+  actors:
+  - actor_ref: ai_office
     category: union_institution_or_body
+  targets: []
   action: encourage and facilitate review and adaptation of codes in light of emerging standards
   norm_text: The AI Office shall, as appropriate, also encourage and facilitate the review and adaptation
     of the codes of practice, in particular in light of emerging standards.
@@ -542,9 +557,10 @@ norms:
 - norm_id: AIA-NORM-A056-P8-ASSESS-STANDARDS
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: ai_office
+  actors:
+  - actor_ref: ai_office
     category: union_institution_or_body
+  targets: []
   action: assist assessment of available standards
   norm_text: The AI Office shall assist in the assessment of available standards.
   detection_channels:
@@ -575,9 +591,10 @@ norms:
 - norm_id: AIA-NORM-A056-P9-CODES-DEADLINE
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: ai_office
+  actors:
+  - actor_ref: ai_office
     category: union_institution_or_body
+  targets: []
   action: ensure codes of practice are ready by 2 May 2025
   norm_text: Codes of practice shall be ready at the latest by 2 May 2025.
   detection_channels:
@@ -609,9 +626,10 @@ norms:
 - norm_id: AIA-NORM-A056-P9-TAKE-STEPS
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: ai_office
+  actors:
+  - actor_ref: ai_office
     category: union_institution_or_body
+  targets: []
   action: take necessary steps toward timely codes, including inviting providers under paragraph 7
   norm_text: The AI Office shall take the necessary steps, including inviting providers pursuant to paragraph
     7.
@@ -643,9 +661,10 @@ norms:
 - norm_id: AIA-NORM-A056-P9-COMMON-RULES
   act_version_date: '2026-07-27'
   kind: power
-  subjects:
-  - subject_ref: commission
+  actors:
+  - actor_ref: commission
     category: union_institution_or_body
+  targets: []
   action: adopt implementing acts providing common Article 53 and 55 implementation rules
   norm_text: the Commission may provide, by means of implementing acts, common rules for the implementation
     of the obligations provided for in Articles 53 and 55, including the issues set out in paragraph 2
@@ -679,9 +698,10 @@ norms:
 - norm_id: AIA-NORM-A056-P9-EXAMINATION-PROCEDURE
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: commission
+  actors:
+  - actor_ref: commission
     category: union_institution_or_body
+  targets: []
   action: adopt fallback common-rule acts under the Article 98(2) examination procedure
   norm_text: Those implementing acts shall be adopted in accordance with the examination procedure referred
     to in Article 98(2).

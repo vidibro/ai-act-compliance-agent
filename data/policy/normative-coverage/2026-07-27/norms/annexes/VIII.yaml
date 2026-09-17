@@ -3,9 +3,10 @@ norms:
 - norm_id: AIA-NORM-ANNEX-VIII-A
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: provider
+  actors:
+  - actor_ref: provider
     category: supported_operator
+  targets: []
   action: submit and maintain the Section A provider registration information; entries 2, 3, 8 and 9 apply
     only where their enacted condition is met, entry 12 is withheld for the enacted law-enforcement, migration,
     asylum and border-control systems, and entry 13 is optional
@@ -65,9 +66,10 @@ norms:
 - norm_id: AIA-NORM-ANNEX-VIII-B
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: provider
+  actors:
+  - actor_ref: provider
     category: supported_operator
+  targets: []
   action: submit and maintain the Section B not-high-risk registration information; entries 2 and 3 apply
     only where their enacted condition is met
   norm_text: The following information shall be provided and thereafter kept up to date
@@ -115,9 +117,10 @@ norms:
 - norm_id: AIA-NORM-ANNEX-VIII-C
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: deployer
+  actors:
+  - actor_ref: deployer
     category: supported_operator
+  targets: []
   action: submit and maintain the Section C deployer registration information
   norm_text: The following information shall be provided and thereafter kept up to date
   detection_channels:

@@ -3,8 +3,10 @@ records:
   source: A064-P001
   quote: The Commission shall develop Union expertise and capabilities in the field of AI through the AI Office.
   action: develop Union AI expertise and capabilities through the AI Office
-  subject_ref: commission
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: commission
+    category: union_institution_or_body
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -14,8 +16,10 @@ records:
   source: A064-P002
   quote: Member States shall facilitate the tasks entrusted to the AI Office, as reflected in this Regulation.
   action: facilitate the Regulation tasks entrusted to the AI Office
-  subject_ref: member_state
-  subject_category: member_state
+  actors:
+  - actor_ref: member_state
+    category: member_state
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -25,8 +29,10 @@ records:
   source: A064-P003
   quote: Without prejudice to the budgetary procedure, the AI Office shall be allocated adequate resources to effectively perform its duties and exercise its powers in relation to the enforcement of this Regulation.
   action: allocate adequate resources for effective performance of AI Office enforcement duties and powers
-  subject_ref: union_budgetary_authority
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: union_budgetary_authority
+    category: union_institution_or_body
+  targets: []
   conditions: [the applicable budgetary procedure remains observed]
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.

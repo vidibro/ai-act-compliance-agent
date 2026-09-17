@@ -7,8 +7,10 @@ records:
     safeguards for the fundamental rights and freedoms of natural persons.
   action: exceptionally process special categories of personal data where strictly necessary for bias
     detection and correction in high-risk AI systems
-  subject_ref: high_risk_ai_system_provider
-  subject_category: supported_operator
+  actors:
+  - actor_ref: high_risk_ai_system_provider
+    category: supported_operator
+  targets: []
   kind: permission
   qualifier_spans:
   - A004A-P002
@@ -35,8 +37,10 @@ records:
     personal data, and state-of-the-art security and privacy-preserving measures, including pseudonymisation
   action: apply technical reuse limitations and state-of-the-art security and privacy-preserving measures,
     including pseudonymisation, to special-category personal data
-  subject_ref: article_4a_special_category_data_processor
-  subject_category: supported_operator
+  actors:
+  - actor_ref: article_4a_special_category_data_processor
+    category: supported_operator
+  targets: []
   kind: obligation
   qualifier_spans:
   - A004A-P001
@@ -55,8 +59,10 @@ records:
     to those personal data with appropriate confidentiality obligations
   action: secure and protect special-category personal data with suitable safeguards, documented strict
     access controls, authorised access, and appropriate confidentiality obligations
-  subject_ref: article_4a_special_category_data_processor
-  subject_category: supported_operator
+  actors:
+  - actor_ref: article_4a_special_category_data_processor
+    category: supported_operator
+  targets: []
   kind: obligation
   qualifier_spans:
   - A004A-P001
@@ -72,8 +78,10 @@ records:
     by other parties
   action: prevent special-category personal data from being transmitted, transferred, or otherwise accessed
     by other parties
-  subject_ref: article_4a_special_category_data_processor
-  subject_category: supported_operator
+  actors:
+  - actor_ref: article_4a_special_category_data_processor
+    category: supported_operator
+  targets: []
   kind: obligation
   qualifier_spans:
   - A004A-P001
@@ -89,8 +97,10 @@ records:
     data has reached the end of its retention period, whichever comes first
   action: delete special-category personal data when the bias is corrected or the retention period ends,
     whichever occurs first
-  subject_ref: article_4a_special_category_data_processor
-  subject_category: supported_operator
+  actors:
+  - actor_ref: article_4a_special_category_data_processor
+    category: supported_operator
+  targets: []
   kind: obligation
   qualifier_spans:
   - A004A-P001
@@ -108,8 +118,10 @@ records:
     by processing other data.
   action: record why special-category processing was strictly necessary for bias detection and correction
     and why other data could not achieve that objective
-  subject_ref: article_4a_special_category_data_processor
-  subject_category: supported_operator
+  actors:
+  - actor_ref: article_4a_special_category_data_processor
+    category: supported_operator
+  targets: []
   kind: obligation
   qualifier_spans:
   - A004A-P001
@@ -125,8 +137,10 @@ records:
     may exceptionally process special categories of personal data to the extent that
   action: exceptionally process special categories of personal data for qualifying bias detection and
     correction involving other AI systems and models or deployment of high-risk AI systems
-  subject_ref: other_ai_provider_or_deployer_or_high_risk_deployer
-  subject_category: supported_operator
+  actors:
+  - actor_ref: other_ai_provider_or_deployer_or_high_risk_deployer
+    category: supported_operator
+  targets: []
   kind: permission
   qualifier_spans:
   - A004A-P009
@@ -145,8 +159,10 @@ records:
   source: A004A-P011
   quote: This paragraph does not create any obligation to conduct such bias detection and correction.
   action: prevent Article 4a(2) from being construed as requiring bias detection and correction
-  subject_ref: article_4a_paragraph_2_actor
-  subject_category: supported_operator
+  actors:
+  - actor_ref: article_4a_paragraph_2_actor
+    category: supported_operator
+  targets: []
   kind: legal_consequence
   product_scope: dependency_only
   product_scope_reason: This clause constrains downstream rule interpretation but creates no independent

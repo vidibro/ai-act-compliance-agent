@@ -3,9 +3,10 @@ norms:
 - norm_id: AIA-NORM-A085-P1-LODGE-COMPLAINT
   act_version_date: '2026-07-27'
   kind: entitlement
-  subjects:
-  - subject_ref: natural_or_legal_person
+  actors:
+  - actor_ref: natural_or_legal_person
     category: natural_person
+  targets: []
   action: submit an infringement complaint to the relevant market surveillance authority without prejudice
     to other remedies
   norm_text: Without prejudice to other administrative or judicial remedies, any natural or legal person
@@ -40,9 +41,10 @@ norms:
 - norm_id: AIA-NORM-A085-P2-ACCOUNT-FOR-AND-HANDLE-COMPLAINTS
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: market_surveillance_authority
+  actors:
+  - actor_ref: market_surveillance_authority
     category: public_authority
+  targets: []
   action: take such complaints into account for the purpose of conducting market surveillance activities,
     in accordance with Regulation (EU) 2019/1020, and handle them under the dedicated procedures established
     by market surveillance authorities

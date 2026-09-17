@@ -110,8 +110,8 @@ def test_unresolved_dependencies_are_canonical_targetless_relations():
         if relation.kind is NormRelationKind.UNRESOLVED_DEPENDENCY
     ]
 
-    assert len(relations) == 47
-    assert len({relation.relation_id for relation in relations}) == 47
+    assert len(relations) == 46
+    assert len({relation.relation_id for relation in relations}) == 46
     assert all(relation.detail.startswith("Unresolved reference: ") for relation in relations)
     assert all(
         not (
@@ -176,8 +176,9 @@ def test_a_norm_agrees_with_the_document_verifiability_of_its_rules():
     judge, false is reported as an outstanding confirmation. A norm naming that rule must say the
     same thing, or the ledger promises a verdict the pipeline never produces.
 
-    `reported_conditionally` is exempt: a carve-out is shown conditionally whatever its rule does.
-    So is a norm whose rules disagree with each other, which the mapping does not forbid."""
+    Report-only norms are also exempt: they explain a permission, legal effect, or scope limit,
+    rather than asking the judge to assess the activating rule. A norm whose rules disagree with
+    each other is also exempt, because the mapping does not forbid that."""
     bundle = load_normative_coverage()
     verifiable = {rule.rule_id: rule.document_verifiable for rule in load_policy_spec().rules}
     judged = {
@@ -187,6 +188,8 @@ def test_a_norm_agrees_with_the_document_verifiability_of_its_rules():
 
     for norm in bundle.norm_inventory.norms:
         if norm.product_scope is not ProductScope.IN_SCOPE:
+            continue
+        if norm.implementation_mode is ImplementationMode.REPORT_ONLY:
             continue
         if norm.verification_mode not in judged:
             continue
@@ -745,7 +748,7 @@ def test_article_four_literacy_norm_keeps_context_and_individual_guarantee_limit
         if norm.norm_id == "AIA-NORM-A004-P1-AI-LITERACY-MEASURES"
     )
 
-    assert norm.subjects[0].subject_ref == "provider_or_deployer"
+    assert norm.actors[0].actor_ref == "provider_or_deployer"
     assert norm.product_scope.value == "in_scope"
     assert norm.implementation_mode.value == "compliance_rule"
     assert len(norm.conditions) == 3
@@ -1172,7 +1175,7 @@ def test_article_fifty_retains_complete_operative_context_without_merging_norms(
 
     assert "unless this is obvious" in interaction.norm_text
     assert "effective, interoperable, robust and reliable" in synthetic.norm_text
-    assert emotion.subjects[0].subject_ref == "deployer"
+    assert emotion.actors[0].actor_ref == "deployer"
     assert "process the personal data" not in emotion.norm_text
     assert norms["AIA-NORM-A050-P3-DATA"].norm_text.startswith("shall process")
     assert "evidently artistic, creative, satirical" in deepfake.norm_text
@@ -1795,7 +1798,7 @@ def test_article_twenty_one_keeps_disclosure_language_with_the_requested_materia
     assert all(norms[norm_id].implementation_refs == ["AIA-PO-A21"] for norm_id in paragraph_one)
     assert norms["AIA-NORM-A021-P2-PROVIDE-LOG-ACCESS"].implementation_refs == ["AIA-PO-A21-2"]
     confidentiality = norms["AIA-NORM-A021-P3-CONFIDENTIALITY"]
-    assert confidentiality.subjects[0].category.value == "public_authority"
+    assert confidentiality.actors[0].category.value == "public_authority"
     assert confidentiality.implementation_mode.value == "report_only"
 
 
@@ -2102,7 +2105,7 @@ def test_article_twenty_seven_keeps_fria_contents_in_one_assessment_norm():
     assert len(by_target["AIA-DP-A27-3"]) == 2
 
     ai_office_norms = {
-        norm_id for norm_id, norm in norms.items() if norm.subjects[0].subject_ref == "ai_office"
+        norm_id for norm_id, norm in norms.items() if norm.actors[0].actor_ref == "ai_office"
     }
     assert len(ai_office_norms) == 2
     assert all(
@@ -2514,7 +2517,7 @@ def test_article_thirty_five_keeps_publication_and_currency_separate():
     assert len(segments[2].norm_ids) == 2
     assert all(norm.kind.value == "obligation" for norm in norms.values())
     assert all(
-        norm.subjects[0].category.value == "union_institution_or_body" for norm in norms.values()
+        norm.actors[0].category.value == "union_institution_or_body" for norm in norms.values()
     )
     publication = norms["AIA-NORM-A035-P2-PUBLISH-NOTIFIED-BODY-LIST"]
     assert publication.mandatory_content == [
@@ -2604,7 +2607,7 @@ def test_article_thirty_eight_captures_coordination_duties():
     assert len(norms) == 3
     assert all(norm.kind.value == "obligation" for norm in norms)
     assert all(norm.product_scope.value == "outside_supported_actor" for norm in norms)
-    assert {norm.subjects[0].category.value for norm in norms} == {
+    assert {norm.actors[0].category.value for norm in norms} == {
         "union_institution_or_body",
         "public_authority",
     }
@@ -2711,7 +2714,12 @@ def test_article_forty_two_keeps_three_conformity_presumptions_distinct():
     assert len(norms) == 3
     assert all(norm.kind.value == "legal_consequence" for norm in norms)
     assert all(norm.product_scope.value == "in_scope" for norm in norms)
-    assert all(norm.implementation_mode.value == "missing" for norm in norms)
+    assert all(norm.implementation_mode.value == "report_only" for norm in norms)
+    assert all(norm.verification_mode.value == "reported_conditionally" for norm in norms)
+    assert all(not norm.actors for norm in norms)
+    assert all(
+        [target.target_ref for target in norm.targets] == ["high_risk_ai_system"] for norm in norms
+    )
     assert {len(norm.conditions) for norm in norms} == {1, 2}
 
 
@@ -2866,8 +2874,8 @@ def test_article_forty_six_preserves_derogation_lifecycle():
         == discard.conditions
         == ["the paragraph 1 authorisation requested for urgent use under paragraph 2 is refused"]
     )
-    assert refusal.subjects == discard.subjects
-    assert refusal.subjects[0].subject_ref == "law_enforcement_or_civil_protection_authority"
+    assert refusal.actors == discard.actors
+    assert refusal.actors[0].actor_ref == "law_enforcement_or_civil_protection_authority"
     assert "stop use" in refusal.action and "immediate effect" in refusal.action
     assert "discard" not in refusal.action
     assert "immediately discard all results and outputs" in discard.action
@@ -3061,7 +3069,7 @@ def test_article_fifty_one_extracts_systemic_risk_classification_gates():
         norm.implementation_mode.value == "applicability_question" for norm in classification
     )
     delegated_acts = [
-        norm for norm in norms.values() if norm.subjects[0].subject_ref == "commission"
+        norm for norm in norms.values() if norm.actors[0].actor_ref == "commission"
     ]
     assert len(delegated_acts) == 1
     assert all(norm.implementation_mode.value == "none_required" for norm in delegated_acts)
@@ -3169,7 +3177,7 @@ def test_article_fifty_four_maps_representative_mandate_lifecycle():
     representative = [
         norm
         for norm in norms.values()
-        if norm.subjects[0].subject_ref == "authorised_representative"
+        if norm.actors[0].actor_ref == "authorised_representative"
     ]
     assert len(representative) == 8
 
@@ -3268,7 +3276,7 @@ def test_article_fifty_seven_extracts_complete_sandbox_lifecycle():
     assert len(objectives.mandatory_content) == 5
     assert len(objectives.qualifier_spans) == 5
     provider_consequences = [
-        norm for norm in norms.values() if norm.subjects[0].category.value == "supported_operator"
+        norm for norm in norms.values() if norm.actors[0].category.value == "supported_operator"
     ]
     assert len(provider_consequences) == 4
     assert all(norm.product_scope.value == "no_product_action" for norm in provider_consequences)
@@ -3304,9 +3312,9 @@ def test_article_fifty_eight_extracts_sandbox_implementing_arrangements():
     assert safeguards.conditions == [testing_context]
     assert cooperation.conditions == [testing_context, "where appropriate"]
     assert safeguards.kind.value == cooperation.kind.value == "obligation"
-    assert safeguards.subjects == cooperation.subjects
-    assert safeguards.subjects[0].subject_ref == "national_competent_authority"
-    assert safeguards.subjects[0].category.value == "public_authority"
+    assert safeguards.actors == cooperation.actors
+    assert safeguards.actors[0].actor_ref == "national_competent_authority"
+    assert safeguards.actors[0].category.value == "public_authority"
     assert "with participants" in safeguards.action
     assert "protect fundamental rights, health and safety" in safeguards.action
     assert "cooperate" not in safeguards.action
@@ -3353,7 +3361,7 @@ def test_article_fifty_nine_extracts_conditional_sandbox_data_processing():
     assert len(public_interest.qualifier_spans) == 5
     assert not public_interest.mandatory_content
     assert public_interest.kind.value == "obligation"
-    assert public_interest.subjects[0].subject_ref == "prospective_provider"
+    assert public_interest.actors[0].actor_ref == "prospective_provider"
     assert public_interest.primary_spans == ["AIA-TEXT-A059-P002"]
     assert public_interest.qualifier_spans == [f"AIA-TEXT-A059-P{n:03}" for n in range(3, 8)]
     assert len(public_interest.conditions) == 1
@@ -3508,8 +3516,8 @@ def test_article_sixty_separates_deployer_information_consent_and_incident_dutie
 
     inform = norms["AIA-NORM-A060-P4-H-INFORM-AND-AGREE-ROLES"]
     agreement = norms["AIA-NORM-A060-P4-H-CONCLUDE-ROLES-AGREEMENT"]
-    assert inform.subjects[0].subject_ref == "provider_or_prospective_provider"
-    assert agreement.subjects[0].subject_ref == "provider_and_deployer"
+    assert inform.actors[0].actor_ref == "provider_or_prospective_provider"
+    assert agreement.actors[0].actor_ref == "provider_and_deployer"
     assert inform.conditions == agreement.conditions == [cooperation]
     assert inform.mandatory_content == [
         "all aspects of the testing relevant to the deployer's decision to participate",
@@ -3543,8 +3551,8 @@ def test_article_sixty_separates_deployer_information_consent_and_incident_dutie
     # Member States confer the powers; the authorities are the ones that must use them.
     confer = norms["AIA-NORM-A060-P6-CONFER-AND-USE-SURVEILLANCE-POWERS"]
     use = norms["AIA-NORM-A060-P6-USE-SURVEILLANCE-POWERS"]
-    assert confer.subjects[0].subject_ref == "member_state"
-    assert use.subjects[0].subject_ref == "market_surveillance_authority"
+    assert confer.actors[0].actor_ref == "member_state"
+    assert use.actors[0].actor_ref == "market_surveillance_authority"
     assert len(confer.mandatory_content) == 3
     assert all(item.startswith("power to") for item in confer.mandatory_content)
     assert not use.mandatory_content
@@ -3564,7 +3572,7 @@ def test_article_sixty_separates_deployer_information_consent_and_incident_dutie
     assert not recall.conditions
     assert "upon such termination" in recall.action
     assert all(
-        norm.subjects[0].subject_ref == "provider_or_prospective_provider"
+        norm.actors[0].actor_ref == "provider_or_prospective_provider"
         for norm in (report, mitigate, recall)
     )
 
@@ -3789,7 +3797,7 @@ def test_article_sixty_five_extracts_board_structure_and_operation():
     assert not agenda.conditions
     assert "rules of procedure" in agenda.action
     assert all(
-        norm.subjects[0].subject_ref == "ai_office" for norm in (secretariat, convene, agenda)
+        norm.actors[0].actor_ref == "ai_office" for norm in (secretariat, convene, agenda)
     )
     assert_extraction_never_approves(norms.values())
 
@@ -3945,7 +3953,7 @@ def test_article_sixty_eight_extracts_scientific_panel_safeguards():
     assert norms["AIA-NORM-A068-P4-NO-INSTRUCTIONS"].kind.value == "prohibition"
     assert "publicly available" in norms["AIA-NORM-A068-P4-DECLARATION-OF-INTERESTS"].action
     # The AI Office conflict-management duty stays a separate norm rather than being duplicated.
-    assert norms["AIA-NORM-A068-P4-MANAGE-CONFLICTS"].subjects[0].subject_ref == "ai_office"
+    assert norms["AIA-NORM-A068-P4-MANAGE-CONFLICTS"].actors[0].actor_ref == "ai_office"
     assert_extraction_never_approves(norms.values())
 
 
@@ -3989,12 +3997,12 @@ def test_article_seventy_extracts_national_authority_governance():
     independence = norms["AIA-NORM-A070-P1-INDEPENDENT-EXERCISE-OF-POWERS"]
     conduct = norms["AIA-NORM-A070-P1-MEMBER-CONDUCT"]
     flexibility = norms["AIA-NORM-A070-P1-ORGANISATIONAL-FLEXIBILITY"]
-    assert designate.subjects[0].subject_ref == "member_state"
+    assert designate.actors[0].actor_ref == "member_state"
     assert designate.mandatory_content == [
         "at least one notifying authority",
         "at least one market surveillance authority",
     ]
-    assert independence.subjects[0].subject_ref == "national_competent_authority"
+    assert independence.actors[0].actor_ref == "national_competent_authority"
     assert conduct.kind.value == "prohibition"
     # Consolidating the tasks is permitted only while those principles are observed.
     assert flexibility.kind.value == "permission"
@@ -4011,16 +4019,16 @@ def test_article_seventy_extracts_national_authority_governance():
     assert "2 August 2025" not in communicate.action
     assert "single point of contact" in point.action
     # The Commission's list publication was already a separate norm.
-    assert norms["AIA-NORM-A070-P2-PUBLISH-CONTACT-LIST"].subjects[0].subject_ref == "commission"
+    assert norms["AIA-NORM-A070-P2-PUBLISH-CONTACT-LIST"].actors[0].actor_ref == "commission"
 
     # Resourcing, staffing and the annual reassessment differ in duty-holder or timing.
     resources = norms["AIA-NORM-A070-P3-ADEQUATE-RESOURCES-AND-COMPETENCE"]
     personnel = norms["AIA-NORM-A070-P3-PERMANENT-EXPERT-PERSONNEL"]
     annual = norms["AIA-NORM-A070-P3-ANNUAL-REASSESSMENT"]
     assert len(resources.mandatory_content) == 4
-    assert personnel.subjects[0].subject_ref == "national_competent_authority"
+    assert personnel.actors[0].actor_ref == "national_competent_authority"
     assert len(personnel.mandatory_content) == 7
-    assert annual.subjects[0].subject_ref == "member_state"
+    assert annual.actors[0].actor_ref == "member_state"
     assert "annually" in annual.action
     assert_extraction_never_approves(norms.values())
 
@@ -4104,7 +4112,7 @@ def test_article_seventy_two_maps_post_market_monitoring_effects():
     assert_segments_are_independently_approved(segments)
     assert len(norms) == 6
     provider_norms = [
-        norm for norm in norms.values() if norm.subjects[0].category.value == "supported_operator"
+        norm for norm in norms.values() if norm.actors[0].category.value == "supported_operator"
     ]
     assert len(provider_norms) == 5
     assert all(norm.implementation_refs == ["AIA-PO-A72"] for norm in provider_norms)
@@ -4210,17 +4218,17 @@ def test_article_seventy_four_maps_provider_access_duties():
     # Designation binds the Member State; the judicial-independence limit binds surveillance.
     designate = norms["AIA-NORM-A074-P8-SENSITIVE-SECTOR-AUTHORITIES"]
     judicial = norms["AIA-NORM-A074-P8-PRESERVE-JUDICIAL-INDEPENDENCE"]
-    assert designate.subjects[0].subject_ref == "member_state"
-    assert judicial.subjects[0].subject_ref == "market_surveillance_authority"
+    assert designate.actors[0].actor_ref == "member_state"
+    assert judicial.actors[0].actor_ref == "market_surveillance_authority"
     assert judicial.kind.value == "prohibition"
 
     # Proposing joint activities is a power; the AI Office owes coordination support.
     joint = norms["AIA-NORM-A074-P11-JOINT-ACTIVITIES"]
     support = norms["AIA-NORM-A074-P11-AI-OFFICE-COORDINATION-SUPPORT"]
     assert joint.kind.value == "power"
-    assert joint.subjects[0].subject_ref == "market_surveillance_authority_and_commission"
+    assert joint.actors[0].actor_ref == "market_surveillance_authority_and_commission"
     assert support.kind.value == "obligation"
-    assert support.subjects[0].subject_ref == "ai_office"
+    assert support.actors[0].actor_ref == "ai_office"
     assert_extraction_never_approves(norms.values())
 
 
@@ -4348,7 +4356,7 @@ def test_article_seventy_eight_maps_the_special_provider_confidentiality_rule():
     # Only the access duty is request-triggered, and the clearance limit binds the authority.
     assert len(provider.conditions) == 1
     assert access.conditions[-1] == "the market surveillance authority requests access or a copy"
-    assert clearance.subjects[0].subject_ref == "market_surveillance_authority"
+    assert clearance.actors[0].actor_ref == "market_surveillance_authority"
     assert clearance.kind.value == "prohibition"
 
     # The Article 5 trade-secret exception is scoped to point (a) and recorded as a dependency.
@@ -4433,7 +4441,7 @@ def test_article_eighty_one_extracts_union_safeguard_procedure():
 
     assert len(norms) == 7
     assert all(norm.product_scope.value == "outside_supported_actor" for norm in norms)
-    assert {norm.subjects[0].category.value for norm in norms} == {
+    assert {norm.actors[0].category.value for norm in norms} == {
         "member_state",
         "union_institution_or_body",
     }
@@ -4494,7 +4502,7 @@ def test_article_eighty_four_extracts_testing_support_structure_duties():
     ]
 
     assert len(norms) == 2
-    assert all(norm.subjects[0].category.value == "union_institution_or_body" for norm in norms)
+    assert all(norm.actors[0].category.value == "union_institution_or_body" for norm in norms)
     assert all(norm.product_scope.value == "outside_supported_actor" for norm in norms)
 
 
@@ -4511,7 +4519,7 @@ def test_article_eighty_five_extracts_complaint_entitlement_and_handling():
 
     # Considering and procedurally handling complaints are one coordinated duty.
     consider = norms["AIA-NORM-A085-P2-ACCOUNT-FOR-AND-HANDLE-COMPLAINTS"]
-    assert consider.subjects[0].category.value == "public_authority"
+    assert consider.actors[0].category.value == "public_authority"
     assert "market surveillance activities" in consider.action
     assert "dedicated procedures" in consider.action
     assert len(consider.mandatory_content) == 2
@@ -4600,7 +4608,7 @@ def test_article_ninety_one_maps_gpai_information_supply():
     assert norms["AIA-NORM-A091-P5-LAWYER-SUPPLY"].product_scope.value == "outside_supported_actor"
     client = norms["AIA-NORM-A091-P5-CLIENT-REMAINS-RESPONSIBLE"]
     assert client.product_scope.value == "in_scope"
-    assert client.subjects[0].category.value == "supported_operator"
+    assert client.actors[0].category.value == "supported_operator"
     assert len(norms["AIA-NORM-A091-P4-INFORMATION-REQUEST-CONTENT"].mandatory_content) == 4
 
 
@@ -4789,7 +4797,7 @@ def test_articles_one_hundred_to_one_hundred_five_extract_enforcement_and_amendm
     # File access is an entitlement of the parties, limited by the enacted interests.
     access = by_id["AIA-NORM-A100-P5-FILE-ACCESS-ENTITLEMENT"]
     assert access.kind.value == "entitlement"
-    assert access.subjects[0].subject_ref == "party_concerned_in_article_100_proceedings"
+    assert access.actors[0].actor_ref == "party_concerned_in_article_100_proceedings"
     assert access.exceptions == [
         "the legitimate interest of individuals or undertakings in the protection of their "
         "personal data or business secrets"
@@ -4969,7 +4977,7 @@ def test_annex_inventory_keeps_external_actors_and_exact_mandatory_content():
         norm for norm in norms.values() if norm.primary_spans[0].startswith("AIA-TEXT-ANNEX-VII-")
     ]
     assert len(annex_vii) == 31
-    assert {norm.subjects[0].category.value for norm in annex_vii} >= {
+    assert {norm.actors[0].category.value for norm in annex_vii} >= {
         "supported_operator",
         "notified_or_conformity_body",
     }
@@ -5086,7 +5094,7 @@ def test_annex_six_internal_control_defines_and_applies_all_three_checks():
     assert procedure.kind.value == "applicability"
     assert procedure.qualifier_spans == [f"AIA-TEXT-ANNEX-VI-P{index:03d}" for index in range(2, 5)]
     provider_checks = [norm for key, norm in norms.items() if "P1" not in key]
-    assert all(norm.subjects[0].subject_ref == "provider" for norm in provider_checks)
+    assert all(norm.actors[0].actor_ref == "provider" for norm in provider_checks)
 
 
 def test_annex_seven_completion_covers_change_control_and_certificate_content():
@@ -5099,7 +5107,7 @@ def test_annex_seven_completion_covers_change_control_and_certificate_content():
 
     assert len(norms) == 31
     assert len(norms["AIA-NORM-ANNEX-VII-CERTIFICATE-CONTENT"].mandatory_content) == 6
-    assert norms["AIA-NORM-ANNEX-VII-INFORM-CHANGES"].subjects[0].subject_ref == "provider"
+    assert norms["AIA-NORM-ANNEX-VII-INFORM-CHANGES"].actors[0].actor_ref == "provider"
     assert norms["AIA-NORM-ANNEX-VII-ADDITIONAL-TESTS"].kind.value == "power"
     assert norms["AIA-NORM-ANNEX-VII-TESTS"].conditions == [
         "the notified body is not satisfied with the tests carried out by the provider"
@@ -5263,7 +5271,7 @@ def test_annex_fourteen_extracts_atomic_designation_code_mappings():
     assert sum("-AIB-" in norm_id for norm_id in norms) == 3
     assert sum("-AIH-" in norm_id for norm_id in norms) == 8
     assert norms["AIA-NORM-ANNEX-XIV-DESIGNATED-BODIES-ONLY"].kind.value == "prohibition"
-    assert norms["AIA-NORM-ANNEX-XIV-USE-CODES-IN-APPLICATION"].subjects[0].subject_ref == (
+    assert norms["AIA-NORM-ANNEX-XIV-USE-CODES-IN-APPLICATION"].actors[0].actor_ref == (
         "conformity_assessment_body"
     )
     assert all(norm.product_scope.value == "outside_supported_actor" for norm in norms.values())
@@ -5308,8 +5316,8 @@ def test_provisions_imposing_one_duty_name_each_other():
         ("AIA-NORM-A023-P7-COOPERATE", "AIA-NORM-A024-P6-COOPERATE"),
     ):
         assert bundle.norm_inventory.parallel_norm_ids_for(importer) == [distributor]
-        assert norms[importer].subjects[0].subject_ref == "importer"
-        assert norms[distributor].subjects[0].subject_ref == "distributor"
+        assert norms[importer].actors[0].actor_ref == "importer"
+        assert norms[distributor].actors[0].actor_ref == "distributor"
 
     for norm in bundle.norm_inventory.norms:
         for partner_id in bundle.norm_inventory.parallel_norm_ids_for(norm.norm_id):

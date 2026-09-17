@@ -41,7 +41,7 @@ from aiact.gap.judge import LLMJudge
 from aiact.gap.rules import ActiveRules, roles_with_rules, select_rules
 from aiact.schemas.classification import ClassificationResult
 from aiact.schemas.enums import ActorRole, ProviderReallocation, RealWorldTesting, Verdict
-from aiact.schemas.norm import NormKind, SubjectCategory
+from aiact.schemas.norm import ActorCategory, NormKind
 from aiact.schemas.policy import PolicyRule, PolicyRuleset
 from aiact.schemas.question import Answer, Question, narrow
 from aiact.schemas.report import ComplianceReport, Finding, ReportSummary
@@ -243,22 +243,22 @@ def build_graph(
             for report_norm in spec.report_norms:
                 if not active_rule_ids.intersection(report_norm.activation_rule_ids):
                     continue
-                if SubjectCategory.PUBLIC_AUTHORITY in report_norm.subject_categories:
+                if ActorCategory.PUBLIC_AUTHORITY in report_norm.actor_categories:
                     if report_norm.norm_id not in public_authority_statements:
                         public_authority_statements.append(report_norm.norm_id)
                     continue
                 # Activation tells us WHEN the non-judged statement becomes relevant;
-                # its canonical subject tells us WHO receives it in the report.  They usually
+                # its canonical actor tells us WHO receives it in the report.  They usually
                 # coincide, but Article 59's prospective-provider permission is conditioned by
                 # duties split across a prospective provider, a provider, and a sandbox
                 # participant. Rendering it under every activating duty-holder would silently
                 # change who is allowed to use the route.
-                exact_subject_roles = {
-                    ActorRole(subject)
-                    for subject in report_norm.subjects
-                    if subject in {role.value for role in ActorRole}
+                exact_actor_roles = {
+                    ActorRole(actor)
+                    for actor in report_norm.actors
+                    if actor in {role.value for role in ActorRole}
                 }
-                if exact_subject_roles and active.role not in exact_subject_roles:
+                if exact_actor_roles and active.role not in exact_actor_roles:
                     continue
                 destination = (
                     permissions

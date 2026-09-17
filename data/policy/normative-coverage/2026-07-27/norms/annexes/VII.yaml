@@ -3,9 +3,9 @@ norms:
 - norm_id: AIA-NORM-ANNEX-VII-PROCEDURE-COMPOSITION
   act_version_date: '2026-07-27'
   kind: applicability
-  subjects:
-  - subject_ref: annex_vii_conformity_assessment
-    category: other
+  actors: []
+  targets:
+  - target_ref: annex_vii_conformity_assessment
   action: define the Annex VII conformity-assessment procedure as comprising points 2 to 5
   norm_text: Conformity based on an assessment of the quality management system and an assessment of the
     technical documentation is the conformity assessment procedure based on points 2 to 5.
@@ -39,9 +39,9 @@ norms:
 - norm_id: AIA-NORM-ANNEX-VII-OVERVIEW-QMS-EXAMINATION
   act_version_date: '2026-07-27'
   kind: applicability
-  subjects:
-  - subject_ref: annex_vii_conformity_assessment
-    category: other
+  actors: []
+  targets:
+  - target_ref: annex_vii_conformity_assessment
   action: examine the approved Article 17 quality management system under Annex VII point 3 and subject
     it to surveillance under point 5
   norm_text: The approved quality management system for the design, development and testing of AI systems
@@ -78,9 +78,9 @@ norms:
 - norm_id: AIA-NORM-ANNEX-VII-OVERVIEW-DOCUMENTATION-EXAMINATION
   act_version_date: '2026-07-27'
   kind: applicability
-  subjects:
-  - subject_ref: annex_vii_conformity_assessment
-    category: other
+  actors: []
+  targets:
+  - target_ref: annex_vii_conformity_assessment
   action: examine the AI system's technical documentation under Annex VII point 4
   norm_text: The technical documentation of the AI system shall be examined in accordance with point 4.
   detection_channels:
@@ -112,9 +112,10 @@ norms:
 - norm_id: AIA-NORM-ANNEX-VII-QMS-APPLICATION
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: provider
+  actors:
+  - actor_ref: provider
     category: supported_operator
+  targets: []
   action: complete the Annex VII quality-management application
   norm_text: The application of the provider shall include
   detection_channels:
@@ -165,9 +166,10 @@ norms:
 - norm_id: AIA-NORM-ANNEX-VII-QMS-MAINTAIN
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: provider
+  actors:
+  - actor_ref: provider
     category: supported_operator
+  targets: []
   action: continue implementing and maintaining the approved quality-management system so that it remains
     adequate and efficient
   norm_text: The quality management system as approved shall continue to be implemented and maintained
@@ -204,9 +206,10 @@ norms:
 - norm_id: AIA-NORM-ANNEX-VII-QMS-CHANGE
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: provider
+  actors:
+  - actor_ref: provider
     category: supported_operator
+  targets: []
   action: notify the notified body of intended QMS or covered-system-list changes
   norm_text: Any intended change to the approved quality management system or the list of AI systems covered
     by the latter shall be brought to the attention of the notified body by the provider.
@@ -243,9 +246,10 @@ norms:
 - norm_id: AIA-NORM-ANNEX-VII-QMS-ASSESS
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: notified_body
+  actors:
+  - actor_ref: notified_body
     category: notified_or_conformity_body
+  targets: []
   action: assess whether the quality-management system satisfies Article 17
   norm_text: The quality management system shall be assessed by the notified body
   detection_channels:
@@ -276,9 +280,10 @@ norms:
 - norm_id: AIA-NORM-ANNEX-VII-QMS-DECISION
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: notified_body
+  actors:
+  - actor_ref: notified_body
     category: notified_or_conformity_body
+  targets: []
   action: notify the quality-management assessment decision to the provider or its authorised representative
   norm_text: The decision shall be notified to the provider or its authorised representative.
   detection_channels:
@@ -311,9 +316,10 @@ norms:
 - norm_id: AIA-NORM-ANNEX-VII-QMS-CHANGE-DECISION
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: notified_body
+  actors:
+  - actor_ref: notified_body
     category: notified_or_conformity_body
+  targets: []
   action: examine the proposed changes and decide whether the modified quality management system still
     satisfies the point 3.2 requirements or whether a reassessment is necessary
   norm_text: The proposed changes shall be examined by the notified body, which shall decide whether the
@@ -347,9 +353,10 @@ norms:
 - norm_id: AIA-NORM-ANNEX-VII-QMS-CHANGE-NOTIFICATION
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: notified_body
+  actors:
+  - actor_ref: notified_body
     category: notified_or_conformity_body
+  targets: []
   action: notify the provider of that decision
   norm_text: The notified body shall notify the provider of its decision. The notification shall contain
     the conclusions of the examination of the changes and the reasoned assessment decision.
@@ -383,9 +390,10 @@ norms:
 - norm_id: AIA-NORM-ANNEX-VII-DOC-APPLICATION
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: provider
+  actors:
+  - actor_ref: provider
     category: supported_operator
+  targets: []
   action: lodge an application with a notified body of the provider's choice for assessment of the technical
     documentation of the covered AI system
   norm_text: In addition to the application referred to in point 3, an application with a notified body
@@ -422,9 +430,10 @@ norms:
 - norm_id: AIA-NORM-ANNEX-VII-DOC-APPLICATION-CONTENT
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: provider
+  actors:
+  - actor_ref: provider
     category: supported_operator
+  targets: []
   action: include all three point 4.2 items in the technical-documentation assessment application
   norm_text: 'The application shall include:'
   detection_channels:
@@ -463,9 +472,10 @@ norms:
 - norm_id: AIA-NORM-ANNEX-VII-DOC-EXAMINE
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: notified_body
+  actors:
+  - actor_ref: notified_body
     category: notified_or_conformity_body
+  targets: []
   action: examine the technical documentation
   norm_text: The technical documentation shall be examined by the notified body.
   detection_channels:
@@ -496,9 +506,10 @@ norms:
 - norm_id: AIA-NORM-ANNEX-VII-DATA-ACCESS
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: provider
+  actors:
+  - actor_ref: provider
     category: supported_operator
+  targets: []
   action: grant the notified body necessary full dataset access
   norm_text: Where relevant, and limited to what is necessary to fulfil its tasks, the notified body shall
     be granted full access to the training, validation, and testing data sets used, including, where appropriate
@@ -538,9 +549,10 @@ norms:
 - norm_id: AIA-NORM-ANNEX-VII-EVIDENCE
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: provider
+  actors:
+  - actor_ref: provider
     category: supported_operator
+  targets: []
   action: supply further evidence or tests required for the conformity assessment
   norm_text: In examining the technical documentation, the notified body may require that the provider
     supply further evidence or carry out further tests so as to enable a proper assessment of the conformity
@@ -578,9 +590,10 @@ norms:
 - norm_id: AIA-NORM-ANNEX-VII-TESTS
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: notified_body
+  actors:
+  - actor_ref: notified_body
     category: notified_or_conformity_body
+  targets: []
   action: carry out adequate tests when provider testing is unsatisfactory
   norm_text: Where the notified body is not satisfied with the tests carried out by the provider, the
     notified body shall itself directly carry out adequate tests, as appropriate.
@@ -613,9 +626,10 @@ norms:
 - norm_id: AIA-NORM-ANNEX-VII-MODEL-ACCESS
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: provider
+  actors:
+  - actor_ref: provider
     category: supported_operator
+  targets: []
   action: grant reasoned and necessary model access after other means are exhausted
   norm_text: Where necessary to assess the conformity of the high-risk AI system with the requirements
     set out in Chapter III, Section 2, after all other reasonable means to verify conformity have been
@@ -657,9 +671,10 @@ norms:
 - norm_id: AIA-NORM-ANNEX-VII-RETRAIN
   act_version_date: '2026-07-27'
   kind: legal_consequence
-  subjects:
-  - subject_ref: provider
+  actors:
+  - actor_ref: provider
     category: supported_operator
+  targets: []
   action: retrain before reapplying where training data fail the requirement
   norm_text: Where the AI system does not meet the requirement relating to the data used to train it,
     re-training of the AI system will be needed prior to the application for a new conformity assessment.
@@ -696,9 +711,10 @@ norms:
 - norm_id: AIA-NORM-ANNEX-VII-DOC-DECISION
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: notified_body
+  actors:
+  - actor_ref: notified_body
     category: notified_or_conformity_body
+  targets: []
   action: notify the technical-documentation assessment decision to the provider or its authorised representative
   norm_text: The decision of the notified body shall be notified to the provider or its authorised representative.
   detection_channels:
@@ -731,9 +747,10 @@ norms:
 - norm_id: AIA-NORM-ANNEX-VII-CERTIFICATE
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: notified_body
+  actors:
+  - actor_ref: notified_body
     category: notified_or_conformity_body
+  targets: []
   action: issue the certificate where the system conforms
   norm_text: Where the AI system is in conformity with the requirements set out in Chapter III, Section
     2, the notified body shall issue a Union technical documentation assessment certificate.
@@ -766,9 +783,10 @@ norms:
 - norm_id: AIA-NORM-ANNEX-VII-CERTIFICATE-CONTENT
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: notified_body
+  actors:
+  - actor_ref: notified_body
     category: notified_or_conformity_body
+  targets: []
   action: include the required provider, examination, validity, identification, evaluation, and in-use
     control information in the Union technical-documentation assessment certificate and its annexes
   norm_text: The certificate shall indicate the name and address of the provider, the conclusions of the
@@ -810,9 +828,10 @@ norms:
 - norm_id: AIA-NORM-ANNEX-VII-REFUSE
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: notified_body
+  actors:
+  - actor_ref: notified_body
     category: notified_or_conformity_body
+  targets: []
   action: refuse certification and give detailed reasons where the system does not conform
   norm_text: Where the AI system is not in conformity with the requirements set out in Chapter III, Section
     2, the notified body shall refuse to issue a Union technical documentation assessment certificate
@@ -846,9 +865,10 @@ norms:
 - norm_id: AIA-NORM-ANNEX-VII-DATA-REASONS
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: notified_body
+  actors:
+  - actor_ref: notified_body
     category: notified_or_conformity_body
+  targets: []
   action: state specific training-data non-compliance considerations in the refusal decision
   norm_text: In this case, the reasoned assessment decision of the notified body refusing to issue the
     Union technical documentation assessment certificate shall contain specific considerations on the
@@ -884,9 +904,10 @@ norms:
 - norm_id: AIA-NORM-ANNEX-VII-CHANGE-ASSESSMENT
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: notified_body
+  actors:
+  - actor_ref: notified_body
     category: notified_or_conformity_body
+  targets: []
   action: assess any AI-system change that could affect compliance or intended purpose
   norm_text: Any change to the AI system that could affect the compliance of the AI system with the requirements
     or its intended purpose shall be assessed by the notified body which issued the Union technical documentation
@@ -919,9 +940,10 @@ norms:
 - norm_id: AIA-NORM-ANNEX-VII-INFORM-CHANGES
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: provider
+  actors:
+  - actor_ref: provider
     category: supported_operator
+  targets: []
   action: inform the certificate-issuing notified body of intended or discovered changes that could affect
     compliance or intended purpose
   norm_text: The provider shall inform such notified body of its intention to introduce any of the abovementioned
@@ -959,9 +981,10 @@ norms:
 - norm_id: AIA-NORM-ANNEX-VII-CHANGE-ROUTE-DECISION
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: notified_body
+  actors:
+  - actor_ref: notified_body
     category: notified_or_conformity_body
+  targets: []
   action: assess an intended change and decide whether it requires a new Article 43(4) conformity assessment
     or a certificate supplement
   norm_text: The intended changes shall be assessed by the notified body, which shall decide whether those
@@ -995,9 +1018,10 @@ norms:
 - norm_id: AIA-NORM-ANNEX-VII-ISSUE-SUPPLEMENT
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: notified_body
+  actors:
+  - actor_ref: notified_body
     category: notified_or_conformity_body
+  targets: []
   action: assess changes eligible for the supplement route, notify the provider of the decision, and issue
     an approved certificate supplement
   norm_text: In the latter case, the notified body shall assess the changes, notify the provider of its
@@ -1033,9 +1057,10 @@ norms:
 - norm_id: AIA-NORM-ANNEX-VII-SURVEILLANCE
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: provider
+  actors:
+  - actor_ref: provider
     category: supported_operator
+  targets: []
   action: allow the notified body to access the premises where the AI systems are designed, developed
     and tested
   norm_text: For assessment purposes, the provider shall allow the notified body to access the premises
@@ -1072,9 +1097,10 @@ norms:
 - norm_id: AIA-NORM-ANNEX-VII-SURVEILLANCE-SHARE-INFORMATION
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: provider
+  actors:
+  - actor_ref: provider
     category: supported_operator
+  targets: []
   action: share all information the notified body needs for surveillance
   norm_text: The provider shall further share with the notified body all necessary information.
   detection_channels:
@@ -1109,9 +1135,10 @@ norms:
 - norm_id: AIA-NORM-ANNEX-VII-AUDIT
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: notified_body
+  actors:
+  - actor_ref: notified_body
     category: notified_or_conformity_body
+  targets: []
   action: carry out periodic audits and provide the provider an audit report
   norm_text: The notified body shall carry out periodic audits
   detection_channels:
@@ -1142,9 +1169,10 @@ norms:
 - norm_id: AIA-NORM-ANNEX-VII-ADDITIONAL-TESTS
   act_version_date: '2026-07-27'
   kind: power
-  subjects:
-  - subject_ref: notified_body
+  actors:
+  - actor_ref: notified_body
     category: notified_or_conformity_body
+  targets: []
   action: carry out additional tests during surveillance audits of certified AI systems
   norm_text: In the context of those audits, the notified body may carry out additional tests of the AI
     systems for which a Union technical documentation assessment certificate was issued.

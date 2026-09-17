@@ -3,9 +3,10 @@ norms:
 - norm_id: AIA-NORM-A038-P1-OPERATE-COORDINATION-GROUP
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: commission
+  actors:
+  - actor_ref: commission
     category: union_institution_or_body
+  targets: []
   action: establish and properly operate a sectoral group coordinating notified bodies for high-risk AI-system
     conformity assessment
   norm_text: The Commission shall ensure that, with regard to high-risk AI systems, appropriate coordination
@@ -40,9 +41,10 @@ norms:
 - norm_id: AIA-NORM-A038-P2-ENSURE-GROUP-PARTICIPATION
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: notifying_authority
+  actors:
+  - actor_ref: notifying_authority
     category: public_authority
+  targets: []
   action: ensure its notified bodies participate directly or through representatives in the sectoral coordination
     group
   norm_text: Each notifying authority shall ensure that the bodies notified by it participate in the work
@@ -75,9 +77,10 @@ norms:
 - norm_id: AIA-NORM-A038-P3-KNOWLEDGE-EXCHANGE
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: commission
+  actors:
+  - actor_ref: commission
     category: union_institution_or_body
+  targets: []
   action: provide for exchange of knowledge and best practices among notifying authorities
   norm_text: The Commission shall provide for the exchange of knowledge and best practices between notifying
     authorities.

@@ -3,9 +3,10 @@ norms:
 - norm_id: AIA-NORM-A025-P1-A-NAME-ROLE-TRANSFER
   act_version_date: '2026-07-27'
   kind: legal_consequence
-  subjects:
-  - subject_ref: distributor_importer_deployer_or_third_party
+  actors:
+  - actor_ref: distributor_importer_deployer_or_third_party
     category: supported_operator
+  targets: []
   action: treat a distributor, importer, deployer, or other third party as the provider subject to Article
     16 after it puts its name or trademark on the high-risk system
   norm_text: they put their name or trademark on a high-risk AI system already placed on the market or
@@ -44,9 +45,10 @@ norms:
 - norm_id: AIA-NORM-A025-P1-B-MODIFICATION-ROLE-TRANSFER
   act_version_date: '2026-07-27'
   kind: legal_consequence
-  subjects:
-  - subject_ref: distributor_importer_deployer_or_third_party
+  actors:
+  - actor_ref: distributor_importer_deployer_or_third_party
     category: supported_operator
+  targets: []
   action: treat the substantially modifying distributor, importer, deployer, or third party as the provider
     subject to Article 16 when the modified system remains high-risk
   norm_text: they make a substantial modification to a high-risk AI system that has already been placed
@@ -86,9 +88,10 @@ norms:
 - norm_id: AIA-NORM-A025-P1-C-PURPOSE-ROLE-TRANSFER
   act_version_date: '2026-07-27'
   kind: legal_consequence
-  subjects:
-  - subject_ref: distributor_importer_deployer_or_third_party
+  actors:
+  - actor_ref: distributor_importer_deployer_or_third_party
     category: supported_operator
+  targets: []
   action: treat the purpose-modifying distributor, importer, deployer, or third party as the provider
     subject to Article 16 when its change makes an existing system high-risk
   norm_text: they modify the intended purpose of an AI system, including a general-purpose AI system,
@@ -129,9 +132,10 @@ norms:
 - norm_id: AIA-NORM-A025-P2-INITIAL-PROVIDER-STATUS-ENDS
   act_version_date: '2026-07-27'
   kind: legal_consequence
-  subjects:
-  - subject_ref: initial_provider
+  actors:
+  - actor_ref: initial_provider
     category: supported_operator
+  targets: []
   action: cease treating the initial provider as provider of the specific system after a paragraph 1 role
     transfer
   norm_text: Where the circumstances referred to in paragraph 1 occur, the provider that initially placed
@@ -169,9 +173,10 @@ norms:
 - norm_id: AIA-NORM-A025-P2-COOPERATE
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: initial_provider
+  actors:
+  - actor_ref: initial_provider
     category: supported_operator
+  targets: []
   action: closely cooperate with the new provider after the provider role has transferred
   norm_text: That initial provider shall closely cooperate with new providers
   detection_channels:
@@ -206,9 +211,10 @@ norms:
 - norm_id: AIA-NORM-A025-P2-PROVIDE-ASSISTANCE
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: initial_provider
+  actors:
+  - actor_ref: initial_provider
     category: supported_operator
+  targets: []
   action: provide the new provider with necessary information, reasonably expected technical access, and
     other assistance required for regulatory compliance
   norm_text: shall make available the necessary information and provide the reasonably expected technical
@@ -255,9 +261,10 @@ norms:
 - norm_id: AIA-NORM-A025-P2-NO-COOPERATION-DUTY
   act_version_date: '2026-07-27'
   kind: applicability
-  subjects:
-  - subject_ref: initial_provider
+  actors:
+  - actor_ref: initial_provider
     category: supported_operator
+  targets: []
   action: disapply the initial-provider cooperation and documentation duties where high-risk conversion
     was clearly prohibited
   norm_text: This paragraph shall not apply in cases where the initial provider has clearly specified
@@ -295,9 +302,10 @@ norms:
 - norm_id: AIA-NORM-A025-P3-A-PRODUCT-MANUFACTURER-ROLE
   act_version_date: '2026-07-27'
   kind: legal_consequence
-  subjects:
-  - subject_ref: product_manufacturer
+  actors:
+  - actor_ref: product_manufacturer
     category: supported_operator
+  targets: []
   action: treat the product manufacturer as provider subject to Article 16 when its high-risk safety-component
     system is marketed with the product under its name or trademark
   norm_text: the high-risk AI system is placed on the market together with the product under the name
@@ -336,9 +344,10 @@ norms:
 - norm_id: AIA-NORM-A025-P3-B-PRODUCT-MANUFACTURER-ROLE
   act_version_date: '2026-07-27'
   kind: legal_consequence
-  subjects:
-  - subject_ref: product_manufacturer
+  actors:
+  - actor_ref: product_manufacturer
     category: supported_operator
+  targets: []
   action: treat the product manufacturer as provider subject to Article 16 when its high-risk safety-component
     system is later put into service under its name or trademark
   norm_text: the high-risk AI system is put into service under the name or trademark of the product manufacturer
@@ -378,9 +387,10 @@ norms:
 - norm_id: AIA-NORM-A025-P4-WRITTEN-AGREEMENT
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: high_risk_provider_and_third_party_supplier
+  actors:
+  - actor_ref: high_risk_provider_and_third_party_supplier
     category: supported_operator
+  targets: []
   action: use a written agreement to specify the state-of-the-art information, capabilities, technical
     access, and assistance necessary for the provider's full compliance
   norm_text: The provider of a high-risk AI system and the third party that supplies an AI system, AI
@@ -423,9 +433,10 @@ norms:
 - norm_id: AIA-NORM-A025-P4-OPEN-SOURCE-EXCEPTION
   act_version_date: '2026-07-27'
   kind: applicability
-  subjects:
-  - subject_ref: third_party_supplier
+  actors:
+  - actor_ref: third_party_supplier
     category: external_private_party
+  targets: []
   action: disapply the written-agreement duty to publicly accessible free and open-source supplies other
     than general-purpose AI models
   norm_text: This paragraph shall not apply to third parties making accessible to the public tools, services,
@@ -462,9 +473,10 @@ norms:
 - norm_id: AIA-NORM-A025-P4-AI-OFFICE-MODEL-TERMS
   act_version_date: '2026-07-27'
   kind: power
-  subjects:
-  - subject_ref: ai_office
+  actors:
+  - actor_ref: ai_office
     category: union_institution_or_body
+  targets: []
   action: develop and recommend voluntary model terms for high-risk-system supply contracts
   norm_text: The AI Office may develop and recommend voluntary model terms for contracts between providers
     of high-risk AI systems and third parties that supply tools, services, components or processes that
@@ -497,9 +509,10 @@ norms:
 - norm_id: AIA-NORM-A025-P4-AI-OFFICE-SECTOR-REQUIREMENTS
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: ai_office
+  actors:
+  - actor_ref: ai_office
     category: union_institution_or_body
+  targets: []
   action: consider sector-specific and business-case contractual requirements when developing model terms
   norm_text: When developing those voluntary model terms, the AI Office shall take into account possible
     contractual requirements applicable in specific sectors or business cases.
@@ -532,9 +545,10 @@ norms:
 - norm_id: AIA-NORM-A025-P4-AI-OFFICE-PUBLISH
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: ai_office
+  actors:
+  - actor_ref: ai_office
     category: union_institution_or_body
+  targets: []
   action: publish voluntary model terms free of charge in an easily usable electronic format
   norm_text: The voluntary model terms shall be published and be available free of charge in an easily
     usable electronic format.
@@ -566,9 +580,10 @@ norms:
 - norm_id: AIA-NORM-A025-P5-PROTECT-RIGHTS-AND-SECRETS
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: parties_under_article_25_paragraphs_2_and_3
+  actors:
+  - actor_ref: parties_under_article_25_paragraphs_2_and_3
     category: supported_operator
+  targets: []
   action: observe and protect intellectual-property rights, confidential business information, and trade
     secrets when applying paragraphs 2 and 3
   norm_text: Paragraphs 2 and 3 are without prejudice to the need to observe and protect intellectual

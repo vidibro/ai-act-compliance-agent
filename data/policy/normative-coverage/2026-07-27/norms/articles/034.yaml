@@ -3,9 +3,10 @@ norms:
 - norm_id: AIA-NORM-A034-P1-VERIFY-CONFORMITY
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: notified_body
+  actors:
+  - actor_ref: notified_body
     category: notified_or_conformity_body
+  targets: []
   action: verify high-risk AI-system conformity using the Article 43 conformity-assessment procedures
   norm_text: Notified bodies shall verify the conformity of high-risk AI systems in accordance with the
     conformity assessment procedures set out in Article 43.
@@ -37,9 +38,10 @@ norms:
 - norm_id: AIA-NORM-A034-P2-AVOID-UNNECESSARY-BURDENS
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: notified_body
+  actors:
+  - actor_ref: notified_body
     category: notified_or_conformity_body
+  targets: []
   action: avoid unnecessary provider burdens and account for provider size, sector, structure, and system
     complexity to minimise administrative burdens and compliance costs, particularly for micro and small
     enterprises
@@ -80,9 +82,10 @@ norms:
 - norm_id: AIA-NORM-A034-P2-PRESERVE-RIGOUR-AND-PROTECTION
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: notified_body
+  actors:
+  - actor_ref: notified_body
     category: notified_or_conformity_body
+  targets: []
   action: preserve the rigor and protection required for the high-risk system's compliance with the Regulation
   norm_text: The notified body shall, nevertheless, respect the degree of rigour and the level of protection
     required for the compliance of the high-risk AI system with the requirements of this Regulation.
@@ -114,9 +117,10 @@ norms:
 - norm_id: AIA-NORM-A034-P3-PROVIDE-DOCUMENTATION
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: notified_body
+  actors:
+  - actor_ref: notified_body
     category: notified_or_conformity_body
+  targets: []
   action: make available and submit all relevant documentation to the Article 28 notifying authority upon
     request
   norm_text: "Notified bodies shall make available and submit upon request all relevant documentation,\

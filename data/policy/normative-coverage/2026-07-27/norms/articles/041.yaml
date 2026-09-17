@@ -3,9 +3,10 @@ norms:
 - norm_id: AIA-NORM-A041-P1-ADOPT-COMMON-SPECIFICATIONS
   act_version_date: '2026-07-27'
   kind: power
-  subjects:
-  - subject_ref: commission
+  actors:
+  - actor_ref: commission
     category: union_institution_or_body
+  targets: []
   action: adopt implementing acts establishing common specifications when the enacted standardisation
     conditions are fulfilled
   norm_text: The Commission may adopt, implementing acts establishing common specifications for the requirements
@@ -61,9 +62,10 @@ norms:
 - norm_id: AIA-NORM-A041-P1-CONSULT-ADVISORY-FORUM
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: commission
+  actors:
+  - actor_ref: commission
     category: union_institution_or_body
+  targets: []
   action: consult the Article 67 advisory forum when drafting common specifications
   norm_text: When drafting the common specifications, the Commission shall consult the advisory forum
     referred to in Article 67.
@@ -96,9 +98,10 @@ norms:
 - norm_id: AIA-NORM-A041-P1-EXAMINATION-PROCEDURE
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: commission
+  actors:
+  - actor_ref: commission
     category: union_institution_or_body
+  targets: []
   action: adopt common-specification implementing acts under the Article 98(2) examination procedure
   norm_text: The implementing acts referred to in the first subparagraph of this paragraph shall be adopted
     in accordance with the examination procedure referred to in Article 98(2).
@@ -130,9 +133,10 @@ norms:
 - norm_id: AIA-NORM-A041-P2-INFORM-STANDARDISATION-COMMITTEE
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: commission
+  actors:
+  - actor_ref: commission
     category: union_institution_or_body
+  targets: []
   action: inform the Article 22 standardisation committee that paragraph 1 conditions are fulfilled before
     drafting the act
   norm_text: Before preparing a draft implementing act, the Commission shall inform the committee referred
@@ -166,9 +170,9 @@ norms:
 - norm_id: AIA-NORM-A041-P3-COMMON-SPECIFICATION-PRESUMPTION
   act_version_date: '2026-07-27'
   kind: legal_consequence
-  subjects:
-  - subject_ref: high_risk_ai_system_or_general_purpose_ai_model
-    category: other
+  actors: []
+  targets:
+  - target_ref: high_risk_ai_system_or_general_purpose_ai_model
   action: presume covered Chapter III Section 2 or Chapter V Sections 2 and 3 conformity from compliance
     with common specifications
   norm_text: High-risk AI systems or general-purpose AI models which are in conformity with the common
@@ -207,9 +211,10 @@ norms:
 - norm_id: AIA-NORM-A041-P4-ASSESS-HARMONISED-STANDARD
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: commission
+  actors:
+  - actor_ref: commission
     category: union_institution_or_body
+  targets: []
   action: assess a proposed harmonised standard under Regulation 1025/2012 before reference publication
   norm_text: Where a harmonised standard is adopted by a European standardisation organisation and proposed
     to the Commission for the publication of its reference in the Official Journal of the European Union,
@@ -244,9 +249,10 @@ norms:
 - norm_id: AIA-NORM-A041-P4-REPEAL-OVERLAPPING-SPECIFICATION
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: commission
+  actors:
+  - actor_ref: commission
     category: union_institution_or_body
+  targets: []
   action: repeal common-specification acts or parts overlapping a published harmonised standard
   norm_text: When reference to a harmonised standard is published in the Official Journal of the European
     Union, the Commission shall repeal the implementing acts referred to in paragraph 1, or parts thereof
@@ -281,9 +287,10 @@ norms:
 - norm_id: AIA-NORM-A041-P5-JUSTIFY-EQUIVALENT-SOLUTIONS
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: provider
+  actors:
+  - actor_ref: provider
     category: supported_operator
+  targets: []
   action: duly justify technical solutions providing at least equivalent compliance when common specifications
     are not followed
   norm_text: Where providers of high-risk AI systems or general-purpose AI models do not comply with the
@@ -321,9 +328,10 @@ norms:
 - norm_id: AIA-NORM-A041-P6-MEMBER-STATE-NOTICE
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: member_state
+  actors:
+  - actor_ref: member_state
     category: member_state
+  targets: []
   action: inform the Commission with a detailed explanation of deficiencies in a common specification
   norm_text: Where a Member State considers that a common specification does not entirely meet the requirements
     set out in Section 2 or, as applicable, comply with obligations set out in Sections 2 and 3 of Chapter
@@ -358,9 +366,10 @@ norms:
 - norm_id: AIA-NORM-A041-P6-ASSESS-DEFICIENCY-INFORMATION
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: commission
+  actors:
+  - actor_ref: commission
     category: union_institution_or_body
+  targets: []
   action: assess Member-State information about a deficient common specification and, if appropriate,
     amend the implementing act establishing it
   norm_text: The Commission shall assess that information and, if appropriate, amend the implementing

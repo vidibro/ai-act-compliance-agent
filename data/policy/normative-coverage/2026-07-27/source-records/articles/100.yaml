@@ -8,8 +8,10 @@ records:
     shall be given to the following
   action: impose administrative fines on in-scope Union institutions bodies offices and agencies after
     considering all relevant circumstances and specified factors
-  subject_ref: european_data_protection_supervisor
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: european_data_protection_supervisor
+    category: union_institution_or_body
+  targets: []
   kind: power
   mandatory_content:
   - infringement nature gravity duration consequences affected persons and damage
@@ -37,8 +39,10 @@ records:
   quote: Non-compliance with the prohibition of the AI practices referred to in Article 5 shall be subject
     to administrative fines of up to EUR 1500000.
   action: expose Union-body Article 5 non-compliance to a fine up to EUR 1500000
-  subject_ref: infringing_union_institution_or_body
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: infringing_union_institution_or_body
+    category: union_institution_or_body
+  targets: []
   kind: legal_consequence
   product_scope: outside_supported_actor
   product_scope_reason: This enforcement consequence is outside the supported operator surface.
@@ -53,8 +57,10 @@ records:
   quote: The non-compliance of the AI system with any requirements or obligations under this Regulation,
     other than those laid down in Article 5, shall be subject to administrative fines of up to EUR 750000.
   action: expose other Union-body AI Act non-compliance to a fine up to EUR 750000
-  subject_ref: infringing_union_institution_or_body
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: infringing_union_institution_or_body
+    category: union_institution_or_body
+  targets: []
   kind: legal_consequence
   product_scope: outside_supported_actor
   product_scope_reason: This enforcement consequence is outside the supported operator surface.
@@ -72,8 +78,10 @@ records:
     the possible infringement.
   action: give the Union institution, body, office or agency subject to the proceedings the opportunity
     of being heard on the possible infringement before taking a decision
-  subject_ref: european_data_protection_supervisor
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: european_data_protection_supervisor
+    category: union_institution_or_body
+  targets: []
   conditions:
   - the decision is taken pursuant to Article 100
   product_scope: outside_supported_actor
@@ -87,8 +95,10 @@ records:
     circumstances on which the parties concerned have been able to comment.
   action: base the decision only on elements and circumstances on which the parties concerned have been
     able to comment
-  subject_ref: european_data_protection_supervisor
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: european_data_protection_supervisor
+    category: union_institution_or_body
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -98,8 +108,10 @@ records:
   source: A100-P011
   quote: Complainants, if any, shall be associated closely with the proceedings.
   action: associate any complainants closely with the proceedings
-  subject_ref: european_data_protection_supervisor
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: european_data_protection_supervisor
+    category: union_institution_or_body
+  targets: []
   conditions:
   - there are complainants
   product_scope: outside_supported_actor
@@ -111,8 +123,10 @@ records:
   source: A100-P012
   quote: The rights of defence of the parties concerned shall be fully respected in the proceedings.
   action: fully respect the rights of defence of the parties concerned in the proceedings
-  subject_ref: european_data_protection_supervisor
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: european_data_protection_supervisor
+    category: union_institution_or_body
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -124,8 +138,10 @@ records:
     \ subject to the legitimate interest of individuals or undertakings in the protection of their personal\
     \ data or business secrets."
   action: have access to the European Data Protection Supervisor's file
-  subject_ref: party_concerned_in_article_100_proceedings
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: party_concerned_in_article_100_proceedings
+    category: union_institution_or_body
+  targets: []
   kind: entitlement
   exceptions:
   - the legitimate interest of individuals or undertakings in the protection of their personal data or
@@ -142,8 +158,10 @@ records:
   quote: Funds collected by imposition of fines in this Article shall contribute to the general budget
     of the Union
   action: contribute the funds collected by imposing Article 100 fines to the general budget of the Union
-  subject_ref: union_budget_and_enforcement_framework
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: union_budget_and_enforcement_framework
+    category: union_institution_or_body
+  targets: []
   kind: legal_consequence
   product_scope: outside_supported_actor
   product_scope_reason: This institutional consequence is outside the supported operator surface.
@@ -156,8 +174,10 @@ records:
     agency fined.
   action: keep the fines from affecting the effective operation of the Union institution, body, office
     or agency fined
-  subject_ref: union_budget_and_enforcement_framework
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: union_budget_and_enforcement_framework
+    category: union_institution_or_body
+  targets: []
   kind: legal_consequence
   product_scope: outside_supported_actor
   product_scope_reason: This institutional consequence is outside the supported operator surface.
@@ -170,8 +190,10 @@ records:
     administrative fines it has imposed pursuant to this Article and of any litigation or judicial proceedings
     it has initiated.
   action: notify the Commission annually of Article 100 fines and initiated proceedings
-  subject_ref: european_data_protection_supervisor
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: european_data_protection_supervisor
+    category: union_institution_or_body
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required

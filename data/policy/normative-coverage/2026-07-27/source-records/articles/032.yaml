@@ -7,8 +7,10 @@ records:
     out in Article 31 in so far as the applicable harmonised standards cover those requirements.
   action: presume Article 31 compliance where demonstrated conformity with published harmonised standards
     covers the applicable requirements
-  subject_ref: conformity_assessment_body
-  subject_category: notified_or_conformity_body
+  actors:
+  - actor_ref: conformity_assessment_body
+    category: notified_or_conformity_body
+  targets: []
   kind: legal_consequence
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.

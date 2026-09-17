@@ -3,9 +3,10 @@ norms:
 - norm_id: AIA-NORM-A015-P1-PERFORMANCE-AND-LIFECYCLE-CONSISTENCY
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: provider
+  actors:
+  - actor_ref: provider
     category: supported_operator
+  targets: []
   action: design and develop the high-risk AI system to achieve appropriate accuracy, robustness, and
     cybersecurity and perform consistently in those respects throughout its lifecycle
   norm_text: High-risk AI systems shall be designed and developed in such a way that they achieve an appropriate
@@ -45,9 +46,10 @@ norms:
 - norm_id: AIA-NORM-A015-P2-ENCOURAGE-MEASUREMENT
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: commission
+  actors:
+  - actor_ref: commission
     category: union_institution_or_body
+  targets: []
   action: encourage appropriate accuracy, robustness, and performance benchmarks and measurement methodologies
     in cooperation with relevant stakeholders and organisations
   norm_text: the Commission shall, in cooperation with relevant stakeholders and organisations such as
@@ -81,9 +83,10 @@ norms:
 - norm_id: AIA-NORM-A015-P3-DECLARE-ACCURACY-AND-METRICS
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: provider
+  actors:
+  - actor_ref: provider
     category: supported_operator
+  targets: []
   action: declare the high-risk AI system's accuracy levels and relevant accuracy metrics in the accompanying
     instructions for use
   norm_text: The levels of accuracy and the relevant accuracy metrics of high-risk AI systems shall be
@@ -118,9 +121,10 @@ norms:
 - norm_id: AIA-NORM-A015-P4-RESILIENCE
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: provider
+  actors:
+  - actor_ref: provider
     category: supported_operator
+  targets: []
   action: make the high-risk AI system as resilient as possible to errors, faults, and inconsistencies
     within the system or its operating environment
   norm_text: High-risk AI systems shall be as resilient as possible regarding errors, faults or inconsistencies
@@ -157,9 +161,10 @@ norms:
 - norm_id: AIA-NORM-A015-P4-TECHNICAL-AND-ORGANISATIONAL-MEASURES
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: provider
+  actors:
+  - actor_ref: provider
     category: supported_operator
+  targets: []
   action: apply technical and organisational measures supporting resilience to errors, faults, and inconsistencies
   norm_text: Technical and organisational measures shall be taken in this regard.
   detection_channels:
@@ -192,9 +197,10 @@ norms:
 - norm_id: AIA-NORM-A015-P4-REDUNDANCY
   act_version_date: '2026-07-27'
   kind: permission
-  subjects:
-  - subject_ref: provider
+  actors:
+  - actor_ref: provider
     category: supported_operator
+  targets: []
   action: use technical redundancy solutions, including backup or fail-safe plans, to achieve system robustness
   norm_text: The robustness of high-risk AI systems may be achieved through technical redundancy solutions,
     which may include backup or fail-safe plans.
@@ -228,9 +234,10 @@ norms:
 - norm_id: AIA-NORM-A015-P4-FEEDBACK-LOOP-RISK-AND-MITIGATION
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: provider
+  actors:
+  - actor_ref: provider
     category: supported_operator
+  targets: []
   action: eliminate or minimise the risk of biased-output feedback loops and address any such loops with
     appropriate mitigation measures
   norm_text: High-risk AI systems that continue to learn after being placed on the market or put into
@@ -268,9 +275,10 @@ norms:
 - norm_id: AIA-NORM-A015-P5-UNAUTHORISED-ALTERATION
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: provider
+  actors:
+  - actor_ref: provider
     category: supported_operator
+  targets: []
   action: make the system resilient against unauthorised attempts to alter its use, outputs, or performance
     through vulnerabilities
   norm_text: High-risk AI systems shall be resilient against attempts by unauthorised third parties to
@@ -305,9 +313,10 @@ norms:
 - norm_id: AIA-NORM-A015-P5-APPROPRIATE-SOLUTIONS
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: provider
+  actors:
+  - actor_ref: provider
     category: supported_operator
+  targets: []
   action: make cybersecurity technical solutions appropriate to the relevant circumstances and risks
   norm_text: The technical solutions aiming to ensure the cybersecurity of high-risk AI systems shall
     be appropriate to the relevant circumstances and the risks.
@@ -341,9 +350,10 @@ norms:
 - norm_id: AIA-NORM-A015-P5-DATA-POISONING
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: provider
+  actors:
+  - actor_ref: provider
     category: supported_operator
+  targets: []
   action: implement measures to prevent, detect, respond to, resolve, and control training-data-poisoning
     attacks
   norm_text: attacks trying to manipulate the training data set (data poisoning)
@@ -377,9 +387,10 @@ norms:
 - norm_id: AIA-NORM-A015-P5-MODEL-POISONING
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: provider
+  actors:
+  - actor_ref: provider
     category: supported_operator
+  targets: []
   action: implement measures to prevent, detect, respond to, resolve, and control attacks manipulating
     pre-trained training components
   norm_text: pre-trained components used in training (model poisoning)
@@ -413,9 +424,10 @@ norms:
 - norm_id: AIA-NORM-A015-P5-ADVERSARIAL-ATTACKS
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: provider
+  actors:
+  - actor_ref: provider
     category: supported_operator
+  targets: []
   action: implement measures to prevent, detect, respond to, resolve, and control adversarial-example
     and model-evasion attacks
   norm_text: inputs designed to cause the AI model to make a mistake (adversarial examples or model evasion)
@@ -449,9 +461,10 @@ norms:
 - norm_id: AIA-NORM-A015-P5-CONFIDENTIALITY-ATTACKS
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: provider
+  actors:
+  - actor_ref: provider
     category: supported_operator
+  targets: []
   action: implement measures to prevent, detect, respond to, resolve, and control confidentiality attacks
   norm_text: confidentiality attacks
   detection_channels:
@@ -484,9 +497,10 @@ norms:
 - norm_id: AIA-NORM-A015-P5-MODEL-FLAWS
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: provider
+  actors:
+  - actor_ref: provider
     category: supported_operator
+  targets: []
   action: implement measures to prevent, detect, respond to, resolve, and control model flaws
   norm_text: model flaws
   detection_channels:

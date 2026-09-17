@@ -3,9 +3,10 @@ norms:
 - norm_id: AIA-NORM-A101-P1-IMPOSE-GPAI-FINES
   act_version_date: '2026-07-27'
   kind: power
-  subjects:
-  - subject_ref: commission
+  actors:
+  - actor_ref: commission
     category: union_institution_or_body
+  targets: []
   action: fine a GPAI provider up to 3 % of preceding-year worldwide annual turnover or EUR 15 000 000,
     whichever is higher, for intentional or negligent listed conduct
   norm_text: The Commission may impose on providers of general-purpose AI models fines not exceeding 3
@@ -52,9 +53,10 @@ norms:
 - norm_id: AIA-NORM-A101-P1-FIX-FINE-AMOUNT
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: commission
+  actors:
+  - actor_ref: commission
     category: union_institution_or_body
+  targets: []
   action: fix the amount of the fine or periodic penalty payment having regard to every enacted factor
   norm_text: In fixing the amount of the fine or periodic penalty payment, regard shall be had to the
     nature, gravity and duration of the infringement, taking due account of the principles of proportionality
@@ -92,9 +94,10 @@ norms:
 - norm_id: AIA-NORM-A101-P2-PRELIMINARY-FINDINGS-AND-HEARING
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: commission
+  actors:
+  - actor_ref: commission
     category: union_institution_or_body
+  targets: []
   action: communicate preliminary findings and give the GPAI provider an opportunity to be heard before
     a fine decision
   norm_text: Before adopting the decision pursuant to paragraph 1, the Commission shall communicate its
@@ -129,9 +132,10 @@ norms:
 - norm_id: AIA-NORM-A101-P3-FINE-QUALITY
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: commission
+  actors:
+  - actor_ref: commission
     category: union_institution_or_body
+  targets: []
   action: ensure Article 101 fines are effective proportionate and dissuasive
   norm_text: Fines imposed in accordance with this Article shall be effective, proportionate and dissuasive
   detection_channels:
@@ -162,9 +166,10 @@ norms:
 - norm_id: AIA-NORM-A101-P4-COMMUNICATE-FINES-TO-BOARD
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: commission
+  actors:
+  - actor_ref: commission
     category: union_institution_or_body
+  targets: []
   action: communicate information on Article 101 fines to the Board as appropriate
   norm_text: Information on fines imposed under this Article shall also be communicated to the Board as
     appropriate
@@ -196,9 +201,10 @@ norms:
 - norm_id: AIA-NORM-A101-P5-JUDICIAL-REVIEW
   act_version_date: '2026-07-27'
   kind: power
-  subjects:
-  - subject_ref: court_of_justice_of_the_european_union
+  actors:
+  - actor_ref: court_of_justice_of_the_european_union
     category: union_institution_or_body
+  targets: []
   action: review and cancel reduce or increase Commission fines with unlimited jurisdiction
   norm_text: The Court of Justice of the European Union shall have unlimited jurisdiction to review decisions
     of the Commission fixing a fine under this Article. It may cancel, reduce or increase the fine imposed.
@@ -231,9 +237,10 @@ norms:
 - norm_id: AIA-NORM-A101-P6-ADOPT-FINE-PROCEDURES
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: commission
+  actors:
+  - actor_ref: commission
     category: union_institution_or_body
+  targets: []
   action: adopt implementing acts establishing arrangements and safeguards for Article 101 fine proceedings
     through the Article 98(2) examination procedure
   norm_text: The Commission shall adopt implementing acts containing detailed arrangements and procedural

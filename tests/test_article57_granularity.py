@@ -23,7 +23,7 @@ def test_establishment_powers_are_not_cooperation_or_access_duties(norms):
         substitution = norms[f"{prefix}-AUTHORITY-REFERENCES"]
         assert power.kind.value == "power"
         assert substitution.kind.value == "legal_consequence"
-        assert power.subjects[0].subject_ref == substitution.subjects[0].subject_ref == actor
+        assert power.actors[0].actor_ref == substitution.actors[0].actor_ref == actor
         assert "this Chapter" in substitution.action
         assert substitution.conditions
     power = norms["P3A-AI-OFFICE-SANDBOX"]
@@ -34,7 +34,7 @@ def test_establishment_powers_are_not_cooperation_or_access_duties(norms):
     for suffix in ("COOPERATE-WITH-AUTHORITIES", "PRIORITY-ACCESS"):
         duty = norms[f"P3A-{suffix}"]
         assert duty.kind.value == "obligation"
-        assert duty.subjects[0].subject_ref == "ai_office"
+        assert duty.actors[0].actor_ref == "ai_office"
         assert duty.conditions == ["the AI Office establishes the sandbox under paragraph 3a"]
     assert "other Union-law compliance" in norms["P3A-COOPERATE-WITH-AUTHORITIES"].action
     assert "SMEs, including start-ups, and SMCs" in norms["P3A-PRIORITY-ACCESS"].action
@@ -42,7 +42,7 @@ def test_establishment_powers_are_not_cooperation_or_access_duties(norms):
 
 def test_resources_cooperation_permission_and_savings_have_distinct_effects(norms):
     resources = norms["P4-RESOURCE-AND-AUTHORITY-COORDINATION"]
-    assert resources.subjects[0].subject_ref == "member_state"
+    assert resources.actors[0].actor_ref == "member_state"
     assert "paragraph 1 and 2" in resources.action
     assert "effective and timely" in resources.action
     assert not resources.mandatory_content
@@ -50,12 +50,12 @@ def test_resources_cooperation_permission_and_savings_have_distinct_effects(norm
     involvement = norms["P4-INVOLVE-ECOSYSTEM-ACTORS"]
     assert cooperation.kind.value == "obligation"
     assert involvement.kind.value == "permission"
-    assert cooperation.subjects[0].subject_ref == "national_competent_authority"
-    assert involvement.subjects == cooperation.subjects
+    assert cooperation.actors[0].actor_ref == "national_competent_authority"
+    assert involvement.actors == cooperation.actors
     assert cooperation.conditions == involvement.conditions == ["where appropriate"]
     assert norms["P4-PRESERVE-OTHER-SANDBOXES"].kind.value == "legal_consequence"
     other = norms["P4-INTER-SANDBOX-COOPERATION"]
-    assert other.subjects[0].subject_ref == "member_state"
+    assert other.actors[0].actor_ref == "member_state"
     assert "other Union or national-law sandboxes" in other.action
 
 
@@ -93,7 +93,7 @@ def test_written_proof_is_requested_but_exit_report_is_not(norms):
     assert proof.primary_spans == report.primary_spans == ["AIA-TEXT-A057-P011"]
     use = norms["P7-EVIDENTIARY-USE"]
     assert use.kind.value == "permission"
-    assert use.subjects[0].subject_ref == "provider"
+    assert use.actors[0].actor_ref == "provider"
     assert "conformity assessment or relevant market surveillance" in use.action
     for suffix, actor, category in (
         ("SURVEILLANCE", "market_surveillance_authority", "public_authority"),
@@ -101,8 +101,8 @@ def test_written_proof_is_requested_but_exit_report_is_not(norms):
     ):
         duty = norms[f"P7-{suffix}-EVIDENCE-CONSIDERATION"]
         assert duty.kind.value == "obligation"
-        assert duty.subjects[0].subject_ref == actor
-        assert duty.subjects[0].category.value == category
+        assert duty.actors[0].actor_ref == actor
+        assert duty.actors[0].category.value == category
         assert "positively into account" in duty.action
         assert "reasonably accelerating" in duty.action
 
@@ -114,8 +114,8 @@ def test_report_access_consideration_and_public_release_do_not_share_one_gate(no
     assert access.kind.value == "permission"
     assert consideration.kind.value == "obligation"
     assert publication.kind.value == "permission"
-    assert access.subjects == consideration.subjects
-    assert access.subjects[0].subject_ref == "commission_and_board"
+    assert access.actors == consideration.actors
+    assert access.actors[0].actor_ref == "commission_and_board"
     assert access.conditions == [
         "Article 78 confidentiality provisions are observed",
         "the provider or prospective provider agrees to access",
@@ -165,11 +165,11 @@ def test_liability_and_two_no_fine_protections_preserve_different_conditions(nor
     ai_act = norms["P12-AI-ACT-NO-FINE-PROTECTION"]
     other_law = norms["P12-OTHER-LAW-NO-FINE-PROTECTION"]
     assert all(n.kind.value == "legal_consequence" for n in (liability, ai_act, other_law))
-    assert liability.subjects[0].subject_ref == "provider_or_prospective_provider"
+    assert liability.actors[0].actor_ref == "provider_or_prospective_provider"
     assert "third-party damage resulting from sandbox experimentation" in liability.action
     assert not any("guidance" in condition for condition in liability.conditions)
     # The pinned text specifically says prospective providers for the AI Act safe harbour.
-    assert ai_act.subjects[0].subject_ref == "prospective_provider"
+    assert ai_act.actors[0].actor_ref == "prospective_provider"
     assert ai_act.conditions == [
         "the prospective provider observes the specific sandbox plan",
         "the prospective provider observes the terms and conditions of participation",
@@ -190,7 +190,7 @@ def test_board_coordination_is_required_but_joint_sandbox_support_is_optional(no
     support = norms["P14-SUPPORT-JOINT-SANDBOXES"]
     assert duty.kind.value == "obligation"
     assert support.kind.value == "permission"
-    assert duty.subjects == support.subjects
+    assert duty.actors == support.actors
     assert "Board" in duty.action
     assert "as appropriate" in duty.conditions[0]
     assert "respective competences" in duty.conditions[0]
@@ -204,12 +204,12 @@ def test_notification_support_requests_and_public_list_belong_to_the_right_actor
     listing = norms["P15-PUBLIC-SANDBOX-LIST"]
     assert notice.kind.value == listing.kind.value == "obligation"
     assert support.kind.value == "permission"
-    assert notice.subjects == support.subjects
-    assert notice.subjects[0].subject_ref == "national_competent_authority"
+    assert notice.actors == support.actors
+    assert notice.actors[0].actor_ref == "national_competent_authority"
     assert "AI Office and the Board" in notice.action
     assert "AI Office and the Board" in support.action
-    assert listing.subjects[0].subject_ref == "ai_office"
-    assert listing.subjects[0].category.value == "union_institution_or_body"
+    assert listing.actors[0].actor_ref == "ai_office"
+    assert listing.actors[0].category.value == "union_institution_or_body"
     assert "publish and keep current" in listing.action
     assert "planned and existing" in listing.action
 
@@ -235,11 +235,11 @@ def test_reporting_lifecycle_publication_and_commission_use_are_separate(norms):
     assert "where relevant" in annual.mandatory_content[6]
     assert "other Union law supervised" in annual.mandatory_content[6]
     assert annual.mandatory_content[7] == "submit a final report when the sandbox terminates"
-    assert publication.subjects == annual.subjects
-    assert annual.subjects[0].subject_ref == "national_competent_authority"
+    assert publication.actors == annual.actors
+    assert annual.actors[0].actor_ref == "national_competent_authority"
     assert "annual sandbox reports or abstracts" in publication.action
     assert "online" in publication.action
-    assert consideration.subjects[0].subject_ref == "commission"
+    assert consideration.actors[0].actor_ref == "commission"
     assert consideration.conditions == ["where appropriate"]
     assert "annual sandbox reports" in consideration.action
 
@@ -252,8 +252,8 @@ def test_information_interface_does_not_swallow_conditional_coordination(norms):
     assert "non-binding" in interface.mandatory_content[3]
     assert "products, services and business models" in interface.mandatory_content[3]
     assert not interface.conditions
-    assert coordination.subjects == interface.subjects
-    assert coordination.subjects[0].subject_ref == "commission"
+    assert coordination.actors == interface.actors
+    assert coordination.actors[0].actor_ref == "commission"
     assert coordination.conditions == ["where relevant"]
     assert "proactively coordinate with national competent authorities" == coordination.action
 

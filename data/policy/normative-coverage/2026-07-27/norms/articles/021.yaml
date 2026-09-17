@@ -3,9 +3,10 @@ norms:
 - norm_id: AIA-NORM-A021-P1-PROVIDE-CONFORMITY-INFORMATION
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: provider
+  actors:
+  - actor_ref: provider
     category: supported_operator
+  targets: []
   action: provide a requesting competent authority with all information and documentation necessary to
     demonstrate Section 2 conformity, in an easily understood official EU-institution language indicated
     by the relevant Member State
@@ -45,9 +46,10 @@ norms:
 - norm_id: AIA-NORM-A021-P2-PROVIDE-LOG-ACCESS
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: provider
+  actors:
+  - actor_ref: provider
     category: supported_operator
+  targets: []
   action: "give a requesting competent authority access to applicable Article 12(1) logs under the provider\u2019\
     s control"
   norm_text: Upon a reasoned request by a competent authority, providers shall also give the requesting
@@ -85,9 +87,10 @@ norms:
 - norm_id: AIA-NORM-A021-P3-CONFIDENTIALITY
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: competent_authority
+  actors:
+  - actor_ref: competent_authority
     category: public_authority
+  targets: []
   action: treat information obtained under Article 21 according to the Article 78 confidentiality obligations
   norm_text: Any information obtained by a competent authority pursuant to this Article shall be treated
     in accordance with the confidentiality obligations set out in Article 78.

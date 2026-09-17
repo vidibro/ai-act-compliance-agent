@@ -3,9 +3,9 @@ norms:
 - norm_id: AIA-NORM-ANNEX-II-01-TERRORISM
   act_version_date: '2026-07-27'
   kind: applicability
-  subjects:
-  - subject_ref: article_5_remote_biometric_identification_use
-    category: other
+  actors: []
+  targets:
+  - target_ref: article_5_remote_biometric_identification_use
   action: treat terrorism as a qualifying Annex II offence for Article 5(1)(h)(iii)
   norm_text: terrorism
   detection_channels:
@@ -40,9 +40,9 @@ norms:
 - norm_id: AIA-NORM-ANNEX-II-02-HUMAN-TRAFFICKING
   act_version_date: '2026-07-27'
   kind: applicability
-  subjects:
-  - subject_ref: article_5_remote_biometric_identification_use
-    category: other
+  actors: []
+  targets:
+  - target_ref: article_5_remote_biometric_identification_use
   action: treat trafficking in human beings as a qualifying Annex II offence for Article 5(1)(h)(iii)
   norm_text: trafficking in human beings
   detection_channels:
@@ -77,9 +77,9 @@ norms:
 - norm_id: AIA-NORM-ANNEX-II-03-CHILD-SEXUAL-EXPLOITATION
   act_version_date: '2026-07-27'
   kind: applicability
-  subjects:
-  - subject_ref: article_5_remote_biometric_identification_use
-    category: other
+  actors: []
+  targets:
+  - target_ref: article_5_remote_biometric_identification_use
   action: treat sexual exploitation of children and child pornography as a qualifying Annex II offence
     category for Article 5(1)(h)(iii)
   norm_text: sexual exploitation of children, and child pornography
@@ -115,9 +115,9 @@ norms:
 - norm_id: AIA-NORM-ANNEX-II-04-DRUG-TRAFFICKING
   act_version_date: '2026-07-27'
   kind: applicability
-  subjects:
-  - subject_ref: article_5_remote_biometric_identification_use
-    category: other
+  actors: []
+  targets:
+  - target_ref: article_5_remote_biometric_identification_use
   action: treat illicit trafficking in narcotic drugs or psychotropic substances as a qualifying Annex
     II offence for Article 5(1)(h)(iii)
   norm_text: illicit trafficking in narcotic drugs or psychotropic substances
@@ -153,9 +153,9 @@ norms:
 - norm_id: AIA-NORM-ANNEX-II-05-WEAPONS-TRAFFICKING
   act_version_date: '2026-07-27'
   kind: applicability
-  subjects:
-  - subject_ref: article_5_remote_biometric_identification_use
-    category: other
+  actors: []
+  targets:
+  - target_ref: article_5_remote_biometric_identification_use
   action: treat illicit trafficking in weapons, munitions, or explosives as a qualifying Annex II offence
     for Article 5(1)(h)(iii)
   norm_text: illicit trafficking in weapons, munitions or explosives
@@ -191,9 +191,9 @@ norms:
 - norm_id: AIA-NORM-ANNEX-II-06-MURDER-BODILY-INJURY
   act_version_date: '2026-07-27'
   kind: applicability
-  subjects:
-  - subject_ref: article_5_remote_biometric_identification_use
-    category: other
+  actors: []
+  targets:
+  - target_ref: article_5_remote_biometric_identification_use
   action: treat murder and grievous bodily injury as a qualifying Annex II offence category for Article
     5(1)(h)(iii)
   norm_text: murder, grievous bodily injury
@@ -229,9 +229,9 @@ norms:
 - norm_id: AIA-NORM-ANNEX-II-07-HUMAN-ORGANS
   act_version_date: '2026-07-27'
   kind: applicability
-  subjects:
-  - subject_ref: article_5_remote_biometric_identification_use
-    category: other
+  actors: []
+  targets:
+  - target_ref: article_5_remote_biometric_identification_use
   action: treat illicit trade in human organs or tissue as a qualifying Annex II offence for Article 5(1)(h)(iii)
   norm_text: illicit trade in human organs or tissue
   detection_channels:
@@ -266,9 +266,9 @@ norms:
 - norm_id: AIA-NORM-ANNEX-II-08-NUCLEAR-MATERIALS
   act_version_date: '2026-07-27'
   kind: applicability
-  subjects:
-  - subject_ref: article_5_remote_biometric_identification_use
-    category: other
+  actors: []
+  targets:
+  - target_ref: article_5_remote_biometric_identification_use
   action: treat illicit trafficking in nuclear or radioactive materials as a qualifying Annex II offence
     for Article 5(1)(h)(iii)
   norm_text: illicit trafficking in nuclear or radioactive materials
@@ -304,9 +304,9 @@ norms:
 - norm_id: AIA-NORM-ANNEX-II-09-KIDNAPPING-HOSTAGE-TAKING
   act_version_date: '2026-07-27'
   kind: applicability
-  subjects:
-  - subject_ref: article_5_remote_biometric_identification_use
-    category: other
+  actors: []
+  targets:
+  - target_ref: article_5_remote_biometric_identification_use
   action: treat kidnapping, illegal restraint, or hostage-taking as a qualifying Annex II offence category
     for Article 5(1)(h)(iii)
   norm_text: kidnapping, illegal restraint or hostage-taking
@@ -342,9 +342,9 @@ norms:
 - norm_id: AIA-NORM-ANNEX-II-10-ICC-CRIMES
   act_version_date: '2026-07-27'
   kind: applicability
-  subjects:
-  - subject_ref: article_5_remote_biometric_identification_use
-    category: other
+  actors: []
+  targets:
+  - target_ref: article_5_remote_biometric_identification_use
   action: treat crimes within the International Criminal Court's jurisdiction as a qualifying Annex II
     offence category for Article 5(1)(h)(iii)
   norm_text: crimes within the jurisdiction of the International Criminal Court
@@ -380,9 +380,9 @@ norms:
 - norm_id: AIA-NORM-ANNEX-II-11-AIRCRAFT-SHIP-SEIZURE
   act_version_date: '2026-07-27'
   kind: applicability
-  subjects:
-  - subject_ref: article_5_remote_biometric_identification_use
-    category: other
+  actors: []
+  targets:
+  - target_ref: article_5_remote_biometric_identification_use
   action: treat unlawful seizure of aircraft or ships as a qualifying Annex II offence for Article 5(1)(h)(iii)
   norm_text: unlawful seizure of aircraft or ships
   detection_channels:
@@ -417,9 +417,9 @@ norms:
 - norm_id: AIA-NORM-ANNEX-II-12-RAPE
   act_version_date: '2026-07-27'
   kind: applicability
-  subjects:
-  - subject_ref: article_5_remote_biometric_identification_use
-    category: other
+  actors: []
+  targets:
+  - target_ref: article_5_remote_biometric_identification_use
   action: treat rape as a qualifying Annex II offence for Article 5(1)(h)(iii)
   norm_text: rape
   detection_channels:
@@ -454,9 +454,9 @@ norms:
 - norm_id: AIA-NORM-ANNEX-II-13-ENVIRONMENTAL-CRIME
   act_version_date: '2026-07-27'
   kind: applicability
-  subjects:
-  - subject_ref: article_5_remote_biometric_identification_use
-    category: other
+  actors: []
+  targets:
+  - target_ref: article_5_remote_biometric_identification_use
   action: treat environmental crime as a qualifying Annex II offence for Article 5(1)(h)(iii)
   norm_text: environmental crime
   detection_channels:
@@ -491,9 +491,9 @@ norms:
 - norm_id: AIA-NORM-ANNEX-II-14-ROBBERY
   act_version_date: '2026-07-27'
   kind: applicability
-  subjects:
-  - subject_ref: article_5_remote_biometric_identification_use
-    category: other
+  actors: []
+  targets:
+  - target_ref: article_5_remote_biometric_identification_use
   action: treat organised or armed robbery as a qualifying Annex II offence category for Article 5(1)(h)(iii)
   norm_text: organised or armed robbery
   detection_channels:
@@ -528,9 +528,9 @@ norms:
 - norm_id: AIA-NORM-ANNEX-II-15-SABOTAGE
   act_version_date: '2026-07-27'
   kind: applicability
-  subjects:
-  - subject_ref: article_5_remote_biometric_identification_use
-    category: other
+  actors: []
+  targets:
+  - target_ref: article_5_remote_biometric_identification_use
   action: treat sabotage as a qualifying Annex II offence for Article 5(1)(h)(iii)
   norm_text: sabotage
   detection_channels:
@@ -565,9 +565,9 @@ norms:
 - norm_id: AIA-NORM-ANNEX-II-16-CRIMINAL-ORGANISATION
   act_version_date: '2026-07-27'
   kind: applicability
-  subjects:
-  - subject_ref: article_5_remote_biometric_identification_use
-    category: other
+  actors: []
+  targets:
+  - target_ref: article_5_remote_biometric_identification_use
   action: treat participation in a criminal organisation involved in one or more other Annex II offences
     as a qualifying offence for Article 5(1)(h)(iii)
   norm_text: participation in a criminal organisation involved in one or more of the offences listed above

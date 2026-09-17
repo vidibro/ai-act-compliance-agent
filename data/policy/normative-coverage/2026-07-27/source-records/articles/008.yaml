@@ -6,8 +6,10 @@ records:
     technologies.
   action: ensure high-risk AI systems comply with the Section 2 requirements while considering intended
     purpose and the generally acknowledged state of the art
-  subject_ref: provider
-  subject_category: supported_operator
+  actors:
+  - actor_ref: provider
+    category: supported_operator
+  targets: []
   kind: obligation
   implementation_mode: carried_by_other_norm
   implementation_reason: The Article 16(a) provider duty states the same Section 2 compliance requirement
@@ -20,8 +22,10 @@ records:
     compliance with those requirements.
   action: take the Article 9 risk-management system into account when ensuring compliance with the Section
     2 requirements
-  subject_ref: provider
-  subject_category: supported_operator
+  actors:
+  - actor_ref: provider
+    category: supported_operator
+  targets: []
   kind: obligation
   implementation_refs:
   - AIA-HR-A09
@@ -35,8 +39,10 @@ records:
     under applicable Union harmonisation legislation.
   action: ensure a product containing an AI system fully complies with every applicable requirement under
     the relevant Union harmonisation legislation
-  subject_ref: provider
-  subject_category: supported_operator
+  actors:
+  - actor_ref: provider
+    category: supported_operator
+  targets: []
   kind: obligation
   conditions:
   - the product contains an AI system to which both this Regulation and Union harmonisation legislation
@@ -56,8 +62,10 @@ records:
     in Section A of Annex I.
   action: integrate AI testing, reporting, information, and documentation into existing product documentation
     and procedures required by Annex I Section A legislation
-  subject_ref: provider
-  subject_category: supported_operator
+  actors:
+  - actor_ref: provider
+    category: supported_operator
+  targets: []
   kind: permission
   conditions:
   - the product contains an AI system to which both this Regulation and Union harmonisation legislation

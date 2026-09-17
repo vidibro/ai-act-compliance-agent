@@ -3,8 +3,10 @@ records:
   source: ANNEX-IV-CHAPEAU
   quote: shall contain at least the following information
   action: include all nine applicable Annex IV information groups in technical documentation
-  subject_ref: provider
-  subject_category: supported_operator
+  actors:
+  - actor_ref: provider
+    category: supported_operator
+  targets: []
   implementation_mode: carried_by_other_norm
   implementation_reason: Carried by the Article 11(1) technical-documentation norm.
   verification_mode: judged_by_gap_analysis

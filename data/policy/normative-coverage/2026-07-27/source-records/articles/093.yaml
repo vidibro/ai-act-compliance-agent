@@ -4,8 +4,10 @@ records:
   quote: Where necessary and appropriate, the Commission may request providers to
   action: request necessary appropriate compliance mitigation or market-restriction measures from GPAI
     providers
-  subject_ref: commission
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: commission
+    category: union_institution_or_body
+  targets: []
   kind: power
   mandatory_content: []
   qualifier_spans:
@@ -33,8 +35,10 @@ records:
   quote: Before a measure is requested, the AI Office may initiate a structured dialogue with the provider
     of the general-purpose AI model.
   action: initiate structured dialogue with the GPAI provider before requesting a measure
-  subject_ref: ai_office
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: ai_office
+    category: union_institution_or_body
+  targets: []
   kind: power
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -49,8 +53,10 @@ records:
     there are no further grounds for action.
   action: make offered systemic-risk mitigation commitments binding and declare no further grounds for
     action
-  subject_ref: commission
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: commission
+    category: union_institution_or_body
+  targets: []
   kind: power
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.

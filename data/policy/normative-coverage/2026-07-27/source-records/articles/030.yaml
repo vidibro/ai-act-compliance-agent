@@ -4,8 +4,10 @@ records:
   quote: Notifying authorities may notify only conformity assessment bodies which have satisfied the requirements
     laid down in Article 31.
   action: notify only conformity-assessment bodies satisfying Article 31
-  subject_ref: notifying_authority
-  subject_category: public_authority
+  actors:
+  - actor_ref: notifying_authority
+    category: public_authority
+  targets: []
   kind: prohibition
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -20,8 +22,10 @@ records:
     body referred to in paragraph 1.
   action: notify the Commission and other Member States of qualifying bodies using Annex XIV classifications
     and the Commission tool
-  subject_ref: notifying_authority
-  subject_category: public_authority
+  actors:
+  - actor_ref: notifying_authority
+    category: public_authority
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -36,8 +40,10 @@ records:
     or moving a code or type of AI system from one category to another.
   action: amend Annex XIV classifications by delegated act in response to technical, knowledge, or scientific
     developments
-  subject_ref: commission
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: commission
+    category: union_institution_or_body
+  targets: []
   kind: power
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -50,8 +56,10 @@ records:
     conformity assessment activities, the conformity assessment module or modules, the types of AI systems
     concerned, and the relevant attestation of competence.
   action: include complete assessment scope and competence information in the body notification
-  subject_ref: notifying_authority
-  subject_category: public_authority
+  actors:
+  - actor_ref: notifying_authority
+    category: public_authority
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -70,8 +78,10 @@ records:
     in place to ensure that that body will be monitored regularly and will continue to satisfy the requirements
     laid down in Article 31.
   action: provide competence and continuing-monitoring evidence for a notification not based on accreditation
-  subject_ref: notifying_authority
-  subject_category: public_authority
+  actors:
+  - actor_ref: notifying_authority
+    category: public_authority
+  targets: []
   conditions:
   - the notification is not based on an Article 29(2) accreditation certificate
   product_scope: outside_supported_actor
@@ -87,8 +97,10 @@ records:
     or within two months of a notification by the notifying authority where it includes documentary evidence
     referred to in Article 29(3).
   action: permit notified-body activities only after the applicable no-objection period expires
-  subject_ref: conformity_assessment_body
-  subject_category: notified_or_conformity_body
+  actors:
+  - actor_ref: conformity_assessment_body
+    category: notified_or_conformity_body
+  targets: []
   kind: permission
   conditions:
   - no Commission or Member-State objection within two weeks for an accredited notification or two months
@@ -103,8 +115,10 @@ records:
   quote: Where objections are raised, the Commission shall, without delay, enter into consultations with
     the relevant Member States and the conformity assessment body.
   action: promptly consult the relevant Member States and conformity body when objections arise
-  subject_ref: commission
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: commission
+    category: union_institution_or_body
+  targets: []
   conditions: &id001
   - objections are raised to the notification
   product_scope: outside_supported_actor
@@ -116,8 +130,10 @@ records:
   source: A030-P006
   quote: In view thereof, the Commission shall decide whether the authorisation is justified.
   action: decide whether the disputed authorisation is justified
-  subject_ref: commission
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: commission
+    category: union_institution_or_body
+  targets: []
   conditions: *id001
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -129,8 +145,10 @@ records:
   quote: The Commission shall address its decision to the Member State concerned and to the relevant conformity
     assessment body.
   action: address the authorisation decision to the concerned Member State and conformity body
-  subject_ref: commission
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: commission
+    category: union_institution_or_body
+  targets: []
   conditions: *id001
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.

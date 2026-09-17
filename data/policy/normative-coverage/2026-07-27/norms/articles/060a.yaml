@@ -3,9 +3,10 @@ norms:
 - norm_id: AIA-NORM-A060A-P1-ALLOW-SECTION-B-TESTING
   act_version_date: '2026-07-27'
   kind: power
-  subjects:
-  - subject_ref: member_state
+  actors:
+  - actor_ref: member_state
     category: member_state
+  targets: []
   action: allow Article 60a real-world testing of Section B AI-enabled products to assess Articles 8 to
     15 conformity
   norm_text: Member States may allow, in accordance with this Article, the testing of high-risk AI systems
@@ -41,9 +42,10 @@ norms:
 - norm_id: AIA-NORM-A060A-P2-ADOPT-TESTING-FRAMEWORK
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: member_state
+  actors:
+  - actor_ref: member_state
     category: member_state
+  targets: []
   action: adopt an individual or joint real-world testing framework when allowing Article 60a testing
   norm_text: Member States that choose to allow testing as referred to in paragraph 1 shall, individually
     or jointly, adopt frameworks for real-world testing.
@@ -76,9 +78,10 @@ norms:
 - norm_id: AIA-NORM-A060A-P3-NOTIFY-FRAMEWORK
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: member_state
+  actors:
+  - actor_ref: member_state
     category: member_state
+  targets: []
   action: notify the Commission of an adopted testing framework before implementation
   norm_text: Each Member State shall notify the Commission of any real-world testing framework it adopts
     before implementing it.
@@ -110,9 +113,10 @@ norms:
 - norm_id: AIA-NORM-A060A-P3-PRESERVE-COMMISSION-COMPETENCE
   act_version_date: '2026-07-27'
   kind: legal_consequence
-  subjects:
-  - subject_ref: commission
+  actors:
+  - actor_ref: commission
     category: union_institution_or_body
+  targets: []
   action: preserve Commission competences under Section B harmonisation legislation
   norm_text: This shall not affect the competences of the Commission under the Union harmonisation legislation
     listed in Section B of Annex I.
@@ -145,9 +149,10 @@ norms:
 - norm_id: AIA-NORM-A060A-P4-COOPERATE-AND-REMOVE-OBSTACLES
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: member_state
+  actors:
+  - actor_ref: member_state
     category: member_state
+  targets: []
   action: ensure that the relevant national competent, relevant and infrastructure or product authorities
     cooperate closely with each other in good faith and remove practical obstacles necessary to implement
     real-world testing frameworks and test Section B AI-enabled products
@@ -190,9 +195,10 @@ norms:
 - norm_id: AIA-NORM-A060A-P5-FRAMEWORK-REQUIREMENTS
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: member_state
+  actors:
+  - actor_ref: member_state
     category: member_state
+  targets: []
   action: make every enacted plan compliance governance and protection element part of the real-world
     testing framework
   norm_text: The frameworks for real-world testing shall lay down the requirements under which testing
@@ -234,9 +240,10 @@ norms:
 - norm_id: AIA-NORM-A060A-P5-A-AGREE-TESTING-PLAN
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: provider_or_prospective_provider
+  actors:
+  - actor_ref: provider_or_prospective_provider
     category: supported_operator
+  targets: []
   action: agree a mandatory real-world testing plan with the competent or relevant authority under applicable
     Section B legislation
   norm_text: include the provision of a mandatory real-world testing plan to be agreed between the provider
@@ -269,9 +276,10 @@ norms:
 - norm_id: AIA-NORM-A060A-P5-B-COMPLY-WITH-INCORPORATED-SAFEGUARDS
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: provider_or_prospective_provider
+  actors:
+  - actor_ref: provider_or_prospective_provider
     category: supported_operator
+  targets: []
   action: comply with the incorporated Article 60 testing safeguards using the competent-authority substitution
     required by Section B legislation
   norm_text: ensure compliance with the requirements laid down in Article 60(2), (3), (4)(d)-(j) and (5)-(9),
@@ -306,9 +314,10 @@ norms:
 - norm_id: AIA-NORM-A060A-P6-COMPLY-WITH-SECTORAL-LAW
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: provider_or_prospective_provider
+  actors:
+  - actor_ref: provider_or_prospective_provider
     category: supported_operator
+  targets: []
   action: comply with the applicable provisions of the Section B Union harmonisation legislation when
     conducting the real-world testing
   norm_text: The real-world testing shall comply with the applicable provisions laid down in the Union
@@ -341,9 +350,10 @@ norms:
 - norm_id: AIA-NORM-A060A-P6-SECTORAL-REQUIREMENTS-DO-NOT-OBSTRUCT
   act_version_date: '2026-07-27'
   kind: legal_consequence
-  subjects:
-  - subject_ref: provider_or_prospective_provider
+  actors:
+  - actor_ref: provider_or_prospective_provider
     category: supported_operator
+  targets: []
   action: keep the Section B requirements from affecting the application of Article 60a to the extent
     necessary to enable the paragraph 1 testing
   norm_text: Any requirements laid down in those provisions shall not affect the application of this Article

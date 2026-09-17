@@ -3,8 +3,10 @@ records:
   source: A109-P002
   quote: the requirements set out in Chapter III, Section 2, of that Regulation shall be taken into account
   action: account for AI Act Chapter III Section 2 when adopting vehicle safety-component AI implementing acts
-  subject_ref: commission
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: commission
+    category: union_institution_or_body
+  targets: []
   qualifier_spans: [A109-P001]
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.

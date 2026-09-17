@@ -3,9 +3,10 @@ norms:
 - norm_id: AIA-NORM-A083-P1-REQUIRE-END-TO-FORMAL-NONCOMPLIANCE
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: market_surveillance_authority
+  actors:
+  - actor_ref: market_surveillance_authority
     category: public_authority
+  targets: []
   action: require the provider to end identified formal non-compliance within a prescribed period
   norm_text: Where the market surveillance authority of a Member State makes one of the following findings,
     it shall require the relevant provider to put an end to the non-compliance concerned, within a period
@@ -57,9 +58,10 @@ norms:
 - norm_id: AIA-NORM-A083-P2-RESTRICT-PERSISTENT-NONCOMPLIANCE
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: market_surveillance_authority
+  actors:
+  - actor_ref: market_surveillance_authority
     category: public_authority
+  targets: []
   action: take proportionate restriction prohibition recall or withdrawal measures without delay when
     formal non-compliance persists
   norm_text: Where the non-compliance referred to in paragraph 1 persists, the market surveillance authority

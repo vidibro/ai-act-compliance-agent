@@ -3,9 +3,10 @@ norms:
 - norm_id: AIA-NORM-A010-P1-QUALIFY-DATASETS
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: provider
+  actors:
+  - actor_ref: provider
     category: supported_operator
+  targets: []
   action: develop data-trained high-risk AI systems using training, validation, and testing datasets that
     meet the Article 10(2) to (4) and Article 4a(1) quality criteria
   norm_text: High-risk AI systems which make use of techniques involving the training of AI models with
@@ -42,9 +43,10 @@ norms:
 - norm_id: AIA-NORM-A010-P2-GOVERN-DATASETS
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: provider
+  actors:
+  - actor_ref: provider
     category: supported_operator
+  targets: []
   action: apply data-governance and management practices appropriate to the intended purpose to training,
     validation, and testing datasets
   norm_text: Training, validation and testing data sets shall be subject to data governance and management
@@ -79,9 +81,10 @@ norms:
 - norm_id: AIA-NORM-A010-P2-A-DESIGN-CHOICES
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: provider
+  actors:
+  - actor_ref: provider
     category: supported_operator
+  targets: []
   action: address relevant design choices in dataset governance and management practices
   norm_text: the relevant design choices
   detection_channels:
@@ -115,9 +118,10 @@ norms:
 - norm_id: AIA-NORM-A010-P2-B-COLLECTION-ORIGIN
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: provider
+  actors:
+  - actor_ref: provider
     category: supported_operator
+  targets: []
   action: address data-collection processes, data origin, and the original collection purpose of personal
     data
   norm_text: data collection processes and the origin of data, and in the case of personal data, the original
@@ -153,9 +157,10 @@ norms:
 - norm_id: AIA-NORM-A010-P2-C-DATA-PREPARATION
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: provider
+  actors:
+  - actor_ref: provider
     category: supported_operator
+  targets: []
   action: address relevant data-preparation operations including annotation, labelling, cleaning, updating,
     enrichment, and aggregation
   norm_text: relevant data-preparation processing operations, such as annotation, labelling, cleaning,
@@ -191,9 +196,10 @@ norms:
 - norm_id: AIA-NORM-A010-P2-D-ASSUMPTIONS
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: provider
+  actors:
+  - actor_ref: provider
     category: supported_operator
+  targets: []
   action: formulate assumptions about what the data are intended to measure and represent
   norm_text: the formulation of assumptions, in particular with respect to the information that the data
     are supposed to measure and represent
@@ -228,9 +234,10 @@ norms:
 - norm_id: AIA-NORM-A010-P2-E-AVAILABILITY-SUITABILITY
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: provider
+  actors:
+  - actor_ref: provider
     category: supported_operator
+  targets: []
   action: assess the availability, quantity, and suitability of the required datasets
   norm_text: an assessment of the availability, quantity and suitability of the data sets that are needed
   detection_channels:
@@ -264,9 +271,10 @@ norms:
 - norm_id: AIA-NORM-A010-P2-F-EXAMINE-BIASES
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: provider
+  actors:
+  - actor_ref: provider
     category: supported_operator
+  targets: []
   action: examine possible biases likely to affect health or safety, negatively affect fundamental rights,
     or cause prohibited discrimination
   norm_text: examination in view of possible biases that are likely to affect the health and safety of
@@ -304,9 +312,10 @@ norms:
 - norm_id: AIA-NORM-A010-P2-G-MITIGATE-BIASES
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: provider
+  actors:
+  - actor_ref: provider
     category: supported_operator
+  targets: []
   action: adopt appropriate measures to detect, prevent, and mitigate biases identified under Article
     10(2)(f)
   norm_text: appropriate measures to detect, prevent and mitigate possible biases identified according
@@ -342,9 +351,10 @@ norms:
 - norm_id: AIA-NORM-A010-P2-H-DATA-GAPS
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: provider
+  actors:
+  - actor_ref: provider
     category: supported_operator
+  targets: []
   action: identify compliance-blocking data gaps or shortcomings and determine how to address them
   norm_text: the identification of relevant data gaps or shortcomings that prevent compliance with this
     Regulation, and how those gaps and shortcomings can be addressed.
@@ -379,9 +389,10 @@ norms:
 - norm_id: AIA-NORM-A010-P3-DATASET-QUALITY
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: provider
+  actors:
+  - actor_ref: provider
     category: supported_operator
+  targets: []
   action: ensure training, validation, and testing datasets are relevant and sufficiently representative,
     and to the best extent possible free of errors and complete, in view of the intended purpose
   norm_text: Training, validation and testing data sets shall be relevant, sufficiently representative,
@@ -420,9 +431,10 @@ norms:
 - norm_id: AIA-NORM-A010-P3-STATISTICAL-PROPERTIES
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: provider
+  actors:
+  - actor_ref: provider
     category: supported_operator
+  targets: []
   action: ensure datasets have appropriate statistical properties, including for affected persons or groups
     where applicable
   norm_text: They shall have the appropriate statistical properties, including, where applicable, as regards
@@ -457,9 +469,10 @@ norms:
 - norm_id: AIA-NORM-A010-P3-COMBINED-DATASETS
   act_version_date: '2026-07-27'
   kind: permission
-  subjects:
-  - subject_ref: provider
+  actors:
+  - actor_ref: provider
     category: supported_operator
+  targets: []
   action: meet the Article 10(3) dataset characteristics at the individual-dataset level or across a combination
     of datasets
   norm_text: Those characteristics of the data sets may be met at the level of individual data sets or
@@ -494,9 +507,10 @@ norms:
 - norm_id: AIA-NORM-A010-P4-INTENDED-SETTING
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: provider
+  actors:
+  - actor_ref: provider
     category: supported_operator
+  targets: []
   action: account for geographical, contextual, behavioural, and functional characteristics of the intended-use
     setting to the extent required by the intended purpose
   norm_text: Data sets shall take into account, to the extent required by the intended purpose, the characteristics
@@ -532,9 +546,10 @@ norms:
 - norm_id: AIA-NORM-A010-P5-SPECIAL-CATEGORY-PROCESSING
   act_version_date: '2026-07-27'
   kind: permission
-  subjects:
-  - subject_ref: provider
+  actors:
+  - actor_ref: provider
     category: supported_operator
+  targets: []
   action: exceptionally process special-category personal data where strictly necessary for bias detection
     and correction in high-risk AI systems
   norm_text: To the extent that it is strictly necessary for the purpose of ensuring bias detection and
@@ -582,9 +597,10 @@ norms:
 - norm_id: AIA-NORM-A010-P5-B-REUSE-SECURITY
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: provider
+  actors:
+  - actor_ref: provider
     category: supported_operator
+  targets: []
   action: apply technical reuse limitations and state-of-the-art security and privacy-preserving measures,
     including pseudonymisation
   norm_text: the special categories of personal data are subject to technical limitations on the re-use
@@ -618,9 +634,10 @@ norms:
 - norm_id: AIA-NORM-A010-P5-C-ACCESS-SAFEGUARDS
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: provider
+  actors:
+  - actor_ref: provider
     category: supported_operator
+  targets: []
   action: secure and protect special-category personal data using documented strict access controls, authorised
     access, and confidentiality obligations
   norm_text: the special categories of personal data are subject to measures to ensure that the personal
@@ -656,9 +673,10 @@ norms:
 - norm_id: AIA-NORM-A010-P5-D-NO-THIRD-PARTY-ACCESS
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: provider
+  actors:
+  - actor_ref: provider
     category: supported_operator
+  targets: []
   action: prevent special-category personal data from being transmitted, transferred, or otherwise accessed
     by other parties
   norm_text: the special categories of personal data are not to be transmitted, transferred or otherwise
@@ -692,9 +710,10 @@ norms:
 - norm_id: AIA-NORM-A010-P5-E-DELETE-DATA
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: provider
+  actors:
+  - actor_ref: provider
     category: supported_operator
+  targets: []
   action: delete special-category personal data when bias is corrected or the retention period ends, whichever
     occurs first
   norm_text: the special categories of personal data are deleted once the bias has been corrected or the
@@ -728,9 +747,10 @@ norms:
 - norm_id: AIA-NORM-A010-P5-F-RECORD-NECESSITY
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: provider
+  actors:
+  - actor_ref: provider
     category: supported_operator
+  targets: []
   action: record why special-category processing was strictly necessary for bias detection and correction
     and why other data could not achieve that objective
   norm_text: the records of processing activities pursuant to Regulations (EU) 2016/679 and (EU) 2018/1725
@@ -766,9 +786,10 @@ norms:
 - norm_id: AIA-NORM-A010-P6-TESTING-DATA-ONLY
   act_version_date: '2026-07-27'
   kind: applicability
-  subjects:
-  - subject_ref: provider
+  actors:
+  - actor_ref: provider
     category: supported_operator
+  targets: []
   action: limit the Article 10(2) to (4) and Article 4a(1) requirements to testing datasets for high-risk
     systems developed without model-training techniques
   norm_text: For the development of high-risk AI systems not using techniques involving the training of

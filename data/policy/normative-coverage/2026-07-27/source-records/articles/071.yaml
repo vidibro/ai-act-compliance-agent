@@ -4,8 +4,10 @@ records:
   quote: The Commission shall, in collaboration with the Member States, set up and maintain an EU database containing information referred to in paragraphs 2 and 3 of this Article concerning high-risk AI systems referred to in Article 6(2) which are registered in accordance with Articles 49 and 60 and AI systems that are not considered as high-risk pursuant to Article 6(3) and which are registered in accordance with Article 6(4) and Article 49.
   action: set up and maintain the EU database, in collaboration with the Member States, containing the
     paragraph 2 and 3 information on the enacted registered systems
-  subject_ref: commission
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: commission
+    category: union_institution_or_body
+  targets: []
   mandatory_content:
   - Article 6(2) high-risk AI systems registered in accordance with Articles 49 and 60
   - Article 6(3) systems not considered high-risk, registered in accordance with Article 6(4) and
@@ -19,8 +21,10 @@ records:
   source: A071-P001
   quote: When setting the functional specifications of such database, the Commission shall consult the relevant experts
   action: consult the relevant experts when setting the database's functional specifications
-  subject_ref: commission
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: commission
+    category: union_institution_or_body
+  targets: []
   conditions:
   - the Commission is setting the functional specifications of the database
   product_scope: outside_supported_actor
@@ -32,8 +36,10 @@ records:
   source: A071-P001
   quote: when updating the functional specifications of such database, the Commission shall consult the Board.
   action: consult the Board when updating the database's functional specifications
-  subject_ref: commission
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: commission
+    category: union_institution_or_body
+  targets: []
   conditions:
   - the Commission is updating the functional specifications of the database
   product_scope: outside_supported_actor
@@ -45,8 +51,10 @@ records:
   source: A071-P002
   quote: The data listed in Sections A and B of Annex VIII shall be entered into the EU database by the provider or, where applicable, by the authorised representative.
   action: enter the applicable Annex VIII Sections A and B data into the EU database
-  subject_ref: provider
-  subject_category: supported_operator
+  actors:
+  - actor_ref: provider
+    category: supported_operator
+  targets: []
   implementation_refs:
   - AIA-PO-A71-2
   verification_mode: reported_not_judged
@@ -55,8 +63,10 @@ records:
   source: A071-P002
   quote: The data listed in Sections A and B of Annex VIII shall be entered into the EU database by the provider or, where applicable, by the authorised representative.
   action: enter the applicable Annex VIII Sections A and B data into the EU database where registration falls to the representative
-  subject_ref: authorised_representative
-  subject_category: supported_operator
+  actors:
+  - actor_ref: authorised_representative
+    category: supported_operator
+  targets: []
   conditions: [the authorised representative is applicable for the data entry]
   implementation_refs:
   - AIA-PO-A71-2
@@ -66,8 +76,10 @@ records:
   source: A071-P003
   quote: The data listed in Section C of Annex VIII shall be entered into the EU database by the deployer who is, or who acts on behalf of, a public authority, agency or body, in accordance with Article 49(3) and (4).
   action: enter Annex VIII Section C data into the EU database under Article 49(3) and (4)
-  subject_ref: public_authority_deployer
-  subject_category: supported_operator
+  actors:
+  - actor_ref: public_authority_deployer
+    category: supported_operator
+  targets: []
   conditions: [the deployer is or acts for a public authority agency or body]
   implementation_refs:
   - AIA-DP-A71-3
@@ -78,8 +90,10 @@ records:
   quote: With the exception of the section referred to in Article 49(4) and Article 60(4), point (c), the information contained in the EU database registered in accordance with Article 49 shall be accessible and publicly available in a user-friendly manner.
   action: keep the information registered under Article 49 accessible and publicly available in a
     user-friendly manner
-  subject_ref: commission
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: commission
+    category: union_institution_or_body
+  targets: []
   exceptions:
   - the section referred to in Article 49(4)
   - the section referred to in Article 60(4), point (c)
@@ -92,8 +106,10 @@ records:
   source: A071-P004
   quote: The information should be easily navigable and machine-readable.
   action: the information should be easily navigable and machine-readable
-  subject_ref: commission
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: commission
+    category: union_institution_or_body
+  targets: []
   kind: legal_consequence
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -105,8 +121,10 @@ records:
   quote: The information registered in accordance with Article 60 shall be accessible only to market surveillance authorities and the Commission, unless the prospective provider or provider has given consent for also making the information accessible the public.
   action: keep the information registered under Article 60 accessible only to market surveillance
     authorities and the Commission
-  subject_ref: commission
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: commission
+    category: union_institution_or_body
+  targets: []
   exceptions:
   - the prospective provider or provider has given consent for also making the information accessible
     the public
@@ -119,8 +137,10 @@ records:
   source: A071-P005
   quote: The EU database shall contain personal data only in so far as necessary for collecting and processing information in accordance with this Regulation. That information shall include the names and contact details of natural persons who are responsible for registering the system and have the legal authority to represent the provider or the deployer, as applicable.
   action: limit database personal data to what Regulation processing requires while including authorised registrant names and contacts
-  subject_ref: commission
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: commission
+    category: union_institution_or_body
+  targets: []
   mandatory_content: [necessity-limited personal data, names and contact details of legally authorised natural-person registrants]
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -131,8 +151,10 @@ records:
   source: A071-P006
   quote: The Commission shall be the controller of the EU database.
   action: be the controller of the EU database
-  subject_ref: commission
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: commission
+    category: union_institution_or_body
+  targets: []
   kind: legal_consequence
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -144,8 +166,10 @@ records:
   quote: It shall make available to providers, prospective providers and deployers adequate technical and administrative support.
   action: make adequate technical and administrative support available to providers, prospective
     providers and deployers
-  subject_ref: commission
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: commission
+    category: union_institution_or_body
+  targets: []
   mandatory_content: [adequate technical support, adequate administrative support]
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -156,8 +180,10 @@ records:
   source: A071-P006
   quote: The EU database shall comply with the applicable accessibility requirements.
   action: ensure the EU database complies with applicable accessibility requirements
-  subject_ref: commission
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: commission
+    category: union_institution_or_body
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required

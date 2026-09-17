@@ -3,9 +3,10 @@ norms:
 - norm_id: AIA-NORM-A072-P1-ESTABLISH-AND-DOCUMENT-MONITORING
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: provider
+  actors:
+  - actor_ref: provider
     category: supported_operator
+  targets: []
   action: establish and document a risk-proportionate post-market monitoring system
   norm_text: Providers shall establish and document a post-market monitoring system in a manner that is
     proportionate to the nature of the AI technologies and the risks of the high-risk AI system.
@@ -39,9 +40,10 @@ norms:
 - norm_id: AIA-NORM-A072-P2-OPERATE-LIFETIME-MONITORING
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: provider
+  actors:
+  - actor_ref: provider
     category: supported_operator
+  targets: []
   action: actively collect document and analyse lifetime performance and interaction data to evaluate
     continuous compliance while excluding protected law-enforcement data
   norm_text: The post-market monitoring system shall actively and systematically collect, document and
@@ -86,9 +88,10 @@ norms:
 - norm_id: AIA-NORM-A072-P3-PLAN-AND-TECHNICAL-DOCUMENTATION
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: provider
+  actors:
+  - actor_ref: provider
     category: supported_operator
+  targets: []
   action: base the post-market monitoring system on a post-market monitoring plan
   norm_text: The post-market monitoring system shall be based on a post-market monitoring plan.
   detection_channels:
@@ -121,9 +124,10 @@ norms:
 - norm_id: AIA-NORM-A072-P3-PLAN-IN-TECHNICAL-DOCUMENTATION
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: provider
+  actors:
+  - actor_ref: provider
     category: supported_operator
+  targets: []
   action: include the post-market monitoring plan in the technical documentation referred to in Annex
     IV
   norm_text: The post-market monitoring plan shall be part of the technical documentation referred to
@@ -158,9 +162,10 @@ norms:
 - norm_id: AIA-NORM-A072-P3-COMMISSION-PLAN-GUIDANCE
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: commission
+  actors:
+  - actor_ref: commission
     category: union_institution_or_body
+  targets: []
   action: adopt Board-informed plan guidance and a template by 2 September 2027
   norm_text: The Commission, taking utmost account of the opinion of the Board, shall adopt guidance,
     including a template, on the post-market monitoring plan by 2 September 2027.
@@ -192,9 +197,10 @@ norms:
 - norm_id: AIA-NORM-A072-P4-INTEGRATE-EXISTING-MONITORING
   act_version_date: '2026-07-27'
   kind: permission
-  subjects:
-  - subject_ref: provider
+  actors:
+  - actor_ref: provider
     category: supported_operator
+  targets: []
   action: integrate Article 72 elements into an existing sectoral monitoring system and plan where equivalent
     protection is achieved
   norm_text: For high-risk AI systems covered by the Union harmonisation legislation listed in Section

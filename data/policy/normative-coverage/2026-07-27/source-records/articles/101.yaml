@@ -6,8 +6,10 @@ records:
     higher., when the Commission finds that the provider intentionally or negligently
   action: fine a GPAI provider up to 3 % of preceding-year worldwide annual turnover or EUR 15 000 000,
     whichever is higher, for intentional or negligent listed conduct
-  subject_ref: commission
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: commission
+    category: union_institution_or_body
+  targets: []
   kind: power
   mandatory_content: []
   qualifier_spans:
@@ -36,8 +38,10 @@ records:
     and appropriateness. The Commission shall also into account commitments made in accordance with Article
     93(3) or made in relevant codes of practice in accordance with Article 56.
   action: fix the amount of the fine or periodic penalty payment having regard to every enacted factor
-  subject_ref: commission
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: commission
+    category: union_institution_or_body
+  targets: []
   mandatory_content:
   - the nature, gravity and duration of the infringement
   - due account of the principles of proportionality and appropriateness
@@ -54,8 +58,10 @@ records:
     findings to the provider of the general-purpose AI model and give it an opportunity to be heard.
   action: communicate preliminary findings and give the GPAI provider an opportunity to be heard before
     a fine decision
-  subject_ref: commission
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: commission
+    category: union_institution_or_body
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -67,8 +73,10 @@ records:
   source: A101-P008
   quote: Fines imposed in accordance with this Article shall be effective, proportionate and dissuasive
   action: ensure Article 101 fines are effective proportionate and dissuasive
-  subject_ref: commission
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: commission
+    category: union_institution_or_body
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -78,8 +86,10 @@ records:
   source: A101-P009
   quote: Information on fines imposed under this Article shall also be communicated to the Board as appropriate
   action: communicate information on Article 101 fines to the Board as appropriate
-  subject_ref: commission
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: commission
+    category: union_institution_or_body
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -90,8 +100,10 @@ records:
   quote: The Court of Justice of the European Union shall have unlimited jurisdiction to review decisions
     of the Commission fixing a fine under this Article. It may cancel, reduce or increase the fine imposed.
   action: review and cancel reduce or increase Commission fines with unlimited jurisdiction
-  subject_ref: court_of_justice_of_the_european_union
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: court_of_justice_of_the_european_union
+    category: union_institution_or_body
+  targets: []
   kind: power
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -106,8 +118,10 @@ records:
     referred to in Article 98(2).
   action: adopt implementing acts establishing arrangements and safeguards for Article 101 fine proceedings
     through the Article 98(2) examination procedure
-  subject_ref: commission
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: commission
+    category: union_institution_or_body
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required

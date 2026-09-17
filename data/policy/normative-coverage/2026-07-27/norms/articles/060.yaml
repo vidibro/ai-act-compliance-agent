@@ -3,9 +3,10 @@ norms:
 - norm_id: AIA-NORM-A060-P1-REAL-WORLD-TESTING-PERMISSION
   act_version_date: '2026-07-27'
   kind: permission
-  subjects:
-  - subject_ref: provider_or_prospective_provider
+  actors:
+  - actor_ref: provider_or_prospective_provider
     category: supported_operator
+  targets: []
   action: conduct eligible high-risk AI testing outside a sandbox under Article 60 and its testing plan
     without infringing Article 5
   norm_text: Testing of high-risk AI systems in real world conditions outside AI regulatory sandboxes
@@ -48,9 +49,10 @@ norms:
 - norm_id: AIA-NORM-A060-P1-COMMISSION-PLAN-ACTS
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: commission
+  actors:
+  - actor_ref: commission
     category: union_institution_or_body
+  targets: []
   action: specify detailed testing-plan elements by implementing acts adopted under the Article 98(2)
     examination procedure
   norm_text: The Commission shall, by means of implementing acts, specify the detailed elements of the
@@ -84,9 +86,10 @@ norms:
 - norm_id: AIA-NORM-A060-P1-PRESERVE-PRODUCT-TESTING-LAW
   act_version_date: '2026-07-27'
   kind: legal_consequence
-  subjects:
-  - subject_ref: provider_or_prospective_provider
+  actors:
+  - actor_ref: provider_or_prospective_provider
     category: supported_operator
+  targets: []
   action: preserve applicable Union and national product testing law
   norm_text: This paragraph shall be without prejudice to Union or national law on the testing in real
     world conditions of high-risk AI systems related to products covered by Union harmonisation legislation
@@ -120,9 +123,10 @@ norms:
 - norm_id: AIA-NORM-A060-P2-PREMARKET-TESTING-PERMISSION
   act_version_date: '2026-07-27'
   kind: permission
-  subjects:
-  - subject_ref: provider_or_prospective_provider
+  actors:
+  - actor_ref: provider_or_prospective_provider
     category: supported_operator
+  targets: []
   action: conduct eligible high-risk system testing before market placement or service alone or with deployers
   norm_text: Providers or prospective providers may conduct testing of high-risk AI systems referred to
     in Annex III or covered by Union harmonisation legislation listed in Section A of Annex I in real
@@ -156,9 +160,10 @@ norms:
 - norm_id: AIA-NORM-A060-P3-PRESERVE-ETHICAL-REVIEW
   act_version_date: '2026-07-27'
   kind: legal_consequence
-  subjects:
-  - subject_ref: provider_or_prospective_provider
+  actors:
+  - actor_ref: provider_or_prospective_provider
     category: supported_operator
+  targets: []
   action: preserve any ethical review required by Union or national law
   norm_text: The testing of high-risk AI systems in real world conditions under this Article shall be
     without prejudice to any ethical review that is required by Union or national law.
@@ -192,9 +197,10 @@ norms:
 - norm_id: AIA-NORM-A060-P4-PERMISSION
   act_version_date: '2026-07-27'
   kind: permission
-  subjects:
-  - subject_ref: provider_or_prospective_provider
+  actors:
+  - actor_ref: provider_or_prospective_provider
     category: supported_operator
+  targets: []
   action: conduct real-world testing only when all eleven conditions are met
   norm_text: Providers or prospective providers may conduct the testing in real world conditions only
     where all of the following conditions are met
@@ -251,9 +257,10 @@ norms:
 - norm_id: AIA-NORM-A060-P4-A-SUBMIT-TESTING-PLAN
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: provider_or_prospective_provider
+  actors:
+  - actor_ref: provider_or_prospective_provider
     category: supported_operator
+  targets: []
   action: draw up the testing plan and submit it to the relevant Member State market surveillance authority
   norm_text: the provider or prospective provider has drawn up a real-world testing plan and submitted
     it to the market surveillance authority in the Member State where the testing in real world conditions
@@ -287,9 +294,10 @@ norms:
 - norm_id: AIA-NORM-A060-P4-B-APPROVAL-AND-TACIT-EFFECT
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: provider_or_prospective_provider
+  actors:
+  - actor_ref: provider_or_prospective_provider
     category: supported_operator
+  targets: []
   action: obtain authority approval or rely on 30-day tacit approval only where national law permits it
   norm_text: the market surveillance authority in the Member State where the testing in real world conditions
     is to be conducted has approved the testing in real world conditions and the real-world testing plan;
@@ -334,9 +342,10 @@ norms:
 - norm_id: AIA-NORM-A060-P4-C-REGISTER-TESTING
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: provider_or_prospective_provider
+  actors:
+  - actor_ref: provider_or_prospective_provider
     category: supported_operator
+  targets: []
   action: register real-world testing through the single registration route that the enacted system classes
     assign, with the identifier and information that route requires
   norm_text: the provider or prospective provider, with the exception of providers or prospective providers
@@ -399,9 +408,10 @@ norms:
 - norm_id: AIA-NORM-A060-P4-D-UNION-ESTABLISHMENT
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: provider_or_prospective_provider
+  actors:
+  - actor_ref: provider_or_prospective_provider
     category: supported_operator
+  targets: []
   action: be Union-established or appoint a Union-established legal representative
   norm_text: the provider or prospective provider conducting the testing in real world conditions is established
     in the Union or has appointed a legal representative who is established in the Union;
@@ -438,9 +448,10 @@ norms:
 - norm_id: AIA-NORM-A060-P4-E-TRANSFER-SAFEGUARDS
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: provider_or_prospective_provider
+  actors:
+  - actor_ref: provider_or_prospective_provider
     category: supported_operator
+  targets: []
   action: transfer testing data to third countries only with appropriate applicable Union-law safeguards
   norm_text: data collected and processed for the purpose of the testing in real world conditions shall
     be transferred to third countries only provided that appropriate and applicable safeguards under Union
@@ -475,9 +486,10 @@ norms:
 - norm_id: AIA-NORM-A060-P4-F-DURATION-LIMIT
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: provider_or_prospective_provider
+  actors:
+  - actor_ref: provider_or_prospective_provider
     category: supported_operator
+  targets: []
   action: limit testing to the time necessary for its objectives and at most six months absent a valid
     extension
   norm_text: the testing in real world conditions does not last longer than necessary to achieve its objectives
@@ -511,9 +523,10 @@ norms:
 - norm_id: AIA-NORM-A060-P4-EXTEND
   act_version_date: '2026-07-27'
   kind: permission
-  subjects:
-  - subject_ref: provider_or_prospective_provider
+  actors:
+  - actor_ref: provider_or_prospective_provider
     category: supported_operator
+  targets: []
   action: extend testing once for six months after prior notice and explanation
   norm_text: may be extended for an additional period of six months, subject to prior notification by
     the provider or prospective provider to the market surveillance authority, accompanied by an explanation
@@ -551,9 +564,10 @@ norms:
 - norm_id: AIA-NORM-A060-P4-G-PROTECT-VULNERABLE-SUBJECTS
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: provider_or_prospective_provider
+  actors:
+  - actor_ref: provider_or_prospective_provider
     category: supported_operator
+  targets: []
   action: appropriately protect testing subjects vulnerable because of age or disability
   norm_text: the subjects of the testing in real world conditions who are persons belonging to vulnerable
     groups due to their age or disability, are appropriately protected;
@@ -586,9 +600,10 @@ norms:
 - norm_id: AIA-NORM-A060-P4-H-INFORM-AND-AGREE-ROLES
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: provider_or_prospective_provider
+  actors:
+  - actor_ref: provider_or_prospective_provider
     category: supported_operator
+  targets: []
   action: inform the participating deployers or prospective deployers of the testing aspects relevant
     to their participation decision and give them the Article 13 instructions for use
   norm_text: where a provider or prospective provider organises the testing in real world conditions in
@@ -630,9 +645,10 @@ norms:
 - norm_id: AIA-NORM-A060-P4-H-CONCLUDE-ROLES-AGREEMENT
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: provider_and_deployer
+  actors:
+  - actor_ref: provider_and_deployer
     category: supported_operator
+  targets: []
   action: conclude an agreement specifying the parties' roles and responsibilities with a view to ensuring
     compliance with the real-world testing provisions of this Regulation and of other applicable Union
     and national law
@@ -674,9 +690,10 @@ norms:
 - norm_id: AIA-NORM-A060-P4-I-CONSENT-OR-SAFEGUARDS
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: provider_or_prospective_provider
+  actors:
+  - actor_ref: provider_or_prospective_provider
     category: supported_operator
+  targets: []
   action: obtain the testing subjects' informed consent in accordance with Article 61
   norm_text: the subjects of the testing in real world conditions have given informed consent in accordance
     with Article 61
@@ -710,9 +727,10 @@ norms:
 - norm_id: AIA-NORM-A060-P4-I-NO-NEGATIVE-EFFECT
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: provider_or_prospective_provider
+  actors:
+  - actor_ref: provider_or_prospective_provider
     category: supported_operator
+  targets: []
   action: keep the testing itself and its outcome free of any negative effect on the subjects when the
     law-enforcement substitute for informed consent applies
   norm_text: in the case of law enforcement, where the seeking of informed consent would prevent the AI
@@ -750,9 +768,10 @@ norms:
 - norm_id: AIA-NORM-A060-P4-I-DELETE-SUBJECT-DATA
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: provider_or_prospective_provider
+  actors:
+  - actor_ref: provider_or_prospective_provider
     category: supported_operator
+  targets: []
   action: delete the subjects' personal data after the test is performed when the law-enforcement substitute
     for informed consent applies
   norm_text: their personal data shall be deleted after the test is performed;
@@ -788,9 +807,10 @@ norms:
 - norm_id: AIA-NORM-A060-P4-J-QUALIFIED-OVERSIGHT
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: provider_and_deployer
+  actors:
+  - actor_ref: provider_and_deployer
     category: supported_operator
+  targets: []
   action: ensure effective testing oversight by qualified persons with necessary capacity training and
     authority
   norm_text: the testing in real world conditions is effectively overseen by the provider or prospective
@@ -825,9 +845,10 @@ norms:
 - norm_id: AIA-NORM-A060-P4-K-REVERSIBLE-OUTPUTS
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: provider_or_prospective_provider
+  actors:
+  - actor_ref: provider_or_prospective_provider
     category: supported_operator
+  targets: []
   action: ensure system predictions recommendations and decisions can be effectively reversed and disregarded
   norm_text: the predictions, recommendations or decisions of the AI system can be effectively reversed
     and disregarded.
@@ -860,9 +881,10 @@ norms:
 - norm_id: AIA-NORM-A060-P5-WITHDRAW-AND-DELETE
   act_version_date: '2026-07-27'
   kind: entitlement
-  subjects:
-  - subject_ref: testing_subject_or_representative
+  actors:
+  - actor_ref: testing_subject_or_representative
     category: natural_person
+  targets: []
   action: withdraw from the testing at any time by revoking informed consent, without any resulting detriment
     and without having to provide any justification, and request immediate and permanent deletion of the
     subject's personal data
@@ -900,9 +922,10 @@ norms:
 - norm_id: AIA-NORM-A060-P5-PRIOR-ACTIVITIES-UNAFFECTED
   act_version_date: '2026-07-27'
   kind: legal_consequence
-  subjects:
-  - subject_ref: provider_or_prospective_provider
+  actors:
+  - actor_ref: provider_or_prospective_provider
     category: supported_operator
+  targets: []
   action: preserve activities completed before consent withdrawal
   norm_text: The withdrawal of the informed consent shall not affect the activities already carried out.
   detection_channels:
@@ -934,9 +957,10 @@ norms:
 - norm_id: AIA-NORM-A060-P6-CONFER-AND-USE-SURVEILLANCE-POWERS
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: member_state
+  actors:
+  - actor_ref: member_state
     category: member_state
+  targets: []
   action: confer the enacted real-world testing supervision powers on the national market surveillance
     authorities in accordance with Article 75
   norm_text: In accordance with Article 75, Member States shall confer on their market surveillance authorities
@@ -975,9 +999,10 @@ norms:
 - norm_id: AIA-NORM-A060-P6-USE-SURVEILLANCE-POWERS
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: market_surveillance_authority
+  actors:
+  - actor_ref: market_surveillance_authority
     category: public_authority
+  targets: []
   action: use the conferred information, inspection and check powers to ensure the safe development of
     testing in real world conditions
   norm_text: Market surveillance authorities shall use those powers to ensure the safe development of
@@ -1010,9 +1035,10 @@ norms:
 - norm_id: AIA-NORM-A060-P7-INCIDENT-RESPONSE
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: provider_or_prospective_provider
+  actors:
+  - actor_ref: provider_or_prospective_provider
     category: supported_operator
+  targets: []
   action: report the serious incident to the national market surveillance authority in accordance with
     Article 73
   norm_text: Any serious incident identified in the course of the testing in real world conditions shall
@@ -1046,9 +1072,10 @@ norms:
 - norm_id: AIA-NORM-A060-P7-IMMEDIATE-MITIGATION
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: provider_or_prospective_provider
+  actors:
+  - actor_ref: provider_or_prospective_provider
     category: supported_operator
+  targets: []
   action: adopt immediate mitigation measures for the serious incident or, failing that, suspend testing
     until mitigation takes place or terminate it
   norm_text: The provider or prospective provider shall adopt immediate mitigation measures or, failing
@@ -1086,9 +1113,10 @@ norms:
 - norm_id: AIA-NORM-A060-P7-RECALL-PROCEDURE
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: provider_or_prospective_provider
+  actors:
+  - actor_ref: provider_or_prospective_provider
     category: supported_operator
+  targets: []
   action: establish a procedure for the prompt recall of the AI system upon such termination of the testing
     in real world conditions
   norm_text: The provider or prospective provider shall establish a procedure for the prompt recall of
@@ -1121,9 +1149,10 @@ norms:
 - norm_id: AIA-NORM-A060-P8-NOTIFY-OUTCOMES
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: provider_or_prospective_provider
+  actors:
+  - actor_ref: provider_or_prospective_provider
     category: supported_operator
+  targets: []
   action: notify the relevant authority of testing suspension or termination and final outcomes
   norm_text: Providers or prospective providers shall notify the national market surveillance authority
     in the Member State where the testing in real world conditions is to be conducted of the suspension
@@ -1156,9 +1185,10 @@ norms:
 - norm_id: AIA-NORM-A060-P9-TESTING-LIABILITY
   act_version_date: '2026-07-27'
   kind: legal_consequence
-  subjects:
-  - subject_ref: provider_or_prospective_provider
+  actors:
+  - actor_ref: provider_or_prospective_provider
     category: supported_operator
+  targets: []
   action: bear liability under applicable law for damage caused during real-world testing
   norm_text: The provider or prospective provider shall be liable under applicable Union and national
     liability law for any damage caused in the course of their testing in real world conditions.

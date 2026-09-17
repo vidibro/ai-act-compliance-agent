@@ -5,8 +5,10 @@ records:
     of the model
   action: include all applicable Annex XI Section 1 information in the general-purpose AI model technical
     documentation, proportionate to model size and risk profile
-  subject_ref: provider
-  subject_category: supported_operator
+  actors:
+  - actor_ref: provider
+    category: supported_operator
+  targets: []
   implementation_mode: carried_by_other_norm
   implementation_reason: Carried by the Article 53(1)(a) Annex XI content norm.
   verification_mode: judged_by_gap_analysis
@@ -47,8 +49,10 @@ records:
   quote: With regard to point (e), where the energy consumption of the model is unknown, the energy consumption
     may be based on information about computational resources used.
   action: base unknown model energy consumption on information about computational resources used
-  subject_ref: provider
-  subject_category: supported_operator
+  actors:
+  - actor_ref: provider
+    category: supported_operator
+  targets: []
   kind: permission
   conditions:
   - the model's energy consumption is unknown
@@ -66,8 +70,10 @@ records:
     of limitations.
   action: include a detailed description of the evaluation strategies, with their results, in the technical
     documentation for a general-purpose AI model with systemic risk
-  subject_ref: provider
-  subject_category: supported_operator
+  actors:
+  - actor_ref: provider
+    category: supported_operator
+  targets: []
   implementation_mode: carried_by_other_norm
   implementation_reason: Carried by the Article 53(1)(a) Annex XI content norm.
   verification_mode: judged_by_gap_analysis
@@ -93,8 +99,10 @@ records:
     and fine-tuning.
   action: include a detailed description of the adversarial-testing measures and the model adaptations
     in the technical documentation for a general-purpose AI model with systemic risk
-  subject_ref: provider
-  subject_category: supported_operator
+  actors:
+  - actor_ref: provider
+    category: supported_operator
+  targets: []
   implementation_mode: carried_by_other_norm
   implementation_reason: Carried by the Article 53(1)(a) Annex XI content norm.
   verification_mode: judged_by_gap_analysis
@@ -115,8 +123,10 @@ records:
   action: include a detailed description of the system architecture, explaining how software components
     build or feed into each other and integrate into the overall processing, in the technical documentation
     for a general-purpose AI model with systemic risk
-  subject_ref: provider
-  subject_category: supported_operator
+  actors:
+  - actor_ref: provider
+    category: supported_operator
+  targets: []
   implementation_mode: carried_by_other_norm
   implementation_reason: Carried by the Article 53(1)(a) Annex XI content norm.
   verification_mode: judged_by_gap_analysis

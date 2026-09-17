@@ -4,8 +4,10 @@ records:
   quote: shall, in accordance with Union or national law, respect the confidentiality of information and
     data obtained in carrying out their tasks and activities in such a manner as to protect, in particular
   action: protect confidentiality of task-related information and data under Union or national law
-  subject_ref: persons_involved_in_regulation_application
-  subject_category: other
+  actors:
+  - actor_ref: persons_involved_in_regulation_application
+    category: natural_person
+  targets: []
   mandatory_content:
   - the intellectual property rights and confidential business information or trade secrets of a natural
     or legal person, including source code
@@ -34,8 +36,10 @@ records:
     request only data that is strictly necessary for the assessment of the risk posed by AI systems and
     for the exercise of their powers in accordance with this Regulation and with Regulation (EU) 2019/1020.
   action: request only data strictly necessary for risk assessment and exercise of enacted powers
-  subject_ref: authorities_involved_in_application
-  subject_category: public_authority
+  actors:
+  - actor_ref: authorities_involved_in_application
+    category: public_authority
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -48,8 +52,10 @@ records:
     as it is no longer needed for the purpose for which it was obtained
   action: protect obtained information and data through adequate effective cybersecurity and delete collected
     data as soon as its acquisition purpose no longer requires it
-  subject_ref: authorities_involved_in_application
-  subject_category: public_authority
+  actors:
+  - actor_ref: authorities_involved_in_application
+    category: public_authority
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -68,8 +74,10 @@ records:
     and national security interests.
   action: disclose confidentially exchanged information only after prior consultation of the originating
     national competent authority and the deployer
-  subject_ref: national_competent_authority_and_commission
-  subject_category: public_authority
+  actors:
+  - actor_ref: national_competent_authority_and_commission
+    category: public_authority
+  targets: []
   conditions:
   - the high-risk AI systems referred to in point 1, 6 or 7 of Annex III are used by law enforcement,
     border control, immigration or asylum authorities
@@ -85,8 +93,10 @@ records:
     of law enforcement, border control, immigration or asylum authorities.
   action: exclude sensitive operational data on the activities of law enforcement, border control, immigration
     or asylum authorities from the exchange of information
-  subject_ref: national_competent_authority_and_commission
-  subject_category: public_authority
+  actors:
+  - actor_ref: national_competent_authority_and_commission
+    category: public_authority
+  targets: []
   kind: prohibition
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -99,8 +109,10 @@ records:
     referred to in point 1, 6 or 7 of Annex III, the technical documentation referred to in Annex IV shall
     remain within the premises of those authorities.
   action: keep the Annex IV technical documentation within the premises of the authority
-  subject_ref: law_enforcement_immigration_or_asylum_authority_provider
-  subject_category: supported_operator
+  actors:
+  - actor_ref: law_enforcement_immigration_or_asylum_authority_provider
+    category: supported_operator
+  targets: []
   conditions:
   - the law enforcement, immigration or asylum authority is the provider of a high-risk AI system referred
     to in point 1, 6 or 7 of Annex III
@@ -114,8 +126,10 @@ records:
     copy thereof.
   action: ensure the applicable Article 74(8) and (9) market surveillance authorities can, upon request,
     immediately access the documentation or obtain a copy of it
-  subject_ref: law_enforcement_immigration_or_asylum_authority_provider
-  subject_category: supported_operator
+  actors:
+  - actor_ref: law_enforcement_immigration_or_asylum_authority_provider
+    category: supported_operator
+  targets: []
   conditions:
   - the law enforcement, immigration or asylum authority is the provider of a high-risk AI system referred
     to in point 1, 6 or 7 of Annex III
@@ -130,8 +144,10 @@ records:
     shall be allowed to access that documentation or any copy thereof.
   action: allow only market surveillance authority staff holding the appropriate level of security clearance
     to access the documentation or any copy of it
-  subject_ref: market_surveillance_authority
-  subject_category: public_authority
+  actors:
+  - actor_ref: market_surveillance_authority
+    category: public_authority
+  targets: []
   kind: prohibition
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -147,8 +163,9 @@ records:
     law of the Member States.
   action: preserve information-exchange warning and Member State criminal-law disclosure rights and duties
     despite paragraphs 1 to 3
-  subject_ref: persons_applying_article_78
-  subject_category: other
+  actors: []
+  targets:
+  - target_ref: persons_applying_article_78
   kind: legal_consequence
   product_scope: no_product_action
   product_scope_reason: This saving clause qualifies other duties without creating an independent product
@@ -164,8 +181,12 @@ records:
     guaranteeing an adequate level of confidentiality.
   action: exchange necessary confidential information with third-country regulators under applicable agreements
     and adequate confidentiality arrangements
-  subject_ref: commission_and_member_states
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: commission
+    category: union_institution_or_body
+  - actor_ref: member_state
+    category: member_state
+  targets: []
   kind: power
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.

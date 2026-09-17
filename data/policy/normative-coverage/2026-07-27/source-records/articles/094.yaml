@@ -6,8 +6,10 @@ records:
     Regulation.
   action: apply Regulation 2019/1020 Article 18 procedural rights to GPAI providers with necessary adaptations
     while preserving more specific rights
-  subject_ref: gpai_provider
-  subject_category: supported_operator
+  actors:
+  - actor_ref: gpai_provider
+    category: supported_operator
+  targets: []
   kind: applicability
   product_scope: no_product_action
   product_scope_reason: This grants procedural protection rather than imposing a product compliance action.

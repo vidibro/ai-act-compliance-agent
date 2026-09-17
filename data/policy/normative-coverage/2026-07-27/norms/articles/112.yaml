@@ -3,9 +3,10 @@ norms:
 - norm_id: AIA-NORM-A112-P1-ANNUAL-AMENDMENT-ASSESSMENT
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: commission
+  actors:
+  - actor_ref: commission
     category: union_institution_or_body
+  targets: []
   action: assess annually the need to amend Annex III and Article 5 lists through the Article 97 delegation
     period
   norm_text: The Commission shall assess the need for amendment of the list set out in Annex III and of
@@ -40,9 +41,10 @@ norms:
 - norm_id: AIA-NORM-A112-P1-SUBMIT-ASSESSMENT-FINDINGS
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: commission
+  actors:
+  - actor_ref: commission
     category: union_institution_or_body
+  targets: []
   action: submit the annual Annex III and Article 5 amendment assessment findings to Parliament and Council
   norm_text: The Commission shall submit the findings of that assessment to the European Parliament and
     the Council.
@@ -74,9 +76,10 @@ norms:
 - norm_id: AIA-NORM-A112-P2-FOUR-YEAR-EVALUATION
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: commission
+  actors:
+  - actor_ref: commission
     category: union_institution_or_body
+  targets: []
   action: evaluate and report by 2 August 2028 and every four years on specified Annex III transparency
     and governance amendments
   norm_text: By 2 August 2028 and every four years thereafter, the Commission shall evaluate and report
@@ -116,9 +119,10 @@ norms:
 - norm_id: AIA-NORM-A112-P3-REGULATION-REVIEW-REPORT
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: commission
+  actors:
+  - actor_ref: commission
     category: union_institution_or_body
+  targets: []
   action: submit a public four-year Regulation review report assessing enforcement structure and possible
     need for a Union agency
   norm_text: By 2 August 2029 and every four years thereafter, the Commission shall submit a report on
@@ -153,9 +157,10 @@ norms:
 - norm_id: AIA-NORM-A112-P3-ACCOMPANY-AMENDMENT-PROPOSAL
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: commission
+  actors:
+  - actor_ref: commission
     category: union_institution_or_body
+  targets: []
   action: accompany the review report with an AI Act amendment proposal when its findings make that appropriate
   norm_text: On the basis of the findings, that report shall, where appropriate, be accompanied by a proposal
     for amendment of this Regulation.
@@ -188,9 +193,10 @@ norms:
 - norm_id: AIA-NORM-A112-P3-PUBLISH-REPORTS
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: commission
+  actors:
+  - actor_ref: commission
     category: union_institution_or_body
+  targets: []
   action: make Article 112(3) review reports public
   norm_text: The reports shall be made public
   detection_channels:
@@ -221,9 +227,10 @@ norms:
 - norm_id: AIA-NORM-A112-P4-REPORT-ATTENTION-AREAS
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: commission
+  actors:
+  - actor_ref: commission
     category: union_institution_or_body
+  targets: []
   action: address the specified authority-resource penalty standardisation and market-entry matters in
     paragraph 2 reports
   norm_text: The reports referred to in paragraph 2 shall pay specific attention to the following
@@ -264,9 +271,10 @@ norms:
 - norm_id: AIA-NORM-A112-P5-EVALUATE-AI-OFFICE
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: commission
+  actors:
+  - actor_ref: commission
     category: union_institution_or_body
+  targets: []
   action: evaluate by 2 August 2028 the AI Office's functioning powers competences status and resource
     needs
   norm_text: By 2 August 2028, the Commission shall evaluate the functioning of the AI Office, whether
@@ -301,9 +309,10 @@ norms:
 - norm_id: AIA-NORM-A112-P5-REPORT-AI-OFFICE-EVALUATION
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: commission
+  actors:
+  - actor_ref: commission
     category: union_institution_or_body
+  targets: []
   action: submit the AI Office evaluation report to Parliament and Council
   norm_text: The Commission shall submit a report on its evaluation to the European Parliament and to
     the Council.
@@ -335,9 +344,10 @@ norms:
 - norm_id: AIA-NORM-A112-P6-REVIEW-ENERGY-STANDARDISATION
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: commission
+  actors:
+  - actor_ref: commission
     category: union_institution_or_body
+  targets: []
   action: review and report every four years from 2 August 2028 on energy-efficient GPAI standardisation
     and the need for further measures
   norm_text: By 2 August 2028 and every four years thereafter, the Commission shall submit a report on
@@ -372,9 +382,10 @@ norms:
 - norm_id: AIA-NORM-A112-P6-SUBMIT-STANDARDISATION-REPORT
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: commission
+  actors:
+  - actor_ref: commission
     category: union_institution_or_body
+  targets: []
   action: submit the energy-efficient GPAI standardisation report to Parliament and Council and make it
     public
   norm_text: The report shall be submitted to the European Parliament and to the Council, and it shall
@@ -409,9 +420,10 @@ norms:
 - norm_id: AIA-NORM-A112-P7-EVALUATE-VOLUNTARY-CODES
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: commission
+  actors:
+  - actor_ref: commission
     category: union_institution_or_body
+  targets: []
   action: evaluate every three years from 2 August 2028 the impact and effectiveness of voluntary non-high-risk
     AI codes
   norm_text: By 2 August 2028 and every three years thereafter, the Commission shall evaluate the impact
@@ -446,9 +458,10 @@ norms:
 - norm_id: AIA-NORM-A112-P8-PROVIDE-REVIEW-INFORMATION
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: board_member_states_and_national_competent_authorities
+  actors:
+  - actor_ref: board_member_states_and_national_competent_authorities
     category: public_authority
+  targets: []
   action: provide requested information without undue delay for Article 112 evaluations and reviews
   norm_text: For the purposes of paragraphs 1 to 7, the Board, the Member States and national competent
     authorities shall provide the Commission with information upon its request and without undue delay.
@@ -481,9 +494,10 @@ norms:
 - norm_id: AIA-NORM-A112-P9-ACCOUNT-FOR-INSTITUTIONAL-POSITIONS
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: commission
+  actors:
+  - actor_ref: commission
     category: union_institution_or_body
+  targets: []
   action: account for positions and findings of the Board Parliament Council and other relevant bodies
     or sources in Article 112 reviews
   norm_text: In carrying out the evaluations and reviews referred to in paragraphs 1 to 7, the Commission
@@ -518,9 +532,10 @@ norms:
 - norm_id: AIA-NORM-A112-P10-SUBMIT-AMENDMENT-PROPOSALS
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: commission
+  actors:
+  - actor_ref: commission
     category: union_institution_or_body
+  targets: []
   action: submit necessary AI Act amendment proposals considering technological health safety fundamental-rights
     and information-society developments
   norm_text: The Commission shall, if necessary, submit appropriate proposals to amend this Regulation
@@ -553,9 +568,10 @@ norms:
 - norm_id: AIA-NORM-A112-P11-DEVELOP-RISK-EVALUATION-METHODOLOGY
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: ai_office
+  actors:
+  - actor_ref: ai_office
     category: union_institution_or_body
+  targets: []
   action: develop an objective participative methodology for risk-level evaluation and list inclusion
   norm_text: To guide the evaluations and reviews referred to in paragraphs 1 to 7 of this Article, the
     AI Office shall undertake to develop an objective and participative methodology for the evaluation
@@ -596,9 +612,10 @@ norms:
 - norm_id: AIA-NORM-A112-P12-ACCOUNT-FOR-SECTOR-SPECIFICITIES
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: union_rulemaker
+  actors:
+  - actor_ref: union_rulemaker
     category: union_institution_or_body
+  targets: []
   action: account for sector regulatory specificities and existing governance conformity-assessment and
     enforcement structures in relevant amendments and acts
   norm_text: Any amendment to this Regulation pursuant to paragraph 10, or relevant delegated or implementing
@@ -635,9 +652,10 @@ norms:
 - norm_id: AIA-NORM-A112-P13-ASSESS-ENFORCEMENT
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: commission
+  actors:
+  - actor_ref: commission
     category: union_institution_or_body
+  targets: []
   action: assess AI Act enforcement by 2 August 2031 and report to Parliament Council and the European
     Economic and Social Committee
   norm_text: By 2 August 2031, the Commission shall carry out an assessment of the enforcement of this
@@ -671,9 +689,10 @@ norms:
 - norm_id: AIA-NORM-A112-P13-ACCOMPANY-ENFORCEMENT-PROPOSAL
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: commission
+  actors:
+  - actor_ref: commission
     category: union_institution_or_body
+  targets: []
   action: accompany the enforcement report when appropriate with an amendment proposal addressing enforcement
     structure and possible Union agency need
   norm_text: On the basis of the findings, that report shall, where appropriate, be accompanied by a proposal

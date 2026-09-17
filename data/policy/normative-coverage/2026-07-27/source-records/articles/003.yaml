@@ -6,8 +6,9 @@ records:
     \ implicit objectives, infers, from the input it receives, how to generate outputs such as predictions,\
     \ content, recommendations, or decisions that can influence physical or virtual environments"
   action: define AI system for the purposes of the Regulation
-  subject_ref: ai_system
-  subject_category: other
+  actors: []
+  targets:
+  - target_ref: ai_system
   kind: definition
   qualifier_spans:
   - A003-P001
@@ -23,8 +24,9 @@ records:
   quote: "\u2018risk\u2019 means the combination of the probability of an occurrence of harm and the severity\
     \ of that harm"
   action: define risk for the purposes of the Regulation
-  subject_ref: risk
-  subject_category: other
+  actors: []
+  targets:
+  - target_ref: risk
   kind: definition
   qualifier_spans:
   - A003-P001
@@ -42,8 +44,9 @@ records:
     \ AI model developed and places it on the market or puts the AI system into service under its own\
     \ name or trademark, whether for payment or free of charge"
   action: define provider for the purposes of the Regulation
-  subject_ref: provider
-  subject_category: other
+  actors: []
+  targets:
+  - target_ref: provider
   kind: definition
   qualifier_spans:
   - A003-P001
@@ -60,8 +63,9 @@ records:
     \ using an AI system under its authority except where the AI system is used in the course of a personal\
     \ non-professional activity"
   action: define deployer for the purposes of the Regulation
-  subject_ref: deployer
-  subject_category: other
+  actors: []
+  targets:
+  - target_ref: deployer
   kind: definition
   qualifier_spans:
   - A003-P001
@@ -81,8 +85,9 @@ records:
     \ a general-purpose AI model to, respectively, perform and carry out on its behalf the obligations\
     \ and procedures established by this Regulation"
   action: define authorised representative for the purposes of the Regulation
-  subject_ref: authorised_representative
-  subject_category: other
+  actors: []
+  targets:
+  - target_ref: authorised_representative
   kind: definition
   qualifier_spans:
   - A003-P001
@@ -99,8 +104,9 @@ records:
     \ places on the market an AI system that bears the name or trademark of a natural or legal person\
     \ established in a third country"
   action: define importer for the purposes of the Regulation
-  subject_ref: importer
-  subject_category: other
+  actors: []
+  targets:
+  - target_ref: importer
   kind: definition
   qualifier_spans:
   - A003-P001
@@ -116,8 +122,9 @@ records:
   quote: "\u2018distributor\u2019 means a natural or legal person in the supply chain, other than the\
     \ provider or the importer, that makes an AI system available on the Union market"
   action: define distributor for the purposes of the Regulation
-  subject_ref: distributor
-  subject_category: other
+  actors: []
+  targets:
+  - target_ref: distributor
   kind: definition
   qualifier_spans:
   - A003-P001
@@ -133,8 +140,9 @@ records:
   quote: "\u2018operator\u2019 means a provider, product manufacturer, deployer, authorised representative,\
     \ importer or distributor"
   action: define operator for the purposes of the Regulation
-  subject_ref: operator
-  subject_category: other
+  actors: []
+  targets:
+  - target_ref: operator
   kind: definition
   qualifier_spans:
   - A003-P001
@@ -150,8 +158,9 @@ records:
   quote: "\u2018placing on the market\u2019 means the first making available of an AI system or a general-purpose\
     \ AI model on the Union market"
   action: define placing on the market for the purposes of the Regulation
-  subject_ref: placing_on_the_market
-  subject_category: other
+  actors: []
+  targets:
+  - target_ref: placing_on_the_market
   kind: definition
   qualifier_spans:
   - A003-P001
@@ -168,8 +177,9 @@ records:
     \ AI model for distribution or use on the Union market in the course of a commercial activity, whether\
     \ in return for payment or free of charge"
   action: define making available on the market for the purposes of the Regulation
-  subject_ref: making_available_on_the_market
-  subject_category: other
+  actors: []
+  targets:
+  - target_ref: making_available_on_the_market
   kind: definition
   qualifier_spans:
   - A003-P001
@@ -185,8 +195,9 @@ records:
   quote: "\u2018putting into service\u2019 means the supply of an AI system for first use directly to\
     \ the deployer or for own use in the Union for its intended purpose"
   action: define putting into service for the purposes of the Regulation
-  subject_ref: putting_into_service
-  subject_category: other
+  actors: []
+  targets:
+  - target_ref: putting_into_service
   kind: definition
   qualifier_spans:
   - A003-P001
@@ -204,8 +215,9 @@ records:
     \ the provider in the instructions for use, promotional or sales materials and statements, as well\
     \ as in the technical documentation"
   action: define intended purpose for the purposes of the Regulation
-  subject_ref: intended_purpose
-  subject_category: other
+  actors: []
+  targets:
+  - target_ref: intended_purpose
   kind: definition
   qualifier_spans:
   - A003-P001
@@ -222,8 +234,9 @@ records:
     \ in accordance with its intended purpose, but which may result from reasonably foreseeable human\
     \ behaviour or interaction with other systems, including other AI systems"
   action: define reasonably foreseeable misuse for the purposes of the Regulation
-  subject_ref: reasonably_foreseeable_misuse
-  subject_category: other
+  actors: []
+  targets:
+  - target_ref: reasonably_foreseeable_misuse
   kind: definition
   qualifier_spans:
   - A003-P001
@@ -242,8 +255,9 @@ records:
     \ a safety function where its intended purpose is to prevent or mitigate risks to health and safety\
     \ of persons or property"
   action: define safety component for the purposes of the Regulation
-  subject_ref: safety_component
-  subject_category: other
+  actors: []
+  targets:
+  - target_ref: safety_component
   kind: definition
   qualifier_spans:
   - A003-P001
@@ -259,8 +273,9 @@ records:
   quote: "\u2018micro, small and medium-sized enterprise\u2019 or \u2018SME\u2019 means a micro, small\
     \ or medium-sized enterprise as defined in Article 2 of the Annex to Recommendation 2003/361/EC"
   action: define micro, small and medium-sized enterprise for the purposes of the Regulation
-  subject_ref: micro_small_and_medium_sized_enterprise
-  subject_category: other
+  actors: []
+  targets:
+  - target_ref: micro_small_and_medium_sized_enterprise
   kind: definition
   qualifier_spans:
   - A003-P001
@@ -276,8 +291,9 @@ records:
   quote: "\u2018small mid-cap enterprise\u2019 or \u2018SMC\u2019 means a small mid-cap enterprise as\
     \ defined in point (2) of the Annex to Recommendation (EU) 2025/1099"
   action: define small mid-cap enterprise for the purposes of the Regulation
-  subject_ref: small_mid_cap_enterprise
-  subject_category: other
+  actors: []
+  targets:
+  - target_ref: small_mid_cap_enterprise
   kind: definition
   qualifier_spans:
   - A003-P001
@@ -293,8 +309,9 @@ records:
   quote: "\u2018instructions for use\u2019 means the information provided by the provider to inform the\
     \ deployer of, in particular, an AI system\u2019s intended purpose and proper use"
   action: define instructions for use for the purposes of the Regulation
-  subject_ref: instructions_for_use
-  subject_category: other
+  actors: []
+  targets:
+  - target_ref: instructions_for_use
   kind: definition
   qualifier_spans:
   - A003-P001
@@ -310,8 +327,9 @@ records:
   quote: "\u2018recall of an AI system\u2019 means any measure aiming to achieve the return to the provider\
     \ or taking out of service or disabling the use of an AI system made available to deployers"
   action: define recall of an AI system for the purposes of the Regulation
-  subject_ref: recall_of_an_ai_system
-  subject_category: other
+  actors: []
+  targets:
+  - target_ref: recall_of_an_ai_system
   kind: definition
   qualifier_spans:
   - A003-P001
@@ -327,8 +345,9 @@ records:
   quote: "\u2018withdrawal of an AI system\u2019 means any measure aiming to prevent an AI system in the\
     \ supply chain being made available on the market"
   action: define withdrawal of an AI system for the purposes of the Regulation
-  subject_ref: withdrawal_of_an_ai_system
-  subject_category: other
+  actors: []
+  targets:
+  - target_ref: withdrawal_of_an_ai_system
   kind: definition
   qualifier_spans:
   - A003-P001
@@ -344,8 +363,9 @@ records:
   quote: "\u2018performance of an AI system\u2019 means the ability of an AI system to achieve its intended\
     \ purpose"
   action: define performance of an AI system for the purposes of the Regulation
-  subject_ref: performance_of_an_ai_system
-  subject_category: other
+  actors: []
+  targets:
+  - target_ref: performance_of_an_ai_system
   kind: definition
   qualifier_spans:
   - A003-P001
@@ -362,8 +382,9 @@ records:
     \ carrying out the necessary procedures for the assessment, designation and notification of conformity\
     \ assessment bodies and for their monitoring"
   action: define notifying authority for the purposes of the Regulation
-  subject_ref: notifying_authority
-  subject_category: other
+  actors: []
+  targets:
+  - target_ref: notifying_authority
   kind: definition
   qualifier_spans:
   - A003-P001
@@ -379,8 +400,9 @@ records:
   quote: "\u2018conformity assessment\u2019 means the process of demonstrating whether the requirements\
     \ set out in Chapter III, Section 2 relating to a high-risk AI system have been fulfilled"
   action: define conformity assessment for the purposes of the Regulation
-  subject_ref: conformity_assessment
-  subject_category: other
+  actors: []
+  targets:
+  - target_ref: conformity_assessment
   kind: definition
   qualifier_spans:
   - A003-P001
@@ -396,8 +418,9 @@ records:
   quote: "\u2018conformity assessment body\u2019 means a body that performs third-party conformity assessment\
     \ activities, including testing, certification and inspection"
   action: define conformity assessment body for the purposes of the Regulation
-  subject_ref: conformity_assessment_body
-  subject_category: other
+  actors: []
+  targets:
+  - target_ref: conformity_assessment_body
   kind: definition
   qualifier_spans:
   - A003-P001
@@ -413,8 +436,9 @@ records:
   quote: "\u2018notified body\u2019 means a conformity assessment body notified in accordance with this\
     \ Regulation and other relevant Union harmonisation legislation"
   action: define notified body for the purposes of the Regulation
-  subject_ref: notified_body
-  subject_category: other
+  actors: []
+  targets:
+  - target_ref: notified_body
   kind: definition
   qualifier_spans:
   - A003-P001
@@ -433,8 +457,9 @@ records:
     \ set out in Chapter III, Section 2 is affected or results in a modification to the intended purpose\
     \ for which the AI system has been assessed"
   action: define substantial modification for the purposes of the Regulation
-  subject_ref: substantial_modification
-  subject_category: other
+  actors: []
+  targets:
+  - target_ref: substantial_modification
   kind: definition
   qualifier_spans:
   - A003-P001
@@ -451,8 +476,9 @@ records:
     \ conformity with the requirements set out in Chapter III, Section 2 and other applicable Union harmonisation\
     \ legislation providing for its affixing"
   action: define CE marking for the purposes of the Regulation
-  subject_ref: ce_marking
-  subject_category: other
+  actors: []
+  targets:
+  - target_ref: ce_marking
   kind: definition
   qualifier_spans:
   - A003-P001
@@ -470,8 +496,9 @@ records:
     \ or put into service for the purpose of identifying any need to immediately apply any necessary corrective\
     \ or preventive actions"
   action: define post-market monitoring system for the purposes of the Regulation
-  subject_ref: post_market_monitoring_system
-  subject_category: other
+  actors: []
+  targets:
+  - target_ref: post_market_monitoring_system
   kind: definition
   qualifier_spans:
   - A003-P001
@@ -487,8 +514,9 @@ records:
   quote: "\u2018market surveillance authority\u2019 means the national authority carrying out the activities\
     \ and taking the measures pursuant to Regulation (EU) 2019/1020"
   action: define market surveillance authority for the purposes of the Regulation
-  subject_ref: market_surveillance_authority
-  subject_category: other
+  actors: []
+  targets:
+  - target_ref: market_surveillance_authority
   kind: definition
   qualifier_spans:
   - A003-P001
@@ -504,8 +532,9 @@ records:
   quote: "\u2018harmonised standard\u2019 means a harmonised standard as defined in Article 2(1), point\
     \ (c), of Regulation (EU) No 1025/2012"
   action: define harmonised standard for the purposes of the Regulation
-  subject_ref: harmonised_standard
-  subject_category: other
+  actors: []
+  targets:
+  - target_ref: harmonised_standard
   kind: definition
   qualifier_spans:
   - A003-P001
@@ -522,8 +551,9 @@ records:
     \ 2, point (4) of Regulation (EU) No 1025/2012, providing means to comply with certain requirements\
     \ established under this Regulation"
   action: define common specification for the purposes of the Regulation
-  subject_ref: common_specification
-  subject_category: other
+  actors: []
+  targets:
+  - target_ref: common_specification
   kind: definition
   qualifier_spans:
   - A003-P001
@@ -539,8 +569,9 @@ records:
   quote: "\u2018training data\u2019 means data used for training an AI system through fitting its learnable\
     \ parameters"
   action: define training data for the purposes of the Regulation
-  subject_ref: training_data
-  subject_category: other
+  actors: []
+  targets:
+  - target_ref: training_data
   kind: definition
   qualifier_spans:
   - A003-P001
@@ -557,8 +588,9 @@ records:
     \ and for tuning its non-learnable parameters and its learning process in order, inter alia, to prevent\
     \ underfitting or overfitting"
   action: define validation data for the purposes of the Regulation
-  subject_ref: validation_data
-  subject_category: other
+  actors: []
+  targets:
+  - target_ref: validation_data
   kind: definition
   qualifier_spans:
   - A003-P001
@@ -574,8 +606,9 @@ records:
   quote: "\u2018validation data set\u2019 means a separate data set or part of the training data set,\
     \ either as a fixed or variable split"
   action: define validation data set for the purposes of the Regulation
-  subject_ref: validation_data_set
-  subject_category: other
+  actors: []
+  targets:
+  - target_ref: validation_data_set
   kind: definition
   qualifier_spans:
   - A003-P001
@@ -592,8 +625,9 @@ records:
     \ in order to confirm the expected performance of that system before its placing on the market or\
     \ putting into service"
   action: define testing data for the purposes of the Regulation
-  subject_ref: testing_data
-  subject_category: other
+  actors: []
+  targets:
+  - target_ref: testing_data
   kind: definition
   qualifier_spans:
   - A003-P001
@@ -609,8 +643,9 @@ records:
   quote: "\u2018input data\u2019 means data provided to or directly acquired by an AI system on the basis\
     \ of which the system produces an output"
   action: define input data for the purposes of the Regulation
-  subject_ref: input_data
-  subject_category: other
+  actors: []
+  targets:
+  - target_ref: input_data
   kind: definition
   qualifier_spans:
   - A003-P001
@@ -627,8 +662,9 @@ records:
     \ relating to the physical, physiological or behavioural characteristics of a natural person, such\
     \ as facial images or dactyloscopic data"
   action: define biometric data for the purposes of the Regulation
-  subject_ref: biometric_data
-  subject_category: other
+  actors: []
+  targets:
+  - target_ref: biometric_data
   kind: definition
   qualifier_spans:
   - A003-P001
@@ -646,8 +682,9 @@ records:
     \ person by comparing biometric data of that individual to biometric data of individuals stored in\
     \ a database"
   action: define biometric identification for the purposes of the Regulation
-  subject_ref: biometric_identification
-  subject_category: other
+  actors: []
+  targets:
+  - target_ref: biometric_identification
   kind: definition
   qualifier_spans:
   - A003-P001
@@ -664,8 +701,9 @@ records:
     \ of the identity of natural persons by comparing their biometric data to previously provided biometric\
     \ data"
   action: define biometric verification for the purposes of the Regulation
-  subject_ref: biometric_verification
-  subject_category: other
+  actors: []
+  targets:
+  - target_ref: biometric_verification
   kind: definition
   qualifier_spans:
   - A003-P001
@@ -682,8 +720,9 @@ records:
     \ to in Article 9(1) of Regulation (EU) 2016/679, Article 10 of Directive (EU) 2016/680 and Article\
     \ 10(1) of Regulation (EU) 2018/1725"
   action: define special categories of personal data for the purposes of the Regulation
-  subject_ref: special_categories_of_personal_data
-  subject_category: other
+  actors: []
+  targets:
+  - target_ref: special_categories_of_personal_data
   kind: definition
   qualifier_spans:
   - A003-P001
@@ -700,8 +739,9 @@ records:
     \ detection, investigation or prosecution of criminal offences, the disclosure of which could jeopardise\
     \ the integrity of criminal proceedings"
   action: define sensitive operational data for the purposes of the Regulation
-  subject_ref: sensitive_operational_data
-  subject_category: other
+  actors: []
+  targets:
+  - target_ref: sensitive_operational_data
   kind: definition
   qualifier_spans:
   - A003-P001
@@ -717,8 +757,9 @@ records:
   quote: "\u2018emotion recognition system\u2019 means an AI system for the purpose of identifying or\
     \ inferring emotions or intentions of natural persons on the basis of their biometric data"
   action: define emotion recognition system for the purposes of the Regulation
-  subject_ref: emotion_recognition_system
-  subject_category: other
+  actors: []
+  targets:
+  - target_ref: emotion_recognition_system
   kind: definition
   qualifier_spans:
   - A003-P001
@@ -735,8 +776,9 @@ records:
     \ natural persons to specific categories on the basis of their biometric data, unless it is ancillary\
     \ to another commercial service and strictly necessary for objective technical reasons"
   action: define biometric categorisation system for the purposes of the Regulation
-  subject_ref: biometric_categorisation_system
-  subject_category: other
+  actors: []
+  targets:
+  - target_ref: biometric_categorisation_system
   kind: definition
   qualifier_spans:
   - A003-P001
@@ -756,8 +798,9 @@ records:
     \ natural persons, without their active involvement, typically at a distance through the comparison\
     \ of a person\u2019s biometric data with the biometric data contained in a reference database"
   action: define remote biometric identification system for the purposes of the Regulation
-  subject_ref: remote_biometric_identification_system
-  subject_category: other
+  actors: []
+  targets:
+  - target_ref: remote_biometric_identification_system
   kind: definition
   qualifier_spans:
   - A003-P001
@@ -775,8 +818,9 @@ records:
     \ without a significant delay, comprising not only instant identification, but also limited short\
     \ delays in order to avoid circumvention"
   action: define real-time remote biometric identification system for the purposes of the Regulation
-  subject_ref: real_time_remote_biometric_identification_system
-  subject_category: other
+  actors: []
+  targets:
+  - target_ref: real_time_remote_biometric_identification_system
   kind: definition
   qualifier_spans:
   - A003-P001
@@ -792,8 +836,9 @@ records:
   quote: "\u2018post-remote biometric identification system\u2019 means a remote biometric identification\
     \ system other than a real-time remote biometric identification system"
   action: define post-remote biometric identification system for the purposes of the Regulation
-  subject_ref: post_remote_biometric_identification_system
-  subject_category: other
+  actors: []
+  targets:
+  - target_ref: post_remote_biometric_identification_system
   kind: definition
   qualifier_spans:
   - A003-P001
@@ -810,8 +855,9 @@ records:
     \ to an undetermined number of natural persons, regardless of whether certain conditions for access\
     \ may apply, and regardless of the potential capacity restrictions"
   action: define publicly accessible space for the purposes of the Regulation
-  subject_ref: publicly_accessible_space
-  subject_category: other
+  actors: []
+  targets:
+  - target_ref: publicly_accessible_space
   kind: definition
   qualifier_spans:
   - A003-P001
@@ -826,8 +872,9 @@ records:
   source: A003-P048
   quote: "\u2018law enforcement authority\u2019 means:"
   action: define law enforcement authority for the purposes of the Regulation
-  subject_ref: law_enforcement_authority
-  subject_category: other
+  actors: []
+  targets:
+  - target_ref: law_enforcement_authority
   kind: definition
   qualifier_spans:
   - A003-P001
@@ -850,8 +897,9 @@ records:
     \ the execution of criminal penalties, including safeguarding against and preventing threats to public\
     \ security"
   action: define law enforcement for the purposes of the Regulation
-  subject_ref: law_enforcement
-  subject_category: other
+  actors: []
+  targets:
+  - target_ref: law_enforcement
   kind: definition
   qualifier_spans:
   - A003-P001
@@ -868,8 +916,9 @@ records:
     \ monitoring and supervision of AI systems and general-purpose AI models, and AI governance, provided\
     \ for in Commission Decision of 24 January 2024"
   action: define AI Office for the purposes of the Regulation
-  subject_ref: ai_office
-  subject_category: other
+  actors: []
+  targets:
+  - target_ref: ai_office
   kind: definition
   qualifier_spans:
   - A003-P001
@@ -885,8 +934,9 @@ records:
   quote: "\u2018national competent authority\u2019 means a notifying authority or a market surveillance\
     \ authority"
   action: define national competent authority for the purposes of the Regulation
-  subject_ref: national_competent_authority
-  subject_category: other
+  actors: []
+  targets:
+  - target_ref: national_competent_authority
   kind: definition
   qualifier_spans:
   - A003-P001
@@ -902,8 +952,9 @@ records:
   quote: "\u2018serious incident\u2019 means an incident or malfunctioning of an AI system that directly\
     \ or indirectly leads to any of the following:"
   action: define serious incident for the purposes of the Regulation
-  subject_ref: serious_incident
-  subject_category: other
+  actors: []
+  targets:
+  - target_ref: serious_incident
   kind: definition
   qualifier_spans:
   - A003-P001
@@ -928,8 +979,9 @@ records:
   quote: "\u2018personal data\u2019 means personal data as defined in Article 4, point (1), of Regulation\
     \ (EU) 2016/679"
   action: define personal data for the purposes of the Regulation
-  subject_ref: personal_data
-  subject_category: other
+  actors: []
+  targets:
+  - target_ref: personal_data
   kind: definition
   qualifier_spans:
   - A003-P001
@@ -945,8 +997,9 @@ records:
   quote: "\u2018non-personal data\u2019 means data other than personal data as defined in Article 4, point\
     \ (1), of Regulation (EU) 2016/679"
   action: define non-personal data for the purposes of the Regulation
-  subject_ref: non_personal_data
-  subject_category: other
+  actors: []
+  targets:
+  - target_ref: non_personal_data
   kind: definition
   qualifier_spans:
   - A003-P001
@@ -962,8 +1015,9 @@ records:
   quote: "\u2018profiling\u2019 means profiling as defined in Article 4, point (4), of Regulation (EU)\
     \ 2016/679"
   action: define profiling for the purposes of the Regulation
-  subject_ref: profiling
-  subject_category: other
+  actors: []
+  targets:
+  - target_ref: profiling
   kind: definition
   qualifier_spans:
   - A003-P001
@@ -980,8 +1034,9 @@ records:
     \ geographical, population and temporal scope, monitoring, organisation and conduct of testing in\
     \ real-world conditions"
   action: define real-world testing plan for the purposes of the Regulation
-  subject_ref: real_world_testing_plan
-  subject_category: other
+  actors: []
+  targets:
+  - target_ref: real_world_testing_plan
   kind: definition
   qualifier_spans:
   - A003-P001
@@ -998,8 +1053,9 @@ records:
     \ competent authority describing the objectives, conditions, timeframe, methodology and requirements\
     \ for the activities carried out within the sandbox"
   action: define sandbox plan for the purposes of the Regulation
-  subject_ref: sandbox_plan
-  subject_category: other
+  actors: []
+  targets:
+  - target_ref: sandbox_plan
   kind: definition
   qualifier_spans:
   - A003-P001
@@ -1017,8 +1073,9 @@ records:
     \ validate and test, where appropriate in real-world conditions, an innovative AI system, pursuant\
     \ to a sandbox plan for a limited time under regulatory supervision"
   action: define AI regulatory sandbox for the purposes of the Regulation
-  subject_ref: ai_regulatory_sandbox
-  subject_category: other
+  actors: []
+  targets:
+  - target_ref: ai_regulatory_sandbox
   kind: definition
   qualifier_spans:
   - A003-P001
@@ -1036,8 +1093,9 @@ records:
     \ of this Regulation, to make an informed deployment of AI systems, as well as to gain awareness about\
     \ the opportunities and risks of AI and possible harm it can cause"
   action: define AI literacy for the purposes of the Regulation
-  subject_ref: ai_literacy
-  subject_category: other
+  actors: []
+  targets:
+  - target_ref: ai_literacy
   kind: definition
   qualifier_spans:
   - A003-P001
@@ -1058,8 +1116,9 @@ records:
     \ that all the conditions laid down in Article 57 or 60 are fulfilled"
   action: define testing in real-world conditions and, where all Article 57 or 60 conditions are fulfilled,
     treat it as neither placing the AI system on the market nor putting it into service
-  subject_ref: testing_in_real_world_conditions
-  subject_category: other
+  actors: []
+  targets:
+  - target_ref: testing_in_real_world_conditions
   kind: definition
   qualifier_spans:
   - A003-P001
@@ -1079,8 +1138,9 @@ records:
   quote: "\u2018subject\u2019, for the purpose of real-world testing, means a natural person who participates\
     \ in testing in real-world conditions"
   action: define subject for the purposes of the Regulation
-  subject_ref: subject
-  subject_category: other
+  actors: []
+  targets:
+  - target_ref: subject
   kind: definition
   qualifier_spans:
   - A003-P001
@@ -1098,8 +1158,9 @@ records:
     \ conditions, after having been informed of all aspects of the testing that are relevant to the subject\u2019\
     s decision to participate"
   action: define informed consent for the purposes of the Regulation
-  subject_ref: informed_consent
-  subject_category: other
+  actors: []
+  targets:
+  - target_ref: informed_consent
   kind: definition
   qualifier_spans:
   - A003-P001
@@ -1116,8 +1177,9 @@ records:
     \ existing persons, objects, places, entities or events and would falsely appear to a person to be\
     \ authentic or truthful"
   action: define deep fake for the purposes of the Regulation
-  subject_ref: deep_fake
-  subject_category: other
+  actors: []
+  targets:
+  - target_ref: deep_fake
   kind: definition
   qualifier_spans:
   - A003-P001
@@ -1133,8 +1195,9 @@ records:
   quote: "\u2018widespread infringement\u2019 means any act or omission contrary to Union law protecting\
     \ the interest of individuals, which:"
   action: define widespread infringement for the purposes of the Regulation
-  subject_ref: widespread_infringement
-  subject_category: other
+  actors: []
+  targets:
+  - target_ref: widespread_infringement
   kind: definition
   qualifier_spans:
   - A003-P001
@@ -1180,8 +1243,9 @@ records:
   quote: "\u2018critical infrastructure\u2019 means critical infrastructure as defined in Article 2, point\
     \ (4), of Directive (EU) 2022/2557"
   action: define critical infrastructure for the purposes of the Regulation
-  subject_ref: critical_infrastructure
-  subject_category: other
+  actors: []
+  targets:
+  - target_ref: critical_infrastructure
   kind: definition
   qualifier_spans:
   - A003-P001
@@ -1201,8 +1265,9 @@ records:
     \ applications, except AI models that are used for research, development or prototyping activities\
     \ before they are placed on the market"
   action: define general-purpose AI model for the purposes of the Regulation
-  subject_ref: general_purpose_ai_model
-  subject_category: other
+  actors: []
+  targets:
+  - target_ref: general_purpose_ai_model
   kind: definition
   qualifier_spans:
   - A003-P001
@@ -1220,8 +1285,9 @@ records:
   quote: "\u2018high-impact capabilities\u2019 means capabilities that match or exceed the capabilities\
     \ recorded in the most advanced general-purpose AI models"
   action: define high-impact capabilities for the purposes of the Regulation
-  subject_ref: high_impact_capabilities
-  subject_category: other
+  actors: []
+  targets:
+  - target_ref: high_impact_capabilities
   kind: definition
   qualifier_spans:
   - A003-P001
@@ -1239,8 +1305,9 @@ records:
     \ or reasonably foreseeable negative effects on public health, safety, public security, fundamental\
     \ rights, or the society as a whole, that can be propagated at scale across the value chain"
   action: define systemic risk for the purposes of the Regulation
-  subject_ref: systemic_risk
-  subject_category: other
+  actors: []
+  targets:
+  - target_ref: systemic_risk
   kind: definition
   qualifier_spans:
   - A003-P001
@@ -1257,8 +1324,9 @@ records:
     \ AI model and which has the capability to serve a variety of purposes, both for direct use as well\
     \ as for integration in other AI systems"
   action: define general-purpose AI system for the purposes of the Regulation
-  subject_ref: general_purpose_ai_system
-  subject_category: other
+  actors: []
+  targets:
+  - target_ref: general_purpose_ai_system
   kind: definition
   qualifier_spans:
   - A003-P001
@@ -1275,8 +1343,9 @@ records:
     \ floating-point numbers, which are a subset of the real numbers typically represented on computers\
     \ by an integer of fixed precision scaled by an integer exponent of a fixed base"
   action: define floating-point operation for the purposes of the Regulation
-  subject_ref: floating_point_operation
-  subject_category: other
+  actors: []
+  targets:
+  - target_ref: floating_point_operation
   kind: definition
   qualifier_spans:
   - A003-P001
@@ -1293,8 +1362,9 @@ records:
     \ AI system, which integrates an AI model, regardless of whether the AI model is provided by themselves\
     \ and vertically integrated or provided by another entity based on contractual relations."
   action: define downstream provider for the purposes of the Regulation
-  subject_ref: downstream_provider
-  subject_category: other
+  actors: []
+  targets:
+  - target_ref: downstream_provider
   kind: definition
   qualifier_spans:
   - A003-P001
@@ -1309,8 +1379,9 @@ records:
   source: A003-P052
   quote: references in this Regulation to the AI Office shall be construed as references to the Commission
   action: construe references to the AI Office as references to the Commission
-  subject_ref: ai_office_reference
-  subject_category: other
+  actors: []
+  targets:
+  - target_ref: ai_office_reference
   kind: legal_consequence
   product_scope: dependency_only
   product_scope_reason: This consequence affects downstream interpretation but creates no independent
@@ -1326,8 +1397,10 @@ records:
     shall be construed as references to the European Data Protection Supervisor
   action: construe competent-authority and market-surveillance-authority references as references to the
     European Data Protection Supervisor for Union-body AI systems
-  subject_ref: union_institution_ai_system_authority_reference
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: union_institution_ai_system_authority_reference
+    category: union_institution_or_body
+  targets: []
   kind: legal_consequence
   conditions:
   - the AI system is put into service or used by a Union institution, agency, office, or body

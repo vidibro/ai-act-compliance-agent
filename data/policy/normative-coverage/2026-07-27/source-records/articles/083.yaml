@@ -5,8 +5,10 @@ records:
     it shall require the relevant provider to put an end to the non-compliance concerned, within a period
     it may prescribe
   action: require the provider to end identified formal non-compliance within a prescribed period
-  subject_ref: market_surveillance_authority
-  subject_category: public_authority
+  actors:
+  - actor_ref: market_surveillance_authority
+    category: public_authority
+  targets: []
   mandatory_content: []
   qualifier_spans:
   - A083-P002
@@ -40,8 +42,10 @@ records:
     from the market without delay.
   action: take proportionate restriction prohibition recall or withdrawal measures without delay when
     formal non-compliance persists
-  subject_ref: market_surveillance_authority
-  subject_category: public_authority
+  actors:
+  - actor_ref: market_surveillance_authority
+    category: public_authority
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required

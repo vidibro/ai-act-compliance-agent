@@ -3,9 +3,10 @@ norms:
 - norm_id: AIA-NORM-A078-P1-PROTECT-CONFIDENTIALITY
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: persons_involved_in_regulation_application
-    category: other
+  actors:
+  - actor_ref: persons_involved_in_regulation_application
+    category: natural_person
+  targets: []
   action: protect confidentiality of task-related information and data under Union or national law
   norm_text: shall, in accordance with Union or national law, respect the confidentiality of information
     and data obtained in carrying out their tasks and activities in such a manner as to protect, in particular
@@ -52,9 +53,10 @@ norms:
 - norm_id: AIA-NORM-A078-P2-REQUEST-ONLY-NECESSARY-DATA
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: authorities_involved_in_application
+  actors:
+  - actor_ref: authorities_involved_in_application
     category: public_authority
+  targets: []
   action: request only data strictly necessary for risk assessment and exercise of enacted powers
   norm_text: The authorities involved in the application of this Regulation pursuant to paragraph 1 shall
     request only data that is strictly necessary for the assessment of the risk posed by AI systems and
@@ -87,9 +89,10 @@ norms:
 - norm_id: AIA-NORM-A078-P2-PROTECT-OBTAINED-DATA
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: authorities_involved_in_application
+  actors:
+  - actor_ref: authorities_involved_in_application
     category: public_authority
+  targets: []
   action: protect obtained information and data through adequate effective cybersecurity and delete collected
     data as soon as its acquisition purpose no longer requires it
   norm_text: They shall put in place adequate and effective cybersecurity measures to protect the security
@@ -125,9 +128,10 @@ norms:
 - norm_id: AIA-NORM-A078-P3-RESTRICT-CONFIDENTIAL-DISCLOSURE
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: national_competent_authority_and_commission
+  actors:
+  - actor_ref: national_competent_authority_and_commission
     category: public_authority
+  targets: []
   action: disclose confidentially exchanged information only after prior consultation of the originating
     national competent authority and the deployer
   norm_text: Without prejudice to paragraphs 1 and 2, information exchanged on a confidential basis between
@@ -167,9 +171,10 @@ norms:
 - norm_id: AIA-NORM-A078-P3-EXCLUDE-SENSITIVE-OPERATIONAL-DATA
   act_version_date: '2026-07-27'
   kind: prohibition
-  subjects:
-  - subject_ref: national_competent_authority_and_commission
+  actors:
+  - actor_ref: national_competent_authority_and_commission
     category: public_authority
+  targets: []
   action: exclude sensitive operational data on the activities of law enforcement, border control, immigration
     or asylum authorities from the exchange of information
   norm_text: This exchange of information shall not cover sensitive operational data in relation to the
@@ -202,9 +207,10 @@ norms:
 - norm_id: AIA-NORM-A078-P3-KEEP-DOCUMENTATION-AND-ENABLE-ACCESS
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: law_enforcement_immigration_or_asylum_authority_provider
+  actors:
+  - actor_ref: law_enforcement_immigration_or_asylum_authority_provider
     category: supported_operator
+  targets: []
   action: keep the Annex IV technical documentation within the premises of the authority
   norm_text: When the law enforcement, immigration or asylum authorities are providers of high-risk AI
     systems referred to in point 1, 6 or 7 of Annex III, the technical documentation referred to in Annex
@@ -241,9 +247,10 @@ norms:
 - norm_id: AIA-NORM-A078-P3-ENABLE-IMMEDIATE-ACCESS
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: law_enforcement_immigration_or_asylum_authority_provider
+  actors:
+  - actor_ref: law_enforcement_immigration_or_asylum_authority_provider
     category: supported_operator
+  targets: []
   action: ensure the applicable Article 74(8) and (9) market surveillance authorities can, upon request,
     immediately access the documentation or obtain a copy of it
   norm_text: Those authorities shall ensure that the market surveillance authorities referred to in Article
@@ -282,9 +289,10 @@ norms:
 - norm_id: AIA-NORM-A078-P3-SECURITY-CLEARED-ACCESS-ONLY
   act_version_date: '2026-07-27'
   kind: prohibition
-  subjects:
-  - subject_ref: market_surveillance_authority
+  actors:
+  - actor_ref: market_surveillance_authority
     category: public_authority
+  targets: []
   action: allow only market surveillance authority staff holding the appropriate level of security clearance
     to access the documentation or any copy of it
   norm_text: Only staff of the market surveillance authority holding the appropriate level of security
@@ -317,9 +325,9 @@ norms:
 - norm_id: AIA-NORM-A078-P4-PRESERVE-EXCHANGE-AND-CRIMINAL-LAW-DUTIES
   act_version_date: '2026-07-27'
   kind: legal_consequence
-  subjects:
-  - subject_ref: persons_applying_article_78
-    category: other
+  actors: []
+  targets:
+  - target_ref: persons_applying_article_78
   action: preserve information-exchange warning and Member State criminal-law disclosure rights and duties
     despite paragraphs 1 to 3
   norm_text: Paragraphs 1, 2 and 3 shall not affect the rights or obligations of the Commission, Member
@@ -357,9 +365,12 @@ norms:
 - norm_id: AIA-NORM-A078-P5-EXCHANGE-WITH-THIRD-COUNTRY-REGULATORS
   act_version_date: '2026-07-27'
   kind: power
-  subjects:
-  - subject_ref: commission_and_member_states
+  actors:
+  - actor_ref: commission
     category: union_institution_or_body
+  - actor_ref: member_state
+    category: member_state
+  targets: []
   action: exchange necessary confidential information with third-country regulators under applicable agreements
     and adequate confidentiality arrangements
   norm_text: The Commission and Member States may exchange, where necessary and in accordance with relevant

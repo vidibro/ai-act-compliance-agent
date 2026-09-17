@@ -3,9 +3,10 @@ norms:
 - norm_id: AIA-NORM-A011-P1-DRAW
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: provider
+  actors:
+  - actor_ref: provider
     category: supported_operator
+  targets: []
   action: draw up technical documentation before placing the system on the market or putting it into service
     and keep it up to date
   norm_text: The technical documentation of a high-risk AI system shall be drawn up before that system
@@ -42,9 +43,10 @@ norms:
 - norm_id: AIA-NORM-A011-P1-DEMONSTRATE
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: provider
+  actors:
+  - actor_ref: provider
     category: supported_operator
+  targets: []
   action: draw up documentation that demonstrates compliance with Chapter III Section 2 and gives national
     competent authorities and notified bodies the clear, comprehensive information needed to assess compliance
   norm_text: That technical documentation shall be drawn up in such a way as to demonstrate that the high-risk
@@ -83,9 +85,10 @@ norms:
 - norm_id: AIA-NORM-A011-P1-ANNEX-IV
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: provider
+  actors:
+  - actor_ref: provider
     category: supported_operator
+  targets: []
   action: include every applicable Annex IV element
   norm_text: It shall contain, at a minimum, the elements set out in Annex IV.
   detection_channels:
@@ -118,9 +121,10 @@ norms:
 - norm_id: AIA-NORM-A011-P1-SIMPLIFY
   act_version_date: '2026-07-27'
   kind: permission
-  subjects:
-  - subject_ref: provider
+  actors:
+  - actor_ref: provider
     category: supported_operator
+  targets: []
   action: use the simplified-documentation option
   norm_text: SMEs, including start-ups, and SMCs, may provide the elements of the technical documentation
     specified in Annex IV in a simplified manner.
@@ -155,9 +159,10 @@ norms:
 - norm_id: AIA-NORM-A011-P1-FORM
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: commission
+  actors:
+  - actor_ref: commission
     category: union_institution_or_body
+  targets: []
   action: establish a simplified technical-documentation form targeted at the needs of SMEs, start-ups,
     and SMCs
   norm_text: To that end, the Commission shall establish a simplified technical documentation form targeted
@@ -190,9 +195,10 @@ norms:
 - norm_id: AIA-NORM-A011-P1-USE-FORM
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: provider
+  actors:
+  - actor_ref: provider
     category: supported_operator
+  targets: []
   action: use the Commission form when taking the simplified-documentation option
   norm_text: Where an SME, including a start-up, or an SMC, opts to provide the information required in
     Annex IV in a simplified manner, it shall use the form referred to in this paragraph.
@@ -227,9 +233,10 @@ norms:
 - norm_id: AIA-NORM-A011-P1-ACCEPT-FORM
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: notified_body
+  actors:
+  - actor_ref: notified_body
     category: notified_or_conformity_body
+  targets: []
   action: accept the simplified form for conformity assessment
   norm_text: Notified bodies shall accept the form for the purposes of the conformity assessment.
   detection_channels:
@@ -260,9 +267,10 @@ norms:
 - norm_id: AIA-NORM-A011-P2-SINGLE-DOCUMENTATION-SET
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: provider
+  actors:
+  - actor_ref: provider
     category: supported_operator
+  targets: []
   action: draw up one technical-documentation set containing both the Article 11(1) information and the
     information required by the applicable Annex I Section A legislation
   norm_text: Where a high-risk AI system related to a product covered by the Union harmonisation legislation
@@ -301,9 +309,10 @@ norms:
 - norm_id: AIA-NORM-A011-P3-AMEND
   act_version_date: '2026-07-27'
   kind: power
-  subjects:
-  - subject_ref: commission
+  actors:
+  - actor_ref: commission
     category: union_institution_or_body
+  targets: []
   action: adopt Article 97 delegated acts amending Annex IV where necessary in light of technical progress
     to preserve all information needed to assess Section 2 compliance
   norm_text: The Commission is empowered to adopt delegated acts in accordance with Article 97 in order

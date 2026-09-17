@@ -292,9 +292,9 @@ It is never sufficient for completeness and does not outrank semantic review.
 
 `NormKind` records the primary legal effect and has these values:
 
-- `obligation` — a subject is required to act, maintain a state, provide something, or ensure an
+- `obligation` — an actor is required to act, maintain a state, provide something, or ensure an
   outcome;
-- `prohibition` — a subject or practice is forbidden or restricted from acting;
+- `prohibition` — an actor is forbidden or restricted from acting;
 - `permission` — the law permits conduct, commonly subject to conditions;
 - `entitlement` — a person or body is granted a right, claim, access, request, or procedural
   protection;
@@ -310,12 +310,14 @@ Deadlines, recipients, mandatory content, conditions, and exceptions are structu
 a norm. They do not become separate `NormKind` values solely because they are important. They may
 become separate norms when independently actionable or independently applicable.
 
-### Subjects
+### Actors and targets
 
-A norm carries one or more `subject_refs`, each a stable slug taken from the enacted text or a
-normalised legal role. Subjects are not restricted to `ActorRole`.
+A norm can have zero or more `actors`. An actor is a person or body that bears the legal effect:
+it is required, prohibited, permitted, entitled, or empowered to act. Each actor has an exact
+`actor_ref` and an `ActorCategory`. A norm can list more than one actor where the same legal effect
+is assigned to each of them.
 
-Each subject also carries one `SubjectCategory`:
+`ActorCategory` is one of:
 
 - `supported_operator`
 - `external_private_party`
@@ -324,10 +326,16 @@ Each subject also carries one `SubjectCategory`:
 - `member_state`
 - `public_authority`
 - `notified_or_conformity_body`
-- `other`
 - `unresolved`
 
-The category supports coverage reporting; it does not replace the precise subject reference.
+The category supports coverage reporting; it does not replace the precise actor reference.
+
+A norm can separately have zero or more `targets`. A target is an object, activity, concept, or
+legal state that is defined, classified, constrained, or receives a legal consequence. It has only
+a `target_ref`. For example, Article 6 targets an `ai_system`; it does not assign an actor. Article
+42 targets a `high_risk_ai_system`; it does not make that system a duty-holder. A term such as
+`provider` can be a target in a definition and an actor in a provider duty: the field, not the
+spelling, states its legal role.
 
 ### Product scope
 

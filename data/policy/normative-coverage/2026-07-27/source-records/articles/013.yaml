@@ -5,8 +5,10 @@ records:
     \ is sufficiently transparent to enable deployers to interpret a system\u2019s output and use it appropriately."
   action: design and develop the high-risk AI system so its operation is sufficiently transparent for
     deployers to interpret its output and use it appropriately
-  subject_ref: provider
-  subject_category: supported_operator
+  actors:
+  - actor_ref: provider
+    category: supported_operator
+  targets: []
   implementation_refs: &id001
   - AIA-HR-A13
   verification_mode: judged_by_gap_analysis
@@ -17,8 +19,10 @@ records:
     with the relevant obligations of the provider and deployer set out in Section 3.
   action: ensure a type and degree of transparency appropriate for provider and deployer compliance with
     Section 3
-  subject_ref: provider
-  subject_category: supported_operator
+  actors:
+  - actor_ref: provider
+    category: supported_operator
+  targets: []
   implementation_refs: *id001
   verification_mode: judged_by_gap_analysis
   verified_by: vidibro
@@ -29,8 +33,10 @@ records:
     and comprehensible to deployers.
   action: accompany the high-risk AI system with instructions for use in an appropriate digital or other
     format containing concise, complete, correct, clear, relevant, accessible, and comprehensible information
-  subject_ref: provider
-  subject_category: supported_operator
+  actors:
+  - actor_ref: provider
+    category: supported_operator
+  targets: []
   mandatory_content:
   - concise information
   - complete information
@@ -48,8 +54,10 @@ records:
     representative
   action: "include the provider\u2019s identity and contact details and, where applicable, those of its\
     \ authorised representative in the instructions"
-  subject_ref: provider
-  subject_category: supported_operator
+  actors:
+  - actor_ref: provider
+    category: supported_operator
+  targets: []
   qualifier_spans: &id002
   - A013-P003
   implementation_refs: &id003
@@ -61,8 +69,10 @@ records:
   quote: the characteristics, capabilities and limitations of performance of the high-risk AI system
   action: "include the system\u2019s characteristics, capabilities, and performance limitations in the\
     \ instructions"
-  subject_ref: provider
-  subject_category: supported_operator
+  actors:
+  - actor_ref: provider
+    category: supported_operator
+  targets: []
   qualifier_spans: *id002
   implementation_refs: *id003
   verification_mode: judged_by_gap_analysis
@@ -71,8 +81,10 @@ records:
   source: A013-P006
   quote: its intended purpose
   action: "include the system\u2019s intended purpose in the instructions"
-  subject_ref: provider
-  subject_category: supported_operator
+  actors:
+  - actor_ref: provider
+    category: supported_operator
+  targets: []
   qualifier_spans: &id004
   - A013-P003
   - A013-P005
@@ -87,8 +99,10 @@ records:
     robustness and cybersecurity
   action: include tested, validated, and expected accuracy levels and metrics, robustness and cybersecurity,
     plus known and foreseeable circumstances that may affect that expected performance
-  subject_ref: provider
-  subject_category: supported_operator
+  actors:
+  - actor_ref: provider
+    category: supported_operator
+  targets: []
   qualifier_spans: *id004
   mandatory_content:
   - tested, validated, and expected accuracy levels and metrics, robustness, and cybersecurity
@@ -103,8 +117,10 @@ records:
     risks to the health and safety or fundamental rights referred to in Article 9(2)
   action: include known or foreseeable intended-use or misuse circumstances that may create health, safety,
     or fundamental-rights risks
-  subject_ref: provider
-  subject_category: supported_operator
+  actors:
+  - actor_ref: provider
+    category: supported_operator
+  targets: []
   qualifier_spans: *id004
   implementation_refs: *id003
   verification_mode: judged_by_gap_analysis
@@ -114,8 +130,10 @@ records:
   quote: where applicable, the technical capabilities and characteristics of the high-risk AI system to
     provide information that is relevant to explain its output
   action: include technical capabilities and characteristics relevant to explaining system outputs
-  subject_ref: provider
-  subject_category: supported_operator
+  actors:
+  - actor_ref: provider
+    category: supported_operator
+  targets: []
   qualifier_spans: *id004
   conditions:
   - the system has technical capabilities or characteristics relevant to explaining its output
@@ -128,8 +146,10 @@ records:
     system is intended to be used
   action: include performance concerning specific persons or groups on which the system is intended to
     be used
-  subject_ref: provider
-  subject_category: supported_operator
+  actors:
+  - actor_ref: provider
+    category: supported_operator
+  targets: []
   qualifier_spans: *id004
   conditions:
   - information about performance for intended persons or groups is appropriate
@@ -143,8 +163,10 @@ records:
     the high-risk AI system
   action: include input-data specifications or other relevant information about the training, validation,
     and testing datasets used
-  subject_ref: provider
-  subject_category: supported_operator
+  actors:
+  - actor_ref: provider
+    category: supported_operator
+  targets: []
   qualifier_spans: *id004
   conditions:
   - input-data specifications or dataset information is appropriate for the intended purpose
@@ -156,8 +178,10 @@ records:
   quote: where applicable, information to enable deployers to interpret the output of the high-risk AI
     system and use it appropriately
   action: include information enabling deployers to interpret system outputs and use them appropriately
-  subject_ref: provider
-  subject_category: supported_operator
+  actors:
+  - actor_ref: provider
+    category: supported_operator
+  targets: []
   qualifier_spans: *id004
   conditions:
   - information is applicable to deployer interpretation and appropriate use of system outputs
@@ -169,8 +193,10 @@ records:
   quote: the changes to the high-risk AI system and its performance which have been pre-determined by
     the provider at the moment of the initial conformity assessment, if any
   action: include system and performance changes predetermined at the initial conformity assessment
-  subject_ref: provider
-  subject_category: supported_operator
+  actors:
+  - actor_ref: provider
+    category: supported_operator
+  targets: []
   qualifier_spans: *id002
   conditions:
   - the provider predetermined changes to the system or its performance at the initial conformity assessment
@@ -183,8 +209,10 @@ records:
     in place to facilitate the interpretation of the outputs of the high-risk AI systems by the deployers
   action: include the Article 14 human-oversight measures, including technical measures facilitating deployer
     interpretation of high-risk AI-system outputs, in the instructions
-  subject_ref: provider
-  subject_category: supported_operator
+  actors:
+  - actor_ref: provider
+    category: supported_operator
+  targets: []
   qualifier_spans: *id002
   mandatory_content:
   - Article 14 human-oversight measures
@@ -199,8 +227,10 @@ records:
     of that AI system, including as regards software updates
   action: include the needed computational and hardware resources, expected system lifetime, and necessary
     maintenance and care measures, their frequency, and software-update needs for proper functioning
-  subject_ref: provider
-  subject_category: supported_operator
+  actors:
+  - actor_ref: provider
+    category: supported_operator
+  targets: []
   qualifier_spans: *id002
   mandatory_content:
   - needed computational and hardware resources
@@ -215,8 +245,10 @@ records:
     allows deployers to properly collect, store and interpret the logs in accordance with Article 12
   action: describe relevant system mechanisms that let deployers properly collect, store, and interpret
     Article 12 logs
-  subject_ref: provider
-  subject_category: supported_operator
+  actors:
+  - actor_ref: provider
+    category: supported_operator
+  targets: []
   qualifier_spans: *id002
   conditions:
   - the system includes mechanisms relevant to deployer collection, storage, or interpretation of logs

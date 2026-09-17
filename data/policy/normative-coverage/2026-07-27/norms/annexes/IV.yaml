@@ -3,9 +3,10 @@ norms:
 - norm_id: AIA-NORM-ANNEX-IV-CONTENT
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: provider
+  actors:
+  - actor_ref: provider
     category: supported_operator
+  targets: []
   action: include all nine applicable Annex IV information groups in technical documentation
   norm_text: shall contain at least the following information
   detection_channels:

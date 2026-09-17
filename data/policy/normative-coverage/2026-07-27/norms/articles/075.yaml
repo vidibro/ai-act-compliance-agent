@@ -3,9 +3,10 @@ norms:
 - norm_id: AIA-NORM-A075-P1-COMPETENCE
   act_version_date: '2026-07-27'
   kind: legal_consequence
-  subjects:
-  - subject_ref: ai_office
+  actors:
+  - actor_ref: ai_office
     category: union_institution_or_body
+  targets: []
   action: hold exclusive supervision and enforcement competence for the listed systems
   norm_text: 'The AI Office shall be exclusively competent for the supervision and enforcement of the
     obligations under this Regulation in relation to the following AI systems:'
@@ -59,9 +60,10 @@ norms:
 - norm_id: AIA-NORM-A075-P1-COMPETENCE-ADDRESSEES
   act_version_date: '2026-07-27'
   kind: applicability
-  subjects:
-  - subject_ref: ai_office
+  actors:
+  - actor_ref: ai_office
     category: union_institution_or_body
+  targets: []
   action: apply the AI Office's exclusive competence to providers and only to deployers that are the provider
     or in its undertaking
   norm_text: The exclusive competence referred to in the first subparagraph shall apply to the providers
@@ -96,9 +98,10 @@ norms:
 - norm_id: AIA-NORM-A075-P1A-REPORT-SERIOUS-INCIDENTS
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: provider
+  actors:
+  - actor_ref: provider
     category: supported_operator
+  targets: []
   action: report serious incidents to the AI Office rather than through the Article 73 route
   norm_text: By way of derogation from Article 73, providers of high-risk AI systems subject to the competence
     of the AI Office pursuant to paragraph 1 of this Article shall report any serious incidents to the
@@ -134,9 +137,10 @@ norms:
 - norm_id: AIA-NORM-A075-P1A-APPLY-ARTICLE-73-PROCEDURE
   act_version_date: '2026-07-27'
   kind: applicability
-  subjects:
-  - subject_ref: provider
+  actors:
+  - actor_ref: provider
     category: supported_operator
+  targets: []
   action: follow the Article 73(2) to (9) reporting procedure when reporting to the AI Office
   norm_text: Article 73 (2) to (9), shall apply mutatis mutandis.
   detection_channels:
@@ -171,9 +175,10 @@ norms:
 - norm_id: AIA-NORM-A075-P1A-TRANSMIT-INCIDENT-INFORMATION
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: ai_office
+  actors:
+  - actor_ref: ai_office
     category: union_institution_or_body
+  targets: []
   action: promptly transmit relevant incident information to the territorially competent market surveillance
     authority
   norm_text: The AI Office shall promptly transmit the relevant information to the market surveillance
@@ -207,9 +212,10 @@ norms:
 - norm_id: AIA-NORM-A075-P1B-COOPERATE-AND-ASSIST
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: authorities_involved_in_application
+  actors:
+  - actor_ref: authorities_involved_in_application
     category: public_authority
+  targets: []
   action: actively cooperate with and provide necessary assistance to the AI Office including for territorial
     inspections and enforcement
   norm_text: The authorities involved in the application of this Regulation shall cooperate actively with
@@ -244,9 +250,10 @@ norms:
 - norm_id: AIA-NORM-A075-P1B-AUTHORITY-POWERS
   act_version_date: '2026-07-27'
   kind: power
-  subjects:
-  - subject_ref: authorities_involved_in_application
+  actors:
+  - actor_ref: authorities_involved_in_application
     category: public_authority
+  targets: []
   action: exercise the enacted powers only as relevant and necessary under applicable national procedures
   norm_text: To that end, those authorities shall enjoy the powers provided for pursuant to this Regulation
     and Regulation (EU) 2019/1020, and where relevant and limited to what is necessary to fulfil their
@@ -280,9 +287,10 @@ norms:
 - norm_id: AIA-NORM-A075-P1C-ASSIST-PUBLIC-DATA-ACTION
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: market_surveillance_authority
+  actors:
+  - actor_ref: market_surveillance_authority
     category: public_authority
+  targets: []
   action: assist AI Office territorial action involving access to a public authority's data or AI system
   norm_text: "When taking investigatory or enforcement action in the territory of a Member State that\
     \ involves access to a public authority\u2019s data or AI system, the AI Office shall be assisted\
@@ -317,9 +325,10 @@ norms:
 - norm_id: AIA-NORM-A075-P1D-NOTIFY-MARKET-AUTHORITY
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: ai_office
+  actors:
+  - actor_ref: ai_office
     category: union_institution_or_body
+  targets: []
   action: notify the competent market authority without undue delay before a prohibition restriction withdrawal
     or recall decision
   norm_text: Before taking a decision that would have the effect of prohibiting or restricting the AI
@@ -355,9 +364,10 @@ norms:
 - norm_id: AIA-NORM-A075-P1D-CONSULT-AUTHORITIES
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: ai_office
+  actors:
+  - actor_ref: ai_office
     category: union_institution_or_body
+  targets: []
   action: consult involved authorities where appropriate on application and enforcement matters
   norm_text: The AI Office shall consult the authorities involved in the application of this Regulation,
     where appropriate, on any matter relating to the application and enforcement of this Regulation.
@@ -389,9 +399,10 @@ norms:
 - norm_id: AIA-NORM-A075-P1E-RESPONSIBLE
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: ai_office
+  actors:
+  - actor_ref: ai_office
     category: union_institution_or_body
+  targets: []
   action: take responsibility for third-party conformity assessments and tests of paragraph 1 systems
   norm_text: The AI Office shall be responsible for conformity assessments and tests of AI systems referred
     to in paragraph 1 of this Article that are classified as high-risk and subject to a third-party conformity
@@ -426,9 +437,10 @@ norms:
 - norm_id: AIA-NORM-A075-P1E-VERIFY
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: ai_office
+  actors:
+  - actor_ref: ai_office
     category: union_institution_or_body
+  targets: []
   action: verify regulatory conformity and market eligibility
   norm_text: Those tests and assessments shall verify that the systems comply with the relevant requirements
     of this Regulation and may be placed on the market or put into service in the Union in accordance
@@ -463,9 +475,10 @@ norms:
 - norm_id: AIA-NORM-A075-P1E-ENTRUST
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: commission
+  actors:
+  - actor_ref: commission
     category: union_institution_or_body
+  targets: []
   action: entrust tests or assessments to designated notified bodies
   norm_text: The Commission shall entrust the performance of those tests or assessments to notified bodies
   detection_channels:
@@ -496,9 +509,10 @@ norms:
 - norm_id: AIA-NORM-A075-P1E-ACT
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: notified_body
+  actors:
+  - actor_ref: notified_body
     category: notified_or_conformity_body
+  targets: []
   action: act on the Commission's behalf when entrusted
   norm_text: the notified body shall act on behalf of the Commission
   detection_channels:
@@ -530,9 +544,10 @@ norms:
 - norm_id: AIA-NORM-A075-P1E-WITHDRAW
   act_version_date: '2026-07-27'
   kind: power
-  subjects:
-  - subject_ref: commission
+  actors:
+  - actor_ref: commission
     category: union_institution_or_body
+  targets: []
   action: withdraw an inadequately performed delegation immediately
   norm_text: If a notified body to which the Commission has delegated tasks under this paragraph does
     not perform those tasks adequately, the Commission may withdraw the delegation with immediate effect.
@@ -565,9 +580,10 @@ norms:
 - norm_id: AIA-NORM-A075-P1E-FEES
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: provider
+  actors:
+  - actor_ref: provider
     category: supported_operator
+  targets: []
   action: bear testing and assessment fees
   norm_text: The fees for testing and assessment activities shall be levied on the provider of a high-risk
     AI system who has applied for a third-party conformity assessment to the Commission.
@@ -601,9 +617,10 @@ norms:
 - norm_id: AIA-NORM-A075-P1E-PAY
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: provider
+  actors:
+  - actor_ref: provider
     category: supported_operator
+  targets: []
   action: pay entrusted-service costs directly to the notified body
   norm_text: The provider shall pay the costs related to the services entrusted by the Commission to the
     notified bodies in accordance with this Article directly to the notified body.
@@ -637,9 +654,10 @@ norms:
 - norm_id: AIA-NORM-A075-P2-COOPERATE-ON-GPAI-SYSTEMS
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: market_surveillance_authority
+  actors:
+  - actor_ref: market_surveillance_authority
     category: public_authority
+  targets: []
   action: cooperate with the AI Office to carry out compliance evaluations and inform the Board and other
     market surveillance authorities accordingly
   norm_text: they shall cooperate with the AI Office to carry out compliance evaluations, and shall inform
@@ -676,9 +694,10 @@ norms:
 - norm_id: AIA-NORM-A075-P2A-REQUEST-ASSESSMENT
   act_version_date: '2026-07-27'
   kind: power
-  subjects:
-  - subject_ref: market_surveillance_authority
+  actors:
+  - actor_ref: market_surveillance_authority
     category: public_authority
+  targets: []
   action: request, through the relevant Article 70(2) single point of contact, a duly reasoned AI Office
     assessment of the matter so that the necessary supervisory and enforcement measures ensure prompt
     compliance
@@ -726,9 +745,10 @@ norms:
 - norm_id: AIA-NORM-A075-P2A-ACCOUNT-FOR-REQUEST
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: ai_office
+  actors:
+  - actor_ref: ai_office
     category: union_institution_or_body
+  targets: []
   action: take utmost account of a market surveillance authority's assessment request
   norm_text: The AI Office shall take utmost account of the request
   detection_channels:
@@ -759,9 +779,10 @@ norms:
 - norm_id: AIA-NORM-A075-P2A-ASSIST-AI-OFFICE
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: market_surveillance_authority
+  actors:
+  - actor_ref: market_surveillance_authority
     category: public_authority
+  targets: []
   action: actively cooperate with and provide necessary assistance to the AI Office on the requested assessment
   norm_text: the market surveillance authority shall cooperate actively and provide the AI Office the
     necessary assistance for the exercise of its powers
@@ -794,9 +815,10 @@ norms:
 - norm_id: AIA-NORM-A075-P2A-RESPOND-AND-UPDATE
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: ai_office
+  actors:
+  - actor_ref: ai_office
     category: union_institution_or_body
+  targets: []
   action: inform the single point of contact, without undue delay and no later than four months after
     receiving the request, of the intention to exercise the Article 75a powers or of the reasons for not
     exercising them
@@ -832,9 +854,10 @@ norms:
 - norm_id: AIA-NORM-A075-P2A-UPDATE-ON-PROCEEDINGS
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: ai_office
+  actors:
+  - actor_ref: ai_office
     category: union_institution_or_body
+  targets: []
   action: periodically inform the single point of contact about major developments in the proceedings
     and about their outcome, without disclosing any confidential information
   norm_text: If the AI Office decides to exercise its powers in accordance with Article 75a, it shall
@@ -871,9 +894,10 @@ norms:
 - norm_id: AIA-NORM-A075-P3-REQUEST-INFORMATION-ACCESS
   act_version_date: '2026-07-27'
   kind: power
-  subjects:
-  - subject_ref: market_surveillance_authority
+  actors:
+  - actor_ref: market_surveillance_authority
     category: public_authority
+  targets: []
   action: submit a reasoned request to enforce access after appropriate efforts fail to obtain GPAI-model
     information needed to conclude an investigation
   norm_text: Where a market surveillance authority is unable to conclude its investigation of the high-risk
@@ -911,9 +935,10 @@ norms:
 - norm_id: AIA-NORM-A075-P3-SUPPLY-INFORMATION
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: ai_office
+  actors:
+  - actor_ref: ai_office
     category: union_institution_or_body
+  targets: []
   action: supply relevant requested compliance information without delay and within 30 days
   norm_text: In that case, the AI Office shall supply to the applicant authority without delay, and in
     any event within 30 days, any information that the AI Office considers to be relevant in order to
@@ -948,9 +973,10 @@ norms:
 - norm_id: AIA-NORM-A075-P3-SAFEGUARD-CONFIDENTIALITY
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: market_surveillance_authority
+  actors:
+  - actor_ref: market_surveillance_authority
     category: public_authority
+  targets: []
   action: safeguard obtained information under Article 78 confidentiality
   norm_text: Market surveillance authorities shall safeguard the confidentiality of the information that
     they obtain in accordance with Article 78 of this Regulation.
@@ -982,9 +1008,10 @@ norms:
 - norm_id: AIA-NORM-A075-P3-APPLY-MUTUAL-ASSISTANCE-PROCEDURE
   act_version_date: '2026-07-27'
   kind: applicability
-  subjects:
-  - subject_ref: market_surveillance_authority_and_ai_office
+  actors:
+  - actor_ref: market_surveillance_authority_and_ai_office
     category: public_authority
+  targets: []
   action: apply the Regulation 2019/1020 Chapter VI procedure with necessary adaptations
   norm_text: The procedure provided for in Chapter VI of Regulation (EU) 2019/1020 shall apply mutatis
     mutandis.

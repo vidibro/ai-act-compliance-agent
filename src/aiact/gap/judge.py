@@ -555,7 +555,7 @@ def _condition_text(condition: str | ConditionGroup) -> str:
 def _criterion_lines(criterion: RuleCriterion) -> str:
     lines = [
         f"- {criterion.norm_id}",
-        f"    duty-holder: {', '.join(criterion.subjects)}",
+        f"    duty-holder: {', '.join(criterion.actors)}",
         f"    must: {criterion.action}",
         f'    enacted words: "{criterion.norm_text}"',
     ]

@@ -3,9 +3,10 @@ norms:
 - norm_id: AIA-NORM-A087-WHISTLEBLOWER-DIRECTIVE
   act_version_date: '2026-07-27'
   kind: applicability
-  subjects:
-  - subject_ref: authority_applying_article_87
+  actors:
+  - actor_ref: authority_applying_article_87
     category: public_authority
+  targets: []
   action: apply Directive 2019/1937 to AI Act infringement reporting and reporting-person protection
   norm_text: Directive (EU) 2019/1937 shall apply to the reporting of infringements of this Regulation
     and the protection of persons reporting such infringements.

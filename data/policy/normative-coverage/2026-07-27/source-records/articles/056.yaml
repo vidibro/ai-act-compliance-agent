@@ -6,8 +6,10 @@ records:
     approaches.
   action: encourage and facilitate Union-level codes of practice supporting proper application while considering
     international approaches
-  subject_ref: ai_office
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: ai_office
+    category: union_institution_or_body
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -18,8 +20,10 @@ records:
   quote: The AI Office and the Board shall aim to ensure that the codes of practice cover at least the
     obligations provided for in Articles 53 and 55, including the following issues
   action: aim to ensure codes cover Articles 53 and 55 and every listed implementation issue
-  subject_ref: ai_office_and_board
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: ai_office_and_board
+    category: union_institution_or_body
+  targets: []
   mandatory_content:
   - keeping Article 53(1)(a) and (b) information current
   - adequate detail for the training-content summary
@@ -42,8 +46,10 @@ records:
     in which such risks may emerge and materialise along the AI value chain.
   action: make code measures proportionate and responsive to severity, probability, and AI-value-chain
     emergence challenges
-  subject_ref: ai_office_and_board
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: ai_office_and_board
+    category: union_institution_or_body
+  targets: []
   mandatory_content:
   - risk proportionality
   - severity and probability
@@ -58,8 +64,10 @@ records:
   quote: The AI Office may invite all providers of general-purpose AI models, as well as relevant national
     competent authorities, to participate in the drawing-up of codes of practice.
   action: invite general-purpose-model providers and relevant national authorities to draw up codes
-  subject_ref: ai_office
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: ai_office
+    category: union_institution_or_body
+  targets: []
   kind: power
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -71,8 +79,10 @@ records:
   quote: Civil society organisations, industry, academia and other relevant stakeholders, such as downstream
     providers and independent experts, may support the process.
   action: support the code-drawing process
-  subject_ref: relevant_stakeholder
-  subject_category: other
+  actors:
+  - actor_ref: relevant_stakeholder
+    category: external_private_party
+  targets: []
   kind: permission
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -88,8 +98,10 @@ records:
   action: aim to ensure codes state objectives, contain commitments, measures, and appropriate indicators
     to achieve them, and account for the needs and interests of all interested parties, including affected
     persons
-  subject_ref: ai_office_and_board
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: ai_office_and_board
+    category: union_institution_or_body
+  targets: []
   mandatory_content:
   - specific objectives
   - commitments or measures to achieve those objectives
@@ -109,8 +121,10 @@ records:
     including as measured against the key performance indicators as appropriate.
   action: aim to ensure regular participant reporting on commitments, measures, outcomes, and appropriate
     indicators
-  subject_ref: ai_office
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: ai_office
+    category: union_institution_or_body
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -121,8 +135,10 @@ records:
   quote: Key performance indicators and reporting commitments shall reflect differences in size and capacity
     between various participants.
   action: make indicators and reporting commitments reflect participant size and capacity differences
-  subject_ref: ai_office
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: ai_office
+    category: union_institution_or_body
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -134,8 +150,10 @@ records:
     of the codes of practice by the participants and their contribution to the proper application of this
     Regulation.
   action: regularly monitor and evaluate participant achievement and codes' contribution to proper application
-  subject_ref: commission_and_board
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: commission_and_board
+    category: union_institution_or_body
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -146,8 +164,10 @@ records:
   quote: The Commission, taking utmost account of the opinion of the Board, shall assess whether the codes
     of practice cover the obligations provided for in Articles 53 and 55
   action: assess Article 53 and 55 coverage while taking utmost account of the Board's opinion
-  subject_ref: commission
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: commission
+    category: union_institution_or_body
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -157,8 +177,10 @@ records:
   source: A056-P010
   quote: shall regularly monitor and evaluate the achievement of their objectives.
   action: regularly monitor and evaluate achievement of code objectives
-  subject_ref: commission
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: commission
+    category: union_institution_or_body
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -168,8 +190,10 @@ records:
   source: A056-P010
   quote: The Commission shall publish its assessment of the adequacy of the codes of practice.
   action: publish the assessment of code adequacy
-  subject_ref: commission
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: commission
+    category: union_institution_or_body
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -180,8 +204,10 @@ records:
   quote: The AI Office may invite all providers of general-purpose AI models to adhere to the codes of
     practice.
   action: invite all general-purpose-model providers to adhere to codes of practice
-  subject_ref: ai_office
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: ai_office
+    category: union_institution_or_body
+  targets: []
   kind: power
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -195,8 +221,10 @@ records:
     to join the full code.
   action: limit adherence to Article 53 for non-systemic-risk models unless the provider opts into the
     full code
-  subject_ref: provider
-  subject_category: supported_operator
+  actors:
+  - actor_ref: provider
+    category: supported_operator
+  targets: []
   kind: permission
   product_scope: no_product_action
   product_scope_reason: Defines the optional extent of code adherence rather than a required product action.
@@ -208,8 +236,10 @@ records:
   quote: The AI Office shall, as appropriate, also encourage and facilitate the review and adaptation
     of the codes of practice, in particular in light of emerging standards.
   action: encourage and facilitate review and adaptation of codes in light of emerging standards
-  subject_ref: ai_office
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: ai_office
+    category: union_institution_or_body
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -219,8 +249,10 @@ records:
   source: A056-P012
   quote: The AI Office shall assist in the assessment of available standards.
   action: assist assessment of available standards
-  subject_ref: ai_office
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: ai_office
+    category: union_institution_or_body
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -230,8 +262,10 @@ records:
   source: A056-P013
   quote: Codes of practice shall be ready at the latest by 2 May 2025.
   action: ensure codes of practice are ready by 2 May 2025
-  subject_ref: ai_office
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: ai_office
+    category: union_institution_or_body
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -242,8 +276,10 @@ records:
   quote: The AI Office shall take the necessary steps, including inviting providers pursuant to paragraph
     7.
   action: take necessary steps toward timely codes, including inviting providers under paragraph 7
-  subject_ref: ai_office
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: ai_office
+    category: union_institution_or_body
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -255,8 +291,10 @@ records:
     of the obligations provided for in Articles 53 and 55, including the issues set out in paragraph 2
     of this Article.
   action: adopt implementing acts providing common Article 53 and 55 implementation rules
-  subject_ref: commission
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: commission
+    category: union_institution_or_body
+  targets: []
   kind: power
   conditions:
   - no code is finalised by 2 August 2025 or the AI Office assesses the code as inadequate
@@ -270,8 +308,10 @@ records:
   quote: Those implementing acts shall be adopted in accordance with the examination procedure referred
     to in Article 98(2).
   action: adopt fallback common-rule acts under the Article 98(2) examination procedure
-  subject_ref: commission
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: commission
+    category: union_institution_or_body
+  targets: []
   conditions:
   - the Commission exercises the Article 56(9) implementing power
   product_scope: outside_supported_actor

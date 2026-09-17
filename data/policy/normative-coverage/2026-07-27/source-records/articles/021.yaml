@@ -9,8 +9,10 @@ records:
   action: provide a requesting competent authority with all information and documentation necessary to
     demonstrate Section 2 conformity, in an easily understood official EU-institution language indicated
     by the relevant Member State
-  subject_ref: provider
-  subject_category: supported_operator
+  actors:
+  - actor_ref: provider
+    category: supported_operator
+  targets: []
   conditions:
   - a competent authority makes a reasoned request
   implementation_refs: &id002
@@ -24,8 +26,10 @@ records:
     to in Article 12(1), to the extent such logs are under their control.
   action: "give a requesting competent authority access to applicable Article 12(1) logs under the provider\u2019\
     s control"
-  subject_ref: provider
-  subject_category: supported_operator
+  actors:
+  - actor_ref: provider
+    category: supported_operator
+  targets: []
   conditions:
   - a competent authority makes a reasoned request
   - "the applicable automatically generated logs are under the provider\u2019s control"
@@ -38,8 +42,10 @@ records:
   quote: Any information obtained by a competent authority pursuant to this Article shall be treated in
     accordance with the confidentiality obligations set out in Article 78.
   action: treat information obtained under Article 21 according to the Article 78 confidentiality obligations
-  subject_ref: competent_authority
-  subject_category: public_authority
+  actors:
+  - actor_ref: competent_authority
+    category: public_authority
+  targets: []
   implementation_mode: report_only
   implementation_refs:
   - AIA-PO-A21

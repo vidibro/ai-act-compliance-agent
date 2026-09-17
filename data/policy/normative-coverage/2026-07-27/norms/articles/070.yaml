@@ -3,9 +3,10 @@ norms:
 - norm_id: AIA-NORM-A070-P1-DESIGNATE-AND-SAFEGUARD-AUTHORITIES
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: member_state
+  actors:
+  - actor_ref: member_state
     category: member_state
+  targets: []
   action: establish or designate at least one notifying authority and at least one market surveillance
     authority as national competent authorities for the purposes of this Regulation
   norm_text: Each Member State shall establish or designate as national competent authorities at least
@@ -40,9 +41,10 @@ norms:
 - norm_id: AIA-NORM-A070-P1-INDEPENDENT-EXERCISE-OF-POWERS
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: national_competent_authority
+  actors:
+  - actor_ref: national_competent_authority
     category: public_authority
+  targets: []
   action: exercise the authority's powers independently, impartially and without bias so as to safeguard
     the objectivity of its activities and tasks and to ensure the application and implementation of this
     Regulation
@@ -77,9 +79,10 @@ norms:
 - norm_id: AIA-NORM-A070-P1-MEMBER-CONDUCT
   act_version_date: '2026-07-27'
   kind: prohibition
-  subjects:
-  - subject_ref: national_competent_authority_member
+  actors:
+  - actor_ref: national_competent_authority_member
     category: public_authority
+  targets: []
   action: refrain from any action incompatible with the member's duties
   norm_text: The members of those authorities shall refrain from any action incompatible with their duties.
   detection_channels:
@@ -110,9 +113,10 @@ norms:
 - norm_id: AIA-NORM-A070-P1-ORGANISATIONAL-FLEXIBILITY
   act_version_date: '2026-07-27'
   kind: permission
-  subjects:
-  - subject_ref: member_state
+  actors:
+  - actor_ref: member_state
     category: member_state
+  targets: []
   action: have the activities and tasks performed by one or more designated authorities according to the
     Member State's organisational needs
   norm_text: Provided that those principles are observed, such activities and tasks may be performed by
@@ -146,9 +150,10 @@ norms:
 - norm_id: AIA-NORM-A070-P2-AUTHORITY-AND-CONTACT-DISCLOSURES
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: member_state
+  actors:
+  - actor_ref: member_state
     category: member_state
+  targets: []
   action: communicate to the Commission the identity and tasks of the notifying and market surveillance
     authorities, and any subsequent changes to them
   norm_text: Member States shall communicate to the Commission the identity of the notifying authorities
@@ -185,9 +190,10 @@ norms:
 - norm_id: AIA-NORM-A070-P2-PUBLISH-CONTACT-INFORMATION
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: member_state
+  actors:
+  - actor_ref: member_state
     category: member_state
+  targets: []
   action: make information on how to contact the competent authorities and single points of contact publicly
     available through electronic communication means by 2 August 2025
   norm_text: Member States shall make publicly available information on how competent authorities and
@@ -220,9 +226,10 @@ norms:
 - norm_id: AIA-NORM-A070-P2-DESIGNATE-SINGLE-POINT-OF-CONTACT
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: member_state
+  actors:
+  - actor_ref: member_state
     category: member_state
+  targets: []
   action: designate a market surveillance authority as the single point of contact for this Regulation
     and notify the Commission of its identity
   norm_text: Member States shall designate a market surveillance authority to act as the single point
@@ -256,9 +263,10 @@ norms:
 - norm_id: AIA-NORM-A070-P2-PUBLISH-CONTACT-LIST
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: commission
+  actors:
+  - actor_ref: commission
     category: union_institution_or_body
+  targets: []
   action: publicly provide the single-point-of-contact list
   norm_text: The Commission shall make a list of the single points of contact publicly available.
   detection_channels:
@@ -289,9 +297,10 @@ norms:
 - norm_id: AIA-NORM-A070-P3-ADEQUATE-RESOURCES-AND-COMPETENCE
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: member_state
+  actors:
+  - actor_ref: member_state
     category: member_state
+  targets: []
   action: ensure the national competent authorities are provided with adequate technical, financial and
     human resources and with infrastructure to fulfil their tasks effectively
   norm_text: Member States shall ensure that their national competent authorities are provided with adequate
@@ -329,9 +338,10 @@ norms:
 - norm_id: AIA-NORM-A070-P3-PERMANENT-EXPERT-PERSONNEL
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: national_competent_authority
+  actors:
+  - actor_ref: national_competent_authority
     category: public_authority
+  targets: []
   action: keep a sufficient number of personnel permanently available whose competences and expertise
     cover every enacted field
   norm_text: the national competent authorities shall have a sufficient number of personnel permanently
@@ -373,9 +383,10 @@ norms:
 - norm_id: AIA-NORM-A070-P3-ANNUAL-REASSESSMENT
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: member_state
+  actors:
+  - actor_ref: member_state
     category: member_state
+  targets: []
   action: assess the paragraph 3 competence and resource requirements annually and update them where necessary
   norm_text: Member States shall assess and, if necessary, update competence and resource requirements
     referred to in this paragraph on an annual basis.
@@ -407,9 +418,10 @@ norms:
 - norm_id: AIA-NORM-A070-P4-ADEQUATE-CYBERSECURITY
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: national_competent_authority
+  actors:
+  - actor_ref: national_competent_authority
     category: public_authority
+  targets: []
   action: take appropriate measures ensuring adequate cybersecurity
   norm_text: National competent authorities shall take appropriate measures to ensure an adequate level
     of cybersecurity.
@@ -441,9 +453,10 @@ norms:
 - norm_id: AIA-NORM-A070-P5-ARTICLE-78-CONFIDENTIALITY
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: national_competent_authority
+  actors:
+  - actor_ref: national_competent_authority
     category: public_authority
+  targets: []
   action: comply with Article 78 confidentiality when performing authority tasks
   norm_text: When performing their tasks, the national competent authorities shall act in accordance with
     the confidentiality obligations set out in Article 78.
@@ -475,9 +488,10 @@ norms:
 - norm_id: AIA-NORM-A070-P6-RESOURCE-STATUS-REPORT
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: member_state
+  actors:
+  - actor_ref: member_state
     category: member_state
+  targets: []
   action: report authority financial and human resource status and adequacy by 2 August 2025 and biennially
     thereafter
   norm_text: By 2 August 2025, and once every two years thereafter, Member States shall report to the
@@ -511,9 +525,10 @@ norms:
 - norm_id: AIA-NORM-A070-P6-TRANSMIT-RESOURCE-INFORMATION
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: commission
+  actors:
+  - actor_ref: commission
     category: union_institution_or_body
+  targets: []
   action: transmit Member State authority-resource information to the Board
   norm_text: The Commission shall transmit that information to the Board for discussion and possible recommendations.
   detection_channels:
@@ -544,9 +559,10 @@ norms:
 - norm_id: AIA-NORM-A070-P7-FACILITATE-EXPERIENCE-EXCHANGE
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: commission
+  actors:
+  - actor_ref: commission
     category: union_institution_or_body
+  targets: []
   action: facilitate experience exchange among national competent authorities
   norm_text: The Commission shall facilitate the exchange of experience between national competent authorities.
   detection_channels:
@@ -577,9 +593,10 @@ norms:
 - norm_id: AIA-NORM-A070-P8-GUIDANCE-AND-CONSULTATION
   act_version_date: '2026-07-27'
   kind: power
-  subjects:
-  - subject_ref: national_competent_authority
+  actors:
+  - actor_ref: national_competent_authority
     category: public_authority
+  targets: []
   action: provide Board-and-Commission-informed implementation guidance and consult authorities responsible
     for other applicable Union law
   norm_text: National competent authorities may provide guidance and advice on the implementation of this
@@ -617,9 +634,10 @@ norms:
 - norm_id: AIA-NORM-A070-P9-EDPS-COMPETENT-AUTHORITY
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: european_data_protection_supervisor
+  actors:
+  - actor_ref: european_data_protection_supervisor
     category: union_institution_or_body
+  targets: []
   action: act as competent supervisory authority for in-scope Union institutions bodies offices and agencies
   norm_text: Where Union institutions, bodies, offices or agencies fall within the scope of this Regulation,
     the European Data Protection Supervisor shall act as the competent authority for their supervision.

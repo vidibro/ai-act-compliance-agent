@@ -4,8 +4,10 @@ records:
   quote: 'The AI Office shall be exclusively competent for the supervision and enforcement of the obligations
     under this Regulation in relation to the following AI systems:'
   action: hold exclusive supervision and enforcement competence for the listed systems
-  subject_ref: ai_office
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: ai_office
+    category: union_institution_or_body
+  targets: []
   kind: legal_consequence
   mandatory_content:
   - AI systems based on general-purpose AI models where the model and the system are developed by the
@@ -42,8 +44,10 @@ records:
     or form part of the same undertaking as the provider.
   action: apply the AI Office's exclusive competence to providers and only to deployers that are the provider
     or in its undertaking
-  subject_ref: ai_office
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: ai_office
+    category: union_institution_or_body
+  targets: []
   kind: applicability
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -56,8 +60,10 @@ records:
     of the AI Office pursuant to paragraph 1 of this Article shall report any serious incidents to the
     AI Office
   action: report serious incidents to the AI Office rather than through the Article 73 route
-  subject_ref: provider
-  subject_category: supported_operator
+  actors:
+  - actor_ref: provider
+    category: supported_operator
+  targets: []
   conditions:
   - the high-risk AI system is subject to the competence of the AI Office pursuant to Article 75(1)
   implementation_refs:
@@ -68,8 +74,10 @@ records:
   source: A075-P009
   quote: Article 73 (2) to (9), shall apply mutatis mutandis.
   action: follow the Article 73(2) to (9) reporting procedure when reporting to the AI Office
-  subject_ref: provider
-  subject_category: supported_operator
+  actors:
+  - actor_ref: provider
+    category: supported_operator
+  targets: []
   kind: applicability
   conditions:
   - a serious incident is reported to the AI Office under Article 75(1a)
@@ -83,8 +91,10 @@ records:
     of the Member State in the territory of which the provider or its legal representative is situated.
   action: promptly transmit relevant incident information to the territorially competent market surveillance
     authority
-  subject_ref: ai_office
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: ai_office
+    category: union_institution_or_body
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -98,8 +108,10 @@ records:
     of a Member State.
   action: actively cooperate with and provide necessary assistance to the AI Office including for territorial
     inspections and enforcement
-  subject_ref: authorities_involved_in_application
-  subject_category: public_authority
+  actors:
+  - actor_ref: authorities_involved_in_application
+    category: public_authority
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -111,8 +123,10 @@ records:
     and Regulation (EU) 2019/1020, and where relevant and limited to what is necessary to fulfil their
     tasks under this paragraph, in accordance with the applicable national procedures.
   action: exercise the enacted powers only as relevant and necessary under applicable national procedures
-  subject_ref: authorities_involved_in_application
-  subject_category: public_authority
+  actors:
+  - actor_ref: authorities_involved_in_application
+    category: public_authority
+  targets: []
   kind: power
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -127,8 +141,10 @@ records:
     \ access to a public authority\u2019s data or AI system, the AI Office shall be assisted by the relevant\
     \ market surveillance authority."
   action: assist AI Office territorial action involving access to a public authority's data or AI system
-  subject_ref: market_surveillance_authority
-  subject_category: public_authority
+  actors:
+  - actor_ref: market_surveillance_authority
+    category: public_authority
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -145,8 +161,10 @@ records:
     authority competent for that market of its intention to take such a decision.
   action: notify the competent market authority without undue delay before a prohibition restriction withdrawal
     or recall decision
-  subject_ref: ai_office
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: ai_office
+    category: union_institution_or_body
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -159,8 +177,10 @@ records:
   quote: The AI Office shall consult the authorities involved in the application of this Regulation, where
     appropriate, on any matter relating to the application and enforcement of this Regulation.
   action: consult involved authorities where appropriate on application and enforcement matters
-  subject_ref: ai_office
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: ai_office
+    category: union_institution_or_body
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -172,8 +192,10 @@ records:
     to in paragraph 1 of this Article that are classified as high-risk and subject to a third-party conformity
     assessment pursuant to Article 43 before such AI systems are placed on the market or put into service.
   action: take responsibility for third-party conformity assessments and tests of paragraph 1 systems
-  subject_ref: ai_office
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: ai_office
+    category: union_institution_or_body
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -188,8 +210,10 @@ records:
     of this Regulation and may be placed on the market or put into service in the Union in accordance
     with this Regulation.
   action: verify regulatory conformity and market eligibility
-  subject_ref: ai_office
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: ai_office
+    category: union_institution_or_body
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -201,8 +225,10 @@ records:
   source: A075-P013
   quote: The Commission shall entrust the performance of those tests or assessments to notified bodies
   action: entrust tests or assessments to designated notified bodies
-  subject_ref: commission
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: commission
+    category: union_institution_or_body
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -212,8 +238,10 @@ records:
   source: A075-P013
   quote: the notified body shall act on behalf of the Commission
   action: act on the Commission's behalf when entrusted
-  subject_ref: notified_body
-  subject_category: notified_or_conformity_body
+  actors:
+  - actor_ref: notified_body
+    category: notified_or_conformity_body
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -226,8 +254,10 @@ records:
   quote: If a notified body to which the Commission has delegated tasks under this paragraph does not
     perform those tasks adequately, the Commission may withdraw the delegation with immediate effect.
   action: withdraw an inadequately performed delegation immediately
-  subject_ref: commission
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: commission
+    category: union_institution_or_body
+  targets: []
   kind: power
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -241,8 +271,10 @@ records:
   quote: The fees for testing and assessment activities shall be levied on the provider of a high-risk
     AI system who has applied for a third-party conformity assessment to the Commission.
   action: bear testing and assessment fees
-  subject_ref: provider
-  subject_category: supported_operator
+  actors:
+  - actor_ref: provider
+    category: supported_operator
+  targets: []
   implementation_refs:
   - AIA-PO-A75-1E
   verification_mode: reported_not_judged
@@ -251,8 +283,10 @@ records:
   quote: The provider shall pay the costs related to the services entrusted by the Commission to the notified
     bodies in accordance with this Article directly to the notified body.
   action: pay entrusted-service costs directly to the notified body
-  subject_ref: provider
-  subject_category: supported_operator
+  actors:
+  - actor_ref: provider
+    category: supported_operator
+  targets: []
   implementation_refs:
   - AIA-PO-A75-1E
   verification_mode: reported_not_judged
@@ -262,8 +296,10 @@ records:
     the Board and other market surveillance authorities accordingly.
   action: cooperate with the AI Office to carry out compliance evaluations and inform the Board and other
     market surveillance authorities accordingly
-  subject_ref: market_surveillance_authority
-  subject_category: public_authority
+  actors:
+  - actor_ref: market_surveillance_authority
+    category: public_authority
+  targets: []
   conditions:
   - the authority has sufficient reason to consider that general-purpose AI systems usable directly by
     deployers for at least one high-risk purpose are non-compliant
@@ -286,8 +322,10 @@ records:
   action: request, through the relevant Article 70(2) single point of contact, a duly reasoned AI Office
     assessment of the matter so that the necessary supervisory and enforcement measures ensure prompt
     compliance
-  subject_ref: market_surveillance_authority
-  subject_category: public_authority
+  actors:
+  - actor_ref: market_surveillance_authority
+    category: public_authority
+  targets: []
   kind: power
   mandatory_content:
   - provider or deployer name
@@ -309,8 +347,10 @@ records:
   source: A075-P020
   quote: The AI Office shall take utmost account of the request
   action: take utmost account of a market surveillance authority's assessment request
-  subject_ref: ai_office
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: ai_office
+    category: union_institution_or_body
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -321,8 +361,10 @@ records:
   quote: the market surveillance authority shall cooperate actively and provide the AI Office the necessary
     assistance for the exercise of its powers
   action: actively cooperate with and provide necessary assistance to the AI Office on the requested assessment
-  subject_ref: market_surveillance_authority
-  subject_category: public_authority
+  actors:
+  - actor_ref: market_surveillance_authority
+    category: public_authority
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -338,8 +380,10 @@ records:
   action: inform the single point of contact, without undue delay and no later than four months after
     receiving the request, of the intention to exercise the Article 75a powers or of the reasons for not
     exercising them
-  subject_ref: ai_office
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: ai_office
+    category: union_institution_or_body
+  targets: []
   mandatory_content:
   - the intention to exercise the Article 75a powers, or the reasons for not exercising them
   product_scope: outside_supported_actor
@@ -354,8 +398,10 @@ records:
     such proceedings, without disclosing any confidential information.
   action: periodically inform the single point of contact about major developments in the proceedings
     and about their outcome, without disclosing any confidential information
-  subject_ref: ai_office
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: ai_office
+    category: union_institution_or_body
+  targets: []
   conditions:
   - the AI Office decides to exercise its powers in accordance with Article 75a
   mandatory_content:
@@ -374,8 +420,10 @@ records:
     request to the AI Office, by which access to that information shall be enforced.
   action: submit a reasoned request to enforce access after appropriate efforts fail to obtain GPAI-model
     information needed to conclude an investigation
-  subject_ref: market_surveillance_authority
-  subject_category: public_authority
+  actors:
+  - actor_ref: market_surveillance_authority
+    category: public_authority
+  targets: []
   kind: power
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -391,8 +439,10 @@ records:
     event within 30 days, any information that the AI Office considers to be relevant in order to establish
     whether a high-risk AI system is non-compliant.
   action: supply relevant requested compliance information without delay and within 30 days
-  subject_ref: ai_office
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: ai_office
+    category: union_institution_or_body
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -406,8 +456,10 @@ records:
   quote: Market surveillance authorities shall safeguard the confidentiality of the information that they
     obtain in accordance with Article 78 of this Regulation.
   action: safeguard obtained information under Article 78 confidentiality
-  subject_ref: market_surveillance_authority
-  subject_category: public_authority
+  actors:
+  - actor_ref: market_surveillance_authority
+    category: public_authority
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -417,8 +469,10 @@ records:
   source: A075-P022
   quote: The procedure provided for in Chapter VI of Regulation (EU) 2019/1020 shall apply mutatis mutandis.
   action: apply the Regulation 2019/1020 Chapter VI procedure with necessary adaptations
-  subject_ref: market_surveillance_authority_and_ai_office
-  subject_category: public_authority
+  actors:
+  - actor_ref: market_surveillance_authority_and_ai_office
+    category: public_authority
+  targets: []
   kind: applicability
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.

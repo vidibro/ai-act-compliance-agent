@@ -7,8 +7,10 @@ records:
     97.
   action: assess annually the need to amend Annex III and Article 5 lists through the Article 97 delegation
     period
-  subject_ref: commission
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: commission
+    category: union_institution_or_body
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -19,8 +21,10 @@ records:
   quote: The Commission shall submit the findings of that assessment to the European Parliament and the
     Council.
   action: submit the annual Annex III and Article 5 amendment assessment findings to Parliament and Council
-  subject_ref: commission
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: commission
+    category: union_institution_or_body
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -32,8 +36,10 @@ records:
     the European Parliament and to the Council on the following
   action: evaluate and report by 2 August 2028 and every four years on specified Annex III transparency
     and governance amendments
-  subject_ref: commission
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: commission
+    category: union_institution_or_body
+  targets: []
   mandatory_content:
   - extending or adding Annex III area headings
   - amending Article 50 additional-transparency systems
@@ -55,8 +61,10 @@ records:
     a Union agency to resolve any identified shortcomings.
   action: submit a public four-year Regulation review report assessing enforcement structure and possible
     need for a Union agency
-  subject_ref: commission
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: commission
+    category: union_institution_or_body
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -67,8 +75,10 @@ records:
   quote: On the basis of the findings, that report shall, where appropriate, be accompanied by a proposal
     for amendment of this Regulation.
   action: accompany the review report with an AI Act amendment proposal when its findings make that appropriate
-  subject_ref: commission
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: commission
+    category: union_institution_or_body
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -80,8 +90,10 @@ records:
   source: A112-P006
   quote: The reports shall be made public
   action: make Article 112(3) review reports public
-  subject_ref: commission
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: commission
+    category: union_institution_or_body
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -92,8 +104,10 @@ records:
   quote: The reports referred to in paragraph 2 shall pay specific attention to the following
   action: address the specified authority-resource penalty standardisation and market-entry matters in
     paragraph 2 reports
-  subject_ref: commission
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: commission
+    category: union_institution_or_body
+  targets: []
   mandatory_content:
   - national competent authority financial technical and human resources
   - Member-State penalties and administrative fines
@@ -117,8 +131,10 @@ records:
     the AI Office and its enforcement competences and to increase its resources.
   action: evaluate by 2 August 2028 the AI Office's functioning powers competences status and resource
     needs
-  subject_ref: commission
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: commission
+    category: union_institution_or_body
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -129,8 +145,10 @@ records:
   quote: The Commission shall submit a report on its evaluation to the European Parliament and to the
     Council.
   action: submit the AI Office evaluation report to Parliament and Council
-  subject_ref: commission
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: commission
+    category: union_institution_or_body
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -144,8 +162,10 @@ records:
     binding measures or actions.
   action: review and report every four years from 2 August 2028 on energy-efficient GPAI standardisation
     and the need for further measures
-  subject_ref: commission
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: commission
+    category: union_institution_or_body
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -155,8 +175,10 @@ records:
   source: A112-P013
   quote: The report shall be submitted to the European Parliament and to the Council, and it shall be made public
   action: submit the energy-efficient GPAI standardisation report to Parliament and Council and make it public
-  subject_ref: commission
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: commission
+    category: union_institution_or_body
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -173,8 +195,10 @@ records:
     requirements for AI systems other than high-risk AI systems, including as regards environmental sustainability.
   action: evaluate every three years from 2 August 2028 the impact and effectiveness of voluntary non-high-risk
     AI codes
-  subject_ref: commission
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: commission
+    category: union_institution_or_body
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -185,8 +209,10 @@ records:
   quote: For the purposes of paragraphs 1 to 7, the Board, the Member States and national competent authorities
     shall provide the Commission with information upon its request and without undue delay.
   action: provide requested information without undue delay for Article 112 evaluations and reviews
-  subject_ref: board_member_states_and_national_competent_authorities
-  subject_category: public_authority
+  actors:
+  - actor_ref: board_member_states_and_national_competent_authorities
+    category: public_authority
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -201,8 +227,10 @@ records:
     Council, and of other relevant bodies or sources.
   action: account for positions and findings of the Board Parliament Council and other relevant bodies
     or sources in Article 112 reviews
-  subject_ref: commission
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: commission
+    category: union_institution_or_body
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -215,8 +243,10 @@ records:
   quote: The Commission shall, if necessary, submit appropriate proposals to amend this Regulation
   action: submit necessary AI Act amendment proposals considering technological health safety fundamental-rights
     and information-society developments
-  subject_ref: commission
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: commission
+    category: union_institution_or_body
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -231,8 +261,10 @@ records:
     risk levels based on the criteria outlined in the relevant Articles and the inclusion of new systems
     in
   action: develop an objective participative methodology for risk-level evaluation and list inclusion
-  subject_ref: ai_office
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: ai_office
+    category: union_institution_or_body
+  targets: []
   mandatory_content:
   - Annex III systems and area headings
   - Article 5 prohibited practices
@@ -254,8 +286,10 @@ records:
     assessment and enforcement mechanisms and authorities established therein.
   action: account for sector regulatory specificities and existing governance conformity-assessment and
     enforcement structures in relevant amendments and acts
-  subject_ref: union_rulemaker
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: union_rulemaker
+    category: union_institution_or_body
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -271,8 +305,10 @@ records:
     Committee, taking into account the first years of application of this Regulation.
   action: assess AI Act enforcement by 2 August 2031 and report to Parliament Council and the European
     Economic and Social Committee
-  subject_ref: commission
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: commission
+    category: union_institution_or_body
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -285,8 +321,10 @@ records:
     agency to resolve any identified shortcomings.
   action: accompany the enforcement report when appropriate with an amendment proposal addressing enforcement
     structure and possible Union agency need
-  subject_ref: commission
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: commission
+    category: union_institution_or_body
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required

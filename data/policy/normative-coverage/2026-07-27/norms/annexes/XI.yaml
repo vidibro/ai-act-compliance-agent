@@ -3,9 +3,10 @@ norms:
 - norm_id: AIA-NORM-ANNEX-XI-SECTION-1-TECHNICAL-DOCUMENTATION
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: provider
+  actors:
+  - actor_ref: provider
     category: supported_operator
+  targets: []
   action: include all applicable Annex XI Section 1 information in the general-purpose AI model technical
     documentation, proportionate to model size and risk profile
   norm_text: shall contain at least the following information as appropriate to the size and risk profile
@@ -69,9 +70,10 @@ norms:
 - norm_id: AIA-NORM-ANNEX-XI-ENERGY-ESTIMATE-BASIS
   act_version_date: '2026-07-27'
   kind: permission
-  subjects:
-  - subject_ref: provider
+  actors:
+  - actor_ref: provider
     category: supported_operator
+  targets: []
   action: base unknown model energy consumption on information about computational resources used
   norm_text: With regard to point (e), where the energy consumption of the model is unknown, the energy
     consumption may be based on information about computational resources used.
@@ -106,9 +108,10 @@ norms:
 - norm_id: AIA-NORM-ANNEX-XI-SECTION-2-SYSTEMIC-RISK-DOCUMENTATION
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: provider
+  actors:
+  - actor_ref: provider
     category: supported_operator
+  targets: []
   action: include a detailed description of the evaluation strategies, with their results, in the technical
     documentation for a general-purpose AI model with systemic risk
   norm_text: A detailed description of the evaluation strategies, including evaluation results, on the
@@ -156,9 +159,10 @@ norms:
 - norm_id: AIA-NORM-ANNEX-XI-SECTION-2-ADVERSARIAL-TESTING-AND-ADAPTATIONS
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: provider
+  actors:
+  - actor_ref: provider
     category: supported_operator
+  targets: []
   action: include a detailed description of the adversarial-testing measures and the model adaptations
     in the technical documentation for a general-purpose AI model with systemic risk
   norm_text: Where applicable, a detailed description of the measures put in place for the purpose of
@@ -199,9 +203,10 @@ norms:
 - norm_id: AIA-NORM-ANNEX-XI-SECTION-2-SYSTEM-ARCHITECTURE
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: provider
+  actors:
+  - actor_ref: provider
     category: supported_operator
+  targets: []
   action: include a detailed description of the system architecture, explaining how software components
     build or feed into each other and integrate into the overall processing, in the technical documentation
     for a general-purpose AI model with systemic risk

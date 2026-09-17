@@ -8,8 +8,10 @@ records:
     for the application of such requirements.
   action: encourage and facilitate codes and governance mechanisms for voluntary Chapter III Section 2
     application to non-high-risk systems
-  subject_ref: ai_office_and_member_states
-  subject_category: public_authority
+  actors:
+  - actor_ref: ai_office_and_member_states
+    category: public_authority
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -24,8 +26,10 @@ records:
   action: facilitate the drawing up of codes of conduct for the voluntary application of specific requirements
     to all AI systems, on the basis of clear objectives and key performance indicators; the elements listed
     are examples and are not exhaustive, and applying the requirements stays voluntary
-  subject_ref: ai_office_and_member_states
-  subject_category: public_authority
+  actors:
+  - actor_ref: ai_office_and_member_states
+    category: public_authority
+  targets: []
   mandatory_content:
   - clear objectives
   - key performance indicators measuring achievement of those objectives
@@ -49,8 +53,10 @@ records:
     relevant systems.
   action: draw up a voluntary code individually jointly or through representative organisations and cover
     one or more similarly purposed systems
-  subject_ref: provider_deployer_or_representative_organisation
-  subject_category: supported_operator
+  actors:
+  - actor_ref: provider_deployer_or_representative_organisation
+    category: supported_operator
+  targets: []
   kind: power
   product_scope: no_product_action
   product_scope_reason: This is permission to participate in voluntary code development rather than a
@@ -64,8 +70,10 @@ records:
     of SMEs, including start-ups, and SMCs, when encouraging and facilitating the drawing up of codes
     of conduct.
   action: account for SME start-up and SMC interests and needs when encouraging and facilitating codes
-  subject_ref: ai_office_and_member_states
-  subject_category: public_authority
+  actors:
+  - actor_ref: ai_office_and_member_states
+    category: public_authority
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required

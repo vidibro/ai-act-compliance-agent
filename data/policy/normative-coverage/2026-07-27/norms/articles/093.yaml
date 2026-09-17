@@ -3,9 +3,10 @@ norms:
 - norm_id: AIA-NORM-A093-P1-REQUEST-GPAI-MEASURES
   act_version_date: '2026-07-27'
   kind: power
-  subjects:
-  - subject_ref: commission
+  actors:
+  - actor_ref: commission
     category: union_institution_or_body
+  targets: []
   action: request necessary appropriate compliance mitigation or market-restriction measures from GPAI
     providers
   norm_text: Where necessary and appropriate, the Commission may request providers to
@@ -51,9 +52,10 @@ norms:
 - norm_id: AIA-NORM-A093-P2-INITIATE-STRUCTURED-DIALOGUE
   act_version_date: '2026-07-27'
   kind: power
-  subjects:
-  - subject_ref: ai_office
+  actors:
+  - actor_ref: ai_office
     category: union_institution_or_body
+  targets: []
   action: initiate structured dialogue with the GPAI provider before requesting a measure
   norm_text: Before a measure is requested, the AI Office may initiate a structured dialogue with the
     provider of the general-purpose AI model.
@@ -85,9 +87,10 @@ norms:
 - norm_id: AIA-NORM-A093-P3-MAKE-COMMITMENTS-BINDING
   act_version_date: '2026-07-27'
   kind: power
-  subjects:
-  - subject_ref: commission
+  actors:
+  - actor_ref: commission
     category: union_institution_or_body
+  targets: []
   action: make offered systemic-risk mitigation commitments binding and declare no further grounds for
     action
   norm_text: If, during the structured dialogue referred to in paragraph 2, the provider of the general-purpose

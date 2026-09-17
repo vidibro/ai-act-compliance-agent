@@ -6,8 +6,10 @@ records:
     period in which they are in use.
   action: design and develop the high-risk AI system, including appropriate human-machine interfaces,
     for effective natural-person oversight throughout use
-  subject_ref: provider
-  subject_category: supported_operator
+  actors:
+  - actor_ref: provider
+    category: supported_operator
+  targets: []
   implementation_refs: &id001
   - AIA-HR-A14
   verification_mode: judged_by_gap_analysis
@@ -20,8 +22,10 @@ records:
     of other requirements set out in this Section.
   action: design human oversight to prevent or minimise health, safety, and fundamental-rights risks that
     emerge when the system is used for its intended purpose or under reasonably foreseeable misuse, including risks that persist despite other Section 2 requirements
-  subject_ref: provider
-  subject_category: supported_operator
+  actors:
+  - actor_ref: provider
+    category: supported_operator
+  targets: []
   implementation_refs: *id001
   verification_mode: judged_by_gap_analysis
   verified_by: vidibro
@@ -32,8 +36,10 @@ records:
     of measures
   action: make human-oversight measures commensurate with the system's risks, autonomy and context of
     use and ensure them through either or both Article 14(3) measure routes
-  subject_ref: provider
-  subject_category: supported_operator
+  actors:
+  - actor_ref: provider
+    category: supported_operator
+  targets: []
   implementation_refs: *id001
   verification_mode: judged_by_gap_analysis
   qualifier_spans:
@@ -50,8 +56,10 @@ records:
     and unexpected performance
   action: "enable assigned overseers to understand the system\u2019s relevant capabilities and limitations,
     monitor its operation, and detect and address anomalies, dysfunctions, and unexpected performance"
-  subject_ref: provider
-  subject_category: supported_operator
+  actors:
+  - actor_ref: provider
+    category: supported_operator
+  targets: []
   qualifier_spans: &id002
   - A014-P006
   implementation_refs: *id001
@@ -64,8 +72,10 @@ records:
     provide information or recommendations for decisions to be taken by natural persons
   action: enable assigned overseers to remain aware of possible automation bias, especially where system
     information or recommendations inform human decisions
-  subject_ref: provider
-  subject_category: supported_operator
+  actors:
+  - actor_ref: provider
+    category: supported_operator
+  targets: []
   qualifier_spans: *id002
   implementation_refs: *id001
   verification_mode: judged_by_gap_analysis
@@ -76,8 +86,10 @@ records:
     \ the interpretation tools and methods available"
   action: enable assigned overseers to correctly interpret system outputs using available interpretation
     tools and methods
-  subject_ref: provider
-  subject_category: supported_operator
+  actors:
+  - actor_ref: provider
+    category: supported_operator
+  targets: []
   qualifier_spans: *id002
   implementation_refs: *id001
   verification_mode: judged_by_gap_analysis
@@ -88,8 +100,10 @@ records:
     override or reverse the output of the high-risk AI system
   action: enable assigned overseers to decide not to use the system in a particular situation or otherwise
     disregard, override, or reverse its output
-  subject_ref: provider
-  subject_category: supported_operator
+  actors:
+  - actor_ref: provider
+    category: supported_operator
+  targets: []
   qualifier_spans: *id002
   implementation_refs: *id001
   verification_mode: judged_by_gap_analysis
@@ -100,8 +114,10 @@ records:
     stop\u2019 button or a similar procedure that allows the system to come to a halt in a safe state"
   action: enable assigned overseers to intervene in system operation or interrupt it through a stop control
     or similar procedure that brings it to a safe halt
-  subject_ref: provider
-  subject_category: supported_operator
+  actors:
+  - actor_ref: provider
+    category: supported_operator
+  targets: []
   qualifier_spans: *id002
   implementation_refs: *id001
   verification_mode: judged_by_gap_analysis
@@ -115,8 +131,10 @@ records:
     training and authority.
   action: ensure no deployer action or decision relies on a system identification unless at least two
     competent, trained, and authorised natural persons separately verify and confirm it
-  subject_ref: provider
-  subject_category: supported_operator
+  actors:
+  - actor_ref: provider
+    category: supported_operator
+  targets: []
   conditions:
   - the high-risk AI system is a remote biometric identification system referred to in Annex III, point
     1(a)
@@ -130,8 +148,10 @@ records:
     where Union or national law considers the application of this requirement to be disproportionate.
   action: disapply the two-person verification requirement for specified public-authority uses where Union
     or national law considers it disproportionate
-  subject_ref: provider
-  subject_category: supported_operator
+  actors:
+  - actor_ref: provider
+    category: supported_operator
+  targets: []
   kind: applicability
   conditions:
   - the high-risk AI system is used for law enforcement, migration, border control, or asylum

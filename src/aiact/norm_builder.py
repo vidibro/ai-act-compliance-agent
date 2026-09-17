@@ -19,13 +19,14 @@ from aiact.schemas.interpretation import InterpretationTargetKind, InterpretiveL
 from aiact.schemas.norm import (
     ConditionGroup,
     ImplementationMode,
+    NormActor,
     NormKind,
     NormRelation,
     NormRelationKind,
+    NormTarget,
     ProductScope,
     SegmentDisposition,
     SourceKind,
-    SubjectCategory,
     VerificationMode,
 )
 from aiact.text_segments import corpus_documents
@@ -128,8 +129,8 @@ class NormSourceRecord(BaseModel):
     source: str = Field(pattern=r"^[A-Z0-9-]+$")
     quote: str = Field(min_length=1)
     action: str = Field(min_length=1)
-    subject_ref: str = Field(min_length=1)
-    subject_category: SubjectCategory
+    actors: list[NormActor] = []
+    targets: list[NormTarget] = []
     kind: NormKind = NormKind.OBLIGATION
     product_scope: ProductScope = ProductScope.IN_SCOPE
     product_scope_reason: str = ""
@@ -144,6 +145,12 @@ class NormSourceRecord(BaseModel):
     qualifier_spans: list[str] = []
     effective_date_spans: list[str] = []
     verified_by: str = ""
+
+    @model_validator(mode="after")
+    def _has_actor_or_target(self) -> NormSourceRecord:
+        if not self.actors and not self.targets:
+            raise ValueError("norm source record requires at least one actor or target")
+        return self
 
 
 class NormSourceInventory(BaseModel):
@@ -546,12 +553,8 @@ def _build_norms(
             "norm_id": record.norm_id,
             "act_version_date": version_text,
             "kind": record.kind.value,
-            "subjects": [
-                {
-                    "subject_ref": record.subject_ref,
-                    "category": record.subject_category.value,
-                }
-            ],
+            "actors": [actor.model_dump(mode="json") for actor in record.actors],
+            "targets": [target.model_dump(mode="json") for target in record.targets],
             "action": record.action,
             "norm_text": record.quote,
             "detection_channels": _detection_channels(record),

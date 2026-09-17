@@ -3,9 +3,9 @@ norms:
 - norm_id: AIA-NORM-A113-ENTRY
   act_version_date: '2026-07-27'
   kind: legal_consequence
-  subjects:
-  - subject_ref: regulation
-    category: other
+  actors: []
+  targets:
+  - target_ref: regulation
   action: enter into force twenty days after publication
   norm_text: This Regulation shall enter into force on the twentieth day following that of its publication
     in the Official Journal of the European Union.
@@ -38,9 +38,9 @@ norms:
 - norm_id: AIA-NORM-A113-GENERAL
   act_version_date: '2026-07-27'
   kind: applicability
-  subjects:
-  - subject_ref: regulation
-    category: other
+  actors: []
+  targets:
+  - target_ref: regulation
   action: apply generally from 2 August 2026
   norm_text: It shall apply from 2 August 2026.
   detection_channels:
@@ -72,9 +72,9 @@ norms:
 - norm_id: AIA-NORM-A113-A-EARLY
   act_version_date: '2026-07-27'
   kind: applicability
-  subjects:
-  - subject_ref: regulation
-    category: other
+  actors: []
+  targets:
+  - target_ref: regulation
   action: apply Chapters I and II from 2 February 2025
   norm_text: Chapters I and II shall apply from 2 February 2025
   detection_channels:
@@ -108,9 +108,9 @@ norms:
 - norm_id: AIA-NORM-A113-A-LATE
   act_version_date: '2026-07-27'
   kind: applicability
-  subjects:
-  - subject_ref: regulation
-    category: other
+  actors: []
+  targets:
+  - target_ref: regulation
   action: apply the listed Article 5 amendments from 2 December 2026
   norm_text: shall apply from 2 December 2026
   detection_channels:
@@ -142,9 +142,9 @@ norms:
 - norm_id: AIA-NORM-A113-B
   act_version_date: '2026-07-27'
   kind: applicability
-  subjects:
-  - subject_ref: regulation
-    category: other
+  actors: []
+  targets:
+  - target_ref: regulation
   action: apply the listed chapters and Article 78 from 2 August 2025 except Article 101
   norm_text: Chapter III Section 4, Chapter V, Chapter VII and Chapter XII and Article 78 shall apply
     from 2 August 2025, with the exception of Article 101
@@ -178,9 +178,9 @@ norms:
 - norm_id: AIA-NORM-A113-C-ANNEXIII
   act_version_date: '2026-07-27'
   kind: applicability
-  subjects:
-  - subject_ref: regulation
-    category: other
+  actors: []
+  targets:
+  - target_ref: regulation
   action: apply Chapter III Sections 1 to 3 to the Annex III route from 2 December 2027
   norm_text: "Chapter III, Sections 1, 2, and 3, with the exception of Article 6(5), shall apply from:\n\
     \            (i) 2 December 2027 as regards AI systems classified as high-risk pursuant to Article\
@@ -216,9 +216,9 @@ norms:
 - norm_id: AIA-NORM-A113-C-ANNEXI
   act_version_date: '2026-07-27'
   kind: applicability
-  subjects:
-  - subject_ref: regulation
-    category: other
+  actors: []
+  targets:
+  - target_ref: regulation
   action: apply Chapter III Sections 1 to 3 to the Annex I route from 2 August 2028
   norm_text: (ii) 2 August 2028 as regards AI systems classified as high-risk pursuant to Article 6(1)
     and Annex I
@@ -252,9 +252,9 @@ norms:
 - norm_id: AIA-NORM-A113-D
   act_version_date: '2026-07-27'
   kind: applicability
-  subjects:
-  - subject_ref: regulation
-    category: other
+  actors: []
+  targets:
+  - target_ref: regulation
   action: apply Articles 102 to 110 from 27 July 2026
   norm_text: Articles 102 to 110 shall apply from 27 July 2026.
   detection_channels:

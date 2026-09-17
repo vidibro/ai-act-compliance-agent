@@ -9,8 +9,10 @@ records:
     level of AI literacy of any individual.
   action: take context-sensitive measures supporting AI literacy among staff and other persons operating
     or using AI systems on the provider's or deployer's behalf
-  subject_ref: provider_or_deployer
-  subject_category: supported_operator
+  actors:
+  - actor_ref: provider_or_deployer
+    category: supported_operator
+  targets: []
   kind: obligation
   conditions:
   - account for the covered persons' technical knowledge, experience, education, and training
@@ -30,8 +32,12 @@ records:
     Article.
   action: support and facilitate provider and deployer efforts, particularly those of SMEs, to fulfil
     the Article 4(1) AI-literacy obligation
-  subject_ref: commission_and_member_states
-  subject_category: other
+  actors:
+  - actor_ref: commission
+    category: union_institution_or_body
+  - actor_ref: member_state
+    category: member_state
+  targets: []
   kind: obligation
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for the Commission or Member States.
@@ -44,8 +50,10 @@ records:
     single information platform referred to in Article 62(3), point (b)
   action: publish practical examples of compliance with the Article 4(1) obligation on the single information
     platform
-  subject_ref: commission
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: commission
+    category: union_institution_or_body
+  targets: []
   kind: obligation
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for the Commission.
@@ -59,8 +67,10 @@ records:
     1, including by setting out common objectives.
   action: adopt recommendations supporting the Commission and Member States in promoting the AI literacy
     required by Article 4(1), including through common objectives
-  subject_ref: board
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: board
+    category: union_institution_or_body
+  targets: []
   kind: obligation
   conditions:
   - take European competence frameworks into account

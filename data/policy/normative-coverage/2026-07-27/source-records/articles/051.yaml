@@ -5,8 +5,9 @@ records:
     including indicators and benchmarks
   action: classify a general-purpose AI model with evaluated high-impact capabilities as a model with
     systemic risk
-  subject_ref: general_purpose_ai_model
-  subject_category: other
+  actors: []
+  targets:
+  - target_ref: general_purpose_ai_model
   kind: applicability
   qualifier_spans:
   - A051-P001
@@ -25,8 +26,9 @@ records:
     the criteria set out in Annex XIII
   action: classify a general-purpose AI model with Commission-determined equivalent capabilities or impact
     as a model with systemic risk
-  subject_ref: general_purpose_ai_model
-  subject_category: other
+  actors: []
+  targets:
+  - target_ref: general_purpose_ai_model
   kind: applicability
   qualifier_spans:
   - A051-P001
@@ -46,8 +48,9 @@ records:
     point operations is greater than 10 25.
   action: presume a general-purpose AI model has high-impact capabilities when its training computation
     exceeds 10^25 floating-point operations
-  subject_ref: general_purpose_ai_model
-  subject_category: other
+  actors: []
+  targets:
+  - target_ref: general_purpose_ai_model
   kind: applicability
   conditions:
   - cumulative training computation measured in floating-point operations exceeds 10^25
@@ -64,8 +67,10 @@ records:
     efficiency, when necessary, for these thresholds to reflect the state of the art.
   action: adopt Article 97 delegated acts amending Article 51 thresholds and supplementing benchmarks
     and indicators when necessary for the thresholds to reflect the state of the art
-  subject_ref: commission
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: commission
+    category: union_institution_or_body
+  targets: []
   conditions:
   - amendment is necessary for the thresholds to reflect the state of the art in light of technological
     developments

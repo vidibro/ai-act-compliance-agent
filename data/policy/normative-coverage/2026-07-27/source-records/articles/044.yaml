@@ -6,8 +6,10 @@ records:
     body is established.
   action: issue Annex VII certificates in a language easily understood by the relevant establishment-state
     authorities
-  subject_ref: notified_body
-  subject_category: notified_or_conformity_body
+  actors:
+  - actor_ref: notified_body
+    category: notified_or_conformity_body
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -19,8 +21,10 @@ records:
     AI systems covered by Annex I, and four years for AI systems covered by Annex III.
   action: limit indicated certificate validity to five years for Annex I systems and four years for Annex
     III systems
-  subject_ref: certificate_holder
-  subject_category: supported_operator
+  actors:
+  - actor_ref: certificate_holder
+    category: supported_operator
+  targets: []
   kind: legal_consequence
   implementation_mode: missing
   verification_mode: reported_conditionally
@@ -32,8 +36,10 @@ records:
     by Annex III, based on a re-assessment in accordance with the applicable conformity assessment procedures.
   action: extend certificate validity after provider request and applicable reassessment within the enacted
     duration caps
-  subject_ref: provider
-  subject_category: supported_operator
+  actors:
+  - actor_ref: provider
+    category: supported_operator
+  targets: []
   kind: entitlement
   implementation_mode: missing
   verification_mode: reported_conditionally
@@ -46,8 +52,10 @@ records:
   quote: Any supplement to a certificate shall remain valid, provided that the certificate which it supplements
     is valid.
   action: preserve a certificate supplement's validity while its underlying certificate remains valid
-  subject_ref: certificate_holder
-  subject_category: supported_operator
+  actors:
+  - actor_ref: certificate_holder
+    category: supported_operator
+  targets: []
   kind: legal_consequence
   implementation_mode: missing
   verification_mode: reported_conditionally
@@ -63,8 +71,10 @@ records:
     body.
   action: proportionately suspend, withdraw, or restrict a certificate after Section 2 noncompliance unless
     timely corrective action restores compliance
-  subject_ref: notified_body
-  subject_category: notified_or_conformity_body
+  actors:
+  - actor_ref: notified_body
+    category: notified_or_conformity_body
+  targets: []
   conditions:
   - the notified body finds that the AI system no longer meets Chapter III Section 2 requirements
   exceptions:
@@ -80,8 +90,10 @@ records:
   source: A044-P003
   quote: The notified body shall give reasons for its decision.
   action: give reasons for the certificate decision
-  subject_ref: notified_body
-  subject_category: notified_or_conformity_body
+  actors:
+  - actor_ref: notified_body
+    category: notified_or_conformity_body
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -92,8 +104,10 @@ records:
   quote: An appeal procedure against decisions of the notified bodies, including on conformity certificates
     issued, shall be available.
   action: make an appeal procedure available against notified-body decisions, including certificate decisions
-  subject_ref: notified_body
-  subject_category: notified_or_conformity_body
+  actors:
+  - actor_ref: notified_body
+    category: notified_or_conformity_body
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required

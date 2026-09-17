@@ -3,9 +3,10 @@ norms:
 - norm_id: AIA-NORM-A071-P1-SET-UP-AND-MAINTAIN-DATABASE
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: commission
+  actors:
+  - actor_ref: commission
     category: union_institution_or_body
+  targets: []
   action: set up and maintain the EU database, in collaboration with the Member States, containing the
     paragraph 2 and 3 information on the enacted registered systems
   norm_text: The Commission shall, in collaboration with the Member States, set up and maintain an EU
@@ -44,9 +45,10 @@ norms:
 - norm_id: AIA-NORM-A071-P1-CONSULT-EXPERTS-ON-SPECIFICATIONS
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: commission
+  actors:
+  - actor_ref: commission
     category: union_institution_or_body
+  targets: []
   action: consult the relevant experts when setting the database's functional specifications
   norm_text: When setting the functional specifications of such database, the Commission shall consult
     the relevant experts
@@ -79,9 +81,10 @@ norms:
 - norm_id: AIA-NORM-A071-P1-CONSULT-BOARD-ON-UPDATES
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: commission
+  actors:
+  - actor_ref: commission
     category: union_institution_or_body
+  targets: []
   action: consult the Board when updating the database's functional specifications
   norm_text: when updating the functional specifications of such database, the Commission shall consult
     the Board.
@@ -114,9 +117,10 @@ norms:
 - norm_id: AIA-NORM-A071-P2-PROVIDER-ENTER-ANNEX-VIII-DATA
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: provider
+  actors:
+  - actor_ref: provider
     category: supported_operator
+  targets: []
   action: enter the applicable Annex VIII Sections A and B data into the EU database
   norm_text: The data listed in Sections A and B of Annex VIII shall be entered into the EU database by
     the provider or, where applicable, by the authorised representative.
@@ -150,9 +154,10 @@ norms:
 - norm_id: AIA-NORM-A071-P2-REPRESENTATIVE-ENTER-ANNEX-VIII-DATA
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: authorised_representative
+  actors:
+  - actor_ref: authorised_representative
     category: supported_operator
+  targets: []
   action: enter the applicable Annex VIII Sections A and B data into the EU database where registration
     falls to the representative
   norm_text: The data listed in Sections A and B of Annex VIII shall be entered into the EU database by
@@ -188,9 +193,10 @@ norms:
 - norm_id: AIA-NORM-A071-P3-PUBLIC-DEPLOYER-ENTER-ANNEX-VIII-DATA
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: public_authority_deployer
+  actors:
+  - actor_ref: public_authority_deployer
     category: supported_operator
+  targets: []
   action: enter Annex VIII Section C data into the EU database under Article 49(3) and (4)
   norm_text: The data listed in Section C of Annex VIII shall be entered into the EU database by the deployer
     who is, or who acts on behalf of, a public authority, agency or body, in accordance with Article 49(3)
@@ -226,9 +232,10 @@ norms:
 - norm_id: AIA-NORM-A071-P4-DATABASE-ACCESS-RULES
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: commission
+  actors:
+  - actor_ref: commission
     category: union_institution_or_body
+  targets: []
   action: keep the information registered under Article 49 accessible and publicly available in a user-friendly
     manner
   norm_text: With the exception of the section referred to in Article 49(4) and Article 60(4), point (c),
@@ -264,9 +271,10 @@ norms:
 - norm_id: AIA-NORM-A071-P4-NAVIGABLE-MACHINE-READABLE
   act_version_date: '2026-07-27'
   kind: legal_consequence
-  subjects:
-  - subject_ref: commission
+  actors:
+  - actor_ref: commission
     category: union_institution_or_body
+  targets: []
   action: the information should be easily navigable and machine-readable
   norm_text: The information should be easily navigable and machine-readable.
   detection_channels:
@@ -297,9 +305,10 @@ norms:
 - norm_id: AIA-NORM-A071-P4-RESTRICTED-ARTICLE-60-ACCESS
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: commission
+  actors:
+  - actor_ref: commission
     category: union_institution_or_body
+  targets: []
   action: keep the information registered under Article 60 accessible only to market surveillance authorities
     and the Commission
   norm_text: The information registered in accordance with Article 60 shall be accessible only to market
@@ -335,9 +344,10 @@ norms:
 - norm_id: AIA-NORM-A071-P5-DATABASE-DATA-MINIMISATION
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: commission
+  actors:
+  - actor_ref: commission
     category: union_institution_or_body
+  targets: []
   action: limit database personal data to what Regulation processing requires while including authorised
     registrant names and contacts
   norm_text: The EU database shall contain personal data only in so far as necessary for collecting and
@@ -374,9 +384,10 @@ norms:
 - norm_id: AIA-NORM-A071-P6-CONTROLLER-AND-OPERATOR-SUPPORT
   act_version_date: '2026-07-27'
   kind: legal_consequence
-  subjects:
-  - subject_ref: commission
+  actors:
+  - actor_ref: commission
     category: union_institution_or_body
+  targets: []
   action: be the controller of the EU database
   norm_text: The Commission shall be the controller of the EU database.
   detection_channels:
@@ -408,9 +419,10 @@ norms:
 - norm_id: AIA-NORM-A071-P6-OPERATOR-SUPPORT
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: commission
+  actors:
+  - actor_ref: commission
     category: union_institution_or_body
+  targets: []
   action: make adequate technical and administrative support available to providers, prospective providers
     and deployers
   norm_text: It shall make available to providers, prospective providers and deployers adequate technical
@@ -445,9 +457,10 @@ norms:
 - norm_id: AIA-NORM-A071-P6-DATABASE-ACCESSIBILITY
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: commission
+  actors:
+  - actor_ref: commission
     category: union_institution_or_body
+  targets: []
   action: ensure the EU database complies with applicable accessibility requirements
   norm_text: The EU database shall comply with the applicable accessibility requirements.
   detection_channels:

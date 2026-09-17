@@ -4,8 +4,10 @@ records:
   quote: The Commission shall have exclusive powers to supervise and enforce Chapter V, taking into account
     the procedural guarantees under Article 94.
   action: exercise exclusive Chapter V supervision and enforcement powers subject to Article 94 guarantees
-  subject_ref: commission
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: commission
+    category: union_institution_or_body
+  targets: []
   kind: power
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -19,8 +21,10 @@ records:
     and the Union based on the Treaties.
   action: entrust Chapter V supervision and enforcement implementation to the AI Office within enacted
     competence boundaries
-  subject_ref: commission
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: commission
+    category: union_institution_or_body
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -36,8 +40,10 @@ records:
     with the fulfilment of their tasks under this Regulation.
   action: request necessary proportionate Commission exercise of Section powers to assist surveillance
     tasks
-  subject_ref: market_surveillance_authority
-  subject_category: public_authority
+  actors:
+  - actor_ref: market_surveillance_authority
+    category: public_authority
+  targets: []
   kind: power
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.

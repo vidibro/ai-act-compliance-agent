@@ -3,9 +3,10 @@ norms:
 - norm_id: AIA-NORM-A096-P1-DEVELOP-IMPLEMENTATION-GUIDELINES
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: commission
+  actors:
+  - actor_ref: commission
     category: union_institution_or_body
+  targets: []
   action: develop guidelines on the practical implementation of this Regulation, in particular on the
     enacted subjects
   norm_text: 'The Commission shall develop guidelines on the practical implementation of this Regulation,
@@ -57,9 +58,10 @@ norms:
 - norm_id: AIA-NORM-A096-P1-G-PUBLISH-COMPLEMENTARITY-GUIDELINES
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: commission
+  actors:
+  - actor_ref: commission
     category: union_institution_or_body
+  targets: []
   action: publish the point (g) guidelines on the practical implementation of Article 8(2), Article 9(10)
     and Article 17(3) by 1 August 2027
   norm_text: the practical implementation of Article 8(2), Article 9(10) and Article 17(3) in accordance
@@ -96,9 +98,10 @@ norms:
 - norm_id: AIA-NORM-A096-P1-INVOLVE-BOARD
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: commission
+  actors:
+  - actor_ref: commission
     category: union_institution_or_body
+  targets: []
   action: involve the Board and pay particular attention to the specified affected groups' needs when
     issuing implementation guidelines
   norm_text: When issuing such guidelines, the Commission shall involve the Board and pay particular attention
@@ -137,9 +140,10 @@ norms:
 - norm_id: AIA-NORM-A096-P1-ACCOUNT-FOR-STATE-OF-ART
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: commission
+  actors:
+  - actor_ref: commission
     category: union_institution_or_body
+  targets: []
   action: account for AI state of the art and relevant standards specifications when preparing guidelines
   norm_text: The guidelines referred to in the first subparagraph of this paragraph shall take due account
     of the generally acknowledged state of the art on AI, as well as of relevant harmonised standards
@@ -173,9 +177,10 @@ norms:
 - norm_id: AIA-NORM-A096-P2-UPDATE-GUIDELINES
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: commission
+  actors:
+  - actor_ref: commission
     category: union_institution_or_body
+  targets: []
   action: update adopted guidelines when necessary on request or on the Commission's initiative
   norm_text: At the request of the Member States or the AI Office, or on its own initiative, the Commission
     shall update guidelines previously adopted when deemed necessary.

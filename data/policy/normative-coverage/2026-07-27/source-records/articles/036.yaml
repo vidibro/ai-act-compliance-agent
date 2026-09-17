@@ -6,8 +6,10 @@ records:
     Article 30(2).
   action: notify the Commission and other Member States of relevant notification changes through the Article
     30(2) tool
-  subject_ref: notifying_authority
-  subject_category: public_authority
+  actors:
+  - actor_ref: notifying_authority
+    category: public_authority
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -18,8 +20,10 @@ records:
   quote: The procedures laid down in Articles 29 and 30 shall apply to extensions of the scope of the
     notification.
   action: apply the Articles 29 and 30 procedures to notification-scope extensions
-  subject_ref: notifying_authority
-  subject_category: public_authority
+  actors:
+  - actor_ref: notifying_authority
+    category: public_authority
+  targets: []
   kind: applicability
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -31,8 +35,10 @@ records:
   quote: For changes to the notification other than extensions of its scope, the procedures laid down
     in paragraphs (3) to (9) shall apply.
   action: apply paragraphs 3 to 9 to notification changes other than scope extensions
-  subject_ref: notifying_authority
-  subject_category: public_authority
+  actors:
+  - actor_ref: notifying_authority
+    category: public_authority
+  targets: []
   kind: applicability
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -46,8 +52,10 @@ records:
     cessation, at least one year before ceasing its activities.
   action: inform the notifying authority and affected providers of cessation as soon as possible and at
     least one year ahead when planned
-  subject_ref: notified_body
-  subject_category: notified_or_conformity_body
+  actors:
+  - actor_ref: notified_body
+    category: notified_or_conformity_body
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -62,8 +70,9 @@ records:
     \ writing that it will assume responsibilities for the high-risk AI systems covered by those certificates."
   action: preserve certificate validity for up to nine months after cessation when a replacement notified
     body accepts responsibility in writing
-  subject_ref: affected_certificates
-  subject_category: other
+  actors: []
+  targets:
+  - target_ref: affected_certificates
   kind: legal_consequence
   product_scope: no_product_action
   product_scope_reason: Defines certificate validity rather than an operator compliance action.
@@ -77,8 +86,10 @@ records:
   quote: The latter notified body shall complete a full assessment of the high-risk AI systems affected
     by the end of that nine-month-period before issuing new certificates for those systems.
   action: complete a full assessment within nine months before issuing replacement certificates
-  subject_ref: assuming_notified_body
-  subject_category: notified_or_conformity_body
+  actors:
+  - actor_ref: assuming_notified_body
+    category: notified_or_conformity_body
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -88,8 +99,10 @@ records:
   source: A036-P004
   quote: Where the notified body has ceased its activity, the notifying authority shall withdraw the designation.
   action: withdraw the designation when the notified body has ceased activity
-  subject_ref: notifying_authority
-  subject_category: public_authority
+  actors:
+  - actor_ref: notifying_authority
+    category: public_authority
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -104,8 +117,10 @@ records:
     notifying authority shall without delay investigate the matter with the utmost diligence.
   action: investigate suspected Article 31 noncompliance or failure of obligations without delay and with
     utmost diligence
-  subject_ref: notifying_authority
-  subject_category: public_authority
+  actors:
+  - actor_ref: notifying_authority
+    category: public_authority
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -119,8 +134,10 @@ records:
   quote: In that context, it shall inform the notified body concerned about the objections raised and
     give it the possibility to make its views known.
   action: inform the notified body of the objections raised
-  subject_ref: notifying_authority
-  subject_category: public_authority
+  actors:
+  - actor_ref: notifying_authority
+    category: public_authority
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -133,8 +150,10 @@ records:
   quote: In that context, it shall inform the notified body concerned about the objections raised and
     give it the possibility to make its views known.
   action: receive an opportunity to make its views on the objections known
-  subject_ref: notified_body
-  subject_category: notified_or_conformity_body
+  actors:
+  - actor_ref: notified_body
+    category: notified_or_conformity_body
+  targets: []
   kind: entitlement
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -151,8 +170,10 @@ records:
     meet those requirements or fulfil those obligations.
   action: restrict, suspend, or withdraw the designation proportionately to the seriousness of confirmed
     failure
-  subject_ref: notifying_authority
-  subject_category: public_authority
+  actors:
+  - actor_ref: notifying_authority
+    category: public_authority
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -165,8 +186,10 @@ records:
   source: A036-P005
   quote: It shall immediately inform the Commission and the other Member States accordingly.
   action: immediately inform the Commission and other Member States of the designation measure
-  subject_ref: notifying_authority
-  subject_category: public_authority
+  actors:
+  - actor_ref: notifying_authority
+    category: public_authority
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -179,8 +202,10 @@ records:
   quote: Where its designation has been suspended, restricted, or fully or partially withdrawn, the notified
     body shall inform the providers concerned within 10 days.
   action: inform affected providers within 10 days of restriction, suspension, or withdrawal of designation
-  subject_ref: notified_body
-  subject_category: notified_or_conformity_body
+  actors:
+  - actor_ref: notified_body
+    category: notified_or_conformity_body
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -195,8 +220,10 @@ records:
     and to market surveillance authorities at their request.
   action: take appropriate steps to preserve the affected notified body's files and make them available
     on request to other Member States' notifying authorities and market-surveillance authorities
-  subject_ref: notifying_authority
-  subject_category: public_authority
+  actors:
+  - actor_ref: notifying_authority
+    category: public_authority
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -212,8 +239,10 @@ records:
   source: A036-P009
   quote: assess the impact on the certificates issued by the notified body
   action: assess the impact of the designation change on certificates issued by the notified body
-  subject_ref: notifying_authority
-  subject_category: public_authority
+  actors:
+  - actor_ref: notifying_authority
+    category: public_authority
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -229,8 +258,10 @@ records:
     of having notified the changes to the designation
   action: report findings to the Commission and other Member States within three months of notifying the
     designation change
-  subject_ref: notifying_authority
-  subject_category: public_authority
+  actors:
+  - actor_ref: notifying_authority
+    category: public_authority
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -247,8 +278,10 @@ records:
     of high-risk AI systems on the market
   action: require suspension or withdrawal of unduly issued certificates within a reasonable authority-set
     period
-  subject_ref: notifying_authority
-  subject_category: public_authority
+  actors:
+  - actor_ref: notifying_authority
+    category: public_authority
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -264,8 +297,10 @@ records:
     which it has required
   action: inform the Commission and Member States which certificates were required to be suspended or
     withdrawn
-  subject_ref: notifying_authority
-  subject_category: public_authority
+  actors:
+  - actor_ref: notifying_authority
+    category: public_authority
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -282,8 +317,10 @@ records:
     required the suspension or withdrawal
   action: provide the provider's establishment-state authorities all relevant information on certificates
     required to be suspended or withdrawn
-  subject_ref: notifying_authority
-  subject_category: public_authority
+  actors:
+  - actor_ref: notifying_authority
+    category: public_authority
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -299,8 +336,10 @@ records:
     to health, safety or fundamental rights.
   action: take necessary appropriate measures to avoid potential health, safety, or fundamental-rights
     risk
-  subject_ref: national_competent_authority
-  subject_category: public_authority
+  actors:
+  - actor_ref: national_competent_authority
+    category: public_authority
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -317,8 +356,9 @@ records:
     or restricted, the certificates shall remain valid in one of the following circumstances
   action: preserve non-unduly-issued certificate validity during suspension or restriction when either
     enacted condition set is satisfied
-  subject_ref: affected_certificates
-  subject_category: other
+  actors: []
+  targets:
+  - target_ref: affected_certificates
   kind: legal_consequence
   product_scope: no_product_action
   product_scope_reason: Defines certificate validity rather than an operator compliance action.
@@ -355,8 +395,10 @@ records:
     remain responsible for the certificates during the period of suspension or restriction.
   action: confirm in writing within three months that a qualified replacement body temporarily assumes
     certificate monitoring and responsibility
-  subject_ref: provider
-  subject_category: supported_operator
+  actors:
+  - actor_ref: provider
+    category: supported_operator
+  targets: []
   implementation_mode: missing
   verification_mode: reported_conditionally
   conditions:
@@ -368,8 +410,9 @@ records:
     the certificates shall remain valid for a period of nine months under the following circumstances
   action: preserve non-unduly-issued certificate validity for nine months after withdrawal when both enacted
     conditions are satisfied
-  subject_ref: affected_certificates
-  subject_category: other
+  actors: []
+  targets:
+  - target_ref: affected_certificates
   kind: legal_consequence
   product_scope: no_product_action
   product_scope_reason: Defines certificate validity rather than an operator compliance action.
@@ -391,8 +434,10 @@ records:
     business may extend the provisional validity of the certificates for additional periods of three months,
     which shall not exceed 12 months in total.
   action: extend provisional certificate validity in three-month periods up to a total of 12 months
-  subject_ref: national_competent_authority
-  subject_category: public_authority
+  actors:
+  - actor_ref: national_competent_authority
+    category: public_authority
+  targets: []
   kind: power
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -406,8 +451,12 @@ records:
     States and the other notified bodies thereof.
   action: immediately inform the Commission, other Member States, and other notified bodies of the replacement
     arrangement
-  subject_ref: competent_authority_or_assuming_notified_body
-  subject_category: other
+  actors:
+  - actor_ref: competent_authority
+    category: public_authority
+  - actor_ref: assuming_notified_body
+    category: notified_or_conformity_body
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for these addressees.
   implementation_mode: none_required

@@ -3,9 +3,10 @@ norms:
 - norm_id: AIA-NORM-A045-P1-INFORM-NOTIFYING-AUTHORITY
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: notified_body
+  actors:
+  - actor_ref: notified_body
     category: notified_or_conformity_body
+  targets: []
   action: inform the notifying authority of each listed issuance, adverse decision, notification-related
     circumstance or information-request event without requiring a prior request for disclosure
   norm_text: Notified bodies shall inform the notifying authority of the following
@@ -51,9 +52,10 @@ norms:
 - norm_id: AIA-NORM-A045-P1-DISCLOSE-ACTIVITIES-ON-REQUEST
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: notified_body
+  actors:
+  - actor_ref: notified_body
     category: notified_or_conformity_body
+  targets: []
   action: inform the notifying authority on request about conformity assessment activities within the
     notification scope and other activities performed, including cross-border activities and subcontracting
   norm_text: Notified bodies shall inform the notifying authority of the following
@@ -90,9 +92,10 @@ norms:
 - norm_id: AIA-NORM-A045-P2-INFORM-OTHER-NOTIFIED-BODIES
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: notified_body
+  actors:
+  - actor_ref: notified_body
     category: notified_or_conformity_body
+  targets: []
   action: inform other notified bodies of each listed adverse quality-management approval or technical-documentation
     certificate outcome without requiring a prior request for disclosure
   norm_text: Each notified body shall inform the other notified bodies of
@@ -132,9 +135,10 @@ norms:
 - norm_id: AIA-NORM-A045-P2-DISCLOSE-ISSUED-APPROVALS-ON-REQUEST
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: notified_body
+  actors:
+  - actor_ref: notified_body
     category: notified_or_conformity_body
+  targets: []
   action: inform other notified bodies, upon request, of the quality-system approvals or Union technical
     documentation assessment certificates and supplements that the notified body has issued
   norm_text: Each notified body shall inform the other notified bodies of
@@ -175,9 +179,10 @@ norms:
 - norm_id: AIA-NORM-A045-P3-SHARE-ASSESSMENT-RESULTS
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: notified_body
+  actors:
+  - actor_ref: notified_body
     category: notified_or_conformity_body
+  targets: []
   action: provide relevant information on issues relating to negative conformity assessment results to
     other notified bodies carrying out similar conformity assessment activities covering the same types
     of AI systems, without requiring a prior request
@@ -215,9 +220,10 @@ norms:
 - norm_id: AIA-NORM-A045-P3-SHARE-POSITIVE-RESULTS-ON-REQUEST
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: notified_body
+  actors:
+  - actor_ref: notified_body
     category: notified_or_conformity_body
+  targets: []
   action: provide relevant information on issues relating to positive conformity assessment results, on
     request, to other notified bodies carrying out similar conformity assessment activities covering the
     same types of AI systems
@@ -256,9 +262,10 @@ norms:
 - norm_id: AIA-NORM-A045-P4-CONFIDENTIALITY
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: notified_body
+  actors:
+  - actor_ref: notified_body
     category: notified_or_conformity_body
+  targets: []
   action: safeguard obtained information confidentiality under Article 78
   norm_text: Notified bodies shall safeguard the confidentiality of the information that they obtain,
     in accordance with Article 78.

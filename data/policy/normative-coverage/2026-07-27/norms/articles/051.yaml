@@ -3,9 +3,9 @@ norms:
 - norm_id: AIA-NORM-A051-P1-A-HIGH-IMPACT-SYSTEMIC-RISK
   act_version_date: '2026-07-27'
   kind: applicability
-  subjects:
-  - subject_ref: general_purpose_ai_model
-    category: other
+  actors: []
+  targets:
+  - target_ref: general_purpose_ai_model
   action: classify a general-purpose AI model with evaluated high-impact capabilities as a model with
     systemic risk
   norm_text: it has high impact capabilities evaluated on the basis of appropriate technical tools and
@@ -44,9 +44,9 @@ norms:
 - norm_id: AIA-NORM-A051-P1-B-EQUIVALENT-SYSTEMIC-RISK
   act_version_date: '2026-07-27'
   kind: applicability
-  subjects:
-  - subject_ref: general_purpose_ai_model
-    category: other
+  actors: []
+  targets:
+  - target_ref: general_purpose_ai_model
   action: classify a general-purpose AI model with Commission-determined equivalent capabilities or impact
     as a model with systemic risk
   norm_text: based on a decision of the Commission, ex officio or following a qualified alert from the
@@ -87,9 +87,9 @@ norms:
 - norm_id: AIA-NORM-A051-P2-COMPUTE-PRESUMPTION
   act_version_date: '2026-07-27'
   kind: applicability
-  subjects:
-  - subject_ref: general_purpose_ai_model
-    category: other
+  actors: []
+  targets:
+  - target_ref: general_purpose_ai_model
   action: presume a general-purpose AI model has high-impact capabilities when its training computation
     exceeds 10^25 floating-point operations
   norm_text: A general-purpose AI model shall be presumed to have high impact capabilities pursuant to
@@ -127,9 +127,10 @@ norms:
 - norm_id: AIA-NORM-A051-P3-AMEND-THRESHOLDS
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: commission
+  actors:
+  - actor_ref: commission
     category: union_institution_or_body
+  targets: []
   action: adopt Article 97 delegated acts amending Article 51 thresholds and supplementing benchmarks
     and indicators when necessary for the thresholds to reflect the state of the art
   norm_text: The Commission shall adopt delegated acts in accordance with Article 97 to amend the thresholds

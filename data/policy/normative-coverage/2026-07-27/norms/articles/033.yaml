@@ -3,9 +3,10 @@ norms:
 - norm_id: AIA-NORM-A033-P1-SUBCONTRACTOR-ARTICLE-31-COMPLIANCE
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: notified_body
+  actors:
+  - actor_ref: notified_body
     category: notified_or_conformity_body
+  targets: []
   action: ensure subcontractors and subsidiaries used for conformity-assessment tasks meet Article 31
     requirements
   norm_text: it shall ensure that the subcontractor or the subsidiary meets the requirements laid down
@@ -39,9 +40,10 @@ norms:
 - norm_id: AIA-NORM-A033-P1-INFORM-NOTIFYING-AUTHORITY
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: notified_body
+  actors:
+  - actor_ref: notified_body
     category: notified_or_conformity_body
+  targets: []
   action: inform the notifying authority when using a subcontractor or subsidiary for conformity-assessment
     tasks
   norm_text: shall inform the notifying authority accordingly.
@@ -74,9 +76,10 @@ norms:
 - norm_id: AIA-NORM-A033-P2-FULL-RESPONSIBILITY
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: notified_body
+  actors:
+  - actor_ref: notified_body
     category: notified_or_conformity_body
+  targets: []
   action: take full responsibility for tasks performed by subcontractors or subsidiaries
   norm_text: Notified bodies shall take full responsibility for the tasks performed by any subcontractors
     or subsidiaries.
@@ -108,9 +111,10 @@ norms:
 - norm_id: AIA-NORM-A033-P3-PROVIDER-AGREEMENT
   act_version_date: '2026-07-27'
   kind: permission
-  subjects:
-  - subject_ref: notified_body
+  actors:
+  - actor_ref: notified_body
     category: notified_or_conformity_body
+  targets: []
   action: subcontract activities or use a subsidiary only with the provider's agreement
   norm_text: Activities may be subcontracted or carried out by a subsidiary only with the agreement of
     the provider.
@@ -143,9 +147,10 @@ norms:
 - norm_id: AIA-NORM-A033-P3-PUBLISH-SUBSIDIARIES
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: notified_body
+  actors:
+  - actor_ref: notified_body
     category: notified_or_conformity_body
+  targets: []
   action: make the list of subsidiaries publicly available
   norm_text: Notified bodies shall make a list of their subsidiaries publicly available.
   detection_channels:
@@ -176,9 +181,10 @@ norms:
 - norm_id: AIA-NORM-A033-P4-RETAIN-SUBCONTRACTING-DOCUMENTS
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: notified_body
+  actors:
+  - actor_ref: notified_body
     category: notified_or_conformity_body
+  targets: []
   action: keep subcontractor or subsidiary qualification and work documents available to the notifying
     authority for five years after subcontracting ends
   norm_text: The relevant documents concerning the assessment of the qualifications of the subcontractor

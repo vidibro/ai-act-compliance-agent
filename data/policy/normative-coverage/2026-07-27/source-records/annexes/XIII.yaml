@@ -4,8 +4,10 @@ records:
   quote: the Commission shall take into account the following criteria
   action: take all seven Annex XIII criteria into account when determining whether a GPAI model has capabilities
     or impact equivalent to Article 51(1)(a)
-  subject_ref: commission
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: commission
+    category: union_institution_or_body
+  targets: []
   mandatory_content:
   - number of model parameters
   - quality or size of the dataset, including token-based measurement
@@ -36,8 +38,9 @@ records:
     when it has been made available to at least 10000 registered business users established in the Union;
   action: presume that a GPAI model has high internal-market impact due to reach once it is available
     to at least 10,000 registered Union business users
-  subject_ref: general_purpose_ai_model
-  subject_category: other
+  actors: []
+  targets:
+  - target_ref: general_purpose_ai_model
   kind: legal_consequence
   conditions:
   - the model has been made available to at least 10,000 registered business users established in the

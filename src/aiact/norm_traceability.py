@@ -20,6 +20,7 @@ from aiact.classify.graph import QUESTIONS
 from aiact.norm_validity import audit_norm_validity, load_adjudication_ledger
 from aiact.policy_loader import criterion_from_norm, load_policy_spec, report_norm_from_norm
 from aiact.schemas.norm import (
+    ActorCategory,
     ImplementationMode,
     Norm,
     NormativeCoverageBundle,
@@ -27,7 +28,6 @@ from aiact.schemas.norm import (
     NormRelationKind,
     ProductScope,
     SourceKind,
-    SubjectCategory,
     VerificationMode,
 )
 from aiact.schemas.policy import PolicyRuleset
@@ -47,8 +47,8 @@ def _reconstruction_errors(norm: Norm) -> list[str]:
         errors.append(f"product_scope is {norm.product_scope.value}")
     if norm.verification_mode is VerificationMode.UNRESOLVED:
         errors.append("verification_mode is unresolved")
-    if any(subject.category is SubjectCategory.UNRESOLVED for subject in norm.subjects):
-        errors.append("a subject is unresolved")
+    if any(actor.category is ActorCategory.UNRESOLVED for actor in norm.actors):
+        errors.append("an actor is unresolved")
     return errors
 
 
@@ -68,13 +68,13 @@ def _report_reconstruction_errors(
         NormKind.LEGAL_CONSEQUENCE,
         NormKind.APPLICABILITY,
     } and not external_conditional_obligation and not any(
-        subject.category is SubjectCategory.PUBLIC_AUTHORITY for subject in norm.subjects
+        actor.category is ActorCategory.PUBLIC_AUTHORITY for actor in norm.actors
     ):
         errors.append(f"kind is {norm.kind.value}, not reportable")
     if norm.verification_mode is VerificationMode.UNRESOLVED:
         errors.append("verification_mode is unresolved")
-    if any(subject.category is SubjectCategory.UNRESOLVED for subject in norm.subjects):
-        errors.append("a subject is unresolved")
+    if any(actor.category is ActorCategory.UNRESOLVED for actor in norm.actors):
+        errors.append("an actor is unresolved")
     return errors
 
 
@@ -181,7 +181,7 @@ def traceability_errors(
             NormKind.LEGAL_CONSEQUENCE,
             NormKind.APPLICABILITY,
         } and not external_conditional_obligation and not any(
-            subject.category is SubjectCategory.PUBLIC_AUTHORITY for subject in norm.subjects
+            actor.category is ActorCategory.PUBLIC_AUTHORITY for actor in norm.actors
         ):
             errors.append(
                 f"{norm.norm_id} is report_only but has non-reportable kind {norm.kind.value}"

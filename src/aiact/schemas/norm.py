@@ -43,7 +43,7 @@ class NormKind(StrEnum):
     LEGAL_CONSEQUENCE = "legal_consequence"
 
 
-class SubjectCategory(StrEnum):
+class ActorCategory(StrEnum):
     SUPPORTED_OPERATOR = "supported_operator"
     EXTERNAL_PRIVATE_PARTY = "external_private_party"
     NATURAL_PERSON = "natural_person"
@@ -51,7 +51,6 @@ class SubjectCategory(StrEnum):
     MEMBER_STATE = "member_state"
     PUBLIC_AUTHORITY = "public_authority"
     NOTIFIED_OR_CONFORMITY_BODY = "notified_or_conformity_body"
-    OTHER = "other"
     UNRESOLVED = "unresolved"
 
 
@@ -307,9 +306,17 @@ class TextReviewInventory(BaseModel):
         return self
 
 
-class NormSubject(BaseModel):
-    subject_ref: str = Field(min_length=1)
-    category: SubjectCategory
+class NormActor(BaseModel):
+    """A person or body to which the norm assigns a legal effect."""
+
+    actor_ref: str = Field(min_length=1)
+    category: ActorCategory
+
+
+class NormTarget(BaseModel):
+    """An object, activity, concept, or legal state to which the norm relates."""
+
+    target_ref: str = Field(min_length=1)
 
 
 class ConditionGroup(BaseModel):
@@ -336,7 +343,8 @@ class Norm(BaseModel):
     norm_id: str = Field(pattern=r"^AIA-NORM-[A-Z0-9-]+$")
     act_version_date: date
     kind: NormKind
-    subjects: list[NormSubject] = Field(min_length=1)
+    actors: list[NormActor] = []
+    targets: list[NormTarget] = []
     action: str = Field(min_length=1)
     norm_text: str = Field(min_length=1)
     detection_channels: list[CandidateDetectionChannel] = Field(min_length=1)
@@ -370,6 +378,14 @@ class Norm(BaseModel):
     def _scope_and_implementation_are_explained(self) -> Norm:
         if not self.norm_text.strip():
             raise ValueError("norm_text must contain an exact enacted quotation")
+        if not self.actors and not self.targets:
+            raise ValueError("norm requires at least one actor or target")
+        actor_refs = [actor.actor_ref for actor in self.actors]
+        if len(actor_refs) != len(set(actor_refs)):
+            raise ValueError("actors must not contain duplicate actor_ref values")
+        target_refs = [target.target_ref for target in self.targets]
+        if len(target_refs) != len(set(target_refs)):
+            raise ValueError("targets must not contain duplicate target_ref values")
         if len(self.detection_channels) != len(set(self.detection_channels)):
             raise ValueError("detection_channels must not contain duplicates")
         if self.product_scope not in {ProductScope.IN_SCOPE, ProductScope.UNRESOLVED}:

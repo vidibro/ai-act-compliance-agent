@@ -8,8 +8,10 @@ records:
   - the high-risk AI system is listed in point 1 of Annex III
   - the provider has applied Article 40 harmonised standards or, where applicable, Article 41 common specifications
     in demonstrating compliance with Section 2 requirements
-  subject_ref: provider
-  subject_category: supported_operator
+  actors:
+  - actor_ref: provider
+    category: supported_operator
+  targets: []
   implementation_refs:
   - AIA-PO-A43-1
   verification_mode: reported_not_judged
@@ -19,8 +21,10 @@ records:
   quote: the provider shall follow the conformity assessment procedure set out in Annex VII where
   action: use Annex VII where standards or common specifications are unavailable, unapplied, partly applied,
     or restricted
-  subject_ref: provider
-  subject_category: supported_operator
+  actors:
+  - actor_ref: provider
+    category: supported_operator
+  targets: []
   implementation_refs:
   - AIA-PO-A43-1B
   verification_mode: reported_not_judged
@@ -46,8 +50,10 @@ records:
   - where the system is intended to be put into service by law enforcement, immigration or asylum authorities,
     or Union institutions, bodies, offices or agencies, the Article 74(8) or (9) market surveillance authority,
     as applicable, shall act as the notified body
-  subject_ref: provider
-  subject_category: supported_operator
+  actors:
+  - actor_ref: provider
+    category: supported_operator
+  targets: []
   kind: permission
   implementation_refs:
   - AIA-PO-A43-1B
@@ -64,8 +70,10 @@ records:
   - the high-risk AI system is listed in point 1 of Annex III and is undergoing the Annex VII procedure
   - the system is intended to be put into service by law enforcement, immigration or asylum authorities,
     or Union institutions, bodies, offices or agencies
-  subject_ref: market_surveillance_authority
-  subject_category: public_authority
+  actors:
+  - actor_ref: market_surveillance_authority
+    category: public_authority
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -78,8 +86,10 @@ records:
     provide for the involvement of a notified body.
   action: use the Annex VI internal-control procedure without notified-body involvement for Annex III
     points 2 to 8
-  subject_ref: provider
-  subject_category: supported_operator
+  actors:
+  - actor_ref: provider
+    category: supported_operator
+  targets: []
   implementation_refs:
   - AIA-PO-A43-2
   verification_mode: reported_not_judged
@@ -88,8 +98,10 @@ records:
   source: A043-P3
   quote: shall follow the relevant conformity assessment procedure
   action: follow the applicable Section A Annex I conformity-assessment procedure
-  subject_ref: provider
-  subject_category: supported_operator
+  actors:
+  - actor_ref: provider
+    category: supported_operator
+  targets: []
   conditions:
   - the high-risk AI system is covered by Union harmonisation legislation listed in Section A of Annex
     I
@@ -101,8 +113,10 @@ records:
   source: A043-P3
   quote: shall be part of that assessment
   action: include Chapter III Section 2 requirements in that assessment
-  subject_ref: provider
-  subject_category: supported_operator
+  actors:
+  - actor_ref: provider
+    category: supported_operator
+  targets: []
   conditions:
   - the high-risk AI system is covered by Union harmonisation legislation listed in Section A of Annex
     I
@@ -116,8 +130,10 @@ records:
     points 3, 4.3, 4.4. and 4.5, the fifth paragraph of point 4.6 and point 5 of Annex VII shall apply.
   action: undertake assessment of the Article 17 quality-management system and apply the specified Annex
     VII procedural requirements
-  subject_ref: provider
-  subject_category: supported_operator
+  actors:
+  - actor_ref: provider
+    category: supported_operator
+  targets: []
   conditions:
   - the high-risk AI system is covered by Union harmonisation legislation listed in Section A of Annex
     I
@@ -132,8 +148,10 @@ records:
   source: A043-P3
   quote: shall have the power to assess the conformity of high-risk AI systems
   action: assess conformity with Chapter III Section 2
-  subject_ref: sectoral_notified_body
-  subject_category: notified_or_conformity_body
+  actors:
+  - actor_ref: sectoral_notified_body
+    category: notified_or_conformity_body
+  targets: []
   kind: power
   conditions:
   - the body has been notified under Union harmonisation legislation listed in Section A of Annex I
@@ -148,8 +166,10 @@ records:
   source: A043-P3
   quote: shall apply for designation in accordance with Section 4 of this Chapter by 28 January 2028
   action: apply for AI Act designation by 28 January 2028
-  subject_ref: sectoral_notified_body
-  subject_category: notified_or_conformity_body
+  actors:
+  - actor_ref: sectoral_notified_body
+    category: notified_or_conformity_body
+  targets: []
   conditions:
   - the body has been notified under Union harmonisation legislation listed in Section A of Annex I
   product_scope: outside_supported_actor
@@ -161,8 +181,10 @@ records:
   source: A043-P3
   quote: that manufacturer may use that option only if it has also applied harmonised standards
   action: use a no-third-party sectoral route only after applying standards covering all Section 2 requirements
-  subject_ref: product_manufacturer
-  subject_category: supported_operator
+  actors:
+  - actor_ref: product_manufacturer
+    category: supported_operator
+  targets: []
   kind: permission
   conditions:
   - Union harmonisation legislation listed in Section A of Annex I gives the product manufacturer an option
@@ -177,8 +199,10 @@ records:
   source: A043-P3
   quote: does not affect the choice of the conformity assessment procedure
   action: preserve the sectoral conformity-route choice despite AI high-risk classification
-  subject_ref: product_manufacturer
-  subject_category: supported_operator
+  actors:
+  - actor_ref: product_manufacturer
+    category: supported_operator
+  targets: []
   kind: applicability
   conditions:
   - the product is covered by Union harmonisation legislation listed in Section A of Annex I
@@ -193,8 +217,10 @@ records:
   quote: are not required to choose a conformity assessment procedure involving third-party conformity
     assessment only because the product includes a high-risk AI system
   action: avoid a third-party procedure where sectoral law does not otherwise require it
-  subject_ref: product_manufacturer
-  subject_category: supported_operator
+  actors:
+  - actor_ref: product_manufacturer
+    category: supported_operator
+  targets: []
   kind: applicability
   conditions:
   - the product is covered by Union harmonisation legislation listed in Section A of Annex I
@@ -213,8 +239,10 @@ records:
     current deployer.
   action: perform a new conformity assessment after a substantial modification regardless of subsequent
     distribution or continued use
-  subject_ref: provider
-  subject_category: supported_operator
+  actors:
+  - actor_ref: provider
+    category: supported_operator
+  targets: []
   implementation_refs:
   - AIA-PO-A43-4
   verification_mode: reported_not_judged
@@ -230,8 +258,10 @@ records:
     in the technical documentation referred to in point 2(f) of Annex IV, shall not constitute a substantial
     modification.
   action: exclude predetermined and initially documented learning changes from substantial modification
-  subject_ref: provider
-  subject_category: supported_operator
+  actors:
+  - actor_ref: provider
+    category: supported_operator
+  targets: []
   kind: applicability
   product_scope: dependency_only
   product_scope_reason: This proposition supplies applicability to the new-assessment obligation.
@@ -246,8 +276,10 @@ records:
   quote: The Commission is empowered to adopt delegated acts in accordance with Article 97 in order to
     amend Annexes VI and VII by updating them in light of technical progress.
   action: amend Annexes VI and VII for technical progress
-  subject_ref: commission
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: commission
+    category: union_institution_or_body
+  targets: []
   kind: power
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -261,8 +293,10 @@ records:
     amend paragraphs 1 and 2 of this Article in order to subject high-risk AI systems referred to in points
     2 to 8 of Annex III to the conformity assessment procedure referred to in Annex VII or parts thereof.
   action: move Annex III points 2 to 8 to some or all of the Annex VII procedure
-  subject_ref: commission
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: commission
+    category: union_institution_or_body
+  targets: []
   kind: power
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -278,8 +312,10 @@ records:
     as the availability of adequate capacities and resources among notified bodies.
   action: account for internal-control effectiveness and notified-body capacity when adopting the paragraph
     6 delegated acts
-  subject_ref: commission
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: commission
+    category: union_institution_or_body
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required

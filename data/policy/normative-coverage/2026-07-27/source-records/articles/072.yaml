@@ -4,8 +4,10 @@ records:
   quote: Providers shall establish and document a post-market monitoring system in a manner that is proportionate
     to the nature of the AI technologies and the risks of the high-risk AI system.
   action: establish and document a risk-proportionate post-market monitoring system
-  subject_ref: provider
-  subject_category: supported_operator
+  actors:
+  - actor_ref: provider
+    category: supported_operator
+  targets: []
   implementation_refs:
   - AIA-PO-A72
   verification_mode: reported_not_judged
@@ -21,8 +23,10 @@ records:
     authorities.
   action: actively collect document and analyse lifetime performance and interaction data to evaluate
     continuous compliance while excluding protected law-enforcement data
-  subject_ref: provider
-  subject_category: supported_operator
+  actors:
+  - actor_ref: provider
+    category: supported_operator
+  targets: []
   mandatory_content:
   - active systematic lifetime data collection documentation and analysis
   - continuous Chapter III Section 2 compliance evaluation
@@ -37,8 +41,10 @@ records:
   source: A072-P003
   quote: The post-market monitoring system shall be based on a post-market monitoring plan.
   action: base the post-market monitoring system on a post-market monitoring plan
-  subject_ref: provider
-  subject_category: supported_operator
+  actors:
+  - actor_ref: provider
+    category: supported_operator
+  targets: []
   implementation_refs:
   - AIA-PO-A72
   verification_mode: reported_not_judged
@@ -49,8 +55,10 @@ records:
     IV.
   action: include the post-market monitoring plan in the technical documentation referred to in Annex
     IV
-  subject_ref: provider
-  subject_category: supported_operator
+  actors:
+  - actor_ref: provider
+    category: supported_operator
+  targets: []
   implementation_refs:
   - AIA-PO-A72
   verification_mode: reported_not_judged
@@ -60,8 +68,10 @@ records:
   quote: The Commission, taking utmost account of the opinion of the Board, shall adopt guidance, including
     a template, on the post-market monitoring plan by 2 September 2027.
   action: adopt Board-informed plan guidance and a template by 2 September 2027
-  subject_ref: commission
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: commission
+    category: union_institution_or_body
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -77,8 +87,10 @@ records:
     legislation, provided that it achieves an equivalent level of protection.
   action: integrate Article 72 elements into an existing sectoral monitoring system and plan where equivalent
     protection is achieved
-  subject_ref: provider
-  subject_category: supported_operator
+  actors:
+  - actor_ref: provider
+    category: supported_operator
+  targets: []
   kind: permission
   conditions:
   - operator: any_of

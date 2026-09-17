@@ -3,9 +3,10 @@ norms:
 - norm_id: AIA-NORM-A046-P1-DEROGATION-AUTHORISATION
   act_version_date: '2026-07-27'
   kind: power
-  subjects:
-  - subject_ref: market_surveillance_authority
+  actors:
+  - actor_ref: market_surveillance_authority
     category: public_authority
+  targets: []
   action: authorise temporary national placing or service of a specific high-risk system under the enacted
     exceptional derogation
   norm_text: By way of derogation from Article 43 and upon a duly justified request, any market surveillance
@@ -47,9 +48,10 @@ norms:
 - norm_id: AIA-NORM-A046-P1-COMPLETE-ASSESSMENT-PROMPTLY
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: provider
+  actors:
+  - actor_ref: provider
     category: supported_operator
+  targets: []
   action: complete the necessary conformity-assessment procedures without undue delay
   norm_text: The completion of those procedures shall be undertaken without undue delay.
   detection_channels:
@@ -81,9 +83,10 @@ norms:
 - norm_id: AIA-NORM-A046-P2-URGENT-USE-PERMISSION
   act_version_date: '2026-07-27'
   kind: permission
-  subjects:
-  - subject_ref: law_enforcement_or_civil_protection_authority
+  actors:
+  - actor_ref: law_enforcement_or_civil_protection_authority
     category: public_authority
+  targets: []
   action: put a specific high-risk system into urgent public-safety service before authorisation
   norm_text: In a duly justified situation of urgency for exceptional reasons of public security or in
     the case of specific, substantial and imminent threat to the life or physical safety of natural persons,
@@ -121,9 +124,10 @@ norms:
 - norm_id: AIA-NORM-A046-P2-REFUSAL-RESPONSE
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: law_enforcement_or_civil_protection_authority
+  actors:
+  - actor_ref: law_enforcement_or_civil_protection_authority
     category: public_authority
+  targets: []
   action: stop use of the high-risk AI system with immediate effect when the paragraph 1 authorisation
     requested for urgent use under paragraph 2 is refused
   norm_text: If the authorisation referred to in paragraph 1 is refused, the use of the high-risk AI system
@@ -157,9 +161,10 @@ norms:
 - norm_id: AIA-NORM-A046-P2-DISCARD-RESULTS-AND-OUTPUTS
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: law_enforcement_or_civil_protection_authority
+  actors:
+  - actor_ref: law_enforcement_or_civil_protection_authority
     category: public_authority
+  targets: []
   action: immediately discard all results and outputs of the urgent use of the high-risk AI system when
     the paragraph 1 authorisation requested under paragraph 2 is refused
   norm_text: all the results and outputs of such use shall be immediately discarded.
@@ -192,9 +197,10 @@ norms:
 - norm_id: AIA-NORM-A046-P3-NOTIFY-AUTHORISATION
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: market_surveillance_authority
+  actors:
+  - actor_ref: market_surveillance_authority
     category: public_authority
+  targets: []
   action: inform the Commission and other Member States of every paragraph 1 or 2 authorisation
   norm_text: The market surveillance authority shall inform the Commission and the other Member States
     of any authorisation issued pursuant to paragraphs 1 and 2.
@@ -228,9 +234,10 @@ norms:
 - norm_id: AIA-NORM-A046-P3-SENSITIVE-DATA-EXCEPTION
   act_version_date: '2026-07-27'
   kind: applicability
-  subjects:
-  - subject_ref: market_surveillance_authority
+  actors:
+  - actor_ref: market_surveillance_authority
     category: public_authority
+  targets: []
   action: exclude sensitive law-enforcement operational data from the authorisation notification
   norm_text: This obligation shall not cover sensitive operational data in relation to the activities
     of law-enforcement authorities.
@@ -263,9 +270,9 @@ norms:
 - norm_id: AIA-NORM-A046-P4-DEEMED-JUSTIFIED
   act_version_date: '2026-07-27'
   kind: legal_consequence
-  subjects:
-  - subject_ref: derogation_authorisation
-    category: other
+  actors: []
+  targets:
+  - target_ref: derogation_authorisation
   action: deem the authorisation justified when neither the Commission nor a Member State objects within
     15 calendar days
   norm_text: Where, within 15 calendar days of receipt of the information referred to in paragraph 3,
@@ -303,9 +310,10 @@ norms:
 - norm_id: AIA-NORM-A046-P5-CONSULT-MEMBER-STATE
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: commission
+  actors:
+  - actor_ref: commission
     category: union_institution_or_body
+  targets: []
   action: consult the relevant Member State without delay after a qualifying objection or concern
   norm_text: the Commission shall, without delay, enter into consultations with the relevant Member State.
   detection_channels:
@@ -343,9 +351,10 @@ norms:
 - norm_id: AIA-NORM-A046-P5-OPERATOR-HEARING
   act_version_date: '2026-07-27'
   kind: entitlement
-  subjects:
-  - subject_ref: concerned_operator
+  actors:
+  - actor_ref: concerned_operator
     category: supported_operator
+  targets: []
   action: be consulted and receive an opportunity to present views on the authorisation
   norm_text: The operators concerned shall be consulted and have the possibility to present their views.
   detection_channels:
@@ -377,9 +386,10 @@ norms:
 - norm_id: AIA-NORM-A046-P5-DECIDE-JUSTIFICATION
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: commission
+  actors:
+  - actor_ref: commission
     category: union_institution_or_body
+  targets: []
   action: decide whether the authorisation is justified after consultation
   norm_text: Having regard thereto, the Commission shall decide whether the authorisation is justified.
   detection_channels:
@@ -411,9 +421,10 @@ norms:
 - norm_id: AIA-NORM-A046-P5-ADDRESS-DECISION
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: commission
+  actors:
+  - actor_ref: commission
     category: union_institution_or_body
+  targets: []
   action: address the authorisation decision to the concerned Member State and relevant operators
   norm_text: The Commission shall address its decision to the Member State concerned and to the relevant
     operators.
@@ -446,9 +457,10 @@ norms:
 - norm_id: AIA-NORM-A046-P6-WITHDRAW-UNJUSTIFIED-AUTHORISATION
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: market_surveillance_authority
+  actors:
+  - actor_ref: market_surveillance_authority
     category: public_authority
+  targets: []
   action: withdraw an authorisation that the Commission considers unjustified
   norm_text: Where the Commission considers the authorisation unjustified, it shall be withdrawn by the
     market surveillance authority of the Member State concerned.
@@ -481,9 +493,10 @@ norms:
 - norm_id: AIA-NORM-A046-P7-SECTORAL-DEROGATIONS-ONLY
   act_version_date: '2026-07-27'
   kind: applicability
-  subjects:
-  - subject_ref: provider
+  actors:
+  - actor_ref: provider
     category: supported_operator
+  targets: []
   action: apply only the relevant sectoral-law conformity-assessment derogations to Section A Annex I
     products
   norm_text: For high-risk AI systems related to products covered by Union harmonisation legislation listed

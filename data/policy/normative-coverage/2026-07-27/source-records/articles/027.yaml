@@ -9,8 +9,10 @@ records:
     shall perform an assessment consisting of:'
   action: perform a fundamental-rights impact assessment containing all six required elements before deploying
     the qualifying Annex III system
-  subject_ref: qualifying_annex_iii_deployer
-  subject_category: supported_operator
+  actors:
+  - actor_ref: qualifying_annex_iii_deployer
+    category: supported_operator
+  targets: []
   conditions: &id001
   - the system is high-risk under Article 6(2) and is not intended for Annex III point 2
   - the deployer is governed by public law or provides public services, or the system falls within Annex
@@ -37,8 +39,10 @@ records:
   source: A027-P008
   quote: The obligation laid down in paragraph 1 applies to the first use of the high-risk AI system.
   action: apply the fundamental-rights assessment duty to the system's first use
-  subject_ref: qualifying_annex_iii_deployer
-  subject_category: supported_operator
+  actors:
+  - actor_ref: qualifying_annex_iii_deployer
+    category: supported_operator
+  targets: []
   kind: applicability
   conditions: *id001
   implementation_mode: report_only
@@ -51,8 +55,10 @@ records:
   quote: The deployer may, in similar cases, rely on previously conducted fundamental rights impact assessments
     or existing impact assessments carried out by provider.
   action: rely in similar cases on a prior fundamental-rights assessment or an existing provider assessment
-  subject_ref: qualifying_annex_iii_deployer
-  subject_category: supported_operator
+  actors:
+  - actor_ref: qualifying_annex_iii_deployer
+    category: supported_operator
+  targets: []
   kind: permission
   conditions:
   - the prior or provider assessment concerns a similar case
@@ -67,8 +73,10 @@ records:
     steps to update the information.
   action: update the fundamental-rights assessment information when a required element changes or becomes
     outdated
-  subject_ref: qualifying_annex_iii_deployer
-  subject_category: supported_operator
+  actors:
+  - actor_ref: qualifying_annex_iii_deployer
+    category: supported_operator
+  targets: []
   conditions:
   - during use, the deployer considers a paragraph 1 element changed or no longer current
   implementation_refs:
@@ -82,8 +90,10 @@ records:
     referred to in paragraph 5 of this Article as part of the notification.
   action: notify the market-surveillance authority of the assessment results using the completed paragraph
     5 template
-  subject_ref: qualifying_annex_iii_deployer
-  subject_category: supported_operator
+  actors:
+  - actor_ref: qualifying_annex_iii_deployer
+    category: supported_operator
+  targets: []
   conditions:
   - the Article 27(1) assessment has been performed
   implementation_refs: &id003
@@ -97,8 +107,10 @@ records:
   source: A027-P009
   quote: In the case referred to in Article 46(1), deployers may be exempt from that obligation to notify.
   action: exempt the deployer from the result-notification duty in an Article 46(1) case
-  subject_ref: qualifying_annex_iii_deployer
-  subject_category: supported_operator
+  actors:
+  - actor_ref: qualifying_annex_iii_deployer
+    category: supported_operator
+  targets: []
   kind: permission
   conditions:
   - the deployment falls within Article 46(1)
@@ -114,8 +126,10 @@ records:
     to in paragraph 1 of this Article, include cross-references to the relevant sections of that data
     protection impact assessment or include relevant parts thereof in the fundamental rights impact assessment.
   action: cross-reference or incorporate relevant DPIA sections when they already meet an Article 27 obligation
-  subject_ref: qualifying_annex_iii_deployer
-  subject_category: supported_operator
+  actors:
+  - actor_ref: qualifying_annex_iii_deployer
+    category: supported_operator
+  targets: []
   kind: permission
   conditions:
   - an applicable DPIA already meets an Article 27 obligation
@@ -129,8 +143,10 @@ records:
     to facilitate deployers in complying with their obligations under this Article in a simplified manner.
   action: develop a questionnaire template, potentially through an automated tool, that simplifies deployer
     compliance
-  subject_ref: ai_office
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: ai_office
+    category: union_institution_or_body
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -142,8 +158,10 @@ records:
     to the relevant sections of the data protection impact assessment or include relevant parts thereof
     in the fundamental rights impact assessment pursuant to paragraph 4.
   action: make the template support relevant DPIA cross-references and incorporated sections
-  subject_ref: ai_office
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: ai_office
+    category: union_institution_or_body
+  targets: []
   conditions:
   - DPIA reuse under Article 27(4) is relevant
   product_scope: outside_supported_actor

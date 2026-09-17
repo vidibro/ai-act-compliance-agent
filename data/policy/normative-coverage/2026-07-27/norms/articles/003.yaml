@@ -3,9 +3,9 @@ norms:
 - norm_id: AIA-NORM-A003-D001-AI-SYSTEM
   act_version_date: '2026-07-27'
   kind: definition
-  subjects:
-  - subject_ref: ai_system
-    category: other
+  actors: []
+  targets:
+  - target_ref: ai_system
   action: define AI system for the purposes of the Regulation
   norm_text: "\u2018AI system\u2019 means a machine-based system that is designed to operate with varying\
     \ levels of autonomy and that may exhibit adaptiveness after deployment, and that, for explicit or\
@@ -43,9 +43,9 @@ norms:
 - norm_id: AIA-NORM-A003-D002-RISK
   act_version_date: '2026-07-27'
   kind: definition
-  subjects:
-  - subject_ref: risk
-    category: other
+  actors: []
+  targets:
+  - target_ref: risk
   action: define risk for the purposes of the Regulation
   norm_text: "\u2018risk\u2019 means the combination of the probability of an occurrence of harm and the\
     \ severity of that harm"
@@ -80,9 +80,9 @@ norms:
 - norm_id: AIA-NORM-A003-D003-PROVIDER
   act_version_date: '2026-07-27'
   kind: definition
-  subjects:
-  - subject_ref: provider
-    category: other
+  actors: []
+  targets:
+  - target_ref: provider
   action: define provider for the purposes of the Regulation
   norm_text: "\u2018provider\u2019 means a natural or legal person, public authority, agency or other\
     \ body that develops an AI system or a general-purpose AI model or that has an AI system or a general-purpose\
@@ -119,9 +119,9 @@ norms:
 - norm_id: AIA-NORM-A003-D004-DEPLOYER
   act_version_date: '2026-07-27'
   kind: definition
-  subjects:
-  - subject_ref: deployer
-    category: other
+  actors: []
+  targets:
+  - target_ref: deployer
   action: define deployer for the purposes of the Regulation
   norm_text: "\u2018deployer\u2019 means a natural or legal person, public authority, agency or other\
     \ body using an AI system under its authority except where the AI system is used in the course of\
@@ -158,9 +158,9 @@ norms:
 - norm_id: AIA-NORM-A003-D005-AUTHORISED-REPRESENTATIVE
   act_version_date: '2026-07-27'
   kind: definition
-  subjects:
-  - subject_ref: authorised_representative
-    category: other
+  actors: []
+  targets:
+  - target_ref: authorised_representative
   action: define authorised representative for the purposes of the Regulation
   norm_text: "\u2018authorised representative\u2019 means a natural or legal person located or established\
     \ in the Union who has received and accepted a written mandate from a provider of an AI system or\
@@ -197,9 +197,9 @@ norms:
 - norm_id: AIA-NORM-A003-D006-IMPORTER
   act_version_date: '2026-07-27'
   kind: definition
-  subjects:
-  - subject_ref: importer
-    category: other
+  actors: []
+  targets:
+  - target_ref: importer
   action: define importer for the purposes of the Regulation
   norm_text: "\u2018importer\u2019 means a natural or legal person located or established in the Union\
     \ that places on the market an AI system that bears the name or trademark of a natural or legal person\
@@ -235,9 +235,9 @@ norms:
 - norm_id: AIA-NORM-A003-D007-DISTRIBUTOR
   act_version_date: '2026-07-27'
   kind: definition
-  subjects:
-  - subject_ref: distributor
-    category: other
+  actors: []
+  targets:
+  - target_ref: distributor
   action: define distributor for the purposes of the Regulation
   norm_text: "\u2018distributor\u2019 means a natural or legal person in the supply chain, other than\
     \ the provider or the importer, that makes an AI system available on the Union market"
@@ -272,9 +272,9 @@ norms:
 - norm_id: AIA-NORM-A003-D008-OPERATOR
   act_version_date: '2026-07-27'
   kind: definition
-  subjects:
-  - subject_ref: operator
-    category: other
+  actors: []
+  targets:
+  - target_ref: operator
   action: define operator for the purposes of the Regulation
   norm_text: "\u2018operator\u2019 means a provider, product manufacturer, deployer, authorised representative,\
     \ importer or distributor"
@@ -309,9 +309,9 @@ norms:
 - norm_id: AIA-NORM-A003-D009-PLACING-ON-THE-MARKET
   act_version_date: '2026-07-27'
   kind: definition
-  subjects:
-  - subject_ref: placing_on_the_market
-    category: other
+  actors: []
+  targets:
+  - target_ref: placing_on_the_market
   action: define placing on the market for the purposes of the Regulation
   norm_text: "\u2018placing on the market\u2019 means the first making available of an AI system or a\
     \ general-purpose AI model on the Union market"
@@ -346,9 +346,9 @@ norms:
 - norm_id: AIA-NORM-A003-D010-MAKING-AVAILABLE-ON-THE-MARKET
   act_version_date: '2026-07-27'
   kind: definition
-  subjects:
-  - subject_ref: making_available_on_the_market
-    category: other
+  actors: []
+  targets:
+  - target_ref: making_available_on_the_market
   action: define making available on the market for the purposes of the Regulation
   norm_text: "\u2018making available on the market\u2019 means the supply of an AI system or a general-purpose\
     \ AI model for distribution or use on the Union market in the course of a commercial activity, whether\
@@ -384,9 +384,9 @@ norms:
 - norm_id: AIA-NORM-A003-D011-PUTTING-INTO-SERVICE
   act_version_date: '2026-07-27'
   kind: definition
-  subjects:
-  - subject_ref: putting_into_service
-    category: other
+  actors: []
+  targets:
+  - target_ref: putting_into_service
   action: define putting into service for the purposes of the Regulation
   norm_text: "\u2018putting into service\u2019 means the supply of an AI system for first use directly\
     \ to the deployer or for own use in the Union for its intended purpose"
@@ -421,9 +421,9 @@ norms:
 - norm_id: AIA-NORM-A003-D012-INTENDED-PURPOSE
   act_version_date: '2026-07-27'
   kind: definition
-  subjects:
-  - subject_ref: intended_purpose
-    category: other
+  actors: []
+  targets:
+  - target_ref: intended_purpose
   action: define intended purpose for the purposes of the Regulation
   norm_text: "\u2018intended purpose\u2019 means the use for which an AI system is intended by the provider,\
     \ including the specific context and conditions of use, as specified in the information supplied by\
@@ -460,9 +460,9 @@ norms:
 - norm_id: AIA-NORM-A003-D013-REASONABLY-FORESEEABLE-MISUSE
   act_version_date: '2026-07-27'
   kind: definition
-  subjects:
-  - subject_ref: reasonably_foreseeable_misuse
-    category: other
+  actors: []
+  targets:
+  - target_ref: reasonably_foreseeable_misuse
   action: define reasonably foreseeable misuse for the purposes of the Regulation
   norm_text: "\u2018reasonably foreseeable misuse\u2019 means the use of an AI system in a way that is\
     \ not in accordance with its intended purpose, but which may result from reasonably foreseeable human\
@@ -499,9 +499,9 @@ norms:
 - norm_id: AIA-NORM-A003-D014-SAFETY-COMPONENT
   act_version_date: '2026-07-27'
   kind: definition
-  subjects:
-  - subject_ref: safety_component
-    category: other
+  actors: []
+  targets:
+  - target_ref: safety_component
   action: define safety component for the purposes of the Regulation
   norm_text: "\u2018safety component\u2019 means a component of a product or of an AI system which fulfils\
     \ a safety function for that product or AI system, or the failure or malfunctioning of which endangers\
@@ -539,9 +539,9 @@ norms:
 - norm_id: AIA-NORM-A003-D014A-MICRO-SMALL-AND-MEDIUM-SIZED-ENTERPRISE
   act_version_date: '2026-07-27'
   kind: definition
-  subjects:
-  - subject_ref: micro_small_and_medium_sized_enterprise
-    category: other
+  actors: []
+  targets:
+  - target_ref: micro_small_and_medium_sized_enterprise
   action: define micro, small and medium-sized enterprise for the purposes of the Regulation
   norm_text: "\u2018micro, small and medium-sized enterprise\u2019 or \u2018SME\u2019 means a micro, small\
     \ or medium-sized enterprise as defined in Article 2 of the Annex to Recommendation 2003/361/EC"
@@ -576,9 +576,9 @@ norms:
 - norm_id: AIA-NORM-A003-D014B-SMALL-MID-CAP-ENTERPRISE
   act_version_date: '2026-07-27'
   kind: definition
-  subjects:
-  - subject_ref: small_mid_cap_enterprise
-    category: other
+  actors: []
+  targets:
+  - target_ref: small_mid_cap_enterprise
   action: define small mid-cap enterprise for the purposes of the Regulation
   norm_text: "\u2018small mid-cap enterprise\u2019 or \u2018SMC\u2019 means a small mid-cap enterprise\
     \ as defined in point (2) of the Annex to Recommendation (EU) 2025/1099"
@@ -613,9 +613,9 @@ norms:
 - norm_id: AIA-NORM-A003-D015-INSTRUCTIONS-FOR-USE
   act_version_date: '2026-07-27'
   kind: definition
-  subjects:
-  - subject_ref: instructions_for_use
-    category: other
+  actors: []
+  targets:
+  - target_ref: instructions_for_use
   action: define instructions for use for the purposes of the Regulation
   norm_text: "\u2018instructions for use\u2019 means the information provided by the provider to inform\
     \ the deployer of, in particular, an AI system\u2019s intended purpose and proper use"
@@ -650,9 +650,9 @@ norms:
 - norm_id: AIA-NORM-A003-D016-RECALL-OF-AN-AI-SYSTEM
   act_version_date: '2026-07-27'
   kind: definition
-  subjects:
-  - subject_ref: recall_of_an_ai_system
-    category: other
+  actors: []
+  targets:
+  - target_ref: recall_of_an_ai_system
   action: define recall of an AI system for the purposes of the Regulation
   norm_text: "\u2018recall of an AI system\u2019 means any measure aiming to achieve the return to the\
     \ provider or taking out of service or disabling the use of an AI system made available to deployers"
@@ -687,9 +687,9 @@ norms:
 - norm_id: AIA-NORM-A003-D017-WITHDRAWAL-OF-AN-AI-SYSTEM
   act_version_date: '2026-07-27'
   kind: definition
-  subjects:
-  - subject_ref: withdrawal_of_an_ai_system
-    category: other
+  actors: []
+  targets:
+  - target_ref: withdrawal_of_an_ai_system
   action: define withdrawal of an AI system for the purposes of the Regulation
   norm_text: "\u2018withdrawal of an AI system\u2019 means any measure aiming to prevent an AI system\
     \ in the supply chain being made available on the market"
@@ -724,9 +724,9 @@ norms:
 - norm_id: AIA-NORM-A003-D018-PERFORMANCE-OF-AN-AI-SYSTEM
   act_version_date: '2026-07-27'
   kind: definition
-  subjects:
-  - subject_ref: performance_of_an_ai_system
-    category: other
+  actors: []
+  targets:
+  - target_ref: performance_of_an_ai_system
   action: define performance of an AI system for the purposes of the Regulation
   norm_text: "\u2018performance of an AI system\u2019 means the ability of an AI system to achieve its\
     \ intended purpose"
@@ -761,9 +761,9 @@ norms:
 - norm_id: AIA-NORM-A003-D019-NOTIFYING-AUTHORITY
   act_version_date: '2026-07-27'
   kind: definition
-  subjects:
-  - subject_ref: notifying_authority
-    category: other
+  actors: []
+  targets:
+  - target_ref: notifying_authority
   action: define notifying authority for the purposes of the Regulation
   norm_text: "\u2018notifying authority\u2019 means the national authority responsible for setting up\
     \ and carrying out the necessary procedures for the assessment, designation and notification of conformity\
@@ -799,9 +799,9 @@ norms:
 - norm_id: AIA-NORM-A003-D020-CONFORMITY-ASSESSMENT
   act_version_date: '2026-07-27'
   kind: definition
-  subjects:
-  - subject_ref: conformity_assessment
-    category: other
+  actors: []
+  targets:
+  - target_ref: conformity_assessment
   action: define conformity assessment for the purposes of the Regulation
   norm_text: "\u2018conformity assessment\u2019 means the process of demonstrating whether the requirements\
     \ set out in Chapter III, Section 2 relating to a high-risk AI system have been fulfilled"
@@ -836,9 +836,9 @@ norms:
 - norm_id: AIA-NORM-A003-D021-CONFORMITY-ASSESSMENT-BODY
   act_version_date: '2026-07-27'
   kind: definition
-  subjects:
-  - subject_ref: conformity_assessment_body
-    category: other
+  actors: []
+  targets:
+  - target_ref: conformity_assessment_body
   action: define conformity assessment body for the purposes of the Regulation
   norm_text: "\u2018conformity assessment body\u2019 means a body that performs third-party conformity\
     \ assessment activities, including testing, certification and inspection"
@@ -873,9 +873,9 @@ norms:
 - norm_id: AIA-NORM-A003-D022-NOTIFIED-BODY
   act_version_date: '2026-07-27'
   kind: definition
-  subjects:
-  - subject_ref: notified_body
-    category: other
+  actors: []
+  targets:
+  - target_ref: notified_body
   action: define notified body for the purposes of the Regulation
   norm_text: "\u2018notified body\u2019 means a conformity assessment body notified in accordance with\
     \ this Regulation and other relevant Union harmonisation legislation"
@@ -910,9 +910,9 @@ norms:
 - norm_id: AIA-NORM-A003-D023-SUBSTANTIAL-MODIFICATION
   act_version_date: '2026-07-27'
   kind: definition
-  subjects:
-  - subject_ref: substantial_modification
-    category: other
+  actors: []
+  targets:
+  - target_ref: substantial_modification
   action: define substantial modification for the purposes of the Regulation
   norm_text: "\u2018substantial modification\u2019 means a change to an AI system after its placing on\
     \ the market or putting into service which is not foreseen or planned in the initial conformity assessment\
@@ -950,9 +950,9 @@ norms:
 - norm_id: AIA-NORM-A003-D024-CE-MARKING
   act_version_date: '2026-07-27'
   kind: definition
-  subjects:
-  - subject_ref: ce_marking
-    category: other
+  actors: []
+  targets:
+  - target_ref: ce_marking
   action: define CE marking for the purposes of the Regulation
   norm_text: "\u2018CE marking\u2019 means a marking by which a provider indicates that an AI system is\
     \ in conformity with the requirements set out in Chapter III, Section 2 and other applicable Union\
@@ -988,9 +988,9 @@ norms:
 - norm_id: AIA-NORM-A003-D025-POST-MARKET-MONITORING-SYSTEM
   act_version_date: '2026-07-27'
   kind: definition
-  subjects:
-  - subject_ref: post_market_monitoring_system
-    category: other
+  actors: []
+  targets:
+  - target_ref: post_market_monitoring_system
   action: define post-market monitoring system for the purposes of the Regulation
   norm_text: "\u2018post-market monitoring system\u2019 means all activities carried out by providers\
     \ of AI systems to collect and review experience gained from the use of AI systems they place on the\
@@ -1027,9 +1027,9 @@ norms:
 - norm_id: AIA-NORM-A003-D026-MARKET-SURVEILLANCE-AUTHORITY
   act_version_date: '2026-07-27'
   kind: definition
-  subjects:
-  - subject_ref: market_surveillance_authority
-    category: other
+  actors: []
+  targets:
+  - target_ref: market_surveillance_authority
   action: define market surveillance authority for the purposes of the Regulation
   norm_text: "\u2018market surveillance authority\u2019 means the national authority carrying out the\
     \ activities and taking the measures pursuant to Regulation (EU) 2019/1020"
@@ -1064,9 +1064,9 @@ norms:
 - norm_id: AIA-NORM-A003-D027-HARMONISED-STANDARD
   act_version_date: '2026-07-27'
   kind: definition
-  subjects:
-  - subject_ref: harmonised_standard
-    category: other
+  actors: []
+  targets:
+  - target_ref: harmonised_standard
   action: define harmonised standard for the purposes of the Regulation
   norm_text: "\u2018harmonised standard\u2019 means a harmonised standard as defined in Article 2(1),\
     \ point (c), of Regulation (EU) No 1025/2012"
@@ -1101,9 +1101,9 @@ norms:
 - norm_id: AIA-NORM-A003-D028-COMMON-SPECIFICATION
   act_version_date: '2026-07-27'
   kind: definition
-  subjects:
-  - subject_ref: common_specification
-    category: other
+  actors: []
+  targets:
+  - target_ref: common_specification
   action: define common specification for the purposes of the Regulation
   norm_text: "\u2018common specification\u2019 means a set of technical specifications as defined in Article\
     \ 2, point (4) of Regulation (EU) No 1025/2012, providing means to comply with certain requirements\
@@ -1139,9 +1139,9 @@ norms:
 - norm_id: AIA-NORM-A003-D029-TRAINING-DATA
   act_version_date: '2026-07-27'
   kind: definition
-  subjects:
-  - subject_ref: training_data
-    category: other
+  actors: []
+  targets:
+  - target_ref: training_data
   action: define training data for the purposes of the Regulation
   norm_text: "\u2018training data\u2019 means data used for training an AI system through fitting its\
     \ learnable parameters"
@@ -1176,9 +1176,9 @@ norms:
 - norm_id: AIA-NORM-A003-D030-VALIDATION-DATA
   act_version_date: '2026-07-27'
   kind: definition
-  subjects:
-  - subject_ref: validation_data
-    category: other
+  actors: []
+  targets:
+  - target_ref: validation_data
   action: define validation data for the purposes of the Regulation
   norm_text: "\u2018validation data\u2019 means data used for providing an evaluation of the trained AI\
     \ system and for tuning its non-learnable parameters and its learning process in order, inter alia,\
@@ -1214,9 +1214,9 @@ norms:
 - norm_id: AIA-NORM-A003-D031-VALIDATION-DATA-SET
   act_version_date: '2026-07-27'
   kind: definition
-  subjects:
-  - subject_ref: validation_data_set
-    category: other
+  actors: []
+  targets:
+  - target_ref: validation_data_set
   action: define validation data set for the purposes of the Regulation
   norm_text: "\u2018validation data set\u2019 means a separate data set or part of the training data set,\
     \ either as a fixed or variable split"
@@ -1251,9 +1251,9 @@ norms:
 - norm_id: AIA-NORM-A003-D032-TESTING-DATA
   act_version_date: '2026-07-27'
   kind: definition
-  subjects:
-  - subject_ref: testing_data
-    category: other
+  actors: []
+  targets:
+  - target_ref: testing_data
   action: define testing data for the purposes of the Regulation
   norm_text: "\u2018testing data\u2019 means data used for providing an independent evaluation of the\
     \ AI system in order to confirm the expected performance of that system before its placing on the\
@@ -1289,9 +1289,9 @@ norms:
 - norm_id: AIA-NORM-A003-D033-INPUT-DATA
   act_version_date: '2026-07-27'
   kind: definition
-  subjects:
-  - subject_ref: input_data
-    category: other
+  actors: []
+  targets:
+  - target_ref: input_data
   action: define input data for the purposes of the Regulation
   norm_text: "\u2018input data\u2019 means data provided to or directly acquired by an AI system on the\
     \ basis of which the system produces an output"
@@ -1326,9 +1326,9 @@ norms:
 - norm_id: AIA-NORM-A003-D034-BIOMETRIC-DATA
   act_version_date: '2026-07-27'
   kind: definition
-  subjects:
-  - subject_ref: biometric_data
-    category: other
+  actors: []
+  targets:
+  - target_ref: biometric_data
   action: define biometric data for the purposes of the Regulation
   norm_text: "\u2018biometric data\u2019 means personal data resulting from specific technical processing\
     \ relating to the physical, physiological or behavioural characteristics of a natural person, such\
@@ -1364,9 +1364,9 @@ norms:
 - norm_id: AIA-NORM-A003-D035-BIOMETRIC-IDENTIFICATION
   act_version_date: '2026-07-27'
   kind: definition
-  subjects:
-  - subject_ref: biometric_identification
-    category: other
+  actors: []
+  targets:
+  - target_ref: biometric_identification
   action: define biometric identification for the purposes of the Regulation
   norm_text: "\u2018biometric identification\u2019 means the automated recognition of physical, physiological,\
     \ behavioural, or psychological human features for the purpose of establishing the identity of a natural\
@@ -1403,9 +1403,9 @@ norms:
 - norm_id: AIA-NORM-A003-D036-BIOMETRIC-VERIFICATION
   act_version_date: '2026-07-27'
   kind: definition
-  subjects:
-  - subject_ref: biometric_verification
-    category: other
+  actors: []
+  targets:
+  - target_ref: biometric_verification
   action: define biometric verification for the purposes of the Regulation
   norm_text: "\u2018biometric verification\u2019 means the automated, one-to-one verification, including\
     \ authentication, of the identity of natural persons by comparing their biometric data to previously\
@@ -1441,9 +1441,9 @@ norms:
 - norm_id: AIA-NORM-A003-D037-SPECIAL-CATEGORIES-OF-PERSONAL-DATA
   act_version_date: '2026-07-27'
   kind: definition
-  subjects:
-  - subject_ref: special_categories_of_personal_data
-    category: other
+  actors: []
+  targets:
+  - target_ref: special_categories_of_personal_data
   action: define special categories of personal data for the purposes of the Regulation
   norm_text: "\u2018special categories of personal data\u2019 means the categories of personal data referred\
     \ to in Article 9(1) of Regulation (EU) 2016/679, Article 10 of Directive (EU) 2016/680 and Article\
@@ -1479,9 +1479,9 @@ norms:
 - norm_id: AIA-NORM-A003-D038-SENSITIVE-OPERATIONAL-DATA
   act_version_date: '2026-07-27'
   kind: definition
-  subjects:
-  - subject_ref: sensitive_operational_data
-    category: other
+  actors: []
+  targets:
+  - target_ref: sensitive_operational_data
   action: define sensitive operational data for the purposes of the Regulation
   norm_text: "\u2018sensitive operational data\u2019 means operational data related to activities of prevention,\
     \ detection, investigation or prosecution of criminal offences, the disclosure of which could jeopardise\
@@ -1517,9 +1517,9 @@ norms:
 - norm_id: AIA-NORM-A003-D039-EMOTION-RECOGNITION-SYSTEM
   act_version_date: '2026-07-27'
   kind: definition
-  subjects:
-  - subject_ref: emotion_recognition_system
-    category: other
+  actors: []
+  targets:
+  - target_ref: emotion_recognition_system
   action: define emotion recognition system for the purposes of the Regulation
   norm_text: "\u2018emotion recognition system\u2019 means an AI system for the purpose of identifying\
     \ or inferring emotions or intentions of natural persons on the basis of their biometric data"
@@ -1554,9 +1554,9 @@ norms:
 - norm_id: AIA-NORM-A003-D040-BIOMETRIC-CATEGORISATION-SYSTEM
   act_version_date: '2026-07-27'
   kind: definition
-  subjects:
-  - subject_ref: biometric_categorisation_system
-    category: other
+  actors: []
+  targets:
+  - target_ref: biometric_categorisation_system
   action: define biometric categorisation system for the purposes of the Regulation
   norm_text: "\u2018biometric categorisation system\u2019 means an AI system for the purpose of assigning\
     \ natural persons to specific categories on the basis of their biometric data, unless it is ancillary\
@@ -1594,9 +1594,9 @@ norms:
 - norm_id: AIA-NORM-A003-D041-REMOTE-BIOMETRIC-IDENTIFICATION-SYSTEM
   act_version_date: '2026-07-27'
   kind: definition
-  subjects:
-  - subject_ref: remote_biometric_identification_system
-    category: other
+  actors: []
+  targets:
+  - target_ref: remote_biometric_identification_system
   action: define remote biometric identification system for the purposes of the Regulation
   norm_text: "\u2018remote biometric identification system\u2019 means an AI system for the purpose of\
     \ identifying natural persons, without their active involvement, typically at a distance through the\
@@ -1632,9 +1632,9 @@ norms:
 - norm_id: AIA-NORM-A003-D042-REAL-TIME-REMOTE-BIOMETRIC-IDENTIFICATION-SYSTEM
   act_version_date: '2026-07-27'
   kind: definition
-  subjects:
-  - subject_ref: real_time_remote_biometric_identification_system
-    category: other
+  actors: []
+  targets:
+  - target_ref: real_time_remote_biometric_identification_system
   action: define real-time remote biometric identification system for the purposes of the Regulation
   norm_text: "\u2018real-time remote biometric identification system\u2019 means a remote biometric identification\
     \ system, whereby the capturing of biometric data, the comparison and the identification all occur\
@@ -1671,9 +1671,9 @@ norms:
 - norm_id: AIA-NORM-A003-D043-POST-REMOTE-BIOMETRIC-IDENTIFICATION-SYSTEM
   act_version_date: '2026-07-27'
   kind: definition
-  subjects:
-  - subject_ref: post_remote_biometric_identification_system
-    category: other
+  actors: []
+  targets:
+  - target_ref: post_remote_biometric_identification_system
   action: define post-remote biometric identification system for the purposes of the Regulation
   norm_text: "\u2018post-remote biometric identification system\u2019 means a remote biometric identification\
     \ system other than a real-time remote biometric identification system"
@@ -1708,9 +1708,9 @@ norms:
 - norm_id: AIA-NORM-A003-D044-PUBLICLY-ACCESSIBLE-SPACE
   act_version_date: '2026-07-27'
   kind: definition
-  subjects:
-  - subject_ref: publicly_accessible_space
-    category: other
+  actors: []
+  targets:
+  - target_ref: publicly_accessible_space
   action: define publicly accessible space for the purposes of the Regulation
   norm_text: "\u2018publicly accessible space\u2019 means any publicly or privately owned physical place\
     \ accessible to an undetermined number of natural persons, regardless of whether certain conditions\
@@ -1747,9 +1747,9 @@ norms:
 - norm_id: AIA-NORM-A003-D045-LAW-ENFORCEMENT-AUTHORITY
   act_version_date: '2026-07-27'
   kind: definition
-  subjects:
-  - subject_ref: law_enforcement_authority
-    category: other
+  actors: []
+  targets:
+  - target_ref: law_enforcement_authority
   action: define law enforcement authority for the purposes of the Regulation
   norm_text: "\u2018law enforcement authority\u2019 means:"
   detection_channels:
@@ -1787,9 +1787,9 @@ norms:
 - norm_id: AIA-NORM-A003-D046-LAW-ENFORCEMENT
   act_version_date: '2026-07-27'
   kind: definition
-  subjects:
-  - subject_ref: law_enforcement
-    category: other
+  actors: []
+  targets:
+  - target_ref: law_enforcement
   action: define law enforcement for the purposes of the Regulation
   norm_text: "\u2018law enforcement\u2019 means activities carried out by law enforcement authorities\
     \ or on their behalf for the prevention, investigation, detection or prosecution of criminal offences\
@@ -1826,9 +1826,9 @@ norms:
 - norm_id: AIA-NORM-A003-D047-AI-OFFICE
   act_version_date: '2026-07-27'
   kind: definition
-  subjects:
-  - subject_ref: ai_office
-    category: other
+  actors: []
+  targets:
+  - target_ref: ai_office
   action: define AI Office for the purposes of the Regulation
   norm_text: "\u2018AI Office\u2019 means the Commission\u2019s function of contributing to the implementation,\
     \ monitoring and supervision of AI systems and general-purpose AI models, and AI governance, provided\
@@ -1864,9 +1864,9 @@ norms:
 - norm_id: AIA-NORM-A003-D048-NATIONAL-COMPETENT-AUTHORITY
   act_version_date: '2026-07-27'
   kind: definition
-  subjects:
-  - subject_ref: national_competent_authority
-    category: other
+  actors: []
+  targets:
+  - target_ref: national_competent_authority
   action: define national competent authority for the purposes of the Regulation
   norm_text: "\u2018national competent authority\u2019 means a notifying authority or a market surveillance\
     \ authority"
@@ -1901,9 +1901,9 @@ norms:
 - norm_id: AIA-NORM-A003-D049-SERIOUS-INCIDENT
   act_version_date: '2026-07-27'
   kind: definition
-  subjects:
-  - subject_ref: serious_incident
-    category: other
+  actors: []
+  targets:
+  - target_ref: serious_incident
   action: define serious incident for the purposes of the Regulation
   norm_text: "\u2018serious incident\u2019 means an incident or malfunctioning of an AI system that directly\
     \ or indirectly leads to any of the following:"
@@ -1946,9 +1946,9 @@ norms:
 - norm_id: AIA-NORM-A003-D050-PERSONAL-DATA
   act_version_date: '2026-07-27'
   kind: definition
-  subjects:
-  - subject_ref: personal_data
-    category: other
+  actors: []
+  targets:
+  - target_ref: personal_data
   action: define personal data for the purposes of the Regulation
   norm_text: "\u2018personal data\u2019 means personal data as defined in Article 4, point (1), of Regulation\
     \ (EU) 2016/679"
@@ -1983,9 +1983,9 @@ norms:
 - norm_id: AIA-NORM-A003-D051-NON-PERSONAL-DATA
   act_version_date: '2026-07-27'
   kind: definition
-  subjects:
-  - subject_ref: non_personal_data
-    category: other
+  actors: []
+  targets:
+  - target_ref: non_personal_data
   action: define non-personal data for the purposes of the Regulation
   norm_text: "\u2018non-personal data\u2019 means data other than personal data as defined in Article\
     \ 4, point (1), of Regulation (EU) 2016/679"
@@ -2020,9 +2020,9 @@ norms:
 - norm_id: AIA-NORM-A003-D052-PROFILING
   act_version_date: '2026-07-27'
   kind: definition
-  subjects:
-  - subject_ref: profiling
-    category: other
+  actors: []
+  targets:
+  - target_ref: profiling
   action: define profiling for the purposes of the Regulation
   norm_text: "\u2018profiling\u2019 means profiling as defined in Article 4, point (4), of Regulation\
     \ (EU) 2016/679"
@@ -2057,9 +2057,9 @@ norms:
 - norm_id: AIA-NORM-A003-D053-REAL-WORLD-TESTING-PLAN
   act_version_date: '2026-07-27'
   kind: definition
-  subjects:
-  - subject_ref: real_world_testing_plan
-    category: other
+  actors: []
+  targets:
+  - target_ref: real_world_testing_plan
   action: define real-world testing plan for the purposes of the Regulation
   norm_text: "\u2018real-world testing plan\u2019 means a document that describes the objectives, methodology,\
     \ geographical, population and temporal scope, monitoring, organisation and conduct of testing in\
@@ -2095,9 +2095,9 @@ norms:
 - norm_id: AIA-NORM-A003-D054-SANDBOX-PLAN
   act_version_date: '2026-07-27'
   kind: definition
-  subjects:
-  - subject_ref: sandbox_plan
-    category: other
+  actors: []
+  targets:
+  - target_ref: sandbox_plan
   action: define sandbox plan for the purposes of the Regulation
   norm_text: "\u2018sandbox plan\u2019 means a document agreed between the participating provider and\
     \ the competent authority describing the objectives, conditions, timeframe, methodology and requirements\
@@ -2133,9 +2133,9 @@ norms:
 - norm_id: AIA-NORM-A003-D055-AI-REGULATORY-SANDBOX
   act_version_date: '2026-07-27'
   kind: definition
-  subjects:
-  - subject_ref: ai_regulatory_sandbox
-    category: other
+  actors: []
+  targets:
+  - target_ref: ai_regulatory_sandbox
   action: define AI regulatory sandbox for the purposes of the Regulation
   norm_text: "\u2018AI regulatory sandbox\u2019 means a controlled framework set up by a competent authority\
     \ which offers providers or prospective providers of AI systems the possibility to develop, train,\
@@ -2172,9 +2172,9 @@ norms:
 - norm_id: AIA-NORM-A003-D056-AI-LITERACY
   act_version_date: '2026-07-27'
   kind: definition
-  subjects:
-  - subject_ref: ai_literacy
-    category: other
+  actors: []
+  targets:
+  - target_ref: ai_literacy
   action: define AI literacy for the purposes of the Regulation
   norm_text: "\u2018AI literacy\u2019 means skills, knowledge and understanding that allow providers,\
     \ deployers and affected persons, taking into account their respective rights and obligations in the\
@@ -2211,9 +2211,9 @@ norms:
 - norm_id: AIA-NORM-A003-D057-TESTING-IN-REAL-WORLD-CONDITIONS
   act_version_date: '2026-07-27'
   kind: definition
-  subjects:
-  - subject_ref: testing_in_real_world_conditions
-    category: other
+  actors: []
+  targets:
+  - target_ref: testing_in_real_world_conditions
   action: define testing in real-world conditions and, where all Article 57 or 60 conditions are fulfilled,
     treat it as neither placing the AI system on the market nor putting it into service
   norm_text: "\u2018testing in real-world conditions\u2019 means the temporary testing of an AI system\
@@ -2256,9 +2256,9 @@ norms:
 - norm_id: AIA-NORM-A003-D058-SUBJECT
   act_version_date: '2026-07-27'
   kind: definition
-  subjects:
-  - subject_ref: subject
-    category: other
+  actors: []
+  targets:
+  - target_ref: subject
   action: define subject for the purposes of the Regulation
   norm_text: "\u2018subject\u2019, for the purpose of real-world testing, means a natural person who participates\
     \ in testing in real-world conditions"
@@ -2293,9 +2293,9 @@ norms:
 - norm_id: AIA-NORM-A003-D059-INFORMED-CONSENT
   act_version_date: '2026-07-27'
   kind: definition
-  subjects:
-  - subject_ref: informed_consent
-    category: other
+  actors: []
+  targets:
+  - target_ref: informed_consent
   action: define informed consent for the purposes of the Regulation
   norm_text: "\u2018informed consent\u2019 means a subject\u2019s freely given, specific, unambiguous\
     \ and voluntary expression of his or her willingness to participate in a particular testing in real-world\
@@ -2332,9 +2332,9 @@ norms:
 - norm_id: AIA-NORM-A003-D060-DEEP-FAKE
   act_version_date: '2026-07-27'
   kind: definition
-  subjects:
-  - subject_ref: deep_fake
-    category: other
+  actors: []
+  targets:
+  - target_ref: deep_fake
   action: define deep fake for the purposes of the Regulation
   norm_text: "\u2018deep fake\u2019 means AI-generated or manipulated image, audio or video content that\
     \ resembles existing persons, objects, places, entities or events and would falsely appear to a person\
@@ -2370,9 +2370,9 @@ norms:
 - norm_id: AIA-NORM-A003-D061-WIDESPREAD-INFRINGEMENT
   act_version_date: '2026-07-27'
   kind: definition
-  subjects:
-  - subject_ref: widespread_infringement
-    category: other
+  actors: []
+  targets:
+  - target_ref: widespread_infringement
   action: define widespread infringement for the purposes of the Regulation
   norm_text: "\u2018widespread infringement\u2019 means any act or omission contrary to Union law protecting\
     \ the interest of individuals, which:"
@@ -2436,9 +2436,9 @@ norms:
 - norm_id: AIA-NORM-A003-D062-CRITICAL-INFRASTRUCTURE
   act_version_date: '2026-07-27'
   kind: definition
-  subjects:
-  - subject_ref: critical_infrastructure
-    category: other
+  actors: []
+  targets:
+  - target_ref: critical_infrastructure
   action: define critical infrastructure for the purposes of the Regulation
   norm_text: "\u2018critical infrastructure\u2019 means critical infrastructure as defined in Article\
     \ 2, point (4), of Directive (EU) 2022/2557"
@@ -2473,9 +2473,9 @@ norms:
 - norm_id: AIA-NORM-A003-D063-GENERAL-PURPOSE-AI-MODEL
   act_version_date: '2026-07-27'
   kind: definition
-  subjects:
-  - subject_ref: general_purpose_ai_model
-    category: other
+  actors: []
+  targets:
+  - target_ref: general_purpose_ai_model
   action: define general-purpose AI model for the purposes of the Regulation
   norm_text: "\u2018general-purpose AI model\u2019 means an AI model, including where such an AI model\
     \ is trained with a large amount of data using self-supervision at scale, that displays significant\
@@ -2515,9 +2515,9 @@ norms:
 - norm_id: AIA-NORM-A003-D064-HIGH-IMPACT-CAPABILITIES
   act_version_date: '2026-07-27'
   kind: definition
-  subjects:
-  - subject_ref: high_impact_capabilities
-    category: other
+  actors: []
+  targets:
+  - target_ref: high_impact_capabilities
   action: define high-impact capabilities for the purposes of the Regulation
   norm_text: "\u2018high-impact capabilities\u2019 means capabilities that match or exceed the capabilities\
     \ recorded in the most advanced general-purpose AI models"
@@ -2552,9 +2552,9 @@ norms:
 - norm_id: AIA-NORM-A003-D065-SYSTEMIC-RISK
   act_version_date: '2026-07-27'
   kind: definition
-  subjects:
-  - subject_ref: systemic_risk
-    category: other
+  actors: []
+  targets:
+  - target_ref: systemic_risk
   action: define systemic risk for the purposes of the Regulation
   norm_text: "\u2018systemic risk\u2019 means a risk that is specific to the high-impact capabilities\
     \ of general-purpose AI models, having a significant impact on the Union market due to their reach,\
@@ -2592,9 +2592,9 @@ norms:
 - norm_id: AIA-NORM-A003-D066-GENERAL-PURPOSE-AI-SYSTEM
   act_version_date: '2026-07-27'
   kind: definition
-  subjects:
-  - subject_ref: general_purpose_ai_system
-    category: other
+  actors: []
+  targets:
+  - target_ref: general_purpose_ai_system
   action: define general-purpose AI system for the purposes of the Regulation
   norm_text: "\u2018general-purpose AI system\u2019 means an AI system which is based on a general-purpose\
     \ AI model and which has the capability to serve a variety of purposes, both for direct use as well\
@@ -2630,9 +2630,9 @@ norms:
 - norm_id: AIA-NORM-A003-D067-FLOATING-POINT-OPERATION
   act_version_date: '2026-07-27'
   kind: definition
-  subjects:
-  - subject_ref: floating_point_operation
-    category: other
+  actors: []
+  targets:
+  - target_ref: floating_point_operation
   action: define floating-point operation for the purposes of the Regulation
   norm_text: "\u2018floating-point operation\u2019 means any mathematical operation or assignment involving\
     \ floating-point numbers, which are a subset of the real numbers typically represented on computers\
@@ -2668,9 +2668,9 @@ norms:
 - norm_id: AIA-NORM-A003-D068-DOWNSTREAM-PROVIDER
   act_version_date: '2026-07-27'
   kind: definition
-  subjects:
-  - subject_ref: downstream_provider
-    category: other
+  actors: []
+  targets:
+  - target_ref: downstream_provider
   action: define downstream provider for the purposes of the Regulation
   norm_text: "\u2018downstream provider\u2019 means a provider of an AI system, including a general-purpose\
     \ AI system, which integrates an AI model, regardless of whether the AI model is provided by themselves\
@@ -2706,9 +2706,9 @@ norms:
 - norm_id: AIA-NORM-A003-D047-AI-OFFICE-REFERENCE
   act_version_date: '2026-07-27'
   kind: legal_consequence
-  subjects:
-  - subject_ref: ai_office_reference
-    category: other
+  actors: []
+  targets:
+  - target_ref: ai_office_reference
   action: construe references to the AI Office as references to the Commission
   norm_text: references in this Regulation to the AI Office shall be construed as references to the Commission
   detection_channels:
@@ -2742,9 +2742,10 @@ norms:
 - norm_id: AIA-NORM-A003-D048-EDPS-REFERENCE
   act_version_date: '2026-07-27'
   kind: legal_consequence
-  subjects:
-  - subject_ref: union_institution_ai_system_authority_reference
+  actors:
+  - actor_ref: union_institution_ai_system_authority_reference
     category: union_institution_or_body
+  targets: []
   action: construe competent-authority and market-surveillance-authority references as references to the
     European Data Protection Supervisor for Union-body AI systems
   norm_text: as regards AI systems put into service or used by Union institutions, agencies, offices and

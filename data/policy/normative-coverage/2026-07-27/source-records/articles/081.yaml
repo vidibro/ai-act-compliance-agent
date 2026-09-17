@@ -10,8 +10,10 @@ records:
     measure.
   action: promptly consult the relevant authority and operators and evaluate an objected-to or Union-law-inconsistent
     national measure
-  subject_ref: commission
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: commission
+    category: union_institution_or_body
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -37,8 +39,10 @@ records:
     to in Article 79(5), decide whether the national measure is justified
   action: decide whether the national measure is justified within six months or 60 days for Article 5
     non-compliance
-  subject_ref: commission
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: commission
+    category: union_institution_or_body
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -50,8 +54,10 @@ records:
   source: A081-P001
   quote: shall notify its decision to the market surveillance authority of the Member State concerned.
   action: notify the decision to the market surveillance authority of the Member State concerned
-  subject_ref: commission
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: commission
+    category: union_institution_or_body
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -63,8 +69,10 @@ records:
   source: A081-P001
   quote: The Commission shall also inform all other market surveillance authorities of its decision.
   action: inform all other market surveillance authorities of the decision
-  subject_ref: commission
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: commission
+    category: union_institution_or_body
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -78,8 +86,10 @@ records:
     delay, and shall inform the Commission accordingly.
   action: take appropriate restrictions without undue delay and inform the Commission when the national
     measure is justified
-  subject_ref: member_state
-  subject_category: member_state
+  actors:
+  - actor_ref: member_state
+    category: member_state
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -92,8 +102,10 @@ records:
   quote: Where the Commission considers the national measure to be unjustified, the Member State concerned
     shall withdraw the measure and shall inform the Commission accordingly.
   action: withdraw an unjustified national measure and inform the Commission
-  subject_ref: member_state
-  subject_category: member_state
+  actors:
+  - actor_ref: member_state
+    category: member_state
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -109,8 +121,10 @@ records:
     of Regulation (EU) No 1025/2012.
   action: apply the Regulation 1025/2012 Article 11 procedure when justified non-compliance arises from
     standards or common specifications
-  subject_ref: commission
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: commission
+    category: union_institution_or_body
+  targets: []
   kind: applicability
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.

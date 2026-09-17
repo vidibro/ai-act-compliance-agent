@@ -3,8 +3,10 @@ records:
   source: ANNEX-IX-P001
   quote: shall be provided and thereafter kept up to date
   action: provide and keep current all five Annex IX information items when registering real-world testing under Article 60
-  subject_ref: provider_or_prospective_provider
-  subject_category: supported_operator
+  actors:
+  - actor_ref: provider_or_prospective_provider
+    category: supported_operator
+  targets: []
   implementation_mode: carried_by_other_norm
   implementation_reason: Carried by the Article 60(4)(c) real-world-testing registration norm.
   verification_mode: not_reported

@@ -3,9 +3,10 @@ norms:
 - norm_id: AIA-NORM-A036-P1-NOTIFY-CHANGES
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: notifying_authority
+  actors:
+  - actor_ref: notifying_authority
     category: public_authority
+  targets: []
   action: notify the Commission and other Member States of relevant notification changes through the Article
     30(2) tool
   norm_text: The notifying authority shall notify the Commission and the other Member States of any relevant
@@ -39,9 +40,10 @@ norms:
 - norm_id: AIA-NORM-A036-P2-EXTENSION-PROCEDURES
   act_version_date: '2026-07-27'
   kind: applicability
-  subjects:
-  - subject_ref: notifying_authority
+  actors:
+  - actor_ref: notifying_authority
     category: public_authority
+  targets: []
   action: apply the Articles 29 and 30 procedures to notification-scope extensions
   norm_text: The procedures laid down in Articles 29 and 30 shall apply to extensions of the scope of
     the notification.
@@ -74,9 +76,10 @@ norms:
 - norm_id: AIA-NORM-A036-P2-OTHER-CHANGE-PROCEDURES
   act_version_date: '2026-07-27'
   kind: applicability
-  subjects:
-  - subject_ref: notifying_authority
+  actors:
+  - actor_ref: notifying_authority
     category: public_authority
+  targets: []
   action: apply paragraphs 3 to 9 to notification changes other than scope extensions
   norm_text: For changes to the notification other than extensions of its scope, the procedures laid down
     in paragraphs (3) to (9) shall apply.
@@ -109,9 +112,10 @@ norms:
 - norm_id: AIA-NORM-A036-P3-CEASING-BODY-NOTICE
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: notified_body
+  actors:
+  - actor_ref: notified_body
     category: notified_or_conformity_body
+  targets: []
   action: inform the notifying authority and affected providers of cessation as soon as possible and at
     least one year ahead when planned
   norm_text: Where a notified body decides to cease its conformity assessment activities, it shall inform
@@ -146,9 +150,9 @@ norms:
 - norm_id: AIA-NORM-A036-P3-NINE-MONTH-CERTIFICATE-VALIDITY
   act_version_date: '2026-07-27'
   kind: legal_consequence
-  subjects:
-  - subject_ref: affected_certificates
-    category: other
+  actors: []
+  targets:
+  - target_ref: affected_certificates
   action: preserve certificate validity for up to nine months after cessation when a replacement notified
     body accepts responsibility in writing
   norm_text: "The certificates of the notified body may remain valid for a period of nine months after\
@@ -184,9 +188,10 @@ norms:
 - norm_id: AIA-NORM-A036-P3-REPLACEMENT-ASSESSMENT
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: assuming_notified_body
+  actors:
+  - actor_ref: assuming_notified_body
     category: notified_or_conformity_body
+  targets: []
   action: complete a full assessment within nine months before issuing replacement certificates
   norm_text: The latter notified body shall complete a full assessment of the high-risk AI systems affected
     by the end of that nine-month-period before issuing new certificates for those systems.
@@ -218,9 +223,10 @@ norms:
 - norm_id: AIA-NORM-A036-P3-WITHDRAW-DESIGNATION
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: notifying_authority
+  actors:
+  - actor_ref: notifying_authority
     category: public_authority
+  targets: []
   action: withdraw the designation when the notified body has ceased activity
   norm_text: Where the notified body has ceased its activity, the notifying authority shall withdraw the
     designation.
@@ -253,9 +259,10 @@ norms:
 - norm_id: AIA-NORM-A036-P4-INVESTIGATE-FAILURE
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: notifying_authority
+  actors:
+  - actor_ref: notifying_authority
     category: public_authority
+  targets: []
   action: investigate suspected Article 31 noncompliance or failure of obligations without delay and with
     utmost diligence
   norm_text: Where a notifying authority has sufficient reason to consider that a notified body no longer
@@ -291,9 +298,10 @@ norms:
 - norm_id: AIA-NORM-A036-P4-INFORM-OBJECTIONS
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: notifying_authority
+  actors:
+  - actor_ref: notifying_authority
     category: public_authority
+  targets: []
   action: inform the notified body of the objections raised
   norm_text: In that context, it shall inform the notified body concerned about the objections raised
     and give it the possibility to make its views known.
@@ -326,9 +334,10 @@ norms:
 - norm_id: AIA-NORM-A036-P4-OPPORTUNITY-TO-RESPOND
   act_version_date: '2026-07-27'
   kind: entitlement
-  subjects:
-  - subject_ref: notified_body
+  actors:
+  - actor_ref: notified_body
     category: notified_or_conformity_body
+  targets: []
   action: receive an opportunity to make its views on the objections known
   norm_text: In that context, it shall inform the notified body concerned about the objections raised
     and give it the possibility to make its views known.
@@ -361,9 +370,10 @@ norms:
 - norm_id: AIA-NORM-A036-P4-CORRECT-DESIGNATION
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: notifying_authority
+  actors:
+  - actor_ref: notifying_authority
     category: public_authority
+  targets: []
   action: restrict, suspend, or withdraw the designation proportionately to the seriousness of confirmed
     failure
   norm_text: If the notifying authority comes to the conclusion that the notified body no longer meets
@@ -400,9 +410,10 @@ norms:
 - norm_id: AIA-NORM-A036-P4-INFORM-COMMISSION-AND-STATES
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: notifying_authority
+  actors:
+  - actor_ref: notifying_authority
     category: public_authority
+  targets: []
   action: immediately inform the Commission and other Member States of the designation measure
   norm_text: It shall immediately inform the Commission and the other Member States accordingly.
   detection_channels:
@@ -434,9 +445,10 @@ norms:
 - norm_id: AIA-NORM-A036-P5-INFORM-PROVIDERS
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: notified_body
+  actors:
+  - actor_ref: notified_body
     category: notified_or_conformity_body
+  targets: []
   action: inform affected providers within 10 days of restriction, suspension, or withdrawal of designation
   norm_text: Where its designation has been suspended, restricted, or fully or partially withdrawn, the
     notified body shall inform the providers concerned within 10 days.
@@ -469,9 +481,10 @@ norms:
 - norm_id: AIA-NORM-A036-P6-PRESERVE-FILES
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: notifying_authority
+  actors:
+  - actor_ref: notifying_authority
     category: public_authority
+  targets: []
   action: take appropriate steps to preserve the affected notified body's files and make them available
     on request to other Member States' notifying authorities and market-surveillance authorities
   norm_text: the notifying authority shall take appropriate steps to ensure that the files of the notified
@@ -509,9 +522,10 @@ norms:
 - norm_id: AIA-NORM-A036-P7-A-ASSESS-CERTIFICATE-IMPACT
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: notifying_authority
+  actors:
+  - actor_ref: notifying_authority
     category: public_authority
+  targets: []
   action: assess the impact of the designation change on certificates issued by the notified body
   norm_text: assess the impact on the certificates issued by the notified body
   detection_channels:
@@ -544,9 +558,10 @@ norms:
 - norm_id: AIA-NORM-A036-P7-B-REPORT-FINDINGS
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: notifying_authority
+  actors:
+  - actor_ref: notifying_authority
     category: public_authority
+  targets: []
   action: report findings to the Commission and other Member States within three months of notifying the
     designation change
   norm_text: submit a report on its findings to the Commission and the other Member States within three
@@ -581,9 +596,10 @@ norms:
 - norm_id: AIA-NORM-A036-P7-C-CORRECT-UNDUE-CERTIFICATES
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: notifying_authority
+  actors:
+  - actor_ref: notifying_authority
     category: public_authority
+  targets: []
   action: require suspension or withdrawal of unduly issued certificates within a reasonable authority-set
     period
   norm_text: require the notified body to suspend or withdraw, within a reasonable period of time determined
@@ -619,9 +635,10 @@ norms:
 - norm_id: AIA-NORM-A036-P7-D-INFORM-CERTIFICATE-MEASURES
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: notifying_authority
+  actors:
+  - actor_ref: notifying_authority
     category: public_authority
+  targets: []
   action: inform the Commission and Member States which certificates were required to be suspended or
     withdrawn
   norm_text: inform the Commission and the Member States about certificates the suspension or withdrawal
@@ -656,9 +673,10 @@ norms:
 - norm_id: AIA-NORM-A036-P7-E-PROVIDE-CERTIFICATE-INFORMATION
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: notifying_authority
+  actors:
+  - actor_ref: notifying_authority
     category: public_authority
+  targets: []
   action: provide the provider's establishment-state authorities all relevant information on certificates
     required to be suspended or withdrawn
   norm_text: provide the national competent authorities of the Member State in which the provider has
@@ -694,9 +712,10 @@ norms:
 - norm_id: AIA-NORM-A036-P7-E-MITIGATE-RISK
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: national_competent_authority
+  actors:
+  - actor_ref: national_competent_authority
     category: public_authority
+  targets: []
   action: take necessary appropriate measures to avoid potential health, safety, or fundamental-rights
     risk
   norm_text: that authority shall take the appropriate measures, where necessary, to avoid a potential
@@ -733,9 +752,9 @@ norms:
 - norm_id: AIA-NORM-A036-P8-SUSPENSION-CERTIFICATE-VALIDITY
   act_version_date: '2026-07-27'
   kind: legal_consequence
-  subjects:
-  - subject_ref: affected_certificates
-    category: other
+  actors: []
+  targets:
+  - target_ref: affected_certificates
   action: preserve non-unduly-issued certificate validity during suspension or restriction when either
     enacted condition set is satisfied
   norm_text: With the exception of certificates unduly issued, and where a designation has been suspended
@@ -787,9 +806,10 @@ norms:
 - norm_id: AIA-NORM-A036-P8-B-PROVIDER-REPLACEMENT-CONFIRMATION
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: provider
+  actors:
+  - actor_ref: provider
     category: supported_operator
+  targets: []
   action: confirm in writing within three months that a qualified replacement body temporarily assumes
     certificate monitoring and responsibility
   norm_text: in the event that the notifying authority determines that the notified body does not have
@@ -827,9 +847,9 @@ norms:
 - norm_id: AIA-NORM-A036-P9-WITHDRAWAL-CERTIFICATE-VALIDITY
   act_version_date: '2026-07-27'
   kind: legal_consequence
-  subjects:
-  - subject_ref: affected_certificates
-    category: other
+  actors: []
+  targets:
+  - target_ref: affected_certificates
   action: preserve non-unduly-issued certificate validity for nine months after withdrawal when both enacted
     conditions are satisfied
   norm_text: With the exception of certificates unduly issued, and where a designation has been withdrawn,
@@ -870,9 +890,10 @@ norms:
 - norm_id: AIA-NORM-A036-P9-EXTEND-PROVISIONAL-VALIDITY
   act_version_date: '2026-07-27'
   kind: power
-  subjects:
-  - subject_ref: national_competent_authority
+  actors:
+  - actor_ref: national_competent_authority
     category: public_authority
+  targets: []
   action: extend provisional certificate validity in three-month periods up to a total of 12 months
   norm_text: In the circumstances referred to in the first subparagraph, the national competent authority
     of the Member State in which the provider of the system covered by the certificate has its place of
@@ -907,9 +928,12 @@ norms:
 - norm_id: AIA-NORM-A036-P9-INFORM-STAKEHOLDERS
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: competent_authority_or_assuming_notified_body
-    category: other
+  actors:
+  - actor_ref: competent_authority
+    category: public_authority
+  - actor_ref: assuming_notified_body
+    category: notified_or_conformity_body
+  targets: []
   action: immediately inform the Commission, other Member States, and other notified bodies of the replacement
     arrangement
   norm_text: The national competent authority or the notified body assuming the functions of the notified

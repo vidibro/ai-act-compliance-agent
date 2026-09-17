@@ -3,8 +3,10 @@ records:
   source: ANNEX-XIV-P003
   quote: Only conformity assessment bodies that have been designated in accordance with this Regulation may carry out conformity assessments and only for the activities related to the types of AI systems concerned.
   action: prohibit a conformity-assessment body from carrying out assessments unless it is designated under the Regulation and acting within its designated AI-system scope
-  subject_ref: conformity_assessment_body
-  subject_category: &body_category notified_or_conformity_body
+  actors:
+  - actor_ref: conformity_assessment_body
+    category: &body_category notified_or_conformity_body
+  targets: []
   kind: prohibition
   product_scope: &outside_scope outside_supported_actor
   product_scope_reason: &outside_reason The present product does not report compliance for this addressee.
@@ -15,8 +17,10 @@ records:
   source: ANNEX-XIV-P003
   quote: The list of codes, categories, and corresponding types of AI systems sets the scope of the designation of conformity assessment bodies notified under Article 30.
   action: use the Annex XIV code mappings as the legal scope of an Article 30 notified conformity-assessment body's designation
-  subject_ref: conformity_assessment_body_designation
-  subject_category: *body_category
+  actors:
+  - actor_ref: conformity_assessment_body_designation
+    category: *body_category
+  targets: []
   kind: legal_consequence
   product_scope: *outside_scope
   product_scope_reason: *outside_reason
@@ -27,8 +31,10 @@ records:
   source: ANNEX-XIV-P005
   quote: AIP 0102AI systems subject to point 2 of Section A of Annex I
   action: map code AIP 0102 to AI systems subject to Annex I Section A point 2
-  subject_ref: conformity_assessment_body_designation_scope
-  subject_category: *body_category
+  actors:
+  - actor_ref: conformity_assessment_body_designation_scope
+    category: *body_category
+  targets: []
   kind: applicability
   product_scope: *outside_scope
   product_scope_reason: *outside_reason
@@ -39,8 +45,10 @@ records:
   source: ANNEX-XIV-P005
   quote: AIP 0103AI systems subject to point 3 of Section A of Annex I
   action: map code AIP 0103 to AI systems subject to Annex I Section A point 3
-  subject_ref: conformity_assessment_body_designation_scope
-  subject_category: *body_category
+  actors:
+  - actor_ref: conformity_assessment_body_designation_scope
+    category: *body_category
+  targets: []
   kind: applicability
   product_scope: *outside_scope
   product_scope_reason: *outside_reason
@@ -51,8 +59,10 @@ records:
   source: ANNEX-XIV-P005
   quote: AIP 0104AI systems subject to point 4 of Section A of Annex I
   action: map code AIP 0104 to AI systems subject to Annex I Section A point 4
-  subject_ref: conformity_assessment_body_designation_scope
-  subject_category: *body_category
+  actors:
+  - actor_ref: conformity_assessment_body_designation_scope
+    category: *body_category
+  targets: []
   kind: applicability
   product_scope: *outside_scope
   product_scope_reason: *outside_reason
@@ -63,8 +73,10 @@ records:
   source: ANNEX-XIV-P005
   quote: AIP 0105AI systems subject to point 5 of Section A of Annex I
   action: map code AIP 0105 to AI systems subject to Annex I Section A point 5
-  subject_ref: conformity_assessment_body_designation_scope
-  subject_category: *body_category
+  actors:
+  - actor_ref: conformity_assessment_body_designation_scope
+    category: *body_category
+  targets: []
   kind: applicability
   product_scope: *outside_scope
   product_scope_reason: *outside_reason
@@ -75,8 +87,10 @@ records:
   source: ANNEX-XIV-P005
   quote: AIP 0106AI systems subject to point 6 of Section A of Annex I
   action: map code AIP 0106 to AI systems subject to Annex I Section A point 6
-  subject_ref: conformity_assessment_body_designation_scope
-  subject_category: *body_category
+  actors:
+  - actor_ref: conformity_assessment_body_designation_scope
+    category: *body_category
+  targets: []
   kind: applicability
   product_scope: *outside_scope
   product_scope_reason: *outside_reason
@@ -87,8 +101,10 @@ records:
   source: ANNEX-XIV-P005
   quote: AIP 0107AI systems subject to point 7 of Section A of Annex I
   action: map code AIP 0107 to AI systems subject to Annex I Section A point 7
-  subject_ref: conformity_assessment_body_designation_scope
-  subject_category: *body_category
+  actors:
+  - actor_ref: conformity_assessment_body_designation_scope
+    category: *body_category
+  targets: []
   kind: applicability
   product_scope: *outside_scope
   product_scope_reason: *outside_reason
@@ -99,8 +115,10 @@ records:
   source: ANNEX-XIV-P005
   quote: AIP 0108AI systems subject to point 8 of Section A of Annex I
   action: map code AIP 0108 to AI systems subject to Annex I Section A point 8
-  subject_ref: conformity_assessment_body_designation_scope
-  subject_category: *body_category
+  actors:
+  - actor_ref: conformity_assessment_body_designation_scope
+    category: *body_category
+  targets: []
   kind: applicability
   product_scope: *outside_scope
   product_scope_reason: *outside_reason
@@ -111,8 +129,10 @@ records:
   source: ANNEX-XIV-P005
   quote: AIP 0109AI systems subject to point 9 of Section A of Annex I
   action: map code AIP 0109 to AI systems subject to Annex I Section A point 9
-  subject_ref: conformity_assessment_body_designation_scope
-  subject_category: *body_category
+  actors:
+  - actor_ref: conformity_assessment_body_designation_scope
+    category: *body_category
+  targets: []
   kind: applicability
   product_scope: *outside_scope
   product_scope_reason: *outside_reason
@@ -123,8 +143,10 @@ records:
   source: ANNEX-XIV-P005
   quote: AIP 0110AI systems subject to point 10 of Section A of Annex I
   action: map code AIP 0110 to AI systems subject to Annex I Section A point 10
-  subject_ref: conformity_assessment_body_designation_scope
-  subject_category: *body_category
+  actors:
+  - actor_ref: conformity_assessment_body_designation_scope
+    category: *body_category
+  targets: []
   kind: applicability
   product_scope: *outside_scope
   product_scope_reason: *outside_reason
@@ -135,8 +157,10 @@ records:
   source: ANNEX-XIV-P005
   quote: AIP 0111AI systems subject to point 11 of Section A of Annex I
   action: map code AIP 0111 to AI systems subject to Annex I Section A point 11
-  subject_ref: conformity_assessment_body_designation_scope
-  subject_category: *body_category
+  actors:
+  - actor_ref: conformity_assessment_body_designation_scope
+    category: *body_category
+  targets: []
   kind: applicability
   product_scope: *outside_scope
   product_scope_reason: *outside_reason
@@ -147,8 +171,10 @@ records:
   source: ANNEX-XIV-P005
   quote: AIP 0112AI systems subject to point 12 of Section A of Annex I
   action: map code AIP 0112 to AI systems subject to Annex I Section A point 12
-  subject_ref: conformity_assessment_body_designation_scope
-  subject_category: *body_category
+  actors:
+  - actor_ref: conformity_assessment_body_designation_scope
+    category: *body_category
+  targets: []
   kind: applicability
   product_scope: *outside_scope
   product_scope_reason: *outside_reason
@@ -159,8 +185,10 @@ records:
   source: ANNEX-XIV-P005
   quote: AIB 0201Remote biometric identification systems
   action: map code AIB 0201 to remote biometric identification systems under Annex III point 1
-  subject_ref: conformity_assessment_body_designation_scope
-  subject_category: *body_category
+  actors:
+  - actor_ref: conformity_assessment_body_designation_scope
+    category: *body_category
+  targets: []
   kind: applicability
   product_scope: *outside_scope
   product_scope_reason: *outside_reason
@@ -171,8 +199,10 @@ records:
   source: ANNEX-XIV-P005
   quote: AIB 0202Biometric categorisation AI systems
   action: map code AIB 0202 to biometric-categorisation AI systems under Annex III point 1
-  subject_ref: conformity_assessment_body_designation_scope
-  subject_category: *body_category
+  actors:
+  - actor_ref: conformity_assessment_body_designation_scope
+    category: *body_category
+  targets: []
   kind: applicability
   product_scope: *outside_scope
   product_scope_reason: *outside_reason
@@ -183,8 +213,10 @@ records:
   source: ANNEX-XIV-P005
   quote: AIB 0203Emotion recognition AI systems
   action: map code AIB 0203 to emotion-recognition AI systems under Annex III point 1
-  subject_ref: conformity_assessment_body_designation_scope
-  subject_category: *body_category
+  actors:
+  - actor_ref: conformity_assessment_body_designation_scope
+    category: *body_category
+  targets: []
   kind: applicability
   product_scope: *outside_scope
   product_scope_reason: *outside_reason
@@ -195,8 +227,10 @@ records:
   source: ANNEX-XIV-P007
   quote: AIH 0101AI systems based on symbolic AI, expert and knowledge-based systems, and AI systems based on search and optimisation
   action: map code AIH 0101 to symbolic AI, expert and knowledge-based systems, and search-and-optimisation systems
-  subject_ref: conformity_assessment_body_designation_scope
-  subject_category: *body_category
+  actors:
+  - actor_ref: conformity_assessment_body_designation_scope
+    category: *body_category
+  targets: []
   kind: applicability
   product_scope: *outside_scope
   product_scope_reason: *outside_reason
@@ -207,8 +241,10 @@ records:
   source: ANNEX-XIV-P007
   quote: AIH 0201AI systems that process structured data
   action: map code AIH 0201 to AI systems that process structured data
-  subject_ref: conformity_assessment_body_designation_scope
-  subject_category: *body_category
+  actors:
+  - actor_ref: conformity_assessment_body_designation_scope
+    category: *body_category
+  targets: []
   kind: applicability
   product_scope: *outside_scope
   product_scope_reason: *outside_reason
@@ -219,8 +255,10 @@ records:
   source: ANNEX-XIV-P007
   quote: AIH 0202AI systems that process signal and audio data
   action: map code AIH 0202 to AI systems that process signal and audio data
-  subject_ref: conformity_assessment_body_designation_scope
-  subject_category: *body_category
+  actors:
+  - actor_ref: conformity_assessment_body_designation_scope
+    category: *body_category
+  targets: []
   kind: applicability
   product_scope: *outside_scope
   product_scope_reason: *outside_reason
@@ -231,8 +269,10 @@ records:
   source: ANNEX-XIV-P007
   quote: AIH 0203AI systems that process text data
   action: map code AIH 0203 to AI systems that process text data
-  subject_ref: conformity_assessment_body_designation_scope
-  subject_category: *body_category
+  actors:
+  - actor_ref: conformity_assessment_body_designation_scope
+    category: *body_category
+  targets: []
   kind: applicability
   product_scope: *outside_scope
   product_scope_reason: *outside_reason
@@ -243,8 +283,10 @@ records:
   source: ANNEX-XIV-P007
   quote: AIH 0204AI systems that process image and video
   action: map code AIH 0204 to AI systems that process image and video
-  subject_ref: conformity_assessment_body_designation_scope
-  subject_category: *body_category
+  actors:
+  - actor_ref: conformity_assessment_body_designation_scope
+    category: *body_category
+  targets: []
   kind: applicability
   product_scope: *outside_scope
   product_scope_reason: *outside_reason
@@ -255,8 +297,10 @@ records:
   source: ANNEX-XIV-P007
   quote: AIH 0205AI systems that learn from their environment, excluding AI systems covered under AIH 0401
   action: map code AIH 0205 to environment-learning AI systems not covered by AIH 0401
-  subject_ref: conformity_assessment_body_designation_scope
-  subject_category: *body_category
+  actors:
+  - actor_ref: conformity_assessment_body_designation_scope
+    category: *body_category
+  targets: []
   kind: applicability
   exceptions:
   - AI systems covered by code AIH 0401
@@ -269,8 +313,10 @@ records:
   source: ANNEX-XIV-P007
   quote: AIH 0301generative AI systems, including AI systems based on general-purpose AI models
   action: map code AIH 0301 to generative AI systems, including systems based on general-purpose AI models
-  subject_ref: conformity_assessment_body_designation_scope
-  subject_category: *body_category
+  actors:
+  - actor_ref: conformity_assessment_body_designation_scope
+    category: *body_category
+  targets: []
   kind: applicability
   product_scope: *outside_scope
   product_scope_reason: *outside_reason
@@ -281,8 +327,10 @@ records:
   source: ANNEX-XIV-P007
   quote: AIH 0401AI systems based on other emerging AI technologies not covered by other codes, including Agentic AI
   action: map code AIH 0401 to other emerging AI technologies not covered by another code, including agentic AI
-  subject_ref: conformity_assessment_body_designation_scope
-  subject_category: *body_category
+  actors:
+  - actor_ref: conformity_assessment_body_designation_scope
+    category: *body_category
+  targets: []
   kind: applicability
   conditions:
   - the emerging AI technology is not covered by another Annex XIV code
@@ -295,8 +343,10 @@ records:
   source: ANNEX-XIV-P009
   quote: Conformity assessment bodies shall use the lists of codes, categories and corresponding types of AI systems set out in this Annex when specifying the types of AI systems in the application for designation referred to in Article 29.
   action: use the Annex XIV lists when specifying AI-system types in an Article 29 designation application
-  subject_ref: conformity_assessment_body
-  subject_category: *body_category
+  actors:
+  - actor_ref: conformity_assessment_body
+    category: *body_category
+  targets: []
   product_scope: *outside_scope
   product_scope_reason: *outside_reason
   implementation_mode: *none_required

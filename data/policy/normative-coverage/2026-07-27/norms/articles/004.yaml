@@ -3,9 +3,10 @@ norms:
 - norm_id: AIA-NORM-A004-P1-AI-LITERACY-MEASURES
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: provider_or_deployer
+  actors:
+  - actor_ref: provider_or_deployer
     category: supported_operator
+  targets: []
   action: take context-sensitive measures supporting AI literacy among staff and other persons operating
     or using AI systems on the provider's or deployer's behalf
   norm_text: Providers and deployers of AI systems shall take measures to support the development of AI
@@ -49,9 +50,12 @@ norms:
 - norm_id: AIA-NORM-A004-P2-SUPPORT-PROVIDERS-DEPLOYERS
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: commission_and_member_states
-    category: other
+  actors:
+  - actor_ref: commission
+    category: union_institution_or_body
+  - actor_ref: member_state
+    category: member_state
+  targets: []
   action: support and facilitate provider and deployer efforts, particularly those of SMEs, to fulfil
     the Article 4(1) AI-literacy obligation
   norm_text: The Commission and the Member States shall support and facilitate the efforts of providers
@@ -85,9 +89,10 @@ norms:
 - norm_id: AIA-NORM-A004-P2-PUBLISH-PRACTICAL-EXAMPLES
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: commission
+  actors:
+  - actor_ref: commission
     category: union_institution_or_body
+  targets: []
   action: publish practical examples of compliance with the Article 4(1) obligation on the single information
     platform
   norm_text: the Commission shall publish practical examples of how to comply with that obligation on
@@ -120,9 +125,10 @@ norms:
 - norm_id: AIA-NORM-A004-P3-BOARD-RECOMMENDATIONS
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: board
+  actors:
+  - actor_ref: board
     category: union_institution_or_body
+  targets: []
   action: adopt recommendations supporting the Commission and Member States in promoting the AI literacy
     required by Article 4(1), including through common objectives
   norm_text: The Board shall adopt recommendations, taking into account European competence frameworks,

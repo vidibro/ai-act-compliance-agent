@@ -5,8 +5,10 @@ records:
     placed on the market or put into service and shall be kept up-to date.
   action: draw up technical documentation before placing the system on the market or putting it into service
     and keep it up to date
-  subject_ref: provider
-  subject_category: supported_operator
+  actors:
+  - actor_ref: provider
+    category: supported_operator
+  targets: []
   implementation_refs:
   - AIA-HR-A11
   verification_mode: judged_by_gap_analysis
@@ -22,8 +24,10 @@ records:
     assess the compliance of the AI system with those requirements.
   action: draw up documentation that demonstrates compliance with Chapter III Section 2 and gives national
     competent authorities and notified bodies the clear, comprehensive information needed to assess compliance
-  subject_ref: provider
-  subject_category: supported_operator
+  actors:
+  - actor_ref: provider
+    category: supported_operator
+  targets: []
   implementation_refs:
   - AIA-HR-A11
   verification_mode: judged_by_gap_analysis
@@ -35,8 +39,10 @@ records:
   source: A011-P1
   quote: It shall contain, at a minimum, the elements set out in Annex IV.
   action: include every applicable Annex IV element
-  subject_ref: provider
-  subject_category: supported_operator
+  actors:
+  - actor_ref: provider
+    category: supported_operator
+  targets: []
   implementation_refs:
   - AIA-HR-A11
   verification_mode: judged_by_gap_analysis
@@ -46,8 +52,10 @@ records:
   quote: SMEs, including start-ups, and SMCs, may provide the elements of the technical documentation
     specified in Annex IV in a simplified manner.
   action: use the simplified-documentation option
-  subject_ref: provider
-  subject_category: supported_operator
+  actors:
+  - actor_ref: provider
+    category: supported_operator
+  targets: []
   kind: permission
   conditions:
   - provider is an SME, start-up, or SMC
@@ -62,8 +70,10 @@ records:
     at the needs of SMEs, including start-ups, and SMCs.
   action: establish a simplified technical-documentation form targeted at the needs of SMEs, start-ups,
     and SMCs
-  subject_ref: commission
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: commission
+    category: union_institution_or_body
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -75,8 +85,10 @@ records:
   quote: Where an SME, including a start-up, or an SMC, opts to provide the information required in Annex
     IV in a simplified manner, it shall use the form referred to in this paragraph.
   action: use the Commission form when taking the simplified-documentation option
-  subject_ref: provider
-  subject_category: supported_operator
+  actors:
+  - actor_ref: provider
+    category: supported_operator
+  targets: []
   implementation_refs:
   - AIA-HR-A11
   verification_mode: judged_by_gap_analysis
@@ -87,8 +99,10 @@ records:
   source: A011-P1
   quote: Notified bodies shall accept the form for the purposes of the conformity assessment.
   action: accept the simplified form for conformity assessment
-  subject_ref: notified_body
-  subject_category: notified_or_conformity_body
+  actors:
+  - actor_ref: notified_body
+    category: notified_or_conformity_body
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -103,8 +117,10 @@ records:
     the information required under those legal acts
   action: draw up one technical-documentation set containing both the Article 11(1) information and the
     information required by the applicable Annex I Section A legislation
-  subject_ref: provider
-  subject_category: supported_operator
+  actors:
+  - actor_ref: provider
+    category: supported_operator
+  targets: []
   conditions:
   - the high-risk AI system relates to a product covered by Union harmonisation legislation listed in
     Annex I, Section A
@@ -120,8 +136,10 @@ records:
     set out in this Section.
   action: adopt Article 97 delegated acts amending Annex IV where necessary in light of technical progress
     to preserve all information needed to assess Section 2 compliance
-  subject_ref: commission
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: commission
+    category: union_institution_or_body
+  targets: []
   kind: power
   conditions:
   - an Annex IV amendment is necessary in light of technical progress to ensure the technical documentation

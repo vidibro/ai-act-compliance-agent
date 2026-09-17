@@ -3,9 +3,10 @@ norms:
 - norm_id: AIA-NORM-A012-P1-AUTOMATIC-LOGGING
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: provider
+  actors:
+  - actor_ref: provider
     category: supported_operator
+  targets: []
   action: ensure the high-risk AI system automatically records event logs throughout its lifetime
   norm_text: High-risk AI systems shall technically allow for the automatic recording of events (logs)
     over the lifetime of the system.
@@ -39,9 +40,10 @@ norms:
 - norm_id: AIA-NORM-A012-P2-A-RISK-MODIFICATION-EVENTS
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: provider
+  actors:
+  - actor_ref: provider
     category: supported_operator
+  targets: []
   action: enable logging of events relevant to identifying Article 79(1) risk situations or substantial
     modifications
   norm_text: identifying situations that may result in the high-risk AI system presenting a risk within
@@ -78,9 +80,10 @@ norms:
 - norm_id: AIA-NORM-A012-P2-B-POST-MARKET-EVENTS
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: provider
+  actors:
+  - actor_ref: provider
     category: supported_operator
+  targets: []
   action: enable logging of events relevant to Article 72 post-market monitoring
   norm_text: facilitating the post-market monitoring referred to in Article 72
   detection_channels:
@@ -114,9 +117,10 @@ norms:
 - norm_id: AIA-NORM-A012-P2-C-OPERATION-MONITORING-EVENTS
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: provider
+  actors:
+  - actor_ref: provider
     category: supported_operator
+  targets: []
   action: enable logging of events relevant to deployer monitoring under Article 26(5)
   norm_text: monitoring the operation of high-risk AI systems referred to in Article 26(5)
   detection_channels:
@@ -150,9 +154,10 @@ norms:
 - norm_id: AIA-NORM-A012-P3-A-USE-PERIOD
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: provider
+  actors:
+  - actor_ref: provider
     category: supported_operator
+  targets: []
   action: record the start and end date and time of every use
   norm_text: recording of the period of each use of the system (start date and time and end date and time
     of each use)
@@ -189,9 +194,10 @@ norms:
 - norm_id: AIA-NORM-A012-P3-B-REFERENCE-DATABASE
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: provider
+  actors:
+  - actor_ref: provider
     category: supported_operator
+  targets: []
   action: record the reference database against which the system checked input data
   norm_text: the reference database against which input data has been checked by the system
   detection_channels:
@@ -227,9 +233,10 @@ norms:
 - norm_id: AIA-NORM-A012-P3-C-MATCHED-INPUT
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: provider
+  actors:
+  - actor_ref: provider
     category: supported_operator
+  targets: []
   action: record the input data for which the search produced a match
   norm_text: the input data for which the search has led to a match
   detection_channels:
@@ -265,9 +272,10 @@ norms:
 - norm_id: AIA-NORM-A012-P3-D-RESULT-VERIFIERS
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: provider
+  actors:
+  - actor_ref: provider
     category: supported_operator
+  targets: []
   action: record the identity of every natural person involved in verifying results under Article 14(5)
   norm_text: the identification of the natural persons involved in the verification of the results, as
     referred to in Article 14(5)

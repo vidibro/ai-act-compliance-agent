@@ -3,8 +3,10 @@ records:
   source: A087-P001
   quote: Directive (EU) 2019/1937 shall apply to the reporting of infringements of this Regulation and the protection of persons reporting such infringements.
   action: apply Directive 2019/1937 to AI Act infringement reporting and reporting-person protection
-  subject_ref: authority_applying_article_87
-  subject_category: public_authority
+  actors:
+  - actor_ref: authority_applying_article_87
+    category: public_authority
+  targets: []
   kind: applicability
   product_scope: no_product_action
   product_scope_reason: This cross-regime applicability rule creates no independent AI product action.

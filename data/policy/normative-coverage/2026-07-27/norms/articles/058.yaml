@@ -3,9 +3,10 @@ norms:
 - norm_id: AIA-NORM-A058-P1-DETAILED-SANDBOX-ARRANGEMENTS
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: commission
+  actors:
+  - actor_ref: commission
     category: union_institution_or_body
+  targets: []
   action: adopt implementing acts specifying the complete sandbox lifecycle and all enacted common-principle
     areas
   norm_text: 'the Commission shall adopt implementing acts specifying the detailed arrangements for the
@@ -48,9 +49,10 @@ norms:
 - norm_id: AIA-NORM-A058-P1-EXAMINATION-PROCEDURE
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: commission
+  actors:
+  - actor_ref: commission
     category: union_institution_or_body
+  targets: []
   action: adopt the sandbox-arrangement implementing acts under the Article 98(2) examination procedure
   norm_text: Those implementing acts shall be adopted in accordance with the examination procedure referred
     to in Article 98(2).
@@ -82,9 +84,10 @@ norms:
 - norm_id: AIA-NORM-A058-P2-MINIMUM-IMPLEMENTING-ACT-OUTCOMES
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: commission
+  actors:
+  - actor_ref: commission
     category: union_institution_or_body
+  targets: []
   action: ensure the implementing acts produce every enacted access, flexibility, support, recognition,
     duration, and testing outcome
   norm_text: 'The implementing acts referred to in paragraph 1 shall ensure:'
@@ -135,9 +138,10 @@ norms:
 - norm_id: AIA-NORM-A058-P3-DIRECT-TO-PREDEPLOYMENT-SERVICES
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: sandbox_competent_authority
+  actors:
+  - actor_ref: sandbox_competent_authority
     category: public_authority
+  targets: []
   action: direct prospective sandbox providers to relevant pre-deployment and value-adding services
   norm_text: Prospective providers in the AI regulatory sandboxes, in particular SMEs and start-ups, shall
     be directed, where relevant, to pre-deployment services such as guidance on the implementation of
@@ -171,9 +175,10 @@ norms:
 - norm_id: AIA-NORM-A058-P4-AGREE-REAL-WORLD-TESTING-SAFEGUARDS
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: national_competent_authority
+  actors:
+  - actor_ref: national_competent_authority
     category: public_authority
+  targets: []
   action: specifically agree real-world testing terms and conditions, in particular appropriate safeguards,
     with participants to protect fundamental rights, health and safety
   norm_text: Where national competent authorities consider authorising testing in real world conditions
@@ -211,9 +216,10 @@ norms:
 - norm_id: AIA-NORM-A058-P4-COOPERATE-ON-TESTING-PRACTICES
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: national_competent_authority
+  actors:
+  - actor_ref: national_competent_authority
     category: public_authority
+  targets: []
   action: cooperate with other national competent authorities to ensure consistent real-world sandbox
     testing practices across the Union
   norm_text: Where appropriate, they shall cooperate with other national competent authorities with a

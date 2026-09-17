@@ -24,7 +24,7 @@ from aiact.schemas.enums import (
     TransparencyDuty,
     Verdict,
 )
-from aiact.schemas.norm import SubjectCategory
+from aiact.schemas.norm import ActorCategory
 from aiact.schemas.policy import GuidanceSource, LegalSource, PolicyRuleset
 from aiact.schemas.question import EVIDENCE_QUOTE_MAX, REASONING_MAX, Answer, Confidence
 
@@ -738,10 +738,10 @@ class ComplianceReport(BaseModel):
                         f"in the loaded PolicyRuleset (spec_version={spec.spec_version})."
                     )
             report_norms = {norm.norm_id: norm for norm in spec.report_norms}
-            for field_name, expected_kind in (
-                ("permissions", "permission"),
-                ("legal_consequences", "legal_consequence"),
-                ("conditional_applicability", "applicability"),
+            for field_name, accepted_kinds in (
+                ("permissions", {"permission"}),
+                ("legal_consequences", {"legal_consequence"}),
+                ("conditional_applicability", {"applicability", "obligation"}),
             ):
                 for norm_id in [
                     norm_id for ids in getattr(self, field_name).values() for norm_id in ids
@@ -752,10 +752,14 @@ class ComplianceReport(BaseModel):
                             f"{field_name} references norm_id {norm_id!r} not present in the "
                             f"loaded PolicyRuleset (spec_version={spec.spec_version})."
                         )
-                    if norm.kind.value != expected_kind:
+                    if norm.kind.value not in accepted_kinds or (
+                        field_name == "conditional_applicability"
+                        and norm.kind.value == "obligation"
+                        and norm.verification_mode.value != "reported_conditionally"
+                    ):
                         raise ValueError(
                             f"{field_name} references {norm_id!r} of kind {norm.kind.value}, "
-                            f"not {expected_kind}."
+                            f"not an allowed kind for that report section."
                         )
             for norm_id in self.public_authority_statements:
                 norm = report_norms.get(norm_id)
@@ -764,9 +768,9 @@ class ComplianceReport(BaseModel):
                         f"public_authority_statements references norm_id {norm_id!r} not present "
                         f"in the loaded PolicyRuleset (spec_version={spec.spec_version})."
                     )
-                if SubjectCategory.PUBLIC_AUTHORITY not in norm.subject_categories:
+                if ActorCategory.PUBLIC_AUTHORITY not in norm.actor_categories:
                     raise ValueError(
                         f"public_authority_statements references {norm_id!r}, which has no "
-                        "public-authority subject."
+                        "public-authority actor."
                     )
         return self

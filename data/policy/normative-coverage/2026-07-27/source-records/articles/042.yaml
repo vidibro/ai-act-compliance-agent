@@ -6,8 +6,9 @@ records:
     to comply with the relevant requirements laid down in Article 10(4).
   action: presume Article 10(4) compliance from training and testing data reflecting the intended-use
     setting
-  subject_ref: high_risk_ai_system
-  subject_category: other
+  actors: []
+  targets:
+  - target_ref: high_risk_ai_system
   kind: legal_consequence
   implementation_mode: report_only
   implementation_refs:
@@ -26,8 +27,9 @@ records:
     certificate or statement of conformity or parts thereof cover those requirements.
   action: presume covered Article 15 cybersecurity compliance from a published Regulation 2019/881 certificate
     or conformity statement
-  subject_ref: high_risk_ai_system
-  subject_category: other
+  actors: []
+  targets:
+  - target_ref: high_risk_ai_system
   kind: legal_consequence
   implementation_mode: report_only
   implementation_refs:
@@ -45,8 +47,9 @@ records:
     with the cybersecurity requirements set out in Article 15 of this Regulation.
   action: deem Article 15 cybersecurity requirements satisfied when Regulation 2024/2847 and its Article
     12(1) conditions apply
-  subject_ref: high_risk_ai_system
-  subject_category: other
+  actors: []
+  targets:
+  - target_ref: high_risk_ai_system
   kind: legal_consequence
   implementation_mode: report_only
   implementation_refs:

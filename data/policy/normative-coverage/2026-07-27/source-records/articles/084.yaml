@@ -4,8 +4,10 @@ records:
   quote: The Commission shall designate one or more Union AI testing support structures to perform the
     tasks listed under Article 21(6) of Regulation (EU) 2019/1020 in the area of AI.
   action: designate one or more Union structures for Regulation 2019/1020 Article 21(6) AI testing support
-  subject_ref: commission
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: commission
+    category: union_institution_or_body
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -18,8 +20,10 @@ records:
     or of market surveillance authorities.
   action: provide independent technical or scientific advice when requested by the Board Commission or
     market surveillance authorities
-  subject_ref: union_ai_testing_support_structure
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: union_ai_testing_support_structure
+    category: union_institution_or_body
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required

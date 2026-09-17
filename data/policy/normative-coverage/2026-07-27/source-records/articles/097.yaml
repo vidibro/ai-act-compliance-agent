@@ -4,8 +4,10 @@ records:
   quote: The power to adopt delegated acts is conferred on the Commission subject to the conditions laid
     down in this Article.
   action: confer delegated-act power on the Commission subject to Article 97 conditions
-  subject_ref: commission
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: commission
+    category: union_institution_or_body
+  targets: []
   kind: power
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -21,8 +23,10 @@ records:
     for a period of five years from 27 July 2026.
   action: confer the listed Article 6, 7, 11, 43, 47, 51, 52 and 53 delegated powers for five years from
     1 August 2024 and the Article 2(13) and 30(2) powers for five years from 27 July 2026
-  subject_ref: commission
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: commission
+    category: union_institution_or_body
+  targets: []
   kind: legal_consequence
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -34,8 +38,10 @@ records:
   quote: The Commission shall draw up a report in respect of the delegation of power not later than nine
     months before the end of the five-year period.
   action: prepare a delegation-of-power report at least nine months before the five-year period ends
-  subject_ref: commission
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: commission
+    category: union_institution_or_body
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -47,8 +53,9 @@ records:
     the European Parliament or the Council opposes such extension no later than three months before the
     end of each period.
   action: extend delegated power automatically unless Parliament or Council timely opposes
-  subject_ref: delegation_of_power
-  subject_category: other
+  actors: []
+  targets:
+  - target_ref: delegation_of_power
   kind: legal_consequence
   product_scope: outside_supported_actor
   product_scope_reason: This institutional consequence is outside the supported operator surface.
@@ -64,8 +71,10 @@ records:
     (3), Article 11(3), Article 30(2), Article 43(5) and (6), Article 47(5), Article 51(3), Article 52(4)
     and Article 53(5) and (6) may be revoked at any time by the European Parliament or by the Council.
   action: revoke at any time the delegation of power referred to in the enacted provisions
-  subject_ref: european_parliament_or_council
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: european_parliament_or_council
+    category: union_institution_or_body
+  targets: []
   kind: power
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -79,8 +88,10 @@ records:
     Union or at a later date specified therein.
   action: end the delegation of power specified in the revocation decision, with effect the day following
     publication in the Official Journal of the European Union or on a later date specified in the decision
-  subject_ref: european_parliament_or_council
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: european_parliament_or_council
+    category: union_institution_or_body
+  targets: []
   kind: legal_consequence
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -91,8 +102,10 @@ records:
   source: A097-P003
   quote: It shall not affect the validity of any delegated acts already in force.
   action: preserve the validity of any delegated acts already in force
-  subject_ref: european_parliament_or_council
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: european_parliament_or_council
+    category: union_institution_or_body
+  targets: []
   kind: legal_consequence
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -105,8 +118,10 @@ records:
     State in accordance with the principles laid down in the Interinstitutional Agreement of 13 April
     2016 on Better Law-Making.
   action: consult Member-State experts before adopting a delegated act under the Better-Law-Making principles
-  subject_ref: commission
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: commission
+    category: union_institution_or_body
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -117,8 +132,10 @@ records:
   quote: As soon as it adopts a delegated act, the Commission shall notify it simultaneously to the European
     Parliament and to the Council.
   action: notify Parliament and Council simultaneously upon adopting a delegated act
-  subject_ref: commission
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: commission
+    category: union_institution_or_body
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -135,8 +152,9 @@ records:
   action: enter into force only where neither the European Parliament nor the Council objects within three
     months of notification, or where both inform the Commission before that period expires that they will
     not object
-  subject_ref: delegated_act
-  subject_category: other
+  actors: []
+  targets:
+  - target_ref: delegated_act
   kind: legal_consequence
   conditions:
   - operator: any_of
@@ -155,8 +173,10 @@ records:
   quote: That period shall be extended by three months at the initiative of the European Parliament or
     of the Council.
   action: extend the objection period by three months
-  subject_ref: european_parliament_or_council
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: european_parliament_or_council
+    category: union_institution_or_body
+  targets: []
   kind: power
   conditions:
   - the European Parliament or the Council takes the initiative

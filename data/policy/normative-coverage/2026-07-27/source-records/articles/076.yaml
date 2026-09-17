@@ -4,8 +4,10 @@ records:
   quote: Market surveillance authorities shall have competences and powers to ensure that testing in real
     world conditions is in accordance with this Regulation.
   action: exercise competences and powers to ensure real-world testing complies with this Regulation
-  subject_ref: market_surveillance_authority
-  subject_category: public_authority
+  actors:
+  - actor_ref: market_surveillance_authority
+    category: public_authority
+  targets: []
   kind: power
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -20,8 +22,10 @@ records:
     references to Article 60 shall be construed as references to Article 60a, as appropriate.
   action: substitute the competent sectoral authority and Article 60a for Article 76 references in Article
     60a testing
-  subject_ref: authority_applying_article_76
-  subject_category: public_authority
+  actors:
+  - actor_ref: authority_applying_article_76
+    category: public_authority
+  targets: []
   kind: applicability
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -34,8 +38,10 @@ records:
     an AI regulatory sandbox under Article 58, the market surveillance authorities shall verify the compliance
     with Article 60 as part of their supervisory role for the AI regulatory sandbox.
   action: verify Article 60 compliance when supervising sandbox real-world testing
-  subject_ref: market_surveillance_authority
-  subject_category: public_authority
+  actors:
+  - actor_ref: market_surveillance_authority
+    category: public_authority
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -50,8 +56,10 @@ records:
     by the provider or prospective provider, in derogation from the conditions set out in Article 60(4),
     points (f) and (g).
   action: allow provider-conducted sandbox testing under an appropriate Article 60(4)(f) and (g) derogation
-  subject_ref: market_surveillance_authority
-  subject_category: public_authority
+  actors:
+  - actor_ref: market_surveillance_authority
+    category: public_authority
+  targets: []
   kind: power
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -63,8 +71,10 @@ records:
   quote: it may take either of the following decisions on its territory, as appropriate
   action: suspend terminate or require modification of real-world testing after a serious incident or
     suspected Articles 60 or 61 breach
-  subject_ref: market_surveillance_authority
-  subject_category: public_authority
+  actors:
+  - actor_ref: market_surveillance_authority
+    category: public_authority
+  targets: []
   kind: power
   mandatory_content:
   - suspend or terminate testing
@@ -85,8 +95,10 @@ records:
     challenge the decision or objection.
   action: state grounds and the provider's challenge route in a paragraph 3 decision or Article 60(4)(b)
     objection
-  subject_ref: market_surveillance_authority
-  subject_category: public_authority
+  actors:
+  - actor_ref: market_surveillance_authority
+    category: public_authority
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -101,8 +113,10 @@ records:
     States in which the AI system has been tested in accordance with the testing plan.
   action: communicate intervention grounds to authorities in other Member States where planned testing
     occurred
-  subject_ref: market_surveillance_authority
-  subject_category: public_authority
+  actors:
+  - actor_ref: market_surveillance_authority
+    category: public_authority
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required

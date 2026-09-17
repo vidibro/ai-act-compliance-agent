@@ -6,8 +6,10 @@ records:
     are fulfilled
   action: adopt Article 97 delegated acts adding or modifying Annex III high-risk use cases when both
     statutory conditions are fulfilled
-  subject_ref: commission
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: commission
+    category: union_institution_or_body
+  targets: []
   kind: power
   qualifier_spans:
   - A007-P002
@@ -26,8 +28,10 @@ records:
   quote: the Commission shall take into account the following criteria
   action: take every Article 7(2) criterion into account when assessing whether an Annex III amendment
     meets Article 7(1)(b)
-  subject_ref: commission
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: commission
+    category: union_institution_or_body
+  targets: []
   kind: obligation
   qualifier_spans:
   - A007-P005
@@ -67,8 +71,9 @@ records:
     to be easily corrigible or reversible
   action: treat outcomes adversely affecting health, safety, or fundamental rights as not easily corrigible
     or reversible in the Article 7 assessment
-  subject_ref: annex_iii_amendment_risk_assessment
-  subject_category: other
+  actors: []
+  targets:
+  - target_ref: annex_iii_amendment_risk_assessment
   kind: legal_consequence
   product_scope: dependency_only
   product_scope_reason: This assessment rule constrains the Commission's Annex III amendment analysis
@@ -83,8 +88,10 @@ records:
     list in Annex III by removing high-risk AI systems where both of the following conditions are fulfilled
   action: adopt Article 97 delegated acts removing Annex III high-risk use cases when both statutory conditions
     are fulfilled
-  subject_ref: commission
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: commission
+    category: union_institution_or_body
+  targets: []
   kind: power
   qualifier_spans:
   - A007-P019

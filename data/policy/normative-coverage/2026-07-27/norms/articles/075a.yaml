@@ -3,9 +3,10 @@ norms:
 - norm_id: AIA-NORM-A075A-P1-MARKET-SURVEILLANCE-POWERS
   act_version_date: '2026-07-27'
   kind: power
-  subjects:
-  - subject_ref: ai_office
+  actors:
+  - actor_ref: ai_office
     category: union_institution_or_body
+  targets: []
   action: exercise the specified market-surveillance authority powers when supervising Article 75(1) systems
   norm_text: When exercising its tasks of supervision and enforcement laid down in Article 75(1) of this
     Regulation, the AI Office shall have all the powers of a market surveillance authority provided for
@@ -38,9 +39,10 @@ norms:
 - norm_id: AIA-NORM-A075A-P1-RECLAIM-ENFORCEMENT-COSTS
   act_version_date: '2026-07-27'
   kind: power
-  subjects:
-  - subject_ref: ai_office
+  actors:
+  - actor_ref: ai_office
     category: union_institution_or_body
+  targets: []
   action: reclaim all supervision and enforcement costs associated with non-compliance from the relevant
     operator
   norm_text: The AI Office shall be authorised to fully reclaim from the relevant operator the totality
@@ -75,9 +77,10 @@ norms:
 - norm_id: AIA-NORM-A075A-P1-APPLY-ARTICLE17
   act_version_date: '2026-07-27'
   kind: applicability
-  subjects:
-  - subject_ref: ai_office_supervision
+  actors:
+  - actor_ref: ai_office_supervision
     category: union_institution_or_body
+  targets: []
   action: apply Regulation 2019/1020 Article 17 with necessary adaptations to AI Office supervision
   norm_text: Article 17 of Regulation (EU) 2019/1020 shall apply mutatis mutandis.
   detection_channels:
@@ -109,9 +112,10 @@ norms:
 - norm_id: AIA-NORM-A075A-P2-START-INVESTIGATION
   act_version_date: '2026-07-27'
   kind: power
-  subjects:
-  - subject_ref: ai_office
+  actors:
+  - actor_ref: ai_office
     category: union_institution_or_body
+  targets: []
   action: start an investigation where reasonable grounds indicate provider or deployer non-compliance
   norm_text: Where the AI Office has reasonable grounds to suspect non-compliance with this Regulation
     by a provider or a deployer of an AI system referred to in Article 75(1) of this Regulation, it may
@@ -147,9 +151,10 @@ norms:
 - norm_id: AIA-NORM-A075A-P2-NOTIFY-INVESTIGATION
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: ai_office
+  actors:
+  - actor_ref: ai_office
     category: union_institution_or_body
+  targets: []
   action: notify the concerned AI-system operator when starting an investigation
   norm_text: Upon starting such an investigation, the AI Office shall notify the operator of the AI system
     concerned.
@@ -182,9 +187,10 @@ norms:
 - norm_id: AIA-NORM-A075A-P2-EXERCISE-POWERS-PREINVESTIGATION
   act_version_date: '2026-07-27'
   kind: power
-  subjects:
-  - subject_ref: ai_office
+  actors:
+  - actor_ref: ai_office
     category: union_institution_or_body
+  targets: []
   action: exercise paragraph 1 powers on initiative or complaint including before formally starting an
     investigation
   norm_text: The AI Office may exercise the powers referred to in paragraph 1 of this Article on its own
@@ -218,9 +224,10 @@ norms:
 - norm_id: AIA-NORM-A075A-P2-MSA-REQUEST-ASSESSMENT
   act_version_date: '2026-07-27'
   kind: power
-  subjects:
-  - subject_ref: market_surveillance_authority
+  actors:
+  - actor_ref: market_surveillance_authority
     category: public_authority
+  targets: []
   action: request AI Office assessment of suspected Article 75(1) provider or deployer non-compliance
   norm_text: Where a market surveillance authority has reason to suspect non-compliance with this Regulation
     by a provider or a deployer of an AI system referred to in Article 75(1), it may send a request to
@@ -255,9 +262,10 @@ norms:
 - norm_id: AIA-NORM-A075A-P3-REQUEST-INFORMATION
   act_version_date: '2026-07-27'
   kind: power
-  subjects:
-  - subject_ref: ai_office
+  actors:
+  - actor_ref: ai_office
     category: union_institution_or_body
+  targets: []
   action: exercise listed information and document powers by simple request or decision
   norm_text: The AI Office may exercise the powers listed in Article 14(4), points (a), (b) and (c) of
     Regulation (EU) 2019/1020 and Article 74(12) and (13) of this Regulation by simple request or by decision.
@@ -289,9 +297,10 @@ norms:
 - norm_id: AIA-NORM-A075A-P3-INFORMATION-REQUEST-CONTENT
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: ai_office
+  actors:
+  - actor_ref: ai_office
     category: union_institution_or_body
+  targets: []
   action: state the legal basis and purpose of the request, specify the information required and set the
     period for providing it
   norm_text: When requesting information, the AI Office shall state the legal basis and the purpose of
@@ -328,9 +337,10 @@ norms:
 - norm_id: AIA-NORM-A075A-P3-SIMPLE-REQUEST-ADDITIONS
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: ai_office
+  actors:
+  - actor_ref: ai_office
     category: union_institution_or_body
+  targets: []
   action: additionally indicate, for a simple request, that there is no obligation to provide the information
     and that a voluntary reply must be correct and not misleading, and indicate the potential Article
     99(5) fines
@@ -370,9 +380,10 @@ norms:
 - norm_id: AIA-NORM-A075A-P3-DECISION-REQUEST-ADDITIONS
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: ai_office
+  actors:
+  - actor_ref: ai_office
     category: union_institution_or_body
+  targets: []
   action: additionally indicate, for a request made by decision, the Article 99(5) fines for supplying
     incorrect, incomplete or misleading information and the right to have the decision reviewed by the
     Court of Justice of the European Union
@@ -410,9 +421,10 @@ norms:
 - norm_id: AIA-NORM-A075A-P3-SEND-COPY-TO-TERRITORIAL-AUTHORITY
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: ai_office
+  actors:
+  - actor_ref: ai_office
     category: union_institution_or_body
+  targets: []
   action: send a copy of the request to the market surveillance authority of the Member State in whose
     territory the operator or its legal representative is situated
   norm_text: The AI Office shall send a copy of the request to the market surveillance authority of the
@@ -445,9 +457,10 @@ norms:
 - norm_id: AIA-NORM-A075A-P3-VOLUNTARY-REPLY-CORRECTNESS
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: requested_operator
+  actors:
+  - actor_ref: requested_operator
     category: supported_operator
+  targets: []
   action: ensure any voluntary response to a simple AI Office request is correct and not misleading
   norm_text: in the case of a voluntary reply, the information must be correct and not misleading
   detection_channels:
@@ -478,9 +491,10 @@ norms:
 - norm_id: AIA-NORM-A075A-P4-CONDUCT-INSPECTIONS
   act_version_date: '2026-07-27'
   kind: power
-  subjects:
-  - subject_ref: ai_office
+  actors:
+  - actor_ref: ai_office
     category: union_institution_or_body
+  targets: []
   action: conduct necessary remote or on-site inspections for Section enforcement tasks
   norm_text: In order to carry out the tasks assigned to it under this Section, the AI Office may conduct
     all necessary remote or on-site inspections pursuant to the powers laid down in Article 14(4), points
@@ -513,9 +527,10 @@ norms:
 - norm_id: AIA-NORM-A075A-P4-INSPECTION-NOTICES
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: ai_office
+  actors:
+  - actor_ref: ai_office
     category: union_institution_or_body
+  targets: []
   action: inform the provider about inspection subject purpose fines and review rights and inform the
     territorial authority before inspection
   norm_text: When conducting an inspection, the AI Office shall inform the provider concerned of the subject
@@ -551,9 +566,10 @@ norms:
 - norm_id: AIA-NORM-A075A-P4-INSPECTION-POWERS
   act_version_date: '2026-07-27'
   kind: power
-  subjects:
-  - subject_ref: ai_office_official
+  actors:
+  - actor_ref: ai_office_official
     category: union_institution_or_body
+  targets: []
   action: exercise the specified entry examination copying questioning recording and sealing powers during
     inspection
   norm_text: 'During such an inspection, the officials of the AI Office shall be empowered to:'
@@ -596,9 +612,10 @@ norms:
 - norm_id: AIA-NORM-A075A-P4-ASSIST-OBSTRUCTED-INSPECTION
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: national_competent_authority
+  actors:
+  - actor_ref: national_competent_authority
     category: public_authority
+  targets: []
   action: provide necessary assistance including police-equivalent assistance where appropriate to overcome
     inspection obstruction
   norm_text: Where the AI Office finds that a natural or legal person opposes or obstructs an inspection,
@@ -634,9 +651,10 @@ norms:
 - norm_id: AIA-NORM-A075A-P4-APPLY-JUDICIAL-AUTHORISATION
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: ai_office
+  actors:
+  - actor_ref: ai_office
     category: union_institution_or_body
+  targets: []
   action: apply for required judicial authorisation for an on-site inspection including precautionarily
     where appropriate
   norm_text: Where an on-site inspection of business premises, land or property requires authorisation
@@ -672,9 +690,10 @@ norms:
 - norm_id: AIA-NORM-A075A-P4-JUDICIAL-AUTHORISATION-REVIEW
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: national_judicial_authority
+  actors:
+  - actor_ref: national_judicial_authority
     category: public_authority
+  targets: []
   action: promptly review requested coercive measures for non-arbitrariness and proportionality without
     reviewing investigation necessity or demanding the AI Office file
   norm_text: Where such an authorisation is applied for, the national judicial authority shall promptly
@@ -718,9 +737,10 @@ norms:
 - norm_id: AIA-NORM-A075A-P5-MSA-FACT-FINDING
   act_version_date: '2026-07-27'
   kind: power
-  subjects:
-  - subject_ref: member_state_market_surveillance_authority
+  actors:
+  - actor_ref: member_state_market_surveillance_authority
     category: public_authority
+  targets: []
   action: conduct requested territorial fact-finding for the AI Office under national-law powers
   norm_text: At the request of the AI Office, the competent market surveillance authority of a Member
     State may in its own territory carry out any investigation, inspection or other fact-finding measure
@@ -755,9 +775,10 @@ norms:
 - norm_id: AIA-NORM-A075A-P6-ADDITIONAL-OPERATOR-ORDERS
   act_version_date: '2026-07-27'
   kind: power
-  subjects:
-  - subject_ref: ai_office
+  actors:
+  - actor_ref: ai_office
     category: union_institution_or_body
+  targets: []
   action: order system access and explanations and require retention of necessary compliance-assessment
     data and documents
   norm_text: 'In addition to the powers set out in paragraph 1 of this Article, the AI Office, in the
@@ -794,9 +815,10 @@ norms:
 - norm_id: AIA-NORM-A075A-P7-APPOINT-EXPERTS
   act_version_date: '2026-07-27'
   kind: power
-  subjects:
-  - subject_ref: ai_office
+  actors:
+  - actor_ref: ai_office
     category: union_institution_or_body
+  targets: []
   action: appoint external and agreed Member-State experts teams and auditors for Article 75(1) monitoring
   norm_text: "To assist it in monitoring the effective implementation and compliance with the relevant\
     \ provisions of this Regulation and to provide it with specific expertise or knowledge in the exercise\
@@ -831,9 +853,10 @@ norms:
 - norm_id: AIA-NORM-A075A-P7-SHARE-MONITORING-INFORMATION
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: ai_office
+  actors:
+  - actor_ref: ai_office
     category: union_institution_or_body
+  targets: []
   action: share monitoring information with relevant Member-State competent authorities
   norm_text: Information obtained as a result of such monitoring actions shall be shared with the relevant
     competent authorities of the Member States.
@@ -865,9 +888,10 @@ norms:
 - norm_id: AIA-NORM-A075A-P8-PURPOSE-LIMIT-INFORMATION
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: article_75a_information_recipient
+  actors:
+  - actor_ref: article_75a_information_recipient
     category: public_authority
+  targets: []
   action: use Article 75a information only for AI Act purposes
   norm_text: Information collected pursuant to this Article shall be used only for the purpose of this
     Regulation.

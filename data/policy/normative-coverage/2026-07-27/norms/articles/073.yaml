@@ -3,9 +3,10 @@ norms:
 - norm_id: AIA-NORM-A073-P1-REPORT-SERIOUS-INCIDENT
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: provider
+  actors:
+  - actor_ref: provider
     category: supported_operator
+  targets: []
   action: report every serious incident to the market surveillance authority where it occurred
   norm_text: Providers of high-risk AI systems placed on the Union market shall report any serious incident
     to the market surveillance authorities of the Member States where that incident occurred.
@@ -39,9 +40,10 @@ norms:
 - norm_id: AIA-NORM-A073-P2-DEFAULT-REPORTING-DEADLINE
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: provider_or_applicable_deployer
+  actors:
+  - actor_ref: provider_or_applicable_deployer
     category: supported_operator
+  targets: []
   action: report immediately after establishing a causal link or reasonable likelihood and no later than
     15 days after awareness, taking account of the severity of the serious incident
   norm_text: The report referred to in paragraph 1 shall be made immediately after the provider has established
@@ -80,9 +82,10 @@ norms:
 - norm_id: AIA-NORM-A073-P3-TWO-DAY-DEADLINE
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: provider_or_applicable_deployer
+  actors:
+  - actor_ref: provider_or_applicable_deployer
     category: supported_operator
+  targets: []
   action: report a widespread infringement or Article 3(49)(b) incident immediately and within two days
     of awareness
   norm_text: Notwithstanding paragraph 2 of this Article, in the event of a widespread infringement or
@@ -119,9 +122,10 @@ norms:
 - norm_id: AIA-NORM-A073-P4-DEATH-DEADLINE
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: provider_or_applicable_deployer
+  actors:
+  - actor_ref: provider_or_applicable_deployer
     category: supported_operator
+  targets: []
   action: report a death immediately on established or suspected causality and within ten days of awareness
   norm_text: Notwithstanding paragraph 2, in the event of the death of a person, the report shall be provided
     immediately after the provider or the deployer has established, or as soon as it suspects, a causal
@@ -158,9 +162,10 @@ norms:
 - norm_id: AIA-NORM-A073-P5-INITIAL-INCOMPLETE-REPORT
   act_version_date: '2026-07-27'
   kind: permission
-  subjects:
-  - subject_ref: provider_or_applicable_deployer
+  actors:
+  - actor_ref: provider_or_applicable_deployer
     category: supported_operator
+  targets: []
   action: submit an initial incomplete report followed by a complete report where needed for timeliness
   norm_text: Where necessary to ensure timely reporting, the provider or, where applicable, the deployer,
     may submit an initial report that is incomplete, followed by a complete report.
@@ -194,9 +199,10 @@ norms:
 - norm_id: AIA-NORM-A073-P6-INVESTIGATE
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: provider
+  actors:
+  - actor_ref: provider
     category: supported_operator
+  targets: []
   action: perform, without delay, the necessary investigations into the serious incident and the AI system
     concerned
   norm_text: Following the reporting of a serious incident pursuant to paragraph 1, the provider shall,
@@ -234,9 +240,10 @@ norms:
 - norm_id: AIA-NORM-A073-P6-RISK-ASSESSMENT-AND-CORRECTIVE-ACTION
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: provider
+  actors:
+  - actor_ref: provider
     category: supported_operator
+  targets: []
   action: include a risk assessment of the reported serious incident and corrective action in the investigation
   norm_text: This shall include a risk assessment of the incident, and corrective action.
   detection_channels:
@@ -272,9 +279,10 @@ norms:
 - norm_id: AIA-NORM-A073-P6-COOPERATE-AND-PRESERVE-SYSTEM
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: provider
+  actors:
+  - actor_ref: provider
     category: supported_operator
+  targets: []
   action: cooperate with the competent authorities, and where relevant with the notified body concerned,
     during the first-subparagraph investigations
   norm_text: The provider shall cooperate with the competent authorities, and where relevant with the
@@ -309,9 +317,10 @@ norms:
 - norm_id: AIA-NORM-A073-P6-NO-EVIDENCE-AFFECTING-ALTERATION
   act_version_date: '2026-07-27'
   kind: prohibition
-  subjects:
-  - subject_ref: provider
+  actors:
+  - actor_ref: provider
     category: supported_operator
+  targets: []
   action: perform no investigation that alters the AI system concerned in a way which may affect any subsequent
     evaluation of the causes of the incident before informing the competent authorities of such action
   norm_text: shall not perform any investigation which involves altering the AI system concerned in a
@@ -348,9 +357,10 @@ norms:
 - norm_id: AIA-NORM-A073-P7-INFORM-FUNDAMENTAL-RIGHTS-AUTHORITIES
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: market_surveillance_authority
+  actors:
+  - actor_ref: market_surveillance_authority
     category: public_authority
+  targets: []
   action: inform Article 77(1) authorities of Article 3(49)(c) incident notifications
   norm_text: Upon receiving a notification related to a serious incident referred to in Article 3, point
     (49)(c), the relevant market surveillance authority shall inform the national public authorities or
@@ -383,9 +393,10 @@ norms:
 - norm_id: AIA-NORM-A073-P7-COMMISSION-REPORTING-GUIDANCE
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: commission
+  actors:
+  - actor_ref: commission
     category: union_institution_or_body
+  targets: []
   action: issue incident-reporting guidance by 2 August 2025 and assess it regularly
   norm_text: The Commission shall develop dedicated guidance to facilitate compliance with the obligations
     set out in paragraph 1 of this Article. That guidance shall be issued by 2 August 2025, and shall
@@ -418,9 +429,10 @@ norms:
 - norm_id: AIA-NORM-A073-P8-SEVEN-DAY-AUTHORITY-ACTION
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: market_surveillance_authority
+  actors:
+  - actor_ref: market_surveillance_authority
     category: public_authority
+  targets: []
   action: take the appropriate measures provided for in Article 19 of Regulation (EU) 2019/1020 within
     seven days of receiving the paragraph 1 notification and follow that Regulation's notification procedures
   norm_text: The market surveillance authority shall take appropriate measures, as provided for in Article
@@ -457,9 +469,10 @@ norms:
 - norm_id: AIA-NORM-A073-P9-EQUIVALENT-REPORTING-LIMIT
   act_version_date: '2026-07-27'
   kind: legal_consequence
-  subjects:
-  - subject_ref: provider
+  actors:
+  - actor_ref: provider
     category: supported_operator
+  targets: []
   action: limit reporting to Article 3(49)(c) incidents where equivalent Union reporting legislation applies
   norm_text: For high-risk AI systems referred to in Annex III that are placed on the market or put into
     service by providers that are subject to Union legislative instruments laying down reporting obligations
@@ -496,9 +509,10 @@ norms:
 - norm_id: AIA-NORM-A073-P10-MEDICAL-DEVICE-REPORTING
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: provider_or_applicable_deployer
+  actors:
+  - actor_ref: provider_or_applicable_deployer
     category: supported_operator
+  targets: []
   action: limit covered medical-device reports to Article 3(49)(c) incidents and send them to the designated
     national competent authority
   norm_text: For high-risk AI systems which are safety components of devices, or are themselves devices,
@@ -536,9 +550,10 @@ norms:
 - norm_id: AIA-NORM-A073-P11-NOTIFY-COMMISSION
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: national_competent_authority
+  actors:
+  - actor_ref: national_competent_authority
     category: public_authority
+  targets: []
   action: immediately notify the Commission of every serious incident under Article 20 regardless of action
     taken
   norm_text: National competent authorities shall immediately notify the Commission of any serious incident,

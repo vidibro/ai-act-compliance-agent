@@ -5,8 +5,10 @@ records:
     notifying authority and at least one market surveillance authority for the purposes of this Regulation.
   action: establish or designate at least one notifying authority and at least one market surveillance
     authority as national competent authorities for the purposes of this Regulation
-  subject_ref: member_state
-  subject_category: member_state
+  actors:
+  - actor_ref: member_state
+    category: member_state
+  targets: []
   mandatory_content:
   - at least one notifying authority
   - at least one market surveillance authority
@@ -23,8 +25,10 @@ records:
   action: exercise the authority's powers independently, impartially and without bias so as to safeguard
     the objectivity of its activities and tasks and to ensure the application and implementation of this
     Regulation
-  subject_ref: national_competent_authority
-  subject_category: public_authority
+  actors:
+  - actor_ref: national_competent_authority
+    category: public_authority
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -34,8 +38,10 @@ records:
   source: A070-P001
   quote: The members of those authorities shall refrain from any action incompatible with their duties.
   action: refrain from any action incompatible with the member's duties
-  subject_ref: national_competent_authority_member
-  subject_category: public_authority
+  actors:
+  - actor_ref: national_competent_authority_member
+    category: public_authority
+  targets: []
   kind: prohibition
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -48,8 +54,10 @@ records:
     or more designated authorities, in accordance with the organisational needs of the Member State.
   action: have the activities and tasks performed by one or more designated authorities according to the
     Member State's organisational needs
-  subject_ref: member_state
-  subject_category: member_state
+  actors:
+  - actor_ref: member_state
+    category: member_state
+  targets: []
   kind: permission
   conditions:
   - the independence, impartiality, objectivity and member-conduct principles are observed
@@ -65,8 +73,10 @@ records:
     changes thereto.
   action: communicate to the Commission the identity and tasks of the notifying and market surveillance
     authorities, and any subsequent changes to them
-  subject_ref: member_state
-  subject_category: member_state
+  actors:
+  - actor_ref: member_state
+    category: member_state
+  targets: []
   mandatory_content:
   - identity of the notifying authorities and the market surveillance authorities
   - tasks of those authorities
@@ -82,8 +92,10 @@ records:
     points of contact can be contacted, through electronic communication means by 2 August 2025.
   action: make information on how to contact the competent authorities and single points of contact publicly
     available through electronic communication means by 2 August 2025
-  subject_ref: member_state
-  subject_category: member_state
+  actors:
+  - actor_ref: member_state
+    category: member_state
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -95,8 +107,10 @@ records:
     for this Regulation, and shall notify the Commission of the identity of the single point of contact.
   action: designate a market surveillance authority as the single point of contact for this Regulation
     and notify the Commission of its identity
-  subject_ref: member_state
-  subject_category: member_state
+  actors:
+  - actor_ref: member_state
+    category: member_state
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -106,8 +120,10 @@ records:
   source: A070-P002
   quote: The Commission shall make a list of the single points of contact publicly available.
   action: publicly provide the single-point-of-contact list
-  subject_ref: commission
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: commission
+    category: union_institution_or_body
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -120,8 +136,10 @@ records:
     under this Regulation.
   action: ensure the national competent authorities are provided with adequate technical, financial and
     human resources and with infrastructure to fulfil their tasks effectively
-  subject_ref: member_state
-  subject_category: member_state
+  actors:
+  - actor_ref: member_state
+    category: member_state
+  targets: []
   mandatory_content:
   - adequate technical resources
   - adequate financial resources
@@ -141,8 +159,10 @@ records:
     and knowledge of existing standards and legal requirements.
   action: keep a sufficient number of personnel permanently available whose competences and expertise
     cover every enacted field
-  subject_ref: national_competent_authority
-  subject_category: public_authority
+  actors:
+  - actor_ref: national_competent_authority
+    category: public_authority
+  targets: []
   mandatory_content:
   - in-depth understanding of AI technologies
   - data and data computing
@@ -161,8 +181,10 @@ records:
   quote: Member States shall assess and, if necessary, update competence and resource requirements referred
     to in this paragraph on an annual basis.
   action: assess the paragraph 3 competence and resource requirements annually and update them where necessary
-  subject_ref: member_state
-  subject_category: member_state
+  actors:
+  - actor_ref: member_state
+    category: member_state
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -173,8 +195,10 @@ records:
   quote: National competent authorities shall take appropriate measures to ensure an adequate level of
     cybersecurity.
   action: take appropriate measures ensuring adequate cybersecurity
-  subject_ref: national_competent_authority
-  subject_category: public_authority
+  actors:
+  - actor_ref: national_competent_authority
+    category: public_authority
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -185,8 +209,10 @@ records:
   quote: When performing their tasks, the national competent authorities shall act in accordance with
     the confidentiality obligations set out in Article 78.
   action: comply with Article 78 confidentiality when performing authority tasks
-  subject_ref: national_competent_authority
-  subject_category: public_authority
+  actors:
+  - actor_ref: national_competent_authority
+    category: public_authority
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -199,8 +225,10 @@ records:
     assessment of their adequacy.
   action: report authority financial and human resource status and adequacy by 2 August 2025 and biennially
     thereafter
-  subject_ref: member_state
-  subject_category: member_state
+  actors:
+  - actor_ref: member_state
+    category: member_state
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -210,8 +238,10 @@ records:
   source: A070-P006
   quote: The Commission shall transmit that information to the Board for discussion and possible recommendations.
   action: transmit Member State authority-resource information to the Board
-  subject_ref: commission
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: commission
+    category: union_institution_or_body
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -221,8 +251,10 @@ records:
   source: A070-P007
   quote: The Commission shall facilitate the exchange of experience between national competent authorities.
   action: facilitate experience exchange among national competent authorities
-  subject_ref: commission
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: commission
+    category: union_institution_or_body
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -237,8 +269,10 @@ records:
     law, the national competent authorities under that Union law shall be consulted, as appropriate.
   action: provide Board-and-Commission-informed implementation guidance and consult authorities responsible
     for other applicable Union law
-  subject_ref: national_competent_authority
-  subject_category: public_authority
+  actors:
+  - actor_ref: national_competent_authority
+    category: public_authority
+  targets: []
   kind: power
   conditions:
   - other-law authorities are consulted where guidance concerns their Union-law area
@@ -252,8 +286,10 @@ records:
   quote: Where Union institutions, bodies, offices or agencies fall within the scope of this Regulation,
     the European Data Protection Supervisor shall act as the competent authority for their supervision.
   action: act as competent supervisory authority for in-scope Union institutions bodies offices and agencies
-  subject_ref: european_data_protection_supervisor
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: european_data_protection_supervisor
+    category: union_institution_or_body
+  targets: []
   conditions:
   - a Union institution body office or agency falls within the Regulation's scope
   product_scope: outside_supported_actor

@@ -6,8 +6,10 @@ records:
     of conformity assessment bodies and for their monitoring.
   action: designate or establish at least one notifying authority responsible for conformity-assessment-body
     procedures and monitoring
-  subject_ref: member_state
-  subject_category: member_state
+  actors:
+  - actor_ref: member_state
+    category: member_state
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -18,8 +20,10 @@ records:
   quote: Those procedures shall be developed in cooperation between the notifying authorities of all Member
     States.
   action: develop conformity-assessment-body procedures cooperatively across Member-State notifying authorities
-  subject_ref: notifying_authority
-  subject_category: public_authority
+  actors:
+  - actor_ref: notifying_authority
+    category: public_authority
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -31,8 +35,10 @@ records:
     be carried out by a national accreditation body within the meaning of, and in accordance with, Regulation
     (EC) No 765/2008.
   action: assign paragraph 1 assessment and monitoring to a qualifying national accreditation body
-  subject_ref: member_state
-  subject_category: member_state
+  actors:
+  - actor_ref: member_state
+    category: member_state
+  targets: []
   kind: permission
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -45,8 +51,10 @@ records:
     of interest arises with conformity assessment bodies, and that the objectivity and impartiality of
     their activities are safeguarded.
   action: organise and operate without conformity-body conflicts while safeguarding objectivity and impartiality
-  subject_ref: notifying_authority
-  subject_category: public_authority
+  actors:
+  - actor_ref: notifying_authority
+    category: public_authority
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -62,8 +70,10 @@ records:
     of conformity assessment bodies are taken by competent persons different from those who carried out
     the assessment of those bodies.
   action: assign notification decisions to competent persons other than the body assessors
-  subject_ref: notifying_authority
-  subject_category: public_authority
+  actors:
+  - actor_ref: notifying_authority
+    category: public_authority
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -75,8 +85,10 @@ records:
     bodies perform, nor any consultancy services on a commercial or competitive basis.
   action: refrain from offering or providing conformity-assessment-body activities or consultancy services
     on a commercial or competitive basis
-  subject_ref: notifying_authority
-  subject_category: public_authority
+  actors:
+  - actor_ref: notifying_authority
+    category: public_authority
+  targets: []
   kind: prohibition
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -92,8 +104,10 @@ records:
   quote: Notifying authorities shall safeguard the confidentiality of the information that they obtain,
     in accordance with Article 78.
   action: safeguard obtained information according to Article 78 confidentiality requirements
-  subject_ref: notifying_authority
-  subject_category: public_authority
+  actors:
+  - actor_ref: notifying_authority
+    category: public_authority
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -104,8 +118,10 @@ records:
   quote: Notifying authorities shall have an adequate number of competent personnel at their disposal
     for the proper performance of their tasks.
   action: maintain enough competent personnel to perform notifying-authority tasks properly
-  subject_ref: notifying_authority
-  subject_category: public_authority
+  actors:
+  - actor_ref: notifying_authority
+    category: public_authority
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -117,8 +133,10 @@ records:
     in fields such as information technologies, AI and law, including the supervision of fundamental rights.
   action: ensure personnel possess function-appropriate expertise, including relevant technology, AI,
     law, and fundamental-rights supervision
-  subject_ref: notifying_authority
-  subject_category: public_authority
+  actors:
+  - actor_ref: notifying_authority
+    category: public_authority
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -134,8 +152,10 @@ records:
     Regulation and Union harmonisation legislation listed in Section A of Annex I, where the relevant
     Union harmonisation legislation provides for such single application and unified assessment procedure.
   action: provide eligible conformity bodies a single application and unified assessment procedure
-  subject_ref: notifying_authority
-  subject_category: public_authority
+  actors:
+  - actor_ref: notifying_authority
+    category: public_authority
+  targets: []
   conditions: &id001
   - the relevant Section A Annex I legislation provides for the single application and unified assessment
     procedure
@@ -150,8 +170,10 @@ records:
   quote: notifying authorities designated pursuant to this Regulation and those designated pursuant to
     the Union harmonisation legislation listed in Section A of Annex I shall cooperate in their assessments
   action: cooperate across AI Act and Section A Annex I notifying authorities in unified assessments
-  subject_ref: notifying_authority
-  subject_category: public_authority
+  actors:
+  - actor_ref: notifying_authority
+    category: public_authority
+  targets: []
   conditions: *id001
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -166,8 +188,10 @@ records:
     Regulation
   action: make the unified procedure available to already designated Section A Annex I bodies seeking
     AI Act designation
-  subject_ref: notifying_authority
-  subject_category: public_authority
+  actors:
+  - actor_ref: notifying_authority
+    category: public_authority
+  targets: []
   conditions: *id001
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -180,8 +204,10 @@ records:
     legislation listed in Section A of Annex I shall have to apply only once to be designated pursuant
     to this Regulation.
   action: require a multi-designated conformity body to apply only once for AI Act designation
-  subject_ref: conformity_assessment_body
-  subject_category: notified_or_conformity_body
+  actors:
+  - actor_ref: conformity_assessment_body
+    category: notified_or_conformity_body
+  targets: []
   kind: legal_consequence
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -194,8 +220,10 @@ records:
     listed in Section A of Annex I for which the conformity assessment body is designated.
   action: apply the AI Act designation across all relevant Section A Annex I legislation for which the
     body is designated
-  subject_ref: conformity_assessment_body
-  subject_category: notified_or_conformity_body
+  actors:
+  - actor_ref: conformity_assessment_body
+    category: notified_or_conformity_body
+  targets: []
   kind: legal_consequence
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -210,8 +238,10 @@ records:
     both in accordance with this Regulation and the relevant Union harmonisation legislation.
   action: operate the unified procedure without unnecessary duplication, using existing procedures while
     ensuring both sets of notified-body requirements
-  subject_ref: notifying_authority
-  subject_category: public_authority
+  actors:
+  - actor_ref: notifying_authority
+    category: public_authority
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -230,8 +260,10 @@ records:
     notifying authority for this Regulation.
   action: treat the Section A Annex I notifying authority as the unified-procedure authority unless the
     Member State designates another
-  subject_ref: notifying_authority
-  subject_category: public_authority
+  actors:
+  - actor_ref: notifying_authority
+    category: public_authority
+  targets: []
   kind: legal_consequence
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.

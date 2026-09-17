@@ -9,8 +9,10 @@ records:
     fulfilling their mandates within the limits of their jurisdiction.
   action: request and electronically access necessary authority-held information in accessible machine-readable
     form within the body's mandate
-  subject_ref: fundamental_rights_authority
-  subject_category: public_authority
+  actors:
+  - actor_ref: fundamental_rights_authority
+    category: public_authority
+  targets: []
   kind: power
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -28,8 +30,10 @@ records:
     deployer, where necessary and without undue delay.
   action: grant necessary information access without undue delay including by obtaining it from a provider
     or deployer
-  subject_ref: market_surveillance_authority
-  subject_category: public_authority
+  actors:
+  - actor_ref: market_surveillance_authority
+    category: public_authority
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -44,8 +48,10 @@ records:
     mandates
   action: cooperate closely exchange necessary information and provide mutual assistance while respecting
     respective mandates and independence
-  subject_ref: market_surveillance_and_fundamental_rights_authorities
-  subject_category: public_authority
+  actors:
+  - actor_ref: market_surveillance_and_fundamental_rights_authorities
+    category: public_authority
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -57,8 +63,10 @@ records:
     to in paragraph 1 and make a list of them publicly available.
   action: identify the paragraph 1 public authorities or bodies and make a list of them publicly available
     by 2 November 2024
-  subject_ref: member_state
-  subject_category: member_state
+  actors:
+  - actor_ref: member_state
+    category: member_state
+  targets: []
   mandatory_content:
   - identification of the public authorities or bodies referred to in paragraph 1
   - a publicly available list of them
@@ -72,8 +80,10 @@ records:
   quote: Member States shall notify the list to the Commission and to the other Member States, and shall
     keep the list up to date.
   action: notify the list to the Commission and other Member States and keep it up to date
-  subject_ref: member_state
-  subject_category: member_state
+  actors:
+  - actor_ref: member_state
+    category: member_state
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -90,8 +100,10 @@ records:
     to organise testing of the high-risk AI system through technical means.
   action: make a reasoned technical-testing request when documentation cannot establish a fundamental-rights
     infringement
-  subject_ref: fundamental_rights_authority
-  subject_category: public_authority
+  actors:
+  - actor_ref: fundamental_rights_authority
+    category: public_authority
+  targets: []
   kind: power
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -106,8 +118,10 @@ records:
   quote: The market surveillance authority shall organise the testing with the close involvement of the
     requesting public authority or body within a reasonable time following the request.
   action: organise requested technical testing within a reasonable time with close requesting-body involvement
-  subject_ref: market_surveillance_authority
-  subject_category: public_authority
+  actors:
+  - actor_ref: market_surveillance_authority
+    category: public_authority
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -119,8 +133,10 @@ records:
     to in paragraph 1 of this Article pursuant to this Article shall be treated in accordance with the
     confidentiality obligations set out in Article 78.
   action: treat information and documentation obtained under Article 77 according to Article 78 confidentiality
-  subject_ref: fundamental_rights_authority
-  subject_category: public_authority
+  actors:
+  - actor_ref: fundamental_rights_authority
+    category: public_authority
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required

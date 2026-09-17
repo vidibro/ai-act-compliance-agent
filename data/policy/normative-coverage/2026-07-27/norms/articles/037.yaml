@@ -3,9 +3,10 @@ norms:
 - norm_id: AIA-NORM-A037-P1-INVESTIGATE-COMPETENCE-DOUBTS
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: commission
+  actors:
+  - actor_ref: commission
     category: union_institution_or_body
+  targets: []
   action: investigate cases raising doubts about notified-body competence, Article 31 compliance, or continuing
     fulfilment of responsibilities
   norm_text: The Commission shall, where necessary, investigate all cases where there are reasons to doubt
@@ -39,9 +40,10 @@ norms:
 - norm_id: AIA-NORM-A037-P2-PROVIDE-NOTIFICATION-INFORMATION
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: notifying_authority
+  actors:
+  - actor_ref: notifying_authority
     category: public_authority
+  targets: []
   action: provide the Commission on request all relevant notification and notified-body competence information
   norm_text: The notifying authority shall provide the Commission, on request, with all relevant information
     relating to the notification or the maintenance of the competence of the notified body concerned.
@@ -75,9 +77,10 @@ norms:
 - norm_id: AIA-NORM-A037-P3-PROTECT-INVESTIGATION-INFORMATION
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: commission
+  actors:
+  - actor_ref: commission
     category: union_institution_or_body
+  targets: []
   action: ensure Article 37 investigation information is treated confidentially under Article 78
   norm_text: The Commission shall ensure that all sensitive information obtained in the course of its
     investigations pursuant to this Article is treated confidentially in accordance with Article 78.
@@ -109,9 +112,10 @@ norms:
 - norm_id: AIA-NORM-A037-P4-INFORM-NOTIFYING-STATE
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: commission
+  actors:
+  - actor_ref: commission
     category: union_institution_or_body
+  targets: []
   action: inform the notifying Member State that a notified body fails notification requirements and request
     necessary corrective measures, including suspension or withdrawal where necessary
   norm_text: Where the Commission ascertains that a notified body does not meet or no longer meets the
@@ -150,9 +154,10 @@ norms:
 - norm_id: AIA-NORM-A037-P4-COMMISSION-DESIGNATION-POWER
   act_version_date: '2026-07-27'
   kind: power
-  subjects:
-  - subject_ref: commission
+  actors:
+  - actor_ref: commission
     category: union_institution_or_body
+  targets: []
   action: suspend, restrict, or withdraw a designation by implementing act when the Member State fails
     to correct it
   norm_text: Where the Member State fails to take the necessary corrective measures, the Commission may,
@@ -184,9 +189,10 @@ norms:
 - norm_id: AIA-NORM-A037-P4-EXAMINATION-PROCEDURE
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: commission
+  actors:
+  - actor_ref: commission
     category: union_institution_or_body
+  targets: []
   action: adopt the designation implementing act under the Article 98(2) examination procedure
   norm_text: That implementing act shall be adopted in accordance with the examination procedure referred
     to in Article 98(2).

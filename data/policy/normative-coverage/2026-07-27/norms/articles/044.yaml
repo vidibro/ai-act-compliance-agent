@@ -3,9 +3,10 @@ norms:
 - norm_id: AIA-NORM-A044-P1-CERTIFICATE-LANGUAGE
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: notified_body
+  actors:
+  - actor_ref: notified_body
     category: notified_or_conformity_body
+  targets: []
   action: issue Annex VII certificates in a language easily understood by the relevant establishment-state
     authorities
   norm_text: Certificates issued by notified bodies in accordance with Annex VII shall be drawn-up in
@@ -39,9 +40,10 @@ norms:
 - norm_id: AIA-NORM-A044-P2-CERTIFICATE-VALIDITY-PERIOD
   act_version_date: '2026-07-27'
   kind: legal_consequence
-  subjects:
-  - subject_ref: certificate_holder
+  actors:
+  - actor_ref: certificate_holder
     category: supported_operator
+  targets: []
   action: limit indicated certificate validity to five years for Annex I systems and four years for Annex
     III systems
   norm_text: Certificates shall be valid for the period they indicate, which shall not exceed five years
@@ -75,9 +77,10 @@ norms:
 - norm_id: AIA-NORM-A044-P2-EXTEND-CERTIFICATE
   act_version_date: '2026-07-27'
   kind: entitlement
-  subjects:
-  - subject_ref: provider
+  actors:
+  - actor_ref: provider
     category: supported_operator
+  targets: []
   action: extend certificate validity after provider request and applicable reassessment within the enacted
     duration caps
   norm_text: At the request of the provider, the validity of a certificate may be extended for further
@@ -114,9 +117,10 @@ norms:
 - norm_id: AIA-NORM-A044-P2-SUPPLEMENT-VALIDITY
   act_version_date: '2026-07-27'
   kind: legal_consequence
-  subjects:
-  - subject_ref: certificate_holder
+  actors:
+  - actor_ref: certificate_holder
     category: supported_operator
+  targets: []
   action: preserve a certificate supplement's validity while its underlying certificate remains valid
   norm_text: Any supplement to a certificate shall remain valid, provided that the certificate which it
     supplements is valid.
@@ -150,9 +154,10 @@ norms:
 - norm_id: AIA-NORM-A044-P3-CERTIFICATE-MEASURE
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: notified_body
+  actors:
+  - actor_ref: notified_body
     category: notified_or_conformity_body
+  targets: []
   action: proportionately suspend, withdraw, or restrict a certificate after Section 2 noncompliance unless
     timely corrective action restores compliance
   norm_text: Where a notified body finds that an AI system no longer meets the requirements set out in
@@ -191,9 +196,10 @@ norms:
 - norm_id: AIA-NORM-A044-P3-GIVE-REASONS
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: notified_body
+  actors:
+  - actor_ref: notified_body
     category: notified_or_conformity_body
+  targets: []
   action: give reasons for the certificate decision
   norm_text: The notified body shall give reasons for its decision.
   detection_channels:
@@ -224,9 +230,10 @@ norms:
 - norm_id: AIA-NORM-A044-P3-APPEAL-PROCEDURE
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: notified_body
+  actors:
+  - actor_ref: notified_body
     category: notified_or_conformity_body
+  targets: []
   action: make an appeal procedure available against notified-body decisions, including certificate decisions
   norm_text: An appeal procedure against decisions of the notified bodies, including on conformity certificates
     issued, shall be available.

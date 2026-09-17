@@ -3,9 +3,10 @@ norms:
 - norm_id: AIA-NORM-A043-P1-CHOOSE-CONFORMITY-ROUTE
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: provider
+  actors:
+  - actor_ref: provider
     category: supported_operator
+  targets: []
   action: choose either Annex VI internal control or Annex VII notified-body assessment for a high-risk
     Annex III point 1 system when the applicable standards or common specifications were applied
   norm_text: the provider shall opt for one of the following conformity assessment procedures based on
@@ -42,9 +43,10 @@ norms:
 - norm_id: AIA-NORM-A043-P1-REQUIRED-ANNEX-VII-ROUTE
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: provider
+  actors:
+  - actor_ref: provider
     category: supported_operator
+  targets: []
   action: use Annex VII where standards or common specifications are unavailable, unapplied, partly applied,
     or restricted
   norm_text: the provider shall follow the conformity assessment procedure set out in Annex VII where
@@ -87,9 +89,10 @@ norms:
 - norm_id: AIA-NORM-A043-P1-CHOOSE-NOTIFIED-BODY
   act_version_date: '2026-07-27'
   kind: permission
-  subjects:
-  - subject_ref: provider
+  actors:
+  - actor_ref: provider
     category: supported_operator
+  targets: []
   action: choose any notified body for the Annex VII conformity-assessment procedure
   norm_text: For the purposes of the conformity assessment procedure referred to in Annex VII, the provider
     may choose any of the notified bodies.
@@ -127,9 +130,10 @@ norms:
 - norm_id: AIA-NORM-A043-P1-AUTHORITY-AS-NOTIFIED-BODY
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: market_surveillance_authority
+  actors:
+  - actor_ref: market_surveillance_authority
     category: public_authority
+  targets: []
   action: act as the notified body for systems intended for the specified public-authority or Union-body
     use
   norm_text: where the high-risk AI system is intended to be put into service by law enforcement, immigration
@@ -166,9 +170,10 @@ norms:
 - norm_id: AIA-NORM-A043-P2-INTERNAL-CONTROL
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: provider
+  actors:
+  - actor_ref: provider
     category: supported_operator
+  targets: []
   action: use the Annex VI internal-control procedure without notified-body involvement for Annex III
     points 2 to 8
   norm_text: For high-risk AI systems referred to in points 2 to 8 of Annex III, providers shall follow
@@ -204,9 +209,10 @@ norms:
 - norm_id: AIA-NORM-A043-P3-PROCEDURE
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: provider
+  actors:
+  - actor_ref: provider
     category: supported_operator
+  targets: []
   action: follow the applicable Section A Annex I conformity-assessment procedure
   norm_text: shall follow the relevant conformity assessment procedure
   detection_channels:
@@ -241,9 +247,10 @@ norms:
 - norm_id: AIA-NORM-A043-P3-SECTION2
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: provider
+  actors:
+  - actor_ref: provider
     category: supported_operator
+  targets: []
   action: include Chapter III Section 2 requirements in that assessment
   norm_text: shall be part of that assessment
   detection_channels:
@@ -278,9 +285,10 @@ norms:
 - norm_id: AIA-NORM-A043-P3-QMS
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: provider
+  actors:
+  - actor_ref: provider
     category: supported_operator
+  targets: []
   action: undertake assessment of the Article 17 quality-management system and apply the specified Annex
     VII procedural requirements
   norm_text: Assessment of the quality management system set out in Article 17 shall also be undertaken,
@@ -319,9 +327,10 @@ norms:
 - norm_id: AIA-NORM-A043-P3-BODY-POWER
   act_version_date: '2026-07-27'
   kind: power
-  subjects:
-  - subject_ref: sectoral_notified_body
+  actors:
+  - actor_ref: sectoral_notified_body
     category: notified_or_conformity_body
+  targets: []
   action: assess conformity with Chapter III Section 2
   norm_text: shall have the power to assess the conformity of high-risk AI systems
   detection_channels:
@@ -355,9 +364,10 @@ norms:
 - norm_id: AIA-NORM-A043-P3-DESIGNATE
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: sectoral_notified_body
+  actors:
+  - actor_ref: sectoral_notified_body
     category: notified_or_conformity_body
+  targets: []
   action: apply for AI Act designation by 28 January 2028
   norm_text: shall apply for designation in accordance with Section 4 of this Chapter by 28 January 2028
   detection_channels:
@@ -389,9 +399,10 @@ norms:
 - norm_id: AIA-NORM-A043-P3-OPTION
   act_version_date: '2026-07-27'
   kind: permission
-  subjects:
-  - subject_ref: product_manufacturer
+  actors:
+  - actor_ref: product_manufacturer
     category: supported_operator
+  targets: []
   action: use a no-third-party sectoral route only after applying standards covering all Section 2 requirements
   norm_text: that manufacturer may use that option only if it has also applied harmonised standards
   detection_channels:
@@ -428,9 +439,10 @@ norms:
 - norm_id: AIA-NORM-A043-P3-NO-EFFECT
   act_version_date: '2026-07-27'
   kind: applicability
-  subjects:
-  - subject_ref: product_manufacturer
+  actors:
+  - actor_ref: product_manufacturer
     category: supported_operator
+  targets: []
   action: preserve the sectoral conformity-route choice despite AI high-risk classification
   norm_text: does not affect the choice of the conformity assessment procedure
   detection_channels:
@@ -463,9 +475,10 @@ norms:
 - norm_id: AIA-NORM-A043-P3-NO-THIRD-PARTY
   act_version_date: '2026-07-27'
   kind: applicability
-  subjects:
-  - subject_ref: product_manufacturer
+  actors:
+  - actor_ref: product_manufacturer
     category: supported_operator
+  targets: []
   action: avoid a third-party procedure where sectoral law does not otherwise require it
   norm_text: are not required to choose a conformity assessment procedure involving third-party conformity
     assessment only because the product includes a high-risk AI system
@@ -500,9 +513,10 @@ norms:
 - norm_id: AIA-NORM-A043-P4-NEW-ASSESSMENT
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: provider
+  actors:
+  - actor_ref: provider
     category: supported_operator
+  targets: []
   action: perform a new conformity assessment after a substantial modification regardless of subsequent
     distribution or continued use
   norm_text: High-risk AI systems that have already been subject to a conformity assessment procedure
@@ -541,9 +555,10 @@ norms:
 - norm_id: AIA-NORM-A043-P4-PREDETERMINED-CHANGE-EXCLUSION
   act_version_date: '2026-07-27'
   kind: applicability
-  subjects:
-  - subject_ref: provider
+  actors:
+  - actor_ref: provider
     category: supported_operator
+  targets: []
   action: exclude predetermined and initially documented learning changes from substantial modification
   norm_text: For high-risk AI systems that continue to learn after being placed on the market or put into
     service, changes to the high-risk AI system and its performance that have been pre-determined by the
@@ -581,9 +596,10 @@ norms:
 - norm_id: AIA-NORM-A043-P5-AMEND
   act_version_date: '2026-07-27'
   kind: power
-  subjects:
-  - subject_ref: commission
+  actors:
+  - actor_ref: commission
     category: union_institution_or_body
+  targets: []
   action: amend Annexes VI and VII for technical progress
   norm_text: The Commission is empowered to adopt delegated acts in accordance with Article 97 in order
     to amend Annexes VI and VII by updating them in light of technical progress.
@@ -615,9 +631,10 @@ norms:
 - norm_id: AIA-NORM-A043-P6-AMEND
   act_version_date: '2026-07-27'
   kind: power
-  subjects:
-  - subject_ref: commission
+  actors:
+  - actor_ref: commission
     category: union_institution_or_body
+  targets: []
   action: move Annex III points 2 to 8 to some or all of the Annex VII procedure
   norm_text: The Commission is empowered to adopt delegated acts in accordance with Article 97 in order
     to amend paragraphs 1 and 2 of this Article in order to subject high-risk AI systems referred to in
@@ -651,9 +668,10 @@ norms:
 - norm_id: AIA-NORM-A043-P6-DELEGATED-ACT-CRITERIA
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: commission
+  actors:
+  - actor_ref: commission
     category: union_institution_or_body
+  targets: []
   action: account for internal-control effectiveness and notified-body capacity when adopting the paragraph
     6 delegated acts
   norm_text: The Commission shall adopt such delegated acts taking into account the effectiveness of the

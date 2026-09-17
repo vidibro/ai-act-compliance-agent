@@ -3,8 +3,9 @@ records:
   source: ANNEX-VI-P001
   quote: The conformity assessment procedure based on internal control is the conformity assessment procedure based on points 2, 3 and 4.
   action: define the Annex VI internal-control conformity assessment as comprising the checks in points 2, 3, and 4
-  subject_ref: annex_vi_internal_control_procedure
-  subject_category: other
+  actors: []
+  targets:
+  - target_ref: annex_vi_internal_control_procedure
   kind: applicability
   qualifier_spans:
   - ANNEX-VI-P002
@@ -16,8 +17,10 @@ records:
   source: ANNEX-VI-P002
   quote: The provider verifies that the established quality management system is in compliance with the requirements of Article 17.
   action: verify that the established quality management system complies with Article 17
-  subject_ref: provider
-  subject_category: supported_operator
+  actors:
+  - actor_ref: provider
+    category: supported_operator
+  targets: []
   verification_mode: reported_not_judged
   implementation_refs:
   - AIA-PO-A17
@@ -26,8 +29,10 @@ records:
   source: ANNEX-VI-P003
   quote: The provider examines the information contained in the technical documentation in order to assess the compliance of the AI system with the relevant essential requirements set out in Chapter III, Section 2.
   action: examine the technical documentation to assess the AI system's compliance with the relevant Chapter III Section 2 requirements
-  subject_ref: provider
-  subject_category: supported_operator
+  actors:
+  - actor_ref: provider
+    category: supported_operator
+  targets: []
   verification_mode: judged_by_gap_analysis
   implementation_refs:
   - AIA-HR-A11
@@ -36,8 +41,10 @@ records:
   source: ANNEX-VI-P004
   quote: The provider also verifies that the design and development process of the AI system and its post-market monitoring as referred to in Article 72 is consistent with the technical documentation.
   action: verify that the AI system's design and development process and Article 72 post-market monitoring are consistent with its technical documentation
-  subject_ref: provider
-  subject_category: supported_operator
+  actors:
+  - actor_ref: provider
+    category: supported_operator
+  targets: []
   verification_mode: reported_not_judged
   implementation_refs:
   - AIA-PO-A72

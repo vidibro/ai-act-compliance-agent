@@ -6,8 +6,10 @@ records:
     throughout their lifecycle.
   action: design and develop the high-risk AI system to achieve appropriate accuracy, robustness, and
     cybersecurity and perform consistently in those respects throughout its lifecycle
-  subject_ref: provider
-  subject_category: supported_operator
+  actors:
+  - actor_ref: provider
+    category: supported_operator
+  targets: []
   mandatory_content:
   - appropriate accuracy
   - appropriate robustness
@@ -24,8 +26,10 @@ records:
     methodologies.
   action: encourage appropriate accuracy, robustness, and performance benchmarks and measurement methodologies
     in cooperation with relevant stakeholders and organisations
-  subject_ref: commission
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: commission
+    category: union_institution_or_body
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -37,8 +41,10 @@ records:
     in the accompanying instructions of use.
   action: declare the high-risk AI system's accuracy levels and relevant accuracy metrics in the accompanying
     instructions for use
-  subject_ref: provider
-  subject_category: supported_operator
+  actors:
+  - actor_ref: provider
+    category: supported_operator
+  targets: []
   implementation_refs: *id001
   verification_mode: judged_by_gap_analysis
   verified_by: vidibro
@@ -49,8 +55,10 @@ records:
     to their interaction with natural persons or other systems.
   action: make the high-risk AI system as resilient as possible to errors, faults, and inconsistencies
     within the system or its operating environment
-  subject_ref: provider
-  subject_category: supported_operator
+  actors:
+  - actor_ref: provider
+    category: supported_operator
+  targets: []
   implementation_refs: *id001
   verification_mode: judged_by_gap_analysis
   verified_by: vidibro
@@ -58,8 +66,10 @@ records:
   source: A015-P004
   quote: Technical and organisational measures shall be taken in this regard.
   action: apply technical and organisational measures supporting resilience to errors, faults, and inconsistencies
-  subject_ref: provider
-  subject_category: supported_operator
+  actors:
+  - actor_ref: provider
+    category: supported_operator
+  targets: []
   implementation_refs: *id001
   verification_mode: judged_by_gap_analysis
   verified_by: vidibro
@@ -68,8 +78,10 @@ records:
   quote: The robustness of high-risk AI systems may be achieved through technical redundancy solutions,
     which may include backup or fail-safe plans.
   action: use technical redundancy solutions, including backup or fail-safe plans, to achieve system robustness
-  subject_ref: provider
-  subject_category: supported_operator
+  actors:
+  - actor_ref: provider
+    category: supported_operator
+  targets: []
   kind: permission
   implementation_mode: report_only
   implementation_refs:
@@ -84,8 +96,10 @@ records:
     such feedback loops are duly addressed with appropriate mitigation measures.
   action: eliminate or minimise the risk of biased-output feedback loops and address any such loops with
     appropriate mitigation measures
-  subject_ref: provider
-  subject_category: supported_operator
+  actors:
+  - actor_ref: provider
+    category: supported_operator
+  targets: []
   conditions:
   - the high-risk AI system continues to learn after market placement or being put into service
   implementation_refs: *id001
@@ -97,8 +111,10 @@ records:
     their use, outputs or performance by exploiting system vulnerabilities.
   action: make the system resilient against unauthorised attempts to alter its use, outputs, or performance
     through vulnerabilities
-  subject_ref: provider
-  subject_category: supported_operator
+  actors:
+  - actor_ref: provider
+    category: supported_operator
+  targets: []
   implementation_refs: *id001
   verification_mode: judged_by_gap_analysis
   verified_by: vidibro
@@ -107,8 +123,10 @@ records:
   quote: The technical solutions aiming to ensure the cybersecurity of high-risk AI systems shall be appropriate
     to the relevant circumstances and the risks.
   action: make cybersecurity technical solutions appropriate to the relevant circumstances and risks
-  subject_ref: provider
-  subject_category: supported_operator
+  actors:
+  - actor_ref: provider
+    category: supported_operator
+  targets: []
   implementation_refs: *id001
   verification_mode: judged_by_gap_analysis
   verified_by: vidibro
@@ -117,8 +135,10 @@ records:
   quote: attacks trying to manipulate the training data set (data poisoning)
   action: implement measures to prevent, detect, respond to, resolve, and control training-data-poisoning
     attacks
-  subject_ref: provider
-  subject_category: supported_operator
+  actors:
+  - actor_ref: provider
+    category: supported_operator
+  targets: []
   conditions: &id003
   - measures addressing the AI-specific vulnerability are appropriate
   implementation_refs: *id001
@@ -129,8 +149,10 @@ records:
   quote: pre-trained components used in training (model poisoning)
   action: implement measures to prevent, detect, respond to, resolve, and control attacks manipulating
     pre-trained training components
-  subject_ref: provider
-  subject_category: supported_operator
+  actors:
+  - actor_ref: provider
+    category: supported_operator
+  targets: []
   conditions: *id003
   implementation_refs: *id001
   verification_mode: judged_by_gap_analysis
@@ -140,8 +162,10 @@ records:
   quote: inputs designed to cause the AI model to make a mistake (adversarial examples or model evasion)
   action: implement measures to prevent, detect, respond to, resolve, and control adversarial-example
     and model-evasion attacks
-  subject_ref: provider
-  subject_category: supported_operator
+  actors:
+  - actor_ref: provider
+    category: supported_operator
+  targets: []
   conditions: *id003
   implementation_refs: *id001
   verification_mode: judged_by_gap_analysis
@@ -150,8 +174,10 @@ records:
   source: A015-P009
   quote: confidentiality attacks
   action: implement measures to prevent, detect, respond to, resolve, and control confidentiality attacks
-  subject_ref: provider
-  subject_category: supported_operator
+  actors:
+  - actor_ref: provider
+    category: supported_operator
+  targets: []
   conditions: *id003
   implementation_refs: *id001
   verification_mode: judged_by_gap_analysis
@@ -160,8 +186,10 @@ records:
   source: A015-P009
   quote: model flaws
   action: implement measures to prevent, detect, respond to, resolve, and control model flaws
-  subject_ref: provider
-  subject_category: supported_operator
+  actors:
+  - actor_ref: provider
+    category: supported_operator
+  targets: []
   conditions: *id003
   implementation_refs: *id001
   verification_mode: judged_by_gap_analysis

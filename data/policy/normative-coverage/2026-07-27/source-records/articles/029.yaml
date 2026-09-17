@@ -4,8 +4,10 @@ records:
   quote: Conformity assessment bodies shall submit an application for notification to the notifying authority
     of the Member State in which they are established.
   action: submit a notification application to the notifying authority of the establishment Member State
-  subject_ref: conformity_assessment_body
-  subject_category: notified_or_conformity_body
+  actors:
+  - actor_ref: conformity_assessment_body
+    category: notified_or_conformity_body
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -20,8 +22,10 @@ records:
     fulfils the requirements laid down in Article 31.
   action: accompany the notification application with the required scope description and available qualifying
     accreditation certificate
-  subject_ref: conformity_assessment_body
-  subject_category: notified_or_conformity_body
+  actors:
+  - actor_ref: conformity_assessment_body
+    category: notified_or_conformity_body
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -38,8 +42,10 @@ records:
     other Union harmonisation legislation shall be added.
   action: add valid documents relating to the applicant's existing designations under other Union harmonisation
     legislation
-  subject_ref: conformity_assessment_body
-  subject_category: notified_or_conformity_body
+  actors:
+  - actor_ref: conformity_assessment_body
+    category: notified_or_conformity_body
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -52,8 +58,10 @@ records:
     recognition and regular monitoring of its compliance with the requirements laid down in Article 31.
   action: provide all evidence necessary to verify, recognise, and monitor Article 31 compliance when
     no accreditation certificate is available
-  subject_ref: conformity_assessment_body
-  subject_category: notified_or_conformity_body
+  actors:
+  - actor_ref: conformity_assessment_body
+    category: notified_or_conformity_body
+  targets: []
   conditions:
   - the body cannot provide an accreditation certificate
   product_scope: outside_supported_actor
@@ -68,8 +76,10 @@ records:
     designation procedure under this Regulation, as appropriate.
   action: reuse existing harmonisation-law designation documents and certificates to support and expedite
     AI Act designation
-  subject_ref: notified_body
-  subject_category: notified_or_conformity_body
+  actors:
+  - actor_ref: notified_body
+    category: notified_or_conformity_body
+  targets: []
   kind: permission
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -84,8 +94,10 @@ records:
     to that Union harmonisation legislation.
   action: submit the unified-assessment single application to the notifying authority designated under
     the relevant harmonisation legislation
-  subject_ref: notified_body
-  subject_category: notified_or_conformity_body
+  actors:
+  - actor_ref: notified_body
+    category: notified_or_conformity_body
+  targets: []
   conditions:
   - the body has a Section A Annex I designation and undergoes the Article 28(8) unified assessment
   product_scope: outside_supported_actor
@@ -99,8 +111,10 @@ records:
     whenever relevant changes occur, in order to enable the authority responsible for notified bodies
     to monitor and verify continuous compliance with all the requirements laid down in Article 31.
   action: update application and compliance evidence whenever relevant changes occur
-  subject_ref: notified_body
-  subject_category: notified_or_conformity_body
+  actors:
+  - actor_ref: notified_body
+    category: notified_or_conformity_body
+  targets: []
   conditions:
   - relevant changes occur
   product_scope: outside_supported_actor

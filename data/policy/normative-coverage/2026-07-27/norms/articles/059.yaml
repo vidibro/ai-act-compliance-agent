@@ -3,9 +3,10 @@ norms:
 - norm_id: AIA-NORM-A059-P1-CONDITIONAL-FURTHER-PROCESSING
   act_version_date: '2026-07-27'
   kind: permission
-  subjects:
-  - subject_ref: prospective_provider
+  actors:
+  - actor_ref: prospective_provider
     category: supported_operator
+  targets: []
   action: process lawfully collected personal data for sandbox development, training, and testing only
     for that purpose and only when every enacted condition is met
   norm_text: 'In the AI regulatory sandbox, personal data lawfully collected for other purposes may be
@@ -57,9 +58,10 @@ norms:
 - norm_id: AIA-NORM-A059-P1-A-SUBSTANTIAL-PUBLIC-INTEREST
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: prospective_provider
+  actors:
+  - actor_ref: prospective_provider
     category: supported_operator
+  targets: []
   action: develop the sandbox AI system to safeguard substantial public interest in at least one enacted
     field
   norm_text: 'AI systems shall be developed for safeguarding substantial public interest by a public authority
@@ -114,9 +116,10 @@ norms:
 - norm_id: AIA-NORM-A059-P1-B-DATA-NECESSITY
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: prospective_provider
+  actors:
+  - actor_ref: prospective_provider
     category: supported_operator
+  targets: []
   action: process personal data only where necessary for a Chapter III Section 2 requirement that non-personal
     alternatives cannot effectively fulfil
   norm_text: the data processed are necessary for complying with one or more of the requirements referred
@@ -152,9 +155,10 @@ norms:
 - norm_id: AIA-NORM-A059-P1-C-MONITOR-AND-MITIGATE-RISKS
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: prospective_provider
+  actors:
+  - actor_ref: prospective_provider
     category: supported_operator
+  targets: []
   action: maintain effective mechanisms to identify high data-subject risks, promptly mitigate them, and
     stop processing where necessary
   norm_text: there are effective monitoring mechanisms to identify if any high risks to the rights and
@@ -194,9 +198,10 @@ norms:
 - norm_id: AIA-NORM-A059-P1-D-ISOLATED-PROTECTED-ENVIRONMENT
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: prospective_provider
+  actors:
+  - actor_ref: prospective_provider
     category: supported_operator
+  targets: []
   action: keep sandbox personal data in a functionally separate isolated protected environment under provider
     control with access limited to authorised persons
   norm_text: any personal data to be processed in the context of the sandbox are in a functionally separate,
@@ -231,9 +236,10 @@ norms:
 - norm_id: AIA-NORM-A059-P1-E-SHARING-RESTRICTIONS
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: provider
+  actors:
+  - actor_ref: provider
     category: supported_operator
+  targets: []
   action: share originally collected data only under Union data-protection law and never share sandbox-created
     personal data outside the sandbox
   norm_text: providers can further share the originally collected data only in accordance with Union data
@@ -267,9 +273,10 @@ norms:
 - norm_id: AIA-NORM-A059-P1-F-NO-DATA-SUBJECT-EFFECT
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: prospective_provider
+  actors:
+  - actor_ref: prospective_provider
     category: supported_operator
+  targets: []
   action: prevent sandbox personal-data processing from producing measures or decisions affecting data
     subjects or impairing their Union-law rights
   norm_text: any processing of personal data in the context of the sandbox neither leads to measures or
@@ -304,9 +311,10 @@ norms:
 - norm_id: AIA-NORM-A059-P1-G-PROTECT-AND-DELETE-DATA
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: prospective_provider
+  actors:
+  - actor_ref: prospective_provider
     category: supported_operator
+  targets: []
   action: protect sandbox personal data with appropriate technical and organisational measures and delete
     it at sandbox exit or retention-period expiry
   norm_text: any personal data processed in the context of the sandbox are protected by means of appropriate
@@ -341,9 +349,10 @@ norms:
 - norm_id: AIA-NORM-A059-P1-H-KEEP-PROCESSING-LOGS
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: prospective_provider
+  actors:
+  - actor_ref: prospective_provider
     category: supported_operator
+  targets: []
   action: keep sandbox personal-data processing logs throughout participation unless Union or national
     law provides otherwise
   norm_text: the logs of the processing of personal data in the context of the sandbox are kept for the
@@ -377,9 +386,10 @@ norms:
 - norm_id: AIA-NORM-A059-P1-I-DOCUMENT-TRAINING-TESTING-VALIDATION
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: prospective_provider
+  actors:
+  - actor_ref: prospective_provider
     category: supported_operator
+  targets: []
   action: include a complete detailed description and rationale for training testing and validation together
     with testing results in the Annex IV technical documentation
   norm_text: a complete and detailed description of the process and rationale behind the training, testing
@@ -416,9 +426,10 @@ norms:
 - norm_id: AIA-NORM-A059-P1-J-PUBLISH-PROJECT-SUMMARY
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: sandbox_participant
+  actors:
+  - actor_ref: sandbox_participant
     category: supported_operator
+  targets: []
   action: publish a short project summary with objectives and expected results on the competent-authority
     website while excluding protected sensitive operational data
   norm_text: a short summary of the AI project developed in the sandbox, its objectives and expected results
@@ -459,9 +470,10 @@ norms:
 - norm_id: AIA-NORM-A059-P2-LAW-ENFORCEMENT-LEGAL-BASIS
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: law_enforcement_authority
+  actors:
+  - actor_ref: law_enforcement_authority
     category: public_authority
+  targets: []
   action: base law-enforcement sandbox personal-data processing on specific Union or national law and
     satisfy every Article 59(1) condition
   norm_text: For the purposes of the prevention, investigation, detection or prosecution of criminal offences
@@ -499,9 +511,10 @@ norms:
 - norm_id: AIA-NORM-A059-P3-PRESERVE-OTHER-DATA-LAW
   act_version_date: '2026-07-27'
   kind: legal_consequence
-  subjects:
-  - subject_ref: sandbox_personal_data_processor
+  actors:
+  - actor_ref: sandbox_personal_data_processor
     category: supported_operator
+  targets: []
   action: preserve applicable Union and national restrictions and alternative lawful bases for innovative-AI
     personal-data processing
   norm_text: Paragraph 1 is without prejudice to Union or national law which excludes processing of personal

@@ -3,9 +3,10 @@ norms:
 - norm_id: AIA-NORM-A009-P1-ESTABLISH-IMPLEMENT-DOCUMENT-AND-MAINTAIN
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: provider
+  actors:
+  - actor_ref: provider
     category: supported_operator
+  targets: []
   action: establish, implement, document, and maintain a risk-management system for each high-risk AI
     system
   norm_text: A risk management system shall be established, implemented, documented and maintained in
@@ -44,9 +45,10 @@ norms:
 - norm_id: AIA-NORM-A009-P2-LIFECYCLE-PROCESS
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: provider
+  actors:
+  - actor_ref: provider
     category: supported_operator
+  targets: []
   action: plan and operate risk management as a continuous iterative process throughout the entire high-risk
     AI-system lifecycle, with regular systematic review and updating
   norm_text: The risk management system shall be understood as a continuous iterative process planned
@@ -84,9 +86,10 @@ norms:
 - norm_id: AIA-NORM-A009-P2-A-IDENTIFY-ANALYSE
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: provider
+  actors:
+  - actor_ref: provider
     category: supported_operator
+  targets: []
   action: identify and analyse known and reasonably foreseeable intended-use risks to health, safety,
     and fundamental rights
   norm_text: the identification and analysis of the known and the reasonably foreseeable risks that the
@@ -123,9 +126,10 @@ norms:
 - norm_id: AIA-NORM-A009-P2-B-ESTIMATE-EVALUATE
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: provider
+  actors:
+  - actor_ref: provider
     category: supported_operator
+  targets: []
   action: estimate and evaluate risks emerging from intended use and reasonably foreseeable misuse
   norm_text: the estimation and evaluation of the risks that may emerge when the high-risk AI system is
     used in accordance with its intended purpose, and under conditions of reasonably foreseeable misuse
@@ -161,9 +165,10 @@ norms:
 - norm_id: AIA-NORM-A009-P2-C-POST-MARKET-RISKS
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: provider
+  actors:
+  - actor_ref: provider
     category: supported_operator
+  targets: []
   action: evaluate other risks using data from the Article 72 post-market monitoring system
   norm_text: the evaluation of other risks possibly arising, based on the analysis of data gathered from
     the post-market monitoring system referred to in Article 72
@@ -198,9 +203,10 @@ norms:
 - norm_id: AIA-NORM-A009-P2-D-ADOPT-MEASURES
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: provider
+  actors:
+  - actor_ref: provider
     category: supported_operator
+  targets: []
   action: adopt appropriate and targeted measures addressing the risks identified under Article 9(2)(a)
   norm_text: the adoption of appropriate and targeted risk management measures designed to address the
     risks identified pursuant to point (a).
@@ -235,9 +241,9 @@ norms:
 - norm_id: AIA-NORM-A009-P3-MITIGABLE-RISK-SCOPE
   act_version_date: '2026-07-27'
   kind: applicability
-  subjects:
-  - subject_ref: article_9_risk
-    category: other
+  actors: []
+  targets:
+  - target_ref: article_9_risk
   action: limit Article 9 risk treatment to risks reasonably mitigable or eliminable through development,
     design, or adequate technical information
   norm_text: The risks referred to in this Article shall concern only those which may be reasonably mitigated
@@ -275,9 +281,10 @@ norms:
 - norm_id: AIA-NORM-A009-P4-CONSIDER-INTERACTIONS
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: provider
+  actors:
+  - actor_ref: provider
     category: supported_operator
+  targets: []
   action: consider the effects and possible interactions of the combined Section 2 requirements when selecting
     risk-management measures
   norm_text: The risk management measures referred to in paragraph 2, point (d), shall give due consideration
@@ -315,9 +322,10 @@ norms:
 - norm_id: AIA-NORM-A009-P5-ACCEPTABLE-RESIDUAL-RISK
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: provider
+  actors:
+  - actor_ref: provider
     category: supported_operator
+  targets: []
   action: judge both each hazard's relevant residual risk and the high-risk AI system's overall residual
     risk to be acceptable
   norm_text: the relevant residual risk associated with each hazard, as well as the overall residual risk
@@ -353,9 +361,10 @@ norms:
 - norm_id: AIA-NORM-A009-P5-A-DESIGN-RISK-REDUCTION
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: provider
+  actors:
+  - actor_ref: provider
     category: supported_operator
+  targets: []
   action: eliminate or reduce identified and evaluated risks through design and development as far as
     technically feasible
   norm_text: elimination or reduction of risks identified and evaluated pursuant to paragraph 2 in as
@@ -391,9 +400,10 @@ norms:
 - norm_id: AIA-NORM-A009-P5-B-MITIGATION-CONTROLS
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: provider
+  actors:
+  - actor_ref: provider
     category: supported_operator
+  targets: []
   action: implement adequate mitigation and control measures for risks that cannot be eliminated where
     appropriate
   norm_text: where appropriate, implementation of adequate mitigation and control measures addressing
@@ -429,9 +439,10 @@ norms:
 - norm_id: AIA-NORM-A009-P5-C-PROVIDE-INFORMATION
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: provider
+  actors:
+  - actor_ref: provider
     category: supported_operator
+  targets: []
   action: provide the information required by Article 13 as part of risk management
   norm_text: provision of information required pursuant to Article 13
   detection_channels:
@@ -465,9 +476,10 @@ norms:
 - norm_id: AIA-NORM-A009-P5-C-TRAIN-DEPLOYERS
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: provider
+  actors:
+  - actor_ref: provider
     category: supported_operator
+  targets: []
   action: provide deployer training where appropriate as part of risk management
   norm_text: where appropriate, training to deployers.
   detection_channels:
@@ -502,9 +514,10 @@ norms:
 - norm_id: AIA-NORM-A009-P5-CONSIDER-DEPLOYER-CONTEXT
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: provider
+  actors:
+  - actor_ref: provider
     category: supported_operator
+  targets: []
   action: consider expected deployer knowledge, experience, education, training, and the presumable use
     context when reducing use-related risks
   norm_text: due consideration shall be given to the technical knowledge, experience, education, the training
@@ -539,9 +552,10 @@ norms:
 - norm_id: AIA-NORM-A009-P6-TEST-FOR-MEASURES
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: provider
+  actors:
+  - actor_ref: provider
     category: supported_operator
+  targets: []
   action: test high-risk AI systems to identify the most appropriate targeted risk-management measures
   norm_text: High-risk AI systems shall be tested for the purpose of identifying the most appropriate
     and targeted risk management measures.
@@ -575,9 +589,10 @@ norms:
 - norm_id: AIA-NORM-A009-P6-TEST-PERFORMANCE-AND-COMPLIANCE
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: provider
+  actors:
+  - actor_ref: provider
     category: supported_operator
+  targets: []
   action: use testing to ensure both consistent performance for the intended purpose and compliance with
     the Section 2 requirements
   norm_text: Testing shall ensure that high-risk AI systems perform consistently for their intended purpose
@@ -614,9 +629,10 @@ norms:
 - norm_id: AIA-NORM-A009-P7-REAL-WORLD-TESTING
   act_version_date: '2026-07-27'
   kind: permission
-  subjects:
-  - subject_ref: provider
+  actors:
+  - actor_ref: provider
     category: supported_operator
+  targets: []
   action: include testing in real-world conditions in the testing procedures
   norm_text: Testing procedures may include testing in real-world conditions in accordance with Article
     60.
@@ -651,9 +667,10 @@ norms:
 - norm_id: AIA-NORM-A009-P8-DEVELOPMENT-AND-PRE-MARKET-TESTING
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: provider
+  actors:
+  - actor_ref: provider
     category: supported_operator
+  targets: []
   action: test high-risk AI systems throughout development where appropriate and, in every case, before
     market placement or putting into service
   norm_text: The testing of high-risk AI systems shall be performed, as appropriate, at any time throughout
@@ -689,9 +706,10 @@ norms:
 - norm_id: AIA-NORM-A009-P8-METRICS-THRESHOLDS
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: provider
+  actors:
+  - actor_ref: provider
     category: supported_operator
+  targets: []
   action: test against predefined metrics and probabilistic thresholds appropriate to the intended purpose
   norm_text: Testing shall be carried out against prior defined metrics and probabilistic thresholds that
     are appropriate to the intended purpose of the high-risk AI system.
@@ -725,9 +743,10 @@ norms:
 - norm_id: AIA-NORM-A009-P9-VULNERABLE-PERSON-IMPACTS
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: provider
+  actors:
+  - actor_ref: provider
     category: supported_operator
+  targets: []
   action: consider, in view of the intended purpose, likely adverse impacts on persons under 18 and, where
     appropriate, other vulnerable groups
   norm_text: providers shall give consideration to whether in view of its intended purpose the high-risk
@@ -763,9 +782,10 @@ norms:
 - norm_id: AIA-NORM-A009-P10-INTEGRATE-RISK-PROCESSES
   act_version_date: '2026-07-27'
   kind: permission
-  subjects:
-  - subject_ref: provider
+  actors:
+  - actor_ref: provider
     category: supported_operator
+  targets: []
   action: incorporate or combine Article 9 aspects with internal risk-management procedures required by
     other Union law
   norm_text: For providers of high-risk AI systems that are subject to requirements regarding internal

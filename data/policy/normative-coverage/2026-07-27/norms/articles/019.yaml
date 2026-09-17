@@ -3,9 +3,10 @@ norms:
 - norm_id: AIA-NORM-A019-P1-KEEP-CONTROLLED-LOGS
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: provider
+  actors:
+  - actor_ref: provider
     category: supported_operator
+  targets: []
   action: "keep automatically generated Article 12(1) logs to the extent they are under the provider\u2019\
     s control"
   norm_text: Providers of high-risk AI systems shall keep the logs referred to in Article 12(1), automatically
@@ -41,9 +42,10 @@ norms:
 - norm_id: AIA-NORM-A019-P1-RETENTION-PERIOD
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: provider
+  actors:
+  - actor_ref: provider
     category: supported_operator
+  targets: []
   action: "retain controlled logs for a period appropriate to the system\u2019s intended purpose and for\
     \ at least six months"
   norm_text: the logs shall be kept for a period appropriate to the intended purpose of the high-risk
@@ -81,9 +83,10 @@ norms:
 - norm_id: AIA-NORM-A019-P2-FINANCIAL-DOCUMENTATION
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: financial_institution_provider
+  actors:
+  - actor_ref: financial_institution_provider
     category: supported_operator
+  targets: []
   action: maintain automatically generated high-risk-system logs within documentation kept under applicable
     Union financial-services law
   norm_text: Providers that are financial institutions subject to requirements regarding their internal

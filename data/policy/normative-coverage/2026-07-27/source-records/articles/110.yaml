@@ -3,8 +3,9 @@ records:
   source: A110-P002
   quote: Regulation (EU) 2024/1689 of the European Parliament and of the Council
   action: add the AI Act to Directive 2020/1828 Annex I so its representative-action framework applies
-  subject_ref: representative_action_framework
-  subject_category: other
+  actors: []
+  targets:
+  - target_ref: representative_action_framework
   kind: applicability
   qualifier_spans: [A110-P001]
   product_scope: no_product_action

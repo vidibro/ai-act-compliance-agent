@@ -3,9 +3,10 @@ norms:
 - norm_id: AIA-NORM-A052-P1-NOTIFY-COMMISSION
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: provider
+  actors:
+  - actor_ref: provider
     category: supported_operator
+  targets: []
   action: notify the Commission without delay and within two weeks of meeting or anticipating the Article
     51(1)(a) condition
   norm_text: Where a general-purpose AI model meets the condition referred to in Article 51(1), point
@@ -42,9 +43,10 @@ norms:
 - norm_id: AIA-NORM-A052-P1-NOTIFICATION-CONTENT
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: provider
+  actors:
+  - actor_ref: provider
     category: supported_operator
+  targets: []
   action: include information demonstrating that the Article 51(1)(a) requirement is met in the notification
   norm_text: That notification shall include the information necessary to demonstrate that the relevant
     requirement has been met.
@@ -80,9 +82,10 @@ norms:
 - norm_id: AIA-NORM-A052-P1-DESIGNATE-UNNOTIFIED-MODEL
   act_version_date: '2026-07-27'
   kind: power
-  subjects:
-  - subject_ref: commission
+  actors:
+  - actor_ref: commission
     category: union_institution_or_body
+  targets: []
   action: designate an unnotified general-purpose AI model presenting systemic risks as a model with systemic
     risk
   norm_text: If the Commission becomes aware of a general-purpose AI model presenting systemic risks of
@@ -116,9 +119,10 @@ norms:
 - norm_id: AIA-NORM-A052-P2-PRESENT-REBUTTAL
   act_version_date: '2026-07-27'
   kind: permission
-  subjects:
-  - subject_ref: provider
+  actors:
+  - actor_ref: provider
     category: supported_operator
+  targets: []
   action: present substantiated model-specific arguments with the notification against systemic-risk classification
   norm_text: The provider of a general-purpose AI model that meets the condition referred to in Article
     51(1), point (a), may present, with its notification, sufficiently substantiated arguments to demonstrate
@@ -155,9 +159,10 @@ norms:
 - norm_id: AIA-NORM-A052-P3-REJECT-UNSUBSTANTIATED-ARGUMENTS
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: commission
+  actors:
+  - actor_ref: commission
     category: union_institution_or_body
+  targets: []
   action: reject insufficiently substantiated rebuttal arguments that fail to demonstrate absence of systemic
     risk
   norm_text: Where the Commission concludes that the arguments submitted pursuant to paragraph 2 are not
@@ -194,9 +199,9 @@ norms:
 - norm_id: AIA-NORM-A052-P3-SYSTEMIC-RISK-CONSEQUENCE
   act_version_date: '2026-07-27'
   kind: legal_consequence
-  subjects:
-  - subject_ref: general_purpose_ai_model
-    category: other
+  actors: []
+  targets:
+  - target_ref: general_purpose_ai_model
   action: classify the model as a general-purpose AI model with systemic risk after unsuccessful rebuttal
   norm_text: the general-purpose AI model shall be considered to be a general-purpose AI model with systemic
     risk.
@@ -230,9 +235,10 @@ norms:
 - norm_id: AIA-NORM-A052-P4-DESIGNATE-SYSTEMIC-RISK
   act_version_date: '2026-07-27'
   kind: power
-  subjects:
-  - subject_ref: commission
+  actors:
+  - actor_ref: commission
     category: union_institution_or_body
+  targets: []
   action: designate a general-purpose AI model as presenting systemic risks using Annex XIII criteria
   norm_text: The Commission may designate a general-purpose AI model as presenting systemic risks, ex
     officio or following a qualified alert from the scientific panel pursuant to Article 90(1), point
@@ -267,9 +273,10 @@ norms:
 - norm_id: AIA-NORM-A052-P4-AMEND-ANNEX-XIII
   act_version_date: '2026-07-27'
   kind: power
-  subjects:
-  - subject_ref: commission
+  actors:
+  - actor_ref: commission
     category: union_institution_or_body
+  targets: []
   action: adopt Article 97 delegated acts specifying and updating Annex XIII criteria
   norm_text: The Commission is empowered to adopt delegated acts in accordance with Article 97 in order
     to amend Annex XIII by specifying and updating the criteria set out in that Annex.
@@ -301,9 +308,10 @@ norms:
 - norm_id: AIA-NORM-A052-P5-CONSIDER-REASSESSMENT-REQUEST
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: commission
+  actors:
+  - actor_ref: commission
     category: union_institution_or_body
+  targets: []
   action: take a provider's reasoned reassessment request into account
   norm_text: Upon a reasoned request of a provider whose model has been designated as a general-purpose
     AI model with systemic risk pursuant to paragraph 4, the Commission shall take the request into account
@@ -336,9 +344,10 @@ norms:
 - norm_id: AIA-NORM-A052-P5-REASSESS-DESIGNATION
   act_version_date: '2026-07-27'
   kind: power
-  subjects:
-  - subject_ref: commission
+  actors:
+  - actor_ref: commission
     category: union_institution_or_body
+  targets: []
   action: reassess under Annex XIII whether the model still presents systemic risks
   norm_text: may decide to reassess whether the general-purpose AI model can still be considered to present
     systemic risks on the basis of the criteria set out in Annex XIII.
@@ -370,9 +379,10 @@ norms:
 - norm_id: AIA-NORM-A052-P5-REQUEST-CONTENT
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: provider
+  actors:
+  - actor_ref: provider
     category: supported_operator
+  targets: []
   action: include objective, detailed, and new post-designation reasons in a reassessment request
   norm_text: Such a request shall contain objective, detailed and new reasons that have arisen since the
     designation decision.
@@ -408,9 +418,10 @@ norms:
 - norm_id: AIA-NORM-A052-P5-REQUEST-AFTER-SIX-MONTHS
   act_version_date: '2026-07-27'
   kind: permission
-  subjects:
-  - subject_ref: provider
+  actors:
+  - actor_ref: provider
     category: supported_operator
+  targets: []
   action: request reassessment no earlier than six months after the applicable designation or maintenance
     decision
   norm_text: Providers may request reassessment at the earliest six months after the designation decision.
@@ -446,9 +457,10 @@ norms:
 - norm_id: AIA-NORM-A052-P6-PUBLISH-LIST
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: commission
+  actors:
+  - actor_ref: commission
     category: union_institution_or_body
+  targets: []
   action: ensure publication of a current list of general-purpose AI models with systemic risk while observing
     and protecting intellectual-property rights, confidential business information, and trade secrets
   norm_text: The Commission shall ensure that a list of general-purpose AI models with systemic risk is

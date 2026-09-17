@@ -6,8 +6,10 @@ records:
     after that requirement is met or it becomes known that it will be met.
   action: notify the Commission without delay and within two weeks of meeting or anticipating the Article
     51(1)(a) condition
-  subject_ref: provider
-  subject_category: supported_operator
+  actors:
+  - actor_ref: provider
+    category: supported_operator
+  targets: []
   conditions:
   - the general-purpose AI model meets or is known will meet the Article 51(1)(a) condition
   implementation_refs:
@@ -19,8 +21,10 @@ records:
   quote: That notification shall include the information necessary to demonstrate that the relevant requirement
     has been met.
   action: include information demonstrating that the Article 51(1)(a) requirement is met in the notification
-  subject_ref: provider
-  subject_category: supported_operator
+  actors:
+  - actor_ref: provider
+    category: supported_operator
+  targets: []
   conditions:
   - the provider submits the Article 52(1) notification
   mandatory_content:
@@ -35,8 +39,10 @@ records:
     it has not been notified, it may decide to designate it as a model with systemic risk.
   action: designate an unnotified general-purpose AI model presenting systemic risks as a model with systemic
     risk
-  subject_ref: commission
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: commission
+    category: union_institution_or_body
+  targets: []
   kind: power
   conditions:
   - the Commission becomes aware that an unnotified general-purpose AI model presents systemic risks
@@ -53,8 +59,10 @@ records:
     due to its specific characteristics, systemic risks and therefore should not be classified as a general-purpose
     AI model with systemic risk.
   action: present substantiated model-specific arguments with the notification against systemic-risk classification
-  subject_ref: provider
-  subject_category: supported_operator
+  actors:
+  - actor_ref: provider
+    category: supported_operator
+  targets: []
   kind: permission
   conditions:
   - the model meets the Article 51(1)(a) condition
@@ -71,8 +79,10 @@ records:
     does not present, due to its specific characteristics, systemic risks, it shall reject those arguments
   action: reject insufficiently substantiated rebuttal arguments that fail to demonstrate absence of systemic
     risk
-  subject_ref: commission
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: commission
+    category: union_institution_or_body
+  targets: []
   conditions:
   - paragraph 2 arguments are insufficiently substantiated
   - the provider did not demonstrate that the model lacks systemic risk due to its specific characteristics
@@ -86,8 +96,9 @@ records:
   quote: the general-purpose AI model shall be considered to be a general-purpose AI model with systemic
     risk.
   action: classify the model as a general-purpose AI model with systemic risk after unsuccessful rebuttal
-  subject_ref: general_purpose_ai_model
-  subject_category: other
+  actors: []
+  targets:
+  - target_ref: general_purpose_ai_model
   kind: legal_consequence
   conditions:
   - the Commission rejects the provider's paragraph 2 arguments under Article 52(3)
@@ -100,8 +111,10 @@ records:
     or following a qualified alert from the scientific panel pursuant to Article 90(1), point (a), on
     the basis of criteria set out in Annex XIII.
   action: designate a general-purpose AI model as presenting systemic risks using Annex XIII criteria
-  subject_ref: commission
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: commission
+    category: union_institution_or_body
+  targets: []
   kind: power
   conditions:
   - designation is ex officio or follows a qualified Article 90(1)(a) scientific-panel alert
@@ -116,8 +129,10 @@ records:
   quote: The Commission is empowered to adopt delegated acts in accordance with Article 97 in order to
     amend Annex XIII by specifying and updating the criteria set out in that Annex.
   action: adopt Article 97 delegated acts specifying and updating Annex XIII criteria
-  subject_ref: commission
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: commission
+    category: union_institution_or_body
+  targets: []
   kind: power
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -129,8 +144,10 @@ records:
   quote: Upon a reasoned request of a provider whose model has been designated as a general-purpose AI
     model with systemic risk pursuant to paragraph 4, the Commission shall take the request into account
   action: take a provider's reasoned reassessment request into account
-  subject_ref: commission
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: commission
+    category: union_institution_or_body
+  targets: []
   conditions:
   - the provider makes a reasoned request concerning a model designated under Article 52(4)
   product_scope: outside_supported_actor
@@ -143,8 +160,10 @@ records:
   quote: may decide to reassess whether the general-purpose AI model can still be considered to present
     systemic risks on the basis of the criteria set out in Annex XIII.
   action: reassess under Annex XIII whether the model still presents systemic risks
-  subject_ref: commission
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: commission
+    category: union_institution_or_body
+  targets: []
   kind: power
   conditions:
   - the Commission has received and considered a reasoned provider request under Article 52(5)
@@ -158,8 +177,10 @@ records:
   quote: Such a request shall contain objective, detailed and new reasons that have arisen since the designation
     decision.
   action: include objective, detailed, and new post-designation reasons in a reassessment request
-  subject_ref: provider
-  subject_category: supported_operator
+  actors:
+  - actor_ref: provider
+    category: supported_operator
+  targets: []
   conditions:
   - the provider requests reassessment under Article 52(5)
   mandatory_content:
@@ -177,8 +198,10 @@ records:
     decision.
   action: request reassessment no earlier than six months after the applicable designation or maintenance
     decision
-  subject_ref: provider
-  subject_category: supported_operator
+  actors:
+  - actor_ref: provider
+    category: supported_operator
+  targets: []
   kind: permission
   conditions:
   - at least six months have passed since the initial designation or the latest decision maintaining it
@@ -195,8 +218,10 @@ records:
     national law.
   action: ensure publication of a current list of general-purpose AI models with systemic risk while observing
     and protecting intellectual-property rights, confidential business information, and trade secrets
-  subject_ref: commission
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: commission
+    category: union_institution_or_body
+  targets: []
   mandatory_content:
   - keep the published list up to date
   - observe and protect intellectual-property rights in accordance with Union and national law

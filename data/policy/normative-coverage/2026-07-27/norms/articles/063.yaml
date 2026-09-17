@@ -3,9 +3,10 @@ norms:
 - norm_id: AIA-NORM-A063-P1-SIMPLIFIED-SME-QUALITY-MANAGEMENT
   act_version_date: '2026-07-27'
   kind: permission
-  subjects:
-  - subject_ref: sme_provider
+  actors:
+  - actor_ref: sme_provider
     category: supported_operator
+  targets: []
   action: comply with eligible Article 17 quality-management elements in the authorised simplified manner
   norm_text: SMEs, including start-ups, may comply with certain elements of the quality management system
     required by Article 17 in a simplified manner, provided that they do not have partner enterprises
@@ -40,9 +41,10 @@ norms:
 - norm_id: AIA-NORM-A063-P1-COMMISSION-SIMPLIFICATION-GUIDANCE
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: commission
+  actors:
+  - actor_ref: commission
     category: union_institution_or_body
+  targets: []
   action: develop SME-sensitive quality-management simplification guidelines that preserve protection
     and high-risk compliance
   norm_text: For that purpose, the Commission shall develop guidelines on the elements of the quality
@@ -78,9 +80,10 @@ norms:
 - norm_id: AIA-NORM-A063-P2-NO-BROADER-EXEMPTION
   act_version_date: '2026-07-27'
   kind: legal_consequence
-  subjects:
-  - subject_ref: sme_provider
+  actors:
+  - actor_ref: sme_provider
     category: supported_operator
+  targets: []
   action: preserve every other Regulation requirement and obligation despite the Article 63(1) simplification
   norm_text: Paragraph 1 of this Article shall not be interpreted as exempting those operators from fulfilling
     any other requirements or obligations laid down in this Regulation, including those established in

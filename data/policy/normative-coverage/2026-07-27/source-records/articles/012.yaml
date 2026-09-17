@@ -4,8 +4,10 @@ records:
   quote: High-risk AI systems shall technically allow for the automatic recording of events (logs) over
     the lifetime of the system.
   action: ensure the high-risk AI system automatically records event logs throughout its lifetime
-  subject_ref: provider
-  subject_category: supported_operator
+  actors:
+  - actor_ref: provider
+    category: supported_operator
+  targets: []
   implementation_refs:
   - AIA-HR-A12
   verification_mode: judged_by_gap_analysis
@@ -16,8 +18,10 @@ records:
     meaning of Article 79(1) or in a substantial modification
   action: enable logging of events relevant to identifying Article 79(1) risk situations or substantial
     modifications
-  subject_ref: provider
-  subject_category: supported_operator
+  actors:
+  - actor_ref: provider
+    category: supported_operator
+  targets: []
   qualifier_spans:
   - A012-P002
   implementation_refs:
@@ -28,8 +32,10 @@ records:
   source: A012-P004
   quote: facilitating the post-market monitoring referred to in Article 72
   action: enable logging of events relevant to Article 72 post-market monitoring
-  subject_ref: provider
-  subject_category: supported_operator
+  actors:
+  - actor_ref: provider
+    category: supported_operator
+  targets: []
   qualifier_spans:
   - A012-P002
   implementation_refs:
@@ -40,8 +46,10 @@ records:
   source: A012-P005
   quote: monitoring the operation of high-risk AI systems referred to in Article 26(5)
   action: enable logging of events relevant to deployer monitoring under Article 26(5)
-  subject_ref: provider
-  subject_category: supported_operator
+  actors:
+  - actor_ref: provider
+    category: supported_operator
+  targets: []
   qualifier_spans:
   - A012-P002
   implementation_refs:
@@ -53,8 +61,10 @@ records:
   quote: recording of the period of each use of the system (start date and time and end date and time
     of each use)
   action: record the start and end date and time of every use
-  subject_ref: provider
-  subject_category: supported_operator
+  actors:
+  - actor_ref: provider
+    category: supported_operator
+  targets: []
   qualifier_spans:
   - A012-P006
   conditions:
@@ -68,8 +78,10 @@ records:
   source: A012-P008
   quote: the reference database against which input data has been checked by the system
   action: record the reference database against which the system checked input data
-  subject_ref: provider
-  subject_category: supported_operator
+  actors:
+  - actor_ref: provider
+    category: supported_operator
+  targets: []
   qualifier_spans:
   - A012-P006
   conditions:
@@ -83,8 +95,10 @@ records:
   source: A012-P009
   quote: the input data for which the search has led to a match
   action: record the input data for which the search produced a match
-  subject_ref: provider
-  subject_category: supported_operator
+  actors:
+  - actor_ref: provider
+    category: supported_operator
+  targets: []
   qualifier_spans:
   - A012-P006
   conditions:
@@ -99,8 +113,10 @@ records:
   quote: the identification of the natural persons involved in the verification of the results, as referred
     to in Article 14(5)
   action: record the identity of every natural person involved in verifying results under Article 14(5)
-  subject_ref: provider
-  subject_category: supported_operator
+  actors:
+  - actor_ref: provider
+    category: supported_operator
+  targets: []
   qualifier_spans:
   - A012-P006
   conditions:

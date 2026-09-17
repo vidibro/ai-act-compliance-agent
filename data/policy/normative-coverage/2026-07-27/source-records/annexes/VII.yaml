@@ -4,8 +4,9 @@ records:
   quote: Conformity based on an assessment of the quality management system and an assessment of the technical
     documentation is the conformity assessment procedure based on points 2 to 5.
   action: define the Annex VII conformity-assessment procedure as comprising points 2 to 5
-  subject_ref: annex_vii_conformity_assessment
-  subject_category: other
+  actors: []
+  targets:
+  - target_ref: annex_vii_conformity_assessment
   kind: applicability
   qualifier_spans:
   - ANNEX-VII-P004
@@ -18,8 +19,9 @@ records:
     as specified in point 5
   action: examine the approved Article 17 quality management system under Annex VII point 3 and subject
     it to surveillance under point 5
-  subject_ref: annex_vii_conformity_assessment
-  subject_category: other
+  actors: []
+  targets:
+  - target_ref: annex_vii_conformity_assessment
   kind: applicability
   mandatory_content:
   - examination of the approved quality management system under point 3
@@ -29,8 +31,9 @@ records:
   source: ANNEX-VII-P004
   quote: The technical documentation of the AI system shall be examined in accordance with point 4.
   action: examine the AI system's technical documentation under Annex VII point 4
-  subject_ref: annex_vii_conformity_assessment
-  subject_category: other
+  actors: []
+  targets:
+  - target_ref: annex_vii_conformity_assessment
   kind: applicability
   verification_mode: reported_conditionally
   verified_by: vidibro
@@ -38,8 +41,10 @@ records:
   source: ANNEX-VII-P006
   quote: The application of the provider shall include
   action: complete the Annex VII quality-management application
-  subject_ref: provider
-  subject_category: supported_operator
+  actors:
+  - actor_ref: provider
+    category: supported_operator
+  targets: []
   conditions:
   - the provider lodges an application for assessment of the quality management system
   qualifier_spans:
@@ -70,8 +75,10 @@ records:
     the provider so that it remains adequate and efficient.
   action: continue implementing and maintaining the approved quality-management system so that it remains
     adequate and efficient
-  subject_ref: provider
-  subject_category: supported_operator
+  actors:
+  - actor_ref: provider
+    category: supported_operator
+  targets: []
   conditions:
   - the notified body approved the quality management system
   implementation_refs:
@@ -84,8 +91,10 @@ records:
   quote: Any intended change to the approved quality management system or the list of AI systems covered
     by the latter shall be brought to the attention of the notified body by the provider.
   action: notify the notified body of intended QMS or covered-system-list changes
-  subject_ref: provider
-  subject_category: supported_operator
+  actors:
+  - actor_ref: provider
+    category: supported_operator
+  targets: []
   conditions:
   - the notified body approved the quality management system
   - the provider intends to change that system or the list of AI systems it covers
@@ -98,8 +107,10 @@ records:
   source: ANNEX-VII-P013
   quote: The quality management system shall be assessed by the notified body
   action: assess whether the quality-management system satisfies Article 17
-  subject_ref: notified_body
-  subject_category: notified_or_conformity_body
+  actors:
+  - actor_ref: notified_body
+    category: notified_or_conformity_body
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -109,8 +120,10 @@ records:
   source: ANNEX-VII-P013
   quote: The decision shall be notified to the provider or its authorised representative.
   action: notify the quality-management assessment decision to the provider or its authorised representative
-  subject_ref: notified_body
-  subject_category: notified_or_conformity_body
+  actors:
+  - actor_ref: notified_body
+    category: notified_or_conformity_body
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -126,8 +139,10 @@ records:
     a reassessment is necessary.
   action: examine the proposed changes and decide whether the modified quality management system still
     satisfies the point 3.2 requirements or whether a reassessment is necessary
-  subject_ref: notified_body
-  subject_category: notified_or_conformity_body
+  actors:
+  - actor_ref: notified_body
+    category: notified_or_conformity_body
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -138,8 +153,10 @@ records:
   quote: The notified body shall notify the provider of its decision. The notification shall contain the
     conclusions of the examination of the changes and the reasoned assessment decision.
   action: notify the provider of that decision
-  subject_ref: notified_body
-  subject_category: notified_or_conformity_body
+  actors:
+  - actor_ref: notified_body
+    category: notified_or_conformity_body
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -156,8 +173,10 @@ records:
     covered by the quality management system referred to under point 3.
   action: lodge an application with a notified body of the provider's choice for assessment of the technical
     documentation of the covered AI system
-  subject_ref: provider
-  subject_category: supported_operator
+  actors:
+  - actor_ref: provider
+    category: supported_operator
+  targets: []
   conditions:
   - the provider intends to place the AI system on the market or put it into service
   - the AI system is covered by the point 3 quality management system
@@ -166,8 +185,10 @@ records:
   source: ANNEX-VII-P018
   quote: 'The application shall include:'
   action: include all three point 4.2 items in the technical-documentation assessment application
-  subject_ref: provider
-  subject_category: supported_operator
+  actors:
+  - actor_ref: provider
+    category: supported_operator
+  targets: []
   conditions:
   - the provider lodges the point 4.1 application for assessment of the technical documentation
   qualifier_spans:
@@ -184,8 +205,10 @@ records:
   source: ANNEX-VII-P022
   quote: The technical documentation shall be examined by the notified body.
   action: examine the technical documentation
-  subject_ref: notified_body
-  subject_category: notified_or_conformity_body
+  actors:
+  - actor_ref: notified_body
+    category: notified_or_conformity_body
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -198,8 +221,10 @@ records:
     and subject to security safeguards, through API or other relevant technical means and tools enabling
     remote access.
   action: grant the notified body necessary full dataset access
-  subject_ref: provider
-  subject_category: supported_operator
+  actors:
+  - actor_ref: provider
+    category: supported_operator
+  targets: []
   implementation_refs:
   - AIA-PO-A43-1B
   - AIA-PO-A43-3
@@ -214,8 +239,10 @@ records:
     further evidence or carry out further tests so as to enable a proper assessment of the conformity
     of the AI system with the requirements set out in Chapter III, Section 2.
   action: supply further evidence or tests required for the conformity assessment
-  subject_ref: provider
-  subject_category: supported_operator
+  actors:
+  - actor_ref: provider
+    category: supported_operator
+  targets: []
   implementation_refs:
   - AIA-PO-A43-1B
   - AIA-PO-A43-3
@@ -228,8 +255,10 @@ records:
   quote: Where the notified body is not satisfied with the tests carried out by the provider, the notified
     body shall itself directly carry out adequate tests, as appropriate.
   action: carry out adequate tests when provider testing is unsatisfactory
-  subject_ref: notified_body
-  subject_category: notified_or_conformity_body
+  actors:
+  - actor_ref: notified_body
+    category: notified_or_conformity_body
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -246,8 +275,10 @@ records:
     access shall be subject to existing Union law on the protection of intellectual property and trade
     secrets.
   action: grant reasoned and necessary model access after other means are exhausted
-  subject_ref: provider
-  subject_category: supported_operator
+  actors:
+  - actor_ref: provider
+    category: supported_operator
+  targets: []
   implementation_refs:
   - AIA-PO-A43-1B
   - AIA-PO-A43-3
@@ -261,8 +292,10 @@ records:
   quote: Where the AI system does not meet the requirement relating to the data used to train it, re-training
     of the AI system will be needed prior to the application for a new conformity assessment.
   action: retrain before reapplying where training data fail the requirement
-  subject_ref: provider
-  subject_category: supported_operator
+  actors:
+  - actor_ref: provider
+    category: supported_operator
+  targets: []
   kind: legal_consequence
   conditions:
   - the AI system does not meet the requirement relating to the data used to train it
@@ -275,8 +308,10 @@ records:
   source: ANNEX-VII-P025
   quote: The decision of the notified body shall be notified to the provider or its authorised representative.
   action: notify the technical-documentation assessment decision to the provider or its authorised representative
-  subject_ref: notified_body
-  subject_category: notified_or_conformity_body
+  actors:
+  - actor_ref: notified_body
+    category: notified_or_conformity_body
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -290,8 +325,10 @@ records:
   quote: Where the AI system is in conformity with the requirements set out in Chapter III, Section 2,
     the notified body shall issue a Union technical documentation assessment certificate.
   action: issue the certificate where the system conforms
-  subject_ref: notified_body
-  subject_category: notified_or_conformity_body
+  actors:
+  - actor_ref: notified_body
+    category: notified_or_conformity_body
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -307,8 +344,10 @@ records:
     the AI system to be evaluated, and to allow for control of the AI system while in use, where applicable.
   action: include the required provider, examination, validity, identification, evaluation, and in-use
     control information in the Union technical-documentation assessment certificate and its annexes
-  subject_ref: notified_body
-  subject_category: notified_or_conformity_body
+  actors:
+  - actor_ref: notified_body
+    category: notified_or_conformity_body
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -327,8 +366,10 @@ records:
     2, the notified body shall refuse to issue a Union technical documentation assessment certificate
     and shall inform the applicant accordingly, giving detailed reasons for its refusal.
   action: refuse certification and give detailed reasons where the system does not conform
-  subject_ref: notified_body
-  subject_category: notified_or_conformity_body
+  actors:
+  - actor_ref: notified_body
+    category: notified_or_conformity_body
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -342,8 +383,10 @@ records:
     technical documentation assessment certificate shall contain specific considerations on the quality
     data used to train the AI system, in particular on the reasons for non-compliance.
   action: state specific training-data non-compliance considerations in the refusal decision
-  subject_ref: notified_body
-  subject_category: notified_or_conformity_body
+  actors:
+  - actor_ref: notified_body
+    category: notified_or_conformity_body
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -360,8 +403,10 @@ records:
     or its intended purpose shall be assessed by the notified body which issued the Union technical documentation
     assessment certificate.
   action: assess any AI-system change that could affect compliance or intended purpose
-  subject_ref: notified_body
-  subject_category: notified_or_conformity_body
+  actors:
+  - actor_ref: notified_body
+    category: notified_or_conformity_body
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -373,8 +418,10 @@ records:
     changes, or if it otherwise becomes aware of the occurrence of such changes.
   action: inform the certificate-issuing notified body of intended or discovered changes that could affect
     compliance or intended purpose
-  subject_ref: provider
-  subject_category: supported_operator
+  actors:
+  - actor_ref: provider
+    category: supported_operator
+  targets: []
   conditions:
   - a notified body issued a Union technical documentation assessment certificate for the AI system
   - the change could affect the AI system's compliance with the requirements or its intended purpose
@@ -390,8 +437,10 @@ records:
     be addressed by means of a supplement to the Union technical documentation assessment certificate.
   action: assess an intended change and decide whether it requires a new Article 43(4) conformity assessment
     or a certificate supplement
-  subject_ref: notified_body
-  subject_category: notified_or_conformity_body
+  actors:
+  - actor_ref: notified_body
+    category: notified_or_conformity_body
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -404,8 +453,10 @@ records:
     assessment certificate.
   action: assess changes eligible for the supplement route, notify the provider of the decision, and issue
     an approved certificate supplement
-  subject_ref: notified_body
-  subject_category: notified_or_conformity_body
+  actors:
+  - actor_ref: notified_body
+    category: notified_or_conformity_body
+  targets: []
   conditions:
   - the change can be addressed through a supplement to the Union technical-documentation assessment certificate
   - issuance of the supplement requires approval of the change
@@ -420,8 +471,10 @@ records:
     the design, development, testing of the AI systems is taking place.
   action: allow the notified body to access the premises where the AI systems are designed, developed
     and tested
-  subject_ref: provider
-  subject_category: supported_operator
+  actors:
+  - actor_ref: provider
+    category: supported_operator
+  targets: []
   conditions:
   - the notified body carries out point 5 surveillance of the approved quality management system
   implementation_refs:
@@ -433,8 +486,10 @@ records:
   source: ANNEX-VII-P029
   quote: The provider shall further share with the notified body all necessary information.
   action: share all information the notified body needs for surveillance
-  subject_ref: provider
-  subject_category: supported_operator
+  actors:
+  - actor_ref: provider
+    category: supported_operator
+  targets: []
   conditions:
   - the notified body carries out point 5 surveillance of the approved quality management system
   implementation_refs:
@@ -446,8 +501,10 @@ records:
   source: ANNEX-VII-P030
   quote: The notified body shall carry out periodic audits
   action: carry out periodic audits and provide the provider an audit report
-  subject_ref: notified_body
-  subject_category: notified_or_conformity_body
+  actors:
+  - actor_ref: notified_body
+    category: notified_or_conformity_body
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -458,8 +515,10 @@ records:
   quote: In the context of those audits, the notified body may carry out additional tests of the AI systems
     for which a Union technical documentation assessment certificate was issued.
   action: carry out additional tests during surveillance audits of certified AI systems
-  subject_ref: notified_body
-  subject_category: notified_or_conformity_body
+  actors:
+  - actor_ref: notified_body
+    category: notified_or_conformity_body
+  targets: []
   kind: power
   conditions:
   - the notified body is conducting a periodic surveillance audit

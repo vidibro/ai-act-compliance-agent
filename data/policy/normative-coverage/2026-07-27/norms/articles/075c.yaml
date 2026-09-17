@@ -3,9 +3,10 @@ norms:
 - norm_id: AIA-NORM-A075C-P1-ESTABLISH-NONCOMPLIANCE
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: ai_office
+  actors:
+  - actor_ref: ai_office
     category: union_institution_or_body
+  targets: []
   action: adopt a decision establishing detected AI Act or binding-commitment non-compliance
   norm_text: Where the AI Office finds that an operator falling within the scope of Article 75(1) does
     not comply with the relevant provisions of this Regulation or with commitments made binding pursuant
@@ -42,9 +43,10 @@ norms:
 - norm_id: AIA-NORM-A075C-P2-COMMUNICATE-PRELIMINARY-FINDINGS
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: ai_office
+  actors:
+  - actor_ref: ai_office
     category: union_institution_or_body
+  targets: []
   action: communicate preliminary findings before adopting a non-compliance decision
   norm_text: Before adopting a decision pursuant to paragraph 1, the AI Office shall communicate its preliminary
     findings to the operator concerned.
@@ -77,9 +79,10 @@ norms:
 - norm_id: AIA-NORM-A075C-P2-EXPLAIN-CONTEMPLATED-MEASURES
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: ai_office
+  actors:
+  - actor_ref: ai_office
     category: union_institution_or_body
+  targets: []
   action: explain contemplated AI Office measures and measures the operator should take in the preliminary
     findings
   norm_text: In the preliminary findings, the AI Office shall explain the measures that it is considering
@@ -114,9 +117,10 @@ norms:
 - norm_id: AIA-NORM-A075C-P3-ORDER-COMPLIANCE-MEASURES
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: ai_office
+  actors:
+  - actor_ref: ai_office
     category: union_institution_or_body
+  targets: []
   action: order necessary compliance measures within a reasonable specified period and information about
     intended measures
   norm_text: In the decision pursuant to paragraph 1 of this Article, the AI Office shall, where relevant,
@@ -154,9 +158,10 @@ norms:
 - norm_id: AIA-NORM-A075C-P3-DESCRIBE-IMPLEMENTED-MEASURES
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: article_75_operator
+  actors:
+  - actor_ref: article_75_operator
     category: supported_operator
+  targets: []
   action: describe implemented measures ensuring compliance with the AI Office decision, once they are
     implemented
   norm_text: The operator concerned shall provide the AI Office with a description of the measures it
@@ -191,9 +196,10 @@ norms:
 - norm_id: AIA-NORM-A075C-P3-STRUCTURED-DIALOGUE
   act_version_date: '2026-07-27'
   kind: power
-  subjects:
-  - subject_ref: ai_office
+  actors:
+  - actor_ref: ai_office
     category: union_institution_or_body
+  targets: []
   action: conduct a structured dialogue before requesting a measure
   norm_text: Prior to requesting any measure, the AI Office may engage in a structured dialogue with the
     operator of the AI system in question.
@@ -225,9 +231,10 @@ norms:
 - norm_id: AIA-NORM-A075C-P3-PROPOSE-COMMITMENTS
   act_version_date: '2026-07-27'
   kind: permission
-  subjects:
-  - subject_ref: article_75_operator
+  actors:
+  - actor_ref: article_75_operator
     category: supported_operator
+  targets: []
   action: propose Article 75b commitments during structured dialogue
   norm_text: During this dialogue, the operator may propose commitments in accordance with Article 75b.
   detection_channels:
@@ -259,9 +266,10 @@ norms:
 - norm_id: AIA-NORM-A075C-P4-IMPOSE-PENALTIES
   act_version_date: '2026-07-27'
   kind: power
-  subjects:
-  - subject_ref: ai_office
+  actors:
+  - actor_ref: ai_office
     category: union_institution_or_body
+  targets: []
   action: accompany a non-compliance decision with Article 99 penalties adapted to AI Office enforcement
   norm_text: A decision adopted pursuant to paragraph 1 of this Article may be accompanied by the imposition
     of penalties in accordance with Article 99(3) to (7), which provisions shall apply mutatis mutandis
@@ -296,9 +304,10 @@ norms:
 - norm_id: AIA-NORM-A075C-P4-ARTICLE99-4-FINES
   act_version_date: '2026-07-27'
   kind: legal_consequence
-  subjects:
-  - subject_ref: article_75_operator
+  actors:
+  - actor_ref: article_75_operator
     category: supported_operator
+  targets: []
   action: expose listed infringements decision breaches and binding-commitment breaches to Article 99(4)
     fines
   norm_text: 'In particular, the following shall be subject to administrative fines as referred to in
@@ -339,9 +348,10 @@ norms:
 - norm_id: AIA-NORM-A075C-P4-INFORMATION-FINE
   act_version_date: '2026-07-27'
   kind: legal_consequence
-  subjects:
-  - subject_ref: article_75_operator
+  actors:
+  - actor_ref: article_75_operator
     category: supported_operator
+  targets: []
   action: expose incorrect incomplete or misleading requested information supplied to the AI Office to
     Article 99(5) fines
   norm_text: The supply of incorrect, incomplete or misleading information to the AI Office in reply to
@@ -376,9 +386,10 @@ norms:
 - norm_id: AIA-NORM-A075C-P5-IMPOSE-PERIODIC-PENALTIES
   act_version_date: '2026-07-27'
   kind: power
-  subjects:
-  - subject_ref: ai_office
+  actors:
+  - actor_ref: ai_office
     category: union_institution_or_body
+  targets: []
   action: impose periodic penalty payments compelling specified investigation information inspection correction
     and compliance conduct
   norm_text: 'The AI Office may adopt a decision imposing periodic penalty payments to compel the operators
@@ -426,9 +437,10 @@ norms:
 - norm_id: AIA-NORM-A075C-P5-PENALTY-PAYMENT-LIMITS
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: ai_office
+  actors:
+  - actor_ref: ai_office
     category: union_institution_or_body
+  targets: []
   action: make periodic penalty payments effective and proportionate and, where applicable, keep them
     within 5 % of average daily income or worldwide annual turnover in the preceding financial year per
     day from the date appointed by the decision
@@ -468,9 +480,10 @@ norms:
 - norm_id: AIA-NORM-A075C-P6-JUDICIAL-REVIEW
   act_version_date: '2026-07-27'
   kind: power
-  subjects:
-  - subject_ref: court_of_justice_of_the_european_union
+  actors:
+  - actor_ref: court_of_justice_of_the_european_union
     category: union_institution_or_body
+  targets: []
   action: review and cancel reduce or increase AI Office fines and periodic penalty payments with unlimited
     jurisdiction
   norm_text: The Court of Justice of the European Union shall have unlimited jurisdiction to review decisions
@@ -505,9 +518,10 @@ norms:
 - norm_id: AIA-NORM-A075C-P7-ALLOCATE-FINE-FUNDS
   act_version_date: '2026-07-27'
   kind: legal_consequence
-  subjects:
-  - subject_ref: union_enforcement_framework
+  actors:
+  - actor_ref: union_enforcement_framework
     category: union_institution_or_body
+  targets: []
   action: allocate Article 75c fine and periodic-payment funds to the Union general budget
   norm_text: Funds collected through the imposition of fines or periodic penalty payments pursuant to
     this Article shall contribute to the general budget of the Union.
@@ -540,9 +554,10 @@ norms:
 - norm_id: AIA-NORM-A075C-P8-FIVE-YEAR-INFRINGEMENT-LIMIT
   act_version_date: '2026-07-27'
   kind: legal_consequence
-  subjects:
-  - subject_ref: ai_office_enforcement_power
+  actors:
+  - actor_ref: ai_office_enforcement_power
     category: union_institution_or_body
+  targets: []
   action: apply a five-year infringement limitation period from commission or cessation for continuing
     or repeated infringements
   norm_text: The powers conferred on the AI Office by this Article shall be subject to a limitation period
@@ -578,9 +593,10 @@ norms:
 - norm_id: AIA-NORM-A075C-P8-FIVE-YEAR-DECISION-LIMIT
   act_version_date: '2026-07-27'
   kind: legal_consequence
-  subjects:
-  - subject_ref: ai_office_decision_enforcement_power
+  actors:
+  - actor_ref: ai_office_decision_enforcement_power
     category: union_institution_or_body
+  targets: []
   action: apply a five-year final-decision enforcement limitation period
   norm_text: The power of the AI Office to enforce decisions taken pursuant to this Article shall be subject
     to a limitation period of five years. The limitation period shall begin to run on the day on which
@@ -614,9 +630,10 @@ norms:
 - norm_id: AIA-NORM-A075C-P8-SPECIFY-LIMITATION-PERIODS
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: commission
+  actors:
+  - actor_ref: commission
     category: union_institution_or_body
+  targets: []
   action: specify infringement and decision-enforcement limitation rules including interruption circumstances
     in the Article 75d(3) implementing act
   norm_text: The implementing act referred to in Article 75d(3) shall specify the first and second subparagraphs
@@ -649,9 +666,10 @@ norms:
 - norm_id: AIA-NORM-A075C-P9-CLOSE-PROCEEDING
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: ai_office
+  actors:
+  - actor_ref: ai_office
     category: union_institution_or_body
+  targets: []
   action: close proceedings immediately by decision when no grounds for non-compliance exist
   norm_text: Where the AI Office determines that there are no grounds to adopt a decision of non-compliance,
     it shall close the proceeding by a decision. That decision shall apply with immediate effect.

@@ -3,9 +3,10 @@ norms:
 - norm_id: AIA-NORM-A002-P1-A-PROVIDER
   act_version_date: '2026-07-27'
   kind: applicability
-  subjects:
-  - subject_ref: provider
+  actors:
+  - actor_ref: provider
     category: supported_operator
+  targets: []
   action: apply the Regulation to providers placing AI systems or general-purpose AI models on the Union
     market or putting AI systems into service in the Union, regardless of establishment
   norm_text: providers placing on the market or putting into service AI systems or placing on the market
@@ -43,9 +44,10 @@ norms:
 - norm_id: AIA-NORM-A002-P1-B-DEPLOYER
   act_version_date: '2026-07-27'
   kind: applicability
-  subjects:
-  - subject_ref: deployer
+  actors:
+  - actor_ref: deployer
     category: supported_operator
+  targets: []
   action: apply the Regulation to deployers established or located within the Union
   norm_text: deployers of AI systems that have their place of establishment or are located within the
     Union
@@ -81,9 +83,10 @@ norms:
 - norm_id: AIA-NORM-A002-P1-C-THIRD-COUNTRY-OUTPUT
   act_version_date: '2026-07-27'
   kind: applicability
-  subjects:
-  - subject_ref: provider_or_deployer
+  actors:
+  - actor_ref: provider_or_deployer
     category: supported_operator
+  targets: []
   action: apply the Regulation to third-country providers and deployers where the AI system output is
     used in the Union
   norm_text: providers and deployers of AI systems that have their place of establishment or are located
@@ -120,9 +123,10 @@ norms:
 - norm_id: AIA-NORM-A002-P1-D-IMPORT-DISTRIBUTE
   act_version_date: '2026-07-27'
   kind: applicability
-  subjects:
-  - subject_ref: importer_or_distributor
+  actors:
+  - actor_ref: importer_or_distributor
     category: supported_operator
+  targets: []
   action: apply the Regulation to importers and distributors of AI systems
   norm_text: importers and distributors of AI systems
   detection_channels:
@@ -157,9 +161,10 @@ norms:
 - norm_id: AIA-NORM-A002-P1-E-PRODUCT-MANUFACTURER
   act_version_date: '2026-07-27'
   kind: applicability
-  subjects:
-  - subject_ref: product_manufacturer
+  actors:
+  - actor_ref: product_manufacturer
     category: supported_operator
+  targets: []
   action: apply the Regulation to product manufacturers placing an AI system on the market or putting
     it into service with their product under their name or trademark
   norm_text: product manufacturers placing on the market or putting into service an AI system together
@@ -196,9 +201,10 @@ norms:
 - norm_id: AIA-NORM-A002-P1-F-AUTHORISED-REPRESENTATIVE
   act_version_date: '2026-07-27'
   kind: applicability
-  subjects:
-  - subject_ref: authorised_representative
+  actors:
+  - actor_ref: authorised_representative
     category: supported_operator
+  targets: []
   action: apply the Regulation to authorised representatives of providers not established in the Union
   norm_text: authorised representatives of providers, which are not established in the Union
   detection_channels:
@@ -233,9 +239,10 @@ norms:
 - norm_id: AIA-NORM-A002-P1-G-AFFECTED-PERSON
   act_version_date: '2026-07-27'
   kind: applicability
-  subjects:
-  - subject_ref: affected_person
+  actors:
+  - actor_ref: affected_person
     category: natural_person
+  targets: []
   action: apply the Regulation to affected persons located in the Union
   norm_text: affected persons that are located in the Union
   detection_channels:
@@ -270,9 +277,9 @@ norms:
 - norm_id: AIA-NORM-A002-P2-SECTION-B-LIMIT
   act_version_date: '2026-07-27'
   kind: applicability
-  subjects:
-  - subject_ref: annex_i_section_b_high_risk_system
-    category: other
+  actors: []
+  targets:
+  - target_ref: annex_i_section_b_high_risk_system
   action: limit the applicable AI Act provisions for Article 6(1) high-risk systems related to Annex I
     Section B products to Articles 6(1), 60a, and 102 to 112
   norm_text: For AI systems classified as high-risk AI systems in accordance with Article 6(1) related
@@ -312,9 +319,9 @@ norms:
 - norm_id: AIA-NORM-A002-P2-INTEGRATED-SANDBOX-PROVISIONS
   act_version_date: '2026-07-27'
   kind: applicability
-  subjects:
-  - subject_ref: annex_i_section_b_high_risk_system
-    category: other
+  actors: []
+  targets:
+  - target_ref: annex_i_section_b_high_risk_system
   action: apply Articles 57 to 59 to Annex I Section B systems only where the AI Act high-risk requirements
     have been integrated into the applicable sectoral legislation
   norm_text: Articles 57, 58 and 59 shall apply only in so far as the requirements for high-risk AI systems
@@ -351,9 +358,9 @@ norms:
 - norm_id: AIA-NORM-A002-P3-OUTSIDE-UNION-LAW
   act_version_date: '2026-07-27'
   kind: applicability
-  subjects:
-  - subject_ref: regulation
-    category: other
+  actors: []
+  targets:
+  - target_ref: regulation
   action: exclude areas outside the scope of Union law from the Regulation
   norm_text: This Regulation does not apply to areas outside the scope of Union law
   detection_channels:
@@ -384,9 +391,10 @@ norms:
 - norm_id: AIA-NORM-A002-P3-NATIONAL-SECURITY-COMPETENCE
   act_version_date: '2026-07-27'
   kind: applicability
-  subjects:
-  - subject_ref: member_state
+  actors:
+  - actor_ref: member_state
     category: member_state
+  targets: []
   action: preserve Member State competences concerning national security regardless of the entity entrusted
     with the relevant tasks
   norm_text: shall not, in any event, affect the competences of the Member States concerning national
@@ -423,9 +431,9 @@ norms:
 - norm_id: AIA-NORM-A002-P3-MILITARY-EXCLUSION
   act_version_date: '2026-07-27'
   kind: applicability
-  subjects:
-  - subject_ref: military_defence_or_national_security_ai_system
-    category: other
+  actors: []
+  targets:
+  - target_ref: military_defence_or_national_security_ai_system
   action: exclude AI systems placed on the market, put into service, or used exclusively for military,
     defence, or national-security purposes
   norm_text: This Regulation does not apply to AI systems where and in so far they are placed on the market,
@@ -464,9 +472,9 @@ norms:
 - norm_id: AIA-NORM-A002-P3-MILITARY-OUTPUT-EXCLUSION
   act_version_date: '2026-07-27'
   kind: applicability
-  subjects:
-  - subject_ref: third_country_military_defence_or_national_security_ai_system
-    category: other
+  actors: []
+  targets:
+  - target_ref: third_country_military_defence_or_national_security_ai_system
   action: exclude AI systems outside the Union whose output is used in the Union exclusively for military,
     defence, or national-security purposes
   norm_text: This Regulation does not apply to AI systems which are not placed on the market or put into
@@ -506,9 +514,9 @@ norms:
 - norm_id: AIA-NORM-A002-P4-INTERNATIONAL-COOPERATION-EXCLUSION
   act_version_date: '2026-07-27'
   kind: applicability
-  subjects:
-  - subject_ref: third_country_public_authority_or_international_organisation
-    category: other
+  actors: []
+  targets:
+  - target_ref: third_country_public_authority_or_international_organisation
   action: exclude qualifying third-country public authorities and international organisations using AI
     systems under law-enforcement or judicial-cooperation arrangements with adequate fundamental-rights
     safeguards
@@ -555,9 +563,10 @@ norms:
 - norm_id: AIA-NORM-A002-P5-INTERMEDIARY-LIABILITY-SAVING
   act_version_date: '2026-07-27'
   kind: applicability
-  subjects:
-  - subject_ref: intermediary_service_provider
+  actors:
+  - actor_ref: intermediary_service_provider
     category: external_private_party
+  targets: []
   action: preserve the application of intermediary-service provider liability rules under Chapter II of
     Regulation (EU) 2022/2065
   norm_text: This Regulation shall not affect the application of the provisions on the liability of providers
@@ -593,9 +602,9 @@ norms:
 - norm_id: AIA-NORM-A002-P6-SCIENTIFIC-RD-EXCLUSION
   act_version_date: '2026-07-27'
   kind: applicability
-  subjects:
-  - subject_ref: scientific_research_and_development_ai_system_or_model
-    category: other
+  actors: []
+  targets:
+  - target_ref: scientific_research_and_development_ai_system_or_model
   action: exclude AI systems and AI models, including their output, specifically developed and put into
     service solely for scientific research and development
   norm_text: This Regulation does not apply to AI systems or AI models, including their output, specifically
@@ -633,9 +642,9 @@ norms:
 - norm_id: AIA-NORM-A002-P7-DATA-PROTECTION-APPLICATION
   act_version_date: '2026-07-27'
   kind: applicability
-  subjects:
-  - subject_ref: personal_data_processing_under_the_regulation
-    category: other
+  actors: []
+  targets:
+  - target_ref: personal_data_processing_under_the_regulation
   action: preserve the application of Union data-protection, privacy, and communications-confidentiality
     law to personal data processed under the Regulation
   norm_text: Union law on the protection of personal data, privacy and the confidentiality of communications
@@ -671,9 +680,9 @@ norms:
 - norm_id: AIA-NORM-A002-P7-PRIVACY-LAW-SAVING
   act_version_date: '2026-07-27'
   kind: applicability
-  subjects:
-  - subject_ref: regulation
-    category: other
+  actors: []
+  targets:
+  - target_ref: regulation
   action: preserve the application of the listed Union data-protection and privacy instruments, subject
     to Articles 4a and 59 of the Regulation
   norm_text: Without prejudice to Articles 4a and 59 of this Regulation, this Regulation shall not affect
@@ -710,9 +719,9 @@ norms:
 - norm_id: AIA-NORM-A002-P8-PRE-MARKET-RD-EXCLUSION
   act_version_date: '2026-07-27'
   kind: applicability
-  subjects:
-  - subject_ref: pre_market_ai_research_testing_or_development_activity
-    category: other
+  actors: []
+  targets:
+  - target_ref: pre_market_ai_research_testing_or_development_activity
   action: exclude research, testing, and development activities concerning AI systems or AI models before
     they are placed on the market or put into service
   norm_text: This Regulation does not apply to any research, testing or development activity regarding
@@ -749,9 +758,10 @@ norms:
 - norm_id: AIA-NORM-A002-P8-RD-UNION-LAW-COMPLIANCE
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: pre_market_ai_research_testing_or_development_actor
-    category: other
+  actors:
+  - actor_ref: pre_market_ai_research_testing_or_development_actor
+    category: external_private_party
+  targets: []
   action: conduct pre-market AI research, testing, and development activities in accordance with applicable
     Union law
   norm_text: Such activities shall be conducted in accordance with applicable Union law.
@@ -784,9 +794,9 @@ norms:
 - norm_id: AIA-NORM-A002-P8-REAL-WORLD-TESTING-CARVEOUT
   act_version_date: '2026-07-27'
   kind: applicability
-  subjects:
-  - subject_ref: real_world_testing_activity
-    category: other
+  actors: []
+  targets:
+  - target_ref: real_world_testing_activity
   action: keep testing in real-world conditions outside the pre-market research, testing, and development
     exclusion
   norm_text: Testing in real world conditions shall not be covered by that exclusion.
@@ -821,9 +831,9 @@ norms:
 - norm_id: AIA-NORM-A002-P9-CONSUMER-PRODUCT-SAFETY-SAVING
   act_version_date: '2026-07-27'
   kind: applicability
-  subjects:
-  - subject_ref: regulation
-    category: other
+  actors: []
+  targets:
+  - target_ref: regulation
   action: preserve the application of other Union consumer-protection and product-safety rules
   norm_text: This Regulation is without prejudice to the rules laid down by other Union legal acts related
     to consumer protection and product safety.
@@ -857,9 +867,10 @@ norms:
 - norm_id: AIA-NORM-A002-P10-PERSONAL-USE-DEPLOYER-EXCLUSION
   act_version_date: '2026-07-27'
   kind: applicability
-  subjects:
-  - subject_ref: natural_person_deployer
+  actors:
+  - actor_ref: natural_person_deployer
     category: supported_operator
+  targets: []
   action: exclude deployer obligations for natural persons using AI systems in a purely personal non-professional
     activity
   norm_text: This Regulation does not apply to obligations of deployers who are natural persons using
@@ -897,9 +908,12 @@ norms:
 - norm_id: AIA-NORM-A002-P11-MORE-FAVOURABLE-WORKER-RULES
   act_version_date: '2026-07-27'
   kind: permission
-  subjects:
-  - subject_ref: union_or_member_state
-    category: other
+  actors:
+  - actor_ref: union
+    category: union_institution_or_body
+  - actor_ref: member_state
+    category: member_state
+  targets: []
   action: maintain or introduce laws, regulations, or administrative provisions that more favourably protect
     workers regarding employers' use of AI systems, or encourage or allow more favourable collective agreements
   norm_text: This Regulation does not preclude the Union or Member States from maintaining or introducing
@@ -936,9 +950,9 @@ norms:
 - norm_id: AIA-NORM-A002-P12-OPEN-SOURCE-AI-SYSTEM-EXCLUSION
   act_version_date: '2026-07-27'
   kind: applicability
-  subjects:
-  - subject_ref: free_and_open_source_ai_system
-    category: other
+  actors: []
+  targets:
+  - target_ref: free_and_open_source_ai_system
   action: exclude AI systems released under free and open-source licences unless a listed regulated-use
     exception applies
   norm_text: This Regulation does not apply to AI systems released under free and open-source licences,
@@ -978,9 +992,9 @@ norms:
 - norm_id: AIA-NORM-A002-P13-LIMIT-HIGH-RISK-REQUIREMENTS
   act_version_date: '2026-07-27'
   kind: permission
-  subjects:
-  - subject_ref: article_6_1_high_risk_ai_system
-    category: other
+  actors: []
+  targets:
+  - target_ref: article_6_1_high_risk_ai_system
   action: limit specific Article 9 to 15 and 17 to 25 requirements for Article 6(1) high-risk AI systems
     when both protective conditions are satisfied
   norm_text: For high-risk AI systems referred to in Article 6(1), the application of specific requirements
@@ -1050,9 +1064,10 @@ norms:
 - norm_id: AIA-NORM-A002-P13-COMMISSION-DELEGATED-ACTS
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: commission
+  actors:
+  - actor_ref: commission
     category: union_institution_or_body
+  targets: []
   action: adopt delegated acts by 2 August 2027 specifying how the Article 2(13) limitation operates
   norm_text: By 2 August 2027, the Commission shall adopt delegated acts in accordance with Article 97
     in order to supplement this Regulation by specifying the high-risk AI systems concerned, the requirements

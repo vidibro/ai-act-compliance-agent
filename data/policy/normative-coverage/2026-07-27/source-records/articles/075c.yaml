@@ -5,8 +5,10 @@ records:
     comply with the relevant provisions of this Regulation or with commitments made binding pursuant to
     Article 75b, it shall adopt a decision establishing such non-compliance.
   action: adopt a decision establishing detected AI Act or binding-commitment non-compliance
-  subject_ref: ai_office
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: ai_office
+    category: union_institution_or_body
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -22,8 +24,10 @@ records:
   quote: Before adopting a decision pursuant to paragraph 1, the AI Office shall communicate its preliminary
     findings to the operator concerned.
   action: communicate preliminary findings before adopting a non-compliance decision
-  subject_ref: ai_office
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: ai_office
+    category: union_institution_or_body
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -38,8 +42,10 @@ records:
     the preliminary findings.
   action: explain contemplated AI Office measures and measures the operator should take in the preliminary
     findings
-  subject_ref: ai_office
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: ai_office
+    category: union_institution_or_body
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -58,8 +64,10 @@ records:
   mandatory_content:
   - the necessary measures to ensure compliance within a reasonable period specified in the decision
   - information on the measures the operator intends to take to comply with the decision
-  subject_ref: ai_office
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: ai_office
+    category: union_institution_or_body
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -73,8 +81,10 @@ records:
     taken to ensure compliance with the decision upon their implementation.
   action: describe implemented measures ensuring compliance with the AI Office decision, once they are
     implemented
-  subject_ref: article_75_operator
-  subject_category: supported_operator
+  actors:
+  - actor_ref: article_75_operator
+    category: supported_operator
+  targets: []
   conditions:
   - an Article 75c(1) decision ordered the operator to take measures
   - the measures have been implemented
@@ -89,8 +99,10 @@ records:
   quote: Prior to requesting any measure, the AI Office may engage in a structured dialogue with the operator
     of the AI system in question.
   action: conduct a structured dialogue before requesting a measure
-  subject_ref: ai_office
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: ai_office
+    category: union_institution_or_body
+  targets: []
   kind: power
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -101,8 +113,10 @@ records:
   source: A075C-P003
   quote: During this dialogue, the operator may propose commitments in accordance with Article 75b.
   action: propose Article 75b commitments during structured dialogue
-  subject_ref: article_75_operator
-  subject_category: supported_operator
+  actors:
+  - actor_ref: article_75_operator
+    category: supported_operator
+  targets: []
   kind: permission
   product_scope: no_product_action
   product_scope_reason: This is an optional procedural opportunity rather than a standing compliance duty.
@@ -118,8 +132,10 @@ records:
     to the AI Office in the execution of its supervision and enforcement tasks referred to in Article
     75(1).
   action: accompany a non-compliance decision with Article 99 penalties adapted to AI Office enforcement
-  subject_ref: ai_office
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: ai_office
+    category: union_institution_or_body
+  targets: []
   kind: power
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -132,8 +148,10 @@ records:
     99(4):'
   action: expose listed infringements decision breaches and binding-commitment breaches to Article 99(4)
     fines
-  subject_ref: article_75_operator
-  subject_category: supported_operator
+  actors:
+  - actor_ref: article_75_operator
+    category: supported_operator
+  targets: []
   kind: legal_consequence
   mandatory_content:
   - infringement of any applicable AI Act provision
@@ -154,8 +172,10 @@ records:
     request shall be subject to administrative fines as referred to in Article 99(5).
   action: expose incorrect incomplete or misleading requested information supplied to the AI Office to
     Article 99(5) fines
-  subject_ref: article_75_operator
-  subject_category: supported_operator
+  actors:
+  - actor_ref: article_75_operator
+    category: supported_operator
+  targets: []
   kind: legal_consequence
   product_scope: no_product_action
   product_scope_reason: This is an enforcement consequence rather than an independent product action.
@@ -170,8 +190,10 @@ records:
     subject to its competence pursuant to Article 75(1) to the following:'
   action: impose periodic penalty payments compelling specified investigation information inspection correction
     and compliance conduct
-  subject_ref: ai_office
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: ai_office
+    category: union_institution_or_body
+  targets: []
   kind: power
   mandatory_content:
   - submit to investigation
@@ -202,8 +224,10 @@ records:
   action: make periodic penalty payments effective and proportionate and, where applicable, keep them
     within 5 % of average daily income or worldwide annual turnover in the preceding financial year per
     day from the date appointed by the decision
-  subject_ref: ai_office
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: ai_office
+    category: union_institution_or_body
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -222,8 +246,10 @@ records:
     reduce or increase the fine or periodic penalty payment imposed.
   action: review and cancel reduce or increase AI Office fines and periodic penalty payments with unlimited
     jurisdiction
-  subject_ref: court_of_justice_of_the_european_union
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: court_of_justice_of_the_european_union
+    category: union_institution_or_body
+  targets: []
   kind: power
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -235,8 +261,10 @@ records:
   quote: Funds collected through the imposition of fines or periodic penalty payments pursuant to this
     Article shall contribute to the general budget of the Union.
   action: allocate Article 75c fine and periodic-payment funds to the Union general budget
-  subject_ref: union_enforcement_framework
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: union_enforcement_framework
+    category: union_institution_or_body
+  targets: []
   kind: legal_consequence
   product_scope: outside_supported_actor
   product_scope_reason: This institutional consequence is outside the supported operator surface.
@@ -251,8 +279,10 @@ records:
     run on the day on which the infringement ceases.
   action: apply a five-year infringement limitation period from commission or cessation for continuing
     or repeated infringements
-  subject_ref: ai_office_enforcement_power
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: ai_office_enforcement_power
+    category: union_institution_or_body
+  targets: []
   kind: legal_consequence
   product_scope: outside_supported_actor
   product_scope_reason: This institutional consequence is outside the supported operator surface.
@@ -265,8 +295,10 @@ records:
     to a limitation period of five years. The limitation period shall begin to run on the day on which
     the decision becomes final.
   action: apply a five-year final-decision enforcement limitation period
-  subject_ref: ai_office_decision_enforcement_power
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: ai_office_decision_enforcement_power
+    category: union_institution_or_body
+  targets: []
   kind: legal_consequence
   product_scope: outside_supported_actor
   product_scope_reason: This institutional consequence is outside the supported operator surface.
@@ -279,8 +311,10 @@ records:
     of this paragraph, including the circumstances in which the limitation periods shall be interrupted.
   action: specify infringement and decision-enforcement limitation rules including interruption circumstances
     in the Article 75d(3) implementing act
-  subject_ref: commission
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: commission
+    category: union_institution_or_body
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -291,8 +325,10 @@ records:
   quote: Where the AI Office determines that there are no grounds to adopt a decision of non-compliance,
     it shall close the proceeding by a decision. That decision shall apply with immediate effect.
   action: close proceedings immediately by decision when no grounds for non-compliance exist
-  subject_ref: ai_office
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: ai_office
+    category: union_institution_or_body
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required

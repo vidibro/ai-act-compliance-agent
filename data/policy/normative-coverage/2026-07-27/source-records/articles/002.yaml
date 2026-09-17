@@ -6,8 +6,10 @@ records:
     the Union or in a third country
   action: apply the Regulation to providers placing AI systems or general-purpose AI models on the Union
     market or putting AI systems into service in the Union, regardless of establishment
-  subject_ref: provider
-  subject_category: supported_operator
+  actors:
+  - actor_ref: provider
+    category: supported_operator
+  targets: []
   kind: applicability
   verification_mode: answered_by_classification
   qualifier_spans:
@@ -20,8 +22,10 @@ records:
   source: A002-P003
   quote: deployers of AI systems that have their place of establishment or are located within the Union
   action: apply the Regulation to deployers established or located within the Union
-  subject_ref: deployer
-  subject_category: supported_operator
+  actors:
+  - actor_ref: deployer
+    category: supported_operator
+  targets: []
   kind: applicability
   verification_mode: answered_by_classification
   qualifier_spans:
@@ -36,8 +40,10 @@ records:
     a third country, where the output produced by the AI system is used in the Union
   action: apply the Regulation to third-country providers and deployers where the AI system output is
     used in the Union
-  subject_ref: provider_or_deployer
-  subject_category: supported_operator
+  actors:
+  - actor_ref: provider_or_deployer
+    category: supported_operator
+  targets: []
   kind: applicability
   verification_mode: answered_by_classification
   qualifier_spans:
@@ -50,8 +56,10 @@ records:
   source: A002-P005
   quote: importers and distributors of AI systems
   action: apply the Regulation to importers and distributors of AI systems
-  subject_ref: importer_or_distributor
-  subject_category: supported_operator
+  actors:
+  - actor_ref: importer_or_distributor
+    category: supported_operator
+  targets: []
   kind: applicability
   verification_mode: answered_by_classification
   qualifier_spans:
@@ -66,8 +74,10 @@ records:
     their product and under their own name or trademark
   action: apply the Regulation to product manufacturers placing an AI system on the market or putting
     it into service with their product under their name or trademark
-  subject_ref: product_manufacturer
-  subject_category: supported_operator
+  actors:
+  - actor_ref: product_manufacturer
+    category: supported_operator
+  targets: []
   kind: applicability
   verification_mode: answered_by_classification
   qualifier_spans:
@@ -80,8 +90,10 @@ records:
   source: A002-P007
   quote: authorised representatives of providers, which are not established in the Union
   action: apply the Regulation to authorised representatives of providers not established in the Union
-  subject_ref: authorised_representative
-  subject_category: supported_operator
+  actors:
+  - actor_ref: authorised_representative
+    category: supported_operator
+  targets: []
   kind: applicability
   verification_mode: answered_by_classification
   qualifier_spans:
@@ -94,8 +106,10 @@ records:
   source: A002-P008
   quote: affected persons that are located in the Union
   action: apply the Regulation to affected persons located in the Union
-  subject_ref: affected_person
-  subject_category: natural_person
+  actors:
+  - actor_ref: affected_person
+    category: natural_person
+  targets: []
   kind: applicability
   verification_mode: answered_by_classification
   qualifier_spans:
@@ -111,8 +125,9 @@ records:
     6(1), Article 60a and Articles 102 to 112 shall apply.
   action: limit the applicable AI Act provisions for Article 6(1) high-risk systems related to Annex I
     Section B products to Articles 6(1), 60a, and 102 to 112
-  subject_ref: annex_i_section_b_high_risk_system
-  subject_category: other
+  actors: []
+  targets:
+  - target_ref: annex_i_section_b_high_risk_system
   kind: applicability
   conditions:
   - the system is classified as high-risk under Article 6(1)
@@ -129,8 +144,9 @@ records:
     under this Regulation have been integrated in that Union harmonisation legislation.
   action: apply Articles 57 to 59 to Annex I Section B systems only where the AI Act high-risk requirements
     have been integrated into the applicable sectoral legislation
-  subject_ref: annex_i_section_b_high_risk_system
-  subject_category: other
+  actors: []
+  targets:
+  - target_ref: annex_i_section_b_high_risk_system
   kind: applicability
   conditions:
   - the AI Act high-risk requirements are integrated into the applicable Union harmonisation legislation
@@ -148,8 +164,9 @@ records:
   source: A002-P010
   quote: This Regulation does not apply to areas outside the scope of Union law
   action: exclude areas outside the scope of Union law from the Regulation
-  subject_ref: regulation
-  subject_category: other
+  actors: []
+  targets:
+  - target_ref: regulation
   kind: applicability
   product_scope: no_product_action
   product_scope_reason: This constitutional boundary creates no independent product-facing action.
@@ -163,8 +180,10 @@ records:
     to those competences
   action: preserve Member State competences concerning national security regardless of the entity entrusted
     with the relevant tasks
-  subject_ref: member_state
-  subject_category: member_state
+  actors:
+  - actor_ref: member_state
+    category: member_state
+  targets: []
   kind: applicability
   product_scope: no_product_action
   product_scope_reason: This saving clause preserves Member State competence without creating an independent
@@ -180,8 +199,9 @@ records:
     security purposes, regardless of the type of entity carrying out those activities.
   action: exclude AI systems placed on the market, put into service, or used exclusively for military,
     defence, or national-security purposes
-  subject_ref: military_defence_or_national_security_ai_system
-  subject_category: other
+  actors: []
+  targets:
+  - target_ref: military_defence_or_national_security_ai_system
   kind: applicability
   verification_mode: answered_by_classification
   conditions:
@@ -199,8 +219,9 @@ records:
     security purposes, regardless of the type of entity carrying out those activities.
   action: exclude AI systems outside the Union whose output is used in the Union exclusively for military,
     defence, or national-security purposes
-  subject_ref: third_country_military_defence_or_national_security_ai_system
-  subject_category: other
+  actors: []
+  targets:
+  - target_ref: third_country_military_defence_or_national_security_ai_system
   kind: applicability
   verification_mode: answered_by_classification
   conditions:
@@ -223,8 +244,9 @@ records:
   action: exclude qualifying third-country public authorities and international organisations using AI
     systems under law-enforcement or judicial-cooperation arrangements with adequate fundamental-rights
     safeguards
-  subject_ref: third_country_public_authority_or_international_organisation
-  subject_category: other
+  actors: []
+  targets:
+  - target_ref: third_country_public_authority_or_international_organisation
   kind: applicability
   verification_mode: answered_by_classification
   conditions:
@@ -245,8 +267,10 @@ records:
     of intermediary services as set out in Chapter II of Regulation (EU) 2022/2065.
   action: preserve the application of intermediary-service provider liability rules under Chapter II of
     Regulation (EU) 2022/2065
-  subject_ref: intermediary_service_provider
-  subject_category: external_private_party
+  actors:
+  - actor_ref: intermediary_service_provider
+    category: external_private_party
+  targets: []
   kind: applicability
   product_scope: no_product_action
   product_scope_reason: This saving clause preserves another legal regime without creating an independent
@@ -261,8 +285,9 @@ records:
     developed and put into service for the sole purpose of scientific research and development.
   action: exclude AI systems and AI models, including their output, specifically developed and put into
     service solely for scientific research and development
-  subject_ref: scientific_research_and_development_ai_system_or_model
-  subject_category: other
+  actors: []
+  targets:
+  - target_ref: scientific_research_and_development_ai_system_or_model
   kind: applicability
   verification_mode: answered_by_classification
   conditions:
@@ -280,8 +305,9 @@ records:
     Regulation.
   action: preserve the application of Union data-protection, privacy, and communications-confidentiality
     law to personal data processed under the Regulation
-  subject_ref: personal_data_processing_under_the_regulation
-  subject_category: other
+  actors: []
+  targets:
+  - target_ref: personal_data_processing_under_the_regulation
   kind: applicability
   product_scope: no_product_action
   product_scope_reason: This clause confirms the continued application of external law without creating
@@ -296,8 +322,9 @@ records:
     Regulation (EU) 2016/679 or (EU) 2018/1725, or Directive 2002/58/EC or (EU) 2016/680.
   action: preserve the application of the listed Union data-protection and privacy instruments, subject
     to Articles 4a and 59 of the Regulation
-  subject_ref: regulation
-  subject_category: other
+  actors: []
+  targets:
+  - target_ref: regulation
   kind: applicability
   conditions:
   - the saving clause is without prejudice to Articles 4a and 59 of the Regulation
@@ -314,8 +341,9 @@ records:
     systems or AI models prior to their being placed on the market or put into service.
   action: exclude research, testing, and development activities concerning AI systems or AI models before
     they are placed on the market or put into service
-  subject_ref: pre_market_ai_research_testing_or_development_activity
-  subject_category: other
+  actors: []
+  targets:
+  - target_ref: pre_market_ai_research_testing_or_development_activity
   kind: applicability
   verification_mode: answered_by_classification
   conditions:
@@ -330,8 +358,10 @@ records:
   quote: Such activities shall be conducted in accordance with applicable Union law.
   action: conduct pre-market AI research, testing, and development activities in accordance with applicable
     Union law
-  subject_ref: pre_market_ai_research_testing_or_development_actor
-  subject_category: other
+  actors:
+  - actor_ref: pre_market_ai_research_testing_or_development_actor
+    category: external_private_party
+  targets: []
   kind: obligation
   product_scope: no_product_action
   product_scope_reason: This general saving clause does not identify a concrete AI Act requirement that
@@ -344,8 +374,9 @@ records:
   quote: Testing in real world conditions shall not be covered by that exclusion.
   action: keep testing in real-world conditions outside the pre-market research, testing, and development
     exclusion
-  subject_ref: real_world_testing_activity
-  subject_category: other
+  actors: []
+  targets:
+  - target_ref: real_world_testing_activity
   kind: applicability
   verification_mode: answered_by_classification
   implementation_mode: applicability_question
@@ -357,8 +388,9 @@ records:
   quote: This Regulation is without prejudice to the rules laid down by other Union legal acts related
     to consumer protection and product safety.
   action: preserve the application of other Union consumer-protection and product-safety rules
-  subject_ref: regulation
-  subject_category: other
+  actors: []
+  targets:
+  - target_ref: regulation
   kind: applicability
   product_scope: no_product_action
   product_scope_reason: This saving clause preserves other legal regimes without creating an independent
@@ -373,8 +405,10 @@ records:
     in the course of a purely personal non-professional activity.
   action: exclude deployer obligations for natural persons using AI systems in a purely personal non-professional
     activity
-  subject_ref: natural_person_deployer
-  subject_category: supported_operator
+  actors:
+  - actor_ref: natural_person_deployer
+    category: supported_operator
+  targets: []
   kind: applicability
   verification_mode: answered_by_classification
   conditions:
@@ -393,8 +427,12 @@ records:
     application of collective agreements which are more favourable to workers.
   action: maintain or introduce laws, regulations, or administrative provisions that more favourably protect
     workers regarding employers' use of AI systems, or encourage or allow more favourable collective agreements
-  subject_ref: union_or_member_state
-  subject_category: other
+  actors:
+  - actor_ref: union
+    category: union_institution_or_body
+  - actor_ref: member_state
+    category: member_state
+  targets: []
   kind: permission
   product_scope: no_product_action
   product_scope_reason: This permission concerns legislative and administrative powers rather than a product-facing
@@ -413,8 +451,9 @@ records:
     falls under Article 5 or 50.
   action: exclude AI systems released under free and open-source licences unless a listed regulated-use
     exception applies
-  subject_ref: free_and_open_source_ai_system
-  subject_category: other
+  actors: []
+  targets:
+  - target_ref: free_and_open_source_ai_system
   kind: applicability
   verification_mode: answered_by_classification
   conditions:
@@ -434,8 +473,9 @@ records:
     that
   action: limit specific Article 9 to 15 and 17 to 25 requirements for Article 6(1) high-risk AI systems
     when both protective conditions are satisfied
-  subject_ref: article_6_1_high_risk_ai_system
-  subject_category: other
+  actors: []
+  targets:
+  - target_ref: article_6_1_high_risk_ai_system
   kind: permission
   verification_mode: reported_conditionally
   qualifier_spans:
@@ -484,8 +524,10 @@ records:
     or obligations that may be limited, the conditions under which such limitation applies, and the scope
     of the limitation.
   action: adopt delegated acts by 2 August 2027 specifying how the Article 2(13) limitation operates
-  subject_ref: commission
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: commission
+    category: union_institution_or_body
+  targets: []
   kind: obligation
   conditions:
   - the delegated acts are adopted by 2 August 2027

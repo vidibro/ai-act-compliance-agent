@@ -3,9 +3,10 @@ norms:
 - norm_id: AIA-NORM-A076-P1-SUPERVISION-POWERS
   act_version_date: '2026-07-27'
   kind: power
-  subjects:
-  - subject_ref: market_surveillance_authority
+  actors:
+  - actor_ref: market_surveillance_authority
     category: public_authority
+  targets: []
   action: exercise competences and powers to ensure real-world testing complies with this Regulation
   norm_text: Market surveillance authorities shall have competences and powers to ensure that testing
     in real world conditions is in accordance with this Regulation.
@@ -37,9 +38,10 @@ norms:
 - norm_id: AIA-NORM-A076-P1A-ARTICLE-60A-SUBSTITUTIONS
   act_version_date: '2026-07-27'
   kind: applicability
-  subjects:
-  - subject_ref: authority_applying_article_76
+  actors:
+  - actor_ref: authority_applying_article_76
     category: public_authority
+  targets: []
   action: substitute the competent sectoral authority and Article 60a for Article 76 references in Article
     60a testing
   norm_text: Where testing in real world conditions is based on Article 60a, any reference to a market
@@ -75,9 +77,10 @@ norms:
 - norm_id: AIA-NORM-A076-P2-VERIFY-SANDBOX-TESTING
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: market_surveillance_authority
+  actors:
+  - actor_ref: market_surveillance_authority
     category: public_authority
+  targets: []
   action: verify Article 60 compliance when supervising sandbox real-world testing
   norm_text: Where testing in real world conditions is conducted for AI systems that are supervised within
     an AI regulatory sandbox under Article 58, the market surveillance authorities shall verify the compliance
@@ -112,9 +115,10 @@ norms:
 - norm_id: AIA-NORM-A076-P2-ALLOW-DEROGATION
   act_version_date: '2026-07-27'
   kind: power
-  subjects:
-  - subject_ref: market_surveillance_authority
+  actors:
+  - actor_ref: market_surveillance_authority
     category: public_authority
+  targets: []
   action: allow provider-conducted sandbox testing under an appropriate Article 60(4)(f) and (g) derogation
   norm_text: Those authorities may, as appropriate, allow the testing in real world conditions to be conducted
     by the provider or prospective provider, in derogation from the conditions set out in Article 60(4),
@@ -146,9 +150,10 @@ norms:
 - norm_id: AIA-NORM-A076-P3-INTERVENE-IN-TESTING
   act_version_date: '2026-07-27'
   kind: power
-  subjects:
-  - subject_ref: market_surveillance_authority
+  actors:
+  - actor_ref: market_surveillance_authority
     category: public_authority
+  targets: []
   action: suspend terminate or require modification of real-world testing after a serious incident or
     suspected Articles 60 or 61 breach
   norm_text: it may take either of the following decisions on its territory, as appropriate
@@ -185,9 +190,10 @@ norms:
 - norm_id: AIA-NORM-A076-P4-GIVE-GROUNDS-AND-CHALLENGE-ROUTE
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: market_surveillance_authority
+  actors:
+  - actor_ref: market_surveillance_authority
     category: public_authority
+  targets: []
   action: state grounds and the provider's challenge route in a paragraph 3 decision or Article 60(4)(b)
     objection
   norm_text: Where a market surveillance authority has taken a decision referred to in paragraph 3 of
@@ -223,9 +229,10 @@ norms:
 - norm_id: AIA-NORM-A076-P5-COMMUNICATE-GROUNDS
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: market_surveillance_authority
+  actors:
+  - actor_ref: market_surveillance_authority
     category: public_authority
+  targets: []
   action: communicate intervention grounds to authorities in other Member States where planned testing
     occurred
   norm_text: Where applicable, where a market surveillance authority has taken a decision referred to

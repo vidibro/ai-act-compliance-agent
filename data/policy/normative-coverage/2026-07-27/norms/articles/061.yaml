@@ -3,9 +3,10 @@ norms:
 - norm_id: AIA-NORM-A061-P1-OBTAIN-INFORMED-CONSENT
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: provider_or_prospective_provider
+  actors:
+  - actor_ref: provider_or_prospective_provider
     category: supported_operator
+  targets: []
   action: obtain freely given informed consent from the testing subjects before their participation in
     Article 60 testing, after duly informing them with concise, clear, relevant and understandable information
     on every enacted matter
@@ -59,9 +60,10 @@ norms:
 - norm_id: AIA-NORM-A061-P2-DOCUMENT-AND-COPY-CONSENT
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: provider_or_prospective_provider
+  actors:
+  - actor_ref: provider_or_prospective_provider
     category: supported_operator
+  targets: []
   action: date and document the informed consent
   norm_text: The informed consent shall be dated and documented
   detection_channels:
@@ -94,9 +96,10 @@ norms:
 - norm_id: AIA-NORM-A061-P2-GIVE-CONSENT-COPY
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: provider_or_prospective_provider
+  actors:
+  - actor_ref: provider_or_prospective_provider
     category: supported_operator
+  targets: []
   action: give a copy of the informed consent to the subjects of testing or their legal representative
   norm_text: a copy shall be given to the subjects of testing or their legal representative.
   detection_channels:

@@ -9,8 +9,10 @@ records:
     investigate or prosecute criminal offences, subject to appropriate safeguards for the rights and freedoms
     of third parties, unless those systems are available for the public to report a criminal offence.
   action: design direct-interaction systems to inform natural persons they are interacting with AI
-  subject_ref: provider
-  subject_category: supported_operator
+  actors:
+  - actor_ref: provider
+    category: supported_operator
+  targets: []
   implementation_refs:
   - AIA-TR-A50-1
   verification_mode: judged_by_gap_analysis
@@ -36,8 +38,10 @@ records:
     editing or do not substantially alter the input data provided by the deployer or the semantics thereof,
     or where authorised by law to detect, prevent, investigate or prosecute criminal offences.
   action: make synthetic outputs both machine-readably marked and detectable
-  subject_ref: provider
-  subject_category: supported_operator
+  actors:
+  - actor_ref: provider
+    category: supported_operator
+  targets: []
   implementation_refs:
   - AIA-TR-A50-2
   verification_mode: judged_by_gap_analysis
@@ -60,8 +64,10 @@ records:
   source: A050-P3
   quote: shall inform the natural persons exposed thereto of the operation of the system
   action: inform people exposed to emotion recognition or biometric categorisation
-  subject_ref: deployer
-  subject_category: supported_operator
+  actors:
+  - actor_ref: deployer
+    category: supported_operator
+  targets: []
   implementation_refs:
   - AIA-TR-A50-3
   verification_mode: reported_not_judged
@@ -77,8 +83,10 @@ records:
   quote: shall process the personal data in accordance with Regulations (EU) 2016/679 and (EU) 2018/1725
     and Directive (EU) 2016/680
   action: process personal data under the referenced data-protection instruments
-  subject_ref: deployer
-  subject_category: supported_operator
+  actors:
+  - actor_ref: deployer
+    category: supported_operator
+  targets: []
   exceptions:
   - biometric categorisation or emotion recognition permitted by law to detect, prevent, or investigate
     criminal offences, subject to safeguards for third-party rights and freedoms and in accordance with
@@ -95,8 +103,10 @@ records:
     to disclosure of the existence of such generated or manipulated content in an appropriate manner that
     does not hamper the display or enjoyment of the work.
   action: disclose artificial generation or manipulation of deep-fake image, audio, or video
-  subject_ref: deployer
-  subject_category: supported_operator
+  actors:
+  - actor_ref: deployer
+    category: supported_operator
+  targets: []
   implementation_refs:
   - AIA-TR-A50-4
   verification_mode: reported_not_judged
@@ -117,8 +127,10 @@ records:
     a process of human review or editorial control and where a natural or legal person holds editorial
     responsibility for the publication of the content.
   action: disclose artificial generation or manipulation of public-interest text
-  subject_ref: deployer
-  subject_category: supported_operator
+  actors:
+  - actor_ref: deployer
+    category: supported_operator
+  targets: []
   implementation_refs:
   - AIA-TR-A50-4
   verification_mode: reported_not_judged
@@ -135,8 +147,10 @@ records:
     in a clear and distinguishable manner at the latest at the time of the first interaction or exposure.
     The information shall conform to the applicable accessibility requirements.
   action: provide paragraphs 1 to 4 information clearly, distinguishably, on time, and accessibly
-  subject_ref: provider_or_deployer
-  subject_category: supported_operator
+  actors:
+  - actor_ref: provider_or_deployer
+    category: supported_operator
+  targets: []
   implementation_mode: carried_by_other_norm
   implementation_reason: The four existing transparency rules carry this shared qualifier.
   verification_mode: reported_conditionally
@@ -151,8 +165,10 @@ records:
     shall be without prejudice to other transparency obligations laid down in Union or national law for
     deployers of AI systems.
   action: preserve Chapter III and other transparency duties alongside Article 50
-  subject_ref: provider_or_deployer
-  subject_category: supported_operator
+  actors:
+  - actor_ref: provider_or_deployer
+    category: supported_operator
+  targets: []
   kind: applicability
   product_scope: dependency_only
   product_scope_reason: This proposition supplies applicability or content to operator norms.
@@ -166,8 +182,10 @@ records:
     to facilitate the effective implementation of the obligations regarding the detection, marking and
     labelling of artificially generated or manipulated content.
   action: encourage and facilitate Union-level codes of practice
-  subject_ref: commission
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: commission
+    category: union_institution_or_body
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -180,8 +198,10 @@ records:
     to those codes of practice is adequate to ensure compliance with the obligations laid down in paragraphs
     2 and 4 of this Article, in accordance with the procedure laid down in Article 56(6).
   action: assess whether code adherence adequately ensures compliance
-  subject_ref: commission
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: commission
+    category: union_institution_or_body
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -194,8 +214,10 @@ records:
     specifying common rules for the implementation of those obligations in accordance with the examination
     procedure laid down in Article 98(2).
   action: adopt common implementation rules if a code is inadequate
-  subject_ref: commission
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: commission
+    category: union_institution_or_body
+  targets: []
   kind: power
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.

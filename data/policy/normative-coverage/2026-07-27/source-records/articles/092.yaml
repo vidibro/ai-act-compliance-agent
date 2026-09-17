@@ -5,8 +5,10 @@ records:
     model concerned
   action: conduct evaluations of the general-purpose AI model concerned, after consulting the Board, for
     either enacted purpose
-  subject_ref: ai_office
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: ai_office
+    category: union_institution_or_body
+  targets: []
   kind: power
   conditions:
   - the AI Office has consulted the Board
@@ -31,8 +33,10 @@ records:
     including from the scientific panel established pursuant to Article 68. Independent experts appointed
     for this task shall meet the criteria outlined in Article 68(2).
   action: appoint Article 68(2)-qualified independent experts to carry out evaluations for the Commission
-  subject_ref: commission
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: commission
+    category: union_institution_or_body
+  targets: []
   kind: power
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -44,8 +48,10 @@ records:
   quote: For the purposes of paragraph 1, the Commission may request access to the general-purpose AI
     model concerned through APIs or further appropriate technical means and tools, including source code.
   action: request access to the GPAI model through APIs source code or other appropriate technical means
-  subject_ref: commission
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: commission
+    category: union_institution_or_body
+  targets: []
   kind: power
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -61,8 +67,10 @@ records:
     for failure to provide access.
   action: include legal basis purpose reasons access period and applicable Article 101 fines in a model-access
     request
-  subject_ref: commission
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: commission
+    category: union_institution_or_body
+  targets: []
   mandatory_content:
   - legal basis
   - purpose and reasons
@@ -78,8 +86,10 @@ records:
   quote: The providers of the general-purpose AI model concerned or its representative shall supply the
     information requested.
   action: supply the information requested following a Commission request for model access
-  subject_ref: gpai_provider_or_representative
-  subject_category: supported_operator
+  actors:
+  - actor_ref: gpai_provider_or_representative
+    category: supported_operator
+  targets: []
   conditions:
   - the Commission requested access to the model under Article 92(3)
   implementation_refs:
@@ -92,8 +102,10 @@ records:
     the persons authorised to represent them by law or by their statutes, shall provide the access requested
     on behalf of the provider of the general-purpose AI model concerned.
   action: provide requested model access on behalf of a legal-person or non-legal-personality GPAI provider
-  subject_ref: legally_or_statutorily_authorised_representative
-  subject_category: external_private_party
+  actors:
+  - actor_ref: legally_or_statutorily_authorised_representative
+    category: external_private_party
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -112,8 +124,10 @@ records:
     examination procedure referred to in Article 98(2).
   action: adopt evaluation arrangements conditions and independent-expert selection procedures through
     the Article 98(2) examination procedure
-  subject_ref: commission
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: commission
+    category: union_institution_or_body
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -127,8 +141,10 @@ records:
     internal procedures and measures the provider has taken to mitigate such risks.
   action: initiate pre-access dialogue about internal testing safeguards procedures and systemic-risk
     mitigations
-  subject_ref: ai_office
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: ai_office
+    category: union_institution_or_body
+  targets: []
   kind: power
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.

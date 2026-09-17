@@ -3,9 +3,10 @@ norms:
 - norm_id: AIA-NORM-A086-P1-PROVIDE-EXPLANATION
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: deployer
+  actors:
+  - actor_ref: deployer
     category: supported_operator
+  targets: []
   action: provide a clear meaningful explanation of the AI system's decision-making role and the decision's
     main elements to an eligible affected person
   norm_text: Any affected person subject to a decision which is taken by the deployer on the basis of
@@ -49,9 +50,10 @@ norms:
 - norm_id: AIA-NORM-A086-P1-RIGHT-TO-EXPLANATION
   act_version_date: '2026-07-27'
   kind: entitlement
-  subjects:
-  - subject_ref: affected_person
+  actors:
+  - actor_ref: affected_person
     category: natural_person
+  targets: []
   action: obtain a clear meaningful explanation from the deployer when an eligible Annex III system-based
     decision adversely affects the person
   norm_text: shall have the right to obtain from the deployer clear and meaningful explanations
@@ -89,9 +91,10 @@ norms:
 - norm_id: AIA-NORM-A086-P2-LEGAL-EXCEPTIONS
   act_version_date: '2026-07-27'
   kind: applicability
-  subjects:
-  - subject_ref: deployer
+  actors:
+  - actor_ref: deployer
     category: supported_operator
+  targets: []
   action: disapply paragraph 1 to the extent compliant Union or national law supplies an exception or
     restriction
   norm_text: Paragraph 1 shall not apply to the use of AI systems for which exceptions from, or restrictions
@@ -126,9 +129,10 @@ norms:
 - norm_id: AIA-NORM-A086-P3-SUBSIDIARY-RIGHT
   act_version_date: '2026-07-27'
   kind: applicability
-  subjects:
-  - subject_ref: authority_applying_article_86
+  actors:
+  - actor_ref: authority_applying_article_86
     category: public_authority
+  targets: []
   action: apply Article 86 only where Union law does not otherwise provide the explanation right
   norm_text: This Article shall apply only to the extent that the right referred to in paragraph 1 is
     not otherwise provided for under Union law.

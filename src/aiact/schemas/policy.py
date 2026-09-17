@@ -22,7 +22,7 @@ from aiact.schemas.enums import (
     RiskClass,
     TransparencyDuty,
 )
-from aiact.schemas.norm import ConditionGroup, NormKind, SubjectCategory, VerificationMode
+from aiact.schemas.norm import ActorCategory, ConditionGroup, NormKind, VerificationMode
 
 
 class LegalSource(BaseModel):
@@ -98,7 +98,8 @@ class RuleCriterion(BaseModel):
 
     norm_id: str = Field(pattern=r"^AIA-NORM-[A-Z0-9-]+$")
     kind: NormKind
-    subjects: list[str] = Field(min_length=1)
+    actors: list[str] = Field(min_length=1)
+    targets: list[str]
     action: str = Field(min_length=1)
     norm_text: str = Field(min_length=1)
     conditions: list[str | ConditionGroup]
@@ -132,14 +133,16 @@ class ReportNorm(BaseModel):
 
     norm_id: str = Field(pattern=r"^AIA-NORM-[A-Z0-9-]+$")
     kind: NormKind
-    subjects: list[str] = Field(min_length=1)
-    subject_categories: list[SubjectCategory] = Field(min_length=1)
+    actors: list[str]
+    actor_categories: list[ActorCategory]
+    targets: list[str]
     action: str = Field(min_length=1)
     norm_text: str = Field(min_length=1)
     conditions: list[str | ConditionGroup]
     exceptions: list[str]
     source_spans: list[str] = Field(min_length=1)
     activation_rule_ids: list[str] = Field(min_length=1)
+    verification_mode: VerificationMode
 
 
 class PolicyRule(BaseModel):
@@ -371,11 +374,11 @@ class PolicyRule(BaseModel):
                 "deterministic "
                 "assessment treatment."
             )
-        subject_sets = {tuple(criterion.subjects) for criterion in self.criteria}
-        if len(subject_sets) > 1:
+        actor_sets = {tuple(criterion.actors) for criterion in self.criteria}
+        if len(actor_sets) > 1:
             raise ValueError(
-                f"PolicyRule {self.rule_id!r}: criteria name different subjects. Split rules by "
-                "duty-holder before they reach the report."
+                f"PolicyRule {self.rule_id!r}: criteria name different actors. Split rules by "
+                "actor before they reach the report."
             )
         if (
             self.criteria

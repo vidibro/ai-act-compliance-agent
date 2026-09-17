@@ -3,9 +3,9 @@ norms:
 - norm_id: AIA-NORM-ANNEX-I-01-MACHINERY-DIRECTIVE
   act_version_date: '2026-07-27'
   kind: applicability
-  subjects:
-  - subject_ref: annex_i_product_or_safety_component
-    category: other
+  actors: []
+  targets:
+  - target_ref: annex_i_product_or_safety_component
   action: include products covered by Directive 2006/42/EC on machinery in the Annex I Section A harmonisation-legislation
     scope
   norm_text: Directive 2006/42/EC
@@ -41,9 +41,9 @@ norms:
 - norm_id: AIA-NORM-ANNEX-I-02-TOY-SAFETY
   act_version_date: '2026-07-27'
   kind: applicability
-  subjects:
-  - subject_ref: annex_i_product_or_safety_component
-    category: other
+  actors: []
+  targets:
+  - target_ref: annex_i_product_or_safety_component
   action: include products covered by Directive 2009/48/EC on toy safety in the Annex I Section A harmonisation-legislation
     scope
   norm_text: Directive 2009/48/EC
@@ -79,9 +79,9 @@ norms:
 - norm_id: AIA-NORM-ANNEX-I-03-RECREATIONAL-CRAFT
   act_version_date: '2026-07-27'
   kind: applicability
-  subjects:
-  - subject_ref: annex_i_product_or_safety_component
-    category: other
+  actors: []
+  targets:
+  - target_ref: annex_i_product_or_safety_component
   action: include products covered by Directive 2013/53/EU on recreational craft and personal watercraft
     in the Annex I Section A harmonisation-legislation scope
   norm_text: Directive 2013/53/EU
@@ -117,9 +117,9 @@ norms:
 - norm_id: AIA-NORM-ANNEX-I-04-LIFTS
   act_version_date: '2026-07-27'
   kind: applicability
-  subjects:
-  - subject_ref: annex_i_product_or_safety_component
-    category: other
+  actors: []
+  targets:
+  - target_ref: annex_i_product_or_safety_component
   action: include products covered by Directive 2014/33/EU on lifts and lift safety components in the
     Annex I Section A harmonisation-legislation scope
   norm_text: Directive 2014/33/EU
@@ -155,9 +155,9 @@ norms:
 - norm_id: AIA-NORM-ANNEX-I-05-EXPLOSIVE-ATMOSPHERES
   act_version_date: '2026-07-27'
   kind: applicability
-  subjects:
-  - subject_ref: annex_i_product_or_safety_component
-    category: other
+  actors: []
+  targets:
+  - target_ref: annex_i_product_or_safety_component
   action: include products covered by Directive 2014/34/EU on equipment and protective systems for potentially
     explosive atmospheres in the Annex I Section A harmonisation-legislation scope
   norm_text: Directive 2014/34/EU
@@ -193,9 +193,9 @@ norms:
 - norm_id: AIA-NORM-ANNEX-I-06-RADIO-EQUIPMENT
   act_version_date: '2026-07-27'
   kind: applicability
-  subjects:
-  - subject_ref: annex_i_product_or_safety_component
-    category: other
+  actors: []
+  targets:
+  - target_ref: annex_i_product_or_safety_component
   action: include products covered by Directive 2014/53/EU on radio equipment in the Annex I Section A
     harmonisation-legislation scope
   norm_text: Directive 2014/53/EU
@@ -231,9 +231,9 @@ norms:
 - norm_id: AIA-NORM-ANNEX-I-07-PRESSURE-EQUIPMENT
   act_version_date: '2026-07-27'
   kind: applicability
-  subjects:
-  - subject_ref: annex_i_product_or_safety_component
-    category: other
+  actors: []
+  targets:
+  - target_ref: annex_i_product_or_safety_component
   action: include products covered by Directive 2014/68/EU on pressure equipment in the Annex I Section
     A harmonisation-legislation scope
   norm_text: Directive 2014/68/EU
@@ -269,9 +269,9 @@ norms:
 - norm_id: AIA-NORM-ANNEX-I-08-CABLEWAYS
   act_version_date: '2026-07-27'
   kind: applicability
-  subjects:
-  - subject_ref: annex_i_product_or_safety_component
-    category: other
+  actors: []
+  targets:
+  - target_ref: annex_i_product_or_safety_component
   action: include products covered by Regulation (EU) 2016/424 on cableway installations in the Annex
     I Section A harmonisation-legislation scope
   norm_text: Regulation (EU) 2016/424
@@ -307,9 +307,9 @@ norms:
 - norm_id: AIA-NORM-ANNEX-I-09-PERSONAL-PROTECTIVE-EQUIPMENT
   act_version_date: '2026-07-27'
   kind: applicability
-  subjects:
-  - subject_ref: annex_i_product_or_safety_component
-    category: other
+  actors: []
+  targets:
+  - target_ref: annex_i_product_or_safety_component
   action: include products covered by Regulation (EU) 2016/425 on personal protective equipment in the
     Annex I Section A harmonisation-legislation scope
   norm_text: Regulation (EU) 2016/425
@@ -345,9 +345,9 @@ norms:
 - norm_id: AIA-NORM-ANNEX-I-10-GAS-APPLIANCES
   act_version_date: '2026-07-27'
   kind: applicability
-  subjects:
-  - subject_ref: annex_i_product_or_safety_component
-    category: other
+  actors: []
+  targets:
+  - target_ref: annex_i_product_or_safety_component
   action: include products covered by Regulation (EU) 2016/426 on appliances burning gaseous fuels in
     the Annex I Section A harmonisation-legislation scope
   norm_text: Regulation (EU) 2016/426
@@ -383,9 +383,9 @@ norms:
 - norm_id: AIA-NORM-ANNEX-I-11-MEDICAL-DEVICES
   act_version_date: '2026-07-27'
   kind: applicability
-  subjects:
-  - subject_ref: annex_i_product_or_safety_component
-    category: other
+  actors: []
+  targets:
+  - target_ref: annex_i_product_or_safety_component
   action: include products covered by Regulation (EU) 2017/745 on medical devices in the Annex I Section
     A harmonisation-legislation scope
   norm_text: Regulation (EU) 2017/745
@@ -421,9 +421,9 @@ norms:
 - norm_id: AIA-NORM-ANNEX-I-12-IN-VITRO-DIAGNOSTICS
   act_version_date: '2026-07-27'
   kind: applicability
-  subjects:
-  - subject_ref: annex_i_product_or_safety_component
-    category: other
+  actors: []
+  targets:
+  - target_ref: annex_i_product_or_safety_component
   action: include products covered by Regulation (EU) 2017/746 on in vitro diagnostic medical devices
     in the Annex I Section A harmonisation-legislation scope
   norm_text: Regulation (EU) 2017/746
@@ -459,9 +459,9 @@ norms:
 - norm_id: AIA-NORM-ANNEX-I-13-AVIATION-SECURITY
   act_version_date: '2026-07-27'
   kind: applicability
-  subjects:
-  - subject_ref: annex_i_product_or_safety_component
-    category: other
+  actors: []
+  targets:
+  - target_ref: annex_i_product_or_safety_component
   action: include products covered by Regulation (EC) No 300/2008 on civil-aviation security in the Annex
     I Section B harmonisation-legislation scope
   norm_text: Regulation (EC) No 300/2008
@@ -497,9 +497,9 @@ norms:
 - norm_id: AIA-NORM-ANNEX-I-14-L-CATEGORY-VEHICLES
   act_version_date: '2026-07-27'
   kind: applicability
-  subjects:
-  - subject_ref: annex_i_product_or_safety_component
-    category: other
+  actors: []
+  targets:
+  - target_ref: annex_i_product_or_safety_component
   action: include products covered by Regulation (EU) No 168/2013 on two- or three-wheel vehicles and
     quadricycles in the Annex I Section B harmonisation-legislation scope
   norm_text: Regulation (EU) No 168/2013
@@ -535,9 +535,9 @@ norms:
 - norm_id: AIA-NORM-ANNEX-I-15-AGRICULTURAL-FORESTRY-VEHICLES
   act_version_date: '2026-07-27'
   kind: applicability
-  subjects:
-  - subject_ref: annex_i_product_or_safety_component
-    category: other
+  actors: []
+  targets:
+  - target_ref: annex_i_product_or_safety_component
   action: include products covered by Regulation (EU) No 167/2013 on agricultural and forestry vehicles
     in the Annex I Section B harmonisation-legislation scope
   norm_text: Regulation (EU) No 167/2013
@@ -573,9 +573,9 @@ norms:
 - norm_id: AIA-NORM-ANNEX-I-16-MARINE-EQUIPMENT
   act_version_date: '2026-07-27'
   kind: applicability
-  subjects:
-  - subject_ref: annex_i_product_or_safety_component
-    category: other
+  actors: []
+  targets:
+  - target_ref: annex_i_product_or_safety_component
   action: include products covered by Directive 2014/90/EU on marine equipment in the Annex I Section
     B harmonisation-legislation scope
   norm_text: Directive 2014/90/EU
@@ -611,9 +611,9 @@ norms:
 - norm_id: AIA-NORM-ANNEX-I-17-RAIL-INTEROPERABILITY
   act_version_date: '2026-07-27'
   kind: applicability
-  subjects:
-  - subject_ref: annex_i_product_or_safety_component
-    category: other
+  actors: []
+  targets:
+  - target_ref: annex_i_product_or_safety_component
   action: include products covered by Directive (EU) 2016/797 on Union rail-system interoperability in
     the Annex I Section B harmonisation-legislation scope
   norm_text: Directive (EU) 2016/797
@@ -649,9 +649,9 @@ norms:
 - norm_id: AIA-NORM-ANNEX-I-18-MOTOR-VEHICLE-APPROVAL
   act_version_date: '2026-07-27'
   kind: applicability
-  subjects:
-  - subject_ref: annex_i_product_or_safety_component
-    category: other
+  actors: []
+  targets:
+  - target_ref: annex_i_product_or_safety_component
   action: include products covered by Regulation (EU) 2018/858 on motor-vehicle approval and market surveillance
     in the Annex I Section B harmonisation-legislation scope
   norm_text: Regulation (EU) 2018/858
@@ -687,9 +687,9 @@ norms:
 - norm_id: AIA-NORM-ANNEX-I-19-MOTOR-VEHICLE-GENERAL-SAFETY
   act_version_date: '2026-07-27'
   kind: applicability
-  subjects:
-  - subject_ref: annex_i_product_or_safety_component
-    category: other
+  actors: []
+  targets:
+  - target_ref: annex_i_product_or_safety_component
   action: include products covered by Regulation (EU) 2019/2144 on motor-vehicle general safety in the
     Annex I Section B harmonisation-legislation scope
   norm_text: Regulation (EU) 2019/2144
@@ -725,9 +725,9 @@ norms:
 - norm_id: AIA-NORM-ANNEX-I-20-UNMANNED-AIRCRAFT
   act_version_date: '2026-07-27'
   kind: applicability
-  subjects:
-  - subject_ref: annex_i_product_or_safety_component
-    category: other
+  actors: []
+  targets:
+  - target_ref: annex_i_product_or_safety_component
   action: include the specified unmanned-aircraft products covered by Regulation (EU) 2018/1139 in the
     Annex I Section B harmonisation-legislation scope
   norm_text: Regulation (EU) 2018/1139
@@ -766,9 +766,9 @@ norms:
 - norm_id: AIA-NORM-ANNEX-I-21-MACHINERY-REGULATION
   act_version_date: '2026-07-27'
   kind: applicability
-  subjects:
-  - subject_ref: annex_i_product_or_safety_component
-    category: other
+  actors: []
+  targets:
+  - target_ref: annex_i_product_or_safety_component
   action: include products covered by Regulation (EU) 2023/1230 on machinery in the Annex I Section B
     harmonisation-legislation scope
   norm_text: Regulation (EU) 2023/1230

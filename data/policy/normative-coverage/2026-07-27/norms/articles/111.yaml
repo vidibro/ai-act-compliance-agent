@@ -3,9 +3,10 @@ norms:
 - norm_id: AIA-NORM-A111-P1-BRING-LARGE-SCALE-IT-INTO-COMPLIANCE
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: annex_x_large_scale_it_system_operator
+  actors:
+  - actor_ref: annex_x_large_scale_it_system_operator
     category: supported_operator
+  targets: []
   action: bring pre-2-August-2027 Annex X large-scale IT system AI components into AI Act compliance by
     31 December 2030
   norm_text: Without prejudice to the application of Article 5 as referred to in Article 113(3), point
@@ -45,9 +46,10 @@ norms:
 - norm_id: AIA-NORM-A111-P1-ACCOUNT-FOR-REQUIREMENTS-IN-EVALUATION
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: large_scale_it_system_evaluator
+  actors:
+  - actor_ref: large_scale_it_system_evaluator
     category: public_authority
+  targets: []
   action: account for AI Act requirements when evaluating or replacing each Annex X large-scale IT system
   norm_text: The requirements laid down in this Regulation shall be taken into account in the evaluation
   detection_channels:
@@ -78,9 +80,9 @@ norms:
 - norm_id: AIA-NORM-A111-P2-LEGACY-HIGH-RISK-APPLICABILITY
   act_version_date: '2026-07-27'
   kind: applicability
-  subjects:
-  - subject_ref: regulation
-    category: other
+  actors: []
+  targets:
+  - target_ref: regulation
   action: apply the Regulation to legacy high-risk systems other than paragraph 1 systems only when their
     design changes significantly from the Chapter III application date
   norm_text: Without prejudice to the application of Article 5 as referred to in Article 113, third paragraph,
@@ -122,9 +124,10 @@ norms:
 - norm_id: AIA-NORM-A111-P2-PUBLIC-AUTHORITY-SYSTEM-COMPLIANCE
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: high_risk_provider_and_deployer
+  actors:
+  - actor_ref: high_risk_provider_and_deployer
     category: supported_operator
+  targets: []
   action: bring legacy high-risk systems intended for public-authority use into compliance by 2 August
     2030
   norm_text: In any case, the providers and deployers of high-risk AI systems intended to be used by public
@@ -159,9 +162,10 @@ norms:
 - norm_id: AIA-NORM-A111-P3-LEGACY-GPAI-COMPLIANCE
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: gpai_provider
+  actors:
+  - actor_ref: gpai_provider
     category: supported_operator
+  targets: []
   action: bring GPAI models placed on the market before 2 August 2025 into compliance by 2 August 2027
   norm_text: Providers of general-purpose AI models that have been placed on the market before 2 August
     2025 shall take the necessary steps in order to comply with the obligations laid down in this Regulation
@@ -195,9 +199,10 @@ norms:
 - norm_id: AIA-NORM-A111-P4-LEGACY-SYNTHETIC-CONTENT-COMPLIANCE
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: synthetic_content_ai_provider
+  actors:
+  - actor_ref: synthetic_content_ai_provider
     category: supported_operator
+  targets: []
   action: bring pre-2-August-2026 synthetic-content-generating AI systems into Article 50(2) compliance
     by 2 December 2026
   norm_text: Providers of AI systems, including general-purpose AI systems, generating synthetic audio,

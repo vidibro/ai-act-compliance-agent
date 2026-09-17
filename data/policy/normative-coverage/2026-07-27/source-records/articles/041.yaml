@@ -6,8 +6,10 @@ records:
     and 3 of Chapter V where the following conditions have been fulfilled
   action: adopt implementing acts establishing common specifications when the enacted standardisation
     conditions are fulfilled
-  subject_ref: commission
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: commission
+    category: union_institution_or_body
+  targets: []
   kind: power
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -42,8 +44,10 @@ records:
   quote: When drafting the common specifications, the Commission shall consult the advisory forum referred
     to in Article 67.
   action: consult the Article 67 advisory forum when drafting common specifications
-  subject_ref: commission
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: commission
+    category: union_institution_or_body
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -57,8 +61,10 @@ records:
   quote: The implementing acts referred to in the first subparagraph of this paragraph shall be adopted
     in accordance with the examination procedure referred to in Article 98(2).
   action: adopt common-specification implementing acts under the Article 98(2) examination procedure
-  subject_ref: commission
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: commission
+    category: union_institution_or_body
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -71,8 +77,10 @@ records:
     1 of this Article to be fulfilled.
   action: inform the Article 22 standardisation committee that paragraph 1 conditions are fulfilled before
     drafting the act
-  subject_ref: commission
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: commission
+    category: union_institution_or_body
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -87,8 +95,9 @@ records:
     requirements or those obligations.
   action: presume covered Chapter III Section 2 or Chapter V Sections 2 and 3 conformity from compliance
     with common specifications
-  subject_ref: high_risk_ai_system_or_general_purpose_ai_model
-  subject_category: other
+  actors: []
+  targets:
+  - target_ref: high_risk_ai_system_or_general_purpose_ai_model
   kind: legal_consequence
   implementation_mode: missing
   verification_mode: reported_conditionally
@@ -102,8 +111,10 @@ records:
     to the Commission for the publication of its reference in the Official Journal of the European Union,
     the Commission shall assess the harmonised standard in accordance with Regulation (EU) No 1025/2012.
   action: assess a proposed harmonised standard under Regulation 1025/2012 before reference publication
-  subject_ref: commission
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: commission
+    category: union_institution_or_body
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -120,8 +131,10 @@ records:
     which cover the same requirements set out in Section 2 of this Chapter or, as applicable, the same
     obligations set out in Sections 2 and 3 of Chapter V.
   action: repeal common-specification acts or parts overlapping a published harmonised standard
-  subject_ref: commission
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: commission
+    category: union_institution_or_body
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -138,8 +151,10 @@ records:
     with the obligations set out in Sections 2 and 3 of Chapter V to a level at least equivalent thereto.
   action: duly justify technical solutions providing at least equivalent compliance when common specifications
     are not followed
-  subject_ref: provider
-  subject_category: supported_operator
+  actors:
+  - actor_ref: provider
+    category: supported_operator
+  targets: []
   verification_mode: reported_not_judged
   conditions:
   - the provider does not comply with the paragraph 1 common specifications
@@ -152,8 +167,10 @@ records:
     set out in Section 2 or, as applicable, comply with obligations set out in Sections 2 and 3 of Chapter
     V, it shall inform the Commission thereof with a detailed explanation.
   action: inform the Commission with a detailed explanation of deficiencies in a common specification
-  subject_ref: member_state
-  subject_category: member_state
+  actors:
+  - actor_ref: member_state
+    category: member_state
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -169,8 +186,10 @@ records:
     establishing the common specification concerned.
   action: assess Member-State information about a deficient common specification and, if appropriate,
     amend the implementing act establishing it
-  subject_ref: commission
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: commission
+    category: union_institution_or_body
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required

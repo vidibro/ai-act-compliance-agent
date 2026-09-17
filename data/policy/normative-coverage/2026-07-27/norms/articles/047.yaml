@@ -3,9 +3,10 @@ norms:
 - norm_id: AIA-NORM-A047-P1-DRAW-UP-DECLARATION
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: provider
+  actors:
+  - actor_ref: provider
     category: supported_operator
+  targets: []
   action: draw up a written machine-readable, physical, or electronically signed declaration for each
     high-risk system and keep it available to national competent authorities for 10 years after market
     placement or service
@@ -46,9 +47,10 @@ norms:
 - norm_id: AIA-NORM-A047-P1-IDENTIFY-SYSTEM
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: provider
+  actors:
+  - actor_ref: provider
     category: supported_operator
+  targets: []
   action: identify the specific high-risk system covered by the declaration
   norm_text: The EU declaration of conformity shall identify the high-risk AI system for which it has
     been drawn up.
@@ -82,9 +84,10 @@ norms:
 - norm_id: AIA-NORM-A047-P1-SUBMIT-ON-REQUEST
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: provider
+  actors:
+  - actor_ref: provider
     category: supported_operator
+  targets: []
   action: submit a declaration copy to relevant national competent authorities on request
   norm_text: A copy of the EU declaration of conformity shall be submitted to the relevant national competent
     authorities upon request.
@@ -118,9 +121,10 @@ norms:
 - norm_id: AIA-NORM-A047-P2-STATE-SECTION-2-COMPLIANCE
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: provider
+  actors:
+  - actor_ref: provider
     category: supported_operator
+  targets: []
   action: state that the covered high-risk system meets Chapter III Section 2 requirements
   norm_text: The EU declaration of conformity shall state that the high-risk AI system concerned meets
     the requirements set out in Section 2.
@@ -154,9 +158,10 @@ norms:
 - norm_id: AIA-NORM-A047-P2-ANNEX-V-CONTENT
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: provider
+  actors:
+  - actor_ref: provider
     category: supported_operator
+  targets: []
   action: include every Annex V information item in the declaration and translate it into an easily understood
     language for authorities in every Member State where the system is placed on the market or made available
   norm_text: The EU declaration of conformity shall contain the information set out in Annex V, and shall
@@ -195,9 +200,10 @@ norms:
 - norm_id: AIA-NORM-A047-P3-SINGLE-DECLARATION
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: provider
+  actors:
+  - actor_ref: provider
     category: supported_operator
+  targets: []
   action: draw up one declaration covering all applicable Union law when other harmonisation legislation
     also requires one
   norm_text: Where high-risk AI systems are subject to other Union harmonisation legislation which also
@@ -233,9 +239,10 @@ norms:
 - norm_id: AIA-NORM-A047-P3-IDENTIFY-LEGISLATION
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: provider
+  actors:
+  - actor_ref: provider
     category: supported_operator
+  targets: []
   action: include all information needed to identify every Union harmonisation law covered
   norm_text: The declaration shall contain all the information required to identify the Union harmonisation
     legislation to which the declaration relates.
@@ -271,9 +278,10 @@ norms:
 - norm_id: AIA-NORM-A047-P4-ASSUME-RESPONSIBILITY
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: provider
+  actors:
+  - actor_ref: provider
     category: supported_operator
+  targets: []
   action: assume responsibility for Section 2 compliance by drawing up the declaration
   norm_text: By drawing up the EU declaration of conformity, the provider shall assume responsibility
     for compliance with the requirements set out in Section 2.
@@ -307,9 +315,10 @@ norms:
 - norm_id: AIA-NORM-A047-P4-KEEP-CURRENT
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: provider
+  actors:
+  - actor_ref: provider
     category: supported_operator
+  targets: []
   action: keep the declaration of conformity current as appropriate
   norm_text: The provider shall keep the EU declaration of conformity up-to-date as appropriate.
   detection_channels:
@@ -342,9 +351,10 @@ norms:
 - norm_id: AIA-NORM-A047-P5-AMEND-ANNEX-V
   act_version_date: '2026-07-27'
   kind: power
-  subjects:
-  - subject_ref: commission
+  actors:
+  - actor_ref: commission
     category: union_institution_or_body
+  targets: []
   action: amend Annex V declaration content to introduce elements required by technical progress
   norm_text: The Commission is empowered to adopt delegated acts in accordance with Article 97 in order
     to amend Annex V by updating the content of the EU declaration of conformity set out in that Annex,

@@ -3,9 +3,10 @@ norms:
 - norm_id: AIA-NORM-A095-P1-ENCOURAGE-NON-HIGH-RISK-CODES
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: ai_office_and_member_states
+  actors:
+  - actor_ref: ai_office_and_member_states
     category: public_authority
+  targets: []
   action: encourage and facilitate codes and governance mechanisms for voluntary Chapter III Section 2
     application to non-high-risk systems
   norm_text: The AI Office and the Member States shall encourage and facilitate the drawing up of codes
@@ -41,9 +42,10 @@ norms:
 - norm_id: AIA-NORM-A095-P2-FACILITATE-SPECIFIC-REQUIREMENT-CODES
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: ai_office_and_member_states
+  actors:
+  - actor_ref: ai_office_and_member_states
     category: public_authority
+  targets: []
   action: facilitate the drawing up of codes of conduct for the voluntary application of specific requirements
     to all AI systems, on the basis of clear objectives and key performance indicators; the elements listed
     are examples and are not exhaustive, and applying the requirements stays voluntary
@@ -87,9 +89,10 @@ norms:
 - norm_id: AIA-NORM-A095-P3-DRAW-UP-VOLUNTARY-CODES
   act_version_date: '2026-07-27'
   kind: power
-  subjects:
-  - subject_ref: provider_deployer_or_representative_organisation
+  actors:
+  - actor_ref: provider_deployer_or_representative_organisation
     category: supported_operator
+  targets: []
   action: draw up a voluntary code individually jointly or through representative organisations and cover
     one or more similarly purposed systems
   norm_text: Codes of conduct may be drawn up by individual providers or deployers of AI systems or by
@@ -126,9 +129,10 @@ norms:
 - norm_id: AIA-NORM-A095-P4-ACCOUNT-FOR-SMALL-BUSINESS-NEEDS
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: ai_office_and_member_states
+  actors:
+  - actor_ref: ai_office_and_member_states
     category: public_authority
+  targets: []
   action: account for SME start-up and SMC interests and needs when encouraging and facilitating codes
   norm_text: The AI Office and the Member States shall take into account the specific interests and needs
     of SMEs, including start-ups, and SMCs, when encouraging and facilitating the drawing up of codes

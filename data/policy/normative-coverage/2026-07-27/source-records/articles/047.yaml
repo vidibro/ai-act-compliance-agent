@@ -7,8 +7,10 @@ records:
   action: draw up a written machine-readable, physical, or electronically signed declaration for each
     high-risk system and keep it available to national competent authorities for 10 years after market
     placement or service
-  subject_ref: provider
-  subject_category: supported_operator
+  actors:
+  - actor_ref: provider
+    category: supported_operator
+  targets: []
   implementation_refs:
   - AIA-PO-A47
   verification_mode: reported_not_judged
@@ -22,8 +24,10 @@ records:
   quote: The EU declaration of conformity shall identify the high-risk AI system for which it has been
     drawn up.
   action: identify the specific high-risk system covered by the declaration
-  subject_ref: provider
-  subject_category: supported_operator
+  actors:
+  - actor_ref: provider
+    category: supported_operator
+  targets: []
   implementation_refs:
   - AIA-PO-A47
   verification_mode: reported_not_judged
@@ -33,8 +37,10 @@ records:
   quote: A copy of the EU declaration of conformity shall be submitted to the relevant national competent
     authorities upon request.
   action: submit a declaration copy to relevant national competent authorities on request
-  subject_ref: provider
-  subject_category: supported_operator
+  actors:
+  - actor_ref: provider
+    category: supported_operator
+  targets: []
   implementation_refs:
   - AIA-PO-A47
   verification_mode: reported_not_judged
@@ -44,8 +50,10 @@ records:
   quote: The EU declaration of conformity shall state that the high-risk AI system concerned meets the
     requirements set out in Section 2.
   action: state that the covered high-risk system meets Chapter III Section 2 requirements
-  subject_ref: provider
-  subject_category: supported_operator
+  actors:
+  - actor_ref: provider
+    category: supported_operator
+  targets: []
   implementation_refs:
   - AIA-PO-A47-2
   verification_mode: reported_not_judged
@@ -57,8 +65,10 @@ records:
     of the Member States in which the high-risk AI system is placed on the market or made available.
   action: include every Annex V information item in the declaration and translate it into an easily understood
     language for authorities in every Member State where the system is placed on the market or made available
-  subject_ref: provider
-  subject_category: supported_operator
+  actors:
+  - actor_ref: provider
+    category: supported_operator
+  targets: []
   implementation_refs:
   - AIA-PO-A47-2
   verification_mode: reported_not_judged
@@ -74,8 +84,10 @@ records:
     of all Union law applicable to the high-risk AI system.
   action: draw up one declaration covering all applicable Union law when other harmonisation legislation
     also requires one
-  subject_ref: provider
-  subject_category: supported_operator
+  actors:
+  - actor_ref: provider
+    category: supported_operator
+  targets: []
   implementation_refs:
   - AIA-PO-A47-3
   verification_mode: reported_not_judged
@@ -85,8 +97,10 @@ records:
   quote: The declaration shall contain all the information required to identify the Union harmonisation
     legislation to which the declaration relates.
   action: include all information needed to identify every Union harmonisation law covered
-  subject_ref: provider
-  subject_category: supported_operator
+  actors:
+  - actor_ref: provider
+    category: supported_operator
+  targets: []
   conditions:
   - the high-risk AI system is subject to other Union harmonisation legislation which also requires an
     EU declaration of conformity
@@ -99,8 +113,10 @@ records:
   quote: By drawing up the EU declaration of conformity, the provider shall assume responsibility for
     compliance with the requirements set out in Section 2.
   action: assume responsibility for Section 2 compliance by drawing up the declaration
-  subject_ref: provider
-  subject_category: supported_operator
+  actors:
+  - actor_ref: provider
+    category: supported_operator
+  targets: []
   implementation_refs:
   - AIA-PO-A47-4
   verification_mode: reported_not_judged
@@ -109,8 +125,10 @@ records:
   source: A047-P004
   quote: The provider shall keep the EU declaration of conformity up-to-date as appropriate.
   action: keep the declaration of conformity current as appropriate
-  subject_ref: provider
-  subject_category: supported_operator
+  actors:
+  - actor_ref: provider
+    category: supported_operator
+  targets: []
   implementation_refs:
   - AIA-PO-A47-4
   verification_mode: reported_not_judged
@@ -121,8 +139,10 @@ records:
     amend Annex V by updating the content of the EU declaration of conformity set out in that Annex, in
     order to introduce elements that become necessary in light of technical progress.
   action: amend Annex V declaration content to introduce elements required by technical progress
-  subject_ref: commission
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: commission
+    category: union_institution_or_body
+  targets: []
   kind: power
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.

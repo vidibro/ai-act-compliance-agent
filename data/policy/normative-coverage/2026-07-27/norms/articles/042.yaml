@@ -3,9 +3,9 @@ norms:
 - norm_id: AIA-NORM-A042-P1-REPRESENTATIVE-DATA-PRESUMPTION
   act_version_date: '2026-07-27'
   kind: legal_consequence
-  subjects:
-  - subject_ref: high_risk_ai_system
-    category: other
+  actors: []
+  targets:
+  - target_ref: high_risk_ai_system
   action: presume Article 10(4) compliance from training and testing data reflecting the intended-use
     setting
   norm_text: High-risk AI systems that have been trained and tested on data reflecting the specific geographical,
@@ -44,9 +44,9 @@ norms:
 - norm_id: AIA-NORM-A042-P2-CYBERSECURITY-CERTIFICATE-PRESUMPTION
   act_version_date: '2026-07-27'
   kind: legal_consequence
-  subjects:
-  - subject_ref: high_risk_ai_system
-    category: other
+  actors: []
+  targets:
+  - target_ref: high_risk_ai_system
   action: presume covered Article 15 cybersecurity compliance from a published Regulation 2019/881 certificate
     or conformity statement
   norm_text: High-risk AI systems that have been certified or for which a statement of conformity has
@@ -88,9 +88,9 @@ norms:
 - norm_id: AIA-NORM-A042-P3-CYBER-RESILIENCE-DEEMING
   act_version_date: '2026-07-27'
   kind: legal_consequence
-  subjects:
-  - subject_ref: high_risk_ai_system
-    category: other
+  actors: []
+  targets:
+  - target_ref: high_risk_ai_system
   action: deem Article 15 cybersecurity requirements satisfied when Regulation 2024/2847 and its Article
     12(1) conditions apply
   norm_text: Where high-risk AI systems fall within the scope of Regulation (EU) 2024/2847 and the conditions

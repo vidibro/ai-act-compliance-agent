@@ -9,8 +9,10 @@ records:
     system in the decision-making procedure and the main elements of the decision taken.
   action: provide a clear meaningful explanation of the AI system's decision-making role and the decision's
     main elements to an eligible affected person
-  subject_ref: deployer
-  subject_category: supported_operator
+  actors:
+  - actor_ref: deployer
+    category: supported_operator
+  targets: []
   conditions:
   - the deployer took a decision on the basis of output from a high-risk AI system listed in Annex III
   - the decision produces legal effects on the affected person or similarly significantly affects them
@@ -27,8 +29,10 @@ records:
   quote: shall have the right to obtain from the deployer clear and meaningful explanations
   action: obtain a clear meaningful explanation from the deployer when an eligible Annex III system-based
     decision adversely affects the person
-  subject_ref: affected_person
-  subject_category: natural_person
+  actors:
+  - actor_ref: affected_person
+    category: natural_person
+  targets: []
   kind: entitlement
   product_scope: no_product_action
   product_scope_reason: This records the person's correlative entitlement; the deployer action is mapped
@@ -50,8 +54,10 @@ records:
     law.
   action: disapply paragraph 1 to the extent compliant Union or national law supplies an exception or
     restriction
-  subject_ref: deployer
-  subject_category: supported_operator
+  actors:
+  - actor_ref: deployer
+    category: supported_operator
+  targets: []
   kind: applicability
   product_scope: no_product_action
   product_scope_reason: This qualifies the mapped explanation duty rather than creating another action.
@@ -63,8 +69,10 @@ records:
   quote: This Article shall apply only to the extent that the right referred to in paragraph 1 is not
     otherwise provided for under Union law.
   action: apply Article 86 only where Union law does not otherwise provide the explanation right
-  subject_ref: authority_applying_article_86
-  subject_category: public_authority
+  actors:
+  - actor_ref: authority_applying_article_86
+    category: public_authority
+  targets: []
   kind: applicability
   product_scope: no_product_action
   product_scope_reason: This defines the right's legal boundary without creating another action.

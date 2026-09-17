@@ -115,7 +115,7 @@ def test_article_thirty_one_separates_actions_actors_and_exceptions(corrected_bu
     assert len(norms) == 18
     assert norms["P7-CONFIDENTIALITY-AND-SECRECY"].exceptions == ["disclosure required by law"]
     staff = norms["P7-STAFF-PROFESSIONAL-SECRECY"]
-    assert staff.subjects[0].subject_ref == "notified_body_staff"
+    assert staff.actors[0].actor_ref == "notified_body_staff"
     assert "notifying authorities of the Member State" in staff.exceptions[0]
     assert "disclosure required by law" not in staff.exceptions
     for suffix in (

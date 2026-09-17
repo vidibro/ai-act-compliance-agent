@@ -3,9 +3,10 @@ norms:
 - norm_id: AIA-NORM-A090-P1-ISSUE-QUALIFIED-ALERT
   act_version_date: '2026-07-27'
   kind: power
-  subjects:
-  - subject_ref: scientific_panel
+  actors:
+  - actor_ref: scientific_panel
     category: union_institution_or_body
+  targets: []
   action: provide a qualified alert when there is reason to suspect a concrete identifiable Union-level
     risk or Article 51 systemic-risk conditions
   norm_text: The scientific panel may provide a qualified alert to the AI Office where it has reason to
@@ -47,9 +48,10 @@ norms:
 - norm_id: AIA-NORM-A090-P2-ASSESS-ALERT
   act_version_date: '2026-07-27'
   kind: power
-  subjects:
-  - subject_ref: commission_through_ai_office
+  actors:
+  - actor_ref: commission_through_ai_office
     category: union_institution_or_body
+  targets: []
   action: after informing the Board exercise Section powers to assess a qualified alert
   norm_text: Upon such qualified alert, the Commission, through the AI Office and after having informed
     the Board, may exercise the powers laid down in this Section for the purpose of assessing the matter.
@@ -83,9 +85,10 @@ norms:
 - norm_id: AIA-NORM-A090-P2-INFORM-BOARD-OF-MEASURES
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: ai_office
+  actors:
+  - actor_ref: ai_office
     category: union_institution_or_body
+  targets: []
   action: inform the Board of every measure under Articles 91 to 94
   norm_text: The AI Office shall inform the Board of any measure according to Articles 91 to 94.
   detection_channels:
@@ -116,9 +119,10 @@ norms:
 - norm_id: AIA-NORM-A090-P3-QUALIFIED-ALERT-CONTENT
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: scientific_panel
+  actors:
+  - actor_ref: scientific_panel
     category: union_institution_or_body
+  targets: []
   action: duly reason and include the minimum required information in a qualified alert
   norm_text: A qualified alert shall be duly reasoned and indicate at least
   detection_channels:

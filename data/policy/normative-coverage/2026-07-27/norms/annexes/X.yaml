@@ -3,9 +3,9 @@ norms:
 - norm_id: AIA-NORM-ANNEX-X-SIS-RETURN
   act_version_date: '2026-07-27'
   kind: applicability
-  subjects:
-  - subject_ref: annex_x_large_scale_it_system
-    category: other
+  actors: []
+  targets:
+  - target_ref: annex_x_large_scale_it_system
   action: "names Regulation (EU) 2018/1860 (Schengen Information System \u2014 return of illegally staying\
     \ third-country nationals) as an Annex X large-scale IT system"
   norm_text: Regulation (EU) 2018/1860
@@ -37,9 +37,9 @@ norms:
 - norm_id: AIA-NORM-ANNEX-X-SIS-BORDER-CHECKS
   act_version_date: '2026-07-27'
   kind: applicability
-  subjects:
-  - subject_ref: annex_x_large_scale_it_system
-    category: other
+  actors: []
+  targets:
+  - target_ref: annex_x_large_scale_it_system
   action: "names Regulation (EU) 2018/1861 (Schengen Information System \u2014 border checks) as an Annex\
     \ X large-scale IT system"
   norm_text: Regulation (EU) 2018/1861
@@ -71,9 +71,9 @@ norms:
 - norm_id: AIA-NORM-ANNEX-X-SIS-POLICE-JUDICIAL
   act_version_date: '2026-07-27'
   kind: applicability
-  subjects:
-  - subject_ref: annex_x_large_scale_it_system
-    category: other
+  actors: []
+  targets:
+  - target_ref: annex_x_large_scale_it_system
   action: "names Regulation (EU) 2018/1862 (Schengen Information System \u2014 police and judicial cooperation)\
     \ as an Annex X large-scale IT system"
   norm_text: Regulation (EU) 2018/1862
@@ -105,9 +105,9 @@ norms:
 - norm_id: AIA-NORM-ANNEX-X-VIS-ACCESS-CONDITIONS
   act_version_date: '2026-07-27'
   kind: applicability
-  subjects:
-  - subject_ref: annex_x_large_scale_it_system
-    category: other
+  actors: []
+  targets:
+  - target_ref: annex_x_large_scale_it_system
   action: "names Regulation (EU) 2021/1133 (Visa Information System \u2014 access to other EU information\
     \ systems) as an Annex X large-scale IT system"
   norm_text: Regulation (EU) 2021/1133
@@ -139,9 +139,9 @@ norms:
 - norm_id: AIA-NORM-ANNEX-X-VIS-REFORM
   act_version_date: '2026-07-27'
   kind: applicability
-  subjects:
-  - subject_ref: annex_x_large_scale_it_system
-    category: other
+  actors: []
+  targets:
+  - target_ref: annex_x_large_scale_it_system
   action: "names Regulation (EU) 2021/1134 (Visa Information System \u2014 reform) as an Annex X large-scale\
     \ IT system"
   norm_text: Regulation (EU) 2021/1134
@@ -173,9 +173,9 @@ norms:
 - norm_id: AIA-NORM-ANNEX-X-EURODAC
   act_version_date: '2026-07-27'
   kind: applicability
-  subjects:
-  - subject_ref: annex_x_large_scale_it_system
-    category: other
+  actors: []
+  targets:
+  - target_ref: annex_x_large_scale_it_system
   action: names Regulation (EU) 2024/1358 (Eurodac) as an Annex X large-scale IT system
   norm_text: Regulation (EU) 2024/1358
   detection_channels:
@@ -206,9 +206,9 @@ norms:
 - norm_id: AIA-NORM-ANNEX-X-ENTRY-EXIT-SYSTEM
   act_version_date: '2026-07-27'
   kind: applicability
-  subjects:
-  - subject_ref: annex_x_large_scale_it_system
-    category: other
+  actors: []
+  targets:
+  - target_ref: annex_x_large_scale_it_system
   action: names Regulation (EU) 2017/2226 (Entry/Exit System) as an Annex X large-scale IT system
   norm_text: Regulation (EU) 2017/2226
   detection_channels:
@@ -239,9 +239,9 @@ norms:
 - norm_id: AIA-NORM-ANNEX-X-ETIAS
   act_version_date: '2026-07-27'
   kind: applicability
-  subjects:
-  - subject_ref: annex_x_large_scale_it_system
-    category: other
+  actors: []
+  targets:
+  - target_ref: annex_x_large_scale_it_system
   action: names Regulation (EU) 2018/1240 (European Travel Information and Authorisation System) as an
     Annex X large-scale IT system
   norm_text: Regulation (EU) 2018/1240
@@ -273,9 +273,9 @@ norms:
 - norm_id: AIA-NORM-ANNEX-X-ETIAS-EUROPOL
   act_version_date: '2026-07-27'
   kind: applicability
-  subjects:
-  - subject_ref: annex_x_large_scale_it_system
-    category: other
+  actors: []
+  targets:
+  - target_ref: annex_x_large_scale_it_system
   action: "names Regulation (EU) 2018/1241 (European Travel Information and Authorisation System \u2014\
     \ Europol) as an Annex X large-scale IT system"
   norm_text: Regulation (EU) 2018/1241
@@ -307,9 +307,9 @@ norms:
 - norm_id: AIA-NORM-ANNEX-X-ECRIS-TCN
   act_version_date: '2026-07-27'
   kind: applicability
-  subjects:
-  - subject_ref: annex_x_large_scale_it_system
-    category: other
+  actors: []
+  targets:
+  - target_ref: annex_x_large_scale_it_system
   action: names Regulation (EU) 2019/816 (ECRIS-TCN) as an Annex X large-scale IT system
   norm_text: Regulation (EU) 2019/816
   detection_channels:
@@ -340,9 +340,9 @@ norms:
 - norm_id: AIA-NORM-ANNEX-X-INTEROPERABILITY-BORDERS-VISA
   act_version_date: '2026-07-27'
   kind: applicability
-  subjects:
-  - subject_ref: annex_x_large_scale_it_system
-    category: other
+  actors: []
+  targets:
+  - target_ref: annex_x_large_scale_it_system
   action: "names Regulation (EU) 2019/817 (interoperability \u2014 borders and visa) as an Annex X large-scale\
     \ IT system"
   norm_text: Regulation (EU) 2019/817
@@ -374,9 +374,9 @@ norms:
 - norm_id: AIA-NORM-ANNEX-X-INTEROPERABILITY-POLICE-ASYLUM-MIGRATION
   act_version_date: '2026-07-27'
   kind: applicability
-  subjects:
-  - subject_ref: annex_x_large_scale_it_system
-    category: other
+  actors: []
+  targets:
+  - target_ref: annex_x_large_scale_it_system
   action: "names Regulation (EU) 2019/818 (interoperability \u2014 police and judicial cooperation, asylum\
     \ and migration) as an Annex X large-scale IT system"
   norm_text: Regulation (EU) 2019/818

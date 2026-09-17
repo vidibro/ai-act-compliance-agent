@@ -5,8 +5,10 @@ records:
     and in particular on:'
   action: develop guidelines on the practical implementation of this Regulation, in particular on the
     enacted subjects
-  subject_ref: commission
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: commission
+    category: union_institution_or_body
+  targets: []
   mandatory_content:
   - the application of the requirements and obligations referred to in Articles 8 to 15 and in Articles
     25 and 26
@@ -41,8 +43,10 @@ records:
     shall be published by 1 August 2027.
   action: publish the point (g) guidelines on the practical implementation of Article 8(2), Article 9(10)
     and Article 17(3) by 1 August 2027
-  subject_ref: commission
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: commission
+    category: union_institution_or_body
+  targets: []
   effective_date_spans:
   - A096-P008
   product_scope: outside_supported_actor
@@ -57,8 +61,10 @@ records:
     most likely to be affected by this Regulation.
   action: involve the Board and pay particular attention to the specified affected groups' needs when
     issuing implementation guidelines
-  subject_ref: commission
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: commission
+    category: union_institution_or_body
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -78,8 +84,10 @@ records:
     and common specifications that are referred to in Articles 40 and 41, or of those harmonised standards
     or technical specifications that are set out pursuant to Union harmonisation law.
   action: account for AI state of the art and relevant standards specifications when preparing guidelines
-  subject_ref: commission
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: commission
+    category: union_institution_or_body
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -90,8 +98,10 @@ records:
   quote: At the request of the Member States or the AI Office, or on its own initiative, the Commission
     shall update guidelines previously adopted when deemed necessary.
   action: update adopted guidelines when necessary on request or on the Commission's initiative
-  subject_ref: commission
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: commission
+    category: union_institution_or_body
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required

@@ -5,8 +5,10 @@ records:
     the consistent and effective application of this Regulation.
   action: advise and assist the Commission and the Member States in order to facilitate the consistent
     and effective application of this Regulation
-  subject_ref: board
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: board
+    category: union_institution_or_body
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -17,8 +19,10 @@ records:
   quote: 'To that end, the Board may in particular:'
   action: exercise, in particular, the enacted coordination, expertise, advice, cooperation and support
     tasks to that end; the enumeration is not exhaustive and none of its entries is individually mandatory
-  subject_ref: board
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: board
+    category: union_institution_or_body
+  targets: []
   kind: power
   qualifier_spans:
   - A066-P002
@@ -49,8 +53,10 @@ records:
     Article 74(11);
   action: contribute to coordination among the national competent authorities and, with the agreement
     of the market surveillance authorities concerned, support their Article 74(11) joint activities
-  subject_ref: board
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: board
+    category: union_institution_or_body
+  targets: []
   kind: power
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -63,8 +69,10 @@ records:
   source: A066-P003
   quote: collect and share technical and regulatory expertise and best practices among Member States;
   action: collect and share technical and regulatory expertise and best practices among Member States
-  subject_ref: board
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: board
+    category: union_institution_or_body
+  targets: []
   kind: power
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -79,8 +87,10 @@ records:
     of rules on general-purpose AI models;
   action: provide advice on implementing this Regulation, in particular on enforcing the rules on general-purpose
     AI models
-  subject_ref: board
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: board
+    category: union_institution_or_body
+  targets: []
   kind: power
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -97,8 +107,10 @@ records:
     57, 59 and 60;
   action: contribute to harmonising national administrative practices, including on Article 46 derogations,
     sandbox functioning and Articles 57, 59 and 60 real-world testing
-  subject_ref: board
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: board
+    category: union_institution_or_body
+  targets: []
   kind: power
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -113,8 +125,10 @@ records:
     risks, safeguards and rights and obligations in relation to the use of AI systems;
   action: support the Commission in promoting AI literacy and public awareness and understanding of the
     benefits, risks, safeguards, rights and obligations of using AI systems
-  subject_ref: board
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: board
+    category: union_institution_or_body
+  targets: []
   kind: power
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -130,8 +144,10 @@ records:
     to the development of benchmarks;
   action: facilitate common criteria and a shared understanding of the Regulation's concepts among market
     operators and competent authorities, including by contributing to benchmarks
-  subject_ref: board
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: board
+    category: union_institution_or_body
+  targets: []
   kind: power
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -148,8 +164,10 @@ records:
     rights protection;
   action: cooperate with other Union institutions, bodies, offices, agencies, expert groups and networks
     in the enacted fields
-  subject_ref: board
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: board
+    category: union_institution_or_body
+  targets: []
   kind: power
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -164,8 +182,10 @@ records:
     international organisations;
   action: contribute to effective cooperation with third-country competent authorities and international
     organisations
-  subject_ref: board
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: board
+    category: union_institution_or_body
+  targets: []
   kind: power
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -181,8 +201,10 @@ records:
     to the assessment of training needs for staff of Member States involved in implementing this Regulation;
   action: assist national competent authorities and the Commission in developing the organisational and
     technical expertise the Regulation requires, including by assessing staff training needs
-  subject_ref: board
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: board
+    category: union_institution_or_body
+  targets: []
   kind: power
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -198,8 +220,10 @@ records:
     sandboxes;
   action: assist the AI Office in supporting national competent authorities on sandbox establishment and
     development, and facilitate cooperation and information-sharing among sandboxes
-  subject_ref: board
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: board
+    category: union_institution_or_body
+  targets: []
   kind: power
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -212,8 +236,10 @@ records:
   source: A066-P020
   quote: contribute to, and provide relevant advice on, the development of guidance documents;
   action: contribute to and advise on the development of guidance documents
-  subject_ref: board
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: board
+    category: union_institution_or_body
+  targets: []
   kind: power
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -226,8 +252,10 @@ records:
   source: A066-P021
   quote: advise the Commission in relation to international matters on AI;
   action: advise the Commission on international AI matters
-  subject_ref: board
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: board
+    category: union_institution_or_body
+  targets: []
   kind: power
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -240,8 +268,10 @@ records:
   source: A066-P022
   quote: provide opinions to the Commission on the qualified alerts regarding general-purpose AI models;
   action: provide the Commission with opinions on qualified alerts regarding general-purpose AI models
-  subject_ref: board
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: board
+    category: union_institution_or_body
+  targets: []
   kind: power
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -257,8 +287,10 @@ records:
     systems integrating the general-purpose AI models.
   action: receive Member State opinions on qualified GPAI alerts and on national monitoring and enforcement
     experience and practice
-  subject_ref: board
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: board
+    category: union_institution_or_body
+  targets: []
   kind: power
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -275,8 +307,10 @@ records:
   action: issue recommendations and written opinions, at the Commission's request or on its own initiative,
     on any relevant matter related to the implementation and the consistent and effective application
     of this Regulation
-  subject_ref: board
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: board
+    category: union_institution_or_body
+  targets: []
   kind: power
   mandatory_content:
   - any relevant matters related to the implementation of this Regulation and to its consistent and effective

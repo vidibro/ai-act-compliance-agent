@@ -3,9 +3,10 @@ norms:
 - norm_id: AIA-NORM-A067-P1-ESTABLISH-ADVISORY-FORUM
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: commission
+  actors:
+  - actor_ref: commission
     category: union_institution_or_body
+  targets: []
   action: establish an advisory forum supporting the Board and Commission with expertise advice and task
     contributions
   norm_text: An advisory forum shall be established to provide technical expertise and advise the Board
@@ -38,9 +39,10 @@ norms:
 - norm_id: AIA-NORM-A067-P2-BALANCED-MEMBERSHIP
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: commission
+  actors:
+  - actor_ref: commission
     category: union_institution_or_body
+  targets: []
   action: maintain balanced stakeholder commercial and undertaking representation in forum membership
   norm_text: The membership of the advisory forum shall represent a balanced selection of stakeholders,
     including industry, start-ups, SMEs, civil society and academia. The membership of the advisory forum
@@ -77,9 +79,10 @@ norms:
 - norm_id: AIA-NORM-A067-P3-APPOINT-MEMBERS
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: commission
+  actors:
+  - actor_ref: commission
     category: union_institution_or_body
+  targets: []
   action: appoint AI-expert forum members under the paragraph 2 balance criteria
   norm_text: The Commission shall appoint the members of the advisory forum, in accordance with the criteria
     set out in paragraph 2, from amongst stakeholders with recognised expertise in the field of AI.
@@ -111,9 +114,10 @@ norms:
 - norm_id: AIA-NORM-A067-P4-MEMBER-TERM
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: commission
+  actors:
+  - actor_ref: commission
     category: union_institution_or_body
+  targets: []
   action: set forum member terms at two years with extension limited to four additional years
   norm_text: The term of office of the members of the advisory forum shall be two years, which may be
     extended by up to no more than four years.
@@ -146,9 +150,10 @@ norms:
 - norm_id: AIA-NORM-A067-P5-PERMANENT-MEMBERS
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: advisory_forum
+  actors:
+  - actor_ref: advisory_forum
     category: union_institution_or_body
+  targets: []
   action: include every enacted Union and standardisation body as a permanent forum member
   norm_text: The Fundamental Rights Agency, ENISA, the European Committee for Standardization (CEN), the
     European Committee for Electrotechnical Standardization (CENELEC), and the European Telecommunications
@@ -186,9 +191,10 @@ norms:
 - norm_id: AIA-NORM-A067-P6-RULES-AND-COCHAIRS
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: advisory_forum
+  actors:
+  - actor_ref: advisory_forum
     category: union_institution_or_body
+  targets: []
   action: draw up the advisory forum's rules of procedure
   norm_text: The advisory forum shall draw up its rules of procedure.
   detection_channels:
@@ -219,9 +225,10 @@ norms:
 - norm_id: AIA-NORM-A067-P6-ELECT-COCHAIRS
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: advisory_forum
+  actors:
+  - actor_ref: advisory_forum
     category: union_institution_or_body
+  targets: []
   action: elect two co-chairs from among the forum's members in accordance with the paragraph 2 criteria
   norm_text: It shall elect two co-chairs from among its members, in accordance with criteria set out
     in paragraph 2.
@@ -253,9 +260,10 @@ norms:
 - norm_id: AIA-NORM-A067-P6-COCHAIR-TERM
   act_version_date: '2026-07-27'
   kind: legal_consequence
-  subjects:
-  - subject_ref: advisory_forum
+  actors:
+  - actor_ref: advisory_forum
     category: union_institution_or_body
+  targets: []
   action: hold the co-chair office for a two-year term, renewable once
   norm_text: The term of office of the co-chairs shall be two years, renewable once.
   detection_channels:
@@ -287,9 +295,10 @@ norms:
 - norm_id: AIA-NORM-A067-P7-MEETINGS-AND-INVITATIONS
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: advisory_forum
+  actors:
+  - actor_ref: advisory_forum
     category: union_institution_or_body
+  targets: []
   action: hold meetings at least twice a year
   norm_text: The advisory forum shall hold meetings at least twice a year.
   detection_channels:
@@ -320,9 +329,10 @@ norms:
 - norm_id: AIA-NORM-A067-P7-INVITE-EXPERTS
   act_version_date: '2026-07-27'
   kind: power
-  subjects:
-  - subject_ref: advisory_forum
+  actors:
+  - actor_ref: advisory_forum
     category: union_institution_or_body
+  targets: []
   action: invite experts and other stakeholders to the forum's meetings
   norm_text: The advisory forum may invite experts and other stakeholders to its meetings.
   detection_channels:
@@ -353,9 +363,10 @@ norms:
 - norm_id: AIA-NORM-A067-P8-PREPARE-REQUESTED-CONTRIBUTIONS
   act_version_date: '2026-07-27'
   kind: power
-  subjects:
-  - subject_ref: advisory_forum
+  actors:
+  - actor_ref: advisory_forum
     category: union_institution_or_body
+  targets: []
   action: prepare requested opinions recommendations and written contributions
   norm_text: The advisory forum may prepare opinions, recommendations and written contributions at the
     request of the Board or the Commission.
@@ -388,9 +399,10 @@ norms:
 - norm_id: AIA-NORM-A067-P9-ESTABLISH-SUBGROUPS
   act_version_date: '2026-07-27'
   kind: power
-  subjects:
-  - subject_ref: advisory_forum
+  actors:
+  - actor_ref: advisory_forum
     category: union_institution_or_body
+  targets: []
   action: establish standing or temporary subgroups to examine Regulation-objective questions
   norm_text: The advisory forum may establish standing or temporary sub-groups as appropriate for the
     purpose of examining specific questions related to the objectives of this Regulation.
@@ -422,9 +434,10 @@ norms:
 - norm_id: AIA-NORM-A067-P10-ANNUAL-PUBLIC-REPORT
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: advisory_forum
+  actors:
+  - actor_ref: advisory_forum
     category: union_institution_or_body
+  targets: []
   action: prepare an annual report on the forum's activities
   norm_text: The advisory forum shall prepare an annual report on its activities.
   detection_channels:
@@ -455,9 +468,10 @@ norms:
 - norm_id: AIA-NORM-A067-P10-PUBLISH-ANNUAL-REPORT
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: advisory_forum
+  actors:
+  - actor_ref: advisory_forum
     category: union_institution_or_body
+  targets: []
   action: make the annual activity report publicly available
   norm_text: That report shall be made publicly available.
   detection_channels:

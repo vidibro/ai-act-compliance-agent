@@ -3,9 +3,9 @@ norms:
 - norm_id: AIA-NORM-A110-REPRESENTATIVE-ACTIONS-APPLICABILITY
   act_version_date: '2026-07-27'
   kind: applicability
-  subjects:
-  - subject_ref: representative_action_framework
-    category: other
+  actors: []
+  targets:
+  - target_ref: representative_action_framework
   action: add the AI Act to Directive 2020/1828 Annex I so its representative-action framework applies
   norm_text: Regulation (EU) 2024/1689 of the European Parliament and of the Council
   detection_channels:

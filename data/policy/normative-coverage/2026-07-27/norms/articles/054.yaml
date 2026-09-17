@@ -3,9 +3,10 @@ norms:
 - norm_id: AIA-NORM-A054-P1-APPOINT-REPRESENTATIVE
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: provider
+  actors:
+  - actor_ref: provider
     category: supported_operator
+  targets: []
   action: appoint by written mandate a Union-established authorised representative before placing the
     model on the Union market
   norm_text: Prior to placing a general-purpose AI model on the Union market, providers established in
@@ -42,9 +43,10 @@ norms:
 - norm_id: AIA-NORM-A054-P2-ENABLE-REPRESENTATIVE
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: provider
+  actors:
+  - actor_ref: provider
     category: supported_operator
+  targets: []
   action: enable the authorised representative to perform every task specified in its mandate
   norm_text: The provider shall enable its authorised representative to perform the tasks specified in
     the mandate received from the provider.
@@ -78,9 +80,10 @@ norms:
 - norm_id: AIA-NORM-A054-P3-PERFORM-MANDATE
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: authorised_representative
+  actors:
+  - actor_ref: authorised_representative
     category: supported_operator
+  targets: []
   action: perform every task specified in the provider's mandate
   norm_text: The authorised representative shall perform the tasks specified in the mandate received from
     the provider.
@@ -114,9 +117,10 @@ norms:
 - norm_id: AIA-NORM-A054-P3-PROVIDE-MANDATE
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: authorised_representative
+  actors:
+  - actor_ref: authorised_representative
     category: supported_operator
+  targets: []
   action: provide the AI Office a mandate copy in an official Union-institution language on request
   norm_text: It shall provide a copy of the mandate to the AI Office upon request, in one of the official
     languages of the institutions of the Union.
@@ -151,9 +155,10 @@ norms:
 - norm_id: AIA-NORM-A054-P3-A-VERIFY-COMPLIANCE
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: authorised_representative
+  actors:
+  - actor_ref: authorised_representative
     category: supported_operator
+  targets: []
   action: verify Annex XI documentation and provider fulfilment of Articles 53 and, where applicable,
     55
   norm_text: verify that the technical documentation specified in Annex XI has been drawn up and all obligations
@@ -189,9 +194,10 @@ norms:
 - norm_id: AIA-NORM-A054-P3-B-RETAIN-DOCUMENTATION
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: authorised_representative
+  actors:
+  - actor_ref: authorised_representative
     category: supported_operator
+  targets: []
   action: retain Annex XI documentation and appointing-provider contact details for authorities for 10
     years after market placement
   norm_text: keep a copy of the technical documentation specified in Annex XI at the disposal of the AI
@@ -231,9 +237,10 @@ norms:
 - norm_id: AIA-NORM-A054-P3-C-PROVIDE-COMPLIANCE-INFORMATION
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: authorised_representative
+  actors:
+  - actor_ref: authorised_representative
     category: supported_operator
+  targets: []
   action: provide all information and documentation necessary to demonstrate Chapter V compliance on reasoned
     AI Office request
   norm_text: provide the AI Office, upon a reasoned request, with all the information and documentation,
@@ -271,9 +278,10 @@ norms:
 - norm_id: AIA-NORM-A054-P3-D-COOPERATE
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: authorised_representative
+  actors:
+  - actor_ref: authorised_representative
     category: supported_operator
+  targets: []
   action: cooperate on reasoned request in authority actions concerning the model, including integrated
     systems in the Union
   norm_text: cooperate with the AI Office and competent authorities, upon a reasoned request, in any action
@@ -311,9 +319,10 @@ norms:
 - norm_id: AIA-NORM-A054-P4-AUTHORITY-ADDRESS-TERM
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: provider
+  actors:
+  - actor_ref: provider
     category: supported_operator
+  targets: []
   action: empower the representative to be addressed in addition to or instead of the provider on all
     compliance issues
   norm_text: The mandate shall empower the authorised representative to be addressed, in addition to or
@@ -349,9 +358,10 @@ norms:
 - norm_id: AIA-NORM-A054-P5-TERMINATE-MANDATE
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: authorised_representative
+  actors:
+  - actor_ref: authorised_representative
     category: supported_operator
+  targets: []
   action: terminate the mandate when the provider is or appears to be acting contrary to regulatory obligations
   norm_text: The authorised representative shall terminate the mandate if it considers or has reason to
     consider the provider to be acting contrary to its obligations pursuant to this Regulation.
@@ -386,9 +396,10 @@ norms:
 - norm_id: AIA-NORM-A054-P5-NOTIFY-TERMINATION
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: authorised_representative
+  actors:
+  - actor_ref: authorised_representative
     category: supported_operator
+  targets: []
   action: immediately inform the AI Office of the mandate termination and its reasons
   norm_text: In such a case, it shall also immediately inform the AI Office about the termination of the
     mandate and the reasons therefor.
@@ -425,9 +436,10 @@ norms:
 - norm_id: AIA-NORM-A054-P6-OPEN-SOURCE-EXCEPTION
   act_version_date: '2026-07-27'
   kind: applicability
-  subjects:
-  - subject_ref: provider
+  actors:
+  - actor_ref: provider
     category: supported_operator
+  targets: []
   action: disapply Article 54 where every enacted free-and-open-source condition is met, except for general-purpose
     AI models presenting systemic risk
   norm_text: The obligation set out in this Article shall not apply to providers of general-purpose AI

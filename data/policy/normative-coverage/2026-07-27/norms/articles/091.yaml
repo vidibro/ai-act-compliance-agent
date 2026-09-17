@@ -3,9 +3,10 @@ norms:
 - norm_id: AIA-NORM-A091-P1-REQUEST-DOCUMENTATION-AND-INFORMATION
   act_version_date: '2026-07-27'
   kind: power
-  subjects:
-  - subject_ref: commission
+  actors:
+  - actor_ref: commission
     category: union_institution_or_body
+  targets: []
   action: request Articles 53 and 55 documentation or other information necessary to assess GPAI-provider
     compliance
   norm_text: The Commission may request the provider of the general-purpose AI model concerned to provide
@@ -39,9 +40,10 @@ norms:
 - norm_id: AIA-NORM-A091-P2-INITIATE-STRUCTURED-DIALOGUE
   act_version_date: '2026-07-27'
   kind: power
-  subjects:
-  - subject_ref: ai_office
+  actors:
+  - actor_ref: ai_office
     category: union_institution_or_body
+  targets: []
   action: initiate structured dialogue with the GPAI provider before an information request
   norm_text: Before sending the request for information, the AI Office may initiate a structured dialogue
     with the provider of the general-purpose AI model.
@@ -73,9 +75,10 @@ norms:
 - norm_id: AIA-NORM-A091-P3-SCIENTIFIC-PANEL-INFORMATION-REQUEST
   act_version_date: '2026-07-27'
   kind: power
-  subjects:
-  - subject_ref: commission
+  actors:
+  - actor_ref: commission
     category: union_institution_or_body
+  targets: []
   action: issue a necessary proportionate information request on a duly substantiated scientific-panel
     request
   norm_text: Upon a duly substantiated request from the scientific panel, the Commission may issue a request
@@ -112,9 +115,10 @@ norms:
 - norm_id: AIA-NORM-A091-P4-INFORMATION-REQUEST-CONTENT
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: commission
+  actors:
+  - actor_ref: commission
     category: union_institution_or_body
+  targets: []
   action: include the legal basis purpose required information response period and applicable Article
     101 fines in an information request
   norm_text: The request for information shall state the legal basis and the purpose of the request, specify
@@ -152,9 +156,10 @@ norms:
 - norm_id: AIA-NORM-A091-P5-SUPPLY-REQUESTED-INFORMATION
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: gpai_provider_or_representative
+  actors:
+  - actor_ref: gpai_provider_or_representative
     category: supported_operator
+  targets: []
   action: supply information requested by the Commission
   norm_text: The provider of the general-purpose AI model concerned, or its representative shall supply
     the information requested.
@@ -189,9 +194,10 @@ norms:
 - norm_id: AIA-NORM-A091-P5-AUTHORISED-PERSON-SUPPLY
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: legally_or_statutorily_authorised_representative
+  actors:
+  - actor_ref: legally_or_statutorily_authorised_representative
     category: external_private_party
+  targets: []
   action: supply requested information on behalf of a legal-person or non-legal-personality GPAI provider
   norm_text: In the case of legal persons, companies or firms, or where the provider has no legal personality,
     the persons authorised to represent them by law or by their statutes, shall supply the information
@@ -228,9 +234,10 @@ norms:
 - norm_id: AIA-NORM-A091-P5-LAWYER-SUPPLY
   act_version_date: '2026-07-27'
   kind: permission
-  subjects:
-  - subject_ref: duly_authorised_lawyer
+  actors:
+  - actor_ref: duly_authorised_lawyer
     category: external_private_party
+  targets: []
   action: supply the requested information on behalf of a client
   norm_text: Lawyers duly authorised to act may supply information on behalf of their clients.
   detection_channels:
@@ -261,9 +268,10 @@ norms:
 - norm_id: AIA-NORM-A091-P5-CLIENT-REMAINS-RESPONSIBLE
   act_version_date: '2026-07-27'
   kind: legal_consequence
-  subjects:
-  - subject_ref: gpai_provider_client
+  actors:
+  - actor_ref: gpai_provider_client
     category: supported_operator
+  targets: []
   action: remain fully responsible for information a lawyer supplied on the client's behalf
   norm_text: The clients shall nevertheless remain fully responsible if the information supplied is incomplete,
     incorrect or misleading.

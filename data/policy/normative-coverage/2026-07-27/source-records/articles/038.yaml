@@ -7,8 +7,10 @@ records:
     bodies.
   action: establish and properly operate a sectoral group coordinating notified bodies for high-risk AI-system
     conformity assessment
-  subject_ref: commission
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: commission
+    category: union_institution_or_body
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -20,8 +22,10 @@ records:
     of a group referred to in paragraph 1, directly or through designated representatives.
   action: ensure its notified bodies participate directly or through representatives in the sectoral coordination
     group
-  subject_ref: notifying_authority
-  subject_category: public_authority
+  actors:
+  - actor_ref: notifying_authority
+    category: public_authority
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -32,8 +36,10 @@ records:
   quote: The Commission shall provide for the exchange of knowledge and best practices between notifying
     authorities.
   action: provide for exchange of knowledge and best practices among notifying authorities
-  subject_ref: commission
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: commission
+    category: union_institution_or_body
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required

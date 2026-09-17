@@ -4,8 +4,10 @@ records:
   quote: 'Regulation (EU) 2019/1020 shall apply to AI systems covered by this Regulation. For the purposes
     of the effective enforcement of this Regulation:'
   action: apply Regulation 2019/1020 using the enacted expanded operator and product meanings
-  subject_ref: market_surveillance_authority
-  subject_category: public_authority
+  actors:
+  - actor_ref: market_surveillance_authority
+    category: public_authority
+  targets: []
   kind: applicability
   mandatory_content:
   - Article 2(1) operators treated as economic operators
@@ -26,8 +28,10 @@ records:
     of potential interest for the application of Union law on competition rules.
   action: report annually to the Commission and the relevant national competition authorities any surveillance
     information of potential interest for applying Union competition law
-  subject_ref: market_surveillance_authority
-  subject_category: public_authority
+  actors:
+  - actor_ref: market_surveillance_authority
+    category: public_authority
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -39,8 +43,10 @@ records:
     occurred during that year and about the measures taken.
   action: report annually to the Commission on the use of prohibited practices during that year and on
     the measures taken
-  subject_ref: market_surveillance_authority
-  subject_category: public_authority
+  actors:
+  - actor_ref: market_surveillance_authority
+    category: public_authority
+  targets: []
   mandatory_content:
   - use of prohibited practices that occurred during that year
   - measures taken
@@ -56,8 +62,10 @@ records:
     be the authority responsible for market surveillance activities designated under those legal acts.
   action: assign Section A product surveillance to the sectoral authority unless a coordinated alternative
     is designated
-  subject_ref: member_state
-  subject_category: member_state
+  actors:
+  - actor_ref: member_state
+    category: member_state
+  targets: []
   qualifier_spans:
   - A074-P006
   product_scope: outside_supported_actor
@@ -73,8 +81,10 @@ records:
     having the same objective. In such cases, the relevant sectoral procedures shall apply instead.
   action: substitute same-objective sectoral procedures providing equivalent protection for Articles 79
     to 83
-  subject_ref: market_surveillance_authority
-  subject_category: public_authority
+  actors:
+  - actor_ref: market_surveillance_authority
+    category: public_authority
+  targets: []
   kind: applicability
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -93,8 +103,10 @@ records:
     authorities may exercise the powers referred to in Article 14(4), points (d) and (j), of that Regulation
     remotely, as appropriate.
   action: exercise Article 14(4)(d) and (j) surveillance powers remotely as appropriate
-  subject_ref: market_surveillance_authority
-  subject_category: public_authority
+  actors:
+  - actor_ref: market_surveillance_authority
+    category: public_authority
+  targets: []
   kind: power
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -109,8 +121,10 @@ records:
     institutions under that legislation in so far as the placing on the market, putting into service,
     or the use of the AI system is in direct connection with the provision of those financial services.
   action: assign directly connected financial-services AI surveillance to the relevant financial supervisor
-  subject_ref: member_state
-  subject_category: member_state
+  actors:
+  - actor_ref: member_state
+    category: member_state
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -122,8 +136,10 @@ records:
     is ensured, another relevant authority may be identified by the Member State as market surveillance
     authority for the purposes of this Regulation.
   action: designate another relevant authority as the market-surveillance authority for the Regulation
-  subject_ref: member_state
-  subject_category: member_state
+  actors:
+  - actor_ref: member_state
+    category: member_state
+  targets: []
   qualifier_spans: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -144,8 +160,10 @@ records:
     for the prudential supervisory tasks of the European Central Bank specified in that Regulation.
   action: should report without delay to the European Central Bank market-surveillance information potentially
     relevant to its prudential-supervision tasks
-  subject_ref: financial_market_surveillance_authority
-  subject_category: public_authority
+  actors:
+  - actor_ref: financial_market_surveillance_authority
+    category: public_authority
+  targets: []
   kind: recommendation
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -166,8 +184,10 @@ records:
   action: designate, for the enacted Annex III systems, either the competent data protection supervisory
     authorities or another authority designated under the same Articles 41 to 44 conditions as market
     surveillance authorities
-  subject_ref: member_state
-  subject_category: member_state
+  actors:
+  - actor_ref: member_state
+    category: member_state
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -179,8 +199,10 @@ records:
     or otherwise interfere with their activities when acting in their judicial capacity.
   action: conduct no market surveillance activity that affects the independence of judicial authorities
     or otherwise interferes with their activities when acting in their judicial capacity
-  subject_ref: market_surveillance_authority
-  subject_category: public_authority
+  actors:
+  - actor_ref: market_surveillance_authority
+    category: public_authority
+  targets: []
   kind: prohibition
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -193,8 +215,10 @@ records:
     the European Data Protection Supervisor shall act as their market surveillance authority, except in
     relation to the Court of Justice of the European Union acting in its judicial capacity.
   action: supervise in-scope Union bodies except the Court acting judicially
-  subject_ref: european_data_protection_supervisor
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: european_data_protection_supervisor
+    category: union_institution_or_body
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -212,8 +236,10 @@ records:
     of Union harmonisation legislation listed in Annex I, or in other Union law, that might be relevant
     for the high-risk AI systems referred to in Annex III.
   action: facilitate coordination between AI surveillance and other relevant national authorities
-  subject_ref: member_state
-  subject_category: member_state
+  actors:
+  - actor_ref: member_state
+    category: member_state
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -229,8 +255,10 @@ records:
     or more Member States in accordance with Article 9 of Regulation (EU) 2019/1020.
   action: propose joint activities, including joint investigations, on categories of high-risk AI systems
     found to present a serious risk across two or more Member States
-  subject_ref: market_surveillance_authority_and_commission
-  subject_category: public_authority
+  actors:
+  - actor_ref: market_surveillance_authority_and_commission
+    category: public_authority
+  targets: []
   kind: power
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -241,8 +269,10 @@ records:
   source: A074-P015
   quote: The AI Office shall provide coordination support for joint investigations.
   action: provide coordination support for joint investigations
-  subject_ref: ai_office
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: ai_office
+    category: union_institution_or_body
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -258,8 +288,10 @@ records:
     means and tools enabling remote access.
   action: grant necessary full authority access to documentation and development data sets including safeguarded
     remote access where appropriate
-  subject_ref: provider
-  subject_category: supported_operator
+  actors:
+  - actor_ref: provider
+    category: supported_operator
+  targets: []
   implementation_refs:
   - AIA-PO-A74-12
   verification_mode: reported_not_judged
@@ -273,8 +305,10 @@ records:
     AI system upon a reasoned request and only when both of the following conditions are fulfilled:'
   action: grant source-code access on a reasoned request only after both necessity and exhaustion conditions
     are met
-  subject_ref: provider
-  subject_category: supported_operator
+  actors:
+  - actor_ref: provider
+    category: supported_operator
+  targets: []
   mandatory_content: []
   qualifier_spans:
   - A074-P018
@@ -292,8 +326,10 @@ records:
   quote: Any information or documentation obtained by market surveillance authorities shall be treated
     in accordance with the confidentiality obligations set out in Article 78.
   action: treat obtained information and documentation under Article 78 confidentiality
-  subject_ref: market_surveillance_authority
-  subject_category: public_authority
+  actors:
+  - actor_ref: market_surveillance_authority
+    category: public_authority
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required

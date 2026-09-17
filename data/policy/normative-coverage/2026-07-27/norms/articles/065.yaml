@@ -3,9 +3,10 @@ norms:
 - norm_id: AIA-NORM-A065-P1-ESTABLISH-BOARD
   act_version_date: '2026-07-27'
   kind: legal_consequence
-  subjects:
-  - subject_ref: union_legislature
+  actors:
+  - actor_ref: union_legislature
     category: union_institution_or_body
+  targets: []
   action: establish the European Artificial Intelligence Board
   norm_text: "A European Artificial Intelligence Board (the \u2018 Board \u2019) is hereby established."
   detection_channels:
@@ -36,9 +37,10 @@ norms:
 - norm_id: AIA-NORM-A065-P2-BOARD-COMPOSITION
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: board
+  actors:
+  - actor_ref: board
     category: union_institution_or_body
+  targets: []
   action: compose the Board of one representative per Member State
   norm_text: The Board shall be composed of one representative per Member State.
   detection_channels:
@@ -69,9 +71,10 @@ norms:
 - norm_id: AIA-NORM-A065-P2-EDPS-OBSERVER
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: european_data_protection_supervisor
+  actors:
+  - actor_ref: european_data_protection_supervisor
     category: union_institution_or_body
+  targets: []
   action: participate in the Board as observer
   norm_text: The European Data Protection Supervisor shall participate as observer.
   detection_channels:
@@ -102,9 +105,10 @@ norms:
 - norm_id: AIA-NORM-A065-P2-AI-OFFICE-ATTENDANCE
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: ai_office
+  actors:
+  - actor_ref: ai_office
     category: union_institution_or_body
+  targets: []
   action: attend Board meetings without voting
   norm_text: "The AI Office shall also attend the Board\u2019s meetings, without taking part in the votes."
   detection_channels:
@@ -135,9 +139,10 @@ norms:
 - norm_id: AIA-NORM-A065-P2-INVITE-RELEVANT-PARTICIPANTS
   act_version_date: '2026-07-27'
   kind: power
-  subjects:
-  - subject_ref: board
+  actors:
+  - actor_ref: board
     category: union_institution_or_body
+  targets: []
   action: invite relevant national or Union authorities bodies or experts to Board meetings case by case
   norm_text: Other national and Union authorities, bodies or experts may be invited to the meetings by
     the Board on a case by case basis, where the issues discussed are of relevance for them.
@@ -170,9 +175,10 @@ norms:
 - norm_id: AIA-NORM-A065-P3-DESIGNATE-REPRESENTATIVE
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: member_state
+  actors:
+  - actor_ref: member_state
     category: member_state
+  targets: []
   action: designate the Board representative for a three-year term renewable once
   norm_text: Each representative shall be designated by their Member State for a period of three years,
     renewable once.
@@ -204,9 +210,10 @@ norms:
 - norm_id: AIA-NORM-A065-P4-REPRESENTATIVE-CAPABILITIES
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: member_state
+  actors:
+  - actor_ref: member_state
     category: member_state
+  targets: []
   action: ensure Board representatives possess every enacted competence contact-point and coordination
     capability
   norm_text: 'Member States shall ensure that their representatives on the Board:'
@@ -245,9 +252,10 @@ norms:
 - norm_id: AIA-NORM-A065-P5-ADOPT-RULES-OF-PROCEDURE
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: board_member_state_representatives
+  actors:
+  - actor_ref: board_member_state_representatives
     category: union_institution_or_body
+  targets: []
   action: adopt by two-thirds majority rules covering Chair selection mandate and tasks voting and Board
     and subgroup organisation
   norm_text: "The designated representatives of the Member States shall adopt the Board\u2019s rules of\
@@ -288,9 +296,10 @@ norms:
 - norm_id: AIA-NORM-A065-P6-ESTABLISH-STANDING-SUBGROUPS
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: board
+  actors:
+  - actor_ref: board
     category: union_institution_or_body
+  targets: []
   action: establish standing market-surveillance and notifying-authority cooperation subgroups
   norm_text: The Board shall establish two standing sub-groups to provide a platform for cooperation and
     exchange among market surveillance authorities and notifying authorities about issues related to market
@@ -325,9 +334,10 @@ norms:
 - norm_id: AIA-NORM-A065-P6-ADCO-ROLE
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: market_surveillance_standing_subgroup
+  actors:
+  - actor_ref: market_surveillance_standing_subgroup
     category: union_institution_or_body
+  targets: []
   action: act as the Regulation's Article 30 administrative cooperation group
   norm_text: The standing sub-group for market surveillance should act as the administrative cooperation
     group (ADCO) for this Regulation within the meaning of Article 30 of Regulation (EU) 2019/1020.
@@ -358,9 +368,10 @@ norms:
 - norm_id: AIA-NORM-A065-P6-OTHER-SUBGROUPS-AND-OBSERVERS
   act_version_date: '2026-07-27'
   kind: power
-  subjects:
-  - subject_ref: board
+  actors:
+  - actor_ref: board
     category: union_institution_or_body
+  targets: []
   action: establish other issue-specific subgroups and invite appropriate advisory-forum observers
   norm_text: The Board may establish other standing or temporary sub-groups as appropriate for the purpose
     of examining specific issues. Where appropriate, representatives of the advisory forum referred to
@@ -393,9 +404,10 @@ norms:
 - norm_id: AIA-NORM-A065-P7-SAFEGUARD-OBJECTIVITY
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: board
+  actors:
+  - actor_ref: board
     category: union_institution_or_body
+  targets: []
   action: organise and operate the Board to safeguard objectivity and impartiality
   norm_text: The Board shall be organised and operated so as to safeguard the objectivity and impartiality
     of its activities.
@@ -427,9 +439,10 @@ norms:
 - norm_id: AIA-NORM-A065-P8-MEMBER-STATE-CHAIR
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: board
+  actors:
+  - actor_ref: board
     category: union_institution_or_body
+  targets: []
   action: select a Member State representative to chair the Board
   norm_text: The Board shall be chaired by one of the representatives of the Member States.
   detection_channels:
@@ -460,9 +473,10 @@ norms:
 - norm_id: AIA-NORM-A065-P8-AI-OFFICE-SECRETARIAT
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: ai_office
+  actors:
+  - actor_ref: ai_office
     category: union_institution_or_body
+  targets: []
   action: provide the secretariat for the Board
   norm_text: The AI Office shall provide the secretariat for the Board
   detection_channels:
@@ -493,9 +507,10 @@ norms:
 - norm_id: AIA-NORM-A065-P8-CONVENE-MEETINGS
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: ai_office
+  actors:
+  - actor_ref: ai_office
     category: union_institution_or_body
+  targets: []
   action: convene the Board's meetings upon request of the Chair
   norm_text: convene the meetings upon request of the Chair
   detection_channels:
@@ -526,9 +541,10 @@ norms:
 - norm_id: AIA-NORM-A065-P8-PREPARE-AGENDA
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: ai_office
+  actors:
+  - actor_ref: ai_office
     category: union_institution_or_body
+  targets: []
   action: prepare the agenda in accordance with the Board's tasks under this Regulation and its rules
     of procedure
   norm_text: prepare the agenda in accordance with the tasks of the Board pursuant to this Regulation

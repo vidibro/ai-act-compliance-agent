@@ -3,9 +3,10 @@ norms:
 - norm_id: AIA-NORM-ANNEX-XIII-CONSIDER-SYSTEMIC-RISK-CRITERIA
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: commission
+  actors:
+  - actor_ref: commission
     category: union_institution_or_body
+  targets: []
   action: take all seven Annex XIII criteria into account when determining whether a GPAI model has capabilities
     or impact equivalent to Article 51(1)(a)
   norm_text: the Commission shall take into account the following criteria
@@ -55,9 +56,9 @@ norms:
 - norm_id: AIA-NORM-ANNEX-XIII-TEN-THOUSAND-BUSINESS-USERS-PRESUMPTION
   act_version_date: '2026-07-27'
   kind: legal_consequence
-  subjects:
-  - subject_ref: general_purpose_ai_model
-    category: other
+  actors: []
+  targets:
+  - target_ref: general_purpose_ai_model
   action: presume that a GPAI model has high internal-market impact due to reach once it is available
     to at least 10,000 registered Union business users
   norm_text: whether it has a high impact on the internal market due to its reach, which shall be presumed

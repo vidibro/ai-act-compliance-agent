@@ -3,9 +3,10 @@ norms:
 - norm_id: AIA-NORM-A080-P1-EVALUATE-CLASSIFICATION
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: market_surveillance_authority
+  actors:
+  - actor_ref: market_surveillance_authority
     category: public_authority
+  targets: []
   action: evaluate a reasonably suspected non-high-risk classification under Article 6(3) and Commission
     guidelines
   norm_text: Where a market surveillance authority has sufficient reason to consider that an AI system
@@ -43,9 +44,10 @@ norms:
 - norm_id: AIA-NORM-A080-P2-REQUIRE-COMPLIANCE-AND-CORRECTION
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: market_surveillance_authority
+  actors:
+  - actor_ref: market_surveillance_authority
     category: public_authority
+  targets: []
   action: require necessary compliance and corrective action without undue delay within a prescribed period
   norm_text: Where, in the course of that evaluation, the market surveillance authority finds that the
     AI system concerned is high-risk, it shall without undue delay require the relevant provider to take
@@ -82,9 +84,10 @@ norms:
 - norm_id: AIA-NORM-A080-P3-INFORM-CROSS-BORDER-USE
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: market_surveillance_authority
+  actors:
+  - actor_ref: market_surveillance_authority
     category: public_authority
+  targets: []
   action: promptly inform the Commission and other Member States of cross-border evaluation results and
     required provider action
   norm_text: Where the market surveillance authority considers that the use of the AI system concerned
@@ -121,9 +124,10 @@ norms:
 - norm_id: AIA-NORM-A080-P4-BRING-SYSTEM-INTO-COMPLIANCE
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: provider
+  actors:
+  - actor_ref: provider
     category: supported_operator
+  targets: []
   action: bring an authority-reclassified high-risk system into compliance with all applicable requirements
     and obligations
   norm_text: The provider shall ensure that all necessary action is taken to bring the AI system into
@@ -158,9 +162,10 @@ norms:
 - norm_id: AIA-NORM-A080-P4-NONCOMPLIANCE-FINE
   act_version_date: '2026-07-27'
   kind: legal_consequence
-  subjects:
-  - subject_ref: provider
+  actors:
+  - actor_ref: provider
     category: supported_operator
+  targets: []
   action: incur Article 99 fines for failure to comply within the prescribed period
   norm_text: Where the provider of an AI system concerned does not bring the AI system into compliance
     with those requirements and obligations within the period referred to in paragraph 2 of this Article,
@@ -196,9 +201,10 @@ norms:
 - norm_id: AIA-NORM-A080-P5-CORRECT-ALL-UNION-SYSTEMS
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: provider
+  actors:
+  - actor_ref: provider
     category: supported_operator
+  targets: []
   action: ensure appropriate corrective action across all concerned systems made available on the Union
     market
   norm_text: The provider shall ensure that all appropriate corrective action is taken in respect of all
@@ -233,9 +239,10 @@ norms:
 - norm_id: AIA-NORM-A080-P6-APPLY-ARTICLE-79-ESCALATION
   act_version_date: '2026-07-27'
   kind: applicability
-  subjects:
-  - subject_ref: market_surveillance_authority
+  actors:
+  - actor_ref: market_surveillance_authority
     category: public_authority
+  targets: []
   action: apply Article 79(5) to (9) escalation after inadequate provider correction
   norm_text: Article 79(5) to (9) shall apply.
   detection_channels:
@@ -267,9 +274,10 @@ norms:
 - norm_id: AIA-NORM-A080-P7-CIRCUMVENTION-FINE
   act_version_date: '2026-07-27'
   kind: legal_consequence
-  subjects:
-  - subject_ref: provider
+  actors:
+  - actor_ref: provider
     category: supported_operator
+  targets: []
   action: incur Article 99 fines for intentional non-high-risk misclassification used to circumvent Chapter
     III Section 2
   norm_text: Where, in the course of the evaluation pursuant to paragraph 1 of this Article, the market
@@ -308,9 +316,10 @@ norms:
 - norm_id: AIA-NORM-A080-P8-PERFORM-MONITORING-CHECKS
   act_version_date: '2026-07-27'
   kind: power
-  subjects:
-  - subject_ref: market_surveillance_authority
+  actors:
+  - actor_ref: market_surveillance_authority
     category: public_authority
+  targets: []
   action: perform appropriate classification checks with particular account taken of EU database information
   norm_text: In exercising their power to monitor the application of this Article, and in accordance with
     Article 11 of Regulation (EU) 2019/1020, market surveillance authorities may perform appropriate checks,

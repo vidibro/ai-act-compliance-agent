@@ -3,9 +3,10 @@ norms:
 - norm_id: AIA-NORM-A077-P1-REQUEST-AND-ACCESS-INFORMATION
   act_version_date: '2026-07-27'
   kind: power
-  subjects:
-  - subject_ref: fundamental_rights_authority
+  actors:
+  - actor_ref: fundamental_rights_authority
     category: public_authority
+  targets: []
   action: request and electronically access necessary authority-held information in accessible machine-readable
     form within the body's mandate
   norm_text: National public authorities or bodies which supervise or enforce the respect of obligations
@@ -44,9 +45,10 @@ norms:
 - norm_id: AIA-NORM-A077-P1A-GRANT-INFORMATION-ACCESS
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: market_surveillance_authority
+  actors:
+  - actor_ref: market_surveillance_authority
     category: public_authority
+  targets: []
   action: grant necessary information access without undue delay including by obtaining it from a provider
     or deployer
   norm_text: Subject to the conditions specified in this Article, the market surveillance authority shall
@@ -82,9 +84,10 @@ norms:
 - norm_id: AIA-NORM-A077-P1B-COOPERATE-AND-ASSIST
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: market_surveillance_and_fundamental_rights_authorities
+  actors:
+  - actor_ref: market_surveillance_and_fundamental_rights_authorities
     category: public_authority
+  targets: []
   action: cooperate closely exchange necessary information and provide mutual assistance while respecting
     respective mandates and independence
   norm_text: Market surveillance authorities and public authorities or bodies referred to in paragraph
@@ -118,9 +121,10 @@ norms:
 - norm_id: AIA-NORM-A077-P2-IDENTIFY-PUBLISH-NOTIFY-AND-UPDATE
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: member_state
+  actors:
+  - actor_ref: member_state
     category: member_state
+  targets: []
   action: identify the paragraph 1 public authorities or bodies and make a list of them publicly available
     by 2 November 2024
   norm_text: By 2 November 2024, each Member State shall identify the public authorities or bodies referred
@@ -155,9 +159,10 @@ norms:
 - norm_id: AIA-NORM-A077-P2-NOTIFY-LIST
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: member_state
+  actors:
+  - actor_ref: member_state
     category: member_state
+  targets: []
   action: notify the list to the Commission and other Member States and keep it up to date
   norm_text: Member States shall notify the list to the Commission and to the other Member States, and
     shall keep the list up to date.
@@ -191,9 +196,10 @@ norms:
 - norm_id: AIA-NORM-A077-P3-REQUEST-TECHNICAL-TESTING
   act_version_date: '2026-07-27'
   kind: power
-  subjects:
-  - subject_ref: fundamental_rights_authority
+  actors:
+  - actor_ref: fundamental_rights_authority
     category: public_authority
+  targets: []
   action: make a reasoned technical-testing request when documentation cannot establish a fundamental-rights
     infringement
   norm_text: Where the documentation referred to in paragraph 1 is insufficient to ascertain whether an
@@ -230,9 +236,10 @@ norms:
 - norm_id: AIA-NORM-A077-P3-ORGANISE-TESTING
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: market_surveillance_authority
+  actors:
+  - actor_ref: market_surveillance_authority
     category: public_authority
+  targets: []
   action: organise requested technical testing within a reasonable time with close requesting-body involvement
   norm_text: The market surveillance authority shall organise the testing with the close involvement of
     the requesting public authority or body within a reasonable time following the request.
@@ -264,9 +271,10 @@ norms:
 - norm_id: AIA-NORM-A077-P4-TREAT-INFORMATION-CONFIDENTIALLY
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: fundamental_rights_authority
+  actors:
+  - actor_ref: fundamental_rights_authority
     category: public_authority
+  targets: []
   action: treat information and documentation obtained under Article 77 according to Article 78 confidentiality
   norm_text: Any information or documentation obtained by the national public authorities or bodies referred
     to in paragraph 1 of this Article pursuant to this Article shall be treated in accordance with the

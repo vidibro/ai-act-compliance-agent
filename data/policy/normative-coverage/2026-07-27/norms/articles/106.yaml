@@ -3,9 +3,10 @@ norms:
 - norm_id: AIA-NORM-A106-P12-ACCOUNT-FOR-HIGH-RISK-REQUIREMENTS
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: commission
+  actors:
+  - actor_ref: commission
     category: union_institution_or_body
+  targets: []
   action: account for AI Act Chapter III Section 2 when adopting rail-system safety-component AI delegated
     and implementing acts
   norm_text: the requirements set out in Chapter III, Section 2, of that Regulation shall be taken into

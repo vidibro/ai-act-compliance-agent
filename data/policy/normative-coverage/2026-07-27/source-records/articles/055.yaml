@@ -6,8 +6,10 @@ records:
     and mitigating systemic risks
   action: evaluate the model using standardised state-of-the-art protocols and tools, including conducting
     and documenting adversarial testing to identify and mitigate systemic risks
-  subject_ref: provider
-  subject_category: supported_operator
+  actors:
+  - actor_ref: provider
+    category: supported_operator
+  targets: []
   qualifier_spans:
   - A055-P001
   mandatory_content:
@@ -24,8 +26,10 @@ records:
     systemic risk
   action: assess and mitigate possible Union-level systemic risks and their sources across development,
     market placement, and use
-  subject_ref: provider
-  subject_category: supported_operator
+  actors:
+  - actor_ref: provider
+    category: supported_operator
+  targets: []
   qualifier_spans:
   - A055-P001
   implementation_refs:
@@ -39,8 +43,10 @@ records:
     measures to address them
   action: keep track of and document relevant serious-incident information and possible corrective measures,
     and report them without undue delay to the AI Office and, as appropriate, national competent authorities
-  subject_ref: provider
-  subject_category: supported_operator
+  actors:
+  - actor_ref: provider
+    category: supported_operator
+  targets: []
   qualifier_spans:
   - A055-P001
   mandatory_content:
@@ -56,8 +62,10 @@ records:
     risk and the physical infrastructure of the model.
   action: ensure adequate cybersecurity protection for the systemic-risk general-purpose AI model and
     its physical infrastructure
-  subject_ref: provider
-  subject_category: supported_operator
+  actors:
+  - actor_ref: provider
+    category: supported_operator
+  targets: []
   qualifier_spans:
   - A055-P001
   implementation_refs:
@@ -71,8 +79,10 @@ records:
     this Article, until a harmonised standard is published.
   action: rely on Article 56 codes to demonstrate Article 55(1) compliance until a harmonised standard
     is published
-  subject_ref: provider
-  subject_category: supported_operator
+  actors:
+  - actor_ref: provider
+    category: supported_operator
+  targets: []
   kind: permission
   product_scope: no_product_action
   product_scope_reason: Provides an optional compliance route rather than an additional product action.
@@ -84,8 +94,10 @@ records:
   quote: Compliance with European harmonised standards grants providers the presumption of conformity
     to the extent that those standards cover those obligations.
   action: presume conformity to the extent European harmonised standards cover Article 55 obligations
-  subject_ref: provider
-  subject_category: supported_operator
+  actors:
+  - actor_ref: provider
+    category: supported_operator
+  targets: []
   kind: legal_consequence
   product_scope: no_product_action
   product_scope_reason: Establishes an evidentiary consequence rather than an independent action.
@@ -98,8 +110,10 @@ records:
     of practice or do not comply with a European harmonised standard shall demonstrate alternative adequate
     means of compliance for assessment by the Commission.
   action: demonstrate alternative adequate means of compliance for Commission assessment
-  subject_ref: provider
-  subject_category: supported_operator
+  actors:
+  - actor_ref: provider
+    category: supported_operator
+  targets: []
   conditions:
   - the provider neither adheres to an approved code nor complies with a covering harmonised standard
   implementation_refs:
@@ -112,8 +126,10 @@ records:
     shall be treated in accordance with the confidentiality obligations set out in Article 78.
   action: treat Article 55 information and documentation, including trade secrets, under Article 78 confidentiality
     duties
-  subject_ref: article_55_information_recipient
-  subject_category: public_authority
+  actors:
+  - actor_ref: article_55_information_recipient
+    category: public_authority
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required

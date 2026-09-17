@@ -436,7 +436,7 @@ def test_article_five_public_authority_norms_are_reported_without_becoming_repor
     ]
     assert len(statements) == 14
     assert all(
-        "public_authority" in {category.value for category in norm.subject_categories}
+        "public_authority" in {category.value for category in norm.actor_categories}
         for norm in statements
     )
     assert traceability_errors(bundle, spec, LEDGER) == []
@@ -446,7 +446,7 @@ def test_model_flaws_is_materialised_with_its_full_action_and_condition(spec):
     criterion = next(c for c in a15(spec).criteria if c.norm_id == MODEL_FLAWS)
 
     assert criterion.norm_text == "model flaws"
-    assert criterion.subjects == ["provider"]
+    assert criterion.actors == ["provider"]
     assert criterion.mandatory
     for verb in ("prevent", "detect", "respond to", "resolve", "control"):
         assert verb in criterion.action
@@ -518,12 +518,19 @@ def test_the_checker_names_each_broken_link(bundle, spec):
     model_flaws = next(c for c in criteria if c.norm_id == MODEL_FLAWS)
     others = [c for c in criteria if c.norm_id != MODEL_FLAWS]
     stranger = model_flaws.model_copy(update={"norm_id": "AIA-NORM-A015-P9-NOT-A-NORM"})
-    article_14 = next(
+    enforced_scope = {
+        (entry.kind, entry.document)
+        for entry in load_adjudication_ledger(LEDGER).enforced_scope
+    }
+    segments = {segment.segment_id: segment for segment in bundle.text_review.segments}
+    outside_scope = next(
         n
         for n in bundle.norm_inventory.norms
-        if n.norm_id.startswith("AIA-NORM-A014-") and RULE not in n.implementation_refs
+        if (segments[n.primary_spans[0]].source.kind, segments[n.primary_spans[0]].source.document)
+        not in enforced_scope
+        and RULE not in n.implementation_refs
     )
-    unrelated = model_flaws.model_copy(update={"norm_id": article_14.norm_id})
+    unrelated = model_flaws.model_copy(update={"norm_id": outside_scope.norm_id})
     edited = model_flaws.model_copy(update={"action": "implement measures against model flaws"})
 
     def errors(new: list[RuleCriterion]) -> str:
@@ -536,7 +543,7 @@ def test_the_checker_names_each_broken_link(bundle, spec):
     assert f"{RULE} names missing norm AIA-NORM-A015-P9-NOT-A-NORM" in errors(
         [*criteria, stranger]
     )
-    assert f"{RULE} names {article_14.norm_id}, which does not point back" in errors(
+    assert f"{RULE} names {outside_scope.norm_id}, which does not point back" in errors(
         [*criteria, unrelated]
     )
     assert "outside the adjudicated validity scope" in errors([*criteria, unrelated])
@@ -676,7 +683,7 @@ def test_article_seventeen_groups_only_homogeneous_qms_obligations(bundle, spec)
     assert projected["AIA-NORM-A017-P3-SECTORAL-INTEGRATION"].kind.value == "permission"
     assert projected["AIA-NORM-A017-P4-FINANCIAL-DEEMING"].kind.value == "legal_consequence"
     assert all(
-        criterion.kind.value == "obligation" and criterion.subjects == ["provider"]
+        criterion.kind.value == "obligation" and criterion.actors == ["provider"]
         for criterion in rule.criteria
     )
     assert traceability_errors(bundle, spec, LEDGER) == []
@@ -1037,13 +1044,13 @@ def test_a_criterion_the_model_mishandles_is_needs_review(spec, llm_judge, model
     assert llm_judge.check(a15(spec), FIXTURE.read_text(encoding="utf-8")) is Verdict.NEEDS_REVIEW
 
 
-def test_a_rule_without_criteria_keeps_its_prompt_and_contract(spec, llm_judge, model_reply):
+def test_a_rule_with_criteria_rejects_a_legacy_rule_level_model_reply(spec, llm_judge, model_reply):
     rule = next(r for r in spec.rules if r.rule_id == "AIA-HR-A14")
     sent = model_reply(
         {"verdict": "gap", "reasoning": "No oversight.", "confidence": "high"}
     )
     judgement = llm_judge.judge(rule, "# Doc\n")
 
-    assert judgement.verdict is Verdict.GAP
-    assert judgement.criteria == ()
-    assert "SEPARATE CRITERIA" not in sent[0]
+    assert judgement.verdict is Verdict.NEEDS_REVIEW
+    assert judgement.criteria
+    assert "SEPARATE CRITERIA" in sent[0]

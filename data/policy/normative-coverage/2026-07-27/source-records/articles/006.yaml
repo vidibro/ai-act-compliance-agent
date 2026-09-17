@@ -7,8 +7,9 @@ records:
   action: classify an AI system as high-risk, regardless of whether it is placed on the market or put
     into service independently of the relevant product, when both the Annex I product or safety-component
     condition and the third-party conformity-assessment condition are fulfilled
-  subject_ref: ai_system
-  subject_category: other
+  actors: []
+  targets:
+  - target_ref: ai_system
   kind: applicability
   qualifier_spans:
   - A006-P002
@@ -31,8 +32,9 @@ records:
     safety components.
   action: exclude AI systems used solely for the listed non-safety functions from qualification as safety
     components
-  subject_ref: ai_system
-  subject_category: other
+  actors: []
+  targets:
+  - target_ref: ai_system
   kind: applicability
   conditions:
   - the system is used solely for non-safety aspects of user assistance, performance optimisation, service
@@ -48,8 +50,9 @@ records:
     health and safety shall qualify as safety components.
   action: classify an AI system as a safety component when its failure or malfunction would endanger health
     and safety
-  subject_ref: ai_system
-  subject_category: other
+  actors: []
+  targets:
+  - target_ref: ai_system
   kind: applicability
   conditions:
   - failure or malfunction of the AI system would endanger health and safety
@@ -66,8 +69,9 @@ records:
     the condition in paragraph 1, point (b).
   action: exclude a third-party conformity assessment required solely for non-health-and-safety risks
     from satisfying Article 6(1)(b)
-  subject_ref: ai_system_or_product
-  subject_category: other
+  actors: []
+  targets:
+  - target_ref: ai_system_or_product
   kind: applicability
   conditions:
   - third-party conformity assessment is required solely because of risks unrelated to health and safety
@@ -80,8 +84,9 @@ records:
   source: A006-P007
   quote: AI systems referred to in Annex III shall be considered to be high-risk.
   action: classify AI systems referred to in Annex III as high-risk
-  subject_ref: annex_iii_ai_system
-  subject_category: other
+  actors: []
+  targets:
+  - target_ref: annex_iii_ai_system
   kind: applicability
   verification_mode: answered_by_classification
   implementation_mode: applicability_question
@@ -95,8 +100,9 @@ records:
     by not materially influencing the outcome of decision making.
   action: exclude an Annex III AI system from high-risk classification when it poses no significant harm
     risk and satisfies at least one listed condition
-  subject_ref: annex_iii_ai_system
-  subject_category: other
+  actors: []
+  targets:
+  - target_ref: annex_iii_ai_system
   kind: applicability
   qualifier_spans:
   - A006-P009
@@ -136,8 +142,9 @@ records:
   quote: an AI system referred to in Annex III shall always be considered to be high-risk where the AI
     system performs profiling of natural persons.
   action: classify an Annex III AI system as high-risk whenever it profiles natural persons
-  subject_ref: annex_iii_ai_system
-  subject_category: other
+  actors: []
+  targets:
+  - target_ref: annex_iii_ai_system
   kind: applicability
   conditions:
   - the AI system performs profiling of natural persons
@@ -152,8 +159,10 @@ records:
     its assessment before that system is placed on the market or put into service.
   action: document the Article 6(3) non-high-risk assessment before placing the system on the market or
     putting it into service
-  subject_ref: provider
-  subject_category: supported_operator
+  actors:
+  - actor_ref: provider
+    category: supported_operator
+  targets: []
   kind: obligation
   conditions:
   - the provider considers an Annex III AI system not to be high-risk under Article 6(3)
@@ -165,8 +174,10 @@ records:
   source: A006-P015
   quote: Such provider shall be subject to the registration obligation set out in Article 49(2).
   action: register the provider and non-high-risk system as required by Article 49(2)
-  subject_ref: provider
-  subject_category: supported_operator
+  actors:
+  - actor_ref: provider
+    category: supported_operator
+  targets: []
   kind: obligation
   conditions:
   - the provider concludes that an Annex III AI system is not high-risk under Article 6(3)
@@ -180,8 +191,10 @@ records:
   quote: Upon request of national competent authorities, the provider shall provide the documentation
     of the assessment.
   action: provide the documented non-high-risk assessment to national competent authorities upon request
-  subject_ref: provider
-  subject_category: supported_operator
+  actors:
+  - actor_ref: provider
+    category: supported_operator
+  targets: []
   kind: obligation
   conditions:
   - a national competent authority requests the documentation
@@ -199,8 +212,10 @@ records:
   action: provide Article 96 guidelines on the practical implementation of Article 6 by 2 February 2026
     after consulting the AI Board, together with a comprehensive list of practical high-risk and non-high-risk
     AI-system use cases
-  subject_ref: commission
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: commission
+    category: union_institution_or_body
+  targets: []
   kind: obligation
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for the Commission.
@@ -220,8 +235,10 @@ records:
     health, safety or fundamental rights of natural persons.
   action: adopt Article 97 delegated acts adding or modifying Article 6(3) exception conditions when supported
     by concrete and reliable evidence
-  subject_ref: commission
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: commission
+    category: union_institution_or_body
+  targets: []
   kind: power
   conditions:
   - concrete and reliable evidence shows that AI systems within Annex III do not pose a significant risk
@@ -240,8 +257,10 @@ records:
     of health, safety and fundamental rights provided for by this Regulation.
   action: adopt Article 97 delegated acts deleting Article 6(3) exception conditions when necessary to
     maintain the required protection
-  subject_ref: commission
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: commission
+    category: union_institution_or_body
+  targets: []
   kind: obligation
   conditions:
   - concrete and reliable evidence shows deletion is necessary to maintain protection of health, safety,
@@ -261,8 +280,10 @@ records:
   action: ensure Article 6(3) condition amendments do not decrease the Regulation's overall protection
     of health, safety and fundamental rights, remain consistent with Article 7(1) delegated acts, and
     account for market and technological developments
-  subject_ref: commission
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: commission
+    category: union_institution_or_body
+  targets: []
   kind: prohibition
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for the Commission.

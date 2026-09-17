@@ -3,9 +3,9 @@ norms:
 - norm_id: AIA-NORM-A040-P1-HARMONISED-STANDARD-PRESUMPTION
   act_version_date: '2026-07-27'
   kind: legal_consequence
-  subjects:
-  - subject_ref: high_risk_ai_system_or_general_purpose_ai_model
-    category: other
+  actors: []
+  targets:
+  - target_ref: high_risk_ai_system_or_general_purpose_ai_model
   action: presume covered Chapter III Section 2 or Chapter V Sections 2 and 3 conformity from compliance
     with published harmonised standards
   norm_text: High-risk AI systems or general-purpose AI models which are in conformity with harmonised
@@ -46,9 +46,10 @@ norms:
 - norm_id: AIA-NORM-A040-P2-ISSUE-STANDARDISATION-REQUESTS
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: commission
+  actors:
+  - actor_ref: commission
     category: union_institution_or_body
+  targets: []
   action: issue without undue delay standardisation requests covering all relevant Chapter III and Chapter
     V requirements and obligations
   norm_text: In accordance with Article 10 of Regulation (EU) No 1025/2012, the Commission shall issue,
@@ -83,9 +84,10 @@ norms:
 - norm_id: AIA-NORM-A040-P2-RESOURCE-PERFORMANCE-DELIVERABLES
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: commission
+  actors:
+  - actor_ref: commission
     category: union_institution_or_body
+  targets: []
   action: request reporting and documentation deliverables improving system resource performance and energy-efficient
     GPAI development
   norm_text: "The standardisation request shall also ask for deliverables on reporting and documentation\
@@ -123,9 +125,10 @@ norms:
 - norm_id: AIA-NORM-A040-P2-CONSULT-STAKEHOLDERS
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: commission
+  actors:
+  - actor_ref: commission
     category: union_institution_or_body
+  targets: []
   action: consult the Board and relevant stakeholders, including the advisory forum, when preparing a
     standardisation request
   norm_text: When preparing a standardisation request, the Commission shall consult the Board and relevant
@@ -158,9 +161,10 @@ norms:
 - norm_id: AIA-NORM-A040-P2-SPECIFY-STANDARD-OBJECTIVES
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: commission
+  actors:
+  - actor_ref: commission
     category: union_institution_or_body
+  targets: []
   action: specify clarity, cross-sector consistency, and Regulation-compliance objectives in standardisation
     requests
   norm_text: When issuing a standardisation request to European standardisation organisations, the Commission
@@ -200,9 +204,10 @@ norms:
 - norm_id: AIA-NORM-A040-P2-REQUEST-EFFORT-EVIDENCE
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: commission
+  actors:
+  - actor_ref: commission
     category: union_institution_or_body
+  targets: []
   action: request evidence of standardisation organisations' best efforts to fulfil the paragraph 2 objectives
   norm_text: The Commission shall request the European standardisation organisations to provide evidence
     of their best efforts to fulfil the objectives referred to in the first and the second subparagraph
@@ -235,9 +240,10 @@ norms:
 - norm_id: AIA-NORM-A040-P2-JOINT-COMPLIANCE-DELIVERABLES
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: commission
+  actors:
+  - actor_ref: commission
     category: union_institution_or_body
+  targets: []
   action: request without undue delay deliverables facilitating joint AI Act and Annex I harmonisation-law
     compliance and conformity presumptions
   norm_text: 'The Commission shall request, in accordance with Regulation (EU) No 1025/2012 of the European
@@ -279,9 +285,10 @@ norms:
 - norm_id: AIA-NORM-A040-P3-STANDARDISATION-OBJECTIVES
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: standardisation_participant
-    category: other
+  actors:
+  - actor_ref: standardisation_participant
+    category: external_private_party
+  targets: []
   action: pursue the enacted investment, innovation, cooperation, standards, and inclusive-governance
     objectives in the standardisation process
   norm_text: The participants in the standardisation process shall seek to promote investment and innovation

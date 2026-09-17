@@ -3,9 +3,10 @@ norms:
 - norm_id: AIA-NORM-A088-P1-EXCLUSIVE-ENFORCEMENT-POWERS
   act_version_date: '2026-07-27'
   kind: power
-  subjects:
-  - subject_ref: commission
+  actors:
+  - actor_ref: commission
     category: union_institution_or_body
+  targets: []
   action: exercise exclusive Chapter V supervision and enforcement powers subject to Article 94 guarantees
   norm_text: The Commission shall have exclusive powers to supervise and enforce Chapter V, taking into
     account the procedural guarantees under Article 94.
@@ -37,9 +38,10 @@ norms:
 - norm_id: AIA-NORM-A088-P1-ENTRUST-AI-OFFICE
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: commission
+  actors:
+  - actor_ref: commission
     category: union_institution_or_body
+  targets: []
   action: entrust Chapter V supervision and enforcement implementation to the AI Office within enacted
     competence boundaries
   norm_text: The Commission shall entrust the implementation of these tasks to the AI Office, without
@@ -75,9 +77,10 @@ norms:
 - norm_id: AIA-NORM-A088-P2-REQUEST-COMMISSION-ASSISTANCE
   act_version_date: '2026-07-27'
   kind: power
-  subjects:
-  - subject_ref: market_surveillance_authority
+  actors:
+  - actor_ref: market_surveillance_authority
     category: public_authority
+  targets: []
   action: request necessary proportionate Commission exercise of Section powers to assist surveillance
     tasks
   norm_text: Without prejudice to Article 75(3), market surveillance authorities may request the Commission

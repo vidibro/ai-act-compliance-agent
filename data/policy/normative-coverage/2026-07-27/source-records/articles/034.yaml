@@ -4,8 +4,10 @@ records:
   quote: Notified bodies shall verify the conformity of high-risk AI systems in accordance with the conformity
     assessment procedures set out in Article 43.
   action: verify high-risk AI-system conformity using the Article 43 conformity-assessment procedures
-  subject_ref: notified_body
-  subject_category: notified_or_conformity_body
+  actors:
+  - actor_ref: notified_body
+    category: notified_or_conformity_body
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -21,8 +23,10 @@ records:
   action: avoid unnecessary provider burdens and account for provider size, sector, structure, and system
     complexity to minimise administrative burdens and compliance costs, particularly for micro and small
     enterprises
-  subject_ref: notified_body
-  subject_category: notified_or_conformity_body
+  actors:
+  - actor_ref: notified_body
+    category: notified_or_conformity_body
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -39,8 +43,10 @@ records:
   quote: The notified body shall, nevertheless, respect the degree of rigour and the level of protection
     required for the compliance of the high-risk AI system with the requirements of this Regulation.
   action: preserve the rigor and protection required for the high-risk system's compliance with the Regulation
-  subject_ref: notified_body
-  subject_category: notified_or_conformity_body
+  actors:
+  - actor_ref: notified_body
+    category: notified_or_conformity_body
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -54,8 +60,10 @@ records:
     \ to facilitate the assessment outlined in this Section."
   action: make available and submit all relevant documentation to the Article 28 notifying authority upon
     request
-  subject_ref: notified_body
-  subject_category: notified_or_conformity_body
+  actors:
+  - actor_ref: notified_body
+    category: notified_or_conformity_body
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required

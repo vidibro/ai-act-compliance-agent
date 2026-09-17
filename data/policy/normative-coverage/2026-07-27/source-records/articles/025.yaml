@@ -5,8 +5,10 @@ records:
     into service
   action: treat a distributor, importer, deployer, or other third party as the provider subject to Article
     16 after it puts its name or trademark on the high-risk system
-  subject_ref: distributor_importer_deployer_or_third_party
-  subject_category: supported_operator
+  actors:
+  - actor_ref: distributor_importer_deployer_or_third_party
+    category: supported_operator
+  targets: []
   kind: legal_consequence
   conditions:
   - the party puts its name or trademark on a high-risk AI system already placed on the market or put
@@ -27,8 +29,10 @@ records:
     pursuant to Article 6
   action: treat the substantially modifying distributor, importer, deployer, or third party as the provider
     subject to Article 16 when the modified system remains high-risk
-  subject_ref: distributor_importer_deployer_or_third_party
-  subject_category: supported_operator
+  actors:
+  - actor_ref: distributor_importer_deployer_or_third_party
+    category: supported_operator
+  targets: []
   kind: legal_consequence
   conditions:
   - the party substantially modifies an already marketed or operational high-risk system and it remains
@@ -49,8 +53,10 @@ records:
     6
   action: treat the purpose-modifying distributor, importer, deployer, or third party as the provider
     subject to Article 16 when its change makes an existing system high-risk
-  subject_ref: distributor_importer_deployer_or_third_party
-  subject_category: supported_operator
+  actors:
+  - actor_ref: distributor_importer_deployer_or_third_party
+    category: supported_operator
+  targets: []
   kind: legal_consequence
   conditions:
   - the party changes the intended purpose of an already marketed or operational non-high-risk system
@@ -70,8 +76,10 @@ records:
     of that specific AI system for the purposes of this Regulation.
   action: cease treating the initial provider as provider of the specific system after a paragraph 1 role
     transfer
-  subject_ref: initial_provider
-  subject_category: supported_operator
+  actors:
+  - actor_ref: initial_provider
+    category: supported_operator
+  targets: []
   kind: legal_consequence
   conditions: &id002
   - an Article 25(1) provider-role transfer occurs
@@ -86,8 +94,10 @@ records:
   source: A025-P006
   quote: That initial provider shall closely cooperate with new providers
   action: closely cooperate with the new provider after the provider role has transferred
-  subject_ref: initial_provider
-  subject_category: supported_operator
+  actors:
+  - actor_ref: initial_provider
+    category: supported_operator
+  targets: []
   conditions: *id002
   exceptions: &id003
   - the initial provider clearly specified that its system must not be changed into a high-risk system
@@ -103,8 +113,10 @@ records:
     systems
   action: provide the new provider with necessary information, reasonably expected technical access, and
     other assistance required for regulatory compliance
-  subject_ref: initial_provider
-  subject_category: supported_operator
+  actors:
+  - actor_ref: initial_provider
+    category: supported_operator
+  targets: []
   conditions: *id002
   exceptions: *id003
   implementation_refs: *id004
@@ -126,8 +138,10 @@ records:
     obligation to cooperate with the new providers and hand over the documentation.
   action: disapply the initial-provider cooperation and documentation duties where high-risk conversion
     was clearly prohibited
-  subject_ref: initial_provider
-  subject_category: supported_operator
+  actors:
+  - actor_ref: initial_provider
+    category: supported_operator
+  targets: []
   kind: applicability
   conditions:
   - the initial provider clearly specified that its AI system must not be changed into a high-risk system
@@ -141,8 +155,10 @@ records:
     of the product manufacturer
   action: treat the product manufacturer as provider subject to Article 16 when its high-risk safety-component
     system is marketed with the product under its name or trademark
-  subject_ref: product_manufacturer
-  subject_category: supported_operator
+  actors:
+  - actor_ref: product_manufacturer
+    category: supported_operator
+  targets: []
   kind: legal_consequence
   conditions:
   - the high-risk AI system is a safety component of a product covered by Section A of Annex I legislation
@@ -162,8 +178,10 @@ records:
     after the product has been placed on the market
   action: treat the product manufacturer as provider subject to Article 16 when its high-risk safety-component
     system is later put into service under its name or trademark
-  subject_ref: product_manufacturer
-  subject_category: supported_operator
+  actors:
+  - actor_ref: product_manufacturer
+    category: supported_operator
+  targets: []
   kind: legal_consequence
   conditions:
   - the high-risk AI system is a safety component of a product covered by Section A of Annex I legislation
@@ -186,8 +204,10 @@ records:
     the high-risk AI system to fully comply with the obligations set out in this Regulation.
   action: use a written agreement to specify the state-of-the-art information, capabilities, technical
     access, and assistance necessary for the provider's full compliance
-  subject_ref: high_risk_provider_and_third_party_supplier
-  subject_category: supported_operator
+  actors:
+  - actor_ref: high_risk_provider_and_third_party_supplier
+    category: supported_operator
+  targets: []
   implementation_refs: &id006
   - AIA-PO-A25-4
   verification_mode: reported_not_judged
@@ -204,8 +224,10 @@ records:
     processes, or components, other than general-purpose AI models, under a free and open-source licence.
   action: disapply the written-agreement duty to publicly accessible free and open-source supplies other
     than general-purpose AI models
-  subject_ref: third_party_supplier
-  subject_category: external_private_party
+  actors:
+  - actor_ref: third_party_supplier
+    category: external_private_party
+  targets: []
   kind: applicability
   exceptions:
   - general-purpose AI models remain subject to the written-agreement duty
@@ -219,8 +241,10 @@ records:
     of high-risk AI systems and third parties that supply tools, services, components or processes that
     are used for or integrated into high-risk AI systems.
   action: develop and recommend voluntary model terms for high-risk-system supply contracts
-  subject_ref: ai_office
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: ai_office
+    category: union_institution_or_body
+  targets: []
   kind: power
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
@@ -232,8 +256,10 @@ records:
   quote: When developing those voluntary model terms, the AI Office shall take into account possible contractual
     requirements applicable in specific sectors or business cases.
   action: consider sector-specific and business-case contractual requirements when developing model terms
-  subject_ref: ai_office
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: ai_office
+    category: union_institution_or_body
+  targets: []
   conditions:
   - the AI Office develops voluntary model terms
   product_scope: outside_supported_actor
@@ -246,8 +272,10 @@ records:
   quote: The voluntary model terms shall be published and be available free of charge in an easily usable
     electronic format.
   action: publish voluntary model terms free of charge in an easily usable electronic format
-  subject_ref: ai_office
-  subject_category: union_institution_or_body
+  actors:
+  - actor_ref: ai_office
+    category: union_institution_or_body
+  targets: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -260,8 +288,10 @@ records:
     law.
   action: observe and protect intellectual-property rights, confidential business information, and trade
     secrets when applying paragraphs 2 and 3
-  subject_ref: parties_under_article_25_paragraphs_2_and_3
-  subject_category: supported_operator
+  actors:
+  - actor_ref: parties_under_article_25_paragraphs_2_and_3
+    category: supported_operator
+  targets: []
   implementation_mode: report_only
   implementation_refs:
   - AIA-IP-A25-2

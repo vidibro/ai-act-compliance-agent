@@ -4,8 +4,9 @@ records:
   quote: This Regulation shall enter into force on the twentieth day following that of its publication
     in the Official Journal of the European Union.
   action: enter into force twenty days after publication
-  subject_ref: regulation
-  subject_category: other
+  actors: []
+  targets:
+  - target_ref: regulation
   kind: legal_consequence
   product_scope: dependency_only
   product_scope_reason: This proposition supplies applicability or content to operator norms.
@@ -16,8 +17,9 @@ records:
   source: A113-GENERAL
   quote: It shall apply from 2 August 2026.
   action: apply generally from 2 August 2026
-  subject_ref: regulation
-  subject_category: other
+  actors: []
+  targets:
+  - target_ref: regulation
   kind: applicability
   product_scope: dependency_only
   product_scope_reason: This proposition supplies applicability or content to operator norms.
@@ -28,8 +30,9 @@ records:
   source: A113-A
   quote: Chapters I and II shall apply from 2 February 2025
   action: apply Chapters I and II from 2 February 2025
-  subject_ref: regulation
-  subject_category: other
+  actors: []
+  targets:
+  - target_ref: regulation
   kind: applicability
   product_scope: dependency_only
   product_scope_reason: This proposition supplies applicability or content to operator norms.
@@ -43,8 +46,9 @@ records:
   source: A113-A
   quote: shall apply from 2 December 2026
   action: apply the listed Article 5 amendments from 2 December 2026
-  subject_ref: regulation
-  subject_category: other
+  actors: []
+  targets:
+  - target_ref: regulation
   kind: applicability
   product_scope: dependency_only
   product_scope_reason: This proposition supplies applicability or content to operator norms.
@@ -56,8 +60,9 @@ records:
   quote: Chapter III Section 4, Chapter V, Chapter VII and Chapter XII and Article 78 shall apply from
     2 August 2025, with the exception of Article 101
   action: apply the listed chapters and Article 78 from 2 August 2025 except Article 101
-  subject_ref: regulation
-  subject_category: other
+  actors: []
+  targets:
+  - target_ref: regulation
   kind: applicability
   product_scope: dependency_only
   product_scope_reason: This proposition supplies applicability or content to operator norms.
@@ -72,8 +77,9 @@ records:
     \           (i) 2 December 2027 as regards AI systems classified as high-risk pursuant to Article\
     \ 6(2) and Annex III"
   action: apply Chapter III Sections 1 to 3 to the Annex III route from 2 December 2027
-  subject_ref: regulation
-  subject_category: other
+  actors: []
+  targets:
+  - target_ref: regulation
   kind: applicability
   product_scope: dependency_only
   product_scope_reason: This proposition supplies applicability or content to operator norms.
@@ -88,8 +94,9 @@ records:
   quote: (ii) 2 August 2028 as regards AI systems classified as high-risk pursuant to Article 6(1) and
     Annex I
   action: apply Chapter III Sections 1 to 3 to the Annex I route from 2 August 2028
-  subject_ref: regulation
-  subject_category: other
+  actors: []
+  targets:
+  - target_ref: regulation
   kind: applicability
   product_scope: dependency_only
   product_scope_reason: This proposition supplies applicability or content to operator norms.
@@ -103,8 +110,9 @@ records:
   source: A113-D
   quote: Articles 102 to 110 shall apply from 27 July 2026.
   action: apply Articles 102 to 110 from 27 July 2026
-  subject_ref: regulation
-  subject_category: other
+  actors: []
+  targets:
+  - target_ref: regulation
   kind: applicability
   product_scope: dependency_only
   product_scope_reason: This proposition supplies applicability or content to operator norms.

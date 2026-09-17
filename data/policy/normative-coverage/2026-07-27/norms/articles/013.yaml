@@ -3,9 +3,10 @@ norms:
 - norm_id: AIA-NORM-A013-P1-TRANSPARENT-OPERATION
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: provider
+  actors:
+  - actor_ref: provider
     category: supported_operator
+  targets: []
   action: design and develop the high-risk AI system so its operation is sufficiently transparent for
     deployers to interpret its output and use it appropriately
   norm_text: "High-risk AI systems shall be designed and developed in such a way as to ensure that their\
@@ -41,9 +42,10 @@ norms:
 - norm_id: AIA-NORM-A013-P1-APPROPRIATE-TRANSPARENCY
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: provider
+  actors:
+  - actor_ref: provider
     category: supported_operator
+  targets: []
   action: ensure a type and degree of transparency appropriate for provider and deployer compliance with
     Section 3
   norm_text: An appropriate type and degree of transparency shall be ensured with a view to achieving
@@ -78,9 +80,10 @@ norms:
 - norm_id: AIA-NORM-A013-P2-PROVIDE-INSTRUCTIONS
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: provider
+  actors:
+  - actor_ref: provider
     category: supported_operator
+  targets: []
   action: accompany the high-risk AI system with instructions for use in an appropriate digital or other
     format containing concise, complete, correct, clear, relevant, accessible, and comprehensible information
   norm_text: High-risk AI systems shall be accompanied by instructions for use in an appropriate digital
@@ -123,9 +126,10 @@ norms:
 - norm_id: AIA-NORM-A013-P3-A-CONTACT-DETAILS
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: provider
+  actors:
+  - actor_ref: provider
     category: supported_operator
+  targets: []
   action: "include the provider\u2019s identity and contact details and, where applicable, those of its\
     \ authorised representative in the instructions"
   norm_text: the identity and the contact details of the provider and, where applicable, of its authorised
@@ -161,9 +165,10 @@ norms:
 - norm_id: AIA-NORM-A013-P3-B-PERFORMANCE-CHARACTERISTICS
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: provider
+  actors:
+  - actor_ref: provider
     category: supported_operator
+  targets: []
   action: "include the system\u2019s characteristics, capabilities, and performance limitations in the\
     \ instructions"
   norm_text: the characteristics, capabilities and limitations of performance of the high-risk AI system
@@ -198,9 +203,10 @@ norms:
 - norm_id: AIA-NORM-A013-P3-B-I-INTENDED-PURPOSE
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: provider
+  actors:
+  - actor_ref: provider
     category: supported_operator
+  targets: []
   action: "include the system\u2019s intended purpose in the instructions"
   norm_text: its intended purpose
   detection_channels:
@@ -235,9 +241,10 @@ norms:
 - norm_id: AIA-NORM-A013-P3-B-II-PERFORMANCE-AND-AFFECTING-CIRCUMSTANCES
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: provider
+  actors:
+  - actor_ref: provider
     category: supported_operator
+  targets: []
   action: include tested, validated, and expected accuracy levels and metrics, robustness and cybersecurity,
     plus known and foreseeable circumstances that may affect that expected performance
   norm_text: the level of accuracy, including its metrics, robustness and cybersecurity referred to in
@@ -279,9 +286,10 @@ norms:
 - norm_id: AIA-NORM-A013-P3-B-III-RISK-CIRCUMSTANCES
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: provider
+  actors:
+  - actor_ref: provider
     category: supported_operator
+  targets: []
   action: include known or foreseeable intended-use or misuse circumstances that may create health, safety,
     or fundamental-rights risks
   norm_text: any known or foreseeable circumstance, related to the use of the high-risk AI system in accordance
@@ -320,9 +328,10 @@ norms:
 - norm_id: AIA-NORM-A013-P3-B-IV-EXPLAIN-OUTPUT
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: provider
+  actors:
+  - actor_ref: provider
     category: supported_operator
+  targets: []
   action: include technical capabilities and characteristics relevant to explaining system outputs
   norm_text: where applicable, the technical capabilities and characteristics of the high-risk AI system
     to provide information that is relevant to explain its output
@@ -359,9 +368,10 @@ norms:
 - norm_id: AIA-NORM-A013-P3-B-V-GROUP-PERFORMANCE
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: provider
+  actors:
+  - actor_ref: provider
     category: supported_operator
+  targets: []
   action: include performance concerning specific persons or groups on which the system is intended to
     be used
   norm_text: when appropriate, its performance regarding specific persons or groups of persons on which
@@ -399,9 +409,10 @@ norms:
 - norm_id: AIA-NORM-A013-P3-B-VI-INPUT-DATA
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: provider
+  actors:
+  - actor_ref: provider
     category: supported_operator
+  targets: []
   action: include input-data specifications or other relevant information about the training, validation,
     and testing datasets used
   norm_text: when appropriate, specifications for the input data, or any other relevant information in
@@ -440,9 +451,10 @@ norms:
 - norm_id: AIA-NORM-A013-P3-B-VII-INTERPRET-OUTPUT
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: provider
+  actors:
+  - actor_ref: provider
     category: supported_operator
+  targets: []
   action: include information enabling deployers to interpret system outputs and use them appropriately
   norm_text: where applicable, information to enable deployers to interpret the output of the high-risk
     AI system and use it appropriately
@@ -479,9 +491,10 @@ norms:
 - norm_id: AIA-NORM-A013-P3-C-PREDETERMINED-CHANGES
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: provider
+  actors:
+  - actor_ref: provider
     category: supported_operator
+  targets: []
   action: include system and performance changes predetermined at the initial conformity assessment
   norm_text: the changes to the high-risk AI system and its performance which have been pre-determined
     by the provider at the moment of the initial conformity assessment, if any
@@ -517,9 +530,10 @@ norms:
 - norm_id: AIA-NORM-A013-P3-D-HUMAN-OVERSIGHT
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: provider
+  actors:
+  - actor_ref: provider
     category: supported_operator
+  targets: []
   action: include the Article 14 human-oversight measures, including technical measures facilitating deployer
     interpretation of high-risk AI-system outputs, in the instructions
   norm_text: the human oversight measures referred to in Article 14, including the technical measures
@@ -557,9 +571,10 @@ norms:
 - norm_id: AIA-NORM-A013-P3-E-RESOURCES-LIFETIME-AND-MAINTENANCE
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: provider
+  actors:
+  - actor_ref: provider
     category: supported_operator
+  targets: []
   action: include the needed computational and hardware resources, expected system lifetime, and necessary
     maintenance and care measures, their frequency, and software-update needs for proper functioning
   norm_text: the computational and hardware resources needed, the expected lifetime of the high-risk AI
@@ -599,9 +614,10 @@ norms:
 - norm_id: AIA-NORM-A013-P3-F-LOG-MECHANISMS
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: provider
+  actors:
+  - actor_ref: provider
     category: supported_operator
+  targets: []
   action: describe relevant system mechanisms that let deployers properly collect, store, and interpret
     Article 12 logs
   norm_text: where relevant, a description of the mechanisms included within the high-risk AI system that

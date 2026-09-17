@@ -3,9 +3,10 @@ norms:
 - norm_id: AIA-NORM-A018-P1-A-TECHNICAL-DOCUMENTATION
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: provider
+  actors:
+  - actor_ref: provider
     category: supported_operator
+  targets: []
   action: keep the Article 11 technical documentation available to national competent authorities until
     ten years after market placement or being put into service
   norm_text: the technical documentation referred to in Article 11
@@ -40,9 +41,10 @@ norms:
 - norm_id: AIA-NORM-A018-P1-B-QMS-DOCUMENTATION
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: provider
+  actors:
+  - actor_ref: provider
     category: supported_operator
+  targets: []
   action: keep the Article 17 quality-management-system documentation available to national competent
     authorities until ten years after market placement or being put into service
   norm_text: the documentation concerning the quality management system referred to in Article 17
@@ -77,9 +79,10 @@ norms:
 - norm_id: AIA-NORM-A018-P1-C-APPROVED-CHANGES
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: provider
+  actors:
+  - actor_ref: provider
     category: supported_operator
+  targets: []
   action: keep documentation of changes approved by notified bodies available to national competent authorities
     until ten years after market placement or being put into service
   norm_text: the documentation concerning the changes approved by notified bodies, where applicable
@@ -115,9 +118,10 @@ norms:
 - norm_id: AIA-NORM-A018-P1-D-NOTIFIED-BODY-DOCUMENTS
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: provider
+  actors:
+  - actor_ref: provider
     category: supported_operator
+  targets: []
   action: keep notified-body decisions and other documents available to national competent authorities
     until ten years after market placement or being put into service
   norm_text: the decisions and other documents issued by the notified bodies, where applicable
@@ -153,9 +157,10 @@ norms:
 - norm_id: AIA-NORM-A018-P1-E-EU-DECLARATION
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: provider
+  actors:
+  - actor_ref: provider
     category: supported_operator
+  targets: []
   action: keep the Article 47 EU declaration of conformity available to national competent authorities
     until ten years after market placement or being put into service
   norm_text: the EU declaration of conformity referred to in Article 47
@@ -190,9 +195,10 @@ norms:
 - norm_id: AIA-NORM-A018-P2-MEMBER-STATE-CONDITIONS
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: member_state
+  actors:
+  - actor_ref: member_state
     category: member_state
+  targets: []
   action: determine conditions preserving authority access to Article 18(1) documentation after a locally
     established provider or authorised representative becomes bankrupt or ceases activity early
   norm_text: Each Member State shall determine conditions under which the documentation referred to in
@@ -229,9 +235,10 @@ norms:
 - norm_id: AIA-NORM-A018-P3-FINANCIAL-DOCUMENTATION
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: financial_institution_provider
+  actors:
+  - actor_ref: financial_institution_provider
     category: supported_operator
+  targets: []
   action: maintain Article 11 technical documentation within the documentation kept under applicable Union
     financial-services law
   norm_text: Providers that are financial institutions subject to requirements regarding their internal

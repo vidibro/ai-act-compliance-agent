@@ -3,9 +3,10 @@ norms:
 - norm_id: AIA-NORM-A020-P1-CORRECTIVE-RESPONSE
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: provider
+  actors:
+  - actor_ref: provider
     category: supported_operator
+  targets: []
   action: immediately take the appropriate corrective response by bringing a non-conforming system into
     conformity, withdrawing it, disabling it, or recalling it
   norm_text: Providers of high-risk AI systems which consider or have reason to consider that a high-risk
@@ -44,9 +45,10 @@ norms:
 - norm_id: AIA-NORM-A020-P1-INFORM-SUPPLY-CHAIN
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: provider
+  actors:
+  - actor_ref: provider
     category: supported_operator
+  targets: []
   action: inform the distributor and, where applicable, deployers, the authorised representative, and
     importers about the non-conforming system and corrective response
   norm_text: They shall inform the distributors of the high-risk AI system concerned and, where applicable,
@@ -83,9 +85,10 @@ norms:
 - norm_id: AIA-NORM-A020-P2-INVESTIGATE-RISK
   act_version_date: '2026-07-27'
   kind: obligation
-  subjects:
-  - subject_ref: provider
+  actors:
+  - actor_ref: provider
     category: supported_operator
+  targets: []
   action: immediately investigate the causes of an Article 79(1) risk, collaborating with the reporting
     deployer where applicable, and inform the competent market-surveillance authorities and, where applicable,
     the certifying notified body of the non-compliance and relevant corrective action
