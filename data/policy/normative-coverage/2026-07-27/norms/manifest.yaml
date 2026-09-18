@@ -3799,6 +3799,18 @@ relations:
   - AIA-TEXT-A026-P11
   detail: 'Unresolved reference: Article 50 of this Regulation. The Article 26(11) notice duty operates
     without prejudice to Article 50.'
+- relation_id: AIA-REL-A005-P3-URGENT-USE-CONDITIONAL-ON-AUTHORISATION-REQUEST-DEADLINES
+  source_norm_id: AIA-NORM-A005-P3-URGENT-USE
+  kind: conditional_on_norms
+  target_rule_ids: []
+  target_norm_ids:
+  - AIA-NORM-A005-P3-REQUEST-URGENT-AUTHORISATION-WITHOUT-UNDUE-DELAY
+  - AIA-NORM-A005-P3-REQUEST-URGENT-AUTHORISATION-WITHIN-TWENTY-FOUR-HOURS
+  external_requirements: []
+  guidance_refs: []
+  legal_basis_spans:
+  - AIA-TEXT-A005-P028
+  detail: ''
 - relation_id: AIA-REL-A022-P3-MANDATE-EMPOWER-TASKS-RELIES-ON-NORMS
   source_norm_id: AIA-NORM-A022-P3-MANDATE-EMPOWER-TASKS
   kind: relies_on_norms
@@ -3920,11 +3932,29 @@ interpretations:
     fully_displayed: true
     elapsed_seconds: null
 temporal_regimes:
+- regime_id: AIA-TEMP-A005-P3-URGENT-AUTHORISATION-WITHOUT-UNDUE-DELAY
+  application_start: null
+  application_end: null
+  qualitative_deadline:
+    kind: without_undue_delay
+    trigger: null
+  timing_conditions: []
+  legal_basis_spans:
+  - AIA-TEXT-A005-P028
+- regime_id: AIA-TEMP-A005-P3-URGENT-AUTHORISATION-TWENTY-FOUR-HOURS
+  application_start: null
+  application_end: null
+  relative_deadline:
+    quantity: 24
+    unit: hour
+    trigger: the use of such system may be commenced without an authorisation
+  timing_conditions: []
+  legal_basis_spans:
+  - AIA-TEXT-A005-P028
 - regime_id: AIA-TEMP-A046-P4-OBJECTION-PERIOD
   application_start: null
   application_end: null
   relative_deadline:
-    operator: within
     quantity: 15
     unit: calendar_day
     trigger: receipt of the information referred to in paragraph 3
@@ -3937,6 +3967,65 @@ temporal_regimes:
   timing_conditions: []
   legal_basis_spans:
   - AIA-TEXT-A113-B
+- regime_id: AIA-TEMP-A073-P2-IMMEDIATE-REPORT
+  application_start: null
+  application_end: null
+  qualitative_deadline:
+    kind: immediately
+    trigger: the provider has established a causal link between the AI system and the serious incident
+      or the reasonable likelihood of such a link
+  timing_conditions: []
+  legal_basis_spans:
+  - AIA-TEXT-A073-P002
+- regime_id: AIA-TEMP-A073-P2-FIFTEEN-DAY-REPORT
+  application_start: null
+  application_end: null
+  relative_deadline:
+    quantity: 15
+    unit: day
+    trigger: the provider or, where applicable, the deployer, becomes aware of the serious incident
+  timing_conditions: []
+  legal_basis_spans:
+  - AIA-TEXT-A073-P002
+- regime_id: AIA-TEMP-A073-P3-IMMEDIATE-REPORT
+  application_start: null
+  application_end: null
+  qualitative_deadline:
+    kind: immediately
+    trigger: null
+  timing_conditions: []
+  legal_basis_spans:
+  - AIA-TEXT-A073-P004
+- regime_id: AIA-TEMP-A073-P3-TWO-DAY-REPORT
+  application_start: null
+  application_end: null
+  relative_deadline:
+    quantity: 2
+    unit: day
+    trigger: the provider or, where applicable, the deployer becomes aware of that incident
+  timing_conditions: []
+  legal_basis_spans:
+  - AIA-TEXT-A073-P004
+- regime_id: AIA-TEMP-A073-P4-IMMEDIATE-REPORT
+  application_start: null
+  application_end: null
+  qualitative_deadline:
+    kind: immediately
+    trigger: the provider or the deployer has established, or as soon as it suspects, a causal relationship
+      between the high-risk AI system and the serious incident
+  timing_conditions: []
+  legal_basis_spans:
+  - AIA-TEXT-A073-P005
+- regime_id: AIA-TEMP-A073-P4-TEN-DAY-REPORT
+  application_start: null
+  application_end: null
+  relative_deadline:
+    quantity: 10
+    unit: day
+    trigger: the provider or, where applicable, the deployer becomes aware of the serious incident
+  timing_conditions: []
+  legal_basis_spans:
+  - AIA-TEXT-A073-P005
 - regime_id: AIA-TEMP-A096-P1-G-PUBLISH-DEADLINE
   application_start: null
   application_end: null

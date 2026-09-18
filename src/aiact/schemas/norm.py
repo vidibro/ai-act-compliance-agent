@@ -313,15 +313,6 @@ class NormTarget(BaseModel):
         return self
 
 
-class RelativeDeadlineOperator(StrEnum):
-    WITHIN = "within"
-    NO_LATER_THAN = "no_later_than"
-
-    @property
-    def enacted_text(self) -> str:
-        return self.value.replace("_", " ")
-
-
 class RelativeDeadlineUnit(StrEnum):
     HOUR = "hour"
     DAY = "day"
@@ -340,17 +331,60 @@ class RelativeDeadline(BaseModel):
 
     model_config = ConfigDict(extra="forbid")
 
-    operator: RelativeDeadlineOperator
     quantity: int = Field(ge=1)
     unit: RelativeDeadlineUnit
     trigger: str = Field(min_length=1)
 
     @property
-    def enacted_period(self) -> str:
+    def enacted_period_variants(self) -> list[str]:
+        """Accept equivalent enacted phrasings of the same maximum deadline."""
+        words = {
+            1: "one",
+            2: "two",
+            3: "three",
+            4: "four",
+            5: "five",
+            6: "six",
+            7: "seven",
+            8: "eight",
+            9: "nine",
+            10: "ten",
+            11: "eleven",
+            12: "twelve",
+            15: "fifteen",
+            30: "thirty",
+            60: "sixty",
+        }
         unit = self.unit.enacted_text
         if self.quantity != 1:
             unit += "s"
-        return f"{self.operator.enacted_text} {self.quantity} {unit}"
+        periods = [f"{self.quantity} {unit}"]
+        if (word := words.get(self.quantity)) is not None:
+            periods.append(f"{word} {unit}")
+        return [
+            f"{operator} {period}"
+            for operator in ("within", "not later than")
+            for period in periods
+        ]
+
+
+class QualitativeDeadlineKind(StrEnum):
+    IMMEDIATELY = "immediately"
+    WITHOUT_UNDUE_DELAY = "without_undue_delay"
+    WITHOUT_DELAY = "without_delay"
+
+    @property
+    def enacted_text(self) -> str:
+        return self.value.replace("_", " ")
+
+
+class QualitativeDeadline(BaseModel):
+    """A source-backed urgency requirement, optionally measured from an enacted trigger."""
+
+    model_config = ConfigDict(extra="forbid")
+
+    kind: QualitativeDeadlineKind
+    trigger: str | None = Field(default=None, min_length=1)
 
 
 class TemporalStatus(StrEnum):
@@ -382,6 +416,7 @@ class TemporalRegime(BaseModel):
     application_end: date | None = None
     deadline: date | None = None
     relative_deadline: RelativeDeadline | None = None
+    qualitative_deadline: QualitativeDeadline | None = None
     timing_conditions: list[str] = []
     legal_basis_spans: list[NormativeSegmentId] = Field(min_length=1)
 
@@ -392,15 +427,27 @@ class TemporalRegime(BaseModel):
             and self.application_end is None
             and self.deadline is None
             and self.relative_deadline is None
+            and self.qualitative_deadline is None
             and not self.timing_conditions
         ):
-            raise ValueError("temporal regime requires an application date, deadline, or timing condition")
+            raise ValueError(
+                "temporal regime requires an application date, deadline, or timing condition"
+            )
         if (
             self.application_start is not None
             and self.application_end is not None
             and self.application_end < self.application_start
         ):
             raise ValueError("temporal regime application_end must not precede application_start")
+        if sum(
+            deadline is not None
+            for deadline in (
+                self.deadline,
+                self.relative_deadline,
+                self.qualitative_deadline,
+            )
+        ) > 1:
+            raise ValueError("temporal regime must contain at most one deadline constraint")
         if len(self.timing_conditions) != len(set(self.timing_conditions)):
             raise ValueError("temporal regime timing_conditions must not contain duplicates")
         if len(self.legal_basis_spans) != len(set(self.legal_basis_spans)):
@@ -424,6 +471,8 @@ class TemporalRegime(BaseModel):
             payload.pop("deadline")
         if self.relative_deadline is None:
             payload.pop("relative_deadline")
+        if self.qualitative_deadline is None:
+            payload.pop("qualitative_deadline")
         return payload
 
 

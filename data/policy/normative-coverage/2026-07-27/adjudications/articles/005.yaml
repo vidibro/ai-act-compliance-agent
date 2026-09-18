@@ -6,9 +6,9 @@ source:
 audit:
   audit_schema_version: 1
   segments_scanned: 35
-  norms_scanned: 38
+  norms_scanned: 40
   finding_count: 11
-  audit_sha256: 22b69a95be5438ae042fa9eea9d1b456810c20f152a280a24d347df363edd59f
+  audit_sha256: 0bd8c0e0dd4c624faf10389fa8d0bf5e97f026b6192f7f2b9452360eaa7d2890
 decisions:
 - finding_id: AIA-VALID-5B7FCD27DF45309C
   target: AIA-NORM-A005-P1-F-WORKPLACE-EDUCATION-EMOTION-INFERENCE
@@ -90,15 +90,15 @@ decisions:
   reason: The action retains prior, per-use, judicial-or-binding-authority authorisation,
     the reasoned request, and applicable national rules.
   reviewed_by: vidibro
-- finding_id: AIA-VALID-73B9E41ED09A43EA
+- finding_id: AIA-VALID-60DB1D9CF0CAF668
   target: AIA-NORM-A005-P3-URGENT-USE
   rule: fragment_without_qualifier_span
   source_ref: AIA-TEXT-A005-P028
   source_sha256: 4bda6bfdd93dddf04aa2ece7ac5c7c91aae51a0ec32b60c3eb4bff0b2efc918f
-  target_sha256: 88b776a223d6552af9aaf690f0b4b0b652b9de9ea07f590ae0dbe8d2202ed5cc
+  target_sha256: 205581f50a130ae9dcb74cdc967804e130a367b8f41a946723d4eabb12e4acd2
   decision: false_positive
   reason: The structured conditions retain the permitted-use branch, duly justified
-    urgency, and the no-later-than-24-hours request deadline.
+    urgency, and the absence of a prior authorisation.
   reviewed_by: vidibro
 - finding_id: AIA-VALID-F92BDFB651B38558
   target: AIA-NORM-A005-P4-NOTIFY-AUTHORITIES

@@ -35,28 +35,24 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
-- norm_id: AIA-NORM-A073-P2-DEFAULT-REPORTING-DEADLINE
+- norm_id: AIA-NORM-A073-P2-REPORT-IMMEDIATELY
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: provider
   - actor_ref: deployer
   targets: []
-  action: report immediately after establishing a causal link or reasonable likelihood and no later than
-    15 days after awareness, taking account of the severity of the serious incident
+  action: report immediately after establishing a causal link or reasonable likelihood
   norm_text: The report referred to in paragraph 1 shall be made immediately after the provider has established
     a causal link between the AI system and the serious incident or the reasonable likelihood of such
-    a link, and, in any event, not later than 15 days after the provider or, where applicable, the deployer,
-    becomes aware of the serious incident.
+    a link
   detection_channels:
   - semantic_legal_effect
   - shall_token
-  - cross_reference_structure
   - existing_implementation
   primary_spans:
   - AIA-TEXT-A073-P002
-  qualifier_spans:
-  - AIA-TEXT-A073-P003
+  qualifier_spans: []
   conditions: []
   exceptions: []
   mandatory_content: []
@@ -76,19 +72,59 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
-- norm_id: AIA-NORM-A073-P3-TWO-DAY-DEADLINE
+  temporal_regime_id: AIA-TEMP-A073-P2-IMMEDIATE-REPORT
+- norm_id: AIA-NORM-A073-P2-REPORT-NO-LATER-THAN-FIFTEEN-DAYS
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: provider
   - actor_ref: deployer
   targets: []
-  action: report a widespread infringement or Article 3(49)(b) incident immediately and within two days
-    of awareness
+  action: report no later than 15 days after awareness, taking account of the severity of the serious
+    incident
+  norm_text: in any event, not later than 15 days after the provider or, where applicable, the deployer,
+    becomes aware of the serious incident.
+  detection_channels:
+  - semantic_legal_effect
+  - cross_reference_structure
+  - existing_implementation
+  primary_spans:
+  - AIA-TEXT-A073-P002
+  qualifier_spans:
+  - AIA-TEXT-A073-P002
+  - AIA-TEXT-A073-P003
+  conditions:
+  - a deployer is applicable
+  exceptions: []
+  mandatory_content: []
+  product_scope: in_scope
+  product_scope_reason: ''
+  implementation_mode: compliance_rule
+  implementation_refs:
+  - AIA-ALL-A73
+  implementation_reason: ''
+  verification_mode: reported_not_judged
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-A073-P2-FIFTEEN-DAY-REPORT
+- norm_id: AIA-NORM-A073-P3-REPORT-IMMEDIATELY
+  act_version_date: '2026-07-27'
+  kind: obligation
+  actors:
+  - actor_ref: provider
+  - actor_ref: deployer
+  targets: []
+  action: report a widespread infringement or Article 3(49)(b) incident immediately
   norm_text: Notwithstanding paragraph 2 of this Article, in the event of a widespread infringement or
     a serious incident as defined in Article 3, point (49)(b), the report referred to in paragraph 1 of
-    this Article shall be provided immediately, and not later than two days after the provider or, where
-    applicable, the deployer becomes aware of that incident.
+    this Article shall be provided immediately
   detection_channels:
   - semantic_legal_effect
   - shall_token
@@ -96,7 +132,47 @@ norms:
   primary_spans:
   - AIA-TEXT-A073-P004
   qualifier_spans: []
-  conditions: []
+  conditions:
+  - a widespread infringement or Article 3(49)(b) serious incident occurs
+  exceptions: []
+  mandatory_content: []
+  product_scope: in_scope
+  product_scope_reason: ''
+  implementation_mode: compliance_rule
+  implementation_refs:
+  - AIA-ALL-A73
+  implementation_reason: ''
+  verification_mode: reported_not_judged
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-A073-P3-IMMEDIATE-REPORT
+- norm_id: AIA-NORM-A073-P3-REPORT-NO-LATER-THAN-TWO-DAYS
+  act_version_date: '2026-07-27'
+  kind: obligation
+  actors:
+  - actor_ref: provider
+  - actor_ref: deployer
+  targets: []
+  action: report a widespread infringement or Article 3(49)(b) incident no later than two days after awareness
+  norm_text: and not later than two days after the provider or, where applicable, the deployer becomes
+    aware of that incident.
+  detection_channels:
+  - semantic_legal_effect
+  - cross_reference_structure
+  - existing_implementation
+  primary_spans:
+  - AIA-TEXT-A073-P004
+  qualifier_spans:
+  - AIA-TEXT-A073-P004
+  conditions:
+  - a widespread infringement or Article 3(49)(b) serious incident occurs
   exceptions: []
   mandatory_content: []
   product_scope: in_scope
@@ -115,19 +191,18 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
-- norm_id: AIA-NORM-A073-P4-DEATH-DEADLINE
+  temporal_regime_id: AIA-TEMP-A073-P3-TWO-DAY-REPORT
+- norm_id: AIA-NORM-A073-P4-REPORT-IMMEDIATELY
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: provider
   - actor_ref: deployer
   targets: []
-  action: report a death immediately on established or suspected causality and within ten days of awareness
+  action: report a death immediately on established or suspected causality
   norm_text: Notwithstanding paragraph 2, in the event of the death of a person, the report shall be provided
     immediately after the provider or the deployer has established, or as soon as it suspects, a causal
-    relationship between the high-risk AI system and the serious incident, but not later than 10 days
-    after the date on which the provider or, where applicable, the deployer becomes aware of the serious
-    incident.
+    relationship between the high-risk AI system and the serious incident
   detection_channels:
   - semantic_legal_effect
   - shall_token
@@ -135,7 +210,8 @@ norms:
   primary_spans:
   - AIA-TEXT-A073-P005
   qualifier_spans: []
-  conditions: []
+  conditions:
+  - a person has died in the serious incident
   exceptions: []
   mandatory_content: []
   product_scope: in_scope
@@ -154,6 +230,46 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-A073-P4-IMMEDIATE-REPORT
+- norm_id: AIA-NORM-A073-P4-REPORT-NO-LATER-THAN-TEN-DAYS
+  act_version_date: '2026-07-27'
+  kind: obligation
+  actors:
+  - actor_ref: provider
+  - actor_ref: deployer
+  targets: []
+  action: report a death no later than ten days after awareness
+  norm_text: but not later than 10 days after the date on which the provider or, where applicable, the
+    deployer becomes aware of the serious incident.
+  detection_channels:
+  - semantic_legal_effect
+  - cross_reference_structure
+  - existing_implementation
+  primary_spans:
+  - AIA-TEXT-A073-P005
+  qualifier_spans:
+  - AIA-TEXT-A073-P005
+  conditions:
+  - a person has died in the serious incident
+  exceptions: []
+  mandatory_content: []
+  product_scope: in_scope
+  product_scope_reason: ''
+  implementation_mode: compliance_rule
+  implementation_refs:
+  - AIA-ALL-A73
+  implementation_reason: ''
+  verification_mode: reported_not_judged
+  review:
+    status: approved
+    extracted_by: semantic-legal-effect-pass
+    verified_by: vidibro
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-A073-P4-TEN-DAY-REPORT
 - norm_id: AIA-NORM-A073-P5-INITIAL-INCOMPLETE-REPORT
   act_version_date: '2026-07-27'
   kind: permission

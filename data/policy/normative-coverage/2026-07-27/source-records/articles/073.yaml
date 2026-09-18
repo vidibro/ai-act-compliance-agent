@@ -1,3 +1,42 @@
+temporal_regimes:
+- regime_id: AIA-TEMP-A073-P2-IMMEDIATE-REPORT
+  qualitative_deadline:
+    kind: immediately
+    trigger: the provider has established a causal link between the AI system and the serious incident or the reasonable likelihood of such a link
+  legal_basis_spans:
+  - AIA-TEXT-A073-P002
+- regime_id: AIA-TEMP-A073-P2-FIFTEEN-DAY-REPORT
+  relative_deadline:
+    quantity: 15
+    unit: day
+    trigger: the provider or, where applicable, the deployer, becomes aware of the serious incident
+  legal_basis_spans:
+  - AIA-TEXT-A073-P002
+- regime_id: AIA-TEMP-A073-P3-IMMEDIATE-REPORT
+  qualitative_deadline:
+    kind: immediately
+  legal_basis_spans:
+  - AIA-TEXT-A073-P004
+- regime_id: AIA-TEMP-A073-P3-TWO-DAY-REPORT
+  relative_deadline:
+    quantity: 2
+    unit: day
+    trigger: the provider or, where applicable, the deployer becomes aware of that incident
+  legal_basis_spans:
+  - AIA-TEXT-A073-P004
+- regime_id: AIA-TEMP-A073-P4-IMMEDIATE-REPORT
+  qualitative_deadline:
+    kind: immediately
+    trigger: the provider or the deployer has established, or as soon as it suspects, a causal relationship between the high-risk AI system and the serious incident
+  legal_basis_spans:
+  - AIA-TEXT-A073-P005
+- regime_id: AIA-TEMP-A073-P4-TEN-DAY-REPORT
+  relative_deadline:
+    quantity: 10
+    unit: day
+    trigger: the provider or, where applicable, the deployer becomes aware of the serious incident
+  legal_basis_spans:
+  - AIA-TEXT-A073-P005
 records:
 - norm_id: AIA-NORM-A073-P1-REPORT-SERIOUS-INCIDENT
   source: A073-P001
@@ -11,51 +50,103 @@ records:
   - AIA-ALL-A73
   verification_mode: reported_not_judged
   verified_by: vidibro
-- norm_id: AIA-NORM-A073-P2-DEFAULT-REPORTING-DEADLINE
+- norm_id: AIA-NORM-A073-P2-REPORT-IMMEDIATELY
   source: A073-P002
   quote: The report referred to in paragraph 1 shall be made immediately after the provider has established
     a causal link between the AI system and the serious incident or the reasonable likelihood of such
-    a link, and, in any event, not later than 15 days after the provider or, where applicable, the deployer,
+    a link
+  action: report immediately after establishing a causal link or reasonable likelihood
+  actors:
+  - actor_ref: provider
+  - actor_ref: deployer
+  targets: []
+  temporal_regime_id: AIA-TEMP-A073-P2-IMMEDIATE-REPORT
+  implementation_refs:
+  - AIA-ALL-A73
+  verification_mode: reported_not_judged
+- norm_id: AIA-NORM-A073-P2-REPORT-NO-LATER-THAN-FIFTEEN-DAYS
+  source: A073-P002
+  quote: in any event, not later than 15 days after the provider or, where applicable, the deployer,
     becomes aware of the serious incident.
-  action: report immediately after establishing a causal link or reasonable likelihood and no later than
-    15 days after awareness, taking account of the severity of the serious incident
+  action: report no later than 15 days after awareness, taking account of the severity of the serious incident
   actors:
   - actor_ref: provider
   - actor_ref: deployer
   targets: []
   qualifier_spans:
+  - A073-P002
   - A073-P003
+  conditions:
+  - a deployer is applicable
+  temporal_regime_id: AIA-TEMP-A073-P2-FIFTEEN-DAY-REPORT
   implementation_refs:
   - AIA-ALL-A73
   verification_mode: reported_not_judged
-- norm_id: AIA-NORM-A073-P3-TWO-DAY-DEADLINE
+- norm_id: AIA-NORM-A073-P3-REPORT-IMMEDIATELY
   source: A073-P004
   quote: Notwithstanding paragraph 2 of this Article, in the event of a widespread infringement or a serious
     incident as defined in Article 3, point (49)(b), the report referred to in paragraph 1 of this Article
-    shall be provided immediately, and not later than two days after the provider or, where applicable,
-    the deployer becomes aware of that incident.
-  action: report a widespread infringement or Article 3(49)(b) incident immediately and within two days
-    of awareness
+    shall be provided immediately
+  action: report a widespread infringement or Article 3(49)(b) incident immediately
   actors:
   - actor_ref: provider
   - actor_ref: deployer
   targets: []
+  conditions:
+  - a widespread infringement or Article 3(49)(b) serious incident occurs
+  temporal_regime_id: AIA-TEMP-A073-P3-IMMEDIATE-REPORT
+  implementation_refs:
+  - AIA-ALL-A73
+  verification_mode: reported_not_judged
+- norm_id: AIA-NORM-A073-P3-REPORT-NO-LATER-THAN-TWO-DAYS
+  source: A073-P004
+  quote: and not later than two days after the provider or, where applicable, the deployer becomes aware
+    of that incident.
+  action: report a widespread infringement or Article 3(49)(b) incident no later than two days after awareness
+  actors:
+  - actor_ref: provider
+  - actor_ref: deployer
+  targets: []
+  qualifier_spans:
+  - A073-P004
+  conditions:
+  - a widespread infringement or Article 3(49)(b) serious incident occurs
+  temporal_regime_id: AIA-TEMP-A073-P3-TWO-DAY-REPORT
   implementation_refs:
   - AIA-ALL-A73
   verification_mode: reported_not_judged
   verified_by: vidibro
-- norm_id: AIA-NORM-A073-P4-DEATH-DEADLINE
+- norm_id: AIA-NORM-A073-P4-REPORT-IMMEDIATELY
   source: A073-P005
   quote: Notwithstanding paragraph 2, in the event of the death of a person, the report shall be provided
     immediately after the provider or the deployer has established, or as soon as it suspects, a causal
-    relationship between the high-risk AI system and the serious incident, but not later than 10 days
-    after the date on which the provider or, where applicable, the deployer becomes aware of the serious
-    incident.
-  action: report a death immediately on established or suspected causality and within ten days of awareness
+    relationship between the high-risk AI system and the serious incident
+  action: report a death immediately on established or suspected causality
   actors:
   - actor_ref: provider
   - actor_ref: deployer
   targets: []
+  conditions:
+  - a person has died in the serious incident
+  temporal_regime_id: AIA-TEMP-A073-P4-IMMEDIATE-REPORT
+  implementation_refs:
+  - AIA-ALL-A73
+  verification_mode: reported_not_judged
+  verified_by: vidibro
+- norm_id: AIA-NORM-A073-P4-REPORT-NO-LATER-THAN-TEN-DAYS
+  source: A073-P005
+  quote: but not later than 10 days after the date on which the provider or, where applicable, the deployer
+    becomes aware of the serious incident.
+  action: report a death no later than ten days after awareness
+  actors:
+  - actor_ref: provider
+  - actor_ref: deployer
+  targets: []
+  qualifier_spans:
+  - A073-P005
+  conditions:
+  - a person has died in the serious incident
+  temporal_regime_id: AIA-TEMP-A073-P4-TEN-DAY-REPORT
   implementation_refs:
   - AIA-ALL-A73
   verification_mode: reported_not_judged

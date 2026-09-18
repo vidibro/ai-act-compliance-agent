@@ -141,7 +141,7 @@ def test_article_five_findings_are_recorded_in_its_own_shard():
         "AIA-VALID-3B5963DF02D90B91",
         "AIA-VALID-FFFAA9BB86305D59",
         "AIA-VALID-CC024E9D9725C0ED",
-        "AIA-VALID-73B9E41ED09A43EA",
+        "AIA-VALID-60DB1D9CF0CAF668",
         "AIA-VALID-F92BDFB651B38558",
         "AIA-VALID-2F3A48673D9CF580",
     }
@@ -630,6 +630,82 @@ def test_relative_deadline_trigger_must_be_in_its_legal_basis():
     assert [finding.rule for finding in findings].count(
         "temporal_deadline_trigger_not_in_basis"
     ) == 1
+
+
+def test_a_norm_with_multiple_deadline_constraints_is_a_structural_finding():
+    bundle = load_bundle().model_copy(deep=True)
+    norm = next(
+        item
+        for item in bundle.norm_inventory.norms
+        if item.norm_id == "AIA-NORM-A015-P2-ENCOURAGE-MEASUREMENT"
+    )
+    norm.norm_text = (
+        "The provider shall report immediately and not later than 15 days after awareness."
+    )
+    norm.action = "report immediately and not later than 15 days after awareness"
+
+    findings = audit_norm_validity(bundle, scope={(SourceKind.ARTICLE, "15")})
+
+    assert [finding.rule for finding in findings].count(
+        "multiple_deadline_constraints_in_norm"
+    ) == 1
+
+
+def test_article_seventy_three_splits_each_cumulative_deadline_into_atomic_norms():
+    bundle = load_bundle()
+    norm_ids = {norm.norm_id for norm in bundle.norm_inventory.norms}
+
+    assert {
+        "AIA-NORM-A073-P2-REPORT-IMMEDIATELY",
+        "AIA-NORM-A073-P2-REPORT-NO-LATER-THAN-FIFTEEN-DAYS",
+        "AIA-NORM-A073-P3-REPORT-IMMEDIATELY",
+        "AIA-NORM-A073-P3-REPORT-NO-LATER-THAN-TWO-DAYS",
+        "AIA-NORM-A073-P4-REPORT-IMMEDIATELY",
+        "AIA-NORM-A073-P4-REPORT-NO-LATER-THAN-TEN-DAYS",
+    } <= norm_ids
+    assert "AIA-NORM-A073-P2-DEFAULT-REPORTING-DEADLINE" not in norm_ids
+    findings = audit_norm_validity(bundle, scope={(SourceKind.ARTICLE, "73")})
+    assert not [
+        finding for finding in findings if finding.rule == "multiple_deadline_constraints_in_norm"
+    ]
+    assert not [
+        finding
+        for finding in findings
+        if finding.rule
+        in {
+            "temporal_relative_deadline_not_in_basis",
+            "temporal_deadline_trigger_not_in_basis",
+        }
+    ]
+
+
+def test_article_five_splits_the_urgent_authorisation_timing_constraints():
+    bundle = load_bundle()
+    norm_ids = {norm.norm_id for norm in bundle.norm_inventory.norms}
+
+    assert {
+        "AIA-NORM-A005-P3-URGENT-USE",
+        "AIA-NORM-A005-P3-REQUEST-URGENT-AUTHORISATION-WITHOUT-UNDUE-DELAY",
+        "AIA-NORM-A005-P3-REQUEST-URGENT-AUTHORISATION-WITHIN-TWENTY-FOUR-HOURS",
+    } <= norm_ids
+    relation = next(
+        item
+        for item in bundle.norm_inventory.relations
+        if item.relation_id
+        == "AIA-REL-A005-P3-URGENT-USE-CONDITIONAL-ON-AUTHORISATION-REQUEST-DEADLINES"
+    )
+    assert relation.source_norm_id == "AIA-NORM-A005-P3-URGENT-USE"
+    assert relation.target_norm_ids == [
+        "AIA-NORM-A005-P3-REQUEST-URGENT-AUTHORISATION-WITHOUT-UNDUE-DELAY",
+        "AIA-NORM-A005-P3-REQUEST-URGENT-AUTHORISATION-WITHIN-TWENTY-FOUR-HOURS",
+    ]
+    findings = audit_norm_validity(bundle, scope={(SourceKind.ARTICLE, "5")})
+    assert not [
+        finding
+        for finding in findings
+        if finding.target == "AIA-NORM-A005-P3-URGENT-USE"
+        and finding.rule == "multiple_deadline_constraints_in_norm"
+    ]
 
 
 def test_field_validation_gate_requires_complete_actor_evidence_for_an_article(tmp_path):

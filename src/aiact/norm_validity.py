@@ -42,6 +42,10 @@ RELATIVE_DEADLINE = re.compile(
     r"(?:calendar\s+days?|hours?|days?|weeks?|months?|years?)\b",
     re.I,
 )
+QUALITATIVE_DEADLINE = re.compile(
+    r"\b(?:immediately|without undue delay|without delay)\b",
+    re.I,
+)
 
 
 class FieldValidation(StrEnum):
@@ -359,6 +363,18 @@ def _requires_relative_deadline(norm: Norm) -> bool:
     return RELATIVE_DEADLINE.search(norm.norm_text) is not None
 
 
+def _requires_qualitative_deadline(norm: Norm) -> bool:
+    return QUALITATIVE_DEADLINE.search(norm.norm_text) is not None
+
+
+def _deadline_constraint_count(norm: Norm) -> int:
+    """Count independently auditable deadline constraints in enacted norm text."""
+    return sum(
+        len(pattern.findall(norm.norm_text))
+        for pattern in (CALENDAR_DEADLINE, RELATIVE_DEADLINE, QUALITATIVE_DEADLINE)
+    )
+
+
 def _new_field_findings(
     bundle: NormativeCoverageBundle,
     *,
@@ -450,6 +466,7 @@ def _new_field_findings(
 
         requires_calendar_deadline = _requires_calendar_deadline(norm)
         requires_relative_deadline = _requires_relative_deadline(norm)
+        requires_qualitative_deadline = _requires_qualitative_deadline(norm)
         if norm.temporal_regime_id is None:
             if FieldValidation.TEMPORAL_REGIME in requirements:
                 target_sha256 = hashlib.sha256(
@@ -467,7 +484,11 @@ def _new_field_findings(
                         target=f"{norm.norm_id}:temporal",
                         rule=(
                             "temporal_deadline_regime_missing"
-                            if requires_calendar_deadline or requires_relative_deadline
+                            if (
+                                requires_calendar_deadline
+                                or requires_relative_deadline
+                                or requires_qualitative_deadline
+                            )
                             else "temporal_regime_missing"
                         ),
                         source_ref=primary.segment_id,
@@ -514,6 +535,21 @@ def _new_field_findings(
             )
         if (
             FieldValidation.TEMPORAL_REGIME in requirements
+            and requires_qualitative_deadline
+            and regime.qualitative_deadline is None
+        ):
+            findings.append(
+                _finding(
+                    target=target,
+                    rule="temporal_qualitative_deadline_missing",
+                    source_ref=primary.segment_id,
+                    source_sha256=primary.sha256,
+                    target_sha256=target_sha256,
+                    evidence=norm.norm_text,
+                )
+            )
+        if (
+            FieldValidation.TEMPORAL_REGIME in requirements
             and requires_relative_deadline
             and regime.relative_deadline is None
         ):
@@ -529,7 +565,10 @@ def _new_field_findings(
             )
         if regime.relative_deadline is not None:
             relative = regime.relative_deadline
-            if not _contains_exact_words(basis_text, relative.enacted_period):
+            if not any(
+                _contains_exact_words(basis_text, period)
+                for period in relative.enacted_period_variants
+            ):
                 findings.append(
                     _finding(
                         target=target,
@@ -541,6 +580,32 @@ def _new_field_findings(
                     )
                 )
             if not _contains_exact_words(basis_text, relative.trigger):
+                findings.append(
+                    _finding(
+                        target=target,
+                        rule="temporal_deadline_trigger_not_in_basis",
+                        source_ref=primary.segment_id,
+                        source_sha256=primary.sha256,
+                        target_sha256=target_sha256,
+                        evidence=basis_text,
+                    )
+                )
+        if regime.qualitative_deadline is not None:
+            qualitative = regime.qualitative_deadline
+            if not _contains_exact_words(basis_text, qualitative.kind.enacted_text):
+                findings.append(
+                    _finding(
+                        target=target,
+                        rule="temporal_qualitative_deadline_not_in_basis",
+                        source_ref=primary.segment_id,
+                        source_sha256=primary.sha256,
+                        target_sha256=target_sha256,
+                        evidence=basis_text,
+                    )
+                )
+            if qualitative.trigger is not None and not _contains_exact_words(
+                basis_text, qualitative.trigger
+            ):
                 findings.append(
                     _finding(
                         target=target,
@@ -754,6 +819,8 @@ def audit_norm_validity(
                 rules.append("exception_not_structured_or_retained")
             if DEADLINE.search(norm.norm_text) and not DEADLINE.search(semantic):
                 rules.append("deadline_not_structured_or_retained")
+            if _deadline_constraint_count(norm) > 1:
+                rules.append("multiple_deadline_constraints_in_norm")
             for rule in rules:
                 findings.append(
                     _finding(

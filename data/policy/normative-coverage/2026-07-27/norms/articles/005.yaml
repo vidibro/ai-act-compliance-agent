@@ -850,8 +850,7 @@ norms:
   targets: []
   action: commence urgent use without prior authorisation
   norm_text: in a duly justified situation of urgency, the use of such system may be commenced without
-    an authorisation provided that such authorisation is requested without undue delay, at the latest
-    within 24 hours.
+    an authorisation
   detection_channels:
   - semantic_legal_effect
   - other_modal
@@ -862,7 +861,6 @@ norms:
   conditions:
   - the use pursues an Article 5(1)(h) objective and is subject to the Article 5(2) conditions
   - the situation of urgency is duly justified
-  - request authorisation without undue delay and no later than 24 hours after use commences
   exceptions: []
   mandatory_content: []
   product_scope: in_scope
@@ -881,6 +879,82 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+- norm_id: AIA-NORM-A005-P3-REQUEST-URGENT-AUTHORISATION-WITHOUT-UNDUE-DELAY
+  act_version_date: '2026-07-27'
+  kind: obligation
+  actors:
+  - actor_ref: law_enforcement_authority
+  targets: []
+  action: request the paragraph 3 authorisation without undue delay after commencing urgent use
+  norm_text: provided that such authorisation is requested without undue delay
+  detection_channels:
+  - semantic_legal_effect
+  - cross_reference_structure
+  - existing_implementation
+  primary_spans:
+  - AIA-TEXT-A005-P028
+  qualifier_spans:
+  - AIA-TEXT-A005-P028
+  conditions:
+  - the use pursues an Article 5(1)(h) objective and is subject to the Article 5(2) conditions
+  - the situation of urgency is duly justified
+  exceptions: []
+  mandatory_content: []
+  product_scope: in_scope
+  product_scope_reason: ''
+  implementation_mode: report_only
+  implementation_refs:
+  - AIA-DP-A05-3
+  implementation_reason: ''
+  verification_mode: reported_conditionally
+  review:
+    status: approved
+    extracted_by: semantic-legal-effect-pass
+    verified_by: vidibro
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-A005-P3-URGENT-AUTHORISATION-WITHOUT-UNDUE-DELAY
+- norm_id: AIA-NORM-A005-P3-REQUEST-URGENT-AUTHORISATION-WITHIN-TWENTY-FOUR-HOURS
+  act_version_date: '2026-07-27'
+  kind: obligation
+  actors:
+  - actor_ref: law_enforcement_authority
+  targets: []
+  action: request the paragraph 3 authorisation within 24 hours after commencing urgent use
+  norm_text: at the latest within 24 hours.
+  detection_channels:
+  - semantic_legal_effect
+  - cross_reference_structure
+  - existing_implementation
+  primary_spans:
+  - AIA-TEXT-A005-P028
+  qualifier_spans:
+  - AIA-TEXT-A005-P028
+  conditions:
+  - the use pursues an Article 5(1)(h) objective and is subject to the Article 5(2) conditions
+  - the situation of urgency is duly justified
+  exceptions: []
+  mandatory_content: []
+  product_scope: in_scope
+  product_scope_reason: ''
+  implementation_mode: report_only
+  implementation_refs:
+  - AIA-DP-A05-3
+  implementation_reason: ''
+  verification_mode: reported_conditionally
+  review:
+    status: approved
+    extracted_by: semantic-legal-effect-pass
+    verified_by: vidibro
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-A005-P3-URGENT-AUTHORISATION-TWENTY-FOUR-HOURS
 - norm_id: AIA-NORM-A005-P3-STOP-ON-REJECTION
   act_version_date: '2026-07-27'
   kind: obligation

@@ -70,8 +70,10 @@ segments:
   disposition: normative
   disposition_reason: ''
   norm_ids:
-  - AIA-NORM-A073-P2-DEFAULT-REPORTING-DEADLINE
-  qualifying_norm_ids: []
+  - AIA-NORM-A073-P2-REPORT-IMMEDIATELY
+  - AIA-NORM-A073-P2-REPORT-NO-LATER-THAN-FIFTEEN-DAYS
+  qualifying_norm_ids:
+  - AIA-NORM-A073-P2-REPORT-NO-LATER-THAN-FIFTEEN-DAYS
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -97,7 +99,7 @@ segments:
   disposition_reason: ''
   norm_ids: []
   qualifying_norm_ids:
-  - AIA-NORM-A073-P2-DEFAULT-REPORTING-DEADLINE
+  - AIA-NORM-A073-P2-REPORT-NO-LATER-THAN-FIFTEEN-DAYS
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -124,8 +126,10 @@ segments:
   disposition: normative
   disposition_reason: ''
   norm_ids:
-  - AIA-NORM-A073-P3-TWO-DAY-DEADLINE
-  qualifying_norm_ids: []
+  - AIA-NORM-A073-P3-REPORT-IMMEDIATELY
+  - AIA-NORM-A073-P3-REPORT-NO-LATER-THAN-TWO-DAYS
+  qualifying_norm_ids:
+  - AIA-NORM-A073-P3-REPORT-NO-LATER-THAN-TWO-DAYS
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass
@@ -153,8 +157,10 @@ segments:
   disposition: normative
   disposition_reason: ''
   norm_ids:
-  - AIA-NORM-A073-P4-DEATH-DEADLINE
-  qualifying_norm_ids: []
+  - AIA-NORM-A073-P4-REPORT-IMMEDIATELY
+  - AIA-NORM-A073-P4-REPORT-NO-LATER-THAN-TEN-DAYS
+  qualifying_norm_ids:
+  - AIA-NORM-A073-P4-REPORT-NO-LATER-THAN-TEN-DAYS
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass

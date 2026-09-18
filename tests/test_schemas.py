@@ -107,7 +107,6 @@ def test_temporal_regime_preserves_a_relative_deadline_and_trigger():
     regime = TemporalRegime(
         regime_id="AIA-TEMP-A046-P4-OBJECTION-PERIOD",
         relative_deadline={
-            "operator": "within",
             "quantity": 15,
             "unit": "calendar_day",
             "trigger": "receipt of the information referred to in paragraph 3",
@@ -116,7 +115,37 @@ def test_temporal_regime_preserves_a_relative_deadline_and_trigger():
     )
 
     assert regime.relative_deadline is not None
-    assert regime.relative_deadline.enacted_period == "within 15 calendar days"
+    assert regime.relative_deadline.enacted_period_variants == [
+        "within 15 calendar days",
+        "within fifteen calendar days",
+        "not later than 15 calendar days",
+        "not later than fifteen calendar days",
+    ]
+
+
+def test_temporal_regime_preserves_a_qualitative_deadline():
+    regime = TemporalRegime(
+        regime_id="AIA-TEMP-A005-P3-URGENT-AUTHORISATION-WITHOUT-UNDUE-DELAY",
+        qualitative_deadline={"kind": "without_undue_delay"},
+        legal_basis_spans=["AIA-TEXT-A005-P028"],
+    )
+
+    assert regime.qualitative_deadline is not None
+    assert regime.qualitative_deadline.kind.enacted_text == "without undue delay"
+
+
+def test_temporal_regime_rejects_multiple_deadline_constraints():
+    with pytest.raises(ValidationError, match="at most one deadline constraint"):
+        TemporalRegime(
+            regime_id="AIA-TEMP-INVALID-MULTIPLE-DEADLINES",
+            deadline=date(2027, 8, 1),
+            relative_deadline={
+                "quantity": 15,
+                "unit": "calendar_day",
+                "trigger": "receipt",
+            },
+            legal_basis_spans=["AIA-TEXT-A096-P008"],
+        )
 
 
 # --------------------------------------------------------------------------------------

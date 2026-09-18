@@ -1,3 +1,25 @@
+temporal_regimes:
+- regime_id: AIA-TEMP-A005-P3-URGENT-AUTHORISATION-WITHOUT-UNDUE-DELAY
+  qualitative_deadline:
+    kind: without_undue_delay
+  legal_basis_spans:
+  - AIA-TEXT-A005-P028
+- regime_id: AIA-TEMP-A005-P3-URGENT-AUTHORISATION-TWENTY-FOUR-HOURS
+  relative_deadline:
+    quantity: 24
+    unit: hour
+    trigger: the use of such system may be commenced without an authorisation
+  legal_basis_spans:
+  - AIA-TEXT-A005-P028
+norm_relations:
+- relation_id: AIA-REL-A005-P3-URGENT-USE-CONDITIONAL-ON-AUTHORISATION-REQUEST-DEADLINES
+  source_norm_id: AIA-NORM-A005-P3-URGENT-USE
+  kind: conditional_on_norms
+  target_norm_ids:
+  - AIA-NORM-A005-P3-REQUEST-URGENT-AUTHORISATION-WITHOUT-UNDUE-DELAY
+  - AIA-NORM-A005-P3-REQUEST-URGENT-AUTHORISATION-WITHIN-TWENTY-FOUR-HOURS
+  legal_basis_spans:
+  - AIA-TEXT-A005-P028
 records:
 - norm_id: AIA-NORM-A005-P1-A-MANIPULATIVE-TECHNIQUES
   source: A005-P002
@@ -448,8 +470,7 @@ records:
 - norm_id: AIA-NORM-A005-P3-URGENT-USE
   source: A005-P028
   quote: in a duly justified situation of urgency, the use of such system may be commenced without an
-    authorisation provided that such authorisation is requested without undue delay, at the latest within
-    24 hours.
+    authorisation
   action: commence urgent use without prior authorisation
   actors:
   - actor_ref: law_enforcement_authority
@@ -461,7 +482,42 @@ records:
   conditions:
   - the use pursues an Article 5(1)(h) objective and is subject to the Article 5(2) conditions
   - the situation of urgency is duly justified
-  - request authorisation without undue delay and no later than 24 hours after use commences
+  verified_by: vidibro
+- norm_id: AIA-NORM-A005-P3-REQUEST-URGENT-AUTHORISATION-WITHOUT-UNDUE-DELAY
+  source: A005-P028
+  quote: provided that such authorisation is requested without undue delay
+  action: request the paragraph 3 authorisation without undue delay after commencing urgent use
+  actors:
+  - actor_ref: law_enforcement_authority
+  targets: []
+  qualifier_spans:
+  - A005-P028
+  kind: obligation
+  implementation_mode: report_only
+  implementation_refs: [AIA-DP-A05-3]
+  verification_mode: reported_conditionally
+  conditions:
+  - the use pursues an Article 5(1)(h) objective and is subject to the Article 5(2) conditions
+  - the situation of urgency is duly justified
+  temporal_regime_id: AIA-TEMP-A005-P3-URGENT-AUTHORISATION-WITHOUT-UNDUE-DELAY
+  verified_by: vidibro
+- norm_id: AIA-NORM-A005-P3-REQUEST-URGENT-AUTHORISATION-WITHIN-TWENTY-FOUR-HOURS
+  source: A005-P028
+  quote: at the latest within 24 hours.
+  action: request the paragraph 3 authorisation within 24 hours after commencing urgent use
+  actors:
+  - actor_ref: law_enforcement_authority
+  targets: []
+  qualifier_spans:
+  - A005-P028
+  kind: obligation
+  implementation_mode: report_only
+  implementation_refs: [AIA-DP-A05-3]
+  verification_mode: reported_conditionally
+  conditions:
+  - the use pursues an Article 5(1)(h) objective and is subject to the Article 5(2) conditions
+  - the situation of urgency is duly justified
+  temporal_regime_id: AIA-TEMP-A005-P3-URGENT-AUTHORISATION-TWENTY-FOUR-HOURS
   verified_by: vidibro
 - norm_id: AIA-NORM-A005-P3-STOP-ON-REJECTION
   source: A005-P028

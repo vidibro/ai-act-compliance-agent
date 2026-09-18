@@ -57,9 +57,17 @@ Two newer fields are audited by the same flow, but are deliberately migrated in 
   hash-bound with the target assignment rather than inferred from loose keywords.
 - `temporal_regime_id` connects a norm to one shared `TemporalRegime`. The regime records its
   application start/end dates, fixed calendar deadline, relative deadline, any timing condition,
-  and exact legal-basis segments. A relative deadline records its operator, quantity, unit, and
-  trigger. For example, Article 46(4) is `within` 15 `calendar_day` from receipt of the Article
+  and exact legal-basis segments. A relative deadline records its quantity, unit, and trigger. The
+  validator accepts either enacted equivalent: `within 15 calendar days` or `not later than 15
+  calendar days`. For example, Article 46(4) is 15 `calendar_day` from receipt of the Article
   46(3) information. Every recorded date, period, and trigger must occur in the legal basis.
+
+Each norm has at most one deadline constraint. When enacted text imposes both urgency and an outer
+limit, the source record must split them into two norms which may map to the same rule. The related
+permission or primary duty uses a `conditional_on_norms` relation to identify those timing duties.
+For example, Article 73(2) has one immediate-report norm and one fifteen-day outer-limit norm;
+Article 5(3) separately records the urgent-use permission, the request without undue delay, and the
+twenty-four-hour outer limit.
 
 An `upcoming`, `expired`, or conditionally timed norm remains reportable. A deadline is likewise
 reportable before and after it passes; timing never removes a norm from the report.
