@@ -1,3 +1,34 @@
+temporal_regimes:
+- regime_id: AIA-TEMP-A081-P1-CONSULT-WITHOUT-UNDUE-DELAY
+  qualitative_deadline:
+    kind: without_undue_delay
+  timing_conditions:
+  - within three months of receipt of the notification referred to in Article 79(5)
+  - within 30 days in the case of non-compliance with the prohibition of the AI practices referred to in Article 5
+  legal_basis_spans:
+  - AIA-TEXT-A081-P001
+- regime_id: AIA-TEMP-A081-P1-DECIDE-WITHIN-SIX-MONTHS
+  relative_deadline:
+    quantity: 6
+    unit: month
+    trigger: notification referred to in Article 79(5)
+  legal_basis_spans:
+  - AIA-TEXT-A081-P001
+- regime_id: AIA-TEMP-A081-P1-DECIDE-WITHIN-SIXTY-DAYS
+  relative_deadline:
+    quantity: 60
+    unit: day
+    trigger: notification referred to in Article 79(5)
+  legal_basis_spans:
+  - AIA-TEXT-A081-P001
+norm_relations:
+- relation_id: AIA-REL-A081-P1-DECIDE-ALTERNATIVE-DEADLINES
+  source_norm_id: AIA-NORM-A081-P1-DECIDE-JUSTIFICATION-WITHIN-SIX-MONTHS
+  kind: alternative_norms
+  target_norm_ids:
+  - AIA-NORM-A081-P1-DECIDE-JUSTIFICATION-WITHIN-SIXTY-DAYS
+  legal_basis_spans:
+  - AIA-TEXT-A081-P001
 records:
 - norm_id: AIA-NORM-A081-P1-CONSULT-AND-EVALUATE
   source: A081-P001
@@ -13,6 +44,7 @@ records:
   actors:
   - actor_ref: commission
   targets: []
+  temporal_regime_id: AIA-TEMP-A081-P1-CONSULT-WITHOUT-UNDUE-DELAY
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -31,16 +63,16 @@ records:
         - the objection concerns Article 5 prohibited-practice non-compliance and is raised within 30
           days after receipt of the Article 79(5) notification
     - the Commission considers the measure contrary to Union law
-- norm_id: AIA-NORM-A081-P1-DECIDE-JUSTIFICATION
+- norm_id: AIA-NORM-A081-P1-DECIDE-JUSTIFICATION-WITHIN-SIX-MONTHS
   source: A081-P001
-  quote: the Commission shall, within six months, or within 60 days in the case of non-compliance with
-    the prohibition of the AI practices referred to in Article 5, starting from the notification referred
-    to in Article 79(5), decide whether the national measure is justified
-  action: decide whether the national measure is justified within six months or 60 days for Article 5
-    non-compliance
+  quote: the Commission shall, within six months
+  action: decide whether the national measure is justified within six months of the Article 79(5) notification
   actors:
   - actor_ref: commission
   targets: []
+  qualifier_spans:
+  - A081-P001
+  temporal_regime_id: AIA-TEMP-A081-P1-DECIDE-WITHIN-SIX-MONTHS
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -48,6 +80,25 @@ records:
   verification_mode: not_reported
   conditions:
   - the decision is based on the results of the evaluation
+  - the measure does not concern Article 5 prohibited-practice non-compliance
+- norm_id: AIA-NORM-A081-P1-DECIDE-JUSTIFICATION-WITHIN-SIXTY-DAYS
+  source: A081-P001
+  quote: within 60 days
+  action: decide whether the national measure is justified within 60 days of the Article 79(5) notification
+  actors:
+  - actor_ref: commission
+  targets: []
+  qualifier_spans:
+  - A081-P001
+  temporal_regime_id: AIA-TEMP-A081-P1-DECIDE-WITHIN-SIXTY-DAYS
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_reported
+  conditions:
+  - the decision is based on the results of the evaluation
+  - the measure concerns Article 5 prohibited-practice non-compliance
 - norm_id: AIA-NORM-A081-P1-NOTIFY-DECISION
   source: A081-P001
   quote: shall notify its decision to the market surveillance authority of the Member State concerned.

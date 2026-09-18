@@ -61,6 +61,8 @@ Two newer fields are audited by the same flow, but are deliberately migrated in 
   validator accepts either enacted equivalent: `within 15 calendar days` or `not later than 15
   calendar days`. For example, Article 46(4) is 15 `calendar_day` from receipt of the Article
   46(3) information. Every recorded date, period, and trigger must occur in the legal basis.
+  When the Act states a period but no trigger, `trigger` is `null`: the report must show the period
+  but must not calculate an individual due date. Article 75(3)'s thirty-day period is this case.
 
 Each norm has at most one deadline constraint. When enacted text imposes both urgency and an outer
 limit, the source record must split them into two norms which may map to the same rule. The related
@@ -68,6 +70,11 @@ permission or primary duty uses a `conditional_on_norms` relation to identify th
 For example, Article 73(2) has one immediate-report norm and one fifteen-day outer-limit norm;
 Article 5(3) separately records the urgent-use permission, the request without undue delay, and the
 twenty-four-hour outer limit.
+
+A period may instead be an applicability condition, not a deadline imposed by the norm. The audit
+does not count a time phrase as a second deadline when that exact phrase is retained in the norm's
+structured `conditions`. Article 81(1)'s three-month and thirty-day objection windows are such
+conditions; the Commission's only deadline there is to act without undue delay.
 
 An `upcoming`, `expired`, or conditionally timed norm remains reportable. A deadline is likewise
 reportable before and after it passes; timing never removes a norm from the report.

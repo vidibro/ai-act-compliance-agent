@@ -51,25 +51,26 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
-- norm_id: AIA-NORM-A081-P1-DECIDE-JUSTIFICATION
+  temporal_regime_id: AIA-TEMP-A081-P1-CONSULT-WITHOUT-UNDUE-DELAY
+- norm_id: AIA-NORM-A081-P1-DECIDE-JUSTIFICATION-WITHIN-SIX-MONTHS
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: commission
   targets: []
-  action: decide whether the national measure is justified within six months or 60 days for Article 5
-    non-compliance
-  norm_text: the Commission shall, within six months, or within 60 days in the case of non-compliance
-    with the prohibition of the AI practices referred to in Article 5, starting from the notification
-    referred to in Article 79(5), decide whether the national measure is justified
+  action: decide whether the national measure is justified within six months of the Article 79(5) notification
+  norm_text: the Commission shall, within six months
   detection_channels:
   - semantic_legal_effect
   - shall_token
+  - cross_reference_structure
   primary_spans:
   - AIA-TEXT-A081-P001
-  qualifier_spans: []
+  qualifier_spans:
+  - AIA-TEXT-A081-P001
   conditions:
   - the decision is based on the results of the evaluation
+  - the measure does not concern Article 5 prohibited-practice non-compliance
   exceptions: []
   mandatory_content: []
   product_scope: outside_supported_actor
@@ -87,6 +88,43 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-A081-P1-DECIDE-WITHIN-SIX-MONTHS
+- norm_id: AIA-NORM-A081-P1-DECIDE-JUSTIFICATION-WITHIN-SIXTY-DAYS
+  act_version_date: '2026-07-27'
+  kind: obligation
+  actors:
+  - actor_ref: commission
+  targets: []
+  action: decide whether the national measure is justified within 60 days of the Article 79(5) notification
+  norm_text: within 60 days
+  detection_channels:
+  - semantic_legal_effect
+  - cross_reference_structure
+  primary_spans:
+  - AIA-TEXT-A081-P001
+  qualifier_spans:
+  - AIA-TEXT-A081-P001
+  conditions:
+  - the decision is based on the results of the evaluation
+  - the measure concerns Article 5 prohibited-practice non-compliance
+  exceptions: []
+  mandatory_content: []
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_refs: []
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_reported
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-A081-P1-DECIDE-WITHIN-SIXTY-DAYS
 - norm_id: AIA-NORM-A081-P1-NOTIFY-DECISION
   act_version_date: '2026-07-27'
   kind: obligation

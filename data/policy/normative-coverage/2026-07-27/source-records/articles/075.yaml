@@ -1,3 +1,23 @@
+temporal_regimes:
+- regime_id: AIA-TEMP-A075-P3-SUPPLY-INFORMATION-WITHOUT-DELAY
+  qualitative_deadline:
+    kind: without_delay
+  legal_basis_spans:
+  - AIA-TEXT-A075-P022
+- regime_id: AIA-TEMP-A075-P3-SUPPLY-INFORMATION-THIRTY-DAYS
+  relative_deadline:
+    quantity: 30
+    unit: day
+  legal_basis_spans:
+  - AIA-TEXT-A075-P022
+norm_relations:
+- relation_id: AIA-REL-A075-P3-SUPPLY-INFORMATION-PARALLEL-DEADLINES
+  source_norm_id: AIA-NORM-A075-P3-SUPPLY-INFORMATION-WITHOUT-DELAY
+  kind: parallel_norms
+  target_norm_ids:
+  - AIA-NORM-A075-P3-SUPPLY-INFORMATION-WITHIN-THIRTY-DAYS
+  legal_basis_spans:
+  - AIA-TEXT-A075-P022
 records:
 - norm_id: AIA-NORM-A075-P1-COMPETENCE
   source: A075-P001
@@ -409,15 +429,33 @@ records:
   conditions:
   - the market-surveillance authority cannot conclude its high-risk-system investigation because it cannot
     access general-purpose-model information despite all appropriate efforts to obtain it
-- norm_id: AIA-NORM-A075-P3-SUPPLY-INFORMATION
+- norm_id: AIA-NORM-A075-P3-SUPPLY-INFORMATION-WITHOUT-DELAY
   source: A075-P022
-  quote: In that case, the AI Office shall supply to the applicant authority without delay, and in any
-    event within 30 days, any information that the AI Office considers to be relevant in order to establish
-    whether a high-risk AI system is non-compliant.
-  action: supply relevant requested compliance information without delay and within 30 days
+  quote: In that case, the AI Office shall supply to the applicant authority without delay
+  action: supply relevant requested compliance information without delay
   actors:
   - actor_ref: ai_office
   targets: []
+  temporal_regime_id: AIA-TEMP-A075-P3-SUPPLY-INFORMATION-WITHOUT-DELAY
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_reported
+  conditions:
+  - the market-surveillance authority submits the reasoned information-access request described in Article
+    75(3)
+- norm_id: AIA-NORM-A075-P3-SUPPLY-INFORMATION-WITHIN-THIRTY-DAYS
+  source: A075-P022
+  quote: in any event within 30 days, any information that the AI Office considers to be relevant in
+    order to establish whether a high-risk AI system is non-compliant.
+  action: supply relevant requested compliance information within 30 days where the Article 75(3) request case applies
+  actors:
+  - actor_ref: ai_office
+  targets: []
+  qualifier_spans:
+  - A075-P022
+  temporal_regime_id: AIA-TEMP-A075-P3-SUPPLY-INFORMATION-THIRTY-DAYS
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required

@@ -1,3 +1,35 @@
+temporal_regimes:
+- regime_id: AIA-TEMP-A099-P2-INITIAL-NOTIFICATION-WITHOUT-DELAY
+  qualitative_deadline:
+    kind: without_delay
+  legal_basis_spans:
+  - AIA-TEXT-A099-P002
+- regime_id: AIA-TEMP-A099-P2-INITIAL-NOTIFICATION-APPLICATION-DEADLINE
+  deadline: 2026-08-02
+  legal_basis_spans:
+  - AIA-TEXT-A099-P002
+  - AIA-TEXT-A113-GENERAL
+- regime_id: AIA-TEMP-A099-P2-AMENDMENT-NOTIFICATION-WITHOUT-DELAY
+  qualitative_deadline:
+    kind: without_delay
+  legal_basis_spans:
+  - AIA-TEXT-A099-P002
+norm_relations:
+- relation_id: AIA-REL-A099-P2-INITIAL-NOTIFICATION-PARALLEL-DEADLINES
+  source_norm_id: AIA-NORM-A099-P2-NOTIFY-PENALTY-RULES-WITHOUT-DELAY
+  kind: parallel_norms
+  target_norm_ids:
+  - AIA-NORM-A099-P2-NOTIFY-PENALTY-RULES-BY-APPLICATION-DATE
+  legal_basis_spans:
+  - AIA-TEXT-A099-P002
+- relation_id: AIA-REL-A099-P2-INITIAL-NOTIFICATION-RELIES-ON-GENERAL-APPLICATION
+  source_norm_id: AIA-NORM-A099-P2-NOTIFY-PENALTY-RULES-BY-APPLICATION-DATE
+  kind: relies_on_norms
+  target_norm_ids:
+  - AIA-NORM-A113-GENERAL
+  legal_basis_spans:
+  - AIA-TEXT-A099-P002
+  - AIA-TEXT-A113-GENERAL
 records:
 - norm_id: AIA-NORM-A099-P1-ESTABLISH-PENALTIES
   source: A099-P001
@@ -30,26 +62,49 @@ records:
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
-- norm_id: AIA-NORM-A099-P2-NOTIFY-PENALTY-RULES
+- norm_id: AIA-NORM-A099-P2-NOTIFY-PENALTY-RULES-WITHOUT-DELAY
   source: A099-P002
-  quote: Member States shall, without delay and at the latest by the date of entry into application, notify
-    the Commission of the rules on penalties and of other enforcement measures referred to in paragraph
-    1, and shall notify it, without delay, of any subsequent amendment to them.
-  action: notify the Commission of the paragraph 1 rules on penalties and other enforcement measures,
-    without delay and at the latest by the date of entry into application, and notify it without delay
-    of subsequent amendments
+  quote: Member States shall, without delay
+  action: notify the Commission without delay of the paragraph 1 rules on penalties and enforcement measures
   actors:
   - actor_ref: member_state
   targets: []
+  temporal_regime_id: AIA-TEMP-A099-P2-INITIAL-NOTIFICATION-WITHOUT-DELAY
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
   implementation_reason: Outside the supported operator reporting surface.
   verification_mode: not_reported
-  mandatory_content:
-  - notify the initial rules and measures without delay and by the date of entry into application at the
-    latest
-  - notify subsequent amendments without delay
+- norm_id: AIA-NORM-A099-P2-NOTIFY-PENALTY-RULES-BY-APPLICATION-DATE
+  source: A099-P002
+  quote: at the latest by the date of entry into application
+  action: notify the Commission of the paragraph 1 rules on penalties and enforcement measures by 2 August 2026
+  actors:
+  - actor_ref: member_state
+  targets: []
+  qualifier_spans:
+  - A099-P002
+  temporal_regime_id: AIA-TEMP-A099-P2-INITIAL-NOTIFICATION-APPLICATION-DEADLINE
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_reported
+- norm_id: AIA-NORM-A099-P2-NOTIFY-PENALTY-AMENDMENT-WITHOUT-DELAY
+  source: A099-P002
+  quote: shall notify it, without delay, of any subsequent amendment to them.
+  action: notify the Commission without delay of every subsequent amendment to the rules or measures
+  actors:
+  - actor_ref: member_state
+  targets: []
+  qualifier_spans:
+  - A099-P002
+  temporal_regime_id: AIA-TEMP-A099-P2-AMENDMENT-NOTIFICATION-WITHOUT-DELAY
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_reported
 - norm_id: AIA-NORM-A099-P3-ARTICLE5-FINE
   source: A099-P003
   quote: Non-compliance with the prohibition of the AI practices referred to in Article 5 shall be subject

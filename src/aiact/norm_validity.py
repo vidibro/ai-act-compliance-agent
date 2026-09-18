@@ -368,9 +368,13 @@ def _requires_qualitative_deadline(norm: Norm) -> bool:
 
 
 def _deadline_constraint_count(norm: Norm) -> int:
-    """Count independently auditable deadline constraints in enacted norm text."""
+    """Count deadlines imposed by this norm, excluding its structured timing conditions."""
+    condition_text = json.dumps(norm.model_dump(mode="json")["conditions"], ensure_ascii=False)
     return sum(
-        len(pattern.findall(norm.norm_text))
+        sum(
+            not _contains_exact_words(condition_text, match.group())
+            for match in pattern.finditer(norm.norm_text)
+        )
         for pattern in (CALENDAR_DEADLINE, RELATIVE_DEADLINE, QUALITATIVE_DEADLINE)
     )
 
@@ -579,7 +583,9 @@ def _new_field_findings(
                         evidence=basis_text,
                     )
                 )
-            if not _contains_exact_words(basis_text, relative.trigger):
+            if relative.trigger is not None and not _contains_exact_words(
+                basis_text, relative.trigger
+            ):
                 findings.append(
                     _finding(
                         target=target,

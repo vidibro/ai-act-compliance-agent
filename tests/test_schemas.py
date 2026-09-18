@@ -123,6 +123,17 @@ def test_temporal_regime_preserves_a_relative_deadline_and_trigger():
     ]
 
 
+def test_temporal_regime_allows_a_relative_deadline_without_an_enacted_trigger():
+    regime = TemporalRegime(
+        regime_id="AIA-TEMP-A075-P3-SUPPLY-INFORMATION-THIRTY-DAYS",
+        relative_deadline={"quantity": 30, "unit": "day"},
+        legal_basis_spans=["AIA-TEXT-A075-P022"],
+    )
+
+    assert regime.relative_deadline is not None
+    assert regime.relative_deadline.trigger is None
+
+
 def test_temporal_regime_preserves_a_qualitative_deadline():
     regime = TemporalRegime(
         regime_id="AIA-TEMP-A005-P3-URGENT-AUTHORISATION-WITHOUT-UNDUE-DELAY",

@@ -72,18 +72,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
-- norm_id: AIA-NORM-A099-P2-NOTIFY-PENALTY-RULES
+- norm_id: AIA-NORM-A099-P2-NOTIFY-PENALTY-RULES-WITHOUT-DELAY
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: member_state
   targets: []
-  action: notify the Commission of the paragraph 1 rules on penalties and other enforcement measures,
-    without delay and at the latest by the date of entry into application, and notify it without delay
-    of subsequent amendments
-  norm_text: Member States shall, without delay and at the latest by the date of entry into application,
-    notify the Commission of the rules on penalties and of other enforcement measures referred to in paragraph
-    1, and shall notify it, without delay, of any subsequent amendment to them.
+  action: notify the Commission without delay of the paragraph 1 rules on penalties and enforcement measures
+  norm_text: Member States shall, without delay
   detection_channels:
   - semantic_legal_effect
   - shall_token
@@ -92,10 +88,7 @@ norms:
   qualifier_spans: []
   conditions: []
   exceptions: []
-  mandatory_content:
-  - notify the initial rules and measures without delay and by the date of entry into application at the
-    latest
-  - notify subsequent amendments without delay
+  mandatory_content: []
   product_scope: outside_supported_actor
   product_scope_reason: The present product does not report compliance for this addressee.
   implementation_mode: none_required
@@ -111,6 +104,77 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-A099-P2-INITIAL-NOTIFICATION-WITHOUT-DELAY
+- norm_id: AIA-NORM-A099-P2-NOTIFY-PENALTY-RULES-BY-APPLICATION-DATE
+  act_version_date: '2026-07-27'
+  kind: obligation
+  actors:
+  - actor_ref: member_state
+  targets: []
+  action: notify the Commission of the paragraph 1 rules on penalties and enforcement measures by 2 August
+    2026
+  norm_text: at the latest by the date of entry into application
+  detection_channels:
+  - semantic_legal_effect
+  - cross_reference_structure
+  primary_spans:
+  - AIA-TEXT-A099-P002
+  qualifier_spans:
+  - AIA-TEXT-A099-P002
+  conditions: []
+  exceptions: []
+  mandatory_content: []
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_refs: []
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_reported
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-A099-P2-INITIAL-NOTIFICATION-APPLICATION-DEADLINE
+- norm_id: AIA-NORM-A099-P2-NOTIFY-PENALTY-AMENDMENT-WITHOUT-DELAY
+  act_version_date: '2026-07-27'
+  kind: obligation
+  actors:
+  - actor_ref: member_state
+  targets: []
+  action: notify the Commission without delay of every subsequent amendment to the rules or measures
+  norm_text: shall notify it, without delay, of any subsequent amendment to them.
+  detection_channels:
+  - semantic_legal_effect
+  - shall_token
+  - cross_reference_structure
+  primary_spans:
+  - AIA-TEXT-A099-P002
+  qualifier_spans:
+  - AIA-TEXT-A099-P002
+  conditions: []
+  exceptions: []
+  mandatory_content: []
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_refs: []
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_reported
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-A099-P2-AMENDMENT-NOTIFICATION-WITHOUT-DELAY
 - norm_id: AIA-NORM-A099-P3-ARTICLE5-FINE
   act_version_date: '2026-07-27'
   kind: legal_consequence

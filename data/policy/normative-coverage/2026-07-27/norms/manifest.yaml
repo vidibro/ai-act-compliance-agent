@@ -3829,6 +3829,51 @@ relations:
   - AIA-TEXT-A022-P003
   detail: The provider's mandate must give the representative powers matching each enumerated Article
     22(3) task.
+- relation_id: AIA-REL-A075-P3-SUPPLY-INFORMATION-PARALLEL-DEADLINES
+  source_norm_id: AIA-NORM-A075-P3-SUPPLY-INFORMATION-WITHOUT-DELAY
+  kind: parallel_norms
+  target_rule_ids: []
+  target_norm_ids:
+  - AIA-NORM-A075-P3-SUPPLY-INFORMATION-WITHIN-THIRTY-DAYS
+  external_requirements: []
+  guidance_refs: []
+  legal_basis_spans:
+  - AIA-TEXT-A075-P022
+  detail: ''
+- relation_id: AIA-REL-A081-P1-DECIDE-ALTERNATIVE-DEADLINES
+  source_norm_id: AIA-NORM-A081-P1-DECIDE-JUSTIFICATION-WITHIN-SIX-MONTHS
+  kind: alternative_norms
+  target_rule_ids: []
+  target_norm_ids:
+  - AIA-NORM-A081-P1-DECIDE-JUSTIFICATION-WITHIN-SIXTY-DAYS
+  external_requirements: []
+  guidance_refs: []
+  legal_basis_spans:
+  - AIA-TEXT-A081-P001
+  detail: ''
+- relation_id: AIA-REL-A099-P2-INITIAL-NOTIFICATION-PARALLEL-DEADLINES
+  source_norm_id: AIA-NORM-A099-P2-NOTIFY-PENALTY-RULES-WITHOUT-DELAY
+  kind: parallel_norms
+  target_rule_ids: []
+  target_norm_ids:
+  - AIA-NORM-A099-P2-NOTIFY-PENALTY-RULES-BY-APPLICATION-DATE
+  external_requirements: []
+  guidance_refs: []
+  legal_basis_spans:
+  - AIA-TEXT-A099-P002
+  detail: ''
+- relation_id: AIA-REL-A099-P2-INITIAL-NOTIFICATION-RELIES-ON-GENERAL-APPLICATION
+  source_norm_id: AIA-NORM-A099-P2-NOTIFY-PENALTY-RULES-BY-APPLICATION-DATE
+  kind: relies_on_norms
+  target_rule_ids: []
+  target_norm_ids:
+  - AIA-NORM-A113-GENERAL
+  external_requirements: []
+  guidance_refs: []
+  legal_basis_spans:
+  - AIA-TEXT-A099-P002
+  - AIA-TEXT-A113-GENERAL
+  detail: ''
 - relation_id: AIA-REL-ANNEX-IX-REGISTRATION-INFORMATION-CARRIED-BY-NORMS
   source_norm_id: AIA-NORM-ANNEX-IX-REGISTRATION-INFORMATION
   kind: carried_by_norms
@@ -4026,6 +4071,57 @@ temporal_regimes:
   timing_conditions: []
   legal_basis_spans:
   - AIA-TEXT-A073-P005
+- regime_id: AIA-TEMP-A075-P3-SUPPLY-INFORMATION-WITHOUT-DELAY
+  application_start: null
+  application_end: null
+  qualitative_deadline:
+    kind: without_delay
+    trigger: null
+  timing_conditions: []
+  legal_basis_spans:
+  - AIA-TEXT-A075-P022
+- regime_id: AIA-TEMP-A075-P3-SUPPLY-INFORMATION-THIRTY-DAYS
+  application_start: null
+  application_end: null
+  relative_deadline:
+    quantity: 30
+    unit: day
+    trigger: null
+  timing_conditions: []
+  legal_basis_spans:
+  - AIA-TEXT-A075-P022
+- regime_id: AIA-TEMP-A081-P1-CONSULT-WITHOUT-UNDUE-DELAY
+  application_start: null
+  application_end: null
+  qualitative_deadline:
+    kind: without_undue_delay
+    trigger: null
+  timing_conditions:
+  - within three months of receipt of the notification referred to in Article 79(5)
+  - within 30 days in the case of non-compliance with the prohibition of the AI practices referred to
+    in Article 5
+  legal_basis_spans:
+  - AIA-TEXT-A081-P001
+- regime_id: AIA-TEMP-A081-P1-DECIDE-WITHIN-SIX-MONTHS
+  application_start: null
+  application_end: null
+  relative_deadline:
+    quantity: 6
+    unit: month
+    trigger: notification referred to in Article 79(5)
+  timing_conditions: []
+  legal_basis_spans:
+  - AIA-TEXT-A081-P001
+- regime_id: AIA-TEMP-A081-P1-DECIDE-WITHIN-SIXTY-DAYS
+  application_start: null
+  application_end: null
+  relative_deadline:
+    quantity: 60
+    unit: day
+    trigger: notification referred to in Article 79(5)
+  timing_conditions: []
+  legal_basis_spans:
+  - AIA-TEXT-A081-P001
 - regime_id: AIA-TEMP-A096-P1-G-PUBLISH-DEADLINE
   application_start: null
   application_end: null
@@ -4033,3 +4129,29 @@ temporal_regimes:
   timing_conditions: []
   legal_basis_spans:
   - AIA-TEXT-A096-P008
+- regime_id: AIA-TEMP-A099-P2-INITIAL-NOTIFICATION-WITHOUT-DELAY
+  application_start: null
+  application_end: null
+  qualitative_deadline:
+    kind: without_delay
+    trigger: null
+  timing_conditions: []
+  legal_basis_spans:
+  - AIA-TEXT-A099-P002
+- regime_id: AIA-TEMP-A099-P2-INITIAL-NOTIFICATION-APPLICATION-DEADLINE
+  application_start: null
+  application_end: null
+  deadline: '2026-08-02'
+  timing_conditions: []
+  legal_basis_spans:
+  - AIA-TEXT-A099-P002
+  - AIA-TEXT-A113-GENERAL
+- regime_id: AIA-TEMP-A099-P2-AMENDMENT-NOTIFICATION-WITHOUT-DELAY
+  application_start: null
+  application_end: null
+  qualitative_deadline:
+    kind: without_delay
+    trigger: null
+  timing_conditions: []
+  legal_basis_spans:
+  - AIA-TEXT-A099-P002

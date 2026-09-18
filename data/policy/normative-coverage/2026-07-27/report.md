@@ -4,7 +4,7 @@
 
 **Act version:** 2026-07-27
 
-The inventory contains 133 complete source-body partitions, 1530 exact segments, and 1396 proposed atomic norms. Every stored article and annex is present. Proposed
+The inventory contains 133 complete source-body partitions, 1530 exact segments, and 1400 proposed atomic norms. Every stored article and annex is present. Proposed
 norms have been extracted from 132 documents; the remaining
 work is retained explicitly rather than omitted. The inventory does not decide classification,
 rule selection, or judging. It does materialise rule criteria and report-only legal boundaries into
@@ -113,7 +113,7 @@ the policy spec, so those report elements remain traceable to reviewed norms.
 - article 72: 6
 - article 73: 18
 - article 74: 18
-- article 75: 27
+- article 75: 28
 - article 75a: 24
 - article 75b: 3
 - article 75c: 18
@@ -124,7 +124,7 @@ the policy spec, so those report elements remain traceable to reviewed norms.
 - article 79: 17
 - article 8: 4
 - article 80: 9
-- article 81: 7
+- article 81: 8
 - article 82: 7
 - article 83: 2
 - article 84: 2
@@ -143,7 +143,7 @@ the policy spec, so those report elements remain traceable to reviewed norms.
 - article 96: 5
 - article 97: 11
 - article 98: 2
-- article 99: 13
+- article 99: 15
 
 ### Norms per extracted provision
 
@@ -850,7 +850,7 @@ the policy spec, so those report elements remain traceable to reviewed norms.
 - AIA-TEXT-A075-P016: 1
 - AIA-TEXT-A075-P020: 2
 - AIA-TEXT-A075-P021: 2
-- AIA-TEXT-A075-P022: 4
+- AIA-TEXT-A075-P022: 5
 - AIA-TEXT-A075A-P001: 3
 - AIA-TEXT-A075A-P002: 3
 - AIA-TEXT-A075A-P003: 1
@@ -921,7 +921,7 @@ the policy spec, so those report elements remain traceable to reviewed norms.
 - AIA-TEXT-A080-P006: 1
 - AIA-TEXT-A080-P007: 1
 - AIA-TEXT-A080-P008: 1
-- AIA-TEXT-A081-P001: 4
+- AIA-TEXT-A081-P001: 5
 - AIA-TEXT-A081-P002: 2
 - AIA-TEXT-A081-P003: 1
 - AIA-TEXT-A082-P001: 1
@@ -980,7 +980,7 @@ the policy spec, so those report elements remain traceable to reviewed norms.
 - AIA-TEXT-A098-P001: 1
 - AIA-TEXT-A098-P002: 1
 - AIA-TEXT-A099-P001: 2
-- AIA-TEXT-A099-P002: 1
+- AIA-TEXT-A099-P002: 3
 - AIA-TEXT-A099-P003: 1
 - AIA-TEXT-A099-P004: 1
 - AIA-TEXT-A099-P013: 1
@@ -1160,16 +1160,16 @@ the policy spec, so those report elements remain traceable to reviewed norms.
 - Characters displayed by the extraction pass: 395046
 - Independently approved characters: 395046
 - Characters deliberately left as review debt: 0
-- Normative segments yielding multiple propositions: 234
-- Semantic candidates a shall-token pass missed: 541
-- Shall-token candidate recall: 61.2%
+- Normative segments yielding multiple propositions: 235
+- Semantic candidates a shall-token pass missed: 544
+- Shall-token candidate recall: 61.1%
 - In-scope semantic candidates absent from existing implementation: 83
-- Detection-channel counts: cross_reference_structure=414, deeming_or_consequence=270, existing_implementation=490, other_modal=167, semantic_legal_effect=1396, shall_token=855
-- Mapping shapes, by norm: one-to-one=38, many-to-one=430, one-to-many=1, many-to-many=21, unmapped=906
+- Detection-channel counts: cross_reference_structure=419, deeming_or_consequence=270, existing_implementation=490, other_modal=167, semantic_legal_effect=1400, shall_token=856
+- Mapping shapes, by norm: one-to-one=38, many-to-one=430, one-to-many=1, many-to-many=21, unmapped=910
 - Implementation debt candidates: 62
 - Interpretive links to non-binding guidance: 1
-- Review records with measured elapsed time: 0/2927
-- Parallel-duty groups: 21, linking 63 norms
+- Review records with measured elapsed time: 0/2931
+- Parallel-duty groups: 23, linking 67 norms
 - National-law alignment notices: 4
 
 ## Parallel duties
@@ -1230,25 +1230,31 @@ restatement (`carried_by_norms`) nor a shared rule (`implementation_refs`) expre
    - `AIA-NORM-A056-P9-EXAMINATION-PROCEDURE` — `AIA-TEXT-A056-P014`
    - `AIA-NORM-A058-P1-EXAMINATION-PROCEDURE` — `AIA-TEXT-A058-P006`
 15. 2 norms
+   - `AIA-NORM-A075-P3-SUPPLY-INFORMATION-WITHIN-THIRTY-DAYS` — `AIA-TEXT-A075-P022`
+   - `AIA-NORM-A075-P3-SUPPLY-INFORMATION-WITHOUT-DELAY` — `AIA-TEXT-A075-P022`
+16. 2 norms
    - `AIA-NORM-A075B-MAKE-COMMITMENTS-BINDING` — `AIA-TEXT-A075B-P001`
    - `AIA-NORM-A093-P3-MAKE-COMMITMENTS-BINDING` — `AIA-TEXT-A093-P006`
-16. 2 norms
+17. 2 norms
    - `AIA-NORM-A079-P3-INFORM-CROSS-BORDER-NONCOMPLIANCE` — `AIA-TEXT-A079-P005`
    - `AIA-NORM-A080-P3-INFORM-CROSS-BORDER-USE` — `AIA-TEXT-A080-P003`
-17. 3 norms
+18. 3 norms
    - `AIA-NORM-A079-P4-CORRECT-ALL-UNION-SYSTEMS` — `AIA-TEXT-A079-P006`
    - `AIA-NORM-A080-P5-CORRECT-ALL-UNION-SYSTEMS` — `AIA-TEXT-A080-P005`
    - `AIA-NORM-A082-P2-CORRECT-ALL-UNION-SYSTEMS` — `AIA-TEXT-A082-P002`
-18. 2 norms
+19. 2 norms
    - `AIA-NORM-A091-P2-INITIATE-STRUCTURED-DIALOGUE` — `AIA-TEXT-A091-P002`
    - `AIA-NORM-A093-P2-INITIATE-STRUCTURED-DIALOGUE` — `AIA-TEXT-A093-P005`
-19. 2 norms
+20. 2 norms
    - `AIA-NORM-A091-P4-INFORMATION-REQUEST-CONTENT` — `AIA-TEXT-A091-P004`
    - `AIA-NORM-A092-P4-ACCESS-REQUEST-CONTENT` — `AIA-TEXT-A092-P006`
-20. 2 norms
+21. 2 norms
    - `AIA-NORM-A091-P5-AUTHORISED-PERSON-SUPPLY` — `AIA-TEXT-A091-P005`
    - `AIA-NORM-A092-P5-AUTHORISED-PERSON-PROVIDE-ACCESS` — `AIA-TEXT-A092-P007`
-21. 13 norms
+22. 2 norms
+   - `AIA-NORM-A099-P2-NOTIFY-PENALTY-RULES-BY-APPLICATION-DATE` — `AIA-TEXT-A099-P002`
+   - `AIA-NORM-A099-P2-NOTIFY-PENALTY-RULES-WITHOUT-DELAY` — `AIA-TEXT-A099-P002`
+23. 13 norms
    - `AIA-NORM-A102-ACCOUNT-FOR-HIGH-RISK-REQUIREMENTS` — `AIA-TEXT-A102-P001`
    - `AIA-NORM-A103-ACCOUNT-FOR-HIGH-RISK-REQUIREMENTS` — `AIA-TEXT-A103-P001`
    - `AIA-NORM-A104-ACCOUNT-FOR-HIGH-RISK-REQUIREMENTS` — `AIA-TEXT-A104-P001`

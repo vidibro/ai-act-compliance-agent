@@ -110,6 +110,7 @@ class NormRelationKind(StrEnum):
     CONDITIONAL_ON_NORMS = "conditional_on_norms"
     CARRIED_BY_NORMS = "carried_by_norms"
     PARALLEL_NORMS = "parallel_norms"
+    ALTERNATIVE_NORMS = "alternative_norms"
     RELIES_ON_NORMS = "relies_on_norms"
     INTERPRETED_BY_COMMISSION_GUIDANCE = "interpreted_by_commission_guidance"
     NATIONAL_LAW_REGULATION = "national_law_regulation"
@@ -152,6 +153,7 @@ class NormRelation(BaseModel):
             NormRelationKind.CONDITIONAL_ON_NORMS,
             NormRelationKind.CARRIED_BY_NORMS,
             NormRelationKind.PARALLEL_NORMS,
+            NormRelationKind.ALTERNATIVE_NORMS,
             NormRelationKind.RELIES_ON_NORMS,
         }:
             if has_rules or has_external or has_guidance or has_report_practices or not has_norms:
@@ -327,13 +329,13 @@ class RelativeDeadlineUnit(StrEnum):
 
 
 class RelativeDeadline(BaseModel):
-    """A source-backed deadline measured from an enacted trigger event."""
+    """A source-backed period, with an enacted trigger only where the Act states one."""
 
     model_config = ConfigDict(extra="forbid")
 
     quantity: int = Field(ge=1)
     unit: RelativeDeadlineUnit
-    trigger: str = Field(min_length=1)
+    trigger: str | None = Field(default=None, min_length=1)
 
     @property
     def enacted_period_variants(self) -> list[str]:

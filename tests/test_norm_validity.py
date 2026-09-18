@@ -18,7 +18,7 @@ from aiact.norm_validity import (
     load_adjudication_ledger,
 )
 from aiact.schemas import ActorRole, NormActor, NormTarget, TargetKind, TemporalRegime
-from aiact.schemas.norm import SourceKind
+from aiact.schemas.norm import NormRelationKind, SourceKind
 
 ROOT = Path(__file__).resolve().parents[1]
 POLICY = ROOT / "data" / "policy"
@@ -705,6 +705,75 @@ def test_article_five_splits_the_urgent_authorisation_timing_constraints():
         for finding in findings
         if finding.target == "AIA-NORM-A005-P3-URGENT-USE"
         and finding.rule == "multiple_deadline_constraints_in_norm"
+    ]
+
+
+def test_article_seventy_five_splits_its_cumulative_information_deadlines():
+    bundle = load_bundle()
+    norm_ids = {norm.norm_id for norm in bundle.norm_inventory.norms}
+
+    assert {
+        "AIA-NORM-A075-P3-SUPPLY-INFORMATION-WITHOUT-DELAY",
+        "AIA-NORM-A075-P3-SUPPLY-INFORMATION-WITHIN-THIRTY-DAYS",
+    } <= norm_ids
+    findings = audit_norm_validity(bundle, scope={(SourceKind.ARTICLE, "75")})
+    assert not [
+        finding
+        for finding in findings
+        if finding.rule == "multiple_deadline_constraints_in_norm"
+    ]
+
+
+def test_article_eighty_one_objection_windows_are_conditions_not_deadlines():
+    bundle = load_bundle()
+    consultation = next(
+        item
+        for item in bundle.norm_inventory.norms
+        if item.norm_id == "AIA-NORM-A081-P1-CONSULT-AND-EVALUATE"
+    )
+    assert consultation.temporal_regime_id == "AIA-TEMP-A081-P1-CONSULT-WITHOUT-UNDUE-DELAY"
+    assert {
+        "AIA-NORM-A081-P1-DECIDE-JUSTIFICATION-WITHIN-SIX-MONTHS",
+        "AIA-NORM-A081-P1-DECIDE-JUSTIFICATION-WITHIN-SIXTY-DAYS",
+    } <= {item.norm_id for item in bundle.norm_inventory.norms}
+    assert bundle.norm_inventory.target_norm_ids_for(
+        "AIA-NORM-A081-P1-DECIDE-JUSTIFICATION-WITHIN-SIX-MONTHS",
+        NormRelationKind.ALTERNATIVE_NORMS,
+    ) == ["AIA-NORM-A081-P1-DECIDE-JUSTIFICATION-WITHIN-SIXTY-DAYS"]
+
+    findings = audit_norm_validity(bundle, scope={(SourceKind.ARTICLE, "81")})
+    assert not [
+        finding
+        for finding in findings
+        if finding.target == consultation.norm_id
+        and finding.rule == "multiple_deadline_constraints_in_norm"
+    ]
+
+    consultation.conditions = []
+    findings_without_conditions = audit_norm_validity(
+        bundle, scope={(SourceKind.ARTICLE, "81")}
+    )
+    assert any(
+        finding.target == consultation.norm_id
+        and finding.rule == "multiple_deadline_constraints_in_norm"
+        for finding in findings_without_conditions
+    )
+
+
+def test_article_ninety_nine_splits_initial_and_amendment_notifications():
+    bundle = load_bundle()
+    norm_ids = {norm.norm_id for norm in bundle.norm_inventory.norms}
+
+    assert {
+        "AIA-NORM-A099-P2-NOTIFY-PENALTY-RULES-WITHOUT-DELAY",
+        "AIA-NORM-A099-P2-NOTIFY-PENALTY-RULES-BY-APPLICATION-DATE",
+        "AIA-NORM-A099-P2-NOTIFY-PENALTY-AMENDMENT-WITHOUT-DELAY",
+    } <= norm_ids
+    findings = audit_norm_validity(bundle, scope={(SourceKind.ARTICLE, "99")})
+    assert not [
+        finding
+        for finding in findings
+        if finding.rule == "multiple_deadline_constraints_in_norm"
     ]
 
 

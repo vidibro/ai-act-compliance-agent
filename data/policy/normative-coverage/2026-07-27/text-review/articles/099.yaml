@@ -75,8 +75,12 @@ segments:
   disposition: normative
   disposition_reason: ''
   norm_ids:
-  - AIA-NORM-A099-P2-NOTIFY-PENALTY-RULES
-  qualifying_norm_ids: []
+  - AIA-NORM-A099-P2-NOTIFY-PENALTY-RULES-WITHOUT-DELAY
+  - AIA-NORM-A099-P2-NOTIFY-PENALTY-RULES-BY-APPLICATION-DATE
+  - AIA-NORM-A099-P2-NOTIFY-PENALTY-AMENDMENT-WITHOUT-DELAY
+  qualifying_norm_ids:
+  - AIA-NORM-A099-P2-NOTIFY-PENALTY-RULES-BY-APPLICATION-DATE
+  - AIA-NORM-A099-P2-NOTIFY-PENALTY-AMENDMENT-WITHOUT-DELAY
   review:
     status: approved
     extracted_by: semantic-legal-effect-pass

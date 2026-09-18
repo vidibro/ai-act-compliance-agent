@@ -252,6 +252,11 @@ cross-reference in the Regulation.
 - `conditional_on_norms`: a permission or conditional norm applies only when every named norm is
   satisfied. Articles 59(1) and 60(4) are the first migration. This is the only representation of
   those condition links; `Norm` does not carry copied condition-ID fields.
+- `parallel_norms`: every named norm remains independently owed. It connects atomic timing norms
+  that impose cumulative requirements, such as acting without delay and also by an outer limit.
+- `alternative_norms`: exactly one named branch applies under its own structured condition. It
+  connects atomic timing norms with mutually exclusive deadlines, such as Article 81(1)'s ordinary
+  six-month and Article 5-specific sixty-day decision periods.
 - `relies_on_norms`: one norm relies on another AI Act norm. The target must be a norm ID, never a
   source span.
 - `interpreted_by_commission_guidance`: a Commission-guidance snippet supplies a recorded

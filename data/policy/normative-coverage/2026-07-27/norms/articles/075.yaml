@@ -884,16 +884,14 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
-- norm_id: AIA-NORM-A075-P3-SUPPLY-INFORMATION
+- norm_id: AIA-NORM-A075-P3-SUPPLY-INFORMATION-WITHOUT-DELAY
   act_version_date: '2026-07-27'
   kind: obligation
   actors:
   - actor_ref: ai_office
   targets: []
-  action: supply relevant requested compliance information without delay and within 30 days
-  norm_text: In that case, the AI Office shall supply to the applicant authority without delay, and in
-    any event within 30 days, any information that the AI Office considers to be relevant in order to
-    establish whether a high-risk AI system is non-compliant.
+  action: supply relevant requested compliance information without delay
+  norm_text: In that case, the AI Office shall supply to the applicant authority without delay
   detection_channels:
   - semantic_legal_effect
   - shall_token
@@ -920,6 +918,45 @@ norms:
     display_chunks: 1
     fully_displayed: true
     elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-A075-P3-SUPPLY-INFORMATION-WITHOUT-DELAY
+- norm_id: AIA-NORM-A075-P3-SUPPLY-INFORMATION-WITHIN-THIRTY-DAYS
+  act_version_date: '2026-07-27'
+  kind: obligation
+  actors:
+  - actor_ref: ai_office
+  targets: []
+  action: supply relevant requested compliance information within 30 days where the Article 75(3) request
+    case applies
+  norm_text: in any event within 30 days, any information that the AI Office considers to be relevant
+    in order to establish whether a high-risk AI system is non-compliant.
+  detection_channels:
+  - semantic_legal_effect
+  - cross_reference_structure
+  primary_spans:
+  - AIA-TEXT-A075-P022
+  qualifier_spans:
+  - AIA-TEXT-A075-P022
+  conditions:
+  - the market-surveillance authority submits the reasoned information-access request described in Article
+    75(3)
+  exceptions: []
+  mandatory_content: []
+  product_scope: outside_supported_actor
+  product_scope_reason: The present product does not report compliance for this addressee.
+  implementation_mode: none_required
+  implementation_refs: []
+  implementation_reason: Outside the supported operator reporting surface.
+  verification_mode: not_reported
+  review:
+    status: proposed
+    extracted_by: semantic-legal-effect-pass
+    verified_by: ''
+    review_run_id: normative-coverage-2026-08-28
+    presentation_mode: exact-source-slice
+    display_chunks: 1
+    fully_displayed: true
+    elapsed_seconds: null
+  temporal_regime_id: AIA-TEMP-A075-P3-SUPPLY-INFORMATION-THIRTY-DAYS
 - norm_id: AIA-NORM-A075-P3-SAFEGUARD-CONFIDENTIALITY
   act_version_date: '2026-07-27'
   kind: obligation

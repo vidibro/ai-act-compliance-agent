@@ -442,6 +442,7 @@ def test_condition_relationship_is_canonical_and_legacy_source_field_is_rejected
     ("kind", "targets"),
     [
         (NormRelationKind.RELIES_ON_NORMS, {"target_norm_ids": ["AIA-NORM-A001-P2-CHILD"]}),
+        (NormRelationKind.ALTERNATIVE_NORMS, {"target_norm_ids": ["AIA-NORM-A001-P2-CHILD"]}),
         (
             NormRelationKind.INTERPRETED_BY_COMMISSION_GUIDANCE,
             {"guidance_refs": ["C-2025-5052/example"]},
