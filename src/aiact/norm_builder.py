@@ -556,9 +556,12 @@ def _build_norms(
         qualifiers = [f"AIA-TEXT-{span}" for span in record.qualifier_spans]
         effective = [f"AIA-TEXT-{span}" for span in record.effective_date_spans]
         actor_basis = [segment for actor in record.actors for segment in actor.basis_segment_ids]
+        target_basis = [
+            segment for target in record.targets for segment in target.basis_segment_ids
+        ]
         unknown_spans = [
             span
-            for span in [primary, *qualifiers, *effective, *actor_basis]
+            for span in [primary, *qualifiers, *effective, *actor_basis, *target_basis]
             if span not in segments_by_id
         ]
         if unknown_spans:
@@ -573,6 +576,7 @@ def _build_norms(
             (primary, "norm_ids"),
             *((span, "qualifying_norm_ids") for span in [*qualifiers, *effective]),
             *((span, "qualifying_norm_ids") for span in actor_basis if span != primary),
+            *((span, "qualifying_norm_ids") for span in target_basis if span != primary),
         ]:
             segment = segments_by_id[span]
             if segment["disposition"] != SegmentDisposition.NORMATIVE.value:
@@ -595,7 +599,9 @@ def _build_norms(
             "actors": [
                 actor.model_dump(mode="json", exclude_defaults=True) for actor in record.actors
             ],
-            "targets": [target.model_dump(mode="json") for target in record.targets],
+            "targets": [
+                target.model_dump(mode="json", exclude_defaults=True) for target in record.targets
+            ],
             "action": record.action,
             "norm_text": record.quote,
             "detection_channels": _detection_channels(record),

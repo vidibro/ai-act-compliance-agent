@@ -26,12 +26,14 @@ from aiact.schemas import (
     Finding,
     LegalSource,
     NormActor,
+    NormTarget,
     ObligationStatus,
     PolicyRule,
     PolicyRuleset,
     ReportSummary,
     RiskClass,
     SystemUnderReview,
+    TargetKind,
     TemporalRegime,
     TemporalStatus,
     UseCaseClassification,
@@ -60,6 +62,22 @@ def test_norm_actor_keeps_its_own_legal_basis_segments():
         NormActor(
             actor_ref="provider",
             basis_segment_ids=["AIA-TEXT-A015-P1", "AIA-TEXT-A015-P1"],
+        )
+
+
+def test_norm_target_has_a_normalised_kind_and_its_own_evidence_segments():
+    target = NormTarget(
+        target_ref="high-risk AI system",
+        target_kind=TargetKind.AI_SYSTEM,
+        basis_segment_ids=["AIA-TEXT-A015-P001"],
+    )
+
+    assert target.target_kind is TargetKind.AI_SYSTEM
+    assert target.basis_segment_ids == ["AIA-TEXT-A015-P001"]
+    with pytest.raises(ValidationError, match="basis_segment_ids"):
+        NormTarget(
+            target_ref="high-risk AI system",
+            basis_segment_ids=["AIA-TEXT-A015-P001", "AIA-TEXT-A015-P001"],
         )
 
 

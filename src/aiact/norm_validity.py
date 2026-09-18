@@ -42,6 +42,7 @@ class FieldValidation(StrEnum):
     """A staged field family that an adjudication scope has fully migrated."""
 
     ACTOR_EVIDENCE = "actor_evidence"
+    TARGET_EVIDENCE = "target_evidence"
     APPLICATION_TIMING = "application_timing"
 
 
@@ -306,6 +307,19 @@ def _actor_basis_sha256(norm: Norm, actor_index: int) -> str:
     return hashlib.sha256(canonical.encode()).hexdigest()
 
 
+def _target_basis_sha256(norm: Norm, target_index: int) -> str:
+    """Bind a target-evidence finding to exactly one target assignment."""
+    target = norm.targets[target_index]
+    payload = {
+        "norm_id": norm.norm_id,
+        "target_ref": target.target_ref,
+        "target_kind": target.target_kind.value,
+        "basis_segment_ids": target.basis_segment_ids,
+    }
+    canonical = json.dumps(payload, sort_keys=True, separators=(",", ":"), ensure_ascii=False)
+    return hashlib.sha256(canonical.encode()).hexdigest()
+
+
 def _temporal_assignment_sha256(norm: Norm, regime: TemporalRegime) -> str:
     """Bind a timing finding to one norm's selected, source-backed regime."""
     payload = {
@@ -384,6 +398,38 @@ def _new_field_findings(
                         source_ref=primary.segment_id,
                         source_sha256=primary.sha256,
                         target_sha256=_actor_basis_sha256(norm, actor_index),
+                        evidence=basis.text,
+                    )
+                )
+
+        for target_index, target_item in enumerate(norm.targets):
+            if (
+                FieldValidation.TARGET_EVIDENCE in requirements
+                and not target_item.basis_segment_ids
+            ):
+                findings.append(
+                    _finding(
+                        target=f"{norm.norm_id}:target:{target_item.target_ref}",
+                        rule="target_basis_missing",
+                        source_ref=primary.segment_id,
+                        source_sha256=primary.sha256,
+                        target_sha256=_target_basis_sha256(norm, target_index),
+                        evidence=norm.norm_text,
+                    )
+                )
+            for basis_segment_id in target_item.basis_segment_ids:
+                basis = segments[basis_segment_id]
+                if _contains_exact_words(basis.text, target_item.target_ref):
+                    continue
+                findings.append(
+                    _finding(
+                        target=(
+                            f"{norm.norm_id}:target:{target_item.target_ref}:{basis_segment_id}"
+                        ),
+                        rule="target_basis_does_not_name_target",
+                        source_ref=primary.segment_id,
+                        source_sha256=primary.sha256,
+                        target_sha256=_target_basis_sha256(norm, target_index),
                         evidence=basis.text,
                     )
                 )
@@ -683,6 +729,7 @@ def _populated_field_snapshot(
     segments = {segment.segment_id: segment for segment in bundle.text_review.segments}
     regimes = {regime.regime_id: regime for regime in bundle.norm_inventory.temporal_regimes}
     actor_assignments: list[dict[str, object]] = []
+    target_assignments: list[dict[str, object]] = []
     temporal_assignments: list[dict[str, object]] = []
     for norm in sorted(bundle.norm_inventory.norms, key=lambda item: item.norm_id):
         primary = segments[norm.primary_spans[0]]
@@ -697,6 +744,16 @@ def _populated_field_snapshot(
                         "basis_segment_ids": actor.basis_segment_ids,
                     }
                 )
+        for target in norm.targets:
+            if target.basis_segment_ids:
+                target_assignments.append(
+                    {
+                        "norm_id": norm.norm_id,
+                        "target_ref": target.target_ref,
+                        "target_kind": target.target_kind.value,
+                        "basis_segment_ids": target.basis_segment_ids,
+                    }
+                )
         if norm.application_regime_id is not None:
             temporal_assignments.append(
                 {
@@ -708,6 +765,8 @@ def _populated_field_snapshot(
     snapshot: dict[str, object] = {}
     if actor_assignments:
         snapshot["actor_assignments"] = actor_assignments
+    if target_assignments:
+        snapshot["target_assignments"] = target_assignments
     if temporal_assignments:
         snapshot["temporal_assignments"] = temporal_assignments
     return snapshot

@@ -491,6 +491,26 @@ class ActorCategory(StrEnum):
     UNRESOLVED = "unresolved"
 
 
+class TargetKind(StrEnum):
+    """Closed high-level class of the object, activity, or legal state affected by a norm.
+
+    ``target_ref`` remains the exact legal object. This enum only normalises its broad shape; it
+    must not become an artificial vocabulary of every object named by the Regulation.
+    """
+
+    AI_SYSTEM = "ai_system"
+    AI_MODEL = "ai_model"
+    DOCUMENTATION = "documentation"
+    DATA = "data"
+    PERSON = "person"
+    ORGANISATION = "organisation"
+    ACTIVITY = "activity"
+    AUTHORITY_DECISION = "authority_decision"
+    LEGAL_STATUS = "legal_status"
+    EXTERNAL_REQUIREMENT = "external_requirement"
+    OTHER = "other"
+
+
 class ActorRole(StrEnum):
     """Closed list of actual AI Act actors; qualifications are norm conditions or targets."""
 

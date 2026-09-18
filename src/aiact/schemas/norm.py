@@ -14,7 +14,7 @@ from typing import Annotated, Literal
 
 from pydantic import BaseModel, ConfigDict, Field, model_validator
 
-from aiact.schemas.enums import ActorCategory, ActorRole, ProhibitedPractice
+from aiact.schemas.enums import ActorCategory, ActorRole, ProhibitedPractice, TargetKind
 from aiact.schemas.interpretation import InterpretiveLink
 from aiact.schemas.review import ReviewRecord, ReviewStatus
 
@@ -300,7 +300,17 @@ class NormActor(BaseModel):
 class NormTarget(BaseModel):
     """An object, activity, concept, or legal state to which the norm relates."""
 
+    model_config = ConfigDict(extra="forbid", frozen=True)
+
     target_ref: str = Field(min_length=1)
+    target_kind: TargetKind = TargetKind.OTHER
+    basis_segment_ids: list[NormativeSegmentId] = []
+
+    @model_validator(mode="after")
+    def _basis_segments_are_unique(self) -> NormTarget:
+        if len(self.basis_segment_ids) != len(set(self.basis_segment_ids)):
+            raise ValueError("target basis_segment_ids must not contain duplicates")
+        return self
 
 
 class TemporalStatus(StrEnum):
@@ -421,6 +431,7 @@ class Norm(BaseModel):
                 + self.definition_spans
                 + self.effective_date_spans
                 + [segment for actor in self.actors for segment in actor.basis_segment_ids]
+                + [segment for target in self.targets for segment in target.basis_segment_ids]
             )
         )
 

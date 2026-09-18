@@ -17,7 +17,7 @@ from aiact.norm_validity import (
     enforce_validity_adjudications,
     load_adjudication_ledger,
 )
-from aiact.schemas import ActorRole, NormActor, TemporalRegime
+from aiact.schemas import ActorRole, NormActor, NormTarget, TargetKind, TemporalRegime
 from aiact.schemas.norm import SourceKind
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -471,6 +471,39 @@ def test_actor_basis_is_checked_deterministically_and_hash_bound():
     assert [finding.rule for finding in findings].count("actor_basis_does_not_name_actor") == 1
 
 
+def test_target_basis_is_checked_deterministically_and_hash_bound():
+    bundle = load_bundle().model_copy(deep=True)
+    norm = next(
+        item
+        for item in bundle.norm_inventory.norms
+        if item.norm_id == "AIA-NORM-A015-P2-ENCOURAGE-MEASUREMENT"
+    )
+    norm.targets = [
+        NormTarget(
+            target_ref="Commission",
+            target_kind=TargetKind.ORGANISATION,
+            basis_segment_ids=["AIA-TEXT-A015-P002"],
+        )
+    ]
+
+    assert not [
+        finding
+        for finding in audit_norm_validity(bundle, scope={(SourceKind.ARTICLE, "15")})
+        if finding.rule == "target_basis_does_not_name_target"
+    ]
+    with pytest.raises(ValueError, match="audit attestation is stale"):
+        enforce_validity_adjudications(bundle, LEDGER)
+
+    norm.targets[0] = NormTarget(
+        target_ref="Commission",
+        target_kind=TargetKind.ORGANISATION,
+        basis_segment_ids=["AIA-TEXT-A015-P009"],
+    )
+    findings = audit_norm_validity(bundle, scope={(SourceKind.ARTICLE, "15")})
+
+    assert [finding.rule for finding in findings].count("target_basis_does_not_name_target") == 1
+
+
 def test_temporal_assignment_needs_source_bound_adjudication_when_its_date_is_unproven(tmp_path):
     bundle = load_bundle().model_copy(deep=True)
     norm = next(
@@ -520,6 +553,27 @@ def test_field_validation_gate_requires_complete_actor_evidence_for_an_article(t
 
     with pytest.raises(ValueError, match="findings lack adjudication"):
         enforce_validity_adjudications(bundle, root)
+
+
+def test_target_evidence_gate_requires_a_basis_for_every_listed_target():
+    bundle = load_bundle().model_copy(deep=True)
+    norm = next(
+        item
+        for item in bundle.norm_inventory.norms
+        if item.norm_id == "AIA-NORM-A015-P2-ENCOURAGE-MEASUREMENT"
+    )
+    norm.targets = [NormTarget(target_ref="Commission", target_kind=TargetKind.ORGANISATION)]
+    requirements = {
+        (SourceKind.ARTICLE, "15"): {FieldValidation.TARGET_EVIDENCE},
+    }
+
+    findings = audit_norm_validity(
+        bundle,
+        scope={(SourceKind.ARTICLE, "15")},
+        required_field_validations=requirements,
+    )
+
+    assert [finding.rule for finding in findings].count("target_basis_missing") == 1
 
 
 def test_legal_basis_must_be_an_exact_source_quote(tmp_path):

@@ -31,6 +31,7 @@ from aiact.schemas.enums import (
     ObligationStatus,
     ProhibitedPractice,
     RiskClass,
+    TargetKind,
     Verdict,
 )
 from aiact.schemas.eval import (
@@ -80,6 +81,7 @@ from aiact.schemas.system import DocumentChunk, SystemUnderReview
 __all__ = [
     # enums — the Regulation's own semantics
     "ActorRole",
+    "TargetKind",
     "AnnexIIIArea",
     "CheckType",
     "DerogationCondition",

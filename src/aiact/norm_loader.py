@@ -171,6 +171,9 @@ def load_normative_coverage(
         for span in (segment for actor in norm.actors for segment in actor.basis_segment_ids):
             if span not in norm.primary_spans:
                 qualifying_links[span].add(norm.norm_id)
+        for span in (segment for target in norm.targets for segment in target.basis_segment_ids):
+            if span not in norm.primary_spans:
+                qualifying_links[span].add(norm.norm_id)
         nonmatching_primary_spans = [
             span for span in norm.primary_spans if norm.norm_text not in segments_by_id[span].text
         ]

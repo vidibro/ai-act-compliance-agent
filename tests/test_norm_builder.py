@@ -25,8 +25,10 @@ from aiact.schemas.norm import (
     NormActor,
     NormRelation,
     NormRelationKind,
+    NormTarget,
     SegmentDisposition,
     SourceKind,
+    TargetKind,
     TemporalRegime,
 )
 from aiact.yaml_loader import load_yaml_mapping_or_shards
@@ -264,6 +266,13 @@ def test_reviewed_divisions_and_norm_sources_compile_without_version_specific_co
                         basis_segment_ids=["AIA-TEXT-A001-P1"],
                     )
                 ],
+                targets=[
+                    NormTarget(
+                        target_ref="record",
+                        target_kind=TargetKind.DOCUMENTATION,
+                        basis_segment_ids=["AIA-TEXT-A001-P1"],
+                    )
+                ],
             )
         ],
     )
@@ -277,6 +286,13 @@ def test_reviewed_divisions_and_norm_sources_compile_without_version_specific_co
     assert norm["act_version_date"] == version
     assert norm["primary_spans"] == ["AIA-TEXT-A001-P1"]
     assert norm["implementation_mode"] == "missing"
+    assert norm["targets"] == [
+        {
+            "target_ref": "record",
+            "target_kind": "documentation",
+            "basis_segment_ids": ["AIA-TEXT-A001-P1"],
+        }
+    ]
 
 
 def test_temporal_regime_is_shared_and_compiled_only_when_explicitly_assigned(tmp_path):
