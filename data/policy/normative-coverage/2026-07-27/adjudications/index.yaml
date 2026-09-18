@@ -60,6 +60,12 @@ enforced_scope:
   - kind: article
     document: "27"
   - kind: article
+    document: "53"
+    required_field_validations:
+      - actor_evidence
+      - target_evidence
+      - application_timing
+  - kind: article
     document: "42"
   - kind: article
     document: "59"
@@ -149,6 +155,9 @@ shards:
   - kind: article
     document: "27"
     file: articles/027.yaml
+  - kind: article
+    document: "53"
+    file: articles/053.yaml
   - kind: article
     document: "42"
     file: articles/042.yaml

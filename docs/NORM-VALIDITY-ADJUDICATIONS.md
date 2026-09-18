@@ -55,7 +55,7 @@ Two newer fields are audited by the same flow, but are deliberately migrated in 
   populated segment must contain the target's normalised `target_ref`; a mismatch produces
   `target_basis_does_not_name_target`. `target_kind` is a closed application taxonomy and is
   hash-bound with the target assignment rather than inferred from loose keywords.
-- `application_regime_id` connects a norm to one shared `TemporalRegime`. The regime records its
+- `temporal_regime_id` connects a norm to one shared `TemporalRegime`. The regime records its
   application start/end dates, any timing condition, and exact legal-basis segments. Each populated
   assignment is checked: declared dates and timing conditions must occur in the regime's legal
   basis. Failures are `temporal_application_start_not_in_basis`,
@@ -81,7 +81,7 @@ required_field_validations:
 
 `actor_evidence` makes every listed actor without `basis_segment_ids` a finding.
 `target_evidence` makes every listed target without `basis_segment_ids` a finding.
-`application_timing` makes every norm without `application_regime_id` a finding. The strict build
+`application_timing` makes every norm without `temporal_regime_id` a finding. The strict build
 enforces the declared gate; it is the explicit point at which an article can no longer rely on
 empty staged fields. It also rejects an article that still uses the ambiguous legacy
 `effective_date_spans` field. Do not enable a gate until its source-record changes and their

@@ -324,7 +324,7 @@ def _temporal_assignment_sha256(norm: Norm, regime: TemporalRegime) -> str:
     """Bind a timing finding to one norm's selected, source-backed regime."""
     payload = {
         "norm_id": norm.norm_id,
-        "application_regime_id": norm.application_regime_id,
+        "temporal_regime_id": norm.temporal_regime_id,
         "regime": regime.model_dump(mode="json"),
     }
     canonical = json.dumps(payload, sort_keys=True, separators=(",", ":"), ensure_ascii=False)
@@ -434,13 +434,13 @@ def _new_field_findings(
                     )
                 )
 
-        if norm.application_regime_id is None:
+        if norm.temporal_regime_id is None:
             if FieldValidation.APPLICATION_TIMING in requirements:
                 target_sha256 = hashlib.sha256(
                     json.dumps(
                         {
                             "norm_id": norm.norm_id,
-                            "application_regime_id": None,
+                            "temporal_regime_id": None,
                         },
                         sort_keys=True,
                         separators=(",", ":"),
@@ -471,7 +471,7 @@ def _new_field_findings(
                     evidence=norm.norm_text,
                 )
             )
-        regime = regimes[norm.application_regime_id]
+        regime = regimes[norm.temporal_regime_id]
         basis_text = "\n".join(segments[span].text for span in regime.legal_basis_spans)
         target = f"{norm.norm_id}:temporal:{regime.regime_id}"
         target_sha256 = _temporal_assignment_sha256(norm, regime)
@@ -754,12 +754,12 @@ def _populated_field_snapshot(
                         "basis_segment_ids": target.basis_segment_ids,
                     }
                 )
-        if norm.application_regime_id is not None:
+        if norm.temporal_regime_id is not None:
             temporal_assignments.append(
                 {
                     "norm_id": norm.norm_id,
-                    "application_regime_id": norm.application_regime_id,
-                    "regime": regimes[norm.application_regime_id].model_dump(mode="json"),
+                    "temporal_regime_id": norm.temporal_regime_id,
+                    "regime": regimes[norm.temporal_regime_id].model_dump(mode="json"),
                 }
             )
     snapshot: dict[str, object] = {}

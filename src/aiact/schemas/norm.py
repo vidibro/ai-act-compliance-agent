@@ -406,9 +406,9 @@ class Norm(BaseModel):
     qualifier_spans: list[str] = []
     definition_spans: list[str] = []
     # Legacy source-span field. It currently also contains ordinary deadlines, so it remains
-    # readable until each existing record is migrated to an application regime or another field.
+    # readable until each existing record is migrated to a temporal regime or another field.
     effective_date_spans: list[str] = []
-    application_regime_id: str | None = Field(
+    temporal_regime_id: str | None = Field(
         default=None, pattern=r"^AIA-TEMP-[A-Z0-9-]+$"
     )
     conditions: list[str | ConditionGroup] = []
@@ -529,9 +529,9 @@ class NormInventory(BaseModel):
             raise ValueError("duplicate temporal regime_id")
         unknown_regimes = sorted(
             {
-                norm.application_regime_id
+                norm.temporal_regime_id
                 for norm in self.norms
-                if norm.application_regime_id is not None
+                if norm.temporal_regime_id is not None
             }
             - set(regime_ids)
         )
@@ -540,9 +540,9 @@ class NormInventory(BaseModel):
         unused_regimes = sorted(
             set(regime_ids)
             - {
-                norm.application_regime_id
+                norm.temporal_regime_id
                 for norm in self.norms
-                if norm.application_regime_id is not None
+                if norm.temporal_regime_id is not None
             }
         )
         if unused_regimes:

@@ -1,0 +1,38 @@
+schema_version: 1
+act_version_date: '2026-07-27'
+source:
+  kind: article
+  document: '53'
+  required_field_validations:
+    - actor_evidence
+    - target_evidence
+    - application_timing
+audit:
+  audit_schema_version: 1
+  segments_scanned: 14
+  norms_scanned: 17
+  finding_count: 2
+  audit_sha256: b48c4da11f5c96dd0c040a242667fbbb18461af011659a7ac09ca362c7801beb
+decisions:
+- finding_id: AIA-VALID-C71E7536A753DE32
+  target: AIA-NORM-A053-P1-B-PROTECT-RIGHTS
+  rule: exception_not_structured_or_retained
+  source_ref: AIA-TEXT-A053-P003
+  source_sha256: cf2a54fcdabc696eadccd7ea50d0bb039188b918c76f17c0ee8480a331b705ab
+  target_sha256: 59e09c50f6a293ee9f1bbdc5ec6fab38b52476555cea5674e97535924d89f865
+  decision: false_positive
+  reason: “Without prejudice to the need to observe and protect” preserves the concurrent intellectual-property, confidential-business-information and trade-secret duty; it does not excuse or narrow the Article 53(1)(b) documentation duty. The norm action retains that affirmative duty.
+  reviewed_by: vidibro
+- finding_id: AIA-VALID-10C5185B23AC6AE2
+  target: AIA-TEXT-A053-P003
+  rule: uncovered_legal_effect_text
+  source_ref: AIA-TEXT-A053-P003
+  source_sha256: cf2a54fcdabc696eadccd7ea50d0bb039188b918c76f17c0ee8480a331b705ab
+  target_sha256: bb18ea92cbf44e610eba0477c7436972a7d7416d97cf0d4d97bcd66ea40cd47e
+  decision: accepted_with_basis
+  reason: “The information and documentation shall” is the shared chapeau for the separate Article 53(1)(b) capability-and-limitation and Annex XII content norms. It introduces no independent provider action beyond those two named norms and the principal documentation-delivery norm.
+  legal_basis:
+    - span_id: AIA-TEXT-A053-P003
+      source_sha256: cf2a54fcdabc696eadccd7ea50d0bb039188b918c76f17c0ee8480a331b705ab
+      quote: 'the information and documentation shall:'
+  reviewed_by: vidibro

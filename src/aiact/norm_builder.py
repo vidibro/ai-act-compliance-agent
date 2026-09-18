@@ -144,9 +144,9 @@ class NormSourceRecord(BaseModel):
     mandatory_content: list[str] = []
     mandatory_content_source: Literal["numbered_items"] | None = None
     qualifier_spans: list[str] = []
-    # Retained while existing source records are migrated to application_regime_id.
+    # Retained while existing source records are migrated to temporal_regime_id.
     effective_date_spans: list[str] = []
-    application_regime_id: str | None = Field(
+    temporal_regime_id: str | None = Field(
         default=None, pattern=r"^AIA-TEMP-[A-Z0-9-]+$"
     )
     verified_by: str = ""
@@ -178,9 +178,9 @@ class NormSourceInventory(BaseModel):
             raise ValueError("duplicate temporal regime_id")
         unknown_temporal_regimes = sorted(
             {
-                record.application_regime_id
+                record.temporal_regime_id
                 for record in self.records
-                if record.application_regime_id is not None
+                if record.temporal_regime_id is not None
             }
             - set(temporal_regime_ids)
         )
@@ -192,9 +192,9 @@ class NormSourceInventory(BaseModel):
         unused_temporal_regimes = sorted(
             set(temporal_regime_ids)
             - {
-                record.application_regime_id
+                record.temporal_regime_id
                 for record in self.records
-                if record.application_regime_id is not None
+                if record.temporal_regime_id is not None
             }
         )
         if unused_temporal_regimes:
@@ -624,8 +624,8 @@ def _build_norms(
                 record.verified_by,
             ),
         }
-        if record.application_regime_id is not None:
-            norm["application_regime_id"] = record.application_regime_id
+        if record.temporal_regime_id is not None:
+            norm["temporal_regime_id"] = record.temporal_regime_id
         norms.append(norm)
 
     return norms

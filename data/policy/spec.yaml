@@ -4175,6 +4175,11 @@ rules:
     document_verifiable: false
     effective_date: 2025-08-02
     status: active
+    criteria:
+      - norm_id: AIA-NORM-A053-P1-B-DRAW-KEEP-AND-MAKE-AVAILABLE-DOCUMENTATION
+      - norm_id: AIA-NORM-A053-P1-B-PROTECT-RIGHTS
+      - norm_id: AIA-NORM-A053-P1-B-ENABLE-DOWNSTREAM-COMPLIANCE
+      - norm_id: AIA-NORM-A053-P1-B-ANNEX-XII-CONTENT
 
   - rule_id: AIA-GP-A53-1C
     source:
@@ -4202,6 +4207,9 @@ rules:
     document_verifiable: false
     effective_date: 2025-08-02
     status: active
+    criteria:
+      - norm_id: AIA-NORM-A053-P1-C-COPYRIGHT-POLICY
+      - norm_id: AIA-NORM-A053-P1-C-RIGHTS-RESERVATION
 
   - rule_id: AIA-GP-A53-1D
     source:

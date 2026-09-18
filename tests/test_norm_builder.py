@@ -344,7 +344,7 @@ def test_temporal_regime_is_shared_and_compiled_only_when_explicitly_assigned(tm
                         basis_segment_ids=["AIA-TEXT-A001-P1"],
                     )
                 ],
-                application_regime_id="AIA-TEMP-TEST-DEFAULT",
+                temporal_regime_id="AIA-TEMP-TEST-DEFAULT",
             )
         ],
     )
@@ -360,7 +360,7 @@ def test_temporal_regime_is_shared_and_compiled_only_when_explicitly_assigned(tm
             "legal_basis_spans": ["AIA-TEXT-A001-P1"],
         }
     ]
-    assert compiled["norms"][0]["application_regime_id"] == "AIA-TEMP-TEST-DEFAULT"
+    assert compiled["norms"][0]["temporal_regime_id"] == "AIA-TEMP-TEST-DEFAULT"
     assert compiled["norms"][0]["actors"] == [
         {"actor_ref": "provider", "basis_segment_ids": ["AIA-TEXT-A001-P1"]}
     ]
